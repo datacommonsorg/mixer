@@ -1,12 +1,88 @@
 {
   "statVars": [
     {
+      "name": "Degree to which the legal framework guarantees women's equal rights to land ownership and/or control",
+      "dcid": "sdg/SG_LGL_LNDFEMOD"
+    },
+    {
       "name": "Estimated number of pregnant women living with HIV",
       "dcid": "who/HIV_0000000020"
     },
     {
       "name": "Estimated number of pregnant women living with HIV needing antiretrovirals for preventing mother-to-child transmission",
       "dcid": "who/HIV_0000000021"
+    },
+    {
+      "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education",
+      "dcid": "sdg/SH_LGR_ACSRHE"
+    },
+    {
+      "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 10: HIV Counselling and Test Services",
+      "dcid": "sdg/SH_LGR_ACSRHEC10"
+    },
+    {
+      "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 11: HIV Treatment and Care Services",
+      "dcid": "sdg/SH_LGR_ACSRHEC11"
+    },
+    {
+      "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 12: HIV Confidentiality",
+      "dcid": "sdg/SH_LGR_ACSRHEC12"
+    },
+    {
+      "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 13: HPV Vaccine",
+      "dcid": "sdg/SH_LGR_ACSRHEC13"
+    },
+    {
+      "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 1: Maternity Care",
+      "dcid": "sdg/SH_LGR_ACSRHEC1"
+    },
+    {
+      "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 2: Life Saving Commodities",
+      "dcid": "sdg/SH_LGR_ACSRHEC2"
+    },
+    {
+      "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 3: Abortion",
+      "dcid": "sdg/SH_LGR_ACSRHEC3"
+    },
+    {
+      "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 4: Post-Abortion Care",
+      "dcid": "sdg/SH_LGR_ACSRHEC4"
+    },
+    {
+      "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 5: Contraceptive Services",
+      "dcid": "sdg/SH_LGR_ACSRHEC5"
+    },
+    {
+      "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 6: Contraceptive Consent",
+      "dcid": "sdg/SH_LGR_ACSRHEC6"
+    },
+    {
+      "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 7: Emergency Contraception",
+      "dcid": "sdg/SH_LGR_ACSRHEC7"
+    },
+    {
+      "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 8: Sexuality Education Curriculum Laws",
+      "dcid": "sdg/SH_LGR_ACSRHEC8"
+    },
+    {
+      "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 9: Sexuality Education Curriculum Topics",
+      "dcid": "sdg/SH_LGR_ACSRHEC9"
+    },
+    {
+      "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Section 1: Maternity Care",
+      "dcid": "sdg/SH_LGR_ACSRHES1"
+    },
+    {
+      "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Section 2: Contraceptive and Family Planning",
+      "dcid": "sdg/SH_LGR_ACSRHES2"
+    },
+    {
+      "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Section 3: Sexuality Education",
+      "dcid": "sdg/SH_LGR_ACSRHES3"
+    },
+    {
+      "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Section 4: HIV and HPV",
+      "dcid": "sdg/SH_LGR_ACSRHES4"
     },
     {
       "name": "Legal frameworks that promote, enforce and monitor gender equality -- Area 2: violence against women",
@@ -33,8 +109,512 @@
       "dcid": "who/MALARIA_IPTP3_COVERAGE"
     },
     {
+      "name": "Proportion of countries with systems to track and make public allocations for gender equality and women's empowerment",
+      "dcid": "sdg/SG_GEN_EQPWN"
+    },
+    {
+      "name": "Share of women among owners or rights-bearers of agricultural land, by type of tenure",
+      "dcid": "sdg/SP_GNP_WNOWNS"
+    },
+    {
       "name": "Women of reproductive age who are married or in-union who have their need for family planning satisfied with modern methods, UNPD",
       "dcid": "who/FAMILYPLANNINGUNPDUHC"
+    },
+    {
+      "name": "Count of Establishment: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
+      "dcid": "dc/65cetnnp7zdy6"
+    },
+    {
+      "name": "Count of Establishment: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
+      "dcid": "dc/nmncplhr93mxd"
+    },
+    {
+      "name": "Count of Establishment: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
+      "dcid": "dc/ths2sxts0989g"
+    },
+    {
+      "name": "Count of Establishment: Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+      "dcid": "dc/01r1n7ysnjsed"
+    },
+    {
+      "name": "Count of Establishment: Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+      "dcid": "dc/1s83bz59v9rq7"
+    },
+    {
+      "name": "Count of Establishment: Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+      "dcid": "dc/xre2cx37zmkef"
+    },
+    {
+      "name": "Count of Establishment: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
+      "dcid": "dc/dwz0wj5cn1vm2"
+    },
+    {
+      "name": "Count of Establishment: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
+      "dcid": "dc/hd7zynr0g11sf"
+    },
+    {
+      "name": "Count of Establishment: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
+      "dcid": "dc/wdydnygy2vhh2"
+    },
+    {
+      "name": "Count of Establishment: Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
+      "dcid": "dc/bcblr250e80p8"
+    },
+    {
+      "name": "Count of Establishment: Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
+      "dcid": "dc/n1z9evkm4lje3"
+    },
+    {
+      "name": "Count of Establishment: Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
+      "dcid": "dc/zqqr1106h7gwg"
+    },
+    {
+      "name": "Count of Establishment: Women's And Girls' Dress Manufacturing (NAICS/315233)",
+      "dcid": "dc/0t78emz66c4p6"
+    },
+    {
+      "name": "Count of Establishment: Women's And Girls' Dress Manufacturing (NAICS/315233)",
+      "dcid": "dc/1n885xhjz3e39"
+    },
+    {
+      "name": "Count of Establishment: Women's And Girls' Dress Manufacturing (NAICS/315233)",
+      "dcid": "dc/hjrs2ww3j659"
+    },
+    {
+      "name": "Count of Establishment: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
+      "dcid": "dc/72h0vycgkyxf5"
+    },
+    {
+      "name": "Count of Establishment: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
+      "dcid": "dc/vr3l7r4qetw7d"
+    },
+    {
+      "name": "Count of Establishment: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
+      "dcid": "dc/zsclgn1trelq"
+    },
+    {
+      "name": "Count of Establishment: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
+      "dcid": "dc/dwjnvlzlk9021"
+    },
+    {
+      "name": "Count of Establishment: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
+      "dcid": "dc/ere1cb9j0g4rg"
+    },
+    {
+      "name": "Count of Establishment: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
+      "dcid": "dc/sf1c454nyqxdf"
+    },
+    {
+      "name": "Count of Establishment: Women's Clothing Stores (NAICS/44812)",
+      "dcid": "dc/485v7jl4qlhxb"
+    },
+    {
+      "name": "Count of Establishment: Women's Clothing Stores (NAICS/44812)",
+      "dcid": "dc/5vgmmsgdmsvt3"
+    },
+    {
+      "name": "Count of Establishment: Women's Clothing Stores (NAICS/44812)",
+      "dcid": "dc/dbr7jyndp0151"
+    },
+    {
+      "name": "Count of Establishment: Women's Handbag And Purse Manufacturing (NAICS/316992)",
+      "dcid": "dc/6vd8mtqfmnlbb"
+    },
+    {
+      "name": "Count of Establishment: Women's Handbag And Purse Manufacturing (NAICS/316992)",
+      "dcid": "dc/9mmxbem7c7xrh"
+    },
+    {
+      "name": "Count of Establishment: Women's Handbag And Purse Manufacturing (NAICS/316992)",
+      "dcid": "dc/f3qd32v7d0w9"
+    },
+    {
+      "name": "Count of Establishment: Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
+      "dcid": "dc/g3q1g5ypdk2k"
+    },
+    {
+      "name": "Count of Establishment: Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
+      "dcid": "dc/gvbwk7c7hb5mg"
+    },
+    {
+      "name": "Count of Establishment: Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
+      "dcid": "dc/r47bzjgblx7z4"
+    },
+    {
+      "name": "Count of Establishment: Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
+      "dcid": "dc/0bkbm4x0nvceb"
+    },
+    {
+      "name": "Count of Establishment: Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
+      "dcid": "dc/fg95lgey78gq1"
+    },
+    {
+      "name": "Count of Establishment: Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
+      "dcid": "dc/p5sgbrbdkefl2"
+    },
+    {
+      "name": "Count of Establishment: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
+      "dcid": "dc/1164zg41pdp4f"
+    },
+    {
+      "name": "Count of Establishment: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
+      "dcid": "dc/ks0pf8d9hj8wg"
+    },
+    {
+      "name": "Count of Establishment: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
+      "dcid": "dc/yhdq1xdy3x0s9"
+    },
+    {
+      "name": "Count of WHO/Pregnant Women: 15 - 49 Years",
+      "dcid": "Count_WHO/PregnantWomen_15To49Year"
+    },
+    {
+      "name": "Number of seats held by women in national parliaments [Female]",
+      "dcid": "sdg/SG_GEN_PARLN.SEX--F"
+    },
+    {
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [15-19  years]",
+      "dcid": "who/bmi30wm.AGE--Y15T19"
+    },
+    {
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [20-49 years]",
+      "dcid": "who/bmi30wm.AGE--Y20T49"
+    },
+    {
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 1 (poorest)]",
+      "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE01"
+    },
+    {
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 10 (richest)]",
+      "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE10"
+    },
+    {
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 2]",
+      "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE02"
+    },
+    {
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 3]",
+      "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE03"
+    },
+    {
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 4]",
+      "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE04"
+    },
+    {
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 5]",
+      "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE05"
+    },
+    {
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 6]",
+      "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE06"
+    },
+    {
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 7]",
+      "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE07"
+    },
+    {
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 8]",
+      "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE08"
+    },
+    {
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 9]",
+      "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE09"
+    },
+    {
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Primary]",
+      "dcid": "who/bmi30wm.EDUCATIONLEVEL--PRLM"
+    },
+    {
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Q1 (Poorest)]",
+      "dcid": "who/bmi30wm.WEALTHQUINTILE--WQ1"
+    },
+    {
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Q2]",
+      "dcid": "who/bmi30wm.WEALTHQUINTILE--WQ2"
+    },
+    {
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Q3]",
+      "dcid": "who/bmi30wm.WEALTHQUINTILE--WQ3"
+    },
+    {
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Q4]",
+      "dcid": "who/bmi30wm.WEALTHQUINTILE--WQ4"
+    },
+    {
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Q5 (Richest)]",
+      "dcid": "who/bmi30wm.WEALTHQUINTILE--WQ5"
+    },
+    {
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Rural]",
+      "dcid": "who/bmi30wm.RESIDENCEAREATYPE--RUR"
+    },
+    {
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Secondary or higher]",
+      "dcid": "who/bmi30wm.EDUCATIONLEVEL--SHLM"
+    },
+    {
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Urban]",
+      "dcid": "who/bmi30wm.RESIDENCEAREATYPE--URB"
+    },
+    {
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [nan]",
+      "dcid": "who/bmi30wm.EDUCATIONLEVEL--NHLM"
+    },
+    {
+      "name": "Population of Person: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
+      "dcid": "dc/pl6ymqll4n3cc"
+    },
+    {
+      "name": "Population of Person: Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+      "dcid": "dc/jr1e4mkzlfrqg"
+    },
+    {
+      "name": "Population of Person: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
+      "dcid": "dc/9hm76jjfb0pk5"
+    },
+    {
+      "name": "Population of Person: Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
+      "dcid": "dc/22db9v95fd0x7"
+    },
+    {
+      "name": "Population of Person: Women's And Girls' Dress Manufacturing (NAICS/315233)",
+      "dcid": "dc/ejgyz9vtgkk3b"
+    },
+    {
+      "name": "Population of Person: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
+      "dcid": "dc/1xqsrzt0ql39g"
+    },
+    {
+      "name": "Population of Person: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
+      "dcid": "dc/1wg8qt198s488"
+    },
+    {
+      "name": "Population of Person: Women's Clothing Stores (NAICS/44812)",
+      "dcid": "dc/c8pldh07jqceh"
+    },
+    {
+      "name": "Population of Person: Women's Handbag And Purse Manufacturing (NAICS/316992)",
+      "dcid": "dc/cxfghfz9v32x"
+    },
+    {
+      "name": "Population of Person: Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
+      "dcid": "dc/wgdf3d4qlx0th"
+    },
+    {
+      "name": "Population of Person: Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
+      "dcid": "dc/2f3nx20fbkjs2"
+    },
+    {
+      "name": "Population of Person: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
+      "dcid": "dc/jegsqlvc25hk3"
+    },
+    {
+      "name": "Pregnant women sleeping under insecticide-treated nets [15-19  years]",
+      "dcid": "who/itnwm.AGE--Y15T19"
+    },
+    {
+      "name": "Pregnant women sleeping under insecticide-treated nets [20-49 years]",
+      "dcid": "who/itnwm.AGE--Y20T49"
+    },
+    {
+      "name": "Pregnant women sleeping under insecticide-treated nets [Decile 1 (poorest)]",
+      "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE01"
+    },
+    {
+      "name": "Pregnant women sleeping under insecticide-treated nets [Decile 10 (richest)]",
+      "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE10"
+    },
+    {
+      "name": "Pregnant women sleeping under insecticide-treated nets [Decile 2]",
+      "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE02"
+    },
+    {
+      "name": "Pregnant women sleeping under insecticide-treated nets [Decile 3]",
+      "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE03"
+    },
+    {
+      "name": "Pregnant women sleeping under insecticide-treated nets [Decile 4]",
+      "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE04"
+    },
+    {
+      "name": "Pregnant women sleeping under insecticide-treated nets [Decile 5]",
+      "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE05"
+    },
+    {
+      "name": "Pregnant women sleeping under insecticide-treated nets [Decile 6]",
+      "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE06"
+    },
+    {
+      "name": "Pregnant women sleeping under insecticide-treated nets [Decile 7]",
+      "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE07"
+    },
+    {
+      "name": "Pregnant women sleeping under insecticide-treated nets [Decile 8]",
+      "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE08"
+    },
+    {
+      "name": "Pregnant women sleeping under insecticide-treated nets [Decile 9]",
+      "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE09"
+    },
+    {
+      "name": "Pregnant women sleeping under insecticide-treated nets [Primary]",
+      "dcid": "who/itnwm.EDUCATIONLEVEL--PRLM"
+    },
+    {
+      "name": "Pregnant women sleeping under insecticide-treated nets [Q1 (Poorest)]",
+      "dcid": "who/itnwm.WEALTHQUINTILE--WQ1"
+    },
+    {
+      "name": "Pregnant women sleeping under insecticide-treated nets [Q2]",
+      "dcid": "who/itnwm.WEALTHQUINTILE--WQ2"
+    },
+    {
+      "name": "Pregnant women sleeping under insecticide-treated nets [Q3]",
+      "dcid": "who/itnwm.WEALTHQUINTILE--WQ3"
+    },
+    {
+      "name": "Pregnant women sleeping under insecticide-treated nets [Q4]",
+      "dcid": "who/itnwm.WEALTHQUINTILE--WQ4"
+    },
+    {
+      "name": "Pregnant women sleeping under insecticide-treated nets [Q5 (Richest)]",
+      "dcid": "who/itnwm.WEALTHQUINTILE--WQ5"
+    },
+    {
+      "name": "Pregnant women sleeping under insecticide-treated nets [Rural]",
+      "dcid": "who/itnwm.RESIDENCEAREATYPE--RUR"
+    },
+    {
+      "name": "Pregnant women sleeping under insecticide-treated nets [Secondary or higher]",
+      "dcid": "who/itnwm.EDUCATIONLEVEL--SHLM"
+    },
+    {
+      "name": "Pregnant women sleeping under insecticide-treated nets [Urban]",
+      "dcid": "who/itnwm.RESIDENCEAREATYPE--URB"
+    },
+    {
+      "name": "Pregnant women sleeping under insecticide-treated nets [nan]",
+      "dcid": "who/itnwm.EDUCATIONLEVEL--NHLM"
+    },
+    {
+      "name": "Proportion of elected seats held by women in deliberative bodies of local government [Female]",
+      "dcid": "sdg/SG_GEN_LOCGELS.SEX--F"
+    },
+    {
+      "name": "Proportion of seats held by women in national parliaments [Female]",
+      "dcid": "sdg/SG_GEN_PARL.SEX--F"
+    },
+    {
+      "name": "Proportion of women in managerial positions - 13th ICLS [Female]",
+      "dcid": "sdg/IC_GEN_MGTL.SEX--F"
+    },
+    {
+      "name": "Proportion of women in managerial positions - 19th ICLS [Female]",
+      "dcid": "sdg/IC_GEN_MGTL_19ICLS.SEX--F"
+    },
+    {
+      "name": "Proportion of women in senior and middle management positions - 13th ICLS [Female]",
+      "dcid": "sdg/IC_GEN_MGTN.SEX--F"
+    },
+    {
+      "name": "Proportion of women in senior and middle management positions - 19th ICLS [Female]",
+      "dcid": "sdg/IC_GEN_MGTN_19ICLS.SEX--F"
+    },
+    {
+      "name": "Wages Annual of Establishment: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
+      "dcid": "dc/5n2xf0xr930e7"
+    },
+    {
+      "name": "Wages Annual of Establishment: Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+      "dcid": "dc/c5kh0lky2lwff"
+    },
+    {
+      "name": "Wages Annual of Establishment: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
+      "dcid": "dc/byw105g97113f"
+    },
+    {
+      "name": "Wages Annual of Establishment: Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
+      "dcid": "dc/1gb40x8252jj7"
+    },
+    {
+      "name": "Wages Annual of Establishment: Women's And Girls' Dress Manufacturing (NAICS/315233)",
+      "dcid": "dc/dpk05r5c2z3wc"
+    },
+    {
+      "name": "Wages Annual of Establishment: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
+      "dcid": "dc/y52nntfc8gc3f"
+    },
+    {
+      "name": "Wages Annual of Establishment: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
+      "dcid": "dc/cdjv5jt6gk8k6"
+    },
+    {
+      "name": "Wages Annual of Establishment: Women's Clothing Stores (NAICS/44812)",
+      "dcid": "dc/g5nryvhz7vl44"
+    },
+    {
+      "name": "Wages Annual of Establishment: Women's Handbag And Purse Manufacturing (NAICS/316992)",
+      "dcid": "dc/3nsjpbp090gr9"
+    },
+    {
+      "name": "Wages Annual of Establishment: Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
+      "dcid": "dc/ye2wj5ggx5n34"
+    },
+    {
+      "name": "Wages Annual of Establishment: Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
+      "dcid": "dc/fgn46kw0vn108"
+    },
+    {
+      "name": "Wages Annual of Establishment: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
+      "dcid": "dc/4pm87j02ql96c"
+    },
+    {
+      "name": "Wages Total of Person: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
+      "dcid": "dc/vbrzm0zm6mtk6"
+    },
+    {
+      "name": "Wages Total of Person: Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+      "dcid": "dc/egt3q3g4v0dfh"
+    },
+    {
+      "name": "Wages Total of Person: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
+      "dcid": "dc/51gk7jlqjc8k8"
+    },
+    {
+      "name": "Wages Total of Person: Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
+      "dcid": "dc/v0jqcxks4r7t6"
+    },
+    {
+      "name": "Wages Total of Person: Women's And Girls' Dress Manufacturing (NAICS/315233)",
+      "dcid": "dc/jq9xshh3pd0k5"
+    },
+    {
+      "name": "Wages Total of Person: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
+      "dcid": "dc/53whf085z8gqd"
+    },
+    {
+      "name": "Wages Total of Person: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
+      "dcid": "dc/khevqfe4zv419"
+    },
+    {
+      "name": "Wages Total of Person: Women's Clothing Stores (NAICS/44812)",
+      "dcid": "dc/7v4btw2yxx2cb"
+    },
+    {
+      "name": "Wages Total of Person: Women's Handbag And Purse Manufacturing (NAICS/316992)",
+      "dcid": "dc/lyfdyxj52q1l9"
+    },
+    {
+      "name": "Wages Total of Person: Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
+      "dcid": "dc/h0f7fkhdd2542"
+    },
+    {
+      "name": "Wages Total of Person: Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
+      "dcid": "dc/qr9nezshb0gm5"
+    },
+    {
+      "name": "Wages Total of Person: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
+      "dcid": "dc/flfk1szeerbd7"
     },
     {
       "name": "Adolescent Fertility Rate (Per 1000 Women Aged 15-19 Years), Decile1",
@@ -119,6 +699,66 @@
     {
       "name": "Counselling To Pregnant Women With Alcohol Problems",
       "dcid": "WHO/SA_0000001716"
+    },
+    {
+      "name": "Count of Establishment: Manufacturer Sales Branches And Offices, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+      "dcid": "dc/k3w2p68klhfcc"
+    },
+    {
+      "name": "Count of Establishment: Merchant Wholesalers Excluding Manufacturer Sales Branches And Offices, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+      "dcid": "dc/ww85jq324j3gc"
+    },
+    {
+      "name": "Count of Establishment: Merchant Wholesalers, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+      "dcid": "dc/jfts1vjy25k9g"
+    },
+    {
+      "name": "Count of Establishment: Privately Owned, Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
+      "dcid": "dc/1mzj1f5670hc"
+    },
+    {
+      "name": "Count of Establishment: Privately Owned, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+      "dcid": "dc/kxtbk13pgnvn2"
+    },
+    {
+      "name": "Count of Establishment: Privately Owned, Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
+      "dcid": "dc/v47j59zsfcw34"
+    },
+    {
+      "name": "Count of Establishment: Privately Owned, Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
+      "dcid": "dc/fxm5kk6f06meh"
+    },
+    {
+      "name": "Count of Establishment: Privately Owned, Women's And Girls' Dress Manufacturing (NAICS/315233)",
+      "dcid": "dc/k0l048qhs341g"
+    },
+    {
+      "name": "Count of Establishment: Privately Owned, Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
+      "dcid": "dc/nqjrr9wt8cx9d"
+    },
+    {
+      "name": "Count of Establishment: Privately Owned, Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
+      "dcid": "dc/zl2fwf5mmb0j9"
+    },
+    {
+      "name": "Count of Establishment: Privately Owned, Women's Clothing Stores (NAICS/44812)",
+      "dcid": "dc/tnyv8edhmflg"
+    },
+    {
+      "name": "Count of Establishment: Privately Owned, Women's Handbag And Purse Manufacturing (NAICS/316992)",
+      "dcid": "dc/9dlkhye638d1d"
+    },
+    {
+      "name": "Count of Establishment: Privately Owned, Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
+      "dcid": "dc/kd5z73cqycm6c"
+    },
+    {
+      "name": "Count of Establishment: Privately Owned, Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
+      "dcid": "dc/4d2pt897sqb09"
+    },
+    {
+      "name": "Count of Establishment: Privately Owned, Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
+      "dcid": "dc/e351bke5y8c75"
     },
     {
       "name": "Estimated Number Of Pregnant Women Living With Hiv",
@@ -261,6 +901,54 @@
       "dcid": "WHO/bmi30wm_20To49Years"
     },
     {
+      "name": "Population of Person: Privately Owned, Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
+      "dcid": "dc/9elh82n25nmb7"
+    },
+    {
+      "name": "Population of Person: Privately Owned, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+      "dcid": "dc/h75t4rrk3t4mg"
+    },
+    {
+      "name": "Population of Person: Privately Owned, Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
+      "dcid": "dc/n4p71y8rebwp"
+    },
+    {
+      "name": "Population of Person: Privately Owned, Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
+      "dcid": "dc/pckp87v7dw4pf"
+    },
+    {
+      "name": "Population of Person: Privately Owned, Women's And Girls' Dress Manufacturing (NAICS/315233)",
+      "dcid": "dc/zpee94yz52r64"
+    },
+    {
+      "name": "Population of Person: Privately Owned, Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
+      "dcid": "dc/qmb63307gbw37"
+    },
+    {
+      "name": "Population of Person: Privately Owned, Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
+      "dcid": "dc/tf476gvzsqyd6"
+    },
+    {
+      "name": "Population of Person: Privately Owned, Women's Clothing Stores (NAICS/44812)",
+      "dcid": "dc/c5lylz73bpr4c"
+    },
+    {
+      "name": "Population of Person: Privately Owned, Women's Handbag And Purse Manufacturing (NAICS/316992)",
+      "dcid": "dc/wqckdcxkcxcm3"
+    },
+    {
+      "name": "Population of Person: Privately Owned, Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
+      "dcid": "dc/vhzmdy7k7gpl5"
+    },
+    {
+      "name": "Population of Person: Privately Owned, Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
+      "dcid": "dc/egsf369778ysc"
+    },
+    {
+      "name": "Population of Person: Privately Owned, Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
+      "dcid": "dc/s6lcm4ek746x8"
+    },
+    {
       "name": "Pregnant Women Sleeping Under Insecticide-Treated Nets (%), Decile1",
       "dcid": "WHO/itnwm_Decile1"
     },
@@ -349,6 +1037,122 @@
       "dcid": "WHO/itnwm_20To49Years"
     },
     {
+      "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months, by age [15 to 49 years old, Female]",
+      "dcid": "sdg/VC_VAW_MARR.AGE--Y15T49__SEX--F"
+    },
+    {
+      "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months, by age [15 years old and over, Female]",
+      "dcid": "sdg/VC_VAW_MARR.AGE--Y_GE15__SEX--F"
+    },
+    {
+      "name": "Proportion of girls and women aged 15-49 years who have undergone female genital mutilation, by age [15 to 19 years old, Female]",
+      "dcid": "sdg/SH_STA_FGMS.AGE--Y15T19__SEX--F"
+    },
+    {
+      "name": "Proportion of girls and women aged 15-49 years who have undergone female genital mutilation, by age [15 to 49 years old, Female]",
+      "dcid": "sdg/SH_STA_FGMS.AGE--Y15T49__SEX--F"
+    },
+    {
+      "name": "Proportion of women aged 15-49 years with anaemia [15 to 49 years old, Female]",
+      "dcid": "sdg/SH_STA_ANEM.AGE--Y15T49__SEX--F"
+    },
+    {
+      "name": "Proportion of women aged 15-49 years with anaemia, non-pregnant [15 to 49 years old, Female]",
+      "dcid": "sdg/SH_STA_ANEM_NPRG.AGE--Y15T49__SEX--F"
+    },
+    {
+      "name": "Proportion of women aged 15-49 years with anaemia, pregnant [15 to 49 years old, Female]",
+      "dcid": "sdg/SH_STA_ANEM_PREG.AGE--Y15T49__SEX--F"
+    },
+    {
+      "name": "Proportion of women aged 20-24 years who were married or in a union before age 15 [20 to 24 years old, Female]",
+      "dcid": "sdg/SP_DYN_MRBF15.AGE--Y20T24__SEX--F"
+    },
+    {
+      "name": "Proportion of women aged 20-24 years who were married or in a union before age 18 [20 to 24 years old, Female]",
+      "dcid": "sdg/SP_DYN_MRBF18.AGE--Y20T24__SEX--F"
+    },
+    {
+      "name": "Proportion of women of reproductive age who have their need for family planning satisfied with modern methods [15 to 49 years old, Female]",
+      "dcid": "sdg/SH_FPL_MTMM.AGE--Y15T49__SEX--F"
+    },
+    {
+      "name": "Proportion of women who make their own informed decisions regarding contraceptive use [15 to 49 years old, Female]",
+      "dcid": "sdg/SH_FPL_INFMCU.AGE--Y15T49__SEX--F"
+    },
+    {
+      "name": "Proportion of women who make their own informed decisions regarding reproductive health care [15 to 49 years old, Female]",
+      "dcid": "sdg/SH_FPL_INFMRH.AGE--Y15T49__SEX--F"
+    },
+    {
+      "name": "Proportion of women who make their own informed decisions regarding sexual relations [15 to 49 years old, Female]",
+      "dcid": "sdg/SH_FPL_INFMSR.AGE--Y15T49__SEX--F"
+    },
+    {
+      "name": "Proportion of women who make their own informed decisions regarding sexual relations, contraceptive use and reproductive health care [15 to 49 years old, Female]",
+      "dcid": "sdg/SH_FPL_INFM.AGE--Y15T49__SEX--F"
+    },
+    {
+      "name": "Sales of Establishment: Manufacturer Sales Branches And Offices, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+      "dcid": "dc/79vrq3849kfeg"
+    },
+    {
+      "name": "Sales of Establishment: Merchant Wholesalers Excluding Manufacturer Sales Branches And Offices, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+      "dcid": "dc/ggp40c14cfw7b"
+    },
+    {
+      "name": "Sales of Establishment: Merchant Wholesalers, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+      "dcid": "dc/867ehyppl4rf1"
+    },
+    {
+      "name": "Sales of Establishment: Women's And Children's Clothing Merch. Whls. (NAICS/42433), With Payroll",
+      "dcid": "dc/6bgpdj3k5mrm3"
+    },
+    {
+      "name": "Sales of Establishment: Women's Clothing Stores (NAICS/44812), With Payroll",
+      "dcid": "dc/tb8gcxernde19"
+    },
+    {
+      "name": "Shipments or Receipts of Establishment: Other Women's And Girls' Outerwear Mfg (NAICS/315239), With Payroll",
+      "dcid": "dc/6qkv04wn94c53"
+    },
+    {
+      "name": "Shipments or Receipts of Establishment: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232), With Payroll",
+      "dcid": "dc/fks84eehqmew7"
+    },
+    {
+      "name": "Shipments or Receipts of Establishment: Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523), With Payroll",
+      "dcid": "dc/np3hcrk1njx1b"
+    },
+    {
+      "name": "Shipments or Receipts of Establishment: Women's And Girls' Dress Manufacturing (NAICS/315233), With Payroll",
+      "dcid": "dc/6jy082t6fmvvh"
+    },
+    {
+      "name": "Shipments or Receipts of Establishment: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231), With Payroll",
+      "dcid": "dc/pp7mk3zze5x33"
+    },
+    {
+      "name": "Shipments or Receipts of Establishment: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234), With Payroll",
+      "dcid": "dc/6llg4c0hm0518"
+    },
+    {
+      "name": "Shipments or Receipts of Establishment: Women's Handbag And Purse Manufacturing (NAICS/316992), With Payroll",
+      "dcid": "dc/v8p0zbh29kv98"
+    },
+    {
+      "name": "Shipments or Receipts of Establishment: Women's Nonathletic Footwear Manufacturing (NAICS/316214), With Payroll",
+      "dcid": "dc/4xrh95yzw99w3"
+    },
+    {
+      "name": "Shipments or Receipts of Establishment: Women's, Girls', Infants' Apparel Contractors (NAICS/315212), With Payroll",
+      "dcid": "dc/mcjnbmc4tk28d"
+    },
+    {
+      "name": "Shipments or Receipts of Establishment: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524), With Payroll",
+      "dcid": "dc/ne63ywxmvk1lg"
+    },
+    {
       "name": "Use Of Mosquito Nets - Percentage Of All Women Age 15-49 Who Slept Under An Ever Treated Net Last Night",
       "dcid": "WHO/MALARIA_30557"
     },
@@ -359,6 +1163,150 @@
     {
       "name": "Use Of Mosquito Nets - Percentage Of All Women Age 15-49 Who Slept Under Any Net Last Night",
       "dcid": "WHO/MALARIA_30556"
+    },
+    {
+      "name": "Wages Annual of Person: Privately Owned, Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
+      "dcid": "dc/tvqkwnk4254zf"
+    },
+    {
+      "name": "Wages Annual of Person: Privately Owned, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+      "dcid": "dc/k6j18rtg73sxd"
+    },
+    {
+      "name": "Wages Annual of Person: Privately Owned, Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
+      "dcid": "dc/wjp35e94ypxz9"
+    },
+    {
+      "name": "Wages Annual of Person: Privately Owned, Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
+      "dcid": "dc/1ee37dmy0vy5"
+    },
+    {
+      "name": "Wages Annual of Person: Privately Owned, Women's And Girls' Dress Manufacturing (NAICS/315233)",
+      "dcid": "dc/xr2y5qk8wpd38"
+    },
+    {
+      "name": "Wages Annual of Person: Privately Owned, Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
+      "dcid": "dc/peqnzkzhwz5y2"
+    },
+    {
+      "name": "Wages Annual of Person: Privately Owned, Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
+      "dcid": "dc/g7s09106r7ps8"
+    },
+    {
+      "name": "Wages Annual of Person: Privately Owned, Women's Clothing Stores (NAICS/44812)",
+      "dcid": "dc/psnjt849m4dn9"
+    },
+    {
+      "name": "Wages Annual of Person: Privately Owned, Women's Handbag And Purse Manufacturing (NAICS/316992)",
+      "dcid": "dc/rcckd4sk2e4jc"
+    },
+    {
+      "name": "Wages Annual of Person: Privately Owned, Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
+      "dcid": "dc/58x2fef87hfgd"
+    },
+    {
+      "name": "Wages Annual of Person: Privately Owned, Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
+      "dcid": "dc/lvjcrczqrvhb9"
+    },
+    {
+      "name": "Wages Annual of Person: Privately Owned, Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
+      "dcid": "dc/c5mv6lhvbwhf4"
+    },
+    {
+      "name": "Wages Total of Person: Privately Owned, Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
+      "dcid": "dc/f2qpfh3gwcgnf"
+    },
+    {
+      "name": "Wages Total of Person: Privately Owned, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+      "dcid": "dc/z1p7zw55m68t"
+    },
+    {
+      "name": "Wages Total of Person: Privately Owned, Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
+      "dcid": "dc/jb5bnggeqdrlf"
+    },
+    {
+      "name": "Wages Total of Person: Privately Owned, Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
+      "dcid": "dc/mn5gh6ttbp519"
+    },
+    {
+      "name": "Wages Total of Person: Privately Owned, Women's And Girls' Dress Manufacturing (NAICS/315233)",
+      "dcid": "dc/2bj50cnxjb0kb"
+    },
+    {
+      "name": "Wages Total of Person: Privately Owned, Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
+      "dcid": "dc/5ekvbnw1t682d"
+    },
+    {
+      "name": "Wages Total of Person: Privately Owned, Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
+      "dcid": "dc/xr57j4xy7cdv4"
+    },
+    {
+      "name": "Wages Total of Person: Privately Owned, Women's Clothing Stores (NAICS/44812)",
+      "dcid": "dc/dl1fp4tf3v7j8"
+    },
+    {
+      "name": "Wages Total of Person: Privately Owned, Women's Handbag And Purse Manufacturing (NAICS/316992)",
+      "dcid": "dc/1lmnylmq06r33"
+    },
+    {
+      "name": "Wages Total of Person: Privately Owned, Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
+      "dcid": "dc/hbcd5z1chp8xh"
+    },
+    {
+      "name": "Wages Total of Person: Privately Owned, Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
+      "dcid": "dc/eer0rzg5kwppg"
+    },
+    {
+      "name": "Wages Total of Person: Privately Owned, Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
+      "dcid": "dc/z9t75hqng6gw2"
+    },
+    {
+      "name": "Wages Weekly of Person: Privately Owned, Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
+      "dcid": "dc/nr09plxp554qh"
+    },
+    {
+      "name": "Wages Weekly of Person: Privately Owned, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
+      "dcid": "dc/c2zyx48xp6cbd"
+    },
+    {
+      "name": "Wages Weekly of Person: Privately Owned, Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
+      "dcid": "dc/4nk7qvpemz8zb"
+    },
+    {
+      "name": "Wages Weekly of Person: Privately Owned, Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
+      "dcid": "dc/9f8rjnn2rer12"
+    },
+    {
+      "name": "Wages Weekly of Person: Privately Owned, Women's And Girls' Dress Manufacturing (NAICS/315233)",
+      "dcid": "dc/m4wh4d5mcsrh8"
+    },
+    {
+      "name": "Wages Weekly of Person: Privately Owned, Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
+      "dcid": "dc/s2gk50gstpw4d"
+    },
+    {
+      "name": "Wages Weekly of Person: Privately Owned, Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
+      "dcid": "dc/8l3n93g19qzl7"
+    },
+    {
+      "name": "Wages Weekly of Person: Privately Owned, Women's Clothing Stores (NAICS/44812)",
+      "dcid": "dc/9d4d350es8ke1"
+    },
+    {
+      "name": "Wages Weekly of Person: Privately Owned, Women's Handbag And Purse Manufacturing (NAICS/316992)",
+      "dcid": "dc/955z6r2hq2tx1"
+    },
+    {
+      "name": "Wages Weekly of Person: Privately Owned, Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
+      "dcid": "dc/z2r20tkkmm42f"
+    },
+    {
+      "name": "Wages Weekly of Person: Privately Owned, Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
+      "dcid": "dc/k4jz9sb1c99lc"
+    },
+    {
+      "name": "Wages Weekly of Person: Privately Owned, Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
+      "dcid": "dc/mr45qvflq91hh"
     },
     {
       "name": "Women Age 15-49 Years Who Received A Health Check Within 2 Days After Delivery Of Their Most Recent Live Birth In The Last 2 Years (%)",
@@ -395,6 +1343,26 @@
     {
       "name": "Consumer Price Index of Consumer Goods And Services (Seasonally Unadjusted): Urban Consumer, Womens Underwear Nightwear Swimwear And Accessories",
       "dcid": "SeasonallyUnadjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_WomensUnderwearNightwearSwimwearAndAccessories"
+    },
+    {
+      "name": "Pregnant women aged 15-49 yrs who are anaemic (11.0g/dl) (%)",
+      "dcid": "Count_WHO/PregnantWomen_15To49Year_ConditionAnaemia_AsAFractionOf_Count_WHO/PregnantWomen_15To49Year"
+    },
+    {
+      "name": "Prevalence of cervical cancer screening among women aged 30-49 years [30-49 years of age, Female, in lifetime]",
+      "dcid": "who/NCD_CXCA_SCREENED_WITHIN_TIMEPERIOD.AGE--Y30T49__SEX--F__TIMEPERIOD--TIMEPERIOD_EVER_LIFETIME"
+    },
+    {
+      "name": "Prevalence of cervical cancer screening among women aged 30-49 years [30-49 years of age, Female, in the last five years]",
+      "dcid": "who/NCD_CXCA_SCREENED_WITHIN_TIMEPERIOD.AGE--Y30T49__SEX--F__TIMEPERIOD--TIMEPERIOD_LAST05YEARS"
+    },
+    {
+      "name": "Prevalence of cervical cancer screening among women aged 30-49 years [30-49 years of age, Female, in the last three years]",
+      "dcid": "who/NCD_CXCA_SCREENED_WITHIN_TIMEPERIOD.AGE--Y30T49__SEX--F__TIMEPERIOD--TIMEPERIOD_LAST03YEARS"
+    },
+    {
+      "name": "Prevalence of cervical cancer screening among women aged 30-49 years [30-49 years of age, Female, in the last year]",
+      "dcid": "who/NCD_CXCA_SCREENED_WITHIN_TIMEPERIOD.AGE--Y30T49__SEX--F__TIMEPERIOD--TIMEPERIOD_LAST01YEAR"
     },
     {
       "name": "Adolescent Birth Rate (Per 1000 Women Aged 15-19 Years),10 To14 Years",
@@ -833,1623 +1801,10 @@
       "dcid": "WHO/FAMILYPLANNINGUNPDUHC"
     }
   ],
-  "statVarGroups": [
-    {
-      "dcid": "dc/g/SDG_5.6.2",
-      "name": "5.6.2: Number of countries with laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education",
-      "statVars": [
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education",
-          "dcid": "sdg/SH_LGR_ACSRHE"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 10: HIV Counselling and Test Services",
-          "dcid": "sdg/SH_LGR_ACSRHEC10"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 11: HIV Treatment and Care Services",
-          "dcid": "sdg/SH_LGR_ACSRHEC11"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 12: HIV Confidentiality",
-          "dcid": "sdg/SH_LGR_ACSRHEC12"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 13: HPV Vaccine",
-          "dcid": "sdg/SH_LGR_ACSRHEC13"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 1: Maternity Care",
-          "dcid": "sdg/SH_LGR_ACSRHEC1"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 2: Life Saving Commodities",
-          "dcid": "sdg/SH_LGR_ACSRHEC2"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 3: Abortion",
-          "dcid": "sdg/SH_LGR_ACSRHEC3"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 4: Post-Abortion Care",
-          "dcid": "sdg/SH_LGR_ACSRHEC4"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 5: Contraceptive Services",
-          "dcid": "sdg/SH_LGR_ACSRHEC5"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 6: Contraceptive Consent",
-          "dcid": "sdg/SH_LGR_ACSRHEC6"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 7: Emergency Contraception",
-          "dcid": "sdg/SH_LGR_ACSRHEC7"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 8: Sexuality Education Curriculum Laws",
-          "dcid": "sdg/SH_LGR_ACSRHEC8"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Component 9: Sexuality Education Curriculum Topics",
-          "dcid": "sdg/SH_LGR_ACSRHEC9"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Section 1: Maternity Care",
-          "dcid": "sdg/SH_LGR_ACSRHES1"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Section 2: Contraceptive and Family Planning",
-          "dcid": "sdg/SH_LGR_ACSRHES2"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Section 3: Sexuality Education",
-          "dcid": "sdg/SH_LGR_ACSRHES3"
-        },
-        {
-          "name": "Extent to which countries have laws and regulations that guarantee full and equal access to women and men aged 15 years and older to sexual and reproductive health care, information and education: Section 4: HIV and HPV",
-          "dcid": "sdg/SH_LGR_ACSRHES4"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/WHObmi30wm_whowealthdecile",
-      "name": "Obesity Prevalence in Non-pregnant Women Aged 15-49 Years, BMI \u003e= 30 by Wealthdecile",
-      "statVars": [
-        {
-          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 1 (poorest)]",
-          "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE01"
-        },
-        {
-          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 10 (richest)]",
-          "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE10"
-        },
-        {
-          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 2]",
-          "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE02"
-        },
-        {
-          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 3]",
-          "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE03"
-        },
-        {
-          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 4]",
-          "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE04"
-        },
-        {
-          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 5]",
-          "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE05"
-        },
-        {
-          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 6]",
-          "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE06"
-        },
-        {
-          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 7]",
-          "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE07"
-        },
-        {
-          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 8]",
-          "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE08"
-        },
-        {
-          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 9]",
-          "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE09"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/WHOitnwm_whowealthdecile",
-      "name": "Pregnant Women Sleeping Under Insecticide-treated Nets by Wealthdecile",
-      "statVars": [
-        {
-          "name": "Pregnant women sleeping under insecticide-treated nets [Decile 1 (poorest)]",
-          "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE01"
-        },
-        {
-          "name": "Pregnant women sleeping under insecticide-treated nets [Decile 10 (richest)]",
-          "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE10"
-        },
-        {
-          "name": "Pregnant women sleeping under insecticide-treated nets [Decile 2]",
-          "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE02"
-        },
-        {
-          "name": "Pregnant women sleeping under insecticide-treated nets [Decile 3]",
-          "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE03"
-        },
-        {
-          "name": "Pregnant women sleeping under insecticide-treated nets [Decile 4]",
-          "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE04"
-        },
-        {
-          "name": "Pregnant women sleeping under insecticide-treated nets [Decile 5]",
-          "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE05"
-        },
-        {
-          "name": "Pregnant women sleeping under insecticide-treated nets [Decile 6]",
-          "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE06"
-        },
-        {
-          "name": "Pregnant women sleeping under insecticide-treated nets [Decile 7]",
-          "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE07"
-        },
-        {
-          "name": "Pregnant women sleeping under insecticide-treated nets [Decile 8]",
-          "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE08"
-        },
-        {
-          "name": "Pregnant women sleeping under insecticide-treated nets [Decile 9]",
-          "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE09"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Establishment_Industry-NAICS/315239",
-      "name": "Establishment With Industry = Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
-      "statVars": [
-        {
-          "name": "Count of Establishment: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
-          "dcid": "dc/65cetnnp7zdy6"
-        },
-        {
-          "name": "Count of Establishment: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
-          "dcid": "dc/nmncplhr93mxd"
-        },
-        {
-          "name": "Count of Establishment: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
-          "dcid": "dc/ths2sxts0989g"
-        },
-        {
-          "name": "Wages Annual of Establishment: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
-          "dcid": "dc/5n2xf0xr930e7"
-        },
-        {
-          "name": "Count of Establishment: Privately Owned, Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
-          "dcid": "dc/1mzj1f5670hc"
-        },
-        {
-          "name": "Shipments or Receipts of Establishment: Other Women's And Girls' Outerwear Mfg (NAICS/315239), With Payroll",
-          "dcid": "dc/6qkv04wn94c53"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Establishment_Industry-NAICS/42433",
-      "name": "Establishment With Industry = Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-      "statVars": [
-        {
-          "name": "Count of Establishment: Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/01r1n7ysnjsed"
-        },
-        {
-          "name": "Count of Establishment: Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/1s83bz59v9rq7"
-        },
-        {
-          "name": "Count of Establishment: Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/xre2cx37zmkef"
-        },
-        {
-          "name": "Wages Annual of Establishment: Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/c5kh0lky2lwff"
-        },
-        {
-          "name": "Count of Establishment: Privately Owned, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/kxtbk13pgnvn2"
-        },
-        {
-          "name": "Sales of Establishment: Women's And Children's Clothing Merch. Whls. (NAICS/42433), With Payroll",
-          "dcid": "dc/6bgpdj3k5mrm3"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Establishment_Industry-NAICS/315232",
-      "name": "Establishment With Industry = Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
-      "statVars": [
-        {
-          "name": "Count of Establishment: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
-          "dcid": "dc/dwz0wj5cn1vm2"
-        },
-        {
-          "name": "Count of Establishment: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
-          "dcid": "dc/hd7zynr0g11sf"
-        },
-        {
-          "name": "Count of Establishment: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
-          "dcid": "dc/wdydnygy2vhh2"
-        },
-        {
-          "name": "Wages Annual of Establishment: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
-          "dcid": "dc/byw105g97113f"
-        },
-        {
-          "name": "Count of Establishment: Privately Owned, Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
-          "dcid": "dc/v47j59zsfcw34"
-        },
-        {
-          "name": "Shipments or Receipts of Establishment: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232), With Payroll",
-          "dcid": "dc/fks84eehqmew7"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Establishment_Industry-NAICS/315233",
-      "name": "Establishment With Industry = Women's And Girls' Dress Manufacturing (NAICS/315233)",
-      "statVars": [
-        {
-          "name": "Count of Establishment: Women's And Girls' Dress Manufacturing (NAICS/315233)",
-          "dcid": "dc/0t78emz66c4p6"
-        },
-        {
-          "name": "Count of Establishment: Women's And Girls' Dress Manufacturing (NAICS/315233)",
-          "dcid": "dc/1n885xhjz3e39"
-        },
-        {
-          "name": "Count of Establishment: Women's And Girls' Dress Manufacturing (NAICS/315233)",
-          "dcid": "dc/hjrs2ww3j659"
-        },
-        {
-          "name": "Wages Annual of Establishment: Women's And Girls' Dress Manufacturing (NAICS/315233)",
-          "dcid": "dc/dpk05r5c2z3wc"
-        },
-        {
-          "name": "Count of Establishment: Privately Owned, Women's And Girls' Dress Manufacturing (NAICS/315233)",
-          "dcid": "dc/k0l048qhs341g"
-        },
-        {
-          "name": "Shipments or Receipts of Establishment: Women's And Girls' Dress Manufacturing (NAICS/315233), With Payroll",
-          "dcid": "dc/6jy082t6fmvvh"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Establishment_Industry-NAICS/315231",
-      "name": "Establishment With Industry = Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
-      "statVars": [
-        {
-          "name": "Count of Establishment: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
-          "dcid": "dc/72h0vycgkyxf5"
-        },
-        {
-          "name": "Count of Establishment: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
-          "dcid": "dc/vr3l7r4qetw7d"
-        },
-        {
-          "name": "Count of Establishment: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
-          "dcid": "dc/zsclgn1trelq"
-        },
-        {
-          "name": "Wages Annual of Establishment: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
-          "dcid": "dc/y52nntfc8gc3f"
-        },
-        {
-          "name": "Count of Establishment: Privately Owned, Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
-          "dcid": "dc/nqjrr9wt8cx9d"
-        },
-        {
-          "name": "Shipments or Receipts of Establishment: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231), With Payroll",
-          "dcid": "dc/pp7mk3zze5x33"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Establishment_Industry-NAICS/315234",
-      "name": "Establishment With Industry = Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
-      "statVars": [
-        {
-          "name": "Count of Establishment: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
-          "dcid": "dc/dwjnvlzlk9021"
-        },
-        {
-          "name": "Count of Establishment: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
-          "dcid": "dc/ere1cb9j0g4rg"
-        },
-        {
-          "name": "Count of Establishment: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
-          "dcid": "dc/sf1c454nyqxdf"
-        },
-        {
-          "name": "Wages Annual of Establishment: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
-          "dcid": "dc/cdjv5jt6gk8k6"
-        },
-        {
-          "name": "Count of Establishment: Privately Owned, Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
-          "dcid": "dc/zl2fwf5mmb0j9"
-        },
-        {
-          "name": "Shipments or Receipts of Establishment: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234), With Payroll",
-          "dcid": "dc/6llg4c0hm0518"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Establishment_Industry-NAICS/44812",
-      "name": "Establishment With Industry = Women's Clothing Stores (NAICS/44812)",
-      "statVars": [
-        {
-          "name": "Count of Establishment: Women's Clothing Stores (NAICS/44812)",
-          "dcid": "dc/485v7jl4qlhxb"
-        },
-        {
-          "name": "Count of Establishment: Women's Clothing Stores (NAICS/44812)",
-          "dcid": "dc/5vgmmsgdmsvt3"
-        },
-        {
-          "name": "Count of Establishment: Women's Clothing Stores (NAICS/44812)",
-          "dcid": "dc/dbr7jyndp0151"
-        },
-        {
-          "name": "Wages Annual of Establishment: Women's Clothing Stores (NAICS/44812)",
-          "dcid": "dc/g5nryvhz7vl44"
-        },
-        {
-          "name": "Count of Establishment: Privately Owned, Women's Clothing Stores (NAICS/44812)",
-          "dcid": "dc/tnyv8edhmflg"
-        },
-        {
-          "name": "Sales of Establishment: Women's Clothing Stores (NAICS/44812), With Payroll",
-          "dcid": "dc/tb8gcxernde19"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Establishment_Industry-NAICS/316992",
-      "name": "Establishment With Industry = Women's Handbag And Purse Manufacturing (NAICS/316992)",
-      "statVars": [
-        {
-          "name": "Count of Establishment: Women's Handbag And Purse Manufacturing (NAICS/316992)",
-          "dcid": "dc/6vd8mtqfmnlbb"
-        },
-        {
-          "name": "Count of Establishment: Women's Handbag And Purse Manufacturing (NAICS/316992)",
-          "dcid": "dc/9mmxbem7c7xrh"
-        },
-        {
-          "name": "Count of Establishment: Women's Handbag And Purse Manufacturing (NAICS/316992)",
-          "dcid": "dc/f3qd32v7d0w9"
-        },
-        {
-          "name": "Wages Annual of Establishment: Women's Handbag And Purse Manufacturing (NAICS/316992)",
-          "dcid": "dc/3nsjpbp090gr9"
-        },
-        {
-          "name": "Count of Establishment: Privately Owned, Women's Handbag And Purse Manufacturing (NAICS/316992)",
-          "dcid": "dc/9dlkhye638d1d"
-        },
-        {
-          "name": "Shipments or Receipts of Establishment: Women's Handbag And Purse Manufacturing (NAICS/316992), With Payroll",
-          "dcid": "dc/v8p0zbh29kv98"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Establishment_Industry-NAICS/316214",
-      "name": "Establishment With Industry = Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
-      "statVars": [
-        {
-          "name": "Count of Establishment: Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
-          "dcid": "dc/g3q1g5ypdk2k"
-        },
-        {
-          "name": "Count of Establishment: Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
-          "dcid": "dc/gvbwk7c7hb5mg"
-        },
-        {
-          "name": "Count of Establishment: Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
-          "dcid": "dc/r47bzjgblx7z4"
-        },
-        {
-          "name": "Wages Annual of Establishment: Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
-          "dcid": "dc/ye2wj5ggx5n34"
-        },
-        {
-          "name": "Count of Establishment: Privately Owned, Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
-          "dcid": "dc/kd5z73cqycm6c"
-        },
-        {
-          "name": "Shipments or Receipts of Establishment: Women's Nonathletic Footwear Manufacturing (NAICS/316214), With Payroll",
-          "dcid": "dc/4xrh95yzw99w3"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Establishment_Industry-NAICS/315212",
-      "name": "Establishment With Industry = Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
-      "statVars": [
-        {
-          "name": "Count of Establishment: Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
-          "dcid": "dc/0bkbm4x0nvceb"
-        },
-        {
-          "name": "Count of Establishment: Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
-          "dcid": "dc/fg95lgey78gq1"
-        },
-        {
-          "name": "Count of Establishment: Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
-          "dcid": "dc/p5sgbrbdkefl2"
-        },
-        {
-          "name": "Wages Annual of Establishment: Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
-          "dcid": "dc/fgn46kw0vn108"
-        },
-        {
-          "name": "Count of Establishment: Privately Owned, Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
-          "dcid": "dc/4d2pt897sqb09"
-        },
-        {
-          "name": "Shipments or Receipts of Establishment: Women's, Girls', Infants' Apparel Contractors (NAICS/315212), With Payroll",
-          "dcid": "dc/mcjnbmc4tk28d"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Establishment_Industry-NAICS/31524",
-      "name": "Establishment With Industry = Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
-      "statVars": [
-        {
-          "name": "Count of Establishment: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
-          "dcid": "dc/1164zg41pdp4f"
-        },
-        {
-          "name": "Count of Establishment: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
-          "dcid": "dc/ks0pf8d9hj8wg"
-        },
-        {
-          "name": "Count of Establishment: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
-          "dcid": "dc/yhdq1xdy3x0s9"
-        },
-        {
-          "name": "Wages Annual of Establishment: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
-          "dcid": "dc/4pm87j02ql96c"
-        },
-        {
-          "name": "Count of Establishment: Privately Owned, Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
-          "dcid": "dc/e351bke5y8c75"
-        },
-        {
-          "name": "Shipments or Receipts of Establishment: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524), With Payroll",
-          "dcid": "dc/ne63ywxmvk1lg"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/WHObmi30wm_whowealthquintile",
-      "name": "Obesity Prevalence in Non-pregnant Women Aged 15-49 Years, BMI \u003e= 30 by Wealthquintile",
-      "statVars": [
-        {
-          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Q1 (Poorest)]",
-          "dcid": "who/bmi30wm.WEALTHQUINTILE--WQ1"
-        },
-        {
-          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Q2]",
-          "dcid": "who/bmi30wm.WEALTHQUINTILE--WQ2"
-        },
-        {
-          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Q3]",
-          "dcid": "who/bmi30wm.WEALTHQUINTILE--WQ3"
-        },
-        {
-          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Q4]",
-          "dcid": "who/bmi30wm.WEALTHQUINTILE--WQ4"
-        },
-        {
-          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Q5 (Richest)]",
-          "dcid": "who/bmi30wm.WEALTHQUINTILE--WQ5"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/WHOitnwm_whowealthquintile",
-      "name": "Pregnant Women Sleeping Under Insecticide-treated Nets by Wealthquintile",
-      "statVars": [
-        {
-          "name": "Pregnant women sleeping under insecticide-treated nets [Q1 (Poorest)]",
-          "dcid": "who/itnwm.WEALTHQUINTILE--WQ1"
-        },
-        {
-          "name": "Pregnant women sleeping under insecticide-treated nets [Q2]",
-          "dcid": "who/itnwm.WEALTHQUINTILE--WQ2"
-        },
-        {
-          "name": "Pregnant women sleeping under insecticide-treated nets [Q3]",
-          "dcid": "who/itnwm.WEALTHQUINTILE--WQ3"
-        },
-        {
-          "name": "Pregnant women sleeping under insecticide-treated nets [Q4]",
-          "dcid": "who/itnwm.WEALTHQUINTILE--WQ4"
-        },
-        {
-          "name": "Pregnant women sleeping under insecticide-treated nets [Q5 (Richest)]",
-          "dcid": "who/itnwm.WEALTHQUINTILE--WQ5"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDG_5.5.2",
-      "name": "5.5.2: Proportion of women in managerial positions",
-      "statVars": [
-        {
-          "name": "Proportion of women in managerial positions - 13th ICLS [Female]",
-          "dcid": "sdg/IC_GEN_MGTL.SEX--F"
-        },
-        {
-          "name": "Proportion of women in managerial positions - 19th ICLS [Female]",
-          "dcid": "sdg/IC_GEN_MGTL_19ICLS.SEX--F"
-        },
-        {
-          "name": "Proportion of women in senior and middle management positions - 13th ICLS [Female]",
-          "dcid": "sdg/IC_GEN_MGTN.SEX--F"
-        },
-        {
-          "name": "Proportion of women in senior and middle management positions - 19th ICLS [Female]",
-          "dcid": "sdg/IC_GEN_MGTN_19ICLS.SEX--F"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDG_5.6.1",
-      "name": "5.6.1: Proportion of women aged 15-49 years who make their own informed decisions regarding sexual relations, contraceptive use and reproductive health care",
-      "statVars": [
-        {
-          "name": "Proportion of women who make their own informed decisions regarding contraceptive use [15 to 49 years old, Female]",
-          "dcid": "sdg/SH_FPL_INFMCU.AGE--Y15T49__SEX--F"
-        },
-        {
-          "name": "Proportion of women who make their own informed decisions regarding reproductive health care [15 to 49 years old, Female]",
-          "dcid": "sdg/SH_FPL_INFMRH.AGE--Y15T49__SEX--F"
-        },
-        {
-          "name": "Proportion of women who make their own informed decisions regarding sexual relations [15 to 49 years old, Female]",
-          "dcid": "sdg/SH_FPL_INFMSR.AGE--Y15T49__SEX--F"
-        },
-        {
-          "name": "Proportion of women who make their own informed decisions regarding sexual relations, contraceptive use and reproductive health care [15 to 49 years old, Female]",
-          "dcid": "sdg/SH_FPL_INFM.AGE--Y15T49__SEX--F"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Establishment_Industry-NAICS/31523",
-      "name": "Establishment With Industry = Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
-      "statVars": [
-        {
-          "name": "Count of Establishment: Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
-          "dcid": "dc/bcblr250e80p8"
-        },
-        {
-          "name": "Count of Establishment: Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
-          "dcid": "dc/n1z9evkm4lje3"
-        },
-        {
-          "name": "Count of Establishment: Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
-          "dcid": "dc/zqqr1106h7gwg"
-        },
-        {
-          "name": "Wages Annual of Establishment: Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
-          "dcid": "dc/1gb40x8252jj7"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/WHONCDCXCASCREENEDWITHINTIMEPERIOD_whotimeperiod",
-      "name": "Prevalence of Cervical Cancer Screening Among Women Aged 30-49 Years by Timeperiod",
-      "statVars": [
-        {
-          "name": "Prevalence of cervical cancer screening among women aged 30-49 years [30-49 years of age, Female, in lifetime]",
-          "dcid": "who/NCD_CXCA_SCREENED_WITHIN_TIMEPERIOD.AGE--Y30T49__SEX--F__TIMEPERIOD--TIMEPERIOD_EVER_LIFETIME"
-        },
-        {
-          "name": "Prevalence of cervical cancer screening among women aged 30-49 years [30-49 years of age, Female, in the last five years]",
-          "dcid": "who/NCD_CXCA_SCREENED_WITHIN_TIMEPERIOD.AGE--Y30T49__SEX--F__TIMEPERIOD--TIMEPERIOD_LAST05YEARS"
-        },
-        {
-          "name": "Prevalence of cervical cancer screening among women aged 30-49 years [30-49 years of age, Female, in the last three years]",
-          "dcid": "who/NCD_CXCA_SCREENED_WITHIN_TIMEPERIOD.AGE--Y30T49__SEX--F__TIMEPERIOD--TIMEPERIOD_LAST03YEARS"
-        },
-        {
-          "name": "Prevalence of cervical cancer screening among women aged 30-49 years [30-49 years of age, Female, in the last year]",
-          "dcid": "who/NCD_CXCA_SCREENED_WITHIN_TIMEPERIOD.AGE--Y30T49__SEX--F__TIMEPERIOD--TIMEPERIOD_LAST01YEAR"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EstablishmentOwnership-PrivatelyOwned_Industry-NAICS/315239",
-      "name": "Person With Establishment Ownership = Privately Owned, Industry = Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
-      "statVars": [
-        {
-          "name": "Population of Person: Privately Owned, Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
-          "dcid": "dc/9elh82n25nmb7"
-        },
-        {
-          "name": "Wages Annual of Person: Privately Owned, Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
-          "dcid": "dc/tvqkwnk4254zf"
-        },
-        {
-          "name": "Wages Total of Person: Privately Owned, Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
-          "dcid": "dc/f2qpfh3gwcgnf"
-        },
-        {
-          "name": "Wages Weekly of Person: Privately Owned, Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
-          "dcid": "dc/nr09plxp554qh"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EstablishmentOwnership-PrivatelyOwned_Industry-NAICS/42433",
-      "name": "Person With Establishment Ownership = Privately Owned, Industry = Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-      "statVars": [
-        {
-          "name": "Population of Person: Privately Owned, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/h75t4rrk3t4mg"
-        },
-        {
-          "name": "Wages Annual of Person: Privately Owned, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/k6j18rtg73sxd"
-        },
-        {
-          "name": "Wages Total of Person: Privately Owned, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/z1p7zw55m68t"
-        },
-        {
-          "name": "Wages Weekly of Person: Privately Owned, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/c2zyx48xp6cbd"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EstablishmentOwnership-PrivatelyOwned_Industry-NAICS/315232",
-      "name": "Person With Establishment Ownership = Privately Owned, Industry = Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
-      "statVars": [
-        {
-          "name": "Population of Person: Privately Owned, Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
-          "dcid": "dc/n4p71y8rebwp"
-        },
-        {
-          "name": "Wages Annual of Person: Privately Owned, Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
-          "dcid": "dc/wjp35e94ypxz9"
-        },
-        {
-          "name": "Wages Total of Person: Privately Owned, Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
-          "dcid": "dc/jb5bnggeqdrlf"
-        },
-        {
-          "name": "Wages Weekly of Person: Privately Owned, Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
-          "dcid": "dc/4nk7qvpemz8zb"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EstablishmentOwnership-PrivatelyOwned_Industry-NAICS/31523",
-      "name": "Person With Establishment Ownership = Privately Owned, Industry = Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
-      "statVars": [
-        {
-          "name": "Population of Person: Privately Owned, Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
-          "dcid": "dc/pckp87v7dw4pf"
-        },
-        {
-          "name": "Wages Annual of Person: Privately Owned, Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
-          "dcid": "dc/1ee37dmy0vy5"
-        },
-        {
-          "name": "Wages Total of Person: Privately Owned, Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
-          "dcid": "dc/mn5gh6ttbp519"
-        },
-        {
-          "name": "Wages Weekly of Person: Privately Owned, Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
-          "dcid": "dc/9f8rjnn2rer12"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EstablishmentOwnership-PrivatelyOwned_Industry-NAICS/315233",
-      "name": "Person With Establishment Ownership = Privately Owned, Industry = Women's And Girls' Dress Manufacturing (NAICS/315233)",
-      "statVars": [
-        {
-          "name": "Population of Person: Privately Owned, Women's And Girls' Dress Manufacturing (NAICS/315233)",
-          "dcid": "dc/zpee94yz52r64"
-        },
-        {
-          "name": "Wages Annual of Person: Privately Owned, Women's And Girls' Dress Manufacturing (NAICS/315233)",
-          "dcid": "dc/xr2y5qk8wpd38"
-        },
-        {
-          "name": "Wages Total of Person: Privately Owned, Women's And Girls' Dress Manufacturing (NAICS/315233)",
-          "dcid": "dc/2bj50cnxjb0kb"
-        },
-        {
-          "name": "Wages Weekly of Person: Privately Owned, Women's And Girls' Dress Manufacturing (NAICS/315233)",
-          "dcid": "dc/m4wh4d5mcsrh8"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EstablishmentOwnership-PrivatelyOwned_Industry-NAICS/315231",
-      "name": "Person With Establishment Ownership = Privately Owned, Industry = Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
-      "statVars": [
-        {
-          "name": "Population of Person: Privately Owned, Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
-          "dcid": "dc/qmb63307gbw37"
-        },
-        {
-          "name": "Wages Annual of Person: Privately Owned, Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
-          "dcid": "dc/peqnzkzhwz5y2"
-        },
-        {
-          "name": "Wages Total of Person: Privately Owned, Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
-          "dcid": "dc/5ekvbnw1t682d"
-        },
-        {
-          "name": "Wages Weekly of Person: Privately Owned, Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
-          "dcid": "dc/s2gk50gstpw4d"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EstablishmentOwnership-PrivatelyOwned_Industry-NAICS/315234",
-      "name": "Person With Establishment Ownership = Privately Owned, Industry = Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
-      "statVars": [
-        {
-          "name": "Population of Person: Privately Owned, Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
-          "dcid": "dc/tf476gvzsqyd6"
-        },
-        {
-          "name": "Wages Annual of Person: Privately Owned, Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
-          "dcid": "dc/g7s09106r7ps8"
-        },
-        {
-          "name": "Wages Total of Person: Privately Owned, Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
-          "dcid": "dc/xr57j4xy7cdv4"
-        },
-        {
-          "name": "Wages Weekly of Person: Privately Owned, Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
-          "dcid": "dc/8l3n93g19qzl7"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EstablishmentOwnership-PrivatelyOwned_Industry-NAICS/44812",
-      "name": "Person With Establishment Ownership = Privately Owned, Industry = Women's Clothing Stores (NAICS/44812)",
-      "statVars": [
-        {
-          "name": "Population of Person: Privately Owned, Women's Clothing Stores (NAICS/44812)",
-          "dcid": "dc/c5lylz73bpr4c"
-        },
-        {
-          "name": "Wages Annual of Person: Privately Owned, Women's Clothing Stores (NAICS/44812)",
-          "dcid": "dc/psnjt849m4dn9"
-        },
-        {
-          "name": "Wages Total of Person: Privately Owned, Women's Clothing Stores (NAICS/44812)",
-          "dcid": "dc/dl1fp4tf3v7j8"
-        },
-        {
-          "name": "Wages Weekly of Person: Privately Owned, Women's Clothing Stores (NAICS/44812)",
-          "dcid": "dc/9d4d350es8ke1"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EstablishmentOwnership-PrivatelyOwned_Industry-NAICS/316992",
-      "name": "Person With Establishment Ownership = Privately Owned, Industry = Women's Handbag And Purse Manufacturing (NAICS/316992)",
-      "statVars": [
-        {
-          "name": "Population of Person: Privately Owned, Women's Handbag And Purse Manufacturing (NAICS/316992)",
-          "dcid": "dc/wqckdcxkcxcm3"
-        },
-        {
-          "name": "Wages Annual of Person: Privately Owned, Women's Handbag And Purse Manufacturing (NAICS/316992)",
-          "dcid": "dc/rcckd4sk2e4jc"
-        },
-        {
-          "name": "Wages Total of Person: Privately Owned, Women's Handbag And Purse Manufacturing (NAICS/316992)",
-          "dcid": "dc/1lmnylmq06r33"
-        },
-        {
-          "name": "Wages Weekly of Person: Privately Owned, Women's Handbag And Purse Manufacturing (NAICS/316992)",
-          "dcid": "dc/955z6r2hq2tx1"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EstablishmentOwnership-PrivatelyOwned_Industry-NAICS/316214",
-      "name": "Person With Establishment Ownership = Privately Owned, Industry = Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
-      "statVars": [
-        {
-          "name": "Population of Person: Privately Owned, Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
-          "dcid": "dc/vhzmdy7k7gpl5"
-        },
-        {
-          "name": "Wages Annual of Person: Privately Owned, Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
-          "dcid": "dc/58x2fef87hfgd"
-        },
-        {
-          "name": "Wages Total of Person: Privately Owned, Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
-          "dcid": "dc/hbcd5z1chp8xh"
-        },
-        {
-          "name": "Wages Weekly of Person: Privately Owned, Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
-          "dcid": "dc/z2r20tkkmm42f"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EstablishmentOwnership-PrivatelyOwned_Industry-NAICS/315212",
-      "name": "Person With Establishment Ownership = Privately Owned, Industry = Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
-      "statVars": [
-        {
-          "name": "Population of Person: Privately Owned, Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
-          "dcid": "dc/egsf369778ysc"
-        },
-        {
-          "name": "Wages Annual of Person: Privately Owned, Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
-          "dcid": "dc/lvjcrczqrvhb9"
-        },
-        {
-          "name": "Wages Total of Person: Privately Owned, Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
-          "dcid": "dc/eer0rzg5kwppg"
-        },
-        {
-          "name": "Wages Weekly of Person: Privately Owned, Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
-          "dcid": "dc/k4jz9sb1c99lc"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EstablishmentOwnership-PrivatelyOwned_Industry-NAICS/31524",
-      "name": "Person With Establishment Ownership = Privately Owned, Industry = Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
-      "statVars": [
-        {
-          "name": "Population of Person: Privately Owned, Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
-          "dcid": "dc/s6lcm4ek746x8"
-        },
-        {
-          "name": "Wages Annual of Person: Privately Owned, Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
-          "dcid": "dc/c5mv6lhvbwhf4"
-        },
-        {
-          "name": "Wages Total of Person: Privately Owned, Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
-          "dcid": "dc/z9t75hqng6gw2"
-        },
-        {
-          "name": "Wages Weekly of Person: Privately Owned, Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
-          "dcid": "dc/mr45qvflq91hh"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDG_2.2.3",
-      "name": "2.2.3: Prevalence of anaemia in women aged 15 to 49 years, by pregnancy status (percentage)",
-      "statVars": [
-        {
-          "name": "Proportion of women aged 15-49 years with anaemia [15 to 49 years old, Female]",
-          "dcid": "sdg/SH_STA_ANEM.AGE--Y15T49__SEX--F"
-        },
-        {
-          "name": "Proportion of women aged 15-49 years with anaemia, non-pregnant [15 to 49 years old, Female]",
-          "dcid": "sdg/SH_STA_ANEM_NPRG.AGE--Y15T49__SEX--F"
-        },
-        {
-          "name": "Proportion of women aged 15-49 years with anaemia, pregnant [15 to 49 years old, Female]",
-          "dcid": "sdg/SH_STA_ANEM_PREG.AGE--Y15T49__SEX--F"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDG_5.5.1",
-      "name": "5.5.1: Proportion of seats held by women in (a) national parliaments and (b) local governments",
-      "statVars": [
-        {
-          "name": "Number of seats held by women in national parliaments [Female]",
-          "dcid": "sdg/SG_GEN_PARLN.SEX--F"
-        },
-        {
-          "name": "Proportion of elected seats held by women in deliberative bodies of local government [Female]",
-          "dcid": "sdg/SG_GEN_LOCGELS.SEX--F"
-        },
-        {
-          "name": "Proportion of seats held by women in national parliaments [Female]",
-          "dcid": "sdg/SG_GEN_PARL.SEX--F"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/WHObmi30wm_whoeducationlevel",
-      "name": "Obesity Prevalence in Non-pregnant Women Aged 15-49 Years, BMI \u003e= 30 by Educationlevel",
-      "statVars": [
-        {
-          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Primary]",
-          "dcid": "who/bmi30wm.EDUCATIONLEVEL--PRLM"
-        },
-        {
-          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Secondary or higher]",
-          "dcid": "who/bmi30wm.EDUCATIONLEVEL--SHLM"
-        },
-        {
-          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [nan]",
-          "dcid": "who/bmi30wm.EDUCATIONLEVEL--NHLM"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/WHOitnwm_whoeducationlevel",
-      "name": "Pregnant Women Sleeping Under Insecticide-treated Nets by Educationlevel",
-      "statVars": [
-        {
-          "name": "Pregnant women sleeping under insecticide-treated nets [Primary]",
-          "dcid": "who/itnwm.EDUCATIONLEVEL--PRLM"
-        },
-        {
-          "name": "Pregnant women sleeping under insecticide-treated nets [Secondary or higher]",
-          "dcid": "who/itnwm.EDUCATIONLEVEL--SHLM"
-        },
-        {
-          "name": "Pregnant women sleeping under insecticide-treated nets [nan]",
-          "dcid": "who/itnwm.EDUCATIONLEVEL--NHLM"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDG_5.3.1",
-      "name": "5.3.1: Proportion of women aged 20-24 years who were married or in a union before age 15 and before age 18",
-      "statVars": [
-        {
-          "name": "Proportion of women aged 20-24 years who were married or in a union before age 15 [20 to 24 years old, Female]",
-          "dcid": "sdg/SP_DYN_MRBF15.AGE--Y20T24__SEX--F"
-        },
-        {
-          "name": "Proportion of women aged 20-24 years who were married or in a union before age 18 [20 to 24 years old, Female]",
-          "dcid": "sdg/SP_DYN_MRBF18.AGE--Y20T24__SEX--F"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/WHObmi30wm_age",
-      "name": "Obesity Prevalence in Non-pregnant Women Aged 15-49 Years, BMI \u003e= 30 by Age",
-      "statVars": [
-        {
-          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [15-19  years]",
-          "dcid": "who/bmi30wm.AGE--Y15T19"
-        },
-        {
-          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [20-49 years]",
-          "dcid": "who/bmi30wm.AGE--Y20T49"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/WHObmi30wm_whoresidenceareatype",
-      "name": "Obesity Prevalence in Non-pregnant Women Aged 15-49 Years, BMI \u003e= 30 by Residenceareatype",
-      "statVars": [
-        {
-          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Rural]",
-          "dcid": "who/bmi30wm.RESIDENCEAREATYPE--RUR"
-        },
-        {
-          "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Urban]",
-          "dcid": "who/bmi30wm.RESIDENCEAREATYPE--URB"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Industry-NAICS/315239",
-      "name": "Person With Industry = Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
-      "statVars": [
-        {
-          "name": "Population of Person: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
-          "dcid": "dc/pl6ymqll4n3cc"
-        },
-        {
-          "name": "Wages Total of Person: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
-          "dcid": "dc/vbrzm0zm6mtk6"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Industry-NAICS/42433",
-      "name": "Person With Industry = Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-      "statVars": [
-        {
-          "name": "Population of Person: Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/jr1e4mkzlfrqg"
-        },
-        {
-          "name": "Wages Total of Person: Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/egt3q3g4v0dfh"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Industry-NAICS/315232",
-      "name": "Person With Industry = Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
-      "statVars": [
-        {
-          "name": "Population of Person: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
-          "dcid": "dc/9hm76jjfb0pk5"
-        },
-        {
-          "name": "Wages Total of Person: Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)",
-          "dcid": "dc/51gk7jlqjc8k8"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Industry-NAICS/31523",
-      "name": "Person With Industry = Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
-      "statVars": [
-        {
-          "name": "Population of Person: Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
-          "dcid": "dc/22db9v95fd0x7"
-        },
-        {
-          "name": "Wages Total of Person: Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
-          "dcid": "dc/v0jqcxks4r7t6"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Industry-NAICS/315233",
-      "name": "Person With Industry = Women's And Girls' Dress Manufacturing (NAICS/315233)",
-      "statVars": [
-        {
-          "name": "Population of Person: Women's And Girls' Dress Manufacturing (NAICS/315233)",
-          "dcid": "dc/ejgyz9vtgkk3b"
-        },
-        {
-          "name": "Wages Total of Person: Women's And Girls' Dress Manufacturing (NAICS/315233)",
-          "dcid": "dc/jq9xshh3pd0k5"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Industry-NAICS/315231",
-      "name": "Person With Industry = Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
-      "statVars": [
-        {
-          "name": "Population of Person: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
-          "dcid": "dc/1xqsrzt0ql39g"
-        },
-        {
-          "name": "Wages Total of Person: Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)",
-          "dcid": "dc/53whf085z8gqd"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Industry-NAICS/315234",
-      "name": "Person With Industry = Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
-      "statVars": [
-        {
-          "name": "Population of Person: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
-          "dcid": "dc/1wg8qt198s488"
-        },
-        {
-          "name": "Wages Total of Person: Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)",
-          "dcid": "dc/khevqfe4zv419"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Industry-NAICS/44812",
-      "name": "Person With Industry = Women's Clothing Stores (NAICS/44812)",
-      "statVars": [
-        {
-          "name": "Population of Person: Women's Clothing Stores (NAICS/44812)",
-          "dcid": "dc/c8pldh07jqceh"
-        },
-        {
-          "name": "Wages Total of Person: Women's Clothing Stores (NAICS/44812)",
-          "dcid": "dc/7v4btw2yxx2cb"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Industry-NAICS/316992",
-      "name": "Person With Industry = Women's Handbag And Purse Manufacturing (NAICS/316992)",
-      "statVars": [
-        {
-          "name": "Population of Person: Women's Handbag And Purse Manufacturing (NAICS/316992)",
-          "dcid": "dc/cxfghfz9v32x"
-        },
-        {
-          "name": "Wages Total of Person: Women's Handbag And Purse Manufacturing (NAICS/316992)",
-          "dcid": "dc/lyfdyxj52q1l9"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Industry-NAICS/316214",
-      "name": "Person With Industry = Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
-      "statVars": [
-        {
-          "name": "Population of Person: Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
-          "dcid": "dc/wgdf3d4qlx0th"
-        },
-        {
-          "name": "Wages Total of Person: Women's Nonathletic Footwear Manufacturing (NAICS/316214)",
-          "dcid": "dc/h0f7fkhdd2542"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Industry-NAICS/315212",
-      "name": "Person With Industry = Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
-      "statVars": [
-        {
-          "name": "Population of Person: Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
-          "dcid": "dc/2f3nx20fbkjs2"
-        },
-        {
-          "name": "Wages Total of Person: Women's, Girls', Infants' Apparel Contractors (NAICS/315212)",
-          "dcid": "dc/qr9nezshb0gm5"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Industry-NAICS/31524",
-      "name": "Person With Industry = Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
-      "statVars": [
-        {
-          "name": "Population of Person: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
-          "dcid": "dc/jegsqlvc25hk3"
-        },
-        {
-          "name": "Wages Total of Person: Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)",
-          "dcid": "dc/flfk1szeerbd7"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/WHOitnwm_age",
-      "name": "Pregnant Women Sleeping Under Insecticide-treated Nets by Age",
-      "statVars": [
-        {
-          "name": "Pregnant women sleeping under insecticide-treated nets [15-19  years]",
-          "dcid": "who/itnwm.AGE--Y15T19"
-        },
-        {
-          "name": "Pregnant women sleeping under insecticide-treated nets [20-49 years]",
-          "dcid": "who/itnwm.AGE--Y20T49"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/WHOitnwm_whoresidenceareatype",
-      "name": "Pregnant Women Sleeping Under Insecticide-treated Nets by Residenceareatype",
-      "statVars": [
-        {
-          "name": "Pregnant women sleeping under insecticide-treated nets [Rural]",
-          "dcid": "who/itnwm.RESIDENCEAREATYPE--RUR"
-        },
-        {
-          "name": "Pregnant women sleeping under insecticide-treated nets [Urban]",
-          "dcid": "who/itnwm.RESIDENCEAREATYPE--URB"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDGVCVAWMARR_age",
-      "name": "Proportion of Ever-partnered Women And Girls Subjected To Physical And/or Sexual Violence by A Current or Former Intimate Partner in The Previous 12 Months, by Age by Age",
-      "statVars": [
-        {
-          "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months, by age [15 to 49 years old, Female]",
-          "dcid": "sdg/VC_VAW_MARR.AGE--Y15T49__SEX--F"
-        },
-        {
-          "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months, by age [15 years old and over, Female]",
-          "dcid": "sdg/VC_VAW_MARR.AGE--Y_GE15__SEX--F"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDGSHSTAFGMS_age",
-      "name": "Proportion of Girls And Women Aged 15-49 Years Who Have Undergone Female Genital Mutilation, by Age by Age",
-      "statVars": [
-        {
-          "name": "Proportion of girls and women aged 15-49 years who have undergone female genital mutilation, by age [15 to 19 years old, Female]",
-          "dcid": "sdg/SH_STA_FGMS.AGE--Y15T19__SEX--F"
-        },
-        {
-          "name": "Proportion of girls and women aged 15-49 years who have undergone female genital mutilation, by age [15 to 49 years old, Female]",
-          "dcid": "sdg/SH_STA_FGMS.AGE--Y15T49__SEX--F"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/WHO/PregnantWomen_Age-Year15To49",
-      "name": "WHO/Pregnant Women With Age = 15 - 49 Years",
-      "statVars": [
-        {
-          "name": "Count of WHO/Pregnant Women: 15 - 49 Years",
-          "dcid": "Count_WHO/PregnantWomen_15To49Year"
-        },
-        {
-          "name": "Pregnant women aged 15-49 yrs who are anaemic (11.0g/dl) (%)",
-          "dcid": "Count_WHO/PregnantWomen_15To49Year_ConditionAnaemia_AsAFractionOf_Count_WHO/PregnantWomen_15To49Year"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Establishment_BusinessOperationType-ManufacturerSalesBranchesAndOffices_Industry-NAICS/42433",
-      "name": "Establishment With Business Operation Type = Manufacturer Sales Branches And Offices, Industry = Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-      "statVars": [
-        {
-          "name": "Count of Establishment: Manufacturer Sales Branches And Offices, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/k3w2p68klhfcc"
-        },
-        {
-          "name": "Sales of Establishment: Manufacturer Sales Branches And Offices, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/79vrq3849kfeg"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Establishment_BusinessOperationType-MerchantWholesalersExcludingManufacturerSalesBranchesAndOffices_Industry-NAICS/42433",
-      "name": "Establishment With Business Operation Type = Merchant Wholesalers Excluding Manufacturer Sales Branches And Offices, Industry = Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-      "statVars": [
-        {
-          "name": "Count of Establishment: Merchant Wholesalers Excluding Manufacturer Sales Branches And Offices, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/ww85jq324j3gc"
-        },
-        {
-          "name": "Sales of Establishment: Merchant Wholesalers Excluding Manufacturer Sales Branches And Offices, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/ggp40c14cfw7b"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Establishment_BusinessOperationType-MerchantWholesalers_Industry-NAICS/42433",
-      "name": "Establishment With Business Operation Type = Merchant Wholesalers, Industry = Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-      "statVars": [
-        {
-          "name": "Count of Establishment: Merchant Wholesalers, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/jfts1vjy25k9g"
-        },
-        {
-          "name": "Sales of Establishment: Merchant Wholesalers, Women's And Children's Clothing Merch. Whls. (NAICS/42433)",
-          "dcid": "dc/867ehyppl4rf1"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDG_3.7.1",
-      "name": "3.7.1: Proportion of women of reproductive age (aged 15-49 years) who have their need for family planning satisfied with modern methods",
-      "statVars": [
-        {
-          "name": "Proportion of women of reproductive age who have their need for family planning satisfied with modern methods [15 to 49 years old, Female]",
-          "dcid": "sdg/SH_FPL_MTMM.AGE--Y15T49__SEX--F"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDG_5.a.1",
-      "name": "5.a.1: (a) Proportion of total agricultural population with ownership or secure rights over agricultural land, by sex; and (b) share of women among owners or rights-bearers of agricultural land, by type of tenure",
-      "statVars": [
-        {
-          "name": "Share of women among owners or rights-bearers of agricultural land, by type of tenure",
-          "dcid": "sdg/SP_GNP_WNOWNS"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDG_5.a.2",
-      "name": "5.a.2: Proportion of countries where the legal framework (including customary law) guarantees women’s equal rights to land ownership and/or control",
-      "statVars": [
-        {
-          "name": "Degree to which the legal framework guarantees women's equal rights to land ownership and/or control",
-          "dcid": "sdg/SG_LGL_LNDFEMOD"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDG_5.c.1",
-      "name": "5.c.1: Proportion of countries with systems to track and make public allocations for gender equality and women’s empowerment",
-      "statVars": [
-        {
-          "name": "Proportion of countries with systems to track and make public allocations for gender equality and women's empowerment",
-          "dcid": "sdg/SG_GEN_EQPWN"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Establishment_EstablishmentOwnership-PrivatelyOwned_Industry-NAICS/31523",
-      "name": "Establishment With Establishment Ownership = Privately Owned, Industry = Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
-      "statVars": [
-        {
-          "name": "Count of Establishment: Privately Owned, Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)",
-          "dcid": "dc/fxm5kk6f06meh"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Establishment_Industry-NAICS/31523_PayrollStatus-WithPayroll",
-      "name": "Establishment With Industry = Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523), Payroll Status = With Payroll",
-      "statVars": [
-        {
-          "name": "Shipments or Receipts of Establishment: Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523), With Payroll",
-          "dcid": "dc/np3hcrk1njx1b"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDG_1.2.2",
-      "name": "1.2.2: Proportion of men, women and children of all ages living in poverty in all its dimensions according to national definitions"
-    },
-    {
-      "dcid": "dc/g/SDG_1.2",
-      "name": "1.2: By 2030, reduce at least by half the proportion of men, women and children of all ages living in poverty in all its dimensions according to national definitions"
-    },
-    {
-      "dcid": "dc/g/SDG_1.3.1",
-      "name": "1.3.1: Proportion of population covered by social protection floors/systems, by sex, distinguishing children, unemployed persons, older persons, persons with disabilities, pregnant women, newborns, work-injury victims and the poor and the vulnerable"
-    },
-    {
-      "dcid": "dc/g/SDG_1.4",
-      "name": "1.4: By 2030, ensure that all men and women, in particular the poor and the vulnerable, have equal rights to economic resources, as well as access to basic services, ownership and control over land and other forms of property, inheritance, natural resources, appropriate new technology and financial services, including microfinance"
-    },
-    {
-      "dcid": "dc/g/SDG_11.2",
-      "name": "11.2: By 2030, provide access to safe, affordable, accessible and sustainable transport systems for all, improving road safety, notably by expanding public transport, with special attention to the needs of those in vulnerable situations, women, children, persons with disabilities and older persons"
-    },
-    {
-      "dcid": "dc/g/SDG_11.7",
-      "name": "11.7: By 2030, provide universal access to safe, inclusive and accessible, green and public spaces, in particular for women and children, older persons and persons with disabilities"
-    },
-    {
-      "dcid": "dc/g/SDG_13.b",
-      "name": "13.b: Promote mechanisms for raising capacity for effective climate change-related planning and management in least developed countries and small island developing States, including focusing on women, youth and local and marginalized communities"
-    },
-    {
-      "dcid": "dc/g/SDG_16.2.3",
-      "name": "16.2.3: Proportion of young women and men aged 18-29 years who experienced sexual violence by age 18"
-    },
-    {
-      "dcid": "dc/g/SDG_2.2",
-      "name": "2.2: By 2030, end all forms of malnutrition, including achieving, by 2025, the internationally agreed targets on stunting and wasting in children under 5 years of age, and address the nutritional needs of adolescent girls, pregnant and lactating women and older persons"
-    },
-    {
-      "dcid": "dc/g/SDG_2.3",
-      "name": "2.3: By 2030, double the agricultural productivity and incomes of small-scale food producers, in particular women, indigenous peoples, family farmers, pastoralists and fishers, including through secure and equal access to land, other productive resources and inputs, knowledge, financial services, markets and opportunities for value addition and non-farm employment"
-    },
-    {
-      "dcid": "dc/g/SDG_3.7.2",
-      "name": "3.7.2: Adolescent birth rate (aged 10-14 years; aged 15-19 years) per 1,000 women in that age group"
-    },
-    {
-      "dcid": "dc/g/SDG_4.3",
-      "name": "4.3: By 2030, ensure equal access for all women and men to affordable and quality technical, vocational and tertiary education, including university"
-    },
-    {
-      "dcid": "dc/g/SDG_4.6",
-      "name": "4.6: By 2030, ensure that all youth and a substantial proportion of adults, both men and women, achieve literacy and numeracy"
-    },
-    {
-      "dcid": "dc/g/SDG_5.1",
-      "name": "5.1: End all forms of discrimination against all women and girls everywhere"
-    },
-    {
-      "dcid": "dc/g/SDG_5.2.1",
-      "name": "5.2.1: Proportion of ever-partnered women and girls aged 15 years and older subjected to physical, sexual or psychological violence by a current or former intimate partner in the previous 12 months, by form of violence and by age"
-    },
-    {
-      "dcid": "dc/g/SDG_5.2.2",
-      "name": "5.2.2: Proportion of women and girls aged 15 years and older subjected to sexual violence by persons other than an intimate partner in the previous 12 months, by age and place of occurrence"
-    },
-    {
-      "dcid": "dc/g/SDG_5.2",
-      "name": "5.2: Eliminate all forms of violence against all women and girls in the public and private spheres, including trafficking and sexual and other types of exploitation"
-    },
-    {
-      "dcid": "dc/g/SDG_5.3.2",
-      "name": "5.3.2: Proportion of girls and women aged 15-49 years who have undergone female genital mutilation/cutting, by age"
-    },
-    {
-      "dcid": "dc/g/SDG_5.5",
-      "name": "5.5: Ensure women's full and effective participation and equal opportunities for leadership at all levels of decision-making in political, economic and public life"
-    },
-    {
-      "dcid": "dc/g/SDG_5.a",
-      "name": "5.a: Undertake reforms to give women equal rights to economic resources, as well as access to ownership and control over land and other forms of property, financial services, inheritance and natural resources, in accordance with national laws"
-    },
-    {
-      "dcid": "dc/g/SDG_5.b",
-      "name": "5.b: Enhance the use of enabling technology, in particular information and communications technology, to promote the empowerment of women"
-    },
-    {
-      "dcid": "dc/g/SDG_5.c",
-      "name": "5.c: Adopt and strengthen sound policies and enforceable legislation for the promotion of gender equality and the empowerment of all women and girls at all levels"
-    },
-    {
-      "dcid": "dc/g/SDG_6.2",
-      "name": "6.2: By 2030, achieve access to adequate and equitable sanitation and hygiene for all and end open defecation, paying special attention to the needs of women and girls and those in vulnerable situations"
-    },
-    {
-      "dcid": "dc/g/SDG_8.5",
-      "name": "8.5: By 2030, achieve full and productive employment and decent work for all women and men, including for young people and persons with disabilities, and equal pay for work of equal value"
-    },
-    {
-      "dcid": "dc/g/SDG_8.8",
-      "name": "8.8: Protect labour rights and promote safe and secure working environments for all workers, including migrant workers, in particular women migrants, and those in precarious employment"
-    },
-    {
-      "dcid": "dc/g/WHONCDCXCASCREENEDWITHINTIMEPERIOD_age-WHOAgeEnumY30T49",
-      "name": "Prevalence of Cervical Cancer Screening Among Women Aged 30-49 Years With Age = 30-49 Years of Age"
-    },
-    {
-      "dcid": "dc/g/WHONCDCXCASCREENEDWITHINTIMEPERIOD_whosex-WHOSexEnumF",
-      "name": "Prevalence of Cervical Cancer Screening Among Women Aged 30-49 Years With Sex = Female"
-    },
-    {
-      "dcid": "dc/g/WHONCDCXCASCREENEDWITHINTIMEPERIOD_age",
-      "name": "Prevalence of Cervical Cancer Screening Among Women Aged 30-49 Years by Age"
-    },
-    {
-      "dcid": "dc/g/WHONCDCXCASCREENEDWITHINTIMEPERIOD_whosex",
-      "name": "Prevalence of Cervical Cancer Screening Among Women Aged 30-49 Years by Sex"
-    },
-    {
-      "dcid": "dc/g/SDGVCVAWMARR_sdgsex-SDGSexEnumF",
-      "name": "Proportion of Ever-partnered Women And Girls Subjected To Physical And/or Sexual Violence by A Current or Former Intimate Partner in The Previous 12 Months, by Age With Sex = Female"
-    },
-    {
-      "dcid": "dc/g/SDGVCVAWMARR_sdgsex",
-      "name": "Proportion of Ever-partnered Women And Girls Subjected To Physical And/or Sexual Violence by A Current or Former Intimate Partner in The Previous 12 Months, by Age by Sex"
-    },
-    {
-      "dcid": "dc/g/SDGSHSTAFGMS_sdgsex-SDGSexEnumF",
-      "name": "Proportion of Girls And Women Aged 15-49 Years Who Have Undergone Female Genital Mutilation, by Age With Sex = Female"
-    },
-    {
-      "dcid": "dc/g/SDGSHSTAFGMS_sdgsex",
-      "name": "Proportion of Girls And Women Aged 15-49 Years Who Have Undergone Female Genital Mutilation, by Age by Sex"
-    },
-    {
-      "dcid": "dc/g/WHO/PregnantWomen_Age",
-      "name": "WHO/Pregnant Women by Age"
-    },
-    {
-      "dcid": "dc/g/Establishment_BusinessOperationType_Industry-NAICS/42433",
-      "name": "Establishment With Business Operation Type, Industry = Women's And Children's Clothing Merch. Whls. (NAICS/42433)"
-    },
-    {
-      "dcid": "dc/g/Establishment_EstablishmentOwnership_Industry-NAICS/31523",
-      "name": "Establishment With Establishment Ownership, Industry = Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)"
-    },
-    {
-      "dcid": "dc/g/Establishment_Industry-NAICS/31523_PayrollStatus",
-      "name": "Establishment With Industry = Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523), Payroll Status"
-    },
-    {
-      "dcid": "dc/g/Person_EstablishmentOwnership_Industry-NAICS/315239",
-      "name": "Person With Establishment Ownership, Industry = Other Women's And Girls' Outerwear Mfg (NAICS/315239)"
-    },
-    {
-      "dcid": "dc/g/Person_EstablishmentOwnership_Industry-NAICS/42433",
-      "name": "Person With Establishment Ownership, Industry = Women's And Children's Clothing Merch. Whls. (NAICS/42433)"
-    },
-    {
-      "dcid": "dc/g/Person_EstablishmentOwnership_Industry-NAICS/315232",
-      "name": "Person With Establishment Ownership, Industry = Women's And Girls' Blouse And Shirt Mfg (NAICS/315232)"
-    },
-    {
-      "dcid": "dc/g/Person_EstablishmentOwnership_Industry-NAICS/31523",
-      "name": "Person With Establishment Ownership, Industry = Women's And Girls' Cut And Sew Apparel Mfg (NAICS/31523)"
-    },
-    {
-      "dcid": "dc/g/Person_EstablishmentOwnership_Industry-NAICS/315233",
-      "name": "Person With Establishment Ownership, Industry = Women's And Girls' Dress Manufacturing (NAICS/315233)"
-    },
-    {
-      "dcid": "dc/g/Person_EstablishmentOwnership_Industry-NAICS/315231",
-      "name": "Person With Establishment Ownership, Industry = Women's And Girls' Lingerie And Nightwear Mfg (NAICS/315231)"
-    },
-    {
-      "dcid": "dc/g/Person_EstablishmentOwnership_Industry-NAICS/315234",
-      "name": "Person With Establishment Ownership, Industry = Women's And Girls' Suit, Coat, And Skirt Mfg (NAICS/315234)"
-    },
-    {
-      "dcid": "dc/g/Person_EstablishmentOwnership_Industry-NAICS/44812",
-      "name": "Person With Establishment Ownership, Industry = Women's Clothing Stores (NAICS/44812)"
-    },
-    {
-      "dcid": "dc/g/Person_EstablishmentOwnership_Industry-NAICS/316992",
-      "name": "Person With Establishment Ownership, Industry = Women's Handbag And Purse Manufacturing (NAICS/316992)"
-    },
-    {
-      "dcid": "dc/g/Person_EstablishmentOwnership_Industry-NAICS/316214",
-      "name": "Person With Establishment Ownership, Industry = Women's Nonathletic Footwear Manufacturing (NAICS/316214)"
-    },
-    {
-      "dcid": "dc/g/Person_EstablishmentOwnership_Industry-NAICS/315212",
-      "name": "Person With Establishment Ownership, Industry = Women's, Girls', Infants' Apparel Contractors (NAICS/315212)"
-    },
-    {
-      "dcid": "dc/g/Person_EstablishmentOwnership_Industry-NAICS/31524",
-      "name": "Person With Establishment Ownership, Industry = Women's, Girls', Infants' Cut-sew Apparel Mfg (NAICS/31524)"
-    },
-    {
-      "dcid": "dc/g/WHONCDCXCASCREENEDWITHINTIMEPERIOD_age-WHOAgeEnumY30T49_whosex",
-      "name": "Prevalence of Cervical Cancer Screening Among Women Aged 30-49 Years With Age = 30-49 Years of Age, Sex"
-    },
-    {
-      "dcid": "dc/g/WHONCDCXCASCREENEDWITHINTIMEPERIOD_age-WHOAgeEnumY30T49_whosex-WHOSexEnumF",
-      "name": "Prevalence of Cervical Cancer Screening Among Women Aged 30-49 Years With Age = 30-49 Years of Age, Sex = Female"
-    },
-    {
-      "dcid": "dc/g/WHONCDCXCASCREENEDWITHINTIMEPERIOD_age-WHOAgeEnumY30T49_whotimeperiod",
-      "name": "Prevalence of Cervical Cancer Screening Among Women Aged 30-49 Years With Age = 30-49 Years of Age, Timeperiod"
-    },
-    {
-      "dcid": "dc/g/WHONCDCXCASCREENEDWITHINTIMEPERIOD_age_whosex-WHOSexEnumF",
-      "name": "Prevalence of Cervical Cancer Screening Among Women Aged 30-49 Years With Age, Sex = Female"
-    },
-    {
-      "dcid": "dc/g/WHONCDCXCASCREENEDWITHINTIMEPERIOD_whosex-WHOSexEnumF_whotimeperiod",
-      "name": "Prevalence of Cervical Cancer Screening Among Women Aged 30-49 Years With Sex = Female, Timeperiod"
-    },
-    {
-      "dcid": "dc/g/SDGVCVAWMARR_age_sdgsex-SDGSexEnumF",
-      "name": "Proportion of Ever-partnered Women And Girls Subjected To Physical And/or Sexual Violence by A Current or Former Intimate Partner in The Previous 12 Months, by Age With Age, Sex = Female"
-    },
-    {
-      "dcid": "dc/g/SDGSHSTAFGMS_age_sdgsex-SDGSexEnumF",
-      "name": "Proportion of Girls And Women Aged 15-49 Years Who Have Undergone Female Genital Mutilation, by Age With Age, Sex = Female"
-    },
-    {
-      "dcid": "dc/g/WHONCDCXCASCREENEDWITHINTIMEPERIOD_age-WHOAgeEnumY30T49_whosex-WHOSexEnumF_whotimeperiod",
-      "name": "Prevalence of Cervical Cancer Screening Among Women Aged 30-49 Years With Age = 30-49 Years of Age, Sex = Female, Timeperiod"
-    },
-    {
-      "dcid": "dc/g/WHObmi30wm",
-      "name": "Obesity Prevalence in Non-pregnant Women Aged 15-49 Years, BMI \u003e= 30"
-    },
-    {
-      "dcid": "dc/g/WHOitnwm",
-      "name": "Pregnant Women Sleeping Under Insecticide-treated Nets"
-    },
-    {
-      "dcid": "dc/g/WHONCDCXCASCREENEDWITHINTIMEPERIOD",
-      "name": "Prevalence of Cervical Cancer Screening Among Women Aged 30-49 Years"
-    },
-    {
-      "dcid": "dc/g/SDGVCVAWMARR",
-      "name": "Proportion of Ever-partnered Women And Girls Subjected To Physical And/or Sexual Violence by A Current or Former Intimate Partner in The Previous 12 Months, by Age"
-    },
-    {
-      "dcid": "dc/g/SDGSHSTAFGMS",
-      "name": "Proportion of Girls And Women Aged 15-49 Years Who Have Undergone Female Genital Mutilation, by Age"
-    },
-    {
-      "dcid": "dc/g/WHO/PregnantWomen",
-      "name": "WHO/Pregnant Women"
-    }
-  ],
   "matches": [
     "women",
     "women's",
     "women)",
-    "womens",
-    "women’s"
+    "womens"
   ]
 }
