@@ -55,6 +55,10 @@ spec:
         service:  {{ include "mixer.fullname" $ }}-{{ $serviceName }}
         {{- include "mixer.selectorLabels" $ | nindent 8 }}
     spec:
+      {{- if $group.nodePool }}
+      nodeSelector:
+        cloud.google.com/gke-nodepool: {{ $group.nodePool }}
+      {{- end }}
       serviceAccountName: {{ $.Values.serviceAccount.name }}
       volumes:
         - name: schema-mapping
