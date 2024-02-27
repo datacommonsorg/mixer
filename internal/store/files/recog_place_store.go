@@ -86,9 +86,8 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 		if err != nil {
 			return nil, err
 		}
-		// Remove the header
-		fileRecords = fileRecords[1:]
-		records = append(records, fileRecords...)
+		// Remove the header and append to records
+		records = append(records, fileRecords[1:]...)
 	}
 
 	dcidToAbbreviatedNames, err := loadAuxNames(recogPlaceAbbreviatedNamesCSVContent, false)
