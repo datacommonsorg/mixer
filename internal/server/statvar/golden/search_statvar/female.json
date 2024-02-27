@@ -373,6 +373,10 @@
       "dcid": "who/FINPROTECTION_CATA_TOT_10_POP.POP_TYPE--POP_TYPE_HOUSEHOLD_HEAD__SEX--F"
     },
     {
+      "name": "Population: 5 - 14 Years, Female",
+      "dcid": "Count_Person_Years5To14_Female"
+    },
+    {
       "name": "Prevalence of moderate or severe food insecurity [15 years old and over, Female]",
       "dcid": "sdg/AG_PRD_FIESMS.AGE--Y_GE15__SEX--F"
     },
@@ -983,88 +987,6 @@
       ]
     },
     {
-      "dcid": "dc/g/WHOLIFE0000000029_age_whosex-WHOSexEnumF",
-      "name": "NMx - Age-specific Death Rate Between Ages X And X+n With Age, Sex = Female",
-      "statVars": [
-        {
-          "name": "nMx - age-specific death rate between ages x and x+n [1-4 years, Female]",
-          "dcid": "who/LIFE_0000000029.AGE--Y1T4__SEX--F"
-        },
-        {
-          "name": "nMx - age-specific death rate between ages x and x+n [10-14 years, Female]",
-          "dcid": "who/LIFE_0000000029.AGE--Y10T14__SEX--F"
-        },
-        {
-          "name": "nMx - age-specific death rate between ages x and x+n [15-19  years, Female]",
-          "dcid": "who/LIFE_0000000029.AGE--Y15T19__SEX--F"
-        },
-        {
-          "name": "nMx - age-specific death rate between ages x and x+n [20-24 years, Female]",
-          "dcid": "who/LIFE_0000000029.AGE--Y20T24__SEX--F"
-        },
-        {
-          "name": "nMx - age-specific death rate between ages x and x+n [25-29 years, Female]",
-          "dcid": "who/LIFE_0000000029.AGE--Y25T29__SEX--F"
-        },
-        {
-          "name": "nMx - age-specific death rate between ages x and x+n [30-34 years, Female]",
-          "dcid": "who/LIFE_0000000029.AGE--Y30T34__SEX--F"
-        },
-        {
-          "name": "nMx - age-specific death rate between ages x and x+n [35-39 years, Female]",
-          "dcid": "who/LIFE_0000000029.AGE--Y35T39__SEX--F"
-        },
-        {
-          "name": "nMx - age-specific death rate between ages x and x+n [40-44 years, Female]",
-          "dcid": "who/LIFE_0000000029.AGE--Y40T44__SEX--F"
-        },
-        {
-          "name": "nMx - age-specific death rate between ages x and x+n [45-49 years, Female]",
-          "dcid": "who/LIFE_0000000029.AGE--Y45T49__SEX--F"
-        },
-        {
-          "name": "nMx - age-specific death rate between ages x and x+n [5-9 years, Female]",
-          "dcid": "who/LIFE_0000000029.AGE--Y5T9__SEX--F"
-        },
-        {
-          "name": "nMx - age-specific death rate between ages x and x+n [50-54 years, Female]",
-          "dcid": "who/LIFE_0000000029.AGE--Y50T54__SEX--F"
-        },
-        {
-          "name": "nMx - age-specific death rate between ages x and x+n [55-59 years, Female]",
-          "dcid": "who/LIFE_0000000029.AGE--Y55T59__SEX--F"
-        },
-        {
-          "name": "nMx - age-specific death rate between ages x and x+n [60-64 years, Female]",
-          "dcid": "who/LIFE_0000000029.AGE--Y60T64__SEX--F"
-        },
-        {
-          "name": "nMx - age-specific death rate between ages x and x+n [65-69 years, Female]",
-          "dcid": "who/LIFE_0000000029.AGE--Y65T69__SEX--F"
-        },
-        {
-          "name": "nMx - age-specific death rate between ages x and x+n [70-74 years, Female]",
-          "dcid": "who/LIFE_0000000029.AGE--Y70T74__SEX--F"
-        },
-        {
-          "name": "nMx - age-specific death rate between ages x and x+n [75-79 years, Female]",
-          "dcid": "who/LIFE_0000000029.AGE--Y75T79__SEX--F"
-        },
-        {
-          "name": "nMx - age-specific death rate between ages x and x+n [80-84 years, Female]",
-          "dcid": "who/LIFE_0000000029.AGE--Y80T84__SEX--F"
-        },
-        {
-          "name": "nMx - age-specific death rate between ages x and x+n [85+ years, Female]",
-          "dcid": "who/LIFE_0000000029.AGE--Y_GE85__SEX--F"
-        },
-        {
-          "name": "nMx - age-specific death rate between ages x and x+n [\u003c1 year, Female]",
-          "dcid": "who/LIFE_0000000029.AGE--M0T11__SEX--F"
-        }
-      ]
-    },
-    {
       "dcid": "dc/g/WHOLIFE0000000034_age_whosex-WHOSexEnumF",
       "name": "Tx - Person-years Lived Above Age X With Age, Sex = Female",
       "statVars": [
@@ -1147,48 +1069,52 @@
       ]
     },
     {
-      "dcid": "dc/g/Person_Age_Gender-Female",
-      "name": "Person With Age, Gender = Female",
+      "dcid": "dc/g/WHOLIFE0000000029_age_whosex-WHOSexEnumF",
+      "name": "NMx - Age-specific Death Rate Between Ages X And X+n With Age, Sex = Female",
       "statVars": [
         {
-          "name": "Population: 14 Years or Less, Female",
-          "dcid": "Count_Person_Upto14Years_Female"
+          "name": "nMx - age-specific death rate between ages x and x+n [1-4 years, Female]",
+          "dcid": "who/LIFE_0000000029.AGE--Y1T4__SEX--F"
         },
         {
-          "name": "Population: 15 - 44 Years, Female",
-          "dcid": "Count_Person_15To44Years_Female"
+          "name": "nMx - age-specific death rate between ages x and x+n [10-14 years, Female]",
+          "dcid": "who/LIFE_0000000029.AGE--Y10T14__SEX--F"
         },
         {
-          "name": "Population: 21 Years or More, Female",
-          "dcid": "Count_Person_21OrMoreYears_Female"
+          "name": "nMx - age-specific death rate between ages x and x+n [15-19  years, Female]",
+          "dcid": "who/LIFE_0000000029.AGE--Y15T19__SEX--F"
         },
         {
-          "name": "Population: 5 - 14 Years, Female",
-          "dcid": "Count_Person_Years5To14_Female"
+          "name": "nMx - age-specific death rate between ages x and x+n [20-24 years, Female]",
+          "dcid": "who/LIFE_0000000029.AGE--Y20T24__SEX--F"
         },
         {
-          "name": "Population: 60 Years or More, Female",
-          "dcid": "Count_Person_60OrMoreYears_Female"
+          "name": "nMx - age-specific death rate between ages x and x+n [25-29 years, Female]",
+          "dcid": "who/LIFE_0000000029.AGE--Y25T29__SEX--F"
         },
         {
-          "name": "Population: 62 Years or More, Female",
-          "dcid": "Count_Person_62OrMoreYears_Female"
+          "name": "nMx - age-specific death rate between ages x and x+n [30-34 years, Female]",
+          "dcid": "who/LIFE_0000000029.AGE--Y30T34__SEX--F"
         },
         {
-          "name": "Population: 65 - 66 Years, Female",
-          "dcid": "Count_Person_65To66Years_Female"
+          "name": "nMx - age-specific death rate between ages x and x+n [35-39 years, Female]",
+          "dcid": "who/LIFE_0000000029.AGE--Y35T39__SEX--F"
         },
         {
-          "name": "Population: 67 - 69 Years, Female",
-          "dcid": "Count_Person_67To69Years_Female"
+          "name": "nMx - age-specific death rate between ages x and x+n [40-44 years, Female]",
+          "dcid": "who/LIFE_0000000029.AGE--Y40T44__SEX--F"
         },
         {
-          "name": "Unemployment Rate: 25 - 74 Years, Female",
-          "dcid": "UnemploymentRate_Person_25To74Years_Female"
+          "name": "nMx - age-specific death rate between ages x and x+n [45-49 years, Female]",
+          "dcid": "who/LIFE_0000000029.AGE--Y45T49__SEX--F"
         },
         {
-          "name": "Unemployment Rate: 25 Years or Less, Female",
-          "dcid": "UnemploymentRate_Person_Upto25Years_Female"
+          "name": "nMx - age-specific death rate between ages x and x+n [5-9 years, Female]",
+          "dcid": "who/LIFE_0000000029.AGE--Y5T9__SEX--F"
+        },
+        {
+          "name": "nMx - age-specific death rate between ages x and x+n [50-54 years, Female]",
+          "dcid": "who/LIFE_0000000029.AGE--Y50T54__SEX--F"
         }
       ]
     },
@@ -1277,6 +1203,48 @@
         {
           "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Technicians and associate professionals]",
           "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO08_3"
+        }
+      ]
+    },
+    {
+      "dcid": "dc/g/Person_Age_Gender-Female",
+      "name": "Person With Age, Gender = Female",
+      "statVars": [
+        {
+          "name": "Population: 14 Years or Less, Female",
+          "dcid": "Count_Person_Upto14Years_Female"
+        },
+        {
+          "name": "Population: 15 - 44 Years, Female",
+          "dcid": "Count_Person_15To44Years_Female"
+        },
+        {
+          "name": "Population: 21 Years or More, Female",
+          "dcid": "Count_Person_21OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 60 Years or More, Female",
+          "dcid": "Count_Person_60OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 62 Years or More, Female",
+          "dcid": "Count_Person_62OrMoreYears_Female"
+        },
+        {
+          "name": "Population: 65 - 66 Years, Female",
+          "dcid": "Count_Person_65To66Years_Female"
+        },
+        {
+          "name": "Population: 67 - 69 Years, Female",
+          "dcid": "Count_Person_67To69Years_Female"
+        },
+        {
+          "name": "Unemployment Rate: 25 - 74 Years, Female",
+          "dcid": "UnemploymentRate_Person_25To74Years_Female"
+        },
+        {
+          "name": "Unemployment Rate: 25 Years or Less, Female",
+          "dcid": "UnemploymentRate_Person_Upto25Years_Female"
         }
       ]
     },
@@ -3713,16 +3681,6 @@
         {
           "name": "Count of Mortality Event: in Situ Neoplasms_Benign Neoplasms And Neoplasms of Uncertain or Unknown Behavior, Female",
           "dcid": "Count_MortalityEvent_InSituNeoplasmsBenignNeoplasmsAndNeoplasmsOfUncertainOrUnknownBehavior_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/WHOLIFE0000000032_age_whosex-WHOSexEnumF",
-      "name": "Ndx - Number of People Dying Between Ages X And X+n With Age, Sex = Female",
-      "statVars": [
-        {
-          "name": "ndx - number of people dying between ages x and x+n [1-4 years, Female]",
-          "dcid": "who/LIFE_0000000032.AGE--Y1T4__SEX--F"
         }
       ]
     },
@@ -7033,6 +6991,10 @@
     {
       "dcid": "dc/g/MortalityEvent_CauseOfDeath_Gender-Female",
       "name": "Mortality Event With Cause of Death, Gender = Female"
+    },
+    {
+      "dcid": "dc/g/WHOLIFE0000000032_age_whosex-WHOSexEnumF",
+      "name": "Ndx - Number of People Dying Between Ages X And X+n With Age, Sex = Female"
     },
     {
       "dcid": "dc/g/WHOLIFE0000000030_age_whosex-WHOSexEnumF",

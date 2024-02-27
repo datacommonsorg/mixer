@@ -1,6 +1,10 @@
 {
   "statVars": [
     {
+      "name": "Proportion of government spending in health, direct social transfers and education which benefit the monetary poor",
+      "dcid": "sdg/SD_XPD_MNPO"
+    },
+    {
       "name": "Account, income, poorest 40% (% ages 15+)",
       "dcid": "worldBank/account_t_d_7"
     },

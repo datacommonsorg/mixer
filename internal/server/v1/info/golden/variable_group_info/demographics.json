@@ -117,7 +117,7 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 26937
+        "descendentStatVarCount": 27152
       },
       {
         "id": "dc/g/Person_AgeGroupClassification",
@@ -291,7 +291,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 24603
+        "descendentStatVarCount": 24776
       },
       {
         "id": "dc/g/Person_GovernmentId",
@@ -417,7 +417,7 @@
         "id": "dc/g/Person_MaritalStatus",
         "specializedEntity": "Marital Status",
         "displayName": "Person by Marital Status",
-        "descendentStatVarCount": 1488
+        "descendentStatVarCount": 1567
       },
       {
         "id": "dc/g/MaternalMortalityEvent",
@@ -576,7 +576,7 @@
         "descendentStatVarCount": 2
       }
     ],
-    "descendentStatVarCount": 44959,
+    "descendentStatVarCount": 45178,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]
