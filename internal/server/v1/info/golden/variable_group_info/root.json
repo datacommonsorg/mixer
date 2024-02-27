@@ -13,19 +13,19 @@
         "id": "dc/g/Demographics",
         "specializedEntity": "Demographics",
         "displayName": "Demographics",
-        "descendentStatVarCount": 44959
+        "descendentStatVarCount": 45178
       },
       {
         "id": "dc/g/Economy",
         "specializedEntity": "Economy",
         "displayName": "Economy",
-        "descendentStatVarCount": 108376
+        "descendentStatVarCount": 108594
       },
       {
         "id": "dc/g/Education",
         "specializedEntity": "Education",
         "displayName": "Education",
-        "descendentStatVarCount": 69274
+        "descendentStatVarCount": 69400
       },
       {
         "id": "dc/g/Energy",
@@ -37,19 +37,19 @@
         "id": "dc/g/Environment",
         "specializedEntity": "Environment",
         "displayName": "Environment",
-        "descendentStatVarCount": 3608
+        "descendentStatVarCount": 3615
       },
       {
         "id": "dc/g/Health",
         "specializedEntity": "Health",
         "displayName": "Health",
-        "descendentStatVarCount": 28297
+        "descendentStatVarCount": 48360
       },
       {
         "id": "dc/g/Housing",
         "specializedEntity": "Housing",
         "displayName": "Housing",
-        "descendentStatVarCount": 553
+        "descendentStatVarCount": 560
       },
       {
         "id": "dc/g/Crime",
@@ -67,7 +67,7 @@
         "id": "dc/g/Uncategorized",
         "specializedEntity": "Uncategorized",
         "displayName": "Uncategorized",
-        "descendentStatVarCount": 9326
+        "descendentStatVarCount": 9452
       },
       {
         "id": "dc/g/UN",
@@ -79,9 +79,9 @@
         "id": "dc/g/SDG",
         "specializedEntity": "Sustainable Development Goals",
         "displayName": "Sustainable Development Goals",
-        "descendentStatVarCount": 3807
+        "descendentStatVarCount": 3990
       }
     ],
-    "descendentStatVarCount": 230796
+    "descendentStatVarCount": 231286
   }
 }
