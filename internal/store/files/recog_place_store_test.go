@@ -68,6 +68,23 @@ func TestLoadRecogPlaceStore(t *testing.T) {
 				},
 			},
 		},
+		{
+			"chlamydia",
+			&pb.RecogPlaces{
+				Places: []*pb.RecogPlace{
+					{
+						Names: []*pb.RecogPlace_Name{
+							{
+								Parts: []string{"chlamydia"},
+							},
+						},
+						Dcid:             "Chlamydia",
+						ContainingPlaces: []string{""},
+						Population:       0,
+					},
+				},
+			},
+		},
 	} {
 		got, ok := recogPlaceStore.RecogPlaceMap[c.key]
 		if !ok {

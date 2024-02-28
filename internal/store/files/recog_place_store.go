@@ -29,6 +29,8 @@ import (
 
 //go:embed "WorldGeosForPlaceRecognition.csv"
 var recogPlaceMapCSVContent []byte // Embed CSV as []byte.
+//go:embed "EntitiesForPlaceRecognition.csv"
+var recogEntityMapCSVContent []byte // Embed CSV as []byte.
 //go:embed "WorldGeosForPlaceRecognitionAbbreviatedNames.csv"
 var recogPlaceAbbreviatedNamesCSVContent []byte // Embed CSV as []byte.
 //go:embed "WorldGeosForPlaceRecognitionAlternateNames.csv"
@@ -77,10 +79,15 @@ type RecogPlaceStore struct {
 
 // LoadRecogPlaceStore loads RecogPlaceStore.
 func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
-	reader := csv.NewReader(strings.NewReader(string(recogPlaceMapCSVContent)))
-	records, err := reader.ReadAll()
-	if err != nil {
-		return nil, err
+	records := [][]string{}
+	for _, fileContent := range [][]byte{recogPlaceMapCSVContent, recogEntityMapCSVContent} {
+		reader := csv.NewReader(strings.NewReader(string(fileContent)))
+		fileRecords, err := reader.ReadAll()
+		if err != nil {
+			return nil, err
+		}
+		// Remove the header and append to records
+		records = append(records, fileRecords[1:]...)
 	}
 
 	dcidToAbbreviatedNames, err := loadAuxNames(recogPlaceAbbreviatedNamesCSVContent, false)
@@ -120,14 +127,7 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 	dcidToNames := map[string][]string{}
 	expandedDcidToNames := map[string][]string{}
 	dcidToContainingPlaces := map[string][]string{}
-	isFirst := true
 	for _, record := range records {
-		// Skip header.
-		if isFirst {
-			isFirst = false
-			continue
-		}
-
 		// Columns: dcid, mainType, name, linkedContainedInPlace, population.
 		if len(record) != 5 {
 			return nil, status.Errorf(codes.FailedPrecondition,
