@@ -103,20 +103,9 @@ func toObsCollection(jsonRaw []byte) (interface{}, error) {
 	}
 	switch x := pbData.Val.(type) {
 	case *pb.ChartStore_ObsCollection:
-		ret := x.ObsCollection
-		// Unify unit.
-		for _, series := range ret.SourceCohorts {
-			if conversion, ok := convert.UnitMapping[series.Unit]; ok {
-				series.Unit = conversion.Unit
-				for date := range series.Val {
-					series.Val[date] *= conversion.Scaling
-				}
-			}
-		}
-		return ret, nil
+		return x.ObsCollection, nil
 	case nil:
-		return nil, status.Error(codes.Internal,
-			"ChartStore.Val is not set")
+		return nil, status.Error(codes.Internal, "ChartStore.Val is not set")
 	default:
 		return nil, status.Errorf(codes.Internal,
 			"ChartStore.Val has unexpected type %T", x)
@@ -269,6 +258,15 @@ func ReadStatCollection(
 				return nil, status.Errorf(codes.Internal, "invalid data for pb.ObsCollection")
 			}
 			for _, sc := range obsCollection.SourceCohorts {
+				// Convert unit when fetching observation (not date) if possible.
+				if date != "" {
+					if conversion, ok := convert.UnitMapping[sc.Unit]; ok {
+						sc.Unit = conversion.Unit
+						for date := range sc.Val {
+							sc.Val[date] *= conversion.Scaling
+						}
+					}
+				}
 				facetId := getSourceSeriesFacetID(sc)
 				key := sv + facetId
 				if _, ok := hasBranchData[key]; ok {

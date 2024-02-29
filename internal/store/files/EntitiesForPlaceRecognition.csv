@@ -1,0 +1,71 @@
+dcid,mainType,name,linkedContainedInPlace,population
+VirusGenusChlamydiamicrovirus,VirusGenusEnum,Chlamydiamicrovirus,,0
+VirusGenusOrthopneumovirus,VirusGenusEnum,Orthopneumovirus,,0
+VirusGenusBetainfluenzavirus,VirusGenusEnum,Betainfluenzavirus,,0
+VirusGenusAlphainfluenzavirus,VirusGenusEnum,Alphainfluenzavirus,,0
+VirusGenusBetapapillomavirus,VirusGenusEnum,Betapapillomavirus,,0
+bio/AlphainfluenzavirusInfluenzae_A/PR/8/34,VirusIsolate,"Alphainfluenzavirus influenzae strain A/PR/8/34",,0
+bio/MonkeypoxVirus_Zaire_96_I_16,VirusIsolate,"Monkeypox virus strain Zaire-96-I-16",,0
+bio/EquidAlphaherpesvirus9_P19,VirusIsolate,"Equid alphaherpesvirus 9 strain P19",,0
+bio/Betacoronavirus1_ATCCVR_759,VirusIsolate,"Betacoronavirus 1 strain ATCC VR-759",,0
+bio/Betapapillomavirus1_X74471,VirusIsolate,"Betapapillomavirus 1 X74471",,0
+bio/Betapapillomavirus1,Virus,"Betapapillomavirus 1",,0
+bio/BetainfluenzavirusInfluenzae,Virus,"Betainfluenzavirus influenzae",,0
+bio/AlphainfluenzavirusInfluenzae,Virus,"Alphainfluenzavirus influenzae",,0
+bio/Betacoronavirus1,Virus,"Betacoronavirus 1",,0
+bio/HumanOrthopneumovirus,Virus,"Human orthopneumovirus",,0
+bio/ACAPO,Species,AcanthamoebaPolyphaga,,0
+bio/9ACTN,Species,Actinobacteria,,0
+bio/9ENTO,Species,Enterovirus,,0
+bio/9CYAN,Species,Cyanobacteria,,0
+bio/9FUNG,Species,Fungi,,0
+dc/001zpbbtbyqm3,BiologicalSpecimen,"Cyperus strigosus L.",,0
+dc/003ye83smktt7,BiologicalSpecimen,Volvox,,0
+dc/004b8q2c1sc6b,BiologicalSpecimen,"Achillea millefolium L.",,0
+dc/004pn4gc3h683,BiologicalSpecimen,"Corylus cornuta Marshall",,0
+dc/002q6x1nl6nxh,BiologicalSpecimen,"Euphorbia heterophylla L.",,0
+bio/rs13317,GeneticVariant,rs13317,,0
+bio/rs7903146,GeneticVariant,rs7903146,,0
+bio/rs2237897,GeneticVariant,rs2237897,,0
+bio/rs72636191,GeneticVariant,rs72636191,,0
+bio/rs559628884,GeneticVariant,rs559628884,,0
+bio/hg38_FGFR1,Gene,FGFR1,,0
+bio/hg38_APOE,Gene,APOE,,0
+bio/ACHE,Gene,ACHE,,0
+bio/ABRAXAS2,Gene,ABRAXAS2,,0
+bio/AADAT,Gene,AADAT,,0
+bio/DOID_0080176,Disease,"meningococcal meningitis",,0
+bio/DOID_0050204,Disease,"Epstein-Barr virus hepatitis",,0
+Chickenpox,Disease,Chickenpox,,0
+Chlamydia,Disease,Chlamydia,,0
+bio/DOID_0050052,Disease,"Rocky Mountain spotted fever",,0
+ICD10/A30-A49,ICD10Section,"Other bacterial diseases (A30-A49)",,0
+ICD10/A00-B99,ICD10Section,"A00-B99 (Certain infectious and parasitic diseases)",,0
+ICD10/J00-J06,ICD10Section,"Acute upper respiratory infections (J00-J06)",,0
+ICD10/B95-B97,ICD10Section,"Bacterial and viral infectious agents (B95-B97)",,0
+ICD10/I70-I79,ICD10Section,"Diseases of arteries, arterioles and capillaries (I70-I79)",,0
+ICD10/A39,ICD10Code,"Meningococcal infection",,0
+ICD10/R97,ICD10Code,"Abnormal tumor markers (R97)",,0
+ICD10/A39.2,ICD10Code,"Acute meningococcemia",,0
+ICD10/Z68,ICD10Code,"Body mass index [BMI] (Z68)",,0
+ICD10/A00,ICD10Code,Cholera,,0
+bio/D001172,MeSHDescriptor,"Arthritis, Rheumatoid",,0
+bio/D011655,MeSHDescriptor,"Pulmonary Embolism",,0
+bio/D004110,MeSHDescriptor,Diltiazem,,0
+bio/D000066888,MeSHDescriptor,"Diet, Food, and Nutrition",,0
+bio/D000066449,MeSHDescriptor,"Human Embryonic Stem Cells",,0
+chem/CID1983,Drug,acetaminophen,,0
+chem/CID681,Drug,dopamine,,0
+bio/Bactocill,Drug,Bactocill,,0
+bio/Aggrenox,Drug,Aggrenox,,0
+chem/CID5734,Drug,zonisamide,,0
+chem/A03FA10,AnatomicalTherapeuticChemicalCode,acotiamide,,0
+chem/A01AC03,AnatomicalTherapeuticChemicalCode,hydrocortisone,,0
+chem/A02AC01,AnatomicalTherapeuticChemicalCode,"calcium carbonate",,0
+chem/A01AB22,AnatomicalTherapeuticChemicalCode,doxycycline,,0
+chem/A06AG04,AnatomicalTherapeuticChemicalCode,glycerol,,0
+bio/C523297,MeSHSupplementaryRecord,"N,N-didesmethyldiltiazem",,0
+bio/C000128,MeSHSupplementaryRecord,rubiflavin,,0
+bio/C000588549,MeSHSupplementaryRecord,jiaotai,,0
+bio/C000279,MeSHSupplementaryRecord,diazan,,0
+bio/C000076,MeSHSupplementaryRecord,"2-amino-5-hydroxyacetophenone",,0

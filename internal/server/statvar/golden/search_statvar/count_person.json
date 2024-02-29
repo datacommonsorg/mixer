@@ -593,6 +593,10 @@
       "dcid": "Count_Person_105To109Years"
     },
     {
+      "name": "Population: 105 Years or More",
+      "dcid": "Count_Person_105OrMoreYears"
+    },
+    {
       "name": "Population: 10th Grade",
       "dcid": "Count_Person_EducationalAttainment10ThGrade"
     },
@@ -965,6 +969,10 @@
       "dcid": "Count_Person_85To89Years"
     },
     {
+      "name": "Population: 85 - 94 Years",
+      "dcid": "Count_Person_85To94Years"
+    },
+    {
       "name": "Population: 85 Years or More",
       "dcid": "Count_Person_85OrMoreYears"
     },
@@ -983,6 +991,10 @@
     {
       "name": "Population: 90 Years or More",
       "dcid": "Count_Person_90OrMoreYears"
+    },
+    {
+      "name": "Population: 95 - 104 Years",
+      "dcid": "Count_Person_95To104Years"
     },
     {
       "name": "Population: 95 - 99 Years",
@@ -1947,6 +1959,10 @@
     {
       "name": "Population: Unknown Race",
       "dcid": "Count_Person_UnknownRace"
+    },
+    {
+      "name": "Population: Unmarried",
+      "dcid": "Count_Person_Unmarried"
     },
     {
       "name": "Population: Unmarried \u0026 Not Living Together",
@@ -3983,22 +3999,6 @@
     {
       "name": "Population: 1 Years or More, Different House Abroad",
       "dcid": "Count_Person_1OrMoreYears_DifferentHouseAbroad"
-    },
-    {
-      "name": "Population: 1 Years or More, Different House in Different County",
-      "dcid": "Count_Person_1OrMoreYears_DifferentHouseInDifferentCounty"
-    },
-    {
-      "name": "Population: 1 Years or More, Different House in Different County Different State",
-      "dcid": "Count_Person_1OrMoreYears_DifferentHouseInDifferentCountyDifferentState"
-    },
-    {
-      "name": "Population: 1 Years or More, Different House in Different County Same State",
-      "dcid": "Count_Person_1OrMoreYears_DifferentHouseInDifferentCountySameState"
-    },
-    {
-      "name": "Population: 1 Years or More, Different House in Same County",
-      "dcid": "Count_Person_1OrMoreYears_DifferentHouseInSameCounty"
     }
   ],
   "matches": [
