@@ -1,0 +1,644 @@
+{
+  "dates_by_variable": [
+    {
+      "variable": "Annual_Generation_Electricity",
+      "observation_dates": [
+        {
+          "date": "1990",
+          "entity_count": [
+            {
+              "count": 140,
+              "facet": "1450533103"
+            },
+            {
+              "count": 35,
+              "facet": "4226672321"
+            }
+          ]
+        },
+        {
+          "date": "1991",
+          "entity_count": [
+            {
+              "count": 139,
+              "facet": "1450533103"
+            },
+            {
+              "count": 36,
+              "facet": "4226672321"
+            }
+          ]
+        },
+        {
+          "date": "1992",
+          "entity_count": [
+            {
+              "count": 168,
+              "facet": "1450533103"
+            },
+            {
+              "count": 36,
+              "facet": "4226672321"
+            }
+          ]
+        },
+        {
+          "date": "1993",
+          "entity_count": [
+            {
+              "count": 164,
+              "facet": "1450533103"
+            },
+            {
+              "count": 38,
+              "facet": "4226672321"
+            }
+          ]
+        },
+        {
+          "date": "1994",
+          "entity_count": [
+            {
+              "count": 170,
+              "facet": "1450533103"
+            },
+            {
+              "count": 41,
+              "facet": "4226672321"
+            }
+          ]
+        },
+        {
+          "date": "1995",
+          "entity_count": [
+            {
+              "count": 177,
+              "facet": "1450533103"
+            },
+            {
+              "count": 30,
+              "facet": "4226672321"
+            }
+          ]
+        },
+        {
+          "date": "1996",
+          "entity_count": [
+            {
+              "count": 175,
+              "facet": "1450533103"
+            },
+            {
+              "count": 32,
+              "facet": "4226672321"
+            }
+          ]
+        },
+        {
+          "date": "1997",
+          "entity_count": [
+            {
+              "count": 174,
+              "facet": "1450533103"
+            },
+            {
+              "count": 33,
+              "facet": "4226672321"
+            }
+          ]
+        },
+        {
+          "date": "1998",
+          "entity_count": [
+            {
+              "count": 188,
+              "facet": "1450533103"
+            },
+            {
+              "count": 25,
+              "facet": "4226672321"
+            }
+          ]
+        },
+        {
+          "date": "1999",
+          "entity_count": [
+            {
+              "count": 189,
+              "facet": "1450533103"
+            },
+            {
+              "count": 27,
+              "facet": "4226672321"
+            }
+          ]
+        },
+        {
+          "date": "2000",
+          "entity_count": [
+            {
+              "count": 192,
+              "facet": "1450533103"
+            },
+            {
+              "count": 16,
+              "facet": "4226672321"
+            }
+          ]
+        },
+        {
+          "date": "2001",
+          "entity_count": [
+            {
+              "count": 194,
+              "facet": "1450533103"
+            },
+            {
+              "count": 17,
+              "facet": "4226672321"
+            },
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
+        },
+        {
+          "date": "2002",
+          "entity_count": [
+            {
+              "count": 200,
+              "facet": "1450533103"
+            },
+            {
+              "count": 14,
+              "facet": "4226672321"
+            },
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
+        },
+        {
+          "date": "2003",
+          "entity_count": [
+            {
+              "count": 195,
+              "facet": "1450533103"
+            },
+            {
+              "count": 21,
+              "facet": "4226672321"
+            },
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
+        },
+        {
+          "date": "2004",
+          "entity_count": [
+            {
+              "count": 201,
+              "facet": "1450533103"
+            },
+            {
+              "count": 18,
+              "facet": "4226672321"
+            },
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
+        },
+        {
+          "date": "2005",
+          "entity_count": [
+            {
+              "count": 206,
+              "facet": "1450533103"
+            },
+            {
+              "count": 12,
+              "facet": "4226672321"
+            },
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
+        },
+        {
+          "date": "2006",
+          "entity_count": [
+            {
+              "count": 203,
+              "facet": "1450533103"
+            },
+            {
+              "count": 17,
+              "facet": "4226672321"
+            },
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
+        },
+        {
+          "date": "2006-03-01",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "4040172150"
+            }
+          ]
+        },
+        {
+          "date": "2007",
+          "entity_count": [
+            {
+              "count": 206,
+              "facet": "1450533103"
+            },
+            {
+              "count": 13,
+              "facet": "4226672321"
+            },
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
+        },
+        {
+          "date": "2007-03-01",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "4040172150"
+            }
+          ]
+        },
+        {
+          "date": "2008",
+          "entity_count": [
+            {
+              "count": 200,
+              "facet": "1450533103"
+            },
+            {
+              "count": 19,
+              "facet": "4226672321"
+            },
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
+        },
+        {
+          "date": "2008-03-01",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "4040172150"
+            }
+          ]
+        },
+        {
+          "date": "2009",
+          "entity_count": [
+            {
+              "count": 199,
+              "facet": "1450533103"
+            },
+            {
+              "count": 24,
+              "facet": "4226672321"
+            },
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
+        },
+        {
+          "date": "2009-03-01",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "4040172150"
+            }
+          ]
+        },
+        {
+          "date": "2010",
+          "entity_count": [
+            {
+              "count": 203,
+              "facet": "1450533103"
+            },
+            {
+              "count": 15,
+              "facet": "4226672321"
+            },
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
+        },
+        {
+          "date": "2010-03-01",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "4040172150"
+            }
+          ]
+        },
+        {
+          "date": "2011",
+          "entity_count": [
+            {
+              "count": 207,
+              "facet": "1450533103"
+            },
+            {
+              "count": 13,
+              "facet": "4226672321"
+            },
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
+        },
+        {
+          "date": "2011-03-01",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "4040172150"
+            }
+          ]
+        },
+        {
+          "date": "2012",
+          "entity_count": [
+            {
+              "count": 212,
+              "facet": "1450533103"
+            },
+            {
+              "count": 10,
+              "facet": "4226672321"
+            },
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
+        },
+        {
+          "date": "2012-03-01",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "4040172150"
+            }
+          ]
+        },
+        {
+          "date": "2013",
+          "entity_count": [
+            {
+              "count": 206,
+              "facet": "1450533103"
+            },
+            {
+              "count": 16,
+              "facet": "4226672321"
+            },
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
+        },
+        {
+          "date": "2013-03-01",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "4040172150"
+            }
+          ]
+        },
+        {
+          "date": "2014",
+          "entity_count": [
+            {
+              "count": 205,
+              "facet": "1450533103"
+            },
+            {
+              "count": 19,
+              "facet": "4226672321"
+            },
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
+        },
+        {
+          "date": "2014-03-01",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "4040172150"
+            }
+          ]
+        },
+        {
+          "date": "2015",
+          "entity_count": [
+            {
+              "count": 200,
+              "facet": "1450533103"
+            },
+            {
+              "count": 23,
+              "facet": "4226672321"
+            },
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
+        },
+        {
+          "date": "2015-03-01",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "4040172150"
+            }
+          ]
+        },
+        {
+          "date": "2016",
+          "entity_count": [
+            {
+              "count": 202,
+              "facet": "1450533103"
+            },
+            {
+              "count": 18,
+              "facet": "4226672321"
+            },
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
+        },
+        {
+          "date": "2016-03-01",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "4040172150"
+            }
+          ]
+        },
+        {
+          "date": "2017",
+          "entity_count": [
+            {
+              "count": 192,
+              "facet": "1450533103"
+            },
+            {
+              "count": 27,
+              "facet": "4226672321"
+            },
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
+        },
+        {
+          "date": "2017-03-01",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "4040172150"
+            }
+          ]
+        },
+        {
+          "date": "2018",
+          "entity_count": [
+            {
+              "count": 181,
+              "facet": "1450533103"
+            },
+            {
+              "count": 37,
+              "facet": "4226672321"
+            },
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
+        },
+        {
+          "date": "2018-03-01",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "4040172150"
+            }
+          ]
+        },
+        {
+          "date": "2019",
+          "entity_count": [
+            {
+              "count": 86,
+              "facet": "1450533103"
+            },
+            {
+              "count": 32,
+              "facet": "4226672321"
+            },
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
+        },
+        {
+          "date": "2019-03-01",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "4040172150"
+            }
+          ]
+        },
+        {
+          "date": "2020",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
+        },
+        {
+          "date": "2020-03-01",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "4040172150"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "facets": {
+    "1450533103": {
+      "import_name": "UNEnergy",
+      "provenance_url": "https://unstats.un.org/unsd/energystats/data/",
+      "observation_period": "P1Y",
+      "unit": "KilowattHour"
+    },
+    "3022640954": {
+      "import_name": "EIA_Electricity",
+      "provenance_url": "https://www.eia.gov/opendata/qb.php?category=0",
+      "unit": "GigawattHour"
+    },
+    "4040172150": {
+      "import_name": "IndiaEnergy",
+      "provenance_url": "https://niti.gov.in/edm/",
+      "unit": "GigawattHour"
+    },
+    "4226672321": {
+      "import_name": "UNEnergy",
+      "provenance_url": "https://unstats.un.org/unsd/energystats/data/",
+      "measurement_method": "UNStatsEstimate",
+      "observation_period": "P1Y",
+      "unit": "KilowattHour"
+    }
+  }
+}
