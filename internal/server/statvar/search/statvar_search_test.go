@@ -26,19 +26,16 @@ import (
 func TestSearchTokens(t *testing.T) {
 	node1 := resource.TrieNode{
 		ChildrenNodes: nil,
-		SvgIds:        map[string]struct{}{"group_1": {}, "group_31": {}},
 		SvIds:         map[string]struct{}{"sv_1_2": {}},
 		Matches:       map[string]struct{}{"token2": {}, "token5": {}, "ab1": {}},
 	}
 	node3 := resource.TrieNode{
 		ChildrenNodes: nil,
-		SvgIds:        nil,
 		SvIds:         map[string]struct{}{"sv_1_1": {}, "sv_1_2": {}},
 		Matches:       map[string]struct{}{"ac3": {}},
 	}
 	nodeX := resource.TrieNode{
 		ChildrenNodes: nil,
-		SvgIds:        map[string]struct{}{"group_3": {}},
 		SvIds:         map[string]struct{}{"sv_1_2": {}, "sv_3": {}},
 		Matches:       map[string]struct{}{"zdx": {}, "token2": {}, "token4": {}},
 	}
@@ -46,7 +43,6 @@ func TestSearchTokens(t *testing.T) {
 		ChildrenNodes: map[rune]*resource.TrieNode{
 			'x': &nodeX,
 		},
-		SvgIds:  nil,
 		SvIds:   nil,
 		Matches: nil,
 	}
@@ -54,7 +50,6 @@ func TestSearchTokens(t *testing.T) {
 		ChildrenNodes: map[rune]*resource.TrieNode{
 			'3': &node3,
 		},
-		SvgIds:  nil,
 		SvIds:   nil,
 		Matches: nil,
 	}
@@ -62,7 +57,6 @@ func TestSearchTokens(t *testing.T) {
 		ChildrenNodes: map[rune]*resource.TrieNode{
 			'd': &nodeDX,
 		},
-		SvgIds:  nil,
 		SvIds:   nil,
 		Matches: nil,
 	}
@@ -70,7 +64,6 @@ func TestSearchTokens(t *testing.T) {
 		ChildrenNodes: map[rune]*resource.TrieNode{
 			'1': &node1,
 		},
-		SvgIds:  nil,
 		SvIds:   nil,
 		Matches: nil,
 	}
@@ -79,7 +72,6 @@ func TestSearchTokens(t *testing.T) {
 			'b': &nodeB,
 			'c': &nodeC,
 		},
-		SvgIds:  nil,
 		SvIds:   nil,
 		Matches: nil,
 	}
@@ -88,7 +80,6 @@ func TestSearchTokens(t *testing.T) {
 		index       *resource.SearchIndex
 		svOnly      bool
 		wantSv      []*pb.EntityInfo
-		wantSvg     []*pb.EntityInfo
 		wantMatches []string
 	}{
 		{
@@ -99,8 +90,7 @@ func TestSearchTokens(t *testing.T) {
 						'a': &nodeA,
 						'z': &nodeZ,
 					},
-					SvgIds: nil,
-					SvIds:  nil,
+					SvIds: nil,
 				},
 				Ranking: map[string]*resource.RankingInfo{
 					"group_1": {
@@ -124,16 +114,6 @@ func TestSearchTokens(t *testing.T) {
 					Name: "ab1 ac3 token2",
 				},
 			},
-			wantSvg: []*pb.EntityInfo{
-				{
-					Dcid: "group_1",
-					Name: "token1 token2",
-				},
-				{
-					Dcid: "group_31",
-					Name: "token1 token5 token6",
-				},
-			},
 			wantMatches: []string{"ab1", "token2", "token5"},
 		},
 		{
@@ -144,8 +124,7 @@ func TestSearchTokens(t *testing.T) {
 						'a': &nodeA,
 						'z': &nodeZ,
 					},
-					SvgIds: nil,
-					SvIds:  nil,
+					SvIds: nil,
 				},
 				Ranking: map[string]*resource.RankingInfo{
 					"sv_1_1": {
@@ -173,7 +152,6 @@ func TestSearchTokens(t *testing.T) {
 					Name: "ab1 ac3 token2",
 				},
 			},
-			wantSvg:     []*pb.EntityInfo{},
 			wantMatches: []string{"ab1", "ac3", "token2", "token4", "token5", "zdx"},
 		},
 		{
@@ -184,8 +162,7 @@ func TestSearchTokens(t *testing.T) {
 						'a': &nodeA,
 						'z': &nodeZ,
 					},
-					SvgIds: nil,
-					SvIds:  nil,
+					SvIds: nil,
 				},
 				Ranking: map[string]*resource.RankingInfo{
 					"group_1": {
@@ -209,114 +186,15 @@ func TestSearchTokens(t *testing.T) {
 					Name: "ab1 ac3 token2",
 				},
 			},
-			wantSvg:     []*pb.EntityInfo{},
 			wantMatches: []string{"ab1", "token2", "token5"},
 		},
 	} {
-		sv, svg, matches := searchTokens(c.tokens, c.index, c.svOnly)
+		sv, matches := searchTokens(c.tokens, c.index, c.svOnly)
 		if diff := cmp.Diff(sv, c.wantSv, protocmp.Transform()); diff != "" {
 			t.Errorf("Stat var list got diff %v", diff)
-		}
-		if diff := cmp.Diff(svg, c.wantSvg, protocmp.Transform(), protocmp.SortRepeated(func(x, y *pb.EntityInfo) bool { return x.Dcid < y.Dcid })); diff != "" {
-			t.Errorf("Stat var group list got diff %v", diff)
 		}
 		if diff := cmp.Diff(matches, c.wantMatches, protocmp.Transform()); diff != "" {
 			t.Errorf("Matches list got diff %v", diff)
-		}
-	}
-}
-
-func TestGroupStatVars(t *testing.T) {
-	for _, c := range []struct {
-		svList      []*pb.EntityInfo
-		svgList     []*pb.EntityInfo
-		parentMap   map[string][]string
-		rankingInfo map[string]*resource.RankingInfo
-		wantSv      []*pb.EntityInfo
-		wantSvg     []*pb.SearchResultSVG
-	}{
-		{
-			svList: []*pb.EntityInfo{
-				{
-					Dcid: "sv1",
-					Name: "sv1",
-				},
-				{
-					Dcid: "sv2",
-					Name: "sv2",
-				},
-				{
-					Dcid: "sv3",
-					Name: "sv3",
-				},
-			},
-			svgList: []*pb.EntityInfo{
-				{
-					Dcid: "svg1",
-					Name: "svg1",
-				},
-				{
-					Dcid: "svg2",
-					Name: "svg2",
-				},
-			},
-			parentMap: map[string][]string{
-				"sv1": {"svg4", "svg8"},
-				"sv2": {"svg8", "svg1"},
-				"sv3": {"svg2", "svg1"},
-			},
-			rankingInfo: map[string]*resource.RankingInfo{
-				"svg1": {
-					ApproxNumPv: 1,
-					RankingName: "svg1",
-				},
-				"svg2": {
-					ApproxNumPv: 3,
-					RankingName: "svg2",
-				},
-				"svg4": {
-					ApproxNumPv: 1,
-					RankingName: "svg4",
-				},
-				"svg8": {
-					ApproxNumPv: 2,
-					RankingName: "svg8",
-				},
-			},
-			wantSv: []*pb.EntityInfo{
-				{
-					Dcid: "sv1",
-					Name: "sv1",
-				},
-			},
-			wantSvg: []*pb.SearchResultSVG{
-				{
-					Dcid: "svg1",
-					Name: "svg1",
-					StatVars: []*pb.EntityInfo{
-						{
-							Dcid: "sv2",
-							Name: "sv2",
-						},
-						{
-							Dcid: "sv3",
-							Name: "sv3",
-						},
-					},
-				},
-				{
-					Dcid: "svg2",
-					Name: "svg2",
-				},
-			},
-		},
-	} {
-		sv, svg := groupStatVars(c.svList, c.svgList, c.parentMap, c.rankingInfo)
-		if diff := cmp.Diff(sv, c.wantSv, protocmp.Transform()); diff != "" {
-			t.Errorf("Stat var list got diff %v", diff)
-		}
-		if diff := cmp.Diff(svg, c.wantSvg, protocmp.Transform()); diff != "" {
-			t.Errorf("Stat var group list got diff %v", diff)
 		}
 	}
 }

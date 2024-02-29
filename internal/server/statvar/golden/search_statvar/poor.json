@@ -1,8 +1,272 @@
 {
   "statVars": [
     {
+      "name": "Average proportion of deprivations for people multidimensionally poor",
+      "dcid": "sdg/SD_MDP_ANDI"
+    },
+    {
       "name": "Proportion of government spending in health, direct social transfers and education which benefit the monetary poor",
       "dcid": "sdg/SD_XPD_MNPO"
+    },
+    {
+      "name": "Proportion of poor population receiving social assistance cash benefit, by sex",
+      "dcid": "sdg/SI_COV_POOR"
+    },
+    {
+      "name": "Average proportion of deprivations for people multidimensionally poor [Rural]",
+      "dcid": "sdg/SD_MDP_ANDI.URBANISATION--R"
+    },
+    {
+      "name": "Average proportion of deprivations for people multidimensionally poor [Urban]",
+      "dcid": "sdg/SD_MDP_ANDI.URBANISATION--U"
+    },
+    {
+      "name": "Percentage of Population With Poor General Health",
+      "dcid": "Percent_Person_18OrMoreYears_WithPoorGeneralHealth"
+    },
+    {
+      "name": "Proportion of poor population receiving social assistance cash benefit, by sex [Female]",
+      "dcid": "sdg/SI_COV_POOR.SEX--F"
+    },
+    {
+      "name": "Proportion of poor population receiving social assistance cash benefit, by sex [Male]",
+      "dcid": "sdg/SI_COV_POOR.SEX--M"
+    },
+    {
+      "name": "Lower Confidence Interval Limit, Prevalence of Physical Health Not Good",
+      "dcid": "LowerConfidenceIntervalLimit_Percent_Person_18OrMoreYears_WithPoorGeneralHealth"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person"
+    },
+    {
+      "name": "Upper Confidence Interval Limit, Prevalence of Physical Health Not Good",
+      "dcid": "UpperConfidenceIntervalLimit_Percent_Person_18OrMoreYears_WithPoorGeneralHealth"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Citizen Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Citizen"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Female Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Foreign Born Outside EU28 Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_ForeignBornOutsideEU28"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Foreign Born Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_ForeignBorn"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Foreign Born Within EU28 Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_ForeignBornWithinEU28"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Limited Activity Limitation Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_LimitedActivityLimitation"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Male Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Male"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Moderate Activity Limitation Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_ModerateActivityLimitation"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Native Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Native"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among No Activity Limitation Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_NoActivityLimitation"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Not A Citizen Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_NotACitizen"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Rural Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Rural"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Semi Urban Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_SemiUrban"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Severe Activity Limitation Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_SevereActivityLimitation"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Tertiary Education Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_TertiaryEducation"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Upper Secondary Education Or Post Secondary Non Tertiary Education Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Urban Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Urban"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Citizen Outside EU28 Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_CitizenOutsideEU28"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Citizen, Female Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Citizen_Female"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Citizen, Male Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Citizen_Male"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Female, Foreign Born Outside EU28 Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_ForeignBornOutsideEU28"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Female, Foreign Born Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_ForeignBorn"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Female, Foreign Born Within EU28 Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_ForeignBornWithinEU28"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Female, Limited Activity Limitation Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_LimitedActivityLimitation"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Female, Moderate Activity Limitation Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_ModerateActivityLimitation"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Female, Native Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_Native"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Female, No Activity Limitation Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_NoActivityLimitation"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Female, Severe Activity Limitation Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_SevereActivityLimitation"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Male Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Male"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Male, Foreign Born Outside EU28 Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Male_ForeignBornOutsideEU28"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Male, Foreign Born Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Male_ForeignBorn"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Male, Foreign Born Within EU28 Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Male_ForeignBornWithinEU28"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Male, Limited Activity Limitation Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Male_LimitedActivityLimitation"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Male, Moderate Activity Limitation Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Male_ModerateActivityLimitation"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Male, Native Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Male_Native"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Male, No Activity Limitation Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Male_NoActivityLimitation"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Male, Severe Activity Limitation Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Male_SevereActivityLimitation"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Not A Citizen, Female Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_NotACitizen_Female"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Not A Citizen, Male Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_NotACitizen_Male"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Rural, Female Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Rural_Female"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Rural, Male Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Rural_Male"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Semi Urban, Female Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_SemiUrban_Female"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Semi Urban, Male Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_SemiUrban_Male"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Tertiary Education, Female Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_TertiaryEducation_Female"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Tertiary Education, Male Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_TertiaryEducation_Male"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Male Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Male"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Urban, Female Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Urban_Female"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Urban, Male Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Urban_Male"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Within EU28 And Not A Citizen Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_WithinEU28AndNotACitizen"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Citizen Outside EU28, Female Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_CitizenOutsideEU28_Female"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Citizen Outside EU28, Male Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_CitizenOutsideEU28_Male"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Within EU28 And Not A Citizen, Female Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_WithinEU28AndNotACitizen_Female"
+    },
+    {
+      "name": "Percentage Receiving Poor Social Support Among Within EU28 And Not A Citizen, Male Population",
+      "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_WithinEU28AndNotACitizen_Male"
     },
     {
       "name": "Account, income, poorest 40% (% ages 15+)",
@@ -63,674 +327,6 @@
     {
       "name": "Coverage of unemployment benefits and ALMP in poorest quintile (% of population)",
       "dcid": "worldBank/per_lm_alllm_cov_q1_tot"
-    }
-  ],
-  "statVarGroups": [
-    {
-      "dcid": "dc/g/Person_Gender-Female_GlobalActivityLimitationindicator_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Gender = Female, Global Activity Limitationindicator, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Female, Limited Activity Limitation Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_LimitedActivityLimitation"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Female, Moderate Activity Limitation Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_ModerateActivityLimitation"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Female, No Activity Limitation Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_NoActivityLimitation"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Female, Severe Activity Limitation Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_SevereActivityLimitation"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_Nativity_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Gender = Female, Nativity, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Female, Foreign Born Outside EU28 Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_ForeignBornOutsideEU28"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Female, Foreign Born Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_ForeignBorn"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Female, Foreign Born Within EU28 Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_ForeignBornWithinEU28"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Female, Native Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female_Native"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Male_GlobalActivityLimitationindicator_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Gender = Male, Global Activity Limitationindicator, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Male, Limited Activity Limitation Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Male_LimitedActivityLimitation"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Male, Moderate Activity Limitation Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Male_ModerateActivityLimitation"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Male, No Activity Limitation Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Male_NoActivityLimitation"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Male, Severe Activity Limitation Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Male_SevereActivityLimitation"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Male_Nativity_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Gender = Male, Nativity, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Male, Foreign Born Outside EU28 Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Male_ForeignBornOutsideEU28"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Male, Foreign Born Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Male_ForeignBorn"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Male, Foreign Born Within EU28 Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Male_ForeignBornWithinEU28"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Male, Native Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Male_Native"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_MedicalCondition-PoorGeneralHealth",
-      "name": "Person With Medical Condition = Poor General Health",
-      "statVars": [
-        {
-          "name": "Percentage of Population With Poor General Health",
-          "dcid": "Percent_Person_18OrMoreYears_WithPoorGeneralHealth"
-        },
-        {
-          "name": "Lower Confidence Interval Limit, Prevalence of Physical Health Not Good",
-          "dcid": "LowerConfidenceIntervalLimit_Percent_Person_18OrMoreYears_WithPoorGeneralHealth"
-        },
-        {
-          "name": "Upper Confidence Interval Limit, Prevalence of Physical Health Not Good",
-          "dcid": "UpperConfidenceIntervalLimit_Percent_Person_18OrMoreYears_WithPoorGeneralHealth"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_PlaceOfResidenceClassification_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Gender = Female, Place of Residence Classification, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Rural, Female Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Rural_Female"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Semi Urban, Female Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_SemiUrban_Female"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Urban, Female Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Urban_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Male_PlaceOfResidenceClassification_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Gender = Male, Place of Residence Classification, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Rural, Male Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Rural_Male"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Semi Urban, Male Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_SemiUrban_Male"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Urban, Male Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Urban_Male"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDGSDMDPANDI_sdgurbanisation",
-      "name": "Average Proportion of Deprivations for People Multidimensionally Poor by Urbanisation",
-      "statVars": [
-        {
-          "name": "Average proportion of deprivations for people multidimensionally poor [Rural]",
-          "dcid": "sdg/SD_MDP_ANDI.URBANISATION--R"
-        },
-        {
-          "name": "Average proportion of deprivations for people multidimensionally poor [Urban]",
-          "dcid": "sdg/SD_MDP_ANDI.URBANISATION--U"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDGSICOVPOOR_sdgsex",
-      "name": "Proportion of Poor Population Receiving Social Assistance Cash Benefit, by Sex by Sex",
-      "statVars": [
-        {
-          "name": "Proportion of poor population receiving social assistance cash benefit, by sex [Female]",
-          "dcid": "sdg/SI_COV_POOR.SEX--F"
-        },
-        {
-          "name": "Proportion of poor population receiving social assistance cash benefit, by sex [Male]",
-          "dcid": "sdg/SI_COV_POOR.SEX--M"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-CitizenOutsideEU28_Gender_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Citizenship Status = Citizen Outside EU 28, Gender, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Citizen Outside EU28, Female Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_CitizenOutsideEU28_Female"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Citizen Outside EU28, Male Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_CitizenOutsideEU28_Male"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-Citizen_Gender_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Citizenship Status = Citizen, Gender, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Citizen, Female Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Citizen_Female"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Citizen, Male Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Citizen_Male"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-NotACitizen_Gender_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Citizenship Status = Not ACitizen, Gender, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Not A Citizen, Female Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_NotACitizen_Female"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Not A Citizen, Male Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_NotACitizen_Male"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-WithinEU28AndNotACitizen_Gender_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Citizenship Status = Within EU 28 And Not ACitizen, Gender, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Within EU28 And Not A Citizen, Female Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_WithinEU28AndNotACitizen_Female"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Within EU28 And Not A Citizen, Male Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_WithinEU28AndNotACitizen_Male"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-LessThanPrimaryEducationPrimaryEducationLowerSecondaryEducation_Gender_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Educational Attainment = Less Than Primary Education \u0026 Primary Education \u0026 Lower Secondary Education, Gender, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Female Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Female"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education, Male Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation_Male"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-TertiaryEducation_Gender_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Educational Attainment = Tertiary Education, Gender, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Tertiary Education, Female Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_TertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Tertiary Education, Male Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_TertiaryEducation_Male"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-UpperSecondaryEducationPostSecondaryNonTertiaryEducation_Gender_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Educational Attainment = Upper Secondary Education \u0026 Post Secondary Non Tertiary Education, Gender, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Female Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female"
-        },
-        {
-          "name": "Percentage Receiving Poor Social Support Among Upper Secondary Education Or Post Secondary Non Tertiary Education, Male Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Male"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-Citizen_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Citizenship Status = Citizen, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Citizen Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Citizen"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-NotACitizen_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Citizenship Status = Not ACitizen, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Not A Citizen Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_NotACitizen"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-LessThanPrimaryEducationPrimaryEducationLowerSecondaryEducation_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Educational Attainment = Less Than Primary Education \u0026 Primary Education \u0026 Lower Secondary Education, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Less Than Primary Education Or Primary Education Or Lower Secondary Education Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-TertiaryEducation_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Educational Attainment = Tertiary Education, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Tertiary Education Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_TertiaryEducation"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment-UpperSecondaryEducationPostSecondaryNonTertiaryEducation_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Educational Attainment = Upper Secondary Education \u0026 Post Secondary Non Tertiary Education, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Upper Secondary Education Or Post Secondary Non Tertiary Education Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Female_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Gender = Female, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Female Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Female"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Gender-Male_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Gender = Male, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Male Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Male"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_GlobalActivityLimitationindicator-LimitedActivityLimitation_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Global Activity Limitationindicator = Limited Activity Limitation, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Limited Activity Limitation Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_LimitedActivityLimitation"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_GlobalActivityLimitationindicator-ModerateActivityLimitation_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Global Activity Limitationindicator = Moderate Activity Limitation, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Moderate Activity Limitation Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_ModerateActivityLimitation"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_GlobalActivityLimitationindicator-NoActivityLimitation_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Global Activity Limitationindicator = No Activity Limitation, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among No Activity Limitation Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_NoActivityLimitation"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_GlobalActivityLimitationindicator-SevereActivityLimitation_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Global Activity Limitationindicator = Severe Activity Limitation, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Severe Activity Limitation Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_SevereActivityLimitation"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Nativity-ForeignBornOutsideEU28_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Nativity = Foreign Born Outside EU 28, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Foreign Born Outside EU28 Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_ForeignBornOutsideEU28"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Nativity-ForeignBornWithinEU28_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Nativity = Foreign Born Within EU 28, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Foreign Born Within EU28 Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_ForeignBornWithinEU28"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Nativity-ForeignBorn_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Nativity = Foreign Born, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Foreign Born Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_ForeignBorn"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_Nativity-Native_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Nativity = Native, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Native Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Native"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_PlaceOfResidenceClassification-Rural_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Place of Residence Classification = Rural, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Rural Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Rural"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_PlaceOfResidenceClassification-SemiUrban_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Place of Residence Classification = Semi Urban, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Semi Urban Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_SemiUrban"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_PlaceOfResidenceClassification-Urban_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Place of Residence Classification = Urban, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Urban Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Urban"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-CitizenOutsideEU28_Nativity-CitizenOutsideEU28_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Citizenship Status = Citizen Outside EU 28, Nativity = Citizen Outside EU 28, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Citizen Outside EU28 Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_CitizenOutsideEU28"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-WithinEU28AndNotACitizen_Nativity-WithinEU28AndNotACitizen_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Citizenship Status = Within EU 28 And Not ACitizen, Nativity = Within EU 28 And Not ACitizen, Social Support Level = Receiving Poor Social Support",
-      "statVars": [
-        {
-          "name": "Percentage Receiving Poor Social Support Among Within EU28 And Not A Citizen Population",
-          "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_WithinEU28AndNotACitizen"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDGSDMDPANDI",
-      "name": "Average Proportion of Deprivations for People Multidimensionally Poor",
-      "statVars": [
-        {
-          "name": "Average proportion of deprivations for people multidimensionally poor",
-          "dcid": "sdg/SD_MDP_ANDI"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDGSICOVPOOR",
-      "name": "Proportion of Poor Population Receiving Social Assistance Cash Benefit, by Sex",
-      "statVars": [
-        {
-          "name": "Proportion of poor population receiving social assistance cash benefit, by sex",
-          "dcid": "sdg/SI_COV_POOR"
-        }
-      ]
-    },
-    {
-      "dcid": "dc/g/SDG_1.3.1",
-      "name": "1.3.1: Proportion of population covered by social protection floors/systems, by sex, distinguishing children, unemployed persons, older persons, persons with disabilities, pregnant women, newborns, work-injury victims and the poor and the vulnerable"
-    },
-    {
-      "dcid": "dc/g/SDG_1.3",
-      "name": "1.3: Implement nationally appropriate social protection systems and measures for all, including floors, and by 2030 achieve substantial coverage of the poor and the vulnerable"
-    },
-    {
-      "dcid": "dc/g/SDG_1.4",
-      "name": "1.4: By 2030, ensure that all men and women, in particular the poor and the vulnerable, have equal rights to economic resources, as well as access to basic services, ownership and control over land and other forms of property, inheritance, natural resources, appropriate new technology and financial services, including microfinance"
-    },
-    {
-      "dcid": "dc/g/SDG_1.5",
-      "name": "1.5: By 2030, build the resilience of the poor and those in vulnerable situations and reduce their exposure and vulnerability to climate-related extreme events and other economic, social and environmental shocks and disasters"
-    },
-    {
-      "dcid": "dc/g/SDG_11.5",
-      "name": "11.5: By 2030, significantly reduce the number of deaths and the number of people affected and substantially decrease the direct economic losses relative to global gross domestic product caused by disasters, including water-related disasters, with a focus on protecting the poor and people in vulnerable situations"
-    },
-    {
-      "dcid": "dc/g/SDG_12.c",
-      "name": "12.c: Rationalize inefficient fossil-fuel subsidies that encourage wasteful consumption by removing market distortions, in accordance with national circumstances, including by restructuring taxation and phasing out those harmful subsidies, where they exist, to reflect their environmental impacts, taking fully into account the specific needs and conditions of developing countries and minimizing the possible adverse impacts on their development in a manner that protects the poor and the affected communities"
-    },
-    {
-      "dcid": "dc/g/SDG_17.4",
-      "name": "17.4: Assist developing countries in attaining long-term debt sustainability through coordinated policies aimed at fostering debt financing, debt relief and debt restructuring, as appropriate, and address the external debt of highly indebted poor countries to reduce debt distress"
-    },
-    {
-      "dcid": "dc/g/SDG_2.1",
-      "name": "2.1: By 2030, end hunger and ensure access by all people, in particular the poor and people in vulnerable situations, including infants, to safe, nutritious and sufficient food all year round"
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-CitizenOutsideEU28_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Citizenship Status = Citizen Outside EU 28, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-WithinEU28AndNotACitizen_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Citizenship Status = Within EU 28 And Not ACitizen, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Citizenship Status, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Educational Attainment, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Gender, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_GlobalActivityLimitationindicator_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Global Activity Limitationindicator, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_Nativity-CitizenOutsideEU28_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Nativity = Citizen Outside EU 28, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_Nativity-WithinEU28AndNotACitizen_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Nativity = Within EU 28 And Not ACitizen, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_Nativity_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Nativity, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_PlaceOfResidenceClassification_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Place of Residence Classification, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-CitizenOutsideEU28_Nativity_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Citizenship Status = Citizen Outside EU 28, Nativity, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-WithinEU28AndNotACitizen_Nativity_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Citizenship Status = Within EU 28 And Not ACitizen, Nativity, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus_Gender-Female_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Citizenship Status, Gender = Female, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus_Gender-Male_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Citizenship Status, Gender = Male, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus_Nativity-CitizenOutsideEU28_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Citizenship Status, Nativity = Citizen Outside EU 28, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus_Nativity-WithinEU28AndNotACitizen_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Citizenship Status, Nativity = Within EU 28 And Not ACitizen, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment_Gender-Female_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Educational Attainment, Gender = Female, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_EducationalAttainment_Gender-Male_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Educational Attainment, Gender = Male, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_GlobalActivityLimitationindicator-LimitedActivityLimitation_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Gender, Global Activity Limitationindicator = Limited Activity Limitation, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_GlobalActivityLimitationindicator-ModerateActivityLimitation_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Gender, Global Activity Limitationindicator = Moderate Activity Limitation, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_GlobalActivityLimitationindicator-NoActivityLimitation_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Gender, Global Activity Limitationindicator = No Activity Limitation, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_GlobalActivityLimitationindicator-SevereActivityLimitation_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Gender, Global Activity Limitationindicator = Severe Activity Limitation, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_Nativity-CitizenOutsideEU28_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Gender, Nativity = Citizen Outside EU 28, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_Nativity-ForeignBornOutsideEU28_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Gender, Nativity = Foreign Born Outside EU 28, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_Nativity-ForeignBornWithinEU28_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Gender, Nativity = Foreign Born Within EU 28, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_Nativity-ForeignBorn_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Gender, Nativity = Foreign Born, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_Nativity-Native_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Gender, Nativity = Native, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_Nativity-WithinEU28AndNotACitizen_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Gender, Nativity = Within EU 28 And Not ACitizen, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_PlaceOfResidenceClassification-Rural_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Gender, Place of Residence Classification = Rural, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_PlaceOfResidenceClassification-SemiUrban_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Gender, Place of Residence Classification = Semi Urban, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_Gender_PlaceOfResidenceClassification-Urban_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Gender, Place of Residence Classification = Urban, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-CitizenOutsideEU28_Gender_Nativity-CitizenOutsideEU28_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Citizenship Status = Citizen Outside EU 28, Gender, Nativity = Citizen Outside EU 28, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "dc/g/Person_CitizenshipStatus-WithinEU28AndNotACitizen_Gender_Nativity-WithinEU28AndNotACitizen_SocialSupportLevel-ReceivingPoorSocialSupport",
-      "name": "Person With Citizenship Status = Within EU 28 And Not ACitizen, Gender, Nativity = Within EU 28 And Not ACitizen, Social Support Level = Receiving Poor Social Support"
-    },
-    {
-      "dcid": "eia/g/COAL.769177",
-      "name": "(1518942) Poor Branch Surface #1 (1518942)"
     }
   ],
   "matches": [

@@ -54,6 +54,12 @@ func TestBulkObservationDatesLinked(t *testing.T) {
 				[]string{"Count_Person", "Count_Person_Female"},
 				"USA_State.json",
 			},
+			{
+				"Earth",
+				"Country",
+				[]string{"Annual_Generation_Electricity"},
+				"Earth_Country.json",
+			},
 		} {
 			resp, err := mixer.BulkObservationDatesLinked(ctx, &pbv1.BulkObservationDatesLinkedRequest{
 				LinkedEntity:   c.linkedEntity,
