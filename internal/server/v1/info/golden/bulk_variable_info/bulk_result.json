@@ -43,7 +43,7 @@
             "maxValue": 24354012
           },
           "AdministrativeArea2": {
-            "placeCount": 6338,
+            "placeCount": 6615,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1143712",
@@ -58,7 +58,7 @@
                 "name": "City of Cape Town"
               }
             ],
-            "minValue": 53,
+            "minValue": 0,
             "maxValue": 1958842
           },
           "AdministrativeArea3": {
@@ -373,7 +373,7 @@
             "maxValue": 840
           },
           "Place": {
-            "placeCount": 71,
+            "placeCount": 83,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q302246",
@@ -3143,6 +3143,128 @@
             "observationCount": 35,
             "timeSeriesCount": 35
           },
+          "dc/base/Sweden_Census": {
+            "importName": "Sweden_Census",
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "1860",
+                "latestDate": "2022",
+                "placeTypeSummary": {
+                  "AdministrativeArea2": {
+                    "placeCount": 277,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q506250",
+                        "name": "Stockholm Municipality"
+                      },
+                      {
+                        "dcid": "wikidataId/Q52502",
+                        "name": "Gothenburg Municipality"
+                      },
+                      {
+                        "dcid": "wikidataId/Q503361",
+                        "name": "Malmö Municipality"
+                      }
+                    ],
+                    "minValue": 0,
+                    "maxValue": 496463
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/SWE",
+                        "name": "Sweden"
+                      }
+                    ],
+                    "minValue": 1985329,
+                    "maxValue": 5223232
+                  },
+                  "EurostatNUTS1": {
+                    "placeCount": 3,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/SE2",
+                        "name": "Södra Sverige"
+                      },
+                      {
+                        "dcid": "nuts/SE1",
+                        "name": "Östra Sverige"
+                      },
+                      {
+                        "dcid": "nuts/SE3",
+                        "name": "Norra Sverige"
+                      }
+                    ],
+                    "minValue": 848209,
+                    "maxValue": 2262090
+                  },
+                  "EurostatNUTS2": {
+                    "placeCount": 8,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/SE11",
+                        "name": "Stockholm"
+                      },
+                      {
+                        "dcid": "nuts/SE23",
+                        "name": "Västsverige"
+                      },
+                      {
+                        "dcid": "nuts/SE12",
+                        "name": "Östra Mellansverige"
+                      }
+                    ],
+                    "minValue": 183839,
+                    "maxValue": 1216497
+                  },
+                  "EurostatNUTS3": {
+                    "placeCount": 21,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/SE110",
+                        "name": "Stockholm County"
+                      },
+                      {
+                        "dcid": "nuts/SE232",
+                        "name": "Västra Götaland County"
+                      },
+                      {
+                        "dcid": "nuts/SE224",
+                        "name": "Skåne County"
+                      }
+                    ],
+                    "minValue": 26533,
+                    "maxValue": 1216497
+                  },
+                  "Place": {
+                    "placeCount": 12,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q59091"
+                      },
+                      {
+                        "dcid": "wikidataId/Q297718"
+                      },
+                      {
+                        "dcid": "wikidataId/Q894327"
+                      }
+                    ],
+                    "minValue": 1900,
+                    "maxValue": 122570
+                  }
+                },
+                "minValue": 0,
+                "maxValue": 5223232,
+                "observationCount": 17818,
+                "timeSeriesCount": 322
+              }
+            ],
+            "observationCount": 17818,
+            "timeSeriesCount": 322
+          },
           "dc/base/USCensusPEP_Sex": {
             "importName": "USCensusPEP_Sex",
             "releaseFrequency": "P1Y",
@@ -3255,6 +3377,25 @@
             "minValue": 0.6,
             "maxValue": 8
           },
+          "AdministrativeArea2": {
+            "placeCount": 276,
+            "topPlaces": [
+              {
+                "dcid": "wikidataId/Q506250",
+                "name": "Stockholm Municipality"
+              },
+              {
+                "dcid": "wikidataId/Q52502",
+                "name": "Gothenburg Municipality"
+              },
+              {
+                "dcid": "wikidataId/Q503361",
+                "name": "Malmö Municipality"
+              }
+            ],
+            "minValue": 1.12,
+            "maxValue": 3.15
+          },
           "City": {
             "placeCount": 140,
             "topPlaces": [
@@ -3351,15 +3492,20 @@
             "maxValue": 4.9
           },
           "Place": {
-            "placeCount": 1,
+            "placeCount": 12,
             "topPlaces": [
               {
-                "dcid": "Earth",
-                "name": "World"
+                "dcid": "wikidataId/Q59091"
+              },
+              {
+                "dcid": "wikidataId/Q297718"
+              },
+              {
+                "dcid": "wikidataId/Q894327"
               }
             ],
-            "minValue": 2.27319100090675,
-            "maxValue": 5.32342829673039
+            "minValue": 1.31,
+            "maxValue": 2.91
           }
         },
         "provenanceSummary": {
@@ -3579,6 +3725,60 @@
             ],
             "observationCount": 36,
             "timeSeriesCount": 9
+          },
+          "dc/base/Sweden_Census": {
+            "importName": "Sweden_Census",
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "2000",
+                "latestDate": "2022",
+                "placeTypeSummary": {
+                  "AdministrativeArea2": {
+                    "placeCount": 276,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q506250",
+                        "name": "Stockholm Municipality"
+                      },
+                      {
+                        "dcid": "wikidataId/Q52502",
+                        "name": "Gothenburg Municipality"
+                      },
+                      {
+                        "dcid": "wikidataId/Q503361",
+                        "name": "Malmö Municipality"
+                      }
+                    ],
+                    "minValue": 1.12,
+                    "maxValue": 3.15
+                  },
+                  "Place": {
+                    "placeCount": 12,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q59091"
+                      },
+                      {
+                        "dcid": "wikidataId/Q297718"
+                      },
+                      {
+                        "dcid": "wikidataId/Q894327"
+                      }
+                    ],
+                    "minValue": 1.31,
+                    "maxValue": 2.91
+                  }
+                },
+                "minValue": 1.12,
+                "maxValue": 3.15,
+                "observationCount": 6502,
+                "timeSeriesCount": 288
+              }
+            ],
+            "observationCount": 6502,
+            "timeSeriesCount": 288
           },
           "dc/base/WorldDevelopmentIndicators": {
             "importName": "WorldDevelopmentIndicators",
