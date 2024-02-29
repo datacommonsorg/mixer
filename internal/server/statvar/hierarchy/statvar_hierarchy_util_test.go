@@ -207,19 +207,16 @@ func TestRemoveSvg(t *testing.T) {
 func TestBuildStatVarSearchIndex(t *testing.T) {
 	token1 := resource.TrieNode{
 		ChildrenNodes: nil,
-		SvgIds:        map[string]struct{}{"g_1": {}},
 		SvIds:         map[string]struct{}{"sv_1_1": {}},
 		Matches:       map[string]struct{}{"ab1": {}},
 	}
 	token3 := resource.TrieNode{
 		ChildrenNodes: nil,
-		SvgIds:        nil,
 		SvIds:         map[string]struct{}{"sv_1_1": {}, "sv_1_2": {}},
 		Matches:       map[string]struct{}{"ac3": {}},
 	}
 	tokenX := resource.TrieNode{
 		ChildrenNodes: nil,
-		SvgIds:        map[string]struct{}{"g_1": {}, "g_3_1": {}},
 		SvIds:         map[string]struct{}{"sv_3": {}},
 		Matches:       map[string]struct{}{"zdx": {}},
 	}
@@ -227,13 +224,11 @@ func TestBuildStatVarSearchIndex(t *testing.T) {
 		ChildrenNodes: map[rune]*resource.TrieNode{
 			'x': &tokenX,
 		},
-		SvgIds:  nil,
 		SvIds:   nil,
 		Matches: nil,
 	}
 	tokenD := resource.TrieNode{
 		ChildrenNodes: nil,
-		SvgIds:        map[string]struct{}{"g_3_1": {}},
 		SvIds:         map[string]struct{}{"sv_1_2": {}, "sv3": {}},
 		Matches:       map[string]struct{}{"bd": {}},
 	}
@@ -241,7 +236,6 @@ func TestBuildStatVarSearchIndex(t *testing.T) {
 		ChildrenNodes: map[rune]*resource.TrieNode{
 			'3': &token3,
 		},
-		SvgIds:  nil,
 		SvIds:   nil,
 		Matches: nil,
 	}
@@ -249,7 +243,6 @@ func TestBuildStatVarSearchIndex(t *testing.T) {
 		ChildrenNodes: map[rune]*resource.TrieNode{
 			'd': &tokenDX,
 		},
-		SvgIds:  nil,
 		SvIds:   nil,
 		Matches: nil,
 	}
@@ -257,7 +250,6 @@ func TestBuildStatVarSearchIndex(t *testing.T) {
 		ChildrenNodes: map[rune]*resource.TrieNode{
 			'd': &tokenD,
 		},
-		SvgIds:  nil,
 		SvIds:   nil,
 		Matches: nil,
 	}
@@ -265,7 +257,6 @@ func TestBuildStatVarSearchIndex(t *testing.T) {
 		ChildrenNodes: map[rune]*resource.TrieNode{
 			'1': &token1,
 		},
-		SvgIds:  nil,
 		SvIds:   nil,
 		Matches: nil,
 	}
@@ -274,64 +265,16 @@ func TestBuildStatVarSearchIndex(t *testing.T) {
 			'b': &tokenB2,
 			'c': &tokenC,
 		},
-		SvgIds:  nil,
-		SvIds:   nil,
-		Matches: nil,
-	}
-	token1a := resource.TrieNode{
-		ChildrenNodes: nil,
-		SvgIds:        map[string]struct{}{"g_1": {}},
-		SvIds:         nil,
-		Matches:       map[string]struct{}{"": {}},
-	}
-	token1b := resource.TrieNode{
-		ChildrenNodes: nil,
-		SvgIds:        map[string]struct{}{"g_3_1": {}},
-		SvIds:         nil,
-		Matches:       map[string]struct{}{"": {}},
-	}
-	tokenUnderscore := resource.TrieNode{
-		ChildrenNodes: map[rune]*resource.TrieNode{
-			'1': &token1b,
-		},
-		SvgIds:  nil,
-		SvIds:   nil,
-		Matches: nil,
-	}
-	token3a := resource.TrieNode{
-		ChildrenNodes: map[rune]*resource.TrieNode{
-			'_': &tokenUnderscore,
-		},
-		SvgIds:  nil,
-		SvIds:   nil,
-		Matches: nil,
-	}
-	tokenUnderscore1 := resource.TrieNode{
-		ChildrenNodes: map[rune]*resource.TrieNode{
-			'1': &token1a,
-			'3': &token3a,
-		},
-		SvgIds:  nil,
-		SvIds:   nil,
-		Matches: nil,
-	}
-	tokenG := resource.TrieNode{
-		ChildrenNodes: map[rune]*resource.TrieNode{
-			'_': &tokenUnderscore1,
-		},
-		SvgIds:  nil,
 		SvIds:   nil,
 		Matches: nil,
 	}
 	token1c := resource.TrieNode{
 		ChildrenNodes: nil,
-		SvgIds:        nil,
 		SvIds:         map[string]struct{}{"sv_1_1": {}},
 		Matches:       map[string]struct{}{"": {}},
 	}
 	token2a := resource.TrieNode{
 		ChildrenNodes: nil,
-		SvgIds:        nil,
 		SvIds:         map[string]struct{}{"sv_1_2": {}},
 		Matches:       map[string]struct{}{"": {}},
 	}
@@ -340,7 +283,6 @@ func TestBuildStatVarSearchIndex(t *testing.T) {
 			'1': &token1c,
 			'2': &token2a,
 		},
-		SvgIds:  nil,
 		SvIds:   nil,
 		Matches: nil,
 	}
@@ -348,13 +290,11 @@ func TestBuildStatVarSearchIndex(t *testing.T) {
 		ChildrenNodes: map[rune]*resource.TrieNode{
 			'_': &tokenUnderscore2,
 		},
-		SvgIds:  nil,
 		SvIds:   nil,
 		Matches: nil,
 	}
 	token3b := resource.TrieNode{
 		ChildrenNodes: nil,
-		SvgIds:        nil,
 		SvIds:         map[string]struct{}{"sv_3": {}},
 		Matches:       map[string]struct{}{"": {}},
 	}
@@ -363,13 +303,11 @@ func TestBuildStatVarSearchIndex(t *testing.T) {
 			'1': &token1d,
 			'3': &token3b,
 		},
-		SvgIds:  nil,
 		SvIds:   nil,
 		Matches: nil,
 	}
 	token3c := resource.TrieNode{
 		ChildrenNodes: nil,
-		SvgIds:        nil,
 		SvIds:         map[string]struct{}{"sv3": {}},
 		Matches:       map[string]struct{}{"": {}},
 	}
@@ -378,7 +316,6 @@ func TestBuildStatVarSearchIndex(t *testing.T) {
 			'_': &tokenUnderscore3,
 			'3': &token3c,
 		},
-		SvgIds:  nil,
 		SvIds:   nil,
 		Matches: nil,
 	}
@@ -386,7 +323,6 @@ func TestBuildStatVarSearchIndex(t *testing.T) {
 		ChildrenNodes: map[rune]*resource.TrieNode{
 			'v': &tokenV,
 		},
-		SvgIds:  nil,
 		SvIds:   nil,
 		Matches: nil,
 	}
@@ -458,28 +394,16 @@ func TestBuildStatVarSearchIndex(t *testing.T) {
 						'a': &tokenA,
 						'z': &tokenZ,
 						'b': &tokenB1,
-						'g': &tokenG,
 						's': &tokenS,
 					},
-					SvgIds:  nil,
 					SvIds:   nil,
 					Matches: nil,
 				},
 				Ranking: map[string]*resource.RankingInfo{
-					"g_1": {
-						ApproxNumPv: 2,
-						NumKnownPv:  2,
-						RankingName: "ab1 zDx",
-					},
 					"sv_1_1": {
 						ApproxNumPv: 3,
 						NumKnownPv:  3,
 						RankingName: "sv1",
-					},
-					"g_3_1": {
-						ApproxNumPv: 3,
-						NumKnownPv:  3,
-						RankingName: "zdx, bd",
 					},
 					"sv_3": {
 						ApproxNumPv: 2,
@@ -589,28 +513,16 @@ func TestBuildStatVarSearchIndex(t *testing.T) {
 						'a': &tokenA,
 						'z': &tokenZ,
 						'b': &tokenB1,
-						'g': &tokenG,
 						's': &tokenS,
 					},
-					SvgIds:  nil,
 					SvIds:   nil,
 					Matches: nil,
 				},
 				Ranking: map[string]*resource.RankingInfo{
-					"g_1": {
-						ApproxNumPv: 2,
-						NumKnownPv:  2,
-						RankingName: "ab1 zDx",
-					},
 					"sv_1_1": {
 						ApproxNumPv: 3,
 						NumKnownPv:  3,
 						RankingName: "sv1",
-					},
-					"g_3_1": {
-						ApproxNumPv: 3,
-						NumKnownPv:  3,
-						RankingName: "zdx, bd",
 					},
 					"sv_3": {
 						ApproxNumPv: 2,

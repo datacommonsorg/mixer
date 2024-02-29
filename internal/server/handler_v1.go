@@ -492,7 +492,7 @@ func (s *Server) SearchStatVar(
 	if err != nil {
 		return nil, err
 	}
-	if len(localResp.StatVarGroups) == 0 && len(localResp.StatVars) == 0 && len(localResp.Matches) == 0 {
+	if len(localResp.StatVars) == 0 && len(localResp.Matches) == 0 {
 		if s.metadata.RemoteMixerDomain != "" {
 			remoteResp := &pb.SearchStatVarResponse{}
 			if err := util.FetchRemote(

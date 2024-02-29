@@ -505,72 +505,6 @@ func (x *GetStatVarPathResponse) GetPath() []string {
 	return nil
 }
 
-type SearchResultSVG struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	// DCID of the stat var group
-	Dcid string `protobuf:"bytes,1,opt,name=dcid,proto3" json:"dcid,omitempty"`
-	// Name of the stat var group
-	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	// List of children stat vars that also match the search query
-	StatVars []*EntityInfo `protobuf:"bytes,3,rep,name=stat_vars,json=statVars,proto3" json:"stat_vars,omitempty"`
-}
-
-func (x *SearchResultSVG) Reset() {
-	*x = SearchResultSVG{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_var_proto_msgTypes[8]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SearchResultSVG) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SearchResultSVG) ProtoMessage() {}
-
-func (x *SearchResultSVG) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_var_proto_msgTypes[8]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SearchResultSVG.ProtoReflect.Descriptor instead.
-func (*SearchResultSVG) Descriptor() ([]byte, []int) {
-	return file_stat_var_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *SearchResultSVG) GetDcid() string {
-	if x != nil {
-		return x.Dcid
-	}
-	return ""
-}
-
-func (x *SearchResultSVG) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SearchResultSVG) GetStatVars() []*EntityInfo {
-	if x != nil {
-		return x.StatVars
-	}
-	return nil
-}
-
 type SearchStatVarRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -587,7 +521,7 @@ type SearchStatVarRequest struct {
 func (x *SearchStatVarRequest) Reset() {
 	*x = SearchStatVarRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_var_proto_msgTypes[9]
+		mi := &file_stat_var_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -600,7 +534,7 @@ func (x *SearchStatVarRequest) String() string {
 func (*SearchStatVarRequest) ProtoMessage() {}
 
 func (x *SearchStatVarRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_var_proto_msgTypes[9]
+	mi := &file_stat_var_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -613,7 +547,7 @@ func (x *SearchStatVarRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SearchStatVarRequest.ProtoReflect.Descriptor instead.
 func (*SearchStatVarRequest) Descriptor() ([]byte, []int) {
-	return file_stat_var_proto_rawDescGZIP(), []int{9}
+	return file_stat_var_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *SearchStatVarRequest) GetQuery() string {
@@ -645,8 +579,6 @@ type SearchStatVarResponse struct {
 	// A ranked list of stat vars that aren't included in any of the returned stat
 	// var groups.
 	StatVars []*EntityInfo `protobuf:"bytes,1,rep,name=stat_vars,json=statVars,proto3" json:"stat_vars,omitempty"`
-	// A list of stat var group results ranked by relevance.
-	StatVarGroups []*SearchResultSVG `protobuf:"bytes,2,rep,name=stat_var_groups,json=statVarGroups,proto3" json:"stat_var_groups,omitempty"`
 	// A list of unique strings in the names of the results that match the search
 	// tokens
 	Matches []string `protobuf:"bytes,3,rep,name=matches,proto3" json:"matches,omitempty"`
@@ -655,7 +587,7 @@ type SearchStatVarResponse struct {
 func (x *SearchStatVarResponse) Reset() {
 	*x = SearchStatVarResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_var_proto_msgTypes[10]
+		mi := &file_stat_var_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -668,7 +600,7 @@ func (x *SearchStatVarResponse) String() string {
 func (*SearchStatVarResponse) ProtoMessage() {}
 
 func (x *SearchStatVarResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_var_proto_msgTypes[10]
+	mi := &file_stat_var_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -681,19 +613,12 @@ func (x *SearchStatVarResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SearchStatVarResponse.ProtoReflect.Descriptor instead.
 func (*SearchStatVarResponse) Descriptor() ([]byte, []int) {
-	return file_stat_var_proto_rawDescGZIP(), []int{10}
+	return file_stat_var_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *SearchStatVarResponse) GetStatVars() []*EntityInfo {
 	if x != nil {
 		return x.StatVars
-	}
-	return nil
-}
-
-func (x *SearchStatVarResponse) GetStatVarGroups() []*SearchResultSVG {
-	if x != nil {
-		return x.StatVarGroups
 	}
 	return nil
 }
@@ -717,7 +642,7 @@ type StatVarSummary_Place struct {
 func (x *StatVarSummary_Place) Reset() {
 	*x = StatVarSummary_Place{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_var_proto_msgTypes[11]
+		mi := &file_stat_var_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -730,7 +655,7 @@ func (x *StatVarSummary_Place) String() string {
 func (*StatVarSummary_Place) ProtoMessage() {}
 
 func (x *StatVarSummary_Place) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_var_proto_msgTypes[11]
+	mi := &file_stat_var_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -778,7 +703,7 @@ type StatVarSummary_PlaceTypeSummary struct {
 func (x *StatVarSummary_PlaceTypeSummary) Reset() {
 	*x = StatVarSummary_PlaceTypeSummary{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_var_proto_msgTypes[12]
+		mi := &file_stat_var_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -791,7 +716,7 @@ func (x *StatVarSummary_PlaceTypeSummary) String() string {
 func (*StatVarSummary_PlaceTypeSummary) ProtoMessage() {}
 
 func (x *StatVarSummary_PlaceTypeSummary) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_var_proto_msgTypes[12]
+	mi := &file_stat_var_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -860,7 +785,7 @@ type StatVarSummary_SeriesSummary struct {
 func (x *StatVarSummary_SeriesSummary) Reset() {
 	*x = StatVarSummary_SeriesSummary{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_var_proto_msgTypes[13]
+		mi := &file_stat_var_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -873,7 +798,7 @@ func (x *StatVarSummary_SeriesSummary) String() string {
 func (*StatVarSummary_SeriesSummary) ProtoMessage() {}
 
 func (x *StatVarSummary_SeriesSummary) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_var_proto_msgTypes[13]
+	mi := &file_stat_var_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -965,7 +890,7 @@ type StatVarSummary_ProvenanceSummary struct {
 func (x *StatVarSummary_ProvenanceSummary) Reset() {
 	*x = StatVarSummary_ProvenanceSummary{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_var_proto_msgTypes[14]
+		mi := &file_stat_var_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -978,7 +903,7 @@ func (x *StatVarSummary_ProvenanceSummary) String() string {
 func (*StatVarSummary_ProvenanceSummary) ProtoMessage() {}
 
 func (x *StatVarSummary_ProvenanceSummary) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_var_proto_msgTypes[14]
+	mi := &file_stat_var_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1051,7 +976,7 @@ type StatVarSummary_SeriesSummary_SeriesKey struct {
 func (x *StatVarSummary_SeriesSummary_SeriesKey) Reset() {
 	*x = StatVarSummary_SeriesSummary_SeriesKey{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_var_proto_msgTypes[17]
+		mi := &file_stat_var_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1064,7 +989,7 @@ func (x *StatVarSummary_SeriesSummary_SeriesKey) String() string {
 func (*StatVarSummary_SeriesSummary_SeriesKey) ProtoMessage() {}
 
 func (x *StatVarSummary_SeriesSummary_SeriesKey) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_var_proto_msgTypes[17]
+	mi := &file_stat_var_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1142,7 +1067,7 @@ type StatVarGroupNode_ChildSVG struct {
 func (x *StatVarGroupNode_ChildSVG) Reset() {
 	*x = StatVarGroupNode_ChildSVG{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_var_proto_msgTypes[20]
+		mi := &file_stat_var_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1155,7 +1080,7 @@ func (x *StatVarGroupNode_ChildSVG) String() string {
 func (*StatVarGroupNode_ChildSVG) ProtoMessage() {}
 
 func (x *StatVarGroupNode_ChildSVG) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_var_proto_msgTypes[20]
+	mi := &file_stat_var_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1229,7 +1154,7 @@ type StatVarGroupNode_ChildSV struct {
 func (x *StatVarGroupNode_ChildSV) Reset() {
 	*x = StatVarGroupNode_ChildSV{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_stat_var_proto_msgTypes[21]
+		mi := &file_stat_var_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1242,7 +1167,7 @@ func (x *StatVarGroupNode_ChildSV) String() string {
 func (*StatVarGroupNode_ChildSV) ProtoMessage() {}
 
 func (x *StatVarGroupNode_ChildSV) ProtoReflect() protoreflect.Message {
-	mi := &file_stat_var_proto_msgTypes[21]
+	mi := &file_stat_var_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1502,35 +1427,24 @@ var file_stat_var_proto_rawDesc = []byte{
 	0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x22,
 	0x2c, 0x0a, 0x16, 0x47, 0x65, 0x74, 0x53, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x50, 0x61, 0x74,
 	0x68, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x70, 0x61, 0x74,
-	0x68, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x04, 0x70, 0x61, 0x74, 0x68, 0x22, 0x6f, 0x0a,
-	0x0f, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x53, 0x56, 0x47,
-	0x12, 0x12, 0x0a, 0x04, 0x64, 0x63, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
-	0x64, 0x63, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x34, 0x0a, 0x09, 0x73, 0x74, 0x61, 0x74,
-	0x5f, 0x76, 0x61, 0x72, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x64, 0x61,
-	0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79,
-	0x49, 0x6e, 0x66, 0x6f, 0x52, 0x08, 0x73, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x73, 0x22, 0x5d,
-	0x0a, 0x14, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x53, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x14, 0x0a, 0x05, 0x71, 0x75, 0x65, 0x72, 0x79, 0x18,
-	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x71, 0x75, 0x65, 0x72, 0x79, 0x12, 0x16, 0x0a, 0x06,
-	0x70, 0x6c, 0x61, 0x63, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x09, 0x52, 0x06, 0x70, 0x6c,
-	0x61, 0x63, 0x65, 0x73, 0x12, 0x17, 0x0a, 0x07, 0x73, 0x76, 0x5f, 0x6f, 0x6e, 0x6c, 0x79, 0x18,
-	0x04, 0x20, 0x01, 0x28, 0x08, 0x52, 0x06, 0x73, 0x76, 0x4f, 0x6e, 0x6c, 0x79, 0x22, 0xad, 0x01,
-	0x0a, 0x15, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x53, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x34, 0x0a, 0x09, 0x73, 0x74, 0x61, 0x74, 0x5f,
-	0x76, 0x61, 0x72, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x64, 0x61, 0x74,
-	0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x49,
-	0x6e, 0x66, 0x6f, 0x52, 0x08, 0x73, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x73, 0x12, 0x44, 0x0a,
-	0x0f, 0x73, 0x74, 0x61, 0x74, 0x5f, 0x76, 0x61, 0x72, 0x5f, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x73,
-	0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1c, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d,
-	0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x52, 0x65, 0x73, 0x75, 0x6c,
-	0x74, 0x53, 0x56, 0x47, 0x52, 0x0d, 0x73, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x47, 0x72, 0x6f,
-	0x75, 0x70, 0x73, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x65, 0x73, 0x18, 0x03,
-	0x20, 0x03, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x61, 0x74, 0x63, 0x68, 0x65, 0x73, 0x42, 0x30, 0x5a,
-	0x2e, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x64, 0x61, 0x74, 0x61,
-	0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x6f, 0x72, 0x67, 0x2f, 0x6d, 0x69, 0x78, 0x65, 0x72,
-	0x2f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62,
-	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x68, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x04, 0x70, 0x61, 0x74, 0x68, 0x22, 0x5d, 0x0a,
+	0x14, 0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x53, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x14, 0x0a, 0x05, 0x71, 0x75, 0x65, 0x72, 0x79, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x71, 0x75, 0x65, 0x72, 0x79, 0x12, 0x16, 0x0a, 0x06, 0x70,
+	0x6c, 0x61, 0x63, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x09, 0x52, 0x06, 0x70, 0x6c, 0x61,
+	0x63, 0x65, 0x73, 0x12, 0x17, 0x0a, 0x07, 0x73, 0x76, 0x5f, 0x6f, 0x6e, 0x6c, 0x79, 0x18, 0x04,
+	0x20, 0x01, 0x28, 0x08, 0x52, 0x06, 0x73, 0x76, 0x4f, 0x6e, 0x6c, 0x79, 0x22, 0x6d, 0x0a, 0x15,
+	0x53, 0x65, 0x61, 0x72, 0x63, 0x68, 0x53, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x34, 0x0a, 0x09, 0x73, 0x74, 0x61, 0x74, 0x5f, 0x76, 0x61,
+	0x72, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x64, 0x61, 0x74, 0x61, 0x63,
+	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x45, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x49, 0x6e, 0x66,
+	0x6f, 0x52, 0x08, 0x73, 0x74, 0x61, 0x74, 0x56, 0x61, 0x72, 0x73, 0x12, 0x18, 0x0a, 0x07, 0x6d,
+	0x61, 0x74, 0x63, 0x68, 0x65, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x61,
+	0x74, 0x63, 0x68, 0x65, 0x73, 0x4a, 0x04, 0x08, 0x02, 0x10, 0x03, 0x42, 0x30, 0x5a, 0x2e, 0x67,
+	0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f,
+	0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x6f, 0x72, 0x67, 0x2f, 0x6d, 0x69, 0x78, 0x65, 0x72, 0x2f, 0x69,
+	0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1545,7 +1459,7 @@ func file_stat_var_proto_rawDescGZIP() []byte {
 	return file_stat_var_proto_rawDescData
 }
 
-var file_stat_var_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
+var file_stat_var_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
 var file_stat_var_proto_goTypes = []interface{}{
 	(*EntityStatVarExistence)(nil),                 // 0: datacommons.EntityStatVarExistence
 	(*StatVarSummary)(nil),                         // 1: datacommons.StatVarSummary
@@ -1555,44 +1469,41 @@ var file_stat_var_proto_goTypes = []interface{}{
 	(*GetStatVarGroupNodeRequest)(nil),             // 5: datacommons.GetStatVarGroupNodeRequest
 	(*GetStatVarPathRequest)(nil),                  // 6: datacommons.GetStatVarPathRequest
 	(*GetStatVarPathResponse)(nil),                 // 7: datacommons.GetStatVarPathResponse
-	(*SearchResultSVG)(nil),                        // 8: datacommons.SearchResultSVG
-	(*SearchStatVarRequest)(nil),                   // 9: datacommons.SearchStatVarRequest
-	(*SearchStatVarResponse)(nil),                  // 10: datacommons.SearchStatVarResponse
-	(*StatVarSummary_Place)(nil),                   // 11: datacommons.StatVarSummary.Place
-	(*StatVarSummary_PlaceTypeSummary)(nil),        // 12: datacommons.StatVarSummary.PlaceTypeSummary
-	(*StatVarSummary_SeriesSummary)(nil),           // 13: datacommons.StatVarSummary.SeriesSummary
-	(*StatVarSummary_ProvenanceSummary)(nil),       // 14: datacommons.StatVarSummary.ProvenanceSummary
-	nil,                                            // 15: datacommons.StatVarSummary.PlaceTypeSummaryEntry
-	nil,                                            // 16: datacommons.StatVarSummary.ProvenanceSummaryEntry
-	(*StatVarSummary_SeriesSummary_SeriesKey)(nil), // 17: datacommons.StatVarSummary.SeriesSummary.SeriesKey
-	nil,                               // 18: datacommons.StatVarSummary.SeriesSummary.PlaceTypeSummaryEntry
-	nil,                               // 19: datacommons.StatVarGroups.StatVarGroupsEntry
-	(*StatVarGroupNode_ChildSVG)(nil), // 20: datacommons.StatVarGroupNode.ChildSVG
-	(*StatVarGroupNode_ChildSV)(nil),  // 21: datacommons.StatVarGroupNode.ChildSV
-	(*EntityInfo)(nil),                // 22: datacommons.EntityInfo
+	(*SearchStatVarRequest)(nil),                   // 8: datacommons.SearchStatVarRequest
+	(*SearchStatVarResponse)(nil),                  // 9: datacommons.SearchStatVarResponse
+	(*StatVarSummary_Place)(nil),                   // 10: datacommons.StatVarSummary.Place
+	(*StatVarSummary_PlaceTypeSummary)(nil),        // 11: datacommons.StatVarSummary.PlaceTypeSummary
+	(*StatVarSummary_SeriesSummary)(nil),           // 12: datacommons.StatVarSummary.SeriesSummary
+	(*StatVarSummary_ProvenanceSummary)(nil),       // 13: datacommons.StatVarSummary.ProvenanceSummary
+	nil,                                            // 14: datacommons.StatVarSummary.PlaceTypeSummaryEntry
+	nil,                                            // 15: datacommons.StatVarSummary.ProvenanceSummaryEntry
+	(*StatVarSummary_SeriesSummary_SeriesKey)(nil), // 16: datacommons.StatVarSummary.SeriesSummary.SeriesKey
+	nil,                               // 17: datacommons.StatVarSummary.SeriesSummary.PlaceTypeSummaryEntry
+	nil,                               // 18: datacommons.StatVarGroups.StatVarGroupsEntry
+	(*StatVarGroupNode_ChildSVG)(nil), // 19: datacommons.StatVarGroupNode.ChildSVG
+	(*StatVarGroupNode_ChildSV)(nil),  // 20: datacommons.StatVarGroupNode.ChildSV
+	(*EntityInfo)(nil),                // 21: datacommons.EntityInfo
 }
 var file_stat_var_proto_depIdxs = []int32{
-	15, // 0: datacommons.StatVarSummary.place_type_summary:type_name -> datacommons.StatVarSummary.PlaceTypeSummaryEntry
-	16, // 1: datacommons.StatVarSummary.provenance_summary:type_name -> datacommons.StatVarSummary.ProvenanceSummaryEntry
-	19, // 2: datacommons.StatVarGroups.stat_var_groups:type_name -> datacommons.StatVarGroups.StatVarGroupsEntry
-	21, // 3: datacommons.StatVarGroupNode.child_stat_vars:type_name -> datacommons.StatVarGroupNode.ChildSV
-	20, // 4: datacommons.StatVarGroupNode.child_stat_var_groups:type_name -> datacommons.StatVarGroupNode.ChildSVG
-	22, // 5: datacommons.SearchResultSVG.stat_vars:type_name -> datacommons.EntityInfo
-	22, // 6: datacommons.SearchStatVarResponse.stat_vars:type_name -> datacommons.EntityInfo
-	8,  // 7: datacommons.SearchStatVarResponse.stat_var_groups:type_name -> datacommons.SearchResultSVG
-	11, // 8: datacommons.StatVarSummary.PlaceTypeSummary.top_places:type_name -> datacommons.StatVarSummary.Place
-	17, // 9: datacommons.StatVarSummary.SeriesSummary.series_key:type_name -> datacommons.StatVarSummary.SeriesSummary.SeriesKey
-	18, // 10: datacommons.StatVarSummary.SeriesSummary.place_type_summary:type_name -> datacommons.StatVarSummary.SeriesSummary.PlaceTypeSummaryEntry
-	13, // 11: datacommons.StatVarSummary.ProvenanceSummary.series_summary:type_name -> datacommons.StatVarSummary.SeriesSummary
-	12, // 12: datacommons.StatVarSummary.PlaceTypeSummaryEntry.value:type_name -> datacommons.StatVarSummary.PlaceTypeSummary
-	14, // 13: datacommons.StatVarSummary.ProvenanceSummaryEntry.value:type_name -> datacommons.StatVarSummary.ProvenanceSummary
-	12, // 14: datacommons.StatVarSummary.SeriesSummary.PlaceTypeSummaryEntry.value:type_name -> datacommons.StatVarSummary.PlaceTypeSummary
-	3,  // 15: datacommons.StatVarGroups.StatVarGroupsEntry.value:type_name -> datacommons.StatVarGroupNode
-	16, // [16:16] is the sub-list for method output_type
-	16, // [16:16] is the sub-list for method input_type
-	16, // [16:16] is the sub-list for extension type_name
-	16, // [16:16] is the sub-list for extension extendee
-	0,  // [0:16] is the sub-list for field type_name
+	14, // 0: datacommons.StatVarSummary.place_type_summary:type_name -> datacommons.StatVarSummary.PlaceTypeSummaryEntry
+	15, // 1: datacommons.StatVarSummary.provenance_summary:type_name -> datacommons.StatVarSummary.ProvenanceSummaryEntry
+	18, // 2: datacommons.StatVarGroups.stat_var_groups:type_name -> datacommons.StatVarGroups.StatVarGroupsEntry
+	20, // 3: datacommons.StatVarGroupNode.child_stat_vars:type_name -> datacommons.StatVarGroupNode.ChildSV
+	19, // 4: datacommons.StatVarGroupNode.child_stat_var_groups:type_name -> datacommons.StatVarGroupNode.ChildSVG
+	21, // 5: datacommons.SearchStatVarResponse.stat_vars:type_name -> datacommons.EntityInfo
+	10, // 6: datacommons.StatVarSummary.PlaceTypeSummary.top_places:type_name -> datacommons.StatVarSummary.Place
+	16, // 7: datacommons.StatVarSummary.SeriesSummary.series_key:type_name -> datacommons.StatVarSummary.SeriesSummary.SeriesKey
+	17, // 8: datacommons.StatVarSummary.SeriesSummary.place_type_summary:type_name -> datacommons.StatVarSummary.SeriesSummary.PlaceTypeSummaryEntry
+	12, // 9: datacommons.StatVarSummary.ProvenanceSummary.series_summary:type_name -> datacommons.StatVarSummary.SeriesSummary
+	11, // 10: datacommons.StatVarSummary.PlaceTypeSummaryEntry.value:type_name -> datacommons.StatVarSummary.PlaceTypeSummary
+	13, // 11: datacommons.StatVarSummary.ProvenanceSummaryEntry.value:type_name -> datacommons.StatVarSummary.ProvenanceSummary
+	11, // 12: datacommons.StatVarSummary.SeriesSummary.PlaceTypeSummaryEntry.value:type_name -> datacommons.StatVarSummary.PlaceTypeSummary
+	3,  // 13: datacommons.StatVarGroups.StatVarGroupsEntry.value:type_name -> datacommons.StatVarGroupNode
+	14, // [14:14] is the sub-list for method output_type
+	14, // [14:14] is the sub-list for method input_type
+	14, // [14:14] is the sub-list for extension type_name
+	14, // [14:14] is the sub-list for extension extendee
+	0,  // [0:14] is the sub-list for field type_name
 }
 
 func init() { file_stat_var_proto_init() }
@@ -1699,18 +1610,6 @@ func file_stat_var_proto_init() {
 			}
 		}
 		file_stat_var_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SearchResultSVG); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_stat_var_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*SearchStatVarRequest); i {
 			case 0:
 				return &v.state
@@ -1722,7 +1621,7 @@ func file_stat_var_proto_init() {
 				return nil
 			}
 		}
-		file_stat_var_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+		file_stat_var_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*SearchStatVarResponse); i {
 			case 0:
 				return &v.state
@@ -1734,7 +1633,7 @@ func file_stat_var_proto_init() {
 				return nil
 			}
 		}
-		file_stat_var_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+		file_stat_var_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*StatVarSummary_Place); i {
 			case 0:
 				return &v.state
@@ -1746,7 +1645,7 @@ func file_stat_var_proto_init() {
 				return nil
 			}
 		}
-		file_stat_var_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+		file_stat_var_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*StatVarSummary_PlaceTypeSummary); i {
 			case 0:
 				return &v.state
@@ -1758,7 +1657,7 @@ func file_stat_var_proto_init() {
 				return nil
 			}
 		}
-		file_stat_var_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+		file_stat_var_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*StatVarSummary_SeriesSummary); i {
 			case 0:
 				return &v.state
@@ -1770,7 +1669,7 @@ func file_stat_var_proto_init() {
 				return nil
 			}
 		}
-		file_stat_var_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
+		file_stat_var_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*StatVarSummary_ProvenanceSummary); i {
 			case 0:
 				return &v.state
@@ -1782,7 +1681,7 @@ func file_stat_var_proto_init() {
 				return nil
 			}
 		}
-		file_stat_var_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
+		file_stat_var_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*StatVarSummary_SeriesSummary_SeriesKey); i {
 			case 0:
 				return &v.state
@@ -1794,7 +1693,7 @@ func file_stat_var_proto_init() {
 				return nil
 			}
 		}
-		file_stat_var_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
+		file_stat_var_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*StatVarGroupNode_ChildSVG); i {
 			case 0:
 				return &v.state
@@ -1806,7 +1705,7 @@ func file_stat_var_proto_init() {
 				return nil
 			}
 		}
-		file_stat_var_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
+		file_stat_var_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*StatVarGroupNode_ChildSV); i {
 			case 0:
 				return &v.state
@@ -1819,15 +1718,15 @@ func file_stat_var_proto_init() {
 			}
 		}
 	}
+	file_stat_var_proto_msgTypes[11].OneofWrappers = []interface{}{}
 	file_stat_var_proto_msgTypes[12].OneofWrappers = []interface{}{}
-	file_stat_var_proto_msgTypes[13].OneofWrappers = []interface{}{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_stat_var_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   22,
+			NumMessages:   21,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
