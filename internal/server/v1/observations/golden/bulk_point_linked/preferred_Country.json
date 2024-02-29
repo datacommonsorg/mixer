@@ -2078,8 +2078,8 @@
           "points_by_facet": [
             {
               "date": "2022",
-              "value": 10452300,
-              "facet": "1151455814"
+              "value": 10521556,
+              "facet": "607884225"
             }
           ]
         },
@@ -2726,6 +2726,10 @@
     "563701067": {
       "import_name": "NigeriaStatistics",
       "provenance_url": "https://nigeria.opendataforafrica.org"
+    },
+    "607884225": {
+      "import_name": "Sweden_Census",
+      "provenance_url": "https://www.statistikdatabasen.scb.se/pxweb/sv/ssd/"
     },
     "650668249": {
       "import_name": "UnitedKingdomONS",
