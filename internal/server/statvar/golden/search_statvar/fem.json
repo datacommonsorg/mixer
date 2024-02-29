@@ -1909,6 +1909,10 @@
       "dcid": "Count_MedicalConditionIncident_Male_ConditionFemaleNonVesGenitalUlcer"
     },
     {
+      "name": "Count of Mortality Event: 0 - 4 Years, Female",
+      "dcid": "Count_MortalityEvent_0To4Years_Female"
+    },
+    {
       "name": "Count of Mortality Event: 1 - 4 Years, Female",
       "dcid": "Count_Death_1To4Years_Female"
     },
@@ -2053,6 +2057,10 @@
       "dcid": "Count_Death_80OrMoreYears_Female"
     },
     {
+      "name": "Count of Mortality Event: 85 - 94 Years, Female",
+      "dcid": "Count_MortalityEvent_85To94Years_Female"
+    },
+    {
       "name": "Count of Mortality Event: 85 - 99 Years, Female",
       "dcid": "Count_Death_85To99Years_Female"
     },
@@ -2063,6 +2071,10 @@
     {
       "name": "Count of Mortality Event: 90 Years or More, Female",
       "dcid": "Count_Death_90OrMoreYears_Female"
+    },
+    {
+      "name": "Count of Mortality Event: 95 Years or More, Female",
+      "dcid": "Count_MortalityEvent_95OrMoreYears_Female"
     },
     {
       "name": "Count of Mortality Event: A00-B99 (Certain Infectious And Parasitic Diseases), Female",
@@ -3987,18 +3999,6 @@
     {
       "name": "Disability-adjusted life years [Onchocerciasis, Female]",
       "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE028__SEX--F"
-    },
-    {
-      "name": "Disability-adjusted life years [Onchocerciasis, Female]",
-      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE028__SEX--F"
-    },
-    {
-      "name": "Disability-adjusted life years [Oral conditions, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE147__SEX--F"
-    },
-    {
-      "name": "Disability-adjusted life years [Oral conditions, Female]",
-      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE147__SEX--F"
     }
   ],
   "matches": [
