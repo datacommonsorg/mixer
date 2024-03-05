@@ -36,7 +36,6 @@ bio/ABRAXAS2,Gene,ABRAXAS2,,0
 bio/AADAT,Gene,AADAT,,0
 bio/DOID_0080176,Disease,"meningococcal meningitis",,0
 bio/DOID_0050204,Disease,"Epstein-Barr virus hepatitis",,0
-Chickenpox,Disease,Chickenpox,,0
 Chlamydia,Disease,Chlamydia,,0
 bio/DOID_0050052,Disease,"Rocky Mountain spotted fever",,0
 ICD10/A30-A49,ICD10Section,"Other bacterial diseases (A30-A49)",,0
@@ -48,7 +47,6 @@ ICD10/A39,ICD10Code,"Meningococcal infection",,0
 ICD10/R97,ICD10Code,"Abnormal tumor markers (R97)",,0
 ICD10/A39.2,ICD10Code,"Acute meningococcemia",,0
 ICD10/Z68,ICD10Code,"Body mass index [BMI] (Z68)",,0
-ICD10/A00,ICD10Code,Cholera,,0
 bio/D001172,MeSHDescriptor,"Arthritis, Rheumatoid",,0
 bio/D011655,MeSHDescriptor,"Pulmonary Embolism",,0
 bio/D004110,MeSHDescriptor,Diltiazem,,0
