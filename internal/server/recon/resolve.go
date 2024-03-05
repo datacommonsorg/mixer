@@ -36,6 +36,7 @@ var (
 	// https://github.com/datacommonsorg/import repo.
 	rankedIDProps = []string{
 		"dcid",
+		"unDataCode",
 		"geoId",
 		"isoCode",
 		"nutsCode",
