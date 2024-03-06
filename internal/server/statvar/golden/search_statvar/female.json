@@ -9,28 +9,8 @@
       "dcid": "sdg/SG_DMK_PARLMP_UC"
     },
     {
-      "name": "Total density per million females aged from 50 to 69 years old: Mammography units",
-      "dcid": "who/DEVICES23"
-    },
-    {
-      "name": "Age-standardized NCD mortality rate [Female]",
+      "name": "Age-standardized mortality from Noncommunicable diseases mortality rate [Female]",
       "dcid": "who/WHS2_131.SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable DALYs [Female]",
-      "dcid": "who/AIR_7.SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable DALYs [Female]",
-      "dcid": "who/AIR_9.SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable DALYs [Female]",
-      "dcid": "who/AIR_90.SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable YLLs [Female]",
-      "dcid": "who/AIR_45.SEX--F"
     },
     {
       "name": "Ambient air pollution attributable death rate [Female]",
@@ -43,6 +23,22 @@
     {
       "name": "Ambient air pollution attributable deaths [Female]",
       "dcid": "who/AIR_41.SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years [Female]",
+      "dcid": "who/AIR_7.SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years [Female]",
+      "dcid": "who/AIR_9.SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years [Female]",
+      "dcid": "who/AIR_90.SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of years life lost [Female]",
+      "dcid": "who/AIR_45.SEX--F"
     },
     {
       "name": "Average hourly earnings of employees by sex and occupation [Female]",
@@ -105,64 +101,76 @@
       "dcid": "who/WHOSIS_000007.SEX--F"
     },
     {
-      "name": "Household air pollution attributable DALYs [Female]",
+      "name": "Household air pollution attributable deaths [Female]",
+      "dcid": "who/AIR_11.SEX--F"
+    },
+    {
+      "name": "Household air pollution attributable number of disability-adjusted life years [Female]",
       "dcid": "who/AIR_15.SEX--F"
     },
     {
-      "name": "Household air pollution attributable DALYs [Female]",
+      "name": "Household air pollution attributable number of disability-adjusted life years [Female]",
       "dcid": "who/AIR_17.SEX--F"
     },
     {
-      "name": "Household air pollution attributable DALYs [Female]",
+      "name": "Household air pollution attributable number of disability-adjusted life years [Female]",
       "dcid": "who/AIR_39.SEX--F"
     },
     {
-      "name": "Household air pollution attributable death rate [Female]",
+      "name": "Household air pollution: Household air pollution attributable death rate [Female]",
       "dcid": "who/AIR_51.SEX--F"
     },
     {
-      "name": "Household air pollution attributable death rate [Female]",
+      "name": "Household air pollution: Household air pollution attributable death rate [Female]",
       "dcid": "who/AIR_52.SEX--F"
-    },
-    {
-      "name": "Household air pollution attributable deaths [Female]",
-      "dcid": "who/AIR_11.SEX--F"
     },
     {
       "name": "Life expectancy at age 60 [Female]",
       "dcid": "who/WHOSIS_000015.SEX--F"
     },
     {
+      "name": "Male or female doctors as percentage of all medical doctors at national level [Female]",
+      "dcid": "who/HWF_0025.SEX--F"
+    },
+    {
+      "name": "Male or female doctors as percentage of all medical doctors at national level [Male]",
+      "dcid": "who/HWF_0025.SEX--M"
+    },
+    {
+      "name": "Male or female nurses as percentage of all nurses at national level [Female]",
+      "dcid": "who/HWF_0026.SEX--F"
+    },
+    {
+      "name": "Male or female nurses as percentage of all nurses at national level [Male]",
+      "dcid": "who/HWF_0026.SEX--M"
+    },
+    {
       "name": "Maternal mortality ratio [Female]",
       "dcid": "sdg/SH_STA_MORT.SEX--F"
     },
     {
-      "name": "Mean HDL cholesterol, age-standardized [Female]",
+      "name": "Mean high-density lipoprotein cholesterol, age-standardized estimate [Female]",
       "dcid": "who/NCD_CHOL_MEANHDL_A.SEX--F"
     },
     {
-      "name": "Mean HDL cholesterol, crude [Female]",
+      "name": "Mean high-density lipoprotein cholesterol, crude estimate [Female]",
       "dcid": "who/NCD_CHOL_MEANHDL_C.SEX--F"
     },
     {
-      "name": "Mean Non-HDL cholesterol, age-standardized [Female]",
+      "name": "Mean non high-density lipoprotein cholesterol, age-standardized estimate [Female]",
       "dcid": "who/NCD_CHOL_MEANNONHDL_A.SEX--F"
     },
     {
-      "name": "Mean Non-HDL cholesterol, crude [Female]",
+      "name": "Mean non high-density lipoprotein cholesterol, cruded estimate [Female]",
       "dcid": "who/NCD_CHOL_MEANNONHDL_C.SEX--F"
     },
     {
-      "name": "Mean total cholesterol, age-standardized [Female]",
+      "name": "Mean total cholesterol, age-standardized estimate [Female]",
       "dcid": "who/NCD_CHOL_MEANTOTALCHOL_A.SEX--F"
     },
     {
-      "name": "Mean total cholesterol, crude [Female]",
+      "name": "Mean total cholesterol, crude estimate [Female]",
       "dcid": "who/NCD_CHOL_MEANTOTALCHOL_C.SEX--F"
-    },
-    {
-      "name": "Medical doctors [Female]",
-      "dcid": "who/HWF_0025.SEX--F"
     },
     {
       "name": "Mortality rate among children ages 5 to 9 years [Female]",
@@ -171,6 +179,10 @@
     {
       "name": "Mortality rate attributed to unintentional poisonings, by sex [Female]",
       "dcid": "sdg/SH_STA_POISN.SEX--F"
+    },
+    {
+      "name": "Mortality rate attributed to unsafe water, unsafe sanitation and lack of hygiene [Female]",
+      "dcid": "who/WSH_1.SEX--F"
     },
     {
       "name": "Mortality rate for 5-14 year-olds [Female]",
@@ -185,28 +197,24 @@
       "dcid": "who/CM_04.SEX--F"
     },
     {
-      "name": "Number of deaths among children under-five [Female]",
-      "dcid": "who/CM_01.SEX--F"
-    },
-    {
       "name": "Number of deaths attributed to suicide, by sex [Female]",
       "dcid": "sdg/SH_STA_SCIDEN.SEX--F"
     },
     {
-      "name": "Number of diarrhoea DALYs from inadequate hygiene [Female]",
-      "dcid": "who/WSH_30_HYG.SEX--F"
-    },
-    {
-      "name": "Number of diarrhoea DALYs from inadequate water, sanitation and hygiene [Female]",
-      "dcid": "who/WSH_30.SEX--F"
-    },
-    {
-      "name": "Number of diarrhoea deaths from inadequate hygiene [Female]",
+      "name": "Number of diarrhoea deaths from inadequate hygiene. . [Female]",
       "dcid": "who/WSH_10_HYG.SEX--F"
     },
     {
-      "name": "Number of diarrhoea deaths from inadequate water, sanitation and hygiene [Female]",
+      "name": "Number of diarrhoea deaths from inadequate water, sanitation and hygiene, in low- and middle-income countries. [Female]",
       "dcid": "who/WSH_10.SEX--F"
+    },
+    {
+      "name": "Number of diarrhoea disability-adjusted life years from inadequate hygiene [Female]",
+      "dcid": "who/WSH_30_HYG.SEX--F"
+    },
+    {
+      "name": "Number of diarrhoea disability-adjusted life years from inadequate water, sanitation and hygiene [Female]",
+      "dcid": "who/WSH_30.SEX--F"
     },
     {
       "name": "Number of infant deaths [Female]",
@@ -221,6 +229,10 @@
       "dcid": "sdg/SG_GEN_PARLN.SEX--F"
     },
     {
+      "name": "Number of under-five deaths [Female]",
+      "dcid": "who/CM_01.SEX--F"
+    },
+    {
       "name": "Number of victims of intentional homicide per 100K population, by sex [Female]",
       "dcid": "sdg/VC_IHR_PSRC.SEX--F"
     },
@@ -229,15 +241,11 @@
       "dcid": "sdg/VC_IHR_PSRCN.SEX--F"
     },
     {
-      "name": "Nursing personnel [Female]",
-      "dcid": "who/HWF_0026.SEX--F"
-    },
-    {
       "name": "Participation rate in organized learning, by sex [Female]",
       "dcid": "sdg/SE_PRE_PARTN.SEX--F"
     },
     {
-      "name": "Prevalence of current cigarette smoking among adolescents [Female]",
+      "name": "Prevalence of current cigarette smoking among adolescents, from the most recent nationally representative survey reporting prevalence of tobacco use or smoking among adolescents. [Female]",
       "dcid": "who/Yth_curr_cig_smoking.SEX--F"
     },
     {
@@ -245,11 +253,11 @@
       "dcid": "who/Adult_curr_cig_smoking.SEX--F"
     },
     {
-      "name": "Prevalence of current e-cigarette use among adolescents [Female]",
+      "name": "Prevalence of current e-cigarette use among adolescents, from the most recent nationally representative survey reporting prevalence of tobacco use or smoking among adolescents. [Female]",
       "dcid": "who/Yth_curr_e-cig.SEX--F"
     },
     {
-      "name": "Prevalence of current smokeless tobacco use among adolescents [Female]",
+      "name": "Prevalence of current smokeless tobacco use among adolescents, from the most recent nationally representative survey reporting prevalence of smokeless tobacco use or e-cigarette use among adolescents. [Female]",
       "dcid": "who/Yth_curr_smokeless.SEX--F"
     },
     {
@@ -317,7 +325,7 @@
       "dcid": "sdg/SH_STA_SCIDE.SEX--F"
     },
     {
-      "name": "Total NCD Deaths [Female]",
+      "name": "Total number of deaths attributed to non-communicable diseases [Female]",
       "dcid": "who/NCD_DTH_TOT.SEX--F"
     },
     {
@@ -331,10 +339,6 @@
     {
       "name": "Unemployment rate, by sex and disability - 19th ICLS [Female]",
       "dcid": "sdg/SL_TLF_UEMDIS_19ICLS.SEX--F"
-    },
-    {
-      "name": "WASH deaths [Female]",
-      "dcid": "who/WSH_1.SEX--F"
     },
     {
       "name": "Count of Live Birth Pregnancy Event: Male or Female Sterilization (As Fraction of Count Birth Event Live Birth)",
@@ -397,6 +401,82 @@
       "dcid": "WHO/SDGTOBACCO_Female"
     },
     {
+      "name": "Age-specific death rate between ages x and x+n [1-4 years, Female]",
+      "dcid": "who/LIFE_0000000029.AGE--Y1T4__SEX--F"
+    },
+    {
+      "name": "Age-specific death rate between ages x and x+n [10-14 years, Female]",
+      "dcid": "who/LIFE_0000000029.AGE--Y10T14__SEX--F"
+    },
+    {
+      "name": "Age-specific death rate between ages x and x+n [15-19  years, Female]",
+      "dcid": "who/LIFE_0000000029.AGE--Y15T19__SEX--F"
+    },
+    {
+      "name": "Age-specific death rate between ages x and x+n [20-24 years, Female]",
+      "dcid": "who/LIFE_0000000029.AGE--Y20T24__SEX--F"
+    },
+    {
+      "name": "Age-specific death rate between ages x and x+n [25-29 years, Female]",
+      "dcid": "who/LIFE_0000000029.AGE--Y25T29__SEX--F"
+    },
+    {
+      "name": "Age-specific death rate between ages x and x+n [30-34 years, Female]",
+      "dcid": "who/LIFE_0000000029.AGE--Y30T34__SEX--F"
+    },
+    {
+      "name": "Age-specific death rate between ages x and x+n [35-39 years, Female]",
+      "dcid": "who/LIFE_0000000029.AGE--Y35T39__SEX--F"
+    },
+    {
+      "name": "Age-specific death rate between ages x and x+n [40-44 years, Female]",
+      "dcid": "who/LIFE_0000000029.AGE--Y40T44__SEX--F"
+    },
+    {
+      "name": "Age-specific death rate between ages x and x+n [45-49 years, Female]",
+      "dcid": "who/LIFE_0000000029.AGE--Y45T49__SEX--F"
+    },
+    {
+      "name": "Age-specific death rate between ages x and x+n [5-9 years, Female]",
+      "dcid": "who/LIFE_0000000029.AGE--Y5T9__SEX--F"
+    },
+    {
+      "name": "Age-specific death rate between ages x and x+n [50-54 years, Female]",
+      "dcid": "who/LIFE_0000000029.AGE--Y50T54__SEX--F"
+    },
+    {
+      "name": "Age-specific death rate between ages x and x+n [55-59 years, Female]",
+      "dcid": "who/LIFE_0000000029.AGE--Y55T59__SEX--F"
+    },
+    {
+      "name": "Age-specific death rate between ages x and x+n [60-64 years, Female]",
+      "dcid": "who/LIFE_0000000029.AGE--Y60T64__SEX--F"
+    },
+    {
+      "name": "Age-specific death rate between ages x and x+n [65-69 years, Female]",
+      "dcid": "who/LIFE_0000000029.AGE--Y65T69__SEX--F"
+    },
+    {
+      "name": "Age-specific death rate between ages x and x+n [70-74 years, Female]",
+      "dcid": "who/LIFE_0000000029.AGE--Y70T74__SEX--F"
+    },
+    {
+      "name": "Age-specific death rate between ages x and x+n [75-79 years, Female]",
+      "dcid": "who/LIFE_0000000029.AGE--Y75T79__SEX--F"
+    },
+    {
+      "name": "Age-specific death rate between ages x and x+n [80-84 years, Female]",
+      "dcid": "who/LIFE_0000000029.AGE--Y80T84__SEX--F"
+    },
+    {
+      "name": "Age-specific death rate between ages x and x+n [85+ years, Female]",
+      "dcid": "who/LIFE_0000000029.AGE--Y_GE85__SEX--F"
+    },
+    {
+      "name": "Age-specific death rate between ages x and x+n [\u003c1 year, Female]",
+      "dcid": "who/LIFE_0000000029.AGE--M0T11__SEX--F"
+    },
+    {
       "name": "Age-standardized prevalence of current tobacco use among persons aged 15 years and older, by sex [15 years old and over, Female]",
       "dcid": "sdg/SH_PRV_SMOK.AGE--Y_GE15__SEX--F"
     },
@@ -409,48 +489,8 @@
       "dcid": "sdg/SH_SUD_ALCOL.AGE--Y_GE15__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable DALYs [All Causes, Female]",
-      "dcid": "who/AIR_43.GHECAUSES--GHE000__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable DALYs [Chronic obstructive pulmonary disease, Female]",
-      "dcid": "who/AIR_43.GHECAUSES--GHE118__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable DALYs [Ischaemic heart disease, Female]",
-      "dcid": "who/AIR_43.GHECAUSES--GHE113__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable DALYs [Lower respiratory infections, Female]",
-      "dcid": "who/AIR_43.GHECAUSES--GHE039__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable DALYs [Stroke, Female]",
-      "dcid": "who/AIR_43.GHECAUSES--GHE114__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable DALYs [Trachea, bronchus, lung cancers, Female]",
-      "dcid": "who/AIR_43.GHECAUSES--GHE068__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable DALYs in children under 15 years [Lower respiratory infections, Female]",
-      "dcid": "who/AIR_71.ENVCAUSE--ENVCAUSE039__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable DALYs in children under 5 years [Lower respiratory infections, Female]",
-      "dcid": "who/AIR_8.ENVCAUSE--ENVCAUSE039__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable DALYs per 100'000 children under 5 years [Lower respiratory infections, Female]",
-      "dcid": "who/AIR_10.ENVCAUSE--ENVCAUSE039__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable YLL in children under 15 years [Lower respiratory infections, Female]",
-      "dcid": "who/AIR_73.ENVCAUSE--ENVCAUSE039__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable YLL in children under 5 years [Lower respiratory infections, Female]",
-      "dcid": "who/AIR_46.ENVCAUSE--ENVCAUSE039__SEX--F"
+      "name": "Ambient air pollution attributable death rate per 100 000 children under 5 years [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_6.ENVCAUSE--ENVCAUSE039__SEX--F"
     },
     {
       "name": "Ambient air pollution attributable deaths in children under 15 years [Lower respiratory infections, Female]",
@@ -461,8 +501,44 @@
       "dcid": "who/AIR_4.ENVCAUSE--ENVCAUSE039__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable deaths per 100'000 children under 5 years [Lower respiratory infections, Female]",
-      "dcid": "who/AIR_6.ENVCAUSE--ENVCAUSE039__SEX--F"
+      "name": "Ambient air pollution attributable disability-adjusted life years per 100'000 children under 5 years [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_10.ENVCAUSE--ENVCAUSE039__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years [All Causes, Female]",
+      "dcid": "who/AIR_43.GHECAUSES--GHE000__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years [Chronic obstructive pulmonary disease, Female]",
+      "dcid": "who/AIR_43.GHECAUSES--GHE118__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years [Ischaemic heart disease, Female]",
+      "dcid": "who/AIR_43.GHECAUSES--GHE113__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_43.GHECAUSES--GHE039__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years [Stroke, Female]",
+      "dcid": "who/AIR_43.GHECAUSES--GHE114__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years [Trachea, bronchus, lung cancers, Female]",
+      "dcid": "who/AIR_43.GHECAUSES--GHE068__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years in children under 15 years [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_71.ENVCAUSE--ENVCAUSE039__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years in children under 5 years [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_8.ENVCAUSE--ENVCAUSE039__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of years life lost in children under 15 years [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_73.ENVCAUSE--ENVCAUSE039__SEX--F"
     },
     {
       "name": "American Indian and Alaska Native Female Population, Monoracial or Multiracial",
@@ -1589,6 +1665,82 @@
       "dcid": "Count_Person_Female_WithEarnings"
     },
     {
+      "name": "Expectation of life at age x [1-4 years, Female]",
+      "dcid": "who/LIFE_0000000035.AGE--Y1T4__SEX--F"
+    },
+    {
+      "name": "Expectation of life at age x [10-14 years, Female]",
+      "dcid": "who/LIFE_0000000035.AGE--Y10T14__SEX--F"
+    },
+    {
+      "name": "Expectation of life at age x [15-19  years, Female]",
+      "dcid": "who/LIFE_0000000035.AGE--Y15T19__SEX--F"
+    },
+    {
+      "name": "Expectation of life at age x [20-24 years, Female]",
+      "dcid": "who/LIFE_0000000035.AGE--Y20T24__SEX--F"
+    },
+    {
+      "name": "Expectation of life at age x [25-29 years, Female]",
+      "dcid": "who/LIFE_0000000035.AGE--Y25T29__SEX--F"
+    },
+    {
+      "name": "Expectation of life at age x [30-34 years, Female]",
+      "dcid": "who/LIFE_0000000035.AGE--Y30T34__SEX--F"
+    },
+    {
+      "name": "Expectation of life at age x [35-39 years, Female]",
+      "dcid": "who/LIFE_0000000035.AGE--Y35T39__SEX--F"
+    },
+    {
+      "name": "Expectation of life at age x [40-44 years, Female]",
+      "dcid": "who/LIFE_0000000035.AGE--Y40T44__SEX--F"
+    },
+    {
+      "name": "Expectation of life at age x [45-49 years, Female]",
+      "dcid": "who/LIFE_0000000035.AGE--Y45T49__SEX--F"
+    },
+    {
+      "name": "Expectation of life at age x [5-9 years, Female]",
+      "dcid": "who/LIFE_0000000035.AGE--Y5T9__SEX--F"
+    },
+    {
+      "name": "Expectation of life at age x [50-54 years, Female]",
+      "dcid": "who/LIFE_0000000035.AGE--Y50T54__SEX--F"
+    },
+    {
+      "name": "Expectation of life at age x [55-59 years, Female]",
+      "dcid": "who/LIFE_0000000035.AGE--Y55T59__SEX--F"
+    },
+    {
+      "name": "Expectation of life at age x [60-64 years, Female]",
+      "dcid": "who/LIFE_0000000035.AGE--Y60T64__SEX--F"
+    },
+    {
+      "name": "Expectation of life at age x [65-69 years, Female]",
+      "dcid": "who/LIFE_0000000035.AGE--Y65T69__SEX--F"
+    },
+    {
+      "name": "Expectation of life at age x [70-74 years, Female]",
+      "dcid": "who/LIFE_0000000035.AGE--Y70T74__SEX--F"
+    },
+    {
+      "name": "Expectation of life at age x [75-79 years, Female]",
+      "dcid": "who/LIFE_0000000035.AGE--Y75T79__SEX--F"
+    },
+    {
+      "name": "Expectation of life at age x [80-84 years, Female]",
+      "dcid": "who/LIFE_0000000035.AGE--Y80T84__SEX--F"
+    },
+    {
+      "name": "Expectation of life at age x [85+ years, Female]",
+      "dcid": "who/LIFE_0000000035.AGE--Y_GE85__SEX--F"
+    },
+    {
+      "name": "Expectation of life at age x [\u003c1 year, Female]",
+      "dcid": "who/LIFE_0000000035.AGE--M0T11__SEX--F"
+    },
+    {
       "name": "Female Population Above Poverty Level in the Past Year",
       "dcid": "Count_Person_Female_AbovePovertyLevelInThePast12Months"
     },
@@ -1733,20 +1885,20 @@
       "dcid": "Count_Household_Female_NonInstitutionalized"
     },
     {
-      "name": "Household air pollution attributable DALYs in children under 15 years [Lower respiratory infections, Female]",
+      "name": "Household air pollution attributable deaths in children under 5 years [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_12.ENVCAUSE--ENVCAUSE039__SEX--F"
+    },
+    {
+      "name": "Household air pollution attributable number of disability-adjusted life years in children under 15 years [Lower respiratory infections, Female]",
       "dcid": "who/AIR_75.ENVCAUSE--ENVCAUSE039__SEX--F"
     },
     {
-      "name": "Household air pollution attributable DALYs in children under 5 years [Lower respiratory infections, Female]",
+      "name": "Household air pollution attributable number of disability-adjusted life years in children under 5 years [Lower respiratory infections, Female]",
       "dcid": "who/AIR_16.ENVCAUSE--ENVCAUSE039__SEX--F"
     },
     {
-      "name": "Household air pollution attributable deaths in children under 15 years [Lower respiratory infections, Female]",
+      "name": "Household air pollution: Household air pollution attributable deaths in children under 15 years [Lower respiratory infections, Female]",
       "dcid": "who/AIR_74.ENVCAUSE--ENVCAUSE039__SEX--F"
-    },
-    {
-      "name": "Household air pollution attributable deaths in children under 5 years [Lower respiratory infections, Female]",
-      "dcid": "who/AIR_12.ENVCAUSE--ENVCAUSE039__SEX--F"
     },
     {
       "name": "Hpv Immunization Coverage Estimates Among Primary Target Cohort (9-14 Years Old Girls) (%), Female",
@@ -1873,6 +2025,158 @@
       "dcid": "sdg/SH_HIV_INCD.AGE--Y_GE50__SEX--F"
     },
     {
+      "name": "Number of people dying between ages x and x+n [1-4 years, Female]",
+      "dcid": "who/LIFE_0000000032.AGE--Y1T4__SEX--F"
+    },
+    {
+      "name": "Number of people dying between ages x and x+n [10-14 years, Female]",
+      "dcid": "who/LIFE_0000000032.AGE--Y10T14__SEX--F"
+    },
+    {
+      "name": "Number of people dying between ages x and x+n [15-19  years, Female]",
+      "dcid": "who/LIFE_0000000032.AGE--Y15T19__SEX--F"
+    },
+    {
+      "name": "Number of people dying between ages x and x+n [20-24 years, Female]",
+      "dcid": "who/LIFE_0000000032.AGE--Y20T24__SEX--F"
+    },
+    {
+      "name": "Number of people dying between ages x and x+n [25-29 years, Female]",
+      "dcid": "who/LIFE_0000000032.AGE--Y25T29__SEX--F"
+    },
+    {
+      "name": "Number of people dying between ages x and x+n [30-34 years, Female]",
+      "dcid": "who/LIFE_0000000032.AGE--Y30T34__SEX--F"
+    },
+    {
+      "name": "Number of people dying between ages x and x+n [35-39 years, Female]",
+      "dcid": "who/LIFE_0000000032.AGE--Y35T39__SEX--F"
+    },
+    {
+      "name": "Number of people dying between ages x and x+n [40-44 years, Female]",
+      "dcid": "who/LIFE_0000000032.AGE--Y40T44__SEX--F"
+    },
+    {
+      "name": "Number of people dying between ages x and x+n [45-49 years, Female]",
+      "dcid": "who/LIFE_0000000032.AGE--Y45T49__SEX--F"
+    },
+    {
+      "name": "Number of people dying between ages x and x+n [5-9 years, Female]",
+      "dcid": "who/LIFE_0000000032.AGE--Y5T9__SEX--F"
+    },
+    {
+      "name": "Number of people dying between ages x and x+n [50-54 years, Female]",
+      "dcid": "who/LIFE_0000000032.AGE--Y50T54__SEX--F"
+    },
+    {
+      "name": "Number of people dying between ages x and x+n [55-59 years, Female]",
+      "dcid": "who/LIFE_0000000032.AGE--Y55T59__SEX--F"
+    },
+    {
+      "name": "Number of people dying between ages x and x+n [60-64 years, Female]",
+      "dcid": "who/LIFE_0000000032.AGE--Y60T64__SEX--F"
+    },
+    {
+      "name": "Number of people dying between ages x and x+n [65-69 years, Female]",
+      "dcid": "who/LIFE_0000000032.AGE--Y65T69__SEX--F"
+    },
+    {
+      "name": "Number of people dying between ages x and x+n [70-74 years, Female]",
+      "dcid": "who/LIFE_0000000032.AGE--Y70T74__SEX--F"
+    },
+    {
+      "name": "Number of people dying between ages x and x+n [75-79 years, Female]",
+      "dcid": "who/LIFE_0000000032.AGE--Y75T79__SEX--F"
+    },
+    {
+      "name": "Number of people dying between ages x and x+n [80-84 years, Female]",
+      "dcid": "who/LIFE_0000000032.AGE--Y80T84__SEX--F"
+    },
+    {
+      "name": "Number of people dying between ages x and x+n [85+ years, Female]",
+      "dcid": "who/LIFE_0000000032.AGE--Y_GE85__SEX--F"
+    },
+    {
+      "name": "Number of people dying between ages x and x+n [\u003c1 year, Female]",
+      "dcid": "who/LIFE_0000000032.AGE--M0T11__SEX--F"
+    },
+    {
+      "name": "Number of people left alive at age x [1-4 years, Female]",
+      "dcid": "who/LIFE_0000000031.AGE--Y1T4__SEX--F"
+    },
+    {
+      "name": "Number of people left alive at age x [10-14 years, Female]",
+      "dcid": "who/LIFE_0000000031.AGE--Y10T14__SEX--F"
+    },
+    {
+      "name": "Number of people left alive at age x [15-19  years, Female]",
+      "dcid": "who/LIFE_0000000031.AGE--Y15T19__SEX--F"
+    },
+    {
+      "name": "Number of people left alive at age x [20-24 years, Female]",
+      "dcid": "who/LIFE_0000000031.AGE--Y20T24__SEX--F"
+    },
+    {
+      "name": "Number of people left alive at age x [25-29 years, Female]",
+      "dcid": "who/LIFE_0000000031.AGE--Y25T29__SEX--F"
+    },
+    {
+      "name": "Number of people left alive at age x [30-34 years, Female]",
+      "dcid": "who/LIFE_0000000031.AGE--Y30T34__SEX--F"
+    },
+    {
+      "name": "Number of people left alive at age x [35-39 years, Female]",
+      "dcid": "who/LIFE_0000000031.AGE--Y35T39__SEX--F"
+    },
+    {
+      "name": "Number of people left alive at age x [40-44 years, Female]",
+      "dcid": "who/LIFE_0000000031.AGE--Y40T44__SEX--F"
+    },
+    {
+      "name": "Number of people left alive at age x [45-49 years, Female]",
+      "dcid": "who/LIFE_0000000031.AGE--Y45T49__SEX--F"
+    },
+    {
+      "name": "Number of people left alive at age x [5-9 years, Female]",
+      "dcid": "who/LIFE_0000000031.AGE--Y5T9__SEX--F"
+    },
+    {
+      "name": "Number of people left alive at age x [50-54 years, Female]",
+      "dcid": "who/LIFE_0000000031.AGE--Y50T54__SEX--F"
+    },
+    {
+      "name": "Number of people left alive at age x [55-59 years, Female]",
+      "dcid": "who/LIFE_0000000031.AGE--Y55T59__SEX--F"
+    },
+    {
+      "name": "Number of people left alive at age x [60-64 years, Female]",
+      "dcid": "who/LIFE_0000000031.AGE--Y60T64__SEX--F"
+    },
+    {
+      "name": "Number of people left alive at age x [65-69 years, Female]",
+      "dcid": "who/LIFE_0000000031.AGE--Y65T69__SEX--F"
+    },
+    {
+      "name": "Number of people left alive at age x [70-74 years, Female]",
+      "dcid": "who/LIFE_0000000031.AGE--Y70T74__SEX--F"
+    },
+    {
+      "name": "Number of people left alive at age x [75-79 years, Female]",
+      "dcid": "who/LIFE_0000000031.AGE--Y75T79__SEX--F"
+    },
+    {
+      "name": "Number of people left alive at age x [80-84 years, Female]",
+      "dcid": "who/LIFE_0000000031.AGE--Y80T84__SEX--F"
+    },
+    {
+      "name": "Number of people left alive at age x [85+ years, Female]",
+      "dcid": "who/LIFE_0000000031.AGE--Y_GE85__SEX--F"
+    },
+    {
+      "name": "Number of people left alive at age x [\u003c1 year, Female]",
+      "dcid": "who/LIFE_0000000031.AGE--M0T11__SEX--F"
+    },
+    {
       "name": "Number of severely food insecure people [15 years old and over, Female]",
       "dcid": "sdg/AG_PRD_FIESSN.AGE--Y_GE15__SEX--F"
     },
@@ -1901,11 +2205,163 @@
       "dcid": "sdg/SE_ADT_EDUCTRN.AGE--Y55T64__SEX--F"
     },
     {
+      "name": "Person-years lived above age x [1-4 years, Female]",
+      "dcid": "who/LIFE_0000000034.AGE--Y1T4__SEX--F"
+    },
+    {
+      "name": "Person-years lived above age x [10-14 years, Female]",
+      "dcid": "who/LIFE_0000000034.AGE--Y10T14__SEX--F"
+    },
+    {
+      "name": "Person-years lived above age x [15-19  years, Female]",
+      "dcid": "who/LIFE_0000000034.AGE--Y15T19__SEX--F"
+    },
+    {
+      "name": "Person-years lived above age x [20-24 years, Female]",
+      "dcid": "who/LIFE_0000000034.AGE--Y20T24__SEX--F"
+    },
+    {
+      "name": "Person-years lived above age x [25-29 years, Female]",
+      "dcid": "who/LIFE_0000000034.AGE--Y25T29__SEX--F"
+    },
+    {
+      "name": "Person-years lived above age x [30-34 years, Female]",
+      "dcid": "who/LIFE_0000000034.AGE--Y30T34__SEX--F"
+    },
+    {
+      "name": "Person-years lived above age x [35-39 years, Female]",
+      "dcid": "who/LIFE_0000000034.AGE--Y35T39__SEX--F"
+    },
+    {
+      "name": "Person-years lived above age x [40-44 years, Female]",
+      "dcid": "who/LIFE_0000000034.AGE--Y40T44__SEX--F"
+    },
+    {
+      "name": "Person-years lived above age x [45-49 years, Female]",
+      "dcid": "who/LIFE_0000000034.AGE--Y45T49__SEX--F"
+    },
+    {
+      "name": "Person-years lived above age x [5-9 years, Female]",
+      "dcid": "who/LIFE_0000000034.AGE--Y5T9__SEX--F"
+    },
+    {
+      "name": "Person-years lived above age x [50-54 years, Female]",
+      "dcid": "who/LIFE_0000000034.AGE--Y50T54__SEX--F"
+    },
+    {
+      "name": "Person-years lived above age x [55-59 years, Female]",
+      "dcid": "who/LIFE_0000000034.AGE--Y55T59__SEX--F"
+    },
+    {
+      "name": "Person-years lived above age x [60-64 years, Female]",
+      "dcid": "who/LIFE_0000000034.AGE--Y60T64__SEX--F"
+    },
+    {
+      "name": "Person-years lived above age x [65-69 years, Female]",
+      "dcid": "who/LIFE_0000000034.AGE--Y65T69__SEX--F"
+    },
+    {
+      "name": "Person-years lived above age x [70-74 years, Female]",
+      "dcid": "who/LIFE_0000000034.AGE--Y70T74__SEX--F"
+    },
+    {
+      "name": "Person-years lived above age x [75-79 years, Female]",
+      "dcid": "who/LIFE_0000000034.AGE--Y75T79__SEX--F"
+    },
+    {
+      "name": "Person-years lived above age x [80-84 years, Female]",
+      "dcid": "who/LIFE_0000000034.AGE--Y80T84__SEX--F"
+    },
+    {
+      "name": "Person-years lived above age x [85+ years, Female]",
+      "dcid": "who/LIFE_0000000034.AGE--Y_GE85__SEX--F"
+    },
+    {
+      "name": "Person-years lived above age x [\u003c1 year, Female]",
+      "dcid": "who/LIFE_0000000034.AGE--M0T11__SEX--F"
+    },
+    {
+      "name": "Person-years lived between ages x and x+n [1-4 years, Female]",
+      "dcid": "who/LIFE_0000000033.AGE--Y1T4__SEX--F"
+    },
+    {
+      "name": "Person-years lived between ages x and x+n [10-14 years, Female]",
+      "dcid": "who/LIFE_0000000033.AGE--Y10T14__SEX--F"
+    },
+    {
+      "name": "Person-years lived between ages x and x+n [15-19  years, Female]",
+      "dcid": "who/LIFE_0000000033.AGE--Y15T19__SEX--F"
+    },
+    {
+      "name": "Person-years lived between ages x and x+n [20-24 years, Female]",
+      "dcid": "who/LIFE_0000000033.AGE--Y20T24__SEX--F"
+    },
+    {
+      "name": "Person-years lived between ages x and x+n [25-29 years, Female]",
+      "dcid": "who/LIFE_0000000033.AGE--Y25T29__SEX--F"
+    },
+    {
+      "name": "Person-years lived between ages x and x+n [30-34 years, Female]",
+      "dcid": "who/LIFE_0000000033.AGE--Y30T34__SEX--F"
+    },
+    {
+      "name": "Person-years lived between ages x and x+n [35-39 years, Female]",
+      "dcid": "who/LIFE_0000000033.AGE--Y35T39__SEX--F"
+    },
+    {
+      "name": "Person-years lived between ages x and x+n [40-44 years, Female]",
+      "dcid": "who/LIFE_0000000033.AGE--Y40T44__SEX--F"
+    },
+    {
+      "name": "Person-years lived between ages x and x+n [45-49 years, Female]",
+      "dcid": "who/LIFE_0000000033.AGE--Y45T49__SEX--F"
+    },
+    {
+      "name": "Person-years lived between ages x and x+n [5-9 years, Female]",
+      "dcid": "who/LIFE_0000000033.AGE--Y5T9__SEX--F"
+    },
+    {
+      "name": "Person-years lived between ages x and x+n [50-54 years, Female]",
+      "dcid": "who/LIFE_0000000033.AGE--Y50T54__SEX--F"
+    },
+    {
+      "name": "Person-years lived between ages x and x+n [55-59 years, Female]",
+      "dcid": "who/LIFE_0000000033.AGE--Y55T59__SEX--F"
+    },
+    {
+      "name": "Person-years lived between ages x and x+n [60-64 years, Female]",
+      "dcid": "who/LIFE_0000000033.AGE--Y60T64__SEX--F"
+    },
+    {
+      "name": "Person-years lived between ages x and x+n [65-69 years, Female]",
+      "dcid": "who/LIFE_0000000033.AGE--Y65T69__SEX--F"
+    },
+    {
+      "name": "Person-years lived between ages x and x+n [70-74 years, Female]",
+      "dcid": "who/LIFE_0000000033.AGE--Y70T74__SEX--F"
+    },
+    {
+      "name": "Person-years lived between ages x and x+n [75-79 years, Female]",
+      "dcid": "who/LIFE_0000000033.AGE--Y75T79__SEX--F"
+    },
+    {
+      "name": "Person-years lived between ages x and x+n [80-84 years, Female]",
+      "dcid": "who/LIFE_0000000033.AGE--Y80T84__SEX--F"
+    },
+    {
+      "name": "Person-years lived between ages x and x+n [85+ years, Female]",
+      "dcid": "who/LIFE_0000000033.AGE--Y_GE85__SEX--F"
+    },
+    {
+      "name": "Person-years lived between ages x and x+n [\u003c1 year, Female]",
+      "dcid": "who/LIFE_0000000033.AGE--M0T11__SEX--F"
+    },
+    {
       "name": "Population pushed further below a relative poverty line by household health expenditures - 60% of median daily per capita consumption or income [Head of the household, Female]",
       "dcid": "who/FINPROTECTION_IMP_PRELPL_POP.POP_TYPE--POP_TYPE_HOUSEHOLD_HEAD__SEX--F"
     },
     {
-      "name": "Population with household expenditures on health greater than 10% of total household expenditure or income [Head of the household, Female]",
+      "name": "Population with household spending on health greater than 10% of total household budget [Head of the household, Female]",
       "dcid": "who/FINPROTECTION_CATA_TOT_10_POP.POP_TYPE--POP_TYPE_HOUSEHOLD_HEAD__SEX--F"
     },
     {
@@ -2849,6 +3305,82 @@
       "dcid": "WHO/NCDMORT3070_Female"
     },
     {
+      "name": "Probability of dying between ages x and x+n [1-4 years, Female]",
+      "dcid": "who/LIFE_0000000030.AGE--Y1T4__SEX--F"
+    },
+    {
+      "name": "Probability of dying between ages x and x+n [10-14 years, Female]",
+      "dcid": "who/LIFE_0000000030.AGE--Y10T14__SEX--F"
+    },
+    {
+      "name": "Probability of dying between ages x and x+n [15-19  years, Female]",
+      "dcid": "who/LIFE_0000000030.AGE--Y15T19__SEX--F"
+    },
+    {
+      "name": "Probability of dying between ages x and x+n [20-24 years, Female]",
+      "dcid": "who/LIFE_0000000030.AGE--Y20T24__SEX--F"
+    },
+    {
+      "name": "Probability of dying between ages x and x+n [25-29 years, Female]",
+      "dcid": "who/LIFE_0000000030.AGE--Y25T29__SEX--F"
+    },
+    {
+      "name": "Probability of dying between ages x and x+n [30-34 years, Female]",
+      "dcid": "who/LIFE_0000000030.AGE--Y30T34__SEX--F"
+    },
+    {
+      "name": "Probability of dying between ages x and x+n [35-39 years, Female]",
+      "dcid": "who/LIFE_0000000030.AGE--Y35T39__SEX--F"
+    },
+    {
+      "name": "Probability of dying between ages x and x+n [40-44 years, Female]",
+      "dcid": "who/LIFE_0000000030.AGE--Y40T44__SEX--F"
+    },
+    {
+      "name": "Probability of dying between ages x and x+n [45-49 years, Female]",
+      "dcid": "who/LIFE_0000000030.AGE--Y45T49__SEX--F"
+    },
+    {
+      "name": "Probability of dying between ages x and x+n [5-9 years, Female]",
+      "dcid": "who/LIFE_0000000030.AGE--Y5T9__SEX--F"
+    },
+    {
+      "name": "Probability of dying between ages x and x+n [50-54 years, Female]",
+      "dcid": "who/LIFE_0000000030.AGE--Y50T54__SEX--F"
+    },
+    {
+      "name": "Probability of dying between ages x and x+n [55-59 years, Female]",
+      "dcid": "who/LIFE_0000000030.AGE--Y55T59__SEX--F"
+    },
+    {
+      "name": "Probability of dying between ages x and x+n [60-64 years, Female]",
+      "dcid": "who/LIFE_0000000030.AGE--Y60T64__SEX--F"
+    },
+    {
+      "name": "Probability of dying between ages x and x+n [65-69 years, Female]",
+      "dcid": "who/LIFE_0000000030.AGE--Y65T69__SEX--F"
+    },
+    {
+      "name": "Probability of dying between ages x and x+n [70-74 years, Female]",
+      "dcid": "who/LIFE_0000000030.AGE--Y70T74__SEX--F"
+    },
+    {
+      "name": "Probability of dying between ages x and x+n [75-79 years, Female]",
+      "dcid": "who/LIFE_0000000030.AGE--Y75T79__SEX--F"
+    },
+    {
+      "name": "Probability of dying between ages x and x+n [80-84 years, Female]",
+      "dcid": "who/LIFE_0000000030.AGE--Y80T84__SEX--F"
+    },
+    {
+      "name": "Probability of dying between ages x and x+n [85+ years, Female]",
+      "dcid": "who/LIFE_0000000030.AGE--Y_GE85__SEX--F"
+    },
+    {
+      "name": "Probability of dying between ages x and x+n [\u003c1 year, Female]",
+      "dcid": "who/LIFE_0000000030.AGE--M0T11__SEX--F"
+    },
+    {
       "name": "Proportion of adults with an account at a financial institution or mobile-money-service provider, by sex [15 years old and over, Female]",
       "dcid": "sdg/FB_BNK_ACCSS.AGE--Y_GE15__SEX--F"
     },
@@ -2997,82 +3529,6 @@
       "dcid": "who/BP_04.AGE--Y_GE18__SEX--F"
     },
     {
-      "name": "Tx - person-years lived above age x [1-4 years, Female]",
-      "dcid": "who/LIFE_0000000034.AGE--Y1T4__SEX--F"
-    },
-    {
-      "name": "Tx - person-years lived above age x [10-14 years, Female]",
-      "dcid": "who/LIFE_0000000034.AGE--Y10T14__SEX--F"
-    },
-    {
-      "name": "Tx - person-years lived above age x [15-19  years, Female]",
-      "dcid": "who/LIFE_0000000034.AGE--Y15T19__SEX--F"
-    },
-    {
-      "name": "Tx - person-years lived above age x [20-24 years, Female]",
-      "dcid": "who/LIFE_0000000034.AGE--Y20T24__SEX--F"
-    },
-    {
-      "name": "Tx - person-years lived above age x [25-29 years, Female]",
-      "dcid": "who/LIFE_0000000034.AGE--Y25T29__SEX--F"
-    },
-    {
-      "name": "Tx - person-years lived above age x [30-34 years, Female]",
-      "dcid": "who/LIFE_0000000034.AGE--Y30T34__SEX--F"
-    },
-    {
-      "name": "Tx - person-years lived above age x [35-39 years, Female]",
-      "dcid": "who/LIFE_0000000034.AGE--Y35T39__SEX--F"
-    },
-    {
-      "name": "Tx - person-years lived above age x [40-44 years, Female]",
-      "dcid": "who/LIFE_0000000034.AGE--Y40T44__SEX--F"
-    },
-    {
-      "name": "Tx - person-years lived above age x [45-49 years, Female]",
-      "dcid": "who/LIFE_0000000034.AGE--Y45T49__SEX--F"
-    },
-    {
-      "name": "Tx - person-years lived above age x [5-9 years, Female]",
-      "dcid": "who/LIFE_0000000034.AGE--Y5T9__SEX--F"
-    },
-    {
-      "name": "Tx - person-years lived above age x [50-54 years, Female]",
-      "dcid": "who/LIFE_0000000034.AGE--Y50T54__SEX--F"
-    },
-    {
-      "name": "Tx - person-years lived above age x [55-59 years, Female]",
-      "dcid": "who/LIFE_0000000034.AGE--Y55T59__SEX--F"
-    },
-    {
-      "name": "Tx - person-years lived above age x [60-64 years, Female]",
-      "dcid": "who/LIFE_0000000034.AGE--Y60T64__SEX--F"
-    },
-    {
-      "name": "Tx - person-years lived above age x [65-69 years, Female]",
-      "dcid": "who/LIFE_0000000034.AGE--Y65T69__SEX--F"
-    },
-    {
-      "name": "Tx - person-years lived above age x [70-74 years, Female]",
-      "dcid": "who/LIFE_0000000034.AGE--Y70T74__SEX--F"
-    },
-    {
-      "name": "Tx - person-years lived above age x [75-79 years, Female]",
-      "dcid": "who/LIFE_0000000034.AGE--Y75T79__SEX--F"
-    },
-    {
-      "name": "Tx - person-years lived above age x [80-84 years, Female]",
-      "dcid": "who/LIFE_0000000034.AGE--Y80T84__SEX--F"
-    },
-    {
-      "name": "Tx - person-years lived above age x [85+ years, Female]",
-      "dcid": "who/LIFE_0000000034.AGE--Y_GE85__SEX--F"
-    },
-    {
-      "name": "Tx - person-years lived above age x [\u003c1 year, Female]",
-      "dcid": "who/LIFE_0000000034.AGE--M0T11__SEX--F"
-    },
-    {
       "name": "Under-five deaths [under 5 years old, Female]",
       "dcid": "sdg/SH_DYN_MORTN.AGE--Y0T4__SEX--F"
     },
@@ -3133,276 +3589,8 @@
       "dcid": "Count_Person_Female_WhiteAloneNotHispanicOrLatino"
     },
     {
-      "name": "ex - expectation of life at age x [1-4 years, Female]",
-      "dcid": "who/LIFE_0000000035.AGE--Y1T4__SEX--F"
-    },
-    {
-      "name": "ex - expectation of life at age x [10-14 years, Female]",
-      "dcid": "who/LIFE_0000000035.AGE--Y10T14__SEX--F"
-    },
-    {
-      "name": "ex - expectation of life at age x [15-19  years, Female]",
-      "dcid": "who/LIFE_0000000035.AGE--Y15T19__SEX--F"
-    },
-    {
-      "name": "ex - expectation of life at age x [20-24 years, Female]",
-      "dcid": "who/LIFE_0000000035.AGE--Y20T24__SEX--F"
-    },
-    {
-      "name": "ex - expectation of life at age x [25-29 years, Female]",
-      "dcid": "who/LIFE_0000000035.AGE--Y25T29__SEX--F"
-    },
-    {
-      "name": "ex - expectation of life at age x [30-34 years, Female]",
-      "dcid": "who/LIFE_0000000035.AGE--Y30T34__SEX--F"
-    },
-    {
-      "name": "ex - expectation of life at age x [35-39 years, Female]",
-      "dcid": "who/LIFE_0000000035.AGE--Y35T39__SEX--F"
-    },
-    {
-      "name": "ex - expectation of life at age x [40-44 years, Female]",
-      "dcid": "who/LIFE_0000000035.AGE--Y40T44__SEX--F"
-    },
-    {
-      "name": "ex - expectation of life at age x [45-49 years, Female]",
-      "dcid": "who/LIFE_0000000035.AGE--Y45T49__SEX--F"
-    },
-    {
-      "name": "ex - expectation of life at age x [5-9 years, Female]",
-      "dcid": "who/LIFE_0000000035.AGE--Y5T9__SEX--F"
-    },
-    {
-      "name": "ex - expectation of life at age x [50-54 years, Female]",
-      "dcid": "who/LIFE_0000000035.AGE--Y50T54__SEX--F"
-    },
-    {
-      "name": "ex - expectation of life at age x [55-59 years, Female]",
-      "dcid": "who/LIFE_0000000035.AGE--Y55T59__SEX--F"
-    },
-    {
-      "name": "ex - expectation of life at age x [60-64 years, Female]",
-      "dcid": "who/LIFE_0000000035.AGE--Y60T64__SEX--F"
-    },
-    {
-      "name": "ex - expectation of life at age x [65-69 years, Female]",
-      "dcid": "who/LIFE_0000000035.AGE--Y65T69__SEX--F"
-    },
-    {
-      "name": "ex - expectation of life at age x [70-74 years, Female]",
-      "dcid": "who/LIFE_0000000035.AGE--Y70T74__SEX--F"
-    },
-    {
-      "name": "ex - expectation of life at age x [75-79 years, Female]",
-      "dcid": "who/LIFE_0000000035.AGE--Y75T79__SEX--F"
-    },
-    {
-      "name": "ex - expectation of life at age x [80-84 years, Female]",
-      "dcid": "who/LIFE_0000000035.AGE--Y80T84__SEX--F"
-    },
-    {
-      "name": "ex - expectation of life at age x [85+ years, Female]",
-      "dcid": "who/LIFE_0000000035.AGE--Y_GE85__SEX--F"
-    },
-    {
-      "name": "ex - expectation of life at age x [\u003c1 year, Female]",
-      "dcid": "who/LIFE_0000000035.AGE--M0T11__SEX--F"
-    },
-    {
-      "name": "lx - number of people left alive at age x [1-4 years, Female]",
-      "dcid": "who/LIFE_0000000031.AGE--Y1T4__SEX--F"
-    },
-    {
-      "name": "lx - number of people left alive at age x [10-14 years, Female]",
-      "dcid": "who/LIFE_0000000031.AGE--Y10T14__SEX--F"
-    },
-    {
-      "name": "lx - number of people left alive at age x [15-19  years, Female]",
-      "dcid": "who/LIFE_0000000031.AGE--Y15T19__SEX--F"
-    },
-    {
-      "name": "lx - number of people left alive at age x [20-24 years, Female]",
-      "dcid": "who/LIFE_0000000031.AGE--Y20T24__SEX--F"
-    },
-    {
-      "name": "lx - number of people left alive at age x [25-29 years, Female]",
-      "dcid": "who/LIFE_0000000031.AGE--Y25T29__SEX--F"
-    },
-    {
-      "name": "lx - number of people left alive at age x [30-34 years, Female]",
-      "dcid": "who/LIFE_0000000031.AGE--Y30T34__SEX--F"
-    },
-    {
-      "name": "lx - number of people left alive at age x [35-39 years, Female]",
-      "dcid": "who/LIFE_0000000031.AGE--Y35T39__SEX--F"
-    },
-    {
-      "name": "lx - number of people left alive at age x [40-44 years, Female]",
-      "dcid": "who/LIFE_0000000031.AGE--Y40T44__SEX--F"
-    },
-    {
-      "name": "lx - number of people left alive at age x [45-49 years, Female]",
-      "dcid": "who/LIFE_0000000031.AGE--Y45T49__SEX--F"
-    },
-    {
-      "name": "lx - number of people left alive at age x [5-9 years, Female]",
-      "dcid": "who/LIFE_0000000031.AGE--Y5T9__SEX--F"
-    },
-    {
-      "name": "lx - number of people left alive at age x [50-54 years, Female]",
-      "dcid": "who/LIFE_0000000031.AGE--Y50T54__SEX--F"
-    },
-    {
-      "name": "lx - number of people left alive at age x [55-59 years, Female]",
-      "dcid": "who/LIFE_0000000031.AGE--Y55T59__SEX--F"
-    },
-    {
-      "name": "lx - number of people left alive at age x [60-64 years, Female]",
-      "dcid": "who/LIFE_0000000031.AGE--Y60T64__SEX--F"
-    },
-    {
-      "name": "lx - number of people left alive at age x [65-69 years, Female]",
-      "dcid": "who/LIFE_0000000031.AGE--Y65T69__SEX--F"
-    },
-    {
-      "name": "lx - number of people left alive at age x [70-74 years, Female]",
-      "dcid": "who/LIFE_0000000031.AGE--Y70T74__SEX--F"
-    },
-    {
-      "name": "lx - number of people left alive at age x [75-79 years, Female]",
-      "dcid": "who/LIFE_0000000031.AGE--Y75T79__SEX--F"
-    },
-    {
-      "name": "lx - number of people left alive at age x [80-84 years, Female]",
-      "dcid": "who/LIFE_0000000031.AGE--Y80T84__SEX--F"
-    },
-    {
-      "name": "lx - number of people left alive at age x [85+ years, Female]",
-      "dcid": "who/LIFE_0000000031.AGE--Y_GE85__SEX--F"
-    },
-    {
-      "name": "lx - number of people left alive at age x [\u003c1 year, Female]",
-      "dcid": "who/LIFE_0000000031.AGE--M0T11__SEX--F"
-    },
-    {
-      "name": "nLx - person-years lived between ages x and x+n [1-4 years, Female]",
-      "dcid": "who/LIFE_0000000033.AGE--Y1T4__SEX--F"
-    },
-    {
-      "name": "nLx - person-years lived between ages x and x+n [10-14 years, Female]",
-      "dcid": "who/LIFE_0000000033.AGE--Y10T14__SEX--F"
-    },
-    {
-      "name": "nLx - person-years lived between ages x and x+n [15-19  years, Female]",
-      "dcid": "who/LIFE_0000000033.AGE--Y15T19__SEX--F"
-    },
-    {
-      "name": "nLx - person-years lived between ages x and x+n [20-24 years, Female]",
-      "dcid": "who/LIFE_0000000033.AGE--Y20T24__SEX--F"
-    },
-    {
-      "name": "nLx - person-years lived between ages x and x+n [25-29 years, Female]",
-      "dcid": "who/LIFE_0000000033.AGE--Y25T29__SEX--F"
-    },
-    {
-      "name": "nLx - person-years lived between ages x and x+n [30-34 years, Female]",
-      "dcid": "who/LIFE_0000000033.AGE--Y30T34__SEX--F"
-    },
-    {
-      "name": "nLx - person-years lived between ages x and x+n [35-39 years, Female]",
-      "dcid": "who/LIFE_0000000033.AGE--Y35T39__SEX--F"
-    },
-    {
-      "name": "nLx - person-years lived between ages x and x+n [40-44 years, Female]",
-      "dcid": "who/LIFE_0000000033.AGE--Y40T44__SEX--F"
-    },
-    {
-      "name": "nLx - person-years lived between ages x and x+n [45-49 years, Female]",
-      "dcid": "who/LIFE_0000000033.AGE--Y45T49__SEX--F"
-    },
-    {
-      "name": "nLx - person-years lived between ages x and x+n [5-9 years, Female]",
-      "dcid": "who/LIFE_0000000033.AGE--Y5T9__SEX--F"
-    },
-    {
-      "name": "nLx - person-years lived between ages x and x+n [50-54 years, Female]",
-      "dcid": "who/LIFE_0000000033.AGE--Y50T54__SEX--F"
-    },
-    {
-      "name": "nLx - person-years lived between ages x and x+n [55-59 years, Female]",
-      "dcid": "who/LIFE_0000000033.AGE--Y55T59__SEX--F"
-    },
-    {
-      "name": "nLx - person-years lived between ages x and x+n [60-64 years, Female]",
-      "dcid": "who/LIFE_0000000033.AGE--Y60T64__SEX--F"
-    },
-    {
-      "name": "nLx - person-years lived between ages x and x+n [65-69 years, Female]",
-      "dcid": "who/LIFE_0000000033.AGE--Y65T69__SEX--F"
-    },
-    {
-      "name": "nLx - person-years lived between ages x and x+n [70-74 years, Female]",
-      "dcid": "who/LIFE_0000000033.AGE--Y70T74__SEX--F"
-    },
-    {
-      "name": "nLx - person-years lived between ages x and x+n [75-79 years, Female]",
-      "dcid": "who/LIFE_0000000033.AGE--Y75T79__SEX--F"
-    },
-    {
-      "name": "nLx - person-years lived between ages x and x+n [80-84 years, Female]",
-      "dcid": "who/LIFE_0000000033.AGE--Y80T84__SEX--F"
-    },
-    {
-      "name": "nLx - person-years lived between ages x and x+n [85+ years, Female]",
-      "dcid": "who/LIFE_0000000033.AGE--Y_GE85__SEX--F"
-    },
-    {
-      "name": "nLx - person-years lived between ages x and x+n [\u003c1 year, Female]",
-      "dcid": "who/LIFE_0000000033.AGE--M0T11__SEX--F"
-    },
-    {
-      "name": "nMx - age-specific death rate between ages x and x+n [1-4 years, Female]",
-      "dcid": "who/LIFE_0000000029.AGE--Y1T4__SEX--F"
-    },
-    {
-      "name": "nMx - age-specific death rate between ages x and x+n [10-14 years, Female]",
-      "dcid": "who/LIFE_0000000029.AGE--Y10T14__SEX--F"
-    },
-    {
-      "name": "nMx - age-specific death rate between ages x and x+n [15-19  years, Female]",
-      "dcid": "who/LIFE_0000000029.AGE--Y15T19__SEX--F"
-    },
-    {
-      "name": "nMx - age-specific death rate between ages x and x+n [20-24 years, Female]",
-      "dcid": "who/LIFE_0000000029.AGE--Y20T24__SEX--F"
-    },
-    {
-      "name": "nMx - age-specific death rate between ages x and x+n [25-29 years, Female]",
-      "dcid": "who/LIFE_0000000029.AGE--Y25T29__SEX--F"
-    },
-    {
-      "name": "nMx - age-specific death rate between ages x and x+n [30-34 years, Female]",
-      "dcid": "who/LIFE_0000000029.AGE--Y30T34__SEX--F"
-    },
-    {
-      "name": "nMx - age-specific death rate between ages x and x+n [35-39 years, Female]",
-      "dcid": "who/LIFE_0000000029.AGE--Y35T39__SEX--F"
-    },
-    {
-      "name": "nMx - age-specific death rate between ages x and x+n [40-44 years, Female]",
-      "dcid": "who/LIFE_0000000029.AGE--Y40T44__SEX--F"
-    },
-    {
-      "name": "nMx - age-specific death rate between ages x and x+n [45-49 years, Female]",
-      "dcid": "who/LIFE_0000000029.AGE--Y45T49__SEX--F"
-    },
-    {
-      "name": "nMx - age-specific death rate between ages x and x+n [5-9 years, Female]",
-      "dcid": "who/LIFE_0000000029.AGE--Y5T9__SEX--F"
-    },
-    {
-      "name": "nMx - age-specific death rate between ages x and x+n [50-54 years, Female]",
-      "dcid": "who/LIFE_0000000029.AGE--Y50T54__SEX--F"
+      "name": "Years life lost attributable to ambient air pollution [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_46.ENVCAUSE--ENVCAUSE039__SEX--F"
     }
   ],
   "matches": [

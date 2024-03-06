@@ -37,7 +37,8 @@
                 "2018": 64060,
                 "2019": 66290,
                 "2020": 64770,
-                "2021": 71130
+                "2021": 71130,
+                "2022": 77950
               },
               "observationPeriod": "P1Y",
               "importName": "WorldDevelopmentIndicators",
@@ -381,7 +382,8 @@
                 "2018": 326838199,
                 "2019": 328329953,
                 "2020": 331511512,
-                "2021": 332031554
+                "2021": 332031554,
+                "2022": 333287557
               },
               "observationPeriod": "P1Y",
               "importName": "WorldDevelopmentIndicators",

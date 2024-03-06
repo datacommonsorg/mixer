@@ -65,7 +65,8 @@
             "2018": 1402760000,
             "2019": 1407745000,
             "2020": 1411100000,
-            "2021": 1412360000
+            "2021": 1412360000,
+            "2022": 1412175000
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -140,7 +141,8 @@
             "2018": 198387623,
             "2019": 203304492,
             "2020": 208327405,
-            "2021": 213401323
+            "2021": 213401323,
+            "2022": 218541212
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -514,8 +516,8 @@
   },
   "latestPopulation": {
     "country/ASM": {
-      "date": "2021",
-      "value": 45035,
+      "date": "2022",
+      "value": 44273,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
@@ -523,8 +525,8 @@
       }
     },
     "country/CHN": {
-      "date": "2021",
-      "value": 1412360000,
+      "date": "2022",
+      "value": 1412175000,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
@@ -541,8 +543,8 @@
       }
     },
     "country/NGA": {
-      "date": "2021",
-      "value": 213401323,
+      "date": "2022",
+      "value": 218541212,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
@@ -550,8 +552,8 @@
       }
     },
     "country/NZL": {
-      "date": "2021",
-      "value": 5111400,
+      "date": "2022",
+      "value": 5124100,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",

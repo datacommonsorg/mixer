@@ -105,7 +105,11 @@
       "dcid": "who/HIV_0000000015"
     },
     {
-      "name": "Pregnant women attending antenatal care  at least once and receiving at least 3 doses of Intermittent Preventive Treatment of Malaria for Pregnant Women",
+      "name": "Percentage of women aged 15–49 with a live birth in a given time period, attended at least once during pregnancy by skilled health personnel for reasons related to the pregnancy.",
+      "dcid": "who/WHS4_111"
+    },
+    {
+      "name": "Pregnant women attending antenatal care at least once and receiving at least 3 doses of Intermittent Preventive Treatment of Malaria for Pregnant Women",
       "dcid": "who/MALARIA_IPTP3_COVERAGE"
     },
     {
@@ -115,6 +119,10 @@
     {
       "name": "Share of women among owners or rights-bearers of agricultural land, by type of tenure",
       "dcid": "sdg/SP_GNP_WNOWNS"
+    },
+    {
+      "name": "The percentage of women aged 15-49 with a live birth in a given time period that received antenatal care four or more times.",
+      "dcid": "who/WHS4_154"
     },
     {
       "name": "Women of reproductive age who are married or in-union who have their need for family planning satisfied with modern methods, UNPD",
@@ -361,6 +369,102 @@
       "dcid": "who/bmi30wm.EDUCATIONLEVEL--NHLM"
     },
     {
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [15-19  years]",
+      "dcid": "who/bfearly.AGE--Y15T19"
+    },
+    {
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [20-49 years]",
+      "dcid": "who/bfearly.AGE--Y20T49"
+    },
+    {
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Decile 1 (poorest)]",
+      "dcid": "who/bfearly.WEALTHDECILE--WEALTHDECILE01"
+    },
+    {
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Decile 10 (richest)]",
+      "dcid": "who/bfearly.WEALTHDECILE--WEALTHDECILE10"
+    },
+    {
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Decile 2]",
+      "dcid": "who/bfearly.WEALTHDECILE--WEALTHDECILE02"
+    },
+    {
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Decile 3]",
+      "dcid": "who/bfearly.WEALTHDECILE--WEALTHDECILE03"
+    },
+    {
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Decile 4]",
+      "dcid": "who/bfearly.WEALTHDECILE--WEALTHDECILE04"
+    },
+    {
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Decile 5]",
+      "dcid": "who/bfearly.WEALTHDECILE--WEALTHDECILE05"
+    },
+    {
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Decile 6]",
+      "dcid": "who/bfearly.WEALTHDECILE--WEALTHDECILE06"
+    },
+    {
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Decile 7]",
+      "dcid": "who/bfearly.WEALTHDECILE--WEALTHDECILE07"
+    },
+    {
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Decile 8]",
+      "dcid": "who/bfearly.WEALTHDECILE--WEALTHDECILE08"
+    },
+    {
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Decile 9]",
+      "dcid": "who/bfearly.WEALTHDECILE--WEALTHDECILE09"
+    },
+    {
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Female]",
+      "dcid": "who/bfearly.SEX--F"
+    },
+    {
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Male]",
+      "dcid": "who/bfearly.SEX--M"
+    },
+    {
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Primary]",
+      "dcid": "who/bfearly.EDUCATIONLEVEL--PRLM"
+    },
+    {
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Q1 (Poorest)]",
+      "dcid": "who/bfearly.WEALTHQUINTILE--WQ1"
+    },
+    {
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Q2]",
+      "dcid": "who/bfearly.WEALTHQUINTILE--WQ2"
+    },
+    {
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Q3]",
+      "dcid": "who/bfearly.WEALTHQUINTILE--WQ3"
+    },
+    {
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Q4]",
+      "dcid": "who/bfearly.WEALTHQUINTILE--WQ4"
+    },
+    {
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Q5 (Richest)]",
+      "dcid": "who/bfearly.WEALTHQUINTILE--WQ5"
+    },
+    {
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Rural]",
+      "dcid": "who/bfearly.RESIDENCEAREATYPE--RUR"
+    },
+    {
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Secondary or higher]",
+      "dcid": "who/bfearly.EDUCATIONLEVEL--SHLM"
+    },
+    {
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Urban]",
+      "dcid": "who/bfearly.RESIDENCEAREATYPE--URB"
+    },
+    {
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [nan]",
+      "dcid": "who/bfearly.EDUCATIONLEVEL--NHLM"
+    },
+    {
       "name": "Population of Person: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
       "dcid": "dc/pl6ymqll4n3cc"
     },
@@ -409,96 +513,96 @@
       "dcid": "dc/jegsqlvc25hk3"
     },
     {
-      "name": "Pregnant women sleeping under insecticide-treated nets [15-19  years]",
+      "name": "Proportion of elected seats held by women in deliberative bodies of local government [Female]",
+      "dcid": "sdg/SG_GEN_LOCGELS.SEX--F"
+    },
+    {
+      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets [15-19  years]",
       "dcid": "who/itnwm.AGE--Y15T19"
     },
     {
-      "name": "Pregnant women sleeping under insecticide-treated nets [20-49 years]",
+      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets [20-49 years]",
       "dcid": "who/itnwm.AGE--Y20T49"
     },
     {
-      "name": "Pregnant women sleeping under insecticide-treated nets [Decile 1 (poorest)]",
+      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets [Decile 1 (poorest)]",
       "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE01"
     },
     {
-      "name": "Pregnant women sleeping under insecticide-treated nets [Decile 10 (richest)]",
+      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets [Decile 10 (richest)]",
       "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE10"
     },
     {
-      "name": "Pregnant women sleeping under insecticide-treated nets [Decile 2]",
+      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets [Decile 2]",
       "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE02"
     },
     {
-      "name": "Pregnant women sleeping under insecticide-treated nets [Decile 3]",
+      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets [Decile 3]",
       "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE03"
     },
     {
-      "name": "Pregnant women sleeping under insecticide-treated nets [Decile 4]",
+      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets [Decile 4]",
       "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE04"
     },
     {
-      "name": "Pregnant women sleeping under insecticide-treated nets [Decile 5]",
+      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets [Decile 5]",
       "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE05"
     },
     {
-      "name": "Pregnant women sleeping under insecticide-treated nets [Decile 6]",
+      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets [Decile 6]",
       "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE06"
     },
     {
-      "name": "Pregnant women sleeping under insecticide-treated nets [Decile 7]",
+      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets [Decile 7]",
       "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE07"
     },
     {
-      "name": "Pregnant women sleeping under insecticide-treated nets [Decile 8]",
+      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets [Decile 8]",
       "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE08"
     },
     {
-      "name": "Pregnant women sleeping under insecticide-treated nets [Decile 9]",
+      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets [Decile 9]",
       "dcid": "who/itnwm.WEALTHDECILE--WEALTHDECILE09"
     },
     {
-      "name": "Pregnant women sleeping under insecticide-treated nets [Primary]",
+      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets [Primary]",
       "dcid": "who/itnwm.EDUCATIONLEVEL--PRLM"
     },
     {
-      "name": "Pregnant women sleeping under insecticide-treated nets [Q1 (Poorest)]",
+      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets [Q1 (Poorest)]",
       "dcid": "who/itnwm.WEALTHQUINTILE--WQ1"
     },
     {
-      "name": "Pregnant women sleeping under insecticide-treated nets [Q2]",
+      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets [Q2]",
       "dcid": "who/itnwm.WEALTHQUINTILE--WQ2"
     },
     {
-      "name": "Pregnant women sleeping under insecticide-treated nets [Q3]",
+      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets [Q3]",
       "dcid": "who/itnwm.WEALTHQUINTILE--WQ3"
     },
     {
-      "name": "Pregnant women sleeping under insecticide-treated nets [Q4]",
+      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets [Q4]",
       "dcid": "who/itnwm.WEALTHQUINTILE--WQ4"
     },
     {
-      "name": "Pregnant women sleeping under insecticide-treated nets [Q5 (Richest)]",
+      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets [Q5 (Richest)]",
       "dcid": "who/itnwm.WEALTHQUINTILE--WQ5"
     },
     {
-      "name": "Pregnant women sleeping under insecticide-treated nets [Rural]",
+      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets [Rural]",
       "dcid": "who/itnwm.RESIDENCEAREATYPE--RUR"
     },
     {
-      "name": "Pregnant women sleeping under insecticide-treated nets [Secondary or higher]",
+      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets [Secondary or higher]",
       "dcid": "who/itnwm.EDUCATIONLEVEL--SHLM"
     },
     {
-      "name": "Pregnant women sleeping under insecticide-treated nets [Urban]",
+      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets [Urban]",
       "dcid": "who/itnwm.RESIDENCEAREATYPE--URB"
     },
     {
-      "name": "Pregnant women sleeping under insecticide-treated nets [nan]",
+      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets [nan]",
       "dcid": "who/itnwm.EDUCATIONLEVEL--NHLM"
-    },
-    {
-      "name": "Proportion of elected seats held by women in deliberative bodies of local government [Female]",
-      "dcid": "sdg/SG_GEN_LOCGELS.SEX--F"
     },
     {
       "name": "Proportion of seats held by women in national parliaments [Female]",

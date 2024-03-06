@@ -31,8 +31,8 @@
           "points_by_facet": [
             {
               "date": "2022",
-              "value": 67871900,
-              "facet": "1151455814"
+              "value": 67971311,
+              "facet": "3981252704"
             }
           ]
         },
@@ -119,8 +119,8 @@
           "entity": "country/FRA",
           "points_by_facet": [
             {
-              "date": "2021",
-              "value": 52880,
+              "date": "2022",
+              "value": 56370,
               "facet": "2171028778"
             }
           ]
@@ -129,8 +129,8 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2021",
-              "value": 71130,
+              "date": "2022",
+              "value": 77950,
               "facet": "2171028778"
             }
           ]
@@ -201,7 +201,7 @@
           "points_by_facet": [
             {
               "date": "2023-12",
-              "value": 972262,
+              "value": 970791,
               "facet": "324358135"
             }
           ]
