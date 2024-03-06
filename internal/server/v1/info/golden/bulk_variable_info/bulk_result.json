@@ -3782,6 +3782,7 @@
           },
           "dc/base/WorldDevelopmentIndicators": {
             "importName": "WorldDevelopmentIndicators",
+            "releaseFrequency": "P1Y",
             "seriesSummary": [
               {
                 "seriesKey": {},
@@ -3815,7 +3816,7 @@
                         "name": "World"
                       }
                     ],
-                    "minValue": 2.27319100090675,
+                    "minValue": 2.27316335245758,
                     "maxValue": 5.32342829673039
                   }
                 },
