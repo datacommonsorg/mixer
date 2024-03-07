@@ -67,7 +67,7 @@ country/KEN,ken
 country/KGZ,kgz
 country/KHM,khm
 country/KNA,kna
-country/KOR,"kor,kr"
+country/KOR,"kor,kr,republic of korea,rok,korean republic"
 country/KWT,"kwt,kw"
 country/LAO,lao
 country/LBN,lbn
@@ -110,7 +110,7 @@ country/PCN,pcn
 country/PHL,phl
 country/PLW,plw
 country/PRI,pri
-country/PRK,prk
+country/PRK,"prk,dprk,democratic people's republic of korea,democratic peoples republic of korea"
 country/PRT,prt
 country/PSE,pse
 country/PYF,pyf
