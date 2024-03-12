@@ -168,7 +168,7 @@
                 "name": "East North Central Division"
               }
             ],
-            "minValue": 7670097,
+            "minValue": 7460046.426,
             "maxValue": 33710425
           },
           "CensusTract": {
@@ -1564,8 +1564,27 @@
                   "measurementMethod": "CensusACS5yrSurveySubjectTable"
                 },
                 "earliestDate": "2010",
-                "latestDate": "2019",
+                "latestDate": "2022",
                 "placeTypeSummary": {
+                  "CensusDivision": {
+                    "placeCount": 9,
+                    "topPlaces": [
+                      {
+                        "dcid": "usc/SouthAtlanticDivision",
+                        "name": "South Atlantic Division"
+                      },
+                      {
+                        "dcid": "usc/PacificDivision",
+                        "name": "Pacific Division"
+                      },
+                      {
+                        "dcid": "usc/EastNorthCentralDivision",
+                        "name": "East North Central Division"
+                      }
+                    ],
+                    "minValue": 7460046.426,
+                    "maxValue": 33702531.525
+                  },
                   "Country": {
                     "placeCount": 1,
                     "topPlaces": [
@@ -1575,7 +1594,7 @@
                       }
                     ],
                     "minValue": 154718323.448,
-                    "maxValue": 164946479.86
+                    "maxValue": 166873186.872
                   },
                   "State": {
                     "placeCount": 51,
@@ -1594,17 +1613,17 @@
                       }
                     ],
                     "minValue": 267879.289,
-                    "maxValue": 19759598.991
+                    "maxValue": 19791049.569
                   }
                 },
                 "minValue": 267879.289,
-                "maxValue": 164946479.86,
-                "observationCount": 520,
-                "timeSeriesCount": 52
+                "maxValue": 166873186.872,
+                "observationCount": 766,
+                "timeSeriesCount": 61
               }
             ],
-            "observationCount": 520,
-            "timeSeriesCount": 52
+            "observationCount": 766,
+            "timeSeriesCount": 61
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S2601APR": {
             "importName": "CensusACS5YearSurvey_SubjectTables_S2601APR",

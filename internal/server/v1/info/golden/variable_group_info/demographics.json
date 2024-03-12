@@ -117,7 +117,7 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 27158
+        "descendentStatVarCount": 27194
       },
       {
         "id": "dc/g/Person_AgeGroupClassification",
@@ -126,28 +126,16 @@
         "descendentStatVarCount": 2
       },
       {
-        "id": "dc/g/Household_BenefitStatus",
-        "specializedEntity": "Benefit Status",
-        "displayName": "Household by Benefit Status",
-        "descendentStatVarCount": 3
-      },
-      {
-        "id": "dc/g/Person_BenefitStatus",
-        "specializedEntity": "Benefit Status",
-        "displayName": "Person by Benefit Status",
-        "descendentStatVarCount": 3
-      },
-      {
         "id": "dc/g/Household_BenefitsStatus",
         "specializedEntity": "Benefits Status",
         "displayName": "Household by Benefits Status",
-        "descendentStatVarCount": 172
+        "descendentStatVarCount": 175
       },
       {
         "id": "dc/g/Person_BenefitsStatus",
         "specializedEntity": "Benefits Status",
         "displayName": "Person by Benefits Status",
-        "descendentStatVarCount": 11
+        "descendentStatVarCount": 15
       },
       {
         "id": "dc/g/Person_CarpoolOccupancy",
@@ -267,7 +255,7 @@
         "id": "dc/g/Person_Facilities",
         "specializedEntity": "Facilities",
         "displayName": "Person by Facilities",
-        "descendentStatVarCount": 2
+        "descendentStatVarCount": 3
       },
       {
         "id": "dc/g/Place_Facilities",
@@ -291,7 +279,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 24780
+        "descendentStatVarCount": 24804
       },
       {
         "id": "dc/g/Person_GovernmentId",
@@ -321,7 +309,7 @@
         "id": "dc/g/Household",
         "specializedEntity": "Household",
         "displayName": "Household",
-        "descendentStatVarCount": 3124
+        "descendentStatVarCount": 3126
       },
       {
         "id": "dc/g/Person_HouseholdIncome",
@@ -576,7 +564,7 @@
         "descendentStatVarCount": 2
       }
     ],
-    "descendentStatVarCount": 45184,
+    "descendentStatVarCount": 45222,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

@@ -2088,7 +2088,8 @@
                 "2023-10": 3.8,
                 "2023-11": 3.7,
                 "2023-12": 3.7,
-                "2024-01": 3.7
+                "2024-01": 3.7,
+                "2024-02": 3.9
               },
               "measurementMethod": "BLSSeasonallyAdjusted",
               "observationPeriod": "P1M",
@@ -4619,7 +4620,8 @@
                 "2023-09": 4.9,
                 "2023-10": 5,
                 "2023-11": 4.9,
-                "2023-12": 5.1
+                "2023-12": 5.1,
+                "2024-01": 5.7
               },
               "measurementMethod": "BLSSeasonallyUnadjusted",
               "observationPeriod": "P1M",
@@ -5261,7 +5263,8 @@
                 "2023-09": 5,
                 "2023-10": 5.1,
                 "2023-11": 5.1,
-                "2023-12": 5.1
+                "2023-12": 5.1,
+                "2024-01": 5.2
               },
               "measurementMethod": "BLSSeasonallyAdjusted",
               "observationPeriod": "P1M",
