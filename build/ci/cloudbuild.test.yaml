@@ -59,3 +59,7 @@ options:
     - name: go-modules
       path: /go
   machineType: "N1_HIGHCPU_32"
+
+github:
+  pull_request:
+    commentControl: COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY
