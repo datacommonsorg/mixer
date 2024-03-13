@@ -17,9 +17,9 @@ serviceGroups:
   recon:
     replicas: 4
   node:
-    replicas: 10
+    replicas: 20
   observation:
-    replicas: 10
+    replicas: 20
   default:
     replicas: 5
 
