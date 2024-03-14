@@ -261,6 +261,18 @@
               "latest_date": "2015"
             },
             {
+              "facet_id": "10983471",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 316515021
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2015",
+              "latest_date": "2015"
+            },
+            {
               "facet_id": "1964317807",
               "observations": [
                 {
@@ -302,18 +314,6 @@
                 {
                   "date": "2015",
                   "value": 321418821
-                }
-              ],
-              "obs_count": 1,
-              "earliest_date": "2015",
-              "latest_date": "2015"
-            },
-            {
-              "facet_id": "10983471",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 316515021
                 }
               ],
               "obs_count": 1,
@@ -362,6 +362,18 @@
               "latest_date": "2015"
             },
             {
+              "facet_id": "10983471",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 38421464
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2015",
+              "latest_date": "2015"
+            },
+            {
               "facet_id": "1964317807",
               "observations": [
                 {
@@ -403,18 +415,6 @@
                 {
                   "date": "2015",
                   "value": 39144818
-                }
-              ],
-              "obs_count": 1,
-              "earliest_date": "2015",
-              "latest_date": "2015"
-            },
-            {
-              "facet_id": "10983471",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 38421464
                 }
               ],
               "obs_count": 1,

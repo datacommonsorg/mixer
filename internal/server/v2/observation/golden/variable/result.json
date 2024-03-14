@@ -1457,6 +1457,186 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Person_25To34Years_BachelorsDegreeOrHigher_AsAFractionOf_Count_Person_25To34Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To34Years_BachelorsDegreeOrHigher_Female_AsAFractionOf_Count_Person_25To34Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To34Years_BachelorsDegreeOrHigher_Male_AsAFractionOf_Count_Person_25To34Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To34Years_LowerSecondaryEducation_AsAFractionOf_Count_Person_25To34Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To34Years_LowerSecondaryEducation_Female_AsAFractionOf_Count_Person_25To34Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To34Years_LowerSecondaryEducation_Male_AsAFractionOf_Count_Person_25To34Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To34Years_MastersDegreeOrHigher_AsAFractionOf_Count_Person_25To34Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To34Years_MastersDegreeOrHigher_Female_AsAFractionOf_Count_Person_25To34Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To34Years_MastersDegreeOrHigher_Male_AsAFractionOf_Count_Person_25To34Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To34Years_ShortCycleTertiaryEducation_AsAFractionOf_Count_Person_25To34Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To34Years_ShortCycleTertiaryEducation_Female_AsAFractionOf_Count_Person_25To34Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To34Years_ShortCycleTertiaryEducation_Male_AsAFractionOf_Count_Person_25To34Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To34Years_TertiaryEducation_AsAFractionOf_Count_Person_25To34Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To34Years_TertiaryEducation_Female_AsAFractionOf_Count_Person_25To34Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To34Years_TertiaryEducation_Male_AsAFractionOf_Count_Person_25To34Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To34Years_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_AsAFractionOf_Count_Person_25To34Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To34Years_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female_AsAFractionOf_Count_Person_25To34Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To34Years_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Male_AsAFractionOf_Count_Person_25To34Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To64Years_BachelorsDegreeOrHigher_AsAFractionOf_Count_Person_25To64Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To64Years_BachelorsDegreeOrHigher_Female_AsAFractionOf_Count_Person_25To64Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To64Years_BachelorsDegreeOrHigher_Male_AsAFractionOf_Count_Person_25To64Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To64Years_LowerSecondaryEducation_AsAFractionOf_Count_Person_25To64Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To64Years_LowerSecondaryEducation_Female_AsAFractionOf_Count_Person_25To64Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To64Years_LowerSecondaryEducation_Male_AsAFractionOf_Count_Person_25To64Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To64Years_MastersDegreeOrHigher_AsAFractionOf_Count_Person_25To64Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To64Years_MastersDegreeOrHigher_Female_AsAFractionOf_Count_Person_25To64Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To64Years_MastersDegreeOrHigher_Male_AsAFractionOf_Count_Person_25To64Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To64Years_ShortCycleTertiaryEducation_AsAFractionOf_Count_Person_25To64Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To64Years_ShortCycleTertiaryEducation_Female_AsAFractionOf_Count_Person_25To64Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To64Years_ShortCycleTertiaryEducation_Male_AsAFractionOf_Count_Person_25To64Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To64Years_TertiaryEducation_AsAFractionOfCount_Person_25To64Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To64Years_TertiaryEducation_Female_AsAFractionOfCount_Person_25To64Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To64Years_TertiaryEducation_Male_AsAFractionOfCount_Person_25To64Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To64Years_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_AsAFractionOfCount_Person_25To64Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To64Years_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female_AsAFractionOfCount_Person_25To64Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Person_25To64Years_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Male_AsAFractionOfCount_Person_25To64Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Person_30To34Years": {
       "by_entity": {
         "wikidataId/Q1951": {}

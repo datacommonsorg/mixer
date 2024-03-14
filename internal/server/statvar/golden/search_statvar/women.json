@@ -1,6 +1,10 @@
 {
   "statVars": [
     {
+      "name": "Adolescent fertility rate (per 1000 women aged 15-19 years)",
+      "dcid": "who/asfr1"
+    },
+    {
       "name": "Degree to which the legal framework guarantees women's equal rights to land ownership and/or control",
       "dcid": "sdg/SG_LGL_LNDFEMOD"
     },
@@ -89,15 +93,15 @@
       "dcid": "sdg/SG_LGL_GENEQVAW"
     },
     {
-      "name": "Mean hemoglobin level of non-pregnant women",
+      "name": "Mean hemoglobin level of non-pregnant women (aged 15-49 years)",
       "dcid": "who/HEMOGLOBINLEVEL_NONPREGNANT_MEAN"
     },
     {
-      "name": "Mean hemoglobin level of pregnant women",
+      "name": "Mean hemoglobin level of pregnant women (aged 15-49 years)",
       "dcid": "who/HEMOGLOBINLEVEL_PREGNANT_MEAN"
     },
     {
-      "name": "Mean hemoglobin level of women of reproductive age",
+      "name": "Mean hemoglobin level of women of reproductive age (aged 15-49 years)",
       "dcid": "who/HEMOGLOBINLEVEL_REPRODUCTIVEAGE_MEAN"
     },
     {
@@ -105,11 +109,19 @@
       "dcid": "who/HIV_0000000015"
     },
     {
-      "name": "Percentage of women aged 15–49 with a live birth in a given time period, attended at least once during pregnancy by skilled health personnel for reasons related to the pregnancy.",
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 (%)",
+      "dcid": "who/bmi30wm"
+    },
+    {
+      "name": "Percentage of women aged 15-49 with a live birth in a given time period, attended at least once during pregnancy by skilled health personnel for reasons related to the pregnancy.",
       "dcid": "who/WHS4_111"
     },
     {
-      "name": "Pregnant women attending antenatal care at least once and receiving at least 3 doses of Intermittent Preventive Treatment of Malaria for Pregnant Women",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%)",
+      "dcid": "who/bfearly"
+    },
+    {
+      "name": "Pregnant women attending antenatal care at least once and receiving at least 3 doses of Intermittent Preventive Treatment of Malaria for Pregnant Women (IPTp3) (%)",
       "dcid": "who/MALARIA_IPTP3_COVERAGE"
     },
     {
@@ -117,7 +129,11 @@
       "dcid": "sdg/SG_GEN_EQPWN"
     },
     {
-      "name": "Share of women among owners or rights-bearers of agricultural land, by type of tenure",
+      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets",
+      "dcid": "who/itnwm"
+    },
+    {
+      "name": "Share of women among owners or rights-bearers of agricultural land",
       "dcid": "sdg/SP_GNP_WNOWNS"
     },
     {
@@ -125,8 +141,88 @@
       "dcid": "who/WHS4_154"
     },
     {
-      "name": "Women of reproductive age who are married or in-union who have their need for family planning satisfied with modern methods, UNPD",
+      "name": "Women of reproductive age (15-49 years) who are married or in-union who have their need for family planning satisfied with modern methods (%), UNPD",
       "dcid": "who/FAMILYPLANNINGUNPDUHC"
+    },
+    {
+      "name": "Adolescent fertility rate (per 1000 women aged 15-19 years) [Decile 1 (poorest)]",
+      "dcid": "who/asfr1.WEALTHDECILE--WEALTHDECILE01"
+    },
+    {
+      "name": "Adolescent fertility rate (per 1000 women aged 15-19 years) [Decile 10 (richest)]",
+      "dcid": "who/asfr1.WEALTHDECILE--WEALTHDECILE10"
+    },
+    {
+      "name": "Adolescent fertility rate (per 1000 women aged 15-19 years) [Decile 2]",
+      "dcid": "who/asfr1.WEALTHDECILE--WEALTHDECILE02"
+    },
+    {
+      "name": "Adolescent fertility rate (per 1000 women aged 15-19 years) [Decile 3]",
+      "dcid": "who/asfr1.WEALTHDECILE--WEALTHDECILE03"
+    },
+    {
+      "name": "Adolescent fertility rate (per 1000 women aged 15-19 years) [Decile 4]",
+      "dcid": "who/asfr1.WEALTHDECILE--WEALTHDECILE04"
+    },
+    {
+      "name": "Adolescent fertility rate (per 1000 women aged 15-19 years) [Decile 5]",
+      "dcid": "who/asfr1.WEALTHDECILE--WEALTHDECILE05"
+    },
+    {
+      "name": "Adolescent fertility rate (per 1000 women aged 15-19 years) [Decile 6]",
+      "dcid": "who/asfr1.WEALTHDECILE--WEALTHDECILE06"
+    },
+    {
+      "name": "Adolescent fertility rate (per 1000 women aged 15-19 years) [Decile 7]",
+      "dcid": "who/asfr1.WEALTHDECILE--WEALTHDECILE07"
+    },
+    {
+      "name": "Adolescent fertility rate (per 1000 women aged 15-19 years) [Decile 8]",
+      "dcid": "who/asfr1.WEALTHDECILE--WEALTHDECILE08"
+    },
+    {
+      "name": "Adolescent fertility rate (per 1000 women aged 15-19 years) [Decile 9]",
+      "dcid": "who/asfr1.WEALTHDECILE--WEALTHDECILE09"
+    },
+    {
+      "name": "Adolescent fertility rate (per 1000 women aged 15-19 years) [Primary]",
+      "dcid": "who/asfr1.EDUCATIONLEVEL--PRLM"
+    },
+    {
+      "name": "Adolescent fertility rate (per 1000 women aged 15-19 years) [Q1 (Poorest)]",
+      "dcid": "who/asfr1.WEALTHQUINTILE--WQ1"
+    },
+    {
+      "name": "Adolescent fertility rate (per 1000 women aged 15-19 years) [Q2]",
+      "dcid": "who/asfr1.WEALTHQUINTILE--WQ2"
+    },
+    {
+      "name": "Adolescent fertility rate (per 1000 women aged 15-19 years) [Q3]",
+      "dcid": "who/asfr1.WEALTHQUINTILE--WQ3"
+    },
+    {
+      "name": "Adolescent fertility rate (per 1000 women aged 15-19 years) [Q4]",
+      "dcid": "who/asfr1.WEALTHQUINTILE--WQ4"
+    },
+    {
+      "name": "Adolescent fertility rate (per 1000 women aged 15-19 years) [Q5 (Richest)]",
+      "dcid": "who/asfr1.WEALTHQUINTILE--WQ5"
+    },
+    {
+      "name": "Adolescent fertility rate (per 1000 women aged 15-19 years) [Rural]",
+      "dcid": "who/asfr1.RESIDENCEAREATYPE--RUR"
+    },
+    {
+      "name": "Adolescent fertility rate (per 1000 women aged 15-19 years) [Secondary or higher]",
+      "dcid": "who/asfr1.EDUCATIONLEVEL--SHLM"
+    },
+    {
+      "name": "Adolescent fertility rate (per 1000 women aged 15-19 years) [Urban]",
+      "dcid": "who/asfr1.RESIDENCEAREATYPE--URB"
+    },
+    {
+      "name": "Adolescent fertility rate (per 1000 women aged 15-19 years) [nan]",
+      "dcid": "who/asfr1.EDUCATIONLEVEL--NHLM"
     },
     {
       "name": "Count of Establishment: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
@@ -281,187 +377,187 @@
       "dcid": "sdg/SG_GEN_PARLN.SEX--F"
     },
     {
-      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [15-19  years]",
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 (%) [15-19 years]",
       "dcid": "who/bmi30wm.AGE--Y15T19"
     },
     {
-      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [20-49 years]",
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 (%) [20-49 years]",
       "dcid": "who/bmi30wm.AGE--Y20T49"
     },
     {
-      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 1 (poorest)]",
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 (%) [Decile 1 (poorest)]",
       "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE01"
     },
     {
-      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 10 (richest)]",
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 (%) [Decile 10 (richest)]",
       "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE10"
     },
     {
-      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 2]",
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 (%) [Decile 2]",
       "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE02"
     },
     {
-      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 3]",
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 (%) [Decile 3]",
       "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE03"
     },
     {
-      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 4]",
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 (%) [Decile 4]",
       "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE04"
     },
     {
-      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 5]",
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 (%) [Decile 5]",
       "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE05"
     },
     {
-      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 6]",
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 (%) [Decile 6]",
       "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE06"
     },
     {
-      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 7]",
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 (%) [Decile 7]",
       "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE07"
     },
     {
-      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 8]",
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 (%) [Decile 8]",
       "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE08"
     },
     {
-      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Decile 9]",
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 (%) [Decile 9]",
       "dcid": "who/bmi30wm.WEALTHDECILE--WEALTHDECILE09"
     },
     {
-      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Primary]",
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 (%) [Primary]",
       "dcid": "who/bmi30wm.EDUCATIONLEVEL--PRLM"
     },
     {
-      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Q1 (Poorest)]",
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 (%) [Q1 (Poorest)]",
       "dcid": "who/bmi30wm.WEALTHQUINTILE--WQ1"
     },
     {
-      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Q2]",
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 (%) [Q2]",
       "dcid": "who/bmi30wm.WEALTHQUINTILE--WQ2"
     },
     {
-      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Q3]",
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 (%) [Q3]",
       "dcid": "who/bmi30wm.WEALTHQUINTILE--WQ3"
     },
     {
-      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Q4]",
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 (%) [Q4]",
       "dcid": "who/bmi30wm.WEALTHQUINTILE--WQ4"
     },
     {
-      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Q5 (Richest)]",
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 (%) [Q5 (Richest)]",
       "dcid": "who/bmi30wm.WEALTHQUINTILE--WQ5"
     },
     {
-      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Rural]",
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 (%) [Rural]",
       "dcid": "who/bmi30wm.RESIDENCEAREATYPE--RUR"
     },
     {
-      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Secondary or higher]",
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 (%) [Secondary or higher]",
       "dcid": "who/bmi30wm.EDUCATIONLEVEL--SHLM"
     },
     {
-      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [Urban]",
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 (%) [Urban]",
       "dcid": "who/bmi30wm.RESIDENCEAREATYPE--URB"
     },
     {
-      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 [nan]",
+      "name": "Obesity prevalence in non-pregnant women aged 15-49 years, BMI \u003e= 30 (%) [nan]",
       "dcid": "who/bmi30wm.EDUCATIONLEVEL--NHLM"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [15-19  years]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [15-19 years]",
       "dcid": "who/bfearly.AGE--Y15T19"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [20-49 years]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [20-49 years]",
       "dcid": "who/bfearly.AGE--Y20T49"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Decile 1 (poorest)]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [Decile 1 (poorest)]",
       "dcid": "who/bfearly.WEALTHDECILE--WEALTHDECILE01"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Decile 10 (richest)]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [Decile 10 (richest)]",
       "dcid": "who/bfearly.WEALTHDECILE--WEALTHDECILE10"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Decile 2]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [Decile 2]",
       "dcid": "who/bfearly.WEALTHDECILE--WEALTHDECILE02"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Decile 3]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [Decile 3]",
       "dcid": "who/bfearly.WEALTHDECILE--WEALTHDECILE03"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Decile 4]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [Decile 4]",
       "dcid": "who/bfearly.WEALTHDECILE--WEALTHDECILE04"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Decile 5]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [Decile 5]",
       "dcid": "who/bfearly.WEALTHDECILE--WEALTHDECILE05"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Decile 6]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [Decile 6]",
       "dcid": "who/bfearly.WEALTHDECILE--WEALTHDECILE06"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Decile 7]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [Decile 7]",
       "dcid": "who/bfearly.WEALTHDECILE--WEALTHDECILE07"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Decile 8]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [Decile 8]",
       "dcid": "who/bfearly.WEALTHDECILE--WEALTHDECILE08"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Decile 9]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [Decile 9]",
       "dcid": "who/bfearly.WEALTHDECILE--WEALTHDECILE09"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Female]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [Female]",
       "dcid": "who/bfearly.SEX--F"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Male]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [Male]",
       "dcid": "who/bfearly.SEX--M"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Primary]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [Primary]",
       "dcid": "who/bfearly.EDUCATIONLEVEL--PRLM"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Q1 (Poorest)]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [Q1 (Poorest)]",
       "dcid": "who/bfearly.WEALTHQUINTILE--WQ1"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Q2]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [Q2]",
       "dcid": "who/bfearly.WEALTHQUINTILE--WQ2"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Q3]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [Q3]",
       "dcid": "who/bfearly.WEALTHQUINTILE--WQ3"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Q4]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [Q4]",
       "dcid": "who/bfearly.WEALTHQUINTILE--WQ4"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Q5 (Richest)]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [Q5 (Richest)]",
       "dcid": "who/bfearly.WEALTHQUINTILE--WQ5"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Rural]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [Rural]",
       "dcid": "who/bfearly.RESIDENCEAREATYPE--RUR"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Secondary or higher]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [Secondary or higher]",
       "dcid": "who/bfearly.EDUCATIONLEVEL--SHLM"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Urban]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [Urban]",
       "dcid": "who/bfearly.RESIDENCEAREATYPE--URB"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [nan]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [nan]",
       "dcid": "who/bfearly.EDUCATIONLEVEL--NHLM"
     },
     {
@@ -517,7 +613,7 @@
       "dcid": "sdg/SG_GEN_LOCGELS.SEX--F"
     },
     {
-      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets [15-19  years]",
+      "name": "Proportion of pregnant women sleeping under insecticide-treated mosquito nets [15-19 years]",
       "dcid": "who/itnwm.AGE--Y15T19"
     },
     {
@@ -609,19 +705,19 @@
       "dcid": "sdg/SG_GEN_PARL.SEX--F"
     },
     {
-      "name": "Proportion of women in managerial positions - 13th ICLS [Female]",
+      "name": "Proportion of women in managerial positions - 13th ICLS - 13th ICLS [Female]",
       "dcid": "sdg/IC_GEN_MGTL.SEX--F"
     },
     {
-      "name": "Proportion of women in managerial positions - 19th ICLS [Female]",
+      "name": "Proportion of women in managerial positions - 19th ICLS - 19th ICLS [Female]",
       "dcid": "sdg/IC_GEN_MGTL_19ICLS.SEX--F"
     },
     {
-      "name": "Proportion of women in senior and middle management positions - 13th ICLS [Female]",
+      "name": "Proportion of women in senior and middle management positions - 13th ICLS - 13th ICLS [Female]",
       "dcid": "sdg/IC_GEN_MGTN.SEX--F"
     },
     {
-      "name": "Proportion of women in senior and middle management positions - 19th ICLS [Female]",
+      "name": "Proportion of women in senior and middle management positions - 19th ICLS - 19th ICLS [Female]",
       "dcid": "sdg/IC_GEN_MGTN_19ICLS.SEX--F"
     },
     {
@@ -1141,19 +1237,19 @@
       "dcid": "WHO/itnwm_20To49Years"
     },
     {
-      "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months, by age [15 to 49 years old, Female]",
+      "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months [15 to 49 years old, Female]",
       "dcid": "sdg/VC_VAW_MARR.AGE--Y15T49__SEX--F"
     },
     {
-      "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months, by age [15 years old and over, Female]",
+      "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months [15 years old and over, Female]",
       "dcid": "sdg/VC_VAW_MARR.AGE--Y_GE15__SEX--F"
     },
     {
-      "name": "Proportion of girls and women aged 15-49 years who have undergone female genital mutilation, by age [15 to 19 years old, Female]",
+      "name": "Proportion of girls and women aged 15-49 years who have undergone female genital mutilation [15 to 19 years old, Female]",
       "dcid": "sdg/SH_STA_FGMS.AGE--Y15T19__SEX--F"
     },
     {
-      "name": "Proportion of girls and women aged 15-49 years who have undergone female genital mutilation, by age [15 to 49 years old, Female]",
+      "name": "Proportion of girls and women aged 15-49 years who have undergone female genital mutilation [15 to 49 years old, Female]",
       "dcid": "sdg/SH_STA_FGMS.AGE--Y15T49__SEX--F"
     },
     {
@@ -1453,20 +1549,20 @@
       "dcid": "Count_WHO/PregnantWomen_15To49Year_ConditionAnaemia_AsAFractionOf_Count_WHO/PregnantWomen_15To49Year"
     },
     {
-      "name": "Prevalence of cervical cancer screening among women aged 30-49 years [30-49 years of age, Female, in lifetime]",
-      "dcid": "who/NCD_CXCA_SCREENED_WITHIN_TIMEPERIOD.AGE--Y30T49__SEX--F__TIMEPERIOD--TIMEPERIOD_EVER_LIFETIME"
+      "name": "Prevalence of cervical cancer screening among women aged 30-49 years (%) [30-49 years, Female, in lifetime]",
+      "dcid": "who/NCD_CXCA_SCREENED_WITHIN_TIMEPERIOD.AGE--Y30T49__SEX--F__TIMEPERIOD--EVER_LIFETIME"
     },
     {
-      "name": "Prevalence of cervical cancer screening among women aged 30-49 years [30-49 years of age, Female, in the last five years]",
-      "dcid": "who/NCD_CXCA_SCREENED_WITHIN_TIMEPERIOD.AGE--Y30T49__SEX--F__TIMEPERIOD--TIMEPERIOD_LAST05YEARS"
+      "name": "Prevalence of cervical cancer screening among women aged 30-49 years (%) [30-49 years, Female, in the last five years]",
+      "dcid": "who/NCD_CXCA_SCREENED_WITHIN_TIMEPERIOD.AGE--Y30T49__SEX--F__TIMEPERIOD--LAST05YEARS"
     },
     {
-      "name": "Prevalence of cervical cancer screening among women aged 30-49 years [30-49 years of age, Female, in the last three years]",
-      "dcid": "who/NCD_CXCA_SCREENED_WITHIN_TIMEPERIOD.AGE--Y30T49__SEX--F__TIMEPERIOD--TIMEPERIOD_LAST03YEARS"
+      "name": "Prevalence of cervical cancer screening among women aged 30-49 years (%) [30-49 years, Female, in the last three years]",
+      "dcid": "who/NCD_CXCA_SCREENED_WITHIN_TIMEPERIOD.AGE--Y30T49__SEX--F__TIMEPERIOD--LAST03YEARS"
     },
     {
-      "name": "Prevalence of cervical cancer screening among women aged 30-49 years [30-49 years of age, Female, in the last year]",
-      "dcid": "who/NCD_CXCA_SCREENED_WITHIN_TIMEPERIOD.AGE--Y30T49__SEX--F__TIMEPERIOD--TIMEPERIOD_LAST01YEAR"
+      "name": "Prevalence of cervical cancer screening among women aged 30-49 years (%) [30-49 years, Female, in the last year]",
+      "dcid": "who/NCD_CXCA_SCREENED_WITHIN_TIMEPERIOD.AGE--Y30T49__SEX--F__TIMEPERIOD--LAST01YEAR"
     },
     {
       "name": "Adolescent Birth Rate (Per 1000 Women Aged 15-19 Years),10 To14 Years",

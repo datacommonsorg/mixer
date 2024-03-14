@@ -9,7 +9,7 @@
       "dcid": "sdg/SD_XPD_MNPO"
     },
     {
-      "name": "Proportion of poor population receiving social assistance cash benefit, by sex",
+      "name": "Proportion of poor population receiving social assistance cash benefit",
       "dcid": "sdg/SI_COV_POOR"
     },
     {
@@ -25,11 +25,11 @@
       "dcid": "Percent_Person_18OrMoreYears_WithPoorGeneralHealth"
     },
     {
-      "name": "Proportion of poor population receiving social assistance cash benefit, by sex [Female]",
+      "name": "Proportion of poor population receiving social assistance cash benefit [Female]",
       "dcid": "sdg/SI_COV_POOR.SEX--F"
     },
     {
-      "name": "Proportion of poor population receiving social assistance cash benefit, by sex [Male]",
+      "name": "Proportion of poor population receiving social assistance cash benefit [Male]",
       "dcid": "sdg/SI_COV_POOR.SEX--M"
     },
     {

@@ -1,6 +1,10 @@
 {
   "statVars": [
     {
+      "name": "Diagnostic medical imaging equipment: Mammography units (per million females aged from 50 to 69 years old), total density",
+      "dcid": "who/DEVICES23"
+    },
+    {
       "name": "FEMA Community Resilience to Natural Hazard Impact",
       "dcid": "FemaCommunityResilience_NaturalHazardImpact"
     },
@@ -13,47 +17,47 @@
       "dcid": "FemaSocialVulnerability_NaturalHazardImpact"
     },
     {
-      "name": "Ratio for female members of parliaments, Lower Chamber or Unicameral",
+      "name": "Ratio for female members of parliaments, Lower Chamber or Unicameral, Lower Chamber or Unicameral",
       "dcid": "sdg/SG_DMK_PARLMP_LC"
     },
     {
-      "name": "Ratio for female members of parliaments, Upper Chamber",
+      "name": "Ratio for female members of parliaments, Upper Chamber, Upper Chamber",
       "dcid": "sdg/SG_DMK_PARLMP_UC"
     },
     {
-      "name": "Age-standardized mortality from Noncommunicable diseases mortality rate [Female]",
+      "name": "Age-standardized mortality from Noncommunicable diseases (NCD) mortality rate (per 100 000 population) [Female]",
       "dcid": "who/WHS2_131.SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable death rate [Female]",
-      "dcid": "who/AIR_42.SEX--F"
+      "name": "Ambient air pollution attributable death rate (per 100 000 population) [Female]",
+      "dcid": "who/AIR_5.SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable death rate [Female]",
-      "dcid": "who/AIR_5.SEX--F"
+      "name": "Ambient air pollution attributable death rate (per 100 000 population, age-standardized) [Female]",
+      "dcid": "who/AIR_42.SEX--F"
     },
     {
       "name": "Ambient air pollution attributable deaths [Female]",
       "dcid": "who/AIR_41.SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Female]",
-      "dcid": "who/AIR_7.SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Female]",
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population) [Female]",
       "dcid": "who/AIR_9.SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Female]",
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population, age-standardized) [Female]",
       "dcid": "who/AIR_90.SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of years life lost [Female]",
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) [Female]",
+      "dcid": "who/AIR_7.SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of years life lost (YLLs) [Female]",
       "dcid": "who/AIR_45.SEX--F"
     },
     {
-      "name": "Assistive technology indicators: Prevalence of met need of assistive products [Female]",
+      "name": "Assistive technology indicators: Prevalence of met need of assistive products (%) [Female]",
       "dcid": "who/ASSISTIVETECH_METNEED.SEX--F"
     },
     {
@@ -73,7 +77,7 @@
       "dcid": "dc/qhr37snr53h74"
     },
     {
-      "name": "Cataract surgical coverage of adults aged 50 and over [Female]",
+      "name": "Cataract surgical coverage of adults aged 50 and over (%) [Female]",
       "dcid": "who/CATARACTSURGICAL.SEX--F"
     },
     {
@@ -85,19 +89,19 @@
       "dcid": "dc/j0e4n7389y8yf"
     },
     {
-      "name": "Children aged \u003c 5 years with diarrhoea receiving oral rehydration salts [Female]",
+      "name": "Children aged \u003c 5 years with diarrhoea receiving oral rehydration salts (%) [Female]",
       "dcid": "who/ors.SEX--F"
     },
     {
-      "name": "Children aged \u003c 5 years with diarrhoea receiving oral rehydration therapy and continued feeding [Female]",
+      "name": "Children aged \u003c 5 years with diarrhoea receiving oral rehydration therapy and continued feeding (%) [Female]",
       "dcid": "who/ort.SEX--F"
     },
     {
-      "name": "Children aged \u003c 5 years with pneumonia symptoms taken to a health facility [Female]",
+      "name": "Children aged \u003c 5 years with pneumonia symptoms taken to a health facility (%) [Female]",
       "dcid": "who/carep.SEX--F"
     },
     {
-      "name": "Conflict-related total death rate, by sex, age and cause of death [Female]",
+      "name": "Conflict-related total death rate [Female]",
       "dcid": "sdg/VC_DTH_TOTPT.SEX--F"
     },
     {
@@ -121,52 +125,52 @@
       "dcid": "Count_Teacher_Female"
     },
     {
-      "name": "Coverage of BCG immunization for tuberculosis among one-year-olds [Female]",
+      "name": "Coverage of BCG immunization for tuberculosis among one-year-olds (%) [Female]",
       "dcid": "who/vbcg.SEX--F"
     },
     {
-      "name": "Coverage of diphtheria, tetanus toxoid and pertussis immunization among one-year-olds [Female]",
+      "name": "Coverage of diphtheria, tetanus toxoid and pertussis (DTP3) immunization among one-year-olds (%) [Female]",
       "dcid": "who/vdpt.SEX--F"
     },
     {
-      "name": "Death rate due to road traffic injuries, by sex [Female]",
+      "name": "Death rate due to road traffic injuries [Female]",
       "dcid": "sdg/SH_STA_TRAF.SEX--F"
     },
     {
-      "name": "Detected victims of human trafficking, by age and sex [Female]",
+      "name": "Detected victims of human trafficking [Female]",
       "dcid": "sdg/VC_HTF_DETV.SEX--F"
     },
     {
-      "name": "Detected victims of human trafficking, by age and sex [Female]",
+      "name": "Detected victims of human trafficking [Female]",
       "dcid": "sdg/VC_HTF_DETVR.SEX--F"
     },
     {
-      "name": "Effective cataract surgical coverage of adults aged 50 and over [Female]",
+      "name": "Effective cataract surgical coverage of adults aged 50 and over (%) [Female]",
       "dcid": "who/CATARACTSURGICALEFFECTIVE.SEX--F"
     },
     {
-      "name": "Estimate of current cigarette smoking prevalence [Female]",
-      "dcid": "who/M_Est_cig_curr.SEX--F"
-    },
-    {
-      "name": "Estimate of current cigarette smoking prevalence [Female]",
+      "name": "Estimate of current cigarette smoking prevalence (%) (age-standardized rate) [Female]",
       "dcid": "who/M_Est_cig_curr_std.SEX--F"
     },
     {
-      "name": "Estimate of current tobacco smoking prevalence [Female]",
-      "dcid": "who/M_Est_smk_curr.SEX--F"
+      "name": "Estimate of current cigarette smoking prevalence (%) [Female]",
+      "dcid": "who/M_Est_cig_curr.SEX--F"
     },
     {
-      "name": "Estimate of current tobacco smoking prevalence [Female]",
+      "name": "Estimate of current tobacco smoking prevalence (%) (age-standardized rate) [Female]",
       "dcid": "who/M_Est_smk_curr_std.SEX--F"
     },
     {
-      "name": "Estimate of current tobacco use prevalence [Female]",
-      "dcid": "who/M_Est_tob_curr.SEX--F"
+      "name": "Estimate of current tobacco smoking prevalence (%) [Female]",
+      "dcid": "who/M_Est_smk_curr.SEX--F"
     },
     {
-      "name": "Estimate of current tobacco use prevalence [Female]",
+      "name": "Estimate of current tobacco use prevalence (%) (age-standardized rate) [Female]",
       "dcid": "who/M_Est_tob_curr_std.SEX--F"
+    },
+    {
+      "name": "Estimate of current tobacco use prevalence (%) [Female]",
+      "dcid": "who/M_Est_tob_curr.SEX--F"
     },
     {
       "name": "FEMA National Risk Index for Natural Hazard Impact: Avalanche",
@@ -241,7 +245,7 @@
       "dcid": "FemaNaturalHazardRiskIndex_NaturalHazardImpact_WinterWeatherEvent"
     },
     {
-      "name": "Fatal occupational injuries among employees, by sex and migrant status [Female]",
+      "name": "Fatal occupational injuries among employees [Female]",
       "dcid": "sdg/SL_EMP_FTLINJUR.SEX--F"
     },
     {
@@ -257,11 +261,11 @@
       "dcid": "dc/dg6tbd33fd7k7"
     },
     {
-      "name": "Full immunization coverage among one-year-olds [Female]",
+      "name": "Full immunization coverage among one-year-olds (%) [Female]",
       "dcid": "who/vfull.SEX--F"
     },
     {
-      "name": "Healthy life expectancy at age 60 [Female]",
+      "name": "Healthy life expectancy (HALE) at age 60 (years) [Female]",
       "dcid": "who/WHOSIS_000007.SEX--F"
     },
     {
@@ -269,47 +273,47 @@
       "dcid": "who/AIR_11.SEX--F"
     },
     {
-      "name": "Household air pollution attributable number of disability-adjusted life years [Female]",
-      "dcid": "who/AIR_15.SEX--F"
-    },
-    {
-      "name": "Household air pollution attributable number of disability-adjusted life years [Female]",
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population) [Female]",
       "dcid": "who/AIR_17.SEX--F"
     },
     {
-      "name": "Household air pollution attributable number of disability-adjusted life years [Female]",
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000, age-standardized) [Female]",
       "dcid": "who/AIR_39.SEX--F"
     },
     {
-      "name": "Household air pollution: Household air pollution attributable death rate [Female]",
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) [Female]",
+      "dcid": "who/AIR_15.SEX--F"
+    },
+    {
+      "name": "Household air pollution: Household air pollution attributable death rate (per 100 000 population) [Female]",
       "dcid": "who/AIR_51.SEX--F"
     },
     {
-      "name": "Household air pollution: Household air pollution attributable death rate [Female]",
+      "name": "Household air pollution: Household air pollution attributable death rate (per 100 000 population, age-standardized) [Female]",
       "dcid": "who/AIR_52.SEX--F"
     },
     {
-      "name": "Infant mortality rate [Female]",
+      "name": "Infant mortality rate (deaths per 1000 live births) [Female]",
       "dcid": "who/imr.SEX--F"
     },
     {
-      "name": "Life expectancy at age 60 [Female]",
+      "name": "Life expectancy at age 60 (years) [Female]",
       "dcid": "who/WHOSIS_000015.SEX--F"
     },
     {
-      "name": "Male or female doctors as percentage of all medical doctors at national level [Female]",
+      "name": "Male or female doctors as percentage of all medical doctors at national level (%) [Female]",
       "dcid": "who/HWF_0025.SEX--F"
     },
     {
-      "name": "Male or female doctors as percentage of all medical doctors at national level [Male]",
+      "name": "Male or female doctors as percentage of all medical doctors at national level (%) [Male]",
       "dcid": "who/HWF_0025.SEX--M"
     },
     {
-      "name": "Male or female nurses as percentage of all nurses at national level [Female]",
+      "name": "Male or female nurses as percentage of all nurses at national level (%) [Female]",
       "dcid": "who/HWF_0026.SEX--F"
     },
     {
-      "name": "Male or female nurses as percentage of all nurses at national level [Male]",
+      "name": "Male or female nurses as percentage of all nurses at national level (%) [Male]",
       "dcid": "who/HWF_0026.SEX--M"
     },
     {
@@ -317,19 +321,19 @@
       "dcid": "sdg/SH_STA_MORT.SEX--F"
     },
     {
-      "name": "Mean high-density lipoprotein cholesterol, age-standardized estimate [Female]",
+      "name": "Mean high-density lipoprotein (HDL) cholesterol, age-standardized estimate [Female]",
       "dcid": "who/NCD_CHOL_MEANHDL_A.SEX--F"
     },
     {
-      "name": "Mean high-density lipoprotein cholesterol, crude estimate [Female]",
+      "name": "Mean high-density lipoprotein (HDL) cholesterol, crude estimate [Female]",
       "dcid": "who/NCD_CHOL_MEANHDL_C.SEX--F"
     },
     {
-      "name": "Mean non high-density lipoprotein cholesterol, age-standardized estimate [Female]",
+      "name": "Mean non high-density lipoprotein (non-HDL) cholesterol, age-standardized estimate [Female]",
       "dcid": "who/NCD_CHOL_MEANNONHDL_A.SEX--F"
     },
     {
-      "name": "Mean non high-density lipoprotein cholesterol, cruded estimate [Female]",
+      "name": "Mean non high-density lipoprotein (non-HDL) cholesterol, crude estimate [Female]",
       "dcid": "who/NCD_CHOL_MEANNONHDL_C.SEX--F"
     },
     {
@@ -341,27 +345,27 @@
       "dcid": "who/NCD_CHOL_MEANTOTALCHOL_C.SEX--F"
     },
     {
-      "name": "Mortality rate among children ages 5 to 9 years [Female]",
+      "name": "Mortality rate among children ages 5 to 9 years (per 1000 children aged 5) [Female]",
       "dcid": "who/WHOSIS_000016.SEX--F"
     },
     {
-      "name": "Mortality rate attributed to unintentional poisonings, by sex [Female]",
+      "name": "Mortality rate attributed to unintentional poisonings [Female]",
       "dcid": "sdg/SH_STA_POISN.SEX--F"
     },
     {
-      "name": "Mortality rate attributed to unsafe water, unsafe sanitation and lack of hygiene [Female]",
+      "name": "Mortality rate attributed to unsafe water, unsafe sanitation and lack of hygiene (exposure to unsafe Water, Sanitation and Hygiene for All (WASH) ) [Female]",
       "dcid": "who/WSH_1.SEX--F"
     },
     {
-      "name": "Mortality rate for 5-14 year-olds [Female]",
+      "name": "Mortality rate for 5-14 year-olds (probability of dying per 1000 children aged 5-14 years) [Female]",
       "dcid": "who/CHILDMORT5TO14.SEX--F"
     },
     {
-      "name": "Neonatal mortality rate [Female]",
+      "name": "Neonatal mortality rate (deaths per 1000 live births) [Female]",
       "dcid": "who/nmr.SEX--F"
     },
     {
-      "name": "Non-fatal occupational injuries among employees, by sex and migrant status [Female]",
+      "name": "Non-fatal occupational injuries among employees [Female]",
       "dcid": "sdg/SL_EMP_INJUR.SEX--F"
     },
     {
@@ -373,7 +377,7 @@
       "dcid": "sdg/VC_VAW_MTUHRA.SEX--F"
     },
     {
-      "name": "Number of conflict-related deaths, by sex, age and cause of death [Female]",
+      "name": "Number of conflict-related deaths [Female]",
       "dcid": "sdg/VC_DTH_TOCVN.SEX--F"
     },
     {
@@ -385,11 +389,11 @@
       "dcid": "who/CM_04.SEX--F"
     },
     {
-      "name": "Number of deaths attributed to suicide, by sex [Female]",
+      "name": "Number of deaths attributed to suicide [Female]",
       "dcid": "sdg/SH_STA_SCIDEN.SEX--F"
     },
     {
-      "name": "Number of diarrhoea deaths from inadequate hygiene. . [Female]",
+      "name": "Number of diarrhoea deaths from inadequate hygiene. (Public health and environment). [Female]",
       "dcid": "who/WSH_10_HYG.SEX--F"
     },
     {
@@ -405,19 +409,19 @@
       "dcid": "who/WSH_10.SEX--F"
     },
     {
-      "name": "Number of diarrhoea disability-adjusted life years from inadequate hygiene [Female]",
+      "name": "Number of diarrhoea disability-adjusted life years (DALYs) from inadequate hygiene [Female]",
       "dcid": "who/WSH_30_HYG.SEX--F"
     },
     {
-      "name": "Number of diarrhoea disability-adjusted life years from inadequate sanitation in low- and middle-income countries. [Female]",
+      "name": "Number of diarrhoea disability-adjusted life years (DALYs) from inadequate sanitation in low- and middle-income countries. [Female]",
       "dcid": "who/WSH_30_SAN.SEX--F"
     },
     {
-      "name": "Number of diarrhoea disability-adjusted life years from inadequate water in low- and middle-income countries [Female]",
+      "name": "Number of diarrhoea disability-adjusted life years (DALYs) from inadequate water in low- and middle-income countries [Female]",
       "dcid": "who/WSH_30_WAT.SEX--F"
     },
     {
-      "name": "Number of diarrhoea disability-adjusted life years from inadequate water, sanitation and hygiene [Female]",
+      "name": "Number of diarrhoea disability-adjusted life years (DALYs) from inadequate water, sanitation and hygiene [Female]",
       "dcid": "who/WSH_30.SEX--F"
     },
     {
@@ -429,7 +433,7 @@
       "dcid": "who/HIV_0000000026.SEX--F"
     },
     {
-      "name": "Number of new HIV infections per 1,000 uninfected population, by sex and age [Female]",
+      "name": "Number of new HIV infections per 1,000 uninfected population [Female]",
       "dcid": "sdg/SH_HIV_INCD.SEX--F"
     },
     {
@@ -437,15 +441,15 @@
       "dcid": "sdg/SG_GEN_PARLN.SEX--F"
     },
     {
-      "name": "Number of speakers in parliament, by age and sex, Lower Chamber or Unicameral [Female]",
+      "name": "Number of speakers in parliament, Lower Chamber or Unicameral [Female]",
       "dcid": "sdg/SG_DMK_PARLSP_LC.SEX--F"
     },
     {
-      "name": "Number of speakers in parliament, by age and sex, Upper Chamber [Female]",
+      "name": "Number of speakers in parliament, Upper Chamber [Female]",
       "dcid": "sdg/SG_DMK_PARLSP_UC.SEX--F"
     },
     {
-      "name": "Number of total conflict-related deaths, by sex, age and cause of death [Female]",
+      "name": "Number of total conflict-related deaths [Female]",
       "dcid": "sdg/VC_DTH_TOTN.SEX--F"
     },
     {
@@ -453,19 +457,19 @@
       "dcid": "who/CM_01.SEX--F"
     },
     {
-      "name": "Number of victims of intentional homicide per 100K population, by sex [Female]",
-      "dcid": "sdg/VC_IHR_PSRC.SEX--F"
-    },
-    {
-      "name": "Number of victims of intentional homicide, by sex [Female]",
+      "name": "Number of victims of intentional homicide [Female]",
       "dcid": "sdg/VC_IHR_PSRCN.SEX--F"
     },
     {
-      "name": "Overweight prevalence in children aged \u003c five years [Female]",
+      "name": "Number of victims of intentional homicide per 100K population [Female]",
+      "dcid": "sdg/VC_IHR_PSRC.SEX--F"
+    },
+    {
+      "name": "Overweight prevalence in children aged \u003c five years (%) [Female]",
       "dcid": "who/overwgt5.SEX--F"
     },
     {
-      "name": "Participation rate in organized learning, by sex [Female]",
+      "name": "Participation rate in organized learning [Female]",
       "dcid": "sdg/SE_PRE_PARTN.SEX--F"
     },
     {
@@ -473,115 +477,115 @@
       "dcid": "who/WHS4_106.SEX--F"
     },
     {
-      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth [Female]",
+      "name": "Percentage of women with a live birth in the two years prior to the survey who put the newborn infant to the breast within one hour of birth (%) [Female]",
       "dcid": "who/bfearly.SEX--F"
     },
     {
-      "name": "Police reporting rate for physical assault, by sex [Female]",
+      "name": "Police reporting rate for physical assault [Female]",
       "dcid": "sdg/VC_PRR_PHYV.SEX--F"
     },
     {
-      "name": "Police reporting rate for robbery, by sex [Female]",
+      "name": "Police reporting rate for robbery [Female]",
       "dcid": "sdg/VC_PRR_ROBB.SEX--F"
     },
     {
-      "name": "Police reporting rate for sexual assault, by sex [Female]",
+      "name": "Police reporting rate for sexual assault [Female]",
       "dcid": "sdg/VC_PRR_SEXV.SEX--F"
     },
     {
-      "name": "Postnatal care visit within two days of birth - born outside a health facility [Female]",
-      "dcid": "who/pnchome3.SEX--F"
-    },
-    {
-      "name": "Postnatal care visit within two days of birth - born outside a health facility [Female]",
-      "dcid": "who/pnchome5.SEX--F"
-    },
-    {
-      "name": "Postnatal care visit within two days of birth [Female]",
-      "dcid": "who/pncall3.SEX--F"
-    },
-    {
-      "name": "Postnatal care visit within two days of birth [Female]",
+      "name": "Postnatal care visit within two days of birth (in the five years preceding the survey) (%) [Female]",
       "dcid": "who/pncall5.SEX--F"
     },
     {
-      "name": "Prevalence of current cigarette smoking among adolescents, from the most recent nationally representative survey reporting prevalence of tobacco use or smoking among adolescents. [Female]",
+      "name": "Postnatal care visit within two days of birth (in the three years preceding the survey) (%) [Female]",
+      "dcid": "who/pncall3.SEX--F"
+    },
+    {
+      "name": "Postnatal care visit within two days of birth - born outside a health facility (in the five years preceding the survey) (%) [Female]",
+      "dcid": "who/pnchome5.SEX--F"
+    },
+    {
+      "name": "Postnatal care visit within two days of birth - born outside a health facility (in the three years preceding the survey) (%) [Female]",
+      "dcid": "who/pnchome3.SEX--F"
+    },
+    {
+      "name": "Prevalence of current cigarette smoking among adolescents (%), from the most recent nationally representative survey reporting prevalence of tobacco use or smoking among adolescents. [Female]",
       "dcid": "who/Yth_curr_cig_smoking.SEX--F"
     },
     {
-      "name": "Prevalence of current cigarette smoking among adults [Female]",
+      "name": "Prevalence of current cigarette smoking among adults (%) [Female]",
       "dcid": "who/Adult_curr_cig_smoking.SEX--F"
     },
     {
-      "name": "Prevalence of current e-cigarette use among adolescents, from the most recent nationally representative survey reporting prevalence of tobacco use or smoking among adolescents. [Female]",
+      "name": "Prevalence of current e-cigarette use among adolescents (%), from the most recent nationally representative survey reporting prevalence of tobacco use or smoking among adolescents. [Female]",
       "dcid": "who/Yth_curr_e-cig.SEX--F"
     },
     {
-      "name": "Prevalence of current e-cigarette use among adults [Female]",
+      "name": "Prevalence of current e-cigarette use among adults (%) [Female]",
       "dcid": "who/Adult_curr_e-cig.SEX--F"
     },
     {
-      "name": "Prevalence of current smokeless tobacco use among adolescents, from the most recent nationally representative survey reporting prevalence of smokeless tobacco use or e-cigarette use among adolescents. [Female]",
+      "name": "Prevalence of current smokeless tobacco use among adolescents (%), from the most recent nationally representative survey reporting prevalence of smokeless tobacco use or e-cigarette use among adolescents. [Female]",
       "dcid": "who/Yth_curr_smokeless.SEX--F"
     },
     {
-      "name": "Prevalence of current smokeless tobacco use among adults [Female]",
+      "name": "Prevalence of current smokeless tobacco use among adults (%) [Female]",
       "dcid": "who/Adult_curr_smokeless.SEX--F"
     },
     {
-      "name": "Prevalence of current tobacco smoking among adolescents, from the most recent nationally representative survey reporting prevalence of tobacco use or smoking among adolescents. [Female]",
+      "name": "Prevalence of current tobacco smoking among adolescents (%), from the most recent nationally representative survey reporting prevalence of tobacco use or smoking among adolescents. [Female]",
       "dcid": "who/Yth_curr_tob_smoking.SEX--F"
     },
     {
-      "name": "Prevalence of current tobacco smoking among adults [Female]",
+      "name": "Prevalence of current tobacco smoking among adults (%) [Female]",
       "dcid": "who/Adult_curr_tob_smoking.SEX--F"
     },
     {
-      "name": "Prevalence of current tobacco use among adolescents, from the most recent nationally representative survey reporting prevalence of tobacco use or smoking among adolescents. [Female]",
+      "name": "Prevalence of current tobacco use among adolescents (%), from the most recent nationally representative survey reporting prevalence of tobacco use or smoking among adolescents. [Female]",
       "dcid": "who/Yth_curr_tob_use.SEX--F"
     },
     {
-      "name": "Prevalence of current tobacco use among adults [Female]",
+      "name": "Prevalence of current tobacco use among adults (%) [Female]",
       "dcid": "who/Adult_curr_tob_use.SEX--F"
     },
     {
-      "name": "Prevalence of daily cigarette smoking among adolescents, from the most recent nationally representative survey reporting prevalence of tobacco use or smoking among adolescents. [Female]",
+      "name": "Prevalence of daily cigarette smoking among adolescents (%), from the most recent nationally representative survey reporting prevalence of tobacco use or smoking among adolescents. [Female]",
       "dcid": "who/Yth_daily_cig_smoking.SEX--F"
     },
     {
-      "name": "Prevalence of daily cigarette smoking among adults [Female]",
+      "name": "Prevalence of daily cigarette smoking among adults (%) [Female]",
       "dcid": "who/Adult_daily_cig_smoking.SEX--F"
     },
     {
-      "name": "Prevalence of daily e-cigarette use among adolescents, from the most recent nationally representative survey reporting prevalence of smokeless tobacco use or e-cigarette use among adolescents. [Female]",
+      "name": "Prevalence of daily e-cigarette use among adolescents (%), from the most recent nationally representative survey reporting prevalence of smokeless tobacco use or e-cigarette use among adolescents. [Female]",
       "dcid": "who/Yth_daily_e-cig.SEX--F"
     },
     {
-      "name": "Prevalence of daily e-cigarette use among adults [Female]",
+      "name": "Prevalence of daily e-cigarette use among adults (%) [Female]",
       "dcid": "who/Adult_daily_e-cig.SEX--F"
     },
     {
-      "name": "Prevalence of daily smokeless tobacco use among adolescents, from the most recent nationally representative survey reporting prevalence of smokeless tobacco use or e-cigarette use among adolescents. [Female]",
+      "name": "Prevalence of daily smokeless tobacco use among adolescents (%), from the most recent nationally representative survey reporting prevalence of smokeless tobacco use or e-cigarette use among adolescents. [Female]",
       "dcid": "who/Yth_daily_smokeless.SEX--F"
     },
     {
-      "name": "Prevalence of daily smokeless tobacco use among adults [Female]",
+      "name": "Prevalence of daily smokeless tobacco use among adults (%) [Female]",
       "dcid": "who/Adult_daily_smokeless.SEX--F"
     },
     {
-      "name": "Prevalence of daily tobacco smoking among adolescents, from the most recent nationally representative survey reporting prevalence of tobacco use or smoking among adolescents. [Female]",
+      "name": "Prevalence of daily tobacco smoking among adolescents (%), from the most recent nationally representative survey reporting prevalence of tobacco use or smoking among adolescents. [Female]",
       "dcid": "who/Yth_daily_tob_smoking.SEX--F"
     },
     {
-      "name": "Prevalence of daily tobacco smoking among adults [Female]",
+      "name": "Prevalence of daily tobacco smoking among adults (%) [Female]",
       "dcid": "who/Adult_daily_tob_smoking.SEX--F"
     },
     {
-      "name": "Prevalence of daily tobacco use among adults [Female]",
+      "name": "Prevalence of daily tobacco use among adults (%) [Female]",
       "dcid": "who/Adult_daily_tob_use.SEX--F"
     },
     {
-      "name": "Prevalence rate of bribery, by sex [Female]",
+      "name": "Prevalence rate of bribery [Female]",
       "dcid": "sdg/IU_COR_BRIB.SEX--F"
     },
     {
@@ -597,7 +601,7 @@
       "dcid": "who/itnch.SEX--F"
     },
     {
-      "name": "Proportion of children/households receiving child/family cash benefit, by sex [Female]",
+      "name": "Proportion of children/households receiving child/family cash benefit [Female]",
       "dcid": "sdg/SI_COV_CHLD.SEX--F"
     },
     {
@@ -605,7 +609,7 @@
       "dcid": "sdg/SG_GEN_LOCGELS.SEX--F"
     },
     {
-      "name": "Proportion of employed population covered in the event of work injury, by sex [Female]",
+      "name": "Proportion of employed population covered in the event of work injury [Female]",
       "dcid": "sdg/SI_COV_WKINJRY.SEX--F"
     },
     {
@@ -613,15 +617,15 @@
       "dcid": "sdg/IT_USE_ii99.SEX--F"
     },
     {
-      "name": "Proportion of individuals who own a mobile telephone, by sex [Female]",
+      "name": "Proportion of individuals who own a mobile telephone [Female]",
       "dcid": "sdg/IT_MOB_OWN.SEX--F"
     },
     {
-      "name": "Proportion of informal employment, by sector and sex - 13th ICLS [Female]",
+      "name": "Proportion of informal employment - 13th ICLS [Female]",
       "dcid": "sdg/SL_ISV_IFEM.SEX--F"
     },
     {
-      "name": "Proportion of informal employment, by sector and sex - 19th ICLS [Female]",
+      "name": "Proportion of informal employment - 19th ICLS [Female]",
       "dcid": "sdg/SL_ISV_IFEM_19ICLS.SEX--F"
     },
     {
@@ -629,11 +633,11 @@
       "dcid": "sdg/SI_COV_MATNL.SEX--F"
     },
     {
-      "name": "Proportion of people with legally recognized documentation of their rights to land out of total adult population, by sex [Female]",
+      "name": "Proportion of people with legally recognized documentation of their rights to land out of total adult population [Female]",
       "dcid": "sdg/SP_LGL_LNDDOC.SEX--F"
     },
     {
-      "name": "Proportion of people with secure tenure rights to land out of total adult population, by sex [Female]",
+      "name": "Proportion of people with secure tenure rights to land out of total adult population [Female]",
       "dcid": "sdg/SP_LGL_LNDSTR.SEX--F"
     },
     {
@@ -641,11 +645,11 @@
       "dcid": "sdg/VC_VOH_SXPH.SEX--F"
     },
     {
-      "name": "Proportion of poor population receiving social assistance cash benefit, by sex [Female]",
+      "name": "Proportion of poor population receiving social assistance cash benefit [Female]",
       "dcid": "sdg/SI_COV_POOR.SEX--F"
     },
     {
-      "name": "Proportion of population above statutory pensionable age receiving a pension, by sex [Female]",
+      "name": "Proportion of population above statutory pensionable age receiving a pension [Female]",
       "dcid": "sdg/SI_COV_PENSN.SEX--F"
     },
     {
@@ -653,7 +657,7 @@
       "dcid": "sdg/SI_POV_DAY1.SEX--F"
     },
     {
-      "name": "Proportion of population covered by at least one social protection benefit, by sex [Female]",
+      "name": "Proportion of population covered by at least one social protection benefit [Female]",
       "dcid": "sdg/SI_COV_BENFTS.SEX--F"
     },
     {
@@ -661,19 +665,19 @@
       "dcid": "sdg/SD_MDP_MUHC.SEX--F"
     },
     {
-      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability [Female]",
+      "name": "Proportion of population reporting having felt discriminated against [Female]",
       "dcid": "sdg/VC_VOV_GDSD.SEX--F"
     },
     {
-      "name": "Proportion of population subjected to physical violence in the previous 12 months, by sex [Female]",
+      "name": "Proportion of population subjected to physical violence in the previous 12 months [Female]",
       "dcid": "sdg/VC_VOV_PHYL.SEX--F"
     },
     {
-      "name": "Proportion of population subjected to robbery in the previous 12 months, by sex [Female]",
+      "name": "Proportion of population subjected to robbery in the previous 12 months [Female]",
       "dcid": "sdg/VC_VOV_ROBB.SEX--F"
     },
     {
-      "name": "Proportion of population subjected to sexual violence in the previous 12 months, by sex [Female]",
+      "name": "Proportion of population subjected to sexual violence in the previous 12 months [Female]",
       "dcid": "sdg/VC_VOV_SEXL.SEX--F"
     },
     {
@@ -709,7 +713,7 @@
       "dcid": "sdg/SP_PSR_OSATIS_SEC.SEX--F"
     },
     {
-      "name": "Proportion of population with severe disabilities receiving disability cash benefit, by sex [Female]",
+      "name": "Proportion of population with severe disabilities receiving disability cash benefit [Female]",
       "dcid": "sdg/SI_COV_DISAB.SEX--F"
     },
     {
@@ -721,55 +725,51 @@
       "dcid": "sdg/SP_DISP_RESOL.SEX--F"
     },
     {
-      "name": "Proportion of time spent on unpaid care work, by sex, age and location [Female]",
+      "name": "Proportion of time spent on unpaid care work [Female]",
       "dcid": "sdg/SL_DOM_TSPDCW.SEX--F"
     },
     {
-      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location [Female]",
-      "dcid": "sdg/SL_DOM_TSPD.SEX--F"
-    },
-    {
-      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location [Female]",
+      "name": "Proportion of time spent on unpaid domestic chores [Female]",
       "dcid": "sdg/SL_DOM_TSPDDC.SEX--F"
     },
     {
-      "name": "Proportion of total agricultural population with ownership or secure rights over agricultural land, by sex [Female]",
+      "name": "Proportion of time spent on unpaid domestic chores and care work [Female]",
+      "dcid": "sdg/SL_DOM_TSPD.SEX--F"
+    },
+    {
+      "name": "Proportion of total agricultural population with ownership or secure rights over agricultural land [Female]",
       "dcid": "sdg/SP_LGL_LNDAGSEC.SEX--F"
     },
     {
-      "name": "Proportion of unemployed persons receiving unemployment cash benefit, by sex [Female]",
+      "name": "Proportion of unemployed persons receiving unemployment cash benefit [Female]",
       "dcid": "sdg/SI_COV_UEMP.SEX--F"
     },
     {
-      "name": "Proportion of vulnerable population receiving social assistance cash benefit, by sex [Female]",
+      "name": "Proportion of vulnerable population receiving social assistance cash benefit [Female]",
       "dcid": "sdg/SI_COV_VULN.SEX--F"
     },
     {
-      "name": "Proportion of women in managerial positions - 13th ICLS [Female]",
+      "name": "Proportion of women in managerial positions - 13th ICLS - 13th ICLS [Female]",
       "dcid": "sdg/IC_GEN_MGTL.SEX--F"
     },
     {
-      "name": "Proportion of women in managerial positions - 19th ICLS [Female]",
+      "name": "Proportion of women in managerial positions - 19th ICLS - 19th ICLS [Female]",
       "dcid": "sdg/IC_GEN_MGTL_19ICLS.SEX--F"
     },
     {
-      "name": "Proportion of women in senior and middle management positions - 13th ICLS [Female]",
+      "name": "Proportion of women in senior and middle management positions - 13th ICLS - 13th ICLS [Female]",
       "dcid": "sdg/IC_GEN_MGTN.SEX--F"
     },
     {
-      "name": "Proportion of women in senior and middle management positions - 19th ICLS [Female]",
+      "name": "Proportion of women in senior and middle management positions - 19th ICLS - 19th ICLS [Female]",
       "dcid": "sdg/IC_GEN_MGTN_19ICLS.SEX--F"
     },
     {
-      "name": "Suicide mortality rate, by sex [Female]",
+      "name": "Suicide mortality rate [Female]",
       "dcid": "sdg/SH_STA_SCIDE.SEX--F"
     },
     {
-      "name": "Total number of deaths attributed to non-communicable diseases [Female]",
-      "dcid": "who/NCD_DTH_TOT.SEX--F"
-    },
-    {
-      "name": "Under-five mortality rate [Female]",
+      "name": "Under-five mortality rate (deaths per 1000 live births) [Female]",
       "dcid": "who/u5mr.SEX--F"
     },
     {
@@ -777,11 +777,11 @@
       "dcid": "UnemploymentRate_Person_Female"
     },
     {
-      "name": "Unemployment rate, by sex and disability - 13th ICLS [Female]",
+      "name": "Unemployment rate - 13th ICLS [Female]",
       "dcid": "sdg/SL_TLF_UEMDIS.SEX--F"
     },
     {
-      "name": "Unemployment rate, by sex and disability - 19th ICLS [Female]",
+      "name": "Unemployment rate - 19th ICLS [Female]",
       "dcid": "sdg/SL_TLF_UEMDIS_19ICLS.SEX--F"
     },
     {
@@ -1041,27 +1041,27 @@
       "dcid": "Count_Death_Female_AgeAdjusted_AsAFractionOf_Count_Person_Female"
     },
     {
-      "name": "Adjusted location parity index for completion rate, by sex, wealth quintile and education level [Female, Lower secondary education]",
+      "name": "Adjusted location parity index for completion rate [Female, Lower secondary education]",
       "dcid": "sdg/SE_ALP_CPLR.SEX--F__EDUCATION_LEV--ISCED11_2"
     },
     {
-      "name": "Adjusted location parity index for completion rate, by sex, wealth quintile and education level [Female, Primary education]",
+      "name": "Adjusted location parity index for completion rate [Female, Primary education]",
       "dcid": "sdg/SE_ALP_CPLR.SEX--F__EDUCATION_LEV--ISCED11_1"
     },
     {
-      "name": "Adjusted location parity index for completion rate, by sex, wealth quintile and education level [Female, Upper secondary education]",
+      "name": "Adjusted location parity index for completion rate [Female, Upper secondary education]",
       "dcid": "sdg/SE_ALP_CPLR.SEX--F__EDUCATION_LEV--ISCED11_3"
     },
     {
-      "name": "Adjusted wealth parity index for completion rate, by sex, location and education level [Female, Lower secondary education]",
+      "name": "Adjusted wealth parity index for completion rate [Female, Lower secondary education]",
       "dcid": "sdg/SE_AWP_CPRA.SEX--F__EDUCATION_LEV--ISCED11_2"
     },
     {
-      "name": "Adjusted wealth parity index for completion rate, by sex, location and education level [Female, Primary education]",
+      "name": "Adjusted wealth parity index for completion rate [Female, Primary education]",
       "dcid": "sdg/SE_AWP_CPRA.SEX--F__EDUCATION_LEV--ISCED11_1"
     },
     {
-      "name": "Adjusted wealth parity index for completion rate, by sex, location and education level [Female, Upper secondary education]",
+      "name": "Adjusted wealth parity index for completion rate [Female, Upper secondary education]",
       "dcid": "sdg/SE_AWP_CPRA.SEX--F__EDUCATION_LEV--ISCED11_3"
     },
     {
@@ -1073,15 +1073,15 @@
       "dcid": "sdg/SP_DYN_ADKL.AGE--Y15T19__SEX--F"
     },
     {
-      "name": "Adolescent mortality rate [10-14 years, Female]",
+      "name": "Adolescent mortality rate (per 1 000 age specific cohort) [10-14 years, Female]",
       "dcid": "who/CHILDMORT10TO19.AGE--Y10T14__SEX--F"
     },
     {
-      "name": "Adolescent mortality rate [10-19 years of age, Female]",
+      "name": "Adolescent mortality rate (per 1 000 age specific cohort) [10-19 duplicate, Female]",
       "dcid": "who/CHILDMORT10TO19.AGE--Y10T19__SEX--F"
     },
     {
-      "name": "Adolescent mortality rate [15-19  years, Female]",
+      "name": "Adolescent mortality rate (per 1 000 age specific cohort) [15-19 years, Female]",
       "dcid": "who/CHILDMORT10TO19.AGE--Y15T19__SEX--F"
     },
     {
@@ -1097,7 +1097,7 @@
       "dcid": "who/LIFE_0000000029.AGE--Y10T14__SEX--F"
     },
     {
-      "name": "Age-specific death rate between ages x and x+n [15-19  years, Female]",
+      "name": "Age-specific death rate between ages x and x+n [15-19 years, Female]",
       "dcid": "who/LIFE_0000000029.AGE--Y15T19__SEX--F"
     },
     {
@@ -1165,7 +1165,7 @@
       "dcid": "who/LIFE_0000000029.AGE--M0T11__SEX--F"
     },
     {
-      "name": "Age-standardized prevalence of current tobacco use among persons aged 15 years and older, by sex [15 years old and over, Female]",
+      "name": "Age-standardized prevalence of current tobacco use among persons aged 15 years and older [15 years old and over, Female]",
       "dcid": "sdg/SH_PRV_SMOK.AGE--Y_GE15__SEX--F"
     },
     {
@@ -1177,44 +1177,44 @@
       "dcid": "sdg/SH_SUD_ALCOL.AGE--Y_GE15__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable death rate [Chronic obstructive pulmonary disease, Female]",
-      "dcid": "who/AIR_42.ENVCAUSE--ENVCAUSE118__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable death rate [Chronic obstructive pulmonary disease, Female]",
+      "name": "Ambient air pollution attributable death rate (per 100 000 population) [Chronic obstructive pulmonary disease, Female]",
       "dcid": "who/AIR_5.ENVCAUSE--ENVCAUSE118__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable death rate [Ischaemic heart disease, Female]",
-      "dcid": "who/AIR_42.ENVCAUSE--ENVCAUSE113__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable death rate [Ischaemic heart disease, Female]",
+      "name": "Ambient air pollution attributable death rate (per 100 000 population) [Ischaemic heart disease, Female]",
       "dcid": "who/AIR_5.ENVCAUSE--ENVCAUSE113__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable death rate [Lower respiratory infections, Female]",
-      "dcid": "who/AIR_42.ENVCAUSE--ENVCAUSE039__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable death rate [Lower respiratory infections, Female]",
+      "name": "Ambient air pollution attributable death rate (per 100 000 population) [Lower respiratory infections, Female]",
       "dcid": "who/AIR_5.ENVCAUSE--ENVCAUSE039__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable death rate [Stroke, Female]",
-      "dcid": "who/AIR_42.ENVCAUSE--ENVCAUSE114__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable death rate [Stroke, Female]",
+      "name": "Ambient air pollution attributable death rate (per 100 000 population) [Stroke, Female]",
       "dcid": "who/AIR_5.ENVCAUSE--ENVCAUSE114__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable death rate [Trachea, bronchus, lung cancers, Female]",
-      "dcid": "who/AIR_42.ENVCAUSE--ENVCAUSE068__SEX--F"
+      "name": "Ambient air pollution attributable death rate (per 100 000 population) [Trachea, bronchus, lung cancers, Female]",
+      "dcid": "who/AIR_5.ENVCAUSE--ENVCAUSE068__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable death rate [Trachea, bronchus, lung cancers, Female]",
-      "dcid": "who/AIR_5.ENVCAUSE--ENVCAUSE068__SEX--F"
+      "name": "Ambient air pollution attributable death rate (per 100 000 population, age-standardized) [Chronic obstructive pulmonary disease, Female]",
+      "dcid": "who/AIR_42.ENVCAUSE--ENVCAUSE118__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable death rate (per 100 000 population, age-standardized) [Ischaemic heart disease, Female]",
+      "dcid": "who/AIR_42.ENVCAUSE--ENVCAUSE113__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable death rate (per 100 000 population, age-standardized) [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_42.ENVCAUSE--ENVCAUSE039__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable death rate (per 100 000 population, age-standardized) [Stroke, Female]",
+      "dcid": "who/AIR_42.ENVCAUSE--ENVCAUSE114__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable death rate (per 100 000 population, age-standardized) [Trachea, bronchus, lung cancers, Female]",
+      "dcid": "who/AIR_42.ENVCAUSE--ENVCAUSE068__SEX--F"
     },
     {
       "name": "Ambient air pollution attributable death rate per 100 000 children under 5 years [Lower respiratory infections, Female]",
@@ -1249,123 +1249,123 @@
       "dcid": "who/AIR_4.ENVCAUSE--ENVCAUSE039__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable disability-adjusted life years per 100'000 children under 5 years [Lower respiratory infections, Female]",
+      "name": "Ambient air pollution attributable disability-adjusted life years (DALYs) per 100'000 children under 5 years [Lower respiratory infections, Female]",
       "dcid": "who/AIR_10.ENVCAUSE--ENVCAUSE039__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [All Causes, Female]",
-      "dcid": "who/AIR_43.GHECAUSES--GHE000__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Chronic obstructive pulmonary disease, Female]",
-      "dcid": "who/AIR_43.GHECAUSES--GHE118__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Chronic obstructive pulmonary disease, Female]",
-      "dcid": "who/AIR_7.ENVCAUSE--ENVCAUSE118__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Chronic obstructive pulmonary disease, Female]",
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population) [Chronic obstructive pulmonary disease, Female]",
       "dcid": "who/AIR_9.ENVCAUSE--ENVCAUSE118__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Chronic obstructive pulmonary disease, Female]",
-      "dcid": "who/AIR_90.ENVCAUSE--ENVCAUSE118__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Ischaemic heart disease, Female]",
-      "dcid": "who/AIR_43.GHECAUSES--GHE113__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Ischaemic heart disease, Female]",
-      "dcid": "who/AIR_7.ENVCAUSE--ENVCAUSE113__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Ischaemic heart disease, Female]",
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population) [Ischaemic heart disease, Female]",
       "dcid": "who/AIR_9.ENVCAUSE--ENVCAUSE113__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Ischaemic heart disease, Female]",
-      "dcid": "who/AIR_90.ENVCAUSE--ENVCAUSE113__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Lower respiratory infections, Female]",
-      "dcid": "who/AIR_43.GHECAUSES--GHE039__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Lower respiratory infections, Female]",
-      "dcid": "who/AIR_7.ENVCAUSE--ENVCAUSE039__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Lower respiratory infections, Female]",
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population) [Lower respiratory infections, Female]",
       "dcid": "who/AIR_9.ENVCAUSE--ENVCAUSE039__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Lower respiratory infections, Female]",
-      "dcid": "who/AIR_90.ENVCAUSE--ENVCAUSE039__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Stroke, Female]",
-      "dcid": "who/AIR_43.GHECAUSES--GHE114__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Stroke, Female]",
-      "dcid": "who/AIR_7.ENVCAUSE--ENVCAUSE114__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Stroke, Female]",
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population) [Stroke, Female]",
       "dcid": "who/AIR_9.ENVCAUSE--ENVCAUSE114__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Stroke, Female]",
-      "dcid": "who/AIR_90.ENVCAUSE--ENVCAUSE114__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Trachea, bronchus, lung cancers, Female]",
-      "dcid": "who/AIR_43.GHECAUSES--GHE068__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Trachea, bronchus, lung cancers, Female]",
-      "dcid": "who/AIR_7.ENVCAUSE--ENVCAUSE068__SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Trachea, bronchus, lung cancers, Female]",
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population) [Trachea, bronchus, lung cancers, Female]",
       "dcid": "who/AIR_9.ENVCAUSE--ENVCAUSE068__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Trachea, bronchus, lung cancers, Female]",
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population, age-standardized) [Chronic obstructive pulmonary disease, Female]",
+      "dcid": "who/AIR_90.ENVCAUSE--ENVCAUSE118__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population, age-standardized) [Ischaemic heart disease, Female]",
+      "dcid": "who/AIR_90.ENVCAUSE--ENVCAUSE113__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population, age-standardized) [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_90.ENVCAUSE--ENVCAUSE039__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population, age-standardized) [Stroke, Female]",
+      "dcid": "who/AIR_90.ENVCAUSE--ENVCAUSE114__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population, age-standardized) [Trachea, bronchus, lung cancers, Female]",
       "dcid": "who/AIR_90.ENVCAUSE--ENVCAUSE068__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years in children under 15 years [Lower respiratory infections, Female]",
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) [All Causes, Female]",
+      "dcid": "who/AIR_43.GHECAUSES--GHE000__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) [Chronic obstructive pulmonary disease, Female]",
+      "dcid": "who/AIR_43.GHECAUSES--GHE118__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) [Chronic obstructive pulmonary disease, Female]",
+      "dcid": "who/AIR_7.ENVCAUSE--ENVCAUSE118__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) [Ischaemic heart disease, Female]",
+      "dcid": "who/AIR_43.GHECAUSES--GHE113__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) [Ischaemic heart disease, Female]",
+      "dcid": "who/AIR_7.ENVCAUSE--ENVCAUSE113__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_43.GHECAUSES--GHE039__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_7.ENVCAUSE--ENVCAUSE039__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) [Stroke, Female]",
+      "dcid": "who/AIR_43.GHECAUSES--GHE114__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) [Stroke, Female]",
+      "dcid": "who/AIR_7.ENVCAUSE--ENVCAUSE114__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) [Trachea, bronchus, lung cancers, Female]",
+      "dcid": "who/AIR_43.GHECAUSES--GHE068__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) [Trachea, bronchus, lung cancers, Female]",
+      "dcid": "who/AIR_7.ENVCAUSE--ENVCAUSE068__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) in children under 15 years [Lower respiratory infections, Female]",
       "dcid": "who/AIR_71.ENVCAUSE--ENVCAUSE039__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years in children under 5 years [Lower respiratory infections, Female]",
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) in children under 5 years [Lower respiratory infections, Female]",
       "dcid": "who/AIR_8.ENVCAUSE--ENVCAUSE039__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of years life lost [Chronic obstructive pulmonary disease, Female]",
+      "name": "Ambient air pollution attributable number of years life lost (YLLs) [Chronic obstructive pulmonary disease, Female]",
       "dcid": "who/AIR_45.ENVCAUSE--ENVCAUSE118__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of years life lost [Ischaemic heart disease, Female]",
+      "name": "Ambient air pollution attributable number of years life lost (YLLs) [Ischaemic heart disease, Female]",
       "dcid": "who/AIR_45.ENVCAUSE--ENVCAUSE113__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of years life lost [Lower respiratory infections, Female]",
+      "name": "Ambient air pollution attributable number of years life lost (YLLs) [Lower respiratory infections, Female]",
       "dcid": "who/AIR_45.ENVCAUSE--ENVCAUSE039__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of years life lost [Stroke, Female]",
+      "name": "Ambient air pollution attributable number of years life lost (YLLs) [Stroke, Female]",
       "dcid": "who/AIR_45.ENVCAUSE--ENVCAUSE114__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of years life lost [Trachea, bronchus, lung cancers, Female]",
+      "name": "Ambient air pollution attributable number of years life lost (YLLs) [Trachea, bronchus, lung cancers, Female]",
       "dcid": "who/AIR_45.ENVCAUSE--ENVCAUSE068__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of years life lost in children under 15 years [Lower respiratory infections, Female]",
+      "name": "Ambient air pollution attributable number of years life lost (YLLs) in children under 15 years [Lower respiratory infections, Female]",
       "dcid": "who/AIR_73.ENVCAUSE--ENVCAUSE039__SEX--F"
     },
     {
@@ -1389,7 +1389,7 @@
       "dcid": "Count_Person_Female_AsianOrPacificIslander"
     },
     {
-      "name": "Assistive technology indicators: Prevalence of met need of assistive products [Total, excluding spectacles, Female]",
+      "name": "Assistive technology indicators: Prevalence of met need of assistive products (%) [Total, excluding spectacles, Female]",
       "dcid": "who/ASSISTIVETECH_METNEED.ASSISTIVETECHPRODUCT--ASSISTIVETECH_TOTAL_NOSPECS__SEX--F"
     },
     {
@@ -1637,15 +1637,15 @@
       "dcid": "dc/d0yf4s6vhnzgd"
     },
     {
-      "name": "Completion rate, by sex, location, wealth quintile and education level [Female, Lower secondary education]",
+      "name": "Completion rate [Female, Lower secondary education]",
       "dcid": "sdg/SE_TOT_CPLR.SEX--F__EDUCATION_LEV--ISCED11_2"
     },
     {
-      "name": "Completion rate, by sex, location, wealth quintile and education level [Female, Primary education]",
+      "name": "Completion rate [Female, Primary education]",
       "dcid": "sdg/SE_TOT_CPLR.SEX--F__EDUCATION_LEV--ISCED11_1"
     },
     {
-      "name": "Completion rate, by sex, location, wealth quintile and education level [Female, Upper secondary education]",
+      "name": "Completion rate [Female, Upper secondary education]",
       "dcid": "sdg/SE_TOT_CPLR.SEX--F__EDUCATION_LEV--ISCED11_3"
     },
     {
@@ -3237,768 +3237,768 @@
       "dcid": "WHO/SDGSUICIDE_Female"
     },
     {
-      "name": "Detected victims of human trafficking for forced labour, servitude and slavery, by age and sex [18 years old and over, Female]",
-      "dcid": "sdg/VC_HTF_DETVFL.AGE--Y_GE18__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for forced labour, servitude and slavery, by age and sex [18 years old and over, Female]",
-      "dcid": "sdg/VC_HTF_DETVFLR.AGE--Y_GE18__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for forced labour, servitude and slavery, by age and sex [under 18 years old, Female]",
-      "dcid": "sdg/VC_HTF_DETVFL.AGE--Y0T17__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for forced labour, servitude and slavery, by age and sex [under 18 years old, Female]",
-      "dcid": "sdg/VC_HTF_DETVFLR.AGE--Y0T17__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for other purposes, by age and sex [18 years old and over, Female]",
-      "dcid": "sdg/VC_HTF_DETVOP.AGE--Y_GE18__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for other purposes, by age and sex [18 years old and over, Female]",
-      "dcid": "sdg/VC_HTF_DETVOPR.AGE--Y_GE18__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for other purposes, by age and sex [under 18 years old, Female]",
-      "dcid": "sdg/VC_HTF_DETVOP.AGE--Y0T17__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for other purposes, by age and sex [under 18 years old, Female]",
-      "dcid": "sdg/VC_HTF_DETVOPR.AGE--Y0T17__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for removal of organ, by age and sex [18 years old and over, Female]",
-      "dcid": "sdg/VC_HTF_DETVOG.AGE--Y_GE18__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for removal of organ, by age and sex [18 years old and over, Female]",
-      "dcid": "sdg/VC_HTF_DETVOGR.AGE--Y_GE18__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for sexual exploitation, by age and sex [18 years old and over, Female]",
-      "dcid": "sdg/VC_HTF_DETVSX.AGE--Y_GE18__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for sexual exploitation, by age and sex [18 years old and over, Female]",
-      "dcid": "sdg/VC_HTF_DETVSXR.AGE--Y_GE18__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for sexual exploitation, by age and sex [under 18 years old, Female]",
-      "dcid": "sdg/VC_HTF_DETVSX.AGE--Y0T17__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for sexual exploitation, by age and sex [under 18 years old, Female]",
-      "dcid": "sdg/VC_HTF_DETVSXR.AGE--Y0T17__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking, by age and sex [18 years old and over, Female]",
+      "name": "Detected victims of human trafficking [18 years old and over, Female]",
       "dcid": "sdg/VC_HTF_DETV.AGE--Y_GE18__SEX--F"
     },
     {
-      "name": "Detected victims of human trafficking, by age and sex [18 years old and over, Female]",
+      "name": "Detected victims of human trafficking [18 years old and over, Female]",
       "dcid": "sdg/VC_HTF_DETVR.AGE--Y_GE18__SEX--F"
     },
     {
-      "name": "Detected victims of human trafficking, by age and sex [under 18 years old, Female]",
+      "name": "Detected victims of human trafficking [under 18 years old, Female]",
       "dcid": "sdg/VC_HTF_DETV.AGE--Y0T17__SEX--F"
     },
     {
-      "name": "Detected victims of human trafficking, by age and sex [under 18 years old, Female]",
+      "name": "Detected victims of human trafficking [under 18 years old, Female]",
       "dcid": "sdg/VC_HTF_DETVR.AGE--Y0T17__SEX--F"
     },
     {
-      "name": "Disease burden [Acute hepatitis B, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE019__SEX--F"
+      "name": "Detected victims of human trafficking for forced labour, servitude and slavery [18 years old and over, Female]",
+      "dcid": "sdg/VC_HTF_DETVFL.AGE--Y_GE18__SEX--F"
     },
     {
-      "name": "Disease burden [Acute hepatitis B, Female]",
+      "name": "Detected victims of human trafficking for forced labour, servitude and slavery [18 years old and over, Female]",
+      "dcid": "sdg/VC_HTF_DETVFLR.AGE--Y_GE18__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for forced labour, servitude and slavery [under 18 years old, Female]",
+      "dcid": "sdg/VC_HTF_DETVFL.AGE--Y0T17__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for forced labour, servitude and slavery [under 18 years old, Female]",
+      "dcid": "sdg/VC_HTF_DETVFLR.AGE--Y0T17__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for other purposes [18 years old and over, Female]",
+      "dcid": "sdg/VC_HTF_DETVOP.AGE--Y_GE18__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for other purposes [18 years old and over, Female]",
+      "dcid": "sdg/VC_HTF_DETVOPR.AGE--Y_GE18__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for other purposes [under 18 years old, Female]",
+      "dcid": "sdg/VC_HTF_DETVOP.AGE--Y0T17__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for other purposes [under 18 years old, Female]",
+      "dcid": "sdg/VC_HTF_DETVOPR.AGE--Y0T17__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for removal of organ [18 years old and over, Female]",
+      "dcid": "sdg/VC_HTF_DETVOG.AGE--Y_GE18__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for removal of organ [18 years old and over, Female]",
+      "dcid": "sdg/VC_HTF_DETVOGR.AGE--Y_GE18__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for sexual exploitation [18 years old and over, Female]",
+      "dcid": "sdg/VC_HTF_DETVSX.AGE--Y_GE18__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for sexual exploitation [18 years old and over, Female]",
+      "dcid": "sdg/VC_HTF_DETVSXR.AGE--Y_GE18__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for sexual exploitation [under 18 years old, Female]",
+      "dcid": "sdg/VC_HTF_DETVSX.AGE--Y0T17__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for sexual exploitation [under 18 years old, Female]",
+      "dcid": "sdg/VC_HTF_DETVSXR.AGE--Y0T17__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Acute hepatitis B, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE019__SEX--F"
     },
     {
-      "name": "Disease burden [Acute hepatitis C, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE020__SEX--F"
-    },
-    {
-      "name": "Disease burden [Acute hepatitis C, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Acute hepatitis C, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE020__SEX--F"
     },
     {
-      "name": "Disease burden [Alcohol use disorders, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE086__SEX--F"
-    },
-    {
-      "name": "Disease burden [Alcohol use disorders, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Alcohol use disorders, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE086__SEX--F"
     },
     {
-      "name": "Disease burden [All Causes, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE000__SEX--F"
-    },
-    {
-      "name": "Disease burden [All Causes, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [All Causes, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE000__SEX--F"
     },
     {
-      "name": "Disease burden [Alzheimer's disease and other dementias, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE095__SEX--F"
-    },
-    {
-      "name": "Disease burden [Alzheimer's disease and other dementias, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Alzheimer's disease and other dementias, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE095__SEX--F"
     },
     {
-      "name": "Disease burden [Anxiety disorders, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE088__SEX--F"
-    },
-    {
-      "name": "Disease burden [Anxiety disorders, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Anxiety disorders, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE088__SEX--F"
     },
     {
-      "name": "Disease burden [Appendicitis, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE124__SEX--F"
-    },
-    {
-      "name": "Disease burden [Appendicitis, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Appendicitis, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE124__SEX--F"
     },
     {
-      "name": "Disease burden [Ascariasis, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE034__SEX--F"
-    },
-    {
-      "name": "Disease burden [Ascariasis, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Ascariasis, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE034__SEX--F"
     },
     {
-      "name": "Disease burden [Asthma, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE119__SEX--F"
-    },
-    {
-      "name": "Disease burden [Asthma, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Asthma, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE119__SEX--F"
     },
     {
-      "name": "Disease burden [Back and neck pain, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE138__SEX--F"
-    },
-    {
-      "name": "Disease burden [Back and neck pain, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Back and neck pain, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE138__SEX--F"
     },
     {
-      "name": "Disease burden [Bipolar disorder, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE084__SEX--F"
-    },
-    {
-      "name": "Disease burden [Bipolar disorder, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Bipolar disorder, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE084__SEX--F"
     },
     {
-      "name": "Disease burden [Birth asphyxia and birth trauma, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE051__SEX--F"
-    },
-    {
-      "name": "Disease burden [Birth asphyxia and birth trauma, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Birth asphyxia and birth trauma, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE051__SEX--F"
     },
     {
-      "name": "Disease burden [Bladder cancer, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE075__SEX--F"
-    },
-    {
-      "name": "Disease burden [Bladder cancer, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Bladder cancer, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE075__SEX--F"
     },
     {
-      "name": "Disease burden [Breast cancer, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE070__SEX--F"
-    },
-    {
-      "name": "Disease burden [Breast cancer, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Breast cancer, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE070__SEX--F"
     },
     {
-      "name": "Disease burden [Cardiomyopathy, myocarditis, endocarditis, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE115__SEX--F"
-    },
-    {
-      "name": "Disease burden [Cardiomyopathy, myocarditis, endocarditis, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Cardiomyopathy, myocarditis, endocarditis, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE115__SEX--F"
     },
     {
-      "name": "Disease burden [Cardiovascular diseases, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE110__SEX--F"
-    },
-    {
-      "name": "Disease burden [Cardiovascular diseases, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Cardiovascular diseases, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE110__SEX--F"
     },
     {
-      "name": "Disease burden [Cataracts, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE104__SEX--F"
-    },
-    {
-      "name": "Disease burden [Cataracts, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Cataracts, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE104__SEX--F"
     },
     {
-      "name": "Disease burden [Cervix uteri cancer, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE071__SEX--F"
-    },
-    {
-      "name": "Disease burden [Cervix uteri cancer, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Cervix uteri cancer, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE071__SEX--F"
     },
     {
-      "name": "Disease burden [Chagas disease, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE024__SEX--F"
-    },
-    {
-      "name": "Disease burden [Chagas disease, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Chagas disease, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE024__SEX--F"
     },
     {
-      "name": "Disease burden [Childhood behavioural disorders, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE091__SEX--F"
-    },
-    {
-      "name": "Disease burden [Childhood behavioural disorders, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Childhood behavioural disorders, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE091__SEX--F"
     },
     {
-      "name": "Disease burden [Childhood-cluster diseases, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE012__SEX--F"
-    },
-    {
-      "name": "Disease burden [Childhood-cluster diseases, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Childhood-cluster diseases, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE012__SEX--F"
     },
     {
-      "name": "Disease burden [Chlamydia, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE006__SEX--F"
-    },
-    {
-      "name": "Disease burden [Chlamydia, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Chlamydia, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE006__SEX--F"
     },
     {
-      "name": "Disease burden [Chronic obstructive pulmonary disease, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE118__SEX--F"
-    },
-    {
-      "name": "Disease burden [Chronic obstructive pulmonary disease, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Chronic obstructive pulmonary disease, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE118__SEX--F"
     },
     {
-      "name": "Disease burden [Chronic respiratory diseases, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE117__SEX--F"
-    },
-    {
-      "name": "Disease burden [Chronic respiratory diseases, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Chronic respiratory diseases, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE117__SEX--F"
     },
     {
-      "name": "Disease burden [Cirrhosis of the liver, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE123__SEX--F"
-    },
-    {
-      "name": "Disease burden [Cirrhosis of the liver, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Cirrhosis of the liver, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE123__SEX--F"
     },
     {
-      "name": "Disease burden [Cleft lip and cleft palate, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE142__SEX--F"
-    },
-    {
-      "name": "Disease burden [Cleft lip and cleft palate, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Cleft lip and cleft palate, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE142__SEX--F"
     },
     {
-      "name": "Disease burden [Collective violence and legal intervention, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE163__SEX--F"
-    },
-    {
-      "name": "Disease burden [Collective violence and legal intervention, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Collective violence and legal intervention, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE163__SEX--F"
     },
     {
-      "name": "Disease burden [Colon and rectum cancers, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE065__SEX--F"
-    },
-    {
-      "name": "Disease burden [Colon and rectum cancers, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Colon and rectum cancers, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE065__SEX--F"
     },
     {
-      "name": "Disease burden [Communicable \u0026 other Group I, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE001__SEX--F"
-    },
-    {
-      "name": "Disease burden [Communicable \u0026 other Group I, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Communicable \u0026 other Group I, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE001__SEX--F"
     },
     {
-      "name": "Disease burden [Congenital anomalies, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE140__SEX--F"
-    },
-    {
-      "name": "Disease burden [Congenital anomalies, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Congenital anomalies, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE140__SEX--F"
     },
     {
-      "name": "Disease burden [Congenital heart anomalies, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE144__SEX--F"
-    },
-    {
-      "name": "Disease burden [Congenital heart anomalies, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Congenital heart anomalies, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE144__SEX--F"
     },
     {
-      "name": "Disease burden [Corpus uteri cancer, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE072__SEX--F"
-    },
-    {
-      "name": "Disease burden [Corpus uteri cancer, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Corpus uteri cancer, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE072__SEX--F"
     },
     {
-      "name": "Disease burden [Dengue, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE030__SEX--F"
-    },
-    {
-      "name": "Disease burden [Dengue, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Dengue, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE030__SEX--F"
     },
     {
-      "name": "Disease burden [Dental caries, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE148__SEX--F"
-    },
-    {
-      "name": "Disease burden [Dental caries, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Dental caries, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE148__SEX--F"
     },
     {
-      "name": "Disease burden [Diabetes mellitus, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE080__SEX--F"
-    },
-    {
-      "name": "Disease burden [Diabetes mellitus, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Diabetes mellitus, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE080__SEX--F"
     },
     {
-      "name": "Disease burden [Diarrhoeal diseases, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE011__SEX--F"
-    },
-    {
-      "name": "Disease burden [Diarrhoeal diseases, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Diarrhoeal diseases, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE011__SEX--F"
     },
     {
-      "name": "Disease burden [Digestive diseases, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE121__SEX--F"
-    },
-    {
-      "name": "Disease burden [Digestive diseases, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Digestive diseases, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE121__SEX--F"
     },
     {
-      "name": "Disease burden [Diphtheria, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE014__SEX--F"
-    },
-    {
-      "name": "Disease burden [Diphtheria, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Diphtheria, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE014__SEX--F"
     },
     {
-      "name": "Disease burden [Down's syndrome, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE143__SEX--F"
-    },
-    {
-      "name": "Disease burden [Down's syndrome, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Down's syndrome, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE143__SEX--F"
     },
     {
-      "name": "Disease burden [Drowning, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE157__SEX--F"
-    },
-    {
-      "name": "Disease burden [Drowning, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Drowning, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE157__SEX--F"
     },
     {
-      "name": "Disease burden [Drug use disorders, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE087__SEX--F"
-    },
-    {
-      "name": "Disease burden [Drug use disorders, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Drug use disorders, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE087__SEX--F"
     },
     {
-      "name": "Disease burden [Eating disorders, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE089__SEX--F"
-    },
-    {
-      "name": "Disease burden [Eating disorders, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Eating disorders, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE089__SEX--F"
     },
     {
-      "name": "Disease burden [Edentulism, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE150__SEX--F"
-    },
-    {
-      "name": "Disease burden [Edentulism, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Edentulism, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE150__SEX--F"
     },
     {
-      "name": "Disease burden [Encephalitis, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE018__SEX--F"
-    },
-    {
-      "name": "Disease burden [Encephalitis, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Encephalitis, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE018__SEX--F"
     },
     {
-      "name": "Disease burden [Endocrine, blood, immune disorders, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE081__SEX--F"
-    },
-    {
-      "name": "Disease burden [Endocrine, blood, immune disorders, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Endocrine, blood, immune disorders, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE081__SEX--F"
     },
     {
-      "name": "Disease burden [Epilepsy, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE097__SEX--F"
-    },
-    {
-      "name": "Disease burden [Epilepsy, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Epilepsy, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE097__SEX--F"
     },
     {
-      "name": "Disease burden [Exposure to forces of nature, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE158__SEX--F"
-    },
-    {
-      "name": "Disease burden [Exposure to forces of nature, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Exposure to forces of nature, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE158__SEX--F"
     },
     {
-      "name": "Disease burden [Falls, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE155__SEX--F"
-    },
-    {
-      "name": "Disease burden [Falls, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Falls, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE155__SEX--F"
     },
     {
-      "name": "Disease burden [Fire, heat and hot substances, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE156__SEX--F"
-    },
-    {
-      "name": "Disease burden [Fire, heat and hot substances, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Fire, heat and hot substances, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE156__SEX--F"
     },
     {
-      "name": "Disease burden [Genitourinary diseases, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE126__SEX--F"
-    },
-    {
-      "name": "Disease burden [Genitourinary diseases, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Genitourinary diseases, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE126__SEX--F"
     },
     {
-      "name": "Disease burden [Glaucoma, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE103__SEX--F"
-    },
-    {
-      "name": "Disease burden [Glaucoma, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Glaucoma, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE103__SEX--F"
     },
     {
-      "name": "Disease burden [Gonorrhoea, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE007__SEX--F"
-    },
-    {
-      "name": "Disease burden [Gonorrhoea, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Gonorrhoea, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE007__SEX--F"
     },
     {
-      "name": "Disease burden [Gout, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE137__SEX--F"
-    },
-    {
-      "name": "Disease burden [Gout, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Gout, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE137__SEX--F"
     },
     {
-      "name": "Disease burden [Gynecological diseases, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE132__SEX--F"
-    },
-    {
-      "name": "Disease burden [Gynecological diseases, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Gynecological diseases, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE132__SEX--F"
     },
     {
-      "name": "Disease burden [HIV/AIDS, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE010__SEX--F"
-    },
-    {
-      "name": "Disease burden [HIV/AIDS, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [HIV/AIDS, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE010__SEX--F"
     },
     {
-      "name": "Disease burden [Hookworm disease, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE036__SEX--F"
-    },
-    {
-      "name": "Disease burden [Hookworm disease, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Hookworm disease, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE036__SEX--F"
     },
     {
-      "name": "Disease burden [Hyperplasia of prostate, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE128__SEX--F"
-    },
-    {
-      "name": "Disease burden [Hyperplasia of prostate, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Hyperplasia of prostate, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE128__SEX--F"
     },
     {
-      "name": "Disease burden [Hypertensive heart disease, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE112__SEX--F"
-    },
-    {
-      "name": "Disease burden [Hypertensive heart disease, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Hypertensive heart disease, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE112__SEX--F"
     },
     {
-      "name": "Disease burden [Idiopathic intellectual disability, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE092__SEX--F"
-    },
-    {
-      "name": "Disease burden [Idiopathic intellectual disability, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Idiopathic intellectual disability, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE092__SEX--F"
     },
     {
-      "name": "Disease burden [Infectious and parasitic diseases, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE002__SEX--F"
-    },
-    {
-      "name": "Disease burden [Infectious and parasitic diseases, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Infectious and parasitic diseases, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE002__SEX--F"
     },
     {
-      "name": "Disease burden [Infertility, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE131__SEX--F"
-    },
-    {
-      "name": "Disease burden [Infertility, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Infertility, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE131__SEX--F"
     },
     {
-      "name": "Disease burden [Injuries, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE151__SEX--F"
-    },
-    {
-      "name": "Disease burden [Injuries, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Injuries, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE151__SEX--F"
     },
     {
-      "name": "Disease burden [Intentional injuries, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE160__SEX--F"
-    },
-    {
-      "name": "Disease burden [Intentional injuries, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Intentional injuries, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE160__SEX--F"
     },
     {
-      "name": "Disease burden [Interpersonal violence, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE162__SEX--F"
-    },
-    {
-      "name": "Disease burden [Interpersonal violence, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Interpersonal violence, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE162__SEX--F"
     },
     {
-      "name": "Disease burden [Intestinal nematode infections, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE033__SEX--F"
-    },
-    {
-      "name": "Disease burden [Intestinal nematode infections, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Intestinal nematode infections, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE033__SEX--F"
     },
     {
-      "name": "Disease burden [Iodine deficiency, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE056__SEX--F"
-    },
-    {
-      "name": "Disease burden [Iodine deficiency, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Iodine deficiency, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE056__SEX--F"
     },
     {
-      "name": "Disease burden [Iron-deficiency anaemia, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE058__SEX--F"
-    },
-    {
-      "name": "Disease burden [Iron-deficiency anaemia, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Iron-deficiency anaemia, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE058__SEX--F"
     },
     {
-      "name": "Disease burden [Ischaemic heart disease, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE113__SEX--F"
-    },
-    {
-      "name": "Disease burden [Ischaemic heart disease, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Ischaemic heart disease, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE113__SEX--F"
     },
     {
-      "name": "Disease burden [Kidney diseases, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE127__SEX--F"
-    },
-    {
-      "name": "Disease burden [Kidney diseases, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Kidney diseases, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE127__SEX--F"
     },
     {
-      "name": "Disease burden [Leishmaniasis, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE026__SEX--F"
-    },
-    {
-      "name": "Disease burden [Leishmaniasis, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Leishmaniasis, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE026__SEX--F"
     },
     {
-      "name": "Disease burden [Leprosy, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE029__SEX--F"
-    },
-    {
-      "name": "Disease burden [Leprosy, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Leprosy, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE029__SEX--F"
     },
     {
-      "name": "Disease burden [Leukaemia, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE077__SEX--F"
-    },
-    {
-      "name": "Disease burden [Leukaemia, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Leukaemia, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE077__SEX--F"
     },
     {
-      "name": "Disease burden [Liver cancer, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE066__SEX--F"
-    },
-    {
-      "name": "Disease burden [Liver cancer, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Liver cancer, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE066__SEX--F"
     },
     {
-      "name": "Disease burden [Lower respiratory infections, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE039__SEX--F"
-    },
-    {
-      "name": "Disease burden [Lower respiratory infections, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Lower respiratory infections, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE039__SEX--F"
     },
     {
-      "name": "Disease burden [Lymphatic filariasis, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE027__SEX--F"
-    },
-    {
-      "name": "Disease burden [Lymphatic filariasis, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Lymphatic filariasis, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE027__SEX--F"
     },
     {
-      "name": "Disease burden [Lymphomas, multiple myeloma, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE076__SEX--F"
-    },
-    {
-      "name": "Disease burden [Lymphomas, multiple myeloma, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Lymphomas, multiple myeloma, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE076__SEX--F"
     },
     {
-      "name": "Disease burden [Macular degeneration, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE106__SEX--F"
-    },
-    {
-      "name": "Disease burden [Macular degeneration, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Macular degeneration, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE106__SEX--F"
     },
     {
-      "name": "Disease burden [Malaria, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE022__SEX--F"
-    },
-    {
-      "name": "Disease burden [Malaria, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Malaria, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE022__SEX--F"
     },
     {
-      "name": "Disease burden [Malignant neoplasms, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE061__SEX--F"
-    },
-    {
-      "name": "Disease burden [Malignant neoplasms, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Malignant neoplasms, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE061__SEX--F"
     },
     {
-      "name": "Disease burden [Maternal conditions, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE042__SEX--F"
-    },
-    {
-      "name": "Disease burden [Maternal conditions, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Maternal conditions, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE042__SEX--F"
     },
     {
-      "name": "Disease burden [Measles, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE015__SEX--F"
-    },
-    {
-      "name": "Disease burden [Measles, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Measles, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE015__SEX--F"
     },
     {
-      "name": "Disease burden [Melanoma and other skin cancers, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE069__SEX--F"
-    },
-    {
-      "name": "Disease burden [Melanoma and other skin cancers, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Melanoma and other skin cancers, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE069__SEX--F"
     },
     {
-      "name": "Disease burden [Meningitis, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE017__SEX--F"
-    },
-    {
-      "name": "Disease burden [Meningitis, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Meningitis, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE017__SEX--F"
     },
     {
-      "name": "Disease burden [Mental and behavioral disorders, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE082__SEX--F"
-    },
-    {
-      "name": "Disease burden [Mental and behavioral disorders, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Mental and behavioral disorders, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE082__SEX--F"
     },
     {
-      "name": "Disease burden [Migraine, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE099__SEX--F"
-    },
-    {
-      "name": "Disease burden [Migraine, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Migraine, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE099__SEX--F"
     },
     {
-      "name": "Disease burden [Mouth and oropharynx cancers, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE062__SEX--F"
-    },
-    {
-      "name": "Disease burden [Mouth and oropharynx cancers, Female]",
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Mouth and oropharynx cancers, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE062__SEX--F"
     },
     {
-      "name": "Disease burden [Multiple sclerosis, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE098__SEX--F"
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Multiple sclerosis, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE098__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Musculoskeletal diseases, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE134__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Neonatal conditions, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE049__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Neonatal sepsis and infections, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE052__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Neural tube defects, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE141__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Neurological conditions, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE094__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Non-migraine headache, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE100__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Noncommunicable diseases, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE060__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Nutritional deficiencies, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE054__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Oesophagus cancer, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE063__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Onchocerciasis, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE028__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Oral conditions, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE147__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Osteoarthritis, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE136__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Other STDs, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE009__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Other chromosomal anomalies, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE145__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Other circulatory diseases, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE116__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Other congenital anomalies, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE146__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Other digestive diseases, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE125__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Other genitourinary diseases, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE130__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Other hearing loss, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE108__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Other infectious diseases, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE037__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Other malignant neoplasms, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE078__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Other mental and behavioural disorders, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE093__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Other musculoskeletal disorders, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE139__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Other neonatal conditions, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE053__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Other neoplasms, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE079__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Other neurological conditions, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE101__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Other nutritional deficiencies, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE059__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Other respiratory diseases, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE120__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Other unintentional injuries, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE159__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Other vision loss, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE107__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Otitis media, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE041__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Ovary cancer, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE073__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Pancreas cancer, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE067__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Parasitic and vector diseases, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE021__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Parkinson's disease, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE096__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Peptic ulcer disease, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE122__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Periodontal disease, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE149__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Pervasive developmental disorders, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE090__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Poisonings, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE154__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Preterm birth complications, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE050__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Prostate cancer, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE074__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Protein-energy malnutrition, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE055__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Rabies, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE032__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Refractive errors, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE105__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Respiratory infections, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE038__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Rheumatic heart disease, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE111__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Rheumatoid arthritis, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE135__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Road injury, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE153__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [STDs excluding HIV, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE004__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Schistosomiasis, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE025__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Schizophrenia, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE085__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Self-harm, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE161__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Sense organ diseases, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE102__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Skin diseases, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE133__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Stomach cancer, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE064__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Stroke, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE114__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Syphilis, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE005__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Tetanus, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE016__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Trachea, bronchus, lung cancers, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE068__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Trachoma, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE031__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Trichomoniasis, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE008__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Trichuriasis, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE035__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Trypanosomiasis, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE023__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Tuberculosis, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE003__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Unintentional injuries, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE152__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Unipolar depressive disorders, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE083__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Upper respiratory infections, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE040__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Urolithiasis, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE129__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Vitamin A deficiency, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE057__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Whooping cough, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE013__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [other sense organ disorders, Female]",
+      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE109__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Acute hepatitis B, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE019__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Acute hepatitis C, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE020__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Alcohol use disorders, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE086__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [All Causes, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE000__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Alzheimer's disease and other dementias, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE095__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Anxiety disorders, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE088__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Appendicitis, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE124__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Ascariasis, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE034__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Asthma, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE119__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Back and neck pain, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE138__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Bipolar disorder, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE084__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Birth asphyxia and birth trauma, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE051__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Bladder cancer, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE075__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Breast cancer, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE070__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Cardiomyopathy, myocarditis, endocarditis, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE115__SEX--F"
     }
   ],
   "matches": [

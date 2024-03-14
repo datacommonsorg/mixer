@@ -1,43 +1,47 @@
 {
   "statVars": [
     {
-      "name": "Ratio for female members of parliaments, Lower Chamber or Unicameral",
+      "name": "Diagnostic medical imaging equipment: Mammography units (per million females aged from 50 to 69 years old), total density",
+      "dcid": "who/DEVICES23"
+    },
+    {
+      "name": "Ratio for female members of parliaments, Lower Chamber or Unicameral, Lower Chamber or Unicameral",
       "dcid": "sdg/SG_DMK_PARLMP_LC"
     },
     {
-      "name": "Ratio for female members of parliaments, Upper Chamber",
+      "name": "Ratio for female members of parliaments, Upper Chamber, Upper Chamber",
       "dcid": "sdg/SG_DMK_PARLMP_UC"
     },
     {
-      "name": "Age-standardized mortality from Noncommunicable diseases mortality rate [Female]",
+      "name": "Age-standardized mortality from Noncommunicable diseases (NCD) mortality rate (per 100 000 population) [Female]",
       "dcid": "who/WHS2_131.SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable death rate [Female]",
-      "dcid": "who/AIR_42.SEX--F"
+      "name": "Ambient air pollution attributable death rate (per 100 000 population) [Female]",
+      "dcid": "who/AIR_5.SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable death rate [Female]",
-      "dcid": "who/AIR_5.SEX--F"
+      "name": "Ambient air pollution attributable death rate (per 100 000 population, age-standardized) [Female]",
+      "dcid": "who/AIR_42.SEX--F"
     },
     {
       "name": "Ambient air pollution attributable deaths [Female]",
       "dcid": "who/AIR_41.SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Female]",
-      "dcid": "who/AIR_7.SEX--F"
-    },
-    {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Female]",
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population) [Female]",
       "dcid": "who/AIR_9.SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Female]",
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population, age-standardized) [Female]",
       "dcid": "who/AIR_90.SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of years life lost [Female]",
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) [Female]",
+      "dcid": "who/AIR_7.SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of years life lost (YLLs) [Female]",
       "dcid": "who/AIR_45.SEX--F"
     },
     {
@@ -53,40 +57,40 @@
       "dcid": "Count_MortalityEvent_InflammatoryDiseasesOfFemalePelvicOrgans"
     },
     {
-      "name": "Death rate due to road traffic injuries, by sex [Female]",
+      "name": "Death rate due to road traffic injuries [Female]",
       "dcid": "sdg/SH_STA_TRAF.SEX--F"
     },
     {
-      "name": "Detected victims of human trafficking, by age and sex [Female]",
+      "name": "Detected victims of human trafficking [Female]",
       "dcid": "sdg/VC_HTF_DETV.SEX--F"
     },
     {
-      "name": "Detected victims of human trafficking, by age and sex [Female]",
+      "name": "Detected victims of human trafficking [Female]",
       "dcid": "sdg/VC_HTF_DETVR.SEX--F"
     },
     {
-      "name": "Estimate of current cigarette smoking prevalence [Female]",
-      "dcid": "who/M_Est_cig_curr.SEX--F"
-    },
-    {
-      "name": "Estimate of current cigarette smoking prevalence [Female]",
+      "name": "Estimate of current cigarette smoking prevalence (%) (age-standardized rate) [Female]",
       "dcid": "who/M_Est_cig_curr_std.SEX--F"
     },
     {
-      "name": "Estimate of current tobacco smoking prevalence [Female]",
-      "dcid": "who/M_Est_smk_curr.SEX--F"
+      "name": "Estimate of current cigarette smoking prevalence (%) [Female]",
+      "dcid": "who/M_Est_cig_curr.SEX--F"
     },
     {
-      "name": "Estimate of current tobacco smoking prevalence [Female]",
+      "name": "Estimate of current tobacco smoking prevalence (%) (age-standardized rate) [Female]",
       "dcid": "who/M_Est_smk_curr_std.SEX--F"
     },
     {
-      "name": "Estimate of current tobacco use prevalence [Female]",
-      "dcid": "who/M_Est_tob_curr.SEX--F"
+      "name": "Estimate of current tobacco smoking prevalence (%) [Female]",
+      "dcid": "who/M_Est_smk_curr.SEX--F"
     },
     {
-      "name": "Estimate of current tobacco use prevalence [Female]",
+      "name": "Estimate of current tobacco use prevalence (%) (age-standardized rate) [Female]",
       "dcid": "who/M_Est_tob_curr_std.SEX--F"
+    },
+    {
+      "name": "Estimate of current tobacco use prevalence (%) [Female]",
+      "dcid": "who/M_Est_tob_curr.SEX--F"
     },
     {
       "name": "Female Life Expectancy",
@@ -97,7 +101,7 @@
       "dcid": "Count_Person_Female"
     },
     {
-      "name": "Healthy life expectancy at age 60 [Female]",
+      "name": "Healthy life expectancy (HALE) at age 60 (years) [Female]",
       "dcid": "who/WHOSIS_000007.SEX--F"
     },
     {
@@ -105,43 +109,43 @@
       "dcid": "who/AIR_11.SEX--F"
     },
     {
-      "name": "Household air pollution attributable number of disability-adjusted life years [Female]",
-      "dcid": "who/AIR_15.SEX--F"
-    },
-    {
-      "name": "Household air pollution attributable number of disability-adjusted life years [Female]",
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population) [Female]",
       "dcid": "who/AIR_17.SEX--F"
     },
     {
-      "name": "Household air pollution attributable number of disability-adjusted life years [Female]",
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000, age-standardized) [Female]",
       "dcid": "who/AIR_39.SEX--F"
     },
     {
-      "name": "Household air pollution: Household air pollution attributable death rate [Female]",
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) [Female]",
+      "dcid": "who/AIR_15.SEX--F"
+    },
+    {
+      "name": "Household air pollution: Household air pollution attributable death rate (per 100 000 population) [Female]",
       "dcid": "who/AIR_51.SEX--F"
     },
     {
-      "name": "Household air pollution: Household air pollution attributable death rate [Female]",
+      "name": "Household air pollution: Household air pollution attributable death rate (per 100 000 population, age-standardized) [Female]",
       "dcid": "who/AIR_52.SEX--F"
     },
     {
-      "name": "Life expectancy at age 60 [Female]",
+      "name": "Life expectancy at age 60 (years) [Female]",
       "dcid": "who/WHOSIS_000015.SEX--F"
     },
     {
-      "name": "Male or female doctors as percentage of all medical doctors at national level [Female]",
+      "name": "Male or female doctors as percentage of all medical doctors at national level (%) [Female]",
       "dcid": "who/HWF_0025.SEX--F"
     },
     {
-      "name": "Male or female doctors as percentage of all medical doctors at national level [Male]",
+      "name": "Male or female doctors as percentage of all medical doctors at national level (%) [Male]",
       "dcid": "who/HWF_0025.SEX--M"
     },
     {
-      "name": "Male or female nurses as percentage of all nurses at national level [Female]",
+      "name": "Male or female nurses as percentage of all nurses at national level (%) [Female]",
       "dcid": "who/HWF_0026.SEX--F"
     },
     {
-      "name": "Male or female nurses as percentage of all nurses at national level [Male]",
+      "name": "Male or female nurses as percentage of all nurses at national level (%) [Male]",
       "dcid": "who/HWF_0026.SEX--M"
     },
     {
@@ -149,19 +153,19 @@
       "dcid": "sdg/SH_STA_MORT.SEX--F"
     },
     {
-      "name": "Mean high-density lipoprotein cholesterol, age-standardized estimate [Female]",
+      "name": "Mean high-density lipoprotein (HDL) cholesterol, age-standardized estimate [Female]",
       "dcid": "who/NCD_CHOL_MEANHDL_A.SEX--F"
     },
     {
-      "name": "Mean high-density lipoprotein cholesterol, crude estimate [Female]",
+      "name": "Mean high-density lipoprotein (HDL) cholesterol, crude estimate [Female]",
       "dcid": "who/NCD_CHOL_MEANHDL_C.SEX--F"
     },
     {
-      "name": "Mean non high-density lipoprotein cholesterol, age-standardized estimate [Female]",
+      "name": "Mean non high-density lipoprotein (non-HDL) cholesterol, age-standardized estimate [Female]",
       "dcid": "who/NCD_CHOL_MEANNONHDL_A.SEX--F"
     },
     {
-      "name": "Mean non high-density lipoprotein cholesterol, cruded estimate [Female]",
+      "name": "Mean non high-density lipoprotein (non-HDL) cholesterol, crude estimate [Female]",
       "dcid": "who/NCD_CHOL_MEANNONHDL_C.SEX--F"
     },
     {
@@ -173,19 +177,19 @@
       "dcid": "who/NCD_CHOL_MEANTOTALCHOL_C.SEX--F"
     },
     {
-      "name": "Mortality rate among children ages 5 to 9 years [Female]",
+      "name": "Mortality rate among children ages 5 to 9 years (per 1000 children aged 5) [Female]",
       "dcid": "who/WHOSIS_000016.SEX--F"
     },
     {
-      "name": "Mortality rate attributed to unintentional poisonings, by sex [Female]",
+      "name": "Mortality rate attributed to unintentional poisonings [Female]",
       "dcid": "sdg/SH_STA_POISN.SEX--F"
     },
     {
-      "name": "Mortality rate attributed to unsafe water, unsafe sanitation and lack of hygiene [Female]",
+      "name": "Mortality rate attributed to unsafe water, unsafe sanitation and lack of hygiene (exposure to unsafe Water, Sanitation and Hygiene for All (WASH) ) [Female]",
       "dcid": "who/WSH_1.SEX--F"
     },
     {
-      "name": "Mortality rate for 5-14 year-olds [Female]",
+      "name": "Mortality rate for 5-14 year-olds (probability of dying per 1000 children aged 5-14 years) [Female]",
       "dcid": "who/CHILDMORT5TO14.SEX--F"
     },
     {
@@ -197,11 +201,11 @@
       "dcid": "who/CM_04.SEX--F"
     },
     {
-      "name": "Number of deaths attributed to suicide, by sex [Female]",
+      "name": "Number of deaths attributed to suicide [Female]",
       "dcid": "sdg/SH_STA_SCIDEN.SEX--F"
     },
     {
-      "name": "Number of diarrhoea deaths from inadequate hygiene. . [Female]",
+      "name": "Number of diarrhoea deaths from inadequate hygiene. (Public health and environment). [Female]",
       "dcid": "who/WSH_10_HYG.SEX--F"
     },
     {
@@ -209,11 +213,11 @@
       "dcid": "who/WSH_10.SEX--F"
     },
     {
-      "name": "Number of diarrhoea disability-adjusted life years from inadequate hygiene [Female]",
+      "name": "Number of diarrhoea disability-adjusted life years (DALYs) from inadequate hygiene [Female]",
       "dcid": "who/WSH_30_HYG.SEX--F"
     },
     {
-      "name": "Number of diarrhoea disability-adjusted life years from inadequate water, sanitation and hygiene [Female]",
+      "name": "Number of diarrhoea disability-adjusted life years (DALYs) from inadequate water, sanitation and hygiene [Female]",
       "dcid": "who/WSH_30.SEX--F"
     },
     {
@@ -221,7 +225,7 @@
       "dcid": "who/CM_02.SEX--F"
     },
     {
-      "name": "Number of new HIV infections per 1,000 uninfected population, by sex and age [Female]",
+      "name": "Number of new HIV infections per 1,000 uninfected population [Female]",
       "dcid": "sdg/SH_HIV_INCD.SEX--F"
     },
     {
@@ -233,55 +237,51 @@
       "dcid": "who/CM_01.SEX--F"
     },
     {
-      "name": "Number of victims of intentional homicide per 100K population, by sex [Female]",
-      "dcid": "sdg/VC_IHR_PSRC.SEX--F"
-    },
-    {
-      "name": "Number of victims of intentional homicide, by sex [Female]",
+      "name": "Number of victims of intentional homicide [Female]",
       "dcid": "sdg/VC_IHR_PSRCN.SEX--F"
     },
     {
-      "name": "Participation rate in organized learning, by sex [Female]",
+      "name": "Number of victims of intentional homicide per 100K population [Female]",
+      "dcid": "sdg/VC_IHR_PSRC.SEX--F"
+    },
+    {
+      "name": "Participation rate in organized learning [Female]",
       "dcid": "sdg/SE_PRE_PARTN.SEX--F"
     },
     {
-      "name": "Prevalence of current cigarette smoking among adolescents, from the most recent nationally representative survey reporting prevalence of tobacco use or smoking among adolescents. [Female]",
+      "name": "Prevalence of current cigarette smoking among adolescents (%), from the most recent nationally representative survey reporting prevalence of tobacco use or smoking among adolescents. [Female]",
       "dcid": "who/Yth_curr_cig_smoking.SEX--F"
     },
     {
-      "name": "Prevalence of current cigarette smoking among adults [Female]",
+      "name": "Prevalence of current cigarette smoking among adults (%) [Female]",
       "dcid": "who/Adult_curr_cig_smoking.SEX--F"
     },
     {
-      "name": "Prevalence of current e-cigarette use among adolescents, from the most recent nationally representative survey reporting prevalence of tobacco use or smoking among adolescents. [Female]",
+      "name": "Prevalence of current e-cigarette use among adolescents (%), from the most recent nationally representative survey reporting prevalence of tobacco use or smoking among adolescents. [Female]",
       "dcid": "who/Yth_curr_e-cig.SEX--F"
     },
     {
-      "name": "Prevalence of current smokeless tobacco use among adolescents, from the most recent nationally representative survey reporting prevalence of smokeless tobacco use or e-cigarette use among adolescents. [Female]",
+      "name": "Prevalence of current e-cigarette use among adults (%) [Female]",
+      "dcid": "who/Adult_curr_e-cig.SEX--F"
+    },
+    {
+      "name": "Prevalence of current smokeless tobacco use among adolescents (%), from the most recent nationally representative survey reporting prevalence of smokeless tobacco use or e-cigarette use among adolescents. [Female]",
       "dcid": "who/Yth_curr_smokeless.SEX--F"
     },
     {
-      "name": "Prevalence of current smokeless tobacco use among adults [Female]",
+      "name": "Prevalence of current smokeless tobacco use among adults (%) [Female]",
       "dcid": "who/Adult_curr_smokeless.SEX--F"
     },
     {
-      "name": "Prevalence of current tobacco smoking among adults [Female]",
+      "name": "Prevalence of current tobacco smoking among adults (%) [Female]",
       "dcid": "who/Adult_curr_tob_smoking.SEX--F"
     },
     {
-      "name": "Prevalence of current tobacco use among adults [Female]",
-      "dcid": "who/Adult_curr_tob_use.SEX--F"
+      "name": "Prevalence of current tobacco use among adolescents (%), from the most recent nationally representative survey reporting prevalence of tobacco use or smoking among adolescents. [Female]",
+      "dcid": "who/Yth_curr_tob_use.SEX--F"
     },
     {
-      "name": "Prevalence of daily cigarette smoking among adults [Female]",
-      "dcid": "who/Adult_daily_cig_smoking.SEX--F"
-    },
-    {
-      "name": "Prevalence of daily smokeless tobacco use among adults [Female]",
-      "dcid": "who/Adult_daily_smokeless.SEX--F"
-    },
-    {
-      "name": "Proportion of children/households receiving child/family cash benefit, by sex [Female]",
+      "name": "Proportion of children/households receiving child/family cash benefit [Female]",
       "dcid": "sdg/SI_COV_CHLD.SEX--F"
     },
     {
@@ -289,15 +289,15 @@
       "dcid": "sdg/IT_USE_ii99.SEX--F"
     },
     {
-      "name": "Proportion of population above statutory pensionable age receiving a pension, by sex [Female]",
+      "name": "Proportion of population above statutory pensionable age receiving a pension [Female]",
       "dcid": "sdg/SI_COV_PENSN.SEX--F"
     },
     {
-      "name": "Proportion of population subjected to robbery in the previous 12 months, by sex [Female]",
+      "name": "Proportion of population subjected to robbery in the previous 12 months [Female]",
       "dcid": "sdg/VC_VOV_ROBB.SEX--F"
     },
     {
-      "name": "Proportion of population with severe disabilities receiving disability cash benefit, by sex [Female]",
+      "name": "Proportion of population with severe disabilities receiving disability cash benefit [Female]",
       "dcid": "sdg/SI_COV_DISAB.SEX--F"
     },
     {
@@ -305,39 +305,35 @@
       "dcid": "sdg/SG_GEN_PARL.SEX--F"
     },
     {
-      "name": "Proportion of women in managerial positions - 13th ICLS [Female]",
+      "name": "Proportion of women in managerial positions - 13th ICLS - 13th ICLS [Female]",
       "dcid": "sdg/IC_GEN_MGTL.SEX--F"
     },
     {
-      "name": "Proportion of women in managerial positions - 19th ICLS [Female]",
+      "name": "Proportion of women in managerial positions - 19th ICLS - 19th ICLS [Female]",
       "dcid": "sdg/IC_GEN_MGTL_19ICLS.SEX--F"
     },
     {
-      "name": "Proportion of women in senior and middle management positions - 13th ICLS [Female]",
+      "name": "Proportion of women in senior and middle management positions - 13th ICLS - 13th ICLS [Female]",
       "dcid": "sdg/IC_GEN_MGTN.SEX--F"
     },
     {
-      "name": "Proportion of women in senior and middle management positions - 19th ICLS [Female]",
+      "name": "Proportion of women in senior and middle management positions - 19th ICLS - 19th ICLS [Female]",
       "dcid": "sdg/IC_GEN_MGTN_19ICLS.SEX--F"
     },
     {
-      "name": "Suicide mortality rate, by sex [Female]",
+      "name": "Suicide mortality rate [Female]",
       "dcid": "sdg/SH_STA_SCIDE.SEX--F"
-    },
-    {
-      "name": "Total number of deaths attributed to non-communicable diseases [Female]",
-      "dcid": "who/NCD_DTH_TOT.SEX--F"
     },
     {
       "name": "Unemployment Rate of the Female Population",
       "dcid": "UnemploymentRate_Person_Female"
     },
     {
-      "name": "Unemployment rate, by sex and disability - 13th ICLS [Female]",
+      "name": "Unemployment rate - 13th ICLS [Female]",
       "dcid": "sdg/SL_TLF_UEMDIS.SEX--F"
     },
     {
-      "name": "Unemployment rate, by sex and disability - 19th ICLS [Female]",
+      "name": "Unemployment rate - 19th ICLS [Female]",
       "dcid": "sdg/SL_TLF_UEMDIS_19ICLS.SEX--F"
     },
     {
@@ -385,15 +381,15 @@
       "dcid": "sdg/SP_DYN_ADKL.AGE--Y15T19__SEX--F"
     },
     {
-      "name": "Adolescent mortality rate [10-14 years, Female]",
+      "name": "Adolescent mortality rate (per 1 000 age specific cohort) [10-14 years, Female]",
       "dcid": "who/CHILDMORT10TO19.AGE--Y10T14__SEX--F"
     },
     {
-      "name": "Adolescent mortality rate [10-19 years of age, Female]",
+      "name": "Adolescent mortality rate (per 1 000 age specific cohort) [10-19 duplicate, Female]",
       "dcid": "who/CHILDMORT10TO19.AGE--Y10T19__SEX--F"
     },
     {
-      "name": "Adolescent mortality rate [15-19  years, Female]",
+      "name": "Adolescent mortality rate (per 1 000 age specific cohort) [15-19 years, Female]",
       "dcid": "who/CHILDMORT10TO19.AGE--Y15T19__SEX--F"
     },
     {
@@ -409,7 +405,7 @@
       "dcid": "who/LIFE_0000000029.AGE--Y10T14__SEX--F"
     },
     {
-      "name": "Age-specific death rate between ages x and x+n [15-19  years, Female]",
+      "name": "Age-specific death rate between ages x and x+n [15-19 years, Female]",
       "dcid": "who/LIFE_0000000029.AGE--Y15T19__SEX--F"
     },
     {
@@ -477,7 +473,7 @@
       "dcid": "who/LIFE_0000000029.AGE--M0T11__SEX--F"
     },
     {
-      "name": "Age-standardized prevalence of current tobacco use among persons aged 15 years and older, by sex [15 years old and over, Female]",
+      "name": "Age-standardized prevalence of current tobacco use among persons aged 15 years and older [15 years old and over, Female]",
       "dcid": "sdg/SH_PRV_SMOK.AGE--Y_GE15__SEX--F"
     },
     {
@@ -489,8 +485,68 @@
       "dcid": "sdg/SH_SUD_ALCOL.AGE--Y_GE15__SEX--F"
     },
     {
+      "name": "Ambient air pollution attributable death rate (per 100 000 population) [Chronic obstructive pulmonary disease, Female]",
+      "dcid": "who/AIR_5.ENVCAUSE--ENVCAUSE118__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable death rate (per 100 000 population) [Ischaemic heart disease, Female]",
+      "dcid": "who/AIR_5.ENVCAUSE--ENVCAUSE113__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable death rate (per 100 000 population) [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_5.ENVCAUSE--ENVCAUSE039__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable death rate (per 100 000 population) [Stroke, Female]",
+      "dcid": "who/AIR_5.ENVCAUSE--ENVCAUSE114__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable death rate (per 100 000 population) [Trachea, bronchus, lung cancers, Female]",
+      "dcid": "who/AIR_5.ENVCAUSE--ENVCAUSE068__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable death rate (per 100 000 population, age-standardized) [Chronic obstructive pulmonary disease, Female]",
+      "dcid": "who/AIR_42.ENVCAUSE--ENVCAUSE118__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable death rate (per 100 000 population, age-standardized) [Ischaemic heart disease, Female]",
+      "dcid": "who/AIR_42.ENVCAUSE--ENVCAUSE113__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable death rate (per 100 000 population, age-standardized) [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_42.ENVCAUSE--ENVCAUSE039__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable death rate (per 100 000 population, age-standardized) [Stroke, Female]",
+      "dcid": "who/AIR_42.ENVCAUSE--ENVCAUSE114__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable death rate (per 100 000 population, age-standardized) [Trachea, bronchus, lung cancers, Female]",
+      "dcid": "who/AIR_42.ENVCAUSE--ENVCAUSE068__SEX--F"
+    },
+    {
       "name": "Ambient air pollution attributable death rate per 100 000 children under 5 years [Lower respiratory infections, Female]",
       "dcid": "who/AIR_6.ENVCAUSE--ENVCAUSE039__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable deaths [Chronic obstructive pulmonary disease, Female]",
+      "dcid": "who/AIR_41.ENVCAUSE--ENVCAUSE118__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable deaths [Ischaemic heart disease, Female]",
+      "dcid": "who/AIR_41.ENVCAUSE--ENVCAUSE113__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable deaths [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_41.ENVCAUSE--ENVCAUSE039__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable deaths [Stroke, Female]",
+      "dcid": "who/AIR_41.ENVCAUSE--ENVCAUSE114__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable deaths [Trachea, bronchus, lung cancers, Female]",
+      "dcid": "who/AIR_41.ENVCAUSE--ENVCAUSE068__SEX--F"
     },
     {
       "name": "Ambient air pollution attributable deaths in children under 15 years [Lower respiratory infections, Female]",
@@ -501,43 +557,123 @@
       "dcid": "who/AIR_4.ENVCAUSE--ENVCAUSE039__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable disability-adjusted life years per 100'000 children under 5 years [Lower respiratory infections, Female]",
+      "name": "Ambient air pollution attributable disability-adjusted life years (DALYs) per 100'000 children under 5 years [Lower respiratory infections, Female]",
       "dcid": "who/AIR_10.ENVCAUSE--ENVCAUSE039__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [All Causes, Female]",
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population) [Chronic obstructive pulmonary disease, Female]",
+      "dcid": "who/AIR_9.ENVCAUSE--ENVCAUSE118__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population) [Ischaemic heart disease, Female]",
+      "dcid": "who/AIR_9.ENVCAUSE--ENVCAUSE113__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population) [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_9.ENVCAUSE--ENVCAUSE039__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population) [Stroke, Female]",
+      "dcid": "who/AIR_9.ENVCAUSE--ENVCAUSE114__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population) [Trachea, bronchus, lung cancers, Female]",
+      "dcid": "who/AIR_9.ENVCAUSE--ENVCAUSE068__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population, age-standardized) [Chronic obstructive pulmonary disease, Female]",
+      "dcid": "who/AIR_90.ENVCAUSE--ENVCAUSE118__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population, age-standardized) [Ischaemic heart disease, Female]",
+      "dcid": "who/AIR_90.ENVCAUSE--ENVCAUSE113__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population, age-standardized) [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_90.ENVCAUSE--ENVCAUSE039__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population, age-standardized) [Stroke, Female]",
+      "dcid": "who/AIR_90.ENVCAUSE--ENVCAUSE114__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population, age-standardized) [Trachea, bronchus, lung cancers, Female]",
+      "dcid": "who/AIR_90.ENVCAUSE--ENVCAUSE068__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) [All Causes, Female]",
       "dcid": "who/AIR_43.GHECAUSES--GHE000__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Chronic obstructive pulmonary disease, Female]",
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) [Chronic obstructive pulmonary disease, Female]",
       "dcid": "who/AIR_43.GHECAUSES--GHE118__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Ischaemic heart disease, Female]",
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) [Chronic obstructive pulmonary disease, Female]",
+      "dcid": "who/AIR_7.ENVCAUSE--ENVCAUSE118__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) [Ischaemic heart disease, Female]",
       "dcid": "who/AIR_43.GHECAUSES--GHE113__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Lower respiratory infections, Female]",
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) [Ischaemic heart disease, Female]",
+      "dcid": "who/AIR_7.ENVCAUSE--ENVCAUSE113__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) [Lower respiratory infections, Female]",
       "dcid": "who/AIR_43.GHECAUSES--GHE039__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Stroke, Female]",
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_7.ENVCAUSE--ENVCAUSE039__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) [Stroke, Female]",
       "dcid": "who/AIR_43.GHECAUSES--GHE114__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years [Trachea, bronchus, lung cancers, Female]",
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) [Stroke, Female]",
+      "dcid": "who/AIR_7.ENVCAUSE--ENVCAUSE114__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) [Trachea, bronchus, lung cancers, Female]",
       "dcid": "who/AIR_43.GHECAUSES--GHE068__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years in children under 15 years [Lower respiratory infections, Female]",
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) [Trachea, bronchus, lung cancers, Female]",
+      "dcid": "who/AIR_7.ENVCAUSE--ENVCAUSE068__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) in children under 15 years [Lower respiratory infections, Female]",
       "dcid": "who/AIR_71.ENVCAUSE--ENVCAUSE039__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of disability-adjusted life years in children under 5 years [Lower respiratory infections, Female]",
+      "name": "Ambient air pollution attributable number of disability-adjusted life years (DALYs) in children under 5 years [Lower respiratory infections, Female]",
       "dcid": "who/AIR_8.ENVCAUSE--ENVCAUSE039__SEX--F"
     },
     {
-      "name": "Ambient air pollution attributable number of years life lost in children under 15 years [Lower respiratory infections, Female]",
+      "name": "Ambient air pollution attributable number of years life lost (YLLs) [Chronic obstructive pulmonary disease, Female]",
+      "dcid": "who/AIR_45.ENVCAUSE--ENVCAUSE118__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of years life lost (YLLs) [Ischaemic heart disease, Female]",
+      "dcid": "who/AIR_45.ENVCAUSE--ENVCAUSE113__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of years life lost (YLLs) [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_45.ENVCAUSE--ENVCAUSE039__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of years life lost (YLLs) [Stroke, Female]",
+      "dcid": "who/AIR_45.ENVCAUSE--ENVCAUSE114__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of years life lost (YLLs) [Trachea, bronchus, lung cancers, Female]",
+      "dcid": "who/AIR_45.ENVCAUSE--ENVCAUSE068__SEX--F"
+    },
+    {
+      "name": "Ambient air pollution attributable number of years life lost (YLLs) in children under 15 years [Lower respiratory infections, Female]",
       "dcid": "who/AIR_73.ENVCAUSE--ENVCAUSE039__SEX--F"
     },
     {
@@ -609,15 +745,15 @@
       "dcid": "Count_Person_Female_BlackOrAfricanAmericanAlone"
     },
     {
-      "name": "Completion rate, by sex, location, wealth quintile and education level [Female, Lower secondary education]",
+      "name": "Completion rate [Female, Lower secondary education]",
       "dcid": "sdg/SE_TOT_CPLR.SEX--F__EDUCATION_LEV--ISCED11_2"
     },
     {
-      "name": "Completion rate, by sex, location, wealth quintile and education level [Female, Primary education]",
+      "name": "Completion rate [Female, Primary education]",
       "dcid": "sdg/SE_TOT_CPLR.SEX--F__EDUCATION_LEV--ISCED11_1"
     },
     {
-      "name": "Completion rate, by sex, location, wealth quintile and education level [Female, Upper secondary education]",
+      "name": "Completion rate [Female, Upper secondary education]",
       "dcid": "sdg/SE_TOT_CPLR.SEX--F__EDUCATION_LEV--ISCED11_3"
     },
     {
@@ -1597,68 +1733,68 @@
       "dcid": "WHO/SDGSUICIDE_Female"
     },
     {
-      "name": "Detected victims of human trafficking for forced labour, servitude and slavery, by age and sex [18 years old and over, Female]",
-      "dcid": "sdg/VC_HTF_DETVFL.AGE--Y_GE18__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for forced labour, servitude and slavery, by age and sex [18 years old and over, Female]",
-      "dcid": "sdg/VC_HTF_DETVFLR.AGE--Y_GE18__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for forced labour, servitude and slavery, by age and sex [under 18 years old, Female]",
-      "dcid": "sdg/VC_HTF_DETVFL.AGE--Y0T17__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for forced labour, servitude and slavery, by age and sex [under 18 years old, Female]",
-      "dcid": "sdg/VC_HTF_DETVFLR.AGE--Y0T17__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for other purposes, by age and sex [18 years old and over, Female]",
-      "dcid": "sdg/VC_HTF_DETVOP.AGE--Y_GE18__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for other purposes, by age and sex [18 years old and over, Female]",
-      "dcid": "sdg/VC_HTF_DETVOPR.AGE--Y_GE18__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for other purposes, by age and sex [under 18 years old, Female]",
-      "dcid": "sdg/VC_HTF_DETVOP.AGE--Y0T17__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for other purposes, by age and sex [under 18 years old, Female]",
-      "dcid": "sdg/VC_HTF_DETVOPR.AGE--Y0T17__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for sexual exploitation, by age and sex [18 years old and over, Female]",
-      "dcid": "sdg/VC_HTF_DETVSX.AGE--Y_GE18__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for sexual exploitation, by age and sex [18 years old and over, Female]",
-      "dcid": "sdg/VC_HTF_DETVSXR.AGE--Y_GE18__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for sexual exploitation, by age and sex [under 18 years old, Female]",
-      "dcid": "sdg/VC_HTF_DETVSX.AGE--Y0T17__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for sexual exploitation, by age and sex [under 18 years old, Female]",
-      "dcid": "sdg/VC_HTF_DETVSXR.AGE--Y0T17__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking, by age and sex [18 years old and over, Female]",
+      "name": "Detected victims of human trafficking [18 years old and over, Female]",
       "dcid": "sdg/VC_HTF_DETV.AGE--Y_GE18__SEX--F"
     },
     {
-      "name": "Detected victims of human trafficking, by age and sex [18 years old and over, Female]",
+      "name": "Detected victims of human trafficking [18 years old and over, Female]",
       "dcid": "sdg/VC_HTF_DETVR.AGE--Y_GE18__SEX--F"
     },
     {
-      "name": "Detected victims of human trafficking, by age and sex [under 18 years old, Female]",
+      "name": "Detected victims of human trafficking [under 18 years old, Female]",
       "dcid": "sdg/VC_HTF_DETV.AGE--Y0T17__SEX--F"
     },
     {
-      "name": "Detected victims of human trafficking, by age and sex [under 18 years old, Female]",
+      "name": "Detected victims of human trafficking [under 18 years old, Female]",
       "dcid": "sdg/VC_HTF_DETVR.AGE--Y0T17__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for forced labour, servitude and slavery [18 years old and over, Female]",
+      "dcid": "sdg/VC_HTF_DETVFL.AGE--Y_GE18__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for forced labour, servitude and slavery [18 years old and over, Female]",
+      "dcid": "sdg/VC_HTF_DETVFLR.AGE--Y_GE18__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for forced labour, servitude and slavery [under 18 years old, Female]",
+      "dcid": "sdg/VC_HTF_DETVFL.AGE--Y0T17__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for forced labour, servitude and slavery [under 18 years old, Female]",
+      "dcid": "sdg/VC_HTF_DETVFLR.AGE--Y0T17__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for other purposes [18 years old and over, Female]",
+      "dcid": "sdg/VC_HTF_DETVOP.AGE--Y_GE18__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for other purposes [18 years old and over, Female]",
+      "dcid": "sdg/VC_HTF_DETVOPR.AGE--Y_GE18__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for other purposes [under 18 years old, Female]",
+      "dcid": "sdg/VC_HTF_DETVOP.AGE--Y0T17__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for other purposes [under 18 years old, Female]",
+      "dcid": "sdg/VC_HTF_DETVOPR.AGE--Y0T17__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for sexual exploitation [18 years old and over, Female]",
+      "dcid": "sdg/VC_HTF_DETVSX.AGE--Y_GE18__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for sexual exploitation [18 years old and over, Female]",
+      "dcid": "sdg/VC_HTF_DETVSXR.AGE--Y_GE18__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for sexual exploitation [under 18 years old, Female]",
+      "dcid": "sdg/VC_HTF_DETVSX.AGE--Y0T17__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for sexual exploitation [under 18 years old, Female]",
+      "dcid": "sdg/VC_HTF_DETVSXR.AGE--Y0T17__SEX--F"
     },
     {
       "name": "Earning Female Population",
@@ -1673,7 +1809,7 @@
       "dcid": "who/LIFE_0000000035.AGE--Y10T14__SEX--F"
     },
     {
-      "name": "Expectation of life at age x [15-19  years, Female]",
+      "name": "Expectation of life at age x [15-19 years, Female]",
       "dcid": "who/LIFE_0000000035.AGE--Y15T19__SEX--F"
     },
     {
@@ -1821,11 +1957,11 @@
       "dcid": "Count_Person_Female_ForeignBorn"
     },
     {
-      "name": "Health worker distribution, by sex and type of occupation [Female, Type of occupation = Medical doctors]",
+      "name": "Health worker distribution [Female, Type of occupation = Medical doctors]",
       "dcid": "sdg/SH_MED_HWRKDIS.SEX--F__OCCUPATION--ISCO08_221"
     },
     {
-      "name": "Health worker distribution, by sex and type of occupation [Female, Type of occupation = Nursing personnel]",
+      "name": "Health worker distribution [Female, Type of occupation = Nursing personnel]",
       "dcid": "sdg/SH_MED_HWRKDIS.SEX--F__OCCUPATION--ISCO08_2221_3221"
     },
     {
@@ -1885,16 +2021,148 @@
       "dcid": "Count_Household_Female_NonInstitutionalized"
     },
     {
+      "name": "Household air pollution attributable deaths [Chronic obstructive pulmonary disease, Female]",
+      "dcid": "who/AIR_11.ENVCAUSE--ENVCAUSE118__SEX--F"
+    },
+    {
+      "name": "Household air pollution attributable deaths [Ischaemic heart disease, Female]",
+      "dcid": "who/AIR_11.ENVCAUSE--ENVCAUSE113__SEX--F"
+    },
+    {
+      "name": "Household air pollution attributable deaths [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_11.ENVCAUSE--ENVCAUSE039__SEX--F"
+    },
+    {
+      "name": "Household air pollution attributable deaths [Stroke, Female]",
+      "dcid": "who/AIR_11.ENVCAUSE--ENVCAUSE114__SEX--F"
+    },
+    {
+      "name": "Household air pollution attributable deaths [Trachea, bronchus, lung cancers, Female]",
+      "dcid": "who/AIR_11.ENVCAUSE--ENVCAUSE068__SEX--F"
+    },
+    {
       "name": "Household air pollution attributable deaths in children under 5 years [Lower respiratory infections, Female]",
       "dcid": "who/AIR_12.ENVCAUSE--ENVCAUSE039__SEX--F"
     },
     {
-      "name": "Household air pollution attributable number of disability-adjusted life years in children under 15 years [Lower respiratory infections, Female]",
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population) [Cataracts, Female]",
+      "dcid": "who/AIR_17.ENVCAUSE--ENVCAUSE104__SEX--F"
+    },
+    {
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population) [Chronic obstructive pulmonary disease, Female]",
+      "dcid": "who/AIR_17.ENVCAUSE--ENVCAUSE118__SEX--F"
+    },
+    {
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population) [Ischaemic heart disease, Female]",
+      "dcid": "who/AIR_17.ENVCAUSE--ENVCAUSE113__SEX--F"
+    },
+    {
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population) [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_17.ENVCAUSE--ENVCAUSE039__SEX--F"
+    },
+    {
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population) [Stroke, Female]",
+      "dcid": "who/AIR_17.ENVCAUSE--ENVCAUSE114__SEX--F"
+    },
+    {
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000 population) [Trachea, bronchus, lung cancers, Female]",
+      "dcid": "who/AIR_17.ENVCAUSE--ENVCAUSE068__SEX--F"
+    },
+    {
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000, age-standardized) [Cataracts, Female]",
+      "dcid": "who/AIR_39.ENVCAUSE--ENVCAUSE104__SEX--F"
+    },
+    {
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000, age-standardized) [Chronic obstructive pulmonary disease, Female]",
+      "dcid": "who/AIR_39.ENVCAUSE--ENVCAUSE118__SEX--F"
+    },
+    {
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000, age-standardized) [Ischaemic heart disease, Female]",
+      "dcid": "who/AIR_39.ENVCAUSE--ENVCAUSE113__SEX--F"
+    },
+    {
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000, age-standardized) [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_39.ENVCAUSE--ENVCAUSE039__SEX--F"
+    },
+    {
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000, age-standardized) [Stroke, Female]",
+      "dcid": "who/AIR_39.ENVCAUSE--ENVCAUSE114__SEX--F"
+    },
+    {
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) (per 100 000, age-standardized) [Trachea, bronchus, lung cancers, Female]",
+      "dcid": "who/AIR_39.ENVCAUSE--ENVCAUSE068__SEX--F"
+    },
+    {
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) [Cataracts, Female]",
+      "dcid": "who/AIR_15.ENVCAUSE--ENVCAUSE104__SEX--F"
+    },
+    {
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) [Chronic obstructive pulmonary disease, Female]",
+      "dcid": "who/AIR_15.ENVCAUSE--ENVCAUSE118__SEX--F"
+    },
+    {
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) [Ischaemic heart disease, Female]",
+      "dcid": "who/AIR_15.ENVCAUSE--ENVCAUSE113__SEX--F"
+    },
+    {
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_15.ENVCAUSE--ENVCAUSE039__SEX--F"
+    },
+    {
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) [Stroke, Female]",
+      "dcid": "who/AIR_15.ENVCAUSE--ENVCAUSE114__SEX--F"
+    },
+    {
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) [Trachea, bronchus, lung cancers, Female]",
+      "dcid": "who/AIR_15.ENVCAUSE--ENVCAUSE068__SEX--F"
+    },
+    {
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) in children under 15 years [Lower respiratory infections, Female]",
       "dcid": "who/AIR_75.ENVCAUSE--ENVCAUSE039__SEX--F"
     },
     {
-      "name": "Household air pollution attributable number of disability-adjusted life years in children under 5 years [Lower respiratory infections, Female]",
+      "name": "Household air pollution attributable number of disability-adjusted life years (DALYs) in children under 5 years [Lower respiratory infections, Female]",
       "dcid": "who/AIR_16.ENVCAUSE--ENVCAUSE039__SEX--F"
+    },
+    {
+      "name": "Household air pollution: Household air pollution attributable death rate (per 100 000 population) [Chronic obstructive pulmonary disease, Female]",
+      "dcid": "who/AIR_51.ENVCAUSE--ENVCAUSE118__SEX--F"
+    },
+    {
+      "name": "Household air pollution: Household air pollution attributable death rate (per 100 000 population) [Ischaemic heart disease, Female]",
+      "dcid": "who/AIR_51.ENVCAUSE--ENVCAUSE113__SEX--F"
+    },
+    {
+      "name": "Household air pollution: Household air pollution attributable death rate (per 100 000 population) [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_51.ENVCAUSE--ENVCAUSE039__SEX--F"
+    },
+    {
+      "name": "Household air pollution: Household air pollution attributable death rate (per 100 000 population) [Stroke, Female]",
+      "dcid": "who/AIR_51.ENVCAUSE--ENVCAUSE114__SEX--F"
+    },
+    {
+      "name": "Household air pollution: Household air pollution attributable death rate (per 100 000 population) [Trachea, bronchus, lung cancers, Female]",
+      "dcid": "who/AIR_51.ENVCAUSE--ENVCAUSE068__SEX--F"
+    },
+    {
+      "name": "Household air pollution: Household air pollution attributable death rate (per 100 000 population, age-standardized) [Chronic obstructive pulmonary disease, Female]",
+      "dcid": "who/AIR_52.ENVCAUSE--ENVCAUSE118__SEX--F"
+    },
+    {
+      "name": "Household air pollution: Household air pollution attributable death rate (per 100 000 population, age-standardized) [Ischaemic heart disease, Female]",
+      "dcid": "who/AIR_52.ENVCAUSE--ENVCAUSE113__SEX--F"
+    },
+    {
+      "name": "Household air pollution: Household air pollution attributable death rate (per 100 000 population, age-standardized) [Lower respiratory infections, Female]",
+      "dcid": "who/AIR_52.ENVCAUSE--ENVCAUSE039__SEX--F"
+    },
+    {
+      "name": "Household air pollution: Household air pollution attributable death rate (per 100 000 population, age-standardized) [Stroke, Female]",
+      "dcid": "who/AIR_52.ENVCAUSE--ENVCAUSE114__SEX--F"
+    },
+    {
+      "name": "Household air pollution: Household air pollution attributable death rate (per 100 000 population, age-standardized) [Trachea, bronchus, lung cancers, Female]",
+      "dcid": "who/AIR_52.ENVCAUSE--ENVCAUSE068__SEX--F"
     },
     {
       "name": "Household air pollution: Household air pollution attributable deaths in children under 15 years [Lower respiratory infections, Female]",
@@ -1917,11 +2185,11 @@
       "dcid": "WHO/NTD_LEPR11"
     },
     {
-      "name": "Mean systolic blood pressure [18+  years, Female]",
+      "name": "Mean systolic blood pressure (age-standardized estimate) [18+ years, Female]",
       "dcid": "who/BP_06.AGE--Y_GE18__SEX--F"
     },
     {
-      "name": "Mean systolic blood pressure [25+ years, Female]",
+      "name": "Mean systolic blood pressure (crude estimate) [25+ years, Female]",
       "dcid": "who/BP_05.AGE--Y_GE25__SEX--F"
     },
     {
@@ -1993,19 +2261,19 @@
       "dcid": "Count_Person_Female_NonWhite"
     },
     {
-      "name": "Number of deaths attributed to non-communicable diseases, by type of disease and sex [Female, Cancer]",
+      "name": "Number of deaths attributed to non-communicable diseases [Female, Cancer]",
       "dcid": "sdg/SH_DTH_NCD.SEX--F__NAME_OF_NON_COMMUNICABLE_DISEASE--NCD_CNCR"
     },
     {
-      "name": "Number of deaths attributed to non-communicable diseases, by type of disease and sex [Female, Cardiovascular disease]",
+      "name": "Number of deaths attributed to non-communicable diseases [Female, Cardiovascular disease]",
       "dcid": "sdg/SH_DTH_NCD.SEX--F__NAME_OF_NON_COMMUNICABLE_DISEASE--NCD_CARDIO"
     },
     {
-      "name": "Number of deaths attributed to non-communicable diseases, by type of disease and sex [Female, Chronic respiratory disease]",
+      "name": "Number of deaths attributed to non-communicable diseases [Female, Chronic respiratory disease]",
       "dcid": "sdg/SH_DTH_NCD.SEX--F__NAME_OF_NON_COMMUNICABLE_DISEASE--NCD_CRESPD"
     },
     {
-      "name": "Number of deaths attributed to non-communicable diseases, by type of disease and sex [Female, Diabetes]",
+      "name": "Number of deaths attributed to non-communicable diseases [Female, Diabetes]",
       "dcid": "sdg/SH_DTH_NCD.SEX--F__NAME_OF_NON_COMMUNICABLE_DISEASE--NCD_DIABTS"
     },
     {
@@ -2013,15 +2281,15 @@
       "dcid": "sdg/AG_PRD_FIESMSN.AGE--Y_GE15__SEX--F"
     },
     {
-      "name": "Number of new HIV infections per 1,000 uninfected population, by sex and age [15 to 24 years old, Female]",
+      "name": "Number of new HIV infections per 1,000 uninfected population [15 to 24 years old, Female]",
       "dcid": "sdg/SH_HIV_INCD.AGE--Y15T24__SEX--F"
     },
     {
-      "name": "Number of new HIV infections per 1,000 uninfected population, by sex and age [15 to 49 years old, Female]",
+      "name": "Number of new HIV infections per 1,000 uninfected population [15 to 49 years old, Female]",
       "dcid": "sdg/SH_HIV_INCD.AGE--Y15T49__SEX--F"
     },
     {
-      "name": "Number of new HIV infections per 1,000 uninfected population, by sex and age [50 years old and over, Female]",
+      "name": "Number of new HIV infections per 1,000 uninfected population [50 years old and over, Female]",
       "dcid": "sdg/SH_HIV_INCD.AGE--Y_GE50__SEX--F"
     },
     {
@@ -2033,7 +2301,7 @@
       "dcid": "who/LIFE_0000000032.AGE--Y10T14__SEX--F"
     },
     {
-      "name": "Number of people dying between ages x and x+n [15-19  years, Female]",
+      "name": "Number of people dying between ages x and x+n [15-19 years, Female]",
       "dcid": "who/LIFE_0000000032.AGE--Y15T19__SEX--F"
     },
     {
@@ -2109,7 +2377,7 @@
       "dcid": "who/LIFE_0000000031.AGE--Y10T14__SEX--F"
     },
     {
-      "name": "Number of people left alive at age x [15-19  years, Female]",
+      "name": "Number of people left alive at age x [15-19 years, Female]",
       "dcid": "who/LIFE_0000000031.AGE--Y15T19__SEX--F"
     },
     {
@@ -2181,27 +2449,27 @@
       "dcid": "sdg/AG_PRD_FIESSN.AGE--Y_GE15__SEX--F"
     },
     {
-      "name": "Number of speakers in parliament, by age and sex, Lower Chamber or Unicameral [46 years old and over, Female]",
+      "name": "Number of speakers in parliament, Lower Chamber or Unicameral [46 years old and over, Female]",
       "dcid": "sdg/SG_DMK_PARLSP_LC.AGE--Y_GE46__SEX--F"
     },
     {
-      "name": "Number of speakers in parliament, by age and sex, Upper Chamber [46 years old and over, Female]",
+      "name": "Number of speakers in parliament, Upper Chamber [46 years old and over, Female]",
       "dcid": "sdg/SG_DMK_PARLSP_UC.AGE--Y_GE46__SEX--F"
     },
     {
-      "name": "Participation rate in formal and non-formal education and training, by sex [15 to 24 years old, Female]",
+      "name": "Participation rate in formal and non-formal education and training [15 to 24 years old, Female]",
       "dcid": "sdg/SE_ADT_EDUCTRN.AGE--Y15T24__SEX--F"
     },
     {
-      "name": "Participation rate in formal and non-formal education and training, by sex [15 to 64 years old, Female]",
+      "name": "Participation rate in formal and non-formal education and training [15 to 64 years old, Female]",
       "dcid": "sdg/SE_ADT_EDUCTRN.AGE--Y15T64__SEX--F"
     },
     {
-      "name": "Participation rate in formal and non-formal education and training, by sex [25 to 54 years old, Female]",
+      "name": "Participation rate in formal and non-formal education and training [25 to 54 years old, Female]",
       "dcid": "sdg/SE_ADT_EDUCTRN.AGE--Y25T54__SEX--F"
     },
     {
-      "name": "Participation rate in formal and non-formal education and training, by sex [55 to 64 years old, Female]",
+      "name": "Participation rate in formal and non-formal education and training [55 to 64 years old, Female]",
       "dcid": "sdg/SE_ADT_EDUCTRN.AGE--Y55T64__SEX--F"
     },
     {
@@ -2213,7 +2481,7 @@
       "dcid": "who/LIFE_0000000034.AGE--Y10T14__SEX--F"
     },
     {
-      "name": "Person-years lived above age x [15-19  years, Female]",
+      "name": "Person-years lived above age x [15-19 years, Female]",
       "dcid": "who/LIFE_0000000034.AGE--Y15T19__SEX--F"
     },
     {
@@ -2289,7 +2557,7 @@
       "dcid": "who/LIFE_0000000033.AGE--Y10T14__SEX--F"
     },
     {
-      "name": "Person-years lived between ages x and x+n [15-19  years, Female]",
+      "name": "Person-years lived between ages x and x+n [15-19 years, Female]",
       "dcid": "who/LIFE_0000000033.AGE--Y15T19__SEX--F"
     },
     {
@@ -2357,12 +2625,12 @@
       "dcid": "who/LIFE_0000000033.AGE--M0T11__SEX--F"
     },
     {
-      "name": "Population pushed further below a relative poverty line by household health expenditures - 60% of median daily per capita consumption or income [Head of the household, Female]",
-      "dcid": "who/FINPROTECTION_IMP_PRELPL_POP.POP_TYPE--POP_TYPE_HOUSEHOLD_HEAD__SEX--F"
+      "name": "Population pushed further below a relative poverty line by household health expenditures - 60% of median daily per capita consumption or income (%, national, rural, urban) [Head of the household, Female]",
+      "dcid": "who/FINPROTECTION_IMP_PRELPL_POP.POP_TYPE--HOUSEHOLD_HEAD__SEX--F"
     },
     {
-      "name": "Population with household spending on health greater than 10% of total household budget [Head of the household, Female]",
-      "dcid": "who/FINPROTECTION_CATA_TOT_10_POP.POP_TYPE--POP_TYPE_HOUSEHOLD_HEAD__SEX--F"
+      "name": "Population with household spending on health greater than 10% of total household budget (SDG 3.8.2, reported data) (%) [Head of the household, Female]",
+      "dcid": "who/FINPROTECTION_CATA_TOT_10_POP.POP_TYPE--HOUSEHOLD_HEAD__SEX--F"
     },
     {
       "name": "Population: 0 - 4 Years, Female",
@@ -3313,7 +3581,7 @@
       "dcid": "who/LIFE_0000000030.AGE--Y10T14__SEX--F"
     },
     {
-      "name": "Probability of dying between ages x and x+n [15-19  years, Female]",
+      "name": "Probability of dying between ages x and x+n [15-19 years, Female]",
       "dcid": "who/LIFE_0000000030.AGE--Y15T19__SEX--F"
     },
     {
@@ -3381,120 +3649,120 @@
       "dcid": "who/LIFE_0000000030.AGE--M0T11__SEX--F"
     },
     {
-      "name": "Proportion of adults with an account at a financial institution or mobile-money-service provider, by sex [15 years old and over, Female]",
+      "name": "Proportion of adults with an account at a financial institution or mobile-money-service provider [15 years old and over, Female]",
       "dcid": "sdg/FB_BNK_ACCSS.AGE--Y_GE15__SEX--F"
     },
     {
-      "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months, by age [15 to 49 years old, Female]",
+      "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months [15 to 49 years old, Female]",
       "dcid": "sdg/VC_VAW_MARR.AGE--Y15T49__SEX--F"
     },
     {
-      "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months, by age [15 years old and over, Female]",
+      "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months [15 years old and over, Female]",
       "dcid": "sdg/VC_VAW_MARR.AGE--Y_GE15__SEX--F"
     },
     {
-      "name": "Proportion of teachers with the minimum required qualifications, by education level and sex [Female, Lower secondary education]",
+      "name": "Proportion of teachers with the minimum required qualifications [Female, Lower secondary education]",
       "dcid": "sdg/SE_TRA_GRDL.SEX--F__EDUCATION_LEV--ISCED11_2"
     },
     {
-      "name": "Proportion of teachers with the minimum required qualifications, by education level and sex [Female, Pre-primary education]",
+      "name": "Proportion of teachers with the minimum required qualifications [Female, Pre-primary education]",
       "dcid": "sdg/SE_TRA_GRDL.SEX--F__EDUCATION_LEV--ISCED11_02"
     },
     {
-      "name": "Proportion of teachers with the minimum required qualifications, by education level and sex [Female, Primary education]",
+      "name": "Proportion of teachers with the minimum required qualifications [Female, Primary education]",
       "dcid": "sdg/SE_TRA_GRDL.SEX--F__EDUCATION_LEV--ISCED11_1"
     },
     {
-      "name": "Proportion of teachers with the minimum required qualifications, by education level and sex [Female, Secondary education]",
+      "name": "Proportion of teachers with the minimum required qualifications [Female, Secondary education]",
       "dcid": "sdg/SE_TRA_GRDL.SEX--F__EDUCATION_LEV--AGG_2_3"
     },
     {
-      "name": "Proportion of teachers with the minimum required qualifications, by education level and sex [Female, Upper secondary education]",
+      "name": "Proportion of teachers with the minimum required qualifications [Female, Upper secondary education]",
       "dcid": "sdg/SE_TRA_GRDL.SEX--F__EDUCATION_LEV--ISCED11_3"
     },
     {
-      "name": "Proportion of time spent on unpaid care work, by sex, age and location [15 to 24 years old, Female]",
+      "name": "Proportion of time spent on unpaid care work [15 to 24 years old, Female]",
       "dcid": "sdg/SL_DOM_TSPDCW.AGE--Y15T24__SEX--F"
     },
     {
-      "name": "Proportion of time spent on unpaid care work, by sex, age and location [15 years old and over, Female]",
+      "name": "Proportion of time spent on unpaid care work [15 years old and over, Female]",
       "dcid": "sdg/SL_DOM_TSPDCW.AGE--Y_GE15__SEX--F"
     },
     {
-      "name": "Proportion of time spent on unpaid care work, by sex, age and location [25 to 34 years old, Female]",
+      "name": "Proportion of time spent on unpaid care work [25 to 34 years old, Female]",
       "dcid": "sdg/SL_DOM_TSPDCW.AGE--Y25T34__SEX--F"
     },
     {
-      "name": "Proportion of time spent on unpaid care work, by sex, age and location [35 to 44 years old, Female]",
+      "name": "Proportion of time spent on unpaid care work [35 to 44 years old, Female]",
       "dcid": "sdg/SL_DOM_TSPDCW.AGE--Y35T44__SEX--F"
     },
     {
-      "name": "Proportion of time spent on unpaid care work, by sex, age and location [45 to 54 years old, Female]",
+      "name": "Proportion of time spent on unpaid care work [45 to 54 years old, Female]",
       "dcid": "sdg/SL_DOM_TSPDCW.AGE--Y45T54__SEX--F"
     },
     {
-      "name": "Proportion of time spent on unpaid care work, by sex, age and location [55 to 64 years old, Female]",
+      "name": "Proportion of time spent on unpaid care work [55 to 64 years old, Female]",
       "dcid": "sdg/SL_DOM_TSPDCW.AGE--Y55T64__SEX--F"
     },
     {
-      "name": "Proportion of time spent on unpaid care work, by sex, age and location [65 years old and over, Female]",
+      "name": "Proportion of time spent on unpaid care work [65 years old and over, Female]",
       "dcid": "sdg/SL_DOM_TSPDCW.AGE--Y_GE65__SEX--F"
     },
     {
-      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location [15 to 24 years old, Female]",
-      "dcid": "sdg/SL_DOM_TSPD.AGE--Y15T24__SEX--F"
-    },
-    {
-      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location [15 years old and over, Female]",
-      "dcid": "sdg/SL_DOM_TSPD.AGE--Y_GE15__SEX--F"
-    },
-    {
-      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location [25 to 34 years old, Female]",
-      "dcid": "sdg/SL_DOM_TSPD.AGE--Y25T34__SEX--F"
-    },
-    {
-      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location [35 to 44 years old, Female]",
-      "dcid": "sdg/SL_DOM_TSPD.AGE--Y35T44__SEX--F"
-    },
-    {
-      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location [45 to 54 years old, Female]",
-      "dcid": "sdg/SL_DOM_TSPD.AGE--Y45T54__SEX--F"
-    },
-    {
-      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location [55 to 64 years old, Female]",
-      "dcid": "sdg/SL_DOM_TSPD.AGE--Y55T64__SEX--F"
-    },
-    {
-      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location [65 years old and over, Female]",
-      "dcid": "sdg/SL_DOM_TSPD.AGE--Y_GE65__SEX--F"
-    },
-    {
-      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location [15 to 24 years old, Female]",
+      "name": "Proportion of time spent on unpaid domestic chores [15 to 24 years old, Female]",
       "dcid": "sdg/SL_DOM_TSPDDC.AGE--Y15T24__SEX--F"
     },
     {
-      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location [15 years old and over, Female]",
+      "name": "Proportion of time spent on unpaid domestic chores [15 years old and over, Female]",
       "dcid": "sdg/SL_DOM_TSPDDC.AGE--Y_GE15__SEX--F"
     },
     {
-      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location [25 to 34 years old, Female]",
+      "name": "Proportion of time spent on unpaid domestic chores [25 to 34 years old, Female]",
       "dcid": "sdg/SL_DOM_TSPDDC.AGE--Y25T34__SEX--F"
     },
     {
-      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location [35 to 44 years old, Female]",
+      "name": "Proportion of time spent on unpaid domestic chores [35 to 44 years old, Female]",
       "dcid": "sdg/SL_DOM_TSPDDC.AGE--Y35T44__SEX--F"
     },
     {
-      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location [45 to 54 years old, Female]",
+      "name": "Proportion of time spent on unpaid domestic chores [45 to 54 years old, Female]",
       "dcid": "sdg/SL_DOM_TSPDDC.AGE--Y45T54__SEX--F"
     },
     {
-      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location [55 to 64 years old, Female]",
+      "name": "Proportion of time spent on unpaid domestic chores [55 to 64 years old, Female]",
       "dcid": "sdg/SL_DOM_TSPDDC.AGE--Y55T64__SEX--F"
     },
     {
-      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location [65 years old and over, Female]",
+      "name": "Proportion of time spent on unpaid domestic chores [65 years old and over, Female]",
       "dcid": "sdg/SL_DOM_TSPDDC.AGE--Y_GE65__SEX--F"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work [15 to 24 years old, Female]",
+      "dcid": "sdg/SL_DOM_TSPD.AGE--Y15T24__SEX--F"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work [15 years old and over, Female]",
+      "dcid": "sdg/SL_DOM_TSPD.AGE--Y_GE15__SEX--F"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work [25 to 34 years old, Female]",
+      "dcid": "sdg/SL_DOM_TSPD.AGE--Y25T34__SEX--F"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work [35 to 44 years old, Female]",
+      "dcid": "sdg/SL_DOM_TSPD.AGE--Y35T44__SEX--F"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work [45 to 54 years old, Female]",
+      "dcid": "sdg/SL_DOM_TSPD.AGE--Y45T54__SEX--F"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work [55 to 64 years old, Female]",
+      "dcid": "sdg/SL_DOM_TSPD.AGE--Y55T64__SEX--F"
+    },
+    {
+      "name": "Proportion of time spent on unpaid domestic chores and care work [65 years old and over, Female]",
+      "dcid": "sdg/SL_DOM_TSPD.AGE--Y_GE65__SEX--F"
     },
     {
       "name": "Proportion of women aged 15-49 years with anaemia [15 to 49 years old, Female]",
@@ -3513,27 +3781,31 @@
       "dcid": "sdg/SH_FPL_MTMM.AGE--Y15T49__SEX--F"
     },
     {
-      "name": "Proportion of youth not in education, employment or training, by sex and age - 13th ICLS [15 to 24 years old, Female]",
+      "name": "Proportion of youth not in education, employment or training - 13th ICLS [15 to 24 years old, Female]",
       "dcid": "sdg/SL_TLF_NEET.AGE--Y15T24__SEX--F"
     },
     {
-      "name": "Proportion of youth not in education, employment or training, by sex and age - 19th ICLS [15 to 24 years old, Female]",
+      "name": "Proportion of youth not in education, employment or training - 19th ICLS [15 to 24 years old, Female]",
       "dcid": "sdg/SL_TLF_NEET_19ICLS.AGE--Y15T24__SEX--F"
     },
     {
-      "name": "Raised blood pressure [18+  years, Female]",
+      "name": "Raised blood pressure (SBP\u003e=140 OR DBP\u003e=90) (age-standardized estimate) [18+ years, Female]",
+      "dcid": "who/BP_04.AGE--Y_GE18__SEX--F"
+    },
+    {
+      "name": "Raised blood pressure (SBP\u003e=140 OR DBP\u003e=90) (crude estimate) [18+ years, Female]",
       "dcid": "who/BP_03.AGE--Y_GE18__SEX--F"
     },
     {
-      "name": "Raised blood pressure [18+  years, Female]",
-      "dcid": "who/BP_04.AGE--Y_GE18__SEX--F"
+      "name": "Total number of deaths attributed to non-communicable diseases (NCD) (in thousands) [Noncommunicable diseases, Female]",
+      "dcid": "who/NCD_DTH_TOT.GHECAUSES--GHE060__SEX--F"
     },
     {
       "name": "Under-five deaths [under 5 years old, Female]",
       "dcid": "sdg/SH_DYN_MORTN.AGE--Y0T4__SEX--F"
     },
     {
-      "name": "Under-five mortality rate, by sex [under 5 years old, Female]",
+      "name": "Under-five mortality rate [under 5 years old, Female]",
       "dcid": "sdg/SH_DYN_MORT.AGE--Y0T4__SEX--F"
     },
     {
@@ -3545,43 +3817,43 @@
       "dcid": "UnemploymentRate_Person_Upto25Years_Female"
     },
     {
-      "name": "Unemployment rate, by sex and age - 13th ICLS [15 to 24 years old, Female]",
+      "name": "Unemployment rate - 13th ICLS [15 to 24 years old, Female]",
       "dcid": "sdg/SL_TLF_UEM.AGE--Y15T24__SEX--F"
     },
     {
-      "name": "Unemployment rate, by sex and age - 13th ICLS [15 years old and over, Female]",
+      "name": "Unemployment rate - 13th ICLS [15 years old and over, Female]",
       "dcid": "sdg/SL_TLF_UEM.AGE--Y_GE15__SEX--F"
     },
     {
-      "name": "Unemployment rate, by sex and age - 13th ICLS [25 years old and over, Female]",
+      "name": "Unemployment rate - 13th ICLS [25 years old and over, Female]",
       "dcid": "sdg/SL_TLF_UEM.AGE--Y_GE25__SEX--F"
     },
     {
-      "name": "Unemployment rate, by sex and age - 19th ICLS [15 to 24 years old, Female]",
-      "dcid": "sdg/SL_TLF_UEM_19ICLS.AGE--Y15T24__SEX--F"
-    },
-    {
-      "name": "Unemployment rate, by sex and age - 19th ICLS [15 years old and over, Female]",
-      "dcid": "sdg/SL_TLF_UEM_19ICLS.AGE--Y_GE15__SEX--F"
-    },
-    {
-      "name": "Unemployment rate, by sex and age - 19th ICLS [25 years old and over, Female]",
-      "dcid": "sdg/SL_TLF_UEM_19ICLS.AGE--Y_GE25__SEX--F"
-    },
-    {
-      "name": "Unemployment rate, by sex and disability - 13th ICLS [Female, Disability status = Persons with disability]",
+      "name": "Unemployment rate - 13th ICLS [Female, Disability status = Persons with disability]",
       "dcid": "sdg/SL_TLF_UEMDIS.SEX--F__DISABILITY_STATUS--PD"
     },
     {
-      "name": "Unemployment rate, by sex and disability - 13th ICLS [Female, Disability status = Persons without disability]",
+      "name": "Unemployment rate - 13th ICLS [Female, Disability status = Persons without disability]",
       "dcid": "sdg/SL_TLF_UEMDIS.SEX--F__DISABILITY_STATUS--PWD"
     },
     {
-      "name": "Unemployment rate, by sex and disability - 19th ICLS [Female, Disability status = Persons with disability]",
+      "name": "Unemployment rate - 19th ICLS [15 to 24 years old, Female]",
+      "dcid": "sdg/SL_TLF_UEM_19ICLS.AGE--Y15T24__SEX--F"
+    },
+    {
+      "name": "Unemployment rate - 19th ICLS [15 years old and over, Female]",
+      "dcid": "sdg/SL_TLF_UEM_19ICLS.AGE--Y_GE15__SEX--F"
+    },
+    {
+      "name": "Unemployment rate - 19th ICLS [25 years old and over, Female]",
+      "dcid": "sdg/SL_TLF_UEM_19ICLS.AGE--Y_GE25__SEX--F"
+    },
+    {
+      "name": "Unemployment rate - 19th ICLS [Female, Disability status = Persons with disability]",
       "dcid": "sdg/SL_TLF_UEMDIS_19ICLS.SEX--F__DISABILITY_STATUS--PD"
     },
     {
-      "name": "Unemployment rate, by sex and disability - 19th ICLS [Female, Disability status = Persons without disability]",
+      "name": "Unemployment rate - 19th ICLS [Female, Disability status = Persons without disability]",
       "dcid": "sdg/SL_TLF_UEMDIS_19ICLS.SEX--F__DISABILITY_STATUS--PWD"
     },
     {
@@ -3589,7 +3861,7 @@
       "dcid": "Count_Person_Female_WhiteAloneNotHispanicOrLatino"
     },
     {
-      "name": "Years life lost attributable to ambient air pollution [Lower respiratory infections, Female]",
+      "name": "Years life lost (YLLs) attributable to ambient air pollution (age-standardized) [Lower respiratory infections, Female]",
       "dcid": "who/AIR_46.ENVCAUSE--ENVCAUSE039__SEX--F"
     }
   ],
