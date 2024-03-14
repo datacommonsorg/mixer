@@ -133,7 +133,7 @@
       "dcid": "who/itnwm"
     },
     {
-      "name": "Share of women among owners or rights-bearers of agricultural land, by type of tenure",
+      "name": "Share of women among owners or rights-bearers of agricultural land",
       "dcid": "sdg/SP_GNP_WNOWNS"
     },
     {
@@ -705,19 +705,19 @@
       "dcid": "sdg/SG_GEN_PARL.SEX--F"
     },
     {
-      "name": "Proportion of women in managerial positions - 13th ICLS [Female]",
+      "name": "Proportion of women in managerial positions - 13th ICLS - 13th ICLS [Female]",
       "dcid": "sdg/IC_GEN_MGTL.SEX--F"
     },
     {
-      "name": "Proportion of women in managerial positions - 19th ICLS [Female]",
+      "name": "Proportion of women in managerial positions - 19th ICLS - 19th ICLS [Female]",
       "dcid": "sdg/IC_GEN_MGTL_19ICLS.SEX--F"
     },
     {
-      "name": "Proportion of women in senior and middle management positions - 13th ICLS [Female]",
+      "name": "Proportion of women in senior and middle management positions - 13th ICLS - 13th ICLS [Female]",
       "dcid": "sdg/IC_GEN_MGTN.SEX--F"
     },
     {
-      "name": "Proportion of women in senior and middle management positions - 19th ICLS [Female]",
+      "name": "Proportion of women in senior and middle management positions - 19th ICLS - 19th ICLS [Female]",
       "dcid": "sdg/IC_GEN_MGTN_19ICLS.SEX--F"
     },
     {
@@ -1237,19 +1237,19 @@
       "dcid": "WHO/itnwm_20To49Years"
     },
     {
-      "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months, by age [15 to 49 years old, Female]",
+      "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months [15 to 49 years old, Female]",
       "dcid": "sdg/VC_VAW_MARR.AGE--Y15T49__SEX--F"
     },
     {
-      "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months, by age [15 years old and over, Female]",
+      "name": "Proportion of ever-partnered women and girls subjected to physical and/or sexual violence by a current or former intimate partner in the previous 12 months [15 years old and over, Female]",
       "dcid": "sdg/VC_VAW_MARR.AGE--Y_GE15__SEX--F"
     },
     {
-      "name": "Proportion of girls and women aged 15-49 years who have undergone female genital mutilation, by age [15 to 19 years old, Female]",
+      "name": "Proportion of girls and women aged 15-49 years who have undergone female genital mutilation [15 to 19 years old, Female]",
       "dcid": "sdg/SH_STA_FGMS.AGE--Y15T19__SEX--F"
     },
     {
-      "name": "Proportion of girls and women aged 15-49 years who have undergone female genital mutilation, by age [15 to 49 years old, Female]",
+      "name": "Proportion of girls and women aged 15-49 years who have undergone female genital mutilation [15 to 49 years old, Female]",
       "dcid": "sdg/SH_STA_FGMS.AGE--Y15T49__SEX--F"
     },
     {

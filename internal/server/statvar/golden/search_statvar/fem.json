@@ -17,11 +17,11 @@
       "dcid": "FemaSocialVulnerability_NaturalHazardImpact"
     },
     {
-      "name": "Ratio for female members of parliaments, Lower Chamber or Unicameral",
+      "name": "Ratio for female members of parliaments, Lower Chamber or Unicameral, Lower Chamber or Unicameral",
       "dcid": "sdg/SG_DMK_PARLMP_LC"
     },
     {
-      "name": "Ratio for female members of parliaments, Upper Chamber",
+      "name": "Ratio for female members of parliaments, Upper Chamber, Upper Chamber",
       "dcid": "sdg/SG_DMK_PARLMP_UC"
     },
     {
@@ -101,7 +101,7 @@
       "dcid": "who/carep.SEX--F"
     },
     {
-      "name": "Conflict-related total death rate, by sex, age and cause of death [Female]",
+      "name": "Conflict-related total death rate [Female]",
       "dcid": "sdg/VC_DTH_TOTPT.SEX--F"
     },
     {
@@ -133,15 +133,15 @@
       "dcid": "who/vdpt.SEX--F"
     },
     {
-      "name": "Death rate due to road traffic injuries, by sex [Female]",
+      "name": "Death rate due to road traffic injuries [Female]",
       "dcid": "sdg/SH_STA_TRAF.SEX--F"
     },
     {
-      "name": "Detected victims of human trafficking, by age and sex [Female]",
+      "name": "Detected victims of human trafficking [Female]",
       "dcid": "sdg/VC_HTF_DETV.SEX--F"
     },
     {
-      "name": "Detected victims of human trafficking, by age and sex [Female]",
+      "name": "Detected victims of human trafficking [Female]",
       "dcid": "sdg/VC_HTF_DETVR.SEX--F"
     },
     {
@@ -245,7 +245,7 @@
       "dcid": "FemaNaturalHazardRiskIndex_NaturalHazardImpact_WinterWeatherEvent"
     },
     {
-      "name": "Fatal occupational injuries among employees, by sex and migrant status [Female]",
+      "name": "Fatal occupational injuries among employees [Female]",
       "dcid": "sdg/SL_EMP_FTLINJUR.SEX--F"
     },
     {
@@ -349,7 +349,7 @@
       "dcid": "who/WHOSIS_000016.SEX--F"
     },
     {
-      "name": "Mortality rate attributed to unintentional poisonings, by sex [Female]",
+      "name": "Mortality rate attributed to unintentional poisonings [Female]",
       "dcid": "sdg/SH_STA_POISN.SEX--F"
     },
     {
@@ -365,7 +365,7 @@
       "dcid": "who/nmr.SEX--F"
     },
     {
-      "name": "Non-fatal occupational injuries among employees, by sex and migrant status [Female]",
+      "name": "Non-fatal occupational injuries among employees [Female]",
       "dcid": "sdg/SL_EMP_INJUR.SEX--F"
     },
     {
@@ -377,7 +377,7 @@
       "dcid": "sdg/VC_VAW_MTUHRA.SEX--F"
     },
     {
-      "name": "Number of conflict-related deaths, by sex, age and cause of death [Female]",
+      "name": "Number of conflict-related deaths [Female]",
       "dcid": "sdg/VC_DTH_TOCVN.SEX--F"
     },
     {
@@ -389,7 +389,7 @@
       "dcid": "who/CM_04.SEX--F"
     },
     {
-      "name": "Number of deaths attributed to suicide, by sex [Female]",
+      "name": "Number of deaths attributed to suicide [Female]",
       "dcid": "sdg/SH_STA_SCIDEN.SEX--F"
     },
     {
@@ -433,7 +433,7 @@
       "dcid": "who/HIV_0000000026.SEX--F"
     },
     {
-      "name": "Number of new HIV infections per 1,000 uninfected population, by sex and age [Female]",
+      "name": "Number of new HIV infections per 1,000 uninfected population [Female]",
       "dcid": "sdg/SH_HIV_INCD.SEX--F"
     },
     {
@@ -441,15 +441,15 @@
       "dcid": "sdg/SG_GEN_PARLN.SEX--F"
     },
     {
-      "name": "Number of speakers in parliament, by age and sex, Lower Chamber or Unicameral [Female]",
+      "name": "Number of speakers in parliament, Lower Chamber or Unicameral [Female]",
       "dcid": "sdg/SG_DMK_PARLSP_LC.SEX--F"
     },
     {
-      "name": "Number of speakers in parliament, by age and sex, Upper Chamber [Female]",
+      "name": "Number of speakers in parliament, Upper Chamber [Female]",
       "dcid": "sdg/SG_DMK_PARLSP_UC.SEX--F"
     },
     {
-      "name": "Number of total conflict-related deaths, by sex, age and cause of death [Female]",
+      "name": "Number of total conflict-related deaths [Female]",
       "dcid": "sdg/VC_DTH_TOTN.SEX--F"
     },
     {
@@ -457,19 +457,19 @@
       "dcid": "who/CM_01.SEX--F"
     },
     {
-      "name": "Number of victims of intentional homicide per 100K population, by sex [Female]",
-      "dcid": "sdg/VC_IHR_PSRC.SEX--F"
-    },
-    {
-      "name": "Number of victims of intentional homicide, by sex [Female]",
+      "name": "Number of victims of intentional homicide [Female]",
       "dcid": "sdg/VC_IHR_PSRCN.SEX--F"
     },
     {
-      "name": "Overweight prevalence in children aged \u003cfive years (%) [Female]",
+      "name": "Number of victims of intentional homicide per 100K population [Female]",
+      "dcid": "sdg/VC_IHR_PSRC.SEX--F"
+    },
+    {
+      "name": "Overweight prevalence in children aged \u003c five years (%) [Female]",
       "dcid": "who/overwgt5.SEX--F"
     },
     {
-      "name": "Participation rate in organized learning, by sex [Female]",
+      "name": "Participation rate in organized learning [Female]",
       "dcid": "sdg/SE_PRE_PARTN.SEX--F"
     },
     {
@@ -481,15 +481,15 @@
       "dcid": "who/bfearly.SEX--F"
     },
     {
-      "name": "Police reporting rate for physical assault, by sex [Female]",
+      "name": "Police reporting rate for physical assault [Female]",
       "dcid": "sdg/VC_PRR_PHYV.SEX--F"
     },
     {
-      "name": "Police reporting rate for robbery, by sex [Female]",
+      "name": "Police reporting rate for robbery [Female]",
       "dcid": "sdg/VC_PRR_ROBB.SEX--F"
     },
     {
-      "name": "Police reporting rate for sexual assault, by sex [Female]",
+      "name": "Police reporting rate for sexual assault [Female]",
       "dcid": "sdg/VC_PRR_SEXV.SEX--F"
     },
     {
@@ -585,7 +585,7 @@
       "dcid": "who/Adult_daily_tob_use.SEX--F"
     },
     {
-      "name": "Prevalence rate of bribery, by sex [Female]",
+      "name": "Prevalence rate of bribery [Female]",
       "dcid": "sdg/IU_COR_BRIB.SEX--F"
     },
     {
@@ -601,7 +601,7 @@
       "dcid": "who/itnch.SEX--F"
     },
     {
-      "name": "Proportion of children/households receiving child/family cash benefit, by sex [Female]",
+      "name": "Proportion of children/households receiving child/family cash benefit [Female]",
       "dcid": "sdg/SI_COV_CHLD.SEX--F"
     },
     {
@@ -609,7 +609,7 @@
       "dcid": "sdg/SG_GEN_LOCGELS.SEX--F"
     },
     {
-      "name": "Proportion of employed population covered in the event of work injury, by sex [Female]",
+      "name": "Proportion of employed population covered in the event of work injury [Female]",
       "dcid": "sdg/SI_COV_WKINJRY.SEX--F"
     },
     {
@@ -617,15 +617,15 @@
       "dcid": "sdg/IT_USE_ii99.SEX--F"
     },
     {
-      "name": "Proportion of individuals who own a mobile telephone, by sex [Female]",
+      "name": "Proportion of individuals who own a mobile telephone [Female]",
       "dcid": "sdg/IT_MOB_OWN.SEX--F"
     },
     {
-      "name": "Proportion of informal employment, by sector and sex - 13th ICLS [Female]",
+      "name": "Proportion of informal employment - 13th ICLS [Female]",
       "dcid": "sdg/SL_ISV_IFEM.SEX--F"
     },
     {
-      "name": "Proportion of informal employment, by sector and sex - 19th ICLS [Female]",
+      "name": "Proportion of informal employment - 19th ICLS [Female]",
       "dcid": "sdg/SL_ISV_IFEM_19ICLS.SEX--F"
     },
     {
@@ -633,11 +633,11 @@
       "dcid": "sdg/SI_COV_MATNL.SEX--F"
     },
     {
-      "name": "Proportion of people with legally recognized documentation of their rights to land out of total adult population, by sex [Female]",
+      "name": "Proportion of people with legally recognized documentation of their rights to land out of total adult population [Female]",
       "dcid": "sdg/SP_LGL_LNDDOC.SEX--F"
     },
     {
-      "name": "Proportion of people with secure tenure rights to land out of total adult population, by sex [Female]",
+      "name": "Proportion of people with secure tenure rights to land out of total adult population [Female]",
       "dcid": "sdg/SP_LGL_LNDSTR.SEX--F"
     },
     {
@@ -645,11 +645,11 @@
       "dcid": "sdg/VC_VOH_SXPH.SEX--F"
     },
     {
-      "name": "Proportion of poor population receiving social assistance cash benefit, by sex [Female]",
+      "name": "Proportion of poor population receiving social assistance cash benefit [Female]",
       "dcid": "sdg/SI_COV_POOR.SEX--F"
     },
     {
-      "name": "Proportion of population above statutory pensionable age receiving a pension, by sex [Female]",
+      "name": "Proportion of population above statutory pensionable age receiving a pension [Female]",
       "dcid": "sdg/SI_COV_PENSN.SEX--F"
     },
     {
@@ -657,7 +657,7 @@
       "dcid": "sdg/SI_POV_DAY1.SEX--F"
     },
     {
-      "name": "Proportion of population covered by at least one social protection benefit, by sex [Female]",
+      "name": "Proportion of population covered by at least one social protection benefit [Female]",
       "dcid": "sdg/SI_COV_BENFTS.SEX--F"
     },
     {
@@ -665,19 +665,19 @@
       "dcid": "sdg/SD_MDP_MUHC.SEX--F"
     },
     {
-      "name": "Proportion of population reporting having felt discriminated against, by grounds of discrimination, sex and disability [Female]",
+      "name": "Proportion of population reporting having felt discriminated against [Female]",
       "dcid": "sdg/VC_VOV_GDSD.SEX--F"
     },
     {
-      "name": "Proportion of population subjected to physical violence in the previous 12 months, by sex [Female]",
+      "name": "Proportion of population subjected to physical violence in the previous 12 months [Female]",
       "dcid": "sdg/VC_VOV_PHYL.SEX--F"
     },
     {
-      "name": "Proportion of population subjected to robbery in the previous 12 months, by sex [Female]",
+      "name": "Proportion of population subjected to robbery in the previous 12 months [Female]",
       "dcid": "sdg/VC_VOV_ROBB.SEX--F"
     },
     {
-      "name": "Proportion of population subjected to sexual violence in the previous 12 months, by sex [Female]",
+      "name": "Proportion of population subjected to sexual violence in the previous 12 months [Female]",
       "dcid": "sdg/VC_VOV_SEXL.SEX--F"
     },
     {
@@ -713,7 +713,7 @@
       "dcid": "sdg/SP_PSR_OSATIS_SEC.SEX--F"
     },
     {
-      "name": "Proportion of population with severe disabilities receiving disability cash benefit, by sex [Female]",
+      "name": "Proportion of population with severe disabilities receiving disability cash benefit [Female]",
       "dcid": "sdg/SI_COV_DISAB.SEX--F"
     },
     {
@@ -725,47 +725,47 @@
       "dcid": "sdg/SP_DISP_RESOL.SEX--F"
     },
     {
-      "name": "Proportion of time spent on unpaid care work, by sex, age and location [Female]",
+      "name": "Proportion of time spent on unpaid care work [Female]",
       "dcid": "sdg/SL_DOM_TSPDCW.SEX--F"
     },
     {
-      "name": "Proportion of time spent on unpaid domestic chores and care work, by sex, age and location [Female]",
-      "dcid": "sdg/SL_DOM_TSPD.SEX--F"
-    },
-    {
-      "name": "Proportion of time spent on unpaid domestic chores, by sex, age and location [Female]",
+      "name": "Proportion of time spent on unpaid domestic chores [Female]",
       "dcid": "sdg/SL_DOM_TSPDDC.SEX--F"
     },
     {
-      "name": "Proportion of total agricultural population with ownership or secure rights over agricultural land, by sex [Female]",
+      "name": "Proportion of time spent on unpaid domestic chores and care work [Female]",
+      "dcid": "sdg/SL_DOM_TSPD.SEX--F"
+    },
+    {
+      "name": "Proportion of total agricultural population with ownership or secure rights over agricultural land [Female]",
       "dcid": "sdg/SP_LGL_LNDAGSEC.SEX--F"
     },
     {
-      "name": "Proportion of unemployed persons receiving unemployment cash benefit, by sex [Female]",
+      "name": "Proportion of unemployed persons receiving unemployment cash benefit [Female]",
       "dcid": "sdg/SI_COV_UEMP.SEX--F"
     },
     {
-      "name": "Proportion of vulnerable population receiving social assistance cash benefit, by sex [Female]",
+      "name": "Proportion of vulnerable population receiving social assistance cash benefit [Female]",
       "dcid": "sdg/SI_COV_VULN.SEX--F"
     },
     {
-      "name": "Proportion of women in managerial positions - 13th ICLS [Female]",
+      "name": "Proportion of women in managerial positions - 13th ICLS - 13th ICLS [Female]",
       "dcid": "sdg/IC_GEN_MGTL.SEX--F"
     },
     {
-      "name": "Proportion of women in managerial positions - 19th ICLS [Female]",
+      "name": "Proportion of women in managerial positions - 19th ICLS - 19th ICLS [Female]",
       "dcid": "sdg/IC_GEN_MGTL_19ICLS.SEX--F"
     },
     {
-      "name": "Proportion of women in senior and middle management positions - 13th ICLS [Female]",
+      "name": "Proportion of women in senior and middle management positions - 13th ICLS - 13th ICLS [Female]",
       "dcid": "sdg/IC_GEN_MGTN.SEX--F"
     },
     {
-      "name": "Proportion of women in senior and middle management positions - 19th ICLS [Female]",
+      "name": "Proportion of women in senior and middle management positions - 19th ICLS - 19th ICLS [Female]",
       "dcid": "sdg/IC_GEN_MGTN_19ICLS.SEX--F"
     },
     {
-      "name": "Suicide mortality rate, by sex [Female]",
+      "name": "Suicide mortality rate [Female]",
       "dcid": "sdg/SH_STA_SCIDE.SEX--F"
     },
     {
@@ -777,11 +777,11 @@
       "dcid": "UnemploymentRate_Person_Female"
     },
     {
-      "name": "Unemployment rate, by sex and disability - 13th ICLS [Female]",
+      "name": "Unemployment rate - 13th ICLS [Female]",
       "dcid": "sdg/SL_TLF_UEMDIS.SEX--F"
     },
     {
-      "name": "Unemployment rate, by sex and disability - 19th ICLS [Female]",
+      "name": "Unemployment rate - 19th ICLS [Female]",
       "dcid": "sdg/SL_TLF_UEMDIS_19ICLS.SEX--F"
     },
     {
@@ -1041,27 +1041,27 @@
       "dcid": "Count_Death_Female_AgeAdjusted_AsAFractionOf_Count_Person_Female"
     },
     {
-      "name": "Adjusted location parity index for completion rate, by sex, wealth quintile and education level [Female, Lower secondary education]",
+      "name": "Adjusted location parity index for completion rate [Female, Lower secondary education]",
       "dcid": "sdg/SE_ALP_CPLR.SEX--F__EDUCATION_LEV--ISCED11_2"
     },
     {
-      "name": "Adjusted location parity index for completion rate, by sex, wealth quintile and education level [Female, Primary education]",
+      "name": "Adjusted location parity index for completion rate [Female, Primary education]",
       "dcid": "sdg/SE_ALP_CPLR.SEX--F__EDUCATION_LEV--ISCED11_1"
     },
     {
-      "name": "Adjusted location parity index for completion rate, by sex, wealth quintile and education level [Female, Upper secondary education]",
+      "name": "Adjusted location parity index for completion rate [Female, Upper secondary education]",
       "dcid": "sdg/SE_ALP_CPLR.SEX--F__EDUCATION_LEV--ISCED11_3"
     },
     {
-      "name": "Adjusted wealth parity index for completion rate, by sex, location and education level [Female, Lower secondary education]",
+      "name": "Adjusted wealth parity index for completion rate [Female, Lower secondary education]",
       "dcid": "sdg/SE_AWP_CPRA.SEX--F__EDUCATION_LEV--ISCED11_2"
     },
     {
-      "name": "Adjusted wealth parity index for completion rate, by sex, location and education level [Female, Primary education]",
+      "name": "Adjusted wealth parity index for completion rate [Female, Primary education]",
       "dcid": "sdg/SE_AWP_CPRA.SEX--F__EDUCATION_LEV--ISCED11_1"
     },
     {
-      "name": "Adjusted wealth parity index for completion rate, by sex, location and education level [Female, Upper secondary education]",
+      "name": "Adjusted wealth parity index for completion rate [Female, Upper secondary education]",
       "dcid": "sdg/SE_AWP_CPRA.SEX--F__EDUCATION_LEV--ISCED11_3"
     },
     {
@@ -1165,7 +1165,7 @@
       "dcid": "who/LIFE_0000000029.AGE--M0T11__SEX--F"
     },
     {
-      "name": "Age-standardized prevalence of current tobacco use among persons aged 15 years and older, by sex [15 years old and over, Female]",
+      "name": "Age-standardized prevalence of current tobacco use among persons aged 15 years and older [15 years old and over, Female]",
       "dcid": "sdg/SH_PRV_SMOK.AGE--Y_GE15__SEX--F"
     },
     {
@@ -1637,15 +1637,15 @@
       "dcid": "dc/d0yf4s6vhnzgd"
     },
     {
-      "name": "Completion rate, by sex, location, wealth quintile and education level [Female, Lower secondary education]",
+      "name": "Completion rate [Female, Lower secondary education]",
       "dcid": "sdg/SE_TOT_CPLR.SEX--F__EDUCATION_LEV--ISCED11_2"
     },
     {
-      "name": "Completion rate, by sex, location, wealth quintile and education level [Female, Primary education]",
+      "name": "Completion rate [Female, Primary education]",
       "dcid": "sdg/SE_TOT_CPLR.SEX--F__EDUCATION_LEV--ISCED11_1"
     },
     {
-      "name": "Completion rate, by sex, location, wealth quintile and education level [Female, Upper secondary education]",
+      "name": "Completion rate [Female, Upper secondary education]",
       "dcid": "sdg/SE_TOT_CPLR.SEX--F__EDUCATION_LEV--ISCED11_3"
     },
     {
@@ -3237,76 +3237,76 @@
       "dcid": "WHO/SDGSUICIDE_Female"
     },
     {
-      "name": "Detected victims of human trafficking for forced labour, servitude and slavery, by age and sex [18 years old and over, Female]",
-      "dcid": "sdg/VC_HTF_DETVFL.AGE--Y_GE18__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for forced labour, servitude and slavery, by age and sex [18 years old and over, Female]",
-      "dcid": "sdg/VC_HTF_DETVFLR.AGE--Y_GE18__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for forced labour, servitude and slavery, by age and sex [under 18 years old, Female]",
-      "dcid": "sdg/VC_HTF_DETVFL.AGE--Y0T17__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for forced labour, servitude and slavery, by age and sex [under 18 years old, Female]",
-      "dcid": "sdg/VC_HTF_DETVFLR.AGE--Y0T17__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for other purposes, by age and sex [18 years old and over, Female]",
-      "dcid": "sdg/VC_HTF_DETVOP.AGE--Y_GE18__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for other purposes, by age and sex [18 years old and over, Female]",
-      "dcid": "sdg/VC_HTF_DETVOPR.AGE--Y_GE18__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for other purposes, by age and sex [under 18 years old, Female]",
-      "dcid": "sdg/VC_HTF_DETVOP.AGE--Y0T17__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for other purposes, by age and sex [under 18 years old, Female]",
-      "dcid": "sdg/VC_HTF_DETVOPR.AGE--Y0T17__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for removal of organ, by age and sex [18 years old and over, Female]",
-      "dcid": "sdg/VC_HTF_DETVOG.AGE--Y_GE18__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for removal of organ, by age and sex [18 years old and over, Female]",
-      "dcid": "sdg/VC_HTF_DETVOGR.AGE--Y_GE18__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for sexual exploitation, by age and sex [18 years old and over, Female]",
-      "dcid": "sdg/VC_HTF_DETVSX.AGE--Y_GE18__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for sexual exploitation, by age and sex [18 years old and over, Female]",
-      "dcid": "sdg/VC_HTF_DETVSXR.AGE--Y_GE18__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for sexual exploitation, by age and sex [under 18 years old, Female]",
-      "dcid": "sdg/VC_HTF_DETVSX.AGE--Y0T17__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking for sexual exploitation, by age and sex [under 18 years old, Female]",
-      "dcid": "sdg/VC_HTF_DETVSXR.AGE--Y0T17__SEX--F"
-    },
-    {
-      "name": "Detected victims of human trafficking, by age and sex [18 years old and over, Female]",
+      "name": "Detected victims of human trafficking [18 years old and over, Female]",
       "dcid": "sdg/VC_HTF_DETV.AGE--Y_GE18__SEX--F"
     },
     {
-      "name": "Detected victims of human trafficking, by age and sex [18 years old and over, Female]",
+      "name": "Detected victims of human trafficking [18 years old and over, Female]",
       "dcid": "sdg/VC_HTF_DETVR.AGE--Y_GE18__SEX--F"
     },
     {
-      "name": "Detected victims of human trafficking, by age and sex [under 18 years old, Female]",
+      "name": "Detected victims of human trafficking [under 18 years old, Female]",
       "dcid": "sdg/VC_HTF_DETV.AGE--Y0T17__SEX--F"
     },
     {
-      "name": "Detected victims of human trafficking, by age and sex [under 18 years old, Female]",
+      "name": "Detected victims of human trafficking [under 18 years old, Female]",
       "dcid": "sdg/VC_HTF_DETVR.AGE--Y0T17__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for forced labour, servitude and slavery [18 years old and over, Female]",
+      "dcid": "sdg/VC_HTF_DETVFL.AGE--Y_GE18__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for forced labour, servitude and slavery [18 years old and over, Female]",
+      "dcid": "sdg/VC_HTF_DETVFLR.AGE--Y_GE18__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for forced labour, servitude and slavery [under 18 years old, Female]",
+      "dcid": "sdg/VC_HTF_DETVFL.AGE--Y0T17__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for forced labour, servitude and slavery [under 18 years old, Female]",
+      "dcid": "sdg/VC_HTF_DETVFLR.AGE--Y0T17__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for other purposes [18 years old and over, Female]",
+      "dcid": "sdg/VC_HTF_DETVOP.AGE--Y_GE18__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for other purposes [18 years old and over, Female]",
+      "dcid": "sdg/VC_HTF_DETVOPR.AGE--Y_GE18__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for other purposes [under 18 years old, Female]",
+      "dcid": "sdg/VC_HTF_DETVOP.AGE--Y0T17__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for other purposes [under 18 years old, Female]",
+      "dcid": "sdg/VC_HTF_DETVOPR.AGE--Y0T17__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for removal of organ [18 years old and over, Female]",
+      "dcid": "sdg/VC_HTF_DETVOG.AGE--Y_GE18__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for removal of organ [18 years old and over, Female]",
+      "dcid": "sdg/VC_HTF_DETVOGR.AGE--Y_GE18__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for sexual exploitation [18 years old and over, Female]",
+      "dcid": "sdg/VC_HTF_DETVSX.AGE--Y_GE18__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for sexual exploitation [18 years old and over, Female]",
+      "dcid": "sdg/VC_HTF_DETVSXR.AGE--Y_GE18__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for sexual exploitation [under 18 years old, Female]",
+      "dcid": "sdg/VC_HTF_DETVSX.AGE--Y0T17__SEX--F"
+    },
+    {
+      "name": "Detected victims of human trafficking for sexual exploitation [under 18 years old, Female]",
+      "dcid": "sdg/VC_HTF_DETVSXR.AGE--Y0T17__SEX--F"
     },
     {
       "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Acute hepatitis B, Female]",

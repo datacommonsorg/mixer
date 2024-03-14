@@ -29,6 +29,14 @@
             "displayName": "Mobile Phone Subscriptions Per Person in a Population",
             "definition": "md=Count_Person,mp=count,pt=Product,productType=MobileCellularSubscription",
             "hasData": true
+          },
+          {
+            "id": "Monthly_Count_Bank_FinancialProduct_UPI",
+            "searchNames": [
+              "Monthly Count of Bank With Financial Product is UPI"
+            ],
+            "displayName": "No. of Banks live on UPI",
+            "definition": "mq=Monthly,mp=count,pt=Bank,financialProduct=UPI"
           }
         ],
         "childStatVarGroups": [
@@ -68,6 +76,11 @@
             "id": "dc/g/FinancialInstrument",
             "specializedEntity": "Financial Instrument",
             "displayName": "Financial Instrument"
+          },
+          {
+            "id": "dc/g/FinancialTransaction",
+            "specializedEntity": "Financial Transaction",
+            "displayName": "Financial Transaction"
           },
           {
             "id": "dc/g/Household_HouseholdType",
