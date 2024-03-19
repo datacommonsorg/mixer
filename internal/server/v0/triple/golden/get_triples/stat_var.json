@@ -123,6 +123,20 @@
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
+      "subjectId": "Annual_Amount_Electricity_AsAFractionOf_Count_Person",
+      "subjectName": "Per capita availability of electricity",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Total Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
       "subjectId": "Annual_Count_MedicalConditionIncident_ConditionTuberculosis_AsAFractionOf_Count_Person",
       "subjectName": "Annual notification of Tuberculosis cases per 1 lakh population",
       "subjectTypes": [
@@ -7069,20 +7083,6 @@
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionInfection_Urban_AsAFractionOf_Count_Person",
       "subjectName": "Count of Medical Condition Incident: 45 - 59 Years, Infection, Urban (Per Capita)",
-      "subjectTypes": [
-        "StatisticalVariable"
-      ],
-      "predicate": "measurementDenominator",
-      "objectId": "Count_Person",
-      "objectName": "Total Population",
-      "objectTypes": [
-        "StatisticalVariable"
-      ],
-      "provenanceId": "dc/base/HumanReadableStatVars"
-    },
-    {
-      "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionInjury_AsAFractionOf_Count_Person",
-      "subjectName": "Count of Medical Condition Incident: 45 - 59 Years, Injury (Per Capita)",
       "subjectTypes": [
         "StatisticalVariable"
       ],

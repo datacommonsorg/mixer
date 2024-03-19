@@ -225,7 +225,7 @@
         "id": "dc/g/Person_ElectronicGadgetUsed",
         "specializedEntity": "Electronic Gadget Used",
         "displayName": "Person by Electronic Gadget Used",
-        "descendentStatVarCount": 406
+        "descendentStatVarCount": 407
       },
       {
         "id": "dc/g/Person_Employer",
@@ -288,6 +288,12 @@
         "descendentStatVarCount": 2
       },
       {
+        "id": "dc/g/Person_GovernmentIdentifier",
+        "specializedEntity": "Government Identifier",
+        "displayName": "Person by Government Identifier",
+        "descendentStatVarCount": 2
+      },
+      {
         "id": "dc/g/Household_HealthInsurance",
         "specializedEntity": "Health Insurance (Household)",
         "displayName": "Household by Health Insurance",
@@ -328,6 +334,12 @@
         "specializedEntity": "Households",
         "displayName": "Households",
         "descendentStatVarCount": 3
+      },
+      {
+        "id": "dc/g/Person_IdentityActivity",
+        "specializedEntity": "Identity Activity",
+        "displayName": "Person by Identity Activity",
+        "descendentStatVarCount": 2
       },
       {
         "id": "dc/g/ImmigrationAndCitizenship",
@@ -564,7 +576,7 @@
         "descendentStatVarCount": 2
       }
     ],
-    "descendentStatVarCount": 45225,
+    "descendentStatVarCount": 45228,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

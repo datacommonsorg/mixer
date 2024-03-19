@@ -6363,6 +6363,14 @@
               "provenanceId": "dc/base/HumanReadableStatVars"
             },
             {
+              "name": "Per capita availability of electricity",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Annual_Amount_Electricity_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Annual notification of Tuberculosis cases per 1 lakh population",
               "types": [
                 "StatisticalVariable"
@@ -10337,14 +10345,6 @@
               ],
               "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionInfection_Urban_AsAFractionOf_Count_Person",
               "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 45 - 59 Years, Injury (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionInjury_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]
         },
@@ -10366,5 +10366,5 @@
       "node": "dummy"
     }
   ],
-  "nextToken": "H4sIAAAAAAAA/2zNwarCMBCF4du5aR1HF+UIPpC6Vyi41VhGCTRJTdOFby/tTujmbH44n9wFBxe7+HKt7ZpeW+c1SJU/vZ6fSw1/IC5ATCD+B7EBcQniCoZX9VQYxGsQC4g38pbtMY4h3y6ahhhk79UOY1KvIZ80RO+CzTHJrsk2uyFP2NUmZx+dgubDX85wWRcwXM27QH4BAAD//wEAAP//e83+JdUAAAA="
+  "nextToken": "H4sIAAAAAAAA/2zNsQrCMBCHcT1re54O8hd8IHVXKLhqLKcEm6Sk18G3lzpK5w++n9wFB5/a9PKNa+tOGx80SmmfTs/PqYYZiOcgJhAvQFyAeAniEgVX27EwiFcgFhCv5S2bYxqi3S6a+xRlH9T1Q9ag0U4aU/DRWcqyq82Z723Eri5792gV9BtOc8TVP/YFAAD//wEAAP//w808eM8AAAA="
 }

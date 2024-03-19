@@ -52,6 +52,11 @@
             "descendentStatVarCount": 1
           },
           {
+            "id": "dc/g/Amount",
+            "specializedEntity": "Amount",
+            "displayName": "Amount"
+          },
+          {
             "id": "dc/g/ConsumerGoodsAndServices",
             "specializedEntity": "Consumer Goods And Services",
             "displayName": "Consumer Goods And Services"
@@ -157,6 +162,11 @@
             "id": "dc/g/Stock",
             "specializedEntity": "Stock",
             "displayName": "Stock"
+          },
+          {
+            "id": "dc/g/Transportation",
+            "specializedEntity": "Transportation",
+            "displayName": "Transportation"
           },
           {
             "id": "dc/g/TreasuryBill",
