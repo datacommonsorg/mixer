@@ -255,6 +255,11 @@
         "displayName": "Person by Government Id"
       },
       {
+        "id": "dc/g/Person_GovernmentIdentifier",
+        "specializedEntity": "Government Identifier",
+        "displayName": "Person by Government Identifier"
+      },
+      {
         "id": "dc/g/Household_HealthInsurance",
         "specializedEntity": "Health Insurance (Household)",
         "displayName": "Household by Health Insurance"
@@ -288,6 +293,11 @@
         "id": "dc/g/Households",
         "specializedEntity": "Households",
         "displayName": "Households"
+      },
+      {
+        "id": "dc/g/Person_IdentityActivity",
+        "specializedEntity": "Identity Activity",
+        "displayName": "Person by Identity Activity"
       },
       {
         "id": "dc/g/ImmigrationAndCitizenship",

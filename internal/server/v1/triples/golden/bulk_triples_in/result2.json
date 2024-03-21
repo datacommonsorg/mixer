@@ -4018,6 +4018,14 @@
         "measurementDenominator": {
           "nodes": [
             {
+              "name": "Count of Medical Condition Incident: 45 - 59 Years, Injury (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionInjury_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Count of Medical Condition Incident: 45 - 59 Years, Injury, Rural (Per Capita)",
               "types": [
                 "StatisticalVariable"
@@ -8008,14 +8016,6 @@
               ],
               "dcid": "Count_MedicalConditionIncident_60To69Years_Female_ConditionGastroIntestinalCondition_AsAFractionOf_Count_Person",
               "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 60 - 69 Years, Female, Gastro Intestinal Condition, Rural (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_60To69Years_Female_ConditionGastroIntestinalCondition_Rural_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]
         }
@@ -8025,5 +8025,5 @@
       "node": "dummy"
     }
   ],
-  "nextToken": "H4sIAAAAAAAA/2zOsY6DMAzG8cMEMOaGyCfdA911byWkrm2K3CoSSVAIQ6e+eoXnLr/h+w82XYn/fJrTw09uHheZfJBIbXkucrx/avzFgBUDAgPWDGgYsGHAlg12dl+RAXsGJAYc6EXf/2mL5XKSvKZIv0HcumUJEstBYgo+upIy/YzFFb+W/djZZe9uszBYYIOVrdggqLVq1EZrq3Yq6t6rZPc3hzcAAAD//wEAAP//2/BLneMAAAA="
+  "nextToken": "H4sIAAAAAAAA/2zOsY6DMBAE0GMxsCxXWHvSfdBd+kRCSps4aBNZwjYypkiVX4/YOs0rZooZuhL/+TSnh5/cPC4y+SCR2vJc5Hj/1PEXA1YMCAxYM6BhwIYBWzbY2T1FBuwZkBhwoBd9/6ctlstJ8poi/QZx65YlSCwHiSn46ErK9DMWV/xa9rGzy97dZmGwwAYrW7FBUGvVqI3aqp2Kaq+S3W8ObwAAAP//AQAA//+TnHXF4wAAAA=="
 }

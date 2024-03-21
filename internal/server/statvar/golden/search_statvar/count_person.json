@@ -2561,6 +2561,10 @@
       "dcid": "Count_Person_Rural_AsAFractionOf_Count_Person"
     },
     {
+      "name": "Population: Telephone (Per Capita)",
+      "dcid": "Count_Person_Telephone_AsAFractionOf_Count_Person"
+    },
+    {
       "name": "Population: Unemployed (As Fraction of Count Person 14 Years or More)",
       "dcid": "Count_Person_Years14Onwards_Unemployed_AsAFractionOf_Count_Person_Years14Onwards"
     },
@@ -3995,10 +3999,6 @@
     {
       "name": "Population: 1 Years or More, Different House 1 Year Ago",
       "dcid": "Count_Person_1OrMoreYears_DifferentHouse1YearAgo"
-    },
-    {
-      "name": "Population: 1 Years or More, Different House Abroad",
-      "dcid": "Count_Person_1OrMoreYears_DifferentHouseAbroad"
     }
   ],
   "matches": [
