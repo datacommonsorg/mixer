@@ -147,13 +147,13 @@
               "facet_id": "2343540064",
               "observations": [
                 {
-                  "date": "2019",
-                  "value": 8132863
+                  "date": "2022",
+                  "value": 7782709
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2019",
-              "latest_date": "2019"
+              "earliest_date": "2022",
+              "latest_date": "2022"
             }
           ]
         },
@@ -164,13 +164,13 @@
               "facet_id": "4277990144",
               "observations": [
                 {
-                  "date": "2019",
-                  "value": 1095445
+                  "date": "2022",
+                  "value": 1109452
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2019",
-              "latest_date": "2019"
+              "earliest_date": "2022",
+              "latest_date": "2022"
             }
           ]
         },
@@ -647,13 +647,13 @@
               "facet_id": "324358135",
               "observations": [
                 {
-                  "date": "2024-01",
-                  "value": 1105164
+                  "date": "2024-02",
+                  "value": 1078314
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2024-01",
-              "latest_date": "2024-01"
+              "earliest_date": "2024-02",
+              "latest_date": "2024-02"
             },
             {
               "facet_id": "2978659163",
@@ -671,13 +671,13 @@
               "facet_id": "1249140336",
               "observations": [
                 {
-                  "date": "2024-01",
-                  "value": 1013585
+                  "date": "2024-02",
+                  "value": 1027033
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2024-01",
-              "latest_date": "2024-01"
+              "earliest_date": "2024-02",
+              "latest_date": "2024-02"
             }
           ]
         },

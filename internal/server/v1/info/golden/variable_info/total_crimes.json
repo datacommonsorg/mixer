@@ -3,7 +3,7 @@
   "info": {
     "placeTypeSummary": {
       "CensusCountyDivision": {
-        "placeCount": 1327,
+        "placeCount": 1457,
         "topPlaces": [
           {
             "dcid": "geoId/1500390810",
@@ -22,7 +22,7 @@
         "maxValue": 36325
       },
       "City": {
-        "placeCount": 8807,
+        "placeCount": 9641,
         "topPlaces": [
           {
             "dcid": "geoId/3651000",
@@ -38,7 +38,7 @@
           }
         ],
         "minValue": 0,
-        "maxValue": 198419
+        "maxValue": 237654
       },
       "Country": {
         "placeCount": 1,
@@ -52,18 +52,26 @@
         "maxValue": 11111207
       },
       "County": {
-        "placeCount": 1,
+        "placeCount": 4,
         "topPlaces": [
           {
             "dcid": "geoId/34007",
             "name": "Camden County"
+          },
+          {
+            "dcid": "geoId/26121",
+            "name": "Muskegon County"
+          },
+          {
+            "dcid": "geoId/02185",
+            "name": "North Slope Borough"
           }
         ],
-        "minValue": 3301,
+        "minValue": 13,
         "maxValue": 4043
       },
       "State": {
-        "placeCount": 50,
+        "placeCount": 52,
         "topPlaces": [
           {
             "dcid": "geoId/06",
@@ -78,7 +86,7 @@
             "name": "Florida"
           }
         ],
-        "minValue": 9113,
+        "minValue": 8667,
         "maxValue": 1265920
       }
     },
@@ -92,10 +100,10 @@
               "observationPeriod": "P1Y"
             },
             "earliestDate": "2008",
-            "latestDate": "2019",
+            "latestDate": "2022",
             "placeTypeSummary": {
               "CensusCountyDivision": {
-                "placeCount": 1327,
+                "placeCount": 1457,
                 "topPlaces": [
                   {
                     "dcid": "geoId/1500390810",
@@ -114,7 +122,7 @@
                 "maxValue": 36325
               },
               "City": {
-                "placeCount": 8807,
+                "placeCount": 9641,
                 "topPlaces": [
                   {
                     "dcid": "geoId/3651000",
@@ -130,21 +138,29 @@
                   }
                 ],
                 "minValue": 0,
-                "maxValue": 198419
+                "maxValue": 237654
               },
               "County": {
-                "placeCount": 1,
+                "placeCount": 4,
                 "topPlaces": [
                   {
                     "dcid": "geoId/34007",
                     "name": "Camden County"
+                  },
+                  {
+                    "dcid": "geoId/26121",
+                    "name": "Muskegon County"
+                  },
+                  {
+                    "dcid": "geoId/02185",
+                    "name": "North Slope Borough"
                   }
                 ],
-                "minValue": 3301,
+                "minValue": 13,
                 "maxValue": 4043
               },
               "State": {
-                "placeCount": 50,
+                "placeCount": 52,
                 "topPlaces": [
                   {
                     "dcid": "geoId/06",
@@ -159,18 +175,18 @@
                     "name": "Florida"
                   }
                 ],
-                "minValue": 9113,
+                "minValue": 8667,
                 "maxValue": 1265920
               }
             },
             "minValue": 0,
             "maxValue": 1265920,
-            "observationCount": 96373,
-            "timeSeriesCount": 10185
+            "observationCount": 115087,
+            "timeSeriesCount": 11154
           }
         ],
-        "observationCount": 96373,
-        "timeSeriesCount": 10185
+        "observationCount": 115087,
+        "timeSeriesCount": 11154
       },
       "dc/base/FBIGovCrime_AggCountry": {
         "importName": "FBIGovCrime_AggCountry",
@@ -181,7 +197,7 @@
               "isDcAggregate": true
             },
             "earliestDate": "2008",
-            "latestDate": "2019",
+            "latestDate": "2022",
             "placeTypeSummary": {
               "Country": {
                 "placeCount": 1,
@@ -191,17 +207,17 @@
                     "name": "United States"
                   }
                 ],
-                "minValue": 8132863,
+                "minValue": 7782709,
                 "maxValue": 11111207
               }
             },
-            "minValue": 8132863,
+            "minValue": 7782709,
             "maxValue": 11111207,
-            "observationCount": 12,
+            "observationCount": 14,
             "timeSeriesCount": 1
           }
         ],
-        "observationCount": 12,
+        "observationCount": 14,
         "timeSeriesCount": 1
       }
     }

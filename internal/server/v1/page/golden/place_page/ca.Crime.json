@@ -82,7 +82,9 @@
             "2016": 180888,
             "2017": 183804,
             "2018": 177710,
-            "2019": 172530
+            "2019": 172530,
+            "2020": 163693,
+            "2022": 154999
           },
           "metadata": {
             "importName": "FBIGovCrime",
@@ -103,7 +105,9 @@
             "2016": 154386,
             "2017": 157712,
             "2018": 152661,
-            "2019": 146993
+            "2019": 146993,
+            "2020": 133989,
+            "2022": 126147
           },
           "metadata": {
             "importName": "FBIGovCrime",
@@ -124,7 +128,9 @@
             "2016": 26502,
             "2017": 26092,
             "2018": 25049,
-            "2019": 25537
+            "2019": 25537,
+            "2020": 29704,
+            "2022": 28852
           },
           "metadata": {
             "importName": "FBIGovCrime",
@@ -430,6 +436,36 @@
     },
     "geoId/72": {
       "data": {
+        "Count_CriminalActivities_CombinedCrime": {
+          "val": {
+            "2020": 18437
+          },
+          "metadata": {
+            "importName": "FBIGovCrime",
+            "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalActivities_PropertyCrime": {
+          "val": {
+            "2020": 13241
+          },
+          "metadata": {
+            "importName": "FBIGovCrime",
+            "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+            "observationPeriod": "P1Y"
+          }
+        },
+        "Count_CriminalActivities_ViolentCrime": {
+          "val": {
+            "2020": 5196
+          },
+          "metadata": {
+            "importName": "FBIGovCrime",
+            "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
+            "observationPeriod": "P1Y"
+          }
+        },
         "Count_Person": {
           "val": {
             "2000": 3810605,
@@ -1140,6 +1176,7 @@
     },
     "geoId/72": {
       "category": [
+        "Crime",
         "Demographics",
         "Economics",
         "Education",
