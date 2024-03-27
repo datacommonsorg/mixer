@@ -669,11 +669,19 @@
                 {
                   "date": "2019",
                   "value": 8132863
+                },
+                {
+                  "date": "2020",
+                  "value": 7783580
+                },
+                {
+                  "date": "2022",
+                  "value": 7782709
                 }
               ],
-              "obs_count": 12,
+              "obs_count": 14,
               "earliest_date": "2008",
-              "latest_date": "2019"
+              "latest_date": "2022"
             }
           ]
         },
@@ -730,11 +738,19 @@
                 {
                   "date": "2019",
                   "value": 1095445
+                },
+                {
+                  "date": "2020",
+                  "value": 1016080
+                },
+                {
+                  "date": "2022",
+                  "value": 1109452
                 }
               ],
-              "obs_count": 12,
+              "obs_count": 14,
               "earliest_date": "2008",
-              "latest_date": "2019"
+              "latest_date": "2022"
             }
           ]
         },
@@ -13036,12 +13052,16 @@
                 },
                 {
                   "date": "2024-01",
-                  "value": 1105164
+                  "value": 1106617
+                },
+                {
+                  "date": "2024-02",
+                  "value": 1078314
                 }
               ],
-              "obs_count": 577,
+              "obs_count": 578,
               "earliest_date": "1976-01",
-              "latest_date": "2024-01"
+              "latest_date": "2024-02"
             },
             {
               "facet_id": "2978659163",
@@ -15552,12 +15572,16 @@
                 },
                 {
                   "date": "2024-01",
-                  "value": 1013585
+                  "value": 1013856
+                },
+                {
+                  "date": "2024-02",
+                  "value": 1027033
                 }
               ],
-              "obs_count": 577,
+              "obs_count": 578,
               "earliest_date": "1976-01",
-              "latest_date": "2024-01"
+              "latest_date": "2024-02"
             }
           ]
         },
