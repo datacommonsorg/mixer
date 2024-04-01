@@ -50,6 +50,10 @@ func TestResolveCoordinates(t *testing.T) {
 							Latitude:  32.41,
 							Longitude: -102.11,
 						},
+						{
+							Latitude:  -6.72177,
+							Longitude: -38.18998,
+						},
 					},
 				},
 				"result.json",

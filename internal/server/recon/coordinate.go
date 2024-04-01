@@ -107,8 +107,11 @@ func ResolveCoordinates(
 		return nil, err
 	}
 	s2PolygonMap := map[string]*s2.Polygon{}
-	for place, entities := range geoJSONData {
-		s2Polygon, err := parseGeoJSON(entities[0].Value)
+	for place, gjValues := range geoJSONData {
+		if len(gjValues) == 0 {
+			continue
+		}
+		s2Polygon, err := parseGeoJSON(gjValues[0].Value)
 		if err != nil {
 			return nil, err
 		}
