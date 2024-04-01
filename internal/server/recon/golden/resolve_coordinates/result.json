@@ -120,6 +120,24 @@
           "dominantType": "Country"
         }
       ]
+    },
+    {
+      "latitude": -6.72177,
+      "longitude": -38.18998,
+      "placeDcids": [
+        "ipcc_50/-6.75_-38.25_BRA",
+        "country/BRA"
+      ],
+      "places": [
+        {
+          "dcid": "ipcc_50/-6.75_-38.25_BRA",
+          "dominantType": "IPCCPlace_50"
+        },
+        {
+          "dcid": "country/BRA",
+          "dominantType": "Country"
+        }
+      ]
     }
   ]
 }
