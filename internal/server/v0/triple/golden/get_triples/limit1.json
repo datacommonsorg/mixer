@@ -20,8 +20,32 @@
       "subjectTypes": [
         "Provenance"
       ],
+      "predicate": "dataBuildGroup",
+      "objectValue": "schema",
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "dc/base/HumanReadableStatVars",
+      "subjectName": "HumanReadableStatVars",
+      "subjectTypes": [
+        "Provenance"
+      ],
+      "predicate": "entityResolutionType",
+      "objectId": "NoEntityResolution",
+      "objectName": "No entity resolution",
+      "objectTypes": [
+        "EntityResolutionTypeEnum"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "dc/base/HumanReadableStatVars",
+      "subjectName": "HumanReadableStatVars",
+      "subjectTypes": [
+        "Provenance"
+      ],
       "predicate": "importTime",
-      "objectValue": "1711459107",
+      "objectValue": "1712129264",
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
@@ -60,6 +84,30 @@
       "objectTypes": [
         "Provenance"
       ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "dc/base/HumanReadableStatVars",
+      "subjectName": "HumanReadableStatVars",
+      "subjectTypes": [
+        "Provenance"
+      ],
+      "predicate": "provenanceCategory",
+      "objectId": "CuratedStatvarProvenance",
+      "objectName": "Curated StatisticalVariable provenance",
+      "objectTypes": [
+        "ProvenanceCategoryEnum"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "dc/base/HumanReadableStatVars",
+      "subjectName": "HumanReadableStatVars",
+      "subjectTypes": [
+        "Provenance"
+      ],
+      "predicate": "resolvedTextMcfUrl",
+      "objectValue": "/memfile/resolved_mcfs_memfile/schema/stat_vars/*.mcf",
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
