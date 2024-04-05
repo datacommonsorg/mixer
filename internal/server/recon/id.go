@@ -87,7 +87,7 @@ func GetResolvedIdEntities(ctx context.Context, store *store.Store, inProp strin
 			continue
 		}
 		entity := &pb.ResolveIdsResponse_Entity{InId: inId}
-		for outId, _ := range outIds {
+		for outId := range outIds {
 			entity.OutIds = append(entity.OutIds, outId)
 		}
 		// Sort to make the result deterministic.
