@@ -38,6 +38,10 @@ func ResolveIds(
 			"invalid input: in_prop: %s, out_prop: %s, ids: %v", inProp, outProp, ids)
 	}
 
+	return GetResolvedIdEntities(ctx, store, inProp, ids, outProp)
+}
+
+func GetResolvedIdEntities(ctx context.Context, store *store.Store, inProp string, ids []string, outProp string) (*pb.ResolveIdsResponse, error) {
 	// Read cache data.
 	btDataList, err := bigtable.Read(
 		ctx, store.BtGroup, bigtable.BtReconIDMapPrefix,
@@ -54,34 +58,43 @@ func ResolveIds(
 		return nil, err
 	}
 
-	// Assemble result.
-	// TODO: merge ids from different tables. Now it only picks up IDs from
-	// one preferred table.
-	res := &pb.ResolveIdsResponse{}
-	existData := map[string]bool{}
+	// Map of in ids to set of out ids that exist for that in id.
+	inIds2outIds := map[string]map[string]struct{}{}
 	for _, btData := range btDataList {
 		for _, row := range btData {
 			inID := row.Parts[1]
-			if exist, ok := existData[inID]; ok && exist {
-				continue
-			}
 			reconEntitiesPb, ok := row.Data.(*pb.ReconEntities)
 			if !ok {
 				continue
 			}
-			entity := &pb.ResolveIdsResponse_Entity{InId: inID}
+			if _, ok := inIds2outIds[inID]; !ok {
+				inIds2outIds[inID] = map[string]struct{}{}
+			}
 			for _, reconEntity := range reconEntitiesPb.GetEntities() {
 				if len(reconEntity.GetIds()) != 1 {
 					return nil, fmt.Errorf("wrong cache result for %s: %v", inID, row.Data)
 				}
-				entity.OutIds = append(entity.OutIds, reconEntity.GetIds()[0].GetVal())
+				outID := reconEntity.GetIds()[0].GetVal()
+				inIds2outIds[inID][outID] = struct{}{}
 			}
-			existData[inID] = true
-			// Sort to make the result deterministic.
-			sort.Strings(entity.OutIds)
-			res.Entities = append(res.Entities, entity)
 		}
 	}
+
+	// Assemble result.
+	res := &pb.ResolveIdsResponse{}
+	for inId, outIds := range inIds2outIds {
+		if len(outIds) == 0 {
+			continue
+		}
+		entity := &pb.ResolveIdsResponse_Entity{InId: inId}
+		for outId, _ := range outIds {
+			entity.OutIds = append(entity.OutIds, outId)
+		}
+		// Sort to make the result deterministic.
+		sort.Strings(entity.OutIds)
+		res.Entities = append(res.Entities, entity)
+	}
+
 	// Sort to make the result deterministic.
 	sort.Slice(res.Entities, func(i, j int) bool {
 		return res.Entities[i].GetInId() > res.Entities[j].GetInId()

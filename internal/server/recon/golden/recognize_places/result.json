@@ -92,7 +92,18 @@
     "Compare literacy among Chinese provinces": {
       "items": [
         {
-          "span": "Compare literacy among"
+          "span": "Compare"
+        },
+        {
+          "span": "literacy",
+          "places": [
+            {
+              "dcid": "bio/D000067010"
+            }
+          ]
+        },
+        {
+          "span": "among"
         },
         {
           "span": "Chinese",
@@ -110,14 +121,59 @@
     "I want to find the Middle Point of a line": {
       "items": [
         {
-          "span": "I want to find the Middle Point of a line"
+          "span": "I want"
+        },
+        {
+          "span": "to",
+          "places": [
+            {
+              "dcid": "bio/dm3_to"
+            },
+            {
+              "dcid": "bio/dm6_to"
+            }
+          ]
+        },
+        {
+          "span": "find the Middle Point of"
+        },
+        {
+          "span": "a",
+          "places": [
+            {
+              "dcid": "bio/dm3_a"
+            },
+            {
+              "dcid": "bio/dm6_a"
+            },
+            {
+              "dcid": "bio/mm10_a"
+            },
+            {
+              "dcid": "bio/mm9_a"
+            }
+          ]
+        },
+        {
+          "span": "line"
         }
       ]
     },
     "I went to Half Moon Bay California and California, Washington County": {
       "items": [
         {
-          "span": "I went to"
+          "span": "I went"
+        },
+        {
+          "span": "to",
+          "places": [
+            {
+              "dcid": "bio/dm3_to"
+            },
+            {
+              "dcid": "bio/dm6_to"
+            }
+          ]
         },
         {
           "span": "Half Moon Bay California",
@@ -143,7 +199,18 @@
     "I went to Middle Point, USA": {
       "items": [
         {
-          "span": "I went to"
+          "span": "I went"
+        },
+        {
+          "span": "to",
+          "places": [
+            {
+              "dcid": "bio/dm3_to"
+            },
+            {
+              "dcid": "bio/dm6_to"
+            }
+          ]
         },
         {
           "span": "Middle Point , USA",
@@ -158,7 +225,43 @@
     "What is the electricity access in african countries": {
       "items": [
         {
-          "span": "What is the electricity access in"
+          "span": "What"
+        },
+        {
+          "span": "is",
+          "places": [
+            {
+              "dcid": "bio/dm3_Is"
+            },
+            {
+              "dcid": "bio/dm6_Is"
+            }
+          ]
+        },
+        {
+          "span": "the"
+        },
+        {
+          "span": "electricity",
+          "places": [
+            {
+              "dcid": "bio/D004560"
+            }
+          ]
+        },
+        {
+          "span": "access"
+        },
+        {
+          "span": "in",
+          "places": [
+            {
+              "dcid": "bio/dm3_in"
+            },
+            {
+              "dcid": "bio/dm6_in"
+            }
+          ]
         },
         {
           "span": "african",
@@ -176,7 +279,23 @@
     "crime in new york state": {
       "items": [
         {
-          "span": "crime in"
+          "span": "crime",
+          "places": [
+            {
+              "dcid": "bio/D003415"
+            }
+          ]
+        },
+        {
+          "span": "in",
+          "places": [
+            {
+              "dcid": "bio/dm3_in"
+            },
+            {
+              "dcid": "bio/dm6_in"
+            }
+          ]
         },
         {
           "span": "new york state",
@@ -206,7 +325,23 @@
     "life expectancy in Australia and Canada": {
       "items": [
         {
-          "span": "life expectancy in"
+          "span": "life expectancy",
+          "places": [
+            {
+              "dcid": "bio/D008017"
+            }
+          ]
+        },
+        {
+          "span": "in",
+          "places": [
+            {
+              "dcid": "bio/dm3_in"
+            },
+            {
+              "dcid": "bio/dm6_in"
+            }
+          ]
         },
         {
           "span": "Australia",
@@ -232,7 +367,23 @@
     "life expectancy in New York city and Alabama": {
       "items": [
         {
-          "span": "life expectancy in"
+          "span": "life expectancy",
+          "places": [
+            {
+              "dcid": "bio/D008017"
+            }
+          ]
+        },
+        {
+          "span": "in",
+          "places": [
+            {
+              "dcid": "bio/dm3_in"
+            },
+            {
+              "dcid": "bio/dm6_in"
+            }
+          ]
         },
         {
           "span": "New York city",
@@ -261,7 +412,26 @@
     "median income in africa": {
       "items": [
         {
-          "span": "median income in"
+          "span": "median"
+        },
+        {
+          "span": "income",
+          "places": [
+            {
+              "dcid": "bio/D007182"
+            }
+          ]
+        },
+        {
+          "span": "in",
+          "places": [
+            {
+              "dcid": "bio/dm3_in"
+            },
+            {
+              "dcid": "bio/dm6_in"
+            }
+          ]
         },
         {
           "span": "africa",
@@ -273,10 +443,93 @@
         }
       ]
     },
+    "tell me about Benzodiazepine, derivatives and their use in California": {
+      "items": [
+        {
+          "span": "tell"
+        },
+        {
+          "span": "me",
+          "places": [
+            {
+              "dcid": "bio/dm3_Me"
+            },
+            {
+              "dcid": "bio/dm6_Me"
+            }
+          ]
+        },
+        {
+          "span": "about"
+        },
+        {
+          "span": "Benzodiazepine , derivatives",
+          "places": [
+            {
+              "dcid": "chem/N03AE"
+            },
+            {
+              "dcid": "chem/N05BA"
+            },
+            {
+              "dcid": "chem/N05CD"
+            }
+          ]
+        },
+        {
+          "span": "and their use"
+        },
+        {
+          "span": "in",
+          "places": [
+            {
+              "dcid": "bio/dm3_in"
+            },
+            {
+              "dcid": "bio/dm6_in"
+            }
+          ]
+        },
+        {
+          "span": "California",
+          "places": [
+            {
+              "dcid": "geoId/06"
+            },
+            {
+              "dcid": "geoId/2412150"
+            },
+            {
+              "dcid": "geoId/4210768"
+            },
+            {
+              "dcid": "geoId/2910468"
+            },
+            {
+              "dcid": "geoId/2111872"
+            }
+          ]
+        }
+      ]
+    },
     "tell me about chicago": {
       "items": [
         {
-          "span": "tell me about"
+          "span": "tell"
+        },
+        {
+          "span": "me",
+          "places": [
+            {
+              "dcid": "bio/dm3_Me"
+            },
+            {
+              "dcid": "bio/dm6_Me"
+            }
+          ]
+        },
+        {
+          "span": "about"
         },
         {
           "span": "chicago",
@@ -291,7 +544,21 @@
     "tell me about palo alto": {
       "items": [
         {
-          "span": "tell me about"
+          "span": "tell"
+        },
+        {
+          "span": "me",
+          "places": [
+            {
+              "dcid": "bio/dm3_Me"
+            },
+            {
+              "dcid": "bio/dm6_Me"
+            }
+          ]
+        },
+        {
+          "span": "about"
         },
         {
           "span": "palo alto",
@@ -309,7 +576,26 @@
     "the birds in ME and USA are chirpy, according to me": {
       "items": [
         {
-          "span": "the birds in"
+          "span": "the"
+        },
+        {
+          "span": "birds",
+          "places": [
+            {
+              "dcid": "bio/D001717"
+            }
+          ]
+        },
+        {
+          "span": "in",
+          "places": [
+            {
+              "dcid": "bio/dm3_in"
+            },
+            {
+              "dcid": "bio/dm6_in"
+            }
+          ]
         },
         {
           "span": "ME",
@@ -334,14 +620,55 @@
           ]
         },
         {
-          "span": "are chirpy , according to me"
+          "span": "are chirpy , according"
+        },
+        {
+          "span": "to",
+          "places": [
+            {
+              "dcid": "bio/dm3_to"
+            },
+            {
+              "dcid": "bio/dm6_to"
+            }
+          ]
+        },
+        {
+          "span": "me",
+          "places": [
+            {
+              "dcid": "bio/dm3_Me"
+            },
+            {
+              "dcid": "bio/dm6_Me"
+            }
+          ]
         }
       ]
     },
     "the birds in San Jose California are chirpy": {
       "items": [
         {
-          "span": "the birds in"
+          "span": "the"
+        },
+        {
+          "span": "birds",
+          "places": [
+            {
+              "dcid": "bio/D001717"
+            }
+          ]
+        },
+        {
+          "span": "in",
+          "places": [
+            {
+              "dcid": "bio/dm3_in"
+            },
+            {
+              "dcid": "bio/dm6_in"
+            }
+          ]
         },
         {
           "span": "San Jose California",
@@ -359,7 +686,26 @@
     "the birds in San Jose are chirpy": {
       "items": [
         {
-          "span": "the birds in"
+          "span": "the"
+        },
+        {
+          "span": "birds",
+          "places": [
+            {
+              "dcid": "bio/D001717"
+            }
+          ]
+        },
+        {
+          "span": "in",
+          "places": [
+            {
+              "dcid": "bio/dm3_in"
+            },
+            {
+              "dcid": "bio/dm6_in"
+            }
+          ]
         },
         {
           "span": "San Jose",
@@ -392,7 +738,26 @@
     "the birds in San Jose, California are chirpy": {
       "items": [
         {
-          "span": "the birds in"
+          "span": "the"
+        },
+        {
+          "span": "birds",
+          "places": [
+            {
+              "dcid": "bio/D001717"
+            }
+          ]
+        },
+        {
+          "span": "in",
+          "places": [
+            {
+              "dcid": "bio/dm3_in"
+            },
+            {
+              "dcid": "bio/dm6_in"
+            }
+          ]
         },
         {
           "span": "San Jose , California",
@@ -410,7 +775,26 @@
     "the birds in San Jose, Mountain View and Sunnyvale are chirpy": {
       "items": [
         {
-          "span": "the birds in"
+          "span": "the"
+        },
+        {
+          "span": "birds",
+          "places": [
+            {
+              "dcid": "bio/D001717"
+            }
+          ]
+        },
+        {
+          "span": "in",
+          "places": [
+            {
+              "dcid": "bio/dm3_in"
+            },
+            {
+              "dcid": "bio/dm6_in"
+            }
+          ]
         },
         {
           "span": "San Jose",

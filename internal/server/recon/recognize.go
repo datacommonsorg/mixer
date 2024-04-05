@@ -66,11 +66,142 @@ func RecognizePlaces(
 	resp := &pb.RecognizePlacesResponse{
 		QueryItems: map[string]*pb.RecognizePlacesResponse_Items{},
 	}
+
+	// map of query to list of spans with no places detected
+	query2noPlaceSpan := map[string][]string{}
 	for res := range resChan {
+		query2noPlaceSpan[res.query] = []string{}
+		for _, item := range res.items.GetItems() {
+			if len(item.GetPlaces()) == 0 {
+				query2noPlaceSpan[res.query] = append(query2noPlaceSpan[res.query], item.GetSpan())
+			}
+		}
 		resp.QueryItems[res.query] = res.items
 	}
 
+	// go through the query spans that didn't have any places detected and try
+	// to use id resolution to detect entities.
+	for _, query := range in.GetQueries() {
+		// try to get resolved entities for the spans that need to be resolved
+		spansToResolve := query2noPlaceSpan[query]
+		id2spans := getId2Span(spansToResolve)
+		if id2spans == nil {
+			continue
+		}
+		idsToResolve := []string{}
+		for id := range id2spans {
+			idsToResolve = append(idsToResolve, id)
+		}
+		resolvedIdEntities, err := GetResolvedIdEntities(ctx, store, "reconName", idsToResolve, "dcid")
+		if err != nil {
+			continue
+		}
+		// go through the resolved entities and create a map of spans to the entity
+		// it resolved to
+		span2item := map[string]*pb.RecognizePlacesResponse_Item{}
+		for _, entity := range resolvedIdEntities.GetEntities() {
+			places := []*pb.RecognizePlacesResponse_Place{}
+			for _, id := range entity.GetOutIds() {
+				places = append(places, &pb.RecognizePlacesResponse_Place{Dcid: id})
+			}
+			for span := range id2spans[entity.GetInId()] {
+				span2item[span] = &pb.RecognizePlacesResponse_Item{Span: span, Places: places}
+			}
+		}
+		// get the list of resolved spans and sort them by longer span first
+		spans := []string{}
+		for span := range span2item {
+			spans = append(spans, span)
+		}
+		sort.Slice(spans, func(i, j int) bool {
+			return len(spans[i]) > len(spans[j])
+		})
+		// iterate through the resolved spans and add the resolved items to the
+		// response
+		queryRespItems := resp.QueryItems[query].GetItems()
+		for _, span := range spans {
+			// iterate through the response items to see where this span came from
+			for i, item := range queryRespItems {
+				// if there were Places already detected in this response item, move on
+				// to the next item
+				if len(item.Places) > 0 {
+					continue
+				}
+				// try to split the span of the response item into a list of spans
+				// containing the current span as its own span. if not possible, move on
+				// to the next item.
+				newSpans := getNewSpanList(item.Span, span)
+				if len(newSpans) == 0 {
+					continue
+				}
+				// replace the current response item with a new list of items containing
+				// the new resolved entity
+				newItems := []*pb.RecognizePlacesResponse_Item{}
+				for _, newSpan := range newSpans {
+					trimmedSpan := strings.TrimSpace(newSpan)
+					if len(trimmedSpan) < 1 {
+						continue
+					}
+					if trimmedSpan == span {
+						newItems = append(newItems, span2item[span])
+					} else {
+						newItems = append(newItems, &pb.RecognizePlacesResponse_Item{Span: trimmedSpan})
+					}
+				}
+				newItems = append(newItems, queryRespItems[i+1:]...)
+				queryRespItems = append(queryRespItems[:i], newItems...)
+			}
+		}
+		resp.QueryItems[query].Items = queryRespItems
+	}
+
 	return resp, nil
+}
+
+func getNewSpanList(origSpan string, splitSpan string) []string {
+	newSpans := strings.Split(origSpan, splitSpan)
+	// if split span is not found in original span, return empty list
+	if len(newSpans) < 2 {
+		return []string{}
+	}
+	// if split span is not found in original span, return empty list
+	if len(newSpans[0]) > 0 && !strings.HasSuffix(newSpans[0], " ") {
+		return []string{}
+	}
+	// if split span is not found in original span, return empty list
+	if len(newSpans[1]) > 0 && !strings.HasPrefix(newSpans[1], " ") {
+		return []string{}
+	}
+	return []string{strings.TrimSpace(newSpans[0]), splitSpan, strings.TrimSpace(newSpans[1])}
+}
+
+// Takes a list of spans and returns a map of id to use for resolution to the
+// original span for that id.
+func getId2Span(spansToResolve []string) map[string]map[string]struct{} {
+	if len(spansToResolve) < 1 {
+		return nil
+	}
+	id2spans := map[string]map[string]struct{}{}
+	for _, span := range spansToResolve {
+		spanTokens := strings.Split(span, " ")
+		for i := range spanTokens {
+			span := ""
+			// make n-grams from the span tokens
+			for j := i; j < len(spanTokens); j++ {
+				span = span + " " + spanTokens[j]
+				span = strings.TrimSpace(span)
+				id := strings.ReplaceAll(span, " ,", "")
+				id = strings.ReplaceAll(id, ",", "")
+				id = strings.ReplaceAll(id, "^", "")
+				id = strings.ToLower(id)
+				if _, ok := id2spans[id]; !ok {
+					id2spans[id] = map[string]struct{}{}
+				}
+				id2spans[id][span] = struct{}{}
+			}
+		}
+	}
+	return id2spans
 }
 
 func tokenize(query string) []string {
