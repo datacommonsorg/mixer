@@ -106,6 +106,7 @@ const (
 	Mixer_FindEntities_FullMethodName                 = "/datacommons.Mixer/FindEntities"
 	Mixer_BulkFindEntities_FullMethodName             = "/datacommons.Mixer/BulkFindEntities"
 	Mixer_RecognizePlaces_FullMethodName              = "/datacommons.Mixer/RecognizePlaces"
+	Mixer_RecognizeEntities_FullMethodName            = "/datacommons.Mixer/RecognizeEntities"
 	Mixer_UpdateCache_FullMethodName                  = "/datacommons.Mixer/UpdateCache"
 )
 
@@ -229,6 +230,8 @@ type MixerClient interface {
 	BulkFindEntities(ctx context.Context, in *proto.BulkFindEntitiesRequest, opts ...grpc.CallOption) (*proto.BulkFindEntitiesResponse, error)
 	// Recognize places from a NL query.
 	RecognizePlaces(ctx context.Context, in *proto.RecognizePlacesRequest, opts ...grpc.CallOption) (*proto.RecognizePlacesResponse, error)
+	// Recognize non-place entities from a NL query.
+	RecognizeEntities(ctx context.Context, in *proto.RecognizePlacesRequest, opts ...grpc.CallOption) (*proto.RecognizePlacesResponse, error)
 	UpdateCache(ctx context.Context, in *proto.UpdateCacheRequest, opts ...grpc.CallOption) (*proto.UpdateCacheResponse, error)
 }
 
@@ -807,6 +810,15 @@ func (c *mixerClient) RecognizePlaces(ctx context.Context, in *proto.RecognizePl
 	return out, nil
 }
 
+func (c *mixerClient) RecognizeEntities(ctx context.Context, in *proto.RecognizePlacesRequest, opts ...grpc.CallOption) (*proto.RecognizePlacesResponse, error) {
+	out := new(proto.RecognizePlacesResponse)
+	err := c.cc.Invoke(ctx, Mixer_RecognizeEntities_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *mixerClient) UpdateCache(ctx context.Context, in *proto.UpdateCacheRequest, opts ...grpc.CallOption) (*proto.UpdateCacheResponse, error) {
 	out := new(proto.UpdateCacheResponse)
 	err := c.cc.Invoke(ctx, Mixer_UpdateCache_FullMethodName, in, out, opts...)
@@ -936,6 +948,8 @@ type MixerServer interface {
 	BulkFindEntities(context.Context, *proto.BulkFindEntitiesRequest) (*proto.BulkFindEntitiesResponse, error)
 	// Recognize places from a NL query.
 	RecognizePlaces(context.Context, *proto.RecognizePlacesRequest) (*proto.RecognizePlacesResponse, error)
+	// Recognize non-place entities from a NL query.
+	RecognizeEntities(context.Context, *proto.RecognizePlacesRequest) (*proto.RecognizePlacesResponse, error)
 	UpdateCache(context.Context, *proto.UpdateCacheRequest) (*proto.UpdateCacheResponse, error)
 }
 
@@ -1131,6 +1145,9 @@ func (UnimplementedMixerServer) BulkFindEntities(context.Context, *proto.BulkFin
 }
 func (UnimplementedMixerServer) RecognizePlaces(context.Context, *proto.RecognizePlacesRequest) (*proto.RecognizePlacesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RecognizePlaces not implemented")
+}
+func (UnimplementedMixerServer) RecognizeEntities(context.Context, *proto.RecognizePlacesRequest) (*proto.RecognizePlacesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RecognizeEntities not implemented")
 }
 func (UnimplementedMixerServer) UpdateCache(context.Context, *proto.UpdateCacheRequest) (*proto.UpdateCacheResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateCache not implemented")
@@ -2281,6 +2298,24 @@ func _Mixer_RecognizePlaces_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_RecognizeEntities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(proto.RecognizePlacesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).RecognizeEntities(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_RecognizeEntities_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).RecognizeEntities(ctx, req.(*proto.RecognizePlacesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Mixer_UpdateCache_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(proto.UpdateCacheRequest)
 	if err := dec(in); err != nil {
@@ -2557,6 +2592,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RecognizePlaces",
 			Handler:    _Mixer_RecognizePlaces_Handler,
+		},
+		{
+			MethodName: "RecognizeEntities",
+			Handler:    _Mixer_RecognizeEntities_Handler,
 		},
 		{
 			MethodName: "UpdateCache",

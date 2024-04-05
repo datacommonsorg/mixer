@@ -484,6 +484,13 @@ func (s *Server) RecognizePlaces(
 	return recon.RecognizePlaces(ctx, in, s.store, false)
 }
 
+// RecognizeEntities implements API for Mixer.RecognizeEntities.
+func (s *Server) RecognizeEntities(
+	ctx context.Context, in *pb.RecognizePlacesRequest,
+) (*pb.RecognizePlacesResponse, error) {
+	return recon.RecognizeEntities(ctx, in, s.store, false)
+}
+
 // SearchStatVar implements API for Mixer.SearchStatVar.
 func (s *Server) SearchStatVar(
 	ctx context.Context, in *pb.SearchStatVarRequest,

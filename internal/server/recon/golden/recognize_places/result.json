@@ -273,6 +273,33 @@
         }
       ]
     },
+    "tell me about Benzodiazepine, derivatives and their use in California": {
+      "items": [
+        {
+          "span": "tell me about Benzodiazepine , derivatives and their use in"
+        },
+        {
+          "span": "California",
+          "places": [
+            {
+              "dcid": "geoId/06"
+            },
+            {
+              "dcid": "geoId/2412150"
+            },
+            {
+              "dcid": "geoId/4210768"
+            },
+            {
+              "dcid": "geoId/2910468"
+            },
+            {
+              "dcid": "geoId/2111872"
+            }
+          ]
+        }
+      ]
+    },
     "tell me about chicago": {
       "items": [
         {

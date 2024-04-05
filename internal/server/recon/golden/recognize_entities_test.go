@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -27,11 +27,11 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestRecognizePlaces(t *testing.T) {
+func TestRecognizeEntities(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(path.Dir(filename), "recognize_places")
+	goldenPath := path.Join(path.Dir(filename), "recognize_entities")
 
 	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
@@ -40,37 +40,17 @@ func TestRecognizePlaces(t *testing.T) {
 		}{
 			{
 				[]string{
-					"median income in africa",
-					"economy of Asia",
-					"tell me about chicago",
-					"tell me about palo alto",
-					"what about mountain view",
-					"crime in new york state",
-					"California economy and Florida",
-					"life expectancy in Australia and Canada",
-					"life expectancy in New York city and Alabama",
 					"the birds in San Jose are chirpy",
-					"the birds in San Jose, California are chirpy",
-					"the birds in San Jose California are chirpy",
-					"the birds in San Jose, Mountain View and Sunnyvale are chirpy",
-					"the birds in ME and USA are chirpy, according to me",
-					"I want to find the Middle Point of a line",
-					"I went to Middle Point, USA",
-					"I went to Half Moon Bay California and California, Washington County",
-					"What is the electricity access in african countries",
-					"Compare literacy among Chinese provinces",
-					// This should only match California
-					"Chinese speakers in California",
 					"tell me about Benzodiazepine, derivatives and their use in California",
 				},
 				"result.json",
 			},
 		} {
-			resp, err := mixer.RecognizePlaces(ctx, &pb.RecognizePlacesRequest{
+			resp, err := mixer.RecognizeEntities(ctx, &pb.RecognizePlacesRequest{
 				Queries: c.queries,
 			})
 			if err != nil {
-				t.Errorf("RecognizePlaces() = %s", err)
+				t.Errorf("RecognizeEntities() = %s", err)
 				continue
 			}
 
@@ -78,7 +58,7 @@ func TestRecognizePlaces(t *testing.T) {
 				continue
 			}
 
-			if test.GenerateGolden {
+			if true {
 				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}

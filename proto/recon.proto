@@ -35,6 +35,8 @@ message ReconEntities {
     // recon request.
     // NOTE: A single ID prop might be repeated.
     repeated ID ids = 1;
+    // All types of the entity. Ordered by dominant place type.
+    repeated string types = 2;
   }
   repeated Entity entities = 1;
 }
@@ -143,6 +145,8 @@ message RecognizePlacesRequest {
 message RecognizePlacesResponse {
   message Place {
     string dcid = 1;
+    // All types of the entity. Ordered by dominant place type.
+    repeated string types = 2;
   }
 
   message Item {

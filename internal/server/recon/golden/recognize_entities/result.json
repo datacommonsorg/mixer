@@ -1,0 +1,101 @@
+{
+  "queryItems": {
+    "tell me about Benzodiazepine, derivatives and their use in California": {
+      "items": [
+        {
+          "span": "tell"
+        },
+        {
+          "span": "me",
+          "places": [
+            {
+              "dcid": "bio/dm3_Me"
+            },
+            {
+              "dcid": "bio/dm6_Me"
+            }
+          ]
+        },
+        {
+          "span": "about"
+        },
+        {
+          "span": "Benzodiazepine, derivatives",
+          "places": [
+            {
+              "dcid": "chem/N03AE"
+            },
+            {
+              "dcid": "chem/N05BA"
+            },
+            {
+              "dcid": "chem/N05CD"
+            }
+          ]
+        },
+        {
+          "span": "and their use"
+        },
+        {
+          "span": "in",
+          "places": [
+            {
+              "dcid": "bio/dm3_in"
+            },
+            {
+              "dcid": "bio/dm6_in"
+            }
+          ]
+        },
+        {
+          "span": "California",
+          "places": [
+            {
+              "dcid": "bio/D002140"
+            }
+          ]
+        }
+      ]
+    },
+    "the birds in San Jose are chirpy": {
+      "items": [
+        {
+          "span": "the"
+        },
+        {
+          "span": "birds",
+          "places": [
+            {
+              "dcid": "bio/D001717"
+            }
+          ]
+        },
+        {
+          "span": "in",
+          "places": [
+            {
+              "dcid": "bio/dm3_in"
+            },
+            {
+              "dcid": "bio/dm6_in"
+            }
+          ]
+        },
+        {
+          "span": "San",
+          "places": [
+            {
+              "dcid": "bio/dm3_san"
+            },
+            {
+              "dcid": "bio/dm6_san"
+            }
+          ]
+        },
+        {
+          "span": "Jose are chirpy"
+        }
+      ]
+    }
+  }
+}
