@@ -135,75 +135,90 @@ func RecognizeEntities(
 			}
 		})
 
-		// iterate through the resolved spans and add the resolved items to the
-		// response
-		queryRespItems := []*pb.RecognizePlacesResponse_Item{{Span: query}}
-		for _, span := range spans {
-			// iterate through the response items to find the item that contains this
-			// curent span. If found, split the response item into multiple items of:
-			// the part of the item before the current span, the item with the current
-			// span and the part of the item after the current span. Do this so that
-			// the spans of the list of items will form the original query.
-			// example:
-			// span: "ab cd"
-			// spans of query resp items: ["testing query ab cd ef g"]
-			// wanted spans of query resp items: ["testing query" "ab cd" "ef g"] and
-			// the item for "ab cd" will have resolved places attached
-			for i, item := range queryRespItems {
-				// if there were Places already detected in this response item, move on
-				// to the next item
-				if len(item.Places) > 0 {
-					continue
-				}
-				// try to split the span of the response item into a list of spans
-				// containing the current span as its own span. if not possible, move on
-				// to the next item.
-				newSpans := getNewSpanList(item.Span, span)
-				if len(newSpans) == 0 {
-					continue
-				}
-				// replace the current response item with a new list of items containing
-				// the new resolved entity
-				newItems := []*pb.RecognizePlacesResponse_Item{}
-				for _, newSpan := range newSpans {
-					trimmedSpan := strings.TrimSpace(newSpan)
-					if len(trimmedSpan) < 1 {
-						continue
-					}
-					if trimmedSpan == span {
-						newItems = append(newItems, span2item[span])
-					} else {
-						newItems = append(newItems, &pb.RecognizePlacesResponse_Item{Span: trimmedSpan})
-					}
-				}
-				newItems = append(newItems, queryRespItems[i+1:]...)
-				queryRespItems = append(queryRespItems[:i], newItems...)
-			}
-		}
+		// Get the response items
+		queryRespItems := getItemsForSpans(spans, query, span2item)
 		resp.QueryItems[query] = &pb.RecognizePlacesResponse_Items{Items: queryRespItems}
 	}
 	return resp, nil
 }
 
-// Takes a span and splits it by another span into a list of 3 spans. Example:
-// origSpan: "ab cd ef g", splitSpan: "cd ef", result: ["ab", "cd ef", "g"]
-func getNewSpanList(origSpan string, splitSpan string) []string {
-	newSpans := strings.Split(origSpan, splitSpan)
-	// if split span is not found in original span, return empty list
-	if len(newSpans) < 2 {
-		return []string{}
+// Takes a query and list of spans and gets the corresponding list of recognize
+// places response items. With the list of spans, we want the response items to
+// have a subset of non-overlapping spans. We do that with a greedy approach of
+// matching the longest span in query, getting the remaining query parts, and
+// recursively doing the match.
+func getItemsForSpans(spans []string, query string, span2item map[string]*pb.RecognizePlacesResponse_Item) []*pb.RecognizePlacesResponse_Item {
+	queryRespItems := []*pb.RecognizePlacesResponse_Item{}
+	// If empty query, return empty list
+	if len(query) == 0 {
+		return queryRespItems
 	}
-	// if the item before splitSpan is not empty and does not end in a space,
-	// assume a word got split in the middle and return empty list.
-	if len(newSpans[0]) > 0 && !strings.HasSuffix(newSpans[0], " ") {
-		return []string{}
+	// If empty list of spans, return the query as the only item
+	if len(spans) == 0 {
+		return append(queryRespItems, &pb.RecognizePlacesResponse_Item{Span: query})
 	}
-	// if the item after splitSpan is not empty and does not start with a space,
-	// assume a word got split in the middle and return empty list.
-	if len(newSpans[1]) > 0 && !strings.HasPrefix(newSpans[1], " ") {
-		return []string{}
+	span := spans[0]
+	queryParts := splitQueryBySpan(query, span)
+	for _, part := range queryParts {
+		if part == span {
+			queryRespItems = append(queryRespItems, span2item[span])
+		} else {
+			queryRespItems = append(queryRespItems, getItemsForSpans(spans[1:], part, span2item)...)
+		}
 	}
-	return []string{strings.TrimSpace(newSpans[0]), splitSpan, strings.TrimSpace(newSpans[1])}
+	return queryRespItems
+}
+
+// Splits a query by a span into a list of parts like: non-span part, span part,
+// non-span part, span part, etc. If the query does not contain the span,
+// returns a list with the query as the only item.
+// Examples
+// query: "ab cd ef ab g", span: "ab", result: ["ab", "cd ef", "ab", "g"]
+// query: "ab cd ef g", span: "jk", result: ["ab cd ef g"]
+func splitQueryBySpan(query string, span string) []string {
+	splits := strings.Split(query, span)
+	// if span is not found in query, return just the query
+	if len(splits) < 2 {
+		return []string{query}
+	}
+	queryParts := []string{}
+	// prefix to add to the next split to be processed
+	nextPartPrefix := ""
+	// go through all the splits and add the span between each split if it was a
+	// valid split (we only want to split on complete words)
+	for i, split := range splits {
+		queryPart := nextPartPrefix + split
+		// if this is the last item in the list, add the query part and finish
+		if i == len(splits)-1 {
+			queryParts = append(queryParts, strings.TrimSpace(queryPart))
+			break
+		}
+		// Whether or not to skip adding anything in this round. We want to skip if
+		// this was not a valid split.
+		shouldSkipAdding := false
+		// if the current split is not empty and does not end in a space, assume
+		// span is part of the last word in current split which is not a valid split.
+		if len(split) > 0 && !strings.HasSuffix(split, " ") {
+			shouldSkipAdding = true
+		}
+		// if the next split is not empty and does not start with a space, assume
+		// span is part of the first word in next split which is not a valid split.
+		if len(splits[i+1]) > 0 && !strings.HasPrefix(splits[i+1], " ") {
+			shouldSkipAdding = true
+		}
+		// if we're skipping adding in this round, add span to the current query
+		// part and set that as the prefix for the next part and continue to next
+		// part
+		if shouldSkipAdding {
+			nextPartPrefix = queryPart + span
+			continue
+		}
+		// add current query part and span to the list of query parts.
+		queryParts = append(queryParts, strings.TrimSpace(queryPart))
+		queryParts = append(queryParts, span)
+		nextPartPrefix = ""
+	}
+	return queryParts
 }
 
 // Gets the reconName for a span.

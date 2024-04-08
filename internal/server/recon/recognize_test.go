@@ -441,11 +441,11 @@ func TestGetId2Span(t *testing.T) {
 	}
 }
 
-func TestGetNewSpanList(t *testing.T) {
+func TestSplitQueryBySpan(t *testing.T) {
 	for _, c := range []struct {
-		origSpan  string
-		splitSpan string
-		want      []string
+		query string
+		span  string
+		want  []string
 	}{
 		{
 			"ab cd ef g",
@@ -463,19 +463,71 @@ func TestGetNewSpanList(t *testing.T) {
 			[]string{"ab cd", "ef g", ""},
 		},
 		{
+			"ab cd ef ab g",
+			"ab",
+			[]string{"", "ab", "cd ef", "ab", "g"},
+		},
+		{
+			"abcd ef ab g",
+			"ab",
+			[]string{"abcd ef", "ab", "g"},
+		},
+		{
+			"abcd efab g",
+			"ab",
+			[]string{"abcd efab g"},
+		},
+		{
+			"ab cd ef g",
+			"efg",
+			[]string{"ab cd ef g"},
+		},
+		{
 			"ab cd ef g",
 			"hi",
-			[]string{},
+			[]string{"ab cd ef g"},
 		},
 		{
 			"ab cd ef g",
 			"cd e",
-			[]string{},
+			[]string{"ab cd ef g"},
 		},
 	} {
-		got := getNewSpanList(c.origSpan, c.splitSpan)
+		got := splitQueryBySpan(c.query, c.span)
 		if diff := cmp.Diff(got, c.want); diff != "" {
-			t.Errorf("GetNewSpanList origSpan %s and splitSpan %s got diff: %s", c.origSpan, c.splitSpan, diff)
+			t.Errorf("SplitQueryBySpan for query %s and span %s got diff: %s", c.query, c.span, diff)
+		}
+	}
+}
+
+func TestGetItemsForSpans(t *testing.T) {
+	cmpOpts := cmp.Options{
+		protocmp.Transform(),
+	}
+	span2Item := map[string]*pb.RecognizePlacesResponse_Item{
+		"a^b":    {Span: "a^b", Places: []*pb.RecognizePlacesResponse_Place{{Dcid: "ab"}}},
+		"cd, ef": {Span: "cd, ef", Places: []*pb.RecognizePlacesResponse_Place{{Dcid: "cdef"}}},
+	}
+	for _, c := range []struct {
+		query string
+		want  []*pb.RecognizePlacesResponse_Item
+	}{
+		{
+			"ab cd ef g",
+			[]*pb.RecognizePlacesResponse_Item{{Span: "ab cd ef g"}},
+		},
+		{
+			"a^b cd ef a^b",
+			[]*pb.RecognizePlacesResponse_Item{{Span: "a^b", Places: []*pb.RecognizePlacesResponse_Place{{Dcid: "ab"}}}, {Span: "cd ef"}, {Span: "a^b", Places: []*pb.RecognizePlacesResponse_Place{{Dcid: "ab"}}}},
+		},
+		{
+			"a^b cd, ef g",
+			[]*pb.RecognizePlacesResponse_Item{{Span: "a^b", Places: []*pb.RecognizePlacesResponse_Place{{Dcid: "ab"}}}, {Span: "cd, ef", Places: []*pb.RecognizePlacesResponse_Place{{Dcid: "cdef"}}}, {Span: "g"}},
+		},
+	} {
+		got := getItemsForSpans([]string{"cd, ef", "a^b"}, c.query, span2Item)
+		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
+			t.Errorf("GetItemsForSpans for query %s got diff: %s", c.query, diff)
 		}
 	}
 }
