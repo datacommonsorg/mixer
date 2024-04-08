@@ -390,3 +390,92 @@ func TestRankAndTrimCandidates(t *testing.T) {
 		}
 	}
 }
+
+func TestGetId2Span(t *testing.T) {
+	for _, c := range []struct {
+		query string
+		want  map[string]map[string]struct{}
+	}{
+		{
+			"entities1, Entities^2 , and entities,^2",
+			map[string]map[string]struct{}{
+				"entities1": {
+					"entities1,": struct{}{},
+				},
+				"entities1 entities2": {
+					"entities1, Entities^2":   struct{}{},
+					"entities1, Entities^2 ,": struct{}{},
+				},
+				"entities1 entities2 and": {
+					"entities1, Entities^2 , and": struct{}{},
+				},
+				"entities1 entities2 and entities2": {
+					"entities1, Entities^2 , and entities,^2": struct{}{},
+				},
+				"entities2": {
+					"Entities^2":   struct{}{},
+					"Entities^2 ,": struct{}{},
+					"entities,^2":  struct{}{},
+				},
+				"entities2 and": {
+					"Entities^2 , and": struct{}{},
+				},
+				"entities2 and entities2": {
+					"Entities^2 , and entities,^2": struct{}{},
+				},
+				"and": {
+					"and":   struct{}{},
+					", and": struct{}{},
+				},
+				"and entities2": {
+					"and entities,^2":   struct{}{},
+					", and entities,^2": struct{}{},
+				},
+			},
+		},
+	} {
+		got := getId2Span(c.query)
+		if diff := cmp.Diff(got, c.want); diff != "" {
+			t.Errorf("GetId2Span for query %s got diff: %s", c.query, diff)
+		}
+	}
+}
+
+func TestGetNewSpanList(t *testing.T) {
+	for _, c := range []struct {
+		origSpan  string
+		splitSpan string
+		want      []string
+	}{
+		{
+			"ab cd ef g",
+			"cd",
+			[]string{"ab", "cd", "ef g"},
+		},
+		{
+			"ab cd ef g",
+			"ab",
+			[]string{"", "ab", "cd ef g"},
+		},
+		{
+			"ab cd ef g",
+			"ef g",
+			[]string{"ab cd", "ef g", ""},
+		},
+		{
+			"ab cd ef g",
+			"hi",
+			[]string{},
+		},
+		{
+			"ab cd ef g",
+			"cd e",
+			[]string{},
+		},
+	} {
+		got := getNewSpanList(c.origSpan, c.splitSpan)
+		if diff := cmp.Diff(got, c.want); diff != "" {
+			t.Errorf("GetNewSpanList origSpan %s and splitSpan %s got diff: %s", c.origSpan, c.splitSpan, diff)
+		}
+	}
+}
