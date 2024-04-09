@@ -38,6 +38,10 @@ const (
 	reconNGramLimit                     = 10
 )
 
+var (
+	wordSeparators = map[byte]struct{}{' ': struct{}{}, ',': struct{}{}, ';': struct{}{}, '.': struct{}{}}
+)
+
 // RecognizePlaces implements API for Mixer.RecognizePlaces.
 func RecognizePlaces(
 	ctx context.Context,
@@ -120,15 +124,15 @@ func RecognizeEntities(
 		// get the list of resolved spans and sort them by more words first. If two
 		// spans have the same number of words, sort alphabetically.
 		spans := []string{}
+		span2count := map[string]int{}
 		for span := range span2item {
 			spans = append(spans, span)
+			span2count[span] = strings.Count(span, " ")
 		}
 		sort.Slice(spans, func(i, j int) bool {
-			iCount := strings.Count(spans[i], " ")
-			jCount := strings.Count(spans[j], " ")
-			if iCount > jCount {
+			if span2count[spans[i]] > span2count[spans[j]] {
 				return true
-			} else if jCount > iCount {
+			} else if span2count[spans[j]] > span2count[spans[i]] {
 				return false
 			} else {
 				return spans[i] < spans[j]
@@ -170,60 +174,67 @@ func getItemsForSpans(spans []string, query string, span2item map[string]*pb.Rec
 }
 
 // Splits a query by a span into a list of parts like: non-span part, span part,
-// non-span part, span part, etc. If the query does not contain the span,
-// returns a list with the query as the only item.
+// non-span part, span part, etc. and should only split on complete words. If
+// the query does not contain the span, returns a list with the query as the
+// only item.
 // Examples
 // query: "ab cd ef ab g", span: "ab", result: ["ab", "cd ef", "ab", "g"]
 // query: "ab cd ef g", span: "jk", result: ["ab cd ef g"]
 func splitQueryBySpan(query string, span string) []string {
-	splits := strings.Split(query, span)
-	// if span is not found in query, return just the query
-	if len(splits) < 2 {
-		return []string{query}
+	i := 0
+	parts := []string{""}
+
+	for i < len(query) {
+		// a valid span match is one that starts at the beginning of the query or
+		// after a word separator
+		validSpanStart := true
+		if i > 0 {
+			_, validSpanStart = wordSeparators[query[i-1]]
+		}
+		if validSpanStart {
+			if strings.HasPrefix(query[i:], span) {
+				endIdx := i + len(span)
+				// a valid span match is one that ends at the end of the query or before
+				// a word separator
+				validSpanEnd := true
+				if endIdx < len(query) {
+					_, validSpanEnd = wordSeparators[query[endIdx]]
+				}
+				if validSpanEnd {
+					// valid span match is found so add the span to the list of parts
+					parts = append(parts, span)
+					// add an empty span to start the possibly next non-span part
+					parts = append(parts, "")
+					// move on to search the next part of the query after the span we just
+					// found
+					i = endIdx
+					continue
+				}
+			}
+		}
+		// this current index in the query is not part of a valid span match so just
+		// add the current character to the current non-span part
+		parts[len(parts)-1] += string(query[i])
+		// move on to search from the next index in the query
+		i += 1
 	}
-	queryParts := []string{}
-	// prefix to add to the next split to be processed
-	nextPartPrefix := ""
-	// go through all the splits and add the span between each split if it was a
-	// valid split (we only want to split on complete words)
-	for i, split := range splits {
-		queryPart := nextPartPrefix + split
-		// if this is the last item in the list, add the query part and finish
-		if i == len(splits)-1 {
-			queryParts = append(queryParts, strings.TrimSpace(queryPart))
-			break
-		}
-		// Whether or not to skip adding anything in this round. We want to skip if
-		// this was not a valid split.
-		shouldSkipAdding := false
-		// if the current split is not empty and does not end in a space, assume
-		// span is part of the last word in current split which is not a valid split.
-		if len(split) > 0 && !strings.HasSuffix(split, " ") {
-			shouldSkipAdding = true
-		}
-		// if the next split is not empty and does not start with a space, assume
-		// span is part of the first word in next split which is not a valid split.
-		if len(splits[i+1]) > 0 && !strings.HasPrefix(splits[i+1], " ") {
-			shouldSkipAdding = true
-		}
-		// if we're skipping adding in this round, add span to the current query
-		// part and set that as the prefix for the next part and continue to next
-		// part
-		if shouldSkipAdding {
-			nextPartPrefix = queryPart + span
+
+	// trim spaces and filter out empty parts
+	filteredParts := []string{}
+	for _, part := range parts {
+		trimmedPart := strings.TrimSpace(part)
+		if len(trimmedPart) == 0 {
 			continue
 		}
-		// add current query part and span to the list of query parts.
-		queryParts = append(queryParts, strings.TrimSpace(queryPart))
-		queryParts = append(queryParts, span)
-		nextPartPrefix = ""
+		filteredParts = append(filteredParts, trimmedPart)
 	}
-	return queryParts
+	return filteredParts
 }
 
 // Gets the reconName for a span.
 // The logic here should correspond to the logic for processing name into
 // reconName in flume (https://source.corp.google.com/piper///depot/google3/datacommons/prophet/flume_generator/triple_helper.cc;l=168-173)
+// TODO: also clean up consecutive spaces
 func getReconName(span string) string {
 	reconName := strings.ReplaceAll(span, " ,", "")
 	reconName = strings.ReplaceAll(reconName, ",", "")

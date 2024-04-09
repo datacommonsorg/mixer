@@ -452,44 +452,73 @@ func TestSplitQueryBySpan(t *testing.T) {
 			"cd",
 			[]string{"ab", "cd", "ef g"},
 		},
+		// termination characters "," and ";" should be valid
+		{
+			"ab,cd;ef,g",
+			"cd",
+			[]string{"ab,", "cd", ";ef,g"},
+		},
+		// termination characters " " and "." should be valid
+		{
+			"ab cd.ef,g",
+			"cd",
+			[]string{"ab", "cd", ".ef,g"},
+		},
+		// span found at the start of the query
 		{
 			"ab cd ef g",
 			"ab",
-			[]string{"", "ab", "cd ef g"},
+			[]string{"ab", "cd ef g"},
 		},
+		// span found at the end of the query
 		{
 			"ab cd ef g",
 			"ef g",
-			[]string{"ab cd", "ef g", ""},
+			[]string{"ab cd", "ef g"},
 		},
+		// span found multiple times in the query
 		{
 			"ab cd ef ab g",
 			"ab",
-			[]string{"", "ab", "cd ef", "ab", "g"},
+			[]string{"ab", "cd ef", "ab", "g"},
 		},
+		// all the words in the query are the span
+		{
+			"ab;ab,ab ab",
+			"ab",
+			[]string{"ab", ";", "ab", ",", "ab", "ab"},
+		},
+		// span found multiple times in the query but only the last case is valid
+		// because first case is part of another word
 		{
 			"abcd ef ab g",
 			"ab",
 			[]string{"abcd ef", "ab", "g"},
 		},
+		// span found multiple times in the query but none of the cases are valid
+		// because all cases are part of another word
 		{
 			"abcd efab g",
 			"ab",
 			[]string{"abcd efab g"},
 		},
+		// single word span found over two words in the query is not valid
 		{
 			"ab cd ef g",
 			"efg",
 			[]string{"ab cd ef g"},
 		},
-		{
-			"ab cd ef g",
-			"hi",
-			[]string{"ab cd ef g"},
-		},
+		// two word span found in the query but one of the words is not a complete
+		// word in the query, so not valid
 		{
 			"ab cd ef g",
 			"cd e",
+			[]string{"ab cd ef g"},
+		},
+		// span is not found in the query
+		{
+			"ab cd ef g",
+			"hi",
 			[]string{"ab cd ef g"},
 		},
 	} {
