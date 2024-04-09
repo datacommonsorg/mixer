@@ -39,7 +39,7 @@ const (
 )
 
 var (
-	wordSeparators = map[byte]struct{}{' ': struct{}{}, ',': struct{}{}, ';': struct{}{}, '.': struct{}{}}
+	wordSeparators = map[byte]bool{' ': true, ',': true, ';': true, '.': true}
 )
 
 // RecognizePlaces implements API for Mixer.RecognizePlaces.
@@ -187,20 +187,12 @@ func splitQueryBySpan(query string, span string) []string {
 	for i < len(query) {
 		// a valid span match is one that starts at the beginning of the query or
 		// after a word separator
-		validSpanStart := true
-		if i > 0 {
-			_, validSpanStart = wordSeparators[query[i-1]]
-		}
-		if validSpanStart {
+		if i == 0 || wordSeparators[query[i-1]] {
 			if strings.HasPrefix(query[i:], span) {
 				endIdx := i + len(span)
 				// a valid span match is one that ends at the end of the query or before
 				// a word separator
-				validSpanEnd := true
-				if endIdx < len(query) {
-					_, validSpanEnd = wordSeparators[query[endIdx]]
-				}
-				if validSpanEnd {
+				if endIdx == len(query) || wordSeparators[query[endIdx]] {
 					// valid span match is found so add the span to the list of parts
 					parts = append(parts, span)
 					// add an empty span to start the possibly next non-span part
@@ -254,8 +246,9 @@ func getId2Span(query string) map[string]map[string]struct{} {
 	spanTokens := strings.Split(query, " ")
 	for i := range spanTokens {
 		span := ""
+		maxNGramLength := int(math.Min(float64(len(spanTokens)), reconNGramLimit+1))
 		// make n-grams from the span tokens
-		for j := i; j < int(math.Min(float64(len(spanTokens)), reconNGramLimit+1)); j++ {
+		for j := i; j < maxNGramLength; j++ {
 			span = span + " " + spanTokens[j]
 			span = strings.TrimSpace(span)
 			id := getReconName(span)

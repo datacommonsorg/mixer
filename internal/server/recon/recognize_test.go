@@ -399,24 +399,32 @@ func TestGetId2Span(t *testing.T) {
 		{
 			"entities1, Entities^2 , and entities,^2",
 			map[string]map[string]struct{}{
+				// strip a token of ","
 				"entities1": {
 					"entities1,": struct{}{},
 				},
+				// combine 2 tokens and strip them of "," and "^", and convert them to
+				// all lowercase
 				"entities1 entities2": {
 					"entities1, Entities^2":   struct{}{},
 					"entities1, Entities^2 ,": struct{}{},
 				},
+				// combine 3 tokens
 				"entities1 entities2 and": {
 					"entities1, Entities^2 , and": struct{}{},
 				},
+				// combine 4 tokens
 				"entities1 entities2 and entities2": {
 					"entities1, Entities^2 , and entities,^2": struct{}{},
 				},
+				// 3 tokens that map to the same id
 				"entities2": {
 					"Entities^2":   struct{}{},
 					"Entities^2 ,": struct{}{},
 					"entities,^2":  struct{}{},
 				},
+				// following are the rest of the ids generated from the query that have
+				// some combination of the processing done in previous cases
 				"entities2 and": {
 					"Entities^2 , and": struct{}{},
 				},
@@ -530,6 +538,7 @@ func TestSplitQueryBySpan(t *testing.T) {
 }
 
 func TestGetItemsForSpans(t *testing.T) {
+	// this transforms protobuf messages to be used in cmp.Diff
 	cmpOpts := cmp.Options{
 		protocmp.Transform(),
 	}
@@ -541,14 +550,17 @@ func TestGetItemsForSpans(t *testing.T) {
 		query string
 		want  []*pb.RecognizePlacesResponse_Item
 	}{
+		// no spans recognized
 		{
 			"ab cd ef g",
 			[]*pb.RecognizePlacesResponse_Item{{Span: "ab cd ef g"}},
 		},
+		// one span recognized in two spots
 		{
 			"a^b cd ef a^b",
 			[]*pb.RecognizePlacesResponse_Item{{Span: "a^b", Places: []*pb.RecognizePlacesResponse_Place{{Dcid: "ab"}}}, {Span: "cd ef"}, {Span: "a^b", Places: []*pb.RecognizePlacesResponse_Place{{Dcid: "ab"}}}},
 		},
+		// two different spans recognized in the query
 		{
 			"a^b cd, ef g",
 			[]*pb.RecognizePlacesResponse_Item{{Span: "a^b", Places: []*pb.RecognizePlacesResponse_Place{{Dcid: "ab"}}}, {Span: "cd, ef", Places: []*pb.RecognizePlacesResponse_Place{{Dcid: "cdef"}}}, {Span: "g"}},
