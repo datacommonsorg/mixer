@@ -542,28 +542,28 @@ func TestGetItemsForSpans(t *testing.T) {
 	cmpOpts := cmp.Options{
 		protocmp.Transform(),
 	}
-	span2Item := map[string]*pb.RecognizePlacesResponse_Item{
-		"a^b":    {Span: "a^b", Places: []*pb.RecognizePlacesResponse_Place{{Dcid: "ab"}}},
-		"cd, ef": {Span: "cd, ef", Places: []*pb.RecognizePlacesResponse_Place{{Dcid: "cdef"}}},
+	span2Item := map[string]*pb.RecognizeEntitiesResponse_Item{
+		"a^b":    {Span: "a^b", Entities: []*pb.RecognizeEntitiesResponse_Entity{{Dcid: "ab"}}},
+		"cd, ef": {Span: "cd, ef", Entities: []*pb.RecognizeEntitiesResponse_Entity{{Dcid: "cdef"}}},
 	}
 	for _, c := range []struct {
 		query string
-		want  []*pb.RecognizePlacesResponse_Item
+		want  []*pb.RecognizeEntitiesResponse_Item
 	}{
 		// no spans recognized
 		{
 			"ab cd ef g",
-			[]*pb.RecognizePlacesResponse_Item{{Span: "ab cd ef g"}},
+			[]*pb.RecognizeEntitiesResponse_Item{{Span: "ab cd ef g"}},
 		},
 		// one span recognized in two spots
 		{
 			"a^b cd ef a^b",
-			[]*pb.RecognizePlacesResponse_Item{{Span: "a^b", Places: []*pb.RecognizePlacesResponse_Place{{Dcid: "ab"}}}, {Span: "cd ef"}, {Span: "a^b", Places: []*pb.RecognizePlacesResponse_Place{{Dcid: "ab"}}}},
+			[]*pb.RecognizeEntitiesResponse_Item{{Span: "a^b", Entities: []*pb.RecognizeEntitiesResponse_Entity{{Dcid: "ab"}}}, {Span: "cd ef"}, {Span: "a^b", Entities: []*pb.RecognizeEntitiesResponse_Entity{{Dcid: "ab"}}}},
 		},
 		// two different spans recognized in the query
 		{
 			"a^b cd, ef g",
-			[]*pb.RecognizePlacesResponse_Item{{Span: "a^b", Places: []*pb.RecognizePlacesResponse_Place{{Dcid: "ab"}}}, {Span: "cd, ef", Places: []*pb.RecognizePlacesResponse_Place{{Dcid: "cdef"}}}, {Span: "g"}},
+			[]*pb.RecognizeEntitiesResponse_Item{{Span: "a^b", Entities: []*pb.RecognizeEntitiesResponse_Entity{{Dcid: "ab"}}}, {Span: "cd, ef", Entities: []*pb.RecognizeEntitiesResponse_Entity{{Dcid: "cdef"}}}, {Span: "g"}},
 		},
 	} {
 		got := getItemsForSpans([]string{"cd, ef", "a^b"}, c.query, span2Item)

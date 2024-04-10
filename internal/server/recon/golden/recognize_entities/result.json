@@ -7,7 +7,7 @@
         },
         {
           "span": "me",
-          "places": [
+          "entities": [
             {
               "dcid": "bio/dm3_Me"
             },
@@ -21,7 +21,7 @@
         },
         {
           "span": "Benzodiazepine, derivatives",
-          "places": [
+          "entities": [
             {
               "dcid": "chem/N03AE"
             },
@@ -38,7 +38,7 @@
         },
         {
           "span": "in",
-          "places": [
+          "entities": [
             {
               "dcid": "bio/dm3_in"
             },
@@ -49,7 +49,7 @@
         },
         {
           "span": "California",
-          "places": [
+          "entities": [
             {
               "dcid": "bio/D002140"
             }
@@ -64,7 +64,7 @@
         },
         {
           "span": "birds",
-          "places": [
+          "entities": [
             {
               "dcid": "bio/D001717"
             }
@@ -72,7 +72,7 @@
         },
         {
           "span": "in",
-          "places": [
+          "entities": [
             {
               "dcid": "bio/dm3_in"
             },
@@ -83,7 +83,7 @@
         },
         {
           "span": "San",
-          "places": [
+          "entities": [
             {
               "dcid": "bio/dm3_san"
             },

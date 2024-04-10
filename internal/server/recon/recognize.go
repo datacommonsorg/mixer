@@ -81,16 +81,15 @@ func RecognizePlaces(
 	return resp, nil
 }
 
-// RecognizePlaces implements API for Mixer.RecognizePlaces.
+// RecognizeEntities implements API for Mixer.RecognizeEntities.
 func RecognizeEntities(
 	ctx context.Context,
-	in *pb.RecognizePlacesRequest,
+	in *pb.RecognizeEntitiesRequest,
 	store *store.Store,
-	resolveBogusName bool,
-) (*pb.RecognizePlacesResponse, error) {
+) (*pb.RecognizeEntitiesResponse, error) {
 
-	resp := &pb.RecognizePlacesResponse{
-		QueryItems: map[string]*pb.RecognizePlacesResponse_Items{},
+	resp := &pb.RecognizeEntitiesResponse{
+		QueryItems: map[string]*pb.RecognizeEntitiesResponse_Items{},
 	}
 	// TODO: parallelize queries
 	for _, query := range in.GetQueries() {
@@ -109,15 +108,15 @@ func RecognizeEntities(
 
 		// go through the resolved entities and create a map of spans to the entity
 		// it resolved to
-		span2item := map[string]*pb.RecognizePlacesResponse_Item{}
+		span2item := map[string]*pb.RecognizeEntitiesResponse_Item{}
 		for _, entity := range resolvedIdEntities.GetEntities() {
-			places := []*pb.RecognizePlacesResponse_Place{}
+			entities := []*pb.RecognizeEntitiesResponse_Entity{}
 			for _, id := range entity.GetOutIds() {
 				// TODO: add types to the response
-				places = append(places, &pb.RecognizePlacesResponse_Place{Dcid: id})
+				entities = append(entities, &pb.RecognizeEntitiesResponse_Entity{Dcid: id})
 			}
 			for span := range id2spans[entity.GetInId()] {
-				span2item[span] = &pb.RecognizePlacesResponse_Item{Span: span, Places: places}
+				span2item[span] = &pb.RecognizeEntitiesResponse_Item{Span: span, Entities: entities}
 			}
 		}
 
@@ -141,7 +140,7 @@ func RecognizeEntities(
 
 		// Get the response items
 		queryRespItems := getItemsForSpans(spans, query, span2item)
-		resp.QueryItems[query] = &pb.RecognizePlacesResponse_Items{Items: queryRespItems}
+		resp.QueryItems[query] = &pb.RecognizeEntitiesResponse_Items{Items: queryRespItems}
 	}
 	return resp, nil
 }
@@ -151,15 +150,15 @@ func RecognizeEntities(
 // have a subset of non-overlapping spans. We do that with a greedy approach of
 // matching the longest span in query, getting the remaining query parts, and
 // recursively doing the match.
-func getItemsForSpans(spans []string, query string, span2item map[string]*pb.RecognizePlacesResponse_Item) []*pb.RecognizePlacesResponse_Item {
-	queryRespItems := []*pb.RecognizePlacesResponse_Item{}
+func getItemsForSpans(spans []string, query string, span2item map[string]*pb.RecognizeEntitiesResponse_Item) []*pb.RecognizeEntitiesResponse_Item {
+	queryRespItems := []*pb.RecognizeEntitiesResponse_Item{}
 	// If empty query, return empty list
 	if len(query) == 0 {
 		return queryRespItems
 	}
 	// If empty list of spans, return the query as the only item
 	if len(spans) == 0 {
-		return append(queryRespItems, &pb.RecognizePlacesResponse_Item{Span: query})
+		return append(queryRespItems, &pb.RecognizeEntitiesResponse_Item{Span: query})
 	}
 	span := spans[0]
 	queryParts := splitQueryBySpan(query, span)

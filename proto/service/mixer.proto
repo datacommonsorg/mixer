@@ -612,13 +612,14 @@ service Mixer {
   }
 
   // Recognize non-place entities from a NL query.
-  rpc RecognizeEntities(RecognizePlacesRequest)
-      returns (RecognizePlacesResponse) {
+  rpc RecognizeEntities(RecognizeEntitiesRequest)
+      returns (RecognizeEntitiesResponse) {
     option (google.api.http) = {
       get : "/v1/recognize/entities"
       additional_bindings : {post : "/v1/recognize/entities" body : "*"}
     };
   }
+  
   rpc UpdateCache(UpdateCacheRequest) returns (UpdateCacheResponse) {
     option (google.api.http) = {
       post: "/update-cache"

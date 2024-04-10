@@ -46,7 +46,7 @@ func TestRecognizeEntities(t *testing.T) {
 				"result.json",
 			},
 		} {
-			resp, err := mixer.RecognizeEntities(ctx, &pb.RecognizePlacesRequest{
+			resp, err := mixer.RecognizeEntities(ctx, &pb.RecognizeEntitiesRequest{
 				Queries: c.queries,
 			})
 			if err != nil {
@@ -63,7 +63,7 @@ func TestRecognizeEntities(t *testing.T) {
 				continue
 			}
 
-			var expected pb.RecognizePlacesResponse
+			var expected pb.RecognizeEntitiesResponse
 			if err = test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file")
 				continue
