@@ -390,3 +390,185 @@ func TestRankAndTrimCandidates(t *testing.T) {
 		}
 	}
 }
+
+func TestGetId2Span(t *testing.T) {
+	for _, c := range []struct {
+		query string
+		want  map[string]map[string]struct{}
+	}{
+		{
+			"entities1, Entities^2 , and entities,^2",
+			map[string]map[string]struct{}{
+				// strip a token of ","
+				"entities1": {
+					"entities1,": struct{}{},
+				},
+				// combine 2 tokens and strip them of "," and "^", and convert them to
+				// all lowercase
+				"entities1 entities2": {
+					"entities1, Entities^2":   struct{}{},
+					"entities1, Entities^2 ,": struct{}{},
+				},
+				// combine 3 tokens
+				"entities1 entities2 and": {
+					"entities1, Entities^2 , and": struct{}{},
+				},
+				// combine 4 tokens
+				"entities1 entities2 and entities2": {
+					"entities1, Entities^2 , and entities,^2": struct{}{},
+				},
+				// 3 tokens that map to the same id
+				"entities2": {
+					"Entities^2":   struct{}{},
+					"Entities^2 ,": struct{}{},
+					"entities,^2":  struct{}{},
+				},
+				// following are the rest of the ids generated from the query that have
+				// some combination of the processing done in previous cases
+				"entities2 and": {
+					"Entities^2 , and": struct{}{},
+				},
+				"entities2 and entities2": {
+					"Entities^2 , and entities,^2": struct{}{},
+				},
+				"and": {
+					"and":   struct{}{},
+					", and": struct{}{},
+				},
+				"and entities2": {
+					"and entities,^2":   struct{}{},
+					", and entities,^2": struct{}{},
+				},
+			},
+		},
+	} {
+		got := getId2Span(c.query)
+		if diff := cmp.Diff(got, c.want); diff != "" {
+			t.Errorf("GetId2Span for query %s got diff: %s", c.query, diff)
+		}
+	}
+}
+
+func TestSplitQueryBySpan(t *testing.T) {
+	for _, c := range []struct {
+		query string
+		span  string
+		want  []string
+	}{
+		{
+			"ab cd ef g",
+			"cd",
+			[]string{"ab", "cd", "ef g"},
+		},
+		// termination characters "," and ";" should be valid
+		{
+			"ab,cd;ef,g",
+			"cd",
+			[]string{"ab,", "cd", ";ef,g"},
+		},
+		// termination characters " " and "." should be valid
+		{
+			"ab cd.ef,g",
+			"cd",
+			[]string{"ab", "cd", ".ef,g"},
+		},
+		// span found at the start of the query
+		{
+			"ab cd ef g",
+			"ab",
+			[]string{"ab", "cd ef g"},
+		},
+		// span found at the end of the query
+		{
+			"ab cd ef g",
+			"ef g",
+			[]string{"ab cd", "ef g"},
+		},
+		// span found multiple times in the query
+		{
+			"ab cd ef ab g",
+			"ab",
+			[]string{"ab", "cd ef", "ab", "g"},
+		},
+		// all the words in the query are the span
+		{
+			"ab;ab,ab ab",
+			"ab",
+			[]string{"ab", ";", "ab", ",", "ab", "ab"},
+		},
+		// span found multiple times in the query but only the last case is valid
+		// because first case is part of another word
+		{
+			"abcd ef ab g",
+			"ab",
+			[]string{"abcd ef", "ab", "g"},
+		},
+		// span found multiple times in the query but none of the cases are valid
+		// because all cases are part of another word
+		{
+			"abcd efab g",
+			"ab",
+			[]string{"abcd efab g"},
+		},
+		// single word span found over two words in the query is not valid
+		{
+			"ab cd ef g",
+			"efg",
+			[]string{"ab cd ef g"},
+		},
+		// two word span found in the query but one of the words is not a complete
+		// word in the query, so not valid
+		{
+			"ab cd ef g",
+			"cd e",
+			[]string{"ab cd ef g"},
+		},
+		// span is not found in the query
+		{
+			"ab cd ef g",
+			"hi",
+			[]string{"ab cd ef g"},
+		},
+	} {
+		got := splitQueryBySpan(c.query, c.span)
+		if diff := cmp.Diff(got, c.want); diff != "" {
+			t.Errorf("SplitQueryBySpan for query %s and span %s got diff: %s", c.query, c.span, diff)
+		}
+	}
+}
+
+func TestGetItemsForSpans(t *testing.T) {
+	// this transforms protobuf messages to be used in cmp.Diff
+	cmpOpts := cmp.Options{
+		protocmp.Transform(),
+	}
+	span2Item := map[string]*pb.RecognizeEntitiesResponse_Item{
+		"a^b":    {Span: "a^b", Entities: []*pb.RecognizeEntitiesResponse_Entity{{Dcid: "ab"}}},
+		"cd, ef": {Span: "cd, ef", Entities: []*pb.RecognizeEntitiesResponse_Entity{{Dcid: "cdef"}}},
+	}
+	for _, c := range []struct {
+		query string
+		want  []*pb.RecognizeEntitiesResponse_Item
+	}{
+		// no spans recognized
+		{
+			"ab cd ef g",
+			[]*pb.RecognizeEntitiesResponse_Item{{Span: "ab cd ef g"}},
+		},
+		// one span recognized in two spots
+		{
+			"a^b cd ef a^b",
+			[]*pb.RecognizeEntitiesResponse_Item{{Span: "a^b", Entities: []*pb.RecognizeEntitiesResponse_Entity{{Dcid: "ab"}}}, {Span: "cd ef"}, {Span: "a^b", Entities: []*pb.RecognizeEntitiesResponse_Entity{{Dcid: "ab"}}}},
+		},
+		// two different spans recognized in the query
+		{
+			"a^b cd, ef g",
+			[]*pb.RecognizeEntitiesResponse_Item{{Span: "a^b", Entities: []*pb.RecognizeEntitiesResponse_Entity{{Dcid: "ab"}}}, {Span: "cd, ef", Entities: []*pb.RecognizeEntitiesResponse_Entity{{Dcid: "cdef"}}}, {Span: "g"}},
+		},
+	} {
+		got := getItemsForSpans([]string{"cd, ef", "a^b"}, c.query, span2Item)
+		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
+			t.Errorf("GetItemsForSpans for query %s got diff: %s", c.query, diff)
+		}
+	}
+}

@@ -17,6 +17,7 @@ package recon
 
 import (
 	"context"
+	"math"
 	"sort"
 	"strings"
 	"sync"
@@ -32,6 +33,13 @@ const (
 	// places, for the rest, only pick the places with
 	// population >= minPopulationOverMaxPlaceCandidates.
 	minPopulationOverMaxPlaceCandidates = 2000
+	nameReconInProp                     = "reconName"
+	nameReconOutProp                    = "dcid"
+	reconNGramLimit                     = 10
+)
+
+var (
+	wordSeparators = map[byte]bool{' ': true, ',': true, ';': true, '.': true}
 )
 
 // RecognizePlaces implements API for Mixer.RecognizePlaces.
@@ -71,6 +79,188 @@ func RecognizePlaces(
 	}
 
 	return resp, nil
+}
+
+// RecognizeEntities implements API for Mixer.RecognizeEntities.
+func RecognizeEntities(
+	ctx context.Context,
+	in *pb.RecognizeEntitiesRequest,
+	store *store.Store,
+) (*pb.RecognizeEntitiesResponse, error) {
+
+	resp := &pb.RecognizeEntitiesResponse{
+		QueryItems: map[string]*pb.RecognizeEntitiesResponse_Items{},
+	}
+	// TODO: parallelize queries
+	for _, query := range in.GetQueries() {
+		id2spans := getId2Span(query)
+		if id2spans == nil {
+			continue
+		}
+		idsToResolve := []string{}
+		for id := range id2spans {
+			idsToResolve = append(idsToResolve, id)
+		}
+		resolvedIdEntities, err := GetResolvedIdEntities(ctx, store, nameReconInProp, idsToResolve, nameReconOutProp)
+		if err != nil {
+			continue
+		}
+
+		// go through the resolved entities and create a map of spans to the entity
+		// it resolved to
+		span2item := map[string]*pb.RecognizeEntitiesResponse_Item{}
+		for _, entity := range resolvedIdEntities.GetEntities() {
+			entities := []*pb.RecognizeEntitiesResponse_Entity{}
+			for _, id := range entity.GetOutIds() {
+				// TODO: add types to the response
+				entities = append(entities, &pb.RecognizeEntitiesResponse_Entity{Dcid: id})
+			}
+			for span := range id2spans[entity.GetInId()] {
+				span2item[span] = &pb.RecognizeEntitiesResponse_Item{Span: span, Entities: entities}
+			}
+		}
+
+		// get the list of resolved spans and sort them by more words first. If two
+		// spans have the same number of words, sort alphabetically.
+		spans := []string{}
+		span2count := map[string]int{}
+		for span := range span2item {
+			spans = append(spans, span)
+			span2count[span] = strings.Count(span, " ")
+		}
+		sort.Slice(spans, func(i, j int) bool {
+			if span2count[spans[i]] > span2count[spans[j]] {
+				return true
+			} else if span2count[spans[j]] > span2count[spans[i]] {
+				return false
+			} else {
+				return spans[i] < spans[j]
+			}
+		})
+
+		// Get the response items
+		queryRespItems := getItemsForSpans(spans, query, span2item)
+		resp.QueryItems[query] = &pb.RecognizeEntitiesResponse_Items{Items: queryRespItems}
+	}
+	return resp, nil
+}
+
+// Takes a query and list of spans and gets the corresponding list of recognize
+// places response items. With the list of spans, we want the response items to
+// have a subset of non-overlapping spans. We do that with a greedy approach of
+// matching the longest span in query, getting the remaining query parts, and
+// recursively doing the match.
+func getItemsForSpans(spans []string, query string, span2item map[string]*pb.RecognizeEntitiesResponse_Item) []*pb.RecognizeEntitiesResponse_Item {
+	queryRespItems := []*pb.RecognizeEntitiesResponse_Item{}
+	// If empty query, return empty list
+	if len(query) == 0 {
+		return queryRespItems
+	}
+	// If empty list of spans, return the query as the only item
+	if len(spans) == 0 {
+		return append(queryRespItems, &pb.RecognizeEntitiesResponse_Item{Span: query})
+	}
+	span := spans[0]
+	queryParts := splitQueryBySpan(query, span)
+	for _, part := range queryParts {
+		if part == span {
+			queryRespItems = append(queryRespItems, span2item[span])
+		} else {
+			queryRespItems = append(queryRespItems, getItemsForSpans(spans[1:], part, span2item)...)
+		}
+	}
+	return queryRespItems
+}
+
+// Splits a query by a span into a list of parts like: non-span part, span part,
+// non-span part, span part, etc. and should only split on complete words. If
+// the query does not contain the span, returns a list with the query as the
+// only item.
+// Examples
+// query: "ab cd ef ab g", span: "ab", result: ["ab", "cd ef", "ab", "g"]
+// query: "ab cd ef g", span: "jk", result: ["ab cd ef g"]
+func splitQueryBySpan(query string, span string) []string {
+	i := 0
+	parts := []string{""}
+
+	for i < len(query) {
+		// a valid span match is one that starts at the beginning of the query or
+		// after a word separator
+		if i == 0 || wordSeparators[query[i-1]] {
+			if strings.HasPrefix(query[i:], span) {
+				endIdx := i + len(span)
+				// a valid span match is one that ends at the end of the query or before
+				// a word separator
+				if endIdx == len(query) || wordSeparators[query[endIdx]] {
+					// valid span match is found so add the span to the list of parts
+					parts = append(parts, span)
+					// add an empty span to start the possibly next non-span part
+					parts = append(parts, "")
+					// move on to search the next part of the query after the span we just
+					// found
+					i = endIdx
+					continue
+				}
+			}
+		}
+		// this current index in the query is not part of a valid span match so just
+		// add the current character to the current non-span part
+		parts[len(parts)-1] += string(query[i])
+		// move on to search from the next index in the query
+		i += 1
+	}
+
+	// trim spaces and filter out empty parts
+	filteredParts := []string{}
+	for _, part := range parts {
+		trimmedPart := strings.TrimSpace(part)
+		if len(trimmedPart) == 0 {
+			continue
+		}
+		filteredParts = append(filteredParts, trimmedPart)
+	}
+	return filteredParts
+}
+
+// Gets the reconName for a span.
+// The logic here should correspond to the logic for processing name into
+// reconName in flume (https://source.corp.google.com/piper///depot/google3/datacommons/prophet/flume_generator/triple_helper.cc;l=168-173)
+// TODO: also clean up consecutive spaces
+func getReconName(span string) string {
+	reconName := strings.ReplaceAll(span, " ,", "")
+	reconName = strings.ReplaceAll(reconName, ",", "")
+	reconName = strings.ReplaceAll(reconName, "^", "")
+	reconName = strings.ToLower(reconName)
+	reconName = strings.TrimSpace(reconName)
+	return reconName
+}
+
+// Takes a query and returns a map of id to use for resolution to the
+// original span (part of the query) for that id.
+// A single id can have multiple spans because we process a span by removing
+// certain characters to get an id:
+// E.g., "a^b" and "ab" would both have the id "ab"
+func getId2Span(query string) map[string]map[string]struct{} {
+	id2spans := map[string]map[string]struct{}{}
+	spanTokens := strings.Split(query, " ")
+	for i := range spanTokens {
+		span := ""
+		maxNGramLength := int(math.Min(float64(len(spanTokens)), reconNGramLimit+1))
+		// make n-grams from the span tokens
+		for j := i; j < maxNGramLength; j++ {
+			span = span + " " + spanTokens[j]
+			span = strings.TrimSpace(span)
+			id := getReconName(span)
+			if len(id) < 1 {
+				continue
+			}
+			if _, ok := id2spans[id]; !ok {
+				id2spans[id] = map[string]struct{}{}
+			}
+			id2spans[id][span] = struct{}{}
+		}
+	}
+	return id2spans
 }
 
 func tokenize(query string) []string {
