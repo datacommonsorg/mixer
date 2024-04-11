@@ -2721,11 +2721,11 @@
       "dcid": "Count_Person_10To14Years_Male_NotHispanicOrLatino_AsianOrPacificIslander"
     },
     {
-      "name": "Population: 12 - 17 Years, Above Poverty Level in The Past 12 Months, Asian Alone",
+      "name": "Population: 12 - 17 Years, Above US Census Poverty Level in The Past 12 Months, Asian Alone",
       "dcid": "Count_Person_12To17Years_AbovePovertyLevelInThePast12Months_AsianAlone"
     },
     {
-      "name": "Population: 12 - 17 Years, Below Poverty Level in The Past 12 Months, Asian Alone",
+      "name": "Population: 12 - 17 Years, Below US Census Poverty Level in The Past 12 Months, Asian Alone",
       "dcid": "Count_Person_12To17Years_BelowPovertyLevelInThePast12Months_AsianAlone"
     },
     {
@@ -2829,11 +2829,11 @@
       "dcid": "Count_Person_18To19Years_Male_AsianAlone"
     },
     {
-      "name": "Population: 18 - 59 Years, Above Poverty Level in The Past 12 Months, Asian Alone",
+      "name": "Population: 18 - 59 Years, Above US Census Poverty Level in The Past 12 Months, Asian Alone",
       "dcid": "Count_Person_18To59Years_AbovePovertyLevelInThePast12Months_AsianAlone"
     },
     {
-      "name": "Population: 18 - 59 Years, Below Poverty Level in The Past 12 Months, Asian Alone",
+      "name": "Population: 18 - 59 Years, Below US Census Poverty Level in The Past 12 Months, Asian Alone",
       "dcid": "Count_Person_18To59Years_BelowPovertyLevelInThePast12Months_AsianAlone"
     },
     {
@@ -3241,19 +3241,19 @@
       "dcid": "Count_Person_55To64Years_Male_AsianAlone"
     },
     {
-      "name": "Population: 6 - 11 Years, Above Poverty Level in The Past 12 Months, Asian Alone",
+      "name": "Population: 6 - 11 Years, Above US Census Poverty Level in The Past 12 Months, Asian Alone",
       "dcid": "Count_Person_6To11Years_AbovePovertyLevelInThePast12Months_AsianAlone"
     },
     {
-      "name": "Population: 6 - 11 Years, Below Poverty Level in The Past 12 Months, Asian Alone",
+      "name": "Population: 6 - 11 Years, Below US Census Poverty Level in The Past 12 Months, Asian Alone",
       "dcid": "Count_Person_6To11Years_BelowPovertyLevelInThePast12Months_AsianAlone"
     },
     {
-      "name": "Population: 6 Years or Less, Above Poverty Level in The Past 12 Months, Asian Alone",
+      "name": "Population: 6 Years or Less, Above US Census Poverty Level in The Past 12 Months, Asian Alone",
       "dcid": "Count_Person_6OrLessYears_AbovePovertyLevelInThePast12Months_AsianAlone"
     },
     {
-      "name": "Population: 6 Years or Less, Below Poverty Level in The Past 12 Months, Asian Alone",
+      "name": "Population: 6 Years or Less, Below US Census Poverty Level in The Past 12 Months, Asian Alone",
       "dcid": "Count_Person_6OrLessYears_BelowPovertyLevelInThePast12Months_AsianAlone"
     },
     {
@@ -3297,11 +3297,11 @@
       "dcid": "Count_Person_60To64Years_Male_NotHispanicOrLatino_AsianOrPacificIslander"
     },
     {
-      "name": "Population: 60 - 74 Years, Above Poverty Level in The Past 12 Months, Asian Alone",
+      "name": "Population: 60 - 74 Years, Above US Census Poverty Level in The Past 12 Months, Asian Alone",
       "dcid": "Count_Person_60To74Years_AbovePovertyLevelInThePast12Months_AsianAlone"
     },
     {
-      "name": "Population: 60 - 74 Years, Below Poverty Level in The Past 12 Months, Asian Alone",
+      "name": "Population: 60 - 74 Years, Below US Census Poverty Level in The Past 12 Months, Asian Alone",
       "dcid": "Count_Person_60To74Years_BelowPovertyLevelInThePast12Months_AsianAlone"
     },
     {
@@ -3433,11 +3433,11 @@
       "dcid": "Count_Person_75To79Years_Male_NotHispanicOrLatino_AsianOrPacificIslander"
     },
     {
-      "name": "Population: 75 - 84 Years, Above Poverty Level in The Past 12 Months, Asian Alone",
+      "name": "Population: 75 - 84 Years, Above US Census Poverty Level in The Past 12 Months, Asian Alone",
       "dcid": "Count_Person_75To84Years_AbovePovertyLevelInThePast12Months_AsianAlone"
     },
     {
-      "name": "Population: 75 - 84 Years, Below Poverty Level in The Past 12 Months, Asian Alone",
+      "name": "Population: 75 - 84 Years, Below US Census Poverty Level in The Past 12 Months, Asian Alone",
       "dcid": "Count_Person_75To84Years_BelowPovertyLevelInThePast12Months_AsianAlone"
     },
     {
@@ -3489,11 +3489,11 @@
       "dcid": "Count_Person_80To84Years_Male_NotHispanicOrLatino_AsianOrPacificIslander"
     },
     {
-      "name": "Population: 85 Years or More, Above Poverty Level in The Past 12 Months, Asian Alone",
+      "name": "Population: 85 Years or More, Above US Census Poverty Level in The Past 12 Months, Asian Alone",
       "dcid": "Count_Person_85OrMoreYears_AbovePovertyLevelInThePast12Months_AsianAlone"
     },
     {
-      "name": "Population: 85 Years or More, Below Poverty Level in The Past 12 Months, Asian Alone",
+      "name": "Population: 85 Years or More, Below US Census Poverty Level in The Past 12 Months, Asian Alone",
       "dcid": "Count_Person_85OrMoreYears_BelowPovertyLevelInThePast12Months_AsianAlone"
     },
     {

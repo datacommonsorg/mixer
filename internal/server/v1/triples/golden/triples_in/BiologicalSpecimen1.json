@@ -1,18 +1,5 @@
 {
   "triples": {
-    "subClassOf": {
-      "nodes": [
-        {
-          "name": "Virus",
-          "types": [
-            "Class",
-            "OrganismTaxonomicKingdomEnum"
-          ],
-          "dcid": "Virus",
-          "provenanceId": "dc/base/BaseSchema"
-        }
-      ]
-    },
     "typeOf": {
       "nodes": [
         {
