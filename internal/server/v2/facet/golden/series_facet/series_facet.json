@@ -115,6 +115,14 @@
         "geoId/06": {
           "ordered_facets": [
             {
+              "facet_id": "local",
+              "observations": [
+                {
+                  "value": 1
+                }
+              ]
+            },
+            {
               "facet_id": "2176550201",
               "obs_count": 123,
               "earliest_date": "1900",
