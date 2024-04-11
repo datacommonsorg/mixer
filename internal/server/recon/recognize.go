@@ -93,7 +93,10 @@ func getReconName2RequiredTypes() map[string][]string {
 	_, filename, _, _ := runtime.Caller(0)
 	bytes, err := os.ReadFile(path.Join(path.Dir(filename), reconName2RequiredTypes))
 	if err == nil {
-		json.Unmarshal(bytes, &typeRequiredEntitiesMap)
+		err = json.Unmarshal(bytes, &typeRequiredEntitiesMap)
+		if err != nil {
+			return map[string][]string{}
+		}
 	}
 	return typeRequiredEntitiesMap
 }
