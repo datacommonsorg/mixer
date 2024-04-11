@@ -35,6 +35,8 @@ message ReconEntities {
     // recon request.
     // NOTE: A single ID prop might be repeated.
     repeated ID ids = 1;
+    // All types of the entity. Ordered by dominant place type.
+    repeated string types = 2;
   }
   repeated Entity entities = 1;
 }
@@ -150,6 +152,29 @@ message RecognizePlacesResponse {
     string span = 1;
     // Optional. Recognized places.
     repeated Place places = 2;
+  }
+
+  message Items {
+    repeated Item items = 1;
+  }
+
+  map<string, Items> query_items = 1;
+}
+
+message RecognizeEntitiesRequest {
+  repeated string queries = 1;
+}
+
+message RecognizeEntitiesResponse {
+  message Entity {
+    string dcid = 1;
+  }
+
+  message Item {
+    // Required. Substring of input query.
+    string span = 1;
+    // Optional. Recognized entities.
+    repeated Entity entities = 2;
   }
 
   message Items {
