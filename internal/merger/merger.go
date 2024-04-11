@@ -257,6 +257,7 @@ func MergeEvent(e1, e2 *pbv2.EventResponse) *pbv2.EventResponse {
 }
 
 // MergeObservation merges two V2 observation responses.
+// Note the facets in o1 is preferred over that of o2.
 func MergeObservation(o1, o2 *pbv2.ObservationResponse) *pbv2.ObservationResponse {
 	if o1 == nil {
 		return o2

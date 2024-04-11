@@ -143,15 +143,18 @@ func SeriesFacet(
 					}
 				}
 				varEntityData := result.ByVariable[v].ByEntity[e]
-				varEntityData.OrderedFacets = append(varEntityData.OrderedFacets,
-					&pbv2.FacetObservation{
-						FacetId: "local",
-						Observations: []*pb.PointStat{
-							{
-								Value: proto.Float64(float64(count)),
-							},
+				sqlFacet := &pbv2.FacetObservation{
+					FacetId: "local",
+					Observations: []*pb.PointStat{
+						{
+							Value: proto.Float64(float64(count)),
 						},
 					},
+				}
+				varEntityData.OrderedFacets = append(
+					// Order sql facet to the top
+					[]*pbv2.FacetObservation{sqlFacet},
+					varEntityData.OrderedFacets...,
 				)
 			}
 		}

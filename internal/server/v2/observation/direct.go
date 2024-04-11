@@ -80,7 +80,7 @@ func FetchDirect(
 	queryDate string,
 	filter *pbv2.FacetFilter,
 ) (*pbv2.ObservationResponse, error) {
-	o1, err := FetchDirectBT(
+	btObservation, err := FetchDirectBT(
 		ctx,
 		store.BtGroup,
 		variables,
@@ -91,7 +91,7 @@ func FetchDirect(
 	if err != nil {
 		return nil, err
 	}
-	o2, err := FetchDirectSQL(
+	sqlObservation, err := FetchDirectSQL(
 		ctx,
 		store.SQLClient,
 		sqlProvenances,
@@ -103,7 +103,8 @@ func FetchDirect(
 	if err != nil {
 		return nil, err
 	}
-	return merger.MergeObservation(o1, o2), nil
+	// Prefer SQLite data over BT data, so put sqlObservation first.
+	return merger.MergeObservation(sqlObservation, btObservation), nil
 }
 
 // FetchDirectBT fetches data from Bigtable cache.
