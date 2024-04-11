@@ -277,7 +277,7 @@ func FetchContainedIn(
 			}
 			sqlResult = trimDirectResp(directResp)
 		}
-		// Prefer SQLite data over BT data, so put sqlResult first.
+		// Prefer SQL data over BT data, so put sqlResult first.
 		result = merger.MergeObservation(sqlResult, result)
 	}
 	return result, nil

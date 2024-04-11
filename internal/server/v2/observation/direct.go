@@ -103,7 +103,7 @@ func FetchDirect(
 	if err != nil {
 		return nil, err
 	}
-	// Prefer SQLite data over BT data, so put sqlObservation first.
+	// Prefer SQL data over BT data, so put sqlObservation first.
 	return merger.MergeObservation(sqlObservation, btObservation), nil
 }
 
