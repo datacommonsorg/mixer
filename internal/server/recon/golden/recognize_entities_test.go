@@ -42,6 +42,8 @@ func TestRecognizeEntities(t *testing.T) {
 				[]string{
 					"the birds in San Jose are chirpy",
 					"tell me about Benzodiazepine, derivatives and their use in California",
+					// should not recognize the first "me" but should recognize "gene me"
+					"tell me about the gene me",
 				},
 				"result.json",
 			},

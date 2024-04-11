@@ -17,7 +17,11 @@ package recon
 
 import (
 	"context"
+	"encoding/json"
 	"math"
+	"os"
+	"path"
+	"runtime"
 	"sort"
 	"strings"
 	"sync"
@@ -36,6 +40,7 @@ const (
 	nameReconInProp                     = "reconName"
 	nameReconOutProp                    = "dcid"
 	reconNGramLimit                     = 10
+	reconName2RequiredTypes             = "recon_name_to_types.json"
 )
 
 var (
@@ -81,6 +86,18 @@ func RecognizePlaces(
 	return resp, nil
 }
 
+// Get a map of reconName values to list of possible types for that entity to
+// be recognized
+func getReconName2RequiredTypes() map[string][]string {
+	typeRequiredEntitiesMap := map[string][]string{}
+	_, filename, _, _ := runtime.Caller(0)
+	bytes, err := os.ReadFile(path.Join(path.Dir(filename), reconName2RequiredTypes))
+	if err == nil {
+		json.Unmarshal(bytes, &typeRequiredEntitiesMap)
+	}
+	return typeRequiredEntitiesMap
+}
+
 // RecognizeEntities implements API for Mixer.RecognizeEntities.
 func RecognizeEntities(
 	ctx context.Context,
@@ -91,8 +108,11 @@ func RecognizeEntities(
 	resp := &pb.RecognizeEntitiesResponse{
 		QueryItems: map[string]*pb.RecognizeEntitiesResponse_Items{},
 	}
+	reconName2RequiredTypes := getReconName2RequiredTypes()
+
 	// TODO: parallelize queries
 	for _, query := range in.GetQueries() {
+		query = strings.ToLower(query)
 		id2spans := getId2Span(query)
 		if id2spans == nil {
 			continue
@@ -116,7 +136,17 @@ func RecognizeEntities(
 				entities = append(entities, &pb.RecognizeEntitiesResponse_Entity{Dcid: id})
 			}
 			for span := range id2spans[entity.GetInId()] {
-				span2item[span] = &pb.RecognizeEntitiesResponse_Item{Span: span, Entities: entities}
+				if types, ok := reconName2RequiredTypes[entity.GetInId()]; ok {
+					// If the recognized name has required types that it can resolve for,
+					// add the type in front of the span so only spans that include the
+					// type will resolve.
+					for _, t := range types {
+						span_with_type := strings.ToLower(t) + " " + span
+						span2item[span_with_type] = &pb.RecognizeEntitiesResponse_Item{Span: span_with_type, Entities: entities}
+					}
+				} else {
+					span2item[span] = &pb.RecognizeEntitiesResponse_Item{Span: span, Entities: entities}
+				}
 			}
 		}
 
