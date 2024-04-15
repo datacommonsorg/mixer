@@ -18,6 +18,7 @@ package files
 import (
 	_ "embed"
 	"encoding/csv"
+	"encoding/json"
 	"fmt"
 	"strconv"
 	"strings"
@@ -39,6 +40,8 @@ var recogPlaceAlternateNamesCSVContent []byte // Embed CSV as []byte.
 var recogPlaceAdjectivalNamesCSVContent []byte // Embed CSV as []byte.
 //go:embed "BogusPlaceNames.csv"
 var recogPlaceBogusPlaceNamesCSVContent []byte // Embed CSV as []byte.
+//go:embed "recon_name_to_types.json"
+var reconName2RequiredTypesJsonContent []byte // Embed CSV as []byte.
 
 var (
 	// These are suffixes one of which needs to exist when dealing with adjectival place
@@ -75,6 +78,9 @@ type RecogPlaceStore struct {
 	DcidToNames map[string][]string
 	// Adjectival names with suffix.
 	AdjectivalNamesWithSuffix map[string]bool
+	// Map of reconName to list of possible types for reconNames that must be
+	// recognized with their type.
+	ReconNameToRequiredTypes map[string][]string
 }
 
 // LoadRecogPlaceStore loads RecogPlaceStore.
@@ -236,12 +242,15 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 		}
 	}
 
+	reconName2RequiredTypes := loadReconName2RequiredTypes()
+
 	return &RecogPlaceStore{
 		RecogPlaceMap:             recogPlaceMap,
 		AbbreviatedNameToPlaces:   abbreviatedNameToPlaces,
 		BogusPlaceNames:           bogusPlaceNames,
 		DcidToNames:               expandedDcidToNames,
 		AdjectivalNamesWithSuffix: adjectivalNamesWithSuffix,
+		ReconNameToRequiredTypes:  reconName2RequiredTypes,
 	}, nil
 }
 
@@ -309,4 +318,13 @@ func loadBogusPlaceNames() (map[string]struct{}, error) {
 	}
 
 	return res, nil
+}
+
+func loadReconName2RequiredTypes() map[string][]string {
+	typeRequiredEntitiesMap := map[string][]string{}
+	err := json.Unmarshal(reconName2RequiredTypesJsonContent, &typeRequiredEntitiesMap)
+	if err != nil {
+		return map[string][]string{}
+	}
+	return typeRequiredEntitiesMap
 }

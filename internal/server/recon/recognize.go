@@ -17,11 +17,7 @@ package recon
 
 import (
 	"context"
-	"encoding/json"
 	"math"
-	"os"
-	"path"
-	"runtime"
 	"sort"
 	"strings"
 	"sync"
@@ -40,7 +36,6 @@ const (
 	nameReconInProp                     = "reconName"
 	nameReconOutProp                    = "dcid"
 	reconNGramLimit                     = 10
-	reconName2RequiredTypes             = "recon_name_to_types.json"
 )
 
 var (
@@ -86,21 +81,6 @@ func RecognizePlaces(
 	return resp, nil
 }
 
-// Get a map of reconName values to list of possible types for that entity to
-// be recognized
-func getReconName2RequiredTypes() map[string][]string {
-	typeRequiredEntitiesMap := map[string][]string{}
-	_, filename, _, _ := runtime.Caller(0)
-	bytes, err := os.ReadFile(path.Join(path.Dir(filename), reconName2RequiredTypes))
-	if err == nil {
-		err = json.Unmarshal(bytes, &typeRequiredEntitiesMap)
-		if err != nil {
-			return map[string][]string{}
-		}
-	}
-	return typeRequiredEntitiesMap
-}
-
 // RecognizeEntities implements API for Mixer.RecognizeEntities.
 func RecognizeEntities(
 	ctx context.Context,
@@ -111,7 +91,6 @@ func RecognizeEntities(
 	resp := &pb.RecognizeEntitiesResponse{
 		QueryItems: map[string]*pb.RecognizeEntitiesResponse_Items{},
 	}
-	reconName2RequiredTypes := getReconName2RequiredTypes()
 
 	// TODO: parallelize queries
 	for _, query := range in.GetQueries() {
@@ -139,7 +118,7 @@ func RecognizeEntities(
 				entities = append(entities, &pb.RecognizeEntitiesResponse_Entity{Dcid: id})
 			}
 			for span := range id2spans[entity.GetInId()] {
-				if types, ok := reconName2RequiredTypes[entity.GetInId()]; ok {
+				if types, ok := store.RecogPlaceStore.ReconNameToRequiredTypes[entity.GetInId()]; ok {
 					// If the recognized name has required types that it can resolve for,
 					// add the type in front of the span so only spans that include the
 					// type will resolve.

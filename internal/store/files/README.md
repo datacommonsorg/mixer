@@ -21,3 +21,24 @@ WHERE
   predicate = 'fips52AlphaCode'
   AND subject_id LIKE 'geoId/%'
 ```
+
+## recon_name_to_types.json generation
+
+1. Use BQ to get the list of names/alternate names and their types for a list of entity types that we do name recon for. Query used for current file:
+
+```sql
+SELECT
+  t1.object_value as name,
+  t2.object_id
+FROM `datcom-store.dc_kg_latest.Triple` as t1
+JOIN `datcom-store.dc_kg_latest.Triple` as t2
+ON t1.subject_id = t2.subject_id 
+WHERE 
+  t1.predicate = 'name' and
+  t2.predicate = 'typeOf' and
+  t2.object_id in ("VirusGenusEnum", "VirusIsolate", "Virus", "Species", "BiologicalSpecimen", "GeneticVariant", "Gene", "Disease", "ICD10Section", "ICD10Code", "MeSHDescriptor", "Drug", "AnatomicalTherapeuticChemicalCode", "MeSHSupplementaryRecord")
+```
+
+2. Put the results of (1) through a script that takes the names and uses spacy to get its "part of sentence" classification ([e.g., noun, pronoun, etc](https://melaniewalsh.github.io/Intro-Cultural-Analytics/05-Text-Analysis/13-POS-Keywords.html#spacy-part-of-speech-tagging)). The script then flags names that do not have any punctuation, nouns, proper nouns or numbers (potentially a common word).
+
+3. Manually go through the flagged names from (2) and add actual common words to recon_name_to_types.json
