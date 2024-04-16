@@ -63,18 +63,6 @@ var (
 		"state",
 		"states",
 	}
-	// Map of entity types to their human string.
-	typeAsHumanString = map[string]string{
-		"MeSHDescriptor":                    "MeSH Descriptor",
-		"VirusGenusEnum":                    "Virus Genus Enum",
-		"VirusIsolate":                      "Virus Isolate",
-		"BiologicalSpecimen":                "Biological Specimen",
-		"GeneticVariant":                    "Genetic Variant",
-		"ICD10Section":                      "ICD10 Section",
-		"ICD10Code":                         "ICD10 Code",
-		"AnatomicalTherapeuticChemicalCode": "Anatomical Therapeautic Chemical Code",
-		"MeSHSupplementaryRecord":           "MeSH Supplementary Record",
-	}
 )
 
 // RecogPlaceStore contains data for recongizing places.
@@ -339,18 +327,5 @@ func loadReconName2RequiredTypes() map[string][]string {
 	if err != nil {
 		return map[string][]string{}
 	}
-	res := map[string][]string{}
-	// Process the types to be human readable versions of the type string
-	for reconName, requiredTypes := range reconName2RequiredTypes {
-		processedTypes := []string{}
-		for _, t := range requiredTypes {
-			if humanString, ok := typeAsHumanString[t]; ok {
-				processedTypes = append(processedTypes, humanString)
-			} else {
-				processedTypes = append(processedTypes, t)
-			}
-		}
-		res[reconName] = processedTypes
-	}
-	return res
+	return reconName2RequiredTypes
 }
