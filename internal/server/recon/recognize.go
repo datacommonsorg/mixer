@@ -118,7 +118,7 @@ func RecognizeEntities(
 				entities = append(entities, &pb.RecognizeEntitiesResponse_Entity{Dcid: id})
 			}
 			for span := range id2spans[entity.GetInId()] {
-				if types, ok := store.RecogPlaceStore.ReconNameToRequiredTypes[entity.GetInId()]; ok {
+				if types, ok := store.RecogPlaceStore.CommonWordReconNameToTypes[entity.GetInId()]; ok {
 					// If the recognized name has required types that it can resolve for,
 					// add the type in front of the span so only spans that include the
 					// type will resolve.

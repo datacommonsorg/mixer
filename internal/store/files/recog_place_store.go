@@ -63,6 +63,18 @@ var (
 		"state",
 		"states",
 	}
+	// Map of entity types to their human string.
+	typeAsHumanString = map[string]string{
+		"MeSHDescriptor":                    "MeSH Descriptor",
+		"VirusGenusEnum":                    "Virus Genus Enum",
+		"VirusIsolate":                      "Virus Isolate",
+		"BiologicalSpecimen":                "Biological Specimen",
+		"GeneticVariant":                    "Genetic Variant",
+		"ICD10Section":                      "ICD10 Section",
+		"ICD10Code":                         "ICD10 Code",
+		"AnatomicalTherapeuticChemicalCode": "Anatomical Therapeautic Chemical Code",
+		"MeSHSupplementaryRecord":           "MeSH Supplementary Record",
+	}
 )
 
 // RecogPlaceStore contains data for recongizing places.
@@ -78,9 +90,10 @@ type RecogPlaceStore struct {
 	DcidToNames map[string][]string
 	// Adjectival names with suffix.
 	AdjectivalNamesWithSuffix map[string]bool
-	// Map of reconName to list of possible types for reconNames that must be
-	// recognized with their type.
-	ReconNameToRequiredTypes map[string][]string
+	// Map of reconNames to list of possible type strings for entities that must be
+	// recognized with their type preceding their name in the query. This is used
+	// to handle reconNames that are also common words like "to", "me", "a".
+	CommonWordReconNameToTypes map[string][]string
 }
 
 // LoadRecogPlaceStore loads RecogPlaceStore.
@@ -245,12 +258,12 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 	reconName2RequiredTypes := loadReconName2RequiredTypes()
 
 	return &RecogPlaceStore{
-		RecogPlaceMap:             recogPlaceMap,
-		AbbreviatedNameToPlaces:   abbreviatedNameToPlaces,
-		BogusPlaceNames:           bogusPlaceNames,
-		DcidToNames:               expandedDcidToNames,
-		AdjectivalNamesWithSuffix: adjectivalNamesWithSuffix,
-		ReconNameToRequiredTypes:  reconName2RequiredTypes,
+		RecogPlaceMap:              recogPlaceMap,
+		AbbreviatedNameToPlaces:    abbreviatedNameToPlaces,
+		BogusPlaceNames:            bogusPlaceNames,
+		DcidToNames:                expandedDcidToNames,
+		AdjectivalNamesWithSuffix:  adjectivalNamesWithSuffix,
+		CommonWordReconNameToTypes: reconName2RequiredTypes,
 	}, nil
 }
 
@@ -321,10 +334,23 @@ func loadBogusPlaceNames() (map[string]struct{}, error) {
 }
 
 func loadReconName2RequiredTypes() map[string][]string {
-	typeRequiredEntitiesMap := map[string][]string{}
-	err := json.Unmarshal(reconName2RequiredTypesJsonContent, &typeRequiredEntitiesMap)
+	reconName2RequiredTypes := map[string][]string{}
+	err := json.Unmarshal(reconName2RequiredTypesJsonContent, &reconName2RequiredTypes)
 	if err != nil {
 		return map[string][]string{}
 	}
-	return typeRequiredEntitiesMap
+	res := map[string][]string{}
+	// Process the types to be human readable versions of the type string
+	for reconName, requiredTypes := range reconName2RequiredTypes {
+		processedTypes := []string{}
+		for _, t := range requiredTypes {
+			if humanString, ok := typeAsHumanString[t]; ok {
+				processedTypes = append(processedTypes, humanString)
+			} else {
+				processedTypes = append(processedTypes, t)
+			}
+		}
+		res[reconName] = processedTypes
+	}
+	return res
 }

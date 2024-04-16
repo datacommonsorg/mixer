@@ -32,7 +32,7 @@
         }
       ]
     },
-    "tell me about the gene me": {
+    "tell me about the gene me and the mesh descriptor genes": {
       "items": [
         {
           "span": "tell me about the"
@@ -45,6 +45,17 @@
             },
             {
               "dcid": "bio/dm6_Me"
+            }
+          ]
+        },
+        {
+          "span": "and the"
+        },
+        {
+          "span": "mesh descriptor genes",
+          "entities": [
+            {
+              "dcid": "bio/D005796"
             }
           ]
         }

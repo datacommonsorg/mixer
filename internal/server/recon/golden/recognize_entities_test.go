@@ -43,7 +43,8 @@ func TestRecognizeEntities(t *testing.T) {
 					"the birds in San Jose are chirpy",
 					"tell me about Benzodiazepine, derivatives and their use in California",
 					// should not recognize the first "me" but should recognize "gene me"
-					"tell me about the gene me",
+					// and "mesh descriptor genes"
+					"tell me about the gene me and the MeSH descriptor genes",
 				},
 				"result.json",
 			},
