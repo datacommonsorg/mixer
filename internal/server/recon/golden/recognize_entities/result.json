@@ -1,26 +1,12 @@
 {
   "queryItems": {
-    "tell me about Benzodiazepine, derivatives and their use in California": {
+    "tell me about benzodiazepine, derivatives and their use in california": {
       "items": [
         {
-          "span": "tell"
+          "span": "tell me about"
         },
         {
-          "span": "me",
-          "entities": [
-            {
-              "dcid": "bio/dm3_Me"
-            },
-            {
-              "dcid": "bio/dm6_Me"
-            }
-          ]
-        },
-        {
-          "span": "about"
-        },
-        {
-          "span": "Benzodiazepine, derivatives",
+          "span": "benzodiazepine, derivatives",
           "entities": [
             {
               "dcid": "chem/N03AE"
@@ -34,21 +20,10 @@
           ]
         },
         {
-          "span": "and their use"
+          "span": "and their use in"
         },
         {
-          "span": "in",
-          "entities": [
-            {
-              "dcid": "bio/dm3_in"
-            },
-            {
-              "dcid": "bio/dm6_in"
-            }
-          ]
-        },
-        {
-          "span": "California",
+          "span": "california",
           "entities": [
             {
               "dcid": "bio/D002140"
@@ -57,7 +32,36 @@
         }
       ]
     },
-    "the birds in San Jose are chirpy": {
+    "tell me about the gene me and the mesh descriptor genes": {
+      "items": [
+        {
+          "span": "tell me about the"
+        },
+        {
+          "span": "gene me",
+          "entities": [
+            {
+              "dcid": "bio/dm3_Me"
+            },
+            {
+              "dcid": "bio/dm6_Me"
+            }
+          ]
+        },
+        {
+          "span": "and the"
+        },
+        {
+          "span": "mesh descriptor genes",
+          "entities": [
+            {
+              "dcid": "bio/D005796"
+            }
+          ]
+        }
+      ]
+    },
+    "the birds in san jose are chirpy": {
       "items": [
         {
           "span": "the"
@@ -71,18 +75,10 @@
           ]
         },
         {
-          "span": "in",
-          "entities": [
-            {
-              "dcid": "bio/dm3_in"
-            },
-            {
-              "dcid": "bio/dm6_in"
-            }
-          ]
+          "span": "in"
         },
         {
-          "span": "San",
+          "span": "san",
           "entities": [
             {
               "dcid": "bio/dm3_san"
@@ -93,7 +89,7 @@
           ]
         },
         {
-          "span": "Jose are chirpy"
+          "span": "jose are chirpy"
         }
       ]
     }
