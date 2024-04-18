@@ -30,8 +30,6 @@ import (
 
 //go:embed "WorldGeosForPlaceRecognition.csv"
 var recogPlaceMapCSVContent []byte // Embed CSV as []byte.
-//go:embed "EntitiesForPlaceRecognition.csv"
-var recogEntityMapCSVContent []byte // Embed CSV as []byte.
 //go:embed "WorldGeosForPlaceRecognitionAbbreviatedNames.csv"
 var recogPlaceAbbreviatedNamesCSVContent []byte // Embed CSV as []byte.
 //go:embed "WorldGeosForPlaceRecognitionAlternateNames.csv"
@@ -87,7 +85,7 @@ type RecogPlaceStore struct {
 // LoadRecogPlaceStore loads RecogPlaceStore.
 func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 	records := [][]string{}
-	for _, fileContent := range [][]byte{recogPlaceMapCSVContent, recogEntityMapCSVContent} {
+	for _, fileContent := range [][]byte{recogPlaceMapCSVContent} {
 		reader := csv.NewReader(strings.NewReader(string(fileContent)))
 		fileRecords, err := reader.ReadAll()
 		if err != nil {
