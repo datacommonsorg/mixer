@@ -257,9 +257,9 @@ func getId2Span(query string) map[string]map[string]struct{} {
 	spanTokens := strings.Split(query, " ")
 	for i := range spanTokens {
 		span := ""
-		maxNGramLength := int(math.Min(float64(len(spanTokens)), reconNGramLimit+1))
+		maxNGramIdx := int(math.Min(float64(len(spanTokens)), float64(reconNGramLimit+i)))
 		// make n-grams from the span tokens
-		for j := i; j < maxNGramLength; j++ {
+		for j := i; j < maxNGramIdx; j++ {
 			span = span + " " + spanTokens[j]
 			span = strings.TrimSpace(span)
 			id := getReconName(span)
