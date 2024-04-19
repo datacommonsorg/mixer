@@ -149,5 +149,11 @@
   "various": ["Anatomical Therapeutic Chemical Code"],
   "orientation": ["MeSH Descriptor"],
   "genes": ["MeSH Descriptor"],
-  "me": ["Gene"]
+  "me": ["Gene"],
+  "genome": ["MeSH Descriptor"],
+  "specialization": ["MeSH Descriptor"],
+  "form": ["MeSH Descriptor"],
+  "disease": ["Disease", "MeSH Descriptor"],
+  "cui": ["Gene"],
+  "prevalence": ["MeSH Descriptor"]
 }

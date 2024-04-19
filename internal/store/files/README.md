@@ -44,6 +44,6 @@ WHERE
 
 Note: the list of entity types that t2.object_id should match to should match the list [here](https://source.corp.google.com/piper///depot/google3/datacommons/import/mcf_vocab.h;l=459-464;rcl=625130528).
 
-2. Put the results of (1) through a script that takes the names and uses spacy to get its "part of sentence" classification ([e.g., noun, pronoun, etc](https://melaniewalsh.github.io/Intro-Cultural-Analytics/05-Text-Analysis/13-POS-Keywords.html#spacy-part-of-speech-tagging)). The script then flags names that do not have any punctuation, nouns, proper nouns or numbers (potentially a common word). TODO: add link to script once it's checked in
+2. Put the results of (1) through a script that takes the names and uses spacy to get its "part of sentence" classification ([e.g., noun, pronoun, etc](https://melaniewalsh.github.io/Intro-Cultural-Analytics/05-Text-Analysis/13-POS-Keywords.html#spacy-part-of-speech-tagging)). The script then flags names that do not have any punctuation, nouns, proper nouns or numbers (potentially a common word). You can find the script to do this [here](https://github.com/datacommonsorg/website/tree/master/tools/nl/common_name_entity).
 
 3. Manually go through the flagged names from (2) and add actual common words to recon_name_to_types.json
