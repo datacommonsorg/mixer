@@ -23,9 +23,9 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	"github.com/datacommonsorg/mixer/internal/response_merger.go"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
@@ -278,7 +278,7 @@ func FetchContainedIn(
 			sqlResult = trimDirectResp(directResp)
 		}
 		// Prefer SQL data over BT data, so put sqlResult first.
-		result = response_merger.MergeObservation(sqlResult, result)
+		result = merger.MergeObservation(sqlResult, result)
 	}
 	return result, nil
 }

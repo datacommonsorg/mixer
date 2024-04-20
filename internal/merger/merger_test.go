@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package response_merger provides function to merge V2 API responses.
-package response_merger
+// Package merger provides function to merge V2 API responses.
+package merger
 
 import (
 	"testing"

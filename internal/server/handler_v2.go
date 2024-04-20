@@ -18,7 +18,7 @@ package server
 import (
 	"context"
 
-	"github.com/datacommonsorg/mixer/internal/response_merger.go"
+	"github.com/datacommonsorg/mixer/internal/merger"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
@@ -63,7 +63,7 @@ func (s *Server) V2Resolve(
 	close(localRespChan)
 	close(remoteRespChan)
 	localResp, remoteResp := <-localRespChan, <-remoteRespChan
-	return response_merger.MergeResolve(localResp, remoteResp), nil
+	return merger.MergeResolve(localResp, remoteResp), nil
 }
 
 // V2Node implements API for mixer.V2Node.
@@ -159,7 +159,7 @@ func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 	close(remoteRespChan)
 
 	localResp, remoteResp := <-localRespChan, <-remoteRespChan
-	return response_merger.MergeNode(localResp, remoteResp)
+	return merger.MergeNode(localResp, remoteResp)
 }
 
 // V2Event implements API for mixer.V2Event.
@@ -199,7 +199,7 @@ func (s *Server) V2Event(
 	close(localRespChan)
 	close(remoteRespChan)
 	localResp, remoteResp := <-localRespChan, <-remoteRespChan
-	return response_merger.MergeEvent(localResp, remoteResp), nil
+	return merger.MergeEvent(localResp, remoteResp), nil
 }
 
 // V2Observation implements API for mixer.V2Observation.
@@ -241,5 +241,5 @@ func (s *Server) V2Observation(
 	localResp, remoteResp := <-localRespChan, <-remoteRespChan
 	// The order of argument matters, localResp is prefered and will be put first
 	// in the merged result.
-	return response_merger.MergeObservation(localResp, remoteResp), nil
+	return merger.MergeObservation(localResp, remoteResp), nil
 }

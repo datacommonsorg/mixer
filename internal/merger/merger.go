@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package response_merger provides function to merge V2 API ressponses.
+// Package merger provides function to merge V2 API ressponses.
 
 // This package cares about the order of the input responses. The first argument
 // is always prefered and put first.
 
-package response_merger
+package merger
 
 import (
 	"sort"
