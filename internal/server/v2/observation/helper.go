@@ -39,7 +39,6 @@ func initObservationResult(variables []string) *pbv2.ObservationResponse {
 func handleSQLRows(
 	rows *sql.Rows,
 	variables []string,
-	queryDate string,
 ) (map[string]map[string]map[string][]*pb.PointStat, error) {
 	// result is keyed by variable, entity and provID
 	result := make(map[string]map[string]map[string][]*pb.PointStat)

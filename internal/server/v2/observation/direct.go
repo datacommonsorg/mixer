@@ -23,9 +23,9 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/response_merger.go"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -104,7 +104,7 @@ func FetchDirect(
 		return nil, err
 	}
 	// Prefer SQL data over BT data, so put sqlObservation first.
-	return merger.MergeObservation(sqlObservation, btObservation), nil
+	return response_merger.MergeObservation(sqlObservation, btObservation), nil
 }
 
 // FetchDirectBT fetches data from Bigtable cache.
@@ -232,7 +232,7 @@ func FetchDirectSQL(
 		return nil, err
 	}
 	defer rows.Close()
-	tmp, err := handleSQLRows(rows, variables, queryDate)
+	tmp, err := handleSQLRows(rows, variables)
 	if err != nil {
 		return nil, err
 	}

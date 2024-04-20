@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ package server
 import (
 	"context"
 
-	"github.com/datacommonsorg/mixer/internal/merger"
+	"github.com/datacommonsorg/mixer/internal/response_merger.go"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
@@ -31,14 +31,15 @@ func (s *Server) V2Resolve(
 	ctx context.Context, in *pbv2.ResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
 	errGroup, errCtx := errgroup.WithContext(ctx)
-	respChan := make(chan *pbv2.ResolveResponse, 2)
+	localRespChan := make(chan *pbv2.ResolveResponse, 1)
+	remoteRespChan := make(chan *pbv2.ResolveResponse, 1)
 
 	errGroup.Go(func() error {
-		resp, err := s.V2ResolveCore(errCtx, in)
+		localResp, err := s.V2ResolveCore(errCtx, in)
 		if err != nil {
 			return err
 		}
-		respChan <- resp
+		localRespChan <- localResp
 		return nil
 	})
 
@@ -49,20 +50,20 @@ func (s *Server) V2Resolve(
 			if err != nil {
 				return err
 			}
-			respChan <- remoteResp
+			remoteRespChan <- remoteResp
 			return nil
 		})
 	} else {
-		respChan <- nil
+		remoteRespChan <- nil
 	}
 
 	if err := errGroup.Wait(); err != nil {
 		return nil, err
 	}
-	close(respChan)
-
-	resp1, resp2 := <-respChan, <-respChan
-	return merger.MergeResolve(resp1, resp2), nil
+	close(localRespChan)
+	close(remoteRespChan)
+	localResp, remoteResp := <-localRespChan, <-remoteRespChan
+	return response_merger.MergeResolve(localResp, remoteResp), nil
 }
 
 // V2Node implements API for mixer.V2Node.
@@ -158,7 +159,7 @@ func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 	close(remoteRespChan)
 
 	localResp, remoteResp := <-localRespChan, <-remoteRespChan
-	return merger.MergeNode(localResp, remoteResp)
+	return response_merger.MergeNode(localResp, remoteResp)
 }
 
 // V2Event implements API for mixer.V2Event.
@@ -166,14 +167,15 @@ func (s *Server) V2Event(
 	ctx context.Context, in *pbv2.EventRequest,
 ) (*pbv2.EventResponse, error) {
 	errGroup, errCtx := errgroup.WithContext(ctx)
-	respChan := make(chan *pbv2.EventResponse, 2)
+	localRespChan := make(chan *pbv2.EventResponse, 1)
+	remoteRespChan := make(chan *pbv2.EventResponse, 1)
 
 	errGroup.Go(func() error {
-		resp, err := s.V2EventCore(errCtx, in)
+		localResp, err := s.V2EventCore(errCtx, in)
 		if err != nil {
 			return err
 		}
-		respChan <- resp
+		localRespChan <- localResp
 		return nil
 	})
 
@@ -184,20 +186,20 @@ func (s *Server) V2Event(
 			if err != nil {
 				return err
 			}
-			respChan <- remoteResp
+			remoteRespChan <- remoteResp
 			return nil
 		})
 	} else {
-		respChan <- nil
+		remoteRespChan <- nil
 	}
 
 	if err := errGroup.Wait(); err != nil {
 		return nil, err
 	}
-	close(respChan)
-
-	resp1, resp2 := <-respChan, <-respChan
-	return merger.MergeEvent(resp1, resp2), nil
+	close(localRespChan)
+	close(remoteRespChan)
+	localResp, remoteResp := <-localRespChan, <-remoteRespChan
+	return response_merger.MergeEvent(localResp, remoteResp), nil
 }
 
 // V2Observation implements API for mixer.V2Observation.
@@ -205,14 +207,15 @@ func (s *Server) V2Observation(
 	ctx context.Context, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
 	errGroup, errCtx := errgroup.WithContext(ctx)
-	respChan := make(chan *pbv2.ObservationResponse, 2)
+	localRespChan := make(chan *pbv2.ObservationResponse, 1)
+	remoteRespChan := make(chan *pbv2.ObservationResponse, 1)
 
 	errGroup.Go(func() error {
-		resp, err := s.V2ObservationCore(errCtx, in)
+		localResp, err := s.V2ObservationCore(errCtx, in)
 		if err != nil {
 			return err
 		}
-		respChan <- resp
+		localRespChan <- localResp
 		return nil
 	})
 
@@ -223,18 +226,20 @@ func (s *Server) V2Observation(
 			if err != nil {
 				return err
 			}
-			respChan <- remoteResp
+			remoteRespChan <- remoteResp
 			return nil
 		})
 	} else {
-		respChan <- nil
+		remoteRespChan <- nil
 	}
 
 	if err := errGroup.Wait(); err != nil {
 		return nil, err
 	}
-	close(respChan)
-
-	resp1, resp2 := <-respChan, <-respChan
-	return merger.MergeObservation(resp1, resp2), nil
+	close(localRespChan)
+	close(remoteRespChan)
+	localResp, remoteResp := <-localRespChan, <-remoteRespChan
+	// The order of argument matters, localResp is prefered and will be put first
+	// in the merged result.
+	return response_merger.MergeObservation(localResp, remoteResp), nil
 }
