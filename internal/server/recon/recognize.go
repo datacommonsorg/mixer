@@ -257,6 +257,9 @@ func getId2Span(query string) map[string]map[string]struct{} {
 	spanTokens := strings.Split(query, " ")
 	for i := range spanTokens {
 		span := ""
+		// This is the index in the list of tokens to end at when making n-grams,
+		// which should be either the end of the list of tokens or when the max n is
+		// reached for the n-grams, whichever comes first.
 		maxNGramIdx := int(math.Min(float64(len(spanTokens)), float64(reconNGramLimit+i)))
 		// make n-grams from the span tokens
 		for j := i; j < maxNGramIdx; j++ {
