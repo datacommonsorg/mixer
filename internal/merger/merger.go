@@ -112,9 +112,12 @@ func mergeLinkedGraph(
 }
 
 // MergeNode merges two V2 node responses.
+//
 // NOTE: Make sure the order of the two arguments, it's important for merging
 // |next_token|. When mergering local and remote mixer response, the remote
 // response is always put as the second argument (aux)
+
+// TODO: Add more unit tests with real data.
 func MergeNode(main, aux *pbv2.NodeResponse) (*pbv2.NodeResponse, error) {
 	if aux == nil {
 		return main, nil
