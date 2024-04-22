@@ -92,6 +92,53 @@
           "span": "jose are chirpy"
         }
       ]
+    },
+    "what genes are associated with the rs13317 , rs1826962 , rs790314 , rs2801952 , rs1814149": {
+      "items": [
+        {
+          "span": "what genes are associated with the"
+        },
+        {
+          "span": "rs13317",
+          "entities": [
+            {
+              "dcid": "bio/rs13317"
+            }
+          ]
+        },
+        {
+          "span": ", rs1826962 ,",
+          "entities": [
+            {
+              "dcid": "bio/rs1826962"
+            }
+          ]
+        },
+        {
+          "span": "rs790314",
+          "entities": [
+            {
+              "dcid": "bio/rs790314"
+            }
+          ]
+        },
+        {
+          "span": ", rs2801952 ,",
+          "entities": [
+            {
+              "dcid": "bio/rs2801952"
+            }
+          ]
+        },
+        {
+          "span": "rs1814149",
+          "entities": [
+            {
+              "dcid": "bio/rs1814149"
+            }
+          ]
+        }
+      ]
     }
   }
 }
