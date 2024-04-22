@@ -232,7 +232,7 @@ func FetchDirectSQL(
 		return nil, err
 	}
 	defer rows.Close()
-	tmp, err := handleSQLRows(rows, variables, queryDate)
+	tmp, err := handleSQLRows(rows, variables)
 	if err != nil {
 		return nil, err
 	}

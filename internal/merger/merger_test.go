@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package merger provides function to merge V2 API ressponses.
+// Package merger provides function to merge V2 API responses.
 package merger
 
 import (
@@ -71,8 +71,8 @@ func TestMergeResolve(t *testing.T) {
 						Node: "node1",
 						Candidates: []*pbv2.ResolveResponse_Entity_Candidate{
 							{Dcid: "id1.1"},
-							{Dcid: "id1.2"},
 							{Dcid: "id1.3"},
+							{Dcid: "id1.2"},
 						},
 					},
 					{
@@ -340,6 +340,9 @@ func TestMergeEvent(t *testing.T) {
 						"prov1": {ImportName: "import1"},
 					},
 				},
+				EventCollectionDate: &pbv1.EventCollectionDate{
+					Dates: []string{"2021"},
+				},
 			},
 			&pbv2.EventResponse{
 				EventCollection: &pbv1.EventCollection{
@@ -353,6 +356,9 @@ func TestMergeEvent(t *testing.T) {
 					ProvenanceInfo: map[string]*pbv1.EventCollection_ProvenanceInfo{
 						"prov2": {ImportName: "import2"},
 					},
+				},
+				EventCollectionDate: &pbv1.EventCollectionDate{
+					Dates: []string{"2022"},
 				},
 			},
 			&pbv2.EventResponse{
@@ -370,9 +376,12 @@ func TestMergeEvent(t *testing.T) {
 						},
 					},
 					ProvenanceInfo: map[string]*pbv1.EventCollection_ProvenanceInfo{
-						"prov1": {ImportName: "import1"},
 						"prov2": {ImportName: "import2"},
+						"prov1": {ImportName: "import1"},
 					},
+				},
+				EventCollectionDate: &pbv1.EventCollectionDate{
+					Dates: []string{"2021", "2022"},
 				},
 			},
 		},

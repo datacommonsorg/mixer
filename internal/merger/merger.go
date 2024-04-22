@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,6 +13,10 @@
 // limitations under the License.
 
 // Package merger provides function to merge V2 API ressponses.
+
+// This package cares about the order of the input responses. The first argument
+// is always prefered and put first.
+
 package merger
 
 import (
@@ -26,65 +30,101 @@ import (
 )
 
 // MergeResolve merges two V2 resolve responses.
-func MergeResolve(r1, r2 *pbv2.ResolveResponse) *pbv2.ResolveResponse {
-	if r1 == nil {
-		return r2
-	} else if r2 == nil {
-		return r1
+func MergeResolve(main, aux *pbv2.ResolveResponse) *pbv2.ResolveResponse {
+	if main == nil {
+		return aux
 	}
-
-	// Maps are used to dedup: node -> resolved ID -> candidate.
-	store := map[string]map[string]*pbv2.ResolveResponse_Entity_Candidate{}
-
-	collectEntities := func(r *pbv2.ResolveResponse) {
-		for _, e := range r.GetEntities() {
-			node := e.GetNode()
-			if _, ok := store[node]; !ok {
-				store[node] = map[string]*pbv2.ResolveResponse_Entity_Candidate{}
+	if aux == nil {
+		return main
+	}
+	// Change aux list into map for easy lookup
+	auxStore := map[string]*pbv2.ResolveResponse_Entity{}
+	for _, e := range aux.GetEntities() {
+		node := e.Node
+		auxStore[node] = e
+	}
+	// Merge common entities from aux into main
+	for _, e := range main.GetEntities() {
+		node := e.Node
+		if auxEntity, ok := auxStore[node]; ok {
+			existCandidates := map[string]struct{}{}
+			for _, c := range e.Candidates {
+				existCandidates[c.Dcid] = struct{}{}
 			}
-			for _, candidate := range e.GetCandidates() {
-				store[node][candidate.GetDcid()] = candidate
+			for _, c := range auxEntity.Candidates {
+				if _, ok := existCandidates[c.Dcid]; !ok {
+					e.Candidates = append(e.Candidates, c)
+				}
+			}
+			delete(auxStore, node)
+		}
+	}
+	// Add aux entities that are not in main
+	for _, e := range aux.Entities {
+		if _, ok := auxStore[e.Node]; ok {
+			main.Entities = append(main.Entities, e)
+		}
+	}
+	return main
+}
+
+func mergeLinkedGraph(
+	mainData, auxData map[string]*pbv2.LinkedGraph,
+) map[string]*pbv2.LinkedGraph {
+	for dcid, linkedGraph := range auxData {
+		if mainData == nil {
+			mainData = map[string]*pbv2.LinkedGraph{}
+		}
+		if _, ok := mainData[dcid]; !ok {
+			mainData[dcid] = linkedGraph
+			continue
+		}
+		for prop, nodes := range linkedGraph.GetArcs() {
+			if _, ok := mainData[dcid].GetArcs()[prop]; !ok {
+				mainData[dcid].GetArcs()[prop] = nodes
+				continue
+			}
+			dcidSet := map[string]struct{}{}
+			valueSet := map[string]struct{}{}
+			mainNodes := mainData[dcid].GetArcs()[prop].Nodes
+			for _, n := range mainNodes {
+				if n.Dcid != "" {
+					dcidSet[n.Dcid] = struct{}{}
+				} else {
+					valueSet[n.Value] = struct{}{}
+				}
+			}
+			for _, node := range nodes.Nodes {
+				if node.Dcid != "" {
+					if _, ok := dcidSet[node.Dcid]; !ok {
+						mainNodes = append(mainNodes, node)
+					}
+				}
+				if node.Value != "" {
+					if _, ok := valueSet[node.Value]; !ok {
+						mainNodes = append(mainNodes, node)
+					}
+				}
 			}
 		}
 	}
-
-	collectEntities(r1)
-	collectEntities(r2)
-
-	res := &pbv2.ResolveResponse{}
-	for node, idToCandidate := range store {
-		candidates := []*pbv2.ResolveResponse_Entity_Candidate{}
-		for _, candidate := range idToCandidate {
-			candidates = append(candidates, candidate)
-		}
-
-		// Sort to make result deterministic.
-		sort.Slice(candidates, func(i, j int) bool {
-			return candidates[i].GetDcid() < candidates[j].GetDcid()
-		})
-
-		res.Entities = append(res.Entities, &pbv2.ResolveResponse_Entity{
-			Node:       node,
-			Candidates: candidates,
-		})
-	}
-
-	// Sort to make result deterministic.
-	sort.Slice(res.Entities, func(i, j int) bool {
-		return res.Entities[i].Node < res.Entities[j].Node
-	})
-
-	return res
+	return mainData
 }
 
 // MergeNode merges two V2 node responses.
-// NOTE: Make sure the order of the two arguments, it's important for merging |next_token|.
-func MergeNode(local, remote *pbv2.NodeResponse) (*pbv2.NodeResponse, error) {
-	if remote == nil {
-		return local, nil
-	} else if local == nil {
-		if remote.GetNextToken() != "" {
-			remotePaginationInfo, err := pagination.Decode(remote.GetNextToken())
+//
+// NOTE: Make sure the order of the two arguments, it's important for merging
+// |next_token|. When mergering local and remote mixer response, the remote
+// response is always put as the second argument (aux)
+
+// TODO: Add more unit tests with real data.
+func MergeNode(main, aux *pbv2.NodeResponse) (*pbv2.NodeResponse, error) {
+	if aux == nil {
+		return main, nil
+	}
+	if main == nil {
+		if aux.GetNextToken() != "" {
+			remotePaginationInfo, err := pagination.Decode(aux.GetNextToken())
 			if err != nil {
 				return nil, err
 			}
@@ -95,205 +135,119 @@ func MergeNode(local, remote *pbv2.NodeResponse) (*pbv2.NodeResponse, error) {
 			if err != nil {
 				return nil, err
 			}
-			remote.NextToken = updatedNextToken
+			aux.NextToken = updatedNextToken
 		}
-		return remote, nil
+		return aux, nil
 	}
-
-	type linkedGraphStore struct {
-		propToNodes        map[string]*pbv2.Nodes
-		propToLinkedGraphs map[string]*pbv2.LinkedGraph
-		propSet            map[string]struct{}
-	}
-	dcidToLinkedGraph := map[string]*linkedGraphStore{}
-
-	collectNode := func(n *pbv2.NodeResponse) {
-		for dcid, linkedGrarph := range n.GetData() {
-			if _, ok := dcidToLinkedGraph[dcid]; !ok {
-				dcidToLinkedGraph[dcid] = &linkedGraphStore{}
-			}
-			if arcs := linkedGrarph.GetArcs(); len(arcs) > 0 {
-				if dcidToLinkedGraph[dcid].propToNodes == nil {
-					dcidToLinkedGraph[dcid].propToNodes = map[string]*pbv2.Nodes{}
-				}
-				for prop, nodes := range arcs {
-					dcidToLinkedGraph[dcid].propToNodes[prop] = nodes
-				}
-			}
-			if neighbor := linkedGrarph.GetNeighbor(); len(neighbor) > 0 {
-				if dcidToLinkedGraph[dcid].propToLinkedGraphs == nil {
-					dcidToLinkedGraph[dcid].propToLinkedGraphs = map[string]*pbv2.LinkedGraph{}
-				}
-				for prop, neighborLinkedGraph := range neighbor {
-					dcidToLinkedGraph[dcid].propToLinkedGraphs[prop] = neighborLinkedGraph
-				}
-			}
-			if props := linkedGrarph.GetProperties(); len(props) > 0 {
-				if dcidToLinkedGraph[dcid].propSet == nil {
-					dcidToLinkedGraph[dcid].propSet = map[string]struct{}{}
-				}
-				for _, prop := range props {
-					dcidToLinkedGraph[dcid].propSet[prop] = struct{}{}
-				}
-			}
-		}
-	}
-
-	collectNode(local)
-	collectNode(remote)
-
-	res := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{}}
-	for dcid, store := range dcidToLinkedGraph {
-		res.Data[dcid] = &pbv2.LinkedGraph{}
-		if propToNodes := store.propToNodes; len(propToNodes) > 0 {
-			res.Data[dcid].Arcs = map[string]*pbv2.Nodes{}
-			for prop, nodes := range propToNodes {
-				res.Data[dcid].Arcs[prop] = nodes
-			}
-		}
-		if propToLinkedGraphs := store.propToLinkedGraphs; len(propToLinkedGraphs) > 0 {
-			res.Data[dcid].Neighbor = map[string]*pbv2.LinkedGraph{}
-			for prop, neighborLinkedGraph := range propToLinkedGraphs {
-				res.Data[dcid].Neighbor[prop] = neighborLinkedGraph
-			}
-		}
-		for prop := range store.propSet {
-			res.Data[dcid].Properties = append(res.Data[dcid].Properties, prop)
-		}
-	}
-
+	main.Data = mergeLinkedGraph(main.GetData(), aux.GetData())
 	// Merge |next_token|.
 	resPaginationInfo := &pbv1.PaginationInfo{}
-	if local.GetNextToken() != "" {
-		localPaginationInfo, err := pagination.Decode(local.GetNextToken())
+	if main.GetNextToken() != "" {
+		mainPaginationInfo, err := pagination.Decode(main.GetNextToken())
 		if err != nil {
 			return nil, err
 		}
-		resPaginationInfo = localPaginationInfo
+		resPaginationInfo = mainPaginationInfo
 	}
-	if remote.GetNextToken() != "" {
-		remotePaginationInfo, err := pagination.Decode(remote.GetNextToken())
+	if aux.GetNextToken() != "" {
+		auxPaginationInfo, err := pagination.Decode(aux.GetNextToken())
 		if err != nil {
 			return nil, err
 		}
-		resPaginationInfo.RemotePaginationInfo = remotePaginationInfo
+		resPaginationInfo.RemotePaginationInfo = auxPaginationInfo
 	}
-	if local.GetNextToken() != "" || remote.GetNextToken() != "" {
+	if main.GetNextToken() != "" || aux.GetNextToken() != "" {
 		resNextToken, err := util.EncodeProto(resPaginationInfo)
 		if err != nil {
 			return nil, err
 		}
-		res.NextToken = resNextToken
+		main.NextToken = resNextToken
 	}
 
-	return res, nil
+	return main, nil
 }
 
 // MergeEvent merges two V2 event responses.
-func MergeEvent(e1, e2 *pbv2.EventResponse) *pbv2.EventResponse {
-	if e1 == nil {
-		return e2
-	} else if e2 == nil {
-		return e1
+// If both main and aux have event with the same DCID, then aux event is not
+// used. Otherwise event from aux is appended after main.
+func MergeEvent(main, aux *pbv2.EventResponse) *pbv2.EventResponse {
+	if main == nil {
+		return aux
 	}
-
-	idToEvent := map[string]*pbv1.EventCollection_Event{}
-	idToProvenance := map[string]*pbv1.EventCollection_ProvenanceInfo{}
-	dateSet := map[string]struct{}{}
-
-	collectEvent := func(e *pbv2.EventResponse) {
-		if ec := e.GetEventCollection(); ec != nil {
-			for k, v := range ec.GetProvenanceInfo() {
-				if _, ok := idToProvenance[k]; ok {
-					continue
-				}
-				idToProvenance[k] = v
-			}
-			for _, ev := range ec.GetEvents() {
-				if _, ok := idToEvent[ev.GetDcid()]; ok {
-					continue
-				}
-				idToEvent[ev.GetDcid()] = ev
-			}
+	if aux == nil {
+		return main
+	}
+	// Collect all event dcid and dates from main
+	ids := map[string]struct{}{}
+	dates := map[string]struct{}{}
+	for _, ev := range main.GetEventCollection().GetEvents() {
+		ids[ev.Dcid] = struct{}{}
+	}
+	for _, d := range main.GetEventCollectionDate().GetDates() {
+		dates[d] = struct{}{}
+	}
+	// Merge aux
+	mainCollection := main.GetEventCollection()
+	auxCollection := aux.GetEventCollection()
+	for _, ev := range auxCollection.GetEvents() {
+		if _, ok := ids[ev.Dcid]; ok {
+			continue
 		}
-
-		if ed := e.GetEventCollectionDate(); ed != nil {
-			for _, date := range ed.GetDates() {
-				dateSet[date] = struct{}{}
-			}
+		mainCollection.Events = append(mainCollection.Events, ev)
+		mainCollection.ProvenanceInfo[ev.ProvenanceId] = auxCollection.ProvenanceInfo[ev.ProvenanceId]
+	}
+	if main.EventCollectionDate == nil {
+		main.EventCollectionDate = &pbv1.EventCollectionDate{}
+	}
+	for _, d := range aux.GetEventCollectionDate().GetDates() {
+		if _, ok := dates[d]; ok {
+			continue
 		}
+		main.EventCollectionDate.Dates = append(main.EventCollectionDate.Dates, d)
 	}
-
-	collectEvent(e1)
-	collectEvent(e2)
-
-	res := &pbv2.EventResponse{}
-	if len(idToEvent) > 0 {
-		res.EventCollection = &pbv1.EventCollection{
-			ProvenanceInfo: idToProvenance,
-		}
-		for _, ev := range idToEvent {
-			res.EventCollection.Events = append(res.EventCollection.Events, ev)
-		}
+	if main.EventCollectionDate != nil {
+		sort.Strings(main.EventCollectionDate.Dates)
 	}
-	if len(dateSet) > 0 {
-		res.EventCollectionDate = &pbv1.EventCollectionDate{}
-		for date := range dateSet {
-			res.EventCollectionDate.Dates = append(res.EventCollectionDate.Dates, date)
-		}
-	}
-
-	// Sort to make results deterministic.
-	if res.EventCollection != nil {
-		sort.Slice(res.EventCollection.Events, func(i, j int) bool {
-			return res.EventCollection.Events[i].Dcid < res.EventCollection.Events[j].Dcid
-		})
-	}
-	if res.EventCollectionDate != nil {
-		sort.Strings(res.EventCollectionDate.Dates)
-	}
-
-	return res
+	return main
 }
 
 // MergeObservation merges two V2 observation responses.
-// Note the facets in o1 is preferred over that of o2.
-func MergeObservation(o1, o2 *pbv2.ObservationResponse) *pbv2.ObservationResponse {
-	if o1 == nil {
-		return o2
-	} else if o2 == nil {
-		return o1
+func MergeObservation(main, aux *pbv2.ObservationResponse) *pbv2.ObservationResponse {
+	if main == nil {
+		return aux
 	}
-
-	for v, vData := range o2.ByVariable {
-		if o1.ByVariable == nil {
-			o1.ByVariable = map[string]*pbv2.VariableObservation{}
+	if aux == nil {
+		return main
+	}
+	for v, vData := range aux.ByVariable {
+		if main.ByVariable == nil {
+			main.ByVariable = map[string]*pbv2.VariableObservation{}
 		}
-		if _, ok := o1.ByVariable[v]; !ok {
-			o1.ByVariable[v] = &pbv2.VariableObservation{
+		if _, ok := main.ByVariable[v]; !ok {
+			main.ByVariable[v] = &pbv2.VariableObservation{
 				ByEntity: map[string]*pbv2.EntityObservation{},
 			}
 		}
-		if o1.ByVariable[v].ByEntity == nil {
-			o1.ByVariable[v].ByEntity = map[string]*pbv2.EntityObservation{}
+		if main.ByVariable[v].ByEntity == nil {
+			main.ByVariable[v].ByEntity = map[string]*pbv2.EntityObservation{}
 		}
 		for e, eData := range vData.ByEntity {
-			if _, ok := o1.ByVariable[v].ByEntity[e]; !ok {
-				o1.ByVariable[v].ByEntity[e] = &pbv2.EntityObservation{
+			if _, ok := main.ByVariable[v].ByEntity[e]; !ok {
+				main.ByVariable[v].ByEntity[e] = &pbv2.EntityObservation{
 					OrderedFacets: []*pbv2.FacetObservation{},
 				}
 			}
-			o1.ByVariable[v].ByEntity[e].OrderedFacets = append(
-				o1.ByVariable[v].ByEntity[e].OrderedFacets,
+			main.ByVariable[v].ByEntity[e].OrderedFacets = append(
+				main.ByVariable[v].ByEntity[e].OrderedFacets,
 				eData.OrderedFacets...,
 			)
 		}
 	}
-	if o1.Facets == nil {
-		o1.Facets = map[string]*proto.Facet{}
+	if main.Facets == nil {
+		main.Facets = map[string]*proto.Facet{}
 	}
-	for facetID, facet := range o2.Facets {
-		o1.Facets[facetID] = facet
+	for facetID, facet := range aux.Facets {
+		main.Facets[facetID] = facet
 	}
-	return o1
+	return main
 }
