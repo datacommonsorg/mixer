@@ -68,34 +68,9 @@ func MergeResolve(main, aux *pbv2.ResolveResponse) *pbv2.ResolveResponse {
 	return main
 }
 
-// MergeNode merges two V2 node responses.
-// NOTE: Make sure the order of the two arguments, it's important for merging
-// |next_token|. When mergering local and remote mixer response, the remote
-// response is always put as the second argument (aux)
-func MergeNode(main, aux *pbv2.NodeResponse) (*pbv2.NodeResponse, error) {
-	if aux == nil {
-		return main, nil
-	}
-	if main == nil {
-		if aux.GetNextToken() != "" {
-			remotePaginationInfo, err := pagination.Decode(aux.GetNextToken())
-			if err != nil {
-				return nil, err
-			}
-			updatedPaginationInfo := &pbv1.PaginationInfo{
-				RemotePaginationInfo: remotePaginationInfo,
-			}
-			updatedNextToken, err := util.EncodeProto(updatedPaginationInfo)
-			if err != nil {
-				return nil, err
-			}
-			aux.NextToken = updatedNextToken
-		}
-		return aux, nil
-	}
-	// Merge aux into main
-	mainData := main.GetData()
-	auxData := aux.GetData()
+func mergeLinkedGraph(
+	mainData, auxData map[string]*pbv2.LinkedGraph,
+) map[string]*pbv2.LinkedGraph {
 	for dcid, linkedGraph := range auxData {
 		if mainData == nil {
 			mainData = map[string]*pbv2.LinkedGraph{}
@@ -133,7 +108,35 @@ func MergeNode(main, aux *pbv2.NodeResponse) (*pbv2.NodeResponse, error) {
 			}
 		}
 	}
-	main.Data = mainData
+	return mainData
+}
+
+// MergeNode merges two V2 node responses.
+// NOTE: Make sure the order of the two arguments, it's important for merging
+// |next_token|. When mergering local and remote mixer response, the remote
+// response is always put as the second argument (aux)
+func MergeNode(main, aux *pbv2.NodeResponse) (*pbv2.NodeResponse, error) {
+	if aux == nil {
+		return main, nil
+	}
+	if main == nil {
+		if aux.GetNextToken() != "" {
+			remotePaginationInfo, err := pagination.Decode(aux.GetNextToken())
+			if err != nil {
+				return nil, err
+			}
+			updatedPaginationInfo := &pbv1.PaginationInfo{
+				RemotePaginationInfo: remotePaginationInfo,
+			}
+			updatedNextToken, err := util.EncodeProto(updatedPaginationInfo)
+			if err != nil {
+				return nil, err
+			}
+			aux.NextToken = updatedNextToken
+		}
+		return aux, nil
+	}
+	main.Data = mergeLinkedGraph(main.GetData(), aux.GetData())
 	// Merge |next_token|.
 	resPaginationInfo := &pbv1.PaginationInfo{}
 	if main.GetNextToken() != "" {
