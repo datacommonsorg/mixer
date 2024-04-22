@@ -101,16 +101,16 @@ Mixer can load data stored from Google CloudSQL. This requires setting flag:
 
 ```bash
 # In repo root directory
-export MIXER_API_KEY=AIzaSyCTI4Xz-UW_G2Q2RfknhcfdAnTHq5X5XuI
-export DB_USER=root
-export DB_PASS=root
+export MIXER_API_KEY=<YOUR API KEY>
+export DB_USER=<user>
+export DB_PASS=<password>
 go run cmd/main.go \
     --use_bigquery=false \
     --use_base_bigtable=false \
     --use_branch_bigtable=false \
     --use_maps_api=false \
     --use_cloudsql=true \
-    --cloudsql_instance=datcom-website-dev:us-central1:undata-demo \
+    --cloudsql_instance=<project>:<region>:dc-graph \
     --remote_mixer_domain=https://api.datacommons.org
 ```
 
