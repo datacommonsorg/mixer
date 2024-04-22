@@ -16,7 +16,6 @@ package place
 
 import (
 	"context"
-	"time"
 
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/protobuf/proto"
@@ -190,7 +189,6 @@ func GetPlaceMetadataHelper(
 	entities []string,
 	store *store.Store,
 ) (map[string]*pb.PlaceMetadata, error) {
-	defer util.TimeTrack(time.Now(), "GetPlaceMetadataHelper")
 	// Place metadata are from base geo imports. Only trust the base cache.
 	btDataList, err := bigtable.Read(
 		ctx,

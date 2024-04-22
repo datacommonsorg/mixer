@@ -226,7 +226,15 @@ func TestMergeNode(t *testing.T) {
 			},
 		},
 		{
-			&pbv2.NodeResponse{},
+			&pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"dcid1": {
+						Arcs: map[string]*pbv2.Nodes{
+							"prop1.2": {},
+						},
+					},
+				},
+			},
 			&pbv2.NodeResponse{
 				Data: map[string]*pbv2.LinkedGraph{
 					"dcid1": {
