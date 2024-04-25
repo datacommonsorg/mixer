@@ -32,6 +32,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
+	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
@@ -66,6 +67,34 @@ func trimDirectResp(resp *pbv2.ObservationResponse) *pbv2.ObservationResponse {
 	return result
 }
 
+// For mocking in tests.
+var (
+	getPlacesIn = placein.GetPlacesIn
+	fetchRemote = util.FetchRemote
+)
+
+func storeFetchChildPlaces(
+	ctx context.Context,
+	store *store.Store,
+	ancestor, childType string,
+) (map[string][]string, error) {
+	return getPlacesIn(
+		ctx, store, []string{ancestor}, childType)
+}
+
+func remoteMixerFetchChildPlaces(
+	metadata *resource.Metadata,
+	httpClient *http.Client,
+	ancestor, childType string,
+) (*pbv2.NodeResponse, error) {
+	remoteReq := &pbv2.NodeRequest{
+			Nodes:    []string{ancestor},
+			Property: fmt.Sprintf("<-containedInPlace+{typeOf:%s}", childType),
+		}
+		remoteResp := &pbv2.NodeResponse{}
+		return remoteResp, fetchRemote(metadata, httpClient, "/v2/node", remoteReq, remoteResp)
+}
+
 // FetchChildPlaces fetches child places
 func FetchChildPlaces(
 	ctx context.Context,
@@ -74,24 +103,46 @@ func FetchChildPlaces(
 	httpClient *http.Client,
 	remoteMixer, ancestor, childType string,
 ) ([]string, error) {
-	childPlacesMap, err := placein.GetPlacesIn(
-		ctx, store, []string{ancestor}, childType)
-	if err != nil {
+	errGroup, errCtx := errgroup.WithContext(ctx)
+
+	storeResponseChan := make(chan map[string][]string, 1)
+	remoteMixerResponseChan := make(chan *pbv2.NodeResponse, 1)
+
+	errGroup.Go(func() error {
+		storeResponse, err := storeFetchChildPlaces(errCtx, store, ancestor, childType)
+		if err != nil {
+			return err
+		}
+		storeResponseChan <- storeResponse
+		return nil
+	})
+
+	if remoteMixer != "" {
+		errGroup.Go(func() error {
+		remoteMixerResponse, err := remoteMixerFetchChildPlaces(metadata, httpClient, ancestor, childType)
+		if err != nil {
+			return err
+		}
+		remoteMixerResponseChan <- remoteMixerResponse
+		return nil
+	})
+	} else {
+		remoteMixerResponseChan <- nil
+	}
+
+	if err := errGroup.Wait(); err != nil {
 		return nil, err
 	}
+	close(storeResponseChan)
+	close(remoteMixerResponseChan)
+
+	childPlacesMap := <- storeResponseChan
+	remoteResp := <- remoteMixerResponseChan
+
 	childPlaces := childPlacesMap[ancestor]
 	// V2 API should always ensure data merging.
 	// Here needs to fetch both local PlacesIn and remote PlacesIn data
-	if remoteMixer != "" {
-		remoteReq := &pbv2.NodeRequest{
-			Nodes:    []string{ancestor},
-			Property: fmt.Sprintf("<-containedInPlace+{typeOf:%s}", childType),
-		}
-		remoteResp := &pbv2.NodeResponse{}
-		err := util.FetchRemote(metadata, httpClient, "/v2/node", remoteReq, remoteResp)
-		if err != nil {
-			return nil, err
-		}
+	if remoteResp != nil {
 		if g, ok := remoteResp.Data[ancestor]; ok {
 			for _, arc := range g.Arcs {
 				for _, node := range arc.Nodes {
