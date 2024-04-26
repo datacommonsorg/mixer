@@ -39,7 +39,7 @@ func TestFetchChildPlaces(t *testing.T) {
 	httpClient := &http.Client{}
 
 	for _, tc := range []struct {
-		desc string
+		desc                string
 		remoteMixer         string
 		ancestor            string
 		childType           string
@@ -47,52 +47,52 @@ func TestFetchChildPlaces(t *testing.T) {
 		remoteMixerResponse *pbv2.NodeResponse
 		want                []string
 	}{{
-		desc: "store only",
-		remoteMixer: "",
-		ancestor: "a1",
-		childType: "CT1",
+		desc:          "store only",
+		remoteMixer:   "",
+		ancestor:      "a1",
+		childType:     "CT1",
 		storeResponse: map[string][]string{"a1": {"c1", "c2"}},
-		want: []string{"c1", "c2"},
-	},{
-		desc: "mixer only",
+		want:          []string{"c1", "c2"},
+	}, {
+		desc:        "mixer only",
 		remoteMixer: "http://foo/bar",
-		ancestor: "a1",
-		childType: "CT1",
+		ancestor:    "a1",
+		childType:   "CT1",
 		remoteMixerResponse: &pbv2.NodeResponse{
-				Data: map[string]*pbv2.LinkedGraph{
-					"a1": {
-						Arcs: map[string]*pbv2.Nodes{
-							"dcid": {
-								Nodes: []*pb.EntityInfo{
-									{Dcid: "c1"},
-									{Dcid: "c2"},
-								},
+			Data: map[string]*pbv2.LinkedGraph{
+				"a1": {
+					Arcs: map[string]*pbv2.Nodes{
+						"dcid": {
+							Nodes: []*pb.EntityInfo{
+								{Dcid: "c1"},
+								{Dcid: "c2"},
 							},
 						},
 					},
 				},
 			},
+		},
 		want: []string{"c1", "c2"},
-	},{
-		desc: "combined",
-		remoteMixer: "http://foo/bar",
-		ancestor: "a1",
-		childType: "CT1",
+	}, {
+		desc:          "combined",
+		remoteMixer:   "http://foo/bar",
+		ancestor:      "a1",
+		childType:     "CT1",
 		storeResponse: map[string][]string{"a1": {"c1", "c2"}},
 		remoteMixerResponse: &pbv2.NodeResponse{
-				Data: map[string]*pbv2.LinkedGraph{
-					"a1": {
-						Arcs: map[string]*pbv2.Nodes{
-							"dcid": {
-								Nodes: []*pb.EntityInfo{
-									{Dcid: "c3"},
-									{Dcid: "c4"},
-								},
+			Data: map[string]*pbv2.LinkedGraph{
+				"a1": {
+					Arcs: map[string]*pbv2.Nodes{
+						"dcid": {
+							Nodes: []*pb.EntityInfo{
+								{Dcid: "c3"},
+								{Dcid: "c4"},
 							},
 						},
 					},
 				},
 			},
+		},
 		want: []string{"c1", "c2", "c3", "c4"},
 	}} {
 		getPlacesIn = func(_ context.Context, _ *store.Store, _ []string, _ string) (map[string][]string, error) {

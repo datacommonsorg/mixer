@@ -80,7 +80,11 @@ func fetchRemoteWrapper(
 	remoteReq *pbv2.NodeRequest,
 ) (*pbv2.NodeResponse, error) {
 	remoteResp := &pbv2.NodeResponse{}
-	return remoteResp, util.FetchRemote(metadata, httpClient, apiPath, remoteReq, remoteResp)
+	err := util.FetchRemote(metadata, httpClient, apiPath, remoteReq, remoteResp)
+	if err != nil {
+		return nil, err
+	}
+	return remoteResp, nil
 }
 
 func storeFetchChildPlaces(
@@ -98,10 +102,10 @@ func remoteMixerFetchChildPlaces(
 	ancestor, childType string,
 ) (*pbv2.NodeResponse, error) {
 	remoteReq := &pbv2.NodeRequest{
-			Nodes:    []string{ancestor},
-			Property: fmt.Sprintf("<-containedInPlace+{typeOf:%s}", childType),
-		}
-		return fetchRemote(metadata, httpClient, "/v2/node", remoteReq)
+		Nodes:    []string{ancestor},
+		Property: fmt.Sprintf("<-containedInPlace+{typeOf:%s}", childType),
+	}
+	return fetchRemote(metadata, httpClient, "/v2/node", remoteReq)
 }
 
 // FetchChildPlaces fetches child places
@@ -128,13 +132,13 @@ func FetchChildPlaces(
 
 	if remoteMixer != "" {
 		errGroup.Go(func() error {
-		remoteMixerResponse, err := remoteMixerFetchChildPlaces(metadata, httpClient, ancestor, childType)
-		if err != nil {
-			return err
-		}
-		remoteMixerResponseChan <- remoteMixerResponse
-		return nil
-	})
+			remoteMixerResponse, err := remoteMixerFetchChildPlaces(metadata, httpClient, ancestor, childType)
+			if err != nil {
+				return err
+			}
+			remoteMixerResponseChan <- remoteMixerResponse
+			return nil
+		})
 	} else {
 		remoteMixerResponseChan <- nil
 	}
@@ -145,8 +149,8 @@ func FetchChildPlaces(
 	close(storeResponseChan)
 	close(remoteMixerResponseChan)
 
-	childPlacesMap := <- storeResponseChan
-	remoteResp := <- remoteMixerResponseChan
+	childPlacesMap := <-storeResponseChan
+	remoteResp := <-remoteMixerResponseChan
 
 	childPlaces := childPlacesMap[ancestor]
 	// V2 API should always ensure data merging.
