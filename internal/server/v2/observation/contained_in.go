@@ -70,8 +70,18 @@ func trimDirectResp(resp *pbv2.ObservationResponse) *pbv2.ObservationResponse {
 // For mocking in tests.
 var (
 	getPlacesIn = placein.GetPlacesIn
-	fetchRemote = util.FetchRemote
+	fetchRemote = fetchRemoteWrapper
 )
+
+func fetchRemoteWrapper(
+	metadata *resource.Metadata,
+	httpClient *http.Client,
+	apiPath string,
+	remoteReq *pbv2.NodeRequest,
+) (*pbv2.NodeResponse, error) {
+	remoteResp := &pbv2.NodeResponse{}
+	return remoteResp, util.FetchRemote(metadata, httpClient, apiPath, remoteReq, remoteResp)
+}
 
 func storeFetchChildPlaces(
 	ctx context.Context,
@@ -91,8 +101,7 @@ func remoteMixerFetchChildPlaces(
 			Nodes:    []string{ancestor},
 			Property: fmt.Sprintf("<-containedInPlace+{typeOf:%s}", childType),
 		}
-		remoteResp := &pbv2.NodeResponse{}
-		return remoteResp, fetchRemote(metadata, httpClient, "/v2/node", remoteReq, remoteResp)
+		return fetchRemote(metadata, httpClient, "/v2/node", remoteReq)
 }
 
 // FetchChildPlaces fetches child places
