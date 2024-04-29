@@ -102,7 +102,8 @@ func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 		} else {
 			remoteRespChan <- nil
 		}
-	} else { // in.GetNextToken() != ""
+	} else {
+		// in.GetNextToken() != ""
 		// In this case, the call needs pagination, and it's not the first call/page.
 
 		paginationInfo, err := pagination.Decode(in.GetNextToken())

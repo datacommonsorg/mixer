@@ -75,18 +75,20 @@ func mergeLinkedGraph(
 		if mainData == nil {
 			mainData = map[string]*pbv2.LinkedGraph{}
 		}
-		if _, ok := mainData[dcid]; !ok {
+		if _, ok := mainData[dcid]; !ok || mainData[dcid].GetArcs() == nil {
 			mainData[dcid] = linkedGraph
 			continue
 		}
+		mainArcs := mainData[dcid].GetArcs()
+
 		for prop, nodes := range linkedGraph.GetArcs() {
-			if _, ok := mainData[dcid].GetArcs()[prop]; !ok {
-				mainData[dcid].GetArcs()[prop] = nodes
+			if _, ok := mainArcs[prop]; !ok || len(mainArcs[prop].GetNodes()) == 0 {
+				mainData[dcid].Arcs[prop] = nodes
 				continue
 			}
 			dcidSet := map[string]struct{}{}
 			valueSet := map[string]struct{}{}
-			mainNodes := mainData[dcid].GetArcs()[prop].Nodes
+			mainNodes := mainArcs[prop].Nodes
 			for _, n := range mainNodes {
 				if n.Dcid != "" {
 					dcidSet[n.Dcid] = struct{}{}
