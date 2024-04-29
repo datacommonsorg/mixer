@@ -27,7 +27,7 @@ import (
 )
 
 const (
-	dbName = "datacommons"
+	defaultDbName = "datacommons"
 )
 
 func ConnectWithConnector(instanceName string) (*sql.DB, error) {
@@ -38,6 +38,13 @@ func ConnectWithConnector(instanceName string) (*sql.DB, error) {
 		}
 		return v
 	}
+	getenv := func(key, fallback string) string {
+		value := os.Getenv(key)
+		if len(value) == 0 {
+			return fallback
+		}
+		return value
+	}
 	// Note: Saving credentials in environment variables is convenient, but not
 	// secure - consider a more secure solution such as
 	// Cloud Secret Manager (https://cloud.google.com/secret-manager) to help
@@ -45,6 +52,7 @@ func ConnectWithConnector(instanceName string) (*sql.DB, error) {
 	var (
 		dbUser = mustGetenv("DB_USER") // e.g. 'my-db-user'
 		dbPwd  = mustGetenv("DB_PASS") // e.g. 'my-db-password'
+		dbName = getenv("DB_NAME", defaultDbName)
 	)
 
 	d, err := cloudsqlconn.NewDialer(context.Background())
