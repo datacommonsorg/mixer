@@ -108,7 +108,7 @@ func (c *calculator) calculate(
 	evalBinaryExpr func(x, y calcItem, op token.Token) (calcItem, error),
 	rankCalcItem func(items []calcItem) calcItem,
 ) (calcItem, error) {
-	if err := c.fillItemCandidates(dataMap, extractSeriesCandidates); err != nil {
+	if err := c.fillItemCandidates(dataMap, extractItemCandidates); err != nil {
 		return nil, err
 	}
 
