@@ -110,6 +110,46 @@ func TestMergeNode(t *testing.T) {
 				Data: map[string]*pbv2.LinkedGraph{
 					"dcid1": {
 						Arcs: map[string]*pbv2.Nodes{
+							"prop1": nil,
+						},
+					},
+				},
+			},
+			&pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"dcid1": {
+						Arcs: map[string]*pbv2.Nodes{
+							"prop1": {
+								Nodes: []*pb.EntityInfo{
+									{Value: "val1"},
+								},
+							},
+						},
+					},
+				},
+			},
+			&pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"dcid1": {
+						Arcs: map[string]*pbv2.Nodes{
+							"prop1": {
+								Nodes: []*pb.EntityInfo{
+									{Value: "val1"},
+								},
+							},
+						},
+					},
+				},
+			},
+			nil,
+			nil,
+			nil,
+		},
+		{
+			&pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"dcid1": {
+						Arcs: map[string]*pbv2.Nodes{
 							"prop1": {
 								Nodes: []*pb.EntityInfo{
 									{Value: "val1"},
@@ -315,11 +355,11 @@ func TestMergeNode(t *testing.T) {
 
 		got, err := MergeNode(c.local, c.remote)
 		if err != nil {
-			t.Errorf("MergeEvent(%v, %v) = %s", c.local, c.remote, err)
+			t.Errorf("MergeNode(%v, %v) = %s", c.local, c.remote, err)
 			continue
 		}
 		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
-			t.Errorf("MergeEvent(%v, %v) got diff: %s", c.local, c.remote, diff)
+			t.Errorf("MergeNode(%v, %v) got diff: %s", c.local, c.remote, diff)
 		}
 	}
 }

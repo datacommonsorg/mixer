@@ -496,6 +496,9 @@ func EncodeProto(m proto.Message) (string, error) {
 	if err != nil {
 		return "", err
 	}
+	if len(data) == 0 {
+		return "", nil
+	}
 	return ZipAndEncode(data)
 }
 
