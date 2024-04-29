@@ -1987,6 +1987,10 @@
             {
               "count": 1,
               "facet": "2458695583"
+            },
+            {
+              "count": 1,
+              "facet": "custom"
             }
           ]
         },
@@ -3516,6 +3520,110 @@
           ]
         }
       ]
+    },
+    {
+      "variable": "test_var_1",
+      "observation_dates": [
+        {
+          "date": "2001",
+          "entity_count": [
+            {
+              "count": 2,
+              "facet": "custom"
+            }
+          ]
+        },
+        {
+          "date": "2002",
+          "entity_count": [
+            {
+              "count": 2,
+              "facet": "custom"
+            }
+          ]
+        },
+        {
+          "date": "2003",
+          "entity_count": [
+            {
+              "count": 2,
+              "facet": "custom"
+            }
+          ]
+        },
+        {
+          "date": "2004",
+          "entity_count": [
+            {
+              "count": 2,
+              "facet": "custom"
+            }
+          ]
+        },
+        {
+          "date": "2005",
+          "entity_count": [
+            {
+              "count": 2,
+              "facet": "custom"
+            }
+          ]
+        },
+        {
+          "date": "2006",
+          "entity_count": [
+            {
+              "count": 2,
+              "facet": "custom"
+            }
+          ]
+        },
+        {
+          "date": "2007",
+          "entity_count": [
+            {
+              "count": 2,
+              "facet": "custom"
+            }
+          ]
+        },
+        {
+          "date": "2008",
+          "entity_count": [
+            {
+              "count": 2,
+              "facet": "custom"
+            }
+          ]
+        },
+        {
+          "date": "2014",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "custom"
+            }
+          ]
+        },
+        {
+          "date": "2015",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "custom"
+            }
+          ]
+        },
+        {
+          "date": "2023",
+          "entity_count": [
+            {
+              "count": 42,
+              "facet": "custom"
+            }
+          ]
+        }
+      ]
     }
   ],
   "facets": {
@@ -3595,6 +3703,10 @@
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601APR",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2601APR&tid=ACSST5Y2019.S2601APR",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "custom": {
+      "import_name": "Custom Prov",
+      "provenance_url": "custom.datacommons.org"
     }
   }
 }

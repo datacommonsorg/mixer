@@ -51,7 +51,7 @@ func TestBulkObservationDatesLinked(t *testing.T) {
 			{
 				"country/USA",
 				"State",
-				[]string{"Count_Person", "Count_Person_Female"},
+				[]string{"Count_Person", "Count_Person_Female", "test_var_1"},
 				"USA_State.json",
 			},
 			{
@@ -95,7 +95,9 @@ func TestBulkObservationDatesLinked(t *testing.T) {
 
 	if err := test.TestDriver(
 		"BulkObservationDatesLinked",
-		&test.TestOption{},
+		&test.TestOption{
+			UseSQLite: true,
+		},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)
