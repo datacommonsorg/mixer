@@ -253,3 +253,40 @@ func MergeObservation(main, aux *pbv2.ObservationResponse) *pbv2.ObservationResp
 	}
 	return main
 }
+
+// MergeObservationDates merges two V1 observation-dates responses.
+func MergeObservationDates(
+	main, aux *pbv1.BulkObservationDatesLinkedResponse,
+) *pbv1.BulkObservationDatesLinkedResponse {
+	if main == nil {
+		return aux
+	}
+	if aux == nil {
+		return main
+	}
+	// Helper variable for merging
+	mainVarIndex := map[string]int{}
+	for idx, vData := range main.DatesByVariable {
+		mainVarIndex[vData.Variable] = idx
+	}
+	// Merge aux into main
+	for _, vData := range aux.DatesByVariable {
+		if mainIdx, ok := mainVarIndex[vData.Variable]; ok {
+			main.DatesByVariable[mainIdx].ObservationDates = append(
+				main.DatesByVariable[mainIdx].ObservationDates,
+				vData.ObservationDates...,
+			)
+		} else {
+			main.DatesByVariable = append(main.DatesByVariable, vData)
+		}
+	}
+	if main.Facets == nil {
+		main.Facets = map[string]*proto.Facet{}
+	}
+	for facetID, facet := range aux.Facets {
+		if _, ok := main.Facets[facetID]; !ok {
+			main.Facets[facetID] = facet
+		}
+	}
+	return main
+}

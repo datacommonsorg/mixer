@@ -18,6 +18,7 @@ import (
 	"context"
 	"sort"
 
+	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/recon"
@@ -36,6 +37,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v1/variable"
 	"github.com/datacommonsorg/mixer/internal/server/v1/variables"
 	"github.com/datacommonsorg/mixer/internal/util"
+	"golang.org/x/sync/errgroup"
 )
 
 const foldedSvgRoot = "dc/g/Folded_Root"
@@ -387,9 +389,45 @@ func (s *Server) BulkObservationsSeriesLinked(
 
 // BulkObservationDatesLinked implements API for mixer.BulkObservationDatesLinked.
 func (s *Server) BulkObservationDatesLinked(
-	ctx context.Context, in *pbv1.BulkObservationDatesLinkedRequest,
+	ctx context.Context,
+	in *pbv1.BulkObservationDatesLinkedRequest,
 ) (*pbv1.BulkObservationDatesLinkedResponse, error) {
-	return observationdates.BulkObservationDatesLinked(ctx, in, s.store)
+	errGroup, errCtx := errgroup.WithContext(ctx)
+	localRespChan := make(chan *pbv1.BulkObservationDatesLinkedResponse, 1)
+	remoteRespChan := make(chan *pbv1.BulkObservationDatesLinkedResponse, 1)
+
+	errGroup.Go(func() error {
+		localResp, err := observationdates.BulkObservationDatesLinked(
+			errCtx, in, s.store, s.cachedata.Load().SQLProvenances(), s.metadata, s.httpClient)
+		if err != nil {
+			return err
+		}
+		localRespChan <- localResp
+		return nil
+	})
+
+	if s.metadata.RemoteMixerDomain != "" {
+		errGroup.Go(func() error {
+			remoteResp := &pbv1.BulkObservationDatesLinkedResponse{}
+			err := util.FetchRemote(
+				s.metadata, s.httpClient, "/v1/bulk/observation-dates/linked", in, remoteResp)
+			if err != nil {
+				return err
+			}
+			remoteRespChan <- remoteResp
+			return nil
+		})
+	} else {
+		remoteRespChan <- nil
+	}
+	if err := errGroup.Wait(); err != nil {
+		return nil, err
+	}
+	close(localRespChan)
+	close(remoteRespChan)
+	localResp, remoteResp := <-localRespChan, <-remoteRespChan
+	return merger.MergeObservationDates(localResp, remoteResp), nil
+
 }
 
 // BulkObservationExistence implements API for mixer.BulkObservationExistence.
