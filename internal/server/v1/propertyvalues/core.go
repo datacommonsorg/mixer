@@ -66,7 +66,7 @@ func Fetch(
 	// No pagination for sqlite query, so if there is a pagination token, meaning
 	// the data has already been queried and returned in previous query.
 	if store.SQLClient != nil && token == "" {
-		sqlResp, err := fetchSQL(ctx, store.SQLClient, nodes, properties, direction)
+		sqlResp, err := fetchSQL(store.SQLClient, nodes, properties, direction)
 		if err != nil {
 			return nil, nil, err
 		}
@@ -94,7 +94,6 @@ func Fetch(
 }
 
 func fetchSQL(
-	ctx context.Context,
 	sqlClient *sql.DB,
 	nodes []string,
 	properties []string,
@@ -230,11 +229,9 @@ func fetchBT(
 	// Empty cursor groups when no token is given.
 	var cursorGroups []*pbv1.CursorGroup
 	if token == "" {
-		if btGroup != nil {
-			cursorGroups = buildDefaultCursorGroups(
-				nodes, properties, propType, len(btGroup.Tables(nil)),
-			)
-		}
+		cursorGroups = buildDefaultCursorGroups(
+			nodes, properties, propType, len(btGroup.Tables(nil)),
+		)
 	} else {
 		pi, err := pagination.Decode(token)
 		if err != nil {

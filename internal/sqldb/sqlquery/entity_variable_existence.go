@@ -23,7 +23,7 @@ import (
 
 // EntityVariableExistence returns all existent entity, variable pairs
 func EntityVariableExistence(sqlClient *sql.DB) (map[util.EntityVariable]struct{}, error) {
-	defer util.TimeTrack(time.Now(), "SQL: EntityVariable")
+	defer util.TimeTrack(time.Now(), "SQL: EntityVariableExistence")
 	query := "SELECT DISTINCT entity, variable FROM observations o"
 	// Execute query
 	rows, err := sqlClient.Query(query)
