@@ -92,8 +92,7 @@ func storeFetchChildPlaces(
 	store *store.Store,
 	ancestor, childType string,
 ) (map[string][]string, error) {
-	return getPlacesIn(
-		ctx, store, []string{ancestor}, childType)
+	return getPlacesIn(ctx, store, []string{ancestor}, childType)
 }
 
 func remoteMixerFetchChildPlaces(
