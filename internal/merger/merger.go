@@ -284,7 +284,9 @@ func MergeObservationDates(
 		main.Facets = map[string]*proto.Facet{}
 	}
 	for facetID, facet := range aux.Facets {
-		main.Facets[facetID] = facet
+		if _, ok := main.Facets[facetID]; !ok {
+			main.Facets[facetID] = facet
+		}
 	}
 	return main
 }
