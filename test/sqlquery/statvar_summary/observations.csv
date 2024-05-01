@@ -1,0 +1,16 @@
+entity,variable,date,value,provenance
+geoId/01,var1,2023,1,custom
+geoId/01,var1,2024,2,custom
+geoId/02,var1,2023,3,custom
+geoId/02,var1,2024,4,custom
+country/USA,var1,2022,5,custom
+country/USA,var1,2023,6,custom
+country/USA,var1,2024,7,custom
+country/CHN,var1,2023,5,custom
+geoId/01,var2,2023,11,custom
+geoId/01,var2,2024,12,custom
+geoId/03,var2,2023,13,custom
+country/USA,var2,2022,15,custom
+country/USA,var2,2023,16,custom
+country/CHN,var2,2023,15,custom
+country/JPN,var2,2024,17,custom
