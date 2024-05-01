@@ -24,18 +24,17 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
-// GetStatVarSummary returns summaries of the specified statvars.
-func GetStatVarSummary(sqlClient *sql.DB, statvars []string) (map[string]*pb.StatVarSummary, error) {
-	defer util.TimeTrack(time.Now(), "SQL: GetStatVarSummary")
+// GetStatVarSummaries returns summaries of the specified statvars.
+func GetStatVarSummaries(sqlClient *sql.DB, statvars []string) (map[string]*pb.StatVarSummary, error) {
+	defer util.TimeTrack(time.Now(), "SQL: GetStatVarSummaries")
 
-	result := map[string]*pb.StatVarSummary{}
+	summaries := map[string]*pb.StatVarSummary{}
 
 	if len(statvars) == 0 {
-		return result, nil
+		return summaries, nil
 	}
 
-	query := getStatVarSummarySqlQuery(statvars)
-	rows, err := sqlClient.Query(query, util.ConvertArgs(statvars)...)
+	rows, err := sqlClient.Query(getSQLQuery(statvars), util.ConvertArgs(statvars)...)
 	if err != nil {
 		return nil, err
 	}
@@ -50,33 +49,36 @@ func GetStatVarSummary(sqlClient *sql.DB, statvars []string) (map[string]*pb.Sta
 		if err != nil {
 			return nil, err
 		}
-		if _, ok := result[variable]; !ok {
-			result[variable] = &pb.StatVarSummary{
+		if _, ok := summaries[variable]; !ok {
+			summaries[variable] = &pb.StatVarSummary{
 				PlaceTypeSummary: map[string]*pb.StatVarSummary_PlaceTypeSummary{},
 			}
 		}
 
-		summary := result[variable]
-		placeTypeSummary := pb.StatVarSummary_PlaceTypeSummary{}
-		summary.PlaceTypeSummary[entityType] = &placeTypeSummary
-		placeTypeSummary.PlaceCount = entityCount
-		placeTypeSummary.MinValue = &minValue
-		placeTypeSummary.MaxValue = &maxValue
-
-		entityIds := strings.Split(sampleEntityIds, ",")
-		for _, entityId := range entityIds {
-			place := pb.StatVarSummary_Place{
-				Dcid: entityId,
-				Name: entityId,
-			}
-			placeTypeSummary.TopPlaces = append(placeTypeSummary.TopPlaces, &place)
+		summaries[variable].PlaceTypeSummary[entityType] = &pb.StatVarSummary_PlaceTypeSummary{
+			PlaceCount: entityCount,
+			MinValue:   &minValue,
+			MaxValue:   &maxValue,
+			TopPlaces:  toPlaces(sampleEntityIds),
 		}
 	}
 
-	return result, nil
+	return summaries, nil
 }
 
-func getStatVarSummarySqlQuery(statvars []string) string {
+func toPlaces(sampleEntityIds string) []*pb.StatVarSummary_Place {
+	entityIds := strings.Split(sampleEntityIds, ",")
+	places := []*pb.StatVarSummary_Place{}
+	for _, entityId := range entityIds {
+		places = append(places, &pb.StatVarSummary_Place{
+			Dcid: entityId,
+			Name: entityId,
+		})
+	}
+	return places
+}
+
+func getSQLQuery(statvars []string) string {
 	return fmt.Sprintf(
 		`
 WITH entity_types
