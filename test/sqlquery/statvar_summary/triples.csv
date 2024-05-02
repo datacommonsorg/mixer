@@ -1,0 +1,9 @@
+subject_id,predicate,object_id,object_value
+var1,typeOf,StatisticalVariable,
+var2,typeOf,StatisticalVariable,
+geoId/01,typeOf,State,
+geoId/02,typeOf,State,
+geoId/03,typeOf,State,
+country/USA,typeOf,Country,
+country/CHN,typeOf,Country,
+country/JPN,typeOf,Country,
