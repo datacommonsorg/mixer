@@ -16,8 +16,10 @@ package statvar
 
 import (
 	"context"
+	"database/sql"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/grpc/codes"
@@ -26,12 +28,30 @@ import (
 )
 
 // GetStatVarSummaryHelper is a wrapper to get stat var summary.
+// GetStatVarSummaryHelper is a wrapper to get stat var summary.
 func GetStatVarSummaryHelper(
 	ctx context.Context, entities []string, store *store.Store) (
 	map[string]*pb.StatVarSummary, error) {
+	if store.BtGroup != nil {
+		return btGetStatVarSummary(ctx, entities, store.BtGroup)
+	}
+	if store.SQLClient != nil {
+		return sqlGetStatVarSummary(entities, store.SQLClient)
+	}
+	return nil, status.Error(codes.Internal, "No store found")
+}
+
+func sqlGetStatVarSummary(entities []string, sqlClient *sql.DB) (
+	map[string]*pb.StatVarSummary, error) {
+	return sqlquery.GetStatVarSummaries(sqlClient, entities)
+}
+
+func btGetStatVarSummary(
+	ctx context.Context, entities []string, btGroup *bigtable.Group) (
+	map[string]*pb.StatVarSummary, error) {
 	btDataList, err := bigtable.Read(
 		ctx,
-		store.BtGroup,
+		btGroup,
 		bigtable.BtStatVarSummary,
 		[][]string{entities},
 		func(jsonRaw []byte) (interface{}, error) {
