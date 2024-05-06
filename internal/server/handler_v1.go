@@ -183,22 +183,6 @@ func (s *Server) VariableInfo(
 	return info.VariableInfo(ctx, in, s.store)
 }
 
-var storeBulkVariableInfo = info.BulkVariableInfo
-
-var remoteBulkVariableInfoResponse = func(
-	s *Server,
-	remoteReq *pbv1.BulkVariableInfoRequest,
-) (*pbv1.BulkVariableInfoResponse, error) {
-	remoteResp := &pbv1.BulkVariableInfoResponse{}
-	return remoteResp, util.FetchRemote(
-		s.metadata,
-		s.httpClient,
-		"/v1/bulk/info/variable",
-		remoteReq,
-		remoteResp,
-	)
-}
-
 // BulkVariableInfo implements API for mixer.BulkVariableInfo.
 func (s *Server) BulkVariableInfo(
 	ctx context.Context, in *pbv1.BulkVariableInfoRequest,
@@ -206,67 +190,38 @@ func (s *Server) BulkVariableInfo(
 
 	errGroup, errCtx := errgroup.WithContext(ctx)
 
-	storeResponseChan := make(chan *pbv1.BulkVariableInfoResponse, 1)
-	remoteMixerResponseChan := make(chan *pbv1.BulkVariableInfoResponse, 1)
+	localResponseChan := make(chan *pbv1.BulkVariableInfoResponse, 1)
+	remoteResponseChan := make(chan *pbv1.BulkVariableInfoResponse, 1)
 
 	errGroup.Go(func() error {
-		storeResponse, err := storeBulkVariableInfo(errCtx, in, s.store)
+		localResponse, err := localBulkVariableInfoFunc(errCtx, in, s.store)
 		if err != nil {
 			return err
 		}
-		storeResponseChan <- storeResponse
+		localResponseChan <- localResponse
 		return nil
 	})
 
 	if s.metadata.RemoteMixerDomain != "" {
 		errGroup.Go(func() error {
-			remoteMixerResponse, err := remoteBulkVariableInfoResponse(s, in)
+			remoteResponse, err := remoteBulkVariableInfoFunc(s, in)
 			if err != nil {
 				return err
 			}
-			remoteMixerResponseChan <- remoteMixerResponse
+			remoteResponseChan <- remoteResponse
 			return nil
 		})
 	} else {
-		remoteMixerResponseChan <- nil
+		remoteResponseChan <- nil
 	}
 
 	if err := errGroup.Wait(); err != nil {
 		return nil, err
 	}
-	close(storeResponseChan)
-	close(remoteMixerResponseChan)
+	close(localResponseChan)
+	close(remoteResponseChan)
 
-	localResp := <-storeResponseChan
-	remoteResp := <-remoteMixerResponseChan
-
-	keyedInfo := map[string]*pbv1.VariableInfoResponse{}
-	if localResp != nil {
-		for _, item := range localResp.Data {
-			if item.Info != nil {
-				keyedInfo[item.GetNode()] = item
-			}
-		}
-	}
-	if remoteResp != nil {
-		for _, item := range remoteResp.Data {
-			node := item.GetNode()
-			// If the same SV is in both local and remote, this will return the local info.
-			// TODO: Merge both infos.
-			if _, ok := keyedInfo[node]; !ok {
-				keyedInfo[node] = item
-			}
-		}
-	}
-	result := &pbv1.BulkVariableInfoResponse{
-		Data: []*pbv1.VariableInfoResponse{},
-	}
-	for _, item := range keyedInfo {
-		result.Data = append(result.Data, item)
-	}
-	sort.Slice(result.Data, func(i, j int) bool {
-		return result.Data[i].Node < result.Data[j].Node
-	})
+	result := merger.MergeBulkVariableInfoResponse(<-localResponseChan, <-remoteResponseChan)
 	return result, nil
 }
 

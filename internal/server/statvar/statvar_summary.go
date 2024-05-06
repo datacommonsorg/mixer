@@ -18,27 +18,64 @@ import (
 	"context"
 	"database/sql"
 
+	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
+	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
 )
 
 // GetStatVarSummaryHelper is a wrapper to get stat var summary.
-// GetStatVarSummaryHelper is a wrapper to get stat var summary.
 func GetStatVarSummaryHelper(
 	ctx context.Context, entities []string, store *store.Store) (
 	map[string]*pb.StatVarSummary, error) {
+	if store.BtGroup == nil && store.SQLClient == nil {
+		return nil, status.Error(codes.Internal, "No store found")
+	}
+
+	errGroup, errCtx := errgroup.WithContext(ctx)
+
+	btChan := make(chan map[string]*pb.StatVarSummary, 1)
+	sqlChan := make(chan map[string]*pb.StatVarSummary, 1)
+
 	if store.BtGroup != nil {
-		return btGetStatVarSummary(ctx, entities, store.BtGroup)
+		errGroup.Go(func() error {
+			bt, err := btGetStatVarSummary(errCtx, entities, store.BtGroup)
+			if err != nil {
+				return err
+			}
+			btChan <- bt
+			return nil
+		})
+	} else {
+		btChan <- map[string]*pb.StatVarSummary{}
 	}
+
 	if store.SQLClient != nil {
-		return sqlGetStatVarSummary(entities, store.SQLClient)
+		errGroup.Go(func() error {
+			sql, err := sqlGetStatVarSummary(entities, store.SQLClient)
+			if err != nil {
+				return err
+			}
+			sqlChan <- sql
+			return nil
+		})
+	} else {
+		sqlChan <- map[string]*pb.StatVarSummary{}
 	}
-	return nil, status.Error(codes.Internal, "No store found")
+
+	if err := errGroup.Wait(); err != nil {
+		return nil, err
+	}
+	close(btChan)
+	close(sqlChan)
+
+	return merger.MergeStatVarSummary(<-btChan, <-sqlChan), nil
+
 }
 
 func sqlGetStatVarSummary(entities []string, sqlClient *sql.DB) (

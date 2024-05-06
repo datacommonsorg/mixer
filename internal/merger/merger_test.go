@@ -625,3 +625,187 @@ func TestMergeObservation(t *testing.T) {
 		}
 	}
 }
+
+func TestMergeBulkVariableInfoResponse(t *testing.T) {
+	cmpOpts := cmp.Options{protocmp.Transform()}
+	for _, tc := range []struct {
+		desc      string
+		primary   *pbv1.BulkVariableInfoResponse
+		secondary *pbv1.BulkVariableInfoResponse
+		want      *pbv1.BulkVariableInfoResponse
+	}{{
+		desc: "primary only",
+		primary: &pbv1.BulkVariableInfoResponse{
+			Data: []*pbv1.VariableInfoResponse{
+				{
+					Node: "v1",
+					Info: &pb.StatVarSummary{
+						PlaceTypeSummary: map[string]*pb.StatVarSummary_PlaceTypeSummary{
+							"T1": {PlaceCount: 1},
+							"T2": {PlaceCount: 2},
+						},
+					},
+				},
+				{
+					Node: "v2",
+					Info: &pb.StatVarSummary{
+						PlaceTypeSummary: map[string]*pb.StatVarSummary_PlaceTypeSummary{
+							"T3": {PlaceCount: 3},
+							"T4": {PlaceCount: 4},
+						},
+					},
+				},
+			},
+		},
+		want: &pbv1.BulkVariableInfoResponse{
+			Data: []*pbv1.VariableInfoResponse{
+				{
+					Node: "v1",
+					Info: &pb.StatVarSummary{
+						PlaceTypeSummary: map[string]*pb.StatVarSummary_PlaceTypeSummary{
+							"T1": {PlaceCount: 1},
+							"T2": {PlaceCount: 2},
+						},
+					},
+				},
+				{
+					Node: "v2",
+					Info: &pb.StatVarSummary{
+						PlaceTypeSummary: map[string]*pb.StatVarSummary_PlaceTypeSummary{
+							"T3": {PlaceCount: 3},
+							"T4": {PlaceCount: 4},
+						},
+					},
+				},
+			},
+		},
+	}, {
+		desc: "secondary only",
+		secondary: &pbv1.BulkVariableInfoResponse{
+			Data: []*pbv1.VariableInfoResponse{
+				{
+					Node: "v2",
+					Info: &pb.StatVarSummary{
+						PlaceTypeSummary: map[string]*pb.StatVarSummary_PlaceTypeSummary{
+							"TR1": {PlaceCount: 11},
+							"TR2": {PlaceCount: 12},
+						},
+					},
+				},
+				{
+					Node: "v3",
+					Info: &pb.StatVarSummary{
+						PlaceTypeSummary: map[string]*pb.StatVarSummary_PlaceTypeSummary{
+							"TR3": {PlaceCount: 13},
+							"TR4": {PlaceCount: 14},
+						},
+					},
+				},
+			},
+		},
+		want: &pbv1.BulkVariableInfoResponse{
+			Data: []*pbv1.VariableInfoResponse{
+				{
+					Node: "v2",
+					Info: &pb.StatVarSummary{
+						PlaceTypeSummary: map[string]*pb.StatVarSummary_PlaceTypeSummary{
+							"TR1": {PlaceCount: 11},
+							"TR2": {PlaceCount: 12},
+						},
+					},
+				},
+				{
+					Node: "v3",
+					Info: &pb.StatVarSummary{
+						PlaceTypeSummary: map[string]*pb.StatVarSummary_PlaceTypeSummary{
+							"TR3": {PlaceCount: 13},
+							"TR4": {PlaceCount: 14},
+						},
+					},
+				},
+			},
+		},
+	}, {
+		desc: "combined",
+		primary: &pbv1.BulkVariableInfoResponse{
+			Data: []*pbv1.VariableInfoResponse{
+				{
+					Node: "v1",
+					Info: &pb.StatVarSummary{
+						PlaceTypeSummary: map[string]*pb.StatVarSummary_PlaceTypeSummary{
+							"T1": {PlaceCount: 1},
+							"T2": {PlaceCount: 2},
+						},
+					},
+				},
+				{
+					Node: "v2",
+					Info: &pb.StatVarSummary{
+						PlaceTypeSummary: map[string]*pb.StatVarSummary_PlaceTypeSummary{
+							"T3": {PlaceCount: 3},
+							"T4": {PlaceCount: 4},
+						},
+					},
+				},
+			},
+		},
+		secondary: &pbv1.BulkVariableInfoResponse{
+			Data: []*pbv1.VariableInfoResponse{
+				{
+					Node: "v2",
+					Info: &pb.StatVarSummary{
+						PlaceTypeSummary: map[string]*pb.StatVarSummary_PlaceTypeSummary{
+							"TR1": {PlaceCount: 11},
+							"TR2": {PlaceCount: 12},
+						},
+					},
+				},
+				{
+					Node: "v3",
+					Info: &pb.StatVarSummary{
+						PlaceTypeSummary: map[string]*pb.StatVarSummary_PlaceTypeSummary{
+							"TR3": {PlaceCount: 13},
+							"TR4": {PlaceCount: 14},
+						},
+					},
+				},
+			},
+		},
+		want: &pbv1.BulkVariableInfoResponse{
+			Data: []*pbv1.VariableInfoResponse{
+				{
+					Node: "v1",
+					Info: &pb.StatVarSummary{
+						PlaceTypeSummary: map[string]*pb.StatVarSummary_PlaceTypeSummary{
+							"T1": {PlaceCount: 1},
+							"T2": {PlaceCount: 2},
+						},
+					},
+				},
+				{
+					Node: "v2",
+					Info: &pb.StatVarSummary{
+						PlaceTypeSummary: map[string]*pb.StatVarSummary_PlaceTypeSummary{
+							"T3": {PlaceCount: 3},
+							"T4": {PlaceCount: 4},
+						},
+					},
+				},
+				{
+					Node: "v3",
+					Info: &pb.StatVarSummary{
+						PlaceTypeSummary: map[string]*pb.StatVarSummary_PlaceTypeSummary{
+							"TR3": {PlaceCount: 13},
+							"TR4": {PlaceCount: 14},
+						},
+					},
+				},
+			},
+		},
+	}} {
+		got := MergeBulkVariableInfoResponse(tc.primary, tc.secondary)
+		if diff := cmp.Diff(got, tc.want, cmpOpts); diff != "" {
+			t.Errorf("%s: got diff: %s", tc.desc, diff)
+		}
+	}
+}

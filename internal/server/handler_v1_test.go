@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package merger provides function to merge V2 API responses.
 package server
 
 import (
@@ -41,17 +40,17 @@ func TestBulkVariableInfo(t *testing.T) {
 	}
 
 	for _, tc := range []struct {
-		desc                string
-		remoteMixer         string
-		statvars            []string
-		storeResponse       *pbv1.BulkVariableInfoResponse
-		remoteMixerResponse *pbv1.BulkVariableInfoResponse
-		want                *pbv1.BulkVariableInfoResponse
+		desc           string
+		remoteMixer    string
+		statvars       []string
+		localResponse  *pbv1.BulkVariableInfoResponse
+		remoteResponse *pbv1.BulkVariableInfoResponse
+		want           *pbv1.BulkVariableInfoResponse
 	}{{
 		desc:        "local only",
 		remoteMixer: "",
 		statvars:    []string{"v1", "v2"},
-		storeResponse: &pbv1.BulkVariableInfoResponse{
+		localResponse: &pbv1.BulkVariableInfoResponse{
 			Data: []*pbv1.VariableInfoResponse{
 				{
 					Node: "v1",
@@ -99,7 +98,7 @@ func TestBulkVariableInfo(t *testing.T) {
 		desc:        "remote only",
 		remoteMixer: "http://foo/bar",
 		statvars:    []string{"v2", "v3"},
-		remoteMixerResponse: &pbv1.BulkVariableInfoResponse{
+		remoteResponse: &pbv1.BulkVariableInfoResponse{
 			Data: []*pbv1.VariableInfoResponse{
 				{
 					Node: "v2",
@@ -147,7 +146,7 @@ func TestBulkVariableInfo(t *testing.T) {
 		desc:        "combined",
 		remoteMixer: "http://foo/bar",
 		statvars:    []string{"v1", "v2", "v3"},
-		storeResponse: &pbv1.BulkVariableInfoResponse{
+		localResponse: &pbv1.BulkVariableInfoResponse{
 			Data: []*pbv1.VariableInfoResponse{
 				{
 					Node: "v1",
@@ -169,7 +168,7 @@ func TestBulkVariableInfo(t *testing.T) {
 				},
 			},
 		},
-		remoteMixerResponse: &pbv1.BulkVariableInfoResponse{
+		remoteResponse: &pbv1.BulkVariableInfoResponse{
 			Data: []*pbv1.VariableInfoResponse{
 				{
 					Node: "v2",
@@ -223,11 +222,11 @@ func TestBulkVariableInfo(t *testing.T) {
 			},
 		},
 	}} {
-		storeBulkVariableInfo = func(_ context.Context, _ *pbv1.BulkVariableInfoRequest, _ *store.Store) (*pbv1.BulkVariableInfoResponse, error) {
-			return tc.storeResponse, nil
+		localBulkVariableInfoFunc = func(_ context.Context, _ *pbv1.BulkVariableInfoRequest, _ *store.Store) (*pbv1.BulkVariableInfoResponse, error) {
+			return tc.localResponse, nil
 		}
-		remoteBulkVariableInfoResponse = func(_ *Server, _ *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error) {
-			return tc.remoteMixerResponse, nil
+		remoteBulkVariableInfoFunc = func(_ *Server, _ *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error) {
+			return tc.remoteResponse, nil
 		}
 		s.metadata.RemoteMixerDomain = tc.remoteMixer
 		request := pbv1.BulkVariableInfoRequest{
