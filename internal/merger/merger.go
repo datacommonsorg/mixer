@@ -290,3 +290,62 @@ func MergeObservationDates(
 	}
 	return main
 }
+
+// MergeStatVarSummary merges two StatVarSummary maps.
+func MergeStatVarSummary(primary, secondary map[string]*proto.StatVarSummary) map[string]*proto.StatVarSummary {
+	merged := map[string]*proto.StatVarSummary{}
+	addInfos := func(in map[string]*proto.StatVarSummary) {
+		for node, info := range in {
+			if info != nil {
+				// If the same SV is in multiple responses,
+				// this will use the info from the first response.
+				// TODO: Merge both infos.
+				if _, ok := merged[node]; !ok {
+					merged[node] = info
+				}
+			}
+		}
+	}
+	addInfos(primary)
+	addInfos(secondary)
+	return merged
+}
+
+// MergeBulkVariableInfoResponse merges two BulkVariableInfoResponses.
+func MergeBulkVariableInfoResponse(primary, secondary *pbv1.BulkVariableInfoResponse) *pbv1.BulkVariableInfoResponse {
+	var primaryMap, secondaryMap map[string]*proto.StatVarSummary
+	if primary != nil {
+		primaryMap = toStatVarSummaryMap(primary.Data)
+	}
+	if secondary != nil {
+		secondaryMap = toStatVarSummaryMap(secondary.Data)
+	}
+
+	mergedMap := MergeStatVarSummary(primaryMap, secondaryMap)
+
+	merged := &pbv1.BulkVariableInfoResponse{
+		Data: []*pbv1.VariableInfoResponse{},
+	}
+	for node, info := range mergedMap {
+		merged.Data = append(merged.Data, &pbv1.VariableInfoResponse{
+			Node: node,
+			Info: info,
+		})
+	}
+
+	sort.Slice(merged.Data, func(i, j int) bool {
+		return merged.Data[i].Node < merged.Data[j].Node
+	})
+
+	return merged
+}
+
+func toStatVarSummaryMap(in []*pbv1.VariableInfoResponse) map[string]*proto.StatVarSummary {
+	out := map[string]*proto.StatVarSummary{}
+	for _, item := range in {
+		if item.Info != nil {
+			out[item.GetNode()] = item.Info
+		}
+	}
+	return out
+}

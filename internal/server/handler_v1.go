@@ -187,46 +187,41 @@ func (s *Server) VariableInfo(
 func (s *Server) BulkVariableInfo(
 	ctx context.Context, in *pbv1.BulkVariableInfoRequest,
 ) (*pbv1.BulkVariableInfoResponse, error) {
-	localResp, err := info.BulkVariableInfo(ctx, in, s.store)
-	if err != nil {
+
+	errGroup, errCtx := errgroup.WithContext(ctx)
+
+	localResponseChan := make(chan *pbv1.BulkVariableInfoResponse, 1)
+	remoteResponseChan := make(chan *pbv1.BulkVariableInfoResponse, 1)
+
+	errGroup.Go(func() error {
+		localResponse, err := localBulkVariableInfoFunc(errCtx, in, s.store)
+		if err != nil {
+			return err
+		}
+		localResponseChan <- localResponse
+		return nil
+	})
+
+	if s.metadata.RemoteMixerDomain != "" {
+		errGroup.Go(func() error {
+			remoteResponse, err := remoteBulkVariableInfoFunc(s, in)
+			if err != nil {
+				return err
+			}
+			remoteResponseChan <- remoteResponse
+			return nil
+		})
+	} else {
+		remoteResponseChan <- nil
+	}
+
+	if err := errGroup.Wait(); err != nil {
 		return nil, err
 	}
-	keyedInfo := map[string]*pbv1.VariableInfoResponse{}
-	for _, item := range localResp.Data {
-		keyedInfo[item.GetNode()] = item
-	}
-	if s.metadata.RemoteMixerDomain != "" {
-		in.Nodes = []string{}
-		for _, item := range localResp.Data {
-			if item.Info == nil {
-				in.Nodes = append(in.Nodes, item.Node)
-			}
-		}
-		if len(in.Nodes) > 0 {
-			remoteResp := &pbv1.BulkVariableInfoResponse{}
-			if err := util.FetchRemote(
-				s.metadata,
-				s.httpClient,
-				"/v1/bulk/info/variable",
-				in,
-				remoteResp,
-			); err != nil {
-				return nil, err
-			}
-			for _, item := range remoteResp.Data {
-				keyedInfo[item.GetNode()] = item
-			}
-		}
-	}
-	result := &pbv1.BulkVariableInfoResponse{
-		Data: []*pbv1.VariableInfoResponse{},
-	}
-	for _, item := range keyedInfo {
-		result.Data = append(result.Data, item)
-	}
-	sort.Slice(result.Data, func(i, j int) bool {
-		return result.Data[i].Node < result.Data[j].Node
-	})
+	close(localResponseChan)
+	close(remoteResponseChan)
+
+	result := merger.MergeBulkVariableInfoResponse(<-localResponseChan, <-remoteResponseChan)
 	return result, nil
 }
 

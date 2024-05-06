@@ -49,6 +49,14 @@ func TestBulkVariableInfo(t *testing.T) {
 				false,
 			},
 			{
+				[]string{
+					"Count_Person_Female",
+					"test_var_1",
+				},
+				"bulk_bt_and_sql.json",
+				false,
+			},
+			{
 				[]string{},
 				"empty.json",
 				true,
@@ -91,7 +99,10 @@ func TestBulkVariableInfo(t *testing.T) {
 	}
 
 	if err := test.TestDriver(
-		"BulkVariableInfo", &test.TestOption{}, testSuite); err != nil {
+		"BulkVariableInfo",
+		&test.TestOption{
+			UseSQLite: true,
+		}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

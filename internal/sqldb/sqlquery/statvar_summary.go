@@ -26,7 +26,7 @@ import (
 
 // GetStatVarSummaries returns summaries of the specified statvars.
 func GetStatVarSummaries(sqlClient *sql.DB, statvars []string) (map[string]*pb.StatVarSummary, error) {
-	defer util.TimeTrack(time.Now(), "SQL: GetStatVarSummaries")
+	defer util.TimeTrack(time.Now(), fmt.Sprintf("SQL: GetStatVarSummaries (%s)", strings.Join(statvars, ", ")))
 
 	summaries := map[string]*pb.StatVarSummary{}
 
@@ -116,12 +116,12 @@ WITH entity_types
                           OVER (
                             partition BY variable, entity_type) AS row_num
                  FROM   entities) AS entities_with_row_num
-         WHERE  row_num <= 5),
+         WHERE  row_num <= 3),
      grouped_entities
      AS (SELECT variable,
                 entity_type,
                 Group_concat(entity_id) AS sample_entity_ids
-         FROM   entities
+         FROM   sample_entities
          GROUP  BY variable,
                    entity_type),
      aggregate
