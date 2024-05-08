@@ -5702,6 +5702,11 @@
               "facet": "3981252704"
             },
             {
+              "date": "2022",
+              "value": 99461710,
+              "facet": "2590504623"
+            },
+            {
               "date": "2016",
               "value": 92701000,
               "facet": "473499523"
@@ -6035,6 +6040,10 @@
       "import_name": "EstoniaPopulation",
       "provenance_url": "https://www.stat.ee/en",
       "measurement_method": "StatisticsEstonia"
+    },
+    "2590504623": {
+      "import_name": "Vietnam_Census",
+      "provenance_url": "https://www.gso.gov.vn/en/homepage/"
     },
     "2708675871": {
       "import_name": "Japan_Census",

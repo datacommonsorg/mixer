@@ -5,7 +5,7 @@
       "info": {
         "placeTypeSummary": {
           "AdministrativeArea": {
-            "placeCount": 34,
+            "placeCount": 40,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1088815",
@@ -24,7 +24,7 @@
             "maxValue": 36986320
           },
           "AdministrativeArea1": {
-            "placeCount": 344,
+            "placeCount": 403,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q3724",
@@ -3367,6 +3367,93 @@
             ],
             "observationCount": 165882,
             "timeSeriesCount": 3199
+          },
+          "dc/base/Vietnam_Census": {
+            "importName": "Vietnam_Census",
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "1995",
+                "latestDate": "2022",
+                "placeTypeSummary": {
+                  "AdministrativeArea": {
+                    "placeCount": 6,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q342451",
+                        "name": "Red River Delta Biosphere Reserve"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1052867",
+                        "name": "Mekong Delta"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1022242",
+                        "name": "North Central Coast of Vietnam"
+                      }
+                    ],
+                    "minValue": 174800,
+                    "maxValue": 11818890
+                  },
+                  "AdministrativeArea1": {
+                    "placeCount": 59,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1854",
+                        "name": "Ho Chi Minh City"
+                      },
+                      {
+                        "dcid": "wikidataId/Q36512",
+                        "name": "Thanh Hóa"
+                      },
+                      {
+                        "dcid": "wikidataId/Q36587",
+                        "name": "Nghệ An"
+                      }
+                    ],
+                    "minValue": 127300,
+                    "maxValue": 4831090
+                  },
+                  "City": {
+                    "placeCount": 4,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1858",
+                        "name": "Hanoi"
+                      },
+                      {
+                        "dcid": "wikidataId/Q216075",
+                        "name": "Cần Thơ"
+                      },
+                      {
+                        "dcid": "wikidataId/Q25282",
+                        "name": "Da Nang"
+                      }
+                    ],
+                    "minValue": 325100,
+                    "maxValue": 4268360
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/VNM",
+                        "name": "Vietnam"
+                      }
+                    ],
+                    "minValue": 36758100,
+                    "maxValue": 49858000
+                  }
+                },
+                "minValue": 127300,
+                "maxValue": 49858000,
+                "observationCount": 1918,
+                "timeSeriesCount": 70
+              }
+            ],
+            "observationCount": 1918,
+            "timeSeriesCount": 70
           }
         }
       }

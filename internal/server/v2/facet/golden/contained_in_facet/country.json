@@ -68,6 +68,9 @@
               "facet_id": "2708675871"
             },
             {
+              "facet_id": "2590504623"
+            },
+            {
               "facet_id": "2052219360"
             },
             {
@@ -350,6 +353,10 @@
       "import_name": "EstoniaPopulation",
       "provenance_url": "https://www.stat.ee/en",
       "measurement_method": "StatisticsEstonia"
+    },
+    "2590504623": {
+      "import_name": "Vietnam_Census",
+      "provenance_url": "https://www.gso.gov.vn/en/homepage/"
     },
     "2708675871": {
       "import_name": "Japan_Census",

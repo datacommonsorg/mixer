@@ -5629,6 +5629,15 @@
               ]
             },
             {
+              "facet_id": "2590504623",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 99461710
+                }
+              ]
+            },
+            {
               "facet_id": "473499523",
               "observations": [
                 {
@@ -5942,6 +5951,10 @@
       "import_name": "EstoniaPopulation",
       "provenance_url": "https://www.stat.ee/en",
       "measurement_method": "StatisticsEstonia"
+    },
+    "2590504623": {
+      "import_name": "Vietnam_Census",
+      "provenance_url": "https://www.gso.gov.vn/en/homepage/"
     },
     "2708675871": {
       "import_name": "Japan_Census",
