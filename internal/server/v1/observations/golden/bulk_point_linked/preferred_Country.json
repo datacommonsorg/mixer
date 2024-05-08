@@ -34,16 +34,6 @@
           ]
         },
         {
-          "entity": "country/AIA",
-          "points_by_facet": [
-            {
-              "date": "2011",
-              "value": 15094,
-              "facet": "3114843463"
-            }
-          ]
-        },
-        {
           "entity": "country/ALB",
           "points_by_facet": [
             {
@@ -68,8 +58,8 @@
           "points_by_facet": [
             {
               "date": "2009",
-              "value": 227049,
-              "facet": "3114843463"
+              "value": 197041,
+              "facet": "2458695583"
             }
           ]
         },
@@ -267,9 +257,9 @@
           "entity": "country/BLM",
           "points_by_facet": [
             {
-              "date": "2012",
-              "value": 9131,
-              "facet": "3114843463"
+              "date": "2015",
+              "value": 9625,
+              "facet": "2458695583"
             }
           ]
         },
@@ -387,9 +377,9 @@
           "entity": "country/CCK",
           "points_by_facet": [
             {
-              "date": "2009",
+              "date": "2014-07",
               "value": 596,
-              "facet": "3114843463"
+              "facet": "2458695583"
             }
           ]
         },
@@ -537,9 +527,9 @@
           "entity": "country/CXR",
           "points_by_facet": [
             {
-              "date": "2010",
-              "value": 1402,
-              "facet": "3114843463"
+              "date": "2016-08-09",
+              "value": 1843,
+              "facet": "2458695583"
             }
           ]
         },
@@ -727,9 +717,9 @@
           "entity": "country/FLK",
           "points_by_facet": [
             {
-              "date": "2012",
-              "value": 2840,
-              "facet": "3114843463"
+              "date": "2018",
+              "value": 4550,
+              "facet": "2458695583"
             }
           ]
         },
@@ -1117,9 +1107,9 @@
           "entity": "country/JEY",
           "points_by_facet": [
             {
-              "date": "2011",
-              "value": 97857,
-              "facet": "3114843463"
+              "date": "2017-12",
+              "value": 105500,
+              "facet": "2458695583"
             }
           ]
         },
@@ -1517,9 +1507,9 @@
           "entity": "country/MSR",
           "points_by_facet": [
             {
-              "date": "2020",
-              "value": 4992,
-              "facet": "3114843463"
+              "date": "2019",
+              "value": 5215,
+              "facet": "2458695583"
             }
           ]
         },
@@ -1607,9 +1597,9 @@
           "entity": "country/NFK",
           "points_by_facet": [
             {
-              "date": "2011-07",
-              "value": 2169,
-              "facet": "3114843463"
+              "date": "2016",
+              "value": 1748,
+              "facet": "2458695583"
             }
           ]
         },
@@ -1727,9 +1717,9 @@
           "entity": "country/PCN",
           "points_by_facet": [
             {
-              "date": "2011",
-              "value": 67,
-              "facet": "3114843463"
+              "date": "2019",
+              "value": 50,
+              "facet": "2458695583"
             }
           ]
         },
@@ -1934,22 +1924,12 @@
           ]
         },
         {
-          "entity": "country/SGS",
-          "points_by_facet": [
-            {
-              "date": "2006",
-              "value": 30,
-              "facet": "3114843463"
-            }
-          ]
-        },
-        {
           "entity": "country/SHN",
           "points_by_facet": [
             {
-              "date": "2008",
-              "value": 5661,
-              "facet": "3114843463"
+              "date": "2016",
+              "value": 4534,
+              "facet": "2458695583"
             }
           ]
         },
@@ -2007,9 +1987,9 @@
           "entity": "country/SPM",
           "points_by_facet": [
             {
-              "date": "2011",
-              "value": 5888,
-              "facet": "3114843463"
+              "date": "2013",
+              "value": 6057,
+              "facet": "2458695583"
             }
           ]
         },
@@ -2177,9 +2157,9 @@
           "entity": "country/TKL",
           "points_by_facet": [
             {
-              "date": "2011-10",
-              "value": 1411,
-              "facet": "3114843463"
+              "date": "2016",
+              "value": 1499,
+              "facet": "2458695583"
             }
           ]
         },
@@ -2407,9 +2387,9 @@
           "entity": "country/WLF",
           "points_by_facet": [
             {
-              "date": "2009-07",
-              "value": 15289,
-              "facet": "3114843463"
+              "date": "2013",
+              "value": 12197,
+              "facet": "2458695583"
             }
           ]
         },
@@ -2637,11 +2617,6 @@
       "provenance_url": "https://www.csb.gov.lv/en",
       "measurement_method": "LatviaCSB"
     },
-    "3114843463": {
-      "import_name": "HumanCuratedStats",
-      "provenance_url": "https://google.com",
-      "measurement_method": "HumanCuratedStats"
-    },
     "3162233851": {
       "import_name": "BosniaPopulation",
       "provenance_url": "http://popis.gov.ba/",
@@ -2697,6 +2672,10 @@
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y"
+    },
+    "4089091283": {
+      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
+      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true"
     },
     "4140854811": {
       "import_name": "Colombia_Census",

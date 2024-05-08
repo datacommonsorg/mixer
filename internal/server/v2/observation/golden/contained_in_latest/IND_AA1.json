@@ -430,6 +430,19 @@
               ]
             }
           ]
+        },
+        "wikidataId/Q66743": {
+          "ordered_facets": [
+            {
+              "facet_id": "2123271870",
+              "observations": [
+                {
+                  "date": "2011",
+                  "value": 957309
+                }
+              ]
+            }
+          ]
         }
       }
     }

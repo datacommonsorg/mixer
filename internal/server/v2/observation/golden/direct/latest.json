@@ -233,6 +233,18 @@
               "latest_date": "2022"
             },
             {
+              "facet_id": "4089091283",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 67871925
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2022",
+              "latest_date": "2022"
+            },
+            {
               "facet_id": "738965619",
               "observations": [
                 {
@@ -630,13 +642,13 @@
               "facet_id": "3707913853",
               "observations": [
                 {
-                  "date": "2024-03",
-                  "value": 6429000
+                  "date": "2024-04",
+                  "value": 6492000
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2024-03",
-              "latest_date": "2024-03"
+              "earliest_date": "2024-04",
+              "latest_date": "2024-04"
             },
             {
               "facet_id": "1714978719",
@@ -659,13 +671,13 @@
               "facet_id": "324358135",
               "observations": [
                 {
-                  "date": "2024-02",
-                  "value": 1078314
+                  "date": "2024-03",
+                  "value": 1036703
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2024-02",
-              "latest_date": "2024-02"
+              "earliest_date": "2024-03",
+              "latest_date": "2024-03"
             },
             {
               "facet_id": "2978659163",
@@ -683,13 +695,13 @@
               "facet_id": "1249140336",
               "observations": [
                 {
-                  "date": "2024-02",
-                  "value": 1027033
+                  "date": "2024-03",
+                  "value": 1032379
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2024-02",
-              "latest_date": "2024-02"
+              "earliest_date": "2024-03",
+              "latest_date": "2024-03"
             }
           ]
         },
@@ -699,25 +711,25 @@
               "facet_id": "324358135",
               "observations": [
                 {
-                  "date": "2024-02",
-                  "value": 1711
+                  "date": "2024-03",
+                  "value": 1603
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2024-02",
-              "latest_date": "2024-02"
+              "earliest_date": "2024-03",
+              "latest_date": "2024-03"
             },
             {
               "facet_id": "2978659163",
               "observations": [
                 {
-                  "date": "2022",
-                  "value": 1005
+                  "date": "2023",
+                  "value": 1442
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2022",
-              "latest_date": "2022"
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         }
@@ -872,6 +884,10 @@
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y"
+    },
+    "4089091283": {
+      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
+      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true"
     },
     "4277990144": {
       "import_name": "FBIGovCrime",

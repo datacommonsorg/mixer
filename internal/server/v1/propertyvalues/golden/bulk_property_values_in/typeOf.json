@@ -2049,6 +2049,41 @@
       "node": "City",
       "values": [
         {
+          "types": [
+            "City"
+          ],
+          "dcid": "ausSA21/507",
+          "provenanceId": "dc/base/AustraliaGeoCoordinates"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "ausSACode21/302",
+          "provenanceId": "dc/base/AustraliaGeoCoordinates"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "ausSACode21/304",
+          "provenanceId": "dc/base/AustraliaGeoCoordinates"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "ausSACode21/311",
+          "provenanceId": "dc/base/AustraliaGeoCoordinates"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "ausSACode21/404",
+          "provenanceId": "dc/base/AustraliaGeoCoordinates"
+        },
+        {
           "name": "Hong Kong",
           "types": [
             "AdministrativeArea1",
@@ -3219,46 +3254,6 @@
           ],
           "dcid": "geoId/0112760",
           "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Center Point",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0113264",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Centerville",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0113384",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
-          "name": "Centre",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0113648",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Centreville",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0113672",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Chalkville",
-          "types": [
-            "City"
-          ],
-          "dcid": "geoId/0113720",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Chatom",
@@ -7540,7 +7535,9 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "West Berlin",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -7548,7 +7545,9 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "East Berlin",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8443,6 +8442,7 @@
         {
           "name": "Oslo",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8482,6 +8482,7 @@
         {
           "name": "Sofia",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8491,6 +8492,7 @@
         {
           "name": "Manchester",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8500,6 +8502,7 @@
         {
           "name": "Warrington",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8509,6 +8512,7 @@
         {
           "name": "Liverpool",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8518,6 +8522,7 @@
         {
           "name": "Kingston upon Hull",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8527,6 +8532,7 @@
         {
           "name": "York",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8536,6 +8542,7 @@
         {
           "name": "Sheffield",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8545,6 +8552,7 @@
         {
           "name": "Bradford",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8554,6 +8562,7 @@
         {
           "name": "Derby",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8563,6 +8572,7 @@
         {
           "name": "Nottingham",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8572,6 +8582,7 @@
         {
           "name": "Leicester",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8581,6 +8592,7 @@
         {
           "name": "Stoke-on-Trent",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8590,6 +8602,7 @@
         {
           "name": "Birmingham",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8599,6 +8612,7 @@
         {
           "name": "Coventry",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8608,6 +8622,7 @@
         {
           "name": "Wolverhampton",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8617,6 +8632,7 @@
         {
           "name": "Peterborough",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8626,6 +8642,7 @@
         {
           "name": "Luton",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8635,6 +8652,7 @@
         {
           "name": "Southend-on-Sea",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8644,6 +8662,7 @@
         {
           "name": "Portsmouth",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8653,6 +8672,7 @@
         {
           "name": "Southampton",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8672,6 +8692,7 @@
         {
           "name": "Plymouth",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8681,6 +8702,7 @@
         {
           "name": "Edinburgh",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8690,6 +8712,7 @@
         {
           "name": "Glasgow",
           "types": [
+            "AdministrativeArea3",
             "City",
             "EurostatNUTS3"
           ],
@@ -8987,6 +9010,15 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Raymond",
+          "types": [
+            "AdministrativeArea3",
+            "City"
+          ],
+          "dcid": "wikidataId/Q1001461",
+          "provenanceId": "dc/base/Canada_Census_Places"
+        },
+        {
           "name": "Jeziorany",
           "types": [
             "AdministrativeArea3",
@@ -9020,6 +9052,15 @@
             "City"
           ],
           "dcid": "wikidataId/Q10016",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "North Vancouver",
+          "types": [
+            "AdministrativeArea3",
+            "City"
+          ],
+          "dcid": "wikidataId/Q1001626",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
@@ -9368,6 +9409,33 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Westlock",
+          "types": [
+            "AdministrativeArea3",
+            "City"
+          ],
+          "dcid": "wikidataId/Q1004113",
+          "provenanceId": "dc/base/Canada_Census_Places"
+        },
+        {
+          "name": "Killam",
+          "types": [
+            "AdministrativeArea3",
+            "City"
+          ],
+          "dcid": "wikidataId/Q1004121",
+          "provenanceId": "dc/base/Canada_Census_Places"
+        },
+        {
+          "name": "Daysland",
+          "types": [
+            "AdministrativeArea3",
+            "City"
+          ],
+          "dcid": "wikidataId/Q1004125",
+          "provenanceId": "dc/base/Canada_Census_Places"
+        },
+        {
           "name": "Fujikawaguchiko",
           "types": [
             "AdministrativeArea2",
@@ -9684,298 +9752,12 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Borek Wielkopolski",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1005972",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Wąsosz",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1006065",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Drobin",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1006081",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
-          "name": "Ogrodzieniec",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1006772",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Młynary",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1006788",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Miłakowo",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1006813",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Książ Wielkopolski",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1007342",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Barcin",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1007355",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
-          "name": "Lubraniec",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1007479",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Piaski",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1008761",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
-          "name": "Xilinhot",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1009416",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Caldelas",
-          "types": [
-            "AdministrativeArea3",
-            "AdministrativeArea4",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1009474",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
-          "name": "Gabela",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1009549",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
-          "name": "Maiorca",
-          "types": [
-            "AdministrativeArea3",
-            "AdministrativeArea4",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1009683",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
-          "name": "Sępopol",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1010153",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Yakeshi",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1010264",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Pargas",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1010550",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Rio de Moinhos",
-          "types": [
-            "AdministrativeArea3",
-            "AdministrativeArea4",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1010726",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
-          "name": "Pereira",
-          "types": [
-            "AdministrativeArea3",
-            "AdministrativeArea4",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1010860",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Lagares da Beira",
-          "types": [
-            "AdministrativeArea3",
-            "AdministrativeArea4",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1010884",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
-          "name": "Haicheng",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1011073",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
-          "name": "Yiwu",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1011138",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Yuyao City",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1011201",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Nowy Wiśnicz",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1011553",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Jinghong",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1012620",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
           "name": "Ceadîr-Lunga",
           "types": [
             "AdministrativeArea1",
             "City"
           ],
           "dcid": "wikidataId/Q1012924",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Luz",
-          "types": [
-            "AdministrativeArea3",
-            "AdministrativeArea4",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1013287",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
-          "name": "Linda-a-Velha",
-          "types": [
-            "AdministrativeArea3",
-            "AdministrativeArea4",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1013294",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
-          "name": "Kangding",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1013814",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
-          "name": "Djanet",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1014380",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Nangong",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1014384",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
-          "name": "Jiaohe",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1014635",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {

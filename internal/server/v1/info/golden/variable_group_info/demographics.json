@@ -117,7 +117,7 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 27197
+        "descendentStatVarCount": 27225
       },
       {
         "id": "dc/g/Person_AgeGroupClassification",
@@ -267,7 +267,19 @@
         "id": "dc/g/Food",
         "specializedEntity": "Food",
         "displayName": "Food",
-        "descendentStatVarCount": 2
+        "descendentStatVarCount": 10
+      },
+      {
+        "id": "dc/g/FoodBasket",
+        "specializedEntity": "Food Basket",
+        "displayName": "Food Basket",
+        "descendentStatVarCount": 34
+      },
+      {
+        "id": "dc/g/Household_FoodBasketStatus",
+        "specializedEntity": "Food Basket Status",
+        "displayName": "Household by Food Basket Status",
+        "descendentStatVarCount": 8
       },
       {
         "id": "dc/g/Person_FoodSecurityStatus",
@@ -279,7 +291,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 24804
+        "descendentStatVarCount": 24822
       },
       {
         "id": "dc/g/Person_GovernmentId",
@@ -315,7 +327,7 @@
         "id": "dc/g/Household",
         "specializedEntity": "Household",
         "displayName": "Household",
-        "descendentStatVarCount": 3126
+        "descendentStatVarCount": 3134
       },
       {
         "id": "dc/g/Person_HouseholdIncome",
@@ -399,7 +411,7 @@
         "id": "dc/g/Person_LaborForceStatus",
         "specializedEntity": "Labor Force Status",
         "displayName": "Person by Labor Force Status",
-        "descendentStatVarCount": 3159
+        "descendentStatVarCount": 3161
       },
       {
         "id": "dc/g/Language",
@@ -495,7 +507,7 @@
         "id": "dc/g/Person_PlaceOfResidenceClassification",
         "specializedEntity": "Place of Residence Classification",
         "displayName": "Person by Place of Residence Classification",
-        "descendentStatVarCount": 3268
+        "descendentStatVarCount": 3278
       },
       {
         "id": "dc/g/Place_PlaceOfResidenceClassification",
@@ -507,7 +519,7 @@
         "id": "dc/g/Person_PovertyStatus",
         "specializedEntity": "Poverty Status",
         "displayName": "Person by Poverty Status",
-        "descendentStatVarCount": 1068
+        "descendentStatVarCount": 1081
       },
       {
         "id": "dc/g/Person_Race",
@@ -525,7 +537,7 @@
         "id": "dc/g/Residence",
         "specializedEntity": "Residence",
         "displayName": "Residence",
-        "descendentStatVarCount": 4936
+        "descendentStatVarCount": 4946
       },
       {
         "id": "dc/g/Household_ResidenceType",
@@ -576,7 +588,7 @@
         "descendentStatVarCount": 2
       }
     ],
-    "descendentStatVarCount": 45228,
+    "descendentStatVarCount": 45319,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

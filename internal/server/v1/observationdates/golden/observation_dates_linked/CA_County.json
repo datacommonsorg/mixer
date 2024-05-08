@@ -665,10 +665,6 @@
               "facet": "2517965213"
             },
             {
-              "count": 54,
-              "facet": "3114843463"
-            },
-            {
               "count": 40,
               "facet": "1226172227"
             }
@@ -709,10 +705,6 @@
             {
               "count": 40,
               "facet": "1226172227"
-            },
-            {
-              "count": 1,
-              "facet": "3114843463"
             }
           ]
         },
@@ -789,10 +781,6 @@
             {
               "count": 40,
               "facet": "1226172227"
-            },
-            {
-              "count": 2,
-              "facet": "3114843463"
             }
           ]
         },
@@ -1046,11 +1034,6 @@
     "2825511676": {
       "import_name": "CDC_Mortality_UnderlyingCause",
       "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
-    },
-    "3114843463": {
-      "import_name": "HumanCuratedStats",
-      "provenance_url": "https://google.com",
-      "measurement_method": "HumanCuratedStats"
     }
   }
 }

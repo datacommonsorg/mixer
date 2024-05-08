@@ -478,20 +478,6 @@
         },
         {
           "date_place_count": {
-            "2011": 41,
-            "2012": 1,
-            "2013-07-01": 1,
-            "2015": 1,
-            "2019": 6
-          },
-          "metadata": {
-            "import_name": "HumanCuratedStats",
-            "provenance_url": "https://google.com",
-            "measurement_method": "HumanCuratedStats"
-          }
-        },
-        {
-          "date_place_count": {
             "1790": 1,
             "1800": 1,
             "1810": 1,

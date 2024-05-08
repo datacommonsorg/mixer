@@ -162,6 +162,76 @@
       "provenanceId": "dc/base/BaseSchema"
     },
     {
+      "subjectId": "ausSA21/507",
+      "subjectTypes": [
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class",
+        "LocationClassificationEnum"
+      ],
+      "provenanceId": "dc/base/AustraliaGeoCoordinates"
+    },
+    {
+      "subjectId": "ausSACode21/302",
+      "subjectTypes": [
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class",
+        "LocationClassificationEnum"
+      ],
+      "provenanceId": "dc/base/AustraliaGeoCoordinates"
+    },
+    {
+      "subjectId": "ausSACode21/304",
+      "subjectTypes": [
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class",
+        "LocationClassificationEnum"
+      ],
+      "provenanceId": "dc/base/AustraliaGeoCoordinates"
+    },
+    {
+      "subjectId": "ausSACode21/311",
+      "subjectTypes": [
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class",
+        "LocationClassificationEnum"
+      ],
+      "provenanceId": "dc/base/AustraliaGeoCoordinates"
+    },
+    {
+      "subjectId": "ausSACode21/404",
+      "subjectTypes": [
+        "City"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class",
+        "LocationClassificationEnum"
+      ],
+      "provenanceId": "dc/base/AustraliaGeoCoordinates"
+    },
+    {
       "subjectId": "country/HKG",
       "subjectName": "Hong Kong",
       "subjectTypes": [
@@ -194,81 +264,6 @@
         "LocationClassificationEnum"
       ],
       "provenanceId": "dc/base/WikidataOtherIdGeos"
-    },
-    {
-      "subjectId": "geoId/0100100",
-      "subjectName": "Abanda",
-      "subjectTypes": [
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class",
-        "LocationClassificationEnum"
-      ],
-      "provenanceId": "dc/base/BaseGeos"
-    },
-    {
-      "subjectId": "geoId/0100124",
-      "subjectName": "Abbeville",
-      "subjectTypes": [
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class",
-        "LocationClassificationEnum"
-      ],
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
-    },
-    {
-      "subjectId": "geoId/0100148",
-      "subjectName": "Abel",
-      "subjectTypes": [
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class",
-        "LocationClassificationEnum"
-      ],
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
-    },
-    {
-      "subjectId": "geoId/0100220",
-      "subjectName": "Abernant",
-      "subjectTypes": [
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class",
-        "LocationClassificationEnum"
-      ],
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
-    },
-    {
-      "subjectId": "geoId/0100388",
-      "subjectName": "Ada, Alabama",
-      "subjectTypes": [
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class",
-        "LocationClassificationEnum"
-      ],
-      "provenanceId": "dc/base/WikidataGeos"
     },
     {
       "subjectId": "geoId/02020",
@@ -655,60 +650,12 @@
       "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
-      "subjectId": "wikidataId/Q1000024",
-      "subjectName": "Kisaki, Tanzania",
+      "subjectId": "nuts/DE301",
+      "subjectName": "West Berlin",
       "subjectTypes": [
         "AdministrativeArea3",
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class",
-        "LocationClassificationEnum"
-      ],
-      "provenanceId": "dc/base/WikidataGeos"
-    },
-    {
-      "subjectId": "wikidataId/Q1000125",
-      "subjectName": "Tocha, Portugal",
-      "subjectTypes": [
-        "AdministrativeArea3",
-        "AdministrativeArea4",
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class",
-        "LocationClassificationEnum"
-      ],
-      "provenanceId": "dc/base/WikidataGeos"
-    },
-    {
-      "subjectId": "wikidataId/Q1000135",
-      "subjectName": "Gaocheng District",
-      "subjectTypes": [
-        "AdministrativeArea3",
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class",
-        "LocationClassificationEnum"
-      ],
-      "provenanceId": "dc/base/WikidataGeos"
-    },
-    {
-      "subjectId": "wikidataId/Q1000383",
-      "subjectName": "Ulan Hot",
-      "subjectTypes": [
-        "AdministrativeArea3",
-        "City"
+        "City",
+        "EurostatNUTS3"
       ],
       "predicate": "typeOf",
       "objectId": "City",
@@ -720,11 +667,63 @@
       "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
-      "subjectId": "wikidataId/Q1000438",
-      "subjectName": "Szczawnica",
+      "subjectId": "nuts/DE302",
+      "subjectName": "East Berlin",
       "subjectTypes": [
         "AdministrativeArea3",
-        "City"
+        "City",
+        "EurostatNUTS3"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class",
+        "LocationClassificationEnum"
+      ],
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "subjectId": "nuts/NO011",
+      "subjectName": "Oslo",
+      "subjectTypes": [
+        "AdministrativeArea3",
+        "City",
+        "EurostatNUTS3"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class",
+        "LocationClassificationEnum"
+      ],
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "subjectId": "nuts/SOF46",
+      "subjectName": "Sofia",
+      "subjectTypes": [
+        "AdministrativeArea3",
+        "City",
+        "EurostatNUTS3"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class",
+        "LocationClassificationEnum"
+      ],
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "subjectId": "nuts/UKD33",
+      "subjectName": "Manchester",
+      "subjectTypes": [
+        "AdministrativeArea3",
+        "City",
+        "EurostatNUTS3"
       ],
       "predicate": "typeOf",
       "objectId": "City",

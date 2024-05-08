@@ -2012,11 +2012,6 @@
       "import_name": "CDC_Mortality_UnderlyingCause",
       "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
     },
-    "3114843463": {
-      "import_name": "HumanCuratedStats",
-      "provenance_url": "https://google.com",
-      "measurement_method": "HumanCuratedStats"
-    },
     "3134481332": {
       "import_name": "NASA_WetBulbComputation_Aggregation",
       "provenance_url": "https://datacommons.org/",

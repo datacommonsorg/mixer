@@ -75558,9 +75558,7 @@
         "eia/SEDS.WYTCB.A",
         "eia/SEDS.WYTCP.A",
         "eia/SEDS.WYTXB.A",
-        "eia/SEDS.WYTXP.A",
-        "minimumWage",
-        "unemploymentRate"
+        "eia/SEDS.WYTXP.A"
       ]
     }
   }

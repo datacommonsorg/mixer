@@ -305,6 +305,10 @@
       "dcid": "Count_Person_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
+      "name": "Population Below India Poverty Level in Past Year",
+      "dcid": "Count_Person_BelowIndiaPovertyLevelInThePast12Months"
+    },
+    {
       "name": "Population Below Poverty Level Status in Past Year",
       "dcid": "Count_Person_BelowPovertyLevelInThePast12Months"
     },
@@ -2517,6 +2521,10 @@
       "dcid": "Count_Person_Employed_AsAFractionOf_Count_Person_MGNREGAUnemployed"
     },
     {
+      "name": "Population Below India Poverty Level in Past Year (PerCapita)",
+      "dcid": "Count_Person_BelowIndiaPovertyLevelInThePast12Months_AsFractionOf_Count_Person"
+    },
+    {
       "name": "Population covered under Aadhaar (%)",
       "dcid": "Count_Person_Aadhaar_AsAFractionOf_Count_Person"
     },
@@ -3991,14 +3999,6 @@
     {
       "name": "Population: 1 Years or More, Black or African American Alone",
       "dcid": "Count_Person_1OrMoreYears_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 1 Years or More, College or University Student Housing",
-      "dcid": "Count_Person_1OrMoreYears_ResidesInCollegeOrUniversityStudentHousing"
-    },
-    {
-      "name": "Population: 1 Years or More, Different House 1 Year Ago",
-      "dcid": "Count_Person_1OrMoreYears_DifferentHouse1YearAgo"
     }
   ],
   "matches": [

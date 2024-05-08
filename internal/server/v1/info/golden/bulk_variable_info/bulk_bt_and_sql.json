@@ -5,7 +5,7 @@
       "info": {
         "placeTypeSummary": {
           "AdministrativeArea": {
-            "placeCount": 322,
+            "placeCount": 34,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1088815",
@@ -20,11 +20,11 @@
                 "name": "Southern Brazil"
               }
             ],
-            "minValue": 15,
+            "minValue": 50,
             "maxValue": 36986320
           },
           "AdministrativeArea1": {
-            "placeCount": 343,
+            "placeCount": 344,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q3724",
@@ -43,7 +43,7 @@
             "maxValue": 24354012
           },
           "AdministrativeArea2": {
-            "placeCount": 6615,
+            "placeCount": 6618,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1143712",
@@ -62,38 +62,23 @@
             "maxValue": 1958842
           },
           "AdministrativeArea3": {
-            "placeCount": 26,
+            "placeCount": 285,
             "topPlaces": [
               {
-                "dcid": "wikidataId/Q50811",
-                "name": "Regional Municipality of Peel"
+                "dcid": "wikidataId/Q217234",
+                "name": "Ōta-ku"
               },
               {
-                "dcid": "wikidataId/Q18458",
-                "name": "Regional Municipality of York"
+                "dcid": "wikidataId/Q1206659",
+                "name": "Higashi-ku"
               },
               {
-                "dcid": "wikidataId/Q16926",
-                "name": "Maule"
+                "dcid": "wikidataId/Q1132081",
+                "name": "Minami-ku"
               }
             ],
-            "minValue": 2351,
-            "maxValue": 797557
-          },
-          "AdministrativeArea4": {
-            "placeCount": 2,
-            "topPlaces": [
-              {
-                "dcid": "wikidataId/Q2893240",
-                "name": "Beaumont"
-              },
-              {
-                "dcid": "wikidataId/Q5566340",
-                "name": "Gladstone Parish"
-              }
-            ],
-            "minValue": 200,
-            "maxValue": 1210
+            "minValue": 15,
+            "maxValue": 375617
           },
           "CensusBlockGroup": {
             "placeCount": 291800,
@@ -373,7 +358,7 @@
             "maxValue": 840
           },
           "Place": {
-            "placeCount": 83,
+            "placeCount": 75,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q302246",
@@ -449,7 +434,7 @@
             "maxValue": 19650581
           },
           "Village": {
-            "placeCount": 210,
+            "placeCount": 216,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q6933371",
@@ -460,8 +445,8 @@
                 "name": "Yomitan"
               },
               {
-                "dcid": "wikidataId/Q1023784",
-                "name": "Tōkai"
+                "dcid": "wikidataId/Q7356039",
+                "name": "Rocky View County"
               }
             ],
             "minValue": 6,
@@ -538,7 +523,7 @@
                 "latestDate": "2021",
                 "placeTypeSummary": {
                   "AdministrativeArea1": {
-                    "placeCount": 7,
+                    "placeCount": 8,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q3224",
@@ -566,16 +551,6 @@
                     ],
                     "minValue": 1795981,
                     "maxValue": 12877635
-                  },
-                  "Place": {
-                    "placeCount": 1,
-                    "topPlaces": [
-                      {
-                        "dcid": "wikidataId/Q3235"
-                      }
-                    ],
-                    "minValue": 115075,
-                    "maxValue": 115075
                   }
                 },
                 "minValue": 71249,
@@ -771,23 +746,23 @@
                 "latestDate": "2021",
                 "placeTypeSummary": {
                   "AdministrativeArea": {
-                    "placeCount": 293,
+                    "placeCount": 5,
                     "topPlaces": [
                       {
-                        "dcid": "wikidataId/Q383434",
-                        "name": "Greater Sudbury"
+                        "dcid": "wikidataId/Q991329",
+                        "name": "West Vancouver"
                       },
                       {
-                        "dcid": "wikidataId/Q384944",
-                        "name": "County of Brant"
+                        "dcid": "wikidataId/Q4859916",
+                        "name": "Oliver Paipoonge"
                       },
                       {
-                        "dcid": "wikidataId/Q1805330",
-                        "name": "Langley"
+                        "dcid": "wikidataId/Q4969289",
+                        "name": "Britannia No. 502"
                       }
                     ],
-                    "minValue": 15,
-                    "maxValue": 71930
+                    "minValue": 50,
+                    "maxValue": 20580
                   },
                   "AdministrativeArea1": {
                     "placeCount": 13,
@@ -808,23 +783,46 @@
                     "minValue": 12185,
                     "maxValue": 6156925
                   },
-                  "AdministrativeArea4": {
-                    "placeCount": 2,
+                  "AdministrativeArea2": {
+                    "placeCount": 3,
                     "topPlaces": [
                       {
-                        "dcid": "wikidataId/Q2893240",
-                        "name": "Beaumont"
+                        "dcid": "wikidataId/Q383434",
+                        "name": "Greater Sudbury"
                       },
                       {
-                        "dcid": "wikidataId/Q5566340",
-                        "name": "Gladstone Parish"
+                        "dcid": "wikidataId/Q384944",
+                        "name": "County of Brant"
+                      },
+                      {
+                        "dcid": "wikidataId/Q277291",
+                        "name": "North Coast Regional District"
                       }
                     ],
-                    "minValue": 200,
-                    "maxValue": 1210
+                    "minValue": 20,
+                    "maxValue": 71930
+                  },
+                  "AdministrativeArea3": {
+                    "placeCount": 260,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1805330",
+                        "name": "Langley"
+                      },
+                      {
+                        "dcid": "wikidataId/Q179553",
+                        "name": "Saanich"
+                      },
+                      {
+                        "dcid": "wikidataId/Q34180",
+                        "name": "Brantford"
+                      }
+                    ],
+                    "minValue": 15,
+                    "maxValue": 56010
                   },
                   "City": {
-                    "placeCount": 308,
+                    "placeCount": 336,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q172",
@@ -854,42 +852,42 @@
                     "maxValue": 15839460
                   },
                   "Place": {
-                    "placeCount": 14,
+                    "placeCount": 7,
                     "topPlaces": [
-                      {
-                        "dcid": "wikidataId/Q643326",
-                        "name": "Port Coquitlam"
-                      },
                       {
                         "dcid": "wikidataId/Q629056",
                         "name": "White Rock"
                       },
                       {
-                        "dcid": "wikidataId/Q1342280",
-                        "name": "Squamish"
+                        "dcid": "wikidataId/Q1348913",
+                        "name": "Miramichi"
+                      },
+                      {
+                        "dcid": "wikidataId/Q928252",
+                        "name": "Hampton"
                       }
                     ],
-                    "minValue": 275,
-                    "maxValue": 26505
+                    "minValue": 395,
+                    "maxValue": 11020
                   },
                   "Village": {
-                    "placeCount": 9,
+                    "placeCount": 15,
                     "topPlaces": [
                       {
-                        "dcid": "wikidataId/Q2869265",
-                        "name": "Atholville, New Brunswick"
+                        "dcid": "wikidataId/Q7356039",
+                        "name": "Rocky View County"
                       },
                       {
-                        "dcid": "wikidataId/Q3469820",
-                        "name": "Salisbury, New Brunswick"
+                        "dcid": "wikidataId/Q7138563",
+                        "name": "Parkland County"
                       },
                       {
-                        "dcid": "wikidataId/Q3377053",
-                        "name": "Petit-Rocher, New Brunswick"
+                        "dcid": "wikidataId/Q1904554",
+                        "name": "Weyburn"
                       }
                     ],
-                    "minValue": 35,
-                    "maxValue": 1450
+                    "minValue": 20,
+                    "maxValue": 16770
                   }
                 },
                 "minValue": 15,
@@ -2799,26 +2797,26 @@
                 "latestDate": "2022",
                 "placeTypeSummary": {
                   "AdministrativeArea": {
-                    "placeCount": 46,
+                    "placeCount": 5,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q1973593",
                         "name": "Waikato District"
                       },
                       {
-                        "dcid": "wikidataId/Q550219",
-                        "name": "Capital Regional District"
-                      },
-                      {
                         "dcid": "wikidataId/Q4874224",
                         "name": "Bay of Plenty"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1850966",
+                        "name": "Wheatbelt"
                       }
                     ],
-                    "minValue": 1565,
+                    "minValue": 14969,
                     "maxValue": 258400
                   },
                   "AdministrativeArea1": {
-                    "placeCount": 330,
+                    "placeCount": 331,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q15175",
@@ -2837,7 +2835,7 @@
                     "maxValue": 50483000
                   },
                   "AdministrativeArea2": {
-                    "placeCount": 133,
+                    "placeCount": 167,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q1143712",
@@ -2852,27 +2850,27 @@
                         "name": "Montreal Region"
                       }
                     ],
-                    "minValue": 1668,
+                    "minValue": 1565,
                     "maxValue": 4653000
                   },
                   "AdministrativeArea3": {
-                    "placeCount": 26,
+                    "placeCount": 31,
                     "topPlaces": [
-                      {
-                        "dcid": "wikidataId/Q50811",
-                        "name": "Regional Municipality of Peel"
-                      },
-                      {
-                        "dcid": "wikidataId/Q18458",
-                        "name": "Regional Municipality of York"
-                      },
                       {
                         "dcid": "wikidataId/Q16926",
                         "name": "Maule"
+                      },
+                      {
+                        "dcid": "wikidataId/Q46325",
+                        "name": "Sfax"
+                      },
+                      {
+                        "dcid": "wikidataId/Q867615",
+                        "name": "Nabeul"
                       }
                     ],
-                    "minValue": 2351,
-                    "maxValue": 797557
+                    "minValue": 6353,
+                    "maxValue": 587431
                   },
                   "CensusCountyDivision": {
                     "placeCount": 1,
@@ -2886,7 +2884,7 @@
                     "maxValue": 5785680
                   },
                   "City": {
-                    "placeCount": 273,
+                    "placeCount": 275,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q8686",
@@ -2981,7 +2979,7 @@
                     "maxValue": 7907210
                   },
                   "Place": {
-                    "placeCount": 9,
+                    "placeCount": 8,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q1180"

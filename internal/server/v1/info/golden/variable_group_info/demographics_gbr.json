@@ -75,7 +75,8 @@
           "Incremental Count of Person"
         ],
         "displayName": "Population Change",
-        "definition": "mp=incrementalCount,pt=Person"
+        "definition": "mp=incrementalCount,pt=Person",
+        "hasData": true
       },
       {
         "id": "Count_Person_PerArea",
@@ -110,7 +111,7 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 682
+        "descendentStatVarCount": 721
       },
       {
         "id": "dc/g/Person_AgeGroupClassification",
@@ -239,6 +240,16 @@
         "displayName": "Food"
       },
       {
+        "id": "dc/g/FoodBasket",
+        "specializedEntity": "Food Basket",
+        "displayName": "Food Basket"
+      },
+      {
+        "id": "dc/g/Household_FoodBasketStatus",
+        "specializedEntity": "Food Basket Status",
+        "displayName": "Household by Food Basket Status"
+      },
+      {
         "id": "dc/g/Person_FoodSecurityStatus",
         "specializedEntity": "Food Security Status",
         "displayName": "Person by Food Security Status"
@@ -247,7 +258,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 2440
+        "descendentStatVarCount": 2466
       },
       {
         "id": "dc/g/Person_GovernmentId",
@@ -502,7 +513,7 @@
         "displayName": "Village"
       }
     ],
-    "descendentStatVarCount": 4507,
+    "descendentStatVarCount": 4549,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]
