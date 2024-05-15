@@ -22,9 +22,9 @@ import (
 func CreateTables(sqlClient *sql.DB) error {
 	tripleStatement := `
 	CREATE TABLE IF NOT EXISTS triples (
-		subject_id TEXT,
-		predicate TEXT,
-		object_id TEXT,
+		subject_id varchar(255),
+		predicate varchar(255),
+		object_id varchar(255),
 		object_value TEXT
 	);
 	`
@@ -35,11 +35,11 @@ func CreateTables(sqlClient *sql.DB) error {
 
 	observationStatement := `
 	CREATE TABLE IF NOT EXISTS observations (
-		entity TEXT,
-		variable TEXT,
-		date TEXT,
-		value TEXT,
-		provenance TEXT
+		entity varchar(255),
+		variable varchar(255),
+		date varchar(255),
+		value varchar(255),
+		provenance varchar(255)
 	);
 	`
 	_, err = sqlClient.Exec(observationStatement)
