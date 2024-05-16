@@ -85,6 +85,8 @@ var (
 	// Serve live profiles of the process (CPU, memory, etc.) over HTTP on this port
 	httpProfilePort   = flag.Int("httpprof_port", 0, "Port to serve HTTP profiles from")
 	foldRemoteRootSvg = flag.Bool("fold_remote_root_svg", false, "Whether to fold root SVG from remote mixer")
+	// Cache SV -> inputPropertyExpressions for StatisticalCalculations
+	cacheSVFormula = flag.Bool("cache_sv_formula", true, "Whether to cache SV -> inputPropertyExpresions for StatisticalCaclulations.")
 )
 
 func main() {
@@ -224,11 +226,12 @@ func main() {
 	// Build the cache that includes stat var group info, stat var search index
 	// and custom provenance.
 	cacheOptions := cache.CacheOptions{
-		FetchSVG:  *cacheSVG,
-		SearchSVG: *cacheSVG,
-		CacheSQL:  store.SQLClient != nil,
+		FetchSVG:       *cacheSVG,
+		SearchSVG:      *cacheSVG,
+		CacheSQL:       store.SQLClient != nil,
+		CacheSVFormula: *cacheSVFormula,
 	}
-	c, err := cache.NewCache(ctx, store, cacheOptions)
+	c, err := cache.NewCache(ctx, store, cacheOptions, metadata)
 	if err != nil {
 		log.Fatalf("Failed to create cache: %v", err)
 	}

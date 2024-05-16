@@ -94,7 +94,7 @@ func TestDerivedSeries(t *testing.T) {
 	}
 
 	if err := test.TestDriver(
-		"Observation(DerivedSeries)", &test.TestOption{}, testSuite); err != nil {
+		"Observation(DerivedSeries)", &test.TestOption{CacheSVFormula: true}, testSuite); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }
