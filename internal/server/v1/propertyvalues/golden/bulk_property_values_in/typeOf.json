@@ -11102,13 +11102,13 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Sejong City",
+          "name": "Sejong",
           "types": [
             "AdministrativeArea1",
             "City"
           ],
           "dcid": "wikidataId/Q20929",
-          "provenanceId": "dc/base/WikidataGeos"
+          "provenanceId": "dc/base/WikidataGeo_SouthKorea"
         },
         {
           "name": "Incheon",
