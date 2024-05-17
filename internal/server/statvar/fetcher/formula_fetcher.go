@@ -28,7 +28,7 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
-// FetchFormulas fetches StatisticalCalculations from storage and returns a map of SV dcids to a list of inputPropertyExpressions.
+// FetchFormulas fetches StatisticalCalculations and returns a map of SV dcids to a list of inputPropertyExpressions.
 func FetchFormulas(
 	ctx context.Context,
 	store *store.Store,
