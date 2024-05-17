@@ -51,19 +51,19 @@ func FetchFormulas(
 		if err != nil {
 			return err
 		}
-		statisticalCalculations := []string{}
+		statCal := []string{}
 		for _, nodes := range data["StatisticalCalculation"]["typeOf"] {
 			for _, node := range nodes {
-				statisticalCalculations = append(statisticalCalculations, node.Dcid)
+				statCal = append(statCal, node.Dcid)
 			}
 		}
-		if len(statisticalCalculations) == 0 {
+		if len(statCal) == 0 {
 			return nil
 		}
 		localResp, _, err := v1pv.Fetch(
 			errCtx,
 			store,
-			statisticalCalculations,
+			statCal,
 			[]string{"outputProperty", "inputPropertyExpression"},
 			0,
 			"",
@@ -82,20 +82,20 @@ func FetchFormulas(
 				Nodes:    []string{"StatisticalCalculation"},
 				Property: "<-typeOf",
 			}
-			statisticalCalculationResp := &pbv2.NodeResponse{}
-			err := util.FetchRemote(metadata, &http.Client{}, "/v2/node", req, statisticalCalculationResp)
+			statCalResp := &pbv2.NodeResponse{}
+			err := util.FetchRemote(metadata, &http.Client{}, "/v2/node", req, statCalResp)
 			if err != nil {
 				return err
 			}
-			statisticalCalculations := []string{}
-			for _, node := range statisticalCalculationResp.Data["StatisticalCalculation"].Arcs["typeOf"].Nodes {
-				statisticalCalculations = append(statisticalCalculations, node.Dcid)
+			statCal := []string{}
+			for _, node := range statCalResp.Data["StatisticalCalculation"].Arcs["typeOf"].Nodes {
+				statCal = append(statCal, node.Dcid)
 			}
-			if len(statisticalCalculations) == 0 {
+			if len(statCal) == 0 {
 				return nil
 			}
 			req = &pbv2.NodeRequest{
-				Nodes:    statisticalCalculations,
+				Nodes:    statCal,
 				Property: "->[outputProperty, inputPropertyExpression]",
 			}
 			remoteResp := &pbv2.NodeResponse{}
@@ -117,27 +117,27 @@ func FetchFormulas(
 	localResp, remoteResp := <-localRespChan, <-remoteRespChan
 	result := map[string][]string{}
 	localResult := map[string]map[string]bool{}
-	for _, properties := range localResp {
-		for _, outputPropertyNodes := range properties["outputProperty"] {
-			for _, outputPropertyNode := range outputPropertyNodes {
-				for _, inputPropertyExpressionNodes := range properties["inputPropertyExpression"] {
-					for _, inputPropertyExpressionNode := range inputPropertyExpressionNodes {
-						result[outputPropertyNode.Dcid] = append(result[outputPropertyNode.Dcid], inputPropertyExpressionNode.Value)
-						localResult[outputPropertyNode.Dcid] = map[string]bool{inputPropertyExpressionNode.Value: true}
+	for _, props := range localResp {
+		for _, outputProps := range props["outputProperty"] {
+			for _, outputNode := range outputProps {
+				for _, inputProps := range props["inputPropertyExpression"] {
+					for _, inputNode := range inputProps {
+						result[outputNode.Dcid] = append(result[outputNode.Dcid], inputNode.Value)
+						localResult[outputNode.Dcid] = map[string]bool{inputNode.Value: true}
 					}
 				}
 			}
 		}
 	}
 	if remoteResp != nil {
-		for _, properties := range remoteResp.Data {
-			for _, outputPropertyNode := range properties.Arcs["outputProperty"].Nodes {
-				for _, inputPropertyNode := range properties.Arcs["inputPropertyExpression"].Nodes {
+		for _, props := range remoteResp.Data {
+			for _, outputNode := range props.Arcs["outputProperty"].Nodes {
+				for _, inputNode := range props.Arcs["inputPropertyExpression"].Nodes {
 					// Don't duplicate local formulas.
-					if _, ok := localResult[outputPropertyNode.Dcid]; !ok {
-						result[outputPropertyNode.Dcid] = append(result[outputPropertyNode.Dcid], inputPropertyNode.Value)
-					} else if _, ok := localResult[outputPropertyNode.Dcid][inputPropertyNode.Value]; !ok {
-						result[outputPropertyNode.Dcid] = append(result[outputPropertyNode.Dcid], inputPropertyNode.Value)
+					if _, ok := localResult[outputNode.Dcid]; !ok {
+						result[outputNode.Dcid] = append(result[outputNode.Dcid], inputNode.Value)
+					} else if _, ok := localResult[outputNode.Dcid][inputNode.Value]; !ok {
+						result[outputNode.Dcid] = append(result[outputNode.Dcid], inputNode.Value)
 					}
 				}
 			}
