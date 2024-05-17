@@ -57,6 +57,9 @@ func FetchFormulas(
 				statisticalCalculations = append(statisticalCalculations, node.Dcid)
 			}
 		}
+		if len(statisticalCalculations) == 0 {
+			return nil
+		}
 		localResp, _, err := v1pv.Fetch(
 			errCtx,
 			store,
@@ -87,6 +90,9 @@ func FetchFormulas(
 			statisticalCalculations := []string{}
 			for _, node := range statisticalCalculationResp.Data["StatisticalCalculation"].Arcs["typeOf"].Nodes {
 				statisticalCalculations = append(statisticalCalculations, node.Dcid)
+			}
+			if len(statisticalCalculations) == 0 {
+				return nil
 			}
 			req = &pbv2.NodeRequest{
 				Nodes:    statisticalCalculations,
