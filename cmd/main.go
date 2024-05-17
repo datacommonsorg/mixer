@@ -85,8 +85,9 @@ var (
 	// Serve live profiles of the process (CPU, memory, etc.) over HTTP on this port
 	httpProfilePort   = flag.Int("httpprof_port", 0, "Port to serve HTTP profiles from")
 	foldRemoteRootSvg = flag.Bool("fold_remote_root_svg", false, "Whether to fold root SVG from remote mixer")
-	// Cache SV -> inputPropertyExpressions for StatisticalCalculations
-	cacheSVFormula = flag.Bool("cache_sv_formula", true, "Whether to cache SV -> inputPropertyExpresions for StatisticalCaclulations.")
+	// Cache map of SV dcid to list of inputPropertyExpressions for StatisticalCalculations
+	// TODO: Test Custom DC and set to true after release
+	cacheSVFormula = flag.Bool("cache_sv_formula", false, "Whether to cache SV -> inputPropertyExpresions for StatisticalCaclulations.")
 )
 
 func main() {

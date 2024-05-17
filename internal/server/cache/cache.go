@@ -55,7 +55,7 @@ type Cache struct {
 	sqlProvenances map[string]*pb.Facet
 	// SQL database entity, variable existence pairs
 	sqlExistenceMap map[util.EntityVariable]struct{}
-	// SV -> inputPropertyExpressions for StatisticalCalculations.
+	// Map of SV dcid to list of inputPropertyExpressions for StatisticalCalculations.
 	svFormulas map[string][]string
 	// CacheOption for this Cache object
 	options CacheOptions
