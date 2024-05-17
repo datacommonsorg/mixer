@@ -51,6 +51,7 @@ type TestOption struct {
 	SearchSVG         bool
 	UseCustomTable    bool
 	UseSQLite         bool
+	CacheSVFormula    bool
 	RemoteMixerDomain string
 }
 
@@ -72,16 +73,18 @@ const (
 
 // Setup creates local server and client.
 func Setup(option ...*TestOption) (pbs.MixerClient, error) {
-	fetchSVG, searchSVG, useCustomTable, useSQLite, remoteMixerDomain := false, false, false, false, ""
+	fetchSVG, searchSVG, useCustomTable, useSQLite, cacheSVFormula, remoteMixerDomain := false, false, false, false, false, ""
 	var cacheOptions cache.CacheOptions
 	if len(option) == 1 {
 		fetchSVG = option[0].FetchSVG
 		searchSVG = option[0].SearchSVG
 		useCustomTable = option[0].UseCustomTable
 		useSQLite = option[0].UseSQLite
+		cacheSVFormula = option[0].CacheSVFormula
 		cacheOptions.CacheSQL = useSQLite
 		cacheOptions.FetchSVG = fetchSVG
 		cacheOptions.SearchSVG = searchSVG
+		cacheOptions.CacheSVFormula = cacheSVFormula
 		remoteMixerDomain = option[0].RemoteMixerDomain
 	}
 	return setupInternal(
@@ -149,7 +152,7 @@ func setupInternal(
 	if err != nil {
 		log.Fatalf("Failed to create a new store: %s", err)
 	}
-	c, err := cache.NewCache(ctx, st, cacheOptions)
+	c, err := cache.NewCache(ctx, st, cacheOptions, metadata)
 	if err != nil {
 		return nil, err
 	}

@@ -35,9 +35,10 @@ const (
 
 // Options for using the Cache object
 type CacheOptions struct {
-	FetchSVG  bool
-	SearchSVG bool
-	CacheSQL  bool
+	FetchSVG       bool
+	SearchSVG      bool
+	CacheSQL       bool
+	CacheSVFormula bool
 }
 
 // Cache holds cached data for the mixer server.
@@ -54,6 +55,8 @@ type Cache struct {
 	sqlProvenances map[string]*pb.Facet
 	// SQL database entity, variable existence pairs
 	sqlExistenceMap map[util.EntityVariable]struct{}
+	// Map of SV dcid to list of inputPropertyExpressions for StatisticalCalculations.
+	svFormulas map[string][]string
 	// CacheOption for this Cache object
 	options CacheOptions
 }
@@ -82,6 +85,10 @@ func (c *Cache) SQLExistenceMap() map[util.EntityVariable]struct{} {
 	return c.sqlExistenceMap
 }
 
+func (c *Cache) SVFormula() map[string][]string {
+	return c.svFormulas
+}
+
 func (c *Cache) Options() *CacheOptions {
 	return &c.options
 }
@@ -91,6 +98,7 @@ func NewCache(
 	ctx context.Context,
 	store *store.Store,
 	options CacheOptions,
+	metadata *resource.Metadata,
 ) (*Cache, error) {
 	c := &Cache{options: options}
 	if options.FetchSVG {
@@ -135,6 +143,14 @@ func NewCache(
 			return nil, err
 		}
 		c.sqlExistenceMap = sqlExistenceMap
+	}
+
+	if options.CacheSVFormula {
+		svFormulas, err := fetcher.FetchFormulas(ctx, store, metadata)
+		if err != nil {
+			return nil, err
+		}
+		c.svFormulas = svFormulas
 	}
 	return c, nil
 }

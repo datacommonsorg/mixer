@@ -314,7 +314,7 @@ func (s *Server) BulkFindEntities(
 func (s *Server) UpdateCache(
 	ctx context.Context, in *pb.UpdateCacheRequest,
 ) (*pb.UpdateCacheResponse, error) {
-	newCache, err := cache.NewCache(ctx, s.store, *s.cachedata.Load().Options())
+	newCache, err := cache.NewCache(ctx, s.store, *s.cachedata.Load().Options(), s.metadata)
 	if err != nil {
 		return nil, err
 	}
