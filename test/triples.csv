@@ -90,6 +90,7 @@ geoId/44,typeOf,State,
 geoId/45,typeOf,State,
 geoId/46,typeOf,State,
 geoId/47,typeOf,State,
+geoId/48,typeOf,State,
 dc/c/test_var_1,typeOf,StatisticalCalculation,
 dc/c/test_var_1,outputProperty,test_var_1,
 dc/c/test_var_1,inputPropertyExpression,,"test_var_2 + test_var_3"
