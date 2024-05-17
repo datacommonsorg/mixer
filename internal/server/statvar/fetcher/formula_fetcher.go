@@ -19,6 +19,7 @@ import (
 	"net/http"
 	"sort"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	v1pv "github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
@@ -27,117 +28,112 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
-// V2Node for Remote Mixer.
-func FetchRemoteNode(
-	ctx context.Context,
-	metadata *resource.Metadata,
-	req *pbv2.NodeRequest,
-) (*pbv2.NodeResponse, error) {
-	errGroup, _ := errgroup.WithContext(ctx)
-	remoteResponseChan := make(chan *pbv2.NodeResponse, 1)
-	errGroup.Go(func() error {
-		remoteResp := &pbv2.NodeResponse{}
-		err := util.FetchRemote(metadata, &http.Client{}, "/v2/node", req, remoteResp)
-		if err != nil {
-			return err
-		}
-		return nil
-	})
-	if err := errGroup.Wait(); err != nil {
-		return nil, err
-	}
-	close(remoteResponseChan)
-	return <-remoteResponseChan, nil
-}
-
-// FetchFormulas fetches StatisticalCalculations from storage and returns a map of SV -> inputPropertyExpressions.
+// FetchFormulas fetches StatisticalCalculations from storage and returns a map of SV dcids to a list of inputPropertyExpressions.
 func FetchFormulas(
 	ctx context.Context,
 	store *store.Store,
 	metadata *resource.Metadata,
 ) (map[string][]string, error) {
-	result := map[string][]string{}
-	svToCalculations := map[string][]string{}
-	calculationToFormulas := map[string][]string{}
+	errGroup, errCtx := errgroup.WithContext(ctx)
+	localRespChan := make(chan map[string]map[string]map[string][]*pb.EntityInfo, 1)
+	remoteRespChan := make(chan *pbv2.NodeResponse, 1)
 	// Fetch for BT and SQL.
-	data, _, err := v1pv.Fetch(
-		ctx,
-		store,
-		[]string{"StatisticalCalculation"},
-		[]string{"typeOf"},
-		0,
-		"",
-		"in",
-	)
-	if err != nil {
-		return nil, err
-	}
-	statisticalCalculations := []string{}
-	for _, nodes := range data["StatisticalCalculation"]["typeOf"] {
-		for _, node := range nodes {
-			statisticalCalculations = append(statisticalCalculations, node.Dcid)
-		}
-	}
-	data, _, err = v1pv.Fetch(
-		ctx,
-		store,
-		statisticalCalculations,
-		[]string{"outputProperty", "inputPropertyExpression"},
-		0,
-		"",
-		"out",
-	)
-	if err != nil {
-		return nil, err
-	}
-	for dcid, properties := range data {
-		for _, nodes := range properties["outputProperty"] {
-			for _, node := range nodes {
-				svToCalculations[node.Dcid] = append(svToCalculations[node.Dcid], dcid)
-			}
-		}
-		for _, nodes := range properties["inputPropertyExpression"] {
-			for _, node := range nodes {
-				calculationToFormulas[dcid] = append(calculationToFormulas[dcid], node.Value)
-			}
-		}
-	}
-	// Fetch for Remote Mixer.
-	if metadata.RemoteMixerDomain != "" {
-		req := &pbv2.NodeRequest{
-			Nodes:    []string{"StatisticalCalculation"},
-			Property: "<-typeOf",
-		}
-		statisticalCalculationResp, err := FetchRemoteNode(ctx, metadata, req)
+	errGroup.Go(func() error {
+		data, _, err := v1pv.Fetch(
+			errCtx,
+			store,
+			[]string{"StatisticalCalculation"},
+			[]string{"typeOf"},
+			0,
+			"",
+			"in",
+		)
 		if err != nil {
-			return nil, err
+			return err
 		}
 		statisticalCalculations := []string{}
-		for _, node := range statisticalCalculationResp.Data["StatisticalCalculation"].Arcs["typeOf"].Nodes {
-			statisticalCalculations = append(statisticalCalculations, node.Dcid)
-		}
-		req = &pbv2.NodeRequest{
-			Nodes:    statisticalCalculations,
-			Property: "->[outputProperty, inputPropertyExpression]",
-		}
-		propertyResp, err := FetchRemoteNode(ctx, metadata, req)
-		if err != nil {
-			return nil, err
-		}
-		for dcid, properties := range propertyResp.Data {
-			for _, node := range properties.Arcs["outputProperty"].Nodes {
-				svToCalculations[node.Dcid] = append(svToCalculations[node.Dcid], dcid)
+		for _, nodes := range data["StatisticalCalculation"]["typeOf"] {
+			for _, node := range nodes {
+				statisticalCalculations = append(statisticalCalculations, node.Dcid)
 			}
-			for _, node := range properties.Arcs["inputPropertyExpression"].Nodes {
-				calculationToFormulas[dcid] = append(calculationToFormulas[dcid], node.Value)
+		}
+		localResp, _, err := v1pv.Fetch(
+			errCtx,
+			store,
+			statisticalCalculations,
+			[]string{"outputProperty", "inputPropertyExpression"},
+			0,
+			"",
+			"out",
+		)
+		if err != nil {
+			return err
+		}
+		localRespChan <- localResp
+		return nil
+	})
+	// Fetch for Remote Mixer.
+	if metadata.RemoteMixerDomain != "" {
+		errGroup.Go(func() error {
+			req := &pbv2.NodeRequest{
+				Nodes:    []string{"StatisticalCalculation"},
+				Property: "<-typeOf",
+			}
+			statisticalCalculationResp := &pbv2.NodeResponse{}
+			err := util.FetchRemote(metadata, &http.Client{}, "/v2/node", req, statisticalCalculationResp)
+			if err != nil {
+				return err
+			}
+			statisticalCalculations := []string{}
+			for _, node := range statisticalCalculationResp.Data["StatisticalCalculation"].Arcs["typeOf"].Nodes {
+				statisticalCalculations = append(statisticalCalculations, node.Dcid)
+			}
+			req = &pbv2.NodeRequest{
+				Nodes:    statisticalCalculations,
+				Property: "->[outputProperty, inputPropertyExpression]",
+			}
+			remoteResp := &pbv2.NodeResponse{}
+			err = util.FetchRemote(metadata, &http.Client{}, "/v2/node", req, remoteResp)
+			if err != nil {
+				return err
+			}
+			remoteRespChan <- remoteResp
+			return nil
+		})
+	} else {
+		remoteRespChan <- nil
+	}
+	if err := errGroup.Wait(); err != nil {
+		return nil, err
+	}
+	close(localRespChan)
+	close(remoteRespChan)
+	localResp, remoteResp := <-localRespChan, <-remoteRespChan
+	result := map[string][]string{}
+	localResult := map[string]map[string]bool{}
+	for _, properties := range localResp {
+		for _, outputPropertyNodes := range properties["outputProperty"] {
+			for _, outputPropertyNode := range outputPropertyNodes {
+				for _, inputPropertyExpressionNodes := range properties["inputPropertyExpression"] {
+					for _, inputPropertyExpressionNode := range inputPropertyExpressionNodes {
+						result[outputPropertyNode.Dcid] = append(result[outputPropertyNode.Dcid], inputPropertyExpressionNode.Value)
+						localResult[outputPropertyNode.Dcid] = map[string]bool{inputPropertyExpressionNode.Value: true}
+					}
+				}
 			}
 		}
 	}
-	for sv, calculations := range svToCalculations {
-		for _, calculation := range calculations {
-			formulas, ok := calculationToFormulas[calculation]
-			if ok {
-				result[sv] = append(result[sv], formulas...)
+	if remoteResp != nil {
+		for _, properties := range remoteResp.Data {
+			for _, outputPropertyNode := range properties.Arcs["outputProperty"].Nodes {
+				for _, inputPropertyNode := range properties.Arcs["inputPropertyExpression"].Nodes {
+					// Don't duplicate local formulas.
+					if _, ok := localResult[outputPropertyNode.Dcid]; !ok {
+						result[outputPropertyNode.Dcid] = append(result[outputPropertyNode.Dcid], inputPropertyNode.Value)
+					} else if _, ok := localResult[outputPropertyNode.Dcid][inputPropertyNode.Value]; !ok {
+						result[outputPropertyNode.Dcid] = append(result[outputPropertyNode.Dcid], inputPropertyNode.Value)
+					}
+				}
 			}
 		}
 	}
