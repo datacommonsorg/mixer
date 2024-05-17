@@ -29,6 +29,7 @@ import (
 )
 
 // FetchFormulas fetches StatisticalCalculations and returns a map of SV dcids to a list of inputPropertyExpressions.
+// TODO: Split fetch and merge logic.
 func FetchFormulas(
 	ctx context.Context,
 	store *store.Store,
