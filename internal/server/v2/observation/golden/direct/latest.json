@@ -671,13 +671,13 @@
               "facet_id": "324358135",
               "observations": [
                 {
-                  "date": "2024-03",
-                  "value": 1036703
+                  "date": "2024-04",
+                  "value": 931369
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2024-03",
-              "latest_date": "2024-03"
+              "earliest_date": "2024-04",
+              "latest_date": "2024-04"
             },
             {
               "facet_id": "2978659163",
@@ -695,13 +695,13 @@
               "facet_id": "1249140336",
               "observations": [
                 {
-                  "date": "2024-03",
-                  "value": 1032379
+                  "date": "2024-04",
+                  "value": 1026963
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2024-03",
-              "latest_date": "2024-03"
+              "earliest_date": "2024-04",
+              "latest_date": "2024-04"
             }
           ]
         },

@@ -45,7 +45,7 @@
         "Provenance"
       ],
       "predicate": "importTime",
-      "objectValue": "1715844521",
+      "objectValue": "1716167827",
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
@@ -181,6 +181,19 @@
       "subjectName": "AvailableVehicles 0",
       "subjectTypes": [
         "Quantity"
+      ],
+      "predicate": "provenance",
+      "objectId": "dc/base/HumanReadableStatVars",
+      "objectName": "HumanReadableStatVars",
+      "objectTypes": [
+        "Provenance"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "dc/c/Count_Person",
+      "subjectTypes": [
+        "StatisticalCalculation"
       ],
       "predicate": "provenance",
       "objectId": "dc/base/HumanReadableStatVars",

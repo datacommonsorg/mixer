@@ -8014,6 +8014,17 @@
             }
           ]
         },
+        "outputProperty": {
+          "nodes": [
+            {
+              "types": [
+                "StatisticalCalculation"
+              ],
+              "dcid": "dc/c/Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        },
         "relevantVariable": {
           "nodes": [
             {
