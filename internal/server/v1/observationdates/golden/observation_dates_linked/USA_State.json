@@ -2039,10 +2039,6 @@
               "facet": "2517965213"
             },
             {
-              "count": 41,
-              "facet": "3114843463"
-            },
-            {
               "count": 2,
               "facet": "2458695583"
             },
@@ -2094,10 +2090,6 @@
             {
               "count": 1,
               "facet": "377779557"
-            },
-            {
-              "count": 1,
-              "facet": "3114843463"
             }
           ]
         },
@@ -2143,15 +2135,6 @@
             {
               "count": 1,
               "facet": "377779557"
-            }
-          ]
-        },
-        {
-          "date": "2013-07-01",
-          "entity_count": [
-            {
-              "count": 1,
-              "facet": "3114843463"
             }
           ]
         },
@@ -2242,10 +2225,6 @@
             {
               "count": 1,
               "facet": "377779557"
-            },
-            {
-              "count": 1,
-              "facet": "3114843463"
             }
           ]
         },
@@ -2443,10 +2422,6 @@
             {
               "count": 50,
               "facet": "2517965213"
-            },
-            {
-              "count": 6,
-              "facet": "3114843463"
             },
             {
               "count": 1,
@@ -3688,11 +3663,6 @@
     "2825511676": {
       "import_name": "CDC_Mortality_UnderlyingCause",
       "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
-    },
-    "3114843463": {
-      "import_name": "HumanCuratedStats",
-      "provenance_url": "https://google.com",
-      "measurement_method": "HumanCuratedStats"
     },
     "3144703963": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602PR",

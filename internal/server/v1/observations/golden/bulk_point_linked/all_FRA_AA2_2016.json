@@ -34,17 +34,32 @@
           ]
         },
         {
+          "entity": "nuts/FR10",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 12117132,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 12117132,
+              "facet": "4089091283"
+            }
+          ]
+        },
+        {
           "entity": "nuts/FR101",
           "points_by_facet": [
             {
               "date": "2016",
               "value": 2190327,
-              "facet": "1001395862"
+              "facet": "858679853"
             },
             {
               "date": "2016",
               "value": 2190327,
-              "facet": "858679853"
+              "facet": "4089091283"
             },
             {
               "date": "2016",
@@ -59,12 +74,12 @@
             {
               "date": "2016",
               "value": 1397665,
-              "facet": "1001395862"
+              "facet": "858679853"
             },
             {
               "date": "2016",
               "value": 1397665,
-              "facet": "858679853"
+              "facet": "4089091283"
             },
             {
               "date": "2016",
@@ -89,12 +104,12 @@
             {
               "date": "2016",
               "value": 1431808,
-              "facet": "1001395862"
+              "facet": "858679853"
             },
             {
               "date": "2016",
               "value": 1431808,
-              "facet": "858679853"
+              "facet": "4089091283"
             },
             {
               "date": "2016",
@@ -119,12 +134,12 @@
             {
               "date": "2016",
               "value": 1287330,
-              "facet": "1001395862"
+              "facet": "858679853"
             },
             {
               "date": "2016",
               "value": 1287330,
-              "facet": "858679853"
+              "facet": "4089091283"
             },
             {
               "date": "2016",
@@ -144,12 +159,12 @@
             {
               "date": "2016",
               "value": 1603268,
-              "facet": "1001395862"
+              "facet": "858679853"
             },
             {
               "date": "2016",
               "value": 1603268,
-              "facet": "858679853"
+              "facet": "4089091283"
             },
             {
               "date": "2016",
@@ -174,12 +189,12 @@
             {
               "date": "2016",
               "value": 1606660,
-              "facet": "1001395862"
+              "facet": "858679853"
             },
             {
               "date": "2016",
               "value": 1606660,
-              "facet": "858679853"
+              "facet": "4089091283"
             },
             {
               "date": "2016",
@@ -204,12 +219,12 @@
             {
               "date": "2016",
               "value": 1378151,
-              "facet": "1001395862"
+              "facet": "858679853"
             },
             {
               "date": "2016",
               "value": 1378151,
-              "facet": "858679853"
+              "facet": "4089091283"
             },
             {
               "date": "2016",
@@ -234,12 +249,12 @@
             {
               "date": "2016",
               "value": 1221923,
-              "facet": "1001395862"
+              "facet": "858679853"
             },
             {
               "date": "2016",
               "value": 1221923,
-              "facet": "858679853"
+              "facet": "4089091283"
             },
             {
               "date": "2016",
@@ -1404,17 +1419,212 @@
           ]
         },
         {
+          "entity": "nuts/FRB0",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 2577866,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 2577866,
+              "facet": "4089091283"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FRC1",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 1637941,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 1637941,
+              "facet": "4089091283"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FRC2",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 1180397,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 1180397,
+              "facet": "4089091283"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FRD1",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 1477349,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 1477349,
+              "facet": "4089091283"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FRD2",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 1858580,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 1858580,
+              "facet": "4089091283"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FRE1",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 4074448,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 4074448,
+              "facet": "4089091283"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FRE2",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 1932422,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 1932422,
+              "facet": "4089091283"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FRF1",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 1884150,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 1884150,
+              "facet": "4089091283"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FRF2",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 1333248,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 1333248,
+              "facet": "4089091283"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FRF3",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 2337788,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 2337788,
+              "facet": "4089091283"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FRG0",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 3737632,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 3737632,
+              "facet": "4089091283"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FRH0",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 3306529,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 3306529,
+              "facet": "4089091283"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FRI1",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 3393297,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 3393297,
+              "facet": "4089091283"
+            }
+          ]
+        },
+        {
           "entity": "nuts/FRI14",
           "points_by_facet": [
             {
               "date": "2016",
               "value": 332833,
-              "facet": "1001395862"
+              "facet": "858679853"
             },
             {
               "date": "2016",
               "value": 332833,
-              "facet": "858679853"
+              "facet": "4089091283"
             },
             {
               "date": "2016",
@@ -1432,15 +1642,231 @@
               "facet": "1456184638"
             }
           ]
+        },
+        {
+          "entity": "nuts/FRI2",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 736015,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 736015,
+              "facet": "4089091283"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FRI3",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 1806291,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 1806291,
+              "facet": "4089091283"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FRJ1",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 2793303,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 2793303,
+              "facet": "4089091283"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FRJ2",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 3015132,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 3015132,
+              "facet": "4089091283"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FRK1",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 1363392,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 1363392,
+              "facet": "4089091283"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FRK2",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 6553497,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 6553497,
+              "facet": "4089091283"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FRL0",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 5021928,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 5021928,
+              "facet": "4089091283"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FRM0",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 330455,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 330455,
+              "facet": "4089091283"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FRY1",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 429856,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 429856,
+              "facet": "4089091283"
+            },
+            {
+              "date": "2016",
+              "value": 429856,
+              "facet": "1151455814"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FRY2",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 376480,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 376480,
+              "facet": "4089091283"
+            },
+            {
+              "date": "2016",
+              "value": 376480,
+              "facet": "1151455814"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FRY3",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 269352,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 269352,
+              "facet": "4089091283"
+            },
+            {
+              "date": "2016",
+              "value": 269352,
+              "facet": "1151455814"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FRY4",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 852924,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 852924,
+              "facet": "4089091283"
+            },
+            {
+              "date": "2016",
+              "value": 852924,
+              "facet": "1151455814"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FRY5",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 240987,
+              "facet": "858679853"
+            },
+            {
+              "date": "2016",
+              "value": 240987,
+              "facet": "4089091283"
+            },
+            {
+              "date": "2016",
+              "value": 240987,
+              "facet": "1151455814"
+            }
+          ]
         }
       ]
     }
   ],
   "facets": {
-    "1001395862": {
-      "import_name": "EurostatData",
-      "provenance_url": "https://ec.europa.eu/eurostat/data/database"
-    },
     "1151455814": {
       "import_name": "OECDRegionalDemography",
       "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
@@ -1456,6 +1882,10 @@
       "import_name": "WikidataPopulation",
       "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
       "measurement_method": "WikidataPopulation"
+    },
+    "4089091283": {
+      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
+      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true"
     },
     "738965619": {
       "import_name": "FranceINSEE",

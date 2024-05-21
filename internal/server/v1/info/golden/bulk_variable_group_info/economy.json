@@ -109,12 +109,12 @@
           },
           {
             "id": "dc/g/Household_IncomeStatus",
-            "specializedEntity": "Income Status",
+            "specializedEntity": "Income Status (Household)",
             "displayName": "Household by Income Status"
           },
           {
             "id": "dc/g/Person_IncomeStatus",
-            "specializedEntity": "Income Status",
+            "specializedEntity": "Income Status (Individual)",
             "displayName": "Person by Income Status"
           },
           {

@@ -26,9 +26,6 @@
               "facet_id": "2517965213"
             },
             {
-              "facet_id": "3114843463"
-            },
-            {
               "facet_id": "2458695583"
             }
           ]
@@ -90,11 +87,6 @@
     "2825511676": {
       "import_name": "CDC_Mortality_UnderlyingCause",
       "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
-    },
-    "3114843463": {
-      "import_name": "HumanCuratedStats",
-      "provenance_url": "https://google.com",
-      "measurement_method": "HumanCuratedStats"
     },
     "3795540742": {
       "import_name": "CensusACS5YearSurvey",

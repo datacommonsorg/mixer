@@ -3965,15 +3965,15 @@
       "dcid": "Count_Person_1To4Years_WhiteAloneNotHispanicOrLatino"
     },
     {
-      "name": "Population: 1 Years or More, 1 - 1.5 Ratio To US Census Poverty Line",
+      "name": "Population: 1 Years or More, 1 - 1.5 Ratio To Poverty Line",
       "dcid": "Count_Person_1OrMoreYears_1To1.49RatioToPovertyLine"
     },
     {
-      "name": "Population: 1 Years or More, 1 Ratio To US Census Poverty Line or Less",
+      "name": "Population: 1 Years or More, 1 Ratio To Poverty Line or Less",
       "dcid": "Count_Person_1OrMoreYears_1OrLessRatioToPovertyLine"
     },
     {
-      "name": "Population: 1 Years or More, 1.5 Ratio To US Census Poverty Line or More",
+      "name": "Population: 1 Years or More, 1.5 Ratio To Poverty Line or More",
       "dcid": "Count_Person_1OrMoreYears_1.5OrMoreRatioToPovertyLine"
     },
     {
