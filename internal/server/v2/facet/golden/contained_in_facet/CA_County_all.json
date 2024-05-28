@@ -47,12 +47,6 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "3114843463",
-              "obs_count": 57,
-              "earliest_date": "2011",
-              "latest_date": "2014"
-            },
-            {
               "facet_id": "2458695583",
               "obs_count": 58,
               "earliest_date": "1850",
@@ -123,11 +117,6 @@
     "2825511676": {
       "import_name": "CDC_Mortality_UnderlyingCause",
       "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
-    },
-    "3114843463": {
-      "import_name": "HumanCuratedStats",
-      "provenance_url": "https://google.com",
-      "measurement_method": "HumanCuratedStats"
     },
     "3795540742": {
       "import_name": "CensusACS5YearSurvey",

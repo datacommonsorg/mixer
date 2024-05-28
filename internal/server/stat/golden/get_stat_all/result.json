@@ -673,15 +673,6 @@
             },
             {
               "val": {
-                "2011": 311591917
-              },
-              "measurementMethod": "HumanCuratedStats",
-              "importName": "HumanCuratedStats",
-              "provenanceDomain": "datacommons.org",
-              "provenanceUrl": "https://google.com"
-            },
-            {
-              "val": {
                 "1790": 3929214,
                 "1800": 5308483,
                 "1810": 7239881,
@@ -1231,15 +1222,6 @@
             },
             {
               "val": {
-                "2011": 37691912
-              },
-              "measurementMethod": "HumanCuratedStats",
-              "importName": "HumanCuratedStats",
-              "provenanceDomain": "datacommons.org",
-              "provenanceUrl": "https://google.com"
-            },
-            {
-              "val": {
                 "1850": 92597,
                 "1860": 379994,
                 "1870": 560247,
@@ -1464,15 +1446,6 @@
               "importName": "CensusPEP",
               "provenanceDomain": "census.gov",
               "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html"
-            },
-            {
-              "val": {
-                "2013": 77846
-              },
-              "measurementMethod": "HumanCuratedStats",
-              "importName": "HumanCuratedStats",
-              "provenanceDomain": "datacommons.org",
-              "provenanceUrl": "https://google.com"
             },
             {
               "val": {

@@ -32,6 +32,9 @@
               "facet_id": "3251078590"
             },
             {
+              "facet_id": "4089091283"
+            },
+            {
               "facet_id": "2018634167"
             },
             {
@@ -63,6 +66,9 @@
             },
             {
               "facet_id": "2708675871"
+            },
+            {
+              "facet_id": "2590504623"
             },
             {
               "facet_id": "2052219360"
@@ -171,9 +177,6 @@
             },
             {
               "facet_id": "1456184638"
-            },
-            {
-              "facet_id": "3114843463"
             },
             {
               "facet_id": "2458695583"
@@ -351,6 +354,10 @@
       "provenance_url": "https://www.stat.ee/en",
       "measurement_method": "StatisticsEstonia"
     },
+    "2590504623": {
+      "import_name": "Vietnam_Census",
+      "provenance_url": "https://www.gso.gov.vn/en/homepage/"
+    },
     "2708675871": {
       "import_name": "Japan_Census",
       "provenance_url": "https://www.e-stat.go.jp/"
@@ -377,11 +384,6 @@
       "import_name": "LatviaCSB",
       "provenance_url": "https://www.csb.gov.lv/en",
       "measurement_method": "LatviaCSB"
-    },
-    "3114843463": {
-      "import_name": "HumanCuratedStats",
-      "provenance_url": "https://google.com",
-      "measurement_method": "HumanCuratedStats"
     },
     "3162233851": {
       "import_name": "BosniaPopulation",
@@ -456,6 +458,10 @@
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y"
+    },
+    "4089091283": {
+      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
+      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true"
     },
     "4140854811": {
       "import_name": "Colombia_Census",

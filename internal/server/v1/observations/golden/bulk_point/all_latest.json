@@ -45,6 +45,11 @@
               "facet": "1151455814"
             },
             {
+              "date": "2022",
+              "value": 67871925,
+              "facet": "4089091283"
+            },
+            {
               "date": "2019",
               "value": 66992699,
               "facet": "738965619"
@@ -130,11 +135,6 @@
               "facet": "1226172227"
             },
             {
-              "date": "2011",
-              "value": 311591917,
-              "facet": "3114843463"
-            },
-            {
               "date": "2017",
               "value": 325145963,
               "facet": "2458695583"
@@ -195,11 +195,6 @@
               "facet": "1226172227"
             },
             {
-              "date": "2011",
-              "value": 37691912,
-              "facet": "3114843463"
-            },
-            {
               "date": "2016",
               "value": 39250017,
               "facet": "2458695583"
@@ -238,11 +233,6 @@
               "date": "2018",
               "value": 83377,
               "facet": "2517965213"
-            },
-            {
-              "date": "2013",
-              "value": 77846,
-              "facet": "3114843463"
             },
             {
               "date": "2010",
@@ -380,8 +370,8 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2024-03",
-              "value": 6429000,
+              "date": "2024-04",
+              "value": 6492000,
               "facet": "3707913853"
             },
             {
@@ -395,8 +385,8 @@
           "entity": "geoId/06",
           "points_by_facet": [
             {
-              "date": "2024-02",
-              "value": 1078314,
+              "date": "2024-04",
+              "value": 931369,
               "facet": "324358135"
             },
             {
@@ -405,8 +395,8 @@
               "facet": "2978659163"
             },
             {
-              "date": "2024-02",
-              "value": 1027033,
+              "date": "2024-04",
+              "value": 1026963,
               "facet": "1249140336"
             }
           ]
@@ -415,13 +405,13 @@
           "entity": "geoId/0649670",
           "points_by_facet": [
             {
-              "date": "2024-02",
-              "value": 1711,
+              "date": "2024-03",
+              "value": 1603,
               "facet": "324358135"
             },
             {
-              "date": "2022",
-              "value": 1005,
+              "date": "2023",
+              "value": 1442,
               "facet": "2978659163"
             }
           ]
@@ -541,11 +531,6 @@
       "measurement_method": "BLSSeasonallyUnadjusted",
       "observation_period": "P1Y"
     },
-    "3114843463": {
-      "import_name": "HumanCuratedStats",
-      "provenance_url": "https://google.com",
-      "measurement_method": "HumanCuratedStats"
-    },
     "324358135": {
       "import_name": "BLS_LAUS",
       "provenance_url": "https://www.bls.gov/lau/",
@@ -562,6 +547,10 @@
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y"
+    },
+    "4089091283": {
+      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
+      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true"
     },
     "4277990144": {
       "import_name": "FBIGovCrime",

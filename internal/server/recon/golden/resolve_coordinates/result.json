@@ -125,10 +125,20 @@
       "latitude": -6.72177,
       "longitude": -38.18998,
       "placeDcids": [
+        "wikidataId/Q38088",
+        "wikidataId/Q2011653",
         "ipcc_50/-6.75_-38.25_BRA",
         "country/BRA"
       ],
       "places": [
+        {
+          "dcid": "wikidataId/Q38088",
+          "dominantType": "AdministrativeArea1"
+        },
+        {
+          "dcid": "wikidataId/Q2011653",
+          "dominantType": "AdministrativeArea2"
+        },
         {
           "dcid": "ipcc_50/-6.75_-38.25_BRA",
           "dominantType": "IPCCPlace_50"

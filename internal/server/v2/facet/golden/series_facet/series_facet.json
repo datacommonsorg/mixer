@@ -9,12 +9,6 @@
               "obs_count": 63,
               "earliest_date": "1960",
               "latest_date": "2022"
-            },
-            {
-              "facet_id": "3114843463",
-              "obs_count": 1,
-              "earliest_date": "2012",
-              "latest_date": "2012"
             }
           ]
         },
@@ -99,12 +93,6 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "3114843463",
-              "obs_count": 1,
-              "earliest_date": "2011",
-              "latest_date": "2011"
-            },
-            {
               "facet_id": "2458695583",
               "obs_count": 45,
               "earliest_date": "1790",
@@ -181,12 +169,6 @@
               "obs_count": 10,
               "earliest_date": "2010",
               "latest_date": "2019"
-            },
-            {
-              "facet_id": "3114843463",
-              "obs_count": 1,
-              "earliest_date": "2011",
-              "latest_date": "2011"
             },
             {
               "facet_id": "2458695583",
@@ -360,11 +342,6 @@
     "2825511676": {
       "import_name": "CDC_Mortality_UnderlyingCause",
       "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
-    },
-    "3114843463": {
-      "import_name": "HumanCuratedStats",
-      "provenance_url": "https://google.com",
-      "measurement_method": "HumanCuratedStats"
     },
     "3357919774": {
       "import_name": "CensusUSAMedianAgeIncome",
