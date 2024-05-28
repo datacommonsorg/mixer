@@ -1,0 +1,66 @@
+// Copyright 2023 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+// Package observation is for V2 observation API
+package observation
+
+import (
+	"context"
+
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/cache"
+	"github.com/datacommonsorg/mixer/internal/store"
+)
+
+// CalculateObservationResponses returns a list of ObservationResponses based
+// on StatisticalCalculation formulas for the missing data in an input
+// ObservationResponse.
+func CalculateObservationResponses(
+	ctx context.Context,
+	store *store.Store,
+	inputResp *pbv2.ObservationResponse,
+	cachedata *cache.Cache,
+) []*pbv2.ObservationResponse {
+	calculatedResponses := []*pbv2.ObservationResponse{}
+	for variable, variableObservation := range inputResp.ByVariable {
+		formulas, ok := cachedata.SVFormula()[variable]
+		if ok {
+			for entity, entityObservation := range variableObservation.ByEntity {
+				if len(entityObservation.OrderedFacets) == 0 {
+					// Use first formula that returns data.
+					for _, formula := range formulas {
+						derivedSeries, err := DerivedSeries(
+							ctx,
+							store,
+							formula,
+							[]string{entity},
+						)
+						// Missing input data.
+						if err != nil {
+							continue
+						}
+						// Successful calculation.
+						if len(derivedSeries.ByVariable[formula].ByEntity[entity].OrderedFacets) > 0 {
+							derivedSeries.ByVariable[variable] = derivedSeries.ByVariable[formula]
+							delete(derivedSeries.ByVariable, formula)
+							calculatedResponses = append(calculatedResponses, derivedSeries)
+							continue
+						}
+					}
+				}
+			}
+		}
+	}
+	return calculatedResponses
+}

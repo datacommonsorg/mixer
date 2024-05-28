@@ -23,6 +23,7 @@ import (
 	"sort"
 
 	"github.com/datacommonsorg/mixer/internal/proto"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
@@ -213,43 +214,54 @@ func MergeEvent(main, aux *pbv2.EventResponse) *pbv2.EventResponse {
 	return main
 }
 
-// MergeObservation merges two V2 observation responses.
-func MergeObservation(main, aux *pbv2.ObservationResponse) *pbv2.ObservationResponse {
+// MergeObservation merges multiple V2 observation responses.
+func MergeObservation(main *pbv2.ObservationResponse, aux []*pbv2.ObservationResponse) *pbv2.ObservationResponse {
 	if main == nil {
-		return aux
+		if len(aux) > 1 {
+			return MergeObservation(aux[0], aux[1:])
+		} else {
+			return aux[0]
+		}
 	}
-	if aux == nil {
+	if len(aux) == 0 {
 		return main
 	}
-	for v, vData := range aux.ByVariable {
-		if main.ByVariable == nil {
-			main.ByVariable = map[string]*pbv2.VariableObservation{}
-		}
-		if _, ok := main.ByVariable[v]; !ok {
-			main.ByVariable[v] = &pbv2.VariableObservation{
-				ByEntity: map[string]*pbv2.EntityObservation{},
+	if aux[0] == nil {
+		return main
+	}
+	for _, auxData := range aux {
+		for v, vData := range auxData.ByVariable {
+			if main.ByVariable == nil {
+				main.ByVariable = map[string]*pbv2.VariableObservation{}
 			}
-		}
-		if main.ByVariable[v].ByEntity == nil {
-			main.ByVariable[v].ByEntity = map[string]*pbv2.EntityObservation{}
-		}
-		for e, eData := range vData.ByEntity {
-			if _, ok := main.ByVariable[v].ByEntity[e]; !ok {
-				main.ByVariable[v].ByEntity[e] = &pbv2.EntityObservation{
-					OrderedFacets: []*pbv2.FacetObservation{},
+			if _, ok := main.ByVariable[v]; !ok {
+				main.ByVariable[v] = &pbv2.VariableObservation{
+					ByEntity: map[string]*pbv2.EntityObservation{},
 				}
 			}
-			main.ByVariable[v].ByEntity[e].OrderedFacets = append(
-				main.ByVariable[v].ByEntity[e].OrderedFacets,
-				eData.OrderedFacets...,
-			)
+			if main.ByVariable[v].ByEntity == nil {
+				main.ByVariable[v].ByEntity = map[string]*pbv2.EntityObservation{}
+			}
+			for e, eData := range vData.ByEntity {
+				if _, ok := main.ByVariable[v].ByEntity[e]; !ok {
+					main.ByVariable[v].ByEntity[e] = &pbv2.EntityObservation{
+						OrderedFacets: []*pbv2.FacetObservation{},
+					}
+				}
+				main.ByVariable[v].ByEntity[e].OrderedFacets = append(
+					main.ByVariable[v].ByEntity[e].OrderedFacets,
+					eData.OrderedFacets...,
+				)
+			}
 		}
 	}
 	if main.Facets == nil {
 		main.Facets = map[string]*proto.Facet{}
 	}
-	for facetID, facet := range aux.Facets {
-		main.Facets[facetID] = facet
+	for _, auxData := range aux {
+		for facetID, facet := range auxData.Facets {
+			main.Facets[facetID] = facet
+		}
 	}
 	return main
 }
@@ -348,4 +360,45 @@ func toStatVarSummaryMap(in []*pbv1.VariableInfoResponse) map[string]*proto.Stat
 		}
 	}
 	return out
+}
+
+// Create map of SV to inputPropertyExpressions by merging local and remote responses.
+func MergeFormulas(localResp map[string]map[string]map[string][]*pb.EntityInfo, remoteResp *pbv2.NodeResponse) (map[string][]string, error) {
+	result := map[string][]string{}
+	localResult := map[string]map[string]bool{}
+	for _, props := range localResp {
+		for _, outputProps := range props["outputProperty"] {
+			for _, outputNode := range outputProps {
+				for _, inputProps := range props["inputPropertyExpression"] {
+					for _, inputNode := range inputProps {
+						result[outputNode.Dcid] = append(result[outputNode.Dcid], inputNode.Value)
+						if _, ok := localResult[outputNode.Dcid]; ok {
+							localResult[outputNode.Dcid][inputNode.Value] = true
+						} else {
+							localResult[outputNode.Dcid] = map[string]bool{inputNode.Value: true}
+						}
+					}
+				}
+			}
+		}
+	}
+	if remoteResp != nil {
+		for _, props := range remoteResp.Data {
+			for _, outputNode := range props.Arcs["outputProperty"].Nodes {
+				for _, inputNode := range props.Arcs["inputPropertyExpression"].Nodes {
+					// Don't duplicate local formulas.
+					if _, ok := localResult[outputNode.Dcid]; !ok {
+						result[outputNode.Dcid] = append(result[outputNode.Dcid], inputNode.Value)
+					} else if _, ok := localResult[outputNode.Dcid][inputNode.Value]; !ok {
+						result[outputNode.Dcid] = append(result[outputNode.Dcid], inputNode.Value)
+					}
+				}
+			}
+		}
+	}
+	// Sort for determinism.
+	for _, formulas := range result {
+		sort.Strings(formulas)
+	}
+	return result, nil
 }

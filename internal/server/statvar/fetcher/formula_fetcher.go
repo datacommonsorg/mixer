@@ -17,8 +17,8 @@ package fetcher
 import (
 	"context"
 	"net/http"
-	"sort"
 
+	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
@@ -116,37 +116,5 @@ func FetchFormulas(
 	close(localRespChan)
 	close(remoteRespChan)
 	localResp, remoteResp := <-localRespChan, <-remoteRespChan
-	result := map[string][]string{}
-	localResult := map[string]map[string]bool{}
-	for _, props := range localResp {
-		for _, outputProps := range props["outputProperty"] {
-			for _, outputNode := range outputProps {
-				for _, inputProps := range props["inputPropertyExpression"] {
-					for _, inputNode := range inputProps {
-						result[outputNode.Dcid] = append(result[outputNode.Dcid], inputNode.Value)
-						localResult[outputNode.Dcid] = map[string]bool{inputNode.Value: true}
-					}
-				}
-			}
-		}
-	}
-	if remoteResp != nil {
-		for _, props := range remoteResp.Data {
-			for _, outputNode := range props.Arcs["outputProperty"].Nodes {
-				for _, inputNode := range props.Arcs["inputPropertyExpression"].Nodes {
-					// Don't duplicate local formulas.
-					if _, ok := localResult[outputNode.Dcid]; !ok {
-						result[outputNode.Dcid] = append(result[outputNode.Dcid], inputNode.Value)
-					} else if _, ok := localResult[outputNode.Dcid][inputNode.Value]; !ok {
-						result[outputNode.Dcid] = append(result[outputNode.Dcid], inputNode.Value)
-					}
-				}
-			}
-		}
-	}
-	// Sort for determinism.
-	for _, formulas := range result {
-		sort.Strings(formulas)
-	}
-	return result, nil
+	return merger.MergeFormulas(localResp, remoteResp)
 }
