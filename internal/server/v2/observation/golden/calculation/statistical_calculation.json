@@ -2,12 +2,72 @@
   "by_variable": {
     "Count_Person_Female": {
       "by_entity": {
-        "wikidataId/Q613": {}
+        "wikidataId/Q613": {
+          "ordered_facets": [
+            {
+              "observations": [
+                {
+                  "date": "1975",
+                  "value": 54366
+                },
+                {
+                  "date": "1980",
+                  "value": 88587
+                },
+                {
+                  "date": "1985",
+                  "value": 123609
+                },
+                {
+                  "date": "1995",
+                  "value": 211211
+                },
+                {
+                  "date": "2005",
+                  "value": 332148
+                }
+              ],
+              "obs_count": 5,
+              "earliest_date": "1975",
+              "latest_date": "2005"
+            }
+          ]
+        }
       }
     },
     "Count_Person_Male": {
       "by_entity": {
-        "wikidataId/Q613": {}
+        "wikidataId/Q613": {
+            "ordered_facets": [
+              {
+                "observations": [
+                  {
+                    "date": "1975",
+                    "value": 128821
+                  },
+                  {
+                    "date": "1980",
+                    "value": 187714
+                  },
+                  {
+                    "date": "1985",
+                    "value": 247179
+                  },
+                  {
+                    "date": "1995",
+                    "value": 478209
+                  },
+                  {
+                    "date": "2005",
+                    "value": 989305
+                  }
+                ],
+                "obs_count": 5,
+                "earliest_date": "1975",
+                "latest_date": "2005"
+              }
+            ]
+          }
         }
       },
       "Count_WetBulbTemperatureEvent": {
