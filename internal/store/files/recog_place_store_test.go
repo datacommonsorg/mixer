@@ -100,6 +100,9 @@ func TestLoadRecogPlaceStore(t *testing.T) {
 								Parts: []string{"usa"},
 							},
 							{
+								Parts: []string{"us"},
+							},
+							{
 								Parts: []string{"american", "city"},
 							},
 							{
