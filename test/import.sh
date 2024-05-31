@@ -28,8 +28,10 @@ set -x
 sqlite3 "$DIR/datacommons.db" <<EOF
 DROP TABLE IF EXISTS observations;
 DROP TABLE IF EXISTS triples;
+DROP TABLE IF EXISTS key_value_store;
 .headers on
 .mode csv
 .import "$DIR/observations.csv" observations
 .import "$DIR/triples.csv" triples
+.import "$DIR/key_value_store.csv" key_value_store
 EOF

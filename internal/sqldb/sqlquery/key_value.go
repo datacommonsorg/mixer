@@ -24,19 +24,18 @@ import (
 )
 
 const (
-	SVGCacheKey = "c/cache/svgs"
+	StatVarGroupsKey = "StatVarGroups"
 )
 
-// GetCacheData gets cache data for the specified key from the sql DB.
+// GetKeyValue gets the value for the specified key from the key_value_store table.
 // If not found, returns false.
 // If found, unmarshals the value into the specified proto and returns true.
-func GetCacheData(sqlClient *sql.DB, key string, out protoreflect.ProtoMessage) (bool, error) {
-	query :=
-		`
-					SELECT object_value
-					FROM triples
-					WHERE subject_id = $1 and predicate = "value" and object_value <> "";
-				`
+func GetKeyValue(sqlClient *sql.DB, key string, out protoreflect.ProtoMessage) (bool, error) {
+	query := `
+SELECT value
+FROM key_value_store
+WHERE key = $1;
+`
 
 	stmt, err := sqlClient.Prepare(query)
 	if err != nil {
@@ -48,7 +47,7 @@ func GetCacheData(sqlClient *sql.DB, key string, out protoreflect.ProtoMessage) 
 	err = stmt.QueryRow(key).Scan(&value)
 	if err != nil {
 		if err == sql.ErrNoRows {
-			log.Printf("No cache data found: %s", key)
+			log.Printf("No value found for key: %s", key)
 			return false, nil
 		}
 		return false, err

@@ -22,8 +22,8 @@ import (
 	"github.com/go-test/deep"
 )
 
-func TestGetCacheData(t *testing.T) {
-	sqlClient, err := sql.Open("sqlite3", "../../../test/sqlquery/cache/datacommons.db")
+func TestGetKeyValue(t *testing.T) {
+	sqlClient, err := sql.Open("sqlite3", "../../../test/sqlquery/key_value/datacommons.db")
 	if err != nil {
 		t.Fatalf("Could not open test database: %v", err)
 	}
@@ -36,9 +36,9 @@ func TestGetCacheData(t *testing.T) {
 
 	var got pb.StatVarGroups
 
-	found, _ := GetCacheData(sqlClient, SVGCacheKey, &got)
+	found, _ := GetKeyValue(sqlClient, StatVarGroupsKey, &got)
 	if !found {
-		t.Errorf("Cache data not found: %s", SVGCacheKey)
+		t.Errorf("Key value data not found: %s", StatVarGroupsKey)
 	}
 	if diff := deep.Equal(want, &got); diff != nil {
 		t.Errorf("Unexpected diff %v", diff)

@@ -46,5 +46,16 @@ func CreateTables(sqlClient *sql.DB) error {
 	if err != nil {
 		return err
 	}
+
+	keyValueStoreStatement := `
+	CREATE TABLE IF NOT EXISTS key_value_store (
+		key varchar(255),
+		value TEXT
+	);
+	`
+	_, err = sqlClient.Exec(keyValueStoreStatement)
+	if err != nil {
+		return err
+	}
 	return nil
 }

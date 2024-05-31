@@ -120,26 +120,26 @@ func FetchAllSVG(
 }
 
 // Fetches SVGs from SQL.
-// First attempts to get it from sql cache and falls back to querying sql table.
+// First attempts to get it from key value store and falls back to querying sql table.
 func fetchSQLSVGs(sqlClient *sql.DB) (map[string]*pb.StatVarGroupNode, error) {
-	// Try cache first.
-	svgCache, err := fetchSQLCacheSVGs(sqlClient)
+	// Try key value first.
+	keyValueSVGs, err := fetchSQLKeyValueSVGs(sqlClient)
 	if err != nil {
 		return map[string]*pb.StatVarGroupNode{}, err
 	}
-	if svgCache != nil {
-		// Cached data found => return it.
-		return svgCache.StatVarGroups, nil
+	if keyValueSVGs != nil {
+		// Key value data found => return it.
+		return keyValueSVGs.StatVarGroups, nil
 	}
 
 	// Query sql table.
 	return fetchSQLTableSVGs(sqlClient)
 }
 
-func fetchSQLCacheSVGs(sqlClient *sql.DB) (*pb.StatVarGroups, error) {
+func fetchSQLKeyValueSVGs(sqlClient *sql.DB) (*pb.StatVarGroups, error) {
 	var svgs pb.StatVarGroups
 
-	found, err := sqlquery.GetCacheData(sqlClient, sqlquery.SVGCacheKey, &svgs)
+	found, err := sqlquery.GetKeyValue(sqlClient, sqlquery.StatVarGroupsKey, &svgs)
 	if !found || err != nil {
 		return nil, err
 	}
@@ -147,19 +147,20 @@ func fetchSQLCacheSVGs(sqlClient *sql.DB) (*pb.StatVarGroups, error) {
 	return &svgs, nil
 }
 
+// TODO: Deprecate this approach in the future
+// once the KV approach is universally available.
 func fetchSQLTableSVGs(sqlClient *sql.DB) (map[string]*pb.StatVarGroupNode, error) {
 	result := map[string]*pb.StatVarGroupNode{}
 	// Query for all the stat var group node
-	query :=
-		`
-					SELECT t1.subject_id, t2.object_value, t3.object_id
-					FROM triples t1 JOIN triples t2 ON t1.subject_id = t2.subject_id
-					JOIN triples t3 ON t1.subject_id = t3.subject_id
-					WHERE t1.predicate="typeOf"
-					AND t1.object_id="StatVarGroup"
-					AND t2.predicate="name"
-					AND t3.predicate="specializationOf";
-				`
+	query := `
+SELECT t1.subject_id, t2.object_value, t3.object_id
+FROM triples t1 JOIN triples t2 ON t1.subject_id = t2.subject_id
+JOIN triples t3 ON t1.subject_id = t3.subject_id
+WHERE t1.predicate="typeOf"
+AND t1.object_id="StatVarGroup"
+AND t2.predicate="name"
+AND t3.predicate="specializationOf";
+`
 	svgRows, err := sqlClient.Query(query)
 	if err != nil {
 		return nil, err
@@ -185,19 +186,18 @@ func fetchSQLTableSVGs(sqlClient *sql.DB) (map[string]*pb.StatVarGroupNode, erro
 			},
 		)
 	}
-	// Query for all the stat var node
-	query =
-		`
-					SELECT t1.subject_id, t2.object_value, t3.object_id, COALESCE(t4.object_value, '')
-					FROM triples t1
-					JOIN triples t2 ON t1.subject_id = t2.subject_id
-					JOIN triples t3 ON t1.subject_id = t3.subject_id
-					LEFT JOIN triples t4 ON t1.subject_id = t4.subject_id AND t4.predicate = "description"
-					WHERE t1.predicate="typeOf"
-					AND t1.object_id="StatisticalVariable"
-					AND t2.predicate="name"
-					AND t3.predicate="memberOf";
-				`
+	// Query for all the stat var nodes
+	query = `
+SELECT t1.subject_id, t2.object_value, t3.object_id, COALESCE(t4.object_value, '')
+FROM triples t1
+JOIN triples t2 ON t1.subject_id = t2.subject_id
+JOIN triples t3 ON t1.subject_id = t3.subject_id
+LEFT JOIN triples t4 ON t1.subject_id = t4.subject_id AND t4.predicate = "description"
+WHERE t1.predicate="typeOf"
+AND t1.object_id="StatisticalVariable"
+AND t2.predicate="name"
+AND t3.predicate="memberOf";
+`
 	svRows, err := sqlClient.Query(query)
 	if err != nil {
 		return nil, err
