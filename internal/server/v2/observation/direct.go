@@ -104,7 +104,7 @@ func FetchDirect(
 		return nil, err
 	}
 	// Prefer SQL data over BT data, so put sqlObservation first.
-	return merger.MergeObservation(sqlObservation, []*pbv2.ObservationResponse{btObservation}), nil
+	return merger.MergeObservation(sqlObservation, btObservation), nil
 }
 
 // FetchDirectBT fetches data from Bigtable cache.

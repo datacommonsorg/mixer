@@ -341,7 +341,7 @@ func FetchContainedIn(
 			sqlResult = trimDirectResp(directResp)
 		}
 		// Prefer SQL data over BT data, so put sqlResult first.
-		result = merger.MergeObservation(sqlResult, []*pbv2.ObservationResponse{result})
+		result = merger.MergeObservation(sqlResult, result)
 	}
 	return result, nil
 }
