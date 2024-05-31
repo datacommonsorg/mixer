@@ -16,10 +16,12 @@ package fetcher
 
 import (
 	"context"
+	"database/sql"
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/hierarchy"
+	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"google.golang.org/protobuf/proto"
@@ -100,88 +102,132 @@ func FetchAllSVG(
 		}
 	}
 	if store.SQLClient != nil {
-		// Query for all the stat var group node
-		query :=
-			`
-					SELECT t1.subject_id, t2.object_value, t3.object_id
-					FROM triples t1 JOIN triples t2 ON t1.subject_id = t2.subject_id
-					JOIN triples t3 ON t1.subject_id = t3.subject_id
-					WHERE t1.predicate="typeOf"
-					AND t1.object_id="StatVarGroup"
-					AND t2.predicate="name"
-					AND t3.predicate="specializationOf";
-				`
-		svgRows, err := store.SQLClient.Query(query)
+		sqlResult, err := fetchSQLSVGs(store.SQLClient)
 		if err != nil {
 			return nil, err
 		}
-		defer svgRows.Close()
-		for svgRows.Next() {
-			var self, name, parent string
-			err = svgRows.Scan(&self, &name, &parent)
-			if err != nil {
-				return nil, err
+		for svgId, svgNode := range sqlResult {
+			if _, ok := result[svgId]; !ok {
+				result[svgId] = svgNode
+			} else {
+				hierarchy.MergeSVGNodes(result[svgId], svgNode)
 			}
-			result[self] = &pb.StatVarGroupNode{
-				AbsoluteName: name,
-			}
-			if _, ok := result[parent]; !ok {
-				result[parent] = &pb.StatVarGroupNode{}
-			}
-			result[parent].ChildStatVarGroups = append(
-				result[parent].ChildStatVarGroups,
-				&pb.StatVarGroupNode_ChildSVG{
-					Id:                self,
-					SpecializedEntity: name,
-				},
-			)
-		}
-		// Query for all the stat var node
-		query =
-			`
-					SELECT t1.subject_id, t2.object_value, t3.object_id, COALESCE(t4.object_value, '')
-					FROM triples t1
-					JOIN triples t2 ON t1.subject_id = t2.subject_id
-					JOIN triples t3 ON t1.subject_id = t3.subject_id
-					LEFT JOIN triples t4 ON t1.subject_id = t4.subject_id AND t4.predicate = "description"
-					WHERE t1.predicate="typeOf"
-					AND t1.object_id="StatisticalVariable"
-					AND t2.predicate="name"
-					AND t3.predicate="memberOf";
-				`
-		svRows, err := store.SQLClient.Query(query)
-		if err != nil {
-			return nil, err
-		}
-		defer svRows.Close()
-		for svRows.Next() {
-			var sv, name, svg, description string
-			err = svRows.Scan(&sv, &name, &svg, &description)
-			if err != nil {
-				return nil, err
-			}
-			if _, ok := result[svg]; !ok {
-				result[svg] = &pb.StatVarGroupNode{}
-			}
-			searchNames := []string{}
-			if len(name) > 0 {
-				searchNames = append(searchNames, name)
-			}
-			if len(description) > 0 {
-				searchNames = append(searchNames, description)
-			}
-			result[svg].ChildStatVars = append(
-				result[svg].ChildStatVars,
-				&pb.StatVarGroupNode_ChildSV{
-					Id:          sv,
-					DisplayName: name,
-					SearchNames: searchNames,
-				},
-			)
-			result[svg].DescendentStatVarCount += 1
 		}
 	}
 	// Recount all descendent stat vars after merging
 	hierarchy.AdjustDescendentSVCount(result, hierarchy.SvgRoot)
+	return result, nil
+}
+
+// Fetches SVGs from SQL.
+// First attempts to get it from key value store and falls back to querying sql table.
+func fetchSQLSVGs(sqlClient *sql.DB) (map[string]*pb.StatVarGroupNode, error) {
+	// Try key value first.
+	keyValueSVGs, err := fetchSQLKeyValueSVGs(sqlClient)
+	if err != nil {
+		return map[string]*pb.StatVarGroupNode{}, err
+	}
+	if keyValueSVGs != nil {
+		// Key value data found => return it.
+		return keyValueSVGs.StatVarGroups, nil
+	}
+
+	// Query sql table.
+	return fetchSQLTableSVGs(sqlClient)
+}
+
+func fetchSQLKeyValueSVGs(sqlClient *sql.DB) (*pb.StatVarGroups, error) {
+	var svgs pb.StatVarGroups
+
+	found, err := sqlquery.GetKeyValue(sqlClient, sqlquery.StatVarGroupsKey, &svgs)
+	if !found || err != nil {
+		return nil, err
+	}
+
+	return &svgs, nil
+}
+
+// TODO: Deprecate this approach in the future
+// once the KV approach is universally available.
+func fetchSQLTableSVGs(sqlClient *sql.DB) (map[string]*pb.StatVarGroupNode, error) {
+	result := map[string]*pb.StatVarGroupNode{}
+	// Query for all the stat var group node
+	query := `
+SELECT t1.subject_id, t2.object_value, t3.object_id
+FROM triples t1 JOIN triples t2 ON t1.subject_id = t2.subject_id
+JOIN triples t3 ON t1.subject_id = t3.subject_id
+WHERE t1.predicate="typeOf"
+AND t1.object_id="StatVarGroup"
+AND t2.predicate="name"
+AND t3.predicate="specializationOf";
+`
+	svgRows, err := sqlClient.Query(query)
+	if err != nil {
+		return nil, err
+	}
+	defer svgRows.Close()
+	for svgRows.Next() {
+		var self, name, parent string
+		err = svgRows.Scan(&self, &name, &parent)
+		if err != nil {
+			return nil, err
+		}
+		result[self] = &pb.StatVarGroupNode{
+			AbsoluteName: name,
+		}
+		if _, ok := result[parent]; !ok {
+			result[parent] = &pb.StatVarGroupNode{}
+		}
+		result[parent].ChildStatVarGroups = append(
+			result[parent].ChildStatVarGroups,
+			&pb.StatVarGroupNode_ChildSVG{
+				Id:                self,
+				SpecializedEntity: name,
+			},
+		)
+	}
+	// Query for all the stat var nodes
+	query = `
+SELECT t1.subject_id, t2.object_value, t3.object_id, COALESCE(t4.object_value, '')
+FROM triples t1
+JOIN triples t2 ON t1.subject_id = t2.subject_id
+JOIN triples t3 ON t1.subject_id = t3.subject_id
+LEFT JOIN triples t4 ON t1.subject_id = t4.subject_id AND t4.predicate = "description"
+WHERE t1.predicate="typeOf"
+AND t1.object_id="StatisticalVariable"
+AND t2.predicate="name"
+AND t3.predicate="memberOf";
+`
+	svRows, err := sqlClient.Query(query)
+	if err != nil {
+		return nil, err
+	}
+	defer svRows.Close()
+	for svRows.Next() {
+		var sv, name, svg, description string
+		err = svRows.Scan(&sv, &name, &svg, &description)
+		if err != nil {
+			return nil, err
+		}
+		if _, ok := result[svg]; !ok {
+			result[svg] = &pb.StatVarGroupNode{}
+		}
+		searchNames := []string{}
+		if len(name) > 0 {
+			searchNames = append(searchNames, name)
+		}
+		if len(description) > 0 {
+			searchNames = append(searchNames, description)
+		}
+		result[svg].ChildStatVars = append(
+			result[svg].ChildStatVars,
+			&pb.StatVarGroupNode_ChildSV{
+				Id:          sv,
+				DisplayName: name,
+				SearchNames: searchNames,
+			},
+		)
+		result[svg].DescendentStatVarCount += 1
+	}
 	return result, nil
 }
