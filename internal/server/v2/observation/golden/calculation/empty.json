@@ -1,0 +1,14 @@
+{
+  "by_variable": {
+    "Count_Farm": {
+      "by_entity": {
+        "wikidataId/Q613": {}
+      }
+    },
+    "Count_Person_1OrMoreYears_DifferentHouseAbroad": {
+      "by_entity": {
+        "wikidataId/Q613": {}
+      }
+    }
+  }
+}

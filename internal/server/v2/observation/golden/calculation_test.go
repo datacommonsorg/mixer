@@ -1,4 +1,4 @@
-// Copyright 2022 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -36,6 +36,7 @@ func TestCalculation(t *testing.T) {
 
 	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
+			desc       string
 			variables  []string
 			entities   []string
 			date       string
@@ -43,13 +44,63 @@ func TestCalculation(t *testing.T) {
 			goldenFile string
 		}{
 			{
+				"basic",
 				[]string{
-					"Count_Person_Female", "Count_Person_Male", "Count_WetBulbTemperatureEvent",
+					"Count_Person_Female",
+					"Count_Person_Male",
+					"Count_WetBulbTemperatureEvent",
 				},
 				[]string{"wikidataId/Q613"},
 				"",
 				nil,
-				"statistical_calculation.json",
+				"basic.json",
+			},
+			{
+				"empty",
+				[]string{
+					"Count_Farm",
+					"Count_Person_1OrMoreYears_DifferentHouseAbroad",
+				},
+				[]string{"wikidataId/Q613"},
+				"",
+				nil,
+				"empty.json",
+			},
+			{
+				"two places",
+				[]string{
+					"Count_Person_Female",
+				},
+				[]string{
+					"wikidataId/Q613",
+					"wikidataId/Q187712",
+				},
+				"",
+				nil,
+				"two_places.json",
+			},
+			{
+				"custom formula",
+				[]string{
+					"test_var_2",
+				},
+				[]string{"wikidataId/Q613"},
+				"",
+				nil,
+				"custom_formula.json",
+			},
+			{
+				"custom data", // Will be empty till DerivedSeries supports Custom DC.
+				[]string{
+					"test_var_3",
+				},
+				[]string{
+					"geoId/01",
+					"geoId/06",
+				},
+				"",
+				nil,
+				"custom_data.json",
 			},
 		} {
 			goldenFile := c.goldenFile
@@ -77,7 +128,7 @@ func TestCalculation(t *testing.T) {
 				continue
 			}
 			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-				t.Errorf("payload got diff: %v", diff)
+				t.Errorf("%s: got diff: %s", c.desc, diff)
 				continue
 			}
 		}
