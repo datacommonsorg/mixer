@@ -201,7 +201,7 @@ func TestFetchDirect(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"FetchDirect",
-		&test.TestOption{UseSQLite: true},
+		&test.TestOption{UseSQLite: true, CacheSVFormula: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)
