@@ -119,6 +119,8 @@ func FetchAllSVG(
 	return result, nil
 }
 
+// Fetches SVGs from SQL.
+// First attempts to get it from sql cache and falls back to querying sql table.
 func fetchSQLSVGs(sqlClient *sql.DB) (map[string]*pb.StatVarGroupNode, error) {
 	// Try cache first.
 	svgCache, err := fetchSQLCacheSVGs(sqlClient)
@@ -126,6 +128,7 @@ func fetchSQLSVGs(sqlClient *sql.DB) (map[string]*pb.StatVarGroupNode, error) {
 		return map[string]*pb.StatVarGroupNode{}, err
 	}
 	if svgCache != nil {
+		// Cached data found => return it.
 		return svgCache.StatVarGroups, nil
 	}
 

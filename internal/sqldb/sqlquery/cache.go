@@ -27,8 +27,10 @@ const (
 	SVGCacheKey = "c/cache/svgs"
 )
 
+// GetCacheData gets cache data for the specified key from the sql DB.
+// If not found, returns false.
+// If found, unmarshals the value into the specified proto and returns true.
 func GetCacheData(sqlClient *sql.DB, key string, out protoreflect.ProtoMessage) (bool, error) {
-	// Query for all the stat var group node
 	query :=
 		`
 					SELECT object_value
