@@ -3572,6 +3572,15 @@
           ]
         },
         {
+          "date": "2010",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "custom"
+            }
+          ]
+        },
+        {
           "date": "2014",
           "entity_count": [
             {
