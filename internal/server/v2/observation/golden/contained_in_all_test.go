@@ -104,7 +104,7 @@ func TestFetchContainInAll(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"FetchContainInAll",
-		&test.TestOption{UseSQLite: true, CacheSVFormula: true},
+		&test.TestOption{UseSQLite: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)
