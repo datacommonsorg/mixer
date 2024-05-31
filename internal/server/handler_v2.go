@@ -246,5 +246,6 @@ func (s *Server) V2Observation(
 	mergedResp := merger.MergeObservation(localResp, remoteResp)
 	calculatedResps := v2observation.CalculateObservationResponses(ctx, s.store, mergedResp, s.cachedata.Load())
 	// mergedResp is preferred over any calculated response.
-	return merger.MergeMultipleObservations(append([]*pbv2.ObservationResponse{mergedResp}, calculatedResps...)...), nil
+	combinedResp := append([]*pbv2.ObservationResponse{mergedResp}, calculatedResps...)
+	return merger.MergeMultipleObservations(combinedResp...), nil
 }

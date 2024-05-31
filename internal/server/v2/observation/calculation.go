@@ -1,4 +1,4 @@
-// Copyright 2023 Google LLC
+// Copyright 2024 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -35,29 +35,35 @@ func CalculateObservationResponses(
 	calculatedResponses := []*pbv2.ObservationResponse{}
 	for variable, variableObservation := range inputResp.ByVariable {
 		formulas, ok := cachedata.SVFormula()[variable]
-		if ok {
-			for entity, entityObservation := range variableObservation.ByEntity {
-				if len(entityObservation.OrderedFacets) == 0 {
-					// Use first formula that returns data.
-					for _, formula := range formulas {
-						derivedSeries, err := DerivedSeries(
-							ctx,
-							store,
-							formula,
-							[]string{entity},
-						)
-						// Missing input data.
-						if err != nil {
-							continue
-						}
-						// Successful calculation.
-						if len(derivedSeries.ByVariable[formula].ByEntity[entity].OrderedFacets) > 0 {
-							derivedSeries.ByVariable[variable] = derivedSeries.ByVariable[formula]
-							delete(derivedSeries.ByVariable, formula)
-							calculatedResponses = append(calculatedResponses, derivedSeries)
-							continue
-						}
-					}
+		if !ok {
+			continue
+		}
+		for entity, entityObservation := range variableObservation.ByEntity {
+			// Response already contains data.
+			if len(entityObservation.OrderedFacets) != 0 {
+				continue
+			}
+			// Use first formula that returns data.
+			for _, formula := range formulas {
+				derivedSeries, err := DerivedSeries(
+					ctx,
+					store,
+					formula,
+					[]string{entity},
+				)
+				// Missing input data.
+				if err != nil {
+					continue
+				}
+				// Successful calculation.
+				bv := derivedSeries.ByVariable
+				if len(bv[formula].ByEntity[entity].OrderedFacets) > 0 {
+					// Re-label formula response with the outputProperty and delete
+					// formula.
+					bv[variable] = bv[formula]
+					delete(bv, formula)
+					calculatedResponses = append(calculatedResponses, derivedSeries)
+					continue
 				}
 			}
 		}
