@@ -25,11 +25,11 @@ fi
 
 set -x
 
-sqlite3 $DIR/datacommons.db <<EOF
+sqlite3 "$DIR/datacommons.db" <<EOF
 DROP TABLE IF EXISTS observations;
 DROP TABLE IF EXISTS triples;
 .headers on
 .mode csv
-.import $DIR/observations.csv observations
-.import $DIR/triples.csv triples
+.import "$DIR/observations.csv" observations
+.import "$DIR/triples.csv" triples
 EOF
