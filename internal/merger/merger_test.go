@@ -626,6 +626,129 @@ func TestMergeObservation(t *testing.T) {
 	}
 }
 
+func TestMergeMultipleObservations(t *testing.T) {
+	cmpOpts := cmp.Options{
+		protocmp.Transform(),
+	}
+
+	for _, c := range []struct {
+		o1   *pbv2.ObservationResponse
+		o2   *pbv2.ObservationResponse
+		o3   *pbv2.ObservationResponse
+		want *pbv2.ObservationResponse
+	}{
+		{
+			&pbv2.ObservationResponse{
+				ByVariable: map[string]*pbv2.VariableObservation{
+					"var1": {
+						ByEntity: map[string]*pbv2.EntityObservation{
+							"entity1": {
+								OrderedFacets: []*pbv2.FacetObservation{
+									{
+										FacetId: "facet1",
+										Observations: []*pb.PointStat{
+											{
+												Date:  "2021",
+												Value: proto.Float64(45.4),
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+			&pbv2.ObservationResponse{
+				ByVariable: map[string]*pbv2.VariableObservation{
+					"var1": {
+						ByEntity: map[string]*pbv2.EntityObservation{
+							"entity1": {
+								OrderedFacets: []*pbv2.FacetObservation{
+									{
+										FacetId: "facet2",
+										Observations: []*pb.PointStat{
+											{
+												Date:  "2022",
+												Value: proto.Float64(66.4),
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+			&pbv2.ObservationResponse{
+				ByVariable: map[string]*pbv2.VariableObservation{
+					"var1": {
+						ByEntity: map[string]*pbv2.EntityObservation{
+							"entity1": {
+								OrderedFacets: []*pbv2.FacetObservation{
+									{
+										FacetId: "facet3",
+										Observations: []*pb.PointStat{
+											{
+												Date:  "2023",
+												Value: proto.Float64(7.28),
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+			&pbv2.ObservationResponse{
+				ByVariable: map[string]*pbv2.VariableObservation{
+					"var1": {
+						ByEntity: map[string]*pbv2.EntityObservation{
+							"entity1": {
+								OrderedFacets: []*pbv2.FacetObservation{
+									{
+										FacetId: "facet1",
+										Observations: []*pb.PointStat{
+											{
+												Date:  "2021",
+												Value: proto.Float64(45.4),
+											},
+										},
+									},
+									{
+										FacetId: "facet2",
+										Observations: []*pb.PointStat{
+											{
+												Date:  "2022",
+												Value: proto.Float64(66.4),
+											},
+										},
+									},
+									{
+										FacetId: "facet3",
+										Observations: []*pb.PointStat{
+											{
+												Date:  "2023",
+												Value: proto.Float64(7.28),
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+	} {
+		got := MergeMultipleObservations(c.o1, c.o2, c.o3)
+		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
+			t.Errorf("MergeMultipleObservations(%v, %v, %v) got diff: %s", c.o1, c.o2, c.o3, diff)
+		}
+	}
+}
+
 func TestMergeBulkVariableInfoResponse(t *testing.T) {
 	cmpOpts := cmp.Options{protocmp.Transform()}
 	for _, tc := range []struct {

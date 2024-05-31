@@ -20,6 +20,7 @@ import (
 
 	"github.com/datacommonsorg/mixer/internal/merger"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
+	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
 
@@ -242,5 +243,9 @@ func (s *Server) V2Observation(
 	localResp, remoteResp := <-localRespChan, <-remoteRespChan
 	// The order of argument matters, localResp is prefered and will be put first
 	// in the merged result.
-	return merger.MergeObservation(localResp, remoteResp), nil
+	mergedResp := merger.MergeObservation(localResp, remoteResp)
+	calculatedResps := v2observation.CalculateObservationResponses(ctx, s.store, mergedResp, s.cachedata.Load())
+	// mergedResp is preferred over any calculated response.
+	combinedResp := append([]*pbv2.ObservationResponse{mergedResp}, calculatedResps...)
+	return merger.MergeMultipleObservations(combinedResp...), nil
 }
