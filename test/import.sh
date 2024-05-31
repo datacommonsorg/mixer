@@ -15,11 +15,21 @@
 
 # Script to import csv files into sqlite database file.
 
-sqlite3 datacommons.db <<EOF
+DIR=$1
+
+if [[ $DIR == "" ]]; then
+  echo "No directory specified." >&2
+  echo "Usage ./import.sh test-data-dir" >&2
+  exit 1
+fi
+
+set -x
+
+sqlite3 $DIR/datacommons.db <<EOF
 DROP TABLE IF EXISTS observations;
 DROP TABLE IF EXISTS triples;
 .headers on
 .mode csv
-.import observations.csv observations
-.import triples.csv triples
+.import $DIR/observations.csv observations
+.import $DIR/triples.csv triples
 EOF
