@@ -2,6 +2,7 @@
 mixer:
   hostProject: datcom-mixer-autopush
   serviceName: autopush.api.datacommons.org
+  cacheSVFormula: true
 
 ingress:
   enabled: true
