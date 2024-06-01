@@ -41,6 +41,7 @@ mixer:
   useBranchBigtable: true
   useCustomBigtable: false
   foldRemoteRootSvg: false
+  cacheSVFormula: false
 
   # If bigqueryOnly is True, bigqueryTableRef must be specified.
   bigqueryOnly: false
