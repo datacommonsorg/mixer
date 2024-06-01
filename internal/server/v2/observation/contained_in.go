@@ -186,6 +186,11 @@ func FetchContainedIn(
 	var err error
 	if store.BtGroup != nil {
 		readCollectionCache := false
+		childPlaces, err = FetchChildPlaces(
+			ctx, store, metadata, httpClient, remoteMixer, ancestor, childType)
+		if err != nil {
+			return nil, err
+		}
 		if queryDate != "" {
 			result = &pbv2.ObservationResponse{
 				ByVariable: map[string]*pbv2.VariableObservation{},
@@ -210,6 +215,10 @@ func FetchContainedIn(
 					obsByEntity := result.ByVariable[variable].ByEntity
 					data, ok := btData[variable]
 					if !ok || data == nil {
+						// If data is missing, attach empty child places.
+						for _, place := range childPlaces {
+							obsByEntity[place] = &pbv2.EntityObservation{}
+						}
 						continue
 					}
 					cohorts := data.SourceCohorts
@@ -257,11 +266,6 @@ func FetchContainedIn(
 			}
 		}
 		if !readCollectionCache {
-			childPlaces, err = FetchChildPlaces(
-				ctx, store, metadata, httpClient, remoteMixer, ancestor, childType)
-			if err != nil {
-				return nil, err
-			}
 			totalSeries := len(variables) * len(childPlaces)
 			if totalSeries > MaxSeries {
 				return nil, status.Errorf(

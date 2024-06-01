@@ -141,3 +141,70 @@ func TestCalculation(t *testing.T) {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }
+
+func TestCalculationForObsCollection(t *testing.T) {
+	t.Parallel()
+	ctx := context.Background()
+
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(path.Dir(filename), "calculation")
+
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
+		for _, c := range []struct {
+			desc             string
+			variables        []string
+			entityExpression string
+			date             string
+			filter           *pbv2.FacetFilter
+			goldenFile       string
+		}{
+			{
+				"contained in 2015",
+				[]string{
+					"Count_Person_Female",
+				},
+				"country/ARE<-containedInPlace+{typeOf:AdministrativeArea1}",
+				"2015",
+				nil,
+				"contained_in_2015.json",
+			},
+		} {
+			goldenFile := c.goldenFile
+			resp, err := mixer.V2Observation(ctx, &pbv2.ObservationRequest{
+				Select:   []string{"variable", "entity", "date", "value"},
+				Variable: &pbv2.DcidOrExpression{Dcids: c.variables},
+				Entity:   &pbv2.DcidOrExpression{Expression: c.entityExpression},
+				Date:     c.date,
+				Filter:   c.filter,
+			})
+			if err != nil {
+				t.Errorf("could not run V2Observation (direct): %s", err)
+				continue
+			}
+			if latencyTest {
+				continue
+			}
+			if test.GenerateGolden {
+				test.UpdateGolden(resp, goldenPath, goldenFile)
+				continue
+			}
+			var expected pbv2.ObservationResponse
+			if err = test.ReadJSON(goldenPath, goldenFile, &expected); err != nil {
+				t.Errorf("Can not Unmarshal golden file: %s", err)
+				continue
+			}
+			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+				t.Errorf("%s: got diff: %s", c.desc, diff)
+				continue
+			}
+		}
+	}
+	if err := test.TestDriver(
+		"TestCalculationForObsCollection",
+		&test.TestOption{UseSQLite: true, CacheSVFormula: true},
+		testSuite,
+	); err != nil {
+		t.Errorf("TestDriver() = %s", err)
+	}
+
+}
