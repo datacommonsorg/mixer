@@ -25,7 +25,7 @@ import (
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
-	"github.com/datacommonsorg/mixer/internal/server/v2/observation"
+	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -129,7 +129,7 @@ func BulkObservationDatesLinked(
 
 	// Read data from SQL store.
 	if store.SQLClient != nil {
-		childPlaces, err := observation.FetchChildPlaces(
+		childPlaces, err := shared.FetchChildPlaces(
 			ctx, store, metadata, httpClient, metadata.RemoteMixerDomain, linkedEntity, entityType)
 		if err != nil {
 			return nil, err

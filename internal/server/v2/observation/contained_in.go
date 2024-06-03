@@ -26,25 +26,18 @@ import (
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
+	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
-	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
 
 	"github.com/datacommonsorg/mixer/internal/store"
 )
-
-// Num of concurrent series to read at a time. Set this to prevent OOM issue.
-const MaxSeries = 5000
-
-// Max number of nodes to be requested
-const MaxNodes = 5000
 
 // Direct response are from child entities list. No need to have an entity in
 // the response if it has no observation.
@@ -65,105 +58,6 @@ func trimDirectResp(resp *pbv2.ObservationResponse) *pbv2.ObservationResponse {
 		result.Facets[facet] = res
 	}
 	return result
-}
-
-// For mocking in tests.
-var (
-	getPlacesIn = placein.GetPlacesIn
-	fetchRemote = fetchRemoteWrapper
-)
-
-func fetchRemoteWrapper(
-	metadata *resource.Metadata,
-	httpClient *http.Client,
-	apiPath string,
-	remoteReq *pbv2.NodeRequest,
-) (*pbv2.NodeResponse, error) {
-	remoteResp := &pbv2.NodeResponse{}
-	err := util.FetchRemote(metadata, httpClient, apiPath, remoteReq, remoteResp)
-	if err != nil {
-		return nil, err
-	}
-	return remoteResp, nil
-}
-
-func storeFetchChildPlaces(
-	ctx context.Context,
-	store *store.Store,
-	ancestor, childType string,
-) (map[string][]string, error) {
-	return getPlacesIn(ctx, store, []string{ancestor}, childType)
-}
-
-func remoteMixerFetchChildPlaces(
-	metadata *resource.Metadata,
-	httpClient *http.Client,
-	ancestor, childType string,
-) (*pbv2.NodeResponse, error) {
-	remoteReq := &pbv2.NodeRequest{
-		Nodes:    []string{ancestor},
-		Property: fmt.Sprintf("<-containedInPlace+{typeOf:%s}", childType),
-	}
-	return fetchRemote(metadata, httpClient, "/v2/node", remoteReq)
-}
-
-// FetchChildPlaces fetches child places
-func FetchChildPlaces(
-	ctx context.Context,
-	store *store.Store,
-	metadata *resource.Metadata,
-	httpClient *http.Client,
-	remoteMixer, ancestor, childType string,
-) ([]string, error) {
-	errGroup, errCtx := errgroup.WithContext(ctx)
-
-	storeResponseChan := make(chan map[string][]string, 1)
-	remoteMixerResponseChan := make(chan *pbv2.NodeResponse, 1)
-
-	errGroup.Go(func() error {
-		storeResponse, err := storeFetchChildPlaces(errCtx, store, ancestor, childType)
-		if err != nil {
-			return err
-		}
-		storeResponseChan <- storeResponse
-		return nil
-	})
-
-	if remoteMixer != "" {
-		errGroup.Go(func() error {
-			remoteMixerResponse, err := remoteMixerFetchChildPlaces(metadata, httpClient, ancestor, childType)
-			if err != nil {
-				return err
-			}
-			remoteMixerResponseChan <- remoteMixerResponse
-			return nil
-		})
-	} else {
-		remoteMixerResponseChan <- nil
-	}
-
-	if err := errGroup.Wait(); err != nil {
-		return nil, err
-	}
-	close(storeResponseChan)
-	close(remoteMixerResponseChan)
-
-	childPlacesMap := <-storeResponseChan
-	remoteResp := <-remoteMixerResponseChan
-
-	childPlaces := childPlacesMap[ancestor]
-	// V2 API should always ensure data merging.
-	// Here needs to fetch both local PlacesIn and remote PlacesIn data
-	if remoteResp != nil {
-		if g, ok := remoteResp.Data[ancestor]; ok {
-			for _, arc := range g.Arcs {
-				for _, node := range arc.Nodes {
-					childPlaces = append(childPlaces, node.Dcid)
-				}
-			}
-		}
-	}
-	return childPlaces, nil
 }
 
 // FetchContainedIn fetches data for child places contained in an ancestor place.
@@ -230,7 +124,7 @@ func FetchContainedIn(
 							// When date is in the request, response date is the given date.
 							// Otherwise, response date is the latest date from the cache.
 							respDate := queryDate
-							if respDate == LATEST {
+							if respDate == shared.LATEST {
 								respDate = cohort.PlaceToLatestDate[entity]
 							}
 							// If there is higher quality facet, then do not pick from the inferior
@@ -257,13 +151,13 @@ func FetchContainedIn(
 			}
 		}
 		if !readCollectionCache {
-			childPlaces, err = FetchChildPlaces(
+			childPlaces, err = shared.FetchChildPlaces(
 				ctx, store, metadata, httpClient, remoteMixer, ancestor, childType)
 			if err != nil {
 				return nil, err
 			}
 			totalSeries := len(variables) * len(childPlaces)
-			if totalSeries > MaxSeries {
+			if totalSeries > shared.MaxSeries {
 				return nil, status.Errorf(
 					codes.Internal,
 					"Stop processing large number of concurrent observation series: %d",
@@ -304,7 +198,7 @@ func FetchContainedIn(
 				childType,
 				variablesStr,
 			)
-			if queryDate != "" && queryDate != LATEST {
+			if queryDate != "" && queryDate != shared.LATEST {
 				query += fmt.Sprintf("AND date = (%s) ", queryDate)
 			}
 			query += "ORDER BY date ASC;"
@@ -320,7 +214,7 @@ func FetchContainedIn(
 			sqlResult = processSqlData(sqlResult, tmp, queryDate, sqlProvenances)
 		} else {
 			if len(childPlaces) == 0 {
-				childPlaces, err = FetchChildPlaces(
+				childPlaces, err = shared.FetchChildPlaces(
 					ctx, store, metadata, httpClient, remoteMixer, ancestor, childType)
 				if err != nil {
 					return nil, err
