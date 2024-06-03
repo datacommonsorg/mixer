@@ -13,7 +13,7 @@
 // limitations under the License.
 
 // Package merger provides function to merge V2 API responses.
-package observation
+package shared
 
 import (
 	"context"

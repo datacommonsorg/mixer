@@ -26,7 +26,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
-	"github.com/datacommonsorg/mixer/internal/server/v2/observation"
+	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -115,13 +115,13 @@ func ContainedInFacet(
 				result.ByVariable[sv].ByEntity[""] = entityObservation
 			}
 		} else {
-			childPlaces, err := observation.FetchChildPlaces(
+			childPlaces, err := shared.FetchChildPlaces(
 				ctx, store, metadata, httpClient, remoteMixer, ancestor, childType)
 			if err != nil {
 				return nil, err
 			}
 			totalSeries := len(variables) * len(childPlaces)
-			if totalSeries > observation.MaxSeries {
+			if totalSeries > shared.MaxSeries {
 				return nil, status.Errorf(
 					codes.Internal,
 					"Stop processing large number of concurrent observation series: %d",
@@ -131,7 +131,7 @@ func ContainedInFacet(
 			log.Println("Fetch series cache in contained-in observation query")
 			// When date doesn't matter, use SeriesFacet to get the facets for the
 			// child places
-			if queryDate == "" || queryDate == observation.LATEST {
+			if queryDate == "" || queryDate == shared.LATEST {
 				resp, err := SeriesFacet(ctx, store, cachedata, variables, childPlaces)
 				if err != nil {
 					return nil, err

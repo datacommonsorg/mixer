@@ -28,14 +28,11 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
+	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/protobuf/proto"
-)
-
-const (
-	LATEST = "LATEST"
 )
 
 func shouldKeepSourceSeries(filter *pbv2.FacetFilter, facet *pb.Facet) bool {
@@ -157,7 +154,7 @@ func FetchDirectBT(
 							Date:  date,
 							Value: proto.Float64(value),
 						}
-						if queryDate != "" && queryDate != LATEST && queryDate != date {
+						if queryDate != "" && queryDate != shared.LATEST && queryDate != date {
 							continue
 						}
 						obsList = append(obsList, ps)
@@ -168,7 +165,7 @@ func FetchDirectBT(
 					sort.SliceStable(obsList, func(i, j int) bool {
 						return obsList[i].Date < obsList[j].Date
 					})
-					if queryDate == LATEST {
+					if queryDate == shared.LATEST {
 						obsList = obsList[len(obsList)-1:]
 						// If there is higher quality series, then do not pick from the inferior
 						// facet even it could have more recent data.
@@ -222,7 +219,7 @@ func FetchDirectSQL(
 		entitiesStr,
 		variablesStr,
 	)
-	if queryDate != "" && queryDate != LATEST {
+	if queryDate != "" && queryDate != shared.LATEST {
 		query += fmt.Sprintf("AND date = (%s) ", queryDate)
 	}
 	query += "ORDER BY date ASC;"

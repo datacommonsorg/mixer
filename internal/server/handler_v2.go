@@ -208,42 +208,10 @@ func (s *Server) V2Event(
 func (s *Server) V2Observation(
 	ctx context.Context, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
-	errGroup, errCtx := errgroup.WithContext(ctx)
-	localRespChan := make(chan *pbv2.ObservationResponse, 1)
-	remoteRespChan := make(chan *pbv2.ObservationResponse, 1)
-
-	errGroup.Go(func() error {
-		localResp, err := s.V2ObservationCore(errCtx, in)
-		if err != nil {
-			return err
-		}
-		localRespChan <- localResp
-		return nil
-	})
-
-	if s.metadata.RemoteMixerDomain != "" {
-		errGroup.Go(func() error {
-			remoteResp := &pbv2.ObservationResponse{}
-			err := util.FetchRemote(s.metadata, s.httpClient, "/v2/observation", in, remoteResp)
-			if err != nil {
-				return err
-			}
-			remoteRespChan <- remoteResp
-			return nil
-		})
-	} else {
-		remoteRespChan <- nil
-	}
-
-	if err := errGroup.Wait(); err != nil {
+	mergedResp, err := v2observation.ObservationInternal(ctx, s.store, s.cachedata.Load(), s.metadata, s.httpClient, in)
+	if err != nil {
 		return nil, err
 	}
-	close(localRespChan)
-	close(remoteRespChan)
-	localResp, remoteResp := <-localRespChan, <-remoteRespChan
-	// The order of argument matters, localResp is prefered and will be put first
-	// in the merged result.
-	mergedResp := merger.MergeObservation(localResp, remoteResp)
 	calculatedResps := v2observation.CalculateObservationResponses(ctx, s.store, mergedResp, s.cachedata.Load())
 	// mergedResp is preferred over any calculated response.
 	combinedResp := append([]*pbv2.ObservationResponse{mergedResp}, calculatedResps...)
