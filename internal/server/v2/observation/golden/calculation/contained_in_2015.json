@@ -1,0 +1,225 @@
+{
+  "by_variable": {
+    "Count_Person_Female": {
+      "by_entity": {
+        "wikidataId/Q159477": {
+          "ordered_facets": [
+            {
+              "observations": [
+                {
+                  "date": "1975",
+                  "value": 6170
+                },
+                {
+                  "date": "1980",
+                  "value": 13856
+                },
+                {
+                  "date": "1985",
+                  "value": 21711
+                },
+                {
+                  "date": "1995",
+                  "value": 48659
+                },
+                {
+                  "date": "2005",
+                  "value": 75313
+                }
+              ],
+              "obs_count": 5,
+              "earliest_date": "1975",
+              "latest_date": "2005"
+            }
+          ]
+        },
+        "wikidataId/Q170024": {
+          "ordered_facets": [
+            {
+              "observations": [
+                {
+                  "date": "1975",
+                  "value": 17307
+                },
+                {
+                  "date": "1980",
+                  "value": 27393
+                },
+                {
+                  "date": "1985",
+                  "value": 40165
+                },
+                {
+                  "date": "1995",
+                  "value": 59342
+                },
+                {
+                  "date": "2005",
+                  "value": 80621
+                }
+              ],
+              "obs_count": 5,
+              "earliest_date": "1975",
+              "latest_date": "2005"
+            }
+          ]
+        },
+        "wikidataId/Q175021": {
+          "ordered_facets": [
+            {
+              "observations": [
+                {
+                  "date": "1975",
+                  "value": 2645
+                },
+                {
+                  "date": "1980",
+                  "value": 4466
+                },
+                {
+                  "date": "1985",
+                  "value": 7626
+                },
+                {
+                  "date": "1995",
+                  "value": 14414
+                },
+                {
+                  "date": "2005",
+                  "value": 19075
+                }
+              ],
+              "obs_count": 5,
+              "earliest_date": "1975",
+              "latest_date": "2005"
+            }
+          ]
+        },
+        "wikidataId/Q187712": {
+          "ordered_facets": [
+            {
+              "observations": [
+                {
+                  "date": "1975",
+                  "value": 56754
+                },
+                {
+                  "date": "1980",
+                  "value": 120160
+                },
+                {
+                  "date": "1985",
+                  "value": 185783
+                },
+                {
+                  "date": "1995",
+                  "value": 291719
+                },
+                {
+                  "date": "2005",
+                  "value": 472665
+                }
+              ],
+              "obs_count": 5,
+              "earliest_date": "1975",
+              "latest_date": "2005"
+            }
+          ]
+        },
+        "wikidataId/Q188810": {
+          "ordered_facets": [
+            {
+              "observations": [
+                {
+                  "date": "1975",
+                  "value": 27535
+                },
+                {
+                  "date": "1980",
+                  "value": 56532
+                },
+                {
+                  "date": "1985",
+                  "value": 86466
+                },
+                {
+                  "date": "1995",
+                  "value": 148478
+                },
+                {
+                  "date": "2005",
+                  "value": 273339
+                }
+              ],
+              "obs_count": 5,
+              "earliest_date": "1975",
+              "latest_date": "2005"
+            }
+          ]
+        },
+        "wikidataId/Q4091": {
+          "ordered_facets": [
+            {
+              "observations": [
+                {
+                  "date": "1975",
+                  "value": 6683
+                },
+                {
+                  "date": "1980",
+                  "value": 11393
+                },
+                {
+                  "date": "1985",
+                  "value": 18343
+                },
+                {
+                  "date": "1995",
+                  "value": 30414
+                },
+                {
+                  "date": "2005",
+                  "value": 47114
+                }
+              ],
+              "obs_count": 5,
+              "earliest_date": "1975",
+              "latest_date": "2005"
+            }
+          ]
+        },
+        "wikidataId/Q613": {
+          "ordered_facets": [
+            {
+              "observations": [
+                {
+                  "date": "1975",
+                  "value": 54366
+                },
+                {
+                  "date": "1980",
+                  "value": 88587
+                },
+                {
+                  "date": "1985",
+                  "value": 123609
+                },
+                {
+                  "date": "1995",
+                  "value": 211211
+                },
+                {
+                  "date": "2005",
+                  "value": 332148
+                }
+              ],
+              "obs_count": 5,
+              "earliest_date": "1975",
+              "latest_date": "2005"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
