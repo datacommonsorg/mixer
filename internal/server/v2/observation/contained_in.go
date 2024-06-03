@@ -60,20 +60,6 @@ func trimDirectResp(resp *pbv2.ObservationResponse) *pbv2.ObservationResponse {
 	return result
 }
 
-func fetchRemoteWrapper(
-	metadata *resource.Metadata,
-	httpClient *http.Client,
-	apiPath string,
-	remoteReq *pbv2.NodeRequest,
-) (*pbv2.NodeResponse, error) {
-	remoteResp := &pbv2.NodeResponse{}
-	err := util.FetchRemote(metadata, httpClient, apiPath, remoteReq, remoteResp)
-	if err != nil {
-		return nil, err
-	}
-	return remoteResp, nil
-}
-
 // FetchContainedIn fetches data for child places contained in an ancestor place.
 func FetchContainedIn(
 	ctx context.Context,
