@@ -34,7 +34,7 @@ func GetKeyValue(sqlClient *sql.DB, key string, out protoreflect.ProtoMessage) (
 	query := `
 SELECT value
 FROM key_value_store
-WHERE key = $1;
+WHERE lookup_key = $1;
 `
 
 	stmt, err := sqlClient.Prepare(query)
