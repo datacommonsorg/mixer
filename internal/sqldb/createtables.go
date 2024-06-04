@@ -49,7 +49,7 @@ func CreateTables(sqlClient *sql.DB) error {
 
 	keyValueStoreStatement := `
 	CREATE TABLE IF NOT EXISTS key_value_store (
-		key varchar(255),
+		lookup_key varchar(255),
 		value TEXT
 	);
 	`
