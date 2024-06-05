@@ -4018,6 +4018,54 @@
         "measurementDenominator": {
           "nodes": [
             {
+              "name": "Count of Medical Condition Incident: 45 - 59 Years, Genito Urinary Condition (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionGenitoUrinaryCondition_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Count of Medical Condition Incident: 45 - 59 Years, Genito Urinary Condition, Rural (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionGenitoUrinaryCondition_Rural_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Count of Medical Condition Incident: 45 - 59 Years, Genito Urinary Condition, Urban (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionGenitoUrinaryCondition_Urban_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Count of Medical Condition Incident: 45 - 59 Years, Infection (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionInfection_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Count of Medical Condition Incident: 45 - 59 Years, Infection, Rural (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionInfection_Rural_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Count of Medical Condition Incident: 45 - 59 Years, Infection, Urban (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionInfection_Urban_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Count of Medical Condition Incident: 45 - 59 Years, Injury (Per Capita)",
               "types": [
                 "StatisticalVariable"
@@ -7967,54 +8015,6 @@
                 "StatisticalVariable"
               ],
               "dcid": "Count_MedicalConditionIncident_60To69Years_Female_ConditionEndocrineMetabolicCondition_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 60 - 69 Years, Female, Endocrine Metabolic Condition, Rural (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_60To69Years_Female_ConditionEndocrineMetabolicCondition_Rural_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 60 - 69 Years, Female, Endocrine Metabolic Condition, Urban (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_60To69Years_Female_ConditionEndocrineMetabolicCondition_Urban_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 60 - 69 Years, Female, Eye Condition (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_60To69Years_Female_ConditionEyeCondition_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 60 - 69 Years, Female, Eye Condition, Rural (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_60To69Years_Female_ConditionEyeCondition_Rural_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 60 - 69 Years, Female, Eye Condition, Urban (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_60To69Years_Female_ConditionEyeCondition_Urban_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 60 - 69 Years, Female, Gastro Intestinal Condition (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_60To69Years_Female_ConditionGastroIntestinalCondition_AsAFractionOf_Count_Person",
               "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]

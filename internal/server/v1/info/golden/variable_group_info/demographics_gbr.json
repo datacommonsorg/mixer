@@ -167,6 +167,11 @@
         "displayName": "Courthouse"
       },
       {
+        "id": "dc/g/Person_CrashInvolvement",
+        "specializedEntity": "Crash Involvement",
+        "displayName": "Person by Crash Involvement"
+      },
+      {
         "id": "dc/g/Person_DateOfEntry",
         "specializedEntity": "Date of Entry",
         "displayName": "Person by Date of Entry"
@@ -418,6 +423,16 @@
         "id": "dc/g/Vehicle",
         "specializedEntity": "Vehicle",
         "displayName": "Vehicle"
+      },
+      {
+        "id": "dc/g/VehicleCrashIncident",
+        "specializedEntity": "Vehicle Crash Incident",
+        "displayName": "Vehicle Crash Incident"
+      },
+      {
+        "id": "dc/g/Person_VehicleOccupantType",
+        "specializedEntity": "Vehicle Occupant Type",
+        "displayName": "Person by Vehicle Occupant Type"
       },
       {
         "id": "dc/g/Village",

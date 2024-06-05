@@ -793,6 +793,10 @@
       "dcid": "Count_MedicalConditionIncident_Female_ConditionChronicCondition_QFever"
     },
     {
+      "name": "Count of Congenital Syphilis, Female congenital syphilis incidents",
+      "dcid": "Count_MedicalConditionIncident_Female_ConditionCongenitalSyphilis"
+    },
+    {
       "name": "Count of Dengue, Female dengue fever incidents",
       "dcid": "Count_MedicalConditionIncident_Female_ConditionDengueDisease"
     },
@@ -819,6 +823,10 @@
     {
       "name": "Count of Female Brucellosis incidents",
       "dcid": "Count_MedicalConditionIncident_Female_ConditionBrucellosis"
+    },
+    {
+      "name": "Count of Female COVID19 incidents",
+      "dcid": "Count_MedicalConditionIncident_Female_ConditionCOVID19"
     },
     {
       "name": "Count of Female Campylobacteriosis incidents",
@@ -869,6 +877,10 @@
       "dcid": "Count_MedicalConditionIncident_Female_ConditionGonorrhea"
     },
     {
+      "name": "Count of Female Guanarito virus incidents",
+      "dcid": "Count_MedicalConditionIncident_Female_ConditionGuanaritoHemorrhagicFever"
+    },
+    {
       "name": "Count of Female HIV/Acquired Immune Deficiency Syndrome incidents",
       "dcid": "Count_MedicalConditionIncident_Female_ConditionHIVAIDS"
     },
@@ -879,6 +891,14 @@
     {
       "name": "Count of Female Infant Botulism incidents",
       "dcid": "Count_MedicalConditionIncident_Female_ConditionInfantBotulism"
+    },
+    {
+      "name": "Count of Female Junin virus incidents",
+      "dcid": "Count_MedicalConditionIncident_Female_ConditionJuninHemorrhagicFever"
+    },
+    {
+      "name": "Count of Female Lassa virus incidents",
+      "dcid": "Count_MedicalConditionIncident_Female_ConditionLassaHemorrhagicFever"
     },
     {
       "name": "Count of Female Leprosy incidents",
@@ -913,12 +933,20 @@
       "dcid": "Count_MedicalConditionIncident_Female_ConditionHaemophilusMeningitis"
     },
     {
+      "name": "Count of Female Nonparalytic poliomyelitis incidents",
+      "dcid": "Count_MedicalConditionIncident_Female_ConditionNonparalyticPoliomyelitis"
+    },
+    {
       "name": "Count of Female Novel Influenza A virus infections incidents",
       "dcid": "Count_MedicalConditionIncident_Female_ConditionNovelInfluenzaAViralInfection"
     },
     {
       "name": "Count of Female Other wound \u0026 unspecified Botulism incidents",
       "dcid": "Count_MedicalConditionIncident_Female_ConditionWoundBotulism"
+    },
+    {
+      "name": "Count of Female Paralytic poliomyelitis incidents",
+      "dcid": "Count_MedicalConditionIncident_Female_ConditionParalyticPoliomyelitis"
     },
     {
       "name": "Count of Female Paratyphoid incidents",
@@ -959,6 +987,10 @@
     {
       "name": "Count of Female Shigellosis incidents",
       "dcid": "Count_MedicalConditionIncident_Female_ConditionShigellosis"
+    },
+    {
+      "name": "Count of Female Smallpox incidents",
+      "dcid": "Count_MedicalConditionIncident_Female_ConditionSmallpox"
     },
     {
       "name": "Count of Female Spotted fever rickettsiosis incidents",
