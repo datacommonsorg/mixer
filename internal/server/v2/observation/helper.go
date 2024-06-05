@@ -20,6 +20,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -81,7 +82,7 @@ func processSqlData(
 					continue
 				}
 				obsList := mapData[variable][entity][provID]
-				if date == LATEST {
+				if date == shared.LATEST {
 					obsList = obsList[len(obsList)-1:]
 				}
 				if result.ByVariable[variable].ByEntity[entity] == nil {

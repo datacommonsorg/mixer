@@ -36,7 +36,7 @@ func TestQuery(t *testing.T) {
 			[]string{"geoId/06"},
 			[]string{"test_var_1"},
 			map[string]map[string]int{
-				"test_var_1": {"geoId/06": 10},
+				"test_var_1": {"geoId/06": 11},
 			},
 		},
 		{
@@ -45,7 +45,7 @@ func TestQuery(t *testing.T) {
 			map[string]map[string]int{
 				"test_var_1": {
 					"geoId/05": 8,
-					"geoId/06": 10,
+					"geoId/06": 11,
 					"geoId/22": 1,
 				},
 				"test_var_2": {

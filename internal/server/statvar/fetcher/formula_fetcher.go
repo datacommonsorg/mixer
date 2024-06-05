@@ -19,7 +19,7 @@ import (
 	"net/http"
 	"sort"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/merger"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	v1pv "github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
@@ -29,14 +29,13 @@ import (
 )
 
 // FetchFormulas fetches StatisticalCalculations and returns a map of SV dcids to a list of inputPropertyExpressions.
-// TODO: Split fetch and merge logic.
 func FetchFormulas(
 	ctx context.Context,
 	store *store.Store,
 	metadata *resource.Metadata,
 ) (map[string][]string, error) {
 	errGroup, errCtx := errgroup.WithContext(ctx)
-	localRespChan := make(chan map[string]map[string]map[string][]*pb.EntityInfo, 1)
+	localRespChan := make(chan *pbv2.NodeResponse, 1)
 	remoteRespChan := make(chan *pbv2.NodeResponse, 1)
 	// Fetch for BT and SQL.
 	errGroup.Go(func() error {
@@ -61,7 +60,7 @@ func FetchFormulas(
 		if len(statCal) == 0 {
 			return nil
 		}
-		localResp, _, err := v1pv.Fetch(
+		resp, _, err := v1pv.Fetch(
 			errCtx,
 			store,
 			statCal,
@@ -72,6 +71,20 @@ func FetchFormulas(
 		)
 		if err != nil {
 			return err
+		}
+		// Wrap result in pbv2.NodeResponse.
+		localResp := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{}}
+		for dcid, data := range resp {
+			localResp.Data[dcid] = &pbv2.LinkedGraph{
+				Arcs: map[string]*pbv2.Nodes{},
+			}
+			for prop, nodes := range data {
+				if len(nodes) > 0 {
+					localResp.Data[dcid].Arcs[prop] = &pbv2.Nodes{
+						Nodes: v1pv.MergeTypedNodes(nodes),
+					}
+				}
+			}
 		}
 		localRespChan <- localResp
 		return nil
@@ -116,31 +129,21 @@ func FetchFormulas(
 	close(localRespChan)
 	close(remoteRespChan)
 	localResp, remoteResp := <-localRespChan, <-remoteRespChan
-	result := map[string][]string{}
-	localResult := map[string]map[string]bool{}
-	for _, props := range localResp {
-		for _, outputProps := range props["outputProperty"] {
-			for _, outputNode := range outputProps {
-				for _, inputProps := range props["inputPropertyExpression"] {
-					for _, inputNode := range inputProps {
-						result[outputNode.Dcid] = append(result[outputNode.Dcid], inputNode.Value)
-						localResult[outputNode.Dcid] = map[string]bool{inputNode.Value: true}
-					}
-				}
-			}
-		}
+	mergedResp, err := merger.MergeNode(localResp, remoteResp)
+	if err != nil {
+		return nil, err
 	}
-	if remoteResp != nil {
-		for _, props := range remoteResp.Data {
-			for _, outputNode := range props.Arcs["outputProperty"].Nodes {
-				for _, inputNode := range props.Arcs["inputPropertyExpression"].Nodes {
-					// Don't duplicate local formulas.
-					if _, ok := localResult[outputNode.Dcid]; !ok {
-						result[outputNode.Dcid] = append(result[outputNode.Dcid], inputNode.Value)
-					} else if _, ok := localResult[outputNode.Dcid][inputNode.Value]; !ok {
-						result[outputNode.Dcid] = append(result[outputNode.Dcid], inputNode.Value)
-					}
-				}
+	result := map[string][]string{}
+	for _, props := range mergedResp.Data {
+		// Skip nodes missing required properties.
+		_, out := props.Arcs["outputProperty"]
+		_, in := props.Arcs["inputPropertyExpression"]
+		if !(out && in) {
+			continue
+		}
+		for _, outputNode := range props.Arcs["outputProperty"].Nodes {
+			for _, inputNode := range props.Arcs["inputPropertyExpression"].Nodes {
+				result[outputNode.Dcid] = append(result[outputNode.Dcid], inputNode.Value)
 			}
 		}
 	}

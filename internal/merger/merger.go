@@ -254,6 +254,24 @@ func MergeObservation(main, aux *pbv2.ObservationResponse) *pbv2.ObservationResp
 	return main
 }
 
+// MergeMultipleObservations merges multiple V2 observation responses, ranked
+// in order of preference.
+func MergeMultipleObservations(obs ...*pbv2.ObservationResponse) *pbv2.ObservationResponse {
+	if obs == nil {
+		return nil
+	}
+	if len(obs) == 0 {
+		return nil
+	}
+	if len(obs) == 1 {
+		return obs[0]
+	}
+	if len(obs) == 2 {
+		return MergeObservation(obs[0], obs[1])
+	}
+	return MergeObservation(obs[0], MergeMultipleObservations(obs[1:]...))
+}
+
 // MergeObservationDates merges two V1 observation-dates responses.
 func MergeObservationDates(
 	main, aux *pbv1.BulkObservationDatesLinkedResponse,

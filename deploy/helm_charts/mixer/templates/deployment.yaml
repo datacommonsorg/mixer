@@ -98,6 +98,9 @@ spec:
             {{- if eq $.Values.mixer.foldRemoteRootSvg true }}
             - --fold_remote_root_svg=true
             {{- end }}
+            {{- if eq $.Values.mixer.cacheSVFormula true }}
+            - --cache_sv_formula=true
+            {{- end }}
           volumeMounts:
             - name: schema-mapping
               mountPath: /datacommons/mapping

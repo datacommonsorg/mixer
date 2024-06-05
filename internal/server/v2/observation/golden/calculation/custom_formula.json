@@ -1,0 +1,39 @@
+{
+  "by_variable": {
+    "test_var_2": {
+      "by_entity": {
+        "wikidataId/Q613": {
+          "ordered_facets": [
+            {
+              "observations": [
+                {
+                  "date": "1975",
+                  "value": 1.1992718446601942
+                },
+                {
+                  "date": "1980",
+                  "value": 1.9233739233739233
+                },
+                {
+                  "date": "1985",
+                  "value": 2.2987910650903367
+                },
+                {
+                  "date": "1995",
+                  "value": 2.9544475857033197
+                },
+                {
+                  "date": "2005",
+                  "value": 3.8433608445857272
+                }
+              ],
+              "obs_count": 5,
+              "earliest_date": "1975",
+              "latest_date": "2005"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

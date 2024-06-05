@@ -3479,7 +3479,7 @@
               }
             ],
             "minValue": 1,
-            "maxValue": 87
+            "maxValue": 1000
           }
         }
       }
