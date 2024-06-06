@@ -50,7 +50,7 @@ func CreateTables(sqlClient *sql.DB) error {
 	keyValueStoreStatement := `
 	CREATE TABLE IF NOT EXISTS key_value_store (
 		lookup_key varchar(255),
-		value TEXT
+		value longtext
 	);
 	`
 	_, err = sqlClient.Exec(keyValueStoreStatement)
