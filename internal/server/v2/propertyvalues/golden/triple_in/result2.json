@@ -4013,6 +4013,54 @@
         "measurementDenominator": {
           "nodes": [
             {
+              "name": "Count of Medical Condition Incident: 45 - 59 Years, Genito Urinary Condition (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionGenitoUrinaryCondition_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Count of Medical Condition Incident: 45 - 59 Years, Genito Urinary Condition, Rural (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionGenitoUrinaryCondition_Rural_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Count of Medical Condition Incident: 45 - 59 Years, Genito Urinary Condition, Urban (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionGenitoUrinaryCondition_Urban_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Count of Medical Condition Incident: 45 - 59 Years, Infection (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionInfection_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Count of Medical Condition Incident: 45 - 59 Years, Infection, Rural (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionInfection_Rural_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Count of Medical Condition Incident: 45 - 59 Years, Infection, Urban (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionInfection_Urban_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Count of Medical Condition Incident: 45 - 59 Years, Injury (Per Capita)",
               "types": [
                 "StatisticalVariable"
@@ -7963,54 +8011,6 @@
               ],
               "dcid": "Count_MedicalConditionIncident_60To69Years_Female_ConditionEndocrineMetabolicCondition_AsAFractionOf_Count_Person",
               "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 60 - 69 Years, Female, Endocrine Metabolic Condition, Rural (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_60To69Years_Female_ConditionEndocrineMetabolicCondition_Rural_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 60 - 69 Years, Female, Endocrine Metabolic Condition, Urban (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_60To69Years_Female_ConditionEndocrineMetabolicCondition_Urban_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 60 - 69 Years, Female, Eye Condition (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_60To69Years_Female_ConditionEyeCondition_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 60 - 69 Years, Female, Eye Condition, Rural (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_60To69Years_Female_ConditionEyeCondition_Rural_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 60 - 69 Years, Female, Eye Condition, Urban (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_60To69Years_Female_ConditionEyeCondition_Urban_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 60 - 69 Years, Female, Gastro Intestinal Condition (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_60To69Years_Female_ConditionGastroIntestinalCondition_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]
         }
@@ -8019,5 +8019,5 @@
     "Country": {},
     "dummy": {}
   },
-  "nextToken": "H4sIAAAAAAAA/2zOsY6DMBAE0GMxsCxXWHvSfdBd+kRCSps4aBNZwjYypkiVX4/YOs0rZooZuhL/+TSnh5/cPC4y+SCR2vJc5Hj/1PEXA1YMCAxYM6BhwIYBWzbY2T1FBuwZkBhwoBd9/6ctlstJ8poi/QZx65YlSCwHiSn46ErK9DMWV/xa9rGzy97dZmGwwAYrW7FBUGvVqI3aqp2Kaq+S3W8ObwAAAP//AQAA//+TnHXF4wAAAA=="
+  "nextToken": "H4sIAAAAAAAA/2zNsQrCQBCEYV1jsq4WMoIPpPYKAVs9wyqHubtw2RS+vcRS0s7A/8ldcPCpTS/fuLbutPFBo5T26fT8nPowA/EcxATiBYgLEC9BXKLgajuuDOIViAXEa3nL5piGaLeL5j5F2Qd1/ZA1aLSTxhR8dJay7Gpz5nsbsavL3j1aBf2C0xxx9Y99AQAA//8BAAD//7uAFbTPAAAA"
 }

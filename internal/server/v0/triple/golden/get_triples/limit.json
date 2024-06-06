@@ -684,23 +684,6 @@
       "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
-      "subjectId": "nuts/NO011",
-      "subjectName": "Oslo",
-      "subjectTypes": [
-        "AdministrativeArea3",
-        "City",
-        "EurostatNUTS3"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class",
-        "LocationClassificationEnum"
-      ],
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
-    },
-    {
       "subjectId": "nuts/SOF46",
       "subjectName": "Sofia",
       "subjectTypes": [
@@ -718,8 +701,25 @@
       "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
-      "subjectId": "nuts/UKD33",
-      "subjectName": "Manchester",
+      "subjectId": "nuts/UKM25",
+      "subjectName": "Edinburgh",
+      "subjectTypes": [
+        "AdministrativeArea3",
+        "City",
+        "EurostatNUTS3"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class",
+        "LocationClassificationEnum"
+      ],
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "subjectId": "nuts/UKM34",
+      "subjectName": "Glasgow",
       "subjectTypes": [
         "AdministrativeArea3",
         "City",

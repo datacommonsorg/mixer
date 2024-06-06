@@ -701,8 +701,16 @@
       "dcid": "Count_Person_15OrLessYears"
     },
     {
+      "name": "Population: 16 - 19 Years",
+      "dcid": "Count_Person_16To19Years"
+    },
+    {
       "name": "Population: 16 - 64 Years",
       "dcid": "Count_Person_16To64Years"
+    },
+    {
+      "name": "Population: 18 - 19 Years",
+      "dcid": "Count_Person_18To19Years"
     },
     {
       "name": "Population: 18 - 64 Years",
@@ -725,6 +733,10 @@
       "dcid": "Count_Person_EducationalAttainment_1StTo12ThGrade"
     },
     {
+      "name": "Population: 20 - 21 Years",
+      "dcid": "Count_Person_20To21Years"
+    },
+    {
       "name": "Population: 20 - 29 Years",
       "dcid": "Count_Person_20To29Years"
     },
@@ -743,6 +755,10 @@
     {
       "name": "Population: 21 Years or More",
       "dcid": "Count_Person_21OrMoreYears"
+    },
+    {
+      "name": "Population: 22 - 24 Years",
+      "dcid": "Count_Person_22To24Years"
     },
     {
       "name": "Population: 25 - 44 Years",
@@ -905,8 +921,16 @@
       "dcid": "Count_Person_Upto64Years"
     },
     {
+      "name": "Population: 65 - 66 Years",
+      "dcid": "Count_Person_65To66Years"
+    },
+    {
       "name": "Population: 65 Years or More",
       "dcid": "Count_Person_65OrMoreYears"
+    },
+    {
+      "name": "Population: 67 - 69 Years",
+      "dcid": "Count_Person_67To69Years"
     },
     {
       "name": "Population: 6th Grade",
@@ -2701,6 +2725,18 @@
       "dcid": "Count_Person_WithDisability_BlackOrAfricanAmericanAlone"
     },
     {
+      "name": "Count of number of person not a motor vehicle occupant involved in crash",
+      "dcid": "Count_Person_InvolvedInCrash_NotMotorVehicleOccupant"
+    },
+    {
+      "name": "Count of the number of motorists in the crash",
+      "dcid": "Count_Person_InvolvedInCrash_Motorists"
+    },
+    {
+      "name": "Count of the number of non-motorists in the crash",
+      "dcid": "Count_Person_InvolvedInCrash_NonMotorists"
+    },
+    {
       "name": "Disabled Population Living in Nursing Facilities",
       "dcid": "Count_Person_WithDisability_ResidesInNursingFacilities"
     },
@@ -3263,6 +3299,10 @@
     {
       "name": "Number of Non Hispanic Asian/Pacific Islander Male Population",
       "dcid": "Count_Person_Male_NotHispanicOrLatino_AsianOrPacificIslander"
+    },
+    {
+      "name": "Number of motor vehicle occupants involved in crash",
+      "dcid": "Count_Person_InvolvedInCrash_MotorVehicleOccupant"
     },
     {
       "name": "Number of people born outside the country and excluding USA, Guatemala, Japan, France and Spain.",
@@ -3959,46 +3999,6 @@
     {
       "name": "Population: 1 - 4 Years, White Alone",
       "dcid": "Count_Person_1To4Years_WhiteAlone"
-    },
-    {
-      "name": "Population: 1 - 4 Years, White Alone Not Hispanic or Latino",
-      "dcid": "Count_Person_1To4Years_WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "name": "Population: 1 Years or More, 1 - 1.5 Ratio To Poverty Line",
-      "dcid": "Count_Person_1OrMoreYears_1To1.49RatioToPovertyLine"
-    },
-    {
-      "name": "Population: 1 Years or More, 1 Ratio To Poverty Line or Less",
-      "dcid": "Count_Person_1OrMoreYears_1OrLessRatioToPovertyLine"
-    },
-    {
-      "name": "Population: 1 Years or More, 1.5 Ratio To Poverty Line or More",
-      "dcid": "Count_Person_1OrMoreYears_1.5OrMoreRatioToPovertyLine"
-    },
-    {
-      "name": "Population: 1 Years or More, Adult Correctional Facilities",
-      "dcid": "Count_Person_1OrMoreYears_ResidesInAdultCorrectionalFacilities"
-    },
-    {
-      "name": "Population: 1 Years or More, American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_1OrMoreYears_AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: 1 Years or More, Asian Alone",
-      "dcid": "Count_Person_1OrMoreYears_AsianAlone"
-    },
-    {
-      "name": "Population: 1 Years or More, Black or African American Alone",
-      "dcid": "Count_Person_1OrMoreYears_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 1 Years or More, College or University Student Housing",
-      "dcid": "Count_Person_1OrMoreYears_ResidesInCollegeOrUniversityStudentHousing"
-    },
-    {
-      "name": "Population: 1 Years or More, Different House 1 Year Ago",
-      "dcid": "Count_Person_1OrMoreYears_DifferentHouse1YearAgo"
     }
   ],
   "matches": [

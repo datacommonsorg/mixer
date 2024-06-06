@@ -108,7 +108,7 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 27225
+        "descendentStatVarCount": 27231
       },
       {
         "id": "dc/g/Person_AgeGroupClassification",
@@ -181,6 +181,12 @@
         "specializedEntity": "Courthouse",
         "displayName": "Courthouse",
         "descendentStatVarCount": 2
+      },
+      {
+        "id": "dc/g/Person_CrashInvolvement",
+        "specializedEntity": "Crash Involvement",
+        "displayName": "Person by Crash Involvement",
+        "descendentStatVarCount": 4
       },
       {
         "id": "dc/g/Person_DateOfEntry",
@@ -474,7 +480,19 @@
         "id": "dc/g/Vehicle",
         "specializedEntity": "Vehicle",
         "displayName": "Vehicle",
-        "descendentStatVarCount": 3
+        "descendentStatVarCount": 5
+      },
+      {
+        "id": "dc/g/VehicleCrashIncident",
+        "specializedEntity": "Vehicle Crash Incident",
+        "displayName": "Vehicle Crash Incident",
+        "descendentStatVarCount": 94
+      },
+      {
+        "id": "dc/g/Person_VehicleOccupantType",
+        "specializedEntity": "Vehicle Occupant Type",
+        "displayName": "Person by Vehicle Occupant Type",
+        "descendentStatVarCount": 4
       },
       {
         "id": "dc/g/Village",
@@ -483,7 +501,7 @@
         "descendentStatVarCount": 2
       }
     ],
-    "descendentStatVarCount": 45306,
+    "descendentStatVarCount": 45412,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

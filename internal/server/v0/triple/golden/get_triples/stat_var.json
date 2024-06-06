@@ -137,6 +137,90 @@
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
+      "subjectId": "Annual_Amount_Emissions_CarbonDioxide_AsAFractionOf_Count_Person",
+      "subjectName": "Annual Amount of Emissions: Carbon Dioxide (Per Capita)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Total Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Annual_Amount_Emissions_CarbonMonoxide_AsAFractionOf_Count_Person",
+      "subjectName": "Annual Amount of Emissions: Carbon Monoxide (Per Capita)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Total Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Annual_Amount_Emissions_GreenhouseGas_AsAFractionOf_Count_Person",
+      "subjectName": "Annual Amount of Emissions: Greenhouse Gas (Per Capita)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Total Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Annual_Amount_Emissions_OxidesOfNitrogen_AsAFractionOf_Count_Person",
+      "subjectName": "Annual Amount of Emissions: Oxides of Nitrogen (Per Capita)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Total Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Annual_Amount_Emissions_OxidesOfSulfur_AsAFractionOf_Count_Person",
+      "subjectName": "Annual Amount of Emissions: Oxides of Sulfur (Per Capita)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Total Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Annual_Amount_Emissions_VolatileOrganicCompound_AsAFractionOf_Count_Person",
+      "subjectName": "Annual Amount of Emissions: Volatile Organic Compound (Per Capita)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Total Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
       "subjectId": "Annual_Count_MedicalConditionIncident_ConditionTuberculosis_AsAFractionOf_Count_Person",
       "subjectName": "Annual notification of Tuberculosis cases per 1 lakh population",
       "subjectTypes": [
@@ -6999,90 +7083,6 @@
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionGastroIntestinalCondition_Urban_AsAFractionOf_Count_Person",
       "subjectName": "Count of Medical Condition Incident: 45 - 59 Years, Gastro Intestinal Condition, Urban (Per Capita)",
-      "subjectTypes": [
-        "StatisticalVariable"
-      ],
-      "predicate": "measurementDenominator",
-      "objectId": "Count_Person",
-      "objectName": "Total Population",
-      "objectTypes": [
-        "StatisticalVariable"
-      ],
-      "provenanceId": "dc/base/HumanReadableStatVars"
-    },
-    {
-      "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionGenitoUrinaryCondition_AsAFractionOf_Count_Person",
-      "subjectName": "Count of Medical Condition Incident: 45 - 59 Years, Genito Urinary Condition (Per Capita)",
-      "subjectTypes": [
-        "StatisticalVariable"
-      ],
-      "predicate": "measurementDenominator",
-      "objectId": "Count_Person",
-      "objectName": "Total Population",
-      "objectTypes": [
-        "StatisticalVariable"
-      ],
-      "provenanceId": "dc/base/HumanReadableStatVars"
-    },
-    {
-      "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionGenitoUrinaryCondition_Rural_AsAFractionOf_Count_Person",
-      "subjectName": "Count of Medical Condition Incident: 45 - 59 Years, Genito Urinary Condition, Rural (Per Capita)",
-      "subjectTypes": [
-        "StatisticalVariable"
-      ],
-      "predicate": "measurementDenominator",
-      "objectId": "Count_Person",
-      "objectName": "Total Population",
-      "objectTypes": [
-        "StatisticalVariable"
-      ],
-      "provenanceId": "dc/base/HumanReadableStatVars"
-    },
-    {
-      "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionGenitoUrinaryCondition_Urban_AsAFractionOf_Count_Person",
-      "subjectName": "Count of Medical Condition Incident: 45 - 59 Years, Genito Urinary Condition, Urban (Per Capita)",
-      "subjectTypes": [
-        "StatisticalVariable"
-      ],
-      "predicate": "measurementDenominator",
-      "objectId": "Count_Person",
-      "objectName": "Total Population",
-      "objectTypes": [
-        "StatisticalVariable"
-      ],
-      "provenanceId": "dc/base/HumanReadableStatVars"
-    },
-    {
-      "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionInfection_AsAFractionOf_Count_Person",
-      "subjectName": "Count of Medical Condition Incident: 45 - 59 Years, Infection (Per Capita)",
-      "subjectTypes": [
-        "StatisticalVariable"
-      ],
-      "predicate": "measurementDenominator",
-      "objectId": "Count_Person",
-      "objectName": "Total Population",
-      "objectTypes": [
-        "StatisticalVariable"
-      ],
-      "provenanceId": "dc/base/HumanReadableStatVars"
-    },
-    {
-      "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionInfection_Rural_AsAFractionOf_Count_Person",
-      "subjectName": "Count of Medical Condition Incident: 45 - 59 Years, Infection, Rural (Per Capita)",
-      "subjectTypes": [
-        "StatisticalVariable"
-      ],
-      "predicate": "measurementDenominator",
-      "objectId": "Count_Person",
-      "objectName": "Total Population",
-      "objectTypes": [
-        "StatisticalVariable"
-      ],
-      "provenanceId": "dc/base/HumanReadableStatVars"
-    },
-    {
-      "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionInfection_Urban_AsAFractionOf_Count_Person",
-      "subjectName": "Count of Medical Condition Incident: 45 - 59 Years, Infection, Urban (Per Capita)",
       "subjectTypes": [
         "StatisticalVariable"
       ],
