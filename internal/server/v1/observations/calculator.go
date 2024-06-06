@@ -30,31 +30,31 @@ import (
 
 // A calculable item that belong to a node in the AST tree.
 // The item can be a number, a time series, a map from entity to number, etc.
-type calcItem interface {
-	key() string
+type CalcItem interface {
+	Key() string
 }
 
 // The info of a node in the AST tree.
 type nodeData struct {
 	statVar        string
 	facet          *pb.Facet
-	candidateItems []calcItem
-	chosenItem     calcItem
+	candidateItems []CalcItem
+	chosenItem     CalcItem
 }
 
-type calculator struct {
+type Calculator struct {
 	expr ast.Expr
 	// Key is encodeForParse(nodeName).
 	nodeDataMap map[string]*nodeData
 }
 
-func newCalculator(formula string) (*calculator, error) {
+func NewCalculator(formula string) (*Calculator, error) {
 	expr, err := parser.ParseExpr(encodeForParse(formula))
 	if err != nil {
 		return nil, err
 	}
 
-	c := &calculator{expr: expr, nodeDataMap: map[string]*nodeData{}}
+	c := &Calculator{expr: expr, nodeDataMap: map[string]*nodeData{}}
 	if err := c.processNodeInfo(c.expr); err != nil {
 		return nil, err
 	}
@@ -63,7 +63,7 @@ func newCalculator(formula string) (*calculator, error) {
 }
 
 // Recursively iterate through the AST tree, extract and parse nodeName, then fill nodeData.
-func (c *calculator) processNodeInfo(node ast.Node) error {
+func (c *Calculator) processNodeInfo(node ast.Node) error {
 	switch t := node.(type) {
 	case *ast.BinaryExpr:
 		for _, node := range []ast.Node{t.X, t.Y} {
@@ -89,7 +89,7 @@ func (c *calculator) processNodeInfo(node ast.Node) error {
 	return nil
 }
 
-func (c *calculator) statVars() []string {
+func (c *Calculator) StatVars() []string {
 	statVarSet := map[string]struct{}{}
 	for k := range c.nodeDataMap {
 		statVarSet[c.nodeDataMap[k].statVar] = struct{}{}
@@ -101,13 +101,13 @@ func (c *calculator) statVars() []string {
 	return statVars
 }
 
-func (c *calculator) calculate(
+func (c *Calculator) Calculate(
 	dataMap interface{},
 	extractItemCandidates func(btData interface{}, statVar string,
-		facet *pb.Facet) ([]calcItem, error),
-	evalBinaryExpr func(x, y calcItem, op token.Token) (calcItem, error),
-	rankCalcItem func(items []calcItem) calcItem,
-) (calcItem, error) {
+		facet *pb.Facet) ([]CalcItem, error),
+	evalBinaryExpr func(x, y CalcItem, op token.Token) (CalcItem, error),
+	rankCalcItem func(items []CalcItem) CalcItem,
+) (CalcItem, error) {
 	if err := c.fillItemCandidates(dataMap, extractItemCandidates); err != nil {
 		return nil, err
 	}
@@ -119,33 +119,33 @@ func (c *calculator) calculate(
 	return c.evalExpr(c.expr, evalBinaryExpr)
 }
 
-func (c *calculator) fillItemCandidates(
+func (c *Calculator) fillItemCandidates(
 	btData interface{},
 	extractItemCandidates func(
 		btData interface{},
 		statVar string,
-		facet *pb.Facet) ([]calcItem, error),
+		facet *pb.Facet) ([]CalcItem, error),
 ) error {
 	for _, nodeData := range c.nodeDataMap {
-		calcItems, err := extractItemCandidates(
+		CalcItems, err := extractItemCandidates(
 			btData, nodeData.statVar, nodeData.facet)
 		if err != nil {
 			return err
 		}
-		nodeData.candidateItems = append(nodeData.candidateItems, calcItems...)
+		nodeData.candidateItems = CalcItems
 	}
 	return nil
 }
 
-func (c *calculator) chooseItem(
-	rankCalcItem func(items []calcItem) calcItem,
+func (c *Calculator) chooseItem(
+	rankCalcItem func(items []CalcItem) CalcItem,
 ) error {
 	// Get common date keys across all the varInfos.
 	list := [][]string{} // A list of lists of series date keys.
 	for _, nodeData := range c.nodeDataMap {
 		itemKeys := []string{}
 		for _, item := range nodeData.candidateItems {
-			itemKeys = append(itemKeys, item.key())
+			itemKeys = append(itemKeys, item.Key())
 		}
 		list = append(list, itemKeys)
 	}
@@ -173,9 +173,9 @@ func (c *calculator) chooseItem(
 
 	// Set chosenItem for each nodeData.
 	for _, nodeData := range c.nodeDataMap {
-		filteredItemCandidates := []calcItem{}
+		filteredItemCandidates := []CalcItem{}
 		for _, item := range nodeData.candidateItems {
-			if _, ok := longestItemKeySet[item.key()]; ok {
+			if _, ok := longestItemKeySet[item.Key()]; ok {
 				filteredItemCandidates = append(filteredItemCandidates, item)
 			}
 		}
@@ -186,14 +186,14 @@ func (c *calculator) chooseItem(
 }
 
 // Recursively iterate through the AST and perform the calculation.
-func (c *calculator) evalExpr(
+func (c *Calculator) evalExpr(
 	node ast.Node,
-	evalBinaryExpr func(x, y calcItem, op token.Token) (calcItem, error),
-) (calcItem, error) {
+	evalBinaryExpr func(x, y CalcItem, op token.Token) (CalcItem, error),
+) (CalcItem, error) {
 	// If a node is of type *ast.Ident, it is a leaf with a series value.
 	// Otherwise, it might be *ast.ParenExpr or *ast.BinaryExpr, so we continue recursing it to
 	// compute the series value for the subtree..
-	computeChildSeries := func(node ast.Node) (calcItem, error) {
+	computeChildSeries := func(node ast.Node) (CalcItem, error) {
 		if reflect.TypeOf(node).String() == "*ast.Ident" {
 			return c.nodeDataMap[node.(*ast.Ident).Name].chosenItem, nil
 		}

@@ -206,9 +206,5 @@ func ObservationInternal(
 	localResp, remoteResp := <-localRespChan, <-remoteRespChan
 	// The order of argument matters, localResp is prefered and will be put first
 	// in the merged result.
-	mergedResp := merger.MergeObservation(localResp, remoteResp)
-	calculatedResps := CalculateObservationResponses(ctx, store, mergedResp, cachedata)
-	// mergedResp is preferred over any calculated response.
-	combinedResp := append([]*pbv2.ObservationResponse{mergedResp}, calculatedResps...)
-	return merger.MergeMultipleObservations(combinedResp...), nil
+	return merger.MergeObservation(localResp, remoteResp), nil
 }

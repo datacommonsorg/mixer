@@ -90,13 +90,13 @@ func TestCalculation(t *testing.T) {
 				"custom_formula.json",
 			},
 			{
-				"custom data", // Will be empty till DerivedSeries supports Custom DC.
+				"custom data",
 				[]string{
-					"test_var_3",
+					"test_var_1",
 				},
 				[]string{
-					"geoId/01",
-					"geoId/06",
+					"ein/1",
+					"ein/2",
 				},
 				"",
 				nil,
@@ -135,6 +135,82 @@ func TestCalculation(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"TestCalculation",
+		&test.TestOption{UseSQLite: true, CacheSVFormula: true},
+		testSuite,
+	); err != nil {
+		t.Errorf("TestDriver() = %s", err)
+	}
+}
+
+func TestCalculationForObsCollection(t *testing.T) {
+	t.Parallel()
+	ctx := context.Background()
+
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Join(path.Dir(filename), "calculation")
+
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
+		for _, c := range []struct {
+			desc             string
+			variables        []string
+			entityExpression string
+			date             string
+			filter           *pbv2.FacetFilter
+			goldenFile       string
+		}{
+			{
+				"contained in 2015", // Will get filled once schema table is updated past 6/3/24.
+				[]string{
+					"Count_Person_16To19Years",
+				},
+				"country/USA<-containedInPlace+{typeOf:State}",
+				"2015",
+				nil,
+				"contained_in_2015.json",
+			},
+			{
+				"custom dc contained in 2010",
+				[]string{
+					"test_var_3",
+				},
+				"country/USA<-containedInPlace+{typeOf:State}",
+				"2010",
+				nil,
+				"contained_in_2010.json",
+			},
+		} {
+			goldenFile := c.goldenFile
+			resp, err := mixer.V2Observation(ctx, &pbv2.ObservationRequest{
+				Select:   []string{"variable", "entity", "date", "value"},
+				Variable: &pbv2.DcidOrExpression{Dcids: c.variables},
+				Entity:   &pbv2.DcidOrExpression{Expression: c.entityExpression},
+				Date:     c.date,
+				Filter:   c.filter,
+			})
+			if err != nil {
+				t.Errorf("could not run V2Observation (direct): %s", err)
+				continue
+			}
+			if latencyTest {
+				continue
+			}
+			if test.GenerateGolden {
+				test.UpdateGolden(resp, goldenPath, goldenFile)
+				continue
+			}
+			var expected pbv2.ObservationResponse
+			if err = test.ReadJSON(goldenPath, goldenFile, &expected); err != nil {
+				t.Errorf("Can not Unmarshal golden file: %s", err)
+				continue
+			}
+			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+				t.Errorf("%s: got diff: %s", c.desc, diff)
+				continue
+			}
+		}
+	}
+	if err := test.TestDriver(
+		"TestCalculationForObsCollection",
 		&test.TestOption{UseSQLite: true, CacheSVFormula: true},
 		testSuite,
 	); err != nil {

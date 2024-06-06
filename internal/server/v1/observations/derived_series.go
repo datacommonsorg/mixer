@@ -41,11 +41,11 @@ func DerivedSeries(
 	entity := in.GetEntity()
 
 	// Parse the formula to extract all the variables, used for reading data from BT.
-	calculator, err := newCalculator(in.GetFormula())
+	calculator, err := NewCalculator(in.GetFormula())
 	if err != nil {
 		return resp, err
 	}
-	statVars := calculator.statVars()
+	statVars := calculator.StatVars()
 
 	// Read data from BT.
 	btData, err := stat.ReadStatsPb(
@@ -59,15 +59,15 @@ func DerivedSeries(
 	}
 
 	// Calculate.
-	result, err := calculator.calculate(
+	result, err := calculator.Calculate(
 		entityData,
 		extractSeriesCandidates,
 		evalSeriesBinaryExpr,
-		rankCalcSeries)
+		RankCalcSeries)
 	if err != nil {
 		return resp, err
 	}
-	for _, p := range result.(*calcSeries).points {
+	for _, p := range result.(*CalcSeries).Points {
 		resp.Observations = append(resp.Observations, &pb.PointStat{
 			Date:  p.GetDate(),
 			Value: proto.Float64(p.GetValue()),
@@ -78,16 +78,17 @@ func DerivedSeries(
 }
 
 // This implements the calculatorItem interface.
-type calcSeries struct {
-	facet *pb.Facet
+type CalcSeries struct {
+	FacetId string
+	Facet   *pb.Facet
 	// Sorted by date.
-	points []*pb.PointStat
+	Points []*pb.PointStat
 }
 
 // The key is concatenation of all sorted dates.
-func (s *calcSeries) key() string {
+func (s *CalcSeries) Key() string {
 	dates := []string{}
-	for _, point := range s.points {
+	for _, point := range s.Points {
 		dates = append(dates, point.GetDate())
 	}
 	return strings.Join(dates, "")
@@ -97,9 +98,9 @@ func extractSeriesCandidates(
 	btData interface{},
 	statVar string,
 	facet *pb.Facet,
-) ([]calcItem, error) {
+) ([]CalcItem, error) {
 	entityData := btData.(map[string]*pb.ObsTimeSeries)
-	res := []calcItem{}
+	res := []CalcItem{}
 
 	if obsTimeSeries, ok := entityData[statVar]; ok {
 		for _, sourceSeries := range obsTimeSeries.GetSourceSeries() {
@@ -137,17 +138,17 @@ func extractSeriesCandidates(
 
 // Compute new series value of the *ast.BinaryExpr.
 // Supported operations are: +, -, *, /.
-func evalSeriesBinaryExpr(x, y calcItem, op token.Token) (calcItem, error) {
-	res := &calcSeries{points: []*pb.PointStat{}}
-	xx := x.(*calcSeries)
-	yy := y.(*calcSeries)
+func evalSeriesBinaryExpr(x, y CalcItem, op token.Token) (CalcItem, error) {
+	res := &CalcSeries{Points: []*pb.PointStat{}}
+	xx := x.(*CalcSeries)
+	yy := y.(*CalcSeries)
 
 	// Upper stream guarantees that x.points and y.points have same dates.
-	seriesLength := len(xx.points)
+	seriesLength := len(xx.Points)
 
 	for i := 0; i < seriesLength; i++ {
-		xVal := xx.points[i].GetValue()
-		yVal := yy.points[i].GetValue()
+		xVal := xx.Points[i].GetValue()
+		yVal := yy.Points[i].GetValue()
 		var val float64
 		switch op {
 		case token.ADD:
@@ -164,8 +165,8 @@ func evalSeriesBinaryExpr(x, y calcItem, op token.Token) (calcItem, error) {
 		default:
 			return nil, fmt.Errorf("unsupported op (token) %v", op)
 		}
-		res.points = append(res.points, &pb.PointStat{
-			Date:  xx.points[i].GetDate(),
+		res.Points = append(res.Points, &pb.PointStat{
+			Date:  xx.Points[i].GetDate(),
 			Value: proto.Float64(val),
 		})
 	}
@@ -176,7 +177,7 @@ func evalSeriesBinaryExpr(x, y calcItem, op token.Token) (calcItem, error) {
 // TODO(spaceenter): Implement better ranking algorithm than simple string comparisons.
 //
 // The input `seriesCandidates` all have the same dates.
-func rankCalcSeries(seriesCandidates []calcItem) calcItem {
+func RankCalcSeries(seriesCandidates []CalcItem) CalcItem {
 	facetKey := func(facet *pb.Facet) string {
 		return strings.Join([]string{
 			facet.GetMeasurementMethod(),
@@ -185,11 +186,11 @@ func rankCalcSeries(seriesCandidates []calcItem) calcItem {
 			facet.GetScalingFactor()}, "-")
 	}
 
-	var res *calcSeries
+	var res *CalcSeries
 	var maxKey string
 	for _, series := range seriesCandidates {
-		s := series.(*calcSeries)
-		key := facetKey(s.facet)
+		s := series.(*CalcSeries)
+		key := facetKey(s.Facet)
 		if maxKey == "" || maxKey < key {
 			maxKey = key
 			res = s
@@ -199,15 +200,15 @@ func rankCalcSeries(seriesCandidates []calcItem) calcItem {
 	return res
 }
 
-func toCalcSeries(sourceSeries *pb.SourceSeries) *calcSeries {
-	series := &calcSeries{
-		facet: &pb.Facet{
+func toCalcSeries(sourceSeries *pb.SourceSeries) *CalcSeries {
+	series := &CalcSeries{
+		Facet: &pb.Facet{
 			MeasurementMethod: sourceSeries.GetMeasurementMethod(),
 			ObservationPeriod: sourceSeries.GetObservationPeriod(),
 			Unit:              sourceSeries.GetUnit(),
 			ScalingFactor:     sourceSeries.GetScalingFactor(),
 		},
-		points: []*pb.PointStat{},
+		Points: []*pb.PointStat{},
 	}
 
 	var dates []string
@@ -216,7 +217,7 @@ func toCalcSeries(sourceSeries *pb.SourceSeries) *calcSeries {
 	}
 	sort.Strings(dates)
 	for _, date := range dates {
-		series.points = append(series.points, &pb.PointStat{
+		series.Points = append(series.Points, &pb.PointStat{
 			Date:  date,
 			Value: proto.Float64(sourceSeries.GetVal()[date]),
 		})

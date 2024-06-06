@@ -1,24 +1,23 @@
 {
   "by_variable": {
-    "test_var_1": {
+    "test_var_3": {
       "by_entity": {
-        "ein/1": {
+        "geoId/06": {
           "ordered_facets": [
             {
               "facet_id": "custom",
               "observations": [
                 {
-                  "date": "2023",
-                  "value": 200
+                  "date": "2010",
+                  "value": 2000
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2023",
-              "latest_date": "2023"
+              "earliest_date": "2010",
+              "latest_date": "2010"
             }
           ]
-        },
-        "ein/2": {}
+        }
       }
     }
   },

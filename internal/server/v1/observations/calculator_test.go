@@ -41,13 +41,13 @@ func TestCalculatorParseFormula(t *testing.T) {
 			[]string{"Person_Count_Female", "Person_Count"},
 		},
 	} {
-		calculator, err := newCalculator(c.formula)
+		calculator, err := NewCalculator(c.formula)
 		if err != nil {
-			t.Errorf("newCalculator(%s) = %s", c.formula, err)
+			t.Errorf("NewCalculator(%s) = %s", c.formula, err)
 		}
-		gotStatVars := calculator.statVars()
+		gotStatVars := calculator.StatVars()
 		if diff := cmp.Diff(gotStatVars, c.wantStatVars, strCmpOpts); diff != "" {
-			t.Errorf("calculator.statVars(%s) diff (-want +got):\n%s", c.formula, diff)
+			t.Errorf("calculator.StatVars(%s) diff (-want +got):\n%s", c.formula, diff)
 		}
 	}
 }
