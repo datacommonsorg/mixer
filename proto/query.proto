@@ -49,6 +49,8 @@ message QueryRequest {
   string sparql = 1;
 }
 
+// Request proto for V2 Sparql API.
+// Note the paramter here is `query` instead of `sparql`.
 message SparqlRequest {
   string query = 1;
 }
