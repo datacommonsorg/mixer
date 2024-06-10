@@ -19,7 +19,9 @@ import (
 	"context"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
+	"github.com/datacommonsorg/mixer/internal/server/translator"
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
@@ -216,4 +218,14 @@ func (s *Server) V2Observation(
 	// mergedResp is preferred over any calculated response.
 	combinedResp := append([]*pbv2.ObservationResponse{mergedResp}, calculatedResps...)
 	return merger.MergeMultipleObservations(combinedResp...), nil
+}
+
+// V2Sparql implements API for Mixer.V2Sparql.
+func (s *Server) V2Sparql(
+	ctx context.Context, in *pb.SparqlRequest,
+) (*pb.QueryResponse, error) {
+	legacyRequest := &pb.QueryRequest{
+		Sparql: in.Query,
+	}
+	return translator.Query(ctx, legacyRequest, s.metadata, s.store)
 }

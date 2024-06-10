@@ -49,6 +49,10 @@ message QueryRequest {
   string sparql = 1;
 }
 
+message SparqlRequest {
+  string query = 1;
+}
+
 // Graph query response.
 message QueryResponse {
   // Identifier for selected variable. Size of the header is the same as number
