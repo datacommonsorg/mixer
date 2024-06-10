@@ -56,6 +56,13 @@ service Mixer {
 
   // ======================  V2   V2   V2   V2  ======================
 
+  rpc V2Sparql(SparqlRequest) returns (QueryResponse) {
+    option (google.api.http) = {
+      get : "/v2/sparql"
+      additional_bindings : {post : "/v2/sparql" body : "*"}
+    };
+  }
+
   rpc V2Resolve(datacommons.v2.ResolveRequest)
       returns (datacommons.v2.ResolveResponse) {
     option (google.api.http) = {
@@ -619,7 +626,7 @@ service Mixer {
       additional_bindings : {post : "/v1/recognize/entities" body : "*"}
     };
   }
-  
+
   rpc UpdateCache(UpdateCacheRequest) returns (UpdateCacheResponse) {
     option (google.api.http) = {
       post: "/update-cache"

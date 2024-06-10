@@ -49,6 +49,12 @@ message QueryRequest {
   string sparql = 1;
 }
 
+// Request proto for V2 Sparql API.
+// Note the paramter here is `query` instead of `sparql`.
+message SparqlRequest {
+  string query = 1;
+}
+
 // Graph query response.
 message QueryResponse {
   // Identifier for selected variable. Size of the header is the same as number
