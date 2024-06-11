@@ -331,7 +331,89 @@ func TestEvalBinaryExpr(t *testing.T) {
 				"geoId/02": {"facetId1": {{
 					Date:  "1",
 					Value: proto.Float64(2),
-				}}}},
+				}}},
+			},
+		},
+		{
+			map[string]map[string][]*pb.PointStat{
+				"geoId/01": {"facetId1": {
+					{
+						Date:  "1",
+						Value: proto.Float64(6),
+					},
+				}},
+			},
+			map[string]map[string][]*pb.PointStat{
+				"geoId/01": {"facetId1": {
+					{
+						Date:  "1",
+						Value: proto.Float64(2),
+					},
+				}},
+			},
+			token.SUB,
+			map[string]map[string][]*pb.PointStat{
+				"geoId/01": {"facetId1": {
+					{
+						Date:  "1",
+						Value: proto.Float64(4),
+					},
+				}},
+			},
+		},
+		{
+			map[string]map[string][]*pb.PointStat{
+				"geoId/01": {"facetId1": {
+					{
+						Date:  "1",
+						Value: proto.Float64(6),
+					},
+				}},
+			},
+			map[string]map[string][]*pb.PointStat{
+				"geoId/01": {"facetId1": {
+					{
+						Date:  "1",
+						Value: proto.Float64(2),
+					},
+				}},
+			},
+			token.MUL,
+			map[string]map[string][]*pb.PointStat{
+				"geoId/01": {"facetId1": {
+					{
+						Date:  "1",
+						Value: proto.Float64(12),
+					},
+				}},
+			},
+		},
+		{
+			map[string]map[string][]*pb.PointStat{
+				"geoId/01": {"facetId1": {
+					{
+						Date:  "1",
+						Value: proto.Float64(6),
+					},
+				}},
+			},
+			map[string]map[string][]*pb.PointStat{
+				"geoId/01": {"facetId1": {
+					{
+						Date:  "1",
+						Value: proto.Float64(2),
+					},
+				}},
+			},
+			token.QUO,
+			map[string]map[string][]*pb.PointStat{
+				"geoId/01": {"facetId1": {
+					{
+						Date:  "1",
+						Value: proto.Float64(3),
+					},
+				}},
+			},
 		},
 	} {
 		got, err := evalBinaryExpr(c.x, c.y, c.op)

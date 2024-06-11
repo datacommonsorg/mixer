@@ -235,7 +235,7 @@ func computeLeafObs(
 	}
 }
 
-// Combine two sets of candidate observations in one step of calculation.
+// Combine two sets of candidate observations using an operator token.
 func evalBinaryExpr(
 	x, y map[string]map[string][]*pb.PointStat,
 	op token.Token,
