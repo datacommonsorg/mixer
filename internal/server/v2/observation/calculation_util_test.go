@@ -155,7 +155,7 @@ func TestFindObservationResponseHoles(t *testing.T) {
 	}
 }
 
-func TestComputeLeafSeries(t *testing.T) {
+func TestComputeLeafObs(t *testing.T) {
 	for _, c := range []struct {
 		inputResp *pbv2.ObservationResponse
 		formula   *VariableFormula
@@ -208,7 +208,7 @@ func TestComputeLeafSeries(t *testing.T) {
 			LeafData: map[string]*ASTNode{
 				"Count_Person": {
 					StatVar: "Count_Person",
-					CandidateSeries: map[string]map[string][]*pb.PointStat{
+					CandidateObs: map[string]map[string][]*pb.PointStat{
 						"geoId/01": {
 							"1": {{
 								Date:  "1",
@@ -227,7 +227,7 @@ func TestComputeLeafSeries(t *testing.T) {
 						MeasurementMethod: "US_Census",
 						ObservationPeriod: "P1Y",
 					},
-					CandidateSeries: map[string]map[string][]*pb.PointStat{
+					CandidateObs: map[string]map[string][]*pb.PointStat{
 						"geoId/01": {
 							"2": {{
 								Date:  "2",
@@ -239,9 +239,9 @@ func TestComputeLeafSeries(t *testing.T) {
 			},
 		},
 	}} {
-		computeLeafSeries(c.inputResp, c.formula)
+		computeLeafObs(c.inputResp, c.formula)
 		if ok := reflect.DeepEqual(c.formula, c.want); !ok {
-			t.Errorf("computeLeafSeries = %v, want %v",
+			t.Errorf("computeLeafObs = %v, want %v",
 				c.formula, c.want)
 		}
 	}

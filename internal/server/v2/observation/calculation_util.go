@@ -31,8 +31,8 @@ import (
 type ASTNode struct {
 	StatVar string
 	Facet   *pb.Facet
-	// Map of entity -> facetId -> series.
-	CandidateSeries map[string]map[string][]*pb.PointStat
+	// Map of entity -> facetId -> obs.
+	CandidateObs map[string]map[string][]*pb.PointStat
 }
 
 type VariableFormula struct {
@@ -196,13 +196,13 @@ func findObservationResponseHoles(
 	return result, nil
 }
 
-// Find all candidate series that match each ASTNode and add to VariableFormula.
-func computeLeafSeries(
+// Find all candidate observations that match each ASTNode and add to VariableFormula.
+func computeLeafObs(
 	inputResp *pbv2.ObservationResponse,
 	formula *VariableFormula,
 ) {
 	for _, leafData := range formula.LeafData {
-		leafData.CandidateSeries = map[string]map[string][]*pb.PointStat{}
+		leafData.CandidateObs = map[string]map[string][]*pb.PointStat{}
 		variableObs, ok := inputResp.ByVariable[leafData.StatVar]
 		// No data for input variable.
 		if !ok {
@@ -229,13 +229,13 @@ func computeLeafSeries(
 				facetMap[facetObs.FacetId] = facetObs.Observations
 			}
 			if len(facetMap) > 0 {
-				leafData.CandidateSeries[entity] = facetMap
+				leafData.CandidateObs[entity] = facetMap
 			}
 		}
 	}
 }
 
-// Combine two sets of candidate series in one step of calculation.
+// Combine two sets of candidate observations in one step of calculation.
 func evalBinaryExpr(
 	x, y map[string]map[string][]*pb.PointStat,
 	op token.Token,
@@ -243,24 +243,24 @@ func evalBinaryExpr(
 	result := map[string]map[string][]*pb.PointStat{}
 	for entity, xFacetObs := range x {
 		newFacetObs := map[string][]*pb.PointStat{}
-		for facetId, xSeries := range xFacetObs {
+		for facetId, xObs := range xFacetObs {
 			yFacetObs, ok := y[entity]
 			if !ok {
 				continue
 			}
-			ySeries, ok := yFacetObs[facetId]
+			yObs, ok := yFacetObs[facetId]
 			if !ok {
 				continue
 			}
-			newSeries := []*pb.PointStat{}
+			newObs := []*pb.PointStat{}
 			xIdx, yIdx := 0, 0
-			for xIdx < len(xSeries) {
-				if yIdx == len(ySeries) {
+			for xIdx < len(xObs) {
+				if yIdx == len(yObs) {
 					break
 				}
-				if xSeries[xIdx].GetDate() == ySeries[yIdx].GetDate() {
-					xVal := xSeries[xIdx].GetValue()
-					yVal := ySeries[yIdx].GetValue()
+				if xObs[xIdx].GetDate() == yObs[yIdx].GetDate() {
+					xVal := xObs[xIdx].GetValue()
+					yVal := yObs[yIdx].GetValue()
 					var val float64
 					switch op {
 					case token.ADD:
@@ -277,18 +277,18 @@ func evalBinaryExpr(
 					default:
 						return nil, fmt.Errorf("unsupported op (token) %v", op)
 					}
-					newSeries = append(newSeries, &pb.PointStat{
-						Date:  xSeries[xIdx].GetDate(),
+					newObs = append(newObs, &pb.PointStat{
+						Date:  xObs[xIdx].GetDate(),
 						Value: proto.Float64(val),
 					})
-				} else if xSeries[xIdx].GetDate() > ySeries[yIdx].GetDate() {
+				} else if xObs[xIdx].GetDate() > yObs[yIdx].GetDate() {
 					yIdx++
 					continue
 				}
 				xIdx++
 			}
-			if len(newSeries) > 0 {
-				newFacetObs[facetId] = newSeries
+			if len(newObs) > 0 {
+				newFacetObs[facetId] = newObs
 			}
 		}
 		if len(newFacetObs) > 0 {
