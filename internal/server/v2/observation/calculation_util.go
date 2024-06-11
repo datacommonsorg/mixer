@@ -22,6 +22,7 @@ import (
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+  pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
 
 // The info of a node in the AST tree.
@@ -165,4 +166,33 @@ func processNodeInfo(node ast.Node, c *VariableFormula) error {
 	}
 
 	return nil
+}
+
+// Given an input ObservationResponse, generate a map of variable -> entities with missing data.
+func findObservationResponseHoles(
+	inputReq *pbv2.ObservationRequest,
+	inputResp *pbv2.ObservationResponse,
+) (map[string]*pbv2.DcidOrExpression, error) {
+	result := map[string]*pbv2.DcidOrExpression{}
+	if inputReq.Variable.GetFormula() != "" {
+		return nil, fmt.Errorf("currently do not support nested formulas")
+	}
+	for variable, variableObs := range inputResp.ByVariable {
+		if len(inputReq.Entity.GetDcids()) > 0 {
+			holeEntities := []string{}
+			for entity, entityObs := range variableObs.ByEntity {
+				if len(entityObs.OrderedFacets) == 0 {
+					holeEntities = append(holeEntities, entity)
+				}
+			}
+			if len(holeEntities) > 0 {
+				result[variable] = &pbv2.DcidOrExpression{Dcids: holeEntities}
+			}
+		} else if inputReq.Entity.GetExpression() != "" {
+			if len(variableObs.ByEntity) == 0 {
+				result[variable] = &pbv2.DcidOrExpression{Expression: inputReq.Entity.Expression}
+			}
+		}
+	}
+	return result, nil
 }
