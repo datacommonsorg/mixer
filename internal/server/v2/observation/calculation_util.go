@@ -22,7 +22,7 @@ import (
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-  pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
 
 // The info of a node in the AST tree.
@@ -34,8 +34,8 @@ type ASTNode struct {
 type VariableFormula struct {
 	Expr ast.Expr
 	// Map of leaves in AST tree formula to the corresponding StatVar and Facet.
-	// The key is encodeForParse(nodeName), where nodeName contains the variable and filters,
-	// for example: Count_Person[mm=US_Census;p=P1Y].
+	// The key is encodeForParse(nodeName), where nodeName contains the StatVar dcid and filters,
+	// (for example: "Count_Person[mm=US_Census;p=P1Y]").
 	LeafData map[string]*ASTNode
 	// List of distinct StatVars in the formula.
 	StatVars []string
