@@ -18,17 +18,21 @@ import (
 	"fmt"
 	"go/ast"
 	"go/parser"
+	"go/token"
 	"reflect"
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"google.golang.org/protobuf/proto"
 )
 
 // The info of a node in the AST tree.
 type ASTNode struct {
 	StatVar string
 	Facet   *pb.Facet
+	// Map of entity -> facetId -> series.
+	CandidateSeries map[string]map[string][]*pb.PointStat
 }
 
 type VariableFormula struct {
@@ -187,6 +191,108 @@ func findObservationResponseHoles(
 			if len(variableObs.ByEntity) == 0 {
 				result[variable] = &pbv2.DcidOrExpression{Expression: inputReq.Entity.Expression}
 			}
+		}
+	}
+	return result, nil
+}
+
+// Find all candidate series that match each ASTNode and add to VariableFormula.
+func computeLeafSeries(
+	inputResp *pbv2.ObservationResponse,
+	formula *VariableFormula,
+) {
+	for _, leafData := range formula.LeafData {
+		leafData.CandidateSeries = map[string]map[string][]*pb.PointStat{}
+		variableObs, ok := inputResp.ByVariable[leafData.StatVar]
+		// No data for input variable.
+		if !ok {
+			return
+		}
+		for entity, entityObs := range variableObs.ByEntity {
+			facetMap := map[string][]*pb.PointStat{}
+			for _, facetObs := range entityObs.OrderedFacets {
+				if leafData.Facet != nil {
+					facet := inputResp.Facets[facetObs.FacetId]
+					if leafData.Facet.GetMeasurementMethod() != facet.GetMeasurementMethod() {
+						continue
+					}
+					if leafData.Facet.GetObservationPeriod() != facet.GetObservationPeriod() {
+						continue
+					}
+					if leafData.Facet.GetUnit() != facet.GetUnit() {
+						continue
+					}
+					if leafData.Facet.GetScalingFactor() != facet.GetScalingFactor() {
+						continue
+					}
+				}
+				facetMap[facetObs.FacetId] = facetObs.Observations
+			}
+			if len(facetMap) > 0 {
+				leafData.CandidateSeries[entity] = facetMap
+			}
+		}
+	}
+}
+
+// Combine two sets of candidate series in one step of calculation.
+func evalBinaryExpr(
+	x, y map[string]map[string][]*pb.PointStat,
+	op token.Token,
+) (map[string]map[string][]*pb.PointStat, error) {
+	result := map[string]map[string][]*pb.PointStat{}
+	for entity, xFacetObs := range x {
+		newFacetObs := map[string][]*pb.PointStat{}
+		for facetId, xSeries := range xFacetObs {
+			yFacetObs, ok := y[entity]
+			if !ok {
+				continue
+			}
+			ySeries, ok := yFacetObs[facetId]
+			if !ok {
+				continue
+			}
+			newSeries := []*pb.PointStat{}
+			xIdx, yIdx := 0, 0
+			for xIdx < len(xSeries) {
+				if yIdx == len(ySeries) {
+					break
+				}
+				if xSeries[xIdx].GetDate() == ySeries[yIdx].GetDate() {
+					xVal := xSeries[xIdx].GetValue()
+					yVal := ySeries[yIdx].GetValue()
+					var val float64
+					switch op {
+					case token.ADD:
+						val = xVal + yVal
+					case token.SUB:
+						val = xVal - yVal
+					case token.MUL:
+						val = xVal * yVal
+					case token.QUO:
+						if yVal == 0 {
+							return nil, fmt.Errorf("denominator cannot be zero")
+						}
+						val = xVal / yVal
+					default:
+						return nil, fmt.Errorf("unsupported op (token) %v", op)
+					}
+					newSeries = append(newSeries, &pb.PointStat{
+						Date:  xSeries[xIdx].GetDate(),
+						Value: proto.Float64(val),
+					})
+				} else if xSeries[xIdx].GetDate() > ySeries[yIdx].GetDate() {
+					yIdx++
+					continue
+				}
+				xIdx++
+			}
+			if len(newSeries) > 0 {
+				newFacetObs[facetId] = newSeries
+			}
+		}
+		if len(newFacetObs) > 0 {
+			result[entity] = newFacetObs
 		}
 	}
 	return result, nil

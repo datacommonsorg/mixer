@@ -15,13 +15,15 @@
 package observation
 
 import (
+	"go/token"
 	"reflect"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-  pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
+	"google.golang.org/protobuf/proto"
 )
 
 func TestParseNodeName(t *testing.T) {
@@ -84,7 +86,7 @@ func TestVariableFormulaParseFormula(t *testing.T) {
 		gotStatVars := vf.StatVars
 		if diff := cmp.Diff(gotStatVars, c.wantStatVars, strCmpOpts); diff != "" {
 			t.Errorf("vf.StatVars(%s) diff (-want +got):\n%s", c.formula, diff)
-    }
+		}
 	}
 }
 
@@ -149,6 +151,197 @@ func TestFindObservationResponseHoles(t *testing.T) {
 		if ok := reflect.DeepEqual(got, c.want); !ok {
 			t.Errorf("findObservationResponseHoles(%v, %v) = %v, want %v",
 				c.inputReq, c.inputResp, got, c.want)
+		}
+	}
+}
+
+func TestComputeLeafSeries(t *testing.T) {
+	for _, c := range []struct {
+		inputResp *pbv2.ObservationResponse
+		formula   *VariableFormula
+		want      *VariableFormula
+	}{{
+		&pbv2.ObservationResponse{
+			ByVariable: map[string]*pbv2.VariableObservation{
+				"Count_Person": {ByEntity: map[string]*pbv2.EntityObservation{
+					"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{
+						{
+							FacetId: "1",
+							Observations: []*pb.PointStat{{
+								Date:  "1",
+								Value: proto.Float64(1),
+							}},
+						},
+						{
+							FacetId: "2",
+							Observations: []*pb.PointStat{{
+								Date:  "2",
+								Value: proto.Float64(2),
+							}},
+						},
+					}},
+				}},
+			},
+			Facets: map[string]*pb.Facet{
+				"1": {
+					ObservationPeriod: "P1M",
+				},
+				"2": {
+					MeasurementMethod: "US_Census",
+					ObservationPeriod: "P1Y",
+				},
+			},
+		},
+		&VariableFormula{
+			LeafData: map[string]*ASTNode{
+				"Count_Person": {StatVar: "Count_Person"},
+				"Count_Person[mm=US_Census;p=P1Y]": {
+					StatVar: "Count_Person",
+					Facet: &pb.Facet{
+						MeasurementMethod: "US_Census",
+						ObservationPeriod: "P1Y",
+					},
+				},
+			},
+		},
+		&VariableFormula{
+			LeafData: map[string]*ASTNode{
+				"Count_Person": {
+					StatVar: "Count_Person",
+					CandidateSeries: map[string]map[string][]*pb.PointStat{
+						"geoId/01": {
+							"1": {{
+								Date:  "1",
+								Value: proto.Float64(1),
+							}},
+							"2": {{
+								Date:  "2",
+								Value: proto.Float64(2),
+							}},
+						},
+					},
+				},
+				"Count_Person[mm=US_Census;p=P1Y]": {
+					StatVar: "Count_Person",
+					Facet: &pb.Facet{
+						MeasurementMethod: "US_Census",
+						ObservationPeriod: "P1Y",
+					},
+					CandidateSeries: map[string]map[string][]*pb.PointStat{
+						"geoId/01": {
+							"2": {{
+								Date:  "2",
+								Value: proto.Float64(2),
+							}},
+						},
+					},
+				},
+			},
+		},
+	}} {
+		computeLeafSeries(c.inputResp, c.formula)
+		if ok := reflect.DeepEqual(c.formula, c.want); !ok {
+			t.Errorf("computeLeafSeries = %v, want %v",
+				c.formula, c.want)
+		}
+	}
+}
+
+func TestEvalBinaryExpr(t *testing.T) {
+	for _, c := range []struct {
+		x    map[string]map[string][]*pb.PointStat
+		y    map[string]map[string][]*pb.PointStat
+		op   token.Token
+		want map[string]map[string][]*pb.PointStat
+	}{
+		{
+			map[string]map[string][]*pb.PointStat{
+				"geoId/01": {"facetId2": {
+					{
+						Date:  "1",
+						Value: proto.Float64(1),
+					},
+					{
+						Date:  "3",
+						Value: proto.Float64(3),
+					},
+					{
+						Date:  "4",
+						Value: proto.Float64(4),
+					},
+					{
+						Date:  "5",
+						Value: proto.Float64(5),
+					},
+					{
+						Date:  "8",
+						Value: proto.Float64(8),
+					},
+				}},
+				"geoId/02": {"facetId1": {{
+					Date:  "1",
+					Value: proto.Float64(1),
+				}}},
+			},
+			map[string]map[string][]*pb.PointStat{
+				"geoId/01": {
+					"facetId1": {{
+						Date:  "1",
+						Value: proto.Float64(1),
+					}},
+					"facetId2": {
+						{
+							Date:  "2",
+							Value: proto.Float64(2),
+						},
+						{
+							Date:  "3",
+							Value: proto.Float64(3),
+						},
+						{
+							Date:  "5",
+							Value: proto.Float64(5),
+						},
+						{
+							Date:  "6",
+							Value: proto.Float64(6),
+						},
+						{
+							Date:  "7",
+							Value: proto.Float64(7),
+						},
+					}},
+				"geoId/02": {"facetId1": {{
+					Date:  "1",
+					Value: proto.Float64(1),
+				}}},
+			},
+			token.ADD,
+			map[string]map[string][]*pb.PointStat{
+				"geoId/01": {"facetId2": {
+					{
+						Date:  "3",
+						Value: proto.Float64(6),
+					},
+					{
+						Date:  "5",
+						Value: proto.Float64(10),
+					},
+				}},
+				"geoId/02": {"facetId1": {{
+					Date:  "1",
+					Value: proto.Float64(2),
+				}}}},
+		},
+	} {
+		got, err := evalBinaryExpr(c.x, c.y, c.op)
+		if err != nil {
+			t.Errorf("error running TestEvalBinaryExpr: %s", err)
+			continue
+		}
+		if ok := reflect.DeepEqual(got, c.want); !ok {
+			t.Errorf("evalBinaryExpr(%v, %v, %v) = %v, want %v",
+				c.x, c.y, c.op, got, c.want)
 		}
 	}
 }
