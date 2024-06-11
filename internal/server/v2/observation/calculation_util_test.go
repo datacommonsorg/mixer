@@ -248,6 +248,22 @@ func TestComputeLeafObs(t *testing.T) {
 }
 
 func TestEvalBinaryExpr(t *testing.T) {
+	inputX := map[string]map[string][]*pb.PointStat{
+		"geoId/01": {"facetId1": {
+			{
+				Date:  "1",
+				Value: proto.Float64(6),
+			},
+		}},
+	}
+	inputY := map[string]map[string][]*pb.PointStat{
+		"geoId/01": {"facetId1": {
+			{
+				Date:  "1",
+				Value: proto.Float64(2),
+			},
+		}},
+	}
 	for _, c := range []struct {
 		x    map[string]map[string][]*pb.PointStat
 		y    map[string]map[string][]*pb.PointStat
@@ -291,6 +307,10 @@ func TestEvalBinaryExpr(t *testing.T) {
 					}},
 					"facetId2": {
 						{
+							Date:  "0",
+							Value: proto.Float64(0),
+						},
+						{
 							Date:  "2",
 							Value: proto.Float64(2),
 						},
@@ -309,6 +329,10 @@ func TestEvalBinaryExpr(t *testing.T) {
 						{
 							Date:  "7",
 							Value: proto.Float64(7),
+						},
+						{
+							Date:  "9",
+							Value: proto.Float64(9),
 						},
 					}},
 				"geoId/02": {"facetId1": {{
@@ -335,22 +359,8 @@ func TestEvalBinaryExpr(t *testing.T) {
 			},
 		},
 		{
-			map[string]map[string][]*pb.PointStat{
-				"geoId/01": {"facetId1": {
-					{
-						Date:  "1",
-						Value: proto.Float64(6),
-					},
-				}},
-			},
-			map[string]map[string][]*pb.PointStat{
-				"geoId/01": {"facetId1": {
-					{
-						Date:  "1",
-						Value: proto.Float64(2),
-					},
-				}},
-			},
+			inputX,
+			inputY,
 			token.SUB,
 			map[string]map[string][]*pb.PointStat{
 				"geoId/01": {"facetId1": {
@@ -362,22 +372,8 @@ func TestEvalBinaryExpr(t *testing.T) {
 			},
 		},
 		{
-			map[string]map[string][]*pb.PointStat{
-				"geoId/01": {"facetId1": {
-					{
-						Date:  "1",
-						Value: proto.Float64(6),
-					},
-				}},
-			},
-			map[string]map[string][]*pb.PointStat{
-				"geoId/01": {"facetId1": {
-					{
-						Date:  "1",
-						Value: proto.Float64(2),
-					},
-				}},
-			},
+			inputX,
+			inputY,
 			token.MUL,
 			map[string]map[string][]*pb.PointStat{
 				"geoId/01": {"facetId1": {
@@ -389,22 +385,8 @@ func TestEvalBinaryExpr(t *testing.T) {
 			},
 		},
 		{
-			map[string]map[string][]*pb.PointStat{
-				"geoId/01": {"facetId1": {
-					{
-						Date:  "1",
-						Value: proto.Float64(6),
-					},
-				}},
-			},
-			map[string]map[string][]*pb.PointStat{
-				"geoId/01": {"facetId1": {
-					{
-						Date:  "1",
-						Value: proto.Float64(2),
-					},
-				}},
-			},
+			inputX,
+			inputY,
 			token.QUO,
 			map[string]map[string][]*pb.PointStat{
 				"geoId/01": {"facetId1": {

@@ -196,6 +196,22 @@ func findObservationResponseHoles(
 	return result, nil
 }
 
+func compareFacet(facet1, facet2 *pb.Facet) bool {
+	if facet1.GetMeasurementMethod() != facet2.GetMeasurementMethod() {
+		return false
+	}
+	if facet1.GetObservationPeriod() != facet2.GetObservationPeriod() {
+		return false
+	}
+	if facet1.GetUnit() != facet2.GetUnit() {
+		return false
+	}
+	if facet1.GetScalingFactor() != facet2.GetScalingFactor() {
+		return false
+	}
+	return true
+}
+
 // Find all candidate observations that match each ASTNode and add to VariableFormula.
 func computeLeafObs(
 	inputResp *pbv2.ObservationResponse,
@@ -211,22 +227,9 @@ func computeLeafObs(
 		for entity, entityObs := range variableObs.ByEntity {
 			facetMap := map[string][]*pb.PointStat{}
 			for _, facetObs := range entityObs.OrderedFacets {
-				if leafData.Facet != nil {
-					facet := inputResp.Facets[facetObs.FacetId]
-					if leafData.Facet.GetMeasurementMethod() != facet.GetMeasurementMethod() {
-						continue
-					}
-					if leafData.Facet.GetObservationPeriod() != facet.GetObservationPeriod() {
-						continue
-					}
-					if leafData.Facet.GetUnit() != facet.GetUnit() {
-						continue
-					}
-					if leafData.Facet.GetScalingFactor() != facet.GetScalingFactor() {
-						continue
-					}
+				if leafData.Facet == nil || compareFacet(leafData.Facet, inputResp.Facets[facetObs.FacetId]) {
+					facetMap[facetObs.FacetId] = facetObs.Observations
 				}
-				facetMap[facetObs.FacetId] = facetObs.Observations
 			}
 			if len(facetMap) > 0 {
 				leafData.CandidateObs[entity] = facetMap
@@ -254,11 +257,13 @@ func evalBinaryExpr(
 			}
 			newObs := []*pb.PointStat{}
 			xIdx, yIdx := 0, 0
-			for xIdx < len(xObs) {
-				if yIdx == len(yObs) {
-					break
-				}
-				if xObs[xIdx].GetDate() == yObs[yIdx].GetDate() {
+			for xIdx < len(xObs) && yIdx < len(yObs) {
+				xDate, yDate := xObs[xIdx].GetDate(), yObs[yIdx].GetDate()
+				if xDate < yDate {
+					xIdx++
+				} else if yDate < xDate {
+					yIdx++
+				} else {
 					xVal := xObs[xIdx].GetValue()
 					yVal := yObs[yIdx].GetValue()
 					var val float64
@@ -278,14 +283,12 @@ func evalBinaryExpr(
 						return nil, fmt.Errorf("unsupported op (token) %v", op)
 					}
 					newObs = append(newObs, &pb.PointStat{
-						Date:  xObs[xIdx].GetDate(),
+						Date:  xDate,
 						Value: proto.Float64(val),
 					})
-				} else if xObs[xIdx].GetDate() > yObs[yIdx].GetDate() {
+					xIdx++
 					yIdx++
-					continue
 				}
-				xIdx++
 			}
 			if len(newObs) > 0 {
 				newFacetObs[facetId] = newObs
