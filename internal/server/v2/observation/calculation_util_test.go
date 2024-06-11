@@ -41,16 +41,12 @@ func TestFindObservationResponseHoles(t *testing.T) {
 			&pbv2.ObservationResponse{
 				ByVariable: map[string]*pbv2.VariableObservation{
 					"Count_Person": {ByEntity: map[string]*pbv2.EntityObservation{
-						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{
-							{FacetId: "1"},
-						}},
+						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{{FacetId: "1"}}},
 						"geoId/02": {OrderedFacets: []*pbv2.FacetObservation{}},
 					}},
 					"Count_Farm": {ByEntity: map[string]*pbv2.EntityObservation{
 						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{}},
-						"geoId/02": {OrderedFacets: []*pbv2.FacetObservation{
-							{FacetId: "2"},
-						}},
+						"geoId/02": {OrderedFacets: []*pbv2.FacetObservation{{FacetId: "2"}}},
 					}},
 				},
 			},
@@ -78,7 +74,11 @@ func TestFindObservationResponseHoles(t *testing.T) {
 			},
 		},
 	} {
-		got := findObservationResponseHoles(c.inputReq, c.inputResp)
+		got, err := findObservationResponseHoles(c.inputReq, c.inputResp)
+		if err != nil {
+			t.Errorf("error running TestFindObservationResponseHoles: %s", err)
+			continue
+		}
 		if ok := reflect.DeepEqual(got, c.want); !ok {
 			t.Errorf("findObservationResponseHoles(%v, %v) = %v, want %v",
 				c.inputReq, c.inputResp, got, c.want)
