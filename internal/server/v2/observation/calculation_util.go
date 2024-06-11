@@ -300,3 +300,31 @@ func evalBinaryExpr(
 	}
 	return result, nil
 }
+
+// Recursively iterate through the AST and perform the calculation.
+func evalExpr(
+	node ast.Node,
+	formula *VariableFormula,
+) (map[string]map[string][]*pb.PointStat, error) {
+	// If a node is of type *ast.Ident, it is a leaf with an obs value.
+	// Otherwise, it might be *ast.ParenExpr or *ast.BinaryExpr, so we continue recursing it to
+	// compute the obs value for the subtree..
+	switch t := node.(type) {
+	case *ast.Ident:
+		return formula.LeafData[node.(*ast.Ident).Name].CandidateObs, nil
+	case *ast.BinaryExpr:
+		xObs, err := evalExpr(t.X, formula)
+		if err != nil {
+			return nil, err
+		}
+		yObs, err := evalExpr(t.Y, formula)
+		if err != nil {
+			return nil, err
+		}
+		return evalBinaryExpr(xObs, yObs, t.Op)
+	case *ast.ParenExpr:
+		return evalExpr(t.X, formula)
+	default:
+		return nil, fmt.Errorf("unsupported ast type %T", t)
+	}
+}

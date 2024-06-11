@@ -15,6 +15,7 @@
 package observation
 
 import (
+	"go/parser"
 	"go/token"
 	"reflect"
 	"testing"
@@ -406,6 +407,68 @@ func TestEvalBinaryExpr(t *testing.T) {
 		if ok := reflect.DeepEqual(got, c.want); !ok {
 			t.Errorf("evalBinaryExpr(%v, %v, %v) = %v, want %v",
 				c.x, c.y, c.op, got, c.want)
+		}
+	}
+}
+
+func TestEvalExpr(t *testing.T) {
+	for _, c := range []struct {
+		inputExpr string
+		formula   *VariableFormula
+		want      map[string]map[string][]*pb.PointStat
+	}{
+		{
+			"(SV_1 - SV_2) / SV_3",
+			&VariableFormula{
+				LeafData: map[string]*ASTNode{
+					"SV_1": {
+						CandidateObs: map[string]map[string][]*pb.PointStat{
+							"geoId/01": {"facetId1": {{
+								Date:  "1",
+								Value: proto.Float64(10),
+							}}},
+						},
+					},
+					"SV_2": {
+						CandidateObs: map[string]map[string][]*pb.PointStat{
+							"geoId/01": {"facetId1": {{
+								Date:  "1",
+								Value: proto.Float64(4),
+							}}},
+						},
+					},
+					"SV_3": {
+						CandidateObs: map[string]map[string][]*pb.PointStat{
+							"geoId/01": {"facetId1": {{
+								Date:  "1",
+								Value: proto.Float64(2),
+							}}},
+						},
+					},
+				},
+			},
+			map[string]map[string][]*pb.PointStat{
+				"geoId/01": {"facetId1": {{
+					Date:  "1",
+					Value: proto.Float64(3),
+				}}},
+			},
+		},
+	} {
+		expr, err := parser.ParseExpr(encodeForParse(c.inputExpr))
+		if err != nil {
+			t.Errorf("error running TestEvalExpr: %s", err)
+			continue
+		}
+		c.formula.Expr = expr
+		got, err := evalExpr(expr, c.formula)
+		if err != nil {
+			t.Errorf("error running TestEvalExpr: %s", err)
+			continue
+		}
+		if ok := reflect.DeepEqual(got, c.want); !ok {
+			t.Errorf("evalExpr(%v, %v) = %v, want %v",
+				c.inputExpr, c.formula, got, c.want)
 		}
 	}
 }
