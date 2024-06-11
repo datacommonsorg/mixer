@@ -18,8 +18,75 @@ import (
 	"reflect"
 	"testing"
 
-	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
+  pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/google/go-cmp/cmp"
+	"github.com/google/go-cmp/cmp/cmpopts"
 )
+
+func TestParseNodeName(t *testing.T) {
+	for _, c := range []struct {
+		nodeName string
+		want     *ASTNode
+	}{
+		{
+			"Count_Person",
+			&ASTNode{StatVar: "Count_Person"},
+		},
+		{
+			"Count_Person_Female[ut=NumberUnit;mm=dcAggregate/Census;op=P1Y;sf=100]",
+			&ASTNode{
+				StatVar: "Count_Person_Female",
+				Facet: &pb.Facet{
+					MeasurementMethod: "dcAggregate/Census",
+					ObservationPeriod: "P1Y",
+					Unit:              "NumberUnit",
+					ScalingFactor:     "100",
+				},
+			},
+		},
+	} {
+		got, err := parseNode(c.nodeName)
+		if err != nil {
+			t.Errorf("parseNodeName(%s) = %s", c.nodeName, err)
+		}
+		if ok := reflect.DeepEqual(got, c.want); !ok {
+			t.Errorf("parseVarName(%s) = %v, want %v",
+				c.nodeName, got, c.want)
+		}
+	}
+}
+
+func TestVariableFormulaParseFormula(t *testing.T) {
+	strCmpOpts := cmpopts.SortSlices(func(a, b string) bool { return a < b })
+
+	for _, c := range []struct {
+		formula      string
+		wantStatVars []string
+	}{
+		{
+			"Person_Count_Female[ut=NumberUnit;mm=dcAggregate/Census;op=P1Y]/Person_Count[ut=Census]",
+			[]string{"Person_Count_Female", "Person_Count"},
+		},
+		{
+			"Person_Count-Person_Count_Female-Person_Count_Male",
+			[]string{"Person_Count_Female", "Person_Count", "Person_Count_Male"},
+		},
+		{
+			"(Person_Count-Person_Count_Female) / Person_Count_Female",
+			[]string{"Person_Count_Female", "Person_Count"},
+		},
+	} {
+		vf, err := NewVariableFormula(c.formula)
+		if err != nil {
+			t.Errorf("NewVariableFormula(%s) = %s", c.formula, err)
+		}
+		gotStatVars := vf.StatVars
+		if diff := cmp.Diff(gotStatVars, c.wantStatVars, strCmpOpts); diff != "" {
+			t.Errorf("vf.StatVars(%s) diff (-want +got):\n%s", c.formula, diff)
+    }
+	}
+}
 
 func TestFindObservationResponseHoles(t *testing.T) {
 	for _, c := range []struct {
