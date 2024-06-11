@@ -18,17 +18,21 @@ import (
 	"fmt"
 	"go/ast"
 	"go/parser"
+	"go/token"
 	"reflect"
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"google.golang.org/protobuf/proto"
 )
 
 // The info of a node in the AST tree.
 type ASTNode struct {
 	StatVar string
 	Facet   *pb.Facet
+	// Map of entity -> facetId -> obs.
+	CandidateObs map[string]map[string][]*pb.PointStat
 }
 
 type VariableFormula struct {
@@ -187,6 +191,111 @@ func findObservationResponseHoles(
 			if len(variableObs.ByEntity) == 0 {
 				result[variable] = &pbv2.DcidOrExpression{Expression: inputReq.Entity.Expression}
 			}
+		}
+	}
+	return result, nil
+}
+
+func compareFacet(facet1, facet2 *pb.Facet) bool {
+	if facet1.GetMeasurementMethod() != facet2.GetMeasurementMethod() {
+		return false
+	}
+	if facet1.GetObservationPeriod() != facet2.GetObservationPeriod() {
+		return false
+	}
+	if facet1.GetUnit() != facet2.GetUnit() {
+		return false
+	}
+	if facet1.GetScalingFactor() != facet2.GetScalingFactor() {
+		return false
+	}
+	return true
+}
+
+// Find all candidate observations that match each ASTNode and add to VariableFormula.
+func computeLeafObs(
+	inputResp *pbv2.ObservationResponse,
+	formula *VariableFormula,
+) {
+	for _, leafData := range formula.LeafData {
+		leafData.CandidateObs = map[string]map[string][]*pb.PointStat{}
+		variableObs, ok := inputResp.ByVariable[leafData.StatVar]
+		// No data for input variable.
+		if !ok {
+			return
+		}
+		for entity, entityObs := range variableObs.ByEntity {
+			facetMap := map[string][]*pb.PointStat{}
+			for _, facetObs := range entityObs.OrderedFacets {
+				if leafData.Facet == nil || compareFacet(leafData.Facet, inputResp.Facets[facetObs.FacetId]) {
+					facetMap[facetObs.FacetId] = facetObs.Observations
+				}
+			}
+			if len(facetMap) > 0 {
+				leafData.CandidateObs[entity] = facetMap
+			}
+		}
+	}
+}
+
+// Combine two sets of candidate observations using an operator token.
+func evalBinaryExpr(
+	x, y map[string]map[string][]*pb.PointStat,
+	op token.Token,
+) (map[string]map[string][]*pb.PointStat, error) {
+	result := map[string]map[string][]*pb.PointStat{}
+	for entity, xFacetObs := range x {
+		newFacetObs := map[string][]*pb.PointStat{}
+		for facetId, xObs := range xFacetObs {
+			yFacetObs, ok := y[entity]
+			if !ok {
+				continue
+			}
+			yObs, ok := yFacetObs[facetId]
+			if !ok {
+				continue
+			}
+			newObs := []*pb.PointStat{}
+			xIdx, yIdx := 0, 0
+			for xIdx < len(xObs) && yIdx < len(yObs) {
+				xDate, yDate := xObs[xIdx].GetDate(), yObs[yIdx].GetDate()
+				if xDate < yDate {
+					xIdx++
+				} else if yDate < xDate {
+					yIdx++
+				} else {
+					xVal := xObs[xIdx].GetValue()
+					yVal := yObs[yIdx].GetValue()
+					var val float64
+					switch op {
+					case token.ADD:
+						val = xVal + yVal
+					case token.SUB:
+						val = xVal - yVal
+					case token.MUL:
+						val = xVal * yVal
+					case token.QUO:
+						if yVal == 0 {
+							return nil, fmt.Errorf("denominator cannot be zero")
+						}
+						val = xVal / yVal
+					default:
+						return nil, fmt.Errorf("unsupported op (token) %v", op)
+					}
+					newObs = append(newObs, &pb.PointStat{
+						Date:  xDate,
+						Value: proto.Float64(val),
+					})
+					xIdx++
+					yIdx++
+				}
+			}
+			if len(newObs) > 0 {
+				newFacetObs[facetId] = newObs
+			}
+		}
+		if len(newFacetObs) > 0 {
+			result[entity] = newFacetObs
 		}
 	}
 	return result, nil
