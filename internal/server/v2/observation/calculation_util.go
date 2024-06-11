@@ -25,15 +25,15 @@ import (
 )
 
 // The info of a node in the AST tree.
-type NodeData struct {
+type ASTNode struct {
 	StatVar string
 	Facet   *pb.Facet
 }
 
-type Calculation struct {
+type VariableFormula struct {
 	Expr ast.Expr
-	// Key is encodeForParse(nodeName).
-	NodeDataMap map[string]*NodeData
+	// Key is encodeForParse(<name of ASTNode>).
+	NodeDataMap map[string]*ASTNode
 	StatVars    []string
 }
 
@@ -77,9 +77,9 @@ func decodeForParse(s string) string {
 }
 
 // Parse nodeName, which contains a variable and a set of filters.
-// For example: Person_Count[mm=US_Census;p=P1Y].
-func parseNode(nodeName string) (*NodeData, error) {
-	res := &NodeData{}
+// For example: Count_Person[mm=US_Census;p=P1Y].
+func parseNode(nodeName string) (*ASTNode, error) {
+	res := &ASTNode{}
 
 	if strings.Contains(nodeName, "[") { // With filters.
 		if !strings.Contains(nodeName, "]") {
@@ -116,13 +116,13 @@ func parseNode(nodeName string) (*NodeData, error) {
 	return res, nil
 }
 
-func NewCalculation(formula string) (*Calculation, error) {
+func NewVariableFormula(formula string) (*VariableFormula, error) {
 	expr, err := parser.ParseExpr(encodeForParse(formula))
 	if err != nil {
 		return nil, err
 	}
 
-	c := &Calculation{Expr: expr, NodeDataMap: map[string]*NodeData{}}
+	c := &VariableFormula{Expr: expr, NodeDataMap: map[string]*ASTNode{}}
 	if err := processNodeInfo(expr, c); err != nil {
 		return nil, err
 	}
@@ -141,7 +141,7 @@ func NewCalculation(formula string) (*Calculation, error) {
 }
 
 // Recursively iterate through the AST tree, extract and parse nodeName, then fill nodeData.
-func processNodeInfo(node ast.Node, c *Calculation) error {
+func processNodeInfo(node ast.Node, c *VariableFormula) error {
 	switch t := node.(type) {
 	case *ast.BinaryExpr:
 		for _, node := range []ast.Node{t.X, t.Y} {

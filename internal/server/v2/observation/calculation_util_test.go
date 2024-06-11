@@ -26,15 +26,15 @@ import (
 func TestParseNodeName(t *testing.T) {
 	for _, c := range []struct {
 		nodeName string
-		want     *NodeData
+		want     *ASTNode
 	}{
 		{
 			"Count_Person",
-			&NodeData{StatVar: "Count_Person"},
+			&ASTNode{StatVar: "Count_Person"},
 		},
 		{
 			"Count_Person_Female[ut=NumberUnit;mm=dcAggregate/Census;op=P1Y;sf=100]",
-			&NodeData{
+			&ASTNode{
 				StatVar: "Count_Person_Female",
 				Facet: &pb.Facet{
 					MeasurementMethod: "dcAggregate/Census",
@@ -56,7 +56,7 @@ func TestParseNodeName(t *testing.T) {
 	}
 }
 
-func TestCalculatorParseFormula(t *testing.T) {
+func TestVariableFormulaParseFormula(t *testing.T) {
 	strCmpOpts := cmpopts.SortSlices(func(a, b string) bool { return a < b })
 
 	for _, c := range []struct {
@@ -76,13 +76,13 @@ func TestCalculatorParseFormula(t *testing.T) {
 			[]string{"Person_Count_Female", "Person_Count"},
 		},
 	} {
-		calculation, err := NewCalculation(c.formula)
+		vf, err := NewVariableFormula(c.formula)
 		if err != nil {
-			t.Errorf("NewCalculation(%s) = %s", c.formula, err)
+			t.Errorf("NewVariableFormula(%s) = %s", c.formula, err)
 		}
-		gotStatVars := calculation.StatVars
+		gotStatVars := vf.StatVars
 		if diff := cmp.Diff(gotStatVars, c.wantStatVars, strCmpOpts); diff != "" {
-			t.Errorf("calculation.StatVars(%s) diff (-want +got):\n%s", c.formula, diff)
+			t.Errorf("vf.StatVars(%s) diff (-want +got):\n%s", c.formula, diff)
 		}
 	}
 }
