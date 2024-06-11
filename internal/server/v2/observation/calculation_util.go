@@ -33,9 +33,12 @@ type ASTNode struct {
 
 type VariableFormula struct {
 	Expr ast.Expr
-	// Key is encodeForParse(<name of ASTNode>).
-	NodeDataMap map[string]*ASTNode
-	StatVars    []string
+	// Map of leaves in AST tree formula to the corresponding StatVar and Facet.
+	// The key is encodeForParse(nodeName), where nodeName contains the variable and filters,
+	// for example: Count_Person[mm=US_Census;p=P1Y].
+	LeafData map[string]*ASTNode
+	// List of distinct StatVars in the formula.
+	StatVars []string
 }
 
 // Golang's AST package is used for parsing the formula, so we need to avoid sensitive tokens for
@@ -50,14 +53,6 @@ var (
 		"=":            "_EQUAL_TO_",
 		";":            "_SEMICOLON_",
 	}
-	decodeForParseTokenMap = map[string]string{
-		"_DC_SLASH_":             "dc/",
-		"_DC_AGGREGATE_SLASH_":   "dcAggregate/",
-		"_LEFT_SQUARE_BRACKET_":  "[",
-		"_RIGHT_SQUARE_BRACKET_": "]",
-		"_EQUAL_TO_":             "=",
-		"_SEMICOLON_":            ";",
-	}
 )
 
 func encodeForParse(s string) string {
@@ -70,8 +65,8 @@ func encodeForParse(s string) string {
 
 func decodeForParse(s string) string {
 	res := s
-	for k, v := range decodeForParseTokenMap {
-		res = strings.ReplaceAll(res, k, v)
+	for k, v := range encodeForParseTokenMap {
+		res = strings.ReplaceAll(res, v, k)
 	}
 	return res
 
@@ -123,14 +118,14 @@ func NewVariableFormula(formula string) (*VariableFormula, error) {
 		return nil, err
 	}
 
-	c := &VariableFormula{Expr: expr, NodeDataMap: map[string]*ASTNode{}}
+	c := &VariableFormula{Expr: expr, LeafData: map[string]*ASTNode{}}
 	if err := processNodeInfo(expr, c); err != nil {
 		return nil, err
 	}
 
 	statVarSet := map[string]struct{}{}
-	for k := range c.NodeDataMap {
-		statVarSet[c.NodeDataMap[k].StatVar] = struct{}{}
+	for k := range c.LeafData {
+		statVarSet[c.LeafData[k].StatVar] = struct{}{}
 	}
 	statVars := []string{}
 	for k := range statVarSet {
@@ -152,7 +147,7 @@ func processNodeInfo(node ast.Node, c *VariableFormula) error {
 				if err != nil {
 					return err
 				}
-				c.NodeDataMap[nodeName] = nodeData
+				c.LeafData[nodeName] = nodeData
 			} else {
 				if err := processNodeInfo(node, c); err != nil {
 					return err
