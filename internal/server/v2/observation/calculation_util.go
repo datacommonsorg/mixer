@@ -309,20 +309,15 @@ func evalExpr(
 	// If a node is of type *ast.Ident, it is a leaf with an obs value.
 	// Otherwise, it might be *ast.ParenExpr or *ast.BinaryExpr, so we continue recursing it to
 	// compute the obs value for the subtree..
-	computeChildObs := func(node ast.Node) (map[string]map[string][]*pb.PointStat, error) {
-		if reflect.TypeOf(node).String() == "*ast.Ident" {
-			return formula.LeafData[node.(*ast.Ident).Name].CandidateObs, nil
-		}
-		return evalExpr(node, formula)
-	}
-
 	switch t := node.(type) {
+	case *ast.Ident:
+		return formula.LeafData[node.(*ast.Ident).Name].CandidateObs, nil
 	case *ast.BinaryExpr:
-		xObs, err := computeChildObs(t.X)
+		xObs, err := evalExpr(t.X, formula)
 		if err != nil {
 			return nil, err
 		}
-		yObs, err := computeChildObs(t.Y)
+		yObs, err := evalExpr(t.Y, formula)
 		if err != nil {
 			return nil, err
 		}
