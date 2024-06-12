@@ -132,20 +132,20 @@ func MaybeCalculateHoles(
 					break
 				}
 			} else if len(entity.GetDcids()) != 0 {
-				emptyDcids := []string{}
+				newEntityDcids := []string{}
 				for _, dcid := range entity.GetDcids() {
 					if _, ok := variableObs.ByEntity[dcid]; !ok {
-						emptyDcids = append(emptyDcids, dcid)
+						newEntityDcids = append(newEntityDcids, dcid)
 					}
 				}
-				if len(emptyDcids) < len(currentEntity.GetDcids()) {
+				if len(newEntityDcids) < len(currentEntity.GetDcids()) {
 					result = append(result, calculatedResp)
-					if len(emptyDcids) == 0 {
+					if len(newEntityDcids) == 0 {
 						break
 					}
 				}
 				// Still some empty dcids, so try next formula.
-				currentEntity = &pbv2.DcidOrExpression{Dcids: emptyDcids}
+				currentEntity = &pbv2.DcidOrExpression{Dcids: newEntityDcids}
 			}
 		}
 	}
