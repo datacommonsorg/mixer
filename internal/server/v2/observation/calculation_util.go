@@ -173,8 +173,9 @@ func findObservationResponseHoles(
 	inputResp *pbv2.ObservationResponse,
 ) (map[string]*pbv2.DcidOrExpression, error) {
 	result := map[string]*pbv2.DcidOrExpression{}
+	// Formula variables are handled by DerivedSeries.
 	if inputReq.Variable.GetFormula() != "" {
-		return nil, fmt.Errorf("currently do not support nested formulas")
+		return result, nil
 	}
 	for variable, variableObs := range inputResp.ByVariable {
 		if len(inputReq.Entity.GetDcids()) > 0 {
