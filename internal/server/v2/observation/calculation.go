@@ -55,15 +55,15 @@ func Calculate(
 		return nil, err
 	}
 	candidateObs := computeLeafObs(initialObs, variableFormula)
+	calculatedResp, err := evalExpr(variableFormula.Expr, candidateObs)
+	if err != nil {
+		return nil, err
+	}
 	newResp := &pbv2.ObservationResponse{
 		ByVariable: map[string]*pbv2.VariableObservation{
 			variable: {},
 		},
 		Facets: map[string]*pb.Facet{},
-	}
-	calculatedResp, err := evalExpr(variableFormula.Expr, candidateObs)
-	if err != nil {
-		return nil, err
 	}
 	for entity, entityData := range calculatedResp {
 		facetObs := []*pbv2.FacetObservation{}
