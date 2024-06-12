@@ -210,7 +210,7 @@ func (s *Server) V2Event(
 func (s *Server) V2Observation(
 	ctx context.Context, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
-	mergedResp, err := v2observation.ObservationInternal(
+	initialResp, err := v2observation.ObservationInternal(
 		ctx,
 		s.store,
 		s.cachedata.Load(),
@@ -227,13 +227,13 @@ func (s *Server) V2Observation(
 		s.metadata,
 		s.httpClient,
 		in,
-		mergedResp,
+		initialResp,
 	)
 	if err != nil {
 		return nil, err
 	}
-	// mergedResp is preferred over any calculated response.
-	combinedResp := append([]*pbv2.ObservationResponse{mergedResp}, calculatedResps...)
+	// initialResp is preferred over any calculated response.
+	combinedResp := append([]*pbv2.ObservationResponse{initialResp}, calculatedResps...)
 	return merger.MergeMultipleObservations(combinedResp...), nil
 }
 

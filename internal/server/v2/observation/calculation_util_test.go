@@ -160,7 +160,7 @@ func TestComputeLeafObs(t *testing.T) {
 	for _, c := range []struct {
 		inputResp *pbv2.ObservationResponse
 		formula   *VariableFormula
-		want      *VariableFormula
+		want      map[string]map[string]map[string][]*pb.PointStat
 	}{{
 		&pbv2.ObservationResponse{
 			ByVariable: map[string]*pbv2.VariableObservation{
@@ -205,43 +205,31 @@ func TestComputeLeafObs(t *testing.T) {
 				},
 			},
 		},
-		&VariableFormula{
-			LeafData: map[string]*ASTNode{
-				"Count_Person": {
-					StatVar: "Count_Person",
-					CandidateObs: map[string]map[string][]*pb.PointStat{
-						"geoId/01": {
-							"1": {{
-								Date:  "1",
-								Value: proto.Float64(1),
-							}},
-							"2": {{
-								Date:  "2",
-								Value: proto.Float64(2),
-							}},
-						},
-					},
+		map[string]map[string]map[string][]*pb.PointStat{
+			"Count_Person": {
+				"geoId/01": {
+					"1": {{
+						Date:  "1",
+						Value: proto.Float64(1),
+					}},
+					"2": {{
+						Date:  "2",
+						Value: proto.Float64(2),
+					}},
 				},
-				"Count_Person[mm=US_Census;p=P1Y]": {
-					StatVar: "Count_Person",
-					Facet: &pb.Facet{
-						MeasurementMethod: "US_Census",
-						ObservationPeriod: "P1Y",
-					},
-					CandidateObs: map[string]map[string][]*pb.PointStat{
-						"geoId/01": {
-							"2": {{
-								Date:  "2",
-								Value: proto.Float64(2),
-							}},
-						},
-					},
+			},
+			"Count_Person[mm=US_Census;p=P1Y]": {
+				"geoId/01": {
+					"2": {{
+						Date:  "2",
+						Value: proto.Float64(2),
+					}},
 				},
 			},
 		},
 	}} {
-		computeLeafObs(c.inputResp, c.formula)
-		if ok := reflect.DeepEqual(c.formula, c.want); !ok {
+		got := computeLeafObs(c.inputResp, c.formula)
+		if ok := reflect.DeepEqual(got, c.want); !ok {
 			t.Errorf("computeLeafObs = %v, want %v",
 				c.formula, c.want)
 		}
@@ -413,39 +401,25 @@ func TestEvalBinaryExpr(t *testing.T) {
 
 func TestEvalExpr(t *testing.T) {
 	for _, c := range []struct {
-		inputExpr string
-		formula   *VariableFormula
-		want      map[string]map[string][]*pb.PointStat
+		inputExpr    string
+		candidateObs map[string]map[string]map[string][]*pb.PointStat
+		want         map[string]map[string][]*pb.PointStat
 	}{
 		{
 			"(SV_1 - SV_2) / SV_3",
-			&VariableFormula{
-				LeafData: map[string]*ASTNode{
-					"SV_1": {
-						CandidateObs: map[string]map[string][]*pb.PointStat{
-							"geoId/01": {"facetId1": {{
-								Date:  "1",
-								Value: proto.Float64(10),
-							}}},
-						},
-					},
-					"SV_2": {
-						CandidateObs: map[string]map[string][]*pb.PointStat{
-							"geoId/01": {"facetId1": {{
-								Date:  "1",
-								Value: proto.Float64(4),
-							}}},
-						},
-					},
-					"SV_3": {
-						CandidateObs: map[string]map[string][]*pb.PointStat{
-							"geoId/01": {"facetId1": {{
-								Date:  "1",
-								Value: proto.Float64(2),
-							}}},
-						},
-					},
-				},
+			map[string]map[string]map[string][]*pb.PointStat{
+				"SV_1": {"geoId/01": {"facetId1": {{
+					Date:  "1",
+					Value: proto.Float64(10),
+				}}}},
+				"SV_2": {"geoId/01": {"facetId1": {{
+					Date:  "1",
+					Value: proto.Float64(4),
+				}}}},
+				"SV_3": {"geoId/01": {"facetId1": {{
+					Date:  "1",
+					Value: proto.Float64(2),
+				}}}},
 			},
 			map[string]map[string][]*pb.PointStat{
 				"geoId/01": {"facetId1": {{
@@ -460,15 +434,14 @@ func TestEvalExpr(t *testing.T) {
 			t.Errorf("error running TestEvalExpr: %s", err)
 			continue
 		}
-		c.formula.Expr = expr
-		got, err := evalExpr(expr, c.formula)
+		got, err := evalExpr(expr, c.candidateObs)
 		if err != nil {
 			t.Errorf("error running TestEvalExpr: %s", err)
 			continue
 		}
 		if ok := reflect.DeepEqual(got, c.want); !ok {
 			t.Errorf("evalExpr(%v, %v) = %v, want %v",
-				c.inputExpr, c.formula, got, c.want)
+				c.inputExpr, c.candidateObs, got, c.want)
 		}
 	}
 }

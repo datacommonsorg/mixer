@@ -50,18 +50,18 @@ func Calculate(
 		Filter:   inputReq.GetFilter(),
 		Select:   inputReq.GetSelect(),
 	}
-	variableResp, err := ObservationInternal(ctx, store, cachedata, metadata, httpClient, newReq)
+	initialObs, err := ObservationInternal(ctx, store, cachedata, metadata, httpClient, newReq)
 	if err != nil {
 		return nil, err
 	}
-	computeLeafObs(variableResp, variableFormula)
+	candidateObs := computeLeafObs(initialObs, variableFormula)
 	newResp := &pbv2.ObservationResponse{
 		ByVariable: map[string]*pbv2.VariableObservation{
 			variable: {},
 		},
 		Facets: map[string]*pb.Facet{},
 	}
-	calculatedResp, err := evalExpr(variableFormula.Expr, variableFormula)
+	calculatedResp, err := evalExpr(variableFormula.Expr, candidateObs)
 	if err != nil {
 		return nil, err
 	}
@@ -69,7 +69,7 @@ func Calculate(
 		facetObs := []*pbv2.FacetObservation{}
 		for facetId, facetData := range entityData {
 			if _, ok := newResp.Facets[facetId]; !ok {
-				newResp.Facets[facetId] = variableResp.Facets[facetId]
+				newResp.Facets[facetId] = initialObs.Facets[facetId]
 			}
 			facetObs = append(facetObs, &pbv2.FacetObservation{
 				FacetId:      facetId,
@@ -138,7 +138,7 @@ func MaybeCalculateHoles(
 						emptyDcids = append(emptyDcids, dcid)
 					}
 				}
-				if len(emptyDcids) < len(entity.GetDcids()) {
+				if len(emptyDcids) < len(currentEntity.GetDcids()) {
 					result = append(result, calculatedResp)
 					if len(emptyDcids) == 0 {
 						break

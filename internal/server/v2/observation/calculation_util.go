@@ -31,8 +31,6 @@ import (
 type ASTNode struct {
 	StatVar string
 	Facet   *pb.Facet
-	// Map of entity -> facetId -> obs.
-	CandidateObs map[string]map[string][]*pb.PointStat
 }
 
 type VariableFormula struct {
@@ -213,17 +211,19 @@ func compareFacet(facet1, facet2 *pb.Facet) bool {
 	return true
 }
 
-// Find all candidate observations that match each ASTNode and add to VariableFormula.
+// Find all candidate observations that match each ASTNode.
+// Returns map of nodeName -> entity -> facet -> obs.
 func computeLeafObs(
 	inputResp *pbv2.ObservationResponse,
 	formula *VariableFormula,
-) {
-	for _, leafData := range formula.LeafData {
-		leafData.CandidateObs = map[string]map[string][]*pb.PointStat{}
+) map[string]map[string]map[string][]*pb.PointStat {
+	result := map[string]map[string]map[string][]*pb.PointStat{}
+	for nodeName, leafData := range formula.LeafData {
+		result[nodeName] = map[string]map[string][]*pb.PointStat{}
 		variableObs, ok := inputResp.ByVariable[leafData.StatVar]
 		// No data for input variable.
 		if !ok {
-			return
+			return result
 		}
 		for entity, entityObs := range variableObs.ByEntity {
 			facetMap := map[string][]*pb.PointStat{}
@@ -233,10 +233,11 @@ func computeLeafObs(
 				}
 			}
 			if len(facetMap) > 0 {
-				leafData.CandidateObs[entity] = facetMap
+				result[nodeName][entity] = facetMap
 			}
 		}
 	}
+	return result
 }
 
 // Combine two sets of candidate observations using an operator token.
@@ -305,26 +306,26 @@ func evalBinaryExpr(
 // Recursively iterate through the AST and perform the calculation.
 func evalExpr(
 	node ast.Node,
-	formula *VariableFormula,
+	candidateObs map[string]map[string]map[string][]*pb.PointStat,
 ) (map[string]map[string][]*pb.PointStat, error) {
 	// If a node is of type *ast.Ident, it is a leaf with an obs value.
 	// Otherwise, it might be *ast.ParenExpr or *ast.BinaryExpr, so we continue recursing it to
 	// compute the obs value for the subtree..
 	switch t := node.(type) {
 	case *ast.Ident:
-		return formula.LeafData[node.(*ast.Ident).Name].CandidateObs, nil
+		return candidateObs[node.(*ast.Ident).Name], nil
 	case *ast.BinaryExpr:
-		xObs, err := evalExpr(t.X, formula)
+		xObs, err := evalExpr(t.X, candidateObs)
 		if err != nil {
 			return nil, err
 		}
-		yObs, err := evalExpr(t.Y, formula)
+		yObs, err := evalExpr(t.Y, candidateObs)
 		if err != nil {
 			return nil, err
 		}
 		return evalBinaryExpr(xObs, yObs, t.Op)
 	case *ast.ParenExpr:
-		return evalExpr(t.X, formula)
+		return evalExpr(t.X, candidateObs)
 	default:
 		return nil, fmt.Errorf("unsupported ast type %T", t)
 	}
