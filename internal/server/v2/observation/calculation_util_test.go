@@ -27,10 +27,10 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-func TestParseNodeName(t *testing.T) {
+func TestParseNodeString(t *testing.T) {
 	for _, c := range []struct {
-		nodeName string
-		want     *ASTNode
+		nodeString string
+		want       *ASTNode
 	}{
 		{
 			"Count_Person",
@@ -49,13 +49,13 @@ func TestParseNodeName(t *testing.T) {
 			},
 		},
 	} {
-		got, err := parseNode(c.nodeName)
+		got, err := parseNode(c.nodeString)
 		if err != nil {
-			t.Errorf("parseNodeName(%s) = %s", c.nodeName, err)
+			t.Errorf("parseNodeString(%s) = %s", c.nodeString, err)
 		}
 		if ok := reflect.DeepEqual(got, c.want); !ok {
 			t.Errorf("parseVarName(%s) = %v, want %v",
-				c.nodeName, got, c.want)
+				c.nodeString, got, c.want)
 		}
 	}
 }
@@ -156,244 +156,201 @@ func TestFindObservationResponseHoles(t *testing.T) {
 	}
 }
 
-func TestComputeLeafObs(t *testing.T) {
+func TestFilterObsByASTNode(t *testing.T) {
+	sampleInputResp := &pbv2.ObservationResponse{
+		ByVariable: map[string]*pbv2.VariableObservation{
+			"Count_Person": {ByEntity: map[string]*pbv2.EntityObservation{
+				"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{
+					{
+						FacetId: "1",
+						Observations: []*pb.PointStat{{
+							Date:  "1",
+							Value: proto.Float64(1),
+						}},
+					},
+					{
+						FacetId: "2",
+						Observations: []*pb.PointStat{{
+							Date:  "2",
+							Value: proto.Float64(2),
+						}},
+					},
+				}},
+			}},
+		},
+		Facets: map[string]*pb.Facet{
+			"1": {
+				ObservationPeriod: "P1M",
+			},
+			"2": {
+				MeasurementMethod: "US_Census",
+				ObservationPeriod: "P1Y",
+			},
+		},
+	}
 	for _, c := range []struct {
 		inputResp *pbv2.ObservationResponse
-		formula   *VariableFormula
-		want      map[string]map[string]map[string][]*pb.PointStat
+		node      *ASTNode
+		want      *pbv2.ObservationResponse
 	}{{
-		&pbv2.ObservationResponse{
-			ByVariable: map[string]*pbv2.VariableObservation{
-				"Count_Person": {ByEntity: map[string]*pbv2.EntityObservation{
-					"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{
-						{
-							FacetId: "1",
-							Observations: []*pb.PointStat{{
-								Date:  "1",
-								Value: proto.Float64(1),
-							}},
-						},
-						{
-							FacetId: "2",
-							Observations: []*pb.PointStat{{
-								Date:  "2",
-								Value: proto.Float64(2),
-							}},
-						},
-					}},
-				}},
-			},
-			Facets: map[string]*pb.Facet{
-				"1": {
-					ObservationPeriod: "P1M",
-				},
-				"2": {
+		sampleInputResp,
+		&ASTNode{StatVar: "Count_Person"},
+		sampleInputResp,
+	},
+		{
+			sampleInputResp,
+			&ASTNode{
+				StatVar: "Count_Person",
+				Facet: &pb.Facet{
 					MeasurementMethod: "US_Census",
 					ObservationPeriod: "P1Y",
 				},
 			},
-		},
-		&VariableFormula{
-			LeafData: map[string]*ASTNode{
-				"Count_Person": {StatVar: "Count_Person"},
-				"Count_Person[mm=US_Census;p=P1Y]": {
-					StatVar: "Count_Person",
-					Facet: &pb.Facet{
+			&pbv2.ObservationResponse{
+				ByVariable: map[string]*pbv2.VariableObservation{
+					"Count_Person": {ByEntity: map[string]*pbv2.EntityObservation{
+						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{
+							{
+								FacetId: "2",
+								Observations: []*pb.PointStat{{
+									Date:  "2",
+									Value: proto.Float64(2),
+								}},
+							},
+						}},
+					}},
+				},
+				Facets: map[string]*pb.Facet{
+					"2": {
 						MeasurementMethod: "US_Census",
 						ObservationPeriod: "P1Y",
 					},
 				},
 			},
-		},
-		map[string]map[string]map[string][]*pb.PointStat{
-			"Count_Person": {
-				"geoId/01": {
-					"1": {{
-						Date:  "1",
-						Value: proto.Float64(1),
-					}},
-					"2": {{
-						Date:  "2",
-						Value: proto.Float64(2),
-					}},
-				},
-			},
-			"Count_Person[mm=US_Census;p=P1Y]": {
-				"geoId/01": {
-					"2": {{
-						Date:  "2",
-						Value: proto.Float64(2),
-					}},
-				},
-			},
-		},
-	}} {
-		got := computeLeafObs(c.inputResp, c.formula)
+		}} {
+		got := filterObsByASTNode(c.inputResp, c.node)
 		if ok := reflect.DeepEqual(got, c.want); !ok {
-			t.Errorf("computeLeafObs = %v, want %v",
-				c.formula, c.want)
+			t.Errorf("filterObsByASTNode(%v, %v) = %v, want %v",
+				c.inputResp, c.node, got, c.want)
 		}
 	}
 }
 
-func TestEvalBinaryExpr(t *testing.T) {
-	inputX := map[string]map[string][]*pb.PointStat{
-		"geoId/01": {"facetId1": {
-			{
-				Date:  "1",
-				Value: proto.Float64(6),
-			},
-		}},
-	}
-	inputY := map[string]map[string][]*pb.PointStat{
-		"geoId/01": {"facetId1": {
-			{
-				Date:  "1",
-				Value: proto.Float64(2),
-			},
-		}},
-	}
+func TestMergePointStat(t *testing.T) {
+	inputX := []*pb.PointStat{{
+		Date:  "1",
+		Value: proto.Float64(6),
+	}}
+	inputY := []*pb.PointStat{{
+		Date:  "1",
+		Value: proto.Float64(2),
+	}}
 	for _, c := range []struct {
-		x    map[string]map[string][]*pb.PointStat
-		y    map[string]map[string][]*pb.PointStat
+		x    []*pb.PointStat
+		y    []*pb.PointStat
 		op   token.Token
-		want map[string]map[string][]*pb.PointStat
+		want []*pb.PointStat
 	}{
 		{
-			map[string]map[string][]*pb.PointStat{
-				"geoId/01": {"facetId2": {
-					{
-						Date:  "1",
-						Value: proto.Float64(1),
-					},
-					{
-						Date:  "3",
-						Value: proto.Float64(3),
-					},
-					{
-						Date:  "4",
-						Value: proto.Float64(4),
-					},
-					{
-						Date:  "5",
-						Value: proto.Float64(5),
-					},
-					{
-						Date:  "8",
-						Value: proto.Float64(8),
-					},
-				}},
-				"geoId/02": {"facetId1": {{
+			[]*pb.PointStat{
+				{
 					Date:  "1",
 					Value: proto.Float64(1),
-				}}},
+				},
+				{
+					Date:  "3",
+					Value: proto.Float64(3),
+				},
+				{
+					Date:  "4",
+					Value: proto.Float64(4),
+				},
+				{
+					Date:  "5",
+					Value: proto.Float64(5),
+				},
+				{
+					Date:  "8",
+					Value: proto.Float64(8),
+				},
 			},
-			map[string]map[string][]*pb.PointStat{
-				"geoId/01": {
-					"facetId1": {{
-						Date:  "1",
-						Value: proto.Float64(1),
-					}},
-					"facetId2": {
-						{
-							Date:  "0",
-							Value: proto.Float64(0),
-						},
-						{
-							Date:  "2",
-							Value: proto.Float64(2),
-						},
-						{
-							Date:  "3",
-							Value: proto.Float64(3),
-						},
-						{
-							Date:  "5",
-							Value: proto.Float64(5),
-						},
-						{
-							Date:  "6",
-							Value: proto.Float64(6),
-						},
-						{
-							Date:  "7",
-							Value: proto.Float64(7),
-						},
-						{
-							Date:  "9",
-							Value: proto.Float64(9),
-						},
-					}},
-				"geoId/02": {"facetId1": {{
-					Date:  "1",
-					Value: proto.Float64(1),
-				}}},
+			[]*pb.PointStat{
+				{
+					Date:  "0",
+					Value: proto.Float64(0),
+				},
+				{
+					Date:  "2",
+					Value: proto.Float64(2),
+				},
+				{
+					Date:  "3",
+					Value: proto.Float64(3),
+				},
+				{
+					Date:  "5",
+					Value: proto.Float64(5),
+				},
+				{
+					Date:  "6",
+					Value: proto.Float64(6),
+				},
+				{
+					Date:  "7",
+					Value: proto.Float64(7),
+				},
+				{
+					Date:  "9",
+					Value: proto.Float64(9),
+				},
 			},
 			token.ADD,
-			map[string]map[string][]*pb.PointStat{
-				"geoId/01": {"facetId2": {
-					{
-						Date:  "3",
-						Value: proto.Float64(6),
-					},
-					{
-						Date:  "5",
-						Value: proto.Float64(10),
-					},
-				}},
-				"geoId/02": {"facetId1": {{
-					Date:  "1",
-					Value: proto.Float64(2),
-				}}},
+			[]*pb.PointStat{
+				{
+					Date:  "3",
+					Value: proto.Float64(6),
+				},
+				{
+					Date:  "5",
+					Value: proto.Float64(10),
+				},
 			},
 		},
 		{
 			inputX,
 			inputY,
 			token.SUB,
-			map[string]map[string][]*pb.PointStat{
-				"geoId/01": {"facetId1": {
-					{
-						Date:  "1",
-						Value: proto.Float64(4),
-					},
-				}},
-			},
+			[]*pb.PointStat{{
+				Date:  "1",
+				Value: proto.Float64(4),
+			}},
 		},
 		{
 			inputX,
 			inputY,
 			token.MUL,
-			map[string]map[string][]*pb.PointStat{
-				"geoId/01": {"facetId1": {
-					{
-						Date:  "1",
-						Value: proto.Float64(12),
-					},
-				}},
-			},
+			[]*pb.PointStat{{
+				Date:  "1",
+				Value: proto.Float64(12),
+			}},
 		},
 		{
 			inputX,
 			inputY,
 			token.QUO,
-			map[string]map[string][]*pb.PointStat{
-				"geoId/01": {"facetId1": {
-					{
-						Date:  "1",
-						Value: proto.Float64(3),
-					},
-				}},
-			},
+			[]*pb.PointStat{{
+				Date:  "1",
+				Value: proto.Float64(3),
+			}},
 		},
 	} {
-		got, err := evalBinaryExpr(c.x, c.y, c.op)
+		got, err := mergePointStat(c.x, c.y, c.op)
 		if err != nil {
-			t.Errorf("error running TestEvalBinaryExpr: %s", err)
+			t.Errorf("error running TestMergePointStat: %s", err)
 			continue
 		}
 		if ok := reflect.DeepEqual(got, c.want); !ok {
-			t.Errorf("evalBinaryExpr(%v, %v, %v) = %v, want %v",
+			t.Errorf("mergePointStat(%v, %v, %v) = %v, want %v",
 				c.x, c.y, c.op, got, c.want)
 		}
 	}
@@ -401,31 +358,74 @@ func TestEvalBinaryExpr(t *testing.T) {
 
 func TestEvalExpr(t *testing.T) {
 	for _, c := range []struct {
-		inputExpr    string
-		candidateObs map[string]map[string]map[string][]*pb.PointStat
-		want         map[string]map[string][]*pb.PointStat
+		inputExpr string
+		leafData  map[string]*ASTNode
+		inputResp *pbv2.ObservationResponse
+		want      *pbv2.ObservationResponse
 	}{
 		{
 			"(SV_1 - SV_2) / SV_3",
-			map[string]map[string]map[string][]*pb.PointStat{
-				"SV_1": {"geoId/01": {"facetId1": {{
-					Date:  "1",
-					Value: proto.Float64(10),
-				}}}},
-				"SV_2": {"geoId/01": {"facetId1": {{
-					Date:  "1",
-					Value: proto.Float64(4),
-				}}}},
-				"SV_3": {"geoId/01": {"facetId1": {{
-					Date:  "1",
-					Value: proto.Float64(2),
-				}}}},
+			map[string]*ASTNode{
+				"SV_1": {StatVar: "SV_1"},
+				"SV_2": {StatVar: "SV_2"},
+				"SV_3": {StatVar: "SV_3"},
 			},
-			map[string]map[string][]*pb.PointStat{
-				"geoId/01": {"facetId1": {{
-					Date:  "1",
-					Value: proto.Float64(3),
-				}}},
+			&pbv2.ObservationResponse{
+				ByVariable: map[string]*pbv2.VariableObservation{
+					"SV_1": {ByEntity: map[string]*pbv2.EntityObservation{
+						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{{
+							FacetId: "facetId1",
+							Observations: []*pb.PointStat{{
+								Date:  "1",
+								Value: proto.Float64(10),
+							}},
+						}}},
+					}},
+					"SV_2": {ByEntity: map[string]*pbv2.EntityObservation{
+						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{{
+							FacetId: "facetId1",
+							Observations: []*pb.PointStat{{
+								Date:  "1",
+								Value: proto.Float64(4),
+							}},
+						}}},
+					}},
+					"SV_3": {ByEntity: map[string]*pbv2.EntityObservation{
+						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{{
+							FacetId: "facetId1",
+							Observations: []*pb.PointStat{{
+								Date:  "1",
+								Value: proto.Float64(2),
+							}},
+						}}},
+					}},
+				},
+				Facets: map[string]*pb.Facet{
+					"facetId1": {
+						ObservationPeriod: "P1Y",
+					},
+				},
+			},
+			&pbv2.ObservationResponse{
+				ByVariable: map[string]*pbv2.VariableObservation{
+					"": {ByEntity: map[string]*pbv2.EntityObservation{
+						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{{
+							FacetId: "facetId1",
+							Observations: []*pb.PointStat{{
+								Date:  "1",
+								Value: proto.Float64(3),
+							}},
+							EarliestDate: "1",
+							LatestDate:   "1",
+							ObsCount:     1,
+						}}},
+					}},
+				},
+				Facets: map[string]*pb.Facet{
+					"facetId1": {
+						ObservationPeriod: "P1Y",
+					},
+				},
 			},
 		},
 	} {
@@ -434,14 +434,14 @@ func TestEvalExpr(t *testing.T) {
 			t.Errorf("error running TestEvalExpr: %s", err)
 			continue
 		}
-		got, err := evalExpr(expr, c.candidateObs)
+		got, err := evalExpr(expr, c.leafData, c.inputResp)
 		if err != nil {
 			t.Errorf("error running TestEvalExpr: %s", err)
 			continue
 		}
 		if ok := reflect.DeepEqual(got, c.want); !ok {
-			t.Errorf("evalExpr(%v, %v) = %v, want %v",
-				c.inputExpr, c.candidateObs, got, c.want)
+			t.Errorf("evalExpr(%v, %v, %v) = %v, want %v",
+				c.inputExpr, c.leafData, c.inputResp, got, c.want)
 		}
 	}
 }

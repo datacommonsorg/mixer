@@ -17,9 +17,9 @@ package observation
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
@@ -50,43 +50,24 @@ func Calculate(
 		Filter:   inputReq.GetFilter(),
 		Select:   inputReq.GetSelect(),
 	}
-	initialObs, err := ObservationInternal(ctx, store, cachedata, metadata, httpClient, newReq)
+	inputObs, err := ObservationInternal(ctx, store, cachedata, metadata, httpClient, newReq)
 	if err != nil {
 		return nil, err
 	}
-	candidateObs := computeLeafObs(initialObs, variableFormula)
-	calculatedResp, err := evalExpr(variableFormula.Expr, candidateObs)
+	calculatedResp, err := evalExpr(variableFormula.Expr, variableFormula.LeafData, inputObs)
 	if err != nil {
 		return nil, err
 	}
-	newResp := &pbv2.ObservationResponse{
-		ByVariable: map[string]*pbv2.VariableObservation{
-			variable: {},
-		},
-		Facets: map[string]*pb.Facet{},
+	if len(calculatedResp.ByVariable) != 1 {
+		return nil, fmt.Errorf("more than one variable in intermediate response")
 	}
-	for entity, entityData := range calculatedResp {
-		facetObs := []*pbv2.FacetObservation{}
-		for facetId, facetData := range entityData {
-			if _, ok := newResp.Facets[facetId]; !ok {
-				newResp.Facets[facetId] = initialObs.Facets[facetId]
-			}
-			facetObs = append(facetObs, &pbv2.FacetObservation{
-				FacetId:      facetId,
-				Observations: facetData,
-				EarliestDate: facetData[0].GetDate(),
-				LatestDate:   facetData[len(facetData)-1].GetDate(),
-				ObsCount:     int32(len(facetData)),
-			})
-		}
-		if len(newResp.ByVariable[variable].ByEntity) == 0 {
-			newResp.ByVariable[variable].ByEntity = map[string]*pbv2.EntityObservation{}
-		}
-		newResp.ByVariable[variable].ByEntity[entity] = &pbv2.EntityObservation{
-			OrderedFacets: facetObs,
-		}
+	// Replace placeholder by final variable.
+	for key, variableObs := range calculatedResp.ByVariable {
+		calculatedResp.ByVariable[variable] = variableObs
+		delete(calculatedResp.ByVariable, key)
+		break
 	}
-	return newResp, nil
+	return calculatedResp, nil
 }
 
 // Detects holes in a V2ObservationResponse and attempts to fill them using calculations.

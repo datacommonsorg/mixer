@@ -36,7 +36,7 @@ type ASTNode struct {
 type VariableFormula struct {
 	Expr ast.Expr
 	// Map of leaves in AST tree formula to the corresponding StatVar and Facet.
-	// The key is encodeForParse(nodeName), where nodeName contains the StatVar dcid and filters,
+	// The key is encodeForParse(nodeString), where nodeString contains the StatVar dcid and filters,
 	// (for example: "Count_Person[mm=US_Census;p=P1Y]").
 	LeafData map[string]*ASTNode
 	// List of distinct StatVars in the formula.
@@ -74,20 +74,20 @@ func decodeForParse(s string) string {
 
 }
 
-// Parse nodeName, which contains a variable and a set of filters.
+// Parse nodeString, which contains a variable and a set of filters.
 // For example: Count_Person[mm=US_Census;p=P1Y].
-func parseNode(nodeName string) (*ASTNode, error) {
+func parseNode(nodeString string) (*ASTNode, error) {
 	res := &ASTNode{}
 
-	if strings.Contains(nodeName, "[") { // With filters.
-		if !strings.Contains(nodeName, "]") {
+	if strings.Contains(nodeString, "[") { // With filters.
+		if !strings.Contains(nodeString, "]") {
 			return nil, fmt.Errorf("missing ]")
 		}
 
-		leftBracketIndex := strings.Index(nodeName, "[")
+		leftBracketIndex := strings.Index(nodeString, "[")
 
 		res.Facet = &pb.Facet{}
-		filterString := nodeName[leftBracketIndex+1 : len(nodeName)-1]
+		filterString := nodeString[leftBracketIndex+1 : len(nodeString)-1]
 		for _, filter := range strings.Split(filterString, ";") {
 			filterType := filter[0:2]
 			filterVal := filter[3:]
@@ -105,10 +105,10 @@ func parseNode(nodeName string) (*ASTNode, error) {
 			}
 		}
 
-		res.StatVar = nodeName[0:leftBracketIndex]
+		res.StatVar = nodeString[0:leftBracketIndex]
 
 	} else { // No filters.
-		res.StatVar = nodeName
+		res.StatVar = nodeString
 	}
 
 	return res, nil
@@ -138,18 +138,18 @@ func NewVariableFormula(formula string) (*VariableFormula, error) {
 	return c, nil
 }
 
-// Recursively iterate through the AST tree, extract and parse nodeName, then fill nodeData.
+// Recursively iterate through the AST tree, extract and parse nodeString, then fill nodeData.
 func processNodeInfo(node ast.Node, c *VariableFormula) error {
 	switch t := node.(type) {
 	case *ast.BinaryExpr:
 		for _, node := range []ast.Node{t.X, t.Y} {
 			if reflect.TypeOf(node).String() == "*ast.Ident" {
-				nodeName := node.(*ast.Ident).Name
-				nodeData, err := parseNode(decodeForParse(nodeName))
+				nodeString := node.(*ast.Ident).Name
+				nodeData, err := parseNode(decodeForParse(nodeString))
 				if err != nil {
 					return err
 				}
-				c.LeafData[nodeName] = nodeData
+				c.LeafData[nodeString] = nodeData
 			} else {
 				if err := processNodeInfo(node, c); err != nil {
 					return err
@@ -211,93 +211,143 @@ func compareFacet(facet1, facet2 *pb.Facet) bool {
 	return true
 }
 
-// Find all candidate observations that match each ASTNode.
-// Returns map of nodeName -> entity -> facet -> obs.
-func computeLeafObs(
-	inputResp *pbv2.ObservationResponse,
-	formula *VariableFormula,
-) map[string]map[string]map[string][]*pb.PointStat {
-	result := map[string]map[string]map[string][]*pb.PointStat{}
-	for nodeName, leafData := range formula.LeafData {
-		result[nodeName] = map[string]map[string][]*pb.PointStat{}
-		variableObs, ok := inputResp.ByVariable[leafData.StatVar]
-		// No data for input variable.
-		if !ok {
-			return result
-		}
-		for entity, entityObs := range variableObs.ByEntity {
-			facetMap := map[string][]*pb.PointStat{}
-			for _, facetObs := range entityObs.OrderedFacets {
-				if leafData.Facet == nil || compareFacet(leafData.Facet, inputResp.Facets[facetObs.FacetId]) {
-					facetMap[facetObs.FacetId] = facetObs.Observations
+// Returns a filtered ObservationResponse containing obs that match an ASTNode StatVar and Facet.
+func filterObsByASTNode(
+	fullResp *pbv2.ObservationResponse,
+	node *ASTNode,
+) *pbv2.ObservationResponse {
+	result := &pbv2.ObservationResponse{
+		ByVariable: map[string]*pbv2.VariableObservation{
+			node.StatVar: {},
+		},
+		Facets: map[string]*pb.Facet{},
+	}
+	variableObs, ok := fullResp.ByVariable[node.StatVar]
+	if !ok {
+		return result
+	}
+	for entity, entityObs := range variableObs.ByEntity {
+		filteredFacetObs := []*pbv2.FacetObservation{}
+		for _, facetObs := range entityObs.OrderedFacets {
+			if node.Facet == nil || compareFacet(node.Facet, fullResp.Facets[facetObs.FacetId]) {
+				filteredFacetObs = append(filteredFacetObs, facetObs)
+				if _, ok := result.Facets[facetObs.FacetId]; !ok {
+					result.Facets[facetObs.FacetId] = fullResp.Facets[facetObs.FacetId]
 				}
 			}
-			if len(facetMap) > 0 {
-				result[nodeName][entity] = facetMap
+		}
+		if len(filteredFacetObs) > 0 {
+			if len(result.ByVariable[node.StatVar].ByEntity) == 0 {
+				result.ByVariable[node.StatVar].ByEntity = map[string]*pbv2.EntityObservation{}
+			}
+			result.ByVariable[node.StatVar].ByEntity[entity] = &pbv2.EntityObservation{
+				OrderedFacets: filteredFacetObs,
 			}
 		}
 	}
 	return result
 }
 
-// Combine two sets of candidate observations using an operator token.
-func evalBinaryExpr(
-	x, y map[string]map[string][]*pb.PointStat,
+// Combine two PointStat series using an operator token.
+func mergePointStat(
+	x, y []*pb.PointStat,
 	op token.Token,
-) (map[string]map[string][]*pb.PointStat, error) {
-	result := map[string]map[string][]*pb.PointStat{}
-	for entity, xFacetObs := range x {
-		newFacetObs := map[string][]*pb.PointStat{}
-		for facetId, xObs := range xFacetObs {
-			yFacetObs, ok := y[entity]
-			if !ok {
-				continue
+) ([]*pb.PointStat, error) {
+	result := []*pb.PointStat{}
+	xIdx, yIdx := 0, 0
+	for xIdx < len(x) && yIdx < len(y) {
+		xDate, yDate := x[xIdx].GetDate(), y[yIdx].GetDate()
+		if xDate < yDate {
+			xIdx++
+		} else if yDate < xDate {
+			yIdx++
+		} else {
+			xVal := x[xIdx].GetValue()
+			yVal := y[yIdx].GetValue()
+			var val float64
+			switch op {
+			case token.ADD:
+				val = xVal + yVal
+			case token.SUB:
+				val = xVal - yVal
+			case token.MUL:
+				val = xVal * yVal
+			case token.QUO:
+				if yVal == 0 {
+					return nil, fmt.Errorf("denominator cannot be zero")
+				}
+				val = xVal / yVal
+			default:
+				return nil, fmt.Errorf("unsupported op (token) %v", op)
 			}
-			yObs, ok := yFacetObs[facetId]
-			if !ok {
-				continue
-			}
-			newObs := []*pb.PointStat{}
-			xIdx, yIdx := 0, 0
-			for xIdx < len(xObs) && yIdx < len(yObs) {
-				xDate, yDate := xObs[xIdx].GetDate(), yObs[yIdx].GetDate()
-				if xDate < yDate {
-					xIdx++
-				} else if yDate < xDate {
-					yIdx++
-				} else {
-					xVal := xObs[xIdx].GetValue()
-					yVal := yObs[yIdx].GetValue()
-					var val float64
-					switch op {
-					case token.ADD:
-						val = xVal + yVal
-					case token.SUB:
-						val = xVal - yVal
-					case token.MUL:
-						val = xVal * yVal
-					case token.QUO:
-						if yVal == 0 {
-							return nil, fmt.Errorf("denominator cannot be zero")
+			result = append(result, &pb.PointStat{
+				Date:  xDate,
+				Value: proto.Float64(val),
+			})
+			xIdx++
+			yIdx++
+		}
+	}
+	return result, nil
+}
+
+// Combine two ObservationResponses using an operator token.
+func evalBinaryExpr(
+	x, y *pbv2.ObservationResponse,
+	op token.Token,
+) (*pbv2.ObservationResponse, error) {
+	result := &pbv2.ObservationResponse{
+		// Intermediate responses have no StatVar, so use a placeholder.
+		ByVariable: map[string]*pbv2.VariableObservation{"": {}},
+		Facets:     map[string]*pb.Facet{},
+	}
+	if len(x.ByVariable) != 1 || len(y.ByVariable) != 1 {
+		return nil, fmt.Errorf("more than one variable in intermediate response")
+	}
+	for _, xVariableObs := range x.ByVariable {
+		for _, yVariableObs := range y.ByVariable {
+			for entity, xEntityObs := range xVariableObs.ByEntity {
+				yEntityObs, ok := yVariableObs.ByEntity[entity]
+				if !ok {
+					continue
+				}
+				newOrderedFacets := []*pbv2.FacetObservation{}
+				for i := 0; i < len(xEntityObs.OrderedFacets); i++ {
+					for j := 0; j < len(yEntityObs.OrderedFacets); j++ {
+						if xEntityObs.OrderedFacets[i].GetFacetId() == yEntityObs.OrderedFacets[j].GetFacetId() {
+							newFacetId := xEntityObs.OrderedFacets[i].GetFacetId()
+							newPointStat, err := mergePointStat(
+								xEntityObs.OrderedFacets[i].Observations,
+								yEntityObs.OrderedFacets[j].Observations,
+								op,
+							)
+							if err != nil {
+								return nil, err
+							}
+							if len(newPointStat) > 0 {
+								newOrderedFacets = append(newOrderedFacets, &pbv2.FacetObservation{
+									FacetId:      newFacetId,
+									Observations: newPointStat,
+									EarliestDate: newPointStat[0].GetDate(),
+									LatestDate:   newPointStat[len(newPointStat)-1].GetDate(),
+									ObsCount:     int32(len(newPointStat)),
+								})
+								if _, ok := result.Facets[newFacetId]; !ok {
+									result.Facets[newFacetId] = x.Facets[newFacetId]
+								}
+							}
 						}
-						val = xVal / yVal
-					default:
-						return nil, fmt.Errorf("unsupported op (token) %v", op)
 					}
-					newObs = append(newObs, &pb.PointStat{
-						Date:  xDate,
-						Value: proto.Float64(val),
-					})
-					xIdx++
-					yIdx++
+				}
+				if len(newOrderedFacets) > 0 {
+					if len(result.ByVariable[""].ByEntity) == 0 {
+						result.ByVariable[""].ByEntity = map[string]*pbv2.EntityObservation{}
+					}
+					result.ByVariable[""].ByEntity[entity] = &pbv2.EntityObservation{
+						OrderedFacets: newOrderedFacets,
+					}
 				}
 			}
-			if len(newObs) > 0 {
-				newFacetObs[facetId] = newObs
-			}
-		}
-		if len(newFacetObs) > 0 {
-			result[entity] = newFacetObs
 		}
 	}
 	return result, nil
@@ -306,26 +356,27 @@ func evalBinaryExpr(
 // Recursively iterate through the AST and perform the calculation.
 func evalExpr(
 	node ast.Node,
-	candidateObs map[string]map[string]map[string][]*pb.PointStat,
-) (map[string]map[string][]*pb.PointStat, error) {
+	leafData map[string]*ASTNode,
+	inputResp *pbv2.ObservationResponse,
+) (*pbv2.ObservationResponse, error) {
 	// If a node is of type *ast.Ident, it is a leaf with an obs value.
 	// Otherwise, it might be *ast.ParenExpr or *ast.BinaryExpr, so we continue recursing it to
 	// compute the obs value for the subtree..
 	switch t := node.(type) {
 	case *ast.Ident:
-		return candidateObs[node.(*ast.Ident).Name], nil
+		return filterObsByASTNode(inputResp, leafData[node.(*ast.Ident).Name]), nil
 	case *ast.BinaryExpr:
-		xObs, err := evalExpr(t.X, candidateObs)
+		xObs, err := evalExpr(t.X, leafData, inputResp)
 		if err != nil {
 			return nil, err
 		}
-		yObs, err := evalExpr(t.Y, candidateObs)
+		yObs, err := evalExpr(t.Y, leafData, inputResp)
 		if err != nil {
 			return nil, err
 		}
 		return evalBinaryExpr(xObs, yObs, t.Op)
 	case *ast.ParenExpr:
-		return evalExpr(t.X, candidateObs)
+		return evalExpr(t.X, leafData, inputResp)
 	default:
 		return nil, fmt.Errorf("unsupported ast type %T", t)
 	}
