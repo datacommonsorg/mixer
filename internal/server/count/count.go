@@ -152,35 +152,42 @@ func Count(
 		if !ok {
 			continue
 		}
+		missingEntities := []string{}
 		for _, entity := range entities {
-			if _, ok := result[dcid][entity]; ok {
-				continue
+			if _, ok := result[dcid][entity]; !ok {
+				missingEntities = append(missingEntities, entity)
 			}
-			for _, f := range formulas {
-				variableFormula, err := formula.NewVariableFormula(f)
-				if err != nil {
-					return nil, err
+		}
+		for _, f := range formulas {
+			if len(missingEntities) == 0 {
+				break
+			}
+			variableFormula, err := formula.NewVariableFormula(f)
+			if err != nil {
+				return nil, err
+			}
+			calculatedCount, err := countInternal(
+				ctx,
+				st,
+				cachedata,
+				variableFormula.StatVars,
+				missingEntities,
+			)
+			if err != nil {
+				return nil, err
+			}
+			entityVariables := map[string]int{}
+			for _, entityCount := range calculatedCount {
+				for entity := range entityCount {
+					entityVariables[entity]++
 				}
-				calculatedCount, err := countInternal(
-					ctx,
-					st,
-					cachedata,
-					variableFormula.StatVars,
-					[]string{entity},
-				)
-				if err != nil {
-					return nil, err
-				}
-				allExist := true
-				for _, entityCount := range calculatedCount {
-					if _, ok := entityCount[entity]; !ok {
-						allExist = false
-						break
-					}
-				}
-				if allExist {
+			}
+			missingEntities = []string{}
+			for entity, count := range entityVariables {
+				if count == len(variableFormula.StatVars) {
 					result[dcid][entity] = 0
-					break
+				} else {
+					missingEntities = append(missingEntities, entity)
 				}
 			}
 		}
