@@ -26,6 +26,11 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
+type Equation struct {
+	variable string
+	formula  string
+}
+
 // Computes a calculation for a variable and entity, based on a formula and input data.
 func Calculate(
 	ctx context.Context,
@@ -33,12 +38,11 @@ func Calculate(
 	cachedata *cache.Cache,
 	metadata *resource.Metadata,
 	httpClient *http.Client,
-	formula string,
-	variable string,
+	equation *Equation,
 	entity *pbv2.DcidOrExpression,
 	inputReq *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
-	variableFormula, err := NewVariableFormula(formula)
+	variableFormula, err := NewVariableFormula(equation.formula)
 	if err != nil {
 		return nil, err
 	}
@@ -58,15 +62,13 @@ func Calculate(
 	if err != nil {
 		return nil, err
 	}
-	if len(calculatedResp.ByVariable) != 1 {
-		return nil, fmt.Errorf("more than one variable in intermediate response")
-	}
 	// Replace placeholder by final variable.
-	for key, variableObs := range calculatedResp.ByVariable {
-		calculatedResp.ByVariable[variable] = variableObs
-		delete(calculatedResp.ByVariable, key)
-		break
+	variableObs, ok := calculatedResp.ByVariable[INTERMEDIATE_NODE]
+	if !ok {
+		return nil, fmt.Errorf("missing intermediate variable in intermediate response")
 	}
+	calculatedResp.ByVariable[equation.variable] = variableObs
+	delete(calculatedResp.ByVariable, INTERMEDIATE_NODE)
 	return calculatedResp, nil
 }
 
@@ -98,8 +100,7 @@ func MaybeCalculateHoles(
 				cachedata,
 				metadata,
 				httpClient,
-				formula,
-				variable,
+				&Equation{variable, formula},
 				currentEntity,
 				inputReq,
 			)

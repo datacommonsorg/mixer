@@ -43,6 +43,10 @@ type VariableFormula struct {
 	StatVars []string
 }
 
+const (
+	INTERMEDIATE_NODE = "INTERMEDIATE_NODE"
+)
+
 // Golang's AST package is used for parsing the formula, so we need to avoid sensitive tokens for
 // AST. For those tokens, we swap them with insensitive tokens before the parsing, then swap them
 // back after the parsing.
@@ -217,10 +221,9 @@ func filterObsByASTNode(
 	node *ASTNode,
 ) *pbv2.ObservationResponse {
 	result := &pbv2.ObservationResponse{
-		ByVariable: map[string]*pbv2.VariableObservation{
-			node.StatVar: {},
-		},
-		Facets: map[string]*pb.Facet{},
+		// Use a placeholder for intermediate responses.
+		ByVariable: map[string]*pbv2.VariableObservation{INTERMEDIATE_NODE: {}},
+		Facets:     map[string]*pb.Facet{},
 	}
 	variableObs, ok := fullResp.ByVariable[node.StatVar]
 	if !ok {
@@ -237,10 +240,10 @@ func filterObsByASTNode(
 			}
 		}
 		if len(filteredFacetObs) > 0 {
-			if len(result.ByVariable[node.StatVar].ByEntity) == 0 {
-				result.ByVariable[node.StatVar].ByEntity = map[string]*pbv2.EntityObservation{}
+			if len(result.ByVariable[INTERMEDIATE_NODE].ByEntity) == 0 {
+				result.ByVariable[INTERMEDIATE_NODE].ByEntity = map[string]*pbv2.EntityObservation{}
 			}
-			result.ByVariable[node.StatVar].ByEntity[entity] = &pbv2.EntityObservation{
+			result.ByVariable[INTERMEDIATE_NODE].ByEntity[entity] = &pbv2.EntityObservation{
 				OrderedFacets: filteredFacetObs,
 			}
 		}
@@ -297,56 +300,57 @@ func evalBinaryExpr(
 	op token.Token,
 ) (*pbv2.ObservationResponse, error) {
 	result := &pbv2.ObservationResponse{
-		// Intermediate responses have no StatVar, so use a placeholder.
-		ByVariable: map[string]*pbv2.VariableObservation{"": {}},
+		// Use a placeholder for intermediate responses.
+		ByVariable: map[string]*pbv2.VariableObservation{INTERMEDIATE_NODE: {}},
 		Facets:     map[string]*pb.Facet{},
 	}
-	if len(x.ByVariable) != 1 || len(y.ByVariable) != 1 {
-		return nil, fmt.Errorf("more than one variable in intermediate response")
+	xVariableObs, xOk := x.ByVariable[INTERMEDIATE_NODE]
+	yVariableObs, yOk := y.ByVariable[INTERMEDIATE_NODE]
+	if !xOk || !yOk {
+		return nil, fmt.Errorf("missing intermediate variable in intermediate response")
 	}
-	for _, xVariableObs := range x.ByVariable {
-		for _, yVariableObs := range y.ByVariable {
-			for entity, xEntityObs := range xVariableObs.ByEntity {
-				yEntityObs, ok := yVariableObs.ByEntity[entity]
-				if !ok {
-					continue
-				}
-				newOrderedFacets := []*pbv2.FacetObservation{}
-				for i := 0; i < len(xEntityObs.OrderedFacets); i++ {
-					for j := 0; j < len(yEntityObs.OrderedFacets); j++ {
-						if xEntityObs.OrderedFacets[i].GetFacetId() == yEntityObs.OrderedFacets[j].GetFacetId() {
-							newFacetId := xEntityObs.OrderedFacets[i].GetFacetId()
-							newPointStat, err := mergePointStat(
-								xEntityObs.OrderedFacets[i].Observations,
-								yEntityObs.OrderedFacets[j].Observations,
-								op,
-							)
-							if err != nil {
-								return nil, err
-							}
-							if len(newPointStat) > 0 {
-								newOrderedFacets = append(newOrderedFacets, &pbv2.FacetObservation{
-									FacetId:      newFacetId,
-									Observations: newPointStat,
-									EarliestDate: newPointStat[0].GetDate(),
-									LatestDate:   newPointStat[len(newPointStat)-1].GetDate(),
-									ObsCount:     int32(len(newPointStat)),
-								})
-								if _, ok := result.Facets[newFacetId]; !ok {
-									result.Facets[newFacetId] = x.Facets[newFacetId]
-								}
-							}
+	for entity, xEntityObs := range xVariableObs.ByEntity {
+		yEntityObs, ok := yVariableObs.ByEntity[entity]
+		if !ok {
+			continue
+		}
+		xFacets := xEntityObs.OrderedFacets
+		yFacets := yEntityObs.OrderedFacets
+		newOrderedFacets := []*pbv2.FacetObservation{}
+		for i := 0; i < len(xFacets); i++ {
+			for j := 0; j < len(yFacets); j++ {
+				if xFacets[i].GetFacetId() == yFacets[j].GetFacetId() {
+					newFacetId := xFacets[i].GetFacetId()
+					newPointStat, err := mergePointStat(
+						xFacets[i].Observations,
+						yFacets[j].Observations,
+						op,
+					)
+					if err != nil {
+						return nil, err
+					}
+					if len(newPointStat) > 0 {
+						newOrderedFacets = append(newOrderedFacets, &pbv2.FacetObservation{
+							FacetId:      newFacetId,
+							Observations: newPointStat,
+							EarliestDate: newPointStat[0].GetDate(),
+							LatestDate:   newPointStat[len(newPointStat)-1].GetDate(),
+							ObsCount:     int32(len(newPointStat)),
+						})
+						if _, ok := result.Facets[newFacetId]; !ok {
+							// TODO: Determine if calculated facet should be the same as input facet.
+							result.Facets[newFacetId] = x.Facets[newFacetId]
 						}
 					}
 				}
-				if len(newOrderedFacets) > 0 {
-					if len(result.ByVariable[""].ByEntity) == 0 {
-						result.ByVariable[""].ByEntity = map[string]*pbv2.EntityObservation{}
-					}
-					result.ByVariable[""].ByEntity[entity] = &pbv2.EntityObservation{
-						OrderedFacets: newOrderedFacets,
-					}
-				}
+			}
+		}
+		if len(newOrderedFacets) > 0 {
+			if len(result.ByVariable[INTERMEDIATE_NODE].ByEntity) == 0 {
+				result.ByVariable[INTERMEDIATE_NODE].ByEntity = map[string]*pbv2.EntityObservation{}
+			}
+			result.ByVariable[INTERMEDIATE_NODE].ByEntity[entity] = &pbv2.EntityObservation{
+				OrderedFacets: newOrderedFacets,
 			}
 		}
 	}

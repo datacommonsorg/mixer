@@ -195,7 +195,37 @@ func TestFilterObsByASTNode(t *testing.T) {
 	}{{
 		sampleInputResp,
 		&ASTNode{StatVar: "Count_Person"},
-		sampleInputResp,
+		&pbv2.ObservationResponse{
+			ByVariable: map[string]*pbv2.VariableObservation{
+				"INTERMEDIATE_NODE": {ByEntity: map[string]*pbv2.EntityObservation{
+					"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{
+						{
+							FacetId: "1",
+							Observations: []*pb.PointStat{{
+								Date:  "1",
+								Value: proto.Float64(1),
+							}},
+						},
+						{
+							FacetId: "2",
+							Observations: []*pb.PointStat{{
+								Date:  "2",
+								Value: proto.Float64(2),
+							}},
+						},
+					}},
+				}},
+			},
+			Facets: map[string]*pb.Facet{
+				"1": {
+					ObservationPeriod: "P1M",
+				},
+				"2": {
+					MeasurementMethod: "US_Census",
+					ObservationPeriod: "P1Y",
+				},
+			},
+		},
 	},
 		{
 			sampleInputResp,
@@ -208,7 +238,7 @@ func TestFilterObsByASTNode(t *testing.T) {
 			},
 			&pbv2.ObservationResponse{
 				ByVariable: map[string]*pbv2.VariableObservation{
-					"Count_Person": {ByEntity: map[string]*pbv2.EntityObservation{
+					"INTERMEDIATE_NODE": {ByEntity: map[string]*pbv2.EntityObservation{
 						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{
 							{
 								FacetId: "2",
@@ -408,7 +438,7 @@ func TestEvalExpr(t *testing.T) {
 			},
 			&pbv2.ObservationResponse{
 				ByVariable: map[string]*pbv2.VariableObservation{
-					"": {ByEntity: map[string]*pbv2.EntityObservation{
+					"INTERMEDIATE_NODE": {ByEntity: map[string]*pbv2.EntityObservation{
 						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{{
 							FacetId: "facetId1",
 							Observations: []*pb.PointStat{{
