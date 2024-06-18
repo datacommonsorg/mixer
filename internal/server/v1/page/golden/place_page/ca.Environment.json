@@ -4,11 +4,11 @@
       "data": {
         "AirPollutant_Cancer_Risk": {
           "val": {
-            "2016": 43.2354373124949,
-            "2017": 43.2354373124949,
-            "2018": 43.2354373124949,
+            "2016": 43.2354373124948,
+            "2017": 43.2354373124948,
+            "2018": 43.2354373124948,
             "2019": 36.7280603366804,
-            "2020": 36.728060336682,
+            "2020": 36.7280603366819,
             "2021": 28.127147766323,
             "2022": 28.1182795698925,
             "2023": 27.5806451612903
@@ -16,7 +16,8 @@
           "metadata": {
             "importName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
             "provenanceUrl": "https://gaftp.epa.gov/EJSCREEN/",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "unit": "PerMillionPerson"
           }
         },
         "AirQualityIndex_AirPollutant": {

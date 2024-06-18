@@ -9592,11 +9592,15 @@
                 {
                   "date": "2024-04",
                   "value": 6492000
+                },
+                {
+                  "date": "2024-05",
+                  "value": 6649000
                 }
               ],
-              "obs_count": 916,
+              "obs_count": 917,
               "earliest_date": "1948-01",
-              "latest_date": "2024-04"
+              "latest_date": "2024-05"
             },
             {
               "facet_id": "1714978719",
