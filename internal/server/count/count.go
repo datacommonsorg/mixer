@@ -147,47 +147,54 @@ func Count(
 	}
 	// Check for count for computed observations.
 	// Use counts of formula variables as a heuristic.
-	for _, dcid := range svOrSvgs {
-		formulas, ok := cachedata.SVFormula()[dcid]
-		if !ok {
-			continue
-		}
+	for _, svOrSvg := range svOrSvgs {
 		missingEntities := []string{}
 		for _, entity := range entities {
-			if _, ok := result[dcid][entity]; !ok {
+			if _, ok := result[svOrSvg][entity]; !ok {
 				missingEntities = append(missingEntities, entity)
 			}
 		}
+		if len(missingEntities) == 0 {
+			continue
+		}
+		formulas, ok := cachedata.SVFormula()[svOrSvg]
+		if !ok {
+			continue
+		}
+		// Batch all variable formulas into one request to countInternal.
+		variableFormulas := []*formula.VariableFormula{}
+		formulaVariables := []string{}
 		for _, f := range formulas {
-			if len(missingEntities) == 0 {
-				break
-			}
 			variableFormula, err := formula.NewVariableFormula(f)
 			if err != nil {
 				return nil, err
 			}
-			calculatedCount, err := countInternal(
-				ctx,
-				st,
-				cachedata,
-				variableFormula.StatVars,
-				missingEntities,
-			)
-			if err != nil {
-				return nil, err
-			}
-			entityVariables := map[string]int{}
-			for _, entityCount := range calculatedCount {
-				for entity := range entityCount {
-					entityVariables[entity]++
+			variableFormulas = append(variableFormulas, variableFormula)
+			formulaVariables = append(formulaVariables, variableFormula.StatVars...)
+		}
+		calculatedCount, err := countInternal(
+			ctx,
+			st,
+			cachedata,
+			formulaVariables,
+			missingEntities,
+		)
+		if err != nil {
+			return nil, err
+		}
+		for _, entity := range missingEntities {
+			for _, vf := range variableFormulas {
+				// Check if all variables in formula have data.
+				found := true
+				for _, sv := range vf.StatVars {
+					if _, ok := calculatedCount[sv][entity]; !ok {
+						found = false
+						break
+					}
 				}
-			}
-			missingEntities = []string{}
-			for entity, count := range entityVariables {
-				if count == len(variableFormula.StatVars) {
-					result[dcid][entity] = 0
-				} else {
-					missingEntities = append(missingEntities, entity)
+				if found {
+					result[svOrSvg][entity] = 0
+					break
 				}
 			}
 		}
