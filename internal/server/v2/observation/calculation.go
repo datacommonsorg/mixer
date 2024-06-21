@@ -23,6 +23,7 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/server/statvar/formula"
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
@@ -42,7 +43,7 @@ func Calculate(
 	entity *pbv2.DcidOrExpression,
 	inputReq *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
-	variableFormula, err := NewVariableFormula(equation.formula)
+	variableFormula, err := formula.NewVariableFormula(equation.formula)
 	if err != nil {
 		return nil, err
 	}

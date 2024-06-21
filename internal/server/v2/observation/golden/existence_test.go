@@ -47,6 +47,7 @@ func TestExistence(t *testing.T) {
 					"country/CAN",
 					"test_entity",
 					"country/BRA",
+					"wikidataId/Q613",
 				},
 				[]string{
 					"Count_Person",
@@ -55,6 +56,7 @@ func TestExistence(t *testing.T) {
 					"test_var_1",
 					"dc/g/SQL",
 					"dc/topic/Businesses",
+					"Count_Person_Female",
 				},
 				"existence.json",
 			},
@@ -90,7 +92,7 @@ func TestExistence(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"Observation(existence)",
-		&test.TestOption{FetchSVG: true, UseSQLite: true},
+		&test.TestOption{FetchSVG: true, UseSQLite: true, CacheSVFormula: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

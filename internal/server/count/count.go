@@ -19,6 +19,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
+	"github.com/datacommonsorg/mixer/internal/server/statvar/formula"
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -26,12 +27,7 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-// Count checks if entities have data for stat vars and stat var groups.
-//
-// Returns a two level map from sv/svg dcid to entity dcid to the number of
-// sv with data. For a given sv/svg, if an entity has no data, it will
-// not show up in the second level map.
-func Count(
+func countInternal(
 	ctx context.Context,
 	st *store.Store,
 	cachedata *cache.Cache,
@@ -126,6 +122,79 @@ func Count(
 						}
 						result[ancestor][e] += 1
 					}
+				}
+			}
+		}
+	}
+	return result, nil
+}
+
+// Count checks if entities have data for stat vars and stat var groups.
+//
+// Returns a two level map from sv/svg dcid to entity dcid to the number of
+// sv with data. For a given sv/svg, if an entity has no data, it will
+// not show up in the second level map.
+func Count(
+	ctx context.Context,
+	st *store.Store,
+	cachedata *cache.Cache,
+	svOrSvgs []string,
+	entities []string,
+) (map[string]map[string]int32, error) {
+	result, err := countInternal(ctx, st, cachedata, svOrSvgs, entities)
+	if err != nil {
+		return nil, err
+	}
+	// Check for count for computed observations.
+	// Use counts of formula variables as a heuristic.
+	for _, svOrSvg := range svOrSvgs {
+		missingEntities := []string{}
+		for _, entity := range entities {
+			if _, ok := result[svOrSvg][entity]; !ok {
+				missingEntities = append(missingEntities, entity)
+			}
+		}
+		if len(missingEntities) == 0 {
+			continue
+		}
+		formulas, ok := cachedata.SVFormula()[svOrSvg]
+		if !ok {
+			continue
+		}
+		// Batch all variable formulas into one request to countInternal.
+		variableFormulas := []*formula.VariableFormula{}
+		formulaVariables := []string{}
+		for _, f := range formulas {
+			variableFormula, err := formula.NewVariableFormula(f)
+			if err != nil {
+				return nil, err
+			}
+			variableFormulas = append(variableFormulas, variableFormula)
+			formulaVariables = append(formulaVariables, variableFormula.StatVars...)
+		}
+		calculatedCount, err := countInternal(
+			ctx,
+			st,
+			cachedata,
+			formulaVariables,
+			missingEntities,
+		)
+		if err != nil {
+			return nil, err
+		}
+		for _, entity := range missingEntities {
+			for _, vf := range variableFormulas {
+				// Check if all variables in formula have data.
+				found := true
+				for _, sv := range vf.StatVars {
+					if _, ok := calculatedCount[sv][entity]; !ok {
+						found = false
+						break
+					}
+				}
+				if found {
+					result[svOrSvg][entity] = 0
+					break
 				}
 			}
 		}

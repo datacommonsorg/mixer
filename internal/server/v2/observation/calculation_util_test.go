@@ -15,81 +15,15 @@
 package observation
 
 import (
-	"go/parser"
 	"go/token"
 	"reflect"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	"github.com/google/go-cmp/cmp"
-	"github.com/google/go-cmp/cmp/cmpopts"
+	"github.com/datacommonsorg/mixer/internal/server/statvar/formula"
 	"google.golang.org/protobuf/proto"
 )
-
-func TestParseNodeString(t *testing.T) {
-	for _, c := range []struct {
-		nodeString string
-		want       *ASTNode
-	}{
-		{
-			"Count_Person",
-			&ASTNode{StatVar: "Count_Person"},
-		},
-		{
-			"Count_Person_Female[ut=NumberUnit;mm=dcAggregate/Census;op=P1Y;sf=100]",
-			&ASTNode{
-				StatVar: "Count_Person_Female",
-				Facet: &pb.Facet{
-					MeasurementMethod: "dcAggregate/Census",
-					ObservationPeriod: "P1Y",
-					Unit:              "NumberUnit",
-					ScalingFactor:     "100",
-				},
-			},
-		},
-	} {
-		got, err := parseNode(c.nodeString)
-		if err != nil {
-			t.Errorf("parseNodeString(%s) = %s", c.nodeString, err)
-		}
-		if ok := reflect.DeepEqual(got, c.want); !ok {
-			t.Errorf("parseVarName(%s) = %v, want %v",
-				c.nodeString, got, c.want)
-		}
-	}
-}
-
-func TestVariableFormulaParseFormula(t *testing.T) {
-	strCmpOpts := cmpopts.SortSlices(func(a, b string) bool { return a < b })
-
-	for _, c := range []struct {
-		formula      string
-		wantStatVars []string
-	}{
-		{
-			"Person_Count_Female[ut=NumberUnit;mm=dcAggregate/Census;op=P1Y]/Person_Count[ut=Census]",
-			[]string{"Person_Count_Female", "Person_Count"},
-		},
-		{
-			"Person_Count-Person_Count_Female-Person_Count_Male",
-			[]string{"Person_Count_Female", "Person_Count", "Person_Count_Male"},
-		},
-		{
-			"(Person_Count-Person_Count_Female) / Person_Count_Female",
-			[]string{"Person_Count_Female", "Person_Count"},
-		},
-	} {
-		vf, err := NewVariableFormula(c.formula)
-		if err != nil {
-			t.Errorf("NewVariableFormula(%s) = %s", c.formula, err)
-		}
-		gotStatVars := vf.StatVars
-		if diff := cmp.Diff(gotStatVars, c.wantStatVars, strCmpOpts); diff != "" {
-			t.Errorf("vf.StatVars(%s) diff (-want +got):\n%s", c.formula, diff)
-		}
-	}
-}
 
 func TestFindObservationResponseHoles(t *testing.T) {
 	for _, c := range []struct {
@@ -190,11 +124,11 @@ func TestFilterObsByASTNode(t *testing.T) {
 	}
 	for _, c := range []struct {
 		inputResp *pbv2.ObservationResponse
-		node      *ASTNode
+		node      *formula.ASTNode
 		want      *pbv2.ObservationResponse
 	}{{
 		sampleInputResp,
-		&ASTNode{StatVar: "Count_Person"},
+		&formula.ASTNode{StatVar: "Count_Person"},
 		&pbv2.ObservationResponse{
 			ByVariable: map[string]*pbv2.VariableObservation{
 				"INTERMEDIATE_NODE": {ByEntity: map[string]*pbv2.EntityObservation{
@@ -229,7 +163,7 @@ func TestFilterObsByASTNode(t *testing.T) {
 	},
 		{
 			sampleInputResp,
-			&ASTNode{
+			&formula.ASTNode{
 				StatVar: "Count_Person",
 				Facet: &pb.Facet{
 					MeasurementMethod: "US_Census",
@@ -389,13 +323,13 @@ func TestMergePointStat(t *testing.T) {
 func TestEvalExpr(t *testing.T) {
 	for _, c := range []struct {
 		inputExpr string
-		leafData  map[string]*ASTNode
+		leafData  map[string]*formula.ASTNode
 		inputResp *pbv2.ObservationResponse
 		want      *pbv2.ObservationResponse
 	}{
 		{
 			"(SV_1 - SV_2) / SV_3",
-			map[string]*ASTNode{
+			map[string]*formula.ASTNode{
 				"SV_1": {StatVar: "SV_1"},
 				"SV_2": {StatVar: "SV_2"},
 				"SV_3": {StatVar: "SV_3"},
@@ -459,12 +393,12 @@ func TestEvalExpr(t *testing.T) {
 			},
 		},
 	} {
-		expr, err := parser.ParseExpr(encodeForParse(c.inputExpr))
+		f, err := formula.NewVariableFormula(c.inputExpr)
 		if err != nil {
 			t.Errorf("error running TestEvalExpr: %s", err)
 			continue
 		}
-		got, err := evalExpr(expr, c.leafData, c.inputResp)
+		got, err := evalExpr(f.Expr, c.leafData, c.inputResp)
 		if err != nil {
 			t.Errorf("error running TestEvalExpr: %s", err)
 			continue
