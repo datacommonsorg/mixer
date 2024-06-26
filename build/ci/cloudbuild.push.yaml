@@ -77,7 +77,7 @@ steps:
         gsutil cp mixer-grpc.$SHORT_SHA.pb gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.latest.pb
         gsutil acl ch -u AllUsers:R gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$SHORT_SHA.pb
         gsutil acl ch -u AllUsers:R gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.latest.pb
-    waitFor: ["push-image"]
+    waitFor: ["build-proto"]
 
   # Update mixer autopush version in the GCP repo "deployment".
   # This step is separate from the repo version bump because it needs to wait
@@ -90,7 +90,7 @@ steps:
       - |
         if [ "$_SKIP_AUTOPUSH_UPDATE" == "true" ] ; then exit 0 ; fi
         ./scripts/update_autopush_version.sh $SHORT_SHA
-    waitFor: ["push-grpc-descriptor"]
+    waitFor: ["push-grpc-descriptor", "push-image"]
 
 substitutions:
   _SKIP_AUTOPUSH_UPDATE: "false"
