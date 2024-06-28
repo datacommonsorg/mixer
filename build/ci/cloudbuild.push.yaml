@@ -16,6 +16,20 @@
 # data change.
 
 steps:
+
+  # Trigger downstream builds that listen for changes to multiple repos.
+  - id: update-repo-version
+    name: "gcr.io/cloud-builders/git"
+    entrypoint: /bin/bash
+    args:
+      - -c
+      - |
+        set -e
+        gcloud source repos clone deployment /tmp/deployment --project=datcom-ci
+        cd /tmp/deployment
+        ./scripts/update_external_repo_version.sh $REPO_NAME $SHORT_SHA
+    waitFor: ["-"]
+
   # Build protobuf and grpc descriptor
   - id: build-proto
     name: gcr.io/datcom-ci/go-protoc
@@ -33,6 +47,7 @@ steps:
           --go-grpc_opt=require_unimplemented_servers=false \
           --experimental_allow_proto3_optional \
           proto/*.proto proto/**/*.proto
+    waitFor: ["-"]
 
   # Push mixer server image to container registry
   - id: push-image
@@ -48,6 +63,7 @@ steps:
           .
         docker push gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA
         docker push gcr.io/datcom-ci/datacommons-mixer:latest
+    waitFor: ["build-proto"]
 
   # Push the grpc descriptor to gcs.
   - id: push-grpc-descriptor
@@ -61,8 +77,11 @@ steps:
         gsutil cp mixer-grpc.$SHORT_SHA.pb gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.latest.pb
         gsutil acl ch -u AllUsers:R gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$SHORT_SHA.pb
         gsutil acl ch -u AllUsers:R gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.latest.pb
+    waitFor: ["build-proto"]
 
-  # Update autopush version in the GCP repo "deployment".
+  # Update mixer autopush version in the GCP repo "deployment".
+  # This step is separate from the repo version bump because it needs to wait
+  # for prior steps.
   - id: update-autopush-version
     name: "gcr.io/cloud-builders/git"
     entrypoint: /bin/bash
@@ -71,6 +90,7 @@ steps:
       - |
         if [ "$_SKIP_AUTOPUSH_UPDATE" == "true" ] ; then exit 0 ; fi
         ./scripts/update_autopush_version.sh $SHORT_SHA
+    waitFor: ["push-grpc-descriptor", "push-image"]
 
 substitutions:
   _SKIP_AUTOPUSH_UPDATE: "false"
