@@ -45,10 +45,6 @@
       "dcid": "who/AIR_45.SEX--F"
     },
     {
-      "name": "Average hourly earnings of employees by sex and occupation [Female]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F"
-    },
-    {
       "name": "Count of Mortality Event: Female",
       "dcid": "Count_Death_Female"
     },
@@ -225,10 +221,6 @@
       "dcid": "who/CM_02.SEX--F"
     },
     {
-      "name": "Number of new HIV infections per 1,000 uninfected population [Female]",
-      "dcid": "sdg/SH_HIV_INCD.SEX--F"
-    },
-    {
       "name": "Number of seats held by women in national parliaments [Female]",
       "dcid": "sdg/SG_GEN_PARLN.SEX--F"
     },
@@ -247,6 +239,10 @@
     {
       "name": "Participation rate in organized learning [Female]",
       "dcid": "sdg/SE_PRE_PARTN.SEX--F"
+    },
+    {
+      "name": "Police reporting rate for physical violence in the previous 12 months [Female]",
+      "dcid": "sdg/VC_PRR_PHY_VIO.SEX--F"
     },
     {
       "name": "Prevalence of current cigarette smoking among adolescents (%), from the most recent nationally representative survey reporting prevalence of tobacco use or smoking among adolescents. [Female]",
@@ -281,8 +277,8 @@
       "dcid": "who/Yth_curr_tob_use.SEX--F"
     },
     {
-      "name": "Proportion of children/households receiving child/family cash benefit [Female]",
-      "dcid": "sdg/SI_COV_CHLD.SEX--F"
+      "name": "Proportion of employed population covered in the event of work injury [Female]",
+      "dcid": "sdg/SI_COV_WKINJRY.SEX--F"
     },
     {
       "name": "Proportion of individuals using the Internet [Female]",
@@ -297,6 +293,10 @@
       "dcid": "sdg/VC_VOV_ROBB.SEX--F"
     },
     {
+      "name": "Proportion of population subjected to sexual assault in the previous 12 months [Female]",
+      "dcid": "sdg/VC_VOV_SEX_ASLT.SEX--F"
+    },
+    {
       "name": "Proportion of population with severe disabilities receiving disability cash benefit [Female]",
       "dcid": "sdg/SI_COV_DISAB.SEX--F"
     },
@@ -305,36 +305,12 @@
       "dcid": "sdg/SG_GEN_PARL.SEX--F"
     },
     {
-      "name": "Proportion of women in managerial positions - 13th ICLS - 13th ICLS [Female]",
-      "dcid": "sdg/IC_GEN_MGTL.SEX--F"
-    },
-    {
-      "name": "Proportion of women in managerial positions - 19th ICLS - 19th ICLS [Female]",
-      "dcid": "sdg/IC_GEN_MGTL_19ICLS.SEX--F"
-    },
-    {
-      "name": "Proportion of women in senior and middle management positions - 13th ICLS - 13th ICLS [Female]",
-      "dcid": "sdg/IC_GEN_MGTN.SEX--F"
-    },
-    {
-      "name": "Proportion of women in senior and middle management positions - 19th ICLS - 19th ICLS [Female]",
-      "dcid": "sdg/IC_GEN_MGTN_19ICLS.SEX--F"
-    },
-    {
       "name": "Suicide mortality rate [Female]",
       "dcid": "sdg/SH_STA_SCIDE.SEX--F"
     },
     {
       "name": "Unemployment Rate of the Female Population",
       "dcid": "UnemploymentRate_Person_Female"
-    },
-    {
-      "name": "Unemployment rate - 13th ICLS [Female]",
-      "dcid": "sdg/SL_TLF_UEMDIS.SEX--F"
-    },
-    {
-      "name": "Unemployment rate - 19th ICLS [Female]",
-      "dcid": "sdg/SL_TLF_UEMDIS_19ICLS.SEX--F"
     },
     {
       "name": "Count of Live Birth Pregnancy Event: Male or Female Sterilization (As Fraction of Count Birth Event Live Birth)",
@@ -701,40 +677,8 @@
       "dcid": "WHO/SDGDISASTER_Female"
     },
     {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Clerical support workers]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO08_4"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Craft and related trades workers]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO08_7"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Elementary occupations]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO08_9"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Managers]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO08_1"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Plant and machine operators, and assemblers]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO08_8"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Professionals]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO08_2"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Service and sales workers]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO08_5"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Skilled agricultural, forestry and fishery workers]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO08_6"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Technicians and associate professionals]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO08_3"
+      "name": "Average hourly earnings of employees by sex and occupation [15 years old and over, Female]",
+      "dcid": "sdg/SL_EMP_EARN.AGE--Y_GE15__SEX--F"
     },
     {
       "name": "Black or African American Female Population, Monoracial or Multiracial",
@@ -2309,10 +2253,6 @@
       "dcid": "sdg/SH_DTH_NCD.SEX--F__NAME_OF_NON_COMMUNICABLE_DISEASE--NCD_DIABTS"
     },
     {
-      "name": "Number of moderately or severely food insecure people [15 years old and over, Female]",
-      "dcid": "sdg/AG_PRD_FIESMSN.AGE--Y_GE15__SEX--F"
-    },
-    {
       "name": "Number of new HIV infections per 1,000 uninfected population [15 to 24 years old, Female]",
       "dcid": "sdg/SH_HIV_INCD.AGE--Y15T24__SEX--F"
     },
@@ -2475,10 +2415,6 @@
     {
       "name": "Number of people left alive at age x [\u003c1 year, Female]",
       "dcid": "who/LIFE_0000000031.AGE--M0T11__SEX--F"
-    },
-    {
-      "name": "Number of severely food insecure people [15 years old and over, Female]",
-      "dcid": "sdg/AG_PRD_FIESSN.AGE--Y_GE15__SEX--F"
     },
     {
       "name": "Number of speakers in parliament, Lower Chamber or Unicameral [46 years old and over, Female]",
@@ -2655,6 +2591,14 @@
     {
       "name": "Person-years lived between ages x and x+n [\u003c1 year, Female]",
       "dcid": "who/LIFE_0000000033.AGE--M0T11__SEX--F"
+    },
+    {
+      "name": "Population in moderate or severe food insecurity [15 years old and over, Female]",
+      "dcid": "sdg/AG_PRD_FIESMSN.AGE--Y_GE15__SEX--F"
+    },
+    {
+      "name": "Population in severe food insecurity [15 years old and over, Female]",
+      "dcid": "sdg/AG_PRD_FIESSN.AGE--Y_GE15__SEX--F"
     },
     {
       "name": "Population pushed further below a relative poverty line by household health expenditures - 60% of median daily per capita consumption or income (%, national, rural, urban) [Head of the household, Female]",
@@ -3585,11 +3529,11 @@
       "dcid": "Count_Person_99Years_Female"
     },
     {
-      "name": "Prevalence of moderate or severe food insecurity [15 years old and over, Female]",
+      "name": "Prevalence of moderate or severe food insecurity in the population [15 years old and over, Female]",
       "dcid": "sdg/AG_PRD_FIESMS.AGE--Y_GE15__SEX--F"
     },
     {
-      "name": "Prevalence of severe food insecurity [15 years old and over, Female]",
+      "name": "Prevalence of severe food insecurity in the population [15 years old and over, Female]",
       "dcid": "sdg/AG_PRD_FIESS.AGE--Y_GE15__SEX--F"
     },
     {
@@ -3801,8 +3745,44 @@
       "dcid": "sdg/SH_STA_ANEM_PREG.AGE--Y15T49__SEX--F"
     },
     {
+      "name": "Proportion of women in managerial positions - 13th ICLS - 13th ICLS [15 years old and over, Female]",
+      "dcid": "sdg/IC_GEN_MGTL.AGE--Y_GE15__SEX--F"
+    },
+    {
+      "name": "Proportion of women in managerial positions - 19th ICLS - 19th ICLS [15 years old and over, Female]",
+      "dcid": "sdg/IC_GEN_MGTL_19ICLS.AGE--Y_GE15__SEX--F"
+    },
+    {
+      "name": "Proportion of women in senior and middle management positions - 13th ICLS - 13th ICLS [15 years old and over, Female]",
+      "dcid": "sdg/IC_GEN_MGTN.AGE--Y_GE15__SEX--F"
+    },
+    {
+      "name": "Proportion of women in senior and middle management positions - 19th ICLS - 19th ICLS [15 years old and over, Female]",
+      "dcid": "sdg/IC_GEN_MGTN_19ICLS.AGE--Y_GE15__SEX--F"
+    },
+    {
       "name": "Proportion of women of reproductive age who have their need for family planning satisfied with modern methods [15 to 49 years old, Female]",
       "dcid": "sdg/SH_FPL_MTMM.AGE--Y15T49__SEX--F"
+    },
+    {
+      "name": "Proportion of youth and adults with information and communications technology skills [Female, Doing a formal online course]",
+      "dcid": "sdg/SE_ADT_ACTS.SEX--F__TYPE_OF_SKILL--SKILL_FONLCRS"
+    },
+    {
+      "name": "Proportion of youth and adults with information and communications technology skills [Female, Participating in social networks]",
+      "dcid": "sdg/SE_ADT_ACTS.SEX--F__TYPE_OF_SKILL--SKILL_SNTWK"
+    },
+    {
+      "name": "Proportion of youth and adults with information and communications technology skills [Female, Seeking health information (on injury, disease, nutrition, etc.)]",
+      "dcid": "sdg/SE_ADT_ACTS.SEX--F__TYPE_OF_SKILL--SKILL_HLTHINF"
+    },
+    {
+      "name": "Proportion of youth and adults with information and communications technology skills [Female, Telephoning over the Internet/VoIP]",
+      "dcid": "sdg/SE_ADT_ACTS.SEX--F__TYPE_OF_SKILL--SKILL_VOIP"
+    },
+    {
+      "name": "Proportion of youth and adults with information and communications technology skills [Female, Using Internet banking]",
+      "dcid": "sdg/SE_ADT_ACTS.SEX--F__TYPE_OF_SKILL--SKILL_INTBNK"
     },
     {
       "name": "Proportion of youth not in education, employment or training - 13th ICLS [15 to 24 years old, Female]",
@@ -3811,6 +3791,14 @@
     {
       "name": "Proportion of youth not in education, employment or training - 19th ICLS [15 to 24 years old, Female]",
       "dcid": "sdg/SL_TLF_NEET_19ICLS.AGE--Y15T24__SEX--F"
+    },
+    {
+      "name": "Proportions of positions in the judiciary compared to national distributions, Constitutional Court [Female, Type of occupation = JUDGES]",
+      "dcid": "sdg/SG_DMK_JDC_CNS.SEX--F__OCCUPATION--ISCO08_2612"
+    },
+    {
+      "name": "Proportions of positions in the public service compared to national distributions [Female, Type of occupation = Total national-level public service personnel (including police, education, health, front-desk administrative and all other public service personnel)]",
+      "dcid": "sdg/SG_DMK_PSRVC.SEX--F__OCCUPATION--AGG_PSP"
     },
     {
       "name": "Raised blood pressure (SBP\u003e=140 OR DBP\u003e=90) (age-standardized estimate) [18+ years, Female]",
@@ -3849,20 +3837,20 @@
       "dcid": "sdg/SL_TLF_UEM.AGE--Y_GE15__SEX--F"
     },
     {
+      "name": "Unemployment rate - 13th ICLS [15 years old and over, Female]",
+      "dcid": "sdg/SL_TLF_UEMDIS.AGE--Y_GE15__SEX--F"
+    },
+    {
       "name": "Unemployment rate - 13th ICLS [25 years old and over, Female]",
       "dcid": "sdg/SL_TLF_UEM.AGE--Y_GE25__SEX--F"
     },
     {
-      "name": "Unemployment rate - 13th ICLS [Female, Disability status = Persons with disability]",
-      "dcid": "sdg/SL_TLF_UEMDIS.SEX--F__DISABILITY_STATUS--PD"
-    },
-    {
-      "name": "Unemployment rate - 13th ICLS [Female, Disability status = Persons without disability]",
-      "dcid": "sdg/SL_TLF_UEMDIS.SEX--F__DISABILITY_STATUS--PWD"
-    },
-    {
       "name": "Unemployment rate - 19th ICLS [15 to 24 years old, Female]",
       "dcid": "sdg/SL_TLF_UEM_19ICLS.AGE--Y15T24__SEX--F"
+    },
+    {
+      "name": "Unemployment rate - 19th ICLS [15 years old and over, Female]",
+      "dcid": "sdg/SL_TLF_UEMDIS_19ICLS.AGE--Y_GE15__SEX--F"
     },
     {
       "name": "Unemployment rate - 19th ICLS [15 years old and over, Female]",
@@ -3871,14 +3859,6 @@
     {
       "name": "Unemployment rate - 19th ICLS [25 years old and over, Female]",
       "dcid": "sdg/SL_TLF_UEM_19ICLS.AGE--Y_GE25__SEX--F"
-    },
-    {
-      "name": "Unemployment rate - 19th ICLS [Female, Disability status = Persons with disability]",
-      "dcid": "sdg/SL_TLF_UEMDIS_19ICLS.SEX--F__DISABILITY_STATUS--PD"
-    },
-    {
-      "name": "Unemployment rate - 19th ICLS [Female, Disability status = Persons without disability]",
-      "dcid": "sdg/SL_TLF_UEMDIS_19ICLS.SEX--F__DISABILITY_STATUS--PWD"
     },
     {
       "name": "White Non Hispanic Female Population",
