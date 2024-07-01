@@ -25,6 +25,10 @@
       "dcid": "sdg/SG_DMK_PARLMP_UC"
     },
     {
+      "name": "Fertility rate (%)",
+      "dcid": "FertilityRate_Person_Female_AsAFractionOf_Count_Person_Female"
+    },
+    {
       "name": "Age-standardized mortality from Noncommunicable diseases (NCD) mortality rate (per 100 000 population) [Female]",
       "dcid": "who/WHS2_131.SEX--F"
     },
@@ -1023,6 +1027,14 @@
     {
       "name": "Median Income of Women (15 Years or Older) With Income",
       "dcid": "Median_Income_Person_15OrMoreYears_Female_WithIncome"
+    },
+    {
+      "name": "Population and household profile-sex ratio at birth for children born in the last five years (females per 1,000 males)",
+      "dcid": "Count_BirthEvent_Female_AsAFractionOf_Count_BirthEvent_Male"
+    },
+    {
+      "name": "Population and household profile-sex ratio of the total population (females per 1,000 males)",
+      "dcid": "Count_Person_Female_AsAFractionOf_Count_Person_Male"
     },
     {
       "name": "Population: Male (As Fraction of Count Person Female)",
@@ -3987,18 +3999,6 @@
     {
       "name": "Disease burden (number of disability-adjusted life years, DALYs) [All Causes, Female]",
       "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE000__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Alzheimer's disease and other dementias, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE095__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Anxiety disorders, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE088__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Appendicitis, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE124__SEX--F"
     }
   ],
   "matches": [

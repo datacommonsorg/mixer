@@ -2,7 +2,7 @@
   "Count_Person": [
     {
       "subjectId": "Count_Person",
-      "subjectName": "Total Population",
+      "subjectName": "Moderately or severely elevated blood pressure (%)",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -16,7 +16,7 @@
     },
     {
       "subjectId": "Count_Person",
-      "subjectName": "Total Population",
+      "subjectName": "Moderately or severely elevated blood pressure (%)",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -30,7 +30,27 @@
     },
     {
       "subjectId": "Count_Person",
-      "subjectName": "Total Population",
+      "subjectName": "Moderately or severely elevated blood pressure (%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "name",
+      "objectValue": "Moderately or severely elevated blood pressure (%)",
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person",
+      "subjectName": "Moderately or severely elevated blood pressure (%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "name",
+      "objectValue": "Population below age 15 years (%)",
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person",
+      "subjectName": "Moderately or severely elevated blood pressure (%)",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -40,7 +60,7 @@
     },
     {
       "subjectId": "Count_Person",
-      "subjectName": "Total Population",
+      "subjectName": "Moderately or severely elevated blood pressure (%)",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -54,7 +74,7 @@
     },
     {
       "subjectId": "Count_Person",
-      "subjectName": "Total Population",
+      "subjectName": "Moderately or severely elevated blood pressure (%)",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -68,7 +88,7 @@
     },
     {
       "subjectId": "Count_Person",
-      "subjectName": "Total Population",
+      "subjectName": "Moderately or severely elevated blood pressure (%)",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -82,7 +102,7 @@
     },
     {
       "subjectId": "Count_Person",
-      "subjectName": "Total Population",
+      "subjectName": "Moderately or severely elevated blood pressure (%)",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -102,7 +122,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -116,7 +136,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -130,7 +150,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -144,7 +164,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -158,7 +178,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -172,7 +192,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -186,7 +206,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -200,7 +220,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -214,7 +234,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -228,7 +248,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -242,7 +262,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -256,7 +276,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -270,7 +290,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -284,7 +304,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -298,7 +318,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -312,7 +332,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -326,7 +346,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -340,7 +360,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -354,7 +374,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -368,7 +388,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -382,7 +402,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -396,7 +416,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -410,7 +430,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -424,7 +444,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -438,7 +458,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -452,7 +472,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -466,7 +486,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -480,7 +500,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -494,7 +514,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -508,7 +528,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -522,7 +542,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -536,7 +556,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -550,7 +570,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -564,7 +584,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -578,7 +598,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -592,7 +612,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -606,7 +626,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -620,7 +640,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -634,7 +654,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -648,7 +668,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -662,7 +682,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -676,7 +696,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -690,7 +710,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -704,7 +724,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -718,7 +738,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -732,7 +752,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -746,7 +766,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -760,7 +780,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -774,7 +794,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -788,7 +808,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -802,7 +822,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -816,7 +836,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -830,7 +850,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -844,7 +864,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -858,7 +878,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -872,7 +892,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -886,7 +906,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -900,7 +920,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -914,7 +934,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -928,7 +948,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -942,7 +962,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -956,7 +976,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -970,7 +990,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -984,7 +1004,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -998,7 +1018,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1012,7 +1032,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1026,7 +1046,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1040,7 +1060,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1054,7 +1074,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1068,7 +1088,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1082,7 +1102,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1096,7 +1116,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1110,7 +1130,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1124,7 +1144,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1138,7 +1158,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1152,7 +1172,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1166,7 +1186,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1180,7 +1200,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1194,7 +1214,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1208,7 +1228,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1222,7 +1242,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1236,7 +1256,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1250,7 +1270,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1264,7 +1284,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1278,7 +1298,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1292,7 +1312,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1306,7 +1326,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1320,7 +1340,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1334,7 +1354,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1348,7 +1368,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1362,7 +1382,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1376,7 +1396,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1390,7 +1410,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1404,7 +1424,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1418,7 +1438,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1432,7 +1452,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1446,7 +1466,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1460,7 +1480,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1474,7 +1494,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1488,7 +1508,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1502,7 +1522,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1516,7 +1536,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1530,7 +1550,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1544,7 +1564,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1558,7 +1578,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1572,7 +1592,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1586,7 +1606,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1600,7 +1620,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1614,7 +1634,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1628,7 +1648,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1642,7 +1662,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1656,7 +1676,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1670,7 +1690,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1684,7 +1704,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1698,7 +1718,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1712,7 +1732,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1726,7 +1746,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1740,7 +1760,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1754,7 +1774,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1768,7 +1788,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1782,7 +1802,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1796,7 +1816,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1810,7 +1830,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1824,7 +1844,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1838,7 +1858,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1852,7 +1872,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1866,7 +1886,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1880,7 +1900,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1894,7 +1914,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1908,7 +1928,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1922,7 +1942,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1936,7 +1956,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1950,7 +1970,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1964,7 +1984,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1978,7 +1998,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -1992,7 +2012,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2006,7 +2026,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2020,7 +2040,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2034,7 +2054,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2048,7 +2068,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2062,7 +2082,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2076,7 +2096,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2090,7 +2110,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2104,7 +2124,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2118,7 +2138,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2132,7 +2152,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2146,7 +2166,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2160,7 +2180,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2174,7 +2194,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2188,7 +2208,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2202,7 +2222,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2216,7 +2236,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2230,7 +2250,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2244,7 +2264,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2258,7 +2278,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2272,7 +2292,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2286,7 +2306,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2300,7 +2320,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2314,7 +2334,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2328,7 +2348,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2342,7 +2362,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2356,7 +2376,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2370,7 +2390,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2384,7 +2404,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2398,7 +2418,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2412,7 +2432,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2426,7 +2446,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2440,7 +2460,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2454,7 +2474,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2468,7 +2488,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2482,7 +2502,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2496,7 +2516,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2510,7 +2530,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2524,7 +2544,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2538,7 +2558,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2552,7 +2572,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2566,7 +2586,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2580,7 +2600,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2594,7 +2614,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2608,7 +2628,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2622,7 +2642,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2636,7 +2656,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2650,7 +2670,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2664,7 +2684,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2678,7 +2698,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2692,7 +2712,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2706,7 +2726,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2720,7 +2740,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2734,7 +2754,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2748,7 +2768,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2762,7 +2782,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2776,7 +2796,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2790,7 +2810,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2804,7 +2824,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2818,7 +2838,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2832,7 +2852,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2846,7 +2866,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2860,7 +2880,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2874,7 +2894,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2888,7 +2908,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2902,7 +2922,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2916,7 +2936,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2930,7 +2950,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2944,7 +2964,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2958,7 +2978,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2972,7 +2992,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -2986,7 +3006,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3000,7 +3020,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3014,7 +3034,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3028,7 +3048,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3042,7 +3062,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3056,7 +3076,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3070,7 +3090,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3084,7 +3104,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3098,7 +3118,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3112,7 +3132,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3126,7 +3146,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3140,7 +3160,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3154,7 +3174,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3168,7 +3188,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3182,7 +3202,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3196,7 +3216,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3210,7 +3230,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3224,7 +3244,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3238,7 +3258,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3252,7 +3272,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3266,7 +3286,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3280,7 +3300,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3294,7 +3314,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3308,7 +3328,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3322,7 +3342,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3336,7 +3356,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3350,7 +3370,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3364,7 +3384,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3378,7 +3398,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3392,7 +3412,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3406,7 +3426,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3420,7 +3440,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3434,7 +3454,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3448,7 +3468,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3462,7 +3482,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3476,7 +3496,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3490,7 +3510,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3504,7 +3524,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3518,7 +3538,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3532,7 +3552,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3546,7 +3566,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3560,7 +3580,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3574,7 +3594,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3588,7 +3608,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3602,7 +3622,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3616,7 +3636,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3630,7 +3650,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3644,7 +3664,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3658,7 +3678,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3672,7 +3692,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3686,7 +3706,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3700,7 +3720,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3714,7 +3734,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3728,7 +3748,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3742,7 +3762,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3756,7 +3776,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3770,7 +3790,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3784,7 +3804,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3798,7 +3818,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3812,7 +3832,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3826,7 +3846,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3840,7 +3860,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3854,7 +3874,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3868,7 +3888,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3882,7 +3902,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3896,7 +3916,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3910,7 +3930,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3924,7 +3944,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3938,7 +3958,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3952,7 +3972,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3966,7 +3986,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3980,7 +4000,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -3994,7 +4014,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4008,7 +4028,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4022,7 +4042,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4036,7 +4056,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4050,7 +4070,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4064,7 +4084,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4078,7 +4098,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4092,7 +4112,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4106,7 +4126,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4120,7 +4140,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4134,7 +4154,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4148,7 +4168,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4162,7 +4182,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4176,7 +4196,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4190,7 +4210,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4204,7 +4224,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4218,7 +4238,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4232,7 +4252,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4246,7 +4266,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4260,7 +4280,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4274,7 +4294,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4288,7 +4308,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4302,7 +4322,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4316,7 +4336,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4330,7 +4350,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4344,7 +4364,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4358,7 +4378,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4372,7 +4392,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4386,7 +4406,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4400,7 +4420,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4414,7 +4434,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4428,7 +4448,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4442,7 +4462,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4456,7 +4476,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4470,7 +4490,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4484,7 +4504,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4498,7 +4518,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4512,7 +4532,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4526,7 +4546,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4540,7 +4560,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4554,7 +4574,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4568,7 +4588,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4582,7 +4602,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4596,7 +4616,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4610,7 +4630,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4624,7 +4644,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4638,7 +4658,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4652,7 +4672,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4666,7 +4686,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4680,7 +4700,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4694,7 +4714,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4708,7 +4728,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4722,7 +4742,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4736,7 +4756,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4750,7 +4770,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4764,7 +4784,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4778,7 +4798,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4792,7 +4812,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4806,7 +4826,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4820,7 +4840,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4834,7 +4854,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4848,7 +4868,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4862,7 +4882,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4876,7 +4896,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4890,7 +4910,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4904,7 +4924,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4918,7 +4938,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4932,7 +4952,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4946,7 +4966,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4960,7 +4980,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4974,7 +4994,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -4988,7 +5008,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5002,7 +5022,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5016,7 +5036,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5030,7 +5050,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5044,7 +5064,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5058,7 +5078,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5072,7 +5092,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5086,7 +5106,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5100,7 +5120,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5114,7 +5134,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5128,7 +5148,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5142,7 +5162,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5156,7 +5176,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5170,7 +5190,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5184,7 +5204,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5198,7 +5218,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5212,7 +5232,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5226,7 +5246,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5240,7 +5260,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5254,7 +5274,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5268,7 +5288,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5282,7 +5302,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5296,7 +5316,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5310,7 +5330,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5324,7 +5344,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5338,7 +5358,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5352,7 +5372,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5366,7 +5386,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5380,7 +5400,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5394,7 +5414,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5408,7 +5428,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5422,7 +5442,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5436,7 +5456,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5450,7 +5470,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5464,7 +5484,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5478,7 +5498,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5492,7 +5512,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5506,7 +5526,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5520,7 +5540,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5534,7 +5554,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5548,7 +5568,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5562,7 +5582,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5576,7 +5596,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5590,7 +5610,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5604,7 +5624,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5618,7 +5638,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5632,7 +5652,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5646,7 +5666,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5660,7 +5680,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5674,7 +5694,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5688,7 +5708,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5702,7 +5722,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5716,7 +5736,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5730,7 +5750,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5744,7 +5764,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5758,7 +5778,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5772,7 +5792,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5786,7 +5806,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5800,7 +5820,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5814,7 +5834,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5828,7 +5848,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5842,7 +5862,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5856,7 +5876,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5870,7 +5890,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5884,7 +5904,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5898,7 +5918,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5912,7 +5932,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5926,7 +5946,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5940,7 +5960,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5954,7 +5974,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5968,7 +5988,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5982,7 +6002,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -5996,7 +6016,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6010,7 +6030,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6024,7 +6044,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6038,7 +6058,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6052,7 +6072,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6066,7 +6086,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6080,7 +6100,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6094,7 +6114,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6108,7 +6128,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6122,7 +6142,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6136,7 +6156,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6150,7 +6170,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6164,7 +6184,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6178,7 +6198,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6192,7 +6212,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6206,7 +6226,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6220,7 +6240,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6234,7 +6254,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6248,7 +6268,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6262,7 +6282,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6276,7 +6296,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6290,7 +6310,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6304,7 +6324,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6318,7 +6338,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6332,7 +6352,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6346,7 +6366,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6360,7 +6380,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6374,7 +6394,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6388,7 +6408,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6402,7 +6422,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6416,7 +6436,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6430,7 +6450,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6444,7 +6464,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6458,7 +6478,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6472,7 +6492,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6486,7 +6506,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6500,7 +6520,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6514,7 +6534,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6528,7 +6548,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6542,7 +6562,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6556,7 +6576,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6570,7 +6590,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6584,7 +6604,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6598,7 +6618,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6612,7 +6632,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6626,7 +6646,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6640,7 +6660,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6654,7 +6674,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6668,7 +6688,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6682,7 +6702,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6696,7 +6716,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6710,7 +6730,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6724,7 +6744,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6738,7 +6758,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6752,7 +6772,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6766,7 +6786,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6780,7 +6800,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6794,7 +6814,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6808,7 +6828,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6822,7 +6842,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6836,7 +6856,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6850,7 +6870,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6864,7 +6884,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6878,7 +6898,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6892,7 +6912,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6906,7 +6926,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6920,7 +6940,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6934,7 +6954,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6948,7 +6968,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6962,7 +6982,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6976,7 +6996,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -6990,7 +7010,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -7004,7 +7024,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -7018,7 +7038,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -7032,7 +7052,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -7046,7 +7066,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -7060,7 +7080,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -7074,7 +7094,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -7088,7 +7108,7 @@
       ],
       "predicate": "measurementDenominator",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -7101,7 +7121,7 @@
       ],
       "predicate": "outputProperty",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -7115,7 +7135,7 @@
       ],
       "predicate": "relevantVariable",
       "objectId": "Count_Person",
-      "objectName": "Total Population",
+      "objectName": "Moderately or severely elevated blood pressure (%)",
       "objectTypes": [
         "StatisticalVariable"
       ],
@@ -7187,6 +7207,36 @@
       ],
       "predicate": "name",
       "objectValue": "Female Population",
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Female",
+      "subjectName": "Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "name",
+      "objectValue": "Women having a bank or savings account that they themselves use (%)",
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Female",
+      "subjectName": "Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "name",
+      "objectValue": "Women who have ever undergone a breast examination for breast cancer (%)",
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Female",
+      "subjectName": "Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "name",
+      "objectValue": "Women with 10 or more years of schooling in the age group of 15 to 49 years (%)",
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
@@ -9150,8 +9200,330 @@
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
+      "subjectId": "Count_Person_Female_10OrMoreYears_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Women with 10 or more years of schooling (%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Female_BodyMassIndexBelowNormal_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Women with body mass index ( BMI ) below normal (%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Female_CashPayment_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Women who worked in the last 12 months and were paid in cash (%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Female_HealthWorkerTalkedAboutFamilyPlanning_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Health worker ever talked to female non-users about family planning (%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Female_HighRiskOfWaistToHipRatio_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Women who have high risk waist-to-hip ratio (%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Female_HivOrAids_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Women who have comprehensive knowledge of Human immunodeficiency virus ( HIV ) or Acquired Immune Deficiency Syndrome ( AIDS ) (%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Female_OverweightOrObesity_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Women who are overweight or obese (%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Female_ReceivedBreastCancerExamination_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Women who have ever undergone a breast examination for breast cancer (%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Female_ReceivedCervicalCancerScreening_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Women who have ever undergone a cervix examination(%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Female_ReceivedOralCavityExamination_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Women who have ever undergone a oral cavity examniation (%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Female_ReceivedOralCavityExamination_ConditionOralCancer_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Women-ever undergone an oral cavity examination for oral cancer (%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Female_WithElevatedBloodPressure_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Women suffering from elevated blood pressure (%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Female_WithHighBloodSugarLevelOrVeryHighBloodSugarLevel_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Women suffering from high or very high blood sugar level (%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Female_WithHighBloodSugarLevel_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Women suffering from high blood sugar level (%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Female_WithMidlyElevatedBloodPressure_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Women-mildly elevated blood pressure (%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Female_WithModerateHypertension_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Women with moderately high hypertension (%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Female_WithModeratelyElevatedBloodPressureOrSeverelyElevatedBloodPressure_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Women-moderately or severely elevated blood pressure (%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Female_WithVeryHighBloodSugarLevel_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Women suffering from very high blood sugar level (%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Female_WithVeryHighHypertension_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Women with very high hypertension (%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
       "subjectId": "Count_Person_Male_AsAFractionOf_Count_Person_Female",
       "subjectName": "Population: Male (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_MobilePhone_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Women having a mobile phone that they themselves use (%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_SavingsAccount_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Women having a bank or savings account that they themselves use (%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_WithUnmetNeed_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Women Unmet need for family planning (%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "FertilityRate_Person_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Fertility rate (%)",
       "subjectTypes": [
         "StatisticalVariable"
       ],
