@@ -2641,6 +2641,10 @@
       "dcid": "Count_Person_15To17Years_Female"
     },
     {
+      "name": "Population: 15 - 19 Years, Female",
+      "dcid": "Count_Person_15To19Years_Female"
+    },
+    {
       "name": "Population: 15 - 44 Years, Female",
       "dcid": "Count_Person_15To44Years_Female"
     },
@@ -2695,6 +2699,10 @@
     {
       "name": "Population: 20 - 21 Years, Female",
       "dcid": "Count_Person_20To21Years_Female"
+    },
+    {
+      "name": "Population: 20 - 24 Years, Female",
+      "dcid": "Count_Person_20To24Years_Female"
     },
     {
       "name": "Population: 20 - 34 Years, Female",
@@ -3863,14 +3871,6 @@
     {
       "name": "White Non Hispanic Female Population",
       "dcid": "Count_Person_Female_WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "name": "Women age group 15 to 19 years who are anaemic (%)",
-      "dcid": "Count_Person_15To19Years_Female"
-    },
-    {
-      "name": "Women age group 20 to 24 years married before age 18 years (%)",
-      "dcid": "Count_Person_20To24Years_Female"
     },
     {
       "name": "Years life lost (YLLs) attributable to ambient air pollution (age-standardized) [Lower respiratory infections, Female]",

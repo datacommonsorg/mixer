@@ -29,7 +29,7 @@
       "subjectId": "dc/o/23gt9k7fql176",
       "predicate": "variableMeasured",
       "objectId": "Count_Person",
-      "objectName": "Moderately or severely elevated blood pressure (%)",
+      "objectName": "Total Population",
       "provenanceId": "dc/base/CensusACS5YearSurvey_AggCountry"
     }
   ],
@@ -64,7 +64,7 @@
       "subjectId": "dc/o/88cs3xqnmpp55",
       "predicate": "variableMeasured",
       "objectId": "Count_Person",
-      "objectName": "Moderately or severely elevated blood pressure (%)",
+      "objectName": "Total Population",
       "provenanceId": "dc/base/CensusPEP"
     }
   ],
@@ -139,7 +139,7 @@
       "subjectId": "dc/o/kyv7dxe4s18eh",
       "predicate": "variableMeasured",
       "objectId": "Count_Person",
-      "objectName": "Moderately or severely elevated blood pressure (%)",
+      "objectName": "Total Population",
       "provenanceId": "dc/base/WorldDevelopmentIndicators"
     }
   ]

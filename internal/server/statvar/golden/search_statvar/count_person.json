@@ -1,7 +1,7 @@
 {
   "statVars": [
     {
-      "name": "Moderately or severely elevated blood pressure (%)",
+      "name": "Total Population",
       "dcid": "Count_Person"
     },
     {
@@ -15,10 +15,6 @@
     {
       "name": "Black Population, Monoracial/Multiracial",
       "dcid": "Count_Person_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Children age 5 years who attended pre-primary school during the year 2019-20 (%)",
-      "dcid": "Count_Person_5Years"
     },
     {
       "name": "Children age 9 to 35 months who received vitamin A dose in the last 6 months (%)",
@@ -39,14 +35,6 @@
     {
       "name": "Children age group 6 to 8 months receiving solid or semisolid food and breastmilk (%)",
       "dcid": "Count_Person_6To8Month"
-    },
-    {
-      "name": "Children under 5 years who are overweight ( weight-for-height ) (%)",
-      "dcid": "Count_Person_Upto5Years"
-    },
-    {
-      "name": "Children under age 3 years breastfed within one hour of birth (%)",
-      "dcid": "Count_Person_3Years"
     },
     {
       "name": "Children under age 6 months exclusively breastfed (%)",
@@ -131,14 +119,6 @@
     {
       "name": "Middle School Students",
       "dcid": "Count_Person_DetailedMiddleSchool"
-    },
-    {
-      "name": "Moderately or severely elevated blood pressure (%)",
-      "dcid": "Count_Person_Rural"
-    },
-    {
-      "name": "Moderately or severely elevated blood pressure (%)",
-      "dcid": "Count_Person_Urban"
     },
     {
       "name": "Monoracial Population",
@@ -371,6 +351,14 @@
     {
       "name": "Population Identifying as Some Other Race Alone",
       "dcid": "Count_Person_SomeOtherRaceAlone"
+    },
+    {
+      "name": "Population Living in Rural Areas",
+      "dcid": "Count_Person_Rural"
+    },
+    {
+      "name": "Population Living in Urban Areas",
+      "dcid": "Count_Person_Urban"
     },
     {
       "name": "Population Not Currently Enrolled in School",
@@ -879,6 +867,10 @@
     {
       "name": "Population: 5 - 19 Years",
       "dcid": "Count_Person_5To19Years"
+    },
+    {
+      "name": "Population: 5 Years or Less",
+      "dcid": "Count_Person_Upto5Years"
     },
     {
       "name": "Population: 5 Years or More",
@@ -2177,6 +2169,10 @@
       "dcid": "Count_Person_29Years"
     },
     {
+      "name": "Population: Years 3",
+      "dcid": "Count_Person_3Years"
+    },
+    {
       "name": "Population: Years 30",
       "dcid": "Count_Person_30Years"
     },
@@ -2259,6 +2255,10 @@
     {
       "name": "Population: Years 49",
       "dcid": "Count_Person_49Years"
+    },
+    {
+      "name": "Population: Years 5",
+      "dcid": "Count_Person_5Years"
     },
     {
       "name": "Population: Years 50",
@@ -2809,14 +2809,6 @@
       "dcid": "Count_Person_24To35Month_VaccineAdministered"
     },
     {
-      "name": "Children age group 5 years who attended pre-primary school during the year 2019-20 (%)",
-      "dcid": "Count_Person_5Years_Rural"
-    },
-    {
-      "name": "Children age group 5 years who attended pre-primary school during the year 2019-20 (%)",
-      "dcid": "Count_Person_5Years_Urban"
-    },
-    {
       "name": "Children age group 6 to 23 months receiving an adequate diet (%)",
       "dcid": "Count_Person_6To23Month_Rural"
     },
@@ -2855,14 +2847,6 @@
     {
       "name": "Children under age 3 years breastfed within one hour of birth (%)",
       "dcid": "Count_Person_3Years_BreastMilk"
-    },
-    {
-      "name": "Children under age 3 years breastfed within one hour of birth (%)",
-      "dcid": "Count_Person_3Years_Rural"
-    },
-    {
-      "name": "Children under age 3 years breastfed within one hour of birth (%)",
-      "dcid": "Count_Person_3Years_Urban"
     },
     {
       "name": "Children under age 6 months exclusively breastfed (%)",
@@ -3245,28 +3229,8 @@
       "dcid": "Count_Person_Male_ResidesInNursingFacilities"
     },
     {
-      "name": "Men age group 15 to 19 years who are anaemic (%)",
-      "dcid": "Count_Person_15To19Years_Male"
-    },
-    {
       "name": "Men age group 15 to 49 years who are anaemic (%)",
       "dcid": "Count_Person_15To49Years_Male"
-    },
-    {
-      "name": "Men age group 15 years and above who consume alcohol (%)",
-      "dcid": "Count_Person_15OrMoreYears_Male"
-    },
-    {
-      "name": "Men age group 25 to 29 years married before age 21 years (%)",
-      "dcid": "Count_Person_25To29Years_Male"
-    },
-    {
-      "name": "Men who are overweight or obese (%)",
-      "dcid": "Count_Person_Rural_Male"
-    },
-    {
-      "name": "Men who are overweight or obese (%)",
-      "dcid": "Count_Person_Urban_Male"
     },
     {
       "name": "Men who know that consistent condom use can reduce the chance of getting Human immunodeficiency virus ( HIV ) or Acquired Immune Deficiency Syndrome ( AIDS ) (%)",
@@ -3999,6 +3963,42 @@
     {
       "name": "Population: 0 - 4 Years, Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
       "dcid": "Count_Person_0To4Years_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Hispanic or Latino \u0026 Two or More Races",
+      "dcid": "Count_Person_0To4Years_HispanicOrLatino_TwoOrMoreRaces"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Hispanic or Latino \u0026 White Alone",
+      "dcid": "Count_Person_0To4Years_HispanicOrLatino_WhiteAlone"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Hispanic or Latino \u0026 White Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_0To4Years_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Kidney Disease",
+      "dcid": "Count_Person_0To4Years_ConditionKidneyDisease"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Lung Condition",
+      "dcid": "Count_Person_0To4Years_ConditionLungCondition"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Male",
+      "dcid": "Count_Person_0To4Years_Male"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Mental Health Not Good",
+      "dcid": "Count_Person_0To4Years_ConditionMentalHealthNotGood"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "Count_Person_0To4Years_NativeHawaiianAndOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Not Hispanic or Latino",
+      "dcid": "Count_Person_0To4Years_NotHispanicOrLatino"
     }
   ],
   "matches": [

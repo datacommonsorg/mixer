@@ -4,14 +4,6 @@
       "out": [
         {
           "provenanceId": "dc/base/HumanReadableStatVars",
-          "value": "Moderately or severely elevated blood pressure (%)"
-        },
-        {
-          "provenanceId": "dc/base/HumanReadableStatVars",
-          "value": "Population below age 15 years (%)"
-        },
-        {
-          "provenanceId": "dc/base/HumanReadableStatVars",
           "value": "Total Population"
         }
       ]

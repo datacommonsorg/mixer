@@ -67,15 +67,6 @@
         "hasData": true
       },
       {
-        "id": "Count_Person",
-        "searchNames": [
-          "Population Count of Person"
-        ],
-        "displayName": "Moderately or severely elevated blood pressure (%)",
-        "definition": "mp=count,pt=Person",
-        "hasData": true
-      },
-      {
         "id": "IncrementalCount_Person",
         "searchNames": [
           "Incremental Count of Person"
@@ -110,6 +101,15 @@
         ],
         "displayName": "Rate of Population Growth",
         "definition": "st=growthRate,mp=count,pt=Person",
+        "hasData": true
+      },
+      {
+        "id": "Count_Person",
+        "searchNames": [
+          "Population Count of Person"
+        ],
+        "displayName": "Total Population",
+        "definition": "mp=count,pt=Person",
         "hasData": true
       }
     ],
