@@ -1,10 +1,6 @@
 {
   "by_variable": {
-    "Count_Farm": {
-      "by_entity": {}
-    },
-    "Count_Person_1OrMoreYears_DifferentHouseAbroad": {
-      "by_entity": {}
-    }
+    "Count_Farm": {},
+    "Count_Person_1OrMoreYears_DifferentHouseAbroad": {}
   }
 }

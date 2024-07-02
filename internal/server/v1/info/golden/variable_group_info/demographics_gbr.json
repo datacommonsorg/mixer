@@ -21,6 +21,14 @@
         "hasData": true
       },
       {
+        "id": "FertilityRate_Person_Female_AsAFractionOf_Count_Person_Female",
+        "searchNames": [
+          "Fertility Rate of Person (As Fraction of Count Person Female)"
+        ],
+        "displayName": "Fertility rate (%)",
+        "definition": "md=Count_Person_Female,mp=fertilityRate,pt=Person"
+      },
+      {
         "id": "GenderIncomeInequality_Person_15OrMoreYears_WithIncome",
         "searchNames": [
           "Gender Income Inequality of Person"
@@ -54,14 +62,6 @@
         "definition": "st=medianValue,mp=income,pt=Person"
       },
       {
-        "id": "Count_Person_WithInternetSubscription_AsAFractionOf_Count_Person",
-        "searchNames": [
-          "Population Count of Person With Internet Access Status is With Internet Subscription (Per Capita)"
-        ],
-        "displayName": "Number of Internet Subscribers per 100 population",
-        "definition": "md=Count_Person,mp=count,pt=Person,internetAccessStatus=WithInternetSubscription"
-      },
-      {
         "id": "IncrementalCount_Person",
         "searchNames": [
           "Incremental Count of Person"
@@ -78,6 +78,15 @@
         "displayName": "Population Density",
         "definition": "md=area,mp=count,pt=Person",
         "hasData": true
+      },
+      {
+        "id": "Count_Person_InfrastructureProject_BrazilRuralDevelopmentProgram",
+        "searchNames": [
+          "Population Count of Person With Affected by Is Infrastructure Project, Benefit Program is Brazil_Rural Development Program",
+          "Nº de famílias atingidas por empreendimentos de infraestrutura beneficiárias do Programa Fomento Rural@pt"
+        ],
+        "displayName": "Population: Infrastructure Project, Brazil_Rural Development Program",
+        "definition": "mp=count,pt=Person,affectedBy=InfrastructureProject,benefitProgram=Brazil_RuralDevelopmentProgram"
       },
       {
         "id": "GrowthRate_Count_Person",
@@ -111,6 +120,11 @@
         "displayName": "Person by Age Group Classification"
       },
       {
+        "id": "dc/g/Person_BenefitProgram",
+        "specializedEntity": "Benefit Program",
+        "displayName": "Person by Benefit Program"
+      },
+      {
         "id": "dc/g/Person_BenefitsStatus",
         "specializedEntity": "Benefits Status",
         "displayName": "Person by Benefits Status"
@@ -124,6 +138,11 @@
         "id": "dc/g/Child",
         "specializedEntity": "Child",
         "displayName": "Child"
+      },
+      {
+        "id": "dc/g/Children",
+        "specializedEntity": "Children",
+        "displayName": "Children"
       },
       {
         "id": "dc/g/Person_ChildrenStatus",
@@ -180,6 +199,11 @@
         "id": "dc/g/Person_DeprivationDomain",
         "specializedEntity": "Deprivation Domain",
         "displayName": "Person by Deprivation Domain"
+      },
+      {
+        "id": "dc/g/Person_DeviceUsed",
+        "specializedEntity": "Device Used",
+        "displayName": "Person by Device Used"
       },
       {
         "id": "dc/g/Person_DisabilityStatus",
@@ -300,6 +324,16 @@
         "displayName": "Person by Income Status"
       },
       {
+        "id": "dc/g/Infant",
+        "specializedEntity": "Infant",
+        "displayName": "Infant"
+      },
+      {
+        "id": "dc/g/Person_InternetAccessStatus",
+        "specializedEntity": "Internet Access Status",
+        "displayName": "Person by Internet Access Status"
+      },
+      {
         "id": "dc/g/Person_InternetUsageLocation",
         "specializedEntity": "Internet Usage Location",
         "displayName": "Person by Internet Usage Location"
@@ -353,9 +387,19 @@
         "descendentStatVarCount": 1160
       },
       {
+        "id": "dc/g/Mother",
+        "specializedEntity": "Mother",
+        "displayName": "Mother"
+      },
+      {
         "id": "dc/g/MunicipalWard",
         "specializedEntity": "Municipal Ward",
         "displayName": "Municipal Ward"
+      },
+      {
+        "id": "dc/g/NonPregnantWoman",
+        "specializedEntity": "Non Pregnant Woman",
+        "displayName": "Non Pregnant Woman"
       },
       {
         "id": "dc/g/Person_NumberOfVehiclesInHousehold",

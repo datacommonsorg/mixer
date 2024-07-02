@@ -705,22 +705,6 @@
       "dcid": "sdg/SG_GEN_PARL.SEX--F"
     },
     {
-      "name": "Proportion of women in managerial positions - 13th ICLS - 13th ICLS [Female]",
-      "dcid": "sdg/IC_GEN_MGTL.SEX--F"
-    },
-    {
-      "name": "Proportion of women in managerial positions - 19th ICLS - 19th ICLS [Female]",
-      "dcid": "sdg/IC_GEN_MGTL_19ICLS.SEX--F"
-    },
-    {
-      "name": "Proportion of women in senior and middle management positions - 13th ICLS - 13th ICLS [Female]",
-      "dcid": "sdg/IC_GEN_MGTN.SEX--F"
-    },
-    {
-      "name": "Proportion of women in senior and middle management positions - 19th ICLS - 19th ICLS [Female]",
-      "dcid": "sdg/IC_GEN_MGTN_19ICLS.SEX--F"
-    },
-    {
       "name": "Wages Annual of Establishment: Other Women's And Girls' Outerwear Mfg (NAICS/315239)",
       "dcid": "dc/5n2xf0xr930e7"
     },
@@ -1271,6 +1255,22 @@
     {
       "name": "Proportion of women aged 20-24 years who were married or in a union before age 18 [20 to 24 years old, Female]",
       "dcid": "sdg/SP_DYN_MRBF18.AGE--Y20T24__SEX--F"
+    },
+    {
+      "name": "Proportion of women in managerial positions - 13th ICLS - 13th ICLS [15 years old and over, Female]",
+      "dcid": "sdg/IC_GEN_MGTL.AGE--Y_GE15__SEX--F"
+    },
+    {
+      "name": "Proportion of women in managerial positions - 19th ICLS - 19th ICLS [15 years old and over, Female]",
+      "dcid": "sdg/IC_GEN_MGTL_19ICLS.AGE--Y_GE15__SEX--F"
+    },
+    {
+      "name": "Proportion of women in senior and middle management positions - 13th ICLS - 13th ICLS [15 years old and over, Female]",
+      "dcid": "sdg/IC_GEN_MGTN.AGE--Y_GE15__SEX--F"
+    },
+    {
+      "name": "Proportion of women in senior and middle management positions - 19th ICLS - 19th ICLS [15 years old and over, Female]",
+      "dcid": "sdg/IC_GEN_MGTN_19ICLS.AGE--Y_GE15__SEX--F"
     },
     {
       "name": "Proportion of women of reproductive age who have their need for family planning satisfied with modern methods [15 to 49 years old, Female]",

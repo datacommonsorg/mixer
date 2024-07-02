@@ -10,6 +10,15 @@
         "wikidataId/Q613": {}
       }
     },
+    "Count_Person_Female": {
+      "by_entity": {
+        "country/BRA": {},
+        "country/CAN": {},
+        "geoId/06": {},
+        "geoId/0647766": {},
+        "wikidataId/Q613": {}
+      }
+    },
     "GenderIncomeInequality_Person_15OrMoreYears_WithIncome": {
       "by_entity": {
         "geoId/06": {},
@@ -32,15 +41,6 @@
       "by_entity": {
         "geoId/06": {},
         "test_entity": {}
-      }
-    },
-    "Count_Person_Female": {
-      "by_entity": {
-        "country/BRA": {},
-        "country/CAN": {},
-        "geoId/06": {},
-        "geoId/0647766": {},
-        "wikidataId/Q613": {}
       }
     }
   }

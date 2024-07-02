@@ -13156,12 +13156,16 @@
                 },
                 {
                   "date": "2024-04",
-                  "value": 931369
+                  "value": 933969
+                },
+                {
+                  "date": "2024-05",
+                  "value": 872804
                 }
               ],
-              "obs_count": 580,
+              "obs_count": 581,
               "earliest_date": "1976-01",
-              "latest_date": "2024-04"
+              "latest_date": "2024-05"
             },
             {
               "facet_id": "2978659163",
@@ -15684,12 +15688,16 @@
                 },
                 {
                   "date": "2024-04",
-                  "value": 1026963
+                  "value": 1027450
+                },
+                {
+                  "date": "2024-05",
+                  "value": 1009814
                 }
               ],
-              "obs_count": 580,
+              "obs_count": 581,
               "earliest_date": "1976-01",
-              "latest_date": "2024-04"
+              "latest_date": "2024-05"
             }
           ]
         },

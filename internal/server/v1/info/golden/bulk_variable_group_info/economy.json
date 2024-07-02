@@ -57,6 +57,16 @@
             "displayName": "Amount"
           },
           {
+            "id": "dc/g/Person_AssetsOwned",
+            "specializedEntity": "Assets Owned",
+            "displayName": "Person by Assets Owned"
+          },
+          {
+            "id": "dc/g/Person_BankAccountType",
+            "specializedEntity": "Bank Account Type",
+            "displayName": "Person by Bank Account Type"
+          },
+          {
             "id": "dc/g/ConsumerGoodsAndServices",
             "specializedEntity": "Consumer Goods And Services",
             "displayName": "Consumer Goods And Services"
@@ -76,6 +86,11 @@
             "specializedEntity": "Economic Activity",
             "displayName": "Economic Activity",
             "descendentStatVarCount": 5
+          },
+          {
+            "id": "dc/g/ExpenditureActivity",
+            "specializedEntity": "Expenditure Activity",
+            "displayName": "Expenditure Activity"
           },
           {
             "id": "dc/g/FinancialInstrument",
@@ -147,6 +162,11 @@
             "id": "dc/g/NetworkSubscriber",
             "specializedEntity": "Network Subscriber",
             "displayName": "Network Subscriber"
+          },
+          {
+            "id": "dc/g/Person_PaymentMethod",
+            "specializedEntity": "Payment Method",
+            "displayName": "Person by Payment Method"
           },
           {
             "id": "dc/g/Person_PovertyStatus",

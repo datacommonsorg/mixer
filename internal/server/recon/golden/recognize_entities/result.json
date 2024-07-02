@@ -26,7 +26,25 @@
           "span": "california",
           "entities": [
             {
+              "dcid": "bio/AlphacarmovirusCalibrachoae_California"
+            },
+            {
+              "dcid": "bio/AlphacarmovirusLonicerae_California"
+            },
+            {
+              "dcid": "bio/CeleryMosaicVirus_California"
+            },
+            {
               "dcid": "bio/D002140"
+            },
+            {
+              "dcid": "bio/LettuceChlorosisVirus_California"
+            },
+            {
+              "dcid": "bio/LuteovirusRosae_California"
+            },
+            {
+              "dcid": "bio/PepperMottleVirus_California"
             }
           ]
         }
@@ -40,6 +58,9 @@
         {
           "span": "gene me",
           "entities": [
+            {
+              "dcid": "bio/FabavirusBetaviciae_ME"
+            },
             {
               "dcid": "bio/dm3_Me"
             },
