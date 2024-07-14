@@ -15,13 +15,13 @@
             "id": "dc/g/Demographics",
             "specializedEntity": "Demographics",
             "displayName": "Demographics",
-            "descendentStatVarCount": 19544
+            "descendentStatVarCount": 19468
           },
           {
             "id": "dc/g/Economy",
             "specializedEntity": "Economy",
             "displayName": "Economy",
-            "descendentStatVarCount": 23405
+            "descendentStatVarCount": 23367
           },
           {
             "id": "dc/g/Education",

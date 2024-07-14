@@ -1718,6 +1718,15 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Yap State",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q11342951",
+          "provenanceId": "dc/base/WikidataGeo_Federated_States_of_Micronesia"
+        },
+        {
           "name": "Andhra Pradesh",
           "types": [
             "AdministrativeArea1",
@@ -1944,6 +1953,15 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Kosrae State",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q1785093",
+          "provenanceId": "dc/base/WikidataGeo_Federated_States_of_Micronesia"
+        },
+        {
           "name": "Ladakh",
           "types": [
             "AdministrativeArea1",
@@ -1960,6 +1978,15 @@
           ],
           "dcid": "wikidataId/Q22048",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Chuuk",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q221684",
+          "provenanceId": "dc/base/WikidataGeo_Federated_States_of_Micronesia"
         },
         {
           "name": "Punjab",
@@ -2042,6 +2069,15 @@
           ],
           "dcid": "wikidataId/Q677037",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Pohnpei State",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q7771127",
+          "provenanceId": "dc/base/WikidataGeo_Federated_States_of_Micronesia"
         }
       ]
     },

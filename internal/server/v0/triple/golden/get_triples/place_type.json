@@ -5170,6 +5170,21 @@
       "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
+      "subjectId": "wikidataId/Q11342951",
+      "subjectName": "Yap State",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/WikidataGeo_Federated_States_of_Micronesia"
+    },
+    {
       "subjectId": "wikidataId/Q1159",
       "subjectName": "Andhra Pradesh",
       "subjectTypes": [
@@ -5546,6 +5561,21 @@
       "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
+      "subjectId": "wikidataId/Q1785093",
+      "subjectName": "Kosrae State",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/WikidataGeo_Federated_States_of_Micronesia"
+    },
+    {
       "subjectId": "wikidataId/Q200667",
       "subjectName": "Ladakh",
       "subjectTypes": [
@@ -5574,6 +5604,21 @@
         "Class"
       ],
       "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "subjectId": "wikidataId/Q221684",
+      "subjectName": "Chuuk",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/WikidataGeo_Federated_States_of_Micronesia"
     },
     {
       "subjectId": "wikidataId/Q22424",
@@ -5710,6 +5755,21 @@
         "Class"
       ],
       "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "subjectId": "wikidataId/Q7771127",
+      "subjectName": "Pohnpei State",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/WikidataGeo_Federated_States_of_Micronesia"
     }
   ]
 }
