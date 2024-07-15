@@ -17,28 +17,8 @@
       "dcid": "Count_Person_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
-      "name": "Children age 9 to 35 months who received vitamin A dose in the last 6 months (%)",
-      "dcid": "Count_Person_9To35Month"
-    },
-    {
-      "name": "Children age group 12 to 23 months fully vaccinated based on information from either vaccination card or mothers recall (%)",
-      "dcid": "Count_Person_12To23Month"
-    },
-    {
       "name": "Children age group 6 to 23 months receiving an adequate diet (%)",
       "dcid": "Count_Person_6To23Month"
-    },
-    {
-      "name": "Children age group 6 to 59 months who are anaemic (%)",
-      "dcid": "Count_Person_6To59Month"
-    },
-    {
-      "name": "Children age group 6 to 8 months receiving solid or semisolid food and breastmilk (%)",
-      "dcid": "Count_Person_6To8Month"
-    },
-    {
-      "name": "Children under age 6 months exclusively breastfed (%)",
-      "dcid": "Count_Person_6OrLessMonth"
     },
     {
       "name": "Direct Purchasers of Health Insurance",
@@ -51,10 +31,6 @@
     {
       "name": "Elementary School Students",
       "dcid": "Count_Person_DetailedPrimarySchool"
-    },
-    {
-      "name": "Elevated blood pressure or taking medicine to control blood pressure (%)",
-      "dcid": "Count_Person_WithElevatedBloodPressure"
     },
     {
       "name": "Female Population",
@@ -669,6 +645,10 @@
       "dcid": "Count_Person_12To18Years"
     },
     {
+      "name": "Population: 12 - 23 Month",
+      "dcid": "Count_Person_12To23Month"
+    },
+    {
       "name": "Population: 12th Grade No Diploma",
       "dcid": "Count_Person_EducationalAttainment12ThGradeNoDiploma"
     },
@@ -921,12 +901,24 @@
       "dcid": "Count_Person_6To14Years"
     },
     {
+      "name": "Population: 6 - 59 Month",
+      "dcid": "Count_Person_6To59Month"
+    },
+    {
       "name": "Population: 6 - 59 Years",
       "dcid": "Count_Person_6To59Year"
     },
     {
+      "name": "Population: 6 - 8 Month",
+      "dcid": "Count_Person_6To8Month"
+    },
+    {
       "name": "Population: 6 - 9 Years",
       "dcid": "Count_Person_6To9Years"
+    },
+    {
+      "name": "Population: 6 Month or Less",
+      "dcid": "Count_Person_6OrLessMonth"
     },
     {
       "name": "Population: 6 Years or Less",
@@ -1031,6 +1023,10 @@
     {
       "name": "Population: 8th Grade",
       "dcid": "Count_Person_EducationalAttainment8ThGrade"
+    },
+    {
+      "name": "Population: 9 - 35 Month",
+      "dcid": "Count_Person_9To35Month"
     },
     {
       "name": "Population: 9 Years or Less",
@@ -1231,6 +1227,10 @@
     {
       "name": "Population: Education Major",
       "dcid": "Count_Person_BachelorOfEducationMajor"
+    },
+    {
+      "name": "Population: Elevated Blood Pressure",
+      "dcid": "Count_Person_WithElevatedBloodPressure"
     },
     {
       "name": "Population: Eligible Social Protection Benefit Under Maternity Benefit",
@@ -2793,86 +2793,6 @@
       "dcid": "Count_Person_WithDisability_BlackOrAfricanAmericanAlone"
     },
     {
-      "name": "Breastfeeding children age group 6 to 23 months receiving an adequate diet (%)",
-      "dcid": "Count_Person_6To23Month_BreastMilk"
-    },
-    {
-      "name": "Children age 9 to 35 months who received vitamin A dose in the last 6 months (%)",
-      "dcid": "Count_Person_9To35Month_Rural"
-    },
-    {
-      "name": "Children age 9 to 35 months who received vitamin A dose in the last 6 months (%)",
-      "dcid": "Count_Person_9To35Month_Urban"
-    },
-    {
-      "name": "Children age group 12 to 23 months fully vaccinated based on information from either vaccination card or mothers recall (%)",
-      "dcid": "Count_Person_12To23Month_Rural"
-    },
-    {
-      "name": "Children age group 12 to 23 months fully vaccinated based on information from either vaccination card or mothers recall (%)",
-      "dcid": "Count_Person_12To23Month_Urban"
-    },
-    {
-      "name": "Children age group 12 to 23 months who have received the first dose of measles containing vaccine ( MCV ) (%)",
-      "dcid": "Count_Person_12To23Month_1VaccineDose"
-    },
-    {
-      "name": "Children age group 12 to 23 months who received most of their vaccinations in a private health facility (%)",
-      "dcid": "Count_Person_12To23Month_VaccineAdministered"
-    },
-    {
-      "name": "Children age group 24 to 35 months who have received a second dose of measles containing vaccine ( mcv ) (%)",
-      "dcid": "Count_Person_24To35Month_VaccineAdministered"
-    },
-    {
-      "name": "Children age group 6 to 23 months receiving an adequate diet (%)",
-      "dcid": "Count_Person_6To23Month_Rural"
-    },
-    {
-      "name": "Children age group 6 to 23 months receiving an adequate diet (%)",
-      "dcid": "Count_Person_6To23Month_Urban"
-    },
-    {
-      "name": "Children age group 6 to 59 months who are anaemic (%)",
-      "dcid": "Count_Person_6To59Month_Rural"
-    },
-    {
-      "name": "Children age group 6 to 59 months who are anaemic (%)",
-      "dcid": "Count_Person_6To59Month_Urban"
-    },
-    {
-      "name": "Children age group 6 to 8 months receiving solid or semisolid food and breastmilk (%)",
-      "dcid": "Count_Person_6To8Month_Rural"
-    },
-    {
-      "name": "Children age group 6 to 8 months receiving solid or semisolid food and breastmilk (%)",
-      "dcid": "Count_Person_6To8Month_Urban"
-    },
-    {
-      "name": "Children in the age group of 12 to 23 months who are fully immunized (bacille Calmette-Guerin ( BCG ), measles, and 3 doses each of polio and DPT) (%)",
-      "dcid": "Count_Person_12To23Month_3VaccineDose"
-    },
-    {
-      "name": "Children under 5 years who are overweight ( weight-for-height ) (%)",
-      "dcid": "Count_Person_5OrLessYears_Rural"
-    },
-    {
-      "name": "Children under 5 years who are overweight ( weight-for-height ) (%)",
-      "dcid": "Count_Person_5OrLessYears_Urban"
-    },
-    {
-      "name": "Children under age 3 years breastfed within one hour of birth (%)",
-      "dcid": "Count_Person_3Years_BreastMilk"
-    },
-    {
-      "name": "Children under age 6 months exclusively breastfed (%)",
-      "dcid": "Count_Person_6OrLessMonth_Rural"
-    },
-    {
-      "name": "Children under age 6 months exclusively breastfed (%)",
-      "dcid": "Count_Person_6OrLessMonth_Urban"
-    },
-    {
       "name": "Count of number of person not a motor vehicle occupant involved in crash",
       "dcid": "Count_Person_InvolvedInCrash_NotMotorVehicleOccupant"
     },
@@ -2931,14 +2851,6 @@
     {
       "name": "Earning Male Population",
       "dcid": "Count_Person_Male_WithEarnings"
-    },
-    {
-      "name": "Elevated blood pressure or taking medicine to control blood pressure (%)",
-      "dcid": "Count_Person_TakingMedicine_Rural"
-    },
-    {
-      "name": "Elevated blood pressure or taking medicine to control blood pressure (%)",
-      "dcid": "Count_Person_TakingMedicine_Urban"
     },
     {
       "name": "Female Population Above Poverty Level in the Past Year",
@@ -3015,10 +2927,6 @@
     {
       "name": "Female White Population, Monoracial/Multiracial",
       "dcid": "Count_Person_Female_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Female population age 6 years and above ever attended school (%)",
-      "dcid": "Count_Person_6OrMoreYears_Female"
     },
     {
       "name": "Food Insecure People Eligible for All Federal Benefits",
@@ -3245,14 +3153,6 @@
       "dcid": "Count_Person_Male_ResidesInNursingFacilities"
     },
     {
-      "name": "Men age group 15 to 49 years who are anaemic (%)",
-      "dcid": "Count_Person_15To49Years_Male"
-    },
-    {
-      "name": "Men who know that consistent condom use can reduce the chance of getting Human immunodeficiency virus ( HIV ) or Acquired Immune Deficiency Syndrome ( AIDS ) (%)",
-      "dcid": "Count_Person_Male_ConditionHivOrAids"
-    },
-    {
       "name": "Monoracial Population Institutionalized in Group Quarters",
       "dcid": "Count_Person_OneRace_ResidesInInstitutionalizedGroupQuarters"
     },
@@ -3283,14 +3183,6 @@
     {
       "name": "Monoracial Population in Nursing Facilities",
       "dcid": "Count_Person_OneRace_ResidesInNursingFacilities"
-    },
-    {
-      "name": "Mothers who consumed iron folic acid for 100 days or more when they were pregnant (%)",
-      "dcid": "Count_Person_100OrMoreDay_Female"
-    },
-    {
-      "name": "Mothers who consumed iron folic acid for 180 days or more when they were pregnant (%)",
-      "dcid": "Count_Person_180OrMoreDay_Female"
     },
     {
       "name": "Multi Racial Population Above Poverty Level Status in Past Year",
@@ -3471,10 +3363,6 @@
     {
       "name": "Non White Male Population",
       "dcid": "Count_Person_Male_NonWhite"
-    },
-    {
-      "name": "Non-breastfeeding children age group 6 to 23 months receiving an adequate diet (%)",
-      "dcid": "Count_Person_6To23Month_OtherThanBreastFeeding"
     },
     {
       "name": "Number of Non Hispanic Asian/Pacific Islander Male Population",
@@ -3999,6 +3887,118 @@
     {
       "name": "Population: 0 - 4 Years, Lung Condition",
       "dcid": "Count_Person_0To4Years_ConditionLungCondition"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Male",
+      "dcid": "Count_Person_0To4Years_Male"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Mental Health Not Good",
+      "dcid": "Count_Person_0To4Years_ConditionMentalHealthNotGood"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "Count_Person_0To4Years_NativeHawaiianAndOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Not Hispanic or Latino",
+      "dcid": "Count_Person_0To4Years_NotHispanicOrLatino"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Not Hispanic or Latino \u0026 American Indian And Alaska Native Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_0To4Years_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Not Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
+      "dcid": "Count_Person_0To4Years_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Not Hispanic or Latino \u0026 Asian Alone",
+      "dcid": "Count_Person_0To4Years_NotHispanicOrLatino_AsianAlone"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Not Hispanic or Latino \u0026 Asian Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_0To4Years_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Not Hispanic or Latino \u0026 Black or African American Alone",
+      "dcid": "Count_Person_0To4Years_NotHispanicOrLatino_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Not Hispanic or Latino \u0026 Black or African American Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_0To4Years_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Not Hispanic or Latino \u0026 Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_0To4Years_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Not Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "Count_Person_0To4Years_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Not Hispanic or Latino \u0026 Two or More Races",
+      "dcid": "Count_Person_0To4Years_NotHispanicOrLatino_TwoOrMoreRaces"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Not Hispanic or Latino \u0026 White Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_0To4Years_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Resident",
+      "dcid": "Count_Person_0To4Years_Resident"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Rural",
+      "dcid": "Count_Person_0To4Years_Rural"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Stroke",
+      "dcid": "Count_Person_0To4Years_ConditionStroke"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Two or More Races",
+      "dcid": "Count_Person_0To4Years_TwoOrMoreRaces"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Underweight",
+      "dcid": "Count_Person_0To4Year_Underweight"
+    },
+    {
+      "name": "Population: 0 - 4 Years, Urban",
+      "dcid": "Count_Person_0To4Years_Urban"
+    },
+    {
+      "name": "Population: 0 - 4 Years, White Alone",
+      "dcid": "Count_Person_0To4Years_WhiteAlone"
+    },
+    {
+      "name": "Population: 0 - 4 Years, White Alone Not Hispanic or Latino",
+      "dcid": "Count_Person_0To4Years_WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "name": "Population: 0 - 4 Years, White Alone or In Combination With One or More Other Races",
+      "dcid": "Count_Person_0To4Years_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Population: 1 - 4 Years, American Indian or Alaska Native Alone",
+      "dcid": "Count_Person_1To4Years_AmericanIndianAndAlaskaNativeAlone"
+    },
+    {
+      "name": "Population: 1 - 4 Years, Asian Alone",
+      "dcid": "Count_Person_1To4Years_AsianAlone"
+    },
+    {
+      "name": "Population: 1 - 4 Years, Black or African American Alone",
+      "dcid": "Count_Person_1To4Years_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Population: 1 - 4 Years, Different House Abroad",
+      "dcid": "Count_Person_1To4Years_DifferentHouseAbroad"
+    },
+    {
+      "name": "Population: 1 - 4 Years, Different House in Different County Different State",
+      "dcid": "Count_Person_1To4Years_DifferentHouseInDifferentCountyDifferentState"
     }
   ],
   "matches": [

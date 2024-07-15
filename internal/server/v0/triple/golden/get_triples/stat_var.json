@@ -9151,7 +9151,7 @@
     },
     {
       "subjectId": "Count_Person_Female_10OrMoreYears_AsAFractionOf_Count_Person_Female",
-      "subjectName": "Women with 10 or more years of schooling (%)",
+      "subjectName": "Women with 10 or more years of schooling in the age group of 15 to 49 years (%)",
       "subjectTypes": [
         "StatisticalVariable"
       ],

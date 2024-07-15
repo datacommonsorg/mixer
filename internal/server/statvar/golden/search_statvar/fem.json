@@ -2789,6 +2789,10 @@
       "dcid": "Count_MedicalConditionIncident_Female_ConditionPerinatalInfection_HepatitisC"
     },
     {
+      "name": "Count of Pregnant Woman: 15 - 49 Years, Female",
+      "dcid": "Count_PregnantWoman_15To49Years_Female"
+    },
+    {
       "name": "Count of Shiga toxin-producing Escherichia coli, Female Shiga toxin-producing Escherichia Coli incidents",
       "dcid": "Count_MedicalConditionIncident_Female_ConditionShigaToxinEColi"
     },
@@ -3995,10 +3999,6 @@
     {
       "name": "Disease burden (number of disability-adjusted life years, DALYs) [Collective violence and legal intervention, Female]",
       "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE163__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Colon and rectum cancers, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE065__SEX--F"
     }
   ],
   "matches": [
