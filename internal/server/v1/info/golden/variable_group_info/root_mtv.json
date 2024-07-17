@@ -12,13 +12,13 @@
         "id": "dc/g/Demographics",
         "specializedEntity": "Demographics",
         "displayName": "Demographics",
-        "descendentStatVarCount": 9114
+        "descendentStatVarCount": 9190
       },
       {
         "id": "dc/g/Economy",
         "specializedEntity": "Economy",
         "displayName": "Economy",
-        "descendentStatVarCount": 9379
+        "descendentStatVarCount": 9417
       },
       {
         "id": "dc/g/Education",
@@ -77,6 +77,6 @@
         "displayName": "Sustainable Development Goals"
       }
     ],
-    "descendentStatVarCount": 11160
+    "descendentStatVarCount": 11236
   }
 }

@@ -292,7 +292,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 25070
+        "descendentStatVarCount": 25066
       },
       {
         "id": "dc/g/Person_GovernmentId",
@@ -484,7 +484,7 @@
         "id": "dc/g/Person_PlaceOfResidenceClassification",
         "specializedEntity": "Place of Residence Classification (Individual)",
         "displayName": "Person by Place of Residence Classification",
-        "descendentStatVarCount": 3534
+        "descendentStatVarCount": 3530
       },
       {
         "id": "dc/g/Place_PlaceOfResidenceClassification",
@@ -514,7 +514,7 @@
         "id": "dc/g/Residence",
         "specializedEntity": "Residence",
         "displayName": "Residence",
-        "descendentStatVarCount": 5203
+        "descendentStatVarCount": 5199
       },
       {
         "id": "dc/g/Person_ResidentStatus",
@@ -553,7 +553,7 @@
         "descendentStatVarCount": 2
       }
     ],
-    "descendentStatVarCount": 45946,
+    "descendentStatVarCount": 45942,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]
