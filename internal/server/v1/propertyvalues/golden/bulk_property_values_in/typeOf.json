@@ -1718,6 +1718,15 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Yap State",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q11342951",
+          "provenanceId": "dc/base/WikidataGeo_Federated_States_of_Micronesia"
+        },
+        {
           "name": "Andhra Pradesh",
           "types": [
             "AdministrativeArea1",
@@ -1944,6 +1953,15 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Kosrae State",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q1785093",
+          "provenanceId": "dc/base/WikidataGeo_Federated_States_of_Micronesia"
+        },
+        {
           "name": "Ladakh",
           "types": [
             "AdministrativeArea1",
@@ -1960,6 +1978,15 @@
           ],
           "dcid": "wikidataId/Q22048",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Chuuk",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q221684",
+          "provenanceId": "dc/base/WikidataGeo_Federated_States_of_Micronesia"
         },
         {
           "name": "Punjab",
@@ -1980,6 +2007,78 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Al Jazirah",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q309469",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Al Qadarif",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q309478",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Blue Nile",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q309489",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Northern",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q310118",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Red Sea",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q310120",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Khartoum",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q310385",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "White Nile",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q311371",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "East Darfur",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q3545641",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Andaman and Nicobar Islands",
           "types": [
             "AdministrativeArea1",
@@ -1987,6 +2086,15 @@
           ],
           "dcid": "wikidataId/Q40888",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Central Darfur",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q4116493",
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Chandigarh",
@@ -2006,6 +2114,24 @@
           ],
           "dcid": "wikidataId/Q46107",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "South Kordofan",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q465490",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "West Kordofan",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q536396",
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Jammu and Kashmir",
@@ -2041,6 +2167,78 @@
             "State"
           ],
           "dcid": "wikidataId/Q677037",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "North Darfur",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q688306",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Pohnpei State",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q7771127",
+          "provenanceId": "dc/base/WikidataGeo_Federated_States_of_Micronesia"
+        },
+        {
+          "name": "South Darfur",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q838778",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "West Darfur",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q846331",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "River Nile",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q849297",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "North Kordofan",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q864093",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Sennar",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q865534",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Kassala",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q954963",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         }
       ]
@@ -11747,5 +11945,5 @@
       ]
     }
   ],
-  "nextToken": "H4sIAAAAAAAA/6TQO27CQBDG8Xjix2SdatL4GnkdwHGiSFEEBYjeyGt7hfHCsjbyNTgxEqJAW+2Icqb46a9PLERYKDuJ2E47Oa/FS15tVa8O1pRWjTI3snylBwIMCBAI8JEAQwKMCDAmwIQAkQCfCFBQiGm28UHfmOjeB31nopUP+sFEax/0k13666DJlzZ6aFo29ONAl4uhRJhmp0D8O8zzTKqmXWvTal2xo77dqKU+9vdvtFJdVzaSDf2JpNBDb82NdX0wrfEMAAD//wEAAP//ojF6DWIDAAA="
+  "nextToken": "H4sIAAAAAAAA/6zTS0rGQAzAcb/YR0xdxU2v4esAtYogoosW9yOdtoO1o+O00mt4YkFcyKwm+C2TxY8/gVBDSW38Rpnf3vRjTydV92pm8+Gd8mbVldPqlA8YcMeAwICHDJgwYMqAGQPmDIgMeMSAxAkW5UsMeiZE32PQcyHaxaAXQrSPQS/FpbcBml9ZZ5dhFEM3AfQzCZQUi/JrR/cBc/ygzTA+Wzda24mjrsOo1n7O/7/Rk5kmNWgxdEd5bZfZuz/W70JordRS2njl9T5frP8GAAD//wEAAP//D19hj7gDAAA="
 }

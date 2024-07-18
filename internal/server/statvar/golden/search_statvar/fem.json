@@ -25,6 +25,10 @@
       "dcid": "sdg/SG_DMK_PARLMP_UC"
     },
     {
+      "name": "Fertility rate (%)",
+      "dcid": "FertilityRate_Person_Female_AsAFractionOf_Count_Person_Female"
+    },
+    {
       "name": "Age-standardized mortality from Noncommunicable diseases (NCD) mortality rate (per 100 000 population) [Female]",
       "dcid": "who/WHS2_131.SEX--F"
     },
@@ -59,10 +63,6 @@
     {
       "name": "Assistive technology indicators: Prevalence of met need of assistive products (%) [Female]",
       "dcid": "who/ASSISTIVETECH_METNEED.SEX--F"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F"
     },
     {
       "name": "Average income of large-scale food producers, PPP [Female]",
@@ -481,16 +481,28 @@
       "dcid": "who/bfearly.SEX--F"
     },
     {
-      "name": "Police reporting rate for physical assault [Female]",
+      "name": "Police reporting rate for physical assault in the previous 12 months [Female]",
       "dcid": "sdg/VC_PRR_PHYV.SEX--F"
     },
     {
-      "name": "Police reporting rate for robbery [Female]",
+      "name": "Police reporting rate for physical violence in the previous 12 months [Female]",
+      "dcid": "sdg/VC_PRR_PHY_VIO.SEX--F"
+    },
+    {
+      "name": "Police reporting rate for psychological violence in the previous 12 months [Female]",
+      "dcid": "sdg/VC_PRR_PSYCHV.SEX--F"
+    },
+    {
+      "name": "Police reporting rate for robbery in the previous 12 months [Female]",
       "dcid": "sdg/VC_PRR_ROBB.SEX--F"
     },
     {
-      "name": "Police reporting rate for sexual assault [Female]",
+      "name": "Police reporting rate for sexual assault in the previous 12 months [Female]",
       "dcid": "sdg/VC_PRR_SEXV.SEX--F"
+    },
+    {
+      "name": "Police reporting rate for sexual violence in the previous 12 months [Female]",
+      "dcid": "sdg/VC_PRR_SEX_VIO.SEX--F"
     },
     {
       "name": "Postnatal care visit within two days of birth (in the five years preceding the survey) (%) [Female]",
@@ -621,14 +633,6 @@
       "dcid": "sdg/IT_MOB_OWN.SEX--F"
     },
     {
-      "name": "Proportion of informal employment - 13th ICLS [Female]",
-      "dcid": "sdg/SL_ISV_IFEM.SEX--F"
-    },
-    {
-      "name": "Proportion of informal employment - 19th ICLS [Female]",
-      "dcid": "sdg/SL_ISV_IFEM_19ICLS.SEX--F"
-    },
-    {
       "name": "Proportion of mothers with newborns receiving maternity cash benefit [Female]",
       "dcid": "sdg/SI_COV_MATNL.SEX--F"
     },
@@ -641,7 +645,7 @@
       "dcid": "sdg/SP_LGL_LNDSTR.SEX--F"
     },
     {
-      "name": "Proportion of persons victim of physical or sexual harassment, in the previous 12 months [Female]",
+      "name": "Proportion of persons victim of non-sexual or sexual harassment, in the previous 12 months [Female]",
       "dcid": "sdg/VC_VOH_SXPH.SEX--F"
     },
     {
@@ -669,12 +673,24 @@
       "dcid": "sdg/VC_VOV_GDSD.SEX--F"
     },
     {
+      "name": "Proportion of population subjected to physical assault in the previous 12 months [Female]",
+      "dcid": "sdg/VC_VOV_PHY_ASLT.SEX--F"
+    },
+    {
       "name": "Proportion of population subjected to physical violence in the previous 12 months [Female]",
       "dcid": "sdg/VC_VOV_PHYL.SEX--F"
     },
     {
+      "name": "Proportion of population subjected to psychological violence in the previous 12 months [Female]",
+      "dcid": "sdg/VC_VOV_PSYCHL.SEX--F"
+    },
+    {
       "name": "Proportion of population subjected to robbery in the previous 12 months [Female]",
       "dcid": "sdg/VC_VOV_ROBB.SEX--F"
+    },
+    {
+      "name": "Proportion of population subjected to sexual assault in the previous 12 months [Female]",
+      "dcid": "sdg/VC_VOV_SEX_ASLT.SEX--F"
     },
     {
       "name": "Proportion of population subjected to sexual violence in the previous 12 months [Female]",
@@ -749,22 +765,6 @@
       "dcid": "sdg/SI_COV_VULN.SEX--F"
     },
     {
-      "name": "Proportion of women in managerial positions - 13th ICLS - 13th ICLS [Female]",
-      "dcid": "sdg/IC_GEN_MGTL.SEX--F"
-    },
-    {
-      "name": "Proportion of women in managerial positions - 19th ICLS - 19th ICLS [Female]",
-      "dcid": "sdg/IC_GEN_MGTL_19ICLS.SEX--F"
-    },
-    {
-      "name": "Proportion of women in senior and middle management positions - 13th ICLS - 13th ICLS [Female]",
-      "dcid": "sdg/IC_GEN_MGTN.SEX--F"
-    },
-    {
-      "name": "Proportion of women in senior and middle management positions - 19th ICLS - 19th ICLS [Female]",
-      "dcid": "sdg/IC_GEN_MGTN_19ICLS.SEX--F"
-    },
-    {
       "name": "Suicide mortality rate [Female]",
       "dcid": "sdg/SH_STA_SCIDE.SEX--F"
     },
@@ -775,14 +775,6 @@
     {
       "name": "Unemployment Rate of the Female Population",
       "dcid": "UnemploymentRate_Person_Female"
-    },
-    {
-      "name": "Unemployment rate - 13th ICLS [Female]",
-      "dcid": "sdg/SL_TLF_UEMDIS.SEX--F"
-    },
-    {
-      "name": "Unemployment rate - 19th ICLS [Female]",
-      "dcid": "sdg/SL_TLF_UEMDIS_19ICLS.SEX--F"
     },
     {
       "name": "Unsentenced detainees as a proportion of overall prison population [Female]",
@@ -1023,6 +1015,14 @@
     {
       "name": "Median Income of Women (15 Years or Older) With Income",
       "dcid": "Median_Income_Person_15OrMoreYears_Female_WithIncome"
+    },
+    {
+      "name": "Population and household profile-sex ratio at birth for children born in the last five years (females per 1,000 males)",
+      "dcid": "Count_BirthEvent_Female_AsAFractionOf_Count_BirthEvent_Male"
+    },
+    {
+      "name": "Population and household profile-sex ratio of the total population (females per 1,000 males)",
+      "dcid": "Count_Person_Female_AsAFractionOf_Count_Person_Male"
     },
     {
       "name": "Population: Male (As Fraction of Count Person Female)",
@@ -1397,92 +1397,8 @@
       "dcid": "WHO/SDGDISASTER_Female"
     },
     {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Armed forces occupations]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO08_0"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Armed forces]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO88_0"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Clerical support workers]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO08_4"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Clerks]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO88_4"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Craft and related trades workers]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO08_7"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Craft and related trades workers]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO88_7"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Elementary occupations]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO08_9"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Elementary occupations]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO88_9"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Legislators, senior officials and managers]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO88_1"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Managers]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO08_1"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Not elsewhere classified]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO08_X"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Not elsewhere classified]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO88_X"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Plant and machine operators and assemblers]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO88_8"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Plant and machine operators, and assemblers]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO08_8"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Professionals]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO08_2"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Professionals]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO88_2"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Service and sales workers]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO08_5"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Service workers and shop and market sales workers]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO88_5"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Skilled agricultural and fishery workers]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO88_6"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Skilled agricultural, forestry and fishery workers]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO08_6"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Technicians and associate professionals]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO08_3"
-    },
-    {
-      "name": "Average hourly earnings of employees by sex and occupation [Female, Type of occupation = Technicians and associate professionals]",
-      "dcid": "sdg/SL_EMP_EARN.SEX--F__OCCUPATION--ISCO88_3"
+      "name": "Average hourly earnings of employees by sex and occupation [15 years old and over, Female]",
+      "dcid": "sdg/SL_EMP_EARN.AGE--Y_GE15__SEX--F"
     },
     {
       "name": "Bcg Immunization Coverage Among One-Year-Olds (%) (bcgv), Female",
@@ -2873,6 +2789,10 @@
       "dcid": "Count_MedicalConditionIncident_Female_ConditionPerinatalInfection_HepatitisC"
     },
     {
+      "name": "Count of Pregnant Woman: 15 - 49 Years, Female",
+      "dcid": "Count_PregnantWoman_15To49Years_Female"
+    },
+    {
       "name": "Count of Shiga toxin-producing Escherichia coli, Female Shiga toxin-producing Escherichia Coli incidents",
       "dcid": "Count_MedicalConditionIncident_Female_ConditionShigaToxinEColi"
     },
@@ -3999,6 +3919,86 @@
     {
       "name": "Disease burden (number of disability-adjusted life years, DALYs) [Appendicitis, Female]",
       "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE124__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Ascariasis, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE034__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Asthma, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE119__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Back and neck pain, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE138__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Bipolar disorder, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE084__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Birth asphyxia and birth trauma, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE051__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Bladder cancer, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE075__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Breast cancer, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE070__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Cardiomyopathy, myocarditis, endocarditis, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE115__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Cardiovascular diseases, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE110__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Cataracts, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE104__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Cervix uteri cancer, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE071__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Chagas disease, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE024__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Childhood behavioural disorders, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE091__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Childhood-cluster diseases, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE012__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Chlamydia, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE006__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Chronic obstructive pulmonary disease, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE118__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Chronic respiratory diseases, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE117__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Cirrhosis of the liver, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE123__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Cleft lip and cleft palate, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE142__SEX--F"
+    },
+    {
+      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Collective violence and legal intervention, Female]",
+      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE163__SEX--F"
     }
   ],
   "matches": [
