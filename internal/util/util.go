@@ -41,7 +41,6 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/go-sql-driver/mysql"
-	"github.com/mattn/go-sqlite3"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 	"google.golang.org/grpc/codes"
@@ -50,6 +49,7 @@ import (
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"googlemaps.github.io/maps"
+	"modernc.org/sqlite"
 )
 
 const (
@@ -597,7 +597,7 @@ func SQLInParam(n int) string {
 
 func SQLListParam(sqlClient *sql.DB, n int) (string, error) {
 	switch sqlClient.Driver().(type) {
-	case *sqlite3.SQLiteDriver:
+	case *sqlite.Driver:
 		str := "VALUES " + strings.Repeat("(?),", n)
 		return str[:len(str)-1], nil
 	case *mysql.MySQLDriver:
