@@ -23,7 +23,7 @@ import (
 )
 
 func TestGetImportTableData(t *testing.T) {
-	sqlClient, err := sql.Open("sqlite3", "../../../test/test_get_import_table_data.db")
+	sqlClient, err := sql.Open("sqlite", "../../../test/test_get_import_table_data.db")
 	if err != nil {
 		t.Fatalf("Could not open testing database: %s", err)
 	}
