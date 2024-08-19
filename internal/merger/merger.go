@@ -88,8 +88,7 @@ func mergeLinkedGraph(
 			}
 			dcidSet := map[string]struct{}{}
 			valueSet := map[string]struct{}{}
-			mainNodes := mainArcs[prop].Nodes
-			for _, n := range mainNodes {
+			for _, n := range mainArcs[prop].Nodes {
 				if n.Dcid != "" {
 					dcidSet[n.Dcid] = struct{}{}
 				} else {
@@ -99,12 +98,12 @@ func mergeLinkedGraph(
 			for _, node := range nodes.Nodes {
 				if node.Dcid != "" {
 					if _, ok := dcidSet[node.Dcid]; !ok {
-						mainNodes = append(mainNodes, node)
+						mainArcs[prop].Nodes = append(mainArcs[prop].Nodes, node)
 					}
 				}
 				if node.Value != "" {
 					if _, ok := valueSet[node.Value]; !ok {
-						mainNodes = append(mainNodes, node)
+						mainArcs[prop].Nodes = append(mainArcs[prop].Nodes, node)
 					}
 				}
 			}
