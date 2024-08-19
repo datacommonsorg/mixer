@@ -334,6 +334,52 @@ func TestMergeNode(t *testing.T) {
 				},
 			},
 		},
+		// Ensure that props with same name from the same dcid are merged
+		{
+			&pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"dcid1": {
+						Arcs: map[string]*pbv2.Nodes{
+							"prop1": {
+								Nodes: []*pb.EntityInfo{
+									{Value: "val1"},
+								},
+							},
+						},
+					},
+				},
+			},
+			&pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"dcid1": {
+						Arcs: map[string]*pbv2.Nodes{
+							"prop1": {
+								Nodes: []*pb.EntityInfo{
+									{Value: "val2"},
+								},
+							},
+						},
+					},
+				},
+			},
+			&pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"dcid1": {
+						Arcs: map[string]*pbv2.Nodes{
+							"prop1": {
+								Nodes: []*pb.EntityInfo{
+									{Value: "val1"},
+									{Value: "val2"},
+								},
+							},
+						},
+					},
+				},
+			},
+			nil,
+			nil,
+			nil,
+		},
 	} {
 		var err error
 
