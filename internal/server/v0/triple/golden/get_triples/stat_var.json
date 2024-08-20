@@ -278,7 +278,7 @@
     },
     {
       "subjectId": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_AsFractionOf_Count_Person",
-      "subjectName": "Murder and Non Negligent Manslaughter Cases Per Capita",
+      "subjectName": "Murder and Non Negligent Manslaughter Case Rate",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -334,7 +334,7 @@
     },
     {
       "subjectId": "Count_Death_AsAFractionOfCount_Person",
-      "subjectName": "Deaths Per Capita",
+      "subjectName": "Deaths Rate",
       "subjectTypes": [
         "StatisticalVariable"
       ],

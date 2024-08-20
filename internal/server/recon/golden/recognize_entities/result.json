@@ -9,6 +9,9 @@
           "span": "benzodiazepine, derivatives",
           "entities": [
             {
+              "dcid": "chem/BenzodiazepineDerivatives"
+            },
+            {
               "dcid": "chem/N03AE"
             },
             {

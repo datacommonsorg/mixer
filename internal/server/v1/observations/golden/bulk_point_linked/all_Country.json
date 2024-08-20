@@ -6068,12 +6068,12 @@
     },
     "3162233851": {
       "import_name": "BosniaPopulation",
-      "provenance_url": "http://popis.gov.ba/",
+      "provenance_url": "https://popis.gov.ba",
       "measurement_method": "BosniaCensus"
     },
     "3169183847": {
       "import_name": "StatisticsDenmark",
-      "provenance_url": "http://www.dst.dk/en",
+      "provenance_url": "https://www.dst.dk/en",
       "measurement_method": "StatisticsDenmark"
     },
     "318580725": {
