@@ -82,9 +82,6 @@ var StatsRanking = map[string]map[RankKey]int{
 	"WikipediaStatsData": {{MM: s("Wikipedia")}: 1001},
 
 	// Population
-	"HumanCuratedStats": {{MM: s("HumanCuratedStats")}: 1002},
-
-	// Population
 	"WikidataPopulation": {{MM: s("WikidataPopulation")}: 1003},
 
 	// Unemployment Rate
