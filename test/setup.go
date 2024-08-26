@@ -27,7 +27,7 @@ import (
 	"runtime"
 	"strings"
 
-	_ "github.com/mattn/go-sqlite3" // import the sqlite3 driver
+	_ "modernc.org/sqlite" // import the sqlite driver
 
 	"cloud.google.com/go/bigquery"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
@@ -131,9 +131,9 @@ func setupInternal(
 	// SQLite
 	var sqlClient *sql.DB
 	if useSQLite {
-		sqlClient, err = sql.Open("sqlite3", filepath.Join(path.Dir(filename), "./datacommons.db"))
+		sqlClient, err = sql.Open("sqlite", filepath.Join(path.Dir(filename), "./datacommons.db"))
 		if err != nil {
-			log.Fatalf("Failed to read sqlite3 database: %v", err)
+			log.Fatalf("Failed to read sqlite database: %v", err)
 		}
 	}
 

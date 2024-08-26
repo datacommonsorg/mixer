@@ -22,6 +22,15 @@
         "hasData": true
       },
       {
+        "id": "FertilityRate_Person_Female_AsAFractionOf_Count_Person_Female",
+        "searchNames": [
+          "Fertility Rate of Person (As Fraction of Count Person Female)"
+        ],
+        "displayName": "Fertility rate (%)",
+        "definition": "md=Count_Person_Female,mp=fertilityRate,pt=Person",
+        "hasData": true
+      },
+      {
         "id": "GenderIncomeInequality_Person_15OrMoreYears_WithIncome",
         "searchNames": [
           "Gender Income Inequality of Person"
@@ -58,15 +67,6 @@
         "hasData": true
       },
       {
-        "id": "Count_Person_WithInternetSubscription_AsAFractionOf_Count_Person",
-        "searchNames": [
-          "Population Count of Person With Internet Access Status is With Internet Subscription (Per Capita)"
-        ],
-        "displayName": "Number of Internet Subscribers per 100 population",
-        "definition": "md=Count_Person,mp=count,pt=Person,internetAccessStatus=WithInternetSubscription",
-        "hasData": true
-      },
-      {
         "id": "IncrementalCount_Person",
         "searchNames": [
           "Incremental Count of Person"
@@ -82,6 +82,16 @@
         ],
         "displayName": "Population Density",
         "definition": "md=area,mp=count,pt=Person",
+        "hasData": true
+      },
+      {
+        "id": "Count_Person_InfrastructureProject_BrazilRuralDevelopmentProgram",
+        "searchNames": [
+          "Population Count of Person With Affected by Is Infrastructure Project, Benefit Program is Brazil_Rural Development Program",
+          "Nº de famílias atingidas por empreendimentos de infraestrutura beneficiárias do Programa Fomento Rural@pt"
+        ],
+        "displayName": "Population: Infrastructure Project, Brazil_Rural Development Program",
+        "definition": "mp=count,pt=Person,affectedBy=InfrastructureProject,benefitProgram=Brazil_RuralDevelopmentProgram",
         "hasData": true
       },
       {
@@ -108,19 +118,25 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 27231
+        "descendentStatVarCount": 27472
       },
       {
         "id": "dc/g/Person_AgeGroupClassification",
         "specializedEntity": "Age Group Classification",
         "displayName": "Person by Age Group Classification",
-        "descendentStatVarCount": 2
+        "descendentStatVarCount": 8
+      },
+      {
+        "id": "dc/g/Person_BenefitProgram",
+        "specializedEntity": "Benefit Program",
+        "displayName": "Person by Benefit Program",
+        "descendentStatVarCount": 18
       },
       {
         "id": "dc/g/Person_BenefitsStatus",
         "specializedEntity": "Benefits Status",
         "displayName": "Person by Benefits Status",
-        "descendentStatVarCount": 15
+        "descendentStatVarCount": 16
       },
       {
         "id": "dc/g/Person_CarpoolOccupancy",
@@ -133,6 +149,12 @@
         "specializedEntity": "Child",
         "displayName": "Child",
         "descendentStatVarCount": 19
+      },
+      {
+        "id": "dc/g/Children",
+        "specializedEntity": "Children",
+        "displayName": "Children",
+        "descendentStatVarCount": 33
       },
       {
         "id": "dc/g/Person_ChildrenStatus",
@@ -201,6 +223,12 @@
         "descendentStatVarCount": 45
       },
       {
+        "id": "dc/g/Person_DeviceUsed",
+        "specializedEntity": "Device Used",
+        "displayName": "Person by Device Used",
+        "descendentStatVarCount": 3
+      },
+      {
         "id": "dc/g/Person_DisabilityStatus",
         "specializedEntity": "Disability Status",
         "displayName": "Person by Disability Status",
@@ -264,7 +292,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 24822
+        "descendentStatVarCount": 25066
       },
       {
         "id": "dc/g/Person_GovernmentId",
@@ -294,7 +322,7 @@
         "id": "dc/g/Household",
         "specializedEntity": "Household",
         "displayName": "Household",
-        "descendentStatVarCount": 3513
+        "descendentStatVarCount": 3515
       },
       {
         "id": "dc/g/Person_HouseholdIncome",
@@ -306,13 +334,13 @@
         "id": "dc/g/Person_HouseholdType",
         "specializedEntity": "Household Type",
         "displayName": "Person by Household Type",
-        "descendentStatVarCount": 462
+        "descendentStatVarCount": 474
       },
       {
         "id": "dc/g/Households",
         "specializedEntity": "Households",
         "displayName": "Households",
-        "descendentStatVarCount": 3
+        "descendentStatVarCount": 47
       },
       {
         "id": "dc/g/Person_IdentityActivity",
@@ -337,6 +365,18 @@
         "specializedEntity": "Income Status (Individual)",
         "displayName": "Person by Income Status",
         "descendentStatVarCount": 609
+      },
+      {
+        "id": "dc/g/Infant",
+        "specializedEntity": "Infant",
+        "displayName": "Infant",
+        "descendentStatVarCount": 2
+      },
+      {
+        "id": "dc/g/Person_InternetAccessStatus",
+        "specializedEntity": "Internet Access Status",
+        "displayName": "Person by Internet Access Status",
+        "descendentStatVarCount": 5
       },
       {
         "id": "dc/g/Person_InternetUsageLocation",
@@ -366,13 +406,13 @@
         "id": "dc/g/Person_LiteracyStatus",
         "specializedEntity": "Literacy Status",
         "displayName": "Person by Literacy Status",
-        "descendentStatVarCount": 296
+        "descendentStatVarCount": 302
       },
       {
         "id": "dc/g/Person_MaritalStatus",
         "specializedEntity": "Marital Status",
         "displayName": "Person by Marital Status",
-        "descendentStatVarCount": 1567
+        "descendentStatVarCount": 1618
       },
       {
         "id": "dc/g/MaternalMortalityEvent",
@@ -399,10 +439,22 @@
         "descendentStatVarCount": 1546
       },
       {
+        "id": "dc/g/Mother",
+        "specializedEntity": "Mother",
+        "displayName": "Mother",
+        "descendentStatVarCount": 37
+      },
+      {
         "id": "dc/g/MunicipalWard",
         "specializedEntity": "Municipal Ward",
         "displayName": "Municipal Ward",
         "descendentStatVarCount": 3
+      },
+      {
+        "id": "dc/g/NonPregnantWoman",
+        "specializedEntity": "Non Pregnant Woman",
+        "displayName": "Non Pregnant Woman",
+        "descendentStatVarCount": 6
       },
       {
         "id": "dc/g/Person_NumberOfVehiclesInHousehold",
@@ -432,7 +484,7 @@
         "id": "dc/g/Person_PlaceOfResidenceClassification",
         "specializedEntity": "Place of Residence Classification (Individual)",
         "displayName": "Person by Place of Residence Classification",
-        "descendentStatVarCount": 3268
+        "descendentStatVarCount": 3530
       },
       {
         "id": "dc/g/Place_PlaceOfResidenceClassification",
@@ -462,13 +514,13 @@
         "id": "dc/g/Residence",
         "specializedEntity": "Residence",
         "displayName": "Residence",
-        "descendentStatVarCount": 4936
+        "descendentStatVarCount": 5199
       },
       {
         "id": "dc/g/Person_ResidentStatus",
         "specializedEntity": "Resident Status",
         "displayName": "Person by Resident Status",
-        "descendentStatVarCount": 770
+        "descendentStatVarCount": 771
       },
       {
         "id": "dc/g/Place_SocialCondition",
@@ -501,7 +553,7 @@
         "descendentStatVarCount": 2
       }
     ],
-    "descendentStatVarCount": 45412,
+    "descendentStatVarCount": 45942,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

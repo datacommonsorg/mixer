@@ -24,7 +24,7 @@ import (
 )
 
 func TestGetStatVarSummaries(t *testing.T) {
-	sqlClient, err := sql.Open("sqlite3", "../../../test/sqlquery/statvar_summary/datacommons.db")
+	sqlClient, err := sql.Open("sqlite", "../../../test/sqlquery/statvar_summary/datacommons.db")
 	if err != nil {
 		t.Fatalf("Could not open testing database: %v", err)
 	}

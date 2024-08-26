@@ -23,7 +23,7 @@ import (
 )
 
 func TestGetKeyValue(t *testing.T) {
-	sqlClient, err := sql.Open("sqlite3", "../../../test/sqlquery/key_value/datacommons.db")
+	sqlClient, err := sql.Open("sqlite", "../../../test/sqlquery/key_value/datacommons.db")
 	if err != nil {
 		t.Fatalf("Could not open test database: %v", err)
 	}

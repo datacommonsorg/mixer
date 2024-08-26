@@ -17,6 +17,10 @@
       "dcid": "Count_Person_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
+      "name": "Children age group 6 to 23 months receiving an adequate diet (%)",
+      "dcid": "Count_Person_6To23Month"
+    },
+    {
       "name": "Direct Purchasers of Health Insurance",
       "dcid": "Count_Person_WithDirectPurchaseHealthInsurance"
     },
@@ -641,6 +645,10 @@
       "dcid": "Count_Person_12To18Years"
     },
     {
+      "name": "Population: 12 - 23 Month",
+      "dcid": "Count_Person_12To23Month"
+    },
+    {
       "name": "Population: 12th Grade No Diploma",
       "dcid": "Count_Person_EducationalAttainment12ThGradeNoDiploma"
     },
@@ -893,12 +901,24 @@
       "dcid": "Count_Person_6To14Years"
     },
     {
+      "name": "Population: 6 - 59 Month",
+      "dcid": "Count_Person_6To59Month"
+    },
+    {
       "name": "Population: 6 - 59 Years",
       "dcid": "Count_Person_6To59Year"
     },
     {
+      "name": "Population: 6 - 8 Month",
+      "dcid": "Count_Person_6To8Month"
+    },
+    {
       "name": "Population: 6 - 9 Years",
       "dcid": "Count_Person_6To9Years"
+    },
+    {
+      "name": "Population: 6 Month or Less",
+      "dcid": "Count_Person_6OrLessMonth"
     },
     {
       "name": "Population: 6 Years or Less",
@@ -1003,6 +1023,10 @@
     {
       "name": "Population: 8th Grade",
       "dcid": "Count_Person_EducationalAttainment8ThGrade"
+    },
+    {
+      "name": "Population: 9 - 35 Month",
+      "dcid": "Count_Person_9To35Month"
     },
     {
       "name": "Population: 9 Years or Less",
@@ -1203,6 +1227,10 @@
     {
       "name": "Population: Education Major",
       "dcid": "Count_Person_BachelorOfEducationMajor"
+    },
+    {
+      "name": "Population: Elevated Blood Pressure",
+      "dcid": "Count_Person_WithElevatedBloodPressure"
     },
     {
       "name": "Population: Eligible Social Protection Benefit Under Maternity Benefit",
@@ -2465,6 +2493,10 @@
       "dcid": "Count_Person_Years14Onwards_InLaborForce"
     },
     {
+      "name": "Total number of beneficiaries of the Rural Development Program",
+      "dcid": "Count_Person_BrazilRuralDevelopmentProgram"
+    },
+    {
       "name": "US Citizens Born Abroad to American Parents",
       "dcid": "Count_Person_USCitizenBornAbroadOfAmericanParents"
     },
@@ -2517,6 +2549,10 @@
       "dcid": "Count_Person_25OrMoreYears_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears"
     },
     {
+      "name": "Moderately or severely elevated blood pressure (%)",
+      "dcid": "Count_Person_WithModeratelyElevatedBloodPressureOrSeverelyElevatedBloodPressure_AsAFractionOf_Count_Person"
+    },
+    {
       "name": "Number of ATMs per 1,00,000 population",
       "dcid": "Count_Person_ATM_AsAFractionOf_Count_Person"
     },
@@ -2539,6 +2575,18 @@
     {
       "name": "Persons provided employment as a percentage of persons who demanded employment under MGNREGA (%)",
       "dcid": "Count_Person_Employed_AsAFractionOf_Count_Person_MGNREGAUnemployed"
+    },
+    {
+      "name": "Population and household profile-sex ratio of the total population (females per 1,000 males)",
+      "dcid": "Count_Person_Female_AsAFractionOf_Count_Person_Male"
+    },
+    {
+      "name": "Population below age 15 years (%)",
+      "dcid": "Count_Person_15OrLessYears_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Population connected to independent treatment",
+      "dcid": "Count_Person_WasteWaterIndependentlyTreated_PerWaterTreatmentSystem"
     },
     {
       "name": "Population covered under Aadhaar (%)",
@@ -2601,8 +2649,28 @@
       "dcid": "Count_Person_Years14Onwards_InLaborForce_AsAFractionOf_Count_Person_Years14Onwards"
     },
     {
+      "name": "Prevalence of diarrhoea in the 2 weeks preceding the survey (%)",
+      "dcid": "Count_Person_ConditionDiarrhea_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Prevalence of symptoms of Acute Respiratory Infection (ARI) in the 2 weeks preceding the survey (%)",
+      "dcid": "Count_Person_ConditionSymptomsOfAcuteRespiratoryInfection_AsAFractionOf_Count_Person"
+    },
+    {
       "name": "Proportion of the population (out of total eligible population) receiving social protection benefits under Maternity Benefit",
       "dcid": "Count_Person_ReceivingSocialProtectionBenefitUnderMaternityBenefit_AsAFractionOf_Count_Person_EligibleSocialProtectionBenefitUnderMaternityBenefit"
+    },
+    {
+      "name": "Public total treatment (connected to a wastewater treatment plant)",
+      "dcid": "Count_Person_WasteWaterTreatmentPlant_PerWaterTreatmentType"
+    },
+    {
+      "name": "Total connected to wastewater treatment",
+      "dcid": "Count_Person_WasteWaterTreated_PerWaterTreatmentStatus"
+    },
+    {
+      "name": "Total public sewerage (% of resident population connected to a wastewater collecting system), Population connected to the public sewerage without treatment",
+      "dcid": "Count_Person_PublicSewerageWithoutTreatment_PerWaterTreatmentType"
     },
     {
       "name": "African American Farmers",
@@ -3301,6 +3369,14 @@
       "dcid": "Count_Person_Male_NotHispanicOrLatino_AsianOrPacificIslander"
     },
     {
+      "name": "Number of beneficiaries of the Rural Development Program without gender information",
+      "dcid": "Count_Person_BrazilRuralDevelopmentProgram_GenderUnknownOrNotStated"
+    },
+    {
+      "name": "Number of men benefiting from the Rural Development Program",
+      "dcid": "Count_Person_BrazilRuralDevelopmentProgram_Male"
+    },
+    {
       "name": "Number of motor vehicle occupants involved in crash",
       "dcid": "Count_Person_InvolvedInCrash_MotorVehicleOccupant"
     },
@@ -3327,6 +3403,10 @@
     {
       "name": "Number of people born outside the country in the United States of America",
       "dcid": "Count_Person_ForeignBorn_PlaceOfBirthUSA"
+    },
+    {
+      "name": "Number of women beneficiaries of the Rural Development Program",
+      "dcid": "Count_Person_BrazilRuralDevelopmentProgram_Female"
     },
     {
       "name": "People employed in Other service Sectors",
@@ -3919,86 +3999,6 @@
     {
       "name": "Population: 1 - 4 Years, Different House in Different County Different State",
       "dcid": "Count_Person_1To4Years_DifferentHouseInDifferentCountyDifferentState"
-    },
-    {
-      "name": "Population: 1 - 4 Years, Different House in Different County Same State",
-      "dcid": "Count_Person_1To4Years_DifferentHouseInDifferentCountySameState"
-    },
-    {
-      "name": "Population: 1 - 4 Years, Different House in Same County",
-      "dcid": "Count_Person_1To4Years_DifferentHouseInSameCounty"
-    },
-    {
-      "name": "Population: 1 - 4 Years, Female",
-      "dcid": "Count_Person_1To4Years_Female"
-    },
-    {
-      "name": "Population: 1 - 4 Years, Hispanic or Latino",
-      "dcid": "Count_Person_1To4Years_HispanicOrLatino"
-    },
-    {
-      "name": "Population: 1 - 4 Years, Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_1To4Years_HispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: 1 - 4 Years, Hispanic or Latino \u0026 Asian Alone",
-      "dcid": "Count_Person_1To4Years_HispanicOrLatino_AsianAlone"
-    },
-    {
-      "name": "Population: 1 - 4 Years, Hispanic or Latino \u0026 Black or African American Alone",
-      "dcid": "Count_Person_1To4Years_HispanicOrLatino_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 1 - 4 Years, Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_1To4Years_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: 1 - 4 Years, Hispanic or Latino \u0026 Two or More Races",
-      "dcid": "Count_Person_1To4Years_HispanicOrLatino_TwoOrMoreRaces"
-    },
-    {
-      "name": "Population: 1 - 4 Years, Hispanic or Latino \u0026 White Alone",
-      "dcid": "Count_Person_1To4Years_HispanicOrLatino_WhiteAlone"
-    },
-    {
-      "name": "Population: 1 - 4 Years, Male",
-      "dcid": "Count_Person_1To4Years_Male"
-    },
-    {
-      "name": "Population: 1 - 4 Years, Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_1To4Years_NativeHawaiianAndOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: 1 - 4 Years, Not Hispanic or Latino",
-      "dcid": "Count_Person_1To4Years_NotHispanicOrLatino"
-    },
-    {
-      "name": "Population: 1 - 4 Years, Not Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_1To4Years_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: 1 - 4 Years, Not Hispanic or Latino \u0026 Asian Alone",
-      "dcid": "Count_Person_1To4Years_NotHispanicOrLatino_AsianAlone"
-    },
-    {
-      "name": "Population: 1 - 4 Years, Not Hispanic or Latino \u0026 Black or African American Alone",
-      "dcid": "Count_Person_1To4Years_NotHispanicOrLatino_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 1 - 4 Years, Not Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_1To4Years_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: 1 - 4 Years, Not Hispanic or Latino \u0026 Two or More Races",
-      "dcid": "Count_Person_1To4Years_NotHispanicOrLatino_TwoOrMoreRaces"
-    },
-    {
-      "name": "Population: 1 - 4 Years, Two or More Races",
-      "dcid": "Count_Person_1To4Years_TwoOrMoreRaces"
-    },
-    {
-      "name": "Population: 1 - 4 Years, White Alone",
-      "dcid": "Count_Person_1To4Years_WhiteAlone"
     }
   ],
   "matches": [

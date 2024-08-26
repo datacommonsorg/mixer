@@ -6438,7 +6438,7 @@
               "provenanceId": "dc/base/HumanReadableStatVars"
             },
             {
-              "name": "Murder and Non Negligent Manslaughter Cases Per Capita",
+              "name": "Murder and Non Negligent Manslaughter Case Rate",
               "types": [
                 "StatisticalVariable"
               ],
@@ -6470,7 +6470,7 @@
               "provenanceId": "dc/base/HumanReadableStatVars"
             },
             {
-              "name": "Deaths Per Capita",
+              "name": "Deaths Rate",
               "types": [
                 "StatisticalVariable"
               ],

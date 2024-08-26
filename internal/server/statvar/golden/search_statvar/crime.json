@@ -1425,7 +1425,7 @@
       "dcid": "Count_CriminalIncidents_CorruptionCrime_AsAFractionOf_Count_Person"
     },
     {
-      "name": "Murder and Non Negligent Manslaughter Cases Per Capita",
+      "name": "Murder and Non Negligent Manslaughter Case Rate",
       "dcid": "Count_CriminalActivities_MurderAndNonNegligentManslaughter_AsFractionOf_Count_Person"
     },
     {

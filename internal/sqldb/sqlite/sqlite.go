@@ -27,7 +27,7 @@ func ConnectDB(dbPath string) (*sql.DB, error) {
 	}
 	_, err := os.Stat(dbPath)
 	if err == nil {
-		sqlClient, err := sql.Open("sqlite3", dbPath)
+		sqlClient, err := sql.Open("sqlite", dbPath)
 		if err != nil {
 			return nil, err
 		}
@@ -40,7 +40,7 @@ func ConnectDB(dbPath string) (*sql.DB, error) {
 	if err != nil {
 		return nil, err
 	}
-	sqlClient, err := sql.Open("sqlite3", dbPath)
+	sqlClient, err := sql.Open("sqlite", dbPath)
 	if err != nil {
 		return nil, err
 	}

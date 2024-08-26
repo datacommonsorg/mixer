@@ -47,7 +47,7 @@ import (
 	"google.golang.org/grpc/health/grpc_health_v1"
 
 	cbt "cloud.google.com/go/bigtable"
-	_ "github.com/mattn/go-sqlite3" // import the sqlite3 driver
+	_ "modernc.org/sqlite" // import the sqlite driver
 )
 
 var (
@@ -190,7 +190,7 @@ func main() {
 	if *useSQLite {
 		sqlClient, err = sqlite.ConnectDB(*sqlitePath)
 		if err != nil {
-			log.Fatalf("Cannot open sqlite3 database from: %s: %v", *sqlitePath, err)
+			log.Fatalf("Cannot open sqlite database from: %s: %v", *sqlitePath, err)
 		}
 		defer sqlClient.Close()
 	}

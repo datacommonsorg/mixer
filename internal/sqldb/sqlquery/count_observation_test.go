@@ -22,7 +22,7 @@ import (
 )
 
 func TestQuery(t *testing.T) {
-	sqlClient, err := sql.Open("sqlite3", "../../../test/datacommons.db")
+	sqlClient, err := sql.Open("sqlite", "../../../test/datacommons.db")
 	if err != nil {
 		t.Fatalf("Could not open testing database: %s", err)
 	}
