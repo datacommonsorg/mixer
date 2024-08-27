@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy name="api">
+  <DisplayName/>
+  <Description/>
+  <BasePaths>/api</BasePaths>
+  <Policies>
+    <Policy>verify-api-key-in-header</Policy>
+    <Policy>switch-to-southbound-key</Policy>
+    <Policy>copy-key-param-to-header</Policy>
+  </Policies>
+  <ProxyEndpoints>
+    <ProxyEndpoint>api</ProxyEndpoint>
+  </ProxyEndpoints>
+  <TargetEndpoints>
+    <TargetEndpoint>api</TargetEndpoint>
+  </TargetEndpoints>
+</APIProxy>

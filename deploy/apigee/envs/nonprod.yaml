@@ -1,0 +1,27 @@
+proxies:
+  - name: api
+    policies:
+      - copy-key-param-to-header
+      - verify-api-key-in-header
+      - switch-to-southbound-key
+    proxy_endpoints:
+      - api
+    target_endpoints:
+      - api
+  - name: bard
+    policies:
+      - copy-apikey-param-to-header
+      - copy-key-param-to-header
+      - verify-api-key-in-header
+    proxy_endpoints:
+      - bard
+    target_endpoints:
+      - bard
+  - name: datagemma
+    policies:
+      - copy-key-param-to-header
+      - verify-api-key-in-header
+    proxy_endpoints:
+      - datagemma
+    target_endpoints:
+      - datagemma

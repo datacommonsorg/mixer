@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy name="datagemma">
+  <DisplayName/>
+  <Description/>
+  <BasePaths>/datagemma</BasePaths>
+  <Policies>
+    <Policy>verify-api-key-in-header</Policy>
+    <Policy>copy-key-param-to-header</Policy>
+  </Policies>
+  <ProxyEndpoints>
+    <ProxyEndpoint>datagemma</ProxyEndpoint>
+  </ProxyEndpoints>
+  <TargetEndpoints>
+    <TargetEndpoint>datagemma</TargetEndpoint>
+  </TargetEndpoints>
+</APIProxy>

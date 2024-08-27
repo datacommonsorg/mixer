@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TargetEndpoint name="api">
+  <Description/>
+  <FaultRules/>
+  <PreFlow name="PreFlow">
+    <Request>
+      <Step>
+        <Condition>(request.header.x-api-key = null) and (request.queryparam.key != null)</Condition>
+        <Name>copy-key-param-to-header</Name>
+      </Step>
+      <Step>
+        <Name>verify-api-key-in-header</Name>
+      </Step>
+    </Request>
+    <Response/>
+  </PreFlow>
+  <PostFlow name="PostFlow">
+    <Request>
+      <Step>
+        <Name>switch-to-southbound-key</Name>
+      </Step>
+    </Request>
+    <Response/>
+  </PostFlow>
+  <Flows/>
+  <HTTPTargetConnection>
+    <Properties/>
+    <URL>REPLACE_WITH_MIXER_API_IP</URL>
+  </HTTPTargetConnection>
+</TargetEndpoint>

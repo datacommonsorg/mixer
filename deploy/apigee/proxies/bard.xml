@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy name="bard">
+  <DisplayName/>
+  <Description/>
+  <BasePaths>/bard</BasePaths>
+  <Policies>
+    <Policy>verify-api-key-in-header</Policy>
+    <Policy>copy-apikey-param-to-header</Policy>
+    <Policy>copy-key-param-to-header</Policy>
+  </Policies>
+  <ProxyEndpoints>
+    <ProxyEndpoint>bard</ProxyEndpoint>
+  </ProxyEndpoints>
+  <TargetEndpoints>
+    <TargetEndpoint>bard</TargetEndpoint>
+  </TargetEndpoints>
+</APIProxy>
