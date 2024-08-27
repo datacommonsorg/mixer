@@ -25,6 +25,6 @@
   <Flows/>
   <HTTPTargetConnection>
     <Properties/>
-    <URL>REPLACE_WITH_MIXER_API_IP</URL>
+    <URL>http://REPLACE_WITH_MIXER_API_IP</URL>
   </HTTPTargetConnection>
 </TargetEndpoint>

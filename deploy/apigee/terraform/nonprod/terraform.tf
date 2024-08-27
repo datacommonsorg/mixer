@@ -12,8 +12,13 @@ terraform {
   }
 }
 
+provider "google" {
+  project     = var.project_id
+  region      = "us-central1"
+}
+
 provider "apigee" {
-  // Run `gcloud auth print-access-token`. Don't commit the value!
-  access_token = ""
-  organization = "datcom-apigee-dev"
+  access_token = var.access_token
+  organization = var.project_id
+  server       = "apigee.googleapis.com"
 }
