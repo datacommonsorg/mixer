@@ -32,7 +32,7 @@ ENV_VARS="${ENV}.env"
 if [[ ! -f $ENV_VARS ]]; then
   echo "Env var file ${ENV_VARS} not found. Proceeding without vars."
 else
-  source $ENV_VARS
+  source "$ENV_VARS"
 fi
 
 ENV_BASE_DIR="terraform/$ENV"
@@ -40,21 +40,21 @@ ENV_TMP_DIR="$ENV_BASE_DIR/.tmp"
 WORKING_DIR=$(pwd)
 
 function prep_proxies() {
-  rm -rf $ENV_TMP_DIR
-  proxy_names=($(yq eval '.proxies[].name' $ENV_DATA))
+  rm -rf "$ENV_TMP_DIR"
+  proxy_names=($(yq eval '.proxies[].name' "$ENV_DATA"))
   for proxy_name in "${proxy_names[@]}"; do
-    copy_file $proxy_name "proxies" "" $proxy_name
-    copy_resources $proxy_name "policies" "policies"
-    copy_resources $proxy_name "proxy_endpoints" "proxies"
-    copy_resources $proxy_name "target_endpoints" "targets"
-    cd $ENV_TMP_DIR
-    mv $proxy_name apiproxy
+    copy_file "$proxy_name" "proxies" "" "$proxy_name"
+    copy_resources "$proxy_name" "policies" "policies"
+    copy_resources "$proxy_name" "proxy_endpoints" "proxies"
+    copy_resources "$proxy_name" "target_endpoints" "targets"
+    cd "$ENV_TMP_DIR"
+    mv "$proxy_name" apiproxy
     # Set a constant modification timestamp on all files so zip archive hash
     # won't change due to timestamps alone.
     find apiproxy -exec touch -t 202408270000 {} +
     zip -rX "$proxy_name.zip" "apiproxy/"
-    mv apiproxy $proxy_name
-    cd $WORKING_DIR
+    mv apiproxy "$proxy_name"
+    cd "$WORKING_DIR"
   done
 }
 
@@ -62,9 +62,9 @@ function copy_resources() {
   proxy_name="$1"
   source_dir="$2"
   dest_dir="$3"
-  resources=($(yq eval ".proxies[] | select(.name == \"$proxy_name\") | .$source_dir[]" $ENV_DATA))
+  resources=($(yq eval ".proxies[] | select(.name == \"$proxy_name\") | .$source_dir[]" "$ENV_DATA"))
   for resource in "${resources[@]}"; do
-    copy_file $proxy_name $source_dir $dest_dir $resource
+    copy_file "$proxy_name" "$source_dir" "$dest_dir" "$resource"
   done
 }
 
@@ -100,7 +100,7 @@ function copy_file() {
 }
 
 function terraform_plan_and_maybe_apply() {
-  cd $ENV_BASE_DIR
+  cd "$ENV_BASE_DIR"
 
   terraform_cmd "plan"
 
@@ -116,12 +116,12 @@ function terraform_plan_and_maybe_apply() {
     esac
   done
 
-  cd $WORKING_DIR
+  cd "$WORKING_DIR"
 }
 
 function terraform_cmd() {
   verb=$1
-  terraform $verb \
+  terraform "$verb" \
     --var="access_token=$(gcloud auth print-access-token)" \
     -var-file=vars.tfvars
 }
