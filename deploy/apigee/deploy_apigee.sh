@@ -18,7 +18,7 @@ set -e
 ENV=$1
 
 if [[ $ENV == "" ]]; then
-  echo "Missing arg 1 (env)"
+  echo "Missing arg 1 (env). Possible values are prod or nonprod."
   exit 1
 fi
 
@@ -39,6 +39,9 @@ ENV_BASE_DIR="terraform/$ENV"
 ENV_TMP_DIR="$ENV_BASE_DIR/.tmp"
 WORKING_DIR=$(pwd)
 
+# Copies API proxy files to the expected structure in a temp directory for the
+# chosen environment. Follows the env config yaml to decide which files to copy.
+# Substitutes environment variables for REPLACE_WITH_ clauses in the copies.
 function prep_proxies() {
   rm -rf "$ENV_TMP_DIR"
   proxy_names=($(yq eval '.proxies[].name' "$ENV_DATA"))

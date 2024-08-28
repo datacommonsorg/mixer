@@ -4,8 +4,8 @@
 
 1. Decide which GCP project will host your Apigee setup and associated external load balancer. This is $HOST_PROJECT_ID.
 1. Create an Apigee organization in that project using [one-click provisioning](https://cloud.google.com/apigee/docs/api-platform/get-started/one-click).
-  - If the dashboard stops showing a quick link to the setup flow, try hitting console.cloud.google.com/apigee/setup/payg?project_id=<your project ID> directly.
-  - If the wizard runs into invalid state, use "Try this API" in the Apigee v1 API documentation to modify it.
+   - If the dashboard stops showing a quick link to the setup flow, try hitting console.cloud.google.com/apigee/setup/payg?project_id=<your project ID> directly.
+   - If the wizard runs into invalid state, use "Try this API" in the Apigee v1 API documentation to modify it.
 
 ## Backend project setup
 
@@ -21,6 +21,8 @@
 
 ## Apigee resource deployment (local command line)
 
+### Initial deployment
+
 1. Install gcloud, terraform, yq
 1. Set gcloud project to Apigee host project: `gcloud config set project $HOST_PROJECT_ID`
 1. Create GCS bucket for Terraform state: `gsutil mb "gs://$HOST_PROJECT_ID-tf"`
@@ -35,8 +37,12 @@
 1. First time only: run `terraform init` from this directory.
 1. From this directory, run `./deploy_apigee.sh $ENV_NAME`
 1. Set up PSC southbound backends and create API proxies + products:
+
    - Add endpoint attachment hosts from Apigee UI as PSC IPs in .env file
    - Go to PSC projects and approve connections.
    - You may need to add firewall rules in PSC projects to allow ingress on TCP ports 80 and 443 for PSC subnets.
    - Change tfvars `include_proxies` to true and run deploy script again.
 
+### Updates to existing deployment
+
+From this directory, run `./deploy_apigee.sh $ENV_NAME`
