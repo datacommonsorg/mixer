@@ -15,7 +15,7 @@
 
 ### NL/LLM APIs
 
-1. Publish a Private Service Connect service for each relevant internal load balancer. Make note of the service project and service name.
+1. Publish a Private Service Connect service for each relevant internal load balancer. Create new subnets as needed. Make note of each service project and service name.
 
 ## Apigee resource deployment (local command line)
 
@@ -27,11 +27,14 @@
    - Proxy structure config `envs/$ENV_NAME.yaml`
    - Proxy variable substitution values `./$ENV_NAME.env`. Use a temp value for PSC host IP if you haven't created an endpoint attachment yet. Other values should have been noted during previous steps.
    - Apigee + load balancer Terraform `terraform/$ENV_NAME/*`
+1. Configure refernces to resources created by Apigee one-click provisioning:
+   - Set tfvars `apigee_lb_url_map_name` from `gcloud compute url-maps list`.
+   - Set tfvars `apigee_backend_service_name` from `gcloud compute backend-services list`.
 1. First time only: run `terraform init` from this directory.
 1. From this directory, run `./deploy_apigee.sh $ENV_NAME`
-1. If the deployment created a PSC endpoint attachment, more steps are needed:
-   - Add the outputted endpoint attachment hosts as PSC IPs in .env file
-   - Go to the PSC project and approve the connection.
-   - TODO Firewall rules
+1. Set up PSC southbound backends and create API proxies + products:
+   - Add endpoint attachment hosts from Apigee UI as PSC IPs in .env file
+   - Go to PSC projects and approve connections.
+   - You may need to add firewall rules in PSC projects to allow ingress on TCP ports 80 and 443 for PSC subnets.
    - Change tfvars `include_proxies` to true and run deploy script again.
-1. If proxies were
+

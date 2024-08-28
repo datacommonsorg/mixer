@@ -5,8 +5,7 @@ locals {
   llm_api_matcher = "matcher-datagemma"
 }
 
-resource "google_compute_url_map" "apigee_lb" {
-  count = var.include_routing ? 1 : 0
+resource "google_compute_url_map" "apigee_lb_url_map" {
   default_service = local.service_id
 
   host_rule {
@@ -24,7 +23,7 @@ resource "google_compute_url_map" "apigee_lb" {
     path_matcher = local.llm_api_matcher
   }
 
-  name = var.apigee_lb_name
+  name = var.apigee_lb_url_map_name
 
   path_matcher {
     default_service = local.service_id
@@ -35,7 +34,7 @@ resource "google_compute_url_map" "apigee_lb" {
         prefix_match = "/"
       }
 
-      priority = 0
+      priority = 1
 
       route_action {
         url_rewrite {
@@ -59,7 +58,7 @@ resource "google_compute_url_map" "apigee_lb" {
         prefix_match = "/"
       }
 
-      priority = 0
+      priority = 1
 
       route_action {
         url_rewrite {
@@ -83,7 +82,7 @@ resource "google_compute_url_map" "apigee_lb" {
         prefix_match = "/"
       }
 
-      priority = 0
+      priority = 1
 
       route_action {
         url_rewrite {

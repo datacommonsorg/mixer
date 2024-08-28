@@ -6,10 +6,6 @@ variable "include_proxies" {
   type = bool
 }
 
-variable "include_routing" {
-  type = bool
-}
-
 variable "project_id" {
   type = string
 }
@@ -18,7 +14,7 @@ variable "apigee_backend_service_name" {
   type = string
 }
 
-variable "apigee_lb_name" {
+variable "apigee_lb_url_map_name" {
   type = string
 }
 
