@@ -4,14 +4,16 @@
 
 1. Decide which GCP project will host your Apigee setup and associated external load balancer. This is $HOST_PROJECT_ID.
 1. Create an Apigee organization in that project using [one-click provisioning](https://cloud.google.com/apigee/docs/api-platform/get-started/one-click).
+  - If the dashboard stops showing a quick link to the setup flow, try hitting console.cloud.google.com/apigee/setup/payg?project_id=<your project ID> directly.
+  - If the wizard runs into invalid state, use "Try this API" in the Apigee v1 API documentation to modify it.
 
 ## Backend project setup
 
 ### Mixer API
 
-1. Deploy API to Cloud Endpoints
-1. Make note of its public IP
-1. Generate one valid API key and make note of it
+1. Deploy API to Cloud Endpoints or find an existing deployment.
+1. Make note of its public IP.
+1. Generate one valid API key and make note of it.
 
 ### NL/LLM APIs
 
@@ -27,7 +29,7 @@
    - Proxy structure config `envs/$ENV_NAME.yaml`
    - Proxy variable substitution values `./$ENV_NAME.env`. Use a temp value for PSC host IP if you haven't created an endpoint attachment yet. Other values should have been noted during previous steps.
    - Apigee + load balancer Terraform `terraform/$ENV_NAME/*`
-1. Configure refernces to resources created by Apigee one-click provisioning:
+1. Configure references to resources created by Apigee one-click provisioning:
    - Set tfvars `apigee_lb_url_map_name` from `gcloud compute url-maps list`.
    - Set tfvars `apigee_backend_service_name` from `gcloud compute backend-services list`.
 1. First time only: run `terraform init` from this directory.
