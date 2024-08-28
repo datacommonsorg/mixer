@@ -219,6 +219,18 @@
         },
         {
           "date_place_count": {
+            "2020": 39,
+            "2020-04-01": 17,
+            "2023-07-01": 1
+          },
+          "metadata": {
+            "import_name": "WikipediaStatsData",
+            "provenance_url": "https://www.wikipedia.org",
+            "measurement_method": "Wikipedia"
+          }
+        },
+        {
+          "date_place_count": {
             "1850": 1,
             "1860": 1,
             "1870": 1,

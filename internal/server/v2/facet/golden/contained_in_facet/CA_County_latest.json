@@ -26,6 +26,9 @@
               "facet_id": "2517965213"
             },
             {
+              "facet_id": "1456184638"
+            },
+            {
               "facet_id": "2458695583"
             }
           ]
@@ -57,6 +60,11 @@
       "import_name": "CensusACS1YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS1yrSurvey"
+    },
+    "1456184638": {
+      "import_name": "WikipediaStatsData",
+      "provenance_url": "https://www.wikipedia.org",
+      "measurement_method": "Wikipedia"
     },
     "1541763368": {
       "import_name": "USDecennialCensus_RedistrictingRelease",

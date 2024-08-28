@@ -187,9 +187,9 @@
           "entity": "country/BES",
           "points_by_facet": [
             {
-              "date": "2020-01-01",
-              "value": 25987,
-              "facet": "1456184638"
+              "date": "2016",
+              "value": 25019,
+              "facet": "2458695583"
             }
           ]
         },
@@ -458,8 +458,8 @@
           "points_by_facet": [
             {
               "date": "2016",
-              "value": 17459,
-              "facet": "1456184638"
+              "value": 17434,
+              "facet": "2458695583"
             }
           ]
         },
@@ -837,8 +837,8 @@
           "entity": "country/GLP",
           "points_by_facet": [
             {
-              "date": "2016",
-              "value": 395700,
+              "date": "2024-01-01",
+              "value": 378561,
               "facet": "1456184638"
             }
           ]
@@ -917,8 +917,8 @@
           "entity": "country/GUF",
           "points_by_facet": [
             {
-              "date": "2021-01",
-              "value": 294071,
+              "date": "2024-01",
+              "value": 295385,
               "facet": "1456184638"
             }
           ]
@@ -1517,8 +1517,8 @@
           "entity": "country/MTQ",
           "points_by_facet": [
             {
-              "date": "2016",
-              "value": 376480,
+              "date": "2024-01-01",
+              "value": 349925,
               "facet": "1456184638"
             }
           ]
@@ -1627,8 +1627,8 @@
           "entity": "country/NIU",
           "points_by_facet": [
             {
-              "date": "2018",
-              "value": 1620,
+              "date": "2022",
+              "value": 1681,
               "facet": "1456184638"
             }
           ]
@@ -1847,8 +1847,8 @@
           "entity": "country/REU",
           "points_by_facet": [
             {
-              "date": "2020-01",
-              "value": 859959,
+              "date": "2024-01",
+              "value": 885700,
               "facet": "1456184638"
             }
           ]
@@ -2237,9 +2237,9 @@
           "entity": "country/TWN",
           "points_by_facet": [
             {
-              "date": "2020",
-              "value": 23568378,
-              "facet": "1456184638"
+              "date": "2019-08",
+              "value": 23593794,
+              "facet": "2458695583"
             }
           ]
         },
@@ -2317,8 +2317,8 @@
           "entity": "country/VAT",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 825,
+              "date": "2023-06-26",
+              "value": 764,
               "facet": "1456184638"
             }
           ]
@@ -2407,8 +2407,8 @@
           "entity": "country/XKS",
           "points_by_facet": [
             {
-              "date": "2020",
-              "value": 1873160,
+              "date": "2024",
+              "value": 1586659,
               "facet": "1456184638"
             }
           ]

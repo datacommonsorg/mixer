@@ -1449,6 +1449,15 @@
             },
             {
               "val": {
+                "2020": 82376
+              },
+              "measurementMethod": "Wikipedia",
+              "importName": "WikipediaStatsData",
+              "provenanceDomain": "wikipedia.org",
+              "provenanceUrl": "https://www.wikipedia.org"
+            },
+            {
+              "val": {
                 "2010": 74066
               },
               "measurementMethod": "WikidataPopulation",
