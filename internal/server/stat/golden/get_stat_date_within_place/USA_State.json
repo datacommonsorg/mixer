@@ -478,6 +478,16 @@
         },
         {
           "date_place_count": {
+            "2020": 1
+          },
+          "metadata": {
+            "import_name": "WikipediaStatsData",
+            "provenance_url": "https://www.wikipedia.org",
+            "measurement_method": "Wikipedia"
+          }
+        },
+        {
+          "date_place_count": {
             "1790": 1,
             "1800": 1,
             "1810": 1,
