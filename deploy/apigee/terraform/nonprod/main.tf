@@ -3,8 +3,8 @@ module "apigee" {
   project_id = var.project_id
   envgroups = {
     staging-api       = [var.api_hostname]
-    staging-bard      = [var.nl_api_hostname]
-    staging-datagemma = [var.llm_api_hostname]
+    staging-bard      = [var.nl_internal_api_hostname]
+    staging-datagemma = [var.nl_api_hostname]
   }
   environments = {
     dev = {
@@ -83,11 +83,11 @@ resource "apigee_product" "datacommons-api-staging" {
   }
 }
 
-resource "apigee_product" "datacommons-nl-api-staging" {
-  name = "datacommons-nl-api-staging"
-  display_name = "Bard API (Staging)"
+resource "apigee_product" "datacommons-nl-api-internal-staging" {
+  name = "datacommons-nl-api-internal-staging"
+  display_name = "Data Commons NL API (Internal, Staging)"
   auto_approval_type = true
-  description = var.nl_api_hostname
+  description = var.nl_internal_api_hostname
   environments = [
     "dev",
   ]
@@ -101,16 +101,16 @@ resource "apigee_product" "datacommons-nl-api-staging" {
   }
 }
 
-resource "apigee_product" "datacommons-llm-api-staging" {
-  name = "datacommons-llm-api-staging"
-  display_name = "DataGemma API (Staging)"
+resource "apigee_product" "datacommons-nl-api-staging" {
+  name = "datacommons-nl-api-staging"
+  display_name = "Data Commons NL API (Staging)"
   auto_approval_type = true
-  description = var.llm_api_hostname
+  description = var.nl_api_hostname
   environments = [
     "dev",
   ]
   attributes = {
-    access = "internal"
+    access = "public"
   }
   operation {
     api_source = apigee_proxy.datagemma.name

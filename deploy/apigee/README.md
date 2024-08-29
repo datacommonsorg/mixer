@@ -15,7 +15,7 @@
 1. Make note of its public IP.
 1. Generate one valid API key and make note of it.
 
-### NL/LLM APIs
+### NL API(s)
 
 1. Publish a Private Service Connect service for each relevant internal load balancer. Create new subnets as needed. Make note of each service project and service name.
 
@@ -46,3 +46,8 @@
 ### Updates to existing deployment
 
 From this directory, run `./deploy_apigee.sh $ENV_NAME`
+
+## Known issues
+
+- The Apigee analytics add-on cannot be enabled via Terraform. Go to console.cloud.google.com/apigee/addons/analytics?project=<your project ID> to enable it manually.
+- It takes multiple runs to make all changes if more than one endpoint attachment is being modified.

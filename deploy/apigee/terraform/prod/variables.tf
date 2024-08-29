@@ -22,11 +22,23 @@ variable "api_hostname" {
   type = string
 }
 
+variable "api2_hostname" {
+  type = string
+}
+
+variable "nl_internal_api_hostname" {
+  type = string
+}
+
 variable "nl_api_hostname" {
   type = string
 }
 
-variable "llm_api_hostname" {
+variable "nl_internal_psc_project" {
+  type = string
+}
+
+variable "nl_internal_psc_service_name" {
   type = string
 }
 
@@ -35,13 +47,5 @@ variable "nl_psc_project" {
 }
 
 variable "nl_psc_service_name" {
-  type = string
-}
-
-variable "llm_psc_project" {
-  type = string
-}
-
-variable "llm_psc_service_name" {
   type = string
 }

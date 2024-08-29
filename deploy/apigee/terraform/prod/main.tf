@@ -3,13 +3,14 @@ module "apigee" {
   project_id = var.project_id
   envgroups = {
     api       = [var.api_hostname]
-    bard      = [var.nl_api_hostname]
-    datagemma = [var.llm_api_hostname]
+    api2       = [var.api2_hostname]
+    bard      = [var.nl_internal_api_hostname]
+    datagemma = [var.nl_api_hostname]
   }
   environments = {
     main = {
       display_name = "main"
-      envgroups    = ["api", "bard", "datagemma"]
+      envgroups    = ["api", "api2", "bard", "datagemma"]
       type         = "INTERMEDIATE"
     }
   }
@@ -21,13 +22,13 @@ module "apigee" {
     }
   }
   endpoint_attachments = {
+    nl-internal-backend = {
+      region             = "us-central1"
+      service_attachment = "projects/${var.nl_internal_psc_project}/regions/us-central1/serviceAttachments/${var.nl_internal_psc_service_name}"
+    }
     nl-backend = {
       region             = "us-central1"
       service_attachment = "projects/${var.nl_psc_project}/regions/us-central1/serviceAttachments/${var.nl_psc_service_name}"
-    }
-    llm-backend = {
-      region             = "us-central1"
-      service_attachment = "projects/${var.llm_psc_project}/regions/us-central1/serviceAttachments/${var.llm_psc_service_name}"
     }
   }
 }
@@ -93,12 +94,12 @@ resource "apigee_product" "datacommons-api" {
   }
 }
 
-resource "apigee_product" "datacommons-nl-api" {
+resource "apigee_product" "datacommons-nl-api-internal" {
   count              = var.include_proxies ? 1 : 0
-  name               = "datacommons-nl-api"
-  display_name       = "Bard API"
+  name               = "datacommons-nl-api-internal"
+  display_name       = "Data Commons NL API (Internal)"
   auto_approval_type = true
-  description        = var.nl_api_hostname
+  description        = var.nl_internal_api_hostname
   environments = [
     "main",
   ]
@@ -112,17 +113,17 @@ resource "apigee_product" "datacommons-nl-api" {
   }
 }
 
-resource "apigee_product" "datacommons-llm-api" {
+resource "apigee_product" "datacommons-nl-api" {
   count              = var.include_proxies ? 1 : 0
-  name               = "datacommons-llm-api"
-  display_name       = "DataGemma API"
+  name               = "datacommons-nl-api"
+  display_name       = "Data Commons NL API"
   auto_approval_type = true
-  description        = var.llm_api_hostname
+  description        = var.nl_api_hostname
   environments = [
     "main",
   ]
   attributes = {
-    access = "internal"
+    access = "public"
   }
   operation {
     api_source = apigee_proxy.datagemma[0].name

@@ -1,8 +1,9 @@
 locals {
   service_id = "projects/${var.project_id}/global/backendServices/${var.apigee_backend_service_name}"
   api_matcher = "matcher-api"
-  nl_api_matcher = "matcher-bard"
-  llm_api_matcher = "matcher-datagemma"
+  api2_matcher = "matcher-api2"
+  bard_matcher = "matcher-bard"
+  datagemma_matcher = "matcher-datagemma"
 }
 
 resource "google_compute_url_map" "apigee_lb_url_map" {
@@ -14,20 +15,25 @@ resource "google_compute_url_map" "apigee_lb_url_map" {
   }
 
   host_rule {
-    hosts        = [var.nl_api_hostname]
-    path_matcher = local.nl_api_matcher
+    hosts        = [var.nl_internal_api_hostname]
+    path_matcher = local.bard_matcher
   }
 
   host_rule {
-    hosts        = [var.llm_api_hostname]
-    path_matcher = local.llm_api_matcher
+    hosts        = [var.nl_api_hostname]
+    path_matcher = local.datagemma_matcher
+  }
+
+  host_rule {
+    hosts        = [var.api2_hostname]
+    path_matcher = local.api2_matcher
   }
 
   name = var.apigee_lb_url_map_name
 
   path_matcher {
     default_service = local.service_id
-    name            = local.llm_api_matcher
+    name            = local.datagemma_matcher
 
     route_rules {
       match_rules {
@@ -75,7 +81,7 @@ resource "google_compute_url_map" "apigee_lb_url_map" {
 
   path_matcher {
     default_service = local.service_id
-    name            = local.nl_api_matcher
+    name            = local.bard_matcher
 
     route_rules {
       match_rules {
@@ -87,6 +93,30 @@ resource "google_compute_url_map" "apigee_lb_url_map" {
       route_action {
         url_rewrite {
           path_prefix_rewrite = "/bard/"
+        }
+
+        weighted_backend_services {
+          backend_service = local.service_id
+          weight          = 100
+        }
+      }
+    }
+  }
+
+  path_matcher {
+    default_service = local.service_id
+    name            = local.api2_matcher
+
+    route_rules {
+      match_rules {
+        prefix_match = "/"
+      }
+
+      priority = 1
+
+      route_action {
+        url_rewrite {
+          path_prefix_rewrite = "/api/"
         }
 
         weighted_backend_services {

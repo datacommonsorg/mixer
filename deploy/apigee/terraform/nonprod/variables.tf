@@ -18,11 +18,11 @@ variable "api_hostname" {
   type = string
 }
 
-variable "nl_api_hostname" {
+variable "nl_internal_api_hostname" {
   type = string
 }
 
-variable "llm_api_hostname" {
+variable "nl_api_hostname" {
   type = string
 }
 

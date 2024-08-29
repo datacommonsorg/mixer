@@ -82,8 +82,3 @@ import {
   to = apigee_product.datacommons-nl-api-staging
   id = "datacommons-nl-api-staging"
 }
-
-import {
-  to = apigee_product.datacommons-llm-api-staging
-  id = "datacommons-llm-api-staging"
-}

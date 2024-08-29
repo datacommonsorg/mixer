@@ -1,8 +1,8 @@
 locals {
   service_id = "projects/${var.project_id}/global/backendServices/${var.apigee_backend_service_name}"
   api_matcher = "matcher-api"
-  nl_api_matcher = "matcher-bard"
-  llm_api_matcher = "matcher-datagemma"
+  bard_matcher = "matcher-bard"
+  datagemma_matcher = "matcher-datagemma"
 }
 
 resource "google_compute_url_map" "apigee_lb" {
@@ -14,20 +14,20 @@ resource "google_compute_url_map" "apigee_lb" {
   }
 
   host_rule {
-    hosts        = [var.nl_api_hostname]
-    path_matcher = local.nl_api_matcher
+    hosts        = [var.nl_internal_api_hostname]
+    path_matcher = local.bard_matcher
   }
 
   host_rule {
-    hosts        = [var.llm_api_hostname]
-    path_matcher = local.llm_api_matcher
+    hosts        = [var.nl_api_hostname]
+    path_matcher = local.datagemma_matcher
   }
 
   name = var.apigee_lb_name
 
   path_matcher {
     default_service = local.service_id
-    name            = local.llm_api_matcher
+    name            = local.datagemma_matcher
 
     route_rules {
       match_rules {
@@ -75,7 +75,7 @@ resource "google_compute_url_map" "apigee_lb" {
 
   path_matcher {
     default_service = local.service_id
-    name            = local.nl_api_matcher
+    name            = local.bard_matcher
 
     route_rules {
       match_rules {
