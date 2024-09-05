@@ -5,8 +5,9 @@
   <BasePaths>/api</BasePaths>
   <Policies>
     <Policy>verify-api-key-in-header</Policy>
-    <Policy>switch-to-southbound-key</Policy>
+    <Policy>set-southbound-key</Policy>
     <Policy>copy-key-param-to-header</Policy>
+    <Policy>strip-api-key-header-and-params</Policy>
   </Policies>
   <ProxyEndpoints>
     <ProxyEndpoint>api</ProxyEndpoint>

@@ -14,6 +14,10 @@ variable "apigee_lb_name" {
   type = string
 }
 
+variable "api_esp_backend_service_name" {
+  type = string
+}
+
 variable "api_hostname" {
   type = string
 }

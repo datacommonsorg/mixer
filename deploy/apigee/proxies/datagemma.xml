@@ -6,6 +6,7 @@
   <Policies>
     <Policy>verify-api-key-in-header</Policy>
     <Policy>copy-key-param-to-header</Policy>
+    <Policy>strip-api-key-header-and-params</Policy>
   </Policies>
   <ProxyEndpoints>
     <ProxyEndpoint>datagemma</ProxyEndpoint>

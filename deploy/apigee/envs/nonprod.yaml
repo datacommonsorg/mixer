@@ -3,7 +3,8 @@ proxies:
     policies:
       - copy-key-param-to-header
       - verify-api-key-in-header
-      - switch-to-southbound-key
+      - set-southbound-key
+      - strip-api-key-header-and-params
     proxy_endpoints:
       - api
     target_endpoints:
@@ -21,6 +22,7 @@ proxies:
     policies:
       - copy-key-param-to-header
       - verify-api-key-in-header
+      - strip-api-key-header-and-params
     proxy_endpoints:
       - datagemma
     target_endpoints:

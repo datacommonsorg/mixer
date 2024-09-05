@@ -1,30 +1,76 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <TargetEndpoint name="api">
-  <Description/>
-  <FaultRules/>
+  <Description />
+  <FaultRules />
   <PreFlow name="PreFlow">
     <Request>
       <Step>
         <Condition>(request.header.x-api-key = null) and (request.queryparam.key != null)</Condition>
         <Name>copy-key-param-to-header</Name>
       </Step>
-      <Step>
-        <Name>verify-api-key-in-header</Name>
-      </Step>
     </Request>
-    <Response/>
+    <Response />
   </PreFlow>
+  <Flows>
+    <Flow name="ConditionallyVerifyApiKey">
+      <Request>
+        <Step>
+          <Condition>
+            <!-- List of endpoints that do NOT require a key -->
+            !(
+              (proxy.pathsuffix MatchesPath "/bulk/stats") OR
+              (proxy.pathsuffix MatchesPath "/internal/bio") OR
+              (proxy.pathsuffix MatchesPath "/node/places-in") OR
+              (proxy.pathsuffix MatchesPath "/node/property-labels") OR
+              (proxy.pathsuffix MatchesPath "/node/property-values") OR
+              (proxy.pathsuffix MatchesPath "/node/triples") OR
+              (proxy.pathsuffix MatchesPath "/place/stat-vars") OR
+              (proxy.pathsuffix MatchesPath "/place/stat/date/within-place") OR
+              (proxy.pathsuffix MatchesPath "/query") OR
+              (proxy.pathsuffix MatchesPath "/search") OR
+              (proxy.pathsuffix MatchesPath "/stat/all") OR
+              (proxy.pathsuffix MatchesPath "/stat/series") OR
+              (proxy.pathsuffix MatchesPath "/stat/value") OR
+              (proxy.pathsuffix MatchesPath "/translate") OR
+              (proxy.pathsuffix MatchesPath "/v1/place/ranking") OR
+              (proxy.pathsuffix MatchesPath "/v1/place/related") OR
+              (proxy.pathsuffix MatchesPath "/v1/place/stat-vars/union") OR
+              (proxy.pathsuffix MatchesPath "/v1/recon/entity/resolve") OR
+              (proxy.pathsuffix MatchesPath "/v1/recon/resolve/coordinate") OR
+              (proxy.pathsuffix MatchesPath "/v1/recon/resolve/id") OR
+              (proxy.pathsuffix MatchesPath "/v1/stat/date/within-place") OR
+              (proxy.pathsuffix MatchesPath "/v1/variable/search") OR
+              (proxy.pathsuffix MatchesPath "/v2/resolve") OR
+              (proxy.pathsuffix MatchesPath "/version") OR
+
+              (proxy.pathsuffix MatchesPath "/healthz")
+            )
+          </Condition>
+          <Name>verify-api-key-in-header</Name>
+        </Step>
+      </Request>
+    </Flow>
+  </Flows>
   <PostFlow name="PostFlow">
     <Request>
       <Step>
-        <Name>switch-to-southbound-key</Name>
+        <Name>strip-api-key-header-and-params</Name>
+      </Step>
+      <Step>
+        <Condition>
+          <!-- /healthz only works when a key is NOT present -->
+          !(proxy.pathsuffix MatchesPath "/healthz")
+        </Condition>
+        <Name>set-southbound-key</Name>
       </Step>
     </Request>
-    <Response/>
+    <Response />
   </PostFlow>
-  <Flows/>
   <HTTPTargetConnection>
-    <Properties/>
-    <URL>http://REPLACE_WITH_MIXER_API_IP</URL>
+    <Properties />
+    <URL>https://REPLACE_WITH_MIXER_API_HOST</URL>
+    <SSLInfo>
+      <Enabled>true</Enabled>
+    </SSLInfo>
   </HTTPTargetConnection>
 </TargetEndpoint>

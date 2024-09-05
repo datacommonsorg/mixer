@@ -15,7 +15,11 @@
     <Response/>
   </PreFlow>
   <PostFlow name="PostFlow">
-    <Request/>
+    <Request>
+      <Step>
+        <Name>strip-api-key-header-and-params</Name>
+      </Step>
+    </Request>
     <Response/>
   </PostFlow>
   <Flows/>
