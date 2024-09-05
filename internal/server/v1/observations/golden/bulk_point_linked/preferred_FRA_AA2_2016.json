@@ -4,26 +4,6 @@
       "variable": "Count_Person",
       "observations_by_entity": [
         {
-          "entity": "country/GLP",
-          "points_by_facet": [
-            {
-              "date": "2016",
-              "value": 395700,
-              "facet": "1456184638"
-            }
-          ]
-        },
-        {
-          "entity": "country/MTQ",
-          "points_by_facet": [
-            {
-              "date": "2016",
-              "value": 376480,
-              "facet": "1456184638"
-            }
-          ]
-        },
-        {
           "entity": "country/MYT",
           "points_by_facet": [
             {
@@ -150,6 +130,16 @@
               "date": "2016",
               "value": 178084,
               "facet": "738965619"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FR22",
+          "points_by_facet": [
+            {
+              "date": "2016",
+              "value": 1932422,
+              "facet": "1456184638"
             }
           ]
         },
