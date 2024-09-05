@@ -12,7 +12,7 @@
 ### Mixer API
 
 1. Deploy API to Cloud Endpoints or find an existing deployment.
-1. Make note of its public IP.
+1. Make note of its hostname.
 1. Generate one valid API key and make note of it.
 
 ### NL API(s)
