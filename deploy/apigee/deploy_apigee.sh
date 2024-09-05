@@ -61,6 +61,8 @@ function prep_proxies() {
   done
 }
 
+# Copies all files listed in config yaml for the given proxy and
+# resource source directory.
 function copy_resources() {
   proxy_name="$1"
   source_dir="$2"
@@ -71,6 +73,9 @@ function copy_resources() {
   done
 }
 
+# Copies a single file for the given proxy. Looks in the given source dir for a
+# file with the given source file name. If the file name has the format
+# *.template.xml, substitutes environment variables for REPLACE_WITH_ clauses.
 function copy_file() {
   proxy_name="$1"
   source_dir="$2"
@@ -122,6 +127,7 @@ function terraform_plan_and_maybe_apply() {
   cd "$WORKING_DIR"
 }
 
+# Runs the given Terraform verb with an access token and vars file.
 function terraform_cmd() {
   verb=$1
   terraform "$verb" \

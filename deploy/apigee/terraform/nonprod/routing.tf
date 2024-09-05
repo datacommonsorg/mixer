@@ -1,3 +1,17 @@
+# Copyright 2024 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 locals {
   apigee_service_id = "projects/${var.project_id}/global/backendServices/${var.apigee_backend_service_name}"
   api_esp_service_id = "projects/${var.project_id}/global/backendServices/${var.api_esp_backend_service_name}"
@@ -20,7 +34,7 @@ locals {
 
 resource "google_compute_url_map" "apigee_lb" {
   default_service = local.apigee_service_id
-  name            = var.apigee_lb_name
+  name            = var.apigee_lb_url_map_name
 
   dynamic "host_rule" {
     for_each = local.matchers
@@ -32,7 +46,7 @@ resource "google_compute_url_map" "apigee_lb" {
   }
 
   host_rule {
-    hosts        = ["staging.api2.datacommons.org"]
+    hosts        = [var.api2_hostname]
     path_matcher = "matcher-api2"
   }
 
