@@ -60,6 +60,11 @@ variable "nl_api_hostname" {
   type = string
 }
 
+# Hostname that permanently points to Mixer API's Cloud Endpoints deployment.
+variable "api_esp_hostname" {
+  type = string
+}
+
 # ID of the GCP project that publishes a PSC service for the internal version
 # of the NL API.
 variable "nl_internal_psc_project" {

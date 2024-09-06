@@ -8,6 +8,8 @@ api2_hostname = "api2.datacommons.org"
 nl_internal_api_hostname = "bard.datacommons.org"
 nl_api_hostname = "datagemma.datacommons.org"
 
+api_esp_hostname = "api-esp.datacommons.org"
+
 nl_internal_psc_project = "datcom-bard"
 nl_internal_psc_service_name = "website"
 

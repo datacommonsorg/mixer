@@ -34,12 +34,6 @@ variable "apigee_lb_url_map_name" {
   type = string
 }
 
-# Name of a backend service that points to an internet NEG for a domain that
-# points to the Mixer API's Cloud Endpoints deployment.
-variable "api_esp_backend_service_name" {
-  type = string
-}
-
 # Hostname for the Mixer API once it is proxied by Apigee.
 variable "api_hostname" {
   type = string
@@ -57,6 +51,11 @@ variable "nl_internal_api_hostname" {
 
 # Hostname for the public-facing version of the NL API.
 variable "nl_api_hostname" {
+  type = string
+}
+
+# Hostname that permanently points to Mixer API's Cloud Endpoints deployment.
+variable "api_esp_hostname" {
   type = string
 }
 

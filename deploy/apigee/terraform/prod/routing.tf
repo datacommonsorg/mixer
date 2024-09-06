@@ -13,17 +13,17 @@
 # limitations under the License.
 
 locals {
-  service_id = "projects/${var.project_id}/global/backendServices/${var.apigee_backend_service_name}"
+  apigee_service_id = "projects/${var.project_id}/global/backendServices/${var.apigee_backend_service_name}"
 
-  matchers = {
-    "matcher-api" = {
-      hostname = var.api_hostname
-      prefix   = "/api/"
-    },
-    "matcher-api2" = {
-      hostname = var.api2_hostname
-      prefix   = "/api/"
-    },
+  apigee_matchers = {
+    # "matcher-api" = {
+    #   hostname = var.api_hostname
+    #   prefix   = "/api/"
+    # },
+    # "matcher-api2" = {
+    #   hostname = var.api2_hostname
+    #   prefix   = "/api/"
+    # },
     "matcher-bard" = {
       hostname = var.nl_internal_api_hostname
       prefix   = "/bard/"
@@ -33,14 +33,23 @@ locals {
       prefix   = "/datagemma/"
     }
   }
+
+  api_esp_matchers = {
+    "matcher-api" = {
+      hostname = var.api_hostname
+    }
+    "matcher-api2" = {
+      hostname = var.api2_hostname
+    }
+  }
 }
 
 resource "google_compute_url_map" "apigee_lb_url_map" {
-  default_service = local.service_id
+  default_service = local.apigee_service_id
   name            = var.apigee_lb_url_map_name
 
   dynamic "host_rule" {
-    for_each = local.matchers
+    for_each = local.apigee_matchers
     iterator = each
     content {
       hosts        = [each.value.hostname]
@@ -48,12 +57,11 @@ resource "google_compute_url_map" "apigee_lb_url_map" {
     }
   }
 
-
   dynamic "path_matcher" {
-    for_each = local.matchers
+    for_each = local.apigee_matchers
     iterator = each
     content {
-      default_service = local.service_id
+      default_service = local.apigee_service_id
       name            = each.key
 
       route_rules {
@@ -65,7 +73,7 @@ resource "google_compute_url_map" "apigee_lb_url_map" {
 
         route_action {
           weighted_backend_services {
-            backend_service = local.service_id
+            backend_service = local.apigee_service_id
             weight          = 100
           }
         }
@@ -84,11 +92,62 @@ resource "google_compute_url_map" "apigee_lb_url_map" {
           }
 
           weighted_backend_services {
-            backend_service = local.service_id
+            backend_service = local.apigee_service_id
             weight          = 100
           }
         }
       }
     }
   }
+
+  dynamic "host_rule" {
+    for_each = local.api_esp_matchers
+    iterator = each
+    content {
+      hosts        = [each.value.hostname]
+      path_matcher = each.key
+    }
+  }
+
+  dynamic "path_matcher" {
+    for_each = local.api_esp_matchers
+    iterator = each
+    content {
+      name            = each.key
+      default_service = google_compute_backend_service.api_esp_backend_service.id
+    }
+  }
 }
+
+resource "google_compute_backend_service" "api_esp_backend_service" {
+  connection_draining_timeout_sec = 0
+  load_balancing_scheme           = "EXTERNAL_MANAGED"
+  locality_lb_policy              = "ROUND_ROBIN"
+
+  log_config {
+    enable      = true
+    sample_rate = 1
+  }
+
+  name             = "api-esp-backend-service"
+  port_name        = "http"
+  protocol         = "HTTPS"
+  session_affinity = "NONE"
+  timeout_sec      = 30
+
+  backend {
+    group = google_compute_global_network_endpoint_group.api_esp_neg.id
+  }
+}
+
+resource "google_compute_global_network_endpoint_group" "api_esp_neg" {
+  name                  = "api-esp-neg"
+  network_endpoint_type = "INTERNET_FQDN_PORT"
+}
+
+resource "google_compute_global_network_endpoint" "api_esp_endpoint" {
+  global_network_endpoint_group = google_compute_global_network_endpoint_group.api_esp_neg.id
+  fqdn                          = var.api_esp_hostname
+  port                          = 443
+}
+

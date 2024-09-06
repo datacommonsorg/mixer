@@ -96,3 +96,18 @@ import {
   to = apigee_product.datacommons-nl-api-staging
   id = "datacommons-nl-api-staging"
 }
+
+import {
+  to = google_compute_global_network_endpoint_group.api_esp_neg
+  id = "api-esp-neg"
+}
+
+import {
+  to = google_compute_global_network_endpoint.api_esp_endpoint
+  id = "api-esp-neg//staging.api-esp.datacommons.org/0"
+}
+
+import {
+  to = google_compute_backend_service.api_esp_backend_service
+  id = "api-esp-backend-service"
+}

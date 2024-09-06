@@ -68,7 +68,7 @@
   </PostFlow>
   <HTTPTargetConnection>
     <Properties />
-    <URL>https://REPLACE_WITH_MIXER_API_HOST</URL>
+    <URL>https://REPLACE_WITH_MIXER_API_ESP_HOSTNAME</URL>
     <SSLInfo>
       <Enabled>true</Enabled>
     </SSLInfo>
