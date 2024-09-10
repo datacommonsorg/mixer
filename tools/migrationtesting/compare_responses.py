@@ -426,16 +426,18 @@ def compare_responses(endpoint, use_api_key, method="GET", params=None):
 
     try:
       current_data = current_response.json()
-    except requests.exceptions.JSONDecodeError as e:
+    except requests.exceptions.JSONDecodeError:
       current_data = "Not valid JSON"
     try:
       new_data = new_response.json()
-    except requests.exceptions.JSONDecodeError as e:
+    except requests.exceptions.JSONDecodeError:
       new_data = "Not valid JSON"
 
     if current_data != new_data:
       print(f"{bcolors.FAIL}DIFF{bcolors.ENDC} {method} {endpoint}")
-      print(f"  Current ({args.current_domain}): {current_response.status_code} {current_data}")
+      print(
+          f"  Current ({args.current_domain}): {current_response.status_code} {current_data}"
+      )
       print(f"  New ({args.new_domain}): {new_response.status_code} {new_data}")
     else:
       code = current_response.status_code
