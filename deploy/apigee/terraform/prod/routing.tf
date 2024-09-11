@@ -16,10 +16,10 @@ locals {
   apigee_service_id = "projects/${var.project_id}/global/backendServices/${var.apigee_backend_service_name}"
 
   apigee_matchers = {
-    # "matcher-api" = {
-    #   hostname = var.api_hostname
-    #   prefix   = "/api/"
-    # },
+    "matcher-api" = {
+      hostname = var.api_hostname
+      prefix   = "/api/"
+    },
     "matcher-api2" = {
       hostname = var.api2_hostname
       prefix   = "/api/"
@@ -35,9 +35,9 @@ locals {
   }
 
   api_esp_matchers = {
-    "matcher-api" = {
-      hostname = var.api_hostname
-    }
+    # "matcher-api" = {
+    #   hostname = var.api_hostname
+    # }
     # "matcher-api2" = {
     #   hostname = var.api2_hostname
     # }
