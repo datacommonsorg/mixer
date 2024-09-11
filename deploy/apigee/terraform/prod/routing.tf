@@ -20,10 +20,10 @@ locals {
     #   hostname = var.api_hostname
     #   prefix   = "/api/"
     # },
-    # "matcher-api2" = {
-    #   hostname = var.api2_hostname
-    #   prefix   = "/api/"
-    # },
+    "matcher-api2" = {
+      hostname = var.api2_hostname
+      prefix   = "/api/"
+    },
     "matcher-bard" = {
       hostname = var.nl_internal_api_hostname
       prefix   = "/bard/"
@@ -38,9 +38,9 @@ locals {
     "matcher-api" = {
       hostname = var.api_hostname
     }
-    "matcher-api2" = {
-      hostname = var.api2_hostname
-    }
+    # "matcher-api2" = {
+    #   hostname = var.api2_hostname
+    # }
   }
 }
 
