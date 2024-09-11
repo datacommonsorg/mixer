@@ -3,6 +3,8 @@ proxies:
     policies:
       - copy-key-param-to-header
       - verify-api-key-in-header
+      - rewrite-missing-key-message
+      - rewrite-missing-allow-header-error
       - set-southbound-key
       - strip-api-key-header-and-params
     proxy_endpoints:

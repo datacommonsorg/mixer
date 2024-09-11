@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <TargetEndpoint name="api">
   <Description />
-  <FaultRules />
+  <FaultRules>
+    <FaultRule name="handle_FailedToResolveApiKey">
+      <Step>
+        <Name>rewrite-missing-key-message</Name>
+      </Step>
+      <Condition>(fault.name = "FailedToResolveAPIKey")</Condition>
+    </FaultRule>
+    <FaultRule name="handle_Response405WithoutAllowHeader">
+      <Step>
+        <Name>rewrite-missing-allow-header-error</Name>
+      </Step>
+      <Condition>(fault.name = "Response405WithoutAllowHeader")</Condition>
+    </FaultRule>
+  </FaultRules>
   <PreFlow name="PreFlow">
     <Request>
       <Step>

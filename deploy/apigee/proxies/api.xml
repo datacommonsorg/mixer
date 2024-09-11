@@ -4,9 +4,11 @@
   <Description/>
   <BasePaths>/api</BasePaths>
   <Policies>
-    <Policy>verify-api-key-in-header</Policy>
-    <Policy>set-southbound-key</Policy>
     <Policy>copy-key-param-to-header</Policy>
+    <Policy>verify-api-key-in-header</Policy>
+    <Policy>rewrite-missing-key-message</Policy>
+    <Policy>rewrite-missing-allow-header-error</Policy>
+    <Policy>set-southbound-key</Policy>
     <Policy>strip-api-key-header-and-params</Policy>
   </Policies>
   <ProxyEndpoints>
