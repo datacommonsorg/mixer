@@ -28,9 +28,9 @@ locals {
       hostname = var.nl_internal_api_hostname
       prefix   = "/bard/"
     },
-    "matcher-datagemma" = {
+    "matcher-nl" = {
       hostname = var.nl_api_hostname
-      prefix   = "/datagemma/"
+      prefix   = "/nl/"
     }
   }
 

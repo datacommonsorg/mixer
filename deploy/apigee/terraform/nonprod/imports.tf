@@ -22,10 +22,6 @@ import {
   id = "staging-bard"
 }
 
-import {
-  to = module.apigee.google_apigee_envgroup.envgroups["staging-datagemma"]
-  id = "staging-datagemma"
-}
 
 import {
   to = module.apigee.google_apigee_environment.environments["dev"]
@@ -37,10 +33,6 @@ import {
   id = "staging-bard/attachments/99b235d2-31dd-4f32-ad63-fbeaa44871ca"
 }
 
-import {
-  to = module.apigee.google_apigee_envgroup_attachment.envgroup_attachments["dev-staging-datagemma"]
-  id = "staging-datagemma/attachments/847e105c-a43c-4ef1-8fd1-3e4c9d920bf9"
-}
 
 import {
   to = module.apigee.google_apigee_instance.instances["us-central1"]
@@ -77,15 +69,7 @@ import {
   id = "dev:bard"
 }
 
-import {
-  to = apigee_proxy.datagemma
-  id = "datagemma"
-}
 
-import {
-  to = apigee_proxy_deployment.dev-datagemma
-  id = "dev:datagemma"
-}
 
 import {
   to = apigee_product.datacommons-api-staging

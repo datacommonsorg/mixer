@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<APIProxy name="datagemma">
+<APIProxy name="nl">
   <DisplayName/>
   <Description/>
-  <BasePaths>/datagemma</BasePaths>
+  <BasePaths>/nl</BasePaths>
   <Policies>
     <Policy>verify-api-key-in-header</Policy>
     <Policy>copy-key-param-to-header</Policy>
     <Policy>strip-api-key-header-and-params</Policy>
   </Policies>
   <ProxyEndpoints>
-    <ProxyEndpoint>datagemma</ProxyEndpoint>
+    <ProxyEndpoint>nl</ProxyEndpoint>
   </ProxyEndpoints>
   <TargetEndpoints>
-    <TargetEndpoint>datagemma</TargetEndpoint>
+    <TargetEndpoint>nl</TargetEndpoint>
   </TargetEndpoints>
 </APIProxy>

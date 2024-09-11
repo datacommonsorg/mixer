@@ -16,16 +16,21 @@ module "apigee" {
   source     = "github.com/terraform-google-modules/cloud-foundation-fabric//modules/apigee"
   project_id = var.project_id
   envgroups = {
-    api       = [var.api_hostname]
-    api2       = [var.api2_hostname]
-    bard      = [var.nl_internal_api_hostname]
-    datagemma = [var.nl_api_hostname]
+    api  = [var.api_hostname]
+    api2 = [var.api2_hostname]
+    bard = [var.nl_internal_api_hostname]
+    nl   = [var.nl_api_hostname]
   }
   environments = {
     main = {
       display_name = "main"
-      envgroups    = ["api", "api2", "bard", "datagemma"]
-      type         = "INTERMEDIATE"
+      envgroups = [
+        "api",
+        "api2",
+        "bard",
+        "nl",
+      ]
+      type = "INTERMEDIATE"
     }
   }
   instances = {
@@ -61,11 +66,11 @@ resource "apigee_proxy" "bard" {
   bundle_hash = filebase64sha256(".tmp/bard.zip")
 }
 
-resource "apigee_proxy" "datagemma" {
+resource "apigee_proxy" "nl" {
   count       = var.include_proxies ? 1 : 0
-  name        = "datagemma"
-  bundle      = ".tmp/datagemma.zip"
-  bundle_hash = filebase64sha256(".tmp/datagemma.zip")
+  name        = "nl"
+  bundle      = ".tmp/nl.zip"
+  bundle_hash = filebase64sha256(".tmp/nl.zip")
 }
 
 resource "apigee_proxy_deployment" "main-api" {
@@ -82,11 +87,11 @@ resource "apigee_proxy_deployment" "main-bard" {
   revision         = apigee_proxy.bard[0].revision # Deploy latest
 }
 
-resource "apigee_proxy_deployment" "main-datagemma" {
+resource "apigee_proxy_deployment" "main-nl" {
   count            = var.include_proxies ? 1 : 0
-  proxy_name       = apigee_proxy.datagemma[0].name
+  proxy_name       = apigee_proxy.nl[0].name
   environment_name = "main"
-  revision         = apigee_proxy.datagemma[0].revision # Deploy latest
+  revision         = apigee_proxy.nl[0].revision # Deploy latest
 }
 
 resource "apigee_product" "datacommons-api" {
@@ -140,7 +145,7 @@ resource "apigee_product" "datacommons-nl-api" {
     access = "public"
   }
   operation {
-    api_source = apigee_proxy.datagemma[0].name
+    api_source = apigee_proxy.nl[0].name
     path       = "/"
     methods    = [] # Accept all methods
   }

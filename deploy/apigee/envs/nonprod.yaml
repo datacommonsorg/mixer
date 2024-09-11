@@ -20,12 +20,12 @@ proxies:
       - bard
     target_endpoints:
       - bard
-  - name: datagemma
+  - name: nl
     policies:
       - copy-key-param-to-header
       - verify-api-key-in-header
       - strip-api-key-header-and-params
     proxy_endpoints:
-      - datagemma
+      - nl
     target_endpoints:
-      - datagemma
+      - nl

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ProxyEndpoint name="datagemma">
+<ProxyEndpoint name="nl">
   <Description/>
   <FaultRules/>
   <PreFlow name="PreFlow">
@@ -12,11 +12,11 @@
   </PostFlow>
   <Flows/>
   <HTTPProxyConnection>
-    <BasePath>/datagemma</BasePath>
+    <BasePath>/nl</BasePath>
     <Properties/>
     <VirtualHost>default</VirtualHost>
   </HTTPProxyConnection>
-  <RouteRule name="datagemma">
-    <TargetEndpoint>datagemma</TargetEndpoint>
+  <RouteRule name="nl">
+    <TargetEndpoint>nl</TargetEndpoint>
   </RouteRule>
 </ProxyEndpoint>
