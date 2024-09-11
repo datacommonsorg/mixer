@@ -166,8 +166,9 @@ ENDPOINTS = [
     }),
     # GetVersion
     ("/version", ["GET"], {}),
-    # GetImportTableData
-    ("/internal/import-table", ["GET", "POST"], {}),
+    # # GetImportTableData
+    # Commented out due to b/365951885
+    # ("/internal/import-table", ["GET", "POST"], {}),
     # GetPlaceStatsVar
     ("/place/stats-var", ["GET", "POST"], {
         "dcids": ["country/PLW"]
