@@ -8,6 +8,8 @@
     <Policy>verify-api-key-in-header</Policy>
     <Policy>rewrite-missing-key-message</Policy>
     <Policy>rewrite-missing-allow-header-error</Policy>
+    <Policy>enforce-quota-limit</Policy>
+    <Policy>rewrite-quota-exceeded-message</Policy>
     <Policy>set-southbound-key</Policy>
     <Policy>strip-api-key-header-and-params</Policy>
   </Policies>

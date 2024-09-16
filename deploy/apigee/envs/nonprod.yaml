@@ -5,6 +5,8 @@ proxies:
       - verify-api-key-in-header
       - rewrite-missing-key-message
       - rewrite-missing-allow-header-error
+      - enforce-quota-limit
+      - rewrite-quota-exceeded-message
       - set-southbound-key
       - strip-api-key-header-and-params
     proxy_endpoints:

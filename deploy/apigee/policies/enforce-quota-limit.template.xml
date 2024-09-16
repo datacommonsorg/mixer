@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Quota continueOnError="false" enabled="true" name="enforce-quota-limit" type="rollingwindow">
+  <DisplayName>enforce-quota-limit</DisplayName>
+  <Identifier ref="proxy.client.ip"/>
+  <Allow count="REPLACE_WITH_TRIAL_KEY_QUOTA_REQUESTS_PER_INTERVAL"/>
+  <Interval>REPLACE_WITH_TRIAL_KEY_QUOTA_INTERVAL_MINUTES</Interval>
+  <TimeUnit>minute</TimeUnit>
+  <Distributed>true</Distributed>
+  <Synchronous>false</Synchronous>
+  <EnforcementMode>Enforce</EnforcementMode>
+</Quota>
