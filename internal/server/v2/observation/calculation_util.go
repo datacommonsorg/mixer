@@ -136,6 +136,28 @@ func generateBasicLitObservationResponse(
 	}, nil
 }
 
+// Evaluate a binary operation.
+func evalOp(
+	x, y float64,
+	op token.Token,
+) (float64, error) {
+	switch op {
+	case token.ADD:
+		return x + y, nil
+	case token.SUB:
+		return x - y, nil
+	case token.MUL:
+		return x * y, nil
+	case token.QUO:
+		if y == 0 {
+			return 0, fmt.Errorf("denominator cannot be zero")
+		}
+		return x / y, nil
+	default:
+		return 0, fmt.Errorf("unsupported op (token) %v", op)
+	}
+}
+
 // Combine two PointStat series using an operator token.
 func mergePointStat(
 	x, y []*pb.PointStat,
@@ -152,21 +174,9 @@ func mergePointStat(
 		} else {
 			xVal := x[xIdx].GetValue()
 			yVal := y[yIdx].GetValue()
-			var val float64
-			switch op {
-			case token.ADD:
-				val = xVal + yVal
-			case token.SUB:
-				val = xVal - yVal
-			case token.MUL:
-				val = xVal * yVal
-			case token.QUO:
-				if yVal == 0 {
-					return nil, fmt.Errorf("denominator cannot be zero")
-				}
-				val = xVal / yVal
-			default:
-				return nil, fmt.Errorf("unsupported op (token) %v", op)
+			val, err := evalOp(xVal, yVal, op)
+			if err != nil {
+				return nil, err
 			}
 			result = append(result, &pb.PointStat{
 				Date:  xDate,
@@ -194,21 +204,9 @@ func evalBinaryConstantNodeExpr(
 	}
 	xVal := xEntityObs.OrderedFacets[0].Observations[0].GetValue()
 	yVal := yEntityObs.OrderedFacets[0].Observations[0].GetValue()
-	var val float64
-	switch op {
-	case token.ADD:
-		val = xVal + yVal
-	case token.SUB:
-		val = xVal - yVal
-	case token.MUL:
-		val = xVal * yVal
-	case token.QUO:
-		if yVal == 0 {
-			return nil, fmt.Errorf("denominator cannot be zero")
-		}
-		val = xVal / yVal
-	default:
-		return nil, fmt.Errorf("unsupported op (token) %v", op)
+	val, err := evalOp(xVal, yVal, op)
+	if err != nil {
+		return nil, err
 	}
 	return &pbv2.ObservationResponse{
 		// Use a placeholder for constant responses.
@@ -253,31 +251,14 @@ func evalBinaryIntermediateConstantNodeExpr(
 			for _, obs := range facets[i].Observations {
 				iVal := obs.GetValue()
 				var val float64
-				switch op {
-				case token.ADD:
-					val = iVal + cVal
-				case token.SUB:
-					if iFirst {
-						val = iVal - cVal
-					} else {
-						val = cVal - iVal
-					}
-				case token.MUL:
-					val = iVal * cVal
-				case token.QUO:
-					if iFirst {
-						if cVal == 0 {
-							return nil, fmt.Errorf("denominator cannot be zero")
-						}
-						val = iVal / cVal
-					} else {
-						if iVal == 0 {
-							return nil, fmt.Errorf("denominator cannot be zero")
-						}
-						val = cVal / iVal
-					}
-				default:
-					return nil, fmt.Errorf("unsupported op (token) %v", op)
+				var err error
+				if iFirst {
+					val, err = evalOp(iVal, cVal, op)
+				} else {
+					val, err = evalOp(cVal, iVal, op)
+				}
+				if err != nil {
+					return nil, err
 				}
 				newPointStat = append(newPointStat, &pb.PointStat{
 					Date:  obs.GetDate(),
