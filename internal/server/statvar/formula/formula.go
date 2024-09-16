@@ -28,7 +28,6 @@ import (
 type ASTNode struct {
 	StatVar string
 	Facet   *pb.Facet
-	Value   float32
 }
 
 type VariableFormula struct {
