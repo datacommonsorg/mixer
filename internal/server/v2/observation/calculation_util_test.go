@@ -352,7 +352,7 @@ func TestMergePointStat(t *testing.T) {
 	}
 }
 
-func TestEvalBinaryConstantNodeExpr(t *testing.T) {
+func TestEvalBinaryIntermediateConstantNodeExpr(t *testing.T) {
 	intermediate := &pbv2.ObservationResponse{
 		ByVariable: map[string]*pbv2.VariableObservation{
 			"INTERMEDIATE_NODE": {ByEntity: map[string]*pbv2.EntityObservation{
