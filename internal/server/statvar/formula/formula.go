@@ -28,6 +28,7 @@ import (
 type ASTNode struct {
 	StatVar string
 	Facet   *pb.Facet
+	Value   float32
 }
 
 type VariableFormula struct {
@@ -128,6 +129,8 @@ func processNodeInfo(node ast.Node, c *VariableFormula) error {
 		}
 	case *ast.ParenExpr:
 		return processNodeInfo(t.X, c)
+	case *ast.BasicLit:
+		// Handle constants when evaluating formula.
 	default:
 		return fmt.Errorf("unsupported AST type %T", t)
 	}

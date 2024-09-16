@@ -47,6 +47,9 @@ func Calculate(
 	if err != nil {
 		return nil, err
 	}
+	if len(variableFormula.StatVars) == 0 {
+		return nil, fmt.Errorf("formula missing variables")
+	}
 	newReq := &pbv2.ObservationRequest{
 		Variable: &pbv2.DcidOrExpression{Dcids: variableFormula.StatVars},
 		Entity:   entity,

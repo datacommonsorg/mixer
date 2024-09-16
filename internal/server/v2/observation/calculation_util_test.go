@@ -15,6 +15,7 @@
 package observation
 
 import (
+	"go/ast"
 	"go/token"
 	"reflect"
 	"testing"
@@ -200,6 +201,37 @@ func TestFilterObsByASTNode(t *testing.T) {
 	}
 }
 
+func TestGenerateBasicLitObservationResponse(t *testing.T) {
+	for _, c := range []struct {
+		data *ast.BasicLit
+		want *pbv2.ObservationResponse
+	}{{
+		&ast.BasicLit{
+			Value: "7.28",
+		},
+		&pbv2.ObservationResponse{
+			ByVariable: map[string]*pbv2.VariableObservation{"CONSTANT_NODE": {
+				ByEntity: map[string]*pbv2.EntityObservation{CONSTANT_ENTITY: {
+					OrderedFacets: []*pbv2.FacetObservation{{
+						Observations: []*pb.PointStat{{
+							Value: proto.Float64(7.28),
+						}},
+					}},
+				}},
+			}},
+		}},
+	} {
+		got, err := generateBasicLitObservationResponse(c.data)
+		if err != nil {
+			t.Errorf("error running TestGenerateBasicLitObservationResponse: %s", err)
+		}
+		if ok := reflect.DeepEqual(got, c.want); !ok {
+			t.Errorf("generateBasicLitObservationResponse(%v) = %v, want %v",
+				c.data, got, c.want)
+		}
+	}
+}
+
 func TestMergePointStat(t *testing.T) {
 	inputX := []*pb.PointStat{{
 		Date:  "1",
@@ -320,6 +352,119 @@ func TestMergePointStat(t *testing.T) {
 	}
 }
 
+func TestEvalBinaryConstantNodeExpr(t *testing.T) {
+	intermediate := &pbv2.ObservationResponse{
+		ByVariable: map[string]*pbv2.VariableObservation{
+			"INTERMEDIATE_NODE": {ByEntity: map[string]*pbv2.EntityObservation{
+				"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{{
+					FacetId: "facetId1",
+					Observations: []*pb.PointStat{
+						{
+							Date:  "1",
+							Value: proto.Float64(10),
+						},
+						{
+							Date:  "2",
+							Value: proto.Float64(20),
+						},
+					},
+				}}},
+			}},
+		},
+		Facets: map[string]*pb.Facet{
+			"facetId1": {
+				ObservationPeriod: "P1Y",
+			},
+		},
+	}
+	constant := &pbv2.ObservationResponse{
+		ByVariable: map[string]*pbv2.VariableObservation{
+			"CONSTANT_NODE": {ByEntity: map[string]*pbv2.EntityObservation{
+				"CONSTANT_ENTITY": {OrderedFacets: []*pbv2.FacetObservation{{
+					Observations: []*pb.PointStat{{
+						Value: proto.Float64(5),
+					}},
+				}}},
+			}},
+		},
+	}
+	for _, c := range []struct {
+		iFirst bool
+		want   *pbv2.ObservationResponse
+	}{
+		{
+			true,
+			&pbv2.ObservationResponse{
+				ByVariable: map[string]*pbv2.VariableObservation{
+					"INTERMEDIATE_NODE": {ByEntity: map[string]*pbv2.EntityObservation{
+						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{{
+							FacetId: "facetId1",
+							Observations: []*pb.PointStat{
+								{
+									Date:  "1",
+									Value: proto.Float64(5),
+								},
+								{
+									Date:  "2",
+									Value: proto.Float64(15),
+								},
+							},
+							EarliestDate: "1",
+							LatestDate:   "2",
+							ObsCount:     2,
+						}}},
+					}},
+				},
+				Facets: map[string]*pb.Facet{
+					"facetId1": {
+						ObservationPeriod: "P1Y",
+					},
+				},
+			},
+		},
+		{
+			false,
+			&pbv2.ObservationResponse{
+				ByVariable: map[string]*pbv2.VariableObservation{
+					"INTERMEDIATE_NODE": {ByEntity: map[string]*pbv2.EntityObservation{
+						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{{
+							FacetId: "facetId1",
+							Observations: []*pb.PointStat{
+								{
+									Date:  "1",
+									Value: proto.Float64(-5),
+								},
+								{
+									Date:  "2",
+									Value: proto.Float64(-15),
+								},
+							},
+							EarliestDate: "1",
+							LatestDate:   "2",
+							ObsCount:     2,
+						}}},
+					}},
+				},
+				Facets: map[string]*pb.Facet{
+					"facetId1": {
+						ObservationPeriod: "P1Y",
+					},
+				},
+			},
+		},
+	} {
+		got, err := evalBinaryIntermediateConstantNodeExpr(intermediate, constant, c.iFirst, token.SUB)
+		if err != nil {
+			t.Errorf("error running TestEvalExpr: %s", err)
+			continue
+		}
+		if ok := reflect.DeepEqual(got, c.want); !ok {
+			t.Errorf("evalBinaryIntermediateConstantNodeExpr(%v, %v, %v, %v) = %v, want %v",
+				intermediate, constant, c.iFirst, token.SUB, got, c.want)
+		}
+	}
+}
+
 func TestEvalExpr(t *testing.T) {
 	for _, c := range []struct {
 		inputExpr string
@@ -382,6 +527,63 @@ func TestEvalExpr(t *testing.T) {
 							EarliestDate: "1",
 							LatestDate:   "1",
 							ObsCount:     1,
+						}}},
+					}},
+				},
+				Facets: map[string]*pb.Facet{
+					"facetId1": {
+						ObservationPeriod: "P1Y",
+					},
+				},
+			},
+		},
+		{
+			"(100 - SV) / (2.5 * 2)",
+			map[string]*formula.ASTNode{
+				"SV": {StatVar: "SV"},
+			},
+			&pbv2.ObservationResponse{
+				ByVariable: map[string]*pbv2.VariableObservation{
+					"SV": {ByEntity: map[string]*pbv2.EntityObservation{
+						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{{
+							FacetId: "facetId1",
+							Observations: []*pb.PointStat{
+								{
+									Date:  "1",
+									Value: proto.Float64(10),
+								},
+								{
+									Date:  "2",
+									Value: proto.Float64(20),
+								},
+							},
+						}}},
+					}},
+				},
+				Facets: map[string]*pb.Facet{
+					"facetId1": {
+						ObservationPeriod: "P1Y",
+					},
+				},
+			},
+			&pbv2.ObservationResponse{
+				ByVariable: map[string]*pbv2.VariableObservation{
+					"INTERMEDIATE_NODE": {ByEntity: map[string]*pbv2.EntityObservation{
+						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{{
+							FacetId: "facetId1",
+							Observations: []*pb.PointStat{
+								{
+									Date:  "1",
+									Value: proto.Float64(18),
+								},
+								{
+									Date:  "2",
+									Value: proto.Float64(16),
+								},
+							},
+							EarliestDate: "1",
+							LatestDate:   "2",
+							ObsCount:     2,
 						}}},
 					}},
 				},
