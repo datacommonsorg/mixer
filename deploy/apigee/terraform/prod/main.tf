@@ -30,7 +30,7 @@ module "apigee" {
         "bard",
         "nl",
       ]
-      type = "INTERMEDIATE"
+      type = "COMPREHENSIVE"
     }
   }
   instances = {
