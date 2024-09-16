@@ -179,7 +179,7 @@ func mergePointStat(
 	return result, nil
 }
 
-// Combine one INTERMEDIATE_NODE with one CONSTANT_NODE.
+// Combine two CONSTANT_NODE ObservationResponses using an operator token.
 func evalBinaryConstantNodeExpr(
 	x, y *pbv2.ObservationResponse,
 	op token.Token,
@@ -224,7 +224,7 @@ func evalBinaryConstantNodeExpr(
 	}, nil
 }
 
-// Combine one INTERMEDIATE_NODE with one CONSTANT_NODE.
+// Combine one INTERMEDIATE_NODE with one CONSTANT_NODE using an operator token.
 func evalBinaryIntermediateConstantNodeExpr(
 	intermediate, constant *pbv2.ObservationResponse,
 	iFirst bool, // Whether the intermediate response is the first response in the expression.
