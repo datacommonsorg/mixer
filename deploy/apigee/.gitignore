@@ -1,0 +1,6 @@
+
+**/.terraform/*
+**/.terraform.lock.*
+**/terraform/*/.tmp/*
+nonprod.env
+prod.env

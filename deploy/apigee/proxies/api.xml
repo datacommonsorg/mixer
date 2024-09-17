@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy name="api">
+  <DisplayName/>
+  <Description/>
+  <BasePaths>/api</BasePaths>
+  <Policies>
+    <Policy>copy-key-param-to-header</Policy>
+    <Policy>verify-api-key-in-header</Policy>
+    <Policy>rewrite-missing-key-message</Policy>
+    <Policy>rewrite-missing-allow-header-error</Policy>
+    <Policy>set-southbound-key</Policy>
+    <Policy>strip-api-key-header-and-params</Policy>
+  </Policies>
+  <ProxyEndpoints>
+    <ProxyEndpoint>api</ProxyEndpoint>
+  </ProxyEndpoints>
+  <TargetEndpoints>
+    <TargetEndpoint>api</TargetEndpoint>
+  </TargetEndpoints>
+</APIProxy>
