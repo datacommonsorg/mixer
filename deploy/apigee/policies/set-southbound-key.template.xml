@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="set-southbound-key">
+  <DisplayName>set-southbound-key</DisplayName>
+  <Set>
+    <QueryParams>
+      <QueryParam name="key">REPLACE_WITH_MIXER_API_INTERNAL_KEY</QueryParam>
+    </QueryParams>
+  </Set>
+</AssignMessage>

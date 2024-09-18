@@ -1,0 +1,31 @@
+proxies:
+  - name: api
+    policies:
+      - copy-key-param-to-header
+      - verify-api-key-in-header
+      - rewrite-missing-key-message
+      - rewrite-missing-allow-header-error
+      - set-southbound-key
+      - strip-api-key-header-and-params
+    proxy_endpoints:
+      - api
+    target_endpoints:
+      - api
+  - name: bard
+    policies:
+      - copy-apikey-param-to-header
+      - copy-key-param-to-header
+      - verify-api-key-in-header
+    proxy_endpoints:
+      - bard
+    target_endpoints:
+      - bard
+  - name: nl
+    policies:
+      - copy-key-param-to-header
+      - verify-api-key-in-header
+      - strip-api-key-header-and-params
+    proxy_endpoints:
+      - nl
+    target_endpoints:
+      - nl

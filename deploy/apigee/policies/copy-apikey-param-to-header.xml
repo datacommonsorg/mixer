@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="copy-apikey-param-to-header">
+  <DisplayName>copy-apikey-param-to-header</DisplayName>
+  <Add>
+    <Headers>
+      <Header name="x-api-key">{request.queryparam.apikey}</Header>
+    </Headers>
+  </Add>
+</AssignMessage>

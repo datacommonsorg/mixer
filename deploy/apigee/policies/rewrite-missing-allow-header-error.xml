@@ -1,0 +1,9 @@
+<AssignMessage async="false" continueOnError="false" enabled="true" name="rewrite-missing-allow-header-error">
+  <DisplayName>rewrite-missing-allow-header-error</DisplayName>
+  <Set>
+    <Payload contentType="application/json">{"message":"Specified method is not allowed.", "code": 405}</Payload>
+    <StatusCode>405</StatusCode>
+    <ReasonPhrase>Method Not Allowed</ReasonPhrase>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</AssignMessage>
