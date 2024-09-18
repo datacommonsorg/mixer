@@ -30,10 +30,9 @@ fi
 
 ENV_VARS="${ENV}.env"
 if [[ ! -f $ENV_VARS ]]; then
-  echo "Env var file ${ENV_VARS} not found. Proceeding without vars."
-else
-  source "$ENV_VARS"
+  ./sync_env.sh $ENV
 fi
+source "$ENV_VARS"
 
 ENV_BASE_DIR="terraform/$ENV"
 ENV_TMP_DIR="$ENV_BASE_DIR/.tmp"
@@ -113,24 +112,27 @@ function terraform_plan_and_maybe_apply() {
   terraform_cmd "plan"
 
   while true; do
-    read -p "Proceed to terraform apply? " yn
+    read -p "Proceed to terraform apply with auto-approve? " yn
     case $yn in
     [Yy]*)
-      terraform_cmd "apply"
+      terraform_cmd "apply --auto-approve"
+      cd "$WORKING_DIR"
+      ./sync_env.sh $ENV --push
       break
       ;;
-    [Nn]*) exit ;;
+    [Nn]*)
+      cd "$WORKING_DIR"
+      exit
+      ;;
     *) echo "Please answer yes or no." ;;
     esac
   done
-
-  cd "$WORKING_DIR"
 }
 
 # Runs the given Terraform verb with an access token and vars file.
 function terraform_cmd() {
   verb=$1
-  terraform "$verb" \
+  terraform $verb \
     --var="access_token=$(gcloud auth print-access-token)" \
     -var-file=vars.tfvars
 }

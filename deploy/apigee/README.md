@@ -31,6 +31,7 @@
    - Proxy structure config `envs/$ENV_NAME.yaml`
    - Proxy variable substitution values `./$ENV_NAME.env`. Use a temp value for PSC host IP if you haven't created an endpoint attachment yet. Other values should have been noted during previous steps.
    - Apigee + load balancer Terraform `terraform/$ENV_NAME/*`
+1. Create a destination in Secrets Manager for your `./$ENV_NAME.env` file. For example, for the file nonprod.env, you would run `gcloud secrets create nonprod-env --project=<project_id from YAML> --data-file=nonprod.env`
 1. Configure references to resources created by Apigee one-click provisioning:
    - Set tfvars `apigee_lb_url_map_name` from `gcloud compute url-maps list`.
    - Set tfvars `apigee_backend_service_name` from `gcloud compute backend-services list`.
