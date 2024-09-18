@@ -7,19 +7,7 @@
         "typeOf"
       ]
     },
-    "bio/hs": {
-      "properties": [
-        "alternateName",
-        "commonName",
-        "name",
-        "ncbiTaxonID",
-        "organismTaxonomicKingdom",
-        "provenance",
-        "scientificName",
-        "typeOf",
-        "uniProtOrganismCode"
-      ]
-    },
+    "bio/hs": {},
     "geoId/06": {
       "properties": [
         "administrativeCapital",

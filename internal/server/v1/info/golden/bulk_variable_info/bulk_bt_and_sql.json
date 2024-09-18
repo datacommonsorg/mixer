@@ -24,7 +24,7 @@
             "maxValue": 36986320
           },
           "AdministrativeArea1": {
-            "placeCount": 403,
+            "placeCount": 380,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q3724",
@@ -43,7 +43,7 @@
             "maxValue": 24354012
           },
           "AdministrativeArea2": {
-            "placeCount": 6618,
+            "placeCount": 6615,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1143712",
@@ -2089,42 +2089,23 @@
                 "latestDate": "2022",
                 "placeTypeSummary": {
                   "AdministrativeArea1": {
-                    "placeCount": 26,
+                    "placeCount": 3,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q4169280",
                         "name": "Dublin City"
                       },
                       {
-                        "dcid": "wikidataId/Q162475",
-                        "name": "County Cork"
+                        "dcid": "wikidataId/Q184599",
+                        "name": "County Wexford"
                       },
                       {
-                        "dcid": "wikidataId/Q169923",
-                        "name": "County Galway"
+                        "dcid": "wikidataId/Q184594",
+                        "name": "County Waterford"
                       }
                     ],
-                    "minValue": 12013,
-                    "maxValue": 433567
-                  },
-                  "AdministrativeArea2": {
-                    "placeCount": 3,
-                    "topPlaces": [
-                      {
-                        "dcid": "wikidataId/Q520000",
-                        "name": "County Fingal"
-                      },
-                      {
-                        "dcid": "wikidataId/Q822865",
-                        "name": "South Dublin"
-                      },
-                      {
-                        "dcid": "wikidataId/Q538417",
-                        "name": "Dún Laoghaire–Rathdown"
-                      }
-                    ],
-                    "minValue": 101139,
-                    "maxValue": 167974
+                    "minValue": 35911,
+                    "maxValue": 300917
                   },
                   "City": {
                     "placeCount": 2,
@@ -2151,6 +2132,25 @@
                     ],
                     "minValue": 1401792,
                     "maxValue": 3306314
+                  },
+                  "County": {
+                    "placeCount": 26,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q162475",
+                        "name": "County Cork"
+                      },
+                      {
+                        "dcid": "wikidataId/Q520000",
+                        "name": "County Fingal"
+                      },
+                      {
+                        "dcid": "wikidataId/Q822865",
+                        "name": "South Dublin"
+                      }
+                    ],
+                    "minValue": 12013,
+                    "maxValue": 433567
                   }
                 },
                 "minValue": 12013,
