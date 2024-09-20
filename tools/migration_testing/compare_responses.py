@@ -22,13 +22,24 @@ Note that the API key provided must be valid for both domains.
 
 import argparse
 import copy
+import json
 import logging
 
 import requests
 
-USE_NEW_ENDPOINTS_ONLY = False
+
+# Read a JSON object from a file
+def read_json_from_file(file_path):
+  with open(file_path, 'r') as f:
+    return json.load(f)
+
+
+USE_NEW_ENDPOINTS_ONLY = True
 NEW_ENDPOINTS = [
     # For testing out new endpoints without having to comment out existing ones
+    ("/v2/node", ["POST"],
+     read_json_from_file(
+         "tools/migration_testing/v2_node_request_with_large_response.json")),
 ]
 
 ENDPOINTS = [
@@ -435,11 +446,17 @@ def compare_responses(endpoint, use_api_key, method="GET", params=None):
       new_data = "Not valid JSON"
 
     if current_data != new_data:
+      current_data_to_print = current_data if len(
+          current_response.content) < 10000 else "<Large response omitted>"
+      new_data_to_print = new_data if len(
+          new_response.content) < 10000 else "<Large response omitted>"
       print(f"{bcolors.FAIL}DIFF{bcolors.ENDC} {method} {endpoint}")
       print(
-          f"  Current ({args.current_domain}): {current_response.status_code} {current_data}"
+          f"  Current ({args.current_domain}): {current_response.status_code} {current_data_to_print}"
       )
-      print(f"  New ({args.new_domain}): {new_response.status_code} {new_data}")
+      print(
+          f"  New ({args.new_domain}): {new_response.status_code} {new_data_to_print}"
+      )
     else:
       code = current_response.status_code
       if code >= 400:
