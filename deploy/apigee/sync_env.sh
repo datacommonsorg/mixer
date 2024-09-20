@@ -72,8 +72,8 @@ function confirm_and_push_env() {
       read -p "${ENV_VARS} has local changes. Upload to Secrets Manager? " yn
       case $yn in
       [Yy]*)
-        gcloud secrets versions add $SECRET_NAME \
-          --project=$PROJECT_ID --data-file=$ENV_VARS
+        gcloud secrets versions add "$SECRET_NAME" \
+          --project="$PROJECT_ID" --data-file="$ENV_VARS"
         break
         ;;
       [Nn]*) exit ;;

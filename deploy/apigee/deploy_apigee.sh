@@ -30,7 +30,7 @@ fi
 
 ENV_VARS="${ENV}.env"
 if [[ ! -f $ENV_VARS ]]; then
-  ./sync_env.sh $ENV
+  ./sync_env.sh "$ENV"
 fi
 source "$ENV_VARS"
 
