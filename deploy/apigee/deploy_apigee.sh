@@ -117,7 +117,7 @@ function terraform_plan_and_maybe_apply() {
     [Yy]*)
       terraform_cmd "apply --auto-approve"
       cd "$WORKING_DIR"
-      ./sync_env.sh $ENV --push
+      ./sync_env.sh "$ENV" --push
       break
       ;;
     [Nn]*)
@@ -132,6 +132,7 @@ function terraform_plan_and_maybe_apply() {
 # Runs the given Terraform verb with an access token and vars file.
 function terraform_cmd() {
   verb=$1
+  # shellcheck disable=SC2086
   terraform $verb \
     --var="access_token=$(gcloud auth print-access-token)" \
     -var-file=vars.tfvars

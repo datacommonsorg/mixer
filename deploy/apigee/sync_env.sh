@@ -40,8 +40,8 @@ ENV_VARS="${ENV}.env"
 
 # Downloads env vars from Secrets Manager to local file.
 function pull_env() {
-  gcloud secrets versions access latest --secret=$SECRET_NAME \
-    --project=$PROJECT_ID >$ENV_VARS
+  gcloud secrets versions access latest --secret="$SECRET_NAME" \
+    --project="$PROJECT_ID" >"$ENV_VARS"
 }
 
 # Downloads env vars from Secrets Manager to local file.
@@ -63,9 +63,9 @@ function confirm_and_pull_env() {
 # Uploads local env vars to Secrets Manager if local and cloud versions differ.
 # Prompts the user to confirm before uploading.
 function confirm_and_push_env() {
-  cloud_latest=$(gcloud secrets versions access latest --secret=$SECRET_NAME \
-    --project=$PROJECT_ID)
-  if [ "$cloud_latest" = "$(cat $ENV_VARS)" ]; then
+  cloud_latest=$(gcloud secrets versions access latest --secret="$SECRET_NAME" \
+    --project="$PROJECT_ID")
+  if [ "$cloud_latest" = "$(cat "$ENV_VARS")" ]; then
     echo "Skipping upload since local and cloud versions of ${ENV_VARS} are the same."
   else
     while true; do
