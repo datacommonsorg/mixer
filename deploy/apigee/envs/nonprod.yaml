@@ -16,9 +16,8 @@ proxies:
       - api
   - name: bard
     policies:
-      - copy-apikey-param-to-header
-      - copy-key-param-to-header
-      - verify-api-key-in-header
+      - forward-host
+      - verify-api-key-in-param
     proxy_endpoints:
       - bard
     target_endpoints:
