@@ -34,12 +34,9 @@ def read_json_from_file(file_path):
     return json.load(f)
 
 
-USE_NEW_ENDPOINTS_ONLY = True
+USE_NEW_ENDPOINTS_ONLY = False
 NEW_ENDPOINTS = [
     # For testing out new endpoints without having to comment out existing ones
-    ("/v2/node", ["POST"],
-     read_json_from_file(
-         "tools/migration_testing/v2_node_request_with_large_response.json")),
 ]
 
 ENDPOINTS = [
@@ -414,6 +411,13 @@ class bcolors:
   UNDERLINE = '\033[4m'
 
 
+def format_response(response_data):
+  formatted = json.dumps(response_data, indent=2).replace("\n", "\n  ")
+  if len(formatted) > 1000:
+    formatted = formatted[:1000] + f"...<{len(formatted) - 1000} chars omitted>"
+  return formatted
+
+
 def compare_responses(endpoint, use_api_key, method="GET", params=None):
   current_url = f"https://{args.current_domain}{endpoint}"
   new_url = f"https://{args.new_domain}{endpoint}"
@@ -446,16 +450,12 @@ def compare_responses(endpoint, use_api_key, method="GET", params=None):
       new_data = "Not valid JSON"
 
     if current_data != new_data:
-      current_data_to_print = current_data if len(
-          current_response.content) < 10000 else "<Large response omitted>"
-      new_data_to_print = new_data if len(
-          new_response.content) < 10000 else "<Large response omitted>"
       print(f"{bcolors.FAIL}DIFF{bcolors.ENDC} {method} {endpoint}")
       print(
-          f"  Current ({args.current_domain}): {current_response.status_code} {current_data_to_print}"
+          f"  Current ({args.current_domain}): {current_response.status_code} {format_response(current_data)}"
       )
       print(
-          f"  New ({args.new_domain}): {new_response.status_code} {new_data_to_print}"
+          f"  New ({args.new_domain}): {new_response.status_code} {format_response(new_data)}"
       )
     else:
       code = current_response.status_code
