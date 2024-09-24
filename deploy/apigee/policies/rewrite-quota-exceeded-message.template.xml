@@ -1,0 +1,7 @@
+<AssignMessage async="false" continueOnError="false" enabled="true"
+name="rewrite-quota-exceeded-message">
+  <DisplayName>rewrite-quota-exceeded-message</DisplayName>
+  <Set>
+    <Payload contentType="application/json">{"message": "Quota limit exceeded. If you are using a trial API key, please register at REPLACE_WITH_API_PORTAL_URL to obtain a different key."}</Payload>
+  </Set>
+</AssignMessage>

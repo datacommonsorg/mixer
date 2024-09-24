@@ -22,9 +22,17 @@ Note that the API key provided must be valid for both domains.
 
 import argparse
 import copy
+import json
 import logging
 
 import requests
+
+
+# Read a JSON object from a file
+def read_json_from_file(file_path):
+  with open(file_path, 'r') as f:
+    return json.load(f)
+
 
 USE_NEW_ENDPOINTS_ONLY = False
 NEW_ENDPOINTS = [
@@ -403,6 +411,13 @@ class bcolors:
   UNDERLINE = '\033[4m'
 
 
+def format_response(response_data):
+  formatted = json.dumps(response_data, indent=2).replace("\n", "\n  ")
+  if len(formatted) > 1000:
+    formatted = formatted[:1000] + f"...<{len(formatted) - 1000} chars omitted>"
+  return formatted
+
+
 def compare_responses(endpoint, use_api_key, method="GET", params=None):
   current_url = f"https://{args.current_domain}{endpoint}"
   new_url = f"https://{args.new_domain}{endpoint}"
@@ -437,9 +452,11 @@ def compare_responses(endpoint, use_api_key, method="GET", params=None):
     if current_data != new_data:
       print(f"{bcolors.FAIL}DIFF{bcolors.ENDC} {method} {endpoint}")
       print(
-          f"  Current ({args.current_domain}): {current_response.status_code} {current_data}"
+          f"  Current ({args.current_domain}): {current_response.status_code} {format_response(current_data)}"
       )
-      print(f"  New ({args.new_domain}): {new_response.status_code} {new_data}")
+      print(
+          f"  New ({args.new_domain}): {new_response.status_code} {format_response(new_data)}"
+      )
     else:
       code = current_response.status_code
       if code >= 400:
