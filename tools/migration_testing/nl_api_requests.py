@@ -13,6 +13,7 @@
 #  limitations under the License.
 
 ENDPOINTS = [
+    ("/version", ["GET"], {}),
     ("/nodejs/query", ["GET"], {}),
     ("/nodejs/query", ["GET"], {
         "q": "family earnings in north dakota",
@@ -24,6 +25,10 @@ ENDPOINTS = [
     ("/nodejs/query", ["GET"], {
         "q": "obesity vs. poverty in counties of california",
         "client": "dc",
+    }),
+    ("/nodejs/chart", ["GET"], {
+        "props":
+            "eJxVjsEKwjAQRH%2Bl7LngvTcpHgSRQK0XEQnpKoF1E5KtUEL%2F3Q09iMeZeTNMAWRHIeNkyDq8LBGhA2gBP8hS5RDRQcczUQuxMpq7MLOkZTcOe0WzWLnatIG3AmzfFTIhzmTFB%2F4xave1%2BzCYsgbrvQXxhH3gp39BV1QJ%2Fbcbz83IXnBqBl3BrHOy%2FTwdzwdY1y%2BC%2FEQN"
     }),
 ]
 

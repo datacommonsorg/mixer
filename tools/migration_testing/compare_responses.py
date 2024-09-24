@@ -12,7 +12,7 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 """
-Tests that two different Mixer API domains return the exact same responses.
+Tests that two different API domains return the exact same responses.
 
 Usage:
 $ python tools/migration_testing/compare_responses.py mixer api.datacommons.org api2.datacommons.org $DC_API_KEY
@@ -49,11 +49,26 @@ class bcolors:
   UNDERLINE = '\033[4m'
 
 
-def format_response(response_data):
-  formatted = json.dumps(response_data, indent=2).replace("\n", "\n  ")
-  if len(formatted) > 1000:
-    formatted = formatted[:1000] + f"...<{len(formatted) - 1000} chars omitted>"
-  return formatted
+def is_json(response):
+  return "application/json" in response.headers.get("Content-Type", "")
+
+
+def get_response_data(response):
+  if is_json(response):
+    return response.json()
+  else:
+    return response.content
+
+
+def get_formatted_response(response):
+  if is_json(response):
+    formatted = json.dumps(response.json(), indent=2).replace("\n", "\n  ")
+    if len(formatted) > 1000:
+      formatted = formatted[:1000] + f"...<{len(formatted) - 1000} chars omitted>"
+    return formatted
+  else:
+    size = len(response.content)
+    return f"Content-Type: {response.headers.get('Content-Type', '')}; Size: {size}"
 
 
 def compare_responses(endpoint, use_api_key, method="GET", params=None):
@@ -89,28 +104,22 @@ def compare_responses(endpoint, use_api_key, method="GET", params=None):
     else:
       raise ValueError("Invalid method. Use 'GET' or 'POST'")
 
-    try:
-      current_data = current_response.json()
-    except requests.exceptions.JSONDecodeError:
-      current_data = "Not valid JSON"
-    try:
-      new_data = new_response.json()
-    except requests.exceptions.JSONDecodeError:
-      new_data = "Not valid JSON"
+    current_data = get_response_data(current_response)
+    new_data = get_response_data(new_response)
 
     if current_data != new_data:
       print(f"{bcolors.FAIL}DIFF{bcolors.ENDC} {method} {endpoint}")
       print(
-          f"  Current ({args.current_domain}): {current_response.status_code} {format_response(current_data)}"
+          f"  Current ({args.current_domain}): {current_response.status_code} {get_formatted_response(current_response)}"
       )
       print(
-          f"  New ({args.new_domain}): {new_response.status_code} {format_response(new_data)}"
+          f"  New ({args.new_domain}): {new_response.status_code} {get_formatted_response(new_response)}"
       )
     else:
       code = current_response.status_code
       if code >= 400:
         colored_code = f"{bcolors.WARNING}{code}{bcolors.ENDC}"
-      elif len(current_response.json()) == 0:
+      elif len(current_response.content) == 0:
         colored_code = f"{bcolors.WARNING}{code} EMPTY{bcolors.ENDC}"
       else:
         colored_code = code
