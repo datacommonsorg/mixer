@@ -8096,6 +8096,14 @@
               "provenanceId": "dc/base/BaseSchema"
             },
             {
+              "name": "comparisonRegion",
+              "types": [
+                "Property"
+              ],
+              "dcid": "comparisonRegion",
+              "provenanceId": "dc/base/BaseSchema"
+            },
+            {
               "name": "countryOfOrigin",
               "types": [
                 "Property"

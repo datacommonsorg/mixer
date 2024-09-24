@@ -118,7 +118,7 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 27891
+        "descendentStatVarCount": 27896
       },
       {
         "id": "dc/g/Person_AgeGroupClassification",
@@ -196,7 +196,7 @@
         "id": "dc/g/Person_ComparisonRegion",
         "specializedEntity": "Comparison Region",
         "displayName": "Person by Comparison Region",
-        "descendentStatVarCount": 48
+        "descendentStatVarCount": 53
       },
       {
         "id": "dc/g/Courthouse",
@@ -232,7 +232,7 @@
         "id": "dc/g/Person_DisabilityStatus",
         "specializedEntity": "Disability Status",
         "displayName": "Person by Disability Status",
-        "descendentStatVarCount": 543
+        "descendentStatVarCount": 545
       },
       {
         "id": "dc/g/Person_Earnings",
@@ -310,7 +310,7 @@
         "id": "dc/g/Person_HealthInsurance",
         "specializedEntity": "Health Insurance (Individual)",
         "displayName": "Person by Health Insurance",
-        "descendentStatVarCount": 2028
+        "descendentStatVarCount": 2029
       },
       {
         "id": "dc/g/House",
@@ -322,7 +322,7 @@
         "id": "dc/g/Household",
         "specializedEntity": "Household",
         "displayName": "Household",
-        "descendentStatVarCount": 3515
+        "descendentStatVarCount": 3516
       },
       {
         "id": "dc/g/Person_HouseholdIncome",
@@ -394,13 +394,13 @@
         "id": "dc/g/Person_LaborForceStatus",
         "specializedEntity": "Labor Force Status",
         "displayName": "Person by Labor Force Status",
-        "descendentStatVarCount": 3200
+        "descendentStatVarCount": 3201
       },
       {
         "id": "dc/g/Language",
         "specializedEntity": "Language",
         "displayName": "Language",
-        "descendentStatVarCount": 510
+        "descendentStatVarCount": 511
       },
       {
         "id": "dc/g/Person_LiteracyStatus",
@@ -430,7 +430,7 @@
         "id": "dc/g/MilitaryService",
         "specializedEntity": "Military Service",
         "displayName": "Military Service",
-        "descendentStatVarCount": 2393
+        "descendentStatVarCount": 2398
       },
       {
         "id": "dc/g/Demographics_Miscellaneous",
@@ -514,7 +514,7 @@
         "id": "dc/g/Residence",
         "specializedEntity": "Residence",
         "displayName": "Residence",
-        "descendentStatVarCount": 5260
+        "descendentStatVarCount": 5266
       },
       {
         "id": "dc/g/Person_ResidentStatus",
@@ -551,9 +551,15 @@
         "specializedEntity": "Village",
         "displayName": "Village",
         "descendentStatVarCount": 2
+      },
+      {
+        "id": "dc/g/Person_VulnerabilityStatus",
+        "specializedEntity": "Vulnerability Status",
+        "displayName": "Person by Vulnerability Status",
+        "descendentStatVarCount": 4
       }
     ],
-    "descendentStatVarCount": 47106,
+    "descendentStatVarCount": 47123,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

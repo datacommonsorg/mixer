@@ -137,6 +137,20 @@
       "provenanceId": "dc/base/BaseSchema"
     },
     {
+      "subjectId": "comparisonRegion",
+      "subjectName": "comparisonRegion",
+      "subjectTypes": [
+        "Property"
+      ],
+      "predicate": "rangeIncludes",
+      "objectId": "Country",
+      "objectName": "Country",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/BaseSchema"
+    },
+    {
       "subjectId": "country/ABW",
       "subjectName": "Aruba",
       "subjectTypes": [

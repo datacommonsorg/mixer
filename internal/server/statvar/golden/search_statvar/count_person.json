@@ -537,6 +537,10 @@
       "dcid": "Count_Person_0To14Years"
     },
     {
+      "name": "Population: 0 - 17 Years",
+      "dcid": "Count_Person_0To17Years"
+    },
+    {
       "name": "Population: 0 - 4 Years",
       "dcid": "Count_Person_0To4Years"
     },
@@ -1569,6 +1573,10 @@
       "dcid": "Count_Person_LegislatorOccupation"
     },
     {
+      "name": "Population: Less Than High School Diploma",
+      "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentLessThanHighSchoolDiploma"
+    },
+    {
       "name": "Population: Less Than High School Graduate",
       "dcid": "Count_Person_EducationalAttainmentLessThanHighSchoolGraduate"
     },
@@ -1703,6 +1711,10 @@
     {
       "name": "Population: Noninstitutionalized Group Quarters",
       "dcid": "Count_Person_ResidesInNoninstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Population: Noninstitutionalized Group Quarters \u0026 Institutionalized Group Quarters",
+      "dcid": "Count_Person_ResidesInNoninstitutionalizedGroupQuartersOrInstitutionalizedGroupQuarters"
     },
     {
       "name": "Population: Normalweight",
@@ -2633,8 +2645,16 @@
       "dcid": "Count_Person_Aadhaar_AsAFractionOf_Count_Person"
     },
     {
+      "name": "Population: 0 - 17 Years (Per Capita)",
+      "dcid": "Count_Person_0To17Years_AsAFractionOf_Count_Person"
+    },
+    {
       "name": "Population: 15 Years or Less (As Fraction of Count Person 15 To 64 Years With Income)",
       "dcid": "Count_Person_15OrLessYears_AsAFractionOf_Count_Person_15To64Years_WithIncome"
+    },
+    {
+      "name": "Population: 65 Years or More (Per Capita)",
+      "dcid": "Count_Person_65OrMoreYears_AsAFractionOf_Count_Person"
     },
     {
       "name": "Population: Below Poverty Level in The Past 12 Months (Per Capita)",
@@ -2653,12 +2673,20 @@
       "dcid": "Count_Person_Illiterate_AsAFractionOf_Count_Person"
     },
     {
+      "name": "Population: Less Than High School Diploma (As Fraction of Count Person 25 or More Years)",
+      "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentLessThanHighSchoolDiploma_AsAFractionOf_Count_Person_25OrMoreYears"
+    },
+    {
       "name": "Population: Literate (Per Capita)",
       "dcid": "Count_Person_Literate_AsAFractionOf_Count_Person"
     },
     {
       "name": "Population: Male (As Fraction of Count Person Female)",
       "dcid": "Count_Person_Male_AsAFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "Population: Noninstitutionalized Group Quarters \u0026 Institutionalized Group Quarters (Per Capita)",
+      "dcid": "Count_Person_ResidesInNoninstitutionalizedGroupQuartersOrInstitutionalizedGroupQuarters_AsAFractionOf_Count_Person"
     },
     {
       "name": "Population: Not in Labor Force (As Fraction of Count Person in Labor Force)",
@@ -3971,34 +3999,6 @@
     {
       "name": "Population: 0 - 4 Years, Not Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
       "dcid": "Count_Person_0To4Years_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
-    },
-    {
-      "name": "Population: 0 - 4 Years, Not Hispanic or Latino \u0026 Asian Alone",
-      "dcid": "Count_Person_0To4Years_NotHispanicOrLatino_AsianAlone"
-    },
-    {
-      "name": "Population: 0 - 4 Years, Not Hispanic or Latino \u0026 Asian Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_0To4Years_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 0 - 4 Years, Not Hispanic or Latino \u0026 Asian or Pacific Islander",
-      "dcid": "Count_Person_0To4Years_NotHispanicOrLatino_AsianOrPacificIslander"
-    },
-    {
-      "name": "Population: 0 - 4 Years, Not Hispanic or Latino \u0026 Black or African American Alone",
-      "dcid": "Count_Person_0To4Years_NotHispanicOrLatino_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Population: 0 - 4 Years, Not Hispanic or Latino \u0026 Black or African American Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_0To4Years_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 0 - 4 Years, Not Hispanic or Latino \u0026 Native Hawaiian And Other Pacific Islander Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_0To4Years_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 0 - 4 Years, Not Hispanic or Latino \u0026 Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_0To4Years_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
     }
   ],
   "matches": [
