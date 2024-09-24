@@ -14,18 +14,7 @@
         }
       }
     },
-    "bio/hs": {
-      "arcs": {
-        "name": {
-          "nodes": [
-            {
-              "provenanceId": "dc/base/Species",
-              "value": "HomoSapiens"
-            }
-          ]
-        }
-      }
-    },
+    "bio/hs": {},
     "geoId/06": {
       "arcs": {
         "name": {

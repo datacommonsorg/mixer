@@ -109,6 +109,10 @@
       "dcid": "Count_BirthEvent_Female"
     },
     {
+      "name": "Count of Medical Condition Incident: Female Non Ves Genital Ulcer",
+      "dcid": "Count_MedicalConditionIncident_ConditionFemaleNonVesGenitalUlcer"
+    },
+    {
       "name": "Count of Mortality Event: Female",
       "dcid": "Count_Death_Female"
     },
@@ -3995,10 +3999,6 @@
     {
       "name": "Disease burden (number of disability-adjusted life years, DALYs) [Cleft lip and cleft palate, Female]",
       "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE142__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Collective violence and legal intervention, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE163__SEX--F"
     }
   ],
   "matches": [
