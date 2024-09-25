@@ -2,77 +2,9 @@
   "by_variable": {
     "Count_Person_Female": {
       "by_entity": {
-        "wikidataId/Q187712": {
-          "ordered_facets": [
-            {
-              "facet_id": "2951211044",
-              "observations": [
-                {
-                  "date": "1975",
-                  "value": 56754
-                },
-                {
-                  "date": "1980",
-                  "value": 120160
-                },
-                {
-                  "date": "1985",
-                  "value": 185783
-                },
-                {
-                  "date": "1995",
-                  "value": 291719
-                },
-                {
-                  "date": "2005",
-                  "value": 472665
-                }
-              ],
-              "obs_count": 5,
-              "earliest_date": "1975",
-              "latest_date": "2005"
-            }
-          ]
-        },
-        "wikidataId/Q613": {
-          "ordered_facets": [
-            {
-              "facet_id": "2951211044",
-              "observations": [
-                {
-                  "date": "1975",
-                  "value": 54366
-                },
-                {
-                  "date": "1980",
-                  "value": 88587
-                },
-                {
-                  "date": "1985",
-                  "value": 123609
-                },
-                {
-                  "date": "1995",
-                  "value": 211211
-                },
-                {
-                  "date": "2005",
-                  "value": 332148
-                }
-              ],
-              "obs_count": 5,
-              "earliest_date": "1975",
-              "latest_date": "2005"
-            }
-          ]
-        }
+        "wikidataId/Q187712": {},
+        "wikidataId/Q613": {}
       }
-    }
-  },
-  "facets": {
-    "2951211044": {
-      "import_name": "UAE_Population",
-      "provenance_url": "https://admin.bayanat.ae/Dataset/DownloadDatasetResource?fileId=26585eaf-9a9c-486d-b773-fc51ef0204c9&resourceID=11243"
     }
   }
 }

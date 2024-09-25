@@ -482,6 +482,11 @@
         "id": "dc/g/Village",
         "specializedEntity": "Village",
         "displayName": "Village"
+      },
+      {
+        "id": "dc/g/Person_VulnerabilityStatus",
+        "specializedEntity": "Vulnerability Status",
+        "displayName": "Person by Vulnerability Status"
       }
     ],
     "descendentStatVarCount": 4549,

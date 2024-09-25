@@ -11097,6 +11097,15 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Waterford",
+          "types": [
+            "AdministrativeArea1",
+            "City"
+          ],
+          "dcid": "wikidataId/Q183551",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
           "name": "Luxembourg",
           "types": [
             "AdministrativeArea1",
@@ -11675,15 +11684,6 @@
             "City"
           ],
           "dcid": "wikidataId/Q2280",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Nakhchivan",
-          "types": [
-            "AdministrativeArea1",
-            "City"
-          ],
-          "dcid": "wikidataId/Q230104",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
