@@ -36,6 +36,10 @@ NEW_ENDPOINTS = [
     # Use mode "new" to run only these.
 ]
 
+# How many characters of response data to print to the console when showing
+# two responses that have a diff.
+MAX_OUTPUT_CHARS = 1000
+
 
 class bcolors:
   HEADER = '\033[95m'
@@ -63,8 +67,8 @@ def get_response_data(response):
 def get_formatted_response(response):
   if is_json(response):
     formatted = json.dumps(response.json(), indent=2).replace("\n", "\n  ")
-    if len(formatted) > 1000:
-      formatted = formatted[:1000] + f"...<{len(formatted) - 1000} chars omitted>"
+    if len(formatted) > MAX_OUTPUT_CHARS:
+      formatted = formatted[:MAX_OUTPUT_CHARS] + f"...<{len(formatted) - MAX_OUTPUT_CHARS} chars omitted>"
     return formatted
   else:
     size = len(response.content)
@@ -80,6 +84,7 @@ def compare_responses(endpoint, use_api_key, method="GET", params=None):
       req_params = {} if params is None else copy.deepcopy(params)
       if use_api_key:
         if args.endpoints == "nl":
+          # Bard API key param name is different for legacy reasons.
           req_params['apikey'] = args.api_key
         else:
           req_params['key'] = args.api_key
@@ -179,7 +184,8 @@ if __name__ == "__main__":
       description="Compare API responses between two domains with an API key.")
   parser.add_argument(
       "endpoints",
-      help="Which set of endpoints to test. Values are 'mixer', 'nl', or 'new'."
+      help=
+      "Which set of endpoints to test. Values are 'mixer' for mixer_api_requests.py, 'nl' for nl_api_requests.py, or 'new' for the array at the top of the file."
   )
   parser.add_argument("current_domain",
                       help="The domain to use as a source of truth")

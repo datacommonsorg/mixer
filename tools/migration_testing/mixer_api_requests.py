@@ -12,6 +12,9 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
+# Test cases for the Mixer API, currently hosted at
+# api.datacommons.org and staging.api.datacommons.org.
+
 import json
 
 

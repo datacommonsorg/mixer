@@ -12,6 +12,10 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
+# Test cases for the NL API, currently hosted at
+# bard.datacommons.org, staging.bard.datacommons.org,
+# nl.datacommons.org, and staging.nl.datacommons.org
+
 ENDPOINTS = [
     ("/version", ["GET"], {}),
     ("/nodejs/query", ["GET"], {}),
