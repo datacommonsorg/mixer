@@ -31,7 +31,7 @@ type Equation struct {
 	formula  string
 }
 
-// / Computes a calculation for a variable and entity, based on a formula and input data.
+// Computes a calculation for a variable and entity, based on a formula and input data.
 func Calculate(
 	ctx context.Context,
 	store *store.Store,
