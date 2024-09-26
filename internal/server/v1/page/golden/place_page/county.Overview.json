@@ -18905,7 +18905,8 @@
             "importName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
             "provenanceUrl": "https://gaftp.epa.gov/EJSCREEN/",
             "observationPeriod": "P1Y",
-            "unit": "MicrogramsPerCubicMeter"
+            "unit": "MicrogramsPerCubicMeter",
+            "isDcAggregate": true
           }
         },
         "Median_Age_Person": {

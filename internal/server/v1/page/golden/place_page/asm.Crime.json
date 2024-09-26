@@ -174,7 +174,8 @@
           "metadata": {
             "importName": "FBIGovCrime_AggCountry",
             "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "isDcAggregate": true
           }
         },
         "Count_CriminalActivities_PropertyCrime": {
@@ -197,7 +198,8 @@
           "metadata": {
             "importName": "FBIGovCrime_AggCountry",
             "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "isDcAggregate": true
           }
         },
         "Count_CriminalActivities_ViolentCrime": {
@@ -220,7 +222,8 @@
           "metadata": {
             "importName": "FBIGovCrime_AggCountry",
             "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "isDcAggregate": true
           }
         },
         "Count_CriminalIncidents_BiasMotivationDisabilityStatus_IsHateCrime": {

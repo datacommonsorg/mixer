@@ -2296,7 +2296,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Household_IncomeOf100000To124999USDollar": {
@@ -2317,7 +2318,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Household_IncomeOf10000To14999USDollar": {
@@ -2338,7 +2340,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Household_IncomeOf125000To149999USDollar": {
@@ -2359,7 +2362,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Household_IncomeOf150000To199999USDollar": {
@@ -2380,7 +2384,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Household_IncomeOf200000OrMoreUSDollar": {
@@ -2401,7 +2406,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Household_IncomeOf20000To24999USDollar": {
@@ -2422,7 +2428,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Household_IncomeOf40000To44999USDollar": {
@@ -2443,7 +2450,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Household_IncomeOf50000To59999USDollar": {
@@ -2464,7 +2472,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Household_IncomeOf60000To74999USDollar": {
@@ -2485,7 +2494,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Household_IncomeOf75000To99999USDollar": {
@@ -2506,7 +2516,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Household_IncomeOfUpto10000USDollar": {
@@ -2527,7 +2538,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person": {
@@ -2681,7 +2693,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {
@@ -2743,7 +2756,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_BelowPovertyLevelInThePast12Months": {
@@ -2764,7 +2778,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_Employed": {
@@ -4645,7 +4660,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_IncomeOf15000To24999USDollar": {
@@ -4666,7 +4682,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_IncomeOf25000To34999USDollar": {
@@ -4687,7 +4704,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_IncomeOf35000To49999USDollar": {
@@ -4708,7 +4726,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_IncomeOf50000To64999USDollar": {
@@ -4729,7 +4748,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_IncomeOf65000To74999USDollar": {
@@ -4750,7 +4770,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_IncomeOf75000OrMoreUSDollar": {
@@ -4771,7 +4792,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_IncomeOfUpto9999USDollar": {
@@ -4792,7 +4814,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_UnemploymentInsuranceClaim_StateUnemploymentInsurance": {
@@ -6840,7 +6863,8 @@
             "importName": "USDOL_ETA539",
             "provenanceUrl": "https://oui.doleta.gov/unemploy/",
             "measurementMethod": "BLSSeasonallyUnadjusted",
-            "observationPeriod": "P1W"
+            "observationPeriod": "P1W",
+            "isDcAggregate": true
           }
         },
         "GrowthRate_Amount_EconomicActivity_GrossDomesticProduction": {

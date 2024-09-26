@@ -18909,7 +18909,8 @@
             "importName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
             "provenanceUrl": "https://gaftp.epa.gov/EJSCREEN/",
             "observationPeriod": "P1Y",
-            "unit": "MicrogramsPerCubicMeter"
+            "unit": "MicrogramsPerCubicMeter",
+            "isDcAggregate": true
           }
         },
         "Median_Age_Person": {
@@ -24206,7 +24207,8 @@
             "importName": "USDOL_ETA539",
             "provenanceUrl": "https://oui.doleta.gov/unemploy/",
             "measurementMethod": "BLSSeasonallyUnadjusted",
-            "observationPeriod": "P1W"
+            "observationPeriod": "P1W",
+            "isDcAggregate": true
           }
         },
         "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase": {
@@ -26791,7 +26793,8 @@
             "importName": "CDC500_States",
             "provenanceUrl": "https://www.cdc.gov/places/index.html",
             "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "isDcAggregate": true
           }
         },
         "Percent_Person_Obesity": {
@@ -26808,7 +26811,8 @@
             "importName": "CDC500_States",
             "provenanceUrl": "https://www.cdc.gov/places/index.html",
             "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "isDcAggregate": true
           }
         },
         "Percent_Person_PhysicalInactivity": {
@@ -26825,7 +26829,8 @@
             "importName": "CDC500_States",
             "provenanceUrl": "https://www.cdc.gov/places/index.html",
             "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "isDcAggregate": true
           }
         },
         "Percent_Person_SleepLessThan7Hours": {
@@ -26839,7 +26844,8 @@
             "importName": "CDC500_States",
             "provenanceUrl": "https://www.cdc.gov/places/index.html",
             "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "isDcAggregate": true
           }
         },
         "Percent_Person_Smoking": {
@@ -26856,7 +26862,8 @@
             "importName": "CDC500_States",
             "provenanceUrl": "https://www.cdc.gov/places/index.html",
             "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "isDcAggregate": true
           }
         },
         "Percent_Person_WithArthritis": {
@@ -26873,7 +26880,8 @@
             "importName": "CDC500_States",
             "provenanceUrl": "https://www.cdc.gov/places/index.html",
             "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "isDcAggregate": true
           }
         },
         "Percent_Person_WithHighBloodPressure": {
@@ -26888,7 +26896,8 @@
             "importName": "CDC500_States",
             "provenanceUrl": "https://www.cdc.gov/places/index.html",
             "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "isDcAggregate": true
           }
         },
         "Percent_Person_WithHighCholesterol": {
@@ -26903,7 +26912,8 @@
             "importName": "CDC500_States",
             "provenanceUrl": "https://www.cdc.gov/places/index.html",
             "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "isDcAggregate": true
           }
         },
         "Percent_Person_WithMentalHealthNotGood": {
@@ -26920,7 +26930,8 @@
             "importName": "CDC500_States",
             "provenanceUrl": "https://www.cdc.gov/places/index.html",
             "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "isDcAggregate": true
           }
         },
         "Percent_Person_WithPhysicalHealthNotGood": {
@@ -26937,7 +26948,8 @@
             "importName": "CDC500_States",
             "provenanceUrl": "https://www.cdc.gov/places/index.html",
             "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "isDcAggregate": true
           }
         },
         "RetailDrugDistribution_DrugDistribution_Amphetamine": {
@@ -26995,7 +27007,8 @@
             "importName": "DEA_ARCOS_AggState",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
             "observationPeriod": "P3M",
-            "unit": "Grams"
+            "unit": "Grams",
+            "isDcAggregate": true
           }
         },
         "RetailDrugDistribution_DrugDistribution_Codeine": {
@@ -27053,7 +27066,8 @@
             "importName": "DEA_ARCOS_AggState",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
             "observationPeriod": "P3M",
-            "unit": "Grams"
+            "unit": "Grams",
+            "isDcAggregate": true
           }
         },
         "RetailDrugDistribution_DrugDistribution_Hydrocodone": {
@@ -27111,7 +27125,8 @@
             "importName": "DEA_ARCOS_AggState",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
             "observationPeriod": "P3M",
-            "unit": "Grams"
+            "unit": "Grams",
+            "isDcAggregate": true
           }
         },
         "RetailDrugDistribution_DrugDistribution_Morphine": {
@@ -27169,7 +27184,8 @@
             "importName": "DEA_ARCOS_AggState",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
             "observationPeriod": "P3M",
-            "unit": "Grams"
+            "unit": "Grams",
+            "isDcAggregate": true
           }
         },
         "RetailDrugDistribution_DrugDistribution_Oxycodone": {
@@ -27227,7 +27243,8 @@
             "importName": "DEA_ARCOS_AggState",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
             "observationPeriod": "P3M",
-            "unit": "Grams"
+            "unit": "Grams",
+            "isDcAggregate": true
           }
         },
         "UnemploymentRate_Person": {
@@ -31602,7 +31619,8 @@
             "importName": "USDOL_ETA539",
             "provenanceUrl": "https://oui.doleta.gov/unemploy/",
             "measurementMethod": "BLSSeasonallyUnadjusted",
-            "observationPeriod": "P1W"
+            "observationPeriod": "P1W",
+            "isDcAggregate": true
           }
         },
         "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase": {
@@ -34099,7 +34117,8 @@
             "importName": "DEA_ARCOS_AggState",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
             "observationPeriod": "P3M",
-            "unit": "Grams"
+            "unit": "Grams",
+            "isDcAggregate": true
           }
         },
         "RetailDrugDistribution_DrugDistribution_Codeine": {
@@ -34157,7 +34176,8 @@
             "importName": "DEA_ARCOS_AggState",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
             "observationPeriod": "P3M",
-            "unit": "Grams"
+            "unit": "Grams",
+            "isDcAggregate": true
           }
         },
         "RetailDrugDistribution_DrugDistribution_Hydrocodone": {
@@ -34215,7 +34235,8 @@
             "importName": "DEA_ARCOS_AggState",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
             "observationPeriod": "P3M",
-            "unit": "Grams"
+            "unit": "Grams",
+            "isDcAggregate": true
           }
         },
         "RetailDrugDistribution_DrugDistribution_Morphine": {
@@ -34273,7 +34294,8 @@
             "importName": "DEA_ARCOS_AggState",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
             "observationPeriod": "P3M",
-            "unit": "Grams"
+            "unit": "Grams",
+            "isDcAggregate": true
           }
         },
         "RetailDrugDistribution_DrugDistribution_Oxycodone": {
@@ -34331,7 +34353,8 @@
             "importName": "DEA_ARCOS_AggState",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
             "observationPeriod": "P3M",
-            "unit": "Grams"
+            "unit": "Grams",
+            "isDcAggregate": true
           }
         },
         "UnemploymentRate_Person": {

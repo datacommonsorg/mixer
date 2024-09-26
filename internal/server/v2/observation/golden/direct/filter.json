@@ -5,7 +5,7 @@
         "country/USA": {
           "ordered_facets": [
             {
-              "facet_id": "1151455814",
+              "facet_id": "3514198484",
               "observations": [
                 {
                   "date": "2022",
@@ -22,7 +22,7 @@
     }
   },
   "facets": {
-    "1151455814": {
+    "3514198484": {
       "import_name": "OECDRegionalDemography",
       "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
       "measurement_method": "OECDRegionalStatistics",
