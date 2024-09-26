@@ -5,15 +5,10 @@
   <PreFlow name="PreFlow">
     <Request>
       <Step>
-        <Condition>(request.header.x-api-key = null) and (request.queryparam.apikey != null)</Condition>
-        <Name>copy-apikey-param-to-header</Name>
+        <Name>verify-api-key-in-param</Name>
       </Step>
       <Step>
-        <Condition>(request.header.x-api-key = null) and (request.queryparam.key != null)</Condition>
-        <Name>copy-key-param-to-header</Name>
-      </Step>
-      <Step>
-        <Name>verify-api-key-in-header</Name>
+        <Name>forward-host</Name>
       </Step>
     </Request>
     <Response/>
