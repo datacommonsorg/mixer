@@ -946,7 +946,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person": {
@@ -1137,7 +1138,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_15To19Years": {
@@ -1195,7 +1197,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_20To24Years": {
@@ -1290,7 +1293,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_30To34Years": {
@@ -1385,7 +1389,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_40To44Years": {
@@ -1480,7 +1485,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_50To54Years": {
@@ -1538,7 +1544,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_5To17Years": {
@@ -1559,7 +1566,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_5To9Years": {
@@ -1617,7 +1625,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_60To64Years": {
@@ -1675,7 +1684,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_65To69Years": {
@@ -1733,7 +1743,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_70To74Years": {
@@ -1791,7 +1802,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_75To79Years": {
@@ -1886,7 +1898,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_AsianAlone": {
@@ -1907,7 +1920,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_BlackOrAfricanAmericanAlone": {
@@ -1928,7 +1942,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_Divorced": {
@@ -1949,7 +1964,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_Female": {
@@ -1970,7 +1986,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_HispanicOrLatino": {
@@ -1991,7 +2008,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_Male": {
@@ -2012,7 +2030,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_MarriedAndNotSeparated": {
@@ -2033,7 +2052,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
@@ -2054,7 +2074,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_NeverMarried": {
@@ -2075,7 +2096,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_NotAUSCitizen": {
@@ -2096,7 +2118,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_PerArea": {
@@ -2222,7 +2245,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_SomeOtherRaceAlone": {
@@ -2243,7 +2267,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_TwoOrMoreRaces": {
@@ -2264,7 +2289,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_USCitizenBornAbroadOfAmericanParents": {
@@ -2285,7 +2311,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_USCitizenBornInTheUnitedStates": {
@@ -2306,7 +2333,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_USCitizenByNaturalization": {
@@ -2327,7 +2355,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_Upto4Years": {
@@ -2458,7 +2487,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_Widowed": {
@@ -2479,7 +2509,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "FertilityRate_Person_Female": {

@@ -17,7 +17,8 @@
             "importName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
             "provenanceUrl": "https://gaftp.epa.gov/EJSCREEN/",
             "observationPeriod": "P1Y",
-            "unit": "PerMillionPerson"
+            "unit": "PerMillionPerson",
+            "isDcAggregate": true
           }
         },
         "AirQualityIndex_AirPollutant": {
@@ -15572,7 +15573,8 @@
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
             "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
-            "unit": "MetricTonCO2e"
+            "unit": "MetricTonCO2e",
+            "isDcAggregate": true
           }
         },
         "Annual_Emissions_GreenhouseGas_NonBiogenic": {
@@ -15595,7 +15597,8 @@
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
             "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
-            "unit": "MetricTonCO2e"
+            "unit": "MetricTonCO2e",
+            "isDcAggregate": true
           }
         },
         "Annual_Emissions_Methane_NonBiogenic": {
@@ -15618,7 +15621,8 @@
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
             "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
-            "unit": "MetricTonCO2e"
+            "unit": "MetricTonCO2e",
+            "isDcAggregate": true
           }
         },
         "Annual_Emissions_NitrousOxide_NonBiogenic": {
@@ -15641,7 +15645,8 @@
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
             "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
-            "unit": "MetricTonCO2e"
+            "unit": "MetricTonCO2e",
+            "isDcAggregate": true
           }
         },
         "Count_EarthquakeEvent": {
@@ -15710,7 +15715,8 @@
           "metadata": {
             "importName": "EarthquakeUSGS_Agg",
             "provenanceUrl": "https://earthquake.usgs.gov/",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "isDcAggregate": true
           }
         },
         "Count_Person": {
@@ -16900,7 +16906,8 @@
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
             "measurementMethod": "NASA_Mean_CCSM4",
             "observationPeriod": "P1M",
-            "unit": "Celsius"
+            "unit": "Celsius",
+            "isDcAggregate": true
           }
         },
         "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP45": {
@@ -18027,7 +18034,8 @@
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
             "measurementMethod": "NASA_Mean_CCSM4",
             "observationPeriod": "P1M",
-            "unit": "Celsius"
+            "unit": "Celsius",
+            "isDcAggregate": true
           }
         },
         "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP60": {
@@ -19154,7 +19162,8 @@
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
             "measurementMethod": "NASA_Mean_CCSM4",
             "observationPeriod": "P1M",
-            "unit": "Celsius"
+            "unit": "Celsius",
+            "isDcAggregate": true
           }
         },
         "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP85": {
@@ -20281,7 +20290,8 @@
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-dcp30",
             "measurementMethod": "NASA_Mean_CCSM4",
             "observationPeriod": "P1M",
-            "unit": "Celsius"
+            "unit": "Celsius",
+            "isDcAggregate": true
           }
         },
         "Mean_Concentration_AirPollutant_DieselPM": {
@@ -20299,7 +20309,8 @@
             "importName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
             "provenanceUrl": "https://gaftp.epa.gov/EJSCREEN/",
             "observationPeriod": "P1Y",
-            "unit": "MicrogramsPerCubicMeter"
+            "unit": "MicrogramsPerCubicMeter",
+            "isDcAggregate": true
           }
         },
         "Mean_Concentration_AirPollutant_Ozone": {
@@ -20318,7 +20329,8 @@
             "importName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
             "provenanceUrl": "https://gaftp.epa.gov/EJSCREEN/",
             "observationPeriod": "P1Y",
-            "unit": "PartsPerBillion"
+            "unit": "PartsPerBillion",
+            "isDcAggregate": true
           }
         },
         "Mean_Concentration_AirPollutant_PM2.5": {
@@ -20337,7 +20349,8 @@
             "importName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
             "provenanceUrl": "https://gaftp.epa.gov/EJSCREEN/",
             "observationPeriod": "P1Y",
-            "unit": "MicrogramsPerCubicMeter"
+            "unit": "MicrogramsPerCubicMeter",
+            "isDcAggregate": true
           }
         },
         "PalmerDroughtSeverityIndex_Atmosphere": {
@@ -21854,7 +21867,8 @@
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
             "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
-            "unit": "MetricTonCO2e"
+            "unit": "MetricTonCO2e",
+            "isDcAggregate": true
           }
         },
         "Annual_Emissions_GreenhouseGas_NonBiogenic": {
@@ -21877,7 +21891,8 @@
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
             "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
-            "unit": "MetricTonCO2e"
+            "unit": "MetricTonCO2e",
+            "isDcAggregate": true
           }
         },
         "Annual_Emissions_Methane_NonBiogenic": {
@@ -21900,7 +21915,8 @@
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
             "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
-            "unit": "MetricTonCO2e"
+            "unit": "MetricTonCO2e",
+            "isDcAggregate": true
           }
         },
         "Annual_Emissions_NitrousOxide_NonBiogenic": {
@@ -21923,7 +21939,8 @@
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
             "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
-            "unit": "MetricTonCO2e"
+            "unit": "MetricTonCO2e",
+            "isDcAggregate": true
           }
         },
         "Count_CycloneEvent": {
@@ -22063,7 +22080,8 @@
           "metadata": {
             "importName": "CycloneNOAA_Stats",
             "provenanceUrl": "https://www.ncei.noaa.gov/products/international-best-track-archive",
-            "observationPeriod": "P1M"
+            "observationPeriod": "P1M",
+            "isDcAggregate": true
           }
         },
         "Count_EarthquakeEvent": {
@@ -22078,7 +22096,8 @@
           "metadata": {
             "importName": "EarthquakeUSGS_Agg",
             "provenanceUrl": "https://earthquake.usgs.gov/",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "isDcAggregate": true
           }
         },
         "Count_Person": {
@@ -22255,7 +22274,8 @@
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
             "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
-            "unit": "MetricTonCO2e"
+            "unit": "MetricTonCO2e",
+            "isDcAggregate": true
           }
         },
         "Annual_Emissions_GreenhouseGas_NonBiogenic": {
@@ -22278,7 +22298,8 @@
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
             "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
-            "unit": "MetricTonCO2e"
+            "unit": "MetricTonCO2e",
+            "isDcAggregate": true
           }
         },
         "Annual_Emissions_Methane_NonBiogenic": {
@@ -22301,7 +22322,8 @@
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
             "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
-            "unit": "MetricTonCO2e"
+            "unit": "MetricTonCO2e",
+            "isDcAggregate": true
           }
         },
         "Annual_Emissions_NitrousOxide_NonBiogenic": {
@@ -22324,7 +22346,8 @@
             "provenanceUrl": "https://www.epa.gov/ghgreporting",
             "measurementMethod": "EPA_GHGRP",
             "observationPeriod": "P1Y",
-            "unit": "MetricTonCO2e"
+            "unit": "MetricTonCO2e",
+            "isDcAggregate": true
           }
         },
         "Count_EarthquakeEvent": {
@@ -22361,7 +22384,8 @@
           "metadata": {
             "importName": "EarthquakeUSGS_Agg",
             "provenanceUrl": "https://earthquake.usgs.gov/",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "isDcAggregate": true
           }
         },
         "Count_Person": {

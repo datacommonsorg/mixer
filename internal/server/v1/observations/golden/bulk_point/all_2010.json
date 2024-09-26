@@ -12,32 +12,32 @@
             {
               "date": "2010",
               "value": 64658856,
-              "facet": "858679853"
+              "facet": "1856007443"
             },
             {
               "date": "2010",
               "value": 65030575,
-              "facet": "3981252704"
+              "facet": "837900406"
             },
             {
               "date": "2010",
               "value": 64658900,
-              "facet": "1151455814"
+              "facet": "3514198484"
             },
             {
               "date": "2010",
               "value": 64658856,
-              "facet": "4089091283"
+              "facet": "2496338593"
             },
             {
               "date": "2010",
               "value": 64612939,
-              "facet": "738965619"
+              "facet": "3771313473"
             },
             {
               "date": "2010",
               "value": 65023142,
-              "facet": "2458695583"
+              "facet": "4071544381"
             }
           ]
         },
@@ -47,47 +47,47 @@
             {
               "date": "2010",
               "value": 309327143,
-              "facet": "2176550201"
+              "facet": "2782870351"
             },
             {
               "date": "2010",
               "value": 308745538,
-              "facet": "1541763368"
+              "facet": "2879689438"
             },
             {
               "date": "2010",
               "value": 309327143,
-              "facet": "3981252704"
+              "facet": "837900406"
             },
             {
               "date": "2010",
               "value": 309322000,
-              "facet": "1151455814"
+              "facet": "3514198484"
             },
             {
               "date": "2010",
               "value": 303965272,
-              "facet": "10983471"
+              "facet": "3324054765"
             },
             {
               "date": "2010",
               "value": 303965272,
-              "facet": "1964317807"
+              "facet": "1334978221"
             },
             {
               "date": "2010",
               "value": 308745538,
-              "facet": "2825511676"
+              "facet": "1827834578"
             },
             {
               "date": "2010",
               "value": 309326085,
-              "facet": "2517965213"
+              "facet": "3043065123"
             },
             {
               "date": "2010",
               "value": 309349689,
-              "facet": "1226172227"
+              "facet": "3621147761"
             }
           ]
         },
@@ -97,42 +97,42 @@
             {
               "date": "2010",
               "value": 37319550,
-              "facet": "2176550201"
+              "facet": "2782870351"
             },
             {
               "date": "2010",
               "value": 37253956,
-              "facet": "1541763368"
+              "facet": "2879689438"
             },
             {
               "date": "2010",
               "value": 37319500,
-              "facet": "1151455814"
+              "facet": "3514198484"
             },
             {
               "date": "2010",
               "value": 36637290,
-              "facet": "10983471"
+              "facet": "3324054765"
             },
             {
               "date": "2010",
               "value": 36637290,
-              "facet": "1964317807"
+              "facet": "1334978221"
             },
             {
               "date": "2010",
               "value": 37253956,
-              "facet": "2825511676"
+              "facet": "1827834578"
             },
             {
               "date": "2010",
               "value": 37266600,
-              "facet": "2517965213"
+              "facet": "3043065123"
             },
             {
               "date": "2010",
               "value": 37349363,
-              "facet": "1226172227"
+              "facet": "3621147761"
             }
           ]
         },
@@ -142,32 +142,32 @@
             {
               "date": "2010",
               "value": 73759,
-              "facet": "2176550201"
+              "facet": "2782870351"
             },
             {
               "date": "2010",
               "value": 74066,
-              "facet": "1541763368"
+              "facet": "2879689438"
             },
             {
               "date": "2010",
               "value": 72510,
-              "facet": "1964317807"
+              "facet": "1334978221"
             },
             {
               "date": "2010",
               "value": 74320,
-              "facet": "1226172227"
+              "facet": "3621147761"
             },
             {
               "date": "2010",
               "value": 74227,
-              "facet": "2517965213"
+              "facet": "3043065123"
             },
             {
               "date": "2010",
               "value": 74066,
-              "facet": "2458695583"
+              "facet": "4071544381"
             }
           ]
         }
@@ -188,7 +188,7 @@
             {
               "date": "2010",
               "value": 10292375,
-              "facet": "2343540064"
+              "facet": "3051661419"
             }
           ]
         },
@@ -198,7 +198,7 @@
             {
               "date": "2010",
               "value": 1146072,
-              "facet": "4277990144"
+              "facet": "257807766"
             }
           ]
         },
@@ -208,7 +208,7 @@
             {
               "date": "2010",
               "value": 1633,
-              "facet": "4277990144"
+              "facet": "257807766"
             }
           ]
         }
@@ -226,7 +226,7 @@
             {
               "date": "2010",
               "value": 36730,
-              "facet": "2171028778"
+              "facet": "2070878104"
             }
           ]
         },
@@ -236,7 +236,7 @@
             {
               "date": "2010",
               "value": 49050,
-              "facet": "2171028778"
+              "facet": "2070878104"
             }
           ]
         },
@@ -250,111 +250,113 @@
     }
   ],
   "facets": {
-    "10983471": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
-    },
-    "1145703171": {
-      "import_name": "CensusACS5YearSurvey",
-      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-      "measurement_method": "CensusACS5yrSurvey"
-    },
-    "1151455814": {
-      "import_name": "OECDRegionalDemography",
-      "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
-      "measurement_method": "OECDRegionalStatistics",
-      "observation_period": "P1Y"
-    },
-    "1226172227": {
-      "import_name": "CensusACS1YearSurvey",
-      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-      "measurement_method": "CensusACS1yrSurvey"
-    },
-    "1273233945": {
-      "import_name": "CensusACS5YearSurvey_AggCountry",
-      "provenance_url": "https://www.census.gov/",
-      "measurement_method": "CensusACS5yrSurvey"
-    },
-    "1456184638": {
-      "import_name": "WikipediaStatsData",
-      "provenance_url": "https://www.wikipedia.org",
-      "measurement_method": "Wikipedia"
-    },
-    "1541763368": {
-      "import_name": "USDecennialCensus_RedistrictingRelease",
-      "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
-      "measurement_method": "USDecennialCensus"
-    },
-    "1964317807": {
+    "1334978221": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
       "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
-    "196790193": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    "1827834578": {
+      "import_name": "CDC_Mortality_UnderlyingCause",
+      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
     },
-    "2171028778": {
+    "1856007443": {
+      "import_name": "EurostatData",
+      "provenance_url": "https://ec.europa.eu/eurostat/data/database",
+      "measurement_method": "EurostatRegionalPopulationData"
+    },
+    "2070878104": {
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y",
       "unit": "InternationalDollar"
     },
-    "217147238": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    "2496338593": {
+      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
+      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true"
     },
-    "2176550201": {
+    "257807766": {
+      "import_name": "FBIGovCrime",
+      "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
+      "observation_period": "P1Y"
+    },
+    "2782870351": {
       "import_name": "USCensusPEP_Annual_Population",
       "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
       "measurement_method": "CensusPEPSurvey",
       "observation_period": "P1Y"
     },
-    "2343540064": {
-      "import_name": "FBIGovCrime_AggCountry",
-      "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
-      "observation_period": "P1Y"
+    "2879689438": {
+      "import_name": "USDecennialCensus_RedistrictingRelease",
+      "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+      "measurement_method": "USDecennialCensus"
     },
-    "2458695583": {
-      "import_name": "WikidataPopulation",
-      "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
-      "measurement_method": "WikidataPopulation"
+    "3021124620": {
+      "import_name": "WikipediaStatsData",
+      "provenance_url": "https://www.wikipedia.org",
+      "measurement_method": "Wikipedia"
     },
-    "2517965213": {
+    "3023639324": {
+      "import_name": "CensusACS5YearSurvey_AggCountry",
+      "provenance_url": "https://www.census.gov/",
+      "measurement_method": "CensusACS5yrSurvey",
+      "is_dc_aggregate": true
+    },
+    "3043065123": {
       "import_name": "CensusPEP",
       "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
       "measurement_method": "CensusPEPSurvey"
     },
-    "2825511676": {
-      "import_name": "CDC_Mortality_UnderlyingCause",
-      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
-    },
-    "3981252704": {
-      "import_name": "WorldDevelopmentIndicators",
-      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
-      "observation_period": "P1Y"
-    },
-    "4089091283": {
-      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
-      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true"
-    },
-    "4277990144": {
-      "import_name": "FBIGovCrime",
+    "3051661419": {
+      "import_name": "FBIGovCrime_AggCountry",
       "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
+      "observation_period": "P1Y",
+      "is_dc_aggregate": true
+    },
+    "323018599": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "3324054765": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "3514198484": {
+      "import_name": "OECDRegionalDemography",
+      "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+      "measurement_method": "OECDRegionalStatistics",
       "observation_period": "P1Y"
     },
-    "738965619": {
+    "3621147761": {
+      "import_name": "CensusACS1YearSurvey",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+      "measurement_method": "CensusACS1yrSurvey"
+    },
+    "3631676660": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "3771313473": {
       "import_name": "FranceINSEE",
       "provenance_url": "https://www.insee.fr/en/metadonnees/source/indicateur/p1667/description",
       "measurement_method": "FranceINSEE"
     },
-    "858679853": {
-      "import_name": "EurostatData",
-      "provenance_url": "https://ec.europa.eu/eurostat/data/database",
-      "measurement_method": "EurostatRegionalPopulationData"
+    "4071544381": {
+      "import_name": "WikidataPopulation",
+      "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+      "measurement_method": "WikidataPopulation"
+    },
+    "4235218097": {
+      "import_name": "CensusACS5YearSurvey",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+      "measurement_method": "CensusACS5yrSurvey"
+    },
+    "837900406": {
+      "import_name": "WorldDevelopmentIndicators",
+      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "observation_period": "P1Y"
     }
   }
 }

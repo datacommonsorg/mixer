@@ -4622,7 +4622,8 @@
             "importName": "DEA_ARCOS_AggState_AggCountry",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
             "observationPeriod": "P3M",
-            "unit": "Grams"
+            "unit": "Grams",
+            "isDcAggregate": true
           }
         },
         "RetailDrugDistribution_DrugDistribution_Codeine": {
@@ -4680,7 +4681,8 @@
             "importName": "DEA_ARCOS_AggState_AggCountry",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
             "observationPeriod": "P3M",
-            "unit": "Grams"
+            "unit": "Grams",
+            "isDcAggregate": true
           }
         },
         "RetailDrugDistribution_DrugDistribution_Hydrocodone": {
@@ -4738,7 +4740,8 @@
             "importName": "DEA_ARCOS_AggState_AggCountry",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
             "observationPeriod": "P3M",
-            "unit": "Grams"
+            "unit": "Grams",
+            "isDcAggregate": true
           }
         },
         "RetailDrugDistribution_DrugDistribution_Morphine": {
@@ -4796,7 +4799,8 @@
             "importName": "DEA_ARCOS_AggState_AggCountry",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
             "observationPeriod": "P3M",
-            "unit": "Grams"
+            "unit": "Grams",
+            "isDcAggregate": true
           }
         },
         "RetailDrugDistribution_DrugDistribution_Oxycodone": {
@@ -4854,7 +4858,8 @@
             "importName": "DEA_ARCOS_AggState_AggCountry",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
             "observationPeriod": "P3M",
-            "unit": "Grams"
+            "unit": "Grams",
+            "isDcAggregate": true
           }
         }
       }

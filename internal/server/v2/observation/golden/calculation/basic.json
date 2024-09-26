@@ -15,7 +15,7 @@
         "wikidataId/Q613": {
           "ordered_facets": [
             {
-              "facet_id": "409660979",
+              "facet_id": "3395834753",
               "observations": [
                 {
                   "date": "2022-06-10",
@@ -127,7 +127,7 @@
               "latest_date": "2022-09-16"
             },
             {
-              "facet_id": "263855571",
+              "facet_id": "3666238369",
               "observations": [
                 {
                   "date": "2022-06",
@@ -151,7 +151,7 @@
               "latest_date": "2022-09"
             },
             {
-              "facet_id": "341794991",
+              "facet_id": "3637940589",
               "observations": [
                 {
                   "date": "2022",
@@ -168,19 +168,19 @@
     }
   },
   "facets": {
-    "263855571": {
+    "3395834753": {
       "import_name": "WetBulbTemperatureEventPlaces_AutoRefresh",
-      "provenance_url": "https://datacommons.org/",
-      "observation_period": "P1M"
+      "provenance_url": "https://datacommons.org/"
     },
-    "341794991": {
+    "3637940589": {
       "import_name": "WetBulbTemperatureEventPlaces_AutoRefresh",
       "provenance_url": "https://datacommons.org/",
       "observation_period": "P1Y"
     },
-    "409660979": {
+    "3666238369": {
       "import_name": "WetBulbTemperatureEventPlaces_AutoRefresh",
-      "provenance_url": "https://datacommons.org/"
+      "provenance_url": "https://datacommons.org/",
+      "observation_period": "P1M"
     }
   }
 }

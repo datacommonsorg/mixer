@@ -474,7 +474,7 @@
                   "value": 29
                 }
               ],
-              "facet": "3614729857"
+              "facet": "2945682135"
             }
           ]
         },
@@ -693,7 +693,7 @@
                   "value": 38.2
                 }
               ],
-              "facet": "1565963938"
+              "facet": "4271430864"
             }
           ]
         },
@@ -940,7 +940,7 @@
                   "value": 38.5
                 }
               ],
-              "facet": "3357919774"
+              "facet": "1919321324"
             },
             {
               "series": [
@@ -949,7 +949,7 @@
                   "value": 38.5
                 }
               ],
-              "facet": "3795540742"
+              "facet": "4058303252"
             },
             {
               "series": [
@@ -1006,7 +1006,7 @@
                   "value": 38.5
                 }
               ],
-              "facet": "2763329611"
+              "facet": "1871225913"
             },
             {
               "series": [
@@ -1059,7 +1059,7 @@
                   "value": 38.4
                 }
               ],
-              "facet": "815809675"
+              "facet": "1481770745"
             },
             {
               "series": [
@@ -1084,7 +1084,7 @@
                   "value": 38.4
                 }
               ],
-              "facet": "3690003977"
+              "facet": "1308344191"
             },
             {
               "series": [
@@ -1109,7 +1109,7 @@
                   "value": 38.4
                 }
               ],
-              "facet": "4219092424"
+              "facet": "3468221182"
             }
           ]
         },
@@ -1165,50 +1165,50 @@
     }
   ],
   "facets": {
-    "1565963938": {
-      "import_name": "New_Zealand_Census",
-      "provenance_url": "https://www.stats.govt.nz/",
-      "unit": "Year"
-    },
-    "2763329611": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
-      "measurement_method": "CensusACS5yrSurveySubjectTable",
-      "unit": "Years"
-    },
-    "3357919774": {
-      "import_name": "CensusUSAMedianAgeIncome",
-      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-      "measurement_method": "CensusACS5yrSurvey",
-      "unit": "Year"
-    },
-    "3614729857": {
-      "import_name": "MexicoCensus",
-      "provenance_url": "https://www.inegi.org.mx/temas/"
-    },
-    "3690003977": {
+    "1308344191": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
     },
-    "3795540742": {
-      "import_name": "CensusACS5YearSurvey",
+    "1481770745": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "unit": "Years"
+    },
+    "1871225913": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "unit": "Years"
+    },
+    "1919321324": {
+      "import_name": "CensusUSAMedianAgeIncome",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS5yrSurvey",
       "unit": "Year"
     },
-    "4219092424": {
+    "2945682135": {
+      "import_name": "MexicoCensus",
+      "provenance_url": "https://www.inegi.org.mx/temas/"
+    },
+    "3468221182": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
     },
-    "815809675": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
-      "measurement_method": "CensusACS5yrSurveySubjectTable",
-      "unit": "Years"
+    "4058303252": {
+      "import_name": "CensusACS5YearSurvey",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+      "measurement_method": "CensusACS5yrSurvey",
+      "unit": "Year"
+    },
+    "4271430864": {
+      "import_name": "New_Zealand_Census",
+      "provenance_url": "https://www.stats.govt.nz/",
+      "unit": "Year"
     }
   }
 }
