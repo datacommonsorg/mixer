@@ -22,6 +22,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/formula"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -244,4 +245,35 @@ func evalExpr(
 	default:
 		return nil, fmt.Errorf("unsupported ast type %T", t)
 	}
+}
+
+func formatCalculatedResponse(
+	resp *pbv2.ObservationResponse,
+	equation *Equation,
+) error {
+	// Replace placeholder by final variable.
+	variableObs, ok := resp.ByVariable[INTERMEDIATE_NODE]
+	if !ok {
+		return fmt.Errorf("missing intermediate variable in intermediate response")
+	}
+	resp.ByVariable[equation.variable] = variableObs
+	delete(resp.ByVariable, INTERMEDIATE_NODE)
+
+	// Update Facets with IsDcAggregate=true.
+	newFacets := map[string]*pb.Facet{}
+	facetIdMap := map[string]string{}
+	for oldFacetId, oldFacet := range resp.Facets {
+		newFacet := oldFacet
+		newFacet.IsDcAggregate = true
+		newFacetId := util.GetFacetID(newFacet)
+		newFacets[newFacetId] = newFacet
+		facetIdMap[oldFacetId] = newFacetId
+	}
+	resp.Facets = newFacets
+	for _, entityObs := range resp.ByVariable[equation.variable].ByEntity {
+		for _, facetObs := range entityObs.OrderedFacets {
+			facetObs.FacetId = facetIdMap[facetObs.GetFacetId()]
+		}
+	}
+	return nil
 }
