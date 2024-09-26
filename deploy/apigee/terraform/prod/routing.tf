@@ -22,7 +22,8 @@ locals {
     },
     "matcher-api2" = {
       hostname = var.api2_hostname
-      prefix   = "/api/"
+      # prefix   = "/api/"
+      prefix   = "/bard/"
     },
     "matcher-bard" = {
       hostname = var.nl_internal_api_hostname
