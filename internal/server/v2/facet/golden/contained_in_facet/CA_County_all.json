@@ -23,6 +23,12 @@
               "latest_date": "2020"
             },
             {
+              "facet_id": "3180893303",
+              "obs_count": 58,
+              "earliest_date": "2010",
+              "latest_date": "2022"
+            },
+            {
               "facet_id": "1334978221",
               "obs_count": 58,
               "earliest_date": "2010",
@@ -119,6 +125,10 @@
       "import_name": "CensusPEP",
       "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
       "measurement_method": "CensusPEPSurvey"
+    },
+    "3180893303": {
+      "import_name": "CDC_Social_Vulnerability_Index",
+      "provenance_url": "https://www.atsdr.cdc.gov/placeandhealth/svi/data_documentation_download.html"
     },
     "3621147761": {
       "import_name": "CensusACS1YearSurvey",

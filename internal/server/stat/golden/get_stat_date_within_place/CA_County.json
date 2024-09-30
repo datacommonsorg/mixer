@@ -101,6 +101,20 @@
         {
           "date_place_count": {
             "2010": 58,
+            "2014": 58,
+            "2016": 58,
+            "2018": 58,
+            "2020": 58,
+            "2022": 58
+          },
+          "metadata": {
+            "import_name": "CDC_Social_Vulnerability_Index",
+            "provenance_url": "https://www.atsdr.cdc.gov/placeandhealth/svi/data_documentation_download.html"
+          }
+        },
+        {
+          "date_place_count": {
+            "2010": 58,
             "2011": 58,
             "2012": 58,
             "2013": 58,
