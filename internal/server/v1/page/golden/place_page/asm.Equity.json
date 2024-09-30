@@ -393,7 +393,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Male": {
@@ -414,7 +415,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_25To34Years_EducationalAttainmentBachelorsDegree_Female": {
@@ -435,7 +437,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_25To34Years_EducationalAttainmentBachelorsDegree_Male": {
@@ -456,7 +459,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Female": {
@@ -477,7 +481,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Male": {
@@ -498,7 +503,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_25To34Years_Female": {
@@ -519,7 +525,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_25To34Years_Male": {
@@ -540,7 +547,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_AmericanIndianOrAlaskaNativeAlone": {
@@ -561,7 +569,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_AsianAlone": {
@@ -582,7 +591,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_BelowPovertyLevelInThePast12Months_AmericanIndianOrAlaskaNativeAlone": {
@@ -603,7 +613,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_BelowPovertyLevelInThePast12Months_AsianAlone": {
@@ -624,7 +635,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_BelowPovertyLevelInThePast12Months_BlackOrAfricanAmericanAlone": {
@@ -645,7 +657,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_BelowPovertyLevelInThePast12Months_HispanicOrLatino": {
@@ -666,7 +679,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_BelowPovertyLevelInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone": {
@@ -687,7 +701,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_BelowPovertyLevelInThePast12Months_WhiteAlone": {
@@ -708,7 +723,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_BlackOrAfricanAmericanAlone": {
@@ -729,7 +745,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_Female": {
@@ -750,7 +767,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_Female_BelowPovertyLevelInThePast12Months": {
@@ -771,7 +789,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_HispanicOrLatino": {
@@ -792,7 +811,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_Male": {
@@ -813,7 +833,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_Male_BelowPovertyLevelInThePast12Months": {
@@ -834,7 +855,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
@@ -855,7 +877,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_WhiteAlone": {
@@ -876,7 +899,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "GiniIndex_EconomicActivity": {

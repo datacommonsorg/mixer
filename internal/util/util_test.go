@@ -371,3 +371,29 @@ func TestStringListIntersection(t *testing.T) {
 		}
 	}
 }
+
+func TestGetFacetID(t *testing.T) {
+	for _, c := range []struct {
+		facet *pb.Facet
+		want  string
+	}{
+		{
+			&pb.Facet{
+				ImportName: "test_import",
+			},
+			"2976395565",
+		},
+		{
+			&pb.Facet{
+				ImportName:    "test_import",
+				IsDcAggregate: true,
+			},
+			"4231502298",
+		},
+	} {
+		got := GetFacetID(c.facet)
+		if !reflect.DeepEqual(got, c.want) {
+			t.Errorf("GetFacetID(%v) = %v, want %v", c.facet, got, c.want)
+		}
+	}
+}

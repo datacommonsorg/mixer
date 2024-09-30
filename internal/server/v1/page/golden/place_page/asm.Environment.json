@@ -373,7 +373,8 @@
           "metadata": {
             "importName": "CycloneNOAA_Stats",
             "provenanceUrl": "https://www.ncei.noaa.gov/products/international-best-track-archive",
-            "observationPeriod": "P1M"
+            "observationPeriod": "P1M",
+            "isDcAggregate": true
           }
         },
         "Count_EarthquakeEvent": {
@@ -500,7 +501,8 @@
           "metadata": {
             "importName": "EarthquakeUSGS_Agg",
             "provenanceUrl": "https://earthquake.usgs.gov/",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "isDcAggregate": true
           }
         },
         "Count_Person": {
@@ -1711,7 +1713,8 @@
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
             "measurementMethod": "NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
-            "unit": "Celsius"
+            "unit": "Celsius",
+            "isDcAggregate": true
           }
         },
         "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP85": {
@@ -2850,7 +2853,8 @@
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
             "measurementMethod": "NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
-            "unit": "Celsius"
+            "unit": "Celsius",
+            "isDcAggregate": true
           }
         }
       }
@@ -2905,7 +2909,8 @@
           "metadata": {
             "importName": "EarthquakeUSGS_Agg",
             "provenanceUrl": "https://earthquake.usgs.gov/",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "isDcAggregate": true
           }
         },
         "Count_Person": {
@@ -4116,7 +4121,8 @@
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
             "measurementMethod": "NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
-            "unit": "Celsius"
+            "unit": "Celsius",
+            "isDcAggregate": true
           }
         },
         "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP85": {
@@ -5255,7 +5261,8 @@
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
             "measurementMethod": "NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
-            "unit": "Celsius"
+            "unit": "Celsius",
+            "isDcAggregate": true
           }
         }
       }
@@ -5804,7 +5811,8 @@
           "metadata": {
             "importName": "CycloneNOAA_Stats",
             "provenanceUrl": "https://www.ncei.noaa.gov/products/international-best-track-archive",
-            "observationPeriod": "P1M"
+            "observationPeriod": "P1M",
+            "isDcAggregate": true
           }
         },
         "Count_EarthquakeEvent": {
@@ -5930,7 +5938,8 @@
           "metadata": {
             "importName": "EarthquakeUSGS_Agg",
             "provenanceUrl": "https://earthquake.usgs.gov/",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "isDcAggregate": true
           }
         },
         "Count_Person": {
@@ -7202,7 +7211,8 @@
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
             "measurementMethod": "NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
-            "unit": "Celsius"
+            "unit": "Celsius",
+            "isDcAggregate": true
           }
         },
         "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP85": {
@@ -8341,7 +8351,8 @@
             "provenanceUrl": "https://www.nccs.nasa.gov/services/data-collections/land-based-products/nex-gddp",
             "measurementMethod": "NASA_Mean_ACCESS1-0",
             "observationPeriod": "P1M",
-            "unit": "Celsius"
+            "unit": "Celsius",
+            "isDcAggregate": true
           }
         },
         "WithdrawalRate_Water": {

@@ -305,7 +305,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_3OrMoreYears": {
@@ -326,7 +327,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_EducationalAttainmentBachelorsDegree": {
@@ -346,7 +348,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_EducationalAttainmentDoctorateDegree": {
@@ -366,7 +369,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_EducationalAttainmentMastersDegree": {
@@ -386,7 +390,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_EducationalAttainmentNoSchoolingCompleted": {
@@ -406,7 +411,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_EducationalAttainmentRegularHighSchoolDiploma": {
@@ -426,7 +432,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_EnrolledInSchool": {
@@ -447,7 +454,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_NotEnrolledInSchool": {
@@ -468,7 +476,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         }
       }

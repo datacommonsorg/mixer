@@ -2736,7 +2736,8 @@
           "metadata": {
             "importName": "FBIGovCrime_AggCountry",
             "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "isDcAggregate": true
           }
         },
         "Count_CriminalActivities_PropertyCrime": {
@@ -2759,7 +2760,8 @@
           "metadata": {
             "importName": "FBIGovCrime_AggCountry",
             "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "isDcAggregate": true
           }
         },
         "Count_CriminalActivities_ViolentCrime": {
@@ -2782,7 +2784,8 @@
           "metadata": {
             "importName": "FBIGovCrime_AggCountry",
             "provenanceUrl": "http://www.fbi.gov/services/cjis/ucr",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "isDcAggregate": true
           }
         },
         "Count_CriminalIncidents_IsHateCrime": {
@@ -2962,7 +2965,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_HousingUnit_HouseholderRaceAmericanIndianOrAlaskaNativeAlone": {
@@ -2983,7 +2987,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_HousingUnit_HouseholderRaceAsianAlone": {
@@ -3004,7 +3009,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_HousingUnit_HouseholderRaceBlackOrAfricanAmericanAlone": {
@@ -3025,7 +3031,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_HousingUnit_HouseholderRaceHispanicOrLatino": {
@@ -3046,7 +3053,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone": {
@@ -3067,7 +3075,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_HousingUnit_HouseholderRaceSomeOtherRaceAlone": {
@@ -3088,7 +3097,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_HousingUnit_HouseholderRaceTwoOrMoreRaces": {
@@ -3109,7 +3119,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_HousingUnit_HouseholderRaceWhiteAlone": {
@@ -3130,7 +3141,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person": {
@@ -3284,7 +3296,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_15To64Years_InLaborForce_AsFractionOf_Count_Person_15To64Years": {
@@ -3346,7 +3359,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_3OrMoreYears": {
@@ -3367,7 +3381,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_BelowPovertyLevelInThePast12Months": {
@@ -3388,7 +3403,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_Divorced": {
@@ -3409,7 +3425,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_EducationalAttainmentBachelorsDegree": {
@@ -3429,7 +3446,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_EducationalAttainmentDoctorateDegree": {
@@ -3449,7 +3467,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_EducationalAttainmentMastersDegree": {
@@ -3469,7 +3488,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_EducationalAttainmentNoSchoolingCompleted": {
@@ -3489,7 +3509,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_EducationalAttainmentRegularHighSchoolDiploma": {
@@ -3509,7 +3530,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_Employed": {
@@ -4460,7 +4482,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_InLaborForce": {
@@ -5411,7 +5434,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_NeverMarried": {
@@ -5432,7 +5456,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_NotAUSCitizen": {
@@ -5453,7 +5478,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_NotEnrolledInSchool": {
@@ -5474,7 +5500,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_PerArea": {
@@ -5600,7 +5627,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_USCitizenBornAbroadOfAmericanParents": {
@@ -5621,7 +5649,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_USCitizenBornInTheUnitedStates": {
@@ -5642,7 +5671,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_USCitizenByNaturalization": {
@@ -5663,7 +5693,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_Person_Upto4Years_SevereWasting_AsFractionOf_Count_Person_Upto4Years": {
@@ -5801,7 +5832,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
             "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
           }
         },
         "Count_UnemploymentInsuranceClaim_StateUnemploymentInsurance": {
@@ -7849,7 +7881,8 @@
             "importName": "USDOL_ETA539",
             "provenanceUrl": "https://oui.doleta.gov/unemploy/",
             "measurementMethod": "BLSSeasonallyUnadjusted",
-            "observationPeriod": "P1W"
+            "observationPeriod": "P1W",
+            "isDcAggregate": true
           }
         },
         "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase": {
@@ -10805,7 +10838,8 @@
             "importName": "DEA_ARCOS_AggState_AggCountry",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
             "observationPeriod": "P3M",
-            "unit": "Grams"
+            "unit": "Grams",
+            "isDcAggregate": true
           }
         },
         "RetailDrugDistribution_DrugDistribution_Codeine": {
@@ -10863,7 +10897,8 @@
             "importName": "DEA_ARCOS_AggState_AggCountry",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
             "observationPeriod": "P3M",
-            "unit": "Grams"
+            "unit": "Grams",
+            "isDcAggregate": true
           }
         },
         "RetailDrugDistribution_DrugDistribution_Hydrocodone": {
@@ -10921,7 +10956,8 @@
             "importName": "DEA_ARCOS_AggState_AggCountry",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
             "observationPeriod": "P3M",
-            "unit": "Grams"
+            "unit": "Grams",
+            "isDcAggregate": true
           }
         },
         "RetailDrugDistribution_DrugDistribution_Morphine": {
@@ -10979,7 +11015,8 @@
             "importName": "DEA_ARCOS_AggState_AggCountry",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
             "observationPeriod": "P3M",
-            "unit": "Grams"
+            "unit": "Grams",
+            "isDcAggregate": true
           }
         },
         "RetailDrugDistribution_DrugDistribution_Oxycodone": {
@@ -11037,7 +11074,8 @@
             "importName": "DEA_ARCOS_AggState_AggCountry",
             "provenanceUrl": "https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary/",
             "observationPeriod": "P3M",
-            "unit": "Grams"
+            "unit": "Grams",
+            "isDcAggregate": true
           }
         },
         "UnemploymentRate_Person": {

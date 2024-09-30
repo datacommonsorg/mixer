@@ -33,6 +33,7 @@ import (
 	"regexp"
 	"runtime"
 	"sort"
+	"strconv"
 	"strings"
 	"time"
 
@@ -473,6 +474,7 @@ func GetFacet(s *pb.SourceSeries) *pb.Facet {
 		ScalingFactor:     s.ScalingFactor,
 		Unit:              s.Unit,
 		ProvenanceUrl:     s.ProvenanceUrl,
+		IsDcAggregate:     s.IsDcAggregate,
 	}
 }
 
@@ -486,6 +488,7 @@ func GetFacetID(m *pb.Facet) string {
 		m.ObservationPeriod,
 		m.ScalingFactor,
 		m.Unit,
+		strconv.FormatBool(m.IsDcAggregate),
 	}, "-")))
 	return fmt.Sprint(h.Sum32())
 }

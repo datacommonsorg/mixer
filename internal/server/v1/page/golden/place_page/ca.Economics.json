@@ -5693,7 +5693,8 @@
             "importName": "USDOL_ETA539",
             "provenanceUrl": "https://oui.doleta.gov/unemploy/",
             "measurementMethod": "BLSSeasonallyUnadjusted",
-            "observationPeriod": "P1W"
+            "observationPeriod": "P1W",
+            "isDcAggregate": true
           }
         },
         "Median_Income_Household": {
@@ -10045,7 +10046,8 @@
             "importName": "USDOL_ETA539",
             "provenanceUrl": "https://oui.doleta.gov/unemploy/",
             "measurementMethod": "BLSSeasonallyUnadjusted",
-            "observationPeriod": "P1W"
+            "observationPeriod": "P1W",
+            "isDcAggregate": true
           }
         },
         "Median_Income_Household": {
