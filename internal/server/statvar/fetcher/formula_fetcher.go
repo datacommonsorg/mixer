@@ -59,13 +59,10 @@ func FetchFormulas(
 				return err
 			}
 			typeOf, ok := statCalResp.Triples["typeOf"]
-			// No StatisticalCalculations found, so return.
-			if !ok {
-				return nil
-			}
-
-			for _, node := range typeOf.Nodes {
-				statCal = append(statCal, node.Dcid)
+			if ok {
+				for _, node := range typeOf.Nodes {
+					statCal = append(statCal, node.Dcid)
+				}
 			}
 			nextToken = statCalResp.GetNextToken()
 		}
