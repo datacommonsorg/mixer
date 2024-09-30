@@ -20,9 +20,11 @@ import (
 	"sort"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	v1pv "github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
+
+	triples "github.com/datacommonsorg/mixer/internal/server/v1/triples"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
@@ -39,52 +41,67 @@ func FetchFormulas(
 	remoteRespChan := make(chan *pbv2.NodeResponse, 1)
 	// Fetch for BT and SQL.
 	errGroup.Go(func() error {
-		data, _, err := v1pv.Fetch(
-			errCtx,
-			store,
-			[]string{"StatisticalCalculation"},
-			[]string{"typeOf"},
-			0,
-			"",
-			"in",
-		)
-		if err != nil {
-			return err
-		}
 		statCal := []string{}
-		for _, nodes := range data["StatisticalCalculation"]["typeOf"] {
-			for _, node := range nodes {
+		nextToken := ""
+		for ok := true; ok; ok = (nextToken != "") {
+			statCalReq := &pbv1.TriplesRequest{
+				Node:      "StatisticalCalculation",
+				Direction: "in",
+				NextToken: nextToken,
+			}
+			statCalResp, err := triples.Triples(
+				errCtx,
+				statCalReq,
+				store,
+				metadata,
+			)
+			if err != nil {
+				return err
+			}
+			typeOf, ok := statCalResp.Triples["typeOf"]
+			// No StatisticalCalculations found, so return.
+			if !ok {
+				return nil
+			}
+
+			for _, node := range typeOf.Nodes {
 				statCal = append(statCal, node.Dcid)
 			}
+			nextToken = statCalResp.GetNextToken()
 		}
 		if len(statCal) == 0 {
 			return nil
 		}
-		resp, _, err := v1pv.Fetch(
-			errCtx,
-			store,
-			statCal,
-			[]string{"outputProperty", "inputPropertyExpression"},
-			0,
-			"",
-			"out",
-		)
-		if err != nil {
-			return err
-		}
-		// Wrap result in pbv2.NodeResponse.
 		localResp := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{}}
-		for dcid, data := range resp {
-			localResp.Data[dcid] = &pbv2.LinkedGraph{
-				Arcs: map[string]*pbv2.Nodes{},
+		for ok := true; ok; ok = (nextToken != "") {
+			bulkReq := &pbv1.BulkTriplesRequest{
+				Nodes:     statCal,
+				Direction: "out",
 			}
-			for prop, nodes := range data {
-				if len(nodes) > 0 {
-					localResp.Data[dcid].Arcs[prop] = &pbv2.Nodes{
-						Nodes: v1pv.MergeTypedNodes(nodes),
-					}
+			bulkResp, err := triples.BulkTriples(
+				errCtx,
+				bulkReq,
+				store,
+				metadata,
+			)
+			if err != nil {
+				return err
+			}
+			// Wrap result in pbv2.NodeResponse.
+			for _, nodeTriples := range bulkResp.Data {
+				out, outOk := nodeTriples.Triples["outputProperty"]
+				in, inOk := nodeTriples.Triples["inputPropertyExpression"]
+				if !outOk || !inOk {
+					continue
+				}
+				localResp.Data[nodeTriples.GetNode()] = &pbv2.LinkedGraph{
+					Arcs: map[string]*pbv2.Nodes{
+						"outputProperty":          {Nodes: out.Nodes},
+						"inputPropertyExpression": {Nodes: in.Nodes},
+					},
 				}
 			}
+			nextToken = bulkResp.GetNextToken()
 		}
 		localRespChan <- localResp
 		return nil
@@ -92,30 +109,42 @@ func FetchFormulas(
 	// Fetch for Remote Mixer.
 	if metadata.RemoteMixerDomain != "" {
 		errGroup.Go(func() error {
-			req := &pbv2.NodeRequest{
-				Nodes:    []string{"StatisticalCalculation"},
-				Property: "<-typeOf",
-			}
-			statCalResp := &pbv2.NodeResponse{}
-			err := util.FetchRemote(metadata, &http.Client{}, "/v2/node", req, statCalResp)
-			if err != nil {
-				return err
-			}
+			remoteResp := &pbv2.NodeResponse{}
 			statCal := []string{}
-			for _, node := range statCalResp.Data["StatisticalCalculation"].Arcs["typeOf"].Nodes {
-				statCal = append(statCal, node.Dcid)
+			nextToken := ""
+			for ok := true; ok; ok = (nextToken != "") {
+				statCalReq := &pbv2.NodeRequest{
+					Nodes:     []string{"StatisticalCalculation"},
+					Property:  "<-typeOf",
+					NextToken: nextToken,
+				}
+				statCalResp := &pbv2.NodeResponse{}
+				err := util.FetchRemote(metadata, &http.Client{}, "/v2/node", statCalReq, statCalResp)
+				if err != nil {
+					return err
+				}
+				for _, node := range statCalResp.Data["StatisticalCalculation"].Arcs["typeOf"].Nodes {
+					statCal = append(statCal, node.Dcid)
+				}
+				nextToken = statCalResp.GetNextToken()
 			}
 			if len(statCal) == 0 {
 				return nil
 			}
-			req = &pbv2.NodeRequest{
-				Nodes:    statCal,
-				Property: "->[outputProperty, inputPropertyExpression]",
-			}
-			remoteResp := &pbv2.NodeResponse{}
-			err = util.FetchRemote(metadata, &http.Client{}, "/v2/node", req, remoteResp)
-			if err != nil {
-				return err
+			for ok := true; ok; ok = (nextToken != "") {
+				currResp := &pbv2.NodeResponse{}
+				propReq := &pbv2.NodeRequest{
+					Nodes:    statCal,
+					Property: "->[outputProperty, inputPropertyExpression]",
+				}
+				err := util.FetchRemote(metadata, &http.Client{}, "/v2/node", propReq, currResp)
+				if err != nil {
+					return err
+				}
+				remoteResp, err = merger.MergeNode(remoteResp, currResp)
+				if err != nil {
+					return err
+				}
 			}
 			remoteRespChan <- remoteResp
 			return nil

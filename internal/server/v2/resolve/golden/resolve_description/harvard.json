@@ -23,7 +23,15 @@
       ]
     },
     {
-      "node": "Atacama,Chile"
+      "node": "Atacama,Chile",
+      "resolvedIds": [
+        "wikidataId/Q2120"
+      ],
+      "candidates": [
+        {
+          "dcid": "wikidataId/Q2120"
+        }
+      ]
     },
     {
       "node": "Athos,Greece"
