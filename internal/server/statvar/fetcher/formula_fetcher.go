@@ -145,6 +145,7 @@ func FetchFormulas(
 				if err != nil {
 					return err
 				}
+				nextToken = currResp.GetNextToken()
 			}
 			remoteRespChan <- remoteResp
 			return nil
