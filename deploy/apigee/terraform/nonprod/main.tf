@@ -17,7 +17,6 @@ module "apigee" {
   project_id = var.project_id
   envgroups = {
     staging-api  = [var.api_hostname]
-    staging-api2 = [var.api2_hostname]
     staging-bard = [var.nl_internal_api_hostname]
     staging-nl   = [var.nl_api_hostname]
   }
@@ -26,7 +25,6 @@ module "apigee" {
       display_name = "dev"
       envgroups = [
         "staging-api",
-        "staging-api2",
         "staging-bard",
         "staging-nl",
       ]

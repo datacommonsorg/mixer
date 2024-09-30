@@ -20,10 +20,6 @@ locals {
       hostname = var.api_hostname
       prefix   = "/api/"
     },
-    "matcher-api2" = {
-      hostname = var.api2_hostname
-      prefix   = "/api/"
-    },
     "matcher-bard" = {
       hostname = var.nl_internal_api_hostname
       prefix   = "/bard/"
@@ -32,15 +28,6 @@ locals {
       hostname = var.nl_api_hostname
       prefix   = "/nl/"
     }
-  }
-
-  api_esp_matchers = {
-    # "matcher-api" = {
-    #   hostname = var.api_hostname
-    # }
-    # "matcher-api2" = {
-    #   hostname = var.api2_hostname
-    # }
   }
 }
 
@@ -97,24 +84,6 @@ resource "google_compute_url_map" "apigee_lb" {
           }
         }
       }
-    }
-  }
-
-  dynamic "host_rule" {
-    for_each = local.api_esp_matchers
-    iterator = each
-    content {
-      hosts        = [each.value.hostname]
-      path_matcher = each.key
-    }
-  }
-
-  dynamic "path_matcher" {
-    for_each = local.api_esp_matchers
-    iterator = each
-    content {
-      name            = each.key
-      default_service = google_compute_backend_service.api_esp_backend_service.id
     }
   }
 }

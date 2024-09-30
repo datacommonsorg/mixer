@@ -39,11 +39,6 @@ variable "api_hostname" {
   type = string
 }
 
-# Alternate hostname for the Mixer API. Used temporarily for testing changes.
-variable "api2_hostname" {
-  type = string
-}
-
 # Hostname for the internal version of the NL API.
 variable "nl_internal_api_hostname" {
   type = string
