@@ -75,6 +75,10 @@ func TestVariableFormulaParseFormula(t *testing.T) {
 			"(Person_Count-Person_Count_Female) / Person_Count_Female",
 			[]string{"Person_Count_Female", "Person_Count"},
 		},
+		{
+			"(Count_Person * 2.5) + 1",
+			[]string{"Count_Person"},
+		},
 	} {
 		vf, err := NewVariableFormula(c.formula)
 		if err != nil {

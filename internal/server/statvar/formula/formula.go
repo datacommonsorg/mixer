@@ -128,6 +128,8 @@ func processNodeInfo(node ast.Node, c *VariableFormula) error {
 		}
 	case *ast.ParenExpr:
 		return processNodeInfo(t.X, c)
+	case *ast.BasicLit:
+		// Handle constants when evaluating formula.
 	default:
 		return fmt.Errorf("unsupported AST type %T", t)
 	}
