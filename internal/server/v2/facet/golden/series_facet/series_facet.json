@@ -5,7 +5,7 @@
         "Earth": {
           "ordered_facets": [
             {
-              "facet_id": "80057384",
+              "facet_id": "3981252704",
               "obs_count": 63,
               "earliest_date": "1960",
               "latest_date": "2022"
@@ -15,85 +15,85 @@
         "country/USA": {
           "ordered_facets": [
             {
-              "facet_id": "782873763",
+              "facet_id": "2176550201",
               "obs_count": 123,
               "earliest_date": "1900",
               "latest_date": "2022"
             },
             {
-              "facet_id": "2442492863",
+              "facet_id": "2645850372",
               "obs_count": 12,
               "earliest_date": "2011",
               "latest_date": "2022"
             },
             {
-              "facet_id": "3070257971",
+              "facet_id": "1145703171",
               "obs_count": 1,
               "earliest_date": "2022",
               "latest_date": "2022"
             },
             {
-              "facet_id": "2747162202",
+              "facet_id": "1541763368",
               "obs_count": 3,
               "earliest_date": "2000",
               "latest_date": "2020"
             },
             {
-              "facet_id": "80057384",
+              "facet_id": "3981252704",
               "obs_count": 63,
               "earliest_date": "1960",
               "latest_date": "2022"
             },
             {
-              "facet_id": "1290889604",
+              "facet_id": "1151455814",
               "obs_count": 28,
               "earliest_date": "1995",
               "latest_date": "2022"
             },
             {
-              "facet_id": "849524815",
+              "facet_id": "10983471",
               "obs_count": 13,
               "earliest_date": "2010",
               "latest_date": "2022"
             },
             {
-              "facet_id": "2967347599",
+              "facet_id": "1964317807",
               "obs_count": 12,
               "earliest_date": "2010",
               "latest_date": "2021"
             },
             {
-              "facet_id": "1127643577",
+              "facet_id": "196790193",
               "obs_count": 5,
               "earliest_date": "2017",
               "latest_date": "2021"
             },
             {
-              "facet_id": "1650357738",
+              "facet_id": "217147238",
               "obs_count": 5,
               "earliest_date": "2017",
               "latest_date": "2021"
             },
             {
-              "facet_id": "2190753952",
+              "facet_id": "2825511676",
               "obs_count": 22,
               "earliest_date": "1999",
               "latest_date": "2020"
             },
             {
-              "facet_id": "2715575263",
+              "facet_id": "2517965213",
               "obs_count": 120,
               "earliest_date": "1900",
               "latest_date": "2019"
             },
             {
-              "facet_id": "302285283",
+              "facet_id": "1226172227",
               "obs_count": 10,
               "earliest_date": "2010",
               "latest_date": "2019"
             },
             {
-              "facet_id": "233661957",
+              "facet_id": "2458695583",
               "obs_count": 45,
               "earliest_date": "1790",
               "latest_date": "2017"
@@ -111,67 +111,67 @@
               ]
             },
             {
-              "facet_id": "782873763",
+              "facet_id": "2176550201",
               "obs_count": 123,
               "earliest_date": "1900",
               "latest_date": "2022"
             },
             {
-              "facet_id": "3070257971",
+              "facet_id": "1145703171",
               "obs_count": 12,
               "earliest_date": "2011",
               "latest_date": "2022"
             },
             {
-              "facet_id": "2747162202",
+              "facet_id": "1541763368",
               "obs_count": 3,
               "earliest_date": "2000",
               "latest_date": "2020"
             },
             {
-              "facet_id": "1290889604",
+              "facet_id": "1151455814",
               "obs_count": 28,
               "earliest_date": "1995",
               "latest_date": "2022"
             },
             {
-              "facet_id": "849524815",
+              "facet_id": "10983471",
               "obs_count": 13,
               "earliest_date": "2010",
               "latest_date": "2022"
             },
             {
-              "facet_id": "2967347599",
+              "facet_id": "1964317807",
               "obs_count": 12,
               "earliest_date": "2010",
               "latest_date": "2021"
             },
             {
-              "facet_id": "1127643577",
+              "facet_id": "196790193",
               "obs_count": 5,
               "earliest_date": "2017",
               "latest_date": "2021"
             },
             {
-              "facet_id": "2190753952",
+              "facet_id": "2825511676",
               "obs_count": 22,
               "earliest_date": "1999",
               "latest_date": "2020"
             },
             {
-              "facet_id": "2715575263",
+              "facet_id": "2517965213",
               "obs_count": 120,
               "earliest_date": "1900",
               "latest_date": "2019"
             },
             {
-              "facet_id": "302285283",
+              "facet_id": "1226172227",
               "obs_count": 10,
               "earliest_date": "2010",
               "latest_date": "2019"
             },
             {
-              "facet_id": "233661957",
+              "facet_id": "2458695583",
               "obs_count": 37,
               "earliest_date": "1850",
               "latest_date": "2016"
@@ -185,37 +185,37 @@
         "country/USA": {
           "ordered_facets": [
             {
-              "facet_id": "3513569486",
+              "facet_id": "3357919774",
               "obs_count": 12,
               "earliest_date": "2011",
               "latest_date": "2022"
             },
             {
-              "facet_id": "1228146294",
+              "facet_id": "3795540742",
               "obs_count": 1,
               "earliest_date": "2022",
               "latest_date": "2022"
             },
             {
-              "facet_id": "1132300843",
+              "facet_id": "2763329611",
               "obs_count": 13,
               "earliest_date": "2010",
               "latest_date": "2022"
             },
             {
-              "facet_id": "1028721003",
+              "facet_id": "815809675",
               "obs_count": 12,
               "earliest_date": "2010",
               "latest_date": "2021"
             },
             {
-              "facet_id": "602998737",
+              "facet_id": "3690003977",
               "obs_count": 5,
               "earliest_date": "2017",
               "latest_date": "2021"
             },
             {
-              "facet_id": "1217214348",
+              "facet_id": "4219092424",
               "obs_count": 5,
               "earliest_date": "2017",
               "latest_date": "2021"
@@ -225,25 +225,25 @@
         "geoId/06": {
           "ordered_facets": [
             {
-              "facet_id": "1228146294",
+              "facet_id": "3795540742",
               "obs_count": 12,
               "earliest_date": "2011",
               "latest_date": "2022"
             },
             {
-              "facet_id": "1132300843",
+              "facet_id": "2763329611",
               "obs_count": 13,
               "earliest_date": "2010",
               "latest_date": "2022"
             },
             {
-              "facet_id": "1028721003",
+              "facet_id": "815809675",
               "obs_count": 12,
               "earliest_date": "2010",
               "latest_date": "2021"
             },
             {
-              "facet_id": "602998737",
+              "facet_id": "3690003977",
               "obs_count": 5,
               "earliest_date": "2017",
               "latest_date": "2021"
@@ -270,113 +270,113 @@
     }
   },
   "facets": {
-    "1028721003": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
-      "measurement_method": "CensusACS5yrSurveySubjectTable",
-      "unit": "Years"
-    },
-    "1127643577": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
-    },
-    "1132300843": {
+    "10983471": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
-      "measurement_method": "CensusACS5yrSurveySubjectTable",
-      "unit": "Years"
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
-    "1217214348": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
-      "measurement_method": "CensusACS5yrSurveySubjectTable",
-      "unit": "Years"
-    },
-    "1228146294": {
+    "1145703171": {
       "import_name": "CensusACS5YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-      "measurement_method": "CensusACS5yrSurvey",
-      "unit": "Year"
+      "measurement_method": "CensusACS5yrSurvey"
     },
-    "1290889604": {
+    "1151455814": {
       "import_name": "OECDRegionalDemography",
       "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
       "measurement_method": "OECDRegionalStatistics",
       "observation_period": "P1Y"
     },
-    "1650357738": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
-    },
-    "2190753952": {
-      "import_name": "CDC_Mortality_UnderlyingCause",
-      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
-    },
-    "233661957": {
-      "import_name": "WikidataPopulation",
-      "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
-      "measurement_method": "WikidataPopulation"
-    },
-    "2442492863": {
-      "import_name": "CensusACS5YearSurvey_AggCountry",
-      "provenance_url": "https://www.census.gov/",
-      "measurement_method": "CensusACS5yrSurvey",
-      "is_dc_aggregate": true
-    },
-    "2715575263": {
-      "import_name": "CensusPEP",
-      "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-      "measurement_method": "CensusPEPSurvey"
-    },
-    "2747162202": {
-      "import_name": "USDecennialCensus_RedistrictingRelease",
-      "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
-      "measurement_method": "USDecennialCensus"
-    },
-    "2967347599": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
-    },
-    "302285283": {
+    "1226172227": {
       "import_name": "CensusACS1YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS1yrSurvey"
     },
-    "3070257971": {
-      "import_name": "CensusACS5YearSurvey",
-      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-      "measurement_method": "CensusACS5yrSurvey"
+    "1541763368": {
+      "import_name": "USDecennialCensus_RedistrictingRelease",
+      "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+      "measurement_method": "USDecennialCensus"
     },
-    "3513569486": {
-      "import_name": "CensusUSAMedianAgeIncome",
-      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-      "measurement_method": "CensusACS5yrSurvey",
-      "unit": "Year"
+    "1964317807": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
-    "602998737": {
+    "196790193": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
-      "measurement_method": "CensusACS5yrSurveySubjectTable",
-      "unit": "Years"
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
-    "782873763": {
+    "217147238": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "2176550201": {
       "import_name": "USCensusPEP_Annual_Population",
       "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
       "measurement_method": "CensusPEPSurvey",
       "observation_period": "P1Y"
     },
-    "80057384": {
+    "2458695583": {
+      "import_name": "WikidataPopulation",
+      "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+      "measurement_method": "WikidataPopulation"
+    },
+    "2517965213": {
+      "import_name": "CensusPEP",
+      "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
+      "measurement_method": "CensusPEPSurvey"
+    },
+    "2645850372": {
+      "import_name": "CensusACS5YearSurvey_AggCountry",
+      "provenance_url": "https://www.census.gov/",
+      "measurement_method": "CensusACS5yrSurvey",
+      "is_dc_aggregate": true
+    },
+    "2763329611": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "unit": "Years"
+    },
+    "2825511676": {
+      "import_name": "CDC_Mortality_UnderlyingCause",
+      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
+    },
+    "3357919774": {
+      "import_name": "CensusUSAMedianAgeIncome",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+      "measurement_method": "CensusACS5yrSurvey",
+      "unit": "Year"
+    },
+    "3690003977": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "unit": "Years"
+    },
+    "3795540742": {
+      "import_name": "CensusACS5YearSurvey",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+      "measurement_method": "CensusACS5yrSurvey",
+      "unit": "Year"
+    },
+    "3981252704": {
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y"
     },
-    "849524815": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    "4219092424": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "unit": "Years"
+    },
+    "815809675": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "unit": "Years"
     },
     "local": {
       "import_name": "local",

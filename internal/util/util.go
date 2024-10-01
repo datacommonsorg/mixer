@@ -488,9 +488,9 @@ func GetFacetID(m *pb.Facet) string {
 		m.ObservationPeriod,
 		m.ScalingFactor,
 		m.Unit,
-	}, "")
+	}, "-")
 	if m.IsDcAggregate {
-		s += "IsDcAggregate"
+		s += "-IsDcAggregate"
 	}
 	h := fnv.New32a()
 	_, _ = h.Write([]byte(s))

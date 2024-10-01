@@ -2,13 +2,36 @@
   "by_variable": {
     "Count_Person": {
       "by_entity": {
-        "country/USA": {}
+        "country/USA": {
+          "ordered_facets": [
+            {
+              "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2022",
+                  "value": 333288000
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2022",
+              "latest_date": "2022"
+            }
+          ]
+        }
       }
     },
     "Median_Age_Person": {
       "by_entity": {
         "country/USA": {}
       }
+    }
+  },
+  "facets": {
+    "1151455814": {
+      "import_name": "OECDRegionalDemography",
+      "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+      "measurement_method": "OECDRegionalStatistics",
+      "observation_period": "P1Y"
     }
   }
 }

@@ -5,7 +5,7 @@
         "country/MEX": {
           "ordered_facets": [
             {
-              "facet_id": "1727039189",
+              "facet_id": "3614729857",
               "observations": [
                 {
                   "date": "1995",
@@ -41,7 +41,7 @@
         "country/NZL": {
           "ordered_facets": [
             {
-              "facet_id": "2219232270",
+              "facet_id": "1565963938",
               "observations": [
                 {
                   "date": "1991",
@@ -181,7 +181,7 @@
         "country/USA": {
           "ordered_facets": [
             {
-              "facet_id": "3513569486",
+              "facet_id": "3357919774",
               "observations": [
                 {
                   "date": "2011",
@@ -237,7 +237,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "1228146294",
+              "facet_id": "3795540742",
               "observations": [
                 {
                   "date": "2022",
@@ -249,7 +249,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "1132300843",
+              "facet_id": "2763329611",
               "observations": [
                 {
                   "date": "2010",
@@ -309,7 +309,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "1028721003",
+              "facet_id": "815809675",
               "observations": [
                 {
                   "date": "2010",
@@ -365,7 +365,7 @@
               "latest_date": "2021"
             },
             {
-              "facet_id": "602998737",
+              "facet_id": "3690003977",
               "observations": [
                 {
                   "date": "2017",
@@ -393,7 +393,7 @@
               "latest_date": "2021"
             },
             {
-              "facet_id": "1217214348",
+              "facet_id": "4219092424",
               "observations": [
                 {
                   "date": "2017",
@@ -426,48 +426,48 @@
     }
   },
   "facets": {
-    "1028721003": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
-      "measurement_method": "CensusACS5yrSurveySubjectTable",
-      "unit": "Years"
+    "1565963938": {
+      "import_name": "New_Zealand_Census",
+      "provenance_url": "https://www.stats.govt.nz/",
+      "unit": "Year"
     },
-    "1132300843": {
+    "2763329611": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
     },
-    "1217214348": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
-      "measurement_method": "CensusACS5yrSurveySubjectTable",
-      "unit": "Years"
-    },
-    "1228146294": {
-      "import_name": "CensusACS5YearSurvey",
-      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-      "measurement_method": "CensusACS5yrSurvey",
-      "unit": "Year"
-    },
-    "1727039189": {
-      "import_name": "MexicoCensus",
-      "provenance_url": "https://www.inegi.org.mx/temas/"
-    },
-    "2219232270": {
-      "import_name": "New_Zealand_Census",
-      "provenance_url": "https://www.stats.govt.nz/",
-      "unit": "Year"
-    },
-    "3513569486": {
+    "3357919774": {
       "import_name": "CensusUSAMedianAgeIncome",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS5yrSurvey",
       "unit": "Year"
     },
-    "602998737": {
+    "3614729857": {
+      "import_name": "MexicoCensus",
+      "provenance_url": "https://www.inegi.org.mx/temas/"
+    },
+    "3690003977": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "unit": "Years"
+    },
+    "3795540742": {
+      "import_name": "CensusACS5YearSurvey",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+      "measurement_method": "CensusACS5yrSurvey",
+      "unit": "Year"
+    },
+    "4219092424": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "unit": "Years"
+    },
+    "815809675": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
     }

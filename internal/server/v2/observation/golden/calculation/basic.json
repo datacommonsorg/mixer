@@ -5,7 +5,7 @@
         "wikidataId/Q613": {
           "ordered_facets": [
             {
-              "facet_id": "4153913072",
+              "facet_id": "3238703853",
               "observations": [
                 {
                   "date": "1975",
@@ -41,7 +41,7 @@
         "wikidataId/Q613": {
           "ordered_facets": [
             {
-              "facet_id": "4153913072",
+              "facet_id": "3238703853",
               "observations": [
                 {
                   "date": "1975",
@@ -77,7 +77,7 @@
         "wikidataId/Q613": {
           "ordered_facets": [
             {
-              "facet_id": "2571653479",
+              "facet_id": "409660979",
               "observations": [
                 {
                   "date": "2022-06-10",
@@ -189,7 +189,7 @@
               "latest_date": "2022-09-16"
             },
             {
-              "facet_id": "831045555",
+              "facet_id": "263855571",
               "observations": [
                 {
                   "date": "2022-06",
@@ -213,7 +213,7 @@
               "latest_date": "2022-09"
             },
             {
-              "facet_id": "1166597935",
+              "facet_id": "341794991",
               "observations": [
                 {
                   "date": "2022",
@@ -230,24 +230,24 @@
     }
   },
   "facets": {
-    "1166597935": {
+    "263855571": {
       "import_name": "WetBulbTemperatureEventPlaces_AutoRefresh",
       "provenance_url": "https://datacommons.org/",
-      "observation_period": "P1Y"
+      "observation_period": "P1M"
     },
-    "2571653479": {
-      "import_name": "WetBulbTemperatureEventPlaces_AutoRefresh",
-      "provenance_url": "https://datacommons.org/"
-    },
-    "4153913072": {
+    "3238703853": {
       "import_name": "UAE_Population",
       "provenance_url": "https://admin.bayanat.ae/Dataset/DownloadDatasetResource?fileId=26585eaf-9a9c-486d-b773-fc51ef0204c9&resourceID=11243",
       "is_dc_aggregate": true
     },
-    "831045555": {
+    "341794991": {
       "import_name": "WetBulbTemperatureEventPlaces_AutoRefresh",
       "provenance_url": "https://datacommons.org/",
-      "observation_period": "P1M"
+      "observation_period": "P1Y"
+    },
+    "409660979": {
+      "import_name": "WetBulbTemperatureEventPlaces_AutoRefresh",
+      "provenance_url": "https://datacommons.org/"
     }
   }
 }

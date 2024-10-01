@@ -5,19 +5,19 @@
         "": {
           "ordered_facets": [
             {
-              "facet_id": "3728219714"
+              "facet_id": "2123271870"
             },
             {
-              "facet_id": "1290889604"
+              "facet_id": "1151455814"
             },
             {
-              "facet_id": "3432861193"
+              "facet_id": "1794369807"
             },
             {
-              "facet_id": "923408117"
+              "facet_id": "473499523"
             },
             {
-              "facet_id": "233661957"
+              "facet_id": "2458695583"
             }
           ]
         }
@@ -30,27 +30,27 @@
     }
   },
   "facets": {
-    "1290889604": {
+    "1151455814": {
       "import_name": "OECDRegionalDemography",
       "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
       "measurement_method": "OECDRegionalStatistics",
       "observation_period": "P1Y"
     },
-    "233661957": {
-      "import_name": "WikidataPopulation",
-      "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
-      "measurement_method": "WikidataPopulation"
-    },
-    "3432861193": {
+    "1794369807": {
       "import_name": "UNData",
       "provenance_url": "http://data.un.org",
       "measurement_method": "UNData"
     },
-    "3728219714": {
+    "2123271870": {
       "import_name": "IndiaCensus_Primary",
       "provenance_url": "https://censusindia.gov.in/"
     },
-    "923408117": {
+    "2458695583": {
+      "import_name": "WikidataPopulation",
+      "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+      "measurement_method": "WikidataPopulation"
+    },
+    "473499523": {
       "import_name": "Subnational_Demographics_Stats",
       "provenance_url": "https://databank.worldbank.org/source/subnational-population",
       "measurement_method": "WorldBankSubnationalPopulationEstimate",

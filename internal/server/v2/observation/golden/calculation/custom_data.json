@@ -5,7 +5,7 @@
         "ein/1": {
           "ordered_facets": [
             {
-              "facet_id": "3788869267",
+              "facet_id": "1610623020",
               "observations": [
                 {
                   "date": "2023",
@@ -23,7 +23,7 @@
     }
   },
   "facets": {
-    "3788869267": {
+    "1610623020": {
       "import_name": "Custom Prov",
       "provenance_url": "custom.datacommons.org",
       "is_dc_aggregate": true

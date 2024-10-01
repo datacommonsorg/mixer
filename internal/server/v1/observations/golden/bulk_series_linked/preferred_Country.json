@@ -474,7 +474,7 @@
                   "value": 29
                 }
               ],
-              "facet": "1727039189"
+              "facet": "3614729857"
             }
           ]
         },
@@ -693,7 +693,7 @@
                   "value": 38.2
                 }
               ],
-              "facet": "2219232270"
+              "facet": "1565963938"
             }
           ]
         },
@@ -940,7 +940,7 @@
                   "value": 38.5
                 }
               ],
-              "facet": "3513569486"
+              "facet": "3357919774"
             }
           ]
         },
@@ -996,20 +996,20 @@
     }
   ],
   "facets": {
-    "1727039189": {
-      "import_name": "MexicoCensus",
-      "provenance_url": "https://www.inegi.org.mx/temas/"
-    },
-    "2219232270": {
+    "1565963938": {
       "import_name": "New_Zealand_Census",
       "provenance_url": "https://www.stats.govt.nz/",
       "unit": "Year"
     },
-    "3513569486": {
+    "3357919774": {
       "import_name": "CensusUSAMedianAgeIncome",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS5yrSurvey",
       "unit": "Year"
+    },
+    "3614729857": {
+      "import_name": "MexicoCensus",
+      "provenance_url": "https://www.inegi.org.mx/temas/"
     }
   }
 }
