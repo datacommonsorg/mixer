@@ -30,6 +30,14 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
+const (
+	inputPropertyExpression = "inputPropertyExpression"
+	outputProperty          = "outputProperty"
+	StatisticalCalculation  = "StatisticalCalculation"
+	typeOf                  = "typeOf"
+	v2node                  = "/v2/node"
+)
+
 // FetchFormulas fetches StatisticalCalculations and returns a map of SV dcids to a list of inputPropertyExpressions.
 func FetchFormulas(
 	ctx context.Context,
@@ -45,7 +53,7 @@ func FetchFormulas(
 		nextToken := ""
 		for {
 			statCalReq := &pbv1.TriplesRequest{
-				Node:      "StatisticalCalculation",
+				Node:      StatisticalCalculation,
 				Direction: "in",
 				NextToken: nextToken,
 			}
@@ -58,7 +66,7 @@ func FetchFormulas(
 			if err != nil {
 				return err
 			}
-			typeOf, ok := statCalResp.Triples["typeOf"]
+			typeOf, ok := statCalResp.Triples[typeOf]
 			if ok {
 				for _, node := range typeOf.Nodes {
 					statCalDcids = append(statCalDcids, node.Dcid)
@@ -90,15 +98,15 @@ func FetchFormulas(
 			}
 			// Wrap result in pbv2.NodeResponse.
 			for _, nodeTriples := range bulkResp.Data {
-				out, outOk := nodeTriples.Triples["outputProperty"]
-				in, inOk := nodeTriples.Triples["inputPropertyExpression"]
+				out, outOk := nodeTriples.Triples[outputProperty]
+				in, inOk := nodeTriples.Triples[inputPropertyExpression]
 				if !outOk || !inOk {
 					continue
 				}
 				localResp.Data[nodeTriples.GetNode()] = &pbv2.LinkedGraph{
 					Arcs: map[string]*pbv2.Nodes{
-						"outputProperty":          {Nodes: out.Nodes},
-						"inputPropertyExpression": {Nodes: in.Nodes},
+						outputProperty:          {Nodes: out.Nodes},
+						inputPropertyExpression: {Nodes: in.Nodes},
 					},
 				}
 			}
@@ -118,16 +126,16 @@ func FetchFormulas(
 			nextToken := ""
 			for {
 				statCalReq := &pbv2.NodeRequest{
-					Nodes:     []string{"StatisticalCalculation"},
-					Property:  "<-typeOf",
+					Nodes:     []string{StatisticalCalculation},
+					Property:  "<-" + typeOf,
 					NextToken: nextToken,
 				}
 				statCalResp := &pbv2.NodeResponse{}
-				err := util.FetchRemote(metadata, &http.Client{}, "/v2/node", statCalReq, statCalResp)
+				err := util.FetchRemote(metadata, &http.Client{}, v2node, statCalReq, statCalResp)
 				if err != nil {
 					return err
 				}
-				for _, node := range statCalResp.Data["StatisticalCalculation"].Arcs["typeOf"].Nodes {
+				for _, node := range statCalResp.Data[StatisticalCalculation].Arcs[typeOf].Nodes {
 					statCalDcids = append(statCalDcids, node.Dcid)
 				}
 				nextToken = statCalResp.GetNextToken()
@@ -142,10 +150,10 @@ func FetchFormulas(
 				currResp := &pbv2.NodeResponse{}
 				propReq := &pbv2.NodeRequest{
 					Nodes:     statCalDcids,
-					Property:  "->[outputProperty, inputPropertyExpression]",
+					Property:  "->[" + outputProperty + ", " + inputPropertyExpression + "]",
 					NextToken: nextToken,
 				}
-				err := util.FetchRemote(metadata, &http.Client{}, "/v2/node", propReq, currResp)
+				err := util.FetchRemote(metadata, &http.Client{}, v2node, propReq, currResp)
 				if err != nil {
 					return err
 				}
@@ -177,13 +185,13 @@ func FetchFormulas(
 	result := map[string][]string{}
 	for _, props := range mergedResp.Data {
 		// Skip nodes missing required properties.
-		_, out := props.Arcs["outputProperty"]
-		_, in := props.Arcs["inputPropertyExpression"]
+		_, out := props.Arcs[outputProperty]
+		_, in := props.Arcs[inputPropertyExpression]
 		if !(out && in) {
 			continue
 		}
-		for _, outputNode := range props.Arcs["outputProperty"].Nodes {
-			for _, inputNode := range props.Arcs["inputPropertyExpression"].Nodes {
+		for _, outputNode := range props.Arcs[outputProperty].Nodes {
+			for _, inputNode := range props.Arcs[inputPropertyExpression].Nodes {
 				result[outputNode.Dcid] = append(result[outputNode.Dcid], inputNode.Value)
 			}
 		}
