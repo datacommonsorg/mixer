@@ -33,7 +33,6 @@ import (
 	"regexp"
 	"runtime"
 	"sort"
-	"strconv"
 	"strings"
 	"time"
 
@@ -481,15 +480,20 @@ func GetFacet(s *pb.SourceSeries) *pb.Facet {
 // GetFacetID retrieves a hash string for a given protobuf message.
 // Note this should be restrict to a request scope.
 func GetFacetID(m *pb.Facet) string {
-	h := fnv.New32a()
-	_, _ = h.Write([]byte(strings.Join([]string{
+	// Only include fields that are set in hash.
+	// This is so the hashes stay consistent if more fields are added.
+	s := strings.Join([]string{
 		m.ImportName,
 		m.MeasurementMethod,
 		m.ObservationPeriod,
 		m.ScalingFactor,
 		m.Unit,
-		strconv.FormatBool(m.IsDcAggregate),
-	}, "-")))
+	}, "")
+	if m.IsDcAggregate {
+		s += "IsDcAggregate"
+	}
+	h := fnv.New32a()
+	_, _ = h.Write([]byte(s))
 	return fmt.Sprint(h.Sum32())
 }
 

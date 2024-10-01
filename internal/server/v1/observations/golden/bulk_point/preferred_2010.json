@@ -12,7 +12,7 @@
             {
               "date": "2010",
               "value": 64658856,
-              "facet": "1856007443"
+              "facet": "3631087931"
             }
           ]
         },
@@ -22,7 +22,7 @@
             {
               "date": "2010",
               "value": 309327143,
-              "facet": "2782870351"
+              "facet": "782873763"
             }
           ]
         },
@@ -32,7 +32,7 @@
             {
               "date": "2010",
               "value": 37319550,
-              "facet": "2782870351"
+              "facet": "782873763"
             }
           ]
         },
@@ -42,7 +42,7 @@
             {
               "date": "2010",
               "value": 73759,
-              "facet": "2782870351"
+              "facet": "782873763"
             }
           ]
         }
@@ -63,7 +63,7 @@
             {
               "date": "2010",
               "value": 10292375,
-              "facet": "3051661419"
+              "facet": "300864656"
             }
           ]
         },
@@ -73,7 +73,7 @@
             {
               "date": "2010",
               "value": 1146072,
-              "facet": "257807766"
+              "facet": "4101273032"
             }
           ]
         },
@@ -83,7 +83,7 @@
             {
               "date": "2010",
               "value": 1633,
-              "facet": "257807766"
+              "facet": "4101273032"
             }
           ]
         }
@@ -101,7 +101,7 @@
             {
               "date": "2010",
               "value": 36730,
-              "facet": "2070878104"
+              "facet": "489996770"
             }
           ]
         },
@@ -111,7 +111,7 @@
             {
               "date": "2010",
               "value": 49050,
-              "facet": "2070878104"
+              "facet": "489996770"
             }
           ]
         },
@@ -125,33 +125,33 @@
     }
   ],
   "facets": {
-    "1856007443": {
+    "300864656": {
+      "import_name": "FBIGovCrime_AggCountry",
+      "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
+      "observation_period": "P1Y",
+      "is_dc_aggregate": true
+    },
+    "3631087931": {
       "import_name": "EurostatData",
       "provenance_url": "https://ec.europa.eu/eurostat/data/database",
       "measurement_method": "EurostatRegionalPopulationData"
     },
-    "2070878104": {
+    "4101273032": {
+      "import_name": "FBIGovCrime",
+      "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
+      "observation_period": "P1Y"
+    },
+    "489996770": {
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y",
       "unit": "InternationalDollar"
     },
-    "257807766": {
-      "import_name": "FBIGovCrime",
-      "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
-      "observation_period": "P1Y"
-    },
-    "2782870351": {
+    "782873763": {
       "import_name": "USCensusPEP_Annual_Population",
       "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
       "measurement_method": "CensusPEPSurvey",
       "observation_period": "P1Y"
-    },
-    "3051661419": {
-      "import_name": "FBIGovCrime_AggCountry",
-      "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
-      "observation_period": "P1Y",
-      "is_dc_aggregate": true
     }
   }
 }

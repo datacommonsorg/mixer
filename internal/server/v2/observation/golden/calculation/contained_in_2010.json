@@ -5,7 +5,7 @@
         "geoId/06": {
           "ordered_facets": [
             {
-              "facet_id": "64795332",
+              "facet_id": "3788869267",
               "observations": [
                 {
                   "date": "2010",
@@ -22,7 +22,7 @@
     }
   },
   "facets": {
-    "64795332": {
+    "3788869267": {
       "import_name": "Custom Prov",
       "provenance_url": "custom.datacommons.org",
       "is_dc_aggregate": true

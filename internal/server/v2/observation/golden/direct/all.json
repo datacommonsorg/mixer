@@ -5,7 +5,7 @@
         "country/FRA": {
           "ordered_facets": [
             {
-              "facet_id": "2070878104",
+              "facet_id": "489996770",
               "observations": [
                 {
                   "date": "1990",
@@ -149,7 +149,7 @@
         "country/USA": {
           "ordered_facets": [
             {
-              "facet_id": "2070878104",
+              "facet_id": "489996770",
               "observations": [
                 {
                   "date": "1990",
@@ -301,7 +301,7 @@
         "country/USA": {
           "ordered_facets": [
             {
-              "facet_id": "650921773",
+              "facet_id": "751348967",
               "observations": [
                 {
                   "date": "1990",
@@ -429,7 +429,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "3979166257",
+              "facet_id": "3515486783",
               "observations": [
                 {
                   "date": "2001",
@@ -522,7 +522,7 @@
         "geoId/06": {
           "ordered_facets": [
             {
-              "facet_id": "3979166257",
+              "facet_id": "3515486783",
               "observations": [
                 {
                   "date": "2001",
@@ -620,7 +620,7 @@
         "country/USA": {
           "ordered_facets": [
             {
-              "facet_id": "3051661419",
+              "facet_id": "300864656",
               "observations": [
                 {
                   "date": "2008",
@@ -689,7 +689,7 @@
         "geoId/06": {
           "ordered_facets": [
             {
-              "facet_id": "257807766",
+              "facet_id": "4101273032",
               "observations": [
                 {
                   "date": "2008",
@@ -757,7 +757,7 @@
         "geoId/0649670": {
           "ordered_facets": [
             {
-              "facet_id": "257807766",
+              "facet_id": "4101273032",
               "observations": [
                 {
                   "date": "2008",
@@ -821,7 +821,7 @@
         "country/FRA": {
           "ordered_facets": [
             {
-              "facet_id": "1856007443",
+              "facet_id": "3631087931",
               "observations": [
                 {
                   "date": "1990",
@@ -949,7 +949,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "837900406",
+              "facet_id": "80057384",
               "observations": [
                 {
                   "date": "1960",
@@ -1209,7 +1209,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "3514198484",
+              "facet_id": "1290889604",
               "observations": [
                 {
                   "date": "1995",
@@ -1329,7 +1329,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "2496338593",
+              "facet_id": "2287323527",
               "observations": [
                 {
                   "date": "2000",
@@ -1429,7 +1429,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "3771313473",
+              "facet_id": "903458555",
               "observations": [
                 {
                   "date": "1982",
@@ -1589,7 +1589,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "3021124620",
+              "facet_id": "3682634714",
               "observations": [
                 {
                   "date": "2024-01",
@@ -1601,7 +1601,7 @@
               "latest_date": "2024-01"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "233661957",
               "observations": [
                 {
                   "date": "1901",
@@ -1853,7 +1853,7 @@
         "country/USA": {
           "ordered_facets": [
             {
-              "facet_id": "2782870351",
+              "facet_id": "782873763",
               "observations": [
                 {
                   "date": "1900",
@@ -2353,7 +2353,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "3023639324",
+              "facet_id": "2442492863",
               "observations": [
                 {
                   "date": "2011",
@@ -2409,7 +2409,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "4235218097",
+              "facet_id": "3070257971",
               "observations": [
                 {
                   "date": "2022",
@@ -2421,7 +2421,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "2879689438",
+              "facet_id": "2747162202",
               "observations": [
                 {
                   "date": "2000",
@@ -2441,7 +2441,7 @@
               "latest_date": "2020"
             },
             {
-              "facet_id": "837900406",
+              "facet_id": "80057384",
               "observations": [
                 {
                   "date": "1960",
@@ -2701,7 +2701,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "3514198484",
+              "facet_id": "1290889604",
               "observations": [
                 {
                   "date": "1995",
@@ -2821,7 +2821,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "3324054765",
+              "facet_id": "849524815",
               "observations": [
                 {
                   "date": "2010",
@@ -2881,7 +2881,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "1334978221",
+              "facet_id": "2967347599",
               "observations": [
                 {
                   "date": "2010",
@@ -2937,7 +2937,7 @@
               "latest_date": "2021"
             },
             {
-              "facet_id": "323018599",
+              "facet_id": "1127643577",
               "observations": [
                 {
                   "date": "2017",
@@ -2965,7 +2965,7 @@
               "latest_date": "2021"
             },
             {
-              "facet_id": "3631676660",
+              "facet_id": "1650357738",
               "observations": [
                 {
                   "date": "2017",
@@ -2993,7 +2993,7 @@
               "latest_date": "2021"
             },
             {
-              "facet_id": "1827834578",
+              "facet_id": "2190753952",
               "observations": [
                 {
                   "date": "1999",
@@ -3089,7 +3089,7 @@
               "latest_date": "2020"
             },
             {
-              "facet_id": "3043065123",
+              "facet_id": "2715575263",
               "observations": [
                 {
                   "date": "1900",
@@ -3577,7 +3577,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "3621147761",
+              "facet_id": "302285283",
               "observations": [
                 {
                   "date": "2010",
@@ -3625,7 +3625,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "233661957",
               "observations": [
                 {
                   "date": "1790",
@@ -3830,7 +3830,7 @@
               "latest_date": "2010"
             },
             {
-              "facet_id": "2782870351",
+              "facet_id": "782873763",
               "observations": [
                 {
                   "date": "1900",
@@ -4330,7 +4330,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "4235218097",
+              "facet_id": "3070257971",
               "observations": [
                 {
                   "date": "2011",
@@ -4386,7 +4386,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "2879689438",
+              "facet_id": "2747162202",
               "observations": [
                 {
                   "date": "2000",
@@ -4406,7 +4406,7 @@
               "latest_date": "2020"
             },
             {
-              "facet_id": "3514198484",
+              "facet_id": "1290889604",
               "observations": [
                 {
                   "date": "1995",
@@ -4526,7 +4526,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "3324054765",
+              "facet_id": "849524815",
               "observations": [
                 {
                   "date": "2010",
@@ -4586,7 +4586,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "1334978221",
+              "facet_id": "2967347599",
               "observations": [
                 {
                   "date": "2010",
@@ -4642,7 +4642,7 @@
               "latest_date": "2021"
             },
             {
-              "facet_id": "323018599",
+              "facet_id": "1127643577",
               "observations": [
                 {
                   "date": "2017",
@@ -4670,7 +4670,7 @@
               "latest_date": "2021"
             },
             {
-              "facet_id": "1827834578",
+              "facet_id": "2190753952",
               "observations": [
                 {
                   "date": "1999",
@@ -4766,7 +4766,7 @@
               "latest_date": "2020"
             },
             {
-              "facet_id": "3043065123",
+              "facet_id": "2715575263",
               "observations": [
                 {
                   "date": "1900",
@@ -5254,7 +5254,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "3621147761",
+              "facet_id": "302285283",
               "observations": [
                 {
                   "date": "2010",
@@ -5302,7 +5302,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "233661957",
               "observations": [
                 {
                   "date": "1850",
@@ -5462,7 +5462,7 @@
         "geoId/0649670": {
           "ordered_facets": [
             {
-              "facet_id": "2782870351",
+              "facet_id": "782873763",
               "observations": [
                 {
                   "date": "1990",
@@ -5602,7 +5602,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "4235218097",
+              "facet_id": "3070257971",
               "observations": [
                 {
                   "date": "2011",
@@ -5658,7 +5658,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "2879689438",
+              "facet_id": "2747162202",
               "observations": [
                 {
                   "date": "2000",
@@ -5678,7 +5678,7 @@
               "latest_date": "2020"
             },
             {
-              "facet_id": "1334978221",
+              "facet_id": "2967347599",
               "observations": [
                 {
                   "date": "2010",
@@ -5734,7 +5734,7 @@
               "latest_date": "2021"
             },
             {
-              "facet_id": "3621147761",
+              "facet_id": "302285283",
               "observations": [
                 {
                   "date": "2010",
@@ -5782,7 +5782,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "3043065123",
+              "facet_id": "2715575263",
               "observations": [
                 {
                   "date": "1990",
@@ -5906,7 +5906,7 @@
               "latest_date": "2018"
             },
             {
-              "facet_id": "3021124620",
+              "facet_id": "3682634714",
               "observations": [
                 {
                   "date": "2020",
@@ -5918,7 +5918,7 @@
               "latest_date": "2020"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "233661957",
               "observations": [
                 {
                   "date": "2010",
@@ -5939,7 +5939,7 @@
         "country/USA": {
           "ordered_facets": [
             {
-              "facet_id": "2054339971",
+              "facet_id": "3603890371",
               "observations": [
                 {
                   "date": "1948-01",
@@ -9627,7 +9627,7 @@
               "latest_date": "2024-08"
             },
             {
-              "facet_id": "4206648893",
+              "facet_id": "3134514397",
               "observations": [
                 {
                   "date": "1948-03",
@@ -10864,7 +10864,7 @@
         "geoId/06": {
           "ordered_facets": [
             {
-              "facet_id": "3157369141",
+              "facet_id": "1400489711",
               "observations": [
                 {
                   "date": "1976-01",
@@ -13208,7 +13208,7 @@
               "latest_date": "2024-08"
             },
             {
-              "facet_id": "3127058473",
+              "facet_id": "1064937331",
               "observations": [
                 {
                   "date": "1976",
@@ -13408,7 +13408,7 @@
               "latest_date": "2023"
             },
             {
-              "facet_id": "2788184934",
+              "facet_id": "2360074258",
               "observations": [
                 {
                   "date": "1976-01",
@@ -15756,7 +15756,7 @@
         "geoId/0649670": {
           "ordered_facets": [
             {
-              "facet_id": "3157369141",
+              "facet_id": "1400489711",
               "observations": [
                 {
                   "date": "1990-01",
@@ -17424,7 +17424,7 @@
               "latest_date": "2024-07"
             },
             {
-              "facet_id": "3127058473",
+              "facet_id": "1064937331",
               "observations": [
                 {
                   "date": "1990",
@@ -17577,7 +17577,7 @@
         "country/USA": {
           "ordered_facets": [
             {
-              "facet_id": "1919321324",
+              "facet_id": "3513569486",
               "observations": [
                 {
                   "date": "2011",
@@ -17633,7 +17633,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "4058303252",
+              "facet_id": "1228146294",
               "observations": [
                 {
                   "date": "2022",
@@ -17645,7 +17645,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "1871225913",
+              "facet_id": "1132300843",
               "observations": [
                 {
                   "date": "2010",
@@ -17705,7 +17705,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "1481770745",
+              "facet_id": "1028721003",
               "observations": [
                 {
                   "date": "2010",
@@ -17761,7 +17761,7 @@
               "latest_date": "2021"
             },
             {
-              "facet_id": "1308344191",
+              "facet_id": "602998737",
               "observations": [
                 {
                   "date": "2017",
@@ -17789,7 +17789,7 @@
               "latest_date": "2021"
             },
             {
-              "facet_id": "3468221182",
+              "facet_id": "1217214348",
               "observations": [
                 {
                   "date": "2017",
@@ -17822,7 +17822,7 @@
         "geoId/06": {
           "ordered_facets": [
             {
-              "facet_id": "4058303252",
+              "facet_id": "1228146294",
               "observations": [
                 {
                   "date": "2011",
@@ -17878,7 +17878,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "1871225913",
+              "facet_id": "1132300843",
               "observations": [
                 {
                   "date": "2010",
@@ -17938,7 +17938,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "1481770745",
+              "facet_id": "1028721003",
               "observations": [
                 {
                   "date": "2010",
@@ -17994,7 +17994,7 @@
               "latest_date": "2021"
             },
             {
-              "facet_id": "1308344191",
+              "facet_id": "602998737",
               "observations": [
                 {
                   "date": "2017",
@@ -18026,7 +18026,7 @@
         "geoId/0649670": {
           "ordered_facets": [
             {
-              "facet_id": "4058303252",
+              "facet_id": "1228146294",
               "observations": [
                 {
                   "date": "2011",
@@ -18082,7 +18082,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "1481770745",
+              "facet_id": "1028721003",
               "observations": [
                 {
                   "date": "2010",
@@ -18147,7 +18147,7 @@
         "country/USA": {
           "ordered_facets": [
             {
-              "facet_id": "1130559990",
+              "facet_id": "1826343200",
               "observations": [
                 {
                   "date": "1985",
@@ -18188,7 +18188,7 @@
         "geoId/06": {
           "ordered_facets": [
             {
-              "facet_id": "1130559990",
+              "facet_id": "1826343200",
               "observations": [
                 {
                   "date": "1985",
@@ -18303,196 +18303,196 @@
     }
   },
   "facets": {
-    "1130559990": {
-      "import_name": "USGSWaterUse",
-      "provenance_url": "https://waterdata.usgs.gov/nwis/wu",
-      "observation_period": "P1Y",
-      "unit": "MillionGallonsPerDay"
-    },
-    "1308344191": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
-      "measurement_method": "CensusACS5yrSurveySubjectTable",
-      "unit": "Years"
-    },
-    "1334978221": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
-    },
-    "1481770745": {
+    "1028721003": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
       "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
     },
-    "1827834578": {
-      "import_name": "CDC_Mortality_UnderlyingCause",
-      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
+    "1064937331": {
+      "import_name": "BLS_LAUS",
+      "provenance_url": "https://www.bls.gov/lau/",
+      "measurement_method": "BLSSeasonallyUnadjusted",
+      "observation_period": "P1Y"
     },
-    "1856007443": {
-      "import_name": "EurostatData",
-      "provenance_url": "https://ec.europa.eu/eurostat/data/database",
-      "measurement_method": "EurostatRegionalPopulationData"
+    "1127643577": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
-    "1871225913": {
+    "1132300843": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
     },
-    "1919321324": {
-      "import_name": "CensusUSAMedianAgeIncome",
-      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-      "measurement_method": "CensusACS5yrSurvey",
-      "unit": "Year"
-    },
-    "2054339971": {
-      "import_name": "BLS_CPS",
-      "provenance_url": "https://www.bls.gov/cps/",
-      "measurement_method": "BLSSeasonallyAdjusted",
-      "observation_period": "P1M"
-    },
-    "2070878104": {
-      "import_name": "WorldDevelopmentIndicators",
-      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
-      "observation_period": "P1Y",
-      "unit": "InternationalDollar"
-    },
-    "2496338593": {
-      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
-      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true"
-    },
-    "257807766": {
-      "import_name": "FBIGovCrime",
-      "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
-      "observation_period": "P1Y"
-    },
-    "2782870351": {
-      "import_name": "USCensusPEP_Annual_Population",
-      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
-      "measurement_method": "CensusPEPSurvey",
-      "observation_period": "P1Y"
-    },
-    "2788184934": {
-      "import_name": "BLS_LAUS",
-      "provenance_url": "https://www.bls.gov/lau/",
-      "measurement_method": "BLSSeasonallyAdjusted",
-      "observation_period": "P1M"
-    },
-    "2879689438": {
-      "import_name": "USDecennialCensus_RedistrictingRelease",
-      "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
-      "measurement_method": "USDecennialCensus"
-    },
-    "3021124620": {
-      "import_name": "WikipediaStatsData",
-      "provenance_url": "https://www.wikipedia.org",
-      "measurement_method": "Wikipedia"
-    },
-    "3023639324": {
-      "import_name": "CensusACS5YearSurvey_AggCountry",
-      "provenance_url": "https://www.census.gov/",
-      "measurement_method": "CensusACS5yrSurvey",
-      "is_dc_aggregate": true
-    },
-    "3043065123": {
-      "import_name": "CensusPEP",
-      "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-      "measurement_method": "CensusPEPSurvey"
-    },
-    "3051661419": {
-      "import_name": "FBIGovCrime_AggCountry",
-      "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
-      "observation_period": "P1Y",
-      "is_dc_aggregate": true
-    },
-    "3127058473": {
-      "import_name": "BLS_LAUS",
-      "provenance_url": "https://www.bls.gov/lau/",
-      "measurement_method": "BLSSeasonallyUnadjusted",
-      "observation_period": "P1Y"
-    },
-    "3157369141": {
-      "import_name": "BLS_LAUS",
-      "provenance_url": "https://www.bls.gov/lau/",
-      "measurement_method": "BLSSeasonallyUnadjusted",
-      "observation_period": "P1M"
-    },
-    "323018599": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
-    },
-    "3324054765": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
-    },
-    "3468221182": {
+    "1217214348": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
     },
-    "3514198484": {
+    "1228146294": {
+      "import_name": "CensusACS5YearSurvey",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+      "measurement_method": "CensusACS5yrSurvey",
+      "unit": "Year"
+    },
+    "1290889604": {
       "import_name": "OECDRegionalDemography",
       "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
       "measurement_method": "OECDRegionalStatistics",
       "observation_period": "P1Y"
     },
-    "3621147761": {
-      "import_name": "CensusACS1YearSurvey",
-      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-      "measurement_method": "CensusACS1yrSurvey"
+    "1400489711": {
+      "import_name": "BLS_LAUS",
+      "provenance_url": "https://www.bls.gov/lau/",
+      "measurement_method": "BLSSeasonallyUnadjusted",
+      "observation_period": "P1M"
     },
-    "3631676660": {
+    "1650357738": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
-    "3771313473": {
-      "import_name": "FranceINSEE",
-      "provenance_url": "https://www.insee.fr/en/metadonnees/source/indicateur/p1667/description",
-      "measurement_method": "FranceINSEE"
+    "1826343200": {
+      "import_name": "USGSWaterUse",
+      "provenance_url": "https://waterdata.usgs.gov/nwis/wu",
+      "observation_period": "P1Y",
+      "unit": "MillionGallonsPerDay"
     },
-    "3979166257": {
-      "import_name": "EIA_Electricity",
-      "provenance_url": "https://www.eia.gov/opendata/qb.php?category=0",
-      "unit": "KilowattHour"
+    "2190753952": {
+      "import_name": "CDC_Mortality_UnderlyingCause",
+      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
     },
-    "4058303252": {
-      "import_name": "CensusACS5YearSurvey",
-      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-      "measurement_method": "CensusACS5yrSurvey",
-      "unit": "Year"
+    "2287323527": {
+      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
+      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true"
     },
-    "4071544381": {
+    "233661957": {
       "import_name": "WikidataPopulation",
       "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
       "measurement_method": "WikidataPopulation"
     },
-    "4206648893": {
+    "2360074258": {
+      "import_name": "BLS_LAUS",
+      "provenance_url": "https://www.bls.gov/lau/",
+      "measurement_method": "BLSSeasonallyAdjusted",
+      "observation_period": "P1M"
+    },
+    "2442492863": {
+      "import_name": "CensusACS5YearSurvey_AggCountry",
+      "provenance_url": "https://www.census.gov/",
+      "measurement_method": "CensusACS5yrSurvey",
+      "is_dc_aggregate": true
+    },
+    "2715575263": {
+      "import_name": "CensusPEP",
+      "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
+      "measurement_method": "CensusPEPSurvey"
+    },
+    "2747162202": {
+      "import_name": "USDecennialCensus_RedistrictingRelease",
+      "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+      "measurement_method": "USDecennialCensus"
+    },
+    "2967347599": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "300864656": {
+      "import_name": "FBIGovCrime_AggCountry",
+      "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
+      "observation_period": "P1Y",
+      "is_dc_aggregate": true
+    },
+    "302285283": {
+      "import_name": "CensusACS1YearSurvey",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+      "measurement_method": "CensusACS1yrSurvey"
+    },
+    "3070257971": {
+      "import_name": "CensusACS5YearSurvey",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+      "measurement_method": "CensusACS5yrSurvey"
+    },
+    "3134514397": {
       "import_name": "BLS_CPS",
       "provenance_url": "https://www.bls.gov/cps/",
       "measurement_method": "BLSSeasonallyAdjusted",
       "observation_period": "P3M"
     },
-    "4235218097": {
-      "import_name": "CensusACS5YearSurvey",
+    "3513569486": {
+      "import_name": "CensusUSAMedianAgeIncome",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-      "measurement_method": "CensusACS5yrSurvey"
+      "measurement_method": "CensusACS5yrSurvey",
+      "unit": "Year"
     },
-    "650921773": {
+    "3515486783": {
+      "import_name": "EIA_Electricity",
+      "provenance_url": "https://www.eia.gov/opendata/qb.php?category=0",
+      "unit": "KilowattHour"
+    },
+    "3603890371": {
+      "import_name": "BLS_CPS",
+      "provenance_url": "https://www.bls.gov/cps/",
+      "measurement_method": "BLSSeasonallyAdjusted",
+      "observation_period": "P1M"
+    },
+    "3631087931": {
+      "import_name": "EurostatData",
+      "provenance_url": "https://ec.europa.eu/eurostat/data/database",
+      "measurement_method": "EurostatRegionalPopulationData"
+    },
+    "3682634714": {
+      "import_name": "WikipediaStatsData",
+      "provenance_url": "https://www.wikipedia.org",
+      "measurement_method": "Wikipedia"
+    },
+    "4101273032": {
+      "import_name": "FBIGovCrime",
+      "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
+      "observation_period": "P1Y"
+    },
+    "489996770": {
+      "import_name": "WorldDevelopmentIndicators",
+      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "observation_period": "P1Y",
+      "unit": "InternationalDollar"
+    },
+    "602998737": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "unit": "Years"
+    },
+    "751348967": {
       "import_name": "UNEnergy",
       "provenance_url": "https://unstats.un.org/unsd/energystats/data/",
       "observation_period": "P1Y",
       "unit": "KilowattHour"
     },
-    "837900406": {
+    "782873763": {
+      "import_name": "USCensusPEP_Annual_Population",
+      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
+      "measurement_method": "CensusPEPSurvey",
+      "observation_period": "P1Y"
+    },
+    "80057384": {
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y"
+    },
+    "849524815": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "903458555": {
+      "import_name": "FranceINSEE",
+      "provenance_url": "https://www.insee.fr/en/metadonnees/source/indicateur/p1667/description",
+      "measurement_method": "FranceINSEE"
     },
     "custom": {
       "import_name": "Custom Prov",

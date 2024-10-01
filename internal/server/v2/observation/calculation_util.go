@@ -263,7 +263,7 @@ func formatCalculatedResponse(
 	newFacets := map[string]*pb.Facet{}
 	facetIdMap := map[string]string{}
 	for oldFacetId, oldFacet := range resp.Facets {
-		newFacet := oldFacet
+		newFacet := proto.Clone(oldFacet).(*pb.Facet)
 		newFacet.IsDcAggregate = true
 		newFacetId := util.GetFacetID(newFacet)
 		newFacets[newFacetId] = newFacet

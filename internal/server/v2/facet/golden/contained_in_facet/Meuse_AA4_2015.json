@@ -5,13 +5,13 @@
         "": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "903458555",
               "obs_count": 402,
               "earliest_date": "2015",
               "latest_date": "2015"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "233661957",
               "obs_count": 275,
               "earliest_date": "2015",
               "latest_date": "2015"
@@ -27,15 +27,15 @@
     }
   },
   "facets": {
-    "3771313473": {
-      "import_name": "FranceINSEE",
-      "provenance_url": "https://www.insee.fr/en/metadonnees/source/indicateur/p1667/description",
-      "measurement_method": "FranceINSEE"
-    },
-    "4071544381": {
+    "233661957": {
       "import_name": "WikidataPopulation",
       "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
       "measurement_method": "WikidataPopulation"
+    },
+    "903458555": {
+      "import_name": "FranceINSEE",
+      "provenance_url": "https://www.insee.fr/en/metadonnees/source/indicateur/p1667/description",
+      "measurement_method": "FranceINSEE"
     }
   }
 }

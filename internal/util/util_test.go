@@ -381,14 +381,14 @@ func TestGetFacetID(t *testing.T) {
 			&pb.Facet{
 				ImportName: "test_import",
 			},
-			"2976395565",
+			"2077621475",
 		},
 		{
 			&pb.Facet{
 				ImportName:    "test_import",
 				IsDcAggregate: true,
 			},
-			"4231502298",
+			"1751500357",
 		},
 	} {
 		got := GetFacetID(c.facet)

@@ -5,25 +5,25 @@
         "": {
           "ordered_facets": [
             {
-              "facet_id": "2782870351"
+              "facet_id": "782873763"
             },
             {
-              "facet_id": "4235218097"
+              "facet_id": "3070257971"
             },
             {
-              "facet_id": "1827834578"
+              "facet_id": "2190753952"
             },
             {
-              "facet_id": "3621147761"
+              "facet_id": "302285283"
             },
             {
-              "facet_id": "1334978221"
+              "facet_id": "2967347599"
             },
             {
-              "facet_id": "3043065123"
+              "facet_id": "2715575263"
             },
             {
-              "facet_id": "4071544381"
+              "facet_id": "233661957"
             }
           ]
         }
@@ -34,10 +34,10 @@
         "": {
           "ordered_facets": [
             {
-              "facet_id": "4058303252"
+              "facet_id": "1228146294"
             },
             {
-              "facet_id": "1481770745"
+              "facet_id": "1028721003"
             }
           ]
         }
@@ -45,52 +45,52 @@
     }
   },
   "facets": {
-    "1334978221": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
-    },
-    "1481770745": {
+    "1028721003": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
       "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
     },
-    "1827834578": {
-      "import_name": "CDC_Mortality_UnderlyingCause",
-      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
-    },
-    "2782870351": {
-      "import_name": "USCensusPEP_Annual_Population",
-      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
-      "measurement_method": "CensusPEPSurvey",
-      "observation_period": "P1Y"
-    },
-    "3043065123": {
-      "import_name": "CensusPEP",
-      "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-      "measurement_method": "CensusPEPSurvey"
-    },
-    "3621147761": {
-      "import_name": "CensusACS1YearSurvey",
-      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-      "measurement_method": "CensusACS1yrSurvey"
-    },
-    "4058303252": {
+    "1228146294": {
       "import_name": "CensusACS5YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS5yrSurvey",
       "unit": "Year"
     },
-    "4071544381": {
+    "2190753952": {
+      "import_name": "CDC_Mortality_UnderlyingCause",
+      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
+    },
+    "233661957": {
       "import_name": "WikidataPopulation",
       "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
       "measurement_method": "WikidataPopulation"
     },
-    "4235218097": {
+    "2715575263": {
+      "import_name": "CensusPEP",
+      "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
+      "measurement_method": "CensusPEPSurvey"
+    },
+    "2967347599": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "302285283": {
+      "import_name": "CensusACS1YearSurvey",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+      "measurement_method": "CensusACS1yrSurvey"
+    },
+    "3070257971": {
       "import_name": "CensusACS5YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS5yrSurvey"
+    },
+    "782873763": {
+      "import_name": "USCensusPEP_Annual_Population",
+      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
+      "measurement_method": "CensusPEPSurvey",
+      "observation_period": "P1Y"
     }
   }
 }
