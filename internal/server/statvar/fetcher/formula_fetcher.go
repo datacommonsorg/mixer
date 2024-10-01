@@ -41,9 +41,9 @@ func FetchFormulas(
 	remoteRespChan := make(chan *pbv2.NodeResponse, 1)
 	// Fetch for BT and SQL.
 	errGroup.Go(func() error {
-		statCal := []string{}
+		statCalDcids := []string{}
 		nextToken := ""
-		for ok := true; ok; ok = (nextToken != "") {
+		for {
 			statCalReq := &pbv1.TriplesRequest{
 				Node:      "StatisticalCalculation",
 				Direction: "in",
@@ -61,19 +61,23 @@ func FetchFormulas(
 			typeOf, ok := statCalResp.Triples["typeOf"]
 			if ok {
 				for _, node := range typeOf.Nodes {
-					statCal = append(statCal, node.Dcid)
+					statCalDcids = append(statCalDcids, node.Dcid)
 				}
 			}
 			nextToken = statCalResp.GetNextToken()
+			if nextToken == "" {
+				break
+			}
 		}
-		if len(statCal) == 0 {
+		if len(statCalDcids) == 0 {
 			return nil
 		}
 		localResp := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{}}
-		for ok := true; ok; ok = (nextToken != "") {
+		for {
 			bulkReq := &pbv1.BulkTriplesRequest{
-				Nodes:     statCal,
+				Nodes:     statCalDcids,
 				Direction: "out",
+				NextToken: nextToken,
 			}
 			bulkResp, err := triples.BulkTriples(
 				errCtx,
@@ -99,6 +103,9 @@ func FetchFormulas(
 				}
 			}
 			nextToken = bulkResp.GetNextToken()
+			if nextToken == "" {
+				break
+			}
 		}
 		localRespChan <- localResp
 		return nil
@@ -107,9 +114,9 @@ func FetchFormulas(
 	if metadata.RemoteMixerDomain != "" {
 		errGroup.Go(func() error {
 			remoteResp := &pbv2.NodeResponse{}
-			statCal := []string{}
+			statCalDcids := []string{}
 			nextToken := ""
-			for ok := true; ok; ok = (nextToken != "") {
+			for {
 				statCalReq := &pbv2.NodeRequest{
 					Nodes:     []string{"StatisticalCalculation"},
 					Property:  "<-typeOf",
@@ -121,18 +128,22 @@ func FetchFormulas(
 					return err
 				}
 				for _, node := range statCalResp.Data["StatisticalCalculation"].Arcs["typeOf"].Nodes {
-					statCal = append(statCal, node.Dcid)
+					statCalDcids = append(statCalDcids, node.Dcid)
 				}
 				nextToken = statCalResp.GetNextToken()
+				if nextToken == "" {
+					break
+				}
 			}
-			if len(statCal) == 0 {
+			if len(statCalDcids) == 0 {
 				return nil
 			}
-			for ok := true; ok; ok = (nextToken != "") {
+			for {
 				currResp := &pbv2.NodeResponse{}
 				propReq := &pbv2.NodeRequest{
-					Nodes:    statCal,
-					Property: "->[outputProperty, inputPropertyExpression]",
+					Nodes:     statCalDcids,
+					Property:  "->[outputProperty, inputPropertyExpression]",
+					NextToken: nextToken,
 				}
 				err := util.FetchRemote(metadata, &http.Client{}, "/v2/node", propReq, currResp)
 				if err != nil {
@@ -143,6 +154,9 @@ func FetchFormulas(
 					return err
 				}
 				nextToken = currResp.GetNextToken()
+				if nextToken == "" {
+					break
+				}
 			}
 			remoteRespChan <- remoteResp
 			return nil
