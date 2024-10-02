@@ -17,7 +17,6 @@ package observation
 
 import (
 	"context"
-	"fmt"
 	"net/http"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
@@ -63,13 +62,10 @@ func Calculate(
 	if err != nil {
 		return nil, err
 	}
-	// Replace placeholder by final variable.
-	variableObs, ok := calculatedResp.ByVariable[INTERMEDIATE_NODE]
-	if !ok {
-		return nil, fmt.Errorf("missing intermediate variable in intermediate response")
+	err = formatCalculatedResponse(calculatedResp, equation)
+	if err != nil {
+		return nil, err
 	}
-	calculatedResp.ByVariable[equation.variable] = variableObs
-	delete(calculatedResp.ByVariable, INTERMEDIATE_NODE)
 	return calculatedResp, nil
 }
 

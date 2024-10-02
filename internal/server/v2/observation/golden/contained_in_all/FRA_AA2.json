@@ -5,7 +5,7 @@
         "country/GLP": {
           "ordered_facets": [
             {
-              "facet_id": "3021124620",
+              "facet_id": "1456184638",
               "observations": [
                 {
                   "date": "2024-01-01",
@@ -17,7 +17,7 @@
               "latest_date": "2024-01-01"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -41,7 +41,7 @@
         "country/GUF": {
           "ordered_facets": [
             {
-              "facet_id": "3021124620",
+              "facet_id": "1456184638",
               "observations": [
                 {
                   "date": "2024-01",
@@ -53,7 +53,7 @@
               "latest_date": "2024-01"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "1950",
@@ -105,7 +105,7 @@
         "country/MTQ": {
           "ordered_facets": [
             {
-              "facet_id": "3021124620",
+              "facet_id": "1456184638",
               "observations": [
                 {
                   "date": "2024-01-01",
@@ -117,7 +117,7 @@
               "latest_date": "2024-01-01"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2014",
@@ -141,7 +141,7 @@
         "country/MYT": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "2014",
@@ -173,7 +173,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "3021124620",
+              "facet_id": "1456184638",
               "observations": [
                 {
                   "date": "2024-01",
@@ -185,7 +185,7 @@
               "latest_date": "2024-01"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2017",
@@ -201,7 +201,7 @@
         "country/REU": {
           "ordered_facets": [
             {
-              "facet_id": "3021124620",
+              "facet_id": "1456184638",
               "observations": [
                 {
                   "date": "2024-01",
@@ -213,7 +213,7 @@
               "latest_date": "2024-01"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -241,7 +241,7 @@
         "nuts/FR101": {
           "ordered_facets": [
             {
-              "facet_id": "1856007443",
+              "facet_id": "858679853",
               "observations": [
                 {
                   "date": "1990",
@@ -369,7 +369,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "3514198484",
+              "facet_id": "1151455814",
               "observations": [
                 {
                   "date": "1995",
@@ -489,7 +489,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "2496338593",
+              "facet_id": "4089091283",
               "observations": [
                 {
                   "date": "2000",
@@ -589,7 +589,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "1802356941",
+              "facet_id": "1794369807",
               "observations": [
                 {
                   "date": "1999",
@@ -613,7 +613,7 @@
               "latest_date": "2010"
             },
             {
-              "facet_id": "3021124620",
+              "facet_id": "1456184638",
               "observations": [
                 {
                   "date": "2023",
@@ -625,7 +625,7 @@
               "latest_date": "2023"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "1990",
@@ -657,7 +657,7 @@
         "nuts/FR102": {
           "ordered_facets": [
             {
-              "facet_id": "1856007443",
+              "facet_id": "858679853",
               "observations": [
                 {
                   "date": "1990",
@@ -785,7 +785,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "3514198484",
+              "facet_id": "1151455814",
               "observations": [
                 {
                   "date": "1995",
@@ -905,7 +905,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "2496338593",
+              "facet_id": "4089091283",
               "observations": [
                 {
                   "date": "2000",
@@ -1005,7 +1005,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -1193,7 +1193,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -1213,7 +1213,7 @@
         "nuts/FR103": {
           "ordered_facets": [
             {
-              "facet_id": "1856007443",
+              "facet_id": "858679853",
               "observations": [
                 {
                   "date": "1990",
@@ -1341,7 +1341,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "3514198484",
+              "facet_id": "1151455814",
               "observations": [
                 {
                   "date": "1995",
@@ -1461,7 +1461,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "2496338593",
+              "facet_id": "4089091283",
               "observations": [
                 {
                   "date": "2000",
@@ -1561,7 +1561,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -1749,7 +1749,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -1769,7 +1769,7 @@
         "nuts/FR104": {
           "ordered_facets": [
             {
-              "facet_id": "1856007443",
+              "facet_id": "858679853",
               "observations": [
                 {
                   "date": "1990",
@@ -1897,7 +1897,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "3514198484",
+              "facet_id": "1151455814",
               "observations": [
                 {
                   "date": "1995",
@@ -2017,7 +2017,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "2496338593",
+              "facet_id": "4089091283",
               "observations": [
                 {
                   "date": "2000",
@@ -2117,7 +2117,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -2305,7 +2305,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -2325,7 +2325,7 @@
         "nuts/FR105": {
           "ordered_facets": [
             {
-              "facet_id": "1856007443",
+              "facet_id": "858679853",
               "observations": [
                 {
                   "date": "1990",
@@ -2453,7 +2453,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "3514198484",
+              "facet_id": "1151455814",
               "observations": [
                 {
                   "date": "1995",
@@ -2573,7 +2573,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "2496338593",
+              "facet_id": "4089091283",
               "observations": [
                 {
                   "date": "2000",
@@ -2673,7 +2673,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -2861,7 +2861,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -2881,7 +2881,7 @@
         "nuts/FR106": {
           "ordered_facets": [
             {
-              "facet_id": "1856007443",
+              "facet_id": "858679853",
               "observations": [
                 {
                   "date": "1990",
@@ -3009,7 +3009,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "3514198484",
+              "facet_id": "1151455814",
               "observations": [
                 {
                   "date": "1995",
@@ -3129,7 +3129,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "2496338593",
+              "facet_id": "4089091283",
               "observations": [
                 {
                   "date": "2000",
@@ -3229,7 +3229,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -3417,7 +3417,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -3437,7 +3437,7 @@
         "nuts/FR107": {
           "ordered_facets": [
             {
-              "facet_id": "1856007443",
+              "facet_id": "858679853",
               "observations": [
                 {
                   "date": "1990",
@@ -3565,7 +3565,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "3514198484",
+              "facet_id": "1151455814",
               "observations": [
                 {
                   "date": "1995",
@@ -3685,7 +3685,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "2496338593",
+              "facet_id": "4089091283",
               "observations": [
                 {
                   "date": "2000",
@@ -3785,7 +3785,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -3973,7 +3973,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -3993,7 +3993,7 @@
         "nuts/FR108": {
           "ordered_facets": [
             {
-              "facet_id": "1856007443",
+              "facet_id": "858679853",
               "observations": [
                 {
                   "date": "1990",
@@ -4121,7 +4121,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "3514198484",
+              "facet_id": "1151455814",
               "observations": [
                 {
                   "date": "1995",
@@ -4241,7 +4241,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "2496338593",
+              "facet_id": "4089091283",
               "observations": [
                 {
                   "date": "2000",
@@ -4341,7 +4341,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -4529,7 +4529,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2014",
@@ -4553,7 +4553,7 @@
         "nuts/FR21": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -4569,7 +4569,7 @@
         "nuts/FR211": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -4757,7 +4757,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -4777,7 +4777,7 @@
         "nuts/FR212": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -4965,7 +4965,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -4985,7 +4985,7 @@
         "nuts/FR213": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -5173,7 +5173,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -5193,7 +5193,7 @@
         "nuts/FR214": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -5381,7 +5381,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -5401,7 +5401,7 @@
         "nuts/FR22": {
           "ordered_facets": [
             {
-              "facet_id": "3021124620",
+              "facet_id": "1456184638",
               "observations": [
                 {
                   "date": "2016",
@@ -5413,7 +5413,7 @@
               "latest_date": "2016"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -5429,7 +5429,7 @@
         "nuts/FR221": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -5617,7 +5617,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2014",
@@ -5641,7 +5641,7 @@
         "nuts/FR222": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -5829,7 +5829,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -5849,7 +5849,7 @@
         "nuts/FR223": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -6037,7 +6037,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -6057,7 +6057,7 @@
         "nuts/FR23": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -6073,7 +6073,7 @@
         "nuts/FR231": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -6261,7 +6261,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -6281,7 +6281,7 @@
         "nuts/FR232": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -6469,7 +6469,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -6489,7 +6489,7 @@
         "nuts/FR241": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -6677,7 +6677,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -6697,7 +6697,7 @@
         "nuts/FR242": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -6885,7 +6885,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2014",
@@ -6909,7 +6909,7 @@
         "nuts/FR243": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -7097,7 +7097,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2014",
@@ -7121,7 +7121,7 @@
         "nuts/FR244": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -7309,7 +7309,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -7329,7 +7329,7 @@
         "nuts/FR245": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -7517,7 +7517,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -7537,7 +7537,7 @@
         "nuts/FR246": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -7725,7 +7725,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2010",
@@ -7749,7 +7749,7 @@
         "nuts/FR25": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -7765,7 +7765,7 @@
         "nuts/FR251": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -7953,7 +7953,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -7977,7 +7977,7 @@
         "nuts/FR252": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -8165,7 +8165,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -8185,7 +8185,7 @@
         "nuts/FR253": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -8373,7 +8373,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -8393,7 +8393,7 @@
         "nuts/FR26": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -8409,7 +8409,7 @@
         "nuts/FR261": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -8597,7 +8597,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2012",
@@ -8621,7 +8621,7 @@
         "nuts/FR262": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -8809,7 +8809,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2014",
@@ -8833,7 +8833,7 @@
         "nuts/FR263": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -9021,7 +9021,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -9045,7 +9045,7 @@
         "nuts/FR264": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -9233,7 +9233,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2012",
@@ -9257,7 +9257,7 @@
         "nuts/FR301": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -9445,7 +9445,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -9465,7 +9465,7 @@
         "nuts/FR302": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -9653,7 +9653,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -9673,7 +9673,7 @@
         "nuts/FR41": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -9689,7 +9689,7 @@
         "nuts/FR411": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -9877,7 +9877,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -9897,7 +9897,7 @@
         "nuts/FR412": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -10085,7 +10085,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -10105,7 +10105,7 @@
         "nuts/FR42": {
           "ordered_facets": [
             {
-              "facet_id": "3021124620",
+              "facet_id": "1456184638",
               "observations": [
                 {
                   "date": "2021-01",
@@ -10117,7 +10117,7 @@
               "latest_date": "2021-01"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -10133,7 +10133,7 @@
         "nuts/FR43": {
           "ordered_facets": [
             {
-              "facet_id": "3021124620",
+              "facet_id": "1456184638",
               "observations": [
                 {
                   "date": "2021-01-01",
@@ -10145,7 +10145,7 @@
               "latest_date": "2021-01-01"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -10161,7 +10161,7 @@
         "nuts/FR431": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -10349,7 +10349,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2011",
@@ -10373,7 +10373,7 @@
         "nuts/FR432": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -10561,7 +10561,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -10581,7 +10581,7 @@
         "nuts/FR433": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -10769,7 +10769,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -10789,7 +10789,7 @@
         "nuts/FR434": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -10977,7 +10977,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -10997,7 +10997,7 @@
         "nuts/FR511": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -11185,7 +11185,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -11205,7 +11205,7 @@
         "nuts/FR512": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -11393,7 +11393,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -11413,7 +11413,7 @@
         "nuts/FR513": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -11601,7 +11601,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -11621,7 +11621,7 @@
         "nuts/FR514": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -11809,7 +11809,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -11829,7 +11829,7 @@
         "nuts/FR515": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -12017,7 +12017,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -12045,7 +12045,7 @@
         "nuts/FR521": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -12233,7 +12233,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -12253,7 +12253,7 @@
         "nuts/FR522": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -12441,7 +12441,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -12461,7 +12461,7 @@
         "nuts/FR523": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -12649,7 +12649,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2012",
@@ -12673,7 +12673,7 @@
         "nuts/FR524": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -12861,7 +12861,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -12881,7 +12881,7 @@
         "nuts/FR53": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -12897,7 +12897,7 @@
         "nuts/FR531": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -13085,7 +13085,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -13105,7 +13105,7 @@
         "nuts/FR532": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -13293,7 +13293,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -13313,7 +13313,7 @@
         "nuts/FR533": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -13501,7 +13501,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -13521,7 +13521,7 @@
         "nuts/FR534": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -13709,7 +13709,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -13729,7 +13729,7 @@
         "nuts/FR61": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -13745,7 +13745,7 @@
         "nuts/FR611": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -13933,7 +13933,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -13953,7 +13953,7 @@
         "nuts/FR612": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -14141,7 +14141,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -14161,7 +14161,7 @@
         "nuts/FR613": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -14349,7 +14349,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2011",
@@ -14373,7 +14373,7 @@
         "nuts/FR615": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -14561,7 +14561,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -14581,7 +14581,7 @@
         "nuts/FR62": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2011",
@@ -14601,7 +14601,7 @@
         "nuts/FR621": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -14789,7 +14789,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -14813,7 +14813,7 @@
         "nuts/FR622": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -15001,7 +15001,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -15021,7 +15021,7 @@
         "nuts/FR623": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -15209,7 +15209,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2014",
@@ -15233,7 +15233,7 @@
         "nuts/FR624": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -15421,7 +15421,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -15441,7 +15441,7 @@
         "nuts/FR625": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -15629,7 +15629,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -15649,7 +15649,7 @@
         "nuts/FR626": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -15837,7 +15837,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -15857,7 +15857,7 @@
         "nuts/FR627": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -16045,7 +16045,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -16065,7 +16065,7 @@
         "nuts/FR628": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -16253,7 +16253,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -16273,7 +16273,7 @@
         "nuts/FR631": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -16461,7 +16461,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2014",
@@ -16485,7 +16485,7 @@
         "nuts/FR632": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -16673,7 +16673,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -16693,7 +16693,7 @@
         "nuts/FR633": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -16881,7 +16881,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -16901,7 +16901,7 @@
         "nuts/FR71": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -16917,7 +16917,7 @@
         "nuts/FR711": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -17105,7 +17105,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -17125,7 +17125,7 @@
         "nuts/FR712": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -17313,7 +17313,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2014",
@@ -17337,7 +17337,7 @@
         "nuts/FR713": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -17525,7 +17525,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -17545,7 +17545,7 @@
         "nuts/FR714": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -17733,7 +17733,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2014",
@@ -17757,7 +17757,7 @@
         "nuts/FR715": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -17945,7 +17945,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -17965,7 +17965,7 @@
         "nuts/FR717": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -18153,7 +18153,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -18173,7 +18173,7 @@
         "nuts/FR718": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -18361,7 +18361,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -18381,7 +18381,7 @@
         "nuts/FR72": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -18397,7 +18397,7 @@
         "nuts/FR721": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -18585,7 +18585,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -18605,7 +18605,7 @@
         "nuts/FR722": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -18793,7 +18793,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -18813,7 +18813,7 @@
         "nuts/FR723": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -19001,7 +19001,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -19021,7 +19021,7 @@
         "nuts/FR724": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -19209,7 +19209,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -19229,7 +19229,7 @@
         "nuts/FR81": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -19245,7 +19245,7 @@
         "nuts/FR811": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -19433,7 +19433,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -19453,7 +19453,7 @@
         "nuts/FR812": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -19641,7 +19641,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -19661,7 +19661,7 @@
         "nuts/FR813": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -19849,7 +19849,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2014",
@@ -19873,7 +19873,7 @@
         "nuts/FR814": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -20061,7 +20061,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2014",
@@ -20085,7 +20085,7 @@
         "nuts/FR815": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -20273,7 +20273,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2011",
@@ -20297,7 +20297,7 @@
         "nuts/FR821": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -20485,7 +20485,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -20505,7 +20505,7 @@
         "nuts/FR822": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -20693,7 +20693,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -20713,7 +20713,7 @@
         "nuts/FR823": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -20901,7 +20901,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -20921,7 +20921,7 @@
         "nuts/FR824": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -21109,7 +21109,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -21129,7 +21129,7 @@
         "nuts/FR825": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -21317,7 +21317,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -21337,7 +21337,7 @@
         "nuts/FR826": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -21525,7 +21525,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -21545,7 +21545,7 @@
         "nuts/FR831": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -21733,7 +21733,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -21757,7 +21757,7 @@
         "nuts/FR832": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -21945,7 +21945,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -21969,7 +21969,7 @@
         "nuts/FRI14": {
           "ordered_facets": [
             {
-              "facet_id": "1856007443",
+              "facet_id": "858679853",
               "observations": [
                 {
                   "date": "1990",
@@ -22097,7 +22097,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "3514198484",
+              "facet_id": "1151455814",
               "observations": [
                 {
                   "date": "1995",
@@ -22217,7 +22217,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "2496338593",
+              "facet_id": "4089091283",
               "observations": [
                 {
                   "date": "2000",
@@ -22317,7 +22317,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1975",
@@ -22505,7 +22505,7 @@
               "latest_date": "2019"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -22525,7 +22525,7 @@
         "wikidataId/Q1014741": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1968",
@@ -22561,7 +22561,7 @@
               "latest_date": "2015"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -22585,7 +22585,7 @@
         "wikidataId/Q1014751": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1968",
@@ -22625,7 +22625,7 @@
         "wikidataId/Q1014790": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1968",
@@ -22665,7 +22665,7 @@
         "wikidataId/Q1014795": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1968",
@@ -22705,7 +22705,7 @@
         "wikidataId/Q1014805": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -22729,7 +22729,7 @@
         "wikidataId/Q1116153": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -22749,7 +22749,7 @@
         "wikidataId/Q1116542": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -22769,7 +22769,7 @@
         "wikidataId/Q1116591": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -22789,7 +22789,7 @@
         "wikidataId/Q132224": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -22809,7 +22809,7 @@
         "wikidataId/Q134680": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -22833,7 +22833,7 @@
         "wikidataId/Q139174": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -22853,7 +22853,7 @@
         "wikidataId/Q14812": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2012",
@@ -22881,7 +22881,7 @@
         "wikidataId/Q163104": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -22901,7 +22901,7 @@
         "wikidataId/Q167024": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -22925,7 +22925,7 @@
         "wikidataId/Q175478": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -22945,7 +22945,7 @@
         "wikidataId/Q180843": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -22965,7 +22965,7 @@
         "wikidataId/Q18114": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2012",
@@ -22993,7 +22993,7 @@
         "wikidataId/Q201008": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23013,7 +23013,7 @@
         "wikidataId/Q205854": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23033,7 +23033,7 @@
         "wikidataId/Q212673": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23053,7 +23053,7 @@
         "wikidataId/Q262723": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23073,7 +23073,7 @@
         "wikidataId/Q284277": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23093,7 +23093,7 @@
         "wikidataId/Q28476540": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23113,7 +23113,7 @@
         "wikidataId/Q302457": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23133,7 +23133,7 @@
         "wikidataId/Q335322": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1968",
@@ -23169,7 +23169,7 @@
               "latest_date": "2015"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -23193,7 +23193,7 @@
         "wikidataId/Q370557": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23213,7 +23213,7 @@
         "wikidataId/Q372942": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23233,7 +23233,7 @@
         "wikidataId/Q386243": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1968",
@@ -23269,7 +23269,7 @@
               "latest_date": "2015"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -23293,7 +23293,7 @@
         "wikidataId/Q511613": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23313,7 +23313,7 @@
         "wikidataId/Q512664": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23333,7 +23333,7 @@
         "wikidataId/Q517570": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23353,7 +23353,7 @@
         "wikidataId/Q520913": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23373,7 +23373,7 @@
         "wikidataId/Q534383": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23393,7 +23393,7 @@
         "wikidataId/Q537277": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23413,7 +23413,7 @@
         "wikidataId/Q539378": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23433,7 +23433,7 @@
         "wikidataId/Q539756": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1968",
@@ -23469,7 +23469,7 @@
               "latest_date": "2015"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -23493,7 +23493,7 @@
         "wikidataId/Q543784": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23513,7 +23513,7 @@
         "wikidataId/Q547847": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23533,7 +23533,7 @@
         "wikidataId/Q549111": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23553,7 +23553,7 @@
         "wikidataId/Q569447": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1968",
@@ -23589,7 +23589,7 @@
               "latest_date": "2015"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -23613,7 +23613,7 @@
         "wikidataId/Q571456": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23633,7 +23633,7 @@
         "wikidataId/Q580284": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23653,7 +23653,7 @@
         "wikidataId/Q582305": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23673,7 +23673,7 @@
         "wikidataId/Q584641": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23693,7 +23693,7 @@
         "wikidataId/Q585380": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23713,7 +23713,7 @@
         "wikidataId/Q586597": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23733,7 +23733,7 @@
         "wikidataId/Q588823": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23753,7 +23753,7 @@
         "wikidataId/Q596603": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23773,7 +23773,7 @@
         "wikidataId/Q597652": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23793,7 +23793,7 @@
         "wikidataId/Q600345": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23813,7 +23813,7 @@
         "wikidataId/Q600838": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23833,7 +23833,7 @@
         "wikidataId/Q608267": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23853,7 +23853,7 @@
         "wikidataId/Q608483": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1968",
@@ -23889,7 +23889,7 @@
               "latest_date": "2015"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -23913,7 +23913,7 @@
         "wikidataId/Q612145": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23933,7 +23933,7 @@
         "wikidataId/Q616226": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23953,7 +23953,7 @@
         "wikidataId/Q629410": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23973,7 +23973,7 @@
         "wikidataId/Q630159": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -23993,7 +23993,7 @@
         "wikidataId/Q633970": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24013,7 +24013,7 @@
         "wikidataId/Q639304": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24033,7 +24033,7 @@
         "wikidataId/Q641167": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24053,7 +24053,7 @@
         "wikidataId/Q642854": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24073,7 +24073,7 @@
         "wikidataId/Q651187": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1968",
@@ -24113,7 +24113,7 @@
         "wikidataId/Q652833": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24133,7 +24133,7 @@
         "wikidataId/Q653514": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24153,7 +24153,7 @@
         "wikidataId/Q654357": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24173,7 +24173,7 @@
         "wikidataId/Q659331": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24193,7 +24193,7 @@
         "wikidataId/Q660165": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1968",
@@ -24229,7 +24229,7 @@
               "latest_date": "2015"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -24253,7 +24253,7 @@
         "wikidataId/Q662088": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24273,7 +24273,7 @@
         "wikidataId/Q667555": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24293,7 +24293,7 @@
         "wikidataId/Q672744": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24313,7 +24313,7 @@
         "wikidataId/Q700367": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24333,7 +24333,7 @@
         "wikidataId/Q700385": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24353,7 +24353,7 @@
         "wikidataId/Q700396": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24373,7 +24373,7 @@
         "wikidataId/Q700401": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24393,7 +24393,7 @@
         "wikidataId/Q700420": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24413,7 +24413,7 @@
         "wikidataId/Q700427": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24433,7 +24433,7 @@
         "wikidataId/Q700433": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24453,7 +24453,7 @@
         "wikidataId/Q700464": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24473,7 +24473,7 @@
         "wikidataId/Q700472": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24493,7 +24493,7 @@
         "wikidataId/Q700484": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24513,7 +24513,7 @@
         "wikidataId/Q700495": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24533,7 +24533,7 @@
         "wikidataId/Q700507": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24553,7 +24553,7 @@
         "wikidataId/Q700509": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24573,7 +24573,7 @@
         "wikidataId/Q700534": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24593,7 +24593,7 @@
         "wikidataId/Q700536": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24613,7 +24613,7 @@
         "wikidataId/Q700549": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2006",
@@ -24637,7 +24637,7 @@
         "wikidataId/Q700557": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24657,7 +24657,7 @@
         "wikidataId/Q700581": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24677,7 +24677,7 @@
         "wikidataId/Q700609": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24697,7 +24697,7 @@
         "wikidataId/Q700637": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24717,7 +24717,7 @@
         "wikidataId/Q700647": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24737,7 +24737,7 @@
         "wikidataId/Q700664": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24757,7 +24757,7 @@
         "wikidataId/Q700697": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24777,7 +24777,7 @@
         "wikidataId/Q700712": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24797,7 +24797,7 @@
         "wikidataId/Q700723": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24817,7 +24817,7 @@
         "wikidataId/Q700737": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24837,7 +24837,7 @@
         "wikidataId/Q700744": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24857,7 +24857,7 @@
         "wikidataId/Q700748": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24877,7 +24877,7 @@
         "wikidataId/Q700755": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24897,7 +24897,7 @@
         "wikidataId/Q700768": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24917,7 +24917,7 @@
         "wikidataId/Q700778": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24937,7 +24937,7 @@
         "wikidataId/Q700794": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24957,7 +24957,7 @@
         "wikidataId/Q700795": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24977,7 +24977,7 @@
         "wikidataId/Q700826": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -24997,7 +24997,7 @@
         "wikidataId/Q700845": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25017,7 +25017,7 @@
         "wikidataId/Q700869": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25037,7 +25037,7 @@
         "wikidataId/Q700882": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25057,7 +25057,7 @@
         "wikidataId/Q700884": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25077,7 +25077,7 @@
         "wikidataId/Q700900": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25097,7 +25097,7 @@
         "wikidataId/Q700901": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25117,7 +25117,7 @@
         "wikidataId/Q700914": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25137,7 +25137,7 @@
         "wikidataId/Q700916": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25157,7 +25157,7 @@
         "wikidataId/Q700965": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25177,7 +25177,7 @@
         "wikidataId/Q700994": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25197,7 +25197,7 @@
         "wikidataId/Q700998": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25217,7 +25217,7 @@
         "wikidataId/Q701005": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25237,7 +25237,7 @@
         "wikidataId/Q701009": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25257,7 +25257,7 @@
         "wikidataId/Q701022": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25277,7 +25277,7 @@
         "wikidataId/Q701038": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25297,7 +25297,7 @@
         "wikidataId/Q701047": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25317,7 +25317,7 @@
         "wikidataId/Q701061": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25337,7 +25337,7 @@
         "wikidataId/Q701072": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25357,7 +25357,7 @@
         "wikidataId/Q701097": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25377,7 +25377,7 @@
         "wikidataId/Q701110": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25397,7 +25397,7 @@
         "wikidataId/Q701131": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25417,7 +25417,7 @@
         "wikidataId/Q701143": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25437,7 +25437,7 @@
         "wikidataId/Q701177": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25457,7 +25457,7 @@
         "wikidataId/Q701190": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25477,7 +25477,7 @@
         "wikidataId/Q701222": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25497,7 +25497,7 @@
         "wikidataId/Q701227": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25517,7 +25517,7 @@
         "wikidataId/Q701238": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25537,7 +25537,7 @@
         "wikidataId/Q701242": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25557,7 +25557,7 @@
         "wikidataId/Q701253": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25577,7 +25577,7 @@
         "wikidataId/Q701309": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25597,7 +25597,7 @@
         "wikidataId/Q701349": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25617,7 +25617,7 @@
         "wikidataId/Q701370": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25637,7 +25637,7 @@
         "wikidataId/Q701385": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25657,7 +25657,7 @@
         "wikidataId/Q701386": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25677,7 +25677,7 @@
         "wikidataId/Q701396": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25697,7 +25697,7 @@
         "wikidataId/Q701410": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25717,7 +25717,7 @@
         "wikidataId/Q701422": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25737,7 +25737,7 @@
         "wikidataId/Q701439": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25757,7 +25757,7 @@
         "wikidataId/Q701465": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25777,7 +25777,7 @@
         "wikidataId/Q701467": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25797,7 +25797,7 @@
         "wikidataId/Q701477": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25817,7 +25817,7 @@
         "wikidataId/Q701510": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25837,7 +25837,7 @@
         "wikidataId/Q701530": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25857,7 +25857,7 @@
         "wikidataId/Q701531": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25877,7 +25877,7 @@
         "wikidataId/Q701546": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25897,7 +25897,7 @@
         "wikidataId/Q701568": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25917,7 +25917,7 @@
         "wikidataId/Q701572": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25937,7 +25937,7 @@
         "wikidataId/Q701604": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2017",
@@ -25953,7 +25953,7 @@
         "wikidataId/Q701646": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25973,7 +25973,7 @@
         "wikidataId/Q701652": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -25993,7 +25993,7 @@
         "wikidataId/Q701660": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26013,7 +26013,7 @@
         "wikidataId/Q701708": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26033,7 +26033,7 @@
         "wikidataId/Q701711": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26053,7 +26053,7 @@
         "wikidataId/Q701744": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26073,7 +26073,7 @@
         "wikidataId/Q701749": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26093,7 +26093,7 @@
         "wikidataId/Q701760": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26113,7 +26113,7 @@
         "wikidataId/Q701773": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26133,7 +26133,7 @@
         "wikidataId/Q701776": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26153,7 +26153,7 @@
         "wikidataId/Q701790": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26173,7 +26173,7 @@
         "wikidataId/Q701804": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26193,7 +26193,7 @@
         "wikidataId/Q701806": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26213,7 +26213,7 @@
         "wikidataId/Q701861": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26233,7 +26233,7 @@
         "wikidataId/Q701873": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26253,7 +26253,7 @@
         "wikidataId/Q701903": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26273,7 +26273,7 @@
         "wikidataId/Q701933": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26293,7 +26293,7 @@
         "wikidataId/Q701961": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26313,7 +26313,7 @@
         "wikidataId/Q701995": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26333,7 +26333,7 @@
         "wikidataId/Q702013": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26353,7 +26353,7 @@
         "wikidataId/Q702045": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26373,7 +26373,7 @@
         "wikidataId/Q702051": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26393,7 +26393,7 @@
         "wikidataId/Q702066": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26413,7 +26413,7 @@
         "wikidataId/Q702122": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26433,7 +26433,7 @@
         "wikidataId/Q702130": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26453,7 +26453,7 @@
         "wikidataId/Q702145": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26473,7 +26473,7 @@
         "wikidataId/Q702161": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26493,7 +26493,7 @@
         "wikidataId/Q702168": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26513,7 +26513,7 @@
         "wikidataId/Q702180": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26533,7 +26533,7 @@
         "wikidataId/Q702196": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26553,7 +26553,7 @@
         "wikidataId/Q702199": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26573,7 +26573,7 @@
         "wikidataId/Q702214": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26593,7 +26593,7 @@
         "wikidataId/Q702227": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26613,7 +26613,7 @@
         "wikidataId/Q702245": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26633,7 +26633,7 @@
         "wikidataId/Q702279": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26653,7 +26653,7 @@
         "wikidataId/Q702330": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26673,7 +26673,7 @@
         "wikidataId/Q702350": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26693,7 +26693,7 @@
         "wikidataId/Q702367": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26713,7 +26713,7 @@
         "wikidataId/Q702426": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26733,7 +26733,7 @@
         "wikidataId/Q702441": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26753,7 +26753,7 @@
         "wikidataId/Q702444": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26773,7 +26773,7 @@
         "wikidataId/Q702457": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26793,7 +26793,7 @@
         "wikidataId/Q702466": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26813,7 +26813,7 @@
         "wikidataId/Q702471": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26833,7 +26833,7 @@
         "wikidataId/Q702496": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26853,7 +26853,7 @@
         "wikidataId/Q702522": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26873,7 +26873,7 @@
         "wikidataId/Q702534": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26893,7 +26893,7 @@
         "wikidataId/Q702552": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26913,7 +26913,7 @@
         "wikidataId/Q702577": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26933,7 +26933,7 @@
         "wikidataId/Q702629": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26953,7 +26953,7 @@
         "wikidataId/Q702642": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26973,7 +26973,7 @@
         "wikidataId/Q702655": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -26993,7 +26993,7 @@
         "wikidataId/Q702689": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -27013,7 +27013,7 @@
         "wikidataId/Q702702": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -27033,7 +27033,7 @@
         "wikidataId/Q702713": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -27053,7 +27053,7 @@
         "wikidataId/Q702745": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -27073,7 +27073,7 @@
         "wikidataId/Q702750": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -27093,7 +27093,7 @@
         "wikidataId/Q702768": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -27113,7 +27113,7 @@
         "wikidataId/Q702787": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -27133,7 +27133,7 @@
         "wikidataId/Q702790": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -27153,7 +27153,7 @@
         "wikidataId/Q702799": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -27173,7 +27173,7 @@
         "wikidataId/Q702812": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -27193,7 +27193,7 @@
         "wikidataId/Q702852": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -27213,7 +27213,7 @@
         "wikidataId/Q702862": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -27233,7 +27233,7 @@
         "wikidataId/Q702864": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -27253,7 +27253,7 @@
         "wikidataId/Q702873": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -27273,7 +27273,7 @@
         "wikidataId/Q767111": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1968",
@@ -27309,7 +27309,7 @@
               "latest_date": "2015"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -27333,7 +27333,7 @@
         "wikidataId/Q773569": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1968",
@@ -27373,7 +27373,7 @@
         "wikidataId/Q844987": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1968",
@@ -27413,7 +27413,7 @@
         "wikidataId/Q845039": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1968",
@@ -27453,7 +27453,7 @@
         "wikidataId/Q895024": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1968",
@@ -27489,7 +27489,7 @@
               "latest_date": "2015"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -27513,7 +27513,7 @@
         "wikidataId/Q93949": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -27533,7 +27533,7 @@
         "wikidataId/Q940292": {
           "ordered_facets": [
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -27553,7 +27553,7 @@
         "wikidataId/Q996138": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1968",
@@ -27589,7 +27589,7 @@
               "latest_date": "2015"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -27613,7 +27613,7 @@
         "wikidataId/Q996207": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1968",
@@ -27649,7 +27649,7 @@
               "latest_date": "2015"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -27673,7 +27673,7 @@
         "wikidataId/Q996301": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1968",
@@ -27713,7 +27713,7 @@
         "wikidataId/Q996320": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1968",
@@ -27753,7 +27753,7 @@
         "wikidataId/Q996336": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1968",
@@ -27789,7 +27789,7 @@
               "latest_date": "2015"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -27813,7 +27813,7 @@
         "wikidataId/Q996367": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1968",
@@ -27853,7 +27853,7 @@
         "wikidataId/Q996400": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1968",
@@ -27889,7 +27889,7 @@
               "latest_date": "2015"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -27913,7 +27913,7 @@
         "wikidataId/Q996414": {
           "ordered_facets": [
             {
-              "facet_id": "3771313473",
+              "facet_id": "738965619",
               "observations": [
                 {
                   "date": "1968",
@@ -27949,7 +27949,7 @@
               "latest_date": "2015"
             },
             {
-              "facet_id": "4071544381",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2013",
@@ -27974,40 +27974,40 @@
     }
   },
   "facets": {
-    "1802356941": {
-      "import_name": "UNData",
-      "provenance_url": "http://data.un.org",
-      "measurement_method": "UNData"
-    },
-    "1856007443": {
-      "import_name": "EurostatData",
-      "provenance_url": "https://ec.europa.eu/eurostat/data/database",
-      "measurement_method": "EurostatRegionalPopulationData"
-    },
-    "2496338593": {
-      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
-      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true"
-    },
-    "3021124620": {
-      "import_name": "WikipediaStatsData",
-      "provenance_url": "https://www.wikipedia.org",
-      "measurement_method": "Wikipedia"
-    },
-    "3514198484": {
+    "1151455814": {
       "import_name": "OECDRegionalDemography",
       "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
       "measurement_method": "OECDRegionalStatistics",
       "observation_period": "P1Y"
     },
-    "3771313473": {
+    "1456184638": {
+      "import_name": "WikipediaStatsData",
+      "provenance_url": "https://www.wikipedia.org",
+      "measurement_method": "Wikipedia"
+    },
+    "1794369807": {
+      "import_name": "UNData",
+      "provenance_url": "http://data.un.org",
+      "measurement_method": "UNData"
+    },
+    "2458695583": {
+      "import_name": "WikidataPopulation",
+      "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+      "measurement_method": "WikidataPopulation"
+    },
+    "4089091283": {
+      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
+      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true"
+    },
+    "738965619": {
       "import_name": "FranceINSEE",
       "provenance_url": "https://www.insee.fr/en/metadonnees/source/indicateur/p1667/description",
       "measurement_method": "FranceINSEE"
     },
-    "4071544381": {
-      "import_name": "WikidataPopulation",
-      "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
-      "measurement_method": "WikidataPopulation"
+    "858679853": {
+      "import_name": "EurostatData",
+      "provenance_url": "https://ec.europa.eu/eurostat/data/database",
+      "measurement_method": "EurostatRegionalPopulationData"
     }
   }
 }

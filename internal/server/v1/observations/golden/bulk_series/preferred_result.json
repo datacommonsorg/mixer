@@ -152,7 +152,7 @@
                   "value": 67012883
                 }
               ],
-              "facet": "1856007443"
+              "facet": "858679853"
             }
           ]
         },
@@ -654,7 +654,7 @@
                   "value": 333287557
                 }
               ],
-              "facet": "2782870351"
+              "facet": "2176550201"
             }
           ]
         },
@@ -1156,7 +1156,7 @@
                   "value": 39029342
                 }
               ],
-              "facet": "2782870351"
+              "facet": "2176550201"
             }
           ]
         },
@@ -1298,7 +1298,7 @@
                   "value": 81059
                 }
               ],
-              "facet": "2782870351"
+              "facet": "2176550201"
             }
           ]
         }
@@ -1347,7 +1347,7 @@
                   "value": 7542.230000000022
                 }
               ],
-              "facet": "1130559990"
+              "facet": "2157651424"
             }
           ]
         },
@@ -1385,7 +1385,7 @@
                   "value": 726.7499999999998
                 }
               ],
-              "facet": "1130559990"
+              "facet": "2157651424"
             }
           ]
         },
@@ -1465,7 +1465,7 @@
                   "value": 7782709
                 }
               ],
-              "facet": "3051661419"
+              "facet": "1688273529"
             }
           ]
         },
@@ -1531,7 +1531,7 @@
                   "value": 1109452
                 }
               ],
-              "facet": "257807766"
+              "facet": "4277990144"
             }
           ]
         },
@@ -1589,7 +1589,7 @@
                   "value": 2634
                 }
               ],
-              "facet": "257807766"
+              "facet": "4277990144"
             }
           ]
         }
@@ -1739,7 +1739,7 @@
                   "value": 56370
                 }
               ],
-              "facet": "2070878104"
+              "facet": "2171028778"
             }
           ]
         },
@@ -1881,7 +1881,7 @@
                   "value": 77950
                 }
               ],
-              "facet": "2070878104"
+              "facet": "2171028778"
             }
           ]
         },
@@ -2028,7 +2028,7 @@
                   "value": 4405511000000
                 }
               ],
-              "facet": "650921773"
+              "facet": "1450533103"
             }
           ]
         },
@@ -2118,7 +2118,7 @@
                   "value": 194110262920
                 }
               ],
-              "facet": "3979166257"
+              "facet": "2392525955"
             }
           ]
         },
@@ -5822,7 +5822,7 @@
                   "value": 7115000
                 }
               ],
-              "facet": "2054339971"
+              "facet": "3707913853"
             }
           ]
         },
@@ -8168,7 +8168,7 @@
                   "value": 1140496
                 }
               ],
-              "facet": "3157369141"
+              "facet": "324358135"
             }
           ]
         },
@@ -9838,7 +9838,7 @@
                   "value": 1760
                 }
               ],
-              "facet": "3157369141"
+              "facet": "324358135"
             }
           ]
         }
@@ -9846,62 +9846,62 @@
     }
   ],
   "facets": {
-    "1130559990": {
-      "import_name": "USGSWaterUse",
-      "provenance_url": "https://waterdata.usgs.gov/nwis/wu",
+    "1450533103": {
+      "import_name": "UNEnergy",
+      "provenance_url": "https://unstats.un.org/unsd/energystats/data/",
       "observation_period": "P1Y",
-      "unit": "MillionGallonsPerDay"
+      "unit": "KilowattHour"
     },
-    "1856007443": {
-      "import_name": "EurostatData",
-      "provenance_url": "https://ec.europa.eu/eurostat/data/database",
-      "measurement_method": "EurostatRegionalPopulationData"
-    },
-    "2054339971": {
-      "import_name": "BLS_CPS",
-      "provenance_url": "https://www.bls.gov/cps/",
-      "measurement_method": "BLSSeasonallyAdjusted",
-      "observation_period": "P1M"
-    },
-    "2070878104": {
-      "import_name": "WorldDevelopmentIndicators",
-      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
-      "observation_period": "P1Y",
-      "unit": "InternationalDollar"
-    },
-    "257807766": {
-      "import_name": "FBIGovCrime",
-      "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
-      "observation_period": "P1Y"
-    },
-    "2782870351": {
-      "import_name": "USCensusPEP_Annual_Population",
-      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
-      "measurement_method": "CensusPEPSurvey",
-      "observation_period": "P1Y"
-    },
-    "3051661419": {
+    "1688273529": {
       "import_name": "FBIGovCrime_AggCountry",
       "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
       "observation_period": "P1Y",
       "is_dc_aggregate": true
     },
-    "3157369141": {
+    "2157651424": {
+      "import_name": "USGSWaterUse",
+      "provenance_url": "https://waterdata.usgs.gov/nwis/wu",
+      "observation_period": "P1Y",
+      "unit": "MillionGallonsPerDay"
+    },
+    "2171028778": {
+      "import_name": "WorldDevelopmentIndicators",
+      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "observation_period": "P1Y",
+      "unit": "InternationalDollar"
+    },
+    "2176550201": {
+      "import_name": "USCensusPEP_Annual_Population",
+      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
+      "measurement_method": "CensusPEPSurvey",
+      "observation_period": "P1Y"
+    },
+    "2392525955": {
+      "import_name": "EIA_Electricity",
+      "provenance_url": "https://www.eia.gov/opendata/qb.php?category=0",
+      "unit": "KilowattHour"
+    },
+    "324358135": {
       "import_name": "BLS_LAUS",
       "provenance_url": "https://www.bls.gov/lau/",
       "measurement_method": "BLSSeasonallyUnadjusted",
       "observation_period": "P1M"
     },
-    "3979166257": {
-      "import_name": "EIA_Electricity",
-      "provenance_url": "https://www.eia.gov/opendata/qb.php?category=0",
-      "unit": "KilowattHour"
+    "3707913853": {
+      "import_name": "BLS_CPS",
+      "provenance_url": "https://www.bls.gov/cps/",
+      "measurement_method": "BLSSeasonallyAdjusted",
+      "observation_period": "P1M"
     },
-    "650921773": {
-      "import_name": "UNEnergy",
-      "provenance_url": "https://unstats.un.org/unsd/energystats/data/",
-      "observation_period": "P1Y",
-      "unit": "KilowattHour"
+    "4277990144": {
+      "import_name": "FBIGovCrime",
+      "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
+      "observation_period": "P1Y"
+    },
+    "858679853": {
+      "import_name": "EurostatData",
+      "provenance_url": "https://ec.europa.eu/eurostat/data/database",
+      "measurement_method": "EurostatRegionalPopulationData"
     }
   }
 }

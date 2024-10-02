@@ -5,7 +5,7 @@
         "country/USA": {
           "ordered_facets": [
             {
-              "facet_id": "3514198484",
+              "facet_id": "1151455814",
               "observations": [
                 {
                   "date": "2022",
@@ -17,7 +17,7 @@
               "latest_date": "2022"
             },
             {
-              "facet_id": "1827834578",
+              "facet_id": "2825511676",
               "observations": [
                 {
                   "date": "2020",
@@ -34,15 +34,15 @@
     }
   },
   "facets": {
-    "1827834578": {
-      "import_name": "CDC_Mortality_UnderlyingCause",
-      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
-    },
-    "3514198484": {
+    "1151455814": {
       "import_name": "OECDRegionalDemography",
       "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
       "measurement_method": "OECDRegionalStatistics",
       "observation_period": "P1Y"
+    },
+    "2825511676": {
+      "import_name": "CDC_Mortality_UnderlyingCause",
+      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
     }
   }
 }
