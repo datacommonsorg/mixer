@@ -29,25 +29,7 @@
           "span": "california",
           "entities": [
             {
-              "dcid": "bio/AlphacarmovirusCalibrachoae_California"
-            },
-            {
-              "dcid": "bio/AlphacarmovirusLonicerae_California"
-            },
-            {
-              "dcid": "bio/CeleryMosaicVirus_California"
-            },
-            {
               "dcid": "bio/D002140"
-            },
-            {
-              "dcid": "bio/LettuceChlorosisVirus_California"
-            },
-            {
-              "dcid": "bio/LuteovirusRosae_California"
-            },
-            {
-              "dcid": "bio/PepperMottleVirus_California"
             }
           ]
         }
@@ -56,18 +38,7 @@
     "tell me about the gene me and the mesh descriptor genes": {
       "items": [
         {
-          "span": "tell me about the"
-        },
-        {
-          "span": "gene me",
-          "entities": [
-            {
-              "dcid": "bio/FabavirusBetaviciae_ME"
-            }
-          ]
-        },
-        {
-          "span": "and the"
+          "span": "tell me about the gene me and the"
         },
         {
           "span": "mesh descriptor genes",
