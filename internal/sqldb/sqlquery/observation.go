@@ -128,8 +128,7 @@ func toFacet(cachedProvenances map[string]*pb.Facet, provenance, unit, scalingFa
 	facet.ScalingFactor = scalingFactor
 	facet.MeasurementMethod = measurementMethod
 	facet.ObservationPeriod = observationPeriod
-	util.GetFacetID(facet)
-	return provenance, facet
+	return util.GetFacetID(facet), facet
 }
 
 func getObservationsSQLQuery(variables []string,

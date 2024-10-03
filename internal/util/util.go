@@ -40,7 +40,7 @@ import (
 	"cloud.google.com/go/secretmanager/apiv1/secretmanagerpb"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	"github.com/go-sql-driver/mysql"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 	"google.golang.org/grpc/codes"
@@ -49,7 +49,6 @@ import (
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"googlemaps.github.io/maps"
-	"modernc.org/sqlite"
 )
 
 const (
@@ -603,11 +602,11 @@ func SQLInParam(n int) string {
 }
 
 func SQLListParam(sqlClient *sql.DB, n int) (string, error) {
-	switch sqlClient.Driver().(type) {
-	case *sqlite.Driver:
+	switch sqldb.GetSQLDriver(sqlClient) {
+	case sqldb.SQLDriverSQLite:
 		str := "VALUES " + strings.Repeat("(?),", n)
 		return str[:len(str)-1], nil
-	case *mysql.MySQLDriver:
+	case sqldb.SQLDriverMySQL:
 		result := ""
 		for i := 0; i < n-1; i++ {
 			result += "SELECT ? UNION ALL "
