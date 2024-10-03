@@ -194,7 +194,7 @@ func TestFetchDirect(t *testing.T) {
 				continue
 			}
 			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-				t.Errorf("payload got diff: %v", diff)
+				t.Errorf("payload got diff(%s): %v", goldenFile, diff)
 				continue
 			}
 		}
