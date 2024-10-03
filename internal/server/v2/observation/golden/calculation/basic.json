@@ -2,12 +2,74 @@
   "by_variable": {
     "Count_Person_Female": {
       "by_entity": {
-        "wikidataId/Q613": {}
+        "wikidataId/Q613": {
+          "ordered_facets": [
+            {
+              "facet_id": "3238703853",
+              "observations": [
+                {
+                  "date": "1975",
+                  "value": 54366
+                },
+                {
+                  "date": "1980",
+                  "value": 88587
+                },
+                {
+                  "date": "1985",
+                  "value": 123609
+                },
+                {
+                  "date": "1995",
+                  "value": 211211
+                },
+                {
+                  "date": "2005",
+                  "value": 332148
+                }
+              ],
+              "obs_count": 5,
+              "earliest_date": "1975",
+              "latest_date": "2005"
+            }
+          ]
+        }
       }
     },
     "Count_Person_Male": {
       "by_entity": {
-        "wikidataId/Q613": {}
+        "wikidataId/Q613": {
+          "ordered_facets": [
+            {
+              "facet_id": "3238703853",
+              "observations": [
+                {
+                  "date": "1975",
+                  "value": 128821
+                },
+                {
+                  "date": "1980",
+                  "value": 187714
+                },
+                {
+                  "date": "1985",
+                  "value": 247179
+                },
+                {
+                  "date": "1995",
+                  "value": 478209
+                },
+                {
+                  "date": "2005",
+                  "value": 989305
+                }
+              ],
+              "obs_count": 5,
+              "earliest_date": "1975",
+              "latest_date": "2005"
+            }
+          ]
+        }
       }
     },
     "Count_WetBulbTemperatureEvent": {
@@ -15,7 +77,7 @@
         "wikidataId/Q613": {
           "ordered_facets": [
             {
-              "facet_id": "3395834753",
+              "facet_id": "409660979",
               "observations": [
                 {
                   "date": "2022-06-10",
@@ -127,7 +189,7 @@
               "latest_date": "2022-09-16"
             },
             {
-              "facet_id": "3666238369",
+              "facet_id": "263855571",
               "observations": [
                 {
                   "date": "2022-06",
@@ -151,7 +213,7 @@
               "latest_date": "2022-09"
             },
             {
-              "facet_id": "3637940589",
+              "facet_id": "341794991",
               "observations": [
                 {
                   "date": "2022",
@@ -168,19 +230,24 @@
     }
   },
   "facets": {
-    "3395834753": {
+    "263855571": {
       "import_name": "WetBulbTemperatureEventPlaces_AutoRefresh",
-      "provenance_url": "https://datacommons.org/"
+      "provenance_url": "https://datacommons.org/",
+      "observation_period": "P1M"
     },
-    "3637940589": {
+    "3238703853": {
+      "import_name": "UAE_Population",
+      "provenance_url": "https://admin.bayanat.ae/Dataset/DownloadDatasetResource?fileId=26585eaf-9a9c-486d-b773-fc51ef0204c9&resourceID=11243",
+      "is_dc_aggregate": true
+    },
+    "341794991": {
       "import_name": "WetBulbTemperatureEventPlaces_AutoRefresh",
       "provenance_url": "https://datacommons.org/",
       "observation_period": "P1Y"
     },
-    "3666238369": {
+    "409660979": {
       "import_name": "WetBulbTemperatureEventPlaces_AutoRefresh",
-      "provenance_url": "https://datacommons.org/",
-      "observation_period": "P1M"
+      "provenance_url": "https://datacommons.org/"
     }
   }
 }

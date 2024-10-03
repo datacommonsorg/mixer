@@ -5,46 +5,46 @@
         "": {
           "ordered_facets": [
             {
-              "facet_id": "2782870351"
+              "facet_id": "2176550201"
             },
             {
-              "facet_id": "4235218097"
+              "facet_id": "1145703171"
             },
             {
-              "facet_id": "2879689438"
+              "facet_id": "1541763368"
             },
             {
-              "facet_id": "1827834578"
+              "facet_id": "2825511676"
             },
             {
-              "facet_id": "3621147761"
+              "facet_id": "1226172227"
             },
             {
-              "facet_id": "3324054765"
+              "facet_id": "10983471"
             },
             {
-              "facet_id": "3547644235"
+              "facet_id": "377779557"
             },
             {
-              "facet_id": "323018599"
+              "facet_id": "196790193"
             },
             {
-              "facet_id": "2331484329"
+              "facet_id": "3144703963"
             },
             {
-              "facet_id": "1334978221"
+              "facet_id": "1964317807"
             },
             {
-              "facet_id": "3043065123"
+              "facet_id": "2517965213"
             },
             {
-              "facet_id": "3514198484"
+              "facet_id": "1151455814"
             },
             {
-              "facet_id": "3021124620"
+              "facet_id": "1456184638"
             },
             {
-              "facet_id": "4071544381"
+              "facet_id": "2458695583"
             }
           ]
         }
@@ -55,22 +55,22 @@
         "": {
           "ordered_facets": [
             {
-              "facet_id": "4058303252"
+              "facet_id": "3795540742"
             },
             {
-              "facet_id": "1871225913"
+              "facet_id": "2763329611"
             },
             {
-              "facet_id": "3692352963"
+              "facet_id": "1355058237"
             },
             {
-              "facet_id": "1308344191"
+              "facet_id": "3690003977"
             },
             {
-              "facet_id": "3949334565"
+              "facet_id": "3847894791"
             },
             {
-              "facet_id": "1481770745"
+              "facet_id": "815809675"
             }
           ]
         }
@@ -78,112 +78,112 @@
     }
   },
   "facets": {
-    "1308344191": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
-      "measurement_method": "CensusACS5yrSurveySubjectTable",
-      "unit": "Years"
-    },
-    "1334978221": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
-    },
-    "1481770745": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
-      "measurement_method": "CensusACS5yrSurveySubjectTable",
-      "unit": "Years"
-    },
-    "1827834578": {
-      "import_name": "CDC_Mortality_UnderlyingCause",
-      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
-    },
-    "1871225913": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
-      "measurement_method": "CensusACS5yrSurveySubjectTable",
-      "unit": "Years"
-    },
-    "2331484329": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S2602PR",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602PR&tid=ACSST5Y2019.S2602PR",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
-    },
-    "2782870351": {
-      "import_name": "USCensusPEP_Annual_Population",
-      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
-      "measurement_method": "CensusPEPSurvey",
-      "observation_period": "P1Y"
-    },
-    "2879689438": {
-      "import_name": "USDecennialCensus_RedistrictingRelease",
-      "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
-      "measurement_method": "USDecennialCensus"
-    },
-    "3021124620": {
-      "import_name": "WikipediaStatsData",
-      "provenance_url": "https://www.wikipedia.org",
-      "measurement_method": "Wikipedia"
-    },
-    "3043065123": {
-      "import_name": "CensusPEP",
-      "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
-      "measurement_method": "CensusPEPSurvey"
-    },
-    "323018599": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
-    },
-    "3324054765": {
+    "10983471": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
-    "3514198484": {
+    "1145703171": {
+      "import_name": "CensusACS5YearSurvey",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+      "measurement_method": "CensusACS5yrSurvey"
+    },
+    "1151455814": {
       "import_name": "OECDRegionalDemography",
       "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
       "measurement_method": "OECDRegionalStatistics",
       "observation_period": "P1Y"
     },
-    "3547644235": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S2601APR",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601APR&tid=ACSST5Y2019.S2601APR",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
-    },
-    "3621147761": {
+    "1226172227": {
       "import_name": "CensusACS1YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS1yrSurvey"
     },
-    "3692352963": {
+    "1355058237": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601APR",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2601APR&tid=ACSST5Y2019.S2601APR",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
     },
-    "3949334565": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S2602PR",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602PR&tid=ACSST5Y2019.S2602PR",
+    "1456184638": {
+      "import_name": "WikipediaStatsData",
+      "provenance_url": "https://www.wikipedia.org",
+      "measurement_method": "Wikipedia"
+    },
+    "1541763368": {
+      "import_name": "USDecennialCensus_RedistrictingRelease",
+      "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
+      "measurement_method": "USDecennialCensus"
+    },
+    "1964317807": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "196790193": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "2176550201": {
+      "import_name": "USCensusPEP_Annual_Population",
+      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
+      "measurement_method": "CensusPEPSurvey",
+      "observation_period": "P1Y"
+    },
+    "2458695583": {
+      "import_name": "WikidataPopulation",
+      "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+      "measurement_method": "WikidataPopulation"
+    },
+    "2517965213": {
+      "import_name": "CensusPEP",
+      "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
+      "measurement_method": "CensusPEPSurvey"
+    },
+    "2763329611": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
     },
-    "4058303252": {
+    "2825511676": {
+      "import_name": "CDC_Mortality_UnderlyingCause",
+      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
+    },
+    "3144703963": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2602PR",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602PR&tid=ACSST5Y2019.S2602PR",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "3690003977": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "unit": "Years"
+    },
+    "377779557": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2601APR",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601APR&tid=ACSST5Y2019.S2601APR",
+      "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "3795540742": {
       "import_name": "CensusACS5YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS5yrSurvey",
       "unit": "Year"
     },
-    "4071544381": {
-      "import_name": "WikidataPopulation",
-      "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
-      "measurement_method": "WikidataPopulation"
+    "3847894791": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S2602PR",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602PR&tid=ACSST5Y2019.S2602PR",
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "unit": "Years"
     },
-    "4235218097": {
-      "import_name": "CensusACS5YearSurvey",
-      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-      "measurement_method": "CensusACS5yrSurvey"
+    "815809675": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "unit": "Years"
     }
   }
 }

@@ -8640,6 +8640,7 @@
         {
           "name": "Oslo",
           "types": [
+            "AdministrativeArea1",
             "City",
             "EurostatNUTS3"
           ],
@@ -10867,7 +10868,8 @@
           "types": [
             "AdministrativeArea1",
             "AdministrativeArea2",
-            "City"
+            "City",
+            "Municipality"
           ],
           "dcid": "wikidataId/Q167001",
           "provenanceId": "dc/base/WikidataGeos"
@@ -11118,7 +11120,8 @@
           "name": "Vaduz",
           "types": [
             "AdministrativeArea1",
-            "City"
+            "City",
+            "Municipality"
           ],
           "dcid": "wikidataId/Q1844",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
@@ -11687,6 +11690,15 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Nakhchivan",
+          "types": [
+            "AdministrativeArea1",
+            "City"
+          ],
+          "dcid": "wikidataId/Q230104",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
           "name": "Barndaké",
           "types": [
             "AdministrativeArea5",
@@ -11941,9 +11953,69 @@
           ],
           "dcid": "wikidataId/Q43433",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Schellenberg",
+          "types": [
+            "AdministrativeArea1",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q49655",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Schaan",
+          "types": [
+            "AdministrativeArea1",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q49657",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Ruggell",
+          "types": [
+            "AdministrativeArea1",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q49659",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Mauren",
+          "types": [
+            "AdministrativeArea1",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q49661",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Gamprin",
+          "types": [
+            "AdministrativeArea1",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q49662",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Balzers",
+          "types": [
+            "AdministrativeArea1",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q49663",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         }
       ]
     }
   ],
-  "nextToken": "H4sIAAAAAAAA/6zTS0rGQAzAcb/YR0xdxU2v4esAtYogoosW9yOdtoO1o+O00mt4YkFcyKwm+C2TxY8/gVBDSW38Rpnf3vRjTydV92pm8+Gd8mbVldPqlA8YcMeAwICHDJgwYMqAGQPmDIgMeMSAxAkW5UsMeiZE32PQcyHaxaAXQrSPQS/FpbcBml9ZZ5dhFEM3AfQzCZQUi/JrR/cBc/ygzTA+Wzda24mjrsOo1n7O/7/Rk5kmNWgxdEd5bZfZuz/W70JordRS2njl9T5frP8GAAD//wEAAP//D19hj7gDAAA="
+  "nextToken": "H4sIAAAAAAAA/6zTTU6FQAzAcV+FRy2u6oZr+HUARGNijC4g7scwwCTA6DhguIYnNjEuzKym8S3bxS//NCnVlFTGb7T325t+7uisbCczmw/vlDerLp1W53zEgDsGBAY8ZsCEAVMG3DNgxoDIgCcMSJxgXkwx6IUQfY9BL4VoG4NeCdEuBr0Wl94HaHZjnV36QQzdBdDPJFBSzIuvHT0GzOmTNv3wat1gbSuOug2jGvs5//9GL2YcVa/F0ANllV1m7/5YvwuhtVJDae2V14d8se4bAAD//wEAAP///PAiCrgDAAA="
 }

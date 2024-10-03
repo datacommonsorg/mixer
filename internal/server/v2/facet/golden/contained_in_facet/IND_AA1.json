@@ -5,19 +5,19 @@
         "": {
           "ordered_facets": [
             {
-              "facet_id": "2805078412"
+              "facet_id": "2123271870"
             },
             {
-              "facet_id": "3514198484"
+              "facet_id": "1151455814"
             },
             {
-              "facet_id": "1802356941"
+              "facet_id": "1794369807"
             },
             {
-              "facet_id": "1879270705"
+              "facet_id": "473499523"
             },
             {
-              "facet_id": "4071544381"
+              "facet_id": "2458695583"
             }
           ]
         }
@@ -30,31 +30,31 @@
     }
   },
   "facets": {
-    "1802356941": {
-      "import_name": "UNData",
-      "provenance_url": "http://data.un.org",
-      "measurement_method": "UNData"
-    },
-    "1879270705": {
-      "import_name": "Subnational_Demographics_Stats",
-      "provenance_url": "https://databank.worldbank.org/source/subnational-population",
-      "measurement_method": "WorldBankSubnationalPopulationEstimate",
-      "observation_period": "P1Y"
-    },
-    "2805078412": {
-      "import_name": "IndiaCensus_Primary",
-      "provenance_url": "https://censusindia.gov.in/"
-    },
-    "3514198484": {
+    "1151455814": {
       "import_name": "OECDRegionalDemography",
       "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
       "measurement_method": "OECDRegionalStatistics",
       "observation_period": "P1Y"
     },
-    "4071544381": {
+    "1794369807": {
+      "import_name": "UNData",
+      "provenance_url": "http://data.un.org",
+      "measurement_method": "UNData"
+    },
+    "2123271870": {
+      "import_name": "IndiaCensus_Primary",
+      "provenance_url": "https://censusindia.gov.in/"
+    },
+    "2458695583": {
       "import_name": "WikidataPopulation",
       "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
       "measurement_method": "WikidataPopulation"
+    },
+    "473499523": {
+      "import_name": "Subnational_Demographics_Stats",
+      "provenance_url": "https://databank.worldbank.org/source/subnational-population",
+      "measurement_method": "WorldBankSubnationalPopulationEstimate",
+      "observation_period": "P1Y"
     }
   }
 }
