@@ -82,7 +82,7 @@ func TestSimplePropertyValues(t *testing.T) {
 				[]string{"geoId/0649670"},
 				"->geoOverlaps",
 				0,
-				"H4sIAAAAAAAA/2zNsQrCMBCHcT1re54O8hd8IHVXKLhqLKcEm6Sk18G3lzpK5w++n9wFB5/a9PKNa+tOGx80SmmfTs/PqYYZiOcgJhAvQFyAeAniEgVX27EwiFcgFhCv5S2bYxqi3S6a+xRlH9T1Q9ag0U4aU/DRWcqyq82Z723Eri5792gV9BtOc8TVP/YFAAD//wEAAP//w808eM8AAAA=",
+				"H4sIAAAAAAAA/wTAsQqCUBgF4DppnX5pOVPQQ+QQRmM4NbU0td3wRy6IV7zZ8/dZtEPv6dGd6+Zya661Vb2n58/nIUzZTq2PecnvOLWp81f4LEP4xjTeZw9aCVwLhMCNwEJgKXArcCeQAvcCTQWrY/kHAAD//wEAAP//IO/h62sAAAA=",
 			},
 			{
 				"containedIn1.json",
@@ -96,7 +96,7 @@ func TestSimplePropertyValues(t *testing.T) {
 				[]string{"geoId/06", "test_stat_var"},
 				"<-containedInPlace",
 				500,
-				"H4sIAAAAAAAA/2zNsQrCMBCHcT1re54O8hd8IHVXKLhqLKcEm6Sk18G3lzpK5w++n9wFB5/a9PKNa+tOGx80SmmfTs/PqYYZiOcgJhAvQFyAeAniEgVX27EwiFcgFhCv5S2bYxqi3S6a+xRlH9T1Q9ag0U4aU/DRWcqyq82Z723Eri5792gV9BtOc8TVP/YFAAD//wEAAP//w808eM8AAAA=",
+				"H4sIAAAAAAAA/6yUXUoDMRSFnWttb1N/xvs0u7D64AZqxYLCQCv4g0qaXNtATGAmrXQBbs81Se2bDxkmuIHvHD7uPeJR4IL9RJ8NL0WuvAvSONYTV1qpWAxG7OpVPaukCrRHgBkBAgHuE2CHAA8IsEuAPQJEAuwToKAODvJMzKLozsiETQtmd8ss+uI1Ss3Hlj/YBVltpmrpvW3d+j3KL/7yr0wdKpNg5y2ac3rtvR7XQc6tqZfbxNYBD9EAcWMWy0RFT1Hy4Z3R2nIiu6F16T+5Kq1M8BE/nKOyMmsZ2tfu4SCH4isTL3Er5WpujUrCZ8U3iOeG+r/4+2Bsu7fauWmATy9GbO0tr9meD/9Z/HHyH+0Wodsg/mTKyjudPAg/AAAA//8BAAD//8UBHsYiBQAA",
 			},
 			{
 				"obs.json",
