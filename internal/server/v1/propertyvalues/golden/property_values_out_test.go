@@ -76,7 +76,7 @@ func TestPropertyValuesOut(t *testing.T) {
 				"geoOverlaps",
 				"geoId/0649670",
 				0,
-				"H4sIAAAAAAAA/wTAsQqCUBgF4DppnX5pOVPQQ+QQRmM4NbU0td3wRy6IV7zZ8/dZtEPv6dGd6+Zya661Vb2n58/nIUzZTq2PecnvOLWp81f4LEP4xjTeZw9aCVwLhMCNwEJgKXArcCeQAvcCTQWrY/kHAAD//wEAAP//IO/h62sAAAA=",
+				"H4sIAAAAAAAA/2zNsQrCMBCHcT1re54O8hd8IHVXKLhqLKcEm6Sk18G3lzpK5w++n9wFB5/a9PKNa+tOGx80SmmfTs/PqYYZiOcgJhAvQFyAeAniEgVX27EwiFcgFhCv5S2bYxqi3S6a+xRlH9T1Q9ag0U4aU/DRWcqyq82Z723Eri5792gV9BtOc8TVP/YFAAD//wEAAP//w808eM8AAAA=",
 			},
 		} {
 			req := &pbv1.PropertyValuesRequest{
