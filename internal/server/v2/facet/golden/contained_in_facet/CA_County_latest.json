@@ -17,6 +17,9 @@
               "facet_id": "2825511676"
             },
             {
+              "facet_id": "2564251937"
+            },
+            {
               "facet_id": "1226172227"
             },
             {
@@ -91,6 +94,10 @@
       "import_name": "CensusPEP",
       "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
       "measurement_method": "CensusPEPSurvey"
+    },
+    "2564251937": {
+      "import_name": "CDC_Social_Vulnerability_Index",
+      "provenance_url": "https://www.atsdr.cdc.gov/placeandhealth/svi/data_documentation_download.html"
     },
     "2825511676": {
       "import_name": "CDC_Mortality_UnderlyingCause",
