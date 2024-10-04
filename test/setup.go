@@ -34,6 +34,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -134,6 +135,10 @@ func setupInternal(
 		sqlClient, err = sql.Open("sqlite", filepath.Join(path.Dir(filename), "./datacommons.db"))
 		if err != nil {
 			log.Fatalf("Failed to read sqlite database: %v", err)
+		}
+		err = sqldb.CheckSchema(sqlClient)
+		if err != nil {
+			log.Fatalf("SQL schema check failed: %v", err)
 		}
 	}
 

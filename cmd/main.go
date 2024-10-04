@@ -212,6 +212,11 @@ func main() {
 		if err := sqldb.CreateTables(sqlClient); err != nil {
 			log.Fatalf("Can not create tables in database: %v", err)
 		}
+
+		err = sqldb.CheckSchema(sqlClient)
+		if err != nil {
+			log.Fatalf("SQL schema check failed: %v", err)
+		}
 	}
 
 	// Store

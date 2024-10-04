@@ -17,8 +17,6 @@ package observation
 
 import (
 	"context"
-	"database/sql"
-	"fmt"
 	"net/url"
 	"sort"
 	"strings"
@@ -29,6 +27,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
+	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -88,7 +87,7 @@ func FetchDirect(
 	if err != nil {
 		return nil, err
 	}
-	sqlObservation, err := FetchDirectSQL(
+	sqlObservation, err := sqlquery.GetObservations(
 		ctx,
 		store.SQLClient,
 		sqlProvenances,
@@ -190,48 +189,4 @@ func FetchDirectBT(
 		}
 	}
 	return result, nil
-}
-
-// FetchDirectSQL fetches data from SQLite database.
-func FetchDirectSQL(
-	ctx context.Context,
-	sqlClient *sql.DB,
-	sqlProvenances map[string]*pb.Facet,
-	variables []string,
-	entities []string,
-	queryDate string,
-	filter *pbv2.FacetFilter,
-) (*pbv2.ObservationResponse, error) {
-	result := initObservationResult(variables)
-	if sqlClient == nil {
-		return result, nil
-	}
-	// Construct query
-	entitiesStr := "'" + strings.Join(entities, "', '") + "'"
-	variablesStr := "'" + strings.Join(variables, "', '") + "'"
-	query := fmt.Sprintf(
-		`
-			SELECT entity, variable, date, value, provenance FROM observations
-			WHERE entity IN (%s)
-			AND variable IN (%s)
-			AND value != ''
-		`,
-		entitiesStr,
-		variablesStr,
-	)
-	if queryDate != "" && queryDate != shared.LATEST {
-		query += fmt.Sprintf("AND date = (%s) ", queryDate)
-	}
-	query += "ORDER BY date ASC;"
-	// Execute query
-	rows, err := sqlClient.Query(query)
-	if err != nil {
-		return nil, err
-	}
-	defer rows.Close()
-	tmp, err := handleSQLRows(rows, variables)
-	if err != nil {
-		return nil, err
-	}
-	return processSqlData(result, tmp, queryDate, sqlProvenances), nil
 }

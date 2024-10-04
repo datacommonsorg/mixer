@@ -168,6 +168,13 @@ func TestFetchDirect(t *testing.T) {
 				},
 				"multi_facet_id_filter.json",
 			},
+			{
+				[]string{"var_with_props"},
+				[]string{"country/USA", "country/GBR"},
+				"",
+				nil,
+				"var_with_props.json",
+			},
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V2Observation(ctx, &pbv2.ObservationRequest{
@@ -194,7 +201,7 @@ func TestFetchDirect(t *testing.T) {
 				continue
 			}
 			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-				t.Errorf("payload got diff: %v", diff)
+				t.Errorf("payload got diff(%s): %v", goldenFile, diff)
 				continue
 			}
 		}

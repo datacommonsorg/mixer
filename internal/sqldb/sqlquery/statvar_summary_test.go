@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/go-test/deep"
 	"google.golang.org/protobuf/proto"
 )
@@ -27,6 +28,10 @@ func TestGetStatVarSummaries(t *testing.T) {
 	sqlClient, err := sql.Open("sqlite", "../../../test/sqlquery/statvar_summary/datacommons.db")
 	if err != nil {
 		t.Fatalf("Could not open testing database: %v", err)
+	}
+	err = sqldb.CheckSchema(sqlClient)
+	if err != nil {
+		t.Fatalf("SQL schema check failed: %v", err)
 	}
 
 	want := map[string]*pb.StatVarSummary{
