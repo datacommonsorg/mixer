@@ -30,6 +30,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
+	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
@@ -220,7 +221,7 @@ func FetchContainedIn(
 					return nil, err
 				}
 			}
-			directResp, err := FetchDirectSQL(
+			directResp, err := sqlquery.GetObservations(
 				ctx,
 				store.SQLClient,
 				sqlProvenances,
