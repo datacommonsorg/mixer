@@ -44,10 +44,15 @@ func GetObservations(
 	return generateObservationResponse(intermediateResponse, variables, queryDate), nil
 }
 
-func generateObservationResponse(intermdiate *intermediateObservationResponse, variables []string, queryDate string) *pbv2.ObservationResponse {
+func generateObservationResponse(
+	intermediate *intermediateObservationResponse,
+	variables []string,
+	queryDate string,
+) *pbv2.ObservationResponse {
 	response := newObservationResponse(variables)
 
-	for byFacetKey, byFacetValue := range intermdiate.byFacet {
+	for _, byFacetKey := range intermediate.orderedKeys {
+		byFacetValue := intermediate.byFacet[*byFacetKey]
 		variable, entity, facetId := byFacetKey.variable, byFacetKey.entity, byFacetKey.facetId
 		observations, facet := byFacetValue.observations, byFacetValue.facet
 		if response.ByVariable[variable].ByEntity[entity] == nil {
@@ -74,10 +79,11 @@ func generateObservationResponse(intermdiate *intermediateObservationResponse, v
 	return response
 }
 
-func generateIntermediateResponse(rows *sql.Rows, cachedProvenances map[string]*pb.Facet) (*intermediateObservationResponse, error) {
-	defer rows.Close()
-
-	intermdiate := intermediateObservationResponse{byFacet: make(map[byFacetKey]*byFacetValue)}
+func generateIntermediateResponse(
+	rows *sql.Rows,
+	cachedProvenances map[string]*pb.Facet,
+) (*intermediateObservationResponse, error) {
+	intermediate := intermediateObservationResponse{byFacet: make(map[byFacetKey]*byFacetValue), orderedKeys: []*byFacetKey{}}
 	for rows.Next() {
 		var entity, variable, date, provenance, unit, scalingFactor, measurementMethod, observationPeriod, properties string
 		var value float64
@@ -90,16 +96,17 @@ func generateIntermediateResponse(rows *sql.Rows, cachedProvenances map[string]*
 		}
 
 		facetId, facet := toFacet(cachedProvenances, provenance, unit, scalingFactor, measurementMethod, observationPeriod, properties)
-		tsKey := byFacetKey{variable: variable, entity: entity, facetId: facetId}
-		tsValue := intermdiate.byFacet[tsKey]
-		if tsValue == nil {
-			tsValue = &byFacetValue{facetId: facetId, facet: facet}
-			intermdiate.byFacet[tsKey] = tsValue
+		intermediateByFacetKey := byFacetKey{variable: variable, entity: entity, facetId: facetId}
+		intermediateByFacetValue := intermediate.byFacet[intermediateByFacetKey]
+		if intermediateByFacetValue == nil {
+			intermediateByFacetValue = &byFacetValue{facetId: facetId, facet: facet}
+			intermediate.byFacet[intermediateByFacetKey] = intermediateByFacetValue
+			intermediate.orderedKeys = append(intermediate.orderedKeys, &intermediateByFacetKey)
 		}
-		tsValue.observations = append(tsValue.observations, observation)
+		intermediateByFacetValue.observations = append(intermediateByFacetValue.observations, observation)
 	}
 
-	return &intermdiate, rows.Err()
+	return &intermediate, rows.Err()
 }
 
 func newObservationResponse(variables []string) *pbv2.ObservationResponse {
@@ -118,7 +125,10 @@ func newObservationResponse(variables []string) *pbv2.ObservationResponse {
 // toFacet returns a facet ID and facet based on the specific observation properties.
 // Note that the "properties" argument which includes custom properties is not currently used.
 // But it can be used in the future, if we add a provision of custom properties to the Facet proto.
-func toFacet(cachedProvenances map[string]*pb.Facet, provenance, unit, scalingFactor, measurementMethod, observationPeriod, properties string) (string, *pb.Facet) {
+func toFacet(
+	cachedProvenances map[string]*pb.Facet,
+	provenance, unit, scalingFactor, measurementMethod, observationPeriod, _ string,
+) (string, *pb.Facet) {
 	cachedFacet := cachedProvenances[provenance]
 	if cachedFacet == nil {
 		cachedFacet = &pb.Facet{}
@@ -155,6 +165,9 @@ func getObservationsSQLQuery(variables []string,
 // The internal structs below are for generating an intermediate response from the SQL response to simplify generating the final ObservationResponse.
 type intermediateObservationResponse struct {
 	byFacet map[byFacetKey]*byFacetValue
+	// Ordered using insertion order for now.
+	// Can update based on a ranking config if we decide to support that.
+	orderedKeys []*byFacetKey
 }
 
 type byFacetKey struct {

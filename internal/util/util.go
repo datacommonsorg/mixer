@@ -40,7 +40,7 @@ import (
 	"cloud.google.com/go/secretmanager/apiv1/secretmanagerpb"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	"github.com/datacommonsorg/mixer/internal/sqldb"
+	"github.com/go-sql-driver/mysql"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 	"google.golang.org/grpc/codes"
@@ -49,6 +49,7 @@ import (
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"googlemaps.github.io/maps"
+	"modernc.org/sqlite"
 )
 
 const (
@@ -130,6 +131,16 @@ type SamplingStrategy struct {
 	// Proto fields or map keys that are not sampled at all.
 	Exclude []string
 }
+
+// SQLDriver represents the type of SQL driver to use.
+type SQLDriver int
+
+// Enum values for SQLDriver.
+const (
+	SQLDriverUnknown SQLDriver = iota // SQLDriverUnknown = 0
+	SQLDriverSQLite                   // SQLDriverSQLite = 1
+	SQLDriverMySQL                    // SQLDriverMySQL = 2
+)
 
 // ZipAndEncode Compresses the given contents using gzip and encodes it in base64
 func ZipAndEncode(contents []byte) (string, error) {
@@ -597,16 +608,31 @@ func ConvertArgs(args []string) []interface{} {
 	return newArgs
 }
 
+func GetSQLDriver(sqlClient *sql.DB) (SQLDriver, error) {
+	switch driver := sqlClient.Driver().(type) {
+	case *sqlite.Driver:
+		return SQLDriverSQLite, nil
+	case *mysql.MySQLDriver:
+		return SQLDriverMySQL, nil
+	default:
+		return SQLDriverUnknown, fmt.Errorf("invalid sql driver: %v", driver)
+	}
+}
+
 func SQLInParam(n int) string {
 	return strings.Join(strings.Split(strings.Repeat("?", n), ""), ", ")
 }
 
 func SQLListParam(sqlClient *sql.DB, n int) (string, error) {
-	switch sqldb.GetSQLDriver(sqlClient) {
-	case sqldb.SQLDriverSQLite:
+	driver, err := GetSQLDriver(sqlClient)
+	if err != nil {
+		return "", err
+	}
+	switch driver {
+	case SQLDriverSQLite:
 		str := "VALUES " + strings.Repeat("(?),", n)
 		return str[:len(str)-1], nil
-	case sqldb.SQLDriverMySQL:
+	case SQLDriverMySQL:
 		result := ""
 		for i := 0; i < n-1; i++ {
 			result += "SELECT ? UNION ALL "
@@ -687,4 +713,22 @@ func GetAllDescendentSV(svgMap map[string]*pb.StatVarGroupNode, svgDcid string) 
 		res = append(res, sv.Id)
 	}
 	return MergeDedupe(res)
+}
+
+// GetMissingStrings returns strings from the wantStrings set
+// that are missing in the gotStrings slice.
+func GetMissingStrings(gotStrings []string, wantStrings map[string]struct{}) []string {
+	gotStringsSet := make(map[string]struct{})
+	for _, col := range gotStrings {
+		gotStringsSet[col] = struct{}{}
+	}
+
+	var missingStrings []string
+	for col := range wantStrings {
+		if _, ok := gotStringsSet[col]; !ok {
+			missingStrings = append(missingStrings, col)
+		}
+	}
+
+	return missingStrings
 }

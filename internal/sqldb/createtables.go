@@ -19,8 +19,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/go-sql-driver/mysql"
-	"modernc.org/sqlite"
+	"github.com/datacommonsorg/mixer/internal/util"
 )
 
 // SQL table and column names.
@@ -39,39 +38,17 @@ const (
 )
 
 // allObservationsTableColumns is a set of all column names in the observations table.
-var allObservationsTableColumns = map[string]bool{
-	ColumnEntity:            true,
-	ColumnVariable:          true,
-	ColumnDate:              true,
-	ColumnValue:             true,
-	ColumnProvenance:        true,
-	ColumnUnit:              true,
-	ColumnScalingFactor:     true,
-	ColumnMeasurementMethod: true,
-	ColumnObservationPeriod: true,
-	ColumnProperties:        true,
-}
-
-// SQLDriver represents the type of SQL driver to use.
-type SQLDriver int
-
-// Enum values for SQLDriver.
-const (
-	SQLDriverUnknown SQLDriver = iota // SQLDriverUnknown = 0
-	SQLDriverSQLite                   // SQLDriverSQLite = 1
-	SQLDriverMySQL                    // SQLDriverMySQL = 2
-)
-
-func GetSQLDriver(sqlClient *sql.DB) SQLDriver {
-	switch driver := sqlClient.Driver().(type) {
-	case *sqlite.Driver:
-		return SQLDriverSQLite
-	case *mysql.MySQLDriver:
-		return SQLDriverMySQL
-	default:
-		log.Printf("invalid sql driver: %v", driver)
-		return SQLDriverUnknown
-	}
+var allObservationsTableColumns = map[string]struct{}{
+	ColumnEntity:            struct{}{},
+	ColumnVariable:          struct{}{},
+	ColumnDate:              struct{}{},
+	ColumnValue:             struct{}{},
+	ColumnProvenance:        struct{}{},
+	ColumnUnit:              struct{}{},
+	ColumnScalingFactor:     struct{}{},
+	ColumnMeasurementMethod: struct{}{},
+	ColumnObservationPeriod: struct{}{},
+	ColumnProperties:        struct{}{},
 }
 
 // CheckSchema checks if the schema of the SQL DB is what is expected by the service.
@@ -82,9 +59,12 @@ func CheckSchema(db *sql.DB) error {
 		return err
 	}
 
-	_, err = allColumnsExistInSet(observationColumns, allObservationsTableColumns, TableObservations)
-	if err != nil {
-		return err
+	missingObservationColumns := util.GetMissingStrings(observationColumns, allObservationsTableColumns)
+	if len(missingObservationColumns) != 0 {
+		fmt.Errorf(`
+The following columns are missing in the %s table: %v
+Rerun the data docker to update the schema before starting the service`,
+			TableObservations, missingObservationColumns)
 	}
 
 	log.Printf("SQL schema check succeeded.")
@@ -139,90 +119,20 @@ func CreateTables(sqlClient *sql.DB) error {
 }
 
 func getTableColumns(db *sql.DB, tableName string) ([]string, error) {
-	switch GetSQLDriver(db) {
-	case SQLDriverSQLite:
-		return getSQLiteTableColumns(db, tableName)
-	case SQLDriverMySQL:
-		return getMySQLTableColumns(db, tableName)
-	default:
-		return nil, fmt.Errorf("cannot get columns of table: %s", tableName)
-	}
-}
+	// LIMIT 0 to avoid fetching data
+	query := fmt.Sprintf("SELECT * FROM %s LIMIT 0", tableName)
 
-// allColumnsExistInSet checks if all columns in a set exist in a given slice.
-// It returns an error is they don't.
-func allColumnsExistInSet(gotColumns []string, wantColumns map[string]bool, tableName string) (bool, error) {
-	existingColumns := make(map[string]bool)
-	for _, col := range gotColumns {
-		existingColumns[col] = true
-	}
-
-	var missingColumns []string
-	for col := range wantColumns {
-		if _, ok := existingColumns[col]; !ok {
-			missingColumns = append(missingColumns, col)
-		}
-	}
-
-	if len(missingColumns) > 0 {
-		// TODO: Add pointer to schema-update mode doc once it's there.
-		return false, fmt.Errorf(`
-The following columns are missing in the %s table: %v
-Rerun the data docker to update the schema before starting the service`,
-			tableName, missingColumns)
-
-	}
-
-	return true, nil
-}
-
-// getSQLiteTableColumns retrieves all column names from a SQLite table.
-func getSQLiteTableColumns(db *sql.DB, tableName string) ([]string, error) {
-	rows, err := db.Query(fmt.Sprintf("PRAGMA table_info(%s)", tableName))
+	// Execute the query
+	rows, err := db.Query(query)
 	if err != nil {
-		return nil, fmt.Errorf("error querying table info: %w", err)
+		return nil, fmt.Errorf("error executing query: %w", err)
 	}
 	defer rows.Close()
 
-	var columns []string
-	for rows.Next() {
-		var colName string
-		var ignore interface{} // Use an interface{} to ignore other columns
-		if err := rows.Scan(&ignore, &colName, &ignore, &ignore, &ignore, &ignore); err != nil {
-			return nil, fmt.Errorf("error scanning column name: %w", err)
-		}
-		columns = append(columns, colName)
-	}
-
-	if err := rows.Err(); err != nil {
-		return nil, fmt.Errorf("error iterating over columns: %w", err)
-	}
-
-	fmt.Printf("COLUMNS: %v", columns)
-	return columns, nil
-}
-
-// getMySQLTableColumns retrieves all column names from a MySQL table.
-func getMySQLTableColumns(db *sql.DB, tableName string) ([]string, error) {
-	// Use "SHOW COLUMNS" to get column information in MySQL
-	rows, err := db.Query(fmt.Sprintf("SHOW COLUMNS FROM %s", tableName))
+	// Get the column names
+	columns, err := rows.Columns()
 	if err != nil {
-		return nil, fmt.Errorf("error querying table info: %w", err)
-	}
-	defer rows.Close()
-
-	var columns []string
-	for rows.Next() {
-		var colName string
-		// You can ignore other columns returned by SHOW COLUMNS
-		if err := rows.Scan(&colName, nil, nil, nil, nil, nil); err != nil {
-			return nil, fmt.Errorf("error scanning column name: %w", err)
-		}
-		columns = append(columns, colName)
-	}
-
-	if err := rows.Err(); err != nil {
-		return nil, fmt.Errorf("error iterating over columns: %w", err)
+		return nil, fmt.Errorf("error getting column names for %s table: %w", tableName, err)
 	}
 
 	return columns, nil
