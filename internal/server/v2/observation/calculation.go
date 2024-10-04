@@ -58,11 +58,11 @@ func Calculate(
 	if err != nil {
 		return nil, err
 	}
-	variableObs, err := evalExpr(variableFormula.Expr, variableFormula.LeafData, inputObs)
+	calculatedVariableObs, err := evalExpr(variableFormula.Expr, variableFormula.LeafData, inputObs)
 	if err != nil {
 		return nil, err
 	}
-	calculatedResp, err := formatCalculatedResponse(variableObs, inputObs.Facets, equation)
+	calculatedResp, err := formatCalculatedResponse(calculatedVariableObs, inputObs.Facets, equation)
 	if err != nil {
 		return nil, err
 	}
