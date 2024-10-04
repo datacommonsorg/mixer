@@ -39,16 +39,16 @@ const (
 
 // allObservationsTableColumns is a set of all column names in the observations table.
 var allObservationsTableColumns = map[string]struct{}{
-	ColumnEntity:            struct{}{},
-	ColumnVariable:          struct{}{},
-	ColumnDate:              struct{}{},
-	ColumnValue:             struct{}{},
-	ColumnProvenance:        struct{}{},
-	ColumnUnit:              struct{}{},
-	ColumnScalingFactor:     struct{}{},
-	ColumnMeasurementMethod: struct{}{},
-	ColumnObservationPeriod: struct{}{},
-	ColumnProperties:        struct{}{},
+	ColumnEntity:            {},
+	ColumnVariable:          {},
+	ColumnDate:              {},
+	ColumnValue:             {},
+	ColumnProvenance:        {},
+	ColumnUnit:              {},
+	ColumnScalingFactor:     {},
+	ColumnMeasurementMethod: {},
+	ColumnObservationPeriod: {},
+	ColumnProperties:        {},
 }
 
 // CheckSchema checks if the schema of the SQL DB is what is expected by the service.
@@ -61,7 +61,7 @@ func CheckSchema(db *sql.DB) error {
 
 	missingObservationColumns := util.GetMissingStrings(observationColumns, allObservationsTableColumns)
 	if len(missingObservationColumns) != 0 {
-		fmt.Errorf(`
+		return fmt.Errorf(`
 The following columns are missing in the %s table: %v
 Rerun the data docker to update the schema before starting the service`,
 			TableObservations, missingObservationColumns)
