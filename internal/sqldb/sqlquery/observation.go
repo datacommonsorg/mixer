@@ -1,3 +1,17 @@
+// Copyright 2024 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package sqlquery
 
 import (
@@ -83,11 +97,25 @@ func generateIntermediateResponse(
 	rows *sql.Rows,
 	cachedProvenances map[string]*pb.Facet,
 ) (*intermediateObservationResponse, error) {
-	intermediate := intermediateObservationResponse{byFacet: make(map[byFacetKey]*byFacetValue), orderedKeys: []*byFacetKey{}}
+	intermediate := intermediateObservationResponse{
+		byFacet:     make(map[byFacetKey]*byFacetValue),
+		orderedKeys: []*byFacetKey{},
+	}
 	for rows.Next() {
 		var entity, variable, date, provenance, unit, scalingFactor, measurementMethod, observationPeriod, properties string
 		var value float64
-		if err := rows.Scan(&entity, &variable, &date, &value, &provenance, &unit, &scalingFactor, &measurementMethod, &observationPeriod, &properties); err != nil {
+		if err := rows.Scan(
+			&entity,
+			&variable,
+			&date,
+			&value,
+			&provenance,
+			&unit,
+			&scalingFactor,
+			&measurementMethod,
+			&observationPeriod,
+			&properties,
+		); err != nil {
 			return nil, err
 		}
 		observation := &pb.PointStat{
@@ -95,11 +123,26 @@ func generateIntermediateResponse(
 			Value: proto.Float64(value),
 		}
 
-		facetId, facet := toFacet(cachedProvenances, provenance, unit, scalingFactor, measurementMethod, observationPeriod, properties)
-		intermediateByFacetKey := byFacetKey{variable: variable, entity: entity, facetId: facetId}
+		facetId, facet := toFacet(
+			cachedProvenances,
+			provenance,
+			unit,
+			scalingFactor,
+			measurementMethod,
+			observationPeriod,
+			properties,
+		)
+		intermediateByFacetKey := byFacetKey{
+			variable: variable,
+			entity:   entity,
+			facetId:  facetId,
+		}
 		intermediateByFacetValue := intermediate.byFacet[intermediateByFacetKey]
 		if intermediateByFacetValue == nil {
-			intermediateByFacetValue = &byFacetValue{facetId: facetId, facet: facet}
+			intermediateByFacetValue = &byFacetValue{
+				facetId: facetId,
+				facet:   facet,
+			}
 			intermediate.byFacet[intermediateByFacetKey] = intermediateByFacetValue
 			intermediate.orderedKeys = append(intermediate.orderedKeys, &intermediateByFacetKey)
 		}
