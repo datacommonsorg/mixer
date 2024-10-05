@@ -125,39 +125,28 @@ func TestFilterObsByASTNode(t *testing.T) {
 	for _, c := range []struct {
 		inputResp *pbv2.ObservationResponse
 		node      *formula.ASTNode
-		want      *pbv2.ObservationResponse
+		want      *pbv2.VariableObservation
 	}{{
 		sampleInputResp,
 		&formula.ASTNode{StatVar: "Count_Person"},
-		&pbv2.ObservationResponse{
-			ByVariable: map[string]*pbv2.VariableObservation{
-				"INTERMEDIATE_NODE": {ByEntity: map[string]*pbv2.EntityObservation{
-					"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{
-						{
-							FacetId: "1",
-							Observations: []*pb.PointStat{{
-								Date:  "1",
-								Value: proto.Float64(1),
-							}},
-						},
-						{
-							FacetId: "2",
-							Observations: []*pb.PointStat{{
-								Date:  "2",
-								Value: proto.Float64(2),
-							}},
-						},
-					}},
+		&pbv2.VariableObservation{
+			ByEntity: map[string]*pbv2.EntityObservation{
+				"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{
+					{
+						FacetId: "1",
+						Observations: []*pb.PointStat{{
+							Date:  "1",
+							Value: proto.Float64(1),
+						}},
+					},
+					{
+						FacetId: "2",
+						Observations: []*pb.PointStat{{
+							Date:  "2",
+							Value: proto.Float64(2),
+						}},
+					},
 				}},
-			},
-			Facets: map[string]*pb.Facet{
-				"1": {
-					ObservationPeriod: "P1M",
-				},
-				"2": {
-					MeasurementMethod: "US_Census",
-					ObservationPeriod: "P1Y",
-				},
 			},
 		},
 	},
@@ -170,28 +159,21 @@ func TestFilterObsByASTNode(t *testing.T) {
 					ObservationPeriod: "P1Y",
 				},
 			},
-			&pbv2.ObservationResponse{
-				ByVariable: map[string]*pbv2.VariableObservation{
-					"INTERMEDIATE_NODE": {ByEntity: map[string]*pbv2.EntityObservation{
-						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{
-							{
-								FacetId: "2",
-								Observations: []*pb.PointStat{{
-									Date:  "2",
-									Value: proto.Float64(2),
-								}},
-							},
-						}},
+			&pbv2.VariableObservation{
+				ByEntity: map[string]*pbv2.EntityObservation{
+					"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{
+						{
+							FacetId: "2",
+							Observations: []*pb.PointStat{{
+								Date:  "2",
+								Value: proto.Float64(2),
+							}},
+						},
 					}},
 				},
-				Facets: map[string]*pb.Facet{
-					"2": {
-						MeasurementMethod: "US_Census",
-						ObservationPeriod: "P1Y",
-					},
-				},
 			},
-		}} {
+		},
+	} {
 		got := filterObsByASTNode(c.inputResp, c.node)
 		if ok := reflect.DeepEqual(got, c.want); !ok {
 			t.Errorf("filterObsByASTNode(%v, %v) = %v, want %v",
@@ -325,7 +307,7 @@ func TestEvalExpr(t *testing.T) {
 		inputExpr string
 		leafData  map[string]*formula.ASTNode
 		inputResp *pbv2.ObservationResponse
-		want      *pbv2.ObservationResponse
+		want      *pbv2.VariableObservation
 	}{
 		{
 			"(SV_1 - SV_2) / SV_3",
@@ -370,25 +352,18 @@ func TestEvalExpr(t *testing.T) {
 					},
 				},
 			},
-			&pbv2.ObservationResponse{
-				ByVariable: map[string]*pbv2.VariableObservation{
-					"INTERMEDIATE_NODE": {ByEntity: map[string]*pbv2.EntityObservation{
-						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{{
-							FacetId: "facetId1",
-							Observations: []*pb.PointStat{{
-								Date:  "1",
-								Value: proto.Float64(3),
-							}},
-							EarliestDate: "1",
-							LatestDate:   "1",
-							ObsCount:     1,
-						}}},
-					}},
-				},
-				Facets: map[string]*pb.Facet{
-					"facetId1": {
-						ObservationPeriod: "P1Y",
-					},
+			&pbv2.VariableObservation{
+				ByEntity: map[string]*pbv2.EntityObservation{
+					"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{{
+						FacetId: "facetId1",
+						Observations: []*pb.PointStat{{
+							Date:  "1",
+							Value: proto.Float64(3),
+						}},
+						EarliestDate: "1",
+						LatestDate:   "1",
+						ObsCount:     1,
+					}}},
 				},
 			},
 		},

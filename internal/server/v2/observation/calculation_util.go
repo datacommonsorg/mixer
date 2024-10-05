@@ -26,10 +26,6 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-const (
-	INTERMEDIATE_NODE = "INTERMEDIATE_NODE"
-)
-
 // Given an input ObservationResponse, generate a map of variable -> entities with missing data.
 func findObservationResponseHoles(
 	inputReq *pbv2.ObservationRequest,
@@ -76,16 +72,12 @@ func compareFacet(facet1, facet2 *pb.Facet) bool {
 	return true
 }
 
-// Returns a filtered ObservationResponse containing obs that match an ASTNode StatVar and Facet.
+// Returns a filtered VariableObservation containing obs that match an ASTNode StatVar and Facet.
 func filterObsByASTNode(
 	fullResp *pbv2.ObservationResponse,
 	node *formula.ASTNode,
-) *pbv2.ObservationResponse {
-	result := &pbv2.ObservationResponse{
-		// Use a placeholder for intermediate responses.
-		ByVariable: map[string]*pbv2.VariableObservation{INTERMEDIATE_NODE: {}},
-		Facets:     map[string]*pb.Facet{},
-	}
+) *pbv2.VariableObservation {
+	result := &pbv2.VariableObservation{}
 	variableObs, ok := fullResp.ByVariable[node.StatVar]
 	if !ok {
 		return result
@@ -95,16 +87,13 @@ func filterObsByASTNode(
 		for _, facetObs := range entityObs.OrderedFacets {
 			if node.Facet == nil || compareFacet(node.Facet, fullResp.Facets[facetObs.FacetId]) {
 				filteredFacetObs = append(filteredFacetObs, facetObs)
-				if _, ok := result.Facets[facetObs.FacetId]; !ok {
-					result.Facets[facetObs.FacetId] = fullResp.Facets[facetObs.FacetId]
-				}
 			}
 		}
 		if len(filteredFacetObs) > 0 {
-			if len(result.ByVariable[INTERMEDIATE_NODE].ByEntity) == 0 {
-				result.ByVariable[INTERMEDIATE_NODE].ByEntity = map[string]*pbv2.EntityObservation{}
+			if len(result.ByEntity) == 0 {
+				result.ByEntity = map[string]*pbv2.EntityObservation{}
 			}
-			result.ByVariable[INTERMEDIATE_NODE].ByEntity[entity] = &pbv2.EntityObservation{
+			result.ByEntity[entity] = &pbv2.EntityObservation{
 				OrderedFacets: filteredFacetObs,
 			}
 		}
@@ -155,23 +144,14 @@ func mergePointStat(
 	return result, nil
 }
 
-// Combine two ObservationResponses using an operator token.
+// Combine two VariableObservations using an operator token.
 func evalBinaryExpr(
-	x, y *pbv2.ObservationResponse,
+	x, y *pbv2.VariableObservation,
 	op token.Token,
-) (*pbv2.ObservationResponse, error) {
-	result := &pbv2.ObservationResponse{
-		// Use a placeholder for intermediate responses.
-		ByVariable: map[string]*pbv2.VariableObservation{INTERMEDIATE_NODE: {}},
-		Facets:     map[string]*pb.Facet{},
-	}
-	xVariableObs, xOk := x.ByVariable[INTERMEDIATE_NODE]
-	yVariableObs, yOk := y.ByVariable[INTERMEDIATE_NODE]
-	if !xOk || !yOk {
-		return nil, fmt.Errorf("missing intermediate variable in intermediate response")
-	}
-	for entity, xEntityObs := range xVariableObs.ByEntity {
-		yEntityObs, ok := yVariableObs.ByEntity[entity]
+) (*pbv2.VariableObservation, error) {
+	result := &pbv2.VariableObservation{}
+	for entity, xEntityObs := range x.ByEntity {
+		yEntityObs, ok := y.ByEntity[entity]
 		if !ok {
 			continue
 		}
@@ -198,19 +178,15 @@ func evalBinaryExpr(
 							LatestDate:   newPointStat[len(newPointStat)-1].GetDate(),
 							ObsCount:     int32(len(newPointStat)),
 						})
-						if _, ok := result.Facets[newFacetId]; !ok {
-							// TODO: Determine if calculated facet should be the same as input facet.
-							result.Facets[newFacetId] = x.Facets[newFacetId]
-						}
 					}
 				}
 			}
 		}
 		if len(newOrderedFacets) > 0 {
-			if len(result.ByVariable[INTERMEDIATE_NODE].ByEntity) == 0 {
-				result.ByVariable[INTERMEDIATE_NODE].ByEntity = map[string]*pbv2.EntityObservation{}
+			if len(result.ByEntity) == 0 {
+				result.ByEntity = map[string]*pbv2.EntityObservation{}
 			}
-			result.ByVariable[INTERMEDIATE_NODE].ByEntity[entity] = &pbv2.EntityObservation{
+			result.ByEntity[entity] = &pbv2.EntityObservation{
 				OrderedFacets: newOrderedFacets,
 			}
 		}
@@ -223,7 +199,7 @@ func evalExpr(
 	node ast.Node,
 	leafData map[string]*formula.ASTNode,
 	inputResp *pbv2.ObservationResponse,
-) (*pbv2.ObservationResponse, error) {
+) (*pbv2.VariableObservation, error) {
 	// If a node is of type *ast.Ident, it is a leaf with an obs value.
 	// Otherwise, it might be *ast.ParenExpr or *ast.BinaryExpr, so we continue recursing it to
 	// compute the obs value for the subtree..
@@ -248,32 +224,38 @@ func evalExpr(
 }
 
 func formatCalculatedResponse(
-	resp *pbv2.ObservationResponse,
+	variableObs *pbv2.VariableObservation,
+	inputFacets map[string]*pb.Facet,
 	equation *Equation,
-) error {
-	// Replace placeholder by final variable.
-	variableObs, ok := resp.ByVariable[INTERMEDIATE_NODE]
-	if !ok {
-		return fmt.Errorf("missing intermediate variable in intermediate response")
+) (*pbv2.ObservationResponse, error) {
+	resp := &pbv2.ObservationResponse{
+		ByVariable: map[string]*pbv2.VariableObservation{
+			equation.variable: variableObs,
+		},
+		Facets: map[string]*pb.Facet{},
 	}
-	resp.ByVariable[equation.variable] = variableObs
-	delete(resp.ByVariable, INTERMEDIATE_NODE)
 
 	// Update Facets with IsDcAggregate=true.
-	newFacets := map[string]*pb.Facet{}
 	facetIdMap := map[string]string{}
-	for oldFacetId, oldFacet := range resp.Facets {
-		newFacet := proto.Clone(oldFacet).(*pb.Facet)
-		newFacet.IsDcAggregate = true
-		newFacetId := util.GetFacetID(newFacet)
-		newFacets[newFacetId] = newFacet
-		facetIdMap[oldFacetId] = newFacetId
-	}
-	resp.Facets = newFacets
-	for _, entityObs := range resp.ByVariable[equation.variable].ByEntity {
+	for _, entityObs := range variableObs.ByEntity {
 		for _, facetObs := range entityObs.OrderedFacets {
-			facetObs.FacetId = facetIdMap[facetObs.GetFacetId()]
+			oldFacetId := facetObs.GetFacetId()
+			newFacetId, ok := facetIdMap[oldFacetId]
+			if ok {
+				facetObs.FacetId = newFacetId
+				continue
+			}
+			oldFacet, ok := inputFacets[oldFacetId]
+			if !ok {
+				return nil, fmt.Errorf("missing facet id %s", oldFacetId)
+			}
+			newFacet := proto.Clone(oldFacet).(*pb.Facet)
+			newFacet.IsDcAggregate = true
+			newFacetId = util.GetFacetID(newFacet)
+			facetObs.FacetId = newFacetId
+			resp.Facets[newFacetId] = newFacet
+			facetIdMap[oldFacetId] = newFacetId
 		}
 	}
-	return nil
+	return resp, nil
 }
