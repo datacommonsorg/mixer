@@ -26,6 +26,12 @@ import (
 func CheckVariableGroups(sqlClient *sql.DB, variableGroups []string) ([]string, error) {
 	defer util.TimeTrack(time.Now(), "SQL: CheckVariableGroups")
 	result := []string{}
+	// When a statvar search call is routed here, there are no groups specified.
+	// This check looks for that condition and returns an empty slice.
+	// We could've performed this check at the callsite itself but this is more defensive, hence doing it here.
+	if len(variableGroups) == 0 {
+		return result, nil
+	}
 	// Find all the sv that are in the sqlite database
 	query := fmt.Sprintf(
 		`
