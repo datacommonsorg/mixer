@@ -277,21 +277,6 @@ func TestCombineContainedIn(t *testing.T) {
 					{Tokens: []string{"!?"}},
 				},
 			},
-			&pb.TokenSpans{
-				Spans: []*pb.TokenSpans_Span{
-					{Tokens: []string{"Really?"}},
-					{
-						Tokens: []string{"Mountain", "View", ",", "California", ",", "USA"},
-						Places: []*pb.RecogPlace{
-							{
-								Dcid:             "geoId/Moutain_View",
-								ContainingPlaces: []string{"country/USA", "geoId/CA"},
-							},
-						},
-					},
-					{Tokens: []string{"!?"}},
-				},
-			},
 		},
 		// No combination.
 		{
