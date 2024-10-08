@@ -374,9 +374,7 @@ func MergeSearchStatVarResponse(primary, secondary *proto.SearchStatVarResponse)
 	matchesMap  := map[string]bool{}
 
 	if primary != nil {
-		for _, sv := range primary.StatVars {
-			mergedStatVars = append(mergedStatVars, sv)
-		}
+		mergedStatVars = append(mergedStatVars, primary.StatVars...)
 
 		for _, m := range primary.Matches {
 			if _, ok := matchesMap[m]; ok {
@@ -389,9 +387,7 @@ func MergeSearchStatVarResponse(primary, secondary *proto.SearchStatVarResponse)
 	}
 	
 	if secondary != nil {
-		for _, sv := range secondary.StatVars {
-			mergedStatVars = append(mergedStatVars, sv)
-		}
+		mergedStatVars = append(mergedStatVars, secondary.StatVars...)
 
 		for _, m := range secondary.Matches {
 			if _, ok := matchesMap[m]; ok {
