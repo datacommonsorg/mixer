@@ -367,38 +367,29 @@ func toStatVarSummaryMap(in []*pbv1.VariableInfoResponse) map[string]*proto.Stat
 	return out
 }
 
+func processSearchStatVarResponse(resp *proto.SearchStatVarResponse, mergedStatVars []*proto.EntityInfo, matchesMap map[string]struct{}, dedupedMatches []string) ([]*proto.EntityInfo, map[string]struct{}, []string) {
+	if resp != nil {
+		mergedStatVars = append(mergedStatVars, resp.StatVars...)
+
+		for _, m := range resp.Matches {
+			if _, ok := matchesMap[m]; !ok {
+				matchesMap[m] = struct{}{}
+				dedupedMatches = append(dedupedMatches, m)
+			}
+		}
+	}
+	return mergedStatVars, matchesMap, dedupedMatches
+}
+
 // MergeSearchStatVarResponse merges two SearchStatVarResponse.
 func MergeSearchStatVarResponse(primary, secondary *proto.SearchStatVarResponse) *proto.SearchStatVarResponse {
 	mergedStatVars := []*proto.EntityInfo{}
 	dedupedMatches := []string{}
-	matchesMap  := map[string]bool{}
-
-	if primary != nil {
-		mergedStatVars = append(mergedStatVars, primary.StatVars...)
-
-		for _, m := range primary.Matches {
-			if _, ok := matchesMap[m]; ok {
-				// skip
-			} else {
-				matchesMap[m] = true
-				dedupedMatches = append(dedupedMatches, m)
-			}
-		}
-	}
+	matchesMap  := map[string]struct{}{}
 	
-	if secondary != nil {
-		mergedStatVars = append(mergedStatVars, secondary.StatVars...)
-
-		for _, m := range secondary.Matches {
-			if _, ok := matchesMap[m]; ok {
-				// skip
-			} else {
-				matchesMap[m] = true
-				dedupedMatches = append(dedupedMatches, m)
-			}
-		}
-	}
-
+	mergedStatVars, matchesMap, dedupedMatches = processSearchStatVarResponse(primary, mergedStatVars, matchesMap, dedupedMatches)
+	mergedStatVars, matchesMap, dedupedMatches = processSearchStatVarResponse(secondary, mergedStatVars, matchesMap, dedupedMatches)
+	
 	merged := &proto.SearchStatVarResponse{
 		StatVars: mergedStatVars,
 		Matches: dedupedMatches,
