@@ -142,6 +142,20 @@ const (
 	SQLDriverMySQL                    // SQLDriverMySQL = 2
 )
 
+// Define the DCLogTag enum
+type DCLogTag string
+
+// Enum values for different log types
+const (
+	DCLogRemoteMixerCall DCLogTag = "RemoteMixerCall"
+	// Add more log types as needed
+)
+
+// DCLog logs messages with the specified DCLogTag
+func DCLog(tag DCLogTag, msg string) {
+	log.Printf("[DC][%s] %s", tag, msg)
+}
+
 // ZipAndEncode Compresses the given contents using gzip and encodes it in base64
 func ZipAndEncode(contents []byte) (string, error) {
 	// Zip the string
@@ -663,6 +677,7 @@ func FetchRemote(
 	}
 	request.Header.Set("Content-Type", "application/json")
 	request.Header.Set("X-API-Key", metadata.RemoteMixerAPIKey)
+	DCLog(DCLogRemoteMixerCall, fmt.Sprintf("url=%s", url))
 	response, err := httpClient.Do(request)
 	if err != nil {
 		return err
