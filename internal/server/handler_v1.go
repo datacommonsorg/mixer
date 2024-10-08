@@ -546,9 +546,7 @@ func (s *Server) SearchStatVar(
 		}
 	}
 
-	resp := &pb.SearchStatVarResponse{
-		StatVars: append(localResp.StatVars[:], remoteResp.StatVars...),
-		Matches:  append(localResp.Matches[:], remoteResp.Matches...),
-	}
-	return resp, nil
+	merged := merger.MergeSearchStatVarResponse(localResp, remoteResp)
+
+	return merged, nil
 }
