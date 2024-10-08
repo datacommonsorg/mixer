@@ -403,13 +403,6 @@ func MergeSearchStatVarResponse(primary, secondary *proto.SearchStatVarResponse)
 		}
 	}
 
-	// dedupedMatches := make([]string, len(matchesMap))
-	// i := 0
-	// for m := range matchesMap {
-	// 	dedupedMatches[i] = m
-	// 	i++
-	// }
-
 	merged := &proto.SearchStatVarResponse{
 		StatVars: mergedStatVars,
 		Matches: dedupedMatches,
