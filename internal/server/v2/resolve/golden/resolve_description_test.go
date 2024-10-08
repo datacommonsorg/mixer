@@ -53,7 +53,7 @@ func TestResolveDescription(t *testing.T) {
 			{
 				[]string{
 					"Brussels,Belgium",
-					"Atacama,Chile",
+					"Atacama Desert,Chile",
 					"Sjælland,Denmark",
 					"Athos,Greece",
 					"Illes Balears,Spain",
