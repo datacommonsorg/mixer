@@ -366,3 +366,34 @@ func toStatVarSummaryMap(in []*pbv1.VariableInfoResponse) map[string]*proto.Stat
 	}
 	return out
 }
+
+func processSearchStatVarResponse(resp *proto.SearchStatVarResponse, mergedStatVars []*proto.EntityInfo, matchesMap map[string]struct{}, dedupedMatches []string) ([]*proto.EntityInfo, []string) {
+	if resp != nil {
+		mergedStatVars = append(mergedStatVars, resp.StatVars...)
+
+		for _, m := range resp.Matches {
+			if _, ok := matchesMap[m]; !ok {
+				matchesMap[m] = struct{}{}
+				dedupedMatches = append(dedupedMatches, m)
+			}
+		}
+	}
+	return mergedStatVars, dedupedMatches
+}
+
+// MergeSearchStatVarResponse merges two SearchStatVarResponse.
+func MergeSearchStatVarResponse(primary, secondary *proto.SearchStatVarResponse) *proto.SearchStatVarResponse {
+	mergedStatVars := []*proto.EntityInfo{}
+	dedupedMatches := []string{}
+	matchesMap  := map[string]struct{}{}
+	
+	mergedStatVars, dedupedMatches = processSearchStatVarResponse(primary, mergedStatVars, matchesMap, dedupedMatches)
+	mergedStatVars, dedupedMatches = processSearchStatVarResponse(secondary, mergedStatVars, matchesMap, dedupedMatches)
+	
+	merged := &proto.SearchStatVarResponse{
+		StatVars: mergedStatVars,
+		Matches: dedupedMatches,
+	}
+
+	return merged
+}

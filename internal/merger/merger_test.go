@@ -978,3 +978,124 @@ func TestMergeBulkVariableInfoResponse(t *testing.T) {
 		}
 	}
 }
+
+
+func TestMergeSearchStatVarResponse(t *testing.T) {
+	cmpOpts := cmp.Options{protocmp.Transform()}
+	for _, tc := range []struct {
+		desc      string
+		primary   *pb.SearchStatVarResponse
+		secondary *pb.SearchStatVarResponse
+		want      *pb.SearchStatVarResponse
+	}{{
+		desc: "primary only",
+		primary: &pb.SearchStatVarResponse{
+			StatVars: []*pb.EntityInfo{
+				{
+					Name: "sv1",
+					Dcid: "svid1",
+				},
+				{
+					Name: "sv2",
+					Dcid: "svid2",					
+				},
+			},
+			Matches: []string{"match1", "match2"},
+		},
+		want: &pb.SearchStatVarResponse{
+			StatVars: []*pb.EntityInfo{
+				{
+					Name: "sv1",
+					Dcid: "svid1",
+				},
+				{
+					Name: "sv2",
+					Dcid: "svid2",
+				},
+			},
+			Matches: []string{"match1", "match2"},
+		},
+	}, {
+		desc: "secondary only",
+		secondary: &pb.SearchStatVarResponse{
+			StatVars: []*pb.EntityInfo{
+				{
+					Name: "sv1",
+					Dcid: "svid1",
+				},
+				{
+					Name: "sv2",
+					Dcid: "svid2",				
+				},
+			},
+			Matches: []string{"match1", "match2"},
+		},
+		want: &pb.SearchStatVarResponse{
+			StatVars: []*pb.EntityInfo{
+				{
+					Name: "sv1",
+					Dcid: "svid1",
+				},
+				{
+					Name: "sv2",
+					Dcid: "svid2",		
+				},
+			},
+			Matches: []string{"match1", "match2"},
+		},
+	}, {
+		desc: "combined",
+		primary: &pb.SearchStatVarResponse{
+			StatVars: []*pb.EntityInfo{
+				{
+					Name: "sv1",
+					Dcid: "svid1",
+				},
+				{
+					Name: "sv2",
+					Dcid: "svid2",					
+				},
+			},
+			Matches: []string{"match1", "match2"},
+		},
+		secondary: &pb.SearchStatVarResponse{
+			StatVars: []*pb.EntityInfo{
+				{
+					Name: "sv3",
+					Dcid: "svid3",
+				},
+				{
+					Name: "sv4",
+					Dcid: "svid4",					
+				},
+			},
+			Matches: []string{"match1", "match3"},
+		},
+		want: &pb.SearchStatVarResponse{
+			StatVars: []*pb.EntityInfo{
+				{
+					Name: "sv1",
+					Dcid: "svid1",
+				},
+				{
+					Name: "sv2",
+					Dcid: "svid2",					
+				},
+				{
+					Name: "sv3",
+					Dcid: "svid3",
+				},
+				{
+					Name: "sv4",
+					Dcid: "svid4",					
+				},
+			},
+			Matches: []string{"match1", "match2", "match3"},
+		},
+	}} {
+		got := MergeSearchStatVarResponse(tc.primary, tc.secondary)
+		if diff := cmp.Diff(got, tc.want, cmpOpts); diff != "" {
+			t.Errorf("%s: got diff: %s", tc.desc, diff)
+		}
+	}
+}

@@ -532,20 +532,21 @@ func (s *Server) SearchStatVar(
 	if err != nil {
 		return nil, err
 	}
-	if len(localResp.StatVars) == 0 && len(localResp.Matches) == 0 {
-		if s.metadata.RemoteMixerDomain != "" {
-			remoteResp := &pb.SearchStatVarResponse{}
-			if err := util.FetchRemote(
-				s.metadata,
-				s.httpClient,
-				"/v1/variable/search",
-				in,
-				remoteResp,
-			); err != nil {
-				return nil, err
-			}
-			return remoteResp, nil
+
+	remoteResp := &pb.SearchStatVarResponse{}
+	if s.metadata.RemoteMixerDomain != "" {
+		if err := util.FetchRemote(
+			s.metadata,
+			s.httpClient,
+			"/v1/variable/search",
+			in,
+			remoteResp,
+		); err != nil {
+			return nil, err
 		}
 	}
-	return localResp, nil
+
+	merged := merger.MergeSearchStatVarResponse(localResp, remoteResp)
+
+	return merged, nil
 }
