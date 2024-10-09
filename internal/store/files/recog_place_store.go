@@ -40,6 +40,8 @@ var recogPlaceAdjectivalNamesCSVContent []byte // Embed CSV as []byte.
 var recogPlaceBogusPlaceNamesCSVContent []byte // Embed CSV as []byte.
 //go:embed "recon_name_to_types.json"
 var reconName2RequiredTypesJsonContent []byte // Embed CSV as []byte.
+//go:embed "USZipCodes.csv"
+var recogUSZipCodesCSVContent []byte // Embed CSV as []byte.
 
 var (
 	// These are suffixes one of which needs to exist when dealing with adjectival place
@@ -80,6 +82,25 @@ type RecogPlaceStore struct {
 	// recognized with their type preceding their name in the query. This is used
 	// to handle reconNames that are also common words like "to", "me", "a".
 	CommonWordReconNameToTypes map[string][]string
+	// US Zip Codes
+	USZipCodes map[string]struct{}
+}
+
+// RecogUSZipCode recognizes US zipcodes and returns a RecogPlaces object if it recognizes one.
+// If detected, the RecogPlaces includes a list of RecogPlace of len 1.
+// If not detected, it returns nil.
+func (store *RecogPlaceStore) RecogUSZipCode(token string) *pb.RecogPlaces {
+	if _, ok := store.USZipCodes[token]; !ok {
+		return nil
+	} else {
+		dcid := fmt.Sprintf("zip/%s", token)
+		fmt.Printf("%s, %s", token, dcid)
+		return &pb.RecogPlaces{
+			Places: []*pb.RecogPlace{
+				{Dcid: dcid},
+			},
+		}
+	}
 }
 
 // LoadRecogPlaceStore loads RecogPlaceStore.
@@ -123,6 +144,11 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 	}
 
 	bogusPlaceNames, err := loadBogusPlaceNames()
+	if err != nil {
+		return nil, err
+	}
+
+	usZipCodes, err := loadUSZipCodes()
 	if err != nil {
 		return nil, err
 	}
@@ -250,6 +276,7 @@ func LoadRecogPlaceStore() (*RecogPlaceStore, error) {
 		DcidToNames:                expandedDcidToNames,
 		AdjectivalNamesWithSuffix:  adjectivalNamesWithSuffix,
 		CommonWordReconNameToTypes: reconName2RequiredTypes,
+		USZipCodes:                 usZipCodes,
 	}, nil
 }
 
@@ -326,4 +353,28 @@ func loadReconName2RequiredTypes() map[string][]string {
 		return map[string][]string{}
 	}
 	return reconName2RequiredTypes
+}
+
+func loadUSZipCodes() (map[string]struct{}, error) {
+	reader := csv.NewReader(strings.NewReader(string(recogUSZipCodesCSVContent)))
+	records, err := reader.ReadAll()
+	if err != nil {
+		return nil, err
+	}
+
+	res := map[string]struct{}{}
+
+	for rowNum, record := range records {
+		// Skip header.
+		if rowNum == 0 {
+			continue
+		}
+		if len(record) != 1 {
+			return nil, status.Errorf(codes.FailedPrecondition,
+				"Wrong USZipCodes CSV record: %v", record)
+		}
+		res[strings.TrimSpace(record[0])] = struct{}{}
+	}
+
+	return res, nil
 }
