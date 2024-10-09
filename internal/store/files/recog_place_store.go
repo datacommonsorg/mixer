@@ -94,7 +94,6 @@ func (store *RecogPlaceStore) RecogUSZipCode(token string) *pb.RecogPlaces {
 		return nil
 	} else {
 		dcid := fmt.Sprintf("zip/%s", token)
-		fmt.Printf("%s, %s", token, dcid)
 		return &pb.RecogPlaces{
 			Places: []*pb.RecogPlace{
 				{Dcid: dcid},
