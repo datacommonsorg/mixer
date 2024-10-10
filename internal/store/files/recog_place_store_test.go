@@ -233,4 +233,30 @@ func TestLoadRecogPlaceStore(t *testing.T) {
 			t.Errorf("Key %s got diff: %v", c.key, diff)
 		}
 	}
+
+	for _, c := range []struct {
+		key  string
+		want *pb.RecogPlaces
+	}{
+		{
+			"94043",
+			&pb.RecogPlaces{
+				Places: []*pb.RecogPlace{
+					{
+						Dcid: "zip/94043",
+					},
+				},
+			},
+		},
+		{
+			"00000",
+			nil,
+		},
+	} {
+		got := recogPlaceStore.RecogUSZipCode(c.key)
+
+		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
+			t.Errorf("RecogUSZipCode: Key %s got diff: %v", c.key, diff)
+		}
+	}
 }

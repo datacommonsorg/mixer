@@ -61,6 +61,7 @@ func TestRecognizePlaces(t *testing.T) {
 					"Compare literacy among Chinese provinces",
 					// This should only match California
 					"Chinese speakers in California",
+					"population in 94043 vs sunnyvale",
 				},
 				"result.json",
 			},

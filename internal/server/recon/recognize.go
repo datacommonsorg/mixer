@@ -346,6 +346,11 @@ func (p *placeRecognition) findPlaceCandidates(
 		return 1, places
 	}
 
+	// Check US zip codes.
+	if places := p.recogPlaceStore.RecogUSZipCode(tokens[0]); places != nil {
+		return 1, places
+	}
+
 	key := strings.ToLower(tokens[0])
 	places, ok := p.recogPlaceStore.RecogPlaceMap[key]
 	if !ok {

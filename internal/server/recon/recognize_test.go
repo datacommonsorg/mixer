@@ -53,6 +53,9 @@ func newPlaceRecognition() *placeRecognition {
 	return &placeRecognition{
 		recogPlaceStore: &files.RecogPlaceStore{
 			RecogPlaceMap: recogPlaceMap,
+			USZipCodes: map[string]struct{}{
+				"94043": {},
+			},
 		},
 	}
 }
@@ -108,6 +111,17 @@ func TestFindPlaceCandidates(t *testing.T) {
 							{Parts: []string{"los", "altos", "hills"}},
 						},
 						Dcid: "geoId/Los_Altos_Hills",
+					},
+				},
+			},
+		},
+		{
+			[]string{"94043"},
+			1,
+			&pb.RecogPlaces{
+				Places: []*pb.RecogPlace{
+					{
+						Dcid: "zip/94043",
 					},
 				},
 			},
