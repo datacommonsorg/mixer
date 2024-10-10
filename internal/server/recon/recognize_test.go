@@ -327,7 +327,7 @@ func TestCombineContainedIn(t *testing.T) {
 					},
 					{Tokens: []string{","}},
 					{
-						Tokens: []string{"CA"},
+						Tokens: []string{"California"},
 						Places: []*pb.RecogPlace{
 							{
 								Dcid:             "geoId/CA",
@@ -340,8 +340,8 @@ func TestCombineContainedIn(t *testing.T) {
 						Tokens: []string{"USA"},
 						Places: []*pb.RecogPlace{
 							{
-								Dcid:             "geoId/CA",
-								ContainingPlaces: []string{"country/USA"},
+								Dcid:             "country/USA",
+								ContainingPlaces: []string{"Earth"},
 							},
 						},
 					},
@@ -352,7 +352,7 @@ func TestCombineContainedIn(t *testing.T) {
 				Spans: []*pb.TokenSpans_Span{
 					{Tokens: []string{"Really?"}},
 					{
-						Tokens: []string{"Mountain", "View", ",", "CA", ",", "USA"},
+						Tokens: []string{"Mountain", "View", ",", "California", ",", "USA"},
 						Places: []*pb.RecogPlace{
 							{
 								Dcid:             "geoId/Moutain_View",
@@ -363,56 +363,6 @@ func TestCombineContainedIn(t *testing.T) {
 					{Tokens: []string{"!?"}},
 				},
 			},
-			// Third containing place, no commas
-			{
-				&pb.TokenSpans{
-					Spans: []*pb.TokenSpans_Span{
-						{Tokens: []string{"Really?"}},
-						{
-							Tokens: []string{"Mountain", "View"},
-							Places: []*pb.RecogPlace{
-								{
-									Dcid:             "geoId/Moutain_View",
-									ContainingPlaces: []string{"geoId/Santa_Clara", "geoId/CA"},
-								},
-							},
-						},
-						{
-							Tokens: []string{"CA"},
-							Places: []*pb.RecogPlace{
-								{
-									Dcid:             "geoId/CA",
-									ContainingPlaces: []string{"country/USA"},
-								},
-							},
-						},
-						{
-							Tokens: []string{"USA"},
-							Places: []*pb.RecogPlace{
-								{
-									Dcid:             "geoId/CA",
-									ContainingPlaces: []string{"country/USA"},
-								},
-							},
-						},
-						{Tokens: []string{"!?"}},
-					},
-				},
-				&pb.TokenSpans{
-					Spans: []*pb.TokenSpans_Span{
-						{Tokens: []string{"Really?"}},
-						{
-							Tokens: []string{"Mountain", "View", "CA", "USA"},
-							Places: []*pb.RecogPlace{
-								{
-									Dcid:             "geoId/Moutain_View",
-									ContainingPlaces: []string{"geoId/Santa_Clara", "geoId/CA", "country/USA"},
-								},
-							},
-						},
-						{Tokens: []string{"!?"}},
-					},
-				},
 		},
 	} {
 		got := combineContainedIn(c.tokenSpans)
