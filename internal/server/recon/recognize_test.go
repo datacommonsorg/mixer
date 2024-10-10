@@ -325,6 +325,59 @@ func TestCombineContainedIn(t *testing.T) {
 				},
 			},
 		},
+		// Third containing place
+		{
+			&pb.TokenSpans{
+				Spans: []*pb.TokenSpans_Span{
+					{Tokens: []string{"Really?"}},
+					{
+						Tokens: []string{"Mountain", "View"},
+						Places: []*pb.RecogPlace{
+							{
+								Dcid:             "geoId/Moutain_View",
+								ContainingPlaces: []string{"geoId/Santa_Clara", "geoId/CA"},
+							},
+						},
+					},
+					{Tokens: []string{","}},
+					{
+						Tokens: []string{"California"},
+						Places: []*pb.RecogPlace{
+							{
+								Dcid:             "geoId/CA",
+								ContainingPlaces: []string{"country/USA"},
+							},
+						},
+					},
+					{Tokens: []string{","}},
+					{
+						Tokens: []string{"USA"},
+						Places: []*pb.RecogPlace{
+							{
+								Dcid:             "country/USA",
+								ContainingPlaces: []string{"Earth"},
+							},
+						},
+					},
+					{Tokens: []string{"!?"}},
+				},
+			},
+			&pb.TokenSpans{
+				Spans: []*pb.TokenSpans_Span{
+					{Tokens: []string{"Really?"}},
+					{
+						Tokens: []string{"Mountain", "View", ",", "California", ",", "USA"},
+						Places: []*pb.RecogPlace{
+							{
+								Dcid:             "geoId/Moutain_View",
+								ContainingPlaces: []string{"geoId/Santa_Clara", "geoId/CA", "country/USA"},
+							},
+						},
+					},
+					{Tokens: []string{"!?"}},
+				},
+			},
+		},
 	} {
 		got := combineContainedIn(c.tokenSpans)
 		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
