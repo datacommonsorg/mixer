@@ -74,9 +74,8 @@ func ID(
 		}
 		resp.Entities = append(resp.Entities,
 			&pbv2.ResolveResponse_Entity{
-				Node:        e.GetInId(),
-				ResolvedIds: e.GetOutIds(),
-				Candidates:  candidates,
+				Node:       e.GetInId(),
+				Candidates: candidates,
 			})
 	}
 	return resp, nil
@@ -123,9 +122,8 @@ func Coordinate(
 		}
 		resp.Entities = append(resp.Entities,
 			&pbv2.ResolveResponse_Entity{
-				Node:        node,
-				ResolvedIds: e.GetPlaceDcids(),
-				Candidates:  getSortedResolvedPlaceCandidates(e.GetPlaces()),
+				Node:       node,
+				Candidates: getSortedResolvedPlaceCandidates(e.GetPlaces()),
 			})
 	}
 	return resp, nil
@@ -169,9 +167,8 @@ func Description(
 			})
 		}
 		resp.Entities = append(resp.Entities, &pbv2.ResolveResponse_Entity{
-			Node:        e.GetDescription(),
-			ResolvedIds: e.GetDcids(),
-			Candidates:  candidates,
+			Node:       e.GetDescription(),
+			Candidates: candidates,
 		})
 	}
 	return resp, nil
