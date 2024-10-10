@@ -155,9 +155,6 @@ type ResolveResponse_Entity struct {
 	unknownFields protoimpl.UnknownFields
 
 	Node string `protobuf:"bytes,1,opt,name=node,proto3" json:"node,omitempty"`
-	// TODO(ws): Deprecate this field once not used in website:
-	// https://github.com/search?q=repo%3Adatacommonsorg%2Fwebsite%20v2%2Fresolve&type=code
-	ResolvedIds []string                            `protobuf:"bytes,2,rep,name=resolved_ids,json=resolvedIds,proto3" json:"resolved_ids,omitempty"`
 	Candidates  []*ResolveResponse_Entity_Candidate `protobuf:"bytes,3,rep,name=candidates,proto3" json:"candidates,omitempty"`
 }
 
@@ -198,13 +195,6 @@ func (x *ResolveResponse_Entity) GetNode() string {
 		return x.Node
 	}
 	return ""
-}
-
-func (x *ResolveResponse_Entity) GetResolvedIds() []string {
-	if x != nil {
-		return x.ResolvedIds
-	}
-	return nil
 }
 
 func (x *ResolveResponse_Entity) GetCandidates() []*ResolveResponse_Entity_Candidate {
