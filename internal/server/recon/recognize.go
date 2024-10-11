@@ -481,7 +481,9 @@ func getNextPlaceTokenSpan(spans []*pb.TokenSpans_Span, startIdx int) (*pb.Token
 	return nil, -1
 }
 
-// Generates a map of dcid to the corresponding RecogPlace objects found, and a second map containing the nextContainingPlaces to the starting DCIDs.
+// Generates and returns two maps from the startSpan and nextSpan:
+// - StartSpan's DCID to the corresponding RecogPlace object.
+// - DCIDs nextSpan's containingPlaces to the DCIDs of the corresponding startSpan place DCID.
 func findRecogPlaces(startSpan, nextSpan *pb.TokenSpans_Span) (map[string]*pb.RecogPlace, map[string][]string) {
 	dcidToRecogPlaces := map[string]*pb.RecogPlace{}
 	nextContainingPlaceToStartDcid :=map[string][]string{}
@@ -518,21 +520,27 @@ func combineContainedInTokens(
 		startingDcids = append(startingDcids[:], v.GetDcid())
 	}
 
-	// This map is used to collect all the places for the combined span, with dedup.
+	// dcidToRecogPlaces collects all the places for the combined span.
+	// nextContainingPlaceToStartDcid maps the DCIDs of nextContainingPlaces to the startDCID they
+	// correspond to.
 	dcidToRecogPlaces, nextContainingPlaceToStartDcid := findRecogPlaces(startSpan, nextSpan)
-	
+
+	// Only for cases of "place1, place2, place3", we need to update dcidToRecogPlaces to count
+	// place3 as a containingPlace.
 	if numSpans == 5 {
 		nextNextSpan, _ := getNextPlaceTokenSpan(spans, nextSpanIndex+1)
 		for _, actualPlace := range nextNextSpan.GetPlaces() {
-			// Iterate through all possible places in the 3rd place span.
-			for possibleNextContaining, startDcids := range nextContainingPlaceToStartDcid {
-				// For all possible next containing places, we want to see if the starting DCID matches nextNextSpan's places.
-				for _, dcid := range startDcids {
-					if actualPlace.GetDcid() == possibleNextContaining {
-						if val, ok := dcidToRecogPlaces[dcid]; ok {
-							val.ContainingPlaces = append(val.ContainingPlaces, possibleNextContaining)
-						}
-					}
+			// For all places recognized in 3rd place span, find whether it is listed in the next containingPlaces
+			// from the 2nd place span.
+			startDcids, ok := nextContainingPlaceToStartDcid[actualPlace.GetDcid()]
+			if !ok {
+				continue
+			}
+			// startDcids includes the DCID of all starting places for which actualPlace is the
+			// 3rd containing place.
+			for _, dcid := range startDcids {
+				if val, ok := dcidToRecogPlaces[dcid]; ok {
+					val.ContainingPlaces = append(val.ContainingPlaces, actualPlace.GetDcid())
 				}
 			}
 		}
