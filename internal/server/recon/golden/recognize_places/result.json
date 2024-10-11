@@ -273,6 +273,35 @@
         }
       ]
     },
+    "population in 94043 vs sunnyvale": {
+      "items": [
+        {
+          "span": "population in"
+        },
+        {
+          "span": "94043",
+          "places": [
+            {
+              "dcid": "zip/94043"
+            }
+          ]
+        },
+        {
+          "span": "vs"
+        },
+        {
+          "span": "sunnyvale",
+          "places": [
+            {
+              "dcid": "geoId/0677000"
+            },
+            {
+              "dcid": "geoId/4871156"
+            }
+          ]
+        }
+      ]
+    },
     "tell me about chicago": {
       "items": [
         {
