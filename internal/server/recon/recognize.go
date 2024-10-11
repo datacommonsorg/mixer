@@ -427,13 +427,14 @@ func (p *placeRecognition) replaceTokensWithCandidates(tokens []string) *pb.Toke
 }
 
 func getNumSpansForContainedIn(spans []*pb.TokenSpans_Span, startIdx int) int {
+	comma_separator := ","
 	size := len(spans)
 
 	// Case: "place1, place2, place3". This case is required as Google Maps Prediction API meets this format.
 	if size > startIdx+4 && len(spans[startIdx+2].GetPlaces()) > 0 && len(spans[startIdx+4].GetPlaces()) > 0 {
 		nextSpanTokens := spans[startIdx+1].GetTokens()
 		nextNextSpanTokens := spans[startIdx+3].GetTokens()
-		if len(nextSpanTokens) == 1 && nextSpanTokens[0] == "," && len(nextNextSpanTokens) == 1 && nextNextSpanTokens[0] == "," {
+		if len(nextSpanTokens) == 1 && nextSpanTokens[0] == comma_separator && len(nextNextSpanTokens) == 1 && nextNextSpanTokens[0] == comma_separator {
 			return 5
 		}
 	}
@@ -441,7 +442,7 @@ func getNumSpansForContainedIn(spans []*pb.TokenSpans_Span, startIdx int) int {
 	// Case: "place1, place2".
 	if size > startIdx+2 && len(spans[startIdx+2].GetPlaces()) > 0 {
 		nextSpanTokens := spans[startIdx+1].GetTokens()
-		if len(nextSpanTokens) == 1 && nextSpanTokens[0] == "," {
+		if len(nextSpanTokens) == 1 && nextSpanTokens[0] == comma_separator {
 			return 3
 		}
 	}
@@ -475,21 +476,30 @@ func getNextPlaceTokenSpan(spans []*pb.TokenSpans_Span, startIdx int) (*pb.Token
 	return nil, -1
 }
 
-func findRecogPlaces(startSpan, nextSpan *pb.TokenSpans_Span) (map[string]*pb.RecogPlace, []string) {
+// Generates a map of dcid to the corresponding RecogPlace objects found, and a second map containing the nextContainingPlaces to the starting DCIDs.
+func findRecogPlaces(startSpan, nextSpan *pb.TokenSpans_Span) (map[string]*pb.RecogPlace, map[string][]string) {
 	dcidToRecogPlaces := map[string]*pb.RecogPlace{}
-	nextContainingPlaces := []string{}
+	nextContainingPlaceToStartDcid :=map[string][]string{}
 
 	for _, p1 := range startSpan.GetPlaces() {
 		for _, containingPlace := range p1.GetContainingPlaces() {
 			for _, p2 := range nextSpan.GetPlaces() {
 				if containingPlace == p2.GetDcid() {
+					// If p2's place is in p1's containing places, store p1 in map.
 					dcidToRecogPlaces[p1.GetDcid()] = p1
-					nextContainingPlaces = p2.GetContainingPlaces()
+					// For all of p2's next containing places, add p1's DCID as the starting DCID.
+					for _, p := range p2.GetContainingPlaces() {
+						if val, ok := nextContainingPlaceToStartDcid[p]; ok {
+							nextContainingPlaceToStartDcid[p] = append(val, p1.GetDcid())
+						} else {
+							nextContainingPlaceToStartDcid[p] = []string{p1.GetDcid()}
+						}
+					}
 				}
 			}
 		}
 	}
-	return dcidToRecogPlaces, nextContainingPlaces
+	return dcidToRecogPlaces, nextContainingPlaceToStartDcid
 }
 
 func combineContainedInTokens(
@@ -504,16 +514,18 @@ func combineContainedInTokens(
 	}
 
 	// This map is used to collect all the places for the combined span, with dedup.
-	dcidToRecogPlaces, nextContainingPlaces := findRecogPlaces(startSpan, nextSpan)
+	dcidToRecogPlaces, nextContainingPlaceToStartDcid := findRecogPlaces(startSpan, nextSpan)
 	
 	if numSpans == 5 {
-		nextNextSpan, _ := getNextPlaceTokenSpan(spans, nextSpanIndex+1)			
-		for _, possiblePlace := range nextContainingPlaces {
-			for _, actualPlace := range nextNextSpan.GetPlaces() {
-				if actualPlace.GetDcid() == possiblePlace {
-					for _, dcid := range startingDcids {
+		nextNextSpan, _ := getNextPlaceTokenSpan(spans, nextSpanIndex+1)
+		for _, actualPlace := range nextNextSpan.GetPlaces() {
+			// Iterate through all possible places in the 3rd place span.
+			for possibleNextContaining, startDcids := range nextContainingPlaceToStartDcid {
+				// For all possible next containing places, we want to see if the starting DCID matches nextNextSpan's places.
+				for _, dcid := range startDcids {
+					if actualPlace.GetDcid() == possibleNextContaining {
 						if val, ok := dcidToRecogPlaces[dcid]; ok {
-							val.ContainingPlaces = append(val.ContainingPlaces, possiblePlace)
+							val.ContainingPlaces = append(val.ContainingPlaces, possibleNextContaining)
 						}
 					}
 				}
