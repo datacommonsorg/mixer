@@ -482,8 +482,8 @@ func getNextPlaceTokenSpan(spans []*pb.TokenSpans_Span, startIdx int) (*pb.Token
 }
 
 // Generates and returns two maps from the startSpan and nextSpan:
-// - StartSpan's DCID to the corresponding RecogPlace object.
-// - DCIDs nextSpan's containingPlaces to the DCIDs of the corresponding startSpan place DCID.
+// - StartSpan's DCID to the corresponding RecogPlace object. Note that StartSpan could have multiple places.
+// - DCIDs of nextSpan's containingPlaces to the DCIDs of the corresponding startSpan place DCID.
 func findRecogPlaces(startSpan, nextSpan *pb.TokenSpans_Span) (map[string]*pb.RecogPlace, map[string][]string) {
 	dcidToRecogPlaces := map[string]*pb.RecogPlace{}
 	nextContainingPlaceToStartDcid :=map[string][]string{}
