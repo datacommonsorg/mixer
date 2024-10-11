@@ -432,12 +432,22 @@ func (p *placeRecognition) replaceTokensWithCandidates(tokens []string) *pb.Toke
 }
 
 func getNumSpansForContainedIn(spans []*pb.TokenSpans_Span, startIdx int) int {
+	comma_separator := ","
 	size := len(spans)
+
+	// Case: "place1, place2, place3". This case is required as Google Maps Prediction API meets this format.
+	if size > startIdx+4 && len(spans[startIdx+2].GetPlaces()) > 0 && len(spans[startIdx+4].GetPlaces()) > 0 {
+		nextSpanTokens := spans[startIdx+1].GetTokens()
+		nextNextSpanTokens := spans[startIdx+3].GetTokens()
+		if len(nextSpanTokens) == 1 && nextSpanTokens[0] == comma_separator && len(nextNextSpanTokens) == 1 && nextNextSpanTokens[0] == comma_separator {
+			return 5
+		}
+	}
 
 	// Case: "place1, place2".
 	if size > startIdx+2 && len(spans[startIdx+2].GetPlaces()) > 0 {
 		nextSpanTokens := spans[startIdx+1].GetTokens()
-		if len(nextSpanTokens) == 1 && nextSpanTokens[0] == "," {
+		if len(nextSpanTokens) == 1 && nextSpanTokens[0] == comma_separator {
 			return 3
 		}
 	}
@@ -451,24 +461,86 @@ func getNumSpansForContainedIn(spans []*pb.TokenSpans_Span, startIdx int) int {
 	return 0
 }
 
-func combineContainedInSingle(
-	spans []*pb.TokenSpans_Span, startIdx, numSpans int) *pb.TokenSpans_Span {
+func combineTokenSpans(spans []*pb.TokenSpans_Span, startIdx, numSpans int) *pb.TokenSpans_Span {
 	startSpan := spans[startIdx]
-	endSpan := spans[startIdx+numSpans-1]
-
+	
 	res := &pb.TokenSpans_Span{Tokens: startSpan.Tokens}
 	for i := 1; i < numSpans; i++ {
 		res.Tokens = append(res.Tokens, spans[startIdx+i].GetTokens()...)
 	}
 
-	// This map is used to collect all the places for the combined span, with dedup.
+	return combineContainedInTokens(res, spans, startIdx, numSpans)
+}
+
+func getNextPlaceTokenSpan(spans []*pb.TokenSpans_Span, startIdx int) (*pb.TokenSpans_Span, int) {
+	for i := startIdx; i < len(spans); i++ {
+		if len(spans[i].GetPlaces()) > 0 {
+			return spans[i], i
+		}
+	}
+	return nil, -1
+}
+
+// Generates and returns two maps from the startSpan and nextSpan:
+// - StartSpan's DCID to the corresponding RecogPlace object. Note that StartSpan could have multiple places.
+// - DCIDs of nextSpan's containingPlaces to the DCIDs of the corresponding startSpan place DCID.
+func findRecogPlaces(startSpan, nextSpan *pb.TokenSpans_Span) (map[string]*pb.RecogPlace, map[string][]string) {
 	dcidToRecogPlaces := map[string]*pb.RecogPlace{}
+	nextContainingPlaceToStartDcid :=map[string][]string{}
 
 	for _, p1 := range startSpan.GetPlaces() {
 		for _, containingPlace := range p1.GetContainingPlaces() {
-			for _, p2 := range endSpan.GetPlaces() {
+			for _, p2 := range nextSpan.GetPlaces() {
 				if containingPlace == p2.GetDcid() {
+					// If p2's place is in p1's containing places, store p1 in map.
 					dcidToRecogPlaces[p1.GetDcid()] = p1
+					// For all of p2's next containing places, add p1's DCID as the starting DCID.
+					for _, p := range p2.GetContainingPlaces() {
+						if val, ok := nextContainingPlaceToStartDcid[p]; ok {
+							nextContainingPlaceToStartDcid[p] = append(val, p1.GetDcid())
+						} else {
+							nextContainingPlaceToStartDcid[p] = []string{p1.GetDcid()}
+						}
+					}
+				}
+			}
+		}
+	}
+	return dcidToRecogPlaces, nextContainingPlaceToStartDcid
+}
+
+func combineContainedInTokens(
+	res *pb.TokenSpans_Span, 
+	spans []*pb.TokenSpans_Span, startIdx, numSpans int) *pb.TokenSpans_Span {
+	startSpan := spans[startIdx]
+	nextSpan, nextSpanIndex :=  getNextPlaceTokenSpan(spans, startIdx+1)
+
+	startingDcids := []string{}
+	for _, v := range startSpan.GetPlaces() {
+		startingDcids = append(startingDcids[:], v.GetDcid())
+	}
+
+	// dcidToRecogPlaces collects all the places for the combined span.
+	// nextContainingPlaceToStartDcid maps the DCIDs of nextContainingPlaces to the startDCID they
+	// correspond to.
+	dcidToRecogPlaces, nextContainingPlaceToStartDcid := findRecogPlaces(startSpan, nextSpan)
+
+	// Only for cases of "place1, place2, place3", we need to update dcidToRecogPlaces to count
+	// place3 as a containingPlace.
+	if numSpans == 5 {
+		nextNextSpan, _ := getNextPlaceTokenSpan(spans, nextSpanIndex+1)
+		for _, actualPlace := range nextNextSpan.GetPlaces() {
+			// For all places recognized in 3rd place span, find whether it is listed in the next containingPlaces
+			// from the 2nd place span.
+			startDcids, ok := nextContainingPlaceToStartDcid[actualPlace.GetDcid()]
+			if !ok {
+				continue
+			}
+			// startDcids includes the DCID of all starting places for which actualPlace is the
+			// 3rd containing place.
+			for _, dcid := range startDcids {
+				if val, ok := dcidToRecogPlaces[dcid]; ok {
+					val.ContainingPlaces = append(val.ContainingPlaces, actualPlace.GetDcid())
 				}
 			}
 		}
@@ -503,7 +575,7 @@ func combineContainedIn(tokenSpans *pb.TokenSpans) *pb.TokenSpans {
 			continue
 		}
 
-		collapsedTokenSpan := combineContainedInSingle(spans, i, numSpans)
+		collapsedTokenSpan := combineTokenSpans(spans, i, numSpans)
 		if collapsedTokenSpan == nil {
 			i++
 			res.Spans = append(res.Spans, tokenSpan)
