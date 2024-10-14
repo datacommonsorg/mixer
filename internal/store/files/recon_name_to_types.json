@@ -155,5 +155,6 @@
   "form": ["MeSH Descriptor"],
   "disease": ["Disease", "MeSH Descriptor"],
   "cui": ["Gene"],
-  "prevalence": ["MeSH Descriptor"]
+  "prevalence": ["MeSH Descriptor"],
+  "genetic": ["MeSH Descriptor"]
 }
