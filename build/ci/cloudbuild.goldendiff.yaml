@@ -40,7 +40,7 @@ steps:
         cd tools/send_email
         go run main.go \
           --subject="Mixer golden data diff from latest import group build" \
-          --receiver="datacommons-alerts@google.com" \
+          --receiver="datacommons-alerts+pipelines@google.com" \
           --body_file="/tmp/golden-diff.html" \
           --mime_type="text/html"
 
