@@ -2,9 +2,6 @@
   "entities": [
     {
       "node": "Q30",
-      "resolvedIds": [
-        "country/USA"
-      ],
       "candidates": [
         {
           "dcid": "country/USA"
@@ -13,9 +10,6 @@
     },
     {
       "node": "Q110739",
-      "resolvedIds": [
-        "geoId/06085"
-      ],
       "candidates": [
         {
           "dcid": "geoId/06085"
