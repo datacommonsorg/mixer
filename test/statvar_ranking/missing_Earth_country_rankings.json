@@ -90,6 +90,18 @@
     "relatedChart": {}
   },
   {
+    "title": "Government debt",
+    "statsVars": [
+      "Amount_Debt_Government"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Amount_Debt_Government"
+      ]
+    }
+  },
+  {
     "title": "Hate crime motivated by disability",
     "statsVars": [
       "Count_CriminalIncidents_BiasMotivationDisabilityStatus_IsHateCrime"
@@ -800,6 +812,22 @@
         "Count_CriminalActivities_CombinedCrime"
       ]
     }
+  },
+  {
+    "title": "Unemployment rate by gender",
+    "statsVars": [
+      "UnemploymentRate_Person_Female",
+      "UnemploymentRate_Person_Male"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Unemployment rate by gender",
+    "statsVars": [
+      "UnemploymentRate_Person_Male",
+      "UnemploymentRate_Person_Female"
+    ],
+    "relatedChart": {}
   },
   {
     "title": "Unemployment rate: urban vs rural",

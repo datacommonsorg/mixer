@@ -11,8 +11,8 @@
           "points_by_facet": [
             {
               "date": "2010",
-              "value": 64658856,
-              "facet": "858679853"
+              "value": 65030575,
+              "facet": "3981252704"
             }
           ]
         },
@@ -110,7 +110,7 @@
           "points_by_facet": [
             {
               "date": "2010",
-              "value": 49050,
+              "value": 49090,
               "facet": "2171028778"
             }
           ]
@@ -143,15 +143,15 @@
       "measurement_method": "CensusPEPSurvey",
       "observation_period": "P1Y"
     },
+    "3981252704": {
+      "import_name": "WorldDevelopmentIndicators",
+      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "observation_period": "P1Y"
+    },
     "4277990144": {
       "import_name": "FBIGovCrime",
       "provenance_url": "http://www.fbi.gov/services/cjis/ucr",
       "observation_period": "P1Y"
-    },
-    "858679853": {
-      "import_name": "EurostatData",
-      "provenance_url": "https://ec.europa.eu/eurostat/data/database",
-      "measurement_method": "EurostatRegionalPopulationData"
     }
   }
 }

@@ -4,11 +4,27 @@
       "data": {
         "Amount_Consumption_Alcohol_15OrMoreYears_AsFractionOf_Count_Person_15OrMoreYears": {
           "val": {
-            "2000": 3.62488,
-            "2005": 3.45674,
-            "2010": 5.90146,
-            "2015": 7.34536,
-            "2019": 5.72525
+            "2000": 3.62,
+            "2001": 3.62,
+            "2002": 3.38,
+            "2003": 3.25,
+            "2004": 3.26,
+            "2005": 3.46,
+            "2006": 3.83,
+            "2007": 4.23,
+            "2008": 4.71,
+            "2009": 5.26,
+            "2010": 5.9,
+            "2011": 6.5,
+            "2012": 6.92,
+            "2013": 7.16,
+            "2014": 7.29,
+            "2015": 7.35,
+            "2016": 7.18,
+            "2017": 6.53,
+            "2018": 5.73,
+            "2019": 5.73,
+            "2020": 4.58
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -20,59 +36,60 @@
         },
         "Count_Death_0Years_AsFractionOf_Count_BirthEvent_LiveBirth": {
           "val": {
-            "1969": 83.1,
-            "1970": 79.3,
-            "1971": 75.7,
-            "1972": 72.1,
-            "1973": 68.7,
-            "1974": 65.1,
+            "1969": 83.3,
+            "1970": 79.5,
+            "1971": 75.9,
+            "1972": 72.4,
+            "1973": 68.8,
+            "1974": 65.2,
             "1975": 61.5,
             "1976": 58,
             "1977": 54.7,
-            "1978": 51.7,
-            "1979": 49.1,
-            "1980": 46.9,
+            "1978": 51.6,
+            "1979": 49,
+            "1980": 46.8,
             "1981": 45.1,
             "1982": 43.7,
-            "1983": 42.7,
-            "1984": 42.1,
-            "1985": 41.8,
-            "1986": 41.8,
-            "1987": 42.1,
-            "1988": 42.4,
-            "1989": 42.6,
-            "1990": 42.7,
-            "1991": 42.4,
+            "1983": 42.8,
+            "1984": 42.2,
+            "1985": 41.9,
+            "1986": 42,
+            "1987": 42.2,
+            "1988": 42.6,
+            "1989": 42.8,
+            "1990": 42.8,
+            "1991": 42.5,
             "1992": 41.9,
             "1993": 41,
-            "1994": 39.8,
-            "1995": 38.4,
+            "1994": 39.9,
+            "1995": 38.5,
             "1996": 37,
             "1997": 35.4,
-            "1998": 33.8,
+            "1998": 33.7,
             "1999": 31.9,
-            "2000": 30,
-            "2001": 27.9,
+            "2000": 29.9,
+            "2001": 27.8,
             "2002": 25.7,
             "2003": 23.5,
             "2004": 21.4,
-            "2005": 19.5,
+            "2005": 19.4,
             "2006": 17.7,
-            "2007": 16.2,
+            "2007": 16.1,
             "2008": 14.8,
             "2009": 13.6,
             "2010": 12.5,
             "2011": 11.5,
-            "2012": 10.6,
+            "2012": 10.5,
             "2013": 9.7,
             "2014": 8.9,
             "2015": 8.2,
             "2016": 7.6,
             "2017": 7,
             "2018": 6.4,
-            "2019": 5.9,
+            "2019": 6,
             "2020": 5.5,
-            "2021": 5.1
+            "2021": 5.1,
+            "2022": 4.8
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -84,59 +101,60 @@
         },
         "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female": {
           "val": {
-            "1969": 78.9,
-            "1970": 75.3,
-            "1971": 72,
-            "1972": 68.5,
-            "1973": 65.1,
-            "1974": 61.6,
-            "1975": 58.2,
-            "1976": 54.8,
+            "1969": 79.3,
+            "1970": 75.7,
+            "1971": 72.1,
+            "1972": 68.7,
+            "1973": 65.3,
+            "1974": 61.8,
+            "1975": 58.3,
+            "1976": 55,
             "1977": 51.7,
             "1978": 48.8,
             "1979": 46.3,
             "1980": 44.3,
             "1981": 42.6,
-            "1982": 41.3,
+            "1982": 41.4,
             "1983": 40.4,
-            "1984": 39.8,
-            "1985": 39.6,
-            "1986": 39.7,
-            "1987": 39.9,
-            "1988": 40.2,
-            "1989": 40.4,
-            "1990": 40.4,
+            "1984": 39.9,
+            "1985": 39.7,
+            "1986": 39.8,
+            "1987": 40,
+            "1988": 40.3,
+            "1989": 40.5,
+            "1990": 40.5,
             "1991": 40.2,
             "1992": 39.7,
             "1993": 38.8,
-            "1994": 37.6,
-            "1995": 36.3,
+            "1994": 37.7,
+            "1995": 36.4,
             "1996": 34.9,
             "1997": 33.4,
             "1998": 31.8,
-            "1999": 30.1,
+            "1999": 30,
             "2000": 28.2,
             "2001": 26.2,
-            "2002": 24.2,
-            "2003": 22.1,
+            "2002": 24.1,
+            "2003": 22,
             "2004": 20,
-            "2005": 18.2,
+            "2005": 18.1,
             "2006": 16.5,
-            "2007": 15.1,
+            "2007": 15,
             "2008": 13.8,
             "2009": 12.6,
             "2010": 11.6,
             "2011": 10.7,
             "2012": 9.8,
-            "2013": 9.1,
+            "2013": 9,
             "2014": 8.3,
             "2015": 7.7,
             "2016": 7.1,
             "2017": 6.5,
-            "2018": 6,
+            "2018": 6.1,
             "2019": 5.6,
-            "2020": 5.1,
-            "2021": 4.8
+            "2020": 5.2,
+            "2021": 4.8,
+            "2022": 4.5
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -148,51 +166,51 @@
         },
         "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male": {
           "val": {
-            "1969": 86.9,
-            "1970": 83,
-            "1971": 79.3,
-            "1972": 75.6,
-            "1973": 71.9,
+            "1969": 87,
+            "1970": 83.1,
+            "1971": 79.4,
+            "1972": 75.7,
+            "1973": 72,
             "1974": 68.3,
-            "1975": 64.5,
+            "1975": 64.6,
             "1976": 60.9,
-            "1977": 57.4,
+            "1977": 57.5,
             "1978": 54.3,
             "1979": 51.6,
             "1980": 49.3,
             "1981": 47.4,
-            "1982": 45.9,
+            "1982": 46,
             "1983": 44.9,
             "1984": 44.3,
-            "1985": 43.9,
-            "1986": 43.9,
-            "1987": 44.2,
-            "1988": 44.5,
+            "1985": 44,
+            "1986": 44,
+            "1987": 44.3,
+            "1988": 44.6,
             "1989": 44.8,
-            "1990": 44.8,
+            "1990": 44.9,
             "1991": 44.6,
             "1992": 44,
             "1993": 43.1,
-            "1994": 41.8,
+            "1994": 41.9,
             "1995": 40.5,
-            "1996": 39,
+            "1996": 38.9,
             "1997": 37.4,
             "1998": 35.6,
             "1999": 33.7,
-            "2000": 31.7,
-            "2001": 29.5,
-            "2002": 27.2,
-            "2003": 24.9,
+            "2000": 31.6,
+            "2001": 29.4,
+            "2002": 27.1,
+            "2003": 24.8,
             "2004": 22.7,
-            "2005": 20.7,
-            "2006": 18.9,
+            "2005": 20.6,
+            "2006": 18.8,
             "2007": 17.2,
-            "2008": 15.8,
-            "2009": 14.5,
+            "2008": 15.7,
+            "2009": 14.4,
             "2010": 13.3,
-            "2011": 12.3,
-            "2012": 11.3,
-            "2013": 10.4,
+            "2011": 12.2,
+            "2012": 11.2,
+            "2013": 10.3,
             "2014": 9.5,
             "2015": 8.7,
             "2016": 8,
@@ -200,7 +218,8 @@
             "2018": 6.8,
             "2019": 6.3,
             "2020": 5.8,
-            "2021": 5.3
+            "2021": 5.4,
+            "2022": 5
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -274,7 +293,8 @@
             "2019": 1407745000,
             "2020": 1411100000,
             "2021": 1412360000,
-            "2022": 1412175000
+            "2022": 1412175000,
+            "2023": 1410710000
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -298,7 +318,8 @@
             "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
             "measurementMethod": "JointChildMalnutritionEstimate",
             "observationPeriod": "P1Y",
-            "scalingFactor": "100"
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Count_Person_Upto4Years_Female_Wasting_AsFractionOf_Count_Person_Upto4Years_Female": {
@@ -318,7 +339,8 @@
             "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
             "measurementMethod": "JointChildMalnutritionEstimate",
             "observationPeriod": "P1Y",
-            "scalingFactor": "100"
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Count_Person_Upto4Years_Male_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Male": {
@@ -337,7 +359,8 @@
             "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
             "measurementMethod": "JointChildMalnutritionEstimate",
             "observationPeriod": "P1Y",
-            "scalingFactor": "100"
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Count_Person_Upto4Years_Male_Wasting_AsFractionOf_Count_Person_Upto4Years_Male": {
@@ -357,7 +380,8 @@
             "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
             "measurementMethod": "JointChildMalnutritionEstimate",
             "observationPeriod": "P1Y",
-            "scalingFactor": "100"
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Count_Person_Upto4Years_SevereWasting_AsFractionOf_Count_Person_Upto4Years": {
@@ -378,7 +402,8 @@
             "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
             "measurementMethod": "JointChildMalnutritionEstimate",
             "observationPeriod": "P1Y",
-            "scalingFactor": "100"
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years": {
@@ -402,7 +427,8 @@
             "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
             "measurementMethod": "JointChildMalnutritionEstimate",
             "observationPeriod": "P1Y",
-            "scalingFactor": "100"
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased": {
@@ -652,7 +678,9 @@
             "2024-08-25": 122323,
             "2024-09-01": 122344,
             "2024-09-08": 122351,
-            "2024-09-15": 122352
+            "2024-09-15": 122352,
+            "2024-09-22": 122358,
+            "2024-09-29": 122358
           },
           "metadata": {
             "importName": "WHO_COVID19",
@@ -723,7 +751,8 @@
             "2018": 77.744,
             "2019": 77.968,
             "2020": 78.077,
-            "2021": 78.211
+            "2021": 78.211,
+            "2022": 78.587
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -737,11 +766,27 @@
       "data": {
         "Amount_Consumption_Alcohol_15OrMoreYears_AsFractionOf_Count_Person_15OrMoreYears": {
           "val": {
-            "2000": 7.93168,
-            "2005": 7.90863,
-            "2010": 5.06426,
-            "2015": 4.38764,
-            "2019": 4.21026
+            "2000": 7.93,
+            "2001": 7.93,
+            "2002": 7.9,
+            "2003": 7.92,
+            "2004": 7.94,
+            "2005": 7.91,
+            "2006": 7.85,
+            "2007": 7.75,
+            "2008": 7.63,
+            "2009": 6.19,
+            "2010": 5.06,
+            "2011": 3.98,
+            "2012": 4.28,
+            "2013": 4.33,
+            "2014": 4.39,
+            "2015": 4.39,
+            "2016": 4.35,
+            "2017": 4.29,
+            "2018": 4.21,
+            "2019": 4.21,
+            "2020": 3.78
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -754,63 +799,64 @@
         "Count_Death_0Years_AsFractionOf_Count_BirthEvent_LiveBirth": {
           "val": {
             "1964": 193.9,
-            "1965": 189.6,
-            "1966": 185.3,
-            "1967": 181.2,
-            "1968": 176.9,
-            "1969": 172.7,
-            "1970": 168.2,
-            "1971": 163.5,
-            "1972": 158.4,
-            "1973": 153.4,
-            "1974": 148.5,
-            "1975": 143.6,
-            "1976": 139.1,
-            "1977": 135,
-            "1978": 131.3,
-            "1979": 128.4,
-            "1980": 126,
-            "1981": 124.3,
-            "1982": 123.1,
-            "1983": 122.7,
-            "1984": 122.7,
-            "1985": 123,
-            "1986": 123.5,
-            "1987": 124,
-            "1988": 124.3,
-            "1989": 124.3,
-            "1990": 124.2,
-            "1991": 123.9,
-            "1992": 123.5,
-            "1993": 123,
-            "1994": 122.2,
-            "1995": 121.1,
-            "1996": 119.6,
-            "1997": 117.6,
-            "1998": 115.2,
-            "1999": 112.4,
+            "1965": 189.7,
+            "1966": 185.6,
+            "1967": 181.5,
+            "1968": 177.2,
+            "1969": 172.9,
+            "1970": 168.4,
+            "1971": 163.6,
+            "1972": 158.6,
+            "1973": 153.6,
+            "1974": 148.6,
+            "1975": 143.9,
+            "1976": 139.3,
+            "1977": 135.1,
+            "1978": 131.5,
+            "1979": 128.6,
+            "1980": 126.3,
+            "1981": 124.5,
+            "1982": 123.4,
+            "1983": 122.9,
+            "1984": 122.9,
+            "1985": 123.2,
+            "1986": 123.7,
+            "1987": 124.1,
+            "1988": 124.4,
+            "1989": 124.5,
+            "1990": 124.4,
+            "1991": 124.1,
+            "1992": 123.6,
+            "1993": 123.1,
+            "1994": 122.3,
+            "1995": 121.2,
+            "1996": 119.7,
+            "1997": 117.7,
+            "1998": 115.3,
+            "1999": 112.6,
             "2000": 109.6,
             "2001": 106.6,
-            "2002": 103.7,
-            "2003": 100.8,
-            "2004": 97.9,
-            "2005": 95,
-            "2006": 92.4,
-            "2007": 89.9,
-            "2008": 87.8,
-            "2009": 86,
-            "2010": 84.4,
-            "2011": 83.2,
-            "2012": 82,
-            "2013": 81.1,
-            "2014": 80.2,
-            "2015": 79.3,
-            "2016": 78.3,
-            "2017": 77.1,
-            "2018": 75.5,
-            "2019": 73.9,
+            "2002": 103.6,
+            "2003": 100.6,
+            "2004": 97.6,
+            "2005": 94.7,
+            "2006": 92.1,
+            "2007": 89.6,
+            "2008": 87.5,
+            "2009": 85.7,
+            "2010": 84.2,
+            "2011": 82.9,
+            "2012": 81.8,
+            "2013": 80.8,
+            "2014": 80,
+            "2015": 79.2,
+            "2016": 78.2,
+            "2017": 77,
+            "2018": 75.7,
+            "2019": 74,
             "2020": 72.3,
-            "2021": 70.6
+            "2021": 70.5,
+            "2022": 68.5
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -823,63 +869,64 @@
         "Count_Death_0Years_Female_AsFractionOf_Count_BirthEvent_LiveBirth_Female": {
           "val": {
             "1964": 180,
-            "1965": 175.9,
-            "1966": 172,
-            "1967": 168.2,
+            "1965": 176,
+            "1966": 172.1,
+            "1967": 168.3,
             "1968": 164.3,
-            "1969": 160.3,
+            "1969": 160.2,
             "1970": 156,
-            "1971": 151.6,
+            "1971": 151.5,
             "1972": 146.9,
-            "1973": 142.2,
-            "1974": 137.5,
-            "1975": 133,
+            "1973": 142.3,
+            "1974": 137.6,
+            "1975": 132.9,
             "1976": 128.7,
             "1977": 124.7,
-            "1978": 121.2,
-            "1979": 118.4,
-            "1980": 116.3,
+            "1978": 121.4,
+            "1979": 118.6,
+            "1980": 116.4,
             "1981": 114.7,
-            "1982": 113.6,
-            "1983": 113,
+            "1982": 113.7,
+            "1983": 113.1,
             "1984": 112.9,
             "1985": 113,
             "1986": 113.4,
-            "1987": 113.6,
-            "1988": 113.8,
+            "1987": 113.7,
+            "1988": 113.9,
             "1989": 113.8,
-            "1990": 113.5,
+            "1990": 113.4,
             "1991": 113.2,
-            "1992": 112.9,
+            "1992": 113,
             "1993": 112.7,
             "1994": 112.1,
             "1995": 111.2,
-            "1996": 109.8,
-            "1997": 108.1,
+            "1996": 109.9,
+            "1997": 108.2,
             "1998": 105.6,
             "1999": 103.2,
             "2000": 100.8,
-            "2001": 97.9,
-            "2002": 94.9,
-            "2003": 91.9,
-            "2004": 88.9,
-            "2005": 86,
-            "2006": 83.4,
-            "2007": 81.4,
-            "2008": 79.6,
-            "2009": 77.9,
-            "2010": 76.6,
-            "2011": 75.5,
-            "2012": 74.4,
-            "2013": 73.6,
-            "2014": 72.9,
-            "2015": 72.2,
-            "2016": 71.4,
+            "2001": 97.8,
+            "2002": 94.8,
+            "2003": 91.7,
+            "2004": 88.6,
+            "2005": 85.8,
+            "2006": 83.2,
+            "2007": 81.2,
+            "2008": 79.3,
+            "2009": 77.8,
+            "2010": 76.4,
+            "2011": 75.2,
+            "2012": 74.3,
+            "2013": 73.4,
+            "2014": 72.7,
+            "2015": 72.1,
+            "2016": 71.3,
             "2017": 70.2,
-            "2018": 68.8,
+            "2018": 68.9,
             "2019": 67.3,
             "2020": 65.7,
-            "2021": 64.1
+            "2021": 63.9,
+            "2022": 62.1
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -891,64 +938,65 @@
         },
         "Count_Death_0Years_Male_AsFractionOf_Count_BirthEvent_LiveBirth_Male": {
           "val": {
-            "1964": 206.8,
-            "1965": 202.3,
-            "1966": 197.8,
-            "1967": 193.5,
-            "1968": 189,
-            "1969": 184.3,
-            "1970": 179.6,
-            "1971": 174.5,
-            "1972": 169.5,
-            "1973": 164.2,
-            "1974": 158.9,
-            "1975": 153.8,
-            "1976": 149.1,
-            "1977": 144.8,
-            "1978": 141,
-            "1979": 137.8,
-            "1980": 135.3,
-            "1981": 133.4,
-            "1982": 132.3,
-            "1983": 132,
-            "1984": 132.1,
-            "1985": 132.6,
-            "1986": 133.2,
-            "1987": 133.8,
-            "1988": 134.2,
-            "1989": 134.4,
-            "1990": 134.5,
-            "1991": 134.2,
-            "1992": 133.6,
-            "1993": 132.8,
-            "1994": 131.8,
-            "1995": 130.6,
-            "1996": 128.9,
-            "1997": 126.6,
-            "1998": 124.3,
-            "1999": 121.3,
-            "2000": 118,
+            "1964": 207.5,
+            "1965": 202.9,
+            "1966": 198.4,
+            "1967": 194,
+            "1968": 189.4,
+            "1969": 184.9,
+            "1970": 180.1,
+            "1971": 174.9,
+            "1972": 169.6,
+            "1973": 164.3,
+            "1974": 159.1,
+            "1975": 154.1,
+            "1976": 149.3,
+            "1977": 144.9,
+            "1978": 141.1,
+            "1979": 138,
+            "1980": 135.5,
+            "1981": 133.7,
+            "1982": 132.6,
+            "1983": 132.2,
+            "1984": 132.4,
+            "1985": 132.9,
+            "1986": 133.5,
+            "1987": 134.1,
+            "1988": 134.5,
+            "1989": 134.7,
+            "1990": 134.7,
+            "1991": 134.4,
+            "1992": 133.8,
+            "1993": 133,
+            "1994": 132,
+            "1995": 130.8,
+            "1996": 129,
+            "1997": 126.8,
+            "1998": 124.5,
+            "1999": 121.4,
+            "2000": 118.1,
             "2001": 115,
             "2002": 112,
-            "2003": 109.2,
-            "2004": 106.4,
-            "2005": 103.5,
-            "2006": 100.8,
-            "2007": 98,
-            "2008": 95.6,
-            "2009": 93.6,
-            "2010": 91.8,
-            "2011": 90.4,
-            "2012": 89.2,
-            "2013": 88.2,
-            "2014": 87.1,
-            "2015": 86.1,
-            "2016": 84.9,
+            "2003": 109.1,
+            "2004": 106.2,
+            "2005": 103.2,
+            "2006": 100.5,
+            "2007": 97.7,
+            "2008": 95.3,
+            "2009": 93.3,
+            "2010": 91.6,
+            "2011": 90.1,
+            "2012": 88.9,
+            "2013": 87.8,
+            "2014": 86.9,
+            "2015": 85.9,
+            "2016": 84.8,
             "2017": 83.6,
-            "2018": 82,
-            "2019": 80.2,
-            "2020": 78.5,
-            "2021": 76.7
+            "2018": 82.2,
+            "2019": 80.4,
+            "2020": 78.6,
+            "2021": 76.7,
+            "2022": 74.7
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -1022,7 +1070,8 @@
             "2019": 203304492,
             "2020": 208327405,
             "2021": 213401323,
-            "2022": 218541212
+            "2022": 218541212,
+            "2023": 223804632
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -1046,7 +1095,8 @@
             "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
             "measurementMethod": "JointChildMalnutritionEstimate",
             "observationPeriod": "P1Y",
-            "scalingFactor": "100"
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Count_Person_Upto4Years_Female_Wasting_AsFractionOf_Count_Person_Upto4Years_Female": {
@@ -1065,7 +1115,8 @@
             "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
             "measurementMethod": "JointChildMalnutritionEstimate",
             "observationPeriod": "P1Y",
-            "scalingFactor": "100"
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Count_Person_Upto4Years_Male_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Male": {
@@ -1084,7 +1135,8 @@
             "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
             "measurementMethod": "JointChildMalnutritionEstimate",
             "observationPeriod": "P1Y",
-            "scalingFactor": "100"
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Count_Person_Upto4Years_Male_Wasting_AsFractionOf_Count_Person_Upto4Years_Male": {
@@ -1103,7 +1155,8 @@
             "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
             "measurementMethod": "JointChildMalnutritionEstimate",
             "observationPeriod": "P1Y",
-            "scalingFactor": "100"
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Count_Person_Upto4Years_SevereWasting_AsFractionOf_Count_Person_Upto4Years": {
@@ -1122,7 +1175,8 @@
             "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
             "measurementMethod": "JointChildMalnutritionEstimate",
             "observationPeriod": "P1Y",
-            "scalingFactor": "100"
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years": {
@@ -1142,7 +1196,8 @@
             "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
             "measurementMethod": "JointChildMalnutritionEstimate",
             "observationPeriod": "P1Y",
-            "scalingFactor": "100"
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased": {
@@ -1392,7 +1447,9 @@
             "2024-08-25": 3155,
             "2024-09-01": 3155,
             "2024-09-08": 3155,
-            "2024-09-15": 3155
+            "2024-09-15": 3155,
+            "2024-09-22": 3155,
+            "2024-09-29": 3155
           },
           "metadata": {
             "importName": "WHO_COVID19",
@@ -1463,7 +1520,8 @@
             "2018": 52.554,
             "2019": 52.91,
             "2020": 52.887,
-            "2021": 52.676
+            "2021": 52.676,
+            "2022": 53.633
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -1477,11 +1535,27 @@
       "data": {
         "Amount_Consumption_Alcohol_15OrMoreYears_AsFractionOf_Count_Person_15OrMoreYears": {
           "val": {
-            "2000": 9.05296,
-            "2005": 9.29658,
-            "2010": 9.34309,
-            "2015": 9.48589,
-            "2019": 9.56731
+            "2000": 9.05,
+            "2001": 9.05,
+            "2002": 9.11,
+            "2003": 9.17,
+            "2004": 9.24,
+            "2005": 9.3,
+            "2006": 9.37,
+            "2007": 9.43,
+            "2008": 9.44,
+            "2009": 9.37,
+            "2010": 9.34,
+            "2011": 9.39,
+            "2012": 9.47,
+            "2013": 9.5,
+            "2014": 9.47,
+            "2015": 9.49,
+            "2016": 9.51,
+            "2017": 9.55,
+            "2018": 9.57,
+            "2019": 9.57,
+            "2020": 9.9
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -1546,15 +1620,16 @@
             "2010": 6.2,
             "2011": 6.1,
             "2012": 6,
-            "2013": 6,
+            "2013": 5.9,
             "2014": 5.9,
             "2015": 5.8,
             "2016": 5.7,
-            "2017": 5.7,
+            "2017": 5.6,
             "2018": 5.6,
             "2019": 5.5,
-            "2020": 5.4,
-            "2021": 5.4
+            "2020": 5.5,
+            "2021": 5.4,
+            "2022": 5.4
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -1570,7 +1645,7 @@
             "1961": 22.1,
             "1962": 21.5,
             "1963": 21.1,
-            "1964": 20.8,
+            "1964": 20.7,
             "1965": 20.2,
             "1966": 19.7,
             "1967": 19.1,
@@ -1616,7 +1691,7 @@
             "2007": 5.9,
             "2008": 5.8,
             "2009": 5.7,
-            "2010": 5.7,
+            "2010": 5.6,
             "2011": 5.6,
             "2012": 5.5,
             "2013": 5.4,
@@ -1626,8 +1701,9 @@
             "2017": 5.1,
             "2018": 5,
             "2019": 5,
-            "2020": 4.9,
-            "2021": 4.9
+            "2020": 5,
+            "2021": 5,
+            "2022": 4.9
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -1675,8 +1751,8 @@
             "1993": 9.4,
             "1994": 9,
             "1995": 8.7,
-            "1996": 8.4,
-            "1997": 8.2,
+            "1996": 8.5,
+            "1997": 8.3,
             "1998": 8,
             "1999": 7.9,
             "2000": 7.8,
@@ -1700,7 +1776,8 @@
             "2018": 6.1,
             "2019": 6,
             "2020": 5.9,
-            "2021": 5.8
+            "2021": 5.8,
+            "2022": 5.8
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -1922,7 +1999,8 @@
             "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
             "measurementMethod": "JointChildMalnutritionEstimate",
             "observationPeriod": "P1Y",
-            "scalingFactor": "100"
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Count_Person_Upto4Years_Female_Wasting_AsFractionOf_Count_Person_Upto4Years_Female": {
@@ -1944,7 +2022,8 @@
             "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
             "measurementMethod": "JointChildMalnutritionEstimate",
             "observationPeriod": "P1Y",
-            "scalingFactor": "100"
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Count_Person_Upto4Years_Male_SevereWasting_AsFractionOf_Count_Person_Upto4Years_Male": {
@@ -1966,7 +2045,8 @@
             "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
             "measurementMethod": "JointChildMalnutritionEstimate",
             "observationPeriod": "P1Y",
-            "scalingFactor": "100"
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Count_Person_Upto4Years_Male_Wasting_AsFractionOf_Count_Person_Upto4Years_Male": {
@@ -1988,7 +2068,8 @@
             "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
             "measurementMethod": "JointChildMalnutritionEstimate",
             "observationPeriod": "P1Y",
-            "scalingFactor": "100"
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Count_Person_Upto4Years_SevereWasting_AsFractionOf_Count_Person_Upto4Years": {
@@ -2010,7 +2091,8 @@
             "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
             "measurementMethod": "JointChildMalnutritionEstimate",
             "observationPeriod": "P1Y",
-            "scalingFactor": "100"
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Count_Person_Upto4Years_Wasting_AsFractionOf_Count_Person_Upto4Years": {
@@ -2032,7 +2114,8 @@
             "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
             "measurementMethod": "JointChildMalnutritionEstimate",
             "observationPeriod": "P1Y",
-            "scalingFactor": "100"
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase": {
@@ -4432,7 +4515,8 @@
             "2018": 78.6390243902439,
             "2019": 78.7878048780488,
             "2020": 76.9804878048781,
-            "2021": 76.3292682926829
+            "2021": 76.3292682926829,
+            "2022": 77.4341463414634
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -4442,79 +4526,91 @@
         },
         "Percent_Person_BingeDrinking": {
           "val": {
-            "2018": 17.5,
             "2020": 16.7,
-            "2021": 16.7
+            "2021": 16.7,
+            "2022": 18
           },
           "metadata": {
             "importName": "CDC500",
             "provenanceUrl": "https://www.cdc.gov/places/index.html",
             "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Percent_Person_Obesity": {
           "val": {
-            "2018": 30.9,
             "2020": 32,
-            "2021": 33
+            "2021": 33,
+            "2022": 33.4
           },
           "metadata": {
             "importName": "CDC500",
             "provenanceUrl": "https://www.cdc.gov/places/index.html",
             "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Percent_Person_PhysicalInactivity": {
           "val": {
-            "2018": 23.6,
             "2020": 22.9,
-            "2021": 23
+            "2021": 23,
+            "2022": 23
           },
           "metadata": {
             "importName": "CDC500",
             "provenanceUrl": "https://www.cdc.gov/places/index.html",
             "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Percent_Person_SleepLessThan7Hours": {
           "val": {
-            "2018": 36.2,
-            "2020": 33.3
+            "2020": 33.3,
+            "2022": 36.8
           },
           "metadata": {
             "importName": "CDC500",
             "provenanceUrl": "https://www.cdc.gov/places/index.html",
             "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Percent_Person_Smoking": {
           "val": {
-            "2018": 15.9,
             "2020": 14.6,
-            "2021": 13.8
+            "2021": 13.8,
+            "2022": 13.2
           },
           "metadata": {
             "importName": "CDC500",
             "provenanceUrl": "https://www.cdc.gov/places/index.html",
             "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Percent_Person_WithArthritis": {
           "val": {
-            "2018": 23.1,
             "2020": 21.3,
-            "2021": 22.2
+            "2021": 22.2,
+            "2022": 23.3
           },
           "metadata": {
             "importName": "CDC500",
             "provenanceUrl": "https://www.cdc.gov/places/index.html",
             "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Percent_Person_WithHighBloodPressure": {
@@ -4545,28 +4641,32 @@
         },
         "Percent_Person_WithMentalHealthNotGood": {
           "val": {
-            "2018": 12.9,
             "2020": 13.9,
-            "2021": 15.2
+            "2021": 15.2,
+            "2022": 16.4
           },
           "metadata": {
             "importName": "CDC500",
             "provenanceUrl": "https://www.cdc.gov/places/index.html",
             "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Percent_Person_WithPhysicalHealthNotGood": {
           "val": {
-            "2018": 11.8,
             "2020": 9.4,
-            "2021": 10.3
+            "2021": 10.3,
+            "2022": 12
           },
           "metadata": {
             "importName": "CDC500",
             "provenanceUrl": "https://www.cdc.gov/places/index.html",
             "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "RetailDrugDistribution_DrugDistribution_Amphetamine": {
@@ -4869,8 +4969,8 @@
   },
   "latestPopulation": {
     "country/ASM": {
-      "date": "2022",
-      "value": 44273,
+      "date": "2023",
+      "value": 43914,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
@@ -4878,8 +4978,8 @@
       }
     },
     "country/CHN": {
-      "date": "2022",
-      "value": 1412175000,
+      "date": "2023",
+      "value": 1410710000,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
@@ -4887,17 +4987,17 @@
       }
     },
     "country/DEU": {
-      "date": "2019",
-      "value": 83019213,
+      "date": "2023",
+      "value": 84482267,
       "metadata": {
-        "importName": "EurostatData",
-        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database",
-        "measurementMethod": "EurostatRegionalPopulationData"
+        "importName": "WorldDevelopmentIndicators",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "observationPeriod": "P1Y"
       }
     },
     "country/NGA": {
-      "date": "2022",
-      "value": 218541212,
+      "date": "2023",
+      "value": 223804632,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
@@ -4905,8 +5005,8 @@
       }
     },
     "country/NZL": {
-      "date": "2022",
-      "value": 5124100,
+      "date": "2023",
+      "value": 5223100,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",

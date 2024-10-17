@@ -3,7 +3,7 @@
   "info": {
     "placeTypeSummary": {
       "CensusCountyDivision": {
-        "placeCount": 1457,
+        "placeCount": 1496,
         "topPlaces": [
           {
             "dcid": "geoId/1500390810",
@@ -22,7 +22,7 @@
         "maxValue": 36325
       },
       "City": {
-        "placeCount": 9641,
+        "placeCount": 9888,
         "topPlaces": [
           {
             "dcid": "geoId/3651000",
@@ -38,7 +38,7 @@
           }
         ],
         "minValue": 0,
-        "maxValue": 237654
+        "maxValue": 250958
       },
       "Country": {
         "placeCount": 1,
@@ -100,10 +100,10 @@
               "observationPeriod": "P1Y"
             },
             "earliestDate": "2008",
-            "latestDate": "2022",
+            "latestDate": "2023",
             "placeTypeSummary": {
               "CensusCountyDivision": {
-                "placeCount": 1457,
+                "placeCount": 1496,
                 "topPlaces": [
                   {
                     "dcid": "geoId/1500390810",
@@ -122,7 +122,7 @@
                 "maxValue": 36325
               },
               "City": {
-                "placeCount": 9641,
+                "placeCount": 9888,
                 "topPlaces": [
                   {
                     "dcid": "geoId/3651000",
@@ -138,7 +138,7 @@
                   }
                 ],
                 "minValue": 0,
-                "maxValue": 237654
+                "maxValue": 250958
               },
               "County": {
                 "placeCount": 4,
@@ -156,7 +156,7 @@
                     "name": "North Slope Borough"
                   }
                 ],
-                "minValue": 13,
+                "minValue": 8,
                 "maxValue": 4043
               },
               "State": {
@@ -181,12 +181,12 @@
             },
             "minValue": 0,
             "maxValue": 1265920,
-            "observationCount": 115087,
-            "timeSeriesCount": 11154
+            "observationCount": 122295,
+            "timeSeriesCount": 11440
           }
         ],
-        "observationCount": 115087,
-        "timeSeriesCount": 11154
+        "observationCount": 122295,
+        "timeSeriesCount": 11440
       },
       "dc/base/FBIGovCrime_AggCountry": {
         "importName": "FBIGovCrime_AggCountry",
@@ -197,7 +197,7 @@
               "isDcAggregate": true
             },
             "earliestDate": "2008",
-            "latestDate": "2022",
+            "latestDate": "2023",
             "placeTypeSummary": {
               "Country": {
                 "placeCount": 1,
@@ -207,17 +207,17 @@
                     "name": "United States"
                   }
                 ],
-                "minValue": 7782709,
+                "minValue": 7692556,
                 "maxValue": 11111207
               }
             },
-            "minValue": 7782709,
+            "minValue": 7692556,
             "maxValue": 11111207,
-            "observationCount": 14,
+            "observationCount": 15,
             "timeSeriesCount": 1
           }
         ],
-        "observationCount": 14,
+        "observationCount": 15,
         "timeSeriesCount": 1
       }
     }

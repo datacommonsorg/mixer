@@ -41,19 +41,6 @@
             }
           ]
         },
-        "country/MYT": {
-          "ordered_facets": [
-            {
-              "facet_id": "738965619",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 232189
-                }
-              ]
-            }
-          ]
-        },
         "country/REU": {
           "ordered_facets": [
             {
@@ -69,15 +56,6 @@
         },
         "nuts/FR101": {
           "ordered_facets": [
-            {
-              "facet_id": "858679853",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 2206488
-                }
-              ]
-            },
             {
               "facet_id": "4089091283",
               "observations": [
@@ -101,29 +79,11 @@
         "nuts/FR102": {
           "ordered_facets": [
             {
-              "facet_id": "858679853",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 1390121
-                }
-              ]
-            },
-            {
               "facet_id": "4089091283",
               "observations": [
                 {
                   "date": "2015",
                   "value": 1390121
-                }
-              ]
-            },
-            {
-              "facet_id": "738965619",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 1412250
                 }
               ]
             },
@@ -141,29 +101,11 @@
         "nuts/FR103": {
           "ordered_facets": [
             {
-              "facet_id": "858679853",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 1427291
-                }
-              ]
-            },
-            {
               "facet_id": "4089091283",
               "observations": [
                 {
                   "date": "2015",
                   "value": 1427291
-                }
-              ]
-            },
-            {
-              "facet_id": "738965619",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 1454532
                 }
               ]
             },
@@ -181,29 +123,11 @@
         "nuts/FR104": {
           "ordered_facets": [
             {
-              "facet_id": "858679853",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 1276233
-                }
-              ]
-            },
-            {
               "facet_id": "4089091283",
               "observations": [
                 {
                   "date": "2015",
                   "value": 1276233
-                }
-              ]
-            },
-            {
-              "facet_id": "738965619",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 1294240
                 }
               ]
             },
@@ -221,29 +145,11 @@
         "nuts/FR105": {
           "ordered_facets": [
             {
-              "facet_id": "858679853",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 1601569
-                }
-              ]
-            },
-            {
               "facet_id": "4089091283",
               "observations": [
                 {
                   "date": "2015",
                   "value": 1601569
-                }
-              ]
-            },
-            {
-              "facet_id": "738965619",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 1620776
                 }
               ]
             },
@@ -261,29 +167,11 @@
         "nuts/FR106": {
           "ordered_facets": [
             {
-              "facet_id": "858679853",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 1592663
-                }
-              ]
-            },
-            {
               "facet_id": "4089091283",
               "observations": [
                 {
                   "date": "2015",
                   "value": 1592663
-                }
-              ]
-            },
-            {
-              "facet_id": "738965619",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 1603095
                 }
               ]
             },
@@ -301,29 +189,11 @@
         "nuts/FR107": {
           "ordered_facets": [
             {
-              "facet_id": "858679853",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 1372389
-                }
-              ]
-            },
-            {
               "facet_id": "4089091283",
               "observations": [
                 {
                   "date": "2015",
                   "value": 1372389
-                }
-              ]
-            },
-            {
-              "facet_id": "738965619",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 1384068
                 }
               ]
             },
@@ -341,29 +211,11 @@
         "nuts/FR108": {
           "ordered_facets": [
             {
-              "facet_id": "858679853",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 1215390
-                }
-              ]
-            },
-            {
               "facet_id": "4089091283",
               "observations": [
                 {
                   "date": "2015",
                   "value": 1215390
-                }
-              ]
-            },
-            {
-              "facet_id": "738965619",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 1231356
                 }
               ]
             },
@@ -381,11 +233,11 @@
         "nuts/FR211": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 285612
+                  "value": 277752
                 }
               ]
             }
@@ -394,11 +246,11 @@
         "nuts/FR212": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 316888
+                  "value": 309056
                 }
               ]
             }
@@ -407,11 +259,11 @@
         "nuts/FR213": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 585622
+                  "value": 572293
                 }
               ]
             }
@@ -420,11 +272,11 @@
         "nuts/FR214": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 184987
+                  "value": 179154
                 }
               ]
             }
@@ -433,11 +285,11 @@
         "nuts/FR221": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 552529
+                  "value": 538659
                 }
               ]
             }
@@ -446,11 +298,11 @@
         "nuts/FR222": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 841252
+                  "value": 821552
                 }
               ]
             }
@@ -459,11 +311,11 @@
         "nuts/FR223": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 584143
+                  "value": 571879
                 }
               ]
             }
@@ -472,11 +324,11 @@
         "nuts/FR231": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 619392
+                  "value": 601948
                 }
               ]
             }
@@ -485,11 +337,11 @@
         "nuts/FR232": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 1283249
+                  "value": 1257699
                 }
               ]
             }
@@ -498,11 +350,11 @@
         "nuts/FR241": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 317101
+                  "value": 308992
                 }
               ]
             }
@@ -511,11 +363,11 @@
         "nuts/FR242": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 445361
+                  "value": 434035
                 }
               ]
             }
@@ -524,11 +376,11 @@
         "nuts/FR243": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 230546
+                  "value": 224200
                 }
               ]
             }
@@ -537,11 +389,11 @@
         "nuts/FR244": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 619651
+                  "value": 604966
                 }
               ]
             }
@@ -550,11 +402,11 @@
         "nuts/FR245": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 343392
+                  "value": 333050
                 }
               ]
             }
@@ -563,11 +415,11 @@
         "nuts/FR246": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 691291
+                  "value": 673349
                 }
               ]
             }
@@ -576,11 +428,11 @@
         "nuts/FR251": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 709986
+                  "value": 693579
                 }
               ]
             }
@@ -589,11 +441,11 @@
         "nuts/FR252": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 517500
+                  "value": 499287
                 }
               ]
             }
@@ -602,11 +454,11 @@
         "nuts/FR253": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 295936
+                  "value": 286618
                 }
               ]
             }
@@ -615,11 +467,11 @@
         "nuts/FR261": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 546601
+                  "value": 533147
                 }
               ]
             }
@@ -628,11 +480,11 @@
         "nuts/FR262": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 219019
+                  "value": 211747
                 }
               ]
             }
@@ -641,11 +493,11 @@
         "nuts/FR263": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 573281
+                  "value": 555408
                 }
               ]
             }
@@ -654,11 +506,11 @@
         "nuts/FR264": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 351302
+                  "value": 340903
                 }
               ]
             }
@@ -667,11 +519,11 @@
         "nuts/FR301": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 2641081
+                  "value": 2605238
                 }
               ]
             }
@@ -680,11 +532,11 @@
         "nuts/FR302": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 1496824
+                  "value": 1472648
                 }
               ]
             }
@@ -693,11 +545,11 @@
         "nuts/FR411": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 748528
+                  "value": 734403
                 }
               ]
             }
@@ -706,11 +558,11 @@
         "nuts/FR412": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 196681
+                  "value": 190626
                 }
               ]
             }
@@ -719,11 +571,11 @@
         "nuts/FR431": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 551143
+                  "value": 536959
                 }
               ]
             }
@@ -732,11 +584,11 @@
         "nuts/FR432": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 270474
+                  "value": 260587
                 }
               ]
             }
@@ -745,11 +597,11 @@
         "nuts/FR433": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 245130
+                  "value": 237706
                 }
               ]
             }
@@ -758,11 +610,11 @@
         "nuts/FR434": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 147799
+                  "value": 144483
                 }
               ]
             }
@@ -771,11 +623,11 @@
         "nuts/FR511": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 1400585
+                  "value": 1365227
                 }
               ]
             }
@@ -784,11 +636,11 @@
         "nuts/FR512": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 833080
+                  "value": 810186
                 }
               ]
             }
@@ -797,11 +649,11 @@
         "nuts/FR513": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 318079
+                  "value": 307940
                 }
               ]
             }
@@ -810,11 +662,11 @@
         "nuts/FR514": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 583151
+                  "value": 568445
                 }
               ]
             }
@@ -823,11 +675,11 @@
         "nuts/FR515": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 685673
+                  "value": 666714
                 }
               ]
             }
@@ -836,11 +688,11 @@
         "nuts/FR521": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 618156
+                  "value": 598357
                 }
               ]
             }
@@ -849,11 +701,11 @@
         "nuts/FR522": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 936478
+                  "value": 907796
                 }
               ]
             }
@@ -862,11 +714,11 @@
         "nuts/FR523": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 1070462
+                  "value": 1042884
                 }
               ]
             }
@@ -875,11 +727,11 @@
         "nuts/FR524": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 767610
+                  "value": 744813
                 }
               ]
             }
@@ -888,11 +740,11 @@
         "nuts/FR531": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 366289
+                  "value": 353613
                 }
               ]
             }
@@ -901,11 +753,11 @@
         "nuts/FR532": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 658529
+                  "value": 639938
                 }
               ]
             }
@@ -914,11 +766,11 @@
         "nuts/FR533": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 385395
+                  "value": 374435
                 }
               ]
             }
@@ -927,11 +779,11 @@
         "nuts/FR534": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 445927
+                  "value": 434887
                 }
               ]
             }
@@ -940,11 +792,11 @@
         "nuts/FR611": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 427579
+                  "value": 415417
                 }
               ]
             }
@@ -953,11 +805,11 @@
         "nuts/FR612": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 1578386
+                  "value": 1548478
                 }
               ]
             }
@@ -966,11 +818,11 @@
         "nuts/FR613": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 416642
+                  "value": 403234
                 }
               ]
             }
@@ -979,11 +831,11 @@
         "nuts/FR615": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 690788
+                  "value": 670032
                 }
               ]
             }
@@ -992,11 +844,11 @@
         "nuts/FR621": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 157904
+                  "value": 152499
                 }
               ]
             }
@@ -1005,11 +857,11 @@
         "nuts/FR622": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 290199
+                  "value": 279169
                 }
               ]
             }
@@ -1018,11 +870,11 @@
         "nuts/FR623": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 1361286
+                  "value": 1335103
                 }
               ]
             }
@@ -1031,11 +883,11 @@
         "nuts/FR624": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 198213
+                  "value": 190932
                 }
               ]
             }
@@ -1044,11 +896,11 @@
         "nuts/FR625": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 179573
+                  "value": 173400
                 }
               ]
             }
@@ -1057,11 +909,11 @@
         "nuts/FR626": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 236017
+                  "value": 228582
                 }
               ]
             }
@@ -1070,11 +922,11 @@
         "nuts/FR627": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 398190
+                  "value": 386543
                 }
               ]
             }
@@ -1083,11 +935,11 @@
         "nuts/FR628": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 261452
+                  "value": 255274
                 }
               ]
             }
@@ -1096,11 +948,11 @@
         "nuts/FR631": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 250077
+                  "value": 241871
                 }
               ]
             }
@@ -1109,11 +961,11 @@
         "nuts/FR632": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 124569
+                  "value": 120365
                 }
               ]
             }
@@ -1122,11 +974,11 @@
         "nuts/FR633": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 384226
+                  "value": 375795
                 }
               ]
             }
@@ -1135,11 +987,11 @@
         "nuts/FR711": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 649012
+                  "value": 631877
                 }
               ]
             }
@@ -1148,11 +1000,11 @@
         "nuts/FR712": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 333781
+                  "value": 324209
                 }
               ]
             }
@@ -1161,11 +1013,11 @@
         "nuts/FR713": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 519264
+                  "value": 504637
                 }
               ]
             }
@@ -1174,11 +1026,11 @@
         "nuts/FR714": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 1278347
+                  "value": 1251060
                 }
               ]
             }
@@ -1187,11 +1039,11 @@
         "nuts/FR715": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 775977
+                  "value": 759411
                 }
               ]
             }
@@ -1200,11 +1052,11 @@
         "nuts/FR717": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 441669
+                  "value": 428204
                 }
               ]
             }
@@ -1213,11 +1065,11 @@
         "nuts/FR718": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 816748
+                  "value": 793938
                 }
               ]
             }
@@ -1226,11 +1078,11 @@
         "nuts/FR721": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 351626
+                  "value": 341613
                 }
               ]
             }
@@ -1239,11 +1091,11 @@
         "nuts/FR722": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 151920
+                  "value": 146219
                 }
               ]
             }
@@ -1252,11 +1104,11 @@
         "nuts/FR723": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 234555
+                  "value": 227034
                 }
               ]
             }
@@ -1265,11 +1117,11 @@
         "nuts/FR724": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 664386
+                  "value": 647501
                 }
               ]
             }
@@ -1278,11 +1130,11 @@
         "nuts/FR811": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 376667
+                  "value": 366957
                 }
               ]
             }
@@ -1291,11 +1143,11 @@
         "nuts/FR812": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 754170
+                  "value": 738189
                 }
               ]
             }
@@ -1304,11 +1156,11 @@
         "nuts/FR813": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 1140030
+                  "value": 1120190
                 }
               ]
             }
@@ -1317,11 +1169,11 @@
         "nuts/FR814": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 80176
+                  "value": 76309
                 }
               ]
             }
@@ -1330,11 +1182,11 @@
         "nuts/FR815": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 479421
+                  "value": 471038
                 }
               ]
             }
@@ -1343,11 +1195,11 @@
         "nuts/FR821": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 166635
+                  "value": 161799
                 }
               ]
             }
@@ -1356,11 +1208,11 @@
         "nuts/FR822": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 146060
+                  "value": 140916
                 }
               ]
             }
@@ -1369,11 +1221,11 @@
         "nuts/FR823": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 1097556
+                  "value": 1082440
                 }
               ]
             }
@@ -1382,11 +1234,11 @@
         "nuts/FR824": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 2045149
+                  "value": 2016622
                 }
               ]
             }
@@ -1395,11 +1247,11 @@
         "nuts/FR825": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 1065985
+                  "value": 1048652
                 }
               ]
             }
@@ -1408,11 +1260,11 @@
         "nuts/FR826": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
-                  "value": 569618
+                  "value": 557548
                 }
               ]
             }
@@ -1421,7 +1273,7 @@
         "nuts/FR831": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -1434,7 +1286,7 @@
         "nuts/FR832": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -1447,29 +1299,11 @@
         "nuts/FRI14": {
           "ordered_facets": [
             {
-              "facet_id": "858679853",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 333417
-                }
-              ]
-            },
-            {
               "facet_id": "4089091283",
               "observations": [
                 {
                   "date": "2015",
                   "value": 333417
-                }
-              ]
-            },
-            {
-              "facet_id": "738965619",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 343059
                 }
               ]
             },
@@ -1487,50 +1321,11 @@
         "wikidataId/Q1014741": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
                   "value": 7569
-                }
-              ]
-            }
-          ]
-        },
-        "wikidataId/Q1014751": {
-          "ordered_facets": [
-            {
-              "facet_id": "738965619",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 6280
-                }
-              ]
-            }
-          ]
-        },
-        "wikidataId/Q1014790": {
-          "ordered_facets": [
-            {
-              "facet_id": "738965619",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 16139
-                }
-              ]
-            }
-          ]
-        },
-        "wikidataId/Q1014795": {
-          "ordered_facets": [
-            {
-              "facet_id": "738965619",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 18980
                 }
               ]
             }
@@ -1799,7 +1594,7 @@
         "wikidataId/Q335322": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -1838,7 +1633,7 @@
         "wikidataId/Q386243": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -1942,7 +1737,7 @@
         "wikidataId/Q539756": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -1994,7 +1789,7 @@
         "wikidataId/Q569447": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -2163,7 +1958,7 @@
         "wikidataId/Q608483": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -2277,19 +2072,6 @@
             }
           ]
         },
-        "wikidataId/Q651187": {
-          "ordered_facets": [
-            {
-              "facet_id": "738965619",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 5179
-                }
-              ]
-            }
-          ]
-        },
         "wikidataId/Q652833": {
           "ordered_facets": [
             {
@@ -2345,7 +2127,7 @@
         "wikidataId/Q660165": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -4308,7 +4090,7 @@
         "wikidataId/Q767111": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -4318,49 +4100,10 @@
             }
           ]
         },
-        "wikidataId/Q773569": {
-          "ordered_facets": [
-            {
-              "facet_id": "738965619",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 5739
-                }
-              ]
-            }
-          ]
-        },
-        "wikidataId/Q844987": {
-          "ordered_facets": [
-            {
-              "facet_id": "738965619",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 24086
-                }
-              ]
-            }
-          ]
-        },
-        "wikidataId/Q845039": {
-          "ordered_facets": [
-            {
-              "facet_id": "738965619",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 22329
-                }
-              ]
-            }
-          ]
-        },
         "wikidataId/Q895024": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -4399,7 +4142,7 @@
         "wikidataId/Q996138": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -4412,7 +4155,7 @@
         "wikidataId/Q996207": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -4422,36 +4165,10 @@
             }
           ]
         },
-        "wikidataId/Q996301": {
-          "ordered_facets": [
-            {
-              "facet_id": "738965619",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 4114
-                }
-              ]
-            }
-          ]
-        },
-        "wikidataId/Q996320": {
-          "ordered_facets": [
-            {
-              "facet_id": "738965619",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 17407
-                }
-              ]
-            }
-          ]
-        },
         "wikidataId/Q996336": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -4461,23 +4178,10 @@
             }
           ]
         },
-        "wikidataId/Q996367": {
-          "ordered_facets": [
-            {
-              "facet_id": "738965619",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 19899
-                }
-              ]
-            }
-          ]
-        },
         "wikidataId/Q996400": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -4490,7 +4194,7 @@
         "wikidataId/Q996414": {
           "ordered_facets": [
             {
-              "facet_id": "738965619",
+              "facet_id": "2458695583",
               "observations": [
                 {
                   "date": "2015",
@@ -4518,16 +4222,6 @@
     "4089091283": {
       "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
       "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true"
-    },
-    "738965619": {
-      "import_name": "FranceINSEE",
-      "provenance_url": "https://www.insee.fr/en/metadonnees/source/indicateur/p1667/description",
-      "measurement_method": "FranceINSEE"
-    },
-    "858679853": {
-      "import_name": "EurostatData",
-      "provenance_url": "https://ec.europa.eu/eurostat/data/database",
-      "measurement_method": "EurostatRegionalPopulationData"
     }
   }
 }

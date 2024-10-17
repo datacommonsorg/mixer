@@ -241,6 +241,18 @@
       "dcid": "Count_Household_WithoutFoodStampsInThePast12Months_WhiteAlone"
     },
     {
+      "name": "Count of Population Received Food Stamp",
+      "dcid": "Count_Person_18OrMoreYears_ReceivedFoodStamp_AsAFractionOf_Count_Person_18OrMoreYears"
+    },
+    {
+      "name": "Lower Confidence Interval Limit, Population Received Food Stamp",
+      "dcid": "LowerConfidenceIntervalLimit_Count_Person_18OrMoreYears_ReceivedFoodStamp_AsAFractionOf_Count_Person_18OrMoreYears"
+    },
+    {
+      "name": "Upper Confidence Interval Limit, Population Received Food Stamp",
+      "dcid": "UpperConfidenceIntervalLimit_Count_Person_18OrMoreYears_ReceivedFoodStamp_AsAFractionOf_Count_Person_18OrMoreYears"
+    },
+    {
       "name": "Count of Household: With Food Stamps in The Past 12 Months, Family Household, No Workers in The Past 12 Months",
       "dcid": "Count_Household_WithFoodStampsInThePast12Months_FamilyHousehold_NoWorkersInThePast12Months"
     },
@@ -419,6 +431,7 @@
   ],
   "matches": [
     "food",
+    "stamp",
     "stamps"
   ]
 }

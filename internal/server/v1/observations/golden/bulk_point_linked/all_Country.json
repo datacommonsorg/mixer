@@ -7,8 +7,8 @@
           "entity": "country/ABW",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 106445,
+              "date": "2023",
+              "value": 106277,
               "facet": "3981252704"
             },
             {
@@ -22,8 +22,8 @@
           "entity": "country/AFG",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 41128771,
+              "date": "2023",
+              "value": 42239854,
               "facet": "3981252704"
             },
             {
@@ -47,8 +47,8 @@
           "entity": "country/AGO",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 35588987,
+              "date": "2023",
+              "value": 36684202,
               "facet": "3981252704"
             },
             {
@@ -67,13 +67,8 @@
           "entity": "country/ALB",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 2862427,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 2777689,
+              "date": "2023",
+              "value": 2745972,
               "facet": "3981252704"
             },
             {
@@ -102,13 +97,8 @@
           "entity": "country/AND",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 76177,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 79824,
+              "date": "2023",
+              "value": 80088,
               "facet": "3981252704"
             },
             {
@@ -137,8 +127,8 @@
           "entity": "country/ARE",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 9441129,
+              "date": "2023",
+              "value": 9516871,
               "facet": "3981252704"
             },
             {
@@ -157,8 +147,8 @@
           "entity": "country/ARG",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 46234830,
+              "date": "2023",
+              "value": 46654581,
               "facet": "3981252704"
             },
             {
@@ -182,13 +172,8 @@
           "entity": "country/ARM",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 2965269,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 2780469,
+              "date": "2023",
+              "value": 2777970,
               "facet": "3981252704"
             },
             {
@@ -212,8 +197,8 @@
           "entity": "country/ASM",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 44273,
+              "date": "2023",
+              "value": 43914,
               "facet": "3981252704"
             },
             {
@@ -237,8 +222,8 @@
           "entity": "country/ATG",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 93763,
+              "date": "2023",
+              "value": 94298,
               "facet": "3981252704"
             },
             {
@@ -257,8 +242,8 @@
           "entity": "country/AUS",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 26005540,
+              "date": "2023",
+              "value": 26638544,
               "facet": "3981252704"
             },
             {
@@ -287,13 +272,8 @@
           "entity": "country/AUT",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 8858775,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 9041851,
+              "date": "2023",
+              "value": 9132383,
               "facet": "3981252704"
             },
             {
@@ -322,13 +302,8 @@
           "entity": "country/AZE",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 9981457,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 10141756,
+              "date": "2023",
+              "value": 10112555,
               "facet": "3981252704"
             },
             {
@@ -352,8 +327,8 @@
           "entity": "country/BDI",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 12889576,
+              "date": "2023",
+              "value": 13238559,
               "facet": "3981252704"
             },
             {
@@ -377,13 +352,8 @@
           "entity": "country/BEL",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 11455519,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 11685814,
+              "date": "2023",
+              "value": 11822592,
               "facet": "3981252704"
             },
             {
@@ -412,8 +382,8 @@
           "entity": "country/BEN",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 13352864,
+              "date": "2023",
+              "value": 13712828,
               "facet": "3981252704"
             },
             {
@@ -447,8 +417,8 @@
           "entity": "country/BFA",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 22673762,
+              "date": "2023",
+              "value": 23251485,
               "facet": "3981252704"
             },
             {
@@ -472,8 +442,8 @@
           "entity": "country/BGD",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 171186372,
+              "date": "2023",
+              "value": 172954319,
               "facet": "3981252704"
             },
             {
@@ -492,24 +462,14 @@
           "entity": "country/BGR",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 7000039,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 6465097,
+              "date": "2023",
+              "value": 6430370,
               "facet": "3981252704"
             },
             {
               "date": "2022",
               "value": 6838937,
               "facet": "4089091283"
-            },
-            {
-              "date": "2016",
-              "value": 7101859,
-              "facet": "1945925412"
             },
             {
               "date": "2022",
@@ -537,8 +497,8 @@
           "entity": "country/BHR",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 1472233,
+              "date": "2023",
+              "value": 1485509,
               "facet": "3981252704"
             },
             {
@@ -557,8 +517,8 @@
           "entity": "country/BHS",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 409984,
+              "date": "2023",
+              "value": 412623,
               "facet": "3981252704"
             },
             {
@@ -577,19 +537,9 @@
           "entity": "country/BIH",
           "points_by_facet": [
             {
-              "date": "2012",
-              "value": 3839265,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 3233526,
+              "date": "2023",
+              "value": 3210847,
               "facet": "3981252704"
-            },
-            {
-              "date": "2013",
-              "value": 3791622,
-              "facet": "3162233851"
             },
             {
               "date": "2016",
@@ -622,13 +572,8 @@
           "entity": "country/BLR",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 9475174,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 9228071,
+              "date": "2023",
+              "value": 9178298,
               "facet": "3981252704"
             },
             {
@@ -652,8 +597,8 @@
           "entity": "country/BLZ",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 405272,
+              "date": "2023",
+              "value": 410825,
               "facet": "3981252704"
             },
             {
@@ -672,8 +617,8 @@
           "entity": "country/BMU",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 63532,
+              "date": "2023",
+              "value": 63489,
               "facet": "3981252704"
             },
             {
@@ -687,8 +632,8 @@
           "entity": "country/BOL",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 12224110,
+              "date": "2023",
+              "value": 12388571,
               "facet": "3981252704"
             },
             {
@@ -712,8 +657,8 @@
           "entity": "country/BRA",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 215313498,
+              "date": "2023",
+              "value": 216422446,
               "facet": "3981252704"
             },
             {
@@ -752,8 +697,8 @@
           "entity": "country/BRB",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 281635,
+              "date": "2023",
+              "value": 281995,
               "facet": "3981252704"
             },
             {
@@ -772,8 +717,8 @@
           "entity": "country/BRN",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 449002,
+              "date": "2023",
+              "value": 452524,
               "facet": "3981252704"
             },
             {
@@ -792,8 +737,8 @@
           "entity": "country/BTN",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 782455,
+              "date": "2023",
+              "value": 787424,
               "facet": "3981252704"
             },
             {
@@ -817,8 +762,8 @@
           "entity": "country/BWA",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 2630296,
+              "date": "2023",
+              "value": 2675352,
               "facet": "3981252704"
             },
             {
@@ -837,8 +782,8 @@
           "entity": "country/CAF",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 5579144,
+              "date": "2023",
+              "value": 5742315,
               "facet": "3981252704"
             },
             {
@@ -857,8 +802,8 @@
           "entity": "country/CAN",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 38929902,
+              "date": "2023",
+              "value": 40097761,
               "facet": "3981252704"
             },
             {
@@ -870,11 +815,6 @@
               "date": "2022",
               "value": 38929900,
               "facet": "1151455814"
-            },
-            {
-              "date": "2019",
-              "value": 37589262,
-              "facet": "4194503167"
             },
             {
               "date": "2024",
@@ -902,13 +842,8 @@
           "entity": "country/CHE",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 8544527,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 8775760,
+              "date": "2023",
+              "value": 8849852,
               "facet": "3981252704"
             },
             {
@@ -937,8 +872,8 @@
           "entity": "country/CHL",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 19603733,
+              "date": "2023",
+              "value": 19629590,
               "facet": "3981252704"
             },
             {
@@ -967,8 +902,8 @@
           "entity": "country/CHN",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 1412175000,
+              "date": "2023",
+              "value": 1410710000,
               "facet": "3981252704"
             },
             {
@@ -992,8 +927,8 @@
           "entity": "country/CIV",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 28160542,
+              "date": "2023",
+              "value": 28873034,
               "facet": "3981252704"
             },
             {
@@ -1012,8 +947,8 @@
           "entity": "country/CMR",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 27914536,
+              "date": "2023",
+              "value": 28647293,
               "facet": "3981252704"
             },
             {
@@ -1037,8 +972,8 @@
           "entity": "country/COD",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 99010212,
+              "date": "2023",
+              "value": 102262808,
               "facet": "3981252704"
             },
             {
@@ -1062,8 +997,8 @@
           "entity": "country/COG",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 5970424,
+              "date": "2023",
+              "value": 6106869,
               "facet": "3981252704"
             },
             {
@@ -1092,8 +1027,8 @@
           "entity": "country/COL",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 51874024,
+              "date": "2023",
+              "value": 52085168,
               "facet": "3981252704"
             },
             {
@@ -1127,8 +1062,8 @@
           "entity": "country/COM",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 836774,
+              "date": "2023",
+              "value": 852075,
               "facet": "3981252704"
             },
             {
@@ -1147,8 +1082,8 @@
           "entity": "country/CPV",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 593149,
+              "date": "2023",
+              "value": 598682,
               "facet": "3981252704"
             },
             {
@@ -1167,8 +1102,8 @@
           "entity": "country/CRI",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 5180829,
+              "date": "2023",
+              "value": 5212173,
               "facet": "3981252704"
             },
             {
@@ -1197,8 +1132,8 @@
           "entity": "country/CUB",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 11212191,
+              "date": "2023",
+              "value": 11194449,
               "facet": "3981252704"
             },
             {
@@ -1222,8 +1157,8 @@
           "entity": "country/CUW",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 149996,
+              "date": "2023",
+              "value": 147862,
               "facet": "3981252704"
             },
             {
@@ -1247,8 +1182,8 @@
           "entity": "country/CYM",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 68706,
+              "date": "2023",
+              "value": 69310,
               "facet": "3981252704"
             },
             {
@@ -1262,13 +1197,8 @@
           "entity": "country/CYP",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 875899,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 1251488,
+              "date": "2023",
+              "value": 1260138,
               "facet": "3981252704"
             },
             {
@@ -1292,24 +1222,14 @@
           "entity": "country/CZE",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 10649800,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 10672118,
+              "date": "2023",
+              "value": 10873689,
               "facet": "3981252704"
             },
             {
               "date": "2022",
               "value": 10516707,
               "facet": "4089091283"
-            },
-            {
-              "date": "2016",
-              "value": 10565284,
-              "facet": "4274669025"
             },
             {
               "date": "2022",
@@ -1337,24 +1257,14 @@
           "entity": "country/DEU",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 83019213,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 83797985,
+              "date": "2023",
+              "value": 84482267,
               "facet": "3981252704"
             },
             {
               "date": "2022",
               "value": 83237124,
               "facet": "4089091283"
-            },
-            {
-              "date": "2017",
-              "value": 82792351,
-              "facet": "681041463"
             },
             {
               "date": "2022",
@@ -1377,8 +1287,8 @@
           "entity": "country/DJI",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 1120849,
+              "date": "2023",
+              "value": 1136455,
               "facet": "3981252704"
             },
             {
@@ -1397,8 +1307,8 @@
           "entity": "country/DMA",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 72737,
+              "date": "2023",
+              "value": 73040,
               "facet": "3981252704"
             },
             {
@@ -1417,13 +1327,8 @@
           "entity": "country/DNK",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 5806081,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 5903037,
+              "date": "2023",
+              "value": 5946952,
               "facet": "3981252704"
             },
             {
@@ -1437,11 +1342,6 @@
               "facet": "1151455814"
             },
             {
-              "date": "2017",
-              "value": 5749000,
-              "facet": "3169183847"
-            },
-            {
               "date": "2019-10-01",
               "value": 5827463,
               "facet": "2458695583"
@@ -1452,8 +1352,8 @@
           "entity": "country/DOM",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 11228821,
+              "date": "2023",
+              "value": 11332972,
               "facet": "3981252704"
             },
             {
@@ -1477,8 +1377,8 @@
           "entity": "country/DZA",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 44903225,
+              "date": "2023",
+              "value": 45606480,
               "facet": "3981252704"
             },
             {
@@ -1502,8 +1402,8 @@
           "entity": "country/ECU",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 18001000,
+              "date": "2023",
+              "value": 18190484,
               "facet": "3981252704"
             },
             {
@@ -1527,8 +1427,8 @@
           "entity": "country/EGY",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 110990103,
+              "date": "2023",
+              "value": 112716598,
               "facet": "3981252704"
             },
             {
@@ -1552,8 +1452,8 @@
           "entity": "country/ERI",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 3684032,
+              "date": "2023",
+              "value": 3748901,
               "facet": "3981252704"
             },
             {
@@ -1577,13 +1477,8 @@
           "entity": "country/ESP",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 46937060,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 47778340,
+              "date": "2023",
+              "value": 48373336,
               "facet": "3981252704"
             },
             {
@@ -1595,11 +1490,6 @@
               "date": "2022",
               "value": 47432900,
               "facet": "1151455814"
-            },
-            {
-              "date": "2018",
-              "value": 46722980,
-              "facet": "88328847"
             },
             {
               "date": "2024",
@@ -1617,13 +1507,8 @@
           "entity": "country/EST",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 1324820,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 1348840,
+              "date": "2023",
+              "value": 1366188,
               "facet": "3981252704"
             },
             {
@@ -1635,11 +1520,6 @@
               "date": "2022",
               "value": 1331800,
               "facet": "1151455814"
-            },
-            {
-              "date": "2017",
-              "value": 1315635,
-              "facet": "2544608669"
             },
             {
               "date": "2016",
@@ -1662,8 +1542,8 @@
           "entity": "country/ETH",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 123379924,
+              "date": "2023",
+              "value": 126527060,
               "facet": "3981252704"
             },
             {
@@ -1687,13 +1567,8 @@
           "entity": "country/FIN",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 5517919,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 5556106,
+              "date": "2023",
+              "value": 5584264,
               "facet": "3981252704"
             },
             {
@@ -1705,11 +1580,6 @@
               "date": "2022",
               "value": 5548240,
               "facet": "1151455814"
-            },
-            {
-              "date": "2016",
-              "value": 5503297,
-              "facet": "3205948815"
             },
             {
               "date": "2023",
@@ -1727,8 +1597,8 @@
           "entity": "country/FJI",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 929766,
+              "date": "2023",
+              "value": 936375,
               "facet": "3981252704"
             },
             {
@@ -1757,24 +1627,14 @@
           "entity": "country/FRA",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 67012883,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 67971311,
+              "date": "2023",
+              "value": 68170228,
               "facet": "3981252704"
             },
             {
               "date": "2022",
               "value": 67871925,
               "facet": "4089091283"
-            },
-            {
-              "date": "2019",
-              "value": 66992699,
-              "facet": "738965619"
             },
             {
               "date": "2022",
@@ -1797,8 +1657,8 @@
           "entity": "country/FRO",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 53090,
+              "date": "2023",
+              "value": 53270,
               "facet": "3981252704"
             },
             {
@@ -1812,8 +1672,8 @@
           "entity": "country/FSM",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 114164,
+              "date": "2023",
+              "value": 115224,
               "facet": "3981252704"
             },
             {
@@ -1832,11 +1692,6 @@
           "entity": "country/FXX",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 64812052,
-              "facet": "738965619"
-            },
-            {
               "date": "2020",
               "value": 64897954,
               "facet": "2458695583"
@@ -1847,8 +1702,8 @@
           "entity": "country/GAB",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 2388992,
+              "date": "2023",
+              "value": 2436566,
               "facet": "3981252704"
             },
             {
@@ -1867,13 +1722,8 @@
           "entity": "country/GBR",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 66647112,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 66971395,
+              "date": "2023",
+              "value": 68350000,
               "facet": "3981252704"
             },
             {
@@ -1885,11 +1735,6 @@
               "date": "2021",
               "value": 67026300,
               "facet": "1151455814"
-            },
-            {
-              "date": "2018",
-              "value": 66435600,
-              "facet": "650668249"
             },
             {
               "date": "2022",
@@ -1907,13 +1752,8 @@
           "entity": "country/GEO",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 3723464,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 3712502,
+              "date": "2023",
+              "value": 3760365,
               "facet": "3981252704"
             },
             {
@@ -1942,8 +1782,8 @@
           "entity": "country/GHA",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 33475870,
+              "date": "2023",
+              "value": 34121985,
               "facet": "3981252704"
             },
             {
@@ -1967,8 +1807,8 @@
           "entity": "country/GIB",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 32649,
+              "date": "2023",
+              "value": 32688,
               "facet": "3981252704"
             },
             {
@@ -1982,8 +1822,8 @@
           "entity": "country/GIN",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 13859341,
+              "date": "2023",
+              "value": 14190612,
               "facet": "3981252704"
             },
             {
@@ -2022,8 +1862,8 @@
           "entity": "country/GMB",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 2705992,
+              "date": "2023",
+              "value": 2773168,
               "facet": "3981252704"
             },
             {
@@ -2047,8 +1887,8 @@
           "entity": "country/GNB",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 2105566,
+              "date": "2023",
+              "value": 2150842,
               "facet": "3981252704"
             },
             {
@@ -2067,8 +1907,8 @@
           "entity": "country/GNQ",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 1674908,
+              "date": "2023",
+              "value": 1714671,
               "facet": "3981252704"
             },
             {
@@ -2087,13 +1927,8 @@
           "entity": "country/GRC",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 10724599,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 10426919,
+              "date": "2023",
+              "value": 10361295,
               "facet": "3981252704"
             },
             {
@@ -2122,8 +1957,8 @@
           "entity": "country/GRD",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 125438,
+              "date": "2023",
+              "value": 126183,
               "facet": "3981252704"
             },
             {
@@ -2142,8 +1977,8 @@
           "entity": "country/GRL",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 56661,
+              "date": "2023",
+              "value": 56865,
               "facet": "3981252704"
             },
             {
@@ -2157,8 +1992,8 @@
           "entity": "country/GTM",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 17357886,
+              "date": "2023",
+              "value": 17602431,
               "facet": "3981252704"
             },
             {
@@ -2197,8 +2032,8 @@
           "entity": "country/GUM",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 171774,
+              "date": "2023",
+              "value": 172952,
               "facet": "3981252704"
             },
             {
@@ -2212,8 +2047,8 @@
           "entity": "country/GUY",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 808726,
+              "date": "2023",
+              "value": 813834,
               "facet": "3981252704"
             },
             {
@@ -2232,8 +2067,8 @@
           "entity": "country/HKG",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 7346100,
+              "date": "2023",
+              "value": 7536100,
               "facet": "3981252704"
             },
             {
@@ -2262,8 +2097,8 @@
           "entity": "country/HND",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 10432860,
+              "date": "2023",
+              "value": 10593798,
               "facet": "3981252704"
             },
             {
@@ -2287,24 +2122,14 @@
           "entity": "country/HRV",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 4076246,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 3855600,
+              "date": "2023",
+              "value": 3853200,
               "facet": "3981252704"
             },
             {
               "date": "2022",
               "value": 3862305,
               "facet": "4089091283"
-            },
-            {
-              "date": "2015",
-              "value": 4190669,
-              "facet": "4272347922"
             },
             {
               "date": "2022",
@@ -2332,8 +2157,8 @@
           "entity": "country/HTI",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 11584996,
+              "date": "2023",
+              "value": 11724763,
               "facet": "3981252704"
             },
             {
@@ -2352,13 +2177,8 @@
           "entity": "country/HUN",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 9772756,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 9643048,
+              "date": "2023",
+              "value": 9589872,
               "facet": "3981252704"
             },
             {
@@ -2392,8 +2212,8 @@
           "entity": "country/IDN",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 275501339,
+              "date": "2023",
+              "value": 277534122,
               "facet": "3981252704"
             },
             {
@@ -2427,8 +2247,8 @@
           "entity": "country/IMN",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 84519,
+              "date": "2023",
+              "value": 84710,
               "facet": "3981252704"
             },
             {
@@ -2442,8 +2262,8 @@
           "entity": "country/IND",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 1417173173,
+              "date": "2023",
+              "value": 1428627663,
               "facet": "3981252704"
             },
             {
@@ -2472,13 +2292,8 @@
           "entity": "country/IRL",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 4904240,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 5127170,
+              "date": "2023",
+              "value": 5262382,
               "facet": "3981252704"
             },
             {
@@ -2512,8 +2327,8 @@
           "entity": "country/IRN",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 88550570,
+              "date": "2023",
+              "value": 89172767,
               "facet": "3981252704"
             },
             {
@@ -2537,8 +2352,8 @@
           "entity": "country/IRQ",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 44496122,
+              "date": "2023",
+              "value": 45504560,
               "facet": "3981252704"
             },
             {
@@ -2562,13 +2377,8 @@
           "entity": "country/ISL",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 356991,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 382003,
+              "date": "2023",
+              "value": 393600,
               "facet": "3981252704"
             },
             {
@@ -2597,8 +2407,8 @@
           "entity": "country/ISR",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 9557500,
+              "date": "2023",
+              "value": 9756700,
               "facet": "3981252704"
             },
             {
@@ -2627,24 +2437,14 @@
           "entity": "country/ITA",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 60359546,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 58940425,
+              "date": "2023",
+              "value": 58761146,
               "facet": "3981252704"
             },
             {
               "date": "2022",
               "value": 59030133,
               "facet": "4089091283"
-            },
-            {
-              "date": "2017",
-              "value": 60589445,
-              "facet": "3893789967"
             },
             {
               "date": "2022",
@@ -2667,8 +2467,8 @@
           "entity": "country/JAM",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 2827377,
+              "date": "2023",
+              "value": 2825544,
               "facet": "3981252704"
             },
             {
@@ -2702,8 +2502,8 @@
           "entity": "country/JOR",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 11285869,
+              "date": "2023",
+              "value": 11337052,
               "facet": "3981252704"
             },
             {
@@ -2727,8 +2527,8 @@
           "entity": "country/JPN",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 125124989,
+              "date": "2023",
+              "value": 124516650,
               "facet": "3981252704"
             },
             {
@@ -2757,8 +2557,8 @@
           "entity": "country/KAZ",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 19621972,
+              "date": "2023",
+              "value": 19900177,
               "facet": "3981252704"
             },
             {
@@ -2782,8 +2582,8 @@
           "entity": "country/KEN",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 54027487,
+              "date": "2023",
+              "value": 55100586,
               "facet": "3981252704"
             },
             {
@@ -2812,8 +2612,8 @@
           "entity": "country/KGZ",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 6974900,
+              "date": "2023",
+              "value": 7100800,
               "facet": "3981252704"
             },
             {
@@ -2837,8 +2637,8 @@
           "entity": "country/KHM",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 16767842,
+              "date": "2023",
+              "value": 16944826,
               "facet": "3981252704"
             },
             {
@@ -2862,8 +2662,8 @@
           "entity": "country/KIR",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 131232,
+              "date": "2023",
+              "value": 133515,
               "facet": "3981252704"
             },
             {
@@ -2882,8 +2682,8 @@
           "entity": "country/KNA",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 47657,
+              "date": "2023",
+              "value": 47755,
               "facet": "3981252704"
             },
             {
@@ -2902,8 +2702,8 @@
           "entity": "country/KOR",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 51628117,
+              "date": "2023",
+              "value": 51712619,
               "facet": "3981252704"
             },
             {
@@ -2932,8 +2732,8 @@
           "entity": "country/KWT",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 4268873,
+              "date": "2023",
+              "value": 4310108,
               "facet": "3981252704"
             },
             {
@@ -2952,8 +2752,8 @@
           "entity": "country/LAO",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 7529475,
+              "date": "2023",
+              "value": 7633779,
               "facet": "3981252704"
             },
             {
@@ -2977,8 +2777,8 @@
           "entity": "country/LBN",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 5489739,
+              "date": "2023",
+              "value": 5353930,
               "facet": "3981252704"
             },
             {
@@ -3002,8 +2802,8 @@
           "entity": "country/LBR",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 5302681,
+              "date": "2023",
+              "value": 5418377,
               "facet": "3981252704"
             },
             {
@@ -3027,8 +2827,8 @@
           "entity": "country/LBY",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 6812341,
+              "date": "2023",
+              "value": 6888388,
               "facet": "3981252704"
             },
             {
@@ -3047,8 +2847,8 @@
           "entity": "country/LCA",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 179857,
+              "date": "2023",
+              "value": 180251,
               "facet": "3981252704"
             },
             {
@@ -3067,13 +2867,8 @@
           "entity": "country/LIE",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 38378,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 39327,
+              "date": "2023",
+              "value": 39584,
               "facet": "3981252704"
             },
             {
@@ -3097,8 +2892,8 @@
           "entity": "country/LKA",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 22181000,
+              "date": "2023",
+              "value": 22037000,
               "facet": "3981252704"
             },
             {
@@ -3127,8 +2922,8 @@
           "entity": "country/LSO",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 2305825,
+              "date": "2023",
+              "value": 2330318,
               "facet": "3981252704"
             },
             {
@@ -3152,13 +2947,8 @@
           "entity": "country/LTU",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 2794184,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 2831639,
+              "date": "2023",
+              "value": 2871897,
               "facet": "3981252704"
             },
             {
@@ -3192,24 +2982,14 @@
           "entity": "country/LUX",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 613894,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 653103,
+              "date": "2023",
+              "value": 668606,
               "facet": "3981252704"
             },
             {
               "date": "2022",
               "value": 645397,
               "facet": "4089091283"
-            },
-            {
-              "date": "2017-01",
-              "value": 590667,
-              "facet": "1042817753"
             },
             {
               "date": "2022",
@@ -3232,24 +3012,14 @@
           "entity": "country/LVA",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 1919968,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 1879383,
+              "date": "2023",
+              "value": 1881750,
               "facet": "3981252704"
             },
             {
               "date": "2022",
               "value": 1875757,
               "facet": "4089091283"
-            },
-            {
-              "date": "2019",
-              "value": 1919968,
-              "facet": "290530767"
             },
             {
               "date": "2022",
@@ -3272,8 +3042,8 @@
           "entity": "country/MAC",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 695168,
+              "date": "2023",
+              "value": 704149,
               "facet": "3981252704"
             },
             {
@@ -3292,8 +3062,8 @@
           "entity": "country/MAF",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 31791,
+              "date": "2023",
+              "value": 32077,
               "facet": "3981252704"
             },
             {
@@ -3307,8 +3077,8 @@
           "entity": "country/MAR",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 37457971,
+              "date": "2023",
+              "value": 37840044,
               "facet": "3981252704"
             },
             {
@@ -3327,13 +3097,8 @@
           "entity": "country/MCO",
           "points_by_facet": [
             {
-              "date": "2005",
-              "value": 33085,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 36469,
+              "date": "2023",
+              "value": 36297,
               "facet": "3981252704"
             },
             {
@@ -3352,13 +3117,8 @@
           "entity": "country/MDA",
           "points_by_facet": [
             {
-              "date": "2017",
-              "value": 3550852,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 2538894,
+              "date": "2023",
+              "value": 2486891,
               "facet": "3981252704"
             },
             {
@@ -3382,8 +3142,8 @@
           "entity": "country/MDG",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 29611714,
+              "date": "2023",
+              "value": 30325732,
               "facet": "3981252704"
             },
             {
@@ -3407,8 +3167,8 @@
           "entity": "country/MDV",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 523787,
+              "date": "2023",
+              "value": 521021,
               "facet": "3981252704"
             },
             {
@@ -3427,8 +3187,8 @@
           "entity": "country/MEX",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 127504125,
+              "date": "2023",
+              "value": 128455567,
               "facet": "3981252704"
             },
             {
@@ -3467,8 +3227,8 @@
           "entity": "country/MHL",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 41569,
+              "date": "2023",
+              "value": 41996,
               "facet": "3981252704"
             },
             {
@@ -3487,13 +3247,8 @@
           "entity": "country/MKD",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 2077132,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 2057679,
+              "date": "2023",
+              "value": 1811980,
               "facet": "3981252704"
             },
             {
@@ -3517,8 +3272,8 @@
           "entity": "country/MLI",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 22593590,
+              "date": "2023",
+              "value": 23293698,
               "facet": "3981252704"
             },
             {
@@ -3542,13 +3297,8 @@
           "entity": "country/MLT",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 493559,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 531113,
+              "date": "2023",
+              "value": 553214,
               "facet": "3981252704"
             },
             {
@@ -3577,8 +3327,8 @@
           "entity": "country/MMR",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 54179306,
+              "date": "2023",
+              "value": 54577997,
               "facet": "3981252704"
             },
             {
@@ -3602,13 +3352,8 @@
           "entity": "country/MNE",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 622182,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 617213,
+              "date": "2023",
+              "value": 616177,
               "facet": "3981252704"
             },
             {
@@ -3637,8 +3382,8 @@
           "entity": "country/MNG",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 3398366,
+              "date": "2023",
+              "value": 3447157,
               "facet": "3981252704"
             },
             {
@@ -3662,8 +3407,8 @@
           "entity": "country/MNP",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 49551,
+              "date": "2023",
+              "value": 49796,
               "facet": "3981252704"
             },
             {
@@ -3677,8 +3422,8 @@
           "entity": "country/MOZ",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 32969518,
+              "date": "2023",
+              "value": 33897354,
               "facet": "3981252704"
             },
             {
@@ -3697,8 +3442,8 @@
           "entity": "country/MRT",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 4736139,
+              "date": "2023",
+              "value": 4862989,
               "facet": "3981252704"
             },
             {
@@ -3747,8 +3492,8 @@
           "entity": "country/MUS",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 1262523,
+              "date": "2023",
+              "value": 1261041,
               "facet": "3981252704"
             },
             {
@@ -3767,8 +3512,8 @@
           "entity": "country/MWI",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 20405317,
+              "date": "2023",
+              "value": 20931751,
               "facet": "3981252704"
             },
             {
@@ -3792,8 +3537,8 @@
           "entity": "country/MYS",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 33938221,
+              "date": "2023",
+              "value": 34308525,
               "facet": "3981252704"
             },
             {
@@ -3812,11 +3557,6 @@
           "entity": "country/MYT",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 270372,
-              "facet": "738965619"
-            },
-            {
               "date": "2024-01",
               "value": 320901,
               "facet": "1456184638"
@@ -3832,8 +3572,8 @@
           "entity": "country/NAM",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 2567012,
+              "date": "2023",
+              "value": 2604172,
               "facet": "3981252704"
             },
             {
@@ -3852,8 +3592,8 @@
           "entity": "country/NCL",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 269220,
+              "date": "2023",
+              "value": 267940,
               "facet": "3981252704"
             },
             {
@@ -3867,8 +3607,8 @@
           "entity": "country/NER",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 26207977,
+              "date": "2023",
+              "value": 27202843,
               "facet": "3981252704"
             },
             {
@@ -3902,8 +3642,8 @@
           "entity": "country/NGA",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 218541212,
+              "date": "2023",
+              "value": 223804632,
               "facet": "3981252704"
             },
             {
@@ -3932,8 +3672,8 @@
           "entity": "country/NIC",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 6948392,
+              "date": "2023",
+              "value": 7046310,
               "facet": "3981252704"
             },
             {
@@ -3972,13 +3712,8 @@
           "entity": "country/NLD",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 17282163,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 17700982,
+              "date": "2023",
+              "value": 17879488,
               "facet": "3981252704"
             },
             {
@@ -4002,13 +3737,8 @@
           "entity": "country/NOR",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 5328212,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 5457127,
+              "date": "2023",
+              "value": 5519594,
               "facet": "3981252704"
             },
             {
@@ -4020,11 +3750,6 @@
               "date": "2022",
               "value": 5425270,
               "facet": "1151455814"
-            },
-            {
-              "date": "2014",
-              "value": 5109056,
-              "facet": "3698737791"
             },
             {
               "date": "2024",
@@ -4042,8 +3767,8 @@
           "entity": "country/NPL",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 30547580,
+              "date": "2023",
+              "value": 30896590,
               "facet": "3981252704"
             },
             {
@@ -4067,8 +3792,8 @@
           "entity": "country/NRU",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 12668,
+              "date": "2023",
+              "value": 12780,
               "facet": "3981252704"
             },
             {
@@ -4087,8 +3812,8 @@
           "entity": "country/NZL",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 5124100,
+              "date": "2023",
+              "value": 5223100,
               "facet": "3981252704"
             },
             {
@@ -4117,8 +3842,8 @@
           "entity": "country/OMN",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 4576298,
+              "date": "2023",
+              "value": 4644384,
               "facet": "3981252704"
             },
             {
@@ -4137,8 +3862,8 @@
           "entity": "country/PAK",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 235824862,
+              "date": "2023",
+              "value": 240485658,
               "facet": "3981252704"
             },
             {
@@ -4157,8 +3882,8 @@
           "entity": "country/PAN",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 4408581,
+              "date": "2023",
+              "value": 4468087,
               "facet": "3981252704"
             },
             {
@@ -4192,8 +3917,8 @@
           "entity": "country/PER",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 34049588,
+              "date": "2023",
+              "value": 34352719,
               "facet": "3981252704"
             },
             {
@@ -4222,8 +3947,8 @@
           "entity": "country/PHL",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 115559009,
+              "date": "2023",
+              "value": 117337368,
               "facet": "3981252704"
             },
             {
@@ -4247,8 +3972,8 @@
           "entity": "country/PLW",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 18055,
+              "date": "2023",
+              "value": 18058,
               "facet": "3981252704"
             },
             {
@@ -4267,8 +3992,8 @@
           "entity": "country/PNG",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 10142619,
+              "date": "2023",
+              "value": 10329931,
               "facet": "3981252704"
             },
             {
@@ -4287,13 +4012,8 @@
           "entity": "country/POL",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 37972812,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 36821749,
+              "date": "2023",
+              "value": 36685849,
               "facet": "3981252704"
             },
             {
@@ -4305,11 +4025,6 @@
               "date": "2022",
               "value": 37654200,
               "facet": "1151455814"
-            },
-            {
-              "date": "2017",
-              "value": 38433558,
-              "facet": "225305039"
             },
             {
               "date": "2016",
@@ -4332,8 +4047,8 @@
           "entity": "country/PRI",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 3221789,
+              "date": "2023",
+              "value": 3205691,
               "facet": "3981252704"
             },
             {
@@ -4347,8 +4062,8 @@
           "entity": "country/PRK",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 26069416,
+              "date": "2023",
+              "value": 26160821,
               "facet": "3981252704"
             },
             {
@@ -4367,13 +4082,8 @@
           "entity": "country/PRT",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 10276617,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 10409704,
+              "date": "2023",
+              "value": 10525347,
               "facet": "3981252704"
             },
             {
@@ -4402,8 +4112,8 @@
           "entity": "country/PRY",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 6780744,
+              "date": "2023",
+              "value": 6861524,
               "facet": "3981252704"
             },
             {
@@ -4422,8 +4132,8 @@
           "entity": "country/PSE",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 5043612,
+              "date": "2023",
+              "value": 5165775,
               "facet": "3981252704"
             },
             {
@@ -4442,8 +4152,8 @@
           "entity": "country/PYF",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 306279,
+              "date": "2023",
+              "value": 308872,
               "facet": "3981252704"
             },
             {
@@ -4457,8 +4167,8 @@
           "entity": "country/QAT",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 2695122,
+              "date": "2023",
+              "value": 2716391,
               "facet": "3981252704"
             },
             {
@@ -4492,13 +4202,8 @@
           "entity": "country/ROU",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 19414458,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 19047009,
+              "date": "2023",
+              "value": 19056116,
               "facet": "3981252704"
             },
             {
@@ -4532,13 +4237,8 @@
           "entity": "country/RUS",
           "points_by_facet": [
             {
-              "date": "2014",
-              "value": 143666931,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 144236933,
+              "date": "2023",
+              "value": 143826130,
               "facet": "3981252704"
             },
             {
@@ -4567,8 +4267,8 @@
           "entity": "country/RWA",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 13776698,
+              "date": "2023",
+              "value": 14094683,
               "facet": "3981252704"
             },
             {
@@ -4592,8 +4292,8 @@
           "entity": "country/SAU",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 36408820,
+              "date": "2023",
+              "value": 36947025,
               "facet": "3981252704"
             },
             {
@@ -4607,8 +4307,8 @@
           "entity": "country/SDN",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 46874204,
+              "date": "2023",
+              "value": 48109006,
               "facet": "3981252704"
             },
             {
@@ -4632,8 +4332,8 @@
           "entity": "country/SEN",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 17316449,
+              "date": "2023",
+              "value": 17763163,
               "facet": "3981252704"
             },
             {
@@ -4657,8 +4357,8 @@
           "entity": "country/SGP",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 5637022,
+              "date": "2023",
+              "value": 5917648,
               "facet": "3981252704"
             },
             {
@@ -4692,8 +4392,8 @@
           "entity": "country/SLB",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 724273,
+              "date": "2023",
+              "value": 740424,
               "facet": "3981252704"
             },
             {
@@ -4712,8 +4412,8 @@
           "entity": "country/SLE",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 8605718,
+              "date": "2023",
+              "value": 8791092,
               "facet": "3981252704"
             },
             {
@@ -4737,8 +4437,8 @@
           "entity": "country/SLV",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 6336392,
+              "date": "2023",
+              "value": 6364943,
               "facet": "3981252704"
             },
             {
@@ -4762,13 +4462,8 @@
           "entity": "country/SMR",
           "points_by_facet": [
             {
-              "date": "2018",
-              "value": 34453,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 33660,
+              "date": "2023",
+              "value": 33642,
               "facet": "3981252704"
             },
             {
@@ -4787,8 +4482,8 @@
           "entity": "country/SOM",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 17597511,
+              "date": "2023",
+              "value": 18143378,
               "facet": "3981252704"
             },
             {
@@ -4817,13 +4512,8 @@
           "entity": "country/SRB",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 6963764,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 6664449,
+              "date": "2023",
+              "value": 6618026,
               "facet": "3981252704"
             },
             {
@@ -4842,8 +4532,8 @@
           "entity": "country/SSD",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 10913164,
+              "date": "2023",
+              "value": 11088796,
               "facet": "3981252704"
             },
             {
@@ -4867,8 +4557,8 @@
           "entity": "country/STP",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 227380,
+              "date": "2023",
+              "value": 231856,
               "facet": "3981252704"
             },
             {
@@ -4887,8 +4577,8 @@
           "entity": "country/SUR",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 618040,
+              "date": "2023",
+              "value": 623236,
               "facet": "3981252704"
             },
             {
@@ -4907,13 +4597,8 @@
           "entity": "country/SVK",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 5450421,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 5431752,
+              "date": "2023",
+              "value": 5426740,
               "facet": "3981252704"
             },
             {
@@ -4925,11 +4610,6 @@
               "date": "2022",
               "value": 5434710,
               "facet": "1151455814"
-            },
-            {
-              "date": "2016",
-              "value": 5430798,
-              "facet": "1568684647"
             },
             {
               "date": "2016",
@@ -4952,13 +4632,8 @@
           "entity": "country/SVN",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 2080908,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 2111986,
+              "date": "2023",
+              "value": 2120937,
               "facet": "3981252704"
             },
             {
@@ -4992,13 +4667,8 @@
           "entity": "country/SWE",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 10230185,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 10486941,
+              "date": "2023",
+              "value": 10536632,
               "facet": "3981252704"
             },
             {
@@ -5032,8 +4702,8 @@
           "entity": "country/SWZ",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 1201670,
+              "date": "2023",
+              "value": 1210822,
               "facet": "3981252704"
             },
             {
@@ -5052,8 +4722,8 @@
           "entity": "country/SXM",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 42848,
+              "date": "2023",
+              "value": 41163,
               "facet": "3981252704"
             },
             {
@@ -5067,8 +4737,8 @@
           "entity": "country/SYC",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 119878,
+              "date": "2023",
+              "value": 119773,
               "facet": "3981252704"
             },
             {
@@ -5087,8 +4757,8 @@
           "entity": "country/SYR",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 22125249,
+              "date": "2023",
+              "value": 23227014,
               "facet": "3981252704"
             },
             {
@@ -5112,8 +4782,8 @@
           "entity": "country/TCA",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 45703,
+              "date": "2023",
+              "value": 46062,
               "facet": "3981252704"
             },
             {
@@ -5127,8 +4797,8 @@
           "entity": "country/TCD",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 17723315,
+              "date": "2023",
+              "value": 18278568,
               "facet": "3981252704"
             },
             {
@@ -5147,8 +4817,8 @@
           "entity": "country/TGO",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 8848699,
+              "date": "2023",
+              "value": 9053799,
               "facet": "3981252704"
             },
             {
@@ -5172,8 +4842,8 @@
           "entity": "country/THA",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 71697030,
+              "date": "2023",
+              "value": 71801279,
               "facet": "3981252704"
             },
             {
@@ -5197,8 +4867,8 @@
           "entity": "country/TJK",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 9952787,
+              "date": "2023",
+              "value": 10143543,
               "facet": "3981252704"
             },
             {
@@ -5232,8 +4902,8 @@
           "entity": "country/TKM",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 6430770,
+              "date": "2023",
+              "value": 6516100,
               "facet": "3981252704"
             },
             {
@@ -5252,8 +4922,8 @@
           "entity": "country/TLS",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 1341296,
+              "date": "2023",
+              "value": 1360596,
               "facet": "3981252704"
             },
             {
@@ -5272,8 +4942,8 @@
           "entity": "country/TON",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 106858,
+              "date": "2023",
+              "value": 107773,
               "facet": "3981252704"
             },
             {
@@ -5292,8 +4962,8 @@
           "entity": "country/TTO",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 1531044,
+              "date": "2023",
+              "value": 1534937,
               "facet": "3981252704"
             },
             {
@@ -5317,8 +4987,8 @@
           "entity": "country/TUN",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 12356117,
+              "date": "2023",
+              "value": 12458223,
               "facet": "3981252704"
             },
             {
@@ -5342,13 +5012,8 @@
           "entity": "country/TUR",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 82003882,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 84979913,
+              "date": "2023",
+              "value": 85326000,
               "facet": "3981252704"
             },
             {
@@ -5382,8 +5047,8 @@
           "entity": "country/TUV",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 11312,
+              "date": "2023",
+              "value": 11396,
               "facet": "3981252704"
             },
             {
@@ -5412,8 +5077,8 @@
           "entity": "country/TZA",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 65497748,
+              "date": "2023",
+              "value": 67438106,
               "facet": "3981252704"
             },
             {
@@ -5437,8 +5102,8 @@
           "entity": "country/UGA",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 47249585,
+              "date": "2023",
+              "value": 48582334,
               "facet": "3981252704"
             },
             {
@@ -5462,13 +5127,8 @@
           "entity": "country/UKR",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 41983564,
-              "facet": "858679853"
-            },
-            {
-              "date": "2022",
-              "value": 38000000,
+              "date": "2023",
+              "value": 37000000,
               "facet": "3981252704"
             },
             {
@@ -5502,8 +5162,8 @@
           "entity": "country/URY",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 3422794,
+              "date": "2023",
+              "value": 3423108,
               "facet": "3981252704"
             },
             {
@@ -5547,8 +5207,8 @@
               "facet": "1541763368"
             },
             {
-              "date": "2022",
-              "value": 333287557,
+              "date": "2023",
+              "value": 334914895,
               "facet": "3981252704"
             },
             {
@@ -5602,8 +5262,8 @@
           "entity": "country/UZB",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 35648100,
+              "date": "2023",
+              "value": 36412350,
               "facet": "3981252704"
             },
             {
@@ -5642,8 +5302,8 @@
           "entity": "country/VCT",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 103948,
+              "date": "2023",
+              "value": 103698,
               "facet": "3981252704"
             },
             {
@@ -5662,8 +5322,8 @@
           "entity": "country/VEN",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 28301696,
+              "date": "2023",
+              "value": 28838499,
               "facet": "3981252704"
             },
             {
@@ -5687,8 +5347,8 @@
           "entity": "country/VGB",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 31305,
+              "date": "2023",
+              "value": 31538,
               "facet": "3981252704"
             },
             {
@@ -5702,8 +5362,8 @@
           "entity": "country/VIR",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 105413,
+              "date": "2023",
+              "value": 104917,
               "facet": "3981252704"
             },
             {
@@ -5717,8 +5377,8 @@
           "entity": "country/VNM",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 98186856,
+              "date": "2023",
+              "value": 98858950,
               "facet": "3981252704"
             },
             {
@@ -5747,8 +5407,8 @@
           "entity": "country/VUT",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 326740,
+              "date": "2023",
+              "value": 334506,
               "facet": "3981252704"
             },
             {
@@ -5777,8 +5437,8 @@
           "entity": "country/WSM",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 222382,
+              "date": "2023",
+              "value": 225681,
               "facet": "3981252704"
             },
             {
@@ -5807,8 +5467,8 @@
           "entity": "country/YEM",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 33696614,
+              "date": "2023",
+              "value": 34449825,
               "facet": "3981252704"
             },
             {
@@ -5847,8 +5507,8 @@
           "entity": "country/ZAF",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 59893885,
+              "date": "2023",
+              "value": 60414495,
               "facet": "3981252704"
             },
             {
@@ -5882,8 +5542,8 @@
           "entity": "country/ZMB",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 20017675,
+              "date": "2023",
+              "value": 20569737,
               "facet": "3981252704"
             },
             {
@@ -5907,8 +5567,8 @@
           "entity": "country/ZWE",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 16320537,
+              "date": "2023",
+              "value": 16665409,
               "facet": "3981252704"
             },
             {
@@ -5932,11 +5592,6 @@
     }
   ],
   "facets": {
-    "1042817753": {
-      "import_name": "LuxembourgSTATEC",
-      "provenance_url": "http://www.statistiques.public.lu/en/index.html",
-      "measurement_method": "LuxembourgSTATEC"
-    },
     "10983471": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
@@ -5980,11 +5635,6 @@
       "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
       "measurement_method": "USDecennialCensus"
     },
-    "1568684647": {
-      "import_name": "SlovakiaStatisticalOffice",
-      "provenance_url": "https://slovak.statistics.sk",
-      "measurement_method": "SlovakiaStatisticalOffice"
-    },
     "1794369807": {
       "import_name": "UNData",
       "provenance_url": "http://data.un.org",
@@ -5997,11 +5647,6 @@
     "192455881": {
       "import_name": "Israel_Census",
       "provenance_url": "https://www.cbs.gov.il/"
-    },
-    "1945925412": {
-      "import_name": "BulgariaPopulation",
-      "provenance_url": "https://www.nsi.bg/en",
-      "measurement_method": "BulgariaNSI"
     },
     "1964317807": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
@@ -6036,11 +5681,6 @@
       "measurement_method": "CensusPEPSurvey",
       "observation_period": "P1Y"
     },
-    "225305039": {
-      "import_name": "StatisticsPoland",
-      "provenance_url": "http://stat.gov.pl/en/",
-      "measurement_method": "StatisticsPoland"
-    },
     "2458695583": {
       "import_name": "WikidataPopulation",
       "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
@@ -6050,11 +5690,6 @@
       "import_name": "CensusPEP",
       "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
       "measurement_method": "CensusPEPSurvey"
-    },
-    "2544608669": {
-      "import_name": "EstoniaPopulation",
-      "provenance_url": "https://www.stat.ee/en",
-      "measurement_method": "StatisticsEstonia"
     },
     "2590504623": {
       "import_name": "Vietnam_Census",
@@ -6082,29 +5717,9 @@
       "import_name": "Uganda_Census",
       "provenance_url": "https://uganda.opendataforafrica.org/"
     },
-    "290530767": {
-      "import_name": "LatviaCSB",
-      "provenance_url": "https://www.csb.gov.lv/en",
-      "measurement_method": "LatviaCSB"
-    },
-    "3162233851": {
-      "import_name": "BosniaPopulation",
-      "provenance_url": "https://popis.gov.ba",
-      "measurement_method": "BosniaCensus"
-    },
-    "3169183847": {
-      "import_name": "StatisticsDenmark",
-      "provenance_url": "https://www.dst.dk/en",
-      "measurement_method": "StatisticsDenmark"
-    },
     "318580725": {
       "import_name": "Indonesia_Census",
       "provenance_url": "https://www.bps.go.id/"
-    },
-    "3205948815": {
-      "import_name": "StatisticsFinland",
-      "provenance_url": "https://www.stat.fi/index_en.html",
-      "measurement_method": "StatisticsFinland"
     },
     "3251078590": {
       "import_name": "MexicoCensus_AA2",
@@ -6119,20 +5734,10 @@
       "provenance_url": "https://sidra.ibge.gov.br/home/pnadct",
       "observation_period": "P3M"
     },
-    "3698737791": {
-      "import_name": "StatisticsNorway",
-      "provenance_url": "https://www.ssb.no/en",
-      "measurement_method": "StatisticsNorway"
-    },
     "3748004783": {
       "import_name": "Brazil_Census",
       "provenance_url": "https://www.ibge.gov.br/en/statistics/social/population.html",
       "observation_period": "P1Y"
-    },
-    "3893789967": {
-      "import_name": "ItalyNIS",
-      "provenance_url": "http://demo.istat.it/index_e.html",
-      "measurement_method": "ItalyNIS"
     },
     "3956865500": {
       "import_name": "Srilanka_Census",
@@ -6151,21 +5756,6 @@
       "import_name": "Colombia_Census",
       "provenance_url": "https://www.dane.gov.co/index.php/en/statistics-by-topic"
     },
-    "4194503167": {
-      "import_name": "StatisticsCanada",
-      "provenance_url": "http://www.statcan.gc.ca/start-debut-eng.html",
-      "measurement_method": "StatisticsCanada"
-    },
-    "4272347922": {
-      "import_name": "CroatiaPopulation",
-      "provenance_url": "https://www.dzs.hr/default_e.htm",
-      "measurement_method": "CroatiaCBS"
-    },
-    "4274669025": {
-      "import_name": "CzechRepublicPopulation",
-      "provenance_url": "https://vdb.czso.cz/vdbvo2/faces/en/index.jsf",
-      "measurement_method": "CzechStatisticalOffice"
-    },
     "473499523": {
       "import_name": "Subnational_Demographics_Stats",
       "provenance_url": "https://databank.worldbank.org/source/subnational-population",
@@ -6180,34 +5770,9 @@
       "import_name": "Sweden_Census",
       "provenance_url": "https://www.statistikdatabasen.scb.se/pxweb/sv/ssd/"
     },
-    "650668249": {
-      "import_name": "UnitedKingdomONS",
-      "provenance_url": "https://www.ons.gov.uk",
-      "measurement_method": "UnitedKingdomONS"
-    },
     "678784946": {
       "import_name": "AustraliaStatistics",
       "provenance_url": "https://www.abs.gov.au/statistics"
-    },
-    "681041463": {
-      "import_name": "GermanyDestatis",
-      "provenance_url": "https://www.destatis.de/EN",
-      "measurement_method": "GermanyDestatis"
-    },
-    "738965619": {
-      "import_name": "FranceINSEE",
-      "provenance_url": "https://www.insee.fr/en/metadonnees/source/indicateur/p1667/description",
-      "measurement_method": "FranceINSEE"
-    },
-    "858679853": {
-      "import_name": "EurostatData",
-      "provenance_url": "https://ec.europa.eu/eurostat/data/database",
-      "measurement_method": "EurostatRegionalPopulationData"
-    },
-    "88328847": {
-      "import_name": "SpainNSI",
-      "provenance_url": "http://www.ine.es/en/welcome.shtml",
-      "measurement_method": "SpainNSI"
     }
   }
 }

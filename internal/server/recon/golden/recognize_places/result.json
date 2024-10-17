@@ -421,6 +421,49 @@
         }
       ]
     },
+    "the birds in San Jose, CA, USA, Mountain View, CA and Canada are chirpy": {
+      "items": [
+        {
+          "span": "the birds in"
+        },
+        {
+          "span": "San Jose , CA , USA",
+          "places": [
+            {
+              "dcid": "geoId/0668000"
+            }
+          ]
+        },
+        {
+          "span": ","
+        },
+        {
+          "span": "Mountain View , CA",
+          "places": [
+            {
+              "dcid": "geoId/0649670"
+            },
+            {
+              "dcid": "geoId/0649651"
+            }
+          ]
+        },
+        {
+          "span": "and"
+        },
+        {
+          "span": "Canada",
+          "places": [
+            {
+              "dcid": "country/CAN"
+            }
+          ]
+        },
+        {
+          "span": "are chirpy"
+        }
+      ]
+    },
     "the birds in San Jose, California are chirpy": {
       "items": [
         {
@@ -524,44 +567,6 @@
               "dcid": "geoId/4871156"
             }
           ]
-        },
-        {
-          "span": "are chirpy"
-        }
-      ]
-    },
-    "the birds in San Jose, CA, USA, Mountain View, CA and Canada are chirpy": {
-      "items": [
-        {
-          "span": "the birds in"
-        },
-        {
-          "span": "San Jose , CA , USA",
-          "places": [{
-            "dcid": "geoId/0668000"
-          }]
-        },
-        {
-          "span": ","
-        },
-        {
-          "span": "Mountain View , CA",
-          "places": [{
-            "dcid": "geoId/0649670"
-            
-          },
-          {
-            "dcid": "geoId/0649651"
-          }]
-        },
-        {
-          "span": "and"
-        },
-        {
-          "span": "Canada",
-          "places": [{
-            "dcid": "country/CAN"
-          }]
         },
         {
           "span": "are chirpy"

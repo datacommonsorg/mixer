@@ -118,7 +118,7 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 27896
+        "descendentStatVarCount": 27917
       },
       {
         "id": "dc/g/Person_AgeGroupClassification",
@@ -559,7 +559,7 @@
         "descendentStatVarCount": 4
       }
     ],
-    "descendentStatVarCount": 47123,
+    "descendentStatVarCount": 47144,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

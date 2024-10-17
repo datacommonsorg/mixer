@@ -309,10 +309,6 @@
       "dcid": "sdg/SH_STA_SCIDE.SEX--F"
     },
     {
-      "name": "Unemployment Rate of the Female Population",
-      "dcid": "UnemploymentRate_Person_Female"
-    },
-    {
       "name": "Count of Live Birth Pregnancy Event: Male or Female Sterilization (As Fraction of Count Birth Event Live Birth)",
       "dcid": "Percent_LiveBirthPregnancyEvent_MaleOrFemaleSterilization_AsAFractionOf_Count_BirthEvent_LiveBirth"
     },
@@ -3827,14 +3823,6 @@
     {
       "name": "Under-five mortality rate [under 5 years old, Female]",
       "dcid": "sdg/SH_DYN_MORT.AGE--Y0T4__SEX--F"
-    },
-    {
-      "name": "Unemployment Rate: 25 - 74 Years, Female",
-      "dcid": "UnemploymentRate_Person_25To74Years_Female"
-    },
-    {
-      "name": "Unemployment Rate: 25 Years or Less, Female",
-      "dcid": "UnemploymentRate_Person_Upto25Years_Female"
     },
     {
       "name": "Unemployment rate - 13th ICLS [15 to 24 years old, Female]",
