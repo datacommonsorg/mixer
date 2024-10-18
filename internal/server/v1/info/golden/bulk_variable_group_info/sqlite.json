@@ -51,7 +51,7 @@
             "id": "dc/g/Housing",
             "specializedEntity": "Housing",
             "displayName": "Housing",
-            "descendentStatVarCount": 498
+            "descendentStatVarCount": 507
           },
           {
             "id": "dc/g/Crime",

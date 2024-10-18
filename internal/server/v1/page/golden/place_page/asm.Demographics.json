@@ -66,7 +66,8 @@
             "2019": 1407745000,
             "2020": 1411100000,
             "2021": 1412360000,
-            "2022": 1412175000
+            "2022": 1412175000,
+            "2023": 1410710000
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -192,7 +193,8 @@
             "2019": 558762145,
             "2020": 544289492,
             "2021": 529465517,
-            "2022": 514596570
+            "2022": 514596570,
+            "2023": 499814553
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -265,7 +267,8 @@
             "2019": 848982855,
             "2020": 866810508,
             "2021": 882894483,
-            "2022": 897578430
+            "2022": 897578430,
+            "2023": 910895447
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -337,7 +340,8 @@
             "2018": 1.554,
             "2019": 1.496,
             "2020": 1.281,
-            "2021": 1.164
+            "2021": 1.164,
+            "2022": 1.175
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -407,7 +411,8 @@
             "2019": 0.354740890170827,
             "2020": 0.238040870229883,
             "2021": 0.0892522000412526,
-            "2022": -0.0130995013525784
+            "2022": -0.0130995013525784,
+            "2023": -0.103794531589067
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -483,7 +488,8 @@
             "2019": 203304492,
             "2020": 208327405,
             "2021": 213401323,
-            "2022": 218541212
+            "2022": 218541212,
+            "2023": 223804632
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -701,7 +707,8 @@
             "2019": 99300013,
             "2020": 100084652,
             "2021": 100840661,
-            "2022": 101575770
+            "2022": 101575770,
+            "2023": 102316764
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -774,7 +781,8 @@
             "2019": 104004479,
             "2020": 108242753,
             "2021": 112560662,
-            "2022": 116965442
+            "2022": 116965442,
+            "2023": 121487868
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -846,7 +854,8 @@
             "2018": 5.447,
             "2019": 5.379,
             "2020": 5.309,
-            "2021": 5.237
+            "2021": 5.237,
+            "2022": 5.143
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -916,7 +925,8 @@
             "2019": 2.44820069834557,
             "2020": 2.44060888477318,
             "2021": 2.40636338101405,
-            "2022": 2.38000715491565
+            "2022": 2.38000715491565,
+            "2023": 2.37988826918731
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -2216,9 +2226,10 @@
             "2017": 58333412,
             "2018": 57994170,
             "2019": 57592357,
-            "2020": 57470836,
-            "2021": 56867044,
-            "2022": 56378923
+            "2020": 57473509,
+            "2021": 56870028,
+            "2022": 56376192,
+            "2023": 55937486
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -2458,9 +2469,10 @@
             "2017": 266788716,
             "2018": 268844029,
             "2019": 270737596,
-            "2020": 274040676,
-            "2021": 275164510,
-            "2022": 276908634
+            "2020": 274053424,
+            "2021": 275178949,
+            "2022": 276895219,
+            "2023": 278977409
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -2576,7 +2588,8 @@
             "2018": 1.7295,
             "2019": 1.706,
             "2020": 1.6415,
-            "2021": 1.664
+            "2021": 1.664,
+            "2022": 1.665
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -2644,9 +2657,10 @@
             "2017": 0.63264399508256,
             "2018": 0.526435395564053,
             "2019": 0.455381285963537,
-            "2020": 0.964347900193196,
-            "2021": 0.156747054750178,
-            "2022": 0.377564531459432
+            "2020": 0.968999515833015,
+            "2021": 0.157342694282194,
+            "2022": 0.367472693654024,
+            "2023": 0.491924871690548
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -2813,8 +2827,8 @@
   },
   "latestPopulation": {
     "country/ASM": {
-      "date": "2022",
-      "value": 44273,
+      "date": "2023",
+      "value": 43914,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
@@ -2822,8 +2836,8 @@
       }
     },
     "country/CHN": {
-      "date": "2022",
-      "value": 1412175000,
+      "date": "2023",
+      "value": 1410710000,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
@@ -2831,17 +2845,17 @@
       }
     },
     "country/DEU": {
-      "date": "2019",
-      "value": 83019213,
+      "date": "2023",
+      "value": 84482267,
       "metadata": {
-        "importName": "EurostatData",
-        "provenanceUrl": "https://ec.europa.eu/eurostat/data/database",
-        "measurementMethod": "EurostatRegionalPopulationData"
+        "importName": "WorldDevelopmentIndicators",
+        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "observationPeriod": "P1Y"
       }
     },
     "country/NGA": {
-      "date": "2022",
-      "value": 218541212,
+      "date": "2023",
+      "value": 223804632,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
@@ -2849,8 +2863,8 @@
       }
     },
     "country/NZL": {
-      "date": "2022",
-      "value": 5124100,
+      "date": "2023",
+      "value": 5223100,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",

@@ -233,7 +233,7 @@
             "maxValue": 1958404
           },
           "Country": {
-            "placeCount": 66,
+            "placeCount": 50,
             "topPlaces": [
               {
                 "dcid": "country/CHN",
@@ -248,7 +248,7 @@
                 "name": "United States"
               }
             ],
-            "minValue": 8342,
+            "minValue": 133087,
             "maxValue": 660361000
           },
           "County": {
@@ -282,45 +282,45 @@
             "maxValue": 5387
           },
           "EurostatNUTS1": {
-            "placeCount": 123,
+            "placeCount": 42,
             "topPlaces": [
               {
                 "dcid": "nuts/DEA",
                 "name": "Nordrhein-Westfalen"
               },
               {
-                "dcid": "nuts/ITC",
-                "name": "Nord-Ovest"
+                "dcid": "nuts/DE2",
+                "name": "Bavaria"
               },
               {
-                "dcid": "nuts/TR1",
-                "name": "Istanbul"
+                "dcid": "nuts/FR1",
+                "name": "Ile-de-France"
               }
             ],
-            "minValue": 12331,
-            "maxValue": 9277682
+            "minValue": 131453,
+            "maxValue": 9277680
           },
           "EurostatNUTS2": {
-            "placeCount": 328,
+            "placeCount": 207,
             "topPlaces": [
               {
                 "dcid": "nuts/TR10",
                 "name": "Istanbul"
               },
               {
-                "dcid": "nuts/FR10",
-                "name": "Ile-de-France"
-              },
-              {
                 "dcid": "nuts/ITC4",
                 "name": "Lombardia"
+              },
+              {
+                "dcid": "nuts/ES61",
+                "name": "Andalucía"
               }
             ],
-            "minValue": 12331,
+            "minValue": 12793,
             "maxValue": 7907210
           },
           "EurostatNUTS3": {
-            "placeCount": 1390,
+            "placeCount": 1356,
             "topPlaces": [
               {
                 "dcid": "nuts/TR100",
@@ -1825,122 +1825,6 @@
             "observationCount": 1224,
             "timeSeriesCount": 34
           },
-          "dc/base/EurostatData": {
-            "importName": "EurostatData",
-            "releaseFrequency": "P1Y",
-            "seriesSummary": [
-              {
-                "seriesKey": {
-                  "measurementMethod": "EurostatRegionalPopulationData"
-                },
-                "earliestDate": "1960",
-                "latestDate": "2019",
-                "placeTypeSummary": {
-                  "City": {
-                    "placeCount": 140,
-                    "topPlaces": [
-                      {
-                        "dcid": "nuts/DE3",
-                        "name": "Berlin"
-                      },
-                      {
-                        "dcid": "nuts/FR101",
-                        "name": "Paris"
-                      },
-                      {
-                        "dcid": "nuts/AT13",
-                        "name": "Vienna"
-                      }
-                    ],
-                    "minValue": 17255,
-                    "maxValue": 1852025
-                  },
-                  "Country": {
-                    "placeCount": 48,
-                    "topPlaces": [
-                      {
-                        "dcid": "country/RUS",
-                        "name": "Russia"
-                      },
-                      {
-                        "dcid": "country/TUR",
-                        "name": "Turkey"
-                      },
-                      {
-                        "dcid": "country/DEU",
-                        "name": "Germany"
-                      }
-                    ],
-                    "minValue": 8342,
-                    "maxValue": 78191815
-                  },
-                  "EurostatNUTS1": {
-                    "placeCount": 123,
-                    "topPlaces": [
-                      {
-                        "dcid": "nuts/DEA",
-                        "name": "Nordrhein-Westfalen"
-                      },
-                      {
-                        "dcid": "nuts/ITC",
-                        "name": "Nord-Ovest"
-                      },
-                      {
-                        "dcid": "nuts/TR1",
-                        "name": "Istanbul"
-                      }
-                    ],
-                    "minValue": 12331,
-                    "maxValue": 9277682
-                  },
-                  "EurostatNUTS2": {
-                    "placeCount": 328,
-                    "topPlaces": [
-                      {
-                        "dcid": "nuts/TR10",
-                        "name": "Istanbul"
-                      },
-                      {
-                        "dcid": "nuts/FR10",
-                        "name": "Ile-de-France"
-                      },
-                      {
-                        "dcid": "nuts/ITC4",
-                        "name": "Lombardia"
-                      }
-                    ],
-                    "minValue": 12331,
-                    "maxValue": 7525493
-                  },
-                  "EurostatNUTS3": {
-                    "placeCount": 1390,
-                    "topPlaces": [
-                      {
-                        "dcid": "nuts/TR100",
-                        "name": "Istanbul"
-                      },
-                      {
-                        "dcid": "nuts/ES300",
-                        "name": "Madrid"
-                      },
-                      {
-                        "dcid": "nuts/ES511",
-                        "name": "Barcelona"
-                      }
-                    ],
-                    "minValue": 4313,
-                    "maxValue": 7525493
-                  }
-                },
-                "minValue": 4313,
-                "maxValue": 78191815,
-                "observationCount": 47169,
-                "timeSeriesCount": 2029
-              }
-            ],
-            "observationCount": 47169,
-            "timeSeriesCount": 2029
-          },
           "dc/base/IndiaCensus_Primary": {
             "importName": "IndiaCensus_Primary",
             "seriesSummary": [
@@ -2816,7 +2700,7 @@
                     "maxValue": 258400
                   },
                   "AdministrativeArea1": {
-                    "placeCount": 331,
+                    "placeCount": 330,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q15175",
@@ -2921,6 +2805,25 @@
                     "minValue": 133087,
                     "maxValue": 660361000
                   },
+                  "County": {
+                    "placeCount": 4,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/NO043",
+                        "name": "Rogaland"
+                      },
+                      {
+                        "dcid": "wikidataId/Q127676",
+                        "name": "Trøndelag"
+                      },
+                      {
+                        "dcid": "nuts/NO053",
+                        "name": "Møre og Romsdal"
+                      }
+                    ],
+                    "minValue": 117331,
+                    "maxValue": 234293
+                  },
                   "EurostatNUTS1": {
                     "placeCount": 42,
                     "topPlaces": [
@@ -2960,7 +2863,7 @@
                     "maxValue": 7907210
                   },
                   "EurostatNUTS3": {
-                    "placeCount": 1359,
+                    "placeCount": 1356,
                     "topPlaces": [
                       {
                         "dcid": "nuts/TR100",
@@ -3535,8 +3438,27 @@
                 "name": "United States"
               }
             ],
-            "minValue": 0.772,
+            "minValue": 0.701,
             "maxValue": 8.864
+          },
+          "County": {
+            "placeCount": 3,
+            "topPlaces": [
+              {
+                "dcid": "nuts/NO043",
+                "name": "Rogaland"
+              },
+              {
+                "dcid": "nuts/NO053",
+                "name": "Møre og Romsdal"
+              },
+              {
+                "dcid": "nuts/NO071",
+                "name": "Nordland"
+              }
+            ],
+            "minValue": 1.41,
+            "maxValue": 1.91
           },
           "EurostatNUTS1": {
             "placeCount": 123,
@@ -3577,7 +3499,7 @@
             "maxValue": 4.9
           },
           "EurostatNUTS3": {
-            "placeCount": 1428,
+            "placeCount": 1425,
             "topPlaces": [
               {
                 "dcid": "nuts/TR100",
@@ -3662,6 +3584,25 @@
                     "minValue": 1.14,
                     "maxValue": 2.17
                   },
+                  "County": {
+                    "placeCount": 3,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/NO043",
+                        "name": "Rogaland"
+                      },
+                      {
+                        "dcid": "nuts/NO053",
+                        "name": "Møre og Romsdal"
+                      },
+                      {
+                        "dcid": "nuts/NO071",
+                        "name": "Nordland"
+                      }
+                    ],
+                    "minValue": 1.41,
+                    "maxValue": 1.91
+                  },
                   "EurostatNUTS1": {
                     "placeCount": 123,
                     "topPlaces": [
@@ -3701,7 +3642,7 @@
                     "maxValue": 4.9
                   },
                   "EurostatNUTS3": {
-                    "placeCount": 1428,
+                    "placeCount": 1425,
                     "topPlaces": [
                       {
                         "dcid": "nuts/TR100",
@@ -3910,7 +3851,7 @@
               {
                 "seriesKey": {},
                 "earliestDate": "1960",
-                "latestDate": "2021",
+                "latestDate": "2022",
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 211,
@@ -3928,7 +3869,7 @@
                         "name": "United States"
                       }
                     ],
-                    "minValue": 0.772,
+                    "minValue": 0.701,
                     "maxValue": 8.864
                   },
                   "Place": {
@@ -3939,17 +3880,17 @@
                         "name": "World"
                       }
                     ],
-                    "minValue": 2.27316335245758,
-                    "maxValue": 5.32342829673039
+                    "minValue": 2.26127886004667,
+                    "maxValue": 5.32343961106821
                   }
                 },
-                "minValue": 0.772,
+                "minValue": 0.701,
                 "maxValue": 8.864,
-                "observationCount": 12841,
+                "observationCount": 13050,
                 "timeSeriesCount": 212
               }
             ],
-            "observationCount": 12841,
+            "observationCount": 13050,
             "timeSeriesCount": 212
           }
         }
