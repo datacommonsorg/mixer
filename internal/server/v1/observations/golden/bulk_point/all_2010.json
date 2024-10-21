@@ -16,13 +16,13 @@
             },
             {
               "date": "2010",
-              "value": 64658900,
+              "value": 64658856,
               "facet": "1151455814"
             },
             {
               "date": "2010",
               "value": 64658856,
-              "facet": "4089091283"
+              "facet": "1733625304"
             },
             {
               "date": "2010",
@@ -51,7 +51,7 @@
             },
             {
               "date": "2010",
-              "value": 309322000,
+              "value": 309321666,
               "facet": "1151455814"
             },
             {
@@ -96,7 +96,7 @@
             },
             {
               "date": "2010",
-              "value": 37319500,
+              "value": 37319502,
               "facet": "1151455814"
             },
             {
@@ -277,6 +277,11 @@
       "observation_period": "P1Y",
       "is_dc_aggregate": true
     },
+    "1733625304": {
+      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
+      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true",
+      "measurement_method": "EurostatRegionalStatistics"
+    },
     "1964317807": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
       "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
@@ -328,10 +333,6 @@
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y"
-    },
-    "4089091283": {
-      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
-      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true"
     },
     "4277990144": {
       "import_name": "FBIGovCrime",

@@ -165,7 +165,7 @@
               "observations": [
                 {
                   "date": "2015",
-                  "value": 66458200
+                  "value": 66458153
                 }
               ],
               "obs_count": 1,
@@ -173,7 +173,7 @@
               "latest_date": "2015"
             },
             {
-              "facet_id": "4089091283",
+              "facet_id": "1733625304",
               "observations": [
                 {
                   "date": "2015",
@@ -241,7 +241,7 @@
               "observations": [
                 {
                   "date": "2015",
-                  "value": 320635000
+                  "value": 320635163
                 }
               ],
               "obs_count": 1,
@@ -342,7 +342,7 @@
               "observations": [
                 {
                   "date": "2015",
-                  "value": 38918000
+                  "value": 38918045
                 }
               ],
               "obs_count": 1,
@@ -587,6 +587,11 @@
       "observation_period": "P1Y",
       "is_dc_aggregate": true
     },
+    "1733625304": {
+      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
+      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true",
+      "measurement_method": "EurostatRegionalStatistics"
+    },
     "1964317807": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
       "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
@@ -643,10 +648,6 @@
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y"
-    },
-    "4089091283": {
-      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
-      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true"
     },
     "4277990144": {
       "import_name": "FBIGovCrime",

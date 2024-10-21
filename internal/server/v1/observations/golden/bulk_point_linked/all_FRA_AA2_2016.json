@@ -9,11 +9,11 @@
             {
               "date": "2016",
               "value": 2190327,
-              "facet": "4089091283"
+              "facet": "1733625304"
             },
             {
               "date": "2016",
-              "value": 2190330,
+              "value": 2190327,
               "facet": "1151455814"
             }
           ]
@@ -24,11 +24,11 @@
             {
               "date": "2016",
               "value": 1397665,
-              "facet": "4089091283"
+              "facet": "1733625304"
             },
             {
               "date": "2016",
-              "value": 1397670,
+              "value": 1397665,
               "facet": "1151455814"
             }
           ]
@@ -39,11 +39,11 @@
             {
               "date": "2016",
               "value": 1431808,
-              "facet": "4089091283"
+              "facet": "1733625304"
             },
             {
               "date": "2016",
-              "value": 1431810,
+              "value": 1431808,
               "facet": "1151455814"
             }
           ]
@@ -54,7 +54,7 @@
             {
               "date": "2016",
               "value": 1287330,
-              "facet": "4089091283"
+              "facet": "1733625304"
             },
             {
               "date": "2016",
@@ -69,11 +69,11 @@
             {
               "date": "2016",
               "value": 1603268,
-              "facet": "4089091283"
+              "facet": "1733625304"
             },
             {
               "date": "2016",
-              "value": 1603270,
+              "value": 1603268,
               "facet": "1151455814"
             }
           ]
@@ -84,7 +84,7 @@
             {
               "date": "2016",
               "value": 1606660,
-              "facet": "4089091283"
+              "facet": "1733625304"
             },
             {
               "date": "2016",
@@ -99,11 +99,11 @@
             {
               "date": "2016",
               "value": 1378151,
-              "facet": "4089091283"
+              "facet": "1733625304"
             },
             {
               "date": "2016",
-              "value": 1378150,
+              "value": 1378151,
               "facet": "1151455814"
             }
           ]
@@ -114,11 +114,11 @@
             {
               "date": "2016",
               "value": 1221923,
-              "facet": "4089091283"
+              "facet": "1733625304"
             },
             {
               "date": "2016",
-              "value": 1221920,
+              "value": 1221923,
               "facet": "1151455814"
             }
           ]
@@ -159,7 +159,7 @@
             {
               "date": "2016",
               "value": 332833,
-              "facet": "4089091283"
+              "facet": "1733625304"
             },
             {
               "date": "2016",
@@ -183,14 +183,15 @@
       "provenance_url": "https://www.wikipedia.org",
       "measurement_method": "Wikipedia"
     },
+    "1733625304": {
+      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
+      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true",
+      "measurement_method": "EurostatRegionalStatistics"
+    },
     "2458695583": {
       "import_name": "WikidataPopulation",
       "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
       "measurement_method": "WikidataPopulation"
-    },
-    "4089091283": {
-      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
-      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true"
     }
   }
 }

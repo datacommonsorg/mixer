@@ -8,13 +8,13 @@
               "facet_id": "1151455814",
               "observations": [
                 {
-                  "date": "2022",
-                  "value": 333288000
+                  "date": "2023",
+                  "value": 334914895
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2022",
-              "latest_date": "2022"
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         }

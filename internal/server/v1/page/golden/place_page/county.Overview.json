@@ -15991,9 +15991,10 @@
             "2017": 1145623,
             "2018": 1150840,
             "2019": 1152883,
-            "2020": 1152333,
-            "2021": 1161413,
-            "2022": 1156966
+            "2020": 1166069,
+            "2021": 1163941,
+            "2022": 1157019,
+            "2023": 1155025
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
@@ -19260,28 +19261,30 @@
         },
         "Percent_Person_WithHighBloodPressure": {
           "val": {
-            "2017": 24.2,
             "2019": 24.7,
-            "2021": 24.7
+            "2021": 24.9
           },
           "metadata": {
             "importName": "CDC500",
             "provenanceUrl": "https://www.cdc.gov/places/index.html",
             "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Percent_Person_WithHighCholesterol": {
           "val": {
-            "2017": 26.1,
             "2019": 26,
-            "2021": 27.3
+            "2021": 27
           },
           "metadata": {
             "importName": "CDC500",
             "provenanceUrl": "https://www.cdc.gov/places/index.html",
             "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Percent_Person_WithMentalHealthNotGood": {
@@ -20410,9 +20413,10 @@
             "2017": 1037082,
             "2018": 1034877,
             "2019": 1026528,
-            "2020": 1010908,
-            "2021": 983489,
-            "2022": 971233
+            "2020": 1009319,
+            "2021": 981214,
+            "2022": 972082,
+            "2023": 969655
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
@@ -21999,32 +22003,30 @@
         },
         "Percent_Person_WithHighBloodPressure": {
           "val": {
-            "2013": 26.6,
-            "2015": 24.2,
-            "2017": 26,
             "2019": 24,
-            "2021": 23.9
+            "2021": 23.7
           },
           "metadata": {
             "importName": "CDC500",
             "provenanceUrl": "https://www.cdc.gov/places/index.html",
             "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Percent_Person_WithHighCholesterol": {
           "val": {
-            "2013": 31.7,
-            "2015": 28.1,
-            "2017": 27.2,
             "2019": 25.5,
-            "2021": 31.2
+            "2021": 30.9
           },
           "metadata": {
             "importName": "CDC500",
             "provenanceUrl": "https://www.cdc.gov/places/index.html",
             "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Percent_Person_WithMentalHealthNotGood": {
@@ -22493,62 +22495,62 @@
         {
           "dcid": "geoId/0668000",
           "name": "San Jose",
-          "pop": 971233
+          "pop": 969655
         },
         {
           "dcid": "geoId/0677000",
           "name": "Sunnyvale",
-          "pop": 153091
+          "pop": 151967
         },
         {
           "dcid": "geoId/0669084",
           "name": "Santa Clara",
-          "pop": 126930
+          "pop": 131062
         },
         {
           "dcid": "geoId/0649670",
           "name": "Mountain View",
-          "pop": 81059
+          "pop": 81785
         },
         {
           "dcid": "geoId/0647766",
           "name": "Milpitas",
-          "pop": 77738
+          "pop": 77321
         },
         {
           "dcid": "geoId/0655282",
           "name": "Palo Alto",
-          "pop": 66010
+          "pop": 65882
         },
         {
           "dcid": "geoId/0629504",
           "name": "Gilroy",
-          "pop": 58005
+          "pop": 58250
         },
         {
           "dcid": "geoId/0617610",
           "name": "Cupertino",
-          "pop": 57856
+          "pop": 57285
         },
         {
           "dcid": "geoId/0649278",
           "name": "Morgan Hill",
-          "pop": 44973
+          "pop": 44478
         },
         {
           "dcid": "geoId/0610345",
           "name": "Campbell",
-          "pop": 42286
+          "pop": 41700
         },
         {
           "dcid": "geoId/0643280",
           "name": "Los Altos",
-          "pop": 30424
+          "pop": 29990
         },
         {
           "dcid": "geoId/0670280",
           "name": "Saratoga",
-          "pop": 29903
+          "pop": 29607
         },
         {
           "dcid": "geoId/0673906",
@@ -22588,7 +22590,7 @@
         {
           "dcid": "geoId/0648956",
           "name": "Monte Sereno",
-          "pop": 3343
+          "pop": 3459
         },
         {
           "dcid": "geoId/0641282",
@@ -22607,20 +22609,20 @@
         {
           "dcid": "geoId/0644112",
           "name": "Los Gatos",
-          "pop": 32402
+          "pop": 32216
         },
         {
           "dcid": "geoId/0643294",
           "name": "Los Altos Hills",
-          "pop": 8168
+          "pop": 8189
         }
       ]
     }
   },
   "latestPopulation": {
     "country/USA": {
-      "date": "2022",
-      "value": 333287557,
+      "date": "2023",
+      "value": 334914895,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -22629,8 +22631,8 @@
       }
     },
     "geoId/04013": {
-      "date": "2022",
-      "value": 4551524,
+      "date": "2023",
+      "value": 4585871,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -22639,8 +22641,8 @@
       }
     },
     "geoId/06": {
-      "date": "2022",
-      "value": 39029342,
+      "date": "2023",
+      "value": 38965193,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -22649,8 +22651,8 @@
       }
     },
     "geoId/06001": {
-      "date": "2022",
-      "value": 1628997,
+      "date": "2023",
+      "value": 1622188,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -22659,8 +22661,8 @@
       }
     },
     "geoId/06013": {
-      "date": "2022",
-      "value": 1156966,
+      "date": "2023",
+      "value": 1155025,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -22669,8 +22671,8 @@
       }
     },
     "geoId/06067": {
-      "date": "2022",
-      "value": 1584169,
+      "date": "2023",
+      "value": 1584288,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -22679,8 +22681,8 @@
       }
     },
     "geoId/06075": {
-      "date": "2022",
-      "value": 808437,
+      "date": "2023",
+      "value": 808988,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -22689,8 +22691,8 @@
       }
     },
     "geoId/06077": {
-      "date": "2022",
-      "value": 793229,
+      "date": "2023",
+      "value": 800965,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -22699,8 +22701,8 @@
       }
     },
     "geoId/06085": {
-      "date": "2022",
-      "value": 1870945,
+      "date": "2023",
+      "value": 1877592,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -22709,8 +22711,8 @@
       }
     },
     "geoId/0647766": {
-      "date": "2022",
-      "value": 77738,
+      "date": "2023",
+      "value": 77321,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -22719,8 +22721,8 @@
       }
     },
     "geoId/0649670": {
-      "date": "2022",
-      "value": 81059,
+      "date": "2023",
+      "value": 81785,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -22729,8 +22731,8 @@
       }
     },
     "geoId/0668000": {
-      "date": "2022",
-      "value": 971233,
+      "date": "2023",
+      "value": 969655,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -22739,8 +22741,8 @@
       }
     },
     "geoId/0669084": {
-      "date": "2022",
-      "value": 126930,
+      "date": "2023",
+      "value": 131062,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -22749,8 +22751,8 @@
       }
     },
     "geoId/0677000": {
-      "date": "2022",
-      "value": 153091,
+      "date": "2023",
+      "value": 151967,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -22759,8 +22761,8 @@
       }
     },
     "geoId/08059": {
-      "date": "2022",
-      "value": 576143,
+      "date": "2023",
+      "value": 576366,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -22769,8 +22771,8 @@
       }
     },
     "geoId/12031": {
-      "date": "2022",
-      "value": 1016536,
+      "date": "2023",
+      "value": 1030822,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -22779,8 +22781,8 @@
       }
     },
     "geoId/48113": {
-      "date": "2022",
-      "value": 2600840,
+      "date": "2023",
+      "value": 2606358,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -22789,8 +22791,8 @@
       }
     },
     "geoId/51059": {
-      "date": "2022",
-      "value": 1138331,
+      "date": "2023",
+      "value": 1141878,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",

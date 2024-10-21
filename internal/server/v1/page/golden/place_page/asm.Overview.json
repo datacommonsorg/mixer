@@ -496,6 +496,8 @@
         },
         "Count_Person_PerArea": {
           "val": {
+            "1999": 130.15,
+            "2000": 132.01,
             "2001": 132.01,
             "2002": 133.4,
             "2003": 134.31,
@@ -516,8 +518,7 @@
             "2018": 147.01,
             "2019": 147.53,
             "2020": 147.75,
-            "2021": 147.8,
-            "2022": 147.8
+            "2021": 147.8
           },
           "metadata": {
             "importName": "OECDRegionalDemography",
@@ -970,7 +971,8 @@
             "2024-09-08": 122351,
             "2024-09-15": 122352,
             "2024-09-22": 122358,
-            "2024-09-29": 122358
+            "2024-09-29": 122360,
+            "2024-10-06": 122361
           },
           "metadata": {
             "importName": "WHO_COVID19",
@@ -2199,7 +2201,8 @@
             "2024-09-08": 3155,
             "2024-09-15": 3155,
             "2024-09-22": 3155,
-            "2024-09-29": 3155
+            "2024-09-29": 3155,
+            "2024-10-06": 3155
           },
           "metadata": {
             "importName": "WHO_COVID19",
@@ -3354,9 +3357,10 @@
             "2017": 325122128,
             "2018": 326838199,
             "2019": 328329953,
-            "2020": 329484123,
-            "2021": 332031554,
-            "2022": 333287557
+            "2020": 331526933,
+            "2021": 331893745,
+            "2022": 333271411,
+            "2023": 334914895
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
@@ -5595,6 +5599,17 @@
         },
         "Count_Person_PerArea": {
           "val": {
+            "1990": 27.25,
+            "1991": 27.61,
+            "1992": 28,
+            "1993": 28.37,
+            "1994": 28.72,
+            "1995": 29.06,
+            "1996": 29.4,
+            "1997": 29.76,
+            "1998": 30.11,
+            "1999": 30.46,
+            "2000": 30.8,
             "2001": 31.1,
             "2002": 31.39,
             "2003": 31.66,
@@ -5614,9 +5629,10 @@
             "2017": 35.47,
             "2018": 35.66,
             "2019": 35.83,
-            "2020": 36.18,
+            "2020": 36.19,
             "2021": 36.24,
-            "2022": 36.38
+            "2022": 36.38,
+            "2023": 36.56
           },
           "metadata": {
             "importName": "OECDRegionalDemography",
@@ -7971,7 +7987,8 @@
             "2024-09-14": 1853137,
             "2024-09-21": 1803917,
             "2024-09-28": 1789006,
-            "2024-10-05": 1843965
+            "2024-10-05": 1843978,
+            "2024-10-12": 1817577
           },
           "metadata": {
             "importName": "USDOL_ETA539",
@@ -10845,7 +10862,6 @@
         },
         "Percent_Person_WithHighBloodPressure": {
           "val": {
-            "2017": 29.7,
             "2019": 29.6,
             "2021": 29.6
           },
@@ -10853,20 +10869,23 @@
             "importName": "CDC500",
             "provenanceUrl": "https://www.cdc.gov/places/index.html",
             "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Percent_Person_WithHighCholesterol": {
           "val": {
-            "2017": 29.3,
             "2019": 28.7,
-            "2021": 31
+            "2021": 30.4
           },
           "metadata": {
             "importName": "CDC500",
             "provenanceUrl": "https://www.cdc.gov/places/index.html",
             "measurementMethod": "AgeAdjustedPrevalence",
-            "observationPeriod": "P1Y"
+            "observationPeriod": "P1Y",
+            "scalingFactor": "100",
+            "unit": "Percent"
           }
         },
         "Percent_Person_WithMentalHealthNotGood": {
@@ -12175,8 +12194,8 @@
       }
     },
     "country/USA": {
-      "date": "2022",
-      "value": 333287557,
+      "date": "2023",
+      "value": 334914895,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",

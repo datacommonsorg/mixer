@@ -212,25 +212,25 @@
               "facet_id": "1151455814",
               "observations": [
                 {
-                  "date": "2022",
-                  "value": 67871900
+                  "date": "2023",
+                  "value": 68172977
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2022",
-              "latest_date": "2022"
+              "earliest_date": "2023",
+              "latest_date": "2023"
             },
             {
-              "facet_id": "4089091283",
+              "facet_id": "1733625304",
               "observations": [
                 {
-                  "date": "2022",
-                  "value": 67871925
+                  "date": "2023",
+                  "value": 68172977
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2022",
-              "latest_date": "2022"
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         },
@@ -240,13 +240,13 @@
               "facet_id": "2176550201",
               "observations": [
                 {
-                  "date": "2022",
-                  "value": 333287557
+                  "date": "2023",
+                  "value": 334914895
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2022",
-              "latest_date": "2022"
+              "earliest_date": "2023",
+              "latest_date": "2023"
             },
             {
               "facet_id": "2645850372",
@@ -300,13 +300,13 @@
               "facet_id": "1151455814",
               "observations": [
                 {
-                  "date": "2022",
-                  "value": 333288000
+                  "date": "2023",
+                  "value": 334914895
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2022",
-              "latest_date": "2022"
+              "earliest_date": "2023",
+              "latest_date": "2023"
             },
             {
               "facet_id": "10983471",
@@ -413,13 +413,13 @@
               "facet_id": "2176550201",
               "observations": [
                 {
-                  "date": "2022",
-                  "value": 39029342
+                  "date": "2023",
+                  "value": 38965193
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2022",
-              "latest_date": "2022"
+              "earliest_date": "2023",
+              "latest_date": "2023"
             },
             {
               "facet_id": "1145703171",
@@ -449,13 +449,13 @@
               "facet_id": "1151455814",
               "observations": [
                 {
-                  "date": "2022",
-                  "value": 39029300
+                  "date": "2023",
+                  "value": 38965193
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2022",
-              "latest_date": "2022"
+              "earliest_date": "2023",
+              "latest_date": "2023"
             },
             {
               "facet_id": "10983471",
@@ -537,13 +537,13 @@
               "facet_id": "2176550201",
               "observations": [
                 {
-                  "date": "2022",
-                  "value": 81059
+                  "date": "2023",
+                  "value": 81785
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2022",
-              "latest_date": "2022"
+              "earliest_date": "2023",
+              "latest_date": "2023"
             },
             {
               "facet_id": "1145703171",
@@ -787,6 +787,11 @@
       "measurement_method": "BLSSeasonallyAdjusted",
       "observation_period": "P3M"
     },
+    "1733625304": {
+      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
+      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true",
+      "measurement_method": "EurostatRegionalStatistics"
+    },
     "1964317807": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
       "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
@@ -866,10 +871,6 @@
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y"
-    },
-    "4089091283": {
-      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
-      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true"
     },
     "4277990144": {
       "import_name": "FBIGovCrime",

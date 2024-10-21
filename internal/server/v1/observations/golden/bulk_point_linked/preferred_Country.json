@@ -2299,7 +2299,7 @@
             {
               "date": "2023",
               "value": 334914895,
-              "facet": "3981252704"
+              "facet": "2176550201"
             }
           ]
         },
@@ -2510,10 +2510,10 @@
       "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
       "measurement_method": "USDecennialCensus"
     },
-    "1794369807": {
-      "import_name": "UNData",
-      "provenance_url": "http://data.un.org",
-      "measurement_method": "UNData"
+    "1733625304": {
+      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
+      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true",
+      "measurement_method": "EurostatRegionalStatistics"
     },
     "1897073702": {
       "import_name": "SouthAfrica_Census",
@@ -2622,10 +2622,6 @@
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y"
-    },
-    "4089091283": {
-      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
-      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true"
     },
     "4140854811": {
       "import_name": "Colombia_Census",

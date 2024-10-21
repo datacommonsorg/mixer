@@ -35,14 +35,14 @@
               "facet": "3981252704"
             },
             {
-              "date": "2022",
-              "value": 67871900,
+              "date": "2023",
+              "value": 68172977,
               "facet": "1151455814"
             },
             {
-              "date": "2022",
-              "value": 67871925,
-              "facet": "4089091283"
+              "date": "2023",
+              "value": 68172977,
+              "facet": "1733625304"
             },
             {
               "date": "2024-01",
@@ -60,8 +60,8 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 333287557,
+              "date": "2023",
+              "value": 334914895,
               "facet": "2176550201"
             },
             {
@@ -85,8 +85,8 @@
               "facet": "3981252704"
             },
             {
-              "date": "2022",
-              "value": 333288000,
+              "date": "2023",
+              "value": 334914895,
               "facet": "1151455814"
             },
             {
@@ -135,8 +135,8 @@
           "entity": "geoId/06",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 39029342,
+              "date": "2023",
+              "value": 38965193,
               "facet": "2176550201"
             },
             {
@@ -150,8 +150,8 @@
               "facet": "1541763368"
             },
             {
-              "date": "2022",
-              "value": 39029300,
+              "date": "2023",
+              "value": 38965193,
               "facet": "1151455814"
             },
             {
@@ -195,8 +195,8 @@
           "entity": "geoId/0649670",
           "points_by_facet": [
             {
-              "date": "2022",
-              "value": 81059,
+              "date": "2023",
+              "value": 81785,
               "facet": "2176550201"
             },
             {
@@ -470,6 +470,11 @@
       "measurement_method": "BLSSeasonallyAdjusted",
       "observation_period": "P3M"
     },
+    "1733625304": {
+      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
+      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true",
+      "measurement_method": "EurostatRegionalStatistics"
+    },
     "1964317807": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
       "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
@@ -544,10 +549,6 @@
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y"
-    },
-    "4089091283": {
-      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
-      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true"
     },
     "4277990144": {
       "import_name": "FBIGovCrime",

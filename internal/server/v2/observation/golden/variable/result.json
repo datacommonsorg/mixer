@@ -152,6 +152,21 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Death_15To64Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_15To64Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_15To64Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Death_1To11Month": {
       "by_entity": {
         "wikidataId/Q1951": {}
@@ -522,6 +537,21 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Death_65OrMoreYears": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_65OrMoreYears_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_65OrMoreYears_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Death_65To69Years": {
       "by_entity": {
         "wikidataId/Q1951": {}
@@ -628,6 +658,21 @@
       }
     },
     "Count_Death_7To27Day_AsAFractionOf_Count_BirthEvent_LiveBirth": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_80OrMoreYears": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_80OrMoreYears_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_80OrMoreYears_Male": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -782,7 +827,17 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Death_Upto14Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Death_Upto14Years_AsAFractionOf_Count_Person_Upto14Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_Upto14Years_Female": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
@@ -792,7 +847,27 @@
         "wikidataId/Q1951": {}
       }
     },
+    "Count_Death_Upto14Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_Death_Upto14Years_Male_AsAFractionOf_Count_Person_Upto14Years_Male": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_Upto4Years": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_Upto4Years_Female": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_Death_Upto4Years_Male": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }
