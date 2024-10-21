@@ -293,116 +293,140 @@
             {
               "series": [
                 {
+                  "date": "1990",
+                  "value": 56577000
+                },
+                {
+                  "date": "1991",
+                  "value": 56840661
+                },
+                {
+                  "date": "1992",
+                  "value": 57110533
+                },
+                {
+                  "date": "1993",
+                  "value": 57369161
+                },
+                {
+                  "date": "1994",
+                  "value": 57565008
+                },
+                {
                   "date": "1995",
-                  "value": 57752500
+                  "value": 57752535
                 },
                 {
                   "date": "1996",
-                  "value": 57936000
+                  "value": 57935959
                 },
                 {
                   "date": "1997",
-                  "value": 58116000
+                  "value": 58116018
                 },
                 {
                   "date": "1998",
-                  "value": 58299000
+                  "value": 58298962
                 },
                 {
                   "date": "1999",
-                  "value": 60158500
+                  "value": 60158533
                 },
                 {
                   "date": "2000",
-                  "value": 60545000
+                  "value": 60545022
                 },
                 {
                   "date": "2001",
-                  "value": 60979300
+                  "value": 60979315
                 },
                 {
                   "date": "2002",
-                  "value": 61424000
+                  "value": 61424036
                 },
                 {
                   "date": "2003",
-                  "value": 61864100
+                  "value": 61864088
                 },
                 {
                   "date": "2004",
-                  "value": 62292200
+                  "value": 62292241
                 },
                 {
                   "date": "2005",
-                  "value": 62772900
+                  "value": 62772870
                 },
                 {
                   "date": "2006",
-                  "value": 63229600
+                  "value": 63229635
                 },
                 {
                   "date": "2007",
-                  "value": 63645100
+                  "value": 63645065
                 },
                 {
                   "date": "2008",
-                  "value": 64007200
+                  "value": 64007193
                 },
                 {
                   "date": "2009",
-                  "value": 64350200
+                  "value": 64350226
                 },
                 {
                   "date": "2010",
-                  "value": 64658900
+                  "value": 64658856
                 },
                 {
                   "date": "2011",
-                  "value": 64978700
+                  "value": 64978721
                 },
                 {
                   "date": "2012",
-                  "value": 65277000
+                  "value": 65276983
                 },
                 {
                   "date": "2013",
-                  "value": 65600400
+                  "value": 65600350
                 },
                 {
                   "date": "2014",
-                  "value": 66166000
+                  "value": 66165980
                 },
                 {
                   "date": "2015",
-                  "value": 66458200
+                  "value": 66458153
                 },
                 {
                   "date": "2016",
-                  "value": 66638400
+                  "value": 66638391
                 },
                 {
                   "date": "2017",
-                  "value": 66809800
+                  "value": 66809816
                 },
                 {
                   "date": "2018",
-                  "value": 67026200
+                  "value": 67026224
                 },
                 {
                   "date": "2019",
-                  "value": 67177600
+                  "value": 67290471
                 },
                 {
                   "date": "2020",
-                  "value": 67320200
+                  "value": 67473651
                 },
                 {
                   "date": "2021",
-                  "value": 67656700
+                  "value": 67728568
                 },
                 {
                   "date": "2022",
-                  "value": 67871900
+                  "value": 67957053
+                },
+                {
+                  "date": "2023",
+                  "value": 68172977
                 }
               ],
               "facet": "1151455814"
@@ -487,22 +511,26 @@
                 },
                 {
                   "date": "2019",
-                  "value": 67177636
+                  "value": 67290471
                 },
                 {
                   "date": "2020",
-                  "value": 67485531
+                  "value": 67473651
                 },
                 {
                   "date": "2021",
-                  "value": 67656682
+                  "value": 67728568
                 },
                 {
                   "date": "2022",
-                  "value": 67871925
+                  "value": 67957053
+                },
+                {
+                  "date": "2023",
+                  "value": 68172977
                 }
               ],
-              "facet": "4089091283"
+              "facet": "1733625304"
             },
             {
               "series": [
@@ -1247,15 +1275,19 @@
                 },
                 {
                   "date": "2020",
-                  "value": 329484123
+                  "value": 331526933
                 },
                 {
                   "date": "2021",
-                  "value": 332031554
+                  "value": 331893745
                 },
                 {
                   "date": "2022",
-                  "value": 333287557
+                  "value": 333271411
+                },
+                {
+                  "date": "2023",
+                  "value": 334914895
                 }
               ],
               "facet": "2176550201"
@@ -1603,116 +1635,140 @@
             {
               "series": [
                 {
+                  "date": "1990",
+                  "value": 249622814
+                },
+                {
+                  "date": "1991",
+                  "value": 252980941
+                },
+                {
+                  "date": "1992",
+                  "value": 256514224
+                },
+                {
+                  "date": "1993",
+                  "value": 259918588
+                },
+                {
+                  "date": "1994",
+                  "value": 263125821
+                },
+                {
                   "date": "1995",
-                  "value": 266278000
+                  "value": 266278393
                 },
                 {
                   "date": "1996",
-                  "value": 269394000
+                  "value": 269394284
                 },
                 {
                   "date": "1997",
-                  "value": 272647000
+                  "value": 272646925
                 },
                 {
                   "date": "1998",
-                  "value": 275854000
+                  "value": 275854104
                 },
                 {
                   "date": "1999",
-                  "value": 279040000
+                  "value": 279040168
                 },
                 {
                   "date": "2000",
-                  "value": 282162000
+                  "value": 282162411
                 },
                 {
                   "date": "2001",
-                  "value": 284969000
+                  "value": 284968955
                 },
                 {
                   "date": "2002",
-                  "value": 287625000
+                  "value": 287625193
                 },
                 {
                   "date": "2003",
-                  "value": 290108000
+                  "value": 290107933
                 },
                 {
                   "date": "2004",
-                  "value": 292805000
+                  "value": 292805298
                 },
                 {
                   "date": "2005",
-                  "value": 295517000
+                  "value": 295516599
                 },
                 {
                   "date": "2006",
-                  "value": 298380000
+                  "value": 298379912
                 },
                 {
                   "date": "2007",
-                  "value": 301231000
+                  "value": 301231207
                 },
                 {
                   "date": "2008",
-                  "value": 304094000
+                  "value": 304093966
                 },
                 {
                   "date": "2009",
-                  "value": 306772000
+                  "value": 306771529
                 },
                 {
                   "date": "2010",
-                  "value": 309322000
+                  "value": 309321666
                 },
                 {
                   "date": "2011",
-                  "value": 311557000
+                  "value": 311556874
                 },
                 {
                   "date": "2012",
-                  "value": 313831000
+                  "value": 313830990
                 },
                 {
                   "date": "2013",
-                  "value": 315994000
+                  "value": 315993715
                 },
                 {
                   "date": "2014",
-                  "value": 318301000
+                  "value": 318301008
                 },
                 {
                   "date": "2015",
-                  "value": 320635000
+                  "value": 320635163
                 },
                 {
                   "date": "2016",
-                  "value": 322941000
+                  "value": 322941311
                 },
                 {
                   "date": "2017",
-                  "value": 324986000
+                  "value": 324985539
                 },
                 {
                   "date": "2018",
-                  "value": 326688000
+                  "value": 326687501
                 },
                 {
                   "date": "2019",
-                  "value": 328240000
+                  "value": 328239523
                 },
                 {
                   "date": "2020",
-                  "value": 331501000
+                  "value": 331526933
                 },
                 {
                   "date": "2021",
-                  "value": 332032000
+                  "value": 332048977
                 },
                 {
                   "date": "2022",
-                  "value": 333288000
+                  "value": 333271411
+                },
+                {
+                  "date": "2023",
+                  "value": 334914895
                 }
               ],
               "facet": "1151455814"
@@ -3174,15 +3230,19 @@
                 },
                 {
                   "date": "2020",
-                  "value": 39368078
+                  "value": 39503200
                 },
                 {
                   "date": "2021",
-                  "value": 39237836
+                  "value": 39145060
                 },
                 {
                   "date": "2022",
-                  "value": 39029342
+                  "value": 39040616
+                },
+                {
+                  "date": "2023",
+                  "value": 38965193
                 }
               ],
               "facet": "2176550201"
@@ -3260,72 +3320,92 @@
             {
               "series": [
                 {
+                  "date": "1990",
+                  "value": 29959515
+                },
+                {
+                  "date": "1991",
+                  "value": 30470736
+                },
+                {
+                  "date": "1992",
+                  "value": 30974659
+                },
+                {
+                  "date": "1993",
+                  "value": 31274928
+                },
+                {
+                  "date": "1994",
+                  "value": 31484435
+                },
+                {
                   "date": "1995",
-                  "value": 31696600
+                  "value": 31696582
                 },
                 {
                   "date": "1996",
-                  "value": 32018800
+                  "value": 32018834
                 },
                 {
                   "date": "1997",
-                  "value": 32486000
+                  "value": 32486010
                 },
                 {
                   "date": "1998",
-                  "value": 32987700
+                  "value": 32987675
                 },
                 {
                   "date": "1999",
-                  "value": 33499200
+                  "value": 33499204
                 },
                 {
                   "date": "2000",
-                  "value": 33988000
+                  "value": 33987977
                 },
                 {
                   "date": "2001",
-                  "value": 34479500
+                  "value": 34479458
                 },
                 {
                   "date": "2002",
-                  "value": 34871800
+                  "value": 34871843
                 },
                 {
                   "date": "2003",
-                  "value": 35253200
+                  "value": 35253159
                 },
                 {
                   "date": "2004",
-                  "value": 35574600
+                  "value": 35574576
                 },
                 {
                   "date": "2005",
-                  "value": 35827900
+                  "value": 35827943
                 },
                 {
                   "date": "2006",
-                  "value": 36021200
+                  "value": 36021202
                 },
                 {
                   "date": "2007",
-                  "value": 36250300
+                  "value": 36250311
                 },
                 {
                   "date": "2008",
-                  "value": 36604300
+                  "value": 36604337
                 },
                 {
                   "date": "2009",
-                  "value": 36961200
+                  "value": 36961229
                 },
                 {
                   "date": "2010",
-                  "value": 37319500
+                  "value": 37319502
                 },
                 {
                   "date": "2011",
-                  "value": 37638400
+                  "value": 37638369
                 },
                 {
                   "date": "2012",
@@ -3333,43 +3413,47 @@
                 },
                 {
                   "date": "2013",
-                  "value": 38260800
+                  "value": 38260787
                 },
                 {
                   "date": "2014",
-                  "value": 38597000
+                  "value": 38596972
                 },
                 {
                   "date": "2015",
-                  "value": 38918000
+                  "value": 38918045
                 },
                 {
                   "date": "2016",
-                  "value": 39167100
+                  "value": 39167117
                 },
                 {
                   "date": "2017",
-                  "value": 39358500
+                  "value": 39358497
                 },
                 {
                   "date": "2018",
-                  "value": 39461600
+                  "value": 39461588
                 },
                 {
                   "date": "2019",
-                  "value": 39512200
+                  "value": 39512223
                 },
                 {
                   "date": "2020",
-                  "value": 39499700
+                  "value": 39503200
                 },
                 {
                   "date": "2021",
-                  "value": 39143000
+                  "value": 39145060
                 },
                 {
                   "date": "2022",
-                  "value": 39029300
+                  "value": 39040616
+                },
+                {
+                  "date": "2023",
+                  "value": 38965193
                 }
               ],
               "facet": "1151455814"
@@ -4414,15 +4498,19 @@
                 },
                 {
                   "date": "2020",
-                  "value": 82455
+                  "value": 82766
                 },
                 {
                   "date": "2021",
-                  "value": 81516
+                  "value": 82262
                 },
                 {
                   "date": "2022",
-                  "value": 81059
+                  "value": 81853
+                },
+                {
+                  "date": "2023",
+                  "value": 81785
                 }
               ],
               "facet": "2176550201"
@@ -17356,6 +17444,11 @@
       "measurement_method": "BLSSeasonallyAdjusted",
       "observation_period": "P3M"
     },
+    "1733625304": {
+      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
+      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true",
+      "measurement_method": "EurostatRegionalStatistics"
+    },
     "1964317807": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
       "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
@@ -17436,10 +17529,6 @@
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y"
-    },
-    "4089091283": {
-      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
-      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true"
     },
     "4277990144": {
       "import_name": "FBIGovCrime",

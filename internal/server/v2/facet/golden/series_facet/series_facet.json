@@ -16,9 +16,9 @@
           "ordered_facets": [
             {
               "facet_id": "2176550201",
-              "obs_count": 123,
+              "obs_count": 124,
               "earliest_date": "1900",
-              "latest_date": "2022"
+              "latest_date": "2023"
             },
             {
               "facet_id": "2645850372",
@@ -46,9 +46,9 @@
             },
             {
               "facet_id": "1151455814",
-              "obs_count": 28,
-              "earliest_date": "1995",
-              "latest_date": "2022"
+              "obs_count": 34,
+              "earliest_date": "1990",
+              "latest_date": "2023"
             },
             {
               "facet_id": "10983471",
@@ -112,9 +112,9 @@
             },
             {
               "facet_id": "2176550201",
-              "obs_count": 123,
+              "obs_count": 124,
               "earliest_date": "1900",
-              "latest_date": "2022"
+              "latest_date": "2023"
             },
             {
               "facet_id": "1145703171",
@@ -130,9 +130,9 @@
             },
             {
               "facet_id": "1151455814",
-              "obs_count": 28,
-              "earliest_date": "1995",
-              "latest_date": "2022"
+              "obs_count": 34,
+              "earliest_date": "1990",
+              "latest_date": "2023"
             },
             {
               "facet_id": "10983471",

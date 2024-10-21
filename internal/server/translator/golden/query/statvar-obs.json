@@ -17,6 +17,16 @@
     {
       "cells": [
         {
+          "value": "country/AFG"
+        },
+        {
+          "value": "810"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
           "value": "country/AGO"
         },
         {
@@ -40,7 +50,7 @@
           "value": "country/ARE"
         },
         {
-          "value": "102140"
+          "value": "102160"
         }
       ]
     },
@@ -70,7 +80,7 @@
           "value": "country/ATG"
         },
         {
-          "value": "18270"
+          "value": "18240"
         }
       ]
     },
@@ -90,17 +100,7 @@
           "value": "country/AUT"
         },
         {
-          "value": "29130"
-        }
-      ]
-    },
-    {
-      "cells": [
-        {
-          "value": "country/AZE"
-        },
-        {
-          "value": "3320"
+          "value": "29120"
         }
       ]
     }

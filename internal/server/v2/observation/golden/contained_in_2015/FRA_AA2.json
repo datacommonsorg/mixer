@@ -57,7 +57,7 @@
         "nuts/FR101": {
           "ordered_facets": [
             {
-              "facet_id": "4089091283",
+              "facet_id": "1733625304",
               "observations": [
                 {
                   "date": "2015",
@@ -70,7 +70,16 @@
               "observations": [
                 {
                   "date": "2015",
-                  "value": 2206490
+                  "value": 2206488
+                }
+              ]
+            },
+            {
+              "facet_id": "1794369807",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 2206488
                 }
               ]
             }
@@ -79,7 +88,7 @@
         "nuts/FR102": {
           "ordered_facets": [
             {
-              "facet_id": "4089091283",
+              "facet_id": "1733625304",
               "observations": [
                 {
                   "date": "2015",
@@ -92,7 +101,7 @@
               "observations": [
                 {
                   "date": "2015",
-                  "value": 1390120
+                  "value": 1390121
                 }
               ]
             }
@@ -101,7 +110,7 @@
         "nuts/FR103": {
           "ordered_facets": [
             {
-              "facet_id": "4089091283",
+              "facet_id": "1733625304",
               "observations": [
                 {
                   "date": "2015",
@@ -114,7 +123,7 @@
               "observations": [
                 {
                   "date": "2015",
-                  "value": 1427290
+                  "value": 1427291
                 }
               ]
             }
@@ -123,7 +132,7 @@
         "nuts/FR104": {
           "ordered_facets": [
             {
-              "facet_id": "4089091283",
+              "facet_id": "1733625304",
               "observations": [
                 {
                   "date": "2015",
@@ -136,7 +145,7 @@
               "observations": [
                 {
                   "date": "2015",
-                  "value": 1276230
+                  "value": 1276233
                 }
               ]
             }
@@ -145,7 +154,7 @@
         "nuts/FR105": {
           "ordered_facets": [
             {
-              "facet_id": "4089091283",
+              "facet_id": "1733625304",
               "observations": [
                 {
                   "date": "2015",
@@ -158,7 +167,7 @@
               "observations": [
                 {
                   "date": "2015",
-                  "value": 1601570
+                  "value": 1601569
                 }
               ]
             }
@@ -167,7 +176,7 @@
         "nuts/FR106": {
           "ordered_facets": [
             {
-              "facet_id": "4089091283",
+              "facet_id": "1733625304",
               "observations": [
                 {
                   "date": "2015",
@@ -180,7 +189,7 @@
               "observations": [
                 {
                   "date": "2015",
-                  "value": 1592660
+                  "value": 1592663
                 }
               ]
             }
@@ -189,7 +198,7 @@
         "nuts/FR107": {
           "ordered_facets": [
             {
-              "facet_id": "4089091283",
+              "facet_id": "1733625304",
               "observations": [
                 {
                   "date": "2015",
@@ -202,7 +211,7 @@
               "observations": [
                 {
                   "date": "2015",
-                  "value": 1372390
+                  "value": 1372389
                 }
               ]
             }
@@ -211,7 +220,7 @@
         "nuts/FR108": {
           "ordered_facets": [
             {
-              "facet_id": "4089091283",
+              "facet_id": "1733625304",
               "observations": [
                 {
                   "date": "2015",
@@ -1299,7 +1308,7 @@
         "nuts/FRI14": {
           "ordered_facets": [
             {
-              "facet_id": "4089091283",
+              "facet_id": "1733625304",
               "observations": [
                 {
                   "date": "2015",
@@ -4214,14 +4223,20 @@
       "measurement_method": "OECDRegionalStatistics",
       "observation_period": "P1Y"
     },
+    "1733625304": {
+      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
+      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true",
+      "measurement_method": "EurostatRegionalStatistics"
+    },
+    "1794369807": {
+      "import_name": "UNData",
+      "provenance_url": "http://data.un.org",
+      "measurement_method": "UNData"
+    },
     "2458695583": {
       "import_name": "WikidataPopulation",
       "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
       "measurement_method": "WikidataPopulation"
-    },
-    "4089091283": {
-      "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
-      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true"
     }
   }
 }

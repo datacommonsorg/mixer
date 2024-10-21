@@ -48,7 +48,7 @@
             "name": "United States"
           }
         ],
-        "minValue": 7782709,
+        "minValue": 7692556,
         "maxValue": 11111207
       },
       "County": {
@@ -67,7 +67,7 @@
             "name": "North Slope Borough"
           }
         ],
-        "minValue": 13,
+        "minValue": 8,
         "maxValue": 4043
       },
       "State": {
