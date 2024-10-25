@@ -841,7 +841,8 @@
     "1145703171": {
       "import_name": "CensusACS5YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-      "measurement_method": "CensusACS5yrSurvey"
+      "measurement_method": "CensusACS5yrSurvey",
+      "is_dc_aggregate": true
     }
   }
 }

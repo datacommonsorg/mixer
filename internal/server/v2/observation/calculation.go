@@ -62,17 +62,17 @@ func Calculate(
 	if err != nil {
 		return nil, err
 	}
-	calculatedResp, err := evalExpr(variableFormula.Expr, variableFormula.LeafData, inputObs)
+	intermediateResp, err := evalExpr(variableFormula.Expr, variableFormula.LeafData, inputObs)
 	if err != nil {
 		return nil, err
 	}
-	// Replace placeholder by final variable.
-	variableObs, ok := calculatedResp.ByVariable[INTERMEDIATE_NODE]
-	if !ok {
-		return nil, fmt.Errorf("missing intermediate variable in intermediate response")
+	if intermediateResp.variableObs == nil {
+		return nil, fmt.Errorf("nil calculation response")
 	}
-	calculatedResp.ByVariable[equation.variable] = variableObs
-	delete(calculatedResp.ByVariable, INTERMEDIATE_NODE)
+	calculatedResp, err := formatCalculatedResponse(intermediateResp.variableObs, inputObs.Facets, equation)
+	if err != nil {
+		return nil, err
+	}
 	return calculatedResp, nil
 }
 

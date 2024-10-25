@@ -23,14 +23,14 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/formula"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/protobuf/proto"
 )
 
-const (
-	CONSTANT_ENTITY   = "CONSTANT_ENTITY"
-	CONSTANT_NODE     = "CONSTANT_NODE"
-	INTERMEDIATE_NODE = "INTERMEDIATE_NODE"
-)
+type intermediateResponse struct {
+	variableObs *pbv2.VariableObservation
+	constantObs *float64
+}
 
 // Given an input ObservationResponse, generate a map of variable -> entities with missing data.
 func findObservationResponseHoles(
@@ -78,62 +78,33 @@ func compareFacet(facet1, facet2 *pb.Facet) bool {
 	return true
 }
 
-// Returns a filtered ObservationResponse containing obs that match an ASTNode StatVar and Facet.
+// Returns a filtered intermediateResponse containing obs that match an ASTNode StatVar and Facet.
 func filterObsByASTNode(
 	fullResp *pbv2.ObservationResponse,
 	node *formula.ASTNode,
-) *pbv2.ObservationResponse {
-	result := &pbv2.ObservationResponse{
-		// Use a placeholder for intermediate responses.
-		ByVariable: map[string]*pbv2.VariableObservation{INTERMEDIATE_NODE: {}},
-		Facets:     map[string]*pb.Facet{},
-	}
+) *intermediateResponse {
+	result := &pbv2.VariableObservation{}
 	variableObs, ok := fullResp.ByVariable[node.StatVar]
 	if !ok {
-		return result
+		return &intermediateResponse{variableObs: result}
 	}
 	for entity, entityObs := range variableObs.ByEntity {
 		filteredFacetObs := []*pbv2.FacetObservation{}
 		for _, facetObs := range entityObs.OrderedFacets {
 			if node.Facet == nil || compareFacet(node.Facet, fullResp.Facets[facetObs.FacetId]) {
 				filteredFacetObs = append(filteredFacetObs, facetObs)
-				if _, ok := result.Facets[facetObs.FacetId]; !ok {
-					result.Facets[facetObs.FacetId] = fullResp.Facets[facetObs.FacetId]
-				}
 			}
 		}
 		if len(filteredFacetObs) > 0 {
-			if len(result.ByVariable[INTERMEDIATE_NODE].ByEntity) == 0 {
-				result.ByVariable[INTERMEDIATE_NODE].ByEntity = map[string]*pbv2.EntityObservation{}
+			if len(result.ByEntity) == 0 {
+				result.ByEntity = map[string]*pbv2.EntityObservation{}
 			}
-			result.ByVariable[INTERMEDIATE_NODE].ByEntity[entity] = &pbv2.EntityObservation{
+			result.ByEntity[entity] = &pbv2.EntityObservation{
 				OrderedFacets: filteredFacetObs,
 			}
 		}
 	}
-	return result
-}
-
-// Returns an ObservationResponse wrapper around BasicLit.Value.
-func generateBasicLitObservationResponse(
-	data *ast.BasicLit,
-) (*pbv2.ObservationResponse, error) {
-	val, err := strconv.ParseFloat(data.Value, 64)
-	if err != nil {
-		return nil, err
-	}
-	return &pbv2.ObservationResponse{
-		// Use a placeholder for constant responses.
-		ByVariable: map[string]*pbv2.VariableObservation{CONSTANT_NODE: {
-			ByEntity: map[string]*pbv2.EntityObservation{CONSTANT_ENTITY: {
-				OrderedFacets: []*pbv2.FacetObservation{{
-					Observations: []*pb.PointStat{{
-						Value: &val,
-					}},
-				}},
-			}},
-		}},
-	}, nil
+	return &intermediateResponse{variableObs: result}
 }
 
 // Evaluate a binary operation.
@@ -158,6 +129,7 @@ func evalOp(
 	}
 }
 
+// Combine two PointStat series using an operator token.
 // Combine two PointStat series using an operator token.
 func mergePointStat(
 	x, y []*pb.PointStat,
@@ -189,122 +161,14 @@ func mergePointStat(
 	return result, nil
 }
 
-// Combine two CONSTANT_NODE ObservationResponses using an operator token.
-func evalBinaryConstantNodeExpr(
-	x, y *pbv2.ObservationResponse,
+// Combine two VariableObservations using an operator token.
+func evalBinaryVariableObsExpr(
+	x, y *pbv2.VariableObservation,
 	op token.Token,
-) (*pbv2.ObservationResponse, error) {
-	xEntityObs, xOk := x.ByVariable[CONSTANT_NODE].ByEntity[CONSTANT_ENTITY]
-	yEntityObs, yOk := y.ByVariable[CONSTANT_NODE].ByEntity[CONSTANT_ENTITY]
-	if !xOk || !yOk {
-		return nil, fmt.Errorf("missing constant entity in constant response")
-	}
-	if len(xEntityObs.OrderedFacets) == 0 || len(yEntityObs.OrderedFacets) == 0 || len(xEntityObs.OrderedFacets[0].Observations) == 0 || len(yEntityObs.OrderedFacets[0].Observations) == 0 {
-		return nil, fmt.Errorf("missing observations in constant response")
-	}
-	xVal := xEntityObs.OrderedFacets[0].Observations[0].GetValue()
-	yVal := yEntityObs.OrderedFacets[0].Observations[0].GetValue()
-	val, err := evalOp(xVal, yVal, op)
-	if err != nil {
-		return nil, err
-	}
-	return &pbv2.ObservationResponse{
-		// Use a placeholder for constant responses.
-		ByVariable: map[string]*pbv2.VariableObservation{CONSTANT_NODE: {
-			ByEntity: map[string]*pbv2.EntityObservation{CONSTANT_ENTITY: {
-				OrderedFacets: []*pbv2.FacetObservation{{
-					Observations: []*pb.PointStat{{
-						Value: &val,
-					}},
-				}},
-			}},
-		}},
-	}, nil
-}
-
-// Combine one INTERMEDIATE_NODE with one CONSTANT_NODE using an operator token.
-func evalBinaryIntermediateConstantNodeExpr(
-	intermediate, constant *pbv2.ObservationResponse,
-	iFirst bool, // Whether the intermediate response is the first response in the expression.
-	op token.Token,
-) (*pbv2.ObservationResponse, error) {
-	iVariableObs := intermediate.ByVariable[INTERMEDIATE_NODE]
-	cEntityObs, ok := constant.ByVariable[CONSTANT_NODE].ByEntity[CONSTANT_ENTITY]
-	if !ok {
-		return nil, fmt.Errorf("missing constant entity in constant response")
-	}
-	if len(cEntityObs.OrderedFacets) == 0 || len(cEntityObs.OrderedFacets[0].Observations) == 0 {
-		return nil, fmt.Errorf("missing observations in constant response")
-	}
-	cVal := cEntityObs.OrderedFacets[0].Observations[0].GetValue()
-	result := &pbv2.ObservationResponse{
-		// Use a placeholder for intermediate responses.
-		ByVariable: map[string]*pbv2.VariableObservation{INTERMEDIATE_NODE: {}},
-		Facets:     map[string]*pb.Facet{},
-	}
-	for entity, iEntityObs := range iVariableObs.ByEntity {
-		facets := iEntityObs.OrderedFacets
-		newOrderedFacets := []*pbv2.FacetObservation{}
-		for i := 0; i < len(facets); i++ {
-			newFacetId := facets[i].GetFacetId()
-			newPointStat := []*pb.PointStat{}
-			for _, obs := range facets[i].Observations {
-				iVal := obs.GetValue()
-				var val float64
-				var err error
-				if iFirst {
-					val, err = evalOp(iVal, cVal, op)
-				} else {
-					val, err = evalOp(cVal, iVal, op)
-				}
-				if err != nil {
-					return nil, err
-				}
-				newPointStat = append(newPointStat, &pb.PointStat{
-					Date:  obs.GetDate(),
-					Value: proto.Float64(val),
-				})
-			}
-			if len(newPointStat) > 0 {
-				newOrderedFacets = append(newOrderedFacets, &pbv2.FacetObservation{
-					FacetId:      newFacetId,
-					Observations: newPointStat,
-					EarliestDate: newPointStat[0].GetDate(),
-					LatestDate:   newPointStat[len(newPointStat)-1].GetDate(),
-					ObsCount:     int32(len(newPointStat)),
-				})
-				if _, ok := result.Facets[newFacetId]; !ok {
-					// TODO: Determine if calculated facet should be the same as input facet.
-					result.Facets[newFacetId] = intermediate.Facets[newFacetId]
-				}
-			}
-		}
-		if len(newOrderedFacets) > 0 {
-			if len(result.ByVariable[INTERMEDIATE_NODE].ByEntity) == 0 {
-				result.ByVariable[INTERMEDIATE_NODE].ByEntity = map[string]*pbv2.EntityObservation{}
-			}
-			result.ByVariable[INTERMEDIATE_NODE].ByEntity[entity] = &pbv2.EntityObservation{
-				OrderedFacets: newOrderedFacets,
-			}
-		}
-	}
-	return result, nil
-}
-
-// Combine two INTERMEDIATE_NODE ObservationResponses using an operator token.
-func evalBinaryIntermediateNodeExpr(
-	x, y *pbv2.ObservationResponse,
-	op token.Token,
-) (*pbv2.ObservationResponse, error) {
-	result := &pbv2.ObservationResponse{
-		// Use a placeholder for intermediate responses.
-		ByVariable: map[string]*pbv2.VariableObservation{INTERMEDIATE_NODE: {}},
-		Facets:     map[string]*pb.Facet{},
-	}
-	xVariableObs := x.ByVariable[INTERMEDIATE_NODE]
-	yVariableObs := y.ByVariable[INTERMEDIATE_NODE]
-	for entity, xEntityObs := range xVariableObs.ByEntity {
-		yEntityObs, ok := yVariableObs.ByEntity[entity]
+) (*intermediateResponse, error) {
+	result := &pbv2.VariableObservation{ByEntity: map[string]*pbv2.EntityObservation{}}
+	for entity, xEntityObs := range x.ByEntity {
+		yEntityObs, ok := y.ByEntity[entity]
 		if !ok {
 			continue
 		}
@@ -331,48 +195,91 @@ func evalBinaryIntermediateNodeExpr(
 							LatestDate:   newPointStat[len(newPointStat)-1].GetDate(),
 							ObsCount:     int32(len(newPointStat)),
 						})
-						if _, ok := result.Facets[newFacetId]; !ok {
-							// TODO: Determine if calculated facet should be the same as input facet.
-							result.Facets[newFacetId] = x.Facets[newFacetId]
-						}
 					}
 				}
 			}
 		}
 		if len(newOrderedFacets) > 0 {
-			if len(result.ByVariable[INTERMEDIATE_NODE].ByEntity) == 0 {
-				result.ByVariable[INTERMEDIATE_NODE].ByEntity = map[string]*pbv2.EntityObservation{}
-			}
-			result.ByVariable[INTERMEDIATE_NODE].ByEntity[entity] = &pbv2.EntityObservation{
+			result.ByEntity[entity] = &pbv2.EntityObservation{
 				OrderedFacets: newOrderedFacets,
 			}
 		}
 	}
-	return result, nil
+	return &intermediateResponse{variableObs: result}, nil
 }
 
-// Combine two ObservationResponses using an operator token.
-func evalBinaryExpr(
-	x, y *pbv2.ObservationResponse,
+// Combine one VariableObservation with one constant using an operator token.
+func evalBinaryVariableConstantNodeExpr(
+	intermediate *pbv2.VariableObservation,
+	constant *float64,
+	iFirst bool, // Whether the intermediate response is the first response in the expression.
 	op token.Token,
-) (*pbv2.ObservationResponse, error) {
-	_, xIntermediateOk := x.ByVariable[INTERMEDIATE_NODE]
-	_, yIntermediateOk := y.ByVariable[INTERMEDIATE_NODE]
-	_, xConstantOk := x.ByVariable[CONSTANT_NODE]
-	_, yConstantOk := y.ByVariable[CONSTANT_NODE]
-	if xIntermediateOk && yIntermediateOk {
-		return evalBinaryIntermediateNodeExpr(x, y, op)
+) (*intermediateResponse, error) {
+	result := &pbv2.VariableObservation{ByEntity: map[string]*pbv2.EntityObservation{}}
+	for entity, iEntityObs := range intermediate.ByEntity {
+		facets := iEntityObs.OrderedFacets
+		newOrderedFacets := []*pbv2.FacetObservation{}
+		for i := 0; i < len(facets); i++ {
+			newFacetId := facets[i].GetFacetId()
+			newPointStat := []*pb.PointStat{}
+			for _, obs := range facets[i].Observations {
+				iVal := obs.GetValue()
+				var val float64
+				var err error
+				if iFirst {
+					val, err = evalOp(iVal, *constant, op)
+				} else {
+					val, err = evalOp(*constant, iVal, op)
+				}
+				if err != nil {
+					return nil, err
+				}
+				newPointStat = append(newPointStat, &pb.PointStat{
+					Date:  obs.GetDate(),
+					Value: proto.Float64(val),
+				})
+			}
+			if len(newPointStat) > 0 {
+				newOrderedFacets = append(newOrderedFacets, &pbv2.FacetObservation{
+					FacetId:      newFacetId,
+					Observations: newPointStat,
+					EarliestDate: newPointStat[0].GetDate(),
+					LatestDate:   newPointStat[len(newPointStat)-1].GetDate(),
+					ObsCount:     int32(len(newPointStat)),
+				})
+			}
+		}
+		if len(newOrderedFacets) > 0 {
+			result.ByEntity[entity] = &pbv2.EntityObservation{
+				OrderedFacets: newOrderedFacets,
+			}
+		}
 	}
-	if xIntermediateOk && yConstantOk {
-		return evalBinaryIntermediateConstantNodeExpr(x, y, true /*iFirst*/, op)
+	return &intermediateResponse{variableObs: result}, nil
+}
+
+// Combine two VariableObservations using an operator token.
+func evalBinaryExpr(
+	x, y *intermediateResponse,
+	op token.Token,
+) (*intermediateResponse, error) {
+	if (x.variableObs != nil) && (y.variableObs != nil) {
+		return evalBinaryVariableObsExpr(x.variableObs, y.variableObs, op)
 	}
-	if xConstantOk && yIntermediateOk {
-		return evalBinaryIntermediateConstantNodeExpr(y, x, false /*iFirst*/, op)
+	if (x.variableObs != nil) && (y.constantObs != nil) {
+		return evalBinaryVariableConstantNodeExpr(x.variableObs, y.constantObs, true /*iFirst*/, op)
 	}
-	if xConstantOk && yConstantOk {
-		return evalBinaryConstantNodeExpr(x, y, op)
+	if (x.constantObs != nil) && (y.variableObs != nil) {
+		return evalBinaryVariableConstantNodeExpr(y.variableObs, x.constantObs, false /*iFirst*/, op)
 	}
-	return nil, fmt.Errorf("missing inputs in intermediate response")
+	if (x.constantObs != nil) && (y.constantObs != nil) {
+		val, err := evalOp(*x.constantObs, *y.constantObs, op)
+		if err != nil {
+			return nil, err
+		}
+		return &intermediateResponse{constantObs: &val}, nil
+	}
+	return nil, fmt.Errorf("invalid binary expr")
 }
 
 // Recursively iterate through the AST and perform the calculation.
@@ -380,7 +287,7 @@ func evalExpr(
 	node ast.Node,
 	leafData map[string]*formula.ASTNode,
 	inputResp *pbv2.ObservationResponse,
-) (*pbv2.ObservationResponse, error) {
+) (*intermediateResponse, error) {
 	// If a node is of type *ast.Ident, it is a leaf with an obs value.
 	// Otherwise, it might be *ast.ParenExpr or *ast.BinaryExpr, so we continue recursing it to
 	// compute the obs value for the subtree..
@@ -388,11 +295,11 @@ func evalExpr(
 	case *ast.Ident:
 		return filterObsByASTNode(inputResp, leafData[node.(*ast.Ident).Name]), nil
 	case *ast.BasicLit:
-		basicLit, err := generateBasicLitObservationResponse(t)
+		val, err := strconv.ParseFloat(t.Value, 64)
 		if err != nil {
 			return nil, err
 		}
-		return basicLit, nil
+		return &intermediateResponse{constantObs: &val}, nil
 	case *ast.BinaryExpr:
 		xObs, err := evalExpr(t.X, leafData, inputResp)
 		if err != nil {
@@ -408,4 +315,41 @@ func evalExpr(
 	default:
 		return nil, fmt.Errorf("unsupported ast type %T", t)
 	}
+}
+
+func formatCalculatedResponse(
+	variableObs *pbv2.VariableObservation,
+	inputFacets map[string]*pb.Facet,
+	equation *Equation,
+) (*pbv2.ObservationResponse, error) {
+	resp := &pbv2.ObservationResponse{
+		ByVariable: map[string]*pbv2.VariableObservation{
+			equation.variable: variableObs,
+		},
+		Facets: map[string]*pb.Facet{},
+	}
+
+	// Update Facets with IsDcAggregate=true.
+	facetIdMap := map[string]string{}
+	for _, entityObs := range variableObs.ByEntity {
+		for _, facetObs := range entityObs.OrderedFacets {
+			oldFacetId := facetObs.GetFacetId()
+			newFacetId, ok := facetIdMap[oldFacetId]
+			if ok {
+				facetObs.FacetId = newFacetId
+				continue
+			}
+			oldFacet, ok := inputFacets[oldFacetId]
+			if !ok {
+				return nil, fmt.Errorf("missing facet id %s", oldFacetId)
+			}
+			newFacet := proto.Clone(oldFacet).(*pb.Facet)
+			newFacet.IsDcAggregate = true
+			newFacetId = util.GetFacetID(newFacet)
+			facetObs.FacetId = newFacetId
+			resp.Facets[newFacetId] = newFacet
+			facetIdMap[oldFacetId] = newFacetId
+		}
+	}
+	return resp, nil
 }
