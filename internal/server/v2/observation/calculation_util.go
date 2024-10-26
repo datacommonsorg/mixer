@@ -27,6 +27,7 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
+// An intermediateResponse can either have a VariableObservation or a constant.
 type intermediateResponse struct {
 	variableObs *pbv2.VariableObservation
 	constantObs *float64
