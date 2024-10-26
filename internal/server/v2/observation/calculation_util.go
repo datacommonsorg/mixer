@@ -258,7 +258,7 @@ func evalBinaryVariableConstantNodeExpr(
 	return &intermediateResponse{variableObs: result}, nil
 }
 
-// Combine two VariableObservations using an operator token.
+// Combine two intermediateResponses using an operator token.
 func evalBinaryExpr(
 	x, y *intermediateResponse,
 	op token.Token,
