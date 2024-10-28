@@ -125,11 +125,11 @@ func TestFilterObsByASTNode(t *testing.T) {
 	for _, c := range []struct {
 		inputResp *pbv2.ObservationResponse
 		node      *formula.ASTNode
-		want      *intermediateResponse
+		want      *intermediateObsResponse
 	}{{
 		sampleInputResp,
 		&formula.ASTNode{StatVar: "Count_Person"},
-		&intermediateResponse{
+		&intermediateObsResponse{
 			variableObs: &pbv2.VariableObservation{
 				ByEntity: map[string]*pbv2.EntityObservation{
 					"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{
@@ -161,7 +161,7 @@ func TestFilterObsByASTNode(t *testing.T) {
 					ObservationPeriod: "P1Y",
 				},
 			},
-			&intermediateResponse{
+			&intermediateObsResponse{
 				variableObs: &pbv2.VariableObservation{
 					ByEntity: map[string]*pbv2.EntityObservation{
 						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{
@@ -311,7 +311,7 @@ func TestEvalExpr(t *testing.T) {
 		inputExpr string
 		leafData  map[string]*formula.ASTNode
 		inputResp *pbv2.ObservationResponse
-		want      *intermediateResponse
+		want      *intermediateObsResponse
 	}{
 		{
 			"(SV_1 - SV_2) / SV_3",
@@ -356,7 +356,7 @@ func TestEvalExpr(t *testing.T) {
 					},
 				},
 			},
-			&intermediateResponse{
+			&intermediateObsResponse{
 				variableObs: &pbv2.VariableObservation{
 					ByEntity: map[string]*pbv2.EntityObservation{
 						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{{
@@ -402,7 +402,7 @@ func TestEvalExpr(t *testing.T) {
 					},
 				},
 			},
-			&intermediateResponse{
+			&intermediateObsResponse{
 				variableObs: &pbv2.VariableObservation{
 					ByEntity: map[string]*pbv2.EntityObservation{
 						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{{
