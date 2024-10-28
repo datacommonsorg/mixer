@@ -125,28 +125,30 @@ func TestFilterObsByASTNode(t *testing.T) {
 	for _, c := range []struct {
 		inputResp *pbv2.ObservationResponse
 		node      *formula.ASTNode
-		want      *pbv2.VariableObservation
+		want      *intermediateObsResponse
 	}{{
 		sampleInputResp,
 		&formula.ASTNode{StatVar: "Count_Person"},
-		&pbv2.VariableObservation{
-			ByEntity: map[string]*pbv2.EntityObservation{
-				"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{
-					{
-						FacetId: "1",
-						Observations: []*pb.PointStat{{
-							Date:  "1",
-							Value: proto.Float64(1),
-						}},
-					},
-					{
-						FacetId: "2",
-						Observations: []*pb.PointStat{{
-							Date:  "2",
-							Value: proto.Float64(2),
-						}},
-					},
-				}},
+		&intermediateObsResponse{
+			variableObs: &pbv2.VariableObservation{
+				ByEntity: map[string]*pbv2.EntityObservation{
+					"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{
+						{
+							FacetId: "1",
+							Observations: []*pb.PointStat{{
+								Date:  "1",
+								Value: proto.Float64(1),
+							}},
+						},
+						{
+							FacetId: "2",
+							Observations: []*pb.PointStat{{
+								Date:  "2",
+								Value: proto.Float64(2),
+							}},
+						},
+					}},
+				},
 			},
 		},
 	},
@@ -159,17 +161,19 @@ func TestFilterObsByASTNode(t *testing.T) {
 					ObservationPeriod: "P1Y",
 				},
 			},
-			&pbv2.VariableObservation{
-				ByEntity: map[string]*pbv2.EntityObservation{
-					"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{
-						{
-							FacetId: "2",
-							Observations: []*pb.PointStat{{
-								Date:  "2",
-								Value: proto.Float64(2),
-							}},
-						},
-					}},
+			&intermediateObsResponse{
+				variableObs: &pbv2.VariableObservation{
+					ByEntity: map[string]*pbv2.EntityObservation{
+						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{
+							{
+								FacetId: "2",
+								Observations: []*pb.PointStat{{
+									Date:  "2",
+									Value: proto.Float64(2),
+								}},
+							},
+						}},
+					},
 				},
 			},
 		},
@@ -307,7 +311,7 @@ func TestEvalExpr(t *testing.T) {
 		inputExpr string
 		leafData  map[string]*formula.ASTNode
 		inputResp *pbv2.ObservationResponse
-		want      *pbv2.VariableObservation
+		want      *intermediateObsResponse
 	}{
 		{
 			"(SV_1 - SV_2) / SV_3",
@@ -352,18 +356,72 @@ func TestEvalExpr(t *testing.T) {
 					},
 				},
 			},
-			&pbv2.VariableObservation{
-				ByEntity: map[string]*pbv2.EntityObservation{
-					"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{{
-						FacetId: "facetId1",
-						Observations: []*pb.PointStat{{
-							Date:  "1",
-							Value: proto.Float64(3),
-						}},
-						EarliestDate: "1",
-						LatestDate:   "1",
-						ObsCount:     1,
-					}}},
+			&intermediateObsResponse{
+				variableObs: &pbv2.VariableObservation{
+					ByEntity: map[string]*pbv2.EntityObservation{
+						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{{
+							FacetId: "facetId1",
+							Observations: []*pb.PointStat{{
+								Date:  "1",
+								Value: proto.Float64(3),
+							}},
+							EarliestDate: "1",
+							LatestDate:   "1",
+							ObsCount:     1,
+						}}},
+					},
+				},
+			},
+		},
+		{
+			"(100 - SV) / (2.5 * 2)",
+			map[string]*formula.ASTNode{
+				"SV": {StatVar: "SV"},
+			},
+			&pbv2.ObservationResponse{
+				ByVariable: map[string]*pbv2.VariableObservation{
+					"SV": {ByEntity: map[string]*pbv2.EntityObservation{
+						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{{
+							FacetId: "facetId1",
+							Observations: []*pb.PointStat{
+								{
+									Date:  "1",
+									Value: proto.Float64(10),
+								},
+								{
+									Date:  "2",
+									Value: proto.Float64(20),
+								},
+							},
+						}}},
+					}},
+				},
+				Facets: map[string]*pb.Facet{
+					"facetId1": {
+						ObservationPeriod: "P1Y",
+					},
+				},
+			},
+			&intermediateObsResponse{
+				variableObs: &pbv2.VariableObservation{
+					ByEntity: map[string]*pbv2.EntityObservation{
+						"geoId/01": {OrderedFacets: []*pbv2.FacetObservation{{
+							FacetId: "facetId1",
+							Observations: []*pb.PointStat{
+								{
+									Date:  "1",
+									Value: proto.Float64(18),
+								},
+								{
+									Date:  "2",
+									Value: proto.Float64(16),
+								},
+							},
+							EarliestDate: "1",
+							LatestDate:   "2",
+							ObsCount:     2,
+						}}},
+					},
 				},
 			},
 		},
