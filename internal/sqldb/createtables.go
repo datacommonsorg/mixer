@@ -64,7 +64,7 @@ func CheckSchema(db *sql.DB) error {
 		return fmt.Errorf(`The following columns are missing in the %s table: %v
 
 Run a data management job to update your database schema.
-Guide: http://docs.datacommons.org/custom_dc/database_update.html.
+Guide: https://docs.datacommons.org/custom_dc/troubleshooting.html#schema-check-failed.
 
 `,
 			TableObservations, missingObservationColumns)
