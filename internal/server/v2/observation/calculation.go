@@ -17,6 +17,7 @@ package observation
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
@@ -46,6 +47,9 @@ func Calculate(
 	if err != nil {
 		return nil, err
 	}
+	if len(variableFormula.StatVars) == 0 {
+		return nil, fmt.Errorf("formula missing variables")
+	}
 	newReq := &pbv2.ObservationRequest{
 		Variable: &pbv2.DcidOrExpression{Dcids: variableFormula.StatVars},
 		Entity:   entity,
@@ -58,11 +62,14 @@ func Calculate(
 	if err != nil {
 		return nil, err
 	}
-	calculatedVariableObs, err := evalExpr(variableFormula.Expr, variableFormula.LeafData, inputObs)
+	intermediateResp, err := evalExpr(variableFormula.Expr, variableFormula.LeafData, inputObs)
 	if err != nil {
 		return nil, err
 	}
-	calculatedResp, err := formatCalculatedResponse(calculatedVariableObs, inputObs.Facets, equation)
+	if intermediateResp.variableObs == nil {
+		return nil, fmt.Errorf("nil calculation response")
+	}
+	calculatedResp, err := formatCalculatedResponse(intermediateResp.variableObs, inputObs.Facets, equation)
 	if err != nil {
 		return nil, err
 	}
