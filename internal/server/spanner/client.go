@@ -12,79 +12,30 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// A spanner client wrapped.
+// A spanner client wrapper.
 package spanner
 
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"cloud.google.com/go/spanner"
-	"google.golang.org/api/iterator"
 	"gopkg.in/yaml.v3"
 )
 
 // SpannerClient encapsulates the Spanner client.
 type SpannerClient struct {
 	client *spanner.Client
-	// Store SQL statements for better organization
-	statements struct {
-		getNodesByID string
-	}
 }
 
-// newSpannerClient creates a new SpannerClient and initializes the statements.
+// newSpannerClient creates a new SpannerClient.
 func newSpannerClient(client *spanner.Client) *SpannerClient {
-	sc := &SpannerClient{client: client}
-
-	// Initialize the SQL statements
-	sc.statements.getNodesByID = `
-	SELECT id, typeOf, name, properties, provenances
-	FROM Node
-	WHERE id IN UNNEST(@ids)
-	`
-
-	return sc
+	return &SpannerClient{client: client}
 }
 
-// GetNodesByID retrieves nodes from Spanner given a list of IDs and returns a map.
-func (sc *SpannerClient) GetNodesByID(ctx context.Context, ids []string) (map[string]*Node, error) {
-	nodes := make(map[string]*Node)
-	if len(ids) == 0 {
-		return nodes, nil
-	}
-
-	stmt := spanner.Statement{
-		SQL:    sc.statements.getNodesByID,
-		Params: map[string]interface{}{"ids": ids},
-	}
-
-	iter := sc.client.Single().Query(ctx, stmt)
-	defer iter.Stop()
-
-	for {
-		row, err := iter.Next()
-		if err == iterator.Done {
-			break
-		}
-		if err != nil {
-			return nil, fmt.Errorf("failed to fetch row: %w", err)
-		}
-
-		var node Node
-		if err := row.ToStruct(&node); err != nil {
-			return nil, fmt.Errorf("failed to parse row: %w", err)
-		}
-		nodes[node.ID] = &node
-	}
-
-	return nodes, nil
-}
-
-// NewSpannerClient creates a new SpannerClient from the yaml config file.
-func NewSpannerClient(ctx context.Context, yamlPath string) (*SpannerClient, error) {
-	cfg, err := readSpannerConfig(yamlPath)
+// NewSpannerClient creates a new SpannerClient from the config yaml string.
+func NewSpannerClient(ctx context.Context, spannerConfigYaml string) (*SpannerClient, error) {
+	cfg, err := createSpannerConfig(spannerConfigYaml)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create SpannerClient: %w", err)
 	}
@@ -109,16 +60,11 @@ func createSpannerClient(ctx context.Context, cfg *SpannerConfig) (*spanner.Clie
 	return client, nil
 }
 
-// readSpannerConfig reads the config from the yaml path and returns a SpannerConfig object.
-func readSpannerConfig(yamlPath string) (*SpannerConfig, error) {
-	data, err := os.ReadFile(yamlPath)
-	if err != nil {
-		return nil, fmt.Errorf("failed to read spanner yaml file: %w", err)
-	}
-
+// createSpannerConfig creates the config from specific yaml string.
+func createSpannerConfig(spannerConfigYaml string) (*SpannerConfig, error) {
 	var cfg SpannerConfig
-	if err := yaml.Unmarshal(data, &cfg); err != nil {
-		return nil, fmt.Errorf("failed to unmarshal config: %w", err)
+	if err := yaml.Unmarshal([]byte(spannerConfigYaml), &cfg); err != nil {
+		return nil, fmt.Errorf("failed to create spanner config: %w", err)
 	}
 
 	return &cfg, nil
