@@ -158,5 +158,6 @@
   "prevalence": ["MeSH Descriptor"],
   "genetic": ["MeSH Descriptor"],
   "o": ["Drug"],
-  "no": ["Drug"]
+  "no": ["Drug"],
+  "the": ["ChemicalCompound", "Drug"]
 }
