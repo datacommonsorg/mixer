@@ -1,0 +1,40 @@
+[
+  {
+    "ID": "StatisticalVariable",
+    "TypeOf": "Class",
+    "Name": "StatisticalVariable",
+    "Properties": {
+      "Map": {
+        "description": "Represents any type of statistical metric that can be measured at a place and time. An instance typically corresponds to a pair of StatisticalPopulation and Observation node with some generalization (such as, not defining location, observationDate and measuredValue).",
+        "localCuratorLevelId": "dcid:StatisticalVariable",
+        "name": "StatisticalVariable"
+      }
+    },
+    "Provenances": {
+      "Map": {
+        "description": "dc/base/BaseSchema",
+        "localCuratorLevelId": "dc/base/BaseSchema",
+        "name": "dc/base/BaseSchema"
+      }
+    }
+  },
+  {
+    "ID": "USD",
+    "TypeOf": "Currency",
+    "Name": "USD",
+    "Properties": {
+      "Map": {
+        "description": "US Dollar.",
+        "localCuratorLevelId": "dcid:USD",
+        "name": "USD"
+      }
+    },
+    "Provenances": {
+      "Map": {
+        "description": "dc/base/BaseSchema",
+        "localCuratorLevelId": "dc/base/BaseSchema",
+        "name": "dc/base/BaseSchema"
+      }
+    }
+  }
+]

@@ -34,6 +34,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -61,6 +62,11 @@ var (
 	LatencyTest = os.Getenv("LATENCY_TEST") == "true"
 	// GenerateGolden is used to check whether generating golden.
 	GenerateGolden = os.Getenv("GENERATE_GOLDEN") == "true"
+	// EnableSpannerGraph is used to check whether spanner graph should be enabled.
+	// Currently this is only enabled on workstations of developers working on the spanner graph POC.
+	// This ensures that the spanner tests don't impact existing tests while in the POC phase.
+	// TODO: Remove this variable after POC.
+	EnableSpannerGraph = os.Getenv("ENABLE_SPANNER_GRAPH") == "true"
 )
 
 // This test runs agains staging staging bt and bq dataset.
@@ -287,4 +293,57 @@ func ReadJSON(dir, fname string, resp protoreflect.ProtoMessage) error {
 		return err
 	}
 	return nil
+}
+
+// StructToJSON marshals a struct into a json string.
+func StructToJSON(
+	data interface{}) (string, error) {
+	jsonBytes, err := json.MarshalIndent(data, "", "  ")
+	if err != nil {
+		return "", err
+	}
+	return string(jsonBytes), nil
+}
+
+// WriteGolden writes a string to a golden file.
+func WriteGolden(
+	data string, goldenDir string, goldenFile string) error {
+	err := os.WriteFile(path.Join(goldenDir, goldenFile), []byte(data), 0644)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+// ReadGolden reads the golden file and returns its content as a string.
+func ReadGolden(goldenDir string, goldenFile string) (string, error) {
+	bytes, err := os.ReadFile(path.Join(goldenDir, goldenFile))
+	if err != nil {
+		return "", err
+	}
+	return string(bytes), nil
+}
+
+// NewSpannerClient creates a new test spanner client if spanner is enabled.
+// If not enabled, it returns nil.
+func NewSpannerClient() *spanner.SpannerClient {
+	if !EnableSpannerGraph {
+		log.Println("Spanner graph not enabled.")
+		return nil
+	}
+	_, filename, _, _ := runtime.Caller(0)
+	spannerGraphInfoYamlPath := path.Join(path.Dir(filename), "../deploy/storage/spanner_graph_info.yaml")
+	return newSpannerClient(context.Background(), spannerGraphInfoYamlPath)
+}
+
+func newSpannerClient(ctx context.Context, spannerGraphInfoYamlPath string) *spanner.SpannerClient {
+	spannerGraphInfoYaml, err := os.ReadFile(spannerGraphInfoYamlPath)
+	if err != nil {
+		log.Fatalf("Failed to read spanner yaml: %v", err)
+	}
+	spannerClient, err := spanner.NewSpannerClient(ctx, string(spannerGraphInfoYaml))
+	if err != nil {
+		log.Fatalf("Failed to create SpannerClient: %v", err)
+	}
+	return spannerClient
 }
