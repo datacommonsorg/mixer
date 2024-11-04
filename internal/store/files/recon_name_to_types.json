@@ -156,5 +156,8 @@
   "disease": ["Disease", "MeSH Descriptor"],
   "cui": ["Gene"],
   "prevalence": ["MeSH Descriptor"],
-  "genetic": ["MeSH Descriptor"]
+  "genetic": ["MeSH Descriptor"],
+  "o": ["Drug"],
+  "no": ["Drug"],
+  "the": ["ChemicalCompound", "Drug"]
 }
