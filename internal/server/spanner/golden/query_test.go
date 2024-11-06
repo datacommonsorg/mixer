@@ -20,12 +20,11 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestGetNodesByID(t *testing.T) {
+func TestGetNodeEdgesByID(t *testing.T) {
 	client := test.NewSpannerClient()
 	if client == nil {
 		return
@@ -35,24 +34,16 @@ func TestGetNodesByID(t *testing.T) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	goldenDir := path.Join(path.Dir(filename), "query")
-	goldenFile := "get_nodes_by_id.json"
+	goldenFile := "get_node_edges_by_id.json"
 
-	ids := []string{"StatisticalVariable", "USD"}
+	ids := []string{"Aadhaar", "Monthly_Average_RetailPrice_Electricity_Residential"}
 
-	actual, err := client.GetNodesByID(ctx, ids)
+	actual, err := client.GetNodeEdgesByID(ctx, ids)
 	if err != nil {
-		t.Fatalf("GetNodesByID error (%v): %v", goldenFile, err)
+		t.Fatalf("GetNodeEdgesByID error (%v): %v", goldenFile, err)
 	}
 
-	// Use ordered list of nodes so that the golden file is deterministic.
-	var ordered []*spanner.Node
-	for _, id := range ids {
-		if node, ok := actual[id]; ok {
-			ordered = append(ordered, node)
-		}
-	}
-
-	got, err := test.StructToJSON(ordered)
+	got, err := test.StructToJSON(actual)
 	if err != nil {
 		t.Fatalf("StructToJSON error (%v): %v", goldenFile, err)
 	}
