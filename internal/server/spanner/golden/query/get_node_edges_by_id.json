@@ -1,0 +1,111 @@
+{
+  "Aadhaar": [
+    {
+      "SubjectID": "Aadhaar",
+      "Predicate": "extendedName",
+      "ObjectID": "Aadhaar",
+      "ObjectValue": "Aadhaar",
+      "Provenance": "dc/base/BaseSchema"
+    },
+    {
+      "SubjectID": "Aadhaar",
+      "Predicate": "extendedName",
+      "ObjectID": "Aadhaar",
+      "ObjectValue": "Aadhaar",
+      "Provenance": "dc/base/BaseSchema"
+    },
+    {
+      "SubjectID": "Aadhaar",
+      "Predicate": "name",
+      "ObjectID": "Aadhaar",
+      "ObjectValue": "Aadhaar",
+      "Provenance": "dc/base/BaseSchema"
+    },
+    {
+      "SubjectID": "Aadhaar",
+      "Predicate": "typeOf",
+      "ObjectID": "GovernmentIdEnum",
+      "ObjectValue": "",
+      "Provenance": "dc/base/BaseSchema"
+    },
+    {
+      "SubjectID": "Aadhaar",
+      "Predicate": "typeOf",
+      "ObjectID": "GovernmentIdenitifierEnum",
+      "ObjectValue": "",
+      "Provenance": "dc/base/BaseSchema"
+    },
+    {
+      "SubjectID": "Aadhaar",
+      "Predicate": "name",
+      "ObjectID": "Aadhaar",
+      "ObjectValue": "Aadhaar",
+      "Provenance": "dc/base/BaseSchema"
+    }
+  ],
+  "Monthly_Average_RetailPrice_Electricity_Residential": [
+    {
+      "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
+      "Predicate": "name",
+      "ObjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
+      "ObjectValue": "Average retail price of electricity, residential, monthly",
+      "Provenance": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
+      "Predicate": "extendedName",
+      "ObjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
+      "ObjectValue": "Average retail price of electricity, residential, monthly",
+      "Provenance": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
+      "Predicate": "measurementQualifier",
+      "ObjectID": "Monthly",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
+      "Predicate": "statType",
+      "ObjectID": "meanValue",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
+      "Predicate": "typeOf",
+      "ObjectID": "StatisticalVariable",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
+      "Predicate": "measuredProp",
+      "ObjectID": "retailPrice",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
+      "Predicate": "name",
+      "ObjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
+      "ObjectValue": "Average retail price of electricity, residential, monthly",
+      "Provenance": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
+      "Predicate": "populationType",
+      "ObjectID": "Electricity",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
+      "Predicate": "consumingSector",
+      "ObjectID": "Residential",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars"
+    }
+  ]
+}

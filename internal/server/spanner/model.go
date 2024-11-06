@@ -15,18 +15,13 @@
 // Model objects related to the spanner graph database.
 package spanner
 
-import (
-	"encoding/json"
-	"fmt"
-)
-
-// Node struct representing a single row in the Node table.
-type Node struct {
-	ID          string  `spanner:"id"`
-	TypeOf      string  `spanner:"typeOf"`
-	Name        string  `spanner:"name"`
-	Properties  JSONMap `spanner:"properties"`
-	Provenances JSONMap `spanner:"provenances"`
+// Edge struct represents a single row in the Edge table.
+type Edge struct {
+	SubjectID   string `spanner:"subject_id"`
+	Predicate   string `spanner:"predicate"`
+	ObjectID    string `spanner:"object_id"`
+	ObjectValue string `spanner:"object_value"`
+	Provenance  string `spanner:"provenance"`
 }
 
 // SpannerConfig struct to hold the YAML configuration to a spanner database.
@@ -34,22 +29,4 @@ type SpannerConfig struct {
 	Project  string `yaml:"project"`
 	Instance string `yaml:"instance"`
 	Database string `yaml:"database"`
-}
-
-// JSONMap struct represents spanner JSON fields as golang maps.
-type JSONMap struct {
-	Map map[string]string
-}
-
-// Convert a JSON field to a JSONMap value.
-// Note that the undecoded value happens to be a string.
-func (m *JSONMap) DecodeSpanner(val interface{}) (err error) {
-	strVal, ok := val.(string)
-	if !ok {
-		return fmt.Errorf("failed to decode JSONMap: %v", val)
-	}
-	if err := json.Unmarshal([]byte(strVal), &m.Map); err != nil {
-		return fmt.Errorf("failed to unmarshal JSON to map: %w", err)
-	}
-	return nil
 }
