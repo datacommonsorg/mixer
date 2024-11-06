@@ -249,15 +249,6 @@
           ]
         },
         {
-          "date": "2006-03-01",
-          "entity_count": [
-            {
-              "count": 1,
-              "facet": "4040172150"
-            }
-          ]
-        },
-        {
           "date": "2007",
           "entity_count": [
             {
@@ -271,15 +262,6 @@
             {
               "count": 1,
               "facet": "3022640954"
-            }
-          ]
-        },
-        {
-          "date": "2007-03-01",
-          "entity_count": [
-            {
-              "count": 1,
-              "facet": "4040172150"
             }
           ]
         },
@@ -301,15 +283,6 @@
           ]
         },
         {
-          "date": "2008-03-01",
-          "entity_count": [
-            {
-              "count": 1,
-              "facet": "4040172150"
-            }
-          ]
-        },
-        {
           "date": "2009",
           "entity_count": [
             {
@@ -323,15 +296,6 @@
             {
               "count": 1,
               "facet": "3022640954"
-            }
-          ]
-        },
-        {
-          "date": "2009-03-01",
-          "entity_count": [
-            {
-              "count": 1,
-              "facet": "4040172150"
             }
           ]
         },
@@ -353,15 +317,6 @@
           ]
         },
         {
-          "date": "2010-03-01",
-          "entity_count": [
-            {
-              "count": 1,
-              "facet": "4040172150"
-            }
-          ]
-        },
-        {
           "date": "2011",
           "entity_count": [
             {
@@ -375,15 +330,6 @@
             {
               "count": 1,
               "facet": "3022640954"
-            }
-          ]
-        },
-        {
-          "date": "2011-03-01",
-          "entity_count": [
-            {
-              "count": 1,
-              "facet": "4040172150"
             }
           ]
         },
@@ -405,15 +351,6 @@
           ]
         },
         {
-          "date": "2012-03-01",
-          "entity_count": [
-            {
-              "count": 1,
-              "facet": "4040172150"
-            }
-          ]
-        },
-        {
           "date": "2013",
           "entity_count": [
             {
@@ -427,15 +364,6 @@
             {
               "count": 1,
               "facet": "3022640954"
-            }
-          ]
-        },
-        {
-          "date": "2013-03-01",
-          "entity_count": [
-            {
-              "count": 1,
-              "facet": "4040172150"
             }
           ]
         },
@@ -457,15 +385,6 @@
           ]
         },
         {
-          "date": "2014-03-01",
-          "entity_count": [
-            {
-              "count": 1,
-              "facet": "4040172150"
-            }
-          ]
-        },
-        {
           "date": "2015",
           "entity_count": [
             {
@@ -479,15 +398,6 @@
             {
               "count": 1,
               "facet": "3022640954"
-            }
-          ]
-        },
-        {
-          "date": "2015-03-01",
-          "entity_count": [
-            {
-              "count": 1,
-              "facet": "4040172150"
             }
           ]
         },
@@ -509,15 +419,6 @@
           ]
         },
         {
-          "date": "2016-03-01",
-          "entity_count": [
-            {
-              "count": 1,
-              "facet": "4040172150"
-            }
-          ]
-        },
-        {
           "date": "2017",
           "entity_count": [
             {
@@ -531,15 +432,6 @@
             {
               "count": 1,
               "facet": "3022640954"
-            }
-          ]
-        },
-        {
-          "date": "2017-03-01",
-          "entity_count": [
-            {
-              "count": 1,
-              "facet": "4040172150"
             }
           ]
         },
@@ -561,15 +453,6 @@
           ]
         },
         {
-          "date": "2018-03-01",
-          "entity_count": [
-            {
-              "count": 1,
-              "facet": "4040172150"
-            }
-          ]
-        },
-        {
           "date": "2019",
           "entity_count": [
             {
@@ -587,29 +470,11 @@
           ]
         },
         {
-          "date": "2019-03-01",
-          "entity_count": [
-            {
-              "count": 1,
-              "facet": "4040172150"
-            }
-          ]
-        },
-        {
           "date": "2020",
           "entity_count": [
             {
               "count": 1,
               "facet": "3022640954"
-            }
-          ]
-        },
-        {
-          "date": "2020-03-01",
-          "entity_count": [
-            {
-              "count": 1,
-              "facet": "4040172150"
             }
           ]
         }
@@ -626,11 +491,6 @@
     "3022640954": {
       "import_name": "EIA_Electricity",
       "provenance_url": "https://www.eia.gov/opendata/qb.php?category=0",
-      "unit": "GigawattHour"
-    },
-    "4040172150": {
-      "import_name": "IndiaEnergy",
-      "provenance_url": "https://niti.gov.in/edm/",
       "unit": "GigawattHour"
     },
     "4226672321": {

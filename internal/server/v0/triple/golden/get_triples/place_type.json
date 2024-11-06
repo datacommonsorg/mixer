@@ -5199,6 +5199,21 @@
       "provenanceId": "dc/base/WikidataGeo_Federated_States_of_Micronesia"
     },
     {
+      "subjectId": "wikidataId/Q1136259",
+      "subjectName": "SouthWest",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/WikidataGeo_Somalia"
+    },
+    {
       "subjectId": "wikidataId/Q1159",
       "subjectName": "Andhra Pradesh",
       "subjectTypes": [
@@ -5665,6 +5680,21 @@
       "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
+      "subjectId": "wikidataId/Q30322863",
+      "subjectName": "Hirshabelle",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/WikidataGeo_Somalia"
+    },
+    {
       "subjectId": "wikidataId/Q309469",
       "subjectName": "Al Jazirah",
       "subjectTypes": [
@@ -5770,6 +5800,21 @@
       "provenanceId": "dc/base/WikidataGeos"
     },
     {
+      "subjectId": "wikidataId/Q34754",
+      "subjectName": "Somaliland",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/WikidataGeo_Somalia_ADM2"
+    },
+    {
       "subjectId": "wikidataId/Q3545641",
       "subjectName": "East Darfur",
       "subjectTypes": [
@@ -5859,6 +5904,21 @@
         "Class"
       ],
       "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "subjectId": "wikidataId/Q485112",
+      "subjectName": "Puntland",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/WikidataGeo_Somalia"
     },
     {
       "subjectId": "wikidataId/Q536396",
@@ -5966,6 +6026,22 @@
       "provenanceId": "dc/base/WikidataGeo_Federated_States_of_Micronesia"
     },
     {
+      "subjectId": "wikidataId/Q806070",
+      "subjectName": "Banaadir",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "AdministrativeArea2",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
       "subjectId": "wikidataId/Q838778",
       "subjectName": "South Darfur",
       "subjectTypes": [
@@ -6039,6 +6115,36 @@
         "Class"
       ],
       "provenanceId": "dc/base/WikidataGeos"
+    },
+    {
+      "subjectId": "wikidataId/Q927467",
+      "subjectName": "Galmudug",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/WikidataGeo_Somalia"
+    },
+    {
+      "subjectId": "wikidataId/Q949280",
+      "subjectName": "Jubaland",
+      "subjectTypes": [
+        "AdministrativeArea1",
+        "State"
+      ],
+      "predicate": "typeOf",
+      "objectId": "State",
+      "objectName": "State",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/WikidataGeo_Somalia"
     },
     {
       "subjectId": "wikidataId/Q954963",

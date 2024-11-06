@@ -9448,11 +9448,15 @@
                 {
                   "date": "2024-09",
                   "value": 6834000
+                },
+                {
+                  "date": "2024-10",
+                  "value": 6984000
                 }
               ],
-              "obs_count": 921,
+              "obs_count": 922,
               "earliest_date": "1948-01",
-              "latest_date": "2024-09"
+              "latest_date": "2024-10"
             },
             {
               "facet_id": "1714978719",
@@ -17260,12 +17264,16 @@
                 },
                 {
                   "date": "2024-08",
-                  "value": 1790
+                  "value": 1797
+                },
+                {
+                  "date": "2024-09",
+                  "value": 1651
                 }
               ],
-              "obs_count": 416,
+              "obs_count": 417,
               "earliest_date": "1990-01",
-              "latest_date": "2024-08"
+              "latest_date": "2024-09"
             },
             {
               "facet_id": "2978659163",
