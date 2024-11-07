@@ -32,6 +32,7 @@ import (
 	proto "github.com/datacommonsorg/mixer/internal/proto"
 	v1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	v2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	v3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -43,6 +44,7 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
+	Mixer_V3Node_FullMethodName                       = "/datacommons.Mixer/V3Node"
 	Mixer_V2Sparql_FullMethodName                     = "/datacommons.Mixer/V2Sparql"
 	Mixer_V2Resolve_FullMethodName                    = "/datacommons.Mixer/V2Resolve"
 	Mixer_V2Node_FullMethodName                       = "/datacommons.Mixer/V2Node"
@@ -115,6 +117,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type MixerClient interface {
+	V3Node(ctx context.Context, in *v3.NodeRequest, opts ...grpc.CallOption) (*v3.NodeResponse, error)
 	V2Sparql(ctx context.Context, in *proto.SparqlRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error)
 	V2Resolve(ctx context.Context, in *v2.ResolveRequest, opts ...grpc.CallOption) (*v2.ResolveResponse, error)
 	V2Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error)
@@ -243,6 +246,15 @@ type mixerClient struct {
 
 func NewMixerClient(cc grpc.ClientConnInterface) MixerClient {
 	return &mixerClient{cc}
+}
+
+func (c *mixerClient) V3Node(ctx context.Context, in *v3.NodeRequest, opts ...grpc.CallOption) (*v3.NodeResponse, error) {
+	out := new(v3.NodeResponse)
+	err := c.cc.Invoke(ctx, Mixer_V3Node_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *mixerClient) V2Sparql(ctx context.Context, in *proto.SparqlRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error) {
@@ -843,6 +855,7 @@ func (c *mixerClient) UpdateCache(ctx context.Context, in *proto.UpdateCacheRequ
 // All implementations should embed UnimplementedMixerServer
 // for forward compatibility
 type MixerServer interface {
+	V3Node(context.Context, *v3.NodeRequest) (*v3.NodeResponse, error)
 	V2Sparql(context.Context, *proto.SparqlRequest) (*proto.QueryResponse, error)
 	V2Resolve(context.Context, *v2.ResolveRequest) (*v2.ResolveResponse, error)
 	V2Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error)
@@ -969,6 +982,9 @@ type MixerServer interface {
 type UnimplementedMixerServer struct {
 }
 
+func (UnimplementedMixerServer) V3Node(context.Context, *v3.NodeRequest) (*v3.NodeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method V3Node not implemented")
+}
 func (UnimplementedMixerServer) V2Sparql(context.Context, *proto.SparqlRequest) (*proto.QueryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V2Sparql not implemented")
 }
@@ -1177,6 +1193,24 @@ type UnsafeMixerServer interface {
 
 func RegisterMixerServer(s grpc.ServiceRegistrar, srv MixerServer) {
 	s.RegisterService(&Mixer_ServiceDesc, srv)
+}
+
+func _Mixer_V3Node_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(v3.NodeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).V3Node(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_V3Node_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).V3Node(ctx, req.(*v3.NodeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_V2Sparql_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -2374,6 +2408,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "datacommons.Mixer",
 	HandlerType: (*MixerServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "V3Node",
+			Handler:    _Mixer_V3Node_Handler,
+		},
 		{
 			MethodName: "V2Sparql",
 			Handler:    _Mixer_V2Sparql_Handler,

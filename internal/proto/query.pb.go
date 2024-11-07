@@ -201,6 +201,8 @@ func (x *QueryRequest) GetSparql() string {
 	return ""
 }
 
+// Request proto for V2 Sparql API.
+// Note the paramter here is `query` instead of `sparql`.
 type SparqlRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
