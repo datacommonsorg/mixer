@@ -59,7 +59,8 @@ func TestTripleOut(t *testing.T) {
 				continue
 			}
 			if test.GenerateGolden {
-				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
+				// Don't update V2 goldens.
+				// TODO: Update test for V3.
 				continue
 			}
 			var expected pbv3.NodeResponse
