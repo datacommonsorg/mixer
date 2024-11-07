@@ -1,0 +1,41 @@
+// Copyright 2024 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+package datacommons.v3;
+
+option go_package = "github.com/datacommonsorg/mixer/internal/proto/v3";
+
+import "v2/node.proto";
+
+message NodeRequest {
+  // Nodes to query for.
+  repeated string nodes = 1;
+  // The expression for the property or chained properties.
+  // The property includes arrow notation, name property(ies) and filter
+  // expression. For example:
+  // <-containedInPlace+{typeOf: City}->name
+  string property = 2;
+  // Max number of result nodes to be returned for each query node.
+  int32 limit  = 3;
+  // Pagination token
+  string next_token = 4;
+}
+
+message NodeResponse {
+  // Keyed by the query node dcid.
+  map<string, datacommons.v2.LinkedGraph> data = 1;
+  // The pagination token for getting the next set of entries.
+  string next_token = 2;
+}

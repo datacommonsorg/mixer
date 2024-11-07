@@ -367,6 +367,11 @@ ENDPOINTS = [
         "query":
             "SELECT ?name WHERE {?biologicalSpecimen typeOf BiologicalSpecimen . ?biologicalSpecimen name ?name} ORDER BY DESC(?name) LIMIT 10"
     }),
+    # V3Node
+    ("/v3/node", ["GET", "POST"], {
+        "nodes": "geoId/06",
+        "property": "<-"
+    }),
 ]
 
 ERROR_TESTS = [
