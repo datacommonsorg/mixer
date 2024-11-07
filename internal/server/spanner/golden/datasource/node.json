@@ -1,0 +1,156 @@
+{
+  "data": {
+    "Aadhaar": {
+      "arcs": {
+        "description": {
+          "nodes": [
+            {
+              "provenanceId": "dc/base/BaseSchema",
+              "value": "Aadhaar is a 12-digit unique identity number that can be obtained voluntarily by all residents of India"
+            }
+          ]
+        },
+        "extendedName": {
+          "nodes": [
+            {
+              "provenanceId": "dc/base/BaseSchema",
+              "value": "Aadhaar"
+            }
+          ]
+        },
+        "isProvisional": {
+          "nodes": [
+            {
+              "dcid": "True",
+              "provenanceId": "dc/base/BaseSchema"
+            }
+          ]
+        },
+        "localCuratorLevelId": {
+          "nodes": [
+            {
+              "provenanceId": "dc/base/BaseSchema",
+              "value": "dcid:Aadhaar"
+            }
+          ]
+        },
+        "name": {
+          "nodes": [
+            {
+              "provenanceId": "dc/base/BaseSchema",
+              "value": "Aadhaar"
+            }
+          ]
+        },
+        "typeOf": {
+          "nodes": [
+            {
+              "dcid": "GovernmentIdenitifierEnum",
+              "provenanceId": "dc/base/BaseSchema"
+            },
+            {
+              "dcid": "GovernmentIdEnum",
+              "provenanceId": "dc/base/BaseSchema"
+            }
+          ]
+        }
+      }
+    },
+    "Monthly_Average_RetailPrice_Electricity_Residential": {
+      "arcs": {
+        "constraintProperties": {
+          "nodes": [
+            {
+              "dcid": "consumingSector",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        },
+        "consumingSector": {
+          "nodes": [
+            {
+              "dcid": "Residential",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        },
+        "extendedName": {
+          "nodes": [
+            {
+              "provenanceId": "dc/base/HumanReadableStatVars",
+              "value": "Average retail price of electricity, residential, monthly"
+            }
+          ]
+        },
+        "localCuratorLevelId": {
+          "nodes": [
+            {
+              "provenanceId": "dc/base/HumanReadableStatVars",
+              "value": "dcid:Monthly_Average_RetailPrice_Electricity_Residential"
+            }
+          ]
+        },
+        "measuredProp": {
+          "nodes": [
+            {
+              "dcid": "retailPrice",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        },
+        "measurementQualifier": {
+          "nodes": [
+            {
+              "dcid": "Monthly",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        },
+        "memberOf": {
+          "nodes": [
+            {
+              "dcid": "eia/g/ELEC.1012",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "dcid": "dc/g/Electricity_ConsumingSector-Residential",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        },
+        "name": {
+          "nodes": [
+            {
+              "provenanceId": "dc/base/HumanReadableStatVars",
+              "value": "Average retail price of electricity, residential, monthly"
+            }
+          ]
+        },
+        "populationType": {
+          "nodes": [
+            {
+              "dcid": "Electricity",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        },
+        "statType": {
+          "nodes": [
+            {
+              "dcid": "meanValue",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        },
+        "typeOf": {
+          "nodes": [
+            {
+              "dcid": "StatisticalVariable",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
