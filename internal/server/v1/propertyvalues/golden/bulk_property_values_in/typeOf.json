@@ -1727,6 +1727,15 @@
           "provenanceId": "dc/base/WikidataGeo_Federated_States_of_Micronesia"
         },
         {
+          "name": "SouthWest",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q1136259",
+          "provenanceId": "dc/base/WikidataGeo_Somalia"
+        },
+        {
           "name": "Andhra Pradesh",
           "types": [
             "AdministrativeArea1",
@@ -2007,6 +2016,15 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Hirshabelle",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q30322863",
+          "provenanceId": "dc/base/WikidataGeo_Somalia"
+        },
+        {
           "name": "Al Jazirah",
           "types": [
             "AdministrativeArea1",
@@ -2070,6 +2088,15 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Somaliland",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q34754",
+          "provenanceId": "dc/base/WikidataGeo_Somalia_ADM2"
+        },
+        {
           "name": "East Darfur",
           "types": [
             "AdministrativeArea1",
@@ -2123,6 +2150,15 @@
           ],
           "dcid": "wikidataId/Q465490",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Puntland",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q485112",
+          "provenanceId": "dc/base/WikidataGeo_Somalia"
         },
         {
           "name": "West Kordofan",
@@ -2188,6 +2224,16 @@
           "provenanceId": "dc/base/WikidataGeo_Federated_States_of_Micronesia"
         },
         {
+          "name": "Banaadir",
+          "types": [
+            "AdministrativeArea1",
+            "AdministrativeArea2",
+            "State"
+          ],
+          "dcid": "wikidataId/Q806070",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
           "name": "South Darfur",
           "types": [
             "AdministrativeArea1",
@@ -2231,6 +2277,24 @@
           ],
           "dcid": "wikidataId/Q865534",
           "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Galmudug",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q927467",
+          "provenanceId": "dc/base/WikidataGeo_Somalia"
+        },
+        {
+          "name": "Jubaland",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q949280",
+          "provenanceId": "dc/base/WikidataGeo_Somalia"
         },
         {
           "name": "Kassala",
@@ -12017,5 +12081,5 @@
       ]
     }
   ],
-  "nextToken": "H4sIAAAAAAAA/6zTTU6FQAzAcV+FRy2u6oZr+HUARGNijC4g7scwwCTA6DhguIYnNjEuzKym8S3bxS//NCnVlFTGb7T325t+7uisbCczmw/vlDerLp1W53zEgDsGBAY8ZsCEAVMG3DNgxoDIgCcMSJxgXkwx6IUQfY9BL4VoG4NeCdEuBr0Wl94HaHZjnV36QQzdBdDPJFBSzIuvHT0GzOmTNv3wat1gbSuOug2jGvs5//9GL2YcVa/F0ANllV1m7/5YvwuhtVJDae2V14d8se4bAAD//wEAAP///PAiCrgDAAA="
+  "nextToken": "H4sIAAAAAAAA/6zTTU6FQAzAcV+FRy2u6oZr+HUARGNijC4g7scwwCTA6DhguIYnNjEuzKym8S3bxS//NCnVlFTGb7T325t+7uisbCczmw/vlDerLp1W53zEgDsGBAY8ZsCEAVMG3DNgxoDIgCcMSJxgXkwx6IUQfY9BL4VoG4NeCdEuBr0Wl94HaHZjnV36QQzdBdDPJFBSzIuvHT0GzOmTNv3wat1gbSuOug2jGvs5//9GL2YcVa/F0ANllV1m7/5YvwuhtVJDae2V14d8Mf0NAAD//wEAAP//RqErk7gDAAA="
 }

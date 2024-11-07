@@ -38,7 +38,18 @@
     "tell me about the gene me and the mesh descriptor genes": {
       "items": [
         {
-          "span": "tell me about the gene me and the"
+          "span": "tell me about the"
+        },
+        {
+          "span": "gene me",
+          "entities": [
+            {
+              "dcid": "bio/ncbi_45901"
+            }
+          ]
+        },
+        {
+          "span": "and the"
         },
         {
           "span": "mesh descriptor genes",
@@ -64,14 +75,1028 @@
           ]
         },
         {
-          "span": "in san jose are chirpy"
+          "span": "in"
+        },
+        {
+          "span": "san",
+          "entities": [
+            {
+              "dcid": "bio/ncbi_100120548"
+            },
+            {
+              "dcid": "bio/ncbi_100163396"
+            },
+            {
+              "dcid": "bio/ncbi_100646834"
+            },
+            {
+              "dcid": "bio/ncbi_100748927"
+            },
+            {
+              "dcid": "bio/ncbi_100871880"
+            },
+            {
+              "dcid": "bio/ncbi_100882765"
+            },
+            {
+              "dcid": "bio/ncbi_101451433"
+            },
+            {
+              "dcid": "bio/ncbi_101892024"
+            },
+            {
+              "dcid": "bio/ncbi_102670563"
+            },
+            {
+              "dcid": "bio/ncbi_103568257"
+            },
+            {
+              "dcid": "bio/ncbi_105143574"
+            },
+            {
+              "dcid": "bio/ncbi_105188917"
+            },
+            {
+              "dcid": "bio/ncbi_105198579"
+            },
+            {
+              "dcid": "bio/ncbi_105217729"
+            },
+            {
+              "dcid": "bio/ncbi_105228988"
+            },
+            {
+              "dcid": "bio/ncbi_105248954"
+            },
+            {
+              "dcid": "bio/ncbi_105270161"
+            },
+            {
+              "dcid": "bio/ncbi_105286290"
+            },
+            {
+              "dcid": "bio/ncbi_105364118"
+            },
+            {
+              "dcid": "bio/ncbi_105392948"
+            },
+            {
+              "dcid": "bio/ncbi_105428405"
+            },
+            {
+              "dcid": "bio/ncbi_105452414"
+            },
+            {
+              "dcid": "bio/ncbi_105562336"
+            },
+            {
+              "dcid": "bio/ncbi_105623003"
+            },
+            {
+              "dcid": "bio/ncbi_105676435"
+            },
+            {
+              "dcid": "bio/ncbi_105692446"
+            },
+            {
+              "dcid": "bio/ncbi_105696497"
+            },
+            {
+              "dcid": "bio/ncbi_105835096"
+            },
+            {
+              "dcid": "bio/ncbi_106085181"
+            },
+            {
+              "dcid": "bio/ncbi_106104423"
+            },
+            {
+              "dcid": "bio/ncbi_106121810"
+            },
+            {
+              "dcid": "bio/ncbi_106136297"
+            },
+            {
+              "dcid": "bio/ncbi_106472423"
+            },
+            {
+              "dcid": "bio/ncbi_106622822"
+            },
+            {
+              "dcid": "bio/ncbi_106637292"
+            },
+            {
+              "dcid": "bio/ncbi_106648872"
+            },
+            {
+              "dcid": "bio/ncbi_106673031"
+            },
+            {
+              "dcid": "bio/ncbi_106678504"
+            },
+            {
+              "dcid": "bio/ncbi_106708748"
+            },
+            {
+              "dcid": "bio/ncbi_106743072"
+            },
+            {
+              "dcid": "bio/ncbi_106788650"
+            },
+            {
+              "dcid": "bio/ncbi_107041985"
+            },
+            {
+              "dcid": "bio/ncbi_107068573"
+            },
+            {
+              "dcid": "bio/ncbi_107169013"
+            },
+            {
+              "dcid": "bio/ncbi_107193576"
+            },
+            {
+              "dcid": "bio/ncbi_107225217"
+            },
+            {
+              "dcid": "bio/ncbi_107264151"
+            },
+            {
+              "dcid": "bio/ncbi_107363317"
+            },
+            {
+              "dcid": "bio/ncbi_107397753"
+            },
+            {
+              "dcid": "bio/ncbi_107439015"
+            },
+            {
+              "dcid": "bio/ncbi_107994509"
+            },
+            {
+              "dcid": "bio/ncbi_108009545"
+            },
+            {
+              "dcid": "bio/ncbi_108022804"
+            },
+            {
+              "dcid": "bio/ncbi_108044850"
+            },
+            {
+              "dcid": "bio/ncbi_108055690"
+            },
+            {
+              "dcid": "bio/ncbi_108078273"
+            },
+            {
+              "dcid": "bio/ncbi_108086418"
+            },
+            {
+              "dcid": "bio/ncbi_108106629"
+            },
+            {
+              "dcid": "bio/ncbi_108131665"
+            },
+            {
+              "dcid": "bio/ncbi_108144546"
+            },
+            {
+              "dcid": "bio/ncbi_108549311"
+            },
+            {
+              "dcid": "bio/ncbi_108569774"
+            },
+            {
+              "dcid": "bio/ncbi_108576921"
+            },
+            {
+              "dcid": "bio/ncbi_108597259"
+            },
+            {
+              "dcid": "bio/ncbi_108617056"
+            },
+            {
+              "dcid": "bio/ncbi_108622855"
+            },
+            {
+              "dcid": "bio/ncbi_108654767"
+            },
+            {
+              "dcid": "bio/ncbi_108678349"
+            },
+            {
+              "dcid": "bio/ncbi_108689834"
+            },
+            {
+              "dcid": "bio/ncbi_108720616"
+            },
+            {
+              "dcid": "bio/ncbi_108737985"
+            },
+            {
+              "dcid": "bio/ncbi_108755333"
+            },
+            {
+              "dcid": "bio/ncbi_108769649"
+            },
+            {
+              "dcid": "bio/ncbi_108780289"
+            },
+            {
+              "dcid": "bio/ncbi_108911223"
+            },
+            {
+              "dcid": "bio/ncbi_108968765"
+            },
+            {
+              "dcid": "bio/ncbi_109032264"
+            },
+            {
+              "dcid": "bio/ncbi_109433368"
+            },
+            {
+              "dcid": "bio/ncbi_109608892"
+            },
+            {
+              "dcid": "bio/ncbi_109856832"
+            },
+            {
+              "dcid": "bio/ncbi_110179303"
+            },
+            {
+              "dcid": "bio/ncbi_110384515"
+            },
+            {
+              "dcid": "bio/ncbi_110826825"
+            },
+            {
+              "dcid": "bio/ncbi_110842120"
+            },
+            {
+              "dcid": "bio/ncbi_110998311"
+            },
+            {
+              "dcid": "bio/ncbi_111039522"
+            },
+            {
+              "dcid": "bio/ncbi_111053190"
+            },
+            {
+              "dcid": "bio/ncbi_111076396"
+            },
+            {
+              "dcid": "bio/ncbi_111250484"
+            },
+            {
+              "dcid": "bio/ncbi_111259698"
+            },
+            {
+              "dcid": "bio/ncbi_111356414"
+            },
+            {
+              "dcid": "bio/ncbi_111423693"
+            },
+            {
+              "dcid": "bio/ncbi_111506684"
+            },
+            {
+              "dcid": "bio/ncbi_111605405"
+            },
+            {
+              "dcid": "bio/ncbi_111634882"
+            },
+            {
+              "dcid": "bio/ncbi_111679621"
+            },
+            {
+              "dcid": "bio/ncbi_111861957"
+            },
+            {
+              "dcid": "bio/ncbi_112051305"
+            },
+            {
+              "dcid": "bio/ncbi_112459657"
+            },
+            {
+              "dcid": "bio/ncbi_112602252"
+            },
+            {
+              "dcid": "bio/ncbi_112683866"
+            },
+            {
+              "dcid": "bio/ncbi_113207944"
+            },
+            {
+              "dcid": "bio/ncbi_113239660"
+            },
+            {
+              "dcid": "bio/ncbi_113399042"
+            },
+            {
+              "dcid": "bio/ncbi_113495549"
+            },
+            {
+              "dcid": "bio/ncbi_113512794"
+            },
+            {
+              "dcid": "bio/ncbi_113549470"
+            },
+            {
+              "dcid": "bio/ncbi_113801071"
+            },
+            {
+              "dcid": "bio/ncbi_114124274"
+            },
+            {
+              "dcid": "bio/ncbi_114251699"
+            },
+            {
+              "dcid": "bio/ncbi_114326573"
+            },
+            {
+              "dcid": "bio/ncbi_114365440"
+            },
+            {
+              "dcid": "bio/ncbi_114874467"
+            },
+            {
+              "dcid": "bio/ncbi_114931967"
+            },
+            {
+              "dcid": "bio/ncbi_115237776"
+            },
+            {
+              "dcid": "bio/ncbi_115452643"
+            },
+            {
+              "dcid": "bio/ncbi_115625602"
+            },
+            {
+              "dcid": "bio/ncbi_115764443"
+            },
+            {
+              "dcid": "bio/ncbi_115875833"
+            },
+            {
+              "dcid": "bio/ncbi_116182861"
+            },
+            {
+              "dcid": "bio/ncbi_116341272"
+            },
+            {
+              "dcid": "bio/ncbi_116426176"
+            },
+            {
+              "dcid": "bio/ncbi_116770750"
+            },
+            {
+              "dcid": "bio/ncbi_116852423"
+            },
+            {
+              "dcid": "bio/ncbi_116919096"
+            },
+            {
+              "dcid": "bio/ncbi_117135710"
+            },
+            {
+              "dcid": "bio/ncbi_117158604"
+            },
+            {
+              "dcid": "bio/ncbi_117168263"
+            },
+            {
+              "dcid": "bio/ncbi_117209619"
+            },
+            {
+              "dcid": "bio/ncbi_117219968"
+            },
+            {
+              "dcid": "bio/ncbi_117234590"
+            },
+            {
+              "dcid": "bio/ncbi_117567259"
+            },
+            {
+              "dcid": "bio/ncbi_117578509"
+            },
+            {
+              "dcid": "bio/ncbi_117608507"
+            },
+            {
+              "dcid": "bio/ncbi_117644624"
+            },
+            {
+              "dcid": "bio/ncbi_117785863"
+            },
+            {
+              "dcid": "bio/ncbi_117891120"
+            },
+            {
+              "dcid": "bio/ncbi_117989312"
+            },
+            {
+              "dcid": "bio/ncbi_118073576"
+            },
+            {
+              "dcid": "bio/ncbi_118196971"
+            },
+            {
+              "dcid": "bio/ncbi_118267998"
+            },
+            {
+              "dcid": "bio/ncbi_118439971"
+            },
+            {
+              "dcid": "bio/ncbi_118468622"
+            },
+            {
+              "dcid": "bio/ncbi_118508270"
+            },
+            {
+              "dcid": "bio/ncbi_118743703"
+            },
+            {
+              "dcid": "bio/ncbi_119067484"
+            },
+            {
+              "dcid": "bio/ncbi_119109182"
+            },
+            {
+              "dcid": "bio/ncbi_119172105"
+            },
+            {
+              "dcid": "bio/ncbi_119393987"
+            },
+            {
+              "dcid": "bio/ncbi_119455929"
+            },
+            {
+              "dcid": "bio/ncbi_119552115"
+            },
+            {
+              "dcid": "bio/ncbi_119578841"
+            },
+            {
+              "dcid": "bio/ncbi_119614117"
+            },
+            {
+              "dcid": "bio/ncbi_119640948"
+            },
+            {
+              "dcid": "bio/ncbi_119654894"
+            },
+            {
+              "dcid": "bio/ncbi_119680478"
+            },
+            {
+              "dcid": "bio/ncbi_119832937"
+            },
+            {
+              "dcid": "bio/ncbi_120417329"
+            },
+            {
+              "dcid": "bio/ncbi_120444714"
+            },
+            {
+              "dcid": "bio/ncbi_120631596"
+            },
+            {
+              "dcid": "bio/ncbi_120772013"
+            },
+            {
+              "dcid": "bio/ncbi_120908556"
+            },
+            {
+              "dcid": "bio/ncbi_120948402"
+            },
+            {
+              "dcid": "bio/ncbi_121591095"
+            },
+            {
+              "dcid": "bio/ncbi_121734835"
+            },
+            {
+              "dcid": "bio/ncbi_121874103"
+            },
+            {
+              "dcid": "bio/ncbi_122249955"
+            },
+            {
+              "dcid": "bio/ncbi_122402806"
+            },
+            {
+              "dcid": "bio/ncbi_122418353"
+            },
+            {
+              "dcid": "bio/ncbi_122500684"
+            },
+            {
+              "dcid": "bio/ncbi_122514240"
+            },
+            {
+              "dcid": "bio/ncbi_122538954"
+            },
+            {
+              "dcid": "bio/ncbi_122571735"
+            },
+            {
+              "dcid": "bio/ncbi_122612500"
+            },
+            {
+              "dcid": "bio/ncbi_122634881"
+            },
+            {
+              "dcid": "bio/ncbi_122710398"
+            },
+            {
+              "dcid": "bio/ncbi_122853195"
+            },
+            {
+              "dcid": "bio/ncbi_123004689"
+            },
+            {
+              "dcid": "bio/ncbi_123274189"
+            },
+            {
+              "dcid": "bio/ncbi_123293866"
+            },
+            {
+              "dcid": "bio/ncbi_123309197"
+            },
+            {
+              "dcid": "bio/ncbi_123511884"
+            },
+            {
+              "dcid": "bio/ncbi_123661230"
+            },
+            {
+              "dcid": "bio/ncbi_123685157"
+            },
+            {
+              "dcid": "bio/ncbi_123697298"
+            },
+            {
+              "dcid": "bio/ncbi_123715696"
+            },
+            {
+              "dcid": "bio/ncbi_123771442"
+            },
+            {
+              "dcid": "bio/ncbi_123873182"
+            },
+            {
+              "dcid": "bio/ncbi_124153896"
+            },
+            {
+              "dcid": "bio/ncbi_124185106"
+            },
+            {
+              "dcid": "bio/ncbi_124202202"
+            },
+            {
+              "dcid": "bio/ncbi_124221776"
+            },
+            {
+              "dcid": "bio/ncbi_124307514"
+            },
+            {
+              "dcid": "bio/ncbi_124344235"
+            },
+            {
+              "dcid": "bio/ncbi_124356722"
+            },
+            {
+              "dcid": "bio/ncbi_124413720"
+            },
+            {
+              "dcid": "bio/ncbi_124430481"
+            },
+            {
+              "dcid": "bio/ncbi_124535515"
+            },
+            {
+              "dcid": "bio/ncbi_124636414"
+            },
+            {
+              "dcid": "bio/ncbi_124954060"
+            },
+            {
+              "dcid": "bio/ncbi_125040510"
+            },
+            {
+              "dcid": "bio/ncbi_125057085"
+            },
+            {
+              "dcid": "bio/ncbi_125068591"
+            },
+            {
+              "dcid": "bio/ncbi_125235132"
+            },
+            {
+              "dcid": "bio/ncbi_125765142"
+            },
+            {
+              "dcid": "bio/ncbi_125949554"
+            },
+            {
+              "dcid": "bio/ncbi_126092613"
+            },
+            {
+              "dcid": "bio/ncbi_126234833"
+            },
+            {
+              "dcid": "bio/ncbi_126281561"
+            },
+            {
+              "dcid": "bio/ncbi_126373218"
+            },
+            {
+              "dcid": "bio/ncbi_126459449"
+            },
+            {
+              "dcid": "bio/ncbi_126531226"
+            },
+            {
+              "dcid": "bio/ncbi_126558945"
+            },
+            {
+              "dcid": "bio/ncbi_126573175"
+            },
+            {
+              "dcid": "bio/ncbi_126750693"
+            },
+            {
+              "dcid": "bio/ncbi_126755953"
+            },
+            {
+              "dcid": "bio/ncbi_126769638"
+            },
+            {
+              "dcid": "bio/ncbi_126846866"
+            },
+            {
+              "dcid": "bio/ncbi_126859497"
+            },
+            {
+              "dcid": "bio/ncbi_126866731"
+            },
+            {
+              "dcid": "bio/ncbi_126894526"
+            },
+            {
+              "dcid": "bio/ncbi_126926184"
+            },
+            {
+              "dcid": "bio/ncbi_126974148"
+            },
+            {
+              "dcid": "bio/ncbi_127069688"
+            },
+            {
+              "dcid": "bio/ncbi_127279765"
+            },
+            {
+              "dcid": "bio/ncbi_128253806"
+            },
+            {
+              "dcid": "bio/ncbi_128274313"
+            },
+            {
+              "dcid": "bio/ncbi_128299002"
+            },
+            {
+              "dcid": "bio/ncbi_128674025"
+            },
+            {
+              "dcid": "bio/ncbi_128704999"
+            },
+            {
+              "dcid": "bio/ncbi_128709561"
+            },
+            {
+              "dcid": "bio/ncbi_128721607"
+            },
+            {
+              "dcid": "bio/ncbi_128742867"
+            },
+            {
+              "dcid": "bio/ncbi_128867358"
+            },
+            {
+              "dcid": "bio/ncbi_128877090"
+            },
+            {
+              "dcid": "bio/ncbi_128895302"
+            },
+            {
+              "dcid": "bio/ncbi_128964835"
+            },
+            {
+              "dcid": "bio/ncbi_129224229"
+            },
+            {
+              "dcid": "bio/ncbi_129246265"
+            },
+            {
+              "dcid": "bio/ncbi_129573483"
+            },
+            {
+              "dcid": "bio/ncbi_129732821"
+            },
+            {
+              "dcid": "bio/ncbi_129755519"
+            },
+            {
+              "dcid": "bio/ncbi_129777253"
+            },
+            {
+              "dcid": "bio/ncbi_129797749"
+            },
+            {
+              "dcid": "bio/ncbi_129799980"
+            },
+            {
+              "dcid": "bio/ncbi_129921475"
+            },
+            {
+              "dcid": "bio/ncbi_129949960"
+            },
+            {
+              "dcid": "bio/ncbi_129984431"
+            },
+            {
+              "dcid": "bio/ncbi_130452775"
+            },
+            {
+              "dcid": "bio/ncbi_130670342"
+            },
+            {
+              "dcid": "bio/ncbi_130699281"
+            },
+            {
+              "dcid": "bio/ncbi_130903450"
+            },
+            {
+              "dcid": "bio/ncbi_131208635"
+            },
+            {
+              "dcid": "bio/ncbi_131258878"
+            },
+            {
+              "dcid": "bio/ncbi_131286459"
+            },
+            {
+              "dcid": "bio/ncbi_131427822"
+            },
+            {
+              "dcid": "bio/ncbi_131673338"
+            },
+            {
+              "dcid": "bio/ncbi_131684458"
+            },
+            {
+              "dcid": "bio/ncbi_131855606"
+            },
+            {
+              "dcid": "bio/ncbi_131885368"
+            },
+            {
+              "dcid": "bio/ncbi_132200292"
+            },
+            {
+              "dcid": "bio/ncbi_132265383"
+            },
+            {
+              "dcid": "bio/ncbi_132705670"
+            },
+            {
+              "dcid": "bio/ncbi_132788586"
+            },
+            {
+              "dcid": "bio/ncbi_132909324"
+            },
+            {
+              "dcid": "bio/ncbi_132930339"
+            },
+            {
+              "dcid": "bio/ncbi_132941086"
+            },
+            {
+              "dcid": "bio/ncbi_133321270"
+            },
+            {
+              "dcid": "bio/ncbi_133525982"
+            },
+            {
+              "dcid": "bio/ncbi_133840229"
+            },
+            {
+              "dcid": "bio/ncbi_134225873"
+            },
+            {
+              "dcid": "bio/ncbi_134535128"
+            },
+            {
+              "dcid": "bio/ncbi_134653435"
+            },
+            {
+              "dcid": "bio/ncbi_134671392"
+            },
+            {
+              "dcid": "bio/ncbi_134747589"
+            },
+            {
+              "dcid": "bio/ncbi_134782107"
+            },
+            {
+              "dcid": "bio/ncbi_134797119"
+            },
+            {
+              "dcid": "bio/ncbi_134836779"
+            },
+            {
+              "dcid": "bio/ncbi_135078031"
+            },
+            {
+              "dcid": "bio/ncbi_135113677"
+            },
+            {
+              "dcid": "bio/ncbi_135128558"
+            },
+            {
+              "dcid": "bio/ncbi_135162539"
+            },
+            {
+              "dcid": "bio/ncbi_135213022"
+            },
+            {
+              "dcid": "bio/ncbi_135385940"
+            },
+            {
+              "dcid": "bio/ncbi_135432188"
+            },
+            {
+              "dcid": "bio/ncbi_135700056"
+            },
+            {
+              "dcid": "bio/ncbi_135792721"
+            },
+            {
+              "dcid": "bio/ncbi_135840516"
+            },
+            {
+              "dcid": "bio/ncbi_135948438"
+            },
+            {
+              "dcid": "bio/ncbi_135961881"
+            },
+            {
+              "dcid": "bio/ncbi_136039393"
+            },
+            {
+              "dcid": "bio/ncbi_136347846"
+            },
+            {
+              "dcid": "bio/ncbi_136416061"
+            },
+            {
+              "dcid": "bio/ncbi_136777233"
+            },
+            {
+              "dcid": "bio/ncbi_136826112"
+            },
+            {
+              "dcid": "bio/ncbi_136883546"
+            },
+            {
+              "dcid": "bio/ncbi_136980930"
+            },
+            {
+              "dcid": "bio/ncbi_137247165"
+            },
+            {
+              "dcid": "bio/ncbi_137575268"
+            },
+            {
+              "dcid": "bio/ncbi_137652948"
+            },
+            {
+              "dcid": "bio/ncbi_137929761"
+            },
+            {
+              "dcid": "bio/ncbi_138133030"
+            },
+            {
+              "dcid": "bio/ncbi_138179459"
+            },
+            {
+              "dcid": "bio/ncbi_3290637"
+            },
+            {
+              "dcid": "bio/ncbi_41988422"
+            },
+            {
+              "dcid": "bio/ncbi_43607020"
+            },
+            {
+              "dcid": "bio/ncbi_44724"
+            },
+            {
+              "dcid": "bio/ncbi_4805025"
+            },
+            {
+              "dcid": "bio/ncbi_5566935"
+            },
+            {
+              "dcid": "bio/ncbi_59250697"
+            },
+            {
+              "dcid": "bio/ncbi_59278338"
+            },
+            {
+              "dcid": "bio/ncbi_6049383"
+            },
+            {
+              "dcid": "bio/ncbi_6495399"
+            },
+            {
+              "dcid": "bio/ncbi_6530292"
+            },
+            {
+              "dcid": "bio/ncbi_6546984"
+            },
+            {
+              "dcid": "bio/ncbi_6561147"
+            },
+            {
+              "dcid": "bio/ncbi_6580634"
+            },
+            {
+              "dcid": "bio/ncbi_6591038"
+            },
+            {
+              "dcid": "bio/ncbi_6608658"
+            },
+            {
+              "dcid": "bio/ncbi_6625474"
+            },
+            {
+              "dcid": "bio/ncbi_6652327"
+            },
+            {
+              "dcid": "bio/ncbi_6739385"
+            },
+            {
+              "dcid": "bio/ncbi_724486"
+            },
+            {
+              "dcid": "bio/ncbi_732937"
+            },
+            {
+              "dcid": "bio/ncbi_8027273"
+            },
+            {
+              "dcid": "bio/ncbi_87812825"
+            }
+          ]
+        },
+        {
+          "span": "jose"
+        },
+        {
+          "span": "are",
+          "entities": [
+            {
+              "dcid": "bio/ncbi_59246804"
+            },
+            {
+              "dcid": "bio/ncbi_59275321"
+            }
+          ]
+        },
+        {
+          "span": "chirpy"
         }
       ]
     },
     "what genes are associated with the rs13317 , rs1826962 , rs790314 , rs2801952 , rs1814149": {
       "items": [
         {
-          "span": "what genes are associated with the rs13317 , rs1826962 , rs790314 , rs2801952 , rs1814149"
+          "span": "what genes"
+        },
+        {
+          "span": "are",
+          "entities": [
+            {
+              "dcid": "bio/ncbi_59246804"
+            },
+            {
+              "dcid": "bio/ncbi_59275321"
+            }
+          ]
+        },
+        {
+          "span": "associated with the rs13317 , rs1826962 , rs790314 , rs2801952 , rs1814149"
         }
       ]
     }

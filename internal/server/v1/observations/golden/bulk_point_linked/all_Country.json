@@ -1032,11 +1032,6 @@
               "facet": "3981252704"
             },
             {
-              "date": "2020",
-              "value": 50911747,
-              "facet": "4140854811"
-            },
-            {
               "date": "2023",
               "value": 52215506,
               "facet": "1151455814"
@@ -3638,11 +3633,6 @@
             },
             {
               "date": "2016",
-              "value": 193392517,
-              "facet": "563701067"
-            },
-            {
-              "date": "2016",
               "value": 185990000,
               "facet": "473499523"
             },
@@ -5738,19 +5728,11 @@
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y"
     },
-    "4140854811": {
-      "import_name": "Colombia_Census",
-      "provenance_url": "https://www.dane.gov.co/index.php/en/statistics-by-topic"
-    },
     "473499523": {
       "import_name": "Subnational_Demographics_Stats",
       "provenance_url": "https://databank.worldbank.org/source/subnational-population",
       "measurement_method": "WorldBankSubnationalPopulationEstimate",
       "observation_period": "P1Y"
-    },
-    "563701067": {
-      "import_name": "NigeriaStatistics",
-      "provenance_url": "https://nigeria.opendataforafrica.org"
     },
     "607884225": {
       "import_name": "Sweden_Census",
