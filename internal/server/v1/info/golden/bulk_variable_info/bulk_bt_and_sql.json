@@ -24,23 +24,23 @@
             "maxValue": 1214384
           },
           "AdministrativeArea1": {
-            "placeCount": 380,
+            "placeCount": 343,
             "topPlaces": [
               {
-                "dcid": "wikidataId/Q3724",
-                "name": "West Java"
+                "dcid": "wikidataId/Q15175",
+                "name": "Guangdong"
               },
               {
-                "dcid": "wikidataId/Q175",
-                "name": "São Paulo"
+                "dcid": "wikidataId/Q43407",
+                "name": "Shandong"
               },
               {
-                "dcid": "wikidataId/Q3586",
-                "name": "East Java"
+                "dcid": "wikidataId/Q43684",
+                "name": "Henan"
               }
             ],
-            "minValue": 0,
-            "maxValue": 24354012
+            "minValue": 3279,
+            "maxValue": 50483000
           },
           "AdministrativeArea2": {
             "placeCount": 6615,
@@ -1822,65 +1822,6 @@
             "observationCount": 5,
             "timeSeriesCount": 1
           },
-          "dc/base/Colombia_Census": {
-            "importName": "Colombia_Census",
-            "seriesSummary": [
-              {
-                "seriesKey": {},
-                "earliestDate": "1985",
-                "latestDate": "2020",
-                "placeTypeSummary": {
-                  "AdministrativeArea1": {
-                    "placeCount": 32,
-                    "topPlaces": [
-                      {
-                        "dcid": "wikidataId/Q123304",
-                        "name": "Antioquia Department"
-                      },
-                      {
-                        "dcid": "wikidataId/Q13990",
-                        "name": "Valle del Cauca Department"
-                      },
-                      {
-                        "dcid": "wikidataId/Q232564",
-                        "name": "Cundinamarca Department"
-                      }
-                    ],
-                    "minValue": 7953,
-                    "maxValue": 3498200
-                  },
-                  "City": {
-                    "placeCount": 1,
-                    "topPlaces": [
-                      {
-                        "dcid": "wikidataId/Q2841",
-                        "name": "Bogotá"
-                      }
-                    ],
-                    "minValue": 2226111,
-                    "maxValue": 4316132
-                  },
-                  "Country": {
-                    "placeCount": 1,
-                    "topPlaces": [
-                      {
-                        "dcid": "country/COL",
-                        "name": "Colombia"
-                      }
-                    ],
-                    "minValue": 15610217,
-                    "maxValue": 25772783
-                  }
-                },
-                "minValue": 7953,
-                "maxValue": 25772783,
-                "observationCount": 1224,
-                "timeSeriesCount": 34
-              }
-            ],
-            "observationCount": 1224,
-            "timeSeriesCount": 34
-          },
           "dc/base/IndiaCensus_Primary": {
             "importName": "IndiaCensus_Primary",
             "seriesSummary": [
@@ -2664,65 +2605,6 @@
             ],
             "observationCount": 32,
             "timeSeriesCount": 1
-          },
-          "dc/base/NigeriaStatistics": {
-            "importName": "NigeriaStatistics",
-            "seriesSummary": [
-              {
-                "seriesKey": {},
-                "earliestDate": "1991",
-                "latestDate": "2006",
-                "placeTypeSummary": {
-                  "AdministrativeArea1": {
-                    "placeCount": 36,
-                    "topPlaces": [
-                      {
-                        "dcid": "wikidataId/Q682571",
-                        "name": "Kano State"
-                      },
-                      {
-                        "dcid": "wikidataId/Q815913",
-                        "name": "Lagos"
-                      },
-                      {
-                        "dcid": "wikidataId/Q145793",
-                        "name": "Zamfara State"
-                      }
-                    ],
-                    "minValue": 684958,
-                    "maxValue": 4453336
-                  },
-                  "City": {
-                    "placeCount": 1,
-                    "topPlaces": [
-                      {
-                        "dcid": "wikidataId/Q3787",
-                        "name": "Abuja"
-                      }
-                    ],
-                    "minValue": 166375,
-                    "maxValue": 673067
-                  },
-                  "Country": {
-                    "placeCount": 1,
-                    "topPlaces": [
-                      {
-                        "dcid": "country/NGA",
-                        "name": "Nigeria"
-                      }
-                    ],
-                    "minValue": 44462612,
-                    "maxValue": 69086302
-                  }
-                },
-                "minValue": 166375,
-                "maxValue": 69086302,
-                "observationCount": 70,
-                "timeSeriesCount": 38
-              }
-            ],
-            "observationCount": 70,
-            "timeSeriesCount": 38
           },
           "dc/base/OECDRegionalDemography": {
             "importName": "OECDRegionalDemography",

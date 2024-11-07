@@ -1,8 +1,22 @@
 [
   {
+    "title": "Air quality index",
+    "statsVars": [
+      "AirQualityIndex_AirPollutant"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Alcohol consumption per capita (annual)",
     "statsVars": [
       "Amount_Consumption_Alcohol_15OrMoreYears_AsFractionOf_Count_Person_15OrMoreYears"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Annual greenhouse gas emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_GreenhouseGas_NonBiogenic"
     ],
     "relatedChart": {}
   },
@@ -17,6 +31,13 @@
         "Count_CriminalActivities_Arson"
       ]
     }
+  },
+  {
+    "title": "Carbon dioxide emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_CarbonDioxide_NonBiogenic"
+    ],
+    "relatedChart": {}
   },
   {
     "title": "Carbon dioxide emissions per capita",
@@ -278,6 +299,13 @@
     "relatedChart": {}
   },
   {
+    "title": "Lifetime air toxics cancer risk",
+    "statsVars": [
+      "AirPollutant_Cancer_Risk"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Literacy",
     "statsVars": [
       "Count_Person_Literate",
@@ -302,6 +330,34 @@
     "title": "Market capitalization of domestic companies",
     "statsVars": [
       "Amount_Stock"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Mean diesel PM concentration",
+    "statsVars": [
+      "Mean_Concentration_AirPollutant_DieselPM"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Mean ozone concentration",
+    "statsVars": [
+      "Mean_Concentration_AirPollutant_Ozone"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Methane emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_Methane_NonBiogenic"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Nitrous oxide emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_NitrousOxide_NonBiogenic"
     ],
     "relatedChart": {}
   },
