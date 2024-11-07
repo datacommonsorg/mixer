@@ -25,27 +25,57 @@ import (
 
 // SQL / GQL statements executed by the SpannerClient
 var statements = struct {
-	getNodesByID string
+	getEdgesBySubjectID string
 }{
-	getNodesByID: `
-	SELECT id, typeOf, name, properties, provenances
-	FROM Node
-	WHERE id IN UNNEST(@ids)
+	getEdgesBySubjectID: `
+	SELECT 
+		subject_id, 
+		predicate, 
+		COALESCE(object_id, '') AS object_id, 
+		COALESCE(object_value, '') AS object_value, 
+		COALESCE(provenance, '') AS provenance
+	FROM Edge
+	WHERE subject_id IN UNNEST(@ids)
 	`,
 }
 
-// GetNodesByID retrieves nodes from Spanner given a list of IDs and returns a map.
-func (sc *SpannerClient) GetNodesByID(ctx context.Context, ids []string) (map[string]*Node, error) {
-	nodes := make(map[string]*Node)
+// GetNodeEdgesByID retrieves node edges from Spanner given a list of IDs and returns a map.
+func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string) (map[string][]*Edge, error) {
+	edges := make(map[string][]*Edge)
 	if len(ids) == 0 {
-		return nodes, nil
+		return edges, nil
 	}
 
 	stmt := spanner.Statement{
-		SQL:    statements.getNodesByID,
+		SQL:    statements.getEdgesBySubjectID,
 		Params: map[string]interface{}{"ids": ids},
 	}
 
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		func() interface{} {
+			return &Edge{}
+		},
+		func(rowStruct interface{}) {
+			edge := rowStruct.(*Edge)
+			subjectID := edge.SubjectID
+			edges[subjectID] = append(edges[subjectID], edge)
+		},
+	)
+	if err != nil {
+		return edges, err
+	}
+
+	return edges, nil
+}
+
+func (sc *SpannerClient) queryAndCollect(
+	ctx context.Context,
+	stmt spanner.Statement,
+	newStruct func() interface{},
+	withStruct func(interface{}),
+) error {
 	iter := sc.client.Single().Query(ctx, stmt)
 	defer iter.Stop()
 
@@ -55,15 +85,15 @@ func (sc *SpannerClient) GetNodesByID(ctx context.Context, ids []string) (map[st
 			break
 		}
 		if err != nil {
-			return nil, fmt.Errorf("failed to fetch row: %w", err)
+			return fmt.Errorf("failed to fetch row: %w", err)
 		}
 
-		var node Node
-		if err := row.ToStructLenient(&node); err != nil {
-			return nil, fmt.Errorf("failed to parse row: %w", err)
+		rowStruct := newStruct()
+		if err := row.ToStructLenient(rowStruct); err != nil {
+			return fmt.Errorf("failed to parse row: %w", err)
 		}
-		nodes[node.ID] = &node
+		withStruct(rowStruct)
 	}
 
-	return nodes, nil
+	return nil
 }

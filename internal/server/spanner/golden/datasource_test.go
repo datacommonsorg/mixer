@@ -20,49 +20,50 @@ import (
 	"runtime"
 	"testing"
 
+	v2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestGetNodeEdgesByID(t *testing.T) {
+func TestNode(t *testing.T) {
 	client := test.NewSpannerClient()
 	if client == nil {
 		return
 	}
+	ds := spanner.NewSpannerDataSource(client)
 
 	t.Parallel()
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
-	goldenDir := path.Join(path.Dir(filename), "query")
-	goldenFile := "get_node_edges_by_id.json"
+	goldenDir := path.Join(path.Dir(filename), "datasource")
+	goldenFile := "node.json"
 
-	ids := []string{"Aadhaar", "Monthly_Average_RetailPrice_Electricity_Residential"}
-
-	actual, err := client.GetNodeEdgesByID(ctx, ids)
-	if err != nil {
-		t.Fatalf("GetNodeEdgesByID error (%v): %v", goldenFile, err)
+	req := &v2.NodeRequest{
+		Nodes: []string{"Aadhaar", "Monthly_Average_RetailPrice_Electricity_Residential"},
 	}
 
-	got, err := test.StructToJSON(actual)
+	got, err := ds.Node(ctx, req)
 	if err != nil {
-		t.Fatalf("StructToJSON error (%v): %v", goldenFile, err)
+		t.Fatalf("Node error (%v): %v", goldenFile, err)
 	}
 
 	if test.GenerateGolden {
-		err = test.WriteGolden(got, goldenDir, goldenFile)
-		if err != nil {
-			t.Fatalf("WriteGolden error (%v): %v", goldenFile, err)
-		}
+		test.UpdateProtoGolden(got, goldenDir, goldenFile)
 		return
 	}
 
-	want, err := test.ReadGolden(goldenDir, goldenFile)
-	if err != nil {
-		t.Fatalf("ReadGolden error (%v): %v", goldenFile, err)
+	var want v2.NodeResponse
+	if err = test.ReadJSON(goldenDir, goldenFile, &want); err != nil {
+		t.Fatalf("ReadJSON error (%v): %v", goldenFile, err)
 	}
 
-	if diff := cmp.Diff(want, got); diff != "" {
-		t.Errorf("%v payload mismatch (-want +got):\n%s", goldenFile, diff)
+	cmpOpts := cmp.Options{
+		protocmp.Transform(),
+	}
+	if diff := cmp.Diff(got, &want, cmpOpts); diff != "" {
+		t.Errorf("%v payload mismatch:\n%v", goldenFile, diff)
 	}
 
 }

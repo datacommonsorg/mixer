@@ -12,21 +12,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Model objects related to the spanner graph database.
-package spanner
+package datasource
 
-// Edge struct represents a single row in the Edge table.
-type Edge struct {
-	SubjectID   string `spanner:"subject_id"`
-	Predicate   string `spanner:"predicate"`
-	ObjectID    string `spanner:"object_id"`
-	ObjectValue string `spanner:"object_value"`
-	Provenance  string `spanner:"provenance"`
-}
+import (
+	"context"
 
-// SpannerConfig struct to hold the YAML configuration to a spanner database.
-type SpannerConfig struct {
-	Project  string `yaml:"project"`
-	Instance string `yaml:"instance"`
-	Database string `yaml:"database"`
+	v2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+)
+
+// DataSourceType represents the type of data source.
+type DataSourceType string
+
+const (
+	TypeSpanner DataSourceType = "spanner"
+	TypeMock    DataSourceType = "mock"
+)
+
+// DataSource interface defines the common methods for all data sources.
+type DataSource interface {
+	Type() DataSourceType
+	Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error)
 }
