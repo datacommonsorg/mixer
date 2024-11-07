@@ -28,15 +28,15 @@ func nodeEdgesToNodeResponse(edgesBySubjectID map[string][]*Edge) *v2.NodeRespon
 	}
 
 	for subjectID, edges := range edgesBySubjectID {
-		nodeResponse.Data[subjectID] = createLinkedGraph(edges)
+		nodeResponse.Data[subjectID] = nodeEdgesToLinkedGraph(edges)
 	}
 
 	return nodeResponse
 }
 
-// createLinkedGraph creates a LinkedGraph proto message from an array of Edge objects.
+// nodeEdgesToLinkedGraph converts an array of edges to a LinkedGraph proto.
 // This method assumes all edges are from the same entity.
-func createLinkedGraph(edges []*Edge) *v2.LinkedGraph {
+func nodeEdgesToLinkedGraph(edges []*Edge) *v2.LinkedGraph {
 	linkedGraph := &v2.LinkedGraph{
 		Arcs: make(map[string]*v2.Nodes),
 	}
