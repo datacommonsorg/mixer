@@ -38,7 +38,7 @@ func (sds *SpannerDataSource) Type() datasource.DataSourceType {
 
 // Node retrieves node data from Spanner.
 func (sds *SpannerDataSource) Node(ctx context.Context, req *v3.NodeRequest) (*v3.NodeResponse, error) {
-	// TODO: Support pagination.
+	// TODO: Support additional Node functionality (properties, pagination, etc).
 	edges, err := sds.client.GetNodeEdgesByID(ctx, req.Nodes)
 	if err != nil {
 		return nil, fmt.Errorf("error getting node edges: %v", err)

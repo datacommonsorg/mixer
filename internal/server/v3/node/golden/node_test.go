@@ -28,6 +28,7 @@ import (
 )
 
 func TestV3Node(t *testing.T) {
+	// TODO: Remove check once enabled.
 	if !test.EnableSpannerGraph {
 		return
 	}
@@ -57,8 +58,9 @@ func TestV3Node(t *testing.T) {
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V3Node(ctx, &pbv3.NodeRequest{
-				Nodes:    c.nodes,
-				Property: c.property,
+				Nodes:     c.nodes,
+				Property:  c.property,
+				NextToken: c.nextToken,
 			})
 			if err != nil {
 				t.Errorf("Could not run V3Node: %s", err)
