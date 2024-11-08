@@ -30,6 +30,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/parser/mcf"
 	dcpubsub "github.com/datacommonsorg/mixer/internal/pubsub"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
+	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -41,11 +42,12 @@ import (
 
 // Server holds resources for a mixer server
 type Server struct {
-	store      *store.Store
-	metadata   *resource.Metadata
-	cachedata  atomic.Pointer[cache.Cache]
-	mapsClient *maps.Client
-	httpClient *http.Client
+	store       *store.Store
+	metadata    *resource.Metadata
+	cachedata   atomic.Pointer[cache.Cache]
+	mapsClient  *maps.Client
+	httpClient  *http.Client
+	dataSources *datasource.DataSources
 }
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) error {
@@ -147,13 +149,15 @@ func NewMixerServer(
 	metadata *resource.Metadata,
 	cachedata *cache.Cache,
 	mapsClient *maps.Client,
+	dataSources *datasource.DataSources,
 ) *Server {
 	s := &Server{
-		store:      store,
-		metadata:   metadata,
-		cachedata:  atomic.Pointer[cache.Cache]{},
-		mapsClient: mapsClient,
-		httpClient: &http.Client{},
+		store:       store,
+		metadata:    metadata,
+		cachedata:   atomic.Pointer[cache.Cache]{},
+		mapsClient:  mapsClient,
+		httpClient:  &http.Client{},
+		dataSources: dataSources,
 	}
 	s.cachedata.Store(cachedata)
 	return s

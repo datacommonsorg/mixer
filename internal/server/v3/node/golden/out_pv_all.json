@@ -1,0 +1,89 @@
+{
+  "data": {
+    "Count_Person_Female": {
+      "arcs": {
+        "constraintProperties": {
+          "nodes": [
+            {
+              "dcid": "gender",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        },
+        "extendedName": {
+          "nodes": [
+            {
+              "provenanceId": "dc/base/HumanReadableStatVars",
+              "value": "Female Population"
+            }
+          ]
+        },
+        "gender": {
+          "nodes": [
+            {
+              "dcid": "Female",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        },
+        "localCuratorLevelId": {
+          "nodes": [
+            {
+              "provenanceId": "dc/base/HumanReadableStatVars",
+              "value": "dcid:Count_Person_Female"
+
+            }
+          ]
+        },
+        "measuredProp": {
+          "nodes": [
+            {
+              "dcid": "count",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        },
+        "memberOf": {
+          "nodes": [
+            {
+              "dcid": "dc/g/Person_Gender-Female",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        },
+        "name": {
+          "nodes": [
+            {
+              "provenanceId": "dc/base/HumanReadableStatVars",
+              "value": "Female Population"
+            }
+          ]
+        },
+        "populationType": {
+          "nodes": [
+            {
+              "dcid": "Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        },
+        "statType": {
+          "nodes": [
+            {
+              "dcid": "measuredValue",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        },
+        "typeOf": {
+          "nodes": [
+            {
+              "dcid": "StatisticalVariable",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
