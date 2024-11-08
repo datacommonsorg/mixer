@@ -37,6 +37,6 @@ func (ds *DataSources) Node(ctx context.Context, req *v3.NodeRequest) (*v3.NodeR
 	}
 
 	// Currently this simply returns the node response from the first source.
-	// TODO: Call data sources and parallel and return a merged response.
+	// TODO: Call all data sources in parallel and return a merged response.
 	return ds.sources[0].Node(ctx, req)
 }
