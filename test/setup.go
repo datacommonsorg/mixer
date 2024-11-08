@@ -33,6 +33,7 @@ import (
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
+	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
@@ -172,7 +173,7 @@ func setupInternal(
 		return nil, err
 	}
 
-	return newClient(st, tables, metadata, c, mapsClient)
+	return newClient(st, tables, metadata, c, mapsClient, nil)
 }
 
 // SetupBqOnly creates local server and client with access to BigQuery only.
@@ -203,7 +204,7 @@ func SetupBqOnly() (pbs.MixerClient, error) {
 	if err != nil {
 		return nil, err
 	}
-	return newClient(st, nil, metadata, nil, nil)
+	return newClient(st, nil, metadata, nil, nil, nil)
 }
 
 func newClient(
@@ -212,8 +213,9 @@ func newClient(
 	metadata *resource.Metadata,
 	cachedata *cache.Cache,
 	mapsClient *maps.Client,
+	dataSources *datasources.DataSources,
 ) (pbs.MixerClient, error) {
-	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient)
+	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient, dataSources)
 	srv := grpc.NewServer()
 	pbs.RegisterMixerServer(srv, mixerServer)
 	reflection.Register(srv)

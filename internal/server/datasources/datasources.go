@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package spanner
+package datasources
 
 import (
 	"context"
@@ -22,25 +22,21 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 )
 
-// SpannerDataSource represents a data source that interacts with Spanner.
-type SpannerDataSource struct {
-	client *SpannerClient
+// DataSources struct uses underlying data sources to respond to API requests.
+type DataSources struct {
+	sources []datasource.DataSource
 }
 
-func NewSpannerDataSource(client *SpannerClient) *SpannerDataSource {
-	return &SpannerDataSource{client: client}
+func NewDataSources(sources []datasource.DataSource) *DataSources {
+	return &DataSources{sources: sources}
 }
 
-// Type returns the type of the data source.
-func (sds *SpannerDataSource) Type() datasource.DataSourceType {
-	return datasource.TypeSpanner
-}
-
-// Node retrieves node data from Spanner.
-func (sds *SpannerDataSource) Node(ctx context.Context, req *v3.NodeRequest) (*v3.NodeResponse, error) {
-	edges, err := sds.client.GetNodeEdgesByID(ctx, req.Nodes)
-	if err != nil {
-		return nil, fmt.Errorf("error getting node edges: %v", err)
+func (ds *DataSources) Node(ctx context.Context, req *v3.NodeRequest) (*v3.NodeResponse, error) {
+	if len(ds.sources) == 0 {
+		return nil, fmt.Errorf("unimplemented")
 	}
-	return nodeEdgesToNodeResponse(edges), nil
+
+	// Currently this simply returns the node response from the first source.
+	// TODO: Call data sources and parallel and return a merged response.
+	return ds.sources[0].Node(ctx, req)
 }

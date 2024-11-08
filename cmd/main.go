@@ -30,7 +30,10 @@ import (
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
+	"github.com/datacommonsorg/mixer/internal/server/datasource"
+	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
+	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/sqldb/cloudsql"
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlite"
@@ -73,7 +76,9 @@ var (
 	// CloudSQL
 	useCloudSQL      = flag.Bool("use_cloudsql", false, "Use Google CloudSQL as database.")
 	cloudSQLInstance = flag.String("cloudsql_instance", "", "CloudSQL instance name: e.g. project:region:instance")
-	// SQL data path
+	// Spanner Graph
+	useSpannerGraph  = flag.Bool("use_spanner_graph", true, "Use spanner graph")
+	spannerGraphInfo = flag.String("spanner_graph_info", "", "Yaml formatted text containing information for spanner graph")
 	// Cache SV/SVG data
 	cacheSVG = flag.Bool("cache_svg", true, "Whether to cache stat var (group) info and search index")
 	// Include maps client
@@ -251,8 +256,20 @@ func main() {
 		}
 	}
 
+	var sources []datasource.DataSource
+	if *useSpannerGraph {
+		log.Printf("Creating spanner graph client:\n%s\n", *spannerGraphInfo)
+		spannerClient, err := spanner.NewSpannerClient(ctx, *spannerGraphInfo)
+		if err != nil {
+			log.Fatalf("Failed to create spanner client: %v", err)
+		}
+		spannerds := spanner.NewSpannerDataSource(spannerClient)
+		sources = append(sources, spannerds)
+	}
+	datasources := datasources.NewDataSources(sources)
+
 	// Create server object
-	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient)
+	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, datasources)
 	pbs.RegisterMixerServer(srv, mixerServer)
 
 	// Subscribe to branch cache update
