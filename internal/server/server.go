@@ -30,7 +30,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/parser/mcf"
 	dcpubsub "github.com/datacommonsorg/mixer/internal/pubsub"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
-	"github.com/datacommonsorg/mixer/internal/server/datasource"
+	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -47,7 +47,7 @@ type Server struct {
 	cachedata   atomic.Pointer[cache.Cache]
 	mapsClient  *maps.Client
 	httpClient  *http.Client
-	dataSources *datasource.DataSources
+	dataSources *datasources.DataSources
 }
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) error {
@@ -149,7 +149,7 @@ func NewMixerServer(
 	metadata *resource.Metadata,
 	cachedata *cache.Cache,
 	mapsClient *maps.Client,
-	dataSources *datasource.DataSources,
+	dataSources *datasources.DataSources,
 ) *Server {
 	s := &Server{
 		store:       store,

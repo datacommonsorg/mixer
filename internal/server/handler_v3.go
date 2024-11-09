@@ -19,12 +19,11 @@ import (
 	"context"
 
 	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
-	"github.com/datacommonsorg/mixer/internal/server/v3/node"
 )
 
 // V3Node implements API for mixer.V3Node.
 func (s *Server) V3Node(ctx context.Context, in *pbv3.NodeRequest) (
 	*pbv3.NodeResponse, error,
 ) {
-	return node.V3NodeInternal(ctx, in, s.dataSources)
+	return s.dataSources.Node(ctx, in)
 }

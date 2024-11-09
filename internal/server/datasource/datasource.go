@@ -33,7 +33,3 @@ type DataSource interface {
 	Type() DataSourceType
 	Node(context.Context, *v3.NodeRequest) (*v3.NodeResponse, error)
 }
-
-type DataSources struct {
-	Sources []*DataSource
-}

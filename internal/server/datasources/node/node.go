@@ -15,12 +15,9 @@
 package node
 
 import (
-	"context"
-
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
-	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/util"
 )
@@ -121,7 +118,7 @@ func mergeNodeResponse(main, aux *pbv3.NodeResponse) (*pbv3.NodeResponse, error)
 
 // Merges multiple V3 NodeResponses.
 // Assumes the responses are in order of prioirty.
-func mergeNode(
+func MergeNode(
 	allResp []*pbv3.NodeResponse,
 ) (*pbv3.NodeResponse, error) {
 	if len(allResp) == 0 {
@@ -136,20 +133,4 @@ func mergeNode(
 		prev = cur
 	}
 	return prev, nil
-}
-
-func V3NodeInternal(
-	ctx context.Context,
-	in *pbv3.NodeRequest,
-	dataSources *datasource.DataSources,
-) (*pbv3.NodeResponse, error) {
-	allResp := []*pbv3.NodeResponse{}
-	for _, source := range dataSources.Sources {
-		resp, err := (*source).Node(ctx, in)
-		if err != nil {
-			return nil, err
-		}
-		allResp = append(allResp, resp)
-	}
-	return mergeNode(allResp)
 }

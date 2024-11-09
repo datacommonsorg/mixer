@@ -31,6 +31,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
+	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
@@ -120,7 +121,7 @@ func main() {
 	srv := grpc.NewServer()
 
 	// Data sources.
-	var dataSources datasource.DataSources
+	sources := []*datasource.DataSource{}
 
 	// Spanner Graph.
 	if *useSpannerGraph {
@@ -129,8 +130,8 @@ func main() {
 			log.Fatalf("Failed to create Spanner client: %v", err)
 		}
 		var ds datasource.DataSource = spanner.NewSpannerDataSource(spannerClient)
-		// TODO: Order dataSources by priority once other implementations are added.
-		dataSources.Sources = append(dataSources.Sources, &ds)
+		// TODO: Order sources by priority once other implementations are added.
+		sources = append(sources, &ds)
 	}
 
 	// Bigtable cache
@@ -271,7 +272,8 @@ func main() {
 	}
 
 	// Create server object
-	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, &dataSources)
+	dataSources := datasources.NewDataSources(sources)
+	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dataSources)
 	pbs.RegisterMixerServer(srv, mixerServer)
 
 	// Subscribe to branch cache update

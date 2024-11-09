@@ -34,6 +34,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
+	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
@@ -121,13 +122,15 @@ func setupInternal(
 	bqTableID, _ := os.ReadFile(path.Join(path.Dir(filename), bigqueryVersionFile))
 	schemaPath := path.Join(path.Dir(filename), mcfPath)
 
-	var dataSources datasource.DataSources
+	// Data sources.
+	sources := []*datasource.DataSource{}
+
 	if useSpannerGraph {
 		spannerClient := NewSpannerClient()
 		if spannerClient != nil {
 			var ds datasource.DataSource = spanner.NewSpannerDataSource(spannerClient)
-			// TODO: Order dataSources by priority once other implementations are added.
-			dataSources.Sources = append(dataSources.Sources, &ds)
+			// TODO: Order sources by priority once other implementations are added.
+			sources = append(sources, &ds)
 		}
 	}
 
@@ -186,7 +189,8 @@ func setupInternal(
 		return nil, err
 	}
 
-	return newClient(st, tables, metadata, c, mapsClient, &dataSources)
+	dataSources := datasources.NewDataSources(sources)
+	return newClient(st, tables, metadata, c, mapsClient, dataSources)
 }
 
 // SetupBqOnly creates local server and client with access to BigQuery only.
@@ -226,7 +230,7 @@ func newClient(
 	metadata *resource.Metadata,
 	cachedata *cache.Cache,
 	mapsClient *maps.Client,
-	dataSources *datasource.DataSources,
+	dataSources *datasources.DataSources,
 ) (pbs.MixerClient, error) {
 	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient, dataSources)
 	srv := grpc.NewServer()
