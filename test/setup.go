@@ -33,6 +33,8 @@ import (
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
+	"github.com/datacommonsorg/mixer/internal/server/datasource"
+	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
@@ -54,6 +56,7 @@ type TestOption struct {
 	UseCustomTable    bool
 	UseSQLite         bool
 	CacheSVFormula    bool
+	UseSpannerGraph   bool
 	RemoteMixerDomain string
 }
 
@@ -80,7 +83,7 @@ const (
 
 // Setup creates local server and client.
 func Setup(option ...*TestOption) (pbs.MixerClient, error) {
-	fetchSVG, searchSVG, useCustomTable, useSQLite, cacheSVFormula, remoteMixerDomain := false, false, false, false, false, ""
+	fetchSVG, searchSVG, useCustomTable, useSQLite, cacheSVFormula, useSpannerGraph, remoteMixerDomain := false, false, false, false, false, false, ""
 	var cacheOptions cache.CacheOptions
 	if len(option) == 1 {
 		fetchSVG = option[0].FetchSVG
@@ -92,6 +95,7 @@ func Setup(option ...*TestOption) (pbs.MixerClient, error) {
 		cacheOptions.FetchSVG = fetchSVG
 		cacheOptions.SearchSVG = searchSVG
 		cacheOptions.CacheSVFormula = cacheSVFormula
+		useSpannerGraph = option[0].UseSpannerGraph
 		remoteMixerDomain = option[0].RemoteMixerDomain
 	}
 	return setupInternal(
@@ -101,6 +105,7 @@ func Setup(option ...*TestOption) (pbs.MixerClient, error) {
 		"../deploy/mapping",
 		useCustomTable,
 		useSQLite,
+		useSpannerGraph,
 		cacheOptions,
 		remoteMixerDomain,
 	)
@@ -108,7 +113,7 @@ func Setup(option ...*TestOption) (pbs.MixerClient, error) {
 
 func setupInternal(
 	bigqueryVersionFile, baseBigtableInfoYaml, testBigtableInfoYaml, mcfPath string,
-	useCustomTable, useSQLite bool,
+	useCustomTable, useSQLite, useSpannerGraph bool,
 	cacheOptions cache.CacheOptions,
 	remoteMixerDomain string,
 ) (pbs.MixerClient, error) {
@@ -116,6 +121,18 @@ func setupInternal(
 	_, filename, _, _ := runtime.Caller(0)
 	bqTableID, _ := os.ReadFile(path.Join(path.Dir(filename), bigqueryVersionFile))
 	schemaPath := path.Join(path.Dir(filename), mcfPath)
+
+	// Data sources.
+	sources := []*datasource.DataSource{}
+
+	if useSpannerGraph {
+		spannerClient := NewSpannerClient()
+		if spannerClient != nil {
+			var ds datasource.DataSource = spanner.NewSpannerDataSource(spannerClient)
+			// TODO: Order sources by priority once other implementations are added.
+			sources = append(sources, &ds)
+		}
+	}
 
 	baseBigtableInfo, _ := os.ReadFile(path.Join(path.Dir(filename), baseBigtableInfoYaml))
 	tables, err := bigtable.CreateBigtables(ctx, string(baseBigtableInfo), false /*isCustom=*/)
@@ -172,7 +189,8 @@ func setupInternal(
 		return nil, err
 	}
 
-	return newClient(st, tables, metadata, c, mapsClient)
+	dataSources := datasources.NewDataSources(sources)
+	return newClient(st, tables, metadata, c, mapsClient, dataSources)
 }
 
 // SetupBqOnly creates local server and client with access to BigQuery only.
@@ -203,7 +221,7 @@ func SetupBqOnly() (pbs.MixerClient, error) {
 	if err != nil {
 		return nil, err
 	}
-	return newClient(st, nil, metadata, nil, nil)
+	return newClient(st, nil, metadata, nil, nil, nil)
 }
 
 func newClient(
@@ -212,8 +230,9 @@ func newClient(
 	metadata *resource.Metadata,
 	cachedata *cache.Cache,
 	mapsClient *maps.Client,
+	dataSources *datasources.DataSources,
 ) (pbs.MixerClient, error) {
-	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient)
+	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient, dataSources)
 	srv := grpc.NewServer()
 	pbs.RegisterMixerServer(srv, mixerServer)
 	reflection.Register(srv)

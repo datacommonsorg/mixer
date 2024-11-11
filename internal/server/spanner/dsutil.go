@@ -19,11 +19,12 @@ package spanner
 import (
 	"github.com/datacommonsorg/mixer/internal/proto"
 	v2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	v3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 )
 
 // nodeEdgesToNodeResponse converts a map from subject id to its edges to a NodeResponse proto.
-func nodeEdgesToNodeResponse(edgesBySubjectID map[string][]*Edge) *v2.NodeResponse {
-	nodeResponse := &v2.NodeResponse{
+func nodeEdgesToNodeResponse(edgesBySubjectID map[string][]*Edge) *v3.NodeResponse {
+	nodeResponse := &v3.NodeResponse{
 		Data: make(map[string]*v2.LinkedGraph),
 	}
 
