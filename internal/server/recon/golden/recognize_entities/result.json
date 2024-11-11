@@ -1061,42 +1061,14 @@
           ]
         },
         {
-          "span": "jose"
-        },
-        {
-          "span": "are",
-          "entities": [
-            {
-              "dcid": "bio/ncbi_59246804"
-            },
-            {
-              "dcid": "bio/ncbi_59275321"
-            }
-          ]
-        },
-        {
-          "span": "chirpy"
+          "span": "jose are chirpy"
         }
       ]
     },
     "what genes are associated with the rs13317 , rs1826962 , rs790314 , rs2801952 , rs1814149": {
       "items": [
         {
-          "span": "what genes"
-        },
-        {
-          "span": "are",
-          "entities": [
-            {
-              "dcid": "bio/ncbi_59246804"
-            },
-            {
-              "dcid": "bio/ncbi_59275321"
-            }
-          ]
-        },
-        {
-          "span": "associated with the rs13317 , rs1826962 , rs790314 , rs2801952 , rs1814149"
+          "span": "what genes are associated with the rs13317 , rs1826962 , rs790314 , rs2801952 , rs1814149"
         }
       ]
     }
