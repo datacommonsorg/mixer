@@ -30,7 +30,10 @@ import (
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
+	"github.com/datacommonsorg/mixer/internal/server/datasource"
+	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
+	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/sqldb/cloudsql"
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlite"
@@ -88,6 +91,9 @@ var (
 	// Cache map of SV dcid to list of inputPropertyExpressions for StatisticalCalculations
 	// TODO: Test Custom DC and set to true after release
 	cacheSVFormula = flag.Bool("cache_sv_formula", false, "Whether to cache SV -> inputPropertyExpresions for StatisticalCaclulations.")
+	// Spanner Graph
+	useSpannerGraph  = flag.Bool("use_spanner_graph", false, "Use Google Spanner as a database.")
+	spannerGraphInfo = flag.String("spanner_graph_info", "", "Yaml formatted text containing information for Spanner Graph.")
 )
 
 func main() {
@@ -113,6 +119,20 @@ func main() {
 
 	// Create grpc server.
 	srv := grpc.NewServer()
+
+	// Data sources.
+	sources := []*datasource.DataSource{}
+
+	// Spanner Graph.
+	if *useSpannerGraph {
+		spannerClient, err := spanner.NewSpannerClient(ctx, *spannerGraphInfo)
+		if err != nil {
+			log.Fatalf("Failed to create Spanner client: %v", err)
+		}
+		var ds datasource.DataSource = spanner.NewSpannerDataSource(spannerClient)
+		// TODO: Order sources by priority once other implementations are added.
+		sources = append(sources, &ds)
+	}
 
 	// Bigtable cache
 	var tables []*bigtable.Table
@@ -252,7 +272,8 @@ func main() {
 	}
 
 	// Create server object
-	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient)
+	dataSources := datasources.NewDataSources(sources)
+	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dataSources)
 	pbs.RegisterMixerServer(srv, mixerServer)
 
 	// Subscribe to branch cache update

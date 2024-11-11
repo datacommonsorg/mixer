@@ -20,7 +20,7 @@ import (
 	"runtime"
 	"testing"
 
-	v2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	v3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
@@ -40,7 +40,7 @@ func TestNode(t *testing.T) {
 	goldenDir := path.Join(path.Dir(filename), "datasource")
 	goldenFile := "node.json"
 
-	req := &v2.NodeRequest{
+	req := &v3.NodeRequest{
 		Nodes: []string{"Aadhaar", "Monthly_Average_RetailPrice_Electricity_Residential"},
 	}
 
@@ -54,7 +54,7 @@ func TestNode(t *testing.T) {
 		return
 	}
 
-	var want v2.NodeResponse
+	var want v3.NodeResponse
 	if err = test.ReadJSON(goldenDir, goldenFile, &want); err != nil {
 		t.Fatalf("ReadJSON error (%v): %v", goldenFile, err)
 	}
