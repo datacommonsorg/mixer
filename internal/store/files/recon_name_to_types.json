@@ -195,5 +195,7 @@
   "end": ["Gene"],
   "plain": ["Drug"],
   "do": ["Gene"],
-  "vs": ["Gene"]
+  "vs": ["Gene"],
+  "tax": ["Gene"],
+  "id": ["MeSHDescriptor"]
 }
