@@ -15,13 +15,15 @@
 // Model objects related to the spanner graph database.
 package spanner
 
-// Edge struct represents a single row in the Edge table.
+// Edge struct represents a single row in the Edge table, supplemented with the object name and types.
 type Edge struct {
-	SubjectID   string `spanner:"subject_id"`
-	Predicate   string `spanner:"predicate"`
-	ObjectID    string `spanner:"object_id"`
-	ObjectValue string `spanner:"object_value"`
-	Provenance  string `spanner:"provenance"`
+	SubjectID   string   `spanner:"subject_id"`
+	Predicate   string   `spanner:"predicate"`
+	ObjectID    string   `spanner:"object_id"`
+	ObjectValue string   `spanner:"object_value"`
+	Provenance  string   `spanner:"provenance"`
+	Name        string   `spanner:"name"`
+	Types       []string `spanner:"types"`
 }
 
 // SpannerConfig struct to hold the YAML configuration to a spanner database.
