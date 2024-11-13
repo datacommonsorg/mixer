@@ -24,7 +24,7 @@ type Edge struct {
 	Provenance  string `spanner:"provenance"`
 }
 
-// Edge struct represents a single row in the StatVarObservation table.
+// StatVarObservation struct represents a single row in the StatVarObservation table.
 type StatVarObservation struct {
 	VariableMeasured  string `spanner:"variable_measured"`
 	ObservationAbout  string `spanner:"observation_about"`

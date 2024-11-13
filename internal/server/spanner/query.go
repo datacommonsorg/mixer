@@ -39,16 +39,6 @@ var (
 	}
 )
 
-func getSelectColumns(columns []string, prefix string) string {
-	var prefixedCols []string
-	for _, col := range columns {
-		prefixedCols = append(
-			prefixedCols,
-			fmt.Sprintf("COALESCE(%s%s, '') AS %s", prefix, col, col))
-	}
-	return strings.Join(prefixedCols, ",\n")
-}
-
 // SQL / GQL statements executed by the SpannerClient
 var statements = struct {
 	getEdgesBySubjectID             string
@@ -222,4 +212,17 @@ func (sc *SpannerClient) queryAndCollect(
 	}
 
 	return nil
+}
+
+// getSelectColumns generates the select clause from the specified columns.
+// The columns are coalesced to avoid nulls.
+// They are optionally prefixed if a prefix is specified (relevant from queries with joins).
+func getSelectColumns(columns []string, prefix string) string {
+	var prefixedCols []string
+	for _, col := range columns {
+		prefixedCols = append(
+			prefixedCols,
+			fmt.Sprintf("COALESCE(%s%s, '') AS %s", prefix, col, col))
+	}
+	return strings.Join(prefixedCols, ",\n")
 }
