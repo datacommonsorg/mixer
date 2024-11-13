@@ -18,25 +18,96 @@ package spanner
 import (
 	"context"
 	"fmt"
+	"strings"
 
 	"cloud.google.com/go/spanner"
+	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"google.golang.org/api/iterator"
 )
 
+var (
+	ObsColumns = []string{
+		"variable_measured",
+		"observation_about",
+		"observation_date",
+		"value",
+		"provenance",
+		"observation_period",
+		"measurement_method",
+		"unit",
+		"scaling_factor",
+	}
+)
+
+func getSelectColumns(columns []string, prefix string) string {
+	var prefixedCols []string
+	for _, col := range columns {
+		prefixedCols = append(
+			prefixedCols,
+			fmt.Sprintf("COALESCE(%s%s, '') AS %s", prefix, col, col))
+	}
+	return strings.Join(prefixedCols, ",\n")
+}
+
 // SQL / GQL statements executed by the SpannerClient
 var statements = struct {
-	getEdgesBySubjectID string
+	getEdgesBySubjectID             string
+	getObsByVariableAndEntity       string
+	getObsByVariableEntityAndDate   string
+	getLatestObsByVariableAndEntity string
 }{
 	getEdgesBySubjectID: `
-	SELECT 
-		subject_id, 
-		predicate, 
-		COALESCE(object_id, '') AS object_id, 
-		COALESCE(object_value, '') AS object_value, 
-		COALESCE(provenance, '') AS provenance
-	FROM Edge
-	WHERE subject_id IN UNNEST(@ids)
+		SELECT 
+			subject_id, 
+			predicate, 
+			COALESCE(object_id, '') AS object_id, 
+			COALESCE(object_value, '') AS object_value, 
+			COALESCE(provenance, '') AS provenance
+		FROM Edge
+		WHERE subject_id IN UNNEST(@ids)
 	`,
+	getObsByVariableAndEntity: fmt.Sprintf(`
+		SELECT %s
+		FROM StatVarObservation
+		WHERE
+			variable_measured IN UNNEST(@variables) AND
+			observation_about IN UNNEST(@entities) AND
+			value != ''
+		ORDER BY observation_date ASC
+	`,
+		getSelectColumns(ObsColumns, "")),
+	getObsByVariableEntityAndDate: fmt.Sprintf(`
+		SELECT %s
+		FROM StatVarObservation
+		WHERE
+			variable_measured IN UNNEST(@variables) AND
+			observation_about IN UNNEST(@entities) AND
+			observation_date = @date AND
+			value != ''
+		ORDER BY observation_date ASC
+	`,
+		getSelectColumns(ObsColumns, "")),
+	getLatestObsByVariableAndEntity: fmt.Sprintf(`
+		SELECT %s
+		FROM StatVarObservation AS t1
+		INNER JOIN (
+			SELECT
+				variable_measured,
+				observation_about,
+				MAX(observation_date) AS max_observation_date
+				FROM
+				StatVarObservation
+				WHERE variable_measured IN UNNEST(@variables)
+				AND observation_about IN UNNEST(@entities)
+				GROUP BY 1, 2
+			) AS t2 
+			ON t1.variable_measured = t2.variable_measured
+			AND t1.observation_about = t2.observation_about
+			AND t1.observation_date = t2.max_observation_date
+		WHERE t1.variable_measured IN UNNEST(@variables)
+		AND t1.observation_about IN UNNEST(@entities)
+	`,
+		getSelectColumns(ObsColumns, "t1.")),
 }
 
 // GetNodeEdgesByID retrieves node edges from Spanner given a list of IDs and returns a map.
@@ -68,6 +139,61 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string) (ma
 	}
 
 	return edges, nil
+}
+
+// GetObservations retrieves observations from Spanner given a list of variables, entities and date.
+func (sc *SpannerClient) GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*StatVarObservation, error) {
+	var observations []*StatVarObservation
+	if len(variables) == 0 || len(entities) == 0 {
+		return observations, nil
+	}
+
+	var stmt spanner.Statement
+
+	switch date {
+	case "":
+		stmt = spanner.Statement{
+			SQL: statements.getObsByVariableAndEntity,
+			Params: map[string]interface{}{
+				"variables": variables,
+				"entities":  entities,
+			},
+		}
+	case shared.LATEST:
+		stmt = spanner.Statement{
+			SQL: statements.getLatestObsByVariableAndEntity,
+			Params: map[string]interface{}{
+				"variables": variables,
+				"entities":  entities,
+			},
+		}
+	default:
+		stmt = spanner.Statement{
+			SQL: statements.getObsByVariableEntityAndDate,
+			Params: map[string]interface{}{
+				"variables": variables,
+				"entities":  entities,
+				"date":      date,
+			},
+		}
+	}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		func() interface{} {
+			return &StatVarObservation{}
+		},
+		func(rowStruct interface{}) {
+			observation := rowStruct.(*StatVarObservation)
+			observations = append(observations, observation)
+		},
+	)
+	if err != nil {
+		return observations, err
+	}
+
+	return observations, nil
 }
 
 func (sc *SpannerClient) queryAndCollect(
