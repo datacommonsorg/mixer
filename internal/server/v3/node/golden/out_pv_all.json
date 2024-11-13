@@ -10,14 +10,14 @@
                 "Property"
               ],
               "dcid": "gender",
-              "provenance_id": "dc/base/HumanReadableStatVars"
+              "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]
         },
         "extendedName": {
           "nodes": [
             {
-              "provenance_id": "dc/base/HumanReadableStatVars",
+              "provenanceId": "dc/base/HumanReadableStatVars",
               "value": "Female Population"
             }
           ]
@@ -30,14 +30,14 @@
                 "GenderType"
               ],
               "dcid": "Female",
-              "provenance_id": "dc/base/HumanReadableStatVars"
+              "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]
         },
         "localCuratorLevelId": {
           "nodes": [
             {
-              "provenance_id": "dc/base/HumanReadableStatVars",
+              "provenanceId": "dc/base/HumanReadableStatVars",
               "value": "dcid:Count_Person_Female"
             }
           ]
@@ -46,7 +46,7 @@
           "nodes": [
             {
               "dcid": "count",
-              "provenance_id": "dc/base/HumanReadableStatVars"
+              "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]
         },
@@ -58,14 +58,14 @@
                 "StatVarGroup"
               ],
               "dcid": "dc/g/Person_Gender-Female",
-              "provenance_id": "dc/base/HumanReadableStatVars"
+              "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]
         },
         "name": {
           "nodes": [
             {
-              "provenance_id": "dc/base/HumanReadableStatVars",
+              "provenanceId": "dc/base/HumanReadableStatVars",
               "value": "Female Population"
             }
           ]
@@ -78,7 +78,7 @@
                 "Class"
               ],
               "dcid": "Person",
-              "provenance_id": "dc/base/HumanReadableStatVars"
+              "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]
         },
@@ -90,7 +90,7 @@
                 "Property"
               ],
               "dcid": "measuredValue",
-              "provenance_id": "dc/base/HumanReadableStatVars"
+              "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]
         },
@@ -102,7 +102,7 @@
                 "Class"
               ],
               "dcid": "StatisticalVariable",
-              "provenance_id": "dc/base/HumanReadableStatVars"
+              "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]
         }
