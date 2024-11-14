@@ -84,15 +84,24 @@ var statements = struct {
 			SELECT
 				variable_measured,
 				observation_about,
+				provenance,
+				observation_period,
+				measurement_method,
+				unit,
+				scaling_factor,
 				MAX(observation_date) AS max_observation_date
 				FROM
 				StatVarObservation
 				WHERE variable_measured IN UNNEST(@variables)
 				AND observation_about IN UNNEST(@entities)
-				GROUP BY 1, 2
+				GROUP BY 1, 2, 3, 4, 5, 6, 7
 			) AS t2 
 			ON t1.variable_measured = t2.variable_measured
 			AND t1.observation_about = t2.observation_about
+			AND (t1.provenance = t2.provenance OR (t1.provenance IS NULL AND t2.provenance IS NULL))
+			AND (t1.observation_period = t2.observation_period OR (t1.observation_period IS NULL AND t2.observation_period IS NULL))
+			AND (t1.unit = t2.unit OR (t1.unit IS NULL AND t2.unit IS NULL))
+			AND (t1.scaling_factor = t2.scaling_factor OR (t1.scaling_factor IS NULL AND t2.scaling_factor IS NULL))
 			AND t1.observation_date = t2.max_observation_date
 		WHERE t1.variable_measured IN UNNEST(@variables)
 		AND t1.observation_about IN UNNEST(@entities)
