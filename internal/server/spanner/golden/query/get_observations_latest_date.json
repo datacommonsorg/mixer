@@ -1,0 +1,24 @@
+[
+  {
+    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
+    "ObservationAbout": "geoId/01",
+    "ObservationDate": "2022",
+    "Value": "9587",
+    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
+    "ObservationPeriod": "",
+    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
+    "Unit": "",
+    "ScalingFactor": ""
+  },
+  {
+    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
+    "ObservationAbout": "geoId/02",
+    "ObservationDate": "2022",
+    "Value": "3234",
+    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
+    "ObservationPeriod": "",
+    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
+    "Unit": "",
+    "ScalingFactor": ""
+  }
+]

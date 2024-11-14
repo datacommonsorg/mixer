@@ -26,6 +26,19 @@ type Edge struct {
 	Types       []string `spanner:"types"`
 }
 
+// StatVarObservation struct represents a single row in the StatVarObservation table.
+type StatVarObservation struct {
+	VariableMeasured  string `spanner:"variable_measured"`
+	ObservationAbout  string `spanner:"observation_about"`
+	ObservationDate   string `spanner:"observation_date"`
+	Value             string `spanner:"value"`
+	Provenance        string `spanner:"provenance"`
+	ObservationPeriod string `spanner:"observation_period"`
+	MeasurementMethod string `spanner:"measurement_method"`
+	Unit              string `spanner:"unit"`
+	ScalingFactor     string `spanner:"scaling_factor"`
+}
+
 // SpannerConfig struct to hold the YAML configuration to a spanner database.
 type SpannerConfig struct {
 	Project  string `yaml:"project"`
