@@ -50,6 +50,8 @@ func nodeEdgesToLinkedGraph(edges []*Edge) *v2.LinkedGraph {
 			}
 		}
 		node := &proto.EntityInfo{
+			Name:         edge.Name,
+			Types:        edge.Types,
 			ProvenanceId: edge.Provenance,
 		}
 		if edge.ObjectValue != "" {

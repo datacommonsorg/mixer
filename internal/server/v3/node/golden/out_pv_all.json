@@ -5,6 +5,10 @@
         "constraintProperties": {
           "nodes": [
             {
+              "name": "gender",
+              "types": [
+                "Property"
+              ],
               "dcid": "gender",
               "provenanceId": "dc/base/HumanReadableStatVars"
             }
@@ -21,6 +25,10 @@
         "gender": {
           "nodes": [
             {
+              "name": "Female",
+              "types": [
+                "GenderType"
+              ],
               "dcid": "Female",
               "provenanceId": "dc/base/HumanReadableStatVars"
             }
@@ -31,13 +39,16 @@
             {
               "provenanceId": "dc/base/HumanReadableStatVars",
               "value": "dcid:Count_Person_Female"
-
             }
           ]
         },
         "measuredProp": {
           "nodes": [
             {
+              "name": "count",
+              "types": [
+                "Property"
+              ],
               "dcid": "count",
               "provenanceId": "dc/base/HumanReadableStatVars"
             }
@@ -46,6 +57,10 @@
         "memberOf": {
           "nodes": [
             {
+              "name": "Person With Gender = Female",
+              "types": [
+                "StatVarGroup"
+              ],
               "dcid": "dc/g/Person_Gender-Female",
               "provenanceId": "dc/base/HumanReadableStatVars"
             }
@@ -62,6 +77,10 @@
         "populationType": {
           "nodes": [
             {
+              "name": "Person",
+              "types": [
+                "Class"
+              ],
               "dcid": "Person",
               "provenanceId": "dc/base/HumanReadableStatVars"
             }
@@ -70,6 +89,10 @@
         "statType": {
           "nodes": [
             {
+              "name": "measuredValue",
+              "types": [
+                "Property"
+              ],
               "dcid": "measuredValue",
               "provenanceId": "dc/base/HumanReadableStatVars"
             }
@@ -78,6 +101,10 @@
         "typeOf": {
           "nodes": [
             {
+              "name": "StatisticalVariable",
+              "types": [
+                "Class"
+              ],
               "dcid": "StatisticalVariable",
               "provenanceId": "dc/base/HumanReadableStatVars"
             }

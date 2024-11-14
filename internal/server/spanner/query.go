@@ -47,14 +47,27 @@ var statements = struct {
 	getLatestObsByVariableAndEntity string
 }{
 	getEdgesBySubjectID: `
-		SELECT 
-			subject_id, 
-			predicate, 
-			COALESCE(object_id, '') AS object_id, 
-			COALESCE(object_value, '') AS object_value, 
-			COALESCE(provenance, '') AS provenance
-		FROM Edge
-		WHERE subject_id IN UNNEST(@ids)
+	SELECT
+		edge.subject_id,
+		edge.predicate,
+		COALESCE(edge.object_id, '') AS object_id,
+		COALESCE(edge.object_value, '') AS object_value,
+		COALESCE(edge.provenance, '') AS provenance,
+		COALESCE(object.name, '') AS name,
+		COALESCE(object.types, []) AS types
+	FROM
+		Edge edge
+	LEFT JOIN
+		graph_table( DCGraph match -[e:Edge
+		WHERE
+			e.subject_id IN UNNEST(@ids)
+			AND e.object_value IS NULL]->(n:Node) return n.subject_id,
+			n.name,
+			n.types) object
+	ON
+		edge.object_id = object.subject_id
+	WHERE
+		edge.subject_id IN UNNEST(@ids)
 	`,
 	getObsByVariableAndEntity: fmt.Sprintf(`
 		SELECT %s

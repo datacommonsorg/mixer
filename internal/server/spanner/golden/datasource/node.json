@@ -21,6 +21,10 @@
         "isProvisional": {
           "nodes": [
             {
+              "name": "True",
+              "types": [
+                "Boolean"
+              ],
               "dcid": "True",
               "provenanceId": "dc/base/BaseSchema"
             }
@@ -45,11 +49,19 @@
         "typeOf": {
           "nodes": [
             {
-              "dcid": "GovernmentIdenitifierEnum",
+              "name": "GovernmentIdEnum",
+              "types": [
+                "Class"
+              ],
+              "dcid": "GovernmentIdEnum",
               "provenanceId": "dc/base/BaseSchema"
             },
             {
-              "dcid": "GovernmentIdEnum",
+              "name": "GovernmentIdenitifierEnum",
+              "types": [
+                "Class"
+              ],
+              "dcid": "GovernmentIdenitifierEnum",
               "provenanceId": "dc/base/BaseSchema"
             }
           ]
@@ -61,6 +73,10 @@
         "constraintProperties": {
           "nodes": [
             {
+              "name": "consumingSector",
+              "types": [
+                "Property"
+              ],
               "dcid": "consumingSector",
               "provenanceId": "dc/base/HumanReadableStatVars"
             }
@@ -69,6 +85,11 @@
         "consumingSector": {
           "nodes": [
             {
+              "name": "Residential",
+              "types": [
+                "ElectricityConsumptionSectorEnum",
+                "ElectricityProductionSectorEnum"
+              ],
               "dcid": "Residential",
               "provenanceId": "dc/base/HumanReadableStatVars"
             }
@@ -93,6 +114,10 @@
         "measuredProp": {
           "nodes": [
             {
+              "name": "retailPrice",
+              "types": [
+                "Property"
+              ],
               "dcid": "retailPrice",
               "provenanceId": "dc/base/HumanReadableStatVars"
             }
@@ -101,6 +126,10 @@
         "measurementQualifier": {
           "nodes": [
             {
+              "name": "Monthly",
+              "types": [
+                "StatAccumulationPeriodEnum"
+              ],
               "dcid": "Monthly",
               "provenanceId": "dc/base/HumanReadableStatVars"
             }
@@ -109,11 +138,19 @@
         "memberOf": {
           "nodes": [
             {
-              "dcid": "eia/g/ELEC.1012",
+              "name": "Electricity With Consuming Sector = Residential",
+              "types": [
+                "StatVarGroup"
+              ],
+              "dcid": "dc/g/Electricity_ConsumingSector-Residential",
               "provenanceId": "dc/base/HumanReadableStatVars"
             },
             {
-              "dcid": "dc/g/Electricity_ConsumingSector-Residential",
+              "name": "Residential",
+              "types": [
+                "StatVarGroup"
+              ],
+              "dcid": "eia/g/ELEC.1012",
               "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]
@@ -129,6 +166,10 @@
         "populationType": {
           "nodes": [
             {
+              "name": "Electricity",
+              "types": [
+                "Class"
+              ],
               "dcid": "Electricity",
               "provenanceId": "dc/base/HumanReadableStatVars"
             }
@@ -137,6 +178,10 @@
         "statType": {
           "nodes": [
             {
+              "name": "meanValue",
+              "types": [
+                "Property"
+              ],
               "dcid": "meanValue",
               "provenanceId": "dc/base/HumanReadableStatVars"
             }
@@ -145,6 +190,10 @@
         "typeOf": {
           "nodes": [
             {
+              "name": "StatisticalVariable",
+              "types": [
+                "Class"
+              ],
               "dcid": "StatisticalVariable",
               "provenanceId": "dc/base/HumanReadableStatVars"
             }
