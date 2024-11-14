@@ -20,6 +20,7 @@ import (
 	"runtime"
 	"testing"
 
+	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
@@ -35,37 +36,56 @@ func TestGetNodeEdgesByID(t *testing.T) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	goldenDir := path.Join(path.Dir(filename), "query")
-	goldenFile := "get_node_edges_by_id.json"
 
-	ids := []string{"Aadhaar", "Monthly_Average_RetailPrice_Electricity_Residential"}
-
-	actual, err := client.GetNodeEdgesByID(ctx, ids)
-	if err != nil {
-		t.Fatalf("GetNodeEdgesByID error (%v): %v", goldenFile, err)
-	}
-
-	got, err := test.StructToJSON(actual)
-	if err != nil {
-		t.Fatalf("StructToJSON error (%v): %v", goldenFile, err)
-	}
-
-	if test.GenerateGolden {
-		err = test.WriteGolden(got, goldenDir, goldenFile)
+	for _, c := range []struct {
+		ids        []string
+		arc        *v2.Arc
+		goldenFile string
+	}{
+		{
+			ids: []string{"Aadhaar", "Monthly_Average_RetailPrice_Electricity_Residential"},
+			arc: &v2.Arc{
+				Out:        true,
+				SingleProp: "*",
+			},
+			goldenFile: "get_node_edges_by_subject_id.json",
+		},
+		{
+			ids: []string{"FireIncidentTypeEnum", "FoodTypeEnum"},
+			arc: &v2.Arc{
+				Out:        false,
+				SingleProp: "*",
+			},
+			goldenFile: "get_node_edges_by_object_id.json",
+		},
+	} {
+		actual, err := client.GetNodeEdgesByID(ctx, c.ids, c.arc)
 		if err != nil {
-			t.Fatalf("WriteGolden error (%v): %v", goldenFile, err)
+			t.Fatalf("GetNodeEdgesByID error (%v): %v", c.goldenFile, err)
 		}
-		return
-	}
 
-	want, err := test.ReadGolden(goldenDir, goldenFile)
-	if err != nil {
-		t.Fatalf("ReadGolden error (%v): %v", goldenFile, err)
-	}
+		got, err := test.StructToJSON(actual)
+		if err != nil {
+			t.Fatalf("StructToJSON error (%v): %v", c.goldenFile, err)
+		}
 
-	if diff := cmp.Diff(want, got); diff != "" {
-		t.Errorf("%v payload mismatch (-want +got):\n%s", goldenFile, diff)
-	}
+		if test.GenerateGolden {
+			err = test.WriteGolden(got, goldenDir, c.goldenFile)
+			if err != nil {
+				t.Fatalf("WriteGolden error (%v): %v", c.goldenFile, err)
+			}
+			return
+		}
 
+		want, err := test.ReadGolden(goldenDir, c.goldenFile)
+		if err != nil {
+			t.Fatalf("ReadGolden error (%v): %v", c.goldenFile, err)
+		}
+
+		if diff := cmp.Diff(want, got); diff != "" {
+			t.Errorf("%v payload mismatch (-want +got):\n%s", c.goldenFile, diff)
+		}
+	}
 }
 func TestGetObservations(t *testing.T) {
 	client := test.NewSpannerClient()

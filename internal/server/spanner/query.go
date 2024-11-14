@@ -21,6 +21,7 @@ import (
 	"strings"
 
 	"cloud.google.com/go/spanner"
+	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"google.golang.org/api/iterator"
 )
@@ -42,6 +43,7 @@ var (
 // SQL / GQL statements executed by the SpannerClient
 var statements = struct {
 	getEdgesBySubjectID             string
+	getEdgesByObjectID              string
 	getObsByVariableAndEntity       string
 	getObsByVariableEntityAndDate   string
 	getLatestObsByVariableAndEntity string
@@ -58,16 +60,28 @@ var statements = struct {
 	FROM
 		Edge edge
 	LEFT JOIN
-		graph_table( DCGraph match -[e:Edge
+		GRAPH_TABLE( DCGraph MATCH -[e:Edge
 		WHERE
 			e.subject_id IN UNNEST(@ids)
-			AND e.object_value IS NULL]->(n:Node) return n.subject_id,
+			AND e.object_value IS NULL]->(n:Node) RETURN n.subject_id,
 			n.name,
 			n.types) object
 	ON
 		edge.object_id = object.subject_id
 	WHERE
 		edge.subject_id IN UNNEST(@ids)
+	`,
+	getEdgesByObjectID: `
+	GRAPH DCGraph MATCH (n:Node)-[e:Edge
+	WHERE
+		e.object_id IN UNNEST(@ids)
+		AND e.subject_id != e.object_id]-> return e.object_id AS subject_id,
+		e.predicate,
+		n.subject_id AS object_id,
+		'' as object_value,
+		COALESCE(e.provenance, '') AS provenance,
+		COALESCE(n.name, '') AS name,
+		COALESCE(n.types, []) AS types
 	`,
 	getObsByVariableAndEntity: fmt.Sprintf(`
 		SELECT %s
@@ -122,16 +136,27 @@ var statements = struct {
 		getSelectColumns(ObsColumns, "t1.")),
 }
 
-// GetNodeEdgesByID retrieves node edges from Spanner given a list of IDs and returns a map.
-func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string) (map[string][]*Edge, error) {
+// GetNodeEdgesByID retrieves node edges from Spanner given a V3 NodeRequest and returns a map.
+func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc) (map[string][]*Edge, error) {
+	// TODO: Support additional Node functionality (properties, pagination, etc).
 	edges := make(map[string][]*Edge)
 	if len(ids) == 0 {
 		return edges, nil
 	}
 
-	stmt := spanner.Statement{
-		SQL:    statements.getEdgesBySubjectID,
-		Params: map[string]interface{}{"ids": ids},
+	var stmt spanner.Statement
+
+	switch arc.Out {
+	case true:
+		stmt = spanner.Statement{
+			SQL:    statements.getEdgesBySubjectID,
+			Params: map[string]interface{}{"ids": ids},
+		}
+	case false:
+		stmt = spanner.Statement{
+			SQL:    statements.getEdgesByObjectID,
+			Params: map[string]interface{}{"ids": ids},
+		}
 	}
 
 	err := sc.queryAndCollect(

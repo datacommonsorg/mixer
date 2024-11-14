@@ -20,6 +20,7 @@ import (
 
 	v3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
+	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
 
 // SpannerDataSource represents a data source that interacts with Spanner.
@@ -38,8 +39,17 @@ func (sds *SpannerDataSource) Type() datasource.DataSourceType {
 
 // Node retrieves node data from Spanner.
 func (sds *SpannerDataSource) Node(ctx context.Context, req *v3.NodeRequest) (*v3.NodeResponse, error) {
-	// TODO: Support additional Node functionality (properties, pagination, etc).
-	edges, err := sds.client.GetNodeEdgesByID(ctx, req.Nodes)
+	arcs, err := v2.ParseProperty(req.GetProperty())
+	if err != nil {
+		return nil, err
+	}
+	if len(arcs) == 0 {
+		return &v3.NodeResponse{}, nil
+	}
+	if len(arcs) > 1 {
+		return nil, fmt.Errorf("multiple arcs in node request")
+	}
+	edges, err := sds.client.GetNodeEdgesByID(ctx, req.Nodes, arcs[0])
 	if err != nil {
 		return nil, fmt.Errorf("error getting node edges: %v", err)
 	}

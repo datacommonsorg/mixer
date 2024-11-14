@@ -122,8 +122,10 @@
       "ObjectID": "consumingSector",
       "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "",
-      "Types": []
+      "Name": "consumingSector",
+      "Types": [
+        "Property"
+      ]
     },
     {
       "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
@@ -142,8 +144,10 @@
       "ObjectID": "eia/g/ELEC.1012",
       "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "",
-      "Types": []
+      "Name": "Residential",
+      "Types": [
+        "StatVarGroup"
+      ]
     },
     {
       "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
