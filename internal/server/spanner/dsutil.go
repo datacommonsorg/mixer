@@ -49,20 +49,15 @@ func nodeEdgesToLinkedGraph(edges []*Edge) *v2.LinkedGraph {
 				Nodes: []*proto.EntityInfo{},
 			}
 		}
-		node := &proto.EntityInfo{}
-		if edge.Name != "" {
-			node.Name = edge.Name
-		}
-		if len(edge.Types) > 0 {
-			node.Types = edge.Types
+		node := &proto.EntityInfo{
+			Name:         edge.Name,
+			Types:        edge.Types,
+			ProvenanceId: edge.Provenance,
 		}
 		if edge.ObjectValue != "" {
 			node.Value = edge.ObjectValue
 		} else {
 			node.Dcid = edge.ObjectID
-		}
-		if edge.Provenance != "" {
-			node.ProvenanceId = edge.Provenance
 		}
 		nodes.Nodes = append(nodes.Nodes, node)
 

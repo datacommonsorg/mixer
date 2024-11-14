@@ -73,6 +73,10 @@
         "constraintProperties": {
           "nodes": [
             {
+              "name": "consumingSector",
+              "types": [
+                "Property"
+              ],
               "dcid": "consumingSector",
               "provenanceId": "dc/base/HumanReadableStatVars"
             }
@@ -142,6 +146,10 @@
               "provenanceId": "dc/base/HumanReadableStatVars"
             },
             {
+              "name": "Residential",
+              "types": [
+                "StatVarGroup"
+              ],
               "dcid": "eia/g/ELEC.1012",
               "provenanceId": "dc/base/HumanReadableStatVars"
             }

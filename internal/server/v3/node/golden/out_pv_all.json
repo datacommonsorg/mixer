@@ -45,6 +45,10 @@
         "measuredProp": {
           "nodes": [
             {
+              "name": "count",
+              "types": [
+                "Property"
+              ],
               "dcid": "count",
               "provenanceId": "dc/base/HumanReadableStatVars"
             }
