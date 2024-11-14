@@ -41,7 +41,8 @@ func TestNode(t *testing.T) {
 	goldenFile := "node.json"
 
 	req := &v3.NodeRequest{
-		Nodes: []string{"Aadhaar", "Monthly_Average_RetailPrice_Electricity_Residential"},
+		Nodes:    []string{"Aadhaar", "Monthly_Average_RetailPrice_Electricity_Residential"},
+		Property: "->*",
 	}
 
 	got, err := ds.Node(ctx, req)
