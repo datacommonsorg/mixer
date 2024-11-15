@@ -65,7 +65,7 @@ service Mixer {
     };
   }
 
-  rpc V3Observation(datacommons.v3.ObservationRequest) returns (datacommons.v3.ObservationRequest) {
+  rpc V3Observation(datacommons.v3.ObservationRequest) returns (datacommons.v3.ObservationResponse) {
     option (google.api.http) = {
       get : "/v3/observation"
       additional_bindings : {post : "/v3/observation" body : "*"}

@@ -32,5 +32,5 @@ func (s *Server) V3Node(ctx context.Context, in *pbv3.NodeRequest) (
 func (s *Server) V3Observation(ctx context.Context, in *pbv3.ObservationRequest) (
 	*pbv3.ObservationResponse, error,
 ) {
-	return nil, nil
+	return &pbv3.ObservationResponse{}, nil
 }

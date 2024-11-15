@@ -119,7 +119,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type MixerClient interface {
 	V3Node(ctx context.Context, in *v3.NodeRequest, opts ...grpc.CallOption) (*v3.NodeResponse, error)
-	V3Observation(ctx context.Context, in *v3.ObservationRequest, opts ...grpc.CallOption) (*v3.ObservationRequest, error)
+	V3Observation(ctx context.Context, in *v3.ObservationRequest, opts ...grpc.CallOption) (*v3.ObservationResponse, error)
 	V2Sparql(ctx context.Context, in *proto.SparqlRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error)
 	V2Resolve(ctx context.Context, in *v2.ResolveRequest, opts ...grpc.CallOption) (*v2.ResolveResponse, error)
 	V2Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error)
@@ -259,8 +259,8 @@ func (c *mixerClient) V3Node(ctx context.Context, in *v3.NodeRequest, opts ...gr
 	return out, nil
 }
 
-func (c *mixerClient) V3Observation(ctx context.Context, in *v3.ObservationRequest, opts ...grpc.CallOption) (*v3.ObservationRequest, error) {
-	out := new(v3.ObservationRequest)
+func (c *mixerClient) V3Observation(ctx context.Context, in *v3.ObservationRequest, opts ...grpc.CallOption) (*v3.ObservationResponse, error) {
+	out := new(v3.ObservationResponse)
 	err := c.cc.Invoke(ctx, Mixer_V3Observation_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -867,7 +867,7 @@ func (c *mixerClient) UpdateCache(ctx context.Context, in *proto.UpdateCacheRequ
 // for forward compatibility
 type MixerServer interface {
 	V3Node(context.Context, *v3.NodeRequest) (*v3.NodeResponse, error)
-	V3Observation(context.Context, *v3.ObservationRequest) (*v3.ObservationRequest, error)
+	V3Observation(context.Context, *v3.ObservationRequest) (*v3.ObservationResponse, error)
 	V2Sparql(context.Context, *proto.SparqlRequest) (*proto.QueryResponse, error)
 	V2Resolve(context.Context, *v2.ResolveRequest) (*v2.ResolveResponse, error)
 	V2Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error)
@@ -997,7 +997,7 @@ type UnimplementedMixerServer struct {
 func (UnimplementedMixerServer) V3Node(context.Context, *v3.NodeRequest) (*v3.NodeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V3Node not implemented")
 }
-func (UnimplementedMixerServer) V3Observation(context.Context, *v3.ObservationRequest) (*v3.ObservationRequest, error) {
+func (UnimplementedMixerServer) V3Observation(context.Context, *v3.ObservationRequest) (*v3.ObservationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V3Observation not implemented")
 }
 func (UnimplementedMixerServer) V2Sparql(context.Context, *proto.SparqlRequest) (*proto.QueryResponse, error) {
