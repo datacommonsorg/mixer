@@ -15,6 +15,12 @@
 // Model objects related to the spanner graph database.
 package spanner
 
+// Property struct represents a subset of a row in the Edge table.
+type Property struct {
+	SubjectID string `spanner:"subject_id"`
+	Predicate string `spanner:"predicate"`
+}
+
 // Edge struct represents a single row in the Edge table, supplemented with the object name and types.
 type Edge struct {
 	SubjectID   string   `spanner:"subject_id"`

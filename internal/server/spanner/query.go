@@ -42,12 +42,33 @@ var (
 
 // SQL / GQL statements executed by the SpannerClient
 var statements = struct {
+	getPropsBySubjectID             string
+	getPropsByObjectID              string
 	getEdgesBySubjectID             string
 	getEdgesByObjectID              string
 	getObsByVariableAndEntity       string
 	getObsByVariableEntityAndDate   string
 	getLatestObsByVariableAndEntity string
 }{
+	getPropsBySubjectID: `
+	SELECT
+		DISTINCT(predicate),
+		subject_id,
+	FROM 
+		Edge
+	WHERE
+		subject_id IN UNNEST(@ids)
+	`,
+	getPropsByObjectID: `
+	SELECT
+		DISTINCT(predicate),
+		object_id AS subject_id,
+	FROM
+		Edge
+	WHERE
+		object_id IN UNNEST(@ids)
+		AND object_value IS NULL
+	`,
 	getEdgesBySubjectID: `
 	SELECT
 		edge.subject_id,
@@ -136,7 +157,47 @@ var statements = struct {
 		getSelectColumns(ObsColumns, "t1.")),
 }
 
-// GetNodeEdgesByID retrieves node edges from Spanner given a V3 NodeRequest and returns a map.
+// GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction.
+func (sc *SpannerClient) GetNodeProps(ctx context.Context, ids []string, out bool) ([]*Property, error) {
+	props := []*Property{}
+	if len(ids) == 0 {
+		return props, nil
+	}
+
+	var stmt spanner.Statement
+
+	switch out {
+	case true:
+		stmt = spanner.Statement{
+			SQL:    statements.getPropsBySubjectID,
+			Params: map[string]interface{}{"ids": ids},
+		}
+	case false:
+		stmt = spanner.Statement{
+			SQL:    statements.getPropsByObjectID,
+			Params: map[string]interface{}{"ids": ids},
+		}
+	}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		func() interface{} {
+			return &Property{}
+		},
+		func(rowStruct interface{}) {
+			prop := rowStruct.(*Property)
+			props = append(props, prop)
+		},
+	)
+	if err != nil {
+		return props, err
+	}
+
+	return props, nil
+}
+
+// GetNodeEdgesByID retrieves node edges from Spanner given a list of IDs and a property Arc and returns a map.
 func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc) (map[string][]*Edge, error) {
 	// TODO: Support additional Node functionality (properties, pagination, etc).
 	edges := make(map[string][]*Edge)
