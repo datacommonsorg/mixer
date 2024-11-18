@@ -49,11 +49,21 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *v3.NodeRequest) (*v
 	if len(arcs) > 1 {
 		return nil, fmt.Errorf("multiple arcs in node request")
 	}
-	edges, err := sds.client.GetNodeEdgesByID(ctx, req.Nodes, arcs[0])
-	if err != nil {
-		return nil, fmt.Errorf("error getting node edges: %v", err)
+	arc := arcs[0]
+
+	if arc.SingleProp == "" && len(arc.BracketProps) == 0 {
+		props, err := sds.client.GetNodeProps(ctx, req.Nodes, arc.Out)
+		if err != nil {
+			return nil, fmt.Errorf("error getting node properties: %v", err)
+		}
+		return nodePropsToNodeResponse(props), nil
+	} else {
+		edges, err := sds.client.GetNodeEdgesByID(ctx, req.Nodes, arc)
+		if err != nil {
+			return nil, fmt.Errorf("error getting node edges: %v", err)
+		}
+		return nodeEdgesToNodeResponse(edges), nil
 	}
-	return nodeEdgesToNodeResponse(edges), nil
 }
 
 // Observation retrieves observation data from Spanner.

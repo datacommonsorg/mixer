@@ -1,0 +1,30 @@
+[
+  {
+    "SubjectID": "Count_Person",
+    "Predicate": "measurementDenominator"
+  },
+  {
+    "SubjectID": "Person",
+    "Predicate": "domainIncludes"
+  },
+  {
+    "SubjectID": "Person",
+    "Predicate": "populationType"
+  },
+  {
+    "SubjectID": "Person",
+    "Predicate": "rangeIncludes"
+  },
+  {
+    "SubjectID": "Person",
+    "Predicate": "subClassOf"
+  },
+  {
+    "SubjectID": "Person",
+    "Predicate": "unitOfMeasure"
+  },
+  {
+    "SubjectID": "Person",
+    "Predicate": "victimType"
+  }
+]

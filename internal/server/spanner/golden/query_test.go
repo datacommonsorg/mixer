@@ -26,6 +26,62 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
+func TestGetNodeProps(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+	ctx := context.Background()
+	_, filename, _, _ := runtime.Caller(0)
+	goldenDir := path.Join(path.Dir(filename), "query")
+
+	for _, c := range []struct {
+		ids        []string
+		out        bool
+		goldenFile string
+	}{
+		{
+			ids:        []string{"Count_Person", "Person"},
+			out:        true,
+			goldenFile: "get_node_props_by_subject_id.json",
+		},
+		{
+			ids:        []string{"Count_Person", "Person"},
+			out:        false,
+			goldenFile: "get_node_props_by_object_id.json",
+		},
+	} {
+		actual, err := client.GetNodeProps(ctx, c.ids, c.out)
+		if err != nil {
+			t.Fatalf("GetNodeProps error (%v): %v", c.goldenFile, err)
+		}
+
+		got, err := test.StructToJSON(actual)
+		if err != nil {
+			t.Fatalf("StructToJSON error (%v): %v", c.goldenFile, err)
+		}
+
+		if test.GenerateGolden {
+			err = test.WriteGolden(got, goldenDir, c.goldenFile)
+			if err != nil {
+				t.Fatalf("WriteGolden error (%v): %v", c.goldenFile, err)
+			}
+			return
+		}
+
+		want, err := test.ReadGolden(goldenDir, c.goldenFile)
+		if err != nil {
+			t.Fatalf("ReadGolden error (%v): %v", c.goldenFile, err)
+		}
+
+		if diff := cmp.Diff(want, got); diff != "" {
+			t.Errorf("%v payload mismatch (-want +got):\n%s", c.goldenFile, diff)
+		}
+	}
+}
+
 func TestGetNodeEdgesByID(t *testing.T) {
 	client := test.NewSpannerClient()
 	if client == nil {

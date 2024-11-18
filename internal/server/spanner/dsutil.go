@@ -22,6 +22,24 @@ import (
 	v3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 )
 
+// nodePropsToNodeResponse converts a slice of properties to a NodeResponse proto.
+func nodePropsToNodeResponse(props []*Property) *v3.NodeResponse {
+	nodeResponse := &v3.NodeResponse{
+		Data: make(map[string]*v2.LinkedGraph),
+	}
+
+	for _, prop := range props {
+		linkedGraph, ok := nodeResponse.Data[prop.SubjectID]
+		if !ok {
+			linkedGraph = &v2.LinkedGraph{}
+			nodeResponse.Data[prop.SubjectID] = linkedGraph
+		}
+		linkedGraph.Properties = append(linkedGraph.Properties, prop.Predicate)
+	}
+
+	return nodeResponse
+}
+
 // nodeEdgesToNodeResponse converts a map from subject id to its edges to a NodeResponse proto.
 func nodeEdgesToNodeResponse(edgesBySubjectID map[string][]*Edge) *v3.NodeResponse {
 	nodeResponse := &v3.NodeResponse{

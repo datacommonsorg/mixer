@@ -38,33 +38,46 @@ func TestNode(t *testing.T) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	goldenDir := path.Join(path.Dir(filename), "datasource")
-	goldenFile := "node.json"
 
-	req := &v3.NodeRequest{
-		Nodes:    []string{"Aadhaar", "Monthly_Average_RetailPrice_Electricity_Residential"},
-		Property: "->*",
-	}
+	for _, c := range []struct {
+		req        *v3.NodeRequest
+		goldenFile string
+	}{
+		{
+			req: &v3.NodeRequest{
+				Nodes:    []string{"Count_Person", "Person"},
+				Property: "->",
+			},
+			goldenFile: "properties.json",
+		},
+		{
+			req: &v3.NodeRequest{
+				Nodes:    []string{"Aadhaar", "Monthly_Average_RetailPrice_Electricity_Residential"},
+				Property: "->*",
+			},
+			goldenFile: "property_values.json",
+		},
+	} {
+		got, err := ds.Node(ctx, c.req)
+		if err != nil {
+			t.Fatalf("Node error (%v): %v", c.goldenFile, err)
+		}
 
-	got, err := ds.Node(ctx, req)
-	if err != nil {
-		t.Fatalf("Node error (%v): %v", goldenFile, err)
-	}
+		if test.GenerateGolden {
+			test.UpdateProtoGolden(got, goldenDir, c.goldenFile)
+			return
+		}
 
-	if test.GenerateGolden {
-		test.UpdateProtoGolden(got, goldenDir, goldenFile)
-		return
-	}
+		var want v3.NodeResponse
+		if err = test.ReadJSON(goldenDir, c.goldenFile, &want); err != nil {
+			t.Fatalf("ReadJSON error (%v): %v", c.goldenFile, err)
+		}
 
-	var want v3.NodeResponse
-	if err = test.ReadJSON(goldenDir, goldenFile, &want); err != nil {
-		t.Fatalf("ReadJSON error (%v): %v", goldenFile, err)
+		cmpOpts := cmp.Options{
+			protocmp.Transform(),
+		}
+		if diff := cmp.Diff(got, &want, cmpOpts); diff != "" {
+			t.Errorf("%v payload mismatch:\n%v", c.goldenFile, diff)
+		}
 	}
-
-	cmpOpts := cmp.Options{
-		protocmp.Transform(),
-	}
-	if diff := cmp.Diff(got, &want, cmpOpts); diff != "" {
-		t.Errorf("%v payload mismatch:\n%v", goldenFile, diff)
-	}
-
 }
