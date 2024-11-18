@@ -372,6 +372,24 @@ ENDPOINTS = [
         "nodes": "geoId/06",
         "property": "<-"
     }),
+    # V3Observation GET
+    ("/v3/observation", ["GET"], {
+        "date": "LATEST",
+        "variable.dcids": ["Count_Person"],
+        "entity.dcids": ["country/USA"],
+        "select": ["entity", "variable", "value", "date"]
+    }),
+    # V3Observation POST
+    ("/v3/observation", ["POST"], {
+        "date": "LATEST",
+        "variable": {
+            "dcids": ["Count_Person"]
+        },
+        "entity": {
+            "dcids": ["country/USA"]
+        },
+        "select": ["entity", "variable", "value", "date"]
+    }),
 ]
 
 ERROR_TESTS = [
