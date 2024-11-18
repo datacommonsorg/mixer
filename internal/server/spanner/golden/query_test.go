@@ -144,8 +144,6 @@ func TestGetNodeEdgesByID(t *testing.T) {
 	}
 }
 func TestGetObservations(t *testing.T) {
-	test.EnableSpannerGraph = true
-	test.GenerateGolden = true
 	client := test.NewSpannerClient()
 	if client == nil {
 		return
