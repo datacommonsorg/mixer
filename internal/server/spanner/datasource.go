@@ -65,3 +65,8 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *v3.NodeRequest) (*v
 		return nodeEdgesToNodeResponse(edges), nil
 	}
 }
+
+// Observation retrieves observation data from Spanner.
+func (sds *SpannerDataSource) Observation(ctx context.Context, req *v3.ObservationRequest) (*v3.ObservationResponse, error) {
+	return nil, nil
+}

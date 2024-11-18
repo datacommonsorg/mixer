@@ -27,3 +27,10 @@ func (s *Server) V3Node(ctx context.Context, in *pbv3.NodeRequest) (
 ) {
 	return s.dataSources.Node(ctx, in)
 }
+
+// V3Observation implements API for mixer.V3Observation.
+func (s *Server) V3Observation(ctx context.Context, in *pbv3.ObservationRequest) (
+	*pbv3.ObservationResponse, error,
+) {
+	return &pbv3.ObservationResponse{}, nil
+}
