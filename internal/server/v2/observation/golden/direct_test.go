@@ -95,6 +95,15 @@ func TestFetchDirect(t *testing.T) {
 			},
 			{
 				[]string{
+					"var_with_hyphenated_date",
+				},
+				[]string{"country/USA"},
+				"2024-09",
+				nil,
+				"2024-09.json",
+			},
+			{
+				[]string{
 					"Area_Farm",
 					"Count_Person",
 					"Count_CriminalActivities_CombinedCrime",
