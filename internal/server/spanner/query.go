@@ -52,8 +52,8 @@ var statements = struct {
 }{
 	getPropsBySubjectID: `
 	SELECT
-		DISTINCT(predicate),
-		subject_id,
+		DISTINCT subject_id,
+		predicate
 	FROM 
 		Edge
 	WHERE
@@ -61,8 +61,8 @@ var statements = struct {
 	`,
 	getPropsByObjectID: `
 	SELECT
-		DISTINCT(predicate),
-		object_id AS subject_id,
+		DISTINCT object_id AS subject_id,
+		predicate
 	FROM
 		Edge
 	WHERE
