@@ -144,6 +144,8 @@ func TestGetNodeEdgesByID(t *testing.T) {
 	}
 }
 func TestGetObservations(t *testing.T) {
+	test.EnableSpannerGraph = true
+	test.GenerateGolden = true
 	client := test.NewSpannerClient()
 	if client == nil {
 		return
@@ -161,20 +163,20 @@ func TestGetObservations(t *testing.T) {
 		goldenFile string
 	}{
 		{
-			variables:  []string{"Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings"},
-			entities:   []string{"geoId/01", "geoId/02"},
+			variables:  []string{"AirPollutant_Cancer_Risk"},
+			entities:   []string{"geoId/01001", "geoId/02013"},
 			date:       "",
 			goldenFile: "get_observations_all_dates.json",
 		},
 		{
-			variables:  []string{"Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings"},
-			entities:   []string{"geoId/01", "geoId/02"},
+			variables:  []string{"AirPollutant_Cancer_Risk"},
+			entities:   []string{"geoId/01001", "geoId/02013"},
 			date:       "2020",
 			goldenFile: "get_observations_specific_date.json",
 		},
 		{
-			variables:  []string{"Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings"},
-			entities:   []string{"geoId/01", "geoId/02"},
+			variables:  []string{"AirPollutant_Cancer_Risk"},
+			entities:   []string{"geoId/01001", "geoId/02013"},
 			date:       shared.LATEST,
 			goldenFile: "get_observations_latest_date.json",
 		},

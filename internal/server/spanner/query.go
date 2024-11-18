@@ -18,37 +18,19 @@ package spanner
 import (
 	"context"
 	"fmt"
-	"strings"
 
 	"cloud.google.com/go/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
-	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"google.golang.org/api/iterator"
-)
-
-var (
-	ObsColumns = []string{
-		"variable_measured",
-		"observation_about",
-		"observation_date",
-		"value",
-		"provenance",
-		"observation_period",
-		"measurement_method",
-		"unit",
-		"scaling_factor",
-	}
 )
 
 // SQL / GQL statements executed by the SpannerClient
 var statements = struct {
-	getPropsBySubjectID             string
-	getPropsByObjectID              string
-	getEdgesBySubjectID             string
-	getEdgesByObjectID              string
-	getObsByVariableAndEntity       string
-	getObsByVariableEntityAndDate   string
-	getLatestObsByVariableAndEntity string
+	getPropsBySubjectID       string
+	getPropsByObjectID        string
+	getEdgesBySubjectID       string
+	getEdgesByObjectID        string
+	getObsByVariableAndEntity string
 }{
 	getPropsBySubjectID: `
 	SELECT
@@ -104,57 +86,23 @@ var statements = struct {
 		COALESCE(n.name, '') AS name,
 		COALESCE(n.types, []) AS types
 	`,
-	getObsByVariableAndEntity: fmt.Sprintf(`
-		SELECT %s
-		FROM StatVarObservation
+	getObsByVariableAndEntity: `
+		SELECT
+			variable_measured,
+			observation_about,
+			observations,
+			provenance,
+			COALESCE(observation_period, '') AS observation_period,
+			COALESCE(measurement_method, '') AS measurement_method,
+			COALESCE(unit, '') AS unit,
+			COALESCE(scaling_factor, '') AS scaling_factor,
+			import_name,
+			provenance_url
+		FROM Observation
 		WHERE
 			variable_measured IN UNNEST(@variables) AND
-			observation_about IN UNNEST(@entities) AND
-			value != ''
-		ORDER BY observation_date ASC
+			observation_about IN UNNEST(@entities)
 	`,
-		getSelectColumns(ObsColumns, "")),
-	getObsByVariableEntityAndDate: fmt.Sprintf(`
-		SELECT %s
-		FROM StatVarObservation
-		WHERE
-			variable_measured IN UNNEST(@variables) AND
-			observation_about IN UNNEST(@entities) AND
-			observation_date = @date AND
-			value != ''
-		ORDER BY observation_date ASC
-	`,
-		getSelectColumns(ObsColumns, "")),
-	getLatestObsByVariableAndEntity: fmt.Sprintf(`
-		SELECT %s
-		FROM StatVarObservation AS t1
-		INNER JOIN (
-			SELECT
-				variable_measured,
-				observation_about,
-				provenance,
-				observation_period,
-				measurement_method,
-				unit,
-				scaling_factor,
-				MAX(observation_date) AS max_observation_date
-				FROM
-				StatVarObservation
-				WHERE variable_measured IN UNNEST(@variables)
-				AND observation_about IN UNNEST(@entities)
-				GROUP BY 1, 2, 3, 4, 5, 6, 7
-			) AS t2 
-			ON t1.variable_measured = t2.variable_measured
-			AND t1.observation_about = t2.observation_about
-			AND (t1.provenance = t2.provenance OR (t1.provenance IS NULL AND t2.provenance IS NULL))
-			AND (t1.observation_period = t2.observation_period OR (t1.observation_period IS NULL AND t2.observation_period IS NULL))
-			AND (t1.unit = t2.unit OR (t1.unit IS NULL AND t2.unit IS NULL))
-			AND (t1.scaling_factor = t2.scaling_factor OR (t1.scaling_factor IS NULL AND t2.scaling_factor IS NULL))
-			AND t1.observation_date = t2.max_observation_date
-		WHERE t1.variable_measured IN UNNEST(@variables)
-		AND t1.observation_about IN UNNEST(@entities)
-	`,
-		getSelectColumns(ObsColumns, "t1.")),
 }
 
 // GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction.
@@ -239,56 +187,40 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 	return edges, nil
 }
 
-// GetObservations retrieves observations from Spanner given a list of variables, entities and date.
-func (sc *SpannerClient) GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*StatVarObservation, error) {
-	var observations []*StatVarObservation
+// GetObs retrieves observations from Spanner given a list of variables, entities and date.
+func (sc *SpannerClient) GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*Observation, error) {
+	var observations []*Observation
 	if len(variables) == 0 || len(entities) == 0 {
 		return observations, nil
 	}
 
-	var stmt spanner.Statement
-
-	switch date {
-	case "":
-		stmt = spanner.Statement{
-			SQL: statements.getObsByVariableAndEntity,
-			Params: map[string]interface{}{
-				"variables": variables,
-				"entities":  entities,
-			},
-		}
-	case shared.LATEST:
-		stmt = spanner.Statement{
-			SQL: statements.getLatestObsByVariableAndEntity,
-			Params: map[string]interface{}{
-				"variables": variables,
-				"entities":  entities,
-			},
-		}
-	default:
-		stmt = spanner.Statement{
-			SQL: statements.getObsByVariableEntityAndDate,
-			Params: map[string]interface{}{
-				"variables": variables,
-				"entities":  entities,
-				"date":      date,
-			},
-		}
+	stmt := spanner.Statement{
+		SQL: statements.getObsByVariableAndEntity,
+		Params: map[string]interface{}{
+			"variables": variables,
+			"entities":  entities,
+		},
 	}
 
 	err := sc.queryAndCollect(
 		ctx,
 		stmt,
 		func() interface{} {
-			return &StatVarObservation{}
+			return &Observation{}
 		},
 		func(rowStruct interface{}) {
-			observation := rowStruct.(*StatVarObservation)
+			observation := rowStruct.(*Observation)
 			observations = append(observations, observation)
 		},
 	)
 	if err != nil {
 		return observations, err
+	}
+
+	if date != "" {
+		for _, obs := range observations {
+			obs.Observations.FilterByDate(date)
+		}
 	}
 
 	return observations, nil
@@ -320,17 +252,4 @@ func (sc *SpannerClient) queryAndCollect(
 	}
 
 	return nil
-}
-
-// getSelectColumns generates the select clause from the specified columns.
-// The columns are coalesced to avoid nulls.
-// They are optionally prefixed if a prefix is specified (relevant from queries with joins).
-func getSelectColumns(columns []string, prefix string) string {
-	var prefixedCols []string
-	for _, col := range columns {
-		prefixedCols = append(
-			prefixedCols,
-			fmt.Sprintf("COALESCE(%s%s, '') AS %s", prefix, col, col))
-	}
-	return strings.Join(prefixedCols, ",\n")
 }

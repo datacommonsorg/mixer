@@ -1,24 +1,40 @@
 [
   {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/01",
-    "ObservationDate": "2020",
-    "Value": "8748",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
+    "VariableMeasured": "AirPollutant_Cancer_Risk",
+    "ObservationAbout": "geoId/01001",
+    "Observations": {
+      "Observations": [
+        {
+          "Date": "2020",
+          "Value": 49.3194348252053
+        }
+      ]
+    },
+    "Provenance": "dc/base/EPA_EJSCREEN_AggCensusTract_AggCounty",
+    "ObservationPeriod": "P1Y",
+    "MeasurementMethod": "DataCommonsAggregate",
+    "Unit": "PerMillionPerson",
+    "ScalingFactor": "",
+    "ImportName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
+    "ProvenanceURL": "https://gaftp.epa.gov/EJSCREEN/"
   },
   {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/02",
-    "ObservationDate": "2020",
-    "Value": "2578",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
+    "VariableMeasured": "AirPollutant_Cancer_Risk",
+    "ObservationAbout": "geoId/02013",
+    "Observations": {
+      "Observations": [
+        {
+          "Date": "2020",
+          "Value": 6.2728513028512
+        }
+      ]
+    },
+    "Provenance": "dc/base/EPA_EJSCREEN_AggCensusTract_AggCounty",
+    "ObservationPeriod": "P1Y",
+    "MeasurementMethod": "DataCommonsAggregate",
+    "Unit": "PerMillionPerson",
+    "ScalingFactor": "",
+    "ImportName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
+    "ProvenanceURL": "https://gaftp.epa.gov/EJSCREEN/"
   }
 ]

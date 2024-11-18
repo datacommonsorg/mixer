@@ -1,288 +1,96 @@
 [
   {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/01",
-    "ObservationDate": "2010",
-    "Value": "7125",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
+    "VariableMeasured": "AirPollutant_Cancer_Risk",
+    "ObservationAbout": "geoId/01001",
+    "Observations": {
+      "Observations": [
+        {
+          "Date": "2016",
+          "Value": 56.103212463275
+        },
+        {
+          "Date": "2017",
+          "Value": 56.103212463275
+        },
+        {
+          "Date": "2018",
+          "Value": 56.103212463275
+        },
+        {
+          "Date": "2019",
+          "Value": 49.3194348252083
+        },
+        {
+          "Date": "2020",
+          "Value": 49.3194348252053
+        },
+        {
+          "Date": "2021",
+          "Value": 37.5
+        },
+        {
+          "Date": "2022",
+          "Value": 37.7777777777778
+        },
+        {
+          "Date": "2023",
+          "Value": 36.6666666666667
+        }
+      ]
+    },
+    "Provenance": "dc/base/EPA_EJSCREEN_AggCensusTract_AggCounty",
+    "ObservationPeriod": "P1Y",
+    "MeasurementMethod": "DataCommonsAggregate",
+    "Unit": "PerMillionPerson",
+    "ScalingFactor": "",
+    "ImportName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
+    "ProvenanceURL": "https://gaftp.epa.gov/EJSCREEN/"
   },
   {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/02",
-    "ObservationDate": "2010",
-    "Value": "2299",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
-  },
-  {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/01",
-    "ObservationDate": "2011",
-    "Value": "7792",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
-  },
-  {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/02",
-    "ObservationDate": "2011",
-    "Value": "2392",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
-  },
-  {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/01",
-    "ObservationDate": "2012",
-    "Value": "7423",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
-  },
-  {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/02",
-    "ObservationDate": "2012",
-    "Value": "2591",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
-  },
-  {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/01",
-    "ObservationDate": "2013",
-    "Value": "7399",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
-  },
-  {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/02",
-    "ObservationDate": "2013",
-    "Value": "2322",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
-  },
-  {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/01",
-    "ObservationDate": "2014",
-    "Value": "6545",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
-  },
-  {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/02",
-    "ObservationDate": "2014",
-    "Value": "2822",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
-  },
-  {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/01",
-    "ObservationDate": "2015",
-    "Value": "7547",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
-  },
-  {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/02",
-    "ObservationDate": "2015",
-    "Value": "2594",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
-  },
-  {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/01",
-    "ObservationDate": "2016",
-    "Value": "6588",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
-  },
-  {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/02",
-    "ObservationDate": "2016",
-    "Value": "2549",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
-  },
-  {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/01",
-    "ObservationDate": "2017",
-    "Value": "7151",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
-  },
-  {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/02",
-    "ObservationDate": "2017",
-    "Value": "2273",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
-  },
-  {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/01",
-    "ObservationDate": "2018",
-    "Value": "8404",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
-  },
-  {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/02",
-    "ObservationDate": "2018",
-    "Value": "2466",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
-  },
-  {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/01",
-    "ObservationDate": "2019",
-    "Value": "8412",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
-  },
-  {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/02",
-    "ObservationDate": "2019",
-    "Value": "2968",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
-  },
-  {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/01",
-    "ObservationDate": "2020",
-    "Value": "8748",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
-  },
-  {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/02",
-    "ObservationDate": "2020",
-    "Value": "2578",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
-  },
-  {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/01",
-    "ObservationDate": "2021",
-    "Value": "9235",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
-  },
-  {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/02",
-    "ObservationDate": "2021",
-    "Value": "2463",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
-  },
-  {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/01",
-    "ObservationDate": "2022",
-    "Value": "9587",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
-  },
-  {
-    "VariableMeasured": "Annual_MarginOfError_Count_Person_Years16Onwards_CarTruckOrVanDroveAlone_Employed_WithEarnings",
-    "ObservationAbout": "geoId/02",
-    "ObservationDate": "2022",
-    "Value": "3234",
-    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0804",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "",
-    "ScalingFactor": ""
+    "VariableMeasured": "AirPollutant_Cancer_Risk",
+    "ObservationAbout": "geoId/02013",
+    "Observations": {
+      "Observations": [
+        {
+          "Date": "2016",
+          "Value": 24.2275337152
+        },
+        {
+          "Date": "2017",
+          "Value": 24.2275337152
+        },
+        {
+          "Date": "2018",
+          "Value": 24.2275337152
+        },
+        {
+          "Date": "2019",
+          "Value": 6.27285130285
+        },
+        {
+          "Date": "2020",
+          "Value": 6.2728513028512
+        },
+        {
+          "Date": "2021",
+          "Value": 8
+        },
+        {
+          "Date": "2022",
+          "Value": 8
+        },
+        {
+          "Date": "2023",
+          "Value": 5
+        }
+      ]
+    },
+    "Provenance": "dc/base/EPA_EJSCREEN_AggCensusTract_AggCounty",
+    "ObservationPeriod": "P1Y",
+    "MeasurementMethod": "DataCommonsAggregate",
+    "Unit": "PerMillionPerson",
+    "ScalingFactor": "",
+    "ImportName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
+    "ProvenanceURL": "https://gaftp.epa.gov/EJSCREEN/"
   }
 ]
