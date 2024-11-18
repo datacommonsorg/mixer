@@ -187,7 +187,7 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 	return edges, nil
 }
 
-// GetObs retrieves observations from Spanner given a list of variables, entities and date.
+// GetObservations retrieves observations from Spanner given a list of variables, entities and date.
 func (sc *SpannerClient) GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*Observation, error) {
 	var observations []*Observation
 	if len(variables) == 0 || len(entities) == 0 {
@@ -217,6 +217,7 @@ func (sc *SpannerClient) GetObservations(ctx context.Context, variables []string
 		return observations, err
 	}
 
+	// Filter by date if date was specified.
 	if date != "" {
 		for _, obs := range observations {
 			obs.Observations.FilterByDate(date)
