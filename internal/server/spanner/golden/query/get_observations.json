@@ -1,0 +1,96 @@
+[
+  {
+    "VariableMeasured": "AirPollutant_Cancer_Risk",
+    "ObservationAbout": "geoId/01001",
+    "Observations": {
+      "Observations": [
+        {
+          "Date": "2016",
+          "Value": 56.103212463275
+        },
+        {
+          "Date": "2017",
+          "Value": 56.103212463275
+        },
+        {
+          "Date": "2018",
+          "Value": 56.103212463275
+        },
+        {
+          "Date": "2019",
+          "Value": 49.3194348252083
+        },
+        {
+          "Date": "2020",
+          "Value": 49.3194348252053
+        },
+        {
+          "Date": "2021",
+          "Value": 37.5
+        },
+        {
+          "Date": "2022",
+          "Value": 37.7777777777778
+        },
+        {
+          "Date": "2023",
+          "Value": 36.6666666666667
+        }
+      ]
+    },
+    "Provenance": "dc/base/EPA_EJSCREEN_AggCensusTract_AggCounty",
+    "ObservationPeriod": "P1Y",
+    "MeasurementMethod": "DataCommonsAggregate",
+    "Unit": "PerMillionPerson",
+    "ScalingFactor": "",
+    "ImportName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
+    "ProvenanceURL": "https://gaftp.epa.gov/EJSCREEN/"
+  },
+  {
+    "VariableMeasured": "AirPollutant_Cancer_Risk",
+    "ObservationAbout": "geoId/02013",
+    "Observations": {
+      "Observations": [
+        {
+          "Date": "2016",
+          "Value": 24.2275337152
+        },
+        {
+          "Date": "2017",
+          "Value": 24.2275337152
+        },
+        {
+          "Date": "2018",
+          "Value": 24.2275337152
+        },
+        {
+          "Date": "2019",
+          "Value": 6.27285130285
+        },
+        {
+          "Date": "2020",
+          "Value": 6.2728513028512
+        },
+        {
+          "Date": "2021",
+          "Value": 8
+        },
+        {
+          "Date": "2022",
+          "Value": 8
+        },
+        {
+          "Date": "2023",
+          "Value": 5
+        }
+      ]
+    },
+    "Provenance": "dc/base/EPA_EJSCREEN_AggCensusTract_AggCounty",
+    "ObservationPeriod": "P1Y",
+    "MeasurementMethod": "DataCommonsAggregate",
+    "Unit": "PerMillionPerson",
+    "ScalingFactor": "",
+    "ImportName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
+    "ProvenanceURL": "https://gaftp.epa.gov/EJSCREEN/"
+  }
+]
