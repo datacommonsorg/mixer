@@ -199,7 +199,7 @@ func getObservationsSQLQuery(variables []string,
 		variablesStr,
 	)
 	if queryDate != "" && queryDate != shared.LATEST {
-		query += fmt.Sprintf("AND date = (%s) ", queryDate)
+		query += fmt.Sprintf("AND date = ('%s') ", queryDate)
 	}
 	query += "ORDER BY date ASC;"
 	return query
