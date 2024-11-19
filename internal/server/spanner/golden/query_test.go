@@ -21,7 +21,6 @@ import (
 	"testing"
 
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
-	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 )
@@ -157,29 +156,15 @@ func TestGetObservations(t *testing.T) {
 	for _, c := range []struct {
 		variables  []string
 		entities   []string
-		date       string
 		goldenFile string
 	}{
 		{
 			variables:  []string{"AirPollutant_Cancer_Risk"},
 			entities:   []string{"geoId/01001", "geoId/02013"},
-			date:       "",
-			goldenFile: "get_observations_all_dates.json",
-		},
-		{
-			variables:  []string{"AirPollutant_Cancer_Risk"},
-			entities:   []string{"geoId/01001", "geoId/02013"},
-			date:       "2020",
-			goldenFile: "get_observations_specific_date.json",
-		},
-		{
-			variables:  []string{"AirPollutant_Cancer_Risk"},
-			entities:   []string{"geoId/01001", "geoId/02013"},
-			date:       shared.LATEST,
-			goldenFile: "get_observations_latest_date.json",
+			goldenFile: "get_observations.json",
 		},
 	} {
-		actual, err := client.GetObservations(ctx, c.variables, c.entities, c.date)
+		actual, err := client.GetObservations(ctx, c.variables, c.entities)
 		if err != nil {
 			t.Fatalf("GetObservations error (%v): %v", c.goldenFile, err)
 		}
