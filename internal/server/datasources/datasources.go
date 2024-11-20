@@ -16,6 +16,7 @@ package datasources
 
 import (
 	"context"
+	"fmt"
 
 	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
@@ -61,4 +62,13 @@ func (ds *DataSources) Node(ctx context.Context, in *pbv3.NodeRequest) (*pbv3.No
 	}
 
 	return node.MergeNode(allResp)
+}
+
+func (ds *DataSources) Observation(ctx context.Context, in *pbv3.ObservationRequest) (*pbv3.ObservationResponse, error) {
+	if len(ds.sources) == 0 {
+		return nil, fmt.Errorf("no sources found")
+	}
+	// Returning only the first one right now.
+	// TODO: Execute in parallel and returned merged response.
+	return (*ds.sources[0]).Observation(ctx, in)
 }

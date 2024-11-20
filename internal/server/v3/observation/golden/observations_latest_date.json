@@ -1,0 +1,47 @@
+{
+  "by_variable": {
+    "AirPollutant_Cancer_Risk": {
+      "by_entity": {
+        "geoId/01001": {
+          "ordered_facets": [
+            {
+              "observations": [
+                {
+                  "date": "2023",
+                  "value": 36.6666666666667
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
+            }
+          ]
+        },
+        "geoId/02013": {
+          "ordered_facets": [
+            {
+              "observations": [
+                {
+                  "date": "2023",
+                  "value": 5
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "facets": {
+    "3447055327": {
+      "import_name": "EPA_EJSCREEN_AggCensusTract_AggCounty",
+      "provenance_url": "https://gaftp.epa.gov/EJSCREEN/",
+      "measurement_method": "DataCommonsAggregate",
+      "observation_period": "P1Y",
+      "unit": "PerMillionPerson"
+    }
+  }
+}
