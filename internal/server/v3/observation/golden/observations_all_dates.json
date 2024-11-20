@@ -1,0 +1,103 @@
+{
+  "by_variable": {
+    "AirPollutant_Cancer_Risk": {
+      "by_entity": {
+        "geoId/01001": {
+          "ordered_facets": [
+            {
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 56.103212463275
+                },
+                {
+                  "date": "2017",
+                  "value": 56.103212463275
+                },
+                {
+                  "date": "2018",
+                  "value": 56.103212463275
+                },
+                {
+                  "date": "2019",
+                  "value": 49.3194348252083
+                },
+                {
+                  "date": "2020",
+                  "value": 49.3194348252053
+                },
+                {
+                  "date": "2021",
+                  "value": 37.5
+                },
+                {
+                  "date": "2022",
+                  "value": 37.7777777777778
+                },
+                {
+                  "date": "2023",
+                  "value": 36.6666666666667
+                }
+              ],
+              "obs_count": 8,
+              "earliest_date": "2016",
+              "latest_date": "2023"
+            }
+          ]
+        },
+        "geoId/02013": {
+          "ordered_facets": [
+            {
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 24.2275337152
+                },
+                {
+                  "date": "2017",
+                  "value": 24.2275337152
+                },
+                {
+                  "date": "2018",
+                  "value": 24.2275337152
+                },
+                {
+                  "date": "2019",
+                  "value": 6.27285130285
+                },
+                {
+                  "date": "2020",
+                  "value": 6.2728513028512
+                },
+                {
+                  "date": "2021",
+                  "value": 8
+                },
+                {
+                  "date": "2022",
+                  "value": 8
+                },
+                {
+                  "date": "2023",
+                  "value": 5
+                }
+              ],
+              "obs_count": 8,
+              "earliest_date": "2016",
+              "latest_date": "2023"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "facets": {
+    "3447055327": {
+      "import_name": "EPA_EJSCREEN_AggCensusTract_AggCounty",
+      "provenance_url": "https://gaftp.epa.gov/EJSCREEN/",
+      "measurement_method": "DataCommonsAggregate",
+      "observation_period": "P1Y",
+      "unit": "PerMillionPerson"
+    }
+  }
+}

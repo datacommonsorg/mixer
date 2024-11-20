@@ -17,9 +17,12 @@
 package spanner
 
 import (
-	"github.com/datacommonsorg/mixer/internal/proto"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	v2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	v3 "github.com/datacommonsorg/mixer/internal/proto/v3"
+	"github.com/datacommonsorg/mixer/internal/util"
+
+	"google.golang.org/protobuf/proto"
 )
 
 // nodePropsToNodeResponse converts a slice of properties to a NodeResponse proto.
@@ -64,10 +67,10 @@ func nodeEdgesToLinkedGraph(edges []*Edge) *v2.LinkedGraph {
 		nodes, ok := linkedGraph.Arcs[edge.Predicate]
 		if !ok {
 			nodes = &v2.Nodes{
-				Nodes: []*proto.EntityInfo{},
+				Nodes: []*pb.EntityInfo{},
 			}
 		}
-		node := &proto.EntityInfo{
+		node := &pb.EntityInfo{
 			Name:         edge.Name,
 			Types:        edge.Types,
 			ProvenanceId: edge.Provenance,
@@ -83,4 +86,88 @@ func nodeEdgesToLinkedGraph(edges []*Edge) *v2.LinkedGraph {
 	}
 
 	return linkedGraph
+}
+
+func filterObservationsByDate(observations []*Observation, date string) []*Observation {
+	// No filtering required if date is not specified.
+	if date == "" {
+		return observations
+	}
+	var filtered []*Observation
+	for _, observation := range observations {
+		observation.Observations.FilterByDate(date)
+		if len(observation.Observations.Observations) > 0 {
+			filtered = append(filtered, observation)
+		}
+	}
+	return filtered
+}
+
+func observationsToObservationResponse(variables []string, observations []*Observation) *v3.ObservationResponse {
+	response := newObservationResponse(variables)
+	for _, observation := range observations {
+		facetId, facet, facetObservation := observationToFacetObservation(observation)
+		variable, entity := observation.VariableMeasured, observation.ObservationAbout
+		if response.ByVariable[variable].ByEntity[entity] == nil {
+			response.ByVariable[variable].ByEntity[entity] = &v2.EntityObservation{
+				OrderedFacets: []*v2.FacetObservation{},
+			}
+		}
+		response.ByVariable[variable].ByEntity[entity].OrderedFacets = append(
+			response.ByVariable[variable].ByEntity[entity].OrderedFacets,
+			facetObservation,
+		)
+		response.Facets[facetId] = facet
+	}
+	return response
+}
+
+func newObservationResponse(variables []string) *v3.ObservationResponse {
+	result := &v3.ObservationResponse{
+		ByVariable: map[string]*v2.VariableObservation{},
+		Facets:     map[string]*pb.Facet{},
+	}
+	for _, variable := range variables {
+		result.ByVariable[variable] = &v2.VariableObservation{
+			ByEntity: map[string]*v2.EntityObservation{},
+		}
+	}
+	return result
+}
+
+func observationToFacetObservation(observation *Observation) (string, *pb.Facet, *v2.FacetObservation) {
+	facetId, facet := observationToFacet(observation)
+
+	var observations []*pb.PointStat
+
+	for _, dateValue := range observation.Observations.Observations {
+		observations = append(observations, dateValueToPointStat(dateValue))
+	}
+
+	facetObservation := &v2.FacetObservation{
+		Observations: observations,
+		ObsCount:     *proto.Int32(int32(len(observations))),
+		EarliestDate: observations[0].Date,
+		LatestDate:   observations[len(observations)-1].Date,
+	}
+	return facetId, facet, facetObservation
+}
+
+func observationToFacet(observation *Observation) (string, *pb.Facet) {
+	facet := pb.Facet{
+		ImportName:        observation.ImportName,
+		ProvenanceUrl:     observation.ProvenanceURL,
+		MeasurementMethod: observation.MeasurementMethod,
+		ObservationPeriod: observation.ObservationPeriod,
+		ScalingFactor:     observation.ScalingFactor,
+		Unit:              observation.Unit,
+	}
+	return util.GetFacetID(&facet), &facet
+}
+
+func dateValueToPointStat(dateValue *DateValue) *pb.PointStat {
+	return &pb.PointStat{
+		Date:  dateValue.Date,
+		Value: proto.Float64(dateValue.Value),
+	}
 }
