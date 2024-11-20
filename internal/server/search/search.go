@@ -17,6 +17,7 @@ package search
 import (
 	"context"
 	"fmt"
+	"math"
 	"strings"
 
 	"cloud.google.com/go/bigquery"
@@ -26,6 +27,8 @@ import (
 	"google.golang.org/api/iterator"
 )
 
+const MaxSearchLimit = 100
+
 // Search implements API for Mixer.Search.
 func Search(
 	ctx context.Context,
@@ -33,25 +36,41 @@ func Search(
 	bqClient *bigquery.Client,
 	tableName string,
 ) (*pb.SearchResponse, error) {
-	result := map[string]*pb.SearchResultSection{}
 	tokens := strings.Split(strings.ToLower(in.GetQuery()), " ")
+	if len(tokens) == 1 && tokens[0] == "" {
+		return nil, fmt.Errorf("query not specified")
+	}
+
+	var queryParams []bigquery.QueryParameter
+
 	qStr := fmt.Sprintf(
 		"SELECT id, type, extended_name FROM `%s`.Instance "+
 			"WHERE type != \"CensusTract\" and type != \"PowerPlant\""+
 			" and type != \"PowerPlantUnit\""+
 			" and type != \"BiologicalSpecimen\"", tableName)
-	for _, token := range tokens {
-		qStr += fmt.Sprintf(
-			` AND REGEXP_CONTAINS(LOWER(extended_name), r"\b%s\b")`, token)
+
+	for i, token := range tokens {
+		paramName := fmt.Sprintf("token%d", i)
+		qStr += fmt.Sprintf(" AND REGEXP_CONTAINS(LOWER(extended_name), @%s)", paramName)
+		queryParams = append(queryParams, bigquery.QueryParameter{Name: paramName, Value: fmt.Sprintf(`\b%s\b`, token)})
 	}
-	if in.GetMaxResults() > 0 {
-		qStr += fmt.Sprintf(" LIMIT %d", in.GetMaxResults())
+
+	maxResults := in.GetMaxResults()
+	if maxResults <= 0 {
+		maxResults = MaxSearchLimit
 	}
+	limit := int(math.Min(MaxSearchLimit, float64(maxResults)))
+	qStr += " LIMIT @limit"
+	queryParams = append(queryParams, bigquery.QueryParameter{Name: "limit", Value: limit})
+
 	q := bqClient.Query(qStr)
+	q.Parameters = queryParams
 	it, err := q.Read(ctx)
 	if err != nil {
 		return nil, err
 	}
+
+	result := map[string]*pb.SearchResultSection{}
 	for {
 		var row []bigquery.Value
 		err := it.Next(&row)
