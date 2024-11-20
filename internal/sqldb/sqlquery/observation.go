@@ -18,7 +18,6 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
-	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
@@ -42,7 +41,8 @@ func GetObservations(
 	}
 
 	// Query SQL.
-	rows, err := sqlClient.Query(getObservationsSQLQuery(variables, entities, queryDate))
+	query, args := getObservationsSQLQuery(variables, entities, queryDate)
+	rows, err := sqlClient.Query(query, args...)
 	if err != nil {
 		return nil, err
 	}
@@ -185,9 +185,8 @@ func toFacet(
 }
 
 func getObservationsSQLQuery(variables []string,
-	entities []string, queryDate string) string {
-	entitiesStr := "'" + strings.Join(entities, "', '") + "'"
-	variablesStr := "'" + strings.Join(variables, "', '") + "'"
+	entities []string, queryDate string) (string, []interface{}) {
+	var args []interface{}
 	query := fmt.Sprintf(
 		`
 			SELECT entity, variable, date, value, provenance, unit, scaling_factor, measurement_method, observation_period, properties FROM observations
@@ -195,14 +194,17 @@ func getObservationsSQLQuery(variables []string,
 			AND variable IN (%s)
 			AND value != ''
 		`,
-		entitiesStr,
-		variablesStr,
+		util.SQLInParam(len(entities)),
+		util.SQLInParam(len(variables)),
 	)
+	args = append(args, util.ConvertArgs(entities)...)
+	args = append(args, util.ConvertArgs(variables)...)
 	if queryDate != "" && queryDate != shared.LATEST {
-		query += fmt.Sprintf("AND date = ('%s') ", queryDate)
+		query += "AND date = ? "
+		args = append(args, queryDate)
 	}
 	query += "ORDER BY date ASC;"
-	return query
+	return query, args
 }
 
 // The internal structs below are for generating an intermediate response from the SQL response to simplify generating the final ObservationResponse.
