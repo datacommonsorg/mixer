@@ -17,7 +17,6 @@ package node
 import (
 	"context"
 	"fmt"
-	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -78,23 +77,22 @@ func GetPropertiesHelper(
 	}
 	// Fetch data from SQLite
 	if store.SQLClient != nil {
-		nodesStr := "'" + strings.Join(nodes, "', '") + "'"
 		var query string
 		if direction == util.DirectionOut {
 			query = fmt.Sprintf(
 				"SELECT subject_id AS node, predicate FROM triples "+
 					"WHERE subject_id IN (%s);",
-				nodesStr,
+				util.SQLInParam(len(nodes)),
 			)
 		} else {
 			query = fmt.Sprintf(
 				"SELECT object_id AS node, predicate FROM triples "+
 					"WHERE object_id IN (%s);",
-				nodesStr,
+				util.SQLInParam(len(nodes)),
 			)
 		}
 		// Execute query
-		rows, err := store.SQLClient.Query(query)
+		rows, err := store.SQLClient.Query(query, util.ConvertArgs(nodes)...)
 		if err != nil {
 			return nil, err
 		}
