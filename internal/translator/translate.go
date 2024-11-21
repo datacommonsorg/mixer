@@ -636,6 +636,36 @@ func removeConstraints(
 	return jc
 }
 
+func getBqQuery(opts *types.QueryOptions) (bigquery.Client.Query, []bigquery.QueryParameter){
+	var queryParams []bigquery.QueryParameter
+	var query bigquery.Client.Query
+
+	queryStr += "SELECT DISTINCT "
+
+
+	
+	if opts.Orderby != "" {
+		orderby := strings.TrimPrefix(strings.ReplaceAll(opts.Orderby, "/", "_"), "?")
+		if opts.ASC {
+			orderby += " ASC\n"
+		} else {
+			orderby += " DESC\n"
+		}
+		sql += fmt.Sprintf("ORDER BY @order_by")
+		queryParams = append(queryParams, bigquery.QueryParameter{Name: "order_by", Value: orderby})
+	}
+
+	if opts.Limit > 0 {
+		queryParams = append(queryParams, bigquery.QueryParameter{Name: "limit", Value: opts.Limit})
+		sql += fmt.Sprintf("LIMIT @limit\n", opts.Limit)
+	}
+
+	q := *bigquery.Client.Query(queryStr)
+	q.parameters = queryParams
+
+	return queryParams
+}
+
 func getSQL(
 	nodes []types.Node,
 	constraints []Constraint,
@@ -847,18 +877,6 @@ func getSQL(
 			}
 			sql += fmt.Sprintf("%s.%s IN (%s)\n", c.LHS.Table.Alias(), c.LHS.Name, strings.Join(strs, ", "))
 		}
-	}
-	if opts.Orderby != "" {
-		sql += fmt.Sprintf(
-			"ORDER BY %s", strings.TrimPrefix(strings.ReplaceAll(opts.Orderby, "/", "_"), "?"))
-		if opts.ASC {
-			sql += " ASC\n"
-		} else {
-			sql += " DESC\n"
-		}
-	}
-	if opts.Limit > 0 {
-		sql += fmt.Sprintf("LIMIT %d\n", opts.Limit)
 	}
 	return sql, prov, nil
 }
