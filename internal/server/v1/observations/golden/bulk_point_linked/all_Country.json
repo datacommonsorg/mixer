@@ -5617,7 +5617,7 @@
     },
     "1733625304": {
       "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
-      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true",
+      "provenance_url": "https://ec.europa.eu/eurostat/databrowser/view/demo_r_gind3/default/table?lang=en",
       "measurement_method": "EurostatRegionalStatistics"
     },
     "1897073702": {

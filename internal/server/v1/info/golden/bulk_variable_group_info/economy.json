@@ -8,7 +8,8 @@
           {
             "id": "Median_Income_Household",
             "searchNames": [
-              "Median Income of Household"
+              "Median Income of Household",
+              "Median Income for All Households"
             ],
             "displayName": "Median Income for All Households",
             "definition": "st=medianValue,mp=income,pt=Household"
@@ -24,7 +25,8 @@
           {
             "id": "Count_Product_MobileCellularSubscription_AsFractionOf_Count_Person",
             "searchNames": [
-              "Count of Product With Product Type is Mobile Cellular Subscription (Per Capita)"
+              "Count of Product With Product Type is Mobile Cellular Subscription (Per Capita)",
+              "Mobile Phone Subscriptions Per Person in a Population"
             ],
             "displayName": "Mobile Phone Subscriptions Per Person in a Population",
             "definition": "md=Count_Person,mp=count,pt=Product,productType=MobileCellularSubscription",
@@ -33,7 +35,8 @@
           {
             "id": "Monthly_Count_Bank_FinancialProduct_UPI",
             "searchNames": [
-              "Monthly Count of Bank With Financial Product is UPI"
+              "Monthly Count of Bank With Financial Product is UPI",
+              "No. of Banks live on UPI"
             ],
             "displayName": "No. of Banks live on UPI",
             "definition": "mq=Monthly,mp=count,pt=Bank,financialProduct=UPI"
