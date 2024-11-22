@@ -927,7 +927,7 @@ func getBqQuery(store *store.Store, opts *types.QueryOptions, nodes []types.Node
 			for _, s := range v {
 				strs = append(strs, addQuote(s))
 			}
-			queryStr += fmt.Sprintf("@clause%d IN (@value%d)\n", idx, idx)
+			queryStr += fmt.Sprintf("@clause%d IN UNNEST(@value%d)\n", idx, idx)
 			queryParams = append(queryParams, bigquery.QueryParameter{
 				Name:  fmt.Sprintf("clause%d", idx),
 				Value: fmt.Sprintf("%s.%s", c.LHS.Table.Alias(), c.LHS.Name),
