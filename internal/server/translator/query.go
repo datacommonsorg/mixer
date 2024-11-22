@@ -57,7 +57,10 @@ func Query(
 	out.Rows = []*pb.QueryResponseRow{}
 	n := len(out.Header)
 
-	q := store.BqClient.Query(translation.SQL)
+	q := store.BqClient.Query(translation.SQL.SQL)
+	if len(translation.SQL.Params) > 0 {
+		q.Parameters = translation.SQL.Params
+	}
 	it, err := q.Read(ctx)
 	if err != nil {
 		return nil, err

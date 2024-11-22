@@ -19,6 +19,7 @@ import (
 	"strings"
 	"testing"
 
+	"cloud.google.com/go/bigquery"
 	"github.com/datacommonsorg/mixer/internal/translator/datalog"
 	"github.com/datacommonsorg/mixer/internal/translator/solver"
 	"github.com/datacommonsorg/mixer/internal/translator/sparql"
@@ -226,7 +227,7 @@ func TestGetSQL(t *testing.T) {
 	constraints := []Constraint{
 		{*c3, n2}, {*c3, n1}, {*c2, "City"}, {*c1, "MTV"},
 	}
-	gotSQL, _, err := getSQL(
+	got, _, err := getSQL(
 		[]types.Node{n2},
 		constraints,
 		map[types.Node]string{},
@@ -240,12 +241,19 @@ func TestGetSQL(t *testing.T) {
 		"SELECT DISTINCT _dc_v3_Place_.id AS dcid,\n" +
 			"_dc_v3_Place_.prov_id AS prov0\n" +
 			"FROM `dc_v3.Place` AS _dc_v3_Place_\n" +
-			"WHERE _dc_v3_Place_.name = \"MTV\"\n" +
-			"AND _dc_v3_Place_.type = \"City\"\n" +
+			"WHERE _dc_v3_Place_.name = @param0\n" +
+			"AND _dc_v3_Place_.type = @param1\n" +
 			"ORDER BY dcid ASC\n" +
 			"LIMIT 20\n"
-	if diff := cmp.Diff(wantSQL, gotSQL); diff != "" {
-		t.Errorf("getSQL unexpected got diff %v", diff)
+	wantParams := []bigquery.QueryParameter{
+		{Name: "param0", Value: "MTV"},
+		{Name: "param1", Value: "City"},
+	}
+	if diff := cmp.Diff(wantSQL, got.SQL); diff != "" {
+		t.Errorf("getSQL unexpected got sql diff %v", diff)
+	}
+	if diff := cmp.Diff(wantParams, got.Params); diff != "" {
+		t.Errorf("getSQL unexpected got params diff %v", diff)
 	}
 }
 

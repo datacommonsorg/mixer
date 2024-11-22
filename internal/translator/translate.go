@@ -20,6 +20,7 @@ import (
 	"strconv"
 	"strings"
 
+	"cloud.google.com/go/bigquery"
 	"github.com/datacommonsorg/mixer/internal/parser/tmcf"
 	"github.com/datacommonsorg/mixer/internal/translator/solver"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
@@ -51,9 +52,24 @@ type entityInfo struct {
 	v interface{}
 }
 
+// BQSQL contains a BQ SQL query and its parameters.
+type BQSQL struct {
+	SQL    string
+	Params []bigquery.QueryParameter
+}
+
+func (q *BQSQL) addParam(value interface{}) string {
+	paramName := fmt.Sprintf("param%d", len(q.Params))
+	q.Params = append(q.Params, bigquery.QueryParameter{
+		Name:  paramName,
+		Value: value,
+	})
+	return fmt.Sprintf("@%s", paramName)
+}
+
 // Translation contains the translated result.
 type Translation struct {
-	SQL        string
+	SQL        *BQSQL
 	Nodes      []types.Node
 	Bindings   []Binding
 	Constraint []Constraint
@@ -641,7 +657,8 @@ func getSQL(
 	constraints []Constraint,
 	constNode map[types.Node]string,
 	provInfo ProvInfo,
-	opts *types.QueryOptions) (string, map[int][]int, error) {
+	opts *types.QueryOptions) (*BQSQL, map[int][]int, error) {
+	bqQuery := &BQSQL{}
 	// prov maps provenance column to node columns
 	prov := map[int][]int{}
 	provCols := map[types.Column]int{}
@@ -836,10 +853,7 @@ func getSQL(
 		case types.Column:
 			sql += fmt.Sprintf("%s.%s = %s.%s\n", c.LHS.Table.Alias(), c.LHS.Name, v.Table.Alias(), v.Name)
 		case string:
-			// Before we have spanner table reflection, need to hardcode check here.
-			// But the user should really have quote for strings.
-			useQuote := strings.Contains(c.LHS.Table.Name, tmcf.Triple)
-			sql += fmt.Sprintf("%s.%s = %s\n", c.LHS.Table.Alias(), c.LHS.Name, addQuote(v, useQuote))
+			sql += fmt.Sprintf("%s.%s = %s\n", c.LHS.Table.Alias(), c.LHS.Name, bqQuery.addParam(v))
 		case []string:
 			strs := []string{}
 			for _, s := range v {
@@ -860,7 +874,8 @@ func getSQL(
 	if opts.Limit > 0 {
 		sql += fmt.Sprintf("LIMIT %d\n", opts.Limit)
 	}
-	return sql, prov, nil
+	bqQuery.SQL = sql
+	return bqQuery, prov, nil
 }
 
 // Translate takes a datalog query and translates to GoogleSQL query based on schema mapping.
