@@ -17,6 +17,7 @@ package server
 
 import (
 	"context"
+	"log"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -73,6 +74,7 @@ func (s *Server) V2Resolve(
 func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 	*pbv2.NodeResponse, error,
 ) {
+	log.Println("We;re in the V2Node nedpoint.")
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	localRespChan := make(chan *pbv2.NodeResponse, 1)
 	remoteRespChan := make(chan *pbv2.NodeResponse, 1)

@@ -15,11 +15,14 @@
 package translator
 
 import (
+	"context"
 	"fmt"
+	"log"
 	"sort"
 	"strconv"
 	"strings"
 
+	"cloud.google.com/go/bigquery"
 	"github.com/datacommonsorg/mixer/internal/parser/tmcf"
 	"github.com/datacommonsorg/mixer/internal/translator/solver"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
@@ -636,83 +639,111 @@ func removeConstraints(
 	return jc
 }
 
-func getBqQuery(opts *types.QueryOptions) (bigquery.Client.Query, []bigquery.QueryParameter){
-	var queryParams []bigquery.QueryParameter
-	var query bigquery.Client.Query
+// func getBqQuery(opts *types.QueryOptions) bigquery.Query {
+// 	log.Println("And triggering getBqQuery")
+// 	var queryParams []bigquery.QueryParameter
+// 	var bqClient *bigquery.Client
 
-	queryStr += "SELECT DISTINCT "
+// 	queryStr := "SELECT "
+// 	if opts.Distinct {
+// 		queryStr += "DISTINCT "
+// 	}
 
 
 	
-	if opts.Orderby != "" {
-		orderby := strings.TrimPrefix(strings.ReplaceAll(opts.Orderby, "/", "_"), "?")
-		if opts.ASC {
-			orderby += " ASC\n"
-		} else {
-			orderby += " DESC\n"
-		}
-		sql += fmt.Sprintf("ORDER BY @order_by")
-		queryParams = append(queryParams, bigquery.QueryParameter{Name: "order_by", Value: orderby})
-	}
+// 	if opts.Orderby != "" {
+// 		orderby := strings.TrimPrefix(strings.ReplaceAll(opts.Orderby, "/", "_"), "?")
+// 		if opts.ASC {
+// 			orderby += " ASC\n"
+// 		} else {
+// 			orderby += " DESC\n"
+// 		}
+// 		queryStr += fmt.Sprintf("ORDER BY @order_by")
+// 		queryParams = append(queryParams, bigquery.QueryParameter{Name: "order_by", Value: orderby})
+// 	}
 
-	if opts.Limit > 0 {
-		queryParams = append(queryParams, bigquery.QueryParameter{Name: "limit", Value: opts.Limit})
-		sql += fmt.Sprintf("LIMIT @limit\n", opts.Limit)
-	}
+// 	if opts.Limit > 0 {
+// 		queryParams = append(queryParams, bigquery.QueryParameter{Name: "limit", Value: opts.Limit})
+// 		queryStr += fmt.Sprintf("LIMIT @limit\n", opts.Limit)
+// 	}
 
-	q := *bigquery.Client.Query(queryStr)
-	q.parameters = queryParams
+// 	q := *bqClient.Query(queryStr)
+// 	q.Parameters = queryParams
+// 	log.Println("\n\nIN HEREEEE\n")
+// 	log.Println(queryStr)
+// 	log.Println(q.Parameters)
+// 	log.Println(q)
 
-	return queryParams
-}
+// 	return q
+// }
 
-func getSQL(
-	nodes []types.Node,
-	constraints []Constraint,
-	constNode map[types.Node]string,
-	provInfo ProvInfo,
-	opts *types.QueryOptions) (string, map[int][]int, error) {
+func getBqQuery(opts *types.QueryOptions, nodes []types.Node, constraints []Constraint, constNode map[types.Node]string, provInfo ProvInfo) (*bigquery.Query, error) {
+    // log.Println("And triggering getBqQuery")
+    var queryParams []bigquery.QueryParameter
 	// prov maps provenance column to node columns
 	prov := map[int][]int{}
 	provCols := map[types.Column]int{}
 	provList := []types.Column{}
 	pc := len(nodes)
-	sql := "SELECT "
-	if opts.Distinct {
-		sql += "DISTINCT "
-	}
-	for idx, n := range nodes {
-		if idx != 0 {
-			sql += ",\n"
-		}
-		if str, ok := constNode[n]; ok {
-			sql += fmt.Sprintf(`"%s"`, str)
-		}
-		for _, c := range constraints {
-			if n == c.RHS {
-				sql += fmt.Sprintf("%s.%s AS %s",
-					c.LHS.Table.Alias(),
-					c.LHS.Name,
-					strings.TrimPrefix(strings.ReplaceAll(n.Alias, "/", "_"), "?"))
-				if provInfo.query {
-					if provCol, ok := provInfo.tableProv[c.LHS.Table.Name]; ok {
-						provCol.Table.ID = c.LHS.Table.ID
-						if i, ok := provCols[provCol]; ok {
-							prov[i] = append(prov[i], idx)
-						} else {
-							provList = append(provList, provCol)
-							provCols[provCol] = pc
-							prov[pc] = []int{idx}
-							pc++
+	
+    // bqClient initialization is omitted here, but ensure it's correctly set up
+	ctx := context.Background()
+    bqClient, err := bigquery.NewClient(ctx, "your-project-id")
+    if err != nil {
+        return nil, fmt.Errorf("bigquery.NewClient: %w", err)
+    }
+
+    queryStr := "SELECT "
+    if opts.Distinct {
+        queryStr += "DISTINCT "
+    }
+
+    // Handle SELECT fields with parameterization
+    for idx, n := range nodes {
+        if idx != 0 {
+            queryStr += ",\n"
+        }
+        if str, ok := constNode[n]; ok {
+            queryStr += fmt.Sprintf(`"%s"`, str) // No parameterization needed for constants
+        } else {
+            // Parameterize column names
+            queryStr += fmt.Sprintf("@col%d AS @col%d_as", idx, idx)
+            for _, c := range constraints {
+                if n == c.RHS {
+                    queryParams = append(queryParams, bigquery.QueryParameter{
+                        Name:  fmt.Sprintf("col%d", idx),
+                        Value: fmt.Sprintf("%s.%s", c.LHS.Table.Alias(), c.LHS.Name),
+                    })
+					queryParams = append(queryParams, bigquery.QueryParameter{
+                        Name:  fmt.Sprintf("col%d_as", idx),
+                        Value: strings.TrimPrefix(strings.ReplaceAll(n.Alias, "/", "_"), "?"),
+                    })
+					if provInfo.query {
+						if provCol, ok := provInfo.tableProv[c.LHS.Table.Name]; ok {
+							provCol.Table.ID = c.LHS.Table.ID
+							if i, ok := provCols[provCol]; ok {
+								prov[i] = append(prov[i], idx)
+							} else {
+								provList = append(provList, provCol)
+								provCols[provCol] = pc
+								prov[pc] = []int{idx}
+								pc++
+							}
 						}
 					}
-				}
-				break
-			}
-		}
-	}
+					break
+                }
+            }
+        }
+    }
+	// queryStr += "\n"
+
 	for i, p := range provList {
-		sql += ",\n" + fmt.Sprintf("%s.%s AS prov%d", p.Table.Alias(), p.Name, i)
+        queryStr += fmt.Sprintf(",\n @prov_col%d AS prov%d", i, i)
+		queryParams = append(queryParams, bigquery.QueryParameter{
+            Name:  fmt.Sprintf("prov_col%d", i),
+            Value: fmt.Sprintf("%s.%s", p.Table.Alias(), p.Name),
+        })
 	}
 
 	tableCounter := map[types.Table]int{}
@@ -778,6 +809,142 @@ func getSQL(
 		}
 	}
 
+	queryStr += fmt.Sprintf("\nFROM @table AS @table_alias\n")
+	queryParams = append(queryParams, bigquery.QueryParameter{
+		Name:  "table",
+		Value: currTable.Name,
+	})
+	queryParams = append(queryParams, bigquery.QueryParameter{
+		Name:  "table_alias",
+		Value: currTable.Alias(),
+	})
+	
+    q := bqClient.Query(queryStr)
+    q.Parameters = queryParams
+    log.Println("BigQuery Querystring is ", queryStr)
+	log.Println("Query parameters are ", queryParams)
+    // log.Println(queryStr)
+    // log.Println(q.Parameters)
+    // log.Println(q)
+
+    return q, nil
+}
+
+func getSQL(
+	nodes []types.Node,
+	constraints []Constraint,
+	constNode map[types.Node]string,
+	provInfo ProvInfo,
+	opts *types.QueryOptions) (string, map[int][]int, error) {
+	// prov maps provenance column to node columns
+	prov := map[int][]int{}
+	provCols := map[types.Column]int{}
+	provList := []types.Column{}
+	pc := len(nodes)
+	sql := "SELECT "
+	for idx, n := range nodes {
+		if idx != 0 {
+			sql += ",\n"
+		}
+		if str, ok := constNode[n]; ok {
+			sql += fmt.Sprintf(`"%s"`, str)
+			// log.Println("Adding str from constNode ", str)
+		}
+		for _, c := range constraints {
+			if n == c.RHS {
+				thisstr := fmt.Sprintf("%s.%s AS %s",
+					c.LHS.Table.Alias(),
+					c.LHS.Name,
+					strings.TrimPrefix(strings.ReplaceAll(n.Alias, "/", "_"), "?"))
+				// log.Println("Thisstr is ", thisstr)
+				sql += thisstr
+				if provInfo.query {
+					if provCol, ok := provInfo.tableProv[c.LHS.Table.Name]; ok {
+						provCol.Table.ID = c.LHS.Table.ID
+						if i, ok := provCols[provCol]; ok {
+							prov[i] = append(prov[i], idx)
+						} else {
+							provList = append(provList, provCol)
+							provCols[provCol] = pc
+							prov[pc] = []int{idx}
+							pc++
+						}
+					}
+				}
+				break
+			}
+		}
+	}
+	for i, p := range provList {
+		thatstr := ",\n" + fmt.Sprintf("%s.%s AS prov%d", p.Table.Alias(), p.Name, i)
+		// log.Println("That str is ", thatstr)
+		sql += thatstr
+	}
+
+	tableCounter := map[types.Table]int{}
+	constCounter := map[types.Table]int{}
+	joinConstraints := map[types.Table][]Constraint{}
+	whereConstraints := []Constraint{}
+
+	for _, c := range constraints {
+		tableCounter[c.LHS.Table]++
+		switch v := c.RHS.(type) {
+		case types.Column:
+			joinConstraints[c.LHS.Table] = append(joinConstraints[c.LHS.Table], c)
+			joinConstraints[v.Table] = append(joinConstraints[v.Table], c)
+			tableCounter[v.Table]++
+		case types.Node:
+		default:
+			whereConstraints = append(whereConstraints, c)
+			constCounter[c.LHS.Table]++
+		}
+	}
+
+	// Sort the join conditions for each table by the joined table's importance,
+	// ie, the table counter count.
+	for t, cs := range joinConstraints {
+		sort.SliceStable(cs, func(i, j int) bool {
+			var t1, t2 types.Table
+			if cs[i].LHS.Table == t {
+				t1 = cs[i].RHS.(types.Column).Table
+			} else {
+				t1 = cs[i].LHS.Table
+			}
+			if cs[j].LHS.Table == t {
+				t2 = cs[j].RHS.(types.Column).Table
+			} else {
+				t2 = cs[j].LHS.Table
+			}
+			if tableCounter[t1] == tableCounter[t2] {
+				return strings.Compare(t1.String(), t2.String()) < 0
+			}
+			return tableCounter[t1] > tableCounter[t2]
+		})
+		joinConstraints[t] = cs
+	}
+
+	// In the following section, build the "JOIN" relations from "currTable".
+	// This is conceptually building a "join graph" and keep extending it based on
+	// the `joinConstraints`.
+
+	// Choose the table with the most constant constraints as the starting table.
+	var currTable types.Table
+	maxCount := 0
+	for t, count := range constCounter {
+		if count > maxCount || (count == maxCount && t.String() < currTable.String()) {
+			maxCount = count
+			currTable = t
+		}
+	}
+	// When there is no constant an no join, need to pick the currTable.
+	if (types.Table{}) == currTable {
+		for _, c := range constraints {
+			currTable = c.LHS.Table
+			break
+		}
+	}
+
+	// gogogo
 	sql += fmt.Sprintf("\nFROM %s AS %s\n", currTable.Name, currTable.Alias())
 
 	// Keep track of table that has been processed, they should already have an
@@ -878,6 +1045,8 @@ func getSQL(
 			sql += fmt.Sprintf("%s.%s IN (%s)\n", c.LHS.Table.Alias(), c.LHS.Name, strings.Join(strs, ", "))
 		}
 	}
+
+	log.Println("SQL Query is ", sql)
 	return sql, prov, nil
 }
 
@@ -886,6 +1055,7 @@ func Translate(
 	mappings []*types.Mapping, nodes []types.Node, queries []*types.Query,
 	subTypeMap map[string]string, options ...*types.QueryOptions) (
 	*Translation, error) {
+	// log.Println("And now we call Translator.Translate")
 	funcDeps, err := solver.GetFuncDeps(mappings)
 	if err != nil {
 		return nil, err
@@ -933,6 +1103,7 @@ func Translate(
 		queryOptions = &types.QueryOptions{}
 	}
 
+	// log.Println("Triggering getSql.")
 	sql, prov, err := getSQL(
 		nodes,
 		constraints,
@@ -940,6 +1111,19 @@ func Translate(
 		ProvInfo{queryProv, tableProv},
 		queryOptions,
 	)
+
+	bq, err := getBqQuery(
+		queryOptions,
+		nodes,
+		constraints,
+		constNode,
+		ProvInfo{queryProv, tableProv})
+	if bq == nil {
+		log.Println("This is wrong.")
+	}
+	// log.Println("BQ SQL is:");
+	// log.Println(bq)
+
 	if err != nil {
 		return nil, err
 	}

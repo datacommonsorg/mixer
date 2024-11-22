@@ -17,6 +17,7 @@ package translator
 import (
 	"context"
 	"fmt"
+	"log"
 
 	"cloud.google.com/go/bigquery"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
@@ -36,6 +37,7 @@ func Query(
 	metadata *resource.Metadata,
 	store *store.Store,
 ) (*pb.QueryResponse, error) {
+	log.Println("So now we're in Translator.Query")
 	var out pb.QueryResponse
 	if store.BqClient == nil {
 		return &out, nil
