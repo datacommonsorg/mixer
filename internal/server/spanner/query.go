@@ -25,6 +25,11 @@ import (
 	"google.golang.org/api/iterator"
 )
 
+const (
+	// Maximum number of edge hops to traverse for chained properties.
+	MAX_HOPS = 10
+)
+
 // SQL / GQL statements executed by the SpannerClient
 var statements = struct {
 	// Fetch Properties for out arcs
@@ -111,7 +116,7 @@ var statements = struct {
 			)
 	)result
 	`,
-	getChainedEdgesBySubjectID: `
+	getChainedEdgesBySubjectID: fmt.Sprintf(`
 	SELECT
 		result.subject_id,
 		@result_predicate AS predicate,
@@ -153,7 +158,7 @@ var statements = struct {
 					'' AS name
 			)
 	)result
-	`,
+	`, MAX_HOPS),
 	getEdgesByObjectID: `
 	SELECT
 		result.subject_id,
@@ -177,7 +182,7 @@ var statements = struct {
 				n.types
 	)result
 	`,
-	getChainedEdgesByObjectID: `
+	getChainedEdgesByObjectID: fmt.Sprintf(`
 	SELECT
 		result.subject_id,
 		@result_predicate AS predicate,
@@ -198,7 +203,7 @@ var statements = struct {
 			n.subject_id AS object_id,
 			n.name
 		)result
-	`,
+	`, MAX_HOPS),
 	filterProps: `
 	AND e.predicate IN UNNEST(@props)
 	`,
@@ -324,7 +329,7 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 	switch arc.Out {
 	case true:
 		if arc.Decorator == CHAIN {
-			template = fmt.Sprintf(statements.getChainedEdgesBySubjectID, MAX_HOPS)
+			template = statements.getChainedEdgesBySubjectID
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
 		} else {
@@ -332,7 +337,7 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 		}
 	case false:
 		if arc.Decorator == CHAIN {
-			template = fmt.Sprintf(statements.getChainedEdgesByObjectID, MAX_HOPS)
+			template = statements.getChainedEdgesByObjectID
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
 		} else {

@@ -28,10 +28,8 @@ import (
 const (
 	// Indicates that all properties should be returned.
 	WILDCARD = "*"
-	// Indicates that
+	// Indicates that recursive property paths should be returned.
 	CHAIN = "+"
-	// Maximum number of edge hops to traverse for chained properties.
-	MAX_HOPS = 10
 )
 
 // nodePropsToNodeResponse converts a map from subject id to its properties to a NodeResponse proto.
