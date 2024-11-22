@@ -25,6 +25,15 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
+const (
+	// Indicates that all properties should be returned.
+	WILDCARD = "*"
+	// Indicates that
+	CHAIN = "+"
+	// Maximum number of edge hops to traverse for chained properties.
+	MAX_HOPS = 10
+)
+
 // nodePropsToNodeResponse converts a map from subject id to its properties to a NodeResponse proto.
 func nodePropsToNodeResponse(propsBySubjectID map[string][]*Property) *v3.NodeResponse {
 	nodeResponse := &v3.NodeResponse{
