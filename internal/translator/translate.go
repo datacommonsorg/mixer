@@ -819,13 +819,155 @@ func getBqQuery(opts *types.QueryOptions, nodes []types.Node, constraints []Cons
 		Value: currTable.Alias(),
 	})
 	
+
+	// Keep track of table that has been processed, they should already have an
+	// alias in SQL and could be used as "currTable".
+	processedTable := map[types.Table]struct{}{}
+
+	var currCol, otherCol types.Column
+	for len(joinConstraints) > 0 {
+		futureTables := []types.Table{}
+		processedTable[currTable] = struct{}{}
+		for _, c := range joinConstraints[currTable] {
+			if currTable == c.LHS.Table {
+				currCol = c.LHS
+				otherCol = c.RHS.(types.Column)
+			} else {
+				currCol = c.RHS.(types.Column)
+				otherCol = c.LHS
+			}
+			if _, ok := processedTable[otherCol.Table]; ok {
+				whereConstraints = append(whereConstraints, c)
+			} else {
+				queryStr += fmt.Sprintf("JOIN @other_col_table_name AS @other_col_table_alias\n")
+				queryParams = append(queryParams, bigquery.QueryParameter{
+					Name:  "other_col_table_name",
+					Value: otherCol.Table.Name,
+				})
+				queryParams = append(queryParams, bigquery.QueryParameter{
+					Name:  "other_col_table_alias",
+					Value: otherCol.Table.Alias(),
+				})
+				queryStr += fmt.Sprintf("ON @left_table_name = @right_table_name\n")
+				left_table_name := fmt.Sprintf("%s.%s", currCol.Table.Alias(), currCol.Name)
+				right_table_name := fmt.Sprintf("%s.%s",  otherCol.Table.Alias(), otherCol.Name)
+				queryParams = append(queryParams, bigquery.QueryParameter{
+					Name:  "left_table_name",
+					Value: left_table_name,
+				})
+				queryParams = append(queryParams, bigquery.QueryParameter{
+					Name:  "right_table_name",
+					Value: right_table_name,
+				})
+				processedTable[otherCol.Table] = struct{}{}
+
+			}
+			// Remove the processed constraints
+			joinConstraints = removeConstraints(joinConstraints, currTable, c)
+			joinConstraints = removeConstraints(joinConstraints, otherCol.Table, c)
+			if len(joinConstraints[currCol.Table]) == 0 {
+				delete(joinConstraints, currCol.Table)
+			}
+			if len(joinConstraints[otherCol.Table]) == 0 {
+				delete(joinConstraints, otherCol.Table)
+			}
+			// Add the other table to `futureTables`, which all have been processed
+			// at least once and can be used as `currTable` to further extend the
+			// "join graph"
+			futureTables = append(futureTables, otherCol.Table)
+		}
+
+		if len(futureTables) > 0 {
+			// Pick a new `currTable` from `futureTables` (if non-empty)
+			for _, v := range futureTables {
+				if _, ok := joinConstraints[v]; ok {
+					currTable = v
+					break
+				}
+			}
+		} else {
+			// It's possible `futureTables` have all matched and become empty.
+			// In this case, pick currTable from joinConstraints. `currTable` needs
+			// to be a table that has already been processed, to extend the join graph.
+			for t := range joinConstraints {
+				if _, ok := processedTable[t]; ok {
+					currTable = t
+					break
+				}
+			}
+		}
+	}
+
+	// Sort to get deterministic result.
+	sort.SliceStable(whereConstraints, func(i, j int) bool {
+		l := whereConstraints[i].LHS
+		r := whereConstraints[j].LHS
+		// Put "variable_measured" constraints at the beginning to better use
+		// StatVarObservation's key.
+		if l.Name == svProp {
+			return true
+		}
+		if r.Name == svProp {
+			return false
+		}
+		return strings.Compare(l.String(), r.String()) < 0
+	})
+	for idx, c := range whereConstraints {
+		if idx == 0 {
+			queryStr += "WHERE "
+		} else if idx != len(whereConstraints) {
+			queryStr += "AND "
+		}
+		switch v := c.RHS.(type) {
+		case types.Column:
+			clause := fmt.Sprintf("%s.%s", c.LHS.Table.Alias(), c.LHS.Name)
+			value := fmt.Sprintf("%s.%s", v.Table.Alias(), v.Name)
+			queryStr += fmt.Sprintf("@clause%d = @value%d\n", idx, idx)
+			queryParams = append(queryParams, bigquery.QueryParameter{
+				Name:  fmt.Sprintf("clause%d", idx),
+				Value: clause,
+			})
+			queryParams = append(queryParams, bigquery.QueryParameter{
+				Name:  fmt.Sprintf("value%d", idx),
+				Value: value,
+			})
+
+		case string:
+			// Before we have spanner table reflection, need to hardcode check here.
+			// But the user should really have quote for strings.
+			queryStr += fmt.Sprintf("@clause%d = @value%d\n", idx, idx)
+			useQuote := strings.Contains(c.LHS.Table.Name, tmcf.Triple)
+
+			queryParams = append(queryParams, bigquery.QueryParameter{
+				Name:  fmt.Sprintf("clause%d", idx),
+				Value: fmt.Sprintf("%s.%s", c.LHS.Table.Alias(), c.LHS.Name),
+			})
+			queryParams = append(queryParams, bigquery.QueryParameter{
+				Name:  fmt.Sprintf("value%d", idx),
+				Value: addQuote(v, useQuote),
+			})
+		case []string:
+			strs := []string{}
+			for _, s := range v {
+				strs = append(strs, addQuote(s))
+			}
+			queryStr += fmt.Sprintf("@clause%d IN (@value%d)\n", idx, idx)
+			queryParams = append(queryParams, bigquery.QueryParameter{
+				Name:  fmt.Sprintf("clause%d", idx),
+				Value: fmt.Sprintf("%s.%s", c.LHS.Table.Alias(), c.LHS.Name),
+			})
+			queryParams = append(queryParams, bigquery.QueryParameter{
+				Name:  fmt.Sprintf("value%d", idx),
+				Value: strings.Join(strs, ", "),
+			})
+		}
+	}
+
+
     q := bqClient.Query(queryStr)
     q.Parameters = queryParams
     log.Println("BigQuery Querystring is ", queryStr)
 	log.Println("Query parameters are ", queryParams)
-    // log.Println(queryStr)
-    // log.Println(q.Parameters)
-    // log.Println(q)
 
     return q, nil
 }
