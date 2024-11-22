@@ -639,7 +639,7 @@ func removeConstraints(
 	return jc
 }
 
-func getBqQuery(store *store.Store, opts *types.QueryOptions, nodes []types.Node, constraints []Constraint, constNode map[types.Node]string, provInfo ProvInfo) (*bigquery.Query, error) {
+func getBqQuery(opts *types.QueryOptions, nodes []types.Node, constraints []Constraint, constNode map[types.Node]string, provInfo ProvInfo) (string, []bigquery.QueryParameter,map[int][]int, error) {
     var queryParams []bigquery.QueryParameter
 	// prov maps provenance column to node columns
 	prov := map[int][]int{}
@@ -657,9 +657,8 @@ func getBqQuery(store *store.Store, opts *types.QueryOptions, nodes []types.Node
             queryStr += ",\n"
         }
         if str, ok := constNode[n]; ok {
-            queryStr += fmt.Sprintf(`"%s"`, str) // No parameterization needed for constants
+            queryStr += fmt.Sprintf(`"%s"`, str)
         } else {
-            // Parameterize column names
             for _, c := range constraints {
 				if n == c.RHS {
 					queryStr += fmt.Sprintf("%s.%s AS %s", c.LHS.Table.Alias(), c.LHS.Name, strings.TrimPrefix(strings.ReplaceAll(n.Alias, "/", "_"), "?"))
@@ -681,14 +680,9 @@ func getBqQuery(store *store.Store, opts *types.QueryOptions, nodes []types.Node
             }
         }
     }
-	// queryStr += "\n"
 
 	for i, p := range provList {
-        queryStr += fmt.Sprintf(",\n @prov_col%d AS prov%d", i, i)
-		queryParams = append(queryParams, bigquery.QueryParameter{
-            Name:  fmt.Sprintf("prov_col%d", i),
-            Value: fmt.Sprintf("%s.%s", p.Table.Alias(), p.Name),
-        })
+		queryStr += ",\n" + fmt.Sprintf("%s.%s AS prov%d", p.Table.Alias(), p.Name, i)
 	}
 
 	tableCounter := map[types.Table]int{}
@@ -841,11 +835,11 @@ func getBqQuery(store *store.Store, opts *types.QueryOptions, nodes []types.Node
 		case types.Column:
 			clause := fmt.Sprintf("%s.%s", c.LHS.Table.Alias(), c.LHS.Name)
 			value := fmt.Sprintf("%s.%s", v.Table.Alias(), v.Name)
-			queryStr += fmt.Sprintf("@clause%d = @value%d\n", idx, idx)
-			queryParams = append(queryParams, bigquery.QueryParameter{
-				Name:  fmt.Sprintf("clause%d", idx),
-				Value: clause,
-			})
+			queryStr += fmt.Sprintf("%s = @value%d\n", clause, idx)
+			// queryParams = append(queryParams, bigquery.QueryParameter{
+			// 	Name:  fmt.Sprintf("clause%d", idx),
+			// 	Value: clause,
+			// })
 			queryParams = append(queryParams, bigquery.QueryParameter{
 				Name:  fmt.Sprintf("value%d", idx),
 				Value: value,
@@ -854,40 +848,52 @@ func getBqQuery(store *store.Store, opts *types.QueryOptions, nodes []types.Node
 		case string:
 			// Before we have spanner table reflection, need to hardcode check here.
 			// But the user should really have quote for strings.
-			queryStr += fmt.Sprintf("@clause%d = @value%d\n", idx, idx)
-			useQuote := true // strings.Contains(c.LHS.Table.Name, tmcf.Triple)
+			clause := fmt.Sprintf("%s.%s", c.LHS.Table.Alias(), c.LHS.Name)
+			value := fmt.Sprintf(`\b%s\b`, v)
+			queryStr += fmt.Sprintf("%s = @value%d\n", clause, idx)
 
-			queryParams = append(queryParams, bigquery.QueryParameter{
-				Name:  fmt.Sprintf("clause%d", idx),
-				Value: fmt.Sprintf("%s.%s", c.LHS.Table.Alias(), c.LHS.Name),
-			})
-			theval := addQuote(v, useQuote)
+			useQuote := strings.Contains(c.LHS.Table.Name, tmcf.Triple)
+
+			log.Println("Add Quote thing: ", addQuote(v, useQuote))
+			log.Println("IUse QuoteL ", useQuote)
 			queryParams = append(queryParams, bigquery.QueryParameter{
 				Name:  fmt.Sprintf("value%d", idx),
-				Value: theval,
+				Value: value,
 			})
 		case []string:
 			strs := []string{}
 			for _, s := range v {
 				strs = append(strs, addQuote(s))
 			}
-			queryStr += fmt.Sprintf("@clause%d IN UNNEST(@value%d)\n", idx, idx)
-			queryParams = append(queryParams, bigquery.QueryParameter{
-				Name:  fmt.Sprintf("clause%d", idx),
-				Value: fmt.Sprintf("%s.%s", c.LHS.Table.Alias(), c.LHS.Name),
-			})
+			clause := fmt.Sprintf("%s.%s", c.LHS.Table.Alias(), c.LHS.Name)
+			queryStr += fmt.Sprintf("%s IN (@value%d)\n", clause, idx)
 			queryParams = append(queryParams, bigquery.QueryParameter{
 				Name:  fmt.Sprintf("value%d", idx),
 				Value: strings.Join(strs, ", "),
 			})
 		}
 	}
-
-
-    q := store.BqClient.Query(queryStr)
-    q.Parameters = queryParams
-
-    return q, nil
+	if opts.Orderby != "" {
+		queryStr += fmt.Sprintf("ORDER BY @orderby")
+		
+		queryParams = append(queryParams, bigquery.QueryParameter{
+			Name:  "orderby",
+			Value: strings.TrimPrefix(strings.ReplaceAll(opts.Orderby, "/", "_"), "?"),
+		})
+		if opts.ASC {
+			queryStr += " ASC\n"
+		} else {
+			queryStr += " DESC\n"
+		}
+	}
+	if opts.Limit > 0 {
+		queryStr += fmt.Sprintf("LIMIT @limit\n")
+		queryParams = append(queryParams, bigquery.QueryParameter{
+			Name:  "limit",
+			Value: opts.Limit,
+		})
+	}
+    return queryStr, queryParams, prov, nil
 }
 
 func getSQL(
@@ -1003,7 +1009,6 @@ func getSQL(
 		}
 	}
 
-	// gogogo
 	sql += fmt.Sprintf("\nFROM %s AS %s\n", currTable.Name, currTable.Alias())
 
 	// Keep track of table that has been processed, they should already have an
@@ -1131,41 +1136,41 @@ func Translate2(
 	store *store.Store,
 	mappings []*types.Mapping, nodes []types.Node, queries []*types.Query,
 	subTypeMap map[string]string, options ...*types.QueryOptions) (
-	*Translation, *bigquery.Query, error) {
+	*Translation, []bigquery.QueryParameter, error) {
 	funcDeps, err := solver.GetFuncDeps(mappings)
 	if err != nil {
-		return nil, nil, err
+		return nil,nil, err
 	}
 
 	tableProv, err := solver.GetProvColumn(mappings)
 	if err != nil {
-		return nil, nil, err
+		return nil, nil,err
 	}
 
 	mappings = solver.PruneMapping(mappings)
 	queries = solver.RewriteQuery(queries, subTypeMap)
 	matchTriple, err := solver.MatchTriple(mappings, queries)
 	if err != nil {
-		return nil, nil, err
+		return nil, nil,err
 	}
 	queryID := solver.GetQueryID(queries, matchTriple)
 
 	bindingMap, err := Bind(mappings, queries)
 	if err != nil {
-		return nil, nil, err
+		return nil, nil,err
 	}
 	bindingSets := getBindingSets(bindingMap)
 	if len(bindingSets) > 1 {
 		fmt.Printf("There are %d binding sets\n", len(bindingSets))
 	} else if len(bindingSets) == 0 {
-		return nil, nil, status.Errorf(codes.Internal, "Failed to get translation result")
+		return nil, nil,status.Errorf(codes.Internal, "Failed to get translation result")
 	}
 
 	nodeRefs := solver.GetNodeRef(queries)
 	graph := getGraph(bindingSets[0], queryID, nodeRefs)
 	constraints, constNode, err := GetConstraint(graph, funcDeps)
 	if err != nil {
-		return nil, nil, err
+		return nil, nil,err
 	}
 
 	var (
@@ -1179,16 +1184,7 @@ func Translate2(
 		queryOptions = &types.QueryOptions{}
 	}
 
-	sql, prov, err := getSQL(
-		nodes,
-		constraints,
-		constNode,
-		ProvInfo{queryProv, tableProv},
-		queryOptions,
-	)
-
-	bq, err := getBqQuery(
-		store,
+	querySql, params, prov, err := getBqQuery(
 		queryOptions,
 		nodes,
 		constraints,
@@ -1196,7 +1192,7 @@ func Translate2(
 		ProvInfo{queryProv, tableProv})
 
 	if err != nil {
-		return nil, nil, err
+		return nil,nil, err
 	}
-	return &Translation{sql, nodes, bindingSets[0], constraints, prov}, bq, nil
+	return &Translation{querySql, nodes, bindingSets[0], constraints, prov}, params, nil
 }

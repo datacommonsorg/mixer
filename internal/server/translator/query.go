@@ -16,7 +16,7 @@ package translator
 
 import (
 	"context"
-	"fmt"
+	// "fmt"
 	"log"
 
 	"cloud.google.com/go/bigquery"
@@ -31,14 +31,30 @@ import (
 )
 
 func ExecuteAndParseResponse(ctx context.Context, q *bigquery.Query, translation *translator.Translation, out pb.QueryResponse) (*pb.QueryResponse, error) {
-	n := len(out.Header)
+	// log.Println("\n\nExecuteAndParseResponse")
+	// log.Println("Context ", ctx)
+	// log.Println("translation ", translation)
+	// log.Println("out ", out, " ::: ", len(out.Header))
 
-	it, err := q.Read(ctx)
+	// n := len(out.Header)
+
+	job, err := q.Run(ctx)
 	if err != nil {
-		return nil, err
+		log.Println("Issues with the run???")
+		return nil,err
 	}
+	status, err := job.Wait(ctx)
+	if err != nil {
+		log.Println("Issues with the job waait???")
+		return nil,err
+	}
+	if err := status.Err(); err != nil {
+		log.Println("Issues with the status???")
+		return nil,err
+	}
+	it, err := job.Read(ctx)
 	for {
-		responseRow := pb.QueryResponseRow{}
+		log.Println("All as expected?")
 		var row []bigquery.Value
 		err := it.Next(&row)
 		if err == iterator.Done {
@@ -47,34 +63,49 @@ func ExecuteAndParseResponse(ctx context.Context, q *bigquery.Query, translation
 		if err != nil {
 			return nil, err
 		}
-		for i, cell := range row {
-			var str string
-			if cell != nil {
-				if x, ok := cell.(int64); ok {
-					str = fmt.Sprintf("%v", x)
-				}
-				if x, ok := cell.(float64); ok {
-					str = fmt.Sprintf("%v", x)
-				}
-				if x, ok := cell.(string); ok {
-					str = x
-				}
-			}
-			if i < n {
-				responseRow.Cells = append(
-					responseRow.Cells, &pb.QueryResponseCell{Value: str})
-			} else {
-				// Add provenance to corresponding cells.
-				if idx, ok := translation.Prov[i]; ok {
-					for _, j := range idx {
-						responseRow.Cells[j].ProvenanceId = str
-					}
-				}
-			}
-		}
-		out.Rows = append(out.Rows, &responseRow)
+		log.Println(row)
 	}
-	log.Println("And the out are ", out)
+
+	// for {
+	// 	responseRow := pb.QueryResponseRow{}
+	// 	var row []bigquery.Value
+	// 	err := it.Next(&row)
+	// 	if err == iterator.Done {
+	// 		log.Println("Done iterating.")
+	// 		break
+	// 	}
+	// 	if err != nil {
+	// 		return nil, err
+	// 	}
+	// 	log.Println("but row was : ", row)
+	// 	for i, cell := range row {
+	// 		var str string
+	// 		if cell != nil {
+	// 			if x, ok := cell.(int64); ok {
+	// 				str = fmt.Sprintf("%v", x)
+	// 			}
+	// 			if x, ok := cell.(float64); ok {
+	// 				str = fmt.Sprintf("%v", x)
+	// 			}
+	// 			if x, ok := cell.(string); ok {
+	// 				str = x
+	// 			}
+	// 		}
+	// 		if i < n {
+	// 			responseRow.Cells = append(
+	// 				responseRow.Cells, &pb.QueryResponseCell{Value: str})
+	// 		} else {
+	// 			// Add provenance to corresponding cells.
+	// 			if idx, ok := translation.Prov[i]; ok {
+	// 				for _, j := range idx {
+	// 					responseRow.Cells[j].ProvenanceId = str
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// 	out.Rows = append(out.Rows, &responseRow)
+	// 	// log.Println("New Row  ", responseRow)
+	// }
 	return &out, nil
 }
 
@@ -85,8 +116,9 @@ func Query(
 	metadata *resource.Metadata,
 	store *store.Store,
 ) (*pb.QueryResponse, error) {
-	log.Println("So now we're in Translator.Query")
+	// log.Println("So now we're in Translator.Query")
 	var out pb.QueryResponse
+	var shadow pb.QueryResponse
 	if store.BqClient == nil {
 		return &out, nil
 	}
@@ -95,7 +127,8 @@ func Query(
 		return nil, err
 	}
 
-	translation, bq, err := translator.Translate2(
+	// translation, _,_, err := translator.Translate2(
+	translation, params, err := translator.Translate2(
 		store, metadata.Mappings, nodes, queries, metadata.SubTypeMap, opts)
 		if err != nil {
 			return nil, err
@@ -103,15 +136,21 @@ func Query(
 		
 		for _, node := range translation.Nodes {
 			out.Header = append(out.Header, node.Alias)
+			shadow.Header = append(shadow.Header, node.Alias)
 		}
 		out.Rows = []*pb.QueryResponseRow{}
+		shadow.Rows = []*pb.QueryResponseRow{}
 		
-	log.Println("\n\n\nAbout to execute Query: ", translation.SQL)
-	log.Println("But also got: ", bq)
-	q := store.BqClient.Query(translation.SQL)
-	log.Println("qqqq", q)
+	// log.Println("\n\n\nAbout to execute Query: ", translation.SQL)
+	// q := store.BqClient.Query(translation.SQL)
+	log.Println("Query String is ", translation.SQL)
+	log.Println("Query Params is ", params)
+	bq := store.BqClient.Query(translation.SQL)
+	bq.Parameters = params
 
-	var shadow pb.QueryResponse
+	// log.Println("But also got: ", bq)
+	// log.Println("qqqq", q)
+
 	// var shadowresp *pb.QueryResponse
 	return ExecuteAndParseResponse(ctx, bq, translation, shadow)
 	// log.Println("This was the result for the shadow run: ", shadowresp)
