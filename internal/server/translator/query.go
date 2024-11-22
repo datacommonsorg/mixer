@@ -30,36 +30,9 @@ import (
 	"google.golang.org/api/iterator"
 )
 
-// Query implements API for Mixer.Query.
-func Query(
-	ctx context.Context,
-	in *pb.QueryRequest,
-	metadata *resource.Metadata,
-	store *store.Store,
-) (*pb.QueryResponse, error) {
-	log.Println("So now we're in Translator.Query")
-	var out pb.QueryResponse
-	if store.BqClient == nil {
-		return &out, nil
-	}
-	nodes, queries, opts, err := sparql.ParseQuery(in.GetSparql())
-	if err != nil {
-		return nil, err
-	}
-
-	translation, err := translator.Translate(
-		metadata.Mappings, nodes, queries, metadata.SubTypeMap, opts)
-	if err != nil {
-		return nil, err
-	}
-
-	for _, node := range translation.Nodes {
-		out.Header = append(out.Header, node.Alias)
-	}
-	out.Rows = []*pb.QueryResponseRow{}
+func ExecuteAndParseResponse(ctx context.Context, q *bigquery.Query, translation *translator.Translation, out pb.QueryResponse) (*pb.QueryResponse, error) {
 	n := len(out.Header)
 
-	q := store.BqClient.Query(translation.SQL)
 	it, err := q.Read(ctx)
 	if err != nil {
 		return nil, err
@@ -101,5 +74,49 @@ func Query(
 		}
 		out.Rows = append(out.Rows, &responseRow)
 	}
+	log.Println("And the out are ", out)
 	return &out, nil
+}
+
+// Query implements API for Mixer.Query.
+func Query(
+	ctx context.Context,
+	in *pb.QueryRequest,
+	metadata *resource.Metadata,
+	store *store.Store,
+) (*pb.QueryResponse, error) {
+	log.Println("So now we're in Translator.Query")
+	var out pb.QueryResponse
+	if store.BqClient == nil {
+		return &out, nil
+	}
+	nodes, queries, opts, err := sparql.ParseQuery(in.GetSparql())
+	if err != nil {
+		return nil, err
+	}
+
+	translation, bq, err := translator.Translate2(
+		store, metadata.Mappings, nodes, queries, metadata.SubTypeMap, opts)
+		if err != nil {
+			return nil, err
+		}
+		
+		for _, node := range translation.Nodes {
+			out.Header = append(out.Header, node.Alias)
+		}
+		out.Rows = []*pb.QueryResponseRow{}
+		
+	log.Println("\n\n\nAbout to execute Query: ", translation.SQL)
+	log.Println("But also got: ", bq)
+	q := store.BqClient.Query(translation.SQL)
+	log.Println("qqqq", q)
+
+	var shadow pb.QueryResponse
+	// var shadowresp *pb.QueryResponse
+	return ExecuteAndParseResponse(ctx, bq, translation, shadow)
+	// log.Println("This was the result for the shadow run: ", shadowresp)
+
+
+
+	// return ExecuteAndParseResponse(ctx, q, translation, out)
 }

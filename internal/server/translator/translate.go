@@ -49,7 +49,7 @@ func Translate(
 	if err != nil {
 		return nil, err
 	}
-	trans, err := translator.Translate(
+	trans, _, err := translator.Translate(
 		mappings, nodes, queries, metadata.SubTypeMap, opts)
 	if err != nil {
 		return nil, err

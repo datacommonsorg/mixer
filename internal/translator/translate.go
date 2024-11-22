@@ -15,13 +15,13 @@
 package translator
 
 import (
-	"context"
 	"fmt"
 	"log"
 	"sort"
 	"strconv"
 	"strings"
 
+	"github.com/datacommonsorg/mixer/internal/store"
 	"cloud.google.com/go/bigquery"
 	"github.com/datacommonsorg/mixer/internal/parser/tmcf"
 	"github.com/datacommonsorg/mixer/internal/translator/solver"
@@ -677,7 +677,7 @@ func removeConstraints(
 // 	return q
 // }
 
-func getBqQuery(opts *types.QueryOptions, nodes []types.Node, constraints []Constraint, constNode map[types.Node]string, provInfo ProvInfo) (*bigquery.Query, error) {
+func getBqQuery(store *store.Store, opts *types.QueryOptions, nodes []types.Node, constraints []Constraint, constNode map[types.Node]string, provInfo ProvInfo) (*bigquery.Query, error) {
     // log.Println("And triggering getBqQuery")
     var queryParams []bigquery.QueryParameter
 	// prov maps provenance column to node columns
@@ -687,11 +687,11 @@ func getBqQuery(opts *types.QueryOptions, nodes []types.Node, constraints []Cons
 	pc := len(nodes)
 	
     // bqClient initialization is omitted here, but ensure it's correctly set up
-	ctx := context.Background()
-    bqClient, err := bigquery.NewClient(ctx, "your-project-id")
-    if err != nil {
-        return nil, fmt.Errorf("bigquery.NewClient: %w", err)
-    }
+	// ctx := context.Background()
+    // bqClient, err := bigquery.NewClient(ctx, "your-project-id")
+    // if err != nil {
+    //     return nil, fmt.Errorf("bigquery.NewClient: %w", err)
+    // }
 
     queryStr := "SELECT "
     if opts.Distinct {
@@ -707,17 +707,17 @@ func getBqQuery(opts *types.QueryOptions, nodes []types.Node, constraints []Cons
             queryStr += fmt.Sprintf(`"%s"`, str) // No parameterization needed for constants
         } else {
             // Parameterize column names
-            queryStr += fmt.Sprintf("@col%d AS @col%d_as", idx, idx)
             for _, c := range constraints {
-                if n == c.RHS {
-                    queryParams = append(queryParams, bigquery.QueryParameter{
-                        Name:  fmt.Sprintf("col%d", idx),
-                        Value: fmt.Sprintf("%s.%s", c.LHS.Table.Alias(), c.LHS.Name),
-                    })
-					queryParams = append(queryParams, bigquery.QueryParameter{
-                        Name:  fmt.Sprintf("col%d_as", idx),
-                        Value: strings.TrimPrefix(strings.ReplaceAll(n.Alias, "/", "_"), "?"),
-                    })
+				if n == c.RHS {
+					queryStr += fmt.Sprintf("%s.%s AS %s", c.LHS.Table.Alias(), c.LHS.Name, strings.TrimPrefix(strings.ReplaceAll(n.Alias, "/", "_"), "?"))
+                    // queryParams = append(queryParams, bigquery.QueryParameter{
+                    //     Name:  fmt.Sprintf("col%d", idx),
+                    //     Value: ,
+                    // })
+					// queryParams = append(queryParams, bigquery.QueryParameter{
+                    //     Name:  fmt.Sprintf("col%d_as", idx),
+                    //     Value: ,
+                    // })
 					if provInfo.query {
 						if provCol, ok := provInfo.tableProv[c.LHS.Table.Name]; ok {
 							provCol.Table.ID = c.LHS.Table.ID
@@ -809,15 +809,7 @@ func getBqQuery(opts *types.QueryOptions, nodes []types.Node, constraints []Cons
 		}
 	}
 
-	queryStr += fmt.Sprintf("\nFROM @table AS @table_alias\n")
-	queryParams = append(queryParams, bigquery.QueryParameter{
-		Name:  "table",
-		Value: currTable.Name,
-	})
-	queryParams = append(queryParams, bigquery.QueryParameter{
-		Name:  "table_alias",
-		Value: currTable.Alias(),
-	})
+	queryStr += fmt.Sprintf("\nFROM %s AS %s\n", currTable.Name, currTable.Alias())
 	
 
 	// Keep track of table that has been processed, they should already have an
@@ -839,26 +831,8 @@ func getBqQuery(opts *types.QueryOptions, nodes []types.Node, constraints []Cons
 			if _, ok := processedTable[otherCol.Table]; ok {
 				whereConstraints = append(whereConstraints, c)
 			} else {
-				queryStr += fmt.Sprintf("JOIN @other_col_table_name AS @other_col_table_alias\n")
-				queryParams = append(queryParams, bigquery.QueryParameter{
-					Name:  "other_col_table_name",
-					Value: otherCol.Table.Name,
-				})
-				queryParams = append(queryParams, bigquery.QueryParameter{
-					Name:  "other_col_table_alias",
-					Value: otherCol.Table.Alias(),
-				})
-				queryStr += fmt.Sprintf("ON @left_table_name = @right_table_name\n")
-				left_table_name := fmt.Sprintf("%s.%s", currCol.Table.Alias(), currCol.Name)
-				right_table_name := fmt.Sprintf("%s.%s",  otherCol.Table.Alias(), otherCol.Name)
-				queryParams = append(queryParams, bigquery.QueryParameter{
-					Name:  "left_table_name",
-					Value: left_table_name,
-				})
-				queryParams = append(queryParams, bigquery.QueryParameter{
-					Name:  "right_table_name",
-					Value: right_table_name,
-				})
+				queryStr += fmt.Sprintf("JOIN %s AS @%s\n", otherCol.Table.Name, otherCol.Table.Alias())
+				queryStr += fmt.Sprintf("ON %s.%s = %s.%s\n", currCol.Table.Alias(), currCol.Name, otherCol.Table.Alias(), otherCol.Name)
 				processedTable[otherCol.Table] = struct{}{}
 
 			}
@@ -936,15 +910,17 @@ func getBqQuery(opts *types.QueryOptions, nodes []types.Node, constraints []Cons
 			// Before we have spanner table reflection, need to hardcode check here.
 			// But the user should really have quote for strings.
 			queryStr += fmt.Sprintf("@clause%d = @value%d\n", idx, idx)
-			useQuote := strings.Contains(c.LHS.Table.Name, tmcf.Triple)
+			useQuote := true // strings.Contains(c.LHS.Table.Name, tmcf.Triple)
 
 			queryParams = append(queryParams, bigquery.QueryParameter{
 				Name:  fmt.Sprintf("clause%d", idx),
 				Value: fmt.Sprintf("%s.%s", c.LHS.Table.Alias(), c.LHS.Name),
 			})
+			theval := addQuote(v, useQuote)
+			log.Println("\n\nThe Valu is ", theval)
 			queryParams = append(queryParams, bigquery.QueryParameter{
 				Name:  fmt.Sprintf("value%d", idx),
-				Value: addQuote(v, useQuote),
+				Value: theval,
 			})
 		case []string:
 			strs := []string{}
@@ -964,10 +940,10 @@ func getBqQuery(opts *types.QueryOptions, nodes []types.Node, constraints []Cons
 	}
 
 
-    q := bqClient.Query(queryStr)
+    q := store.BqClient.Query(queryStr)
     q.Parameters = queryParams
-    log.Println("BigQuery Querystring is ", queryStr)
-	log.Println("Query parameters are ", queryParams)
+    // log.Println("BigQuery Querystring is ", queryStr)
+	// log.Println("Query parameters are ", queryParams)
 
     return q, nil
 }
@@ -1188,50 +1164,58 @@ func getSQL(
 		}
 	}
 
-	log.Println("SQL Query is ", sql)
+	// log.Println("SQL Query is ", sql)
 	return sql, prov, nil
 }
 
-// Translate takes a datalog query and translates to GoogleSQL query based on schema mapping.
 func Translate(
 	mappings []*types.Mapping, nodes []types.Node, queries []*types.Query,
 	subTypeMap map[string]string, options ...*types.QueryOptions) (
-	*Translation, error) {
+	*Translation, *bigquery.Query, error) {
+		return nil, nil, nil
+}
+
+// Translate takes a datalog query and translates to GoogleSQL query based on schema mapping.
+func Translate2(
+	store *store.Store,
+	mappings []*types.Mapping, nodes []types.Node, queries []*types.Query,
+	subTypeMap map[string]string, options ...*types.QueryOptions) (
+	*Translation, *bigquery.Query, error) {
 	// log.Println("And now we call Translator.Translate")
 	funcDeps, err := solver.GetFuncDeps(mappings)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	tableProv, err := solver.GetProvColumn(mappings)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	mappings = solver.PruneMapping(mappings)
 	queries = solver.RewriteQuery(queries, subTypeMap)
 	matchTriple, err := solver.MatchTriple(mappings, queries)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 	queryID := solver.GetQueryID(queries, matchTriple)
 
 	bindingMap, err := Bind(mappings, queries)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 	bindingSets := getBindingSets(bindingMap)
 	if len(bindingSets) > 1 {
 		fmt.Printf("There are %d binding sets\n", len(bindingSets))
 	} else if len(bindingSets) == 0 {
-		return nil, status.Errorf(codes.Internal, "Failed to get translation result")
+		return nil, nil, status.Errorf(codes.Internal, "Failed to get translation result")
 	}
 
 	nodeRefs := solver.GetNodeRef(queries)
 	graph := getGraph(bindingSets[0], queryID, nodeRefs)
 	constraints, constNode, err := GetConstraint(graph, funcDeps)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	var (
@@ -1255,19 +1239,15 @@ func Translate(
 	)
 
 	bq, err := getBqQuery(
+		store,
 		queryOptions,
 		nodes,
 		constraints,
 		constNode,
 		ProvInfo{queryProv, tableProv})
-	if bq == nil {
-		log.Println("This is wrong.")
-	}
-	// log.Println("BQ SQL is:");
-	// log.Println(bq)
 
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	return &Translation{sql, nodes, bindingSets[0], constraints, prov}, nil
+	return &Translation{sql, nodes, bindingSets[0], constraints, prov}, bq, nil
 }
