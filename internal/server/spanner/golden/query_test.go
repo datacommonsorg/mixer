@@ -42,7 +42,7 @@ func TestGetNodeProps(t *testing.T) {
 		goldenFile string
 	}{
 		{
-			ids:        []string{"Count_Person", "Person"},
+			ids:        []string{"Count_Person", "Person", "foo"},
 			out:        true,
 			goldenFile: "get_node_props_by_subject_id.json",
 		},
@@ -98,7 +98,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 		goldenFile string
 	}{
 		{
-			ids: []string{"Aadhaar", "Monthly_Average_RetailPrice_Electricity_Residential"},
+			ids: []string{"Aadhaar", "Monthly_Average_RetailPrice_Electricity_Residential", "foo"},
 			arc: &v2.Arc{
 				Out:        true,
 				SingleProp: "*",
@@ -112,6 +112,89 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				SingleProp: "*",
 			},
 			goldenFile: "get_node_edges_by_object_id.json",
+		},
+		{
+			ids: []string{"Person"},
+			arc: &v2.Arc{
+				Out:        true,
+				SingleProp: "extendedName",
+			},
+			goldenFile: "get_node_edges_out_single_prop.json",
+		},
+		{
+			ids: []string{"Person"},
+			arc: &v2.Arc{
+				Out:          true,
+				BracketProps: []string{"source", "subClassOf"},
+			},
+			goldenFile: "get_node_edges_out_bracket_props.json",
+		},
+		{
+			ids: []string{"nuts/UKI1"},
+			arc: &v2.Arc{
+				Out: true,
+				Filter: map[string][]string{
+					"subClassOf":   {"AdministrativeArea"},
+					"extendedName": {"AdministrativeArea2"},
+				},
+			},
+			goldenFile: "get_node_edges_out_filter.json",
+		},
+		{
+			ids: []string{"dc/g/Person_Gender"},
+			arc: &v2.Arc{
+				Out:        true,
+				SingleProp: "specializationOf",
+				Decorator:  "+",
+			},
+			goldenFile: "get_node_edges_out_chain.json",
+		},
+		{
+			ids: []string{"EarthquakeEvent"},
+			arc: &v2.Arc{
+				Out:        false,
+				SingleProp: "domainIncludes",
+			},
+			goldenFile: "get_node_edges_in_single_prop.json",
+		},
+		{
+			ids: []string{"EarthquakeEvent"},
+			arc: &v2.Arc{
+				Out:          false,
+				BracketProps: []string{"domainIncludes", "naturalHazardType"},
+			},
+			goldenFile: "get_node_edges_in_bracket_props.json",
+		},
+		{
+			ids: []string{"Farm"},
+			arc: &v2.Arc{
+				Out: false,
+				Filter: map[string][]string{
+					"farmInventoryType": {"Melon"},
+					"extendedName":      {"Area of Farm: Melon"},
+				},
+			},
+			goldenFile: "get_node_edges_in_filter.json",
+		},
+		{
+			ids: []string{"dc/g/Farm_FarmInventoryStatus"},
+			arc: &v2.Arc{
+				Out:        false,
+				SingleProp: "specializationOf",
+				Decorator:  "+",
+			},
+			goldenFile: "get_node_edges_in_chain.json",
+		},
+		{
+			ids: []string{"foo OR 1=1;"},
+			arc: &v2.Arc{
+				Out:        false,
+				SingleProp: "foo OR 1=1;",
+				Filter: map[string][]string{
+					"foo OR 1=1;": {"foo OR 1=1;"},
+				},
+			},
+			goldenFile: "get_node_edges_malicious.json",
 		},
 	} {
 		actual, err := client.GetNodeEdgesByID(ctx, c.ids, c.arc)

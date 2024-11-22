@@ -25,19 +25,21 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-// nodePropsToNodeResponse converts a slice of properties to a NodeResponse proto.
-func nodePropsToNodeResponse(props []*Property) *v3.NodeResponse {
+// nodePropsToNodeResponse converts a map from subject id to its properties to a NodeResponse proto.
+func nodePropsToNodeResponse(propsBySubjectID map[string][]*Property) *v3.NodeResponse {
 	nodeResponse := &v3.NodeResponse{
 		Data: make(map[string]*v2.LinkedGraph),
 	}
 
-	for _, prop := range props {
-		linkedGraph, ok := nodeResponse.Data[prop.SubjectID]
+	for subjectID, props := range propsBySubjectID {
+		linkedGraph, ok := nodeResponse.Data[subjectID]
 		if !ok {
 			linkedGraph = &v2.LinkedGraph{}
-			nodeResponse.Data[prop.SubjectID] = linkedGraph
+			nodeResponse.Data[subjectID] = linkedGraph
 		}
-		linkedGraph.Properties = append(linkedGraph.Properties, prop.Predicate)
+		for _, prop := range props {
+			linkedGraph.Properties = append(linkedGraph.Properties, prop.Predicate)
+		}
 	}
 
 	return nodeResponse
@@ -73,12 +75,9 @@ func nodeEdgesToLinkedGraph(edges []*Edge) *v2.LinkedGraph {
 		node := &pb.EntityInfo{
 			Name:         edge.Name,
 			Types:        edge.Types,
+			Dcid:         edge.ObjectID,
 			ProvenanceId: edge.Provenance,
-		}
-		if edge.ObjectValue != "" {
-			node.Value = edge.ObjectValue
-		} else {
-			node.Dcid = edge.ObjectID
+			Value:        edge.ObjectValue,
 		}
 		nodes.Nodes = append(nodes.Nodes, node)
 
