@@ -41,13 +41,6 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
-// Translate implements API for Mixer.Translate.
-func (s *Server) Translate(ctx context.Context, in *pb.TranslateRequest) (
-	*pb.TranslateResponse, error,
-) {
-	return translator.Translate(ctx, in, s.metadata)
-}
-
 // Query implements API for Mixer.Query.
 func (s *Server) Query(ctx context.Context, in *pb.QueryRequest) (
 	*pb.QueryResponse, error,
