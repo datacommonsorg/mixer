@@ -63,7 +63,6 @@ const (
 	Mixer_GetLocationsRankings_FullMethodName         = "/datacommons.Mixer/GetLocationsRankings"
 	Mixer_GetRelatedLocations_FullMethodName          = "/datacommons.Mixer/GetRelatedLocations"
 	Mixer_GetBioPageData_FullMethodName               = "/datacommons.Mixer/GetBioPageData"
-	Mixer_Translate_FullMethodName                    = "/datacommons.Mixer/Translate"
 	Mixer_Search_FullMethodName                       = "/datacommons.Mixer/Search"
 	Mixer_GetVersion_FullMethodName                   = "/datacommons.Mixer/GetVersion"
 	Mixer_GetPlaceStatsVar_FullMethodName             = "/datacommons.Mixer/GetPlaceStatsVar"
@@ -154,8 +153,6 @@ type MixerClient interface {
 	GetRelatedLocations(ctx context.Context, in *proto.GetRelatedLocationsRequest, opts ...grpc.CallOption) (*proto.GetRelatedLocationsResponse, error)
 	// Get bio page data given a dcid.
 	GetBioPageData(ctx context.Context, in *proto.GetBioPageDataRequest, opts ...grpc.CallOption) (*proto.GraphNodes, error)
-	// Translate Sparql Query into translation results.
-	Translate(ctx context.Context, in *proto.TranslateRequest, opts ...grpc.CallOption) (*proto.TranslateResponse, error)
 	// Given a text search query, return all nodes matching the query.
 	Search(ctx context.Context, in *proto.SearchRequest, opts ...grpc.CallOption) (*proto.SearchResponse, error)
 	// Retrieves the version metadata.
@@ -415,15 +412,6 @@ func (c *mixerClient) GetRelatedLocations(ctx context.Context, in *proto.GetRela
 func (c *mixerClient) GetBioPageData(ctx context.Context, in *proto.GetBioPageDataRequest, opts ...grpc.CallOption) (*proto.GraphNodes, error) {
 	out := new(proto.GraphNodes)
 	err := c.cc.Invoke(ctx, Mixer_GetBioPageData_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) Translate(ctx context.Context, in *proto.TranslateRequest, opts ...grpc.CallOption) (*proto.TranslateResponse, error) {
-	out := new(proto.TranslateResponse)
-	err := c.cc.Invoke(ctx, Mixer_Translate_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -902,8 +890,6 @@ type MixerServer interface {
 	GetRelatedLocations(context.Context, *proto.GetRelatedLocationsRequest) (*proto.GetRelatedLocationsResponse, error)
 	// Get bio page data given a dcid.
 	GetBioPageData(context.Context, *proto.GetBioPageDataRequest) (*proto.GraphNodes, error)
-	// Translate Sparql Query into translation results.
-	Translate(context.Context, *proto.TranslateRequest) (*proto.TranslateResponse, error)
 	// Given a text search query, return all nodes matching the query.
 	Search(context.Context, *proto.SearchRequest) (*proto.SearchResponse, error)
 	// Retrieves the version metadata.
@@ -1050,9 +1036,6 @@ func (UnimplementedMixerServer) GetRelatedLocations(context.Context, *proto.GetR
 }
 func (UnimplementedMixerServer) GetBioPageData(context.Context, *proto.GetBioPageDataRequest) (*proto.GraphNodes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetBioPageData not implemented")
-}
-func (UnimplementedMixerServer) Translate(context.Context, *proto.TranslateRequest) (*proto.TranslateResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Translate not implemented")
 }
 func (UnimplementedMixerServer) Search(context.Context, *proto.SearchRequest) (*proto.SearchResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Search not implemented")
@@ -1548,24 +1531,6 @@ func _Mixer_GetBioPageData_Handler(srv interface{}, ctx context.Context, dec fun
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).GetBioPageData(ctx, req.(*proto.GetBioPageDataRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_Translate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.TranslateRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).Translate(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_Translate_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).Translate(ctx, req.(*proto.TranslateRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2516,10 +2481,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetBioPageData",
 			Handler:    _Mixer_GetBioPageData_Handler,
-		},
-		{
-			MethodName: "Translate",
-			Handler:    _Mixer_Translate_Handler,
 		},
 		{
 			MethodName: "Search",
