@@ -44,7 +44,7 @@ done
 # Data store project roles
 if [[ $STORE_PROJECT_ID != '' ]]; then
   declare -a roles=(
-      "roles/bigquery.admin"   # Query BigQuery
+      "roles/bigquery.dataViewer"   # Query BigQuery
       "roles/bigtable.reader" # Query Bigtable
       "roles/storage.objectViewer" # Branch Cache Read
       "roles/pubsub.editor" # Branch Cache subscription
