@@ -1,0 +1,15 @@
+{
+  "Farm": [
+    {
+      "SubjectID": "Farm",
+      "Predicate": "populationType",
+      "ObjectID": "Area_Farm_Melon",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars",
+      "Name": "Area of Farm: Melon",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    }
+  ]
+}
