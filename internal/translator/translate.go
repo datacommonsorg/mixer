@@ -639,60 +639,13 @@ func removeConstraints(
 	return jc
 }
 
-// func getBqQuery(opts *types.QueryOptions) bigquery.Query {
-// 	log.Println("And triggering getBqQuery")
-// 	var queryParams []bigquery.QueryParameter
-// 	var bqClient *bigquery.Client
-
-// 	queryStr := "SELECT "
-// 	if opts.Distinct {
-// 		queryStr += "DISTINCT "
-// 	}
-
-
-	
-// 	if opts.Orderby != "" {
-// 		orderby := strings.TrimPrefix(strings.ReplaceAll(opts.Orderby, "/", "_"), "?")
-// 		if opts.ASC {
-// 			orderby += " ASC\n"
-// 		} else {
-// 			orderby += " DESC\n"
-// 		}
-// 		queryStr += fmt.Sprintf("ORDER BY @order_by")
-// 		queryParams = append(queryParams, bigquery.QueryParameter{Name: "order_by", Value: orderby})
-// 	}
-
-// 	if opts.Limit > 0 {
-// 		queryParams = append(queryParams, bigquery.QueryParameter{Name: "limit", Value: opts.Limit})
-// 		queryStr += fmt.Sprintf("LIMIT @limit\n", opts.Limit)
-// 	}
-
-// 	q := *bqClient.Query(queryStr)
-// 	q.Parameters = queryParams
-// 	log.Println("\n\nIN HEREEEE\n")
-// 	log.Println(queryStr)
-// 	log.Println(q.Parameters)
-// 	log.Println(q)
-
-// 	return q
-// }
-
 func getBqQuery(store *store.Store, opts *types.QueryOptions, nodes []types.Node, constraints []Constraint, constNode map[types.Node]string, provInfo ProvInfo) (*bigquery.Query, error) {
-    // log.Println("And triggering getBqQuery")
     var queryParams []bigquery.QueryParameter
 	// prov maps provenance column to node columns
 	prov := map[int][]int{}
 	provCols := map[types.Column]int{}
 	provList := []types.Column{}
 	pc := len(nodes)
-	
-    // bqClient initialization is omitted here, but ensure it's correctly set up
-	// ctx := context.Background()
-    // bqClient, err := bigquery.NewClient(ctx, "your-project-id")
-    // if err != nil {
-    //     return nil, fmt.Errorf("bigquery.NewClient: %w", err)
-    // }
-
     queryStr := "SELECT "
     if opts.Distinct {
         queryStr += "DISTINCT "
@@ -710,14 +663,6 @@ func getBqQuery(store *store.Store, opts *types.QueryOptions, nodes []types.Node
             for _, c := range constraints {
 				if n == c.RHS {
 					queryStr += fmt.Sprintf("%s.%s AS %s", c.LHS.Table.Alias(), c.LHS.Name, strings.TrimPrefix(strings.ReplaceAll(n.Alias, "/", "_"), "?"))
-                    // queryParams = append(queryParams, bigquery.QueryParameter{
-                    //     Name:  fmt.Sprintf("col%d", idx),
-                    //     Value: ,
-                    // })
-					// queryParams = append(queryParams, bigquery.QueryParameter{
-                    //     Name:  fmt.Sprintf("col%d_as", idx),
-                    //     Value: ,
-                    // })
 					if provInfo.query {
 						if provCol, ok := provInfo.tableProv[c.LHS.Table.Name]; ok {
 							provCol.Table.ID = c.LHS.Table.ID
@@ -917,7 +862,6 @@ func getBqQuery(store *store.Store, opts *types.QueryOptions, nodes []types.Node
 				Value: fmt.Sprintf("%s.%s", c.LHS.Table.Alias(), c.LHS.Name),
 			})
 			theval := addQuote(v, useQuote)
-			log.Println("\n\nThe Valu is ", theval)
 			queryParams = append(queryParams, bigquery.QueryParameter{
 				Name:  fmt.Sprintf("value%d", idx),
 				Value: theval,
@@ -942,8 +886,6 @@ func getBqQuery(store *store.Store, opts *types.QueryOptions, nodes []types.Node
 
     q := store.BqClient.Query(queryStr)
     q.Parameters = queryParams
-    // log.Println("BigQuery Querystring is ", queryStr)
-	// log.Println("Query parameters are ", queryParams)
 
     return q, nil
 }
@@ -960,13 +902,15 @@ func getSQL(
 	provList := []types.Column{}
 	pc := len(nodes)
 	sql := "SELECT "
+	if opts.Distinct {
+		sql += "DISTINCT "
+	}
 	for idx, n := range nodes {
 		if idx != 0 {
 			sql += ",\n"
 		}
 		if str, ok := constNode[n]; ok {
 			sql += fmt.Sprintf(`"%s"`, str)
-			// log.Println("Adding str from constNode ", str)
 		}
 		for _, c := range constraints {
 			if n == c.RHS {
@@ -974,7 +918,6 @@ func getSQL(
 					c.LHS.Table.Alias(),
 					c.LHS.Name,
 					strings.TrimPrefix(strings.ReplaceAll(n.Alias, "/", "_"), "?"))
-				// log.Println("Thisstr is ", thisstr)
 				sql += thisstr
 				if provInfo.query {
 					if provCol, ok := provInfo.tableProv[c.LHS.Table.Name]; ok {
@@ -994,9 +937,7 @@ func getSQL(
 		}
 	}
 	for i, p := range provList {
-		thatstr := ",\n" + fmt.Sprintf("%s.%s AS prov%d", p.Table.Alias(), p.Name, i)
-		// log.Println("That str is ", thatstr)
-		sql += thatstr
+		sql += ",\n" + fmt.Sprintf("%s.%s AS prov%d", p.Table.Alias(), p.Name, i)
 	}
 
 	tableCounter := map[types.Table]int{}
@@ -1163,8 +1104,18 @@ func getSQL(
 			sql += fmt.Sprintf("%s.%s IN (%s)\n", c.LHS.Table.Alias(), c.LHS.Name, strings.Join(strs, ", "))
 		}
 	}
-
-	// log.Println("SQL Query is ", sql)
+	if opts.Orderby != "" {
+		sql += fmt.Sprintf(
+			"ORDER BY %s", strings.TrimPrefix(strings.ReplaceAll(opts.Orderby, "/", "_"), "?"))
+		if opts.ASC {
+			sql += " ASC\n"
+		} else {
+			sql += " DESC\n"
+		}
+	}
+	if opts.Limit > 0 {
+		sql += fmt.Sprintf("LIMIT %d\n", opts.Limit)
+	}
 	return sql, prov, nil
 }
 
@@ -1181,7 +1132,6 @@ func Translate2(
 	mappings []*types.Mapping, nodes []types.Node, queries []*types.Query,
 	subTypeMap map[string]string, options ...*types.QueryOptions) (
 	*Translation, *bigquery.Query, error) {
-	// log.Println("And now we call Translator.Translate")
 	funcDeps, err := solver.GetFuncDeps(mappings)
 	if err != nil {
 		return nil, nil, err
@@ -1229,7 +1179,6 @@ func Translate2(
 		queryOptions = &types.QueryOptions{}
 	}
 
-	// log.Println("Triggering getSql.")
 	sql, prov, err := getSQL(
 		nodes,
 		constraints,
