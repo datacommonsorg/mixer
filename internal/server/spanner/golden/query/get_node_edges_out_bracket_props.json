@@ -1,0 +1,24 @@
+{
+  "Person": [
+    {
+      "SubjectID": "Person",
+      "Predicate": "subClassOf",
+      "ObjectID": "Thing",
+      "ObjectValue": "",
+      "Provenance": "dc/base/BaseSchema",
+      "Name": "Thing",
+      "Types": [
+        "Class"
+      ]
+    },
+    {
+      "SubjectID": "Person",
+      "Predicate": "source",
+      "ObjectID": "",
+      "ObjectValue": "https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources",
+      "Provenance": "dc/base/BaseSchema",
+      "Name": "",
+      "Types": []
+    }
+  ]
+}

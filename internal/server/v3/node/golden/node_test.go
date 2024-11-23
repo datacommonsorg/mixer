@@ -47,9 +47,20 @@ func TestV3Node(t *testing.T) {
 			goldenFile string
 		}{
 			{
+				"Out properties",
+				[]string{
+					"Count_Person_Female",
+					"foo",
+				},
+				"->",
+				"",
+				"out_prop.json",
+			},
+			{
 				"All out property-values",
 				[]string{
 					"Count_Person_Female",
+					"foo",
 				},
 				"->*",
 				"",

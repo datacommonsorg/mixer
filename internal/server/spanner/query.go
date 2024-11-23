@@ -18,18 +18,37 @@ package spanner
 import (
 	"context"
 	"fmt"
+	"strconv"
 
 	"cloud.google.com/go/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"google.golang.org/api/iterator"
 )
 
+const (
+	// Maximum number of edge hops to traverse for chained properties.
+	MAX_HOPS = 10
+)
+
 // SQL / GQL statements executed by the SpannerClient
 var statements = struct {
-	getPropsBySubjectID       string
-	getPropsByObjectID        string
-	getEdgesBySubjectID       string
-	getEdgesByObjectID        string
+	// Fetch Properties for out arcs
+	getPropsBySubjectID string
+	// Fetch Properties for in arcs
+	getPropsByObjectID string
+	// Fetch Edges for out arcs with a single hop
+	getEdgesBySubjectID string
+	// Fetch Edges for out arcs with chaining
+	getChainedEdgesBySubjectID string
+	// Fetch Edges for in arcs with a single hop
+	getEdgesByObjectID string
+	// Fetch Edges for in arcs with chaining
+	getChainedEdgesByObjectID string
+	// Subquery to filter edges by predicate
+	filterProps string
+	// Subquery to filter edges by object property-values
+	filterObjects string
+	// Fetch Observations for variable+entity.
 	getObsByVariableAndEntity string
 }{
 	getPropsBySubjectID: `
@@ -53,38 +72,167 @@ var statements = struct {
 	`,
 	getEdgesBySubjectID: `
 	SELECT
-		edge.subject_id,
-		edge.predicate,
-		COALESCE(edge.object_id, '') AS object_id,
-		COALESCE(edge.object_value, '') AS object_value,
-		COALESCE(edge.provenance, '') AS provenance,
-		COALESCE(object.name, '') AS name,
-		COALESCE(object.types, []) AS types
-	FROM
-		Edge edge
-	LEFT JOIN
-		GRAPH_TABLE( DCGraph MATCH -[e:Edge
-		WHERE
-			e.subject_id IN UNNEST(@ids)
-			AND e.object_value IS NULL]->(n:Node) RETURN n.subject_id,
-			n.name,
-			n.types) object
-	ON
-		edge.object_id = object.subject_id
-	WHERE
-		edge.subject_id IN UNNEST(@ids)
+		result.subject_id,
+		result.predicate,
+		COALESCE(result.object_id, '') AS object_id,
+		COALESCE(result.object_value, '') AS object_value,
+		COALESCE(result.provenance, '') AS provenance,
+		COALESCE(result.name, '') AS name,
+		COALESCE(result.types, []) AS types
+	FROM (
+		SELECT
+			*
+		FROM
+			GRAPH_TABLE (
+				DCGRAPH MATCH -[e:Edge
+				WHERE
+					e.subject_id IN UNNEST(@ids)
+					AND e.object_value IS NULL
+					AND e.subject_id != e.object_id%[1]s]->(n:Node)
+				RETURN e.subject_id,
+					e.predicate,
+					e.object_id,
+					'' as object_value,
+					e.provenance,
+					n.name,
+					n.types
+			)
+		UNION ALL
+		SELECT
+			*
+		FROM
+			GRAPH_TABLE (
+				DCGraph MATCH -[e:Edge
+				WHERE
+					e.subject_id IN UNNEST(@ids)
+					AND e.object_value IS NOT NULL%[1]s]-> 
+				RETURN e.subject_id,
+					e.predicate,
+					'' as object_id,
+					e.object_value,
+					e.provenance,
+					'' AS name,
+					ARRAY<STRING>[] AS types
+			)
+	)result
 	`,
+	getChainedEdgesBySubjectID: fmt.Sprintf(`
+	SELECT
+		result.subject_id,
+		@result_predicate AS predicate,
+		COALESCE(result.object_id, '') AS object_id,
+		COALESCE(result.object_value, '') AS object_value,
+		'' AS provenance,
+		COALESCE(result.name, '') AS name,
+		ARRAY<STRING>[] AS types
+	FROM (
+		SELECT
+			*
+		FROM
+			GRAPH_TABLE (
+				DCGRAPH MATCH (m:Node
+				WHERE
+					m.subject_id IN UNNEST(@ids))-[e:Edge
+				WHERE
+					e.predicate = @predicate]->{1,%d}(n:Node)
+				WHERE 
+					m != n
+				RETURN DISTINCT m.subject_id,
+					n.subject_id as object_id,
+					'' as object_value,
+					n.name
+			)
+		UNION ALL
+		SELECT
+			*
+		FROM
+			GRAPH_TABLE (
+				DCGraph MATCH -[e:Edge
+				WHERE
+					e.subject_id IN UNNEST(@ids)
+					AND e.object_value IS NOT NULL
+					AND e.predicate = @predicate]-> 
+				RETURN e.subject_id,
+					'' AS object_id,
+					e.object_value,
+					'' AS name
+			)
+	)result
+	`, MAX_HOPS),
 	getEdgesByObjectID: `
-	GRAPH DCGraph MATCH (n:Node)-[e:Edge
-	WHERE
-		e.object_id IN UNNEST(@ids)
-		AND e.subject_id != e.object_id]-> return e.object_id AS subject_id,
-		e.predicate,
-		n.subject_id AS object_id,
-		'' as object_value,
-		COALESCE(e.provenance, '') AS provenance,
-		COALESCE(n.name, '') AS name,
-		COALESCE(n.types, []) AS types
+	SELECT
+		result.subject_id,
+		result.predicate,
+		result.object_id,
+		'' AS object_value,
+		COALESCE(result.provenance, '') AS provenance,
+		COALESCE(result.name, '') AS name,
+		COALESCE(result.types, []) AS types,
+	FROM
+		GRAPH_TABLE (
+			DCGraph MATCH <-[e:Edge
+			WHERE
+				e.object_id IN UNNEST(@ids)
+				AND e.subject_id != e.object_id%s]-(n:Node) 
+			RETURN e.object_id AS subject_id,
+				e.predicate,
+				e.subject_id AS object_id,
+				e.provenance,
+				n.name,
+				n.types
+	)result
+	`,
+	getChainedEdgesByObjectID: fmt.Sprintf(`
+	SELECT
+		result.subject_id,
+		@result_predicate AS predicate,
+		result.object_id,
+		'' AS object_value,
+		'' AS provenance,
+		COALESCE(result.name, '') AS name,
+		ARRAY<STRING>[] AS types
+	FROM
+		GRAPH_TABLE (
+			DCGraph MATCH (m:Node
+			WHERE m.subject_id IN UNNEST(@ids))<-[e:Edge
+		WHERE
+			e.predicate = @predicate]-{1,%d}(n:Node) 
+		WHERE
+			m!= n	
+		RETURN DISTINCT m.subject_id,
+			n.subject_id AS object_id,
+			n.name
+		)result
+	`, MAX_HOPS),
+	filterProps: `
+	AND e.predicate IN UNNEST(@props)
+	`,
+	filterObjects: `
+	INNER JOIN (
+		SELECT 
+			*
+		FROM
+			GRAPH_TABLE (
+				DCGraph MATCH -[e:Edge 
+				WHERE
+					e.predicate = @prop%[1]d
+					AND e.object_id IN UNNEST(@val%[1]d)]-> 
+				RETURN e.subject_id
+			)
+		UNION DISTINCT
+		SELECT
+			*
+		FROM
+			GRAPH_TABLE (
+				DCGraph MATCH -[e:Edge
+				WHERE
+					e.predicate = @prop%[1]d
+					AND e.object_value IN UNNEST(@val%[1]d)]->
+				RETURN e.subject_id
+			) 			
+	)filter%[1]d
+	ON 
+		result.object_id = filter%[1]d.subject_id
 	`,
 	getObsByVariableAndEntity: `
 		SELECT
@@ -105,11 +253,14 @@ var statements = struct {
 	`,
 }
 
-// GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction.
-func (sc *SpannerClient) GetNodeProps(ctx context.Context, ids []string, out bool) ([]*Property, error) {
-	props := []*Property{}
+// GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction and returns a map.
+func (sc *SpannerClient) GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*Property, error) {
+	props := map[string][]*Property{}
 	if len(ids) == 0 {
 		return props, nil
+	}
+	for _, id := range ids {
+		props[id] = []*Property{}
 	}
 
 	var stmt spanner.Statement
@@ -135,7 +286,8 @@ func (sc *SpannerClient) GetNodeProps(ctx context.Context, ids []string, out boo
 		},
 		func(rowStruct interface{}) {
 			prop := rowStruct.(*Property)
-			props = append(props, prop)
+			subjectID := prop.SubjectID
+			props[subjectID] = append(props[subjectID], prop)
 		},
 	)
 	if err != nil {
@@ -147,25 +299,64 @@ func (sc *SpannerClient) GetNodeProps(ctx context.Context, ids []string, out boo
 
 // GetNodeEdgesByID retrieves node edges from Spanner given a list of IDs and a property Arc and returns a map.
 func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc) (map[string][]*Edge, error) {
-	// TODO: Support additional Node functionality (properties, pagination, etc).
+	// TODO: Support pagination.
 	edges := make(map[string][]*Edge)
 	if len(ids) == 0 {
 		return edges, nil
 	}
+	for _, id := range ids {
+		edges[id] = []*Edge{}
+	}
 
-	var stmt spanner.Statement
+	// Validate input.
+	if arc.Decorator != "" && (arc.SingleProp == "" || arc.SingleProp == WILDCARD || len(arc.BracketProps) > 0) {
+		return nil, fmt.Errorf("chain expressions are only supported for a single property")
+	}
 
+	params := map[string]interface{}{"ids": ids}
+
+	// Attach property arcs.
+	filterProps := ""
+	if arc.SingleProp != "" && arc.SingleProp != WILDCARD {
+		filterProps = statements.filterProps
+		params["props"] = []string{arc.SingleProp}
+	} else if len(arc.BracketProps) > 0 {
+		filterProps = statements.filterProps
+		params["props"] = arc.BracketProps
+	}
+
+	var template string
 	switch arc.Out {
 	case true:
-		stmt = spanner.Statement{
-			SQL:    statements.getEdgesBySubjectID,
-			Params: map[string]interface{}{"ids": ids},
+		if arc.Decorator == CHAIN {
+			template = statements.getChainedEdgesBySubjectID
+			params["predicate"] = arc.SingleProp
+			params["result_predicate"] = arc.SingleProp + arc.Decorator
+		} else {
+			template = fmt.Sprintf(statements.getEdgesBySubjectID, filterProps)
 		}
 	case false:
-		stmt = spanner.Statement{
-			SQL:    statements.getEdgesByObjectID,
-			Params: map[string]interface{}{"ids": ids},
+		if arc.Decorator == CHAIN {
+			template = statements.getChainedEdgesByObjectID
+			params["predicate"] = arc.SingleProp
+			params["result_predicate"] = arc.SingleProp + arc.Decorator
+		} else {
+			template = fmt.Sprintf(statements.getEdgesByObjectID, filterProps)
 		}
+	}
+
+	// Attach filters.
+	i := 0
+	for prop, val := range arc.Filter {
+		template += fmt.Sprintf(statements.filterObjects, i)
+		params["prop"+strconv.Itoa(i)] = prop
+		params["val"+strconv.Itoa(i)] = val
+		i += 1
+	}
+
+	stmt := spanner.Statement{
+		SQL:    template,
+		Params: params,
 	}
 
 	err := sc.queryAndCollect(
