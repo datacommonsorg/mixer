@@ -29,6 +29,7 @@ import (
 	"google.golang.org/api/iterator"
 )
 
+// Executes the BigQuery query and parses the response to population a QueryResponse object, which is returned.
 func ExecuteAndParseResponse(ctx context.Context, q *bigquery.Query, translation *translator.Translation, out pb.QueryResponse) (*pb.QueryResponse, error) {
 	n := len(out.Header)
 
@@ -83,9 +84,7 @@ func Query(
 	metadata *resource.Metadata,
 	store *store.Store,
 ) (*pb.QueryResponse, error) {
-	// log.Println("So now we're in Translator.Query")
 	var out pb.QueryResponse
-	var shadow pb.QueryResponse
 	if store.BqClient == nil {
 		return &out, nil
 	}
@@ -102,12 +101,10 @@ func Query(
 		
 		for _, node := range translation.Nodes {
 			out.Header = append(out.Header, node.Alias)
-			shadow.Header = append(shadow.Header, node.Alias)
 		}
 		out.Rows = []*pb.QueryResponseRow{}
-		shadow.Rows = []*pb.QueryResponseRow{}
 	bq := store.BqClient.Query(translation.SQL)
 	bq.Parameters = translation.Parameters
 
-	return ExecuteAndParseResponse(ctx, bq, translation, shadow)
+	return ExecuteAndParseResponse(ctx, bq, translation, out)
 }

@@ -917,11 +917,10 @@ func getSQL(
 		}
 		for _, c := range constraints {
 			if n == c.RHS {
-				thisstr := fmt.Sprintf("%s.%s AS %s",
+				sql += fmt.Sprintf("%s.%s AS %s",
 					c.LHS.Table.Alias(),
 					c.LHS.Name,
 					strings.TrimPrefix(strings.ReplaceAll(n.Alias, "/", "_"), "?"))
-				sql += thisstr
 				if provInfo.query {
 					if provCol, ok := provInfo.tableProv[c.LHS.Table.Name]; ok {
 						provCol.Table.ID = c.LHS.Table.ID
@@ -1124,8 +1123,8 @@ func getSQL(
 func Translate(
 	mappings []*types.Mapping, nodes []types.Node, queries []*types.Query,
 	subTypeMap map[string]string, options ...*types.QueryOptions) (
-	*Translation, *bigquery.Query, error) {
-		return nil, nil, nil
+	*Translation, error) {
+		return nil, nil
 }
 
 // Translate takes a datalog query and translates to GoogleSQL query based on schema mapping.
@@ -1181,15 +1180,14 @@ func Translate2(
 		queryOptions = &types.QueryOptions{}
 	}
 
-	querySql, params, prov, err := getBqQuery(
+	sql, params, prov, err := getBqQuery(
 		queryOptions,
 		nodes,
 		constraints,
 		constNode,
 		ProvInfo{queryProv, tableProv})
-
 	if err != nil {
 		return nil, err
 	}
-	return &Translation{querySql, nodes, bindingSets[0], constraints, prov, params}, nil
+	return &Translation{sql, nodes, bindingSets[0], constraints, prov, params}, nil
 }
