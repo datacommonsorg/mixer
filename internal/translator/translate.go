@@ -770,7 +770,7 @@ func getBqQuery(opts *types.QueryOptions, nodes []types.Node, constraints []Cons
 			if _, ok := processedTable[otherCol.Table]; ok {
 				whereConstraints = append(whereConstraints, c)
 			} else {
-				queryStr += fmt.Sprintf("JOIN %s AS @%s\n", otherCol.Table.Name, otherCol.Table.Alias())
+				queryStr += fmt.Sprintf("JOIN %s AS %s\n", otherCol.Table.Name, otherCol.Table.Alias())
 				queryStr += fmt.Sprintf("ON %s.%s = %s.%s\n", currCol.Table.Alias(), currCol.Name, otherCol.Table.Alias(), otherCol.Name)
 				processedTable[otherCol.Table] = struct{}{}
 
