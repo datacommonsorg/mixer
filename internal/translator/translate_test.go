@@ -226,7 +226,7 @@ func TestGetSQL(t *testing.T) {
 	constraints := []Constraint{
 		{*c3, n2}, {*c3, n1}, {*c2, "City"}, {*c1, "MTV"},
 	}
-	gotSQL, _, err := getSQL(
+	gotSQL, gotParams, _, err := getSQL(
 		[]types.Node{n2},
 		constraints,
 		map[types.Node]string{},
@@ -236,16 +236,25 @@ func TestGetSQL(t *testing.T) {
 	if err != nil {
 		t.Fatalf("getSQL error: %s", err)
 	}
+	gotParamsMap := make(map[string]string)
+	for _, param := range gotParams {
+		gotParamsMap[param.Name] = param.Value.(string)
+	}
+
 	wantSQL :=
 		"SELECT DISTINCT _dc_v3_Place_.id AS dcid,\n" +
 			"_dc_v3_Place_.prov_id AS prov0\n" +
 			"FROM `dc_v3.Place` AS _dc_v3_Place_\n" +
-			"WHERE _dc_v3_Place_.name = \"MTV\"\n" +
-			"AND _dc_v3_Place_.type = \"City\"\n" +
-			"ORDER BY dcid ASC\n" +
-			"LIMIT 20\n"
+			"WHERE _dc_v3_Place_.name = @value0\n" +
+			"AND _dc_v3_Place_.type = @value1\n" +
+			"ORDER BY @orderby ASC\n" +
+			"LIMIT @limit\n"
+	wantParams := map[string]string{"value0": "MTV", "value1": "City", "orderby": "dcid", "limit": "20"}
 	if diff := cmp.Diff(wantSQL, gotSQL); diff != "" {
 		t.Errorf("getSQL unexpected got diff %v", diff)
+	}
+	if diff := cmp.Diff(wantParams, gotParamsMap); diff != "" {
+		t.Errorf("gotParams unexpected got diff %v", diff)
 	}
 }
 
@@ -262,21 +271,67 @@ func TestTranslate(t *testing.T) {
 		askProv  bool
 		queryStr string
 		wantSQL  string
+		wantParams map[string]string
 		wantProv map[int][]int
 	}{
+		{
+			"bio",
+			false,
+			`SELECT distinct ?d
+			WHERE {
+				?ccdt typeOf ChemicalCompoundDiseaseTreatment .
+				?ccdt compoundID ?c .
+				?ccdt diseaseID ?dis .
+				?dis commonName ?d .
+				?c drugName "Prednisone" .
+			}
+			LIMIT 100`,
+			"SELECT _dc_v3_Triple_3.object_value AS d\n" +
+				"FROM `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_1\n" +
+				"ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_1.subject_id\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_2\n" +
+				"ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_2.subject_id\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_4\n" +
+				"ON _dc_v3_Triple_1.object_id = _dc_v3_Triple_4.subject_id\n" +
+				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_3\n" +
+				"ON _dc_v3_Triple_2.object_id = _dc_v3_Triple_3.subject_id\n" +
+				"WHERE _dc_v3_Triple_0.object_id = @value0\n" +
+				"AND _dc_v3_Triple_0.predicate = @value1\n" +
+				"AND _dc_v3_Triple_1.predicate = @value2\n" +
+				"AND _dc_v3_Triple_2.predicate = @value3\n" +
+				"AND _dc_v3_Triple_3.predicate = @value4\n" +
+				"AND _dc_v3_Triple_4.object_value = @value5\n" +
+				"ORDER BY @value6 ASC\n" +
+				"LIMIT @value7\n",
+			map[string]string{
+				"value0": "ChemicalCompoundDiseaseTreatment",
+				"value1": "typeOf",
+				"value2": "compoundID",
+				"value3": "diseaseID",
+				"value4": "commonName",
+				"value5": "Prednisone",
+				"value6": "dcid",
+				"value7": "20",
+			},
+			emptyProv,
+		},
 		{
 			"OneVar",
 			false,
 			`SELECT ?dcid/test,
-		    typeOf ?p Place,
-		    subType ?p "City",
-		    name ?p "San Jose",
-		    dcid ?p ?dcid/test`,
-
+		typeOf ?p Place,
+		subType ?p "City",
+		name ?p "San Jose",
+		dcid ?p ?dcid/test`,
 			"SELECT _dc_v3_Place_0.id AS dcid_test\n" +
 				"FROM `dc_v3.Place` AS _dc_v3_Place_0\n" +
-				"WHERE _dc_v3_Place_0.name = \"San Jose\"\n" +
-				"AND _dc_v3_Place_0.type = \"City\"\n",
+				"WHERE _dc_v3_Place_0.name = @value0\n" +
+				"AND _dc_v3_Place_0.type = @value1\n",
+			map[string]string{
+				"value0": "San Jose",
+				"value1": "City",
+			},
 			emptyProv,
 		},
 		{
@@ -290,18 +345,23 @@ func TestTranslate(t *testing.T) {
 				containedInPlace ?node ?parent_node,
 				dcid ?parent_node "dc/x333",
 				dcid ?node ?dcid`,
-
+		
 			"SELECT _dc_v3_Place_1.id AS dcid\n" +
 				"FROM `dc_v3.Place` AS _dc_v3_Place_1\n" +
 				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
 				"ON _dc_v3_Place_1.id = _dc_v3_Triple_0.subject_id\n" +
-				"WHERE _dc_v3_Place_1.country_alpha_2_code = \"country-code\"\n" +
-				"AND _dc_v3_Place_1.type = \"City\"\n" +
-				"AND _dc_v3_Triple_0.object_id = \"dc/x333\"\n" +
-				"AND _dc_v3_Triple_0.predicate = \"containedInPlace\"\n",
+				"WHERE _dc_v3_Place_1.country_alpha_2_code = @value0\n" +
+				"AND _dc_v3_Place_1.type = @value1\n" +
+				"AND _dc_v3_Triple_0.object_id = @value2\n" +
+				"AND _dc_v3_Triple_0.predicate = @value3\n",
+			map[string]string{
+				"value0": "country-code",
+				"value1": "City",
+				"value2": "dc/x333",
+				"value3": "containedInPlace",
+			},
 			emptyProv,
 		},
-
 		{
 			"InstanceQueryType",
 			true,
@@ -309,11 +369,14 @@ func TestTranslate(t *testing.T) {
 			  typeOf ?node Thing,
 			  dcid ?node "dc/m1rl3k",
 			  subType ?node ?node_type`,
-
+		
 			"SELECT _dc_v3_Instance_0.type AS node_type,\n" +
 				"_dc_v3_Instance_0.prov_id AS prov0\n" +
 				"FROM `dc_v3.Instance` AS _dc_v3_Instance_0\n" +
-				"WHERE _dc_v3_Instance_0.id = \"dc/m1rl3k\"\n",
+				"WHERE _dc_v3_Instance_0.id = @value0\n",
+			map[string]string{
+				"value0": "dc/m1rl3k",
+			},
 			map[int][]int{1: {0}},
 		},
 		{
@@ -325,7 +388,10 @@ func TestTranslate(t *testing.T) {
 				dcid ?node ?dcid`,
 			"SELECT _dc_v3_Place_0.id AS dcid\n" +
 				"FROM `dc_v3.Place` AS _dc_v3_Place_0\n" +
-				"WHERE _dc_v3_Place_0.type = \"City\"\n",
+				"WHERE _dc_v3_Place_0.type = @value0\n",
+			map[string]string{
+				"value0": "City",
+			},
 			emptyProv,
 		},
 		{
@@ -336,11 +402,15 @@ func TestTranslate(t *testing.T) {
 				subType ?node City,
 				dcid ?node dc/qp620l2,
 				name ?node ?name`,
-
+		
 			"SELECT _dc_v3_Place_0.name AS name\n" +
 				"FROM `dc_v3.Place` AS _dc_v3_Place_0\n" +
-				"WHERE _dc_v3_Place_0.id = \"dc/qp620l2\"\n" +
-				"AND _dc_v3_Place_0.type = \"City\"\n",
+				"WHERE _dc_v3_Place_0.id = @value0\n" +
+				"AND _dc_v3_Place_0.type = @value1\n",
+			map[string]string{
+				"value0": "dc/qp620l2",
+				"value1": "City",
+			},
 			emptyProv,
 		},
 		{
@@ -354,14 +424,18 @@ func TestTranslate(t *testing.T) {
 				dcid ?node dc/b72vdv,
 				name ?city_or_county ?name,
 				dcid ?city_or_county ?dcid`,
-
+		
 			"SELECT _dc_v3_Place_1.name AS name,\n" +
 				"_dc_v3_Place_1.id AS dcid\n" +
 				"FROM `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
 				"JOIN `dc_v3.Place` AS _dc_v3_Place_1\n" +
 				"ON _dc_v3_Triple_0.subject_id = _dc_v3_Place_1.id\n" +
-				"WHERE _dc_v3_Triple_0.object_id = \"dc/b72vdv\"\n" +
-				"AND _dc_v3_Triple_0.predicate = \"containedInPlace\"\n",
+				"WHERE _dc_v3_Triple_0.object_id = @value0\n" +
+				"AND _dc_v3_Triple_0.predicate = @value1\n",
+			map[string]string{
+				"value0": "dc/b72vdv",
+				"value1": "containedInPlace",
+			},
 			emptyProv,
 		},
 		{
@@ -378,7 +452,7 @@ func TestTranslate(t *testing.T) {
 				name ?parent ?parent_name,
 				name ?node ?name,
 				landArea ?node ?landArea`,
-
+		
 			"SELECT _dc_v3_Place_1.name AS name,\n" +
 				"_dc_v3_Place_1.timezone AS timezone,\n" +
 				"_dc_v3_Place_1.land_area AS landArea,\n" +
@@ -391,12 +465,16 @@ func TestTranslate(t *testing.T) {
 				"ON _dc_v3_Place_1.id = _dc_v3_Triple_0.subject_id\n" +
 				"JOIN `dc_v3.Place` AS _dc_v3_Place_0\n" +
 				"ON _dc_v3_Triple_0.object_id = _dc_v3_Place_0.id\n" +
-				"WHERE _dc_v3_Place_1.id IN (\"dc/1234\", \"dc/4321\")\n" +
-				"AND _dc_v3_Place_1.type = \"City\"\n" +
-				"AND _dc_v3_Triple_0.predicate = \"containedInPlace\"\n",
+				"WHERE _dc_v3_Place_1.id IN (@value0)\n" +
+				"AND _dc_v3_Place_1.type = @value1\n" +
+				"AND _dc_v3_Triple_0.predicate = @value2\n",
+			map[string]string{
+				"value0": "dc/4321",
+				"value1": "City",
+				"value2": "containedInPlace",
+			},
 			map[int][]int{5: {0, 1, 2}, 6: {3, 4}},
 		},
-
 		{
 			"MultipleTypeQuery",
 			false,
@@ -408,11 +486,14 @@ func TestTranslate(t *testing.T) {
 				dcid ?state ?dcid,
 				location ?population ?state,
 				dcid ?population ?population_dcid`,
-
+		
 			"SELECT _dc_v3_StatisticalPopulation_1.place_key AS dcid,\n" +
 				"_dc_v3_StatisticalPopulation_1.id AS population_dcid\n" +
 				"FROM `dc_v3.StatisticalPopulation` AS _dc_v3_StatisticalPopulation_1\n" +
-				"WHERE _dc_v3_StatisticalPopulation_1.place_key = \"dc/p/x1234\"\n",
+				"WHERE _dc_v3_StatisticalPopulation_1.place_key = @value0\n",
+			map[string]string{
+				"value0": "dc/p/x1234",
+			},
 			emptyProv,
 		},
 		{
@@ -429,14 +510,18 @@ func TestTranslate(t *testing.T) {
 				populationType ?pop Person,
 				observedNode ?o ?pop,
 				measuredValue ?o ?count_value`,
-
+		
 			"SELECT _dc_v3_StatisticalPopulation_1.place_key AS dcid,\n" +
 				"_dc_v3_Observation_2.measured_value AS count_value\n" +
 				"FROM `dc_v3.StatisticalPopulation` AS _dc_v3_StatisticalPopulation_1\n" +
 				"JOIN `dc_v3.Observation` AS _dc_v3_Observation_2\n" +
 				"ON _dc_v3_StatisticalPopulation_1.id = _dc_v3_Observation_2.observed_node_key\n" +
-				"WHERE _dc_v3_StatisticalPopulation_1.place_key = \"X1234\"\n" +
-				"AND _dc_v3_StatisticalPopulation_1.population_type = \"Person\"\n",
+				"WHERE _dc_v3_StatisticalPopulation_1.place_key = @value0\n" +
+				"AND _dc_v3_StatisticalPopulation_1.population_type = @value1\n",
+			map[string]string{
+				"value0": "X1234",
+				"value1": "Person",
+			},
 			emptyProv,
 		},
 		{
@@ -449,10 +534,13 @@ func TestTranslate(t *testing.T) {
 				dcid ?child dc/m1rl3k,
 				dcid ?parent ?dcid,
 				location ?parent ?child`,
-
+		
 			"SELECT _dc_v3_StatisticalPopulation_1.id AS dcid\n" +
 				"FROM `dc_v3.StatisticalPopulation` AS _dc_v3_StatisticalPopulation_1\n" +
-				"WHERE _dc_v3_StatisticalPopulation_1.place_key = \"dc/m1rl3k\"\n",
+				"WHERE _dc_v3_StatisticalPopulation_1.place_key = @value0\n",
+			map[string]string{
+				"value0": "dc/m1rl3k",
+			},
 			emptyProv,
 		},
 		{
@@ -463,13 +551,16 @@ func TestTranslate(t *testing.T) {
 				dcid ?place dc/zkelys3,
 				dcid ?o ?dcid,
 				observationAbout ?o ?place`,
-
+		
 			"SELECT _dc_v3_StatVarObservation_0.id AS dcid\n" +
 				"FROM `dc_v3.StatVarObservation` AS _dc_v3_StatVarObservation_0\n" +
-				"WHERE _dc_v3_StatVarObservation_0.observation_about = \"dc/zkelys3\"\n",
+				"WHERE _dc_v3_StatVarObservation_0.observation_about = @value0\n",
+			map[string]string{
+				"value0": "dc/zkelys3",
+			},
 			emptyProv,
 		},
-
+		
 		{
 			"Triple",
 			false,
@@ -480,7 +571,7 @@ func TestTranslate(t *testing.T) {
 				author ?node ?author,
 				name ?author ?author_name,
 				dcid ?node dc/4568bbd63cjdg`,
-
+		
 			"SELECT _dc_v3_Triple_2.object_value AS datePublished,\n" +
 				"_dc_v3_Triple_4.object_value AS author_name\n" +
 				"FROM `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
@@ -492,16 +583,27 @@ func TestTranslate(t *testing.T) {
 				"ON _dc_v3_Triple_3.object_id = _dc_v3_Triple_1.subject_id\n" +
 				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_4\n" +
 				"ON _dc_v3_Triple_1.subject_id = _dc_v3_Triple_4.subject_id\n" +
-				"WHERE _dc_v3_Triple_0.object_id = \"ClaimReview\"\n" +
-				"AND _dc_v3_Triple_0.predicate = \"typeOf\"\n" +
-				"AND _dc_v3_Triple_0.subject_id = \"dc/4568bbd63cjdg\"\n" +
-				"AND _dc_v3_Triple_1.object_id = \"Organization\"\n" +
-				"AND _dc_v3_Triple_1.predicate = \"typeOf\"\n" +
-				"AND _dc_v3_Triple_2.predicate = \"datePublished\"\n" +
-				"AND _dc_v3_Triple_3.predicate = \"author\"\n" +
-				"AND _dc_v3_Triple_4.predicate = \"name\"\n",
-			emptyProv,
-		},
+				"WHERE _dc_v3_Triple_0.object_id = @value0\n" +
+				"AND _dc_v3_Triple_0.predicate = @value1\n" +
+				"AND _dc_v3_Triple_0.subject_id = @value2\n" +
+				"AND _dc_v3_Triple_1.object_id = @value3\n" +
+				"AND _dc_v3_Triple_1.predicate = @value4\n" +
+				"AND _dc_v3_Triple_2.predicate = @value5\n" +
+				"AND _dc_v3_Triple_3.predicate = @value6\n" +
+				"AND _dc_v3_Triple_4.predicate = @value7\n",
+				map[string]string{
+					"value0": "ClaimReview",
+					"value1": "typeOf",
+					"value2": "dc/4568bbd63cjdg",
+					"value3": "Organization",
+					"value4": "typeOf",
+					"value5": "datePublished",
+					"value6": "author",
+					"value7": "name",
+				},
+				emptyProv,
+			},
+		// TODO(gmechali): Continue;
 		{
 			"ResolutionQuery",
 			false,
@@ -513,18 +615,25 @@ func TestTranslate(t *testing.T) {
 				containedInPlace ?node ?parent,
 				dcid ?parent dc/zxvc6e2,
 				geoId ?node 12345`,
-
+		
 			"SELECT _dc_v3_Place_1.id AS dcid\n" +
 				"FROM `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
 				"JOIN `dc_v3.Place` AS _dc_v3_Place_1\n" +
 				"ON _dc_v3_Triple_0.subject_id = _dc_v3_Place_1.id\n" +
 				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_1\n" +
 				"ON _dc_v3_Place_1.id = _dc_v3_Triple_1.subject_id\n" +
-				"WHERE _dc_v3_Place_1.type = \"City\"\n" +
-				"AND _dc_v3_Triple_0.object_id = \"dc/zxvc6e2\"\n" +
-				"AND _dc_v3_Triple_0.predicate = \"containedInPlace\"\n" +
-				"AND _dc_v3_Triple_1.object_value = \"12345\"\n" +
-				"AND _dc_v3_Triple_1.predicate = \"geoId\"\n",
+				"WHERE _dc_v3_Place_1.type = @value0\n" +
+				"AND _dc_v3_Triple_0.object_id = @value1\n" +
+				"AND _dc_v3_Triple_0.predicate = @value2\n" +
+				"AND _dc_v3_Triple_1.object_value = @value3\n" +
+				"AND _dc_v3_Triple_1.predicate = @value4\n",
+			map[string]string{
+				"value0": "City",
+				"value1": "dc/zxvc6e2",
+				"value2": "containedInPlace",
+				"value3": "12345",
+				"value4": "geoId",
+			},
 			emptyProv,
 		},
 		{
@@ -538,10 +647,16 @@ func TestTranslate(t *testing.T) {
 				"FROM `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
 				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_2\n" +
 				"ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_2.subject_id\n" +
-				"WHERE _dc_v3_Triple_0.object_id = \"Class\"\n" +
-				"AND _dc_v3_Triple_0.predicate = \"typeOf\"\n" +
-				"AND _dc_v3_Triple_0.subject_id = \"ListenAction\"\n" +
-				"AND _dc_v3_Triple_2.predicate = \"label\"\n",
+				"WHERE _dc_v3_Triple_0.object_id = @value0\n" +
+				"AND _dc_v3_Triple_0.predicate = @value1\n" +
+				"AND _dc_v3_Triple_0.subject_id = @value2\n" +
+				"AND _dc_v3_Triple_2.predicate = @value3\n",
+			map[string]string{
+				"value0": "Class",
+				"value1": "typeOf",
+				"value2": "ListenAction",
+				"value3": "label",
+			},
 			emptyProv,
 		},
 		{
@@ -551,14 +666,19 @@ func TestTranslate(t *testing.T) {
 				dcid ?node ?dcid,
 				localCuratorLevelId ?node B01001 B022202,
 				localCuratorLevelId ?node ?local_id`,
-
+		
 			"SELECT _dc_v3_Triple_0.subject_id AS dcid,\n" +
 				"_dc_v3_Triple_1.object_value AS local_id\n" +
 				"FROM `dc_v3.Triple` AS _dc_v3_Triple_1\n" +
 				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
 				"ON _dc_v3_Triple_1.subject_id = _dc_v3_Triple_0.subject_id\n" +
-				"WHERE _dc_v3_Triple_1.object_value IN (\"B01001\", \"B022202\")\n" +
-				"AND _dc_v3_Triple_1.predicate = \"localCuratorLevelId\"\n",
+				"WHERE _dc_v3_Triple_1.object_value IN (@value0, @value1)\n" +
+				"AND _dc_v3_Triple_1.predicate = @value2\n",
+			map[string]string{
+				"value0": "B01001",
+				"value1": "B022202",
+				"value2": "localCuratorLevelId",
+			},
 			emptyProv,
 		},
 		{
@@ -571,18 +691,23 @@ func TestTranslate(t *testing.T) {
 				dcid ?child dc/m1rl3k,
 				dcid ?parent ?dcid,
 				location ?parent ?child`,
-
+		
 			"SELECT _dc_v3_Triple_1.subject_id AS dcid\n" +
 				"FROM `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
 				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_2\n" +
 				"ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_2.subject_id\n" +
 				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_1\n" +
 				"ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_1.subject_id\n" +
-				"WHERE _dc_v3_Triple_0.object_id = \"CollegeOrUniversity\"\n" +
-				"AND _dc_v3_Triple_0.predicate = \"typeOf\"\n" +
-				"AND _dc_v3_Triple_2.object_id = \"dc/m1rl3k\"\n" +
-				"AND _dc_v3_Triple_2.predicate = \"location\"\n",
-
+				"WHERE _dc_v3_Triple_0.object_id = @value0\n" +
+				"AND _dc_v3_Triple_0.predicate = @value1\n" +
+				"AND _dc_v3_Triple_2.object_id = @value2\n" +
+				"AND _dc_v3_Triple_2.predicate = @value3\n",
+			map[string]string{
+				"value0": "CollegeOrUniversity",
+				"value1": "typeOf",
+				"value2": "dc/m1rl3k",
+				"value3": "location",
+			},
 			emptyProv,
 		},
 		{
@@ -595,13 +720,16 @@ func TestTranslate(t *testing.T) {
 				variableMeasured ?o ?sv,
 				measuredProperty ?sv ?measuredProperty,
 				statType ?sv ?statType`,
-
+		
 			"SELECT _dc_v3_StatisticalVariable_1.measured_prop AS measuredProperty,\n" +
 				"_dc_v3_StatisticalVariable_1.stat_type AS statType\n" +
 				"FROM `dc_v3.StatVarObservation` AS _dc_v3_StatVarObservation_0\n" +
 				"JOIN `dc_v3.StatisticalVariable` AS _dc_v3_StatisticalVariable_1\n" +
 				"ON _dc_v3_StatVarObservation_0.variable_measured = _dc_v3_StatisticalVariable_1.id\n" +
-				"WHERE _dc_v3_StatVarObservation_0.id = \"dc/o/xyz\"\n",
+				"WHERE _dc_v3_StatVarObservation_0.id = @value0\n",
+			map[string]string{
+				"value0": "dc/o/xyz",
+			},
 			emptyProv,
 		},
 		{
@@ -620,14 +748,17 @@ func TestTranslate(t *testing.T) {
 				"_dc_v3_Observation_1.id AS dcid,\n" +
 				"_dc_v3_Observation_1.measured_prop AS measuredProperty\n" +
 				"FROM `dc_v3.Observation` AS _dc_v3_Observation_1\n" +
-				"WHERE _dc_v3_Observation_1.observed_node_key = \"dc/p/zcerrzm76y0bh\"\n",
+				"WHERE _dc_v3_Observation_1.observed_node_key = @value0\n",
+			map[string]string{
+				"value0": "dc/p/zcerrzm76y0bh",
+			},
 			emptyProv,
 		},
 		{
 			"StateCountyPopObs",
 			false,
 			`SELECT ?countyDcid ?countyName ?hasMom,
-        typeOf ?state State,
+		typeOf ?state State,
 				typeOf ?county County,
 				dcid ?state dc/y5gtcw1,
 				containedInPlace ?county ?state,
@@ -644,7 +775,7 @@ func TestTranslate(t *testing.T) {
 				typeOf ?obs StatVarObservation,
 				value ?obs ?hasMom,
 				observationPeriod ?obs P1Y`,
-
+		
 			"SELECT _dc_v3_Place_1.id AS countyDcid,\n" +
 				"_dc_v3_Place_1.name AS countyName,\n" +
 				"_dc_v3_StatVarObservation_3.value AS hasMom\n" +
@@ -655,19 +786,34 @@ func TestTranslate(t *testing.T) {
 				"ON _dc_v3_Triple_1.object_id = _dc_v3_Place_1.id\n" +
 				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
 				"ON _dc_v3_Place_1.id = _dc_v3_Triple_0.subject_id\n" +
-				"WHERE _dc_v3_Place_1.type = \"County\"\n" +
-				"AND _dc_v3_StatVarObservation_3.observation_period = \"P1Y\"\n" +
-				"AND _dc_v3_StatisticalVariable_2.measured_prop = \"opportunity_atlas_has_mom\"\n" +
-				"AND _dc_v3_StatisticalVariable_2.num_constraints = 2\n" +
-				"AND _dc_v3_StatisticalVariable_2.p1 = \"gender\"\n" +
-				"AND _dc_v3_StatisticalVariable_2.p2 = \"parentIncome\"\n" +
-				"AND _dc_v3_StatisticalVariable_2.v1 = \"Male\"\n" +
-				"AND _dc_v3_StatisticalVariable_2.v2 = \"Percentile10\"\n" +
-				"AND _dc_v3_Triple_0.object_id = \"dc/y5gtcw1\"\n" +
-				"AND _dc_v3_Triple_0.predicate = \"containedInPlace\"\n" +
-				"AND _dc_v3_Triple_1.predicate = \"observationAbout\"\n",
+				"WHERE _dc_v3_Place_1.type = @value0\n" +
+				"AND _dc_v3_StatVarObservation_3.observation_period = @value1\n" +
+				"AND _dc_v3_StatisticalVariable_2.measured_prop = @value2\n" +
+				"AND _dc_v3_StatisticalVariable_2.num_constraints = @value3\n" +
+				"AND _dc_v3_StatisticalVariable_2.p1 = @value4\n" +
+				"AND _dc_v3_StatisticalVariable_2.p2 = @value5\n" +
+				"AND _dc_v3_StatisticalVariable_2.v1 = @value6\n" +
+				"AND _dc_v3_StatisticalVariable_2.v2 = @value7\n" +
+				"AND _dc_v3_Triple_0.object_id = @value8\n" +
+				"AND _dc_v3_Triple_0.predicate = @value9\n" +
+				"AND _dc_v3_Triple_1.predicate = @value10\n",
+			map[string]string{
+				"value0":  "County",
+				"value1":  "P1Y",
+				"value2":  "opportunity_atlas_has_mom",
+				"value3":  "2",
+				"value4":  "gender",
+				"value5":  "parentIncome",
+				"value6":  "Male",
+				"value7":  "Percentile10",
+				"value8":  "dc/y5gtcw1",
+				"value9":  "containedInPlace",
+				"value10": "observationAbout",
+			},
 			emptyProv,
 		},
+
+		// new beginning
 		{
 			"ProvenancePointQuery",
 			true,
@@ -683,7 +829,7 @@ func TestTranslate(t *testing.T) {
 				importUrl ?node ?importUrl,
 				importTime ?node ?importTime,
 				importDuration ?node ?importDuration`,
-
+		
 			"SELECT _dc_v3_Provenance_0.id AS dcid,\n" +
 				"_dc_v3_Provenance_0.name AS name,\n" +
 				"_dc_v3_Provenance_0.curator AS curator,\n" +
@@ -695,7 +841,10 @@ func TestTranslate(t *testing.T) {
 				"_dc_v3_Provenance_0.duration_secs AS importDuration,\n" +
 				"_dc_v3_Provenance_0.prov_id AS prov0\n" +
 				"FROM `dc_v3.Provenance` AS _dc_v3_Provenance_0\n" +
-				"WHERE _dc_v3_Provenance_0.id = \"dc/8eednm2\"\n",
+				"WHERE _dc_v3_Provenance_0.id = @value0\n",
+			map[string]string{
+				"value0": "dc/8eednm2",
+			},
 			map[int][]int{9: {0, 1, 2, 3, 4, 5, 6, 7, 8}},
 		},
 		{
@@ -708,7 +857,7 @@ func TestTranslate(t *testing.T) {
 				classification ?biosample "primary cell",
 				termName ?biosample "keratinocyte",
 				dcid ?experiment ?experimentDcid`,
-
+		
 			"SELECT _dc_v3_Triple_5.subject_id AS experimentDcid\n" +
 				"FROM `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
 				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_2\n" +
@@ -721,15 +870,26 @@ func TestTranslate(t *testing.T) {
 				"ON _dc_v3_Triple_1.subject_id = _dc_v3_Triple_4.subject_id\n" +
 				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_3\n" +
 				"ON _dc_v3_Triple_1.subject_id = _dc_v3_Triple_3.subject_id\n" +
-				"WHERE _dc_v3_Triple_0.object_id = \"EncodeExperiment\"\n" +
-				"AND _dc_v3_Triple_0.predicate = \"typeOf\"\n" +
-				"AND _dc_v3_Triple_1.object_id = \"BiosampleType\"\n" +
-				"AND _dc_v3_Triple_1.predicate = \"typeOf\"\n" +
-				"AND _dc_v3_Triple_2.predicate = \"biosampleOntology\"\n" +
-				"AND _dc_v3_Triple_3.object_value = \"primary cell\"\n" +
-				"AND _dc_v3_Triple_3.predicate = \"classification\"\n" +
-				"AND _dc_v3_Triple_4.object_value = \"keratinocyte\"\n" +
-				"AND _dc_v3_Triple_4.predicate = \"termName\"\n",
+				"WHERE _dc_v3_Triple_0.object_id = @value0\n" +
+				"AND _dc_v3_Triple_0.predicate = @value1\n" +
+				"AND _dc_v3_Triple_1.object_id = @value2\n" +
+				"AND _dc_v3_Triple_1.predicate = @value3\n" +
+				"AND _dc_v3_Triple_2.predicate = @value4\n" +
+				"AND _dc_v3_Triple_3.object_value = @value5\n" +
+				"AND _dc_v3_Triple_3.predicate = @value6\n" +
+				"AND _dc_v3_Triple_4.object_value = @value7\n" +
+				"AND _dc_v3_Triple_4.predicate = @value8\n",
+			map[string]string{
+				"value0": "EncodeExperiment",
+				"value1": "typeOf",
+				"value2": "BiosampleType",
+				"value3": "typeOf",
+				"value4": "biosampleOntology",
+				"value5": "primary cell",
+				"value6": "classification",
+				"value7": "keratinocyte",
+				"value8": "termName",
+			},
 			emptyProv,
 		},
 		{
@@ -739,12 +899,17 @@ func TestTranslate(t *testing.T) {
 				dcid ?experimentNode dc/abc dc/xyz,
 				dcid ?experimentNode ?experiment,
 				experiment ?bedFileNode ?experimentNode`,
-
+		
 			"SELECT _dc_v3_Triple_1.object_id AS experiment,\n" +
 				"_dc_v3_Triple_1.subject_id AS bedFileNode\n" +
 				"FROM `dc_v3.Triple` AS _dc_v3_Triple_1\n" +
-				"WHERE _dc_v3_Triple_1.object_id IN (\"dc/abc\", \"dc/xyz\")\n" +
-				"AND _dc_v3_Triple_1.predicate = \"experiment\"\n",
+				"WHERE _dc_v3_Triple_1.object_id IN (@value0, @value1)\n" +
+				"AND _dc_v3_Triple_1.predicate = @value2\n",
+			map[string]string{
+				"value0": "dc/abc",
+				"value1": "dc/xyz",
+				"value2": "experiment",
+			},
 			emptyProv,
 		},
 	} {

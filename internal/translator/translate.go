@@ -637,7 +637,12 @@ func removeConstraints(
 	jc[t] = cs
 	return jc
 }
-
+func StripQuotes(str string) string {
+	if (strings.HasPrefix(str, "\"")) && (strings.HasSuffix(str, "\"")) {
+		str = str[1:len(str)-1]
+	}
+	return str
+}
 func getSQL(
 	nodes []types.Node,
 	constraints []Constraint,
@@ -843,25 +848,16 @@ func getSQL(
 				Value: fmt.Sprintf("%s.%s", v.Table.Alias(), v.Name),
 			})
 		case string:
-			// Before we have spanner table reflection, need to hardcode check here.
-			// But the user should really have quote for strings.
-
-			// Strip quotes since BQ parameter already addresses that.
-			if (strings.HasPrefix(v, "\"")) && (strings.HasSuffix(v, "\"")) {
-				v = v[1:len(v)-1]
-			}
 			sql += fmt.Sprintf("%s.%s = @value%d\n", c.LHS.Table.Alias(), c.LHS.Name, idx)
 			queryParams = append(queryParams, bigquery.QueryParameter{
 				Name:  fmt.Sprintf("value%d", idx),
-				Value: v,
+				Value: StripQuotes(v),
 			})
 		case []string:
 			strs := []string{}
 			for _, s := range v {
-				if (strings.HasPrefix(s, "\"")) && (strings.HasSuffix(s, "\"")) {
-					s = s[1:len(s)-1]
-				}
-				strs = append(strs, s)
+
+				strs = append(strs, StripQuotes(s))
 			}
 
 			sql += fmt.Sprintf("%s.%s IN UNNEST(@value%d)\n", c.LHS.Table.Alias(), c.LHS.Name, idx)
@@ -888,7 +884,7 @@ func getSQL(
 		sql += fmt.Sprintf("LIMIT @limit\n")
 		queryParams = append(queryParams, bigquery.QueryParameter{
 			Name:  "limit",
-			Value: opts.Limit,
+			Value: strconv.Itoa(opts.Limit),
 		})
 	}
 	return sql, queryParams, prov, nil
