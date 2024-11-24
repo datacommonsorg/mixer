@@ -70,6 +70,7 @@ func TestQuery(t *testing.T) {
 			"statvar-obs.json",
 		},
 	} {
+		// TODO(gmechali): Fix trhese tests.
 		req := &pb.QueryRequest{Sparql: c.sparql}
 		resp, err := client.Query(ctx, req)
 		if err != nil {

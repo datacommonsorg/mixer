@@ -45,8 +45,8 @@ func Query(
 		return nil, err
 	}
 
-	translation, err := translator.Translate2(
-		store, metadata.Mappings, nodes, queries, metadata.SubTypeMap, opts)
+	translation, err := translator.Translate(
+		metadata.Mappings, nodes, queries, metadata.SubTypeMap, opts)
 	if err != nil {
 		return nil, err
 	}

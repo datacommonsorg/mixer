@@ -20,7 +20,6 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/datacommonsorg/mixer/internal/store"
 	"cloud.google.com/go/bigquery"
 	"github.com/datacommonsorg/mixer/internal/parser/tmcf"
 	"github.com/datacommonsorg/mixer/internal/translator/solver"
@@ -838,11 +837,10 @@ func getSQL(
 		}
 		switch v := c.RHS.(type) {
 		case types.Column:
-			value := fmt.Sprintf("%s.%s", v.Table.Alias(), v.Name)
 			sql += fmt.Sprintf("%s.%s = @value%d\n", c.LHS.Table.Alias(), c.LHS.Name, idx)
 			queryParams = append(queryParams, bigquery.QueryParameter{
 				Name:  fmt.Sprintf("value%d", idx),
-				Value: value,
+				Value: fmt.Sprintf("%s.%s", v.Table.Alias(), v.Name),
 			})
 		case string:
 			// Before we have spanner table reflection, need to hardcode check here.
@@ -896,16 +894,8 @@ func getSQL(
 	return sql, queryParams, prov, nil
 }
 
-func Translate(
-	mappings []*types.Mapping, nodes []types.Node, queries []*types.Query,
-	subTypeMap map[string]string, options ...*types.QueryOptions) (
-	*Translation, error) {
-		return nil, nil
-}
-
 // Translate takes a datalog query and translates to GoogleSQL query based on schema mapping.
-func Translate2(
-	store *store.Store,
+func Translate(
 	mappings []*types.Mapping, nodes []types.Node, queries []*types.Query,
 	subTypeMap map[string]string, options ...*types.QueryOptions) (
 	*Translation, error) {
