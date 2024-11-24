@@ -29,9 +29,36 @@ import (
 	"google.golang.org/api/iterator"
 )
 
-// Executes the BigQuery query and parses the response to population a QueryResponse object, which is returned.
-func ExecuteAndParseResponse(ctx context.Context, q *bigquery.Query, translation *translator.Translation, out pb.QueryResponse) (*pb.QueryResponse, error) {
+// Query implements API for Mixer.Query.
+func Query(
+	ctx context.Context,
+	in *pb.QueryRequest,
+	metadata *resource.Metadata,
+	store *store.Store,
+) (*pb.QueryResponse, error) {
+	var out pb.QueryResponse
+	if store.BqClient == nil {
+		return &out, nil
+	}
+	nodes, queries, opts, err := sparql.ParseQuery(in.GetSparql())
+	if err != nil {
+		return nil, err
+	}
+
+	translation, err := translator.Translate2(
+		store, metadata.Mappings, nodes, queries, metadata.SubTypeMap, opts)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, node := range translation.Nodes {
+		out.Header = append(out.Header, node.Alias)
+	}
+	out.Rows = []*pb.QueryResponseRow{}
 	n := len(out.Header)
+
+	q := store.BqClient.Query(translation.SQL)
+	q.Parameters = translation.Parameters
 
 	it, err := q.Read(ctx)
 	if err != nil {
@@ -75,36 +102,4 @@ func ExecuteAndParseResponse(ctx context.Context, q *bigquery.Query, translation
 		out.Rows = append(out.Rows, &responseRow)
 	}
 	return &out, nil
-}
-
-// Query implements API for Mixer.Query.
-func Query(
-	ctx context.Context,
-	in *pb.QueryRequest,
-	metadata *resource.Metadata,
-	store *store.Store,
-) (*pb.QueryResponse, error) {
-	var out pb.QueryResponse
-	if store.BqClient == nil {
-		return &out, nil
-	}
-	nodes, queries, opts, err := sparql.ParseQuery(in.GetSparql())
-	if err != nil {
-		return nil, err
-	}
-
-	translation, err := translator.Translate2(
-		store, metadata.Mappings, nodes, queries, metadata.SubTypeMap, opts)
-		if err != nil {
-			return nil, err
-		}
-		
-		for _, node := range translation.Nodes {
-			out.Header = append(out.Header, node.Alias)
-		}
-		out.Rows = []*pb.QueryResponseRow{}
-	bq := store.BqClient.Query(translation.SQL)
-	bq.Parameters = translation.Parameters
-
-	return ExecuteAndParseResponse(ctx, bq, translation, out)
 }
