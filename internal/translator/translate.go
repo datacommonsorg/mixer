@@ -16,7 +16,6 @@ package translator
 
 import (
 	"fmt"
-	"log"
 	"sort"
 	"strconv"
 	"strings"
@@ -61,6 +60,7 @@ type Translation struct {
 	Bindings   []Binding
 	Constraint []Constraint
 	Prov       map[int][]int
+	Parameters     []bigquery.QueryParameter
 }
 
 // ProvInfo contains the provenance query metadata
@@ -836,40 +836,37 @@ func getBqQuery(opts *types.QueryOptions, nodes []types.Node, constraints []Cons
 			clause := fmt.Sprintf("%s.%s", c.LHS.Table.Alias(), c.LHS.Name)
 			value := fmt.Sprintf("%s.%s", v.Table.Alias(), v.Name)
 			queryStr += fmt.Sprintf("%s = @value%d\n", clause, idx)
-			// queryParams = append(queryParams, bigquery.QueryParameter{
-			// 	Name:  fmt.Sprintf("clause%d", idx),
-			// 	Value: clause,
-			// })
 			queryParams = append(queryParams, bigquery.QueryParameter{
 				Name:  fmt.Sprintf("value%d", idx),
 				Value: value,
 			})
 
 		case string:
+			// Strip quotes since BQ parameter already addresses that.
+			if (strings.HasPrefix(v, "\"")) && (strings.HasSuffix(v, "\"")) {
+				v = v[1:len(v)-1]
+			}
 			// Before we have spanner table reflection, need to hardcode check here.
 			// But the user should really have quote for strings.
 			clause := fmt.Sprintf("%s.%s", c.LHS.Table.Alias(), c.LHS.Name)
-			value := fmt.Sprintf(`\b%s\b`, v)
 			queryStr += fmt.Sprintf("%s = @value%d\n", clause, idx)
-
-			useQuote := strings.Contains(c.LHS.Table.Name, tmcf.Triple)
-
-			log.Println("Add Quote thing: ", addQuote(v, useQuote))
-			log.Println("IUse QuoteL ", useQuote)
 			queryParams = append(queryParams, bigquery.QueryParameter{
 				Name:  fmt.Sprintf("value%d", idx),
-				Value: value,
+				Value: v,
 			})
 		case []string:
 			strs := []string{}
 			for _, s := range v {
-				strs = append(strs, addQuote(s))
+				if (strings.HasPrefix(s, "\"")) && (strings.HasSuffix(s, "\"")) {
+					s = s[1:len(s)-1]
+				}
+				strs = append(strs, s)
 			}
-			clause := fmt.Sprintf("%s.%s", c.LHS.Table.Alias(), c.LHS.Name)
-			queryStr += fmt.Sprintf("%s IN (@value%d)\n", clause, idx)
+
+			queryStr += fmt.Sprintf("%s.%s IN UNNEST(@value%d)\n", c.LHS.Table.Alias(), c.LHS.Name, idx)
 			queryParams = append(queryParams, bigquery.QueryParameter{
 				Name:  fmt.Sprintf("value%d", idx),
-				Value: strings.Join(strs, ", "),
+				Value: strs,
 			})
 		}
 	}
@@ -1136,41 +1133,41 @@ func Translate2(
 	store *store.Store,
 	mappings []*types.Mapping, nodes []types.Node, queries []*types.Query,
 	subTypeMap map[string]string, options ...*types.QueryOptions) (
-	*Translation, []bigquery.QueryParameter, error) {
+	*Translation, error) {
 	funcDeps, err := solver.GetFuncDeps(mappings)
 	if err != nil {
-		return nil,nil, err
+		return nil, err
 	}
 
 	tableProv, err := solver.GetProvColumn(mappings)
 	if err != nil {
-		return nil, nil,err
+		return nil, err
 	}
 
 	mappings = solver.PruneMapping(mappings)
 	queries = solver.RewriteQuery(queries, subTypeMap)
 	matchTriple, err := solver.MatchTriple(mappings, queries)
 	if err != nil {
-		return nil, nil,err
+		return nil, err
 	}
 	queryID := solver.GetQueryID(queries, matchTriple)
 
 	bindingMap, err := Bind(mappings, queries)
 	if err != nil {
-		return nil, nil,err
+		return nil, err
 	}
 	bindingSets := getBindingSets(bindingMap)
 	if len(bindingSets) > 1 {
 		fmt.Printf("There are %d binding sets\n", len(bindingSets))
 	} else if len(bindingSets) == 0 {
-		return nil, nil,status.Errorf(codes.Internal, "Failed to get translation result")
+		return nil, status.Errorf(codes.Internal, "Failed to get translation result")
 	}
 
 	nodeRefs := solver.GetNodeRef(queries)
 	graph := getGraph(bindingSets[0], queryID, nodeRefs)
 	constraints, constNode, err := GetConstraint(graph, funcDeps)
 	if err != nil {
-		return nil, nil,err
+		return nil, err
 	}
 
 	var (
@@ -1192,7 +1189,7 @@ func Translate2(
 		ProvInfo{queryProv, tableProv})
 
 	if err != nil {
-		return nil,nil, err
+		return nil, err
 	}
-	return &Translation{querySql, nodes, bindingSets[0], constraints, prov}, params, nil
+	return &Translation{querySql, nodes, bindingSets[0], constraints, prov, params}, nil
 }

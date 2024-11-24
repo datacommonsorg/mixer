@@ -16,8 +16,7 @@ package translator
 
 import (
 	"context"
-	// "fmt"
-	"log"
+	"fmt"
 
 	"cloud.google.com/go/bigquery"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
@@ -31,30 +30,14 @@ import (
 )
 
 func ExecuteAndParseResponse(ctx context.Context, q *bigquery.Query, translation *translator.Translation, out pb.QueryResponse) (*pb.QueryResponse, error) {
-	// log.Println("\n\nExecuteAndParseResponse")
-	// log.Println("Context ", ctx)
-	// log.Println("translation ", translation)
-	// log.Println("out ", out, " ::: ", len(out.Header))
+	n := len(out.Header)
 
-	// n := len(out.Header)
-
-	job, err := q.Run(ctx)
+	it, err := q.Read(ctx)
 	if err != nil {
-		log.Println("Issues with the run???")
-		return nil,err
+		return nil, err
 	}
-	status, err := job.Wait(ctx)
-	if err != nil {
-		log.Println("Issues with the job waait???")
-		return nil,err
-	}
-	if err := status.Err(); err != nil {
-		log.Println("Issues with the status???")
-		return nil,err
-	}
-	it, err := job.Read(ctx)
 	for {
-		log.Println("All as expected?")
+		responseRow := pb.QueryResponseRow{}
 		var row []bigquery.Value
 		err := it.Next(&row)
 		if err == iterator.Done {
@@ -63,49 +46,33 @@ func ExecuteAndParseResponse(ctx context.Context, q *bigquery.Query, translation
 		if err != nil {
 			return nil, err
 		}
-		log.Println(row)
+		for i, cell := range row {
+			var str string
+			if cell != nil {
+				if x, ok := cell.(int64); ok {
+					str = fmt.Sprintf("%v", x)
+				}
+				if x, ok := cell.(float64); ok {
+					str = fmt.Sprintf("%v", x)
+				}
+				if x, ok := cell.(string); ok {
+					str = x
+				}
+			}
+			if i < n {
+				responseRow.Cells = append(
+					responseRow.Cells, &pb.QueryResponseCell{Value: str})
+			} else {
+				// Add provenance to corresponding cells.
+				if idx, ok := translation.Prov[i]; ok {
+					for _, j := range idx {
+						responseRow.Cells[j].ProvenanceId = str
+					}
+				}
+			}
+		}
+		out.Rows = append(out.Rows, &responseRow)
 	}
-
-	// for {
-	// 	responseRow := pb.QueryResponseRow{}
-	// 	var row []bigquery.Value
-	// 	err := it.Next(&row)
-	// 	if err == iterator.Done {
-	// 		log.Println("Done iterating.")
-	// 		break
-	// 	}
-	// 	if err != nil {
-	// 		return nil, err
-	// 	}
-	// 	log.Println("but row was : ", row)
-	// 	for i, cell := range row {
-	// 		var str string
-	// 		if cell != nil {
-	// 			if x, ok := cell.(int64); ok {
-	// 				str = fmt.Sprintf("%v", x)
-	// 			}
-	// 			if x, ok := cell.(float64); ok {
-	// 				str = fmt.Sprintf("%v", x)
-	// 			}
-	// 			if x, ok := cell.(string); ok {
-	// 				str = x
-	// 			}
-	// 		}
-	// 		if i < n {
-	// 			responseRow.Cells = append(
-	// 				responseRow.Cells, &pb.QueryResponseCell{Value: str})
-	// 		} else {
-	// 			// Add provenance to corresponding cells.
-	// 			if idx, ok := translation.Prov[i]; ok {
-	// 				for _, j := range idx {
-	// 					responseRow.Cells[j].ProvenanceId = str
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-	// 	out.Rows = append(out.Rows, &responseRow)
-	// 	// log.Println("New Row  ", responseRow)
-	// }
 	return &out, nil
 }
 
@@ -127,8 +94,7 @@ func Query(
 		return nil, err
 	}
 
-	// translation, _,_, err := translator.Translate2(
-	translation, params, err := translator.Translate2(
+	translation, err := translator.Translate2(
 		store, metadata.Mappings, nodes, queries, metadata.SubTypeMap, opts)
 		if err != nil {
 			return nil, err
@@ -140,22 +106,8 @@ func Query(
 		}
 		out.Rows = []*pb.QueryResponseRow{}
 		shadow.Rows = []*pb.QueryResponseRow{}
-		
-	// log.Println("\n\n\nAbout to execute Query: ", translation.SQL)
-	// q := store.BqClient.Query(translation.SQL)
-	log.Println("Query String is ", translation.SQL)
-	log.Println("Query Params is ", params)
 	bq := store.BqClient.Query(translation.SQL)
-	bq.Parameters = params
+	bq.Parameters = translation.Parameters
 
-	// log.Println("But also got: ", bq)
-	// log.Println("qqqq", q)
-
-	// var shadowresp *pb.QueryResponse
 	return ExecuteAndParseResponse(ctx, bq, translation, shadow)
-	// log.Println("This was the result for the shadow run: ", shadowresp)
-
-
-
-	// return ExecuteAndParseResponse(ctx, q, translation, out)
 }
