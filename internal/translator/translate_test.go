@@ -236,10 +236,6 @@ func TestGetSQL(t *testing.T) {
 	if err != nil {
 		t.Fatalf("getSQL error: %s", err)
 	}
-	gotParamsMap := make(map[string]string)
-	for _, param := range gotParams {
-		gotParamsMap[param.Name] = param.Value.(string)
-	}
 
 	wantSQL :=
 		"SELECT DISTINCT _dc_v3_Place_.id AS dcid,\n" +
@@ -249,9 +245,13 @@ func TestGetSQL(t *testing.T) {
 			"AND _dc_v3_Place_.type = @value1\n" +
 			"ORDER BY @orderby ASC\n" +
 			"LIMIT @limit\n"
-	wantParams := map[string]string{"value0": "MTV", "value1": "City", "orderby": "dcid", "limit": "20"}
+	wantParams := map[string]any{"value0": "MTV", "value1": "City", "orderby": "dcid", "limit": "20"}
 	if diff := cmp.Diff(wantSQL, gotSQL); diff != "" {
 		t.Errorf("getSQL unexpected got diff %v", diff)
+	}
+	gotParamsMap := make(map[string]any)
+	for _, param := range gotParams {
+		gotParamsMap[param.Name] = param.Value.(string)
 	}
 	if diff := cmp.Diff(wantParams, gotParamsMap); diff != "" {
 		t.Errorf("gotParams unexpected got diff %v", diff)
@@ -271,51 +271,9 @@ func TestTranslate(t *testing.T) {
 		askProv  bool
 		queryStr string
 		wantSQL  string
-		wantParams map[string]string
+		wantParams map[string]any
 		wantProv map[int][]int
 	}{
-		{
-			"bio",
-			false,
-			`SELECT distinct ?d
-			WHERE {
-				?ccdt typeOf ChemicalCompoundDiseaseTreatment .
-				?ccdt compoundID ?c .
-				?ccdt diseaseID ?dis .
-				?dis commonName ?d .
-				?c drugName "Prednisone" .
-			}
-			LIMIT 100`,
-			"SELECT _dc_v3_Triple_3.object_value AS d\n" +
-				"FROM `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_1\n" +
-				"ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_1.subject_id\n" +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_2\n" +
-				"ON _dc_v3_Triple_0.subject_id = _dc_v3_Triple_2.subject_id\n" +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_4\n" +
-				"ON _dc_v3_Triple_1.object_id = _dc_v3_Triple_4.subject_id\n" +
-				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_3\n" +
-				"ON _dc_v3_Triple_2.object_id = _dc_v3_Triple_3.subject_id\n" +
-				"WHERE _dc_v3_Triple_0.object_id = @value0\n" +
-				"AND _dc_v3_Triple_0.predicate = @value1\n" +
-				"AND _dc_v3_Triple_1.predicate = @value2\n" +
-				"AND _dc_v3_Triple_2.predicate = @value3\n" +
-				"AND _dc_v3_Triple_3.predicate = @value4\n" +
-				"AND _dc_v3_Triple_4.object_value = @value5\n" +
-				"ORDER BY @value6 ASC\n" +
-				"LIMIT @value7\n",
-			map[string]string{
-				"value0": "ChemicalCompoundDiseaseTreatment",
-				"value1": "typeOf",
-				"value2": "compoundID",
-				"value3": "diseaseID",
-				"value4": "commonName",
-				"value5": "Prednisone",
-				"value6": "dcid",
-				"value7": "20",
-			},
-			emptyProv,
-		},
 		{
 			"OneVar",
 			false,
@@ -328,7 +286,7 @@ func TestTranslate(t *testing.T) {
 				"FROM `dc_v3.Place` AS _dc_v3_Place_0\n" +
 				"WHERE _dc_v3_Place_0.name = @value0\n" +
 				"AND _dc_v3_Place_0.type = @value1\n",
-			map[string]string{
+			map[string]any{
 				"value0": "San Jose",
 				"value1": "City",
 			},
@@ -354,7 +312,7 @@ func TestTranslate(t *testing.T) {
 				"AND _dc_v3_Place_1.type = @value1\n" +
 				"AND _dc_v3_Triple_0.object_id = @value2\n" +
 				"AND _dc_v3_Triple_0.predicate = @value3\n",
-			map[string]string{
+			map[string]any{
 				"value0": "country-code",
 				"value1": "City",
 				"value2": "dc/x333",
@@ -374,7 +332,7 @@ func TestTranslate(t *testing.T) {
 				"_dc_v3_Instance_0.prov_id AS prov0\n" +
 				"FROM `dc_v3.Instance` AS _dc_v3_Instance_0\n" +
 				"WHERE _dc_v3_Instance_0.id = @value0\n",
-			map[string]string{
+			map[string]any{
 				"value0": "dc/m1rl3k",
 			},
 			map[int][]int{1: {0}},
@@ -389,7 +347,7 @@ func TestTranslate(t *testing.T) {
 			"SELECT _dc_v3_Place_0.id AS dcid\n" +
 				"FROM `dc_v3.Place` AS _dc_v3_Place_0\n" +
 				"WHERE _dc_v3_Place_0.type = @value0\n",
-			map[string]string{
+			map[string]any{
 				"value0": "City",
 			},
 			emptyProv,
@@ -407,7 +365,7 @@ func TestTranslate(t *testing.T) {
 				"FROM `dc_v3.Place` AS _dc_v3_Place_0\n" +
 				"WHERE _dc_v3_Place_0.id = @value0\n" +
 				"AND _dc_v3_Place_0.type = @value1\n",
-			map[string]string{
+			map[string]any{
 				"value0": "dc/qp620l2",
 				"value1": "City",
 			},
@@ -432,7 +390,7 @@ func TestTranslate(t *testing.T) {
 				"ON _dc_v3_Triple_0.subject_id = _dc_v3_Place_1.id\n" +
 				"WHERE _dc_v3_Triple_0.object_id = @value0\n" +
 				"AND _dc_v3_Triple_0.predicate = @value1\n",
-			map[string]string{
+			map[string]any{
 				"value0": "dc/b72vdv",
 				"value1": "containedInPlace",
 			},
@@ -465,11 +423,11 @@ func TestTranslate(t *testing.T) {
 				"ON _dc_v3_Place_1.id = _dc_v3_Triple_0.subject_id\n" +
 				"JOIN `dc_v3.Place` AS _dc_v3_Place_0\n" +
 				"ON _dc_v3_Triple_0.object_id = _dc_v3_Place_0.id\n" +
-				"WHERE _dc_v3_Place_1.id IN (@value0)\n" +
+				"WHERE _dc_v3_Place_1.id IN UNNEST(@value0)\n" +
 				"AND _dc_v3_Place_1.type = @value1\n" +
 				"AND _dc_v3_Triple_0.predicate = @value2\n",
-			map[string]string{
-				"value0": "dc/4321",
+			map[string]any{
+				"value0": []string{"dc/1234", "dc/4321"},
 				"value1": "City",
 				"value2": "containedInPlace",
 			},
@@ -491,7 +449,7 @@ func TestTranslate(t *testing.T) {
 				"_dc_v3_StatisticalPopulation_1.id AS population_dcid\n" +
 				"FROM `dc_v3.StatisticalPopulation` AS _dc_v3_StatisticalPopulation_1\n" +
 				"WHERE _dc_v3_StatisticalPopulation_1.place_key = @value0\n",
-			map[string]string{
+			map[string]any{
 				"value0": "dc/p/x1234",
 			},
 			emptyProv,
@@ -518,7 +476,7 @@ func TestTranslate(t *testing.T) {
 				"ON _dc_v3_StatisticalPopulation_1.id = _dc_v3_Observation_2.observed_node_key\n" +
 				"WHERE _dc_v3_StatisticalPopulation_1.place_key = @value0\n" +
 				"AND _dc_v3_StatisticalPopulation_1.population_type = @value1\n",
-			map[string]string{
+			map[string]any{
 				"value0": "X1234",
 				"value1": "Person",
 			},
@@ -538,7 +496,7 @@ func TestTranslate(t *testing.T) {
 			"SELECT _dc_v3_StatisticalPopulation_1.id AS dcid\n" +
 				"FROM `dc_v3.StatisticalPopulation` AS _dc_v3_StatisticalPopulation_1\n" +
 				"WHERE _dc_v3_StatisticalPopulation_1.place_key = @value0\n",
-			map[string]string{
+			map[string]any{
 				"value0": "dc/m1rl3k",
 			},
 			emptyProv,
@@ -555,7 +513,7 @@ func TestTranslate(t *testing.T) {
 			"SELECT _dc_v3_StatVarObservation_0.id AS dcid\n" +
 				"FROM `dc_v3.StatVarObservation` AS _dc_v3_StatVarObservation_0\n" +
 				"WHERE _dc_v3_StatVarObservation_0.observation_about = @value0\n",
-			map[string]string{
+			map[string]any{
 				"value0": "dc/zkelys3",
 			},
 			emptyProv,
@@ -591,7 +549,7 @@ func TestTranslate(t *testing.T) {
 				"AND _dc_v3_Triple_2.predicate = @value5\n" +
 				"AND _dc_v3_Triple_3.predicate = @value6\n" +
 				"AND _dc_v3_Triple_4.predicate = @value7\n",
-				map[string]string{
+				map[string]any{
 					"value0": "ClaimReview",
 					"value1": "typeOf",
 					"value2": "dc/4568bbd63cjdg",
@@ -603,7 +561,6 @@ func TestTranslate(t *testing.T) {
 				},
 				emptyProv,
 			},
-		// TODO(gmechali): Continue;
 		{
 			"ResolutionQuery",
 			false,
@@ -627,7 +584,7 @@ func TestTranslate(t *testing.T) {
 				"AND _dc_v3_Triple_0.predicate = @value2\n" +
 				"AND _dc_v3_Triple_1.object_value = @value3\n" +
 				"AND _dc_v3_Triple_1.predicate = @value4\n",
-			map[string]string{
+			map[string]any{
 				"value0": "City",
 				"value1": "dc/zxvc6e2",
 				"value2": "containedInPlace",
@@ -651,7 +608,7 @@ func TestTranslate(t *testing.T) {
 				"AND _dc_v3_Triple_0.predicate = @value1\n" +
 				"AND _dc_v3_Triple_0.subject_id = @value2\n" +
 				"AND _dc_v3_Triple_2.predicate = @value3\n",
-			map[string]string{
+			map[string]any{
 				"value0": "Class",
 				"value1": "typeOf",
 				"value2": "ListenAction",
@@ -672,12 +629,11 @@ func TestTranslate(t *testing.T) {
 				"FROM `dc_v3.Triple` AS _dc_v3_Triple_1\n" +
 				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
 				"ON _dc_v3_Triple_1.subject_id = _dc_v3_Triple_0.subject_id\n" +
-				"WHERE _dc_v3_Triple_1.object_value IN (@value0, @value1)\n" +
-				"AND _dc_v3_Triple_1.predicate = @value2\n",
-			map[string]string{
-				"value0": "B01001",
-				"value1": "B022202",
-				"value2": "localCuratorLevelId",
+				"WHERE _dc_v3_Triple_1.object_value IN UNNEST(@value0)\n" +
+				"AND _dc_v3_Triple_1.predicate = @value1\n",
+			map[string]any{
+				"value0": []string{"B01001", "B022202"},
+				"value1": "localCuratorLevelId",
 			},
 			emptyProv,
 		},
@@ -702,7 +658,7 @@ func TestTranslate(t *testing.T) {
 				"AND _dc_v3_Triple_0.predicate = @value1\n" +
 				"AND _dc_v3_Triple_2.object_id = @value2\n" +
 				"AND _dc_v3_Triple_2.predicate = @value3\n",
-			map[string]string{
+			map[string]any{
 				"value0": "CollegeOrUniversity",
 				"value1": "typeOf",
 				"value2": "dc/m1rl3k",
@@ -727,7 +683,7 @@ func TestTranslate(t *testing.T) {
 				"JOIN `dc_v3.StatisticalVariable` AS _dc_v3_StatisticalVariable_1\n" +
 				"ON _dc_v3_StatVarObservation_0.variable_measured = _dc_v3_StatisticalVariable_1.id\n" +
 				"WHERE _dc_v3_StatVarObservation_0.id = @value0\n",
-			map[string]string{
+			map[string]any{
 				"value0": "dc/o/xyz",
 			},
 			emptyProv,
@@ -749,7 +705,7 @@ func TestTranslate(t *testing.T) {
 				"_dc_v3_Observation_1.measured_prop AS measuredProperty\n" +
 				"FROM `dc_v3.Observation` AS _dc_v3_Observation_1\n" +
 				"WHERE _dc_v3_Observation_1.observed_node_key = @value0\n",
-			map[string]string{
+			map[string]any{
 				"value0": "dc/p/zcerrzm76y0bh",
 			},
 			emptyProv,
@@ -797,7 +753,7 @@ func TestTranslate(t *testing.T) {
 				"AND _dc_v3_Triple_0.object_id = @value8\n" +
 				"AND _dc_v3_Triple_0.predicate = @value9\n" +
 				"AND _dc_v3_Triple_1.predicate = @value10\n",
-			map[string]string{
+			map[string]any{
 				"value0":  "County",
 				"value1":  "P1Y",
 				"value2":  "opportunity_atlas_has_mom",
@@ -842,7 +798,7 @@ func TestTranslate(t *testing.T) {
 				"_dc_v3_Provenance_0.prov_id AS prov0\n" +
 				"FROM `dc_v3.Provenance` AS _dc_v3_Provenance_0\n" +
 				"WHERE _dc_v3_Provenance_0.id = @value0\n",
-			map[string]string{
+			map[string]any{
 				"value0": "dc/8eednm2",
 			},
 			map[int][]int{9: {0, 1, 2, 3, 4, 5, 6, 7, 8}},
@@ -879,7 +835,7 @@ func TestTranslate(t *testing.T) {
 				"AND _dc_v3_Triple_3.predicate = @value6\n" +
 				"AND _dc_v3_Triple_4.object_value = @value7\n" +
 				"AND _dc_v3_Triple_4.predicate = @value8\n",
-			map[string]string{
+			map[string]any{
 				"value0": "EncodeExperiment",
 				"value1": "typeOf",
 				"value2": "BiosampleType",
@@ -903,12 +859,11 @@ func TestTranslate(t *testing.T) {
 			"SELECT _dc_v3_Triple_1.object_id AS experiment,\n" +
 				"_dc_v3_Triple_1.subject_id AS bedFileNode\n" +
 				"FROM `dc_v3.Triple` AS _dc_v3_Triple_1\n" +
-				"WHERE _dc_v3_Triple_1.object_id IN (@value0, @value1)\n" +
-				"AND _dc_v3_Triple_1.predicate = @value2\n",
-			map[string]string{
-				"value0": "dc/abc",
-				"value1": "dc/xyz",
-				"value2": "experiment",
+				"WHERE _dc_v3_Triple_1.object_id IN UNNEST(@value0)\n" +
+				"AND _dc_v3_Triple_1.predicate = @value1\n",
+			map[string]any{
+				"value0": []string{"dc/abc", "dc/xyz"},
+				"value1": "experiment",
 			},
 			emptyProv,
 		},
@@ -931,6 +886,13 @@ func TestTranslate(t *testing.T) {
 		if diff := cmp.Diff(c.wantProv, translation.Prov); diff != "" {
 			t.Errorf("getSQL unexpected prov diff for test %s, %v", c.name, diff)
 		}
+		gotParamsMap := make(map[string]any)
+		for _, param := range translation.Parameters {
+			gotParamsMap[param.Name] = param.Value
+		}
+		if diff := cmp.Diff(c.wantParams, gotParamsMap); diff != "" {
+			t.Errorf("gotParams unexpected got diff %v", diff)
+		}
 	}
 }
 
@@ -947,6 +909,7 @@ func TestDcidSimplified(t *testing.T) {
 		askProv  bool
 		queryStr string
 		wantSQL  string
+		wantParams map[string]any
 		wantProv map[int][]int
 	}{
 		{
@@ -959,8 +922,12 @@ func TestDcidSimplified(t *testing.T) {
 
 			"SELECT _dc_v3_Place_0.id AS p\n" +
 				"FROM `dc_v3.Place` AS _dc_v3_Place_0\n" +
-				"WHERE _dc_v3_Place_0.name = \"San Jose\"\n" +
-				"AND _dc_v3_Place_0.type = \"City\"\n",
+				"WHERE _dc_v3_Place_0.name = @value0\n" +
+				"AND _dc_v3_Place_0.type = @value1\n",
+			map[string]any{
+				"value0": "San Jose",
+				"value1": "City",
+			},
 			emptyProv,
 		},
 		{
@@ -977,10 +944,16 @@ func TestDcidSimplified(t *testing.T) {
 				"FROM `dc_v3.Place` AS _dc_v3_Place_0\n" +
 				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
 				"ON _dc_v3_Place_0.id = _dc_v3_Triple_0.subject_id\n" +
-				"WHERE _dc_v3_Place_0.country_alpha_2_code = \"alpha-code\"\n" +
-				"AND _dc_v3_Place_0.type = \"City\"\n" +
-				"AND _dc_v3_Triple_0.object_id = \"dc/x333\"\n" +
-				"AND _dc_v3_Triple_0.predicate = \"containedInPlace\"\n",
+				"WHERE _dc_v3_Place_0.country_alpha_2_code = @value0\n" +
+				"AND _dc_v3_Place_0.type = @value1\n" +
+				"AND _dc_v3_Triple_0.object_id = @value2\n" +
+				"AND _dc_v3_Triple_0.predicate = @value3\n",
+			map[string]any{
+				"value0": "alpha-code",
+				"value1": "City",
+				"value2": "dc/x333",
+				"value3": "containedInPlace",
+			},
 			emptyProv,
 		},
 		{
@@ -991,7 +964,8 @@ func TestDcidSimplified(t *testing.T) {
 				subType ?node City`,
 			"SELECT _dc_v3_Place_0.id AS node\n" +
 				"FROM `dc_v3.Place` AS _dc_v3_Place_0\n" +
-				"WHERE _dc_v3_Place_0.type = \"City\"\n",
+				"WHERE _dc_v3_Place_0.type = @value0\n",
+				map[string]any{"value0": "City"},
 			emptyProv,
 		},
 		{
@@ -1007,8 +981,12 @@ func TestDcidSimplified(t *testing.T) {
 				"FROM `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
 				"JOIN `dc_v3.Place` AS _dc_v3_Place_0\n" +
 				"ON _dc_v3_Triple_0.subject_id = _dc_v3_Place_0.id\n" +
-				"WHERE _dc_v3_Triple_0.object_value = \"dc/b72vdv\"\n" +
-				"AND _dc_v3_Triple_0.predicate = \"containedInPlace\"\n",
+				"WHERE _dc_v3_Triple_0.object_value = @value0\n" +
+				"AND _dc_v3_Triple_0.predicate = @value1\n",
+			map[string]any{
+				"value0": "dc/b72vdv",
+				"value1": "containedInPlace",
+			},
 			emptyProv,
 		},
 	} {
@@ -1025,6 +1003,16 @@ func TestDcidSimplified(t *testing.T) {
 			t.Errorf("getSQL unexpected sql diff for test %s, %v", c.name, diff)
 			continue
 		}
+		if diff := cmp.Diff(c.wantProv, translation.Prov); diff != "" {
+			t.Errorf("getSQL unexpected prov diff for test %s, %v", c.name, diff)
+		}
+		gotParamsMap := make(map[string]any)
+		for _, param := range translation.Parameters {
+			gotParamsMap[param.Name] = param.Value
+		}
+		if diff := cmp.Diff(c.wantParams, gotParamsMap); diff != "" {
+			t.Errorf("gotParams unexpected got diff %v", diff)
+		}
 	}
 }
 
@@ -1039,6 +1027,7 @@ func TestTranslateIOCountyBQ(t *testing.T) {
 		name     string
 		queryStr string
 		wantSQL  string
+		wantParams map[string]any
 	}{
 		{
 			"all_pops_of_a_place",
@@ -1050,7 +1039,8 @@ func TestTranslateIOCountyBQ(t *testing.T) {
 				geoId ?place "40005"`,
 			"SELECT _dc_v3_bq_county_outcomes_1.race AS race\n" +
 				"FROM `dc_v3.bq_county_outcomes` AS _dc_v3_bq_county_outcomes_1\n" +
-				"WHERE _dc_v3_bq_county_outcomes_1.geo_id = \"40005\"\n",
+				"WHERE _dc_v3_bq_county_outcomes_1.geo_id = @value0\n",
+			map[string]any{"value0": "40005"},
 		},
 	} {
 		nodes, queries, err := datalog.ParseQuery(c.queryStr)
@@ -1065,6 +1055,13 @@ func TestTranslateIOCountyBQ(t *testing.T) {
 		if diff := cmp.Diff(c.wantSQL, translation.SQL); diff != "" {
 			t.Errorf("getSQL unexpected sql diff for test %s, %v", c.name, diff)
 			continue
+		}
+		gotParamsMap := make(map[string]any)
+		for _, param := range translation.Parameters {
+			gotParamsMap[param.Name] = param.Value
+		}
+		if diff := cmp.Diff(c.wantParams, gotParamsMap); diff != "" {
+			t.Errorf("gotParams unexpected got diff %v", diff)
 		}
 	}
 }
@@ -1080,6 +1077,7 @@ func TestTranslateWeather(t *testing.T) {
 		name     string
 		queryStr string
 		wantSQL  string
+		wantParams map[string]any
 	}{
 		{
 			"weather",
@@ -1095,7 +1093,8 @@ func TestTranslateWeather(t *testing.T) {
 				"_dc_v3_MonthlyWeather_0.temp_c_max AS max,\n" +
 				"\"Celsius\"\n" +
 				"FROM `dc_v3.MonthlyWeather` AS _dc_v3_MonthlyWeather_0\n" +
-				"WHERE _dc_v3_MonthlyWeather_0.place_id = \"geoId/06\"\n",
+				"WHERE _dc_v3_MonthlyWeather_0.place_id = @value0\n",
+			map[string]any{"value0": "geoId/06"},
 		},
 		{
 			"weather_multipleCity",
@@ -1109,8 +1108,12 @@ func TestTranslateWeather(t *testing.T) {
 			"SELECT _dc_v3_MonthlyWeather_0.place_id AS place,\n" +
 				"_dc_v3_MonthlyWeather_0.temp_c_mean AS MeanTemp\n" +
 				"FROM `dc_v3.MonthlyWeather` AS _dc_v3_MonthlyWeather_0\n" +
-				"WHERE _dc_v3_MonthlyWeather_0.observation_date = \"2019-05-09\"\n" +
-				"AND _dc_v3_MonthlyWeather_0.place_id IN (\"geoId/4261000\", \"geoId/0649670\", \"geoId/4805000\")\n",
+				"WHERE _dc_v3_MonthlyWeather_0.observation_date = @value0\n" +
+				"AND _dc_v3_MonthlyWeather_0.place_id IN UNNEST(@value1)\n",
+			map[string]any{
+				"value0": "2019-05-09",
+				"value1": []string{"geoId/4261000", "geoId/0649670", "geoId/4805000"},
+			},
 		},
 	} {
 		nodes, queries, err := datalog.ParseQuery(c.queryStr)
@@ -1126,6 +1129,13 @@ func TestTranslateWeather(t *testing.T) {
 			t.Errorf("getSQL unexpected sql diff for test %s, %v", c.name, diff)
 			continue
 		}
+		gotParamsMap := make(map[string]any)
+		for _, param := range translation.Parameters {
+			gotParamsMap[param.Name] = param.Value
+		}
+		if diff := cmp.Diff(c.wantParams, gotParamsMap); diff != "" {
+			t.Errorf("gotParams unexpected got diff %v", diff)
+		}
 	}
 }
 
@@ -1140,6 +1150,7 @@ func TestTranslateWeatherSparql(t *testing.T) {
 		name     string
 		queryStr string
 		wantSQL  string
+		wantParams map[string]any
 	}{
 		{
 			"weather",
@@ -1156,8 +1167,9 @@ func TestTranslateWeatherSparql(t *testing.T) {
 
 			"SELECT _dc_v3_MonthlyWeather_0.temp_c_mean AS MeanTemp\n" +
 				"FROM `dc_v3.MonthlyWeather` AS _dc_v3_MonthlyWeather_0\n" +
-				"WHERE _dc_v3_MonthlyWeather_0.observation_date = \"2018-01\"\n" +
-				"AND _dc_v3_MonthlyWeather_0.place_id = \"geoId/4261000\"\n",
+				"WHERE _dc_v3_MonthlyWeather_0.observation_date = @value0\n" +
+				"AND _dc_v3_MonthlyWeather_0.place_id = @value1\n",
+			map[string]any{"value0": "2018-01", "value1": "geoId/4261000"},
 		},
 	} {
 		nodes, queries, _, err := sparql.ParseQuery(c.queryStr)
@@ -1172,6 +1184,13 @@ func TestTranslateWeatherSparql(t *testing.T) {
 		if diff := cmp.Diff(c.wantSQL, translation.SQL); diff != "" {
 			t.Errorf("getSQL unexpected sql diff for test %s, %v", c.name, diff)
 			continue
+		}
+		gotParamsMap := make(map[string]any)
+		for _, param := range translation.Parameters {
+			gotParamsMap[param.Name] = param.Value
+		}
+		if diff := cmp.Diff(c.wantParams, gotParamsMap); diff != "" {
+			t.Errorf("gotParams unexpected got diff %v", diff)
 		}
 	}
 }
@@ -1191,6 +1210,7 @@ func TestTranslatePew(t *testing.T) {
 		name     string
 		queryStr string
 		wantSQL  string
+		wantParams map[string]any
 	}{
 		{
 			"name",
@@ -1208,7 +1228,8 @@ func TestTranslatePew(t *testing.T) {
 				"FROM `dc_v3.PewReligiousLandscapeSurvey2007Response` AS _dc_v3_PewReligiousLandscapeSurvey2007Response_1\n" +
 				"JOIN `dc_v3.PewReligiousLandscapeSurvey2007Response` AS _dc_v3_PewReligiousLandscapeSurvey2007Response_0\n" +
 				"ON _dc_v3_PewReligiousLandscapeSurvey2007Response_1.SampleUnit_Dcid = _dc_v3_PewReligiousLandscapeSurvey2007Response_0.SampleUnit_Dcid\n" +
-				"WHERE _dc_v3_PewReligiousLandscapeSurvey2007Response_1.SurveyResponse_InLanguage = \"Spanish\"\n",
+				"WHERE _dc_v3_PewReligiousLandscapeSurvey2007Response_1.SurveyResponse_InLanguage = @value0\n",
+			map[string]any{"value0": "Spanish"},
 		},
 		{
 			"option name",
@@ -1226,7 +1247,8 @@ func TestTranslatePew(t *testing.T) {
 				"FROM `dc_v3.PewReligiousLandscapeSurvey2007ItemsMetadata` AS _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_0\n" +
 				"JOIN `dc_v3.PewReligiousLandscapeSurvey2007ItemsMetadata` AS _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_1\n" +
 				"ON _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_0.ResponseOption_Dcid = _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_1.ResponseOption_Dcid\n" +
-				"WHERE _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_0.SurveyItem_Dcid = \"SurveyItem/Pew_ContinentalUS_ReligiousLandscapeSurvey_2007_protfam\"\n",
+				"WHERE _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_0.SurveyItem_Dcid = @value0\n",
+			map[string]any{"value0": "SurveyItem/Pew_ContinentalUS_ReligiousLandscapeSurvey_2007_protfam"},
 		},
 		{
 			"qcode",
@@ -1246,7 +1268,8 @@ func TestTranslatePew(t *testing.T) {
 				"ON _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_1.ResponseOption_Dcid = _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_0.ResponseOption_Dcid\n" +
 				"JOIN `dc_v3.PewReligiousLandscapeSurvey2007Items` AS _dc_v3_PewReligiousLandscapeSurvey2007Items_0\n" +
 				"ON _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_0.SurveyItem_Dcid = _dc_v3_PewReligiousLandscapeSurvey2007Items_0.SurveyItem_Dcid\n" +
-				"WHERE _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_1.ResponseOption_Identifier = \"0\"\n",
+				"WHERE _dc_v3_PewReligiousLandscapeSurvey2007ItemsMetadata_1.ResponseOption_Identifier = @value0\n",
+			map[string]any{"value0": "0"},
 		},
 	} {
 		nodes, queries, _, err := sparql.ParseQuery(c.queryStr)
@@ -1261,6 +1284,13 @@ func TestTranslatePew(t *testing.T) {
 		if diff := cmp.Diff(c.wantSQL, translation.SQL); diff != "" {
 			t.Errorf("getSQL unexpected sql diff for test %s, %v", c.name, diff)
 			continue
+		}
+		gotParamsMap := make(map[string]any)
+		for _, param := range translation.Parameters {
+			gotParamsMap[param.Name] = param.Value
+		}
+		if diff := cmp.Diff(c.wantParams, gotParamsMap); diff != "" {
+			t.Errorf("gotParams unexpected got diff %v", diff)
 		}
 	}
 }
@@ -1278,6 +1308,7 @@ func TestSparql(t *testing.T) {
 		name     string
 		queryStr string
 		wantSQL  string
+		wantParams map[string]any
 	}{
 		{
 			"popobs",
@@ -1303,10 +1334,16 @@ func TestSparql(t *testing.T) {
 				"ON _dc_v3_StatisticalPopulation_1.id = _dc_v3_Observation_2.observed_node_key\n" +
 				"JOIN `dc_v3.Place` AS _dc_v3_Place_0\n" +
 				"ON _dc_v3_StatisticalPopulation_1.place_key = _dc_v3_Place_0.id\n" +
-				"WHERE _dc_v3_Observation_2.measured_prop = \"count\"\n" +
-				"AND _dc_v3_Place_0.type = \"State\"\n" +
-				"AND _dc_v3_StatisticalPopulation_1.num_constraints = 0\n" +
-				"AND _dc_v3_StatisticalPopulation_1.population_type = \"Person\"\n",
+				"WHERE _dc_v3_Observation_2.measured_prop = @value0\n" +
+				"AND _dc_v3_Place_0.type = @value1\n" +
+				"AND _dc_v3_StatisticalPopulation_1.num_constraints = @value2\n" +
+				"AND _dc_v3_StatisticalPopulation_1.population_type = @value3\n",
+			map[string]any{
+				"value0": "count",
+				"value1": "State",
+				"value2": "0",
+				"value3": "Person",
+			},
 		},
 		{
 			"adminarea1",
@@ -1319,7 +1356,8 @@ func TestSparql(t *testing.T) {
 			`,
 			"SELECT _dc_v3_Place_0.name AS name\n" +
 				"FROM `dc_v3.Place` AS _dc_v3_Place_0\n" +
-				"WHERE _dc_v3_Place_0.type = \"AdministrativeArea1\"\n",
+				"WHERE _dc_v3_Place_0.type = @value0\n",
+				map[string]any{"value0": "AdministrativeArea1"},
 		},
 		{
 			"bio",
@@ -1344,13 +1382,22 @@ func TestSparql(t *testing.T) {
 				"ON _dc_v3_Triple_1.object_id = _dc_v3_Triple_4.subject_id\n" +
 				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_3\n" +
 				"ON _dc_v3_Triple_2.object_id = _dc_v3_Triple_3.subject_id\n" +
-				"WHERE _dc_v3_Triple_0.object_id = \"ChemicalCompoundDiseaseTreatment\"\n" +
-				"AND _dc_v3_Triple_0.predicate = \"typeOf\"\n" +
-				"AND _dc_v3_Triple_1.predicate = \"compoundID\"\n" +
-				"AND _dc_v3_Triple_2.predicate = \"diseaseID\"\n" +
-				"AND _dc_v3_Triple_3.predicate = \"commonName\"\n" +
-				"AND _dc_v3_Triple_4.object_value = \"Prednisone\"\n" +
-				"AND _dc_v3_Triple_4.predicate = \"drugName\"\n",
+				"WHERE _dc_v3_Triple_0.object_id = @value0\n" +
+				"AND _dc_v3_Triple_0.predicate = @value1\n" +
+				"AND _dc_v3_Triple_1.predicate = @value2\n" +
+				"AND _dc_v3_Triple_2.predicate = @value3\n" +
+				"AND _dc_v3_Triple_3.predicate = @value4\n" +
+				"AND _dc_v3_Triple_4.object_value = @value5\n" +
+				"AND _dc_v3_Triple_4.predicate = @value6\n",
+			map[string]any{
+				"value0": "ChemicalCompoundDiseaseTreatment",
+				"value1": "typeOf",
+				"value2": "compoundID",
+				"value3": "diseaseID",
+				"value4": "commonName",
+				"value5": "Prednisone",
+				"value6": "drugName",
+			},
 		},
 	} {
 		nodes, queries, _, err := sparql.ParseQuery(c.queryStr)
@@ -1365,6 +1412,13 @@ func TestSparql(t *testing.T) {
 		if diff := cmp.Diff(c.wantSQL, translation.SQL); diff != "" {
 			t.Errorf("getSQL unexpected sql diff for test %s, %v", c.name, diff)
 			continue
+		}
+		gotParamsMap := make(map[string]any)
+		for _, param := range translation.Parameters {
+			gotParamsMap[param.Name] = param.Value
+		}
+		if diff := cmp.Diff(c.wantParams, gotParamsMap); diff != "" {
+			t.Errorf("gotParams unexpected got diff %v", diff)
 		}
 	}
 }
@@ -1382,6 +1436,7 @@ func TestStatVarObs(t *testing.T) {
 		name     string
 		queryStr string
 		wantSQL  string
+		wantParams map[string]any
 	}{
 		{
 			"country-gdp-place",
@@ -1399,8 +1454,12 @@ func TestStatVarObs(t *testing.T) {
 				"FROM `dc_v3.Place` AS _dc_v3_Place_1\n" +
 				"JOIN `dc_v3.StatVarObservation` AS _dc_v3_StatVarObservation_0\n" +
 				"ON _dc_v3_Place_1.id = _dc_v3_StatVarObservation_0.observation_about\n" +
-				"WHERE _dc_v3_StatVarObservation_0.variable_measured = \"Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita\"\n" +
-				"AND _dc_v3_Place_1.type = \"Country\"\n",
+				"WHERE _dc_v3_StatVarObservation_0.variable_measured = @value0\n" +
+				"AND _dc_v3_Place_1.type = @value1\n",
+			map[string]any{
+				"value0": "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita",
+				"value1": "Country",
+			},
 		},
 		{
 			"browser-observation",
@@ -1419,8 +1478,12 @@ func TestStatVarObs(t *testing.T) {
 				"_dc_v3_StatVarObservation_0.measurement_method AS mmethod,\n" +
 				"_dc_v3_StatVarObservation_0.observation_period AS obsPeriod,\n\n" +
 				"FROM `dc_v3.StatVarObservation` AS _dc_v3_StatVarObservation_0\n" +
-				"WHERE _dc_v3_StatVarObservation_0.variable_measured = \"Count_Person\"\n" +
-				"AND _dc_v3_StatVarObservation_0.observation_about = \"country/USA\"\n",
+				"WHERE _dc_v3_StatVarObservation_0.variable_measured = @value0\n" +
+				"AND _dc_v3_StatVarObservation_0.observation_about = @value1\n",
+			map[string]any{
+				"value0": "Count_Person",
+				"value1": "country/USA",
+			},
 		},
 	} {
 		nodes, queries, _, err := sparql.ParseQuery(c.queryStr)
@@ -1435,6 +1498,13 @@ func TestStatVarObs(t *testing.T) {
 		if diff := cmp.Diff(c.wantSQL, translation.SQL); diff != "" {
 			t.Errorf("getSQL unexpected sql diff for test %s, %v", c.name, diff)
 			continue
+		}
+		gotParamsMap := make(map[string]any)
+		for _, param := range translation.Parameters {
+			gotParamsMap[param.Name] = param.Value
+		}
+		if diff := cmp.Diff(c.wantParams, gotParamsMap); diff != "" {
+			t.Errorf("gotParams unexpected got diff %v", diff)
 		}
 	}
 }
