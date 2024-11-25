@@ -71,22 +71,6 @@ type ProvInfo struct {
 // Graph represents the struct for terms matching.
 type Graph map[interface{}]map[interface{}]struct{}
 
-func addQuote(s string, useQuote ...bool) string {
-	if len(useQuote) == 0 || !useQuote[0] {
-		if _, err := strconv.ParseFloat(s, 64); err == nil {
-			return s
-		}
-	}
-
-	if !strings.HasPrefix(s, `"`) {
-		s = `"` + s
-	}
-	if !strings.HasSuffix(s, `"`) {
-		s += `"`
-	}
-	return s
-}
-
 func sortMapSet(m map[interface{}]struct{}) []interface{} {
 	sorted := []interface{}{}
 	for v := range m {
