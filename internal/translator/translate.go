@@ -926,7 +926,6 @@ func Translate(
 		ProvInfo{queryProv, tableProv},
 		queryOptions,
 	)
-	fmt.Println("Got the SQL: ", sql, " With Params: ", params)
 	if err != nil {
 		return nil, err
 	}
