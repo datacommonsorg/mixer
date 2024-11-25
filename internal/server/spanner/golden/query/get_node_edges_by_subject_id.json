@@ -36,7 +36,7 @@
     {
       "SubjectID": "Aadhaar",
       "Predicate": "description",
-      "ObjectID": "Aadhaar",
+      "ObjectID": "",
       "ObjectValue": "Aadhaar is a 12-digit unique identity number that can be obtained voluntarily by all residents of India",
       "Provenance": "dc/base/BaseSchema",
       "Name": "",
@@ -45,7 +45,7 @@
     {
       "SubjectID": "Aadhaar",
       "Predicate": "name",
-      "ObjectID": "Aadhaar",
+      "ObjectID": "",
       "ObjectValue": "Aadhaar",
       "Provenance": "dc/base/BaseSchema",
       "Name": "",
@@ -54,7 +54,7 @@
     {
       "SubjectID": "Aadhaar",
       "Predicate": "localCuratorLevelId",
-      "ObjectID": "Aadhaar",
+      "ObjectID": "",
       "ObjectValue": "dcid:Aadhaar",
       "Provenance": "dc/base/BaseSchema",
       "Name": "",
@@ -63,7 +63,7 @@
     {
       "SubjectID": "Aadhaar",
       "Predicate": "extendedName",
-      "ObjectID": "Aadhaar",
+      "ObjectID": "",
       "ObjectValue": "Aadhaar",
       "Provenance": "dc/base/BaseSchema",
       "Name": "",
@@ -174,7 +174,7 @@
     {
       "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
       "Predicate": "extendedName",
-      "ObjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
+      "ObjectID": "",
       "ObjectValue": "Average retail price of electricity, residential, monthly",
       "Provenance": "dc/base/HumanReadableStatVars",
       "Name": "",
@@ -183,7 +183,7 @@
     {
       "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
       "Predicate": "name",
-      "ObjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
+      "ObjectID": "",
       "ObjectValue": "Average retail price of electricity, residential, monthly",
       "Provenance": "dc/base/HumanReadableStatVars",
       "Name": "",
@@ -192,11 +192,12 @@
     {
       "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
       "Predicate": "localCuratorLevelId",
-      "ObjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
+      "ObjectID": "",
       "ObjectValue": "dcid:Monthly_Average_RetailPrice_Electricity_Residential",
       "Provenance": "dc/base/HumanReadableStatVars",
       "Name": "",
       "Types": []
     }
-  ]
+  ],
+  "foo": []
 }

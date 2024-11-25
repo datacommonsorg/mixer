@@ -33,7 +33,6 @@ import "place.proto";
 import "query.proto";
 import "stat.proto";
 import "stat_var.proto";
-import "translate.proto";
 import "recon.proto";
 
 import "v1/event.proto";
@@ -214,14 +213,6 @@ service Mixer {
     option (google.api.http) = {
       get : "/internal/bio"
       additional_bindings : {post : "/internal/bio" body : "*"}
-    };
-  }
-
-  // Translate Sparql Query into translation results.
-  rpc Translate(TranslateRequest) returns (TranslateResponse) {
-    option (google.api.http) = {
-      get : "/translate"
-      additional_bindings : {post : "/translate" body : "*"}
     };
   }
 

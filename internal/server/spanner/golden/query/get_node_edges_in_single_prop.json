@@ -1,0 +1,15 @@
+{
+  "EarthquakeEvent": [
+    {
+      "SubjectID": "EarthquakeEvent",
+      "Predicate": "domainIncludes",
+      "ObjectID": "affectedPlace",
+      "ObjectValue": "",
+      "Provenance": "dc/base/BaseSchema",
+      "Name": "affectedPlace",
+      "Types": [
+        "Property"
+      ]
+    }
+  ]
+}

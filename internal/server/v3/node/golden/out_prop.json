@@ -1,0 +1,19 @@
+{
+  "data": {
+    "Count_Person_Female": {
+      "properties": [
+        "constraintProperties",
+        "extendedName",
+        "gender",
+        "localCuratorLevelId",
+        "measuredProp",
+        "memberOf",
+        "name",
+        "populationType",
+        "statType",
+        "typeOf"
+      ]
+    },
+    "foo": {}
+  }
+}

@@ -50,7 +50,6 @@
               (proxy.pathsuffix MatchesPath "/stat/all") OR
               (proxy.pathsuffix MatchesPath "/stat/series") OR
               (proxy.pathsuffix MatchesPath "/stat/value") OR
-              (proxy.pathsuffix MatchesPath "/translate") OR
               (proxy.pathsuffix MatchesPath "/v1/place/ranking") OR
               (proxy.pathsuffix MatchesPath "/v1/place/related") OR
               (proxy.pathsuffix MatchesPath "/v1/place/stat-vars/union") OR
