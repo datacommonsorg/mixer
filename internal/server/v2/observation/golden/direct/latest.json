@@ -647,13 +647,13 @@
               "facet_id": "324358135",
               "observations": [
                 {
-                  "date": "2024-09",
-                  "value": 1030005
+                  "date": "2024-10",
+                  "value": 1043832
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2024-09",
-              "latest_date": "2024-09"
+              "earliest_date": "2024-10",
+              "latest_date": "2024-10"
             },
             {
               "facet_id": "2978659163",
@@ -671,13 +671,13 @@
               "facet_id": "1249140336",
               "observations": [
                 {
-                  "date": "2024-09",
-                  "value": 1031821
+                  "date": "2024-10",
+                  "value": 1045289
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2024-09",
-              "latest_date": "2024-09"
+              "earliest_date": "2024-10",
+              "latest_date": "2024-10"
             }
           ]
         },
@@ -789,7 +789,7 @@
     },
     "1733625304": {
       "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
-      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true",
+      "provenance_url": "https://ec.europa.eu/eurostat/databrowser/view/demo_r_gind3/default/table?lang=en",
       "measurement_method": "EurostatRegionalStatistics"
     },
     "1964317807": {

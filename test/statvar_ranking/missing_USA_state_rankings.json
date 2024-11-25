@@ -14,13 +14,6 @@
     "relatedChart": {}
   },
   {
-    "title": "Annual greenhouse gas emissions (large facilities, non-biogenic)",
-    "statsVars": [
-      "Annual_Emissions_GreenhouseGas_NonBiogenic"
-    ],
-    "relatedChart": {}
-  },
-  {
     "title": "Arson",
     "statsVars": [
       "Count_CriminalActivities_Arson"
@@ -31,13 +24,6 @@
         "Count_CriminalActivities_Arson"
       ]
     }
-  },
-  {
-    "title": "Carbon dioxide emissions (large facilities, non-biogenic)",
-    "statsVars": [
-      "Annual_Emissions_CarbonDioxide_NonBiogenic"
-    ],
-    "relatedChart": {}
   },
   {
     "title": "Carbon dioxide emissions per capita",
@@ -250,13 +236,6 @@
     "relatedChart": {}
   },
   {
-    "title": "Methane emissions (large facilities, non-biogenic)",
-    "statsVars": [
-      "Annual_Emissions_Methane_NonBiogenic"
-    ],
-    "relatedChart": {}
-  },
-  {
     "title": "Mortality events",
     "statsVars": [
       "Count_Death_DiseasesOfTheRespiratorySystem",
@@ -271,13 +250,6 @@
         "Count_Death_DiseasesOfTheNervousSystem"
       ]
     }
-  },
-  {
-    "title": "Nitrous oxide emissions (large facilities, non-biogenic)",
-    "statsVars": [
-      "Annual_Emissions_NitrousOxide_NonBiogenic"
-    ],
-    "relatedChart": {}
   },
   {
     "title": "Outward remittance",

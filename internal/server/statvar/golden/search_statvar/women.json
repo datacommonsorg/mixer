@@ -89,6 +89,10 @@
       "dcid": "sdg/SH_LGR_ACSRHES4"
     },
     {
+      "name": "Income Inequality Between Men and Women of Working Age",
+      "dcid": "GenderIncomeInequality_Person_15OrMoreYears_WithIncome"
+    },
+    {
       "name": "Legal frameworks that promote, enforce and monitor gender equality -- Area 2: violence against women",
       "dcid": "sdg/SG_LGL_GENEQVAW"
     },
@@ -801,6 +805,10 @@
       "dcid": "dc/flfk1szeerbd7"
     },
     {
+      "name": "Median Income of Women (15 Years or Older) With Income",
+      "dcid": "Median_Income_Person_15OrMoreYears_Female_WithIncome"
+    },
+    {
       "name": "Adolescent Fertility Rate (Per 1000 Women Aged 15-19 Years), Decile1",
       "dcid": "WHO/asfr1_Decile1"
     },
@@ -955,6 +963,10 @@
     {
       "name": "Number Of Pregnant Women Living With Hiv Who Received Antiretrovirals For Preventing Mother-To-Child Transmission",
       "dcid": "WHO/HIV_0000000015"
+    },
+    {
+      "name": "Number of women beneficiaries of the Rural Development Program",
+      "dcid": "Count_Person_BrazilRuralDevelopmentProgram_Female"
     },
     {
       "name": "Obesity Prevalence In Non-Pregnant Women Aged 15-49 Years, Bmi \u003e= 30 (%) (obesewm), No Schooling Completed",
@@ -1545,8 +1557,140 @@
       "dcid": "SeasonallyUnadjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_WomensUnderwearNightwearSwimwearAndAccessories"
     },
     {
+      "name": "Non-pregnant women age group 15 to 49 years who are anaemic (%)",
+      "dcid": "Count_NonPregnantWoman_15To49Years_ConditionAnaemia_AsAFractionOf_Count_NonPregnantWoman_15To49Years"
+    },
+    {
       "name": "Pregnant women aged 15-49 yrs who are anaemic (11.0g/dl) (%)",
       "dcid": "Count_WHO/PregnantWomen_15To49Year_ConditionAnaemia_AsAFractionOf_Count_WHO/PregnantWomen_15To49Year"
+    },
+    {
+      "name": "Seats won by women in the general elections to state legislative assembly (%)",
+      "dcid": "Count_Person_Female_LegislatorOccupation_AsAFractionOf_Count_Person_LegislatorOccupation"
+    },
+    {
+      "name": "Women Unmet need for family planning (%)",
+      "dcid": "Count_Person_WithUnmetNeed_Female_AsAFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "Women age 15 years and above who consume alcohol (%)",
+      "dcid": "Count_Person_15OrMoreYears_AlcoholConsumption_AsAFractionOf_Count_Person_15OrMoreYears"
+    },
+    {
+      "name": "Women age 15 years and above who use any kind of tobacco (%)",
+      "dcid": "Count_Person_15OrMoreYears_TobaccoUse_AsAFractionOf_Count_Person_15OrMoreYears"
+    },
+    {
+      "name": "Women age group 15 to 24 years who use hygienic methods of protection during their menstrual period (%)",
+      "dcid": "Count_MenstrualWoman_15To19Years_HygienicMethodsOfProtection_AsAFractionOf_Count_MenstrualWoman_15To19Years"
+    },
+    {
+      "name": "Women having a bank or savings account that they themselves use (%)",
+      "dcid": "Count_Person_SavingsAccount_Female_AsAFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "Women having a mobile phone that they themselves use (%)",
+      "dcid": "Count_Person_MobilePhone_Female_AsAFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "Women owning a house and or land (alone or jointly with others) (%)",
+      "dcid": "Count_Person_HouseOrLand_Female_AsAFractionOf_Count_Person_HouseOrLand_Female"
+    },
+    {
+      "name": "Women suffering from elevated blood pressure (%)",
+      "dcid": "Count_Person_Female_WithElevatedBloodPressure_AsAFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "Women suffering from high blood sugar level (%)",
+      "dcid": "Count_Person_Female_WithHighBloodSugarLevel_AsAFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "Women suffering from high or very high blood sugar level (%)",
+      "dcid": "Count_Person_Female_WithHighBloodSugarLevelOrVeryHighBloodSugarLevel_AsAFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "Women suffering from very high blood sugar level (%)",
+      "dcid": "Count_Person_Female_WithVeryHighBloodSugarLevel_AsAFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "Women who are overweight or obese (%)",
+      "dcid": "Count_Person_Female_OverweightOrObesity_AsAFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "Women who have comprehensive knowledge of Human immunodeficiency virus ( HIV ) or Acquired Immune Deficiency Syndrome ( AIDS ) (%)",
+      "dcid": "Count_Person_Female_HivOrAids_AsAFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "Women who have ever undergone a breast examination for breast cancer (%)",
+      "dcid": "Count_Person_Female_ReceivedBreastCancerExamination_AsAFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "Women who have ever undergone a cervix examination(%)",
+      "dcid": "Count_Person_Female_ReceivedCervicalCancerScreening_AsAFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "Women who have ever undergone a oral cavity examniation (%)",
+      "dcid": "Count_Person_Female_ReceivedOralCavityExamination_AsAFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "Women who have high risk waist-to-hip ratio (%)",
+      "dcid": "Count_Person_Female_HighRiskOfWaistToHipRatio_AsAFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "Women who worked in the last 12 months and were paid in cash (%)",
+      "dcid": "Count_Person_Female_CashPayment_AsAFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "Women with 10 or more years of schooling in the age group of 15 to 49 years (%)",
+      "dcid": "Count_Person_Female_10OrMoreYears_AsAFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "Women with body mass index ( BMI ) below normal (%)",
+      "dcid": "Count_Person_Female_BodyMassIndexBelowNormal_AsAFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "Women with moderately high hypertension (%)",
+      "dcid": "Count_Person_Female_WithModerateHypertension_AsAFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "Women with very high hypertension (%)",
+      "dcid": "Count_Person_Female_WithVeryHighHypertension_AsAFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "Women-mildly elevated blood pressure (%)",
+      "dcid": "Count_Person_Female_WithMidlyElevatedBloodPressure_AsAFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "Women-moderately or severely elevated blood pressure (%)",
+      "dcid": "Count_Person_Female_WithModeratelyElevatedBloodPressureOrSeverelyElevatedBloodPressure_AsAFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "Number of women born outside the country and excluding USA, Guatemala, Japan, France and Spain.",
+      "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthINEGIOtherCountries"
+    },
+    {
+      "name": "Number of women born outside the country in France",
+      "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthFrance"
+    },
+    {
+      "name": "Number of women born outside the country in Guatemala",
+      "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthGautemala"
+    },
+    {
+      "name": "Number of women born outside the country in Japan",
+      "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthJapan"
+    },
+    {
+      "name": "Number of women born outside the country in Spain",
+      "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthSpain"
+    },
+    {
+      "name": "Number of women born outside the country in the United States of America",
+      "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthUSA"
+    },
+    {
+      "name": "Percentage of Women (18 to 64 Years Old) Without Health Insurance",
+      "dcid": "Percent_Person_18To64Years_Female_NoHealthInsurance"
     },
     {
       "name": "Prevalence of cervical cancer screening among women aged 30-49 years (%) [30-49 years, Female, in lifetime]",
@@ -1565,6 +1709,10 @@
       "dcid": "who/NCD_CXCA_SCREENED_WITHIN_TIMEPERIOD.AGE--Y30T49__SEX--F__TIMEPERIOD--LAST01YEAR"
     },
     {
+      "name": "Young women age group 18 to 29 years who experienced sexual violence by age18 (%)",
+      "dcid": "Count_Person_18To29Years_Female_18OrLessYears"
+    },
+    {
       "name": "Adolescent Birth Rate (Per 1000 Women Aged 15-19 Years),10 To14 Years",
       "dcid": "WHO/MDG_0000000003_10To14Years"
     },
@@ -1575,6 +1723,58 @@
     {
       "name": "Adolescent fertility rate (births per 1,000 women ages 15-19)",
       "dcid": "worldBank/SP_ADO_TFRT"
+    },
+    {
+      "name": "Adolescent fertility rate for women age 15 to 19 years (%)",
+      "dcid": "FertilityRate_Person_15To19Years_Adolescents_Female_AsAFractionOf_Count_Person_15To19Years_Adolescents_Female"
+    },
+    {
+      "name": "Fraction of 25 to 34 years, Women who have attained Bachelor's or equivalent level.",
+      "dcid": "Count_Person_25To34Years_BachelorsDegreeOrHigher_Female_AsAFractionOf_Count_Person_25To34Years_Female"
+    },
+    {
+      "name": "Fraction of 25 to 34 years, Women who have attained Below Short-cycle tertiary education.",
+      "dcid": "Count_Person_25To34Years_ShortCycleTertiaryEducation_Female_AsAFractionOf_Count_Person_25To34Years_Female"
+    },
+    {
+      "name": "Fraction of 25 to 34 years, Women who have attained Below upper secondary education.",
+      "dcid": "Count_Person_25To34Years_LowerSecondaryEducation_Female_AsAFractionOf_Count_Person_25To34Years_Female"
+    },
+    {
+      "name": "Fraction of 25 to 34 years, Women who have attained Doctoral or equivalent level",
+      "dcid": "Count_Person_25To34Years_DoctorateDegree_Female_AsAFractionOf_Count_Person_25To34Years_Female"
+    },
+    {
+      "name": "Fraction of 25 to 34 years, Women who have attained Master's or equivalent level.",
+      "dcid": "Count_Person_25To34Years_MastersDegreeOrHigher_Female_AsAFractionOf_Count_Person_25To34Years_Female"
+    },
+    {
+      "name": "Fraction of 25 to 34 years, Women who have attained Total tertiary education.",
+      "dcid": "Count_Person_25To34Years_TertiaryEducation_Female_AsAFractionOf_Count_Person_25To34Years_Female"
+    },
+    {
+      "name": "Fraction of 25 to 34 years, Women who have attained Upper secondary and post-secondary non-tertiary education.",
+      "dcid": "Count_Person_25To34Years_UpperSecondaryEducationOrPostSecondaryNonTertiaryEducation_Female_AsAFractionOf_Count_Person_25To34Years_Female"
+    },
+    {
+      "name": "Fraction of 25 to 64 years, Women who have attained Bachelor's or equivalent level.",
+      "dcid": "Count_Person_25To64Years_BachelorsDegreeOrHigher_Female_AsAFractionOf_Count_Person_25To64Years_Female"
+    },
+    {
+      "name": "Fraction of 25 to 64 years, Women who have attained Below Short-cycle tertiary education.",
+      "dcid": "Count_Person_25To64Years_ShortCycleTertiaryEducation_Female_AsAFractionOf_Count_Person_25To64Years_Female"
+    },
+    {
+      "name": "Fraction of 25 to 64 years, Women who have attained Below upper secondary education.",
+      "dcid": "Count_Person_25To64Years_LowerSecondaryEducation_Female_AsAFractionOf_Count_Person_25To64Years_Female"
+    },
+    {
+      "name": "Fraction of 25 to 64 years, Women who have attained Doctoral or equivalent level",
+      "dcid": "Count_Person_25To64Years_DoctorateDegree_Female_AsAFractionOf_Count_Person_25To64Years_Female"
+    },
+    {
+      "name": "Fraction of 25 to 64 years, Women who have attained Master's or equivalent level.",
+      "dcid": "Count_Person_25To64Years_MastersDegreeOrHigher_Female_AsAFractionOf_Count_Person_25To64Years_Female"
     },
     {
       "name": "Mean Hemoglobin Level Of Non-Pregnant Women (Aged 15-49 Years)",
@@ -1589,12 +1789,24 @@
       "dcid": "WHO/HEMOGLOBINLEVEL_REPRODUCTIVEAGE_MEAN"
     },
     {
+      "name": "Non-pregnant women age group 15 to 49 years who are anaemic (%), rural",
+      "dcid": "Count_NonPregnantWoman_15To49Years_ConditionAnaemia_Rural_AsAFractionOf_Count_NonPregnantWoman_15To49Years_Rural"
+    },
+    {
+      "name": "Non-pregnant women age group 15 to 49 years who are anaemic (%), urban",
+      "dcid": "Count_NonPregnantWoman_15To49Years_ConditionAnaemia_Urban_AsAFractionOf_Count_NonPregnantWoman_15To49Years_Urban"
+    },
+    {
       "name": "Number of pregnant women registered for Antenatal Care within first trimester",
       "dcid": "Count_PregnantWomen_RegisteredForAntenatalCareWithinFirstTrimester"
     },
     {
       "name": "Pregnant Women Attending Antenatal Care At Least Once And Receiving At Least 3 Doses Of Intermittent Preventive Treatment Of Malaria For Pregnant Women (Iptp3) (%)",
       "dcid": "WHO/MALARIA_IPTP3_COVERAGE"
+    },
+    {
+      "name": "Pregnant women age group 15 to 49 years who are anaemic (%)",
+      "dcid": "Count_PregnantWoman_15To49Years_Female_ConditionAnaemia_AsAFractionOf_Count_PregnantWoman_15To49Years_Female"
     },
     {
       "name": "Prevalence of anemia among pregnant women (%)",
@@ -1757,6 +1969,374 @@
       "dcid": "WHO/SDGFPALL_Female_15To49Years"
     },
     {
+      "name": "Women Unmet need for family planning (%), rural",
+      "dcid": "Count_Person_WithUnmetNeed_Female_Rural_AsAFractionOf_Count_Person_Rural_Female"
+    },
+    {
+      "name": "Women Unmet need for family planning (%), urban",
+      "dcid": "Count_Person_WithUnmetNeed_Female_Urban_AsAFractionOf_Count_Person_Urban_Female"
+    },
+    {
+      "name": "Women age group 15 to 19 years who are anaemic (%)",
+      "dcid": "Count_Person_15To19Years_Female_ConditionAnaemia_AsAFractionOf_Count_Person_15To19Years_Female"
+    },
+    {
+      "name": "Women age group 15 to 19 years who were already mothers or pregnant at the time of the survey (%)",
+      "dcid": "Count_Person_15To19Years_Female_ConditionPregnant_AsAFractionOf_Count_Person_15To19Years_Female"
+    },
+    {
+      "name": "Women age group 15 to 19 years who were already mothers or pregnant at the time of the survey (%)",
+      "dcid": "Count_Person_15To19Years_Female_ConditionPregnant_AsAFractionOf_Count_Person_15To19Years_Female_ConditionPregnant"
+    },
+    {
+      "name": "Women age group 15 to 24 years who use hygienic methods of protection during their menstrual period (%), rural",
+      "dcid": "Count_MenstrualWoman_15To19Years_HygienicMethodsOfProtection_Rural_AsAFractionOf_Count_MenstrualWoman_15To19Years_Rural"
+    },
+    {
+      "name": "Women age group 15 to 24 years who use hygienic methods of protection during their menstrual period (%), urban",
+      "dcid": "Count_MenstrualWoman_15To19Years_HygienicMethodsOfProtection_Urban_AsAFractionOf_Count_MenstrualWoman_15To19Years_Urban"
+    },
+    {
+      "name": "Women age group 15 to 49 years who are anaemic (%)",
+      "dcid": "Count_Person_15To49Years_Female_ConditionAnaemia_AsAFractionOf_Count_Person_15To49Years_Female"
+    },
+    {
+      "name": "Women age group 15 to 49 years who are literate (%)",
+      "dcid": "Count_Person_15To49Years_Female_Literate_AsAFractionOf_Count_Person_15To49Years_Female"
+    },
+    {
+      "name": "Women age group 15 years and above who consume alcohol (%), rural",
+      "dcid": "Count_Person_15OrMoreYears_AlcoholConsumption_Rural_AsAFractionOf_Count_Person_15OrMoreYears_Rural"
+    },
+    {
+      "name": "Women age group 15 years and above who consume alcohol (%), urban",
+      "dcid": "Count_Person_15OrMoreYears_AlcoholConsumption_Urban_AsAFractionOf_Count_Person_15OrMoreYears_Urban"
+    },
+    {
+      "name": "Women age group 15 years and above who use any kind of tobacco (%), rural",
+      "dcid": "Count_Person_15OrMoreYears_TobaccoUse_Rural_AsAFractionOf_Count_Person_15OrMoreYears_Rural"
+    },
+    {
+      "name": "Women age group 15 years and above who use any kind of tobacco (%), urban",
+      "dcid": "Count_Person_15OrMoreYears_TobaccoUse_Urban_AsAFractionOf_Count_Person_15OrMoreYears_Urban"
+    },
+    {
+      "name": "Women having a bank or savings account that they themselves use (%), rural",
+      "dcid": "Count_Person_SavingsAccount_Female_Rural_AsAFractionOf_Count_Person_Rural_Female"
+    },
+    {
+      "name": "Women having a bank or savings account that they themselves use (%), urban",
+      "dcid": "Count_Person_SavingsAccount_Female_Urban_AsAFractionOf_Count_Person_Urban_Female"
+    },
+    {
+      "name": "Women having a mobile phone that they themselves use (%), rural",
+      "dcid": "Count_Person_MobilePhone_Female_Rural_AsAFractionOf_Count_Person_Rural_Female"
+    },
+    {
+      "name": "Women having a mobile phone that they themselves use (%), urban",
+      "dcid": "Count_Person_MobilePhone_Female_Urban_AsAFractionOf_Count_Person_Urban_Female"
+    },
+    {
+      "name": "Women in the age group of 20 to 24 years married before age 18 years (%)",
+      "dcid": "Count_Person_20To24Years_Female_MarriedBefore18Years_AsAFractionOf_Count_Person_20To24Years_Female"
+    },
+    {
+      "name": "Women owning a house and or land (alone or jointly with others) (%), rural",
+      "dcid": "Count_Person_HouseOrLand_Female_Rural_AsAFractionOf_Count_Person_HouseOrLand_Female_Rural"
+    },
+    {
+      "name": "Women owning a house and or land (alone or jointly with others) (%), urban",
+      "dcid": "Count_Person_HouseOrLand_Female_Urban_AsAFractionOf_Count_Person_HouseOrLand_Female_Urban"
+    },
+    {
+      "name": "Women suffering from elevated blood pressure (%), rural",
+      "dcid": "Count_Person_Female_WithElevatedBloodPressure_Rural_AsAFractionOf_Count_Person_Rural_Female"
+    },
+    {
+      "name": "Women suffering from elevated blood pressure (%), urban",
+      "dcid": "Count_Person_Female_WithElevatedBloodPressure_Urban_AsAFractionOf_Count_Person_Urban_Female"
+    },
+    {
+      "name": "Women suffering from high blood sugar level (%), rural",
+      "dcid": "Count_Person_Female_WithHighBloodSugarLevel_Rural_AsAFractionOf_Count_Person_Rural_Female"
+    },
+    {
+      "name": "Women suffering from high blood sugar level (%), urban",
+      "dcid": "Count_Person_Female_WithHighBloodSugarLevel_Urban_AsAFractionOf_Count_Person_Urban_Female"
+    },
+    {
+      "name": "Women suffering from high or very high blood sugar level (%), rural",
+      "dcid": "Count_Person_Female_WithHighBloodSugarLevelOrVeryHighBloodSugarLevel_Rural_AsAFractionOf_Count_Person_Rural_Female"
+    },
+    {
+      "name": "Women suffering from high or very high blood sugar level (%), urban",
+      "dcid": "Count_Person_Female_WithHighBloodSugarLevelOrVeryHighBloodSugarLevel_Urban_AsAFractionOf_Count_Person_Urban_Female"
+    },
+    {
+      "name": "Women suffering from very high blood sugar level (%), rural",
+      "dcid": "Count_Person_Female_WithVeryHighBloodSugarLevel_Rural_AsAFractionOf_Count_Person_Rural_Female"
+    },
+    {
+      "name": "Women suffering from very high blood sugar level (%), urban",
+      "dcid": "Count_Person_Female_WithVeryHighBloodSugarLevel_Urban_AsAFractionOf_Count_Person_Urban_Female"
+    },
+    {
+      "name": "Women who are overweight or obese (%), rural",
+      "dcid": "Count_Person_Female_OverweightOrObesity_Rural_AsAFractionOf_Count_Person_Rural_Female"
+    },
+    {
+      "name": "Women who are overweight or obese (%), urban",
+      "dcid": "Count_Person_Female_OverweightOrObesity_Urban_AsAFractionOf_Count_Person_Urban_Female"
+    },
+    {
+      "name": "Women who have comprehensive knowledge of Human immunodeficiency virus ( HIV ) or Acquired Immune Deficiency Syndrome ( AIDS ) (%), rural",
+      "dcid": "Count_Person_Female_HivOrAids_Rural_AsAFractionOf_Count_Person_Rural_Female"
+    },
+    {
+      "name": "Women who have comprehensive knowledge of Human immunodeficiency virus ( HIV ) or Acquired Immune Deficiency Syndrome ( AIDS ) (%), urban",
+      "dcid": "Count_Person_Female_HivOrAids_Urban_AsAFractionOf_Count_Person_Urban_Female"
+    },
+    {
+      "name": "Women who have ever undergone a breast examination for breast cancer (%), rural",
+      "dcid": "Count_Person_Female_ReceivedBreastCancerExamination_Rural_AsAFractionOf_Count_Person_Rural_Female"
+    },
+    {
+      "name": "Women who have ever undergone a breast examination for breast cancer (%), urban",
+      "dcid": "Count_Person_Female_ReceivedBreastCancerExamination_Urban_AsAFractionOf_Count_Person_Urban_Female"
+    },
+    {
+      "name": "Women who have ever undergone a cervix examination(%), rural",
+      "dcid": "Count_Person_Female_ReceivedCervicalCancerScreening_Rural_AsAFractionOf_Count_Person_Rural_Female"
+    },
+    {
+      "name": "Women who have ever undergone a cervix examination(%), urban",
+      "dcid": "Count_Person_Female_ReceivedCervicalCancerScreening_Urban_AsAFractionOf_Count_Person_Urban_Female"
+    },
+    {
+      "name": "Women who have ever undergone a oral cavity examniation (%), rural",
+      "dcid": "Count_Person_Female_ReceivedOralCavityExamination_Rural_AsAFractionOf_Count_Person_Rural_Female"
+    },
+    {
+      "name": "Women who have ever undergone a oral cavity examniation (%), urban",
+      "dcid": "Count_Person_Female_ReceivedOralCavityExamination_Urban_AsAFractionOf_Count_Person_Urban_Female"
+    },
+    {
+      "name": "Women who have ever used the internet (%), rural",
+      "dcid": "Count_Person_Female_EverUsedInternet_Rural_AsAFractionOf_Count_Person_Rural_Female"
+    },
+    {
+      "name": "Women who have ever used the internet (%), urban",
+      "dcid": "Count_Person_Female_EverUsedInternet_Urban_AsAFractionOf_Count_Person_Urban_Female"
+    },
+    {
+      "name": "Women who have high risk waist-to-hip ratio (%), rural",
+      "dcid": "Count_Person_Female_HighRiskOfWaistToHipRatio_Rural_AsAFractionOf_Count_Person_Rural_Female"
+    },
+    {
+      "name": "Women who have high risk waist-to-hip ratio (%), urban",
+      "dcid": "Count_Person_Female_HighRiskOfWaistToHipRatio_Urban_AsAFractionOf_Count_Person_Urban_Female"
+    },
+    {
+      "name": "Women who know that consistent condom use can reduce the chance of getting Human immunodeficiency virus ( HIV ) or Acquired Immune Deficiency Syndrome ( AIDS ) (%)",
+      "dcid": "Count_Person_Female_BenefitsOfUsingCondom_ConditionHivOrAids_AsAFractionOf_Count_Person_Female_ConditionHivOrAids"
+    },
+    {
+      "name": "Women who worked in the last 12 months and were paid in cash (%), rural",
+      "dcid": "Count_Person_Female_CashPayment_Rural_AsAFractionOf_Count_Person_Rural_Female"
+    },
+    {
+      "name": "Women who worked in the last 12 months and were paid in cash (%), urban",
+      "dcid": "Count_Person_Female_CashPayment_Urban_AsAFractionOf_Count_Person_Urban_Female"
+    },
+    {
+      "name": "Women with 10 or more years of schooling in the age group of 15 to 49 years (%), rural",
+      "dcid": "Count_Person_Female_Rural_10OrMoreYears_AsAFractionOf_Count_Person_Rural_Female"
+    },
+    {
+      "name": "Women with 10 or more years of schooling in the age group of 15 to 49 years (%), urban",
+      "dcid": "Count_Person_Female_Urban_10OrMoreYears_AsAFractionOf_Count_Person_Urban_Female"
+    },
+    {
+      "name": "Women with body mass index ( BMI ) below normal (%), rural",
+      "dcid": "Count_Person_Female_BodyMassIndexBelowNormal_Rural_AsAFractionOf_Count_Person_Rural_Female"
+    },
+    {
+      "name": "Women with body mass index ( BMI ) below normal (%), urban",
+      "dcid": "Count_Person_Female_BodyMassIndexBelowNormal_Urban_AsAFractionOf_Count_Person_Urban_Female"
+    },
+    {
+      "name": "Women with moderately high hypertension (%), rural",
+      "dcid": "Count_Person_Female_WithModerateHypertension_Rural_AsAFractionOf_Count_Person_Rural_Female"
+    },
+    {
+      "name": "Women with moderately high hypertension (%), urban",
+      "dcid": "Count_Person_Female_WithModerateHypertension_Urban_AsAFractionOf_Count_Person_Urban_Female"
+    },
+    {
+      "name": "Women with very high hypertension (%), rural",
+      "dcid": "Count_Person_Female_WithVeryHighHypertension_Rural_AsAFractionOf_Count_Person_Rural_Female"
+    },
+    {
+      "name": "Women with very high hypertension (%), urban",
+      "dcid": "Count_Person_Female_WithVeryHighHypertension_Urban_AsAFractionOf_Count_Person_Urban_Female"
+    },
+    {
+      "name": "Women-ever undergone an oral cavity examination for oral cancer (%)",
+      "dcid": "Count_Person_Female_ReceivedOralCavityExamination_ConditionOralCancer_AsAFractionOf_Count_Person_Female"
+    },
+    {
+      "name": "Women-mildly elevated blood pressure (%), rural",
+      "dcid": "Count_Person_Female_WithMidlyElevatedBloodPressure_Rural_AsAFractionOf_Count_Person_Rural_Female"
+    },
+    {
+      "name": "Women-mildly elevated blood pressure (%), urban",
+      "dcid": "Count_Person_Female_WithMidlyElevatedBloodPressure_Urban_AsAFractionOf_Count_Person_Urban_Female"
+    },
+    {
+      "name": "Women-moderately or severely elevated blood pressure (%), rural",
+      "dcid": "Count_Person_Female_WithModeratelyElevatedBloodPressureOrSeverelyElevatedBloodPressure_Rural_AsAFractionOf_Count_Person_Rural_Female"
+    },
+    {
+      "name": "Women-moderately or severely elevated blood pressure (%), urban",
+      "dcid": "Count_Person_Female_WithModeratelyElevatedBloodPressureOrSeverelyElevatedBloodPressure_Urban_AsAFractionOf_Count_Person_Urban_Female"
+    },
+    {
+      "name": "Married women of age 15 to 49 years using injectables as one of the family planning methods (%)",
+      "dcid": "Count_Person_15To49Years_Injectables_Female_Married"
+    },
+    {
+      "name": "Young women age group 18 to 29 years who experienced sexual violence by age18 (%), rural",
+      "dcid": "Count_Person_18To29Years_Female_Rural_18OrLessYears"
+    },
+    {
+      "name": "Young women age group 18 to 29 years who experienced sexual violence by age18 (%), urban",
+      "dcid": "Count_Person_18To29Years_Female_Urban_18OrLessYears"
+    },
+    {
+      "name": "Adolescent fertility rate for women age 15 to 19 years (%), rural",
+      "dcid": "FertilityRate_Person_15To19Years_Adolescents_Female_Rural_AsAFractionOf_Count_Person_15To19Years_Adolescents_Female_Rural"
+    },
+    {
+      "name": "Adolescent fertility rate for women age 15 to 19 years (%), urban",
+      "dcid": "FertilityRate_Person_15To19Years_Adolescents_Female_Urban_AsAFractionOf_Count_Person_15To19Years_Adolescents_Female_Urban"
+    },
+    {
+      "name": "Currently married women age group 15 to 49 years consuming pill (%)",
+      "dcid": "Count_Person_15To49Years_BirthControlPill_Female_Married_AsAFractionOf_Count_Person_15To49Year_Female_Married"
+    },
+    {
+      "name": "Ever-married women age group 18 to 49 years who have ever experienced spousal violence (%)",
+      "dcid": "Count_Person_18To49Years_SpousalViolence_Female_EverMarried_AsAFractionOf_Count_Person_18To49Years_Female_EverMarried"
+    },
+    {
+      "name": "Female sterilization married women-15 to 49 years (%)",
+      "dcid": "Count_Person_15To49Years_Sterilization_Female_Married_AsAFractionOf_Count_Person_15To49Year_Female_Married"
+    },
+    {
+      "name": "Married women age group 15 to 49 years Unmet need for family planning (%)",
+      "dcid": "Count_Person_15To49Years_WithUnmetNeed_Female_Married_AsAFractionOf_Count_Person_15To49Year_Female_Married"
+    },
+    {
+      "name": "Married women age group 15 to 49 years any modern family planning method (%)",
+      "dcid": "Count_Person_15To49Years_ModernFamilyPlanning_Female_Married_AsAFractionOf_Count_Person_15To49Year_Female_Married"
+    },
+    {
+      "name": "Married women age group 15 to 49 years use any family planning methods (%)",
+      "dcid": "Count_Person_15To49Years_AnyFamilyPlanning_Female_Married_AsAFractionOf_Count_Person_15To49Year_Female_Married"
+    },
+    {
+      "name": "Married women age group 15 to 49 years using Intrauterine Device ( IUD ) or Postpartum Intrauterine Contraceptive Device ( PPIUD ) as family planning methods (%)",
+      "dcid": "Count_Person_15To49Years_IntrauterineDeviceOrPostpartumIntrauterineContraceptiveDevice_Female_Married_AsAFractionOf_Count_Person_15To49Year_Female_Married"
+    },
+    {
+      "name": "Married women age group 15 to 49 years using injectables as one of the family planning methods (%)",
+      "dcid": "Count_Person_15To49Years_Injectables_Female_Married_AsAFractionOf_Count_Person_15To49Year_Female_Married"
+    },
+    {
+      "name": "Married women age group 15 to 49 years who usually participate in three household decisions (%)",
+      "dcid": "Count_Person_15To49Years_Female_ParticipatedInThreeDecisions_Married_AsAFractionOf_Count_Person_15To49Year_Female_Married"
+    },
+    {
+      "name": "Married women aged 15-49 who have ever experienced spousal violence (%)",
+      "dcid": "Count_Person_15To49Year_SpousalViolence_Female_Married_AsAFractionOf_Count_Person_15To49Year_Female_Married"
+    },
+    {
+      "name": "Married women of age 15 to 49 years using male sterlization as one of the family planning methods (%)",
+      "dcid": "Count_Person_15To49Years_MaleSterlization_Female_Married_AsAFractionOf_Count_Person_15To49Year_Female_Married"
+    },
+    {
+      "name": "Married women using condom in the age group of 15 to 49 years (%)",
+      "dcid": "Count_Person_15To49Years_Condom_Female_Married_AsAFractionOf_Count_Person_15To49Year_Female_Married"
+    },
+    {
+      "name": "Pregnant women age group 15 to 49 years who are anaemic (%), rural",
+      "dcid": "Count_PregnantWoman_15To49Years_Female_ConditionAnaemia_Rural_AsAFractionOf_Count_PregnantWoman_15To49Years_Female_Rural"
+    },
+    {
+      "name": "Pregnant women age group 15 to 49 years who are anaemic (%), urban",
+      "dcid": "Count_PregnantWoman_15To49Years_Female_ConditionAnaemia_Urban_AsAFractionOf_Count_PregnantWoman_15To49Years_Female_Urban"
+    },
+    {
+      "name": "Women age group 15 to 19 years who are anaemic (%), rural",
+      "dcid": "Count_Person_15To19Years_Female_ConditionAnaemia_Rural_AsAFractionOf_Count_Person_15To19Years_Rural_Female"
+    },
+    {
+      "name": "Women age group 15 to 19 years who are anaemic (%), urban",
+      "dcid": "Count_Person_15To19Years_Female_ConditionAnaemia_Urban_AsAFractionOf_Count_Person_15To19Years_Urban_Female"
+    },
+    {
+      "name": "Women age group 15 to 19 years who were already mothers or pregnant at the time of the survey (%), rural",
+      "dcid": "Count_Person_15To19Years_Female_ConditionPregnant_Rural_AsAFractionOf_Count_Person_15To19Years_Female_ConditionPregnant_Rural"
+    },
+    {
+      "name": "Women age group 15 to 19 years who were already mothers or pregnant at the time of the survey (%), urban",
+      "dcid": "Count_Person_15To19Years_Female_ConditionPregnant_Urban_AsAFractionOf_Count_Person_15To19Years_Female_ConditionPregnant_Urban"
+    },
+    {
+      "name": "Women age group 15 to 49 years who are anaemic (%), rural",
+      "dcid": "Count_Person_15To49Years_Female_ConditionAnaemia_Rural_AsAFractionOf_Count_Person_15To49Years_Female_Rural"
+    },
+    {
+      "name": "Women age group 15 to 49 years who are anaemic (%), urban",
+      "dcid": "Count_Person_15To49Years_Female_ConditionAnaemia_Urban_AsAFractionOf_Count_Person_15To49Years_Female_Urban"
+    },
+    {
+      "name": "Women age group 15 to 49 years who are literate (%), rural",
+      "dcid": "Count_Person_15To49Years_Female_Literate_Rural_AsAFractionOf_Count_Person_15To49Years_Female_Rural"
+    },
+    {
+      "name": "Women age group 15 to 49 years who are literate (%), urban",
+      "dcid": "Count_Person_15To49Years_Female_Literate_Urban_AsAFractionOf_Count_Person_15To49Years_Female_Urban"
+    },
+    {
+      "name": "Women in the age group of 20 to 24 years married before age 18 years (%)",
+      "dcid": "Count_Person_20To24Years_Female_MarriedBefore18Years_Rural_AsAFractionOf_Count_Person_20To24Years_Rural_Female"
+    },
+    {
+      "name": "Women in the age group of 20 to 24 years married before age 18 years (%), urban",
+      "dcid": "Count_Person_20To24Years_Female_MarriedBefore18Years_Urban_AsAFractionOf_Count_Person_20To24Years_Urban_Female"
+    },
+    {
+      "name": "Women who know that consistent condom use can reduce the chance of getting Human immunodeficiency virus ( HIV ) or Acquired Immune Deficiency Syndrome ( AIDS ) (%), rural",
+      "dcid": "Count_Person_Female_BenefitsOfUsingCondom_ConditionHivOrAids_Rural_AsAFractionOf_Count_Person_Female_ConditionHivOrAids_Rural"
+    },
+    {
+      "name": "Women who know that consistent condom use can reduce the chance of getting Human immunodeficiency virus ( HIV ) or Acquired Immune Deficiency Syndrome ( AIDS ) (%), urban",
+      "dcid": "Count_Person_Female_BenefitsOfUsingCondom_ConditionHivOrAids_Urban_AsAFractionOf_Count_Person_Female_ConditionHivOrAids_Urban"
+    },
+    {
+      "name": "Women-ever undergone an oral cavity examination for oral cancer (%), rural",
+      "dcid": "Count_Person_Female_ReceivedOralCavityExamination_ConditionOralCancer_Rural_AsAFractionOf_Count_Person_Rural_Female"
+    },
+    {
+      "name": "Women-ever undergone an oral cavity examination for oral cancer (%), urban",
+      "dcid": "Count_Person_Female_ReceivedOralCavityExamination_ConditionOralCancer_Urban_AsAFractionOf_Count_Person_Urban_Female"
+    },
+    {
+      "name": "Young women age group 18 to 29 years who experienced sexual violence by age18 (%)",
+      "dcid": "Count_Person_18To29Years_SexualViolence_Female_18OrLessYears_AsAFractionOf_Count_Person_18To29Years_Female_18OrLessYears"
+    },
+    {
       "name": "Antiretroviral therapy coverage for PMTCT (% of pregnant women living with HIV)",
       "dcid": "worldBank/SH_HIV_PMTC_ZS"
     },
@@ -1831,6 +2411,106 @@
     {
       "name": "Teenage mothers (% of women ages 15-19 who have had children or are currently pregnant)",
       "dcid": "worldBank/SP_MTR_1519_ZS"
+    },
+    {
+      "name": "Married women of age 15 to 49 years using injectables as one of the family planning methods (%), rural",
+      "dcid": "Count_Person_15To49Years_Injectables_Female_Married_Rural"
+    },
+    {
+      "name": "Married women of age 15 to 49 years using injectables as one of the family planning methods (%), urban",
+      "dcid": "Count_Person_15To49Years_Injectables_Female_Married_Urban"
+    },
+    {
+      "name": "Currently married women age group 15 to 49 years consuming pill (%), rural",
+      "dcid": "Count_Person_15To49Years_BirthControlPill_Female_Married_Rural_AsAFractionOf_Count_Person_15To49Years_Female_Married_Rural"
+    },
+    {
+      "name": "Currently married women age group 15 to 49 years consuming pill (%), urban",
+      "dcid": "Count_Person_15To49Years_BirthControlPill_Female_Married_Urban_AsAFractionOf_Count_Person_15To49Years_Female_Married_Urban"
+    },
+    {
+      "name": "Ever-married women age group 18 to 49 years who have ever experienced spousal violence (%), rural",
+      "dcid": "Count_Person_18To49Years_SpousalViolence_Female_EverMarried_Rural_AsAFractionOf_Count_Person_18To49Years_Female_EverMarried_Rural"
+    },
+    {
+      "name": "Ever-married women age group 18 to 49 years who have ever experienced spousal violence (%), urban",
+      "dcid": "Count_Person_18To49Years_SpousalViolence_Female_EverMarried_Urban_AsAFractionOf_Count_Person_18To49Years_Female_EverMarried_Urban"
+    },
+    {
+      "name": "Ever-married women age group 18 to 49 years who have experienced physical violence during any pregnancy (%)",
+      "dcid": "Count_Person_18To49Years_PhysicalViolence_Female_EverMarried_ConditionPregnant_AsAFractionOf_Count_Person_18To49Years_Female_EverMarried_ConditionPregnant"
+    },
+    {
+      "name": "Female sterilization married women-15 to 49 years (%), rural",
+      "dcid": "Count_Person_15To49Years_Sterilization_Female_Married_Rural_AsAFractionOf_Count_Person_15To49Years_Female_Married_Rural"
+    },
+    {
+      "name": "Female sterilization married women-15 to 49 years (%), urban",
+      "dcid": "Count_Person_15To49Years_Sterilization_Female_Married_Urban_AsAFractionOf_Count_Person_15To49Years_Female_Married_Urban"
+    },
+    {
+      "name": "Married women age group 15 to 49 years Unmet need for family planning (%), rural",
+      "dcid": "Count_Person_15To49Years_WithUnmetNeed_Female_Married_Rural_AsAFractionOf_Count_Person_15To49Years_Female_Married_Rural"
+    },
+    {
+      "name": "Married women age group 15 to 49 years Unmet need for family planning (%), urban",
+      "dcid": "Count_Person_15To49Years_WithUnmetNeed_Female_Married_Urban_AsAFractionOf_Count_Person_15To49Years_Female_Married_Urban"
+    },
+    {
+      "name": "Married women age group 15 to 49 years any modern family planning method (%), rural",
+      "dcid": "Count_Person_15To49Years_ModernFamilyPlanning_Female_Married_Rural_AsAFractionOf_Count_Person_15To49Years_Female_Married_Rural"
+    },
+    {
+      "name": "Married women age group 15 to 49 years any modern family planning method (%), urban",
+      "dcid": "Count_Person_15To49Years_ModernFamilyPlanning_Female_Married_Urban_AsAFractionOf_Count_Person_15To49Years_Female_Married_Urban"
+    },
+    {
+      "name": "Married women age group 15 to 49 years use any family planning methods (%), rural",
+      "dcid": "Count_Person_15To49Years_AnyFamilyPlanning_Female_Married_Rural_AsAFractionOf_Count_Person_15To49Years_Female_Married_Rural"
+    },
+    {
+      "name": "Married women age group 15 to 49 years use any family planning methods (%), urban",
+      "dcid": "Count_Person_15To49Years_AnyFamilyPlanning_Female_Married_Urban_AsAFractionOf_Count_Person_15To49Years_Female_Married_Urban"
+    },
+    {
+      "name": "Married women age group 15 to 49 years using Intrauterine Device ( IUD ) or Postpartum Intrauterine Contraceptive Device ( PPIUD ) as family planning methods (%), rural",
+      "dcid": "Count_Person_15To49Years_IntrauterineDeviceOrPostpartumIntrauterineContraceptiveDevice_Female_Married_Rural_AsAFractionOf_Count_Person_15To49Years_Female_Married_Rural"
+    },
+    {
+      "name": "Married women age group 15 to 49 years using Intrauterine Device ( IUD ) or Postpartum Intrauterine Contraceptive Device ( PPIUD ) as family planning methods (%), urban",
+      "dcid": "Count_Person_15To49Years_IntrauterineDeviceOrPostpartumIntrauterineContraceptiveDevice_Female_Married_Urban_AsAFractionOf_Count_Person_15To49Years_Female_Married_Urban"
+    },
+    {
+      "name": "Married women age group 15 to 49 years who usually participate in three household decisions (%), rural",
+      "dcid": "Count_Person_15To49Years_Female_ParticipatedInThreeDecisions_Married_Rural_AsAFractionOf_Count_Person_15To49Years_Female_Married_Rural"
+    },
+    {
+      "name": "Married women age group 15 to 49 years who usually participate in three household decisions (%), urban",
+      "dcid": "Count_Person_15To49Years_Female_ParticipatedInThreeDecisions_Married_Urban_AsAFractionOf_Count_Person_15To49Years_Female_Married_Urban"
+    },
+    {
+      "name": "Married women of age 15 to 49 years using male sterlization as one of the family planning methods (%), rural",
+      "dcid": "Count_Person_15To49Years_MaleSterlization_Female_Married_Rural_AsAFractionOf_Count_Person_15To49Years_Female_Married_Rural"
+    },
+    {
+      "name": "Married women of age 15 to 49 years using male sterlization as one of the family planning methods (%), urban",
+      "dcid": "Count_Person_15To49Years_MaleSterlization_Female_Married_Urban_AsAFractionOf_Count_Person_15To49Years_Female_Married_Urban"
+    },
+    {
+      "name": "Married women using condom in the age group of 15 to 49 years (%), rural",
+      "dcid": "Count_Person_15To49Years_Condom_Female_Married_Rural_AsAFractionOf_Count_Person_15To49Years_Female_Married_Rural"
+    },
+    {
+      "name": "Married women using condom in the age group of 15 to 49 years (%), urban",
+      "dcid": "Count_Person_15To49Years_Condom_Female_Married_Urban_AsAFractionOf_Count_Person_15To49Years_Female_Married_Urban"
+    },
+    {
+      "name": "Young women age group 18 to 29 years who experienced sexual violence by age18 (%), rural",
+      "dcid": "Count_Person_18To29Years_SexualViolence_Female_Rural_18OrLessYears_AsAFractionOf_Count_Person_18To29Years_Female_Rural_18OrLessYears"
+    },
+    {
+      "name": "Young women age group 18 to 29 years who experienced sexual violence by age18 (%), urban",
+      "dcid": "Count_Person_18To29Years_SexualViolence_Female_Urban_18OrLessYears_AsAFractionOf_Count_Person_18To29Years_Female_Urban_18OrLessYears"
     },
     {
       "name": "Number Of Non-Pregnant Women (Aged 15-49 Years) With Anaemia (Thousands), Female",
@@ -1969,6 +2649,14 @@
       "dcid": "worldBank/SH_DYN_AIDS_FE_ZS"
     },
     {
+      "name": "Ever-married women age group 18 to 49 years who have experienced physical violence during any pregnancy (%), rural",
+      "dcid": "Count_Person_18To49Years_PhysicalViolence_Female_EverMarried_ConditionPregnant_Rural_AsAFractionOf_Count_Person_18To49Years_Female_EverMarried_ConditionPregnant_Rural"
+    },
+    {
+      "name": "Ever-married women age group 18 to 49 years who have experienced physical violence during any pregnancy (%), urban",
+      "dcid": "Count_Person_18To49Years_PhysicalViolence_Female_EverMarried_ConditionPregnant_Urban_AsAFractionOf_Count_Person_18To49Years_Female_EverMarried_ConditionPregnant_Urban"
+    },
+    {
       "name": "Prevalence Of Cervical Cancer Screening  Among Women Aged 30-49 Years (%), Female,30 To49 Years, In Lifetime",
       "dcid": "WHO/NCD_CXCA_SCREENED_WITHIN_TIMEPERIOD_Female_30To49Years_InLifetime"
     },
@@ -2005,6 +2693,10 @@
     "women",
     "women's",
     "women)",
+    "women-15",
+    "women-ever",
+    "women-mildly",
+    "women-moderately",
     "womens"
   ]
 }

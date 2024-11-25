@@ -25,6 +25,14 @@
       "dcid": "Percent_Person_18OrMoreYears_WithPoorGeneralHealth"
     },
     {
+      "name": "Percentage of Population With Poor Mental Health",
+      "dcid": "Percent_Person_WithMentalHealthNotGood"
+    },
+    {
+      "name": "Percentage of Population With Poor Physical Health",
+      "dcid": "Percent_Person_WithPhysicalHealthNotGood"
+    },
+    {
       "name": "Proportion of poor population receiving social assistance cash benefit [Female]",
       "dcid": "sdg/SI_COV_POOR.SEX--F"
     },

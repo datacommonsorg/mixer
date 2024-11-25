@@ -5,26 +5,26 @@
       "info": {
         "placeTypeSummary": {
           "AdministrativeArea": {
-            "placeCount": 148,
+            "placeCount": 135,
             "topPlaces": [
-              {
-                "dcid": "wikidataId/Q1023893",
-                "name": "Nanhai District"
-              },
-              {
-                "dcid": "wikidataId/Q945428",
-                "name": "Shunde District"
-              },
               {
                 "dcid": "wikidataId/Q1062618",
                 "name": "Chaoyang District"
+              },
+              {
+                "dcid": "wikidataId/Q1197421",
+                "name": "Wujin District"
+              },
+              {
+                "dcid": "wikidataId/Q714045",
+                "name": "Hechuan District"
               }
             ],
             "minValue": 12792,
             "maxValue": 1214384
           },
           "AdministrativeArea1": {
-            "placeCount": 343,
+            "placeCount": 339,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q15175",
@@ -396,7 +396,7 @@
             "maxValue": 840
           },
           "Neighborhood": {
-            "placeCount": 13,
+            "placeCount": 9,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q2244063",
@@ -415,7 +415,7 @@
             "maxValue": 138958
           },
           "Place": {
-            "placeCount": 154,
+            "placeCount": 125,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1180"
@@ -425,8 +425,8 @@
                 "name": "Swabi"
               },
               {
-                "dcid": "wikidataId/Q148062",
-                "name": "Zarqa"
+                "dcid": "wikidataId/Q366754",
+                "name": "Kalyan"
               }
             ],
             "minValue": 290,
@@ -3134,79 +3134,79 @@
                 "latestDate": "2024",
                 "placeTypeSummary": {
                   "AdministrativeArea": {
-                    "placeCount": 143,
+                    "placeCount": 130,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q1062618",
                         "name": "Chaoyang District"
                       },
                       {
-                        "dcid": "wikidataId/Q1023893",
-                        "name": "Nanhai District"
+                        "dcid": "wikidataId/Q1197421",
+                        "name": "Wujin District"
                       },
                       {
-                        "dcid": "wikidataId/Q945428",
-                        "name": "Shunde District"
+                        "dcid": "wikidataId/Q714045",
+                        "name": "Hechuan District"
                       }
                     ],
                     "minValue": 12792,
                     "maxValue": 1214384
                   },
                   "AdministrativeArea1": {
-                    "placeCount": 13,
+                    "placeCount": 9,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q579240",
                         "name": "Lima Province"
                       },
                       {
-                        "dcid": "wikidataId/Q39760",
-                        "name": "Gaza Strip"
-                      },
-                      {
                         "dcid": "wikidataId/Q188096",
                         "name": "Penang"
+                      },
+                      {
+                        "dcid": "wikidataId/Q813337",
+                        "name": "Beau Bassin-Rose Hill"
                       }
                     ],
                     "minValue": 6690,
                     "maxValue": 4333994
                   },
                   "AdministrativeArea2": {
-                    "placeCount": 603,
+                    "placeCount": 424,
                     "topPlaces": [
-                      {
-                        "dcid": "wikidataId/Q3308170",
-                        "name": "Lahore Division"
-                      },
                       {
                         "dcid": "wikidataId/Q943099",
                         "name": "Thane"
                       },
                       {
-                        "dcid": "wikidataId/Q1797336",
-                        "name": "Pune"
+                        "dcid": "wikidataId/Q173270",
+                        "name": "Veracruz"
+                      },
+                      {
+                        "dcid": "wikidataId/Q401686",
+                        "name": "Ahmadabad"
                       }
                     ],
-                    "minValue": 8465,
-                    "maxValue": 5303982
+                    "minValue": 26186,
+                    "maxValue": 2124106
                   },
                   "AdministrativeArea3": {
-                    "placeCount": 84,
+                    "placeCount": 73,
                     "topPlaces": [
                       {
-                        "dcid": "wikidataId/Q12156132",
-                        "name": "Muzaffargarh District"
+                        "dcid": "wikidataId/Q197392",
+                        "name": "Zhangqiu District"
                       },
                       {
-                        "dcid": "wikidataId/Q389161",
-                        "name": "Swat District"
+                        "dcid": "wikidataId/Q1335716",
+                        "name": "Nankang District"
                       },
                       {
-                        "dcid": "wikidataId/Q64170",
-                        "name": "Nawabshah District"
+                        "dcid": "wikidataId/Q1062070",
+                        "name": "Changle County"
                       }
                     ],
-                    "minValue": 4373,
+                    "minValue": 26460,
                     "maxValue": 491399
                   },
                   "AdministrativeArea4": {
@@ -3248,22 +3248,22 @@
                     "maxValue": 79776
                   },
                   "City": {
-                    "placeCount": 3343,
+                    "placeCount": 2890,
                     "topPlaces": [
                       {
-                        "dcid": "wikidataId/Q11725",
-                        "name": "Chongqing"
+                        "dcid": "wikidataId/Q956",
+                        "name": "Beijing"
                       },
                       {
-                        "dcid": "wikidataId/Q8686",
-                        "name": "Shanghai"
+                        "dcid": "wikidataId/Q30002",
+                        "name": "Chengdu"
                       },
                       {
-                        "dcid": "wikidataId/Q987",
-                        "name": "New Delhi"
+                        "dcid": "wikidataId/Q8660",
+                        "name": "Karachi"
                       }
                     ],
-                    "minValue": 163,
+                    "minValue": 307,
                     "maxValue": 7074913
                   },
                   "County": {
@@ -3297,26 +3297,18 @@
                     "maxValue": 4120370
                   },
                   "EurostatNUTS3": {
-                    "placeCount": 3,
+                    "placeCount": 1,
                     "topPlaces": [
-                      {
-                        "dcid": "nuts/ES521",
-                        "name": "Alicante / Alacant"
-                      },
                       {
                         "dcid": "nuts/RO321",
                         "name": "Bucureşti"
-                      },
-                      {
-                        "dcid": "nuts/UKE42",
-                        "name": "Leeds"
                       }
                     ],
-                    "minValue": 147847,
+                    "minValue": 929602,
                     "maxValue": 1036290
                   },
                   "Neighborhood": {
-                    "placeCount": 13,
+                    "placeCount": 9,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q2237435",
@@ -3335,45 +3327,37 @@
                     "maxValue": 138958
                   },
                   "Place": {
-                    "placeCount": 146,
+                    "placeCount": 117,
                     "topPlaces": [
-                      {
-                        "dcid": "wikidataId/Q148062",
-                        "name": "Zarqa"
-                      },
                       {
                         "dcid": "wikidataId/Q366754",
                         "name": "Kalyan"
                       },
                       {
-                        "dcid": "wikidataId/Q7123293",
-                        "name": "Padawan municipality"
+                        "dcid": "wikidataId/Q842411",
+                        "name": "Faizabad"
+                      },
+                      {
+                        "dcid": "wikidataId/Q61436",
+                        "name": "Loni"
                       }
                     ],
-                    "minValue": 12978,
-                    "maxValue": 643277
+                    "minValue": 31741,
+                    "maxValue": 560004
                   },
                   "State": {
-                    "placeCount": 3,
+                    "placeCount": 1,
                     "topPlaces": [
-                      {
-                        "dcid": "wikidataId/Q1165",
-                        "name": "Bihar"
-                      },
-                      {
-                        "dcid": "wikidataId/Q1353",
-                        "name": "Delhi"
-                      },
                       {
                         "dcid": "wikidataId/Q43433",
                         "name": "Chandigarh"
                       }
                     ],
-                    "minValue": 110052,
-                    "maxValue": 4466675
+                    "minValue": 358393,
+                    "maxValue": 358393
                   },
                   "Village": {
-                    "placeCount": 16,
+                    "placeCount": 10,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q4512420",
@@ -3384,8 +3368,8 @@
                         "name": "Gajuwaka"
                       },
                       {
-                        "dcid": "wikidataId/Q223517",
-                        "name": "Ahmednagar"
+                        "dcid": "wikidataId/Q19730058",
+                        "name": "Pakalongan"
                       }
                     ],
                     "minValue": 26,
@@ -3394,12 +3378,12 @@
                 },
                 "minValue": 26,
                 "maxValue": 7074913,
-                "observationCount": 17272,
-                "timeSeriesCount": 4390
+                "observationCount": 15864,
+                "timeSeriesCount": 3687
               }
             ],
-            "observationCount": 17272,
-            "timeSeriesCount": 4390
+            "observationCount": 15864,
+            "timeSeriesCount": 3687
           },
           "dc/base/USCensusPEP_Sex": {
             "importName": "USCensusPEP_Sex",
@@ -3480,11 +3464,11 @@
                 },
                 "minValue": 138616,
                 "maxValue": 169165495,
-                "observationCount": 2703,
+                "observationCount": 2878,
                 "timeSeriesCount": 52
               }
             ],
-            "observationCount": 172048,
+            "observationCount": 172223,
             "timeSeriesCount": 3208
           },
           "dc/base/Vietnam_Census": {

@@ -13033,7 +13033,11 @@
                 },
                 {
                   "date": "2024-09",
-                  "value": 1030005
+                  "value": 1031792
+                },
+                {
+                  "date": "2024-10",
+                  "value": 1043832
                 }
               ],
               "facet": "324358135"
@@ -15575,7 +15579,11 @@
                 },
                 {
                   "date": "2024-09",
-                  "value": 1031821
+                  "value": 1032155
+                },
+                {
+                  "date": "2024-10",
+                  "value": 1045289
                 }
               ],
               "facet": "1249140336"
@@ -17462,7 +17470,7 @@
     },
     "1733625304": {
       "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
-      "provenance_url": "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/demo_r_gind3/?format=TSV&compressed=true",
+      "provenance_url": "https://ec.europa.eu/eurostat/databrowser/view/demo_r_gind3/default/table?lang=en",
       "measurement_method": "EurostatRegionalStatistics"
     },
     "1964317807": {
