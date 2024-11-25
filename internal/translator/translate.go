@@ -637,12 +637,14 @@ func removeConstraints(
 	jc[t] = cs
 	return jc
 }
+
 func StripQuotes(str string) string {
 	if (strings.HasPrefix(str, "\"")) && (strings.HasSuffix(str, "\"")) {
 		str = str[1:len(str)-1]
 	}
 	return str
 }
+
 func getSQL(
 	nodes []types.Node,
 	constraints []Constraint,
@@ -884,7 +886,7 @@ func getSQL(
 		sql += fmt.Sprintf("LIMIT @limit\n")
 		queryParams = append(queryParams, bigquery.QueryParameter{
 			Name:  "limit",
-			Value: strconv.Itoa(opts.Limit),
+			Value: opts.Limit,
 		})
 	}
 	return sql, queryParams, prov, nil

@@ -245,13 +245,13 @@ func TestGetSQL(t *testing.T) {
 			"AND _dc_v3_Place_.type = @value1\n" +
 			"ORDER BY @orderby ASC\n" +
 			"LIMIT @limit\n"
-	wantParams := map[string]any{"value0": "MTV", "value1": "City", "orderby": "dcid", "limit": "20"}
+	wantParams := map[string]any{"value0": "MTV", "value1": "City", "orderby": "dcid", "limit": 20}
 	if diff := cmp.Diff(wantSQL, gotSQL); diff != "" {
 		t.Errorf("getSQL unexpected got diff %v", diff)
 	}
 	gotParamsMap := make(map[string]any)
 	for _, param := range gotParams {
-		gotParamsMap[param.Name] = param.Value.(string)
+		gotParamsMap[param.Name] = param.Value
 	}
 	if diff := cmp.Diff(wantParams, gotParamsMap); diff != "" {
 		t.Errorf("gotParams unexpected got diff %v", diff)
