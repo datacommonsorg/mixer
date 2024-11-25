@@ -16,9 +16,15 @@ package translator
 
 import (
 	"context"
+	"encoding/json"
 
+	"github.com/datacommonsorg/mixer/internal/parser/mcf"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/translator"
+	"github.com/datacommonsorg/mixer/internal/translator/sparql"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 // TODO(shifucun): Change this to BQ Analytics table once it's set up.
@@ -30,7 +36,29 @@ func Translate(
 	in *pb.TranslateRequest,
 	metadata *resource.Metadata,
 ) (*pb.TranslateResponse, error) {
-	// TODO(gmechali): Delete this entirely.
+	if in.GetSchemaMapping() == "" || in.GetSparql() == "" {
+		return nil, status.Errorf(codes.InvalidArgument, "Missing required arguments")
+	}
+
 	out := pb.TranslateResponse{}
+	mappings, err := mcf.ParseMapping(in.GetSchemaMapping(), datasetName)
+	if err != nil {
+		return nil, err
+	}
+	nodes, queries, opts, err := sparql.ParseQuery(in.GetSparql())
+	if err != nil {
+		return nil, err
+	}
+	trans, err := translator.Translate(
+		mappings, nodes, queries, metadata.SubTypeMap, opts)
+	if err != nil {
+		return nil, err
+	}
+	out.Sql = trans.SQL
+	translation, err := json.MarshalIndent(trans, "", "  ")
+	if err != nil {
+		return nil, err
+	}
+	out.Translation = string(translation)
 	return &out, nil
 }
