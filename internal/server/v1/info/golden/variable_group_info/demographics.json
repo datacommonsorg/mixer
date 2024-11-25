@@ -6,7 +6,8 @@
       {
         "id": "Mean_MealCost_Person_FoodSecure",
         "searchNames": [
-          "Mean Cost of Person With Food Security Status is Food Secure, Food Type is Meal"
+          "Mean Cost of Person With Food Security Status is Food Secure, Food Type is Meal",
+          "Average Meal Cost for Food Secure People"
         ],
         "displayName": "Average Meal Cost for Food Secure People",
         "definition": "st=meanValue,mp=cost,pt=Person,foodSecurityStatus=FoodSecure,foodType=Meal",
@@ -24,7 +25,8 @@
       {
         "id": "FertilityRate_Person_Female_AsAFractionOf_Count_Person_Female",
         "searchNames": [
-          "Fertility Rate of Person (As Fraction of Count Person Female)"
+          "Fertility Rate of Person (As Fraction of Count Person Female)",
+          "Fertility rate (%)"
         ],
         "displayName": "Fertility rate (%)",
         "definition": "md=Count_Person_Female,mp=fertilityRate,pt=Person",
@@ -33,7 +35,8 @@
       {
         "id": "GenderIncomeInequality_Person_15OrMoreYears_WithIncome",
         "searchNames": [
-          "Gender Income Inequality of Person"
+          "Gender Income Inequality of Person",
+          "Income Inequality Between Men and Women of Working Age"
         ],
         "displayName": "Income Inequality Between Men and Women of Working Age",
         "definition": "mp=genderIncomeInequality,pt=Person",
@@ -51,7 +54,8 @@
       {
         "id": "Median_Age_Person",
         "searchNames": [
-          "Median Age of Person"
+          "Median Age of Person",
+          "Median Age of Population"
         ],
         "displayName": "Median Age of Population",
         "definition": "st=medianValue,mp=age,pt=Person",
@@ -60,7 +64,8 @@
       {
         "id": "Median_Income_Person",
         "searchNames": [
-          "Median Income of Person"
+          "Median Income of Person",
+          "Median Income of a Population"
         ],
         "displayName": "Median Income of a Population",
         "definition": "st=medianValue,mp=income,pt=Person",
@@ -69,7 +74,8 @@
       {
         "id": "IncrementalCount_Person",
         "searchNames": [
-          "Incremental Count of Person"
+          "Incremental Count of Person",
+          "Population Change"
         ],
         "displayName": "Population Change",
         "definition": "mp=incrementalCount,pt=Person",
@@ -78,7 +84,8 @@
       {
         "id": "Count_Person_PerArea",
         "searchNames": [
-          "Population Count of Person (As Fraction of Area)"
+          "Population Count of Person (As Fraction of Area)",
+          "Population Density"
         ],
         "displayName": "Population Density",
         "definition": "md=area,mp=count,pt=Person",
@@ -97,7 +104,8 @@
       {
         "id": "GrowthRate_Count_Person",
         "searchNames": [
-          "Growth Rate Population Count of Person"
+          "Growth Rate Population Count of Person",
+          "Rate of Population Growth"
         ],
         "displayName": "Rate of Population Growth",
         "definition": "st=growthRate,mp=count,pt=Person",
@@ -106,7 +114,8 @@
       {
         "id": "Count_Person",
         "searchNames": [
-          "Population Count of Person"
+          "Population Count of Person",
+          "Total Population"
         ],
         "displayName": "Total Population",
         "definition": "mp=count,pt=Person",

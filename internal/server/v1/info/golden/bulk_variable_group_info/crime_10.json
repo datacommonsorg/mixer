@@ -8,7 +8,8 @@
           {
             "id": "Count_CriminalActivities_CombinedCrime",
             "searchNames": [
-              "Count of Criminal Activities"
+              "Count of Criminal Activities",
+              "Criminal Activities"
             ],
             "displayName": "Criminal Activities",
             "definition": "mp=count,pt=CriminalActivities"
