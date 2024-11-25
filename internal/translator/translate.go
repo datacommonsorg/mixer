@@ -20,6 +20,7 @@ import (
 	"strconv"
 	"strings"
 
+	"cloud.google.com/go/bigquery"
 	"github.com/datacommonsorg/mixer/internal/parser/tmcf"
 	"github.com/datacommonsorg/mixer/internal/translator/solver"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
@@ -58,6 +59,7 @@ type Translation struct {
 	Bindings   []Binding
 	Constraint []Constraint
 	Prov       map[int][]int
+	Parameters []bigquery.QueryParameter
 }
 
 // ProvInfo contains the provenance query metadata
@@ -68,22 +70,6 @@ type ProvInfo struct {
 
 // Graph represents the struct for terms matching.
 type Graph map[interface{}]map[interface{}]struct{}
-
-func addQuote(s string, useQuote ...bool) string {
-	if len(useQuote) == 0 || !useQuote[0] {
-		if _, err := strconv.ParseFloat(s, 64); err == nil {
-			return s
-		}
-	}
-
-	if !strings.HasPrefix(s, `"`) {
-		s = `"` + s
-	}
-	if !strings.HasSuffix(s, `"`) {
-		s += `"`
-	}
-	return s
-}
 
 func sortMapSet(m map[interface{}]struct{}) []interface{} {
 	sorted := []interface{}{}
@@ -636,17 +622,25 @@ func removeConstraints(
 	return jc
 }
 
+func StripQuotes(str string) string {
+	if (strings.HasPrefix(str, "\"")) && (strings.HasSuffix(str, "\"")) {
+		str = str[1 : len(str)-1]
+	}
+	return str
+}
+
 func getSQL(
 	nodes []types.Node,
 	constraints []Constraint,
 	constNode map[types.Node]string,
 	provInfo ProvInfo,
-	opts *types.QueryOptions) (string, map[int][]int, error) {
+	opts *types.QueryOptions) (string, []bigquery.QueryParameter, map[int][]int, error) {
 	// prov maps provenance column to node columns
 	prov := map[int][]int{}
 	provCols := map[types.Column]int{}
 	provList := []types.Column{}
 	pc := len(nodes)
+	var queryParams []bigquery.QueryParameter
 	sql := "SELECT "
 	if opts.Distinct {
 		sql += "DISTINCT "
@@ -834,23 +828,33 @@ func getSQL(
 		}
 		switch v := c.RHS.(type) {
 		case types.Column:
-			sql += fmt.Sprintf("%s.%s = %s.%s\n", c.LHS.Table.Alias(), c.LHS.Name, v.Table.Alias(), v.Name)
+			sql += fmt.Sprintf("%s.%s = @value%d\n", c.LHS.Table.Alias(), c.LHS.Name, idx)
+			queryParams = append(queryParams, bigquery.QueryParameter{
+				Name:  fmt.Sprintf("value%d", idx),
+				Value: fmt.Sprintf("%s.%s", v.Table.Alias(), v.Name),
+			})
 		case string:
-			// Before we have spanner table reflection, need to hardcode check here.
-			// But the user should really have quote for strings.
-			useQuote := strings.Contains(c.LHS.Table.Name, tmcf.Triple)
-			sql += fmt.Sprintf("%s.%s = %s\n", c.LHS.Table.Alias(), c.LHS.Name, addQuote(v, useQuote))
+			sql += fmt.Sprintf("%s.%s = @value%d\n", c.LHS.Table.Alias(), c.LHS.Name, idx)
+			queryParams = append(queryParams, bigquery.QueryParameter{
+				Name:  fmt.Sprintf("value%d", idx),
+				Value: StripQuotes(v),
+			})
 		case []string:
 			strs := []string{}
 			for _, s := range v {
-				strs = append(strs, addQuote(s))
+
+				strs = append(strs, StripQuotes(s))
 			}
-			sql += fmt.Sprintf("%s.%s IN (%s)\n", c.LHS.Table.Alias(), c.LHS.Name, strings.Join(strs, ", "))
+
+			sql += fmt.Sprintf("%s.%s IN UNNEST(@value%d)\n", c.LHS.Table.Alias(), c.LHS.Name, idx)
+			queryParams = append(queryParams, bigquery.QueryParameter{
+				Name:  fmt.Sprintf("value%d", idx),
+				Value: strs,
+			})
 		}
 	}
 	if opts.Orderby != "" {
-		sql += fmt.Sprintf(
-			"ORDER BY %s", strings.TrimPrefix(strings.ReplaceAll(opts.Orderby, "/", "_"), "?"))
+		sql += fmt.Sprintf("ORDER BY %s", strings.TrimPrefix(strings.ReplaceAll(opts.Orderby, "/", "_"), "?"))
 		if opts.ASC {
 			sql += " ASC\n"
 		} else {
@@ -860,7 +864,7 @@ func getSQL(
 	if opts.Limit > 0 {
 		sql += fmt.Sprintf("LIMIT %d\n", opts.Limit)
 	}
-	return sql, prov, nil
+	return sql, queryParams, prov, nil
 }
 
 // Translate takes a datalog query and translates to GoogleSQL query based on schema mapping.
@@ -915,7 +919,7 @@ func Translate(
 		queryOptions = &types.QueryOptions{}
 	}
 
-	sql, prov, err := getSQL(
+	sql, params, prov, err := getSQL(
 		nodes,
 		constraints,
 		constNode,
@@ -925,5 +929,5 @@ func Translate(
 	if err != nil {
 		return nil, err
 	}
-	return &Translation{sql, nodes, bindingSets[0], constraints, prov}, nil
+	return &Translation{sql, nodes, bindingSets[0], constraints, prov, params}, nil
 }

@@ -58,6 +58,8 @@ func Query(
 	n := len(out.Header)
 
 	q := store.BqClient.Query(translation.SQL)
+	q.Parameters = translation.Parameters
+
 	it, err := q.Read(ctx)
 	if err != nil {
 		return nil, err
