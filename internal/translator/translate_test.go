@@ -267,12 +267,12 @@ func TestTranslate(t *testing.T) {
 	emptyProv := map[int][]int{}
 	mappings := testutil.ReadTestMapping(t, []string{"testdata/test_mapping.mcf"})
 	for _, c := range []struct {
-		name     string
-		askProv  bool
-		queryStr string
-		wantSQL  string
+		name       string
+		askProv    bool
+		queryStr   string
+		wantSQL    string
 		wantParams map[string]any
-		wantProv map[int][]int
+		wantProv   map[int][]int
 	}{
 		{
 			"OneVar",
@@ -303,7 +303,7 @@ func TestTranslate(t *testing.T) {
 				containedInPlace ?node ?parent_node,
 				dcid ?parent_node "dc/x333",
 				dcid ?node ?dcid`,
-		
+
 			"SELECT _dc_v3_Place_1.id AS dcid\n" +
 				"FROM `dc_v3.Place` AS _dc_v3_Place_1\n" +
 				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
@@ -327,7 +327,7 @@ func TestTranslate(t *testing.T) {
 			  typeOf ?node Thing,
 			  dcid ?node "dc/m1rl3k",
 			  subType ?node ?node_type`,
-		
+
 			"SELECT _dc_v3_Instance_0.type AS node_type,\n" +
 				"_dc_v3_Instance_0.prov_id AS prov0\n" +
 				"FROM `dc_v3.Instance` AS _dc_v3_Instance_0\n" +
@@ -360,7 +360,7 @@ func TestTranslate(t *testing.T) {
 				subType ?node City,
 				dcid ?node dc/qp620l2,
 				name ?node ?name`,
-		
+
 			"SELECT _dc_v3_Place_0.name AS name\n" +
 				"FROM `dc_v3.Place` AS _dc_v3_Place_0\n" +
 				"WHERE _dc_v3_Place_0.id = @value0\n" +
@@ -382,7 +382,7 @@ func TestTranslate(t *testing.T) {
 				dcid ?node dc/b72vdv,
 				name ?city_or_county ?name,
 				dcid ?city_or_county ?dcid`,
-		
+
 			"SELECT _dc_v3_Place_1.name AS name,\n" +
 				"_dc_v3_Place_1.id AS dcid\n" +
 				"FROM `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
@@ -410,7 +410,7 @@ func TestTranslate(t *testing.T) {
 				name ?parent ?parent_name,
 				name ?node ?name,
 				landArea ?node ?landArea`,
-		
+
 			"SELECT _dc_v3_Place_1.name AS name,\n" +
 				"_dc_v3_Place_1.timezone AS timezone,\n" +
 				"_dc_v3_Place_1.land_area AS landArea,\n" +
@@ -444,7 +444,7 @@ func TestTranslate(t *testing.T) {
 				dcid ?state ?dcid,
 				location ?population ?state,
 				dcid ?population ?population_dcid`,
-		
+
 			"SELECT _dc_v3_StatisticalPopulation_1.place_key AS dcid,\n" +
 				"_dc_v3_StatisticalPopulation_1.id AS population_dcid\n" +
 				"FROM `dc_v3.StatisticalPopulation` AS _dc_v3_StatisticalPopulation_1\n" +
@@ -468,7 +468,7 @@ func TestTranslate(t *testing.T) {
 				populationType ?pop Person,
 				observedNode ?o ?pop,
 				measuredValue ?o ?count_value`,
-		
+
 			"SELECT _dc_v3_StatisticalPopulation_1.place_key AS dcid,\n" +
 				"_dc_v3_Observation_2.measured_value AS count_value\n" +
 				"FROM `dc_v3.StatisticalPopulation` AS _dc_v3_StatisticalPopulation_1\n" +
@@ -492,7 +492,7 @@ func TestTranslate(t *testing.T) {
 				dcid ?child dc/m1rl3k,
 				dcid ?parent ?dcid,
 				location ?parent ?child`,
-		
+
 			"SELECT _dc_v3_StatisticalPopulation_1.id AS dcid\n" +
 				"FROM `dc_v3.StatisticalPopulation` AS _dc_v3_StatisticalPopulation_1\n" +
 				"WHERE _dc_v3_StatisticalPopulation_1.place_key = @value0\n",
@@ -509,7 +509,7 @@ func TestTranslate(t *testing.T) {
 				dcid ?place dc/zkelys3,
 				dcid ?o ?dcid,
 				observationAbout ?o ?place`,
-		
+
 			"SELECT _dc_v3_StatVarObservation_0.id AS dcid\n" +
 				"FROM `dc_v3.StatVarObservation` AS _dc_v3_StatVarObservation_0\n" +
 				"WHERE _dc_v3_StatVarObservation_0.observation_about = @value0\n",
@@ -518,7 +518,7 @@ func TestTranslate(t *testing.T) {
 			},
 			emptyProv,
 		},
-		
+
 		{
 			"Triple",
 			false,
@@ -529,7 +529,7 @@ func TestTranslate(t *testing.T) {
 				author ?node ?author,
 				name ?author ?author_name,
 				dcid ?node dc/4568bbd63cjdg`,
-		
+
 			"SELECT _dc_v3_Triple_2.object_value AS datePublished,\n" +
 				"_dc_v3_Triple_4.object_value AS author_name\n" +
 				"FROM `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
@@ -549,18 +549,18 @@ func TestTranslate(t *testing.T) {
 				"AND _dc_v3_Triple_2.predicate = @value5\n" +
 				"AND _dc_v3_Triple_3.predicate = @value6\n" +
 				"AND _dc_v3_Triple_4.predicate = @value7\n",
-				map[string]any{
-					"value0": "ClaimReview",
-					"value1": "typeOf",
-					"value2": "dc/4568bbd63cjdg",
-					"value3": "Organization",
-					"value4": "typeOf",
-					"value5": "datePublished",
-					"value6": "author",
-					"value7": "name",
-				},
-				emptyProv,
+			map[string]any{
+				"value0": "ClaimReview",
+				"value1": "typeOf",
+				"value2": "dc/4568bbd63cjdg",
+				"value3": "Organization",
+				"value4": "typeOf",
+				"value5": "datePublished",
+				"value6": "author",
+				"value7": "name",
 			},
+			emptyProv,
+		},
 		{
 			"ResolutionQuery",
 			false,
@@ -572,7 +572,7 @@ func TestTranslate(t *testing.T) {
 				containedInPlace ?node ?parent,
 				dcid ?parent dc/zxvc6e2,
 				geoId ?node 12345`,
-		
+
 			"SELECT _dc_v3_Place_1.id AS dcid\n" +
 				"FROM `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
 				"JOIN `dc_v3.Place` AS _dc_v3_Place_1\n" +
@@ -623,7 +623,7 @@ func TestTranslate(t *testing.T) {
 				dcid ?node ?dcid,
 				localCuratorLevelId ?node B01001 B022202,
 				localCuratorLevelId ?node ?local_id`,
-		
+
 			"SELECT _dc_v3_Triple_0.subject_id AS dcid,\n" +
 				"_dc_v3_Triple_1.object_value AS local_id\n" +
 				"FROM `dc_v3.Triple` AS _dc_v3_Triple_1\n" +
@@ -647,7 +647,7 @@ func TestTranslate(t *testing.T) {
 				dcid ?child dc/m1rl3k,
 				dcid ?parent ?dcid,
 				location ?parent ?child`,
-		
+
 			"SELECT _dc_v3_Triple_1.subject_id AS dcid\n" +
 				"FROM `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
 				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_2\n" +
@@ -676,7 +676,7 @@ func TestTranslate(t *testing.T) {
 				variableMeasured ?o ?sv,
 				measuredProperty ?sv ?measuredProperty,
 				statType ?sv ?statType`,
-		
+
 			"SELECT _dc_v3_StatisticalVariable_1.measured_prop AS measuredProperty,\n" +
 				"_dc_v3_StatisticalVariable_1.stat_type AS statType\n" +
 				"FROM `dc_v3.StatVarObservation` AS _dc_v3_StatVarObservation_0\n" +
@@ -731,7 +731,7 @@ func TestTranslate(t *testing.T) {
 				typeOf ?obs StatVarObservation,
 				value ?obs ?hasMom,
 				observationPeriod ?obs P1Y`,
-		
+
 			"SELECT _dc_v3_Place_1.id AS countyDcid,\n" +
 				"_dc_v3_Place_1.name AS countyName,\n" +
 				"_dc_v3_StatVarObservation_3.value AS hasMom\n" +
@@ -785,7 +785,7 @@ func TestTranslate(t *testing.T) {
 				importUrl ?node ?importUrl,
 				importTime ?node ?importTime,
 				importDuration ?node ?importDuration`,
-		
+
 			"SELECT _dc_v3_Provenance_0.id AS dcid,\n" +
 				"_dc_v3_Provenance_0.name AS name,\n" +
 				"_dc_v3_Provenance_0.curator AS curator,\n" +
@@ -813,7 +813,7 @@ func TestTranslate(t *testing.T) {
 				classification ?biosample "primary cell",
 				termName ?biosample "keratinocyte",
 				dcid ?experiment ?experimentDcid`,
-		
+
 			"SELECT _dc_v3_Triple_5.subject_id AS experimentDcid\n" +
 				"FROM `dc_v3.Triple` AS _dc_v3_Triple_0\n" +
 				"JOIN `dc_v3.Triple` AS _dc_v3_Triple_2\n" +
@@ -855,7 +855,7 @@ func TestTranslate(t *testing.T) {
 				dcid ?experimentNode dc/abc dc/xyz,
 				dcid ?experimentNode ?experiment,
 				experiment ?bedFileNode ?experimentNode`,
-		
+
 			"SELECT _dc_v3_Triple_1.object_id AS experiment,\n" +
 				"_dc_v3_Triple_1.subject_id AS bedFileNode\n" +
 				"FROM `dc_v3.Triple` AS _dc_v3_Triple_1\n" +
@@ -905,12 +905,12 @@ func TestDcidSimplified(t *testing.T) {
 	emptyProv := map[int][]int{}
 	mappings := testutil.ReadTestMapping(t, []string{"testdata/test_mapping.mcf"})
 	for _, c := range []struct {
-		name     string
-		askProv  bool
-		queryStr string
-		wantSQL  string
+		name       string
+		askProv    bool
+		queryStr   string
+		wantSQL    string
 		wantParams map[string]any
-		wantProv map[int][]int
+		wantProv   map[int][]int
 	}{
 		{
 			"OneVar",
@@ -965,7 +965,7 @@ func TestDcidSimplified(t *testing.T) {
 			"SELECT _dc_v3_Place_0.id AS node\n" +
 				"FROM `dc_v3.Place` AS _dc_v3_Place_0\n" +
 				"WHERE _dc_v3_Place_0.type = @value0\n",
-				map[string]any{"value0": "City"},
+			map[string]any{"value0": "City"},
 			emptyProv,
 		},
 		{
@@ -1024,9 +1024,9 @@ func TestTranslateIOCountyBQ(t *testing.T) {
 
 	mappings := testutil.ReadTestMapping(t, []string{"testdata/oi_county_mapping.mcf"})
 	for _, c := range []struct {
-		name     string
-		queryStr string
-		wantSQL  string
+		name       string
+		queryStr   string
+		wantSQL    string
 		wantParams map[string]any
 	}{
 		{
@@ -1074,9 +1074,9 @@ func TestTranslateWeather(t *testing.T) {
 
 	mappings := testutil.ReadTestMapping(t, []string{"testdata/test_mapping.mcf"})
 	for _, c := range []struct {
-		name     string
-		queryStr string
-		wantSQL  string
+		name       string
+		queryStr   string
+		wantSQL    string
 		wantParams map[string]any
 	}{
 		{
@@ -1147,9 +1147,9 @@ func TestTranslateWeatherSparql(t *testing.T) {
 
 	mappings := testutil.ReadTestMapping(t, []string{"testdata/test_mapping.mcf"})
 	for _, c := range []struct {
-		name     string
-		queryStr string
-		wantSQL  string
+		name       string
+		queryStr   string
+		wantSQL    string
 		wantParams map[string]any
 	}{
 		{
@@ -1207,9 +1207,9 @@ func TestTranslatePew(t *testing.T) {
 		"testdata/PewReligiousLandscapeSurvey2007Response.mcf",
 	})
 	for _, c := range []struct {
-		name     string
-		queryStr string
-		wantSQL  string
+		name       string
+		queryStr   string
+		wantSQL    string
 		wantParams map[string]any
 	}{
 		{
@@ -1305,9 +1305,9 @@ func TestSparql(t *testing.T) {
 		"testdata/test_mapping.mcf",
 	})
 	for _, c := range []struct {
-		name     string
-		queryStr string
-		wantSQL  string
+		name       string
+		queryStr   string
+		wantSQL    string
 		wantParams map[string]any
 	}{
 		{
@@ -1357,7 +1357,7 @@ func TestSparql(t *testing.T) {
 			"SELECT _dc_v3_Place_0.name AS name\n" +
 				"FROM `dc_v3.Place` AS _dc_v3_Place_0\n" +
 				"WHERE _dc_v3_Place_0.type = @value0\n",
-				map[string]any{"value0": "AdministrativeArea1"},
+			map[string]any{"value0": "AdministrativeArea1"},
 		},
 		{
 			"bio",
@@ -1433,9 +1433,9 @@ func TestStatVarObs(t *testing.T) {
 		"testdata/test_mapping.mcf",
 	})
 	for _, c := range []struct {
-		name     string
-		queryStr string
-		wantSQL  string
+		name       string
+		queryStr   string
+		wantSQL    string
 		wantParams map[string]any
 	}{
 		{

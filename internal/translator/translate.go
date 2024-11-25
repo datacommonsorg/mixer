@@ -59,7 +59,7 @@ type Translation struct {
 	Bindings   []Binding
 	Constraint []Constraint
 	Prov       map[int][]int
-	Parameters     []bigquery.QueryParameter
+	Parameters []bigquery.QueryParameter
 }
 
 // ProvInfo contains the provenance query metadata
@@ -640,7 +640,7 @@ func removeConstraints(
 
 func StripQuotes(str string) string {
 	if (strings.HasPrefix(str, "\"")) && (strings.HasSuffix(str, "\"")) {
-		str = str[1:len(str)-1]
+		str = str[1 : len(str)-1]
 	}
 	return str
 }
