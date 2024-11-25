@@ -623,7 +623,8 @@ func removeConstraints(
 }
 
 func StripQuotes(str string) string {
-	if (strings.HasPrefix(str, "\"")) && (strings.HasSuffix(str, "\"")) {
+	if (len(str) > 1) && (strings.HasPrefix(str, "\"")) && (strings.HasSuffix(str, "\"")) {
+		fmt.Println("String is ", str)
 		str = str[1 : len(str)-1]
 	}
 	return str
