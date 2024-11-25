@@ -870,12 +870,7 @@ func getSQL(
 		}
 	}
 	if opts.Orderby != "" {
-		sql += fmt.Sprintf("ORDER BY @orderby")
-		
-		queryParams = append(queryParams, bigquery.QueryParameter{
-			Name:  "orderby",
-			Value: strings.TrimPrefix(strings.ReplaceAll(opts.Orderby, "/", "_"), "?"),
-		})
+		sql += fmt.Sprintf("ORDER BY %s", strings.TrimPrefix(strings.ReplaceAll(opts.Orderby, "/", "_"), "?"))
 		if opts.ASC {
 			sql += " ASC\n"
 		} else {
@@ -883,11 +878,7 @@ func getSQL(
 		}
 	}
 	if opts.Limit > 0 {
-		sql += fmt.Sprintf("LIMIT @limit\n")
-		queryParams = append(queryParams, bigquery.QueryParameter{
-			Name:  "limit",
-			Value: opts.Limit,
-		})
+		sql += fmt.Sprintf("LIMIT %d\n", opts.Limit)
 	}
 	return sql, queryParams, prov, nil
 }
@@ -951,6 +942,7 @@ func Translate(
 		ProvInfo{queryProv, tableProv},
 		queryOptions,
 	)
+	fmt.Println("Got the SQL: ", sql, " With Params: ", params)
 	if err != nil {
 		return nil, err
 	}

@@ -243,9 +243,9 @@ func TestGetSQL(t *testing.T) {
 			"FROM `dc_v3.Place` AS _dc_v3_Place_\n" +
 			"WHERE _dc_v3_Place_.name = @value0\n" +
 			"AND _dc_v3_Place_.type = @value1\n" +
-			"ORDER BY @orderby ASC\n" +
-			"LIMIT @limit\n"
-	wantParams := map[string]any{"value0": "MTV", "value1": "City", "orderby": "dcid", "limit": 20}
+			"ORDER BY dcid ASC\n" +
+			"LIMIT 20\n"
+	wantParams := map[string]any{"value0": "MTV", "value1": "City"}
 	if diff := cmp.Diff(wantSQL, gotSQL); diff != "" {
 		t.Errorf("getSQL unexpected got diff %v", diff)
 	}
