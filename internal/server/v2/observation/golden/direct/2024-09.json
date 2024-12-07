@@ -1,0 +1,30 @@
+{
+  "by_variable": {
+    "var_with_hyphenated_date": {
+      "by_entity": {
+        "country/USA": {
+          "ordered_facets": [
+            {
+              "facet_id": "2921750529",
+              "observations": [
+                {
+                  "date": "2024-09",
+                  "value": 3
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2024-09",
+              "latest_date": "2024-09"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "facets": {
+    "2921750529": {
+      "import_name": "Custom Prov",
+      "provenance_url": "custom.datacommons.org"
+    }
+  }
+}
