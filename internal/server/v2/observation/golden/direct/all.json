@@ -1245,6 +1245,150 @@
               "latest_date": "2023"
             },
             {
+              "facet_id": "4181918134",
+              "observations": [
+                {
+                  "date": "1990",
+                  "value": 56577000
+                },
+                {
+                  "date": "1991",
+                  "value": 56840661
+                },
+                {
+                  "date": "1992",
+                  "value": 57110533
+                },
+                {
+                  "date": "1993",
+                  "value": 57369161
+                },
+                {
+                  "date": "1994",
+                  "value": 57565008
+                },
+                {
+                  "date": "1995",
+                  "value": 57752535
+                },
+                {
+                  "date": "1996",
+                  "value": 57935959
+                },
+                {
+                  "date": "1997",
+                  "value": 58116018
+                },
+                {
+                  "date": "1998",
+                  "value": 58298962
+                },
+                {
+                  "date": "1999",
+                  "value": 60158533
+                },
+                {
+                  "date": "2000",
+                  "value": 60545022
+                },
+                {
+                  "date": "2001",
+                  "value": 60979315
+                },
+                {
+                  "date": "2002",
+                  "value": 61424036
+                },
+                {
+                  "date": "2003",
+                  "value": 61864088
+                },
+                {
+                  "date": "2004",
+                  "value": 62292241
+                },
+                {
+                  "date": "2005",
+                  "value": 62772870
+                },
+                {
+                  "date": "2006",
+                  "value": 63229635
+                },
+                {
+                  "date": "2007",
+                  "value": 63645065
+                },
+                {
+                  "date": "2008",
+                  "value": 64007193
+                },
+                {
+                  "date": "2009",
+                  "value": 64350226
+                },
+                {
+                  "date": "2010",
+                  "value": 64658856
+                },
+                {
+                  "date": "2011",
+                  "value": 64978721
+                },
+                {
+                  "date": "2012",
+                  "value": 65276983
+                },
+                {
+                  "date": "2013",
+                  "value": 65600350
+                },
+                {
+                  "date": "2014",
+                  "value": 66165980
+                },
+                {
+                  "date": "2015",
+                  "value": 66458153
+                },
+                {
+                  "date": "2016",
+                  "value": 66638391
+                },
+                {
+                  "date": "2017",
+                  "value": 66809816
+                },
+                {
+                  "date": "2018",
+                  "value": 67026224
+                },
+                {
+                  "date": "2019",
+                  "value": 67290471
+                },
+                {
+                  "date": "2020",
+                  "value": 67473651
+                },
+                {
+                  "date": "2021",
+                  "value": 67728568
+                },
+                {
+                  "date": "2022",
+                  "value": 67957053
+                },
+                {
+                  "date": "2023",
+                  "value": 68172977
+                }
+              ],
+              "obs_count": 34,
+              "earliest_date": "1990",
+              "latest_date": "2023"
+            },
+            {
               "facet_id": "1733625304",
               "observations": [
                 {
@@ -2470,6 +2614,150 @@
             },
             {
               "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "1990",
+                  "value": 249622814
+                },
+                {
+                  "date": "1991",
+                  "value": 252980941
+                },
+                {
+                  "date": "1992",
+                  "value": 256514224
+                },
+                {
+                  "date": "1993",
+                  "value": 259918588
+                },
+                {
+                  "date": "1994",
+                  "value": 263125821
+                },
+                {
+                  "date": "1995",
+                  "value": 266278393
+                },
+                {
+                  "date": "1996",
+                  "value": 269394284
+                },
+                {
+                  "date": "1997",
+                  "value": 272646925
+                },
+                {
+                  "date": "1998",
+                  "value": 275854104
+                },
+                {
+                  "date": "1999",
+                  "value": 279040168
+                },
+                {
+                  "date": "2000",
+                  "value": 282162411
+                },
+                {
+                  "date": "2001",
+                  "value": 284968955
+                },
+                {
+                  "date": "2002",
+                  "value": 287625193
+                },
+                {
+                  "date": "2003",
+                  "value": 290107933
+                },
+                {
+                  "date": "2004",
+                  "value": 292805298
+                },
+                {
+                  "date": "2005",
+                  "value": 295516599
+                },
+                {
+                  "date": "2006",
+                  "value": 298379912
+                },
+                {
+                  "date": "2007",
+                  "value": 301231207
+                },
+                {
+                  "date": "2008",
+                  "value": 304093966
+                },
+                {
+                  "date": "2009",
+                  "value": 306771529
+                },
+                {
+                  "date": "2010",
+                  "value": 309321666
+                },
+                {
+                  "date": "2011",
+                  "value": 311556874
+                },
+                {
+                  "date": "2012",
+                  "value": 313830990
+                },
+                {
+                  "date": "2013",
+                  "value": 315993715
+                },
+                {
+                  "date": "2014",
+                  "value": 318301008
+                },
+                {
+                  "date": "2015",
+                  "value": 320635163
+                },
+                {
+                  "date": "2016",
+                  "value": 322941311
+                },
+                {
+                  "date": "2017",
+                  "value": 324985539
+                },
+                {
+                  "date": "2018",
+                  "value": 326687501
+                },
+                {
+                  "date": "2019",
+                  "value": 328239523
+                },
+                {
+                  "date": "2020",
+                  "value": 331526933
+                },
+                {
+                  "date": "2021",
+                  "value": 332048977
+                },
+                {
+                  "date": "2022",
+                  "value": 333271411
+                },
+                {
+                  "date": "2023",
+                  "value": 334914895
+                }
+              ],
+              "obs_count": 34,
+              "earliest_date": "1990",
+              "latest_date": "2023"
+            },
+            {
+              "facet_id": "4181918134",
               "observations": [
                 {
                   "date": "1990",
@@ -4203,6 +4491,150 @@
             },
             {
               "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "1990",
+                  "value": 29959515
+                },
+                {
+                  "date": "1991",
+                  "value": 30470736
+                },
+                {
+                  "date": "1992",
+                  "value": 30974659
+                },
+                {
+                  "date": "1993",
+                  "value": 31274928
+                },
+                {
+                  "date": "1994",
+                  "value": 31484435
+                },
+                {
+                  "date": "1995",
+                  "value": 31696582
+                },
+                {
+                  "date": "1996",
+                  "value": 32018834
+                },
+                {
+                  "date": "1997",
+                  "value": 32486010
+                },
+                {
+                  "date": "1998",
+                  "value": 32987675
+                },
+                {
+                  "date": "1999",
+                  "value": 33499204
+                },
+                {
+                  "date": "2000",
+                  "value": 33987977
+                },
+                {
+                  "date": "2001",
+                  "value": 34479458
+                },
+                {
+                  "date": "2002",
+                  "value": 34871843
+                },
+                {
+                  "date": "2003",
+                  "value": 35253159
+                },
+                {
+                  "date": "2004",
+                  "value": 35574576
+                },
+                {
+                  "date": "2005",
+                  "value": 35827943
+                },
+                {
+                  "date": "2006",
+                  "value": 36021202
+                },
+                {
+                  "date": "2007",
+                  "value": 36250311
+                },
+                {
+                  "date": "2008",
+                  "value": 36604337
+                },
+                {
+                  "date": "2009",
+                  "value": 36961229
+                },
+                {
+                  "date": "2010",
+                  "value": 37319502
+                },
+                {
+                  "date": "2011",
+                  "value": 37638369
+                },
+                {
+                  "date": "2012",
+                  "value": 37948800
+                },
+                {
+                  "date": "2013",
+                  "value": 38260787
+                },
+                {
+                  "date": "2014",
+                  "value": 38596972
+                },
+                {
+                  "date": "2015",
+                  "value": 38918045
+                },
+                {
+                  "date": "2016",
+                  "value": 39167117
+                },
+                {
+                  "date": "2017",
+                  "value": 39358497
+                },
+                {
+                  "date": "2018",
+                  "value": 39461588
+                },
+                {
+                  "date": "2019",
+                  "value": 39512223
+                },
+                {
+                  "date": "2020",
+                  "value": 39503200
+                },
+                {
+                  "date": "2021",
+                  "value": 39145060
+                },
+                {
+                  "date": "2022",
+                  "value": 39040616
+                },
+                {
+                  "date": "2023",
+                  "value": 38965193
+                }
+              ],
+              "obs_count": 34,
+              "earliest_date": "1990",
+              "latest_date": "2023"
+            },
+            {
+              "facet_id": "4181918134",
               "observations": [
                 {
                   "date": "1990",
@@ -9452,11 +9884,15 @@
                 {
                   "date": "2024-10",
                   "value": 6984000
+                },
+                {
+                  "date": "2024-11",
+                  "value": 7145000
                 }
               ],
-              "obs_count": 922,
+              "obs_count": 923,
               "earliest_date": "1948-01",
-              "latest_date": "2024-10"
+              "latest_date": "2024-11"
             },
             {
               "facet_id": "1714978719",
@@ -17276,12 +17712,16 @@
                 },
                 {
                   "date": "2024-09",
-                  "value": 1651
+                  "value": 1658
+                },
+                {
+                  "date": "2024-10",
+                  "value": 1639
                 }
               ],
-              "obs_count": 417,
+              "obs_count": 418,
               "earliest_date": "1990-01",
-              "latest_date": "2024-09"
+              "latest_date": "2024-10"
             },
             {
               "facet_id": "2978659163",
@@ -18330,6 +18770,12 @@
     "3981252704": {
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "observation_period": "P1Y"
+    },
+    "4181918134": {
+      "import_name": "OECDRegionalDemography_Population",
+      "provenance_url": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23&pg=40&fc=Topic&bp=true&snb=117&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_DEMO%40DF_POP_5Y&df[ag]=OECD.CFE.EDS&df[vs]=2.0&dq=A.......&to[TIME_PERIOD]=false&vw=tb&pd=%2C",
+      "measurement_method": "OECDRegionalStatistics",
       "observation_period": "P1Y"
     },
     "4219092424": {

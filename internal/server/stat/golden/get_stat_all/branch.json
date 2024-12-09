@@ -2097,7 +2097,8 @@
                 "2024-07": 4.3,
                 "2024-08": 4.2,
                 "2024-09": 4.1,
-                "2024-10": 4.1
+                "2024-10": 4.1,
+                "2024-11": 4.2
               },
               "measurementMethod": "BLSSeasonallyAdjusted",
               "observationPeriod": "P1M",

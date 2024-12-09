@@ -43,7 +43,7 @@
             "maxValue": 50483000
           },
           "AdministrativeArea2": {
-            "placeCount": 6615,
+            "placeCount": 6642,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1143712",
@@ -62,7 +62,7 @@
             "maxValue": 1958842
           },
           "AdministrativeArea3": {
-            "placeCount": 285,
+            "placeCount": 303,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q217234",
@@ -2865,6 +2865,265 @@
             "observationCount": 74173,
             "timeSeriesCount": 2560
           },
+          "dc/base/OECDRegionalDemography_Population": {
+            "importName": "OECDRegionalDemography_Population",
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "OECDRegionalStatistics",
+                  "observationPeriod": "P1Y"
+                },
+                "earliestDate": "1990",
+                "latestDate": "2023",
+                "placeTypeSummary": {
+                  "AdministrativeArea": {
+                    "placeCount": 5,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1973593",
+                        "name": "Waikato District"
+                      },
+                      {
+                        "dcid": "wikidataId/Q4874224",
+                        "name": "Bay of Plenty"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1850966",
+                        "name": "Wheatbelt"
+                      }
+                    ],
+                    "minValue": 14969,
+                    "maxValue": 262200
+                  },
+                  "AdministrativeArea1": {
+                    "placeCount": 330,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q15175",
+                        "name": "Guangdong"
+                      },
+                      {
+                        "dcid": "wikidataId/Q43407",
+                        "name": "Shandong"
+                      },
+                      {
+                        "dcid": "wikidataId/Q43684",
+                        "name": "Henan"
+                      }
+                    ],
+                    "minValue": 3279,
+                    "maxValue": 50483000
+                  },
+                  "AdministrativeArea2": {
+                    "placeCount": 167,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1143712",
+                        "name": "Kanagawa-ku"
+                      },
+                      {
+                        "dcid": "wikidataId/Q173270",
+                        "name": "Veracruz"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1474984",
+                        "name": "Montreal Region"
+                      }
+                    ],
+                    "minValue": 1565,
+                    "maxValue": 4653000
+                  },
+                  "AdministrativeArea3": {
+                    "placeCount": 31,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q16926",
+                        "name": "Maule"
+                      },
+                      {
+                        "dcid": "wikidataId/Q46325",
+                        "name": "Sfax"
+                      },
+                      {
+                        "dcid": "wikidataId/Q867615",
+                        "name": "Nabeul"
+                      }
+                    ],
+                    "minValue": 6353,
+                    "maxValue": 592745
+                  },
+                  "CensusCountyDivision": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "geoId/7210708614",
+                        "name": "Botijas"
+                      }
+                    ],
+                    "minValue": 4934609,
+                    "maxValue": 5785679
+                  },
+                  "City": {
+                    "placeCount": 275,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q8686",
+                        "name": "Shanghai"
+                      },
+                      {
+                        "dcid": "wikidataId/Q11736",
+                        "name": "Tianjin"
+                      },
+                      {
+                        "dcid": "wikidataId/Q7473516",
+                        "name": "Tokyo"
+                      }
+                    ],
+                    "minValue": 1065,
+                    "maxValue": 11710000
+                  },
+                  "Country": {
+                    "placeCount": 50,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/CHN",
+                        "name": "China"
+                      },
+                      {
+                        "dcid": "country/IND",
+                        "name": "India"
+                      },
+                      {
+                        "dcid": "country/USA",
+                        "name": "United States"
+                      }
+                    ],
+                    "minValue": 126353,
+                    "maxValue": 660361000
+                  },
+                  "County": {
+                    "placeCount": 4,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/NO043",
+                        "name": "Rogaland"
+                      },
+                      {
+                        "dcid": "wikidataId/Q127676",
+                        "name": "Trøndelag"
+                      },
+                      {
+                        "dcid": "nuts/NO053",
+                        "name": "Møre og Romsdal"
+                      }
+                    ],
+                    "minValue": 117331,
+                    "maxValue": 235901
+                  },
+                  "EurostatNUTS1": {
+                    "placeCount": 42,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/DEA",
+                        "name": "Nordrhein-Westfalen"
+                      },
+                      {
+                        "dcid": "nuts/DE2",
+                        "name": "Bavaria"
+                      },
+                      {
+                        "dcid": "nuts/FR1",
+                        "name": "Ile-de-France"
+                      }
+                    ],
+                    "minValue": 126036,
+                    "maxValue": 9277682
+                  },
+                  "EurostatNUTS2": {
+                    "placeCount": 207,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/TR10",
+                        "name": "Istanbul"
+                      },
+                      {
+                        "dcid": "nuts/ITC4",
+                        "name": "Lombardia"
+                      },
+                      {
+                        "dcid": "nuts/ES61",
+                        "name": "Andalucía"
+                      }
+                    ],
+                    "minValue": 12331,
+                    "maxValue": 7952131
+                  },
+                  "EurostatNUTS3": {
+                    "placeCount": 1356,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/TR100",
+                        "name": "Istanbul"
+                      },
+                      {
+                        "dcid": "nuts/ES300",
+                        "name": "Madrid"
+                      },
+                      {
+                        "dcid": "nuts/ES511",
+                        "name": "Barcelona"
+                      }
+                    ],
+                    "minValue": 4313,
+                    "maxValue": 7952131
+                  },
+                  "Place": {
+                    "placeCount": 8,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1180"
+                      },
+                      {
+                        "dcid": "wikidataId/Q721755"
+                      },
+                      {
+                        "dcid": "wikidataId/Q2760659",
+                        "name": "Dadra"
+                      }
+                    ],
+                    "minValue": 290,
+                    "maxValue": 6293000
+                  },
+                  "State": {
+                    "placeCount": 84,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1498",
+                        "name": "Uttar Pradesh"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1191",
+                        "name": "Maharashtra"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1165",
+                        "name": "Bihar"
+                      }
+                    ],
+                    "minValue": 29519,
+                    "maxValue": 112568000
+                  }
+                },
+                "minValue": 290,
+                "maxValue": 660361000,
+                "observationCount": 74173,
+                "timeSeriesCount": 2560
+              }
+            ],
+            "observationCount": 74173,
+            "timeSeriesCount": 2560
+          },
           "dc/base/SouthAfrica_Census": {
             "importName": "SouthAfrica_Census",
             "releaseFrequency": "P1Y",
@@ -3557,6 +3816,78 @@
             ],
             "observationCount": 1918,
             "timeSeriesCount": 70
+          },
+          "dc/base/Zurich_Population_By_Sex": {
+            "importName": "Zurich_Population_By_Sex",
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "1993",
+                "latestDate": "2023",
+                "placeTypeSummary": {
+                  "AdministrativeArea2": {
+                    "placeCount": 27,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q870098",
+                        "name": "District 11"
+                      },
+                      {
+                        "dcid": "wikidataId/Q675017",
+                        "name": "Wiedikon"
+                      },
+                      {
+                        "dcid": "wikidataId/Q456159",
+                        "name": "District 9"
+                      }
+                    ],
+                    "minValue": 2394,
+                    "maxValue": 38349
+                  },
+                  "AdministrativeArea3": {
+                    "placeCount": 18,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q370104",
+                        "name": "Sihlfeld"
+                      },
+                      {
+                        "dcid": "wikidataId/Q433012",
+                        "name": "Alt-Wiedikon"
+                      },
+                      {
+                        "dcid": "wikidataId/Q870084",
+                        "name": "Hard"
+                      }
+                    ],
+                    "minValue": 296,
+                    "maxValue": 11256
+                  },
+                  "City": {
+                    "placeCount": 2,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q72",
+                        "name": "Zürich"
+                      },
+                      {
+                        "dcid": "wikidataId/Q445711",
+                        "name": "Altstetten"
+                      }
+                    ],
+                    "minValue": 14100,
+                    "maxValue": 222324
+                  }
+                },
+                "minValue": 296,
+                "maxValue": 222324,
+                "observationCount": 1457,
+                "timeSeriesCount": 47
+              }
+            ],
+            "observationCount": 1457,
+            "timeSeriesCount": 47
           }
         }
       }

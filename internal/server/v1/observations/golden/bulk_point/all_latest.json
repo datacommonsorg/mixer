@@ -42,6 +42,11 @@
             {
               "date": "2023",
               "value": 68172977,
+              "facet": "4181918134"
+            },
+            {
+              "date": "2023",
+              "value": 68172977,
               "facet": "1733625304"
             },
             {
@@ -88,6 +93,11 @@
               "date": "2023",
               "value": 334914895,
               "facet": "1151455814"
+            },
+            {
+              "date": "2023",
+              "value": 334914895,
+              "facet": "4181918134"
             },
             {
               "date": "2022",
@@ -153,6 +163,11 @@
               "date": "2023",
               "value": 38965193,
               "facet": "1151455814"
+            },
+            {
+              "date": "2023",
+              "value": 38965193,
+              "facet": "4181918134"
             },
             {
               "date": "2022",
@@ -365,8 +380,8 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2024-10",
-              "value": 6984000,
+              "date": "2024-11",
+              "value": 7145000,
               "facet": "3707913853"
             },
             {
@@ -400,8 +415,8 @@
           "entity": "geoId/0649670",
           "points_by_facet": [
             {
-              "date": "2024-09",
-              "value": 1651,
+              "date": "2024-10",
+              "value": 1639,
               "facet": "324358135"
             },
             {
@@ -548,6 +563,12 @@
     "3981252704": {
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "observation_period": "P1Y"
+    },
+    "4181918134": {
+      "import_name": "OECDRegionalDemography_Population",
+      "provenance_url": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23&pg=40&fc=Topic&bp=true&snb=117&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_DEMO%40DF_POP_5Y&df[ag]=OECD.CFE.EDS&df[vs]=2.0&dq=A.......&to[TIME_PERIOD]=false&vw=tb&pd=%2C",
+      "measurement_method": "OECDRegionalStatistics",
       "observation_period": "P1Y"
     },
     "4277990144": {
