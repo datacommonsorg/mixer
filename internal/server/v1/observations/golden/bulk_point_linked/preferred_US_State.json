@@ -2185,6 +2185,12 @@
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601APR",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2601APR&tid=ACSST5Y2019.S2601APR",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
+    },
+    "4181918134": {
+      "import_name": "OECDRegionalDemography_Population",
+      "provenance_url": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23&pg=40&fc=Topic&bp=true&snb=117&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_DEMO%40DF_POP_5Y&df[ag]=OECD.CFE.EDS&df[vs]=2.0&dq=A.......&to[TIME_PERIOD]=false&vw=tb&pd=%2C",
+      "measurement_method": "OECDRegionalStatistics",
+      "observation_period": "P1Y"
     }
   }
 }

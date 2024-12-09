@@ -63,6 +63,13 @@
     }
   },
   {
+    "title": "Earthquakes",
+    "statsVars": [
+      "Count_EarthquakeEvent"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Education attainment",
     "statsVars": [
       "Count_Person_EducationalAttainmentNoSchoolingCompleted",
