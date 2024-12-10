@@ -552,10 +552,6 @@
                   "value": 2240621
                 },
                 {
-                  "date": "2013",
-                  "value": 2229621
-                },
-                {
                   "date": "2014",
                   "value": 2220445
                 },
@@ -596,7 +592,7 @@
                   "value": 2104154
                 }
               ],
-              "obs_count": 24,
+              "obs_count": 23,
               "earliest_date": "2000",
               "latest_date": "2023"
             },
@@ -1016,10 +1012,6 @@
                   "value": 1353946
                 },
                 {
-                  "date": "2013",
-                  "value": 1365200
-                },
-                {
                   "date": "2014",
                   "value": 1377846
                 },
@@ -1060,7 +1052,7 @@
                   "value": 1455820
                 }
               ],
-              "obs_count": 24,
+              "obs_count": 23,
               "earliest_date": "2000",
               "latest_date": "2023"
             },
@@ -1428,10 +1420,6 @@
                   "value": 1412356
                 },
                 {
-                  "date": "2013",
-                  "value": 1418484
-                },
-                {
                   "date": "2014",
                   "value": 1421670
                 },
@@ -1472,7 +1460,7 @@
                   "value": 1467834
                 }
               ],
-              "obs_count": 24,
+              "obs_count": 23,
               "earliest_date": "2000",
               "latest_date": "2023"
             },
@@ -1840,10 +1828,6 @@
                   "value": 1237507
                 },
                 {
-                  "date": "2013",
-                  "value": 1253931
-                },
-                {
                   "date": "2014",
                   "value": 1268228
                 },
@@ -1884,7 +1868,7 @@
                   "value": 1325925
                 }
               ],
-              "obs_count": 24,
+              "obs_count": 23,
               "earliest_date": "2000",
               "latest_date": "2023"
             },
@@ -2252,10 +2236,6 @@
                   "value": 1586434
                 },
                 {
-                  "date": "2013",
-                  "value": 1591403
-                },
-                {
                   "date": "2014",
                   "value": 1597770
                 },
@@ -2296,7 +2276,7 @@
                   "value": 1646445
                 }
               ],
-              "obs_count": 24,
+              "obs_count": 23,
               "earliest_date": "2000",
               "latest_date": "2023"
             },
@@ -2664,10 +2644,6 @@
                   "value": 1538726
                 },
                 {
-                  "date": "2013",
-                  "value": 1552482
-                },
-                {
                   "date": "2014",
                   "value": 1571028
                 },
@@ -2708,7 +2684,7 @@
                   "value": 1690411
                 }
               ],
-              "obs_count": 24,
+              "obs_count": 23,
               "earliest_date": "2000",
               "latest_date": "2023"
             },
@@ -3076,10 +3052,6 @@
                   "value": 1341831
                 },
                 {
-                  "date": "2013",
-                  "value": 1354005
-                },
-                {
                   "date": "2014",
                   "value": 1365039
                 },
@@ -3120,7 +3092,7 @@
                   "value": 1428073
                 }
               ],
-              "obs_count": 24,
+              "obs_count": 23,
               "earliest_date": "2000",
               "latest_date": "2023"
             },
@@ -3488,10 +3460,6 @@
                   "value": 1187081
                 },
                 {
-                  "date": "2013",
-                  "value": 1194681
-                },
-                {
                   "date": "2014",
                   "value": 1205539
                 },
@@ -3532,7 +3500,7 @@
                   "value": 1269726
                 }
               ],
-              "obs_count": 24,
+              "obs_count": 23,
               "earliest_date": "2000",
               "latest_date": "2023"
             },
@@ -5904,10 +5872,6 @@
                   "value": 332119
                 },
                 {
-                  "date": "2013",
-                  "value": 333180
-                },
-                {
                   "date": "2014",
                   "value": 333234
                 },
@@ -5948,7 +5912,7 @@
                   "value": 330395
                 }
               ],
-              "obs_count": 24,
+              "obs_count": 23,
               "earliest_date": "2000",
               "latest_date": "2023"
             },
