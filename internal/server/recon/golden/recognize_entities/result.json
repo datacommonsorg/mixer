@@ -10,15 +10,6 @@
           "entities": [
             {
               "dcid": "chem/BenzodiazepineDerivatives"
-            },
-            {
-              "dcid": "chem/N03AE"
-            },
-            {
-              "dcid": "chem/N05BA"
-            },
-            {
-              "dcid": "chem/N05CD"
             }
           ]
         },

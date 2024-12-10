@@ -12009,6 +12009,16 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Kingston",
+          "types": [
+            "AdministrativeArea1",
+            "City",
+            "Parish"
+          ],
+          "dcid": "wikidataId/Q34692",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
           "name": "Chandigarh",
           "types": [
             "AdministrativeArea1",

@@ -13,6 +13,14 @@
         "definition": "st=meanValue,mp=cost,pt=Person,foodSecurityStatus=FoodSecure,foodType=Meal"
       },
       {
+        "id": "Count_Company",
+        "searchNames": [
+          "Count of Company"
+        ],
+        "displayName": "Count of Company",
+        "definition": "mp=count,pt=Company"
+      },
+      {
         "id": "FertilityRate_Person_Female",
         "searchNames": [
           "Fertility Rate of Person"

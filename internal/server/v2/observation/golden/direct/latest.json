@@ -221,6 +221,18 @@
               "latest_date": "2023"
             },
             {
+              "facet_id": "4181918134",
+              "observations": [
+                {
+                  "date": "2023",
+                  "value": 68172977
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
+            },
+            {
               "facet_id": "1733625304",
               "observations": [
                 {
@@ -298,6 +310,18 @@
             },
             {
               "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2023",
+                  "value": 334914895
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
+            },
+            {
+              "facet_id": "4181918134",
               "observations": [
                 {
                   "date": "2023",
@@ -447,6 +471,18 @@
             },
             {
               "facet_id": "1151455814",
+              "observations": [
+                {
+                  "date": "2023",
+                  "value": 38965193
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
+            },
+            {
+              "facet_id": "4181918134",
               "observations": [
                 {
                   "date": "2023",
@@ -618,13 +654,13 @@
               "facet_id": "3707913853",
               "observations": [
                 {
-                  "date": "2024-10",
-                  "value": 6984000
+                  "date": "2024-11",
+                  "value": 7145000
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2024-10",
-              "latest_date": "2024-10"
+              "earliest_date": "2024-11",
+              "latest_date": "2024-11"
             },
             {
               "facet_id": "1714978719",
@@ -687,13 +723,13 @@
               "facet_id": "324358135",
               "observations": [
                 {
-                  "date": "2024-09",
-                  "value": 1651
+                  "date": "2024-10",
+                  "value": 1639
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2024-09",
-              "latest_date": "2024-09"
+              "earliest_date": "2024-10",
+              "latest_date": "2024-10"
             },
             {
               "facet_id": "2978659163",
@@ -870,6 +906,12 @@
     "3981252704": {
       "import_name": "WorldDevelopmentIndicators",
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "observation_period": "P1Y"
+    },
+    "4181918134": {
+      "import_name": "OECDRegionalDemography_Population",
+      "provenance_url": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23&pg=40&fc=Topic&bp=true&snb=117&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_DEMO%40DF_POP_5Y&df[ag]=OECD.CFE.EDS&df[vs]=2.0&dq=A.......&to[TIME_PERIOD]=false&vw=tb&pd=%2C",
+      "measurement_method": "OECDRegionalStatistics",
       "observation_period": "P1Y"
     },
     "4277990144": {
