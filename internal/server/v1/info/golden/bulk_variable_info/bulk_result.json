@@ -452,7 +452,7 @@
             "maxValue": 4543807
           },
           "State": {
-            "placeCount": 86,
+            "placeCount": 110,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1498",
@@ -2638,7 +2638,7 @@
                     "maxValue": 262200
                   },
                   "AdministrativeArea1": {
-                    "placeCount": 330,
+                    "placeCount": 304,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q15175",
@@ -2837,7 +2837,7 @@
                     "maxValue": 6293000
                   },
                   "State": {
-                    "placeCount": 84,
+                    "placeCount": 110,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q1498",
@@ -2897,7 +2897,7 @@
                     "maxValue": 262200
                   },
                   "AdministrativeArea1": {
-                    "placeCount": 330,
+                    "placeCount": 304,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q15175",
@@ -3096,7 +3096,7 @@
                     "maxValue": 6293000
                   },
                   "State": {
-                    "placeCount": 84,
+                    "placeCount": 110,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q1498",
