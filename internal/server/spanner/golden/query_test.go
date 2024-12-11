@@ -20,6 +20,7 @@ import (
 	"runtime"
 	"testing"
 
+	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
@@ -237,17 +238,30 @@ func TestGetObservations(t *testing.T) {
 	goldenDir := path.Join(path.Dir(filename), "query")
 
 	for _, c := range []struct {
-		variables  []string
-		entities   []string
-		goldenFile string
+		variables        []string
+		entities         []string
+		containedInPlace *v2.ContainedInPlace
+		goldenFile       string
 	}{
 		{
 			variables:  []string{"AirPollutant_Cancer_Risk"},
 			entities:   []string{"geoId/01001", "geoId/02013"},
 			goldenFile: "get_observations.json",
 		},
+		{
+			variables:        []string{"Count_Person", "Median_Age_Person"},
+			containedInPlace: &v2.ContainedInPlace{Ancestor: "geoId/06", ChildPlaceType: "County"},
+			goldenFile:       "get_observations_contained_in.json",
+		},
 	} {
-		actual, err := client.GetObservations(ctx, c.variables, c.entities)
+		var actual []*spanner.Observation
+		var err error
+
+		if c.containedInPlace != nil {
+			actual, err = client.GetObservationsContainedInPlace(ctx, c.variables, c.containedInPlace)
+		} else {
+			actual, err = client.GetObservations(ctx, c.variables, c.entities)
+		}
 		if err != nil {
 			t.Fatalf("GetObservations error (%v): %v", c.goldenFile, err)
 		}
