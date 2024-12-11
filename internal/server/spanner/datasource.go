@@ -70,13 +70,31 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *v3.NodeRequest) (*v
 func (sds *SpannerDataSource) Observation(ctx context.Context, req *v3.ObservationRequest) (*v3.ObservationResponse, error) {
 	// Only variable and entity dcids are supported for now.
 	// TODO: Add support for expressions.
-	variables, entities := req.Variable.Dcids, req.Entity.Dcids
+	variables, entities, entityExpr := req.Variable.Dcids, req.Entity.Dcids, req.Entity.Expression
 	date := req.Date
 
-	observations, err := sds.client.GetObservations(ctx, variables, entities)
-	if err != nil {
-		return nil, fmt.Errorf("error getting observations: %v", err)
+	var observations []*Observation
+
+	if entityExpr != "" {
+		containedInPlace, err := v2.ParseContainedInPlace(entityExpr)
+		if err != nil {
+			return nil, fmt.Errorf("error getting observations (contained in): %v", err)
+		}
+		observations, err = sds.client.GetObservationsContainedInPlace(ctx, variables, containedInPlace)
+		if err != nil {
+			return nil, fmt.Errorf("error getting observations (contained in): %v", err)
+		}
+	} else {
+		// When using the "observations" variable the compiler somehow complained with this:
+		// "observations declared and not used"
+		// So using a different name instead.
+		obs, err := sds.client.GetObservations(ctx, variables, entities)
+		if err != nil {
+			return nil, fmt.Errorf("error getting observations: %v", err)
+		}
+		observations = obs
 	}
+
 	observations = filterObservationsByDate(observations, date)
 
 	return observationsToObservationResponse(variables, observations), nil

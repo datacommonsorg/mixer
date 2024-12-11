@@ -92,6 +92,18 @@ func TestV3Observation(t *testing.T) {
 				},
 				goldenFile: "observations_no_matching_date.json",
 			},
+			{
+				req: &pbv3.ObservationRequest{
+					Variable: &pbv2.DcidOrExpression{
+						Dcids: []string{"Count_Person", "Median_Age_Person"},
+					},
+					Entity: &pbv2.DcidOrExpression{
+						Expression: "geoId/06<-containedInPlace+{typeOf:County}",
+					},
+					Date: "2015",
+				},
+				goldenFile: "observations_contained_in.json",
+			},
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V3Observation(ctx, c.req)
