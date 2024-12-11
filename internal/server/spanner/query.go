@@ -50,6 +50,8 @@ var statements = struct {
 	filterObjects string
 	// Fetch Observations for variable+entity.
 	getObsByVariableAndEntity string
+	// Fetch observations for variable + contained in place.
+	getObsByVariableAndContainedInPlace string
 }{
 	getPropsBySubjectID: `
 	SELECT
@@ -251,6 +253,51 @@ var statements = struct {
 			variable_measured IN UNNEST(@variables) AND
 			observation_about IN UNNEST(@entities)
 	`,
+	getObsByVariableAndContainedInPlace: `
+		SELECT
+			obs.variable_measured,
+			obs.observation_about,
+			obs.observations,
+			obs.provenance,
+			COALESCE(obs.observation_period, '') AS observation_period,
+			COALESCE(obs.measurement_method, '') AS measurement_method,
+			COALESCE(obs.unit, '') AS unit,
+			COALESCE(obs.scaling_factor, '') AS scaling_factor,
+			obs.import_name, 
+			obs.provenance_url
+		FROM GRAPH_TABLE (
+				DCGraph MATCH <-[e:Edge
+				WHERE
+					e.object_id = @ancestor
+					AND e.subject_id != e.object_id
+					AND e.predicate = 'linkedContainedInPlace']-
+				RETURN 
+				e.subject_id as object_id
+			)result
+
+		INNER JOIN (
+		SELECT 
+			*
+		FROM GRAPH_TABLE (
+				DCGraph MATCH -[e:Edge 
+				WHERE
+					e.predicate = 'typeOf'
+					AND e.object_id = @childPlaceType]-> 
+				RETURN e.subject_id
+			)           
+		)filter1
+		ON 
+			result.object_id = filter1.subject_id
+
+		INNER JOIN (
+		SELECT
+			*
+		FROM Observation
+		WHERE
+			variable_measured IN UNNEST(@variables))obs
+		ON 
+			result.object_id = obs.observation_about
+	`,
 }
 
 // GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction and returns a map.
@@ -390,6 +437,40 @@ func (sc *SpannerClient) GetObservations(ctx context.Context, variables []string
 		Params: map[string]interface{}{
 			"variables": variables,
 			"entities":  entities,
+		},
+	}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		func() interface{} {
+			return &Observation{}
+		},
+		func(rowStruct interface{}) {
+			observation := rowStruct.(*Observation)
+			observations = append(observations, observation)
+		},
+	)
+	if err != nil {
+		return observations, err
+	}
+
+	return observations, nil
+}
+
+// GetObservations retrieves observations from Spanner given a list of variables and entities.
+func (sc *SpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
+	var observations []*Observation
+	if len(variables) == 0 || containedInPlace == nil {
+		return observations, nil
+	}
+
+	stmt := spanner.Statement{
+		SQL: statements.getObsByVariableAndContainedInPlace,
+		Params: map[string]interface{}{
+			"variables":      variables,
+			"ancestor":       containedInPlace.Ancestor,
+			"childPlaceType": containedInPlace.ChildPlaceType,
 		},
 	}
 
