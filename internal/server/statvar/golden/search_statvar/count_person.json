@@ -545,6 +545,10 @@
       "dcid": "Count_Person_0To4Years"
     },
     {
+      "name": "Population: 0 - 9 Years",
+      "dcid": "Count_Person_0To9Years"
+    },
+    {
       "name": "Population: 1 - 2 Years",
       "dcid": "Count_Person_1To2Year"
     },
@@ -997,6 +1001,10 @@
       "dcid": "Count_Person_7OrMoreYears"
     },
     {
+      "name": "Population: 70 - 79 Years",
+      "dcid": "Count_Person_70To79Years"
+    },
+    {
       "name": "Population: 70 Years or More",
       "dcid": "Count_Person_70OrMoreYears"
     },
@@ -1019,6 +1027,10 @@
     {
       "name": "Population: 80 - 84 Years",
       "dcid": "Count_Person_80To84Years"
+    },
+    {
+      "name": "Population: 80 - 89 Years",
+      "dcid": "Count_Person_80To89Years"
     },
     {
       "name": "Population: 85 - 89 Years",
@@ -1047,6 +1059,10 @@
     {
       "name": "Population: 90 - 94 Years",
       "dcid": "Count_Person_90To94Years"
+    },
+    {
+      "name": "Population: 90 - 99 Years",
+      "dcid": "Count_Person_90To99Years"
     },
     {
       "name": "Population: 90 Years or More",
@@ -1369,10 +1385,6 @@
       "dcid": "Count_Person_5OrMoreYears_ForeignBorn"
     },
     {
-      "name": "Population: Foreign Born",
-      "dcid": "Count_Person_ForeignBorn"
-    },
-    {
       "name": "Population: Foreign Born Outside EU27",
       "dcid": "Count_Person_ForeignBornOutsideEU27"
     },
@@ -1399,6 +1411,10 @@
     {
       "name": "Population: French Incl Patois Cajun",
       "dcid": "Count_Person_5OrMoreYears_FrenchInclPatoisCajunSpokenAtHome"
+    },
+    {
+      "name": "Population: Full Time Employee",
+      "dcid": "Count_Person_FullTimeEmployee"
     },
     {
       "name": "Population: Ged or Alternative Credential",
@@ -3983,22 +3999,6 @@
     {
       "name": "Population: 0 - 4 Years, Mental Health Not Good",
       "dcid": "Count_Person_0To4Years_ConditionMentalHealthNotGood"
-    },
-    {
-      "name": "Population: 0 - 4 Years, Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_0To4Years_NativeHawaiianAndOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Population: 0 - 4 Years, Not Hispanic or Latino",
-      "dcid": "Count_Person_0To4Years_NotHispanicOrLatino"
-    },
-    {
-      "name": "Population: 0 - 4 Years, Not Hispanic or Latino \u0026 American Indian And Alaska Native Alone or In Combination With One or More Other Races",
-      "dcid": "Count_Person_0To4Years_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Population: 0 - 4 Years, Not Hispanic or Latino \u0026 American Indian or Alaska Native Alone",
-      "dcid": "Count_Person_0To4Years_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
     }
   ],
   "matches": [
