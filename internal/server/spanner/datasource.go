@@ -68,8 +68,6 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *v3.NodeRequest) (*v
 
 // Observation retrieves observation data from Spanner.
 func (sds *SpannerDataSource) Observation(ctx context.Context, req *v3.ObservationRequest) (*v3.ObservationResponse, error) {
-	// Only variable and entity dcids are supported for now.
-	// TODO: Add support for expressions.
 	variables, entities, entityExpr := req.Variable.Dcids, req.Entity.Dcids, req.Entity.Expression
 	date := req.Date
 
