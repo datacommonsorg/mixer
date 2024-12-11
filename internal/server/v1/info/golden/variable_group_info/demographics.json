@@ -412,7 +412,7 @@
         "id": "dc/g/Person_LaborForceStatus",
         "specializedEntity": "Labor Force Status",
         "displayName": "Person by Labor Force Status",
-        "descendentStatVarCount": 3205
+        "descendentStatVarCount": 3204
       },
       {
         "id": "dc/g/Language",
@@ -577,7 +577,7 @@
         "descendentStatVarCount": 4
       }
     ],
-    "descendentStatVarCount": 47369,
+    "descendentStatVarCount": 47368,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

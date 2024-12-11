@@ -369,6 +369,10 @@
       "dcid": "Count_Person_CognitiveDifficulty"
     },
     {
+      "name": "Population With Current Employment",
+      "dcid": "Count_Person_Employed"
+    },
+    {
       "name": "Population With Disabilities",
       "dcid": "Count_Person_WithDisability"
     },
@@ -3767,10 +3771,6 @@
     {
       "name": "Population Who Received Food Stamps in the Past Year and Lived in Nursing Facilities",
       "dcid": "Count_Person_WithFoodStampsInThePast12Months_ResidesInNursingFacilities"
-    },
-    {
-      "name": "Population With Current Employment",
-      "dcid": "Count_Person_Employed"
     },
     {
       "name": "Population Without Disability Institutionalized in Group Quarters",
