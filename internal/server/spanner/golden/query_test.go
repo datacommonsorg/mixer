@@ -290,3 +290,58 @@ func TestGetObservations(t *testing.T) {
 	}
 
 }
+func TestSearchNodes(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+	ctx := context.Background()
+	_, filename, _, _ := runtime.Caller(0)
+	goldenDir := path.Join(path.Dir(filename), "query")
+
+	for _, c := range []struct {
+		query      string
+		types      []string
+		goldenFile string
+	}{
+		{
+			query:      "income",
+			types:      []string{"StatisticalVariable"},
+			goldenFile: "search_nodes_with_type.json",
+		},
+		{
+			query:      "income",
+			goldenFile: "search_nodes_without_type.json",
+		},
+	} {
+		actual, err := client.SearchNodes(ctx, c.query, c.types)
+		if err != nil {
+			t.Fatalf("SearchNodes error (%v): %v", c.goldenFile, err)
+		}
+
+		got, err := test.StructToJSON(actual)
+		if err != nil {
+			t.Fatalf("StructToJSON error (%v): %v", c.goldenFile, err)
+		}
+
+		if test.GenerateGolden {
+			err = test.WriteGolden(got, goldenDir, c.goldenFile)
+			if err != nil {
+				t.Fatalf("WriteGolden error (%v): %v", c.goldenFile, err)
+			}
+			continue
+		}
+
+		want, err := test.ReadGolden(goldenDir, c.goldenFile)
+		if err != nil {
+			t.Fatalf("ReadGolden error (%v): %v", c.goldenFile, err)
+		}
+
+		if diff := cmp.Diff(want, got); diff != "" {
+			t.Errorf("%v payload mismatch (-want +got):\n%s", c.goldenFile, diff)
+		}
+	}
+
+}
