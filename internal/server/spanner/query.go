@@ -52,6 +52,10 @@ var statements = struct {
 	getObsByVariableAndEntity string
 	// Fetch observations for variable + contained in place.
 	getObsByVariableAndContainedInPlace string
+	// Search nodes by name only.
+	searchNodesByQuery string
+	// Search nodes by query and type(s).
+	searchNodesByQueryAndTypes string
 }{
 	getPropsBySubjectID: `
 	SELECT
@@ -298,6 +302,25 @@ var statements = struct {
 		ON 
 			result.object_id = obs.observation_about
 	`,
+	searchNodesByQuery: `
+		GRAPH DCGraph
+		MATCH (n:Node)
+		WHERE 
+			SEARCH(n.name_tokenlist, @query)
+		RETURN n.subject_id, n.name, n.types 
+		ORDER BY SCORE(n.name_tokenlist, @query) DESC
+		LIMIT 100
+	`,
+	searchNodesByQueryAndTypes: `
+		GRAPH DCGraph
+		MATCH (n:Node)
+		WHERE 
+			SEARCH(n.name_tokenlist, @query)
+			AND ARRAY_INCLUDES_ANY(n.types, @types)
+		RETURN n.subject_id, n.name, n.types 
+		ORDER BY SCORE(n.name_tokenlist, @query) DESC
+		LIMIT 100
+	`,
 }
 
 // GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction and returns a map.
@@ -490,6 +513,52 @@ func (sc *SpannerClient) GetObservationsContainedInPlace(ctx context.Context, va
 	}
 
 	return observations, nil
+}
+
+// SearchNodes searches nodes in the graph based on the query and optionally the types.
+// If the types array is empty, it searches across nodes of all types.
+// A maximum of 100 results are returned.
+func (sc *SpannerClient) SearchNodes(ctx context.Context, query string, types []string) ([]*SearchNode, error) {
+	var nodes []*SearchNode
+	if query == "" {
+		return nodes, nil
+	}
+
+	var stmt spanner.Statement
+
+	if len(types) == 0 {
+		stmt = spanner.Statement{
+			SQL: statements.searchNodesByQuery,
+			Params: map[string]interface{}{
+				"query": query,
+			},
+		}
+	} else {
+		stmt = spanner.Statement{
+			SQL: statements.searchNodesByQueryAndTypes,
+			Params: map[string]interface{}{
+				"query": query,
+				"types": types,
+			},
+		}
+	}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		func() interface{} {
+			return &SearchNode{}
+		},
+		func(rowStruct interface{}) {
+			node := rowStruct.(*SearchNode)
+			nodes = append(nodes, node)
+		},
+	)
+	if err != nil {
+		return nodes, err
+	}
+
+	return nodes, nil
 }
 
 func (sc *SpannerClient) queryAndCollect(

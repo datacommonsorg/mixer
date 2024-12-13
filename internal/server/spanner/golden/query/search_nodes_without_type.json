@@ -1,0 +1,702 @@
+[
+  {
+    "SubjectID": "dc/g/Person_Age-Years15Onwards_Income-USDollar35000To49999_IncomeStatus-WithIncome_ResidentStatus",
+    "Name": "Person With Age = 15 Years or More, Income = 35,000 - 49,999 USD, Income Status = With Income, Resident Status",
+    "Types": [
+      "StatVarGroup"
+    ]
+  },
+  {
+    "SubjectID": "dc/g/Person_Age-Years15Onwards_Income_IncomeStatus-WithIncome_ResidentStatus-DifferentHouseInSameCounty",
+    "Name": "Person With Age = 15 Years or More, Income, Income Status = With Income, Resident Status = Different House in Same County",
+    "Types": [
+      "StatVarGroup"
+    ]
+  },
+  {
+    "SubjectID": "dc/g/Person_Income-USDollar15000To24999_IncomeStatus-WithIncome",
+    "Name": "Person With Income = 15,000 - 24,999 USD, Income Status = With Income",
+    "Types": [
+      "StatVarGroup"
+    ]
+  },
+  {
+    "SubjectID": "dc/g/Person_Income_IncomeStatus-WithIncome_Race-AsianAlone",
+    "Name": "Person With Income, Income Status = With Income, Race = Asian Alone",
+    "Types": [
+      "StatVarGroup"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_GINI_WA_CURRENT_METH2012",
+    "Name": "Income Distribution Database: Gini (disposable income, post taxes and transfers), Working age population: 18-65, Current definition, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_INCAC4_TOT_CURRENT_METH2011",
+    "Name": "Income Distribution Database: Age group 41-50: mean disposable income (current prices), Total population, Current definition, Income definition until 2011",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_INCCTOTAL_TOT_PREVIOUS_METH2011",
+    "Name": "Income Distribution Database: Mean disposable income (current prices), Total population, Previous definition - with overlap year, Income definition until 2011",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_KICTOTAL_OLD_PREVIOUS_METH2012",
+    "Name": "Income Distribution Database: Capital income (current prices), Retirement age population: above 65, Previous definition - with overlap year, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_P50P10_OLD_CURRENT_METH2012",
+    "Name": "Income Distribution Database: P50/P10  disposable income decile ratio, Retirement age population: above 65, Current definition, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_P90P50_OLD_PREVIOUS_METH2011",
+    "Name": "Income Distribution Database: P90/P50  disposable income decile ratio, Retirement age population: above 65, Previous definition - with overlap year, Income definition until 2011",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_S80S20_OLD_CURRENT_METH2012",
+    "Name": "Income Distribution Database: S80/S20 disposable income quintile share, Retirement age population: above 65, Current definition, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_SEICTOTAL_TOT_CURRENT_METH2012",
+    "Name": "Income Distribution Database: Income from self-employment and from goods produced for own consumption (current prices), Total population, Current definition, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_1EARNERC2C_2_1_1_1_0_1",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_1EARNERC2C_3_1_1_1_0_1",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_1EARNERC_2_1_1_1_0_1",
+    "Name": "Incomes of minimum wage earners: Couple without children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_1EARNERC_3_1_1_1_0_1",
+    "Name": "Incomes of minimum wage earners: Couple without children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_2EARNERC2C_MIN_3_1_1_0_0_1",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_2EARNERC_MIN_3_1_1_0_0_1",
+    "Name": "Incomes of minimum wage earners: Couple without children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_SINGLE2C_2_1_1_1_0_1",
+    "Name": "Incomes of minimum wage earners: Single person with 2 children, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_SINGLE2C_3_1_1_1_0_1",
+    "Name": "Incomes of minimum wage earners: Single person with 2 children, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_SINGLE_3_1_1_1_0_1",
+    "Name": "Incomes of minimum wage earners: Single person without children, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "dc/g/Person_Age-Years15Onwards_Income-USDollarUpto9999_IncomeStatus-WithIncome_ResidentStatus",
+    "Name": "Person With Age = 15 Years or More, Income = 9,999 USD or Less, Income Status = With Income, Resident Status",
+    "Types": [
+      "StatVarGroup"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_GINIB_OLD_PREVIOUS_METH2011",
+    "Name": "Income Distribution Database: Gini (market income, before taxes and transfers), Retirement age population: above 65, Previous definition - with overlap year, Income definition until 2011",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_INCAC7_TOT_CURRENT_METH2012",
+    "Name": "Income Distribution Database: Age group 76+: mean disposable income (current prices), Total population, Current definition, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_P90P10_OLD_INCOMPARABLE_METH2012",
+    "Name": "Income Distribution Database: P90/P10 disposable income decile ratio, Retirement age population: above 65, Previous definition - without overlap year, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_2EARNERC_MIN_2_1_1_0_0_1",
+    "Name": "Incomes of minimum wage earners: Couple without children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_SINGLE_2_1_1_1_0_1",
+    "Name": "Incomes of minimum wage earners: Single person without children, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "dc/g/Household_Income-InflationAdjustedUSDCurrentYear25000To34999_IncomeStatus-WithIncome",
+    "Name": "Household With Income = 25,000 - 34,999 Inflation Adjusted USD_Current Year, Income Status = With Income",
+    "Types": [
+      "StatVarGroup"
+    ]
+  },
+  {
+    "SubjectID": "dc/g/Person_Age_Income-USDollar10000To12499_IncomeStatus-WithIncome",
+    "Name": "Person With Age, Income = 10,000 - 12,499 USD, Income Status = With Income",
+    "Types": [
+      "StatVarGroup"
+    ]
+  },
+  {
+    "SubjectID": "dc/g/Person_Income-USDollarUpto9999_IncomeStatus-WithIncome_ResidentStatus",
+    "Name": "Person With Income = 9,999 USD or Less, Income Status = With Income, Resident Status",
+    "Types": [
+      "StatVarGroup"
+    ]
+  },
+  {
+    "SubjectID": "dc/g/Person_Income_IncomeStatus-WithIncome_ResidentStatus-DifferentHouseAbroad",
+    "Name": "Person With Income, Income Status = With Income, Resident Status = Different House Abroad",
+    "Types": [
+      "StatVarGroup"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_GINIB_WA_CURRENT_METH2012",
+    "Name": "Income Distribution Database: Gini (market income, before taxes and transfers), Working age population: 18-65, Current definition, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_GINIG_TOT_INCOMPARABLE_METH2012",
+    "Name": "Income Distribution Database: Gini (gross income, before taxes), Total population, Previous definition - without overlap year, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_INCAC5_TOT_PREVIOUS_METH2011",
+    "Name": "Income Distribution Database: Age group 51-65: mean disposable income (current prices), Total population, Previous definition - with overlap year, Income definition until 2011",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_INCHCTOTAL_WA_PREVIOUS_METH2011",
+    "Name": "Income Distribution Database: All working-age household types: mean disposable income (current prices), Working age population: 18-65, Previous definition - with overlap year, Income definition until 2011",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_MEDIANC_OLD_CURRENT_METH2012",
+    "Name": "Income Distribution Database: Median disposable income (current prices), Retirement age population: above 65, Current definition, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_MEDIANC_TOT_PREVIOUS_METH2012",
+    "Name": "Income Distribution Database: Median disposable income (current prices), Total population, Previous definition - with overlap year, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_P50P10_TOT_PREVIOUS_METH2012",
+    "Name": "Income Distribution Database: P50/P10  disposable income decile ratio, Total population, Previous definition - with overlap year, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_P90P50_WA_CURRENT_METH2012",
+    "Name": "Income Distribution Database: P90/P50  disposable income decile ratio, Working age population: 18-65, Current definition, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_S80S20_TOT_PREVIOUS_METH2012",
+    "Name": "Income Distribution Database: S80/S20 disposable income quintile share, Total population, Previous definition - with overlap year, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_SECTOTAL_OLD_INCOMPARABLE_METH2012",
+    "Name": "Income Distribution Database: Income from self-employment (current prices), Retirement age population: above 65, Previous definition - without overlap year, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_2EARNERC2C_MIN_2_1_1_0_0_1",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "dc/g/Person_Age-Years16Onwards_Income_IncomeStatus-WithIncome_Race-BlackOrAfricanAmericanAlone",
+    "Name": "Person With Age = 16 Years or More, Income, Income Status = With Income, Race = Black or African American Alone",
+    "Types": [
+      "StatVarGroup"
+    ]
+  },
+  {
+    "SubjectID": "dc/g/Person_Income-USDollar25000To34999_IncomeStatus-WithIncome",
+    "Name": "Person With Income = 25,000 - 34,999 USD, Income Status = With Income",
+    "Types": [
+      "StatVarGroup"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_GINI_OLD_PREVIOUS_METH2011",
+    "Name": "Income Distribution Database: Gini (disposable income, post taxes and transfers), Retirement age population: above 65, Previous definition - with overlap year, Income definition until 2011",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_INCAC2_TOT_INCOMPARABLE_METH2012",
+    "Name": "Income Distribution Database: Age group 18-25: mean disposable income (current prices), Total population, Previous definition - without overlap year, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_INCCTOTAL_OLD_CURRENT_METH2011",
+    "Name": "Income Distribution Database: Mean disposable income (current prices), Retirement age population: above 65, Current definition, Income definition until 2011",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_OCCTOTAL_OLD_PREVIOUS_METH2012",
+    "Name": "Income Distribution Database: Income from own consumption (Current prices), Retirement age population: above 65, Previous definition - with overlap year, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_P90P10_WA_CURRENT_METH2011",
+    "Name": "Income Distribution Database: P90/P10 disposable income decile ratio, Working age population: 18-65, Current definition, Income definition until 2011",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_SECTOTAL_WA_CURRENT_METH2011",
+    "Name": "Income Distribution Database: Income from self-employment (current prices), Working age population: 18-65, Current definition, Income definition until 2011",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_1EARNERC2C_2_1_0_1_0_1",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_1EARNERC2C_3_1_0_1_0_1",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_1EARNERC_2_1_0_1_0_1",
+    "Name": "Incomes of minimum wage earners: Couple without children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_1EARNERC_3_1_0_1_0_1",
+    "Name": "Incomes of minimum wage earners: Couple without children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_SINGLE2C_2_1_0_1_0_1",
+    "Name": "Incomes of minimum wage earners: Single person with 2 children, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_SINGLE2C_3_1_0_1_0_1",
+    "Name": "Incomes of minimum wage earners: Single person with 2 children, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_SINGLE_2_1_0_1_0_1",
+    "Name": "Incomes of minimum wage earners: Single person without children, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_SINGLE_3_1_0_1_0_1",
+    "Name": "Incomes of minimum wage earners: Single person without children, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "dc/g/Household_HouseholdType-NonfamilyHousehold_Income_IncomeStatus-WithIncome",
+    "Name": "Household With Household Type = Nonfamily Household, Income, Income Status = With Income",
+    "Types": [
+      "StatVarGroup"
+    ]
+  },
+  {
+    "SubjectID": "dc/g/Household_Income-InflationAdjustedUSDCurrentYear10000To14999_IncomeStatus-WithIncome",
+    "Name": "Household With Income = 10,000 - 14,999 Inflation Adjusted USD_Current Year, Income Status = With Income",
+    "Types": [
+      "StatVarGroup"
+    ]
+  },
+  {
+    "SubjectID": "dc/g/Person_Income_IncomeStatus-WithIncome_Race-SomeOtherRaceAlone",
+    "Name": "Person With Income, Income Status = With Income, Race = Some Other Race Alone",
+    "Types": [
+      "StatVarGroup"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_GINIB_TOT_INCOMPARABLE_METH2012",
+    "Name": "Income Distribution Database: Gini (market income, before taxes and transfers), Total population, Previous definition - without overlap year, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_INCAC1_TOT_PREVIOUS_METH2011",
+    "Name": "Income Distribution Database: Age group 0-17: mean disposable income (current prices), Total population, Previous definition - with overlap year, Income definition until 2011",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_INCAC4_TOT_PREVIOUS_METH2012",
+    "Name": "Income Distribution Database: Age group 41-50: mean disposable income (current prices), Total population, Previous definition - with overlap year, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_INCCTOTAL_WA_INCOMPARABLE_METH2012",
+    "Name": "Income Distribution Database: Mean disposable income (current prices), Working age population: 18-65, Previous definition - without overlap year, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_KICTOTAL_WA_CURRENT_METH2012",
+    "Name": "Income Distribution Database: Capital income (current prices), Working age population: 18-65, Current definition, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_P50P10_TOT_CURRENT_METH2011",
+    "Name": "Income Distribution Database: P50/P10  disposable income decile ratio, Total population, Current definition, Income definition until 2011",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_P90P50_TOT_INCOMPARABLE_METH2012",
+    "Name": "Income Distribution Database: P90/P50  disposable income decile ratio, Total population, Previous definition - without overlap year, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_S80S20_TOT_CURRENT_METH2011",
+    "Name": "Income Distribution Database: S80/S20 disposable income quintile share, Total population, Current definition, Income definition until 2011",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_SEICTOTAL_WA_INCOMPARABLE_METH2012",
+    "Name": "Income Distribution Database: Income from self-employment and from goods produced for own consumption (current prices), Working age population: 18-65, Previous definition - without overlap year, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "dc/g/Household_HouseholdType-MarriedCoupleFamilyHousehold_Income_IncomeStatus-WithIncome",
+    "Name": "Household With Household Type = Married Couple Family Household, Income, Income Status = With Income",
+    "Types": [
+      "StatVarGroup"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_INCACTOTAL_TOT_CURRENT_METH2011",
+    "Name": "Income Distribution Database: All age groups: mean disposable income (current prices), Total population, Current definition, Income definition until 2011",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_P90P10_TOT_CURRENT_METH2012",
+    "Name": "Income Distribution Database: P90/P10 disposable income decile ratio, Total population, Current definition, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_1EARNERC2C_2_1_0_0_0_1",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_1EARNERC2C_3_1_0_0_0_1",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_1EARNERC_2_1_0_0_0_1",
+    "Name": "Incomes of minimum wage earners: Couple without children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_1EARNERC_3_1_0_0_0_1",
+    "Name": "Incomes of minimum wage earners: Couple without children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_SINGLE2C_3_1_0_0_0_1",
+    "Name": "Incomes of minimum wage earners: Single person with 2 children, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_SINGLE_2_1_0_0_0_1",
+    "Name": "Incomes of minimum wage earners: Single person without children, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "dc/g/Person_Age-Years16Onwards_Income-USDollar10000To12499_IncomeStatus-WithIncome_Race",
+    "Name": "Person With Age = 16 Years or More, Income = 10,000 - 12,499 USD, Income Status = With Income, Race",
+    "Types": [
+      "StatVarGroup"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_GINIG_OLD_CURRENT_METH2012",
+    "Name": "Income Distribution Database: Gini (gross income, before taxes), Retirement age population: above 65, Current definition, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_GINIG_WA_PREVIOUS_METH2012",
+    "Name": "Income Distribution Database: Gini (gross income, before taxes), Working age population: 18-65, Previous definition - with overlap year, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_INCAC3_TOT_CURRENT_METH2012",
+    "Name": "Income Distribution Database: Age group 26-40: mean disposable income (current prices), Total population, Current definition, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_INCAC6_TOT_INCOMPARABLE_METH2012",
+    "Name": "Income Distribution Database: Age group 66-75: mean disposable income (current prices), Total population, Previous definition - without overlap year, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_MEDIANC_TOT_CURRENT_METH2011",
+    "Name": "Income Distribution Database: Median disposable income (current prices), Total population, Current definition, Income definition until 2011",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_MEDIANC_WA_PREVIOUS_METH2011",
+    "Name": "Income Distribution Database: Median disposable income (current prices), Working age population: 18-65, Previous definition - with overlap year, Income definition until 2011",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_P50P10_WA_PREVIOUS_METH2011",
+    "Name": "Income Distribution Database: P50/P10  disposable income decile ratio, Working age population: 18-65, Previous definition - with overlap year, Income definition until 2011",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_S80S20_WA_PREVIOUS_METH2011",
+    "Name": "Income Distribution Database: S80/S20 disposable income quintile share, Working age population: 18-65, Previous definition - with overlap year, Income definition until 2011",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_SECTOTAL_TOT_CURRENT_METH2012",
+    "Name": "Income Distribution Database: Income from self-employment (current prices), Total population, Current definition, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_2EARNERC2C_MIN_2_1_0_1_0_1",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_2EARNERC_MIN_2_1_0_1_0_1",
+    "Name": "Incomes of minimum wage earners: Couple without children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_SINGLE2C_2_1_0_0_0_1",
+    "Name": "Incomes of minimum wage earners: Single person with 2 children, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IMW_SINGLE_3_1_0_0_0_1",
+    "Name": "Incomes of minimum wage earners: Single person without children, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
+    "SubjectID": "dc/g/Household_Income-InflationAdjustedUSDCurrentYearUpto10000_IncomeStatus-WithIncome",
+    "Name": "Household With Income = 10,000 Inflation Adjusted USD_Current Year or Less, Income Status = With Income",
+    "Types": [
+      "StatVarGroup"
+    ]
+  },
+  {
+    "SubjectID": "dc/g/Person_Age-Years14Onwards_IncomeSource_IncomeType-IncomeActuallyReceived_LaborForceStatus-Employed",
+    "Name": "Person With Age = 14 Years or More, Labor Force Status = Employed, Income Source, Income Type = Income Actually Received",
+    "Types": [
+      "StatVarGroup"
+    ]
+  },
+  {
+    "SubjectID": "dc/g/Person_Age-Years16Onwards_Income_IncomeStatus-WithIncome_Race-TwoOrMoreRaces",
+    "Name": "Person With Age = 16 Years or More, Income, Income Status = With Income, Race = Two or More Races",
+    "Types": [
+      "StatVarGroup"
+    ]
+  },
+  {
+    "SubjectID": "dc/g/Person_Income-USDollar100000Onwards_IncomeStatus-WithIncome",
+    "Name": "Person With Income = 100,000 USD or More, Income Status = With Income",
+    "Types": [
+      "StatVarGroup"
+    ]
+  },
+  {
+    "SubjectID": "dc/g/Person_Income-USDollar65000To74999_IncomeStatus-WithIncome",
+    "Name": "Person With Income = 65,000 - 74,999 USD, Income Status = With Income",
+    "Types": [
+      "StatVarGroup"
+    ]
+  },
+  {
+    "SubjectID": "dc/g/Person_Income_IncomeStatus-WithIncome_Race-HispanicOrLatino",
+    "Name": "Person With Income, Income Status = With Income, Race = Hispanic or Latino",
+    "Types": [
+      "StatVarGroup"
+    ]
+  },
+  {
+    "SubjectID": "oecd/IDD_GINI_TOT_INCOMPARABLE_METH2012",
+    "Name": "Income Distribution Database: Gini (disposable income, post taxes and transfers), Total population, Previous definition - without overlap year, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  }
+]
