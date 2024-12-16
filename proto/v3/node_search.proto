@@ -17,6 +17,8 @@ package datacommons.v3;
 
 option go_package = "github.com/datacommonsorg/mixer/internal/proto/v3";
 
+import "entity.proto";
+
 // Node search request sent to mixer.
 message NodeSearchRequest {
   // Node search query (e.g. "total population", "california").
@@ -31,17 +33,5 @@ message NodeSearchRequest {
 // Node search response from mixer.
 message NodeSearchResponse {
   // List of nodes resulting from the search.
-  repeated NodeSearchResult results = 1;
-}
-
-// Data for a single node returned by node search.
-message NodeSearchResult {
-  // DCID of the node (e.g. "Count_Person").
-  string dcid = 1;
-  
-  // The type of the node (e.g. "StatisticalVariable")
-  string type = 2;
-
-  // Name of the node (e.g. "Total Population").
-  string name = 3;
+  repeated datacommons.EntityInfo nodes = 1;
 }
