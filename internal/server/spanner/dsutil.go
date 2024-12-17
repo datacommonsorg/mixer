@@ -177,3 +177,21 @@ func dateValueToPointStat(dateValue *DateValue) *pb.PointStat {
 		Value: proto.Float64(dateValue.Value),
 	}
 }
+
+func searchNodesToNodeSearchResponse(nodes []*SearchNode) *v3.NodeSearchResponse {
+	response := &v3.NodeSearchResponse{}
+
+	for _, node := range nodes {
+		response.Nodes = append(response.Nodes, searchNodeToEntityInfo(node))
+	}
+
+	return response
+}
+
+func searchNodeToEntityInfo(node *SearchNode) *pb.EntityInfo {
+	return &pb.EntityInfo{
+		Dcid:  node.SubjectID,
+		Name:  node.Name,
+		Types: node.Types,
+	}
+}

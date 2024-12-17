@@ -33,4 +33,5 @@ type DataSource interface {
 	Type() DataSourceType
 	Node(context.Context, *v3.NodeRequest) (*v3.NodeResponse, error)
 	Observation(context.Context, *v3.ObservationRequest) (*v3.ObservationResponse, error)
+	NodeSearch(context.Context, *v3.NodeSearchRequest) (*v3.NodeSearchResponse, error)
 }
