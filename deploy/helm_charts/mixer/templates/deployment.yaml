@@ -101,6 +101,8 @@ spec:
             {{- if eq $.Values.mixer.cacheSVFormula true }}
             - --cache_sv_formula=true
             {{- end }}
+            - --use_spanner_graph={{ $.Values.mixer.useSpannerGraph }}
+            - --spanner_graph_info=$(SPANNER_GRAPH_INFO)
           volumeMounts:
             - name: schema-mapping
               mountPath: /datacommons/mapping
@@ -131,6 +133,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-store-config
                   key: custom_bigtable_info.yaml
+            - name: SPANNER_GRAPH_INFO
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "mixer.fullname" $ }}-store-config
+                  key: spanner_graph_info.yaml
             - name: MIXER_HASH
               valueFrom:
                 configMapKeyRef:

@@ -65,6 +65,9 @@ var statements = struct {
 		Edge
 	WHERE
 		subject_id IN UNNEST(@ids)
+	ORDER BY
+		subject_id,
+		predicate
 	`,
 	getPropsByObjectID: `
 	SELECT
@@ -75,6 +78,9 @@ var statements = struct {
 	WHERE
 		object_id IN UNNEST(@ids)
 		AND object_value IS NULL
+	ORDER BY
+		subject_id,
+		predicate
 	`,
 	getEdgesBySubjectID: `
 	SELECT
