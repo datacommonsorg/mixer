@@ -2623,6 +2623,12 @@
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y"
     },
+    "4181918134": {
+      "import_name": "OECDRegionalDemography_Population",
+      "provenance_url": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23&pg=40&fc=Topic&bp=true&snb=117&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_DEMO%40DF_POP_5Y&df[ag]=OECD.CFE.EDS&df[vs]=2.0&dq=A.......&to[TIME_PERIOD]=false&vw=tb&pd=%2C",
+      "measurement_method": "OECDRegionalStatistics",
+      "observation_period": "P1Y"
+    },
     "473499523": {
       "import_name": "Subnational_Demographics_Stats",
       "provenance_url": "https://databank.worldbank.org/source/subnational-population",

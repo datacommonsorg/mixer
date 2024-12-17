@@ -20,6 +20,7 @@ import (
 	"runtime"
 	"testing"
 
+	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
@@ -237,19 +238,87 @@ func TestGetObservations(t *testing.T) {
 	goldenDir := path.Join(path.Dir(filename), "query")
 
 	for _, c := range []struct {
-		variables  []string
-		entities   []string
-		goldenFile string
+		variables        []string
+		entities         []string
+		containedInPlace *v2.ContainedInPlace
+		goldenFile       string
 	}{
 		{
 			variables:  []string{"AirPollutant_Cancer_Risk"},
 			entities:   []string{"geoId/01001", "geoId/02013"},
 			goldenFile: "get_observations.json",
 		},
+		{
+			variables:        []string{"Count_Person", "Median_Age_Person"},
+			containedInPlace: &v2.ContainedInPlace{Ancestor: "geoId/06", ChildPlaceType: "County"},
+			goldenFile:       "get_observations_contained_in.json",
+		},
 	} {
-		actual, err := client.GetObservations(ctx, c.variables, c.entities)
+		var actual []*spanner.Observation
+		var err error
+
+		if c.containedInPlace != nil {
+			actual, err = client.GetObservationsContainedInPlace(ctx, c.variables, c.containedInPlace)
+		} else {
+			actual, err = client.GetObservations(ctx, c.variables, c.entities)
+		}
 		if err != nil {
 			t.Fatalf("GetObservations error (%v): %v", c.goldenFile, err)
+		}
+
+		got, err := test.StructToJSON(actual)
+		if err != nil {
+			t.Fatalf("StructToJSON error (%v): %v", c.goldenFile, err)
+		}
+
+		if test.GenerateGolden {
+			err = test.WriteGolden(got, goldenDir, c.goldenFile)
+			if err != nil {
+				t.Fatalf("WriteGolden error (%v): %v", c.goldenFile, err)
+			}
+			continue
+		}
+
+		want, err := test.ReadGolden(goldenDir, c.goldenFile)
+		if err != nil {
+			t.Fatalf("ReadGolden error (%v): %v", c.goldenFile, err)
+		}
+
+		if diff := cmp.Diff(want, got); diff != "" {
+			t.Errorf("%v payload mismatch (-want +got):\n%s", c.goldenFile, diff)
+		}
+	}
+
+}
+func TestSearchNodes(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+	ctx := context.Background()
+	_, filename, _, _ := runtime.Caller(0)
+	goldenDir := path.Join(path.Dir(filename), "query")
+
+	for _, c := range []struct {
+		query      string
+		types      []string
+		goldenFile string
+	}{
+		{
+			query:      "income",
+			types:      []string{"StatisticalVariable"},
+			goldenFile: "search_nodes_with_type.json",
+		},
+		{
+			query:      "income",
+			goldenFile: "search_nodes_without_type.json",
+		},
+	} {
+		actual, err := client.SearchNodes(ctx, c.query, c.types)
+		if err != nil {
+			t.Fatalf("SearchNodes error (%v): %v", c.goldenFile, err)
 		}
 
 		got, err := test.StructToJSON(actual)

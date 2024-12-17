@@ -14,6 +14,15 @@
         "hasData": true
       },
       {
+        "id": "Count_Company",
+        "searchNames": [
+          "Count of Company"
+        ],
+        "displayName": "Count of Company",
+        "definition": "mp=count,pt=Company",
+        "hasData": true
+      },
+      {
         "id": "FertilityRate_Person_Female",
         "searchNames": [
           "Fertility Rate of Person"
@@ -127,7 +136,7 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 28133
+        "descendentStatVarCount": 28137
       },
       {
         "id": "dc/g/Person_AgeGroupClassification",
@@ -301,7 +310,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 25234
+        "descendentStatVarCount": 25236
       },
       {
         "id": "dc/g/Person_GovernmentId",
@@ -403,7 +412,7 @@
         "id": "dc/g/Person_LaborForceStatus",
         "specializedEntity": "Labor Force Status",
         "displayName": "Person by Labor Force Status",
-        "descendentStatVarCount": 3201
+        "descendentStatVarCount": 3204
       },
       {
         "id": "dc/g/Language",
@@ -568,7 +577,7 @@
         "descendentStatVarCount": 4
       }
     ],
-    "descendentStatVarCount": 47360,
+    "descendentStatVarCount": 47368,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

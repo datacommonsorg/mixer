@@ -52,6 +52,7 @@ import "v2/observation.proto";
 import "v2/resolve.proto";
 
 import "v3/node.proto";
+import "v3/node_search.proto";
 import "v3/observation.proto";
 
 service Mixer {
@@ -68,6 +69,13 @@ service Mixer {
     option (google.api.http) = {
       get : "/v3/observation"
       additional_bindings : {post : "/v3/observation" body : "*"}
+    };
+  }
+
+  rpc V3NodeSearch(datacommons.v3.NodeSearchRequest) returns (datacommons.v3.NodeSearchResponse) {
+    option (google.api.http) = {
+      get : "/v3/node_search"
+      additional_bindings : {post : "/v3/node_search" body : "*"}
     };
   }
 

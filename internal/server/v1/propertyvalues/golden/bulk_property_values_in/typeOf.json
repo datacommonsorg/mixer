@@ -1853,6 +1853,15 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Federal District",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q119158",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
           "name": "Manipur",
           "types": [
             "AdministrativeArea1",
@@ -1953,12 +1962,30 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Paraná",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q15499",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
           "name": "Nagaland",
           "types": [
             "AdministrativeArea1",
             "State"
           ],
           "dcid": "wikidataId/Q1599",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "São Paulo",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q175",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
@@ -2106,12 +2133,120 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Paraíba",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q38088",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Minas Gerais",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q39109",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Pará",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q39517",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Rio Grande do Sul",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q40030",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Amazonas",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q40040",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Ceará",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q40123",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Amapá",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q40130",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Bahia",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q40430",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Acre",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q40780",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Alagoas",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q40885",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
           "name": "Andaman and Nicobar Islands",
           "types": [
             "AdministrativeArea1",
             "State"
           ],
           "dcid": "wikidataId/Q40888",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Pernambuco",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q40942",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Santa Catarina",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q41115",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
@@ -2124,6 +2259,96 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Rio de Janeiro",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q41428",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Goiás",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q41587",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Maranhão",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q42362",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Roraima",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q42508",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Piauí",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q42722",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Mato Grosso",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q42824",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Espírito Santo",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q43233",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Rondônia",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q43235",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Rio Grande do Norte",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q43255",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Mato Grosso do Sul",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q43319",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
           "name": "Chandigarh",
           "types": [
             "AdministrativeArea1",
@@ -2131,6 +2356,24 @@
             "State"
           ],
           "dcid": "wikidataId/Q43433",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Tocantins",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q43695",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Sergipe",
+          "types": [
+            "AdministrativeArea1",
+            "State"
+          ],
+          "dcid": "wikidataId/Q43783",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
@@ -12006,6 +12249,16 @@
             "City"
           ],
           "dcid": "wikidataId/Q2629052",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Kingston",
+          "types": [
+            "AdministrativeArea1",
+            "City",
+            "Parish"
+          ],
+          "dcid": "wikidataId/Q34692",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
