@@ -41,6 +41,7 @@ data:
   bigquery.version: {{ required "kgStoreConfig.bigqueryVersion is required." .Values.kgStoreConfig.bigqueryVersion }}
   base_bigtable_info.yaml: {{  required "baseBigtableInfo is required." .Values.kgStoreConfig.baseBigtableInfo | quote }}
   custom_bigtable_info.yaml: {{ .Values.kgStoreConfig.customBigtableInfo | quote }}
+  spanner_graph_info.yaml: {{ .Values.kgStoreConfig.spannerGraphInfo | quote }}
 
 ---
 

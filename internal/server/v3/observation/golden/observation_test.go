@@ -118,7 +118,7 @@ func TestV3Observation(t *testing.T) {
 				test.UpdateGolden(resp, goldenPath, goldenFile)
 				continue
 			}
-			var expected pbv3.NodeResponse
+			var expected pbv3.ObservationResponse
 			if err = test.ReadJSON(goldenPath, goldenFile, &expected); err != nil {
 				t.Errorf("Could not Unmarshal golden file: %s", err)
 				continue

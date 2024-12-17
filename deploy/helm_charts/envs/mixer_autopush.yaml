@@ -3,6 +3,7 @@ mixer:
   hostProject: datcom-mixer-autopush
   serviceName: autopush.api.datacommons.org
   cacheSVFormula: true
+  useSpannerGraph: true
 
 ingress:
   enabled: true

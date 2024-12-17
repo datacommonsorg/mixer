@@ -51,5 +51,6 @@ helm upgrade --install mixer-dev deploy/helm_charts/mixer \
     --set-file mixer.schemaConfigs."base\.mcf"=deploy/mapping/base.mcf \
     --set-file mixer.schemaConfigs."encode\.mcf"=deploy/mapping/encode.mcf \
     --set-file kgStoreConfig.bigqueryVersion=deploy/storage/bigquery.version \
-    --set-file kgStoreConfig.baseBigtableInfo=deploy/storage/base_bigtable_info.yaml
+    --set-file kgStoreConfig.baseBigtableInfo=deploy/storage/base_bigtable_info.yaml \
+    --set-file kgStoreConfig.spannerGraphInfo=deploy/storage/spanner_graph_info.yaml
 ```
