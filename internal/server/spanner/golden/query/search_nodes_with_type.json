@@ -350,6 +350,13 @@
     ]
   },
   {
+    "SubjectID": "oecd/IDD_INCACTOTAL_TOT_CURRENT_METH2011",
+    "Name": "Income Distribution Database: All age groups: mean disposable income (current prices), Total population, Current definition, Income definition until 2011",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
     "SubjectID": "oecd/IDD_INCCTOTAL_WA_INCOMPARABLE_METH2012",
     "Name": "Income Distribution Database: Mean disposable income (current prices), Working age population: 18-65, Previous definition - without overlap year, New income definition since 2012",
     "Types": [
@@ -371,6 +378,13 @@
     ]
   },
   {
+    "SubjectID": "oecd/IDD_P90P10_TOT_CURRENT_METH2012",
+    "Name": "Income Distribution Database: P90/P10 disposable income decile ratio, Total population, Current definition, New income definition since 2012",
+    "Types": [
+      "StatisticalVariable"
+    ]
+  },
+  {
     "SubjectID": "oecd/IDD_P90P50_TOT_INCOMPARABLE_METH2012",
     "Name": "Income Distribution Database: P90/P50  disposable income decile ratio, Total population, Previous definition - without overlap year, New income definition since 2012",
     "Types": [
@@ -387,20 +401,6 @@
   {
     "SubjectID": "oecd/IDD_SEICTOTAL_WA_INCOMPARABLE_METH2012",
     "Name": "Income Distribution Database: Income from self-employment and from goods produced for own consumption (current prices), Working age population: 18-65, Previous definition - without overlap year, New income definition since 2012",
-    "Types": [
-      "StatisticalVariable"
-    ]
-  },
-  {
-    "SubjectID": "oecd/IDD_INCACTOTAL_TOT_CURRENT_METH2011",
-    "Name": "Income Distribution Database: All age groups: mean disposable income (current prices), Total population, Current definition, Income definition until 2011",
-    "Types": [
-      "StatisticalVariable"
-    ]
-  },
-  {
-    "SubjectID": "oecd/IDD_P90P10_TOT_CURRENT_METH2012",
-    "Name": "Income Distribution Database: P90/P10 disposable income decile ratio, Total population, Current definition, New income definition since 2012",
     "Types": [
       "StatisticalVariable"
     ]
