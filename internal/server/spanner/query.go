@@ -58,193 +58,144 @@ var statements = struct {
 	searchNodesByQueryAndTypes string
 }{
 	getPropsBySubjectID: `
-	SELECT
-		DISTINCT subject_id,
-		predicate
-	FROM 
-		Edge
-	WHERE
-		subject_id IN UNNEST(@ids)
-	ORDER BY
-		subject_id,
-		predicate
+		GRAPH DCGraph MATCH -[e:Edge
+		WHERE 
+			e.subject_id IN UNNEST(@ids)]->
+		RETURN DISTINCT
+			e.subject_id,
+			e.predicate
 	`,
 	getPropsByObjectID: `
-	SELECT
-		DISTINCT object_id AS subject_id,
-		predicate
-	FROM
-		Edge
-	WHERE
-		object_id IN UNNEST(@ids)
-		AND object_value IS NULL
-	ORDER BY
-		subject_id,
-		predicate
+		GRAPH DCGraph MATCH -[e:Edge
+		WHERE
+			e.object_id IN UNNEST(@ids)
+			AND e.object_value IS NULL
+		]->
+		RETURN DISTINCT
+			e.object_id AS subject_id,
+			e.predicate
+		ORDER BY
+			subject_id,
+			predicate
 	`,
 	getEdgesBySubjectID: `
-	SELECT
-		result.subject_id,
-		result.predicate,
-		COALESCE(result.object_id, '') AS object_id,
-		COALESCE(result.object_value, '') AS object_value,
-		COALESCE(result.provenance, '') AS provenance,
-		COALESCE(result.name, '') AS name,
-		COALESCE(result.types, []) AS types
-	FROM (
-		SELECT
-			*
-		FROM
-			GRAPH_TABLE (
-				DCGRAPH MATCH -[e:Edge
-				WHERE
-					e.subject_id IN UNNEST(@ids)
-					AND e.object_value IS NULL
-					AND e.subject_id != e.object_id%[1]s]->(n:Node)
-				RETURN e.subject_id,
-					e.predicate,
-					e.object_id,
-					'' as object_value,
-					e.provenance,
-					n.name,
-					n.types
-			)
+		GRAPH DCGraph MATCH -[e:Edge
+		WHERE
+			e.subject_id IN UNNEST(@ids)
+			AND e.object_value IS NULL%[1]s]->(n:Node)
+		RETURN 
+			e.subject_id,
+			e.predicate,
+			e.object_id,
+			'' as object_value,
+			COALESCE(e.provenance, '') AS provenance,
+			COALESCE(n.name, '') AS name,
+			COALESCE(n.types, []) AS types
 		UNION ALL
-		SELECT
-			*
-		FROM
-			GRAPH_TABLE (
-				DCGraph MATCH -[e:Edge
-				WHERE
-					e.subject_id IN UNNEST(@ids)
-					AND e.object_value IS NOT NULL%[1]s]-> 
-				RETURN e.subject_id,
-					e.predicate,
-					'' as object_id,
-					e.object_value,
-					e.provenance,
-					'' AS name,
-					ARRAY<STRING>[] AS types
-			)
-	)result
+		MATCH -[e:Edge
+		WHERE
+			e.subject_id IN UNNEST(@ids)
+			AND e.object_value IS NOT NULL%[1]s]-> 
+		RETURN 
+			e.subject_id,
+			e.predicate,
+			'' as object_id,
+			e.object_value,
+			e.provenance,
+			'' AS name,
+			ARRAY<STRING>[] AS types
 	`,
 	getChainedEdgesBySubjectID: fmt.Sprintf(`
-	SELECT
-		result.subject_id,
-		@result_predicate AS predicate,
-		COALESCE(result.object_id, '') AS object_id,
-		COALESCE(result.object_value, '') AS object_value,
-		'' AS provenance,
-		COALESCE(result.name, '') AS name,
-		ARRAY<STRING>[] AS types
-	FROM (
-		SELECT
-			*
-		FROM
-			GRAPH_TABLE (
-				DCGRAPH MATCH (m:Node
-				WHERE
-					m.subject_id IN UNNEST(@ids))-[e:Edge
-				WHERE
-					e.predicate = @predicate]->{1,%d}(n:Node)
-				WHERE 
-					m != n
-				RETURN DISTINCT m.subject_id,
-					n.subject_id as object_id,
-					'' as object_value,
-					n.name
-			)
+		GRAPH DCGraph MATCH (m:Node
+		WHERE
+			m.subject_id IN UNNEST(@ids))-[e:Edge
+		WHERE
+			e.predicate = @predicate]->{1,%d}(n:Node)
+		WHERE 
+			m != n
+		RETURN DISTINCT 
+			m.subject_id,
+			n.subject_id as object_id,
+			'' as object_value,
+			COALESCE(n.name, '') AS name
 		UNION ALL
-		SELECT
-			*
-		FROM
-			GRAPH_TABLE (
-				DCGraph MATCH -[e:Edge
-				WHERE
-					e.subject_id IN UNNEST(@ids)
-					AND e.object_value IS NOT NULL
-					AND e.predicate = @predicate]-> 
-				RETURN e.subject_id,
-					'' AS object_id,
-					e.object_value,
-					'' AS name
-			)
-	)result
+		MATCH -[e:Edge
+		WHERE
+			e.subject_id IN UNNEST(@ids)
+			AND e.object_value IS NOT NULL
+			AND e.predicate = @predicate]-> 
+		RETURN 
+			e.subject_id,
+			'' AS object_id,
+			e.object_value,
+			'' AS name
+		NEXT
+		RETURN
+			subject_id,
+			@result_predicate AS predicate,
+			object_id,
+			object_value,
+			'' AS provenance,
+			name, 
+			ARRAY<STRING>[] AS types
 	`, MAX_HOPS),
 	getEdgesByObjectID: `
-	SELECT
-		result.subject_id,
-		result.predicate,
-		result.object_id,
-		'' AS object_value,
-		COALESCE(result.provenance, '') AS provenance,
-		COALESCE(result.name, '') AS name,
-		COALESCE(result.types, []) AS types,
-	FROM
-		GRAPH_TABLE (
-			DCGraph MATCH <-[e:Edge
-			WHERE
-				e.object_id IN UNNEST(@ids)
-				AND e.subject_id != e.object_id%s]-(n:Node) 
-			RETURN e.object_id AS subject_id,
-				e.predicate,
-				e.subject_id AS object_id,
-				e.provenance,
-				n.name,
-				n.types
-	)result
+		GRAPH DCGraph MATCH <-[e:Edge
+		WHERE
+			e.object_id IN UNNEST(@ids)
+			AND e.subject_id != e.object_id%s]-(n:Node) 
+		RETURN 
+			e.object_id AS subject_id,
+			e.predicate,
+			e.subject_id AS object_id,
+			'' AS object_value,
+			COALESCE(e.provenance, '') AS provenance,
+			COALESCE(n.name, '') AS name,
+			COALESCE(n.types, []) AS types
 	`,
 	getChainedEdgesByObjectID: fmt.Sprintf(`
-	SELECT
-		result.subject_id,
-		@result_predicate AS predicate,
-		result.object_id,
-		'' AS object_value,
-		'' AS provenance,
-		COALESCE(result.name, '') AS name,
-		ARRAY<STRING>[] AS types
-	FROM
-		GRAPH_TABLE (
-			DCGraph MATCH (m:Node
-			WHERE m.subject_id IN UNNEST(@ids))<-[e:Edge
+		GRAPH DCGraph MATCH (m:Node
+		WHERE m.subject_id IN UNNEST(@ids))<-[e:Edge
 		WHERE
 			e.predicate = @predicate]-{1,%d}(n:Node) 
 		WHERE
 			m!= n	
-		RETURN DISTINCT m.subject_id,
+		RETURN DISTINCT 
+			m.subject_id,
 			n.subject_id AS object_id,
-			n.name
-		)result
-	`, MAX_HOPS),
+			COALESCE(n.name, '') AS name
+		NEXT
+		RETURN
+			subject_id, 
+			@result_predicate AS predicate,
+			object_id,
+			'' AS object_value,
+			'' AS provenance, 
+			name, 
+			ARRAY<STRING>[] AS types
+		`, MAX_HOPS),
 	filterProps: `
-	AND e.predicate IN UNNEST(@props)
+		AND e.predicate IN UNNEST(@props)
 	`,
 	filterObjects: `
-	INNER JOIN (
-		SELECT 
-			*
-		FROM
-			GRAPH_TABLE (
-				DCGraph MATCH -[e:Edge 
-				WHERE
-					e.predicate = @prop%[1]d
-					AND e.object_id IN UNNEST(@val%[1]d)]-> 
-				RETURN e.subject_id
-			)
-		UNION DISTINCT
-		SELECT
-			*
-		FROM
-			GRAPH_TABLE (
-				DCGraph MATCH -[e:Edge
-				WHERE
-					e.predicate = @prop%[1]d
-					AND e.object_value IN UNNEST(@val%[1]d)]->
-				RETURN e.subject_id
-			) 			
-	)filter%[1]d
-	ON 
-		result.object_id = filter%[1]d.subject_id
+		NEXT 
+		MATCH -[e:Edge 
+		WHERE
+			e.predicate = @prop%[1]d
+			AND (
+				e.object_id IN UNNEST(@val%[1]d)
+				OR e.object_value IN UNNEST(@val%[1]d)
+			)]-> 
+		WHERE
+			e.subject_id = object_id
+		RETURN
+			subject_id,
+			predicate,
+			object_id,
+			object_value,
+			provenance,
+			name,
+			types			
 	`,
 	getObsByVariableAndEntity: `
 		SELECT
@@ -283,22 +234,14 @@ var statements = struct {
 					AND e.predicate = 'linkedContainedInPlace']-
 				RETURN 
 				e.subject_id as object_id
-			)result
-
-		INNER JOIN (
-		SELECT 
-			*
-		FROM GRAPH_TABLE (
-				DCGraph MATCH -[e:Edge 
+				NEXT
+				MATCH -[e:Edge 
 				WHERE
 					e.predicate = 'typeOf'
 					AND e.object_id = @childPlaceType]-> 
-				RETURN e.subject_id
-			)           
-		)filter1
-		ON 
-			result.object_id = filter1.subject_id
-
+				WHERE e.subject_id = object_id
+				RETURN object_id
+			)result
 		INNER JOIN (
 		SELECT
 			*
