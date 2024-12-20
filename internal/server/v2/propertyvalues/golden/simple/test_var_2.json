@@ -5,8 +5,9 @@
         "measuredProperty": {
           "nodes": [
             {
+              "name": "total number of sql joins",
               "types": [
-                "Thing"
+                "StatisticalVariable"
               ],
               "dcid": "test_var_2"
             }
@@ -15,8 +16,9 @@
         "memberOf": {
           "nodes": [
             {
+              "name": "SQLite stat var group",
               "types": [
-                "Thing"
+                "StatVarGroup"
               ],
               "dcid": "dc/g/SQLite"
             }

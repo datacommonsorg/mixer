@@ -33,6 +33,14 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+const (
+	namePredicate   = "name"
+	typeOfPredicate = "typeOf"
+	subjectIdColumn = "subject_id"
+	objectIdColumn  = "object_id"
+	defaultType     = "Thing"
+)
+
 // Fetch is the generic handler to fetch property values for multiple
 // properties and nodes.
 //
@@ -107,11 +115,76 @@ func fetchSQL(
 	}
 	var matchColumn string
 	if direction == util.DirectionOut {
-		matchColumn = "subject_id"
+		matchColumn = subjectIdColumn
 	} else {
-		matchColumn = "object_id"
+		matchColumn = objectIdColumn
 	}
 
+	// Get triples for the specified nodes and properties.
+	triples, err := executeTriplesSQL(sqlClient, nodes, properties, matchColumn)
+	if err != nil {
+		return nil, err
+	}
+
+	// Collect all dcids from the triples and get their entity infos (name and type).
+	// NOTE: This will only fetch info on entities that are in the SQL database.
+	// If any dcids reference entities in base DC - those will not be fetched.
+	// If we want them as well, we'll need to make a remote mixer call to fetch them.
+	entityInfos, err := executeEntityInfoSQL(sqlClient, collectDcids(triples))
+	if err != nil {
+		return nil, err
+	}
+
+	resp := map[string]map[string]map[string][]*pb.EntityInfo{}
+	for _, node := range nodes {
+		resp[node] = map[string]map[string][]*pb.EntityInfo{}
+	}
+
+	for _, row := range triples {
+		var n string
+		if matchColumn == subjectIdColumn {
+			n = row.SubjectID
+		} else {
+			n = row.ObjectID
+		}
+		if _, ok := resp[n][row.Predicate]; !ok {
+			resp[n][row.Predicate] = map[string][]*pb.EntityInfo{}
+		}
+		if matchColumn == subjectIdColumn {
+			entityInfo, ok := entityInfos[row.ObjectID]
+			if !ok {
+				entityInfo = newEntityInfo()
+			}
+			if _, ok := resp[n][row.Predicate][entityInfo.Type]; !ok {
+				resp[n][row.Predicate][entityInfo.Type] = []*pb.EntityInfo{}
+			}
+			resp[n][row.Predicate][entityInfo.Type] = append(
+				resp[n][row.Predicate][entityInfo.Type],
+				&pb.EntityInfo{
+					Dcid:  row.ObjectID,
+					Value: row.ObjectValue,
+					Types: []string{entityInfo.Type},
+					Name:  entityInfo.Name,
+				},
+			)
+		} else {
+			// object value uses "" as type
+			if _, ok := resp[n][row.Predicate][""]; !ok {
+				resp[n][row.Predicate][""] = []*pb.EntityInfo{}
+			}
+			resp[n][row.Predicate][""] = append(
+				resp[n][row.Predicate][""],
+				&pb.EntityInfo{
+					Dcid: row.SubjectID,
+				},
+			)
+		}
+	}
+	return resp, nil
+}
+
+// executeTriplesSQL executes the SQL query to fetch triples data.
+func executeTriplesSQL(sqlClient *sql.DB, nodes []string, properties []string, matchColumn string) ([]*triple, error) {
 	nodeParam, err := util.SQLListParam(sqlClient, len(nodes))
 	if err != nil {
 		return nil, err
@@ -123,22 +196,22 @@ func fetchSQL(
 
 	query := fmt.Sprintf(
 		`
-			WITH node_list(node) AS (
-					%s
-			),
-			prop_list(prop) AS (
-					%s
-			),
-			all_pairs AS (
-					SELECT n.node, p.prop
-					FROM node_list n
-					CROSS JOIN prop_list p
-			)
-			SELECT subject_id, predicate, object_id, object_value
-			FROM all_pairs a
-			INNER JOIN triples t ON a.node = t.%s AND a.prop = t.predicate
-			GROUP BY a.node, a.prop, subject_id, predicate, object_id, object_value;
-		`,
+            WITH node_list(node) AS (
+                    %s
+            ),
+            prop_list(prop) AS (
+                    %s
+            ),
+            all_pairs AS (
+                    SELECT n.node, p.prop
+                    FROM node_list n
+                    CROSS JOIN prop_list p
+            )
+            SELECT subject_id, predicate, COALESCE(object_id, ''), COALESCE(object_value, '')
+            FROM all_pairs a
+            INNER JOIN triples t ON a.node = t.%s AND a.prop = t.predicate
+            GROUP BY a.node, a.prop, subject_id, predicate, object_id, object_value;
+        `,
 		nodeParam,
 		propertyParam,
 		matchColumn,
@@ -146,60 +219,112 @@ func fetchSQL(
 	args := []string{}
 	args = append(args, nodes...)
 	args = append(args, properties...)
-	// Execute query
+
 	rows, err := sqlClient.Query(query, util.ConvertArgs(args)...)
 	if err != nil {
 		return nil, err
 	}
 	defer rows.Close()
 
-	resp := map[string]map[string]map[string][]*pb.EntityInfo{}
-	for _, node := range nodes {
-		resp[node] = map[string]map[string][]*pb.EntityInfo{}
-	}
+	var triples []*triple
+
 	for rows.Next() {
-		var subject_id, predicate, object_id, object_value string
-		err = rows.Scan(&subject_id, &predicate, &object_id, &object_value)
+		var result triple
+		err = rows.Scan(&result.SubjectID, &result.Predicate, &result.ObjectID, &result.ObjectValue)
 		if err != nil {
 			return nil, err
 		}
-		var n string
-		if matchColumn == "subject_id" {
-			n = subject_id
-		} else {
-			n = object_id
+		triples = append(triples, &result)
+
+	}
+
+	if err = rows.Err(); err != nil {
+		return nil, err
+	}
+
+	return triples, nil
+}
+
+// executeEntityInfoSQL executes the SQL query to fetch entity info (name and type) of the specified dcids.
+func executeEntityInfoSQL(sqlClient *sql.DB, dcids []string) (map[string]*entityInfo, error) {
+	entityInfos := map[string]*entityInfo{}
+	if len(dcids) == 0 {
+		return entityInfos, nil
+	}
+
+	query := fmt.Sprintf(
+		`
+            SELECT subject_id, predicate, COALESCE(object_id, ''), COALESCE(object_value, '')
+			FROM triples
+			WHERE subject_id IN (%s) AND predicate IN ('%s', '%s');
+        `,
+		util.SQLInParam(len(dcids)),
+		namePredicate,
+		typeOfPredicate,
+	)
+	args := []string{}
+	args = append(args, dcids...)
+
+	rows, err := sqlClient.Query(query, util.ConvertArgs(args)...)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var result triple
+		err = rows.Scan(&result.SubjectID, &result.Predicate, &result.ObjectID, &result.ObjectValue)
+		if err != nil {
+			return nil, err
 		}
-		if _, ok := resp[n][predicate]; !ok {
-			resp[n][predicate] = map[string][]*pb.EntityInfo{}
+		entityInfo, ok := entityInfos[result.SubjectID]
+		if !ok {
+			entityInfo = newEntityInfo()
+			entityInfos[result.SubjectID] = entityInfo
 		}
-		if matchColumn == "subject_id" {
-			// Always use "Thing" as type for SQLite node. Will need to improve this
-			// if necessary.
-			if _, ok := resp[n][predicate]["Thing"]; !ok {
-				resp[n][predicate]["Thing"] = []*pb.EntityInfo{}
-			}
-			resp[n][predicate]["Thing"] = append(
-				resp[n][predicate]["Thing"],
-				&pb.EntityInfo{
-					Dcid:  object_id,
-					Value: object_value,
-					Types: []string{"Thing"},
-				},
-			)
-		} else {
-			// object value uses "" as type
-			if _, ok := resp[n][predicate][""]; !ok {
-				resp[n][predicate][""] = []*pb.EntityInfo{}
-			}
-			resp[n][predicate][""] = append(
-				resp[n][predicate][""],
-				&pb.EntityInfo{
-					Dcid: subject_id,
-				},
-			)
+		if result.Predicate == namePredicate {
+			entityInfo.Name = result.ObjectValue
+		} else if result.Predicate == typeOfPredicate {
+			entityInfo.Type = result.ObjectID
 		}
 	}
-	return resp, nil
+
+	if err = rows.Err(); err != nil {
+		return nil, err
+	}
+
+	return entityInfos, nil
+}
+
+func collectDcids(triples []*triple) []string {
+	dcidSet := map[string]struct{}{}
+	for _, t := range triples {
+		dcidSet[t.SubjectID] = struct{}{}
+		if t.ObjectID != "" {
+			dcidSet[t.ObjectID] = struct{}{}
+		}
+	}
+	dcids := []string{}
+	for dcid := range dcidSet {
+		dcids = append(dcids, dcid)
+	}
+	return dcids
+}
+
+func newEntityInfo() *entityInfo {
+	return &entityInfo{Type: defaultType}
+}
+
+type triple struct {
+	SubjectID   string
+	Predicate   string
+	ObjectID    string
+	ObjectValue string
+}
+
+type entityInfo struct {
+	Name string
+	Type string
 }
 
 // fetchBT fetch property values from Bigtable Cache
