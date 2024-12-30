@@ -322,9 +322,9 @@ func TestSearchNodes(t *testing.T) {
 		}
 
 		// Filter actual to top 20 matches to avoid flaky low matches.
-		filtered := actual[:20]
+		topResp := actual[:20]
 
-		got, err := test.StructToJSON(filtered)
+		got, err := test.StructToJSON(topResp)
 		if err != nil {
 			t.Fatalf("StructToJSON error (%v): %v", c.goldenFile, err)
 		}
