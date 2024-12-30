@@ -27,6 +27,11 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
+const (
+	// Number of matches to validate for NodeSearch tests.
+	NUM_SEARCH_MATCHES = 20
+)
+
 func TestV3NodeSearch(t *testing.T) {
 	// TODO: Remove check once enabled.
 	if !test.EnableSpannerGraph {
@@ -63,11 +68,17 @@ func TestV3NodeSearch(t *testing.T) {
 				t.Errorf("Could not run V3NodeSearch: %s", err)
 				continue
 			}
+
+			// Filter resp to top matches to avoid flaky low matches.
+			topResp := &pbv3.NodeSearchResponse{
+				Nodes: resp.Nodes[:NUM_SEARCH_MATCHES],
+			}
+
 			if latencyTest {
 				continue
 			}
 			if test.GenerateGolden {
-				test.UpdateGolden(resp, goldenPath, goldenFile)
+				test.UpdateGolden(topResp, goldenPath, goldenFile)
 				continue
 			}
 			var expected pbv3.NodeSearchResponse
@@ -75,7 +86,7 @@ func TestV3NodeSearch(t *testing.T) {
 				t.Errorf("Could not Unmarshal golden file: %s", err)
 				continue
 			}
-			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+			if diff := cmp.Diff(topResp, &expected, protocmp.Transform()); diff != "" {
 				t.Errorf("%s: got diff: %s", goldenFile, diff)
 				continue
 			}

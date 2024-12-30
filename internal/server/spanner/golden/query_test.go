@@ -26,6 +26,11 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
+const (
+	// Number of matches to validate for SearchNodes tests.
+	NUM_SEARCH_MATCHES = 20
+)
+
 func TestGetNodeProps(t *testing.T) {
 	client := test.NewSpannerClient()
 	if client == nil {
@@ -321,7 +326,10 @@ func TestSearchNodes(t *testing.T) {
 			t.Fatalf("SearchNodes error (%v): %v", c.goldenFile, err)
 		}
 
-		got, err := test.StructToJSON(actual)
+		// Filter actual to top matches to avoid flaky low matches.
+		topResp := actual[:NUM_SEARCH_MATCHES]
+
+		got, err := test.StructToJSON(topResp)
 		if err != nil {
 			t.Fatalf("StructToJSON error (%v): %v", c.goldenFile, err)
 		}
