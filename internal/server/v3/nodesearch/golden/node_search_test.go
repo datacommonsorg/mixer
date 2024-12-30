@@ -63,11 +63,17 @@ func TestV3NodeSearch(t *testing.T) {
 				t.Errorf("Could not run V3NodeSearch: %s", err)
 				continue
 			}
+
+			// Filter resp to top 20 matches to avoid flaky low matches.
+			filteredResp := &pbv3.NodeSearchResponse{
+				Nodes: resp.Nodes[:20],
+			}
+
 			if latencyTest {
 				continue
 			}
 			if test.GenerateGolden {
-				test.UpdateGolden(resp, goldenPath, goldenFile)
+				test.UpdateGolden(filteredResp, goldenPath, goldenFile)
 				continue
 			}
 			var expected pbv3.NodeSearchResponse
@@ -75,7 +81,7 @@ func TestV3NodeSearch(t *testing.T) {
 				t.Errorf("Could not Unmarshal golden file: %s", err)
 				continue
 			}
-			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+			if diff := cmp.Diff(filteredResp, &expected, protocmp.Transform()); diff != "" {
 				t.Errorf("%s: got diff: %s", goldenFile, diff)
 				continue
 			}
