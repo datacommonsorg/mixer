@@ -54,6 +54,7 @@ import "v2/resolve.proto";
 import "v3/node.proto";
 import "v3/node_search.proto";
 import "v3/observation.proto";
+import "v3/resolve.proto";
 
 service Mixer {
   // ======================  V3   V3   V3   V3  ======================
@@ -76,6 +77,13 @@ service Mixer {
     option (google.api.http) = {
       get : "/v3/node_search"
       additional_bindings : {post : "/v3/node_search" body : "*"}
+    };
+  }
+
+  rpc V3Resolve(datacommons.v3.ResolveRequest) returns (datacommons.v3.ResolveResponse) {
+    option (google.api.http) = {
+      get : "/v3/resolve"
+      additional_bindings : {post : "/v3/resolve" body : "*"}
     };
   }
 
