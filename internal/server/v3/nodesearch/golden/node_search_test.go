@@ -27,6 +27,11 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
+const (
+	// Number of matches to validate for NodeSearch tests.
+	NUM_SEARCH_MATCHES = 20
+)
+
 func TestV3NodeSearch(t *testing.T) {
 	// TODO: Remove check once enabled.
 	if !test.EnableSpannerGraph {
@@ -64,9 +69,9 @@ func TestV3NodeSearch(t *testing.T) {
 				continue
 			}
 
-			// Filter resp to top 20 matches to avoid flaky low matches.
+			// Filter resp to top matches to avoid flaky low matches.
 			topResp := &pbv3.NodeSearchResponse{
-				Nodes: resp.Nodes[:20],
+				Nodes: resp.Nodes[:NUM_SEARCH_MATCHES],
 			}
 
 			if latencyTest {
