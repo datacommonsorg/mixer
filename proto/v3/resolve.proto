@@ -18,8 +18,6 @@ package datacommons.v3;
 
 option go_package = "github.com/datacommonsorg/mixer/internal/proto/v3";
 
-import "entity.proto";
-
 // Three modes are supported:
 //
 // 1. ID to ID:
@@ -40,8 +38,12 @@ message ResolveRequest{
 
 message ResolveResponse{
     message Entity {
+        message Candidate {
+            string dcid = 1;
+            string dominant_type = 2;
+        }
         string node = 1;
-        repeated datacommons.EntityInfo candidates = 2;
+        repeated Candidate candidates = 2;
     }
     repeated Entity entities = 1;
 }
