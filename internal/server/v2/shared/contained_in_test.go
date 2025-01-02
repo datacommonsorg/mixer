@@ -17,7 +17,6 @@ package shared
 
 import (
 	"context"
-	"database/sql"
 	"net/http"
 	"reflect"
 	"testing"
@@ -25,6 +24,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
@@ -33,7 +33,7 @@ func TestFetchChildPlaces(t *testing.T) {
 	ctx := context.Background()
 
 	s := &store.Store{
-		SQLClient: &sql.DB{},
+		SQLClient: &sqldb.SQLClient{},
 	}
 	metadata := &resource.Metadata{}
 	httpClient := &http.Client{}

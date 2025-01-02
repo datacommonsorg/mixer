@@ -57,7 +57,7 @@ func GetStatVarSummaryHelper(
 
 	if store.SQLClient != nil {
 		errGroup.Go(func() error {
-			sql, err := sqlGetStatVarSummary(entities, store.SQLClient)
+			sql, err := sqlGetStatVarSummary(entities, store.SQLClient.DB)
 			if err != nil {
 				return err
 			}

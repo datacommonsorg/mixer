@@ -134,7 +134,7 @@ func BulkObservationDatesLinked(
 		if err != nil {
 			return nil, err
 		}
-		sqlResult, err := sqlquery.DateEntityCount(store.SQLClient, variables, childPlaces)
+		sqlResult, err := sqlquery.DateEntityCount(store.SQLClient.DB, variables, childPlaces)
 		if err != nil {
 			return nil, err
 		}

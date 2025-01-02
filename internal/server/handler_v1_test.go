@@ -16,13 +16,13 @@ package server
 
 import (
 	"context"
-	"database/sql"
 	"net/http"
 	"testing"
 
 	"github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/go-test/deep"
 )
@@ -33,7 +33,7 @@ func TestBulkVariableInfo(t *testing.T) {
 
 	s := Server{
 		store: &store.Store{
-			SQLClient: &sql.DB{},
+			SQLClient: &sqldb.SQLClient{},
 		},
 		metadata:   &resource.Metadata{},
 		httpClient: &http.Client{},

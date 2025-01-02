@@ -17,7 +17,6 @@ package test
 import (
 	"bytes"
 	"context"
-	"database/sql"
 	"encoding/json"
 	"log"
 	"net"
@@ -152,14 +151,14 @@ func setupInternal(
 	if err != nil {
 		log.Fatalf("failed to create Bigquery client: %v", err)
 	}
-	// SQLite
-	var sqlClient *sql.DB
+	// SQL client
+	var sqlClient *sqldb.SQLClient
 	if useSQLite {
-		sqlClient, err = sql.Open("sqlite", filepath.Join(path.Dir(filename), "./datacommons.db"))
+		sqlClient, err = sqldb.NewSQLiteClient(filepath.Join(path.Dir(filename), "./datacommons.db"))
 		if err != nil {
 			log.Fatalf("Failed to read sqlite database: %v", err)
 		}
-		err = sqldb.CheckSchema(sqlClient)
+		err = sqldb.CheckSchema(sqlClient.DB)
 		if err != nil {
 			log.Fatalf("SQL schema check failed: %v", err)
 		}

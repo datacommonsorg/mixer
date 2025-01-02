@@ -113,7 +113,7 @@ func GetPlacesIn(
 		}
 
 		// Execute query
-		rows, err := store.SQLClient.Query(query, util.ConvertArgs(args)...)
+		rows, err := store.SQLClient.DB.Query(query, util.ConvertArgs(args)...)
 		if err != nil {
 			return nil, err
 		}

@@ -88,7 +88,7 @@ func countInternal(
 		for _, sv := range allSV {
 			requestSV[sv] = struct{}{}
 		}
-		requestSVG, err := sqlquery.CheckVariableGroups(st.SQLClient, svOrSvgs)
+		requestSVG, err := sqlquery.CheckVariableGroups(st.SQLClient.DB, svOrSvgs)
 		if err != nil {
 			return nil, err
 		}
