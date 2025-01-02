@@ -203,7 +203,7 @@ func FetchContainedIn(
 				query += fmt.Sprintf("AND date = (%s) ", queryDate)
 			}
 			query += "ORDER BY date ASC;"
-			rows, err := store.SQLClient.Query(query)
+			rows, err := store.SQLClient.DB.Query(query)
 			if err != nil {
 				return nil, err
 			}
@@ -223,7 +223,7 @@ func FetchContainedIn(
 			}
 			directResp, err := sqlquery.GetObservations(
 				ctx,
-				store.SQLClient,
+				store.SQLClient.DB,
 				sqlProvenances,
 				variables,
 				childPlaces,

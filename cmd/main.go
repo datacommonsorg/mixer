@@ -16,7 +16,6 @@ package main
 
 import (
 	"context"
-	"database/sql"
 	"flag"
 	"fmt"
 	"log"
@@ -35,8 +34,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
-	"github.com/datacommonsorg/mixer/internal/sqldb/cloudsql"
-	"github.com/datacommonsorg/mixer/internal/sqldb/sqlite"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -50,7 +47,6 @@ import (
 	"google.golang.org/grpc/health/grpc_health_v1"
 
 	cbt "cloud.google.com/go/bigtable"
-	_ "modernc.org/sqlite" // import the sqlite driver
 )
 
 var (
@@ -205,10 +201,10 @@ func main() {
 		log.Fatalf("Failed to create metadata: %v", err)
 	}
 
-	// SQLite DB
-	var sqlClient *sql.DB
+	// SQL client
+	var sqlClient *sqldb.SQLClient
 	if *useSQLite {
-		sqlClient, err = sqlite.ConnectDB(*sqlitePath)
+		sqlClient, err = sqldb.NewSQLiteClient(*sqlitePath)
 		if err != nil {
 			log.Fatalf("Cannot open sqlite database from: %s: %v", *sqlitePath, err)
 		}
@@ -219,7 +215,7 @@ func main() {
 		if sqlClient != nil {
 			log.Printf("SQL client has already been created, will not use CloudSQL")
 		} else {
-			sqlClient, err = cloudsql.ConnectWithConnector(*cloudSQLInstance)
+			sqlClient, err = sqldb.NewCloudSQLClient(*cloudSQLInstance)
 			if err != nil {
 				log.Fatalf("Cannot open cloud sql database from %s: %v", *cloudSQLInstance, err)
 			}
@@ -229,11 +225,11 @@ func main() {
 
 	// Create tables for new database.
 	if *useSQLite || *useCloudSQL {
-		if err := sqldb.CreateTables(sqlClient); err != nil {
+		if err := sqldb.CreateTables(sqlClient.DB); err != nil {
 			log.Fatalf("Can not create tables in database: %v", err)
 		}
 
-		err = sqldb.CheckSchema(sqlClient)
+		err = sqldb.CheckSchema(sqlClient.DB)
 		if err != nil {
 			log.Fatalf("SQL schema check failed: %v", err)
 		}

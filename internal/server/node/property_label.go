@@ -92,7 +92,7 @@ func GetPropertiesHelper(
 			)
 		}
 		// Execute query
-		rows, err := store.SQLClient.Query(query, util.ConvertArgs(nodes)...)
+		rows, err := store.SQLClient.DB.Query(query, util.ConvertArgs(nodes)...)
 		if err != nil {
 			return nil, err
 		}
