@@ -16,7 +16,6 @@ package sqlquery
 
 import (
 	"context"
-	"fmt"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
@@ -41,7 +40,7 @@ func GetObservations(
 	}
 
 	// Query SQL.
-	obsRows, err := sqlClient.GetObservations(variables, entities, queryDate)
+	obsRows, err := sqlClient.GetObservations(ctx, variables, entities, queryDate)
 	if err != nil {
 		return nil, err
 	}
@@ -161,29 +160,6 @@ func toFacet(
 	facet.MeasurementMethod = measurementMethod
 	facet.ObservationPeriod = observationPeriod
 	return util.GetFacetID(facet), facet
-}
-
-func getObservationsSQLQuery(variables []string,
-	entities []string, queryDate string) (string, []interface{}) {
-	var args []interface{}
-	query := fmt.Sprintf(
-		`
-			SELECT entity, variable, date, value, provenance, unit, scaling_factor, measurement_method, observation_period, properties FROM observations
-			WHERE entity IN (%s)
-			AND variable IN (%s)
-			AND value != ''
-		`,
-		util.SQLInParam(len(entities)),
-		util.SQLInParam(len(variables)),
-	)
-	args = append(args, util.ConvertArgs(entities)...)
-	args = append(args, util.ConvertArgs(variables)...)
-	if queryDate != "" && queryDate != shared.LATEST {
-		query += "AND date = ? "
-		args = append(args, queryDate)
-	}
-	query += "ORDER BY date ASC;"
-	return query, args
 }
 
 // The internal structs below are for generating an intermediate response from the SQL response to simplify generating the final ObservationResponse.

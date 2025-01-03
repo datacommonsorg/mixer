@@ -16,6 +16,8 @@
 package sqldb
 
 import (
+	"context"
+
 	"github.com/jmoiron/sqlx"
 )
 
@@ -24,7 +26,7 @@ const (
 )
 
 // GetObservations retrieves observations from SQL given a list of variables and entities and a date.
-func (sc *SQLClient) GetObservations(variables []string, entities []string, date string) ([]*Observation, error) {
+func (sc *SQLClient) GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*Observation, error) {
 	var observations []*Observation
 	if len(variables) == 0 || len(entities) == 0 {
 		return observations, nil

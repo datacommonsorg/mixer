@@ -12,13 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Queries executed by the SQLClient.
+// Query statements used by the SQLClient.
 package sqldb
-
-const (
-	// Maximum number of edge hops to traverse for chained properties.
-	MAX_HOPS = 10
-)
 
 // SQL statements executed by the SQLClient
 var statements = struct {
