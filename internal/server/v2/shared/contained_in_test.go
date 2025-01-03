@@ -24,7 +24,6 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
@@ -32,9 +31,7 @@ func TestFetchChildPlaces(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	s := &store.Store{
-		SQLClient: &sqldb.SQLClient{},
-	}
+	s := &store.Store{}
 	metadata := &resource.Metadata{}
 	httpClient := &http.Client{}
 

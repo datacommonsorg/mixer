@@ -101,7 +101,7 @@ func FetchAllSVG(
 			}
 		}
 	}
-	if store.SQLClient != nil {
+	if store.SQLClient.DB != nil {
 		sqlResult, err := fetchSQLSVGs(store.SQLClient.DB)
 		if err != nil {
 			return nil, err

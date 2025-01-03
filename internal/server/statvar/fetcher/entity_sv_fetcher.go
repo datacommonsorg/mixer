@@ -72,7 +72,7 @@ func FetchEntityVariables(
 		}
 	}
 	// Fetch from SQL database
-	if store.SQLClient != nil {
+	if store.SQLClient.DB != nil {
 		query := fmt.Sprintf(
 			`
 				SELECT entity, GROUP_CONCAT(DISTINCT variable) AS variables

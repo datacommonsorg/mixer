@@ -76,7 +76,7 @@ func GetPlacesIn(
 			}
 		}
 	}
-	if store.SQLClient != nil {
+	if store.SQLClient.DB != nil {
 		var query string
 		var args []string
 		if len(parentPlaces) == 1 && parentPlaces[0] == childPlaceType {

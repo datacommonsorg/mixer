@@ -202,23 +202,25 @@ func main() {
 	}
 
 	// SQL client
-	var sqlClient *sqldb.SQLClient
+	var sqlClient sqldb.SQLClient
 	if *useSQLite {
-		sqlClient, err = sqldb.NewSQLiteClient(*sqlitePath)
+		client, err := sqldb.NewSQLiteClient(*sqlitePath)
 		if err != nil {
 			log.Fatalf("Cannot open sqlite database from: %s: %v", *sqlitePath, err)
 		}
+		sqlClient.DB = client.DB
 		defer sqlClient.Close()
 	}
 
 	if *useCloudSQL {
-		if sqlClient != nil {
+		if sqlClient.DB != nil {
 			log.Printf("SQL client has already been created, will not use CloudSQL")
 		} else {
-			sqlClient, err = sqldb.NewCloudSQLClient(*cloudSQLInstance)
+			client, err := sqldb.NewCloudSQLClient(*cloudSQLInstance)
 			if err != nil {
 				log.Fatalf("Cannot open cloud sql database from %s: %v", *cloudSQLInstance, err)
 			}
+			sqlClient.DB = client.DB
 			defer sqlClient.Close()
 		}
 	}
@@ -236,7 +238,7 @@ func main() {
 	}
 
 	// Store
-	if len(tables) == 0 && *remoteMixerDomain == "" && sqlClient == nil {
+	if len(tables) == 0 && *remoteMixerDomain == "" && sqlClient.DB == nil {
 		log.Fatal("No bigtables or remote mixer domain or sql database are provided")
 	}
 	store, err := store.NewStore(
@@ -250,7 +252,7 @@ func main() {
 	cacheOptions := cache.CacheOptions{
 		FetchSVG:       *cacheSVG,
 		SearchSVG:      *cacheSVG,
-		CacheSQL:       store.SQLClient != nil,
+		CacheSQL:       store.SQLClient.DB != nil,
 		CacheSVFormula: *cacheSVFormula,
 	}
 	c, err := cache.NewCache(ctx, store, cacheOptions, metadata)

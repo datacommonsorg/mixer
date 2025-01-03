@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -93,7 +94,7 @@ func TestMerge(t *testing.T) {
 
 		store, err := store.NewStore(
 			nil,
-			nil,
+			sqldb.SQLClient{},
 			[]*bigtable.Table{
 				bigtable.NewTable("borgcron_base", baseTable, false /*isCustom=*/),
 				bigtable.NewTable("borgcron_branch", branchTable, false /*isCustom=*/),

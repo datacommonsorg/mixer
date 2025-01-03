@@ -33,7 +33,7 @@ import (
 func GetStatVarSummaryHelper(
 	ctx context.Context, entities []string, store *store.Store) (
 	map[string]*pb.StatVarSummary, error) {
-	if store.BtGroup == nil && store.SQLClient == nil {
+	if store.BtGroup == nil && store.SQLClient.DB == nil {
 		return nil, status.Error(codes.Internal, "No store found")
 	}
 
@@ -55,7 +55,7 @@ func GetStatVarSummaryHelper(
 		btChan <- map[string]*pb.StatVarSummary{}
 	}
 
-	if store.SQLClient != nil {
+	if store.SQLClient.DB != nil {
 		errGroup.Go(func() error {
 			sql, err := sqlGetStatVarSummary(entities, store.SQLClient.DB)
 			if err != nil {

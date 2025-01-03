@@ -76,7 +76,7 @@ func countInternal(
 			}
 		}
 	}
-	if st.SQLClient != nil {
+	if st.SQLClient.DB != nil {
 		// all SV contains the SV in the request and child SV in the request SVG.
 		allSV := []string{}
 		for _, svOrSvg := range svOrSvgs {
