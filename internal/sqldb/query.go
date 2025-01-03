@@ -55,6 +55,7 @@ func (sc *SQLClient) GetObservations(ctx context.Context, variables []string, en
 	}
 
 	err := sc.queryAndCollect(
+		ctx,
 		stmt,
 		&observations,
 	)
@@ -66,6 +67,7 @@ func (sc *SQLClient) GetObservations(ctx context.Context, variables []string, en
 }
 
 func (sc *SQLClient) queryAndCollect(
+	ctx context.Context,
 	stmt statement,
 	dest interface{},
 ) error {
@@ -84,7 +86,7 @@ func (sc *SQLClient) queryAndCollect(
 	// Transform query to the driver's placeholder type.
 	query = sc.dbx.Rebind(query)
 
-	return sc.dbx.Select(dest, query, args...)
+	return sc.dbx.SelectContext(ctx, dest, query, args...)
 }
 
 // statement struct includes the sql query and named args used to execute a sql query.
