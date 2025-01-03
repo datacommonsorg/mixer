@@ -76,7 +76,7 @@ func GetPropertiesHelper(
 		}
 	}
 	// Fetch data from SQLite
-	if store.SQLClient != nil {
+	if store.SQLClient.DB != nil {
 		var query string
 		if direction == util.DirectionOut {
 			query = fmt.Sprintf(

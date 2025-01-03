@@ -183,7 +183,7 @@ func FetchContainedIn(
 
 	// Fetch Data from SQLite database.
 	var sqlResult *pbv2.ObservationResponse
-	if store.SQLClient != nil {
+	if store.SQLClient.DB != nil {
 		if ancestor == childType {
 			sqlResult = initObservationResult(variables)
 			variablesStr := "'" + strings.Join(variables, "', '") + "'"

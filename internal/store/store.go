@@ -27,13 +27,17 @@ type Store struct {
 	BqClient        *bigquery.Client
 	BtGroup         *bigtable.Group
 	RecogPlaceStore *files.RecogPlaceStore
-	SQLClient       *sqldb.SQLClient
+	// TODO: Make SQLClient a pointer instead of a value once SQLClient.DB is made internal.
+	// Currently the direct DB connection is referenced at many places
+	// and a nil SQLClient pointer leads to NPEs.
+	// Using a value avoids those situations.
+	SQLClient sqldb.SQLClient
 }
 
 // NewStore creates a new store.
 func NewStore(
 	bqClient *bigquery.Client,
-	sqlClient *sqldb.SQLClient,
+	sqlClient sqldb.SQLClient,
 	tables []*bigtable.Table,
 	branchTableName string,
 	metadata *resource.Metadata,

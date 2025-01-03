@@ -73,7 +73,7 @@ func Fetch(
 	}
 	// No pagination for sqlite query, so if there is a pagination token, meaning
 	// the data has already been queried and returned in previous query.
-	if store.SQLClient != nil && token == "" {
+	if store.SQLClient.DB != nil && token == "" {
 		sqlResp, err := fetchSQL(store.SQLClient.DB, nodes, properties, direction)
 		if err != nil {
 			return nil, nil, err
