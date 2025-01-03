@@ -10,7 +10,7 @@ require (
 	cloud.google.com/go/pubsub v1.33.0
 	cloud.google.com/go/secretmanager v1.11.1
 	cloud.google.com/go/storage v1.33.0
-	github.com/go-sql-driver/mysql v1.7.1
+	github.com/go-sql-driver/mysql v1.8.1
 	github.com/go-test/deep v1.0.7
 	github.com/golang/geo v0.0.0-20230421003525-6adc56603217
 	github.com/google/go-cmp v0.5.9
@@ -25,6 +25,11 @@ require (
 	googlemaps.github.io/maps v1.5.0
 	gopkg.in/yaml.v3 v3.0.1
 	modernc.org/sqlite v1.31.1
+)
+
+require (
+	filippo.io/edwards25519 v1.1.0 // indirect
+	github.com/jmoiron/sqlx v1.4.0 // indirect
 )
 
 require (

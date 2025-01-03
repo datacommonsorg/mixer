@@ -158,7 +158,7 @@ func setupInternal(
 		if err != nil {
 			log.Fatalf("Failed to read sqlite database: %v", err)
 		}
-		sqlClient.DB = client.DB
+		sqlClient.UseConnections(client)
 		err = sqldb.CheckSchema(sqlClient.DB)
 		if err != nil {
 			log.Fatalf("SQL schema check failed: %v", err)

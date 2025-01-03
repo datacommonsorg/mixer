@@ -208,7 +208,7 @@ func main() {
 		if err != nil {
 			log.Fatalf("Cannot open sqlite database from: %s: %v", *sqlitePath, err)
 		}
-		sqlClient.DB = client.DB
+		sqlClient.UseConnections(client)
 		defer sqlClient.Close()
 	}
 
@@ -220,7 +220,7 @@ func main() {
 			if err != nil {
 				log.Fatalf("Cannot open cloud sql database from %s: %v", *cloudSQLInstance, err)
 			}
-			sqlClient.DB = client.DB
+			sqlClient.UseConnections(client)
 			defer sqlClient.Close()
 		}
 	}

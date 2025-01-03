@@ -16,12 +16,11 @@ package sqlquery
 
 import (
 	"context"
-	"database/sql"
-	"fmt"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/protobuf/proto"
 )
@@ -29,30 +28,25 @@ import (
 // GetObservations fetches observations from the specified SQL database.
 func GetObservations(
 	ctx context.Context,
-	sqlClient *sql.DB,
+	sqlClient *sqldb.SQLClient,
 	sqlProvenances map[string]*pb.Facet,
 	variables []string,
 	entities []string,
 	queryDate string,
 	filter *pbv2.FacetFilter,
 ) (*pbv2.ObservationResponse, error) {
-	if sqlClient == nil || len(variables) == 0 {
+	if !sqldb.IsConnected(sqlClient) || len(variables) == 0 {
 		return newObservationResponse(variables), nil
 	}
 
 	// Query SQL.
-	query, args := getObservationsSQLQuery(variables, entities, queryDate)
-	rows, err := sqlClient.Query(query, args...)
+	obsRows, err := sqlClient.GetObservations(ctx, variables, entities, queryDate)
 	if err != nil {
 		return nil, err
 	}
-	defer rows.Close()
 
 	// Generate intermediate response.
-	intermediateResponse, err := generateIntermediateResponse(rows, sqlProvenances)
-	if err != nil {
-		return nil, err
-	}
+	intermediateResponse := generateIntermediateResponse(obsRows, sqlProvenances)
 
 	// Generate ObservationResponse.
 	return generateObservationResponse(intermediateResponse, variables, queryDate), nil
@@ -94,47 +88,31 @@ func generateObservationResponse(
 }
 
 func generateIntermediateResponse(
-	rows *sql.Rows,
+	obsRows []*sqldb.Observation,
 	cachedProvenances map[string]*pb.Facet,
-) (*intermediateObservationResponse, error) {
+) *intermediateObservationResponse {
 	intermediate := intermediateObservationResponse{
 		byFacet:     make(map[byFacetKey]*byFacetValue),
 		orderedKeys: []*byFacetKey{},
 	}
-	for rows.Next() {
-		var entity, variable, date, provenance, unit, scalingFactor, measurementMethod, observationPeriod, properties string
-		var value float64
-		if err := rows.Scan(
-			&entity,
-			&variable,
-			&date,
-			&value,
-			&provenance,
-			&unit,
-			&scalingFactor,
-			&measurementMethod,
-			&observationPeriod,
-			&properties,
-		); err != nil {
-			return nil, err
-		}
+	for _, obsRow := range obsRows {
 		observation := &pb.PointStat{
-			Date:  date,
-			Value: proto.Float64(value),
+			Date:  obsRow.Date,
+			Value: proto.Float64(obsRow.Value),
 		}
 
 		facetId, facet := toFacet(
 			cachedProvenances,
-			provenance,
-			unit,
-			scalingFactor,
-			measurementMethod,
-			observationPeriod,
-			properties,
+			obsRow.Provenance,
+			obsRow.Unit,
+			obsRow.ScalingFactor,
+			obsRow.MeasurementMethod,
+			obsRow.ObservationPeriod,
+			obsRow.Properties,
 		)
 		intermediateByFacetKey := byFacetKey{
-			variable: variable,
-			entity:   entity,
+			variable: obsRow.Variable,
+			entity:   obsRow.Entity,
 			facetId:  facetId,
 		}
 		intermediateByFacetValue := intermediate.byFacet[intermediateByFacetKey]
@@ -149,7 +127,7 @@ func generateIntermediateResponse(
 		intermediateByFacetValue.observations = append(intermediateByFacetValue.observations, observation)
 	}
 
-	return &intermediate, rows.Err()
+	return &intermediate
 }
 
 func newObservationResponse(variables []string) *pbv2.ObservationResponse {
@@ -182,29 +160,6 @@ func toFacet(
 	facet.MeasurementMethod = measurementMethod
 	facet.ObservationPeriod = observationPeriod
 	return util.GetFacetID(facet), facet
-}
-
-func getObservationsSQLQuery(variables []string,
-	entities []string, queryDate string) (string, []interface{}) {
-	var args []interface{}
-	query := fmt.Sprintf(
-		`
-			SELECT entity, variable, date, value, provenance, unit, scaling_factor, measurement_method, observation_period, properties FROM observations
-			WHERE entity IN (%s)
-			AND variable IN (%s)
-			AND value != ''
-		`,
-		util.SQLInParam(len(entities)),
-		util.SQLInParam(len(variables)),
-	)
-	args = append(args, util.ConvertArgs(entities)...)
-	args = append(args, util.ConvertArgs(variables)...)
-	if queryDate != "" && queryDate != shared.LATEST {
-		query += "AND date = ? "
-		args = append(args, queryDate)
-	}
-	query += "ORDER BY date ASC;"
-	return query, args
 }
 
 // The internal structs below are for generating an intermediate response from the SQL response to simplify generating the final ObservationResponse.

@@ -223,7 +223,7 @@ func FetchContainedIn(
 			}
 			directResp, err := sqlquery.GetObservations(
 				ctx,
-				store.SQLClient.DB,
+				&store.SQLClient,
 				sqlProvenances,
 				variables,
 				childPlaces,

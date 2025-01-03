@@ -89,7 +89,7 @@ func FetchDirect(
 	}
 	sqlObservation, err := sqlquery.GetObservations(
 		ctx,
-		store.SQLClient.DB,
+		&store.SQLClient,
 		sqlProvenances,
 		variables,
 		entities,
