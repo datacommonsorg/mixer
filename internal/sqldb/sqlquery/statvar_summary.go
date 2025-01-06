@@ -15,17 +15,18 @@
 package sqlquery
 
 import (
-	"database/sql"
+	"context"
 	"fmt"
 	"strings"
 	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
 // GetStatVarSummaries returns summaries of the specified statvars.
-func GetStatVarSummaries(sqlClient *sql.DB, statvars []string) (map[string]*pb.StatVarSummary, error) {
+func GetStatVarSummaries(ctx context.Context, sqlClient *sqldb.SQLClient, statvars []string) (map[string]*pb.StatVarSummary, error) {
 	defer util.TimeTrack(time.Now(), fmt.Sprintf("SQL: GetStatVarSummaries (%s)", strings.Join(statvars, ", ")))
 
 	summaries := map[string]*pb.StatVarSummary{}
@@ -34,40 +35,30 @@ func GetStatVarSummaries(sqlClient *sql.DB, statvars []string) (map[string]*pb.S
 		return summaries, nil
 	}
 
-	rows, err := sqlClient.Query(getSQLQuery(statvars), util.ConvertArgs(statvars)...)
+	rows, err := sqlClient.GetSVSummaries(ctx, statvars)
 	if err != nil {
 		return nil, err
 	}
-	defer rows.Close()
 
-	for rows.Next() {
-		var variable, entityType, sampleEntityIds string
-		var entityCount int32
-		var minValue, maxValue float64
-
-		err = rows.Scan(&variable, &entityType, &entityCount, &minValue, &maxValue, &sampleEntityIds)
-		if err != nil {
-			return nil, err
-		}
-		if _, ok := summaries[variable]; !ok {
-			summaries[variable] = &pb.StatVarSummary{
+	for _, row := range rows {
+		if _, ok := summaries[row.Variable]; !ok {
+			summaries[row.Variable] = &pb.StatVarSummary{
 				PlaceTypeSummary: map[string]*pb.StatVarSummary_PlaceTypeSummary{},
 			}
 		}
 
-		summaries[variable].PlaceTypeSummary[entityType] = &pb.StatVarSummary_PlaceTypeSummary{
-			PlaceCount: entityCount,
-			MinValue:   &minValue,
-			MaxValue:   &maxValue,
-			TopPlaces:  toPlaces(sampleEntityIds),
+		summaries[row.Variable].PlaceTypeSummary[row.EntityType] = &pb.StatVarSummary_PlaceTypeSummary{
+			PlaceCount: row.EntityCount,
+			MinValue:   &row.MinValue,
+			MaxValue:   &row.MaxValue,
+			TopPlaces:  toPlaces(row.SampleEntityIds),
 		}
 	}
 
 	return summaries, nil
 }
 
-func toPlaces(sampleEntityIds string) []*pb.StatVarSummary_Place {
-	entityIds := strings.Split(sampleEntityIds, ",")
+func toPlaces(entityIds []string) []*pb.StatVarSummary_Place {
 	places := []*pb.StatVarSummary_Place{}
 	for _, entityId := range entityIds {
 		places = append(places, &pb.StatVarSummary_Place{
@@ -76,66 +67,4 @@ func toPlaces(sampleEntityIds string) []*pb.StatVarSummary_Place {
 		})
 	}
 	return places
-}
-
-func getSQLQuery(statvars []string) string {
-	return fmt.Sprintf(
-		`
-WITH entity_types
-     AS (SELECT o.variable               AS variable,
-                t.object_id              AS entity_type,
-                Count(DISTINCT o.entity) AS entity_count,
-                Min(o.value + 0.0)       AS min_value,
-                Max(o.value + 0.0)       AS max_value
-         FROM   observations o
-                JOIN triples t
-                  ON o.entity = t.subject_id
-         WHERE  o.variable IN ( %s )
-                AND t.predicate = 'typeOf'
-         GROUP  BY variable,
-                   entity_type
-         ORDER  BY entity_count DESC),
-     entities
-     AS (SELECT DISTINCT o.variable   variable,
-                         t.object_id  entity_type,
-                         t.subject_id entity_id
-         FROM   triples t
-                JOIN observations o
-                  ON o.entity = t.subject_id
-         WHERE  t.predicate = 'typeOf'
-                AND t.object_id IN (SELECT entity_type
-                                    FROM   entity_types)
-                AND o.variable IN (SELECT DISTINCT variable
-                                   FROM   entity_types)),
-     sample_entities
-     AS (SELECT variable,
-                entity_type,
-                entity_id
-         FROM   (SELECT *,
-                        Row_number()
-                          OVER (
-                            partition BY variable, entity_type) AS row_num
-                 FROM   entities) AS entities_with_row_num
-         WHERE  row_num <= 3),
-     grouped_entities
-     AS (SELECT variable,
-                entity_type,
-                Group_concat(entity_id) AS sample_entity_ids
-         FROM   sample_entities
-         GROUP  BY variable,
-                   entity_type),
-     aggregate
-     AS (SELECT variable,
-                entity_type,
-                entity_count,
-                min_value,
-                max_value,
-                sample_entity_ids
-         FROM   entity_types
-                JOIN grouped_entities using(variable, entity_type))
-SELECT *
-FROM   aggregate;
-	`,
-		util.SQLInParam(len(statvars)),
-	)
 }

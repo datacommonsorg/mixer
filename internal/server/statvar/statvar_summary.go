@@ -16,10 +16,10 @@ package statvar
 
 import (
 	"context"
-	"database/sql"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -57,7 +57,7 @@ func GetStatVarSummaryHelper(
 
 	if store.SQLClient.DB != nil {
 		errGroup.Go(func() error {
-			sql, err := sqlGetStatVarSummary(entities, store.SQLClient.DB)
+			sql, err := sqlGetStatVarSummary(ctx, entities, &store.SQLClient)
 			if err != nil {
 				return err
 			}
@@ -78,9 +78,9 @@ func GetStatVarSummaryHelper(
 
 }
 
-func sqlGetStatVarSummary(entities []string, sqlClient *sql.DB) (
+func sqlGetStatVarSummary(ctx context.Context, entities []string, sqlClient *sqldb.SQLClient) (
 	map[string]*pb.StatVarSummary, error) {
-	return sqlquery.GetStatVarSummaries(sqlClient, entities)
+	return sqlquery.GetStatVarSummaries(ctx, sqlClient, entities)
 }
 
 func btGetStatVarSummary(
