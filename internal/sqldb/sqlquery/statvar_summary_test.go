@@ -15,7 +15,7 @@
 package sqlquery
 
 import (
-	"database/sql"
+	"context"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -25,11 +25,11 @@ import (
 )
 
 func TestGetStatVarSummaries(t *testing.T) {
-	sqlClient, err := sql.Open("sqlite", "../../../test/sqlquery/statvar_summary/datacommons.db")
+	sqlClient, err := sqldb.NewSQLiteClient("../../../test/sqlquery/statvar_summary/datacommons.db")
 	if err != nil {
 		t.Fatalf("Could not open testing database: %v", err)
 	}
-	err = sqldb.CheckSchema(sqlClient)
+	err = sqldb.CheckSchema(sqlClient.DB)
 	if err != nil {
 		t.Fatalf("SQL schema check failed: %v", err)
 	}
@@ -82,7 +82,7 @@ func TestGetStatVarSummaries(t *testing.T) {
 		},
 	}
 
-	got, err := GetStatVarSummaries(sqlClient, []string{"var1", "var2"})
+	got, err := GetStatVarSummaries(context.Background(), sqlClient, []string{"var1", "var2"})
 	if err != nil {
 		t.Fatalf("Error getting stat var summaries: %v", err)
 	}

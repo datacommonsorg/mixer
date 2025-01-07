@@ -66,6 +66,32 @@ func (sc *SQLClient) GetObservations(ctx context.Context, variables []string, en
 	return observations, nil
 }
 
+// GetSVSummaries retrieves summaries for the specified variables.
+func (sc *SQLClient) GetSVSummaries(ctx context.Context, variables []string) ([]*SVSummary, error) {
+	var summaries []*SVSummary
+	if len(variables) == 0 {
+		return summaries, nil
+	}
+
+	stmt := statement{
+		query: statements.getStatVarSummaries,
+		args: map[string]interface{}{
+			"variables": variables,
+		},
+	}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		&summaries,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return summaries, nil
+}
+
 func (sc *SQLClient) queryAndCollect(
 	ctx context.Context,
 	stmt statement,

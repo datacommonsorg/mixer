@@ -15,6 +15,11 @@
 // Model objects related to the SQL database.
 package sqldb
 
+import (
+	"fmt"
+	"strings"
+)
+
 // Observation struct to represent a row in the observations table
 type Observation struct {
 	Entity            string  `db:"entity"`
@@ -27,4 +32,32 @@ type Observation struct {
 	MeasurementMethod string  `db:"measurement_method"`
 	ObservationPeriod string  `db:"observation_period"`
 	Properties        string  `db:"properties"`
+}
+
+// SVSummary represents a SV summary row.
+type SVSummary struct {
+	Variable        string      `db:"variable"`
+	EntityType      string      `db:"entity_type"`
+	EntityCount     int32       `db:"entity_count"`
+	MinValue        float64     `db:"min_value"`
+	MaxValue        float64     `db:"max_value"`
+	SampleEntityIds StringSlice `db:"sample_entity_ids"`
+}
+
+// StringSlice is a custom scanner for comma-separated strings.
+type StringSlice []string
+
+// Scan implements the sql.Scanner interface and decodes a comma-separated string field into a StringSlice ([]string) value.
+func (s *StringSlice) Scan(src interface{}) error {
+	if src == nil {
+		*s = []string{}
+		return nil
+	}
+
+	val, ok := src.(string)
+	if !ok {
+		return fmt.Errorf("failed to decode []string: (%v)", src)
+	}
+	*s = strings.Split(val, ",")
+	return nil
 }
