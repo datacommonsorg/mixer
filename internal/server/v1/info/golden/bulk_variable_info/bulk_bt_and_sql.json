@@ -24,7 +24,7 @@
             "maxValue": 1214384
           },
           "AdministrativeArea1": {
-            "placeCount": 339,
+            "placeCount": 313,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q15175",
@@ -452,7 +452,7 @@
             "maxValue": 4543807
           },
           "State": {
-            "placeCount": 110,
+            "placeCount": 112,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1498",
@@ -647,25 +647,6 @@
                     "minValue": 816,
                     "maxValue": 36986320
                   },
-                  "AdministrativeArea1": {
-                    "placeCount": 27,
-                    "topPlaces": [
-                      {
-                        "dcid": "wikidataId/Q175",
-                        "name": "São Paulo"
-                      },
-                      {
-                        "dcid": "wikidataId/Q39109",
-                        "name": "Minas Gerais"
-                      },
-                      {
-                        "dcid": "wikidataId/Q41428",
-                        "name": "Rio de Janeiro"
-                      }
-                    ],
-                    "minValue": 0,
-                    "maxValue": 18893040
-                  },
                   "AdministrativeArea2": {
                     "placeCount": 3859,
                     "topPlaces": [
@@ -714,6 +695,25 @@
                     ],
                     "minValue": 20589957,
                     "maxValue": 86223155
+                  },
+                  "State": {
+                    "placeCount": 27,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q175",
+                        "name": "São Paulo"
+                      },
+                      {
+                        "dcid": "wikidataId/Q39109",
+                        "name": "Minas Gerais"
+                      },
+                      {
+                        "dcid": "wikidataId/Q41428",
+                        "name": "Rio de Janeiro"
+                      }
+                    ],
+                    "minValue": 0,
+                    "maxValue": 18893040
                   }
                 },
                 "minValue": 0,
@@ -3723,11 +3723,11 @@
                 },
                 "minValue": 138616,
                 "maxValue": 169165495,
-                "observationCount": 2878,
+                "observationCount": 2929,
                 "timeSeriesCount": 52
               }
             ],
-            "observationCount": 172223,
+            "observationCount": 172274,
             "timeSeriesCount": 3208
           },
           "dc/base/Vietnam_Census": {
