@@ -17,7 +17,6 @@ package shared
 
 import (
 	"context"
-	"database/sql"
 	"net/http"
 	"reflect"
 	"testing"
@@ -32,9 +31,7 @@ func TestFetchChildPlaces(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
 
-	s := &store.Store{
-		SQLClient: &sql.DB{},
-	}
+	s := &store.Store{}
 	metadata := &resource.Metadata{}
 	httpClient := &http.Client{}
 

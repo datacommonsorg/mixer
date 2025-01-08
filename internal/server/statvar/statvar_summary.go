@@ -16,10 +16,10 @@ package statvar
 
 import (
 	"context"
-	"database/sql"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -33,7 +33,7 @@ import (
 func GetStatVarSummaryHelper(
 	ctx context.Context, entities []string, store *store.Store) (
 	map[string]*pb.StatVarSummary, error) {
-	if store.BtGroup == nil && store.SQLClient == nil {
+	if store.BtGroup == nil && !sqldb.IsConnected(&store.SQLClient) {
 		return nil, status.Error(codes.Internal, "No store found")
 	}
 
@@ -55,9 +55,9 @@ func GetStatVarSummaryHelper(
 		btChan <- map[string]*pb.StatVarSummary{}
 	}
 
-	if store.SQLClient != nil {
+	if sqldb.IsConnected(&store.SQLClient) {
 		errGroup.Go(func() error {
-			sql, err := sqlGetStatVarSummary(entities, store.SQLClient)
+			sql, err := sqlGetStatVarSummary(ctx, entities, &store.SQLClient)
 			if err != nil {
 				return err
 			}
@@ -78,9 +78,9 @@ func GetStatVarSummaryHelper(
 
 }
 
-func sqlGetStatVarSummary(entities []string, sqlClient *sql.DB) (
+func sqlGetStatVarSummary(ctx context.Context, entities []string, sqlClient *sqldb.SQLClient) (
 	map[string]*pb.StatVarSummary, error) {
-	return sqlquery.GetStatVarSummaries(sqlClient, entities)
+	return sqlquery.GetStatVarSummaries(ctx, sqlClient, entities)
 }
 
 func btGetStatVarSummary(

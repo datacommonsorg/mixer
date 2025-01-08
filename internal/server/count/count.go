@@ -76,7 +76,7 @@ func countInternal(
 			}
 		}
 	}
-	if st.SQLClient != nil {
+	if st.SQLClient.DB != nil {
 		// all SV contains the SV in the request and child SV in the request SVG.
 		allSV := []string{}
 		for _, svOrSvg := range svOrSvgs {
@@ -88,7 +88,7 @@ func countInternal(
 		for _, sv := range allSV {
 			requestSV[sv] = struct{}{}
 		}
-		requestSVG, err := sqlquery.CheckVariableGroups(st.SQLClient, svOrSvgs)
+		requestSVG, err := sqlquery.CheckVariableGroups(st.SQLClient.DB, svOrSvgs)
 		if err != nil {
 			return nil, err
 		}

@@ -128,13 +128,13 @@ func BulkObservationDatesLinked(
 	}
 
 	// Read data from SQL store.
-	if store.SQLClient != nil {
+	if store.SQLClient.DB != nil {
 		childPlaces, err := shared.FetchChildPlaces(
 			ctx, store, metadata, httpClient, metadata.RemoteMixerDomain, linkedEntity, entityType)
 		if err != nil {
 			return nil, err
 		}
-		sqlResult, err := sqlquery.DateEntityCount(store.SQLClient, variables, childPlaces)
+		sqlResult, err := sqlquery.DateEntityCount(store.SQLClient.DB, variables, childPlaces)
 		if err != nil {
 			return nil, err
 		}

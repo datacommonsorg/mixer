@@ -125,8 +125,8 @@ func SeriesFacet(
 			}
 		}
 	}
-	if store.SQLClient != nil {
-		observationCount, err := sqlquery.CountObservation(store.SQLClient, entities, variables)
+	if store.SQLClient.DB != nil {
+		observationCount, err := sqlquery.CountObservation(store.SQLClient.DB, entities, variables)
 		if err != nil {
 			return nil, err
 		}

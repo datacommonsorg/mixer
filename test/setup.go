@@ -17,7 +17,6 @@ package test
 import (
 	"bytes"
 	"context"
-	"database/sql"
 	"encoding/json"
 	"log"
 	"net"
@@ -152,14 +151,15 @@ func setupInternal(
 	if err != nil {
 		log.Fatalf("failed to create Bigquery client: %v", err)
 	}
-	// SQLite
-	var sqlClient *sql.DB
+	// SQL client
+	var sqlClient sqldb.SQLClient
 	if useSQLite {
-		sqlClient, err = sql.Open("sqlite", filepath.Join(path.Dir(filename), "./datacommons.db"))
+		client, err := sqldb.NewSQLiteClient(filepath.Join(path.Dir(filename), "./datacommons.db"))
 		if err != nil {
 			log.Fatalf("Failed to read sqlite database: %v", err)
 		}
-		err = sqldb.CheckSchema(sqlClient)
+		sqlClient.UseConnections(client)
+		err = sqldb.CheckSchema(sqlClient.DB)
 		if err != nil {
 			log.Fatalf("SQL schema check failed: %v", err)
 		}
@@ -217,7 +217,7 @@ func SetupBqOnly() (pbs.MixerClient, error) {
 	if err != nil {
 		return nil, err
 	}
-	st, err := store.NewStore(bqClient, nil, nil, "", nil)
+	st, err := store.NewStore(bqClient, sqldb.SQLClient{}, nil, "", nil)
 	if err != nil {
 		return nil, err
 	}

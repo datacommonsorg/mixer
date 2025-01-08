@@ -15,10 +15,9 @@
 package store
 
 import (
-	"database/sql"
-
 	"cloud.google.com/go/bigquery"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/store/files"
 )
@@ -28,13 +27,17 @@ type Store struct {
 	BqClient        *bigquery.Client
 	BtGroup         *bigtable.Group
 	RecogPlaceStore *files.RecogPlaceStore
-	SQLClient       *sql.DB
+	// TODO: Make SQLClient a pointer instead of a value once SQLClient.DB is made internal.
+	// Currently the direct DB connection is referenced at many places
+	// and a nil SQLClient pointer leads to NPEs.
+	// Using a value avoids those situations.
+	SQLClient sqldb.SQLClient
 }
 
 // NewStore creates a new store.
 func NewStore(
 	bqClient *bigquery.Client,
-	sqlClient *sql.DB,
+	sqlClient sqldb.SQLClient,
 	tables []*bigtable.Table,
 	branchTableName string,
 	metadata *resource.Metadata,

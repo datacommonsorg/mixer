@@ -16,7 +16,6 @@ package server
 
 import (
 	"context"
-	"database/sql"
 	"net/http"
 	"testing"
 
@@ -32,9 +31,7 @@ func TestBulkVariableInfo(t *testing.T) {
 	ctx := context.Background()
 
 	s := Server{
-		store: &store.Store{
-			SQLClient: &sql.DB{},
-		},
+		store:      &store.Store{},
 		metadata:   &resource.Metadata{},
 		httpClient: &http.Client{},
 	}
