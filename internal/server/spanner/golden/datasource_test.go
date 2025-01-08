@@ -45,7 +45,7 @@ func TestNode(t *testing.T) {
 	}{
 		{
 			req: &v3.NodeRequest{
-				Nodes:    []string{"Count_Person", "Person"},
+				Nodes:    []string{"Person", "Count_Person"},
 				Property: "->",
 			},
 			goldenFile: "properties.json",

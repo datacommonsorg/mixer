@@ -1,5 +1,16 @@
 {
   "data": {
+    "Person": {
+      "properties": [
+        "equivalentClass",
+        "extendedName",
+        "localCuratorLevelId",
+        "name",
+        "source",
+        "subClassOf",
+        "typeOf"
+      ]
+    },
     "Count_Person": {
       "properties": [
         "extendedName",
@@ -9,17 +20,6 @@
         "name",
         "populationType",
         "statType",
-        "typeOf"
-      ]
-    },
-    "Person": {
-      "properties": [
-        "equivalentClass",
-        "extendedName",
-        "localCuratorLevelId",
-        "name",
-        "source",
-        "subClassOf",
         "typeOf"
       ]
     }
