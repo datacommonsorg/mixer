@@ -61,3 +61,18 @@ func (s *StringSlice) Scan(src interface{}) error {
 	*s = strings.Split(val, ",")
 	return nil
 }
+
+// StatVarGroup represents a StatVarGroup row.
+type StatVarGroup struct {
+	ID       string `db:"svg_id"`
+	Name     string `db:"svg_name"`
+	ParentID string `db:"svg_parent_id"`
+}
+
+// StatisticalVariable represents a StatisticalVariable row.
+type StatisticalVariable struct {
+	ID          string `db:"sv_id"`
+	Name        string `db:"sv_name"`
+	SVGID       string `db:"svg_id"`
+	Description string `db:"sv_description"`
+}

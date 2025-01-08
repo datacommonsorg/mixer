@@ -18,11 +18,17 @@ package sqldb
 import (
 	"context"
 
+	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/jmoiron/sqlx"
+	"google.golang.org/protobuf/proto"
+	"google.golang.org/protobuf/reflect/protoreflect"
 )
 
 const (
+	// Requests for latest dates include this literal for date in the request.
 	latestDate = "LATEST"
+	// Key for SV groups in the key_value_store table.
+	StatVarGroupsKey = "StatVarGroups"
 )
 
 // GetObservations retrieves observations from SQL given a list of variables and entities and a date.
@@ -90,6 +96,83 @@ func (sc *SQLClient) GetSVSummaries(ctx context.Context, variables []string) ([]
 	}
 
 	return summaries, nil
+}
+
+// GetStatVarGroups retrieves all StatVarGroups from the database.
+func (sc *SQLClient) GetStatVarGroups(ctx context.Context) ([]*StatVarGroup, error) {
+	var svgs []*StatVarGroup
+
+	stmt := statement{
+		query: statements.getAllStatVarGroups,
+		args:  map[string]interface{}{},
+	}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		&svgs,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return svgs, nil
+}
+
+// GetAllStatisticalVariables retrieves all SVs from the database.
+func (sc *SQLClient) GetAllStatisticalVariables(ctx context.Context) ([]*StatisticalVariable, error) {
+	var svs []*StatisticalVariable
+
+	stmt := statement{
+		query: statements.getAllStatVars,
+		args:  map[string]interface{}{},
+	}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		&svs,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return svs, nil
+}
+
+// GetKeyValue gets the value for the specified key from the key_value_store table.
+// If not found, returns false.
+// If found, unmarshals the value into the specified proto and returns true.
+func (sc *SQLClient) GetKeyValue(ctx context.Context, key string, out protoreflect.ProtoMessage) (bool, error) {
+	stmt := statement{
+		query: statements.getKeyValue,
+		args: map[string]interface{}{
+			"key": key,
+		},
+	}
+
+	values := []string{}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		&values,
+	)
+	if err != nil || len(values) == 0 {
+		return false, err
+	}
+
+	bytes, err := util.UnzipAndDecode(values[0])
+	if err != nil {
+		return false, err
+	}
+
+	err = proto.Unmarshal(bytes, out)
+	if err != nil {
+		return false, err
+	}
+
+	return true, nil
 }
 
 func (sc *SQLClient) queryAndCollect(

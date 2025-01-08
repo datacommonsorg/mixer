@@ -20,6 +20,9 @@ var statements = struct {
 	getObsByVariableAndEntity     string
 	getObsByVariableEntityAndDate string
 	getStatVarSummaries           string
+	getKeyValue                   string
+	getAllStatVarGroups           string
+	getAllStatVars                string
 }{
 	getObsByVariableAndEntity: `
 		SELECT entity, variable, date, value, provenance, unit, scaling_factor, measurement_method, observation_period, properties 
@@ -97,5 +100,35 @@ var statements = struct {
 					JOIN grouped_entities using(variable, entity_type))
 		SELECT *
 		FROM   aggregate;
+	`,
+	getKeyValue: `
+		SELECT value
+		FROM key_value_store
+		WHERE lookup_key = :key;
+	`,
+	getAllStatVarGroups: `
+		SELECT t1.subject_id svg_id, t2.object_value svg_name, t3.object_id svg_parent_id
+		FROM 
+			triples t1 
+			JOIN triples t2 ON t1.subject_id = t2.subject_id
+			JOIN triples t3 ON t1.subject_id = t3.subject_id
+		WHERE 
+			t1.predicate="typeOf"
+			AND t1.object_id="StatVarGroup"
+			AND t2.predicate="name"
+			AND t3.predicate="specializationOf";
+	`,
+	getAllStatVars: `
+		SELECT t1.subject_id sv_id, t2.object_value sv_name, t3.object_id AS svg_id, COALESCE(t4.object_value, '') sv_description
+		FROM 
+			triples t1
+			JOIN triples t2 ON t1.subject_id = t2.subject_id
+			JOIN triples t3 ON t1.subject_id = t3.subject_id
+			LEFT JOIN triples t4 ON t1.subject_id = t4.subject_id AND t4.predicate = "description"
+		WHERE 
+			t1.predicate="typeOf"
+			AND t1.object_id="StatisticalVariable"
+			AND t2.predicate="name"
+			AND t3.predicate="memberOf";
 	`,
 }
