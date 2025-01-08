@@ -140,6 +140,71 @@ func (sc *SQLClient) GetAllStatisticalVariables(ctx context.Context) ([]*Statist
 	return svs, nil
 }
 
+// GetEntityCount returns number of entities (from given candidates) by variable, date and provenance.
+func (sc *SQLClient) GetEntityCount(ctx context.Context, variables []string, entities []string) ([]*EntityCount, error) {
+	var counts []*EntityCount
+	if len(variables) == 0 || len(entities) == 0 {
+		return counts, nil
+	}
+
+	stmt := statement{
+		query: statements.getEntityCountByVariableDateAndProvenance,
+		args: map[string]interface{}{
+			"variables": variables,
+			"entities":  entities,
+		},
+	}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		&counts,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return counts, nil
+}
+
+// GetNodePredicates retrieves (node, predicate) pairs from SQL for the specified entities in the specified direction (in or out).
+func (sc *SQLClient) GetNodePredicates(ctx context.Context, entities []string, direction string) ([]*NodePredicate, error) {
+	var observations []*NodePredicate
+	if len(entities) == 0 {
+		return observations, nil
+	}
+
+	var stmt statement
+
+	switch direction {
+	case util.DirectionOut:
+		stmt = statement{
+			query: statements.getSubjectPredicates,
+			args: map[string]interface{}{
+				"entities": entities,
+			},
+		}
+	default:
+		stmt = statement{
+			query: statements.getObjectPredicates,
+			args: map[string]interface{}{
+				"entities": entities,
+			},
+		}
+	}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		&observations,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return observations, nil
+}
+
 // GetKeyValue gets the value for the specified key from the key_value_store table.
 // If not found, returns false.
 // If found, unmarshals the value into the specified proto and returns true.

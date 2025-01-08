@@ -1,0 +1,22 @@
+{
+  "data": {
+    "test_var_2": {
+      "arcs": {
+        "measuredProperty": {
+          "nodes": [
+            {
+              "dcid": "test_var_2"
+            }
+          ]
+        },
+        "outputProperty": {
+          "nodes": [
+            {
+              "dcid": "dc/c/test_var_2"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

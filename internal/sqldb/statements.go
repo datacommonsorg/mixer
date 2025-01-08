@@ -17,12 +17,15 @@ package sqldb
 
 // SQL statements executed by the SQLClient
 var statements = struct {
-	getObsByVariableAndEntity     string
-	getObsByVariableEntityAndDate string
-	getStatVarSummaries           string
-	getKeyValue                   string
-	getAllStatVarGroups           string
-	getAllStatVars                string
+	getObsByVariableAndEntity                 string
+	getObsByVariableEntityAndDate             string
+	getStatVarSummaries                       string
+	getKeyValue                               string
+	getAllStatVarGroups                       string
+	getAllStatVars                            string
+	getEntityCountByVariableDateAndProvenance string
+	getSubjectPredicates                      string
+	getObjectPredicates                       string
 }{
 	getObsByVariableAndEntity: `
 		SELECT entity, variable, date, value, provenance, unit, scaling_factor, measurement_method, observation_period, properties 
@@ -130,5 +133,31 @@ var statements = struct {
 			AND t1.object_id="StatisticalVariable"
 			AND t2.predicate="name"
 			AND t3.predicate="memberOf";
+	`,
+	getEntityCountByVariableDateAndProvenance: `
+		SELECT
+			variable,
+			date,
+			provenance,
+			COUNT(DISTINCT entity) num_entities
+		FROM
+			observations
+		WHERE
+			entity IN (:entities)
+			AND variable IN (:variables)
+		GROUP BY
+				variable,
+				date,
+				provenance
+		ORDER BY
+				variable,
+				date,
+				provenance;
+	`,
+	getSubjectPredicates: `
+		SELECT subject_id AS node, predicate FROM triples WHERE subject_id IN (:entities);
+	`,
+	getObjectPredicates: `
+		SELECT object_id AS node, predicate FROM triples WHERE object_id IN (:entities);
 	`,
 }
