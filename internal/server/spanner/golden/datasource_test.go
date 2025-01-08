@@ -52,8 +52,8 @@ func TestNode(t *testing.T) {
 		},
 		{
 			req: &v3.NodeRequest{
-				Nodes:    []string{"Aadhaar", "Monthly_Average_RetailPrice_Electricity_Residential"},
-				Property: "->*",
+				Nodes:    []string{"Monthly_Average_RetailPrice_Electricity_Residential", "Aadhaar", "foo"},
+				Property: "->[typeOf, name, statType]",
 			},
 			goldenFile: "property_values.json",
 		},

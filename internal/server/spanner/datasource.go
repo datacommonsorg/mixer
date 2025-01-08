@@ -56,13 +56,13 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *v3.NodeRequest) (*v
 		if err != nil {
 			return nil, fmt.Errorf("error getting node properties: %v", err)
 		}
-		return nodePropsToNodeResponse(props), nil
+		return nodePropsToNodeResponse(props, req.Nodes), nil
 	} else {
 		edges, err := sds.client.GetNodeEdgesByID(ctx, req.Nodes, arc)
 		if err != nil {
 			return nil, fmt.Errorf("error getting node edges: %v", err)
 		}
-		return nodeEdgesToNodeResponse(edges), nil
+		return nodeEdgesToNodeResponse(edges, req.Nodes, arc.BracketProps), nil
 	}
 }
 

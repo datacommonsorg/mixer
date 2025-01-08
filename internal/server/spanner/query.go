@@ -64,6 +64,9 @@ var statements = struct {
 		RETURN DISTINCT
 			e.subject_id,
 			e.predicate
+		ORDER BY
+			e.subject_id,
+			e.predicate
 	`,
 	getPropsByObjectID: `
 		GRAPH DCGraph MATCH -[e:Edge
@@ -104,6 +107,11 @@ var statements = struct {
 			e.provenance,
 			'' AS name,
 			ARRAY<STRING>[] AS types
+		ORDER BY
+			subject_id,
+			predicate,
+			object_id,
+			object_value
 	`,
 	getChainedEdgesBySubjectID: fmt.Sprintf(`
 		GRAPH DCGraph MATCH (m:Node
@@ -138,6 +146,11 @@ var statements = struct {
 			'' AS provenance,
 			name, 
 			ARRAY<STRING>[] AS types
+		ORDER BY
+			subject_id,
+			predicate,
+			object_id,
+			object_value
 	`, MAX_HOPS),
 	getEdgesByObjectID: `
 		GRAPH DCGraph MATCH <-[e:Edge
@@ -152,6 +165,10 @@ var statements = struct {
 			COALESCE(e.provenance, '') AS provenance,
 			COALESCE(n.name, '') AS name,
 			COALESCE(n.types, []) AS types
+		ORDER BY
+			subject_id,
+			predicate,
+			object_id
 	`,
 	getChainedEdgesByObjectID: fmt.Sprintf(`
 		GRAPH DCGraph MATCH (m:Node
@@ -173,6 +190,10 @@ var statements = struct {
 			'' AS provenance, 
 			name, 
 			ARRAY<STRING>[] AS types
+		ORDER BY
+			subject_id,
+			predicate,
+			object_id
 		`, MAX_HOPS),
 	filterProps: `
 		AND e.predicate IN UNNEST(@props)
@@ -316,15 +337,12 @@ func (sc *SpannerClient) GetNodeProps(ctx context.Context, ids []string, out boo
 	return props, nil
 }
 
-// GetNodeEdgesByID retrieves node edges from Spanner given a list of IDs and a property Arc and returns a map.
-func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc) (map[string][]*Edge, error) {
+// GetNodeEdgesByID retrieves node edges from Spanner given a list of IDs and a property Arc and returns a map of subject->predicate->Edges.
+func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc) (map[string]map[string][]*Edge, error) {
 	// TODO: Support pagination.
-	edges := make(map[string][]*Edge)
+	edges := make(map[string]map[string][]*Edge)
 	if len(ids) == 0 {
 		return edges, nil
-	}
-	for _, id := range ids {
-		edges[id] = []*Edge{}
 	}
 
 	// Validate input.
@@ -387,11 +405,20 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 		func(rowStruct interface{}) {
 			edge := rowStruct.(*Edge)
 			subjectID := edge.SubjectID
-			edges[subjectID] = append(edges[subjectID], edge)
+			_, ok := edges[subjectID]
+			if !ok {
+				edges[subjectID] = map[string][]*Edge{}
+			}
+			predicate := edge.Predicate
+			_, ok = edges[subjectID][predicate]
+			if !ok {
+				edges[subjectID][predicate] = []*Edge{}
+			}
+			edges[subjectID][predicate] = append(edges[subjectID][predicate], edge)
 		},
 	)
 	if err != nil {
-		return edges, err
+		return nil, err
 	}
 
 	return edges, nil
