@@ -9,7 +9,7 @@
   - [`gcloud`](https://cloud.google.com/sdk/docs/install)
   - [`Golang`](https://golang.org/doc/install)
   - [`protoc`](http://google.github.io/proto-lens/installing-protoc.html) at version 3.21.12
-    - If using Homebrew, run `brew install protobuf@21` and be sure to update your path as described in the output.
+    - If using Homebrew, run `brew install protobuf@21` and be sure to update your path as described in the output (likely it'll instruct you to run `echo 'export PATH="/opt/homebrew/opt/protobuf@21/bin:$PATH"' >> ~/.zshrc`).
 
   Make sure to add `GOPATH` and update `PATH`:
 
