@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package sqlquery
+package sqldb
 
 import (
-	"database/sql"
+	"context"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -23,7 +23,7 @@ import (
 )
 
 func TestGetKeyValue(t *testing.T) {
-	sqlClient, err := sql.Open("sqlite", "../../../test/sqlquery/key_value/datacommons.db")
+	sqlClient, err := NewSQLiteClient("../../test/sqlquery/key_value/datacommons.db")
 	if err != nil {
 		t.Fatalf("Could not open test database: %v", err)
 	}
@@ -36,7 +36,7 @@ func TestGetKeyValue(t *testing.T) {
 
 	var got pb.StatVarGroups
 
-	found, _ := GetKeyValue(sqlClient, StatVarGroupsKey, &got)
+	found, _ := sqlClient.GetKeyValue(context.Background(), StatVarGroupsKey, &got)
 	if !found {
 		t.Errorf("Key value data not found: %s", StatVarGroupsKey)
 	}
