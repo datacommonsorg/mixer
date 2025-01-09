@@ -2,7 +2,7 @@ project: datcom-store
 instance: prophet-cache
 tables:
   - auto1d_2025_01_07_02_16_57
-  - auto1w_2025_01_06_12_07_56
+  - auto1w_2024_12_15_20_57_25
   - auto2w_2025_01_07_09_32_27
   - biomedical_2025_01_02_03_41_39
   - country_2025_01_07_10_14_24
@@ -12,4 +12,4 @@ tables:
   - ipcc_2025_01_01_03_40_31
   - place_2025_01_07_10_14_27
   - schema_2025_01_07_18_18_48
-  - uscensus_2025_01_07_03_44_33
+  - uscensus_2024_12_07_03_47_56
