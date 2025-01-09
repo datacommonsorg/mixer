@@ -18,9 +18,18 @@ import (
 	"context"
 	"fmt"
 
-	v3 "github.com/datacommonsorg/mixer/internal/proto/v3"
+	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
+)
+
+// Select options for Observation.
+const (
+	ENTITY   = "entity"
+	VARIABLE = "variable"
+	DATE     = "date"
+	VALUE    = "value"
+	FACET    = "facet"
 )
 
 // SpannerDataSource represents a data source that interacts with Spanner.
@@ -38,13 +47,13 @@ func (sds *SpannerDataSource) Type() datasource.DataSourceType {
 }
 
 // Node retrieves node data from Spanner.
-func (sds *SpannerDataSource) Node(ctx context.Context, req *v3.NodeRequest) (*v3.NodeResponse, error) {
+func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv3.NodeRequest) (*pbv3.NodeResponse, error) {
 	arcs, err := v2.ParseProperty(req.GetProperty())
 	if err != nil {
 		return nil, err
 	}
 	if len(arcs) == 0 {
-		return &v3.NodeResponse{}, nil
+		return &pbv3.NodeResponse{}, nil
 	}
 	if len(arcs) > 1 {
 		return nil, fmt.Errorf("multiple arcs in node request")
@@ -67,11 +76,29 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *v3.NodeRequest) (*v
 }
 
 // Observation retrieves observation data from Spanner.
-func (sds *SpannerDataSource) Observation(ctx context.Context, req *v3.ObservationRequest) (*v3.ObservationResponse, error) {
+func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv3.ObservationRequest) (*pbv3.ObservationResponse, error) {
+	var queryDate, queryValue, queryVariable, queryEntity, queryFacet bool
+	for _, item := range req.GetSelect() {
+		if item == DATE {
+			queryDate = true
+		} else if item == VALUE {
+			queryValue = true
+		} else if item == VARIABLE {
+			queryVariable = true
+		} else if item == ENTITY {
+			queryEntity = true
+		} else if item == FACET {
+			queryFacet = true
+		}
+	}
+	if !queryVariable || !queryEntity {
+		return nil, fmt.Errorf("must select 'entity' and 'variable'")
+	}
+
 	variables, entities, entityExpr := req.Variable.Dcids, req.Entity.Dcids, req.Entity.Expression
 	date := req.Date
-
 	var observations []*Observation
+	var err error
 
 	if entityExpr != "" {
 		containedInPlace, err := v2.ParseContainedInPlace(entityExpr)
@@ -83,23 +110,20 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *v3.Observati
 			return nil, fmt.Errorf("error getting observations (contained in): %v", err)
 		}
 	} else {
-		// When using the "observations" variable the compiler somehow complained with this:
-		// "observations declared and not used"
-		// So using a different name instead.
-		obs, err := sds.client.GetObservations(ctx, variables, entities)
+		observations, err = sds.client.GetObservations(ctx, variables, entities)
 		if err != nil {
 			return nil, fmt.Errorf("error getting observations: %v", err)
 		}
-		observations = obs
 	}
 
 	observations = filterObservationsByDate(observations, date)
 
-	return observationsToObservationResponse(variables, observations), nil
+	queryObs := queryDate && queryValue
+	return observationsToObservationResponse(variables, observations, queryObs, queryFacet), nil
 }
 
 // NodeSearch searches nodes in the spanner graph.
-func (sds *SpannerDataSource) NodeSearch(ctx context.Context, req *v3.NodeSearchRequest) (*v3.NodeSearchResponse, error) {
+func (sds *SpannerDataSource) NodeSearch(ctx context.Context, req *pbv3.NodeSearchRequest) (*pbv3.NodeSearchResponse, error) {
 	nodes, err := sds.client.SearchNodes(ctx, req.Query, req.Types)
 	if err != nil {
 		return nil, fmt.Errorf("error searching nodes: %v", err)

@@ -109,16 +109,20 @@ func filterObservationsByDate(observations []*Observation, date string) []*Obser
 	return filtered
 }
 
-func observationsToObservationResponse(variables []string, observations []*Observation) *v3.ObservationResponse {
+func observationsToObservationResponse(variables []string, observations []*Observation, queryObs, queryFacet bool) *v3.ObservationResponse {
 	response := newObservationResponse(variables)
 	for _, observation := range observations {
-		facetId, facet, facetObservation := observationToFacetObservation(observation)
 		variable, entity := observation.VariableMeasured, observation.ObservationAbout
 		if response.ByVariable[variable].ByEntity[entity] == nil {
-			response.ByVariable[variable].ByEntity[entity] = &v2.EntityObservation{
-				OrderedFacets: []*v2.FacetObservation{},
-			}
+			response.ByVariable[variable].ByEntity[entity] = &v2.EntityObservation{}
 		}
+
+		// Existence check only returns variables and entities.
+		if !queryObs && !queryFacet {
+			continue
+		}
+
+		facetId, facet, facetObservation := observationToFacetObservation(observation, queryObs)
 		response.ByVariable[variable].ByEntity[entity].OrderedFacets = append(
 			response.ByVariable[variable].ByEntity[entity].OrderedFacets,
 			facetObservation,
@@ -141,7 +145,7 @@ func newObservationResponse(variables []string) *v3.ObservationResponse {
 	return result
 }
 
-func observationToFacetObservation(observation *Observation) (string, *pb.Facet, *v2.FacetObservation) {
+func observationToFacetObservation(observation *Observation, queryObs bool) (string, *pb.Facet, *v2.FacetObservation) {
 	facetId, facet := observationToFacet(observation)
 
 	var observations []*pb.PointStat
@@ -151,11 +155,17 @@ func observationToFacetObservation(observation *Observation) (string, *pb.Facet,
 	}
 
 	facetObservation := &v2.FacetObservation{
-		Observations: observations,
+		FacetId:      facetId,
 		ObsCount:     *proto.Int32(int32(len(observations))),
 		EarliestDate: observations[0].Date,
 		LatestDate:   observations[len(observations)-1].Date,
 	}
+
+	// Return the full response.
+	if queryObs {
+		facetObservation.Observations = observations
+	}
+
 	return facetId, facet, facetObservation
 }
 
