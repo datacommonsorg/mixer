@@ -26,6 +26,7 @@ var statements = struct {
 	getEntityCountByVariableDateAndProvenance string
 	getSubjectPredicates                      string
 	getObjectPredicates                       string
+	getExistingStatVarGroups                  string
 }{
 	getObsByVariableAndEntity: `
 		SELECT entity, variable, date, value, provenance, unit, scaling_factor, measurement_method, observation_period, properties 
@@ -159,5 +160,12 @@ var statements = struct {
 	`,
 	getObjectPredicates: `
 		SELECT object_id AS node, predicate FROM triples WHERE object_id IN (:entities);
+	`,
+	getExistingStatVarGroups: `
+		SELECT DISTINCT(subject_id) FROM triples
+		WHERE 
+			predicate = "typeOf"
+			AND subject_id IN (:groups)
+			AND object_id = 'StatVarGroup';
 	`,
 }
