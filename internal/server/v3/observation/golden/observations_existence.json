@@ -1,0 +1,16 @@
+{
+  "by_variable": {
+    "Count_Farm": {
+      "by_entity": {
+        "country/USA": {},
+        "geoId/06": {}
+      }
+    },
+    "Income_Farm": {
+      "by_entity": {
+        "country/USA": {},
+        "geoId/06": {}
+      }
+    }
+  }
+}

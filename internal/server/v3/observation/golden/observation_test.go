@@ -52,7 +52,8 @@ func TestV3Observation(t *testing.T) {
 					Entity: &pbv2.DcidOrExpression{
 						Dcids: []string{"geoId/01001", "geoId/02013"},
 					},
-					Date: "",
+					Date:   "",
+					Select: []string{"entity", "variable", "date", "value"},
 				},
 				goldenFile: "observations_all_dates.json",
 			},
@@ -64,7 +65,8 @@ func TestV3Observation(t *testing.T) {
 					Entity: &pbv2.DcidOrExpression{
 						Dcids: []string{"geoId/01001", "geoId/02013"},
 					},
-					Date: "LATEST",
+					Date:   "LATEST",
+					Select: []string{"entity", "variable", "date", "value"},
 				},
 				goldenFile: "observations_latest_date.json",
 			},
@@ -76,7 +78,8 @@ func TestV3Observation(t *testing.T) {
 					Entity: &pbv2.DcidOrExpression{
 						Dcids: []string{"geoId/01001", "geoId/02013"},
 					},
-					Date: "2020",
+					Date:   "2020",
+					Select: []string{"entity", "variable", "date", "value"},
 				},
 				goldenFile: "observations_specific_date.json",
 			},
@@ -88,7 +91,8 @@ func TestV3Observation(t *testing.T) {
 					Entity: &pbv2.DcidOrExpression{
 						Dcids: []string{"geoId/01001", "geoId/02013"},
 					},
-					Date: "1900",
+					Date:   "1900",
+					Select: []string{"entity", "variable", "date", "value"},
 				},
 				goldenFile: "observations_no_matching_date.json",
 			},
@@ -100,9 +104,62 @@ func TestV3Observation(t *testing.T) {
 					Entity: &pbv2.DcidOrExpression{
 						Expression: "geoId/06<-containedInPlace+{typeOf:County}",
 					},
-					Date: "2015",
+					Date:   "2015",
+					Select: []string{"entity", "variable", "date", "value"},
 				},
 				goldenFile: "observations_contained_in.json",
+			},
+			{
+				req: &pbv3.ObservationRequest{
+					Variable: &pbv2.DcidOrExpression{
+						Dcids: []string{"Count_Farm", "Income_Farm"},
+					},
+					Entity: &pbv2.DcidOrExpression{
+						Dcids: []string{"geoId/06", "country/USA", "country/CAN"},
+					},
+					Date:   "2017",
+					Select: []string{"entity", "variable"},
+				},
+				goldenFile: "observations_existence.json",
+			},
+			{
+				req: &pbv3.ObservationRequest{
+					Variable: &pbv2.DcidOrExpression{
+						Dcids: []string{"Count_Farm"},
+					},
+					Entity: &pbv2.DcidOrExpression{
+						Expression: "geoId/10<-containedInPlace+{typeOf:County}",
+					},
+					Date:   "2017",
+					Select: []string{"entity", "variable"},
+				},
+				goldenFile: "observations_existence_contained_in.json",
+			},
+			{
+				req: &pbv3.ObservationRequest{
+					Variable: &pbv2.DcidOrExpression{
+						Dcids: []string{"Count_Farm", "Income_Farm"},
+					},
+					Entity: &pbv2.DcidOrExpression{
+						Dcids: []string{"geoId/06", "country/USA", "country/CAN"},
+					},
+					Date:   "2017",
+					Select: []string{"entity", "variable", "facet"},
+				},
+				goldenFile: "observations_existence_facet.json",
+			},
+			{
+				req: &pbv3.ObservationRequest{
+					Variable: &pbv2.DcidOrExpression{
+						Dcids: []string{"Count_Farm"},
+					},
+					Entity: &pbv2.DcidOrExpression{
+						Expression: "geoId/10<-containedInPlace+{typeOf:County}",
+					},
+					Date:   "2017",
+					Select: []string{"entity", "variable", "facet"},
+				},
+				goldenFile: "observations_existence_facet_contained_in.json",
 			},
 		} {
 			goldenFile := c.goldenFile

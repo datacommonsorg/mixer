@@ -5,6 +5,7 @@
         "geoId/01001": {
           "ordered_facets": [
             {
+              "facet_id": "3447055327",
               "observations": [
                 {
                   "date": "2020",
@@ -20,6 +21,7 @@
         "geoId/02013": {
           "ordered_facets": [
             {
+              "facet_id": "3447055327",
               "observations": [
                 {
                   "date": "2020",
