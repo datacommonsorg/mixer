@@ -17,6 +17,7 @@ package sqldb
 
 import (
 	"context"
+	"time"
 
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/jmoiron/sqlx"
@@ -33,6 +34,7 @@ const (
 
 // GetObservations retrieves observations from SQL given a list of variables and entities and a date.
 func (sc *SQLClient) GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*Observation, error) {
+	defer util.TimeTrack(time.Now(), "SQL: GetObservations")
 	var observations []*Observation
 	if len(variables) == 0 || len(entities) == 0 {
 		return observations, nil
@@ -74,6 +76,7 @@ func (sc *SQLClient) GetObservations(ctx context.Context, variables []string, en
 
 // GetSVSummaries retrieves summaries for the specified variables.
 func (sc *SQLClient) GetSVSummaries(ctx context.Context, variables []string) ([]*SVSummary, error) {
+	defer util.TimeTrack(time.Now(), "SQL: GetSVSummaries")
 	var summaries []*SVSummary
 	if len(variables) == 0 {
 		return summaries, nil
@@ -98,8 +101,9 @@ func (sc *SQLClient) GetSVSummaries(ctx context.Context, variables []string) ([]
 	return summaries, nil
 }
 
-// GetStatVarGroups retrieves all StatVarGroups from the database.
-func (sc *SQLClient) GetStatVarGroups(ctx context.Context) ([]*StatVarGroup, error) {
+// GetAllStatVarGroups retrieves all StatVarGroups from the database.
+func (sc *SQLClient) GetAllStatVarGroups(ctx context.Context) ([]*StatVarGroup, error) {
+	defer util.TimeTrack(time.Now(), "SQL: GetStatVarGroups")
 	var svgs []*StatVarGroup
 
 	stmt := statement{
@@ -121,6 +125,7 @@ func (sc *SQLClient) GetStatVarGroups(ctx context.Context) ([]*StatVarGroup, err
 
 // GetAllStatisticalVariables retrieves all SVs from the database.
 func (sc *SQLClient) GetAllStatisticalVariables(ctx context.Context) ([]*StatisticalVariable, error) {
+	defer util.TimeTrack(time.Now(), "SQL: GetAllStatisticalVariables")
 	var svs []*StatisticalVariable
 
 	stmt := statement{
@@ -140,10 +145,101 @@ func (sc *SQLClient) GetAllStatisticalVariables(ctx context.Context) ([]*Statist
 	return svs, nil
 }
 
+// GetEntityCount returns number of entities (from given candidates) by variable, date and provenance.
+func (sc *SQLClient) GetEntityCount(ctx context.Context, variables []string, entities []string) ([]*EntityCount, error) {
+	defer util.TimeTrack(time.Now(), "SQL: GetEntityCount")
+	var counts []*EntityCount
+	if len(variables) == 0 || len(entities) == 0 {
+		return counts, nil
+	}
+
+	stmt := statement{
+		query: statements.getEntityCountByVariableDateAndProvenance,
+		args: map[string]interface{}{
+			"variables": variables,
+			"entities":  entities,
+		},
+	}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		&counts,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return counts, nil
+}
+
+// GetNodePredicates retrieves (node, predicate) pairs from SQL for the specified entities in the specified direction (in or out).
+func (sc *SQLClient) GetNodePredicates(ctx context.Context, entities []string, direction string) ([]*NodePredicate, error) {
+	defer util.TimeTrack(time.Now(), "SQL: GetNodePredicates")
+	var observations []*NodePredicate
+	if len(entities) == 0 {
+		return observations, nil
+	}
+
+	var stmt statement
+
+	switch direction {
+	case util.DirectionOut:
+		stmt = statement{
+			query: statements.getSubjectPredicates,
+			args: map[string]interface{}{
+				"entities": entities,
+			},
+		}
+	default:
+		stmt = statement{
+			query: statements.getObjectPredicates,
+			args: map[string]interface{}{
+				"entities": entities,
+			},
+		}
+	}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		&observations,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return observations, nil
+}
+
+// GetExistingStatVarGroups returns SVGs that exist in the SQL database from the specified group dcids.
+func (sc *SQLClient) GetExistingStatVarGroups(ctx context.Context, groupDcids []string) ([]string, error) {
+	defer util.TimeTrack(time.Now(), "SQL: GetExistingStatVarGroups")
+	stmt := statement{
+		query: statements.getExistingStatVarGroups,
+		args: map[string]interface{}{
+			"groups": groupDcids,
+		},
+	}
+
+	values := []string{}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		&values,
+	)
+	if err != nil {
+		return nil, err
+	}
+	return values, nil
+}
+
 // GetKeyValue gets the value for the specified key from the key_value_store table.
 // If not found, returns false.
 // If found, unmarshals the value into the specified proto and returns true.
 func (sc *SQLClient) GetKeyValue(ctx context.Context, key string, out protoreflect.ProtoMessage) (bool, error) {
+	defer util.TimeTrack(time.Now(), "SQL: GetKeyValue")
 	stmt := statement{
 		query: statements.getKeyValue,
 		args: map[string]interface{}{

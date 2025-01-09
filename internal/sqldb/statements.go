@@ -17,12 +17,16 @@ package sqldb
 
 // SQL statements executed by the SQLClient
 var statements = struct {
-	getObsByVariableAndEntity     string
-	getObsByVariableEntityAndDate string
-	getStatVarSummaries           string
-	getKeyValue                   string
-	getAllStatVarGroups           string
-	getAllStatVars                string
+	getObsByVariableAndEntity                 string
+	getObsByVariableEntityAndDate             string
+	getStatVarSummaries                       string
+	getKeyValue                               string
+	getAllStatVarGroups                       string
+	getAllStatVars                            string
+	getEntityCountByVariableDateAndProvenance string
+	getSubjectPredicates                      string
+	getObjectPredicates                       string
+	getExistingStatVarGroups                  string
 }{
 	getObsByVariableAndEntity: `
 		SELECT entity, variable, date, value, provenance, unit, scaling_factor, measurement_method, observation_period, properties 
@@ -130,5 +134,38 @@ var statements = struct {
 			AND t1.object_id="StatisticalVariable"
 			AND t2.predicate="name"
 			AND t3.predicate="memberOf";
+	`,
+	getEntityCountByVariableDateAndProvenance: `
+		SELECT
+			variable,
+			date,
+			provenance,
+			COUNT(DISTINCT entity) num_entities
+		FROM
+			observations
+		WHERE
+			entity IN (:entities)
+			AND variable IN (:variables)
+		GROUP BY
+				variable,
+				date,
+				provenance
+		ORDER BY
+				variable,
+				date,
+				provenance;
+	`,
+	getSubjectPredicates: `
+		SELECT DISTINCT subject_id node, predicate FROM triples WHERE subject_id IN (:entities);
+	`,
+	getObjectPredicates: `
+		SELECT DISTINCT object_id node, predicate FROM triples WHERE object_id IN (:entities);
+	`,
+	getExistingStatVarGroups: `
+		SELECT DISTINCT(subject_id) FROM triples
+		WHERE 
+			predicate = "typeOf"
+			AND subject_id IN (:groups)
+			AND object_id = 'StatVarGroup';
 	`,
 }
