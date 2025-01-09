@@ -213,7 +213,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 			t.Fatalf("StructToJSON error (%v): %v", c.goldenFile, err)
 		}
 
-		if true {
+		if test.GenerateGolden {
 			err = test.WriteGolden(got, goldenDir, c.goldenFile)
 			if err != nil {
 				t.Fatalf("WriteGolden error (%v): %v", c.goldenFile, err)
