@@ -215,14 +215,20 @@ func (sc *SQLClient) GetNodePredicates(ctx context.Context, entities []string, d
 // GetExistingStatVarGroups returns SVGs that exist in the SQL database from the specified group dcids.
 func (sc *SQLClient) GetExistingStatVarGroups(ctx context.Context, groupDcids []string) ([]string, error) {
 	defer util.TimeTrack(time.Now(), "SQL: GetExistingStatVarGroups")
+
+	values := []string{}
+
+	// If no groups are specified, return an empty slice.
+	if len(groupDcids) == 0 {
+		return values, nil
+	}
+
 	stmt := statement{
 		query: statements.getExistingStatVarGroups,
 		args: map[string]interface{}{
 			"groups": groupDcids,
 		},
 	}
-
-	values := []string{}
 
 	err := sc.queryAndCollect(
 		ctx,
