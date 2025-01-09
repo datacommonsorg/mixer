@@ -2,15 +2,6 @@
   "Person": [
     {
       "SubjectID": "Person",
-      "Predicate": "source",
-      "ObjectID": "",
-      "ObjectValue": "https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources",
-      "Provenance": "dc/base/BaseSchema",
-      "Name": "",
-      "Types": []
-    },
-    {
-      "SubjectID": "Person",
       "Predicate": "subClassOf",
       "ObjectID": "Thing",
       "ObjectValue": "",
@@ -19,6 +10,15 @@
       "Types": [
         "Class"
       ]
+    },
+    {
+      "SubjectID": "Person",
+      "Predicate": "source",
+      "ObjectID": "",
+      "ObjectValue": "https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources",
+      "Provenance": "dc/base/BaseSchema",
+      "Name": "",
+      "Types": []
     }
   ]
 }

@@ -51,41 +51,32 @@ type queryOptions struct {
 }
 
 // nodePropsToNodeResponse converts a map from subject id to its properties to a NodeResponse proto.
-func nodePropsToNodeResponse(propsBySubjectID map[string][]*Property, nodes []string) *pbv3.NodeResponse {
+func nodePropsToNodeResponse(propsBySubjectID map[string][]*Property) *pbv3.NodeResponse {
 	nodeResponse := &pbv3.NodeResponse{
 		Data: make(map[string]*pbv2.LinkedGraph),
 	}
 
-	for _, subjectID := range nodes {
-		linkedGraph := &pbv2.LinkedGraph{}
-		nodeResponse.Data[subjectID] = linkedGraph
-
-		props, ok := propsBySubjectID[subjectID]
+	for subjectID, props := range propsBySubjectID {
+		linkedGraph, ok := nodeResponse.Data[subjectID]
 		if !ok {
-			continue
+			nodeResponse.Data[subjectID] = &pbv2.LinkedGraph{}
+			linkedGraph = nodeResponse.Data[subjectID]
 		}
 		for _, prop := range props {
 			linkedGraph.Properties = append(linkedGraph.Properties, prop.Predicate)
 		}
 	}
-
 	return nodeResponse
 }
 
 // nodeEdgesToNodeResponse converts a map from subject id to its edges to a NodeResponse proto.
-func nodeEdgesToNodeResponse(edgesBySubjectID map[string][]*Edge, nodes []string) *pbv3.NodeResponse {
+func nodeEdgesToNodeResponse(edgesBySubjectID map[string][]*Edge) *pbv3.NodeResponse {
 	nodeResponse := &pbv3.NodeResponse{
 		Data: make(map[string]*pbv2.LinkedGraph),
 	}
 
-	// Return nodes in order of request.
-	for _, subjectID := range nodes {
-		edges, ok := edgesBySubjectID[subjectID]
-		if !ok {
-			nodeResponse.Data[subjectID] = &pbv2.LinkedGraph{}
-		} else {
-			nodeResponse.Data[subjectID] = nodeEdgesToLinkedGraph(edges)
-		}
+	for subjectID, edges := range edgesBySubjectID {
+		nodeResponse.Data[subjectID] = nodeEdgesToLinkedGraph(edges)
 	}
 
 	return nodeResponse
@@ -101,9 +92,7 @@ func nodeEdgesToLinkedGraph(edges []*Edge) *pbv2.LinkedGraph {
 	for _, edge := range edges {
 		nodes, ok := linkedGraph.Arcs[edge.Predicate]
 		if !ok {
-			nodes = &pbv2.Nodes{
-				Nodes: []*pb.EntityInfo{},
-			}
+			nodes = &pbv2.Nodes{}
 		}
 		node := &pb.EntityInfo{
 			Name:         edge.Name,

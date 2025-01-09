@@ -2,17 +2,6 @@
   "EarthquakeEvent": [
     {
       "SubjectID": "EarthquakeEvent",
-      "Predicate": "domainIncludes",
-      "ObjectID": "affectedPlace",
-      "ObjectValue": "",
-      "Provenance": "dc/base/BaseSchema",
-      "Name": "affectedPlace",
-      "Types": [
-        "Property"
-      ]
-    },
-    {
-      "SubjectID": "EarthquakeEvent",
       "Predicate": "naturalHazardType",
       "ObjectID": "Annual_ExpectedLoss_NaturalHazardImpact_EarthquakeEvent",
       "ObjectValue": "",
@@ -42,6 +31,17 @@
       "Name": "Natural Hazard Risk Score of Superfund Site: Earthquake Event",
       "Types": [
         "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "EarthquakeEvent",
+      "Predicate": "domainIncludes",
+      "ObjectID": "affectedPlace",
+      "ObjectValue": "",
+      "Provenance": "dc/base/BaseSchema",
+      "Name": "affectedPlace",
+      "Types": [
+        "Property"
       ]
     }
   ]

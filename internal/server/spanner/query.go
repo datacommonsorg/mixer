@@ -341,9 +341,11 @@ func (sc *SpannerClient) GetNodeProps(ctx context.Context, ids []string, out boo
 func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc) (map[string][]*Edge, error) {
 	// TODO: Support pagination.
 	edges := make(map[string][]*Edge)
-	edgeMap := make(map[string]map[string][]*Edge)
 	if len(ids) == 0 {
 		return edges, nil
+	}
+	for _, id := range ids {
+		edges[id] = []*Edge{}
 	}
 
 	// Validate input.
@@ -406,41 +408,11 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 		func(rowStruct interface{}) {
 			edge := rowStruct.(*Edge)
 			subjectID := edge.SubjectID
-			_, ok := edgeMap[subjectID]
-			if !ok {
-				edgeMap[subjectID] = map[string][]*Edge{}
-			}
-			predicate := edge.Predicate
-			_, ok = edgeMap[subjectID][predicate]
-			if !ok {
-				edgeMap[subjectID][predicate] = []*Edge{}
-			}
-			edgeMap[subjectID][predicate] = append(edgeMap[subjectID][predicate], edge)
+			edges[subjectID] = append(edges[subjectID], edge)
 		},
 	)
 	if err != nil {
 		return nil, err
-	}
-
-	// Flatten edgeMap.
-	if len(arc.BracketProps) > 0 { // Sort in order of request.
-		for subjectID, predicateToEdges := range edgeMap {
-			edges[subjectID] = []*Edge{}
-			for _, predicate := range arc.BracketProps {
-				predicateEdges, ok := predicateToEdges[predicate]
-				if !ok {
-					continue
-				}
-				edges[subjectID] = append(edges[subjectID], predicateEdges...)
-			}
-		}
-	} else { // Maintain alphabetical order by default.
-		for subjectID, predicateToEdges := range edgeMap {
-			edges[subjectID] = []*Edge{}
-			for _, predicateEdges := range predicateToEdges {
-				edges[subjectID] = append(edges[subjectID], predicateEdges...)
-			}
-		}
 	}
 
 	return edges, nil

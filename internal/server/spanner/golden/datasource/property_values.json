@@ -2,6 +2,14 @@
   "data": {
     "Aadhaar": {
       "arcs": {
+        "name": {
+          "nodes": [
+            {
+              "provenanceId": "dc/base/BaseSchema",
+              "value": "Aadhaar"
+            }
+          ]
+        },
         "typeOf": {
           "nodes": [
             {
@@ -21,31 +29,11 @@
               "provenanceId": "dc/base/BaseSchema"
             }
           ]
-        },
-        "name": {
-          "nodes": [
-            {
-              "provenanceId": "dc/base/BaseSchema",
-              "value": "Aadhaar"
-            }
-          ]
         }
       }
     },
     "Monthly_Average_RetailPrice_Electricity_Residential": {
       "arcs": {
-        "typeOf": {
-          "nodes": [
-            {
-              "name": "StatisticalVariable",
-              "types": [
-                "Class"
-              ],
-              "dcid": "StatisticalVariable",
-              "provenanceId": "dc/base/HumanReadableStatVars"
-            }
-          ]
-        },
         "name": {
           "nodes": [
             {
@@ -54,6 +42,7 @@
             }
           ]
         },
+
         "statType": {
           "nodes": [
             {
@@ -62,6 +51,18 @@
                 "Property"
               ],
               "dcid": "meanValue",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        },
+        "typeOf": {
+          "nodes": [
+            {
+              "name": "StatisticalVariable",
+              "types": [
+                "Class"
+              ],
+              "dcid": "StatisticalVariable",
               "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]

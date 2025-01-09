@@ -103,7 +103,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 		arc        *v2.Arc
 		goldenFile string
 	}{
-		/*{
+		{
 			ids: []string{"Aadhaar", "Monthly_Average_RetailPrice_Electricity_Residential", "foo"},
 			arc: &v2.Arc{
 				Out:        true,
@@ -154,7 +154,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				Decorator:  "+",
 			},
 			goldenFile: "get_node_edges_out_chain.json",
-		}, */
+		},
 		{
 			ids: []string{"EarthquakeEvent"},
 			arc: &v2.Arc{
