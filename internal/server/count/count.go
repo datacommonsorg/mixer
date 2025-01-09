@@ -20,7 +20,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/formula"
-	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -76,7 +76,7 @@ func countInternal(
 			}
 		}
 	}
-	if st.SQLClient.DB != nil {
+	if sqldb.IsConnected(&st.SQLClient) {
 		// all SV contains the SV in the request and child SV in the request SVG.
 		allSV := []string{}
 		for _, svOrSvg := range svOrSvgs {
@@ -88,7 +88,7 @@ func countInternal(
 		for _, sv := range allSV {
 			requestSV[sv] = struct{}{}
 		}
-		requestSVG, err := sqlquery.CheckVariableGroups(st.SQLClient.DB, svOrSvgs)
+		requestSVG, err := st.SQLClient.GetExistingStatVarGroups(ctx, svOrSvgs)
 		if err != nil {
 			return nil, err
 		}

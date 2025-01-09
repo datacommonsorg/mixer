@@ -26,6 +26,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -128,13 +129,13 @@ func BulkObservationDatesLinked(
 	}
 
 	// Read data from SQL store.
-	if store.SQLClient.DB != nil {
+	if sqldb.IsConnected(&store.SQLClient) {
 		childPlaces, err := shared.FetchChildPlaces(
 			ctx, store, metadata, httpClient, metadata.RemoteMixerDomain, linkedEntity, entityType)
 		if err != nil {
 			return nil, err
 		}
-		sqlResult, err := sqlquery.DateEntityCount(store.SQLClient.DB, variables, childPlaces)
+		sqlResult, err := sqlquery.DateEntityCount(ctx, &store.SQLClient, variables, childPlaces)
 		if err != nil {
 			return nil, err
 		}
