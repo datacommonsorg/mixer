@@ -156,10 +156,10 @@ var statements = struct {
 				provenance;
 	`,
 	getSubjectPredicates: `
-		SELECT distinct subject_id node, predicate FROM triples WHERE subject_id IN (:entities);
+		SELECT DISTINCT subject_id node, predicate FROM triples WHERE subject_id IN (:entities);
 	`,
 	getObjectPredicates: `
-		SELECT distinct object_id node, predicate FROM triples WHERE object_id IN (:entities);
+		SELECT DISTINCT object_id node, predicate FROM triples WHERE object_id IN (:entities);
 	`,
 	getExistingStatVarGroups: `
 		SELECT DISTINCT(subject_id) FROM triples
