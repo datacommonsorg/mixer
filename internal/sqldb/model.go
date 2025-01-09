@@ -54,10 +54,17 @@ func (s *StringSlice) Scan(src interface{}) error {
 		return nil
 	}
 
-	val, ok := src.(string)
-	if !ok {
-		return fmt.Errorf("failed to decode []string: (%v)", src)
+	var val string
+
+	switch v := src.(type) {
+	case []byte:
+		val = string(v)
+	case string:
+		val = v
+	default:
+		return fmt.Errorf("failed to decode []string: type = %T, value = %v", src, src)
 	}
+
 	*s = strings.Split(val, ",")
 	return nil
 }
