@@ -62,7 +62,7 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv3.NodeRequest) (
 		if err != nil {
 			return nil, fmt.Errorf("error getting node edges: %v", err)
 		}
-		return nodeEdgesToNodeResponse(edges, req.Nodes, arc.BracketProps), nil
+		return nodeEdgesToNodeResponse(edges, req.Nodes), nil
 	}
 }
 

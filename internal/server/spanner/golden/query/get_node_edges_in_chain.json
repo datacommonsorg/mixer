@@ -1,24 +1,22 @@
 {
-  "dc/g/Farm_FarmInventoryStatus": {
-    "specializationOf+": [
-      {
-        "SubjectID": "dc/g/Farm_FarmInventoryStatus",
-        "Predicate": "specializationOf+",
-        "ObjectID": "dc/g/Farm_FarmInventoryStatus-InventorySold",
-        "ObjectValue": "",
-        "Provenance": "",
-        "Name": "Farm With Farm Inventory Status = Inventory Sold",
-        "Types": []
-      },
-      {
-        "SubjectID": "dc/g/Farm_FarmInventoryStatus",
-        "Predicate": "specializationOf+",
-        "ObjectID": "dc/g/Farm_FarmInventoryStatus-InventorySold_FarmInventoryType",
-        "ObjectValue": "",
-        "Provenance": "",
-        "Name": "Farm With Farm Inventory Status = Inventory Sold, Farm Inventory Type",
-        "Types": []
-      }
-    ]
-  }
+  "dc/g/Farm_FarmInventoryStatus": [
+    {
+      "SubjectID": "dc/g/Farm_FarmInventoryStatus",
+      "Predicate": "specializationOf+",
+      "ObjectID": "dc/g/Farm_FarmInventoryStatus-InventorySold",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Farm With Farm Inventory Status = Inventory Sold",
+      "Types": []
+    },
+    {
+      "SubjectID": "dc/g/Farm_FarmInventoryStatus",
+      "Predicate": "specializationOf+",
+      "ObjectID": "dc/g/Farm_FarmInventoryStatus-InventorySold_FarmInventoryType",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Farm With Farm Inventory Status = Inventory Sold, Farm Inventory Type",
+      "Types": []
+    }
+  ]
 }

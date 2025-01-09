@@ -72,20 +72,19 @@ func nodePropsToNodeResponse(propsBySubjectID map[string][]*Property, nodes []st
 	return nodeResponse
 }
 
-// nodeEdgesToNodeResponse converts a map of subject->predicate->Edges to a NodeResponse proto.
-func nodeEdgesToNodeResponse(edges map[string]map[string][]*Edge, nodes []string, bracketProps []string) *pbv3.NodeResponse {
+// nodeEdgesToNodeResponse converts a map from subject id to its edges to a NodeResponse proto.
+func nodeEdgesToNodeResponse(edgesBySubjectID map[string][]*Edge, nodes []string) *pbv3.NodeResponse {
 	nodeResponse := &pbv3.NodeResponse{
 		Data: make(map[string]*pbv2.LinkedGraph),
 	}
 
+	// Return nodes in order of request.
 	for _, subjectID := range nodes {
-		predicateToEdges, ok := edges[subjectID]
+		edges, ok := edgesBySubjectID[subjectID]
 		if !ok {
-			nodeResponse.Data[subjectID] = &pbv2.LinkedGraph{
-				Arcs: make(map[string]*pbv2.Nodes),
-			}
+			nodeResponse.Data[subjectID] = &pbv2.LinkedGraph{}
 		} else {
-			nodeResponse.Data[subjectID] = nodeEdgesToLinkedGraph(predicateToEdges, bracketProps)
+			nodeResponse.Data[subjectID] = nodeEdgesToLinkedGraph(edges)
 		}
 	}
 
@@ -94,34 +93,18 @@ func nodeEdgesToNodeResponse(edges map[string]map[string][]*Edge, nodes []string
 
 // nodeEdgesToLinkedGraph converts an array of edges to a LinkedGraph proto.
 // This method assumes all edges are from the same entity.
-func nodeEdgesToLinkedGraph(predicateToEdges map[string][]*Edge, bracketProps []string) *pbv2.LinkedGraph {
+func nodeEdgesToLinkedGraph(edges []*Edge) *pbv2.LinkedGraph {
 	linkedGraph := &pbv2.LinkedGraph{
 		Arcs: make(map[string]*pbv2.Nodes),
 	}
 
-	// If multiple properties are explicitly requested, return result in the same order.
-	// Otherwise, default to alphabetical order.
-	if len(bracketProps) > 0 {
-		for _, predicate := range bracketProps {
-			edges, ok := predicateToEdges[predicate]
-			if !ok {
-				continue
-			}
-			addEdgesToLinkedGraph(linkedGraph, predicate, edges)
-		}
-	} else {
-		for predicate, edges := range predicateToEdges {
-			addEdgesToLinkedGraph(linkedGraph, predicate, edges)
-		}
-	}
-	return linkedGraph
-}
-
-func addEdgesToLinkedGraph(linkedGraph *pbv2.LinkedGraph, predicate string, edges []*Edge) {
-	nodes := &pbv2.Nodes{
-		Nodes: []*pb.EntityInfo{},
-	}
 	for _, edge := range edges {
+		nodes, ok := linkedGraph.Arcs[edge.Predicate]
+		if !ok {
+			nodes = &pbv2.Nodes{
+				Nodes: []*pb.EntityInfo{},
+			}
+		}
 		node := &pb.EntityInfo{
 			Name:         edge.Name,
 			Types:        edge.Types,
@@ -130,8 +113,11 @@ func addEdgesToLinkedGraph(linkedGraph *pbv2.LinkedGraph, predicate string, edge
 			Value:        edge.ObjectValue,
 		}
 		nodes.Nodes = append(nodes.Nodes, node)
+
+		linkedGraph.Arcs[edge.Predicate] = nodes
 	}
-	linkedGraph.Arcs[predicate] = nodes
+
+	return linkedGraph
 }
 
 func selectFieldsToQueryOptions(selectFields []string) queryOptions {
@@ -172,13 +158,12 @@ func filterObservationsByDate(observations []*Observation, date string) []*Obser
 	return filtered
 }
 
-
-func observationsToObservationResponse(variables []string, observations []*Observation, queryObs, queryFacet bool) *v3.ObservationResponse {
+func observationsToObservationResponse(variables []string, observations []*Observation, queryObs, queryFacet bool) *pbv3.ObservationResponse {
 	response := newObservationResponse(variables)
 	for _, observation := range observations {
 		variable, entity := observation.VariableMeasured, observation.ObservationAbout
 		if response.ByVariable[variable].ByEntity[entity] == nil {
-			response.ByVariable[variable].ByEntity[entity] = &v2.EntityObservation{}
+			response.ByVariable[variable].ByEntity[entity] = &pbv2.EntityObservation{}
 		}
 
 		// Existence check only returns variables and entities.
@@ -209,7 +194,7 @@ func newObservationResponse(variables []string) *pbv3.ObservationResponse {
 	return result
 }
 
-func observationToFacetObservation(observation *Observation, queryObs bool) (string, *pb.Facet, *v2.FacetObservation) {
+func observationToFacetObservation(observation *Observation, queryObs bool) (string, *pb.Facet, *pbv2.FacetObservation) {
 	facetId, facet := observationToFacet(observation)
 
 	var observations []*pb.PointStat
@@ -218,7 +203,7 @@ func observationToFacetObservation(observation *Observation, queryObs bool) (str
 		observations = append(observations, dateValueToPointStat(dateValue))
 	}
 
-	facetObservation := &v2.FacetObservation{
+	facetObservation := &pbv2.FacetObservation{
 		FacetId:      facetId,
 		ObsCount:     *proto.Int32(int32(len(observations))),
 		EarliestDate: observations[0].Date,

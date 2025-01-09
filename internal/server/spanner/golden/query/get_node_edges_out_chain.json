@@ -1,51 +1,49 @@
 {
-  "dc/g/Person_Gender": {
-    "specializationOf+": [
-      {
-        "SubjectID": "dc/g/Person_Gender",
-        "Predicate": "specializationOf+",
-        "ObjectID": "dc/g/Demographics",
-        "ObjectValue": "",
-        "Provenance": "",
-        "Name": "Demographics",
-        "Types": []
-      },
-      {
-        "SubjectID": "dc/g/Person_Gender",
-        "Predicate": "specializationOf+",
-        "ObjectID": "dc/g/Economy",
-        "ObjectValue": "",
-        "Provenance": "",
-        "Name": "Economy",
-        "Types": []
-      },
-      {
-        "SubjectID": "dc/g/Person_Gender",
-        "Predicate": "specializationOf+",
-        "ObjectID": "dc/g/Employment",
-        "ObjectValue": "",
-        "Provenance": "",
-        "Name": "Employment and Business",
-        "Types": []
-      },
-      {
-        "SubjectID": "dc/g/Person_Gender",
-        "Predicate": "specializationOf+",
-        "ObjectID": "dc/g/Health",
-        "ObjectValue": "",
-        "Provenance": "",
-        "Name": "Health",
-        "Types": []
-      },
-      {
-        "SubjectID": "dc/g/Person_Gender",
-        "Predicate": "specializationOf+",
-        "ObjectID": "dc/g/Root",
-        "ObjectValue": "",
-        "Provenance": "",
-        "Name": "Data Commons Variables",
-        "Types": []
-      }
-    ]
-  }
+  "dc/g/Person_Gender": [
+    {
+      "SubjectID": "dc/g/Person_Gender",
+      "Predicate": "specializationOf+",
+      "ObjectID": "dc/g/Demographics",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Demographics",
+      "Types": []
+    },
+    {
+      "SubjectID": "dc/g/Person_Gender",
+      "Predicate": "specializationOf+",
+      "ObjectID": "dc/g/Economy",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Economy",
+      "Types": []
+    },
+    {
+      "SubjectID": "dc/g/Person_Gender",
+      "Predicate": "specializationOf+",
+      "ObjectID": "dc/g/Employment",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Employment and Business",
+      "Types": []
+    },
+    {
+      "SubjectID": "dc/g/Person_Gender",
+      "Predicate": "specializationOf+",
+      "ObjectID": "dc/g/Health",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Health",
+      "Types": []
+    },
+    {
+      "SubjectID": "dc/g/Person_Gender",
+      "Predicate": "specializationOf+",
+      "ObjectID": "dc/g/Root",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Data Commons Variables",
+      "Types": []
+    }
+  ]
 }

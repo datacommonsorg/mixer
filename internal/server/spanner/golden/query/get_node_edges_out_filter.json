@@ -1,17 +1,15 @@
 {
-  "nuts/UKI1": {
-    "typeOf": [
-      {
-        "SubjectID": "nuts/UKI1",
-        "Predicate": "typeOf",
-        "ObjectID": "AdministrativeArea2",
-        "ObjectValue": "",
-        "Provenance": "dc/base/EuroGeos",
-        "Name": "AdministrativeArea2",
-        "Types": [
-          "Class"
-        ]
-      }
-    ]
-  }
+  "nuts/UKI1": [
+    {
+      "SubjectID": "nuts/UKI1",
+      "Predicate": "typeOf",
+      "ObjectID": "AdministrativeArea2",
+      "ObjectValue": "",
+      "Provenance": "dc/base/EuroGeos",
+      "Name": "AdministrativeArea2",
+      "Types": [
+        "Class"
+      ]
+    }
+  ]
 }

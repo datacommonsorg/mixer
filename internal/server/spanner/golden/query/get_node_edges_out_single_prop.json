@@ -1,15 +1,13 @@
 {
-  "Person": {
-    "extendedName": [
-      {
-        "SubjectID": "Person",
-        "Predicate": "extendedName",
-        "ObjectID": "",
-        "ObjectValue": "Person",
-        "Provenance": "dc/base/BaseSchema",
-        "Name": "",
-        "Types": []
-      }
-    ]
-  }
+  "Person": [
+    {
+      "SubjectID": "Person",
+      "Predicate": "extendedName",
+      "ObjectID": "",
+      "ObjectValue": "Person",
+      "Provenance": "dc/base/BaseSchema",
+      "Name": "",
+      "Types": []
+    }
+  ]
 }

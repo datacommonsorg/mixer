@@ -1,69 +1,65 @@
 {
-  "FireIncidentTypeEnum": {
-    "typeOf": [
-      {
-        "SubjectID": "FireIncidentTypeEnum",
-        "Predicate": "typeOf",
-        "ObjectID": "ComplexFire",
-        "ObjectValue": "",
-        "Provenance": "dc/base/BaseSchema",
-        "Name": "ComplexFire",
-        "Types": [
-          "FireIncidentTypeEnum"
-        ]
-      },
-      {
-        "SubjectID": "FireIncidentTypeEnum",
-        "Predicate": "typeOf",
-        "ObjectID": "PrescribedFire",
-        "ObjectValue": "",
-        "Provenance": "dc/base/BaseSchema",
-        "Name": "PrescribedFire",
-        "Types": [
-          "EmissionSourceEnum",
-          "FireCauseEnum",
-          "FireCauseSpecificEnum",
-          "FireIncidentTypeEnum"
-        ]
-      },
-      {
-        "SubjectID": "FireIncidentTypeEnum",
-        "Predicate": "typeOf",
-        "ObjectID": "Wildfire",
-        "ObjectValue": "",
-        "Provenance": "dc/base/BaseSchema",
-        "Name": "Wildfire",
-        "Types": [
-          "EmissionSourceEnum",
-          "FireIncidentTypeEnum"
-        ]
-      },
-      {
-        "SubjectID": "FireIncidentTypeEnum",
-        "Predicate": "typeOf",
-        "ObjectID": "WildlandFireUse",
-        "ObjectValue": "",
-        "Provenance": "dc/base/BaseSchema",
-        "Name": "WildlandFireUse",
-        "Types": [
-          "FireIncidentTypeEnum"
-        ]
-      }
-    ]
-  },
-  "FoodTypeEnum": {
-    "typeOf": [
-      {
-        "SubjectID": "FoodTypeEnum",
-        "Predicate": "typeOf",
-        "ObjectID": "Meal",
-        "ObjectValue": "",
-        "Provenance": "dc/base/BaseSchema",
-        "Name": "Meal",
-        "Types": [
-          "FoodTypeEnum"
-        ]
-      }
-    ]
-  }
+  "FireIncidentTypeEnum": [
+    {
+      "SubjectID": "FireIncidentTypeEnum",
+      "Predicate": "typeOf",
+      "ObjectID": "ComplexFire",
+      "ObjectValue": "",
+      "Provenance": "dc/base/BaseSchema",
+      "Name": "ComplexFire",
+      "Types": [
+        "FireIncidentTypeEnum"
+      ]
+    },
+    {
+      "SubjectID": "FireIncidentTypeEnum",
+      "Predicate": "typeOf",
+      "ObjectID": "PrescribedFire",
+      "ObjectValue": "",
+      "Provenance": "dc/base/BaseSchema",
+      "Name": "PrescribedFire",
+      "Types": [
+        "EmissionSourceEnum",
+        "FireCauseEnum",
+        "FireCauseSpecificEnum",
+        "FireIncidentTypeEnum"
+      ]
+    },
+    {
+      "SubjectID": "FireIncidentTypeEnum",
+      "Predicate": "typeOf",
+      "ObjectID": "Wildfire",
+      "ObjectValue": "",
+      "Provenance": "dc/base/BaseSchema",
+      "Name": "Wildfire",
+      "Types": [
+        "EmissionSourceEnum",
+        "FireIncidentTypeEnum"
+      ]
+    },
+    {
+      "SubjectID": "FireIncidentTypeEnum",
+      "Predicate": "typeOf",
+      "ObjectID": "WildlandFireUse",
+      "ObjectValue": "",
+      "Provenance": "dc/base/BaseSchema",
+      "Name": "WildlandFireUse",
+      "Types": [
+        "FireIncidentTypeEnum"
+      ]
+    }
+  ],
+  "FoodTypeEnum": [
+    {
+      "SubjectID": "FoodTypeEnum",
+      "Predicate": "typeOf",
+      "ObjectID": "Meal",
+      "ObjectValue": "",
+      "Provenance": "dc/base/BaseSchema",
+      "Name": "Meal",
+      "Types": [
+        "FoodTypeEnum"
+      ]
+    }
+  ]
 }
