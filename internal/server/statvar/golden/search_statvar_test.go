@@ -113,6 +113,14 @@ func TestSearchStatVar(t *testing.T) {
 				false,
 				"sqlite.json",
 			},
+			{
+				// This test case results in GetExistingStatVarGroups being called with an empty array.
+				// It tests that the method works (returns an empty array back) in such scenarios.
+				"male asian count",
+				[]string{"geoId/0649670"},
+				true,
+				"no-sql-groups-test-case.json",
+			},
 		} {
 			resp, err := mixer.SearchStatVar(ctx, &pb.SearchStatVarRequest{
 				Query:  c.query,
