@@ -23,15 +23,6 @@ import (
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
 
-// Select options for Observation.
-const (
-	ENTITY   = "entity"
-	VARIABLE = "variable"
-	DATE     = "date"
-	VALUE    = "value"
-	FACET    = "facet"
-)
-
 // SpannerDataSource represents a data source that interacts with Spanner.
 type SpannerDataSource struct {
 	client *SpannerClient
@@ -77,23 +68,7 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv3.NodeRequest) (
 
 // Observation retrieves observation data from Spanner.
 func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv3.ObservationRequest) (*pbv3.ObservationResponse, error) {
-	var queryDate, queryValue, queryVariable, queryEntity, queryFacet bool
-	for _, item := range req.GetSelect() {
-		if item == DATE {
-			queryDate = true
-		} else if item == VALUE {
-			queryValue = true
-		} else if item == VARIABLE {
-			queryVariable = true
-		} else if item == ENTITY {
-			queryEntity = true
-		} else if item == FACET {
-			queryFacet = true
-		}
-	}
-	if !queryVariable || !queryEntity {
-		return nil, fmt.Errorf("must select 'entity' and 'variable'")
-	}
+	qo := selectFieldsToQueryOptions(req.Select)
 
 	variables, entities, entityExpr := req.Variable.Dcids, req.Entity.Dcids, req.Entity.Expression
 	date := req.Date
@@ -118,8 +93,7 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv3.Observa
 
 	observations = filterObservationsByDate(observations, date)
 
-	queryObs := queryDate && queryValue
-	return observationsToObservationResponse(variables, observations, queryObs, queryFacet), nil
+	return observationsToObservationResponse(variables, observations, queryObs(&qo), qo.facet), nil
 }
 
 // NodeSearch searches nodes in the spanner graph.

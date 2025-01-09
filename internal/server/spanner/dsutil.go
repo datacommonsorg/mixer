@@ -32,6 +32,24 @@ const (
 	CHAIN = "+"
 )
 
+// Select options for Observation.
+const (
+	ENTITY   = "entity"
+	VARIABLE = "variable"
+	DATE     = "date"
+	VALUE    = "value"
+	FACET    = "facet"
+)
+
+// Represents options for Observation response.
+type queryOptions struct {
+	entity   bool
+	variable bool
+	date     bool
+	value    bool
+	facet    bool
+}
+
 // nodePropsToNodeResponse converts a map from subject id to its properties to a NodeResponse proto.
 func nodePropsToNodeResponse(propsBySubjectID map[string][]*Property) *v3.NodeResponse {
 	nodeResponse := &v3.NodeResponse{
@@ -92,6 +110,29 @@ func nodeEdgesToLinkedGraph(edges []*Edge) *v2.LinkedGraph {
 	}
 
 	return linkedGraph
+}
+
+func selectFieldsToQueryOptions(selectFields []string) queryOptions {
+	var qo queryOptions
+	for _, field := range selectFields {
+		if field == ENTITY {
+			qo.entity = true
+		} else if field == VARIABLE {
+			qo.variable = true
+		} else if field == DATE {
+			qo.date = true
+		} else if field == VALUE {
+			qo.value = true
+		} else if field == FACET {
+			qo.facet = true
+		}
+	}
+	return qo
+}
+
+// Whether to return all observations in the Observation response.
+func queryObs(qo *queryOptions) bool {
+	return qo.date && qo.value
 }
 
 func filterObservationsByDate(observations []*Observation, date string) []*Observation {
