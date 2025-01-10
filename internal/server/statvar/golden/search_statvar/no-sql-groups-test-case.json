@@ -1,0 +1,448 @@
+{
+  "statVars": [
+    {
+      "name": "Asian Monoracial Male Population",
+      "dcid": "Count_Person_Male_AsianAlone"
+    },
+    {
+      "name": "Asian Male Population Above Poverty Level Status Over the Last Year",
+      "dcid": "Count_Person_Male_AbovePovertyLevelInThePast12Months_AsianAlone"
+    },
+    {
+      "name": "Eastern Asian Born Male Population",
+      "dcid": "Count_Person_Male_ForeignBorn_PlaceOfBirthEasternAsia"
+    },
+    {
+      "name": "Male Population Below Poverty Status in the Last Year and Are Asian Alone",
+      "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months_AsianAlone"
+    },
+    {
+      "name": "Population: 10 - 14 Years, Male, Asian Alone",
+      "dcid": "Count_Person_10To14Years_Male_AsianAlone"
+    },
+    {
+      "name": "Population: 15 - 17 Years, Male, Asian Alone",
+      "dcid": "Count_Person_15To17Years_Male_AsianAlone"
+    },
+    {
+      "name": "Population: 15 Years or More, Male, Asian Alone",
+      "dcid": "Count_Person_15OrMoreYears_Male_AsianAlone"
+    },
+    {
+      "name": "Population: 16 Years or More, Male, Asian Alone",
+      "dcid": "Count_Person_16OrMoreYears_Male_AsianAlone"
+    },
+    {
+      "name": "Population: 18 - 19 Years, Male, Asian Alone",
+      "dcid": "Count_Person_18To19Years_Male_AsianAlone"
+    },
+    {
+      "name": "Population: 20 - 24 Years, Male, Asian Alone",
+      "dcid": "Count_Person_20To24Years_Male_AsianAlone"
+    },
+    {
+      "name": "Population: 25 - 29 Years, Male, Asian Alone",
+      "dcid": "Count_Person_25To29Years_Male_AsianAlone"
+    },
+    {
+      "name": "Population: 25 Years or More, Male, Asian Alone",
+      "dcid": "Count_Person_25OrMoreYears_Male_AsianAlone"
+    },
+    {
+      "name": "Population: 30 - 34 Years, Male, Asian Alone",
+      "dcid": "Count_Person_30To34Years_Male_AsianAlone"
+    },
+    {
+      "name": "Population: 35 - 44 Years, Male, Asian Alone",
+      "dcid": "Count_Person_35To44Years_Male_AsianAlone"
+    },
+    {
+      "name": "Population: 45 - 54 Years, Male, Asian Alone",
+      "dcid": "Count_Person_45To54Years_Male_AsianAlone"
+    },
+    {
+      "name": "Population: 5 - 9 Years, Male, Asian Alone",
+      "dcid": "Count_Person_5To9Years_Male_AsianAlone"
+    },
+    {
+      "name": "Population: 5 Years or Less, Male, Asian Alone",
+      "dcid": "Count_Person_Upto5Years_Male_AsianAlone"
+    },
+    {
+      "name": "Population: 55 - 64 Years, Male, Asian Alone",
+      "dcid": "Count_Person_55To64Years_Male_AsianAlone"
+    },
+    {
+      "name": "Population: 65 - 74 Years, Male, Asian Alone",
+      "dcid": "Count_Person_65To74Years_Male_AsianAlone"
+    },
+    {
+      "name": "Population: 75 - 84 Years, Male, Asian Alone",
+      "dcid": "Count_Person_75To84Years_Male_AsianAlone"
+    },
+    {
+      "name": "Population: 85 Years or More, Male, Asian Alone",
+      "dcid": "Count_Person_85OrMoreYears_Male_AsianAlone"
+    },
+    {
+      "name": "Population: Bachelors Degree or Higher, Male, Asian Alone",
+      "dcid": "dc/jnr548vs7cnxc"
+    },
+    {
+      "name": "Population: High School Graduate Ged or Alternative, Male, Asian Alone",
+      "dcid": "dc/3vbln1rkltxk"
+    },
+    {
+      "name": "Population: High School Graduate Includes Equivalency, Male, Asian Alone",
+      "dcid": "dc/qnzfwlegkmr"
+    },
+    {
+      "name": "Population: Less Than High School Diploma, Male, Asian Alone",
+      "dcid": "dc/2fy8mlefry90h"
+    },
+    {
+      "name": "Population: Male, Asian Alone, Not Worked Full Time",
+      "dcid": "dc/pzqfvzwl52kq7"
+    },
+    {
+      "name": "Population: Male, Asian Alone, Worked Full Time",
+      "dcid": "dc/025qv4dsg09w6"
+    },
+    {
+      "name": "Population: Male, Divorced, Asian Alone",
+      "dcid": "dc/myd3m7cwvsn7g"
+    },
+    {
+      "name": "Population: Male, Married And Not Separated, Asian Alone",
+      "dcid": "dc/l8qmxymjkdn3"
+    },
+    {
+      "name": "Population: Male, Never Married, Asian Alone",
+      "dcid": "dc/k23qwx05c5de3"
+    },
+    {
+      "name": "Population: Male, Separated, Asian Alone",
+      "dcid": "dc/c55jsq158z4d9"
+    },
+    {
+      "name": "Population: Male, Widowed, Asian Alone",
+      "dcid": "dc/t043g8lwvm8th"
+    },
+    {
+      "name": "Population: Some College or Associates Degree, Male, Asian Alone",
+      "dcid": "dc/fkvnj4rlrs84f"
+    },
+    {
+      "name": "Population: 12 - 14 Years, Male, Above Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/f2ch6j51vhbxd"
+    },
+    {
+      "name": "Population: 12 - 14 Years, Male, Below Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/p94z3sfc58yr7"
+    },
+    {
+      "name": "Population: 16 - 17 Years, Male, Above Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/mn9gj5kg0vlr7"
+    },
+    {
+      "name": "Population: 16 - 17 Years, Male, Below Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/f5dx84w6q5tk"
+    },
+    {
+      "name": "Population: 18 - 24 Years, Male, Above Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/nqp4kml3hs8bf"
+    },
+    {
+      "name": "Population: 18 - 24 Years, Male, Below Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/kdwh9l807pyj8"
+    },
+    {
+      "name": "Population: 25 - 34 Years, Male, Above Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/k0q6v29zkhmg5"
+    },
+    {
+      "name": "Population: 25 - 34 Years, Male, Below Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/p4qq729nx2gj3"
+    },
+    {
+      "name": "Population: 35 - 44 Years, Male, Above Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/44g2q4kk66neb"
+    },
+    {
+      "name": "Population: 35 - 44 Years, Male, Below Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/7qz6rn09042gh"
+    },
+    {
+      "name": "Population: 45 - 54 Years, Male, Above Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/yz542hf5h1zt7"
+    },
+    {
+      "name": "Population: 45 - 54 Years, Male, Below Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/1yg7w4tbpnfe3"
+    },
+    {
+      "name": "Population: 5 Years or Less, Male, Above Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/glz8hy0n5kjkf"
+    },
+    {
+      "name": "Population: 5 Years or Less, Male, Below Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/22mky0c96b6zf"
+    },
+    {
+      "name": "Population: 55 - 64 Years, Male, Above Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/y68ejvydp4yp"
+    },
+    {
+      "name": "Population: 55 - 64 Years, Male, Below Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/63l8m5wsvrmld"
+    },
+    {
+      "name": "Population: 6 - 11 Years, Male, Above Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/h7drslkymwle7"
+    },
+    {
+      "name": "Population: 6 - 11 Years, Male, Below Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/sjmjhbk6t5ss6"
+    },
+    {
+      "name": "Population: 65 - 74 Years, Male, Above Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/vt4tcj5b2ks69"
+    },
+    {
+      "name": "Population: 65 - 74 Years, Male, Below Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/zdgfpkhrh137b"
+    },
+    {
+      "name": "Population: 75 Years or More, Male, Above Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/xvxcntwxxcv7b"
+    },
+    {
+      "name": "Population: 75 Years or More, Male, Below Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/2gdzdkpg073x7"
+    },
+    {
+      "name": "Population: Male, 10,000 - 12,499 USD, Asian Alone, Not Worked Full Time",
+      "dcid": "dc/l481yty608g4"
+    },
+    {
+      "name": "Population: Male, 10,000 - 12,499 USD, Asian Alone, Worked Full Time",
+      "dcid": "dc/f6psb62vxhcgb"
+    },
+    {
+      "name": "Population: Male, 100,000 USD or More, Asian Alone, Not Worked Full Time",
+      "dcid": "dc/w4xl5kcbyjmnb"
+    },
+    {
+      "name": "Population: Male, 100,000 USD or More, Asian Alone, Worked Full Time",
+      "dcid": "dc/68zc6qjdtxllf"
+    },
+    {
+      "name": "Population: Male, 12,500 - 14,999 USD, Asian Alone, Not Worked Full Time",
+      "dcid": "dc/4sbt1kzrwfy16"
+    },
+    {
+      "name": "Population: Male, 12,500 - 14,999 USD, Asian Alone, Worked Full Time",
+      "dcid": "dc/jt0dmhk3le5zf"
+    },
+    {
+      "name": "Population: Male, 15,000 - 17,499 USD, Asian Alone, Not Worked Full Time",
+      "dcid": "dc/x7yn9gv6hq8w7"
+    },
+    {
+      "name": "Population: Male, 15,000 - 17,499 USD, Asian Alone, Worked Full Time",
+      "dcid": "dc/dhcv28ll2dk21"
+    },
+    {
+      "name": "Population: Male, 17,500 - 19,999 USD, Asian Alone, Not Worked Full Time",
+      "dcid": "dc/5h0cxl96dzwxc"
+    },
+    {
+      "name": "Population: Male, 17,500 - 19,999 USD, Asian Alone, Worked Full Time",
+      "dcid": "dc/rlz44958z0nqc"
+    },
+    {
+      "name": "Population: Male, 2,499 USD or Less, Asian Alone, Not Worked Full Time",
+      "dcid": "dc/mhljgftnycn8b"
+    },
+    {
+      "name": "Population: Male, 2,499 USD or Less, Asian Alone, Worked Full Time",
+      "dcid": "dc/9hc3m94trwsn5"
+    },
+    {
+      "name": "Population: Male, 2,500 - 4,999 USD, Asian Alone, Not Worked Full Time",
+      "dcid": "dc/gb0mcmcb3ff15"
+    },
+    {
+      "name": "Population: Male, 2,500 - 4,999 USD, Asian Alone, Worked Full Time",
+      "dcid": "dc/tlqwjpq96mkz6"
+    },
+    {
+      "name": "Population: Male, 20,000 - 22,499 USD, Asian Alone, Not Worked Full Time",
+      "dcid": "dc/xyk0219zfk4v9"
+    },
+    {
+      "name": "Population: Male, 20,000 - 22,499 USD, Asian Alone, Worked Full Time",
+      "dcid": "dc/z9ngwgxs783yg"
+    },
+    {
+      "name": "Population: Male, 22,500 - 24,999 USD, Asian Alone, Not Worked Full Time",
+      "dcid": "dc/mpb9prtxd4cmf"
+    },
+    {
+      "name": "Population: Male, 22,500 - 24,999 USD, Asian Alone, Worked Full Time",
+      "dcid": "dc/0l50t3n8scpp4"
+    },
+    {
+      "name": "Population: Male, 25,000 - 29,999 USD, Asian Alone, Not Worked Full Time",
+      "dcid": "dc/l2mxsx2wnmy43"
+    },
+    {
+      "name": "Population: Male, 25,000 - 29,999 USD, Asian Alone, Worked Full Time",
+      "dcid": "dc/zgmkzs2ef6k49"
+    },
+    {
+      "name": "Population: Male, 30,000 - 34,999 USD, Asian Alone, Not Worked Full Time",
+      "dcid": "dc/7rgjn102jnnj1"
+    },
+    {
+      "name": "Population: Male, 30,000 - 34,999 USD, Asian Alone, Worked Full Time",
+      "dcid": "dc/x5j5wjrbn2915"
+    },
+    {
+      "name": "Population: Male, 35,000 - 39,999 USD, Asian Alone, Not Worked Full Time",
+      "dcid": "dc/rek6qls42d6kb"
+    },
+    {
+      "name": "Population: Male, 35,000 - 39,999 USD, Asian Alone, Worked Full Time",
+      "dcid": "dc/1yqgqjhktze55"
+    },
+    {
+      "name": "Population: Male, 40,000 - 44,999 USD, Asian Alone, Not Worked Full Time",
+      "dcid": "dc/zrw13pbytcz"
+    },
+    {
+      "name": "Population: Male, 40,000 - 44,999 USD, Asian Alone, Worked Full Time",
+      "dcid": "dc/cl948ddmh1vtc"
+    },
+    {
+      "name": "Population: Male, 45,000 - 49,999 USD, Asian Alone, Not Worked Full Time",
+      "dcid": "dc/tkhlmkvt7x9n"
+    },
+    {
+      "name": "Population: Male, 45,000 - 49,999 USD, Asian Alone, Worked Full Time",
+      "dcid": "dc/k43pyv8w4fll5"
+    },
+    {
+      "name": "Population: Male, 5,000 - 7,499 USD, Asian Alone, Not Worked Full Time",
+      "dcid": "dc/4sp1q7fkewk0d"
+    },
+    {
+      "name": "Population: Male, 5,000 - 7,499 USD, Asian Alone, Worked Full Time",
+      "dcid": "dc/db3h7g7s0nsg3"
+    },
+    {
+      "name": "Population: Male, 50,000 - 54,999 USD, Asian Alone, Not Worked Full Time",
+      "dcid": "dc/sqw1p5zkb7gth"
+    },
+    {
+      "name": "Population: Male, 50,000 - 54,999 USD, Asian Alone, Worked Full Time",
+      "dcid": "dc/rph9h55k57wd8"
+    },
+    {
+      "name": "Population: Male, 55,000 - 64,999 USD, Asian Alone, Not Worked Full Time",
+      "dcid": "dc/crkpszptw6y39"
+    },
+    {
+      "name": "Population: Male, 55,000 - 64,999 USD, Asian Alone, Worked Full Time",
+      "dcid": "dc/3z1p506zjdkv3"
+    },
+    {
+      "name": "Population: Male, 65,000 - 74,999 USD, Asian Alone, Not Worked Full Time",
+      "dcid": "dc/gre151z8bzr2h"
+    },
+    {
+      "name": "Population: Male, 65,000 - 74,999 USD, Asian Alone, Worked Full Time",
+      "dcid": "dc/hbxq7j4jvgxs9"
+    },
+    {
+      "name": "Population: Male, 7,500 - 9,999 USD, Asian Alone, Not Worked Full Time",
+      "dcid": "dc/ptqzltqmcfygb"
+    },
+    {
+      "name": "Population: Male, 7,500 - 9,999 USD, Asian Alone, Worked Full Time",
+      "dcid": "dc/gv10x87rnz7j2"
+    },
+    {
+      "name": "Population: Male, 75,000 - 99,999 USD, Asian Alone, Not Worked Full Time",
+      "dcid": "dc/r3x2rys7sdzbc"
+    },
+    {
+      "name": "Population: Male, 75,000 - 99,999 USD, Asian Alone, Worked Full Time",
+      "dcid": "dc/k293b3f7sg3tb"
+    },
+    {
+      "name": "Population: Male, No Income, Asian Alone, Not Worked Full Time",
+      "dcid": "dc/0dc2clzpynlxc"
+    },
+    {
+      "name": "Population: Male, No Income, Asian Alone, Worked Full Time",
+      "dcid": "dc/gbtkysbd5f1mh"
+    },
+    {
+      "name": "Population: Male, With Income, Asian Alone, Not Worked Full Time",
+      "dcid": "dc/vvcl3qd0v3y34"
+    },
+    {
+      "name": "Population: Male, With Income, Asian Alone, Worked Full Time",
+      "dcid": "dc/se7dwhs2kvm6h"
+    },
+    {
+      "name": "Population: Years 15, Male, Above Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/krt5vs3bzbmh7"
+    },
+    {
+      "name": "Population: Years 15, Male, Below Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/k2j3bdltyd8ed"
+    },
+    {
+      "name": "Population: Years 5, Male, Above Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/q09lbm22p0js9"
+    },
+    {
+      "name": "Population: Years 5, Male, Below Poverty Level in The Past 12 Months, Asian Alone",
+      "dcid": "dc/xrzd5lseb238g"
+    },
+    {
+      "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Male, Asian Alone",
+      "dcid": "dc/hr76ntw8j20m1"
+    },
+    {
+      "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Male, Management, Business, Science, And Arts Occupations, Asian Alone",
+      "dcid": "dc/nxq23yfnj29j2"
+    },
+    {
+      "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Male, Natural Resources, Construction, And Maintenance Occupations, Asian Alone",
+      "dcid": "dc/60q44n862y9s2"
+    },
+    {
+      "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Male, Production, Transportation, And Material Moving Occupations, Asian Alone",
+      "dcid": "dc/sfy26nv2dmpm2"
+    },
+    {
+      "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Male, Sales And Office Occupations, Asian Alone",
+      "dcid": "dc/780sjp4pvsphf"
+    },
+    {
+      "name": "Population: 16 Years or More, Civilian, Employed, in Labor Force, Male, Service Occupations, Asian Alone",
+      "dcid": "dc/hxb0y9n7fksrh"
+    }
+  ],
+  "matches": [
+    "",
+    "asian",
+    "asian/pacific",
+    "count",
+    "male",
+    "male)"
+  ]
+}

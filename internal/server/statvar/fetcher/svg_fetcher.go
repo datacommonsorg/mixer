@@ -151,7 +151,7 @@ func fetchSQLKeyValueSVGs(ctx context.Context, sqlClient *sqldb.SQLClient) (*pb.
 func fetchSQLTableSVGs(ctx context.Context, sqlClient *sqldb.SQLClient) (map[string]*pb.StatVarGroupNode, error) {
 	result := map[string]*pb.StatVarGroupNode{}
 
-	svgRows, err := sqlClient.GetStatVarGroups(ctx)
+	svgRows, err := sqlClient.GetAllStatVarGroups(ctx)
 	if err != nil {
 		return nil, err
 	}

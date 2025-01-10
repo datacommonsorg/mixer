@@ -16,9 +16,9 @@ package node
 
 import (
 	"context"
-	"fmt"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -76,39 +76,18 @@ func GetPropertiesHelper(
 		}
 	}
 	// Fetch data from SQLite
-	if store.SQLClient.DB != nil {
-		var query string
-		if direction == util.DirectionOut {
-			query = fmt.Sprintf(
-				"SELECT subject_id AS node, predicate FROM triples "+
-					"WHERE subject_id IN (%s);",
-				util.SQLInParam(len(nodes)),
-			)
-		} else {
-			query = fmt.Sprintf(
-				"SELECT object_id AS node, predicate FROM triples "+
-					"WHERE object_id IN (%s);",
-				util.SQLInParam(len(nodes)),
-			)
-		}
-		// Execute query
-		rows, err := store.SQLClient.DB.Query(query, util.ConvertArgs(nodes)...)
+	if sqldb.IsConnected(&store.SQLClient) {
+		rows, err := store.SQLClient.GetNodePredicates(ctx, nodes, direction)
 		if err != nil {
 			return nil, err
 		}
-		defer rows.Close()
 
 		tmp := map[string][]string{}
 		for _, node := range nodes {
 			tmp[node] = []string{}
 		}
-		for rows.Next() {
-			var node, pred string
-			err = rows.Scan(&node, &pred)
-			if err != nil {
-				return nil, err
-			}
-			tmp[node] = append(tmp[node], pred)
+		for _, row := range rows {
+			tmp[row.Node] = append(tmp[row.Node], row.Predicate)
 		}
 		for _, node := range nodes {
 			result[node] = util.MergeDedupe(result[node], tmp[node])

@@ -54,10 +54,17 @@ func (s *StringSlice) Scan(src interface{}) error {
 		return nil
 	}
 
-	val, ok := src.(string)
-	if !ok {
-		return fmt.Errorf("failed to decode []string: (%v)", src)
+	var val string
+
+	switch v := src.(type) {
+	case []byte:
+		val = string(v)
+	case string:
+		val = v
+	default:
+		return fmt.Errorf("failed to decode []string: type = %T, value = %v", src, src)
 	}
+
 	*s = strings.Split(val, ",")
 	return nil
 }
@@ -75,4 +82,19 @@ type StatisticalVariable struct {
 	Name        string `db:"sv_name"`
 	SVGID       string `db:"svg_id"`
 	Description string `db:"sv_description"`
+}
+
+// EntityCount represents a row that includes the count of entities for a given variable, date and provenance.
+type EntityCount struct {
+	Variable   string `db:"variable"`
+	Date       string `db:"date"`
+	Provenance string `db:"provenance"`
+	Count      int    `db:"num_entities"`
+}
+
+// Node represents a row that represents a (node, predicate) pair.
+// The node is a dcid that represents either a subject or an object.
+type NodePredicate struct {
+	Node      string `db:"node"`
+	Predicate string `db:"predicate"`
 }

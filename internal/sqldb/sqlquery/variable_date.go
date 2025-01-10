@@ -15,72 +15,38 @@
 package sqlquery
 
 import (
-	"database/sql"
-	"fmt"
+	"context"
 	"time"
 
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
 // DateEntityCount returns number of entities (from given candidates) with data for
 // each observation date.
 func DateEntityCount(
-	sqlClient *sql.DB,
+	ctx context.Context,
+	sqlClient *sqldb.SQLClient,
 	variables []string,
 	entities []string,
 ) (map[string]map[string]map[string]int, error) {
 	defer util.TimeTrack(time.Now(), "SQL: DateEntityCount")
-	// Construct the query
-	query := fmt.Sprintf(
-		`
-			SELECT
-				variable,
-				date,
-				provenance,
-				COUNT(DISTINCT entity) AS num_entities
-			FROM
-				observations
-			WHERE
-				entity IN (%s)
-				AND variable IN (%s)
-			GROUP BY
-					variable,
-					date,
-					provenance
-			ORDER BY
-					variable,
-					date,
-					provenance;
-		`,
-		util.SQLInParam(len(entities)),
-		util.SQLInParam(len(variables)),
-	)
-	// Execute query
-	args := entities
-	args = append(args, variables...)
-	rows, err := sqlClient.Query(query, util.ConvertArgs(args)...)
+	rows, err := sqlClient.GetEntityCount(ctx, variables, entities)
 	if err != nil {
 		return nil, err
 	}
-	defer rows.Close()
 
 	// Process the query result
 	// Keyed by variable, date, provenance; Value is the count
 	result := map[string]map[string]map[string]int{}
-	for rows.Next() {
-		var v, d, prov string
-		var count int
-		err = rows.Scan(&v, &d, &prov, &count)
-		if err != nil {
-			return nil, err
+	for _, row := range rows {
+		if _, ok := result[row.Variable]; !ok {
+			result[row.Variable] = map[string]map[string]int{}
 		}
-		if _, ok := result[v]; !ok {
-			result[v] = map[string]map[string]int{}
+		if _, ok := result[row.Variable][row.Date]; !ok {
+			result[row.Variable][row.Date] = map[string]int{}
 		}
-		if _, ok := result[v][d]; !ok {
-			result[v][d] = map[string]int{}
-		}
-		result[v][d][prov] = count
+		result[row.Variable][row.Date][row.Provenance] = row.Count
 	}
 	return result, nil
 }

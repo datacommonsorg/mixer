@@ -64,6 +64,9 @@ var statements = struct {
 		RETURN DISTINCT
 			e.subject_id,
 			e.predicate
+		ORDER BY
+			e.subject_id,
+			e.predicate
 	`,
 	getPropsByObjectID: `
 		GRAPH DCGraph MATCH -[e:Edge
@@ -104,6 +107,11 @@ var statements = struct {
 			e.provenance,
 			'' AS name,
 			ARRAY<STRING>[] AS types
+		ORDER BY
+			subject_id,
+			predicate,
+			object_id,
+			object_value
 	`,
 	getChainedEdgesBySubjectID: fmt.Sprintf(`
 		GRAPH DCGraph MATCH (m:Node
@@ -138,6 +146,11 @@ var statements = struct {
 			'' AS provenance,
 			name, 
 			ARRAY<STRING>[] AS types
+		ORDER BY
+			subject_id,
+			predicate,
+			object_id,
+			object_value
 	`, MAX_HOPS),
 	getEdgesByObjectID: `
 		GRAPH DCGraph MATCH <-[e:Edge
@@ -152,6 +165,10 @@ var statements = struct {
 			COALESCE(e.provenance, '') AS provenance,
 			COALESCE(n.name, '') AS name,
 			COALESCE(n.types, []) AS types
+		ORDER BY
+			subject_id,
+			predicate,
+			object_id
 	`,
 	getChainedEdgesByObjectID: fmt.Sprintf(`
 		GRAPH DCGraph MATCH (m:Node
@@ -173,6 +190,10 @@ var statements = struct {
 			'' AS provenance, 
 			name, 
 			ARRAY<STRING>[] AS types
+		ORDER BY
+			subject_id,
+			predicate,
+			object_id
 		`, MAX_HOPS),
 	filterProps: `
 		AND e.predicate IN UNNEST(@props)
@@ -391,7 +412,7 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 		},
 	)
 	if err != nil {
-		return edges, err
+		return nil, err
 	}
 
 	return edges, nil
