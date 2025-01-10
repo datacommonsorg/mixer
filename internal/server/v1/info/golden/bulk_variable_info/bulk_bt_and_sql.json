@@ -3723,11 +3723,11 @@
                 },
                 "minValue": 138616,
                 "maxValue": 169165495,
-                "observationCount": 2929,
+                "observationCount": 2878,
                 "timeSeriesCount": 52
               }
             ],
-            "observationCount": 172274,
+            "observationCount": 172223,
             "timeSeriesCount": 3208
           },
           "dc/base/Vietnam_Census": {
