@@ -18,8 +18,8 @@ package spanner
 
 import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	v2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	v3 "github.com/datacommonsorg/mixer/internal/proto/v3"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 	"github.com/datacommonsorg/mixer/internal/util"
 
 	"google.golang.org/protobuf/proto"
@@ -32,30 +32,47 @@ const (
 	CHAIN = "+"
 )
 
+// Select options for Observation.
+const (
+	ENTITY   = "entity"
+	VARIABLE = "variable"
+	DATE     = "date"
+	VALUE    = "value"
+	FACET    = "facet"
+)
+
+// Represents options for Observation response.
+type queryOptions struct {
+	entity   bool
+	variable bool
+	date     bool
+	value    bool
+	facet    bool
+}
+
 // nodePropsToNodeResponse converts a map from subject id to its properties to a NodeResponse proto.
-func nodePropsToNodeResponse(propsBySubjectID map[string][]*Property) *v3.NodeResponse {
-	nodeResponse := &v3.NodeResponse{
-		Data: make(map[string]*v2.LinkedGraph),
+func nodePropsToNodeResponse(propsBySubjectID map[string][]*Property) *pbv3.NodeResponse {
+	nodeResponse := &pbv3.NodeResponse{
+		Data: make(map[string]*pbv2.LinkedGraph),
 	}
 
 	for subjectID, props := range propsBySubjectID {
 		linkedGraph, ok := nodeResponse.Data[subjectID]
 		if !ok {
-			linkedGraph = &v2.LinkedGraph{}
-			nodeResponse.Data[subjectID] = linkedGraph
+			nodeResponse.Data[subjectID] = &pbv2.LinkedGraph{}
+			linkedGraph = nodeResponse.Data[subjectID]
 		}
 		for _, prop := range props {
 			linkedGraph.Properties = append(linkedGraph.Properties, prop.Predicate)
 		}
 	}
-
 	return nodeResponse
 }
 
 // nodeEdgesToNodeResponse converts a map from subject id to its edges to a NodeResponse proto.
-func nodeEdgesToNodeResponse(edgesBySubjectID map[string][]*Edge) *v3.NodeResponse {
-	nodeResponse := &v3.NodeResponse{
-		Data: make(map[string]*v2.LinkedGraph),
+func nodeEdgesToNodeResponse(edgesBySubjectID map[string][]*Edge) *pbv3.NodeResponse {
+	nodeResponse := &pbv3.NodeResponse{
+		Data: make(map[string]*pbv2.LinkedGraph),
 	}
 
 	for subjectID, edges := range edgesBySubjectID {
@@ -67,17 +84,15 @@ func nodeEdgesToNodeResponse(edgesBySubjectID map[string][]*Edge) *v3.NodeRespon
 
 // nodeEdgesToLinkedGraph converts an array of edges to a LinkedGraph proto.
 // This method assumes all edges are from the same entity.
-func nodeEdgesToLinkedGraph(edges []*Edge) *v2.LinkedGraph {
-	linkedGraph := &v2.LinkedGraph{
-		Arcs: make(map[string]*v2.Nodes),
+func nodeEdgesToLinkedGraph(edges []*Edge) *pbv2.LinkedGraph {
+	linkedGraph := &pbv2.LinkedGraph{
+		Arcs: make(map[string]*pbv2.Nodes),
 	}
 
 	for _, edge := range edges {
 		nodes, ok := linkedGraph.Arcs[edge.Predicate]
 		if !ok {
-			nodes = &v2.Nodes{
-				Nodes: []*pb.EntityInfo{},
-			}
+			nodes = &pbv2.Nodes{}
 		}
 		node := &pb.EntityInfo{
 			Name:         edge.Name,
@@ -92,6 +107,29 @@ func nodeEdgesToLinkedGraph(edges []*Edge) *v2.LinkedGraph {
 	}
 
 	return linkedGraph
+}
+
+func selectFieldsToQueryOptions(selectFields []string) queryOptions {
+	var qo queryOptions
+	for _, field := range selectFields {
+		if field == ENTITY {
+			qo.entity = true
+		} else if field == VARIABLE {
+			qo.variable = true
+		} else if field == DATE {
+			qo.date = true
+		} else if field == VALUE {
+			qo.value = true
+		} else if field == FACET {
+			qo.facet = true
+		}
+	}
+	return qo
+}
+
+// Whether to return all observations in the Observation response.
+func queryObs(qo *queryOptions) bool {
+	return qo.date && qo.value
 }
 
 func filterObservationsByDate(observations []*Observation, date string) []*Observation {
@@ -109,16 +147,20 @@ func filterObservationsByDate(observations []*Observation, date string) []*Obser
 	return filtered
 }
 
-func observationsToObservationResponse(variables []string, observations []*Observation) *v3.ObservationResponse {
+func observationsToObservationResponse(variables []string, observations []*Observation, queryObs, queryFacet bool) *pbv3.ObservationResponse {
 	response := newObservationResponse(variables)
 	for _, observation := range observations {
-		facetId, facet, facetObservation := observationToFacetObservation(observation)
 		variable, entity := observation.VariableMeasured, observation.ObservationAbout
 		if response.ByVariable[variable].ByEntity[entity] == nil {
-			response.ByVariable[variable].ByEntity[entity] = &v2.EntityObservation{
-				OrderedFacets: []*v2.FacetObservation{},
-			}
+			response.ByVariable[variable].ByEntity[entity] = &pbv2.EntityObservation{}
 		}
+
+		// Existence check only returns variables and entities.
+		if !queryObs && !queryFacet {
+			continue
+		}
+
+		facetId, facet, facetObservation := observationToFacetObservation(observation, queryObs)
 		response.ByVariable[variable].ByEntity[entity].OrderedFacets = append(
 			response.ByVariable[variable].ByEntity[entity].OrderedFacets,
 			facetObservation,
@@ -128,20 +170,20 @@ func observationsToObservationResponse(variables []string, observations []*Obser
 	return response
 }
 
-func newObservationResponse(variables []string) *v3.ObservationResponse {
-	result := &v3.ObservationResponse{
-		ByVariable: map[string]*v2.VariableObservation{},
+func newObservationResponse(variables []string) *pbv3.ObservationResponse {
+	result := &pbv3.ObservationResponse{
+		ByVariable: map[string]*pbv2.VariableObservation{},
 		Facets:     map[string]*pb.Facet{},
 	}
 	for _, variable := range variables {
-		result.ByVariable[variable] = &v2.VariableObservation{
-			ByEntity: map[string]*v2.EntityObservation{},
+		result.ByVariable[variable] = &pbv2.VariableObservation{
+			ByEntity: map[string]*pbv2.EntityObservation{},
 		}
 	}
 	return result
 }
 
-func observationToFacetObservation(observation *Observation) (string, *pb.Facet, *v2.FacetObservation) {
+func observationToFacetObservation(observation *Observation, queryObs bool) (string, *pb.Facet, *pbv2.FacetObservation) {
 	facetId, facet := observationToFacet(observation)
 
 	var observations []*pb.PointStat
@@ -150,12 +192,18 @@ func observationToFacetObservation(observation *Observation) (string, *pb.Facet,
 		observations = append(observations, dateValueToPointStat(dateValue))
 	}
 
-	facetObservation := &v2.FacetObservation{
-		Observations: observations,
+	facetObservation := &pbv2.FacetObservation{
+		FacetId:      facetId,
 		ObsCount:     *proto.Int32(int32(len(observations))),
 		EarliestDate: observations[0].Date,
 		LatestDate:   observations[len(observations)-1].Date,
 	}
+
+	// Return the full response.
+	if queryObs {
+		facetObservation.Observations = observations
+	}
+
 	return facetId, facet, facetObservation
 }
 
@@ -178,8 +226,8 @@ func dateValueToPointStat(dateValue *DateValue) *pb.PointStat {
 	}
 }
 
-func searchNodesToNodeSearchResponse(nodes []*SearchNode) *v3.NodeSearchResponse {
-	response := &v3.NodeSearchResponse{}
+func searchNodesToNodeSearchResponse(nodes []*SearchNode) *pbv3.NodeSearchResponse {
+	response := &pbv3.NodeSearchResponse{}
 
 	for _, node := range nodes {
 		response.Nodes = append(response.Nodes, searchNodeToEntityInfo(node))
