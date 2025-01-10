@@ -72,6 +72,11 @@ func TestFetchContainInAll(t *testing.T) {
 				"country/FRA<-containedInPlace+{typeOf:AdministrativeArea2}",
 				"FRA_AA2.json",
 			},
+			{
+				[]string{"test_var_3"},
+				"Company<-containedInPlace+{typeOf:Company}",
+				"companies.json",
+			},
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V2Observation(ctx, &pbv2.ObservationRequest{

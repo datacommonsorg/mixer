@@ -98,3 +98,15 @@ type NodePredicate struct {
 	Node      string `db:"node"`
 	Predicate string `db:"predicate"`
 }
+
+// SubjectObject represents a row for (subject_id, object_id) pairs.
+type SubjectObject struct {
+	SubjectID string `db:"subject_id"`
+	ObjectID  string `db:"object_id"`
+}
+
+// EntityVariables represents a row that includes an entity and its variables.
+type EntityVariables struct {
+	Entity    string      `db:"entity"`
+	Variables StringSlice `db:"variables"`
+}

@@ -43,6 +43,10 @@ func TestVariable(t *testing.T) {
 				[]string{"wikidataId/Q506877", "wikidataId/Q1951", "fake_place", "test_entity"},
 				"result.json",
 			},
+			{
+				[]string{},
+				"empty.json",
+			},
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V2Observation(ctx, &pbv2.ObservationRequest{
