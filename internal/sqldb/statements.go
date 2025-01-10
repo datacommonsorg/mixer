@@ -19,6 +19,8 @@ package sqldb
 var statements = struct {
 	getObsByVariableAndEntity                 string
 	getObsByVariableEntityAndDate             string
+	getObsByVariableAndEntityType             string
+	getObsByVariableEntityTypeAndDate         string
 	getStatVarSummaries                       string
 	getKeyValue                               string
 	getAllStatVarGroups                       string
@@ -27,6 +29,9 @@ var statements = struct {
 	getSubjectPredicates                      string
 	getObjectPredicates                       string
 	getExistingStatVarGroups                  string
+	getAllEntitiesOfType                      string
+	getContainedInPlace                       string
+	getEntityVariables                        string
 }{
 	getObsByVariableAndEntity: `
 		SELECT entity, variable, date, value, provenance, unit, scaling_factor, measurement_method, observation_period, properties 
@@ -45,6 +50,31 @@ var statements = struct {
 			AND variable IN (:variables)
 			AND value != ''
 			AND date = :date
+		ORDER BY date ASC;
+	`,
+	getObsByVariableAndEntityType: `
+		SELECT entity, variable, date, value, provenance, unit, scaling_factor, measurement_method, observation_period, properties 
+		FROM observations AS o
+		JOIN (
+			SELECT DISTINCT subject_id 
+			FROM triples 
+			WHERE predicate = 'typeOf' AND object_id = :entityType
+		) AS t ON o.entity = t.subject_id
+		WHERE o.value != ''
+		AND o.variable IN (:variables)
+		ORDER BY date ASC;
+	`,
+	getObsByVariableEntityTypeAndDate: `
+		SELECT entity, variable, date, value, provenance, unit, scaling_factor, measurement_method, observation_period, properties 
+		FROM observations AS o
+		JOIN (
+			SELECT DISTINCT subject_id 
+			FROM triples 
+			WHERE predicate = 'typeOf' AND object_id = :entityType
+		) AS t ON o.entity = t.subject_id
+		WHERE o.value != ''
+		AND o.variable IN (:variables)
+		AND o.date = :date
 		ORDER BY date ASC;
 	`,
 	getStatVarSummaries: `
@@ -167,5 +197,30 @@ var statements = struct {
 			predicate = "typeOf"
 			AND subject_id IN (:groups)
 			AND object_id = 'StatVarGroup';
+	`,
+	getAllEntitiesOfType: `
+		SELECT subject_id, object_id
+		FROM triples
+		WHERE 
+			predicate = 'typeOf'
+			AND object_id = :type;
+	`,
+	getContainedInPlace: `
+		SELECT t1.subject_id, t2.object_id
+		FROM 
+			triples t1
+			JOIN triples t2
+			ON t1.subject_id = t2.subject_id
+		WHERE 
+			t1.predicate = 'typeOf'
+			AND t1.object_id = :childPlaceType
+			AND t2.predicate = 'containedInPlace'
+			AND t2.object_id IN (:parentPlaces);
+	`,
+	getEntityVariables: `
+		SELECT entity, GROUP_CONCAT(DISTINCT variable) variables
+		FROM observations 
+		WHERE entity in (:entities)
+		GROUP BY entity;
 	`,
 }

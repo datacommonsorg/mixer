@@ -16,11 +16,10 @@
 package observation
 
 import (
-	"database/sql"
-
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -38,20 +37,17 @@ func initObservationResult(variables []string) *pbv2.ObservationResponse {
 }
 
 func handleSQLRows(
-	rows *sql.Rows,
+	rows []*sqldb.Observation,
 	variables []string,
-) (map[string]map[string]map[string][]*pb.PointStat, error) {
+) map[string]map[string]map[string][]*pb.PointStat {
 	// result is keyed by variable, entity and provID
 	result := make(map[string]map[string]map[string][]*pb.PointStat)
 	for _, variable := range variables {
 		result[variable] = make(map[string]map[string][]*pb.PointStat)
 	}
-	for rows.Next() {
-		var entity, variable, date, prov string
-		var value float64
-		if err := rows.Scan(&entity, &variable, &date, &value, &prov); err != nil {
-			return nil, err
-		}
+	for _, row := range rows {
+		entity, variable, date, prov := row.Entity, row.Variable, row.Date, row.Provenance
+		value := row.Value
 		if result[variable][entity] == nil {
 			result[variable][entity] = map[string][]*pb.PointStat{}
 		}
@@ -66,7 +62,7 @@ func handleSQLRows(
 			},
 		)
 	}
-	return result, rows.Err()
+	return result
 }
 
 func processSqlData(

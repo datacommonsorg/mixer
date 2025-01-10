@@ -54,10 +54,17 @@ func (s *StringSlice) Scan(src interface{}) error {
 		return nil
 	}
 
-	val, ok := src.(string)
-	if !ok {
-		return fmt.Errorf("failed to decode []string: (%v)", src)
+	var val string
+
+	switch v := src.(type) {
+	case []byte:
+		val = string(v)
+	case string:
+		val = v
+	default:
+		return fmt.Errorf("failed to decode []string: type = %T, value = %v", src, src)
 	}
+
 	*s = strings.Split(val, ",")
 	return nil
 }
@@ -90,4 +97,16 @@ type EntityCount struct {
 type NodePredicate struct {
 	Node      string `db:"node"`
 	Predicate string `db:"predicate"`
+}
+
+// SubjectObject represents a row for (subject_id, object_id) pairs.
+type SubjectObject struct {
+	SubjectID string `db:"subject_id"`
+	ObjectID  string `db:"object_id"`
+}
+
+// EntityVariables represents a row that includes an entity and its variables.
+type EntityVariables struct {
+	Entity    string      `db:"entity"`
+	Variables StringSlice `db:"variables"`
 }

@@ -74,6 +74,49 @@ func (sc *SQLClient) GetObservations(ctx context.Context, variables []string, en
 	return observations, nil
 }
 
+// GetObservationsByEntityType retrieves observations from SQL given a list of variables and an entity type and a date.
+func (sc *SQLClient) GetObservationsByEntityType(ctx context.Context, variables []string, entityType string, date string) ([]*Observation, error) {
+	defer util.TimeTrack(time.Now(), "SQL: GetObservationsByEntityType")
+
+	var observations []*Observation
+	if len(variables) == 0 {
+		return observations, nil
+	}
+
+	var stmt statement
+
+	switch {
+	case date != "" && date != latestDate:
+		stmt = statement{
+			query: statements.getObsByVariableEntityTypeAndDate,
+			args: map[string]interface{}{
+				"variables":  variables,
+				"entityType": entityType,
+				"date":       date,
+			},
+		}
+	default:
+		stmt = statement{
+			query: statements.getObsByVariableAndEntityType,
+			args: map[string]interface{}{
+				"variables":  variables,
+				"entityType": entityType,
+			},
+		}
+	}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		&observations,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return observations, nil
+}
+
 // GetSVSummaries retrieves summaries for the specified variables.
 func (sc *SQLClient) GetSVSummaries(ctx context.Context, variables []string) ([]*SVSummary, error) {
 	defer util.TimeTrack(time.Now(), "SQL: GetSVSummaries")
@@ -233,6 +276,87 @@ func (sc *SQLClient) GetExistingStatVarGroups(ctx context.Context, groupDcids []
 		return nil, err
 	}
 	return values, nil
+}
+
+// GetAllEntitiesOfType returns all entities of the specified type.
+func (sc *SQLClient) GetAllEntitiesOfType(ctx context.Context, typeOf string) ([]*SubjectObject, error) {
+	defer util.TimeTrack(time.Now(), "SQL: GetAllEntitiesOfType")
+
+	rows := []*SubjectObject{}
+
+	stmt := statement{
+		query: statements.getAllEntitiesOfType,
+		args: map[string]interface{}{
+			"type": typeOf,
+		},
+	}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		&rows,
+	)
+	if err != nil {
+		return nil, err
+	}
+	return rows, nil
+}
+
+// GetContainedInPlace returns all entities of the specified childPlaceType that are contained in the specified parentPlaces.
+func (sc *SQLClient) GetContainedInPlace(ctx context.Context, childPlaceType string, parentPlaces []string) ([]*SubjectObject, error) {
+	defer util.TimeTrack(time.Now(), "SQL: GetContainedInPlace")
+
+	rows := []*SubjectObject{}
+
+	if len(parentPlaces) == 0 {
+		return rows, nil
+	}
+
+	stmt := statement{
+		query: statements.getContainedInPlace,
+		args: map[string]interface{}{
+			"childPlaceType": childPlaceType,
+			"parentPlaces":   parentPlaces,
+		},
+	}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		&rows,
+	)
+	if err != nil {
+		return nil, err
+	}
+	return rows, nil
+}
+
+// GetEntityVariables returns variables associated with the specified entities.
+func (sc *SQLClient) GetEntityVariables(ctx context.Context, entities []string) ([]*EntityVariables, error) {
+	defer util.TimeTrack(time.Now(), "SQL: GetEntityVariables")
+
+	rows := []*EntityVariables{}
+
+	if len(entities) == 0 {
+		return rows, nil
+	}
+
+	stmt := statement{
+		query: statements.getEntityVariables,
+		args: map[string]interface{}{
+			"entities": entities,
+		},
+	}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		&rows,
+	)
+	if err != nil {
+		return nil, err
+	}
+	return rows, nil
 }
 
 // GetKeyValue gets the value for the specified key from the key_value_store table.
