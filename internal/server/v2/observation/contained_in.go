@@ -17,11 +17,9 @@ package observation
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"net/http"
 	"sort"
-	"strings"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -30,6 +28,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -183,35 +182,14 @@ func FetchContainedIn(
 
 	// Fetch Data from SQLite database.
 	var sqlResult *pbv2.ObservationResponse
-	if store.SQLClient.DB != nil {
+	if sqldb.IsConnected(&store.SQLClient) {
 		if ancestor == childType {
 			sqlResult = initObservationResult(variables)
-			variablesStr := "'" + strings.Join(variables, "', '") + "'"
-			query := fmt.Sprintf(
-				`
-					SELECT entity, variable, date, value, provenance FROM observations as o
-					JOIN triples as t ON o.entity = t.subject_id
-					AND t.predicate = 'typeOf'
-					AND t.object_id = '%s'
-					AND o.value != ''
-					AND o.variable IN (%s)
-				`,
-				childType,
-				variablesStr,
-			)
-			if queryDate != "" && queryDate != shared.LATEST {
-				query += fmt.Sprintf("AND date = (%s) ", queryDate)
-			}
-			query += "ORDER BY date ASC;"
-			rows, err := store.SQLClient.DB.Query(query)
+			rows, err := store.SQLClient.GetObservationsByEntityType(ctx, variables, childType, queryDate)
 			if err != nil {
 				return nil, err
 			}
-			defer rows.Close()
-			tmp, err := handleSQLRows(rows, variables)
-			if err != nil {
-				return nil, err
-			}
+			tmp := handleSQLRows(rows, variables)
 			sqlResult = processSqlData(sqlResult, tmp, queryDate, sqlProvenances)
 		} else {
 			if len(childPlaces) == 0 {

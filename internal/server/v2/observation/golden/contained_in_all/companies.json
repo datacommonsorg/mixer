@@ -1,0 +1,70 @@
+{
+  "by_variable": {
+    "test_var_3": {
+      "by_entity": {
+        "ein/1": {
+          "ordered_facets": [
+            {
+              "facet_id": "custom",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1
+                },
+                {
+                  "date": "2023",
+                  "value": 100
+                }
+              ],
+              "obs_count": 2,
+              "earliest_date": "2015",
+              "latest_date": "2023"
+            }
+          ]
+        },
+        "ein/2": {
+          "ordered_facets": [
+            {
+              "facet_id": "custom",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 2
+                },
+                {
+                  "date": "2023",
+                  "value": 200
+                }
+              ],
+              "obs_count": 2,
+              "earliest_date": "2015",
+              "latest_date": "2023"
+            }
+          ]
+        },
+        "ein/3": {
+          "ordered_facets": [
+            {
+              "facet_id": "custom",
+              "observations": [
+                {
+                  "date": "2023",
+                  "value": 300
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "facets": {
+    "custom": {
+      "import_name": "Custom Prov",
+      "provenance_url": "custom.datacommons.org"
+    }
+  }
+}
