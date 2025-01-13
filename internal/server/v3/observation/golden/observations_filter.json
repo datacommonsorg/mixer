@@ -1,0 +1,30 @@
+{
+  "by_variable": {
+    "Count_Person": {
+      "by_entity": {
+        "geoId/06": {
+          "ordered_facets": [
+            {
+              "facet_id": "2825511676",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 39368078
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2020",
+              "latest_date": "2020"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "facets": {
+    "2825511676": {
+      "import_name": "CDC_Mortality_UnderlyingCause",
+      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
+    }
+  }
+}

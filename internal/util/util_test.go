@@ -20,6 +20,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	v1 "github.com/datacommonsorg/mixer/internal/proto/v1"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -394,6 +395,43 @@ func TestGetFacetID(t *testing.T) {
 		got := GetFacetID(c.facet)
 		if !reflect.DeepEqual(got, c.want) {
 			t.Errorf("GetFacetID(%v) = %v, want %v", c.facet, got, c.want)
+		}
+	}
+}
+
+func TestShouldIncludeFacet(t *testing.T) {
+	for _, c := range []struct {
+		filter *pbv2.FacetFilter
+		facet  *pb.Facet
+		want   bool
+	}{
+		{
+			nil,
+			&pb.Facet{},
+			true,
+		},
+		{
+			&pbv2.FacetFilter{
+				Domains: []string{"cdc.gov"},
+			},
+			&pb.Facet{
+				ProvenanceUrl: "https://wonder.cdc.gov/ucd-icd10.html",
+			},
+			true,
+		},
+		{
+			&pbv2.FacetFilter{
+				FacetIds: []string{"1", "2"},
+			},
+			&pb.Facet{
+				ProvenanceUrl: "https://wonder.cdc.gov/ucd-icd10.html",
+			},
+			false,
+		},
+	} {
+		got := ShouldIncludeFacet(c.filter, c.facet)
+		if !reflect.DeepEqual(got, c.want) {
+			t.Errorf("ShouldIncludeFacet(%v, %v) = %v, want %v", c.filter, c.facet, got, c.want)
 		}
 	}
 }

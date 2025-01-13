@@ -17,9 +17,7 @@ package observation
 
 import (
 	"context"
-	"net/url"
 	"sort"
-	"strings"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -33,38 +31,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/protobuf/proto"
 )
-
-func shouldKeepSourceSeries(filter *pbv2.FacetFilter, facet *pb.Facet) bool {
-	facetID := util.GetFacetID(facet)
-	if filter.FacetIds != nil {
-		matchedFacetId := false
-		for _, facetId := range filter.FacetIds {
-			if facetID == facetId {
-				matchedFacetId = true
-			}
-		}
-		if !matchedFacetId {
-			return false
-		}
-	}
-	if filter.Domains != nil {
-		url, err := url.Parse(facet.ProvenanceUrl)
-		if err != nil {
-			return false
-		}
-		matchedDomain := false
-		for _, domain := range filter.Domains {
-			if strings.HasSuffix(url.Hostname(), domain) {
-				matchedDomain = true
-				break
-			}
-		}
-		if !matchedDomain {
-			return false
-		}
-	}
-	return true
-}
 
 // FetchDirect fetches data from both Bigtable cache and SQLite database.
 func FetchDirect(
@@ -143,7 +109,7 @@ func FetchDirectBT(
 					facet := util.GetFacet(series)
 					// If there is a facet filter, check that the series matches the
 					// filter. Otherwise, skip.
-					if filter != nil && !shouldKeepSourceSeries(filter, facet) {
+					if !util.ShouldIncludeFacet(filter, facet) {
 						continue
 					}
 					facetID := util.GetFacetID(facet)
