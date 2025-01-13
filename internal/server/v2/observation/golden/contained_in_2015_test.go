@@ -87,6 +87,12 @@ func TestFetchContainIn(t *testing.T) {
 				&pbv2.FacetFilter{FacetIds: []string{"2176550201", "10983471"}},
 				"US_State_Multi_Facet_Id.json",
 			},
+			{
+				[]string{"test_var_3"},
+				"Company<-containedInPlace+{typeOf:Company}",
+				nil,
+				"companies.json",
+			},
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V2Observation(ctx, &pbv2.ObservationRequest{

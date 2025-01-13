@@ -16,10 +16,9 @@ package fetcher
 
 import (
 	"context"
-	"fmt"
-	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -72,29 +71,13 @@ func FetchEntityVariables(
 		}
 	}
 	// Fetch from SQL database
-	if store.SQLClient.DB != nil {
-		query := fmt.Sprintf(
-			`
-				SELECT entity, GROUP_CONCAT(DISTINCT variable) AS variables
-				FROM observations WHERE entity in (%s)
-				GROUP BY entity;
-			`,
-			util.SQLInParam(len(entities)),
-		)
-		// Execute query
-		rows, err := store.SQLClient.DB.Query(query, util.ConvertArgs(entities)...)
+	if sqldb.IsConnected(&store.SQLClient) {
+		rows, err := store.SQLClient.GetEntityVariables(ctx, entities)
 		if err != nil {
 			return nil, err
 		}
-		defer rows.Close()
-		for rows.Next() {
-			var entity, variableStr string
-			err = rows.Scan(&entity, &variableStr)
-			if err != nil {
-				return nil, err
-			}
-			variables := strings.Split(variableStr, ",")
-			resp[entity].StatVars = util.MergeDedupe(resp[entity].StatVars, variables)
+		for _, row := range rows {
+			resp[row.Entity].StatVars = util.MergeDedupe(resp[row.Entity].StatVars, row.Variables)
 		}
 	}
 	return resp, nil
