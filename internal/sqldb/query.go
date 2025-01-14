@@ -427,9 +427,9 @@ func (sc *SQLClient) queryAndCollect(
 	return sc.dbx.SelectContext(ctx, dest, query, args...)
 }
 
-// CheckTablesAndSchema checks if the SQL DB has all the tables and complies to the schema expected by the service.
+// ValidateDatabase checks if the SQL DB has all the tables and complies to the schema expected by the service.
 // It returns an error if it does not.
-func (sc *SQLClient) CheckTablesAndSchema() error {
+func (sc *SQLClient) ValidateDatabase() error {
 	err := sc.checkTables()
 	if err != nil {
 		return err

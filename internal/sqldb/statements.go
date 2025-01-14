@@ -224,6 +224,7 @@ var statements = struct {
 		WHERE entity in (:entities)
 		GROUP BY entity;
 	`,
+	// Query for column names in a table. Table name must be added via string interpolation.
 	getTableColumnsFormat: `
 		SELECT * FROM %s LIMIT 0;
 	`,

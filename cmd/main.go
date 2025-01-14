@@ -227,9 +227,9 @@ func main() {
 
 	// Check SQL tables and schema.
 	if *useSQLite || *useCloudSQL {
-		err = sqlClient.CheckTablesAndSchema()
+		err = sqlClient.ValidateDatabase()
 		if err != nil {
-			log.Fatalf("SQL tables /schema check failed: %v", err)
+			log.Fatalf("SQL database validation failed: %v", err)
 		}
 	}
 

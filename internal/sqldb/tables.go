@@ -35,16 +35,16 @@ const (
 // allTables is an array of all expected tables in the SQL database.
 var allTables = []string{TableObservations, TableTriples, TableKeyValueStore}
 
-// allObservationsTableColumns is a set of all column names in the observations table.
-var allObservationsTableColumns = map[string]struct{}{
-	ColumnEntity:            {},
-	ColumnVariable:          {},
-	ColumnDate:              {},
-	ColumnValue:             {},
-	ColumnProvenance:        {},
-	ColumnUnit:              {},
-	ColumnScalingFactor:     {},
-	ColumnMeasurementMethod: {},
-	ColumnObservationPeriod: {},
-	ColumnProperties:        {},
+// allObservationsTableColumns is an array of all column names in the observations table.
+var allObservationsTableColumns = []string{
+	ColumnEntity,
+	ColumnVariable,
+	ColumnDate,
+	ColumnValue,
+	ColumnProvenance,
+	ColumnUnit,
+	ColumnScalingFactor,
+	ColumnMeasurementMethod,
+	ColumnObservationPeriod,
+	ColumnProperties,
 }
