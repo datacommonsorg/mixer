@@ -29,9 +29,9 @@ func TestGetStatVarSummaries(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Could not open testing database: %v", err)
 	}
-	err = sqldb.CheckSchema(sqlClient.DB)
+	err = sqlClient.CheckTablesAndSchema()
 	if err != nil {
-		t.Fatalf("SQL schema check failed: %v", err)
+		t.Fatalf("SQL tables / schema check failed: %v", err)
 	}
 
 	want := map[string]*pb.StatVarSummary{

@@ -17,6 +17,9 @@ package sqldb
 
 import (
 	"context"
+	"fmt"
+	"log"
+	"strings"
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -422,6 +425,93 @@ func (sc *SQLClient) queryAndCollect(
 	query = sc.dbx.Rebind(query)
 
 	return sc.dbx.SelectContext(ctx, dest, query, args...)
+}
+
+// CheckTablesAndSchema checks if the SQL DB has all the tables and complies to the schema expected by the service.
+// It returns an error if it does not.
+func (sc *SQLClient) CheckTablesAndSchema() error {
+	err := sc.checkTables()
+	if err != nil {
+		return err
+	}
+
+	err = sc.checkSchema()
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// checkTables checks if the SQL DB has all the tables expected by the service.
+// It returns an error if it does not.
+func (sc *SQLClient) checkTables() error {
+	for _, tableName := range allTables {
+		columnNames, err := sc.getTableColumns(tableName)
+		// We use an error or empty column names as a signal that tables are not found.
+		// We are not querying the db schema itself because those queries are different for different dbs.
+		// This keeps it simple and agnostic of the underlying db.
+		if err != nil || len(columnNames) == 0 {
+			if err != nil {
+				log.Printf("Error checking table %s: %v", tableName, err)
+			}
+
+			errMsg := fmt.Sprintf(`The SQL database does not have the required tables.
+The following tables are required: %s
+
+Prepare and load your data before starting this service.
+Guide: https://docs.datacommons.org/custom_dc/custom_data.html
+			`, strings.Join(allTables, ", "))
+
+			return fmt.Errorf(errMsg)
+		}
+	}
+
+	log.Printf("SQL tables check succeeded.")
+	return nil
+}
+
+// checkSchema checks if the schema of the SQL DB is what is expected by the service.
+// It returns an error if it is not.
+func (sc *SQLClient) checkSchema() error {
+	observationColumns, err := sc.getTableColumns(TableObservations)
+	if err != nil {
+		return err
+	}
+
+	missingObservationColumns := util.GetMissingStrings(observationColumns, allObservationsTableColumns)
+	if len(missingObservationColumns) != 0 {
+		errMsg := fmt.Sprintf(`The following columns are missing in the %s table: %v
+
+Run a data management job to update your database schema.
+Guide: https://docs.datacommons.org/custom_dc/troubleshooting.html#schema-check-failed.
+
+`,
+			TableObservations, missingObservationColumns)
+
+		return fmt.Errorf(errMsg)
+	}
+
+	log.Printf("SQL schema check succeeded.")
+	return nil
+}
+
+func (sc *SQLClient) getTableColumns(tableName string) ([]string, error) {
+	query := fmt.Sprintf(statements.getTableColumnsFormat, tableName)
+
+	rows, err := sc.dbx.Query(query)
+	if err != nil {
+		return nil, fmt.Errorf("table not found: %s (error: %w)", tableName, err)
+	}
+	defer rows.Close()
+
+	// Get the column names
+	columns, err := rows.Columns()
+	if err != nil {
+		return nil, fmt.Errorf("error getting column names for %s table: %w", tableName, err)
+	}
+
+	return columns, nil
 }
 
 // statement struct includes the sql query and named args used to execute a sql query.

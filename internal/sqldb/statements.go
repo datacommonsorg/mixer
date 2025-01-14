@@ -32,6 +32,7 @@ var statements = struct {
 	getAllEntitiesOfType                      string
 	getContainedInPlace                       string
 	getEntityVariables                        string
+	getTableColumnsFormat                     string
 }{
 	getObsByVariableAndEntity: `
 		SELECT entity, variable, date, value, provenance, unit, scaling_factor, measurement_method, observation_period, properties 
@@ -222,5 +223,8 @@ var statements = struct {
 		FROM observations 
 		WHERE entity in (:entities)
 		GROUP BY entity;
+	`,
+	getTableColumnsFormat: `
+		SELECT * FROM %s LIMIT 0;
 	`,
 }
