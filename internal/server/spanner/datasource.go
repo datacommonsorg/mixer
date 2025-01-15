@@ -104,3 +104,8 @@ func (sds *SpannerDataSource) NodeSearch(ctx context.Context, req *pbv3.NodeSear
 	}
 	return searchNodesToNodeSearchResponse(nodes), nil
 }
+
+// Resolve searches for nodes in the graph.
+func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv3.ResolveRequest) (*pbv3.ResolveResponse, error) {
+	return nil, fmt.Errorf("unimplemented")
+}

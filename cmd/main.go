@@ -32,6 +32,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
+	"github.com/datacommonsorg/mixer/internal/server/remote"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -267,6 +268,17 @@ func main() {
 		if err != nil {
 			log.Fatalf("Failed to create Maps client: %v", err)
 		}
+	}
+
+	// Remote Mixer.
+	// TODO: remove flag for Spanner Graph after validating and adding merging.
+	if *useSpannerGraph && *remoteMixerDomain != "" {
+		remoteClient, err := remote.NewRemoteClient(metadata, &http.Client{})
+		if err != nil {
+			log.Fatalf("Failed to create remote client: %v", err)
+		}
+		var ds datasource.DataSource = remote.NewRemoteDataSource(remoteClient)
+		sources = append(sources, &ds)
 	}
 
 	// Create server object
