@@ -23,7 +23,6 @@ import (
 	"log"
 	"net"
 	"os"
-	"path/filepath"
 
 	"cloud.google.com/go/cloudsqlconn"
 	"github.com/go-sql-driver/mysql"
@@ -99,30 +98,17 @@ func newSQLClient(db *sql.DB, driver string) *SQLClient {
 }
 
 func newSQLiteConnection(dbPath string) (*sql.DB, error) {
-	// Create all intermediate directories.
-	if err := os.MkdirAll(filepath.Dir(dbPath), 0755); err != nil {
-		return nil, err
-	}
 	_, err := os.Stat(dbPath)
-	if err == nil {
-		sqlClient, err := sql.Open(sqliteDriver, dbPath)
-		if err != nil {
-			return nil, err
-		}
-		return sqlClient, nil
-	}
-	if !os.IsNotExist(err) {
-		return nil, err
-	}
-	_, err = os.Create(dbPath)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("error accessing sqlite db file: %s (%w)", dbPath, err)
 	}
-	sqlClient, err := sql.Open(sqliteDriver, dbPath)
+
+	db, err := sql.Open(sqliteDriver, dbPath)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("error opening sqlite db: %s (%w)", dbPath, err)
 	}
-	return sqlClient, err
+	log.Printf("Connected to sqlite db: %s", dbPath)
+	return db, err
 }
 
 func newCloudSQLConnection(instanceName string) (*sql.DB, error) {
@@ -161,9 +147,16 @@ func newCloudSQLConnection(instanceName string) (*sql.DB, error) {
 		"%s:%s@%s(localhost:%s)/%s?parseTime=true",
 		dbUser, dbPwd, cloudSQLConnectionIdentifier, dbPort, dbName)
 
-	dbPool, err := sql.Open(mysqlDriver, dbURI)
+	db, err := sql.Open(mysqlDriver, dbURI)
 	if err != nil {
 		return nil, fmt.Errorf("sql.Open: %w", err)
 	}
-	return dbPool, nil
+
+	err = db.Ping()
+	if err != nil {
+		return nil, fmt.Errorf("db.Ping: %w", err)
+	}
+
+	log.Printf("Connected to Cloud SQL instance: %s", instanceName)
+	return db, nil
 }

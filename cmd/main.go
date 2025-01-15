@@ -225,15 +225,11 @@ func main() {
 		}
 	}
 
-	// Create tables for new database.
+	// Check SQL tables and schema.
 	if *useSQLite || *useCloudSQL {
-		if err := sqldb.CreateTables(sqlClient.DB); err != nil {
-			log.Fatalf("Can not create tables in database: %v", err)
-		}
-
-		err = sqldb.CheckSchema(sqlClient.DB)
+		err = sqlClient.ValidateDatabase()
 		if err != nil {
-			log.Fatalf("SQL schema check failed: %v", err)
+			log.Fatalf("SQL database validation failed: %v", err)
 		}
 	}
 
