@@ -81,3 +81,12 @@ func (ds *DataSources) NodeSearch(ctx context.Context, in *pbv3.NodeSearchReques
 	// TODO: Execute in parallel and returned merged response.
 	return (*ds.sources[0]).NodeSearch(ctx, in)
 }
+
+func (ds *DataSources) Resolve(ctx context.Context, in *pbv3.ResolveRequest) (*pbv3.ResolveResponse, error) {
+	if len(ds.sources) == 0 {
+		return nil, fmt.Errorf("no sources found")
+	}
+	// Returning only the first one right now.
+	// TODO: Execute in parallel and returned merged response.
+	return (*ds.sources[0]).Resolve(ctx, in)
+}

@@ -17,7 +17,6 @@ package server
 
 import (
 	"context"
-	"fmt"
 
 	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 )
@@ -47,5 +46,5 @@ func (s *Server) V3NodeSearch(ctx context.Context, in *pbv3.NodeSearchRequest) (
 func (s *Server) V3Resolve(ctx context.Context, in *pbv3.ResolveRequest) (
 	*pbv3.ResolveResponse, error,
 ) {
-	return nil, fmt.Errorf("unimplemented")
+	return s.dataSources.Resolve(ctx, in)
 }
