@@ -730,16 +730,15 @@ func GetAllDescendentSV(svgMap map[string]*pb.StatVarGroupNode, svgDcid string) 
 	return MergeDedupe(res)
 }
 
-// GetMissingStrings returns strings from the wantStrings set
-// that are missing in the gotStrings slice.
-func GetMissingStrings(gotStrings []string, wantStrings map[string]struct{}) []string {
+// GetMissingStrings returns strings from the wantStrings that are missing gotStrings.
+func GetMissingStrings(gotStrings []string, wantStrings []string) []string {
 	gotStringsSet := make(map[string]struct{})
 	for _, col := range gotStrings {
 		gotStringsSet[col] = struct{}{}
 	}
 
 	var missingStrings []string
-	for col := range wantStrings {
+	for _, col := range wantStrings {
 		if _, ok := gotStringsSet[col]; !ok {
 			missingStrings = append(missingStrings, col)
 		}
