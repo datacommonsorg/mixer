@@ -93,7 +93,7 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv3.Observa
 
 	observations = filterObservationsByDate(observations, date)
 
-	return observationsToObservationResponse(variables, observations, queryObs(&qo), qo.facet), nil
+	return observationsToObservationResponse(variables, observations, queryObs(&qo), qo.facet, req.Filter), nil
 }
 
 // NodeSearch searches nodes in the spanner graph.
