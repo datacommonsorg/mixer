@@ -29,6 +29,7 @@ import (
 	"math"
 	"math/rand"
 	"net/http"
+	"net/url"
 	"os"
 	"regexp"
 	"runtime"
@@ -39,6 +40,7 @@ import (
 	secretmanager "cloud.google.com/go/secretmanager/apiv1"
 	"cloud.google.com/go/secretmanager/apiv1/secretmanagerpb"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/go-sql-driver/mysql"
 	"golang.org/x/text/cases"
@@ -521,6 +523,42 @@ func GetFacetID(m *pb.Facet) string {
 	return fmt.Sprint(h.Sum32())
 }
 
+func ShouldIncludeFacet(filter *pbv2.FacetFilter, facet *pb.Facet) bool {
+	if filter == nil {
+		return true
+	}
+
+	facetID := GetFacetID(facet)
+	if filter.FacetIds != nil {
+		matchedFacetId := false
+		for _, facetId := range filter.FacetIds {
+			if facetID == facetId {
+				matchedFacetId = true
+			}
+		}
+		if !matchedFacetId {
+			return false
+		}
+	}
+	if filter.Domains != nil {
+		url, err := url.Parse(facet.ProvenanceUrl)
+		if err != nil {
+			return false
+		}
+		matchedDomain := false
+		for _, domain := range filter.Domains {
+			if strings.HasSuffix(url.Hostname(), domain) {
+				matchedDomain = true
+				break
+			}
+		}
+		if !matchedDomain {
+			return false
+		}
+	}
+	return true
+}
+
 // EncodeProto encodes a protobuf message into a compressed string
 func EncodeProto(m proto.Message) (string, error) {
 	data, err := proto.Marshal(m)
@@ -730,16 +768,15 @@ func GetAllDescendentSV(svgMap map[string]*pb.StatVarGroupNode, svgDcid string) 
 	return MergeDedupe(res)
 }
 
-// GetMissingStrings returns strings from the wantStrings set
-// that are missing in the gotStrings slice.
-func GetMissingStrings(gotStrings []string, wantStrings map[string]struct{}) []string {
+// GetMissingStrings returns strings from the wantStrings that are missing gotStrings.
+func GetMissingStrings(gotStrings []string, wantStrings []string) []string {
 	gotStringsSet := make(map[string]struct{})
 	for _, col := range gotStrings {
 		gotStringsSet[col] = struct{}{}
 	}
 
 	var missingStrings []string
-	for col := range wantStrings {
+	for _, col := range wantStrings {
 		if _, ok := gotStringsSet[col]; !ok {
 			missingStrings = append(missingStrings, col)
 		}

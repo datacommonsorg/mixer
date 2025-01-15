@@ -147,7 +147,7 @@ func filterObservationsByDate(observations []*Observation, date string) []*Obser
 	return filtered
 }
 
-func observationsToObservationResponse(variables []string, observations []*Observation, queryObs, queryFacet bool) *pbv3.ObservationResponse {
+func observationsToObservationResponse(variables []string, observations []*Observation, queryObs, queryFacet bool, filter *pbv2.FacetFilter) *pbv3.ObservationResponse {
 	response := newObservationResponse(variables)
 	for _, observation := range observations {
 		variable, entity := observation.VariableMeasured, observation.ObservationAbout
@@ -161,6 +161,11 @@ func observationsToObservationResponse(variables []string, observations []*Obser
 		}
 
 		facetId, facet, facetObservation := observationToFacetObservation(observation, queryObs)
+
+		if !util.ShouldIncludeFacet(filter, facet) {
+			continue
+		}
+
 		response.ByVariable[variable].ByEntity[entity].OrderedFacets = append(
 			response.ByVariable[variable].ByEntity[entity].OrderedFacets,
 			facetObservation,

@@ -161,6 +161,22 @@ func TestV3Observation(t *testing.T) {
 				},
 				goldenFile: "observations_existence_facet_contained_in.json",
 			},
+			{
+				req: &pbv3.ObservationRequest{
+					Variable: &pbv2.DcidOrExpression{
+						Dcids: []string{"Count_Person"},
+					},
+					Entity: &pbv2.DcidOrExpression{
+						Dcids: []string{"geoId/06"},
+					},
+					Date: "2020",
+					Filter: &pbv2.FacetFilter{
+						Domains: []string{"cdc.gov"},
+					},
+					Select: []string{"entity", "variable", "date", "value"},
+				},
+				goldenFile: "observations_filter.json",
+			},
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V3Observation(ctx, c.req)
