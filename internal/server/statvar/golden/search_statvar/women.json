@@ -1629,7 +1629,7 @@
       "dcid": "Count_Person_Female_ReceivedCervicalCancerScreening_AsAFractionOf_Count_Person_Female"
     },
     {
-      "name": "Women who have ever undergone a oral cavity examniation (%)",
+      "name": "Women who have ever undergone a oral cavity examination (%)",
       "dcid": "Count_Person_Female_ReceivedOralCavityExamination_AsAFractionOf_Count_Person_Female"
     },
     {
@@ -2113,11 +2113,11 @@
       "dcid": "Count_Person_Female_ReceivedCervicalCancerScreening_Urban_AsAFractionOf_Count_Person_Urban_Female"
     },
     {
-      "name": "Women who have ever undergone a oral cavity examniation (%), rural",
+      "name": "Women who have ever undergone a oral cavity examination (%), rural",
       "dcid": "Count_Person_Female_ReceivedOralCavityExamination_Rural_AsAFractionOf_Count_Person_Rural_Female"
     },
     {
-      "name": "Women who have ever undergone a oral cavity examniation (%), urban",
+      "name": "Women who have ever undergone a oral cavity examination (%), urban",
       "dcid": "Count_Person_Female_ReceivedOralCavityExamination_Urban_AsAFractionOf_Count_Person_Urban_Female"
     },
     {
