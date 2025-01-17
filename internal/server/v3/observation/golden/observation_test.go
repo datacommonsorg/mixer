@@ -47,10 +47,10 @@ func TestV3Observation(t *testing.T) {
 			{
 				req: &pbv3.ObservationRequest{
 					Variable: &pbv2.DcidOrExpression{
-						Dcids: []string{"AirPollutant_Cancer_Risk"},
+						Dcids: []string{"AirPollutant_Cancer_Risk", "fake_variable"},
 					},
 					Entity: &pbv2.DcidOrExpression{
-						Dcids: []string{"geoId/01001", "geoId/02013"},
+						Dcids: []string{"geoId/01001", "geoId/02013", "fake_entity"},
 					},
 					Date:   "",
 					Select: []string{"entity", "variable", "date", "value"},
@@ -99,7 +99,7 @@ func TestV3Observation(t *testing.T) {
 			{
 				req: &pbv3.ObservationRequest{
 					Variable: &pbv2.DcidOrExpression{
-						Dcids: []string{"Count_Person", "Median_Age_Person"},
+						Dcids: []string{"Count_Person", "Median_Age_Person", "fake_variable"},
 					},
 					Entity: &pbv2.DcidOrExpression{
 						Expression: "geoId/06<-containedInPlace+{typeOf:County}",
@@ -112,10 +112,10 @@ func TestV3Observation(t *testing.T) {
 			{
 				req: &pbv3.ObservationRequest{
 					Variable: &pbv2.DcidOrExpression{
-						Dcids: []string{"Count_Farm", "Income_Farm"},
+						Dcids: []string{"Count_Farm", "Income_Farm", "fake_variable"},
 					},
 					Entity: &pbv2.DcidOrExpression{
-						Dcids: []string{"geoId/06", "country/USA", "country/CAN"},
+						Dcids: []string{"geoId/06", "country/USA", "country/CAN", "fake_entity"},
 					},
 					Date:   "2017",
 					Select: []string{"entity", "variable"},
@@ -125,7 +125,7 @@ func TestV3Observation(t *testing.T) {
 			{
 				req: &pbv3.ObservationRequest{
 					Variable: &pbv2.DcidOrExpression{
-						Dcids: []string{"Count_Farm"},
+						Dcids: []string{"Count_Farm", "fake_variable"},
 					},
 					Entity: &pbv2.DcidOrExpression{
 						Expression: "geoId/10<-containedInPlace+{typeOf:County}",
@@ -138,20 +138,19 @@ func TestV3Observation(t *testing.T) {
 			{
 				req: &pbv3.ObservationRequest{
 					Variable: &pbv2.DcidOrExpression{
-						Dcids: []string{"Count_Farm", "Income_Farm"},
+						Dcids: []string{"Count_Person", "Income_Farm", "fake_variable"},
 					},
 					Entity: &pbv2.DcidOrExpression{
-						Dcids: []string{"geoId/06", "country/USA", "country/CAN"},
+						Dcids: []string{"geoId/06", "country/USA", "country/CAN", "fake_entity"},
 					},
-					Date:   "2017",
 					Select: []string{"entity", "variable", "facet"},
 				},
-				goldenFile: "observations_existence_facet.json",
+				goldenFile: "observations_facet.json",
 			},
 			{
 				req: &pbv3.ObservationRequest{
 					Variable: &pbv2.DcidOrExpression{
-						Dcids: []string{"Count_Farm"},
+						Dcids: []string{"Count_Farm", "fake_variable"},
 					},
 					Entity: &pbv2.DcidOrExpression{
 						Expression: "geoId/10<-containedInPlace+{typeOf:County}",
@@ -159,7 +158,7 @@ func TestV3Observation(t *testing.T) {
 					Date:   "2017",
 					Select: []string{"entity", "variable", "facet"},
 				},
-				goldenFile: "observations_existence_facet_contained_in.json",
+				goldenFile: "observations_facet_contained_in.json",
 			},
 			{
 				req: &pbv3.ObservationRequest{
@@ -187,7 +186,7 @@ func TestV3Observation(t *testing.T) {
 			if latencyTest {
 				continue
 			}
-			if test.GenerateGolden {
+			if true {
 				test.UpdateGolden(resp, goldenPath, goldenFile)
 				continue
 			}

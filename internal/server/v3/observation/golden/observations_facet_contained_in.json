@@ -1,0 +1,30 @@
+{
+  "by_variable": {
+    "Count_Farm": {
+      "by_entity": {
+        "": {
+          "ordered_facets": [
+            {
+              "facet_id": "3037499515",
+              "obs_count": 3,
+              "earliest_date": "2017",
+              "latest_date": "2017"
+            }
+          ]
+        }
+      }
+    },
+    "fake_variable": {
+      "by_entity": {
+        "": {}
+      }
+    }
+  },
+  "facets": {
+    "3037499515": {
+      "import_name": "USDA_AgricultureCensus",
+      "provenance_url": "https://www.nass.usda.gov/AgCensus/",
+      "observation_period": "P5Y"
+    }
+  }
+}
