@@ -15,67 +15,26 @@
 package sqlquery
 
 import (
-	"database/sql"
-	"fmt"
-	"time"
+	"context"
 
-	"github.com/datacommonsorg/mixer/internal/util"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 )
 
 // CountObservation count observation for given entity and variable pair in SQL database.
 func CountObservation(
-	sqlClient *sql.DB,
+	ctx context.Context,
+	sqlClient *sqldb.SQLClient,
 	entities []string,
 	variables []string,
 ) (map[string]map[string]int, error) {
-	defer util.TimeTrack(time.Now(), "SQL: CountObservation")
-	entityParam, err := util.SQLListParam(sqlClient, len(entities))
+	rows, err := sqlClient.GetObservationCount(ctx, variables, entities)
 	if err != nil {
 		return nil, err
 	}
-	variableParam, err := util.SQLListParam(sqlClient, len(variables))
-	if err != nil {
-		return nil, err
-	}
-	// Query the observation count for entity, variable pairs
-	query := fmt.Sprintf(
-		`
-			WITH entity_list(entity) AS (
-					%s
-			),
-			variable_list(variable) AS (
-					%s
-			),
-			all_pairs AS (
-					SELECT e.entity, v.variable
-					FROM entity_list e
-					CROSS JOIN variable_list v
-			)
-			SELECT a.entity, a.variable, COUNT(o.date)
-			FROM all_pairs a
-			LEFT JOIN observations o ON a.entity = o.entity AND a.variable = o.variable
-			GROUP BY a.entity, a.variable;
-		`,
-		entityParam,
-		variableParam,
-	)
-	args := entities
-	args = append(args, variables...)
-	// Execute query
-	rows, err := sqlClient.Query(query, util.ConvertArgs(args)...)
-	if err != nil {
-		return nil, err
-	}
-	defer rows.Close()
 
 	result := map[string]map[string]int{}
-	for rows.Next() {
-		var e, v string
-		var count int
-		err = rows.Scan(&e, &v, &count)
-		if err != nil {
-			return nil, err
-		}
+	for _, row := range rows {
+		e, v, count := row.Entity, row.Variable, row.Count
 		if _, ok := result[v]; !ok {
 			result[v] = map[string]int{}
 		}

@@ -67,39 +67,5 @@
       "objectName": "Total Population",
       "provenanceId": "dc/base/CensusPEP"
     }
-  ],
-  "dc/o/kyv7dxe4s18eh": [
-    {
-      "subjectId": "dc/o/kyv7dxe4s18eh",
-      "predicate": "observationAbout",
-      "objectId": "country/USA",
-      "objectName": "United States of America",
-      "provenanceId": "dc/base/WorldDevelopmentIndicators"
-    },
-    {
-      "subjectId": "dc/o/kyv7dxe4s18eh",
-      "predicate": "observationDate",
-      "objectValue": "2007",
-      "provenanceId": "dc/base/WorldDevelopmentIndicators"
-    },
-    {
-      "subjectId": "dc/o/kyv7dxe4s18eh",
-      "predicate": "observationPeriod",
-      "objectValue": "P1Y",
-      "provenanceId": "dc/base/WorldDevelopmentIndicators"
-    },
-    {
-      "subjectId": "dc/o/kyv7dxe4s18eh",
-      "predicate": "value",
-      "objectValue": "301231207",
-      "provenanceId": "dc/base/WorldDevelopmentIndicators"
-    },
-    {
-      "subjectId": "dc/o/kyv7dxe4s18eh",
-      "predicate": "variableMeasured",
-      "objectId": "Count_Person",
-      "objectName": "Total Population",
-      "provenanceId": "dc/base/WorldDevelopmentIndicators"
-    }
   ]
 }

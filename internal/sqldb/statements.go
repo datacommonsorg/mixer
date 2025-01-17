@@ -32,7 +32,11 @@ var statements = struct {
 	getAllEntitiesOfType                      string
 	getContainedInPlace                       string
 	getEntityVariables                        string
-	getTableColumnsFormat                     string
+	getTableColumns                           string
+	getObsCountByVariableAndEntity            string
+	getEntityInfoTriples                      string
+	getSubjectTriples                         string
+	getObjectTriples                          string
 }{
 	getObsByVariableAndEntity: `
 		SELECT entity, variable, date, value, provenance, unit, scaling_factor, measurement_method, observation_period, properties 
@@ -225,7 +229,52 @@ var statements = struct {
 		GROUP BY entity;
 	`,
 	// Query for column names in a table. Table name must be added via string interpolation.
-	getTableColumnsFormat: `
+	getTableColumns: `
 		SELECT * FROM %s LIMIT 0;
+	`,
+	// Entity and variable CTEs must be added via string interpolation.
+	getObsCountByVariableAndEntity: `
+		WITH entity_list(entity) AS (%s),
+		variable_list(variable) AS (%s),
+		all_pairs AS (
+			SELECT e.entity, v.variable
+			FROM entity_list e
+			CROSS JOIN variable_list v
+		)
+		SELECT a.entity, a.variable, COUNT(o.date) num_obs
+		FROM all_pairs a
+		LEFT JOIN observations o ON a.entity = o.entity AND a.variable = o.variable
+		GROUP BY a.entity, a.variable;
+	`,
+	getEntityInfoTriples: `
+		SELECT subject_id, predicate, COALESCE(object_id, '') object_id, COALESCE(object_value, '') object_value
+		FROM triples
+		WHERE subject_id IN (:entities) AND predicate IN ('name', 'typeOf');
+	`,
+	getSubjectTriples: `
+		WITH node_list(node) AS (%s),
+		prop_list(prop) AS (%s),
+		all_pairs AS (
+			SELECT n.node, p.prop
+			FROM node_list n
+			CROSS JOIN prop_list p
+		)
+		SELECT subject_id, predicate, COALESCE(object_id, '') object_id, COALESCE(object_value, '') object_value
+		FROM all_pairs a
+		INNER JOIN triples t ON a.node = t.subject_id AND a.prop = t.predicate
+		GROUP BY a.node, a.prop, subject_id, predicate, object_id, object_value;
+	`,
+	getObjectTriples: `
+		WITH node_list(node) AS (%s),
+		prop_list(prop) AS (%s),
+		all_pairs AS (
+			SELECT n.node, p.prop
+			FROM node_list n
+			CROSS JOIN prop_list p
+		)
+		SELECT subject_id, predicate, COALESCE(object_id, '') object_id, COALESCE(object_value, '') object_value
+		FROM all_pairs a
+		INNER JOIN triples t ON a.node = t.object_id AND a.prop = t.predicate
+		GROUP BY a.node, a.prop, subject_id, predicate, object_id, object_value;
 	`,
 }

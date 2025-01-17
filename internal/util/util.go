@@ -18,10 +18,8 @@ import (
 	"bytes"
 	"compress/gzip"
 	"context"
-	"database/sql"
 	"encoding/base64"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"hash/fnv"
 	"io"
@@ -42,7 +40,6 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	"github.com/go-sql-driver/mysql"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 	"google.golang.org/grpc/codes"
@@ -51,7 +48,6 @@ import (
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"googlemaps.github.io/maps"
-	"modernc.org/sqlite"
 )
 
 const (
@@ -651,52 +647,6 @@ func StringSetToSlice(s map[string]struct{}) []string {
 	return res
 }
 
-// Convert args to be usable in SQL query function.
-func ConvertArgs(args []string) []interface{} {
-	newArgs := make([]interface{}, len(args))
-	for i, v := range args {
-		newArgs[i] = v
-	}
-	return newArgs
-}
-
-func GetSQLDriver(sqlClient *sql.DB) (SQLDriver, error) {
-	switch driver := sqlClient.Driver().(type) {
-	case *sqlite.Driver:
-		return SQLDriverSQLite, nil
-	case *mysql.MySQLDriver:
-		return SQLDriverMySQL, nil
-	default:
-		return SQLDriverUnknown, fmt.Errorf("invalid sql driver: %v", driver)
-	}
-}
-
-func SQLInParam(n int) string {
-	return strings.Join(strings.Split(strings.Repeat("?", n), ""), ", ")
-}
-
-func SQLListParam(sqlClient *sql.DB, n int) (string, error) {
-	driver, err := GetSQLDriver(sqlClient)
-	if err != nil {
-		return "", err
-	}
-	switch driver {
-	case SQLDriverSQLite:
-		str := "VALUES " + strings.Repeat("(?),", n)
-		return str[:len(str)-1], nil
-	case SQLDriverMySQL:
-		result := ""
-		for i := 0; i < n-1; i++ {
-			result += "SELECT ? UNION ALL "
-		}
-		result += "SELECT ?"
-		return result, nil
-	default:
-		// This should not happen.
-		return "", errors.New("invalid sql driver")
-	}
-}
-
 func FetchRemote(
 	metadata *resource.Metadata,
 	httpClient *http.Client,
@@ -783,4 +733,18 @@ func GetMissingStrings(gotStrings []string, wantStrings []string) []string {
 	}
 
 	return missingStrings
+}
+
+// MergeMaps returns a new map by merging the specified maps.
+func MergeMaps[K comparable, V any](m1 map[K]V, ms ...map[K]V) map[K]V {
+	merged := make(map[K]V)
+	for k, v := range m1 {
+		merged[k] = v
+	}
+	for _, m2 := range ms {
+		for k, v := range m2 {
+			merged[k] = v // Overwrites if key exists in m1
+		}
+	}
+	return merged
 }

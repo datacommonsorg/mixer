@@ -24,6 +24,7 @@ import (
 
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/jmoiron/sqlx"
+	"golang.org/x/sync/errgroup"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
 )
@@ -33,6 +34,9 @@ const (
 	latestDate = "LATEST"
 	// Key for SV groups in the key_value_store table.
 	StatVarGroupsKey = "StatVarGroups"
+	// Chunk size for CTE (Common Table Expression) statements.
+	// Chunking avoids issues where certain dbs (like sqlite) can't handle a large number of items in a CTE.
+	cteChunkSize = 500
 )
 
 // GetObservations retrieves observations from SQL given a list of variables and entities and a date.
@@ -106,6 +110,34 @@ func (sc *SQLClient) GetObservationsByEntityType(ctx context.Context, variables 
 				"entityType": entityType,
 			},
 		}
+	}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		&observations,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return observations, nil
+}
+
+// GetObservationCount returns number of observations by entity and variable.
+func (sc *SQLClient) GetObservationCount(ctx context.Context, variables []string, entities []string) ([]*ObservationCount, error) {
+	defer util.TimeTrack(time.Now(), "SQL: GetObservationCount")
+	var observations []*ObservationCount
+	if len(variables) == 0 || len(entities) == 0 {
+		return observations, nil
+	}
+
+	entitiesStmt := generateCTESelectStatement("entity", entities)
+	variablesStmt := generateCTESelectStatement("variable", variables)
+
+	stmt := statement{
+		query: fmt.Sprintf(statements.getObsCountByVariableAndEntity, entitiesStmt.query, variablesStmt.query),
+		args:  util.MergeMaps(entitiesStmt.args, variablesStmt.args),
 	}
 
 	err := sc.queryAndCollect(
@@ -368,6 +400,106 @@ func (sc *SQLClient) GetEntityVariables(ctx context.Context, entities []string) 
 	return rows, nil
 }
 
+// GetEntityInfoTriples returns name and typeOf triples for the specified entities.
+func (sc *SQLClient) GetEntityInfoTriples(ctx context.Context, entities []string) ([]*Triple, error) {
+	defer util.TimeTrack(time.Now(), "SQL: GetEntityInfoTriples")
+	var rows []*Triple
+	if len(entities) == 0 {
+		return rows, nil
+	}
+
+	stmt := statement{
+		query: statements.getEntityInfoTriples,
+		args: map[string]interface{}{
+			"entities": entities,
+		},
+	}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		&rows,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return rows, nil
+}
+func (sc *SQLClient) GetNodeTriples(ctx context.Context, nodes []string, properties []string, direction string) ([]*Triple, error) {
+	defer util.TimeTrack(time.Now(), "SQL: GetNodeTriples")
+	// Some requests result in querying the DB for O(K) nodes which causes issues with the CTE (Common Table Expression) statements in some dbs.
+	// So we query for them in chunks and collate the resulting triples.
+	nodeChunks := chunkSlice(nodes, cteChunkSize)
+
+	errGroup, errCtx := errgroup.WithContext(ctx)
+	triplesChans := []chan []*Triple{}
+	for _, chunk := range nodeChunks {
+		// Assign to a local variable so it can be used in go routines.
+		chunk := chunk
+		ch := make(chan []*Triple, 1)
+		triplesChans = append(triplesChans, ch)
+		errGroup.Go(func() error {
+			defer close(ch)
+			triplesChunk, err := sc.getNodeChunkTriples(errCtx, chunk, properties, direction)
+			if err != nil {
+				return err
+			}
+			ch <- triplesChunk
+			return nil
+		})
+	}
+
+	if err := errGroup.Wait(); err != nil {
+		return nil, err
+	}
+
+	triples := []*Triple{}
+	for _, ch := range triplesChans {
+		triples = append(triples, <-ch...)
+	}
+
+	return triples, nil
+}
+
+// getNodeChunkTriples retrieves triples from SQL for the specified node chunk and properties in the specified direction (in or out).
+func (sc *SQLClient) getNodeChunkTriples(ctx context.Context, nodeChunk []string, properties []string, direction string) ([]*Triple, error) {
+	defer util.TimeTrack(time.Now(), "SQL: getNodeChunkTriples")
+	var rows []*Triple
+	if len(nodeChunk) == 0 || len(properties) == 0 {
+		return rows, nil
+	}
+
+	nodesStmt := generateCTESelectStatement("node", nodeChunk)
+	propsStmt := generateCTESelectStatement("prop", properties)
+
+	var stmt statement
+
+	switch direction {
+	case util.DirectionOut:
+		stmt = statement{
+			query: fmt.Sprintf(statements.getSubjectTriples, nodesStmt.query, propsStmt.query),
+			args:  util.MergeMaps(nodesStmt.args, propsStmt.args),
+		}
+	default:
+		stmt = statement{
+			query: fmt.Sprintf(statements.getObjectTriples, nodesStmt.query, propsStmt.query),
+			args:  util.MergeMaps(nodesStmt.args, propsStmt.args),
+		}
+	}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		&rows,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return rows, nil
+}
+
 // GetKeyValue gets the value for the specified key from the key_value_store table.
 // If not found, returns false.
 // If found, unmarshals the value into the specified proto and returns true.
@@ -456,14 +588,12 @@ func (sc *SQLClient) checkTables() error {
 				log.Printf("Error checking table %s: %v", tableName, err)
 			}
 
-			errMsg := fmt.Sprintf(`The SQL database does not have the required tables.
+			return fmt.Errorf(`The SQL database does not have the required tables.
 The following tables are required: %s
 
 Prepare and load your data before starting this service.
 Guide: https://docs.datacommons.org/custom_dc/custom_data.html
 			`, strings.Join(allTables, ", "))
-
-			return fmt.Errorf(errMsg)
 		}
 	}
 
@@ -481,15 +611,13 @@ func (sc *SQLClient) checkSchema() error {
 
 	missingObservationColumns := util.GetMissingStrings(observationColumns, allObservationsTableColumns)
 	if len(missingObservationColumns) != 0 {
-		errMsg := fmt.Sprintf(`The following columns are missing in the %s table: %v
+		return fmt.Errorf(`The following columns are missing in the %s table: %v
 
 Run a data management job to update your database schema.
 Guide: https://docs.datacommons.org/custom_dc/troubleshooting.html#schema-check-failed.
 
 `,
 			TableObservations, missingObservationColumns)
-
-		return fmt.Errorf(errMsg)
 	}
 
 	log.Printf("SQL schema check succeeded.")
@@ -497,7 +625,7 @@ Guide: https://docs.datacommons.org/custom_dc/troubleshooting.html#schema-check-
 }
 
 func (sc *SQLClient) getTableColumns(tableName string) ([]string, error) {
-	query := fmt.Sprintf(statements.getTableColumnsFormat, tableName)
+	query := fmt.Sprintf(statements.getTableColumns, tableName)
 
 	rows, err := sc.dbx.Query(query)
 	if err != nil {
@@ -512,6 +640,43 @@ func (sc *SQLClient) getTableColumns(tableName string) ([]string, error) {
 	}
 
 	return columns, nil
+}
+
+// generateCTESelectStatement generates a select statement for a CTE (Common Table Expression).
+// e.g. for a CTE of the form "WITH node_list(nodes) AS (SELECT 'node1' UNION ALL 'node2')",
+// it returns the SELECT portion of the CTE parameterized as a statement object.
+func generateCTESelectStatement(paramPrefix string, values []string) statement {
+	var sb strings.Builder
+	args := map[string]interface{}{}
+
+	for i, value := range values {
+		param := fmt.Sprintf("%s%d", paramPrefix, i+1)
+		args[param] = value
+		sb.WriteString(fmt.Sprintf("SELECT :%s", param))
+		if i < len(values)-1 {
+			sb.WriteString(" UNION ALL ")
+		}
+	}
+
+	return statement{
+		query: sb.String(),
+		args:  args,
+	}
+}
+
+func chunkSlice(items []string, chunkSize int) [][]string {
+	var chunks [][]string
+	for i := 0; i < len(items); i += chunkSize {
+		end := i + chunkSize
+
+		if end > len(items) {
+			end = len(items)
+		}
+
+		chunks = append(chunks, items[i:end])
+	}
+
+	return chunks
 }
 
 // statement struct includes the sql query and named args used to execute a sql query.
