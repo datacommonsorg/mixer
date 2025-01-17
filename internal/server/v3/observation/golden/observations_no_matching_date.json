@@ -1,5 +1,10 @@
 {
   "by_variable": {
-    "AirPollutant_Cancer_Risk": {}
+    "AirPollutant_Cancer_Risk": {
+      "by_entity": {
+        "geoId/01001": {},
+        "geoId/02013": {}
+      }
+    }
   }
 }
