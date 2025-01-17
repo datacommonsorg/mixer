@@ -97,7 +97,7 @@ func TestV3Node(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"TestV3Node",
-		&test.TestOption{UseSQLite: true, UseSpannerGraph: true},
+		&test.TestOption{UseSQLite: true, UseSpannerGraph: true, RemoteMixerDomain: "test"},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() for TestV3Node = %s", err)

@@ -17,9 +17,12 @@
 package spanner
 
 import (
+	"sort"
+
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
+	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/util"
 
 	"google.golang.org/protobuf/proto"
@@ -30,6 +33,8 @@ const (
 	WILDCARD = "*"
 	// Indicates that recursive property paths should be returned.
 	CHAIN = "+"
+	// Used for Facet responses with an entity expression.
+	ENTITY_PLACEHOLDER = ""
 )
 
 // Select options for Observation.
@@ -132,47 +137,30 @@ func queryObs(qo *queryOptions) bool {
 	return qo.date && qo.value
 }
 
-func filterObservationsByDate(observations []*Observation, date string) []*Observation {
-	// No filtering required if date is not specified.
-	if date == "" {
-		return observations
-	}
+func filterObservationsByDateAndFacet(observations []*Observation, date string, filter *pbv2.FacetFilter) []*Observation {
 	var filtered []*Observation
 	for _, observation := range observations {
 		observation.Observations.FilterByDate(date)
-		if len(observation.Observations.Observations) > 0 {
+		facet := observationToFacet(observation)
+		if len(observation.Observations.Observations) > 0 && util.ShouldIncludeFacet(filter, facet) {
 			filtered = append(filtered, observation)
 		}
 	}
 	return filtered
 }
 
-func observationsToObservationResponse(variables []string, observations []*Observation, queryObs, queryFacet bool, filter *pbv2.FacetFilter) *pbv3.ObservationResponse {
-	response := newObservationResponse(variables)
-	for _, observation := range observations {
-		variable, entity := observation.VariableMeasured, observation.ObservationAbout
-		if response.ByVariable[variable].ByEntity[entity] == nil {
-			response.ByVariable[variable].ByEntity[entity] = &pbv2.EntityObservation{}
-		}
-
-		// Existence check only returns variables and entities.
-		if !queryObs && !queryFacet {
-			continue
-		}
-
-		facetId, facet, facetObservation := observationToFacetObservation(observation, queryObs)
-
-		if !util.ShouldIncludeFacet(filter, facet) {
-			continue
-		}
-
-		response.ByVariable[variable].ByEntity[entity].OrderedFacets = append(
-			response.ByVariable[variable].ByEntity[entity].OrderedFacets,
-			facetObservation,
-		)
-		response.Facets[facetId] = facet
+func observationsToObservationResponse(req *pbv3.ObservationRequest, observations []*Observation) *pbv3.ObservationResponse {
+	// The select options are handled separately since each has a different behavior in V2.
+	// For now, V3 will match the behavior of V2 to preserve backward compatibility and allow datasource merging.
+	// TODO: Unify these responses more.
+	qo := selectFieldsToQueryOptions(req.Select)
+	if queryObs(&qo) {
+		return obsToObsResponse(req, observations)
+	} else if qo.facet {
+		return obsToFacetResponse(req, observations)
+	} else {
+		return obsToExistenceResponse(req, observations)
 	}
-	return response
 }
 
 func newObservationResponse(variables []string) *pbv3.ObservationResponse {
@@ -188,8 +176,166 @@ func newObservationResponse(variables []string) *pbv3.ObservationResponse {
 	return result
 }
 
-func observationToFacetObservation(observation *Observation, queryObs bool) (string, *pb.Facet, *pbv2.FacetObservation) {
-	facetId, facet := observationToFacet(observation)
+func groupObservationsByVariableAndEntity(observations []*Observation) map[string]map[string][]*Observation {
+	result := map[string]map[string][]*Observation{}
+
+	for _, obs := range observations {
+		variable, entity := obs.VariableMeasured, obs.ObservationAbout
+		if result[variable] == nil {
+			result[variable] = map[string][]*Observation{}
+		}
+		if result[variable][entity] == nil {
+			result[variable][entity] = []*Observation{}
+		}
+		result[variable][entity] = append(result[variable][entity], obs)
+	}
+
+	return result
+}
+
+func generateObsResponse(variables []string, observations []*Observation, includeObs bool) *pbv3.ObservationResponse {
+	response := newObservationResponse(variables)
+
+	variableEntityObs := groupObservationsByVariableAndEntity(observations)
+	for variable, entityObs := range variableEntityObs {
+		for entity, obs := range entityObs {
+			orderedFacets, facets := observationsToOrderedFacets(obs, includeObs)
+			response.ByVariable[variable].ByEntity[entity] = &pbv2.EntityObservation{
+				OrderedFacets: orderedFacets,
+			}
+			for facetId, facet := range facets {
+				response.Facets[facetId] = facet
+			}
+		}
+	}
+
+	return response
+}
+
+// The rows are sorted when returned from Spanner,  so the child places will be in order.
+func getChildPlaces(observations []*Observation) []string {
+	childPlaces := []string{}
+	childPlacesSet := map[string]bool{}
+	for _, obs := range observations {
+		entity := obs.ObservationAbout
+		_, ok := childPlacesSet[entity]
+		if !ok {
+			childPlaces = append(childPlaces, entity)
+			childPlacesSet[entity] = true
+		}
+	}
+	return childPlaces
+}
+
+func mergeEntityOrderedFacets(byEntity map[string]*pbv2.EntityObservation, childPlaces []string) []*pbv2.FacetObservation {
+	// Reuse merging logic from ContainedInFacet for consistency.
+	result := []*pbv2.FacetObservation{}
+
+	seenFacet := map[string]*pbv2.FacetObservation{}
+	orderedFacetId := []string{}
+	for _, entity := range childPlaces {
+		if facetData, ok := byEntity[entity]; ok {
+			for _, item := range facetData.OrderedFacets {
+				if facetObs, ok := seenFacet[item.FacetId]; ok {
+					facetObs.ObsCount += item.ObsCount
+					if item.EarliestDate < facetObs.EarliestDate {
+						facetObs.EarliestDate = item.EarliestDate
+					}
+					if item.LatestDate > facetObs.LatestDate {
+						facetObs.LatestDate = item.LatestDate
+					}
+				} else {
+					orderedFacetId = append(orderedFacetId, item.FacetId)
+					seenFacet[item.FacetId] = item
+				}
+			}
+		}
+	}
+
+	for _, facetId := range orderedFacetId {
+		result = append(result, seenFacet[facetId])
+	}
+
+	return result
+}
+
+func obsToObsResponse(req *pbv3.ObservationRequest, observations []*Observation) *pbv3.ObservationResponse {
+	response := generateObsResponse(req.Variable.Dcids, observations, true /*includeObs*/)
+
+	// Attach all requested entity dcids to response.
+	if len(req.Entity.Dcids) > 0 {
+		for _, variableObs := range response.ByVariable {
+			for _, entity := range req.Entity.Dcids {
+				_, ok := variableObs.ByEntity[entity]
+				if !ok {
+					variableObs.ByEntity[entity] = &pbv2.EntityObservation{}
+				}
+			}
+		}
+	}
+
+	return response
+}
+
+func obsToFacetResponse(req *pbv3.ObservationRequest, observations []*Observation) *pbv3.ObservationResponse {
+	response := generateObsResponse(req.Variable.Dcids, observations, false /*includeObs*/)
+
+	if len(req.Entity.Dcids) > 0 {
+		return response
+	}
+
+	// Merge child places for entity expression.
+	mergedResponse := newObservationResponse(req.Variable.Dcids)
+	mergedResponse.Facets = response.Facets
+	childPlaces := getChildPlaces(observations)
+	for variable, variableObs := range mergedResponse.ByVariable {
+		variableObs.ByEntity[ENTITY_PLACEHOLDER] = &pbv2.EntityObservation{}
+		initialVariableObs, ok := response.ByVariable[variable]
+		if ok {
+			variableObs.ByEntity[ENTITY_PLACEHOLDER].OrderedFacets = mergeEntityOrderedFacets(initialVariableObs.ByEntity, childPlaces)
+		}
+	}
+	return mergedResponse
+}
+
+func obsToExistenceResponse(req *pbv3.ObservationRequest, observations []*Observation) *pbv3.ObservationResponse {
+	// This is likely a bug in V2, but will be kept for now to not break existing behavior.
+	// TODO: Return actual response.
+	if req.Entity.Expression != "" {
+		return &pbv3.ObservationResponse{}
+	}
+
+	response := newObservationResponse(req.Variable.Dcids)
+	for _, obs := range observations {
+		response.ByVariable[obs.VariableMeasured].ByEntity[obs.ObservationAbout] = &pbv2.EntityObservation{}
+	}
+	return response
+}
+
+func observationsToOrderedFacets(observations []*Observation, includeObs bool) ([]*pbv2.FacetObservation, map[string]*pb.Facet) {
+	facets := map[string]*pb.Facet{}
+	placeVariableFacets := []*pb.PlaceVariableFacet{}
+	facetIdToFacetObs := map[string]*pbv2.FacetObservation{}
+	for _, obs := range observations {
+		pvf, facetObs := observationToFacetObservation(obs, includeObs)
+		placeVariableFacets = append(placeVariableFacets, pvf)
+		facetIdToFacetObs[facetObs.FacetId] = facetObs
+		facets[facetObs.FacetId] = pvf.Facet
+	}
+
+	// Rank FacetObservations.
+	orderedFacets := []*pbv2.FacetObservation{}
+	sort.Sort(ranking.FacetByRank(placeVariableFacets))
+	for _, pvf := range placeVariableFacets {
+		facetId := util.GetFacetID(pvf.Facet)
+		orderedFacets = append(orderedFacets, facetIdToFacetObs[facetId])
+	}
+
+	return orderedFacets, facets
+}
+
+func observationToFacetObservation(observation *Observation, includeObs bool) (*pb.PlaceVariableFacet, *pbv2.FacetObservation) {
+	facet := observationToFacet(observation)
 
 	var observations []*pb.PointStat
 
@@ -198,21 +344,27 @@ func observationToFacetObservation(observation *Observation, queryObs bool) (str
 	}
 
 	facetObservation := &pbv2.FacetObservation{
-		FacetId:      facetId,
+		FacetId:      util.GetFacetID(facet),
 		ObsCount:     *proto.Int32(int32(len(observations))),
 		EarliestDate: observations[0].Date,
 		LatestDate:   observations[len(observations)-1].Date,
 	}
 
-	// Return the full response.
-	if queryObs {
+	if includeObs {
 		facetObservation.Observations = observations
 	}
 
-	return facetId, facet, facetObservation
+	placeVariableFacet := &pb.PlaceVariableFacet{
+		Facet:        facet,
+		ObsCount:     facetObservation.ObsCount,
+		EarliestDate: facetObservation.EarliestDate,
+		LatestDate:   facetObservation.LatestDate,
+	}
+
+	return placeVariableFacet, facetObservation
 }
 
-func observationToFacet(observation *Observation) (string, *pb.Facet) {
+func observationToFacet(observation *Observation) *pb.Facet {
 	facet := pb.Facet{
 		ImportName:        observation.ImportName,
 		ProvenanceUrl:     observation.ProvenanceURL,
@@ -221,7 +373,7 @@ func observationToFacet(observation *Observation) (string, *pb.Facet) {
 		ScalingFactor:     observation.ScalingFactor,
 		Unit:              observation.Unit,
 	}
-	return util.GetFacetID(&facet), &facet
+	return &facet
 }
 
 func dateValueToPointStat(dateValue *DateValue) *pb.PointStat {

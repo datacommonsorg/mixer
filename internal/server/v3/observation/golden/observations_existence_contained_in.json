@@ -1,11 +1,1 @@
-{
-  "by_variable": {
-    "Count_Farm": {
-      "by_entity": {
-        "geoId/10001": {},
-        "geoId/10003": {},
-        "geoId/10005": {}
-      }
-    }
-  }
-}
+{}

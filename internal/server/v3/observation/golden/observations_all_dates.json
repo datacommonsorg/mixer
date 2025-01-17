@@ -2,6 +2,7 @@
   "by_variable": {
     "AirPollutant_Cancer_Risk": {
       "by_entity": {
+        "fake_entity": {},
         "geoId/01001": {
           "ordered_facets": [
             {
@@ -90,6 +91,13 @@
             }
           ]
         }
+      }
+    },
+    "fake_variable": {
+      "by_entity": {
+        "fake_entity": {},
+        "geoId/01001": {},
+        "geoId/02013": {}
       }
     }
   },

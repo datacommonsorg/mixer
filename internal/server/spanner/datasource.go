@@ -68,8 +68,6 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv3.NodeRequest) (
 
 // Observation retrieves observation data from Spanner.
 func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv3.ObservationRequest) (*pbv3.ObservationResponse, error) {
-	qo := selectFieldsToQueryOptions(req.Select)
-
 	variables, entities, entityExpr := req.Variable.Dcids, req.Entity.Dcids, req.Entity.Expression
 	date := req.Date
 	var observations []*Observation
@@ -91,9 +89,9 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv3.Observa
 		}
 	}
 
-	observations = filterObservationsByDate(observations, date)
+	observations = filterObservationsByDateAndFacet(observations, date, req.Filter)
 
-	return observationsToObservationResponse(variables, observations, queryObs(&qo), qo.facet, req.Filter), nil
+	return observationsToObservationResponse(req, observations), nil
 }
 
 // NodeSearch searches nodes in the spanner graph.
