@@ -456,14 +456,12 @@ func (sc *SQLClient) checkTables() error {
 				log.Printf("Error checking table %s: %v", tableName, err)
 			}
 
-			errMsg := fmt.Sprintf(`The SQL database does not have the required tables.
+			return fmt.Errorf(`The SQL database does not have the required tables.
 The following tables are required: %s
 
 Prepare and load your data before starting this service.
 Guide: https://docs.datacommons.org/custom_dc/custom_data.html
 			`, strings.Join(allTables, ", "))
-
-			return fmt.Errorf(errMsg)
 		}
 	}
 
@@ -481,15 +479,13 @@ func (sc *SQLClient) checkSchema() error {
 
 	missingObservationColumns := util.GetMissingStrings(observationColumns, allObservationsTableColumns)
 	if len(missingObservationColumns) != 0 {
-		errMsg := fmt.Sprintf(`The following columns are missing in the %s table: %v
+		return fmt.Errorf(`The following columns are missing in the %s table: %v
 
 Run a data management job to update your database schema.
 Guide: https://docs.datacommons.org/custom_dc/troubleshooting.html#schema-check-failed.
 
 `,
 			TableObservations, missingObservationColumns)
-
-		return fmt.Errorf(errMsg)
 	}
 
 	log.Printf("SQL schema check succeeded.")

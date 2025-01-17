@@ -136,7 +136,7 @@ func TestGetStats(t *testing.T) {
 				continue
 			}
 			if err := json.Unmarshal(file, &expected); err != nil {
-				t.Errorf("Can not Unmarshal golden file " + goldenFile + "\n" + err.Error())
+				t.Errorf("Can not Unmarshal golden file %s: %s", goldenFile, err.Error())
 				continue
 			}
 			if c.partialMatch {

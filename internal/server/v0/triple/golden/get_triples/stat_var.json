@@ -9277,7 +9277,7 @@
     },
     {
       "subjectId": "Count_Person_Female_ReceivedOralCavityExamination_AsAFractionOf_Count_Person_Female",
-      "subjectName": "Women who have ever undergone a oral cavity examniation (%)",
+      "subjectName": "Women who have ever undergone a oral cavity examination (%)",
       "subjectTypes": [
         "StatisticalVariable"
       ],
