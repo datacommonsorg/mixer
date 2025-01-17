@@ -55,6 +55,12 @@ type queryOptions struct {
 	facet    bool
 }
 
+// Variable and entity combination.
+type variableEntity struct {
+	variable string
+	entity   string
+}
+
 // nodePropsToNodeResponse converts a map from subject id to its properties to a NodeResponse proto.
 func nodePropsToNodeResponse(propsBySubjectID map[string][]*Property) *pbv3.NodeResponse {
 	nodeResponse := &pbv3.NodeResponse{
@@ -151,14 +157,20 @@ func filterObservationsByDateAndFacet(observations []*Observation, date string, 
 
 func observationsToObservationResponse(req *pbv3.ObservationRequest, observations []*Observation) *pbv3.ObservationResponse {
 	// The select options are handled separately since each has a different behavior in V2.
+	// This includes:
+	// - Whether to include requested entities that are missing data
+	// - Whether to merge responses for entity expressions
 	// For now, V3 will match the behavior of V2 to preserve backward compatibility and allow datasource merging.
 	// TODO: Unify these responses more.
 	qo := selectFieldsToQueryOptions(req.Select)
 	if queryObs(&qo) {
+		// Returns FacetObservations with PointStats.
 		return obsToObsResponse(req, observations)
 	} else if qo.facet {
+		// Returns FacetObservations without PointStats.
 		return obsToFacetResponse(req, observations)
 	} else {
+		// Returns variable and entities with data.
 		return obsToExistenceResponse(req, observations)
 	}
 }
@@ -176,18 +188,18 @@ func newObservationResponse(variables []string) *pbv3.ObservationResponse {
 	return result
 }
 
-func groupObservationsByVariableAndEntity(observations []*Observation) map[string]map[string][]*Observation {
-	result := map[string]map[string][]*Observation{}
+func groupObservationsByVariableAndEntity(observations []*Observation) map[variableEntity][]*Observation {
+	result := map[variableEntity][]*Observation{}
 
 	for _, obs := range observations {
-		variable, entity := obs.VariableMeasured, obs.ObservationAbout
-		if result[variable] == nil {
-			result[variable] = map[string][]*Observation{}
+		variableEntity := variableEntity{
+			variable: obs.VariableMeasured,
+			entity:   obs.ObservationAbout,
 		}
-		if result[variable][entity] == nil {
-			result[variable][entity] = []*Observation{}
+		if result[variableEntity] == nil {
+			result[variableEntity] = []*Observation{}
 		}
-		result[variable][entity] = append(result[variable][entity], obs)
+		result[variableEntity] = append(result[variableEntity], obs)
 	}
 
 	return result
@@ -197,34 +209,32 @@ func generateObsResponse(variables []string, observations []*Observation, includ
 	response := newObservationResponse(variables)
 
 	variableEntityObs := groupObservationsByVariableAndEntity(observations)
-	for variable, entityObs := range variableEntityObs {
-		for entity, obs := range entityObs {
-			orderedFacets, facets := observationsToOrderedFacets(obs, includeObs)
-			response.ByVariable[variable].ByEntity[entity] = &pbv2.EntityObservation{
-				OrderedFacets: orderedFacets,
-			}
-			for facetId, facet := range facets {
-				response.Facets[facetId] = facet
-			}
+	for variableEntity, obs := range variableEntityObs {
+		orderedFacets, facets := observationsToOrderedFacets(obs, includeObs)
+		response.ByVariable[variableEntity.variable].ByEntity[variableEntity.entity] = &pbv2.EntityObservation{
+			OrderedFacets: orderedFacets,
+		}
+		for facetId, facet := range facets {
+			response.Facets[facetId] = facet
 		}
 	}
 
 	return response
 }
 
-// The rows are sorted when returned from Spanner,  so the child places will be in order.
-func getChildPlaces(observations []*Observation) []string {
-	childPlaces := []string{}
-	childPlacesSet := map[string]bool{}
+// The rows are sorted when returned from Spanner,  so the entities will be in order.
+func getDistinctEntities(observations []*Observation) []string {
+	entities := []string{}
+	entitySet := map[string]bool{}
 	for _, obs := range observations {
 		entity := obs.ObservationAbout
-		_, ok := childPlacesSet[entity]
+		_, ok := entitySet[entity]
 		if !ok {
-			childPlaces = append(childPlaces, entity)
-			childPlacesSet[entity] = true
+			entities = append(entities, entity)
+			entitySet[entity] = true
 		}
 	}
-	return childPlaces
+	return entities
 }
 
 func mergeEntityOrderedFacets(byEntity map[string]*pbv2.EntityObservation, childPlaces []string) []*pbv2.FacetObservation {
@@ -287,7 +297,7 @@ func obsToFacetResponse(req *pbv3.ObservationRequest, observations []*Observatio
 	// Merge child places for entity expression.
 	mergedResponse := newObservationResponse(req.Variable.Dcids)
 	mergedResponse.Facets = response.Facets
-	childPlaces := getChildPlaces(observations)
+	childPlaces := getDistinctEntities(observations)
 	for variable, variableObs := range mergedResponse.ByVariable {
 		variableObs.ByEntity[ENTITY_PLACEHOLDER] = &pbv2.EntityObservation{}
 		initialVariableObs, ok := response.ByVariable[variable]
@@ -299,8 +309,8 @@ func obsToFacetResponse(req *pbv3.ObservationRequest, observations []*Observatio
 }
 
 func obsToExistenceResponse(req *pbv3.ObservationRequest, observations []*Observation) *pbv3.ObservationResponse {
-	// This is likely a bug in V2, but will be kept for now to not break existing behavior.
-	// TODO: Return actual response.
+	// This is the behavior in V2 and will be kept for now to not break existing behavior.
+	// TODO: Investigate whether we should return a response for this.
 	if req.Entity.Expression != "" {
 		return &pbv3.ObservationResponse{}
 	}
