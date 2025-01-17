@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package node
+package merge
 
 import (
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"

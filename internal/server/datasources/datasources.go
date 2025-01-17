@@ -20,7 +20,7 @@ import (
 
 	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
-	"github.com/datacommonsorg/mixer/internal/server/datasources/node"
+	"github.com/datacommonsorg/mixer/internal/server/datasources/merge"
 
 	"golang.org/x/sync/errgroup"
 )
@@ -61,7 +61,7 @@ func (ds *DataSources) Node(ctx context.Context, in *pbv3.NodeRequest) (*pbv3.No
 		allResp = append(allResp, <-respChan)
 	}
 
-	return node.MergeNode(allResp)
+	return merge.MergeNode(allResp)
 }
 
 func (ds *DataSources) Observation(ctx context.Context, in *pbv3.ObservationRequest) (*pbv3.ObservationResponse, error) {

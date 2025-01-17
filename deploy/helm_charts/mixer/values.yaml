@@ -43,6 +43,7 @@ mixer:
   foldRemoteRootSvg: false
   cacheSVFormula: false
   useSpannerGraph: false
+  enableV3: false
 
   # If bigqueryOnly is True, bigqueryTableRef must be specified.
   bigqueryOnly: false
