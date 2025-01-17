@@ -34,6 +34,14 @@ type Observation struct {
 	Properties        string  `db:"properties"`
 }
 
+// Triple represents a row in the triples table
+type Triple struct {
+	SubjectID   string `db:"subject_id"`
+	Predicate   string `db:"predicate"`
+	ObjectID    string `db:"object_id"`
+	ObjectValue string `db:"object_value"`
+}
+
 // SVSummary represents a SV summary row.
 type SVSummary struct {
 	Variable        string      `db:"variable"`
@@ -109,4 +117,11 @@ type SubjectObject struct {
 type EntityVariables struct {
 	Entity    string      `db:"entity"`
 	Variables StringSlice `db:"variables"`
+}
+
+// ObservationCount represents a row that includes the count of observations for a given entity and variable.
+type ObservationCount struct {
+	Entity   string `db:"entity"`
+	Variable string `db:"variable"`
+	Count    int    `db:"num_obs"`
 }

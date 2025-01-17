@@ -17,14 +17,13 @@ package propertyvalues
 import (
 	"container/heap"
 	"context"
-	"database/sql"
-	"fmt"
 	"sort"
 	"strconv"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -73,8 +72,8 @@ func Fetch(
 	}
 	// No pagination for sqlite query, so if there is a pagination token, meaning
 	// the data has already been queried and returned in previous query.
-	if store.SQLClient.DB != nil && token == "" {
-		sqlResp, err := fetchSQL(store.SQLClient.DB, nodes, properties, direction)
+	if sqldb.IsConnected(&store.SQLClient) && token == "" {
+		sqlResp, err := fetchSQL(ctx, &store.SQLClient, nodes, properties, direction)
 		if err != nil {
 			return nil, nil, err
 		}
@@ -102,7 +101,8 @@ func Fetch(
 }
 
 func fetchSQL(
-	sqlClient *sql.DB,
+	ctx context.Context,
+	sqlClient *sqldb.SQLClient,
 	nodes []string,
 	properties []string,
 	direction string,
@@ -113,15 +113,9 @@ func fetchSQL(
 	if sqlClient == nil {
 		return nil, nil
 	}
-	var matchColumn string
-	if direction == util.DirectionOut {
-		matchColumn = subjectIdColumn
-	} else {
-		matchColumn = objectIdColumn
-	}
 
 	// Get triples for the specified nodes and properties.
-	triples, err := executeTriplesSQL(sqlClient, nodes, properties, matchColumn)
+	triples, err := sqlClient.GetNodeTriples(ctx, nodes, properties, direction)
 	if err != nil {
 		return nil, err
 	}
@@ -130,7 +124,7 @@ func fetchSQL(
 	// NOTE: This will only fetch info on entities that are in the SQL database.
 	// If any dcids reference entities in base DC - those will not be fetched.
 	// If we want them as well, we'll need to make a remote mixer call to fetch them.
-	entityInfos, err := executeEntityInfoSQL(sqlClient, collectDcids(triples))
+	entityInfos, err := executeEntityInfoSQL(ctx, sqlClient, collectDcids(triples))
 	if err != nil {
 		return nil, err
 	}
@@ -142,7 +136,7 @@ func fetchSQL(
 
 	for _, row := range triples {
 		var n string
-		if matchColumn == subjectIdColumn {
+		if direction == util.DirectionOut {
 			n = row.SubjectID
 		} else {
 			n = row.ObjectID
@@ -150,7 +144,7 @@ func fetchSQL(
 		if _, ok := resp[n][row.Predicate]; !ok {
 			resp[n][row.Predicate] = map[string][]*pb.EntityInfo{}
 		}
-		if matchColumn == subjectIdColumn {
+		if direction == util.DirectionOut {
 			entityInfo, ok := entityInfos[row.ObjectID]
 			if !ok {
 				entityInfo = newEntityInfo()
@@ -183,120 +177,35 @@ func fetchSQL(
 	return resp, nil
 }
 
-// executeTriplesSQL executes the SQL query to fetch triples data.
-func executeTriplesSQL(sqlClient *sql.DB, nodes []string, properties []string, matchColumn string) ([]*triple, error) {
-	nodeParam, err := util.SQLListParam(sqlClient, len(nodes))
-	if err != nil {
-		return nil, err
-	}
-	propertyParam, err := util.SQLListParam(sqlClient, len(properties))
-	if err != nil {
-		return nil, err
-	}
-
-	query := fmt.Sprintf(
-		`
-            WITH node_list(node) AS (
-                    %s
-            ),
-            prop_list(prop) AS (
-                    %s
-            ),
-            all_pairs AS (
-                    SELECT n.node, p.prop
-                    FROM node_list n
-                    CROSS JOIN prop_list p
-            )
-            SELECT subject_id, predicate, COALESCE(object_id, ''), COALESCE(object_value, '')
-            FROM all_pairs a
-            INNER JOIN triples t ON a.node = t.%s AND a.prop = t.predicate
-            GROUP BY a.node, a.prop, subject_id, predicate, object_id, object_value;
-        `,
-		nodeParam,
-		propertyParam,
-		matchColumn,
-	)
-	args := []string{}
-	args = append(args, nodes...)
-	args = append(args, properties...)
-
-	rows, err := sqlClient.Query(query, util.ConvertArgs(args)...)
-	if err != nil {
-		return nil, err
-	}
-	defer rows.Close()
-
-	var triples []*triple
-
-	for rows.Next() {
-		var result triple
-		err = rows.Scan(&result.SubjectID, &result.Predicate, &result.ObjectID, &result.ObjectValue)
-		if err != nil {
-			return nil, err
-		}
-		triples = append(triples, &result)
-
-	}
-
-	if err = rows.Err(); err != nil {
-		return nil, err
-	}
-
-	return triples, nil
-}
-
 // executeEntityInfoSQL executes the SQL query to fetch entity info (name and type) of the specified dcids.
-func executeEntityInfoSQL(sqlClient *sql.DB, dcids []string) (map[string]*entityInfo, error) {
+func executeEntityInfoSQL(ctx context.Context, sqlClient *sqldb.SQLClient, dcids []string) (map[string]*entityInfo, error) {
 	entityInfos := map[string]*entityInfo{}
 	if len(dcids) == 0 {
 		return entityInfos, nil
 	}
 
-	query := fmt.Sprintf(
-		`
-            SELECT subject_id, predicate, COALESCE(object_id, ''), COALESCE(object_value, '')
-			FROM triples
-			WHERE subject_id IN (%s) AND predicate IN ('%s', '%s');
-        `,
-		util.SQLInParam(len(dcids)),
-		namePredicate,
-		typeOfPredicate,
-	)
-	args := []string{}
-	args = append(args, dcids...)
-
-	rows, err := sqlClient.Query(query, util.ConvertArgs(args)...)
+	rows, err := sqlClient.GetEntityInfoTriples(ctx, dcids)
 	if err != nil {
 		return nil, err
 	}
-	defer rows.Close()
 
-	for rows.Next() {
-		var result triple
-		err = rows.Scan(&result.SubjectID, &result.Predicate, &result.ObjectID, &result.ObjectValue)
-		if err != nil {
-			return nil, err
-		}
-		entityInfo, ok := entityInfos[result.SubjectID]
+	for _, row := range rows {
+		entityInfo, ok := entityInfos[row.SubjectID]
 		if !ok {
 			entityInfo = newEntityInfo()
-			entityInfos[result.SubjectID] = entityInfo
+			entityInfos[row.SubjectID] = entityInfo
 		}
-		if result.Predicate == namePredicate {
-			entityInfo.Name = result.ObjectValue
-		} else if result.Predicate == typeOfPredicate {
-			entityInfo.Type = result.ObjectID
+		if row.Predicate == namePredicate {
+			entityInfo.Name = row.ObjectValue
+		} else if row.Predicate == typeOfPredicate {
+			entityInfo.Type = row.ObjectID
 		}
-	}
-
-	if err = rows.Err(); err != nil {
-		return nil, err
 	}
 
 	return entityInfos, nil
 }
 
-func collectDcids(triples []*triple) []string {
+func collectDcids(triples []*sqldb.Triple) []string {
 	dcidSet := map[string]struct{}{}
 	for _, t := range triples {
 		dcidSet[t.SubjectID] = struct{}{}
@@ -313,13 +222,6 @@ func collectDcids(triples []*triple) []string {
 
 func newEntityInfo() *entityInfo {
 	return &entityInfo{Type: defaultType}
-}
-
-type triple struct {
-	SubjectID   string
-	Predicate   string
-	ObjectID    string
-	ObjectValue string
 }
 
 type entityInfo struct {

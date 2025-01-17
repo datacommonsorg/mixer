@@ -10483,6 +10483,16 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Tela",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q1027018",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
           "name": "Lomié",
           "types": [
             "AdministrativeArea5",
@@ -10831,6 +10841,16 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Île Sainte-Marie",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "District"
+          ],
+          "dcid": "wikidataId/Q1321311",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Tiraspol",
           "types": [
             "AdministrativeArea1",
@@ -11001,6 +11021,15 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Tokyo",
+          "types": [
+            "AdministrativeArea1",
+            "City"
+          ],
+          "dcid": "wikidataId/Q1490",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
           "name": "Abidjan",
           "types": [
             "AdministrativeArea5",
@@ -11120,6 +11149,16 @@
           ],
           "dcid": "wikidataId/Q160506",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Virginia",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q1646024",
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Busan",
@@ -11247,6 +11286,16 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Yuscarán",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q1729098",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "George Town",
           "types": [
             "AdministrativeArea1",
@@ -11282,6 +11331,26 @@
             "City"
           ],
           "dcid": "wikidataId/Q1761",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Choluteca",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q1773148",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Toamasina",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "District"
+          ],
+          "dcid": "wikidataId/Q178067",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
@@ -11639,6 +11708,16 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Guaimaca",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q1928232",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Érd",
           "types": [
             "AdministrativeArea1",
@@ -11707,6 +11786,16 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Danlí",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q1958679",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
           "name": "Bucharest",
           "types": [
             "AdministrativeArea1",
@@ -11762,6 +11851,16 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Puerto Lempira",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q2075665",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
           "name": "Agboville",
           "types": [
             "AdministrativeArea5",
@@ -11805,6 +11904,26 @@
           ],
           "dcid": "wikidataId/Q20934",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Brus Laguna",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q2102693",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "San Lorenzo",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q2113237",
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Pljevlja",
@@ -11872,6 +11991,26 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Ocotepeque",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q2182554",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Santa Elena",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q2203870",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Mondorff",
           "types": [
             "AdministrativeArea4",
@@ -11899,6 +12038,16 @@
             "City"
           ],
           "dcid": "wikidataId/Q221734",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Tocoa",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q2226585",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -11988,6 +12137,26 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "El Progreso",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q2277161",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "La Lima",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q2279521",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Minsk",
           "types": [
             "AdministrativeArea1",
@@ -11997,13 +12166,24 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Nakhchivan",
+          "name": "Santa Bárbara",
           "types": [
-            "AdministrativeArea1",
-            "City"
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
           ],
-          "dcid": "wikidataId/Q230104",
+          "dcid": "wikidataId/Q2283714",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "La Paz",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q2283725",
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Barndaké",
@@ -12198,6 +12378,16 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Oropolí",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q2481144",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Saint-Pierre",
           "types": [
             "AdministrativeArea4",
@@ -12234,6 +12424,66 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Villanueva",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q2542686",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Siguatepeque",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q2552676",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Yoro",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q2561180",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "La Esperanza",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q2561304",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Gracias",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q2561339",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Talanga",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q2603720",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Obala",
           "types": [
             "AdministrativeArea5",
@@ -12252,6 +12502,26 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Olanchito",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q2720977",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "San Pedro Sula",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q274584",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
           "name": "Kingston",
           "types": [
             "AdministrativeArea1",
@@ -12260,6 +12530,16 @@
           ],
           "dcid": "wikidataId/Q34692",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Gilman",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q3764388",
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Chandigarh",
@@ -12329,6 +12609,116 @@
             "Municipality"
           ],
           "dcid": "wikidataId/Q49663",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Nacaome",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q633929",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Puerto Cortés",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q673089",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Comayagua",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q679169",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Cedros, Francisco Morazán",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q748590",
+          "provenanceId": "dc/base/WikidataGeo_Honduras_ADM2"
+        },
+        {
+          "name": "São Domingos",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Sector"
+          ],
+          "dcid": "wikidataId/Q771106",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Catacamas",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q772672",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Juticalpa",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q773764",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Toliara",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "District"
+          ],
+          "dcid": "wikidataId/Q824043",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "La Ceiba",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q916536",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Santa Rosa de Copán",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q954300",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Trujillo",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Municipality"
+          ],
+          "dcid": "wikidataId/Q992173",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         }
       ]

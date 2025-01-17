@@ -20,6 +20,7 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/go-test/deep"
+	"github.com/google/go-cmp/cmp"
 )
 
 func TestGetKeyValue(t *testing.T) {
@@ -44,4 +45,75 @@ func TestGetKeyValue(t *testing.T) {
 		t.Errorf("Unexpected diff %v", diff)
 	}
 
+}
+
+func TestGenerateCTESelectStatement(t *testing.T) {
+	for _, tc := range []struct {
+		name        string
+		paramPrefix string
+		values      []string
+		want        statement
+	}{
+		{
+			name:        "multiple values",
+			paramPrefix: "node",
+			values:      []string{"n1", "n2"},
+			want: statement{
+				query: "SELECT :node1 UNION ALL SELECT :node2",
+				args: map[string]interface{}{
+					"node1": "n1",
+					"node2": "n2",
+				},
+			},
+		},
+		{
+			name:        "single value",
+			paramPrefix: "node",
+			values:      []string{"n1"},
+			want: statement{
+				query: "SELECT :node1",
+				args: map[string]interface{}{
+					"node1": "n1",
+				},
+			},
+		},
+	} {
+		got := generateCTESelectStatement(tc.paramPrefix, tc.values)
+
+		if diff := cmp.Diff(got, tc.want, cmp.AllowUnexported(statement{})); diff != "" {
+			t.Errorf("Unexpected diff (%s) %v", tc.name, diff)
+		}
+	}
+}
+func TestChunkSlice(t *testing.T) {
+	for _, tc := range []struct {
+		name      string
+		items     []string
+		chunkSize int
+		want      [][]string
+	}{
+		{
+			name:      "2 chunks",
+			items:     []string{"1", "2", "3"},
+			chunkSize: 2,
+			want: [][]string{
+				{"1", "2"},
+				{"3"},
+			},
+		},
+		{
+			name:      "1 chunk",
+			items:     []string{"1", "2", "3"},
+			chunkSize: 3,
+			want: [][]string{
+				{"1", "2", "3"},
+			},
+		},
+	} {
+		got := chunkSlice(tc.items, tc.chunkSize)
+
+		if diff := cmp.Diff(got, tc.want); diff != "" {
+			t.Errorf("Unexpected diff (%s) %v", tc.name, diff)
+		}
+	}
 }

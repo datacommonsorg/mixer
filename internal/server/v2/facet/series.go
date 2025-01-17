@@ -22,6 +22,7 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -125,8 +126,8 @@ func SeriesFacet(
 			}
 		}
 	}
-	if store.SQLClient.DB != nil {
-		observationCount, err := sqlquery.CountObservation(store.SQLClient.DB, entities, variables)
+	if sqldb.IsConnected(&store.SQLClient) {
+		observationCount, err := sqlquery.CountObservation(ctx, &store.SQLClient, entities, variables)
 		if err != nil {
 			return nil, err
 		}

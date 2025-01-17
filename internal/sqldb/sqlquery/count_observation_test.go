@@ -15,14 +15,15 @@
 package sqlquery
 
 import (
-	"database/sql"
+	"context"
 	"testing"
 
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/go-test/deep"
 )
 
-func TestQuery(t *testing.T) {
-	sqlClient, err := sql.Open("sqlite", "../../../test/datacommons.db")
+func TestCountObservation(t *testing.T) {
+	sqlClient, err := sqldb.NewSQLiteClient("../../../test/datacommons.db")
 	if err != nil {
 		t.Fatalf("Could not open testing database: %s", err)
 	}
@@ -56,7 +57,7 @@ func TestQuery(t *testing.T) {
 			},
 		},
 	} {
-		expect, err := CountObservation(sqlClient, c.entities, c.variables)
+		expect, err := CountObservation(context.Background(), sqlClient, c.entities, c.variables)
 		if err != nil {
 			t.Fatalf("Error execute CountObservation(): %s", err)
 		}
