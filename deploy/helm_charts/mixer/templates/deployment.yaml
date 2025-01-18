@@ -103,6 +103,7 @@ spec:
             {{- end }}
             - --use_spanner_graph={{ $.Values.mixer.useSpannerGraph }}
             - --spanner_graph_info=$(SPANNER_GRAPH_INFO)
+            - --enable_v3={{ $.Values.mixer.enableV3 }}
           volumeMounts:
             - name: schema-mapping
               mountPath: /datacommons/mapping

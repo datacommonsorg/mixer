@@ -34,6 +34,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
+	"github.com/datacommonsorg/mixer/internal/server/remote"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
@@ -56,6 +57,7 @@ type TestOption struct {
 	UseSQLite         bool
 	CacheSVFormula    bool
 	UseSpannerGraph   bool
+	EnableV3          bool
 	RemoteMixerDomain string
 }
 
@@ -82,7 +84,7 @@ const (
 
 // Setup creates local server and client.
 func Setup(option ...*TestOption) (pbs.MixerClient, error) {
-	fetchSVG, searchSVG, useCustomTable, useSQLite, cacheSVFormula, useSpannerGraph, remoteMixerDomain := false, false, false, false, false, false, ""
+	fetchSVG, searchSVG, useCustomTable, useSQLite, cacheSVFormula, useSpannerGraph, enableV3, remoteMixerDomain := false, false, false, false, false, false, false, ""
 	var cacheOptions cache.CacheOptions
 	if len(option) == 1 {
 		fetchSVG = option[0].FetchSVG
@@ -95,6 +97,7 @@ func Setup(option ...*TestOption) (pbs.MixerClient, error) {
 		cacheOptions.SearchSVG = searchSVG
 		cacheOptions.CacheSVFormula = cacheSVFormula
 		useSpannerGraph = option[0].UseSpannerGraph
+		enableV3 = option[0].EnableV3
 		remoteMixerDomain = option[0].RemoteMixerDomain
 	}
 	return setupInternal(
@@ -105,6 +108,7 @@ func Setup(option ...*TestOption) (pbs.MixerClient, error) {
 		useCustomTable,
 		useSQLite,
 		useSpannerGraph,
+		enableV3,
 		cacheOptions,
 		remoteMixerDomain,
 	)
@@ -112,7 +116,7 @@ func Setup(option ...*TestOption) (pbs.MixerClient, error) {
 
 func setupInternal(
 	bigqueryVersionFile, baseBigtableInfoYaml, testBigtableInfoYaml, mcfPath string,
-	useCustomTable, useSQLite, useSpannerGraph bool,
+	useCustomTable, useSQLite, useSpannerGraph, enableV3 bool,
 	cacheOptions cache.CacheOptions,
 	remoteMixerDomain string,
 ) (pbs.MixerClient, error) {
@@ -124,7 +128,7 @@ func setupInternal(
 	// Data sources.
 	sources := []*datasource.DataSource{}
 
-	if useSpannerGraph {
+	if enableV3 && useSpannerGraph {
 		spannerClient := NewSpannerClient()
 		if spannerClient != nil {
 			var ds datasource.DataSource = spanner.NewSpannerDataSource(spannerClient)
@@ -187,6 +191,15 @@ func setupInternal(
 	mapsClient, err := util.MapsClient(ctx, metadata.HostProject)
 	if err != nil {
 		return nil, err
+	}
+
+	if enableV3 && remoteMixerDomain != "" {
+		remoteClient, err := remote.NewRemoteClient(metadata)
+		if err != nil {
+			log.Fatalf("Failed to create remote client: %v", err)
+		}
+		var ds datasource.DataSource = remote.NewRemoteDataSource(remoteClient)
+		sources = append(sources, &ds)
 	}
 
 	dataSources := datasources.NewDataSources(sources)

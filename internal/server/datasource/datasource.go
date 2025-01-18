@@ -24,6 +24,7 @@ import (
 type DataSourceType string
 
 const (
+	TypeRemote  DataSourceType = "remote"
 	TypeSpanner DataSourceType = "spanner"
 	TypeMock    DataSourceType = "mock"
 )
@@ -34,4 +35,5 @@ type DataSource interface {
 	Node(context.Context, *v3.NodeRequest) (*v3.NodeResponse, error)
 	Observation(context.Context, *v3.ObservationRequest) (*v3.ObservationResponse, error)
 	NodeSearch(context.Context, *v3.NodeSearchRequest) (*v3.NodeSearchResponse, error)
+	Resolve(context.Context, *v3.ResolveRequest) (*v3.ResolveResponse, error)
 }

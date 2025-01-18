@@ -32,6 +32,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
+	"github.com/datacommonsorg/mixer/internal/server/remote"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -90,6 +91,8 @@ var (
 	// Spanner Graph
 	useSpannerGraph  = flag.Bool("use_spanner_graph", false, "Use Google Spanner as a database.")
 	spannerGraphInfo = flag.String("spanner_graph_info", "", "Yaml formatted text containing information for Spanner Graph.")
+	// V3 API.
+	enableV3 = flag.Bool("enable_v3", false, "Enable datasources in V3 API.")
 )
 
 func main() {
@@ -120,7 +123,7 @@ func main() {
 	sources := []*datasource.DataSource{}
 
 	// Spanner Graph.
-	if *useSpannerGraph {
+	if *enableV3 && *useSpannerGraph {
 		spannerClient, err := spanner.NewSpannerClient(ctx, *spannerGraphInfo)
 		if err != nil {
 			log.Fatalf("Failed to create Spanner client: %v", err)
@@ -263,6 +266,16 @@ func main() {
 		if err != nil {
 			log.Fatalf("Failed to create Maps client: %v", err)
 		}
+	}
+
+	// Remote Mixer.
+	if *enableV3 && *remoteMixerDomain != "" {
+		remoteClient, err := remote.NewRemoteClient(metadata)
+		if err != nil {
+			log.Fatalf("Failed to create remote client: %v", err)
+		}
+		var ds datasource.DataSource = remote.NewRemoteDataSource(remoteClient)
+		sources = append(sources, &ds)
 	}
 
 	// Create server object

@@ -4,6 +4,7 @@ mixer:
   serviceName: autopush.api.datacommons.org
   cacheSVFormula: true
   useSpannerGraph: true
+  enableV3: true
 
 ingress:
   enabled: true

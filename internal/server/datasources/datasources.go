@@ -20,7 +20,7 @@ import (
 
 	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
-	"github.com/datacommonsorg/mixer/internal/server/datasources/node"
+	"github.com/datacommonsorg/mixer/internal/server/datasources/merge"
 
 	"golang.org/x/sync/errgroup"
 )
@@ -61,7 +61,7 @@ func (ds *DataSources) Node(ctx context.Context, in *pbv3.NodeRequest) (*pbv3.No
 		allResp = append(allResp, <-respChan)
 	}
 
-	return node.MergeNode(allResp)
+	return merge.MergeNode(allResp)
 }
 
 func (ds *DataSources) Observation(ctx context.Context, in *pbv3.ObservationRequest) (*pbv3.ObservationResponse, error) {
@@ -80,4 +80,13 @@ func (ds *DataSources) NodeSearch(ctx context.Context, in *pbv3.NodeSearchReques
 	// Returning only the first one right now.
 	// TODO: Execute in parallel and returned merged response.
 	return (*ds.sources[0]).NodeSearch(ctx, in)
+}
+
+func (ds *DataSources) Resolve(ctx context.Context, in *pbv3.ResolveRequest) (*pbv3.ResolveResponse, error) {
+	if len(ds.sources) == 0 {
+		return nil, fmt.Errorf("no sources found")
+	}
+	// Returning only the first one right now.
+	// TODO: Execute in parallel and returned merged response.
+	return (*ds.sources[0]).Resolve(ctx, in)
 }

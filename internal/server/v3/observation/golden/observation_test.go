@@ -203,7 +203,7 @@ func TestV3Observation(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"TestV3Observation",
-		&test.TestOption{UseSQLite: true, UseSpannerGraph: true},
+		&test.TestOption{UseSQLite: true, UseSpannerGraph: true, EnableV3: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() for TestV3Observation = %s", err)
