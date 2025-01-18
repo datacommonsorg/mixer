@@ -22,6 +22,8 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/server/v3/conversion"
+
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
@@ -34,47 +36,27 @@ type RemoteClient struct {
 // NewRemoteClient creates a new RemoteClient.
 func NewRemoteClient(metadata *resource.Metadata) (*RemoteClient, error) {
 	if metadata.RemoteMixerDomain == "" || metadata.RemoteMixerAPIKey == "" {
-		return nil, fmt.Errorf("error creating remote client: please ensure that a remote mixer domain and API key are set")
+		return nil, fmt.Errorf("error creating remote client: please ensure that the remote mixer domain and API key are set")
 	}
 	return &RemoteClient{metadata, &http.Client{}}, nil
 }
 
 func (rc *RemoteClient) Node(req *pbv3.NodeRequest) (*pbv3.NodeResponse, error) {
-	v2Req := &pbv2.NodeRequest{
-		Nodes:     req.Nodes,
-		Property:  req.Property,
-		Limit:     req.Limit,
-		NextToken: req.NextToken,
-	}
-	v2Resp := &pbv2.NodeResponse{}
-	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/node", v2Req, v2Resp)
+	resp := &pbv2.NodeResponse{}
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/node", conversion.V2NodeRequest(req), resp)
 	if err != nil {
 		return nil, err
 	}
-	return &pbv3.NodeResponse{
-		Data:      v2Resp.Data,
-		NextToken: v2Resp.NextToken,
-	}, nil
+	return conversion.V3NodeResponse(resp), nil
 }
 
 func (rc *RemoteClient) Observation(req *pbv3.ObservationRequest) (*pbv3.ObservationResponse, error) {
-	v2Req := &pbv2.ObservationRequest{
-		Variable: req.Variable,
-		Entity:   req.Entity,
-		Date:     req.Date,
-		Value:    req.Value,
-		Filter:   req.Filter,
-		Select:   req.Select,
-	}
-	v2Resp := &pbv2.ObservationResponse{}
-	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/observation", v2Req, v2Resp)
+	resp := &pbv2.ObservationResponse{}
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/observation", conversion.V2ObservationRequest(req), resp)
 	if err != nil {
 		return nil, err
 	}
-	return &pbv3.ObservationResponse{
-		ByVariable: v2Resp.ByVariable,
-		Facets:     v2Resp.Facets,
-	}, nil
+	return conversion.V3ObservationResponse(resp), nil
 }
 
 func (rc *RemoteClient) NodeSearch(req *pbv3.NodeSearchRequest) (*pbv3.NodeSearchResponse, error) {
@@ -87,28 +69,10 @@ func (rc *RemoteClient) NodeSearch(req *pbv3.NodeSearchRequest) (*pbv3.NodeSearc
 }
 
 func (rc *RemoteClient) Resolve(req *pbv3.ResolveRequest) (*pbv3.ResolveResponse, error) {
-	v2Req := &pbv2.ResolveRequest{
-		Nodes:    req.Nodes,
-		Property: req.Property,
-	}
-	v2Resp := &pbv2.ResolveResponse{}
-	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/resolve", v2Req, v2Resp)
+	resp := &pbv2.ResolveResponse{}
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/resolve", conversion.V2ResolveRequest(req), resp)
 	if err != nil {
 		return nil, err
 	}
-	resp := &pbv3.ResolveResponse{}
-	for _, v2Entity := range v2Resp.Entities {
-		entity := &pbv3.ResolveResponse_Entity{
-			Node: v2Entity.Node,
-		}
-		for _, v2Candidate := range v2Entity.Candidates {
-			candidate := &pbv3.ResolveResponse_Entity_Candidate{
-				Dcid:         v2Candidate.Dcid,
-				DominantType: v2Candidate.DominantType,
-			}
-			entity.Candidates = append(entity.Candidates, candidate)
-		}
-		resp.Entities = append(resp.Entities, entity)
-	}
-	return resp, nil
+	return conversion.V3ResolveResponse(resp), nil
 }
