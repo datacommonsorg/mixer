@@ -15,12 +15,10 @@
 package sqlquery
 
 import (
-	"database/sql"
-	"encoding/json"
-	"time"
+	"context"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/util"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 )
 
 // Represents "metadata" column of import table
@@ -29,45 +27,25 @@ type ImportMetadata struct {
 	NumVars *int32
 }
 
-// GetImportTableData gets rows of import table
-func GetImportTableData(sqlClient *sql.DB) (*pb.GetImportTableDataResponse, error) {
-	defer util.TimeTrack(time.Now(), "SQL: GetImportTableData")
-	query :=
-		`
-			SELECT imported_at, status, metadata
-			FROM imports
-			ORDER BY imported_at
-		`
-	// Execute query
-	rows, err := sqlClient.Query(
-		query,
-	)
+// GetImportTableData gets rows of imports table
+func GetImportTableData(ctx context.Context, sqlClient *sqldb.SQLClient) (*pb.GetImportTableDataResponse, error) {
+	if !sqldb.IsConnected(sqlClient) {
+		return &pb.GetImportTableDataResponse{}, nil
+	}
+	rows, err := sqlClient.GetAllImports(ctx)
 	if err != nil {
 		return nil, err
 	}
-	defer rows.Close()
 	// Process the query result
 	var allRows []*pb.GetImportTableDataResponse_ImportData
-	for rows.Next() {
-		var importedAt, status, rawMetadata string
-		err = rows.Scan(&importedAt, &status, &rawMetadata)
-		if err != nil {
-			return nil, err
-		}
-
-		// Convert metadata from text to struct
-		var metadata ImportMetadata
-		err = json.Unmarshal([]byte(rawMetadata), &metadata)
-		if err != nil {
-			return nil, err
-		}
+	for _, row := range rows {
 
 		rowData := &pb.GetImportTableDataResponse_ImportData{
-			ImportedAt: importedAt,
-			Status:     status,
+			ImportedAt: row.ImportedAt,
+			Status:     row.Status,
 			Metadata: &pb.GetImportTableDataResponse_ImportData_ImportMetadata{
-				NumObs:  metadata.NumObs,
-				NumVars: metadata.NumVars,
+				NumObs:  row.Metadata.NumObs,
+				NumVars: row.Metadata.NumVars,
 			},
 		}
 		allRows = append(allRows, rowData)

@@ -15,30 +15,22 @@
 package sqlquery
 
 import (
-	"database/sql"
-	"time"
+	"context"
 
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
 // EntityVariableExistence returns all existent entity, variable pairs
-func EntityVariableExistence(sqlClient *sql.DB) (map[util.EntityVariable]struct{}, error) {
-	defer util.TimeTrack(time.Now(), "SQL: EntityVariableExistence")
-	query := "SELECT DISTINCT entity, variable FROM observations o"
-	// Execute query
-	rows, err := sqlClient.Query(query)
+func EntityVariableExistence(ctx context.Context, sqlClient *sqldb.SQLClient) (map[util.EntityVariable]struct{}, error) {
+	rows, err := sqlClient.GetAllEntitiesAndVariables(ctx)
 	if err != nil {
 		return nil, err
 	}
-	defer rows.Close()
 	// Process the query result
 	result := map[util.EntityVariable]struct{}{}
-	for rows.Next() {
-		var e, v string
-		err = rows.Scan(&e, &v)
-		if err != nil {
-			return nil, err
-		}
+	for _, row := range rows {
+		var e, v = row.Entity, row.Variable
 		result[util.EntityVariable{E: e, V: v}] = struct{}{}
 		// Also track which variables (across all entities) have data.
 		result[util.EntityVariable{V: v}] = struct{}{}
