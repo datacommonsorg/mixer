@@ -21,7 +21,7 @@ import (
 	"testing"
 
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
-	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -45,18 +45,18 @@ func TestV3NodeSearch(t *testing.T) {
 
 	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
-			req        *pbv3.NodeSearchRequest
+			req        *pbv2.NodeSearchRequest
 			goldenFile string
 		}{
 			{
-				req: &pbv3.NodeSearchRequest{
+				req: &pbv2.NodeSearchRequest{
 					Query: "income",
 					Types: []string{"StatisticalVariable"},
 				},
 				goldenFile: "node_search_with_type.json",
 			},
 			{
-				req: &pbv3.NodeSearchRequest{
+				req: &pbv2.NodeSearchRequest{
 					Query: "income",
 				},
 				goldenFile: "node_search_without_type.json",
@@ -70,7 +70,7 @@ func TestV3NodeSearch(t *testing.T) {
 			}
 
 			// Filter resp to top matches to avoid flaky low matches.
-			topResp := &pbv3.NodeSearchResponse{
+			topResp := &pbv2.NodeSearchResponse{
 				Nodes: resp.Nodes[:NUM_SEARCH_MATCHES],
 			}
 
@@ -81,7 +81,7 @@ func TestV3NodeSearch(t *testing.T) {
 				test.UpdateGolden(topResp, goldenPath, goldenFile)
 				continue
 			}
-			var expected pbv3.NodeSearchResponse
+			var expected pbv2.NodeSearchResponse
 			if err = test.ReadJSON(goldenPath, goldenFile, &expected); err != nil {
 				t.Errorf("Could not Unmarshal golden file: %s", err)
 				continue

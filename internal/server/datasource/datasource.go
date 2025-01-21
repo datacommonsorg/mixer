@@ -17,7 +17,7 @@ package datasource
 import (
 	"context"
 
-	v3 "github.com/datacommonsorg/mixer/internal/proto/v3"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
 
 // DataSourceType represents the type of data source.
@@ -32,8 +32,8 @@ const (
 // DataSource interface defines the common methods for all data sources.
 type DataSource interface {
 	Type() DataSourceType
-	Node(context.Context, *v3.NodeRequest) (*v3.NodeResponse, error)
-	Observation(context.Context, *v3.ObservationRequest) (*v3.ObservationResponse, error)
-	NodeSearch(context.Context, *v3.NodeSearchRequest) (*v3.NodeSearchResponse, error)
-	Resolve(context.Context, *v3.ResolveRequest) (*v3.ResolveResponse, error)
+	Node(context.Context, *pbv2.NodeRequest) (*pbv2.NodeResponse, error)
+	Observation(context.Context, *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error)
+	NodeSearch(context.Context, *pbv2.NodeSearchRequest) (*pbv2.NodeSearchResponse, error)
+	Resolve(context.Context, *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error)
 }

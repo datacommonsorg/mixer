@@ -48,39 +48,35 @@ import "v1/triples.proto";
 
 import "v2/event.proto";
 import "v2/node.proto";
+import "v2/node_search.proto";
 import "v2/observation.proto";
 import "v2/resolve.proto";
-
-import "v3/node.proto";
-import "v3/node_search.proto";
-import "v3/observation.proto";
-import "v3/resolve.proto";
 
 service Mixer {
   // ======================  V3   V3   V3   V3  ======================
 
-  rpc V3Node(datacommons.v3.NodeRequest) returns (datacommons.v3.NodeResponse) {
+  rpc V3Node(datacommons.v2.NodeRequest) returns (datacommons.v2.NodeResponse) {
     option (google.api.http) = {
       get : "/v3/node"
       additional_bindings : {post : "/v3/node" body : "*"}
     };
   }
 
-  rpc V3Observation(datacommons.v3.ObservationRequest) returns (datacommons.v3.ObservationResponse) {
+  rpc V3Observation(datacommons.v2.ObservationRequest) returns (datacommons.v2.ObservationResponse) {
     option (google.api.http) = {
       get : "/v3/observation"
       additional_bindings : {post : "/v3/observation" body : "*"}
     };
   }
 
-  rpc V3NodeSearch(datacommons.v3.NodeSearchRequest) returns (datacommons.v3.NodeSearchResponse) {
+  rpc V3NodeSearch(datacommons.v2.NodeSearchRequest) returns (datacommons.v2.NodeSearchResponse) {
     option (google.api.http) = {
       get : "/v3/node_search"
       additional_bindings : {post : "/v3/node_search" body : "*"}
     };
   }
 
-  rpc V3Resolve(datacommons.v3.ResolveRequest) returns (datacommons.v3.ResolveResponse) {
+  rpc V3Resolve(datacommons.v2.ResolveRequest) returns (datacommons.v2.ResolveResponse) {
     option (google.api.http) = {
       get : "/v3/resolve"
       additional_bindings : {post : "/v3/resolve" body : "*"}

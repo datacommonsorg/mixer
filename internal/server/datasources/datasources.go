@@ -18,9 +18,9 @@ import (
 	"context"
 	"fmt"
 
-	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
+	"github.com/datacommonsorg/mixer/internal/merger"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
-	"github.com/datacommonsorg/mixer/internal/server/datasources/merge"
 
 	"golang.org/x/sync/errgroup"
 )
@@ -34,12 +34,12 @@ func NewDataSources(sources []*datasource.DataSource) *DataSources {
 	return &DataSources{sources: sources}
 }
 
-func (ds *DataSources) Node(ctx context.Context, in *pbv3.NodeRequest) (*pbv3.NodeResponse, error) {
+func (ds *DataSources) Node(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
 	errGroup, errCtx := errgroup.WithContext(ctx)
-	dsRespChan := []chan *pbv3.NodeResponse{}
+	dsRespChan := []chan *pbv2.NodeResponse{}
 
 	for _, source := range ds.sources {
-		respChan := make(chan *pbv3.NodeResponse, 1)
+		respChan := make(chan *pbv2.NodeResponse, 1)
 		errGroup.Go(func() error {
 			resp, err := (*source).Node(errCtx, in)
 			if err != nil {
@@ -55,16 +55,16 @@ func (ds *DataSources) Node(ctx context.Context, in *pbv3.NodeRequest) (*pbv3.No
 		return nil, err
 	}
 
-	allResp := []*pbv3.NodeResponse{}
+	allResp := []*pbv2.NodeResponse{}
 	for _, respChan := range dsRespChan {
 		close(respChan)
 		allResp = append(allResp, <-respChan)
 	}
 
-	return merge.MergeNode(allResp)
+	return merger.MergeMultiNode(allResp)
 }
 
-func (ds *DataSources) Observation(ctx context.Context, in *pbv3.ObservationRequest) (*pbv3.ObservationResponse, error) {
+func (ds *DataSources) Observation(ctx context.Context, in *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
 	if len(ds.sources) == 0 {
 		return nil, fmt.Errorf("no sources found")
 	}
@@ -73,7 +73,7 @@ func (ds *DataSources) Observation(ctx context.Context, in *pbv3.ObservationRequ
 	return (*ds.sources[0]).Observation(ctx, in)
 }
 
-func (ds *DataSources) NodeSearch(ctx context.Context, in *pbv3.NodeSearchRequest) (*pbv3.NodeSearchResponse, error) {
+func (ds *DataSources) NodeSearch(ctx context.Context, in *pbv2.NodeSearchRequest) (*pbv2.NodeSearchResponse, error) {
 	if len(ds.sources) == 0 {
 		return nil, fmt.Errorf("no sources found")
 	}
@@ -82,7 +82,7 @@ func (ds *DataSources) NodeSearch(ctx context.Context, in *pbv3.NodeSearchReques
 	return (*ds.sources[0]).NodeSearch(ctx, in)
 }
 
-func (ds *DataSources) Resolve(ctx context.Context, in *pbv3.ResolveRequest) (*pbv3.ResolveResponse, error) {
+func (ds *DataSources) Resolve(ctx context.Context, in *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
 	if len(ds.sources) == 0 {
 		return nil, fmt.Errorf("no sources found")
 	}
