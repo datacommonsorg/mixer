@@ -27,7 +27,7 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func Testv2Observation(t *testing.T) {
+func TestV3Observation(t *testing.T) {
 	// TODO: Remove check once enabled.
 	if !test.EnableSpannerGraph {
 		return
