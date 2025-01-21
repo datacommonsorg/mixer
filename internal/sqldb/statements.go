@@ -32,11 +32,14 @@ var statements = struct {
 	getAllEntitiesOfType                      string
 	getContainedInPlace                       string
 	getEntityVariables                        string
+	getAllEntitiesAndVariables                string
 	getTableColumns                           string
 	getObsCountByVariableAndEntity            string
 	getEntityInfoTriples                      string
 	getSubjectTriples                         string
 	getObjectTriples                          string
+	getAllProvenances                         string
+	getAllImports                             string
 }{
 	getObsByVariableAndEntity: `
 		SELECT entity, variable, date, value, provenance, unit, scaling_factor, measurement_method, observation_period, properties 
@@ -228,6 +231,10 @@ var statements = struct {
 		WHERE entity in (:entities)
 		GROUP BY entity;
 	`,
+	getAllEntitiesAndVariables: `
+		SELECT DISTINCT entity, variable
+		FROM observations;
+	`,
 	// Query for column names in a table. Table name must be added via string interpolation.
 	getTableColumns: `
 		SELECT * FROM %s LIMIT 0;
@@ -276,5 +283,25 @@ var statements = struct {
 		FROM all_pairs a
 		INNER JOIN triples t ON a.node = t.object_id AND a.prop = t.predicate
 		GROUP BY a.node, a.prop, subject_id, predicate, object_id, object_value;
+	`,
+	getAllProvenances: `
+		SELECT t1.subject_id provenance_id, t2.object_value provenance_name, t3.object_value provenance_url
+		FROM 
+			triples AS t1
+			JOIN triples AS t2 ON t1.subject_id = t2.subject_id
+			JOIN triples AS t3 ON t1.subject_id = t3.subject_id
+		WHERE 
+			t1.predicate = "typeOf"
+			AND t1.object_id = "Provenance"
+			AND t2.predicate = "name"
+			AND t3.predicate = "url"
+	`,
+	// Gets info about all imports into the DB sorted from newest to oldest.
+	// Limits to the most recent 100 imports to keep the number of results bounded.
+	getAllImports: `
+		SELECT imported_at, status, metadata
+		FROM imports
+		ORDER BY imported_at DESC
+		LIMIT 100;
 	`,
 }

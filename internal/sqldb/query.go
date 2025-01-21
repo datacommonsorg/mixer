@@ -400,6 +400,48 @@ func (sc *SQLClient) GetEntityVariables(ctx context.Context, entities []string) 
 	return rows, nil
 }
 
+// GetAllEntitiesAndVariables returns all entities and variables in the DB.
+func (sc *SQLClient) GetAllEntitiesAndVariables(ctx context.Context) ([]*EntityVariable, error) {
+	defer util.TimeTrack(time.Now(), "SQL: GetAllEntitiesAndVariables")
+
+	rows := []*EntityVariable{}
+
+	stmt := statement{
+		query: statements.getAllEntitiesAndVariables,
+	}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		&rows,
+	)
+	if err != nil {
+		return nil, err
+	}
+	return rows, nil
+}
+
+// GetAllProvenances returns info on all provenances in the DB.
+func (sc *SQLClient) GetAllProvenances(ctx context.Context) ([]*ProvenanceInfo, error) {
+	defer util.TimeTrack(time.Now(), "SQL: GetAllProvenances")
+
+	rows := []*ProvenanceInfo{}
+
+	stmt := statement{
+		query: statements.getAllProvenances,
+	}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		&rows,
+	)
+	if err != nil {
+		return nil, err
+	}
+	return rows, nil
+}
+
 // GetEntityInfoTriples returns name and typeOf triples for the specified entities.
 func (sc *SQLClient) GetEntityInfoTriples(ctx context.Context, entities []string) ([]*Triple, error) {
 	defer util.TimeTrack(time.Now(), "SQL: GetEntityInfoTriples")
@@ -536,6 +578,27 @@ func (sc *SQLClient) GetKeyValue(ctx context.Context, key string, out protorefle
 	return true, nil
 }
 
+// GetAllImports returns info on all imports in the DB.
+func (sc *SQLClient) GetAllImports(ctx context.Context) ([]*ImportInfo, error) {
+	defer util.TimeTrack(time.Now(), "SQL: GetAllImports")
+
+	rows := []*ImportInfo{}
+
+	stmt := statement{
+		query: statements.getAllImports,
+	}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		&rows,
+	)
+	if err != nil {
+		return nil, err
+	}
+	return rows, nil
+}
+
 func (sc *SQLClient) queryAndCollect(
 	ctx context.Context,
 	stmt statement,
@@ -588,12 +651,14 @@ func (sc *SQLClient) checkTables() error {
 				log.Printf("Error checking table %s: %v", tableName, err)
 			}
 
-			return fmt.Errorf(`The SQL database does not have the required tables.
+			errMsg := fmt.Sprintf(`The SQL database does not have the required tables.
 The following tables are required: %s
 
 Prepare and load your data before starting this service.
 Guide: https://docs.datacommons.org/custom_dc/custom_data.html
 			`, strings.Join(allTables, ", "))
+
+			return fmt.Errorf(errMsg)
 		}
 	}
 
@@ -611,13 +676,14 @@ func (sc *SQLClient) checkSchema() error {
 
 	missingObservationColumns := util.GetMissingStrings(observationColumns, allObservationsTableColumns)
 	if len(missingObservationColumns) != 0 {
-		return fmt.Errorf(`The following columns are missing in the %s table: %v
+		errMsg := fmt.Sprintf(`The following columns are missing in the %s table: %v
 
 Run a data management job to update your database schema.
 Guide: https://docs.datacommons.org/custom_dc/troubleshooting.html#schema-check-failed.
 
 `,
 			TableObservations, missingObservationColumns)
+		return fmt.Errorf(errMsg)
 	}
 
 	log.Printf("SQL schema check succeeded.")
