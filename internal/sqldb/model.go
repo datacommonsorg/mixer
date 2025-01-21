@@ -133,7 +133,7 @@ type EntityVariable struct {
 	Variable string `db:"variable"`
 }
 
-// EntityVariable represents a row that includes an entity and a variable.
+// ProvenanceInfo represents a row that includes provenance info (id, name, URL).
 type ProvenanceInfo struct {
 	ID   string `db:"provenance_id"`
 	Name string `db:"provenance_name"`

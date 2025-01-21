@@ -296,6 +296,8 @@ var statements = struct {
 			AND t2.predicate = "name"
 			AND t3.predicate = "url"
 	`,
+	// Gets info about all imports into the DB sorted from newest to oldest.
+	// Limits to the most recent 100 imports to keep the number of results bounded.
 	getAllImports: `
 		SELECT imported_at, status, metadata
 		FROM imports
