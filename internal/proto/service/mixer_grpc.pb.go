@@ -32,7 +32,6 @@ import (
 	proto "github.com/datacommonsorg/mixer/internal/proto"
 	v1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	v2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	v3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -119,10 +118,10 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type MixerClient interface {
-	V3Node(ctx context.Context, in *v3.NodeRequest, opts ...grpc.CallOption) (*v3.NodeResponse, error)
-	V3Observation(ctx context.Context, in *v3.ObservationRequest, opts ...grpc.CallOption) (*v3.ObservationResponse, error)
-	V3NodeSearch(ctx context.Context, in *v3.NodeSearchRequest, opts ...grpc.CallOption) (*v3.NodeSearchResponse, error)
-	V3Resolve(ctx context.Context, in *v3.ResolveRequest, opts ...grpc.CallOption) (*v3.ResolveResponse, error)
+	V3Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error)
+	V3Observation(ctx context.Context, in *v2.ObservationRequest, opts ...grpc.CallOption) (*v2.ObservationResponse, error)
+	V3NodeSearch(ctx context.Context, in *v2.NodeSearchRequest, opts ...grpc.CallOption) (*v2.NodeSearchResponse, error)
+	V3Resolve(ctx context.Context, in *v2.ResolveRequest, opts ...grpc.CallOption) (*v2.ResolveResponse, error)
 	V2Sparql(ctx context.Context, in *proto.SparqlRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error)
 	V2Resolve(ctx context.Context, in *v2.ResolveRequest, opts ...grpc.CallOption) (*v2.ResolveResponse, error)
 	V2Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error)
@@ -251,8 +250,8 @@ func NewMixerClient(cc grpc.ClientConnInterface) MixerClient {
 	return &mixerClient{cc}
 }
 
-func (c *mixerClient) V3Node(ctx context.Context, in *v3.NodeRequest, opts ...grpc.CallOption) (*v3.NodeResponse, error) {
-	out := new(v3.NodeResponse)
+func (c *mixerClient) V3Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error) {
+	out := new(v2.NodeResponse)
 	err := c.cc.Invoke(ctx, Mixer_V3Node_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -260,8 +259,8 @@ func (c *mixerClient) V3Node(ctx context.Context, in *v3.NodeRequest, opts ...gr
 	return out, nil
 }
 
-func (c *mixerClient) V3Observation(ctx context.Context, in *v3.ObservationRequest, opts ...grpc.CallOption) (*v3.ObservationResponse, error) {
-	out := new(v3.ObservationResponse)
+func (c *mixerClient) V3Observation(ctx context.Context, in *v2.ObservationRequest, opts ...grpc.CallOption) (*v2.ObservationResponse, error) {
+	out := new(v2.ObservationResponse)
 	err := c.cc.Invoke(ctx, Mixer_V3Observation_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -269,8 +268,8 @@ func (c *mixerClient) V3Observation(ctx context.Context, in *v3.ObservationReque
 	return out, nil
 }
 
-func (c *mixerClient) V3NodeSearch(ctx context.Context, in *v3.NodeSearchRequest, opts ...grpc.CallOption) (*v3.NodeSearchResponse, error) {
-	out := new(v3.NodeSearchResponse)
+func (c *mixerClient) V3NodeSearch(ctx context.Context, in *v2.NodeSearchRequest, opts ...grpc.CallOption) (*v2.NodeSearchResponse, error) {
+	out := new(v2.NodeSearchResponse)
 	err := c.cc.Invoke(ctx, Mixer_V3NodeSearch_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -278,8 +277,8 @@ func (c *mixerClient) V3NodeSearch(ctx context.Context, in *v3.NodeSearchRequest
 	return out, nil
 }
 
-func (c *mixerClient) V3Resolve(ctx context.Context, in *v3.ResolveRequest, opts ...grpc.CallOption) (*v3.ResolveResponse, error) {
-	out := new(v3.ResolveResponse)
+func (c *mixerClient) V3Resolve(ctx context.Context, in *v2.ResolveRequest, opts ...grpc.CallOption) (*v2.ResolveResponse, error) {
+	out := new(v2.ResolveResponse)
 	err := c.cc.Invoke(ctx, Mixer_V3Resolve_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -876,10 +875,10 @@ func (c *mixerClient) UpdateCache(ctx context.Context, in *proto.UpdateCacheRequ
 // All implementations should embed UnimplementedMixerServer
 // for forward compatibility
 type MixerServer interface {
-	V3Node(context.Context, *v3.NodeRequest) (*v3.NodeResponse, error)
-	V3Observation(context.Context, *v3.ObservationRequest) (*v3.ObservationResponse, error)
-	V3NodeSearch(context.Context, *v3.NodeSearchRequest) (*v3.NodeSearchResponse, error)
-	V3Resolve(context.Context, *v3.ResolveRequest) (*v3.ResolveResponse, error)
+	V3Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error)
+	V3Observation(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error)
+	V3NodeSearch(context.Context, *v2.NodeSearchRequest) (*v2.NodeSearchResponse, error)
+	V3Resolve(context.Context, *v2.ResolveRequest) (*v2.ResolveResponse, error)
 	V2Sparql(context.Context, *proto.SparqlRequest) (*proto.QueryResponse, error)
 	V2Resolve(context.Context, *v2.ResolveRequest) (*v2.ResolveResponse, error)
 	V2Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error)
@@ -1004,16 +1003,16 @@ type MixerServer interface {
 type UnimplementedMixerServer struct {
 }
 
-func (UnimplementedMixerServer) V3Node(context.Context, *v3.NodeRequest) (*v3.NodeResponse, error) {
+func (UnimplementedMixerServer) V3Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V3Node not implemented")
 }
-func (UnimplementedMixerServer) V3Observation(context.Context, *v3.ObservationRequest) (*v3.ObservationResponse, error) {
+func (UnimplementedMixerServer) V3Observation(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V3Observation not implemented")
 }
-func (UnimplementedMixerServer) V3NodeSearch(context.Context, *v3.NodeSearchRequest) (*v3.NodeSearchResponse, error) {
+func (UnimplementedMixerServer) V3NodeSearch(context.Context, *v2.NodeSearchRequest) (*v2.NodeSearchResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V3NodeSearch not implemented")
 }
-func (UnimplementedMixerServer) V3Resolve(context.Context, *v3.ResolveRequest) (*v3.ResolveResponse, error) {
+func (UnimplementedMixerServer) V3Resolve(context.Context, *v2.ResolveRequest) (*v2.ResolveResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V3Resolve not implemented")
 }
 func (UnimplementedMixerServer) V2Sparql(context.Context, *proto.SparqlRequest) (*proto.QueryResponse, error) {
@@ -1224,7 +1223,7 @@ func RegisterMixerServer(s grpc.ServiceRegistrar, srv MixerServer) {
 }
 
 func _Mixer_V3Node_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(v3.NodeRequest)
+	in := new(v2.NodeRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1236,13 +1235,13 @@ func _Mixer_V3Node_Handler(srv interface{}, ctx context.Context, dec func(interf
 		FullMethod: Mixer_V3Node_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).V3Node(ctx, req.(*v3.NodeRequest))
+		return srv.(MixerServer).V3Node(ctx, req.(*v2.NodeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_V3Observation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(v3.ObservationRequest)
+	in := new(v2.ObservationRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1254,13 +1253,13 @@ func _Mixer_V3Observation_Handler(srv interface{}, ctx context.Context, dec func
 		FullMethod: Mixer_V3Observation_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).V3Observation(ctx, req.(*v3.ObservationRequest))
+		return srv.(MixerServer).V3Observation(ctx, req.(*v2.ObservationRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_V3NodeSearch_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(v3.NodeSearchRequest)
+	in := new(v2.NodeSearchRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1272,13 +1271,13 @@ func _Mixer_V3NodeSearch_Handler(srv interface{}, ctx context.Context, dec func(
 		FullMethod: Mixer_V3NodeSearch_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).V3NodeSearch(ctx, req.(*v3.NodeSearchRequest))
+		return srv.(MixerServer).V3NodeSearch(ctx, req.(*v2.NodeSearchRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _Mixer_V3Resolve_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(v3.ResolveRequest)
+	in := new(v2.ResolveRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1290,7 +1289,7 @@ func _Mixer_V3Resolve_Handler(srv interface{}, ctx context.Context, dec func(int
 		FullMethod: Mixer_V3Resolve_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).V3Resolve(ctx, req.(*v3.ResolveRequest))
+		return srv.(MixerServer).V3Resolve(ctx, req.(*v2.ResolveRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

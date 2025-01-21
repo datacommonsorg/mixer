@@ -20,7 +20,7 @@ import (
 	"runtime"
 	"testing"
 
-	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
@@ -40,18 +40,18 @@ func TestNode(t *testing.T) {
 	goldenDir := path.Join(path.Dir(filename), "datasource")
 
 	for _, c := range []struct {
-		req        *pbv3.NodeRequest
+		req        *pbv2.NodeRequest
 		goldenFile string
 	}{
 		{
-			req: &pbv3.NodeRequest{
+			req: &pbv2.NodeRequest{
 				Nodes:    []string{"Person", "Count_Person"},
 				Property: "->",
 			},
 			goldenFile: "properties.json",
 		},
 		{
-			req: &pbv3.NodeRequest{
+			req: &pbv2.NodeRequest{
 				Nodes:    []string{"Monthly_Average_RetailPrice_Electricity_Residential", "Aadhaar", "foo"},
 				Property: "->[typeOf, name, statType]",
 			},
@@ -68,7 +68,7 @@ func TestNode(t *testing.T) {
 			return
 		}
 
-		var want pbv3.NodeResponse
+		var want pbv2.NodeResponse
 		if err = test.ReadJSON(goldenDir, c.goldenFile, &want); err != nil {
 			t.Fatalf("ReadJSON error (%v): %v", c.goldenFile, err)
 		}

@@ -13,9 +13,9 @@
 // limitations under the License.
 
 syntax = "proto3";
-package datacommons.v3;
+package datacommons.v2;
 
-option go_package = "github.com/datacommonsorg/mixer/internal/proto/v3";
+option go_package = "github.com/datacommonsorg/mixer/internal/proto/v2";
 
 import "entity.proto";
 

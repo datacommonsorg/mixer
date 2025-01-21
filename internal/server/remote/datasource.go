@@ -17,7 +17,7 @@ package remote
 import (
 	"context"
 
-	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 )
 
@@ -35,18 +35,18 @@ func (rds *RemoteDataSource) Type() datasource.DataSourceType {
 	return datasource.TypeRemote
 }
 
-func (rds *RemoteDataSource) Node(ctx context.Context, req *pbv3.NodeRequest) (*pbv3.NodeResponse, error) {
+func (rds *RemoteDataSource) Node(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
 	return rds.client.Node(req)
 }
 
-func (rds *RemoteDataSource) Observation(ctx context.Context, req *pbv3.ObservationRequest) (*pbv3.ObservationResponse, error) {
+func (rds *RemoteDataSource) Observation(ctx context.Context, req *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
 	return rds.client.Observation(req)
 }
 
-func (rds *RemoteDataSource) NodeSearch(ctx context.Context, req *pbv3.NodeSearchRequest) (*pbv3.NodeSearchResponse, error) {
+func (rds *RemoteDataSource) NodeSearch(ctx context.Context, req *pbv2.NodeSearchRequest) (*pbv2.NodeSearchResponse, error) {
 	return rds.client.NodeSearch(req)
 }
 
-func (rds *RemoteDataSource) Resolve(ctx context.Context, req *pbv3.ResolveRequest) (*pbv3.ResolveResponse, error) {
+func (rds *RemoteDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
 	return rds.client.Resolve(req)
 }

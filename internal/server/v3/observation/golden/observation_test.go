@@ -22,7 +22,6 @@ import (
 
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -41,11 +40,11 @@ func TestV3Observation(t *testing.T) {
 
 	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
-			req        *pbv3.ObservationRequest
+			req        *pbv2.ObservationRequest
 			goldenFile string
 		}{
 			{
-				req: &pbv3.ObservationRequest{
+				req: &pbv2.ObservationRequest{
 					Variable: &pbv2.DcidOrExpression{
 						Dcids: []string{"AirPollutant_Cancer_Risk", "fake_variable"},
 					},
@@ -58,7 +57,7 @@ func TestV3Observation(t *testing.T) {
 				goldenFile: "observations_all_dates.json",
 			},
 			{
-				req: &pbv3.ObservationRequest{
+				req: &pbv2.ObservationRequest{
 					Variable: &pbv2.DcidOrExpression{
 						Dcids: []string{"AirPollutant_Cancer_Risk"},
 					},
@@ -71,7 +70,7 @@ func TestV3Observation(t *testing.T) {
 				goldenFile: "observations_latest_date.json",
 			},
 			{
-				req: &pbv3.ObservationRequest{
+				req: &pbv2.ObservationRequest{
 					Variable: &pbv2.DcidOrExpression{
 						Dcids: []string{"AirPollutant_Cancer_Risk"},
 					},
@@ -84,7 +83,7 @@ func TestV3Observation(t *testing.T) {
 				goldenFile: "observations_specific_date.json",
 			},
 			{
-				req: &pbv3.ObservationRequest{
+				req: &pbv2.ObservationRequest{
 					Variable: &pbv2.DcidOrExpression{
 						Dcids: []string{"AirPollutant_Cancer_Risk"},
 					},
@@ -97,7 +96,7 @@ func TestV3Observation(t *testing.T) {
 				goldenFile: "observations_no_matching_date.json",
 			},
 			{
-				req: &pbv3.ObservationRequest{
+				req: &pbv2.ObservationRequest{
 					Variable: &pbv2.DcidOrExpression{
 						Dcids: []string{"Count_Person", "Median_Age_Person", "fake_variable"},
 					},
@@ -110,7 +109,7 @@ func TestV3Observation(t *testing.T) {
 				goldenFile: "observations_contained_in.json",
 			},
 			{
-				req: &pbv3.ObservationRequest{
+				req: &pbv2.ObservationRequest{
 					Variable: &pbv2.DcidOrExpression{
 						Dcids: []string{"Count_Farm", "Income_Farm", "fake_variable"},
 					},
@@ -123,7 +122,7 @@ func TestV3Observation(t *testing.T) {
 				goldenFile: "observations_existence.json",
 			},
 			{
-				req: &pbv3.ObservationRequest{
+				req: &pbv2.ObservationRequest{
 					Variable: &pbv2.DcidOrExpression{
 						Dcids: []string{"Count_Farm", "fake_variable"},
 					},
@@ -136,7 +135,7 @@ func TestV3Observation(t *testing.T) {
 				goldenFile: "observations_existence_contained_in.json",
 			},
 			{
-				req: &pbv3.ObservationRequest{
+				req: &pbv2.ObservationRequest{
 					Variable: &pbv2.DcidOrExpression{
 						Dcids: []string{"Count_Person", "Income_Farm", "fake_variable"},
 					},
@@ -148,7 +147,7 @@ func TestV3Observation(t *testing.T) {
 				goldenFile: "observations_facet.json",
 			},
 			{
-				req: &pbv3.ObservationRequest{
+				req: &pbv2.ObservationRequest{
 					Variable: &pbv2.DcidOrExpression{
 						Dcids: []string{"Count_Farm", "fake_variable"},
 					},
@@ -161,7 +160,7 @@ func TestV3Observation(t *testing.T) {
 				goldenFile: "observations_facet_contained_in.json",
 			},
 			{
-				req: &pbv3.ObservationRequest{
+				req: &pbv2.ObservationRequest{
 					Variable: &pbv2.DcidOrExpression{
 						Dcids: []string{"Count_Person"},
 					},
@@ -180,7 +179,7 @@ func TestV3Observation(t *testing.T) {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V3Observation(ctx, c.req)
 			if err != nil {
-				t.Errorf("Could not run V3Observation: %s", err)
+				t.Errorf("Could not run v2Observation: %s", err)
 				continue
 			}
 			if latencyTest {
@@ -190,7 +189,7 @@ func TestV3Observation(t *testing.T) {
 				test.UpdateGolden(resp, goldenPath, goldenFile)
 				continue
 			}
-			var expected pbv3.ObservationResponse
+			var expected pbv2.ObservationResponse
 			if err = test.ReadJSON(goldenPath, goldenFile, &expected); err != nil {
 				t.Errorf("Could not Unmarshal golden file: %s", err)
 				continue
@@ -202,10 +201,10 @@ func TestV3Observation(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"TestV3Observation",
+		"Testv2Observation",
 		&test.TestOption{UseSQLite: true, UseSpannerGraph: true, EnableV3: true},
 		testSuite,
 	); err != nil {
-		t.Errorf("TestDriver() for TestV3Observation = %s", err)
+		t.Errorf("TestDriver() for Testv2Observation = %s", err)
 	}
 }

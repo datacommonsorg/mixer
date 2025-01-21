@@ -21,7 +21,6 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/util"
 
@@ -62,8 +61,8 @@ type variableEntity struct {
 }
 
 // nodePropsToNodeResponse converts a map from subject id to its properties to a NodeResponse proto.
-func nodePropsToNodeResponse(propsBySubjectID map[string][]*Property) *pbv3.NodeResponse {
-	nodeResponse := &pbv3.NodeResponse{
+func nodePropsToNodeResponse(propsBySubjectID map[string][]*Property) *pbv2.NodeResponse {
+	nodeResponse := &pbv2.NodeResponse{
 		Data: make(map[string]*pbv2.LinkedGraph),
 	}
 
@@ -81,8 +80,8 @@ func nodePropsToNodeResponse(propsBySubjectID map[string][]*Property) *pbv3.Node
 }
 
 // nodeEdgesToNodeResponse converts a map from subject id to its edges to a NodeResponse proto.
-func nodeEdgesToNodeResponse(edgesBySubjectID map[string][]*Edge) *pbv3.NodeResponse {
-	nodeResponse := &pbv3.NodeResponse{
+func nodeEdgesToNodeResponse(edgesBySubjectID map[string][]*Edge) *pbv2.NodeResponse {
+	nodeResponse := &pbv2.NodeResponse{
 		Data: make(map[string]*pbv2.LinkedGraph),
 	}
 
@@ -155,7 +154,7 @@ func filterObservationsByDateAndFacet(observations []*Observation, date string, 
 	return filtered
 }
 
-func observationsToObservationResponse(req *pbv3.ObservationRequest, observations []*Observation) *pbv3.ObservationResponse {
+func observationsToObservationResponse(req *pbv2.ObservationRequest, observations []*Observation) *pbv2.ObservationResponse {
 	// The select options are handled separately since each has a different behavior in V2.
 	// This includes:
 	// - Whether to include requested entities that are missing data
@@ -175,8 +174,8 @@ func observationsToObservationResponse(req *pbv3.ObservationRequest, observation
 	}
 }
 
-func newObservationResponse(variables []string) *pbv3.ObservationResponse {
-	result := &pbv3.ObservationResponse{
+func newObservationResponse(variables []string) *pbv2.ObservationResponse {
+	result := &pbv2.ObservationResponse{
 		ByVariable: map[string]*pbv2.VariableObservation{},
 		Facets:     map[string]*pb.Facet{},
 	}
@@ -205,7 +204,7 @@ func groupObservationsByVariableAndEntity(observations []*Observation) map[varia
 	return result
 }
 
-func generateObsResponse(variables []string, observations []*Observation, includeObs bool) *pbv3.ObservationResponse {
+func generateObsResponse(variables []string, observations []*Observation, includeObs bool) *pbv2.ObservationResponse {
 	response := newObservationResponse(variables)
 
 	variableEntityObs := groupObservationsByVariableAndEntity(observations)
@@ -269,7 +268,7 @@ func mergeEntityOrderedFacets(byEntity map[string]*pbv2.EntityObservation, child
 	return result
 }
 
-func obsToObsResponse(req *pbv3.ObservationRequest, observations []*Observation) *pbv3.ObservationResponse {
+func obsToObsResponse(req *pbv2.ObservationRequest, observations []*Observation) *pbv2.ObservationResponse {
 	response := generateObsResponse(req.Variable.Dcids, observations, true /*includeObs*/)
 
 	// Attach all requested entity dcids to response.
@@ -287,7 +286,7 @@ func obsToObsResponse(req *pbv3.ObservationRequest, observations []*Observation)
 	return response
 }
 
-func obsToFacetResponse(req *pbv3.ObservationRequest, observations []*Observation) *pbv3.ObservationResponse {
+func obsToFacetResponse(req *pbv2.ObservationRequest, observations []*Observation) *pbv2.ObservationResponse {
 	response := generateObsResponse(req.Variable.Dcids, observations, false /*includeObs*/)
 
 	if len(req.Entity.Dcids) > 0 {
@@ -308,11 +307,11 @@ func obsToFacetResponse(req *pbv3.ObservationRequest, observations []*Observatio
 	return mergedResponse
 }
 
-func obsToExistenceResponse(req *pbv3.ObservationRequest, observations []*Observation) *pbv3.ObservationResponse {
+func obsToExistenceResponse(req *pbv2.ObservationRequest, observations []*Observation) *pbv2.ObservationResponse {
 	// This is the behavior in V2 and will be kept for now to not break existing behavior.
 	// TODO: Investigate whether we should return a response for this.
 	if req.Entity.Expression != "" {
-		return &pbv3.ObservationResponse{}
+		return &pbv2.ObservationResponse{}
 	}
 
 	response := newObservationResponse(req.Variable.Dcids)
@@ -393,8 +392,8 @@ func dateValueToPointStat(dateValue *DateValue) *pb.PointStat {
 	}
 }
 
-func searchNodesToNodeSearchResponse(nodes []*SearchNode) *pbv3.NodeSearchResponse {
-	response := &pbv3.NodeSearchResponse{}
+func searchNodesToNodeSearchResponse(nodes []*SearchNode) *pbv2.NodeSearchResponse {
+	response := &pbv2.NodeSearchResponse{}
 
 	for _, node := range nodes {
 		response.Nodes = append(response.Nodes, searchNodeToEntityInfo(node))

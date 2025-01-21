@@ -201,7 +201,7 @@ func ObservationInternal(
 	if err := errGroup.Wait(); err != nil {
 		return nil, err
 	}
-	close(localRespChan)
+	close(localRespChan) //
 	close(remoteRespChan)
 	localResp, remoteResp := <-localRespChan, <-remoteRespChan
 	// The order of argument matters, localResp is prefered and will be put first

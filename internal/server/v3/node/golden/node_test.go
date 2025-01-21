@@ -21,7 +21,7 @@ import (
 	"testing"
 
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
-	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -68,7 +68,7 @@ func TestV3Node(t *testing.T) {
 			},
 		} {
 			goldenFile := c.goldenFile
-			resp, err := mixer.V3Node(ctx, &pbv3.NodeRequest{
+			resp, err := mixer.V3Node(ctx, &pbv2.NodeRequest{
 				Nodes:     c.nodes,
 				Property:  c.property,
 				NextToken: c.nextToken,
@@ -84,7 +84,7 @@ func TestV3Node(t *testing.T) {
 				test.UpdateGolden(resp, goldenPath, goldenFile)
 				continue
 			}
-			var expected pbv3.NodeResponse
+			var expected pbv2.NodeResponse
 			if err = test.ReadJSON(goldenPath, goldenFile, &expected); err != nil {
 				t.Errorf("Could not Unmarshal golden file: %s", err)
 				continue

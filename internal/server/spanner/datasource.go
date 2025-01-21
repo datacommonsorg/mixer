@@ -18,7 +18,7 @@ import (
 	"context"
 	"fmt"
 
-	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
@@ -38,13 +38,13 @@ func (sds *SpannerDataSource) Type() datasource.DataSourceType {
 }
 
 // Node retrieves node data from Spanner.
-func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv3.NodeRequest) (*pbv3.NodeResponse, error) {
+func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
 	arcs, err := v2.ParseProperty(req.GetProperty())
 	if err != nil {
 		return nil, err
 	}
 	if len(arcs) == 0 {
-		return &pbv3.NodeResponse{}, nil
+		return &pbv2.NodeResponse{}, nil
 	}
 	if len(arcs) > 1 {
 		return nil, fmt.Errorf("multiple arcs in node request")
@@ -67,7 +67,7 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv3.NodeRequest) (
 }
 
 // Observation retrieves observation data from Spanner.
-func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv3.ObservationRequest) (*pbv3.ObservationResponse, error) {
+func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
 	variables, entities, entityExpr := req.Variable.Dcids, req.Entity.Dcids, req.Entity.Expression
 	date := req.Date
 	var observations []*Observation
@@ -95,7 +95,7 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv3.Observa
 }
 
 // NodeSearch searches nodes in the spanner graph.
-func (sds *SpannerDataSource) NodeSearch(ctx context.Context, req *pbv3.NodeSearchRequest) (*pbv3.NodeSearchResponse, error) {
+func (sds *SpannerDataSource) NodeSearch(ctx context.Context, req *pbv2.NodeSearchRequest) (*pbv2.NodeSearchResponse, error) {
 	nodes, err := sds.client.SearchNodes(ctx, req.Query, req.Types)
 	if err != nil {
 		return nil, fmt.Errorf("error searching nodes: %v", err)
@@ -104,6 +104,6 @@ func (sds *SpannerDataSource) NodeSearch(ctx context.Context, req *pbv3.NodeSear
 }
 
 // Resolve searches for nodes in the graph.
-func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv3.ResolveRequest) (*pbv3.ResolveResponse, error) {
+func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
 	return nil, fmt.Errorf("unimplemented")
 }

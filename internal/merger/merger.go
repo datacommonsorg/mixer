@@ -168,6 +168,25 @@ func MergeNode(main, aux *pbv2.NodeResponse) (*pbv2.NodeResponse, error) {
 	return main, nil
 }
 
+// Merges multiple V2 NodeResponses.
+// Assumes the responses are in order of priority.
+func MergeMultiNode(
+	allResp []*pbv2.NodeResponse,
+) (*pbv2.NodeResponse, error) {
+	if len(allResp) == 0 {
+		return &pbv2.NodeResponse{}, nil
+	}
+	prev := allResp[0]
+	for i := 1; i < len(allResp); i++ {
+		cur, err := MergeNode(prev, allResp[i])
+		if err != nil {
+			return nil, err
+		}
+		prev = cur
+	}
+	return prev, nil
+}
+
 // MergeEvent merges two V2 event responses.
 // If both main and aux have event with the same DCID, then aux event is not
 // used. Otherwise event from aux is appended after main.
@@ -385,14 +404,14 @@ func processSearchStatVarResponse(resp *proto.SearchStatVarResponse, mergedStatV
 func MergeSearchStatVarResponse(primary, secondary *proto.SearchStatVarResponse) *proto.SearchStatVarResponse {
 	mergedStatVars := []*proto.EntityInfo{}
 	dedupedMatches := []string{}
-	matchesMap  := map[string]struct{}{}
-	
+	matchesMap := map[string]struct{}{}
+
 	mergedStatVars, dedupedMatches = processSearchStatVarResponse(primary, mergedStatVars, matchesMap, dedupedMatches)
 	mergedStatVars, dedupedMatches = processSearchStatVarResponse(secondary, mergedStatVars, matchesMap, dedupedMatches)
-	
+
 	merged := &proto.SearchStatVarResponse{
 		StatVars: mergedStatVars,
-		Matches: dedupedMatches,
+		Matches:  dedupedMatches,
 	}
 
 	return merged

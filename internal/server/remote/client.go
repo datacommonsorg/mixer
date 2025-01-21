@@ -20,9 +20,7 @@ import (
 	"net/http"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	"github.com/datacommonsorg/mixer/internal/server/v3/conversion"
 
 	"github.com/datacommonsorg/mixer/internal/util"
 )
@@ -41,26 +39,26 @@ func NewRemoteClient(metadata *resource.Metadata) (*RemoteClient, error) {
 	return &RemoteClient{metadata, &http.Client{}}, nil
 }
 
-func (rc *RemoteClient) Node(req *pbv3.NodeRequest) (*pbv3.NodeResponse, error) {
+func (rc *RemoteClient) Node(req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
 	resp := &pbv2.NodeResponse{}
-	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/node", conversion.V2NodeRequest(req), resp)
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/node", req, resp)
 	if err != nil {
 		return nil, err
 	}
-	return conversion.V3NodeResponse(resp), nil
+	return resp, nil
 }
 
-func (rc *RemoteClient) Observation(req *pbv3.ObservationRequest) (*pbv3.ObservationResponse, error) {
+func (rc *RemoteClient) Observation(req *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
 	resp := &pbv2.ObservationResponse{}
-	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/observation", conversion.V2ObservationRequest(req), resp)
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/observation", req, resp)
 	if err != nil {
 		return nil, err
 	}
-	return conversion.V3ObservationResponse(resp), nil
+	return resp, nil
 }
 
-func (rc *RemoteClient) NodeSearch(req *pbv3.NodeSearchRequest) (*pbv3.NodeSearchResponse, error) {
-	resp := &pbv3.NodeSearchResponse{}
+func (rc *RemoteClient) NodeSearch(req *pbv2.NodeSearchRequest) (*pbv2.NodeSearchResponse, error) {
+	resp := &pbv2.NodeSearchResponse{}
 	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v3/node_search", req, resp)
 	if err != nil {
 		return nil, err
@@ -68,11 +66,11 @@ func (rc *RemoteClient) NodeSearch(req *pbv3.NodeSearchRequest) (*pbv3.NodeSearc
 	return resp, nil
 }
 
-func (rc *RemoteClient) Resolve(req *pbv3.ResolveRequest) (*pbv3.ResolveResponse, error) {
+func (rc *RemoteClient) Resolve(req *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
 	resp := &pbv2.ResolveResponse{}
-	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/resolve", conversion.V2ResolveRequest(req), resp)
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/resolve", req, resp)
 	if err != nil {
 		return nil, err
 	}
-	return conversion.V3ResolveResponse(resp), nil
+	return resp, nil
 }
