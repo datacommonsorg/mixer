@@ -15,43 +15,22 @@
 package sqlquery
 
 import (
-	"database/sql"
-	"time"
+	"context"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/util"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 )
 
 // GetProvenances returns all the provenance name and url in SQL database.
-func GetProvenances(sqlClient *sql.DB) (map[string]*pb.Facet, error) {
-	defer util.TimeTrack(time.Now(), "SQL: GetProvenances")
+func GetProvenances(ctx context.Context, sqlClient *sqldb.SQLClient) (map[string]*pb.Facet, error) {
 	result := map[string]*pb.Facet{}
-	query :=
-		`
-			SELECT t1.subject_id, t2.object_value, t3.object_value
-			FROM triples AS t1
-			JOIN triples AS t2 ON t1.subject_id = t2.subject_id
-			JOIN triples AS t3 ON t1.subject_id = t3.subject_id
-			WHERE t1.predicate = "typeOf"
-			AND t1.object_id = "Provenance"
-			AND t2.predicate = "name"
-			AND t3.predicate = "url"
-		`
-	// Execute query
-	rows, err := sqlClient.Query(
-		query,
-	)
+	rows, err := sqlClient.GetAllProvenances(ctx)
 	if err != nil {
 		return nil, err
 	}
-	defer rows.Close()
 	// Process the query result
-	for rows.Next() {
-		var id, name, url string
-		err = rows.Scan(&id, &name, &url)
-		if err != nil {
-			return nil, err
-		}
+	for _, row := range rows {
+		var id, name, url = row.ID, row.Name, row.URL
 		result[id] = &pb.Facet{
 			ImportName:    name,
 			ProvenanceUrl: url,

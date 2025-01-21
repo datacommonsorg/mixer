@@ -48,9 +48,6 @@ const (
 
 // SQLClient encapsulates a SQL DB connection.
 type SQLClient struct {
-	// Direct access to the DB will be disabled eventually (by making it private).
-	// It's exposed right now so we can incrementally encapsulate all SQL functionality in the client before disabling it.
-	DB  *sql.DB
 	dbx *sqlx.DB
 }
 
@@ -58,7 +55,6 @@ type SQLClient struct {
 // This method is to workaround the fact that we currently need to maintain the client by value in the store but connections by reference.
 // This method should be removed once the store maintains the client by reference.
 func (sc *SQLClient) UseConnections(src *SQLClient) {
-	sc.DB = src.DB
 	sc.dbx = src.dbx
 }
 
@@ -92,7 +88,6 @@ func NewCloudSQLClient(instanceName string) (*SQLClient, error) {
 
 func newSQLClient(db *sql.DB, driver string) *SQLClient {
 	return &SQLClient{
-		DB:  db,
 		dbx: sqlx.NewDb(db, driver),
 	}
 }

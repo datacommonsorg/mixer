@@ -133,12 +133,12 @@ func NewCache(
 	}
 
 	if options.CacheSQL {
-		sqlProv, err := sqlquery.GetProvenances(store.SQLClient.DB)
+		sqlProv, err := sqlquery.GetProvenances(ctx, &store.SQLClient)
 		if err != nil {
 			return nil, err
 		}
 		c.sqlProvenances = sqlProv
-		sqlExistenceMap, err := sqlquery.EntityVariableExistence(store.SQLClient.DB)
+		sqlExistenceMap, err := sqlquery.EntityVariableExistence(ctx, &store.SQLClient)
 		if err != nil {
 			return nil, err
 		}

@@ -15,15 +15,16 @@
 package sqlquery
 
 import (
-	"database/sql"
+	"context"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/go-test/deep"
 )
 
 func TestGetImportTableData(t *testing.T) {
-	sqlClient, err := sql.Open("sqlite", "../../../test/test_get_import_table_data.db")
+	sqlClient, err := sqldb.NewSQLiteClient("../../../test/test_get_import_table_data.db")
 	if err != nil {
 		t.Fatalf("Could not open testing database: %s", err)
 	}
@@ -47,9 +48,9 @@ func TestGetImportTableData(t *testing.T) {
 			},
 		},
 	} {
-		expect, err := GetImportTableData(sqlClient)
+		expect, err := GetImportTableData(context.Background(), sqlClient)
 		if err != nil {
-			t.Fatalf("Error execute CountObservation(): %s", err)
+			t.Fatalf("Error executing GetImportTableData(): %s", err)
 		}
 		if diff := deep.Equal(c.want, expect); diff != nil {
 			t.Errorf("Unexpected diff %v", diff)

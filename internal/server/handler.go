@@ -319,6 +319,6 @@ func (s *Server) UpdateCache(
 func (s *Server) GetImportTableData(
 	ctx context.Context, in *pb.GetImportTableDataRequest,
 ) (*pb.GetImportTableDataResponse, error) {
-	response, err := sqlquery.GetImportTableData(s.store.SQLClient.DB)
+	response, err := sqlquery.GetImportTableData(ctx, &s.store.SQLClient)
 	return response, err
 }

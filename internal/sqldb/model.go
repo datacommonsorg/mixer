@@ -16,6 +16,7 @@
 package sqldb
 
 import (
+	"encoding/json"
 	"fmt"
 	"strings"
 )
@@ -124,4 +125,50 @@ type ObservationCount struct {
 	Entity   string `db:"entity"`
 	Variable string `db:"variable"`
 	Count    int    `db:"num_obs"`
+}
+
+// EntityVariable represents a row that includes an entity and a variable.
+type EntityVariable struct {
+	Entity   string `db:"entity"`
+	Variable string `db:"variable"`
+}
+
+// ProvenanceInfo represents a row that includes provenance info (id, name, URL).
+type ProvenanceInfo struct {
+	ID   string `db:"provenance_id"`
+	Name string `db:"provenance_name"`
+	URL  string `db:"provenance_url"`
+}
+
+// ImportMetadata represents the metadata column in the imports table.
+type ImportMetadata struct {
+	NumObs  *int32 `json:"numObs"`
+	NumVars *int32 `json:"numVars"`
+}
+
+// Scan implements the sql.Scanner interface for ImportMetadata.
+func (md *ImportMetadata) Scan(src interface{}) error {
+	if src == nil {
+		return nil
+	}
+
+	var data []byte
+
+	switch v := src.(type) {
+	case []byte:
+		data = v
+	case string:
+		data = []byte(v)
+	default:
+		return fmt.Errorf("failed to decode ImportMetadata: type = %T, value = %v", src, src)
+	}
+
+	return json.Unmarshal(data, md)
+}
+
+// ImportInfo represents a row in the imports table
+type ImportInfo struct {
+	ImportedAt string         `db:"imported_at"`
+	Status     string         `db:"status"`
+	Metadata   ImportMetadata `db:"metadata"`
 }
