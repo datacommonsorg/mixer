@@ -451,7 +451,7 @@ func (sc *SpannerClient) GetObservations(ctx context.Context, variables []string
 	return observations, nil
 }
 
-// GetObservations retrieves observations from Spanner given a list of variables and entities.
+// GetObservationsContainedInPlace retrieves observations from Spanner given a list of variables and an entity expression.
 func (sc *SpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
 	var observations []*Observation
 	if len(variables) == 0 || containedInPlace == nil {

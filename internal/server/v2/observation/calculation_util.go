@@ -34,14 +34,14 @@ type intermediateObsResponse struct {
 }
 
 // Given an input ObservationResponse, generate a map of variable -> entities with missing data.
-func findObservationResponseHoles(
+func FindObservationResponseHoles(
 	inputReq *pbv2.ObservationRequest,
 	inputResp *pbv2.ObservationResponse,
-) (map[string]*pbv2.DcidOrExpression, error) {
+) map[string]*pbv2.DcidOrExpression {
 	result := map[string]*pbv2.DcidOrExpression{}
 	// Formula variables are handled by DerivedSeries.
 	if inputReq.Variable.GetFormula() != "" {
-		return result, nil
+		return result
 	}
 	for variable, variableObs := range inputResp.ByVariable {
 		if len(inputReq.Entity.GetDcids()) > 0 {
@@ -60,7 +60,7 @@ func findObservationResponseHoles(
 			}
 		}
 	}
-	return result, nil
+	return result
 }
 
 func compareFacet(facet1, facet2 *pb.Facet) bool {
@@ -284,6 +284,26 @@ func evalBinaryExpr(
 	return nil, fmt.Errorf("invalid binary expr")
 }
 
+func EvalExpr(
+	variableFormula *formula.VariableFormula,
+	inputObs *pbv2.ObservationResponse,
+	equation *Equation,
+) (*pbv2.ObservationResponse, error) {
+	intermediateResp, err := evalExpr(variableFormula.Expr, variableFormula.LeafData, inputObs)
+	if err != nil {
+		return nil, err
+	}
+	if intermediateResp.variableObs == nil {
+		return nil, fmt.Errorf("nil calculation response")
+	}
+
+	calculatedResp, err := formatCalculatedResponse(intermediateResp.variableObs, inputObs.Facets, equation)
+	if err != nil {
+		return nil, err
+	}
+	return calculatedResp, nil
+}
+
 // Recursively iterate through the AST and perform the calculation.
 func evalExpr(
 	node ast.Node,
@@ -326,7 +346,7 @@ func formatCalculatedResponse(
 ) (*pbv2.ObservationResponse, error) {
 	resp := &pbv2.ObservationResponse{
 		ByVariable: map[string]*pbv2.VariableObservation{
-			equation.variable: variableObs,
+			equation.Variable: variableObs,
 		},
 		Facets: map[string]*pb.Facet{},
 	}

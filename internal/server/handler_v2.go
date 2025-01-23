@@ -234,7 +234,7 @@ func (s *Server) V2Observation(
 	}
 	// initialResp is preferred over any calculated response.
 	combinedResp := append([]*pbv2.ObservationResponse{initialResp}, calculatedResps...)
-	return merger.MergeMultipleObservations(combinedResp...), nil
+	return merger.MergeMultiObservation(combinedResp), nil
 }
 
 // V2Sparql implements API for Mixer.V2Sparql.

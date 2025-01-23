@@ -66,7 +66,7 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv2.NodeRequest) (
 	}
 }
 
-// Observation retrieves observation data from Spanner.
+// Observation retrieves observation data from Spanner and .
 func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
 	variables, entities, entityExpr := req.Variable.Dcids, req.Entity.Dcids, req.Entity.Expression
 	date := req.Date

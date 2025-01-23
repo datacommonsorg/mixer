@@ -28,8 +28,8 @@ import (
 )
 
 type Equation struct {
-	variable string
-	formula  string
+	Variable string
+	Formula  string
 }
 
 // Computes a calculation for a variable and entity, based on a formula and input data.
@@ -43,7 +43,7 @@ func Calculate(
 	entity *pbv2.DcidOrExpression,
 	inputReq *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
-	variableFormula, err := formula.NewVariableFormula(equation.formula)
+	variableFormula, err := formula.NewVariableFormula(equation.Formula)
 	if err != nil {
 		return nil, err
 	}
@@ -62,18 +62,7 @@ func Calculate(
 	if err != nil {
 		return nil, err
 	}
-	intermediateResp, err := evalExpr(variableFormula.Expr, variableFormula.LeafData, inputObs)
-	if err != nil {
-		return nil, err
-	}
-	if intermediateResp.variableObs == nil {
-		return nil, fmt.Errorf("nil calculation response")
-	}
-	calculatedResp, err := formatCalculatedResponse(intermediateResp.variableObs, inputObs.Facets, equation)
-	if err != nil {
-		return nil, err
-	}
-	return calculatedResp, nil
+	return EvalExpr(variableFormula, inputObs, equation)
 }
 
 // Detects holes in a V2ObservationResponse and attempts to fill them using calculations.
@@ -87,10 +76,7 @@ func MaybeCalculateHoles(
 	inputResp *pbv2.ObservationResponse,
 ) ([]*pbv2.ObservationResponse, error) {
 	result := []*pbv2.ObservationResponse{}
-	holes, err := findObservationResponseHoles(inputReq, inputResp)
-	if err != nil {
-		return nil, err
-	}
+	holes := FindObservationResponseHoles(inputReq, inputResp)
 	for variable, entity := range holes {
 		formulas, ok := cachedata.SVFormula()[variable]
 		if !ok {

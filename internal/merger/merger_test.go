@@ -672,19 +672,17 @@ func TestMergeObservation(t *testing.T) {
 	}
 }
 
-func TestMergeMultipleObservations(t *testing.T) {
+func TestMergeMultiObservation(t *testing.T) {
 	cmpOpts := cmp.Options{
 		protocmp.Transform(),
 	}
 
 	for _, c := range []struct {
-		o1   *pbv2.ObservationResponse
-		o2   *pbv2.ObservationResponse
-		o3   *pbv2.ObservationResponse
-		want *pbv2.ObservationResponse
+		allResp []*pbv2.ObservationResponse
+		want    *pbv2.ObservationResponse
 	}{
-		{
-			&pbv2.ObservationResponse{
+		{[]*pbv2.ObservationResponse{
+			{
 				ByVariable: map[string]*pbv2.VariableObservation{
 					"var1": {
 						ByEntity: map[string]*pbv2.EntityObservation{
@@ -705,7 +703,7 @@ func TestMergeMultipleObservations(t *testing.T) {
 					},
 				},
 			},
-			&pbv2.ObservationResponse{
+			{
 				ByVariable: map[string]*pbv2.VariableObservation{
 					"var1": {
 						ByEntity: map[string]*pbv2.EntityObservation{
@@ -726,7 +724,7 @@ func TestMergeMultipleObservations(t *testing.T) {
 					},
 				},
 			},
-			&pbv2.ObservationResponse{
+			{
 				ByVariable: map[string]*pbv2.VariableObservation{
 					"var1": {
 						ByEntity: map[string]*pbv2.EntityObservation{
@@ -746,7 +744,7 @@ func TestMergeMultipleObservations(t *testing.T) {
 						},
 					},
 				},
-			},
+			}},
 			&pbv2.ObservationResponse{
 				ByVariable: map[string]*pbv2.VariableObservation{
 					"var1": {
@@ -788,9 +786,9 @@ func TestMergeMultipleObservations(t *testing.T) {
 			},
 		},
 	} {
-		got := MergeMultipleObservations(c.o1, c.o2, c.o3)
+		got := MergeMultiObservation(c.allResp)
 		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
-			t.Errorf("MergeMultipleObservations(%v, %v, %v) got diff: %s", c.o1, c.o2, c.o3, diff)
+			t.Errorf("MergeMultiObservation(%v) got diff: %s", c.allResp, diff)
 		}
 	}
 }
@@ -979,7 +977,6 @@ func TestMergeBulkVariableInfoResponse(t *testing.T) {
 	}
 }
 
-
 func TestMergeSearchStatVarResponse(t *testing.T) {
 	cmpOpts := cmp.Options{protocmp.Transform()}
 	for _, tc := range []struct {
@@ -997,7 +994,7 @@ func TestMergeSearchStatVarResponse(t *testing.T) {
 				},
 				{
 					Name: "sv2",
-					Dcid: "svid2",					
+					Dcid: "svid2",
 				},
 			},
 			Matches: []string{"match1", "match2"},
@@ -1025,7 +1022,7 @@ func TestMergeSearchStatVarResponse(t *testing.T) {
 				},
 				{
 					Name: "sv2",
-					Dcid: "svid2",				
+					Dcid: "svid2",
 				},
 			},
 			Matches: []string{"match1", "match2"},
@@ -1038,7 +1035,7 @@ func TestMergeSearchStatVarResponse(t *testing.T) {
 				},
 				{
 					Name: "sv2",
-					Dcid: "svid2",		
+					Dcid: "svid2",
 				},
 			},
 			Matches: []string{"match1", "match2"},
@@ -1053,7 +1050,7 @@ func TestMergeSearchStatVarResponse(t *testing.T) {
 				},
 				{
 					Name: "sv2",
-					Dcid: "svid2",					
+					Dcid: "svid2",
 				},
 			},
 			Matches: []string{"match1", "match2"},
@@ -1066,7 +1063,7 @@ func TestMergeSearchStatVarResponse(t *testing.T) {
 				},
 				{
 					Name: "sv4",
-					Dcid: "svid4",					
+					Dcid: "svid4",
 				},
 			},
 			Matches: []string{"match1", "match3"},
@@ -1079,7 +1076,7 @@ func TestMergeSearchStatVarResponse(t *testing.T) {
 				},
 				{
 					Name: "sv2",
-					Dcid: "svid2",					
+					Dcid: "svid2",
 				},
 				{
 					Name: "sv3",
@@ -1087,7 +1084,7 @@ func TestMergeSearchStatVarResponse(t *testing.T) {
 				},
 				{
 					Name: "sv4",
-					Dcid: "svid4",					
+					Dcid: "svid4",
 				},
 			},
 			Matches: []string{"match1", "match2", "match3"},

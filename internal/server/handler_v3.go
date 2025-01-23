@@ -19,6 +19,7 @@ import (
 	"context"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/v3/observation"
 )
 
 // V3Node implements API for mixer.V3Node.
@@ -32,7 +33,7 @@ func (s *Server) V3Node(ctx context.Context, in *pbv2.NodeRequest) (
 func (s *Server) V3Observation(ctx context.Context, in *pbv2.ObservationRequest) (
 	*pbv2.ObservationResponse, error,
 ) {
-	return s.dataSources.Observation(ctx, in)
+	return observation.CalculateObservationResponse(ctx, s.dataSources, s.cachedata.Load(), in)
 }
 
 // V3NodeSearch implements API for mixer.V3NodeSearch.
