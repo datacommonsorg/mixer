@@ -52,7 +52,7 @@ func calculate(ctx context.Context, ds *datasources.DataSources, equation *v2obs
 		return nil, err
 	}
 
-	// Evalutate formula using input observations.
+	// Evaluate formula using input observations.
 	return v2obs.EvalExpr(variableFormula, inputObs, equation)
 }
 

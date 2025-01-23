@@ -284,6 +284,7 @@ func evalBinaryExpr(
 	return nil, fmt.Errorf("invalid binary expr")
 }
 
+// Evaluate a calculation given a formula and input observations.
 func EvalExpr(
 	variableFormula *formula.VariableFormula,
 	inputObs *pbv2.ObservationResponse,
