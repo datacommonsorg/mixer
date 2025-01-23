@@ -33,7 +33,6 @@ const (
 )
 
 func TestV3NodeSearch(t *testing.T) {
-	test.EnableSpannerGraph = true
 	// TODO: Remove check once enabled.
 	if !test.EnableSpannerGraph {
 		return
