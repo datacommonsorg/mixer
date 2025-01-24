@@ -286,7 +286,10 @@ func main() {
 	// Processors
 	processors := []*dispatcher.Processor{}
 	if *enableV3 {
-		var calculationProcessor dispatcher.Processor = &observation.CalculationProcessor{}
+		var calculationProcessor dispatcher.Processor = &observation.CalculationProcessor{
+			DataSources: dataSources,
+			CacheData:   c,
+		}
 		processors = append(processors, &calculationProcessor)
 	}
 

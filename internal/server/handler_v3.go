@@ -19,7 +19,6 @@ import (
 	"context"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	"github.com/datacommonsorg/mixer/internal/server/v3/observation"
 )
 
 // V3Node implements API for mixer.V3Node.
