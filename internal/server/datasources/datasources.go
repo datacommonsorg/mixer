@@ -71,6 +71,7 @@ func (ds *DataSources) Observation(ctx context.Context, in *pbv2.ObservationRequ
 	for _, source := range ds.sources {
 		respChan := make(chan *pbv2.ObservationResponse, 1)
 		errGroup.Go(func() error {
+			defer close(respChan)
 			resp, err := (*source).Observation(errCtx, in)
 			if err != nil {
 				return err
@@ -87,7 +88,6 @@ func (ds *DataSources) Observation(ctx context.Context, in *pbv2.ObservationRequ
 
 	allResp := []*pbv2.ObservationResponse{}
 	for _, respChan := range dsRespChan {
-		close(respChan)
 		allResp = append(allResp, <-respChan)
 	}
 
