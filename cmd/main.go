@@ -31,9 +31,11 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
+	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
 	"github.com/datacommonsorg/mixer/internal/server/remote"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
+	"github.com/datacommonsorg/mixer/internal/server/v3/observation"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -278,9 +280,21 @@ func main() {
 		sources = append(sources, &ds)
 	}
 
-	// Create server object
+	// DataSources
 	dataSources := datasources.NewDataSources(sources)
-	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dataSources)
+
+	// Processors
+	processors := []*dispatcher.Processor{}
+	if *enableV3 {
+		var calculationProcessor dispatcher.Processor = &observation.CalculationProcessor{}
+		processors = append(processors, &calculationProcessor)
+	}
+
+	// Dispatcher
+	dispatcher := dispatcher.NewDispatcher(processors, dataSources)
+
+	// Create server object
+	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher)
 	pbs.RegisterMixerServer(srv, mixerServer)
 
 	// Subscribe to branch cache update

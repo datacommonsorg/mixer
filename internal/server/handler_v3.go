@@ -25,26 +25,26 @@ import (
 func (s *Server) V3Node(ctx context.Context, in *pbv2.NodeRequest) (
 	*pbv2.NodeResponse, error,
 ) {
-	return s.dataSources.Node(ctx, in)
+	return s.dispatcher.Node(ctx, in)
 }
 
 // V3Observation implements API for mixer.V3Observation.
 func (s *Server) V3Observation(ctx context.Context, in *pbv2.ObservationRequest) (
 	*pbv2.ObservationResponse, error,
 ) {
-	return s.dataSources.Observation(ctx, in)
+	return s.dispatcher.Observation(ctx, in)
 }
 
 // V3NodeSearch implements API for mixer.V3NodeSearch.
 func (s *Server) V3NodeSearch(ctx context.Context, in *pbv2.NodeSearchRequest) (
 	*pbv2.NodeSearchResponse, error,
 ) {
-	return s.dataSources.NodeSearch(ctx, in)
+	return s.dispatcher.NodeSearch(ctx, in)
 }
 
 // V3Resolve implements API for mixer.V3Resolve.
 func (s *Server) V3Resolve(ctx context.Context, in *pbv2.ResolveRequest) (
 	*pbv2.ResolveResponse, error,
 ) {
-	return s.dataSources.Resolve(ctx, in)
+	return s.dispatcher.Resolve(ctx, in)
 }
