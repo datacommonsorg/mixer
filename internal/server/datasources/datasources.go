@@ -41,6 +41,7 @@ func (ds *DataSources) Node(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.No
 	for _, source := range ds.sources {
 		respChan := make(chan *pbv2.NodeResponse, 1)
 		errGroup.Go(func() error {
+			defer close(respChan)
 			resp, err := (*source).Node(errCtx, in)
 			if err != nil {
 				return err
@@ -57,7 +58,6 @@ func (ds *DataSources) Node(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.No
 
 	allResp := []*pbv2.NodeResponse{}
 	for _, respChan := range dsRespChan {
-		close(respChan)
 		allResp = append(allResp, <-respChan)
 	}
 
