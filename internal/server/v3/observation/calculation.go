@@ -16,11 +16,9 @@ package observation
 
 import (
 	"fmt"
-	"log"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/formula"
@@ -29,8 +27,12 @@ import (
 
 // CalculationProcessor implements the dispatcher.Processor interface for performing calculations.
 type CalculationProcessor struct {
-	DataSources *datasources.DataSources
-	CacheData   *cache.Cache
+	dataSources *datasources.DataSources
+	svFormulas  map[string][]string
+}
+
+func NewCalculationProcessor(dataSources *datasources.DataSources, svFormulas map[string][]string) *CalculationProcessor {
+	return &CalculationProcessor{dataSources: dataSources, svFormulas: svFormulas}
 }
 
 func (processor *CalculationProcessor) PreProcess(rc *dispatcher.RequestContext) error {
@@ -41,19 +43,14 @@ func (processor *CalculationProcessor) PreProcess(rc *dispatcher.RequestContext)
 func (processor *CalculationProcessor) PostProcess(rc *dispatcher.RequestContext) error {
 	switch rc.Type {
 	case dispatcher.TypeObservation:
-		return postProcessObservation(processor, rc)
+		return processor.postProcessObservation(rc)
 	default:
 		return nil
 	}
 }
 
-func postProcessObservation(p *CalculationProcessor, rc *dispatcher.RequestContext) error {
-	if p.CacheData == nil {
-		log.Printf("missing cache in calculation processor")
-		return nil
-	}
-
-	calculatedResp, err := calculateHoles(p, rc)
+func (processor *CalculationProcessor) postProcessObservation(rc *dispatcher.RequestContext) error {
+	calculatedResp, err := processor.calculateHoles(rc)
 	if err != nil {
 		return err
 	}
@@ -64,7 +61,7 @@ func postProcessObservation(p *CalculationProcessor, rc *dispatcher.RequestConte
 }
 
 // calculate computes a calculation for a variable and entity, based on a formula and input data.
-func calculate(p *CalculationProcessor, rc *dispatcher.RequestContext, equation *v2obs.Equation, entity *pbv2.DcidOrExpression) (*pbv2.ObservationResponse, error) {
+func (processor *CalculationProcessor) calculate(rc *dispatcher.RequestContext, equation *v2obs.Equation, entity *pbv2.DcidOrExpression) (*pbv2.ObservationResponse, error) {
 
 	// Parse formula.
 	variableFormula, err := formula.NewVariableFormula(equation.Formula)
@@ -85,7 +82,7 @@ func calculate(p *CalculationProcessor, rc *dispatcher.RequestContext, equation 
 		Filter:   curReq.Filter,
 		Select:   curReq.Select,
 	}
-	inputObs, err := p.DataSources.Observation(rc.Context, newReq)
+	inputObs, err := processor.dataSources.Observation(rc.Context, newReq)
 	if err != nil {
 		return nil, err
 	}
@@ -95,19 +92,19 @@ func calculate(p *CalculationProcessor, rc *dispatcher.RequestContext, equation 
 }
 
 // calculateHoles detects holes in a ObservationResponse and attempts to fill them using calculations.
-func calculateHoles(p *CalculationProcessor, rc *dispatcher.RequestContext) ([]*pbv2.ObservationResponse, error) {
+func (processor *CalculationProcessor) calculateHoles(rc *dispatcher.RequestContext) ([]*pbv2.ObservationResponse, error) {
 	curReq, curResp := rc.CurrentRequest.(*pbv2.ObservationRequest), rc.CurrentResponse.(*pbv2.ObservationResponse)
 	result := []*pbv2.ObservationResponse{}
 
 	holes := v2obs.FindObservationResponseHoles(curReq, curResp)
 	for variable, entity := range holes {
-		formulas, ok := p.CacheData.SVFormula()[variable]
+		formulas, ok := processor.svFormulas[variable]
 		if !ok {
 			continue
 		}
 		currentEntity := entity
 		for _, formula := range formulas {
-			calculatedResp, err := calculate(p, rc, &v2obs.Equation{Variable: variable, Formula: formula}, currentEntity)
+			calculatedResp, err := processor.calculate(rc, &v2obs.Equation{Variable: variable, Formula: formula}, currentEntity)
 			if err != nil {
 				return nil, err
 			}

@@ -208,10 +208,7 @@ func setupInternal(
 	// Processors
 	processors := []*dispatcher.Processor{}
 	if enableV3 {
-		var calculationProcessor dispatcher.Processor = &observation.CalculationProcessor{
-			DataSources: dataSources,
-			CacheData:   c,
-		}
+		var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, c.SVFormula())
 		processors = append(processors, &calculationProcessor)
 	}
 
