@@ -1,88 +1,18 @@
 {
   "nodes": [
     {
-      "name": "Person With Age = 15 Years or More, Income = 35,000 - 49,999 USD, Income Status = With Income, Resident Status",
+      "name": "income",
       "types": [
-        "StatVarGroup"
+        "Property"
       ],
-      "dcid": "dc/g/Person_Age-Years15Onwards_Income-USDollar35000To49999_IncomeStatus-WithIncome_ResidentStatus"
+      "dcid": "income"
     },
     {
-      "name": "Person With Age = 15 Years or More, Income, Income Status = With Income, Resident Status = Different House in Same County",
-      "types": [
-        "StatVarGroup"
-      ],
-      "dcid": "dc/g/Person_Age-Years15Onwards_Income_IncomeStatus-WithIncome_ResidentStatus-DifferentHouseInSameCounty"
-    },
-    {
-      "name": "Person With Income = 15,000 - 24,999 USD, Income Status = With Income",
-      "types": [
-        "StatVarGroup"
-      ],
-      "dcid": "dc/g/Person_Income-USDollar15000To24999_IncomeStatus-WithIncome"
-    },
-    {
-      "name": "Person With Income, Income Status = With Income, Race = Asian Alone",
-      "types": [
-        "StatVarGroup"
-      ],
-      "dcid": "dc/g/Person_Income_IncomeStatus-WithIncome_Race-AsianAlone"
-    },
-    {
-      "name": "Income Distribution Database: Gini (disposable income, post taxes and transfers), Working age population: 18-65, Current definition, New income definition since 2012",
+      "name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), No, No",
       "types": [
         "StatisticalVariable"
       ],
-      "dcid": "oecd/IDD_GINI_WA_CURRENT_METH2012"
-    },
-    {
-      "name": "Income Distribution Database: Age group 41-50: mean disposable income (current prices), Total population, Current definition, Income definition until 2011",
-      "types": [
-        "StatisticalVariable"
-      ],
-      "dcid": "oecd/IDD_INCAC4_TOT_CURRENT_METH2011"
-    },
-    {
-      "name": "Income Distribution Database: Mean disposable income (current prices), Total population, Previous definition - with overlap year, Income definition until 2011",
-      "types": [
-        "StatisticalVariable"
-      ],
-      "dcid": "oecd/IDD_INCCTOTAL_TOT_PREVIOUS_METH2011"
-    },
-    {
-      "name": "Income Distribution Database: Capital income (current prices), Retirement age population: above 65, Previous definition - with overlap year, New income definition since 2012",
-      "types": [
-        "StatisticalVariable"
-      ],
-      "dcid": "oecd/IDD_KICTOTAL_OLD_PREVIOUS_METH2012"
-    },
-    {
-      "name": "Income Distribution Database: P50/P10  disposable income decile ratio, Retirement age population: above 65, Current definition, New income definition since 2012",
-      "types": [
-        "StatisticalVariable"
-      ],
-      "dcid": "oecd/IDD_P50P10_OLD_CURRENT_METH2012"
-    },
-    {
-      "name": "Income Distribution Database: P90/P50  disposable income decile ratio, Retirement age population: above 65, Previous definition - with overlap year, Income definition until 2011",
-      "types": [
-        "StatisticalVariable"
-      ],
-      "dcid": "oecd/IDD_P90P50_OLD_PREVIOUS_METH2011"
-    },
-    {
-      "name": "Income Distribution Database: S80/S20 disposable income quintile share, Retirement age population: above 65, Current definition, New income definition since 2012",
-      "types": [
-        "StatisticalVariable"
-      ],
-      "dcid": "oecd/IDD_S80S20_OLD_CURRENT_METH2012"
-    },
-    {
-      "name": "Income Distribution Database: Income from self-employment and from goods produced for own consumption (current prices), Total population, Current definition, New income definition since 2012",
-      "types": [
-        "StatisticalVariable"
-      ],
-      "dcid": "oecd/IDD_SEICTOTAL_TOT_CURRENT_METH2012"
+      "dcid": "oecd/IMW_1EARNERC2C_2_1_1_1_0_0"
     },
     {
       "name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
@@ -92,6 +22,111 @@
       "dcid": "oecd/IMW_1EARNERC2C_2_1_1_1_0_1"
     },
     {
+      "name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), Yes, No",
+      "types": [
+        "StatisticalVariable"
+      ],
+      "dcid": "oecd/IMW_1EARNERC2C_2_1_1_1_1_0"
+    },
+    {
+      "name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), Yes, Yes",
+      "types": [
+        "StatisticalVariable"
+      ],
+      "dcid": "oecd/IMW_1EARNERC2C_2_1_1_1_1_1"
+    },
+    {
+      "name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, No",
+      "types": [
+        "StatisticalVariable"
+      ],
+      "dcid": "oecd/IMW_1EARNERC2C_2_1_1_0_0_0"
+    },
+    {
+      "name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
+      "types": [
+        "StatisticalVariable"
+      ],
+      "dcid": "oecd/IMW_1EARNERC2C_2_1_1_0_0_1"
+    },
+    {
+      "name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, Yes, No",
+      "types": [
+        "StatisticalVariable"
+      ],
+      "dcid": "oecd/IMW_1EARNERC2C_2_1_1_0_1_0"
+    },
+    {
+      "name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, Yes, Yes",
+      "types": [
+        "StatisticalVariable"
+      ],
+      "dcid": "oecd/IMW_1EARNERC2C_2_1_1_0_1_1"
+    },
+    {
+      "name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, No",
+      "types": [
+        "StatisticalVariable"
+      ],
+      "dcid": "oecd/IMW_1EARNERC2C_2_1_0_1_0_0"
+    },
+    {
+      "name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
+      "types": [
+        "StatisticalVariable"
+      ],
+      "dcid": "oecd/IMW_1EARNERC2C_2_1_0_1_0_1"
+    },
+    {
+      "name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), Yes, No",
+      "types": [
+        "StatisticalVariable"
+      ],
+      "dcid": "oecd/IMW_1EARNERC2C_2_1_0_1_1_0"
+    },
+    {
+      "name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), Yes, Yes",
+      "types": [
+        "StatisticalVariable"
+      ],
+      "dcid": "oecd/IMW_1EARNERC2C_2_1_0_1_1_1"
+    },
+    {
+      "name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Weighted average of minimum wage amounts throughout the calendar year, No, No",
+      "types": [
+        "StatisticalVariable"
+      ],
+      "dcid": "oecd/IMW_1EARNERC2C_2_1_0_0_0_0"
+    },
+    {
+      "name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
+      "types": [
+        "StatisticalVariable"
+      ],
+      "dcid": "oecd/IMW_1EARNERC2C_2_1_0_0_0_1"
+    },
+    {
+      "name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Weighted average of minimum wage amounts throughout the calendar year, Yes, No",
+      "types": [
+        "StatisticalVariable"
+      ],
+      "dcid": "oecd/IMW_1EARNERC2C_2_1_0_0_1_0"
+    },
+    {
+      "name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Weighted average of minimum wage amounts throughout the calendar year, Yes, Yes",
+      "types": [
+        "StatisticalVariable"
+      ],
+      "dcid": "oecd/IMW_1EARNERC2C_2_1_0_0_1_1"
+    },
+    {
+      "name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), No, No",
+      "types": [
+        "StatisticalVariable"
+      ],
+      "dcid": "oecd/IMW_1EARNERC2C_3_1_1_1_0_0"
+    },
+    {
       "name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
       "types": [
         "StatisticalVariable"
@@ -99,46 +134,11 @@
       "dcid": "oecd/IMW_1EARNERC2C_3_1_1_1_0_1"
     },
     {
-      "name": "Incomes of minimum wage earners: Couple without children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
+      "name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), Yes, No",
       "types": [
         "StatisticalVariable"
       ],
-      "dcid": "oecd/IMW_1EARNERC_2_1_1_1_0_1"
-    },
-    {
-      "name": "Incomes of minimum wage earners: Couple without children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
-      "types": [
-        "StatisticalVariable"
-      ],
-      "dcid": "oecd/IMW_1EARNERC_3_1_1_1_0_1"
-    },
-    {
-      "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
-      "types": [
-        "StatisticalVariable"
-      ],
-      "dcid": "oecd/IMW_2EARNERC2C_MIN_3_1_1_0_0_1"
-    },
-    {
-      "name": "Incomes of minimum wage earners: Couple without children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
-      "types": [
-        "StatisticalVariable"
-      ],
-      "dcid": "oecd/IMW_2EARNERC_MIN_3_1_1_0_0_1"
-    },
-    {
-      "name": "Incomes of minimum wage earners: Single person with 2 children, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
-      "types": [
-        "StatisticalVariable"
-      ],
-      "dcid": "oecd/IMW_SINGLE2C_2_1_1_1_0_1"
-    },
-    {
-      "name": "Incomes of minimum wage earners: Single person with 2 children, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
-      "types": [
-        "StatisticalVariable"
-      ],
-      "dcid": "oecd/IMW_SINGLE2C_3_1_1_1_0_1"
+      "dcid": "oecd/IMW_1EARNERC2C_3_1_1_1_1_0"
     }
   ]
 }
