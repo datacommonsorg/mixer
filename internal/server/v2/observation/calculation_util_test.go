@@ -78,13 +78,9 @@ func TestFindObservationResponseHoles(t *testing.T) {
 			},
 		},
 	} {
-		got, err := findObservationResponseHoles(c.inputReq, c.inputResp)
-		if err != nil {
-			t.Errorf("error running TestFindObservationResponseHoles: %s", err)
-			continue
-		}
+		got := FindObservationResponseHoles(c.inputReq, c.inputResp)
 		if ok := reflect.DeepEqual(got, c.want); !ok {
-			t.Errorf("findObservationResponseHoles(%v, %v) = %v, want %v",
+			t.Errorf("FindObservationResponseHoles(%v, %v) = %v, want %v",
 				c.inputReq, c.inputResp, got, c.want)
 		}
 	}

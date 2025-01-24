@@ -170,9 +170,7 @@ func MergeNode(main, aux *pbv2.NodeResponse) (*pbv2.NodeResponse, error) {
 
 // Merges multiple V2 NodeResponses.
 // Assumes the responses are in order of priority.
-func MergeMultiNode(
-	allResp []*pbv2.NodeResponse,
-) (*pbv2.NodeResponse, error) {
+func MergeMultiNode(allResp []*pbv2.NodeResponse) (*pbv2.NodeResponse, error) {
 	if len(allResp) == 0 {
 		return &pbv2.NodeResponse{}, nil
 	}
@@ -272,22 +270,18 @@ func MergeObservation(main, aux *pbv2.ObservationResponse) *pbv2.ObservationResp
 	return main
 }
 
-// MergeMultipleObservations merges multiple V2 observation responses, ranked
-// in order of preference.
-func MergeMultipleObservations(obs ...*pbv2.ObservationResponse) *pbv2.ObservationResponse {
-	if obs == nil {
-		return nil
+// Merges multiple V2 ObservationResponses.
+// Assumes the responses are in order of priority.
+func MergeMultiObservation(allResp []*pbv2.ObservationResponse) *pbv2.ObservationResponse {
+	if len(allResp) == 0 {
+		return &pbv2.ObservationResponse{}
 	}
-	if len(obs) == 0 {
-		return nil
+	prev := allResp[0]
+	for i := 1; i < len(allResp); i++ {
+		cur := MergeObservation(prev, allResp[i])
+		prev = cur
 	}
-	if len(obs) == 1 {
-		return obs[0]
-	}
-	if len(obs) == 2 {
-		return MergeObservation(obs[0], obs[1])
-	}
-	return MergeObservation(obs[0], MergeMultipleObservations(obs[1:]...))
+	return prev
 }
 
 // MergeObservationDates merges two V1 observation-dates responses.

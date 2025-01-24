@@ -175,6 +175,18 @@ func TestV3Observation(t *testing.T) {
 				},
 				goldenFile: "observations_filter.json",
 			},
+			{
+				req: &pbv2.ObservationRequest{
+					Variable: &pbv2.DcidOrExpression{
+						Dcids: []string{"Count_Person_Female"},
+					},
+					Entity: &pbv2.DcidOrExpression{
+						Dcids: []string{"wikidataId/Q613"},
+					},
+					Select: []string{"entity", "variable", "date", "value"},
+				},
+				goldenFile: "observations_calculation.json",
+			},
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V3Observation(ctx, c.req)
@@ -185,7 +197,7 @@ func TestV3Observation(t *testing.T) {
 			if latencyTest {
 				continue
 			}
-			if true {
+			if test.GenerateGolden {
 				test.UpdateGolden(resp, goldenPath, goldenFile)
 				continue
 			}
@@ -202,7 +214,7 @@ func TestV3Observation(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"Testv2Observation",
-		&test.TestOption{UseSQLite: true, UseSpannerGraph: true, EnableV3: true},
+		&test.TestOption{UseSQLite: true, UseSpannerGraph: true, EnableV3: true, CacheSVFormula: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() for Testv2Observation = %s", err)

@@ -41,6 +41,7 @@ func (ds *DataSources) Node(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.No
 	for _, source := range ds.sources {
 		respChan := make(chan *pbv2.NodeResponse, 1)
 		errGroup.Go(func() error {
+			defer close(respChan)
 			resp, err := (*source).Node(errCtx, in)
 			if err != nil {
 				return err
@@ -57,7 +58,6 @@ func (ds *DataSources) Node(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.No
 
 	allResp := []*pbv2.NodeResponse{}
 	for _, respChan := range dsRespChan {
-		close(respChan)
 		allResp = append(allResp, <-respChan)
 	}
 
@@ -65,12 +65,33 @@ func (ds *DataSources) Node(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.No
 }
 
 func (ds *DataSources) Observation(ctx context.Context, in *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
-	if len(ds.sources) == 0 {
-		return nil, fmt.Errorf("no sources found")
+	errGroup, errCtx := errgroup.WithContext(ctx)
+	dsRespChan := []chan *pbv2.ObservationResponse{}
+
+	for _, source := range ds.sources {
+		respChan := make(chan *pbv2.ObservationResponse, 1)
+		errGroup.Go(func() error {
+			defer close(respChan)
+			resp, err := (*source).Observation(errCtx, in)
+			if err != nil {
+				return err
+			}
+			respChan <- resp
+			return nil
+		})
+		dsRespChan = append(dsRespChan, respChan)
 	}
-	// Returning only the first one right now.
-	// TODO: Execute in parallel and returned merged response.
-	return (*ds.sources[0]).Observation(ctx, in)
+
+	if err := errGroup.Wait(); err != nil {
+		return nil, err
+	}
+
+	allResp := []*pbv2.ObservationResponse{}
+	for _, respChan := range dsRespChan {
+		allResp = append(allResp, <-respChan)
+	}
+
+	return merger.MergeMultiObservation(allResp), nil
 }
 
 func (ds *DataSources) NodeSearch(ctx context.Context, in *pbv2.NodeSearchRequest) (*pbv2.NodeSearchResponse, error) {
