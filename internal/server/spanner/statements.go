@@ -31,6 +31,8 @@ var statements = struct {
 	getEdgesByObjectID string
 	// Fetch Edges for in arcs with chaining
 	getChainedEdgesByObjectID string
+	// Fetch Neighbors for out arcs
+	getNeighborsBySubjectID string
 	// Subquery to filter edges by predicate
 	filterProps string
 	// Subquery to filter edges by object property-values
@@ -182,6 +184,26 @@ var statements = struct {
 			predicate,
 			object_id
 		`, MAX_HOPS),
+	getNeighborsBySubjectID: fmt.Sprintf(`
+		GRAPH DCGraph MATCH (m:Node
+		WHERE 
+			m.subject_id IN UNNEST(@ids))-[e:Edge
+		WHERE
+			e.predicate = 'specializationOf']->{1,%[1]d}(n:Node)
+		WHERE
+			m != n
+			AND e[ARRAY_LENGTH(e)-1].object_id = 'dc/g/Root'
+		LET paths = ARRAY_TO_STRING(ARRAY(
+			SELECT 
+				e.object_ID 
+			FROM 
+				UNNEST(ARRAY_SLICE(e, 0, -2)) AS e), '%[2]s')
+		RETURN
+			m.subject_id,
+			SPLIT(MIN(paths), '%[2]s') AS neighbors
+		GROUP BY
+			m.subject_id
+	`, MAX_HOPS, CKEY),
 	filterProps: `
 		AND e.predicate IN UNNEST(@props)
 	`,

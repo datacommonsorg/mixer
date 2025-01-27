@@ -41,6 +41,12 @@ type Edge struct {
 	Types       []string `spanner:"types"`
 }
 
+// Neighbor struct represents a path of neighbors for a node.
+type Neighbor struct {
+	SubjectID string   `spanner:"subject_id"`
+	Neighbors []string `spanner:"neighbors"`
+}
+
 // Observation struct represents a single row in the Observation table.
 type Observation struct {
 	VariableMeasured  string     `spanner:"variable_measured"`

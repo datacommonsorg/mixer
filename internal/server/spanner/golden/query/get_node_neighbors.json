@@ -1,0 +1,12 @@
+{
+  "dc/g/Farm_FarmInventoryStatus-InventorySold_FarmInventoryType": [
+    "dc/g/Farm_FarmInventoryStatus-InventorySold",
+    "dc/g/Farm_FarmInventoryStatus",
+    "dc/g/Farm",
+    "dc/g/Agriculture"
+  ],
+  "dc/g/Person_BachelorsDegreeMajor-BusinessMajor": [
+    "dc/g/Person_BachelorsDegreeMajor",
+    "dc/g/Education"
+  ]
+}

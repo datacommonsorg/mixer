@@ -22,6 +22,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
+	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/util"
 
 	"google.golang.org/protobuf/proto"
@@ -34,6 +35,12 @@ const (
 	CHAIN = "+"
 	// Used for Facet responses with an entity expression.
 	ENTITY_PLACEHOLDER = ""
+	// specializationOf single property.
+	SPECIALIZATION_OF = "specializationOf"
+	// StatVarGroup value.
+	STAT_VAR_GROUP = "StatVarGroup"
+	// typeOf property.
+	TYPE_OF = "typeOf"
 )
 
 // Select options for Observation.
@@ -117,6 +124,38 @@ func nodeEdgesToLinkedGraph(edges []*Edge) *pbv2.LinkedGraph {
 	}
 
 	return linkedGraph
+}
+
+func isNodeNeighborRequest(arc *v2.Arc) bool {
+	// Currently only supports properties of the form ->specializationOf+{typeOf:StatVarGroup}.
+	if !arc.Out || arc.SingleProp != SPECIALIZATION_OF || arc.Decorator != CHAIN || len(arc.Filter) != 1 {
+		return false
+	}
+	if val, ok := arc.Filter[TYPE_OF]; ok {
+		return len(val) == 1 && val[0] == STAT_VAR_GROUP
+	}
+	return false
+}
+
+func nodeNeighborsToNodeResponse(neighbors map[string][]string) *pbv2.NodeResponse {
+	nodeResponse := &pbv2.NodeResponse{
+		Data: make(map[string]*pbv2.LinkedGraph),
+	}
+
+	for node, neighborList := range neighbors {
+		nodeResponse.Data[node] = &pbv2.LinkedGraph{
+			Neighbor: map[string]*pbv2.LinkedGraph{},
+		}
+		g := nodeResponse.Data[node]
+		for _, neighbor := range neighborList {
+			g.Neighbor[neighbor] = &pbv2.LinkedGraph{
+				Neighbor: map[string]*pbv2.LinkedGraph{},
+			}
+			g = g.Neighbor[neighbor]
+		}
+	}
+
+	return nodeResponse
 }
 
 func selectFieldsToQueryOptions(selectFields []string) queryOptions {

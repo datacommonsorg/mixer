@@ -51,6 +51,18 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv2.NodeRequest) (
 	}
 	arc := arcs[0]
 
+	// Certain requests utilize neighbors in the response so are handled differently.
+	// This is to match the behavior of V2 Node, which reads these from the Mixer cache.
+	// TODO: Unify V2 Node clients to use arcs, since these queries are now supported in Spanner.
+	// All other chaining queries should use the normal arc syntax.
+	if isNodeNeighborRequest(arc) {
+		neighbors, err := sds.client.GetNodeNeighbors(ctx, req.Nodes)
+		if err != nil {
+			return nil, fmt.Errorf("error getting node neighbors: %v", err)
+		}
+		return nodeNeighborsToNodeResponse(neighbors), nil
+	}
+
 	if arc.SingleProp == "" && len(arc.BracketProps) == 0 {
 		props, err := sds.client.GetNodeProps(ctx, req.Nodes, arc.Out)
 		if err != nil {

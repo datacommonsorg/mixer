@@ -231,6 +231,58 @@ func TestGetNodeEdgesByID(t *testing.T) {
 		}
 	}
 }
+
+func TestGetNodeNeighbors(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+	ctx := context.Background()
+	_, filename, _, _ := runtime.Caller(0)
+	goldenDir := path.Join(path.Dir(filename), "query")
+
+	for _, c := range []struct {
+		ids        []string
+		goldenFile string
+	}{
+		{
+			ids: []string{
+				"dc/g/Farm_FarmInventoryStatus-InventorySold_FarmInventoryType",
+				"dc/g/Person_BachelorsDegreeMajor-BusinessMajor",
+			},
+			goldenFile: "get_node_neighbors.json",
+		},
+	} {
+		actual, err := client.GetNodeNeighbors(ctx, c.ids)
+		if err != nil {
+			t.Fatalf("GetNodeNeighbors error (%v): %v", c.goldenFile, err)
+		}
+
+		got, err := test.StructToJSON(actual)
+		if err != nil {
+			t.Fatalf("StructToJSON error (%v): %v", c.goldenFile, err)
+		}
+
+		if test.GenerateGolden {
+			err = test.WriteGolden(got, goldenDir, c.goldenFile)
+			if err != nil {
+				t.Fatalf("WriteGolden error (%v): %v", c.goldenFile, err)
+			}
+			return
+		}
+
+		want, err := test.ReadGolden(goldenDir, c.goldenFile)
+		if err != nil {
+			t.Fatalf("ReadGolden error (%v): %v", c.goldenFile, err)
+		}
+
+		if diff := cmp.Diff(want, got); diff != "" {
+			t.Errorf("%v payload mismatch (-want +got):\n%s", c.goldenFile, diff)
+		}
+	}
+}
 func TestGetObservations(t *testing.T) {
 	client := test.NewSpannerClient()
 	if client == nil {

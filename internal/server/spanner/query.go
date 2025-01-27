@@ -28,6 +28,8 @@ import (
 const (
 	// Maximum number of edge hops to traverse for chained properties.
 	MAX_HOPS = 10
+	// Connector for keys.
+	CKEY = "^"
 )
 
 // GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction and returns a map.
@@ -153,6 +155,42 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 	}
 
 	return edges, nil
+}
+
+// GetNodeNeighbors retrieves neighbors from Spanner for a list of IDs and returns a map of ID to neighbors.
+// This is currently only used for a single case in V2.
+func (sc *SpannerClient) GetNodeNeighbors(ctx context.Context, ids []string) (map[string][]string, error) {
+	neighbors := make(map[string][]string)
+	if len(ids) == 0 {
+		return neighbors, nil
+	}
+	for _, id := range ids {
+		neighbors[id] = []string{}
+	}
+
+	stmt := spanner.Statement{
+		SQL: statements.getNeighborsBySubjectID,
+		Params: map[string]interface{}{
+			"ids": ids,
+		},
+	}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		func() interface{} {
+			return &Neighbor{}
+		},
+		func(rowStruct interface{}) {
+			neighbor := rowStruct.(*Neighbor)
+			neighbors[neighbor.SubjectID] = neighbor.Neighbors
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return neighbors, nil
 }
 
 // GetObservations retrieves observations from Spanner given a list of variables and entities.

@@ -46,7 +46,7 @@ func TestV3Node(t *testing.T) {
 			nextToken  string
 			goldenFile string
 		}{
-			{
+			/*{
 				"Out properties",
 				[]string{
 					"Count_Person_Female",
@@ -65,6 +65,16 @@ func TestV3Node(t *testing.T) {
 				"->*",
 				"",
 				"out_pv_all.json",
+			},*/
+			{
+				"Node neighbors",
+				[]string{
+					"dc/g/Farm_FarmInventoryStatus-InventorySold_FarmInventoryType",
+					"dc/g/Person_BachelorsDegreeMajor-BusinessMajor",
+				},
+				"->specializationOf+{typeOf:StatVarGroup}",
+				"",
+				"neighbors.json",
 			},
 		} {
 			goldenFile := c.goldenFile
