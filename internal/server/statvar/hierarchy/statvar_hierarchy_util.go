@@ -32,9 +32,11 @@ import (
 const (
 	// SvgRoot is the root stat var group of the hierarchy. It's a virtual entity
 	// that links to the top level category stat var groups.
-	SvgRoot         = "dc/g/Root"
-	CustomSvgRoot   = "dc/g/Custom_Root"
-	CustomSVGPrefix = "dc/g/Custom_"
+	SvgRoot          = "dc/g/Root"
+	CustomSvgRoot    = "dc/g/Custom_Root"
+	CustomSVGPrefix  = "dc/g/Custom_"
+	SpecializationOf = "specializationOf"
+	StatVarGroup     = "StatVarGroup"
 )
 
 // Note this function modifies validSVG inside.
@@ -314,4 +316,45 @@ func MergeSVGNodes(node1, node2 *pb.StatVarGroupNode) {
 			node1SVs[childSV.GetId()] = true
 		}
 	}
+}
+
+// GetSVGAncestors returns EntityInfo of SVG ancestors for an SVG from the Mixer cache.
+// The EntityInfo does not contain names, which are not stored in the cache.
+func GetSVGAncestors(node string, parentSvgs map[string][]string) []*pb.EntityInfo {
+	ancestors := []string{}
+	visited := map[string]bool{}
+
+	q, newQ := []string{node}, []string{}
+	for {
+		if len(q) == 0 {
+			break
+		}
+		for _, id := range q {
+			parents, ok := parentSvgs[id]
+			if !ok {
+				continue
+			}
+			for _, parent := range parents {
+				if _, ok := visited[parent]; ok {
+					continue
+				}
+				ancestors = append(ancestors, parent)
+				visited[parent] = true
+				newQ = append(newQ, parent)
+			}
+		}
+		q = newQ
+		newQ = []string{}
+	}
+
+	result := []*pb.EntityInfo{}
+	sort.Strings(ancestors)
+	for _, ancestor := range ancestors {
+		result = append(result, &pb.EntityInfo{
+			Dcid:  ancestor,
+			Types: []string{StatVarGroup},
+		})
+	}
+
+	return result
 }

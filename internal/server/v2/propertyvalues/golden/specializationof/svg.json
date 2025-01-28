@@ -1,28 +1,66 @@
 {
   "data": {
     "dc/g/Farm_FarmInventoryStatus-InventorySold_FarmInventoryType": {
-      "neighbor": {
-        "dc/g/Farm_FarmInventoryStatus-InventorySold": {
-          "neighbor": {
-            "dc/g/Farm_FarmInventoryStatus": {
-              "neighbor": {
-                "dc/g/Farm": {
-                  "neighbor": {
-                    "dc/g/Agriculture": {}
-                  }
-                }
-              }
+      "arcs": {
+        "specializationOf+": {
+          "nodes": [
+            {
+              "types": [
+                "StatVarGroup"
+              ],
+              "dcid": "dc/g/Agriculture"
+            },
+            {
+              "types": [
+                "StatVarGroup"
+              ],
+              "dcid": "dc/g/Farm"
+            },
+            {
+              "types": [
+                "StatVarGroup"
+              ],
+              "dcid": "dc/g/Farm_FarmInventoryStatus"
+            },
+            {
+              "types": [
+                "StatVarGroup"
+              ],
+              "dcid": "dc/g/Farm_FarmInventoryStatus-InventorySold"
+            },
+            {
+              "types": [
+                "StatVarGroup"
+              ],
+              "dcid": "dc/g/Root"
             }
-          }
+          ]
         }
       }
     },
     "dc/g/Person_BachelorsDegreeMajor-BusinessMajor": {
-      "neighbor": {
-        "dc/g/Person_BachelorsDegreeMajor": {
-          "neighbor": {
-            "dc/g/Education": {}
-          }
+      "arcs": {
+        "specializationOf+": {
+          "nodes": [
+            {
+              "types": [
+                "StatVarGroup"
+              ],
+              "dcid": "dc/g/Education"
+            },
+            {
+              "types": [
+                "StatVarGroup"
+              ],
+              "dcid": "dc/g/Person_BachelorsDegreeMajor"
+            },
+            {
+              "types": [
+                "StatVarGroup"
+              ],
+              "dcid": "dc/g/Root"
+            }
+          ]
         }
       }
     }
