@@ -46,7 +46,7 @@ func TestV3Node(t *testing.T) {
 			nextToken  string
 			goldenFile string
 		}{
-			/*{
+			{
 				"Out properties",
 				[]string{
 					"Count_Person_Female",
@@ -65,7 +65,7 @@ func TestV3Node(t *testing.T) {
 				"->*",
 				"",
 				"out_pv_all.json",
-			},*/
+			},
 			{
 				"Node neighbors",
 				[]string{
