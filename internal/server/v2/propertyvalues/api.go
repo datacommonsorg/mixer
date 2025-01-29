@@ -35,6 +35,10 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
+const (
+	CHAIN = "+"
+)
+
 // PropertyValues is the V2 property values API implementation entry point.
 func PropertyValues(
 	ctx context.Context,
@@ -193,40 +197,24 @@ func LinkedPropertyValues(
 			}
 			res.Data[node] = &pbv2.LinkedGraph{
 				Arcs: map[string]*pbv2.Nodes{
-					"containedInPlace+": {Nodes: list},
+					"containedInPlace" + CHAIN: {Nodes: list},
 				},
 			}
 		}
 		return res, nil
-	} else if linkedProperty == "specializationOf" &&
+	} else if linkedProperty == hierarchy.SpecializationOf &&
 		direction == util.DirectionOut &&
-		typeOfFilter == "StatVarGroup" {
+		typeOfFilter == hierarchy.StatVarGroup {
 		res := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{}}
+		parentSvgs := cachedata.ParentSvgs()
 		for _, node := range nodes {
-			res.Data[node] = &pbv2.LinkedGraph{
-				Neighbor: map[string]*pbv2.LinkedGraph{},
-			}
-			g := res.Data[node]
-			curr := node
-			for {
-				if parents, ok := cachedata.ParentSvgs()[curr]; ok {
-					curr = parents[0]
-					for _, parent := range parents {
-						// Prefer parent from custom import group
-						if strings.HasPrefix(parent, "dc/g/Custom_") {
-							curr = parent
-							break
-						}
-					}
-					if curr == hierarchy.SvgRoot {
-						break
-					}
-					g.Neighbor[curr] = &pbv2.LinkedGraph{
-						Neighbor: map[string]*pbv2.LinkedGraph{},
-					}
-					g = g.Neighbor[curr]
-				} else {
-					break
+			res.Data[node] = &pbv2.LinkedGraph{}
+			ancestors := hierarchy.GetSVGAncestors(node, parentSvgs)
+			if len(ancestors) > 0 {
+				res.Data[node].Arcs = map[string]*pbv2.Nodes{
+					hierarchy.SpecializationOf + CHAIN: {
+						Nodes: ancestors,
+					},
 				}
 			}
 		}

@@ -27,10 +27,11 @@ message Nodes {
 message LinkedGraph {
   // Keyed by property, with values being a list of nodes
   map<string, Nodes> arcs = 1;
-  // Keyed by property, with values being another LinkedGraph
-  map<string, LinkedGraph> neighbor = 2;
   // Only set when querying for properties only, with "[nodes]->" or "[nodes]<-".
   repeated string properties = 3;
+
+  // Deprecated neighbor field.
+  reserved 2;
 }
 
 message NodeRequest {
