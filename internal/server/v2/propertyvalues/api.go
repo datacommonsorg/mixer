@@ -35,6 +35,10 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
+const (
+	CHAIN = "+"
+)
+
 // PropertyValues is the V2 property values API implementation entry point.
 func PropertyValues(
 	ctx context.Context,
@@ -193,7 +197,7 @@ func LinkedPropertyValues(
 			}
 			res.Data[node] = &pbv2.LinkedGraph{
 				Arcs: map[string]*pbv2.Nodes{
-					"containedInPlace+": {Nodes: list},
+					"containedInPlace" + CHAIN: {Nodes: list},
 				},
 			}
 		}
@@ -208,7 +212,7 @@ func LinkedPropertyValues(
 			ancestors := hierarchy.GetSVGAncestors(node, parentSvgs)
 			if len(ancestors) > 0 {
 				res.Data[node].Arcs = map[string]*pbv2.Nodes{
-					hierarchy.SpecializationOf + "+": {
+					hierarchy.SpecializationOf + CHAIN: {
 						Nodes: ancestors,
 					},
 				}

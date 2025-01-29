@@ -30,6 +30,7 @@ message LinkedGraph {
   // Only set when querying for properties only, with "[nodes]->" or "[nodes]<-".
   repeated string properties = 3;
 
+  // Deprecated neighbor field.
   reserved 2;
 }
 

@@ -321,7 +321,7 @@ func MergeSVGNodes(node1, node2 *pb.StatVarGroupNode) {
 // GetSVGAncestors returns EntityInfo of SVG ancestors for an SVG from the Mixer cache.
 // The EntityInfo does not contain names, which are not stored in the cache.
 func GetSVGAncestors(node string, parentSvgs map[string][]string) []*pb.EntityInfo {
-	ancestors := []string{}
+	ancestors := []*pb.EntityInfo{}
 	visited := map[string]bool{}
 
 	q, newQ := []string{node}, []string{}
@@ -338,7 +338,10 @@ func GetSVGAncestors(node string, parentSvgs map[string][]string) []*pb.EntityIn
 				if _, ok := visited[parent]; ok {
 					continue
 				}
-				ancestors = append(ancestors, parent)
+				ancestors = append(ancestors, &pb.EntityInfo{
+					Dcid:  parent,
+					Types: []string{StatVarGroup},
+				})
 				visited[parent] = true
 				newQ = append(newQ, parent)
 			}
@@ -347,14 +350,8 @@ func GetSVGAncestors(node string, parentSvgs map[string][]string) []*pb.EntityIn
 		newQ = []string{}
 	}
 
-	result := []*pb.EntityInfo{}
-	sort.Strings(ancestors)
-	for _, ancestor := range ancestors {
-		result = append(result, &pb.EntityInfo{
-			Dcid:  ancestor,
-			Types: []string{StatVarGroup},
-		})
-	}
-
-	return result
+	sort.Slice(ancestors, func(i, j int) bool {
+		return ancestors[i].Dcid < ancestors[j].Dcid
+	})
+	return ancestors
 }
