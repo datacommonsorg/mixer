@@ -1981,10 +1981,11 @@
             "2017": 325122128,
             "2018": 326838199,
             "2019": 328329953,
-            "2020": 329484123,
-            "2021": 332048977,
+            "2020": 331526933,
+            "2021": 331893745,
             "2022": 333271411,
-            "2023": 334914895
+            "2023": 334914895,
+            "2024": 340110988
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
@@ -5029,8 +5030,8 @@
       }
     },
     "country/USA": {
-      "date": "2023",
-      "value": 334914895,
+      "date": "2024",
+      "value": 340110988,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",

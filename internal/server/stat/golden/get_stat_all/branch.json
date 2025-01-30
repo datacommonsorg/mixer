@@ -4186,7 +4186,8 @@
                 "2024-08": 5.9,
                 "2024-09": 5.3,
                 "2024-10": 5.4,
-                "2024-11": 5.3
+                "2024-11": 5.3,
+                "2024-12": 5.2
               },
               "measurementMethod": "BLSSeasonallyUnadjusted",
               "observationPeriod": "P1M",
@@ -4839,7 +4840,8 @@
                 "2024-08": 5.3,
                 "2024-09": 5.3,
                 "2024-10": 5.4,
-                "2024-11": 5.4
+                "2024-11": 5.4,
+                "2024-12": 5.5
               },
               "measurementMethod": "BLSSeasonallyAdjusted",
               "observationPeriod": "P1M",

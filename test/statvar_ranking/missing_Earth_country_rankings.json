@@ -1,1 +1,960 @@
-null
+[
+  {
+    "title": "Air quality index",
+    "statsVars": [
+      "AirQualityIndex_AirPollutant"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Annual greenhouse gas emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_GreenhouseGas_NonBiogenic"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Arson",
+    "statsVars": [
+      "Count_CriminalActivities_Arson"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_CriminalActivities_Arson"
+      ]
+    }
+  },
+  {
+    "title": "COVID-19 cumulative cases",
+    "statsVars": [
+      "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "CumulativeCount_MedicalConditionIncident_COVID_19_ConfirmedOrProbableCase"
+      ]
+    }
+  },
+  {
+    "title": "Carbon dioxide emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_CarbonDioxide_NonBiogenic"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Citizenship status",
+    "statsVars": [
+      "Count_Person_USCitizenBornInTheUnitedStates",
+      "Count_Person_USCitizenByNaturalization",
+      "Count_Person_NotAUSCitizen",
+      "Count_Person_USCitizenBornAbroadOfAmericanParents"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_USCitizenBornInTheUnitedStates",
+        "Count_Person_USCitizenByNaturalization",
+        "Count_Person_NotAUSCitizen",
+        "Count_Person_USCitizenBornAbroadOfAmericanParents"
+      ]
+    }
+  },
+  {
+    "title": "Earthquakes",
+    "statsVars": [
+      "Count_EarthquakeEvent"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Education attainment",
+    "statsVars": [
+      "Count_Person_EducationalAttainmentNoSchoolingCompleted",
+      "Count_Person_EducationalAttainmentRegularHighSchoolDiploma",
+      "Count_Person_EducationalAttainmentBachelorsDegree",
+      "Count_Person_EducationalAttainmentMastersDegree",
+      "Count_Person_EducationalAttainmentDoctorateDegree"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_EducationalAttainmentNoSchoolingCompleted",
+        "Count_Person_EducationalAttainmentRegularHighSchoolDiploma",
+        "Count_Person_EducationalAttainmentBachelorsDegree",
+        "Count_Person_EducationalAttainmentMastersDegree",
+        "Count_Person_EducationalAttainmentDoctorateDegree"
+      ]
+    }
+  },
+  {
+    "title": "Electricity price",
+    "statsVars": [
+      "Annual_Average_RetailPrice_Electricity"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Government debt",
+    "statsVars": [
+      "Amount_Debt_Government"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Amount_Debt_Government"
+      ]
+    }
+  },
+  {
+    "title": "Hate crime motivated by disability",
+    "statsVars": [
+      "Count_CriminalIncidents_BiasMotivationDisabilityStatus_IsHateCrime"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_CriminalIncidents_BiasMotivationDisabilityStatus_IsHateCrime"
+      ]
+    }
+  },
+  {
+    "title": "Hate crime motivated by ethnicity",
+    "statsVars": [
+      "Count_CriminalIncidents_BiasMotivationEthnicity_IsHateCrime"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_CriminalIncidents_BiasMotivationEthnicity_IsHateCrime"
+      ]
+    }
+  },
+  {
+    "title": "Hate crime motivated by gender",
+    "statsVars": [
+      "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_CriminalIncidents_BiasMotivationGender_IsHateCrime"
+      ]
+    }
+  },
+  {
+    "title": "Hate crime motivated by race",
+    "statsVars": [
+      "Count_CriminalIncidents_BiasMotivationRace_IsHateCrime"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_CriminalIncidents_BiasMotivationRace_IsHateCrime"
+      ]
+    }
+  },
+  {
+    "title": "Hate crime motivated by religion",
+    "statsVars": [
+      "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime"
+      ]
+    }
+  },
+  {
+    "title": "Hate crime motivated by sexual orientation",
+    "statsVars": [
+      "Count_CriminalIncidents_BiasMotivationSexualOrientation_IsHateCrime"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_CriminalIncidents_BiasMotivationSexualOrientation_IsHateCrime"
+      ]
+    }
+  },
+  {
+    "title": "Hate crime",
+    "statsVars": [
+      "Count_CriminalIncidents_IsHateCrime"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_CriminalIncidents_IsHateCrime"
+      ]
+    }
+  },
+  {
+    "title": "Health behaviors",
+    "statsVars": [
+      "Percent_Person_SleepLessThan7Hours",
+      "Percent_Person_Obesity",
+      "Percent_Person_BingeDrinking",
+      "Percent_Person_PhysicalInactivity",
+      "Percent_Person_Smoking"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Health outcomes",
+    "statsVars": [
+      "Percent_Person_WithHighCholesterol",
+      "Percent_Person_WithHighBloodPressure",
+      "Percent_Person_WithArthritis",
+      "Percent_Person_WithMentalHealthNotGood",
+      "Percent_Person_WithPhysicalHealthNotGood"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Household income",
+    "statsVars": [
+      "Count_Household_IncomeOfUpto10000USDollar",
+      "Count_Household_IncomeOf10000To14999USDollar",
+      "Count_Household_IncomeOf20000To24999USDollar",
+      "Count_Household_IncomeOf40000To44999USDollar",
+      "Count_Household_IncomeOf50000To59999USDollar",
+      "Count_Household_IncomeOf60000To74999USDollar",
+      "Count_Household_IncomeOf75000To99999USDollar",
+      "Count_Household_IncomeOf100000To124999USDollar",
+      "Count_Household_IncomeOf125000To149999USDollar",
+      "Count_Household_IncomeOf150000To199999USDollar",
+      "Count_Household_IncomeOf200000OrMoreUSDollar"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Household_IncomeOfUpto10000USDollar",
+        "Count_Household_IncomeOf10000To14999USDollar",
+        "Count_Household_IncomeOf20000To24999USDollar",
+        "Count_Household_IncomeOf40000To44999USDollar",
+        "Count_Household_IncomeOf50000To59999USDollar",
+        "Count_Household_IncomeOf60000To74999USDollar",
+        "Count_Household_IncomeOf75000To99999USDollar",
+        "Count_Household_IncomeOf100000To124999USDollar",
+        "Count_Household_IncomeOf125000To149999USDollar",
+        "Count_Household_IncomeOf150000To199999USDollar",
+        "Count_Household_IncomeOf200000OrMoreUSDollar"
+      ]
+    }
+  },
+  {
+    "title": "Housing units by date built",
+    "statsVars": [
+      "Count_HousingUnit_Before1939DateBuilt",
+      "Count_HousingUnit_1940To1949DateBuilt",
+      "Count_HousingUnit_1950To1959DateBuilt",
+      "Count_HousingUnit_1960To1969DateBuilt",
+      "Count_HousingUnit_1970To1979DateBuilt",
+      "Count_HousingUnit_1980To1989DateBuilt",
+      "Count_HousingUnit_1990To1999DateBuilt",
+      "Count_HousingUnit_2000To2009DateBuilt",
+      "Count_HousingUnit_2010OrLaterDateBuilt"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_HousingUnit_Before1939DateBuilt",
+        "Count_HousingUnit_1940To1949DateBuilt",
+        "Count_HousingUnit_1950To1959DateBuilt",
+        "Count_HousingUnit_1960To1969DateBuilt",
+        "Count_HousingUnit_1970To1979DateBuilt",
+        "Count_HousingUnit_1980To1989DateBuilt",
+        "Count_HousingUnit_1990To1999DateBuilt",
+        "Count_HousingUnit_2000To2009DateBuilt",
+        "Count_HousingUnit_2010OrLaterDateBuilt"
+      ]
+    }
+  },
+  {
+    "title": "Housing units by householder race",
+    "statsVars": [
+      "Count_HousingUnit_HouseholderRaceAmericanIndianOrAlaskaNativeAlone",
+      "Count_HousingUnit_HouseholderRaceAsianAlone",
+      "Count_HousingUnit_HouseholderRaceBlackOrAfricanAmericanAlone",
+      "Count_HousingUnit_HouseholderRaceHispanicOrLatino",
+      "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone",
+      "Count_HousingUnit_HouseholderRaceSomeOtherRaceAlone",
+      "Count_HousingUnit_HouseholderRaceTwoOrMoreRaces",
+      "Count_HousingUnit_HouseholderRaceWhiteAlone"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_HousingUnit_HouseholderRaceAmericanIndianOrAlaskaNativeAlone",
+        "Count_HousingUnit_HouseholderRaceAsianAlone",
+        "Count_HousingUnit_HouseholderRaceBlackOrAfricanAmericanAlone",
+        "Count_HousingUnit_HouseholderRaceHispanicOrLatino",
+        "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone",
+        "Count_HousingUnit_HouseholderRaceSomeOtherRaceAlone",
+        "Count_HousingUnit_HouseholderRaceTwoOrMoreRaces",
+        "Count_HousingUnit_HouseholderRaceWhiteAlone"
+      ]
+    }
+  },
+  {
+    "title": "Housing units by price",
+    "statsVars": [
+      "Count_HousingUnit_HomeValueUpto10000USDollar",
+      "Count_HousingUnit_HomeValue10000To14999USDollar",
+      "Count_HousingUnit_HomeValue15000To19999USDollar",
+      "Count_HousingUnit_HomeValue20000To24999USDollar",
+      "Count_HousingUnit_HomeValue25000To29999USDollar",
+      "Count_HousingUnit_HomeValue30000To34999USDollar",
+      "Count_HousingUnit_HomeValue35000To39999USDollar",
+      "Count_HousingUnit_HomeValue40000To49999USDollar",
+      "Count_HousingUnit_HomeValue50000To59999USDollar",
+      "Count_HousingUnit_HomeValue60000To69999USDollar",
+      "Count_HousingUnit_HomeValue70000To79999USDollar",
+      "Count_HousingUnit_HomeValue80000To89999USDollar",
+      "Count_HousingUnit_HomeValue90000To99999USDollar",
+      "Count_HousingUnit_HomeValue100000To124999USDollar",
+      "Count_HousingUnit_HomeValue125000To149999USDollar",
+      "Count_HousingUnit_HomeValue150000To174999USDollar",
+      "Count_HousingUnit_HomeValue175000To199999USDollar",
+      "Count_HousingUnit_HomeValue200000To249999USDollar",
+      "Count_HousingUnit_HomeValue250000To299999USDollar",
+      "Count_HousingUnit_HomeValue300000To399999USDollar",
+      "Count_HousingUnit_HomeValue400000To499999USDollar",
+      "Count_HousingUnit_HomeValue500000To749999USDollar",
+      "Count_HousingUnit_HomeValue750000To999999USDollar",
+      "Count_HousingUnit_HomeValue1000000To1499999USDollar",
+      "Count_HousingUnit_HomeValue1500000To1999999USDollar",
+      "Count_HousingUnit_HomeValue2000000OrMoreUSDollar"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_HousingUnit_HomeValueUpto10000USDollar",
+        "Count_HousingUnit_HomeValue10000To14999USDollar",
+        "Count_HousingUnit_HomeValue15000To19999USDollar",
+        "Count_HousingUnit_HomeValue20000To24999USDollar",
+        "Count_HousingUnit_HomeValue25000To29999USDollar",
+        "Count_HousingUnit_HomeValue30000To34999USDollar",
+        "Count_HousingUnit_HomeValue35000To39999USDollar",
+        "Count_HousingUnit_HomeValue40000To49999USDollar",
+        "Count_HousingUnit_HomeValue50000To59999USDollar",
+        "Count_HousingUnit_HomeValue60000To69999USDollar",
+        "Count_HousingUnit_HomeValue70000To79999USDollar",
+        "Count_HousingUnit_HomeValue80000To89999USDollar",
+        "Count_HousingUnit_HomeValue90000To99999USDollar",
+        "Count_HousingUnit_HomeValue100000To124999USDollar",
+        "Count_HousingUnit_HomeValue125000To149999USDollar",
+        "Count_HousingUnit_HomeValue150000To174999USDollar",
+        "Count_HousingUnit_HomeValue175000To199999USDollar",
+        "Count_HousingUnit_HomeValue200000To249999USDollar",
+        "Count_HousingUnit_HomeValue250000To299999USDollar",
+        "Count_HousingUnit_HomeValue300000To399999USDollar",
+        "Count_HousingUnit_HomeValue400000To499999USDollar",
+        "Count_HousingUnit_HomeValue500000To749999USDollar",
+        "Count_HousingUnit_HomeValue750000To999999USDollar",
+        "Count_HousingUnit_HomeValue1000000To1499999USDollar",
+        "Count_HousingUnit_HomeValue1500000To1999999USDollar",
+        "Count_HousingUnit_HomeValue2000000OrMoreUSDollar"
+      ]
+    }
+  },
+  {
+    "title": "Housing units by rental status",
+    "statsVars": [
+      "Count_HousingUnit_OwnerOccupied",
+      "Count_HousingUnit_RenterOccupied"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_HousingUnit_OwnerOccupied",
+        "Count_HousingUnit_RenterOccupied"
+      ]
+    }
+  },
+  {
+    "title": "Housing units",
+    "statsVars": [
+      "Count_HousingUnit"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_HousingUnit"
+      ]
+    }
+  },
+  {
+    "title": "Individual income",
+    "statsVars": [
+      "Count_Person_IncomeOfUpto9999USDollar",
+      "Count_Person_IncomeOf10000To14999USDollar",
+      "Count_Person_IncomeOf15000To24999USDollar",
+      "Count_Person_IncomeOf25000To34999USDollar",
+      "Count_Person_IncomeOf35000To49999USDollar",
+      "Count_Person_IncomeOf50000To64999USDollar",
+      "Count_Person_IncomeOf65000To74999USDollar",
+      "Count_Person_IncomeOf75000OrMoreUSDollar"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_IncomeOfUpto9999USDollar",
+        "Count_Person_IncomeOf10000To14999USDollar",
+        "Count_Person_IncomeOf15000To24999USDollar",
+        "Count_Person_IncomeOf25000To34999USDollar",
+        "Count_Person_IncomeOf35000To49999USDollar",
+        "Count_Person_IncomeOf50000To64999USDollar",
+        "Count_Person_IncomeOf65000To74999USDollar",
+        "Count_Person_IncomeOf75000OrMoreUSDollar"
+      ]
+    }
+  },
+  {
+    "title": "Lifetime air toxics cancer risk",
+    "statsVars": [
+      "AirPollutant_Cancer_Risk"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Literacy",
+    "statsVars": [
+      "Count_Person_Literate",
+      "Count_Person_Illiterate"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_Literate",
+        "Count_Person_Illiterate"
+      ]
+    }
+  },
+  {
+    "title": "Marital status",
+    "statsVars": [
+      "Count_Person_MarriedAndNotSeparated",
+      "Count_Person_NeverMarried",
+      "Count_Person_Widowed",
+      "Count_Person_Separated"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_MarriedAndNotSeparated",
+        "Count_Person_Divorced",
+        "Count_Person_NeverMarried",
+        "Count_Person_Widowed",
+        "Count_Person_Separated"
+      ]
+    }
+  },
+  {
+    "title": "Mean PM2.5 concentration",
+    "statsVars": [
+      "Mean_Concentration_AirPollutant_PM2.5"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Mean diesel PM concentration",
+    "statsVars": [
+      "Mean_Concentration_AirPollutant_DieselPM"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Mean ozone concentration",
+    "statsVars": [
+      "Mean_Concentration_AirPollutant_Ozone"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Median age by gender",
+    "statsVars": [
+      "Median_Age_Person_Female",
+      "Median_Age_Person_Male"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Median age by race",
+    "statsVars": [
+      "Median_Age_Person_AmericanIndianOrAlaskaNativeAlone",
+      "Median_Age_Person_AsianAlone",
+      "Median_Age_Person_BlackOrAfricanAmericanAlone",
+      "Median_Age_Person_HispanicOrLatino",
+      "Median_Age_Person_NativeHawaiianOrOtherPacificIslanderAlone",
+      "Median_Age_Person_SomeOtherRaceAlone",
+      "Median_Age_Person_TwoOrMoreRaces",
+      "Median_Age_Person_WhiteAlone"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Median household income by race",
+    "statsVars": [
+      "Median_Income_Household_HouseholderRaceAmericanIndianOrAlaskaNativeAlone",
+      "Median_Income_Household_HouseholderRaceAsianAlone",
+      "Median_Income_Household_HouseholderRaceBlackOrAfricanAmericanAlone",
+      "Median_Income_Household_HouseholderRaceHispanicOrLatino",
+      "Median_Income_Household_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone",
+      "Median_Income_Household_HouseholderRaceWhiteAlone"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Median household income",
+    "statsVars": [
+      "Median_Income_Household"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Median income by gender",
+    "statsVars": [
+      "Median_Income_Person_15OrMoreYears_Female_WithIncome",
+      "Median_Income_Person_15OrMoreYears_Male_WithIncome"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Median individual income",
+    "statsVars": [
+      "Median_Income_Person"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Methane emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_Methane_NonBiogenic"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Mortality events",
+    "statsVars": [
+      "Count_Death_DiseasesOfTheCirculatorySystem",
+      "Count_Death_Neoplasms",
+      "Count_Death_DiseasesOfTheRespiratorySystem",
+      "Count_Death_ExternalCauses",
+      "Count_Death_DiseasesOfTheNervousSystem"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Death_DiseasesOfTheCirculatorySystem",
+        "Count_Death_Neoplasms",
+        "Count_Death_DiseasesOfTheRespiratorySystem",
+        "Count_Death_ExternalCauses",
+        "Count_Death_DiseasesOfTheNervousSystem"
+      ]
+    }
+  },
+  {
+    "title": "Nitrous oxide emissions (large facilities, non-biogenic)",
+    "statsVars": [
+      "Annual_Emissions_NitrousOxide_NonBiogenic"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Palmer drought severity index",
+    "statsVars": [
+      "PalmerDroughtSeverityIndex_Atmosphere"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Percentage of people without health insurance by gender",
+    "statsVars": [
+      "Percent_Person_18To64Years_Female_NoHealthInsurance",
+      "Percent_Person_18To64Years_Male_NoHealthInsurance"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Percentage of people without health insurance by race",
+    "statsVars": [
+      "Percent_Person_18To64Years_NoHealthInsurance_BlackOrAfricanAmericanAlone",
+      "Percent_Person_18To64Years_NoHealthInsurance_HispanicOrLatino",
+      "Percent_Person_18To64Years_NoHealthInsurance_WhiteAlone"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Population by age",
+    "statsVars": [
+      "Count_Person_5To17Years",
+      "Count_Person_18To24Years",
+      "Count_Person_35To44Years",
+      "Count_Person_45To54Years",
+      "Count_Person_60To61Years",
+      "Count_Person_62To64Years",
+      "Count_Person_65To74Years",
+      "Count_Person_75OrMoreYears"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_5To17Years",
+        "Count_Person_18To24Years",
+        "Count_Person_35To44Years",
+        "Count_Person_45To54Years",
+        "Count_Person_60To61Years",
+        "Count_Person_62To64Years",
+        "Count_Person_65To74Years",
+        "Count_Person_75OrMoreYears"
+      ]
+    }
+  },
+  {
+    "title": "Population by race",
+    "statsVars": [
+      "Count_Person_AmericanIndianOrAlaskaNativeAlone",
+      "Count_Person_AsianAlone",
+      "Count_Person_BlackOrAfricanAmericanAlone",
+      "Count_Person_HispanicOrLatino",
+      "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone",
+      "Count_Person_SomeOtherRaceAlone",
+      "Count_Person_TwoOrMoreRaces",
+      "Count_Person_WhiteAlone"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_AmericanIndianOrAlaskaNativeAlone",
+        "Count_Person_AsianAlone",
+        "Count_Person_BlackOrAfricanAmericanAlone",
+        "Count_Person_HispanicOrLatino",
+        "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone",
+        "Count_Person_SomeOtherRaceAlone",
+        "Count_Person_TwoOrMoreRaces",
+        "Count_Person_WhiteAlone"
+      ]
+    }
+  },
+  {
+    "title": "Poverty rate by gender",
+    "statsVars": [
+      "Count_Person_Female_BelowPovertyLevelInThePast12Months",
+      "Count_Person_Male_BelowPovertyLevelInThePast12Months"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Poverty rate by race",
+    "statsVars": [
+      "Count_Person_BelowPovertyLevelInThePast12Months_AmericanIndianOrAlaskaNativeAlone",
+      "Count_Person_BelowPovertyLevelInThePast12Months_AsianAlone",
+      "Count_Person_BelowPovertyLevelInThePast12Months_BlackOrAfricanAmericanAlone",
+      "Count_Person_BelowPovertyLevelInThePast12Months_HispanicOrLatino",
+      "Count_Person_BelowPovertyLevelInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone",
+      "Count_Person_BelowPovertyLevelInThePast12Months_WhiteAlone"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Poverty rate",
+    "statsVars": [
+      "Count_Person_BelowPovertyLevelInThePast12Months"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Prescribed drugs (quarterly)",
+    "statsVars": [
+      "RetailDrugDistribution_DrugDistribution_Oxycodone",
+      "RetailDrugDistribution_DrugDistribution_Hydrocodone",
+      "RetailDrugDistribution_DrugDistribution_Codeine",
+      "RetailDrugDistribution_DrugDistribution_Amphetamine",
+      "RetailDrugDistribution_DrugDistribution_Morphine"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "RetailDrugDistribution_DrugDistribution_Oxycodone",
+        "RetailDrugDistribution_DrugDistribution_Hydrocodone",
+        "RetailDrugDistribution_DrugDistribution_Codeine",
+        "RetailDrugDistribution_DrugDistribution_Amphetamine",
+        "RetailDrugDistribution_DrugDistribution_Morphine"
+      ]
+    }
+  },
+  {
+    "title": "Projected max temperature change under RCP 2.6 (based on year 2006)",
+    "statsVars": [
+      "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP26"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Projected max temperature change under RCP 4.5 (based on year 2006)",
+    "statsVars": [
+      "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP45"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Projected max temperature change under RCP 6.0 (based on year 2006)",
+    "statsVars": [
+      "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP60"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Projected max temperature change under RCP 8.5 (based on year 2006)",
+    "statsVars": [
+      "DifferenceRelativeToBaseDate2006_Max_Temperature_RCP85"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Property crime",
+    "statsVars": [
+      "Count_CriminalActivities_PropertyCrime"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_CriminalActivities_PropertyCrime"
+      ]
+    }
+  },
+  {
+    "title": "Rate of associate degree attainment by gender",
+    "statsVars": [
+      "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Female",
+      "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Male"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Rate of bachelor's degree attainment by gender",
+    "statsVars": [
+      "Count_Person_25To34Years_EducationalAttainmentBachelorsDegree_Female",
+      "Count_Person_25To34Years_EducationalAttainmentBachelorsDegree_Male"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Rate of graduate or professional degree attainment by gender",
+    "statsVars": [
+      "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Female",
+      "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Male"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Religion",
+    "statsVars": [
+      "indianCensus/Count_Person_Religion_Buddhist",
+      "indianCensus/Count_Person_Religion_Christian",
+      "indianCensus/Count_Person_Religion_Hindu",
+      "indianCensus/Count_Person_Religion_Jain",
+      "indianCensus/Count_Person_Religion_Muslim",
+      "indianCensus/Count_Person_Religion_OtherReligionsAndPersuasions",
+      "indianCensus/Count_Person_Religion_Sikh"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "indianCensus/Count_Person_Religion_Buddhist",
+        "indianCensus/Count_Person_Religion_Christian",
+        "indianCensus/Count_Person_Religion_Hindu",
+        "indianCensus/Count_Person_Religion_Jain",
+        "indianCensus/Count_Person_Religion_Muslim",
+        "indianCensus/Count_Person_Religion_OtherReligionsAndPersuasions",
+        "indianCensus/Count_Person_Religion_Sikh"
+      ]
+    }
+  },
+  {
+    "title": "School enrollment",
+    "statsVars": [
+      "Count_Person_EnrolledInSchool",
+      "Count_Person_NotEnrolledInSchool"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_EnrolledInSchool",
+        "Count_Person_NotEnrolledInSchool"
+      ]
+    }
+  },
+  {
+    "title": "Social Category",
+    "statsVars": [
+      "Count_Person_ScheduledCaste",
+      "Count_Person_ScheduledTribe"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_ScheduledCaste",
+        "Count_Person_ScheduledTribe"
+      ]
+    }
+  },
+  {
+    "title": "State unemployment insurance claims",
+    "statsVars": [
+      "Count_UnemploymentInsuranceClaim_StateUnemploymentInsurance"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_UnemploymentInsuranceClaim_StateUnemploymentInsurance"
+      ]
+    }
+  },
+  {
+    "title": "Total crime",
+    "statsVars": [
+      "Count_CriminalActivities_CombinedCrime"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_CriminalActivities_CombinedCrime"
+      ]
+    }
+  },
+  {
+    "title": "Unemployment rate by gender",
+    "statsVars": [
+      "UnemploymentRate_Person_Female",
+      "UnemploymentRate_Person_Male"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Unemployment rate by gender",
+    "statsVars": [
+      "UnemploymentRate_Person_Male",
+      "UnemploymentRate_Person_Female"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Unemployment rate: urban vs rural",
+    "statsVars": [
+      "UnemploymentRate_Person_Rural",
+      "UnemploymentRate_Person_Urban"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Urban and rural households",
+    "statsVars": [
+      "Count_Household_Rural",
+      "Count_Household_Urban"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Household_Rural",
+        "Count_Household_Urban"
+      ]
+    }
+  },
+  {
+    "title": "Urban vs rural homeless population",
+    "statsVars": [
+      "Count_Person_Houseless_Urban",
+      "Count_Person_Houseless_Rural"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_Houseless_Urban",
+        "Count_Person_Houseless_Rural"
+      ]
+    }
+  },
+  {
+    "title": "Urban vs rural poverty population",
+    "statsVars": [
+      "Count_Person_Rural_BelowPovertyLevelInThePast12Months",
+      "Count_Person_Urban_BelowPovertyLevelInThePast12Months"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_Rural_BelowPovertyLevelInThePast12Months",
+        "Count_Person_Urban_BelowPovertyLevelInThePast12Months"
+      ]
+    }
+  },
+  {
+    "title": "Violent crime",
+    "statsVars": [
+      "Count_CriminalActivities_ViolentCrime"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_CriminalActivities_ViolentCrime"
+      ]
+    }
+  },
+  {
+    "title": "Water withdrawal rate",
+    "statsVars": [
+      "WithdrawalRate_Water"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Worker vs nonworker population",
+    "statsVars": [
+      "Count_Person_Workers",
+      "Count_Person_NonWorker"
+    ],
+    "relatedChart": {
+      "scale": true,
+      "statsVars": [
+        "Count_Person_Workers",
+        "Count_Person_NonWorker"
+      ]
+    }
+  },
+  {
+    "title": "Worker wages (daily)",
+    "statsVars": [
+      "Mean_WagesDaily_Worker"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Worker wages (monthly): female vs male",
+    "statsVars": [
+      "Mean_WagesMonthly_Worker_Female",
+      "Mean_WagesMonthly_Worker_Male"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Worker wages (monthly): urban vs rural",
+    "statsVars": [
+      "Mean_WagesMonthly_Worker_Urban",
+      "Mean_WagesMonthly_Worker_Rural"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Worker wages (monthly)",
+    "statsVars": [
+      "Mean_WagesMonthly_Worker"
+    ],
+    "relatedChart": {}
+  }
+]

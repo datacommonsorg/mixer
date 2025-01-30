@@ -1769,6 +1769,10 @@
       "dcid": "Count_Person_65To69Years_Female"
     },
     {
+      "name": "Population: 65 - 74 Years, Female",
+      "dcid": "Count_Person_65To74Years_Female"
+    },
+    {
       "name": "Population: 65 Years or More, Female",
       "dcid": "Count_Person_65OrMoreYears_Female"
     },

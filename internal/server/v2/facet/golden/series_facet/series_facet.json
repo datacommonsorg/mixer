@@ -16,21 +16,21 @@
           "ordered_facets": [
             {
               "facet_id": "2176550201",
-              "obs_count": 124,
+              "obs_count": 125,
               "earliest_date": "1900",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "2645850372",
-              "obs_count": 12,
+              "obs_count": 13,
               "earliest_date": "2011",
-              "latest_date": "2022"
+              "latest_date": "2023"
             },
             {
               "facet_id": "1145703171",
-              "obs_count": 1,
+              "obs_count": 2,
               "earliest_date": "2022",
-              "latest_date": "2022"
+              "latest_date": "2023"
             },
             {
               "facet_id": "1541763368",
@@ -118,15 +118,15 @@
             },
             {
               "facet_id": "2176550201",
-              "obs_count": 124,
+              "obs_count": 125,
               "earliest_date": "1900",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1145703171",
-              "obs_count": 12,
+              "obs_count": 13,
               "earliest_date": "2011",
-              "latest_date": "2022"
+              "latest_date": "2023"
             },
             {
               "facet_id": "1541763368",
@@ -197,15 +197,15 @@
         "country/USA": {
           "ordered_facets": [
             {
+              "facet_id": "3795540742",
+              "obs_count": 2,
+              "earliest_date": "2022",
+              "latest_date": "2023"
+            },
+            {
               "facet_id": "3357919774",
               "obs_count": 12,
               "earliest_date": "2011",
-              "latest_date": "2022"
-            },
-            {
-              "facet_id": "3795540742",
-              "obs_count": 1,
-              "earliest_date": "2022",
               "latest_date": "2022"
             },
             {
@@ -238,9 +238,9 @@
           "ordered_facets": [
             {
               "facet_id": "3795540742",
-              "obs_count": 12,
+              "obs_count": 13,
               "earliest_date": "2011",
-              "latest_date": "2022"
+              "latest_date": "2023"
             },
             {
               "facet_id": "2763329611",

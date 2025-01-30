@@ -127,7 +127,8 @@
             "2020": 51,
             "2021": 52,
             "2022": 52,
-            "2023": 52
+            "2023": 52,
+            "2024": 52
           },
           "metadata": {
             "import_name": "USCensusPEP_Annual_Population",
@@ -149,7 +150,8 @@
             "2019": 52,
             "2020": 52,
             "2021": 52,
-            "2022": 52
+            "2022": 52,
+            "2023": 52
           },
           "metadata": {
             "import_name": "CensusACS5YearSurvey",
@@ -660,7 +662,8 @@
             "2019": 52,
             "2020": 52,
             "2021": 52,
-            "2022": 52
+            "2022": 52,
+            "2023": 52
           },
           "metadata": {
             "import_name": "CensusACS5YearSurvey",
