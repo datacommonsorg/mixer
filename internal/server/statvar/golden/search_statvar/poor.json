@@ -21,16 +21,16 @@
       "dcid": "sdg/SD_MDP_ANDI.URBANISATION--U"
     },
     {
-      "name": "Percentage of Population With Poor General Health",
-      "dcid": "Percent_Person_18OrMoreYears_WithPoorGeneralHealth"
-    },
-    {
-      "name": "Percentage of Population With Poor Mental Health",
+      "name": "Percentage of Adult Population With Poor Mental Health",
       "dcid": "Percent_Person_WithMentalHealthNotGood"
     },
     {
-      "name": "Percentage of Population With Poor Physical Health",
+      "name": "Percentage of Adult Population With Poor Physical Health",
       "dcid": "Percent_Person_WithPhysicalHealthNotGood"
+    },
+    {
+      "name": "Percentage of Population With Poor General Health",
+      "dcid": "Percent_Person_18OrMoreYears_WithPoorGeneralHealth"
     },
     {
       "name": "Proportion of poor population receiving social assistance cash benefit [Female]",
