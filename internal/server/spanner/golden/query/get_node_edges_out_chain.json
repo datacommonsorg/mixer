@@ -7,7 +7,9 @@
       "ObjectValue": "",
       "Provenance": "",
       "Name": "Demographics",
-      "Types": []
+      "Types": [
+        "StatVarGroup"
+      ]
     },
     {
       "SubjectID": "dc/g/Person_Gender",
@@ -16,7 +18,9 @@
       "ObjectValue": "",
       "Provenance": "",
       "Name": "Economy",
-      "Types": []
+      "Types": [
+        "StatVarGroup"
+      ]
     },
     {
       "SubjectID": "dc/g/Person_Gender",
@@ -25,7 +29,9 @@
       "ObjectValue": "",
       "Provenance": "",
       "Name": "Employment and Business",
-      "Types": []
+      "Types": [
+        "StatVarGroup"
+      ]
     },
     {
       "SubjectID": "dc/g/Person_Gender",
@@ -34,7 +40,9 @@
       "ObjectValue": "",
       "Provenance": "",
       "Name": "Health",
-      "Types": []
+      "Types": [
+        "StatVarGroup"
+      ]
     },
     {
       "SubjectID": "dc/g/Person_Gender",
@@ -43,7 +51,9 @@
       "ObjectValue": "",
       "Provenance": "",
       "Name": "Data Commons Variables",
-      "Types": []
+      "Types": [
+        "StatVarGroup"
+      ]
     }
   ]
 }

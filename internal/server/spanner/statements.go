@@ -101,18 +101,19 @@ var statements = struct {
 			object_value
 	`,
 	getChainedEdgesBySubjectID: fmt.Sprintf(`
-		GRAPH DCGraph MATCH (m:Node
+		GRAPH DCGraph MATCH ANY (m:Node
 		WHERE
 			m.subject_id IN UNNEST(@ids))-[e:Edge
 		WHERE
 			e.predicate = @predicate]->{1,%d}(n:Node)
 		WHERE 
 			m != n
-		RETURN DISTINCT 
+		RETURN 
 			m.subject_id,
 			n.subject_id as object_id,
 			'' as object_value,
-			COALESCE(n.name, '') AS name
+			COALESCE(n.name, '') AS name,
+			COALESCE(n.types, []) AS types
 		UNION ALL
 		MATCH -[e:Edge
 		WHERE
@@ -123,7 +124,8 @@ var statements = struct {
 			e.subject_id,
 			'' AS object_id,
 			e.object_value,
-			'' AS name
+			'' AS name,
+			ARRAY<STRING>[] AS types
 		NEXT
 		RETURN
 			subject_id,
@@ -132,7 +134,7 @@ var statements = struct {
 			object_value,
 			'' AS provenance,
 			name, 
-			ARRAY<STRING>[] AS types
+			types
 		ORDER BY
 			subject_id,
 			predicate,
@@ -158,16 +160,18 @@ var statements = struct {
 			object_id
 	`,
 	getChainedEdgesByObjectID: fmt.Sprintf(`
-		GRAPH DCGraph MATCH (m:Node
-		WHERE m.subject_id IN UNNEST(@ids))<-[e:Edge
+		GRAPH DCGraph MATCH ANY (m:Node
+		WHERE 
+			m.subject_id IN UNNEST(@ids))<-[e:Edge
 		WHERE
 			e.predicate = @predicate]-{1,%d}(n:Node) 
 		WHERE
 			m!= n	
-		RETURN DISTINCT 
+		RETURN 
 			m.subject_id,
 			n.subject_id AS object_id,
-			COALESCE(n.name, '') AS name
+			COALESCE(n.name, '') AS name,
+			COALESCE(n.types, []) AS types
 		NEXT
 		RETURN
 			subject_id, 
@@ -176,7 +180,7 @@ var statements = struct {
 			'' AS object_value,
 			'' AS provenance, 
 			name, 
-			ARRAY<STRING>[] AS types
+			types
 		ORDER BY
 			subject_id,
 			predicate,
