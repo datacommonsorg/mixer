@@ -7,7 +7,9 @@
       "ObjectValue": "",
       "Provenance": "",
       "Name": "Farm With Farm Inventory Status = Inventory Sold",
-      "Types": []
+      "Types": [
+        "StatVarGroup"
+      ]
     },
     {
       "SubjectID": "dc/g/Farm_FarmInventoryStatus",
@@ -16,7 +18,9 @@
       "ObjectValue": "",
       "Provenance": "",
       "Name": "Farm With Farm Inventory Status = Inventory Sold, Farm Inventory Type",
-      "Types": []
+      "Types": [
+        "StatVarGroup"
+      ]
     }
   ]
 }
