@@ -7667,7 +7667,7 @@
     },
     {
       "subjectId": "Count_MortalityEvent_CerebrovascularDiseases_Female_AsAFractionOf_Count_Person_Female",
-      "subjectName": "Count of Mortality Event: Cerebrovascular Diseases, Cerebrovascular Diseases, Female (As Fraction of Count Person Female)",
+      "subjectName": "Count of Mortality Event: Cerebrovascular Diseases, Female (As Fraction of Count Person Female)",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -8927,7 +8927,7 @@
     },
     {
       "subjectId": "Count_MortalityEvent_Pneumonia_Female_AsAFractionOf_Count_Person_Female",
-      "subjectName": "Count of Mortality Event: Pneumonia, Pneumonia, Female (As Fraction of Count Person Female)",
+      "subjectName": "Count of Mortality Event: Pneumonia, Female (As Fraction of Count Person Female)",
       "subjectTypes": [
         "StatisticalVariable"
       ],

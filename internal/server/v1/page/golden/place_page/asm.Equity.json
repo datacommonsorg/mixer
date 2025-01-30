@@ -347,10 +347,11 @@
             "2017": 325122128,
             "2018": 326838199,
             "2019": 328329953,
-            "2020": 329484123,
-            "2021": 332048977,
+            "2020": 331526933,
+            "2021": 331893745,
             "2022": 333271411,
-            "2023": 334914895
+            "2023": 334914895,
+            "2024": 340110988
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
@@ -372,7 +373,8 @@
             "2019": 2233024,
             "2020": 2269331,
             "2021": 2250756,
-            "2022": 2217720
+            "2022": 2217720,
+            "2023": 2199295
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -394,7 +396,8 @@
             "2019": 1859233,
             "2020": 1915167,
             "2021": 1900368,
-            "2022": 1905518
+            "2022": 1905518,
+            "2023": 1891556
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -416,7 +419,8 @@
             "2019": 6046185,
             "2020": 6229586,
             "2021": 6345757,
-            "2022": 6415594
+            "2022": 6415594,
+            "2023": 6571044
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -438,7 +442,8 @@
             "2019": 5257342,
             "2020": 5449154,
             "2021": 5536971,
-            "2022": 5699397
+            "2022": 5699397,
+            "2023": 5776369
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -460,7 +465,8 @@
             "2019": 2887192,
             "2020": 2994545,
             "2021": 3070884,
-            "2022": 3123999
+            "2022": 3123999,
+            "2023": 3244645
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -482,7 +488,8 @@
             "2019": 2027032,
             "2020": 2099105,
             "2021": 2135502,
-            "2022": 2193714
+            "2022": 2193714,
+            "2023": 2232447
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -504,7 +511,8 @@
             "2019": 22430348,
             "2020": 22618584,
             "2021": 22616848,
-            "2022": 22492679
+            "2022": 22492679,
+            "2023": 22677011
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -526,7 +534,8 @@
             "2019": 23013263,
             "2020": 23274728,
             "2021": 23163306,
-            "2022": 23316392
+            "2022": 23316392,
+            "2023": 23247592
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -548,7 +557,8 @@
             "2019": 2756981,
             "2020": 2694311,
             "2021": 2728068,
-            "2022": 2791497
+            "2022": 2791497,
+            "2023": 2930594
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -570,7 +580,8 @@
             "2019": 17930446,
             "2020": 18427519,
             "2021": 18789187,
-            "2022": 19119274
+            "2022": 19119274,
+            "2023": 19358694
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -592,7 +603,8 @@
             "2019": 663719,
             "2020": 629434,
             "2021": 617828,
-            "2022": 610809
+            "2022": 610809,
+            "2023": 619801
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -614,7 +626,8 @@
             "2019": 1925171,
             "2020": 1919904,
             "2021": 1903156,
-            "2022": 1899316
+            "2022": 1899316,
+            "2023": 1886575
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -636,7 +649,8 @@
             "2019": 9290559,
             "2020": 8891908,
             "2021": 8775279,
-            "2022": 8642893
+            "2022": 8642893,
+            "2023": 8503694
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -658,7 +672,8 @@
             "2019": 12689771,
             "2020": 12028803,
             "2021": 11947618,
-            "2022": 11802729
+            "2022": 11802729,
+            "2023": 11795809
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -680,7 +695,8 @@
             "2019": 102052,
             "2020": 99857,
             "2021": 99799,
-            "2022": 103251
+            "2022": 103251,
+            "2023": 105018
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -702,7 +718,8 @@
             "2019": 26564761,
             "2020": 24623002,
             "2021": 23313519,
-            "2022": 22107777
+            "2022": 22107777,
+            "2023": 20779550
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -724,7 +741,8 @@
             "2019": 41621318,
             "2020": 41595290,
             "2021": 41722663,
-            "2022": 41574960
+            "2022": 41574960,
+            "2023": 41308652
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -746,7 +764,8 @@
             "2019": 166551005,
             "2020": 167459830,
             "2021": 168258279,
-            "2022": 168618009
+            "2022": 168618009,
+            "2023": 169556351
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -768,7 +787,8 @@
             "2019": 24394352,
             "2020": 23506246,
             "2021": 23296207,
-            "2022": 23165438
+            "2022": 23165438,
+            "2023": 23113560
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -790,7 +810,8 @@
             "2019": 61755289,
             "2020": 62573645,
             "2021": 64077330,
-            "2022": 64987193
+            "2022": 64987193,
+            "2023": 66347413
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -812,7 +833,8 @@
             "2019": 161465237,
             "2020": 162365120,
             "2021": 164778476,
-            "2022": 165751966
+            "2022": 165751966,
+            "2023": 166086074
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -834,7 +856,8 @@
             "2019": 19565582,
             "2020": 18805038,
             "2021": 18766426,
-            "2022": 18724506
+            "2022": 18724506,
+            "2023": 18617122
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -856,7 +879,8 @@
             "2019": 600137,
             "2020": 611662,
             "2021": 615802,
-            "2022": 625142
+            "2022": 625142,
+            "2023": 629460
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -878,7 +902,8 @@
             "2019": 237565676,
             "2020": 231913264,
             "2021": 226482760,
-            "2022": 219548855
+            "2022": 219548855,
+            "2023": 212021757
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -959,7 +984,8 @@
         },
         "Median_Income_Household_HouseholderRaceAmericanIndianOrAlaskaNativeAlone": {
           "val": {
-            "2022": 55925
+            "2022": 55925,
+            "2023": 59393
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -970,7 +996,8 @@
         },
         "Median_Income_Household_HouseholderRaceAsianAlone": {
           "val": {
-            "2022": 107637
+            "2022": 107637,
+            "2023": 113106
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -981,7 +1008,8 @@
         },
         "Median_Income_Household_HouseholderRaceBlackOrAfricanAmericanAlone": {
           "val": {
-            "2022": 50901
+            "2022": 50901,
+            "2023": 53444
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -992,7 +1020,8 @@
         },
         "Median_Income_Household_HouseholderRaceHispanicOrLatino": {
           "val": {
-            "2022": 64936
+            "2022": 64936,
+            "2023": 68890
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -1003,7 +1032,8 @@
         },
         "Median_Income_Household_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone": {
           "val": {
-            "2022": 76568
+            "2022": 76568,
+            "2023": 78640
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -1014,7 +1044,8 @@
         },
         "Median_Income_Household_HouseholderRaceWhiteAlone": {
           "val": {
-            "2022": 80042
+            "2022": 80042,
+            "2023": 83784
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -1025,21 +1056,11 @@
         },
         "Median_Income_Person_15OrMoreYears_Female_WithIncome": {
           "val": {
-            "2011": 20952,
-            "2012": 21163,
-            "2013": 21283,
-            "2014": 21489,
-            "2015": 21653,
-            "2016": 22121,
-            "2017": 23058,
-            "2018": 24208,
-            "2019": 25307,
-            "2020": 26257,
-            "2021": 27981,
-            "2022": 30605
+            "2022": 30605,
+            "2023": 32546
           },
           "metadata": {
-            "importName": "CensusUSAMedianAgeIncome",
+            "importName": "CensusACS5YearSurvey",
             "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
             "measurementMethod": "CensusACS5yrSurvey",
             "unit": "USDollar"
@@ -1047,21 +1068,11 @@
         },
         "Median_Income_Person_15OrMoreYears_Male_WithIncome": {
           "val": {
-            "2011": 33199,
-            "2012": 32964,
-            "2013": 32820,
-            "2014": 33190,
-            "2015": 33247,
-            "2016": 34163,
-            "2017": 35504,
-            "2018": 36741,
-            "2019": 38461,
-            "2020": 39911,
-            "2021": 42126,
-            "2022": 45902
+            "2022": 45902,
+            "2023": 48138
           },
           "metadata": {
-            "importName": "CensusUSAMedianAgeIncome",
+            "importName": "CensusACS5YearSurvey",
             "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
             "measurementMethod": "CensusACS5yrSurvey",
             "unit": "USDollar"
@@ -1117,8 +1128,8 @@
       }
     },
     "country/USA": {
-      "date": "2023",
-      "value": 334914895,
+      "date": "2024",
+      "value": 340110988,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",

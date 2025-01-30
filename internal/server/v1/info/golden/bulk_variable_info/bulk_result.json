@@ -173,7 +173,7 @@
               }
             ],
             "minValue": 0,
-            "maxValue": 1731694
+            "maxValue": 1744717
           },
           "CensusDivision": {
             "placeCount": 9,
@@ -192,7 +192,7 @@
               }
             ],
             "minValue": 7460046.426,
-            "maxValue": 33710425
+            "maxValue": 34090199
           },
           "CensusTract": {
             "placeCount": 97783,
@@ -230,7 +230,7 @@
               }
             ],
             "minValue": 0,
-            "maxValue": 67216
+            "maxValue": 70086
           },
           "City": {
             "placeCount": 32463,
@@ -1052,7 +1052,7 @@
                   "measurementMethod": "CensusACS5yrSurvey"
                 },
                 "earliestDate": "2011",
-                "latestDate": "2022",
+                "latestDate": "2023",
                 "placeTypeSummary": {
                   "CensusBlockGroup": {
                     "placeCount": 291800,
@@ -1109,7 +1109,7 @@
                       }
                     ],
                     "minValue": 0,
-                    "maxValue": 1731694
+                    "maxValue": 1744717
                   },
                   "CensusDivision": {
                     "placeCount": 9,
@@ -1128,7 +1128,7 @@
                       }
                     ],
                     "minValue": 7670097,
-                    "maxValue": 33710425
+                    "maxValue": 34090199
                   },
                   "CensusTract": {
                     "placeCount": 97771,
@@ -1166,7 +1166,7 @@
                       }
                     ],
                     "minValue": 0,
-                    "maxValue": 67216
+                    "maxValue": 70086
                   },
                   "City": {
                     "placeCount": 32398,
@@ -1215,7 +1215,7 @@
                       }
                     ],
                     "minValue": 166897295,
-                    "maxValue": 166897295
+                    "maxValue": 167842453
                   },
                   "County": {
                     "placeCount": 3233,
@@ -1233,7 +1233,7 @@
                         "name": "Harris County"
                       }
                     ],
-                    "minValue": 15,
+                    "minValue": 14,
                     "maxValue": 5126081
                   },
                   "ElementarySchoolDistrict": {
@@ -1341,12 +1341,12 @@
                   }
                 },
                 "minValue": 0,
-                "maxValue": 166897295,
-                "observationCount": 5053362,
+                "maxValue": 167842453,
+                "observationCount": 5499323,
                 "timeSeriesCount": 512238
               }
             ],
-            "observationCount": 5053362,
+            "observationCount": 5499323,
             "timeSeriesCount": 512238
           },
           "dc/base/CensusACS5YearSurvey_AggCountry": {
@@ -1358,7 +1358,7 @@
                   "isDcAggregate": true
                 },
                 "earliestDate": "2011",
-                "latestDate": "2022",
+                "latestDate": "2023",
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -1369,16 +1369,16 @@
                       }
                     ],
                     "minValue": 157812589,
-                    "maxValue": 168618009
+                    "maxValue": 169556351
                   }
                 },
                 "minValue": 157812589,
-                "maxValue": 168618009,
-                "observationCount": 12,
+                "maxValue": 169556351,
+                "observationCount": 13,
                 "timeSeriesCount": 1
               }
             ],
-            "observationCount": 12,
+            "observationCount": 13,
             "timeSeriesCount": 1
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S0101": {

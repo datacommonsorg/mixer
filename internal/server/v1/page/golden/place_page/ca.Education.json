@@ -79,7 +79,8 @@
             "2019": 2168424,
             "2020": 2182856,
             "2021": 2197190,
-            "2022": 2197677
+            "2022": 2197677,
+            "2023": 2205127
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -100,7 +101,8 @@
             "2019": 3059289,
             "2020": 3063414,
             "2021": 3078047,
-            "2022": 3075256
+            "2022": 3075256,
+            "2023": 3066096
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -120,7 +122,8 @@
             "2019": 564720,
             "2020": 575866,
             "2021": 585008,
-            "2022": 591937
+            "2022": 591937,
+            "2023": 601466
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -140,7 +143,8 @@
             "2019": 36910,
             "2020": 36662,
             "2021": 39449,
-            "2022": 40432
+            "2022": 40432,
+            "2023": 40097
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -160,7 +164,8 @@
             "2019": 217133,
             "2020": 223208,
             "2021": 233094,
-            "2022": 238150
+            "2022": 238150,
+            "2023": 243974
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -180,7 +185,8 @@
             "2019": 54763,
             "2020": 61846,
             "2021": 64447,
-            "2022": 70987
+            "2022": 70987,
+            "2023": 72381
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -200,7 +206,8 @@
             "2019": 334731,
             "2020": 334210,
             "2021": 335632,
-            "2022": 337421
+            "2022": 337421,
+            "2023": 338576
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -221,7 +228,8 @@
             "2019": 852709,
             "2020": 844632,
             "2021": 844571,
-            "2022": 837989
+            "2022": 837989,
+            "2023": 823736
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -242,7 +250,8 @@
             "2019": 2206580,
             "2020": 2218782,
             "2021": 2233476,
-            "2022": 2237267
+            "2022": 2237267,
+            "2023": 2242360
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -378,8 +387,9 @@
             "2019": 4658285,
             "2020": 4645318,
             "2021": 4624047,
-            "2022": 4588023,
-            "2023": 4573749
+            "2022": 4593687,
+            "2023": 4588071,
+            "2024": 4597740
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
@@ -401,7 +411,8 @@
             "2019": 3125153,
             "2020": 3139520,
             "2021": 3133855,
-            "2022": 3121146
+            "2022": 3121146,
+            "2023": 3110254
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -422,7 +433,8 @@
             "2019": 4484529,
             "2020": 4484864,
             "2021": 4484742,
-            "2022": 4469676
+            "2022": 4469676,
+            "2023": 4452770
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -442,7 +454,8 @@
             "2019": 490514,
             "2020": 499998,
             "2021": 511447,
-            "2022": 519481
+            "2022": 519481,
+            "2023": 521668
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -462,7 +475,8 @@
             "2019": 29532,
             "2020": 30721,
             "2021": 31996,
-            "2022": 33039
+            "2022": 33039,
+            "2023": 35843
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -482,7 +496,8 @@
             "2019": 180464,
             "2020": 195679,
             "2021": 200435,
-            "2022": 206717
+            "2022": 206717,
+            "2023": 210724
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -502,7 +517,8 @@
             "2019": 37358,
             "2020": 39383,
             "2021": 41515,
-            "2022": 43616
+            "2022": 43616,
+            "2023": 47257
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -522,7 +538,8 @@
             "2019": 893660,
             "2020": 873459,
             "2021": 864695,
-            "2022": 854193
+            "2022": 854193,
+            "2023": 840320
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -543,7 +560,8 @@
             "2019": 1154067,
             "2020": 1145889,
             "2021": 1148672,
-            "2022": 1143045
+            "2022": 1143045,
+            "2023": 1134098
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -564,7 +582,8 @@
             "2019": 3330462,
             "2020": 3338975,
             "2021": 3336070,
-            "2022": 3326631
+            "2022": 3326631,
+            "2023": 3318672
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -589,8 +608,9 @@
             "2008": 3760866,
             "2009": 3740410,
             "2021": 3263584,
-            "2022": 3220113,
-            "2023": 3205691
+            "2022": 3220137,
+            "2023": 3203792,
+            "2024": 3203295
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
@@ -612,7 +632,8 @@
             "2019": 2345959,
             "2020": 2331294,
             "2021": 2399112,
-            "2022": 2400393
+            "2022": 2400393,
+            "2023": 2412064
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -633,7 +654,8 @@
             "2019": 3238743,
             "2020": 3182353,
             "2021": 3243818,
-            "2022": 3209779
+            "2022": 3209779,
+            "2023": 3196052
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -653,7 +675,8 @@
             "2019": 433178,
             "2020": 443697,
             "2021": 469856,
-            "2022": 482139
+            "2022": 482139,
+            "2023": 499924
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -673,7 +696,8 @@
             "2019": 26292,
             "2020": 27164,
             "2021": 28977,
-            "2022": 30891
+            "2022": 30891,
+            "2023": 32488
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -693,7 +717,8 @@
             "2019": 119364,
             "2020": 122652,
             "2021": 129632,
-            "2022": 134673
+            "2022": 134673,
+            "2023": 139661
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -713,7 +738,8 @@
             "2019": 59498,
             "2020": 55264,
             "2021": 56393,
-            "2022": 51914
+            "2022": 51914,
+            "2023": 49428
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -733,7 +759,8 @@
             "2019": 597482,
             "2020": 598140,
             "2021": 618395,
-            "2022": 617845
+            "2022": 617845,
+            "2023": 613383
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -754,7 +781,8 @@
             "2019": 800195,
             "2020": 761464,
             "2021": 755689,
-            "2022": 725393
+            "2022": 725393,
+            "2023": 701746
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -775,7 +803,8 @@
             "2019": 2438548,
             "2020": 2420889,
             "2021": 2488129,
-            "2022": 2484386
+            "2022": 2484386,
+            "2023": 2494306
           },
           "metadata": {
             "importName": "CensusACS5YearSurvey",
@@ -1084,8 +1113,8 @@
   },
   "latestPopulation": {
     "country/USA": {
-      "date": "2023",
-      "value": 334914895,
+      "date": "2024",
+      "value": 340110988,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -1094,8 +1123,8 @@
       }
     },
     "geoId/04": {
-      "date": "2023",
-      "value": 7431344,
+      "date": "2024",
+      "value": 7582384,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -1104,8 +1133,8 @@
       }
     },
     "geoId/06": {
-      "date": "2023",
-      "value": 38965193,
+      "date": "2024",
+      "value": 39431263,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -1164,8 +1193,8 @@
       }
     },
     "geoId/08": {
-      "date": "2023",
-      "value": 5877610,
+      "date": "2024",
+      "value": 5957493,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -1174,8 +1203,8 @@
       }
     },
     "geoId/18": {
-      "date": "2023",
-      "value": 6862199,
+      "date": "2024",
+      "value": 6924275,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -1184,8 +1213,8 @@
       }
     },
     "geoId/22": {
-      "date": "2023",
-      "value": 4573749,
+      "date": "2024",
+      "value": 4597740,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -1194,8 +1223,8 @@
       }
     },
     "geoId/29": {
-      "date": "2023",
-      "value": 6196156,
+      "date": "2024",
+      "value": 6245466,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -1204,8 +1233,8 @@
       }
     },
     "geoId/38": {
-      "date": "2023",
-      "value": 783926,
+      "date": "2024",
+      "value": 796568,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -1214,8 +1243,8 @@
       }
     },
     "geoId/47": {
-      "date": "2023",
-      "value": 7126489,
+      "date": "2024",
+      "value": 7227750,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -1224,8 +1253,8 @@
       }
     },
     "geoId/48": {
-      "date": "2023",
-      "value": 30503301,
+      "date": "2024",
+      "value": 31290831,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -1234,8 +1263,8 @@
       }
     },
     "geoId/53": {
-      "date": "2023",
-      "value": 7812880,
+      "date": "2024",
+      "value": 7958180,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
@@ -1244,8 +1273,8 @@
       }
     },
     "geoId/72": {
-      "date": "2023",
-      "value": 3205691,
+      "date": "2024",
+      "value": 3203295,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",

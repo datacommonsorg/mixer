@@ -1385,6 +1385,10 @@
       "dcid": "Count_Person_5OrMoreYears_ForeignBorn"
     },
     {
+      "name": "Population: Foreign Born",
+      "dcid": "Count_Person_ForeignBorn"
+    },
+    {
       "name": "Population: Foreign Born Outside EU27",
       "dcid": "Count_Person_ForeignBornOutsideEU27"
     },
@@ -3995,10 +3999,6 @@
     {
       "name": "Population: 0 - 4 Years, Married",
       "dcid": "Count_Person_0To4Years_Married"
-    },
-    {
-      "name": "Population: 0 - 4 Years, Mental Health Not Good",
-      "dcid": "Count_Person_0To4Years_ConditionMentalHealthNotGood"
     }
   ],
   "matches": [

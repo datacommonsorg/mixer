@@ -40,8 +40,8 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2023",
-              "value": 334914895,
+              "date": "2024",
+              "value": 340110988,
               "facet": "2176550201"
             }
           ]
@@ -50,8 +50,8 @@
           "entity": "geoId/06",
           "points_by_facet": [
             {
-              "date": "2023",
-              "value": 38965193,
+              "date": "2024",
+              "value": 39431263,
               "facet": "2176550201"
             }
           ]
@@ -120,7 +120,7 @@
           "points_by_facet": [
             {
               "date": "2023",
-              "value": 62260,
+              "value": 58920,
               "facet": "2171028778"
             }
           ]
@@ -200,8 +200,8 @@
           "entity": "geoId/06",
           "points_by_facet": [
             {
-              "date": "2024-11",
-              "value": 1023710,
+              "date": "2024-12",
+              "value": 1003082,
               "facet": "324358135"
             }
           ]
