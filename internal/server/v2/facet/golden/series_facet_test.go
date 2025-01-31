@@ -45,6 +45,11 @@ func TestSeriesFacet(t *testing.T) {
 				[]string{"country/USA", "geoId/06", "Earth"},
 				"series_facet.json",
 			},
+			{
+				[]string{"Count_Death_AgeAdjusted_AsAFractionOf_Count_Person"},
+				[]string{"geoId/01", "geoId/02"},
+				"series_facet_test_ranking.json",
+			},
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V2Observation(ctx, &pbv2.ObservationRequest{
