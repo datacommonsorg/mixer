@@ -473,5 +473,8 @@ func (a FacetByRank) Less(i, j int) bool {
 	if oi.Facet.ProvenanceUrl != oj.Facet.ProvenanceUrl {
 		return oi.Facet.ProvenanceUrl < oj.Facet.ProvenanceUrl
 	}
+	if oi.Facet.ImportName != oj.Facet.ImportName {
+		return oi.Facet.ImportName < oj.Facet.ImportName
+	}
 	return true
 }
