@@ -5,6 +5,10 @@
         "measuredProperty": {
           "nodes": [
             {
+              "name": "total number of sql joins",
+              "types": [
+                "StatisticalVariable"
+              ],
               "dcid": "test_var_2"
             }
           ]
@@ -12,6 +16,9 @@
         "outputProperty": {
           "nodes": [
             {
+              "types": [
+                "StatisticalCalculation"
+              ],
               "dcid": "dc/c/test_var_2"
             }
           ]
