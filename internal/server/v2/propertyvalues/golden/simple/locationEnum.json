@@ -14,9 +14,6 @@
               "provenanceId": "dc/base/BaseSchema"
             },
             {
-              "dcid": "NewCity"
-            },
-            {
               "name": "Rural",
               "types": [
                 "HumanSettlementClassificationEnum",
@@ -32,6 +29,13 @@
               ],
               "dcid": "Suburb",
               "provenanceId": "dc/base/BaseSchema"
+            },
+            {
+              "name": "NewCity",
+              "types": [
+                "LocationClassificationEnum"
+              ],
+              "dcid": "NewCity"
             },
             {
               "name": "Town",

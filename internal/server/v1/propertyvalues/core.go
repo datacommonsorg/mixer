@@ -135,44 +135,33 @@ func fetchSQL(
 	}
 
 	for _, row := range triples {
-		var n string
+		var nodeDcid, entityDcid string
 		if direction == util.DirectionOut {
-			n = row.SubjectID
+			nodeDcid = row.SubjectID
+			entityDcid = row.ObjectID
 		} else {
-			n = row.ObjectID
+			nodeDcid = row.ObjectID
+			entityDcid = row.SubjectID
 		}
-		if _, ok := resp[n][row.Predicate]; !ok {
-			resp[n][row.Predicate] = map[string][]*pb.EntityInfo{}
+		if _, ok := resp[nodeDcid][row.Predicate]; !ok {
+			resp[nodeDcid][row.Predicate] = map[string][]*pb.EntityInfo{}
 		}
-		if direction == util.DirectionOut {
-			entityInfo, ok := entityInfos[row.ObjectID]
-			if !ok {
-				entityInfo = newEntityInfo()
-			}
-			if _, ok := resp[n][row.Predicate][entityInfo.Type]; !ok {
-				resp[n][row.Predicate][entityInfo.Type] = []*pb.EntityInfo{}
-			}
-			resp[n][row.Predicate][entityInfo.Type] = append(
-				resp[n][row.Predicate][entityInfo.Type],
-				&pb.EntityInfo{
-					Dcid:  row.ObjectID,
-					Value: row.ObjectValue,
-					Types: []string{entityInfo.Type},
-					Name:  entityInfo.Name,
-				},
-			)
-		} else {
-			// object value uses "" as type
-			if _, ok := resp[n][row.Predicate][""]; !ok {
-				resp[n][row.Predicate][""] = []*pb.EntityInfo{}
-			}
-			resp[n][row.Predicate][""] = append(
-				resp[n][row.Predicate][""],
-				&pb.EntityInfo{
-					Dcid: row.SubjectID,
-				},
-			)
+		entityInfo, ok := entityInfos[entityDcid]
+		if !ok {
+			entityInfo = newEntityInfo()
 		}
+		if _, ok := resp[nodeDcid][row.Predicate][entityInfo.Type]; !ok {
+			resp[nodeDcid][row.Predicate][entityInfo.Type] = []*pb.EntityInfo{}
+		}
+		resp[nodeDcid][row.Predicate][entityInfo.Type] = append(
+			resp[nodeDcid][row.Predicate][entityInfo.Type],
+			&pb.EntityInfo{
+				Dcid:  entityDcid,
+				Value: row.ObjectValue,
+				Types: []string{entityInfo.Type},
+				Name:  entityInfo.Name,
+			},
+		)
 	}
 	return resp, nil
 }

@@ -6307,12 +6307,6 @@
               "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
-              "dcid": "fire_country"
-            },
-            {
-              "dcid": "water_country"
-            },
-            {
               "name": "Turkish Republic of Northern Cyprus",
               "types": [
                 "Country"
@@ -6359,6 +6353,18 @@
               ],
               "dcid": "wikidataId/Q756617",
               "provenanceId": "dc/base/WikidataGeos"
+            },
+            {
+              "types": [
+                "Country"
+              ],
+              "dcid": "fire_country"
+            },
+            {
+              "types": [
+                "Country"
+              ],
+              "dcid": "water_country"
             }
           ]
         }
@@ -6369,6 +6375,9 @@
         "rangeIncludes": {
           "nodes": [
             {
+              "types": [
+                "Thing"
+              ],
               "dcid": "administrativeCapital"
             }
           ]
