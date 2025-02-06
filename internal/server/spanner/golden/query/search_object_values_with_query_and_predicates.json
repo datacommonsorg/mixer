@@ -1,0 +1,112 @@
+[
+  {
+    "SubjectID": "1_2_Diethoxyethane",
+    "Name": "1,2-Diethoxyethane",
+    "Types": [
+      "ChemicalCompound",
+      "EPA_HazardousAirPollutant"
+    ],
+    "MatchedPredicate": "alternateName",
+    "MatchedObjectValue": "Ethylene Glycol Diethyl Ether",
+    "Score": 0
+  },
+  {
+    "SubjectID": "1_Chloro_2_2_Chloroethoxy_Ethane",
+    "Name": "1-Chloro-2-(2-Chloroethoxy)Ethane",
+    "Types": [
+      "ChemicalCompound",
+      "EPA_HazardousAirPollutant"
+    ],
+    "MatchedPredicate": "alternateName",
+    "MatchedObjectValue": "Dichloroethyl Ether",
+    "Score": 0
+  },
+  {
+    "SubjectID": "1_Ethoxy_2_2_Ethoxyethoxy_Ethane",
+    "Name": "1-Ethoxy-2-(2-Ethoxyethoxy)Ethane",
+    "Types": [
+      "ChemicalCompound",
+      "EPA_HazardousAirPollutant"
+    ],
+    "MatchedPredicate": "alternateName",
+    "MatchedObjectValue": "Diethylene Glycol Diethyl Ether",
+    "Score": 0
+  },
+  {
+    "SubjectID": "1_Methoxy_2_2_Methoxyethoxy_Ethane",
+    "Name": "1-Methoxy-2-(2-Methoxyethoxy)Ethane",
+    "Types": [
+      "ChemicalCompound",
+      "EPA_HazardousAirPollutant"
+    ],
+    "MatchedPredicate": "alternateName",
+    "MatchedObjectValue": "Diethylene Glycol Dimethyl Ether",
+    "Score": 0
+  },
+  {
+    "SubjectID": "1_Methoxy_2_2_2_Methoxyethoxy_Ethoxy_Ethane",
+    "Name": "1-Methoxy-2-[2-(2-Methoxyethoxy)Ethoxy]Ethane",
+    "Types": [
+      "ChemicalCompound",
+      "EPA_HazardousAirPollutant"
+    ],
+    "MatchedPredicate": "alternateName",
+    "MatchedObjectValue": "Triethylene Glycol Dimethyl Ether",
+    "Score": 0
+  },
+  {
+    "SubjectID": "2_Methoxyethanol",
+    "Name": "2-Methoxyethanol",
+    "Types": [
+      "ChemicalCompound",
+      "EPA_HazardousAirPollutant"
+    ],
+    "MatchedPredicate": "alternateName",
+    "MatchedObjectValue": "Ethylene Glycol Methyl Ether",
+    "Score": 0
+  },
+  {
+    "SubjectID": "2_2_2_Butoxyethoxy_Ethoxy_Ethanol",
+    "Name": "2-[2-(2-Butoxyethoxy)Ethoxy]Ethanol",
+    "Types": [
+      "ChemicalCompound",
+      "EPA_HazardousAirPollutant"
+    ],
+    "MatchedPredicate": "alternateName",
+    "MatchedObjectValue": "Triglycol Monobutyl Ether",
+    "Score": 0
+  },
+  {
+    "SubjectID": "2_Methoxy_2_Methylpropane",
+    "Name": "2-methoxy-2-methylpropane",
+    "Types": [
+      "ChemicalCompound",
+      "EPA_HazardousAirPollutant"
+    ],
+    "MatchedPredicate": "alternateName",
+    "MatchedObjectValue": "Methyl Tert-Butyl Ether",
+    "Score": 0
+  },
+  {
+    "SubjectID": "Chloro_Chloromethoxy_Methane",
+    "Name": "Chloro(Chloromethoxy)Methane",
+    "Types": [
+      "ChemicalCompound",
+      "EPA_HazardousAirPollutant"
+    ],
+    "MatchedPredicate": "alternateName",
+    "MatchedObjectValue": "Bis(Chloromethyl)Ether",
+    "Score": 0
+  },
+  {
+    "SubjectID": "Chloro_Methoxy_Methane",
+    "Name": "Chloro(Methoxy)Methane",
+    "Types": [
+      "ChemicalCompound",
+      "EPA_HazardousAirPollutant"
+    ],
+    "MatchedPredicate": "alternateName",
+    "MatchedObjectValue": "Chloromethyl Methyl Ether",
+    "Score": 0
+  }
+]

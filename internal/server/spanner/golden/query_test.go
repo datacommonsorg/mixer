@@ -326,10 +326,9 @@ func TestSearchNodes(t *testing.T) {
 			t.Fatalf("SearchNodes error (%v): %v", c.goldenFile, err)
 		}
 
-		// Filter actual to top matches to avoid flaky low matches.
-		topResp := actual[:NUM_SEARCH_MATCHES]
+		actual = simplifySearchNodes(actual)
 
-		got, err := test.StructToJSON(topResp)
+		got, err := test.StructToJSON(actual)
 		if err != nil {
 			t.Fatalf("StructToJSON error (%v): %v", c.goldenFile, err)
 		}
@@ -352,4 +351,86 @@ func TestSearchNodes(t *testing.T) {
 		}
 	}
 
+}
+func TestSearchObjectValues(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+	ctx := context.Background()
+	_, filename, _, _ := runtime.Caller(0)
+	goldenDir := path.Join(path.Dir(filename), "query")
+
+	for _, c := range []struct {
+		query      string
+		predicates []string
+		types      []string
+		goldenFile string
+	}{
+		{
+			query:      "income",
+			goldenFile: "search_object_values_with_query.json",
+		},
+		{
+			query:      "income",
+			types:      []string{"StatisticalVariable"},
+			goldenFile: "search_object_values_with_query_and_type.json",
+		},
+		{
+			query:      "ether",
+			predicates: []string{"alternateName"},
+			goldenFile: "search_object_values_with_query_and_predicates.json",
+		},
+		{
+			query:      "ether",
+			predicates: []string{"alternateName"},
+			types:      []string{"ChemicalCompound"},
+			goldenFile: "search_object_values_with_query_predicates_and_types.json",
+		},
+	} {
+		actual, err := client.SearchObjectValues(ctx, c.query, c.predicates, c.types)
+		if err != nil {
+			t.Fatalf("TestObjectValues error (%v): %v", c.goldenFile, err)
+		}
+
+		actual = simplifySearchNodes(actual)
+
+		got, err := test.StructToJSON(actual)
+		if err != nil {
+			t.Fatalf("StructToJSON error (%v): %v", c.goldenFile, err)
+		}
+
+		if test.GenerateGolden {
+			err = test.WriteGolden(got, goldenDir, c.goldenFile)
+			if err != nil {
+				t.Fatalf("WriteGolden error (%v): %v", c.goldenFile, err)
+			}
+			continue
+		}
+
+		want, err := test.ReadGolden(goldenDir, c.goldenFile)
+		if err != nil {
+			t.Fatalf("ReadGolden error (%v): %v", c.goldenFile, err)
+		}
+
+		if diff := cmp.Diff(want, got); diff != "" {
+			t.Errorf("%v payload mismatch (-want +got):\n%s", c.goldenFile, diff)
+		}
+	}
+
+}
+
+// simplifySearchNodes simplifies search results for goldens.
+func simplifySearchNodes(results []*spanner.SearchNode) []*spanner.SearchNode {
+	if len(results) > NUM_SEARCH_MATCHES {
+		results = results[:NUM_SEARCH_MATCHES]
+	}
+
+	for _, r := range results {
+		r.Score = 0
+	}
+
+	return results
 }

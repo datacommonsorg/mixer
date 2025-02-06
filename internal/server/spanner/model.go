@@ -116,9 +116,12 @@ func (ts *TimeSeries) FilterByDate(date string) {
 
 // SearchNode struct represents a single row returned for node searches.
 type SearchNode struct {
-	SubjectID string   `spanner:"subject_id"`
-	Name      string   `spanner:"name"`
-	Types     []string `spanner:"types"`
+	SubjectID          string   `spanner:"subject_id"`
+	Name               string   `spanner:"name"`
+	Types              []string `spanner:"types"`
+	MatchedPredicate   string   `spanner:"predicate"`
+	MatchedObjectValue string   `spanner:"object_value"`
+	Score              float64  `spanner:"score"`
 }
 
 // SpannerConfig struct to hold the YAML configuration to a spanner database.

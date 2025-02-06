@@ -30,6 +30,9 @@ const (
 	MAX_HOPS = 10
 )
 
+// Predicates to search against if no predicates are provided.
+var defaultSearchPredicates = []string{"name", "description"}
+
 // GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction and returns a map.
 func (sc *SpannerClient) GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*Property, error) {
 	props := map[string][]*Property{}
@@ -248,6 +251,53 @@ func (sc *SpannerClient) SearchNodes(ctx context.Context, query string, types []
 				"types": types,
 			},
 		}
+	}
+
+	err := sc.queryAndCollect(
+		ctx,
+		stmt,
+		func() interface{} {
+			return &SearchNode{}
+		},
+		func(rowStruct interface{}) {
+			node := rowStruct.(*SearchNode)
+			nodes = append(nodes, node)
+		},
+	)
+	if err != nil {
+		return nodes, err
+	}
+
+	return nodes, nil
+}
+
+// SearchObjectValues searches object values for the specified predicates in the graph based on the query and optionally the types.
+// If the types array is empty, it searches across nodes of all types.
+// A maximum of 100 results are returned.
+func (sc *SpannerClient) SearchObjectValues(ctx context.Context, query string, predicates []string, types []string) ([]*SearchNode, error) {
+	var nodes []*SearchNode
+	if query == "" {
+		return nodes, nil
+	}
+
+	if len(predicates) == 0 {
+		predicates = defaultSearchPredicates
+	}
+
+	stmt := spanner.Statement{
+		SQL: statements.searchObjectValues,
+		Params: map[string]interface{}{
+			"query":      query,
+			"predicates": predicates,
+		},
+	}
+
+	// Interpolate the types filter if provided.
+	if len(types) > 0 {
+		stmt.SQL = fmt.Sprintf(stmt.SQL, statements.filterTypes)
+		stmt.Params["types"] = types
+	} else {
+		stmt.SQL = fmt.Sprintf(stmt.SQL, "")
 	}
 
 	err := sc.queryAndCollect(
