@@ -396,16 +396,22 @@ func searchNodesToNodeSearchResponse(nodes []*SearchNode) *pbv2.NodeSearchRespon
 	response := &pbv2.NodeSearchResponse{}
 
 	for _, node := range nodes {
-		response.Nodes = append(response.Nodes, searchNodeToEntityInfo(node))
+		response.Results = append(response.Results, searchNodeToNodeSearchResult(node))
 	}
 
 	return response
 }
 
-func searchNodeToEntityInfo(node *SearchNode) *pb.EntityInfo {
-	return &pb.EntityInfo{
-		Dcid:  node.SubjectID,
-		Name:  node.Name,
-		Types: node.Types,
+func searchNodeToNodeSearchResult(node *SearchNode) *pbv2.NodeSearchResult {
+	return &pbv2.NodeSearchResult{
+		Node: &pb.EntityInfo{
+			Dcid:  node.SubjectID,
+			Name:  node.Name,
+			Types: node.Types,
+		},
+		Match: &pb.PropertyValue{
+			Property: node.MatchedPredicate,
+			Value:    node.MatchedObjectValue,
+		},
 	}
 }
