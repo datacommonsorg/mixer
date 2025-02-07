@@ -43,6 +43,10 @@ var statements = struct {
 	searchNodesByQuery string
 	// Search nodes by query and type(s).
 	searchNodesByQueryAndTypes string
+	// Search object values by query, predicate and types.
+	searchObjectValues string
+	// Subquery to filter search results by types.
+	filterTypes string
 }{
 	getPropsBySubjectID: `
 		GRAPH DCGraph MATCH -[e:Edge
@@ -282,4 +286,14 @@ var statements = struct {
 		ORDER BY score + IF(n.name = @query, 1, 0) DESC, n.name ASC
 		LIMIT 100
 	`,
+	searchObjectValues: `
+		GRAPH DCGraph 
+		MATCH -[e:Edge 
+			WHERE e.predicate IN UNNEST(@predicates) AND SEARCH(e.object_value_tokenlist, @query)
+		]->(n:Node %s)
+		RETURN n.subject_id, n.name, n.types, e.predicate AS predicate, e.object_value AS object_value, SCORE(e.object_value_tokenlist, @query, enhance_query => TRUE) AS score
+		ORDER BY score + IF(e.object_value = @query, 1, 0) + IF(REGEXP_CONTAINS(n.subject_id, @query), 0.5, 0) desc, n.name ASC
+		LIMIT 100
+	`,
+	filterTypes: `WHERE ARRAY_INCLUDES_ANY(n.types, @types)`,
 }
