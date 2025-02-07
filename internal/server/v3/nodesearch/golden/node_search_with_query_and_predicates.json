@@ -1,0 +1,144 @@
+{
+  "results": [
+    {
+      "node": {
+        "name": "1,2-Diethoxyethane",
+        "types": [
+          "ChemicalCompound",
+          "EPA_HazardousAirPollutant"
+        ],
+        "dcid": "1_2_Diethoxyethane"
+      },
+      "match": {
+        "property": "alternateName",
+        "value": "Ethylene Glycol Diethyl Ether"
+      }
+    },
+    {
+      "node": {
+        "name": "1-Chloro-2-(2-Chloroethoxy)Ethane",
+        "types": [
+          "ChemicalCompound",
+          "EPA_HazardousAirPollutant"
+        ],
+        "dcid": "1_Chloro_2_2_Chloroethoxy_Ethane"
+      },
+      "match": {
+        "property": "alternateName",
+        "value": "Dichloroethyl Ether"
+      }
+    },
+    {
+      "node": {
+        "name": "1-Ethoxy-2-(2-Ethoxyethoxy)Ethane",
+        "types": [
+          "ChemicalCompound",
+          "EPA_HazardousAirPollutant"
+        ],
+        "dcid": "1_Ethoxy_2_2_Ethoxyethoxy_Ethane"
+      },
+      "match": {
+        "property": "alternateName",
+        "value": "Diethylene Glycol Diethyl Ether"
+      }
+    },
+    {
+      "node": {
+        "name": "1-Methoxy-2-(2-Methoxyethoxy)Ethane",
+        "types": [
+          "ChemicalCompound",
+          "EPA_HazardousAirPollutant"
+        ],
+        "dcid": "1_Methoxy_2_2_Methoxyethoxy_Ethane"
+      },
+      "match": {
+        "property": "alternateName",
+        "value": "Diethylene Glycol Dimethyl Ether"
+      }
+    },
+    {
+      "node": {
+        "name": "1-Methoxy-2-[2-(2-Methoxyethoxy)Ethoxy]Ethane",
+        "types": [
+          "ChemicalCompound",
+          "EPA_HazardousAirPollutant"
+        ],
+        "dcid": "1_Methoxy_2_2_2_Methoxyethoxy_Ethoxy_Ethane"
+      },
+      "match": {
+        "property": "alternateName",
+        "value": "Triethylene Glycol Dimethyl Ether"
+      }
+    },
+    {
+      "node": {
+        "name": "2-Methoxyethanol",
+        "types": [
+          "ChemicalCompound",
+          "EPA_HazardousAirPollutant"
+        ],
+        "dcid": "2_Methoxyethanol"
+      },
+      "match": {
+        "property": "alternateName",
+        "value": "Ethylene Glycol Methyl Ether"
+      }
+    },
+    {
+      "node": {
+        "name": "2-[2-(2-Butoxyethoxy)Ethoxy]Ethanol",
+        "types": [
+          "ChemicalCompound",
+          "EPA_HazardousAirPollutant"
+        ],
+        "dcid": "2_2_2_Butoxyethoxy_Ethoxy_Ethanol"
+      },
+      "match": {
+        "property": "alternateName",
+        "value": "Triglycol Monobutyl Ether"
+      }
+    },
+    {
+      "node": {
+        "name": "2-methoxy-2-methylpropane",
+        "types": [
+          "ChemicalCompound",
+          "EPA_HazardousAirPollutant"
+        ],
+        "dcid": "2_Methoxy_2_Methylpropane"
+      },
+      "match": {
+        "property": "alternateName",
+        "value": "Methyl Tert-Butyl Ether"
+      }
+    },
+    {
+      "node": {
+        "name": "Chloro(Chloromethoxy)Methane",
+        "types": [
+          "ChemicalCompound",
+          "EPA_HazardousAirPollutant"
+        ],
+        "dcid": "Chloro_Chloromethoxy_Methane"
+      },
+      "match": {
+        "property": "alternateName",
+        "value": "Bis(Chloromethyl)Ether"
+      }
+    },
+    {
+      "node": {
+        "name": "Chloro(Methoxy)Methane",
+        "types": [
+          "ChemicalCompound",
+          "EPA_HazardousAirPollutant"
+        ],
+        "dcid": "Chloro_Methoxy_Methane"
+      },
+      "match": {
+        "property": "alternateName",
+        "value": "Chloromethyl Methyl Ether"
+      }
+    }
+  ]
+}

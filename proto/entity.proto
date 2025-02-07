@@ -77,3 +77,8 @@ message NodePropertyValues {
   string node = 1;
   repeated EntityInfo values = 2;
 }
+
+message PropertyValue {
+  string property = 1;
+  string value = 2;
+}

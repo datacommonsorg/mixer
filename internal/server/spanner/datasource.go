@@ -96,7 +96,7 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 
 // NodeSearch searches nodes in the spanner graph.
 func (sds *SpannerDataSource) NodeSearch(ctx context.Context, req *pbv2.NodeSearchRequest) (*pbv2.NodeSearchResponse, error) {
-	nodes, err := sds.client.SearchNodes(ctx, req.Query, req.Types)
+	nodes, err := sds.client.SearchObjectValues(ctx, req.Query, req.Predicates, req.Types)
 	if err != nil {
 		return nil, fmt.Errorf("error searching nodes: %v", err)
 	}
