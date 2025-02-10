@@ -51,15 +51,30 @@ func TestV3NodeSearch(t *testing.T) {
 			{
 				req: &pbv2.NodeSearchRequest{
 					Query: "income",
-					Types: []string{"StatisticalVariable"},
 				},
-				goldenFile: "node_search_with_type.json",
+				goldenFile: "node_search_with_query.json",
 			},
 			{
 				req: &pbv2.NodeSearchRequest{
 					Query: "income",
+					Types: []string{"StatisticalVariable"},
 				},
-				goldenFile: "node_search_without_type.json",
+				goldenFile: "node_search_with_query_and_type.json",
+			},
+			{
+				req: &pbv2.NodeSearchRequest{
+					Query:      "ether",
+					Predicates: []string{"alternateName"},
+				},
+				goldenFile: "node_search_with_query_and_predicates.json",
+			},
+			{
+				req: &pbv2.NodeSearchRequest{
+					Query:      "ether",
+					Predicates: []string{"alternateName"},
+					Types:      []string{"ChemicalCompound"},
+				},
+				goldenFile: "node_search_with_query_predicates_and_types.json",
 			},
 		} {
 			goldenFile := c.goldenFile
@@ -70,9 +85,7 @@ func TestV3NodeSearch(t *testing.T) {
 			}
 
 			// Filter resp to top matches to avoid flaky low matches.
-			topResp := &pbv2.NodeSearchResponse{
-				Nodes: resp.Nodes[:NUM_SEARCH_MATCHES],
-			}
+			topResp := simplifyNodeSearchResponse(resp)
 
 			if latencyTest {
 				continue
@@ -99,4 +112,11 @@ func TestV3NodeSearch(t *testing.T) {
 	); err != nil {
 		t.Errorf("TestDriver() for TestV3NodeSearch = %s", err)
 	}
+}
+
+func simplifyNodeSearchResponse(resp *pbv2.NodeSearchResponse) *pbv2.NodeSearchResponse {
+	if len(resp.Results) > NUM_SEARCH_MATCHES {
+		resp.Results = resp.Results[:NUM_SEARCH_MATCHES]
+	}
+	return resp
 }
