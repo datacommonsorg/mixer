@@ -1,5 +1,15 @@
 [
   {
+    "SubjectID": "income",
+    "Name": "income",
+    "Types": [
+      "Property"
+    ],
+    "MatchedPredicate": "name",
+    "MatchedObjectValue": "income",
+    "Score": 0
+  },
+  {
     "SubjectID": "dc/g/SDGSEAGPCPRA_educationalAttainment-SDGEducationLevEnumISCED112_sdgincomeWealthQuantile",
     "Name": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile",
     "Types": [
@@ -187,16 +197,6 @@
     ],
     "MatchedPredicate": "name",
     "MatchedObjectValue": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Primary, Income Wealth Quantile = Quantile 3",
-    "Score": 0
-  },
-  {
-    "SubjectID": "dc/g/SDGSEAGPCPRA_educationalAttainment-SDGEducationLevEnumISCED111_sdgincomeWealthQuantile-SDGIncomeWealthQuantileEnumQ3_sdgurbanisation",
-    "Name": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Primary, Income Wealth Quantile = Quantile 3, Urbanisation",
-    "Types": [
-      "StatVarGroup"
-    ],
-    "MatchedPredicate": "name",
-    "MatchedObjectValue": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Primary, Income Wealth Quantile = Quantile 3, Urbanisation",
     "Score": 0
   }
 ]
