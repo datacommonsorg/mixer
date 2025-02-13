@@ -16,7 +16,6 @@ package datasources
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
@@ -95,19 +94,61 @@ func (ds *DataSources) Observation(ctx context.Context, in *pbv2.ObservationRequ
 }
 
 func (ds *DataSources) NodeSearch(ctx context.Context, in *pbv2.NodeSearchRequest) (*pbv2.NodeSearchResponse, error) {
-	if len(ds.sources) == 0 {
-		return nil, fmt.Errorf("no sources found")
+	errGroup, errCtx := errgroup.WithContext(ctx)
+	dsRespChan := []chan *pbv2.NodeSearchResponse{}
+
+	for _, source := range ds.sources {
+		respChan := make(chan *pbv2.NodeSearchResponse, 1)
+		errGroup.Go(func() error {
+			defer close(respChan)
+			resp, err := (*source).NodeSearch(errCtx, in)
+			if err != nil {
+				return err
+			}
+			respChan <- resp
+			return nil
+		})
+		dsRespChan = append(dsRespChan, respChan)
 	}
-	// Returning only the first one right now.
-	// TODO: Execute in parallel and returned merged response.
-	return (*ds.sources[0]).NodeSearch(ctx, in)
+
+	if err := errGroup.Wait(); err != nil {
+		return nil, err
+	}
+
+	allResp := []*pbv2.NodeSearchResponse{}
+	for _, respChan := range dsRespChan {
+		allResp = append(allResp, <-respChan)
+	}
+
+	return merger.MergeMultiNodeSearch(allResp)
 }
 
 func (ds *DataSources) Resolve(ctx context.Context, in *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
-	if len(ds.sources) == 0 {
-		return nil, fmt.Errorf("no sources found")
+	errGroup, errCtx := errgroup.WithContext(ctx)
+	dsRespChan := []chan *pbv2.ResolveResponse{}
+
+	for _, source := range ds.sources {
+		respChan := make(chan *pbv2.ResolveResponse, 1)
+		errGroup.Go(func() error {
+			defer close(respChan)
+			resp, err := (*source).Resolve(errCtx, in)
+			if err != nil {
+				return err
+			}
+			respChan <- resp
+			return nil
+		})
+		dsRespChan = append(dsRespChan, respChan)
 	}
-	// Returning only the first one right now.
-	// TODO: Execute in parallel and returned merged response.
-	return (*ds.sources[0]).Resolve(ctx, in)
+
+	if err := errGroup.Wait(); err != nil {
+		return nil, err
+	}
+
+	allResp := []*pbv2.ResolveResponse{}
+	for _, respChan := range dsRespChan {
+		allResp = append(allResp, <-respChan)
+	}
+
+	return merger.MergeMultiResolve(allResp), nil
 }

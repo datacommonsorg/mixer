@@ -15,7 +15,11 @@
 // Query statements used by the SpannerClient.
 package spanner
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/datacommonsorg/mixer/internal/merger"
+)
 
 // SQL / GQL statements executed by the SpannerClient
 var statements = struct {
@@ -267,16 +271,16 @@ var statements = struct {
 		ON 
 			result.object_id = obs.observation_about
 	`,
-	searchNodesByQuery: `
+	searchNodesByQuery: fmt.Sprintf(`
 		GRAPH DCGraph
 		MATCH (n:Node)
 		WHERE 
 			SEARCH(n.name_tokenlist, @query)
 		RETURN n.subject_id, n.name, n.types, SCORE(n.name_tokenlist, @query, enhance_query => TRUE) AS score 
 		ORDER BY score + IF(n.name = @query, 1, 0) DESC, n.name ASC
-		LIMIT 100
-	`,
-	searchNodesByQueryAndTypes: `
+		LIMIT %d
+	`, merger.MAX_SEARCH_RESULTS),
+	searchNodesByQueryAndTypes: fmt.Sprintf(`
 		GRAPH DCGraph
 		MATCH (n:Node)
 		WHERE 
@@ -284,8 +288,8 @@ var statements = struct {
 			AND ARRAY_INCLUDES_ANY(n.types, @types)
 		RETURN n.subject_id, n.name, n.types, SCORE(n.name_tokenlist, @query, enhance_query => TRUE) AS score
 		ORDER BY score + IF(n.name = @query, 1, 0) DESC, n.name ASC
-		LIMIT 100
-	`,
+		LIMIT %d
+	`, merger.MAX_SEARCH_RESULTS),
 	searchObjectValues: `
 		GRAPH DCGraph 
 		MATCH -[e:Edge 
@@ -293,7 +297,7 @@ var statements = struct {
 		]->(n:Node %s)
 		RETURN n.subject_id, n.name, n.types, e.predicate AS predicate, e.object_value AS object_value, SCORE(e.object_value_tokenlist, @query, enhance_query => TRUE) AS score
 		ORDER BY score + IF(e.object_value = @query, 1, 0) + IF(REGEXP_CONTAINS(n.subject_id, @query), 0.5, 0) desc, n.name ASC
-		LIMIT 100
+		LIMIT %d
 	`,
 	filterTypes: `WHERE ARRAY_INCLUDES_ANY(n.types, @types)`,
 }
