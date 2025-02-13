@@ -431,6 +431,7 @@ func MergeSearchStatVarResponse(primary, secondary *pb.SearchStatVarResponse) *p
 }
 
 // Merges multiple V2 NodeSearchResponses.
+// Cycles through responses in order of priority and add results one by one.
 func MergeMultiNodeSearch(allResp []*pbv2.NodeSearchResponse) (*pbv2.NodeSearchResponse, error) {
 	if len(allResp) == 0 {
 		return &pbv2.NodeSearchResponse{}, nil
