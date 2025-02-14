@@ -16,6 +16,7 @@ package dispatcher
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"google.golang.org/protobuf/proto"
@@ -49,10 +50,22 @@ type RequestContext struct {
 	CurrentResponse proto.Message
 }
 
+// Outcome represents the result of a processing step.
+type Outcome int
+
+const (
+	// Continue indicates that processing should continue.
+	// This should be the default outcome of most processing steps.
+	Continue Outcome = iota
+	// Done indicates that processing should stop.
+	// With this outcome, the current response is returned immediately.
+	Done
+)
+
 // Processor interface defines methods for performing pre and post processing operations.
 type Processor interface {
-	PreProcess(*RequestContext) error
-	PostProcess(*RequestContext) error
+	PreProcess(*RequestContext) (Outcome, error)
+	PostProcess(*RequestContext) (Outcome, error)
 }
 
 // Dispatcher struct handles requests by dispatching requests to various processors and datasources as appropriate.
@@ -71,8 +84,17 @@ func NewDispatcher(processors []*Processor, sources *datasources.DataSources) *D
 // handle handles a request lifecycle - pre-processing, core handling and post-processing.
 func (dispatcher *Dispatcher) handle(requestContext *RequestContext, handler func(context.Context, proto.Message) (proto.Message, error)) (proto.Message, error) {
 	for _, processor := range dispatcher.processors {
-		if err := (*processor).PreProcess(requestContext); err != nil {
+		outcome, err := (*processor).PreProcess(requestContext)
+		if err != nil {
 			return nil, err
+		}
+		switch outcome {
+		case Done:
+			return requestContext.CurrentResponse, nil
+		case Continue:
+			continue
+		default:
+			return nil, fmt.Errorf("invalid PreProcess outcome %v", outcome)
 		}
 	}
 
@@ -83,9 +105,19 @@ func (dispatcher *Dispatcher) handle(requestContext *RequestContext, handler fun
 
 	requestContext.CurrentResponse = response
 
-	for _, processor := range dispatcher.processors {
-		if err := (*processor).PostProcess(requestContext); err != nil {
+	for i := len(dispatcher.processors) - 1; i >= 0; i-- {
+		processor := dispatcher.processors[i]
+		outcome, err := (*processor).PostProcess(requestContext)
+		if err != nil {
 			return nil, err
+		}
+		switch outcome {
+		case Done:
+			return requestContext.CurrentResponse, nil
+		case Continue:
+			continue
+		default:
+			return nil, fmt.Errorf("invalid PostProcess outcome %v", outcome)
 		}
 	}
 
