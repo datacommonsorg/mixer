@@ -31,6 +31,54 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Bethel",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0206520",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Coffman Cove",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0216360",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Klawock",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0240400",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Metlakatla",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0248870",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Naukati Bay",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0252845",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Port Alexander",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0262510",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Arizona",
           "types": [
             "AdministrativeArea1",
@@ -38,6 +86,14 @@
           ],
           "dcid": "geoId/04",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Golden Valley",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0428195",
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Arkansas",
@@ -49,12 +105,29 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Big Flat",
+          "types": [
+            "City",
+            "Town"
+          ],
+          "dcid": "geoId/0505980",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "California",
           "types": [
             "AdministrativeArea1",
             "State"
           ],
           "dcid": "geoId/06",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Tehachapi",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0678092",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
@@ -103,6 +176,438 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Acacia Villas",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1200075",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Allentown",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1200800",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Aucilla",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1202575",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Berrydale",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1205825",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Black Hammock",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1206670",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Brownsdale",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1208925",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Cabana Colony",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1209655",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Cobbtown",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1213125",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Cocoa West",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1213225",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "East Milton",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1219275",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Fort Denaud",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1223730",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Four Corners",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1224581",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Garcon Point",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1225392",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Goldenrod",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1226475",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Grenelefe",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1227635",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Heritage Pines",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1229385",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Holley",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1231275",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Island Walk",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1234185",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Kenwood Estates",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1236220",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Lake Mystic",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1238519",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Lakewood Gardens",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1239056",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Lemon Grove",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1240100",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Limestone",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1240525",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Meadow Oaks",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1243785",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Montura",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1246520",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Moon Lake",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1246540",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Mount Carmel",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1247000",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Mulat",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1247175",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Munson",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1247300",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Oriole Beach",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1252250",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Pasadena Hills",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1255305",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Pea Ridge",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1255532",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Pine Air",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1256475",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Pine Level",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1256955",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Pioneer",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1257320",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Placid Lakes, Florida",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1257407",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Point Baker",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1257908",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Quail Ridge",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1259311",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "River Ridge",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1260835",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "San Castle",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1263435",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Seville",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1265200",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "South Patrick Shores",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1267725",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Springhill",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1268365",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Spring Ridge",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1268435",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Steinhatchee",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1268625",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Sumatra",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1269025",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Tiger Point",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1271842",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Verona Walk",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1274235",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Wallace",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1274975",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Watergate",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1275275",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Whitfield",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1277470",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Wiscon",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1278340",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Woodlawn Beach",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1278500",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "World Golf Village",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1278740",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Georgia",
           "types": [
             "AdministrativeArea1",
@@ -112,6 +617,86 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Canoochee",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1312960",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Cedar Springs",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1314472",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Cherry Log",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1315844",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Dewy Rose",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1322724",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Eagle Grove",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1324964",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Empire",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1327512",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Henderson",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1337910",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Heron Bay",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1338105",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Lakeview",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1344900",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Talahi Island",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1375239",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Hawaii",
           "types": [
             "AdministrativeArea1",
@@ -119,6 +704,46 @@
           ],
           "dcid": "geoId/15",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Haleiwa",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1510750",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Kahaluu",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1521200",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Kainaliu",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1524050",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Maili",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1547300",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Makaha",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1547450",
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Idaho",
@@ -139,6 +764,107 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Belleville Township",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1704858",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Brookport",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1708706",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Coyne Center",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1717077",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "East Cape Girardeau",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/1721605",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Fairmont City",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/1724933",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Grandwood Park",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1730900",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Kaskaskia",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/1739129",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Keithsburg",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1739298",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Long Lake",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1744550",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Quincy Township",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1762380",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Tilden",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/1775263",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Warren",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/1778851",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Indiana",
           "types": [
             "AdministrativeArea1",
@@ -155,6 +881,46 @@
           ],
           "dcid": "geoId/19",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Anderson",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1902035",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Bentley",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1905870",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Loveland",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1946785",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "River Sioux",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1967530",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Rochester",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/1967890",
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Kansas",
@@ -175,6 +941,102 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Beech Grove",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2104978",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Doe Valley",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2121844",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Elk Creek",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2124328",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Emlyn",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2124922",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Farley",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2126528",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Farmers",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2126560",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Garrison",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2130232",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Mayking",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2150952",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Millstone",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2152464",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Payne Gap",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2159592",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Rosine",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2166846",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Westport",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2181948",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Louisiana",
           "types": [
             "AdministrativeArea1",
@@ -182,6 +1044,142 @@
           ],
           "dcid": "geoId/22",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Banks Springs",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2204230",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Bayou Blue",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2205175",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Bayou Country Club",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2205260",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Bayou Goula",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2205350",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Choctaw",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2215150",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Eden Isle",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2222722",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Grand Point",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2230900",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Hester",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2234085",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Lafourche Crossing",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2240878",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Lakeview",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2241645",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Paulina",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2259375",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Pleasure Bend",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2261160",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Presquille",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2262510",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Reddell",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2263890",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Rock Hill",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2265535",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Sugartown",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2273570",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Wallace Ridge",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2279310",
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Maine",
@@ -202,6 +1200,14 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Tantallon, Maryland",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2476825",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
           "name": "Massachusetts",
           "types": [
             "AdministrativeArea1",
@@ -211,6 +1217,249 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Abington",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2500135",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Arlington",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2501640",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Brookfield",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2509070",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Burlington",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2509875",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Cheshire",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2513310",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Coskata",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/2515355",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Danvers",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2516285",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Holbrook",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2530420",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Hopkinton",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2531050",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Hull",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2531680",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Lexington",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2535250",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Longmeadow",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2536335",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Lynnfield",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2537595",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Marblehead",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2538435",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Maynard",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2539660",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Milton",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2541725",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Nahant",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2543615",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Needham",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2544140",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Norwood",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2550285",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Petersham",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2553085",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Pingryville, Massachusetts",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/2553890",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Randolph",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2555990",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Reading",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2556165",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Saugus",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2560050",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Shawkemo",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/2560890",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Somerset",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2562465",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Southfield",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2563840",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Swampscott",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2568680",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Wakefield",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2572250",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Winchester",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2580545",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Michigan",
           "types": [
             "AdministrativeArea1",
@@ -218,6 +1467,70 @@
           ],
           "dcid": "geoId/26",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Carp Lake",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2613480",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Fostoria",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2629920",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Jasper",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2641540",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "K. I. Sawyer",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2643558",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Levering",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2647240",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Presque Isle Harbor",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2666343",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "St. James",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2670900",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Vineyard Lake",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2682490",
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Minnesota",
@@ -238,6 +1551,22 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Arnold Line",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2802060",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Rawls Springs",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2861080",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Missouri",
           "types": [
             "AdministrativeArea1",
@@ -245,6 +1574,14 @@
           ],
           "dcid": "geoId/29",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Big Spring",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/2905608",
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Montana",
@@ -256,6 +1593,54 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Amsterdam",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3001525",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Martinsdale",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3048175",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Maxville",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3048625",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Niarada",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3053725",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Swan Lake",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3072850",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Turah",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3075175",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Nebraska",
           "types": [
             "AdministrativeArea1",
@@ -263,6 +1648,94 @@
           ],
           "dcid": "geoId/31",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Aten",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3102480",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Belmar",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3104055",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Holmesville",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3122780",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Lakeview",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3126150",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "La Platte",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3126315",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Lorenzo",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3129120",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Venice",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3150265",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Wann",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3151350",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "White Clay",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3152855",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Woodland Park",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3153580",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Yankee Hill",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3154020",
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Nevada",
@@ -274,6 +1747,30 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Cal-Nev-Ari",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3208600",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Gardnerville Ranchos",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3226500",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Johnson Lane",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3237190",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "New Hampshire",
           "types": [
             "AdministrativeArea1",
@@ -281,6 +1778,214 @@
           ],
           "dcid": "geoId/33",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Alton",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3300980",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Antrim",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3301620",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Ashland",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3301940",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Bartlett",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3303620",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Belmont",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3304660",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Bethlehem",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3305380",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Bradford",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3306900",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Bristol",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3307620",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Canaan",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3308900",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Enfield",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3324260",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Farmington",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3325940",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Goffstown",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3329780",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Greenville",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3331860",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Hampton",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3332980",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Hancock",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3333620",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Henniker",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3335460",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Hillsborough",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3336020",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Hudson",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3337860",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Jaffrey",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3338420",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Lincoln",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3341780",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Newfields",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3351300",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "New Hampton",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3351460",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Portsmouth",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3362900",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Troy",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3377300",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Walpole",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3378340",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Whitefield",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3384340",
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "New Jersey",
@@ -292,6 +1997,14 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Elwood-Magnolia, New Jersey",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3421435",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "New Mexico",
           "types": [
             "AdministrativeArea1",
@@ -299,6 +2012,38 @@
           ],
           "dcid": "geoId/35",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Pulpotio Bareas",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3560205",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "San Ysidro",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3571015",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Spencerville",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3574660",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "West Hammond",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3584200",
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "New York",
@@ -310,6 +2055,70 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Chautauqua",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3614058",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Chazy",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3614102",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Crystal Beach",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3619308",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Merritt Park",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3646750",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Romulus",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3663429",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Sunset Bay",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3672246",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Taconic Shores",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3673057",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Titusville",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3674017",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "North Carolina",
           "types": [
             "AdministrativeArea1",
@@ -317,6 +2126,174 @@
           ],
           "dcid": "geoId/37",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Anson County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/37007",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Brunswick County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/37019",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Carteret County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/37031",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Bath",
+          "types": [
+            "City",
+            "Town"
+          ],
+          "dcid": "geoId/3703840",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Granville County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/37077",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Guilford County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/37081",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Halifax County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/37083",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Martin County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/37117",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Mecklenburg County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/37119",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Perquimans County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/37143",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Surry County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/37171",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Tyrrell County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/37177",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Wake County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/37183",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Halifax",
+          "types": [
+            "City",
+            "Town"
+          ],
+          "dcid": "geoId/3728920",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Hillsborough",
+          "types": [
+            "City",
+            "Town"
+          ],
+          "dcid": "geoId/3731620",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Mount Airy",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3744800",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Pilot Mountain",
+          "types": [
+            "City",
+            "Town"
+          ],
+          "dcid": "geoId/3751820",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Thomasville",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3767420",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Wakulla",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3770580",
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "North Dakota",
@@ -337,6 +2314,86 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Brilliant",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3908812",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Dublin",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3922694",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Kanauga",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3939564",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Kinsman Center",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3940507",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Lake Lakengren",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3941373",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Lake Seneca",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3941500",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Lake Tomahawk",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3941597",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "McKinley Heights",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3946144",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Morgandale",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3952178",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Twinsburg Heights",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/3978078",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Oklahoma",
           "types": [
             "AdministrativeArea1",
@@ -344,6 +2401,38 @@
           ],
           "dcid": "geoId/40",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Deer Lick",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4019665",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Drowning Creek",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4021676",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Gideon",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4029300",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "White Water",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4080912",
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Oregon",
@@ -355,6 +2444,14 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Gladstone",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4129000",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Pennsylvania",
           "types": [
             "AdministrativeArea1",
@@ -364,6 +2461,31 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Birdsboro",
+          "types": [
+            "Borough",
+            "City"
+          ],
+          "dcid": "geoId/4206504",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Dorneyville",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4219584",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Sun Valley",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4275432",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Rhode Island",
           "types": [
             "AdministrativeArea1",
@@ -371,6 +2493,15 @@
           ],
           "dcid": "geoId/44",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Rockville, Rhode Island",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/4461880",
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "South Carolina",
@@ -391,6 +2522,14 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Mission",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4642940",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Tennessee",
           "types": [
             "AdministrativeArea1",
@@ -409,6 +2548,295 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Alto Bonito Heights",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4802194",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Amaya",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4803008",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Arroyo Gardens",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4804176",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "B and E",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4805520",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Bonanza Hills",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4809310",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Denton County",
+          "types": [
+            "AdministrativeArea2",
+            "County"
+          ],
+          "dcid": "geoId/48121",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Chula Vista",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4814880",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Colorado Acres",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4816110",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "El Castillo",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4822892",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Eugenio Saenz",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4824738",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Four Points",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4827124",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Hillside Acres",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4834105",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Hilltop",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4834133",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "La Coma",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4840100",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Lake Bryan",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4840462",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Las Haciendas",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4841565",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Las Palmas II",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4841580",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Las Pilas",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4841582",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "La Tina Ranch",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4841660",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Linn",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4842916",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Loma Grande",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4843458",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Los Arrieros",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4844075",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Los Lobos",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4844142",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Los Veteranos I",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4844167",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Myrtle Springs",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4850232",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Olivia Lopez de Gutierrez",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4853946",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Orason",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4854186",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Pueblo East",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4859794",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Quail Creek",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4860026",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Ramireno",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4860380",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Santa Rosa",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4865774",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Siesta Acres",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4867775",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Sunset Acres",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4871289",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Travis Ranch",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4873562",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Valle Verde",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4874668",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "West Alto Bonito",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4877336",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Utah",
           "types": [
             "AdministrativeArea1",
@@ -416,6 +2844,14 @@
           ],
           "dcid": "geoId/49",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Wolf Creek",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/4984950",
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Vermont",
@@ -436,6 +2872,15 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Fredericksburg",
+          "types": [
+            "AdministrativeArea2",
+            "City"
+          ],
+          "dcid": "geoId/5129744",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
           "name": "Washington",
           "types": [
             "AdministrativeArea1",
@@ -443,6 +2888,22 @@
           ],
           "dcid": "geoId/53",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Skamokawa Valley",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/5364755",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Willapa",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/5378995",
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "West Virginia",
@@ -463,6 +2924,22 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Hager City",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/5531975",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Muscoda (town), Wisconsin",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/5555225",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Wyoming",
           "types": [
             "AdministrativeArea1",
@@ -470,6 +2947,14 @@
           ],
           "dcid": "geoId/56",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Urie",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/5679270",
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Puerto Rico",
@@ -8479,6 +10964,39 @@
           ],
           "dcid": "geoId/cz29301",
           "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Summersville School District 79",
+          "types": [
+            "ElementarySchoolDistrict",
+            "SchoolDistrict"
+          ],
+          "dcid": "geoId/sch1738190",
+          "provenanceId": "dc/base/NCES_SchoolDistrict"
+        },
+        {
+          "name": "Watertown",
+          "types": [
+            "SchoolDistrict"
+          ],
+          "dcid": "geoId/sch2512180",
+          "provenanceId": "dc/base/NCES_SchoolDistrict"
+        },
+        {
+          "name": "Huron School District",
+          "types": [
+            "SchoolDistrict"
+          ],
+          "dcid": "geoId/sch2618930",
+          "provenanceId": "dc/base/NCES_SchoolDistrict"
+        },
+        {
+          "name": "Finneytown Local",
+          "types": [
+            "SchoolDistrict"
+          ],
+          "dcid": "geoId/sch3904733",
+          "provenanceId": "dc/base/NCES_SchoolDistrict"
         },
         {
           "name": "grid_1/26_-81",
@@ -22648,6 +25166,4286 @@
           ],
           "dcid": "usc/WestRegion",
           "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Eleele",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q10926997",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Columbus Circle",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q109968",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Fredericksburg, Crawford County, Pennsylvania",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q1132155",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Elverson",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q1134239",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Chesterbrook",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q1134243",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "East York",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q1134726",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Bliss",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q11680243",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Speers",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q1183340",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Rheems",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q1183794",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Quentin",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q1185555",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Rothsville",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q1186963",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Hasson Heights",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q1189276",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Hyannis Port",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q12060635",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Newton Centre",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q12064016",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Blaine",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12156164",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12530186",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12535419",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12535762",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12536050",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12536243",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12536268",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12537795",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12538082",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12538332",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12538422",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12538663",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12539468",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12539515",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12540592",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12541055",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12541090",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12546631",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12547673",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12547674",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12548032",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12548033",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12549210",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12549229",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12549482",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12549498",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12549538",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12549868",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12551519",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12551520",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12551704",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12551744",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12551881",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12551910",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12551911",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12552054",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12552097",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12552098",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12552099",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12552126",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12552762",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12552963",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12553746",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12554061",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12554391",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12554801",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12555948",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12556472",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12556475",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12556476",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12556477",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12556566",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12557873",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12558974",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12559006",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12559406",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12559407",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12559677",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12560253",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12560411",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12560740",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12560957",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12561266",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562341",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562436",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562437",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562440",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562441",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562442",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562446",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562448",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562450",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562451",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562453",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562455",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562456",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562458",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562462",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562463",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562464",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562465",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562466",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562467",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562469",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562470",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562473",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562474",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562476",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562532",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562598",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12562988",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12563046",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12563727",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12563728",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12563729",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12564949",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12564950",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12564951",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12564952",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12564953",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12564954",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12564955",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12564956",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12564957",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12564958",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12564959",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12564963",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12566128",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12566375",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12566452",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12568388",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12568626",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12568997",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12569148",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12569520",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12569522",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12571390",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12571796",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12571804",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12571806",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Edwards AFB",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q12630446",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q1266611",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Barney",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q12887781",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Sugar Grove, West Virginia",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q14120999",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q14206789",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q14214255",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Elohim City, Oklahoma",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q14691920",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Nichols Farms Historic District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q14715058",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Stafford Hollow, Connecticut",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q14715123",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q15058363",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q15120508",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q15120509",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q15134368",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Avenel-Hillandale, Maryland",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q15194742",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Bermuda, Louisiana",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q15198572",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Bethel, Rhode Island",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q15198728",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Burdickville, Rhode Island",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q15205912",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Canonchet, Rhode Island",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q15207172",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Fairview Acres, Louisiana",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q15217236",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Hustontown, Pennsylvania",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q15227115",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Kinzua Township",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q15238569",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Mapusaga, American Samoa",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q15246100",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Marquand Township",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q15248610",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Mississippi State",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q15253671",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "South Hopkinton, Rhode Island",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q15278692",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Spring Ridge, Louisiana",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q15278957",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q15526152",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q15526156",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q15526164",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q15832689",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Mississippi Valley State, Mississippi",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q16085319",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Stansberry Lake",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q16107989",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Lofall",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q16108520",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Belknap, Rhode Island",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q16254100",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Clarkson (CDP), New York",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q16258497",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Irasburg",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q16301164",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Bowdoinham",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q16301197",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Eagle Lake",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q16301608",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Lubec",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q16302406",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Skagway",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q16302941",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Stoneham",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q16302962",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Damariscotta",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q16555137",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Hamlin (CDP), New York",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q16822228",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Arcadia, Rhode Island",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q16868974",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Conway, Louisiana",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q16889809",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "East Litchfield Village, Litchfield, Connecticut",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q16890817",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "East Wyoming, Rhode Island",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q16890830",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Eunice, Arkansas",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q16891170",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Graniteville, Rhode Island",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q16891843",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Heislerville, New Jersey",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q16892185",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Indian Lake Estates, Florida",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q16892643",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Kierieian, Rhode Island",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q16893410",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Stoneleigh-Rodgers Forge, Maryland",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q16900742",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "The Anchorage, Rhode Island",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q16901503",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Truxno, Louisiana",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q16902009",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Vegas Creek, Nevada",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q16902582",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Waterloo, Montana",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q16902990",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Willard Beach",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q16903446",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Kenyon, Rhode Island",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q16909916",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Frog City",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q16934016",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Woodville",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q16948305",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Locustville",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q16948757",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Brickbottom",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q16953655",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Centerville-Moscow, Rhode Island",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q16956359",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Glenmoore",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q16994169",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "West Plymouth, Massachusetts",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q17035872",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Pea Ridge, Shelby County, Alabama",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q17108833",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "New Shannock Switch, Rhode Island",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q17109465",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Slocum, Rhode Island",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q17109541",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q1742031",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Beaver, Kentucky",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q17508782",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Barberville, Rhode Island",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q17514905",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Echo, Louisiana",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q17515231",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Afono",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q1773804",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Alofau",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q1773810",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Afao",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q1773822",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Mongmong-Toto-Maite",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q1780393",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Chinese Americans in Dallas-Fort Worth",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q18124477",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Felchville, Massachusetts",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q18150689",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Orange Grove, Maryland",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q18158241",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Westlake, Natchitoches Parish, Louisiana",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q18217680",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Spring Grove, Illinois",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q1829014",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Mella, Nebraska",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q18343663",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Guilford Lake, Ohio",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q18357488",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Yosemite Community College District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q18706131",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Butte City, Amador County, California",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q19460752",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Taulaga",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q1982843",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Hagewood, Louisiana",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q19880137",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20483985",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20483988",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20484024",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20484032",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20484171",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20484190",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20484211",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20484258",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20484369",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20484423",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20484433",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20484436",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20484570",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20484637",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20484762",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20484859",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20484864",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20484870",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20484993",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485010",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485019",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485029",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485042",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485073",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485163",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485203",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485258",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485371",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485381",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485400",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485501",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485512",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485544",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485548",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485550",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485693",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485695",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485731",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485756",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485825",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485844",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485881",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485886",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485895",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485900",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485950",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485981",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20485984",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20486033",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20486037",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20575854",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Dolvoaua, Nebraska",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q20707912",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Westmoreland (CDP), New York",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q20880920",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Okawville, Illinois",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q2102474",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Trout, Louisiana",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q21196642",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Charmwood, Missouri",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q21197479",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Philadelphus, North Carolina",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q21261498",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "West Vaifanua County",
+          "types": [
+            "AdministrativeArea2"
+          ],
+          "dcid": "wikidataId/Q21847665",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Shepardsfield Plantation",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q22030579",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Ewa District, Hawaii",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q22058947",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Pottersville",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q22074938",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Palermo, New Jersey",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q22083086",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Puerto Rico",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q23012047",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Lemmon Valley–Golden Valley",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q2323070",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Fox Crossing, Wisconsin",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q24062064",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Parma, New York",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q2415492",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Schroon Lake",
+          "types": [
+            "City"
+          ],
+          "dcid": "wikidataId/Q24204280",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Albuquerque, Texas",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q24260754",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Piti",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q2482463",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Talofofo",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q2482468",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Sinajana",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q2482489",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Joyuda",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q25037434",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Seaville, New Jersey",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q25199089",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Yona",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q2638381",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Freeman Spur, Illinois",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q2657790",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Mazon",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q2669259",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Rio",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q2672005",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Mer Rouge",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q2738874",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Pavilion",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q28123332",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Bonus, Pennsylvania",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q28153566",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Aasu, American Samoa",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q2820114",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Agugulu",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q2827335",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Amaluia",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q2840990",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q2890727",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Gray, Pennsylvania",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q28912646",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Grand Valley, Pennsylvania",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q30594490",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Bunola, Pennsylvania",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q30624669",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Lidell Corners, New York",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q30625275",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Hagåtña Municipality",
+          "types": [
+            "AdministrativeArea2"
+          ],
+          "dcid": "wikidataId/Q31861181",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "La Baye",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q3206535",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Ginger Blue",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q3459614",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "West Sullivan",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q3459754",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Bridgeport",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q3477884",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "'Au'asi",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q3596203",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Amaua",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q3613724",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Amouli",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q3614648",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Asili",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q3625118",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Aumi",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q3629768",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Auto, American Samoa",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q3630432",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Windsor Place",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q3709213",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Faga'itua",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q3738318",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Failolo",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q3738413",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Faleniu",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q3738616",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Futiga",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q3755113",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Hillsville, Pennsylvania",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q38249376",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Warriors Mark, Pennsylvania",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q38249557",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Hyner, Pennsylvania",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q38249642",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "East Smithfield, Pennsylvania",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q38249688",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Blandford",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q38249842",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Chester",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q38249843",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Russell",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q38249844",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Huntington",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q38249845",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Luma, American Samoa",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q3840591",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Maia",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q3843485",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Purling, New York",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q39050574",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Poloa",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q3907661",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Dell, Montana",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q4157086",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Ebeys Landing",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q41750962",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "George Washington Carver School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q42378032",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Scow Bay",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q42474613",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Fourche Valley School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q43079449",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Ola School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q43079450",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Perry-Casa School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q43079451",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Plainview-Rover School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q43079453",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Sugar Land Independent School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q43083086",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Fountain Hill School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q43083444",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Sulphur Rock School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q43083453",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Cushman School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q43083457",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Desha-Drew School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q43083488",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Biggers-Reyno School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q43083490",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Steps Point village",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q4354529",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Adelphi, United States Virgin Islands",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q4682056",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Admiralty mining district",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q4683790",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Ashford, Nebraska",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q4804982",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "North Chili, New York",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48739340",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Bakers Mills, New York",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48739495",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Sabael, New York",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48740171",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Millers Mills Crossing, New York",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48742603",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Beebe Plain",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q4879540",
+          "provenanceId": "dc/base/Canada_Census_Places"
+        },
+        {
+          "name": "Tremont Township, Solano County, California",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48850516",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Twin Rivers School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48965636",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Turrell School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48965662",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Tri-County School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969233",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Eudora School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969235",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "DeValls Bluff School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969240",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Okolona School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969249",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Oil Trough School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969251",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Cord-Charlotte School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969254",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Newark School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969255",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Lewisville School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969260",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Stamps School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969261",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Washington School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969268",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Saratoga School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969273",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "River Valley School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969277",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Lynn School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969279",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Leslie School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969289",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Witts Springs School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969293",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Wilburn School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969301",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Rison School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969308",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Kingsland School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969311",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Walker School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969316",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Waldo School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969318",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Emerson School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969344",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Taylor School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969347",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Mulberry School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969380",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Williford School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969387",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Randolph County School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969395",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Crawfordsville School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q48969582",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Black Jack Springs, Texas",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q4921075",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Brighton, Oregon",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q4967576",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Carpenter, Bernalillo County, New Mexico",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5045675",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Chauvin, Michigan",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q5088440",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Chinese enclaves in the San Gabriel Valley",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q5100767",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Compo–Owenoke Historic District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5156943",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Cosner's Corner",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q5174655",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Danner, Oregon",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5220030",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Downtown Hartford",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5303453",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Dublin, Missouri",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5310799",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Duncan, Missouri",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q5314232",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Delphi, Washington",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q54888575",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Franktown, Virginia",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5492280",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Providence Independent Schools",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55013394",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Harrodsburg Independent Schools",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55013401",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Altus-Denning School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106528",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Weiner School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106536",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Deer School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106537",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Delaplaine School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106561",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Emmet School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106564",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Carthage School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106570",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Mount Pleasant School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106578",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Swifton School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106580",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "St. Paul School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106583",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Bright Star School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106584",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Holly Grove School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106586",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Kingston School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106592",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Sparkman School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106594",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "McNeil School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106598",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Lake View School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106599",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Hatfield School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106600",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Mount Holly School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106602",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Umpire School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106603",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Acorn School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106606",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Oden School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106608",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Paron School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106609",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Bruno-Pyatt School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106611",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Evening Shade School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106612",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Rural Special School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106617",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Delight School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106618",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Huttig School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106621",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Strong School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106623",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Alread School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106627",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Winslow School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106630",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Walnut Ridge School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106632",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Black Rock School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106634",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "McRae School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106639",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Cotton Plant School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106640",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Freeport Public Schools",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106651",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Parkin School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106657",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Farragut Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106660",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Russell Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106668",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Lineville-Clio Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106675",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Fox Valley Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106686",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Clearfield Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106690",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Odebolt-Arthur-Battle Creek-Ida Grove Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106697",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Battle Creek-Ida Grove Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106698",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Odebolt-Arthur Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55106700",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Wickes School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55315880",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "A-H-S-T Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55602895",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Anthon-Oto Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55604041",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Armstrong-Ringsted Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55604216",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "East Greene Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55610397",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "East Monona Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55610408",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Elk Horn-Kimballton Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55610751",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Exira Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55611273",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "IKM Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55614174",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Gilberts, California",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q5561431",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Jefferson-Scranton Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55614990",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Malvern Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55621946",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Manning Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55622069",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Maple Valley Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55622117",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Nishna Valley Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55625287",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Sac Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55632289",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Scotland School District (Arkansas)",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55632719",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Sentral Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55632874",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Stone County School District (Arkansas)",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55634045",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Union School District (Arkansas)",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55636548",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Van-Cove School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55636928",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Walnut Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55637351",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Wall Lake View Auburn Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q55643448",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Glendale, Rhode Island",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q5568332",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Greater Sharpstown, Houston",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5600752",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Rockwell City-Lytton Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q56063579",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Southern Cal Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q56063584",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "C \u0026 M Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q56063670",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Anita Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q56063671",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "New Market Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q56063703",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "South Clay Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q56063709",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Pomeroy-Palmer Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q56063819",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Woden-Crystal Lake Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q56063990",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Titonka Consolidated School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q56274464",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "North Fayette Valley Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q56275297",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Valley Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q56275303",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "North Fayette Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q56275304",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Alta-Aurelia Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q56275436",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Prescott Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q56275460",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Alta Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q56275673",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Aurelia Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q56275686",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Corwith-Wesley Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q56278091",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Monaville Independent School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q56283817",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "City and Borough of Juneau",
+          "types": [
+            "AdministrativeArea2"
+          ],
+          "dcid": "wikidataId/Q56404707",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "District 3",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5684177",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5690428",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5801603",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5808702",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5808704",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5808706",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5808712",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5808714",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q6027451",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q6031694",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Inkster Public Schools",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q6034676",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Clarion-Goldfield Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q60743893",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Garner-Hayfield Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q60752227",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Ventura Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q60752236",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "McCool Junction Public Schools",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q60768488",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Sumner Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q60768751",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Fredericksburg Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q60768754",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "North Central Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q60768795",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Nora Springs-Rock Falls Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q60768799",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Rockwell-Swaledale Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q60770862",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Sheffield-Chapin-Meservey-Thornton Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q60770869",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Sheffield-Chapin Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q60770871",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Meservey-Thornton Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q60770901",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Hedrick Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q60772444",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Eddyville-Blakesburg Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q60772495",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Fremont Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q60772514",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "East Central Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q60772790",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Preston Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q60772802",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Deep River-Millersburg Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q60772906",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "La Crosse Public Schools",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q60790571",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Terril Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q60793130",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Graettinger Community School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q60793131",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Potlatch, Washington",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q6083603",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Aua",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q609232",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q6112459",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Jerusalem, Rhode Island",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q6185060",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Kent Fort",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q6391727",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Kern Community College District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q6394111",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "South Fork",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q6572871",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Loch Lloyd, Missouri",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q6664949",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Lords Point",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q6680147",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "MacDonald Highlands",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q6721820",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Magnolia (Village), Massachusetts",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q6731848",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Mattingly Settlement, Ohio",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q6791829",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Menauhant, Massachusetts",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q6816506",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Merriman Park/University Manor, Dallas",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q6820296",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Keensburg, Illinois",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q690246",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Mountaindale, Rhode Island",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q6925623",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "NAN Ranch Ruin",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q6952317",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Nichols, Connecticut",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q7026545",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Oak Dale, Texas",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q7073451",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Park Square, Rhode Island",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q7138035",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Plattville, Illinois",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q7202547",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Plymouth Beach, Massachusetts",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q7205766",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Point Coupee, Louisiana",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q7207996",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Saint Peter's Village",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q7402074",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "San Jose",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q7414433",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Groton Long Point",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q755636",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Turkeytown",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q7855192",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Union Village, Rhode Island",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q7886385",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Village of the Arts",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q7930739",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "West Kingston, Rhode Island",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q7985633",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Whitewash Village, Massachusetts",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q7996316",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "McClure",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q7999352",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Windsor, Wisconsin",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q8024546",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Bullfrog Mining District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q85025959",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Yakutat City and Borough",
+          "types": [
+            "AdministrativeArea2"
+          ],
+          "dcid": "wikidataId/Q87993006",
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "00601",
@@ -100574,5 +107372,5 @@
       ]
     }
   ],
-  "nextToken": "H4sIAAAAAAAA/7TU0arTMBgHcBfnTk66ac1VQfAVtgl6PzOZA4VCN9CJkyz57AJZImk62QP4ej6TbL0TSUjlXPbm9//6T74QSzJhW+PdZbqtFiQX1niuDMi1KTUXQF4yME3bMOvgLW9AVp571XgluF444PQRRXhAEUYU4ccU4SFF+AlFeEQRvqMIY4rwPUWY0CHO8gHRscAXXeBO/WBWwoYfWs29sqZX2j6WNmH2dGq9MvXOGkj2DzH/+Qrsyil5+/o2X0KdnPE1ljFel4x1Aa9nD1BR9YqB1h/gDHqe7n8muAa7ltPZm3/gWXfaG8eFT6Y3QXrIlL8kmKOrWdyTfVDN32k4gfHcXSpxtFYnT/096Bd/+0vVeKd6tPMpmEPeq/rY8w92QXn8UUmpoacdmbq0P8GVmpv0PsLnOimdOnOfPvYdznJU/LruabCVsj1oJXrxg+I3Il8i49/4rVc67dZ33UTw/3sBwsU/7X3Nu4UdRYp/VoGwRvbe1z8AAAD//wEAAP//YxbEviMHAAA="
+  "nextToken": "H4sIAAAAAAAA/6TU0YoTMRQGYBtrN5vZ1TFXA4KvsFtB72sqtaAwMC1qxUqaHKeBNJFMptIH8PV8JmnnTiQh2cu5+f4z/5wzxJJC2N54d7pbNzNSCms8Vwbk0tSaCyAvGZiu75h18JZ3IBvPveq8ElzPHHD6iCI8oggjivBjivCYIvyEIjyhCF9RhDFF+JoiTOgYF+WI6FjgiyFwo34yK2HFd73mXlmTlfYpljZmyp8S2MmZrUqyjcG3zB4OvVem3VgDyYPvYv7zBdiFU/Ly9H06hzY541ss42ZZMzYEvL5P5uMVNa8YaP0BjqCn6f4XgluwS3l3/+Y/eDGs0cpx4ZPpVZDO25lrsg2q5TsNBzCeu1Mj9tbq5Kl/BP3qX3+uOu9URjufgznkvWr3mW+wCco3H5WUGjLtyNS1/QWu1tyk9xH+rre1U0fu08e+wkWJqt/nOw22Uvc7rUQWP6r+IPI1Mv6FX3ul07Z+6CaCP+wPEC7+afaaDwc7iRT/rAFhjcy+178AAAD//wEAAP//TDLCW3wHAAA="
 }

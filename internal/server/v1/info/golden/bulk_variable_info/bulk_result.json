@@ -3450,7 +3450,7 @@
                     "maxValue": 2124106
                   },
                   "AdministrativeArea3": {
-                    "placeCount": 73,
+                    "placeCount": 72,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q197392",
@@ -3507,7 +3507,7 @@
                     "maxValue": 79776
                   },
                   "City": {
-                    "placeCount": 2890,
+                    "placeCount": 2891,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q956",
