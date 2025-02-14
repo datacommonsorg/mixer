@@ -107,7 +107,7 @@ func (dispatcher *Dispatcher) handle(requestContext *RequestContext, handler fun
 
 	for i := len(dispatcher.processors) - 1; i >= 0; i-- {
 		processor := dispatcher.processors[i]
-		outcome, err := (*processor).PreProcess(requestContext)
+		outcome, err := (*processor).PostProcess(requestContext)
 		if err != nil {
 			return nil, err
 		}
