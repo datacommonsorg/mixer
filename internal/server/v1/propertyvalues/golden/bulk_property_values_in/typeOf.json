@@ -10548,6 +10548,16 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Choa Chu Kang",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q1069101",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Gognies-Chaussée",
           "types": [
             "AdministrativeArea4",
@@ -10561,10 +10571,32 @@
           "name": "Valmiera",
           "types": [
             "AdministrativeArea1",
+            "AdministrativeArea2",
             "City"
           ],
           "dcid": "wikidataId/Q108037",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Hougang",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "Neighborhood",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q10860944",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Sengkang",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q10861365",
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Nampho",
@@ -11276,6 +11308,16 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Jurong East",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q1714023",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Boulogne-Billancourt",
           "types": [
             "AdministrativeArea4",
@@ -11650,9 +11692,20 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Bukit Batok",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q1906213",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Jēkabpils",
           "types": [
             "AdministrativeArea1",
+            "AdministrativeArea2",
             "City"
           ],
           "dcid": "wikidataId/Q191120",
@@ -11858,7 +11911,7 @@
             "Municipality"
           ],
           "dcid": "wikidataId/Q2075665",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Agboville",
@@ -12041,6 +12094,16 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Bukit Panjang",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q2224065",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Tocoa",
           "types": [
             "AdministrativeArea2",
@@ -12183,6 +12246,16 @@
             "Municipality"
           ],
           "dcid": "wikidataId/Q2283725",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Bukit Timah",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q22970788",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -12431,7 +12504,7 @@
             "Municipality"
           ],
           "dcid": "wikidataId/Q2542686",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Siguatepeque",
@@ -12512,6 +12585,16 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Toa Payoh",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q2734905",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "San Pedro Sula",
           "types": [
             "AdministrativeArea2",
@@ -12520,6 +12603,16 @@
           ],
           "dcid": "wikidataId/Q274584",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Bishan",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q3249777",
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Kingston",
@@ -12542,6 +12635,26 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Kallang",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q4216846",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Clementi, Singapore",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q4259064",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Chandigarh",
           "types": [
             "AdministrativeArea1",
@@ -12550,6 +12663,16 @@
           ],
           "dcid": "wikidataId/Q43433",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Bedok",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q4879339",
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Schellenberg",
@@ -12612,6 +12735,46 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Bukit Merah",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q4986926",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Geylang",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q525295",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Woodlands",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q5254438",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Jurong West",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q6315392",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Nacaome",
           "types": [
             "AdministrativeArea2",
@@ -12622,6 +12785,16 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Lim Chu Kang",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q6548667",
+          "provenanceId": "dc/base/WikidataGeo_Singapore_ADM2"
+        },
+        {
           "name": "Puerto Cortés",
           "types": [
             "AdministrativeArea2",
@@ -12629,6 +12802,16 @@
             "Municipality"
           ],
           "dcid": "wikidataId/Q673089",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Marine Parade",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q6764201",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -12642,6 +12825,36 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Punggol",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q7260156",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Seletar",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q7447926",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Sembawang",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q7449155",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Cedros, Francisco Morazán",
           "types": [
             "AdministrativeArea2",
@@ -12649,7 +12862,27 @@
             "Municipality"
           ],
           "dcid": "wikidataId/Q748590",
-          "provenanceId": "dc/base/WikidataGeo_Honduras_ADM2"
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Tanglin",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q7683056",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Tengah, Singapore",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q7699745",
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "São Domingos",
@@ -12682,6 +12915,36 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Tuas",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q7850658",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Western Water Catchment",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q7988434",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Yishun",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q8053845",
+          "provenanceId": "dc/base/WikidataGeo_Singapore_ADM2"
+        },
+        {
           "name": "Toliara",
           "types": [
             "AdministrativeArea2",
@@ -12690,6 +12953,16 @@
           ],
           "dcid": "wikidataId/Q824043",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Queenstown, Singapore",
+          "types": [
+            "AdministrativeArea2",
+            "City",
+            "PlanningArea"
+          ],
+          "dcid": "wikidataId/Q9079137",
+          "provenanceId": "dc/base/WikidataGeo_Singapore_ADM2"
         },
         {
           "name": "La Ceiba",

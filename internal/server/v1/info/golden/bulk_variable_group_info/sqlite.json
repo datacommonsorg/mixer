@@ -9,7 +9,7 @@
             "id": "dc/g/Agriculture",
             "specializedEntity": "Agriculture",
             "displayName": "Agriculture",
-            "descendentStatVarCount": 157
+            "descendentStatVarCount": 156
           },
           {
             "id": "dc/g/Demographics",
@@ -87,7 +87,7 @@
             "descendentStatVarCount": 2
           }
         ],
-        "descendentStatVarCount": 42530
+        "descendentStatVarCount": 42529
       }
     },
     {
