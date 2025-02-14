@@ -1,202 +1,202 @@
 [
   {
-    "SubjectID": "GiniIndex_EconomicActivity",
-    "Name": "Gini Index of Economic Activity of a Population",
-    "Types": [
-      "StatisticalVariable"
-    ],
-    "MatchedPredicate": "description",
-    "MatchedObjectValue": "Gini index measures the extent to which the distribution of income (or, in some cases, consumption expenditure) among individuals or households within an economy deviates from a perfectly equal distribution. A Lorenz curve plots the cumulative percentages of total income received against the cumulative number of recipients, starting with the poorest individual or household. The Gini index measures the area between the Lorenz curve and a hypothetical line of absolute equality, expressed as a percentage of the maximum area under the line. Thus a Gini index of 0 represents perfect equality, while an index of 100 implies perfect inequality. World Bank, Development Research Group. Data are based on primary household survey data obtained from government statistical agencies and World Bank country departments. For more information and methodology, please see PovcalNet (http://iresearch.worldbank.org/PovcalNet/index.htm).",
-    "Score": 0
-  },
-  {
-    "SubjectID": "Monthly_Mean_Income_Person_Years14Onwards_Employed_AllJobs_IncomeActuallyReceived",
-    "Name": "Mean Monthly Income: 14 Years or More, Employed, All Jobs, Income Actually Received",
+    "SubjectID": "oecd/IMW_1EARNERC2C_2_1_1_1_0_0",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), No, No",
     "Types": [
       "StatisticalVariable"
     ],
     "MatchedPredicate": "name",
-    "MatchedObjectValue": "Mean Monthly Income: 14 Years or More, Employed, All Jobs, Income Actually Received",
+    "MatchedObjectValue": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), No, No",
     "Score": 0
   },
   {
-    "SubjectID": "Monthly_Mean_Income_Person_Years14Onwards_Employed_MainJob_IncomeActuallyReceived",
-    "Name": "Mean Monthly Income: 14 Years or More, Employed, Main Job, Income Actually Received",
+    "SubjectID": "oecd/IMW_1EARNERC2C_2_1_1_1_0_1",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
     "Types": [
       "StatisticalVariable"
     ],
     "MatchedPredicate": "name",
-    "MatchedObjectValue": "Mean Monthly Income: 14 Years or More, Employed, Main Job, Income Actually Received",
+    "MatchedObjectValue": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
     "Score": 0
   },
   {
-    "SubjectID": "Median_Income_Person_15OrMoreYears_Male_WithIncome",
-    "Name": "Median Income of Men (15 Years or Older) With Income",
+    "SubjectID": "oecd/IMW_1EARNERC2C_2_1_1_1_1_0",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), Yes, No",
     "Types": [
       "StatisticalVariable"
     ],
     "MatchedPredicate": "name",
-    "MatchedObjectValue": "Median Income of Men (15 Years or Older) With Income",
+    "MatchedObjectValue": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), Yes, No",
     "Score": 0
   },
   {
-    "SubjectID": "Median_Income_Person_15OrMoreYears_Female_WithIncome",
-    "Name": "Median Income of Women (15 Years or Older) With Income",
+    "SubjectID": "oecd/IMW_1EARNERC2C_2_1_1_1_1_1",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), Yes, Yes",
     "Types": [
       "StatisticalVariable"
     ],
     "MatchedPredicate": "name",
-    "MatchedObjectValue": "Median Income of Women (15 Years or Older) With Income",
+    "MatchedObjectValue": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), Yes, Yes",
     "Score": 0
   },
   {
-    "SubjectID": "Median_Income_Person_DifferentHouseAbroad",
-    "Name": "Median Income: 15 Years or More, With Income, Different House Abroad",
+    "SubjectID": "oecd/IMW_1EARNERC2C_2_1_1_0_0_0",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, No",
     "Types": [
       "StatisticalVariable"
     ],
     "MatchedPredicate": "name",
-    "MatchedObjectValue": "Median Income: 15 Years or More, With Income, Different House Abroad",
+    "MatchedObjectValue": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, No",
     "Score": 0
   },
   {
-    "SubjectID": "Median_Income_Person_DifferentHouseInDifferentCountyDifferentState",
-    "Name": "Median Income: 15 Years or More, With Income, Different House in Different County Different State",
+    "SubjectID": "oecd/IMW_1EARNERC2C_2_1_1_0_0_1",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
     "Types": [
       "StatisticalVariable"
     ],
     "MatchedPredicate": "name",
-    "MatchedObjectValue": "Median Income: 15 Years or More, With Income, Different House in Different County Different State",
+    "MatchedObjectValue": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
     "Score": 0
   },
   {
-    "SubjectID": "Median_Income_Person_DifferentHouseInDifferentCountySameState",
-    "Name": "Median Income: 15 Years or More, With Income, Different House in Different County Same State",
+    "SubjectID": "oecd/IMW_1EARNERC2C_2_1_1_0_1_0",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, Yes, No",
     "Types": [
       "StatisticalVariable"
     ],
     "MatchedPredicate": "name",
-    "MatchedObjectValue": "Median Income: 15 Years or More, With Income, Different House in Different County Same State",
+    "MatchedObjectValue": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, Yes, No",
     "Score": 0
   },
   {
-    "SubjectID": "Median_Income_Person_DifferentHouseInSameCounty",
-    "Name": "Median Income: 15 Years or More, With Income, Different House in Same County",
+    "SubjectID": "oecd/IMW_1EARNERC2C_2_1_1_0_1_1",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, Yes, Yes",
     "Types": [
       "StatisticalVariable"
     ],
     "MatchedPredicate": "name",
-    "MatchedObjectValue": "Median Income: 15 Years or More, With Income, Different House in Same County",
+    "MatchedObjectValue": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, Yes, Yes",
     "Score": 0
   },
   {
-    "SubjectID": "Median_Income_Person_16OrMoreYears_Female_WithIncome",
-    "Name": "Median Income: 16 Years or More, Female, With Income",
+    "SubjectID": "oecd/IMW_1EARNERC2C_2_1_0_1_0_0",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, No",
     "Types": [
       "StatisticalVariable"
     ],
     "MatchedPredicate": "name",
-    "MatchedObjectValue": "Median Income: 16 Years or More, Female, With Income",
+    "MatchedObjectValue": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, No",
     "Score": 0
   },
   {
-    "SubjectID": "Median_Income_Person_16OrMoreYears_Male_WithIncome",
-    "Name": "Median Income: 16 Years or More, Male, With Income",
+    "SubjectID": "oecd/IMW_1EARNERC2C_2_1_0_1_0_1",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
     "Types": [
       "StatisticalVariable"
     ],
     "MatchedPredicate": "name",
-    "MatchedObjectValue": "Median Income: 16 Years or More, Male, With Income",
+    "MatchedObjectValue": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
     "Score": 0
   },
   {
-    "SubjectID": "Median_Income_Person_25OrMoreYears_Female_WithIncome",
-    "Name": "Median Income: 25 Years or More, Female, With Income",
+    "SubjectID": "oecd/IMW_1EARNERC2C_2_1_0_1_1_0",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), Yes, No",
     "Types": [
       "StatisticalVariable"
     ],
     "MatchedPredicate": "name",
-    "MatchedObjectValue": "Median Income: 25 Years or More, Female, With Income",
+    "MatchedObjectValue": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), Yes, No",
     "Score": 0
   },
   {
-    "SubjectID": "Median_Income_Person_25OrMoreYears_Male_WithIncome",
-    "Name": "Median Income: 25 Years or More, Male, With Income",
+    "SubjectID": "oecd/IMW_1EARNERC2C_2_1_0_1_1_1",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), Yes, Yes",
     "Types": [
       "StatisticalVariable"
     ],
     "MatchedPredicate": "name",
-    "MatchedObjectValue": "Median Income: 25 Years or More, Male, With Income",
+    "MatchedObjectValue": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), Yes, Yes",
     "Score": 0
   },
   {
-    "SubjectID": "Monthly_Income_Person_Years14Onwards_Employed_IncomeActuallyReceived",
-    "Name": "Monthly Income: 14 Years or More, Employed, Income Actually Received",
+    "SubjectID": "oecd/IMW_1EARNERC2C_2_1_0_0_0_0",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Weighted average of minimum wage amounts throughout the calendar year, No, No",
     "Types": [
       "StatisticalVariable"
     ],
     "MatchedPredicate": "name",
-    "MatchedObjectValue": "Monthly Income: 14 Years or More, Employed, Income Actually Received",
+    "MatchedObjectValue": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Weighted average of minimum wage amounts throughout the calendar year, No, No",
     "Score": 0
   },
   {
-    "SubjectID": "Count_Person_65OrMoreYears_Female_NoIncome_AsAFractionOf_Count_Person_15To64Years_Female_WithIncome",
-    "Name": "Population: 65 Years or More, Female, No Income (As Fraction of Count Person 15 To 64 Years Female With Income)",
+    "SubjectID": "oecd/IMW_1EARNERC2C_2_1_0_0_0_1",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
     "Types": [
       "StatisticalVariable"
     ],
     "MatchedPredicate": "name",
-    "MatchedObjectValue": "Population: 65 Years or More, Female, No Income (As Fraction of Count Person 15 To 64 Years Female With Income)",
+    "MatchedObjectValue": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
     "Score": 0
   },
   {
-    "SubjectID": "Count_Person_65OrMoreYears_Male_NoIncome_AsAFractionOf_Count_Person_15To64Years_Male_WithIncome",
-    "Name": "Population: 65 Years or More, Male, No Income (As Fraction of Count Person 15 To 64 Years Male With Income)",
+    "SubjectID": "oecd/IMW_1EARNERC2C_2_1_0_0_1_0",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Weighted average of minimum wage amounts throughout the calendar year, Yes, No",
     "Types": [
       "StatisticalVariable"
     ],
     "MatchedPredicate": "name",
-    "MatchedObjectValue": "Population: 65 Years or More, Male, No Income (As Fraction of Count Person 15 To 64 Years Male With Income)",
+    "MatchedObjectValue": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Weighted average of minimum wage amounts throughout the calendar year, Yes, No",
     "Score": 0
   },
   {
-    "SubjectID": "Count_Person_65OrMoreYears_NoIncome_AsAFractionOf_Count_Person_15To64Years_WithIncome",
-    "Name": "Population: 65 Years or More, No Income (As Fraction of Count Person 15 To 64 Years With Income)",
+    "SubjectID": "oecd/IMW_1EARNERC2C_2_1_0_0_1_1",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Weighted average of minimum wage amounts throughout the calendar year, Yes, Yes",
     "Types": [
       "StatisticalVariable"
     ],
     "MatchedPredicate": "name",
-    "MatchedObjectValue": "Population: 65 Years or More, No Income (As Fraction of Count Person 15 To 64 Years With Income)",
+    "MatchedObjectValue": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Weighted average of minimum wage amounts throughout the calendar year, Yes, Yes",
     "Score": 0
   },
   {
-    "SubjectID": "Count_Household_FactorForHomeInternetAffordability_IncomeOf100000OrMoreUSDollar_InternetUsageAtHome_IsInternetUser",
-    "Name": "Affordability is Most Important Factor for Home Internet Service, income above 100000 USD",
+    "SubjectID": "oecd/IMW_1EARNERC2C_3_1_1_1_0_0",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), No, No",
     "Types": [
       "StatisticalVariable"
     ],
     "MatchedPredicate": "name",
-    "MatchedObjectValue": "Affordability is Most Important Factor for Home Internet Service, income above 100000 USD",
+    "MatchedObjectValue": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), No, No",
     "Score": 0
   },
   {
-    "SubjectID": "Count_Household_FactorForHomeInternetAffordability_IncomeOf25000To49000USDollar_InternetUsageAtHome_IsInternetUser",
-    "Name": "Affordability is Most Important Factor for Home Internet Service, income between 25000 and 49000 USD",
+    "SubjectID": "oecd/IMW_1EARNERC2C_3_1_1_1_0_1",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
     "Types": [
       "StatisticalVariable"
     ],
     "MatchedPredicate": "name",
-    "MatchedObjectValue": "Affordability is Most Important Factor for Home Internet Service, income between 25000 and 49000 USD",
+    "MatchedObjectValue": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
     "Score": 0
   },
   {
-    "SubjectID": "Count_Household_FactorForHomeInternetAffordability_IncomeOf50000To74000USDollar_InternetUsageAtHome_IsInternetUser",
-    "Name": "Affordability is Most Important Factor for Home Internet Service, income between 50000 and 74000 USD",
+    "SubjectID": "oecd/IMW_1EARNERC2C_3_1_1_1_1_0",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), Yes, No",
     "Types": [
       "StatisticalVariable"
     ],
     "MatchedPredicate": "name",
-    "MatchedObjectValue": "Affordability is Most Important Factor for Home Internet Service, income between 50000 and 74000 USD",
+    "MatchedObjectValue": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), Yes, No",
+    "Score": 0
+  },
+  {
+    "SubjectID": "oecd/IMW_1EARNERC2C_3_1_1_1_1_1",
+    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), Yes, Yes",
+    "Types": [
+      "StatisticalVariable"
+    ],
+    "MatchedPredicate": "name",
+    "MatchedObjectValue": "Incomes of minimum wage earners: Couple with 2 children - partner is out of work, Family income, divided by the income of an otherwise identical family working at the median wage, Net income (family level), All employees, expressed in full-time equivalent units, Minimum wage that applies on a selected date of the year (see metadata for details), Yes, Yes",
     "Score": 0
   }
 ]
