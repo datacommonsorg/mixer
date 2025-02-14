@@ -35,17 +35,17 @@ func NewCalculationProcessor(dataSources *datasources.DataSources, svFormulas ma
 	return &CalculationProcessor{dataSources: dataSources, svFormulas: svFormulas}
 }
 
-func (processor *CalculationProcessor) PreProcess(rc *dispatcher.RequestContext) error {
+func (processor *CalculationProcessor) PreProcess(rc *dispatcher.RequestContext) (dispatcher.Outcome, error) {
 	// Calculation doesn't require preprocessing.
-	return nil
+	return dispatcher.Continue, nil
 }
 
-func (processor *CalculationProcessor) PostProcess(rc *dispatcher.RequestContext) error {
+func (processor *CalculationProcessor) PostProcess(rc *dispatcher.RequestContext) (dispatcher.Outcome, error) {
 	switch rc.Type {
 	case dispatcher.TypeObservation:
-		return processor.postProcessObservation(rc)
+		return dispatcher.Continue, processor.postProcessObservation(rc)
 	default:
-		return nil
+		return dispatcher.Continue, nil
 	}
 }
 
