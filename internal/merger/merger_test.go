@@ -1096,3 +1096,82 @@ func TestMergeSearchStatVarResponse(t *testing.T) {
 		}
 	}
 }
+
+func TestMergeMultiNodeSearch(t *testing.T) {
+	cmpOpts := cmp.Options{protocmp.Transform()}
+	for _, c := range []struct {
+		allResp []*pbv2.NodeSearchResponse
+		want    *pbv2.NodeSearchResponse
+	}{
+		{
+			[]*pbv2.NodeSearchResponse{
+				{
+					Results: []*pbv2.NodeSearchResult{
+						{
+							Node: &pb.EntityInfo{
+								Dcid: "geoId/01",
+							},
+						},
+						{
+							Node: &pb.EntityInfo{
+								Dcid: "geoId/02",
+							},
+						},
+						{
+							Node: &pb.EntityInfo{
+								Dcid: "geoId/03",
+							},
+						},
+					},
+				},
+				{},
+				{
+					Results: []*pbv2.NodeSearchResult{
+						{
+							Node: &pb.EntityInfo{
+								Dcid: "geoId/02",
+							},
+						},
+						{
+							Node: &pb.EntityInfo{
+								Dcid: "geoId/04",
+							},
+						},
+					},
+				},
+			},
+			&pbv2.NodeSearchResponse{
+				Results: []*pbv2.NodeSearchResult{
+					{
+						Node: &pb.EntityInfo{
+							Dcid: "geoId/01",
+						},
+					},
+					{
+						Node: &pb.EntityInfo{
+							Dcid: "geoId/02",
+						},
+					},
+					{
+						Node: &pb.EntityInfo{
+							Dcid: "geoId/04",
+						},
+					},
+					{
+						Node: &pb.EntityInfo{
+							Dcid: "geoId/03",
+						},
+					},
+				},
+			},
+		},
+	} {
+		got, err := MergeMultiNodeSearch(c.allResp)
+		if err != nil {
+			t.Errorf("MergeMultiNodeSearch(%v) got err: %s", c.allResp, err)
+		}
+		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
+			t.Errorf("MergeMultiNodeSearch(%v) got diff: %s", c.allResp, diff)
+		}
+	}
+}

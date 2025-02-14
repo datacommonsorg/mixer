@@ -21,6 +21,7 @@ import (
 	"strconv"
 
 	"cloud.google.com/go/spanner"
+	"github.com/datacommonsorg/mixer/internal/merger"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"google.golang.org/api/iterator"
 )
@@ -294,10 +295,10 @@ func (sc *SpannerClient) SearchObjectValues(ctx context.Context, query string, p
 
 	// Interpolate the types filter if provided.
 	if len(types) > 0 {
-		stmt.SQL = fmt.Sprintf(stmt.SQL, statements.filterTypes)
+		stmt.SQL = fmt.Sprintf(stmt.SQL, statements.filterTypes, merger.MAX_SEARCH_RESULTS)
 		stmt.Params["types"] = types
 	} else {
-		stmt.SQL = fmt.Sprintf(stmt.SQL, "")
+		stmt.SQL = fmt.Sprintf(stmt.SQL, "", merger.MAX_SEARCH_RESULTS)
 	}
 
 	err := sc.queryAndCollect(
