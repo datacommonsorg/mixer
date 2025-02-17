@@ -380,8 +380,8 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2024-12",
-              "value": 6886000,
+              "date": "2025-01",
+              "value": 6849000,
               "facet": "3707913853"
             },
             {
@@ -415,8 +415,8 @@
           "entity": "geoId/0649670",
           "points_by_facet": [
             {
-              "date": "2024-11",
-              "value": 1567,
+              "date": "2024-12",
+              "value": 1398,
               "facet": "324358135"
             },
             {
