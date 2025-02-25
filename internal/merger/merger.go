@@ -27,7 +27,6 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/util"
-	"google.golang.org/protobuf/proto"
 )
 
 const (
@@ -439,40 +438,32 @@ func MergeMultiNodeSearch(allResp []*pbv2.NodeSearchResponse) (*pbv2.NodeSearchR
 
 	merged := &pbv2.NodeSearchResponse{}
 	results := map[string]bool{}
-	complete := map[int]bool{}
-	counter := 0
-loop:
-	for {
-		for i := range allResp {
-			if len(merged.Results) == MAX_SEARCH_RESULTS {
-				break loop
-			}
-			if len(complete) == len(allResp) {
-				break loop
-			}
 
-			// Check if all results from resp have been added.
-			if counter >= len(allResp[i].Results) {
-				complete[i] = true
-				continue
-			}
+	for len(merged.Results) < MAX_SEARCH_RESULTS && len(allResp) > 0 {
+		newResp := []*pbv2.NodeSearchResponse{} // Create a new slice for remaining arrays
+		added := false
 
-			result := allResp[i].Results[counter]
-
-			// Check if result was already added.
-			key, err := proto.Marshal(result)
-			if err != nil {
-				return nil, err
+		for _, arr := range allResp {
+			if len(arr.Results) > 0 {
+				if _, ok := results[arr.Results[0].Node.Dcid]; !ok {
+					merged.Results = append(merged.Results, arr.Results[0])
+					added = true
+					results[arr.Results[0].Node.Dcid] = true
+				}
+				if len(merged.Results) >= MAX_SEARCH_RESULTS {
+					return merged, nil
+				}
+				if len(arr.Results) > 1 {
+					newResp = append(newResp, &pbv2.NodeSearchResponse{Results: arr.Results[1:]}) // Add remaining elements to the new slice
+				}
 			}
-			keyString := string(key)
-			if _, ok := results[keyString]; ok {
-				continue
-			}
-
-			merged.Results = append(merged.Results, result)
-			results[keyString] = true
 		}
-		counter += 1
+		if !added {
+			break
+		}
+
+		allResp = newResp // Update responses with the remaining sub-responses
 	}
+
 	return merged, nil
 }

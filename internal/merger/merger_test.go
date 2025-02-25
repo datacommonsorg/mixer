@@ -1111,15 +1111,24 @@ func TestMergeMultiNodeSearch(t *testing.T) {
 							Node: &pb.EntityInfo{
 								Dcid: "geoId/01",
 							},
+							Match: &pb.PropertyValue{
+								Property: "name",
+							},
 						},
 						{
 							Node: &pb.EntityInfo{
 								Dcid: "geoId/02",
 							},
+							Match: &pb.PropertyValue{
+								Property: "name",
+							},
 						},
 						{
 							Node: &pb.EntityInfo{
 								Dcid: "geoId/03",
+							},
+							Match: &pb.PropertyValue{
+								Property: "name",
 							},
 						},
 					},
@@ -1131,10 +1140,16 @@ func TestMergeMultiNodeSearch(t *testing.T) {
 							Node: &pb.EntityInfo{
 								Dcid: "geoId/02",
 							},
+							Match: &pb.PropertyValue{
+								Property: "description",
+							},
 						},
 						{
 							Node: &pb.EntityInfo{
 								Dcid: "geoId/04",
+							},
+							Match: &pb.PropertyValue{
+								Property: "description",
 							},
 						},
 					},
@@ -1146,20 +1161,32 @@ func TestMergeMultiNodeSearch(t *testing.T) {
 						Node: &pb.EntityInfo{
 							Dcid: "geoId/01",
 						},
+						Match: &pb.PropertyValue{
+							Property: "name",
+						},
 					},
 					{
 						Node: &pb.EntityInfo{
 							Dcid: "geoId/02",
+						},
+						Match: &pb.PropertyValue{
+							Property: "description",
 						},
 					},
 					{
 						Node: &pb.EntityInfo{
 							Dcid: "geoId/04",
 						},
+						Match: &pb.PropertyValue{
+							Property: "description",
+						},
 					},
 					{
 						Node: &pb.EntityInfo{
 							Dcid: "geoId/03",
+						},
+						Match: &pb.PropertyValue{
+							Property: "name",
 						},
 					},
 				},
