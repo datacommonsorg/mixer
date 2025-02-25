@@ -1,0 +1,9 @@
+<AssignMessage async="false" continueOnError="false" enabled="true"
+  name="rewrite-missing-key-message">
+  <DisplayName>rewrite-missing-key-message</DisplayName>
+  <Set>
+    <Payload contentType="application/json">{"message": "UNAUTHENTICATED: Method doesn't allow unregistered callers (callers without established identity). Please use API Key or other form of API consumer identity to call this API. Visit REPLACE_WITH_API_PORTAL_URL to create or manage API keys.", "code": 401}</Payload>
+    <StatusCode>401</StatusCode>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</AssignMessage>
