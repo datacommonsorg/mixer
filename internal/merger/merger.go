@@ -440,7 +440,8 @@ func MergeMultiNodeSearch(allResp []*pbv2.NodeSearchResponse) (*pbv2.NodeSearchR
 	results := map[string]bool{}
 
 	for len(merged.Results) < MAX_SEARCH_RESULTS && len(allResp) > 0 {
-		newResp := []*pbv2.NodeSearchResponse{} // Create a new slice for remaining arrays
+		// Create a new slice for remaining responses
+		newResp := []*pbv2.NodeSearchResponse{}
 		added := false
 
 		for _, arr := range allResp {
@@ -454,7 +455,8 @@ func MergeMultiNodeSearch(allResp []*pbv2.NodeSearchResponse) (*pbv2.NodeSearchR
 					return merged, nil
 				}
 				if len(arr.Results) > 1 {
-					newResp = append(newResp, &pbv2.NodeSearchResponse{Results: arr.Results[1:]}) // Add remaining elements to the new slice
+					// Add remaining elements to the new slice
+					newResp = append(newResp, &pbv2.NodeSearchResponse{Results: arr.Results[1:]})
 				}
 			}
 		}
@@ -462,7 +464,8 @@ func MergeMultiNodeSearch(allResp []*pbv2.NodeSearchResponse) (*pbv2.NodeSearchR
 			break
 		}
 
-		allResp = newResp // Update responses with the remaining sub-responses
+		// Update responses with the remaining sub-responses
+		allResp = newResp
 	}
 
 	return merged, nil
