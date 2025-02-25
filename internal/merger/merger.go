@@ -22,11 +22,15 @@ package merger
 import (
 	"sort"
 
-	"github.com/datacommonsorg/mixer/internal/proto"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/util"
+)
+
+const (
+	MAX_SEARCH_RESULTS = 100
 )
 
 // MergeResolve merges two V2 resolve responses.
@@ -66,6 +70,20 @@ func MergeResolve(main, aux *pbv2.ResolveResponse) *pbv2.ResolveResponse {
 		}
 	}
 	return main
+}
+
+// Merges multiple V2 ResolveResponses.
+// Assumes the responses are in order of priority.
+func MergeMultiResolve(allResp []*pbv2.ResolveResponse) *pbv2.ResolveResponse {
+	if len(allResp) == 0 {
+		return &pbv2.ResolveResponse{}
+	}
+	prev := allResp[0]
+	for i := 1; i < len(allResp); i++ {
+		cur := MergeResolve(prev, allResp[i])
+		prev = cur
+	}
+	return prev
 }
 
 func mergeLinkedGraph(
@@ -262,7 +280,7 @@ func MergeObservation(main, aux *pbv2.ObservationResponse) *pbv2.ObservationResp
 		}
 	}
 	if main.Facets == nil {
-		main.Facets = map[string]*proto.Facet{}
+		main.Facets = map[string]*pb.Facet{}
 	}
 	for facetID, facet := range aux.Facets {
 		main.Facets[facetID] = facet
@@ -311,7 +329,7 @@ func MergeObservationDates(
 		}
 	}
 	if main.Facets == nil {
-		main.Facets = map[string]*proto.Facet{}
+		main.Facets = map[string]*pb.Facet{}
 	}
 	for facetID, facet := range aux.Facets {
 		if _, ok := main.Facets[facetID]; !ok {
@@ -322,9 +340,9 @@ func MergeObservationDates(
 }
 
 // MergeStatVarSummary merges two StatVarSummary maps.
-func MergeStatVarSummary(primary, secondary map[string]*proto.StatVarSummary) map[string]*proto.StatVarSummary {
-	merged := map[string]*proto.StatVarSummary{}
-	addInfos := func(in map[string]*proto.StatVarSummary) {
+func MergeStatVarSummary(primary, secondary map[string]*pb.StatVarSummary) map[string]*pb.StatVarSummary {
+	merged := map[string]*pb.StatVarSummary{}
+	addInfos := func(in map[string]*pb.StatVarSummary) {
 		for node, info := range in {
 			if info != nil {
 				// If the same SV is in multiple responses,
@@ -343,7 +361,7 @@ func MergeStatVarSummary(primary, secondary map[string]*proto.StatVarSummary) ma
 
 // MergeBulkVariableInfoResponse merges two BulkVariableInfoResponses.
 func MergeBulkVariableInfoResponse(primary, secondary *pbv1.BulkVariableInfoResponse) *pbv1.BulkVariableInfoResponse {
-	var primaryMap, secondaryMap map[string]*proto.StatVarSummary
+	var primaryMap, secondaryMap map[string]*pb.StatVarSummary
 	if primary != nil {
 		primaryMap = toStatVarSummaryMap(primary.Data)
 	}
@@ -370,8 +388,8 @@ func MergeBulkVariableInfoResponse(primary, secondary *pbv1.BulkVariableInfoResp
 	return merged
 }
 
-func toStatVarSummaryMap(in []*pbv1.VariableInfoResponse) map[string]*proto.StatVarSummary {
-	out := map[string]*proto.StatVarSummary{}
+func toStatVarSummaryMap(in []*pbv1.VariableInfoResponse) map[string]*pb.StatVarSummary {
+	out := map[string]*pb.StatVarSummary{}
 	for _, item := range in {
 		if item.Info != nil {
 			out[item.GetNode()] = item.Info
@@ -380,7 +398,7 @@ func toStatVarSummaryMap(in []*pbv1.VariableInfoResponse) map[string]*proto.Stat
 	return out
 }
 
-func processSearchStatVarResponse(resp *proto.SearchStatVarResponse, mergedStatVars []*proto.EntityInfo, matchesMap map[string]struct{}, dedupedMatches []string) ([]*proto.EntityInfo, []string) {
+func processSearchStatVarResponse(resp *pb.SearchStatVarResponse, mergedStatVars []*pb.EntityInfo, matchesMap map[string]struct{}, dedupedMatches []string) ([]*pb.EntityInfo, []string) {
 	if resp != nil {
 		mergedStatVars = append(mergedStatVars, resp.StatVars...)
 
@@ -395,18 +413,60 @@ func processSearchStatVarResponse(resp *proto.SearchStatVarResponse, mergedStatV
 }
 
 // MergeSearchStatVarResponse merges two SearchStatVarResponse.
-func MergeSearchStatVarResponse(primary, secondary *proto.SearchStatVarResponse) *proto.SearchStatVarResponse {
-	mergedStatVars := []*proto.EntityInfo{}
+func MergeSearchStatVarResponse(primary, secondary *pb.SearchStatVarResponse) *pb.SearchStatVarResponse {
+	mergedStatVars := []*pb.EntityInfo{}
 	dedupedMatches := []string{}
 	matchesMap := map[string]struct{}{}
 
 	mergedStatVars, dedupedMatches = processSearchStatVarResponse(primary, mergedStatVars, matchesMap, dedupedMatches)
 	mergedStatVars, dedupedMatches = processSearchStatVarResponse(secondary, mergedStatVars, matchesMap, dedupedMatches)
 
-	merged := &proto.SearchStatVarResponse{
+	merged := &pb.SearchStatVarResponse{
 		StatVars: mergedStatVars,
 		Matches:  dedupedMatches,
 	}
 
 	return merged
+}
+
+// Merges multiple V2 NodeSearchResponses.
+// Cycles through responses in order of priority and add results one by one.
+func MergeMultiNodeSearch(allResp []*pbv2.NodeSearchResponse) (*pbv2.NodeSearchResponse, error) {
+	if len(allResp) == 0 {
+		return &pbv2.NodeSearchResponse{}, nil
+	}
+
+	merged := &pbv2.NodeSearchResponse{}
+	results := map[string]bool{}
+
+	for len(merged.Results) < MAX_SEARCH_RESULTS && len(allResp) > 0 {
+		// Create a new slice for remaining responses
+		newResp := []*pbv2.NodeSearchResponse{}
+		added := false
+
+		for _, arr := range allResp {
+			if len(arr.Results) > 0 {
+				if _, ok := results[arr.Results[0].Node.Dcid]; !ok {
+					merged.Results = append(merged.Results, arr.Results[0])
+					added = true
+					results[arr.Results[0].Node.Dcid] = true
+				}
+				if len(merged.Results) >= MAX_SEARCH_RESULTS {
+					return merged, nil
+				}
+				if len(arr.Results) > 1 {
+					// Add remaining elements to the new slice
+					newResp = append(newResp, &pbv2.NodeSearchResponse{Results: arr.Results[1:]})
+				}
+			}
+		}
+		if !added {
+			break
+		}
+
+		// Update responses with the remaining sub-responses
+		allResp = newResp
+	}
+
+	return merged, nil
 }
