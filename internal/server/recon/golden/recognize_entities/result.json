@@ -20,6 +20,9 @@
           "span": "california",
           "entities": [
             {
+              "dcid": "bio/California"
+            },
+            {
               "dcid": "bio/D002140"
             }
           ]
