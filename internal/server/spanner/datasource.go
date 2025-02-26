@@ -97,8 +97,9 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 	if len(observations) > shared.MaxSeries {
 		return nil, status.Errorf(
 			codes.Internal,
-			"Stop processing large number of concurrent observation series: %d",
+			"Request exceeds the allowed limit on the number of time series processed: %d > %d. Please try reducing the number of variables or entities in the request.",
 			len(observations),
+			shared.MaxSeries,
 		)
 	}
 
