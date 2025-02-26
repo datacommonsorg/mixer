@@ -39,7 +39,7 @@ func TestCacheClient(t *testing.T) {
 	expectedResponse := &v2.NodeResponse{Data: map[string]*v2.LinkedGraph{"testNode": {}}}
 
 	// Mock CacheResponse.
-	key, _ := client.generateCacheKey(request)
+	key, _ := generateCacheKey(request)
 	anyMsg, _ := anypb.New(expectedResponse)
 	marshaled, _ := proto.Marshal(anyMsg)
 	mock.ExpectSet(key, marshaled, 1*time.Minute).SetVal("OK")
@@ -57,7 +57,7 @@ func TestCacheClient(t *testing.T) {
 
 	// Test cache miss.
 	request2 := &v2.NodeRequest{Nodes: []string{"cacheMissNode"}}
-	key2, _ := client.generateCacheKey(request2)
+	key2, _ := generateCacheKey(request2)
 	mock.ExpectGet(key2).RedisNil()
 
 	response2 := &v2.NodeResponse{}

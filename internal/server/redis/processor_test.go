@@ -47,7 +47,7 @@ func TestCacheProcessorPreProcess(t *testing.T) {
 			mockSetup: func(mock redismock.ClientMock) {
 				request := &pbv2.NodeRequest{Nodes: []string{"testNode"}}
 				response := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{"testNode": {}}}
-				key, _ := newCacheClient(nil, 0).generateCacheKey(request)
+				key, _ := generateCacheKey(request)
 				anyMsg, _ := anypb.New(response)
 				marshaled, _ := proto.Marshal(anyMsg)
 				mock.ExpectGet(key).SetVal(string(marshaled))
@@ -62,7 +62,7 @@ func TestCacheProcessorPreProcess(t *testing.T) {
 			requestType: dispatcher.TypeNode,
 			mockSetup: func(mock redismock.ClientMock) {
 				request := &pbv2.NodeRequest{Nodes: []string{"testNode"}}
-				key, _ := newCacheClient(nil, 0).generateCacheKey(request)
+				key, _ := generateCacheKey(request)
 				mock.ExpectGet(key).RedisNil()
 			},
 			originalRequest: &pbv2.NodeRequest{Nodes: []string{"testNode"}},
@@ -75,7 +75,7 @@ func TestCacheProcessorPreProcess(t *testing.T) {
 			requestType: dispatcher.TypeNode,
 			mockSetup: func(mock redismock.ClientMock) {
 				request := &pbv2.NodeRequest{Nodes: []string{"testNode"}}
-				key, _ := newCacheClient(nil, 0).generateCacheKey(request)
+				key, _ := generateCacheKey(request)
 				mock.ExpectGet(key).SetErr(errors.New("redis error"))
 			},
 			originalRequest: &pbv2.NodeRequest{Nodes: []string{"testNode"}},
@@ -136,7 +136,7 @@ func TestCacheProcessorPostProcess(t *testing.T) {
 			mockSetup: func(mock redismock.ClientMock) {
 				request := &pbv2.NodeRequest{Nodes: []string{"testNode"}}
 				response := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{"testNode": {}}}
-				key, _ := newCacheClient(nil, 0).generateCacheKey(request)
+				key, _ := generateCacheKey(request)
 				anyMsg, _ := anypb.New(response)
 				marshaled, _ := proto.Marshal(anyMsg)
 				mock.ExpectSet(key, marshaled, time.Minute).SetVal("OK")
@@ -152,7 +152,7 @@ func TestCacheProcessorPostProcess(t *testing.T) {
 			mockSetup: func(mock redismock.ClientMock) {
 				request := &pbv2.NodeRequest{Nodes: []string{"testNode"}}
 				response := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{"testNode": {}}}
-				key, _ := newCacheClient(nil, 0).generateCacheKey(request)
+				key, _ := generateCacheKey(request)
 				anyMsg, _ := anypb.New(response)
 				marshaled, _ := proto.Marshal(anyMsg)
 				mock.ExpectSet(key, marshaled, time.Minute).SetErr(errors.New("redis error"))
