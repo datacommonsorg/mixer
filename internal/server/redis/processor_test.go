@@ -204,3 +204,40 @@ func TestCacheProcessorPostProcess(t *testing.T) {
 		})
 	}
 }
+
+func TestNewEmptyResponse(t *testing.T) {
+	// Test cases
+	tests := []struct {
+		name        string
+		requestType dispatcher.RequestType
+		want        proto.Message
+	}{
+		{
+			name:        "Node",
+			requestType: dispatcher.TypeNode,
+			want:        &pbv2.NodeResponse{},
+		},
+		{
+			name:        "Observation",
+			requestType: dispatcher.TypeObservation,
+			want:        &pbv2.ObservationResponse{},
+		},
+		{
+			name:        "NodeSearch",
+			requestType: dispatcher.TypeNodeSearch,
+			want:        &pbv2.NodeSearchResponse{},
+		},
+		{
+			name:        "Resolve",
+			requestType: dispatcher.TypeResolve,
+			want:        &pbv2.ResolveResponse{},
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			got := newEmptyResponse(test.requestType)
+			assert.True(t, proto.Equal(test.want, got))
+		})
+	}
+}
