@@ -21,9 +21,6 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
-	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 )
 
 // SpannerDataSource represents a data source that interacts with Spanner.
@@ -93,15 +90,6 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 	}
 
 	observations = filterObservationsByDateAndFacet(observations, date, req.Filter)
-
-	if len(observations) > shared.MaxSeries {
-		return nil, status.Errorf(
-			codes.Internal,
-			"Request exceeds the allowed limit on the number of time series processed: %d > %d. Please try reducing the number of variables or entities in the request.",
-			len(observations),
-			shared.MaxSeries,
-		)
-	}
 
 	return observationsToObservationResponse(req, observations), nil
 }
