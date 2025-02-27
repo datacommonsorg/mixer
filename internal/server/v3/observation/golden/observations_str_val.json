@@ -1,0 +1,114 @@
+{
+  "by_variable": {
+    "Median_Age_Person": {
+      "by_entity": {
+        "geoId/4822892": {
+          "ordered_facets": [
+            {
+              "facet_id": "3795540742",
+              "observations": [
+                {
+                  "date": "2012",
+                  "value": 11.3
+                },
+                {
+                  "date": "2013",
+                  "value": 27
+                },
+                {
+                  "date": "2014",
+                  "value": 25.6
+                },
+                {
+                  "date": "2015",
+                  "value": 25.6
+                },
+                {
+                  "date": "2016",
+                  "value": 25.2
+                },
+                {
+                  "date": "2017",
+                  "value": 27
+                },
+                {
+                  "date": "2018",
+                  "value": 17.5
+                },
+                {
+                  "date": "2019",
+                  "value": 0
+                },
+                {
+                  "date": "2020",
+                  "value": 0
+                },
+                {
+                  "date": "2021",
+                  "value": 22.3
+                }
+              ],
+              "obs_count": 10,
+              "earliest_date": "2012",
+              "latest_date": "2021"
+            },
+            {
+              "facet_id": "815809675",
+              "observations": [
+                {
+                  "date": "2012",
+                  "value": 11.3
+                },
+                {
+                  "date": "2013",
+                  "value": 27
+                },
+                {
+                  "date": "2014",
+                  "value": 25.6
+                },
+                {
+                  "date": "2015",
+                  "value": 25.6
+                },
+                {
+                  "date": "2016",
+                  "value": 25.2
+                },
+                {
+                  "date": "2017",
+                  "value": 27
+                },
+                {
+                  "date": "2018",
+                  "value": 17.5
+                },
+                {
+                  "date": "2021",
+                  "value": 22.3
+                }
+              ],
+              "obs_count": 8,
+              "earliest_date": "2012",
+              "latest_date": "2021"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "facets": {
+    "3795540742": {
+      "import_name": "CensusACS5YearSurvey",
+      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
+      "measurement_method": "CensusACS5yrSurvey",
+      "unit": "Year"
+    },
+    "815809675": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "unit": "Years"
+    }
+  }
+}
