@@ -34,6 +34,8 @@ func NewCacheProcessor(client *CacheClient) *CacheProcessor {
 func (processor *CacheProcessor) PreProcess(rc *dispatcher.RequestContext) (dispatcher.Outcome, error) {
 	cachedResponse := newEmptyResponse(rc.Type)
 	if found, err := processor.client.GetCachedResponse(rc.Context, rc.OriginalRequest, cachedResponse); found {
+		log.Printf("Cache hit: %T", rc.OriginalRequest)
+
 		rc.CurrentResponse = cachedResponse
 		return dispatcher.Done, err
 	} else if err != nil {
