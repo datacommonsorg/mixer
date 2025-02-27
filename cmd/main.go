@@ -296,6 +296,8 @@ func main() {
 			if err != nil {
 				log.Fatalf("Failed to create Redis client: %v", err)
 			}
+			defer redisClient.Close()
+
 			var redisProcessor dispatcher.Processor = redis.NewCacheProcessor(redisClient)
 			processors = append(processors, &redisProcessor)
 		}
