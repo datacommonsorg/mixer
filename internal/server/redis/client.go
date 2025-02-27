@@ -66,7 +66,7 @@ func (c *CacheClient) Close() error {
 }
 
 // generateCacheKey generates a unique cache key from a protobuf request.
-func (c *CacheClient) generateCacheKey(request proto.Message) (string, error) {
+func generateCacheKey(request proto.Message) (string, error) {
 	marshaled, err := proto.Marshal(request)
 	if err != nil {
 		return "", fmt.Errorf("failed to marshal request: %w", err)
@@ -78,7 +78,7 @@ func (c *CacheClient) generateCacheKey(request proto.Message) (string, error) {
 
 // GetCachedResponse retrieves a cached protobuf response from Redis.
 func (c *CacheClient) GetCachedResponse(ctx context.Context, request proto.Message, response proto.Message) (bool, error) {
-	key, err := c.generateCacheKey(request)
+	key, err := generateCacheKey(request)
 	if err != nil {
 		return false, err
 	}
@@ -105,7 +105,7 @@ func (c *CacheClient) GetCachedResponse(ctx context.Context, request proto.Messa
 
 // CacheResponse stores a protobuf response in Redis.
 func (c *CacheClient) CacheResponse(ctx context.Context, request proto.Message, response proto.Message) error {
-	key, err := c.generateCacheKey(request)
+	key, err := generateCacheKey(request)
 	if err != nil {
 		return err
 	}
