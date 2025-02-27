@@ -18,7 +18,6 @@ package spanner
 import (
 	"encoding/json"
 	"fmt"
-	"strconv"
 
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"google.golang.org/protobuf/types/known/structpb"
@@ -57,7 +56,7 @@ type Observation struct {
 
 type DateValue struct {
 	Date  string
-	Value float64
+	Value string
 }
 
 type TimeSeries struct {
@@ -80,13 +79,9 @@ func (ts *TimeSeries) DecodeSpanner(val interface{}) (err error) {
 			return fmt.Errorf("failed to decode TimeSeries value: (%v)", v)
 		}
 		for date, strVal := range data {
-			floatVal, err := strconv.ParseFloat(strVal, 64)
-			if err != nil {
-				return fmt.Errorf("failed to decode TimeSeries float value: (%v)", floatVal)
-			}
 			ts.Observations = append(ts.Observations, &DateValue{
 				Date:  date,
-				Value: floatVal,
+				Value: strVal,
 			})
 		}
 	}

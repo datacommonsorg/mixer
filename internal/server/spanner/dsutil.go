@@ -17,7 +17,10 @@
 package spanner
 
 import (
+	"fmt"
+	"log"
 	"sort"
+	"strconv"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
@@ -327,6 +330,12 @@ func observationsToOrderedFacets(observations []*Observation, includeObs bool) (
 	facetIdToFacetObs := map[string]*pbv2.FacetObservation{}
 	for _, obs := range observations {
 		pvf, facetObs := observationToFacetObservation(obs, includeObs)
+
+		// Skip rows with no time series.
+		if pvf.ObsCount == 0 {
+			continue
+		}
+
 		placeVariableFacets = append(placeVariableFacets, pvf)
 		facetIdToFacetObs[facetObs.FacetId] = facetObs
 		facets[facetObs.FacetId] = pvf.Facet
@@ -349,7 +358,15 @@ func observationToFacetObservation(observation *Observation, includeObs bool) (*
 	var observations []*pb.PointStat
 
 	for _, dateValue := range observation.Observations.Observations {
-		observations = append(observations, dateValueToPointStat(dateValue))
+		pointStat, err := dateValueToPointStat(dateValue)
+
+		// Skip observations with non-numeric values.
+		if err != nil {
+			log.Printf("Error decoding PointStat: %v", err)
+			continue
+		}
+
+		observations = append(observations, pointStat)
 	}
 
 	facetObservation := &pbv2.FacetObservation{
@@ -385,11 +402,15 @@ func observationToFacet(observation *Observation) *pb.Facet {
 	return &facet
 }
 
-func dateValueToPointStat(dateValue *DateValue) *pb.PointStat {
+func dateValueToPointStat(dateValue *DateValue) (*pb.PointStat, error) {
+	floatVal, err := strconv.ParseFloat(dateValue.Value, 64)
+	if err != nil {
+		return nil, fmt.Errorf("failed to decode TimeSeries float value: (%v)", floatVal)
+	}
 	return &pb.PointStat{
 		Date:  dateValue.Date,
-		Value: proto.Float64(dateValue.Value),
-	}
+		Value: proto.Float64(floatVal),
+	}, nil
 }
 
 func searchNodesToNodeSearchResponse(nodes []*SearchNode) *pbv2.NodeSearchResponse {
