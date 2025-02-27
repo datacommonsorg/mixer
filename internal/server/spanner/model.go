@@ -54,6 +54,8 @@ type Observation struct {
 	ProvenanceURL     string     `spanner:"provenance_url"`
 }
 
+// Single observation in a time series.
+// Value is a string to allow series with non-numeric types.
 type DateValue struct {
 	Date  string
 	Value string

@@ -362,7 +362,7 @@ func observationToFacetObservation(observation *Observation, includeObs bool) (*
 
 		// Skip observations with non-numeric values.
 		if err != nil {
-			log.Printf("Error decoding PointStat: %v", err)
+			log.Printf("Error decoding PointStat for variable (%v) and entity (%v): %v", observation.VariableMeasured, observation.ObservationAbout, err)
 			continue
 		}
 
@@ -405,7 +405,7 @@ func observationToFacet(observation *Observation) *pb.Facet {
 func dateValueToPointStat(dateValue *DateValue) (*pb.PointStat, error) {
 	floatVal, err := strconv.ParseFloat(dateValue.Value, 64)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode TimeSeries float value: (%v)", floatVal)
+		return nil, fmt.Errorf("failed to decode TimeSeries float value: (%v) for date: (%v)", floatVal, dateValue.Date)
 	}
 	return &pb.PointStat{
 		Date:  dateValue.Date,
