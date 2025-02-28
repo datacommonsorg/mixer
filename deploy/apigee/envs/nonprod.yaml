@@ -7,6 +7,7 @@ proxies:
       - rewrite-missing-key-message
       - rewrite-missing-allow-header-error
       - enforce-quota-limit
+      - enforce-quota-limit-v2
       - rewrite-quota-exceeded-message
       - set-southbound-key
       - strip-api-key-header-and-params

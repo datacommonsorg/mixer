@@ -69,11 +69,28 @@
         <Step>
           <Condition>
             (client_id != null) AND
+            (client_id != "") 
+          </Condition>
+          <Name>set-quota-tier</Name>
+        </Step>
+        <Step>
+          <Condition>
+            (client_id != null) AND
             (client_id != "") AND
-            (client_id = "REPLACE_WITH_TRIAL_API_KEY")
+            (client_id = "REPLACE_WITH_TRIAL_API_KEY") AND
+            <!-- Disable if enforce-quota-limit-v2 is enabled -->
+            <!-- TODO: remove after enforce-quota-limit-v2 is fully enabled -->
+            ! (datacommons_enforce_quota != null AND datacommons_enforce_quota = "true")
           </Condition>
           <Name>enforce-quota-limit</Name>
-        </Step>
+        </Step>  
+        <Step>
+          <Condition>
+            (datacommons_enforce_quota != null) AND
+            (datacommons_enforce_quota = "true")
+          </Condition>
+          <Name>enforce-quota-limit-v2</Name>
+        </Step>      
       </Request>
     </Flow>
   </Flows>
