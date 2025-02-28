@@ -103,6 +103,8 @@ spec:
             {{- end }}
             - --use_spanner_graph={{ $.Values.mixer.useSpannerGraph }}
             - --spanner_graph_info=$(SPANNER_GRAPH_INFO)
+            - --use_redis={{ $.Values.mixer.useRedis }}
+            - --redis_info=$(REDIS_INFO)
             - --enable_v3={{ $.Values.mixer.enableV3 }}
           volumeMounts:
             - name: schema-mapping
@@ -139,6 +141,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-store-config
                   key: spanner_graph_info.yaml
+            - name: REDIS_INFO
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "mixer.fullname" $ }}-store-config
+                  key: redis_info.yaml
             - name: MIXER_HASH
               valueFrom:
                 configMapKeyRef:

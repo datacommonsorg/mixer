@@ -1,0 +1,8 @@
+# Uses the same config as the website autopush redis config:
+# https://github.com/datacommonsorg/website/blob/e435a235264cd3e6b1ad3de252f421649245f381/deploy/helm_charts/envs/autopush.yaml#L37-L42
+# Each deployment should use its own config.
+
+instances:
+  - region: us-central1
+    host: "10.135.60.155"
+    port: "6379"

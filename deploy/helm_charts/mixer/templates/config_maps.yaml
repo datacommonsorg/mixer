@@ -42,6 +42,8 @@ data:
   base_bigtable_info.yaml: {{  required "baseBigtableInfo is required." .Values.kgStoreConfig.baseBigtableInfo | quote }}
   custom_bigtable_info.yaml: {{ .Values.kgStoreConfig.customBigtableInfo | quote }}
   spanner_graph_info.yaml: {{ .Values.kgStoreConfig.spannerGraphInfo | quote }}
+  redis_info.yaml: {{ .Values.kgStoreConfig.redisInfo | quote }}
+
 
 ---
 
