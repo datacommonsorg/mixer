@@ -33,6 +33,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
+	"github.com/datacommonsorg/mixer/internal/server/redis"
 	"github.com/datacommonsorg/mixer/internal/server/remote"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/internal/server/v3/observation"
@@ -93,6 +94,9 @@ var (
 	// Spanner Graph
 	useSpannerGraph  = flag.Bool("use_spanner_graph", false, "Use Google Spanner as a database.")
 	spannerGraphInfo = flag.String("spanner_graph_info", "", "Yaml formatted text containing information for Spanner Graph.")
+	// Redis.
+	useRedis  = flag.Bool("use_redis", false, "Use Redis cache.")
+	redisInfo = flag.String("redis_info", "", "Yaml formatted text containing information for redis instances.")
 	// V3 API.
 	enableV3 = flag.Bool("enable_v3", false, "Enable datasources in V3 API.")
 )
@@ -286,6 +290,19 @@ func main() {
 	// Processors
 	processors := []*dispatcher.Processor{}
 	if *enableV3 {
+		// Cache Processor
+		if *useRedis && *redisInfo != "" {
+			redisClient, err := redis.NewCacheClient(*redisInfo)
+			if err != nil {
+				log.Fatalf("Failed to create Redis client: %v", err)
+			}
+			defer redisClient.Close()
+
+			var redisProcessor dispatcher.Processor = redis.NewCacheProcessor(redisClient)
+			processors = append(processors, &redisProcessor)
+		}
+
+		// Calculation Processor
 		var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, c.SVFormula())
 		processors = append(processors, &calculationProcessor)
 	}

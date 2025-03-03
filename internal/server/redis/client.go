@@ -19,6 +19,7 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"fmt"
+	"log"
 	"time"
 
 	"github.com/go-redis/redis/v8"
@@ -41,17 +42,25 @@ type CacheClient struct {
 	expiration  time.Duration
 }
 
-// NewCacheClient creates a new CacheClient.
-// redisAddress is the address of the Redis server ("host:port").
-func NewCacheClient(redisAddress string) *CacheClient {
-	return newCacheClient(
-		redis.NewClient(&redis.Options{
-			Addr: redisAddress,
-			// Use default DB.
-			DB: 0,
-		}),
-		defaultExpiration,
-	)
+// NewCacheClient creates a new CacheClient from a yaml config string.
+func NewCacheClient(redisConfigYaml string) (*CacheClient, error) {
+	redisAddress, err := GetRedisAddress(redisConfigYaml)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get Redis address: %w", err)
+	}
+
+	redisClient := redis.NewClient(&redis.Options{
+		Addr: redisAddress,
+		// Use default DB.
+		DB: 0,
+	})
+	if _, err := redisClient.Ping(context.Background()).Result(); err != nil {
+		return nil, fmt.Errorf("failed to connect to Redis: %w", err)
+	}
+
+	log.Printf("Connected to Redis at: %s", redisAddress)
+
+	return newCacheClient(redisClient, defaultExpiration), nil
 }
 func newCacheClient(redisClient *redis.Client, expiration time.Duration) *CacheClient {
 	return &CacheClient{
