@@ -26,6 +26,6 @@ message Cursor {
 // Represents the cursor information of one pagination request.
 // Each Cursor corresponds to one DataSource.
 message PaginationInfo {
-  // Keyed by DataSource type.
+  // Keyed by unique identifier of the DataSource.
   map<string, Cursor> cursors = 1;
 }
