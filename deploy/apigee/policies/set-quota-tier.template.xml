@@ -19,11 +19,12 @@
             const DC_QUOTA_REQUESTS_PER_INTERVAL_FLOW_VAR = "datacommons_quota_requests_per_interval";
             const DC_QUOTA_INTERVAL_FLOW_VAR = "datacommons_quota_interval";
             const DC_QUOTA_TIMEUNIT_FLOW_VAR = "datacommons_quota_timeunit";
+            const DC_QUOTA_IDENTIFIER_FLOW_VAR = "datacommons_quota_identifier";
 
             const DC_VERIFY_API_KEY_POLICY_NAME = "verify-api-key-in-header";
             const VERIFY_API_KEY_FLOW_VAR_PREFIX = "verifyapikey." + DC_VERIFY_API_KEY_POLICY_NAME;
-            const DC_QUOTA_TIER_CUSTOM_ATTRIBUTE = "datacommons_quota_tier";
-            const DEVELOPER_QUOTA_TIER_FLOW_VAR = VERIFY_API_KEY_FLOW_VAR_PREFIX + ".developer." + DC_QUOTA_TIER_CUSTOM_ATTRIBUTE;
+            const DEVELOPER_QUOTA_TIER_FLOW_VAR = VERIFY_API_KEY_FLOW_VAR_PREFIX + ".developer.datacommons_quota_tier";
+            const DEVLOPER_EMAIl_FLOW_VAR = VERIFY_API_KEY_FLOW_VAR_PREFIX + ".developer.email";
             const API_KEY_FLOW_VAR = VERIFY_API_KEY_FLOW_VAR_PREFIX + ".client_id";
             const TRIAL_API_KEY_QUOTA_TIER = "trial-api-key";
             const DEFAULT_QUOTA_TIER = "default";
@@ -72,12 +73,16 @@
                 var request_per_interval = "";
                 var quota_interval = "";
                 var quota_timeunit = "";
+                var quota_identifier = "";
                 switch (quota_tier) {
                     case UNLIMITED_QUOTA_TIER:
                         enforce_quota = "false";
+                        quota_tier = UNLIMITED_QUOTA_TIER;
                         break;
                     case TRIAL_API_KEY_QUOTA_TIER:
                         enforce_quota = "true";
+                        quota_tier = TRIAL_API_KEY_QUOTA_TIER;
+                        quota_identifier = "proxy.client.ip";
                         request_per_interval = properties.trial_api_key_quota_requests_per_interval;
                         quota_interval = properties.trial_key_quota_interval_minutes;
                         quota_timeunit = "minute";
@@ -85,6 +90,7 @@
                     default:
                         enforce_quota = "true";
                         quota_tier = DEFAULT_QUOTA_TIER;
+                        quota_identifier = DEVLOPER_EMAIl_FLOW_VAR;
                         request_per_interval = properties.default_quota_requests_per_interval;
                         quota_interval = properties.default_quota_interval;
                         quota_timeunit = properties.default_quota_timeunit;
@@ -92,9 +98,12 @@
                 }
                 context.setVariable(DC_ENFORCE_QUOTA_FLOW_VAR, enforce_quota);
                 context.setVariable(DC_QUOTA_TIER_FLOW_VAR, quota_tier);
-                context.setVariable(DC_QUOTA_REQUESTS_PER_INTERVAL_FLOW_VAR, request_per_interval);
-                context.setVariable(DC_QUOTA_INTERVAL_FLOW_VAR, quota_interval);
-                context.setVariable(DC_QUOTA_TIMEUNIT_FLOW_VAR, quota_timeunit);
+                if(enforce_quota=="true"){
+                    context.setVariable(DC_QUOTA_IDENTIFIER_FLOW_VAR, quota_identifier);
+                    context.setVariable(DC_QUOTA_REQUESTS_PER_INTERVAL_FLOW_VAR, request_per_interval);
+                    context.setVariable(DC_QUOTA_INTERVAL_FLOW_VAR, quota_interval);
+                    context.setVariable(DC_QUOTA_TIMEUNIT_FLOW_VAR, quota_timeunit);
+                }
             }
 
             enforce_quota();        

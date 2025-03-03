@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Quota continueOnError="false" enabled="true" name="enforce-quota-limit-v2" type="rollingwindow">
   <DisplayName>enforce-quota-limit-v2</DisplayName>
-  <Identifier ref="verifyapikey.verify-api-key-in-header.developer.email"/>
+  <Identifier ref="datacommons_quota_identifier"/>
   <Allow countRef="datacommons_quota_requests_per_interval" count="25000"/>
   <Interval ref="datacommons_quota_interval" >1</Interval>
   <TimeUnit ref="datacommons_quota_timeunit">month</TimeUnit>
