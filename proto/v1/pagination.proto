@@ -26,6 +26,8 @@ message Cursor {
   int32 page = 2;
   // The position of the next read item in the current page, starts from 0.
   int32 item = 3;
+  // The id of the cursor.
+  string id = 4;
 }
 
 // Represents cursors of several import groups. This holds the position
