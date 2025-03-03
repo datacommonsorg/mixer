@@ -18,6 +18,9 @@
   <ProxyEndpoints>
     <ProxyEndpoint>api</ProxyEndpoint>
   </ProxyEndpoints>
+  <Resources>
+    <Resource>jsc://set-quota-tier.js</Resource>
+  </Resources>
   <TargetEndpoints>
     <TargetEndpoint>api</TargetEndpoint>
   </TargetEndpoints>

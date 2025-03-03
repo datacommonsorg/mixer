@@ -16,6 +16,8 @@ proxies:
       - api
     target_endpoints:
       - api
+    resources:
+      - jsc/set-quota-tier.js
   - name: bard
     policies:
       - forward-host
