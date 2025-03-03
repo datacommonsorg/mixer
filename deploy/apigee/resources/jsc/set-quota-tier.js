@@ -66,15 +66,15 @@ function enforce_quota() {
         case TRIAL_API_KEY_QUOTA_TIER:
             enforce_quota = "true";
             quota_tier = TRIAL_API_KEY_QUOTA_TIER;
-            quota_identifier = "proxy.client.ip";
-            request_per_interval = properties.trial_api_key_quota_requests_per_interval;
+            quota_identifier = context.getVariable("proxy.client.ip");
+            request_per_interval = properties.trial_key_quota_requests_per_interval;
             quota_interval = properties.trial_key_quota_interval_minutes;
             quota_timeunit = "minute";
             break;
         default:
             enforce_quota = "true";
             quota_tier = DEFAULT_QUOTA_TIER;
-            quota_identifier = DEVLOPER_EMAIl_FLOW_VAR;
+            quota_identifier = context.getVariable(DEVLOPER_EMAIl_FLOW_VAR);
             request_per_interval = properties.default_quota_requests_per_interval;
             quota_interval = properties.default_quota_interval;
             quota_timeunit = properties.default_quota_timeunit;
