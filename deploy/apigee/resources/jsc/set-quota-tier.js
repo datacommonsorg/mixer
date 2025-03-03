@@ -13,7 +13,7 @@ const API_KEY_FLOW_VAR = VERIFY_API_KEY_FLOW_VAR_PREFIX + ".client_id";
 const TRIAL_API_KEY_QUOTA_TIER = "trial-api-key";
 const DEFAULT_QUOTA_TIER = "default";
 const UNLIMITED_QUOTA_TIER = "unlimited";
-const ENFORCE_QUOTA_QUERY_PARAM = "enforce_quota";
+const ENFORCE_QUOTA_HEADER = "datacommons-enforce-quota";
 
 function is_quota_enforcement_enabled() {
     // Skip enforcement if api key not found
@@ -21,9 +21,8 @@ function is_quota_enforcement_enabled() {
     if (!api_key || api_key.trim().length == 0) {
         return false;
     }
-    var enforce_quota_param = context.proxyRequest.queryParams[ENFORCE_QUOTA_QUERY_PARAM];
-    return enforce_quota_param != null && enforce_quota_param == 'true'
-
+    var enforce_quota_header = context.proxyRequest.headers[ENFORCE_QUOTA_HEADER];
+    return enforce_quota_header != undefined && enforce_quota_header != null && enforce_quota_header == 'true'
 }
 
 function is_trial_api_key() {

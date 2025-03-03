@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Javascript continueOnError="false" enabled="true" timeLimit="200" name="set-quota-tier">
+<Javascript continueOnError="false" enabled="true" timeLimit="2000" name="set-quota-tier">
     <DisplayName>set-quota-tier</DisplayName>
     <Properties>
         <Property name="default_quota_requests_per_interval">REPLACE_WITH_DEFAULT_QUOTA_REQUESTS_PER_INTERVAL</Property>
