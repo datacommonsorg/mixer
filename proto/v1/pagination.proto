@@ -17,19 +17,20 @@ package datacommons.v1;
 
 option go_package = "github.com/datacommonsorg/mixer/internal/proto/v1";
 
-// Cursor represents the position of a paginated Bigtable cache data for an
-// import group.
+// Cursor represents the position of a data source.
 message Cursor {
-  // The index of the import group, starts from 0.
+  // The index of the import group, starts from 0. Used for Bigtable.
   int32 import_group = 1;
-  // The index of the page, starts from 0.
+  // The index of the page, starts from 0. Used for Bigtable.
   int32 page = 2;
-  // The position of the next read item in the current page, starts from 0.
+  // The position of the next read item in the current page, starts from 0. 
+  // Used for Bigtable.
   int32 item = 3;
+  // The id of the cursor. Used for Spanner.
+  string id = 4;
 }
 
-// Represents cursors of several import groups. This holds the position
-// information of one entity.
+// Represents cursors of multiple entities.
 message CursorGroup {
   // Entity DCID or other information that identifies the CursorGroup.
   repeated string keys = 1;
@@ -37,8 +38,7 @@ message CursorGroup {
 }
 
 // Represents the cursor information of one pagination request.
-// Each cursor group corresponds to the cursor information of one requested
-// entity. There are multiple cursor groups for bulk APIs.
+// Each cursor group corresponds to the cursor information of one entity.
 message PaginationInfo {
   repeated CursorGroup cursor_groups = 1;
   PaginationInfo remote_pagination_info = 2;
