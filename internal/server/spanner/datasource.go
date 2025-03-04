@@ -39,7 +39,7 @@ func (sds *SpannerDataSource) Type() datasource.DataSourceType {
 
 // Id returns the id of the data source.
 func (sds *SpannerDataSource) Id() string {
-	return fmt.Sprintf("%s-%s", string(sds.Type()), sds.client.id)
+	return fmt.Sprintf("%s-%s", string(sds.Type()), sds.client.client.DatabaseName())
 }
 
 // Node retrieves node data from Spanner.
