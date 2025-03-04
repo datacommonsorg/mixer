@@ -29,6 +29,7 @@ import (
 type RemoteClient struct {
 	metadata   *resource.Metadata
 	httpClient *http.Client
+	id         string
 }
 
 // NewRemoteClient creates a new RemoteClient.
@@ -36,7 +37,11 @@ func NewRemoteClient(metadata *resource.Metadata) (*RemoteClient, error) {
 	if metadata.RemoteMixerDomain == "" || metadata.RemoteMixerAPIKey == "" {
 		return nil, fmt.Errorf("error creating remote client: please ensure that the remote mixer domain and API key are set")
 	}
-	return &RemoteClient{metadata, &http.Client{}}, nil
+	return &RemoteClient{
+		metadata:   metadata,
+		httpClient: &http.Client{},
+		id:         metadata.RemoteMixerDomain,
+	}, nil
 }
 
 func (rc *RemoteClient) Node(req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {

@@ -16,6 +16,7 @@ package remote
 
 import (
 	"context"
+	"fmt"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
@@ -33,6 +34,11 @@ func NewRemoteDataSource(client *RemoteClient) *RemoteDataSource {
 // Type returns the type of the data source.
 func (rds *RemoteDataSource) Type() datasource.DataSourceType {
 	return datasource.TypeRemote
+}
+
+// Id returns the id of the data source.
+func (rds *RemoteDataSource) Id() string {
+	return fmt.Sprintf("%s-%s", string(rds.Type()), rds.client.id)
 }
 
 func (rds *RemoteDataSource) Node(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
