@@ -39,7 +39,7 @@ func (sds *SpannerDataSource) Type() datasource.DataSourceType {
 
 // Id returns the id of the data source.
 func (sds *SpannerDataSource) Id() string {
-	return string(sds.Type()) + sds.client.id
+	return fmt.Sprintf("%s-%s", string(sds.Type()), sds.client.id)
 }
 
 // Node retrieves node data from Spanner.
@@ -63,7 +63,7 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv2.NodeRequest) (
 		}
 		return nodePropsToNodeResponse(props), nil
 	} else {
-		edges, err := sds.client.GetNodeEdgesByID(ctx, req.Nodes, arc, req.NextToken)
+		edges, err := sds.client.GetNodeEdgesByID(ctx, req.Nodes, arc)
 		if err != nil {
 			return nil, fmt.Errorf("error getting node edges: %v", err)
 		}
