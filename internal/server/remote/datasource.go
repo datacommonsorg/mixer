@@ -35,6 +35,11 @@ func (rds *RemoteDataSource) Type() datasource.DataSourceType {
 	return datasource.TypeRemote
 }
 
+// Id returns the id of the data source.
+func (rds *RemoteDataSource) Id() string {
+	return string(rds.Type()) + rds.client.id
+}
+
 func (rds *RemoteDataSource) Node(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
 	return rds.client.Node(req)
 }

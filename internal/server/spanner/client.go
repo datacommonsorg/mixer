@@ -26,11 +26,12 @@ import (
 // SpannerClient encapsulates the Spanner client.
 type SpannerClient struct {
 	client *spanner.Client
+	id     string
 }
 
 // newSpannerClient creates a new SpannerClient.
-func newSpannerClient(client *spanner.Client) *SpannerClient {
-	return &SpannerClient{client: client}
+func newSpannerClient(client *spanner.Client, id string) *SpannerClient {
+	return &SpannerClient{client: client, id: id}
 }
 
 // NewSpannerClient creates a new SpannerClient from the config yaml string.
@@ -43,7 +44,8 @@ func NewSpannerClient(ctx context.Context, spannerConfigYaml string) (*SpannerCl
 	if err != nil {
 		return nil, fmt.Errorf("failed to create SpannerClient: %w", err)
 	}
-	return newSpannerClient(client), nil
+	id := createSpannerId(cfg)
+	return newSpannerClient(client, id), nil
 }
 
 // createSpannerClient creates the database name string and initializes the Spanner client.
@@ -58,6 +60,11 @@ func createSpannerClient(ctx context.Context, cfg *SpannerConfig) (*spanner.Clie
 	}
 
 	return client, nil
+}
+
+// createSpannerId creates the id for the Spanner client.
+func createSpannerId(cfg *SpannerConfig) string {
+	return fmt.Sprintf("%s.%s.%s", cfg.Project, cfg.Instance, cfg.Database)
 }
 
 // createSpannerConfig creates the config from specific yaml string.
