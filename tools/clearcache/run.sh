@@ -41,7 +41,7 @@ gcloud container clusters get-credentials $CLUSTER_NAME \
 POD_NAME=$(kubectl get pods -n mixer -o=jsonpath='{.items[0].metadata.name}')
 HOST=$(gcloud redis instances describe mixer-cache --region="$REDIS_REGION" --format="get(host)")
 
-echo "Clearing Redis cache for $PROJECT_ID/$CLUSTER_NAME/$LOCATION, redis host $HOST"
+echo "Clearing Redis cache for $PROJECT_ID/$CLUSTER_NAME/$LOCATION, redis host: $HOST, using pod: $POD_NAME"
 
 # Execute the clearcache tool, passing the Redis host as an argument.
 kubectl exec -it $POD_NAME -n mixer -- /bin/bash -c "
