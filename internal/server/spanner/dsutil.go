@@ -100,7 +100,7 @@ func getCursorEdge(nextToken, id string) (*Edge, error) {
 		for _, key := range cursorGroup.GetKeys() {
 			if key == id {
 				if len(cursorGroup.GetCursors()) < 1 {
-					return nil, fmt.Errorf("pagination info missing cursor group for datasource: %s", id)
+					return nil, fmt.Errorf("pagination info missing cursor group for data source: %s", id)
 				}
 				cursorId := cursorGroup.GetCursors()[0].GetId()
 				edge := &Edge{}
