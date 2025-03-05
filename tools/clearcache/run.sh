@@ -13,6 +13,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# This script clears the Redis cache for a specified GCP project, cluster, and location.
+#
+# Usage:
+#   run.sh <PROJECT_ID> <CLUSTER_NAME> <LOCATION> [REDIS_REGION]
+#
+#   - PROJECT_ID: The ID of your Google Cloud Project.
+#   - CLUSTER_NAME: The name of your Kubernetes cluster.
+#   - LOCATION:  The location (region or zone) of your Kubernetes cluster.
+#   - REDIS_REGION: (Optional) The region where your Redis instance is located.
+#                   If not provided, it defaults to the cluster's LOCATION.
+# Example usage:
+#   run.sh datcom-mixer-autopush mixer-us-central1 us-central1
+
 PROJECT_ID=$1
 CLUSTER_NAME=$2
 LOCATION=$3
