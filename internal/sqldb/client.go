@@ -49,6 +49,7 @@ const (
 // SQLClient encapsulates a SQL DB connection.
 type SQLClient struct {
 	dbx *sqlx.DB
+	id  string
 }
 
 // UseConnections uses connections from the src client to this client.
@@ -75,7 +76,7 @@ func NewSQLiteClient(sqlitePath string) (*SQLClient, error) {
 	if err != nil {
 		return nil, err
 	}
-	return newSQLClient(db, sqliteDriver), nil
+	return newSQLClient(db, sqliteDriver, fmt.Sprintf("%s-%s", sqliteDriver, sqlitePath)), nil
 }
 
 func NewCloudSQLClient(instanceName string) (*SQLClient, error) {
@@ -83,12 +84,13 @@ func NewCloudSQLClient(instanceName string) (*SQLClient, error) {
 	if err != nil {
 		return nil, err
 	}
-	return newSQLClient(db, mysqlDriver), nil
+	return newSQLClient(db, mysqlDriver, fmt.Sprintf("%s-%s", mysqlDriver, instanceName)), nil
 }
 
-func newSQLClient(db *sql.DB, driver string) *SQLClient {
+func newSQLClient(db *sql.DB, driver string, id string) *SQLClient {
 	return &SQLClient{
 		dbx: sqlx.NewDb(db, driver),
+		id:  id,
 	}
 }
 
