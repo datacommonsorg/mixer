@@ -102,11 +102,21 @@ var statements = struct {
 			e.provenance,
 			'' AS name,
 			ARRAY<STRING>[] AS types
+		NEXT
+		RETURN
+			subject_id,
+			predicate,
+			object_id,
+			object_value,
+			provenance,
+			name,
+			types
 		ORDER BY
 			subject_id,
 			predicate,
 			object_id,
-			object_value
+			object_value,
+			provenance
 	`,
 	getChainedEdgesBySubjectID: fmt.Sprintf(`
 		GRAPH DCGraph MATCH ANY (m:Node
