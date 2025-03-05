@@ -1,0 +1,224 @@
+{
+  "dc/g/Root": [
+    {
+      "SubjectID": "dc/g/Root",
+      "Predicate": "specializationOf+",
+      "ObjectID": "WHO/g/FamilyPlanning",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Family Planning",
+      "Types": [
+        "StatVarGroup"
+      ]
+    },
+    {
+      "SubjectID": "dc/g/Root",
+      "Predicate": "specializationOf+",
+      "ObjectID": "WHO/g/FinancialProtection",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Financial Protection",
+      "Types": [
+        "StatVarGroup"
+      ]
+    },
+    {
+      "SubjectID": "dc/g/Root",
+      "Predicate": "specializationOf+",
+      "ObjectID": "WHO/g/FinancialProtectionImpoverishment",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Financial Protection - Impoverishment",
+      "Types": [
+        "StatVarGroup"
+      ]
+    },
+    {
+      "SubjectID": "dc/g/Root",
+      "Predicate": "specializationOf+",
+      "ObjectID": "WHO/g/FoodborneDiseases",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Foodborne Diseases",
+      "Types": [
+        "StatVarGroup"
+      ]
+    },
+    {
+      "SubjectID": "dc/g/Root",
+      "Predicate": "specializationOf+",
+      "ObjectID": "WHO/g/GlobalObservatoryForEhealthGoe",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Global Observatory For eHealth (GOe)",
+      "Types": [
+        "StatVarGroup"
+      ]
+    },
+    {
+      "SubjectID": "dc/g/Root",
+      "Predicate": "specializationOf+",
+      "ObjectID": "WHO/g/HazardsImpactOnHealth",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Hazards Impact On Health",
+      "Types": [
+        "StatVarGroup"
+      ]
+    },
+    {
+      "SubjectID": "dc/g/Root",
+      "Predicate": "specializationOf+",
+      "ObjectID": "WHO/g/HealthEquityMonitor",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Health Equity Monitor",
+      "Types": [
+        "StatVarGroup"
+      ]
+    },
+    {
+      "SubjectID": "dc/g/Root",
+      "Predicate": "specializationOf+",
+      "ObjectID": "WHO/g/HealthExpenditure",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Health Expenditure",
+      "Types": [
+        "StatVarGroup"
+      ]
+    },
+    {
+      "SubjectID": "dc/g/Root",
+      "Predicate": "specializationOf+",
+      "ObjectID": "WHO/g/HealthInequalityMonitor",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Health Inequality Monitor",
+      "Types": [
+        "StatVarGroup"
+      ]
+    },
+    {
+      "SubjectID": "dc/g/Root",
+      "Predicate": "specializationOf+",
+      "ObjectID": "WHO/g/HealthPolicy",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Health Policy",
+      "Types": [
+        "StatVarGroup"
+      ]
+    },
+    {
+      "SubjectID": "dc/g/Root",
+      "Predicate": "specializationOf+",
+      "ObjectID": "WHO/g/HealthSystems",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Health Systems",
+      "Types": [
+        "StatVarGroup"
+      ]
+    },
+    {
+      "SubjectID": "dc/g/Root",
+      "Predicate": "specializationOf+",
+      "ObjectID": "WHO/g/HealthWorkforce",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Health Workforce",
+      "Types": [
+        "StatVarGroup"
+      ]
+    },
+    {
+      "SubjectID": "dc/g/Root",
+      "Predicate": "specializationOf+",
+      "ObjectID": "WHO/g/HemoglobinLevel",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Hemoglobin Level",
+      "Types": [
+        "StatVarGroup"
+      ]
+    },
+    {
+      "SubjectID": "dc/g/Root",
+      "Predicate": "specializationOf+",
+      "ObjectID": "WHO/g/HivAidsAndOtherStis",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "HIV/AIDS and other STIs",
+      "Types": [
+        "StatVarGroup"
+      ]
+    },
+    {
+      "SubjectID": "dc/g/Root",
+      "Predicate": "specializationOf+",
+      "ObjectID": "WHO/g/Icd",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Icd",
+      "Types": [
+        "StatVarGroup"
+      ]
+    },
+    {
+      "SubjectID": "dc/g/Root",
+      "Predicate": "specializationOf+",
+      "ObjectID": "WHO/g/InfectiousDiseases",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Infectious Diseases",
+      "Types": [
+        "StatVarGroup"
+      ]
+    },
+    {
+      "SubjectID": "dc/g/Root",
+      "Predicate": "specializationOf+",
+      "ObjectID": "WHO/g/Infrastructure",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Infrastructure",
+      "Types": [
+        "StatVarGroup"
+      ]
+    },
+    {
+      "SubjectID": "dc/g/Root",
+      "Predicate": "specializationOf+",
+      "ObjectID": "WHO/g/InjuriesAndViolence",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Injuries And Violence",
+      "Types": [
+        "StatVarGroup"
+      ]
+    },
+    {
+      "SubjectID": "dc/g/Root",
+      "Predicate": "specializationOf+",
+      "ObjectID": "WHO/g/InsecticideResistance",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "Insecticide Resistance",
+      "Types": [
+        "StatVarGroup"
+      ]
+    },
+    {
+      "SubjectID": "dc/g/Root",
+      "Predicate": "specializationOf+",
+      "ObjectID": "WHO/g/InternationalHealthRegulations",
+      "ObjectValue": "",
+      "Provenance": "",
+      "Name": "International Health Regulations",
+      "Types": [
+        "StatVarGroup"
+      ]
+    }
+  ]
+}

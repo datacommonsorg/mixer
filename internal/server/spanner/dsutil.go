@@ -17,13 +17,16 @@
 package spanner
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"sort"
 	"strconv"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/util"
 
@@ -82,17 +85,86 @@ func nodePropsToNodeResponse(propsBySubjectID map[string][]*Property) *pbv2.Node
 	return nodeResponse
 }
 
+// getCursorEdge returns the cursor Edge for a given Spanner data source id.
+func getCursorEdge(nextToken, id string) (*Edge, error) {
+	if nextToken == "" {
+		return nil, nil
+	}
+
+	pi, err := pagination.Decode(nextToken)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, cursorGroup := range pi.GetCursorGroups() {
+		for _, key := range cursorGroup.GetKeys() {
+			if key == id {
+				if len(cursorGroup.GetCursors()) < 1 {
+					return nil, fmt.Errorf("pagination info missing cursor group for datasource: %s", id)
+				}
+				cursorId := cursorGroup.GetCursors()[0].GetId()
+				edge := &Edge{}
+				if err := json.Unmarshal([]byte(cursorId), &edge); err != nil {
+					return nil, err
+				}
+				return edge, nil
+			}
+		}
+	}
+
+	return nil, nil
+}
+
+// getNextToken encodes the cursor Edge in a nextToken string.
+func getNextToken(edge *Edge, id string) (string, error) {
+	if edge == nil {
+		return "", nil
+	}
+	cursorId, err := json.Marshal(edge)
+	if err != nil {
+		return "", err
+	}
+	pi := &pbv1.PaginationInfo{
+		CursorGroups: []*pbv1.CursorGroup{{
+			Keys: []string{id},
+			Cursors: []*pbv1.Cursor{{
+				Id: string(cursorId),
+			}},
+		}},
+	}
+	nextToken, err := util.EncodeProto(pi)
+	if err != nil {
+		return "", err
+	}
+	return nextToken, nil
+}
+
 // nodeEdgesToNodeResponse converts a map from subject id to its edges to a NodeResponse proto.
-func nodeEdgesToNodeResponse(edgesBySubjectID map[string][]*Edge) *pbv2.NodeResponse {
+func nodeEdgesToNodeResponse(edgesBySubjectID map[string][]*Edge, id string) (*pbv2.NodeResponse, error) {
 	nodeResponse := &pbv2.NodeResponse{
 		Data: make(map[string]*pbv2.LinkedGraph),
 	}
 
+	rows := 0
+	cursor := &Edge{}
 	for subjectID, edges := range edgesBySubjectID {
 		nodeResponse.Data[subjectID] = nodeEdgesToLinkedGraph(edges)
+		rows += len(edges)
+		if len(edges) > 0 {
+			cursor = edges[len(edges)-1]
+		}
 	}
 
-	return nodeResponse
+	// If the number of rows equals the page size, there's likely more rows.
+	if rows == PAGE_SIZE {
+		nextToken, err := getNextToken(cursor, id)
+		if err != nil {
+			return nil, err
+		}
+		nodeResponse.NextToken = nextToken
+	}
+
+	return nodeResponse, nil
 }
 
 // nodeEdgesToLinkedGraph converts an array of edges to a LinkedGraph proto.

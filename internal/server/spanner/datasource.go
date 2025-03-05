@@ -63,11 +63,15 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv2.NodeRequest) (
 		}
 		return nodePropsToNodeResponse(props), nil
 	} else {
-		edges, err := sds.client.GetNodeEdgesByID(ctx, req.Nodes, arc)
+		cursor, err := getCursorEdge(req.NextToken, sds.Id())
+		if err != nil {
+			return nil, fmt.Errorf("error decoding pagination info: %v", err)
+		}
+		edges, err := sds.client.GetNodeEdgesByID(ctx, req.Nodes, arc, cursor)
 		if err != nil {
 			return nil, fmt.Errorf("error getting node edges: %v", err)
 		}
-		return nodeEdgesToNodeResponse(edges), nil
+		return nodeEdgesToNodeResponse(edges, sds.Id())
 	}
 }
 

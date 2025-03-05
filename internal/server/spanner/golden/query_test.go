@@ -27,8 +27,8 @@ import (
 )
 
 const (
-	// Number of matches to validate for SearchNodes tests.
-	NUM_SEARCH_MATCHES = 20
+	// Number of matches to validate for tests.
+	NUM_MATCHES = 20
 )
 
 func TestGetNodeProps(t *testing.T) {
@@ -101,6 +101,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 	for _, c := range []struct {
 		ids        []string
 		arc        *v2.Arc
+		cursor     *spanner.Edge
 		goldenFile string
 	}{
 		{
@@ -109,6 +110,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				Out:        true,
 				SingleProp: "*",
 			},
+			cursor:     nil,
 			goldenFile: "get_node_edges_by_subject_id.json",
 		},
 		{
@@ -117,6 +119,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				Out:        false,
 				SingleProp: "*",
 			},
+			cursor:     nil,
 			goldenFile: "get_node_edges_by_object_id.json",
 		},
 		{
@@ -125,6 +128,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				Out:        true,
 				SingleProp: "extendedName",
 			},
+			cursor:     nil,
 			goldenFile: "get_node_edges_out_single_prop.json",
 		},
 		{
@@ -133,6 +137,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				Out:          true,
 				BracketProps: []string{"source", "subClassOf"},
 			},
+			cursor:     nil,
 			goldenFile: "get_node_edges_out_bracket_props.json",
 		},
 		{
@@ -144,6 +149,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 					"extendedName": {"AdministrativeArea2"},
 				},
 			},
+			cursor:     nil,
 			goldenFile: "get_node_edges_out_filter.json",
 		},
 		{
@@ -153,6 +159,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				SingleProp: "specializationOf",
 				Decorator:  "+",
 			},
+			cursor:     nil,
 			goldenFile: "get_node_edges_out_chain.json",
 		},
 		{
@@ -161,6 +168,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				Out:        false,
 				SingleProp: "domainIncludes",
 			},
+			cursor:     nil,
 			goldenFile: "get_node_edges_in_single_prop.json",
 		},
 		{
@@ -169,6 +177,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				Out:          false,
 				BracketProps: []string{"domainIncludes", "naturalHazardType"},
 			},
+			cursor:     nil,
 			goldenFile: "get_node_edges_in_bracket_props.json",
 		},
 		{
@@ -180,6 +189,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 					"extendedName":      {"Area of Farm: Melon"},
 				},
 			},
+			cursor:     nil,
 			goldenFile: "get_node_edges_in_filter.json",
 		},
 		{
@@ -189,6 +199,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				SingleProp: "specializationOf",
 				Decorator:  "+",
 			},
+			cursor:     nil,
 			goldenFile: "get_node_edges_in_chain.json",
 		},
 		{
@@ -200,13 +211,66 @@ func TestGetNodeEdgesByID(t *testing.T) {
 					"foo OR 1=1;": {"foo OR 1=1;"},
 				},
 			},
+			cursor:     nil,
 			goldenFile: "get_node_edges_malicious.json",
 		},
+		{
+			ids: []string{"StatisticalVariable"},
+			arc: &v2.Arc{
+				Out:        false,
+				SingleProp: "typeOf",
+			},
+			cursor:     nil,
+			goldenFile: "get_node_edges_first_page.json",
+		},
+		{
+			ids: []string{"StatisticalVariable"},
+			arc: &v2.Arc{
+				Out:        false,
+				SingleProp: "typeOf",
+			},
+			cursor: &spanner.Edge{
+				SubjectID:   "StatisticalVariable",
+				Predicate:   "typeOf",
+				ObjectID:    "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_WorldBankOtherPrivate_LongTermExternalDebt_LenderCountryBHS",
+				ObjectValue: "",
+				Provenance:  "dc/base/HumanReadableStatVars",
+			},
+			goldenFile: "get_node_edges_second_page.json",
+		},
+		{
+			ids: []string{"dc/g/Root"},
+			arc: &v2.Arc{
+				Out:        false,
+				SingleProp: "specializationOf",
+				Decorator:  "+",
+			},
+			cursor:     nil,
+			goldenFile: "get_node_edges_first_page_chain.json",
+		},
+		{
+			ids: []string{"dc/g/Root"},
+			arc: &v2.Arc{
+				Out:        false,
+				SingleProp: "specializationOf",
+				Decorator:  "+",
+			},
+			cursor: &spanner.Edge{
+				SubjectID:   "dc/g/Root",
+				Predicate:   "specializationOf+",
+				ObjectID:    "WHO/g/EssentialHealthTechnologies",
+				ObjectValue: "",
+				Provenance:  "",
+			},
+			goldenFile: "get_node_edges_second_page_chain.json",
+		},
 	} {
-		actual, err := client.GetNodeEdgesByID(ctx, c.ids, c.arc)
+		actual, err := client.GetNodeEdgesByID(ctx, c.ids, c.arc, c.cursor)
 		if err != nil {
 			t.Fatalf("GetNodeEdgesByID error (%v): %v", c.goldenFile, err)
 		}
+
+		actual = simplifyNodes(actual)
 
 		got, err := test.StructToJSON(actual)
 		if err != nil {
@@ -424,8 +488,8 @@ func TestSearchObjectValues(t *testing.T) {
 
 // simplifySearchNodes simplifies search results for goldens.
 func simplifySearchNodes(results []*spanner.SearchNode) []*spanner.SearchNode {
-	if len(results) > NUM_SEARCH_MATCHES {
-		results = results[:NUM_SEARCH_MATCHES]
+	if len(results) > NUM_MATCHES {
+		results = results[:NUM_MATCHES]
 	}
 
 	for _, r := range results {
@@ -433,4 +497,16 @@ func simplifySearchNodes(results []*spanner.SearchNode) []*spanner.SearchNode {
 	}
 
 	return results
+}
+
+// simplifyNodes simplifies Node results for goldens.
+func simplifyNodes(results map[string][]*spanner.Edge) map[string][]*spanner.Edge {
+	filtered := map[string][]*spanner.Edge{}
+	for subject_id, edges := range results {
+		if len(edges) > NUM_MATCHES {
+			edges = edges[:NUM_MATCHES]
+		}
+		filtered[subject_id] = edges
+	}
+	return filtered
 }

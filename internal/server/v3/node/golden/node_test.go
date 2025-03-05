@@ -66,6 +66,24 @@ func TestV3Node(t *testing.T) {
 				"",
 				"out_pv_all.json",
 			},
+			{
+				"First page of pagination",
+				[]string{
+					"StatisticalVariable",
+				},
+				"<-typeOf",
+				"",
+				"pagination_first_page.json",
+			},
+			{
+				"Second page of pagination",
+				[]string{
+					"StatisticalVariable",
+				},
+				"<-typeOf",
+				"H4sIAAAAAAAA/2yQsW4TQRCGC3cpeYLV1HdcQ3UdTlASKcJWHJkCodPc7nBesju7mp2zOCFqJB6Q50Fr2aahHc38833/zZ/VzX3JyEzSZknfyGrpHKpNsS2ahDrPRZEtlc7Z9nVqlYrWDRyxnIbDJJgPw7s3v1fwa/UDdvNYYx7voIedovqi3mLYo3gcA0EDWyHnLSpBD7pk2nyFBjb/rt7HNLM+spJQ0WfKuERiHe5o1GEr/ohKtzVDkwzbeQzehuV+RkFWIjd8ShLcGvl1oweS88HwlHh6IYkfvisJYzilPRE7ktv6T5b1w+4KsscwV74TbjoS1w6gB2e7Kt49zBH5mdBVp6q5RynQwEeMde1CZaYrlgmJJ6Mk0dAZwTga1WTx1mcMRi6mRlOdVmxjz6LGs1njASOWt9DAy5KpQP/5vxV/+fkXAAD//wEAAP//dDdEwtkBAAA=",
+				"pagination_second_page.json",
+			},
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V3Node(ctx, &pbv2.NodeRequest{

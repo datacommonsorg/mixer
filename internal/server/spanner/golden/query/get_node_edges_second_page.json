@@ -1,0 +1,224 @@
+{
+  "StatisticalVariable": [
+    {
+      "SubjectID": "StatisticalVariable",
+      "Predicate": "typeOf",
+      "ObjectID": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_WorldBankOtherPrivate_LongTermExternalDebt",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars",
+      "Name": "Publicly guaranteed long term external debt pricipal repayment to private creditor in all lenders.",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "StatisticalVariable",
+      "Predicate": "typeOf",
+      "ObjectID": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_WorldBankOtherPrivate_LongTermExternalDebt_LenderCountryBIH",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars",
+      "Name": "Publicly guaranteed long term external debt pricipal repayment to private creditor in Bosnia-Herzegovina.",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "StatisticalVariable",
+      "Predicate": "typeOf",
+      "ObjectID": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_WorldBankOtherPrivate_LongTermExternalDebt_LenderCountryBMU",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars",
+      "Name": "Publicly guaranteed long term external debt pricipal repayment to private creditor in Bermuda.",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "StatisticalVariable",
+      "Predicate": "typeOf",
+      "ObjectID": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_WorldBankOtherPrivate_LongTermExternalDebt_LenderCountryBOL",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars",
+      "Name": "Publicly guaranteed long term external debt pricipal repayment to private creditor in Bolivia.",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "StatisticalVariable",
+      "Predicate": "typeOf",
+      "ObjectID": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_WorldBankOtherPrivate_LongTermExternalDebt_LenderCountryBRA",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars",
+      "Name": "Publicly guaranteed long term external debt pricipal repayment to private creditor in Brazil.",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "StatisticalVariable",
+      "Predicate": "typeOf",
+      "ObjectID": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_WorldBankOtherPrivate_LongTermExternalDebt_LenderCountryBRB",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars",
+      "Name": "Publicly guaranteed long term external debt pricipal repayment to private creditor in Barbados.",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "StatisticalVariable",
+      "Predicate": "typeOf",
+      "ObjectID": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_WorldBankOtherPrivate_LongTermExternalDebt_LenderCountryCAN",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars",
+      "Name": "Publicly guaranteed long term external debt pricipal repayment to private creditor in Canada.",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "StatisticalVariable",
+      "Predicate": "typeOf",
+      "ObjectID": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_WorldBankOtherPrivate_LongTermExternalDebt_LenderCountryCHE",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars",
+      "Name": "Publicly guaranteed long term external debt pricipal repayment to private creditor in Switzerland.",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "StatisticalVariable",
+      "Predicate": "typeOf",
+      "ObjectID": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_WorldBankOtherPrivate_LongTermExternalDebt_LenderCountryCHL",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars",
+      "Name": "Publicly guaranteed long term external debt pricipal repayment to private creditor in Chile.",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "StatisticalVariable",
+      "Predicate": "typeOf",
+      "ObjectID": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_WorldBankOtherPrivate_LongTermExternalDebt_LenderCountryCHN",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars",
+      "Name": "Publicly guaranteed long term external debt pricipal repayment to private creditor in China.",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "StatisticalVariable",
+      "Predicate": "typeOf",
+      "ObjectID": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_WorldBankOtherPrivate_LongTermExternalDebt_LenderCountryCIV",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars",
+      "Name": "Publicly guaranteed long term external debt pricipal repayment to private creditor in Cote D`Ivoire, Republic Of.",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "StatisticalVariable",
+      "Predicate": "typeOf",
+      "ObjectID": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_WorldBankOtherPrivate_LongTermExternalDebt_LenderCountryCOL",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars",
+      "Name": "Publicly guaranteed long term external debt pricipal repayment to private creditor in Colombia.",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "StatisticalVariable",
+      "Predicate": "typeOf",
+      "ObjectID": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_WorldBankOtherPrivate_LongTermExternalDebt_LenderCountryCPV",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars",
+      "Name": "Publicly guaranteed long term external debt pricipal repayment to private creditor in Cabo Verde.",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "StatisticalVariable",
+      "Predicate": "typeOf",
+      "ObjectID": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_WorldBankOtherPrivate_LongTermExternalDebt_LenderCountryCYM",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars",
+      "Name": "Publicly guaranteed long term external debt pricipal repayment to private creditor in Cayman Islands.",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "StatisticalVariable",
+      "Predicate": "typeOf",
+      "ObjectID": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_WorldBankOtherPrivate_LongTermExternalDebt_LenderCountryCYP",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars",
+      "Name": "Publicly guaranteed long term external debt pricipal repayment to private creditor in Cyprus.",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "StatisticalVariable",
+      "Predicate": "typeOf",
+      "ObjectID": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_WorldBankOtherPrivate_LongTermExternalDebt_LenderCountryCZE",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars",
+      "Name": "Publicly guaranteed long term external debt pricipal repayment to private creditor in Czechia.",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "StatisticalVariable",
+      "Predicate": "typeOf",
+      "ObjectID": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_WorldBankOtherPrivate_LongTermExternalDebt_LenderCountryDEU",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars",
+      "Name": "Publicly guaranteed long term external debt pricipal repayment to private creditor in Germany, Fed. Rep. of.",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "StatisticalVariable",
+      "Predicate": "typeOf",
+      "ObjectID": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_WorldBankOtherPrivate_LongTermExternalDebt_LenderCountryDNK",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars",
+      "Name": "Publicly guaranteed long term external debt pricipal repayment to private creditor in Denmark.",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "StatisticalVariable",
+      "Predicate": "typeOf",
+      "ObjectID": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_WorldBankOtherPrivate_LongTermExternalDebt_LenderCountryDZA",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars",
+      "Name": "Publicly guaranteed long term external debt pricipal repayment to private creditor in Algeria.",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "StatisticalVariable",
+      "Predicate": "typeOf",
+      "ObjectID": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_WorldBankOtherPrivate_LongTermExternalDebt_LenderCountryEGY",
+      "ObjectValue": "",
+      "Provenance": "dc/base/HumanReadableStatVars",
+      "Name": "Publicly guaranteed long term external debt pricipal repayment to private creditor in Egypt.",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    }
+  ]
+}

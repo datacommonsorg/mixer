@@ -23,22 +23,28 @@ import (
 
 // SQL / GQL statements executed by the SpannerClient
 var statements = struct {
-	// Fetch Properties for out arcs
+	// Fetch Properties for out arcs.
 	getPropsBySubjectID string
-	// Fetch Properties for in arcs
+	// Fetch Properties for in arcs.
 	getPropsByObjectID string
-	// Fetch Edges for out arcs with a single hop
+	// Fetch Edges for out arcs with a single hop.
 	getEdgesBySubjectID string
-	// Fetch Edges for out arcs with chaining
+	// Fetch Edges for out arcs with chaining.
 	getChainedEdgesBySubjectID string
-	// Fetch Edges for in arcs with a single hop
+	// Fetch Edges for in arcs with a single hop.
 	getEdgesByObjectID string
-	// Fetch Edges for in arcs with chaining
+	// Fetch Edges for in arcs with chaining.
 	getChainedEdgesByObjectID string
-	// Subquery to filter edges by predicate
+	// Subquery to filter edges by predicate.
 	filterProps string
-	// Subquery to filter edges by object property-values
+	// Subquery to filter edges by object property-values.
 	filterObjects string
+	// Subquery to filter edges by cursor node.
+	cursorNodeFilter string
+	// Subquery to filter edges by cursor edge.
+	cursorEdgeFilter string
+	// Subquery to apply page limit.
+	applyLimit string
 	// Fetch Observations for variable+entity.
 	getObsByVariableAndEntity string
 	// Fetch observations for variable + contained in place.
@@ -77,10 +83,10 @@ var statements = struct {
 			predicate
 	`,
 	getEdgesBySubjectID: `
-		GRAPH DCGraph MATCH -[e:Edge
+		GRAPH DCGraph MATCH (m:Node)-[e:Edge]->(n:Node)
 		WHERE
-			e.subject_id IN UNNEST(@ids)
-			AND e.object_value IS NULL%[1]s]->(n:Node)
+			m.subject_id IN UNNEST(@ids)
+			AND e.object_value IS NULL%[1]s%[2]s
 		RETURN 
 			e.subject_id,
 			e.predicate,
@@ -90,10 +96,10 @@ var statements = struct {
 			COALESCE(n.name, '') AS name,
 			COALESCE(n.types, []) AS types
 		UNION ALL
-		MATCH -[e:Edge
+		MATCH (m:Node)-[e:Edge]->(n:Node)
 		WHERE
-			e.subject_id IN UNNEST(@ids)
-			AND e.object_value IS NOT NULL%[1]s]-> 
+			m.subject_id IN UNNEST(@ids)
+			AND e.object_value IS NOT NULL%[1]s%[2]s
 		RETURN 
 			e.subject_id,
 			e.predicate,
@@ -102,20 +108,29 @@ var statements = struct {
 			e.provenance,
 			'' AS name,
 			ARRAY<STRING>[] AS types
+		NEXT
+		RETURN
+			subject_id,
+			predicate,
+			object_id,
+			object_value,
+			provenance,
+			name,
+			types
 		ORDER BY
 			subject_id,
 			predicate,
 			object_id,
-			object_value
+			object_value,
+			provenance
 	`,
-	getChainedEdgesBySubjectID: fmt.Sprintf(`
-		GRAPH DCGraph MATCH ANY (m:Node
-		WHERE
-			m.subject_id IN UNNEST(@ids))-[e:Edge
+	getChainedEdgesBySubjectID: `
+		GRAPH DCGraph MATCH ANY (m:Node)-[e:Edge
 		WHERE
 			e.predicate = @predicate]->{1,%d}(n:Node)
-		WHERE 
-			m != n
+		WHERE
+			m.subject_id IN UNNEST(@ids)
+			AND m != n%s
 		RETURN 
 			m.subject_id,
 			n.subject_id as object_id,
@@ -123,11 +138,11 @@ var statements = struct {
 			COALESCE(n.name, '') AS name,
 			COALESCE(n.types, []) AS types
 		UNION ALL
-		MATCH -[e:Edge
+		MATCH (m:Node)-[e:Edge]->(n:Node)
 		WHERE
-			e.subject_id IN UNNEST(@ids)
+			m.subject_id IN UNNEST(@ids)
 			AND e.object_value IS NOT NULL
-			AND e.predicate = @predicate]-> 
+			AND e.predicate = @predicate%s
 		RETURN 
 			e.subject_id,
 			'' AS object_id,
@@ -148,12 +163,12 @@ var statements = struct {
 			predicate,
 			object_id,
 			object_value
-	`, MAX_HOPS),
+	`,
 	getEdgesByObjectID: `
-		GRAPH DCGraph MATCH <-[e:Edge
+		GRAPH DCGraph MATCH (m:Node)<-[e:Edge]-(n:Node) 
 		WHERE
-			e.object_id IN UNNEST(@ids)
-			AND e.subject_id != e.object_id%s]-(n:Node) 
+			m.subject_id IN UNNEST(@ids)
+			AND e.subject_id != e.object_id%s%s
 		RETURN 
 			e.object_id AS subject_id,
 			e.predicate,
@@ -167,14 +182,13 @@ var statements = struct {
 			predicate,
 			object_id
 	`,
-	getChainedEdgesByObjectID: fmt.Sprintf(`
-		GRAPH DCGraph MATCH ANY (m:Node
-		WHERE 
-			m.subject_id IN UNNEST(@ids))<-[e:Edge
+	getChainedEdgesByObjectID: `
+		GRAPH DCGraph MATCH ANY (m:Node)<-[e:Edge
 		WHERE
 			e.predicate = @predicate]-{1,%d}(n:Node) 
-		WHERE
-			m!= n	
+		WHERE 
+			m.subject_id IN UNNEST(@ids)
+			AND m!= n%s	
 		RETURN 
 			m.subject_id,
 			n.subject_id AS object_id,
@@ -193,7 +207,7 @@ var statements = struct {
 			subject_id,
 			predicate,
 			object_id
-		`, MAX_HOPS),
+		`,
 	filterProps: `
 		AND e.predicate IN UNNEST(@props)
 	`,
@@ -217,6 +231,15 @@ var statements = struct {
 			name,
 			types			
 	`,
+	cursorNodeFilter: `
+		AND CONCAT(m.subject_id, n.subject_id) > '%s'
+	`,
+	cursorEdgeFilter: `
+		AND CONCAT(m.subject_id, e.predicate, n.subject_id, COALESCE(e.object_value, ''), COALESCE(e.provenance, '')) > '%s'
+	`,
+	applyLimit: fmt.Sprintf(`
+		LIMIT %d
+	`, PAGE_SIZE),
 	getObsByVariableAndEntity: `
 		SELECT
 			variable_measured,
