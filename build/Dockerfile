@@ -65,4 +65,5 @@ RUN GRPC_HEALTH_PROBE_VERSION=v0.4.7 && \
 COPY cmd/ cmd
 COPY esp/ esp
 RUN go build -o /go/bin/mixer cmd/main.go
+RUN go build -o /go/bin/tools/clearcache cmd/tools/clearcache.go
 ENTRYPOINT ["/go/bin/mixer"]
