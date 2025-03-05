@@ -120,10 +120,12 @@ func getNextToken(edge *Edge, id string) (string, error) {
 	if edge == nil {
 		return "", nil
 	}
+
 	cursorId, err := json.Marshal(edge)
 	if err != nil {
 		return "", err
 	}
+
 	pi := &pbv1.PaginationInfo{
 		CursorGroups: []*pbv1.CursorGroup{{
 			Keys: []string{id},
@@ -136,6 +138,7 @@ func getNextToken(edge *Edge, id string) (string, error) {
 	if err != nil {
 		return "", err
 	}
+
 	return nextToken, nil
 }
 
