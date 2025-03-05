@@ -22,7 +22,7 @@ REDIS_REGION=$4
 # Exit the script if there's an error
 set -e
 
-gcloud config set project $PROJECT_ID
+gcloud config set project "$PROJECT_ID"
 
 # Set default redis region if not passed in
 if [ -z "${REDIS_REGION}" ]; then
@@ -35,8 +35,8 @@ if [[ $LOCATION =~ ^[a-z]+-[a-z0-9]+$ ]]; then
 else
   ZONE=$LOCATION
 fi
-gcloud container clusters get-credentials $CLUSTER_NAME \
-  ${REGION:+--region=$REGION} ${ZONE:+--zone=$ZONE} --project=$PROJECT_ID
+gcloud container clusters get-credentials "$CLUSTER_NAME" \
+  ${REGION:+--region="$REGION"} ${ZONE:+--zone="$ZONE"} --project="$PROJECT_ID"
 
 POD_NAME=$(kubectl get pods -n mixer -o=jsonpath='{.items[0].metadata.name}')
 HOST=$(gcloud redis instances describe mixer-cache --region="$REDIS_REGION" --format="get(host)")
@@ -44,6 +44,6 @@ HOST=$(gcloud redis instances describe mixer-cache --region="$REDIS_REGION" --fo
 echo "Clearing Redis cache for $PROJECT_ID/$CLUSTER_NAME/$LOCATION, redis host: $HOST, using pod: $POD_NAME"
 
 # Execute the clearcache tool, passing the Redis host as an argument.
-kubectl exec -it $POD_NAME -n mixer -- /bin/bash -c "
+kubectl exec -it "$POD_NAME" -n mixer -- /bin/bash -c "
   /go/bin/tools/clearcache --redis_host=$HOST
 "
