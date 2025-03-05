@@ -143,14 +143,21 @@ func getNextToken(edge *Edge, id string) (string, error) {
 }
 
 // nodeEdgesToNodeResponse converts a map from subject id to its edges to a NodeResponse proto.
-func nodeEdgesToNodeResponse(edgesBySubjectID map[string][]*Edge, id string) (*pbv2.NodeResponse, error) {
+func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge, id string) (*pbv2.NodeResponse, error) {
 	nodeResponse := &pbv2.NodeResponse{
 		Data: make(map[string]*pbv2.LinkedGraph),
 	}
 
+	// Sort nodes to preserve order from Spanner.
+	sort.Strings(nodes)
+
 	rows := 0
 	cursor := &Edge{}
-	for subjectID, edges := range edgesBySubjectID {
+	for _, subjectID := range nodes {
+		edges, ok := edgesBySubjectID[subjectID]
+		if !ok {
+			continue
+		}
 		nodeResponse.Data[subjectID] = nodeEdgesToLinkedGraph(edges)
 		rows += len(edges)
 		if len(edges) > 0 {
