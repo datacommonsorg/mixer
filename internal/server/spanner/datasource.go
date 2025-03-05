@@ -37,6 +37,11 @@ func (sds *SpannerDataSource) Type() datasource.DataSourceType {
 	return datasource.TypeSpanner
 }
 
+// Id returns the id of the data source.
+func (sds *SpannerDataSource) Id() string {
+	return fmt.Sprintf("%s-%s", string(sds.Type()), sds.client.client.DatabaseName())
+}
+
 // Node retrieves node data from Spanner.
 func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
 	arcs, err := v2.ParseProperty(req.GetProperty())

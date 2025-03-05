@@ -32,6 +32,7 @@ const (
 // DataSource interface defines the common methods for all data sources.
 type DataSource interface {
 	Type() DataSourceType
+	Id() string
 	Node(context.Context, *pbv2.NodeRequest) (*pbv2.NodeResponse, error)
 	Observation(context.Context, *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error)
 	NodeSearch(context.Context, *pbv2.NodeSearchRequest) (*pbv2.NodeSearchResponse, error)
