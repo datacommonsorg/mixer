@@ -412,7 +412,7 @@
         "id": "dc/g/Person_LaborForceStatus",
         "specializedEntity": "Labor Force Status",
         "displayName": "Person by Labor Force Status",
-        "descendentStatVarCount": 3200
+        "descendentStatVarCount": 3374
       },
       {
         "id": "dc/g/Language",
@@ -532,13 +532,13 @@
         "id": "dc/g/Residence",
         "specializedEntity": "Residence",
         "displayName": "Residence",
-        "descendentStatVarCount": 5266
+        "descendentStatVarCount": 5268
       },
       {
         "id": "dc/g/Person_ResidentStatus",
         "specializedEntity": "Resident Status",
         "displayName": "Person by Resident Status",
-        "descendentStatVarCount": 806
+        "descendentStatVarCount": 808
       },
       {
         "id": "dc/g/Place_SocialCondition",
@@ -577,7 +577,7 @@
         "descendentStatVarCount": 4
       }
     ],
-    "descendentStatVarCount": 47368,
+    "descendentStatVarCount": 47542,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]
