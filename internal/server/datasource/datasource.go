@@ -26,6 +26,7 @@ type DataSourceType string
 const (
 	TypeRemote  DataSourceType = "remote"
 	TypeSpanner DataSourceType = "spanner"
+	TypeSQL     DataSourceType = "sql"
 	TypeMock    DataSourceType = "mock"
 )
 
