@@ -156,7 +156,6 @@ func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge
 	sort.Strings(nodes)
 
 	rows := 0
-	cursor := &Edge{}
 	for _, subjectID := range nodes {
 		edges, ok := edgesBySubjectID[subjectID]
 		if !ok {
@@ -169,7 +168,7 @@ func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge
 		// so having this many rows indicates that we have at least one more request,
 		// so generate nextToken.
 		if rows == PAGE_SIZE+1 && nodeResponse.NextToken == "" {
-			cursor = edges[len(edges)-1]
+			cursor := edges[len(edges)-1]
 			edges = edges[:len(edges)-1]
 			nextToken, err := getNextToken(cursor, id)
 			if err != nil {
