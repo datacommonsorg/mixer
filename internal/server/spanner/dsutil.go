@@ -311,12 +311,6 @@ func obsToFacetResponse(req *pbv2.ObservationRequest, observations []*Observatio
 }
 
 func obsToExistenceResponse(req *pbv2.ObservationRequest, observations []*Observation) *pbv2.ObservationResponse {
-	// This is the behavior in V2 and will be kept for now to not break existing behavior.
-	// TODO: Investigate whether we should return a response for this.
-	if req.Entity.Expression != "" {
-		return &pbv2.ObservationResponse{}
-	}
-
 	response := newObservationResponse(req.Variable.Dcids)
 	for _, obs := range observations {
 		response.ByVariable[obs.VariableMeasured].ByEntity[obs.ObservationAbout] = &pbv2.EntityObservation{}
