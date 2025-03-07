@@ -242,6 +242,12 @@ func main() {
 		}
 	}
 
+	// SQL Data Source
+	if *enableV3 && sqldb.IsConnected(&sqlClient) {
+		var ds datasource.DataSource = sqldb.NewSQLDataSource(&sqlClient)
+		sources = append(sources, &ds)
+	}
+
 	// Store
 	if len(tables) == 0 && *remoteMixerDomain == "" && !sqldb.IsConnected(&sqlClient) {
 		log.Fatal("No bigtables or remote mixer domain or sql database are provided")

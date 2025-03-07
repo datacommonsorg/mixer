@@ -57,6 +57,7 @@ type SQLClient struct {
 // This method should be removed once the store maintains the client by reference.
 func (sc *SQLClient) UseConnections(src *SQLClient) {
 	sc.dbx = src.dbx
+	sc.id = src.id
 }
 
 // Close closes the underlying database connection

@@ -169,6 +169,10 @@ func setupInternal(
 		if err != nil {
 			log.Fatalf("SQL database validation failed: %v", err)
 		}
+		if enableV3 {
+			var ds datasource.DataSource = sqldb.NewSQLDataSource(&sqlClient)
+			sources = append(sources, &ds)
+		}
 	}
 
 	metadata, err := server.NewMetadata(
