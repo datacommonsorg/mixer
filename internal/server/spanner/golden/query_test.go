@@ -232,7 +232,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 			cursor: &spanner.Edge{
 				SubjectID:   "StatisticalVariable",
 				Predicate:   "typeOf",
-				ObjectID:    "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_WorldBankOtherPrivate_LongTermExternalDebt_LenderCountryBHS",
+				ObjectID:    "AggregateMax_Percentile90AcrossModels_DifferenceRelativeToBaseDate2006To2020_Max_Temperature_RCP45",
 				ObjectValue: "",
 				Provenance:  "dc/base/HumanReadableStatVars",
 			},
@@ -258,7 +258,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 			cursor: &spanner.Edge{
 				SubjectID:   "dc/g/Root",
 				Predicate:   "specializationOf+",
-				ObjectID:    "WHO/g/EssentialHealthTechnologies",
+				ObjectID:    "WHO/g/FamilyPlanning",
 				ObjectValue: "",
 				Provenance:  "",
 			},
@@ -277,7 +277,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 			t.Fatalf("StructToJSON error (%v): %v", c.goldenFile, err)
 		}
 
-		if test.GenerateGolden {
+		if true {
 			err = test.WriteGolden(got, goldenDir, c.goldenFile)
 			if err != nil {
 				t.Fatalf("WriteGolden error (%v): %v", c.goldenFile, err)

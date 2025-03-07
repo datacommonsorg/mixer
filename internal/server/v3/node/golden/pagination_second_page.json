@@ -5,14 +5,6 @@
         "typeOf": {
           "nodes": [
             {
-              "name": "Publicly guaranteed long term external debt pricipal repayment to private creditor in all lenders.",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_WorldBankOtherPrivate_LongTermExternalDebt",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
               "name": "Publicly guaranteed long term external debt pricipal repayment to private creditor in Bosnia-Herzegovina.",
               "types": [
                 "StatisticalVariable"
@@ -8003,11 +7995,19 @@
               ],
               "dcid": "AmountOutstanding_Debt_OfficialCreditor_PubliclyGuaranteed_Multilateral_LongTermExternalDebt_LenderEuropeanReliefFund",
               "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Publicly guaranteed multilateral long term external debt pricipal repayment to offical creditor, European Social Fund (ESF).",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AmountOutstanding_Debt_OfficialCreditor_PubliclyGuaranteed_Multilateral_LongTermExternalDebt_LenderEuropeanSocialFund",
+              "provenance_id": "dc/base/HumanReadableStatVars"
             }
           ]
         }
       }
     }
   },
-  "next_token": "H4sIAAAAAAAA/2zQv+7TMBDA8aHbb+QJrJsTsjBlQ/xKQSqkolUXhKKLfQkG/9P5jIgQD4LEA/IYyKUtDKzR3eXz9cOvzcMuJwyBuE0cP5GW3BkUHX2bJTJ1NmTBoCl3Rrefl1YoS53ACfPl47gwpo/jsyc/N/Bj8w2OZapnXj9CD0dBsVmsRndGtjg5ggYOTMZqFIIeZE00zNDA8HfruY8lyFCk/tnYsIyPNMk4zLPVFt2Lui6Rx0OZnNVu3RVkDEJkxjfFiXUoxOjGfQzLidhvvwpxQHe5sqdgiLeFYyIM78hZml+WYO6EM7pSZRdo/EKh1kMPRnc1uXtVfN1DU2tq4Bk5QwNv0dexG0otd5Xy/6iUi2FRQuwVXV3K0CQqsdU2oVNMCVdPQZREFWs0OqWv0Y260dUfu6r4p9DAaU2UoX//30f/8P03AAAA//8BAAD//zS16nrrAQAA"
+  "next_token": "H4sIAAAAAAAA/0SPwUrDQBCGoccefYQ5N+TiKTexpQrVFFt7EVkmu9O4upkNs7NiER9A8AF9HNkgeh3m+///m3/P5us0IjNJNUp8Jqupdqg2DlXSKFR7TopsKdXOVi99pZS0fGCHaTqaXnB8MudnXzP4nL3DLncl5noJDewU1Sf1FsMBxWMXCBawFXLeohI0oKeR2iMsoP2nLoaYWduspdl57s2SOjXt8eitx3BZcI1itrkL3obTOqMgK5EzNzmoD6gkGMwmcr8nGVZvSsIYppQNsSNZZYkjId+zj/zXfsCQy6hpY3wlLuLQgLN1sa2v8oB8R+iKSHE7oCRYwC0Ov9j+NFKC5uHx4wcAAP//AQAA//+Oj+AzWwEAAA=="
 }

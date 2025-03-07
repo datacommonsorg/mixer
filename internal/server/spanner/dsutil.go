@@ -86,7 +86,7 @@ func nodePropsToNodeResponse(propsBySubjectID map[string][]*Property) *pbv2.Node
 }
 
 // getCursorEdge returns the cursor Edge for a given Spanner data source id.
-func getCursorEdge(nextToken, id string) (*Edge, error) {
+func getCursorEdge(nextToken, dataSourceID string) (*Edge, error) {
 	if nextToken == "" {
 		return nil, nil
 	}
@@ -98,9 +98,9 @@ func getCursorEdge(nextToken, id string) (*Edge, error) {
 
 	for _, cursorGroup := range pi.GetCursorGroups() {
 		for _, key := range cursorGroup.GetKeys() {
-			if key == id {
+			if key == dataSourceID {
 				if len(cursorGroup.GetCursors()) < 1 {
-					return nil, fmt.Errorf("pagination info missing cursor group for data source: %s", id)
+					return nil, fmt.Errorf("pagination info missing cursor for Spanner data source: %s", dataSourceID)
 				}
 				cursorId := cursorGroup.GetCursors()[0].GetId()
 				edge := &Edge{}
@@ -116,10 +116,14 @@ func getCursorEdge(nextToken, id string) (*Edge, error) {
 }
 
 // getNextToken encodes the cursor Edge in a nextToken string.
-func getNextToken(edge *Edge, id string) (string, error) {
+func getNextToken(edge *Edge, dataSourceID string) (string, error) {
 	if edge == nil {
 		return "", nil
 	}
+
+	// Clear name and types to save space since they aren't used.
+	edge.Name = ""
+	edge.Types = []string{}
 
 	cursorId, err := json.Marshal(edge)
 	if err != nil {
@@ -128,7 +132,7 @@ func getNextToken(edge *Edge, id string) (string, error) {
 
 	pi := &pbv1.PaginationInfo{
 		CursorGroups: []*pbv1.CursorGroup{{
-			Keys: []string{id},
+			Keys: []string{dataSourceID},
 			Cursors: []*pbv1.Cursor{{
 				Id: string(cursorId),
 			}},
@@ -158,20 +162,23 @@ func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge
 		if !ok {
 			continue
 		}
-		nodeResponse.Data[subjectID] = nodeEdgesToLinkedGraph(edges)
-		rows += len(edges)
-		if len(edges) > 0 {
-			cursor = edges[len(edges)-1]
-		}
-	}
 
-	// If the number of rows equals the page size, there's likely more rows.
-	if rows == PAGE_SIZE {
-		nextToken, err := getNextToken(cursor, id)
-		if err != nil {
-			return nil, err
+		rows += len(edges)
+
+		// We requested PAGE_SIZE+1 rows,
+		// so having this many rows indicates that we have at least one more request,
+		// so generate nextToken.
+		if rows == PAGE_SIZE+1 && nodeResponse.NextToken == "" {
+			cursor = edges[len(edges)-1]
+			edges = edges[:len(edges)-1]
+			nextToken, err := getNextToken(cursor, id)
+			if err != nil {
+				return nil, err
+			}
+			nodeResponse.NextToken = nextToken
 		}
-		nodeResponse.NextToken = nextToken
+
+		nodeResponse.Data[subjectID] = nodeEdgesToLinkedGraph(edges)
 	}
 
 	return nodeResponse, nil

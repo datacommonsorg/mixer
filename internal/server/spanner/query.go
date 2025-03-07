@@ -108,12 +108,17 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 		params["props"] = arc.BracketProps
 	}
 
-	// Create cursor filters.
+	// Attach cursor params.
 	cursorNodeFilter := ""
 	cursorEdgeFilter := ""
 	if cursor != nil {
-		cursorNodeFilter = fmt.Sprintf(statements.cursorNodeFilter, cursor.SubjectID+cursor.ObjectID)
-		cursorEdgeFilter = fmt.Sprintf(statements.cursorEdgeFilter, cursor.SubjectID+cursor.Predicate+cursor.ObjectID+cursor.ObjectValue+cursor.Provenance)
+		cursorNodeFilter = statements.cursorNodeFilter
+		cursorEdgeFilter = statements.cursorEdgeFilter
+		params["cursor_subject_id"] = cursor.SubjectID
+		params["cursor_predicate"] = cursor.Predicate
+		params["cursor_object_id"] = cursor.ObjectID
+		params["cursor_object_value"] = cursor.ObjectValue
+		params["cursor_provenance"] = cursor.Provenance
 	}
 
 	var template string

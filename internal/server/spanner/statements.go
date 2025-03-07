@@ -231,15 +231,23 @@ var statements = struct {
 			name,
 			types			
 	`,
+	// The cursor assumes the results are in order, specified by the ORDER BY clauses.
 	cursorNodeFilter: `
-		AND CONCAT(m.subject_id, n.subject_id) > '%s'
+		AND (m.subject_id > @cursor_subject_id
+		OR (m.subject_id = @cursor_subject_id AND n.subject_id > @cursor_object_id)
+		OR (m.subject_id = @cursor_subject_id AND n.subject_id = @cursor_object_id)) 
 	`,
 	cursorEdgeFilter: `
-		AND CONCAT(m.subject_id, e.predicate, n.subject_id, COALESCE(e.object_value, ''), COALESCE(e.provenance, '')) > '%s'
+		AND (m.subject_id > @cursor_subject_id
+		OR (m.subject_id = @cursor_subject_id AND e.predicate > @cursor_predicate)
+		OR (m.subject_id = @cursor_subject_id AND e.predicate = @cursor_predicate AND n.subject_id > @cursor_object_id)
+		OR (m.subject_id = @cursor_subject_id AND e.predicate = @cursor_predicate AND n.subject_id = @cursor_object_id AND COALESCE(e.object_value, '') > @cursor_object_value)
+		OR (m.subject_id = @cursor_subject_id AND e.predicate = @cursor_predicate AND n.subject_id = @cursor_object_id AND COALESCE(e.object_value, '') = @cursor_object_value AND COALESCE(e.provenance, '') > @cursor_provenance)
+		OR (m.subject_id = @cursor_subject_id AND e.predicate = @cursor_predicate AND n.subject_id = @cursor_object_id AND COALESCE(e.object_value, '') = @cursor_object_value AND COALESCE(e.provenance, '') = @cursor_provenance))
 	`,
 	applyLimit: fmt.Sprintf(`
 		LIMIT %d
-	`, PAGE_SIZE),
+	`, PAGE_SIZE+1),
 	getObsByVariableAndEntity: `
 		SELECT
 			variable_measured,
