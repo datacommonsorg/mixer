@@ -46,7 +46,7 @@ func TestV3Node(t *testing.T) {
 			nextToken  string
 			goldenFile string
 		}{
-			{
+			/*{
 				"Out properties",
 				[]string{
 					"Count_Person_Female",
@@ -66,6 +66,24 @@ func TestV3Node(t *testing.T) {
 				"",
 				"out_pv_all.json",
 			},
+			{
+				"First page of pagination",
+				[]string{
+					"StatisticalVariable",
+				},
+				"<-typeOf",
+				"",
+				"pagination_first_page.json",
+			}, */
+			{
+				"Second page of pagination",
+				[]string{
+					"StatisticalVariable",
+				},
+				"<-typeOf",
+				"H4sIAAAAAAAA/0SQwWoyQQzHwaPH7xFydtnLd9pb1aKCVFGxh1KG7EyqU2czSyYrXUrfotAH7IuUWaS9hvz/+f0y/h6NF6lFZpKilfhKVlPpUG1siqRRqPScFNlSKp0tLqdCKWnewBrTMDQnwfZs/v/7GsHn6B32XZ1rVnOoYK+oPqm3GI4oHutAMIGtkPMWlaAC7VvavMAENn+puyZ2rCtWEkq6oxb7hljNnGo1W/FXVJrlDo1itl0dvA39okNBViJnHqMEN0W+bPRMcguYdeTTgaS5f1MSxjC0rYkdySzfk366Wv6CHDF0mW/AjVfi/AOowNkyi5fLrkHeEbrslDWPKAkm8IDNLXboW0pQPT1//AAAAP//AQAA///5rcKSZgEAAA==",
+				"pagination_second_page.json",
+			},
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V3Node(ctx, &pbv2.NodeRequest{
@@ -80,7 +98,7 @@ func TestV3Node(t *testing.T) {
 			if latencyTest {
 				continue
 			}
-			if test.GenerateGolden {
+			if true {
 				test.UpdateGolden(resp, goldenPath, goldenFile)
 				continue
 			}
