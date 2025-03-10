@@ -89,11 +89,15 @@ func MergeMultiResolve(allResp []*pbv2.ResolveResponse) *pbv2.ResolveResponse {
 func mergeLinkedGraph(
 	mainData, auxData map[string]*pbv2.LinkedGraph,
 ) map[string]*pbv2.LinkedGraph {
+	if mainData == nil {
+		mainData = map[string]*pbv2.LinkedGraph{}
+	}
+
 	for dcid, linkedGraph := range auxData {
-		if mainData == nil {
-			mainData = map[string]*pbv2.LinkedGraph{}
+		if isEmptyLinkedGraph(linkedGraph) {
+			continue
 		}
-		if _, ok := mainData[dcid]; !ok || mainData[dcid].GetArcs() == nil {
+		if isEmptyLinkedGraph(mainData[dcid]) {
 			mainData[dcid] = linkedGraph
 			continue
 		}
@@ -128,6 +132,10 @@ func mergeLinkedGraph(
 		}
 	}
 	return mainData
+}
+
+func isEmptyLinkedGraph(linkedGraph *pbv2.LinkedGraph) bool {
+	return linkedGraph == nil || (len(linkedGraph.Arcs) == 0 && len(linkedGraph.Properties) == 0)
 }
 
 // MergeNode merges two V2 node responses.

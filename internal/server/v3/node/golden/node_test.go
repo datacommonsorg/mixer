@@ -51,10 +51,22 @@ func TestV3Node(t *testing.T) {
 				[]string{
 					"Count_Person_Female",
 					"foo",
+					"test_var_1",
 				},
 				"->",
 				"",
 				"out_prop.json",
+			},
+			{
+				"In properties",
+				[]string{
+					"Count_Person_Female",
+					"foo",
+					"test_var_1",
+				},
+				"<-",
+				"",
+				"in_prop.json",
 			},
 			{
 				"All out property-values",
