@@ -20,6 +20,7 @@ import (
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
+	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
 
 // SQLDataSource represents a data source that interacts with SQL.
@@ -43,12 +44,34 @@ func (sds *SQLDataSource) Id() string {
 
 // Node retrieves node data from SQL.
 func (sds *SQLDataSource) Node(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
-	return nil, fmt.Errorf("unimplemented")
+	arcs, err := v2.ParseProperty(req.GetProperty())
+	if err != nil {
+		return nil, err
+	}
+	if len(arcs) == 0 {
+		return &pbv2.NodeResponse{}, nil
+	}
+	if len(arcs) > 1 {
+		return nil, fmt.Errorf("multiple arcs in node request")
+	}
+	arc := arcs[0]
+
+	if arc.IsNodePropertiesArc() {
+		nodePredicates, err := sds.client.GetNodePredicates(ctx, req.Nodes, arc.Direction())
+		if err != nil {
+			return nil, fmt.Errorf("error getting node predicates: %v", err)
+		}
+		return nodePredicatesToNodeResponse(nodePredicates), nil
+	}
+
+	// TODO: Add support for other types of node requests.
+
+	return &pbv2.NodeResponse{}, nil
 }
 
 // Observation retrieves observation data from SQL.
 func (sds *SQLDataSource) Observation(ctx context.Context, req *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
-	return nil, fmt.Errorf("unimplemented")
+	return &pbv2.ObservationResponse{}, nil
 }
 
 // NodeSearch searches nodes in the SQL database.

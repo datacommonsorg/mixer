@@ -14,6 +14,16 @@
         "typeOf"
       ]
     },
-    "foo": {}
+    "foo": {},
+    "test_var_1": {
+      "properties": [
+        "typeOf",
+        "measuredProperty",
+        "statType",
+        "name",
+        "description",
+        "memberOf"
+      ]
+    }
   }
 }
