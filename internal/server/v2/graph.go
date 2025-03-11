@@ -17,6 +17,12 @@ package v2
 
 import "github.com/datacommonsorg/mixer/internal/util"
 
+const (
+	// Indicates that all properties should be returned.
+	WILDCARD = "*"
+	// Indicates that recursive property paths should be returned.
+)
+
 // Arc represents an arc in the graph.
 type Arc struct {
 	// Whether it's out or in arc.
@@ -40,6 +46,19 @@ func (arc *Arc) Direction() string {
 
 func (arc *Arc) IsNodePropertiesArc() bool {
 	return arc.SingleProp == "" && len(arc.BracketProps) == 0
+}
+
+func (arc *Arc) IsPropertyValuesArc() (bool, []string) {
+	switch {
+	case arc.SingleProp == WILDCARD:
+		return true, []string{}
+	case arc.SingleProp != "" && arc.Decorator == "":
+		return true, []string{arc.SingleProp}
+	case len(arc.BracketProps) > 0:
+		return true, arc.BracketProps
+	default:
+		return false, []string{}
+	}
 }
 
 // LinkedNodes represents a local graph starting from a node with connected arcs.
