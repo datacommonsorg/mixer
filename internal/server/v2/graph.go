@@ -20,7 +20,6 @@ import "github.com/datacommonsorg/mixer/internal/util"
 const (
 	// Indicates that all properties should be returned.
 	WILDCARD = "*"
-	// Indicates that recursive property paths should be returned.
 )
 
 // Arc represents an arc in the graph.
