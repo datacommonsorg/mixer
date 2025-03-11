@@ -64,6 +64,25 @@ func (sds *SQLDataSource) Node(ctx context.Context, req *pbv2.NodeRequest) (*pbv
 		return nodePredicatesToNodeResponse(nodePredicates), nil
 	}
 
+	if ok, properties := arc.IsPropertyValuesArc(); ok {
+		if len(properties) == 0 {
+			nodePredicates, err := sds.client.GetNodePredicates(ctx, req.Nodes, arc.Direction())
+			if err != nil {
+				return nil, err
+			}
+			properties = nodePredicatesToProperties(nodePredicates)
+		}
+		nodeTriples, err := sds.client.GetNodeTriples(ctx, req.Nodes, properties, arc.Direction())
+		if err != nil {
+			return nil, err
+		}
+		entityInfoTriples, err := sds.client.GetEntityInfoTriples(ctx, collectDcids(nodeTriples))
+		if err != nil {
+			return nil, err
+		}
+		return triplesToNodeResponse(nodeTriples, entityInfoTriples, arc.Direction()), nil
+	}
+
 	// TODO: Add support for other types of node requests.
 
 	return &pbv2.NodeResponse{}, nil

@@ -73,10 +73,38 @@ func TestV3Node(t *testing.T) {
 				[]string{
 					"Count_Person_Female",
 					"foo",
+					"test_var_1",
 				},
 				"->*",
 				"",
 				"out_pv_all.json",
+			},
+			{
+				"All in property-values",
+				[]string{
+					"test_var_1",
+				},
+				"<-*",
+				"",
+				"in_pv_all.json",
+			},
+			{
+				"Some out property-values",
+				[]string{
+					"test_var_1",
+				},
+				"->[name, description]",
+				"",
+				"out_pv_some.json",
+			},
+			{
+				"Some in property-values",
+				[]string{
+					"test_var_1",
+				},
+				"<-measuredProperty",
+				"",
+				"in_pv_some.json",
 			},
 		} {
 			goldenFile := c.goldenFile

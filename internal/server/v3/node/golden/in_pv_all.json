@@ -1,0 +1,29 @@
+{
+  "data": {
+    "test_var_1": {
+      "arcs": {
+        "measuredProperty": {
+          "nodes": [
+            {
+              "name": "total number of sql query used",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "test_var_1"
+            }
+          ]
+        },
+        "outputProperty": {
+          "nodes": [
+            {
+              "types": [
+                "StatisticalCalculation"
+              ],
+              "dcid": "dc/c/test_var_1"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

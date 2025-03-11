@@ -112,6 +112,72 @@
         }
       }
     },
-    "foo": {}
+    "foo": {},
+    "test_var_1": {
+      "arcs": {
+        "description": {
+          "nodes": [
+            {
+              "types": [
+                "Thing"
+              ],
+              "value": "this is the count of sql query for the entire database"
+            }
+          ]
+        },
+        "measuredProperty": {
+          "nodes": [
+            {
+              "name": "total number of sql query used",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "test_var_1"
+            }
+          ]
+        },
+        "memberOf": {
+          "nodes": [
+            {
+              "name": "SQLite stat var group",
+              "types": [
+                "StatVarGroup"
+              ],
+              "dcid": "dc/g/SQLite"
+            }
+          ]
+        },
+        "name": {
+          "nodes": [
+            {
+              "types": [
+                "Thing"
+              ],
+              "value": "total number of sql query used"
+            }
+          ]
+        },
+        "statType": {
+          "nodes": [
+            {
+              "types": [
+                "Thing"
+              ],
+              "dcid": "measuredValue"
+            }
+          ]
+        },
+        "typeOf": {
+          "nodes": [
+            {
+              "types": [
+                "Thing"
+              ],
+              "dcid": "StatisticalVariable"
+            }
+          ]
+        }
+      }
+    }
   }
 }
