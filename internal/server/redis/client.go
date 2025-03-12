@@ -103,7 +103,7 @@ func (c *CacheClient) GetCachedResponse(ctx context.Context, request proto.Messa
 
 	marshaled, err := util.Unzip([]byte(cached))
 	if err != nil {
-		return false, fmt.Errorf("failed to unzip and decode: %w", err)
+		return false, fmt.Errorf("failed to unzip: %w", err)
 	}
 
 	anyMsg := &anypb.Any{}
@@ -137,7 +137,7 @@ func (c *CacheClient) CacheResponse(ctx context.Context, request proto.Message, 
 
 	cached, err := util.Zip(marshaled)
 	if err != nil {
-		return fmt.Errorf("failed to zip and encode: %w", err)
+		return fmt.Errorf("failed to zip: %w", err)
 	}
 
 	err = c.redisClient.Set(ctx, key, cached, c.expiration).Err()
