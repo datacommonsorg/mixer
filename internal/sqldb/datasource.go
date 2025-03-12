@@ -26,10 +26,14 @@ import (
 // SQLDataSource represents a data source that interacts with SQL.
 type SQLDataSource struct {
 	client *SQLClient
+	// The secondary data source is used to fetch certain data (e.g. child places) that is not available in SQL.
+	// If one is not configured, those calls will be skipped.
+	// The secondary data source is typically a remote data source but it could be a different data source (like spanner) in tests.
+	secondaryDataSource datasource.DataSource
 }
 
-func NewSQLDataSource(client *SQLClient) *SQLDataSource {
-	return &SQLDataSource{client: client}
+func NewSQLDataSource(client *SQLClient, secondaryDataSource datasource.DataSource) *SQLDataSource {
+	return &SQLDataSource{client: client, secondaryDataSource: secondaryDataSource}
 }
 
 // Type returns the type of the data source.
