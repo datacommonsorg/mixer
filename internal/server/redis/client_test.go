@@ -19,7 +19,9 @@ import (
 	"testing"
 	"time"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	v2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/go-redis/redismock/v8"
 	"github.com/stretchr/testify/assert"
 	"google.golang.org/protobuf/proto"
@@ -42,13 +44,14 @@ func TestCacheClient(t *testing.T) {
 	key, _ := generateCacheKey(request)
 	anyMsg, _ := anypb.New(expectedResponse)
 	marshaled, _ := proto.Marshal(anyMsg)
-	mock.ExpectSet(key, marshaled, 1*time.Minute).SetVal("OK")
+	cached, _ := util.Zip(marshaled)
+	mock.ExpectSet(key, cached, 1*time.Minute).SetVal("OK")
 
 	err := client.CacheResponse(ctx, request, expectedResponse)
 	assert.NoError(t, err)
 
 	// Test cache hit.
-	mock.ExpectGet(key).SetVal(string(marshaled))
+	mock.ExpectGet(key).SetVal(string(cached))
 
 	found, err := client.GetCachedResponse(ctx, request, response)
 	assert.NoError(t, err)
@@ -67,9 +70,9 @@ func TestCacheClient(t *testing.T) {
 	assert.False(t, found)
 	assert.False(t, proto.Equal(expectedResponse, response2))
 
-	//Test expiration.
+	// Test expiration.
 	cacheClientExpired := newCacheClient(rdb, 1*time.Nanosecond)
-	mock.ExpectSet(key, marshaled, 1*time.Nanosecond).SetVal("OK")
+	mock.ExpectSet(key, cached, 1*time.Nanosecond).SetVal("OK")
 	err = cacheClientExpired.CacheResponse(ctx, request, expectedResponse)
 	assert.NoError(t, err)
 
@@ -82,4 +85,66 @@ func TestCacheClient(t *testing.T) {
 
 	// Ensure all expectations were met
 	assert.NoError(t, mock.ExpectationsWereMet())
+}
+
+func TestCompressionSize(t *testing.T) {
+	// Compressed sizes are larger for small messages and smaller for large messages.
+	testCases := []struct {
+		message          *pb.EntityInfo
+		uncompressedSize int
+		compressedSize   int
+	}{
+		{
+			message: &pb.EntityInfo{
+				Name:  "small",
+				Types: repeat("type", 1),
+			},
+			uncompressedSize: 13,
+			compressedSize:   42,
+		},
+		{
+			message: &pb.EntityInfo{
+				Name:  "medium",
+				Types: repeat("type", 100),
+			},
+			uncompressedSize: 608,
+			compressedSize:   49,
+		},
+		{
+			message: &pb.EntityInfo{
+				Name:  "large",
+				Types: repeat("type", 100_000),
+			},
+			uncompressedSize: 600_007,
+			compressedSize:   933,
+		},
+	}
+
+	for _, tc := range testCases {
+		t.Run(tc.message.Name, func(t *testing.T) {
+			marshaled, err := proto.Marshal(tc.message)
+			if err != nil {
+				t.Fatalf("Failed to marshal: %v", err)
+			}
+
+			compressed, err := util.Zip(marshaled)
+			if err != nil {
+				t.Fatalf("Failed to compress: %v", err)
+			}
+
+			uncompressedSize := len(marshaled)
+			compressedSize := len(compressed)
+
+			assert.Equal(t, tc.uncompressedSize, uncompressedSize)
+			assert.Equal(t, tc.compressedSize, compressedSize)
+		})
+	}
+}
+
+func repeat(s string, n int) []string {
+	out := make([]string, n)
+	for i := range out {
+		out[i] = s
+	}
+	return out
 }

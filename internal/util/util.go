@@ -154,38 +154,56 @@ func DCLog(tag DCLogTag, msg string) {
 	log.Printf("[DC][%s] %s", tag, msg)
 }
 
-// ZipAndEncode Compresses the given contents using gzip and encodes it in base64
-func ZipAndEncode(contents []byte) (string, error) {
-	// Zip the string
-	var buf bytes.Buffer
-	gzWriter := gzip.NewWriter(&buf)
-
-	_, err := gzWriter.Write(contents)
+// ZipAndEncode compresses the given content using gzip and encodes it in base64
+func ZipAndEncode(content []byte) (string, error) {
+	// Zip the content
+	compressed, err := Zip(content)
 	if err != nil {
-		return "", err
-	}
-	if err := gzWriter.Flush(); err != nil {
-		return "", err
-	}
-	if err := gzWriter.Close(); err != nil {
 		return "", err
 	}
 
 	// Encode using base64
-	encode := base64.StdEncoding.EncodeToString(buf.Bytes())
+	encode := base64.StdEncoding.EncodeToString(compressed)
 	return encode, nil
 }
 
-// UnzipAndDecode decompresses the given contents using gzip and decodes it from base64
-func UnzipAndDecode(contents string) ([]byte, error) {
+// UnzipAndDecode decompresses the given content using gzip and decodes it from base64.
+func UnzipAndDecode(content string) ([]byte, error) {
 	// Decode from base64
-	decode, err := base64.StdEncoding.DecodeString(contents)
+	decoded, err := base64.StdEncoding.DecodeString(content)
 	if err != nil {
 		return nil, err
 	}
 
 	// Unzip the string
-	gzReader, err := gzip.NewReader(bytes.NewReader(decode))
+	return Unzip(decoded)
+}
+
+// Zip compresses the given content using gzip.
+func Zip(content []byte) ([]byte, error) {
+	// Zip the string
+	var buf bytes.Buffer
+	gzWriter := gzip.NewWriter(&buf)
+
+	_, err := gzWriter.Write(content)
+	if err != nil {
+		return nil, err
+	}
+	if err := gzWriter.Flush(); err != nil {
+		return nil, err
+	}
+	if err := gzWriter.Close(); err != nil {
+		return nil, err
+	}
+
+	return buf.Bytes(), nil
+}
+
+// Unzip compresses the given content using gzip.
+func Unzip(content []byte) ([]byte, error) {
+
+	// Unzip the content
+	gzReader, err := gzip.NewReader(bytes.NewReader(content))
 	if err != nil {
 		return nil, err
 	}

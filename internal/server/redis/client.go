@@ -22,13 +22,14 @@ import (
 	"log"
 	"time"
 
+	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/go-redis/redis/v8"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/known/anypb"
 )
 
 const (
-	// DefaultExpiration is the default expiration time for cached responses.
+	// defaultExpiration is the default expiration time for cached responses.
 	defaultExpiration = 24 * time.Hour
 	// cacheKeyPrefix is the prefix for all cache keys.
 	cacheKeyPrefix = "mixer:"
@@ -100,8 +101,13 @@ func (c *CacheClient) GetCachedResponse(ctx context.Context, request proto.Messa
 		return false, fmt.Errorf("failed to get from Redis: %w", err)
 	}
 
+	marshaled, err := util.Unzip([]byte(cached))
+	if err != nil {
+		return false, fmt.Errorf("failed to unzip and decode: %w", err)
+	}
+
 	anyMsg := &anypb.Any{}
-	if err := proto.Unmarshal([]byte(cached), anyMsg); err != nil {
+	if err := proto.Unmarshal(marshaled, anyMsg); err != nil {
 		return false, fmt.Errorf("failed to unmarshal Any: %w", err)
 	}
 
@@ -129,7 +135,12 @@ func (c *CacheClient) CacheResponse(ctx context.Context, request proto.Message, 
 		return fmt.Errorf("failed to marshal Any: %w", err)
 	}
 
-	err = c.redisClient.Set(ctx, key, marshaled, c.expiration).Err()
+	cached, err := util.Zip(marshaled)
+	if err != nil {
+		return fmt.Errorf("failed to zip and encode: %w", err)
+	}
+
+	err = c.redisClient.Set(ctx, key, cached, c.expiration).Err()
 	if err != nil {
 		return fmt.Errorf("failed to set in Redis: %w", err)
 	}
