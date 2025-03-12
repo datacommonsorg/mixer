@@ -210,6 +210,18 @@ func main() {
 		log.Fatalf("Failed to create metadata: %v", err)
 	}
 
+	// Remote Mixer.
+	// Create remote data source here but don't add it to sources yet since we want it to be the last source added.
+	// TODO: clean up how we create and add data sources.
+	var remoteDataSource datasource.DataSource
+	if *enableV3 && *remoteMixerDomain != "" {
+		remoteClient, err := remote.NewRemoteClient(metadata)
+		if err != nil {
+			log.Fatalf("Failed to create remote client: %v", err)
+		}
+		remoteDataSource = remote.NewRemoteDataSource(remoteClient)
+	}
+
 	// SQL client
 	var sqlClient sqldb.SQLClient
 	if *useSQLite {
@@ -244,7 +256,7 @@ func main() {
 
 	// SQL Data Source
 	if *enableV3 && sqldb.IsConnected(&sqlClient) {
-		var ds datasource.DataSource = sqldb.NewSQLDataSource(&sqlClient)
+		var ds datasource.DataSource = sqldb.NewSQLDataSource(&sqlClient, remoteDataSource)
 		sources = append(sources, &ds)
 	}
 
@@ -280,14 +292,9 @@ func main() {
 		}
 	}
 
-	// Remote Mixer.
-	if *enableV3 && *remoteMixerDomain != "" {
-		remoteClient, err := remote.NewRemoteClient(metadata)
-		if err != nil {
-			log.Fatalf("Failed to create remote client: %v", err)
-		}
-		var ds datasource.DataSource = remote.NewRemoteDataSource(remoteClient)
-		sources = append(sources, &ds)
+	// Add remote data source if it was created.
+	if remoteDataSource != nil {
+		sources = append(sources, &remoteDataSource)
 	}
 
 	// DataSources
