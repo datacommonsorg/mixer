@@ -1,0 +1,224 @@
+{
+  "data": {
+    "geoId/06085": {
+      "arcs": {
+        "containedInPlace+": {
+          "nodes": [
+            {
+              "name": "Alum Rock",
+              "types": [
+                "City",
+                "Neighborhood"
+              ],
+              "dcid": "geoId/0601458"
+            },
+            {
+              "name": "Alviso",
+              "types": [
+                "City",
+                "Neighborhood"
+              ],
+              "dcid": "geoId/0601486"
+            },
+            {
+              "name": "Buena Vista",
+              "types": [
+                "City",
+                "Neighborhood"
+              ],
+              "dcid": "geoId/0608848"
+            },
+            {
+              "name": "Burbank",
+              "types": [
+                "City",
+                "Neighborhood"
+              ],
+              "dcid": "geoId/0608968"
+            },
+            {
+              "name": "Cambrian Park",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0610088"
+            },
+            {
+              "name": "Campbell",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0610345"
+            },
+            {
+              "name": "Cupertino",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0617610"
+            },
+            {
+              "name": "East Foothills",
+              "types": [
+                "City",
+                "Neighborhood"
+              ],
+              "dcid": "geoId/0620598"
+            },
+            {
+              "name": "Fruitdale",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0627080"
+            },
+            {
+              "name": "Gilroy",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0629504"
+            },
+            {
+              "name": "Lexington Hills",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0641282"
+            },
+            {
+              "name": "Los Altos",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0643280"
+            },
+            {
+              "name": "Los Altos Hills",
+              "types": [
+                "City",
+                "Town"
+              ],
+              "dcid": "geoId/0643294"
+            },
+            {
+              "name": "Los Gatos",
+              "types": [
+                "City",
+                "Town"
+              ],
+              "dcid": "geoId/0644112"
+            },
+            {
+              "name": "Loyola",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0644378"
+            },
+            {
+              "name": "Milpitas",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0647766"
+            },
+            {
+              "name": "Monte Sereno",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0648956"
+            },
+            {
+              "name": "Morgan Hill",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0649278"
+            },
+            {
+              "name": "Mountain View",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0649670"
+            },
+            {
+              "name": "Palo Alto",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0655282"
+            },
+            {
+              "name": "San Jose",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0668000"
+            },
+            {
+              "name": "San Martin",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0668238"
+            },
+            {
+              "name": "Santa Clara",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0669084"
+            },
+            {
+              "name": "Saratoga",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0670280"
+            },
+            {
+              "name": "Seven Trees",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0671074"
+            },
+            {
+              "name": "Stanford",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0673906"
+            },
+            {
+              "name": "Sunnyvale",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0677000"
+            },
+            {
+              "name": "Cambrian Park",
+              "types": [
+                "City",
+                "Neighborhood"
+              ],
+              "dcid": "wikidataId/Q1911837"
+            },
+            {
+              "name": "Sunol-Midtown",
+              "types": [
+                "City",
+                "Neighborhood"
+              ],
+              "dcid": "wikidataId/Q2214519"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
