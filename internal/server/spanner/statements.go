@@ -302,4 +302,5 @@ var statements = struct {
 		ORDER BY score + IF(e.object_value = @query, 1, 0) + IF(REGEXP_CONTAINS(n.subject_id, @query), 0.5, 0) desc, n.name ASC
 		LIMIT %d
 	`,
+	filterTypes: `WHERE ARRAY_INCLUDES_ANY(n.types, @types)`,
 }
