@@ -107,7 +107,7 @@ func TestV3Node(t *testing.T) {
 				"in_pv_some.json",
 			},
 			{
-				"In with filter",
+				"In property-values with filter",
 				[]string{
 					"country/USA",
 				},
@@ -116,7 +116,7 @@ func TestV3Node(t *testing.T) {
 				"in_filter.json",
 			},
 			{
-				"In chain with filter",
+				"In chained property-values with filter",
 				[]string{
 					"geoId/06085",
 				},
