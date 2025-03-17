@@ -106,6 +106,24 @@ func TestV3Node(t *testing.T) {
 				"",
 				"in_pv_some.json",
 			},
+			{
+				"In property-values with filter",
+				[]string{
+					"country/USA",
+				},
+				"<-containedInPlace{typeOf:State}",
+				"",
+				"in_filter.json",
+			},
+			{
+				"In chained property-values with filter",
+				[]string{
+					"geoId/06085",
+				},
+				"<-containedInPlace+{typeOf:City}",
+				"",
+				"in_chain_filter.json",
+			},
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V3Node(ctx, &pbv2.NodeRequest{
