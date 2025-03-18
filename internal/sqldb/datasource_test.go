@@ -28,6 +28,6 @@ func TestId(t *testing.T) {
 
 	assert.Equal(t, "sqlite-../../test/sqlquery/key_value/datacommons.db", sqlClient.id)
 
-	sqlDataSource := NewSQLDataSource(sqlClient)
+	sqlDataSource := NewSQLDataSource(sqlClient, nil)
 	assert.Equal(t, "sql-sqlite-../../test/sqlquery/key_value/datacommons.db", sqlDataSource.Id())
 }
