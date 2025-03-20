@@ -20,15 +20,20 @@ import (
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
+	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
 
 // SQLDataSource represents a data source that interacts with SQL.
 type SQLDataSource struct {
 	client *SQLClient
+	// The secondary data source is used to fetch certain data (e.g. child places) that is not available in SQL.
+	// If one is not configured, those calls will be skipped.
+	// The secondary data source is typically a remote data source but it could be a different data source (like spanner) in tests.
+	secondaryDataSource datasource.DataSource
 }
 
-func NewSQLDataSource(client *SQLClient) *SQLDataSource {
-	return &SQLDataSource{client: client}
+func NewSQLDataSource(client *SQLClient, secondaryDataSource datasource.DataSource) *SQLDataSource {
+	return &SQLDataSource{client: client, secondaryDataSource: secondaryDataSource}
 }
 
 // Type returns the type of the data source.
@@ -43,12 +48,53 @@ func (sds *SQLDataSource) Id() string {
 
 // Node retrieves node data from SQL.
 func (sds *SQLDataSource) Node(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
-	return nil, fmt.Errorf("unimplemented")
+	arcs, err := v2.ParseProperty(req.GetProperty())
+	if err != nil {
+		return nil, err
+	}
+	if len(arcs) == 0 {
+		return &pbv2.NodeResponse{}, nil
+	}
+	if len(arcs) > 1 {
+		return nil, fmt.Errorf("multiple arcs in node request")
+	}
+	arc := arcs[0]
+
+	if arc.IsNodePropertiesArc() {
+		nodePredicates, err := sds.client.GetNodePredicates(ctx, req.Nodes, arc.Direction())
+		if err != nil {
+			return nil, fmt.Errorf("error getting node predicates: %v", err)
+		}
+		return nodePredicatesToNodeResponse(nodePredicates), nil
+	}
+
+	if ok, properties := arc.IsPropertyValuesArc(); ok {
+		if len(properties) == 0 {
+			nodePredicates, err := sds.client.GetNodePredicates(ctx, req.Nodes, arc.Direction())
+			if err != nil {
+				return nil, err
+			}
+			properties = nodePredicatesToProperties(nodePredicates)
+		}
+		nodeTriples, err := sds.client.GetNodeTriples(ctx, req.Nodes, properties, arc.Direction())
+		if err != nil {
+			return nil, err
+		}
+		entityInfoTriples, err := sds.client.GetEntityInfoTriples(ctx, collectDcids(nodeTriples))
+		if err != nil {
+			return nil, err
+		}
+		return triplesToNodeResponse(nodeTriples, entityInfoTriples, arc.Direction()), nil
+	}
+
+	// TODO: Add support for other types of node requests.
+
+	return &pbv2.NodeResponse{}, nil
 }
 
 // Observation retrieves observation data from SQL.
 func (sds *SQLDataSource) Observation(ctx context.Context, req *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
-	return nil, fmt.Errorf("unimplemented")
+	return &pbv2.ObservationResponse{}, nil
 }
 
 // NodeSearch searches nodes in the SQL database.

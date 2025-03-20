@@ -10,14 +10,14 @@
                 "Property"
               ],
               "dcid": "gender",
-              "provenanceId": "dc/base/HumanReadableStatVars"
+              "provenance_id": "dc/base/HumanReadableStatVars"
             }
           ]
         },
         "extendedName": {
           "nodes": [
             {
-              "provenanceId": "dc/base/HumanReadableStatVars",
+              "provenance_id": "dc/base/HumanReadableStatVars",
               "value": "Female Population"
             }
           ]
@@ -30,14 +30,14 @@
                 "GenderType"
               ],
               "dcid": "Female",
-              "provenanceId": "dc/base/HumanReadableStatVars"
+              "provenance_id": "dc/base/HumanReadableStatVars"
             }
           ]
         },
         "localCuratorLevelId": {
           "nodes": [
             {
-              "provenanceId": "dc/base/HumanReadableStatVars",
+              "provenance_id": "dc/base/HumanReadableStatVars",
               "value": "dcid:Count_Person_Female"
             }
           ]
@@ -50,7 +50,7 @@
                 "Property"
               ],
               "dcid": "count",
-              "provenanceId": "dc/base/HumanReadableStatVars"
+              "provenance_id": "dc/base/HumanReadableStatVars"
             }
           ]
         },
@@ -62,14 +62,14 @@
                 "StatVarGroup"
               ],
               "dcid": "dc/g/Person_Gender-Female",
-              "provenanceId": "dc/base/HumanReadableStatVars"
+              "provenance_id": "dc/base/HumanReadableStatVars"
             }
           ]
         },
         "name": {
           "nodes": [
             {
-              "provenanceId": "dc/base/HumanReadableStatVars",
+              "provenance_id": "dc/base/HumanReadableStatVars",
               "value": "Female Population"
             }
           ]
@@ -82,7 +82,7 @@
                 "Class"
               ],
               "dcid": "Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
+              "provenance_id": "dc/base/HumanReadableStatVars"
             }
           ]
         },
@@ -94,7 +94,7 @@
                 "Property"
               ],
               "dcid": "measuredValue",
-              "provenanceId": "dc/base/HumanReadableStatVars"
+              "provenance_id": "dc/base/HumanReadableStatVars"
             }
           ]
         },
@@ -106,12 +106,78 @@
                 "Class"
               ],
               "dcid": "StatisticalVariable",
-              "provenanceId": "dc/base/HumanReadableStatVars"
+              "provenance_id": "dc/base/HumanReadableStatVars"
             }
           ]
         }
       }
     },
-    "foo": {}
+    "foo": {},
+    "test_var_1": {
+      "arcs": {
+        "description": {
+          "nodes": [
+            {
+              "types": [
+                "Thing"
+              ],
+              "value": "this is the count of sql query for the entire database"
+            }
+          ]
+        },
+        "measuredProperty": {
+          "nodes": [
+            {
+              "name": "total number of sql query used",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "test_var_1"
+            }
+          ]
+        },
+        "memberOf": {
+          "nodes": [
+            {
+              "name": "SQLite stat var group",
+              "types": [
+                "StatVarGroup"
+              ],
+              "dcid": "dc/g/SQLite"
+            }
+          ]
+        },
+        "name": {
+          "nodes": [
+            {
+              "types": [
+                "Thing"
+              ],
+              "value": "total number of sql query used"
+            }
+          ]
+        },
+        "statType": {
+          "nodes": [
+            {
+              "types": [
+                "Thing"
+              ],
+              "dcid": "measuredValue"
+            }
+          ]
+        },
+        "typeOf": {
+          "nodes": [
+            {
+              "types": [
+                "Thing"
+              ],
+              "dcid": "StatisticalVariable"
+            }
+          ]
+        }
+      }
+    }
   }
 }

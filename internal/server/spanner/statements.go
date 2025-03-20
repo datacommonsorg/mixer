@@ -213,15 +213,15 @@ var statements = struct {
 	`,
 	filterObjects: `
 		NEXT 
-		MATCH -[e:Edge 
+		MATCH -[filter:Edge 
 		WHERE
-			e.predicate = @prop%[1]d
+			filter.predicate = @prop%[1]d
 			AND (
-				e.object_id IN UNNEST(@val%[1]d)
-				OR e.object_value IN UNNEST(@val%[1]d)
+				filter.object_id IN UNNEST(@val%[1]d)
+				OR filter.object_value IN UNNEST(@val%[1]d)
 			)]-> 
 		WHERE
-			e.subject_id = object_id
+			filter.subject_id = object_id
 		RETURN
 			subject_id,
 			predicate,
@@ -282,16 +282,9 @@ var statements = struct {
 				WHERE
 					e.object_id = @ancestor
 					AND e.subject_id != e.object_id
-					AND e.predicate = 'linkedContainedInPlace']-
+					AND e.predicate = 'linkedContainedInPlace']-()-[{predicate: 'typeOf', object_id: @childPlaceType}]->
 				RETURN 
 				e.subject_id as object_id
-				NEXT
-				MATCH -[e:Edge 
-				WHERE
-					e.predicate = 'typeOf'
-					AND e.object_id = @childPlaceType]-> 
-				WHERE e.subject_id = object_id
-				RETURN object_id
 			)result
 		INNER JOIN (
 		SELECT

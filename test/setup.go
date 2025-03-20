@@ -130,12 +130,13 @@ func setupInternal(
 	// Data sources.
 	sources := []*datasource.DataSource{}
 
+	var spannerDataSource datasource.DataSource
 	if enableV3 && useSpannerGraph {
 		spannerClient := NewSpannerClient()
 		if spannerClient != nil {
-			var ds datasource.DataSource = spanner.NewSpannerDataSource(spannerClient)
+			spannerDataSource = spanner.NewSpannerDataSource(spannerClient)
 			// TODO: Order sources by priority once other implementations are added.
-			sources = append(sources, &ds)
+			sources = append(sources, &spannerDataSource)
 		}
 	}
 
@@ -168,6 +169,10 @@ func setupInternal(
 		err = sqlClient.ValidateDatabase()
 		if err != nil {
 			log.Fatalf("SQL database validation failed: %v", err)
+		}
+		if enableV3 {
+			var ds datasource.DataSource = sqldb.NewSQLDataSource(&sqlClient, spannerDataSource)
+			sources = append(sources, &ds)
 		}
 	}
 

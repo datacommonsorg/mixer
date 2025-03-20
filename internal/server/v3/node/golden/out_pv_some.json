@@ -1,0 +1,28 @@
+{
+  "data": {
+    "test_var_1": {
+      "arcs": {
+        "description": {
+          "nodes": [
+            {
+              "types": [
+                "Thing"
+              ],
+              "value": "this is the count of sql query for the entire database"
+            }
+          ]
+        },
+        "name": {
+          "nodes": [
+            {
+              "types": [
+                "Thing"
+              ],
+              "value": "total number of sql query used"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

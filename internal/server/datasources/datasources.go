@@ -38,10 +38,11 @@ func (ds *DataSources) Node(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.No
 	dsRespChan := []chan *pbv2.NodeResponse{}
 
 	for _, source := range ds.sources {
+		src := *source
 		respChan := make(chan *pbv2.NodeResponse, 1)
 		errGroup.Go(func() error {
 			defer close(respChan)
-			resp, err := (*source).Node(errCtx, in)
+			resp, err := src.Node(errCtx, in)
 			if err != nil {
 				return err
 			}
@@ -68,10 +69,11 @@ func (ds *DataSources) Observation(ctx context.Context, in *pbv2.ObservationRequ
 	dsRespChan := []chan *pbv2.ObservationResponse{}
 
 	for _, source := range ds.sources {
+		src := *source
 		respChan := make(chan *pbv2.ObservationResponse, 1)
 		errGroup.Go(func() error {
 			defer close(respChan)
-			resp, err := (*source).Observation(errCtx, in)
+			resp, err := src.Observation(errCtx, in)
 			if err != nil {
 				return err
 			}
@@ -98,10 +100,11 @@ func (ds *DataSources) NodeSearch(ctx context.Context, in *pbv2.NodeSearchReques
 	dsRespChan := []chan *pbv2.NodeSearchResponse{}
 
 	for _, source := range ds.sources {
+		src := *source
 		respChan := make(chan *pbv2.NodeSearchResponse, 1)
 		errGroup.Go(func() error {
 			defer close(respChan)
-			resp, err := (*source).NodeSearch(errCtx, in)
+			resp, err := src.NodeSearch(errCtx, in)
 			if err != nil {
 				return err
 			}
@@ -128,10 +131,11 @@ func (ds *DataSources) Resolve(ctx context.Context, in *pbv2.ResolveRequest) (*p
 	dsRespChan := []chan *pbv2.ResolveResponse{}
 
 	for _, source := range ds.sources {
+		src := *source
 		respChan := make(chan *pbv2.ResolveResponse, 1)
 		errGroup.Go(func() error {
 			defer close(respChan)
-			resp, err := (*source).Resolve(errCtx, in)
+			resp, err := src.Resolve(errCtx, in)
 			if err != nil {
 				return err
 			}

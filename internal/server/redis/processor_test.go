@@ -22,6 +22,7 @@ import (
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/go-redis/redismock/v8"
 	"github.com/stretchr/testify/assert"
 	"google.golang.org/protobuf/proto"
@@ -50,7 +51,8 @@ func TestCacheProcessorPreProcess(t *testing.T) {
 				key, _ := generateCacheKey(request)
 				anyMsg, _ := anypb.New(response)
 				marshaled, _ := proto.Marshal(anyMsg)
-				mock.ExpectGet(key).SetVal(string(marshaled))
+				cached, _ := util.Zip(marshaled)
+				mock.ExpectGet(key).SetVal(string(cached))
 			},
 			originalRequest: &pbv2.NodeRequest{Nodes: []string{"testNode"}},
 			wantOutcome:     dispatcher.Done,
@@ -139,7 +141,8 @@ func TestCacheProcessorPostProcess(t *testing.T) {
 				key, _ := generateCacheKey(request)
 				anyMsg, _ := anypb.New(response)
 				marshaled, _ := proto.Marshal(anyMsg)
-				mock.ExpectSet(key, marshaled, time.Minute).SetVal("OK")
+				cached, _ := util.Zip(marshaled)
+				mock.ExpectSet(key, cached, time.Minute).SetVal("OK")
 			},
 			originalRequest: &pbv2.NodeRequest{Nodes: []string{"testNode"}},
 			currentResponse: &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{"testNode": {}}},
@@ -155,7 +158,8 @@ func TestCacheProcessorPostProcess(t *testing.T) {
 				key, _ := generateCacheKey(request)
 				anyMsg, _ := anypb.New(response)
 				marshaled, _ := proto.Marshal(anyMsg)
-				mock.ExpectSet(key, marshaled, time.Minute).SetErr(errors.New("redis error"))
+				cached, _ := util.Zip(marshaled)
+				mock.ExpectSet(key, cached, time.Minute).SetErr(errors.New("redis error"))
 			},
 			originalRequest: &pbv2.NodeRequest{Nodes: []string{"testNode"}},
 			currentResponse: &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{"testNode": {}}},
