@@ -17,13 +17,16 @@
 package spanner
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"sort"
 	"strconv"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/util"
 
@@ -82,17 +85,102 @@ func nodePropsToNodeResponse(propsBySubjectID map[string][]*Property) *pbv2.Node
 	return nodeResponse
 }
 
+// getCursorEdge returns the cursor Edge for a given Spanner data source id.
+func getCursorEdge(nextToken, dataSourceID string) (*Edge, error) {
+	if nextToken == "" {
+		return nil, nil
+	}
+
+	pi, err := pagination.Decode(nextToken)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, cursorGroup := range pi.GetCursorGroups() {
+		for _, key := range cursorGroup.GetKeys() {
+			if key == dataSourceID {
+				if len(cursorGroup.GetCursors()) < 1 {
+					return nil, fmt.Errorf("pagination info missing cursor for Spanner data source: %s", dataSourceID)
+				}
+				cursorId := cursorGroup.GetCursors()[0].GetId()
+				edge := &Edge{}
+				if err := json.Unmarshal([]byte(cursorId), &edge); err != nil {
+					return nil, err
+				}
+				return edge, nil
+			}
+		}
+	}
+
+	return nil, nil
+}
+
+// getNextToken encodes the cursor Edge in a nextToken string.
+func getNextToken(edge *Edge, dataSourceID string) (string, error) {
+	if edge == nil {
+		return "", nil
+	}
+
+	// Clear name and types to save space since they aren't used.
+	edge.Name = ""
+	edge.Types = []string{}
+
+	cursorId, err := json.Marshal(edge)
+	if err != nil {
+		return "", err
+	}
+
+	pi := &pbv1.PaginationInfo{
+		CursorGroups: []*pbv1.CursorGroup{{
+			Keys: []string{dataSourceID},
+			Cursors: []*pbv1.Cursor{{
+				Id: string(cursorId),
+			}},
+		}},
+	}
+	nextToken, err := util.EncodeProto(pi)
+	if err != nil {
+		return "", err
+	}
+
+	return nextToken, nil
+}
+
 // nodeEdgesToNodeResponse converts a map from subject id to its edges to a NodeResponse proto.
-func nodeEdgesToNodeResponse(edgesBySubjectID map[string][]*Edge) *pbv2.NodeResponse {
+func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge, id string) (*pbv2.NodeResponse, error) {
 	nodeResponse := &pbv2.NodeResponse{
 		Data: make(map[string]*pbv2.LinkedGraph),
 	}
 
-	for subjectID, edges := range edgesBySubjectID {
+	// Sort nodes to preserve order from Spanner.
+	sort.Strings(nodes)
+
+	rows := 0
+	for _, subjectID := range nodes {
+		edges, ok := edgesBySubjectID[subjectID]
+		if !ok {
+			continue
+		}
+
+		rows += len(edges)
+
+		// We requested PAGE_SIZE+1 rows,
+		// so having this many rows indicates that we have at least one more request,
+		// so generate nextToken.
+		if rows == PAGE_SIZE+1 && nodeResponse.NextToken == "" {
+			cursor := edges[len(edges)-1]
+			edges = edges[:len(edges)-1]
+			nextToken, err := getNextToken(cursor, id)
+			if err != nil {
+				return nil, err
+			}
+			nodeResponse.NextToken = nextToken
+		}
+
 		nodeResponse.Data[subjectID] = nodeEdgesToLinkedGraph(edges)
 	}
 
-	return nodeResponse
+	return nodeResponse, nil
 }
 
 // nodeEdgesToLinkedGraph converts an array of edges to a LinkedGraph proto.
