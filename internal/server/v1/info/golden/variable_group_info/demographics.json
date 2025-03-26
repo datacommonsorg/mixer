@@ -136,7 +136,7 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 28137
+        "descendentStatVarCount": 28442
       },
       {
         "id": "dc/g/Person_AgeGroupClassification",
@@ -310,7 +310,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 25236
+        "descendentStatVarCount": 25431
       },
       {
         "id": "dc/g/Person_GovernmentId",
@@ -412,7 +412,7 @@
         "id": "dc/g/Person_LaborForceStatus",
         "specializedEntity": "Labor Force Status",
         "displayName": "Person by Labor Force Status",
-        "descendentStatVarCount": 3374
+        "descendentStatVarCount": 4186
       },
       {
         "id": "dc/g/Language",
@@ -430,7 +430,7 @@
         "id": "dc/g/Person_MaritalStatus",
         "specializedEntity": "Marital Status",
         "displayName": "Person by Marital Status",
-        "descendentStatVarCount": 1727
+        "descendentStatVarCount": 1758
       },
       {
         "id": "dc/g/MaternalMortalityEvent",
@@ -448,7 +448,7 @@
         "id": "dc/g/MilitaryService",
         "specializedEntity": "Military Service",
         "displayName": "Military Service",
-        "descendentStatVarCount": 2398
+        "descendentStatVarCount": 2402
       },
       {
         "id": "dc/g/Demographics_Miscellaneous",
@@ -484,7 +484,7 @@
         "id": "dc/g/Person_Occupation",
         "specializedEntity": "Occupation",
         "displayName": "Person by Occupation",
-        "descendentStatVarCount": 4914
+        "descendentStatVarCount": 4993
       },
       {
         "id": "dc/g/Place_PlaceType",
@@ -502,7 +502,7 @@
         "id": "dc/g/Person_PlaceOfResidenceClassification",
         "specializedEntity": "Place of Residence Classification (Individual)",
         "displayName": "Person by Place of Residence Classification",
-        "descendentStatVarCount": 3534
+        "descendentStatVarCount": 3723
       },
       {
         "id": "dc/g/Place_PlaceOfResidenceClassification",
@@ -520,7 +520,7 @@
         "id": "dc/g/Person_Race",
         "specializedEntity": "Race",
         "displayName": "Person by Race",
-        "descendentStatVarCount": 21004
+        "descendentStatVarCount": 21008
       },
       {
         "id": "dc/g/Person_Religion",
@@ -532,7 +532,7 @@
         "id": "dc/g/Residence",
         "specializedEntity": "Residence",
         "displayName": "Residence",
-        "descendentStatVarCount": 5268
+        "descendentStatVarCount": 5457
       },
       {
         "id": "dc/g/Person_ResidentStatus",
@@ -577,7 +577,7 @@
         "descendentStatVarCount": 4
       }
     ],
-    "descendentStatVarCount": 47542,
+    "descendentStatVarCount": 48443,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

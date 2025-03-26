@@ -9150,6 +9150,20 @@
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
+      "subjectId": "Count_Person_Employed_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Population: Employed, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
       "subjectId": "Count_Person_Female_10OrMoreYears_AsAFractionOf_Count_Person_Female",
       "subjectName": "Women with 10 or more years of schooling in the age group of 15 to 49 years (%)",
       "subjectTypes": [
@@ -9416,6 +9430,34 @@
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
+      "subjectId": "Count_Person_InLaborForce_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Population: in Labor Force, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_LaborUnderutilized_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Population: Labor Underutilized, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
       "subjectId": "Count_Person_Male_AsAFractionOf_Count_Person_Female",
       "subjectName": "Population: Male (As Fraction of Count Person Female)",
       "subjectTypes": [
@@ -9446,6 +9488,62 @@
     {
       "subjectId": "Count_Person_SavingsAccount_Female_AsAFractionOf_Count_Person_Female",
       "subjectName": "Women having a bank or savings account that they themselves use (%)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_TimeRelatedUnderemployed_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Population: Time Related Underemployed, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_UnemployedOrPotentialLaborForce_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Population: Potential Labor Force & Unemployed, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_UnemployedOrTimeRelatedUnderemployed_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Population: Time Related Underemployed & Unemployed, Female (As Fraction of Count Person Female)",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person_Female",
+      "objectName": "Female Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Unemployed_Female_AsAFractionOf_Count_Person_Female",
+      "subjectName": "Population: Unemployed, Female (As Fraction of Count Person Female)",
       "subjectTypes": [
         "StatisticalVariable"
       ],

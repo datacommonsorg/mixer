@@ -306,11 +306,51 @@
                 {
                   "date": "2022",
                   "value": 38.5
+                },
+                {
+                  "date": "2023",
+                  "value": 38.7
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2010",
-              "latest_date": "2022"
+              "latest_date": "2023"
+            },
+            {
+              "facet_id": "3690003977",
+              "observations": [
+                {
+                  "date": "2017",
+                  "value": 37.8
+                },
+                {
+                  "date": "2018",
+                  "value": 37.9
+                },
+                {
+                  "date": "2019",
+                  "value": 38.1
+                },
+                {
+                  "date": "2020",
+                  "value": 38.2
+                },
+                {
+                  "date": "2021",
+                  "value": 38.4
+                },
+                {
+                  "date": "2022",
+                  "value": 38.5
+                },
+                {
+                  "date": "2023",
+                  "value": 38.7
+                }
+              ],
+              "obs_count": 7,
+              "earliest_date": "2017",
+              "latest_date": "2023"
             },
             {
               "facet_id": "815809675",
@@ -366,34 +406,6 @@
               ],
               "obs_count": 12,
               "earliest_date": "2010",
-              "latest_date": "2021"
-            },
-            {
-              "facet_id": "3690003977",
-              "observations": [
-                {
-                  "date": "2017",
-                  "value": 37.8
-                },
-                {
-                  "date": "2018",
-                  "value": 37.9
-                },
-                {
-                  "date": "2019",
-                  "value": 38.1
-                },
-                {
-                  "date": "2020",
-                  "value": 38.2
-                },
-                {
-                  "date": "2021",
-                  "value": 38.4
-                }
-              ],
-              "obs_count": 5,
-              "earliest_date": "2017",
               "latest_date": "2021"
             },
             {
