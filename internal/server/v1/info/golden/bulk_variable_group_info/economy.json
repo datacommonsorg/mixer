@@ -91,6 +91,11 @@
             "descendentStatVarCount": 5
           },
           {
+            "id": "dc/g/Person_EconomicActivitySource",
+            "specializedEntity": "Economic Activity Source",
+            "displayName": "Person by Economic Activity Source"
+          },
+          {
             "id": "dc/g/ExpenditureActivity",
             "specializedEntity": "Expenditure Activity",
             "displayName": "Expenditure Activity"
@@ -165,6 +170,11 @@
             "id": "dc/g/NetworkSubscriber",
             "specializedEntity": "Network Subscriber",
             "displayName": "Network Subscriber"
+          },
+          {
+            "id": "dc/g/Person_OccupationalCategory",
+            "specializedEntity": "Occupational Category",
+            "displayName": "Person by Occupational Category"
           },
           {
             "id": "dc/g/Person_PaymentMethod",

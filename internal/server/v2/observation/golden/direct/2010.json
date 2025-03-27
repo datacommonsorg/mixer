@@ -549,7 +549,7 @@
               "observations": [
                 {
                   "date": "2010",
-                  "value": 2292082
+                  "value": 2267408
                 }
               ],
               "obs_count": 1,
@@ -565,7 +565,7 @@
               "observations": [
                 {
                   "date": "2010",
-                  "value": 3648
+                  "value": 3596
                 }
               ],
               "obs_count": 1,

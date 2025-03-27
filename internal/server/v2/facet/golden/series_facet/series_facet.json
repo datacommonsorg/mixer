@@ -58,20 +58,20 @@
             },
             {
               "facet_id": "10983471",
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2010",
-              "latest_date": "2022"
+              "latest_date": "2023"
+            },
+            {
+              "facet_id": "196790193",
+              "obs_count": 7,
+              "earliest_date": "2017",
+              "latest_date": "2023"
             },
             {
               "facet_id": "1964317807",
               "obs_count": 12,
               "earliest_date": "2010",
-              "latest_date": "2021"
-            },
-            {
-              "facet_id": "196790193",
-              "obs_count": 5,
-              "earliest_date": "2017",
               "latest_date": "2021"
             },
             {
@@ -148,20 +148,20 @@
             },
             {
               "facet_id": "10983471",
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2010",
-              "latest_date": "2022"
+              "latest_date": "2023"
+            },
+            {
+              "facet_id": "196790193",
+              "obs_count": 7,
+              "earliest_date": "2017",
+              "latest_date": "2023"
             },
             {
               "facet_id": "1964317807",
               "obs_count": 12,
               "earliest_date": "2010",
-              "latest_date": "2021"
-            },
-            {
-              "facet_id": "196790193",
-              "obs_count": 5,
-              "earliest_date": "2017",
               "latest_date": "2021"
             },
             {
@@ -210,20 +210,20 @@
             },
             {
               "facet_id": "2763329611",
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2010",
-              "latest_date": "2022"
+              "latest_date": "2023"
+            },
+            {
+              "facet_id": "3690003977",
+              "obs_count": 7,
+              "earliest_date": "2017",
+              "latest_date": "2023"
             },
             {
               "facet_id": "815809675",
               "obs_count": 12,
               "earliest_date": "2010",
-              "latest_date": "2021"
-            },
-            {
-              "facet_id": "3690003977",
-              "obs_count": 5,
-              "earliest_date": "2017",
               "latest_date": "2021"
             },
             {
@@ -244,20 +244,20 @@
             },
             {
               "facet_id": "2763329611",
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2010",
-              "latest_date": "2022"
+              "latest_date": "2023"
+            },
+            {
+              "facet_id": "3690003977",
+              "obs_count": 7,
+              "earliest_date": "2017",
+              "latest_date": "2023"
             },
             {
               "facet_id": "815809675",
               "obs_count": 12,
               "earliest_date": "2010",
-              "latest_date": "2021"
-            },
-            {
-              "facet_id": "3690003977",
-              "obs_count": 5,
-              "earliest_date": "2017",
               "latest_date": "2021"
             }
           ]
