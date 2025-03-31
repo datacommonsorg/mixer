@@ -156,7 +156,7 @@ func TestV3Node(t *testing.T) {
 			if latencyTest {
 				continue
 			}
-			if true {
+			if test.GenerateGolden {
 				test.UpdateGolden(resp, goldenPath, goldenFile)
 				continue
 			}

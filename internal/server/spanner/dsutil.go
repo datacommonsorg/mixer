@@ -39,8 +39,6 @@ const (
 	CHAIN = "+"
 	// Used for Facet responses with an entity expression.
 	ENTITY_PLACEHOLDER = ""
-	// Connector for keys.
-	CKEY = "^"
 )
 
 // Select options for Observation.
