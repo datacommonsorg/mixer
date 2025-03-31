@@ -30,7 +30,7 @@ const (
 	// Maximum number of edge hops to traverse for chained properties.
 	MAX_HOPS = 10
 	// Page size for paginated responses.
-	PAGE_SIZE = 1000
+	PAGE_SIZE = 5000
 )
 
 // Predicates to search against if no predicates are provided.
@@ -81,8 +81,7 @@ func (sc *SpannerClient) GetNodeProps(ctx context.Context, ids []string, out boo
 }
 
 // GetNodeEdgesByID retrieves node edges from Spanner and returns a map of subjectID to Edges.
-func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc, cursor *Edge) (map[string][]*Edge, error) {
-	// TODO: Support pagination.
+func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc, page int32) (map[string][]*Edge, error) {
 	edges := make(map[string][]*Edge)
 	if len(ids) == 0 {
 		return edges, nil
@@ -108,37 +107,23 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 		params["props"] = arc.BracketProps
 	}
 
-	// Attach cursor params.
-	cursorNodeFilter := ""
-	cursorEdgeFilter := ""
-	if cursor != nil {
-		cursorNodeFilter = statements.cursorNodeFilter
-		cursorEdgeFilter = statements.cursorEdgeFilter
-		params["cursor_subject_id"] = cursor.SubjectID
-		params["cursor_predicate"] = cursor.Predicate
-		params["cursor_object_id"] = cursor.ObjectID
-		params["cursor_object_value"] = cursor.ObjectValue
-		params["cursor_provenance"] = cursor.Provenance
-	}
-
 	var template string
 	switch arc.Out {
 	case true:
 		if arc.Decorator == CHAIN {
-			// Use cursorEdgeFilter for non-chain case (object_value).
-			template = fmt.Sprintf(statements.getChainedEdgesBySubjectID, MAX_HOPS, cursorNodeFilter, cursorEdgeFilter)
+			template = fmt.Sprintf(statements.getChainedEdgesBySubjectID, MAX_HOPS)
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
 		} else {
-			template = fmt.Sprintf(statements.getEdgesBySubjectID, filterProps, cursorEdgeFilter)
+			template = fmt.Sprintf(statements.getEdgesBySubjectID, filterProps)
 		}
 	case false:
 		if arc.Decorator == CHAIN {
-			template = fmt.Sprintf(statements.getChainedEdgesByObjectID, MAX_HOPS, cursorNodeFilter)
+			template = fmt.Sprintf(statements.getChainedEdgesByObjectID, MAX_HOPS)
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
 		} else {
-			template = fmt.Sprintf(statements.getEdgesByObjectID, filterProps, cursorEdgeFilter)
+			template = fmt.Sprintf(statements.getEdgesByObjectID, filterProps)
 		}
 	}
 
@@ -151,7 +136,10 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 		i += 1
 	}
 
-	// Apply pagination limit.
+	// Apply pagination.
+	if page > 0 {
+		template += fmt.Sprintf(statements.applyOffset, PAGE_SIZE*page)
+	}
 	template += statements.applyLimit
 
 	stmt := spanner.Statement{

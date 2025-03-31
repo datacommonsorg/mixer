@@ -17,7 +17,6 @@
 package spanner
 
 import (
-	"encoding/json"
 	"fmt"
 	"log"
 	"sort"
@@ -40,6 +39,8 @@ const (
 	CHAIN = "+"
 	// Used for Facet responses with an entity expression.
 	ENTITY_PLACEHOLDER = ""
+	// Connector for keys.
+	CKEY = "^"
 )
 
 // Select options for Observation.
@@ -85,56 +86,38 @@ func nodePropsToNodeResponse(propsBySubjectID map[string][]*Property) *pbv2.Node
 	return nodeResponse
 }
 
-// getCursorEdge returns the cursor Edge for a given Spanner data source id.
-func getCursorEdge(nextToken, dataSourceID string) (*Edge, error) {
+// getPage returns the page for a given Spanner data source id.
+func getPage(nextToken, dataSourceID string) (int32, error) {
 	if nextToken == "" {
-		return nil, nil
+		return 0, nil
 	}
 
 	pi, err := pagination.Decode(nextToken)
 	if err != nil {
-		return nil, err
+		return 0, err
 	}
 
 	for _, cursorGroup := range pi.GetCursorGroups() {
 		for _, key := range cursorGroup.GetKeys() {
 			if key == dataSourceID {
 				if len(cursorGroup.GetCursors()) < 1 {
-					return nil, fmt.Errorf("pagination info missing cursor for Spanner data source: %s", dataSourceID)
+					return 0, fmt.Errorf("pagination info missing cursor for Spanner data source: %s", dataSourceID)
 				}
-				cursorId := cursorGroup.GetCursors()[0].GetId()
-				edge := &Edge{}
-				if err := json.Unmarshal([]byte(cursorId), &edge); err != nil {
-					return nil, err
-				}
-				return edge, nil
+				return cursorGroup.GetCursors()[0].GetPage(), nil
 			}
 		}
 	}
 
-	return nil, nil
+	return 0, nil
 }
 
-// getNextToken encodes the cursor Edge in a nextToken string.
-func getNextToken(edge *Edge, dataSourceID string) (string, error) {
-	if edge == nil {
-		return "", nil
-	}
-
-	// Clear name and types to save space since they aren't used.
-	edge.Name = ""
-	edge.Types = []string{}
-
-	cursorId, err := json.Marshal(edge)
-	if err != nil {
-		return "", err
-	}
-
+// getNextToken encodes next page in a nextToken string.
+func getNextToken(page int32, dataSourceID string) (string, error) {
 	pi := &pbv1.PaginationInfo{
 		CursorGroups: []*pbv1.CursorGroup{{
 			Keys: []string{dataSourceID},
 			Cursors: []*pbv1.Cursor{{
-				Id: string(cursorId),
+				Page: page,
 			}},
 		}},
 	}
@@ -147,7 +130,7 @@ func getNextToken(edge *Edge, dataSourceID string) (string, error) {
 }
 
 // nodeEdgesToNodeResponse converts a map from subject id to its edges to a NodeResponse proto.
-func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge, id string) (*pbv2.NodeResponse, error) {
+func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge, id string, page int32) (*pbv2.NodeResponse, error) {
 	nodeResponse := &pbv2.NodeResponse{
 		Data: make(map[string]*pbv2.LinkedGraph),
 	}
@@ -168,9 +151,8 @@ func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge
 		// so having this many rows indicates that we have at least one more request,
 		// so generate nextToken.
 		if rows == PAGE_SIZE+1 && nodeResponse.NextToken == "" {
-			cursor := edges[len(edges)-1]
 			edges = edges[:len(edges)-1]
-			nextToken, err := getNextToken(cursor, id)
+			nextToken, err := getNextToken(page+1, id)
 			if err != nil {
 				return nil, err
 			}

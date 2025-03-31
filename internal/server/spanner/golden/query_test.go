@@ -101,7 +101,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 	for _, c := range []struct {
 		ids        []string
 		arc        *v2.Arc
-		cursor     *spanner.Edge
+		page       int32
 		goldenFile string
 	}{
 		{
@@ -110,7 +110,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				Out:        true,
 				SingleProp: "*",
 			},
-			cursor:     nil,
+			page:       0,
 			goldenFile: "get_node_edges_by_subject_id.json",
 		},
 		{
@@ -119,7 +119,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				Out:        false,
 				SingleProp: "*",
 			},
-			cursor:     nil,
+			page:       0,
 			goldenFile: "get_node_edges_by_object_id.json",
 		},
 		{
@@ -128,7 +128,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				Out:        true,
 				SingleProp: "extendedName",
 			},
-			cursor:     nil,
+			page:       0,
 			goldenFile: "get_node_edges_out_single_prop.json",
 		},
 		{
@@ -137,7 +137,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				Out:          true,
 				BracketProps: []string{"source", "subClassOf"},
 			},
-			cursor:     nil,
+			page:       0,
 			goldenFile: "get_node_edges_out_bracket_props.json",
 		},
 		{
@@ -149,7 +149,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 					"extendedName": {"AdministrativeArea2"},
 				},
 			},
-			cursor:     nil,
+			page:       0,
 			goldenFile: "get_node_edges_out_filter.json",
 		},
 		{
@@ -159,7 +159,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				SingleProp: "specializationOf",
 				Decorator:  "+",
 			},
-			cursor:     nil,
+			page:       0,
 			goldenFile: "get_node_edges_out_chain.json",
 		},
 		{
@@ -168,7 +168,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				Out:        false,
 				SingleProp: "domainIncludes",
 			},
-			cursor:     nil,
+			page:       0,
 			goldenFile: "get_node_edges_in_single_prop.json",
 		},
 		{
@@ -177,7 +177,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				Out:          false,
 				BracketProps: []string{"domainIncludes", "naturalHazardType"},
 			},
-			cursor:     nil,
+			page:       0,
 			goldenFile: "get_node_edges_in_bracket_props.json",
 		},
 		{
@@ -189,7 +189,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 					"extendedName":      {"Area of Farm: Melon"},
 				},
 			},
-			cursor:     nil,
+			page:       0,
 			goldenFile: "get_node_edges_in_filter.json",
 		},
 		{
@@ -199,7 +199,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				SingleProp: "specializationOf",
 				Decorator:  "+",
 			},
-			cursor:     nil,
+			page:       0,
 			goldenFile: "get_node_edges_in_chain.json",
 		},
 		{
@@ -211,7 +211,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 					"foo OR 1=1;": {"foo OR 1=1;"},
 				},
 			},
-			cursor:     nil,
+			page:       0,
 			goldenFile: "get_node_edges_malicious.json",
 		},
 		{
@@ -220,7 +220,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				Out:        false,
 				SingleProp: "typeOf",
 			},
-			cursor:     nil,
+			page:       0,
 			goldenFile: "get_node_edges_first_page.json",
 		},
 		{
@@ -229,13 +229,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				Out:        false,
 				SingleProp: "typeOf",
 			},
-			cursor: &spanner.Edge{
-				SubjectID:   "StatisticalVariable",
-				Predicate:   "typeOf",
-				ObjectID:    "AggregateMax_Percentile90AcrossModels_DifferenceRelativeToBaseDate2006To2020_Max_Temperature_RCP45",
-				ObjectValue: "",
-				Provenance:  "dc/base/HumanReadableStatVars",
-			},
+			page:       1,
 			goldenFile: "get_node_edges_second_page.json",
 		},
 		{
@@ -245,7 +239,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				SingleProp: "specializationOf",
 				Decorator:  "+",
 			},
-			cursor:     nil,
+			page:       0,
 			goldenFile: "get_node_edges_first_page_chain.json",
 		},
 		{
@@ -255,17 +249,11 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				SingleProp: "specializationOf",
 				Decorator:  "+",
 			},
-			cursor: &spanner.Edge{
-				SubjectID:   "dc/g/Root",
-				Predicate:   "specializationOf+",
-				ObjectID:    "WHO/g/FamilyPlanning",
-				ObjectValue: "",
-				Provenance:  "",
-			},
+			page:       1,
 			goldenFile: "get_node_edges_second_page_chain.json",
 		},
 	} {
-		actual, err := client.GetNodeEdgesByID(ctx, c.ids, c.arc, c.cursor)
+		actual, err := client.GetNodeEdgesByID(ctx, c.ids, c.arc, c.page)
 		if err != nil {
 			t.Fatalf("GetNodeEdgesByID error (%v): %v", c.goldenFile, err)
 		}
@@ -277,7 +265,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 			t.Fatalf("StructToJSON error (%v): %v", c.goldenFile, err)
 		}
 
-		if true {
+		if test.GenerateGolden {
 			err = test.WriteGolden(got, goldenDir, c.goldenFile)
 			if err != nil {
 				t.Fatalf("WriteGolden error (%v): %v", c.goldenFile, err)

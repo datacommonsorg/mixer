@@ -19,15 +19,14 @@ option go_package = "github.com/datacommonsorg/mixer/internal/proto/v1";
 
 // Cursor represents the position of a data source.
 message Cursor {
-  // The index of the import group, starts from 0. Used for Bigtable.
+  // The index of the import group, starts from 0
   int32 import_group = 1;
-  // The index of the page, starts from 0. Used for Bigtable.
+  // The index of the page, starts from 0
   int32 page = 2;
   // The position of the next read item in the current page, starts from 0. 
-  // Used for Bigtable.
   int32 item = 3;
-  // The id of the cursor. Used for Spanner.
-  string id = 4;
+  
+  reserved 4;
 }
 
 // Represents cursors of multiple entities.

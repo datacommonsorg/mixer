@@ -39,10 +39,8 @@ var statements = struct {
 	filterProps string
 	// Subquery to filter edges by object property-values.
 	filterObjects string
-	// Subquery to filter edges by cursor node.
-	cursorNodeFilter string
-	// Subquery to filter edges by cursor edge.
-	cursorEdgeFilter string
+	// Subquery to apply page offset.
+	applyOffset string
 	// Subquery to apply page limit.
 	applyLimit string
 	// Fetch Observations for variable+entity.
@@ -83,10 +81,10 @@ var statements = struct {
 			predicate
 	`,
 	getEdgesBySubjectID: `
-		GRAPH DCGraph MATCH (m:Node)-[e:Edge]->(n:Node)
+		GRAPH DCGraph MATCH -[e:Edge]->(n:Node)
 		WHERE
-			m.subject_id IN UNNEST(@ids)
-			AND e.object_value IS NULL%[1]s%[2]s
+			e.subject_id IN UNNEST(@ids)
+			AND e.object_value IS NULL%[1]s
 		RETURN 
 			e.subject_id,
 			e.predicate,
@@ -96,10 +94,10 @@ var statements = struct {
 			COALESCE(n.name, '') AS name,
 			COALESCE(n.types, []) AS types
 		UNION ALL
-		MATCH (m:Node)-[e:Edge]->(n:Node)
+		MATCH -[e:Edge]->
 		WHERE
-			m.subject_id IN UNNEST(@ids)
-			AND e.object_value IS NOT NULL%[1]s%[2]s
+			e.subject_id IN UNNEST(@ids)
+			AND e.object_value IS NOT NULL%[1]s
 		RETURN 
 			e.subject_id,
 			e.predicate,
@@ -130,7 +128,7 @@ var statements = struct {
 			e.predicate = @predicate]->{1,%d}(n:Node)
 		WHERE
 			m.subject_id IN UNNEST(@ids)
-			AND m != n%s
+			AND m != n
 		RETURN 
 			m.subject_id,
 			n.subject_id as object_id,
@@ -138,11 +136,11 @@ var statements = struct {
 			COALESCE(n.name, '') AS name,
 			COALESCE(n.types, []) AS types
 		UNION ALL
-		MATCH (m:Node)-[e:Edge]->(n:Node)
+		MATCH -[e:Edge]->
 		WHERE
-			m.subject_id IN UNNEST(@ids)
+			e.subject_id IN UNNEST(@ids)
 			AND e.object_value IS NOT NULL
-			AND e.predicate = @predicate%s
+			AND e.predicate = @predicate
 		RETURN 
 			e.subject_id,
 			'' AS object_id,
@@ -165,10 +163,10 @@ var statements = struct {
 			object_value
 	`,
 	getEdgesByObjectID: `
-		GRAPH DCGraph MATCH (m:Node)<-[e:Edge]-(n:Node) 
+		GRAPH DCGraph MATCH <-[e:Edge]-(n:Node) 
 		WHERE
-			m.subject_id IN UNNEST(@ids)
-			AND e.subject_id != e.object_id%s%s
+			e.object_id IN UNNEST(@ids)
+			AND e.subject_id != e.object_id%s
 		RETURN 
 			e.object_id AS subject_id,
 			e.predicate,
@@ -188,7 +186,7 @@ var statements = struct {
 			e.predicate = @predicate]-{1,%d}(n:Node) 
 		WHERE 
 			m.subject_id IN UNNEST(@ids)
-			AND m!= n%s	
+			AND m!= n
 		RETURN 
 			m.subject_id,
 			n.subject_id AS object_id,
@@ -231,19 +229,8 @@ var statements = struct {
 			name,
 			types			
 	`,
-	// The cursor assumes the results are in order, specified by the ORDER BY clauses.
-	cursorNodeFilter: `
-		AND (m.subject_id > @cursor_subject_id
-		OR (m.subject_id = @cursor_subject_id AND n.subject_id > @cursor_object_id)
-		OR (m.subject_id = @cursor_subject_id AND n.subject_id = @cursor_object_id)) 
-	`,
-	cursorEdgeFilter: `
-		AND (m.subject_id > @cursor_subject_id
-		OR (m.subject_id = @cursor_subject_id AND e.predicate > @cursor_predicate)
-		OR (m.subject_id = @cursor_subject_id AND e.predicate = @cursor_predicate AND n.subject_id > @cursor_object_id)
-		OR (m.subject_id = @cursor_subject_id AND e.predicate = @cursor_predicate AND n.subject_id = @cursor_object_id AND COALESCE(e.object_value, '') > @cursor_object_value)
-		OR (m.subject_id = @cursor_subject_id AND e.predicate = @cursor_predicate AND n.subject_id = @cursor_object_id AND COALESCE(e.object_value, '') = @cursor_object_value AND COALESCE(e.provenance, '') > @cursor_provenance)
-		OR (m.subject_id = @cursor_subject_id AND e.predicate = @cursor_predicate AND n.subject_id = @cursor_object_id AND COALESCE(e.object_value, '') = @cursor_object_value AND COALESCE(e.provenance, '') = @cursor_provenance))
+	applyOffset: `
+		OFFSET %d
 	`,
 	applyLimit: fmt.Sprintf(`
 		LIMIT %d

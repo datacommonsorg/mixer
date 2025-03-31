@@ -3,10 +3,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "AggregateMax_Percentile90AcrossModels_DifferenceRelativeToBaseDate2006To2020_Max_Temperature_RCP45",
+      "ObjectID": "Amount_Debt_JPY_LenderCountryBFA_AsAFractionOf_Amount_Debt_LenderCountryBFA",
       "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Max Temperature (Difference Relative To Base Date): Relative To Between 2006 And 2020, Based on RCP 4.5, Highest Value, Percentile 90 Across Models",
+      "Name": "Amount of Debt: JPY, Country/BFA (As Fraction of Amount Debt Lender Country BFA)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -14,10 +14,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "AggregateMax_Percentile90AcrossModels_DifferenceRelativeToBaseDate2006To2020_Max_Temperature_RCP85",
+      "ObjectID": "Amount_Debt_JPY_LenderCountryBGD_AsAFractionOf_Amount_Debt_LenderCountryBGD",
       "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Max Temperature (Difference Relative To Base Date): Relative To Between 2006 And 2020, Based on RCP 8.5, Highest Value, Percentile 90 Across Models",
+      "Name": "Amount of Debt: JPY, Country/BGD (As Fraction of Amount Debt Lender Country BGD)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -25,10 +25,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "AggregateMax_Percentile90AcrossModels_DifferenceRelativeToBaseDate2006_Max_Temperature_RCP45",
+      "ObjectID": "Amount_Debt_JPY_LenderCountryBGR_AsAFractionOf_Amount_Debt_LenderCountryBGR",
       "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Max Temperature (Difference Relative To Base Date): Relative To 2006, Based on RCP 4.5, Highest Value, Percentile 90 Across Models",
+      "Name": "Amount of Debt: JPY, Country/BGR (As Fraction of Amount Debt Lender Country BGR)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -36,10 +36,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "AggregateMax_Percentile90AcrossModels_DifferenceRelativeToBaseDate2006_Max_Temperature_RCP85",
+      "ObjectID": "Amount_Debt_JPY_LenderCountryBHR_AsAFractionOf_Amount_Debt_LenderCountryBHR",
       "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Max Temperature (Difference Relative To Base Date): Relative To 2006, Based on RCP 8.5, Highest Value, Percentile 90 Across Models",
+      "Name": "Amount of Debt: JPY, Country/BHR (As Fraction of Amount Debt Lender Country BHR)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -47,10 +47,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "AggregateMax_Percentile90AcrossModels_DifferenceRelativeToBaseDate2015To2020_Max_Temperature_SSP245",
+      "ObjectID": "Amount_Debt_JPY_LenderCountryBHS_AsAFractionOf_Amount_Debt_LenderCountryBHS",
       "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Max Temperature (Difference Relative To Base Date): Relative To Between 2015 And 2020, Based on RCP 4.5, Highest Value, Percentile 90 Across Models, SSP 2",
+      "Name": "Amount of Debt: JPY, Country/BHS (As Fraction of Amount Debt Lender Country BHS)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -58,10 +58,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "AggregateMax_Percentile90AcrossModels_DifferenceRelativeToBaseDate2015To2020_Max_Temperature_SSP585",
+      "ObjectID": "Amount_Debt_JPY_LenderCountryBIH_AsAFractionOf_Amount_Debt_LenderCountryBIH",
       "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Max Temperature (Difference Relative To Base Date): Relative To Between 2015 And 2020, Based on RCP 8.5, Highest Value, Percentile 90 Across Models, SSP 5",
+      "Name": "Amount of Debt: JPY, Country/BIH (As Fraction of Amount Debt Lender Country BIH)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -69,10 +69,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "AggregateMax_Percentile90AcrossModels_DifferenceRelativeToBaseDate2015_Max_Temperature_SSP245",
+      "ObjectID": "Amount_Debt_JPY_LenderCountryBLR_AsAFractionOf_Amount_Debt_LenderCountryBLR",
       "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Max Temperature (Difference Relative To Base Date): Relative To 2015, Based on RCP 4.5, Highest Value, Percentile 90 Across Models, SSP 2",
+      "Name": "Amount of Debt: JPY, Country/BLR (As Fraction of Amount Debt Lender Country BLR)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -80,10 +80,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "AggregateMax_Percentile90AcrossModels_DifferenceRelativeToBaseDate2015_Max_Temperature_SSP585",
+      "ObjectID": "Amount_Debt_JPY_LenderCountryBLZ_AsAFractionOf_Amount_Debt_LenderCountryBLZ",
       "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Max Temperature (Difference Relative To Base Date): Relative To 2015, Based on RCP 8.5, Highest Value, Percentile 90 Across Models, SSP 5",
+      "Name": "Amount of Debt: JPY, Country/BLZ (As Fraction of Amount Debt Lender Country BLZ)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -91,10 +91,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "AggregateMin_MedianAcrossModels_DifferenceRelativeToBaseDate1990_Min_Temperature",
+      "ObjectID": "Amount_Debt_JPY_LenderCountryBMU_AsAFractionOf_Amount_Debt_LenderCountryBMU",
       "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Min Temperature (Difference Relative To Base Date): Relative To 1990, Lowest Value, Median Across Models",
+      "Name": "Amount of Debt: JPY, Country/BMU (As Fraction of Amount Debt Lender Country BMU)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -102,10 +102,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "AggregateMin_MedianAcrossModels_DifferenceRelativeToBaseDate2006To2020_Min_Temperature_RCP45",
+      "ObjectID": "Amount_Debt_JPY_LenderCountryBOL_AsAFractionOf_Amount_Debt_LenderCountryBOL",
       "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Min Temperature (Difference Relative To Base Date): Relative To Between 2006 And 2020, Based on RCP 4.5, Lowest Value, Median Across Models",
+      "Name": "Amount of Debt: JPY, Country/BOL (As Fraction of Amount Debt Lender Country BOL)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -113,10 +113,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "AggregateMin_MedianAcrossModels_DifferenceRelativeToBaseDate2006To2020_Min_Temperature_RCP85",
+      "ObjectID": "Amount_Debt_JPY_LenderCountryBRA_AsAFractionOf_Amount_Debt_LenderCountryBRA",
       "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Min Temperature (Difference Relative To Base Date): Relative To Between 2006 And 2020, Based on RCP 8.5, Lowest Value, Median Across Models",
+      "Name": "Amount of Debt: JPY, Country/BRA (As Fraction of Amount Debt Lender Country BRA)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -124,10 +124,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "AggregateMin_MedianAcrossModels_DifferenceRelativeToBaseDate2006_Min_Temperature_RCP45",
+      "ObjectID": "Amount_Debt_JPY_LenderCountryBRB_AsAFractionOf_Amount_Debt_LenderCountryBRB",
       "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Min Temperature (Difference Relative To Base Date): Relative To 2006, Based on RCP 4.5, Lowest Value, Median Across Models",
+      "Name": "Amount of Debt: JPY, Country/BRB (As Fraction of Amount Debt Lender Country BRB)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -135,10 +135,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "AggregateMin_MedianAcrossModels_DifferenceRelativeToBaseDate2006_Min_Temperature_RCP85",
+      "ObjectID": "Amount_Debt_JPY_LenderCountryBRN_AsAFractionOf_Amount_Debt_LenderCountryBRN",
       "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Min Temperature (Difference Relative To Base Date): Relative To 2006, Based on RCP 8.5, Lowest Value, Median Across Models",
+      "Name": "Amount of Debt: JPY, Country/BRN (As Fraction of Amount Debt Lender Country BRN)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -146,10 +146,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "AggregateMin_MedianAcrossModels_DifferenceRelativeToBaseDate2015To2020_Min_Temperature_SSP245",
+      "ObjectID": "Amount_Debt_JPY_LenderCountryCAN_AsAFractionOf_Amount_Debt_LenderCountryCAN",
       "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Min Temperature (Difference Relative To Base Date): Relative To Between 2015 And 2020, Based on RCP 4.5, Lowest Value, Median Across Models, SSP 2",
+      "Name": "Amount of Debt: JPY, Country/CAN (As Fraction of Amount Debt Lender Country CAN)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -157,10 +157,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "AggregateMin_MedianAcrossModels_DifferenceRelativeToBaseDate2015To2020_Min_Temperature_SSP585",
+      "ObjectID": "Amount_Debt_JPY_LenderCountryCHE_AsAFractionOf_Amount_Debt_LenderCountryCHE",
       "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Min Temperature (Difference Relative To Base Date): Relative To Between 2015 And 2020, Based on RCP 8.5, Lowest Value, Median Across Models, SSP 5",
+      "Name": "Amount of Debt: JPY, Country/CHE (As Fraction of Amount Debt Lender Country CHE)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -168,10 +168,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "AggregateMin_MedianAcrossModels_DifferenceRelativeToBaseDate2015_Min_Temperature_SSP245",
+      "ObjectID": "Amount_Debt_JPY_LenderCountryCHL_AsAFractionOf_Amount_Debt_LenderCountryCHL",
       "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Min Temperature (Difference Relative To Base Date): Relative To 2015, Based on RCP 4.5, Lowest Value, Median Across Models, SSP 2",
+      "Name": "Amount of Debt: JPY, Country/CHL (As Fraction of Amount Debt Lender Country CHL)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -179,10 +179,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "AggregateMin_MedianAcrossModels_DifferenceRelativeToBaseDate2015_Min_Temperature_SSP585",
+      "ObjectID": "Amount_Debt_JPY_LenderCountryCHN_AsAFractionOf_Amount_Debt_LenderCountryCHN",
       "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Min Temperature (Difference Relative To Base Date): Relative To 2015, Based on RCP 8.5, Lowest Value, Median Across Models, SSP 5",
+      "Name": "Amount of Debt: JPY, Country/CHN (As Fraction of Amount Debt Lender Country CHN)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -190,10 +190,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "AggregateMin_Percentile10AcrossModels_DifferenceRelativeToBaseDate1990_Min_Temperature",
+      "ObjectID": "Amount_Debt_JPY_LenderCountryCIV_AsAFractionOf_Amount_Debt_LenderCountryCIV",
       "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Min Temperature (Difference Relative To Base Date): Relative To 1990, Lowest Value, Percentile 10 Across Models",
+      "Name": "Amount of Debt: JPY, Country/CIV (As Fraction of Amount Debt Lender Country CIV)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -201,10 +201,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "AggregateMin_Percentile10AcrossModels_DifferenceRelativeToBaseDate2006To2020_Min_Temperature_RCP45",
+      "ObjectID": "Amount_Debt_JPY_LenderCountryCMR_AsAFractionOf_Amount_Debt_LenderCountryCMR",
       "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Min Temperature (Difference Relative To Base Date): Relative To Between 2006 And 2020, Based on RCP 4.5, Lowest Value, Percentile 10 Across Models",
+      "Name": "Amount of Debt: JPY, Country/CMR (As Fraction of Amount Debt Lender Country CMR)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -212,10 +212,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "AggregateMin_Percentile10AcrossModels_DifferenceRelativeToBaseDate2006To2020_Min_Temperature_RCP85",
+      "ObjectID": "Amount_Debt_JPY_LenderCountryCOD_AsAFractionOf_Amount_Debt_LenderCountryCOD",
       "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Min Temperature (Difference Relative To Base Date): Relative To Between 2006 And 2020, Based on RCP 8.5, Lowest Value, Percentile 10 Across Models",
+      "Name": "Amount of Debt: JPY, Country/COD (As Fraction of Amount Debt Lender Country COD)",
       "Types": [
         "StatisticalVariable"
       ]

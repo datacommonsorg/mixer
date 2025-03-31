@@ -79,7 +79,7 @@ func TestV3Node(t *testing.T) {
 				"",
 				"out_pv_all.json",
 			},
-      {
+			{
 				"All in property-values",
 				[]string{
 					"test_var_1",
@@ -124,7 +124,7 @@ func TestV3Node(t *testing.T) {
 				"",
 				"in_chain_filter.json",
 			},
-      {
+			{
 				"First page of pagination",
 				[]string{
 					"StatisticalVariable",
@@ -139,9 +139,9 @@ func TestV3Node(t *testing.T) {
 					"StatisticalVariable",
 				},
 				"<-typeOf",
-				"H4sIAAAAAAAA/0SQwWoyQQzHwaPH7xFydtnLd9pb1aKCVFGxh1KG7EyqU2czSyYrXUrfotAH7IuUWaS9hvz/+f0y/h6NF6lFZpKilfhKVlPpUG1siqRRqPScFNlSKp0tLqdCKWnewBrTMDQnwfZs/v/7GsHn6B32XZ1rVnOoYK+oPqm3GI4oHutAMIGtkPMWlaAC7VvavMAENn+puyZ2rCtWEkq6oxb7hljNnGo1W/FXVJrlDo1itl0dvA39okNBViJnHqMEN0W+bPRMcguYdeTTgaS5f1MSxjC0rYkdySzfk366Wv6CHDF0mW/AjVfi/AOowNkyi5fLrkHeEbrslDWPKAkm8IDNLXboW0pQPT1//AAAAP//AQAA///5rcKSZgEAAA==",
+				"H4sIAAAAAAAA/+Ly5XIvLkjMy0st0i0oys9KTS4p1k9JLEnOz9UtLskvStXPzCsuScxLTi3WT0nWzU7XLUktLgGpSExKLAYLxqcXJRZkxJsIMQkwAgAAAP//AQAA//9iDLoiTwAAAA==",
 				"pagination_second_page.json",
-      },
+			},
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V3Node(ctx, &pbv2.NodeRequest{

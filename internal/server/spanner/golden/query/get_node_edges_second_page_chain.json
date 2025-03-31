@@ -3,10 +3,10 @@
     {
       "SubjectID": "dc/g/Root",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/FamilyPlanning",
+      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-InternationalFundforAgriculturalDev",
       "ObjectValue": "",
       "Provenance": "",
-      "Name": "Family Planning",
+      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = International_Fund_for_Agricultural_Dev",
       "Types": [
         "StatVarGroup"
       ]
@@ -14,10 +14,10 @@
     {
       "SubjectID": "dc/g/Root",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/FinancialProtection",
+      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-InternationalInvestmentBank",
       "ObjectValue": "",
       "Provenance": "",
-      "Name": "Financial Protection",
+      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = International_Investment_Bank",
       "Types": [
         "StatVarGroup"
       ]
@@ -25,10 +25,10 @@
     {
       "SubjectID": "dc/g/Root",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/FinancialProtectionImpoverishment",
+      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-IslamicDevBank",
       "ObjectValue": "",
       "Provenance": "",
-      "Name": "Financial Protection - Impoverishment",
+      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = Islamic_Dev_Bank",
       "Types": [
         "StatVarGroup"
       ]
@@ -36,10 +36,10 @@
     {
       "SubjectID": "dc/g/Root",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/FoodborneDiseases",
+      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-IslamicSolidarityFundforDev",
       "ObjectValue": "",
       "Provenance": "",
-      "Name": "Foodborne Diseases",
+      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = Islamic_Solidarity_Fund_for_Dev",
       "Types": [
         "StatVarGroup"
       ]
@@ -47,10 +47,10 @@
     {
       "SubjectID": "dc/g/Root",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/GlobalObservatoryForEhealthGoe",
+      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-LatinAmerConfofSavingCreditCoop",
       "ObjectValue": "",
       "Provenance": "",
-      "Name": "Global Observatory For eHealth (GOe)",
+      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = Latin_Amer_Conf_of_Saving_Credit_Coop",
       "Types": [
         "StatVarGroup"
       ]
@@ -58,10 +58,10 @@
     {
       "SubjectID": "dc/g/Root",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/HazardsImpactOnHealth",
+      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-LatinAmericanAgribusinessDevCorp",
       "ObjectValue": "",
       "Provenance": "",
-      "Name": "Hazards Impact On Health",
+      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = Latin_American_Agribusiness_Dev_Corp",
       "Types": [
         "StatVarGroup"
       ]
@@ -69,10 +69,10 @@
     {
       "SubjectID": "dc/g/Root",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/HealthEquityMonitor",
+      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-MultipleLenders",
       "ObjectValue": "",
       "Provenance": "",
-      "Name": "Health Equity Monitor",
+      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = Multiple_Lenders",
       "Types": [
         "StatVarGroup"
       ]
@@ -80,10 +80,10 @@
     {
       "SubjectID": "dc/g/Root",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/HealthExpenditure",
+      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-NordicDevelopmentFund",
       "ObjectValue": "",
       "Provenance": "",
-      "Name": "Health Expenditure",
+      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = Nordic_Development_Fund",
       "Types": [
         "StatVarGroup"
       ]
@@ -91,10 +91,10 @@
     {
       "SubjectID": "dc/g/Root",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/HealthInequalityMonitor",
+      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-NordicEnvironmentFinanceCorporation",
       "ObjectValue": "",
       "Provenance": "",
-      "Name": "Health Inequality Monitor",
+      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = Nordic_Environment_Finance_Corporation",
       "Types": [
         "StatVarGroup"
       ]
@@ -102,10 +102,10 @@
     {
       "SubjectID": "dc/g/Root",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/HealthPolicy",
+      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-NordicInvestmentBank",
       "ObjectValue": "",
       "Provenance": "",
-      "Name": "Health Policy",
+      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = Nordic_Investment_Bank",
       "Types": [
         "StatVarGroup"
       ]
@@ -113,10 +113,10 @@
     {
       "SubjectID": "dc/g/Root",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/HealthSystems",
+      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-OPECFundforInternationalDev",
       "ObjectValue": "",
       "Provenance": "",
-      "Name": "Health Systems",
+      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = OPEC_Fund_for_International_Dev",
       "Types": [
         "StatVarGroup"
       ]
@@ -124,10 +124,10 @@
     {
       "SubjectID": "dc/g/Root",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/HealthWorkforce",
+      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-OrgofArabPetroleumExportingCountries",
       "ObjectValue": "",
       "Provenance": "",
-      "Name": "Health Workforce",
+      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = Org_of_Arab_Petroleum_Exporting_Countries",
       "Types": [
         "StatVarGroup"
       ]
@@ -135,10 +135,10 @@
     {
       "SubjectID": "dc/g/Root",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/HemoglobinLevel",
+      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-PlataBasinFinancialDevFund",
       "ObjectValue": "",
       "Provenance": "",
-      "Name": "Hemoglobin Level",
+      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = Plata_Basin_Financial_Dev_Fund",
       "Types": [
         "StatVarGroup"
       ]
@@ -146,10 +146,10 @@
     {
       "SubjectID": "dc/g/Root",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/HivAidsAndOtherStis",
+      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-SouthAsianDevelopmentFund",
       "ObjectValue": "",
       "Provenance": "",
-      "Name": "HIV/AIDS and other STIs",
+      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = South_Asian_Development_Fund",
       "Types": [
         "StatVarGroup"
       ]
@@ -157,10 +157,10 @@
     {
       "SubjectID": "dc/g/Root",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/Icd",
+      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-UNChildrenFund",
       "ObjectValue": "",
       "Provenance": "",
-      "Name": "Icd",
+      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = UN_Children_Fund",
       "Types": [
         "StatVarGroup"
       ]
@@ -168,10 +168,10 @@
     {
       "SubjectID": "dc/g/Root",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/InfectiousDiseases",
+      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-UNDevelopmentProgramme",
       "ObjectValue": "",
       "Provenance": "",
-      "Name": "Infectious Diseases",
+      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = UN_Development_Programme",
       "Types": [
         "StatVarGroup"
       ]
@@ -179,10 +179,10 @@
     {
       "SubjectID": "dc/g/Root",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/Infrastructure",
+      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-UNGeneralAssembly",
       "ObjectValue": "",
       "Provenance": "",
-      "Name": "Infrastructure",
+      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = UN_General_Assembly",
       "Types": [
         "StatVarGroup"
       ]
@@ -190,10 +190,10 @@
     {
       "SubjectID": "dc/g/Root",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/InjuriesAndViolence",
+      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-UNHighCommissionerforRefugees",
       "ObjectValue": "",
       "Provenance": "",
-      "Name": "Injuries And Violence",
+      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = UN_High_Commissioner_for_Refugees",
       "Types": [
         "StatVarGroup"
       ]
@@ -201,10 +201,10 @@
     {
       "SubjectID": "dc/g/Root",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/InsecticideResistance",
+      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-UNPopulationFund",
       "ObjectValue": "",
       "Provenance": "",
-      "Name": "Insecticide Resistance",
+      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = UN_Population_Fund",
       "Types": [
         "StatVarGroup"
       ]
@@ -212,10 +212,10 @@
     {
       "SubjectID": "dc/g/Root",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/InternationalHealthRegulations",
+      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-UNRegularProgrammeofTechnicalCoop",
       "ObjectValue": "",
       "Provenance": "",
-      "Name": "International Health Regulations",
+      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = UN_Regular_Programme_of_Technical_Coop",
       "Types": [
         "StatVarGroup"
       ]
