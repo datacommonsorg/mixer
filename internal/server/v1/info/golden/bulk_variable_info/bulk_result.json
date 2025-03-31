@@ -5,26 +5,26 @@
       "info": {
         "placeTypeSummary": {
           "AdministrativeArea": {
-            "placeCount": 135,
+            "placeCount": 143,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1062618",
                 "name": "Chaoyang District"
               },
               {
-                "dcid": "wikidataId/Q1197421",
-                "name": "Wujin District"
+                "dcid": "wikidataId/Q1023893",
+                "name": "Nanhai District"
               },
               {
-                "dcid": "wikidataId/Q714045",
-                "name": "Hechuan District"
+                "dcid": "wikidataId/Q945428",
+                "name": "Shunde District"
               }
             ],
             "minValue": 12792,
             "maxValue": 1214384
           },
           "AdministrativeArea1": {
-            "placeCount": 313,
+            "placeCount": 356,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q15175",
@@ -191,7 +191,7 @@
                 "name": "East North Central Division"
               }
             ],
-            "minValue": 7460046.426,
+            "minValue": 7373424.576,
             "maxValue": 34090199
           },
           "CensusTract": {
@@ -396,15 +396,15 @@
             "maxValue": 840
           },
           "Neighborhood": {
-            "placeCount": 9,
+            "placeCount": 13,
             "topPlaces": [
-              {
-                "dcid": "wikidataId/Q2244063",
-                "name": "L. B. Nagar"
-              },
               {
                 "dcid": "wikidataId/Q2237435",
                 "name": "Kukatpally"
+              },
+              {
+                "dcid": "wikidataId/Q2244063",
+                "name": "L. B. Nagar"
               },
               {
                 "dcid": "wikidataId/Q2562718",
@@ -415,22 +415,23 @@
             "maxValue": 138958
           },
           "Place": {
-            "placeCount": 125,
+            "placeCount": 148,
             "topPlaces": [
               {
-                "dcid": "wikidataId/Q1180"
-              },
-              {
-                "dcid": "wikidataId/Q2665241",
-                "name": "Swabi"
+                "dcid": "wikidataId/Q148062",
+                "name": "Zarqa"
               },
               {
                 "dcid": "wikidataId/Q366754",
                 "name": "Kalyan"
+              },
+              {
+                "dcid": "wikidataId/Q7123293",
+                "name": "Padawan municipality"
               }
             ],
-            "minValue": 290,
-            "maxValue": 6293000
+            "minValue": 12978,
+            "maxValue": 643277
           },
           "SchoolDistrict": {
             "placeCount": 13959,
@@ -1618,7 +1619,7 @@
                   "measurementMethod": "CensusACS5yrSurveySubjectTable"
                 },
                 "earliestDate": "2010",
-                "latestDate": "2022",
+                "latestDate": "2023",
                 "placeTypeSummary": {
                   "CensusDivision": {
                     "placeCount": 9,
@@ -1636,8 +1637,8 @@
                         "name": "East North Central Division"
                       }
                     ],
-                    "minValue": 7460046.426,
-                    "maxValue": 33702531.525
+                    "minValue": 7373424.576,
+                    "maxValue": 34088009.85
                   },
                   "Country": {
                     "placeCount": 1,
@@ -1648,7 +1649,7 @@
                       }
                     ],
                     "minValue": 154718323.448,
-                    "maxValue": 166873186.872
+                    "maxValue": 167855707.7
                   },
                   "State": {
                     "placeCount": 51,
@@ -1671,12 +1672,12 @@
                   }
                 },
                 "minValue": 267879.289,
-                "maxValue": 166873186.872,
-                "observationCount": 766,
+                "maxValue": 167855707.7,
+                "observationCount": 854,
                 "timeSeriesCount": 61
               }
             ],
-            "observationCount": 766,
+            "observationCount": 854,
             "timeSeriesCount": 61
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S2601APR": {
@@ -1718,8 +1719,27 @@
                   "measurementMethod": "CensusACS5yrSurveySubjectTable"
                 },
                 "earliestDate": "2017",
-                "latestDate": "2021",
+                "latestDate": "2023",
                 "placeTypeSummary": {
+                  "CensusDivision": {
+                    "placeCount": 9,
+                    "topPlaces": [
+                      {
+                        "dcid": "usc/SouthAtlanticDivision",
+                        "name": "South Atlantic Division"
+                      },
+                      {
+                        "dcid": "usc/PacificDivision",
+                        "name": "Pacific Division"
+                      },
+                      {
+                        "dcid": "usc/EastNorthCentralDivision",
+                        "name": "East North Central Division"
+                      }
+                    ],
+                    "minValue": 7554734.001,
+                    "maxValue": 34088009.85
+                  },
                   "Country": {
                     "placeCount": 1,
                     "topPlaces": [
@@ -1729,7 +1749,7 @@
                       }
                     ],
                     "minValue": 163070238.756,
-                    "maxValue": 166511367.905
+                    "maxValue": 167855707.7
                   },
                   "State": {
                     "placeCount": 51,
@@ -1752,13 +1772,13 @@
                   }
                 },
                 "minValue": 281400.808,
-                "maxValue": 166511367.905,
-                "observationCount": 260,
-                "timeSeriesCount": 52
+                "maxValue": 167855707.7,
+                "observationCount": 427,
+                "timeSeriesCount": 61
               }
             ],
-            "observationCount": 260,
-            "timeSeriesCount": 52
+            "observationCount": 427,
+            "timeSeriesCount": 61
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S2602PR": {
             "importName": "CensusACS5YearSurvey_SubjectTables_S2602PR",
@@ -1768,7 +1788,7 @@
                   "measurementMethod": "CensusACS5yrSurveySubjectTable"
                 },
                 "earliestDate": "2017",
-                "latestDate": "2021",
+                "latestDate": "2023",
                 "placeTypeSummary": {
                   "State": {
                     "placeCount": 1,
@@ -1784,11 +1804,11 @@
                 },
                 "minValue": 1709212.05,
                 "maxValue": 1814267.649,
-                "observationCount": 5,
+                "observationCount": 7,
                 "timeSeriesCount": 1
               }
             ],
-            "observationCount": 5,
+            "observationCount": 7,
             "timeSeriesCount": 1
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S2603": {
@@ -2878,26 +2898,22 @@
                 "latestDate": "2023",
                 "placeTypeSummary": {
                   "AdministrativeArea": {
-                    "placeCount": 5,
+                    "placeCount": 2,
                     "topPlaces": [
-                      {
-                        "dcid": "wikidataId/Q1973593",
-                        "name": "Waikato District"
-                      },
-                      {
-                        "dcid": "wikidataId/Q4874224",
-                        "name": "Bay of Plenty"
-                      },
                       {
                         "dcid": "wikidataId/Q1850966",
                         "name": "Wheatbelt"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1166361",
+                        "name": "Darling Downs"
                       }
                     ],
-                    "minValue": 14969,
-                    "maxValue": 262200
+                    "minValue": 54770,
+                    "maxValue": 70330
                   },
                   "AdministrativeArea1": {
-                    "placeCount": 304,
+                    "placeCount": 356,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q15175",
@@ -2916,56 +2932,45 @@
                     "maxValue": 50483000
                   },
                   "AdministrativeArea2": {
-                    "placeCount": 167,
+                    "placeCount": 214,
                     "topPlaces": [
                       {
-                        "dcid": "wikidataId/Q1143712",
-                        "name": "Kanagawa-ku"
-                      },
-                      {
-                        "dcid": "wikidataId/Q173270",
-                        "name": "Veracruz"
+                        "dcid": "wikidataId/Q45632",
+                        "name": "Santiago"
                       },
                       {
                         "dcid": "wikidataId/Q1474984",
                         "name": "Montreal Region"
+                      },
+                      {
+                        "dcid": "wikidataId/Q50811",
+                        "name": "Regional Municipality of Peel"
                       }
                     ],
-                    "minValue": 1565,
-                    "maxValue": 4653000
+                    "minValue": 1065,
+                    "maxValue": 3106472
                   },
                   "AdministrativeArea3": {
-                    "placeCount": 31,
+                    "placeCount": 4,
                     "topPlaces": [
                       {
-                        "dcid": "wikidataId/Q16926",
-                        "name": "Maule"
+                        "dcid": "wikidataId/Q175735",
+                        "name": "Regional Municipality of Waterloo"
                       },
                       {
-                        "dcid": "wikidataId/Q46325",
-                        "name": "Sfax"
+                        "dcid": "wikidataId/Q381896",
+                        "name": "Regional Municipality of Niagara"
                       },
                       {
-                        "dcid": "wikidataId/Q867615",
-                        "name": "Nabeul"
+                        "dcid": "wikidataId/Q382652",
+                        "name": "Oxford County"
                       }
                     ],
                     "minValue": 6353,
-                    "maxValue": 592745
-                  },
-                  "CensusCountyDivision": {
-                    "placeCount": 1,
-                    "topPlaces": [
-                      {
-                        "dcid": "geoId/7210708614",
-                        "name": "Botijas"
-                      }
-                    ],
-                    "minValue": 4934609,
-                    "maxValue": 5785679
+                    "maxValue": 313186
                   },
                   "City": {
-                    "placeCount": 275,
+                    "placeCount": 196,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q8686",
@@ -2976,11 +2981,11 @@
                         "name": "Tianjin"
                       },
                       {
-                        "dcid": "wikidataId/Q7473516",
+                        "dcid": "wikidataId/Q1490",
                         "name": "Tokyo"
                       }
                     ],
-                    "minValue": 1065,
+                    "minValue": 290,
                     "maxValue": 11710000
                   },
                   "Country": {
@@ -3079,24 +3084,20 @@
                     "maxValue": 7952131
                   },
                   "Place": {
-                    "placeCount": 8,
+                    "placeCount": 2,
                     "topPlaces": [
-                      {
-                        "dcid": "wikidataId/Q1180"
-                      },
                       {
                         "dcid": "wikidataId/Q721755"
                       },
                       {
-                        "dcid": "wikidataId/Q2760659",
-                        "name": "Dadra"
+                        "dcid": "wikidataId/Q23641102"
                       }
                     ],
-                    "minValue": 290,
-                    "maxValue": 6293000
+                    "minValue": 64560,
+                    "maxValue": 268937
                   },
                   "State": {
-                    "placeCount": 110,
+                    "placeCount": 111,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q1498",
@@ -3117,12 +3118,12 @@
                 },
                 "minValue": 290,
                 "maxValue": 660361000,
-                "observationCount": 74173,
-                "timeSeriesCount": 2560
+                "observationCount": 73709,
+                "timeSeriesCount": 2544
               }
             ],
-            "observationCount": 74173,
-            "timeSeriesCount": 2560
+            "observationCount": 73709,
+            "timeSeriesCount": 2544
           },
           "dc/base/SouthAfrica_Census": {
             "importName": "SouthAfrica_Census",
@@ -3393,79 +3394,79 @@
                 "latestDate": "2024",
                 "placeTypeSummary": {
                   "AdministrativeArea": {
-                    "placeCount": 130,
+                    "placeCount": 143,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q1062618",
                         "name": "Chaoyang District"
                       },
                       {
-                        "dcid": "wikidataId/Q1197421",
-                        "name": "Wujin District"
+                        "dcid": "wikidataId/Q1023893",
+                        "name": "Nanhai District"
                       },
                       {
-                        "dcid": "wikidataId/Q714045",
-                        "name": "Hechuan District"
+                        "dcid": "wikidataId/Q945428",
+                        "name": "Shunde District"
                       }
                     ],
                     "minValue": 12792,
                     "maxValue": 1214384
                   },
                   "AdministrativeArea1": {
-                    "placeCount": 9,
+                    "placeCount": 13,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q579240",
                         "name": "Lima Province"
                       },
                       {
-                        "dcid": "wikidataId/Q188096",
-                        "name": "Penang"
+                        "dcid": "wikidataId/Q39760",
+                        "name": "Gaza Strip"
                       },
                       {
-                        "dcid": "wikidataId/Q813337",
-                        "name": "Beau Bassin-Rose Hill"
+                        "dcid": "wikidataId/Q188096",
+                        "name": "Penang"
                       }
                     ],
                     "minValue": 6690,
                     "maxValue": 4333994
                   },
                   "AdministrativeArea2": {
-                    "placeCount": 424,
+                    "placeCount": 604,
                     "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q3308170",
+                        "name": "Lahore Division"
+                      },
                       {
                         "dcid": "wikidataId/Q943099",
                         "name": "Thane"
                       },
                       {
-                        "dcid": "wikidataId/Q173270",
-                        "name": "Veracruz"
-                      },
-                      {
-                        "dcid": "wikidataId/Q401686",
-                        "name": "Ahmadabad"
+                        "dcid": "wikidataId/Q1797336",
+                        "name": "Pune"
                       }
                     ],
-                    "minValue": 26186,
-                    "maxValue": 2124106
+                    "minValue": 11885,
+                    "maxValue": 5303982
                   },
                   "AdministrativeArea3": {
-                    "placeCount": 72,
+                    "placeCount": 83,
                     "topPlaces": [
                       {
-                        "dcid": "wikidataId/Q197392",
-                        "name": "Zhangqiu District"
+                        "dcid": "wikidataId/Q12156132",
+                        "name": "Muzaffargarh District"
                       },
                       {
-                        "dcid": "wikidataId/Q1335716",
-                        "name": "Nankang District"
+                        "dcid": "wikidataId/Q389161",
+                        "name": "Swat District"
                       },
                       {
-                        "dcid": "wikidataId/Q1062070",
-                        "name": "Changle County"
+                        "dcid": "wikidataId/Q64170",
+                        "name": "Nawabshah District"
                       }
                     ],
-                    "minValue": 26460,
+                    "minValue": 4373,
                     "maxValue": 491399
                   },
                   "AdministrativeArea4": {
@@ -3507,19 +3508,19 @@
                     "maxValue": 79776
                   },
                   "City": {
-                    "placeCount": 2891,
+                    "placeCount": 3345,
                     "topPlaces": [
                       {
-                        "dcid": "wikidataId/Q956",
-                        "name": "Beijing"
+                        "dcid": "wikidataId/Q11725",
+                        "name": "Chongqing"
                       },
                       {
-                        "dcid": "wikidataId/Q30002",
-                        "name": "Chengdu"
+                        "dcid": "wikidataId/Q8686",
+                        "name": "Shanghai"
                       },
                       {
-                        "dcid": "wikidataId/Q8660",
-                        "name": "Karachi"
+                        "dcid": "wikidataId/Q987",
+                        "name": "New Delhi"
                       }
                     ],
                     "minValue": 307,
@@ -3556,18 +3557,26 @@
                     "maxValue": 4120370
                   },
                   "EurostatNUTS3": {
-                    "placeCount": 1,
+                    "placeCount": 3,
                     "topPlaces": [
+                      {
+                        "dcid": "nuts/ES521",
+                        "name": "Alicante / Alacant"
+                      },
                       {
                         "dcid": "nuts/RO321",
                         "name": "Bucureşti"
+                      },
+                      {
+                        "dcid": "nuts/UKE42",
+                        "name": "Leeds"
                       }
                     ],
-                    "minValue": 929602,
+                    "minValue": 147847,
                     "maxValue": 1036290
                   },
                   "Neighborhood": {
-                    "placeCount": 9,
+                    "placeCount": 13,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q2237435",
@@ -3586,37 +3595,45 @@
                     "maxValue": 138958
                   },
                   "Place": {
-                    "placeCount": 117,
+                    "placeCount": 148,
                     "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q148062",
+                        "name": "Zarqa"
+                      },
                       {
                         "dcid": "wikidataId/Q366754",
                         "name": "Kalyan"
                       },
                       {
-                        "dcid": "wikidataId/Q842411",
-                        "name": "Faizabad"
-                      },
-                      {
-                        "dcid": "wikidataId/Q61436",
-                        "name": "Loni"
+                        "dcid": "wikidataId/Q7123293",
+                        "name": "Padawan municipality"
                       }
                     ],
-                    "minValue": 31741,
-                    "maxValue": 560004
+                    "minValue": 12978,
+                    "maxValue": 643277
                   },
                   "State": {
-                    "placeCount": 1,
+                    "placeCount": 3,
                     "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1165",
+                        "name": "Bihar"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1353",
+                        "name": "Delhi"
+                      },
                       {
                         "dcid": "wikidataId/Q43433",
                         "name": "Chandigarh"
                       }
                     ],
-                    "minValue": 358393,
-                    "maxValue": 358393
+                    "minValue": 110052,
+                    "maxValue": 4466675
                   },
                   "Village": {
-                    "placeCount": 10,
+                    "placeCount": 16,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q4512420",
@@ -3627,8 +3644,8 @@
                         "name": "Gajuwaka"
                       },
                       {
-                        "dcid": "wikidataId/Q19730058",
-                        "name": "Pakalongan"
+                        "dcid": "wikidataId/Q223517",
+                        "name": "Ahmednagar"
                       }
                     ],
                     "minValue": 26,
@@ -3637,12 +3654,12 @@
                 },
                 "minValue": 26,
                 "maxValue": 7074913,
-                "observationCount": 15864,
-                "timeSeriesCount": 3687
+                "observationCount": 17097,
+                "timeSeriesCount": 4394
               }
             ],
-            "observationCount": 15864,
-            "timeSeriesCount": 3687
+            "observationCount": 17097,
+            "timeSeriesCount": 4394
           },
           "dc/base/USCensusPEP_Sex": {
             "importName": "USCensusPEP_Sex",
@@ -4075,7 +4092,7 @@
                   "measurementMethod": "EurostatRegionalStatistics"
                 },
                 "earliestDate": "2013",
-                "latestDate": "2022",
+                "latestDate": "2023",
                 "placeTypeSummary": {
                   "City": {
                     "placeCount": 140,
@@ -4112,7 +4129,7 @@
                         "name": "United Kingdom"
                       }
                     ],
-                    "minValue": 1.09,
+                    "minValue": 1.07,
                     "maxValue": 2.17
                   },
                   "County": {
@@ -4150,7 +4167,7 @@
                         "name": "Istanbul"
                       }
                     ],
-                    "minValue": 0.86,
+                    "minValue": 0.84,
                     "maxValue": 3.59
                   },
                   "EurostatNUTS2": {
@@ -4169,7 +4186,7 @@
                         "name": "Lombardia"
                       }
                     ],
-                    "minValue": 0.86,
+                    "minValue": 0.84,
                     "maxValue": 4.9
                   },
                   "EurostatNUTS3": {
@@ -4194,11 +4211,11 @@
                 },
                 "minValue": 0.63,
                 "maxValue": 4.9,
-                "observationCount": 17605,
+                "observationCount": 19174,
                 "timeSeriesCount": 2062
               }
             ],
-            "observationCount": 17605,
+            "observationCount": 19174,
             "timeSeriesCount": 2062
           },
           "dc/base/Kenya_Census": {

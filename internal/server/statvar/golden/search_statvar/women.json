@@ -1665,6 +1665,10 @@
       "dcid": "Count_Person_Female_WithModeratelyElevatedBloodPressureOrSeverelyElevatedBloodPressure_AsAFractionOf_Count_Person_Female"
     },
     {
+      "name": "Number of employed women in the information sector",
+      "dcid": "Count_Person_Employed_Female_Information"
+    },
+    {
       "name": "Number of women born outside the country and excluding USA, Guatemala, Japan, France and Spain.",
       "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthINEGIOtherCountries"
     },
@@ -1687,6 +1691,14 @@
     {
       "name": "Number of women born outside the country in the United States of America",
       "dcid": "Count_Person_Female_ForeignBorn_PlaceOfBirthUSA"
+    },
+    {
+      "name": "Number of women employed in financial activities",
+      "dcid": "Count_Person_Employed_Female_FinancialActivities"
+    },
+    {
+      "name": "Number of women employed in the mining and logging industry",
+      "dcid": "Count_Person_Employed_Female_MiningAndLogging"
     },
     {
       "name": "Percentage of Women (18 to 64 Years Old) Without Health Insurance",

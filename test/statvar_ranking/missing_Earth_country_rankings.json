@@ -594,24 +594,16 @@
     "statsVars": [
       "Count_Person_5To17Years",
       "Count_Person_18To24Years",
-      "Count_Person_35To44Years",
-      "Count_Person_45To54Years",
       "Count_Person_60To61Years",
-      "Count_Person_62To64Years",
-      "Count_Person_65To74Years",
-      "Count_Person_75OrMoreYears"
+      "Count_Person_62To64Years"
     ],
     "relatedChart": {
       "scale": true,
       "statsVars": [
         "Count_Person_5To17Years",
         "Count_Person_18To24Years",
-        "Count_Person_35To44Years",
-        "Count_Person_45To54Years",
         "Count_Person_60To61Years",
-        "Count_Person_62To64Years",
-        "Count_Person_65To74Years",
-        "Count_Person_75OrMoreYears"
+        "Count_Person_62To64Years"
       ]
     }
   },
@@ -827,22 +819,6 @@
         "Count_CriminalActivities_CombinedCrime"
       ]
     }
-  },
-  {
-    "title": "Unemployment rate by gender",
-    "statsVars": [
-      "UnemploymentRate_Person_Female",
-      "UnemploymentRate_Person_Male"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Unemployment rate by gender",
-    "statsVars": [
-      "UnemploymentRate_Person_Male",
-      "UnemploymentRate_Person_Female"
-    ],
-    "relatedChart": {}
   },
   {
     "title": "Unemployment rate: urban vs rural",
