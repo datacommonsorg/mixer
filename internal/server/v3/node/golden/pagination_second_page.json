@@ -40003,27 +40003,6 @@
               ],
               "dcid": "Annual_Generation_Electricity_Coal_ElectricUtility",
               "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "total number of sql query used",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "test_var_1"
-            },
-            {
-              "name": "total number of sql joins",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "test_var_2"
-            },
-            {
-              "name": "non-place entity variable",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "test_var_3"
             }
           ]
         }
