@@ -81,7 +81,7 @@ func (sc *SpannerClient) GetNodeProps(ctx context.Context, ids []string, out boo
 }
 
 // GetNodeEdgesByID retrieves node edges from Spanner and returns a map of subjectID to Edges.
-func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc, page int32) (map[string][]*Edge, error) {
+func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc, offset int32) (map[string][]*Edge, error) {
 	edges := make(map[string][]*Edge)
 	if len(ids) == 0 {
 		return edges, nil
@@ -137,8 +137,8 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 	}
 
 	// Apply pagination.
-	if page > 0 {
-		template += fmt.Sprintf(statements.applyOffset, PAGE_SIZE*page)
+	if offset > 0 {
+		template += fmt.Sprintf(statements.applyOffset, offset)
 	}
 	template += statements.applyLimit
 

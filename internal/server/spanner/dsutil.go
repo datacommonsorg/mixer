@@ -84,8 +84,8 @@ func nodePropsToNodeResponse(propsBySubjectID map[string][]*Property) *pbv2.Node
 	return nodeResponse
 }
 
-// getPage returns the page for a given Spanner data source id.
-func getPage(nextToken, dataSourceID string) (int32, error) {
+// getOffset returns the offset for a given Spanner data source id.
+func getOffset(nextToken, dataSourceID string) (int32, error) {
 	if nextToken == "" {
 		return 0, nil
 	}
@@ -101,7 +101,7 @@ func getPage(nextToken, dataSourceID string) (int32, error) {
 				if len(cursorGroup.GetCursors()) < 1 {
 					return 0, fmt.Errorf("pagination info missing cursor for Spanner data source: %s", dataSourceID)
 				}
-				return cursorGroup.GetCursors()[0].GetPage(), nil
+				return cursorGroup.GetCursors()[0].GetOffset(), nil
 			}
 		}
 	}
@@ -109,13 +109,13 @@ func getPage(nextToken, dataSourceID string) (int32, error) {
 	return 0, nil
 }
 
-// getNextToken encodes next page in a nextToken string.
-func getNextToken(page int32, dataSourceID string) (string, error) {
+// getNextToken encodes next offset in a nextToken string.
+func getNextToken(offset int32, dataSourceID string) (string, error) {
 	pi := &pbv1.PaginationInfo{
 		CursorGroups: []*pbv1.CursorGroup{{
 			Keys: []string{dataSourceID},
 			Cursors: []*pbv1.Cursor{{
-				Page: page,
+				Offset: offset,
 			}},
 		}},
 	}
@@ -128,7 +128,7 @@ func getNextToken(page int32, dataSourceID string) (string, error) {
 }
 
 // nodeEdgesToNodeResponse converts a map from subject id to its edges to a NodeResponse proto.
-func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge, id string, page int32) (*pbv2.NodeResponse, error) {
+func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge, id string, offset int32) (*pbv2.NodeResponse, error) {
 	nodeResponse := &pbv2.NodeResponse{
 		Data: make(map[string]*pbv2.LinkedGraph),
 	}
@@ -150,7 +150,7 @@ func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge
 		// so generate nextToken.
 		if rows == PAGE_SIZE+1 && nodeResponse.NextToken == "" {
 			edges = edges[:len(edges)-1]
-			nextToken, err := getNextToken(page+1, id)
+			nextToken, err := getNextToken(offset+PAGE_SIZE, id)
 			if err != nil {
 				return nil, err
 			}

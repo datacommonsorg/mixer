@@ -101,7 +101,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 	for _, c := range []struct {
 		ids        []string
 		arc        *v2.Arc
-		page       int32
+		offset     int32
 		goldenFile string
 	}{
 		{
@@ -110,7 +110,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				Out:        true,
 				SingleProp: "*",
 			},
-			page:       0,
+			offset:     0,
 			goldenFile: "get_node_edges_by_subject_id.json",
 		},
 		{
@@ -119,7 +119,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				Out:        false,
 				SingleProp: "*",
 			},
-			page:       0,
+			offset:     0,
 			goldenFile: "get_node_edges_by_object_id.json",
 		},
 		{
@@ -128,7 +128,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				Out:        true,
 				SingleProp: "extendedName",
 			},
-			page:       0,
+			offset:     0,
 			goldenFile: "get_node_edges_out_single_prop.json",
 		},
 		{
@@ -137,7 +137,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				Out:          true,
 				BracketProps: []string{"source", "subClassOf"},
 			},
-			page:       0,
+			offset:     0,
 			goldenFile: "get_node_edges_out_bracket_props.json",
 		},
 		{
@@ -149,7 +149,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 					"extendedName": {"AdministrativeArea2"},
 				},
 			},
-			page:       0,
+			offset:     0,
 			goldenFile: "get_node_edges_out_filter.json",
 		},
 		{
@@ -159,7 +159,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				SingleProp: "specializationOf",
 				Decorator:  "+",
 			},
-			page:       0,
+			offset:     0,
 			goldenFile: "get_node_edges_out_chain.json",
 		},
 		{
@@ -168,7 +168,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				Out:        false,
 				SingleProp: "domainIncludes",
 			},
-			page:       0,
+			offset:     0,
 			goldenFile: "get_node_edges_in_single_prop.json",
 		},
 		{
@@ -177,7 +177,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				Out:          false,
 				BracketProps: []string{"domainIncludes", "naturalHazardType"},
 			},
-			page:       0,
+			offset:     0,
 			goldenFile: "get_node_edges_in_bracket_props.json",
 		},
 		{
@@ -189,7 +189,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 					"extendedName":      {"Area of Farm: Melon"},
 				},
 			},
-			page:       0,
+			offset:     0,
 			goldenFile: "get_node_edges_in_filter.json",
 		},
 		{
@@ -199,7 +199,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				SingleProp: "specializationOf",
 				Decorator:  "+",
 			},
-			page:       0,
+			offset:     0,
 			goldenFile: "get_node_edges_in_chain.json",
 		},
 		{
@@ -211,7 +211,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 					"foo OR 1=1;": {"foo OR 1=1;"},
 				},
 			},
-			page:       0,
+			offset:     0,
 			goldenFile: "get_node_edges_malicious.json",
 		},
 		{
@@ -220,7 +220,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				Out:        false,
 				SingleProp: "typeOf",
 			},
-			page:       0,
+			offset:     0,
 			goldenFile: "get_node_edges_first_page.json",
 		},
 		{
@@ -229,7 +229,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				Out:        false,
 				SingleProp: "typeOf",
 			},
-			page:       1,
+			offset:     spanner.PAGE_SIZE,
 			goldenFile: "get_node_edges_second_page.json",
 		},
 		{
@@ -239,7 +239,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				SingleProp: "specializationOf",
 				Decorator:  "+",
 			},
-			page:       0,
+			offset:     0,
 			goldenFile: "get_node_edges_first_page_chain.json",
 		},
 		{
@@ -249,11 +249,11 @@ func TestGetNodeEdgesByID(t *testing.T) {
 				SingleProp: "specializationOf",
 				Decorator:  "+",
 			},
-			page:       1,
+			offset:     spanner.PAGE_SIZE,
 			goldenFile: "get_node_edges_second_page_chain.json",
 		},
 	} {
-		actual, err := client.GetNodeEdgesByID(ctx, c.ids, c.arc, c.page)
+		actual, err := client.GetNodeEdgesByID(ctx, c.ids, c.arc, c.offset)
 		if err != nil {
 			t.Fatalf("GetNodeEdgesByID error (%v): %v", c.goldenFile, err)
 		}
