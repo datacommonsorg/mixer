@@ -25,7 +25,7 @@ message Cursor {
   int32 page = 2;
   // The position of the next read item in the current page, starts from 0. 
   int32 item = 3;
-  // The offset of the next read item, starts from 0.
+  // The offset of the next read item, starts from 0. Used for Spanner.
   int32 offset = 5;
   
   reserved 4;
