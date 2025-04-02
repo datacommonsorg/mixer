@@ -137,6 +137,7 @@ func ObservationCore(
 				store,
 				cachedata,
 				metadata,
+				cachedata.SQLProvenances(),
 				httpClient,
 				metadata.RemoteMixerDomain,
 				variable.GetDcids(),

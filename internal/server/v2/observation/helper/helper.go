@@ -12,16 +12,73 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package observation is for V2 observation API
-package observation
+// Package observationhelper is a helper for the V2 observation API
+package observationhelper
 
 import (
+	"context"
+	"net/http"
+
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
+	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"google.golang.org/protobuf/proto"
+
+	"github.com/datacommonsorg/mixer/internal/store"
 )
+
+// FetchSQLContainedIn fetches data from SQL database.
+func FetchSQLContainedIn(
+	ctx context.Context,
+	store *store.Store,
+	metadata *resource.Metadata,
+	sqlProvenances map[string]*pb.Facet,
+	httpClient *http.Client,
+	remoteMixer string,
+	variables []string,
+	ancestor string,
+	childType string,
+	queryDate string,
+	filter *pbv2.FacetFilter,
+	childPlaces []string,
+) (*pbv2.ObservationResponse, error) {
+	var sqlResult *pbv2.ObservationResponse
+	var err error
+	if ancestor == childType {
+		sqlResult = initObservationResult(variables)
+		rows, err := store.SQLClient.GetObservationsByEntityType(ctx, variables, childType, queryDate)
+		if err != nil {
+			return nil, err
+		}
+		tmp := handleSQLRows(rows, variables)
+		sqlResult = processSqlData(sqlResult, tmp, queryDate, sqlProvenances)
+	} else {
+		if len(childPlaces) == 0 {
+			childPlaces, err = shared.FetchChildPlaces(
+				ctx, store, metadata, httpClient, remoteMixer, ancestor, childType)
+			if err != nil {
+				return nil, err
+			}
+		}
+		directResp, err := sqlquery.GetObservations(
+			ctx,
+			&store.SQLClient,
+			sqlProvenances,
+			variables,
+			childPlaces,
+			queryDate,
+			filter,
+		)
+		if err != nil {
+			return nil, err
+		}
+		sqlResult = shared.TrimObservationsResponse(directResp)
+	}
+	return sqlResult, nil
+}
 
 func initObservationResult(variables []string) *pbv2.ObservationResponse {
 	result := &pbv2.ObservationResponse{

@@ -60,7 +60,7 @@ func TestContainedInFacet(t *testing.T) {
 				"CA_County_all.json",
 			},
 			{
-				[]string{"Count_Person", "Median_Age_Person"},
+				[]string{"Count_Person", "Median_Age_Person", "test_var_1"},
 				"country/USA<-containedInPlace+{typeOf:State}",
 				"LATEST",
 				"US_State.json",
