@@ -20,7 +20,9 @@ import (
 	"fmt"
 	"net/http"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+
 	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -135,4 +137,24 @@ func FetchChildPlaces(
 		}
 	}
 	return childPlaces, nil
+}
+
+// TrimObservationsResponse removes entities with no observations from the response.
+func TrimObservationsResponse(resp *pbv2.ObservationResponse) *pbv2.ObservationResponse {
+	result := &pbv2.ObservationResponse{
+		ByVariable: map[string]*pbv2.VariableObservation{},
+		Facets:     map[string]*pb.Facet{},
+	}
+	for variable, variableData := range resp.ByVariable {
+		for entity, entityData := range variableData.ByEntity {
+			if len(entityData.OrderedFacets) == 0 {
+				delete(variableData.ByEntity, entity)
+			}
+		}
+		result.ByVariable[variable] = variableData
+	}
+	for facet, res := range resp.Facets {
+		result.Facets[facet] = res
+	}
+	return result
 }
