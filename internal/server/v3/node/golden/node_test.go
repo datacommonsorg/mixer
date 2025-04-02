@@ -124,6 +124,24 @@ func TestV3Node(t *testing.T) {
 				"",
 				"in_chain_filter.json",
 			},
+			{
+				"First page of pagination",
+				[]string{
+					"StatisticalVariable",
+				},
+				"<-typeOf",
+				"",
+				"pagination_first_page.json",
+			},
+			{
+				"Second page of pagination",
+				[]string{
+					"StatisticalVariable",
+				},
+				"<-typeOf",
+				"H4sIAAAAAAAA/+Ly43IvLkjMy0st0i0oys9KTS4p1k9JLEnOz9UtLskvStXPzCsuScxLTi3WT0nWzU7XLUktLgGpSExKLAYLxqcXJRZkxJsIMWt0qAMAAAD//wEAAP//IokYcFAAAAA=",
+				"pagination_second_page.json",
+			},
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V3Node(ctx, &pbv2.NodeRequest{

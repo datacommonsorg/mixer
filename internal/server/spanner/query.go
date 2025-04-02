@@ -29,6 +29,8 @@ import (
 const (
 	// Maximum number of edge hops to traverse for chained properties.
 	MAX_HOPS = 10
+	// Page size for paginated responses.
+	PAGE_SIZE = 5000
 )
 
 // Predicates to search against if no predicates are provided.
@@ -78,9 +80,8 @@ func (sc *SpannerClient) GetNodeProps(ctx context.Context, ids []string, out boo
 	return props, nil
 }
 
-// GetNodeEdgesByID retrieves node edges from Spanner given a list of IDs and a property Arc and returns a map.
-func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc) (map[string][]*Edge, error) {
-	// TODO: Support pagination.
+// GetNodeEdgesByID retrieves node edges from Spanner and returns a map of subjectID to Edges.
+func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc, offset int32) (map[string][]*Edge, error) {
 	edges := make(map[string][]*Edge)
 	if len(ids) == 0 {
 		return edges, nil
@@ -110,7 +111,7 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 	switch arc.Out {
 	case true:
 		if arc.Decorator == CHAIN {
-			template = statements.getChainedEdgesBySubjectID
+			template = fmt.Sprintf(statements.getChainedEdgesBySubjectID, MAX_HOPS)
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
 		} else {
@@ -118,7 +119,7 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 		}
 	case false:
 		if arc.Decorator == CHAIN {
-			template = statements.getChainedEdgesByObjectID
+			template = fmt.Sprintf(statements.getChainedEdgesByObjectID, MAX_HOPS)
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
 		} else {
@@ -134,6 +135,12 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 		params["val"+strconv.Itoa(i)] = val
 		i += 1
 	}
+
+	// Apply pagination.
+	if offset > 0 {
+		template += fmt.Sprintf(statements.applyOffset, offset)
+	}
+	template += statements.applyLimit
 
 	stmt := spanner.Statement{
 		SQL:    template,

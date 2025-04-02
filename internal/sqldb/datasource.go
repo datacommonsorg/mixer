@@ -48,6 +48,12 @@ func (sds *SQLDataSource) Id() string {
 
 // Node retrieves node data from SQL.
 func (sds *SQLDataSource) Node(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+	// SQLClient currently doesn't have pagination, so return if there's a nextToken,
+	// since all results would have been returned in the first page.
+	if req.GetNextToken() != "" {
+		return &pbv2.NodeResponse{}, nil
+	}
+
 	arcs, err := v2.ParseProperty(req.GetProperty())
 	if err != nil {
 		return nil, err
