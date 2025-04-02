@@ -27,9 +27,9 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
+	observationhelper "github.com/datacommonsorg/mixer/internal/server/v2/observation/helper"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
-	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
@@ -38,27 +38,6 @@ import (
 
 	"github.com/datacommonsorg/mixer/internal/store"
 )
-
-// Direct response are from child entities list. No need to have an entity in
-// the response if it has no observation.
-func trimDirectResp(resp *pbv2.ObservationResponse) *pbv2.ObservationResponse {
-	result := &pbv2.ObservationResponse{
-		ByVariable: map[string]*pbv2.VariableObservation{},
-		Facets:     map[string]*pb.Facet{},
-	}
-	for variable, variableData := range resp.ByVariable {
-		for entity, entityData := range variableData.ByEntity {
-			if len(entityData.OrderedFacets) == 0 {
-				delete(variableData.ByEntity, entity)
-			}
-		}
-		result.ByVariable[variable] = variableData
-	}
-	for facet, res := range resp.Facets {
-		result.Facets[facet] = res
-	}
-	return result
-}
 
 // FetchContainedIn fetches data for child places contained in an ancestor place.
 func FetchContainedIn(
@@ -176,42 +155,28 @@ func FetchContainedIn(
 			if err != nil {
 				return nil, err
 			}
-			result = trimDirectResp(directResp)
+			result = shared.TrimObservationsResponse(directResp)
 		}
 	}
 
 	// Fetch Data from SQLite database.
-	var sqlResult *pbv2.ObservationResponse
 	if sqldb.IsConnected(&store.SQLClient) {
-		if ancestor == childType {
-			sqlResult = initObservationResult(variables)
-			rows, err := store.SQLClient.GetObservationsByEntityType(ctx, variables, childType, queryDate)
-			if err != nil {
-				return nil, err
-			}
-			tmp := handleSQLRows(rows, variables)
-			sqlResult = processSqlData(sqlResult, tmp, queryDate, sqlProvenances)
-		} else {
-			if len(childPlaces) == 0 {
-				childPlaces, err = shared.FetchChildPlaces(
-					ctx, store, metadata, httpClient, remoteMixer, ancestor, childType)
-				if err != nil {
-					return nil, err
-				}
-			}
-			directResp, err := sqlquery.GetObservations(
-				ctx,
-				&store.SQLClient,
-				sqlProvenances,
-				variables,
-				childPlaces,
-				queryDate,
-				filter,
-			)
-			if err != nil {
-				return nil, err
-			}
-			sqlResult = trimDirectResp(directResp)
+		sqlResult, err := observationhelper.FetchSQLContainedIn(
+			ctx,
+			store,
+			metadata,
+			sqlProvenances,
+			httpClient,
+			remoteMixer,
+			variables,
+			ancestor,
+			childType,
+			queryDate,
+			filter,
+			childPlaces,
+		)
+		if err != nil {
+			return nil, err
 		}
 		// Prefer SQL data over BT data, so put sqlResult first.
 		result = merger.MergeObservation(sqlResult, result)
