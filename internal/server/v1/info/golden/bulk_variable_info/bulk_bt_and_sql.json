@@ -43,7 +43,7 @@
             "maxValue": 50483000
           },
           "AdministrativeArea2": {
-            "placeCount": 6642,
+            "placeCount": 6715,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1143712",
@@ -62,7 +62,7 @@
             "maxValue": 1958842
           },
           "AdministrativeArea3": {
-            "placeCount": 303,
+            "placeCount": 307,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q217234",
@@ -491,7 +491,7 @@
             "maxValue": 19650581
           },
           "Village": {
-            "placeCount": 216,
+            "placeCount": 217,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q6933371",
@@ -1842,6 +1842,142 @@
             "observationCount": 5,
             "timeSeriesCount": 1
           },
+          "dc/base/EthiopiaStatistics": {
+            "importName": "EthiopiaStatistics",
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "2000",
+                "latestDate": "2022",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {
+                    "placeCount": 9,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q202107",
+                        "name": "Oromia Region"
+                      },
+                      {
+                        "dcid": "wikidataId/Q203009",
+                        "name": "Amhara Region"
+                      },
+                      {
+                        "dcid": "wikidataId/Q202800",
+                        "name": "Somali Region"
+                      }
+                    ],
+                    "minValue": 3619.18826,
+                    "maxValue": 19947998
+                  },
+                  "AdministrativeArea2": {
+                    "placeCount": 39,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1070764",
+                        "name": "Misraq Gojjam Zone"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1070718",
+                        "name": "Agew Awi Zone"
+                      },
+                      {
+                        "dcid": "wikidataId/Q3444678",
+                        "name": "Awsi Rasu"
+                      }
+                    ],
+                    "minValue": 968.59231,
+                    "maxValue": 99118.33699
+                  },
+                  "AdministrativeArea3": {
+                    "placeCount": 3,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q4850656",
+                        "name": "Bale Gasegar"
+                      },
+                      {
+                        "dcid": "wikidataId/Q3109736",
+                        "name": "Godere"
+                      },
+                      {
+                        "dcid": "wikidataId/Q17447305",
+                        "name": "Kamashi"
+                      }
+                    ],
+                    "minValue": 31289.48381,
+                    "maxValue": 82627.8242
+                  },
+                  "City": {
+                    "placeCount": 6,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q3624",
+                        "name": "Addis Ababa"
+                      },
+                      {
+                        "dcid": "wikidataId/Q744673",
+                        "name": "Gode"
+                      },
+                      {
+                        "dcid": "wikidataId/Q755763",
+                        "name": "Jijiga"
+                      }
+                    ],
+                    "minValue": 45911.9304,
+                    "maxValue": 2037999
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/ETH",
+                        "name": "Ethiopia"
+                      }
+                    ],
+                    "minValue": 33513000,
+                    "maxValue": 52376998
+                  },
+                  "Neighborhood": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q2003486",
+                        "name": "Libeň"
+                      }
+                    ],
+                    "minValue": 42185.33615,
+                    "maxValue": 42198.37923
+                  },
+                  "Place": {
+                    "placeCount": 8,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q635334",
+                        "name": "Werder, Ethiopia"
+                      },
+                      {
+                        "dcid": "wikidataId/Q762656",
+                        "name": "Gambela"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1182807",
+                        "name": "Degehabur"
+                      }
+                    ],
+                    "minValue": 18525.56527,
+                    "maxValue": 243000
+                  }
+                },
+                "minValue": 968.59231,
+                "maxValue": 52376998,
+                "observationCount": 462,
+                "timeSeriesCount": 67
+              }
+            ],
+            "observationCount": 462,
+            "timeSeriesCount": 67
+          },
           "dc/base/IndiaCensus_Primary": {
             "importName": "IndiaCensus_Primary",
             "seriesSummary": [
@@ -2389,10 +2525,64 @@
                 "maxValue": 24014716,
                 "observationCount": 93,
                 "timeSeriesCount": 93
+              },
+              {
+                "seriesKey": {
+                  "observationPeriod": "P1Y"
+                },
+                "earliestDate": "2019",
+                "latestDate": "2019",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {
+                    "placeCount": 40,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q2575594",
+                        "name": "Kiambu County"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1852202",
+                        "name": "Nakuru County"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1721867",
+                        "name": "Kakamega County"
+                      }
+                    ],
+                    "minValue": 67813,
+                    "maxValue": 1230454
+                  },
+                  "City": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q225641",
+                        "name": "Mombasa"
+                      }
+                    ],
+                    "minValue": 598046,
+                    "maxValue": 598046
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/KEN",
+                        "name": "Kenya"
+                      }
+                    ],
+                    "minValue": 24014716,
+                    "maxValue": 24014716
+                  }
+                },
+                "minValue": 67813,
+                "maxValue": 24014716,
+                "observationCount": 42,
+                "timeSeriesCount": 42
               }
             ],
-            "observationCount": 93,
-            "timeSeriesCount": 93
+            "observationCount": 135,
+            "timeSeriesCount": 135
           },
           "dc/base/MexicoCensus": {
             "importName": "MexicoCensus",
@@ -3124,6 +3314,203 @@
             ],
             "observationCount": 73709,
             "timeSeriesCount": 2544
+          },
+          "dc/base/Rwanda_Census": {
+            "importName": "Rwanda_Census",
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "observationPeriod": "Annual"
+                },
+                "earliestDate": "2012",
+                "latestDate": "2022",
+                "placeTypeSummary": {
+                  "AdministrativeArea": {
+                    "placeCount": 6,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q21405823",
+                        "name": "Rilima"
+                      },
+                      {
+                        "dcid": "wikidataId/Q389663",
+                        "name": "Gatunda"
+                      },
+                      {
+                        "dcid": "wikidataId/Q21369248",
+                        "name": "Kamembe"
+                      }
+                    ],
+                    "minValue": 7152,
+                    "maxValue": 18323
+                  },
+                  "AdministrativeArea1": {
+                    "placeCount": 7,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q853152",
+                        "name": "Eastern Province"
+                      },
+                      {
+                        "dcid": "wikidataId/Q853162",
+                        "name": "Southern Province"
+                      },
+                      {
+                        "dcid": "wikidataId/Q737354",
+                        "name": "Western Province"
+                      }
+                    ],
+                    "minValue": 13740,
+                    "maxValue": 1828751
+                  },
+                  "AdministrativeArea2": {
+                    "placeCount": 35,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1814892",
+                        "name": "Hathras"
+                      },
+                      {
+                        "dcid": "wikidataId/Q2424659",
+                        "name": "Gasabo District"
+                      },
+                      {
+                        "dcid": "wikidataId/Q2632814",
+                        "name": "Nyagatare District"
+                      }
+                    ],
+                    "minValue": 11391,
+                    "maxValue": 435518
+                  },
+                  "AdministrativeArea3": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q12283197",
+                        "name": "Kanigaran"
+                      }
+                    ],
+                    "minValue": 7926,
+                    "maxValue": 7926
+                  },
+                  "City": {
+                    "placeCount": 10,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q19660",
+                        "name": "Bucharest"
+                      },
+                      {
+                        "dcid": "wikidataId/Q509818",
+                        "name": "Marabá"
+                      },
+                      {
+                        "dcid": "wikidataId/Q78",
+                        "name": "Basel"
+                      }
+                    ],
+                    "minValue": 9106,
+                    "maxValue": 26854
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/RWA",
+                        "name": "Rwanda"
+                      }
+                    ],
+                    "minValue": 5462280,
+                    "maxValue": 6817068
+                  },
+                  "Place": {
+                    "placeCount": 5,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q2356928",
+                        "name": "Nyamata"
+                      },
+                      {
+                        "dcid": "wikidataId/Q22494089",
+                        "name": "Kabare"
+                      },
+                      {
+                        "dcid": "wikidataId/Q5765084",
+                        "name": "Rūsingė"
+                      }
+                    ],
+                    "minValue": 5773,
+                    "maxValue": 18098
+                  },
+                  "Village": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q4821353",
+                        "name": "Karagöl"
+                      }
+                    ],
+                    "minValue": 13880,
+                    "maxValue": 13880
+                  }
+                },
+                "minValue": 5773,
+                "maxValue": 6817068,
+                "observationCount": 97,
+                "timeSeriesCount": 66
+              },
+              {
+                "seriesKey": {
+                  "observationPeriod": "P1Y"
+                },
+                "earliestDate": "2018",
+                "latestDate": "2021",
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/RWA",
+                        "name": "Rwanda"
+                      }
+                    ],
+                    "minValue": 6163715,
+                    "maxValue": 6611466
+                  }
+                },
+                "minValue": 6163715,
+                "maxValue": 6611466,
+                "observationCount": 3,
+                "timeSeriesCount": 1
+              },
+              {
+                "seriesKey": {
+                  "observationPeriod": "P3M"
+                },
+                "earliestDate": "2019-03",
+                "latestDate": "2022-06",
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/RWA",
+                        "name": "Rwanda"
+                      }
+                    ],
+                    "minValue": 6246074,
+                    "maxValue": 6775423
+                  }
+                },
+                "minValue": 6246074,
+                "maxValue": 6775423,
+                "observationCount": 13,
+                "timeSeriesCount": 1
+              }
+            ],
+            "observationCount": 113,
+            "timeSeriesCount": 68
           },
           "dc/base/SouthAfrica_Census": {
             "importName": "SouthAfrica_Census",

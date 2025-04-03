@@ -53,6 +53,10 @@
       "dcid": "UpperConfidenceIntervalLimit_Percent_Person_18OrMoreYears_WithPoorGeneralHealth"
     },
     {
+      "name": "Number of students with poor performance in KCSE",
+      "dcid": "Count_Student_KenyaCertificateSecondaryEducation_PoorPerformance"
+    },
+    {
       "name": "Percentage Receiving Poor Social Support Among Citizen Population",
       "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Citizen"
     },
@@ -123,6 +127,14 @@
     {
       "name": "Percentage Receiving Poor Social Support Among Urban Population",
       "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Urban"
+    },
+    {
+      "name": "Number of female students with poor performance in the Kenya certificate of secondary education",
+      "dcid": "Count_Student_KenyaCertificateSecondaryEducation_Female_PoorPerformance"
+    },
+    {
+      "name": "Number of male students with poor performance in KCSE",
+      "dcid": "Count_Student_KenyaCertificateSecondaryEducation_Male_PoorPerformance"
     },
     {
       "name": "Percentage Receiving Poor Social Support Among Citizen Outside EU28 Population",
@@ -259,6 +271,14 @@
     {
       "name": "Percentage Receiving Poor Social Support Among Within EU28 And Not A Citizen Population",
       "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_WithinEU28AndNotACitizen"
+    },
+    {
+      "name": "Percentage of children aged 12 to 14 years from the poorest households who are in the labor force.",
+      "dcid": "Count_Person_12To14Years_InLaborForce_LowestWealthIndex_AsAFractionOf_Count_Person_12To14Years_LowestWealthIndex"
+    },
+    {
+      "name": "Percentage of children aged 5 to 11 years who are working and belong to the poorest households.",
+      "dcid": "Count_Person_5To11Years_InLaborForce_LowestWealthIndex_AsAFractionOf_Count_Person_5To11Years_LowestWealthIndex"
     },
     {
       "name": "Percentage Receiving Poor Social Support Among Citizen Outside EU28, Female Population",

@@ -157,6 +157,14 @@
       "dcid": "Count_Person_NonWhite"
     },
     {
+      "name": "Number of individuals between 12 to 14 years of age",
+      "dcid": "Count_Person_12To14Years"
+    },
+    {
+      "name": "Number of intersex people",
+      "dcid": "Count_Person_Intersex"
+    },
+    {
       "name": "Number of people living in slum area",
       "dcid": "Count_Person_SlumArea"
     },
@@ -1605,10 +1613,6 @@
       "dcid": "Count_Person_ResidesInInstitutionalizedGroupQuarters"
     },
     {
-      "name": "Population: Intersex",
-      "dcid": "Count_Person_Intersex"
-    },
-    {
       "name": "Population: Ireland_Other Stated Religion",
       "dcid": "Count_Person_IrelandOtherStatedReligion"
     },
@@ -2729,6 +2733,10 @@
       "dcid": "Count_Person_25OrMoreYears_TertiaryEducation_AsFractionOf_Count_Person_25OrMoreYears"
     },
     {
+      "name": "Male count as a fraction of female count",
+      "dcid": "Count_Person_Male_AsAFractionOf_Count_Person_Female"
+    },
+    {
       "name": "Moderately or severely elevated blood pressure (%)",
       "dcid": "Count_Person_WithModeratelyElevatedBloodPressureOrSeverelyElevatedBloodPressure_AsAFractionOf_Count_Person"
     },
@@ -2751,6 +2759,18 @@
     {
       "name": "Percent of Population Living in Areas Below 5 Meters Elevation",
       "dcid": "Count_Person_ResidingLessThan5MetersAboveSeaLevel_AsFractionOf_Count_Person"
+    },
+    {
+      "name": "Percentage of female individuals",
+      "dcid": "Count_Person_Female_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Percentage of male individuals",
+      "dcid": "Count_Person_Male_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Percentage of urban population",
+      "dcid": "Count_Person_Urban_AsAFractionOf_Count_Person"
     },
     {
       "name": "Persons provided employment as a percentage of persons who demanded employment under MGNREGA (%)",
@@ -2811,10 +2831,6 @@
     {
       "name": "Population: Literate (Per Capita)",
       "dcid": "Count_Person_Literate_AsAFractionOf_Count_Person"
-    },
-    {
-      "name": "Population: Male (As Fraction of Count Person Female)",
-      "dcid": "Count_Person_Male_AsAFractionOf_Count_Person_Female"
     },
     {
       "name": "Population: Noninstitutionalized Group Quarters \u0026 Institutionalized Group Quarters (Per Capita)",
@@ -3983,22 +3999,6 @@
     {
       "name": "All employees, services for the elderly and persons with disabilities",
       "dcid": "Count_Person_Employed_ServicesForTheElderlyAndDisabled"
-    },
-    {
-      "name": "All employees, services to buildings and dwellings",
-      "dcid": "Count_Person_Employed_ServicesToBuildingsAndDwellings"
-    },
-    {
-      "name": "All employees, ship and boat building",
-      "dcid": "Count_Person_Employed_ShipAndBoatBuilding"
-    },
-    {
-      "name": "All employees, soap, cleaning compound, and toilet preparation manufacturing",
-      "dcid": "Count_Person_Employed_SoapCleaningCompoundAndToiletryMfg"
-    },
-    {
-      "name": "All employees, social advocacy organizations",
-      "dcid": "Count_Person_Employed_SocialAdvocacyOrganizations"
     }
   ],
   "matches": [
