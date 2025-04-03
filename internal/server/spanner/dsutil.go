@@ -23,7 +23,9 @@ import (
 	"strconv"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/util"
 
@@ -82,17 +84,83 @@ func nodePropsToNodeResponse(propsBySubjectID map[string][]*Property) *pbv2.Node
 	return nodeResponse
 }
 
+// getOffset returns the offset for a given Spanner data source id.
+func getOffset(nextToken, dataSourceID string) (int32, error) {
+	if nextToken == "" {
+		return 0, nil
+	}
+
+	pi, err := pagination.Decode(nextToken)
+	if err != nil {
+		return 0, err
+	}
+
+	for _, cursorGroup := range pi.GetCursorGroups() {
+		for _, key := range cursorGroup.GetKeys() {
+			if key == dataSourceID {
+				if len(cursorGroup.GetCursors()) < 1 {
+					return 0, fmt.Errorf("pagination info missing cursor for Spanner data source: %s", dataSourceID)
+				}
+				return cursorGroup.GetCursors()[0].GetOffset(), nil
+			}
+		}
+	}
+
+	return 0, nil
+}
+
+// getNextToken encodes next offset in a nextToken string.
+func getNextToken(offset int32, dataSourceID string) (string, error) {
+	pi := &pbv1.PaginationInfo{
+		CursorGroups: []*pbv1.CursorGroup{{
+			Keys: []string{dataSourceID},
+			Cursors: []*pbv1.Cursor{{
+				Offset: offset,
+			}},
+		}},
+	}
+	nextToken, err := util.EncodeProto(pi)
+	if err != nil {
+		return "", err
+	}
+
+	return nextToken, nil
+}
+
 // nodeEdgesToNodeResponse converts a map from subject id to its edges to a NodeResponse proto.
-func nodeEdgesToNodeResponse(edgesBySubjectID map[string][]*Edge) *pbv2.NodeResponse {
+func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge, id string, offset int32) (*pbv2.NodeResponse, error) {
 	nodeResponse := &pbv2.NodeResponse{
 		Data: make(map[string]*pbv2.LinkedGraph),
 	}
 
-	for subjectID, edges := range edgesBySubjectID {
+	// Sort nodes to preserve order from Spanner.
+	sort.Strings(nodes)
+
+	rows := 0
+	for _, subjectID := range nodes {
+		edges, ok := edgesBySubjectID[subjectID]
+		if !ok {
+			continue
+		}
+
+		rows += len(edges)
+
+		// We requested PAGE_SIZE+1 rows,
+		// so having this many rows indicates that we have at least one more request,
+		// so generate nextToken.
+		if rows == PAGE_SIZE+1 && nodeResponse.NextToken == "" {
+			edges = edges[:len(edges)-1]
+			nextToken, err := getNextToken(offset+PAGE_SIZE, id)
+			if err != nil {
+				return nil, err
+			}
+			nodeResponse.NextToken = nextToken
+		}
+
 		nodeResponse.Data[subjectID] = nodeEdgesToLinkedGraph(edges)
 	}
 
-	return nodeResponse
+	return nodeResponse, nil
 }
 
 // nodeEdgesToLinkedGraph converts an array of edges to a LinkedGraph proto.

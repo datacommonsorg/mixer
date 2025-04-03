@@ -23,22 +23,26 @@ import (
 
 // SQL / GQL statements executed by the SpannerClient
 var statements = struct {
-	// Fetch Properties for out arcs
+	// Fetch Properties for out arcs.
 	getPropsBySubjectID string
-	// Fetch Properties for in arcs
+	// Fetch Properties for in arcs.
 	getPropsByObjectID string
-	// Fetch Edges for out arcs with a single hop
+	// Fetch Edges for out arcs with a single hop.
 	getEdgesBySubjectID string
-	// Fetch Edges for out arcs with chaining
+	// Fetch Edges for out arcs with chaining.
 	getChainedEdgesBySubjectID string
-	// Fetch Edges for in arcs with a single hop
+	// Fetch Edges for in arcs with a single hop.
 	getEdgesByObjectID string
-	// Fetch Edges for in arcs with chaining
+	// Fetch Edges for in arcs with chaining.
 	getChainedEdgesByObjectID string
-	// Subquery to filter edges by predicate
+	// Subquery to filter edges by predicate.
 	filterProps string
-	// Subquery to filter edges by object property-values
+	// Subquery to filter edges by object property-values.
 	filterObjects string
+	// Subquery to apply page offset.
+	applyOffset string
+	// Subquery to apply page limit.
+	applyLimit string
 	// Fetch Observations for variable+entity.
 	getObsByVariableAndEntity string
 	// Fetch observations for variable + contained in place.
@@ -77,10 +81,10 @@ var statements = struct {
 			predicate
 	`,
 	getEdgesBySubjectID: `
-		GRAPH DCGraph MATCH -[e:Edge
+		GRAPH DCGraph MATCH -[e:Edge]->(n:Node)
 		WHERE
 			e.subject_id IN UNNEST(@ids)
-			AND e.object_value IS NULL%[1]s]->(n:Node)
+			AND e.object_value IS NULL%[1]s
 		RETURN 
 			e.subject_id,
 			e.predicate,
@@ -90,10 +94,10 @@ var statements = struct {
 			COALESCE(n.name, '') AS name,
 			COALESCE(n.types, []) AS types
 		UNION ALL
-		MATCH -[e:Edge
+		MATCH -[e:Edge]->
 		WHERE
 			e.subject_id IN UNNEST(@ids)
-			AND e.object_value IS NOT NULL%[1]s]-> 
+			AND e.object_value IS NOT NULL%[1]s
 		RETURN 
 			e.subject_id,
 			e.predicate,
@@ -118,14 +122,13 @@ var statements = struct {
 			object_value,
 			provenance
 	`,
-	getChainedEdgesBySubjectID: fmt.Sprintf(`
-		GRAPH DCGraph MATCH ANY (m:Node
-		WHERE
-			m.subject_id IN UNNEST(@ids))-[e:Edge
+	getChainedEdgesBySubjectID: `
+		GRAPH DCGraph MATCH ANY (m:Node)-[e:Edge
 		WHERE
 			e.predicate = @predicate]->{1,%d}(n:Node)
-		WHERE 
-			m != n
+		WHERE
+			m.subject_id IN UNNEST(@ids)
+			AND m != n
 		RETURN 
 			m.subject_id,
 			n.subject_id as object_id,
@@ -133,11 +136,11 @@ var statements = struct {
 			COALESCE(n.name, '') AS name,
 			COALESCE(n.types, []) AS types
 		UNION ALL
-		MATCH -[e:Edge
+		MATCH -[e:Edge]->
 		WHERE
 			e.subject_id IN UNNEST(@ids)
 			AND e.object_value IS NOT NULL
-			AND e.predicate = @predicate]-> 
+			AND e.predicate = @predicate
 		RETURN 
 			e.subject_id,
 			'' AS object_id,
@@ -158,12 +161,12 @@ var statements = struct {
 			predicate,
 			object_id,
 			object_value
-	`, MAX_HOPS),
+	`,
 	getEdgesByObjectID: `
-		GRAPH DCGraph MATCH <-[e:Edge
+		GRAPH DCGraph MATCH <-[e:Edge]-(n:Node) 
 		WHERE
 			e.object_id IN UNNEST(@ids)
-			AND e.subject_id != e.object_id%s]-(n:Node) 
+			AND e.subject_id != e.object_id%s
 		RETURN 
 			e.object_id AS subject_id,
 			e.predicate,
@@ -177,14 +180,13 @@ var statements = struct {
 			predicate,
 			object_id
 	`,
-	getChainedEdgesByObjectID: fmt.Sprintf(`
-		GRAPH DCGraph MATCH ANY (m:Node
-		WHERE 
-			m.subject_id IN UNNEST(@ids))<-[e:Edge
+	getChainedEdgesByObjectID: `
+		GRAPH DCGraph MATCH ANY (m:Node)<-[e:Edge
 		WHERE
 			e.predicate = @predicate]-{1,%d}(n:Node) 
-		WHERE
-			m != n	
+		WHERE 
+			m.subject_id IN UNNEST(@ids)
+			AND m!= n
 		RETURN 
 			m.subject_id,
 			n.subject_id AS object_id,
@@ -203,7 +205,7 @@ var statements = struct {
 			subject_id,
 			predicate,
 			object_id
-		`, MAX_HOPS),
+		`,
 	filterProps: `
 		AND e.predicate IN UNNEST(@props)
 	`,
@@ -227,6 +229,12 @@ var statements = struct {
 			name,
 			types			
 	`,
+	applyOffset: `
+		OFFSET %d
+	`,
+	applyLimit: fmt.Sprintf(`
+		LIMIT %d
+	`, PAGE_SIZE+1),
 	getObsByVariableAndEntity: `
 		SELECT
 			variable_measured,
