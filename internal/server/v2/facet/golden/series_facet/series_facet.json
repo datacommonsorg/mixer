@@ -109,12 +109,15 @@
         "geoId/06": {
           "ordered_facets": [
             {
-              "facet_id": "local",
+              "facet_id": "2921750529",
               "observations": [
                 {
                   "value": 1
                 }
-              ]
+              ],
+              "obs_count": 1,
+              "earliest_date": "2010",
+              "latest_date": "2010"
             },
             {
               "facet_id": "2176550201",
@@ -269,12 +272,15 @@
         "geoId/06": {
           "ordered_facets": [
             {
-              "facet_id": "local",
+              "facet_id": "2921750529",
               "observations": [
                 {
                   "value": 11
                 }
-              ]
+              ],
+              "obs_count": 11,
+              "earliest_date": "2001",
+              "latest_date": "2015"
             }
           ]
         }
@@ -355,6 +361,10 @@
       "import_name": "CDC_Mortality_UnderlyingCause",
       "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
     },
+    "2921750529": {
+      "import_name": "Custom Prov",
+      "provenance_url": "custom.datacommons.org"
+    },
     "3357919774": {
       "import_name": "CensusUSAMedianAgeIncome",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
@@ -395,10 +405,6 @@
       "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
-    },
-    "local": {
-      "import_name": "local",
-      "provenance_url": "local"
     }
   }
 }

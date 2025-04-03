@@ -18,10 +18,12 @@ import (
 	"context"
 	"sort"
 
+	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
+	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -127,44 +129,49 @@ func SeriesFacet(
 		}
 	}
 	if sqldb.IsConnected(&store.SQLClient) {
-		observationCount, err := sqlquery.CountObservation(ctx, &store.SQLClient, entities, variables)
+		sqlResponse, err := sqlSeriesFacet(
+			ctx,
+			store,
+			cachedata.SQLProvenances(),
+			variables,
+			entities,
+		)
 		if err != nil {
 			return nil, err
 		}
-		hasData := false
-		for v, entityObsCount := range observationCount {
-			for e, count := range entityObsCount {
-				if count == 0 {
-					continue
-				}
-				hasData = true
-				if _, ok := result.ByVariable[v].ByEntity[e]; !ok {
-					result.ByVariable[v].ByEntity[e] = &pbv2.EntityObservation{
-						OrderedFacets: []*pbv2.FacetObservation{},
-					}
-				}
-				varEntityData := result.ByVariable[v].ByEntity[e]
-				sqlFacet := &pbv2.FacetObservation{
-					FacetId: "local",
-					Observations: []*pb.PointStat{
-						{
-							Value: proto.Float64(float64(count)),
-						},
+		result = merger.MergeObservation(sqlResponse, result)
+	}
+	return result, nil
+}
+
+func sqlSeriesFacet(ctx context.Context, store *store.Store, sqlProvenances map[string]*pb.Facet, variables []string, childPlaces []string) (*pbv2.ObservationResponse, error) {
+	response, err := sqlquery.GetObservations(
+		ctx,
+		&store.SQLClient,
+		sqlProvenances,
+		variables,
+		childPlaces,
+		"",
+		&pbv2.FacetFilter{},
+	)
+	if err != nil {
+		return nil, err
+	}
+	response = shared.TrimObservationsResponse(response)
+
+	for _, variableData := range response.ByVariable {
+
+		for _, entityData := range variableData.ByEntity {
+			for _, facetData := range entityData.OrderedFacets {
+				obsCount := len(facetData.Observations)
+				facetData.Observations = []*pb.PointStat{
+					{
+						Value: proto.Float64(float64(obsCount)),
 					},
 				}
-				varEntityData.OrderedFacets = append(
-					// Order sql facet to the top
-					[]*pbv2.FacetObservation{sqlFacet},
-					varEntityData.OrderedFacets...,
-				)
-			}
-		}
-		if hasData {
-			result.Facets["local"] = &pb.Facet{
-				ImportName:    "local",
-				ProvenanceUrl: "local",
 			}
 		}
 	}
-	return result, nil
+
+	return response, nil
 }
