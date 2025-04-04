@@ -113,16 +113,16 @@
       "dcid": "Count_MortalityEvent_InflammatoryDiseasesOfFemalePelvicOrgans_AsAFractionOf_Count_Person"
     },
     {
+      "name": "Male count as a fraction of female count",
+      "dcid": "Count_Person_Male_AsAFractionOf_Count_Person_Female"
+    },
+    {
       "name": "Median Age of Female Population",
       "dcid": "Median_Age_Person_Female"
     },
     {
       "name": "Median Income of Women (15 Years or Older) With Income",
       "dcid": "Median_Income_Person_15OrMoreYears_Female_WithIncome"
-    },
-    {
-      "name": "Population: Male (As Fraction of Count Person Female)",
-      "dcid": "Count_Person_Male_AsAFractionOf_Count_Person_Female"
     },
     {
       "name": "Confidence Interval Lower Limit Count of Live Birth Pregnancy Event: Male or Female Sterilization (As Fraction of Count Birth Event Live Birth)",

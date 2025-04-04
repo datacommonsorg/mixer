@@ -136,7 +136,7 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 28442
+        "descendentStatVarCount": 28731
       },
       {
         "id": "dc/g/Person_AgeGroupClassification",
@@ -310,7 +310,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 25431
+        "descendentStatVarCount": 25670
       },
       {
         "id": "dc/g/Person_GovernmentId",
@@ -340,7 +340,7 @@
         "id": "dc/g/Household",
         "specializedEntity": "Household",
         "displayName": "Household",
-        "descendentStatVarCount": 3516
+        "descendentStatVarCount": 3522
       },
       {
         "id": "dc/g/Person_HouseholdIncome",
@@ -412,7 +412,7 @@
         "id": "dc/g/Person_LaborForceStatus",
         "specializedEntity": "Labor Force Status",
         "displayName": "Person by Labor Force Status",
-        "descendentStatVarCount": 4186
+        "descendentStatVarCount": 4244
       },
       {
         "id": "dc/g/Language",
@@ -484,7 +484,7 @@
         "id": "dc/g/Person_Occupation",
         "specializedEntity": "Occupation",
         "displayName": "Person by Occupation",
-        "descendentStatVarCount": 4993
+        "descendentStatVarCount": 5078
       },
       {
         "id": "dc/g/Place_PlaceType",
@@ -502,7 +502,7 @@
         "id": "dc/g/Person_PlaceOfResidenceClassification",
         "specializedEntity": "Place of Residence Classification (Individual)",
         "displayName": "Person by Place of Residence Classification",
-        "descendentStatVarCount": 3723
+        "descendentStatVarCount": 3724
       },
       {
         "id": "dc/g/Place_PlaceOfResidenceClassification",
@@ -532,7 +532,7 @@
         "id": "dc/g/Residence",
         "specializedEntity": "Residence",
         "displayName": "Residence",
-        "descendentStatVarCount": 5457
+        "descendentStatVarCount": 5458
       },
       {
         "id": "dc/g/Person_ResidentStatus",
@@ -577,7 +577,7 @@
         "descendentStatVarCount": 4
       }
     ],
-    "descendentStatVarCount": 48443,
+    "descendentStatVarCount": 48747,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

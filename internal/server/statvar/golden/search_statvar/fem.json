@@ -805,6 +805,10 @@
       "dcid": "GrowthRate_Count_Person_Female"
     },
     {
+      "name": "Male count as a fraction of female count",
+      "dcid": "Count_Person_Male_AsAFractionOf_Count_Person_Female"
+    },
+    {
       "name": "Mean Cohort Scale Achievement of Student: Female",
       "dcid": "dc/1kp45lprzkreb"
     },
@@ -1021,16 +1025,20 @@
       "dcid": "Median_Income_Person_15OrMoreYears_Female_WithIncome"
     },
     {
+      "name": "Percentage of female births in the total population",
+      "dcid": "Count_BirthEvent_Female_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Percentage of female individuals",
+      "dcid": "Count_Person_Female_AsAFractionOf_Count_Person"
+    },
+    {
       "name": "Population and household profile-sex ratio at birth for children born in the last five years (females per 1,000 males)",
       "dcid": "Count_BirthEvent_Female_AsAFractionOf_Count_BirthEvent_Male"
     },
     {
       "name": "Population and household profile-sex ratio of the total population (females per 1,000 males)",
       "dcid": "Count_Person_Female_AsAFractionOf_Count_Person_Male"
-    },
-    {
-      "name": "Population: Male (As Fraction of Count Person Female)",
-      "dcid": "Count_Person_Male_AsAFractionOf_Count_Person_Female"
     },
     {
       "name": "Confidence Interval Lower Limit Count of Live Birth Pregnancy Event: Male or Female Sterilization (As Fraction of Count Birth Event Live Birth)",
@@ -3193,6 +3201,18 @@
       "dcid": "WHO/SDGSUICIDE_Female"
     },
     {
+      "name": "Deaths of females aged 0 to 1 years",
+      "dcid": "Count_MortalityEvent_Years0To1_Female"
+    },
+    {
+      "name": "Deaths of females aged 55 to 74 years",
+      "dcid": "Count_MortalityEvent_55To74Years_Female"
+    },
+    {
+      "name": "Deaths of females aged 75 years or more",
+      "dcid": "Count_MortalityEvent_75OrMoreYears_Female"
+    },
+    {
       "name": "Detected victims of human trafficking [18 years old and over, Female]",
       "dcid": "sdg/VC_HTF_DETV.AGE--Y_GE18__SEX--F"
     },
@@ -3979,26 +3999,6 @@
     {
       "name": "Disease burden (number of disability-adjusted life years, DALYs) [Childhood-cluster diseases, Female]",
       "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE012__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Chlamydia, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE006__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Chronic obstructive pulmonary disease, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE118__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Chronic respiratory diseases, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE117__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Cirrhosis of the liver, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE123__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Cleft lip and cleft palate, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE142__SEX--F"
     }
   ],
   "matches": [

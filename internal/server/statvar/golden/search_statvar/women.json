@@ -1813,6 +1813,134 @@
       "dcid": "Count_PregnantWomen_RegisteredForAntenatalCareWithinFirstTrimester"
     },
     {
+      "name": "Percentage of employed women aged 20 to 24 years",
+      "dcid": "Count_Person_20To24Years_Employed_Female_AsAFractionOf_Count_Person_20To24Years_Female"
+    },
+    {
+      "name": "Percentage of employed women aged between 45 to 49 years",
+      "dcid": "Count_Person_45To49Years_Employed_Female_AsAFractionOf_Count_Person_45To49Years_Female"
+    },
+    {
+      "name": "Percentage of unemployed women aged 25-29",
+      "dcid": "Count_Person_25To29Years_Unemployed_Female_AsAFractionOf_Count_Person_25To29Years_Female"
+    },
+    {
+      "name": "Percentage of unemployed women aged between 40 and 44 years old",
+      "dcid": "Count_Person_40To44Years_Unemployed_Female_AsAFractionOf_Count_Person_40To44Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 15 to 19 years who are farmers",
+      "dcid": "Count_Person_15To19Years_Female_FarmerOccupation_AsAFractionOf_Count_Person_15To19Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 20 to 24 in skilled manual labor occupations",
+      "dcid": "Count_Person_20To24Years_Female_SkilledManualLaborOccupation_AsAFractionOf_Count_Person_20To24Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 20 to 24 years that are clerks",
+      "dcid": "Count_Person_20To24Years_Female_ClerkOccupation_AsAFractionOf_Count_Person_20To24Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 20 to 24 years who are farmers",
+      "dcid": "Count_Person_20To24Years_Female_FarmerOccupation_AsAFractionOf_Count_Person_20To24Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 20-24 years in sales and service occupations",
+      "dcid": "Count_Person_20To24Years_Female_SalesAndServiceOccupation_AsAFractionOf_Count_Person_20To24Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 25 to 29 in sales and service occupations",
+      "dcid": "Count_Person_25To29Years_Female_SalesAndServiceOccupation_AsAFractionOf_Count_Person_25To29Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 25-29 in skilled manual labor occupations",
+      "dcid": "Count_Person_25To29Years_Female_SkilledManualLaborOccupation_AsAFractionOf_Count_Person_25To29Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 25-29 working as clerks",
+      "dcid": "Count_Person_25To29Years_Female_ClerkOccupation_AsAFractionOf_Count_Person_25To29Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 30 to 34 years in sales and service occupations",
+      "dcid": "Count_Person_30To34Years_Female_SalesAndServiceOccupation_AsAFractionOf_Count_Person_30To34Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 30 to 34 years in skilled manual labor occupations",
+      "dcid": "Count_Person_30To34Years_Female_SkilledManualLaborOccupation_AsAFractionOf_Count_Person_30To34Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 30 to 34 years who are farmers",
+      "dcid": "Count_Person_30To34Years_Female_FarmerOccupation_AsAFractionOf_Count_Person_30To34Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 30-34 years with higher secondary education",
+      "dcid": "Count_Person_30To34Years_EducationalAttainmentHigherSecondaryEducation_Female_AsAFractionOf_Count_Person_30To34Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 35 to 39 who are clerks",
+      "dcid": "Count_Person_35To39Years_Female_ClerkOccupation_AsAFractionOf_Count_Person_35To39Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 35 to 39 years old who are employed.",
+      "dcid": "Count_Person_35To39Years_Employed_Female_AsAFractionOf_Count_Person_35To39Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 35 to 39 years that attained higher secondary education level.",
+      "dcid": "Count_Person_35To39Years_EducationalAttainmentHigherSecondaryEducation_Female_AsAFractionOf_Count_Person_35To39Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 35 to 39 years who are farmers",
+      "dcid": "Count_Person_35To39Years_Female_FarmerOccupation_AsAFractionOf_Count_Person_35To39Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 35 to 39 years with less than primary education",
+      "dcid": "Count_Person_35To39Years_EducationalAttainmentLessThanPrimaryEducation_Female_AsAFractionOf_Count_Person_35To39Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 35-39 years in sales and service occupations",
+      "dcid": "Count_Person_35To39Years_Female_SalesAndServiceOccupation_AsAFractionOf_Count_Person_35To39Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 40 to 44 years in sales and service occupations",
+      "dcid": "Count_Person_40To44Years_Female_SalesAndServiceOccupation_AsAFractionOf_Count_Person_40To44Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 40 to 44 years who are clerks",
+      "dcid": "Count_Person_40To44Years_Female_ClerkOccupation_AsAFractionOf_Count_Person_40To44Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 40-44 in skilled manual labor occupations",
+      "dcid": "Count_Person_40To44Years_Female_SkilledManualLaborOccupation_AsAFractionOf_Count_Person_40To44Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 40-44 years who are farmers",
+      "dcid": "Count_Person_40To44Years_Female_FarmerOccupation_AsAFractionOf_Count_Person_40To44Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 40-44 years with lower secondary education",
+      "dcid": "Count_Person_40To44Years_EducationalAttainmentLowerSecondaryEducation_Female_AsAFractionOf_Count_Person_40To44Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 45 to 49 years who have attained higher secondary education.",
+      "dcid": "Count_Person_45To49Years_EducationalAttainmentHigherSecondaryEducation_Female_AsAFractionOf_Count_Person_45To49Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 45-49 working in sales and service occupations",
+      "dcid": "Count_Person_45To49Years_Female_SalesAndServiceOccupation_AsAFractionOf_Count_Person_45To49Years_Female"
+    },
+    {
+      "name": "Percentage of women aged 45-49 years who are farmers",
+      "dcid": "Count_Person_45To49Years_Female_FarmerOccupation_AsAFractionOf_Count_Person_45To49Years_Female"
+    },
+    {
+      "name": "Percentage of women aged between 25 and 29 years old who are farmers",
+      "dcid": "Count_Person_25To29Years_Female_FarmerOccupation_AsAFractionOf_Count_Person_25To29Years_Female"
+    },
+    {
+      "name": "Percentage of women employed in the age group 40-44 years old",
+      "dcid": "Count_Person_40To44Years_Employed_Female_AsAFractionOf_Count_Person_40To44Years_Female"
+    },
+    {
       "name": "Pregnant Women Attending Antenatal Care At Least Once And Receiving At Least 3 Doses Of Intermittent Preventive Treatment Of Malaria For Pregnant Women (Iptp3) (%)",
       "dcid": "WHO/MALARIA_IPTP3_COVERAGE"
     },

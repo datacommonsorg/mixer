@@ -249,8 +249,36 @@
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
+      "subjectId": "Count_BirthEvent_Female_AsAFractionOf_Count_Person",
+      "subjectName": "Percentage of female births in the total population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Total Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
       "subjectId": "Count_BirthEvent_LiveBirth_AsFractionOf_Count_Person",
       "subjectName": "Crude Birth Rate",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Total Population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_BirthEvent_Male_AsAFractionOf_Count_Person",
+      "subjectName": "Percentage of male births in the total population",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -7067,34 +7095,6 @@
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
-      "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionGastroIntestinalCondition_Rural_AsAFractionOf_Count_Person",
-      "subjectName": "Count of Medical Condition Incident: 45 - 59 Years, Gastro Intestinal Condition, Rural (Per Capita)",
-      "subjectTypes": [
-        "StatisticalVariable"
-      ],
-      "predicate": "measurementDenominator",
-      "objectId": "Count_Person",
-      "objectName": "Total Population",
-      "objectTypes": [
-        "StatisticalVariable"
-      ],
-      "provenanceId": "dc/base/HumanReadableStatVars"
-    },
-    {
-      "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionGastroIntestinalCondition_Urban_AsAFractionOf_Count_Person",
-      "subjectName": "Count of Medical Condition Incident: 45 - 59 Years, Gastro Intestinal Condition, Urban (Per Capita)",
-      "subjectTypes": [
-        "StatisticalVariable"
-      ],
-      "predicate": "measurementDenominator",
-      "objectId": "Count_Person",
-      "objectName": "Total Population",
-      "objectTypes": [
-        "StatisticalVariable"
-      ],
-      "provenanceId": "dc/base/HumanReadableStatVars"
-    },
-    {
       "subjectId": "dc/c/Count_Person",
       "subjectTypes": [
         "StatisticalCalculation"
@@ -9459,7 +9459,7 @@
     },
     {
       "subjectId": "Count_Person_Male_AsAFractionOf_Count_Person_Female",
-      "subjectName": "Population: Male (As Fraction of Count Person Female)",
+      "subjectName": "Male count as a fraction of female count",
       "subjectTypes": [
         "StatisticalVariable"
       ],
