@@ -410,6 +410,306 @@ func TestMergeNode(t *testing.T) {
 	}
 }
 
+func TestMergeMultiNode(t *testing.T) {
+	cmpOpts := cmp.Options{
+		protocmp.Transform(),
+	}
+
+	for _, c := range []struct {
+		allResp   []*pbv2.NodeResponse
+		remoteIdx int
+		want      *pbv2.NodeResponse
+		allPi     []*pbv1.PaginationInfo
+		wantPi    *pbv1.PaginationInfo
+	}{
+		{
+			[]*pbv2.NodeResponse{},
+			-1,
+			&pbv2.NodeResponse{},
+			[]*pbv1.PaginationInfo{},
+			&pbv1.PaginationInfo{},
+		},
+		{
+			[]*pbv2.NodeResponse{
+				{
+					Data: map[string]*pbv2.LinkedGraph{
+						"dcid1": {
+							Arcs: map[string]*pbv2.Nodes{
+								"prop1": {
+									Nodes: []*pb.EntityInfo{
+										{Value: "val1"},
+									},
+								},
+							},
+						},
+					},
+				},
+				{
+					Data: map[string]*pbv2.LinkedGraph{
+						"dcid1": {
+							Arcs: map[string]*pbv2.Nodes{
+								"prop1": {
+									Nodes: []*pb.EntityInfo{
+										{Value: "val2"},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+			-1,
+			&pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"dcid1": {
+						Arcs: map[string]*pbv2.Nodes{
+							"prop1": {
+								Nodes: []*pb.EntityInfo{
+									{Value: "val1"},
+									{Value: "val2"},
+								},
+							},
+						},
+					},
+				},
+			},
+			[]*pbv1.PaginationInfo{},
+			&pbv1.PaginationInfo{},
+		},
+		{
+			[]*pbv2.NodeResponse{
+				{
+					Data: map[string]*pbv2.LinkedGraph{
+						"dcid1": {
+							Arcs: map[string]*pbv2.Nodes{
+								"prop1": {
+									Nodes: []*pb.EntityInfo{
+										{Value: "val1"},
+									},
+								},
+							},
+						},
+					},
+				},
+				{
+					Data: map[string]*pbv2.LinkedGraph{
+						"dcid1": {
+							Arcs: map[string]*pbv2.Nodes{
+								"prop1": {
+									Nodes: []*pb.EntityInfo{
+										{Value: "val2"},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+			-1,
+			&pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"dcid1": {
+						Arcs: map[string]*pbv2.Nodes{
+							"prop1": {
+								Nodes: []*pb.EntityInfo{
+									{Value: "val1"},
+									{Value: "val2"},
+								},
+							},
+						},
+					},
+				},
+			},
+			[]*pbv1.PaginationInfo{
+				{
+					CursorGroups: []*pbv1.CursorGroup{
+						{
+							Keys:    []string{"spanner1"},
+							Cursors: []*pbv1.Cursor{{Offset: 5000}},
+						},
+					},
+				},
+				{
+					CursorGroups: []*pbv1.CursorGroup{
+						{
+							Keys:    []string{"spanner2"},
+							Cursors: []*pbv1.Cursor{{Offset: 1000}},
+						},
+					},
+				},
+			},
+			&pbv1.PaginationInfo{
+				CursorGroups: []*pbv1.CursorGroup{
+					{
+						Keys:    []string{"spanner1"},
+						Cursors: []*pbv1.Cursor{{Offset: 5000}},
+					},
+					{
+						Keys:    []string{"spanner2"},
+						Cursors: []*pbv1.Cursor{{Offset: 1000}},
+					},
+				},
+			},
+		},
+		{
+			[]*pbv2.NodeResponse{
+				{
+					Data: map[string]*pbv2.LinkedGraph{
+						"dcid1": {
+							Arcs: map[string]*pbv2.Nodes{
+								"prop1": {
+									Nodes: []*pb.EntityInfo{
+										{Value: "val1"},
+									},
+								},
+							},
+						},
+					},
+				},
+				{
+					Data: map[string]*pbv2.LinkedGraph{
+						"dcid1": {
+							Arcs: map[string]*pbv2.Nodes{
+								"prop1": {
+									Nodes: []*pb.EntityInfo{
+										{Value: "val2"},
+									},
+								},
+							},
+						},
+					},
+				},
+				{
+					Data: map[string]*pbv2.LinkedGraph{
+						"dcid1": {
+							Arcs: map[string]*pbv2.Nodes{
+								"prop1": {
+									Nodes: []*pb.EntityInfo{
+										{Value: "val3"},
+									},
+								},
+							},
+						},
+					},
+				},
+				{
+					Data: map[string]*pbv2.LinkedGraph{
+						"dcid1": {
+							Arcs: map[string]*pbv2.Nodes{
+								"prop1": {
+									Nodes: []*pb.EntityInfo{
+										{Value: "val4"},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+			1,
+			&pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"dcid1": {
+						Arcs: map[string]*pbv2.Nodes{
+							"prop1": {
+								Nodes: []*pb.EntityInfo{
+									{Value: "val1"},
+									{Value: "val2"},
+									{Value: "val3"},
+									{Value: "val4"},
+								},
+							},
+						},
+					},
+				},
+			},
+			[]*pbv1.PaginationInfo{
+				{
+					CursorGroups: []*pbv1.CursorGroup{
+						{
+							Keys:    []string{"spanner1"},
+							Cursors: []*pbv1.Cursor{{Offset: 5000}},
+						},
+					},
+				},
+				{
+					CursorGroups: []*pbv1.CursorGroup{
+						{
+							Keys: []string{"key2"},
+							Cursors: []*pbv1.Cursor{
+								{
+									ImportGroup: 2,
+									Page:        2,
+									Item:        10,
+								},
+							},
+						},
+					},
+				},
+				{
+					CursorGroups: []*pbv1.CursorGroup{
+						{
+							Keys:    []string{"spanner2"},
+							Cursors: []*pbv1.Cursor{{Offset: 1000}},
+						},
+					},
+				},
+				{},
+			},
+			&pbv1.PaginationInfo{
+				CursorGroups: []*pbv1.CursorGroup{
+					{
+						Keys:    []string{"spanner1"},
+						Cursors: []*pbv1.Cursor{{Offset: 5000}},
+					},
+					{
+						Keys:    []string{"spanner2"},
+						Cursors: []*pbv1.Cursor{{Offset: 1000}},
+					},
+				},
+				RemotePaginationInfo: &pbv1.PaginationInfo{
+					CursorGroups: []*pbv1.CursorGroup{
+						{
+							Keys: []string{"key2"},
+							Cursors: []*pbv1.Cursor{
+								{
+									ImportGroup: 2,
+									Page:        2,
+									Item:        10,
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+	} {
+		var err error
+
+		for i, pi := range c.allPi {
+			c.allResp[i].NextToken, err = util.EncodeProto(pi)
+			if err != nil {
+				t.Errorf("EncodeProto(%v) = %s", pi, err)
+				continue
+			}
+		}
+		c.want.NextToken, err = util.EncodeProto(c.wantPi)
+		if err != nil {
+			t.Errorf("EncodeProto(%v) = %s", c.wantPi, err)
+			continue
+		}
+
+		got, err := MergeMultiNode(c.allResp, c.remoteIdx)
+		if err != nil {
+			t.Errorf("MergeMultiNode(%v, %v) = %s", c.allResp, c.remoteIdx, err)
+			continue
+		}
+		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
+			t.Errorf("MergeMultiNode(%v, %v) got diff: %s", c.allResp, c.remoteIdx, diff)
+		}
+	}
+}
+
 func TestMergeEvent(t *testing.T) {
 	cmpOpts := cmp.Options{
 		protocmp.Transform(),
