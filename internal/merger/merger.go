@@ -95,6 +95,7 @@ func mergeLinkedGraph(
 
 	for dcid, linkedGraph := range auxData {
 		if isEmptyLinkedGraph(linkedGraph) {
+			mainData[dcid] = &pbv2.LinkedGraph{}
 			continue
 		}
 		if isEmptyLinkedGraph(mainData[dcid]) {
@@ -196,19 +197,35 @@ func MergeNode(main, aux *pbv2.NodeResponse) (*pbv2.NodeResponse, error) {
 
 // Merges multiple V2 NodeResponses.
 // Assumes the responses are in order of priority.
-func MergeMultiNode(allResp []*pbv2.NodeResponse) (*pbv2.NodeResponse, error) {
-	if len(allResp) == 0 {
-		return &pbv2.NodeResponse{}, nil
-	}
-	prev := allResp[0]
-	for i := 1; i < len(allResp); i++ {
-		cur, err := MergeNode(prev, allResp[i])
+func MergeMultiNode(allResp []*pbv2.NodeResponse, remoteIdx int) (*pbv2.NodeResponse, error) {
+	merged := &pbv2.NodeResponse{}
+	mergedPi := &pbv1.PaginationInfo{}
+
+	for i := 0; i < len(allResp); i++ {
+		merged.Data = mergeLinkedGraph(merged.GetData(), allResp[i].GetData())
+
+		if allResp[i].GetNextToken() == "" {
+			continue
+		}
+
+		pi, err := pagination.Decode(allResp[i].GetNextToken())
 		if err != nil {
 			return nil, err
 		}
-		prev = cur
+		// TODO: Unify remote pagination info after migrating remote data source to Spanner.
+		if i == remoteIdx {
+			mergedPi.RemotePaginationInfo = pi
+		} else {
+			mergedPi.CursorGroups = append(mergedPi.CursorGroups, pi.CursorGroups...)
+		}
 	}
-	return prev, nil
+
+	nextToken, err := util.EncodeProto(mergedPi)
+	if err != nil {
+		return nil, err
+	}
+	merged.NextToken = nextToken
+	return merged, nil
 }
 
 // MergeEvent merges two V2 event responses.

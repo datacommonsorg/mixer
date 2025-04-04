@@ -140,6 +140,7 @@ func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge
 	for _, subjectID := range nodes {
 		edges, ok := edgesBySubjectID[subjectID]
 		if !ok {
+			nodeResponse.Data[subjectID] = &pbv2.LinkedGraph{}
 			continue
 		}
 
