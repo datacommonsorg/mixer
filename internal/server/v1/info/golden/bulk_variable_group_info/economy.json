@@ -220,6 +220,11 @@
             "id": "dc/g/TreasurySecurity",
             "specializedEntity": "Treasury Security",
             "displayName": "Treasury Security"
+          },
+          {
+            "id": "dc/g/Person_WealthIndex",
+            "specializedEntity": "Wealth Index",
+            "displayName": "Person by Wealth Index"
           }
         ],
         "descendentStatVarCount": 140,

@@ -1622,6 +1622,11 @@
               "facet": "3981252704"
             },
             {
+              "date": "2022",
+              "value": 105025989,
+              "facet": "2309233061"
+            },
+            {
               "date": "2016",
               "value": 102403000,
               "facet": "473499523"
@@ -2725,6 +2730,11 @@
               "date": "2019",
               "value": 47564296,
               "facet": "2018634167"
+            },
+            {
+              "date": "2019",
+              "value": 47564296,
+              "facet": "2058321835"
             },
             {
               "date": "2016",
@@ -4467,6 +4477,21 @@
               "facet": "3981252704"
             },
             {
+              "date": "2022",
+              "value": 13246394,
+              "facet": "3189273983"
+            },
+            {
+              "date": "2021",
+              "value": 12786879,
+              "facet": "1389069806"
+            },
+            {
+              "date": "2022-06",
+              "value": 13115181,
+              "facet": "717002696"
+            },
+            {
               "date": "2016",
               "value": 11918000,
               "facet": "473499523"
@@ -5851,6 +5876,11 @@
       "import_name": "Singapore_Census",
       "provenance_url": "https://www.singstat.gov.sg/"
     },
+    "1389069806": {
+      "import_name": "Rwanda_Census",
+      "provenance_url": "https://rwanda.opendataforafrica.org/",
+      "observation_period": "P1Y"
+    },
     "1446742247": {
       "import_name": "New_Zealand_Census",
       "provenance_url": "https://www.stats.govt.nz/"
@@ -5896,6 +5926,11 @@
       "import_name": "Argentina_Census",
       "provenance_url": "https://www.indec.gob.ar"
     },
+    "2058321835": {
+      "import_name": "Kenya_Census",
+      "provenance_url": "https://kenya.opendataforafrica.org/",
+      "observation_period": "P1Y"
+    },
     "2123271870": {
       "import_name": "IndiaCensus_Primary",
       "provenance_url": "https://censusindia.gov.in/"
@@ -5910,6 +5945,10 @@
       "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
       "measurement_method": "CensusPEPSurvey",
       "observation_period": "P1Y"
+    },
+    "2309233061": {
+      "import_name": "EthiopiaStatistics",
+      "provenance_url": "https://ethiopia.opendataforafrica.org/data/#menu=topic"
     },
     "2458695583": {
       "import_name": "WikidataPopulation",
@@ -5950,6 +5989,11 @@
     "318580725": {
       "import_name": "Indonesia_Census",
       "provenance_url": "https://www.bps.go.id/"
+    },
+    "3189273983": {
+      "import_name": "Rwanda_Census",
+      "provenance_url": "https://rwanda.opendataforafrica.org/",
+      "observation_period": "Annual"
     },
     "3251078590": {
       "import_name": "MexicoCensus_AA2",
@@ -5997,6 +6041,11 @@
     "678784946": {
       "import_name": "AustraliaStatistics",
       "provenance_url": "https://www.abs.gov.au/statistics"
+    },
+    "717002696": {
+      "import_name": "Rwanda_Census",
+      "provenance_url": "https://rwanda.opendataforafrica.org/",
+      "observation_period": "P3M"
     }
   }
 }
