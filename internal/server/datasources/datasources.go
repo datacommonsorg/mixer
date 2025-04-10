@@ -37,8 +37,18 @@ func (ds *DataSources) Node(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.No
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	dsRespChan := []chan *pbv2.NodeResponse{}
 
-	for _, source := range ds.sources {
+	remoteIdx := -1
+
+	for i, source := range ds.sources {
 		src := *source
+
+		// Remote data source still uses the V2 implementation,
+		// so uses remotePaginationInfo.
+		// TODO: Unify pagination info after migrating to Spanner.
+		if src.Type() == datasource.TypeRemote {
+			remoteIdx = i
+		}
+
 		respChan := make(chan *pbv2.NodeResponse, 1)
 		errGroup.Go(func() error {
 			defer close(respChan)
@@ -61,7 +71,7 @@ func (ds *DataSources) Node(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.No
 		allResp = append(allResp, <-respChan)
 	}
 
-	return merger.MergeMultiNode(allResp)
+	return merger.MergeMultiNode(allResp, remoteIdx)
 }
 
 func (ds *DataSources) Observation(ctx context.Context, in *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
