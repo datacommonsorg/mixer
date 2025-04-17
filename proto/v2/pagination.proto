@@ -26,7 +26,7 @@ message SpannerInfo {
 
 // Represents the pagination info of one paginated request.
 // Each DataSourceInfo corresponds to the info for one data source.
-message PaginationInfo {
+message Pagination {
   message DataSourceInfo {
     oneof data_source_info {
       datacommons.v1.PaginationInfo bigtable_info = 1;
