@@ -18,6 +18,7 @@ import (
 	"testing"
 
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 )
@@ -140,6 +141,105 @@ func TestDecode(t *testing.T) {
 		}
 		if diff := cmp.Diff(info, c.info, protocmp.Transform()); diff != "" {
 			t.Errorf("getScorePb() got diff score %v", diff)
+		}
+	}
+}
+
+func TestDecodeNextToken(t *testing.T) {
+	for _, c := range []struct {
+		info  *pbv2.Pagination
+		token string
+	}{
+		{
+			&pbv2.Pagination{
+				Info: map[string]*pbv2.Pagination_DataSourceInfo{
+					"spanner": {
+						DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
+							SpannerInfo: &pbv2.SpannerInfo{
+								Offset: 5000,
+							},
+						},
+					},
+					"remote": {
+						DataSourceInfo: &pbv2.Pagination_DataSourceInfo_BigtableInfo{
+							BigtableInfo: &pbv1.PaginationInfo{
+								CursorGroups: []*pbv1.CursorGroup{
+									{
+										Keys: []string{"geoId/05"},
+										Cursors: []*pbv1.Cursor{
+											{
+												ImportGroup: 0,
+												Page:        0,
+												Item:        20,
+											},
+											{
+												ImportGroup: 1,
+												Page:        1,
+												Item:        10,
+											},
+											{
+												ImportGroup: 2,
+												Page:        1,
+												Item:        10,
+											},
+											{
+												ImportGroup: 3,
+												Page:        2,
+												Item:        50,
+											},
+											{
+												ImportGroup: 4,
+												Page:        1,
+												Item:        10,
+											},
+										},
+									},
+									{
+										Keys: []string{"geoId/06"},
+										Cursors: []*pbv1.Cursor{
+											{
+												ImportGroup: 0,
+												Page:        5,
+												Item:        200,
+											},
+											{
+												ImportGroup: 1,
+												Page:        8,
+												Item:        100,
+											},
+											{
+												ImportGroup: 2,
+												Page:        7,
+												Item:        150,
+											},
+											{
+												ImportGroup: 3,
+												Page:        15,
+												Item:        60,
+											},
+											{
+												ImportGroup: 4,
+												Page:        4,
+												Item:        40,
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+			"H4sIAAAAAAAA/+IS4GIvLkjMy0stEmIVYuboUOcq4GIrSs3NL0kVSuNK4dLj4khPzfdM0TcwFWKSEBFi42AUYJTgEmLjYILSzAJMEkZCbBwsID6XEVy9mRCrAKvECUawFg6JFCF2DiYBdolpjGA9/BI2YD0sEhoAAAAA//8BAAD//yvsSKmEAAAA",
+		},
+	} {
+		info, err := DecodeNextToken(c.token)
+		if err != nil {
+			t.Errorf("DecodeNextToken(%v) got err %v", c.token, err)
+			continue
+		}
+		if diff := cmp.Diff(info, c.info, protocmp.Transform()); diff != "" {
+			t.Errorf("DecodeNextToken(%v) got diff: %s", c.token, diff)
 		}
 	}
 }
