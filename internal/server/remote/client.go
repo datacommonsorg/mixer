@@ -45,11 +45,22 @@ func NewRemoteClient(metadata *resource.Metadata) (*RemoteClient, error) {
 }
 
 func (rc *RemoteClient) Node(req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
-	resp := &pbv2.NodeResponse{}
-	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/node", req, resp)
+	err := formatNodeRequest(req, rc.id)
 	if err != nil {
 		return nil, err
 	}
+
+	resp := &pbv2.NodeResponse{}
+	err = util.FetchRemote(rc.metadata, rc.httpClient, "/v2/node", req, resp)
+	if err != nil {
+		return nil, err
+	}
+
+	err = formatNodeResponse(resp, rc.id)
+	if err != nil {
+		return nil, err
+	}
+
 	return resp, nil
 }
 

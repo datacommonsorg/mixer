@@ -94,19 +94,25 @@ func getOffset(nextToken, dataSourceID string) (int32, error) {
 		return 0, err
 	}
 
-	spanner_info, ok := info.Info[dataSourceID]
-	if !ok {
-		return 0, fmt.Errorf("pagination info missing cursor for Spanner data source: %s", dataSourceID)
+	for _, dataSourceInfo := range info.Info {
+		if dataSourceInfo.GetId() == dataSourceID {
+			spannerInfo, ok := dataSourceInfo.GetDataSourceInfo().(*pbv2.Pagination_DataSourceInfo_SpannerInfo)
+			if !ok {
+				return 0, fmt.Errorf("found different data source info for spanner data source id: %s", dataSourceID)
+			}
+			return spannerInfo.SpannerInfo.GetOffset(), nil
+		}
 	}
 
-	return spanner_info.GetSpannerInfo().Offset, nil
+	return 0, nil
 }
 
 // getNextToken encodes next offset in a nextToken string.
 func getNextToken(offset int32, dataSourceID string) (string, error) {
 	pi := &pbv2.Pagination{
-		Info: map[string]*pbv2.Pagination_DataSourceInfo{
-			dataSourceID: {
+		Info: []*pbv2.Pagination_DataSourceInfo{
+			{
+				Id: dataSourceID,
 				DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
 					SpannerInfo: &pbv2.SpannerInfo{
 						Offset: offset,

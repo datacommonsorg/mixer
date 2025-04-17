@@ -139,7 +139,7 @@ func TestV3Node(t *testing.T) {
 					"StatisticalVariable",
 				},
 				"<-typeOf",
-				"H4sIAAAAAAAA/+IK4HIvLkjMy0st0i0oys9KTS4p1k9JLEnOz9UtLskvStXPzCsuScxLTi3WT0nWzU7XLUktLgGpSExKLAYLxqcXJRZkxJsIsQoxc3SoAwAAAP//AQAA//+yeW4VUgAAAA==",
+				"H4sIAAAAAAAA/+Ly43IvLkjMy0st0i0oys9KTS4p1k9JLEnOz9UtLskvStXPzCsuScxLTi3WT0nWzU7XLUktLgGpSExKLAYLxqcXJRZkxJtIMXN0qAMAAAD//wEAAP//A4QleFAAAAA=",
 				"pagination_second_page.json",
 			},
 		} {

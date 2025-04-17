@@ -416,18 +416,16 @@ func TestMergeMultiNode(t *testing.T) {
 	}
 
 	for _, c := range []struct {
-		allResp   []*pbv2.NodeResponse
-		remoteIdx int
-		want      *pbv2.NodeResponse
-		allPi     []*pbv1.PaginationInfo
-		wantPi    *pbv1.PaginationInfo
+		allResp  []*pbv2.NodeResponse
+		want     *pbv2.NodeResponse
+		allInfo  []*pbv2.Pagination
+		wantInfo *pbv2.Pagination
 	}{
 		{
 			[]*pbv2.NodeResponse{},
-			-1,
 			&pbv2.NodeResponse{},
-			[]*pbv1.PaginationInfo{},
-			&pbv1.PaginationInfo{},
+			[]*pbv2.Pagination{},
+			&pbv2.Pagination{},
 		},
 		{
 			[]*pbv2.NodeResponse{
@@ -458,7 +456,6 @@ func TestMergeMultiNode(t *testing.T) {
 					},
 				},
 			},
-			-1,
 			&pbv2.NodeResponse{
 				Data: map[string]*pbv2.LinkedGraph{
 					"dcid1": {
@@ -473,8 +470,8 @@ func TestMergeMultiNode(t *testing.T) {
 					},
 				},
 			},
-			[]*pbv1.PaginationInfo{},
-			&pbv1.PaginationInfo{},
+			[]*pbv2.Pagination{},
+			&pbv2.Pagination{},
 		},
 		{
 			[]*pbv2.NodeResponse{
@@ -505,7 +502,6 @@ func TestMergeMultiNode(t *testing.T) {
 					},
 				},
 			},
-			-1,
 			&pbv2.NodeResponse{
 				Data: map[string]*pbv2.LinkedGraph{
 					"dcid1": {
@@ -520,33 +516,49 @@ func TestMergeMultiNode(t *testing.T) {
 					},
 				},
 			},
-			[]*pbv1.PaginationInfo{
+			[]*pbv2.Pagination{
 				{
-					CursorGroups: []*pbv1.CursorGroup{
+					Info: []*pbv2.Pagination_DataSourceInfo{
 						{
-							Keys:    []string{"spanner1"},
-							Cursors: []*pbv1.Cursor{{Offset: 5000}},
+							Id: "spanner1",
+							DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
+								SpannerInfo: &pbv2.SpannerInfo{
+									Offset: 5000,
+								},
+							},
 						},
 					},
 				},
 				{
-					CursorGroups: []*pbv1.CursorGroup{
+					Info: []*pbv2.Pagination_DataSourceInfo{
 						{
-							Keys:    []string{"spanner2"},
-							Cursors: []*pbv1.Cursor{{Offset: 1000}},
+							Id: "spanner2",
+							DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
+								SpannerInfo: &pbv2.SpannerInfo{
+									Offset: 1000,
+								},
+							},
 						},
 					},
 				},
 			},
-			&pbv1.PaginationInfo{
-				CursorGroups: []*pbv1.CursorGroup{
+			&pbv2.Pagination{
+				Info: []*pbv2.Pagination_DataSourceInfo{
 					{
-						Keys:    []string{"spanner1"},
-						Cursors: []*pbv1.Cursor{{Offset: 5000}},
+						Id: "spanner1",
+						DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
+							SpannerInfo: &pbv2.SpannerInfo{
+								Offset: 5000,
+							},
+						},
 					},
 					{
-						Keys:    []string{"spanner2"},
-						Cursors: []*pbv1.Cursor{{Offset: 1000}},
+						Id: "spanner2",
+						DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
+							SpannerInfo: &pbv2.SpannerInfo{
+								Offset: 1000,
+							},
+						},
 					},
 				},
 			},
@@ -606,7 +618,6 @@ func TestMergeMultiNode(t *testing.T) {
 					},
 				},
 			},
-			1,
 			&pbv2.NodeResponse{
 				Data: map[string]*pbv2.LinkedGraph{
 					"dcid1": {
@@ -623,60 +634,90 @@ func TestMergeMultiNode(t *testing.T) {
 					},
 				},
 			},
-			[]*pbv1.PaginationInfo{
+			[]*pbv2.Pagination{
 				{
-					CursorGroups: []*pbv1.CursorGroup{
+					Info: []*pbv2.Pagination_DataSourceInfo{
 						{
-							Keys:    []string{"spanner1"},
-							Cursors: []*pbv1.Cursor{{Offset: 5000}},
-						},
-					},
-				},
-				{
-					CursorGroups: []*pbv1.CursorGroup{
-						{
-							Keys: []string{"key2"},
-							Cursors: []*pbv1.Cursor{
-								{
-									ImportGroup: 2,
-									Page:        2,
-									Item:        10,
+							Id: "spanner1",
+							DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
+								SpannerInfo: &pbv2.SpannerInfo{
+									Offset: 5000,
 								},
 							},
 						},
 					},
 				},
 				{
-					CursorGroups: []*pbv1.CursorGroup{
+					Info: []*pbv2.Pagination_DataSourceInfo{
 						{
-							Keys:    []string{"spanner2"},
-							Cursors: []*pbv1.Cursor{{Offset: 1000}},
+							Id: "remote",
+							DataSourceInfo: &pbv2.Pagination_DataSourceInfo_BigtableInfo{
+								BigtableInfo: &pbv1.PaginationInfo{
+									CursorGroups: []*pbv1.CursorGroup{
+										{
+											Keys: []string{"key2"},
+											Cursors: []*pbv1.Cursor{
+												{
+													ImportGroup: 2,
+													Page:        2,
+													Item:        10,
+												},
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+				{
+					Info: []*pbv2.Pagination_DataSourceInfo{
+						{
+							Id: "spanner2",
+							DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
+								SpannerInfo: &pbv2.SpannerInfo{
+									Offset: 1000,
+								},
+							},
 						},
 					},
 				},
 				{},
 			},
-			&pbv1.PaginationInfo{
-				CursorGroups: []*pbv1.CursorGroup{
+			&pbv2.Pagination{
+				Info: []*pbv2.Pagination_DataSourceInfo{
 					{
-						Keys:    []string{"spanner1"},
-						Cursors: []*pbv1.Cursor{{Offset: 5000}},
+						Id: "spanner1",
+						DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
+							SpannerInfo: &pbv2.SpannerInfo{
+								Offset: 5000,
+							},
+						},
 					},
 					{
-						Keys:    []string{"spanner2"},
-						Cursors: []*pbv1.Cursor{{Offset: 1000}},
-					},
-				},
-				RemotePaginationInfo: &pbv1.PaginationInfo{
-					CursorGroups: []*pbv1.CursorGroup{
-						{
-							Keys: []string{"key2"},
-							Cursors: []*pbv1.Cursor{
-								{
-									ImportGroup: 2,
-									Page:        2,
-									Item:        10,
+						Id: "remote",
+						DataSourceInfo: &pbv2.Pagination_DataSourceInfo_BigtableInfo{
+							BigtableInfo: &pbv1.PaginationInfo{
+								CursorGroups: []*pbv1.CursorGroup{
+									{
+										Keys: []string{"key2"},
+										Cursors: []*pbv1.Cursor{
+											{
+												ImportGroup: 2,
+												Page:        2,
+												Item:        10,
+											},
+										},
+									},
 								},
+							},
+						},
+					},
+					{
+						Id: "spanner2",
+						DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
+							SpannerInfo: &pbv2.SpannerInfo{
+								Offset: 1000,
 							},
 						},
 					},
@@ -686,26 +727,26 @@ func TestMergeMultiNode(t *testing.T) {
 	} {
 		var err error
 
-		for i, pi := range c.allPi {
-			c.allResp[i].NextToken, err = util.EncodeProto(pi)
+		for i, info := range c.allInfo {
+			c.allResp[i].NextToken, err = util.EncodeProto(info)
 			if err != nil {
-				t.Errorf("EncodeProto(%v) = %s", pi, err)
+				t.Errorf("EncodeProto(%v) = %s", info, err)
 				continue
 			}
 		}
-		c.want.NextToken, err = util.EncodeProto(c.wantPi)
+		c.want.NextToken, err = util.EncodeProto(c.wantInfo)
 		if err != nil {
-			t.Errorf("EncodeProto(%v) = %s", c.wantPi, err)
+			t.Errorf("EncodeProto(%v) = %s", c.wantInfo, err)
 			continue
 		}
 
-		got, err := MergeMultiNode(c.allResp, c.remoteIdx)
+		got, err := MergeMultiNode(c.allResp)
 		if err != nil {
-			t.Errorf("MergeMultiNode(%v, %v) = %s", c.allResp, c.remoteIdx, err)
+			t.Errorf("MergeMultiNode(%v) = %s", c.allResp, err)
 			continue
 		}
 		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
-			t.Errorf("MergeMultiNode(%v, %v) got diff: %s", c.allResp, c.remoteIdx, diff)
+			t.Errorf("MergeMultiNode(%v) got diff: %s", c.allResp, diff)
 		}
 	}
 }
