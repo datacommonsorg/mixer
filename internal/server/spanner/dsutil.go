@@ -23,7 +23,6 @@ import (
 	"strconv"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
@@ -90,34 +89,31 @@ func getOffset(nextToken, dataSourceID string) (int32, error) {
 		return 0, nil
 	}
 
-	pi, err := pagination.Decode(nextToken)
+	info, err := pagination.DecodeNextToken(nextToken)
 	if err != nil {
 		return 0, err
 	}
 
-	for _, cursorGroup := range pi.GetCursorGroups() {
-		for _, key := range cursorGroup.GetKeys() {
-			if key == dataSourceID {
-				if len(cursorGroup.GetCursors()) < 1 {
-					return 0, fmt.Errorf("pagination info missing cursor for Spanner data source: %s", dataSourceID)
-				}
-				return cursorGroup.GetCursors()[0].GetOffset(), nil
-			}
-		}
+	spanner_info, ok := info.Info[dataSourceID]
+	if !ok {
+		return 0, fmt.Errorf("pagination info missing cursor for Spanner data source: %s", dataSourceID)
 	}
 
-	return 0, nil
+	return spanner_info.GetSpannerInfo().Offset, nil
 }
 
 // getNextToken encodes next offset in a nextToken string.
 func getNextToken(offset int32, dataSourceID string) (string, error) {
-	pi := &pbv1.PaginationInfo{
-		CursorGroups: []*pbv1.CursorGroup{{
-			Keys: []string{dataSourceID},
-			Cursors: []*pbv1.Cursor{{
-				Offset: offset,
-			}},
-		}},
+	pi := &pbv2.Pagination{
+		Info: map[string]*pbv2.Pagination_DataSourceInfo{
+			dataSourceID: {
+				DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
+					SpannerInfo: &pbv2.SpannerInfo{
+						Offset: offset,
+					},
+				},
+			},
+		},
 	}
 	nextToken, err := util.EncodeProto(pi)
 	if err != nil {
