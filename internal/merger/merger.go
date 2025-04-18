@@ -221,7 +221,6 @@ func MergeMultiNode(allResp []*pbv2.NodeResponse) (*pbv2.NodeResponse, error) {
 		return nil, err
 	}
 	merged.NextToken = nextToken
-	print(nextToken)
 	return merged, nil
 }
 
