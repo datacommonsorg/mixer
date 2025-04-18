@@ -152,15 +152,17 @@ func TestDecodeNextToken(t *testing.T) {
 	}{
 		{
 			&pbv2.Pagination{
-				Info: map[string]*pbv2.Pagination_DataSourceInfo{
-					"spanner": {
+				Info: []*pbv2.Pagination_DataSourceInfo{
+					{
+						Id: "spanner",
 						DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
 							SpannerInfo: &pbv2.SpannerInfo{
 								Offset: 5000,
 							},
 						},
 					},
-					"remote": {
+					{
+						Id: "bigtable",
 						DataSourceInfo: &pbv2.Pagination_DataSourceInfo_BigtableInfo{
 							BigtableInfo: &pbv1.PaginationInfo{
 								CursorGroups: []*pbv1.CursorGroup{
@@ -230,8 +232,7 @@ func TestDecodeNextToken(t *testing.T) {
 					},
 				},
 			},
-			"H4sIAAAAAAAA/+IS4GIvLkjMy0stEmIVYuboUOcq4GIrSs3NL0kVSuNK4dLj4khPzfdM0TcwFWKSEBFi42AUYJTgEmLjYILSzAJMEkZCbBwsID6XEVy9mRCrAKvECUawFg6JFCF2DiYBdolpjGA9/BI2YD0sEhoAAAAA//8BAAD//yvsSKmEAAAA",
-		},
+			"H4sIAAAAAAAA/+Li42IvLkjMy0stkmLm6FDnKuDiSMpML0lMykkVSuHS4+JIT833TNE3MBVikhARYuNgFGCU4BJi42CC0swCTBJGQmwcLCA+lxFcvZkQqwCrxAlGsBYOiRQhdg4mAXaJaYxgPfwSNmA9LBIaAAAAAP//AQAA///R+sYdggAAAA=="},
 	} {
 		info, err := DecodeNextToken(c.token)
 		if err != nil {
