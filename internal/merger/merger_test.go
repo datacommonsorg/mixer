@@ -617,6 +617,19 @@ func TestMergeMultiNode(t *testing.T) {
 						},
 					},
 				},
+				{
+					Data: map[string]*pbv2.LinkedGraph{
+						"dcid1": {
+							Arcs: map[string]*pbv2.Nodes{
+								"prop1": {
+									Nodes: []*pb.EntityInfo{
+										{Value: "val5"},
+									},
+								},
+							},
+						},
+					},
+				},
 			},
 			&pbv2.NodeResponse{
 				Data: map[string]*pbv2.LinkedGraph{
@@ -628,6 +641,7 @@ func TestMergeMultiNode(t *testing.T) {
 									{Value: "val2"},
 									{Value: "val3"},
 									{Value: "val4"},
+									{Value: "val5"},
 								},
 							},
 						},
@@ -650,7 +664,7 @@ func TestMergeMultiNode(t *testing.T) {
 				{
 					Info: []*pbv2.Pagination_DataSourceInfo{
 						{
-							Id: "remote",
+							Id: "bigtable",
 							DataSourceInfo: &pbv2.Pagination_DataSourceInfo_BigtableInfo{
 								BigtableInfo: &pbv1.PaginationInfo{
 									CursorGroups: []*pbv1.CursorGroup{
@@ -683,6 +697,16 @@ func TestMergeMultiNode(t *testing.T) {
 					},
 				},
 				{},
+				{
+					Info: []*pbv2.Pagination_DataSourceInfo{
+						{
+							Id: "remote",
+							DataSourceInfo: &pbv2.Pagination_DataSourceInfo_StringInfo{
+								StringInfo: "test string info",
+							},
+						},
+					},
+				},
 			},
 			&pbv2.Pagination{
 				Info: []*pbv2.Pagination_DataSourceInfo{
@@ -695,7 +719,7 @@ func TestMergeMultiNode(t *testing.T) {
 						},
 					},
 					{
-						Id: "remote",
+						Id: "bigtable",
 						DataSourceInfo: &pbv2.Pagination_DataSourceInfo_BigtableInfo{
 							BigtableInfo: &pbv1.PaginationInfo{
 								CursorGroups: []*pbv1.CursorGroup{
@@ -719,6 +743,12 @@ func TestMergeMultiNode(t *testing.T) {
 							SpannerInfo: &pbv2.SpannerInfo{
 								Offset: 1000,
 							},
+						},
+					},
+					{
+						Id: "remote",
+						DataSourceInfo: &pbv2.Pagination_DataSourceInfo_StringInfo{
+							StringInfo: "test string info",
 						},
 					},
 				},

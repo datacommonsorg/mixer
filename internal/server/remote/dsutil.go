@@ -19,7 +19,6 @@ package remote
 import (
 	"fmt"
 
-	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -36,20 +35,12 @@ func formatNodeRequest(req *pbv2.NodeRequest, id string) error {
 		req.NextToken = ""
 		for _, dataSourceInfo := range info.Info {
 			if dataSourceInfo.GetId() == id {
-				remote_info, ok := dataSourceInfo.GetDataSourceInfo().(*pbv2.Pagination_DataSourceInfo_BigtableInfo)
+				string_info, ok := dataSourceInfo.GetDataSourceInfo().(*pbv2.Pagination_DataSourceInfo_StringInfo)
 				if !ok {
 					return fmt.Errorf("found different data source info for remote data source id: %s", id)
 				}
 
-				pi := &pbv1.PaginationInfo{
-					RemotePaginationInfo: remote_info.BigtableInfo,
-				}
-				nextToken, err := util.EncodeProto(pi)
-				if err != nil {
-					return err
-				}
-
-				req.NextToken = nextToken
+				req.NextToken = string_info.StringInfo
 			}
 		}
 	}
@@ -62,17 +53,12 @@ func formatNodeResponse(resp *pbv2.NodeResponse, id string) error {
 		return nil
 	}
 
-	pi, err := pagination.Decode(resp.GetNextToken())
-	if err != nil {
-		return err
-	}
-
 	info := &pbv2.Pagination{
 		Info: []*pbv2.Pagination_DataSourceInfo{
 			{
 				Id: id,
-				DataSourceInfo: &pbv2.Pagination_DataSourceInfo_BigtableInfo{
-					BigtableInfo: pi,
+				DataSourceInfo: &pbv2.Pagination_DataSourceInfo_StringInfo{
+					StringInfo: resp.GetNextToken(),
 				},
 			},
 		},

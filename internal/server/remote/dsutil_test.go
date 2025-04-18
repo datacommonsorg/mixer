@@ -46,10 +46,10 @@ func TestFormatNodeRequest(t *testing.T) {
 		},
 		{
 			&pbv2.NodeRequest{
-				NextToken: "H4sIAAAAAAAA/+Li5+IoLkjMy0stMpRi5uhQ55LiYitKzc0vSRUS4OLjYslOrTQSYuNgEmCS4EJSbCTFzPGCHQAAAP//AQAA//+wr2EhPgAAAA==",
+				NextToken: "H4sIAAAAAAAA/+Li5+IoLkjMy0stMpRi5uhQ55Lh4kjKTC9JTMpJFRLg4uNiyU6tNBJi42ASYJLgQlJuJMXM8YKdS4qLrSg1N78kVUmgJLW4RKG4pCgzL10hMy8tHwAAAP//AQAA///cX0j1XAAAAA==",
 			},
 			"remote",
-			"H4sIAAAAAAAA/xIS4OLjYslOrTQSYuNgEmCS4AIAAAD//wEAAP//Uucl2BIAAAA=",
+			"test string info",
 		},
 	} {
 		err := formatNodeRequest(c.req, c.id)
@@ -79,10 +79,10 @@ func TestFormatNodeResponse(t *testing.T) {
 		},
 		{
 			&pbv2.NodeResponse{
-				NextToken: "H4sIAAAAAAAA/xIS4OLjYslOrTQSYuNgEmCS4AIAAAD//wEAAP//Uucl2BIAAAA=",
+				NextToken: "test string info",
 			},
 			"remote",
-			"H4sIAAAAAAAA/+KS4WIrSs3NL0kVEhIS4OLjYslOrTQSYuNgEmCS4AIAAAD//wEAAP//vwkwFB4AAAA=",
+			"H4sIAAAAAAAA/+KS4mIrSs3NL0lVEihJLS5RKC4pysxLV8jMS8sHAAAA//8BAAD//69wDuAcAAAA",
 		},
 	} {
 		err := formatNodeResponse(c.resp, c.id)
