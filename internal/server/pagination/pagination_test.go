@@ -162,7 +162,7 @@ func TestDecodeNextToken(t *testing.T) {
 						},
 					},
 					{
-						Id: "remote",
+						Id: "bigtable",
 						DataSourceInfo: &pbv2.Pagination_DataSourceInfo_BigtableInfo{
 							BigtableInfo: &pbv1.PaginationInfo{
 								CursorGroups: []*pbv1.CursorGroup{
@@ -232,8 +232,7 @@ func TestDecodeNextToken(t *testing.T) {
 					},
 				},
 			},
-			"H4sIAAAAAAAA/+Li42IvLkjMy0stkmLm6FDnyuNiK0rNzS9JFUrh0uPiSE/N90zRNzAVYpIQEWLjYBRglOASYuNggtLMAkwSRkJsHCwgPpcRXL2ZEKsAq8QJRrAWDokUIXYOJgF2iWmMYD38EjZgPSwSGgAAAAD//wEAAP//pynKqIAAAAA=",
-		},
+			"H4sIAAAAAAAA/+Li42IvLkjMy0stkmLm6FDnKuDiSMpML0lMykkVSuHS4+JIT833TNE3MBVikhARYuNgFGCU4BJi42CC0swCTBJGQmwcLCA+lxFcvZkQqwCrxAlGsBYOiRQhdg4mAXaJaYxgPfwSNmA9LBIaAAAAAP//AQAA///R+sYdggAAAA=="},
 	} {
 		info, err := DecodeNextToken(c.token)
 		if err != nil {

@@ -45,7 +45,7 @@ func NewRemoteClient(metadata *resource.Metadata) (*RemoteClient, error) {
 }
 
 func (rc *RemoteClient) Node(req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
-	err := formatNodeRequest(req, rc.id)
+	err := updateNodeRequestNextToken(req, rc.id)
 	if err != nil {
 		return nil, err
 	}
@@ -56,7 +56,7 @@ func (rc *RemoteClient) Node(req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) 
 		return nil, err
 	}
 
-	err = formatNodeResponse(resp, rc.id)
+	err = updateNodeResponseNextToken(resp, rc.id)
 	if err != nil {
 		return nil, err
 	}

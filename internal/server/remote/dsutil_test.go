@@ -22,7 +22,7 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestFormatNodeRequest(t *testing.T) {
+func TestUpdateNodeRequestNextToken(t *testing.T) {
 	cmpOpts := cmp.Options{
 		protocmp.Transform(),
 	}
@@ -52,17 +52,17 @@ func TestFormatNodeRequest(t *testing.T) {
 			"test string info",
 		},
 	} {
-		err := formatNodeRequest(c.req, c.id)
+		err := updateNodeRequestNextToken(c.req, c.id)
 		if err != nil {
-			t.Errorf("Error running formatNodeRequest(%v, %v)", c.req, c.id)
+			t.Errorf("Error running updateNodeRequestNextToken(%v, %v)", c.req, c.id)
 		}
 		if diff := cmp.Diff(c.req.GetNextToken(), c.wantNextToken, cmpOpts); diff != "" {
-			t.Errorf("formatNodeRequest(%v, %v) got nextToken diff: %s", c.req, c.id, diff)
+			t.Errorf("updateNodeRequestNextToken(%v, %v) got nextToken diff: %s", c.req, c.id, diff)
 		}
 	}
 }
 
-func TestFormatNodeResponse(t *testing.T) {
+func TestUpdateNodeResponseNextToken(t *testing.T) {
 	cmpOpts := cmp.Options{
 		protocmp.Transform(),
 	}
@@ -85,12 +85,12 @@ func TestFormatNodeResponse(t *testing.T) {
 			"H4sIAAAAAAAA/+KS4mIrSs3NL0lVEihJLS5RKC4pysxLV8jMS8sHAAAA//8BAAD//69wDuAcAAAA",
 		},
 	} {
-		err := formatNodeResponse(c.resp, c.id)
+		err := updateNodeResponseNextToken(c.resp, c.id)
 		if err != nil {
-			t.Errorf("Error running formatNodeResponse(%v, %v)", c.resp, c.id)
+			t.Errorf("Error running updateNodeResponseNextToken(%v, %v)", c.resp, c.id)
 		}
 		if diff := cmp.Diff(c.resp.GetNextToken(), c.wantNextToken, cmpOpts); diff != "" {
-			t.Errorf("formatNodeResponse(%v, %v) got nextToken diff: %s", c.resp, c.id, diff)
+			t.Errorf("updateNodeResponseNextToken(%v, %v) got nextToken diff: %s", c.resp, c.id, diff)
 		}
 	}
 }

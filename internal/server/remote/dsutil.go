@@ -24,8 +24,8 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
-// formatNodeRequest updates the NodeRequest for a remote data source.
-func formatNodeRequest(req *pbv2.NodeRequest, id string) error {
+// updateNodeRequestNextToken updates the NodeRequest for a remote data source.
+func updateNodeRequestNextToken(req *pbv2.NodeRequest, id string) error {
 	if req.GetNextToken() != "" {
 		info, err := pagination.DecodeNextToken(req.GetNextToken())
 		if err != nil {
@@ -47,8 +47,8 @@ func formatNodeRequest(req *pbv2.NodeRequest, id string) error {
 	return nil
 }
 
-// formatNodeResponse updates the NodeResponse from a remote data source.
-func formatNodeResponse(resp *pbv2.NodeResponse, id string) error {
+// updateNodeResponseNextToken updates the NodeResponse from a remote data source.
+func updateNodeResponseNextToken(resp *pbv2.NodeResponse, id string) error {
 	if resp.GetNextToken() == "" {
 		return nil
 	}
