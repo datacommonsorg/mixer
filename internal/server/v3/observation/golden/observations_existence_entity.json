@@ -1,0 +1,15 @@
+{
+  "by_variable": {
+    "Count_HeatTemperatureEvent": {
+      "by_entity": {
+        "wikidataId/Q341968": {}
+      }
+    },
+    "Count_Person": {
+      "by_entity": {
+        "wikidataId/Q1764983": {},
+        "wikidataId/Q341968": {}
+      }
+    }
+  }
+}

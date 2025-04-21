@@ -1,0 +1,82 @@
+[
+  {
+    "VariableMeasured": "Count_HeatTemperatureEvent",
+    "ObservationAbout": "wikidataId/Q341968",
+    "Observations": {
+      "Observations": [
+        {
+          "Date": "2022-09",
+          "Value": "1"
+        },
+        {
+          "Date": "2022-10",
+          "Value": "2"
+        }
+      ]
+    },
+    "Provenance": "dc/base/TemperatureEvents_Agg",
+    "ObservationPeriod": "P1M",
+    "MeasurementMethod": "DataCommonsAggregate",
+    "Unit": "",
+    "ScalingFactor": "",
+    "ImportName": "TemperatureEvents_Agg",
+    "ProvenanceURL": "https://datacommons.org"
+  },
+  {
+    "VariableMeasured": "Count_HeatTemperatureEvent",
+    "ObservationAbout": "wikidataId/Q341968",
+    "Observations": {
+      "Observations": [
+        {
+          "Date": "2022",
+          "Value": "3"
+        }
+      ]
+    },
+    "Provenance": "dc/base/TemperatureEvents_Agg",
+    "ObservationPeriod": "P1Y",
+    "MeasurementMethod": "DataCommonsAggregate",
+    "Unit": "",
+    "ScalingFactor": "",
+    "ImportName": "TemperatureEvents_Agg",
+    "ProvenanceURL": "https://datacommons.org"
+  },
+  {
+    "VariableMeasured": "Count_Person",
+    "ObservationAbout": "wikidataId/Q341968",
+    "Observations": {
+      "Observations": [
+        {
+          "Date": "2016",
+          "Value": "653"
+        }
+      ]
+    },
+    "Provenance": "dc/base/WikidataPopulation",
+    "ObservationPeriod": "",
+    "MeasurementMethod": "WikidataPopulation",
+    "Unit": "",
+    "ScalingFactor": "",
+    "ImportName": "WikidataPopulation",
+    "ProvenanceURL": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
+  },
+  {
+    "VariableMeasured": "Count_Person",
+    "ObservationAbout": "wikidataId/Q341968",
+    "Observations": {
+      "Observations": [
+        {
+          "Date": "2021",
+          "Value": "606"
+        }
+      ]
+    },
+    "Provenance": "dc/base/WikipediaStatsData",
+    "ObservationPeriod": "",
+    "MeasurementMethod": "Wikipedia",
+    "Unit": "",
+    "ScalingFactor": "",
+    "ImportName": "WikipediaStatsData",
+    "ProvenanceURL": "https://www.wikipedia.org"
+  }
+]

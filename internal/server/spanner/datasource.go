@@ -77,7 +77,27 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv2.NodeRequest) (
 
 // Observation retrieves observation data from Spanner.
 func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
-	variables, entities, entityExpr := req.Variable.Dcids, req.Entity.Dcids, req.Entity.Expression
+	if req.Entity == nil {
+		return nil, fmt.Errorf("entity must be specified")
+	}
+
+	entities, entityExpr := req.Entity.Dcids, req.Entity.Expression
+	if len(entities) > 0 && entityExpr != "" {
+		return nil, fmt.Errorf("only one of entity.dcids and entity.expression should be specified")
+	}
+
+	variables := []string{}
+	if req.Variable != nil {
+		// Variable expressions are not yet supported in Spanner.
+		if req.Variable.Expression != "" {
+			return nil, nil
+		}
+		variables = req.Variable.Dcids
+	}
+	if entityExpr != "" && len(variables) == 0 {
+		return nil, fmt.Errorf("variable must be specified for entity.expression")
+	}
+
 	date := req.Date
 	var observations []*Observation
 	var err error

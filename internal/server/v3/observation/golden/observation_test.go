@@ -201,6 +201,33 @@ func TestV3Observation(t *testing.T) {
 				},
 				goldenFile: "observations_str_val.json",
 			},
+			{
+				req: &pbv2.ObservationRequest{
+					Entity: &pbv2.DcidOrExpression{
+						Dcids: []string{"wikidataId/Q341968", "wikidataId/Q1764983"},
+					},
+					Select: []string{"entity", "variable"},
+				},
+				goldenFile: "observations_existence_entity.json",
+			},
+			{
+				req: &pbv2.ObservationRequest{
+					Entity: &pbv2.DcidOrExpression{
+						Dcids: []string{"wikidataId/Q341968", "wikidataId/Q1764983"},
+					},
+					Select: []string{"entity", "variable", "facet"},
+				},
+				goldenFile: "observations_facet_entity.json",
+			},
+			{
+				req: &pbv2.ObservationRequest{
+					Entity: &pbv2.DcidOrExpression{
+						Dcids: []string{"wikidataId/Q341968", "wikidataId/Q1764983"},
+					},
+					Select: []string{"entity", "variable", "date", "value"},
+				},
+				goldenFile: "observations_entity.json",
+			},
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V3Observation(ctx, c.req)
