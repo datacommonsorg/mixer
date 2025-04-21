@@ -410,6 +410,377 @@ func TestMergeNode(t *testing.T) {
 	}
 }
 
+func TestMergeMultiNode(t *testing.T) {
+	cmpOpts := cmp.Options{
+		protocmp.Transform(),
+	}
+
+	for _, c := range []struct {
+		allResp  []*pbv2.NodeResponse
+		want     *pbv2.NodeResponse
+		allInfo  []*pbv2.Pagination
+		wantInfo *pbv2.Pagination
+	}{
+		{
+			[]*pbv2.NodeResponse{},
+			&pbv2.NodeResponse{},
+			[]*pbv2.Pagination{},
+			&pbv2.Pagination{},
+		},
+		{
+			[]*pbv2.NodeResponse{
+				{
+					Data: map[string]*pbv2.LinkedGraph{
+						"dcid1": {
+							Arcs: map[string]*pbv2.Nodes{
+								"prop1": {
+									Nodes: []*pb.EntityInfo{
+										{Value: "val1"},
+									},
+								},
+							},
+						},
+					},
+				},
+				{
+					Data: map[string]*pbv2.LinkedGraph{
+						"dcid1": {
+							Arcs: map[string]*pbv2.Nodes{
+								"prop1": {
+									Nodes: []*pb.EntityInfo{
+										{Value: "val2"},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+			&pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"dcid1": {
+						Arcs: map[string]*pbv2.Nodes{
+							"prop1": {
+								Nodes: []*pb.EntityInfo{
+									{Value: "val1"},
+									{Value: "val2"},
+								},
+							},
+						},
+					},
+				},
+			},
+			[]*pbv2.Pagination{},
+			&pbv2.Pagination{},
+		},
+		{
+			[]*pbv2.NodeResponse{
+				{
+					Data: map[string]*pbv2.LinkedGraph{
+						"dcid1": {
+							Arcs: map[string]*pbv2.Nodes{
+								"prop1": {
+									Nodes: []*pb.EntityInfo{
+										{Value: "val1"},
+									},
+								},
+							},
+						},
+					},
+				},
+				{
+					Data: map[string]*pbv2.LinkedGraph{
+						"dcid1": {
+							Arcs: map[string]*pbv2.Nodes{
+								"prop1": {
+									Nodes: []*pb.EntityInfo{
+										{Value: "val2"},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+			&pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"dcid1": {
+						Arcs: map[string]*pbv2.Nodes{
+							"prop1": {
+								Nodes: []*pb.EntityInfo{
+									{Value: "val1"},
+									{Value: "val2"},
+								},
+							},
+						},
+					},
+				},
+			},
+			[]*pbv2.Pagination{
+				{
+					Info: []*pbv2.Pagination_DataSourceInfo{
+						{
+							Id: "spanner1",
+							DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
+								SpannerInfo: &pbv2.SpannerInfo{
+									Offset: 5000,
+								},
+							},
+						},
+					},
+				},
+				{
+					Info: []*pbv2.Pagination_DataSourceInfo{
+						{
+							Id: "spanner2",
+							DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
+								SpannerInfo: &pbv2.SpannerInfo{
+									Offset: 1000,
+								},
+							},
+						},
+					},
+				},
+			},
+			&pbv2.Pagination{
+				Info: []*pbv2.Pagination_DataSourceInfo{
+					{
+						Id: "spanner1",
+						DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
+							SpannerInfo: &pbv2.SpannerInfo{
+								Offset: 5000,
+							},
+						},
+					},
+					{
+						Id: "spanner2",
+						DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
+							SpannerInfo: &pbv2.SpannerInfo{
+								Offset: 1000,
+							},
+						},
+					},
+				},
+			},
+		},
+		{
+			[]*pbv2.NodeResponse{
+				{
+					Data: map[string]*pbv2.LinkedGraph{
+						"dcid1": {
+							Arcs: map[string]*pbv2.Nodes{
+								"prop1": {
+									Nodes: []*pb.EntityInfo{
+										{Value: "val1"},
+									},
+								},
+							},
+						},
+					},
+				},
+				{
+					Data: map[string]*pbv2.LinkedGraph{
+						"dcid1": {
+							Arcs: map[string]*pbv2.Nodes{
+								"prop1": {
+									Nodes: []*pb.EntityInfo{
+										{Value: "val2"},
+									},
+								},
+							},
+						},
+					},
+				},
+				{
+					Data: map[string]*pbv2.LinkedGraph{
+						"dcid1": {
+							Arcs: map[string]*pbv2.Nodes{
+								"prop1": {
+									Nodes: []*pb.EntityInfo{
+										{Value: "val3"},
+									},
+								},
+							},
+						},
+					},
+				},
+				{
+					Data: map[string]*pbv2.LinkedGraph{
+						"dcid1": {
+							Arcs: map[string]*pbv2.Nodes{
+								"prop1": {
+									Nodes: []*pb.EntityInfo{
+										{Value: "val4"},
+									},
+								},
+							},
+						},
+					},
+				},
+				{
+					Data: map[string]*pbv2.LinkedGraph{
+						"dcid1": {
+							Arcs: map[string]*pbv2.Nodes{
+								"prop1": {
+									Nodes: []*pb.EntityInfo{
+										{Value: "val5"},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+			&pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"dcid1": {
+						Arcs: map[string]*pbv2.Nodes{
+							"prop1": {
+								Nodes: []*pb.EntityInfo{
+									{Value: "val1"},
+									{Value: "val2"},
+									{Value: "val3"},
+									{Value: "val4"},
+									{Value: "val5"},
+								},
+							},
+						},
+					},
+				},
+			},
+			[]*pbv2.Pagination{
+				{
+					Info: []*pbv2.Pagination_DataSourceInfo{
+						{
+							Id: "spanner1",
+							DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
+								SpannerInfo: &pbv2.SpannerInfo{
+									Offset: 5000,
+								},
+							},
+						},
+					},
+				},
+				{
+					Info: []*pbv2.Pagination_DataSourceInfo{
+						{
+							Id: "bigtable",
+							DataSourceInfo: &pbv2.Pagination_DataSourceInfo_BigtableInfo{
+								BigtableInfo: &pbv1.PaginationInfo{
+									CursorGroups: []*pbv1.CursorGroup{
+										{
+											Keys: []string{"key2"},
+											Cursors: []*pbv1.Cursor{
+												{
+													ImportGroup: 2,
+													Page:        2,
+													Item:        10,
+												},
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+				{
+					Info: []*pbv2.Pagination_DataSourceInfo{
+						{
+							Id: "spanner2",
+							DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
+								SpannerInfo: &pbv2.SpannerInfo{
+									Offset: 1000,
+								},
+							},
+						},
+					},
+				},
+				{},
+				{
+					Info: []*pbv2.Pagination_DataSourceInfo{
+						{
+							Id: "remote",
+							DataSourceInfo: &pbv2.Pagination_DataSourceInfo_StringInfo{
+								StringInfo: "test string info",
+							},
+						},
+					},
+				},
+			},
+			&pbv2.Pagination{
+				Info: []*pbv2.Pagination_DataSourceInfo{
+					{
+						Id: "spanner1",
+						DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
+							SpannerInfo: &pbv2.SpannerInfo{
+								Offset: 5000,
+							},
+						},
+					},
+					{
+						Id: "bigtable",
+						DataSourceInfo: &pbv2.Pagination_DataSourceInfo_BigtableInfo{
+							BigtableInfo: &pbv1.PaginationInfo{
+								CursorGroups: []*pbv1.CursorGroup{
+									{
+										Keys: []string{"key2"},
+										Cursors: []*pbv1.Cursor{
+											{
+												ImportGroup: 2,
+												Page:        2,
+												Item:        10,
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+					{
+						Id: "spanner2",
+						DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
+							SpannerInfo: &pbv2.SpannerInfo{
+								Offset: 1000,
+							},
+						},
+					},
+					{
+						Id: "remote",
+						DataSourceInfo: &pbv2.Pagination_DataSourceInfo_StringInfo{
+							StringInfo: "test string info",
+						},
+					},
+				},
+			},
+		},
+	} {
+		var err error
+
+		for i, info := range c.allInfo {
+			c.allResp[i].NextToken, err = util.EncodeProto(info)
+			if err != nil {
+				t.Errorf("EncodeProto(%v) = %s", info, err)
+				continue
+			}
+		}
+		c.want.NextToken, err = util.EncodeProto(c.wantInfo)
+		if err != nil {
+			t.Errorf("EncodeProto(%v) = %s", c.wantInfo, err)
+			continue
+		}
+
+		got, err := MergeMultiNode(c.allResp)
+		if err != nil {
+			t.Errorf("MergeMultiNode(%v) = %s", c.allResp, err)
+			continue
+		}
+		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
+			t.Errorf("MergeMultiNode(%v) got diff: %s", c.allResp, diff)
+		}
+	}
+}
+
 func TestMergeEvent(t *testing.T) {
 	cmpOpts := cmp.Options{
 		protocmp.Transform(),

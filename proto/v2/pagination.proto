@@ -28,11 +28,16 @@ message SpannerInfo {
 // Each DataSourceInfo corresponds to the info for one data source.
 message Pagination {
   message DataSourceInfo {
+    // Id of the data source.
+    string id = 1;
+
     oneof data_source_info {
-      datacommons.v1.PaginationInfo bigtable_info = 1;
-      SpannerInfo spanner_info = 2;
+      datacommons.v1.PaginationInfo bigtable_info = 2;
+      SpannerInfo spanner_info = 3;
+      string string_info = 4;
     }
   }
-  // The key is the id of the data source.
-  map<string, DataSourceInfo> info = 1;
+
+  // Using repeated to ensure consistent ordering for deterministic tokens.
+  repeated DataSourceInfo info = 1;
 }

@@ -95,6 +95,7 @@ func mergeLinkedGraph(
 
 	for dcid, linkedGraph := range auxData {
 		if isEmptyLinkedGraph(linkedGraph) {
+			mainData[dcid] = &pbv2.LinkedGraph{}
 			continue
 		}
 		if isEmptyLinkedGraph(mainData[dcid]) {
@@ -197,18 +198,30 @@ func MergeNode(main, aux *pbv2.NodeResponse) (*pbv2.NodeResponse, error) {
 // Merges multiple V2 NodeResponses.
 // Assumes the responses are in order of priority.
 func MergeMultiNode(allResp []*pbv2.NodeResponse) (*pbv2.NodeResponse, error) {
-	if len(allResp) == 0 {
-		return &pbv2.NodeResponse{}, nil
-	}
-	prev := allResp[0]
-	for i := 1; i < len(allResp); i++ {
-		cur, err := MergeNode(prev, allResp[i])
+	merged := &pbv2.NodeResponse{}
+	mergedInfo := &pbv2.Pagination{}
+
+	for i := 0; i < len(allResp); i++ {
+		merged.Data = mergeLinkedGraph(merged.GetData(), allResp[i].GetData())
+
+		if allResp[i].GetNextToken() == "" {
+			continue
+		}
+
+		info, err := pagination.DecodeNextToken(allResp[i].GetNextToken())
 		if err != nil {
 			return nil, err
 		}
-		prev = cur
+
+		mergedInfo.Info = append(mergedInfo.Info, info.Info...)
 	}
-	return prev, nil
+
+	nextToken, err := util.EncodeProto(mergedInfo)
+	if err != nil {
+		return nil, err
+	}
+	merged.NextToken = nextToken
+	return merged, nil
 }
 
 // MergeEvent merges two V2 event responses.
