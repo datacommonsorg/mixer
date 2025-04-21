@@ -90,6 +90,7 @@ type Pagination struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// Using repeated to ensure consistent ordering for deterministic tokens.
 	Info []*Pagination_DataSourceInfo `protobuf:"bytes,1,rep,name=info,proto3" json:"info,omitempty"`
 }
 

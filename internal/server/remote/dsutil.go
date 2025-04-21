@@ -41,6 +41,7 @@ func updateNodeRequestNextToken(req *pbv2.NodeRequest, id string) error {
 				}
 
 				req.NextToken = string_info.StringInfo
+				return nil
 			}
 		}
 	}

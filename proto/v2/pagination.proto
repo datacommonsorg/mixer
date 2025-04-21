@@ -38,5 +38,6 @@ message Pagination {
     }
   }
 
+  // Using repeated to ensure consistent ordering for deterministic tokens.
   repeated DataSourceInfo info = 1;
 }
