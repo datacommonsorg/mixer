@@ -43,8 +43,10 @@ var statements = struct {
 	applyOffset string
 	// Subquery to apply page limit.
 	applyLimit string
-	// Fetch Observations for variable+entity.
-	getObsByVariableAndEntity string
+	// Fetch Observations for entity dcids.
+	getObsByEntity string
+	// Filter by variable dcids.
+	selectVariableDcids string
 	// Fetch observations for variable + contained in place.
 	getObsByVariableAndContainedInPlace string
 	// Search nodes by name only.
@@ -235,7 +237,7 @@ var statements = struct {
 	applyLimit: fmt.Sprintf(`
 		LIMIT %d
 	`, PAGE_SIZE+1),
-	getObsByVariableAndEntity: `
+	getObsByEntity: `
 		SELECT
 			variable_measured,
 			observation_about,
@@ -247,10 +249,13 @@ var statements = struct {
 			COALESCE(scaling_factor, '') AS scaling_factor,
 			import_name,
 			provenance_url
-		FROM Observation
+		FROM 
+			Observation
 		WHERE
-			variable_measured IN UNNEST(@variables) AND
 			observation_about IN UNNEST(@entities)
+	`,
+	selectVariableDcids: `
+		AND variable_measured IN UNNEST(@variables)
 	`,
 	getObsByVariableAndContainedInPlace: `
 		SELECT

@@ -87,7 +87,7 @@ func TestGetNodeProps(t *testing.T) {
 	}
 }
 
-func TestGetNodeEdgesByID(t *testing.T) {
+func TestGetNodeOutEdgesByID(t *testing.T) {
 	client := test.NewSpannerClient()
 	if client == nil {
 		return
@@ -112,15 +112,6 @@ func TestGetNodeEdgesByID(t *testing.T) {
 			},
 			offset:     0,
 			goldenFile: "get_node_edges_by_subject_id.json",
-		},
-		{
-			ids: []string{"FireIncidentTypeEnum", "FoodTypeEnum"},
-			arc: &v2.Arc{
-				Out:        false,
-				SingleProp: "*",
-			},
-			offset:     0,
-			goldenFile: "get_node_edges_by_object_id.json",
 		},
 		{
 			ids: []string{"Person"},
@@ -161,6 +152,64 @@ func TestGetNodeEdgesByID(t *testing.T) {
 			},
 			offset:     0,
 			goldenFile: "get_node_edges_out_chain.json",
+		},
+	} {
+		actual, err := client.GetNodeEdgesByID(ctx, c.ids, c.arc, c.offset)
+		if err != nil {
+			t.Fatalf("GetNodeEdgesByID error (%v): %v", c.goldenFile, err)
+		}
+
+		actual = simplifyNodes(actual)
+
+		got, err := test.StructToJSON(actual)
+		if err != nil {
+			t.Fatalf("StructToJSON error (%v): %v", c.goldenFile, err)
+		}
+
+		if test.GenerateGolden {
+			err = test.WriteGolden(got, goldenDir, c.goldenFile)
+			if err != nil {
+				t.Fatalf("WriteGolden error (%v): %v", c.goldenFile, err)
+			}
+			return
+		}
+
+		want, err := test.ReadGolden(goldenDir, c.goldenFile)
+		if err != nil {
+			t.Fatalf("ReadGolden error (%v): %v", c.goldenFile, err)
+		}
+
+		if diff := cmp.Diff(want, got); diff != "" {
+			t.Errorf("%v payload mismatch (-want +got):\n%s", c.goldenFile, diff)
+		}
+	}
+}
+
+func TestGetNodeInEdgesByID(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+	ctx := context.Background()
+	_, filename, _, _ := runtime.Caller(0)
+	goldenDir := path.Join(path.Dir(filename), "query")
+
+	for _, c := range []struct {
+		ids        []string
+		arc        *v2.Arc
+		offset     int32
+		goldenFile string
+	}{
+		{
+			ids: []string{"FireIncidentTypeEnum", "FoodTypeEnum"},
+			arc: &v2.Arc{
+				Out:        false,
+				SingleProp: "*",
+			},
+			offset:     0,
+			goldenFile: "get_node_edges_by_object_id.json",
 		},
 		{
 			ids: []string{"EarthquakeEvent"},
@@ -283,6 +332,7 @@ func TestGetNodeEdgesByID(t *testing.T) {
 		}
 	}
 }
+
 func TestGetObservations(t *testing.T) {
 	client := test.NewSpannerClient()
 	if client == nil {
@@ -295,10 +345,9 @@ func TestGetObservations(t *testing.T) {
 	goldenDir := path.Join(path.Dir(filename), "query")
 
 	for _, c := range []struct {
-		variables        []string
-		entities         []string
-		containedInPlace *v2.ContainedInPlace
-		goldenFile       string
+		variables  []string
+		entities   []string
+		goldenFile string
 	}{
 		{
 			variables:  []string{"AirPollutant_Cancer_Risk"},
@@ -306,19 +355,12 @@ func TestGetObservations(t *testing.T) {
 			goldenFile: "get_observations.json",
 		},
 		{
-			variables:        []string{"Count_Person", "Median_Age_Person"},
-			containedInPlace: &v2.ContainedInPlace{Ancestor: "geoId/06", ChildPlaceType: "County"},
-			goldenFile:       "get_observations_contained_in.json",
+			entities:   []string{"wikidataId/Q341968"},
+			goldenFile: "get_observations_entity.json",
 		},
 	} {
-		var actual []*spanner.Observation
-		var err error
+		actual, err := client.GetObservations(ctx, c.variables, c.entities)
 
-		if c.containedInPlace != nil {
-			actual, err = client.GetObservationsContainedInPlace(ctx, c.variables, c.containedInPlace)
-		} else {
-			actual, err = client.GetObservations(ctx, c.variables, c.entities)
-		}
 		if err != nil {
 			t.Fatalf("GetObservations error (%v): %v", c.goldenFile, err)
 		}
@@ -345,8 +387,60 @@ func TestGetObservations(t *testing.T) {
 			t.Errorf("%v payload mismatch (-want +got):\n%s", c.goldenFile, diff)
 		}
 	}
-
 }
+
+func TestGetObservationsContainedInPlace(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+	ctx := context.Background()
+	_, filename, _, _ := runtime.Caller(0)
+	goldenDir := path.Join(path.Dir(filename), "query")
+
+	for _, c := range []struct {
+		variables        []string
+		containedInPlace *v2.ContainedInPlace
+		goldenFile       string
+	}{
+		{
+			variables:        []string{"Count_Person", "Median_Age_Person"},
+			containedInPlace: &v2.ContainedInPlace{Ancestor: "geoId/06", ChildPlaceType: "County"},
+			goldenFile:       "get_observations_contained_in.json",
+		},
+	} {
+		actual, err := client.GetObservationsContainedInPlace(ctx, c.variables, c.containedInPlace)
+
+		if err != nil {
+			t.Fatalf("GetObservations error (%v): %v", c.goldenFile, err)
+		}
+
+		got, err := test.StructToJSON(actual)
+		if err != nil {
+			t.Fatalf("StructToJSON error (%v): %v", c.goldenFile, err)
+		}
+
+		if test.GenerateGolden {
+			err = test.WriteGolden(got, goldenDir, c.goldenFile)
+			if err != nil {
+				t.Fatalf("WriteGolden error (%v): %v", c.goldenFile, err)
+			}
+			continue
+		}
+
+		want, err := test.ReadGolden(goldenDir, c.goldenFile)
+		if err != nil {
+			t.Fatalf("ReadGolden error (%v): %v", c.goldenFile, err)
+		}
+
+		if diff := cmp.Diff(want, got); diff != "" {
+			t.Errorf("%v payload mismatch (-want +got):\n%s", c.goldenFile, diff)
+		}
+	}
+}
+
 func TestSearchNodes(t *testing.T) {
 	client := test.NewSpannerClient()
 	if client == nil {

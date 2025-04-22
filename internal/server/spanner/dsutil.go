@@ -248,12 +248,16 @@ func observationsToObservationResponse(req *pbv2.ObservationRequest, observation
 	}
 }
 
-func newObservationResponse(variables []string) *pbv2.ObservationResponse {
+func newObservationResponse(variable *pbv2.DcidOrExpression) *pbv2.ObservationResponse {
 	result := &pbv2.ObservationResponse{
 		ByVariable: map[string]*pbv2.VariableObservation{},
 		Facets:     map[string]*pb.Facet{},
 	}
-	for _, variable := range variables {
+	if variable == nil || len(variable.Dcids) == 0 {
+		return result
+	}
+
+	for _, variable := range variable.Dcids {
 		result.ByVariable[variable] = &pbv2.VariableObservation{
 			ByEntity: map[string]*pbv2.EntityObservation{},
 		}
@@ -278,13 +282,20 @@ func groupObservationsByVariableAndEntity(observations []*Observation) map[varia
 	return result
 }
 
-func generateObsResponse(variables []string, observations []*Observation, includeObs bool) *pbv2.ObservationResponse {
-	response := newObservationResponse(variables)
+func generateObsResponse(variable *pbv2.DcidOrExpression, observations []*Observation, includeObs bool) *pbv2.ObservationResponse {
+	response := newObservationResponse(variable)
 
 	variableEntityObs := groupObservationsByVariableAndEntity(observations)
 	for variableEntity, obs := range variableEntityObs {
 		orderedFacets, facets := observationsToOrderedFacets(obs, includeObs)
-		response.ByVariable[variableEntity.variable].ByEntity[variableEntity.entity] = &pbv2.EntityObservation{
+		variableObs, ok := response.ByVariable[variableEntity.variable]
+		if !ok {
+			variableObs = &pbv2.VariableObservation{
+				ByEntity: map[string]*pbv2.EntityObservation{},
+			}
+			response.ByVariable[variableEntity.variable] = variableObs
+		}
+		variableObs.ByEntity[variableEntity.entity] = &pbv2.EntityObservation{
 			OrderedFacets: orderedFacets,
 		}
 		for facetId, facet := range facets {
@@ -343,7 +354,7 @@ func mergeEntityOrderedFacets(byEntity map[string]*pbv2.EntityObservation, child
 }
 
 func obsToObsResponse(req *pbv2.ObservationRequest, observations []*Observation) *pbv2.ObservationResponse {
-	response := generateObsResponse(req.Variable.Dcids, observations, true /*includeObs*/)
+	response := generateObsResponse(req.Variable, observations, true /*includeObs*/)
 
 	// Attach all requested entity dcids to response.
 	if len(req.Entity.Dcids) > 0 {
@@ -361,30 +372,42 @@ func obsToObsResponse(req *pbv2.ObservationRequest, observations []*Observation)
 }
 
 func obsToFacetResponse(req *pbv2.ObservationRequest, observations []*Observation) *pbv2.ObservationResponse {
-	response := generateObsResponse(req.Variable.Dcids, observations, false /*includeObs*/)
+	response := generateObsResponse(req.Variable, observations, false /*includeObs*/)
 
 	if len(req.Entity.Dcids) > 0 {
 		return response
 	}
 
 	// Merge child places for entity expression.
-	mergedResponse := newObservationResponse(req.Variable.Dcids)
+	mergedResponse := newObservationResponse(req.Variable)
 	mergedResponse.Facets = response.Facets
 	childPlaces := getDistinctEntities(observations)
-	for variable, variableObs := range mergedResponse.ByVariable {
-		variableObs.ByEntity[ENTITY_PLACEHOLDER] = &pbv2.EntityObservation{}
-		initialVariableObs, ok := response.ByVariable[variable]
-		if ok {
-			variableObs.ByEntity[ENTITY_PLACEHOLDER].OrderedFacets = mergeEntityOrderedFacets(initialVariableObs.ByEntity, childPlaces)
+	for variable, initialVariableObs := range response.ByVariable {
+		variableObs, ok := mergedResponse.ByVariable[variable]
+		if !ok {
+			variableObs = &pbv2.VariableObservation{
+				ByEntity: map[string]*pbv2.EntityObservation{},
+			}
+			mergedResponse.ByVariable[variable] = variableObs
+		}
+		variableObs.ByEntity[ENTITY_PLACEHOLDER] = &pbv2.EntityObservation{
+			OrderedFacets: mergeEntityOrderedFacets(initialVariableObs.ByEntity, childPlaces),
 		}
 	}
 	return mergedResponse
 }
 
 func obsToExistenceResponse(req *pbv2.ObservationRequest, observations []*Observation) *pbv2.ObservationResponse {
-	response := newObservationResponse(req.Variable.Dcids)
+	response := newObservationResponse(req.Variable)
 	for _, obs := range observations {
-		response.ByVariable[obs.VariableMeasured].ByEntity[obs.ObservationAbout] = &pbv2.EntityObservation{}
+		variableObs, ok := response.ByVariable[obs.VariableMeasured]
+		if !ok {
+			variableObs = &pbv2.VariableObservation{
+				ByEntity: map[string]*pbv2.EntityObservation{},
+			}
+			response.ByVariable[obs.VariableMeasured] = variableObs
+		}
+		variableObs.ByEntity[obs.ObservationAbout] = &pbv2.EntityObservation{}
 	}
 	return response
 }
@@ -397,7 +420,7 @@ func observationsToOrderedFacets(observations []*Observation, includeObs bool) (
 		pvf, facetObs := observationToFacetObservation(obs, includeObs)
 
 		// Skip rows with no time series.
-		if pvf.ObsCount == 0 {
+		if pvf == nil {
 			continue
 		}
 
@@ -432,6 +455,10 @@ func observationToFacetObservation(observation *Observation, includeObs bool) (*
 		}
 
 		observations = append(observations, pointStat)
+	}
+
+	if len(observations) == 0 {
+		return nil, nil
 	}
 
 	facetObservation := &pbv2.FacetObservation{

@@ -169,16 +169,17 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 // GetObservations retrieves observations from Spanner given a list of variables and entities.
 func (sc *SpannerClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error) {
 	var observations []*Observation
-	if len(variables) == 0 || len(entities) == 0 {
-		return observations, nil
-	}
 
 	stmt := spanner.Statement{
-		SQL: statements.getObsByVariableAndEntity,
+		SQL: statements.getObsByEntity,
 		Params: map[string]interface{}{
-			"variables": variables,
-			"entities":  entities,
+			"entities": entities,
 		},
+	}
+
+	if len(variables) > 0 {
+		stmt.SQL += statements.selectVariableDcids
+		stmt.Params["variables"] = variables
 	}
 
 	err := sc.queryAndCollect(
