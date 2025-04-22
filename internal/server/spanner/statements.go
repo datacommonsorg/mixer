@@ -312,15 +312,16 @@ var statements = struct {
 			obs.scaling_factor,
 			obs.import_name,
 			obs.provenance_url
-		FROM GRAPH_TABLE (
-			DCGraph MATCH <-[e:Edge
-			WHERE
-				e.object_id = @ancestor
-				AND e.subject_id != e.object_id
-				AND e.predicate = 'linkedContainedInPlace']-()-[{predicate: 'typeOf', object_id: @childPlaceType}]->
-			RETURN 
-			e.subject_id as object_id
-		)result
+		FROM 
+			GRAPH_TABLE (
+				DCGraph MATCH <-[e:Edge
+				WHERE
+					e.object_id = @ancestor
+					AND e.subject_id != e.object_id
+					AND e.predicate = 'linkedContainedInPlace']-()-[{predicate: 'typeOf', object_id: @childPlaceType}]->
+				RETURN 
+				e.subject_id as object_id
+			)result
 		INNER JOIN (%s)obs
 		ON 
 			result.object_id = obs.observation_about	
