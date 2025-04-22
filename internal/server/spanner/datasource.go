@@ -17,6 +17,7 @@ package spanner
 import (
 	"context"
 	"fmt"
+	"log"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
@@ -90,6 +91,7 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 	if req.Variable != nil {
 		// Variable expressions are not yet supported in Spanner.
 		if req.Variable.Expression != "" {
+			log.Printf("Received spanner request with variable expression: %s. Variable expressions are not yet supported in Spanner.", req.Variable.Expression)
 			return nil, nil
 		}
 		variables = req.Variable.Dcids
