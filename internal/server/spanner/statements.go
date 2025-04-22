@@ -324,7 +324,7 @@ var statements = struct {
 			)result
 		INNER JOIN (%s)obs
 		ON 
-			result.object_id = obs.observation_about	
+			result.object_id = obs.observation_about
 	`,
 	searchNodesByQuery: fmt.Sprintf(`
 		GRAPH DCGraph
