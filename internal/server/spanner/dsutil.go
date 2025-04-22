@@ -253,7 +253,7 @@ func newObservationResponse(variable *pbv2.DcidOrExpression) *pbv2.ObservationRe
 		ByVariable: map[string]*pbv2.VariableObservation{},
 		Facets:     map[string]*pb.Facet{},
 	}
-	if variable == nil || variable.Expression != "" {
+	if variable == nil || len(variable.Dcids) == 0 {
 		return result
 	}
 
@@ -420,7 +420,7 @@ func observationsToOrderedFacets(observations []*Observation, includeObs bool) (
 		pvf, facetObs := observationToFacetObservation(obs, includeObs)
 
 		// Skip rows with no time series.
-		if pvf.ObsCount == 0 {
+		if pvf == nil {
 			continue
 		}
 
@@ -455,6 +455,10 @@ func observationToFacetObservation(observation *Observation, includeObs bool) (*
 		}
 
 		observations = append(observations, pointStat)
+	}
+
+	if len(observations) == 0 {
+		return nil, nil
 	}
 
 	facetObservation := &pbv2.FacetObservation{
