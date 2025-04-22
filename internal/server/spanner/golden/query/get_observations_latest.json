@@ -1,0 +1,97 @@
+[
+  {
+    "VariableMeasured": "Count_Person",
+    "ObservationAbout": "country/CAN",
+    "Observations": {
+      "Observations": [
+        {
+          "Date": "2021",
+          "Value": "36991981"
+        }
+      ]
+    },
+    "Provenance": "dc/base/CanadaStatistics",
+    "ObservationPeriod": "",
+    "MeasurementMethod": "",
+    "Unit": "",
+    "ScalingFactor": "",
+    "ImportName": "CanadaStatistics",
+    "ProvenanceURL": "https://www150.statcan.gc.ca/n1/en/type/data?MM=1"
+  },
+  {
+    "VariableMeasured": "Count_Person",
+    "ObservationAbout": "country/CAN",
+    "Observations": {
+      "Observations": [
+        {
+          "Date": "2023",
+          "Value": "40097761"
+        }
+      ]
+    },
+    "Provenance": "dc/base/OECDRegionalDemography",
+    "ObservationPeriod": "P1Y",
+    "MeasurementMethod": "OECDRegionalStatistics",
+    "Unit": "",
+    "ScalingFactor": "",
+    "ImportName": "OECDRegionalDemography",
+    "ProvenanceURL": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#"
+  },
+  {
+    "VariableMeasured": "Count_Person",
+    "ObservationAbout": "country/CAN",
+    "Observations": {
+      "Observations": [
+        {
+          "Date": "2017",
+          "Value": "36708083"
+        }
+      ]
+    },
+    "Provenance": "dc/base/WikidataPopulation",
+    "ObservationPeriod": "",
+    "MeasurementMethod": "WikidataPopulation",
+    "Unit": "",
+    "ScalingFactor": "",
+    "ImportName": "WikidataPopulation",
+    "ProvenanceURL": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
+  },
+  {
+    "VariableMeasured": "Count_Person",
+    "ObservationAbout": "country/CAN",
+    "Observations": {
+      "Observations": [
+        {
+          "Date": "2024",
+          "Value": "41012563"
+        }
+      ]
+    },
+    "Provenance": "dc/base/WikipediaStatsData",
+    "ObservationPeriod": "",
+    "MeasurementMethod": "Wikipedia",
+    "Unit": "",
+    "ScalingFactor": "",
+    "ImportName": "WikipediaStatsData",
+    "ProvenanceURL": "https://www.wikipedia.org"
+  },
+  {
+    "VariableMeasured": "Count_Person",
+    "ObservationAbout": "country/CAN",
+    "Observations": {
+      "Observations": [
+        {
+          "Date": "2023",
+          "Value": "40097761"
+        }
+      ]
+    },
+    "Provenance": "dc/base/WorldDevelopmentIndicators",
+    "ObservationPeriod": "P1Y",
+    "MeasurementMethod": "",
+    "Unit": "",
+    "ScalingFactor": "",
+    "ImportName": "WorldDevelopmentIndicators",
+    "ProvenanceURL": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
+  }
+]

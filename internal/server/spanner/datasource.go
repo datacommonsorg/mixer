@@ -109,18 +109,18 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 		if err != nil {
 			return nil, fmt.Errorf("error getting observations (contained in): %v", err)
 		}
-		observations, err = sds.client.GetObservationsContainedInPlace(ctx, variables, containedInPlace)
+		observations, err = sds.client.GetObservationsContainedInPlace(ctx, variables, containedInPlace, date)
 		if err != nil {
 			return nil, fmt.Errorf("error getting observations (contained in): %v", err)
 		}
 	} else {
-		observations, err = sds.client.GetObservations(ctx, variables, entities)
+		observations, err = sds.client.GetObservations(ctx, variables, entities, date)
 		if err != nil {
 			return nil, fmt.Errorf("error getting observations: %v", err)
 		}
 	}
 
-	observations = filterObservationsByDateAndFacet(observations, date, req.Filter)
+	observations = filterObservationsByFacet(observations, req.Filter)
 
 	return observationsToObservationResponse(req, observations), nil
 }

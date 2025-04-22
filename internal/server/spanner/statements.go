@@ -43,10 +43,18 @@ var statements = struct {
 	applyOffset string
 	// Subquery to apply page limit.
 	applyLimit string
-	// Fetch Observations for entity dcids.
-	getObsByEntity string
+	// Fetch all Observations.
+	getAllObs string
+	// Fetch latest Observations.
+	getLatestObs string
+	// Fetch Observations for a specific date.
+	getDateObs string
 	// Filter by variable dcids.
 	selectVariableDcids string
+	// Filter by entity dcids.
+	selectEntityDcids string
+	// Filter by date.
+	selectDate string
 	// Fetch observations for variable + contained in place.
 	getObsByVariableAndContainedInPlace string
 	// Search nodes by name only.
@@ -237,7 +245,7 @@ var statements = struct {
 	applyLimit: fmt.Sprintf(`
 		LIMIT %d
 	`, PAGE_SIZE+1),
-	getObsByEntity: `
+	getAllObs: `
 		SELECT
 			variable_measured,
 			observation_about,
@@ -251,11 +259,46 @@ var statements = struct {
 			provenance_url
 		FROM 
 			Observation
-		WHERE
-			observation_about IN UNNEST(@entities)
+	`,
+	getLatestObs: `
+		SELECT
+			variable_measured,
+			observation_about,
+			[observations[ARRAY_LENGTH(observations)-1]] AS observations,
+			provenance,
+			COALESCE(observation_period, '') AS observation_period,
+			COALESCE(measurement_method, '') AS measurement_method,
+			COALESCE(unit, '') AS unit,
+			COALESCE(scaling_factor, '') AS scaling_factor,
+			import_name,
+			provenance_url
+		FROM 
+			Observation
+	`,
+	getDateObs: `
+		SELECT
+			variable_measured,
+			observation_about,
+			[obs] AS observations,
+			provenance,
+			COALESCE(observation_period, '') AS observation_period,
+			COALESCE(measurement_method, '') AS measurement_method,
+			COALESCE(unit, '') AS unit,
+			COALESCE(scaling_factor, '') AS scaling_factor,
+			import_name,
+			provenance_url
+		FROM 
+			Observation,
+			UNNEST(observations) as obs
 	`,
 	selectVariableDcids: `
-		AND variable_measured IN UNNEST(@variables)
+		variable_measured IN UNNEST(@variables)
+	`,
+	selectEntityDcids: `
+		observation_about IN UNNEST(@entities)
+	`,
+	selectDate: `
+		JSON_VALUE(obs, @date) IS NOT NULL
 	`,
 	getObsByVariableAndContainedInPlace: `
 		SELECT
@@ -263,29 +306,24 @@ var statements = struct {
 			obs.observation_about,
 			obs.observations,
 			obs.provenance,
-			COALESCE(obs.observation_period, '') AS observation_period,
-			COALESCE(obs.measurement_method, '') AS measurement_method,
-			COALESCE(obs.unit, '') AS unit,
-			COALESCE(obs.scaling_factor, '') AS scaling_factor,
-			obs.import_name, 
+			obs.observation_period,
+			obs.measurement_method,
+			obs.unit,
+			obs.scaling_factor,
+			obs.import_name,
 			obs.provenance_url
 		FROM GRAPH_TABLE (
-				DCGraph MATCH <-[e:Edge
-				WHERE
-					e.object_id = @ancestor
-					AND e.subject_id != e.object_id
-					AND e.predicate = 'linkedContainedInPlace']-()-[{predicate: 'typeOf', object_id: @childPlaceType}]->
-				RETURN 
-				e.subject_id as object_id
-			)result
-		INNER JOIN (
-		SELECT
-			*
-		FROM Observation
-		WHERE
-			variable_measured IN UNNEST(@variables))obs
+			DCGraph MATCH <-[e:Edge
+			WHERE
+				e.object_id = @ancestor
+				AND e.subject_id != e.object_id
+				AND e.predicate = 'linkedContainedInPlace']-()-[{predicate: 'typeOf', object_id: @childPlaceType}]->
+			RETURN 
+			e.subject_id as object_id
+		)result
+		INNER JOIN (%s)obs
 		ON 
-			result.object_id = obs.observation_about
+			result.object_id = obs.observation_about	
 	`,
 	searchNodesByQuery: fmt.Sprintf(`
 		GRAPH DCGraph
