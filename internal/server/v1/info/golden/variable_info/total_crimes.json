@@ -22,7 +22,7 @@
         "maxValue": 36325
       },
       "City": {
-        "placeCount": 9888,
+        "placeCount": 9999,
         "topPlaces": [
           {
             "dcid": "geoId/3651000",
@@ -52,19 +52,19 @@
         "maxValue": 11111207
       },
       "County": {
-        "placeCount": 4,
+        "placeCount": 5,
         "topPlaces": [
           {
             "dcid": "geoId/34007",
             "name": "Camden County"
           },
           {
-            "dcid": "geoId/26121",
-            "name": "Muskegon County"
+            "dcid": "geoId/26049",
+            "name": "Genesee County"
           },
           {
-            "dcid": "geoId/02185",
-            "name": "North Slope Borough"
+            "dcid": "geoId/26121",
+            "name": "Muskegon County"
           }
         ],
         "minValue": 8,
@@ -103,7 +103,7 @@
             "latestDate": "2023",
             "placeTypeSummary": {
               "CensusCountyDivision": {
-                "placeCount": 1496,
+                "placeCount": 1450,
                 "topPlaces": [
                   {
                     "dcid": "geoId/1500390810",
@@ -122,7 +122,7 @@
                 "maxValue": 36325
               },
               "City": {
-                "placeCount": 9888,
+                "placeCount": 9999,
                 "topPlaces": [
                   {
                     "dcid": "geoId/3651000",
@@ -141,19 +141,19 @@
                 "maxValue": 250958
               },
               "County": {
-                "placeCount": 4,
+                "placeCount": 5,
                 "topPlaces": [
                   {
                     "dcid": "geoId/34007",
                     "name": "Camden County"
                   },
                   {
-                    "dcid": "geoId/26121",
-                    "name": "Muskegon County"
+                    "dcid": "geoId/26049",
+                    "name": "Genesee County"
                   },
                   {
-                    "dcid": "geoId/02185",
-                    "name": "North Slope Borough"
+                    "dcid": "geoId/26121",
+                    "name": "Muskegon County"
                   }
                 ],
                 "minValue": 8,
@@ -181,12 +181,12 @@
             },
             "minValue": 0,
             "maxValue": 1265920,
-            "observationCount": 122295,
-            "timeSeriesCount": 11440
+            "observationCount": 126194,
+            "timeSeriesCount": 11506
           }
         ],
-        "observationCount": 122295,
-        "timeSeriesCount": 11440
+        "observationCount": 126194,
+        "timeSeriesCount": 11506
       },
       "dc/base/FBIGovCrime_AggCountry": {
         "importName": "FBIGovCrime_AggCountry",

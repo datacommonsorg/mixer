@@ -29,10 +29,6 @@
       "dcid": "dc/9pmyhk89dj3pf"
     },
     {
-      "name": "All employees, accommodation and food services",
-      "dcid": "Count_Person_Employed_AccommodationFoodServices"
-    },
-    {
       "name": "Count of Establishment: Federal Government Owned, Accommodation And Food Services (NAICS/72)",
       "dcid": "Count_Establishment_FederalGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
     },
@@ -47,6 +43,10 @@
     {
       "name": "Count of Establishment: State Government Owned, Accommodation And Food Services (NAICS/72)",
       "dcid": "Count_Establishment_StateGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
+    },
+    {
+      "name": "Number of people employed in accommodation and food services",
+      "dcid": "Count_Person_Employed_AccommodationFoodServices"
     },
     {
       "name": "Population of Person: Federal Government Owned, Accommodation And Food Services (NAICS/72)",

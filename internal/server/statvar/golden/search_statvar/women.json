@@ -965,8 +965,44 @@
       "dcid": "WHO/HIV_0000000015"
     },
     {
+      "name": "Number of women aged 30 to 39 years",
+      "dcid": "Count_Person_30To39Years_Female"
+    },
+    {
+      "name": "Number of women aged 40 to 49 years",
+      "dcid": "Count_Person_40To49Years_Female"
+    },
+    {
+      "name": "Number of women aged 50 to 59 years",
+      "dcid": "Count_Person_50To59Years_Female"
+    },
+    {
       "name": "Number of women beneficiaries of the Rural Development Program",
       "dcid": "Count_Person_BrazilRuralDevelopmentProgram_Female"
+    },
+    {
+      "name": "Number of women who can read and write",
+      "dcid": "Count_Person_EducationalAttainmentReadAndWrite_Female"
+    },
+    {
+      "name": "Number of women with education above intermediate level",
+      "dcid": "Count_Person_EducationalAttainmentAboveIntermediateEducation_Female"
+    },
+    {
+      "name": "Number of women with general or azhari secondary education",
+      "dcid": "Count_Person_EducationalAttainmentGeneralOrAzhariSecondaryEducation_Female"
+    },
+    {
+      "name": "Number of women with less than intermediate education",
+      "dcid": "Count_Person_EducationalAttainmentLessThanIntermediate_Female"
+    },
+    {
+      "name": "Number of women with technical secondary education",
+      "dcid": "Count_Person_EducationalAttainmentTechnicalSecondaryEducation_Female"
+    },
+    {
+      "name": "Number of women with university or higher education",
+      "dcid": "Count_Person_EducationalAttainmentUniversityOrHigher_Female"
     },
     {
       "name": "Obesity Prevalence In Non-Pregnant Women Aged 15-49 Years, Bmi \u003e= 30 (%) (obesewm), No Schooling Completed",
@@ -1561,6 +1597,10 @@
       "dcid": "Count_NonPregnantWoman_15To49Years_ConditionAnaemia_AsAFractionOf_Count_NonPregnantWoman_15To49Years"
     },
     {
+      "name": "Percentage of unemployed women",
+      "dcid": "Count_Person_Unemployed_Female_AsAFractionOf_Count_Person_Female"
+    },
+    {
       "name": "Pregnant women aged 15-49 yrs who are anaemic (11.0g/dl) (%)",
       "dcid": "Count_WHO/PregnantWomen_15To49Year_ConditionAnaemia_AsAFractionOf_Count_WHO/PregnantWomen_15To49Year"
     },
@@ -1665,8 +1705,164 @@
       "dcid": "Count_Person_Female_WithModeratelyElevatedBloodPressureOrSeverelyElevatedBloodPressure_AsAFractionOf_Count_Person_Female"
     },
     {
+      "name": "Number of divorced women aged 15 years",
+      "dcid": "Count_Person_15Years_Female_Divorced"
+    },
+    {
+      "name": "Number of divorced women aged 18 years and above",
+      "dcid": "Count_Person_18Years_Female_Divorced"
+    },
+    {
+      "name": "Number of divorced women aged 19 years",
+      "dcid": "Count_Person_19Years_Female_Divorced"
+    },
+    {
+      "name": "Number of divorced women aged 75 or more years",
+      "dcid": "Count_Person_75OrMoreYears_Female_Divorced"
+    },
+    {
+      "name": "Number of divorced women aged 75 years or less",
+      "dcid": "Count_Person_75OrLessYears_Female_Divorced"
+    },
+    {
       "name": "Number of employed women in the information sector",
       "dcid": "Count_Person_Employed_Female_Information"
+    },
+    {
+      "name": "Number of married women aged 15 years",
+      "dcid": "Count_Person_15Years_Female_Married"
+    },
+    {
+      "name": "Number of married women aged 18 years and above",
+      "dcid": "Count_Person_18Years_Female_Married"
+    },
+    {
+      "name": "Number of married women aged 19 years",
+      "dcid": "Count_Person_19Years_Female_Married"
+    },
+    {
+      "name": "Number of married women aged 75 or more years",
+      "dcid": "Count_Person_75OrMoreYears_Female_Married"
+    },
+    {
+      "name": "Number of married women aged 75 years or less",
+      "dcid": "Count_Person_75OrLessYears_Female_Married"
+    },
+    {
+      "name": "Number of never married women aged 15 years",
+      "dcid": "Count_Person_15Years_Female_NeverMarried"
+    },
+    {
+      "name": "Number of never married women aged 19 years",
+      "dcid": "Count_Person_19Years_Female_NeverMarried"
+    },
+    {
+      "name": "Number of never-married women aged 75 years or less",
+      "dcid": "Count_Person_75OrLessYears_Female_NeverMarried"
+    },
+    {
+      "name": "Number of widowed women aged 15 years and older",
+      "dcid": "Count_Person_15Years_Female_Widowed"
+    },
+    {
+      "name": "Number of widowed women aged 18 years and above",
+      "dcid": "Count_Person_18Years_Female_Widowed"
+    },
+    {
+      "name": "Number of widowed women aged 19 years",
+      "dcid": "Count_Person_19Years_Female_Widowed"
+    },
+    {
+      "name": "Number of widowed women aged 75 or more years",
+      "dcid": "Count_Person_75OrMoreYears_Female_Widowed"
+    },
+    {
+      "name": "Number of widowed women aged 75 years or less",
+      "dcid": "Count_Person_75OrLessYears_Female_Widowed"
+    },
+    {
+      "name": "Number of women aged 15 years in a contract marriage",
+      "dcid": "Count_Person_15Years_Female_ContractMarriage"
+    },
+    {
+      "name": "Number of women aged 17 years in a contract marriage",
+      "dcid": "Count_Person_17Years_Female_ContractMarriage"
+    },
+    {
+      "name": "Number of women aged 18 years or older in a contract marriage",
+      "dcid": "Count_Person_18Years_Female_ContractMarriage"
+    },
+    {
+      "name": "Number of women aged 20 to 24 years with contract marriage",
+      "dcid": "Count_Person_20To24Years_Female_ContractMarriage"
+    },
+    {
+      "name": "Number of women aged 25 to 29 years in a contractual marriage",
+      "dcid": "Count_Person_25To29Years_Female_ContractMarriage"
+    },
+    {
+      "name": "Number of women aged 30 to 34 years in a contract marriage",
+      "dcid": "Count_Person_30To34Years_Female_ContractMarriage"
+    },
+    {
+      "name": "Number of women aged 35 to 39 years in a contract marriage",
+      "dcid": "Count_Person_35To39Years_Female_ContractMarriage"
+    },
+    {
+      "name": "Number of women aged 40 to 44 years in contract marriage",
+      "dcid": "Count_Person_40To44Years_Female_ContractMarriage"
+    },
+    {
+      "name": "Number of women aged 45 to 49 years in contract marriage",
+      "dcid": "Count_Person_45To49Years_Female_ContractMarriage"
+    },
+    {
+      "name": "Number of women aged 50 to 54 years in a contract marriage",
+      "dcid": "Count_Person_50To54Years_Female_ContractMarriage"
+    },
+    {
+      "name": "Number of women aged 55 to 59 years in registered marriages",
+      "dcid": "Count_Person_55To59Years_Female_ContractMarriage"
+    },
+    {
+      "name": "Number of women aged 60 to 64 years in a contract marriage",
+      "dcid": "Count_Person_60To64Years_Female_ContractMarriage"
+    },
+    {
+      "name": "Number of women aged 65 to 69 years with a marriage contract",
+      "dcid": "Count_Person_65To69Years_Female_ContractMarriage"
+    },
+    {
+      "name": "Number of women aged 70 to 74 years in a registered marriage",
+      "dcid": "Count_Person_70To74Years_Female_ContractMarriage"
+    },
+    {
+      "name": "Number of women aged 75 or more years in contract marriages",
+      "dcid": "Count_Person_75OrMoreYears_Female_ContractMarriage"
+    },
+    {
+      "name": "Number of women aged 75 or more years who have never been married",
+      "dcid": "Count_Person_75OrMoreYears_Female_NeverMarried"
+    },
+    {
+      "name": "Number of women aged 75 years or less in contract marriage",
+      "dcid": "Count_Person_75OrLessYears_Female_ContractMarriage"
+    },
+    {
+      "name": "Number of women aged 85 to 89 years living in rural areas",
+      "dcid": "Count_Person_85To89Years_Female_Rural"
+    },
+    {
+      "name": "Number of women aged 85 to 89 years living in urban areas",
+      "dcid": "Count_Person_85To89Years_Female_Urban"
+    },
+    {
+      "name": "Number of women aged 90 years or older living in rural areas",
+      "dcid": "Count_Person_90OrMoreYears_Female_Rural"
+    },
+    {
+      "name": "Number of women aged 90 years or older living in urban areas",
+      "dcid": "Count_Person_90OrMoreYears_Female_Urban"
     },
     {
       "name": "Number of women born outside the country and excluding USA, Guatemala, Japan, France and Spain.",
@@ -1699,6 +1895,14 @@
     {
       "name": "Number of women employed in the mining and logging industry",
       "dcid": "Count_Person_Employed_Female_MiningAndLogging"
+    },
+    {
+      "name": "Number of women in contract marriage aged 19 years",
+      "dcid": "Count_Person_19Years_Female_ContractMarriage"
+    },
+    {
+      "name": "Number of women who are 18 years old and never married",
+      "dcid": "Count_Person_18Years_Female_NeverMarried"
     },
     {
       "name": "Percentage of Women (18 to 64 Years Old) Without Health Insurance",
@@ -1825,8 +2029,32 @@
       "dcid": "Count_Person_25To29Years_Unemployed_Female_AsAFractionOf_Count_Person_25To29Years_Female"
     },
     {
+      "name": "Percentage of unemployed women aged 40 to 49",
+      "dcid": "Count_Person_40To49Years_Unemployed_Female_AsAFractionOf_Count_Person_40To49Years_Female"
+    },
+    {
+      "name": "Percentage of unemployed women aged 50 to 59",
+      "dcid": "Count_Person_50To59Years_Unemployed_Female_AsAFractionOf_Count_Person_50To59Years_Female"
+    },
+    {
       "name": "Percentage of unemployed women aged between 40 and 44 years old",
       "dcid": "Count_Person_40To44Years_Unemployed_Female_AsAFractionOf_Count_Person_40To44Years_Female"
+    },
+    {
+      "name": "Percentage of unemployed women with above intermediate education",
+      "dcid": "Count_Person_AboveIntermediateEducation_Unemployed_Female_AsAFractionOf_Count_Person_AboveIntermediateEducation_Female"
+    },
+    {
+      "name": "Percentage of unemployed women with less than intermediate education",
+      "dcid": "Count_Person_LessThanIntermediate_Unemployed_Female_AsAFractionOf_Count_Person_LessThanIntermediate_Female"
+    },
+    {
+      "name": "Percentage of unemployed women with technical secondary education",
+      "dcid": "Count_Person_TechnicalSecondaryEducation_Unemployed_Female_AsAFractionOf_Count_Person_TechnicalSecondaryEducation_Female"
+    },
+    {
+      "name": "Percentage of unemployed women with university or higher education",
+      "dcid": "Count_Person_UniversityOrHigher_Unemployed_Female_AsAFractionOf_Count_Person_UniversityOrHigher_Female"
     },
     {
       "name": "Percentage of women aged 15 to 19 years who are farmers",
@@ -2089,6 +2317,14 @@
       "dcid": "WHO/RSUD_670_OtherMajorCities"
     },
     {
+      "name": "Unemployment rate among women who can read and write",
+      "dcid": "Count_Person_ReadAndWrite_Unemployed_Female_AsAFractionOf_Count_Person_ReadAndWrite_Female"
+    },
+    {
+      "name": "Unemployment rate among women with general or azhari secondary education",
+      "dcid": "Count_Person_GeneralOrAzhariSecondaryEducation_Unemployed_Female_AsAFractionOf_Count_Person_GeneralOrAzhariSecondaryEducation_Female"
+    },
+    {
       "name": "Unmet need for contraception (% of married women ages 15-49)",
       "dcid": "worldBank/SP_UWT_TFRT"
     },
@@ -2343,6 +2579,706 @@
     {
       "name": "Married women of age 15 to 49 years using injectables as one of the family planning methods (%)",
       "dcid": "Count_Person_15To49Years_Injectables_Female_Married"
+    },
+    {
+      "name": "Number of divorced women aged 15 years in rural areas",
+      "dcid": "Count_Person_15Years_Female_Divorced_Rural"
+    },
+    {
+      "name": "Number of divorced women aged 15 years in urban areas",
+      "dcid": "Count_Person_15Years_Female_Divorced_Urban"
+    },
+    {
+      "name": "Number of divorced women aged 19 living in rural areas",
+      "dcid": "Count_Person_19Years_Female_Divorced_Rural"
+    },
+    {
+      "name": "Number of divorced women aged 19 living in urban areas",
+      "dcid": "Count_Person_19Years_Female_Divorced_Urban"
+    },
+    {
+      "name": "Number of divorced women aged 20 to 24 years living in rural areas",
+      "dcid": "Count_Person_20To24Years_Female_Divorced_Rural"
+    },
+    {
+      "name": "Number of divorced women aged 20 to 24 years living in urban areas",
+      "dcid": "Count_Person_20To24Years_Female_Divorced_Urban"
+    },
+    {
+      "name": "Number of divorced women aged 25 to 29 years living in rural areas",
+      "dcid": "Count_Person_25To29Years_Female_Divorced_Rural"
+    },
+    {
+      "name": "Number of divorced women aged 25 to 29 years living in urban areas",
+      "dcid": "Count_Person_25To29Years_Female_Divorced_Urban"
+    },
+    {
+      "name": "Number of divorced women aged 30 to 34 years living in rural areas",
+      "dcid": "Count_Person_30To34Years_Female_Divorced_Rural"
+    },
+    {
+      "name": "Number of divorced women aged 30 to 34 years living in urban areas",
+      "dcid": "Count_Person_30To34Years_Female_Divorced_Urban"
+    },
+    {
+      "name": "Number of divorced women aged 35 to 39 years living in rural areas",
+      "dcid": "Count_Person_35To39Years_Female_Divorced_Rural"
+    },
+    {
+      "name": "Number of divorced women aged 35 to 39 years living in urban areas",
+      "dcid": "Count_Person_35To39Years_Female_Divorced_Urban"
+    },
+    {
+      "name": "Number of divorced women aged 40 to 44 years living in rural areas",
+      "dcid": "Count_Person_40To44Years_Female_Divorced_Rural"
+    },
+    {
+      "name": "Number of divorced women aged 40 to 44 years living in urban areas",
+      "dcid": "Count_Person_40To44Years_Female_Divorced_Urban"
+    },
+    {
+      "name": "Number of divorced women aged 45 to 49 living in rural areas",
+      "dcid": "Count_Person_45To49Years_Female_Divorced_Rural"
+    },
+    {
+      "name": "Number of divorced women aged 45 to 49 living in urban areas",
+      "dcid": "Count_Person_45To49Years_Female_Divorced_Urban"
+    },
+    {
+      "name": "Number of divorced women aged 50 to 54 years living in rural areas",
+      "dcid": "Count_Person_50To54Years_Female_Divorced_Rural"
+    },
+    {
+      "name": "Number of divorced women aged 50 to 54 years living in urban areas",
+      "dcid": "Count_Person_50To54Years_Female_Divorced_Urban"
+    },
+    {
+      "name": "Number of divorced women aged 55 to 59 years living in rural areas",
+      "dcid": "Count_Person_55To59Years_Female_Divorced_Rural"
+    },
+    {
+      "name": "Number of divorced women aged 55 to 59 years living in urban areas",
+      "dcid": "Count_Person_55To59Years_Female_Divorced_Urban"
+    },
+    {
+      "name": "Number of divorced women aged 60 to 64 years in rural areas",
+      "dcid": "Count_Person_60To64Years_Female_Divorced_Rural"
+    },
+    {
+      "name": "Number of divorced women aged 60 to 64 years in urban areas",
+      "dcid": "Count_Person_60To64Years_Female_Divorced_Urban"
+    },
+    {
+      "name": "Number of divorced women aged 65 to 69 years in rural areas",
+      "dcid": "Count_Person_65To69Years_Female_Divorced_Rural"
+    },
+    {
+      "name": "Number of divorced women aged 65 to 69 years in urban areas",
+      "dcid": "Count_Person_65To69Years_Female_Divorced_Urban"
+    },
+    {
+      "name": "Number of divorced women aged 70 to 74 years in rural areas",
+      "dcid": "Count_Person_70To74Years_Female_Divorced_Rural"
+    },
+    {
+      "name": "Number of divorced women aged 70 to 74 years in urban areas",
+      "dcid": "Count_Person_70To74Years_Female_Divorced_Urban"
+    },
+    {
+      "name": "Number of divorced women aged 75 or more years living in rural areas",
+      "dcid": "Count_Person_75OrMoreYears_Female_Divorced_Rural"
+    },
+    {
+      "name": "Number of divorced women aged 75 or more years living in urban areas",
+      "dcid": "Count_Person_75OrMoreYears_Female_Divorced_Urban"
+    },
+    {
+      "name": "Number of divorced women aged 75 years or less in rural areas",
+      "dcid": "Count_Person_75OrLessYears_Female_Divorced_Rural"
+    },
+    {
+      "name": "Number of divorced women aged 75 years or less in urban areas",
+      "dcid": "Count_Person_75OrLessYears_Female_Divorced_Urban"
+    },
+    {
+      "name": "Number of divorced women in rural areas aged 18 years and above",
+      "dcid": "Count_Person_18Years_Female_Divorced_Rural"
+    },
+    {
+      "name": "Number of divorced women in urban areas aged 18 years and above",
+      "dcid": "Count_Person_18Years_Female_Divorced_Urban"
+    },
+    {
+      "name": "Number of employed women aged 15 or older in administrative and support service activities",
+      "dcid": "Count_Person_15OrMoreYears_AdministrativeAndSupportServiceActivities_Employed_Female"
+    },
+    {
+      "name": "Number of employed women aged 15 or older in agriculture hunting,forestry and cutting trees",
+      "dcid": "Count_Person_15OrMoreYears_AgricultureHuntingForestryCuttingTrees_Employed_Female"
+    },
+    {
+      "name": "Number of employed women aged 15 or older in human health and social work",
+      "dcid": "Count_Person_15OrMoreYears_HumanHealthAndSocialWorkActivities_Employed_Female"
+    },
+    {
+      "name": "Number of employed women aged 15 or older in incompletely described activities",
+      "dcid": "Count_Person_15OrMoreYears_IncompletelyDescribedActivities_Employed_Female"
+    },
+    {
+      "name": "Number of employed women aged 15 or older in information and telecommunication",
+      "dcid": "Count_Person_15OrMoreYears_InformationAndTelecommunication_Employed_Female"
+    },
+    {
+      "name": "Number of employed women aged 15 or older in insurance and financial intermediation",
+      "dcid": "Count_Person_15OrMoreYears_InsuranceFinancialIntermediation_Employed_Female"
+    },
+    {
+      "name": "Number of employed women aged 15 years or over with access to water drainage and recycling",
+      "dcid": "Count_Person_15OrMoreYears_WaterSupportDrainRecycling_Employed_Female"
+    },
+    {
+      "name": "Number of employed women aged 15+ in international and regional organizations",
+      "dcid": "Count_Person_15OrMoreYears_InternationalAndRegionalOrganizations_Employed_Female"
+    },
+    {
+      "name": "Number of employed women aged 15+ in manufacturing",
+      "dcid": "Count_Person_15OrMoreYears_Manufacturing_Employed_Female"
+    },
+    {
+      "name": "Number of employed women aged 15+ in mining and quarrying",
+      "dcid": "Count_Person_15OrMoreYears_MiningAndQuarryingIndustry_Employed_Female"
+    },
+    {
+      "name": "Number of employed women aged 15+ in other service activities",
+      "dcid": "Count_Person_15OrMoreYears_OtherServiceActivities_Employed_Female"
+    },
+    {
+      "name": "Number of employed women aged 15+ in public administration and defense",
+      "dcid": "Count_Person_15OrMoreYears_PublicAdministrationAndDefence_Employed_Female"
+    },
+    {
+      "name": "Number of employed women aged 15+ in real estate renting",
+      "dcid": "Count_Person_15OrMoreYears_RealEstateRenting_Employed_Female"
+    },
+    {
+      "name": "Number of employed women aged 15+ in specialized scientific and technical activities",
+      "dcid": "Count_Person_15OrMoreYears_SpecializedScientificAndTechnicalActivities_Employed_Female"
+    },
+    {
+      "name": "Number of married urban women aged 15 years",
+      "dcid": "Count_Person_15Years_Female_Married_Urban"
+    },
+    {
+      "name": "Number of married urban women aged 25 to 29 years",
+      "dcid": "Count_Person_25To29Years_Female_Married_Urban"
+    },
+    {
+      "name": "Number of married women aged 15 years in rural areas",
+      "dcid": "Count_Person_15Years_Female_Married_Rural"
+    },
+    {
+      "name": "Number of married women aged 19 living in rural areas",
+      "dcid": "Count_Person_19Years_Female_Married_Rural"
+    },
+    {
+      "name": "Number of married women aged 19 living in urban areas",
+      "dcid": "Count_Person_19Years_Female_Married_Urban"
+    },
+    {
+      "name": "Number of married women aged 20 to 24 years living in rural areas",
+      "dcid": "Count_Person_20To24Years_Female_Married_Rural"
+    },
+    {
+      "name": "Number of married women aged 20 to 24 years living in urban areas",
+      "dcid": "Count_Person_20To24Years_Female_Married_Urban"
+    },
+    {
+      "name": "Number of married women aged 25 to 29 years living in rural areas",
+      "dcid": "Count_Person_25To29Years_Female_Married_Rural"
+    },
+    {
+      "name": "Number of married women aged 30 to 34 years living in rural areas",
+      "dcid": "Count_Person_30To34Years_Female_Married_Rural"
+    },
+    {
+      "name": "Number of married women aged 30 to 34 years living in urban areas",
+      "dcid": "Count_Person_30To34Years_Female_Married_Urban"
+    },
+    {
+      "name": "Number of married women aged 35 to 39 years living in rural areas",
+      "dcid": "Count_Person_35To39Years_Female_Married_Rural"
+    },
+    {
+      "name": "Number of married women aged 35 to 39 years living in urban areas",
+      "dcid": "Count_Person_35To39Years_Female_Married_Urban"
+    },
+    {
+      "name": "Number of married women aged 40 to 44 years living in rural areas",
+      "dcid": "Count_Person_40To44Years_Female_Married_Rural"
+    },
+    {
+      "name": "Number of married women aged 40 to 44 years living in urban areas",
+      "dcid": "Count_Person_40To44Years_Female_Married_Urban"
+    },
+    {
+      "name": "Number of married women aged 45 to 49 living in rural areas",
+      "dcid": "Count_Person_45To49Years_Female_Married_Rural"
+    },
+    {
+      "name": "Number of married women aged 45 to 49 living in urban areas",
+      "dcid": "Count_Person_45To49Years_Female_Married_Urban"
+    },
+    {
+      "name": "Number of married women aged 50 to 54 years living in rural areas",
+      "dcid": "Count_Person_50To54Years_Female_Married_Rural"
+    },
+    {
+      "name": "Number of married women aged 50 to 54 years living in urban areas",
+      "dcid": "Count_Person_50To54Years_Female_Married_Urban"
+    },
+    {
+      "name": "Number of married women aged 55 to 59 years living in rural areas",
+      "dcid": "Count_Person_55To59Years_Female_Married_Rural"
+    },
+    {
+      "name": "Number of married women aged 55 to 59 years living in urban areas",
+      "dcid": "Count_Person_55To59Years_Female_Married_Urban"
+    },
+    {
+      "name": "Number of married women aged 60 to 64 years in rural areas",
+      "dcid": "Count_Person_60To64Years_Female_Married_Rural"
+    },
+    {
+      "name": "Number of married women aged 60 to 64 years in urban areas",
+      "dcid": "Count_Person_60To64Years_Female_Married_Urban"
+    },
+    {
+      "name": "Number of married women aged 65 to 69 years in rural areas",
+      "dcid": "Count_Person_65To69Years_Female_Married_Rural"
+    },
+    {
+      "name": "Number of married women aged 65 to 69 years in urban areas",
+      "dcid": "Count_Person_65To69Years_Female_Married_Urban"
+    },
+    {
+      "name": "Number of married women aged 70 to 74 years in rural areas",
+      "dcid": "Count_Person_70To74Years_Female_Married_Rural"
+    },
+    {
+      "name": "Number of married women aged 70 to 74 years in urban areas",
+      "dcid": "Count_Person_70To74Years_Female_Married_Urban"
+    },
+    {
+      "name": "Number of married women aged 75 or more years living in rural areas",
+      "dcid": "Count_Person_75OrMoreYears_Female_Married_Rural"
+    },
+    {
+      "name": "Number of married women aged 75 or more years living in urban areas",
+      "dcid": "Count_Person_75OrMoreYears_Female_Married_Urban"
+    },
+    {
+      "name": "Number of married women aged 75 years or less in rural areas",
+      "dcid": "Count_Person_75OrLessYears_Female_Married_Rural"
+    },
+    {
+      "name": "Number of married women in rural areas aged 18 years and above",
+      "dcid": "Count_Person_18Years_Female_Married_Rural"
+    },
+    {
+      "name": "Number of married women in urban areas aged 18 years and above",
+      "dcid": "Count_Person_18Years_Female_Married_Urban"
+    },
+    {
+      "name": "Number of never married rural women aged 19 years",
+      "dcid": "Count_Person_19Years_Female_NeverMarried_Rural"
+    },
+    {
+      "name": "Number of never married women aged 15 years and older living in urban areas",
+      "dcid": "Count_Person_15Years_Female_NeverMarried_Urban"
+    },
+    {
+      "name": "Number of never married women aged 15 years in rural areas",
+      "dcid": "Count_Person_15Years_Female_NeverMarried_Rural"
+    },
+    {
+      "name": "Number of never married women aged 19 years living in urban areas",
+      "dcid": "Count_Person_19Years_Female_NeverMarried_Urban"
+    },
+    {
+      "name": "Number of never married women aged 20 to 24 years living in rural areas",
+      "dcid": "Count_Person_20To24Years_Female_NeverMarried_Rural"
+    },
+    {
+      "name": "Number of never married women aged 20 to 24 years living in urban areas",
+      "dcid": "Count_Person_20To24Years_Female_NeverMarried_Urban"
+    },
+    {
+      "name": "Number of never married women aged 30 to 34 years living in rural areas",
+      "dcid": "Count_Person_30To34Years_Female_NeverMarried_Rural"
+    },
+    {
+      "name": "Number of never married women aged 30 to 34 years living in urban areas",
+      "dcid": "Count_Person_30To34Years_Female_NeverMarried_Urban"
+    },
+    {
+      "name": "Number of never married women aged 35 to 39 years living in rural areas",
+      "dcid": "Count_Person_35To39Years_Female_NeverMarried_Rural"
+    },
+    {
+      "name": "Number of never married women aged 35 to 39 years living in urban areas",
+      "dcid": "Count_Person_35To39Years_Female_NeverMarried_Urban"
+    },
+    {
+      "name": "Number of never married women aged 40 to 44 years living in rural areas",
+      "dcid": "Count_Person_40To44Years_Female_NeverMarried_Rural"
+    },
+    {
+      "name": "Number of never married women aged 40 to 44 years living in urban areas",
+      "dcid": "Count_Person_40To44Years_Female_NeverMarried_Urban"
+    },
+    {
+      "name": "Number of never married women aged 55 to 59 years living in rural areas",
+      "dcid": "Count_Person_55To59Years_Female_NeverMarried_Rural"
+    },
+    {
+      "name": "Number of never married women aged 55 to 59 years living in urban areas",
+      "dcid": "Count_Person_55To59Years_Female_NeverMarried_Urban"
+    },
+    {
+      "name": "Number of never married women aged 60 to 64 years in rural areas",
+      "dcid": "Count_Person_60To64Years_Female_NeverMarried_Rural"
+    },
+    {
+      "name": "Number of never married women aged 60 to 64 years living in urban areas",
+      "dcid": "Count_Person_60To64Years_Female_NeverMarried_Urban"
+    },
+    {
+      "name": "Number of never married women aged 65 to 69 years in rural areas",
+      "dcid": "Count_Person_65To69Years_Female_NeverMarried_Rural"
+    },
+    {
+      "name": "Number of never married women aged 65 to 69 years in urban areas",
+      "dcid": "Count_Person_65To69Years_Female_NeverMarried_Urban"
+    },
+    {
+      "name": "Number of never married women aged 70 to 74 years in rural areas",
+      "dcid": "Count_Person_70To74Years_Female_NeverMarried_Rural"
+    },
+    {
+      "name": "Number of never married women aged 70 to 74 years in urban areas",
+      "dcid": "Count_Person_70To74Years_Female_NeverMarried_Urban"
+    },
+    {
+      "name": "Number of never-married women aged 45 to 49 in rural areas",
+      "dcid": "Count_Person_45To49Years_Female_NeverMarried_Rural"
+    },
+    {
+      "name": "Number of never-married women aged 45 to 49 in urban areas",
+      "dcid": "Count_Person_45To49Years_Female_NeverMarried_Urban"
+    },
+    {
+      "name": "Number of never-married women aged 50 to 54 years living in rural areas",
+      "dcid": "Count_Person_50To54Years_Female_NeverMarried_Rural"
+    },
+    {
+      "name": "Number of never-married women aged 50 to 54 years living in urban areas",
+      "dcid": "Count_Person_50To54Years_Female_NeverMarried_Urban"
+    },
+    {
+      "name": "Number of never-married women aged 75 years or less living in rural areas",
+      "dcid": "Count_Person_75OrLessYears_Female_NeverMarried_Rural"
+    },
+    {
+      "name": "Number of never-married women aged 75 years or less living in urban areas",
+      "dcid": "Count_Person_75OrLessYears_Female_NeverMarried_Urban"
+    },
+    {
+      "name": "Number of rural women aged 25 to 29 years in a contractual marriage",
+      "dcid": "Count_Person_25To29Years_Female_ContractMarriage_Rural"
+    },
+    {
+      "name": "Number of widowed women aged 15 years and older in rural areas",
+      "dcid": "Count_Person_15Years_Female_Widowed_Rural"
+    },
+    {
+      "name": "Number of widowed women aged 15 years and older living in urban areas",
+      "dcid": "Count_Person_15Years_Female_Widowed_Urban"
+    },
+    {
+      "name": "Number of widowed women aged 15 years or less living in urban areas",
+      "dcid": "Count_Person_15OrLessYears_Female_Widowed_Urban"
+    },
+    {
+      "name": "Number of widowed women aged 15 years or less residing in rural areas",
+      "dcid": "Count_Person_15OrLessYears_Female_Widowed_Rural"
+    },
+    {
+      "name": "Number of widowed women aged 19 years living in rural areas",
+      "dcid": "Count_Person_19Years_Female_Widowed_Rural"
+    },
+    {
+      "name": "Number of widowed women aged 19 years living in urban areas",
+      "dcid": "Count_Person_19Years_Female_Widowed_Urban"
+    },
+    {
+      "name": "Number of widowed women aged 20 to 24 years living in rural areas",
+      "dcid": "Count_Person_20To24Years_Female_Widowed_Rural"
+    },
+    {
+      "name": "Number of widowed women aged 20 to 24 years living in urban areas",
+      "dcid": "Count_Person_20To24Years_Female_Widowed_Urban"
+    },
+    {
+      "name": "Number of widowed women aged 25 to 29 years living in rural areas",
+      "dcid": "Count_Person_25To29Years_Female_Widowed_Rural"
+    },
+    {
+      "name": "Number of widowed women aged 25 to 29 years living in urban areas",
+      "dcid": "Count_Person_25To29Years_Female_Widowed_Urban"
+    },
+    {
+      "name": "Number of widowed women aged 30 to 34 years living in rural areas",
+      "dcid": "Count_Person_30To34Years_Female_Widowed_Rural"
+    },
+    {
+      "name": "Number of widowed women aged 30 to 34 years living in urban areas",
+      "dcid": "Count_Person_30To34Years_Female_Widowed_Urban"
+    },
+    {
+      "name": "Number of widowed women aged 35 to 39 years living in rural areas",
+      "dcid": "Count_Person_35To39Years_Female_Widowed_Rural"
+    },
+    {
+      "name": "Number of widowed women aged 35 to 39 years living in urban areas",
+      "dcid": "Count_Person_35To39Years_Female_Widowed_Urban"
+    },
+    {
+      "name": "Number of widowed women aged 40 to 44 years living in rural areas",
+      "dcid": "Count_Person_40To44Years_Female_Widowed_Rural"
+    },
+    {
+      "name": "Number of widowed women aged 40 to 44 years living in urban areas",
+      "dcid": "Count_Person_40To44Years_Female_Widowed_Urban"
+    },
+    {
+      "name": "Number of widowed women aged 45 to 49 in rural areas",
+      "dcid": "Count_Person_45To49Years_Female_Widowed_Rural"
+    },
+    {
+      "name": "Number of widowed women aged 45 to 49 in urban areas",
+      "dcid": "Count_Person_45To49Years_Female_Widowed_Urban"
+    },
+    {
+      "name": "Number of widowed women aged 50 to 54 years living in rural areas",
+      "dcid": "Count_Person_50To54Years_Female_Widowed_Rural"
+    },
+    {
+      "name": "Number of widowed women aged 50 to 54 years living in urban areas",
+      "dcid": "Count_Person_50To54Years_Female_Widowed_Urban"
+    },
+    {
+      "name": "Number of widowed women aged 55 to 59 years living in rural areas",
+      "dcid": "Count_Person_55To59Years_Female_Widowed_Rural"
+    },
+    {
+      "name": "Number of widowed women aged 55 to 59 years living in urban areas",
+      "dcid": "Count_Person_55To59Years_Female_Widowed_Urban"
+    },
+    {
+      "name": "Number of widowed women aged 60 to 64 years living in rural areas",
+      "dcid": "Count_Person_60To64Years_Female_Widowed_Rural"
+    },
+    {
+      "name": "Number of widowed women aged 60 to 64 years living in urban areas",
+      "dcid": "Count_Person_60To64Years_Female_Widowed_Urban"
+    },
+    {
+      "name": "Number of widowed women aged 65 to 69 years in rural areas",
+      "dcid": "Count_Person_65To69Years_Female_Widowed_Rural"
+    },
+    {
+      "name": "Number of widowed women aged 65 to 69 years in urban areas",
+      "dcid": "Count_Person_65To69Years_Female_Widowed_Urban"
+    },
+    {
+      "name": "Number of widowed women aged 70 to 74 years in rural areas",
+      "dcid": "Count_Person_70To74Years_Female_Widowed_Rural"
+    },
+    {
+      "name": "Number of widowed women aged 70 to 74 years in urban areas",
+      "dcid": "Count_Person_70To74Years_Female_Widowed_Urban"
+    },
+    {
+      "name": "Number of widowed women aged 75 or more years living in rural areas",
+      "dcid": "Count_Person_75OrMoreYears_Female_Widowed_Rural"
+    },
+    {
+      "name": "Number of widowed women aged 75 or more years living in urban areas",
+      "dcid": "Count_Person_75OrMoreYears_Female_Widowed_Urban"
+    },
+    {
+      "name": "Number of widowed women aged 75 years or less living in rural areas",
+      "dcid": "Count_Person_75OrLessYears_Female_Widowed_Rural"
+    },
+    {
+      "name": "Number of widowed women aged 75 years or less living in urban areas",
+      "dcid": "Count_Person_75OrLessYears_Female_Widowed_Urban"
+    },
+    {
+      "name": "Number of widowed women in rural areas aged 18 years and above",
+      "dcid": "Count_Person_18Years_Female_Widowed_Rural"
+    },
+    {
+      "name": "Number of widowed women in urban areas aged 18 years and above",
+      "dcid": "Count_Person_18Years_Female_Widowed_Urban"
+    },
+    {
+      "name": "Number of women aged 15 years in a contract marriage in rural areas",
+      "dcid": "Count_Person_15Years_Female_ContractMarriage_Rural"
+    },
+    {
+      "name": "Number of women aged 15 years in a contract marriage in urban areas",
+      "dcid": "Count_Person_15Years_Female_ContractMarriage_Urban"
+    },
+    {
+      "name": "Number of women aged 20 to 24 years with contract marriage in rural areas",
+      "dcid": "Count_Person_20To24Years_Female_ContractMarriage_Rural"
+    },
+    {
+      "name": "Number of women aged 20 to 24 years with contract marriage in urban areas",
+      "dcid": "Count_Person_20To24Years_Female_ContractMarriage_Urban"
+    },
+    {
+      "name": "Number of women aged 25 to 29 years never married living in rural areas",
+      "dcid": "Count_Person_25To29Years_Female_NeverMarried_Rural"
+    },
+    {
+      "name": "Number of women aged 25 to 29 years never married living in urban areas",
+      "dcid": "Count_Person_25To29Years_Female_NeverMarried_Urban"
+    },
+    {
+      "name": "Number of women aged 25 to 29 years who are married or in a union living in urban areas",
+      "dcid": "Count_Person_25To29Years_Female_ContractMarriage_Urban"
+    },
+    {
+      "name": "Number of women aged 30 to 34 years in contract marriages living in rural areas",
+      "dcid": "Count_Person_30To34Years_Female_ContractMarriage_Rural"
+    },
+    {
+      "name": "Number of women aged 30 to 34 years in contract marriages living in urban areas",
+      "dcid": "Count_Person_30To34Years_Female_ContractMarriage_Urban"
+    },
+    {
+      "name": "Number of women aged 35 to 39 years in a rural contract marriage",
+      "dcid": "Count_Person_35To39Years_Female_ContractMarriage_Rural"
+    },
+    {
+      "name": "Number of women aged 35 to 39 years in an urban contract marriage",
+      "dcid": "Count_Person_35To39Years_Female_ContractMarriage_Urban"
+    },
+    {
+      "name": "Number of women aged 40 to 44 years in contract marriage living in rural areas",
+      "dcid": "Count_Person_40To44Years_Female_ContractMarriage_Rural"
+    },
+    {
+      "name": "Number of women aged 40 to 44 years in contract marriage living in urban areas",
+      "dcid": "Count_Person_40To44Years_Female_ContractMarriage_Urban"
+    },
+    {
+      "name": "Number of women aged 45 to 49 in contract marriages living in urban areas",
+      "dcid": "Count_Person_45To49Years_Female_ContractMarriage_Urban"
+    },
+    {
+      "name": "Number of women aged 45 to 49 years in contract marriage living in rural areas",
+      "dcid": "Count_Person_45To49Years_Female_ContractMarriage_Rural"
+    },
+    {
+      "name": "Number of women aged 50 to 54 years in a contract marriage in rural areas",
+      "dcid": "Count_Person_50To54Years_Female_ContractMarriage_Rural"
+    },
+    {
+      "name": "Number of women aged 50 to 54 years in a contract marriage in urban areas",
+      "dcid": "Count_Person_50To54Years_Female_ContractMarriage_Urban"
+    },
+    {
+      "name": "Number of women aged 55 to 59 years in contract marriages living in rural areas",
+      "dcid": "Count_Person_55To59Years_Female_ContractMarriage_Rural"
+    },
+    {
+      "name": "Number of women aged 55 to 59 years in contract marriages living in urban areas",
+      "dcid": "Count_Person_55To59Years_Female_ContractMarriage_Urban"
+    },
+    {
+      "name": "Number of women aged 60 to 64 years in a contract marriage in rural areas",
+      "dcid": "Count_Person_60To64Years_Female_ContractMarriage_Rural"
+    },
+    {
+      "name": "Number of women aged 60 to 64 years in a contract marriage in urban areas",
+      "dcid": "Count_Person_60To64Years_Female_ContractMarriage_Urban"
+    },
+    {
+      "name": "Number of women aged 65 to 69 years with a marriage contract in rural areas",
+      "dcid": "Count_Person_65To69Years_Female_ContractMarriage_Rural"
+    },
+    {
+      "name": "Number of women aged 65 to 69 years with a marriage contract in urban areas",
+      "dcid": "Count_Person_65To69Years_Female_ContractMarriage_Urban"
+    },
+    {
+      "name": "Number of women aged 70 to 74 years in a civil union in urban areas",
+      "dcid": "Count_Person_70To74Years_Female_ContractMarriage_Urban"
+    },
+    {
+      "name": "Number of women aged 70 to 74 years in a registered marriage living in rural areas",
+      "dcid": "Count_Person_70To74Years_Female_ContractMarriage_Rural"
+    },
+    {
+      "name": "Number of women aged 75 or more years in contract marriages living in rural areas",
+      "dcid": "Count_Person_75OrMoreYears_Female_ContractMarriage_Rural"
+    },
+    {
+      "name": "Number of women aged 75 or more years in contract marriages living in urban areas",
+      "dcid": "Count_Person_75OrMoreYears_Female_ContractMarriage_Urban"
+    },
+    {
+      "name": "Number of women aged 75 or more years who have never been married and live in rural areas",
+      "dcid": "Count_Person_75OrMoreYears_Female_NeverMarried_Rural"
+    },
+    {
+      "name": "Number of women aged 75 or more years who have never been married and live in urban areas",
+      "dcid": "Count_Person_75OrMoreYears_Female_NeverMarried_Urban"
+    },
+    {
+      "name": "Number of women aged 75 years or less in contract marriage in rural areas",
+      "dcid": "Count_Person_75OrLessYears_Female_ContractMarriage_Rural"
+    },
+    {
+      "name": "Number of women aged 75 years or less in contract marriage in urban areas",
+      "dcid": "Count_Person_75OrLessYears_Female_ContractMarriage_Urban"
+    },
+    {
+      "name": "Number of women in contract marriage aged 19 years living in rural areas",
+      "dcid": "Count_Person_19Years_Female_ContractMarriage_Rural"
+    },
+    {
+      "name": "Number of women in contract marriage aged 19 years living in urban areas",
+      "dcid": "Count_Person_19Years_Female_ContractMarriage_Urban"
+    },
+    {
+      "name": "Number of women in rural areas aged 18 years and above never married",
+      "dcid": "Count_Person_18Years_Female_NeverMarried_Rural"
+    },
+    {
+      "name": "Number of women in rural areas in contract marriages aged 18 years",
+      "dcid": "Count_Person_18Years_Female_ContractMarriage_Rural"
+    },
+    {
+      "name": "Number of women in urban areas aged 18 years never married",
+      "dcid": "Count_Person_18Years_Female_NeverMarried_Urban"
+    },
+    {
+      "name": "Number of women in urban areas in contract marriages aged 18 years",
+      "dcid": "Count_Person_18Years_Female_ContractMarriage_Urban"
     },
     {
       "name": "Young women age group 18 to 29 years who experienced sexual violence by age18 (%), rural",
