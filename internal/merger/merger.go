@@ -95,7 +95,9 @@ func mergeLinkedGraph(
 
 	for dcid, linkedGraph := range auxData {
 		if isEmptyLinkedGraph(linkedGraph) {
-			mainData[dcid] = &pbv2.LinkedGraph{}
+			if _, ok := mainData[dcid]; !ok {
+				mainData[dcid] = &pbv2.LinkedGraph{}
+			}
 			continue
 		}
 		if isEmptyLinkedGraph(mainData[dcid]) {
