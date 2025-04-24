@@ -5,12 +5,8 @@
       "info": {
         "placeTypeSummary": {
           "AdministrativeArea": {
-            "placeCount": 143,
+            "placeCount": 146,
             "topPlaces": [
-              {
-                "dcid": "wikidataId/Q1062618",
-                "name": "Chaoyang District"
-              },
               {
                 "dcid": "wikidataId/Q1023893",
                 "name": "Nanhai District"
@@ -18,13 +14,17 @@
               {
                 "dcid": "wikidataId/Q945428",
                 "name": "Shunde District"
+              },
+              {
+                "dcid": "wikidataId/Q1062618",
+                "name": "Chaoyang District"
               }
             ],
             "minValue": 12792,
             "maxValue": 1214384
           },
           "AdministrativeArea1": {
-            "placeCount": 356,
+            "placeCount": 385,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q15175",
@@ -271,7 +271,7 @@
             "maxValue": 1958404
           },
           "Country": {
-            "placeCount": 50,
+            "placeCount": 51,
             "topPlaces": [
               {
                 "dcid": "country/CHN",
@@ -290,7 +290,7 @@
             "maxValue": 660361000
           },
           "County": {
-            "placeCount": 3234,
+            "placeCount": 3233,
             "topPlaces": [
               {
                 "dcid": "geoId/06037",
@@ -305,7 +305,7 @@
                 "name": "Harris County"
               }
             ],
-            "minValue": 0,
+            "minValue": 14,
             "maxValue": 5160965
           },
           "ElementarySchoolDistrict": {
@@ -396,15 +396,15 @@
             "maxValue": 840
           },
           "Neighborhood": {
-            "placeCount": 13,
+            "placeCount": 14,
             "topPlaces": [
-              {
-                "dcid": "wikidataId/Q2237435",
-                "name": "Kukatpally"
-              },
               {
                 "dcid": "wikidataId/Q2244063",
                 "name": "L. B. Nagar"
+              },
+              {
+                "dcid": "wikidataId/Q2237435",
+                "name": "Kukatpally"
               },
               {
                 "dcid": "wikidataId/Q2562718",
@@ -415,8 +415,12 @@
             "maxValue": 138958
           },
           "Place": {
-            "placeCount": 148,
+            "placeCount": 158,
             "topPlaces": [
+              {
+                "dcid": "wikidataId/Q2665241",
+                "name": "Swabi"
+              },
               {
                 "dcid": "wikidataId/Q148062",
                 "name": "Zarqa"
@@ -424,10 +428,6 @@
               {
                 "dcid": "wikidataId/Q366754",
                 "name": "Kalyan"
-              },
-              {
-                "dcid": "wikidataId/Q7123293",
-                "name": "Padawan municipality"
               }
             ],
             "minValue": 12978,
@@ -453,7 +453,7 @@
             "maxValue": 4543807
           },
           "State": {
-            "placeCount": 112,
+            "placeCount": 113,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1498",
@@ -1842,6 +1842,57 @@
             "observationCount": 5,
             "timeSeriesCount": 1
           },
+          "dc/base/Egypt_Census": {
+            "importName": "Egypt_Census",
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "observationPeriod": "P1Y"
+                },
+                "earliestDate": "2017",
+                "latestDate": "2017",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {
+                    "placeCount": 29,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q30805",
+                        "name": "Cairo Governorate"
+                      },
+                      {
+                        "dcid": "wikidataId/Q30832",
+                        "name": "Giza Governorate"
+                      },
+                      {
+                        "dcid": "wikidataId/Q31074",
+                        "name": "Al Sharqia Governorate"
+                      }
+                    ],
+                    "minValue": 49098,
+                    "maxValue": 4579048
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/EGY",
+                        "name": "Egypt"
+                      }
+                    ],
+                    "minValue": 45907309,
+                    "maxValue": 45907309
+                  }
+                },
+                "minValue": 49098,
+                "maxValue": 45907309,
+                "observationCount": 30,
+                "timeSeriesCount": 30
+              }
+            ],
+            "observationCount": 30,
+            "timeSeriesCount": 30
+          },
           "dc/base/EthiopiaStatistics": {
             "importName": "EthiopiaStatistics",
             "releaseFrequency": "P1Y",
@@ -2816,264 +2867,65 @@
             "observationCount": 32,
             "timeSeriesCount": 1
           },
-          "dc/base/OECDRegionalDemography": {
-            "importName": "OECDRegionalDemography",
+          "dc/base/NigeriaStatistics": {
+            "importName": "NigeriaStatistics",
             "releaseFrequency": "P1Y",
             "seriesSummary": [
               {
-                "seriesKey": {
-                  "measurementMethod": "OECDRegionalStatistics",
-                  "observationPeriod": "P1Y"
-                },
-                "earliestDate": "1990",
-                "latestDate": "2023",
+                "seriesKey": {},
+                "earliestDate": "1991",
+                "latestDate": "2006",
                 "placeTypeSummary": {
-                  "AdministrativeArea": {
-                    "placeCount": 5,
-                    "topPlaces": [
-                      {
-                        "dcid": "wikidataId/Q1973593",
-                        "name": "Waikato District"
-                      },
-                      {
-                        "dcid": "wikidataId/Q4874224",
-                        "name": "Bay of Plenty"
-                      },
-                      {
-                        "dcid": "wikidataId/Q1850966",
-                        "name": "Wheatbelt"
-                      }
-                    ],
-                    "minValue": 14969,
-                    "maxValue": 262200
-                  },
                   "AdministrativeArea1": {
-                    "placeCount": 304,
+                    "placeCount": 36,
                     "topPlaces": [
                       {
-                        "dcid": "wikidataId/Q15175",
-                        "name": "Guangdong"
+                        "dcid": "wikidataId/Q682571",
+                        "name": "Kano State"
                       },
                       {
-                        "dcid": "wikidataId/Q43407",
-                        "name": "Shandong"
+                        "dcid": "wikidataId/Q815913",
+                        "name": "Lagos"
                       },
                       {
-                        "dcid": "wikidataId/Q43684",
-                        "name": "Henan"
+                        "dcid": "wikidataId/Q145793",
+                        "name": "Zamfara State"
                       }
                     ],
-                    "minValue": 3279,
-                    "maxValue": 50483000
+                    "minValue": 684958,
+                    "maxValue": 4453336
                   },
-                  "AdministrativeArea2": {
-                    "placeCount": 167,
-                    "topPlaces": [
-                      {
-                        "dcid": "wikidataId/Q1143712",
-                        "name": "Kanagawa-ku"
-                      },
-                      {
-                        "dcid": "wikidataId/Q173270",
-                        "name": "Veracruz"
-                      },
-                      {
-                        "dcid": "wikidataId/Q1474984",
-                        "name": "Montreal Region"
-                      }
-                    ],
-                    "minValue": 1565,
-                    "maxValue": 4653000
-                  },
-                  "AdministrativeArea3": {
-                    "placeCount": 31,
-                    "topPlaces": [
-                      {
-                        "dcid": "wikidataId/Q16926",
-                        "name": "Maule"
-                      },
-                      {
-                        "dcid": "wikidataId/Q46325",
-                        "name": "Sfax"
-                      },
-                      {
-                        "dcid": "wikidataId/Q867615",
-                        "name": "Nabeul"
-                      }
-                    ],
-                    "minValue": 6353,
-                    "maxValue": 592745
-                  },
-                  "CensusCountyDivision": {
+                  "City": {
                     "placeCount": 1,
                     "topPlaces": [
                       {
-                        "dcid": "geoId/7210708614",
-                        "name": "Botijas"
+                        "dcid": "wikidataId/Q3787",
+                        "name": "Abuja"
                       }
                     ],
-                    "minValue": 4934609,
-                    "maxValue": 5785679
-                  },
-                  "City": {
-                    "placeCount": 275,
-                    "topPlaces": [
-                      {
-                        "dcid": "wikidataId/Q8686",
-                        "name": "Shanghai"
-                      },
-                      {
-                        "dcid": "wikidataId/Q11736",
-                        "name": "Tianjin"
-                      },
-                      {
-                        "dcid": "wikidataId/Q7473516",
-                        "name": "Tokyo"
-                      }
-                    ],
-                    "minValue": 1065,
-                    "maxValue": 11710000
+                    "minValue": 166375,
+                    "maxValue": 673067
                   },
                   "Country": {
-                    "placeCount": 50,
+                    "placeCount": 1,
                     "topPlaces": [
                       {
-                        "dcid": "country/CHN",
-                        "name": "China"
-                      },
-                      {
-                        "dcid": "country/IND",
-                        "name": "India"
-                      },
-                      {
-                        "dcid": "country/USA",
-                        "name": "United States"
+                        "dcid": "country/NGA",
+                        "name": "Nigeria"
                       }
                     ],
-                    "minValue": 126353,
-                    "maxValue": 660361000
-                  },
-                  "County": {
-                    "placeCount": 4,
-                    "topPlaces": [
-                      {
-                        "dcid": "nuts/NO043",
-                        "name": "Rogaland"
-                      },
-                      {
-                        "dcid": "wikidataId/Q127676",
-                        "name": "Trøndelag"
-                      },
-                      {
-                        "dcid": "nuts/NO053",
-                        "name": "Møre og Romsdal"
-                      }
-                    ],
-                    "minValue": 117331,
-                    "maxValue": 235901
-                  },
-                  "EurostatNUTS1": {
-                    "placeCount": 42,
-                    "topPlaces": [
-                      {
-                        "dcid": "nuts/DEA",
-                        "name": "Nordrhein-Westfalen"
-                      },
-                      {
-                        "dcid": "nuts/DE2",
-                        "name": "Bavaria"
-                      },
-                      {
-                        "dcid": "nuts/FR1",
-                        "name": "Ile-de-France"
-                      }
-                    ],
-                    "minValue": 126036,
-                    "maxValue": 9277682
-                  },
-                  "EurostatNUTS2": {
-                    "placeCount": 207,
-                    "topPlaces": [
-                      {
-                        "dcid": "nuts/TR10",
-                        "name": "Istanbul"
-                      },
-                      {
-                        "dcid": "nuts/ITC4",
-                        "name": "Lombardia"
-                      },
-                      {
-                        "dcid": "nuts/ES61",
-                        "name": "Andalucía"
-                      }
-                    ],
-                    "minValue": 12331,
-                    "maxValue": 7952131
-                  },
-                  "EurostatNUTS3": {
-                    "placeCount": 1356,
-                    "topPlaces": [
-                      {
-                        "dcid": "nuts/TR100",
-                        "name": "Istanbul"
-                      },
-                      {
-                        "dcid": "nuts/ES300",
-                        "name": "Madrid"
-                      },
-                      {
-                        "dcid": "nuts/ES511",
-                        "name": "Barcelona"
-                      }
-                    ],
-                    "minValue": 4313,
-                    "maxValue": 7952131
-                  },
-                  "Place": {
-                    "placeCount": 8,
-                    "topPlaces": [
-                      {
-                        "dcid": "wikidataId/Q1180"
-                      },
-                      {
-                        "dcid": "wikidataId/Q721755"
-                      },
-                      {
-                        "dcid": "wikidataId/Q2760659",
-                        "name": "Dadra"
-                      }
-                    ],
-                    "minValue": 290,
-                    "maxValue": 6293000
-                  },
-                  "State": {
-                    "placeCount": 110,
-                    "topPlaces": [
-                      {
-                        "dcid": "wikidataId/Q1498",
-                        "name": "Uttar Pradesh"
-                      },
-                      {
-                        "dcid": "wikidataId/Q1191",
-                        "name": "Maharashtra"
-                      },
-                      {
-                        "dcid": "wikidataId/Q1165",
-                        "name": "Bihar"
-                      }
-                    ],
-                    "minValue": 29519,
-                    "maxValue": 112568000
+                    "minValue": 44462612,
+                    "maxValue": 69086302
                   }
                 },
-                "minValue": 290,
-                "maxValue": 660361000,
-                "observationCount": 74173,
-                "timeSeriesCount": 2560
+                "minValue": 166375,
+                "maxValue": 69086302,
+                "observationCount": 70,
+                "timeSeriesCount": 38
               }
             ],
-            "observationCount": 74173,
-            "timeSeriesCount": 2560
+            "observationCount": 70,
+            "timeSeriesCount": 38
           },
           "dc/base/OECDRegionalDemography_Population": {
             "importName": "OECDRegionalDemography_Population",
@@ -3088,7 +2940,7 @@
                 "latestDate": "2023",
                 "placeTypeSummary": {
                   "AdministrativeArea": {
-                    "placeCount": 2,
+                    "placeCount": 3,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q1850966",
@@ -3097,13 +2949,17 @@
                       {
                         "dcid": "wikidataId/Q1166361",
                         "name": "Darling Downs"
+                      },
+                      {
+                        "dcid": "wikidataId/Q112913233",
+                        "name": "Regional Municipality of Haldimand–Norfolk"
                       }
                     ],
-                    "minValue": 54770,
+                    "minValue": 53206,
                     "maxValue": 70330
                   },
                   "AdministrativeArea1": {
-                    "placeCount": 356,
+                    "placeCount": 363,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q15175",
@@ -3122,19 +2978,19 @@
                     "maxValue": 50483000
                   },
                   "AdministrativeArea2": {
-                    "placeCount": 214,
+                    "placeCount": 219,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q45632",
                         "name": "Santiago"
                       },
                       {
-                        "dcid": "wikidataId/Q1474984",
-                        "name": "Montreal Region"
+                        "dcid": "wikidataId/Q120971341",
+                        "name": "Chandigarh"
                       },
                       {
-                        "dcid": "wikidataId/Q50811",
-                        "name": "Regional Municipality of Peel"
+                        "dcid": "wikidataId/Q1474984",
+                        "name": "Montreal Region"
                       }
                     ],
                     "minValue": 1065,
@@ -3308,12 +3164,12 @@
                 },
                 "minValue": 290,
                 "maxValue": 660361000,
-                "observationCount": 73709,
-                "timeSeriesCount": 2544
+                "observationCount": 74074,
+                "timeSeriesCount": 2557
               }
             ],
-            "observationCount": 73709,
-            "timeSeriesCount": 2544
+            "observationCount": 74074,
+            "timeSeriesCount": 2557
           },
           "dc/base/Rwanda_Census": {
             "importName": "Rwanda_Census",
@@ -4092,7 +3948,7 @@
                   "isDcAggregate": true
                 },
                 "earliestDate": "1900",
-                "latestDate": "2023",
+                "latestDate": "2024",
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -4103,7 +3959,7 @@
                       }
                     ],
                     "minValue": 37227000,
-                    "maxValue": 169165495
+                    "maxValue": 171773106
                   },
                   "State": {
                     "placeCount": 51,
@@ -4126,12 +3982,12 @@
                   }
                 },
                 "minValue": 138616,
-                "maxValue": 169165495,
-                "observationCount": 2878,
+                "maxValue": 171773106,
+                "observationCount": 2882,
                 "timeSeriesCount": 52
               }
             ],
-            "observationCount": 172223,
+            "observationCount": 172227,
             "timeSeriesCount": 3208
           },
           "dc/base/Vietnam_Census": {

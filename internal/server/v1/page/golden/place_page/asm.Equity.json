@@ -80,8 +80,8 @@
             "2014": 660361000
           },
           "metadata": {
-            "importName": "OECDRegionalDemography",
-            "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+            "importName": "OECDRegionalDemography_Population",
+            "provenanceUrl": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23\u0026pg=40\u0026fc=Topic\u0026bp=true\u0026snb=117\u0026df[ds]=dsDisseminateFinalDMZ\u0026df[id]=DSD_REG_DEMO%40DF_POP_5Y\u0026df[ag]=OECD.CFE.EDS\u0026df[vs]=2.0\u0026dq=A.......\u0026to[TIME_PERIOD]=false\u0026vw=tb\u0026pd=%2C",
             "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
@@ -91,8 +91,8 @@
             "2014": 694802000
           },
           "metadata": {
-            "importName": "OECDRegionalDemography",
-            "provenanceUrl": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
+            "importName": "OECDRegionalDemography_Population",
+            "provenanceUrl": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23\u0026pg=40\u0026fc=Topic\u0026bp=true\u0026snb=117\u0026df[ds]=dsDisseminateFinalDMZ\u0026df[id]=DSD_REG_DEMO%40DF_POP_5Y\u0026df[ag]=OECD.CFE.EDS\u0026df[vs]=2.0\u0026dq=A.......\u0026to[TIME_PERIOD]=false\u0026vw=tb\u0026pd=%2C",
             "measurementMethod": "OECDRegionalStatistics",
             "observationPeriod": "P1Y"
           }
@@ -201,6 +201,26 @@
             "importName": "WorldDevelopmentIndicators",
             "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
             "observationPeriod": "P1Y"
+          }
+        },
+        "Count_Person_Female": {
+          "val": {
+            "1991": 44462612,
+            "2006": 69086302
+          },
+          "metadata": {
+            "importName": "NigeriaStatistics",
+            "provenanceUrl": "https://nigeria.opendataforafrica.org"
+          }
+        },
+        "Count_Person_Male": {
+          "val": {
+            "1991": 44529608,
+            "2006": 71345488
+          },
+          "metadata": {
+            "importName": "NigeriaStatistics",
+            "provenanceUrl": "https://nigeria.opendataforafrica.org"
           }
         },
         "GiniIndex_EconomicActivity": {

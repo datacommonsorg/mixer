@@ -72,6 +72,21 @@
       "provenanceId": "dc/base/BaseSchema"
     },
     {
+      "subjectId": "Count_Establishment_YouthCenter_City",
+      "subjectName": "Total number of youth centers in cities",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "placeType",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class",
+        "LocationClassificationEnum"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
       "subjectId": "Count_Student_SchoolGrade12_City_Civics",
       "subjectName": "Count of Student: School Grade 12, City, Civics",
       "subjectTypes": [
@@ -733,6 +748,21 @@
         "LocationClassificationEnum"
       ],
       "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
+      "subjectId": "placeType",
+      "subjectName": "placeType",
+      "subjectTypes": [
+        "Property"
+      ],
+      "predicate": "rangeIncludes",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class",
+        "LocationClassificationEnum"
+      ],
+      "provenanceId": "dc/base/BaseSchema"
     },
     {
       "subjectId": "wikidataId/Q1002900",

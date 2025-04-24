@@ -35,6 +35,9 @@
               "facet_id": "2018634167"
             },
             {
+              "facet_id": "563701067"
+            },
+            {
               "facet_id": "1897073702"
             },
             {
@@ -83,6 +86,9 @@
               "facet_id": "3189273983"
             },
             {
+              "facet_id": "2140617040"
+            },
+            {
               "facet_id": "2058321835"
             },
             {
@@ -120,9 +126,6 @@
             },
             {
               "facet_id": "4181918134"
-            },
-            {
-              "facet_id": "1151455814"
             },
             {
               "facet_id": "473499523"
@@ -180,12 +183,6 @@
       "import_name": "CensusACS5YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS5yrSurvey"
-    },
-    "1151455814": {
-      "import_name": "OECDRegionalDemography",
-      "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
-      "measurement_method": "OECDRegionalStatistics",
-      "observation_period": "P1Y"
     },
     "1216205004": {
       "import_name": "CanadaStatistics",
@@ -263,6 +260,11 @@
     "2123271870": {
       "import_name": "IndiaCensus_Primary",
       "provenance_url": "https://censusindia.gov.in/"
+    },
+    "2140617040": {
+      "import_name": "Egypt_Census",
+      "provenance_url": "https://egypt.opendataforafrica.org",
+      "observation_period": "P1Y"
     },
     "217147238": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
@@ -392,6 +394,10 @@
       "provenance_url": "https://databank.worldbank.org/source/subnational-population",
       "measurement_method": "WorldBankSubnationalPopulationEstimate",
       "observation_period": "P1Y"
+    },
+    "563701067": {
+      "import_name": "NigeriaStatistics",
+      "provenance_url": "https://nigeria.opendataforafrica.org"
     },
     "607884225": {
       "import_name": "Sweden_Census",

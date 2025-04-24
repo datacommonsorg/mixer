@@ -17,17 +17,12 @@
             {
               "date": "2010",
               "value": 64658856,
-              "facet": "1151455814"
+              "facet": "1733625304"
             },
             {
               "date": "2010",
               "value": 64658856,
               "facet": "4181918134"
-            },
-            {
-              "date": "2010",
-              "value": 64658856,
-              "facet": "1733625304"
             },
             {
               "date": "2010",
@@ -53,11 +48,6 @@
               "date": "2010",
               "value": 309327143,
               "facet": "3981252704"
-            },
-            {
-              "date": "2010",
-              "value": 309321666,
-              "facet": "1151455814"
             },
             {
               "date": "2010",
@@ -103,11 +93,6 @@
               "date": "2010",
               "value": 37253956,
               "facet": "1541763368"
-            },
-            {
-              "date": "2010",
-              "value": 37319502,
-              "facet": "1151455814"
             },
             {
               "date": "2010",
@@ -264,12 +249,6 @@
       "import_name": "CensusACS5YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS5yrSurvey"
-    },
-    "1151455814": {
-      "import_name": "OECDRegionalDemography",
-      "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
-      "measurement_method": "OECDRegionalStatistics",
-      "observation_period": "P1Y"
     },
     "1226172227": {
       "import_name": "CensusACS1YearSurvey",

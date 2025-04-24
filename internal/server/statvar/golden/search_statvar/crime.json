@@ -5,6 +5,10 @@
       "dcid": "Count_CriminalIncidents_IsHateCrime"
     },
     {
+      "name": "Number of crimes",
+      "dcid": "Count_CriminalIncidents"
+    },
+    {
       "name": "Count of Hate Crime Incidents (Offender)",
       "dcid": "Offender_Count_CriminalIncidents_IsHateCrime"
     },
@@ -3995,10 +3999,6 @@
     {
       "name": "Count of Hate Crime Incidents: Bias Against Religion, Crime Against Person",
       "dcid": "Count_CriminalIncidents_BiasMotivationReligion_CrimeAgainstPerson_IsHateCrime"
-    },
-    {
-      "name": "Count of Hate Crime Incidents: Bias Against Religion, Crime Against Property",
-      "dcid": "Count_CriminalIncidents_BiasMotivationReligion_CrimeAgainstProperty_IsHateCrime"
     }
   ],
   "matches": [

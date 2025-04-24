@@ -25,7 +25,8 @@
       {
         "id": "FertilityRate_Person_Female",
         "searchNames": [
-          "Fertility Rate of Person"
+          "Fertility Rate of Person",
+          "معدل الخصوبة الكلى@ar"
         ],
         "displayName": "Fertility Rate",
         "definition": "mp=fertilityRate,pt=Person",
@@ -136,7 +137,7 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 28731
+        "descendentStatVarCount": 29624
       },
       {
         "id": "dc/g/Person_AgeGroupClassification",
@@ -274,7 +275,7 @@
         "id": "dc/g/Person_Ethnicity",
         "specializedEntity": "Ethnicity",
         "displayName": "Person by Ethnicity",
-        "descendentStatVarCount": 1830
+        "descendentStatVarCount": 1845
       },
       {
         "id": "dc/g/Person_Facilities",
@@ -310,7 +311,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 25670
+        "descendentStatVarCount": 26458
       },
       {
         "id": "dc/g/Person_GovernmentId",
@@ -412,7 +413,7 @@
         "id": "dc/g/Person_LaborForceStatus",
         "specializedEntity": "Labor Force Status",
         "displayName": "Person by Labor Force Status",
-        "descendentStatVarCount": 4244
+        "descendentStatVarCount": 4561
       },
       {
         "id": "dc/g/Language",
@@ -424,13 +425,13 @@
         "id": "dc/g/Person_LiteracyStatus",
         "specializedEntity": "Literacy Status",
         "displayName": "Person by Literacy Status",
-        "descendentStatVarCount": 302
+        "descendentStatVarCount": 305
       },
       {
         "id": "dc/g/Person_MaritalStatus",
         "specializedEntity": "Marital Status",
         "displayName": "Person by Marital Status",
-        "descendentStatVarCount": 1758
+        "descendentStatVarCount": 2481
       },
       {
         "id": "dc/g/MaternalMortalityEvent",
@@ -481,12 +482,6 @@
         "descendentStatVarCount": 24
       },
       {
-        "id": "dc/g/Person_Occupation",
-        "specializedEntity": "Occupation",
-        "displayName": "Person by Occupation",
-        "descendentStatVarCount": 5078
-      },
-      {
         "id": "dc/g/Place_PlaceType",
         "specializedEntity": "Place Type",
         "displayName": "Place by Place Type",
@@ -502,7 +497,7 @@
         "id": "dc/g/Person_PlaceOfResidenceClassification",
         "specializedEntity": "Place of Residence Classification (Individual)",
         "displayName": "Person by Place of Residence Classification",
-        "descendentStatVarCount": 3724
+        "descendentStatVarCount": 4330
       },
       {
         "id": "dc/g/Place_PlaceOfResidenceClassification",
@@ -532,7 +527,7 @@
         "id": "dc/g/Residence",
         "specializedEntity": "Residence",
         "displayName": "Residence",
-        "descendentStatVarCount": 5458
+        "descendentStatVarCount": 6066
       },
       {
         "id": "dc/g/Person_ResidentStatus",
@@ -577,7 +572,7 @@
         "descendentStatVarCount": 4
       }
     ],
-    "descendentStatVarCount": 48747,
+    "descendentStatVarCount": 49915,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

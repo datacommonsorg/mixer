@@ -46,7 +46,8 @@
           {
             "id": "dc/g/Employment",
             "specializedEntity": "Employment and Business",
-            "displayName": "Employment and Business"
+            "displayName": "Employment and Business",
+            "descendentStatVarCount": 2
           },
           {
             "id": "dc/g/Person_Age",
@@ -60,6 +61,11 @@
             "displayName": "Amount"
           },
           {
+            "id": "dc/g/Person_AssessmentType",
+            "specializedEntity": "Assessment Type",
+            "displayName": "Person by Assessment Type"
+          },
+          {
             "id": "dc/g/Person_AssetsOwned",
             "specializedEntity": "Assets Owned",
             "displayName": "Person by Assets Owned"
@@ -68,6 +74,11 @@
             "id": "dc/g/Person_BankAccountType",
             "specializedEntity": "Bank Account Type",
             "displayName": "Person by Bank Account Type"
+          },
+          {
+            "id": "dc/g/Person_CandidatesStatus",
+            "specializedEntity": "Candidates Status",
+            "displayName": "Person by Candidates Status"
           },
           {
             "id": "dc/g/ConsumerGoodsAndServices",
@@ -172,6 +183,11 @@
             "displayName": "Network Subscriber"
           },
           {
+            "id": "dc/g/Person_Occupation",
+            "specializedEntity": "Occupation",
+            "displayName": "Person by Occupation"
+          },
+          {
             "id": "dc/g/Person_OccupationalCategory",
             "specializedEntity": "Occupational Category",
             "displayName": "Person by Occupational Category"
@@ -185,6 +201,11 @@
             "id": "dc/g/Person_PovertyStatus",
             "specializedEntity": "Poverty Status",
             "displayName": "Person by Poverty Status"
+          },
+          {
+            "id": "dc/g/Person_RegistrationStatus",
+            "specializedEntity": "Registration Status",
+            "displayName": "Person by Registration Status"
           },
           {
             "id": "dc/g/Remittance",

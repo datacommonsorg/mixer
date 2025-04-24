@@ -35,19 +35,14 @@
               "facet": "3981252704"
             },
             {
-              "date": "2023",
-              "value": 68172977,
-              "facet": "1151455814"
+              "date": "2024",
+              "value": 68467362,
+              "facet": "1733625304"
             },
             {
               "date": "2023",
               "value": 68172977,
               "facet": "4181918134"
-            },
-            {
-              "date": "2023",
-              "value": 68172977,
-              "facet": "1733625304"
             },
             {
               "date": "2024-01",
@@ -88,11 +83,6 @@
               "date": "2023",
               "value": 334914895,
               "facet": "3981252704"
-            },
-            {
-              "date": "2023",
-              "value": 334914895,
-              "facet": "1151455814"
             },
             {
               "date": "2023",
@@ -158,11 +148,6 @@
               "date": "2020",
               "value": 39538223,
               "facet": "1541763368"
-            },
-            {
-              "date": "2023",
-              "value": 38965193,
-              "facet": "1151455814"
             },
             {
               "date": "2023",
@@ -286,8 +271,8 @@
           "entity": "geoId/0649670",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 2634,
+              "date": "2023",
+              "value": 2490,
               "facet": "4277990144"
             }
           ]
@@ -305,7 +290,7 @@
           "points_by_facet": [
             {
               "date": "2023",
-              "value": 58920,
+              "value": 59070,
               "facet": "2171028778"
             }
           ]
@@ -380,13 +365,13 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2025-02",
-              "value": 7052000,
+              "date": "2025-03",
+              "value": 7083000,
               "facet": "3707913853"
             },
             {
-              "date": "2024-12",
-              "value": 6993000,
+              "date": "2025-03",
+              "value": 6995000,
               "facet": "1714978719"
             }
           ]
@@ -395,8 +380,8 @@
           "entity": "geoId/06",
           "points_by_facet": [
             {
-              "date": "2025-02",
-              "value": 1084915,
+              "date": "2025-03",
+              "value": 1052735,
               "facet": "324358135"
             },
             {
@@ -405,8 +390,8 @@
               "facet": "2978659163"
             },
             {
-              "date": "2025-02",
-              "value": 1061002,
+              "date": "2025-03",
+              "value": 1054196,
               "facet": "1249140336"
             }
           ]
@@ -415,13 +400,13 @@
           "entity": "geoId/0649670",
           "points_by_facet": [
             {
-              "date": "2025-01",
-              "value": 1623,
+              "date": "2025-02",
+              "value": 1605,
               "facet": "324358135"
             },
             {
-              "date": "2023",
-              "value": 1430,
+              "date": "2024",
+              "value": 1638,
               "facet": "2978659163"
             }
           ]
@@ -439,12 +424,6 @@
       "import_name": "CensusACS5YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS5yrSurvey"
-    },
-    "1151455814": {
-      "import_name": "OECDRegionalDemography",
-      "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
-      "measurement_method": "OECDRegionalStatistics",
-      "observation_period": "P1Y"
     },
     "1226172227": {
       "import_name": "CensusACS1YearSurvey",
