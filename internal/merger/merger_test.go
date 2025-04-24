@@ -92,6 +92,116 @@ func TestMergeResolve(t *testing.T) {
 	}
 }
 
+func TestMergeLinkedGraph(t *testing.T) {
+	cmpOpts := cmp.Options{
+		protocmp.Transform(),
+	}
+
+	for _, c := range []struct {
+		local  map[string]*pbv2.LinkedGraph
+		remote map[string]*pbv2.LinkedGraph
+		want   map[string]*pbv2.LinkedGraph
+	}{
+		{
+			map[string]*pbv2.LinkedGraph{
+				"node1": {
+					Arcs: map[string]*pbv2.Nodes{
+						"prop1": {},
+					},
+				},
+			},
+			map[string]*pbv2.LinkedGraph{
+				"node1": {},
+				"node2": {},
+			},
+			map[string]*pbv2.LinkedGraph{
+				"node1": {
+					Arcs: map[string]*pbv2.Nodes{
+						"prop1": {},
+					},
+				},
+				"node2": {},
+			},
+		},
+		{
+			map[string]*pbv2.LinkedGraph{
+				"node1": {},
+				"node2": {},
+			},
+			map[string]*pbv2.LinkedGraph{
+				"node1": {
+					Arcs: map[string]*pbv2.Nodes{
+						"prop1": {},
+					},
+				},
+			},
+			map[string]*pbv2.LinkedGraph{
+				"node1": {
+					Arcs: map[string]*pbv2.Nodes{
+						"prop1": {},
+					},
+				},
+				"node2": {},
+			},
+		},
+		{
+			map[string]*pbv2.LinkedGraph{
+				"node1": {
+					Arcs: map[string]*pbv2.Nodes{
+						"prop1": {},
+					},
+				},
+				"node3": {
+					Arcs: map[string]*pbv2.Nodes{
+						"prop1": {},
+					},
+				},
+			},
+			map[string]*pbv2.LinkedGraph{
+				"node2": {
+					Arcs: map[string]*pbv2.Nodes{
+						"prop2": {},
+					},
+				},
+				"node3": {
+					Arcs: map[string]*pbv2.Nodes{
+						"prop2": {},
+					},
+				},
+			},
+			map[string]*pbv2.LinkedGraph{
+				"node1": {
+					Arcs: map[string]*pbv2.Nodes{
+						"prop1": {},
+					},
+				},
+				"node2": {
+					Arcs: map[string]*pbv2.Nodes{
+						"prop2": {},
+					},
+				},
+				"node3": {
+					Arcs: map[string]*pbv2.Nodes{
+						"prop1": {},
+						"prop2": {},
+					},
+				},
+			},
+		},
+	} {
+		var err error
+
+		got := mergeLinkedGraph(c.local, c.remote)
+		if err != nil {
+			t.Errorf("mergeLinkedGraph(%v, %v) = %s", c.local, c.remote, err)
+			continue
+		}
+		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
+			t.Errorf("mergeLinkedGraph(%v, %v) got diff: %s", c.local, c.remote, diff)
+		}
+	}
+}
+
 func TestMergeNode(t *testing.T) {
 	cmpOpts := cmp.Options{
 		protocmp.Transform(),
