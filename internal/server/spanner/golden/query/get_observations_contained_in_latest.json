@@ -1,0 +1,116 @@
+[
+  {
+    "VariableMeasured": "Median_Age_Person",
+    "ObservationAbout": "geoId/10001",
+    "Observations": {
+      "Observations": [
+        {
+          "Date": "2022",
+          "Value": "38.5"
+        }
+      ]
+    },
+    "Provenance": "dc/base/CensusACS5YearSurvey",
+    "ObservationPeriod": "",
+    "MeasurementMethod": "CensusACS5yrSurvey",
+    "Unit": "Year",
+    "ScalingFactor": "",
+    "ImportName": "CensusACS5YearSurvey",
+    "ProvenanceURL": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html"
+  },
+  {
+    "VariableMeasured": "Median_Age_Person",
+    "ObservationAbout": "geoId/10001",
+    "Observations": {
+      "Observations": [
+        {
+          "Date": "2021",
+          "Value": "38.2"
+        }
+      ]
+    },
+    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0101",
+    "ObservationPeriod": "",
+    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
+    "Unit": "Years",
+    "ScalingFactor": "",
+    "ImportName": "CensusACS5YearSurvey_SubjectTables_S0101",
+    "ProvenanceURL": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101"
+  },
+  {
+    "VariableMeasured": "Median_Age_Person",
+    "ObservationAbout": "geoId/10003",
+    "Observations": {
+      "Observations": [
+        {
+          "Date": "2022",
+          "Value": "39"
+        }
+      ]
+    },
+    "Provenance": "dc/base/CensusACS5YearSurvey",
+    "ObservationPeriod": "",
+    "MeasurementMethod": "CensusACS5yrSurvey",
+    "Unit": "Year",
+    "ScalingFactor": "",
+    "ImportName": "CensusACS5YearSurvey",
+    "ProvenanceURL": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html"
+  },
+  {
+    "VariableMeasured": "Median_Age_Person",
+    "ObservationAbout": "geoId/10003",
+    "Observations": {
+      "Observations": [
+        {
+          "Date": "2021",
+          "Value": "38.8"
+        }
+      ]
+    },
+    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0101",
+    "ObservationPeriod": "",
+    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
+    "Unit": "Years",
+    "ScalingFactor": "",
+    "ImportName": "CensusACS5YearSurvey_SubjectTables_S0101",
+    "ProvenanceURL": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101"
+  },
+  {
+    "VariableMeasured": "Median_Age_Person",
+    "ObservationAbout": "geoId/10005",
+    "Observations": {
+      "Observations": [
+        {
+          "Date": "2022",
+          "Value": "51.3"
+        }
+      ]
+    },
+    "Provenance": "dc/base/CensusACS5YearSurvey",
+    "ObservationPeriod": "",
+    "MeasurementMethod": "CensusACS5yrSurvey",
+    "Unit": "Year",
+    "ScalingFactor": "",
+    "ImportName": "CensusACS5YearSurvey",
+    "ProvenanceURL": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html"
+  },
+  {
+    "VariableMeasured": "Median_Age_Person",
+    "ObservationAbout": "geoId/10005",
+    "Observations": {
+      "Observations": [
+        {
+          "Date": "2021",
+          "Value": "50.7"
+        }
+      ]
+    },
+    "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0101",
+    "ObservationPeriod": "",
+    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
+    "Unit": "Years",
+    "ScalingFactor": "",
+    "ImportName": "CensusACS5YearSurvey_SubjectTables_S0101",
+    "ProvenanceURL": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101"
+  }
+]

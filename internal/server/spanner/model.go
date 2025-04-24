@@ -19,7 +19,6 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"google.golang.org/protobuf/types/known/structpb"
 )
 
@@ -88,27 +87,6 @@ func (ts *TimeSeries) DecodeSpanner(val interface{}) (err error) {
 		}
 	}
 	return nil
-}
-
-// FilterByDate filters observations based on the given date.
-func (ts *TimeSeries) FilterByDate(date string) {
-	switch date {
-	case "": // No filtering required.
-	case shared.LATEST:
-		if len(ts.Observations) > 0 {
-			// The observations are sorted by date (ascending) so pick the last one.
-			// If the order changes, then this logic needs to be changed.
-			ts.Observations = ts.Observations[len(ts.Observations)-1:]
-		}
-	default:
-		filtered := make([]*DateValue, 0)
-		for _, obs := range ts.Observations {
-			if obs.Date == date {
-				filtered = append(filtered, obs)
-			}
-		}
-		ts.Observations = filtered
-	}
 }
 
 // SearchNode struct represents a single row returned for node searches.

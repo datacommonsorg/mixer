@@ -21,11 +21,14 @@ import (
 	"log"
 	"sort"
 	"strconv"
+	"strings"
 
+	"cloud.google.com/go/spanner"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
+	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"github.com/datacommonsorg/mixer/internal/util"
 
 	"google.golang.org/protobuf/proto"
@@ -38,6 +41,8 @@ const (
 	CHAIN = "+"
 	// Used for Facet responses with an entity expression.
 	ENTITY_PLACEHOLDER = ""
+	WHERE              = "\nWHERE "
+	AND                = "\nAND "
 )
 
 // Select options for Observation.
@@ -216,12 +221,43 @@ func queryObs(qo *queryOptions) bool {
 	return qo.date && qo.value
 }
 
-func filterObservationsByDateAndFacet(observations []*Observation, date string, filter *pbv2.FacetFilter) []*Observation {
+func buildBaseObsStatement(variables []string, entities []string, date string) spanner.Statement {
+	stmt := spanner.Statement{
+		Params: map[string]interface{}{},
+	}
+	filters := []string{}
+
+	switch date {
+	case "":
+		stmt.SQL = statements.getAllObs
+	case shared.LATEST:
+		stmt.SQL = statements.getLatestObs
+	default:
+		stmt.SQL = statements.getDateObs
+		stmt.Params["date"] = fmt.Sprintf("$.%s", date)
+		filters = append(filters, statements.selectDate)
+	}
+
+	if len(variables) > 0 {
+		stmt.Params["variables"] = variables
+		filters = append(filters, statements.selectVariableDcids)
+	}
+
+	if len(entities) > 0 {
+		stmt.Params["entities"] = entities
+		filters = append(filters, statements.selectEntityDcids)
+	}
+
+	stmt.SQL += WHERE + strings.Join(filters, AND)
+
+	return stmt
+}
+
+func filterObservationsByFacet(observations []*Observation, filter *pbv2.FacetFilter) []*Observation {
 	var filtered []*Observation
 	for _, observation := range observations {
-		observation.Observations.FilterByDate(date)
 		facet := observationToFacet(observation)
-		if len(observation.Observations.Observations) > 0 && util.ShouldIncludeFacet(filter, facet) {
+		if util.ShouldIncludeFacet(filter, facet) {
 			filtered = append(filtered, observation)
 		}
 	}

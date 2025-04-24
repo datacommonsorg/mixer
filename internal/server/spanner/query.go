@@ -167,24 +167,15 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 }
 
 // GetObservations retrieves observations from Spanner given a list of variables and entities.
-func (sc *SpannerClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error) {
+func (sc *SpannerClient) GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*Observation, error) {
 	var observations []*Observation
-
-	stmt := spanner.Statement{
-		SQL: statements.getObsByEntity,
-		Params: map[string]interface{}{
-			"entities": entities,
-		},
-	}
-
-	if len(variables) > 0 {
-		stmt.SQL += statements.selectVariableDcids
-		stmt.Params["variables"] = variables
+	if len(entities) == 0 {
+		return nil, fmt.Errorf("entity must be specified")
 	}
 
 	err := sc.queryAndCollect(
 		ctx,
-		stmt,
+		buildBaseObsStatement(variables, entities, date),
 		func() interface{} {
 			return &Observation{}
 		},
@@ -201,20 +192,16 @@ func (sc *SpannerClient) GetObservations(ctx context.Context, variables []string
 }
 
 // GetObservationsContainedInPlace retrieves observations from Spanner given a list of variables and an entity expression.
-func (sc *SpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
+func (sc *SpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace, date string) ([]*Observation, error) {
 	var observations []*Observation
 	if len(variables) == 0 || containedInPlace == nil {
 		return observations, nil
 	}
 
-	stmt := spanner.Statement{
-		SQL: statements.getObsByVariableAndContainedInPlace,
-		Params: map[string]interface{}{
-			"variables":      variables,
-			"ancestor":       containedInPlace.Ancestor,
-			"childPlaceType": containedInPlace.ChildPlaceType,
-		},
-	}
+	stmt := buildBaseObsStatement(variables, []string{} /*entities*/, date)
+	stmt.SQL = fmt.Sprintf(statements.getObsByVariableAndContainedInPlace, stmt.SQL)
+	stmt.Params["ancestor"] = containedInPlace.Ancestor
+	stmt.Params["childPlaceType"] = containedInPlace.ChildPlaceType
 
 	err := sc.queryAndCollect(
 		ctx,

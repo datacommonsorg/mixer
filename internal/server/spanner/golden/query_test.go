@@ -347,6 +347,7 @@ func TestGetObservations(t *testing.T) {
 	for _, c := range []struct {
 		variables  []string
 		entities   []string
+		date       string
 		goldenFile string
 	}{
 		{
@@ -358,8 +359,20 @@ func TestGetObservations(t *testing.T) {
 			entities:   []string{"wikidataId/Q341968"},
 			goldenFile: "get_observations_entity.json",
 		},
+		{
+			entities:   []string{"country/CAN"},
+			variables:  []string{"Count_Person"},
+			date:       "LATEST",
+			goldenFile: "get_observations_latest.json",
+		},
+		{
+			entities:   []string{"country/CAN"},
+			variables:  []string{"Count_Person"},
+			date:       "2020",
+			goldenFile: "get_observations_date.json",
+		},
 	} {
-		actual, err := client.GetObservations(ctx, c.variables, c.entities)
+		actual, err := client.GetObservations(ctx, c.variables, c.entities, c.date)
 
 		if err != nil {
 			t.Fatalf("GetObservations error (%v): %v", c.goldenFile, err)
@@ -403,6 +416,7 @@ func TestGetObservationsContainedInPlace(t *testing.T) {
 	for _, c := range []struct {
 		variables        []string
 		containedInPlace *v2.ContainedInPlace
+		date             string
 		goldenFile       string
 	}{
 		{
@@ -410,8 +424,20 @@ func TestGetObservationsContainedInPlace(t *testing.T) {
 			containedInPlace: &v2.ContainedInPlace{Ancestor: "geoId/06", ChildPlaceType: "County"},
 			goldenFile:       "get_observations_contained_in.json",
 		},
+		{
+			variables:        []string{"Median_Age_Person"},
+			containedInPlace: &v2.ContainedInPlace{Ancestor: "geoId/10", ChildPlaceType: "County"},
+			date:             "LATEST",
+			goldenFile:       "get_observations_contained_in_latest.json",
+		},
+		{
+			variables:        []string{"Median_Age_Person"},
+			containedInPlace: &v2.ContainedInPlace{Ancestor: "geoId/10", ChildPlaceType: "County"},
+			date:             "2020",
+			goldenFile:       "get_observations_contained_in_date.json",
+		},
 	} {
-		actual, err := client.GetObservationsContainedInPlace(ctx, c.variables, c.containedInPlace)
+		actual, err := client.GetObservationsContainedInPlace(ctx, c.variables, c.containedInPlace, c.date)
 
 		if err != nil {
 			t.Fatalf("GetObservations error (%v): %v", c.goldenFile, err)
