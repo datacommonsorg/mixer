@@ -264,7 +264,7 @@ var statements = struct {
 		SELECT
 			variable_measured,
 			observation_about,
-			[observations[ARRAY_LENGTH(observations)-1]] AS observations,
+			observations[ARRAY_LENGTH(observations)-1] AS observations,
 			provenance,
 			COALESCE(observation_period, '') AS observation_period,
 			COALESCE(measurement_method, '') AS measurement_method,
@@ -279,7 +279,7 @@ var statements = struct {
 		SELECT
 			variable_measured,
 			observation_about,
-			[obs] AS observations,
+			obs AS observations,
 			provenance,
 			COALESCE(observation_period, '') AS observation_period,
 			COALESCE(measurement_method, '') AS measurement_method,
