@@ -261,6 +261,10 @@
       "dcid": "Count_Person_Female"
     },
     {
+      "name": "Female unemployment rate",
+      "dcid": "UnemploymentRate_Person_Female"
+    },
+    {
       "name": "Fraction Childhood Years Spent in Geography of Opportunity Insights Cohort: Female",
       "dcid": "dc/dg6tbd33fd7k7"
     },
@@ -775,10 +779,6 @@
     {
       "name": "Under-five mortality rate (deaths per 1000 live births) [Female]",
       "dcid": "who/u5mr.SEX--F"
-    },
-    {
-      "name": "Unemployment Rate of the Female Population",
-      "dcid": "UnemploymentRate_Person_Female"
     },
     {
       "name": "Unsentenced detainees as a proportion of overall prison population [Female]",
@@ -3177,6 +3177,18 @@
       "dcid": "Count_MedicalConditionIncident_Female_ConditionCongenitalDisease_Rubella"
     },
     {
+      "name": "Count of female teachers who are civil servant vacancy professors",
+      "dcid": "Count_Teacher_CivilServantVacancyProfessor_Female"
+    },
+    {
+      "name": "Count of female teachers who are non civil servant vacancy professor",
+      "dcid": "Count_Teacher_NonCivilServantVacancyProfessor_Female"
+    },
+    {
+      "name": "Count of female teachers who are permanent professors",
+      "dcid": "Count_Teacher_PermanentProfessor_Female"
+    },
+    {
       "name": "Count of invasive, ,, Female Haemophilus influenzae incidents",
       "dcid": "Count_MedicalConditionIncident_Female_ConditionInvasiveDisease_HaemophilusInfluenzae"
     },
@@ -3987,18 +3999,6 @@
     {
       "name": "Disease burden (number of disability-adjusted life years, DALYs) [Cervix uteri cancer, Female]",
       "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE071__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Chagas disease, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE024__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Childhood behavioural disorders, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE091__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Childhood-cluster diseases, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE012__SEX--F"
     }
   ],
   "matches": [

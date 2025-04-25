@@ -161,7 +161,7 @@
               "latest_date": "2015"
             },
             {
-              "facet_id": "1151455814",
+              "facet_id": "1733625304",
               "observations": [
                 {
                   "date": "2015",
@@ -174,18 +174,6 @@
             },
             {
               "facet_id": "4181918134",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 66458153
-                }
-              ],
-              "obs_count": 1,
-              "earliest_date": "2015",
-              "latest_date": "2015"
-            },
-            {
-              "facet_id": "1733625304",
               "observations": [
                 {
                   "date": "2015",
@@ -242,18 +230,6 @@
                 {
                   "date": "2015",
                   "value": 320738994
-                }
-              ],
-              "obs_count": 1,
-              "earliest_date": "2015",
-              "latest_date": "2015"
-            },
-            {
-              "facet_id": "1151455814",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 320635163
                 }
               ],
               "obs_count": 1,
@@ -355,18 +331,6 @@
                 {
                   "date": "2015",
                   "value": 38421464
-                }
-              ],
-              "obs_count": 1,
-              "earliest_date": "2015",
-              "latest_date": "2015"
-            },
-            {
-              "facet_id": "1151455814",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 38918045
                 }
               ],
               "obs_count": 1,
@@ -599,12 +563,6 @@
       "import_name": "CensusACS5YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS5yrSurvey"
-    },
-    "1151455814": {
-      "import_name": "OECDRegionalDemography",
-      "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
-      "measurement_method": "OECDRegionalStatistics",
-      "observation_period": "P1Y"
     },
     "1226172227": {
       "import_name": "CensusACS1YearSurvey",

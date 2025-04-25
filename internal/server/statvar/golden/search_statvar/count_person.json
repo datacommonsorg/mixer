@@ -5,6 +5,10 @@
       "dcid": "Count_Person"
     },
     {
+      "name": "Population (As Fraction of Count Household)",
+      "dcid": "Count_Person_AsAFractionOf_Count_Household"
+    },
+    {
       "name": "Population Density",
       "dcid": "Count_Person_PerArea"
     },
@@ -161,6 +165,10 @@
       "dcid": "Count_Person_12To14Years"
     },
     {
+      "name": "Number of individuals with university or higher education",
+      "dcid": "Count_Person_EducationalAttainmentUniversityOrHigher"
+    },
+    {
       "name": "Number of intersex people",
       "dcid": "Count_Person_Intersex"
     },
@@ -169,8 +177,56 @@
       "dcid": "Count_Person_SlumArea"
     },
     {
+      "name": "Number of people that are 45 to 55 years old",
+      "dcid": "Count_Person_45To55Years"
+    },
+    {
+      "name": "Number of people who can read and write",
+      "dcid": "Count_Person_EducationalAttainmentReadAndWrite"
+    },
+    {
+      "name": "Number of people with No Education",
+      "dcid": "Count_Person_EducationalAttainmentNoEducation"
+    },
+    {
+      "name": "Number of people with Primary Education",
+      "dcid": "Count_Person_EducationalAttainmentPrimaryEducation"
+    },
+    {
+      "name": "Number of people with Upper Secondary Education",
+      "dcid": "Count_Person_EducationalAttainmentUpperSecondary"
+    },
+    {
+      "name": "Number of people with Upper Secondary Education",
+      "dcid": "Count_Person_EducationalAttainmentUpperSecondaryEducation"
+    },
+    {
+      "name": "Number of people with education above intermediate level",
+      "dcid": "Count_Person_EducationalAttainmentAboveIntermediateEducation"
+    },
+    {
+      "name": "Number of people with general or azhari secondary education",
+      "dcid": "Count_Person_EducationalAttainmentGeneralOrAzhariSecondaryEducation"
+    },
+    {
+      "name": "Number of people with less than intermediate education",
+      "dcid": "Count_Person_EducationalAttainmentLessThanIntermediate"
+    },
+    {
+      "name": "Number of people with technical secondary education",
+      "dcid": "Count_Person_EducationalAttainmentTechnicalSecondaryEducation"
+    },
+    {
       "name": "Number of persons 16 to 30 years",
       "dcid": "Count_Person_16To30Years"
+    },
+    {
+      "name": "Number of persons employed in the commodity sector",
+      "dcid": "Count_Person_CommoditySector"
+    },
+    {
+      "name": "Number of persons employed in the productive social services sector",
+      "dcid": "Count_Person_ProductiveSocialServicesSector"
     },
     {
       "name": "Number of persons not participated in Subsistence Agriculture",
@@ -433,6 +489,10 @@
       "dcid": "Count_Person_CognitiveDifficulty"
     },
     {
+      "name": "Population With Current Employment",
+      "dcid": "Count_Person_Employed"
+    },
+    {
       "name": "Population With Disabilities",
       "dcid": "Count_Person_WithDisability"
     },
@@ -591,6 +651,10 @@
     {
       "name": "Population of Native Hawaiian or Other Pacific Islander Alone",
       "dcid": "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Population of non-citizens",
+      "dcid": "Count_Person_NotACitizen"
     },
     {
       "name": "Population: 0 - 14 Years",
@@ -1557,10 +1621,6 @@
       "dcid": "Count_Person_5OrMoreYears_HmongSpokenAtHome"
     },
     {
-      "name": "Population: Household",
-      "dcid": "Count_Person_ResidesInHousehold"
-    },
-    {
       "name": "Population: Houseless",
       "dcid": "Count_Person_Houseless"
     },
@@ -1831,10 +1891,6 @@
     {
       "name": "Population: Normalweight",
       "dcid": "Count_Person_Normalweight"
-    },
-    {
-      "name": "Population: Not A Citizen",
-      "dcid": "Count_Person_NotACitizen"
     },
     {
       "name": "Population: Not Hispanic or Latino \u0026 White Alone",
@@ -2171,6 +2227,10 @@
     {
       "name": "Population: Underweight",
       "dcid": "Count_Person_Underweight"
+    },
+    {
+      "name": "Population: Unemployed",
+      "dcid": "Count_Person_Unemployed"
     },
     {
       "name": "Population: Unemployed",
@@ -2681,6 +2741,10 @@
       "dcid": "Count_Person_BrazilRuralDevelopmentProgram"
     },
     {
+      "name": "Total number of people residing in households",
+      "dcid": "Count_Person_ResidesInHousehold"
+    },
+    {
       "name": "US Citizens Born Abroad to American Parents",
       "dcid": "Count_Person_USCitizenBornAbroadOfAmericanParents"
     },
@@ -2921,1084 +2985,1020 @@
       "dcid": "Count_Person_AbovePovertyLevelInThePast12Months_BlackOrAfricanAmericanAlone"
     },
     {
-      "name": "All employees, accommodation",
-      "dcid": "Count_Person_Employed_Accommodation"
+      "name": "American Indian and Alaska Native Female Population, Monoracial or Multiracial",
+      "dcid": "Count_Person_Female_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
-      "name": "All employees, accommodation and food services",
-      "dcid": "Count_Person_Employed_AccommodationFoodServices"
+      "name": "American Indian and Alaska Native Male Population, Monoracial/Multiracial",
+      "dcid": "Count_Person_Male_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
-      "name": "All employees, accounting, tax preparation, bookkeeping, and payroll services",
-      "dcid": "Count_Person_Employed_AccountingAndBookkeepingServices"
+      "name": "American Indian and Native American Farmers",
+      "dcid": "Count_Person_Producer_AmericanIndianOrAlaskaNativeAlone"
     },
     {
-      "name": "All employees, activities related to credit intermediation",
-      "dcid": "Count_Person_Employed_ActivitiesRelatedToCreditIntermediation"
+      "name": "American Indian or Alaska Native Monoracial Female Population",
+      "dcid": "Count_Person_Female_AmericanIndianOrAlaskaNativeAlone"
     },
     {
-      "name": "All employees, activities related to real estate",
-      "dcid": "Count_Person_Employed_ActivitiesRelatedToRealEstate"
+      "name": "American Indian or Alaska Native Monoracial Male Population",
+      "dcid": "Count_Person_Male_AmericanIndianOrAlaskaNativeAlone"
     },
     {
-      "name": "All employees, administrative and support and waste management and remediation services",
-      "dcid": "Count_Person_Employed_AdministrativeSupportWasteManagementRemediationServices"
+      "name": "American Indian/Alaska Native Population With Disabilities",
+      "dcid": "Count_Person_WithDisability_AmericanIndianOrAlaskaNativeAlone"
     },
     {
-      "name": "All employees, administrative and support services",
-      "dcid": "Count_Person_Employed_AdministrativeAndSupportServices"
+      "name": "Asian Farmers",
+      "dcid": "Count_Person_Producer_AsianAlone"
     },
     {
-      "name": "All employees, advertising, public relations, and related services",
-      "dcid": "Count_Person_Employed_AdvertisingPrAndRelatedServices"
+      "name": "Asian Male Population, Monoracial/Multiracial",
+      "dcid": "Count_Person_Male_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
-      "name": "All employees, aerospace product and parts manufacturing",
-      "dcid": "Count_Person_Employed_AerospaceProductAndPartsManufacturing"
+      "name": "Asian Monoracial Female Population",
+      "dcid": "Count_Person_Female_AsianAlone"
     },
     {
-      "name": "All employees, agencies, brokerages, and other insurance related activities",
-      "dcid": "Count_Person_Employed_InsuranceAgenciesAndBrokerages"
+      "name": "Asian Monoracial Male Population",
+      "dcid": "Count_Person_Male_AsianAlone"
     },
     {
-      "name": "All employees, agriculture, construction, and mining machinery manufacturing",
-      "dcid": "Count_Person_Employed_AgConstructionAndMiningMachineryMfg"
+      "name": "Asian Multiracial Female Population",
+      "dcid": "Count_Person_Female_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
-      "name": "All employees, air transportation",
-      "dcid": "Count_Person_Employed_AirTransportation"
+      "name": "Asian Population Above Poverty Level Status in Past Year",
+      "dcid": "Count_Person_AbovePovertyLevelInThePast12Months_AsianAlone"
     },
     {
-      "name": "All employees, ambulatory health care services",
-      "dcid": "Count_Person_Employed_AmbulatoryHealthCareServices"
+      "name": "Asian Population With Disabilities",
+      "dcid": "Count_Person_WithDisability_AsianAlone"
     },
     {
-      "name": "All employees, amusement parks and arcades",
-      "dcid": "Count_Person_Employed_AmusementParksAndArcades"
+      "name": "Asian or Pacific Islander Female Population",
+      "dcid": "Count_Person_Female_AsianOrPacificIslander"
     },
     {
-      "name": "All employees, amusement, gambling, and recreation industries",
-      "dcid": "Count_Person_Employed_AmusementsGamblingAndRecreation"
+      "name": "Asian or Pacific Islander Male Population",
+      "dcid": "Count_Person_Male_AsianOrPacificIslander"
     },
     {
-      "name": "All employees, animal slaughtering and processing",
-      "dcid": "Count_Person_Employed_AnimalSlaughteringAndProcessing"
+      "name": "Black Population Alone Institutionalized in Group Quarters",
+      "dcid": "Count_Person_BlackOrAfricanAmericanAlone_ResidesInInstitutionalizedGroupQuarters"
     },
     {
-      "name": "All employees, apparel knitting mills",
-      "dcid": "Count_Person_Employed_ApparelKnittingMills"
+      "name": "Black Population Alone in Adult Correctional Facilities",
+      "dcid": "Count_Person_BlackOrAfricanAmericanAlone_ResidesInAdultCorrectionalFacilities"
     },
     {
-      "name": "All employees, apparel manufacturing",
-      "dcid": "Count_Person_Employed_ApparelManufacturing"
+      "name": "Black Population Alone in College or University Student Housing",
+      "dcid": "Count_Person_BlackOrAfricanAmericanAlone_ResidesInCollegeOrUniversityStudentHousing"
     },
     {
-      "name": "All employees, apparel, piece goods, and notions merchant wholesalers",
-      "dcid": "Count_Person_Employed_ApparelAndPieceGoodsMerchantWholesalers"
+      "name": "Black Population Alone in Group Quarters",
+      "dcid": "Count_Person_BlackOrAfricanAmericanAlone_ResidesInGroupQuarters"
     },
     {
-      "name": "All employees, architectural and structural metals manufacturing",
-      "dcid": "Count_Person_Employed_ArchitecturalAndStructuralMetalsMfg"
+      "name": "Black Population Alone in Juvenile Facilities",
+      "dcid": "Count_Person_BlackOrAfricanAmericanAlone_ResidesInJuvenileFacilities"
     },
     {
-      "name": "All employees, architectural, engineering, and related services",
-      "dcid": "Count_Person_Employed_ArchitecturalAndEngineeringServices"
+      "name": "Black Population Alone in Military Quarters or on Military Ships",
+      "dcid": "Count_Person_BlackOrAfricanAmericanAlone_ResidesInMilitaryQuartersOrMilitaryShips"
     },
     {
-      "name": "All employees, arts, entertainment, and recreation",
-      "dcid": "Count_Person_Employed_ArtsEntertainmentRecreation"
+      "name": "Black Population Alone in Non Institutionalized Group Quarters",
+      "dcid": "Count_Person_BlackOrAfricanAmericanAlone_ResidesInNoninstitutionalizedGroupQuarters"
     },
     {
-      "name": "All employees, automobile dealers",
-      "dcid": "Count_Person_Employed_AutomobileDealers"
+      "name": "Black Population Alone in Nursing Facilities",
+      "dcid": "Count_Person_BlackOrAfricanAmericanAlone_ResidesInNursingFacilities"
     },
     {
-      "name": "All employees, automotive equipment rental and leasing",
-      "dcid": "Count_Person_Employed_AutomotiveEquipmentRentalAndLeasing"
+      "name": "Black or African American Female Population, Monoracial or Multiracial",
+      "dcid": "Count_Person_Female_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
-      "name": "All employees, automotive parts, accessories, and tire retailers",
-      "dcid": "Count_Person_Employed_AutoPartsAccessoriesAndTireStores"
+      "name": "Black or African American Monoracial Female Population",
+      "dcid": "Count_Person_Female_BlackOrAfricanAmericanAlone"
     },
     {
-      "name": "All employees, automotive repair and maintenance",
-      "dcid": "Count_Person_Employed_AutomotiveRepairAndMaintenance"
+      "name": "Black/African American Population With Disabilities",
+      "dcid": "Count_Person_WithDisability_BlackOrAfricanAmericanAlone"
     },
     {
-      "name": "All employees, bakeries and tortilla manufacturing",
-      "dcid": "Count_Person_Employed_BakeriesAndTortillaManufacturing"
+      "name": "Count of Person with medical specialization of AccidentAndEmergency and occupation of NursingAndMidWifery",
+      "dcid": "Count_Person_AccidentAndEmergency_NursingAndMidWiferyOccupation"
     },
     {
-      "name": "All employees, bare printed circuit board manufacturing",
-      "dcid": "Count_Person_Employed_BarePrintedCircuitBoardManufacturing"
+      "name": "Count of Person with medical specialization of Administrator and occupation of NursingAndMidWifery",
+      "dcid": "Count_Person_Administrator_NursingAndMidWiferyOccupation"
     },
     {
-      "name": "All employees, basic chemical manufacturing",
-      "dcid": "Count_Person_Employed_BasicChemicalManufacturing"
+      "name": "Count of Person with medical specialization of Anesthetic and occupation of NursingAndMidWifery",
+      "dcid": "Count_Person_Anesthetic_NursingAndMidWiferyOccupation"
     },
     {
-      "name": "All employees, beer, wine, and liquor retailers",
-      "dcid": "Count_Person_Employed_BeerWineAndLiquorStores"
+      "name": "Count of Person with medical specialization of BurnsAndPlastic and occupation of NursingAndMidWifery",
+      "dcid": "Count_Person_BurnsAndPlastic_NursingAndMidWiferyOccupation"
     },
     {
-      "name": "All employees, beverage and tobacco product manufacturing",
-      "dcid": "Count_Person_Employed_BeverageAndTobaccoProductManufacturing"
+      "name": "Count of Person with medical specialization of CardioThoracic and occupation of NursingAndMidWifery",
+      "dcid": "Count_Person_CardioThoracic_NursingAndMidWiferyOccupation"
     },
     {
-      "name": "All employees, beverage manufacturing",
-      "dcid": "Count_Person_Employed_BeverageManufacturing"
+      "name": "Count of Person with medical specialization of EarNoseAndThroat and occupation of NursingAndMidWifery",
+      "dcid": "Count_Person_EarNoseAndThroat_NursingAndMidWiferyOccupation"
     },
     {
-      "name": "All employees, beverage, tobacco, and leather and allied product manufacturing",
-      "dcid": "Count_Person_Employed_BeverageTobaccoAndLeatherAndAlliedProductManufacturing"
+      "name": "Count of Person with medical specialization of GeneralNurse and occupation of NursingAndMidWifery",
+      "dcid": "Count_Person_GeneralNurse_NursingAndMidWiferyOccupation"
     },
     {
-      "name": "All employees, book retailers and news dealers",
-      "dcid": "Count_Person_Employed_BookRetailersAndNewsDealers"
+      "name": "Count of Person with medical specialization of IntensiveCare and occupation of NursingAndMidWifery",
+      "dcid": "Count_Person_IntensiveCare_NursingAndMidWiferyOccupation"
     },
     {
-      "name": "All employees, broadcasting and content providers",
-      "dcid": "Count_Person_Employed_InternetPublishingAndBroadcasting"
+      "name": "Count of Person with medical specialization of MidwifeEducators and occupation of NursingAndMidWifery",
+      "dcid": "Count_Person_MidwifeEducators_NursingAndMidWiferyOccupation"
     },
     {
-      "name": "All employees, building equipment contractors",
-      "dcid": "Count_Person_Employed_BuildingEquipmentContractors"
+      "name": "Count of Person with medical specialization of Nurse Educator and occupation of Nursing And MidWifery",
+      "dcid": "Count_Person_NurseEducator_NursingAndMidWiferyOccupation"
     },
     {
-      "name": "All employees, building finishing contractors",
-      "dcid": "Count_Person_Employed_BuildingFinishingContractors"
+      "name": "Count of Person with medical specialization of Ophthalmic and occupation of NursingAndMidWifery",
+      "dcid": "Count_Person_Ophthalmic_NursingAndMidWiferyOccupation"
     },
     {
-      "name": "All employees, building material and garden equipment and supplies dealers",
-      "dcid": "Count_Person_Employed_BuildingMaterialAndGardenSupplyStores"
+      "name": "Count of Person with occupation of Medical Practitioner",
+      "dcid": "Count_Person_Nigerian_MedicalPractitionerOccupation"
     },
     {
-      "name": "All employees, building material and supplies dealers",
-      "dcid": "Count_Person_Employed_BuildingMaterialAndSuppliesDealers"
+      "name": "Count of Person with occupation of Medical Practitioner",
+      "dcid": "Count_Person_NonNigerian_MedicalPractitionerOccupation"
     },
     {
-      "name": "All employees, business support services",
-      "dcid": "Count_Person_Employed_BusinessSupportServices"
+      "name": "Count of Person with occupation of Veterinary Council",
+      "dcid": "Count_Person_Nigerian_VeterinaryCouncilOccupation"
     },
     {
-      "name": "All employees, business, professional, labor, political, and similar organizations",
-      "dcid": "Count_Person_Employed_ProfessionalAndSimilarOrganizations"
+      "name": "Count of Person with occupation of Veterinary Council",
+      "dcid": "Count_Person_NonNigerian_VeterinaryCouncilOccupation"
     },
     {
-      "name": "All employees, casino hotels",
-      "dcid": "Count_Person_Employed_CasinoHotels"
+      "name": "Count of number of person not a motor vehicle occupant involved in crash",
+      "dcid": "Count_Person_InvolvedInCrash_NotMotorVehicleOccupant"
     },
     {
-      "name": "All employees, cement and concrete product manufacturing",
-      "dcid": "Count_Person_Employed_CementAndConcreteProductManufacturing"
+      "name": "Count of the number of motorists in the crash",
+      "dcid": "Count_Person_InvolvedInCrash_Motorists"
     },
     {
-      "name": "All employees, chemical and allied products merchant wholesalers",
-      "dcid": "Count_Person_Employed_ChemicalMerchantWholesalers"
+      "name": "Count of the number of non-motorists in the crash",
+      "dcid": "Count_Person_InvolvedInCrash_NonMotorists"
     },
     {
-      "name": "All employees, chemical manufacturing",
-      "dcid": "Count_Person_Employed_ChemicalManufacturing"
+      "name": "Disabled Population Living in Nursing Facilities",
+      "dcid": "Count_Person_WithDisability_ResidesInNursingFacilities"
     },
     {
-      "name": "All employees, child care services",
-      "dcid": "Count_Person_Employed_ChildDayCareServices"
+      "name": "Disabled Population in Adult Correctional Facilities",
+      "dcid": "Count_Person_WithDisability_ResidesInAdultCorrectionalFacilities"
     },
     {
-      "name": "All employees, civic and social organizations",
-      "dcid": "Count_Person_Employed_CivicAndSocialOrganizations"
+      "name": "Disabled Population in College or University Student Housing",
+      "dcid": "Count_Person_WithDisability_ResidesInCollegeOrUniversityStudentHousing"
     },
     {
-      "name": "All employees, clothing and clothing accessories retailers",
-      "dcid": "Count_Person_Employed_ClothingAndClothingAccessoriesRetailers"
+      "name": "Disabled Population in Group Quarters",
+      "dcid": "Count_Person_WithDisability_ResidesInGroupQuarters"
     },
     {
-      "name": "All employees, clothing, clothing accessories, shoe, and jewelry retailers",
-      "dcid": "Count_Person_Employed_ClothingClothingAccessoriesShoeAndJewelryRetailers"
+      "name": "Disabled Population in Institutionalized Group Quarters",
+      "dcid": "Count_Person_WithDisability_ResidesInInstitutionalizedGroupQuarters"
     },
     {
-      "name": "All employees, coal mining",
-      "dcid": "Count_Person_Employed_CoalMining"
+      "name": "Disabled Population in Juvenile Facilities",
+      "dcid": "Count_Person_WithDisability_ResidesInJuvenileFacilities"
     },
     {
-      "name": "All employees, commercial and industrial machinery and equipment (except automotive and electronic) repair and maintenance",
-      "dcid": "Count_Person_Employed_CommercialMachineryRepairAndMaintenance"
+      "name": "Disabled Population in Military Quarters or Ships",
+      "dcid": "Count_Person_WithDisability_ResidesInMilitaryQuartersOrMilitaryShips"
     },
     {
-      "name": "All employees, commercial and industrial machinery and equipment rental and leasing",
-      "dcid": "Count_Person_Employed_MachineryAndEquipmentRentalAndLeasing"
+      "name": "Disabled Population in Noninstitutionalized Group Quarters",
+      "dcid": "Count_Person_WithDisability_ResidesInNoninstitutionalizedGroupQuarters"
     },
     {
-      "name": "All employees, commercial and service industry machinery manufacturing",
-      "dcid": "Count_Person_Employed_CommercialAndServiceIndustryMachinery"
+      "name": "Disabled Population of Some Other Race",
+      "dcid": "Count_Person_WithDisability_SomeOtherRaceAlone"
     },
     {
-      "name": "All employees, commercial banking",
-      "dcid": "Count_Person_Employed_CommercialBanking"
+      "name": "Disabled Population of Two or More Races",
+      "dcid": "Count_Person_WithDisability_TwoOrMoreRaces"
     },
     {
-      "name": "All employees, communications equipment manufacturing",
-      "dcid": "Count_Person_Employed_CommunicationsEquipmentManufacturing"
+      "name": "Earning Female Population",
+      "dcid": "Count_Person_Female_WithEarnings"
     },
     {
-      "name": "All employees, community food and housing, and emergency and other relief services",
-      "dcid": "Count_Person_Employed_EmergencyAndOtherReliefServices"
+      "name": "Earning Male Population",
+      "dcid": "Count_Person_Male_WithEarnings"
     },
     {
-      "name": "All employees, computer and electronic product manufacturing",
-      "dcid": "Count_Person_Employed_ComputerAndElectronicProductManufacturing"
+      "name": "Female Population Above Poverty Level in the Past Year",
+      "dcid": "Count_Person_Female_AbovePovertyLevelInThePast12Months"
     },
     {
-      "name": "All employees, computer and peripheral equipment manufacturing",
-      "dcid": "Count_Person_Employed_ComputerAndPeripheralEquipmentMfg"
+      "name": "Female Population Aged 25 to 34",
+      "dcid": "Count_Person_25To34Years_Female"
     },
     {
-      "name": "All employees, computer systems design and related services",
-      "dcid": "Count_Person_Employed_ComputerSystemsDesignAndRelatedServices"
+      "name": "Female Population Below Poverty Level in the Last Year",
+      "dcid": "Count_Person_Female_BelowPovertyLevelInThePast12Months"
     },
     {
-      "name": "All employees, computing infrastructure providers, data processing, web hosting, and related services",
-      "dcid": "Count_Person_Employed_DataProcessingHostingAndRelatedServices"
+      "name": "Female Population Identifying as Multiracial",
+      "dcid": "Count_Person_Female_TwoOrMoreRaces"
     },
     {
-      "name": "All employees, construction",
-      "dcid": "Count_Person_Employed_Construction"
+      "name": "Female Population Identifying as Native Hawaiian/Other Pacific Islander Alone",
+      "dcid": "Count_Person_Female_NativeHawaiianAndOtherPacificIslanderAlone"
     },
     {
-      "name": "All employees, construction of buildings",
-      "dcid": "Count_Person_Employed_ConstructionOfBuildings"
+      "name": "Female Population Identifying as Native Hawaiian/Other Pacific Islander Alone",
+      "dcid": "Count_Person_Female_NativeHawaiianOrOtherPacificIslanderAlone"
     },
     {
-      "name": "All employees, consumer goods rental",
-      "dcid": "Count_Person_Employed_ConsumerGoodsRental"
+      "name": "Female Population Identifying as Native Hawaiian/Other Pacific Islander, Monoracial/Multiracial",
+      "dcid": "Count_Person_Female_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
-      "name": "All employees, continuing care retirement communities and assisted living facilities for the elderly",
-      "dcid": "Count_Person_Employed_ContinuingCareAssistedLivingFacilities"
+      "name": "Female Population Identifying as Some Other Race Alone",
+      "dcid": "Count_Person_Female_SomeOtherRaceAlone"
     },
     {
-      "name": "All employees, converted paper product manufacturing",
-      "dcid": "Count_Person_Employed_ConvertedPaperProductManufacturing"
+      "name": "Female Population Identifying as White Alone",
+      "dcid": "Count_Person_Female_WhiteAlone"
     },
     {
-      "name": "All employees, couriers and messengers",
-      "dcid": "Count_Person_Employed_CouriersAndMessengers"
+      "name": "Female Population Institutionalized in Group Quarters",
+      "dcid": "Count_Person_Female_ResidesInInstitutionalizedGroupQuarters"
     },
     {
-      "name": "All employees, credit intermediation and related activities",
-      "dcid": "Count_Person_Employed_CreditIntermediationAndRelatedActivities"
+      "name": "Female Population With Disabilities",
+      "dcid": "Count_Person_WithDisability_Female"
     },
     {
-      "name": "All employees, credit intermediation and related activities including monetary authorities - central bank",
-      "dcid": "Count_Person_Employed_MonetaryAuthoritiesCentralBankCreditIntermediationAndRelatedActivities"
+      "name": "Female Population in Adult Correctional Facilities",
+      "dcid": "Count_Person_Female_ResidesInAdultCorrectionalFacilities"
     },
     {
-      "name": "All employees, cut and sew apparel manufacturing",
-      "dcid": "Count_Person_Employed_CutAndSewApparelManufacturing"
+      "name": "Female Population in College/University Student Housing",
+      "dcid": "Count_Person_Female_ResidesInCollegeOrUniversityStudentHousing"
     },
     {
-      "name": "All employees, dairy product manufacturing",
-      "dcid": "Count_Person_Employed_DairyProductManufacturing"
+      "name": "Female Population in Group Quarters",
+      "dcid": "Count_Person_Female_ResidesInGroupQuarters"
     },
     {
-      "name": "All employees, department of defense",
-      "dcid": "Count_Person_InArmedForces_Employed"
+      "name": "Female Population in Juvenile Facilities",
+      "dcid": "Count_Person_Female_ResidesInJuvenileFacilities"
     },
     {
-      "name": "All employees, department stores",
-      "dcid": "Count_Person_Employed_DepartmentStores"
+      "name": "Female Population in Military Quarters/on Military Ships",
+      "dcid": "Count_Person_Female_ResidesInMilitaryQuartersOrMilitaryShips"
     },
     {
-      "name": "All employees, depository credit intermediation",
-      "dcid": "Count_Person_Employed_DepositoryCreditIntermediation"
+      "name": "Female Population in Non Institutionalized Group Quarters",
+      "dcid": "Count_Person_Female_ResidesInNoninstitutionalizedGroupQuarters"
     },
     {
-      "name": "All employees, depository credit intermediation including monetary authorities - central bank",
-      "dcid": "Count_Person_Employed_DepositoryCreditIntermediationMonetaryAuthoritiesCentralBank"
+      "name": "Female Population in Nursing Facilities",
+      "dcid": "Count_Person_Female_ResidesInNursingFacilities"
     },
     {
-      "name": "All employees, direct health and medical insurance carriers",
-      "dcid": "Count_Person_Employed_DirectHealthAndMedicalInsuranceCarriers"
+      "name": "Female White Population, Monoracial/Multiracial",
+      "dcid": "Count_Person_Female_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
-      "name": "All employees, direct life insurance carriers",
-      "dcid": "Count_Person_Employed_DirectLifeInsuranceCarriers"
+      "name": "Food Insecure People Eligible for All Federal Benefits",
+      "dcid": "Count_Person_FoodInsecure_EligibleForAllFederalBenefits"
     },
     {
-      "name": "All employees, direct property and casualty insurance carriers",
-      "dcid": "Count_Person_Employed_DirectPropertyAndCasualtyInsuranceCarriers"
+      "name": "Food Insecure People Eligible for Some Federal Benefits",
+      "dcid": "Count_Person_FoodInsecure_EligibleForSomeFederalBenefits"
     },
     {
-      "name": "All employees, drilling oil and gas wells",
-      "dcid": "Count_Person_Employed_DrillingOilAndGasWells"
+      "name": "Food Insecure People Ineligible for Federal Benefits",
+      "dcid": "Count_Person_FoodInsecure_IneligibleForFederalBenefits"
     },
     {
-      "name": "All employees, drinking places (alcoholic beverages)",
-      "dcid": "Count_Person_Employed_DrinkingPlacesAlcoholicBeverages"
+      "name": "Foreign Born Female Population",
+      "dcid": "Count_Person_Female_ForeignBorn"
     },
     {
-      "name": "All employees, drycleaning and laundry services",
-      "dcid": "Count_Person_Employed_DryCleaningAndLaundryServices"
+      "name": "Hispanic Farmers",
+      "dcid": "Count_Person_Producer_HispanicOrLatino"
     },
     {
-      "name": "All employees, durable goods",
-      "dcid": "Count_Person_Employed_DurableGoodsManufacturing"
+      "name": "Hispanic Female Population",
+      "dcid": "Count_Person_Female_HispanicOrLatino"
     },
     {
-      "name": "All employees, electric power generation, transmission and distribution",
-      "dcid": "Count_Person_Employed_PowerGenerationAndSupply"
+      "name": "Hispanic Female Population Identifying as American Indian/Alaska Native Alone",
+      "dcid": "Count_Person_Female_HispanicOrLatino_AmericanIndianOrAlaskaNativeAlone"
     },
     {
-      "name": "All employees, electrical equipment manufacturing",
-      "dcid": "Count_Person_Employed_ElectricalEquipmentManufacturing"
+      "name": "Hispanic Female Population Identifying as American Indian/Alaska Native, Monoracial/Multiracial",
+      "dcid": "Count_Person_Female_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
-      "name": "All employees, electrical equipment, appliance, and component manufacturing",
-      "dcid": "Count_Person_Employed_ElectricalEquipmentAndApplianceMfg"
+      "name": "Hispanic Female Population Identifying as Asian Alone",
+      "dcid": "Count_Person_Female_HispanicOrLatino_AsianAlone"
     },
     {
-      "name": "All employees, electronic computer manufacturing",
-      "dcid": "Count_Person_Employed_ElectronicComputerManufacturing"
+      "name": "Hispanic Female Population Identifying as Asian, Monoracial/Multiracial",
+      "dcid": "Count_Person_Female_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
-      "name": "All employees, electronics and appliance retailers",
-      "dcid": "Count_Person_Employed_ElectronicsAndApplianceRetailers"
+      "name": "Hispanic Female Population Identifying as Asian/Pacific Islander",
+      "dcid": "Count_Person_Female_HispanicOrLatino_AsianOrPacificIslander"
     },
     {
-      "name": "All employees, employment services",
-      "dcid": "Count_Person_Employed_EmploymentServices"
+      "name": "Hispanic Female Population Identifying as Black/African American Alone",
+      "dcid": "Count_Person_Female_HispanicOrLatino_BlackOrAfricanAmericanAlone"
     },
     {
-      "name": "All employees, engine, turbine, and power transmission equipment manufacturing",
-      "dcid": "Count_Person_Employed_TurbineAndPowerTransmissionEquipmentMfg"
+      "name": "Hispanic Female Population Identifying as Black/African American, Monoracial/Multiracial",
+      "dcid": "Count_Person_Female_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
-      "name": "All employees, fabric mills",
-      "dcid": "Count_Person_Employed_FabricMills"
+      "name": "Hispanic Female Population Identifying as Native Hawaiian/Other Pacific Islander Alone",
+      "dcid": "Count_Person_Female_HispanicOrLatino_NativeHawaiianOrOtherPacificIslanderAlone"
     },
     {
-      "name": "All employees, fabricated metal product manufacturing",
-      "dcid": "Count_Person_Employed_FabricatedMetalProductManufacturing"
+      "name": "Hispanic Female Population Identifying as Native Hawaiian/Other Pacific Islander, Monoracial/Multiracial",
+      "dcid": "Count_Person_Female_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
-      "name": "All employees, facilities support services",
-      "dcid": "Count_Person_Employed_FacilitiesSupportServices"
+      "name": "Hispanic Female Population Identifying as White Alone",
+      "dcid": "Count_Person_Female_HispanicOrLatino_WhiteAlone"
     },
     {
-      "name": "All employees, federal",
-      "dcid": "Count_Person_Employed_Federal"
+      "name": "Hispanic Female Population Identifying as White, Monoracial/Multiracial",
+      "dcid": "Count_Person_Female_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
-      "name": "All employees, federal, except u.s. postal service",
-      "dcid": "Count_Person_Employed_FederalGovernmentOwnedEstablishment"
+      "name": "Hispanic Institutionalized Population in Group Quarters",
+      "dcid": "Count_Person_HispanicOrLatino_ResidesInInstitutionalizedGroupQuarters"
     },
     {
-      "name": "All employees, fiber, yarn, and thread mills",
-      "dcid": "Count_Person_Employed_FiberYarnAndThreadMills"
+      "name": "Hispanic Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino"
     },
     {
-      "name": "All employees, finance and insurance",
-      "dcid": "Count_Person_Employed_FinanceInsurance"
+      "name": "Hispanic Multiracial Female Population",
+      "dcid": "Count_Person_Female_HispanicOrLatino_TwoOrMoreRaces"
     },
     {
-      "name": "All employees, financial activities",
-      "dcid": "Count_Person_Employed_FinancialActivities"
+      "name": "Hispanic Population Above Poverty Level Status in Past Year",
+      "dcid": "Count_Person_AbovePovertyLevelInThePast12Months_HispanicOrLatino"
     },
     {
-      "name": "All employees, financial investments and related activities including financial vehicles",
-      "dcid": "Count_Person_Employed_FinancialInvestmentsAndRelatedActivitiesIncludingFinancialVehicles"
+      "name": "Hispanic Population in Adult Correctional Facilities",
+      "dcid": "Count_Person_HispanicOrLatino_ResidesInAdultCorrectionalFacilities"
     },
     {
-      "name": "All employees, fitness and recreational sports centers",
-      "dcid": "Count_Person_Employed_FitnessAndRecreationalSportsCenters"
+      "name": "Hispanic Population in College/University Student Housing",
+      "dcid": "Count_Person_HispanicOrLatino_ResidesInCollegeOrUniversityStudentHousing"
     },
     {
-      "name": "All employees, food and beverage retailers",
-      "dcid": "Count_Person_Employed_FoodAndBeverageStores"
+      "name": "Hispanic Population in Group Quarters",
+      "dcid": "Count_Person_HispanicOrLatino_ResidesInGroupQuarters"
     },
     {
-      "name": "All employees, food manufacturing",
-      "dcid": "Count_Person_Employed_FoodManufacturing"
+      "name": "Hispanic Population in Juvenile Facilities",
+      "dcid": "Count_Person_HispanicOrLatino_ResidesInJuvenileFacilities"
     },
     {
-      "name": "All employees, food services and drinking places",
-      "dcid": "Count_Person_Employed_FoodServicesAndDrinkingPlaces"
+      "name": "Hispanic Population in Military Quarters/on Military Ships",
+      "dcid": "Count_Person_HispanicOrLatino_ResidesInMilitaryQuartersOrMilitaryShips"
     },
     {
-      "name": "All employees, foundation, structure, and building exterior contractors",
-      "dcid": "Count_Person_Employed_BuildingFoundationAndExteriorContractors"
+      "name": "Hispanic Population in Non Institutionalized Group Quarters",
+      "dcid": "Count_Person_HispanicOrLatino_ResidesInNoninstitutionalizedGroupQuarters"
     },
     {
-      "name": "All employees, foundries",
-      "dcid": "Count_Person_Employed_Foundries"
+      "name": "Hispanic Population in Nursing Facilities",
+      "dcid": "Count_Person_HispanicOrLatino_ResidesInNursingFacilities"
     },
     {
-      "name": "All employees, freight transportation arrangement",
-      "dcid": "Count_Person_Employed_FreightTransportationArrangement"
+      "name": "Hispanic-African American Alone Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_BlackOrAfricanAmericanAlone"
     },
     {
-      "name": "All employees, fruit and vegetable preserving and specialty food manufacturing",
-      "dcid": "Count_Person_Employed_FruitAndVegetablePreservingAndSpecialty"
+      "name": "Hispanic-African American Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
-      "name": "All employees, full-service restaurants",
-      "dcid": "Count_Person_Employed_FullserviceRestaurants"
+      "name": "Hispanic-American Indian Alone Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_AmericanIndianOrAlaskaNativeAlone"
     },
     {
-      "name": "All employees, furniture and home furnishing merchant wholesalers",
-      "dcid": "Count_Person_Employed_FurnitureAndFurnishingMerchantWholesalers"
+      "name": "Hispanic-American Indian Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
-      "name": "All employees, furniture and home furnishings retailers",
-      "dcid": "Count_Person_Employed_FurnitureAndHomeFurnishingsRetailers"
+      "name": "Hispanic-Asian Alone Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_AsianAlone"
     },
     {
-      "name": "All employees, furniture and related product manufacturing",
-      "dcid": "Count_Person_Employed_FurnitureAndRelatedProductManufacturing"
+      "name": "Hispanic-Asian Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
-      "name": "All employees, furniture retailers",
-      "dcid": "Count_Person_Employed_FurnitureRetailers"
+      "name": "Hispanic-Asian/Pacific Islander Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_AsianOrPacificIslander"
     },
     {
-      "name": "All employees, furniture, home furnishings, electronics, and appliance retailers",
-      "dcid": "Count_Person_Employed_FurnitureHomeFurnishingsElectronicsAndApplianceRetailers"
+      "name": "Hispanic-Native Hawaiian/Other Pacific Islander Alone Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
-      "name": "All employees, gambling industries",
-      "dcid": "Count_Person_Employed_GamblingIndustries"
+      "name": "Hispanic-Native Hawaiian/Other Pacific Islander Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_NativeHawaiianOrOtherPacificIslanderAlone"
     },
     {
-      "name": "All employees, gasoline stations and fuel dealers",
-      "dcid": "Count_Person_Employed_GasolineStationsAndFuelDealers"
+      "name": "Hispanic-White Alone Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_WhiteAlone"
     },
     {
-      "name": "All employees, general freight trucking",
-      "dcid": "Count_Person_Employed_GeneralFreightTrucking"
+      "name": "Hispanic-White Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
-      "name": "All employees, general medical and surgical hospitals",
-      "dcid": "Count_Person_Employed_GeneralMedicalAndSurgicalHospitals"
+      "name": "Hispanic/Latino Population With Disabilities",
+      "dcid": "Count_Person_WithDisability_HispanicOrLatino"
     },
     {
-      "name": "All employees, general merchandise retailers",
-      "dcid": "Count_Person_Employed_GeneralMerchandiseRetailers"
+      "name": "Male Population Above Poverty Level in the Past Year",
+      "dcid": "Count_Person_Male_AbovePovertyLevelInThePast12Months"
     },
     {
-      "name": "All employees, general rental centers",
-      "dcid": "Count_Person_Employed_GeneralRentalCenters"
+      "name": "Male Population Aged 25 to 34",
+      "dcid": "Count_Person_25To34Years_Male"
     },
     {
-      "name": "All employees, goods producing",
-      "dcid": "Count_Person_Employed_GoodsProducing"
+      "name": "Male Population Below Poverty Status in the Last Year",
+      "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months"
     },
     {
-      "name": "All employees, government",
-      "dcid": "Count_Person_Employed_Government"
+      "name": "Male Population From Some Other Race Alone",
+      "dcid": "Count_Person_Male_SomeOtherRaceAlone"
     },
     {
-      "name": "All employees, grain and oilseed milling",
-      "dcid": "Count_Person_Employed_GrainAndOilseedMilling"
+      "name": "Male Population Institutionalized in Group Quarters",
+      "dcid": "Count_Person_Male_ResidesInInstitutionalizedGroupQuarters"
     },
     {
-      "name": "All employees, grantmaking and giving services",
-      "dcid": "Count_Person_Employed_GrantMakingAndGivingServices"
+      "name": "Male Population Who Are Native Hawaiian and Other Pacific Islander Alone",
+      "dcid": "Count_Person_Male_NativeHawaiianAndOtherPacificIslanderAlone"
     },
     {
-      "name": "All employees, grocery and convenience retailers",
-      "dcid": "Count_Person_Employed_GroceryStores"
+      "name": "Male Population Who Are Native Hawaiian or Other Pacific Islander",
+      "dcid": "Count_Person_Male_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
     },
     {
-      "name": "All employees, grocery and related product merchant wholesalers",
-      "dcid": "Count_Person_Employed_GroceryAndRelatedProductWholesalers"
+      "name": "Male Population Who Are Native Hawaiian or Other Pacific Islander Alone",
+      "dcid": "Count_Person_Male_NativeHawaiianOrOtherPacificIslanderAlone"
     },
     {
-      "name": "All employees, hardware, and plumbing and heating equipment and supplies merchant wholesalers",
-      "dcid": "Count_Person_Employed_HardwareAndPlumbingMerchantWholesalers"
+      "name": "Male Population With Disabilities",
+      "dcid": "Count_Person_WithDisability_Male"
     },
     {
-      "name": "All employees, health and personal care retailers",
-      "dcid": "Count_Person_Employed_HealthAndPersonalCareRetailers"
+      "name": "Male Population in Adult Correctional Facilities",
+      "dcid": "Count_Person_Male_ResidesInAdultCorrectionalFacilities"
     },
     {
-      "name": "All employees, health care",
-      "dcid": "Count_Person_Employed_HealthCare"
+      "name": "Male Population in College/University Student Housing",
+      "dcid": "Count_Person_Male_ResidesInCollegeOrUniversityStudentHousing"
     },
     {
-      "name": "All employees, health care and social assistance",
-      "dcid": "Count_Person_Employed_HealthCareSocialAssistance"
+      "name": "Male Population in Group Quarters",
+      "dcid": "Count_Person_Male_ResidesInGroupQuarters"
     },
     {
-      "name": "All employees, heavy and civil engineering construction",
-      "dcid": "Count_Person_Employed_HeavyAndCivilEngineeringConstruction"
+      "name": "Male Population in Juvenile Facilities",
+      "dcid": "Count_Person_Male_ResidesInJuvenileFacilities"
     },
     {
-      "name": "All employees, highway, street, and bridge construction",
-      "dcid": "Count_Person_Employed_HighwayStreetAndBridgeConstruction"
+      "name": "Male Population in Military Quarters/on Ships",
+      "dcid": "Count_Person_Male_ResidesInMilitaryQuartersOrMilitaryShips"
     },
     {
-      "name": "All employees, home furnishings retailers",
-      "dcid": "Count_Person_Employed_HomeFurnishingsRetailers"
+      "name": "Male Population in Non Institutionalized Group Quarters",
+      "dcid": "Count_Person_Male_ResidesInNoninstitutionalizedGroupQuarters"
     },
     {
-      "name": "All employees, home health care services",
-      "dcid": "Count_Person_Employed_HomeHealthCareServices"
+      "name": "Male Population in Nursing Facilities",
+      "dcid": "Count_Person_Male_ResidesInNursingFacilities"
     },
     {
-      "name": "All employees, hospitals",
-      "dcid": "Count_Person_Employed_Hospitals"
+      "name": "Monoracial Population Institutionalized in Group Quarters",
+      "dcid": "Count_Person_OneRace_ResidesInInstitutionalizedGroupQuarters"
     },
     {
-      "name": "All employees, hotels (except casino hotels) and motels",
-      "dcid": "Count_Person_Employed_HotelsAndMotelsExceptCasinoHotels"
+      "name": "Monoracial Population Residing in Non Institutionalized Group Quarters",
+      "dcid": "Count_Person_OneRace_ResidesInNoninstitutionalizedGroupQuarters"
     },
     {
-      "name": "All employees, household and institutional furniture and kitchen cabinet manufacturing",
-      "dcid": "Count_Person_Employed_HouseholdAndInstitutionalFurnitureMfg"
+      "name": "Monoracial Population in Adult Correctional Facilities",
+      "dcid": "Count_Person_OneRace_ResidesInAdultCorrectionalFacilities"
     },
     {
-      "name": "All employees, household appliance manufacturing",
-      "dcid": "Count_Person_Employed_HouseholdApplianceManufacturing"
+      "name": "Monoracial Population in College or University Student Housing",
+      "dcid": "Count_Person_OneRace_ResidesInCollegeOrUniversityStudentHousing"
     },
     {
-      "name": "All employees, household appliances and electrical and electronic goods merchant wholesalers",
-      "dcid": "Count_Person_Employed_ApplianceAndElectricGoodsMerchantWhls"
+      "name": "Monoracial Population in Group Quarters",
+      "dcid": "Count_Person_OneRace_ResidesInGroupQuarters"
     },
     {
-      "name": "All employees, independent artists, writers, and performers",
+      "name": "Monoracial Population in Juvenile Facilities",
+      "dcid": "Count_Person_OneRace_ResidesInJuvenileFacilities"
+    },
+    {
+      "name": "Monoracial Population in Military Quarters or on Military Ships",
+      "dcid": "Count_Person_OneRace_ResidesInMilitaryQuartersOrMilitaryShips"
+    },
+    {
+      "name": "Monoracial Population in Nursing Facilities",
+      "dcid": "Count_Person_OneRace_ResidesInNursingFacilities"
+    },
+    {
+      "name": "Multi Racial Population Above Poverty Level Status in Past Year",
+      "dcid": "Count_Person_AbovePovertyLevelInThePast12Months_TwoOrMoreRaces"
+    },
+    {
+      "name": "Multiracial Farmers",
+      "dcid": "Count_Person_Producer_TwoOrMoreRaces"
+    },
+    {
+      "name": "Multiracial Hispanic Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_TwoOrMoreRaces"
+    },
+    {
+      "name": "Multiracial Male Population",
+      "dcid": "Count_Person_Male_TwoOrMoreRaces"
+    },
+    {
+      "name": "Multiracial Population in Adult Correctional Facilities",
+      "dcid": "Count_Person_TwoOrMoreRaces_ResidesInAdultCorrectionalFacilities"
+    },
+    {
+      "name": "Multiracial Population in College or University Student Housing",
+      "dcid": "Count_Person_TwoOrMoreRaces_ResidesInCollegeOrUniversityStudentHousing"
+    },
+    {
+      "name": "Multiracial Population in Group Quarters",
+      "dcid": "Count_Person_TwoOrMoreRaces_ResidesInGroupQuarters"
+    },
+    {
+      "name": "Multiracial Population in Institutionalized Group Quarters",
+      "dcid": "Count_Person_TwoOrMoreRaces_ResidesInInstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Multiracial Population in Juvenile Facilities",
+      "dcid": "Count_Person_TwoOrMoreRaces_ResidesInJuvenileFacilities"
+    },
+    {
+      "name": "Multiracial Population in Military Quarters or on Military Ships",
+      "dcid": "Count_Person_TwoOrMoreRaces_ResidesInMilitaryQuartersOrMilitaryShips"
+    },
+    {
+      "name": "Multiracial Population in Non Institutionalized Group Quarters",
+      "dcid": "Count_Person_TwoOrMoreRaces_ResidesInNoninstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Multiracial Population in Nursing Facilities",
+      "dcid": "Count_Person_TwoOrMoreRaces_ResidesInNursingFacilities"
+    },
+    {
+      "name": "Native American Population Above Poverty Level Status in Past Year",
+      "dcid": "Count_Person_AbovePovertyLevelInThePast12Months_AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "name": "Native Hawaiian Farmers",
+      "dcid": "Count_Person_Producer_NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Native Hawaiian/Other Pacific Islander Population With Disabilities",
+      "dcid": "Count_Person_WithDisability_NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Non Hispanic African American Alone Male Population",
+      "dcid": "Count_Person_Male_NotHispanicOrLatino_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Non Hispanic African American Male Population",
+      "dcid": "Count_Person_Male_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non Hispanic American Indian/Alaska Native Alone Male Population",
+      "dcid": "Count_Person_Male_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non Hispanic American Indian/Alaska Native Male Population",
+      "dcid": "Count_Person_Male_NotHispanicOrLatino_AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "name": "Non Hispanic Asian Alone Male Population",
+      "dcid": "Count_Person_Male_NotHispanicOrLatino_AsianAlone"
+    },
+    {
+      "name": "Non Hispanic Asian Male Population",
+      "dcid": "Count_Person_Male_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non Hispanic Female Population",
+      "dcid": "Count_Person_Female_NotHispanicOrLatino"
+    },
+    {
+      "name": "Non Hispanic Female Population Identifying as American Indian/Alaska Native Alone",
+      "dcid": "Count_Person_Female_NotHispanicOrLatino_AmericanIndianOrAlaskaNativeAlone"
+    },
+    {
+      "name": "Non Hispanic Female Population Identifying as American Indian/Alaska Native, Monoracial/Multiracial",
+      "dcid": "Count_Person_Female_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non Hispanic Female Population Identifying as Asian Alone",
+      "dcid": "Count_Person_Female_NotHispanicOrLatino_AsianAlone"
+    },
+    {
+      "name": "Non Hispanic Female Population Identifying as Asian, Monoracial/Multiracial",
+      "dcid": "Count_Person_Female_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non Hispanic Female Population Identifying as Asian/Pacific Islander",
+      "dcid": "Count_Person_Female_NotHispanicOrLatino_AsianOrPacificIslander"
+    },
+    {
+      "name": "Non Hispanic Female Population Identifying as Black/African American Alone",
+      "dcid": "Count_Person_Female_NotHispanicOrLatino_BlackOrAfricanAmericanAlone"
+    },
+    {
+      "name": "Non Hispanic Female Population Identifying as Black/African American, Monoracial/Multiracial",
+      "dcid": "Count_Person_Female_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non Hispanic Female Population Identifying as Multiracial",
+      "dcid": "Count_Person_Female_NotHispanicOrLatino_TwoOrMoreRaces"
+    },
+    {
+      "name": "Non Hispanic Female Population Identifying as Native Hawaiian/Other Pacific Islander Alone",
+      "dcid": "Count_Person_Female_NotHispanicOrLatino_NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Non Hispanic Female Population Identifying as Native Hawaiian/Other Pacific Islander, Monoracial/Multiracial",
+      "dcid": "Count_Person_Female_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non Hispanic Female Population Identifying as White, Monoracial/Multiracial",
+      "dcid": "Count_Person_Female_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non Hispanic Male Population",
+      "dcid": "Count_Person_Male_NotHispanicOrLatino"
+    },
+    {
+      "name": "Non Hispanic Multiracial Male Population",
+      "dcid": "Count_Person_Male_NotHispanicOrLatino_TwoOrMoreRaces"
+    },
+    {
+      "name": "Non Hispanic Native Hawaiian/Other Pacific Islander Alone Male Population",
+      "dcid": "Count_Person_Male_NotHispanicOrLatino_NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Non Hispanic Native Hawaiian/Other Pacific Islander Male Population",
+      "dcid": "Count_Person_Male_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non Hispanic Population in Group Quarters",
+      "dcid": "Count_Person_NotHispanicOrLatino_ResidesInGroupQuarters"
+    },
+    {
+      "name": "Non Hispanic Population in Institutionalized Group Quarters",
+      "dcid": "Count_Person_NotHispanicOrLatino_ResidesInInstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Non Hispanic Population in Non Institutionalized Group Quarters",
+      "dcid": "Count_Person_NotHispanicOrLatino_ResidesInNoninstitutionalizedGroupQuarters"
+    },
+    {
+      "name": "Non Hispanic White Male Population",
+      "dcid": "Count_Person_Male_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Non Hispanic White Population Above Poverty Level Status in Past Year",
+      "dcid": "Count_Person_AbovePovertyLevelInThePast12Months_WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "name": "Non Hispanic or Latino White Population With Disabilities",
+      "dcid": "Count_Person_WithDisability_WhiteAloneNotHispanicOrLatino"
+    },
+    {
+      "name": "Non White Female Population",
+      "dcid": "Count_Person_Female_NonWhite"
+    },
+    {
+      "name": "Non White Male Population",
+      "dcid": "Count_Person_Male_NonWhite"
+    },
+    {
+      "name": "Number of Non Hispanic Asian/Pacific Islander Male Population",
+      "dcid": "Count_Person_Male_NotHispanicOrLatino_AsianOrPacificIslander"
+    },
+    {
+      "name": "Number of beneficiaries of the Rural Development Program without gender information",
+      "dcid": "Count_Person_BrazilRuralDevelopmentProgram_GenderUnknownOrNotStated"
+    },
+    {
+      "name": "Number of children aged 5 to 11 years in the lowest wealth index",
+      "dcid": "Count_Person_5To11Years_LowestWealthIndex"
+    },
+    {
+      "name": "Number of divorced people aged 15 years",
+      "dcid": "Count_Person_15Years_Divorced"
+    },
+    {
+      "name": "Number of divorced people aged 16 and over",
+      "dcid": "Count_Person_16Years_Divorced"
+    },
+    {
+      "name": "Number of divorced people aged 17 years",
+      "dcid": "Count_Person_17Years_Divorced"
+    },
+    {
+      "name": "Number of divorced people aged 18 years or older",
+      "dcid": "Count_Person_18Years_Divorced"
+    },
+    {
+      "name": "Number of divorced people aged 19 years",
+      "dcid": "Count_Person_19Years_Divorced"
+    },
+    {
+      "name": "Number of divorced people aged 75 or more",
+      "dcid": "Count_Person_75OrMoreYears_Divorced"
+    },
+    {
+      "name": "Number of divorced people aged 75 years or less",
+      "dcid": "Count_Person_75OrLessYears_Divorced"
+    },
+    {
+      "name": "Number of employed independent artists, writers, and performers",
       "dcid": "Count_Person_Employed_IndependentArtistsWritersAndPerformers"
     },
     {
-      "name": "All employees, indian tribes",
-      "dcid": "Count_Person_Employed_IndianTribes"
-    },
-    {
-      "name": "All employees, individual and family services",
-      "dcid": "Count_Person_Employed_IndividualAndFamilyServices"
-    },
-    {
-      "name": "All employees, industrial machinery manufacturing",
-      "dcid": "Count_Person_Employed_IndustrialMachineryManufacturing"
-    },
-    {
-      "name": "All employees, information",
-      "dcid": "Count_Person_Employed_Information"
-    },
-    {
-      "name": "All employees, insurance carriers",
-      "dcid": "Count_Person_Employed_InsuranceCarriers"
-    },
-    {
-      "name": "All employees, insurance carriers and related activities",
-      "dcid": "Count_Person_Employed_InsuranceCarriersAndRelatedActivities"
-    },
-    {
-      "name": "All employees, investigation and security services",
-      "dcid": "Count_Person_Employed_InvestigationAndSecurityServices"
-    },
-    {
-      "name": "All employees, investigation, guard, and armored car services",
-      "dcid": "Count_Person_Employed_SecurityAndArmoredCarServices"
-    },
-    {
-      "name": "All employees, investment banking and securities intermediation",
-      "dcid": "Count_Person_Employed_InvestmentBankingAndSecuritiesIntermediation"
-    },
-    {
-      "name": "All employees, iron and steel mills and ferroalloy manufacturing",
-      "dcid": "Count_Person_Employed_IronAndSteelMillsAndFerroalloyMfg"
-    },
-    {
-      "name": "All employees, jewelry and silverware manufacturing",
-      "dcid": "Count_Person_Employed_JewelryAndSilverwareManufacturing"
-    },
-    {
-      "name": "All employees, jewelry, luggage, and leather goods retailers",
-      "dcid": "Count_Person_Employed_JewelryLuggageAndLeatherGoodsRetailers"
-    },
-    {
-      "name": "All employees, land subdivision",
-      "dcid": "Count_Person_Employed_LandSubdivision"
-    },
-    {
-      "name": "All employees, legal services",
-      "dcid": "Count_Person_Employed_LegalServices"
-    },
-    {
-      "name": "All employees, leisure and hospitality",
-      "dcid": "Count_Person_Employed_LeisureHospitality"
-    },
-    {
-      "name": "All employees, lessors of nonfinancial intangible assets (except copyrighted works)",
-      "dcid": "Count_Person_Employed_LessorsOfNonFinancialIntangibleAssets"
-    },
-    {
-      "name": "All employees, lessors of real estate",
-      "dcid": "Count_Person_Employed_LessorsOfRealEstate"
-    },
-    {
-      "name": "All employees, limited-service restaurants and other eating places",
-      "dcid": "Count_Person_Employed_LimitedserviceEatingPlaces"
-    },
-    {
-      "name": "All employees, local government",
-      "dcid": "Count_Person_Employed_LocalGovernmentOwnedEstablishment"
-    },
-    {
-      "name": "All employees, logging",
-      "dcid": "Count_Person_Employed_Logging"
-    },
-    {
-      "name": "All employees, lumber and other construction materials merchant wholesalers",
-      "dcid": "Count_Person_Employed_LumberAndConstSupplyMerchantWholesalers"
-    },
-    {
-      "name": "All employees, machine shops; turned product; and screw, nut, and bolt manufacturing",
-      "dcid": "Count_Person_Employed_MachineShopsAndThreadedProductMfg"
-    },
-    {
-      "name": "All employees, machinery manufacturing",
-      "dcid": "Count_Person_Employed_MachineryManufacturing"
-    },
-    {
-      "name": "All employees, machinery, equipment, and supplies merchant wholesalers",
-      "dcid": "Count_Person_Employed_MachineryAndSupplyMerchantWholesalers"
-    },
-    {
-      "name": "All employees, management of companies and enterprises",
-      "dcid": "Count_Person_Employed_ManagementOfCompaniesEnterprises"
-    },
-    {
-      "name": "All employees, management, scientific, and technical consulting services",
-      "dcid": "Count_Person_Employed_ManagementAndTechnicalConsultingServices"
-    },
-    {
-      "name": "All employees, manufacturing",
-      "dcid": "Count_Person_Employed_Manufacturing"
-    },
-    {
-      "name": "All employees, manufacturing and reproducing magnetic and optical media and audio and video equipment manufacturing",
-      "dcid": "Count_Person_Employed_ManufacturingAndReproducingMagneticAndOpticalMediaAndAudioAndvideoEquipmentManufacturing"
-    },
-    {
-      "name": "All employees, media streaming distribution services, social networks, and other media networks and content providers",
-      "dcid": "Count_Person_Employed_MediaStreamingDistributionServicesSocialNetworksAndOtherMediaNetworksAndContentProviders"
-    },
-    {
-      "name": "All employees, medical and diagnostic laboratories",
-      "dcid": "Count_Person_Employed_MedicalAndDiagnosticLaboratories"
-    },
-    {
-      "name": "All employees, medical equipment and supplies manufacturing",
-      "dcid": "Count_Person_Employed_MedicalEquipmentAndSuppliesManufacturing"
-    },
-    {
-      "name": "All employees, merchant wholesalers, durable goods",
-      "dcid": "Count_Person_Employed_MerchantWholesalersDurableGoods"
-    },
-    {
-      "name": "All employees, merchant wholesalers, nondurable goods",
-      "dcid": "Count_Person_Employed_MerchantWholesalersNondurableGoods"
-    },
-    {
-      "name": "All employees, metal ore mining",
-      "dcid": "Count_Person_Employed_MetalOreMining"
-    },
-    {
-      "name": "All employees, metalworking machinery manufacturing",
-      "dcid": "Count_Person_Employed_MetalworkingMachineryManufacturing"
-    },
-    {
-      "name": "All employees, mining (except oil and gas)",
-      "dcid": "Count_Person_Employed_MiningExceptOilAndGas"
-    },
-    {
-      "name": "All employees, mining and logging",
-      "dcid": "Count_Person_Employed_MiningAndLogging"
-    },
-    {
-      "name": "All employees, mining, logging and construction",
-      "dcid": "Count_Person_Employed_ConstructionLogging"
-    },
-    {
-      "name": "All employees, mining, quarrying, and oil and gas extraction",
-      "dcid": "Count_Person_Employed_MiningQuarryingOilGasExtraction"
-    },
-    {
-      "name": "All employees, miscellaneous durable goods merchant wholesalers",
-      "dcid": "Count_Person_Employed_MiscDurableGoodsMerchantWholesalers"
-    },
-    {
-      "name": "All employees, miscellaneous manufacturing",
-      "dcid": "Count_Person_Employed_MiscellaneousManufacturing"
-    },
-    {
-      "name": "All employees, miscellaneous nondurable goods merchant wholesalers",
-      "dcid": "Count_Person_Employed_MiscNondurableGoodsMerchantWholesalers"
-    },
-    {
-      "name": "All employees, monetary authorities-central bank",
-      "dcid": "Count_Person_Employed_MonetaryAuthoritiesCentralBank"
-    },
-    {
-      "name": "All employees, motion picture and sound recording industries",
-      "dcid": "Count_Person_Employed_MotionPictureAndSoundRecordingIndustries"
-    },
-    {
-      "name": "All employees, motion picture and video industries",
-      "dcid": "Count_Person_Employed_MotionPictureAndVideoIndustries"
-    },
-    {
-      "name": "All employees, motion picture and video production",
-      "dcid": "Count_Person_Employed_MotionPictureAndVideoProduction"
-    },
-    {
-      "name": "All employees, motor vehicle and motor vehicle parts and supplies merchant wholesalers",
-      "dcid": "Count_Person_Employed_MotorVehicleAndPartsMerchantWholesalers"
-    },
-    {
-      "name": "All employees, motor vehicle and parts dealers",
-      "dcid": "Count_Person_Employed_MotorVehicleAndPartsDealers"
-    },
-    {
-      "name": "All employees, motor vehicle manufacturing",
-      "dcid": "Count_Person_Employed_MotorVehicleBodyAndTrailerManufacturing"
-    },
-    {
-      "name": "All employees, motor vehicle parts manufacturing",
-      "dcid": "Count_Person_Employed_MotorVehiclesAndParts"
-    },
-    {
-      "name": "All employees, museums, historical sites, and similar institutions",
-      "dcid": "Count_Person_Employed_MuseumsHistoricalSitesZoosAndParks"
-    },
-    {
-      "name": "All employees, natural gas distribution",
-      "dcid": "Count_Person_Employed_NaturalGasDistribution"
-    },
-    {
-      "name": "All employees, navigational, measuring, electromedical, and control instruments manufacturing",
-      "dcid": "Count_Person_Employed_NavigationalMeasuringElectromedicalAndControlInstrumentsManufacturing"
-    },
-    {
-      "name": "All employees, newspaper, periodical, book, and directory publishers",
-      "dcid": "Count_Person_Employed_NewspaperPeriodicalBookAndDirectoryPublishers"
-    },
-    {
-      "name": "All employees, non depository credit intermediation",
-      "dcid": "Count_Person_Employed_NonDepositoryCreditIntermediation"
-    },
-    {
-      "name": "All employees, non-durable goods",
-      "dcid": "Count_Person_Employed_NondurableGoodsManufacturing"
-    },
-    {
-      "name": "All employees, nonmetallic mineral mining and quarrying",
-      "dcid": "Count_Person_Employed_NonmetallicMineralMiningAndQuarrying"
-    },
-    {
-      "name": "All employees, nonmetallic mineral product manufacturing",
-      "dcid": "Count_Person_Employed_NonmetallicMineralProductManufacturing"
-    },
-    {
-      "name": "All employees, nonresidential building construction",
-      "dcid": "Count_Person_Employed_NonresidentialBuildingConstruction"
-    },
-    {
-      "name": "All employees, nursing and residential care facilities",
-      "dcid": "Count_Person_Employed_NursingAndResidentialCareFacilities"
-    },
-    {
-      "name": "All employees, nursing care facilities (skilled nursing facilities)",
-      "dcid": "Count_Person_Employed_NursingCareFacilitiesSkilledNursing"
-    },
-    {
-      "name": "All employees, office administrative services",
-      "dcid": "Count_Person_Employed_OfficeAdministrativeServices"
-    },
-    {
-      "name": "All employees, office supplies, stationery, and gift retailers",
-      "dcid": "Count_Person_Employed_OfficeSuppliesStationeryAndGiftRetailers"
-    },
-    {
-      "name": "All employees, offices of dentists",
-      "dcid": "Count_Person_Employed_OfficesOfDentists"
-    },
-    {
-      "name": "All employees, offices of other health practitioners",
-      "dcid": "Count_Person_Employed_OfficesOfOtherHealthPractitioners"
-    },
-    {
-      "name": "All employees, offices of physicians",
-      "dcid": "Count_Person_Employed_OfficesOfPhysicians"
-    },
-    {
-      "name": "All employees, offices of real estate agents and brokers",
-      "dcid": "Count_Person_Employed_OfficesOfRealEstateAgentsAndBrokers"
-    },
-    {
-      "name": "All employees, oil and gas extraction",
-      "dcid": "Count_Person_Employed_OilAndGasExtraction"
-    },
-    {
-      "name": "All employees, other ambulatory health care services",
-      "dcid": "Count_Person_Employed_OtherAmbulatoryHealthCareServices"
-    },
-    {
-      "name": "All employees, other amusement and recreation industries",
-      "dcid": "Count_Person_Employed_OtherAmusementAndRecreationIndustries"
-    },
-    {
-      "name": "All employees, other fabricated metal product manufacturing",
-      "dcid": "Count_Person_Employed_OtherFabricatedMetalProductManufacturing"
-    },
-    {
-      "name": "All employees, other financial investment activities including financial vehicles",
-      "dcid": "Count_Person_Employed_OtherFinancialInvestmentActivities"
-    },
-    {
-      "name": "All employees, other food manufacturing",
-      "dcid": "Count_Person_Employed_OtherFoodManufacturing"
-    },
-    {
-      "name": "All employees, other general purpose machinery manufacturing",
-      "dcid": "Count_Person_Employed_OtherGeneralPurposeMachineryManufacturing"
-    },
-    {
-      "name": "All employees, other heavy and civil engineering construction",
-      "dcid": "Count_Person_Employed_OtherHeavyConstruction"
-    },
-    {
-      "name": "All employees, other miscellaneous manufacturing",
-      "dcid": "Count_Person_Employed_OtherMiscellaneousManufacturing"
-    },
-    {
-      "name": "All employees, other miscellaneous retailers",
-      "dcid": "Count_Person_Employed_OtherMiscellaneousRetailers"
-    },
-    {
-      "name": "All employees, other motor vehicle dealers",
-      "dcid": "Count_Person_Employed_OtherMotorVehicleDealers"
-    },
-    {
-      "name": "All employees, other personal services",
-      "dcid": "Count_Person_Employed_OtherPersonalServices"
-    },
-    {
-      "name": "All employees, other professional, scientific, and technical services",
-      "dcid": "Count_Person_Employed_OtherProfessionalAndTechnicalServices"
-    },
-    {
-      "name": "All employees, other residential care facilities",
-      "dcid": "Count_Person_Employed_OtherResidentialCareFacilities"
-    },
-    {
-      "name": "All employees, other services",
-      "dcid": "Count_Person_Employed_OtherServices"
-    },
-    {
-      "name": "All employees, other specialty trade contractors",
-      "dcid": "Count_Person_Employed_OtherSpecialtyTradeContractors"
-    },
-    {
-      "name": "All employees, other support services",
-      "dcid": "Count_Person_Employed_OtherSupportServices"
-    },
-    {
-      "name": "All employees, other wood product manufacturing",
-      "dcid": "Count_Person_Employed_OtherWoodProductManufacturing"
-    },
-    {
-      "name": "All employees, outpatient care centers",
-      "dcid": "Count_Person_Employed_OutpatientCareCenters"
-    },
-    {
-      "name": "All employees, paper and paper product merchant wholesalers",
-      "dcid": "Count_Person_Employed_PaperAndPaperProductMerchantWholesalers"
-    },
-    {
-      "name": "All employees, paper manufacturing",
-      "dcid": "Count_Person_Employed_PaperManufacturing"
-    },
-    {
-      "name": "All employees, performing arts companies",
-      "dcid": "Count_Person_Employed_PerformingArtsCompanies"
-    },
-    {
-      "name": "All employees, performing arts, spectator sports, and related industries",
-      "dcid": "Count_Person_Employed_PerformingArtsAndSpectatorSports"
-    },
-    {
-      "name": "All employees, personal and household goods repair and maintenance",
-      "dcid": "Count_Person_Employed_HouseholdGoodsRepairAndMaintenance"
-    },
-    {
-      "name": "All employees, personal and laundry services",
-      "dcid": "Count_Person_Employed_PersonalAndLaundryServices"
-    },
-    {
-      "name": "All employees, personal care services",
-      "dcid": "Count_Person_Employed_PersonalCareServices"
-    },
-    {
-      "name": "All employees, petroleum and coal products manufacturing",
-      "dcid": "Count_Person_Employed_PetroleumAndCoalProductsManufacturing"
-    },
-    {
-      "name": "All employees, pharmaceutical and medicine manufacturing",
-      "dcid": "Count_Person_Employed_PharmaceuticalAndMedicineManufacturing"
-    },
-    {
-      "name": "All employees, pipeline transportation",
-      "dcid": "Count_Person_Employed_PipelineTransportation"
-    },
-    {
-      "name": "All employees, plastics and rubber products manufacturing",
-      "dcid": "Count_Person_Employed_PlasticsAndRubberProductsManufacturing"
-    },
-    {
-      "name": "All employees, plastics product manufacturing",
-      "dcid": "Count_Person_Employed_PlasticsProductManufacturing"
-    },
-    {
-      "name": "All employees, primary metal manufacturing",
-      "dcid": "Count_Person_Employed_PrimaryMetalManufacturing"
-    },
-    {
-      "name": "All employees, printing and related support activities",
-      "dcid": "Count_Person_Employed_PrintingAndRelatedSupportActivities"
-    },
-    {
-      "name": "All employees, private colleges, universities, and professional schools",
-      "dcid": "Count_Person_Employed_PrivateElementaryAndSecondarySchools"
-    },
-    {
-      "name": "All employees, private elementary and secondary schools",
-      "dcid": "Count_Person_Employed_ElementaryAndSecondarySchools"
-    },
-    {
-      "name": "All employees, professional and business services",
-      "dcid": "Count_Person_Employed_ProfessionalBusinessServices"
-    },
-    {
-      "name": "All employees, professional and commercial equipment and supplies merchant wholesalers",
-      "dcid": "Count_Person_Employed_CommercialEquipMerchantWholesalers"
-    },
-    {
-      "name": "All employees, professional, scientific, and technical services",
-      "dcid": "Count_Person_Employed_ProfessionalScientificTechnicalServices"
-    },
-    {
-      "name": "All employees, psychiatric and substance abuse hospitals",
-      "dcid": "Count_Person_Employed_PsychiatricAndSubstanceAbuseHospitals"
-    },
-    {
-      "name": "All employees, publishing industries",
-      "dcid": "Count_Person_Employed_PublishingIndustries"
-    },
-    {
-      "name": "All employees, pulp, paper, and paperboard mills",
-      "dcid": "Count_Person_Employed_PulpPaperAndPaperboardMills"
-    },
-    {
-      "name": "All employees, radio and television broadcasting stations",
-      "dcid": "Count_Person_Employed_RadioAndTelevisionBroadcasting"
-    },
-    {
-      "name": "All employees, rail transportation",
-      "dcid": "Count_Person_Employed_RailTransportation"
-    },
-    {
-      "name": "All employees, real estate",
-      "dcid": "Count_Person_Employed_RealEstate"
-    },
-    {
-      "name": "All employees, real estate and rental and leasing",
-      "dcid": "Count_Person_Employed_RealEstateRentalLeasing"
-    },
-    {
-      "name": "All employees, religious organizations",
-      "dcid": "Count_Person_Employed_ReligiousOrganizations"
-    },
-    {
-      "name": "All employees, religious, grantmaking, civic, professional, and similar organizations",
-      "dcid": "Count_Person_Employed_MembershipAssociationsAndOrganizations"
-    },
-    {
-      "name": "All employees, rental and leasing services",
-      "dcid": "Count_Person_Employed_RentalAndLeasingServices"
-    },
-    {
-      "name": "All employees, repair and maintenance",
-      "dcid": "Count_Person_Employed_RepairAndMaintenance"
-    },
-    {
-      "name": "All employees, residential building construction",
-      "dcid": "Count_Person_Employed_ResidentialBuildingConstruction"
-    },
-    {
-      "name": "All employees, residential intellectual and developmental disability, mental health, and substance abuse facilities",
+      "name": "Number of employed individuals in residential mental health facilities",
       "dcid": "Count_Person_Employed_ResidentialMentalHealthFacilities"
     },
     {
-      "name": "All employees, restaurants and other eating places",
-      "dcid": "Count_Person_Employed_RestaurantsAndOtherEatingPlaces"
+      "name": "Number of employed people in the information sector",
+      "dcid": "Count_Person_Employed_Information"
     },
     {
-      "name": "All employees, retail trade",
-      "dcid": "Count_Person_Employed_RetailTrade"
+      "name": "Number of employed persons in beer, wine and liquor stores",
+      "dcid": "Count_Person_Employed_BeerWineAndLiquorStores"
     },
     {
-      "name": "All employees, rubber product manufacturing",
-      "dcid": "Count_Person_Employed_RubberProductManufacturing"
+      "name": "Number of employed persons in indian tribes",
+      "dcid": "Count_Person_Employed_IndianTribes"
     },
     {
-      "name": "All employees, sawmills and wood preservation",
-      "dcid": "Count_Person_Employed_SawmillsAndWoodPreservation"
+      "name": "Number of employed persons in professional, scientific and technical services",
+      "dcid": "Count_Person_Employed_ProfessionalScientificTechnicalServices"
     },
     {
-      "name": "All employees, scenic and sightseeing transportation",
-      "dcid": "Count_Person_Employed_ScenicAndSightseeingTransportation"
+      "name": "Number of employees in limited-service eating places",
+      "dcid": "Count_Person_Employed_LimitedserviceEatingPlaces"
     },
     {
-      "name": "All employees, scheduled air transportation",
-      "dcid": "Count_Person_Employed_ScheduledAirTransportation"
+      "name": "Number of female non-workers",
+      "dcid": "Count_Person_Female_NonWorker"
     },
     {
-      "name": "All employees, school and employee bus transportation",
-      "dcid": "Count_Person_Employed_SchoolAndEmployeeBusTransportation"
+      "name": "Number of female workers",
+      "dcid": "Count_Person_Female_Worker"
     },
     {
-      "name": "All employees, scientific research and development services",
-      "dcid": "Count_Person_Employed_ScientificResearchAndDevelopmentServices"
+      "name": "Number of females aged 1 year or less",
+      "dcid": "Count_Person_1OrLessYears_Female"
     },
     {
-      "name": "All employees, seafood product preparation and packaging",
-      "dcid": "Count_Person_Employed_SeafoodProductPreparationAndPackaging"
+      "name": "Number of females between 12 to 14 years of age",
+      "dcid": "Count_Person_12To14Years_Female"
     },
     {
-      "name": "All employees, securities and commodity contracts intermediation and brokerage",
-      "dcid": "Count_Person_Employed_SecuritiesAndCommodityContractsBrokerage"
+      "name": "Number of graduates from private higher education institutions",
+      "dcid": "Count_Person_Graduate_PrivateHigherInstitute"
     },
     {
-      "name": "All employees, securities, commodity contracts, funds, trusts, and other financial vehicles, investments, and related activities",
-      "dcid": "Count_Person_Employed_SecuritiesCommodityContractsFundsTrustsAndOtherFinancialVehiclesInvestmentsAndRelatedActivities"
+      "name": "Number of graduates from private universities",
+      "dcid": "Count_Person_Graduate_PrivateUniversity"
     },
     {
-      "name": "All employees, semiconductor and other electronic component manufacturing",
-      "dcid": "Count_Person_Employed_SemiconductorAndOtherElectronicComponentManufacturing"
+      "name": "Number of graduates from public universities or al-azhar university",
+      "dcid": "Count_Person_Graduate_PublicUniversityOrAlAzharUniversity"
     },
     {
-      "name": "All employees, semiconductor and related device manufacturing",
-      "dcid": "Count_Person_Employed_SemiconductorAndRelatedDeviceManufacturing"
+      "name": "Number of graduates from the academy",
+      "dcid": "Count_Person_Graduate_Academy"
     },
     {
-      "name": "All employees, service-providing",
-      "dcid": "Count_Person_Employed_ServiceProviding"
+      "name": "Number of graduates from upper medium technical institute",
+      "dcid": "Count_Person_Graduate_UpperMediumTechnicalInstitute"
     },
     {
-      "name": "All employees, services for the elderly and persons with disabilities",
-      "dcid": "Count_Person_Employed_ServicesForTheElderlyAndDisabled"
+      "name": "Number of illiterate females",
+      "dcid": "Count_Person_Illiterate_Female"
+    },
+    {
+      "name": "Number of illiterate males",
+      "dcid": "Count_Person_Illiterate_Male"
+    },
+    {
+      "name": "Number of individuals aged 12 to 14 years from middle wealth index households",
+      "dcid": "Count_Person_12To14Years_MiddleWealthIndex"
+    },
+    {
+      "name": "Number of individuals aged 12 to 14 years in the fourth wealth index",
+      "dcid": "Count_Person_12To14Years_FourthWealthIndex"
+    },
+    {
+      "name": "Number of individuals aged 12 to 14 years in the lowest wealth index",
+      "dcid": "Count_Person_12To14Years_LowestWealthIndex"
+    },
+    {
+      "name": "Number of individuals aged 12 to 14 years within the highest wealth index",
+      "dcid": "Count_Person_12To14Years_HighestWealthIndex"
+    },
+    {
+      "name": "Number of individuals aged 15 years in a contract marriage",
+      "dcid": "Count_Person_15Years_ContractMarriage"
+    },
+    {
+      "name": "Number of individuals aged 18 years and over in contract marriages",
+      "dcid": "Count_Person_18Years_ContractMarriage"
+    },
+    {
+      "name": "Number of individuals aged 5 to 11 years from middle wealth index households",
+      "dcid": "Count_Person_5To11Years_MiddleWealthIndex"
+    },
+    {
+      "name": "Number of individuals between 20 and 24 years old with a contract marriage",
+      "dcid": "Count_Person_20To24Years_ContractMarriage"
+    },
+    {
+      "name": "Number of individuals in the age group 5 to 11 years in the highest wealth index",
+      "dcid": "Count_Person_5To11Years_HighestWealthIndex"
+    },
+    {
+      "name": "Number of individuals in the second wealth index aged 5 to 11 years old",
+      "dcid": "Count_Person_5To11Years_SecondWealthIndex"
+    },
+    {
+      "name": "Number of intersex people in rural areas",
+      "dcid": "Count_Person_Intersex_Rural"
+    },
+    {
+      "name": "Number of intersex people in urban areas",
+      "dcid": "Count_Person_Intersex_Urban"
+    },
+    {
+      "name": "Number of male non-workers",
+      "dcid": "Count_Person_Male_NonWorker"
+    },
+    {
+      "name": "Number of male workers",
+      "dcid": "Count_Person_Male_Worker"
+    },
+    {
+      "name": "Number of males aged 1 year or less",
+      "dcid": "Count_Person_1OrLessYears_Male"
+    },
+    {
+      "name": "Number of males aged 12-14 years",
+      "dcid": "Count_Person_12To14Years_Male"
+    },
+    {
+      "name": "Number of males aged 50 to 59 years",
+      "dcid": "Count_Person_50To59Years_Male"
+    },
+    {
+      "name": "Number of married 17-year-olds",
+      "dcid": "Count_Person_17Years_Married"
+    },
+    {
+      "name": "Number of married 19-year-olds",
+      "dcid": "Count_Person_19Years_Married"
+    },
+    {
+      "name": "Number of married individuals aged 15 years or less",
+      "dcid": "Count_Person_15OrLessYears_Married"
+    },
+    {
+      "name": "Number of married individuals aged 16 and over",
+      "dcid": "Count_Person_16Years_Married"
+    },
+    {
+      "name": "Number of married people aged 15 and older",
+      "dcid": "Count_Person_15Years_Married"
+    },
+    {
+      "name": "Number of married people aged 18",
+      "dcid": "Count_Person_18Years_Married"
+    },
+    {
+      "name": "Number of married people aged 75 or less",
+      "dcid": "Count_Person_75OrLessYears_Married"
+    },
+    {
+      "name": "Number of married people aged 75 or older",
+      "dcid": "Count_Person_75OrMoreYears_Married"
+    },
+    {
+      "name": "Number of men aged 30 to 39 years",
+      "dcid": "Count_Person_30To39Years_Male"
+    },
+    {
+      "name": "Number of men aged 40 to 49 years",
+      "dcid": "Count_Person_40To49Years_Male"
+    },
+    {
+      "name": "Number of men benefiting from the Rural Development Program",
+      "dcid": "Count_Person_BrazilRuralDevelopmentProgram_Male"
+    },
+    {
+      "name": "Number of men in water supply",
+      "dcid": "Count_Person_WaterSupplySewerageWasteManagement_Male"
+    },
+    {
+      "name": "Number of men who can read and write",
+      "dcid": "Count_Person_EducationalAttainmentReadAndWrite_Male"
+    },
+    {
+      "name": "Number of men with education above intermediate level",
+      "dcid": "Count_Person_EducationalAttainmentAboveIntermediateEducation_Male"
+    },
+    {
+      "name": "Number of men with general or azhari secondary education",
+      "dcid": "Count_Person_EducationalAttainmentGeneralOrAzhariSecondaryEducation_Male"
+    },
+    {
+      "name": "Number of men with less than intermediate education",
+      "dcid": "Count_Person_EducationalAttainmentLessThanIntermediate_Male"
+    },
+    {
+      "name": "Number of men with technical secondary education",
+      "dcid": "Count_Person_EducationalAttainmentTechnicalSecondaryEducation_Male"
+    },
+    {
+      "name": "Number of men with university or higher education",
+      "dcid": "Count_Person_EducationalAttainmentUniversityOrHigher_Male"
+    },
+    {
+      "name": "Number of motor vehicle occupants involved in crash",
+      "dcid": "Count_Person_InvolvedInCrash_MotorVehicleOccupant"
+    },
+    {
+      "name": "Number of never married 17-year-olds",
+      "dcid": "Count_Person_17Years_NeverMarried"
+    },
+    {
+      "name": "Number of never married individuals aged 15 years or less",
+      "dcid": "Count_Person_15OrLessYears_NeverMarried"
+    },
+    {
+      "name": "Number of never married people aged 15 and over",
+      "dcid": "Count_Person_15Years_NeverMarried"
+    },
+    {
+      "name": "Number of never married people aged 16 years",
+      "dcid": "Count_Person_16Years_NeverMarried"
+    },
+    {
+      "name": "Number of never married people aged 18 and above",
+      "dcid": "Count_Person_18Years_NeverMarried"
+    },
+    {
+      "name": "Number of never married people aged 75 or less",
+      "dcid": "Count_Person_75OrLessYears_NeverMarried"
     }
   ],
   "matches": [
