@@ -2,14 +2,12 @@
   {
     "VariableMeasured": "Count_Person",
     "ObservationAbout": "country/CAN",
-    "Observations": {
-      "Observations": [
-        {
-          "Date": "2021",
-          "Value": "36991981"
-        }
-      ]
-    },
+    "Observations": [
+      {
+        "Date": "2021",
+        "Value": "36991981"
+      }
+    ],
     "Provenance": "dc/base/CanadaStatistics",
     "ObservationPeriod": "",
     "MeasurementMethod": "",
@@ -21,14 +19,12 @@
   {
     "VariableMeasured": "Count_Person",
     "ObservationAbout": "country/CAN",
-    "Observations": {
-      "Observations": [
-        {
-          "Date": "2023",
-          "Value": "40097761"
-        }
-      ]
-    },
+    "Observations": [
+      {
+        "Date": "2023",
+        "Value": "40097761"
+      }
+    ],
     "Provenance": "dc/base/OECDRegionalDemography",
     "ObservationPeriod": "P1Y",
     "MeasurementMethod": "OECDRegionalStatistics",
@@ -40,14 +36,12 @@
   {
     "VariableMeasured": "Count_Person",
     "ObservationAbout": "country/CAN",
-    "Observations": {
-      "Observations": [
-        {
-          "Date": "2017",
-          "Value": "36708083"
-        }
-      ]
-    },
+    "Observations": [
+      {
+        "Date": "2017",
+        "Value": "36708083"
+      }
+    ],
     "Provenance": "dc/base/WikidataPopulation",
     "ObservationPeriod": "",
     "MeasurementMethod": "WikidataPopulation",
@@ -59,14 +53,12 @@
   {
     "VariableMeasured": "Count_Person",
     "ObservationAbout": "country/CAN",
-    "Observations": {
-      "Observations": [
-        {
-          "Date": "2024",
-          "Value": "41012563"
-        }
-      ]
-    },
+    "Observations": [
+      {
+        "Date": "2024",
+        "Value": "41012563"
+      }
+    ],
     "Provenance": "dc/base/WikipediaStatsData",
     "ObservationPeriod": "",
     "MeasurementMethod": "Wikipedia",
@@ -78,14 +70,12 @@
   {
     "VariableMeasured": "Count_Person",
     "ObservationAbout": "country/CAN",
-    "Observations": {
-      "Observations": [
-        {
-          "Date": "2023",
-          "Value": "40097761"
-        }
-      ]
-    },
+    "Observations": [
+      {
+        "Date": "2023",
+        "Value": "40097761"
+      }
+    ],
     "Provenance": "dc/base/WorldDevelopmentIndicators",
     "ObservationPeriod": "P1Y",
     "MeasurementMethod": "",

@@ -497,7 +497,7 @@ func observationToFacetObservation(observation *Observation, includeObs bool) (*
 
 	var observations []*pb.PointStat
 
-	for _, dateValue := range observation.Observations.Observations {
+	for _, dateValue := range observation.Observations {
 		pointStat, err := dateValueToPointStat(dateValue)
 
 		// Skip observations with non-numeric values.
