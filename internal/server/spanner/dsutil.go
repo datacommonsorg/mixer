@@ -216,27 +216,43 @@ func selectFieldsToQueryOptions(selectFields []string) queryOptions {
 	return qo
 }
 
-// Whether to return all observations in the Observation response.
-func queryObs(qo *queryOptions) bool {
+// Whether the queryOptions are for a full observation request.
+func isObservationRequest(qo *queryOptions) bool {
 	return qo.date && qo.value
 }
 
-func buildBaseObsStatement(variables []string, entities []string, date string) spanner.Statement {
+// Whether the queryOptions are for an existence request.
+func isExistenceRequest(selectFields []string) bool {
+	qo := selectFieldsToQueryOptions(selectFields)
+	return !isObservationRequest(&qo) && !qo.facet
+}
+
+func buildBaseObsStatement(variables []string, entities []string, date string, filterObs bool) spanner.Statement {
 	stmt := spanner.Statement{
 		Params: map[string]interface{}{},
 	}
 	filters := []string{}
 
+	var baseStmt string
+	var obsStmt string
 	switch date {
 	case "":
-		stmt.SQL = statements.getAllObs
+		baseStmt = statements.getObs
+		obsStmt = statements.allObs
 	case shared.LATEST:
-		stmt.SQL = statements.getLatestObs
+		baseStmt = statements.getObs
+		obsStmt = statements.latestObs
 	default:
-		stmt.SQL = statements.getDateObs
+		baseStmt = statements.getDateObs
 		stmt.Params["date"] = fmt.Sprintf("$.%s", date)
+		obsStmt = statements.dateObs
 		filters = append(filters, statements.selectDate)
 	}
+
+	if filterObs {
+		obsStmt = statements.emptyObs
+	}
+	stmt.SQL = fmt.Sprintf(baseStmt, obsStmt)
 
 	if len(variables) > 0 {
 		stmt.Params["variables"] = variables
@@ -272,7 +288,7 @@ func observationsToObservationResponse(req *pbv2.ObservationRequest, observation
 	// For now, V3 will match the behavior of V2 to preserve backward compatibility and allow datasource merging.
 	// TODO: Unify these responses more.
 	qo := selectFieldsToQueryOptions(req.Select)
-	if queryObs(&qo) {
+	if isObservationRequest(&qo) {
 		// Returns FacetObservations with PointStats.
 		return obsToObsResponse(req, observations)
 	} else if qo.facet {

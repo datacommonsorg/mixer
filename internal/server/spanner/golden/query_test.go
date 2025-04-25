@@ -348,6 +348,7 @@ func TestGetObservations(t *testing.T) {
 		variables  []string
 		entities   []string
 		date       string
+		filterObs  bool
 		goldenFile string
 	}{
 		{
@@ -357,6 +358,7 @@ func TestGetObservations(t *testing.T) {
 		},
 		{
 			entities:   []string{"wikidataId/Q341968"},
+			filterObs:  true,
 			goldenFile: "get_observations_entity.json",
 		},
 		{
@@ -372,7 +374,7 @@ func TestGetObservations(t *testing.T) {
 			goldenFile: "get_observations_date.json",
 		},
 	} {
-		actual, err := client.GetObservations(ctx, c.variables, c.entities, c.date)
+		actual, err := client.GetObservations(ctx, c.variables, c.entities, c.date, c.filterObs)
 
 		if err != nil {
 			t.Fatalf("GetObservations error (%v): %v", c.goldenFile, err)
@@ -417,6 +419,7 @@ func TestGetObservationsContainedInPlace(t *testing.T) {
 		variables        []string
 		containedInPlace *v2.ContainedInPlace
 		date             string
+		filterObs        bool
 		goldenFile       string
 	}{
 		{
@@ -437,7 +440,7 @@ func TestGetObservationsContainedInPlace(t *testing.T) {
 			goldenFile:       "get_observations_contained_in_date.json",
 		},
 	} {
-		actual, err := client.GetObservationsContainedInPlace(ctx, c.variables, c.containedInPlace, c.date)
+		actual, err := client.GetObservationsContainedInPlace(ctx, c.variables, c.containedInPlace, c.date, c.filterObs)
 
 		if err != nil {
 			t.Fatalf("GetObservations error (%v): %v", c.goldenFile, err)

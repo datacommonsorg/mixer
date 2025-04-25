@@ -55,6 +55,20 @@
           ]
         }
       }
+    },
+    "Max_Temperature": {
+      "by_entity": {
+        "wikidataId/Q341968": {
+          "ordered_facets": [
+            {
+              "facet_id": "3083194648",
+              "obs_count": 1437,
+              "earliest_date": "1902-06",
+              "latest_date": "2024-03"
+            }
+          ]
+        }
+      }
     }
   },
   "facets": {
@@ -73,6 +87,13 @@
       "import_name": "WikidataPopulation",
       "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
       "measurement_method": "WikidataPopulation"
+    },
+    "3083194648": {
+      "import_name": "NOAA_EPA_Observed_Historical_Weather",
+      "provenance_url": "https://www.noaa.gov/",
+      "measurement_method": "dcAggregate/NASAGSOD_NASAGHCN_EPA",
+      "observation_period": "P1M",
+      "unit": "Celsius"
     },
     "4010764369": {
       "import_name": "TemperatureEvents_Agg",
