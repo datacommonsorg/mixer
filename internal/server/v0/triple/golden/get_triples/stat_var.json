@@ -44,6 +44,16 @@
       "subjectTypes": [
         "StatisticalVariable"
       ],
+      "predicate": "name",
+      "objectValue": "Total population",
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person",
+      "subjectName": "Total Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "populationType",
       "objectId": "Person",
       "objectName": "Person",
@@ -7143,6 +7153,16 @@
       "subjectTypes": [
         "StatisticalVariable"
       ],
+      "predicate": "description",
+      "objectValue": "Total number of females in the population.",
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Female",
+      "subjectName": "Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
       "predicate": "gender",
       "objectId": "Female",
       "objectName": "Female",
@@ -7187,6 +7207,16 @@
       ],
       "predicate": "name",
       "objectValue": "Female Population",
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_Female",
+      "subjectName": "Female Population",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "name",
+      "objectValue": "Total female population",
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
@@ -9543,7 +9573,7 @@
     },
     {
       "subjectId": "Count_Person_Unemployed_Female_AsAFractionOf_Count_Person_Female",
-      "subjectName": "Population: Unemployed, Female (As Fraction of Count Person Female)",
+      "subjectName": "Percentage of unemployed women",
       "subjectTypes": [
         "StatisticalVariable"
       ],

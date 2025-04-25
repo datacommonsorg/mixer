@@ -5,18 +5,6 @@
         "country/USA": {
           "ordered_facets": [
             {
-              "facet_id": "1151455814",
-              "observations": [
-                {
-                  "date": "2023",
-                  "value": 334914895
-                }
-              ],
-              "obs_count": 1,
-              "earliest_date": "2023",
-              "latest_date": "2023"
-            },
-            {
               "facet_id": "4181918134",
               "observations": [
                 {
@@ -46,12 +34,6 @@
     }
   },
   "facets": {
-    "1151455814": {
-      "import_name": "OECDRegionalDemography",
-      "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
-      "measurement_method": "OECDRegionalStatistics",
-      "observation_period": "P1Y"
-    },
     "2825511676": {
       "import_name": "CDC_Mortality_UnderlyingCause",
       "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"

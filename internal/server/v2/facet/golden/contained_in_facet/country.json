@@ -35,6 +35,9 @@
               "facet_id": "2018634167"
             },
             {
+              "facet_id": "563701067"
+            },
+            {
               "facet_id": "1897073702"
             },
             {
@@ -83,6 +86,12 @@
               "facet_id": "3189273983"
             },
             {
+              "facet_id": "4036334630"
+            },
+            {
+              "facet_id": "2140617040"
+            },
+            {
               "facet_id": "2058321835"
             },
             {
@@ -120,9 +129,6 @@
             },
             {
               "facet_id": "4181918134"
-            },
-            {
-              "facet_id": "1151455814"
             },
             {
               "facet_id": "473499523"
@@ -180,12 +186,6 @@
       "import_name": "CensusACS5YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS5yrSurvey"
-    },
-    "1151455814": {
-      "import_name": "OECDRegionalDemography",
-      "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
-      "measurement_method": "OECDRegionalStatistics",
-      "observation_period": "P1Y"
     },
     "1216205004": {
       "import_name": "CanadaStatistics",
@@ -263,6 +263,11 @@
     "2123271870": {
       "import_name": "IndiaCensus_Primary",
       "provenance_url": "https://censusindia.gov.in/"
+    },
+    "2140617040": {
+      "import_name": "Egypt_Census",
+      "provenance_url": "https://egypt.opendataforafrica.org",
+      "observation_period": "P1Y"
     },
     "217147238": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
@@ -375,6 +380,11 @@
       "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
       "observation_period": "P1Y"
     },
+    "4036334630": {
+      "import_name": "Cotedivoire_Census",
+      "provenance_url": "https://cotedivoire.opendataforafrica.org/",
+      "observation_period": "P1Y"
+    },
     "4181918134": {
       "import_name": "OECDRegionalDemography_Population",
       "provenance_url": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23&pg=40&fc=Topic&bp=true&snb=117&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_DEMO%40DF_POP_5Y&df[ag]=OECD.CFE.EDS&df[vs]=2.0&dq=A.......&to[TIME_PERIOD]=false&vw=tb&pd=%2C",
@@ -392,6 +402,10 @@
       "provenance_url": "https://databank.worldbank.org/source/subnational-population",
       "measurement_method": "WorldBankSubnationalPopulationEstimate",
       "observation_period": "P1Y"
+    },
+    "563701067": {
+      "import_name": "NigeriaStatistics",
+      "provenance_url": "https://nigeria.opendataforafrica.org"
     },
     "607884225": {
       "import_name": "Sweden_Census",
