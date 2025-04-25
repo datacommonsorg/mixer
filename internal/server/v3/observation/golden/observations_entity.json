@@ -1,37 +1,147 @@
 {
   "by_variable": {
-    "Count_HeatTemperatureEvent": {
+    "Area_FloodEvent": {
       "by_entity": {
         "wikidataId/Q1764983": {},
-        "wikidataId/Q341968": {
+        "wikidataId/Q4671576": {
           "ordered_facets": [
             {
-              "facet_id": "4010764369",
+              "facet_id": "1286017793",
               "observations": [
                 {
-                  "date": "2022-09",
-                  "value": 1
+                  "date": "2023-11",
+                  "value": 23.937
                 },
                 {
-                  "date": "2022-10",
-                  "value": 2
+                  "date": "2023-12",
+                  "value": 8.163
                 }
               ],
               "obs_count": 2,
-              "earliest_date": "2022-09",
-              "latest_date": "2022-10"
+              "earliest_date": "2023-11",
+              "latest_date": "2023-12"
             },
             {
-              "facet_id": "2370098101",
+              "facet_id": "767211349",
               "observations": [
                 {
-                  "date": "2022",
-                  "value": 3
+                  "date": "2023",
+                  "value": 32.099
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2022",
+              "earliest_date": "2023",
+              "latest_date": "2023"
+            }
+          ]
+        }
+      }
+    },
+    "Count_FireEvent": {
+      "by_entity": {
+        "wikidataId/Q1764983": {},
+        "wikidataId/Q4671576": {
+          "ordered_facets": [
+            {
+              "facet_id": "3641880131",
+              "observations": [
+                {
+                  "date": "2012-09",
+                  "value": 1
+                },
+                {
+                  "date": "2013-07",
+                  "value": 1
+                },
+                {
+                  "date": "2016-07",
+                  "value": 1
+                },
+                {
+                  "date": "2018-10",
+                  "value": 1
+                },
+                {
+                  "date": "2020-04",
+                  "value": 1
+                },
+                {
+                  "date": "2022-02",
+                  "value": 1
+                }
+              ],
+              "obs_count": 6,
+              "earliest_date": "2012-09",
+              "latest_date": "2022-02"
+            },
+            {
+              "facet_id": "992801983",
+              "observations": [
+                {
+                  "date": "2012",
+                  "value": 1
+                },
+                {
+                  "date": "2013",
+                  "value": 1
+                },
+                {
+                  "date": "2016",
+                  "value": 1
+                },
+                {
+                  "date": "2018",
+                  "value": 1
+                },
+                {
+                  "date": "2020",
+                  "value": 1
+                },
+                {
+                  "date": "2022",
+                  "value": 1
+                }
+              ],
+              "obs_count": 6,
+              "earliest_date": "2012",
               "latest_date": "2022"
+            }
+          ]
+        }
+      }
+    },
+    "Count_FloodEvent": {
+      "by_entity": {
+        "wikidataId/Q1764983": {},
+        "wikidataId/Q4671576": {
+          "ordered_facets": [
+            {
+              "facet_id": "2074204934",
+              "observations": [
+                {
+                  "date": "2023-11",
+                  "value": 1
+                },
+                {
+                  "date": "2023-12",
+                  "value": 1
+                }
+              ],
+              "obs_count": 2,
+              "earliest_date": "2023-11",
+              "latest_date": "2023-12"
+            },
+            {
+              "facet_id": "2646326466",
+              "observations": [
+                {
+                  "date": "2023",
+                  "value": 1
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         }
@@ -67,31 +177,19 @@
             }
           ]
         },
-        "wikidataId/Q341968": {
+        "wikidataId/Q4671576": {
           "ordered_facets": [
             {
               "facet_id": "1456184638",
               "observations": [
                 {
                   "date": "2021",
-                  "value": 606
+                  "value": 494
                 }
               ],
               "obs_count": 1,
               "earliest_date": "2021",
               "latest_date": "2021"
-            },
-            {
-              "facet_id": "2458695583",
-              "observations": [
-                {
-                  "date": "2016",
-                  "value": 653
-                }
-              ],
-              "obs_count": 1,
-              "earliest_date": "2016",
-              "latest_date": "2016"
             }
           ]
         }
@@ -99,27 +197,49 @@
     }
   },
   "facets": {
+    "1286017793": {
+      "import_name": "DynamicWorld_FloodEvents_Places_AutoRefresh",
+      "provenance_url": "https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1",
+      "observation_period": "P1M",
+      "unit": "SquareKilometer"
+    },
     "1456184638": {
       "import_name": "WikipediaStatsData",
       "provenance_url": "https://www.wikipedia.org",
       "measurement_method": "Wikipedia"
     },
-    "2370098101": {
-      "import_name": "TemperatureEvents_Agg",
-      "provenance_url": "https://datacommons.org",
-      "measurement_method": "DataCommonsAggregate",
-      "observation_period": "P1Y"
+    "2074204934": {
+      "import_name": "DynamicWorld_FloodEvents_Places_AutoRefresh",
+      "provenance_url": "https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1",
+      "observation_period": "P1M"
     },
     "2458695583": {
       "import_name": "WikidataPopulation",
       "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
       "measurement_method": "WikidataPopulation"
     },
-    "4010764369": {
-      "import_name": "TemperatureEvents_Agg",
-      "provenance_url": "https://datacommons.org",
+    "2646326466": {
+      "import_name": "DynamicWorld_FloodEvents_Places_AutoRefresh",
+      "provenance_url": "https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1",
+      "observation_period": "P1Y"
+    },
+    "3641880131": {
+      "import_name": "NASA_VIIRSActiveFiresEvents_Agg",
+      "provenance_url": "https://firms.modaps.eosdis.nasa.gov/active_fire/",
       "measurement_method": "DataCommonsAggregate",
       "observation_period": "P1M"
+    },
+    "767211349": {
+      "import_name": "DynamicWorld_FloodEvents_Places_AutoRefresh",
+      "provenance_url": "https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1",
+      "observation_period": "P1Y",
+      "unit": "SquareKilometer"
+    },
+    "992801983": {
+      "import_name": "NASA_VIIRSActiveFiresEvents_Agg",
+      "provenance_url": "https://firms.modaps.eosdis.nasa.gov/active_fire/",
+      "measurement_method": "DataCommonsAggregate",
+      "observation_period": "P1Y"
     }
   }
 }

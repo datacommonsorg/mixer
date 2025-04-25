@@ -167,7 +167,7 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 }
 
 // GetObservations retrieves observations from Spanner given a list of variables and entities.
-func (sc *SpannerClient) GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*Observation, error) {
+func (sc *SpannerClient) GetObservations(ctx context.Context, variables []string, entities []string, date string, filterObs bool) ([]*Observation, error) {
 	var observations []*Observation
 	if len(entities) == 0 {
 		return nil, fmt.Errorf("entity must be specified")
@@ -175,7 +175,7 @@ func (sc *SpannerClient) GetObservations(ctx context.Context, variables []string
 
 	err := sc.queryAndCollect(
 		ctx,
-		buildBaseObsStatement(variables, entities, date),
+		buildBaseObsStatement(variables, entities, date, filterObs),
 		func() interface{} {
 			return &Observation{}
 		},
@@ -192,13 +192,13 @@ func (sc *SpannerClient) GetObservations(ctx context.Context, variables []string
 }
 
 // GetObservationsContainedInPlace retrieves observations from Spanner given a list of variables and an entity expression.
-func (sc *SpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace, date string) ([]*Observation, error) {
+func (sc *SpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace, date string, filterObs bool) ([]*Observation, error) {
 	var observations []*Observation
 	if len(variables) == 0 || containedInPlace == nil {
 		return observations, nil
 	}
 
-	stmt := buildBaseObsStatement(variables, []string{} /*entities*/, date)
+	stmt := buildBaseObsStatement(variables, []string{} /*entities*/, date, filterObs)
 	stmt.SQL = fmt.Sprintf(statements.getObsByVariableAndContainedInPlace, stmt.SQL)
 	stmt.Params["ancestor"] = containedInPlace.Ancestor
 	stmt.Params["childPlaceType"] = containedInPlace.ChildPlaceType

@@ -222,7 +222,7 @@ func TestV3Observation(t *testing.T) {
 			{
 				req: &pbv2.ObservationRequest{
 					Entity: &pbv2.DcidOrExpression{
-						Dcids: []string{"wikidataId/Q341968", "wikidataId/Q1764983"},
+						Dcids: []string{"wikidataId/Q4671576", "wikidataId/Q1764983"},
 					},
 					Select: []string{"entity", "variable", "date", "value"},
 				},
