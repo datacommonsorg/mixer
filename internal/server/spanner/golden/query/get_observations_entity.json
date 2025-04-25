@@ -2,9 +2,7 @@
   {
     "VariableMeasured": "Count_HeatTemperatureEvent",
     "ObservationAbout": "wikidataId/Q341968",
-    "Observations": {
-      "Observations": []
-    },
+    "Observations": [],
     "Provenance": "dc/base/TemperatureEvents_Agg",
     "ObservationPeriod": "P1M",
     "MeasurementMethod": "DataCommonsAggregate",
@@ -16,9 +14,7 @@
   {
     "VariableMeasured": "Count_HeatTemperatureEvent",
     "ObservationAbout": "wikidataId/Q341968",
-    "Observations": {
-      "Observations": []
-    },
+    "Observations": [],
     "Provenance": "dc/base/TemperatureEvents_Agg",
     "ObservationPeriod": "P1Y",
     "MeasurementMethod": "DataCommonsAggregate",
@@ -30,9 +26,7 @@
   {
     "VariableMeasured": "Count_Person",
     "ObservationAbout": "wikidataId/Q341968",
-    "Observations": {
-      "Observations": []
-    },
+    "Observations": [],
     "Provenance": "dc/base/WikidataPopulation",
     "ObservationPeriod": "",
     "MeasurementMethod": "WikidataPopulation",
@@ -44,9 +38,7 @@
   {
     "VariableMeasured": "Count_Person",
     "ObservationAbout": "wikidataId/Q341968",
-    "Observations": {
-      "Observations": []
-    },
+    "Observations": [],
     "Provenance": "dc/base/WikipediaStatsData",
     "ObservationPeriod": "",
     "MeasurementMethod": "Wikipedia",
@@ -58,9 +50,7 @@
   {
     "VariableMeasured": "Max_Temperature",
     "ObservationAbout": "wikidataId/Q341968",
-    "Observations": {
-      "Observations": []
-    },
+    "Observations": [],
     "Provenance": "dc/base/NOAA_EPA_Observed_Historical_Weather",
     "ObservationPeriod": "P1M",
     "MeasurementMethod": "dcAggregate/NASAGSOD_NASAGHCN_EPA",

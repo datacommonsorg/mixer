@@ -60,9 +60,7 @@ type DateValue struct {
 	Value string
 }
 
-type TimeSeries struct {
-	Observations []*DateValue
-}
+type TimeSeries []*DateValue
 
 // DecodeSpanner decodes the observations field to a TimeSeries value.
 // This is inherited from the spanner Decoder interface to decode from a spanner type to a custom type.
@@ -73,7 +71,7 @@ func (ts *TimeSeries) DecodeSpanner(val interface{}) (err error) {
 	if !ok {
 		return fmt.Errorf("failed to decode TimeSeries: (%v)", val)
 	}
-	ts.Observations = []*DateValue{}
+	*ts = []*DateValue{}
 	for _, v := range listVal.Values {
 		var data map[string]string
 		err := json.Unmarshal([]byte(v.GetStringValue()), &data)
@@ -81,7 +79,7 @@ func (ts *TimeSeries) DecodeSpanner(val interface{}) (err error) {
 			return fmt.Errorf("failed to decode TimeSeries value: (%v)", v)
 		}
 		for date, strVal := range data {
-			ts.Observations = append(ts.Observations, &DateValue{
+			*ts = append(*ts, &DateValue{
 				Date:  date,
 				Value: strVal,
 			})

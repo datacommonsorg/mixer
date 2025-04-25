@@ -2,14 +2,12 @@
   {
     "VariableMeasured": "Median_Age_Person",
     "ObservationAbout": "geoId/10001",
-    "Observations": {
-      "Observations": [
-        {
-          "Date": "2020",
-          "Value": "38.1"
-        }
-      ]
-    },
+    "Observations": [
+      {
+        "Date": "2020",
+        "Value": "38.1"
+      }
+    ],
     "Provenance": "dc/base/CensusACS5YearSurvey",
     "ObservationPeriod": "",
     "MeasurementMethod": "CensusACS5yrSurvey",
@@ -21,14 +19,12 @@
   {
     "VariableMeasured": "Median_Age_Person",
     "ObservationAbout": "geoId/10001",
-    "Observations": {
-      "Observations": [
-        {
-          "Date": "2020",
-          "Value": "38.1"
-        }
-      ]
-    },
+    "Observations": [
+      {
+        "Date": "2020",
+        "Value": "38.1"
+      }
+    ],
     "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0101",
     "ObservationPeriod": "",
     "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
@@ -40,14 +36,12 @@
   {
     "VariableMeasured": "Median_Age_Person",
     "ObservationAbout": "geoId/10003",
-    "Observations": {
-      "Observations": [
-        {
-          "Date": "2020",
-          "Value": "38.7"
-        }
-      ]
-    },
+    "Observations": [
+      {
+        "Date": "2020",
+        "Value": "38.7"
+      }
+    ],
     "Provenance": "dc/base/CensusACS5YearSurvey",
     "ObservationPeriod": "",
     "MeasurementMethod": "CensusACS5yrSurvey",
@@ -59,14 +53,12 @@
   {
     "VariableMeasured": "Median_Age_Person",
     "ObservationAbout": "geoId/10003",
-    "Observations": {
-      "Observations": [
-        {
-          "Date": "2020",
-          "Value": "38.7"
-        }
-      ]
-    },
+    "Observations": [
+      {
+        "Date": "2020",
+        "Value": "38.7"
+      }
+    ],
     "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0101",
     "ObservationPeriod": "",
     "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
@@ -78,14 +70,12 @@
   {
     "VariableMeasured": "Median_Age_Person",
     "ObservationAbout": "geoId/10005",
-    "Observations": {
-      "Observations": [
-        {
-          "Date": "2020",
-          "Value": "50.3"
-        }
-      ]
-    },
+    "Observations": [
+      {
+        "Date": "2020",
+        "Value": "50.3"
+      }
+    ],
     "Provenance": "dc/base/CensusACS5YearSurvey",
     "ObservationPeriod": "",
     "MeasurementMethod": "CensusACS5yrSurvey",
@@ -97,14 +87,12 @@
   {
     "VariableMeasured": "Median_Age_Person",
     "ObservationAbout": "geoId/10005",
-    "Observations": {
-      "Observations": [
-        {
-          "Date": "2020",
-          "Value": "50.3"
-        }
-      ]
-    },
+    "Observations": [
+      {
+        "Date": "2020",
+        "Value": "50.3"
+      }
+    ],
     "Provenance": "dc/base/CensusACS5YearSurvey_SubjectTables_S0101",
     "ObservationPeriod": "",
     "MeasurementMethod": "CensusACS5yrSurveySubjectTable",

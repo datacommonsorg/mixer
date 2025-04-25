@@ -2,14 +2,12 @@
   {
     "VariableMeasured": "Count_Person",
     "ObservationAbout": "country/CAN",
-    "Observations": {
-      "Observations": [
-        {
-          "Date": "2020",
-          "Value": "38028638"
-        }
-      ]
-    },
+    "Observations": [
+      {
+        "Date": "2020",
+        "Value": "38028638"
+      }
+    ],
     "Provenance": "dc/base/OECDRegionalDemography",
     "ObservationPeriod": "P1Y",
     "MeasurementMethod": "OECDRegionalStatistics",
@@ -21,14 +19,12 @@
   {
     "VariableMeasured": "Count_Person",
     "ObservationAbout": "country/CAN",
-    "Observations": {
-      "Observations": [
-        {
-          "Date": "2020",
-          "Value": "38028638"
-        }
-      ]
-    },
+    "Observations": [
+      {
+        "Date": "2020",
+        "Value": "38028638"
+      }
+    ],
     "Provenance": "dc/base/WorldDevelopmentIndicators",
     "ObservationPeriod": "P1Y",
     "MeasurementMethod": "",
