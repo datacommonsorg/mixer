@@ -3,7 +3,7 @@
     "VariableMeasured": "Count_HeatTemperatureEvent",
     "ObservationAbout": "wikidataId/Q341968",
     "Observations": {
-      "Observations": null
+      "Observations": []
     },
     "Provenance": "dc/base/TemperatureEvents_Agg",
     "ObservationPeriod": "P1M",
@@ -17,7 +17,7 @@
     "VariableMeasured": "Count_HeatTemperatureEvent",
     "ObservationAbout": "wikidataId/Q341968",
     "Observations": {
-      "Observations": null
+      "Observations": []
     },
     "Provenance": "dc/base/TemperatureEvents_Agg",
     "ObservationPeriod": "P1Y",
@@ -31,7 +31,7 @@
     "VariableMeasured": "Count_Person",
     "ObservationAbout": "wikidataId/Q341968",
     "Observations": {
-      "Observations": null
+      "Observations": []
     },
     "Provenance": "dc/base/WikidataPopulation",
     "ObservationPeriod": "",
@@ -45,7 +45,7 @@
     "VariableMeasured": "Count_Person",
     "ObservationAbout": "wikidataId/Q341968",
     "Observations": {
-      "Observations": null
+      "Observations": []
     },
     "Provenance": "dc/base/WikipediaStatsData",
     "ObservationPeriod": "",
@@ -59,7 +59,7 @@
     "VariableMeasured": "Max_Temperature",
     "ObservationAbout": "wikidataId/Q341968",
     "Observations": {
-      "Observations": null
+      "Observations": []
     },
     "Provenance": "dc/base/NOAA_EPA_Observed_Historical_Weather",
     "ObservationPeriod": "P1M",

@@ -73,6 +73,7 @@ func (ts *TimeSeries) DecodeSpanner(val interface{}) (err error) {
 	if !ok {
 		return fmt.Errorf("failed to decode TimeSeries: (%v)", val)
 	}
+	ts.Observations = []*DateValue{}
 	for _, v := range listVal.Values {
 		var data map[string]string
 		err := json.Unmarshal([]byte(v.GetStringValue()), &data)
