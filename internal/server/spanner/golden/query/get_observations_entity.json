@@ -3,16 +3,7 @@
     "VariableMeasured": "Count_HeatTemperatureEvent",
     "ObservationAbout": "wikidataId/Q341968",
     "Observations": {
-      "Observations": [
-        {
-          "Date": "2022-09",
-          "Value": "1"
-        },
-        {
-          "Date": "2022-10",
-          "Value": "2"
-        }
-      ]
+      "Observations": []
     },
     "Provenance": "dc/base/TemperatureEvents_Agg",
     "ObservationPeriod": "P1M",
@@ -26,12 +17,7 @@
     "VariableMeasured": "Count_HeatTemperatureEvent",
     "ObservationAbout": "wikidataId/Q341968",
     "Observations": {
-      "Observations": [
-        {
-          "Date": "2022",
-          "Value": "3"
-        }
-      ]
+      "Observations": []
     },
     "Provenance": "dc/base/TemperatureEvents_Agg",
     "ObservationPeriod": "P1Y",
@@ -45,12 +31,7 @@
     "VariableMeasured": "Count_Person",
     "ObservationAbout": "wikidataId/Q341968",
     "Observations": {
-      "Observations": [
-        {
-          "Date": "2016",
-          "Value": "653"
-        }
-      ]
+      "Observations": []
     },
     "Provenance": "dc/base/WikidataPopulation",
     "ObservationPeriod": "",
@@ -64,12 +45,7 @@
     "VariableMeasured": "Count_Person",
     "ObservationAbout": "wikidataId/Q341968",
     "Observations": {
-      "Observations": [
-        {
-          "Date": "2021",
-          "Value": "606"
-        }
-      ]
+      "Observations": []
     },
     "Provenance": "dc/base/WikipediaStatsData",
     "ObservationPeriod": "",
@@ -78,5 +54,19 @@
     "ScalingFactor": "",
     "ImportName": "WikipediaStatsData",
     "ProvenanceURL": "https://www.wikipedia.org"
+  },
+  {
+    "VariableMeasured": "Max_Temperature",
+    "ObservationAbout": "wikidataId/Q341968",
+    "Observations": {
+      "Observations": []
+    },
+    "Provenance": "dc/base/NOAA_EPA_Observed_Historical_Weather",
+    "ObservationPeriod": "P1M",
+    "MeasurementMethod": "dcAggregate/NASAGSOD_NASAGHCN_EPA",
+    "Unit": "Celsius",
+    "ScalingFactor": "",
+    "ImportName": "NOAA_EPA_Observed_Historical_Weather",
+    "ProvenanceURL": "https://www.noaa.gov/"
   }
 ]

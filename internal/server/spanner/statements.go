@@ -43,12 +43,18 @@ var statements = struct {
 	applyOffset string
 	// Subquery to apply page limit.
 	applyLimit string
-	// Fetch all Observations.
-	getAllObs string
-	// Fetch latest Observations.
-	getLatestObs string
+	// Fetch Observations.
+	getObs string
 	// Fetch Observations for a specific date.
 	getDateObs string
+	// Subquery to return all Observations.
+	allObs string
+	// Subquery to return the latest Observations.
+	latestObs string
+	// Subquery to return Observations for a specific date.
+	dateObs string
+	// Subquery to return empty Observations.
+	emptyObs string
 	// Filter by variable dcids.
 	selectVariableDcids string
 	// Filter by entity dcids.
@@ -245,26 +251,11 @@ var statements = struct {
 	applyLimit: fmt.Sprintf(`
 		LIMIT %d
 	`, PAGE_SIZE+1),
-	getAllObs: `
+	getObs: `
 		SELECT
 			variable_measured,
 			observation_about,
-			observations,
-			provenance,
-			COALESCE(observation_period, '') AS observation_period,
-			COALESCE(measurement_method, '') AS measurement_method,
-			COALESCE(unit, '') AS unit,
-			COALESCE(scaling_factor, '') AS scaling_factor,
-			import_name,
-			provenance_url
-		FROM 
-			Observation
-	`,
-	getLatestObs: `
-		SELECT
-			variable_measured,
-			observation_about,
-			observations[ARRAY_LENGTH(observations)-1] AS observations,
+			%s,
 			provenance,
 			COALESCE(observation_period, '') AS observation_period,
 			COALESCE(measurement_method, '') AS measurement_method,
@@ -279,7 +270,7 @@ var statements = struct {
 		SELECT
 			variable_measured,
 			observation_about,
-			obs AS observations,
+			%s,
 			provenance,
 			COALESCE(observation_period, '') AS observation_period,
 			COALESCE(measurement_method, '') AS measurement_method,
@@ -290,6 +281,18 @@ var statements = struct {
 		FROM 
 			Observation,
 			UNNEST(observations) as obs
+	`,
+	allObs: `
+		observations
+	`,
+	latestObs: `
+		[observations[ARRAY_LENGTH(observations)-1]] AS observations
+	`,
+	dateObs: `
+		[obs] AS observations
+	`,
+	emptyObs: `
+		ARRAY<JSON>[] AS observations
 	`,
 	selectVariableDcids: `
 		variable_measured IN UNNEST(@variables)
