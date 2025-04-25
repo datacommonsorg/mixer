@@ -829,20 +829,6 @@
     "relatedChart": {}
   },
   {
-    "title": "Urban and rural households",
-    "statsVars": [
-      "Count_Household_Rural",
-      "Count_Household_Urban"
-    ],
-    "relatedChart": {
-      "scale": true,
-      "statsVars": [
-        "Count_Household_Rural",
-        "Count_Household_Urban"
-      ]
-    }
-  },
-  {
     "title": "Urban vs rural homeless population",
     "statsVars": [
       "Count_Person_Houseless_Urban",

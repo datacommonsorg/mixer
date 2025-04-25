@@ -75,15 +75,6 @@
               ]
             },
             {
-              "facet_id": "1151455814",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 2206488
-                }
-              ]
-            },
-            {
               "facet_id": "1794369807",
               "observations": [
                 {
@@ -113,15 +104,6 @@
                   "value": 1390121
                 }
               ]
-            },
-            {
-              "facet_id": "1151455814",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 1390121
-                }
-              ]
             }
           ]
         },
@@ -138,15 +120,6 @@
             },
             {
               "facet_id": "4181918134",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 1427291
-                }
-              ]
-            },
-            {
-              "facet_id": "1151455814",
               "observations": [
                 {
                   "date": "2015",
@@ -175,15 +148,6 @@
                   "value": 1276233
                 }
               ]
-            },
-            {
-              "facet_id": "1151455814",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 1276233
-                }
-              ]
             }
           ]
         },
@@ -200,15 +164,6 @@
             },
             {
               "facet_id": "4181918134",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 1601569
-                }
-              ]
-            },
-            {
-              "facet_id": "1151455814",
               "observations": [
                 {
                   "date": "2015",
@@ -237,15 +192,6 @@
                   "value": 1592663
                 }
               ]
-            },
-            {
-              "facet_id": "1151455814",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 1592663
-                }
-              ]
             }
           ]
         },
@@ -268,15 +214,6 @@
                   "value": 1372389
                 }
               ]
-            },
-            {
-              "facet_id": "1151455814",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 1372389
-                }
-              ]
             }
           ]
         },
@@ -293,15 +230,6 @@
             },
             {
               "facet_id": "4181918134",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 1215390
-                }
-              ]
-            },
-            {
-              "facet_id": "1151455814",
               "observations": [
                 {
                   "date": "2015",
@@ -1390,15 +1318,6 @@
             },
             {
               "facet_id": "4181918134",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 333417
-                }
-              ]
-            },
-            {
-              "facet_id": "1151455814",
               "observations": [
                 {
                   "date": "2015",
@@ -4493,12 +4412,6 @@
     }
   },
   "facets": {
-    "1151455814": {
-      "import_name": "OECDRegionalDemography",
-      "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
-      "measurement_method": "OECDRegionalStatistics",
-      "observation_period": "P1Y"
-    },
     "1733625304": {
       "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
       "provenance_url": "https://ec.europa.eu/eurostat/databrowser/view/demo_r_gind3/default/table?lang=en",
