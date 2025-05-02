@@ -46,7 +46,7 @@ type Cursor struct {
 	Page int32 `protobuf:"varint,2,opt,name=page,proto3" json:"page,omitempty"`
 	// The position of the next read item in the current page, starts from 0.
 	Item int32 `protobuf:"varint,3,opt,name=item,proto3" json:"item,omitempty"`
-	// The offset of the next read item, starts from 0.
+	// The offset of the next read item, starts from 0. Used for Spanner.
 	Offset int32 `protobuf:"varint,5,opt,name=offset,proto3" json:"offset,omitempty"`
 }
 
