@@ -5548,6 +5548,7 @@
             {
               "name": "New Caledonia",
               "types": [
+                "AdministrativeArea1",
                 "Country"
               ],
               "dcid": "country/NCL",
@@ -6305,6 +6306,14 @@
               ],
               "dcid": "country/ZWE",
               "provenanceId": "dc/base/WikidataOtherIdGeos"
+            },
+            {
+              "name": "Sovereign State of the Bektashi Order",
+              "types": [
+                "Country"
+              ],
+              "dcid": "wikidataId/Q130340667",
+              "provenanceId": "dc/base/WikidataGeos"
             },
             {
               "name": "Turkish Republic of Northern Cyprus",

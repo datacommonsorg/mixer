@@ -2456,6 +2456,9 @@
           ]
         },
         {
+          "entity": "geoId/0603456"
+        },
+        {
           "entity": "geoId/0603512",
           "series_by_facet": [
             {
@@ -4556,6 +4559,9 @@
           ]
         },
         {
+          "entity": "geoId/0607288"
+        },
+        {
           "entity": "geoId/0607316"
         },
         {
@@ -5961,6 +5967,9 @@
               "facet": "3795540742"
             }
           ]
+        },
+        {
+          "entity": "geoId/0609752"
         },
         {
           "entity": "geoId/0609780",
@@ -7731,6 +7740,9 @@
               "facet": "3795540742"
             }
           ]
+        },
+        {
+          "entity": "geoId/0612636"
         },
         {
           "entity": "geoId/0612669"
@@ -11067,6 +11079,9 @@
           ]
         },
         {
+          "entity": "geoId/0618164"
+        },
+        {
           "entity": "geoId/0618324"
         },
         {
@@ -12362,6 +12377,9 @@
           "entity": "geoId/0620298"
         },
         {
+          "entity": "geoId/0620368"
+        },
+        {
           "entity": "geoId/0620424"
         },
         {
@@ -13163,6 +13181,9 @@
               "facet": "3795540742"
             }
           ]
+        },
+        {
+          "entity": "geoId/0621400"
         },
         {
           "entity": "geoId/0621530"
@@ -20140,6 +20161,9 @@
           "entity": "geoId/0636168"
         },
         {
+          "entity": "geoId/0636182"
+        },
+        {
           "entity": "geoId/0636203",
           "series_by_facet": [
             {
@@ -21322,6 +21346,9 @@
               "facet": "3795540742"
             }
           ]
+        },
+        {
+          "entity": "geoId/0638058"
         },
         {
           "entity": "geoId/0638065"
@@ -28235,6 +28262,9 @@
         },
         {
           "entity": "geoId/0647592"
+        },
+        {
+          "entity": "geoId/0647598"
         },
         {
           "entity": "geoId/0647710",
@@ -35805,6 +35835,12 @@
           "entity": "geoId/0659122"
         },
         {
+          "entity": "geoId/0659150"
+        },
+        {
+          "entity": "geoId/0659216"
+        },
+        {
           "entity": "geoId/0659220"
         },
         {
@@ -36878,6 +36914,9 @@
               "facet": "3795540742"
             }
           ]
+        },
+        {
+          "entity": "geoId/0660508"
         },
         {
           "entity": "geoId/0660592"
@@ -41991,6 +42030,9 @@
           "entity": "geoId/0671680"
         },
         {
+          "entity": "geoId/0671722"
+        },
+        {
           "entity": "geoId/0671774"
         },
         {
@@ -46486,6 +46528,9 @@
           ]
         },
         {
+          "entity": "geoId/0682093"
+        },
+        {
           "entity": "geoId/0682198"
         },
         {
@@ -50051,13 +50096,121 @@
           "entity": "geoId/4151168"
         },
         {
+          "entity": "wikidataId/Q1031829"
+        },
+        {
+          "entity": "wikidataId/Q105123350"
+        },
+        {
+          "entity": "wikidataId/Q106492907"
+        },
+        {
+          "entity": "wikidataId/Q106492909"
+        },
+        {
+          "entity": "wikidataId/Q106492911"
+        },
+        {
+          "entity": "wikidataId/Q106492913"
+        },
+        {
+          "entity": "wikidataId/Q106492917"
+        },
+        {
+          "entity": "wikidataId/Q106492935"
+        },
+        {
+          "entity": "wikidataId/Q106506380"
+        },
+        {
+          "entity": "wikidataId/Q106506382"
+        },
+        {
+          "entity": "wikidataId/Q106506397"
+        },
+        {
+          "entity": "wikidataId/Q106506398"
+        },
+        {
+          "entity": "wikidataId/Q106514863"
+        },
+        {
+          "entity": "wikidataId/Q106514877"
+        },
+        {
+          "entity": "wikidataId/Q106514891"
+        },
+        {
+          "entity": "wikidataId/Q106514897"
+        },
+        {
+          "entity": "wikidataId/Q106514950"
+        },
+        {
+          "entity": "wikidataId/Q106514962"
+        },
+        {
+          "entity": "wikidataId/Q110413179"
+        },
+        {
+          "entity": "wikidataId/Q110722160"
+        },
+        {
+          "entity": "wikidataId/Q110728450"
+        },
+        {
+          "entity": "wikidataId/Q110728466"
+        },
+        {
+          "entity": "wikidataId/Q110756091"
+        },
+        {
+          "entity": "wikidataId/Q110763352"
+        },
+        {
+          "entity": "wikidataId/Q110763405"
+        },
+        {
+          "entity": "wikidataId/Q1109522"
+        },
+        {
+          "entity": "wikidataId/Q111937258"
+        },
+        {
+          "entity": "wikidataId/Q111941981"
+        },
+        {
           "entity": "wikidataId/Q1139604"
         },
         {
           "entity": "wikidataId/Q1139754"
         },
         {
+          "entity": "wikidataId/Q115803200"
+        },
+        {
+          "entity": "wikidataId/Q117085834"
+        },
+        {
+          "entity": "wikidataId/Q117876"
+        },
+        {
+          "entity": "wikidataId/Q122853535"
+        },
+        {
+          "entity": "wikidataId/Q124134699"
+        },
+        {
+          "entity": "wikidataId/Q124134700"
+        },
+        {
+          "entity": "wikidataId/Q12630446"
+        },
+        {
           "entity": "wikidataId/Q1267489"
+        },
+        {
+          "entity": "wikidataId/Q129335"
         },
         {
           "entity": "wikidataId/Q129421"
@@ -50066,7 +50219,52 @@
           "entity": "wikidataId/Q12947590"
         },
         {
+          "entity": "wikidataId/Q129820944"
+        },
+        {
+          "entity": "wikidataId/Q130596621"
+        },
+        {
+          "entity": "wikidataId/Q14681641"
+        },
+        {
+          "entity": "wikidataId/Q14681770"
+        },
+        {
+          "entity": "wikidataId/Q14681894"
+        },
+        {
+          "entity": "wikidataId/Q14683078"
+        },
+        {
+          "entity": "wikidataId/Q14683382"
+        },
+        {
+          "entity": "wikidataId/Q14683388"
+        },
+        {
+          "entity": "wikidataId/Q14683429"
+        },
+        {
+          "entity": "wikidataId/Q14683479"
+        },
+        {
+          "entity": "wikidataId/Q14683500"
+        },
+        {
+          "entity": "wikidataId/Q14683880"
+        },
+        {
+          "entity": "wikidataId/Q14946651"
+        },
+        {
+          "entity": "wikidataId/Q14946652"
+        },
+        {
           "entity": "wikidataId/Q1551029"
+        },
+        {
+          "entity": "wikidataId/Q16243019"
         },
         {
           "entity": "wikidataId/Q16246561"
@@ -50105,10 +50303,16 @@
           "entity": "wikidataId/Q2140121"
         },
         {
+          "entity": "wikidataId/Q21593076"
+        },
+        {
           "entity": "wikidataId/Q2192165"
         },
         {
           "entity": "wikidataId/Q2193933"
+        },
+        {
+          "entity": "wikidataId/Q22032553"
         },
         {
           "entity": "wikidataId/Q2207235"
@@ -50138,6 +50342,9 @@
           "entity": "wikidataId/Q2478982"
         },
         {
+          "entity": "wikidataId/Q24896037"
+        },
+        {
           "entity": "wikidataId/Q2522162"
         },
         {
@@ -50151,6 +50358,9 @@
         },
         {
           "entity": "wikidataId/Q2620952"
+        },
+        {
+          "entity": "wikidataId/Q263064"
         },
         {
           "entity": "wikidataId/Q2651791"
@@ -50189,10 +50399,16 @@
           "entity": "wikidataId/Q3316662"
         },
         {
+          "entity": "wikidataId/Q3321090"
+        },
+        {
           "entity": "wikidataId/Q3322370"
         },
         {
           "entity": "wikidataId/Q3322861"
+        },
+        {
+          "entity": "wikidataId/Q3410547"
         },
         {
           "entity": "wikidataId/Q3458247"
@@ -50225,13 +50441,94 @@
           "entity": "wikidataId/Q3476563"
         },
         {
+          "entity": "wikidataId/Q3637982"
+        },
+        {
+          "entity": "wikidataId/Q3638283"
+        },
+        {
+          "entity": "wikidataId/Q3665157"
+        },
+        {
+          "entity": "wikidataId/Q3712528"
+        },
+        {
+          "entity": "wikidataId/Q3716258"
+        },
+        {
           "entity": "wikidataId/Q3736036"
+        },
+        {
+          "entity": "wikidataId/Q3850838"
+        },
+        {
+          "entity": "wikidataId/Q3946876"
+        },
+        {
+          "entity": "wikidataId/Q4673074"
+        },
+        {
+          "entity": "wikidataId/Q4694440"
+        },
+        {
+          "entity": "wikidataId/Q4694450"
+        },
+        {
+          "entity": "wikidataId/Q4733495"
+        },
+        {
+          "entity": "wikidataId/Q4741743"
+        },
+        {
+          "entity": "wikidataId/Q4817180"
         },
         {
           "entity": "wikidataId/Q4828591"
         },
         {
+          "entity": "wikidataId/Q4842452"
+        },
+        {
+          "entity": "wikidataId/Q4856900"
+        },
+        {
+          "entity": "wikidataId/Q4883842"
+        },
+        {
+          "entity": "wikidataId/Q4898583"
+        },
+        {
+          "entity": "wikidataId/Q4904286"
+        },
+        {
+          "entity": "wikidataId/Q4928194"
+        },
+        {
+          "entity": "wikidataId/Q4979626"
+        },
+        {
+          "entity": "wikidataId/Q5000396"
+        },
+        {
+          "entity": "wikidataId/Q5019557"
+        },
+        {
           "entity": "wikidataId/Q5024931"
+        },
+        {
+          "entity": "wikidataId/Q5046939"
+        },
+        {
+          "entity": "wikidataId/Q5047811"
+        },
+        {
+          "entity": "wikidataId/Q5071238"
+        },
+        {
+          "entity": "wikidataId/Q5102934"
+        },
+        {
+          "entity": "wikidataId/Q5131539"
         },
         {
           "entity": "wikidataId/Q5140909"
@@ -50240,13 +50537,49 @@
           "entity": "wikidataId/Q517340"
         },
         {
+          "entity": "wikidataId/Q5174658"
+        },
+        {
+          "entity": "wikidataId/Q5175785"
+        },
+        {
+          "entity": "wikidataId/Q5197086"
+        },
+        {
+          "entity": "wikidataId/Q5241805"
+        },
+        {
+          "entity": "wikidataId/Q5245735"
+        },
+        {
+          "entity": "wikidataId/Q5306017"
+        },
+        {
           "entity": "wikidataId/Q5461916"
+        },
+        {
+          "entity": "wikidataId/Q5474759"
+        },
+        {
+          "entity": "wikidataId/Q5501018"
         },
         {
           "entity": "wikidataId/Q5501102"
         },
         {
+          "entity": "wikidataId/Q5501595"
+        },
+        {
           "entity": "wikidataId/Q5548856"
+        },
+        {
+          "entity": "wikidataId/Q5569425"
+        },
+        {
+          "entity": "wikidataId/Q56276356"
+        },
+        {
+          "entity": "wikidataId/Q5644748"
         },
         {
           "entity": "wikidataId/Q5829676"
@@ -50273,19 +50606,46 @@
           "entity": "wikidataId/Q6043277"
         },
         {
+          "entity": "wikidataId/Q6098300"
+        },
+        {
           "entity": "wikidataId/Q6140910"
         },
         {
           "entity": "wikidataId/Q6159316"
         },
         {
+          "entity": "wikidataId/Q624571"
+        },
+        {
           "entity": "wikidataId/Q628718"
+        },
+        {
+          "entity": "wikidataId/Q6304285"
+        },
+        {
+          "entity": "wikidataId/Q6382246"
         },
         {
           "entity": "wikidataId/Q6413802"
         },
         {
+          "entity": "wikidataId/Q6464450"
+        },
+        {
           "entity": "wikidataId/Q6478731"
+        },
+        {
+          "entity": "wikidataId/Q6499714"
+        },
+        {
+          "entity": "wikidataId/Q65119119"
+        },
+        {
+          "entity": "wikidataId/Q65119751"
+        },
+        {
+          "entity": "wikidataId/Q6667892"
         },
         {
           "entity": "wikidataId/Q6683265"
@@ -50294,13 +50654,136 @@
           "entity": "wikidataId/Q6800306"
         },
         {
+          "entity": "wikidataId/Q6817616"
+        },
+        {
+          "entity": "wikidataId/Q6837457"
+        },
+        {
+          "entity": "wikidataId/Q6841217"
+        },
+        {
+          "entity": "wikidataId/Q6842292"
+        },
+        {
+          "entity": "wikidataId/Q6858432"
+        },
+        {
+          "entity": "wikidataId/Q6912636"
+        },
+        {
+          "entity": "wikidataId/Q6987594"
+        },
+        {
+          "entity": "wikidataId/Q7060713"
+        },
+        {
+          "entity": "wikidataId/Q7073493"
+        },
+        {
+          "entity": "wikidataId/Q7073909"
+        },
+        {
+          "entity": "wikidataId/Q7123058"
+        },
+        {
+          "entity": "wikidataId/Q7144355"
+        },
+        {
+          "entity": "wikidataId/Q7194781"
+        },
+        {
+          "entity": "wikidataId/Q7210122"
+        },
+        {
+          "entity": "wikidataId/Q7252365"
+        },
+        {
+          "entity": "wikidataId/Q7261270"
+        },
+        {
+          "entity": "wikidataId/Q7291349"
+        },
+        {
+          "entity": "wikidataId/Q7304043"
+        },
+        {
+          "entity": "wikidataId/Q7335162"
+        },
+        {
+          "entity": "wikidataId/Q7339253"
+        },
+        {
+          "entity": "wikidataId/Q7381418"
+        },
+        {
+          "entity": "wikidataId/Q7405504"
+        },
+        {
+          "entity": "wikidataId/Q7516123"
+        },
+        {
+          "entity": "wikidataId/Q7535090"
+        },
+        {
+          "entity": "wikidataId/Q7559935"
+        },
+        {
+          "entity": "wikidataId/Q7564010"
+        },
+        {
           "entity": "wikidataId/Q7574127"
+        },
+        {
+          "entity": "wikidataId/Q7616027"
+        },
+        {
+          "entity": "wikidataId/Q7618533"
+        },
+        {
+          "entity": "wikidataId/Q7703072"
+        },
+        {
+          "entity": "wikidataId/Q7853424"
+        },
+        {
+          "entity": "wikidataId/Q7995077"
+        },
+        {
+          "entity": "wikidataId/Q8003347"
+        },
+        {
+          "entity": "wikidataId/Q8024966"
+        },
+        {
+          "entity": "wikidataId/Q8025243"
+        },
+        {
+          "entity": "wikidataId/Q8038293"
+        },
+        {
+          "entity": "wikidataId/Q812921"
         },
         {
           "entity": "wikidataId/Q822230"
         },
         {
           "entity": "wikidataId/Q840668"
+        },
+        {
+          "entity": "wikidataId/Q85758570"
+        },
+        {
+          "entity": "wikidataId/Q85787114"
+        },
+        {
+          "entity": "wikidataId/Q85814519"
+        },
+        {
+          "entity": "wikidataId/Q91783675"
+        },
+        {
+          "entity": "wikidataId/Q97354706"
         }
       ]
     }

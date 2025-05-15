@@ -31,7 +31,7 @@
         "id": "dc/g/Energy",
         "specializedEntity": "Energy",
         "displayName": "Energy",
-        "descendentStatVarCount": 1219
+        "descendentStatVarCount": 1213
       },
       {
         "id": "dc/g/Environment",

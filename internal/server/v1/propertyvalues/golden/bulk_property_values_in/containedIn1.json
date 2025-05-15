@@ -13,6 +13,15 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Guam",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/GUM",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
           "name": "Alabama",
           "types": [
             "AdministrativeArea1",
@@ -456,7 +465,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Placid Lakes, Florida",
+          "name": "Placid Lakes",
           "types": [
             "City"
           ],
@@ -1200,7 +1209,7 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Tantallon, Maryland",
+          "name": "Tantallon",
           "types": [
             "City"
           ],
@@ -1378,7 +1387,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Pingryville, Massachusetts",
+          "name": "Pingryville",
           "types": [
             "City",
             "Village"
@@ -1997,7 +2006,7 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Elwood-Magnolia, New Jersey",
+          "name": "Elwood-Magnolia",
           "types": [
             "City"
           ],
@@ -2495,7 +2504,7 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Rockville, Rhode Island",
+          "name": "Rockville",
           "types": [
             "City",
             "Village"
@@ -2932,7 +2941,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Muscoda (town), Wisconsin",
+          "name": "Muscoda",
           "types": [
             "City"
           ],
@@ -25184,7 +25193,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Fredericksburg, Crawford County, Pennsylvania",
+          "name": "Fredericksburg",
           "types": [
             "City"
           ],
@@ -25362,6 +25371,14 @@
             "City"
           ],
           "dcid": "wikidataId/Q12538663",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Greenridge",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q125388731",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -25589,6 +25606,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Monroe",
           "types": [
             "City"
           ],
@@ -26079,6 +26097,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Chesapeake Ranch",
           "types": [
             "City"
           ],
@@ -26129,6 +26148,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Dupree",
           "types": [
             "City"
           ],
@@ -26166,7 +26186,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Elohim City, Oklahoma",
+          "name": "Elohim City",
           "types": [
             "AdministrativeArea"
           ],
@@ -26182,7 +26202,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Stafford Hollow, Connecticut",
+          "name": "Stafford Hollow",
           "types": [
             "AdministrativeArea"
           ],
@@ -26197,6 +26217,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Mims Chapel",
           "types": [
             "City"
           ],
@@ -26211,6 +26232,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Warlock",
           "types": [
             "City"
           ],
@@ -26226,7 +26248,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Bermuda, Louisiana",
+          "name": "Bermuda",
           "types": [
             "AdministrativeArea"
           ],
@@ -26234,7 +26256,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Bethel, Rhode Island",
+          "name": "Bethel",
           "types": [
             "Village"
           ],
@@ -26242,7 +26264,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Burdickville, Rhode Island",
+          "name": "Burdickville",
           "types": [
             "Village"
           ],
@@ -26250,7 +26272,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Canonchet, Rhode Island",
+          "name": "Canonchet",
           "types": [
             "Village"
           ],
@@ -26258,7 +26280,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Fairview Acres, Louisiana",
+          "name": "Fairview Acres",
           "types": [
             "AdministrativeArea"
           ],
@@ -26266,7 +26288,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Hustontown, Pennsylvania",
+          "name": "Hustontown",
           "types": [
             "AdministrativeArea"
           ],
@@ -26306,7 +26328,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "South Hopkinton, Rhode Island",
+          "name": "South Hopkinton",
           "types": [
             "Village"
           ],
@@ -26314,7 +26336,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Spring Ridge, Louisiana",
+          "name": "Spring Ridge",
           "types": [
             "AdministrativeArea"
           ],
@@ -26350,7 +26372,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Mississippi Valley State, Mississippi",
+          "name": "Mississippi Valley State",
           "types": [
             "City"
           ],
@@ -26374,7 +26396,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Belknap, Rhode Island",
+          "name": "Belknap",
           "types": [
             "Village"
           ],
@@ -26382,7 +26404,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Clarkson (CDP), New York",
+          "name": "Clarkson",
           "types": [
             "City"
           ],
@@ -26414,7 +26436,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Lubec",
+          "name": "Lubec CDP",
           "types": [
             "City"
           ],
@@ -26446,7 +26468,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Hamlin (CDP), New York",
+          "name": "Hamlin",
           "types": [
             "City"
           ],
@@ -26454,7 +26476,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Arcadia, Rhode Island",
+          "name": "Arcadia",
           "types": [
             "Village"
           ],
@@ -26462,7 +26484,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Conway, Louisiana",
+          "name": "Conway",
           "types": [
             "Village"
           ],
@@ -26478,7 +26500,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "East Wyoming, Rhode Island",
+          "name": "East Wyoming",
           "types": [
             "Village"
           ],
@@ -26486,7 +26508,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Eunice, Arkansas",
+          "name": "Eunice",
           "types": [
             "AdministrativeArea"
           ],
@@ -26494,7 +26516,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Graniteville, Rhode Island",
+          "name": "Graniteville",
           "types": [
             "Village"
           ],
@@ -26502,7 +26524,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Heislerville, New Jersey",
+          "name": "Heislerville",
           "types": [
             "AdministrativeArea"
           ],
@@ -26510,7 +26532,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Indian Lake Estates, Florida",
+          "name": "Indian Lake Estates",
           "types": [
             "AdministrativeArea"
           ],
@@ -26518,7 +26540,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Kierieian, Rhode Island",
+          "name": "Kierieian",
           "types": [
             "Village"
           ],
@@ -26534,7 +26556,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "The Anchorage, Rhode Island",
+          "name": "The Anchorage",
           "types": [
             "City"
           ],
@@ -26542,7 +26564,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Truxno, Louisiana",
+          "name": "Truxno",
           "types": [
             "Village"
           ],
@@ -26550,7 +26572,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Vegas Creek, Nevada",
+          "name": "Vegas Creek",
           "types": [
             "City"
           ],
@@ -26558,7 +26580,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Waterloo, Montana",
+          "name": "Waterloo",
           "types": [
             "City"
           ],
@@ -26574,7 +26596,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Kenyon, Rhode Island",
+          "name": "Kenyon",
           "types": [
             "Village"
           ],
@@ -26614,7 +26636,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Centerville-Moscow, Rhode Island",
+          "name": "Centerville-Moscow",
           "types": [
             "Village"
           ],
@@ -26630,7 +26652,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "West Plymouth, Massachusetts",
+          "name": "West Plymouth",
           "types": [
             "Village"
           ],
@@ -26638,7 +26660,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Pea Ridge, Shelby County, Alabama",
+          "name": "Pea Ridge",
           "types": [
             "AdministrativeArea"
           ],
@@ -26646,7 +26668,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "New Shannock Switch, Rhode Island",
+          "name": "New Shannock Switch",
           "types": [
             "Village"
           ],
@@ -26654,7 +26676,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Slocum, Rhode Island",
+          "name": "Slocum",
           "types": [
             "Village"
           ],
@@ -26669,7 +26691,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Beaver, Kentucky",
+          "name": "Beaver",
           "types": [
             "AdministrativeArea"
           ],
@@ -26677,7 +26699,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Barberville, Rhode Island",
+          "name": "Barberville",
           "types": [
             "Village"
           ],
@@ -26685,7 +26707,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Echo, Louisiana",
+          "name": "Echo",
           "types": [
             "AdministrativeArea"
           ],
@@ -26733,7 +26755,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Felchville, Massachusetts",
+          "name": "Felchville",
           "types": [
             "Village"
           ],
@@ -26741,7 +26763,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Orange Grove, Maryland",
+          "name": "Orange Grove",
           "types": [
             "City"
           ],
@@ -26749,7 +26771,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Westlake, Natchitoches Parish, Louisiana",
+          "name": "Westlake",
           "types": [
             "AdministrativeArea"
           ],
@@ -26757,7 +26779,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Spring Grove, Illinois",
+          "name": "Spring Grove",
           "types": [
             "Village"
           ],
@@ -26765,7 +26787,7 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Mella, Nebraska",
+          "name": "Melia",
           "types": [
             "AdministrativeArea"
           ],
@@ -26773,7 +26795,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Guilford Lake, Ohio",
+          "name": "Guilford Lake",
           "types": [
             "City"
           ],
@@ -26789,7 +26811,7 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Butte City, Amador County, California",
+          "name": "Butte City",
           "types": [
             "AdministrativeArea"
           ],
@@ -26805,7 +26827,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Hagewood, Louisiana",
+          "name": "Hagewood",
           "types": [
             "AdministrativeArea"
           ],
@@ -26995,6 +27017,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Labanon",
           "types": [
             "City"
           ],
@@ -27002,6 +27025,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Burlington",
           "types": [
             "City"
           ],
@@ -27163,6 +27187,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Aquilla",
           "types": [
             "City"
           ],
@@ -27170,7 +27195,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Dolvoaua, Nebraska",
+          "name": "Dolvoaua",
           "types": [
             "Village"
           ],
@@ -27178,7 +27203,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Westmoreland (CDP), New York",
+          "name": "Westmoreland",
           "types": [
             "City"
           ],
@@ -27186,7 +27211,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Okawville, Illinois",
+          "name": "Okawville",
           "types": [
             "Village"
           ],
@@ -27194,7 +27219,7 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Trout, Louisiana",
+          "name": "Trout",
           "types": [
             "AdministrativeArea"
           ],
@@ -27202,7 +27227,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Charmwood, Missouri",
+          "name": "Charmwood",
           "types": [
             "City"
           ],
@@ -27210,7 +27235,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Philadelphus, North Carolina",
+          "name": "Philadelphus",
           "types": [
             "City"
           ],
@@ -27234,7 +27259,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Ewa District, Hawaii",
+          "name": "Ewa District",
           "types": [
             "AdministrativeArea"
           ],
@@ -27250,7 +27275,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Palermo, New Jersey",
+          "name": "Palermo",
           "types": [
             "AdministrativeArea"
           ],
@@ -27274,7 +27299,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Fox Crossing, Wisconsin",
+          "name": "Fox Crossing",
           "types": [
             "Village"
           ],
@@ -27282,7 +27307,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Parma, New York",
+          "name": "Parma",
           "types": [
             "City"
           ],
@@ -27298,7 +27323,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Albuquerque, Texas",
+          "name": "Albuquerque",
           "types": [
             "AdministrativeArea"
           ],
@@ -27338,7 +27363,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Seaville, New Jersey",
+          "name": "Seaville",
           "types": [
             "AdministrativeArea"
           ],
@@ -27354,7 +27379,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Freeman Spur, Illinois",
+          "name": "Freeman Spur",
           "types": [
             "Village"
           ],
@@ -27394,7 +27419,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Bonus, Pennsylvania",
+          "name": "Bonus",
           "types": [
             "AdministrativeArea"
           ],
@@ -27433,7 +27458,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Gray, Pennsylvania",
+          "name": "Gray",
           "types": [
             "AdministrativeArea"
           ],
@@ -27441,7 +27466,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Grand Valley, Pennsylvania",
+          "name": "Grand Valley",
           "types": [
             "AdministrativeArea"
           ],
@@ -27449,7 +27474,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Bunola, Pennsylvania",
+          "name": "Bunola",
           "types": [
             "AdministrativeArea"
           ],
@@ -27457,7 +27482,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Lidell Corners, New York",
+          "name": "Lidell Corners",
           "types": [
             "AdministrativeArea"
           ],
@@ -27593,7 +27618,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Hillsville, Pennsylvania",
+          "name": "Hillsville",
           "types": [
             "AdministrativeArea"
           ],
@@ -27601,7 +27626,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Warriors Mark, Pennsylvania",
+          "name": "Warriors Mark",
           "types": [
             "AdministrativeArea"
           ],
@@ -27609,7 +27634,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Hyner, Pennsylvania",
+          "name": "Hyner",
           "types": [
             "AdministrativeArea"
           ],
@@ -27617,7 +27642,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "East Smithfield, Pennsylvania",
+          "name": "East Smithfield",
           "types": [
             "AdministrativeArea"
           ],
@@ -27657,7 +27682,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Luma, American Samoa",
+          "name": "Luma",
           "types": [
             "Village"
           ],
@@ -27673,7 +27698,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Purling, New York",
+          "name": "Purling",
           "types": [
             "AdministrativeArea"
           ],
@@ -27689,7 +27714,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Dell, Montana",
+          "name": "Dell",
           "types": [
             "AdministrativeArea"
           ],
@@ -27825,7 +27850,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Ashford, Nebraska",
+          "name": "Ashford",
           "types": [
             "AdministrativeArea"
           ],
@@ -27833,7 +27858,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "North Chili, New York",
+          "name": "North Chili",
           "types": [
             "AdministrativeArea"
           ],
@@ -27841,7 +27866,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Bakers Mills, New York",
+          "name": "Bakers Mills",
           "types": [
             "AdministrativeArea"
           ],
@@ -27849,7 +27874,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Sabael, New York",
+          "name": "Sabael",
           "types": [
             "AdministrativeArea"
           ],
@@ -27857,7 +27882,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Millers Mills Crossing, New York",
+          "name": "Millers Mills Crossing",
           "types": [
             "AdministrativeArea"
           ],
@@ -27874,7 +27899,7 @@
           "provenanceId": "dc/base/Canada_Census_Places"
         },
         {
-          "name": "Tremont Township, Solano County, California",
+          "name": "Tremont Township",
           "types": [
             "AdministrativeArea"
           ],
@@ -28106,7 +28131,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Black Jack Springs, Texas",
+          "name": "Black Jack Springs",
           "types": [
             "AdministrativeArea"
           ],
@@ -28114,7 +28139,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Brighton, Oregon",
+          "name": "Brighton",
           "types": [
             "AdministrativeArea"
           ],
@@ -28122,7 +28147,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Carpenter, Bernalillo County, New Mexico",
+          "name": "Carpenter",
           "types": [
             "AdministrativeArea"
           ],
@@ -28130,7 +28155,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Chauvin, Michigan",
+          "name": "Chauvin",
           "types": [
             "Village"
           ],
@@ -28162,7 +28187,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Danner, Oregon",
+          "name": "Danner",
           "types": [
             "AdministrativeArea"
           ],
@@ -28178,7 +28203,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Dublin, Missouri",
+          "name": "Dublin",
           "types": [
             "AdministrativeArea"
           ],
@@ -28186,7 +28211,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Duncan, Missouri",
+          "name": "Duncan",
           "types": [
             "Village"
           ],
@@ -28194,7 +28219,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Delphi, Washington",
+          "name": "Delphi",
           "types": [
             "AdministrativeArea"
           ],
@@ -28202,7 +28227,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Franktown, Virginia",
+          "name": "Franktown",
           "types": [
             "AdministrativeArea"
           ],
@@ -28495,7 +28520,7 @@
             "AdministrativeArea"
           ],
           "dcid": "wikidataId/Q55106651",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Parkin School District",
@@ -28642,7 +28667,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Gilberts, California",
+          "name": "Gilberts",
           "types": [
             "Village"
           ],
@@ -28698,7 +28723,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Scotland School District (Arkansas)",
+          "name": "Scotland School District",
           "types": [
             "AdministrativeArea"
           ],
@@ -28714,7 +28739,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Stone County School District (Arkansas)",
+          "name": "Stone County School District",
           "types": [
             "AdministrativeArea"
           ],
@@ -28722,7 +28747,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Union School District (Arkansas)",
+          "name": "Union School District",
           "types": [
             "AdministrativeArea"
           ],
@@ -28754,7 +28779,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Glendale, Rhode Island",
+          "name": "Glendale",
           "types": [
             "Village"
           ],
@@ -28762,7 +28787,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Greater Sharpstown, Houston",
+          "name": "Greater Sharpstown",
           "types": [
             "AdministrativeArea"
           ],
@@ -28914,7 +28939,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "City and Borough of Juneau",
+          "name": "Greater Juneau Borough",
           "types": [
             "AdministrativeArea2"
           ],
@@ -28937,6 +28962,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Del Dios",
           "types": [
             "AdministrativeArea"
           ],
@@ -29169,7 +29195,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Potlatch, Washington",
+          "name": "Potlatch",
           "types": [
             "AdministrativeArea"
           ],
@@ -29185,6 +29211,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Rosburg",
           "types": [
             "AdministrativeArea"
           ],
@@ -29192,7 +29219,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Jerusalem, Rhode Island",
+          "name": "Jerusalem",
           "types": [
             "Village"
           ],
@@ -29224,7 +29251,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Loch Lloyd, Missouri",
+          "name": "Loch Lloyd",
           "types": [
             "Village"
           ],
@@ -29248,7 +29275,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Magnolia (Village), Massachusetts",
+          "name": "Magnolia",
           "types": [
             "Village"
           ],
@@ -29256,7 +29283,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Mattingly Settlement, Ohio",
+          "name": "Mattingly Settlement",
           "types": [
             "AdministrativeArea"
           ],
@@ -29264,7 +29291,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Menauhant, Massachusetts",
+          "name": "Menauhant",
           "types": [
             "Village"
           ],
@@ -29272,7 +29299,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Merriman Park/University Manor, Dallas",
+          "name": "Merriman Park/University Manor",
           "types": [
             "Neighborhood"
           ],
@@ -29280,7 +29307,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Keensburg, Illinois",
+          "name": "Keensburg",
           "types": [
             "Village"
           ],
@@ -29288,7 +29315,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Mountaindale, Rhode Island",
+          "name": "Mountaindale",
           "types": [
             "Village"
           ],
@@ -29304,7 +29331,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Nichols, Connecticut",
+          "name": "Nichols",
           "types": [
             "Village"
           ],
@@ -29312,7 +29339,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Oak Dale, Texas",
+          "name": "Oak Dale",
           "types": [
             "AdministrativeArea"
           ],
@@ -29320,7 +29347,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Park Square, Rhode Island",
+          "name": "Park Square",
           "types": [
             "Village"
           ],
@@ -29328,7 +29355,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Plattville, Illinois",
+          "name": "Plattville",
           "types": [
             "Village"
           ],
@@ -29336,7 +29363,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Plymouth Beach, Massachusetts",
+          "name": "Plymouth Beach",
           "types": [
             "Village"
           ],
@@ -29344,7 +29371,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Point Coupee, Louisiana",
+          "name": "Point Coupee",
           "types": [
             "AdministrativeArea"
           ],
@@ -29384,7 +29411,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Union Village, Rhode Island",
+          "name": "Union Village",
           "types": [
             "Village"
           ],
@@ -29400,7 +29427,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "West Kingston, Rhode Island",
+          "name": "West Kingston",
           "types": [
             "Village"
           ],
@@ -29408,7 +29435,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Whitewash Village, Massachusetts",
+          "name": "Whitewash Village",
           "types": [
             "Village"
           ],
@@ -29424,7 +29451,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Windsor, Wisconsin",
+          "name": "Windsor",
           "types": [
             "Village"
           ],
@@ -29440,11 +29467,19 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Yakutat City and Borough",
+          "name": "Yakutat",
           "types": [
             "AdministrativeArea2"
           ],
           "dcid": "wikidataId/Q87993006",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Broadacre City",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q922000",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -41545,6 +41580,78 @@
           "provenanceId": "dc/base/S2Cells"
         },
         {
+          "name": "Arroyo Center",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q122539072",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Rancho Tierra Grande",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q122559052",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Serra Village",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q122567413",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Hacienda Carmel",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q122568866",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Mascorini Place",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q122569302",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Baronet Estates",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q122571494",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Carmel Valley Manor",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q122592909",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Ekgiagan",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q12630484",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Caltrans District 5",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q131541828",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Pebble Beach",
           "types": [
             "AdministrativeArea"
@@ -41569,7 +41676,15 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Tetachoya, California",
+          "name": "Porter-Vallejo Mansion",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q14683696",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Tetachoya",
           "types": [
             "Place"
           ],
@@ -41841,7 +41956,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Paisin, California",
+          "name": "Paisin",
           "types": [
             "Place"
           ],
@@ -41881,7 +41996,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Quina, California",
+          "name": "Quina",
           "types": [
             "Place"
           ],
@@ -41905,7 +42020,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Sapaywis, California",
+          "name": "Sapaywis",
           "types": [
             "Place"
           ],
@@ -41913,7 +42028,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Seama, California",
+          "name": "Seama",
           "types": [
             "Place"
           ],
@@ -41929,7 +42044,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Soccorondo, California",
+          "name": "Soccorondo",
           "types": [
             "Place"
           ],
@@ -41953,7 +42068,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Steloglamo, California",
+          "name": "Steloglamo",
           "types": [
             "Place"
           ],
@@ -41961,7 +42076,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Subazama, California",
+          "name": "Subazama",
           "types": [
             "Place"
           ],
@@ -41985,7 +42100,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Tecolom, California",
+          "name": "Tecolom",
           "types": [
             "Place"
           ],
@@ -41993,7 +42108,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Teshaya, California",
+          "name": "Teshaya",
           "types": [
             "Place"
           ],
@@ -42001,7 +42116,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Tiubta, California",
+          "name": "Tiubta",
           "types": [
             "Place"
           ],
@@ -42009,7 +42124,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Tukutnut, California",
+          "name": "Tukutnut",
           "types": [
             "Place"
           ],
@@ -42033,7 +42148,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Wachanaruka, California",
+          "name": "Wachanaruka",
           "types": [
             "Place"
           ],
@@ -42065,11 +42180,19 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Zassalete, California",
+          "name": "Zassalete",
           "types": [
             "Place"
           ],
           "dcid": "wikidataId/Q8067055",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Pinnacles East Entrance District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q99439650",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -60239,7 +60362,7 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Camp Pendleton North",
+          "name": "Camp Pendleton Mainside",
           "types": [
             "City"
           ],
@@ -63291,6 +63414,15 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "City of Industry",
+          "types": [
+            "City",
+            "Neighborhood"
+          ],
+          "dcid": "geoId/0636490",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Congressional District 37 (113th Congress), California",
           "types": [
             "CongressionalDistrict"
@@ -63532,15 +63664,6 @@
             "City"
           ],
           "dcid": "geoId/0667000",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Saugus",
-          "types": [
-            "City",
-            "Neighborhood"
-          ],
-          "dcid": "geoId/0670350",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
@@ -104269,11 +104392,51 @@
           "provenanceId": "dc/base/S2Cells"
         },
         {
+          "name": "Palm City",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q100251763",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Waterford-Hickman",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q100252069",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Wilmington",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q100252095",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Granite",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q100252286",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Slab City",
           "types": [
             "AdministrativeArea"
           ],
           "dcid": "wikidataId/Q1017618",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Buldam",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q104841325",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -104285,6 +104448,87 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Canon City",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q105123350",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Park Estates, Long Beach, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q105759666",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Willmore, Long Beach, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q105759683",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Peninsula, Long Beach, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q105820989",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Addams, Long Beach, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q105846610",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Mayfair, San Jose",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q106203171",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Rancho Estates, Long Beach, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q108857102",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "University Park Estates, Long Beach, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q108864464",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Battery Barlow-Saxton",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q108874024",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Battery Osgood-Farley",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q108874089",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Holy City",
           "types": [
             "AdministrativeArea"
@@ -104293,11 +104537,232 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Ormonde",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q110413179",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q110716667",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q110716862",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q110716898",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q110717116",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Goodmanville",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q110717164",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q110717202",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q110722444",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q110724210",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q110724278",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q110724293",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q110756015",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q110756154",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Potomac Park",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q110756667",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q110756890",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q110757134",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q110757230",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "El Prado",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q110818430",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Wheeler Ranch Commune",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q110910261",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "State Line",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q1109522",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Cerro Gordo",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q111937258",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Los Angeles River Ranger District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q116920772",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "San Gabriel River Ranger District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q116920881",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Santa Clara/Mojave Rivers Ranger District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q116920974",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Valyermo Ranger District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q116921002",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Monterey Ranger District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q116921145",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Gillette Park",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q123174076",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Lomaland",
           "types": [
             "Place"
           ],
           "dcid": "wikidataId/Q1253418",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Amaikiara",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q12626808",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Mustak",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q12637448",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -104317,6 +104782,14 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Escondido Union High School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q131531857",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Hacienda",
           "types": [
             "Place"
@@ -104325,11 +104798,43 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Cain Rock",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q14681673",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Clement Junction",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q14681762",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Graton Rancheria",
           "types": [
             "AdministrativeArea"
           ],
           "dcid": "wikidataId/Q14682063",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Harris",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q14682115",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Hookton",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q14682337",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -104357,11 +104862,37 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Mount Ophir",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q14683429",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Mulford Landing, San Leandro, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q14683447",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Newton's Crossing",
           "types": [
             "Place"
           ],
           "dcid": "wikidataId/Q14683491",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Noonday Camp",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q14683500",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -104429,11 +104960,28 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Horseshoe Bend",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q14946651",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Lone Willow Station",
           "types": [
             "Place"
           ],
           "dcid": "wikidataId/Q15242696",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Port Harford",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q15267553",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -104450,6 +104998,94 @@
             "AdministrativeArea"
           ],
           "dcid": "wikidataId/Q16889798",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Hooperville",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q16892427",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "La Panza",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q16893849",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Linda Rosa",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q16894176",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Oro Fino",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q16896229",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Eureka, Nevada County, California",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q16898007",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Pudding Creek",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q16902711",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Potter's Bar",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q16904920",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Higgins Point",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q16920097",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Dedrick",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q16954970",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Hastings Ranch, Pasadena, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q16994918",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Woodbury, Irvine, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q17108647",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -104493,6 +105129,14 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Butte City",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q19460752",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Princeton-by-the-Sea",
           "types": [
             "AdministrativeArea"
@@ -104509,11 +105153,19 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Watson's Ferry, California",
+          "name": "Watson's Ferry",
           "types": [
             "Place"
           ],
           "dcid": "wikidataId/Q21593116",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Trabuco College",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q22078141",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -104525,11 +105177,28 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Mercuryville, California",
+          "name": "Hedges",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q24896037",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Mercuryville",
           "types": [
             "Place"
           ],
           "dcid": "wikidataId/Q27987021",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Hawkinsville",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q27987121",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -104597,6 +105266,14 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Mineral King",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q3314882",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Yuba–Sutter area",
           "types": [
             "AdministrativeArea"
@@ -104610,6 +105287,15 @@
             "Place"
           ],
           "dcid": "wikidataId/Q3399564",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Pueblo de Los Angeles",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q3410547",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -104658,6 +105344,15 @@
             "Place"
           ],
           "dcid": "wikidataId/Q3600266",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Bennettville",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q3638283",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -104717,6 +105412,15 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "San Carlos",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q3946876",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Skyes",
           "types": [
             "Place"
@@ -104765,14 +105469,6 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Pleasant View",
-          "types": [
-            "Place"
-          ],
-          "dcid": "wikidataId/Q42330865",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
           "name": "Mission Creek Indian Reservation",
           "types": [
             "AdministrativeArea"
@@ -104789,11 +105485,12 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Acorn",
+          "name": "Acelanus",
           "types": [
-            "Place"
+            "City",
+            "Village"
           ],
-          "dcid": "wikidataId/Q4674538",
+          "dcid": "wikidataId/Q4673074",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -104834,14 +105531,6 @@
             "Place"
           ],
           "dcid": "wikidataId/Q4705484",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
-          "name": "Alamitos Heights",
-          "types": [
-            "Neighborhood"
-          ],
-          "dcid": "wikidataId/Q4705933",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -104909,6 +105598,22 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Apyu",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q4782351",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Arekw",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q4788776",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Argusville",
           "types": [
             "Place"
@@ -104973,6 +105678,15 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Atolia",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q4817180",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Aurora, Stanislaus County, California",
           "types": [
             "AdministrativeArea"
@@ -105002,6 +105716,14 @@
             "AdministrativeArea"
           ],
           "dcid": "wikidataId/Q4840829",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Banbury Oaks, Pasadena, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q4854016",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -105037,14 +105759,6 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Belcourt",
-          "types": [
-            "Neighborhood"
-          ],
-          "dcid": "wikidataId/Q4882089",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
           "name": "Bell Mountain",
           "types": [
             "AdministrativeArea"
@@ -105058,6 +105772,14 @@
             "AdministrativeArea"
           ],
           "dcid": "wikidataId/Q4883264",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Bellefontaine/Governor Markham, Pasadena, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q4883759",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -105077,11 +105799,11 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Ben Ali",
+          "name": "Bernardo Fernandez House",
           "types": [
-            "Neighborhood"
+            "AdministrativeArea"
           ],
-          "dcid": "wikidataId/Q4885208",
+          "dcid": "wikidataId/Q4893899",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -105101,11 +105823,12 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Beverly Glen",
+          "name": "Betteravia",
           "types": [
-            "Neighborhood"
+            "City",
+            "Village"
           ],
-          "dcid": "wikidataId/Q4899524",
+          "dcid": "wikidataId/Q4898583",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -105165,19 +105888,11 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Blaine",
+          "name": "Black Diamond Mines Regional Preserve",
           "types": [
-            "Place"
+            "AdministrativeArea"
           ],
-          "dcid": "wikidataId/Q4923916",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
-          "name": "Blair Hills",
-          "types": [
-            "Neighborhood"
-          ],
-          "dcid": "wikidataId/Q4924101",
+          "dcid": "wikidataId/Q4920660",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -105196,14 +105911,6 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Bluff Park",
-          "types": [
-            "Neighborhood"
-          ],
-          "dcid": "wikidataId/Q4930660",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
           "types": [
             "Place"
           ],
@@ -105219,6 +105926,14 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Boulevard Park, Sacramento, California",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q4949659",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Branciforte",
           "types": [
             "Place"
@@ -105227,11 +105942,19 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Brookhaven",
+          "name": "Brass Wire Bar",
           "types": [
-            "Neighborhood"
+            "Place"
           ],
-          "dcid": "wikidataId/Q4974623",
+          "dcid": "wikidataId/Q4957885",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Brea City Hall and Park",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q4959082",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -105240,6 +105963,14 @@
             "Place"
           ],
           "dcid": "wikidataId/Q4996549",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Bungalow Heaven",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q4997611",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -105267,6 +105998,14 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "California Heights, Long Beach, California",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q5020540",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "California Park, California",
           "types": [
             "AdministrativeArea"
@@ -105275,11 +106014,35 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Cambodia Town, Long Beach, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q5025113",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Camp Grant",
           "types": [
             "Place"
           ],
           "dcid": "wikidataId/Q5027205",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Camp O'pera",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q5027464",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Campo de Cahuenga",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5028468",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -105315,6 +106078,22 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Captain Jack's Stronghold",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5036678",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Carmelito",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q5043364",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Carpenter, California",
           "types": [
             "AdministrativeArea"
@@ -105328,6 +106107,31 @@
             "AdministrativeArea"
           ],
           "dcid": "wikidataId/Q5045740",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Carroll Park, Long Beach, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q5046600",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Casa Diablo",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q5047811",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Casa Grande, Pasadena, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q5047822",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -105395,6 +106199,23 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Clems",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q5131539",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Coalinga Mineral Springs",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q5137882",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "College Terrace",
           "types": [
             "Neighborhood"
@@ -105443,6 +106264,14 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Coso Hot Springs",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5174661",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Cox \u0026 Clark Trading Post and Steamboat Landing",
           "types": [
             "Place"
@@ -105451,11 +106280,19 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Crossroads of the World",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5188853",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Cucamonga",
           "types": [
             "Place"
           ],
-          "dcid": "wikidataId/Q5192305",
+          "dcid": "wikidataId/Q5192307",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -105483,11 +106320,28 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Cuyamaca",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q5197086",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Cypress Point Club",
           "types": [
             "AdministrativeArea"
           ],
           "dcid": "wikidataId/Q5200356",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Daisy-Villa, Pasadena, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q5209673",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -105504,6 +106358,15 @@
             "Place"
           ],
           "dcid": "wikidataId/Q5225910",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Davis's Ferry",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q5241805",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -105528,6 +106391,46 @@
             "Place"
           ],
           "dcid": "wikidataId/Q5278728",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Don Fernando Pacheco Adobe",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5292603",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Downtown Santa Ana Historic Districts",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5303575",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Downtown Winters Historic District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5303612",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Downtown Woodland Historic District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5303615",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Dryden Historic District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5309671",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -105587,11 +106490,35 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "El Dorado Bar",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q5351172",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "El Dorado South, Long Beach, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q5351198",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "El Modena",
           "types": [
             "Place"
           ],
           "dcid": "wikidataId/Q5351610",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "El Porto, Manhattan Beach, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q5351868",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -105603,14 +106530,6 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Elfin Forest",
-          "types": [
-            "AdministrativeArea"
-          ],
-          "dcid": "wikidataId/Q5359898",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
           "name": "Elk Prairie",
           "types": [
             "Place"
@@ -105619,7 +106538,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Elkhorn Station, California",
+          "name": "Elkhorn Station",
           "types": [
             "Place"
           ],
@@ -105651,6 +106570,14 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Etiwanda, Rancho Cucamonga, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q5404642",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Ettersburg",
           "types": [
             "Place"
@@ -105664,6 +106591,14 @@
             "AdministrativeArea"
           ],
           "dcid": "wikidataId/Q5406991",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Exposition Park Rose Garden",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5421609",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -105715,6 +106650,14 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Fort MacArthur",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5471564",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Fort Mojave Indian Reservation",
           "types": [
             "AdministrativeArea"
@@ -105747,12 +106690,28 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Gasquet Ranger Station Historic District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5526628",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Gaviota, California",
           "types": [
             "AdministrativeArea"
           ],
           "dcid": "wikidataId/Q5528324",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "George Key Ranch",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5541323",
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Giant",
@@ -105763,11 +106722,43 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Mars",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q55622264",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Gilroy Yamato Hot Springs",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5562589",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Godfrey M. Bockius House",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5576496",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Goecken",
           "types": [
             "Place"
           ],
           "dcid": "wikidataId/Q5577117",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Grandma Prisbrey's Bottle Village",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q5595472",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -105784,6 +106775,15 @@
             "AdministrativeArea"
           ],
           "dcid": "wikidataId/Q5610607",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Gas Point",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q56276356",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -105858,11 +106858,19 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Indianola (Fields Landing), California",
+          "name": "Indianola",
           "types": [
             "Place"
           ],
           "dcid": "wikidataId/Q6024010",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Isleton Chinese and Japanese Commercial Districts",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q6084267",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -105887,6 +106895,15 @@
             "Place"
           ],
           "dcid": "wikidataId/Q6161241",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Judsonville",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q6304285",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -105970,6 +106987,14 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Kokaman",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q6426544",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Korblex",
           "types": [
             "Place"
@@ -105978,11 +107003,27 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Kuya'mu",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q6449077",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Laddville",
           "types": [
             "Place"
           ],
           "dcid": "wikidataId/Q6469348",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Land Park, Sacramento, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q6483932",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -105999,6 +107040,14 @@
             "Place"
           ],
           "dcid": "wikidataId/Q6489599",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Larkspur Downtown Historic District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q6489656",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -106034,6 +107083,23 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Live Oak Historic Commercial District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q6655352",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Logtown",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q6667892",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Lone Pine Station",
           "types": [
             "Place"
@@ -106047,6 +107113,14 @@
             "Place"
           ],
           "dcid": "wikidataId/Q6671442",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Long's Bar",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q6671793",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -106079,6 +107153,14 @@
             "AdministrativeArea"
           ],
           "dcid": "wikidataId/Q6683310",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Main Street Historic Commercial District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q6736116",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -106122,6 +107204,22 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "McKay Meadow",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q6801701",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Meadowview, Sacramento, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q6803453",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Menlo Oaks, California",
           "types": [
             "AdministrativeArea"
@@ -106151,6 +107249,15 @@
             "AdministrativeArea"
           ],
           "dcid": "wikidataId/Q6827849",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Middle Bar",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q6841217",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -106210,11 +107317,27 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Monarch Beach, Dana Point, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q6897994",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Monta Vista",
           "types": [
             "Neighborhood"
           ],
           "dcid": "wikidataId/Q6903127",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Monte Vista",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q6904937",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -106242,6 +107365,22 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Mooney, Visalia, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q6907737",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Moraga Adobe",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q6909004",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Mormon, California",
           "types": [
             "AdministrativeArea"
@@ -106250,11 +107389,12 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Mountain House",
+          "name": "Mormon Island",
           "types": [
-            "Place"
+            "City",
+            "Village"
           ],
-          "dcid": "wikidataId/Q6924999",
+          "dcid": "wikidataId/Q6912636",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -106274,19 +107414,11 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Mulford",
+          "name": "Murray, Lassen County, California",
           "types": [
-            "Neighborhood"
+            "Place"
           ],
-          "dcid": "wikidataId/Q6933937",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
-          "name": "Mulford Gardens",
-          "types": [
-            "Neighborhood"
-          ],
-          "dcid": "wikidataId/Q6933944",
+          "dcid": "wikidataId/Q6939079",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -106314,15 +107446,24 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Newburg",
+          "name": "Negro Flat",
           "types": [
-            "Place"
+            "City",
+            "Village"
           ],
-          "dcid": "wikidataId/Q7017122",
+          "dcid": "wikidataId/Q6987594",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Newhall Ranch in Valencia",
+          "name": "New Almaden",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q7005296",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Valencia",
           "types": [
             "Place"
           ],
@@ -106335,6 +107476,14 @@
             "Village"
           ],
           "dcid": "wikidataId/Q7048265",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "North Pomona",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q7056399",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -106386,11 +107535,35 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Old Town Pasadena",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q7085297",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Ono",
           "types": [
             "AdministrativeArea"
           ],
           "dcid": "wikidataId/Q7094411",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Orange Hills, Orange, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q7099649",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Oregon Bar, Calaveras County, California",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q7101094",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -106434,6 +107607,14 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Patrick Rodgers Farm",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q7147558",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Peralta Community College District",
           "types": [
             "AdministrativeArea"
@@ -106474,6 +107655,15 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Pinacate",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q7194781",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Pine Hills, San Diego County, California",
           "types": [
             "AdministrativeArea"
@@ -106482,11 +107672,36 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Pisgah Home Historic District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q7198284",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Platina",
           "types": [
             "AdministrativeArea"
           ],
           "dcid": "wikidataId/Q7202311",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Point of Timber",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q7208261",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Politana",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q7210122",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -106538,14 +107753,6 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Quartzburg, Mariposa County, California",
-          "types": [
-            "Place"
-          ],
-          "dcid": "wikidataId/Q7269408",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
           "name": "Ramona Gardens",
           "types": [
             "Neighborhood"
@@ -106554,11 +107761,36 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Rancho San Lucas",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q7291266",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Rancho San Miguel",
           "types": [
             "Neighborhood"
           ],
           "dcid": "wikidataId/Q7291272",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Rancho Santa Maria de Los Peñasquitos",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q7291310",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Rancho Temescal",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q7291349",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -106610,6 +107842,15 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Rio Bravo",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q7335162",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Riverside Community College District",
           "types": [
             "AdministrativeArea"
@@ -106623,6 +107864,23 @@
             "AdministrativeArea"
           ],
           "dcid": "wikidataId/Q7338468",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Riverview Union High School Building",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q7338781",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Roachville",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q7339253",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -106671,6 +107929,30 @@
             "Place"
           ],
           "dcid": "wikidataId/Q7368772",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Rossmoor, Walnut Creek, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q7369896",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Roswell Butler Hard House",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q7370097",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Russian Hill-Macondray Lane District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q7382061",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -106810,7 +108092,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Shaver, California",
+          "name": "Shaver",
           "types": [
             "Place"
           ],
@@ -106826,6 +108108,30 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Shirley Ann Place",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q7498686",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Shishuchi'i'",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q7499104",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Smith's Ferry",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q7544853",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Snoboy",
           "types": [
             "Place"
@@ -106834,27 +108140,27 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Soldier's Bridge",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q7557234",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "South Bonnie Brae Tract Historic District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q7566344",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "South Campus Neighborhood",
           "types": [
             "Neighborhood"
           ],
           "dcid": "wikidataId/Q7566493",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
-          "name": "South Park",
-          "types": [
-            "Neighborhood"
-          ],
-          "dcid": "wikidataId/Q7568146",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
-          "name": "South Shore",
-          "types": [
-            "Neighborhood"
-          ],
-          "dcid": "wikidataId/Q7568427",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -106874,6 +108180,22 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Southport Landing",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q7570970",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Spring Street Financial District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q7580685",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Spruce Point",
           "types": [
             "Place"
@@ -106882,11 +108204,36 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "St. Andrews Bungalow Court",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q7586929",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "St. James Park Historic District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q7588519",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Steelhead",
           "types": [
             "Place"
           ],
           "dcid": "wikidataId/Q7605826",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Stokes Landing",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q7618533",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -106911,6 +108258,14 @@
             "AdministrativeArea"
           ],
           "dcid": "wikidataId/Q7638242",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Sunrise, Long Beach, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q7641010",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -107002,11 +108357,19 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Terra Lago",
+          "name": "Tarr's Ranch",
           "types": [
-            "Neighborhood"
+            "Place"
           ],
-          "dcid": "wikidataId/Q7703100",
+          "dcid": "wikidataId/Q7686625",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Tatlatunne",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q7688187",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -107034,14 +108397,6 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "The Springs",
-          "types": [
-            "Place"
-          ],
-          "dcid": "wikidataId/Q7766074",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
           "name": "Timba",
           "types": [
             "AdministrativeArea"
@@ -107050,11 +108405,28 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Tolle's Old Diggings",
+          "types": [
+            "Place"
+          ],
+          "dcid": "wikidataId/Q7814369",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Trevarno",
           "types": [
             "Place"
           ],
           "dcid": "wikidataId/Q7838928",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Tuolumne City",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q7853424",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -107071,6 +108443,14 @@
             "Place"
           ],
           "dcid": "wikidataId/Q7857022",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Twentieth Street Historic District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q7857710",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -107098,11 +108478,27 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Angel Island Immigration Station",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q7890688",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "University Hills, Irvine, California",
           "types": [
             "Neighborhood"
           ],
           "dcid": "wikidataId/Q7894756",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Upper Land Park, Sacramento, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q7898740",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -107119,6 +108515,14 @@
             "Neighborhood"
           ],
           "dcid": "wikidataId/Q7912262",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Venetian Court",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q7919728",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -107162,14 +108566,6 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "West End",
-          "types": [
-            "Neighborhood"
-          ],
-          "dcid": "wikidataId/Q7985023",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
           "name": "West Garden Grove",
           "types": [
             "Place"
@@ -107183,14 +108579,6 @@
             "Neighborhood"
           ],
           "dcid": "wikidataId/Q7985801",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
-          "name": "Westlake",
-          "types": [
-            "Neighborhood"
-          ],
-          "dcid": "wikidataId/Q7988958",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -107218,7 +108606,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Whiskey Flat (Paradise East), California",
+          "name": "Whiskey Flat",
           "types": [
             "Place"
           ],
@@ -107226,11 +108614,20 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Whiskey Flat (Paradise West), California",
+          "name": "Whiskey Flat",
           "types": [
             "Place"
           ],
           "dcid": "wikidataId/Q7993873",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "White Mountain City",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q7995077",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -107250,11 +108647,44 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Willborough",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q8003524",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "William T. Hendrick House",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q8019075",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Wilmar",
           "types": [
             "Place"
           ],
           "dcid": "wikidataId/Q8022685",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Wilsonia Historic District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q8023284",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Winehaven",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q8024966",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -107306,6 +108736,14 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Wycliffe, Modesto, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q8039603",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Yager Junction",
           "types": [
             "Place"
@@ -107314,7 +108752,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Yosemite Mill, California",
+          "name": "Yosemite Mill",
           "types": [
             "Place"
           ],
@@ -107354,6 +108792,22 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Fossil Falls",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q8564890",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Del Norte Unified School District",
+          "types": [
+            "AdministrativeArea"
+          ],
+          "dcid": "wikidataId/Q85756253",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Table Bluff Reservation",
           "types": [
             "AdministrativeArea"
@@ -107367,6 +108821,22 @@
             "AdministrativeArea"
           ],
           "dcid": "wikidataId/Q9020417",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Summit City",
+          "types": [
+            "Village"
+          ],
+          "dcid": "wikidataId/Q96085779",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "West Irvine, Irvine, California",
+          "types": [
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q96414462",
           "provenanceId": "dc/base/WikidataGeos"
         }
       ]

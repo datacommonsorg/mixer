@@ -1017,6 +1017,15 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "New Caledonia",
+          "types": [
+            "AdministrativeArea1",
+            "Country"
+          ],
+          "dcid": "country/NCL",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
           "name": "Norfolk Island",
           "types": [
             "AdministrativeArea1",
@@ -2052,7 +2061,7 @@
           "provenanceId": "dc/base/WikidataGeo_Somalia"
         },
         {
-          "name": "Al Jazirah",
+          "name": "Gezira",
           "types": [
             "AdministrativeArea1",
             "State"
@@ -2070,7 +2079,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Blue Nile",
+          "name": "Blue Nile State",
           "types": [
             "AdministrativeArea1",
             "State"
@@ -2079,7 +2088,7 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Northern",
+          "name": "Northern State",
           "types": [
             "AdministrativeArea1",
             "State"
@@ -3034,15 +3043,19 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Barnsville",
           "types": [
-            "City"
+            "City",
+            "Village"
           ],
           "dcid": "geoId/0104108",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Battelle",
           "types": [
-            "City"
+            "City",
+            "Village"
           ],
           "dcid": "geoId/0104580",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
@@ -3141,11 +3154,13 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Bellefonte",
           "types": [
-            "City"
+            "City",
+            "Village"
           ],
           "dcid": "geoId/0105236",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Belle Mina",
@@ -3761,6 +3776,30 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Center Point",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0113264",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Centerville",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0113384",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Centre",
+          "types": [
+            "City"
+          ],
+          "dcid": "geoId/0113648",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Chatom",
           "types": [
             "City",
@@ -4274,6 +4313,15 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Gantts Quarry",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0128984",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Garden City",
           "types": [
             "City",
@@ -4292,6 +4340,24 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Lacon",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0140600",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Louina",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0144330",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Mountainboro",
           "types": [
             "City",
@@ -4299,6 +4365,15 @@
           ],
           "dcid": "geoId/0151674",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Pikeville",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0159790",
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Anchorage",
@@ -4377,12 +4452,39 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Cleator",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0414170",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
           "name": "Estrella",
           "types": [
             "City",
             "Neighborhood"
           ],
           "dcid": "geoId/0422990",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Fairbank",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0423130",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Helvetia",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0432405",
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
@@ -4413,6 +4515,24 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Bagdad",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0603456",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Bodie",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0607288",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
           "name": "Buena Vista",
           "types": [
             "City",
@@ -4431,12 +4551,39 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Calico",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0609752",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Chambless",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0612636",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
           "name": "Chatsworth",
           "types": [
             "City",
             "Neighborhood"
           ],
           "dcid": "geoId/0612748",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Eagle Mountain, California",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0620368",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
@@ -4449,12 +4596,57 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "Eckley",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0621400",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Guerneville",
           "types": [
             "City",
             "Neighborhood"
           ],
           "dcid": "geoId/0631470",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Hart",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0632308",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "New Idria",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0636182",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "City of Industry",
+          "types": [
+            "City",
+            "Neighborhood"
+          ],
+          "dcid": "geoId/0636490",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Kelso",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0638058",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
@@ -4521,6 +4713,24 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Ragtown",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0659216",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Rice",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0660508",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
           "name": "San Francisco",
           "types": [
             "AdministrativeArea2",
@@ -4557,6 +4767,15 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Siberia",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0671722",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
           "name": "Valencia",
           "types": [
             "City",
@@ -4564,6 +4783,15 @@
           ],
           "dcid": "geoId/0681596",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Vanderbilt",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0682093",
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Venice",
@@ -4611,6 +4839,15 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Altman",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0801730",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
           "name": "Denver",
           "types": [
             "AdministrativeArea2",
@@ -4619,6 +4856,69 @@
           ],
           "dcid": "geoId/08031",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Caribou",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0812120",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Eureka",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0825225",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Ludlow",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0846850",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Madrid",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0847730",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Querida",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0862430",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Rosita",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0865930",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Sopris",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/0871955",
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Norfolk",
@@ -4781,6 +5081,15 @@
           ],
           "dcid": "geoId/1001660",
           "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Owens Station",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/1054800",
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Rehoboth Beach",
@@ -5081,6 +5390,16 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
+          "name": "The Villages",
+          "types": [
+            "AdministrativeArea5",
+            "City",
+            "Neighborhood"
+          ],
+          "dcid": "geoId/1271625",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
           "name": "Twin Lakes",
           "types": [
             "City",
@@ -5197,6 +5516,24 @@
             "Neighborhood"
           ],
           "dcid": "geoId/1507485",
+          "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Kapoho",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/1530250",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Laupahoehoe",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "geoId/1544150",
           "provenanceId": "dc/base/BaseGeos"
         },
         {
@@ -5569,312 +5906,6 @@
           "provenanceId": "dc/base/BaseGeos"
         },
         {
-          "name": "Augusta",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1702986",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Aviston",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1703181",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Avon",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1703207",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Baldwin",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1703454",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Banner",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1703571",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Bannockburn",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1703610",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Bardolph",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1703675",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Barrington",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1703844",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Barrington Hills",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1703883",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Bartelso",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1704000",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Bartlett",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1704013",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Bartonville",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1704039",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Basco",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1704052",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Batchtown",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1704117",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Bath",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1704156",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Baylis",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1704247",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Bay View Gardens",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1704273",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Beach Park",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1704303",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Beaverville",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1704507",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Beckemeyer",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1704533",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Bedford Park",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1704572",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Beecher",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1704585",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Beecher City",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1704598",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Belgium",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1704689",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Belknap",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1704715",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Belle Rive",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1704806",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Bellevue",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1704871",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Bellflower",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1704897",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Bellmont",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1704936",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Bellwood",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1704975",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Bement",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1705144",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Bensenville",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1705248",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Benson",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1705261",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Berkeley",
-          "types": [
-            "City",
-            "Village"
-          ],
-          "dcid": "geoId/1705404",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
           "name": "Knollwood",
           "types": [
             "City",
@@ -6008,6 +6039,15 @@
           ],
           "dcid": "geoId/2172750",
           "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Houma",
+          "types": [
+            "AdministrativeArea2",
+            "City"
+          ],
+          "dcid": "geoId/2236255",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "New Orleans",
@@ -6236,6 +6276,15 @@
           ],
           "dcid": "geoId/29510",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Wildwood",
+          "types": [
+            "City",
+            "Neighborhood"
+          ],
+          "dcid": "geoId/2979820",
+          "provenanceId": "dc/base/BaseGeos"
         },
         {
           "name": "Carson City",
@@ -7157,24 +7206,6 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Llewellyn Park",
-          "types": [
-            "City",
-            "Neighborhood"
-          ],
-          "dcid": "geoId/3440990",
-          "provenanceId": "dc/base/BaseGeos"
-        },
-        {
-          "name": "Loveladies",
-          "types": [
-            "City",
-            "Neighborhood"
-          ],
-          "dcid": "geoId/3441580",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
           "name": "Ellenburg",
           "types": [
             "CensusCountyDivision",
@@ -7236,6 +7267,15 @@
           ],
           "dcid": "geoId/3612102418",
           "provenanceId": "dc/base/BaseGeos"
+        },
+        {
+          "name": "Franklin Township",
+          "types": [
+            "AdministrativeArea2",
+            "City"
+          ],
+          "dcid": "geoId/3928196",
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Penn",
@@ -8141,7 +8181,7 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Frankfurt am Main",
+          "name": "Frankfurt",
           "types": [
             "AdministrativeArea4",
             "City",
@@ -8661,6 +8701,16 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
+          "name": "Worms",
+          "types": [
+            "AdministrativeArea4",
+            "City",
+            "EurostatNUTS3"
+          ],
+          "dcid": "nuts/DEB39",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
           "name": "Zweibrücken",
           "types": [
             "AdministrativeArea4",
@@ -8751,7 +8801,7 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Halle (Saale)",
+          "name": "Halle",
           "types": [
             "AdministrativeArea4",
             "City",
@@ -8912,6 +8962,15 @@
             "EurostatNUTS3"
           ],
           "dcid": "nuts/HU101",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "types": [
+            "AdministrativeArea3",
+            "City",
+            "EurostatNUTS3"
+          ],
+          "dcid": "nuts/ITE14",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
@@ -9205,7 +9264,7 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Kisaki, Tanzania",
+          "name": "Kisaki",
           "types": [
             "AdministrativeArea3",
             "City"
@@ -9268,7 +9327,7 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Tocha, Portugal",
+          "name": "Tocha",
           "types": [
             "AdministrativeArea3",
             "AdministrativeArea4",
@@ -9305,7 +9364,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Ulan Hot",
+          "name": "Ulanhot",
           "types": [
             "AdministrativeArea3",
             "City"
@@ -9703,13 +9762,13 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Zdzieszowice",
+          "name": "Zdzieshowice",
           "types": [
             "AdministrativeArea3",
             "City"
           ],
           "dcid": "wikidataId/Q1002944",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Pampilhosa",
@@ -9857,7 +9916,7 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Cruzeiro, São Paulo",
+          "name": "Cruzeiro",
           "types": [
             "AdministrativeArea2",
             "City"
@@ -9994,24 +10053,6 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Mourão",
-          "types": [
-            "AdministrativeArea2",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1005121",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "Crato",
-          "types": [
-            "AdministrativeArea2",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1005138",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
           "name": "Ośno Lubuskie",
           "types": [
             "AdministrativeArea3",
@@ -10102,7 +10143,7 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Dąbie, Greater Poland Voivodeship",
+          "name": "Dąbie",
           "types": [
             "AdministrativeArea3",
             "City"
@@ -10126,7 +10167,7 @@
             "City"
           ],
           "dcid": "wikidataId/Q1005453",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Lidzbark",
@@ -10243,7 +10284,7 @@
             "City"
           ],
           "dcid": "wikidataId/Q1005972",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Wąsosz",
@@ -10419,15 +10460,6 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Yakeshi",
-          "types": [
-            "AdministrativeArea3",
-            "City"
-          ],
-          "dcid": "wikidataId/Q1010264",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
           "name": "Ceadîr-Lunga",
           "types": [
             "AdministrativeArea1",
@@ -10599,7 +10631,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Nampho",
+          "name": "Nampo",
           "types": [
             "AdministrativeArea1",
             "AdministrativeArea2",
@@ -10627,7 +10659,7 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Grand Lahou",
+          "name": "Grand-Lahou",
           "types": [
             "AdministrativeArea5",
             "City"
@@ -10674,7 +10706,7 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Taoyuan City",
+          "name": "Taoyuan",
           "types": [
             "AdministrativeArea1",
             "AdministrativeArea3",
@@ -10800,6 +10832,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Nwa Subdivision",
           "types": [
             "AdministrativeArea5",
             "City"
@@ -10871,6 +10904,15 @@
           ],
           "dcid": "wikidataId/Q131290",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "types": [
+            "AdministrativeArea4",
+            "AdministrativeArea5",
+            "City"
+          ],
+          "dcid": "wikidataId/Q131575588",
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Île Sainte-Marie",
@@ -11071,7 +11113,7 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Nur-Sultan",
+          "name": "Astana",
           "types": [
             "AdministrativeArea1",
             "City"
@@ -11242,7 +11284,7 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Zavrč Municipality",
+          "name": "Municipality of Zavrč",
           "types": [
             "AdministrativeArea1",
             "AdministrativeArea2",
@@ -11432,7 +11474,7 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Sumqayit",
+          "name": "Sumgait",
           "types": [
             "AdministrativeArea1",
             "City"
@@ -11683,7 +11725,7 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Kiev",
+          "name": "Kyiv",
           "types": [
             "AdministrativeArea1",
             "City"
@@ -12295,7 +12337,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Guere, Cameroon",
+          "name": "Guere",
           "types": [
             "AdministrativeArea5",
             "City"
@@ -12322,7 +12364,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Meri, Cameroon",
+          "name": "Meri",
           "types": [
             "AdministrativeArea5",
             "City"
@@ -12331,6 +12373,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Rey Bouba",
           "types": [
             "AdministrativeArea5",
             "City"
@@ -12348,6 +12391,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Waza",
           "types": [
             "AdministrativeArea5",
             "City"
@@ -12365,6 +12409,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "Zina",
           "types": [
             "AdministrativeArea5",
             "City"
@@ -12489,6 +12534,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
+          "name": "West Coast",
           "types": [
             "AdministrativeArea5",
             "City"
@@ -12555,24 +12601,6 @@
           ],
           "dcid": "wikidataId/Q2603720",
           "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
-          "name": "Obala",
-          "types": [
-            "AdministrativeArea5",
-            "City"
-          ],
-          "dcid": "wikidataId/Q2604706",
-          "provenanceId": "dc/base/WikidataGeos"
-        },
-        {
-          "name": "Meiganga",
-          "types": [
-            "AdministrativeArea5",
-            "City"
-          ],
-          "dcid": "wikidataId/Q2629052",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Olanchito",
@@ -12645,7 +12673,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Clementi, Singapore",
+          "name": "Clementi",
           "types": [
             "AdministrativeArea2",
             "City",
@@ -12792,7 +12820,7 @@
             "PlanningArea"
           ],
           "dcid": "wikidataId/Q6548667",
-          "provenanceId": "dc/base/WikidataGeo_Singapore_ADM2"
+          "provenanceId": "dc/base/WikidataGeos"
         },
         {
           "name": "Puerto Cortés",
@@ -12855,7 +12883,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Cedros, Francisco Morazán",
+          "name": "Cedros",
           "types": [
             "AdministrativeArea2",
             "City",
@@ -12875,7 +12903,7 @@
           "provenanceId": "dc/base/WikidataGeos"
         },
         {
-          "name": "Tengah, Singapore",
+          "name": "Tengah",
           "types": [
             "AdministrativeArea2",
             "City",
@@ -12955,7 +12983,7 @@
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "Queenstown, Singapore",
+          "name": "Queenstown",
           "types": [
             "AdministrativeArea2",
             "City",
@@ -12997,5 +13025,5 @@
       ]
     }
   ],
-  "nextToken": "H4sIAAAAAAAA/6zTTU6FQAzAcV+FRy2u6oZr+HUARGNijC4g7scwwCTA6DhguIYnNjEuzKym8S3bxS//NCnVlFTGb7T325t+7uisbCczmw/vlDerLp1W53zEgDsGBAY8ZsCEAVMG3DNgxoDIgCcMSJxgXkwx6IUQfY9BL4VoG4NeCdEuBr0Wl94HaHZjnV36QQzdBdDPJFBSzIuvHT0GzOmTNv3wat1gbSuOug2jGvs5//9GL2YcVa/F0ANllV1m7/5YvwuhtVJDae2V14d8Mf0NAAD//wEAAP//RqErk7gDAAA="
+  "nextToken": "H4sIAAAAAAAA/6zTzUrEQAzAcTe225j1FC/7Gn49wLqKIKKHFu8jTduBtqPjtNIH8X0F8SBzmuAek8OPP4FQSdnehoXWYXmT54bOdvVgR/sRvAl2lp0Xc85HDLhiQGDAYwbMGDBnwDUDFgyIDHjCgMQZbrZDCnqhRN9T0EslWqegV0q0SUGv1aX3EVrcOO+mtlNDdxH0MymUHDfbrxU9Rszpk9i2e3W+c65WRgndxlGV+xz/f6MX2/emFTX0QMXeTWPwf6zfhdKaqaK8DCbIIV9MvgEAAP//AQAA//8TMaUxuAMAAA=="
 }

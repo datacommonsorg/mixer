@@ -2591,6 +2591,7 @@
       "subjectId": "country/NCL",
       "subjectName": "New Caledonia",
       "subjectTypes": [
+        "AdministrativeArea1",
         "Country"
       ],
       "predicate": "typeOf",
@@ -3981,6 +3982,20 @@
         "Class"
       ],
       "provenanceId": "dc/base/BaseSchema"
+    },
+    {
+      "subjectId": "wikidataId/Q130340667",
+      "subjectName": "Sovereign State of the Bektashi Order",
+      "subjectTypes": [
+        "Country"
+      ],
+      "predicate": "typeOf",
+      "objectId": "Country",
+      "objectName": "Country",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/WikidataGeos"
     },
     {
       "subjectId": "wikidataId/Q23681",
@@ -5741,7 +5756,7 @@
     },
     {
       "subjectId": "wikidataId/Q309469",
-      "subjectName": "Al Jazirah",
+      "subjectName": "Gezira",
       "subjectTypes": [
         "AdministrativeArea1",
         "State"
@@ -5771,7 +5786,7 @@
     },
     {
       "subjectId": "wikidataId/Q309489",
-      "subjectName": "Blue Nile",
+      "subjectName": "Blue Nile State",
       "subjectTypes": [
         "AdministrativeArea1",
         "State"
@@ -5786,7 +5801,7 @@
     },
     {
       "subjectId": "wikidataId/Q310118",
-      "subjectName": "Northern",
+      "subjectName": "Northern State",
       "subjectTypes": [
         "AdministrativeArea1",
         "State"

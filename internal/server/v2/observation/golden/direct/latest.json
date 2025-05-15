@@ -618,13 +618,13 @@
               "facet_id": "3707913853",
               "observations": [
                 {
-                  "date": "2025-03",
-                  "value": 7083000
+                  "date": "2025-04",
+                  "value": 7165000
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2025-03",
-              "latest_date": "2025-03"
+              "earliest_date": "2025-04",
+              "latest_date": "2025-04"
             },
             {
               "facet_id": "1714978719",
@@ -687,13 +687,13 @@
               "facet_id": "324358135",
               "observations": [
                 {
-                  "date": "2025-02",
-                  "value": 1605
+                  "date": "2025-03",
+                  "value": 1575
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2025-02",
-              "latest_date": "2025-02"
+              "earliest_date": "2025-03",
+              "latest_date": "2025-03"
             },
             {
               "facet_id": "2978659163",
@@ -809,7 +809,7 @@
     },
     "2176550201": {
       "import_name": "USCensusPEP_Annual_Population",
-      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
+      "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
       "measurement_method": "CensusPEPSurvey",
       "observation_period": "P1Y"
     },

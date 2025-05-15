@@ -19,7 +19,7 @@
         "id": "dc/g/Economy",
         "specializedEntity": "Economy",
         "displayName": "Economy",
-        "descendentStatVarCount": 118997
+        "descendentStatVarCount": 119411
       },
       {
         "id": "dc/g/Education",
@@ -43,7 +43,7 @@
         "id": "dc/g/Health",
         "specializedEntity": "Health",
         "displayName": "Health",
-        "descendentStatVarCount": 50966
+        "descendentStatVarCount": 50965
       },
       {
         "id": "dc/g/Housing",
@@ -82,6 +82,6 @@
         "descendentStatVarCount": 4282
       }
     ],
-    "descendentStatVarCount": 243793
+    "descendentStatVarCount": 244206
   }
 }

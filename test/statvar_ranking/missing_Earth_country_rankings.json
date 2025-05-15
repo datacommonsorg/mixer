@@ -109,6 +109,20 @@
     }
   },
   {
+    "title": "Government expenditures on military (% of GDP)",
+    "statsVars": [
+      "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal"
+    ],
+    "relatedChart": {}
+  },
+  {
+    "title": "Government expenditures on military",
+    "statsVars": [
+      "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government"
+    ],
+    "relatedChart": {}
+  },
+  {
     "title": "Hate crime motivated by disability",
     "statsVars": [
       "Count_CriminalIncidents_BiasMotivationDisabilityStatus_IsHateCrime"

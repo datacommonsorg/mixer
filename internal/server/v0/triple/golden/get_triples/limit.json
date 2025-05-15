@@ -461,6 +461,23 @@
       "provenanceId": "dc/base/BaseGeos"
     },
     {
+      "subjectId": "geoId/1271625",
+      "subjectName": "The Villages",
+      "subjectTypes": [
+        "AdministrativeArea5",
+        "City",
+        "Neighborhood"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class",
+        "LocationClassificationEnum"
+      ],
+      "provenanceId": "dc/base/BaseGeos"
+    },
+    {
       "subjectId": "geoId/3601923921",
       "subjectName": "Ellenburg",
       "subjectTypes": [
@@ -699,6 +716,22 @@
       "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
+      "subjectId": "nuts/ITE14",
+      "subjectTypes": [
+        "AdministrativeArea3",
+        "City",
+        "EurostatNUTS3"
+      ],
+      "predicate": "typeOf",
+      "objectId": "City",
+      "objectName": "City",
+      "objectTypes": [
+        "Class",
+        "LocationClassificationEnum"
+      ],
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
       "subjectId": "nuts/SOF46",
       "subjectName": "Sofia",
       "subjectTypes": [
@@ -718,23 +751,6 @@
     {
       "subjectId": "nuts/UKM25",
       "subjectName": "Edinburgh",
-      "subjectTypes": [
-        "AdministrativeArea3",
-        "City",
-        "EurostatNUTS3"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class",
-        "LocationClassificationEnum"
-      ],
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
-    },
-    {
-      "subjectId": "nuts/UKM34",
-      "subjectName": "Glasgow",
       "subjectTypes": [
         "AdministrativeArea3",
         "City",
@@ -827,22 +843,6 @@
         "LocationClassificationEnum"
       ],
       "provenanceId": "dc/base/WikidataGeos"
-    },
-    {
-      "subjectId": "wikidataId/Q1100812",
-      "subjectName": "Campo",
-      "subjectTypes": [
-        "AdministrativeArea5",
-        "City"
-      ],
-      "predicate": "typeOf",
-      "objectId": "City",
-      "objectName": "City",
-      "objectTypes": [
-        "Class",
-        "LocationClassificationEnum"
-      ],
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
     }
   ],
   "County": [
@@ -1119,7 +1119,7 @@
     },
     {
       "subjectId": "geoId/64002",
-      "subjectName": "Chuuk State",
+      "subjectName": "Chuuk",
       "subjectTypes": [
         "AdministrativeArea1",
         "County"

@@ -614,6 +614,15 @@
       "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
+      "name": "New Caledonia",
+      "types": [
+        "AdministrativeArea1",
+        "Country"
+      ],
+      "dcid": "country/NCL",
+      "provenanceId": "dc/base/WikidataOtherIdGeos"
+    },
+    {
       "name": "Norfolk Island",
       "types": [
         "AdministrativeArea1",

@@ -198,6 +198,51 @@
           ],
           "dcid": "geoId/0677000",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Lexington",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q14946652",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Cambrian Park",
+          "types": [
+            "City",
+            "Neighborhood"
+          ],
+          "dcid": "wikidataId/Q1911837",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "Alma",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q4733495",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Patchen",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q7144355",
+          "provenanceId": "dc/base/WikidataGeos"
+        },
+        {
+          "name": "Wrights",
+          "types": [
+            "City",
+            "Village"
+          ],
+          "dcid": "wikidataId/Q8038293",
+          "provenanceId": "dc/base/WikidataGeos"
         }
       ]
     },

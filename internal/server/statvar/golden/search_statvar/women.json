@@ -1561,6 +1561,10 @@
       "dcid": "WHO/UNICEF_PNCMOTHER"
     },
     {
+      "name": "Annual amount of economic activity sales in women clothing stores",
+      "dcid": "Annual_Amount_EconomicActivity_Sales_WomenClothingStores"
+    },
+    {
       "name": "Consumer Price Index of Consumer Goods And Services (Seasonally Unadjusted): Urban Consumer, Womens And Girls Apparel",
       "dcid": "SeasonallyUnadjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_WomensAndGirlsApparel"
     },
@@ -1591,6 +1595,10 @@
     {
       "name": "Consumer Price Index of Consumer Goods And Services (Seasonally Unadjusted): Urban Consumer, Womens Underwear Nightwear Swimwear And Accessories",
       "dcid": "SeasonallyUnadjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_WomensUnderwearNightwearSwimwearAndAccessories"
+    },
+    {
+      "name": "Monthly sales of women's clothing stores",
+      "dcid": "Monthly_Amount_EconomicActivity_Sales_WomenClothingStores"
     },
     {
       "name": "Non-pregnant women age group 15 to 49 years who are anaemic (%)",
