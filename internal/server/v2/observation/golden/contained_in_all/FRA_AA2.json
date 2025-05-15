@@ -3070,6 +3070,26 @@
             }
           ]
         },
+        "nuts/FR413": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1044486
+                },
+                {
+                  "date": "2017",
+                  "value": 1043522
+                }
+              ],
+              "obs_count": 2,
+              "earliest_date": "2015",
+              "latest_date": "2017"
+            }
+          ]
+        },
         "nuts/FR42": {
           "ordered_facets": [
             {
@@ -3095,6 +3115,38 @@
               "obs_count": 1,
               "earliest_date": "2013",
               "latest_date": "2013"
+            }
+          ]
+        },
+        "nuts/FR421": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2017",
+                  "value": 1125559
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2017",
+              "latest_date": "2017"
+            }
+          ]
+        },
+        "nuts/FR422": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2017",
+                  "value": 764030
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2017",
+              "latest_date": "2017"
             }
           ]
         },
@@ -3966,6 +4018,26 @@
                 {
                   "date": "2017",
                   "value": 762941
+                }
+              ],
+              "obs_count": 2,
+              "earliest_date": "2015",
+              "latest_date": "2017"
+            }
+          ]
+        },
+        "nuts/FR716": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1821995
+                },
+                {
+                  "date": "2017",
+                  "value": 1843319
                 }
               ],
               "obs_count": 2,
@@ -6255,6 +6327,30 @@
               "obs_count": 2,
               "earliest_date": "2015",
               "latest_date": "2017"
+            }
+          ]
+        },
+        "wikidataId/Q68230": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2013",
+                  "value": 21718
+                },
+                {
+                  "date": "2018",
+                  "value": 24144
+                },
+                {
+                  "date": "2019",
+                  "value": 25249
+                }
+              ],
+              "obs_count": 3,
+              "earliest_date": "2013",
+              "latest_date": "2019"
             }
           ]
         },

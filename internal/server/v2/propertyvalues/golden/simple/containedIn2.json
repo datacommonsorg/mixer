@@ -10095,14 +10095,6 @@
               "provenanceId": "dc/base/BaseGeos"
             },
             {
-              "name": "Industry",
-              "types": [
-                "City"
-              ],
-              "dcid": "geoId/0636490",
-              "provenanceId": "dc/base/BaseGeos"
-            },
-            {
               "name": "Inglewood",
               "types": [
                 "City"
@@ -12828,6 +12820,14 @@
                 "City"
               ],
               "dcid": "geoId/0651840",
+              "provenanceId": "dc/base/BaseGeos"
+            },
+            {
+              "name": "North Fork",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0651868",
               "provenanceId": "dc/base/BaseGeos"
             },
             {
@@ -44960,5 +44960,5 @@
     },
     "test_stat_var": {}
   },
-  "nextToken": "H4sIAAAAAAAA/6yTb0rzQBCH30zztuOkSjqfcgurH7xArFhQCLQf/IPKNhmahTULybbSg3gJj+cJJOT7yhYv8PwenmHokXArdlmdz68oLW3jlG6kWjaFUaVQkkvT7bp1q0rH/xgwYkBgwBEDxgz4nwHHDDhhQGTAEwYkjjFJgdZedJxrdwhgjntmNiPlpaYLI+/SONUeVmVtrQlYmGCSxtk30Jt3YnZjbbXonNoY3dX9WGCZiB68A3Srt3Ww/dD8yUue3uuqMnIk+xfrwn5IWxgV3APo1Us+LVq9Vy5cuz/oKPuK6MVfpdhtjC6PxH9G9OzXX13mYsyd7MVczP+4zdlgfa071+qgHx3+afoDAAD//wEAAP//vxN+4wEEAAA="
+  "nextToken": "H4sIAAAAAAAA/6yTX0rDQBCHzTS246RKnKfcwuqDF4gVCwqB9sE/qGyToVlYs5BsKz2Il/B4nkBC3le2eIHv9/ENQ0+EG7GL6mJ2TWlpG6d0I9WiKYwqhZJcmm7brVpVOj5iwIgBgQFHDBgz4DEDjhlwwoDIgCcMSBxjkgKtvOg4124fwBz3zIxJeanp3MiHNE61+2VZW2sCFiaYpHH2A/TunTi/tbaad06tje7qfiywTESP3gG605s62H5o/uwlTx90VRk5kP2HdWE/pS2MCu4B9OYlnxat3ikXrt0fdJR9R/Tqr1Js10aXB+K/Inrx6y+vcjHmXnZiLmf/3OZssL7RnWt10I8O/zT9BQAA//8BAAD//7ykgywBBAAA"
 }

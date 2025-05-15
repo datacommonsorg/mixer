@@ -1510,6 +1510,24 @@
           ]
         },
         {
+          "entity": "nuts/FR413",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2015",
+                  "value": 1044486
+                },
+                {
+                  "date": "2017",
+                  "value": 1043522
+                }
+              ],
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
           "entity": "nuts/FR42",
           "series_by_facet": [
             {
@@ -1520,6 +1538,34 @@
                 }
               ],
               "facet": "1456184638"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FR421",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2017",
+                  "value": 1125559
+                }
+              ],
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "entity": "nuts/FR422",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2017",
+                  "value": 764030
+                }
+              ],
+              "facet": "2458695583"
             }
           ]
         },
@@ -2307,6 +2353,24 @@
           ]
         },
         {
+          "entity": "nuts/FR716",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2015",
+                  "value": 1821995
+                },
+                {
+                  "date": "2017",
+                  "value": 1843319
+                }
+              ],
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
           "entity": "nuts/FR717",
           "series_by_facet": [
             {
@@ -2916,6 +2980,9 @@
           ]
         },
         {
+          "entity": "wikidataId/Q116148105"
+        },
+        {
           "entity": "wikidataId/Q132224",
           "series_by_facet": [
             {
@@ -3422,7 +3489,13 @@
           "entity": "wikidataId/Q2863801"
         },
         {
+          "entity": "wikidataId/Q2863933"
+        },
+        {
           "entity": "wikidataId/Q2863958"
+        },
+        {
+          "entity": "wikidataId/Q2864011"
         },
         {
           "entity": "wikidataId/Q302457",
@@ -4453,6 +4526,28 @@
         },
         {
           "entity": "wikidataId/Q682085"
+        },
+        {
+          "entity": "wikidataId/Q68230",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "2013",
+                  "value": 21718
+                },
+                {
+                  "date": "2018",
+                  "value": 24144
+                },
+                {
+                  "date": "2019",
+                  "value": 25249
+                }
+              ],
+              "facet": "2458695583"
+            }
+          ]
         },
         {
           "entity": "wikidataId/Q692903"

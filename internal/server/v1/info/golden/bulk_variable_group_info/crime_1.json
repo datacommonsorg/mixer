@@ -21,7 +21,7 @@
             "id": "dc/g/CriminalActivities_CrimeType",
             "specializedEntity": "Crime Type",
             "displayName": "Criminal Activities by Crime Type",
-            "descendentStatVarCount": 12
+            "descendentStatVarCount": 9
           },
           {
             "id": "dc/g/CriminalActivities_Gender",
@@ -30,7 +30,7 @@
             "descendentStatVarCount": 2
           }
         ],
-        "descendentStatVarCount": 13,
+        "descendentStatVarCount": 10,
         "parentStatVarGroups": [
           "dc/g/Crime"
         ]

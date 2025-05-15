@@ -282,7 +282,7 @@
               "observationPeriod": "P1Y",
               "importName": "USCensusPEP_Annual_Population",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables"
+              "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html"
             },
             {
               "val": {
@@ -940,7 +940,7 @@
               "observationPeriod": "P1Y",
               "importName": "USCensusPEP_Annual_Population",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables"
+              "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html"
             },
             {
               "val": {
@@ -1343,16 +1343,6 @@
                 "1997": 70698,
                 "1998": 71479,
                 "1999": 71470,
-                "2000": 71241,
-                "2001": 70919,
-                "2002": 70245,
-                "2003": 69662,
-                "2004": 69167,
-                "2005": 69479,
-                "2006": 69744,
-                "2007": 70352,
-                "2008": 71927,
-                "2009": 73066,
                 "2010": 73759,
                 "2011": 74729,
                 "2012": 75614,
@@ -1372,7 +1362,7 @@
               "observationPeriod": "P1Y",
               "importName": "USCensusPEP_Annual_Population",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables"
+              "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html"
             },
             {
               "val": {

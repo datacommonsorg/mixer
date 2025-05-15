@@ -375,7 +375,7 @@
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
-            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
             "measurementMethod": "CensusPEPSurvey",
             "observationPeriod": "P1Y"
           }
@@ -1152,7 +1152,7 @@
       "value": 340110988,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
