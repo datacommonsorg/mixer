@@ -334,7 +334,11 @@ var statements = struct {
 		MATCH (n:Node)
 		WHERE 
 			SEARCH(n.name_tokenlist, @query)
-		RETURN n.subject_id, n.name, n.types, SCORE(n.name_tokenlist, @query, enhance_query => TRUE) AS score 
+		RETURN 
+			n.subject_id, 
+			COALESCE(n.name, '') AS name,
+			COALESCE(n.types, []) AS types, 
+			SCORE(n.name_tokenlist, @query, enhance_query => TRUE) AS score 
 		ORDER BY score + IF(n.name = @query, 1, 0) DESC, n.name ASC
 		LIMIT %d
 	`, merger.MAX_SEARCH_RESULTS),
@@ -344,7 +348,11 @@ var statements = struct {
 		WHERE 
 			SEARCH(n.name_tokenlist, @query)
 			AND ARRAY_INCLUDES_ANY(n.types, @types)
-		RETURN n.subject_id, n.name, n.types, SCORE(n.name_tokenlist, @query, enhance_query => TRUE) AS score
+		RETURN 
+			n.subject_id, 
+			COALESCE(n.name, '') AS name, 
+			COALESCE(n.types, []) AS types, 
+			SCORE(n.name_tokenlist, @query, enhance_query => TRUE) AS score
 		ORDER BY score + IF(n.name = @query, 1, 0) DESC, n.name ASC
 		LIMIT %d
 	`, merger.MAX_SEARCH_RESULTS),
@@ -353,8 +361,14 @@ var statements = struct {
 		MATCH -[e:Edge 
 			WHERE e.predicate IN UNNEST(@predicates) AND SEARCH(e.object_value_tokenlist, @query)
 		]->(n:Node %s)
-		RETURN n.subject_id, n.name, n.types, e.predicate AS predicate, e.object_value AS object_value, SCORE(e.object_value_tokenlist, @query, enhance_query => TRUE) AS score
-		ORDER BY score + IF(e.object_value = @query, 1, 0) + IF(REGEXP_CONTAINS(n.subject_id, @query), 0.5, 0) desc, n.name ASC
+		RETURN 
+			n.subject_id, 
+			COALESCE(n.name, '') AS name, 
+			COALESCE(n.types, []) AS types, 
+			e.predicate AS predicate, 
+			e.object_value AS object_value, 
+			SCORE(e.object_value_tokenlist, @query, enhance_query => TRUE) AS score
+		ORDER BY score + IF(e.object_value = @query, 1, 0) + IF(REGEXP_CONTAINS(n.subject_id, @query), 0.5, 0) DESC, n.name ASC
 		LIMIT %d
 	`,
 	filterTypes: `WHERE ARRAY_INCLUDES_ANY(n.types, @types)`,
