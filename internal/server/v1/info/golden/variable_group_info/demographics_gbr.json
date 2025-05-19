@@ -410,7 +410,7 @@
         "id": "dc/g/Demographics_Miscellaneous",
         "specializedEntity": "Miscellaneous",
         "displayName": "Miscellaneous",
-        "descendentStatVarCount": 1160
+        "descendentStatVarCount": 1178
       },
       {
         "id": "dc/g/Mother",
