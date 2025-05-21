@@ -37,6 +37,12 @@ const (
 	protoRequestKeyPrefix = cacheKeyPrefix + "request:"
 )
 
+// Interface to allow mocking.
+type CacheClientInterface interface {
+	GetCachedResponse(ctx context.Context, request proto.Message, response proto.Message) (bool, error)
+	CacheResponse(ctx context.Context, request proto.Message, response proto.Message) error
+}
+
 // CacheClient handles Redis caching for protobuf messages.
 type CacheClient struct {
 	redisClient *redis.Client

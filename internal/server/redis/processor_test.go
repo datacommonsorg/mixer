@@ -24,11 +24,28 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/go-redis/redismock/v8"
+	"github.com/google/go-cmp/cmp"
 	"github.com/stretchr/testify/assert"
+	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/proto"
+	"google.golang.org/protobuf/testing/protocmp"
 	"google.golang.org/protobuf/types/known/anypb"
 )
 
+type MockCacheClient struct {
+	mockResponse            *pbv2.NodeResponse
+	GetCachedResponseCalled bool
+}
+
+func (m *MockCacheClient) GetCachedResponse(ctx context.Context, request proto.Message, response proto.Message) (bool, error) {
+	proto.Merge(response, m.mockResponse)
+	m.GetCachedResponseCalled = true
+	return true, nil
+}
+
+func (m *MockCacheClient) CacheResponse(ctx context.Context, request proto.Message, response proto.Message) error {
+	return nil
+}
 func TestCacheProcessorPreProcess(t *testing.T) {
 	ctx := context.Background()
 
@@ -242,6 +259,72 @@ func TestNewEmptyResponse(t *testing.T) {
 		t.Run(test.name, func(t *testing.T) {
 			got := newEmptyResponse(test.requestType)
 			assert.True(t, proto.Equal(test.want, got))
+		})
+	}
+}
+
+func TestSkipCache(t *testing.T) {
+	skipCacheCtx := metadata.NewIncomingContext(
+		context.Background(),
+		metadata.Pairs(
+			XSkipCache, "true",
+		),
+	)
+
+	// Test cases
+	tests := []struct {
+		name                    string
+		ctx                     context.Context
+		requestType             dispatcher.RequestType
+		originalRequest         proto.Message
+		getCachedResponseCalled bool
+		currentResponse         proto.Message
+		wantOutcome             dispatcher.Outcome
+	}{
+		{
+			name:                    "Don't Skip Cache",
+			ctx:                     context.Background(),
+			requestType:             dispatcher.TypeNode,
+			originalRequest:         &pbv2.NodeRequest{Nodes: []string{"testNode"}},
+			getCachedResponseCalled: true,
+			currentResponse:         &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{"testNode": {}}},
+			wantOutcome:             dispatcher.Done,
+		},
+		{
+			name:                    "Skip Cache",
+			ctx:                     skipCacheCtx,
+			requestType:             dispatcher.TypeNode,
+			originalRequest:         &pbv2.NodeRequest{Nodes: []string{"testNode"}},
+			getCachedResponseCalled: false,
+			currentResponse:         nil,
+			wantOutcome:             dispatcher.Continue,
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			m := &MockCacheClient{
+				mockResponse: &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{"testNode": {}}},
+			}
+			processor := NewCacheProcessor(m)
+			rc := &dispatcher.RequestContext{
+				Context:         test.ctx,
+				Type:            test.requestType,
+				OriginalRequest: test.originalRequest,
+				CurrentResponse: test.currentResponse,
+			}
+
+			outcome, err := processor.PreProcess(rc)
+
+			if err != nil {
+				t.Errorf("Error runing TestSkipCache: %s", err)
+			}
+
+			assert.Equal(t, test.getCachedResponseCalled, m.GetCachedResponseCalled)
+			if diff := cmp.Diff(rc.CurrentResponse, test.currentResponse, protocmp.Transform()); diff != "" {
+				t.Errorf("TestSkipCache %s got diff: %s", test.name, diff)
+			}
+			assert.Equal(t, test.wantOutcome, outcome)
 		})
 	}
 }

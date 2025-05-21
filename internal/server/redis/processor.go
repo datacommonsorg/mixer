@@ -15,23 +15,33 @@
 package redis
 
 import (
+	"context"
 	"log"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
+	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/proto"
+)
+
+const (
+	XSkipCache = "X-Skip-Cache"
 )
 
 // CacheProcessor implements the dispatcher.Processor interface for performing caching operations.
 type CacheProcessor struct {
-	client *CacheClient
+	client CacheClientInterface
 }
 
-func NewCacheProcessor(client *CacheClient) *CacheProcessor {
+func NewCacheProcessor(client CacheClientInterface) *CacheProcessor {
 	return &CacheProcessor{client: client}
 }
 
 func (processor *CacheProcessor) PreProcess(rc *dispatcher.RequestContext) (dispatcher.Outcome, error) {
+	if skipCache(rc.Context) {
+		return dispatcher.Continue, nil
+	}
+
 	cachedResponse := newEmptyResponse(rc.Type)
 	if found, err := processor.client.GetCachedResponse(rc.Context, rc.OriginalRequest, cachedResponse); found {
 		log.Printf("Cache hit: %T", rc.OriginalRequest)
@@ -69,4 +79,13 @@ func newEmptyResponse(requestType dispatcher.RequestType) proto.Message {
 	default:
 		return nil
 	}
+}
+
+// skipCache checks whether to skip Redis cache.
+func skipCache(ctx context.Context) bool {
+	if md, ok := metadata.FromIncomingContext(ctx); ok {
+		headers := md.Get(XSkipCache)
+		return len(headers) > 0 && headers[0] == "true"
+	}
+	return false
 }
