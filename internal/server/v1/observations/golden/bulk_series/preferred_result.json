@@ -6032,6 +6032,10 @@
                 {
                   "date": "2025-03",
                   "value": 7083000
+                },
+                {
+                  "date": "2025-04",
+                  "value": 7165000
                 }
               ],
               "facet": "3707913853"
@@ -10103,7 +10107,11 @@
                 },
                 {
                   "date": "2025-02",
-                  "value": 1605
+                  "value": 1611
+                },
+                {
+                  "date": "2025-03",
+                  "value": 1575
                 }
               ],
               "facet": "324358135"
@@ -10140,7 +10148,7 @@
     },
     "2176550201": {
       "import_name": "USCensusPEP_Annual_Population",
-      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
+      "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
       "measurement_method": "CensusPEPSurvey",
       "observation_period": "P1Y"
     },

@@ -81,6 +81,11 @@
             "displayName": "Person by Candidates Status"
           },
           {
+            "id": "dc/g/Commodity",
+            "specializedEntity": "Commodity",
+            "displayName": "Commodity"
+          },
+          {
             "id": "dc/g/ConsumerGoodsAndServices",
             "specializedEntity": "Consumer Goods And Services",
             "displayName": "Consumer Goods And Services"
@@ -175,7 +180,7 @@
             "id": "dc/g/Economy_Miscellaneous",
             "specializedEntity": "Miscellaneous",
             "displayName": "Miscellaneous",
-            "descendentStatVarCount": 133
+            "descendentStatVarCount": 131
           },
           {
             "id": "dc/g/NetworkSubscriber",
@@ -248,7 +253,7 @@
             "displayName": "Person by Wealth Index"
           }
         ],
-        "descendentStatVarCount": 140,
+        "descendentStatVarCount": 131,
         "parentStatVarGroups": [
           "dc/g/Root"
         ]

@@ -138,7 +138,7 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 415
+        "descendentStatVarCount": 402
       },
       {
         "id": "dc/g/Person_AgeGroupClassification",
@@ -285,7 +285,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 2259
+        "descendentStatVarCount": 2257
       },
       {
         "id": "dc/g/Person_GovernmentId",
@@ -410,7 +410,7 @@
         "id": "dc/g/Demographics_Miscellaneous",
         "specializedEntity": "Miscellaneous",
         "displayName": "Miscellaneous",
-        "descendentStatVarCount": 1160
+        "descendentStatVarCount": 1178
       },
       {
         "id": "dc/g/Mother",
@@ -510,7 +510,7 @@
         "displayName": "Person by Vulnerability Status"
       }
     ],
-    "descendentStatVarCount": 4248,
+    "descendentStatVarCount": 3075,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

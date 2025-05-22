@@ -5,7 +5,7 @@
       "info": {
         "placeTypeSummary": {
           "AdministrativeArea": {
-            "placeCount": 146,
+            "placeCount": 143,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1023893",
@@ -43,7 +43,7 @@
             "maxValue": 24354012
           },
           "AdministrativeArea2": {
-            "placeCount": 6722,
+            "placeCount": 6723,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1143712",
@@ -66,7 +66,7 @@
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q217234",
-                "name": "Ōta-ku"
+                "name": "Ota"
               },
               {
                 "dcid": "wikidataId/Q1206659",
@@ -85,7 +85,7 @@
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q10881698",
-                "name": "Wuxian"
+                "name": "Wuxian Town"
               },
               {
                 "dcid": "wikidataId/Q16162673",
@@ -271,7 +271,7 @@
             "maxValue": 1958404
           },
           "Country": {
-            "placeCount": 51,
+            "placeCount": 50,
             "topPlaces": [
               {
                 "dcid": "country/CHN",
@@ -358,7 +358,7 @@
             "maxValue": 7952131
           },
           "EurostatNUTS3": {
-            "placeCount": 1356,
+            "placeCount": 1355,
             "topPlaces": [
               {
                 "dcid": "nuts/TR100",
@@ -415,7 +415,7 @@
             "maxValue": 138958
           },
           "Place": {
-            "placeCount": 158,
+            "placeCount": 156,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q2665241",
@@ -453,7 +453,7 @@
             "maxValue": 4543807
           },
           "State": {
-            "placeCount": 113,
+            "placeCount": 111,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1498",
@@ -532,7 +532,7 @@
                       },
                       {
                         "dcid": "wikidataId/Q44797",
-                        "name": "Mendoza"
+                        "name": "Mendoza Province"
                       }
                     ],
                     "minValue": 10760,
@@ -1858,7 +1858,7 @@
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q521887",
-                        "name": "Bougou, Benin"
+                        "name": "Bougou"
                       },
                       {
                         "dcid": "wikidataId/Q1760656",
@@ -1953,7 +1953,7 @@
                       },
                       {
                         "dcid": "wikidataId/Q1102140",
-                        "name": "Grand Lahou"
+                        "name": "Grand-Lahou"
                       }
                     ],
                     "minValue": 3084,
@@ -2033,7 +2033,7 @@
                       },
                       {
                         "dcid": "wikidataId/Q31074",
-                        "name": "Al Sharqia Governorate"
+                        "name": "Sharqia Governorate"
                       }
                     ],
                     "minValue": 49098,
@@ -2172,7 +2172,7 @@
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q635334",
-                        "name": "Werder, Ethiopia"
+                        "name": "Werder"
                       },
                       {
                         "dcid": "wikidataId/Q762656",
@@ -2217,7 +2217,7 @@
                       },
                       {
                         "dcid": "wikidataId/Q806463",
-                        "name": "Bangalore Urban district"
+                        "name": "Bengaluru Urban"
                       }
                     ],
                     "minValue": 3590,
@@ -2397,7 +2397,7 @@
                       },
                       {
                         "dcid": "wikidataId/Q520000",
-                        "name": "County Fingal"
+                        "name": "Fingal"
                       },
                       {
                         "dcid": "wikidataId/Q822865",
@@ -2529,7 +2529,7 @@
                       },
                       {
                         "dcid": "wikidataId/Q122723",
-                        "name": "Ōsaka Prefecture"
+                        "name": "Osaka Prefecture"
                       },
                       {
                         "dcid": "wikidataId/Q80434",
@@ -2563,7 +2563,7 @@
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q217234",
-                        "name": "Ōta-ku"
+                        "name": "Ota"
                       },
                       {
                         "dcid": "wikidataId/Q1206659",
@@ -2590,7 +2590,7 @@
                       },
                       {
                         "dcid": "wikidataId/Q35765",
-                        "name": "Ōsaka"
+                        "name": "Osaka"
                       }
                     ],
                     "minValue": 93,
@@ -2616,7 +2616,7 @@
                       },
                       {
                         "dcid": "wikidataId/Q1023784",
-                        "name": "Tōkai"
+                        "name": "Tokai"
                       },
                       {
                         "dcid": "wikidataId/Q1205406",
@@ -2687,7 +2687,7 @@
                       },
                       {
                         "dcid": "wikidataId/Q55616319",
-                        "name": "Kwanza, Kenya"
+                        "name": "Kwanza"
                       },
                       {
                         "dcid": "wikidataId/Q1007647",
@@ -2912,7 +2912,7 @@
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q2360428",
-                        "name": "Tijuana Municipality"
+                        "name": "Tijuana"
                       },
                       {
                         "dcid": "wikidataId/Q741771",
@@ -2920,7 +2920,7 @@
                       },
                       {
                         "dcid": "wikidataId/Q15121208",
-                        "name": "Ecatepec de Morelos Municipality"
+                        "name": "Ecatepec de Morelos"
                       }
                     ],
                     "minValue": 53,
@@ -3126,7 +3126,7 @@
                     "maxValue": 70330
                   },
                   "AdministrativeArea1": {
-                    "placeCount": 363,
+                    "placeCount": 364,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q15175",
@@ -3145,19 +3145,19 @@
                     "maxValue": 50483000
                   },
                   "AdministrativeArea2": {
-                    "placeCount": 219,
+                    "placeCount": 218,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q45632",
-                        "name": "Santiago"
-                      },
-                      {
-                        "dcid": "wikidataId/Q120971341",
-                        "name": "Chandigarh"
+                        "name": "Santiago province"
                       },
                       {
                         "dcid": "wikidataId/Q1474984",
                         "name": "Montreal Region"
+                      },
+                      {
+                        "dcid": "wikidataId/Q50811",
+                        "name": "Regional Municipality of Peel"
                       }
                     ],
                     "minValue": 1065,
@@ -3183,7 +3183,7 @@
                     "maxValue": 313186
                   },
                   "City": {
-                    "placeCount": 196,
+                    "placeCount": 197,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q8686",
@@ -3278,7 +3278,7 @@
                     "maxValue": 7952131
                   },
                   "EurostatNUTS3": {
-                    "placeCount": 1356,
+                    "placeCount": 1355,
                     "topPlaces": [
                       {
                         "dcid": "nuts/TR100",
@@ -3587,7 +3587,7 @@
                       },
                       {
                         "dcid": "wikidataId/Q311544",
-                        "name": "eThekwini"
+                        "name": "eThekwini Metropolitan Municipality"
                       }
                     ],
                     "minValue": 29465,
@@ -3681,11 +3681,11 @@
                 "latestDate": "2022",
                 "placeTypeSummary": {
                   "AdministrativeArea2": {
-                    "placeCount": 277,
+                    "placeCount": 278,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q506250",
-                        "name": "Stockholm Municipality"
+                        "name": "Stockholm"
                       },
                       {
                         "dcid": "wikidataId/Q52502",
@@ -3768,7 +3768,7 @@
                     "maxValue": 1216497
                   },
                   "Place": {
-                    "placeCount": 12,
+                    "placeCount": 11,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q59091"
@@ -3873,7 +3873,7 @@
                       },
                       {
                         "dcid": "wikidataId/Q64170",
-                        "name": "Nawabshah District"
+                        "name": "Shaheed Benazirabad District"
                       }
                     ],
                     "minValue": 4373,
@@ -3884,7 +3884,7 @@
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q10881698",
-                        "name": "Wuxian"
+                        "name": "Wuxian Town"
                       },
                       {
                         "dcid": "wikidataId/Q16162673",
@@ -3903,7 +3903,7 @@
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q609831",
-                        "name": "San Pédro"
+                        "name": "San-Pédro"
                       },
                       {
                         "dcid": "wikidataId/Q1191011",
@@ -4047,7 +4047,7 @@
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q4512420",
-                        "name": "Kyiv (village)"
+                        "name": "Kyiv"
                       },
                       {
                         "dcid": "wikidataId/Q1657003",
@@ -4055,7 +4055,7 @@
                       },
                       {
                         "dcid": "wikidataId/Q223517",
-                        "name": "Ahmednagar"
+                        "name": "Ahilyanagar"
                       }
                     ],
                     "minValue": 26,
@@ -4262,7 +4262,7 @@
                       },
                       {
                         "dcid": "wikidataId/Q675017",
-                        "name": "Wiedikon"
+                        "name": "Kreis 3"
                       },
                       {
                         "dcid": "wikidataId/Q456159",
@@ -4296,7 +4296,7 @@
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q72",
-                        "name": "Zürich"
+                        "name": "Zurich"
                       },
                       {
                         "dcid": "wikidataId/Q445711",
@@ -4343,11 +4343,11 @@
             "maxValue": 8
           },
           "AdministrativeArea2": {
-            "placeCount": 276,
+            "placeCount": 277,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q506250",
-                "name": "Stockholm Municipality"
+                "name": "Stockholm"
               },
               {
                 "dcid": "wikidataId/Q52502",
@@ -4362,7 +4362,7 @@
             "maxValue": 3.15
           },
           "City": {
-            "placeCount": 140,
+            "placeCount": 141,
             "topPlaces": [
               {
                 "dcid": "nuts/DE3",
@@ -4457,7 +4457,7 @@
             "maxValue": 4.9
           },
           "EurostatNUTS3": {
-            "placeCount": 1425,
+            "placeCount": 1424,
             "topPlaces": [
               {
                 "dcid": "nuts/TR100",
@@ -4476,7 +4476,7 @@
             "maxValue": 4.9
           },
           "Place": {
-            "placeCount": 12,
+            "placeCount": 11,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q59091"
@@ -4537,7 +4537,7 @@
                 "latestDate": "2023",
                 "placeTypeSummary": {
                   "City": {
-                    "placeCount": 140,
+                    "placeCount": 141,
                     "topPlaces": [
                       {
                         "dcid": "nuts/DE3",
@@ -4632,7 +4632,7 @@
                     "maxValue": 4.9
                   },
                   "EurostatNUTS3": {
-                    "placeCount": 1425,
+                    "placeCount": 1424,
                     "topPlaces": [
                       {
                         "dcid": "nuts/TR100",
@@ -4790,11 +4790,11 @@
                 "latestDate": "2022",
                 "placeTypeSummary": {
                   "AdministrativeArea2": {
-                    "placeCount": 276,
+                    "placeCount": 277,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q506250",
-                        "name": "Stockholm Municipality"
+                        "name": "Stockholm"
                       },
                       {
                         "dcid": "wikidataId/Q52502",
@@ -4809,7 +4809,7 @@
                     "maxValue": 3.15
                   },
                   "Place": {
-                    "placeCount": 12,
+                    "placeCount": 11,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q59091"

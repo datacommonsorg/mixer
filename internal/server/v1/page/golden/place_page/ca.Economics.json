@@ -326,7 +326,7 @@
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
-            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
             "measurementMethod": "CensusPEPSurvey",
             "observationPeriod": "P1Y"
           }
@@ -820,7 +820,8 @@
             "2024-11": 1558712,
             "2024-12": 1561186,
             "2025-01": 1560165,
-            "2025-02": 1574782
+            "2025-02": 1574702,
+            "2025-03": 1589438
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -1252,7 +1253,8 @@
             "2024-11": 1624782,
             "2024-12": 1621991,
             "2025-01": 1626498,
-            "2025-02": 1638984
+            "2025-02": 1638929,
+            "2025-03": 1652102
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -1906,7 +1908,8 @@
             "2024-11": 4.1,
             "2024-12": 3.7,
             "2025-01": 4.1,
-            "2025-02": 3.9
+            "2025-02": 3.9,
+            "2025-03": 3.8
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -2313,7 +2316,7 @@
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
-            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
             "measurementMethod": "CensusPEPSurvey",
             "observationPeriod": "P1Y"
           }
@@ -5805,7 +5808,10 @@
             "2025-03-29": 12350,
             "2025-04-05": 12291,
             "2025-04-12": 12497,
-            "2025-04-19": 11988
+            "2025-04-19": 11988,
+            "2025-04-26": 12109,
+            "2025-05-03": 11971,
+            "2025-05-10": 11885
           },
           "metadata": {
             "importName": "USDOL_ETA539",
@@ -6749,7 +6755,7 @@
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
-            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
             "measurementMethod": "CensusPEPSurvey",
             "observationPeriod": "P1Y"
           }
@@ -10229,7 +10235,10 @@
             "2025-03-29": 16249,
             "2025-04-05": 16430,
             "2025-04-12": 16994,
-            "2025-04-19": 13143
+            "2025-04-19": 13143,
+            "2025-04-26": 18045,
+            "2025-05-03": 16307,
+            "2025-05-10": 16391
           },
           "metadata": {
             "importName": "USDOL_ETA539",
@@ -11189,7 +11198,7 @@
       "value": 340110988,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -11199,7 +11208,7 @@
       "value": 7582384,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -11209,7 +11218,7 @@
       "value": 39431263,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -11219,7 +11228,7 @@
       "value": 9757179,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -11229,7 +11238,7 @@
       "value": 3170435,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -11239,7 +11248,7 @@
       "value": 2529933,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -11249,7 +11258,7 @@
       "value": 2214281,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -11259,7 +11268,7 @@
       "value": 3298799,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -11269,7 +11278,7 @@
       "value": 5957493,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -11279,7 +11288,7 @@
       "value": 6924275,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -11289,7 +11298,7 @@
       "value": 4597740,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -11299,7 +11308,7 @@
       "value": 6245466,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -11309,7 +11318,7 @@
       "value": 796568,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -11319,7 +11328,7 @@
       "value": 7227750,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -11329,7 +11338,7 @@
       "value": 31290831,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -11339,7 +11348,7 @@
       "value": 7958180,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -11349,7 +11358,7 @@
       "value": 3203295,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }

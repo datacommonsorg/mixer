@@ -577,6 +577,19 @@
             }
           ]
         },
+        "nuts/FR413": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1044486
+                }
+              ]
+            }
+          ]
+        },
         "nuts/FR431": {
           "ordered_facets": [
             {
@@ -1053,6 +1066,19 @@
                 {
                   "date": "2015",
                   "value": 759411
+                }
+              ]
+            }
+          ]
+        },
+        "nuts/FR716": {
+          "ordered_facets": [
+            {
+              "facet_id": "2458695583",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 1821995
                 }
               ]
             }

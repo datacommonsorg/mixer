@@ -320,6 +320,10 @@
           "dcid": "geoId/0603386"
         },
         {
+          "name": "Bagdad",
+          "dcid": "geoId/0603456"
+        },
+        {
           "name": "Baker",
           "dcid": "geoId/0603512"
         },
@@ -596,6 +600,10 @@
           "dcid": "geoId/0607274"
         },
         {
+          "name": "Bodie",
+          "dcid": "geoId/0607288"
+        },
+        {
           "name": "Bolinas",
           "dcid": "geoId/0607316"
         },
@@ -804,6 +812,10 @@
           "dcid": "geoId/0609710"
         },
         {
+          "name": "Calico",
+          "dcid": "geoId/0609752"
+        },
+        {
           "name": "California City",
           "dcid": "geoId/0609780"
         },
@@ -899,7 +911,7 @@
           "dcid": "geoId/0610554"
         },
         {
-          "name": "Camp Pendleton North",
+          "name": "Camp Pendleton Mainside",
           "dcid": "geoId/0610559"
         },
         {
@@ -1089,6 +1101,10 @@
         {
           "name": "Challenge-Brownsville",
           "dcid": "geoId/0612612"
+        },
+        {
+          "name": "Chambless",
+          "dcid": "geoId/0612636"
         },
         {
           "name": "Channel Islands Beach",
@@ -1523,6 +1539,10 @@
           "dcid": "geoId/0618153"
         },
         {
+          "name": "Deadwood",
+          "dcid": "geoId/0618164"
+        },
+        {
           "name": "Deer Park",
           "dcid": "geoId/0618324"
         },
@@ -1731,6 +1751,10 @@
           "dcid": "geoId/0620298"
         },
         {
+          "name": "Eagle Mountain, California",
+          "dcid": "geoId/0620368"
+        },
+        {
           "name": "Eagleville",
           "dcid": "geoId/0620424"
         },
@@ -1763,7 +1787,7 @@
           "dcid": "geoId/0620697"
         },
         {
-          "name": "East La Mirada",
+          "name": "East Whittier",
           "dcid": "geoId/0620746"
         },
         {
@@ -1837,6 +1861,10 @@
         {
           "name": "East Whittier",
           "dcid": "geoId/0621292"
+        },
+        {
+          "name": "Eckley",
+          "dcid": "geoId/0621400"
         },
         {
           "name": "Edgewood",
@@ -2759,6 +2787,10 @@
           "dcid": "geoId/0636168"
         },
         {
+          "name": "New Idria",
+          "dcid": "geoId/0636182"
+        },
+        {
           "name": "Idyllwild-Pine Cove",
           "dcid": "geoId/0636203"
         },
@@ -2799,7 +2831,7 @@
           "dcid": "geoId/0636452"
         },
         {
-          "name": "Industry",
+          "name": "City of Industry",
           "dcid": "geoId/0636490"
         },
         {
@@ -2933,6 +2965,10 @@
         {
           "name": "Kelseyville",
           "dcid": "geoId/0638044"
+        },
+        {
+          "name": "Kelso",
+          "dcid": "geoId/0638058"
         },
         {
           "name": "Kennedy",
@@ -3853,6 +3889,10 @@
         {
           "name": "Millerton",
           "dcid": "geoId/0647592"
+        },
+        {
+          "name": "Milligan",
+          "dcid": "geoId/0647598"
         },
         {
           "name": "Mill Valley",
@@ -4886,6 +4926,14 @@
           "dcid": "geoId/0659122"
         },
         {
+          "name": "Radec",
+          "dcid": "geoId/0659150"
+        },
+        {
+          "name": "Ragtown",
+          "dcid": "geoId/0659216"
+        },
+        {
           "name": "Rail Road Flat",
           "dcid": "geoId/0659220"
         },
@@ -5004,6 +5052,10 @@
         {
           "name": "Rialto",
           "dcid": "geoId/0660466"
+        },
+        {
+          "name": "Rice",
+          "dcid": "geoId/0660508"
         },
         {
           "name": "Richfield",
@@ -5624,6 +5676,10 @@
         {
           "name": "Shoshone",
           "dcid": "geoId/0671680"
+        },
+        {
+          "name": "Siberia",
+          "dcid": "geoId/0671722"
         },
         {
           "name": "Sierra Brooks",
@@ -6338,6 +6394,10 @@
           "dcid": "geoId/0682086"
         },
         {
+          "name": "Vanderbilt",
+          "dcid": "geoId/0682093"
+        },
+        {
           "name": "Venice",
           "dcid": "geoId/0682198"
         },
@@ -6802,6 +6862,118 @@
           "dcid": "geoId/4151168"
         },
         {
+          "name": "March Air Reserve Base",
+          "dcid": "wikidataId/Q1031829"
+        },
+        {
+          "name": "Canon City",
+          "dcid": "wikidataId/Q105123350"
+        },
+        {
+          "name": "Lockwood",
+          "dcid": "wikidataId/Q106492907"
+        },
+        {
+          "name": "Wautec",
+          "dcid": "wikidataId/Q106492909"
+        },
+        {
+          "name": "Crane Creek",
+          "dcid": "wikidataId/Q106492911"
+        },
+        {
+          "name": "Amador Pines",
+          "dcid": "wikidataId/Q106492913"
+        },
+        {
+          "name": "Virginia Lakes",
+          "dcid": "wikidataId/Q106492917"
+        },
+        {
+          "name": "Twin Lakes",
+          "dcid": "wikidataId/Q106492935"
+        },
+        {
+          "name": "Jones Valley",
+          "dcid": "wikidataId/Q106506380"
+        },
+        {
+          "name": "Cedar Flat",
+          "dcid": "wikidataId/Q106506382"
+        },
+        {
+          "name": "Williams Canyon",
+          "dcid": "wikidataId/Q106506397"
+        },
+        {
+          "name": "Eastern Goleta Valley",
+          "dcid": "wikidataId/Q106506398"
+        },
+        {
+          "name": "Hypericum",
+          "dcid": "wikidataId/Q106514863"
+        },
+        {
+          "name": "Jovista",
+          "dcid": "wikidataId/Q106514877"
+        },
+        {
+          "name": "El Monte Mobile Village",
+          "dcid": "wikidataId/Q106514891"
+        },
+        {
+          "name": "Woodville Farm Labor Camp",
+          "dcid": "wikidataId/Q106514897"
+        },
+        {
+          "name": "Lake Shastina",
+          "dcid": "wikidataId/Q106514950"
+        },
+        {
+          "name": "Post Mountain",
+          "dcid": "wikidataId/Q106514962"
+        },
+        {
+          "name": "Ormonde",
+          "dcid": "wikidataId/Q110413179"
+        },
+        {
+          "name": "Harmony Grove",
+          "dcid": "wikidataId/Q110722160"
+        },
+        {
+          "name": "Hillcrest",
+          "dcid": "wikidataId/Q110728450"
+        },
+        {
+          "name": "Kep'el",
+          "dcid": "wikidataId/Q110728466"
+        },
+        {
+          "name": "Old Stine",
+          "dcid": "wikidataId/Q110756091"
+        },
+        {
+          "name": "Stebbins",
+          "dcid": "wikidataId/Q110763352"
+        },
+        {
+          "name": "Tarina",
+          "dcid": "wikidataId/Q110763405"
+        },
+        {
+          "name": "State Line",
+          "dcid": "wikidataId/Q1109522"
+        },
+        {
+          "name": "Cerro Gordo",
+          "dcid": "wikidataId/Q111937258"
+        },
+        {
+          "name": "El Centro Naval Air Facility, California",
+          "dcid": "wikidataId/Q111941981"
+        },
+        {
           "name": "Crenshaw",
           "dcid": "wikidataId/Q1139604"
         },
@@ -6810,8 +6982,40 @@
           "dcid": "wikidataId/Q1139754"
         },
         {
+          "name": "Olde Stockdale",
+          "dcid": "wikidataId/Q115803200"
+        },
+        {
+          "name": "Choctaw Valley",
+          "dcid": "wikidataId/Q117085834"
+        },
+        {
+          "name": "Pepperdine University",
+          "dcid": "wikidataId/Q117876"
+        },
+        {
+          "name": "Mayfield",
+          "dcid": "wikidataId/Q122853535"
+        },
+        {
+          "name": "La Cresta, Kern County, California",
+          "dcid": "wikidataId/Q124134699"
+        },
+        {
+          "name": "Cottonwood",
+          "dcid": "wikidataId/Q124134700"
+        },
+        {
+          "name": "Edwards AFB",
+          "dcid": "wikidataId/Q12630446"
+        },
+        {
           "name": "Redwood Shores",
           "dcid": "wikidataId/Q1267489"
+        },
+        {
+          "name": "Harmony Borax Works",
+          "dcid": "wikidataId/Q129335"
         },
         {
           "name": "University of California, Davis",
@@ -6822,15 +7026,75 @@
           "dcid": "wikidataId/Q12947590"
         },
         {
+          "name": "Lakeside, Kern County, California",
+          "dcid": "wikidataId/Q129820944"
+        },
+        {
+          "name": "Esmeralda",
+          "dcid": "wikidataId/Q130596621"
+        },
+        {
+          "name": "Branson City",
+          "dcid": "wikidataId/Q14681641"
+        },
+        {
+          "name": "Coleman City",
+          "dcid": "wikidataId/Q14681770"
+        },
+        {
+          "name": "Eastwood",
+          "dcid": "wikidataId/Q14681894"
+        },
+        {
+          "name": "Leon",
+          "dcid": "wikidataId/Q14683078"
+        },
+        {
+          "name": "Mokelumne City",
+          "dcid": "wikidataId/Q14683382"
+        },
+        {
+          "name": "Monroeville",
+          "dcid": "wikidataId/Q14683388"
+        },
+        {
+          "name": "Mount Ophir",
+          "dcid": "wikidataId/Q14683429"
+        },
+        {
+          "name": "New Idria Mercury Mine",
+          "dcid": "wikidataId/Q14683479"
+        },
+        {
+          "name": "Noonday Camp",
+          "dcid": "wikidataId/Q14683500"
+        },
+        {
+          "name": "San Joaquin City",
+          "dcid": "wikidataId/Q14683880"
+        },
+        {
+          "name": "Horseshoe Bend",
+          "dcid": "wikidataId/Q14946651"
+        },
+        {
+          "name": "Lexington",
+          "dcid": "wikidataId/Q14946652"
+        },
+        {
           "name": "San Joaquin Hills",
           "dcid": "wikidataId/Q1551029"
         },
         {
-          "name": "Fletcher Hills, California",
+          "name": "San Pasqual",
+          "dcid": "wikidataId/Q16243019"
+        },
+        {
+          "name": "Fletcher Hills",
           "dcid": "wikidataId/Q16246561"
         },
         {
-          "name": "University of California, Merced",
+          "name": "University of California",
           "dcid": "wikidataId/Q1728622"
         },
         {
@@ -6874,12 +7138,20 @@
           "dcid": "wikidataId/Q2140121"
         },
         {
+          "name": "Liberty",
+          "dcid": "wikidataId/Q21593076"
+        },
+        {
           "name": "Lemoore Station",
           "dcid": "wikidataId/Q2192165"
         },
         {
           "name": "Little Grass Valley",
           "dcid": "wikidataId/Q2193933"
+        },
+        {
+          "name": "Lane's Crossing",
+          "dcid": "wikidataId/Q22032553"
         },
         {
           "name": "Fairbanks Ranch",
@@ -6918,6 +7190,10 @@
           "dcid": "wikidataId/Q2478982"
         },
         {
+          "name": "Hedges",
+          "dcid": "wikidataId/Q24896037"
+        },
+        {
           "name": "Pine Mountain Club",
           "dcid": "wikidataId/Q2522162"
         },
@@ -6936,6 +7212,10 @@
         {
           "name": "Larkfield-Wikiup",
           "dcid": "wikidataId/Q2620952"
+        },
+        {
+          "name": "University of California, Santa Barbara",
+          "dcid": "wikidataId/Q263064"
         },
         {
           "name": "Lake Almanor West",
@@ -6986,12 +7266,20 @@
           "dcid": "wikidataId/Q3316662"
         },
         {
+          "name": "Mono Mills",
+          "dcid": "wikidataId/Q3321090"
+        },
+        {
           "name": "Lake of the Woods",
           "dcid": "wikidataId/Q3322370"
         },
         {
           "name": "Sunset Beach",
           "dcid": "wikidataId/Q3322861"
+        },
+        {
+          "name": "Pueblo de Los Angeles",
+          "dcid": "wikidataId/Q3410547"
         },
         {
           "name": "Lucerne Valley",
@@ -7034,16 +7322,124 @@
           "dcid": "wikidataId/Q3476563"
         },
         {
+          "name": "Bend City",
+          "dcid": "wikidataId/Q3637982"
+        },
+        {
+          "name": "Bennettville",
+          "dcid": "wikidataId/Q3638283"
+        },
+        {
+          "name": "Cerro Gordo Mines",
+          "dcid": "wikidataId/Q3665157"
+        },
+        {
+          "name": "Dog Town",
+          "dcid": "wikidataId/Q3712528"
+        },
+        {
+          "name": "Dunderberg Mill",
+          "dcid": "wikidataId/Q3716258"
+        },
+        {
           "name": "Jurupa Valley",
           "dcid": "wikidataId/Q3736036"
+        },
+        {
+          "name": "Masonic",
+          "dcid": "wikidataId/Q3850838"
+        },
+        {
+          "name": "San Carlos",
+          "dcid": "wikidataId/Q3946876"
+        },
+        {
+          "name": "Acelanus",
+          "dcid": "wikidataId/Q4673074"
+        },
+        {
+          "name": "Agua Fria",
+          "dcid": "wikidataId/Q4694440"
+        },
+        {
+          "name": "Agua Mansa",
+          "dcid": "wikidataId/Q4694450"
+        },
+        {
+          "name": "Alma",
+          "dcid": "wikidataId/Q4733495"
+        },
+        {
+          "name": "Ambrose",
+          "dcid": "wikidataId/Q4741743"
+        },
+        {
+          "name": "Atolia",
+          "dcid": "wikidataId/Q4817180"
         },
         {
           "name": "Aviara",
           "dcid": "wikidataId/Q4828591"
         },
         {
+          "name": "Kennett",
+          "dcid": "wikidataId/Q4842452"
+        },
+        {
+          "name": "Banner",
+          "dcid": "wikidataId/Q4856900"
+        },
+        {
+          "name": "Belleville",
+          "dcid": "wikidataId/Q4883842"
+        },
+        {
+          "name": "Betteravia",
+          "dcid": "wikidataId/Q4898583"
+        },
+        {
+          "name": "Bidwell's Bar",
+          "dcid": "wikidataId/Q4904286"
+        },
+        {
+          "name": "Bloomer",
+          "dcid": "wikidataId/Q4928194"
+        },
+        {
+          "name": "Brush",
+          "dcid": "wikidataId/Q4979626"
+        },
+        {
+          "name": "Burrell",
+          "dcid": "wikidataId/Q5000396"
+        },
+        {
+          "name": "Calexico–Mexicali",
+          "dcid": "wikidataId/Q5019557"
+        },
+        {
           "name": "Camanche Village",
           "dcid": "wikidataId/Q5024931"
+        },
+        {
+          "name": "Carson Hill",
+          "dcid": "wikidataId/Q5046939"
+        },
+        {
+          "name": "Casa Diablo",
+          "dcid": "wikidataId/Q5047811"
+        },
+        {
+          "name": "Chandon",
+          "dcid": "wikidataId/Q5071238"
+        },
+        {
+          "name": "Chloride City",
+          "dcid": "wikidataId/Q5102934"
+        },
+        {
+          "name": "Clems",
+          "dcid": "wikidataId/Q5131539"
         },
         {
           "name": "Coffee Creek",
@@ -7054,16 +7450,64 @@
           "dcid": "wikidataId/Q517340"
         },
         {
+          "name": "Coso",
+          "dcid": "wikidataId/Q5174658"
+        },
+        {
+          "name": "Cottonwood",
+          "dcid": "wikidataId/Q5175785"
+        },
+        {
+          "name": "Cuyamaca",
+          "dcid": "wikidataId/Q5197086"
+        },
+        {
+          "name": "Davis's Ferry",
+          "dcid": "wikidataId/Q5241805"
+        },
+        {
+          "name": "Deadwood",
+          "dcid": "wikidataId/Q5245735"
+        },
+        {
+          "name": "Drawbridge",
+          "dcid": "wikidataId/Q5306017"
+        },
+        {
           "name": "Floriston",
           "dcid": "wikidataId/Q5461916"
+        },
+        {
+          "name": "Fountain Springs",
+          "dcid": "wikidataId/Q5474759"
+        },
+        {
+          "name": "Freeman Junction",
+          "dcid": "wikidataId/Q5501018"
         },
         {
           "name": "Freeport",
           "dcid": "wikidataId/Q5501102"
         },
         {
+          "name": "Fremont Landing",
+          "dcid": "wikidataId/Q5501595"
+        },
+        {
           "name": "Dogtown",
           "dcid": "wikidataId/Q5548856"
+        },
+        {
+          "name": "Glenwood",
+          "dcid": "wikidataId/Q5569425"
+        },
+        {
+          "name": "Gas Point",
+          "dcid": "wikidataId/Q56276356"
+        },
+        {
+          "name": "Hamilton",
+          "dcid": "wikidataId/Q5644748"
         },
         {
           "name": "Elizabeth Lake",
@@ -7098,7 +7542,11 @@
           "dcid": "wikidataId/Q6043277"
         },
         {
-          "name": "Temescal Valley (California)",
+          "name": "Ivanpah",
+          "dcid": "wikidataId/Q6098300"
+        },
+        {
+          "name": "Temescal Valley",
           "dcid": "wikidataId/Q6140910"
         },
         {
@@ -7106,16 +7554,48 @@
           "dcid": "wikidataId/Q6159316"
         },
         {
+          "name": "Sonoma State University",
+          "dcid": "wikidataId/Q624571"
+        },
+        {
           "name": "Weedpatch",
           "dcid": "wikidataId/Q628718"
+        },
+        {
+          "name": "Judsonville",
+          "dcid": "wikidataId/Q6304285"
+        },
+        {
+          "name": "Kearsarge",
+          "dcid": "wikidataId/Q6382246"
         },
         {
           "name": "Kingvale",
           "dcid": "wikidataId/Q6413802"
         },
         {
+          "name": "La Placita",
+          "dcid": "wikidataId/Q6464450"
+        },
+        {
           "name": "Lakehead",
           "dcid": "wikidataId/Q6478731"
+        },
+        {
+          "name": "Laurel",
+          "dcid": "wikidataId/Q6499714"
+        },
+        {
+          "name": "Soledad Township",
+          "dcid": "wikidataId/Q65119119"
+        },
+        {
+          "name": "French Flat",
+          "dcid": "wikidataId/Q65119751"
+        },
+        {
+          "name": "Logtown",
+          "dcid": "wikidataId/Q6667892"
         },
         {
           "name": "Los Serranos",
@@ -7126,8 +7606,152 @@
           "dcid": "wikidataId/Q6800306"
         },
         {
+          "name": "Mentryville",
+          "dcid": "wikidataId/Q6817616"
+        },
+        {
+          "name": "Michigan Bar",
+          "dcid": "wikidataId/Q6837457"
+        },
+        {
+          "name": "Middle Bar",
+          "dcid": "wikidataId/Q6841217"
+        },
+        {
+          "name": "Midland",
+          "dcid": "wikidataId/Q6842292"
+        },
+        {
+          "name": "Mill Valley",
+          "dcid": "wikidataId/Q6858432"
+        },
+        {
+          "name": "Mormon Island",
+          "dcid": "wikidataId/Q6912636"
+        },
+        {
+          "name": "Negro Flat",
+          "dcid": "wikidataId/Q6987594"
+        },
+        {
+          "name": "Nortonville",
+          "dcid": "wikidataId/Q7060713"
+        },
+        {
+          "name": "Oak Grove",
+          "dcid": "wikidataId/Q7073493"
+        },
+        {
+          "name": "Oakhurst",
+          "dcid": "wikidataId/Q7073909"
+        },
+        {
+          "name": "Packwood Station",
+          "dcid": "wikidataId/Q7123058"
+        },
+        {
+          "name": "Patchen",
+          "dcid": "wikidataId/Q7144355"
+        },
+        {
+          "name": "Pinacate",
+          "dcid": "wikidataId/Q7194781"
+        },
+        {
+          "name": "Politana",
+          "dcid": "wikidataId/Q7210122"
+        },
+        {
+          "name": "Providence",
+          "dcid": "wikidataId/Q7252365"
+        },
+        {
+          "name": "Purissima",
+          "dcid": "wikidataId/Q7261270"
+        },
+        {
+          "name": "Rancho Temescal",
+          "dcid": "wikidataId/Q7291349"
+        },
+        {
+          "name": "Red Dog",
+          "dcid": "wikidataId/Q7304043"
+        },
+        {
+          "name": "Rio Bravo",
+          "dcid": "wikidataId/Q7335162"
+        },
+        {
+          "name": "Roachville",
+          "dcid": "wikidataId/Q7339253"
+        },
+        {
+          "name": "Russell City",
+          "dcid": "wikidataId/Q7381418"
+        },
+        {
+          "name": "Salmon Falls",
+          "dcid": "wikidataId/Q7405504"
+        },
+        {
+          "name": "Silver Lake",
+          "dcid": "wikidataId/Q7516123"
+        },
+        {
+          "name": "Skidoo",
+          "dcid": "wikidataId/Q7535090"
+        },
+        {
+          "name": "Somersville",
+          "dcid": "wikidataId/Q7559935"
+        },
+        {
+          "name": "Soto",
+          "dcid": "wikidataId/Q7564010"
+        },
+        {
           "name": "Spaulding",
           "dcid": "wikidataId/Q7574127"
+        },
+        {
+          "name": "Stewartville",
+          "dcid": "wikidataId/Q7616027"
+        },
+        {
+          "name": "Stokes Landing",
+          "dcid": "wikidataId/Q7618533"
+        },
+        {
+          "name": "Terra Cotta",
+          "dcid": "wikidataId/Q7703072"
+        },
+        {
+          "name": "Tuolumne City",
+          "dcid": "wikidataId/Q7853424"
+        },
+        {
+          "name": "White Mountain City",
+          "dcid": "wikidataId/Q7995077"
+        },
+        {
+          "name": "Willard",
+          "dcid": "wikidataId/Q8003347"
+        },
+        {
+          "name": "Winehaven",
+          "dcid": "wikidataId/Q8024966"
+        },
+        {
+          "name": "Wingo",
+          "dcid": "wikidataId/Q8025243"
+        },
+        {
+          "name": "Wrights",
+          "dcid": "wikidataId/Q8038293"
+        },
+        {
+          "name": "Beale Air Force Base",
+          "dcid": "wikidataId/Q812921"
         },
         {
           "name": "Squaw Valley",
@@ -7136,6 +7760,26 @@
         {
           "name": "La Jolla",
           "dcid": "wikidataId/Q840668"
+        },
+        {
+          "name": "Eden Township",
+          "dcid": "wikidataId/Q85758570"
+        },
+        {
+          "name": "Murray Township",
+          "dcid": "wikidataId/Q85787114"
+        },
+        {
+          "name": "Washington Township",
+          "dcid": "wikidataId/Q85814519"
+        },
+        {
+          "name": "Jacksonville",
+          "dcid": "wikidataId/Q91783675"
+        },
+        {
+          "name": "Riccas Corner",
+          "dcid": "wikidataId/Q97354706"
         }
       ]
     },
