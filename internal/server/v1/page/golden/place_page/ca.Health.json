@@ -206,7 +206,7 @@
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
-            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
             "measurementMethod": "CensusPEPSurvey",
             "observationPeriod": "P1Y"
           }
@@ -2540,7 +2540,7 @@
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
-            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
             "measurementMethod": "CensusPEPSurvey",
             "observationPeriod": "P1Y"
           }
@@ -4802,14 +4802,14 @@
         },
         "Percent_Person_BingeDrinking": {
           "val": {
-            "2014": 16.581664642706272,
+            "2014": 16.581664642706276,
             "2015": 16.050352944479524,
-            "2016": 17.211162122992857,
+            "2016": 17.21116212299285,
             "2017": 18.690944340573903,
-            "2018": 18.269633565605243,
-            "2020": 19.51467265138835,
-            "2021": 17.836547558146098,
-            "2022": 18.760886589137826
+            "2018": 18.269633565605236,
+            "2020": 19.514672651388356,
+            "2021": 17.836547558146105,
+            "2022": 18.760886589137833
           },
           "metadata": {
             "importName": "CDC500_States",
@@ -4823,12 +4823,12 @@
           "val": {
             "2014": 35.60844574816825,
             "2015": 36.70852366478027,
-            "2016": 36.65495105504685,
+            "2016": 36.65495105504686,
             "2017": 37.16520885014018,
-            "2018": 37.618823361548856,
-            "2020": 38.58722428153811,
-            "2021": 38.76113568269186,
-            "2022": 40.61961018542981
+            "2018": 37.61882336154885,
+            "2020": 38.587224281538106,
+            "2021": 38.76113568269181,
+            "2022": 40.619610185429785
           },
           "metadata": {
             "importName": "CDC500_States",
@@ -4840,14 +4840,14 @@
         },
         "Percent_Person_PhysicalInactivity": {
           "val": {
-            "2014": 29.53103142228985,
+            "2014": 29.531031422289843,
             "2015": 32.99849060300012,
             "2016": 29.00507116574773,
             "2017": 32.63773949935511,
-            "2018": 29.982723617465275,
-            "2020": 30.554959006335388,
-            "2021": 29.467072958613034,
-            "2022": 29.507976740547083
+            "2018": 29.9827236174653,
+            "2020": 30.55495900633539,
+            "2021": 29.46707295861306,
+            "2022": 29.507976740547125
           },
           "metadata": {
             "importName": "CDC500_States",
@@ -4860,10 +4860,10 @@
         "Percent_Person_SleepLessThan7Hours": {
           "val": {
             "2014": 38.10187761650716,
-            "2016": 39.50953023615262,
-            "2018": 39.370110031393615,
-            "2020": 38.032118874258884,
-            "2022": 41.07993873944786
+            "2016": 39.50953023615263,
+            "2018": 39.37011003139359,
+            "2020": 38.03211887425886,
+            "2022": 41.079938739447826
           },
           "metadata": {
             "importName": "CDC500_States",
@@ -4878,11 +4878,11 @@
             "2014": 23.993715524617848,
             "2015": 21.09119466102961,
             "2016": 21.41108400694841,
-            "2017": 22.586243152598595,
-            "2018": 22.65790669967931,
-            "2020": 20.546100284424266,
-            "2021": 21.29122974551135,
-            "2022": 19.212570101108
+            "2017": 22.5862431525986,
+            "2018": 22.657906699679305,
+            "2020": 20.54610028442424,
+            "2021": 21.291229745511377,
+            "2022": 19.212570101107996
           },
           "metadata": {
             "importName": "CDC500_States",
@@ -4894,14 +4894,14 @@
         },
         "Percent_Person_WithArthritis": {
           "val": {
-            "2014": 25.296754425403623,
-            "2015": 24.949586361025933,
-            "2016": 25.53246188516485,
+            "2014": 25.29675442540363,
+            "2015": 24.949586361025926,
+            "2016": 25.532461885164846,
             "2017": 24.94297274148234,
-            "2018": 26.74268378762968,
-            "2020": 24.55004919337554,
-            "2021": 25.860845829103305,
-            "2022": 27.072190611700023
+            "2018": 26.742683787629698,
+            "2020": 24.550049193375557,
+            "2021": 25.860845829103283,
+            "2022": 27.07219061170003
           },
           "metadata": {
             "importName": "CDC500_States",
@@ -4915,9 +4915,9 @@
           "val": {
             "2013": 40.927135990478455,
             "2015": 39.600623443500886,
-            "2017": 38.660049451884376,
-            "2019": 37.89732297030003,
-            "2021": 37.65052461213421
+            "2017": 38.66004945188437,
+            "2019": 37.89732297030008,
+            "2021": 37.650524612134234
           },
           "metadata": {
             "importName": "CDC500_States",
@@ -4931,9 +4931,9 @@
           "val": {
             "2013": 33.520665895022255,
             "2015": 33.085172183561724,
-            "2017": 32.312014189309586,
-            "2019": 31.914140018928475,
-            "2021": 32.79621791181503
+            "2017": 32.312014189309615,
+            "2019": 31.91414001892848,
+            "2021": 32.796217911815106
           },
           "metadata": {
             "importName": "CDC500_States",
@@ -4946,12 +4946,12 @@
         "Percent_Person_WithMentalHealthNotGood": {
           "val": {
             "2014": 13.593716656456898,
-            "2015": 14.617801846671007,
+            "2015": 14.617801846671005,
             "2016": 13.594791717841256,
             "2017": 16.170265308684353,
-            "2018": 16.47276007503593,
-            "2020": 17.737824254451343,
-            "2021": 19.118892286984153,
+            "2018": 16.472760075035918,
+            "2020": 17.737824254451365,
+            "2021": 19.118892286984178,
             "2022": 21.049558929451333
           },
           "metadata": {
@@ -4964,14 +4964,14 @@
         },
         "Percent_Person_WithPhysicalHealthNotGood": {
           "val": {
-            "2014": 14.680230236958343,
-            "2015": 14.421321086336814,
-            "2016": 13.52519695131706,
+            "2014": 14.68023023695834,
+            "2015": 14.421321086336818,
+            "2016": 13.525196951317058,
             "2017": 15.474571918220372,
             "2018": 14.18318978091457,
-            "2020": 12.162465428881038,
+            "2020": 12.162465428881026,
             "2021": 13.105083061034732,
-            "2022": 14.6842416307043
+            "2022": 14.684241630704308
           },
           "metadata": {
             "importName": "CDC500_States",
@@ -5299,7 +5299,7 @@
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
-            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
             "measurementMethod": "CensusPEPSurvey",
             "observationPeriod": "P1Y"
           }
@@ -8134,7 +8134,7 @@
       "value": 340110988,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -8144,7 +8144,7 @@
       "value": 7582384,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -8154,7 +8154,7 @@
       "value": 39431263,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -8164,7 +8164,7 @@
       "value": 9757179,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -8174,7 +8174,7 @@
       "value": 3170435,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -8184,7 +8184,7 @@
       "value": 2529933,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -8194,7 +8194,7 @@
       "value": 2214281,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -8204,7 +8204,7 @@
       "value": 3298799,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -8214,7 +8214,7 @@
       "value": 5957493,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -8224,7 +8224,7 @@
       "value": 6924275,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -8234,7 +8234,7 @@
       "value": 4597740,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -8244,7 +8244,7 @@
       "value": 6245466,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -8254,7 +8254,7 @@
       "value": 796568,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -8264,7 +8264,7 @@
       "value": 7227750,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -8274,7 +8274,7 @@
       "value": 31290831,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -8284,7 +8284,7 @@
       "value": 7958180,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
@@ -8294,7 +8294,7 @@
       "value": 3203295,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
-        "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
+        "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
       }
