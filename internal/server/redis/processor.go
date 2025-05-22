@@ -25,15 +25,17 @@ import (
 )
 
 const (
+	// Whether to skip reading from Redis cache.
+	// To use, set header "X-Skip-Cache: true"
 	XSkipCache = "X-Skip-Cache"
 )
 
 // CacheProcessor implements the dispatcher.Processor interface for performing caching operations.
 type CacheProcessor struct {
-	client CacheClientInterface
+	client CacheClient
 }
 
-func NewCacheProcessor(client CacheClientInterface) *CacheProcessor {
+func NewCacheProcessor(client CacheClient) *CacheProcessor {
 	return &CacheProcessor{client: client}
 }
 
