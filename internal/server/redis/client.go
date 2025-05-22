@@ -37,14 +37,20 @@ const (
 	protoRequestKeyPrefix = cacheKeyPrefix + "request:"
 )
 
-// CacheClient handles Redis caching for protobuf messages.
-type CacheClient struct {
+// Interface to allow mocking.
+type CacheClient interface {
+	GetCachedResponse(ctx context.Context, request proto.Message, response proto.Message) (bool, error)
+	CacheResponse(ctx context.Context, request proto.Message, response proto.Message) error
+}
+
+// RedisCacheClient handles Redis caching for protobuf messages.
+type RedisCacheClient struct {
 	redisClient *redis.Client
 	expiration  time.Duration
 }
 
-// NewCacheClient creates a new CacheClient from a yaml config string.
-func NewCacheClient(redisConfigYaml string) (*CacheClient, error) {
+// NewCacheClient creates a new RedisCacheClient from a yaml config string.
+func NewCacheClient(redisConfigYaml string) (*RedisCacheClient, error) {
 	redisAddress, err := GetRedisAddress(redisConfigYaml)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get Redis address: %w", err)
@@ -63,15 +69,15 @@ func NewCacheClient(redisConfigYaml string) (*CacheClient, error) {
 
 	return newCacheClient(redisClient, defaultExpiration), nil
 }
-func newCacheClient(redisClient *redis.Client, expiration time.Duration) *CacheClient {
-	return &CacheClient{
+func newCacheClient(redisClient *redis.Client, expiration time.Duration) *RedisCacheClient {
+	return &RedisCacheClient{
 		redisClient: redisClient,
 		expiration:  expiration,
 	}
 }
 
 // Close closes the underlying redis connection.
-func (c *CacheClient) Close() error {
+func (c *RedisCacheClient) Close() error {
 	return c.redisClient.Close()
 }
 
@@ -87,7 +93,7 @@ func generateCacheKey(request proto.Message) (string, error) {
 }
 
 // GetCachedResponse retrieves a cached protobuf response from Redis.
-func (c *CacheClient) GetCachedResponse(ctx context.Context, request proto.Message, response proto.Message) (bool, error) {
+func (c *RedisCacheClient) GetCachedResponse(ctx context.Context, request proto.Message, response proto.Message) (bool, error) {
 	key, err := generateCacheKey(request)
 	if err != nil {
 		return false, err
@@ -119,7 +125,7 @@ func (c *CacheClient) GetCachedResponse(ctx context.Context, request proto.Messa
 }
 
 // CacheResponse stores a protobuf response in Redis.
-func (c *CacheClient) CacheResponse(ctx context.Context, request proto.Message, response proto.Message) error {
+func (c *RedisCacheClient) CacheResponse(ctx context.Context, request proto.Message, response proto.Message) error {
 	key, err := generateCacheKey(request)
 	if err != nil {
 		return err
