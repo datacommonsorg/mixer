@@ -1,221 +1,241 @@
 {
-  "dc/g/Root": [
+  "dc/g/UN": [
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-InternationalFundforAgriculturalDev",
+      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE061",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = International_Fund_for_Agricultural_Dev",
+      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Malignant Neoplasms",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-InternationalInvestmentBank",
+      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE061_whosex",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = International_Investment_Bank",
+      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Malignant Neoplasms, Who_sex",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-IslamicDevBank",
+      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE062",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = Islamic_Dev_Bank",
+      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Mouth And Oropharynx Cancers",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-IslamicSolidarityFundforDev",
+      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE062_whosex",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = Islamic_Solidarity_Fund_for_Dev",
+      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Mouth And Oropharynx Cancers, Who_sex",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-LatinAmerConfofSavingCreditCoop",
+      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE063",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = Latin_Amer_Conf_of_Saving_Credit_Coop",
+      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Oesophagus Cancer",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-LatinAmericanAgribusinessDevCorp",
+      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE063_whosex",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = Latin_American_Agribusiness_Dev_Corp",
+      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Oesophagus Cancer, Who_sex",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-MultipleLenders",
+      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE064",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = Multiple_Lenders",
+      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Stomach Cancer",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-NordicDevelopmentFund",
+      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE064_whosex",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = Nordic_Development_Fund",
+      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Stomach Cancer, Who_sex",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-NordicEnvironmentFinanceCorporation",
+      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE065",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = Nordic_Environment_Finance_Corporation",
+      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Colon And Rectum Cancers",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-NordicInvestmentBank",
+      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE065_whosex",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = Nordic_Investment_Bank",
+      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Colon And Rectum Cancers, Who_sex",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-OPECFundforInternationalDev",
+      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE066",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = OPEC_Fund_for_International_Dev",
+      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Liver Cancer",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-OrgofArabPetroleumExportingCountries",
+      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE066_whosex",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = Org_of_Arab_Petroleum_Exporting_Countries",
+      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Liver Cancer, Who_sex",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-PlataBasinFinancialDevFund",
+      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE067",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = Plata_Basin_Financial_Dev_Fund",
+      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Pancreas Cancer",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-SouthAsianDevelopmentFund",
+      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE067_whosex",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = South_Asian_Development_Fund",
+      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Pancreas Cancer, Who_sex",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-UNChildrenFund",
+      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE068",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = UN_Children_Fund",
+      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Trachea, Bronchus, Lung Cancers",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-UNDevelopmentProgramme",
+      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE068_whosex",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = UN_Development_Programme",
+      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Trachea, Bronchus, Lung Cancers, Who_sex",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-UNGeneralAssembly",
+      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE069",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = UN_General_Assembly",
+      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Melanoma And Other Skin Cancers",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-UNHighCommissionerforRefugees",
+      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE069_whosex",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = UN_High_Commissioner_for_Refugees",
+      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Melanoma And Other Skin Cancers, Who_sex",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-UNPopulationFund",
+      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE070",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = UN_Population_Fund",
+      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Breast Cancer",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/Debt_DebtCreditorType-OfficialCreditor_DebtInstrument-Multilateral_DebtType-LongTermExternalDebt_LendingEntity-UNRegularProgrammeofTechnicalCoop",
+      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE070_whosex",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Debt With Debt Creditor Type = Official Creditor, Debt Instrument = Multilateral, Debt Type = Long Term External Debt, Lending Entity = UN_Regular_Programme_of_Technical_Coop",
+      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Breast Cancer, Who_sex",
       "Types": [
         "StatVarGroup"
       ]

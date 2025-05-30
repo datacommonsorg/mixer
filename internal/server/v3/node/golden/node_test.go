@@ -58,6 +58,15 @@ func TestV3Node(t *testing.T) {
 				"out_prop.json",
 			},
 			{
+				"Out bracket props",
+				[]string{
+					"geoId/5129600",
+				},
+				"->[containedInPlace,geoJsonCoordinatesDP3]",
+				"",
+				"out_bracket_prop.json",
+			},
+			{
 				"In properties",
 				[]string{
 					"Count_Person_Female",

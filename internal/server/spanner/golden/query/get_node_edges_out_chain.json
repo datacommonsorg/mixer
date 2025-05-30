@@ -5,6 +5,7 @@
       "Predicate": "specializationOf+",
       "ObjectID": "dc/g/Demographics",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
       "Name": "Demographics",
       "Types": [
@@ -16,6 +17,7 @@
       "Predicate": "specializationOf+",
       "ObjectID": "dc/g/Economy",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
       "Name": "Economy",
       "Types": [
@@ -27,6 +29,7 @@
       "Predicate": "specializationOf+",
       "ObjectID": "dc/g/Employment",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
       "Name": "Employment and Business",
       "Types": [
@@ -38,6 +41,7 @@
       "Predicate": "specializationOf+",
       "ObjectID": "dc/g/Health",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
       "Name": "Health",
       "Types": [
@@ -49,6 +53,7 @@
       "Predicate": "specializationOf+",
       "ObjectID": "dc/g/Root",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
       "Name": "Data Commons Variables",
       "Types": [

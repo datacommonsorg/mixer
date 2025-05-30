@@ -2,9 +2,22 @@
   "FireIncidentTypeEnum": [
     {
       "SubjectID": "FireIncidentTypeEnum",
+      "Predicate": "rangeIncludes",
+      "ObjectID": "classification",
+      "ObjectValue": "",
+      "ObjectBytes": null,
+      "Provenance": "dc/base/BaseSchema",
+      "Name": "classification",
+      "Types": [
+        "Property"
+      ]
+    },
+    {
+      "SubjectID": "FireIncidentTypeEnum",
       "Predicate": "typeOf",
       "ObjectID": "ComplexFire",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/BaseSchema",
       "Name": "ComplexFire",
       "Types": [
@@ -16,6 +29,7 @@
       "Predicate": "typeOf",
       "ObjectID": "PrescribedFire",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/BaseSchema",
       "Name": "PrescribedFire",
       "Types": [
@@ -30,6 +44,7 @@
       "Predicate": "typeOf",
       "ObjectID": "Wildfire",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/BaseSchema",
       "Name": "Wildfire",
       "Types": [
@@ -42,6 +57,7 @@
       "Predicate": "typeOf",
       "ObjectID": "WildlandFireUse",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/BaseSchema",
       "Name": "WildlandFireUse",
       "Types": [
@@ -52,9 +68,22 @@
   "FoodTypeEnum": [
     {
       "SubjectID": "FoodTypeEnum",
+      "Predicate": "rangeIncludes",
+      "ObjectID": "foodType",
+      "ObjectValue": "",
+      "ObjectBytes": null,
+      "Provenance": "dc/base/BaseSchema",
+      "Name": "foodType",
+      "Types": [
+        "Property"
+      ]
+    },
+    {
+      "SubjectID": "FoodTypeEnum",
       "Predicate": "typeOf",
       "ObjectID": "Meal",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/BaseSchema",
       "Name": "Meal",
       "Types": [

@@ -2,7 +2,9 @@
   "data": {
     "Count_Person_Female": {
       "properties": [
-        "measurementDenominator"
+        "measurementDenominator",
+        "member",
+        "outputProperty"
       ]
     },
     "foo": {},

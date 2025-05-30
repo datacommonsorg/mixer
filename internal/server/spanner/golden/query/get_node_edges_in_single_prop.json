@@ -5,8 +5,93 @@
       "Predicate": "domainIncludes",
       "ObjectID": "affectedPlace",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/BaseSchema",
       "Name": "affectedPlace",
+      "Types": [
+        "Property"
+      ]
+    },
+    {
+      "SubjectID": "EarthquakeEvent",
+      "Predicate": "domainIncludes",
+      "ObjectID": "depth",
+      "ObjectValue": "",
+      "ObjectBytes": null,
+      "Provenance": "dc/base/BaseSchema",
+      "Name": "depth",
+      "Types": [
+        "Property"
+      ]
+    },
+    {
+      "SubjectID": "EarthquakeEvent",
+      "Predicate": "domainIncludes",
+      "ObjectID": "depthError",
+      "ObjectValue": "",
+      "ObjectBytes": null,
+      "Provenance": "dc/base/BaseSchema",
+      "Name": "depthError",
+      "Types": [
+        "Property"
+      ]
+    },
+    {
+      "SubjectID": "EarthquakeEvent",
+      "Predicate": "domainIncludes",
+      "ObjectID": "magnitude",
+      "ObjectValue": "",
+      "ObjectBytes": null,
+      "Provenance": "dc/base/BaseSchema",
+      "Name": "magnitude",
+      "Types": [
+        "Property"
+      ]
+    },
+    {
+      "SubjectID": "EarthquakeEvent",
+      "Predicate": "domainIncludes",
+      "ObjectID": "magnitudeError",
+      "ObjectValue": "",
+      "ObjectBytes": null,
+      "Provenance": "dc/base/BaseSchema",
+      "Name": "magnitudeError",
+      "Types": [
+        "Property"
+      ]
+    },
+    {
+      "SubjectID": "EarthquakeEvent",
+      "Predicate": "domainIncludes",
+      "ObjectID": "magnitudeType",
+      "ObjectValue": "",
+      "ObjectBytes": null,
+      "Provenance": "dc/base/BaseSchema",
+      "Name": "magnitudeType",
+      "Types": [
+        "Property"
+      ]
+    },
+    {
+      "SubjectID": "EarthquakeEvent",
+      "Predicate": "domainIncludes",
+      "ObjectID": "occurrenceTime",
+      "ObjectValue": "",
+      "ObjectBytes": null,
+      "Provenance": "dc/base/BaseSchema",
+      "Name": "occurrenceTime",
+      "Types": [
+        "Property"
+      ]
+    },
+    {
+      "SubjectID": "EarthquakeEvent",
+      "Predicate": "domainIncludes",
+      "ObjectID": "reviewStatus",
+      "ObjectValue": "",
+      "ObjectBytes": null,
+      "Provenance": "dc/base/BaseSchema",
+      "Name": "reviewStatus",
       "Types": [
         "Property"
       ]

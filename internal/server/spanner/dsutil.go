@@ -165,7 +165,11 @@ func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge
 			nodeResponse.NextToken = nextToken
 		}
 
-		nodeResponse.Data[subjectID] = nodeEdgesToLinkedGraph(edges)
+		linkedGraph, err := nodeEdgesToLinkedGraph(edges)
+		if err != nil {
+			return nil, err
+		}
+		nodeResponse.Data[subjectID] = linkedGraph
 	}
 
 	return nodeResponse, nil
@@ -173,7 +177,7 @@ func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge
 
 // nodeEdgesToLinkedGraph converts an array of edges to a LinkedGraph proto.
 // This method assumes all edges are from the same entity.
-func nodeEdgesToLinkedGraph(edges []*Edge) *pbv2.LinkedGraph {
+func nodeEdgesToLinkedGraph(edges []*Edge) (*pbv2.LinkedGraph, error) {
 	linkedGraph := &pbv2.LinkedGraph{
 		Arcs: make(map[string]*pbv2.Nodes),
 	}
@@ -190,12 +194,22 @@ func nodeEdgesToLinkedGraph(edges []*Edge) *pbv2.LinkedGraph {
 			ProvenanceId: edge.Provenance,
 			Value:        edge.ObjectValue,
 		}
+
+		// Use object_bytes if set.
+		if edge.ObjectBytes != nil {
+			bytes, err := util.Unzip(edge.ObjectBytes)
+			if err != nil {
+				return nil, err
+			}
+			node.Value = string(bytes)
+		}
+
 		nodes.Nodes = append(nodes.Nodes, node)
 
 		linkedGraph.Arcs[edge.Predicate] = nodes
 	}
 
-	return linkedGraph
+	return linkedGraph, nil
 }
 
 func selectFieldsToQueryOptions(selectFields []string) queryOptions {
@@ -495,10 +509,9 @@ func observationsToOrderedFacets(observations []*Observation, includeObs bool) (
 func observationToFacetObservation(observation *Observation, includeObs bool) (*pb.PlaceVariableFacet, *pbv2.FacetObservation) {
 	facet := observationToFacet(observation)
 
-	var observations []*pb.PointStat
-
-	for _, dateValue := range observation.Observations {
-		pointStat, err := dateValueToPointStat(dateValue)
+	var timeSeries []*pb.PointStat
+	for date, value := range observation.Observations.GetValues() {
+		pointStat, err := buildPointStat(date, value)
 
 		// Skip observations with non-numeric values.
 		if err != nil {
@@ -506,22 +519,22 @@ func observationToFacetObservation(observation *Observation, includeObs bool) (*
 			continue
 		}
 
-		observations = append(observations, pointStat)
+		timeSeries = append(timeSeries, pointStat)
 	}
 
-	if len(observations) == 0 {
+	if len(timeSeries) == 0 {
 		return nil, nil
 	}
 
 	facetObservation := &pbv2.FacetObservation{
 		FacetId:      util.GetFacetID(facet),
-		ObsCount:     *proto.Int32(int32(len(observations))),
-		EarliestDate: observations[0].Date,
-		LatestDate:   observations[len(observations)-1].Date,
+		ObsCount:     *proto.Int32(int32(len(timeSeries))),
+		EarliestDate: timeSeries[0].Date,
+		LatestDate:   timeSeries[len(timeSeries)-1].Date,
 	}
 
 	if includeObs {
-		facetObservation.Observations = observations
+		facetObservation.Observations = timeSeries
 	}
 
 	placeVariableFacet := &pb.PlaceVariableFacet{
@@ -546,13 +559,13 @@ func observationToFacet(observation *Observation) *pb.Facet {
 	return &facet
 }
 
-func dateValueToPointStat(dateValue *DateValue) (*pb.PointStat, error) {
-	floatVal, err := strconv.ParseFloat(dateValue.Value, 64)
+func buildPointStat(date, value string) (*pb.PointStat, error) {
+	floatVal, err := strconv.ParseFloat(value, 64)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode TimeSeries float value: (%v) for date: (%v)", floatVal, dateValue.Date)
+		return nil, fmt.Errorf("failed to decode TimeSeries float value: (%v) for date: (%v)", floatVal, date)
 	}
 	return &pb.PointStat{
-		Date:  dateValue.Date,
+		Date:  date,
 		Value: proto.Float64(floatVal),
 	}, nil
 }

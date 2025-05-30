@@ -14,11 +14,11 @@
             }
           ]
         },
-        "extendedName": {
+        "description": {
           "nodes": [
             {
               "provenance_id": "dc/base/HumanReadableStatVars",
-              "value": "Female Population"
+              "value": "Total number of females in the population."
             }
           ]
         },
@@ -34,15 +34,7 @@
             }
           ]
         },
-        "localCuratorLevelId": {
-          "nodes": [
-            {
-              "provenance_id": "dc/base/HumanReadableStatVars",
-              "value": "dcid:Count_Person_Female"
-            }
-          ]
-        },
-        "measuredProp": {
+        "measuredProperty": {
           "nodes": [
             {
               "name": "count",
@@ -71,6 +63,10 @@
             {
               "provenance_id": "dc/base/HumanReadableStatVars",
               "value": "Female Population"
+            },
+            {
+              "provenance_id": "dc/base/HumanReadableStatVars",
+              "value": "Total female population"
             }
           ]
         },
@@ -82,6 +78,18 @@
                 "Class"
               ],
               "dcid": "Person",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            }
+          ]
+        },
+        "provenance": {
+          "nodes": [
+            {
+              "name": "HumanReadableStatVars",
+              "types": [
+                "Provenance"
+              ],
+              "dcid": "dc/base/HumanReadableStatVars",
               "provenance_id": "dc/base/HumanReadableStatVars"
             }
           ]

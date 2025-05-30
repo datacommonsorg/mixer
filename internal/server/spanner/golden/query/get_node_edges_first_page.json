@@ -5,6 +5,7 @@
       "Predicate": "typeOf",
       "ObjectID": "AggregateMax_MedianAcrossModels_DifferenceRelativeToBaseDate1990_Max_Temperature",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
       "Name": "Max Temperature (Difference Relative To Base Date): Relative To 1990, Highest Value, Median Across Models",
       "Types": [
@@ -16,6 +17,7 @@
       "Predicate": "typeOf",
       "ObjectID": "AggregateMax_MedianAcrossModels_DifferenceRelativeToBaseDate2006To2020_Max_Temperature_RCP45",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
       "Name": "Max Temperature (Difference Relative To Base Date): Relative To Between 2006 And 2020, Based on RCP 4.5, Highest Value, Median Across Models",
       "Types": [
@@ -27,6 +29,7 @@
       "Predicate": "typeOf",
       "ObjectID": "AggregateMax_MedianAcrossModels_DifferenceRelativeToBaseDate2006To2020_Max_Temperature_RCP85",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
       "Name": "Max Temperature (Difference Relative To Base Date): Relative To Between 2006 And 2020, Based on RCP 8.5, Highest Value, Median Across Models",
       "Types": [
@@ -38,6 +41,7 @@
       "Predicate": "typeOf",
       "ObjectID": "AggregateMax_MedianAcrossModels_DifferenceRelativeToBaseDate2006_Max_Temperature_RCP45",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
       "Name": "Max Temperature (Difference Relative To Base Date): Relative To 2006, Based on RCP 4.5, Highest Value, Median Across Models",
       "Types": [
@@ -49,6 +53,7 @@
       "Predicate": "typeOf",
       "ObjectID": "AggregateMax_MedianAcrossModels_DifferenceRelativeToBaseDate2006_Max_Temperature_RCP85",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
       "Name": "Max Temperature (Difference Relative To Base Date): Relative To 2006, Based on RCP 8.5, Highest Value, Median Across Models",
       "Types": [
@@ -60,6 +65,7 @@
       "Predicate": "typeOf",
       "ObjectID": "AggregateMax_MedianAcrossModels_DifferenceRelativeToBaseDate2015To2020_Max_Temperature_SSP245",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
       "Name": "Max Temperature (Difference Relative To Base Date): Relative To Between 2015 And 2020, Based on RCP 4.5, Highest Value, Median Across Models, SSP 2",
       "Types": [
@@ -71,6 +77,7 @@
       "Predicate": "typeOf",
       "ObjectID": "AggregateMax_MedianAcrossModels_DifferenceRelativeToBaseDate2015To2020_Max_Temperature_SSP585",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
       "Name": "Max Temperature (Difference Relative To Base Date): Relative To Between 2015 And 2020, Based on RCP 8.5, Highest Value, Median Across Models, SSP 5",
       "Types": [
@@ -82,6 +89,7 @@
       "Predicate": "typeOf",
       "ObjectID": "AggregateMax_MedianAcrossModels_DifferenceRelativeToBaseDate2015_Max_Temperature_SSP245",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
       "Name": "Max Temperature (Difference Relative To Base Date): Relative To 2015, Based on RCP 4.5, Highest Value, Median Across Models, SSP 2",
       "Types": [
@@ -93,6 +101,7 @@
       "Predicate": "typeOf",
       "ObjectID": "AggregateMax_MedianAcrossModels_DifferenceRelativeToBaseDate2015_Max_Temperature_SSP585",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
       "Name": "Max Temperature (Difference Relative To Base Date): Relative To 2015, Based on RCP 8.5, Highest Value, Median Across Models, SSP 5",
       "Types": [
@@ -104,6 +113,7 @@
       "Predicate": "typeOf",
       "ObjectID": "AggregateMax_Percentile10AcrossModels_DifferenceRelativeToBaseDate1990_Max_Temperature",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
       "Name": "Max Temperature (Difference Relative To Base Date): Relative To 1990, Highest Value, Percentile 10 Across Models",
       "Types": [
@@ -115,6 +125,7 @@
       "Predicate": "typeOf",
       "ObjectID": "AggregateMax_Percentile10AcrossModels_DifferenceRelativeToBaseDate2006To2020_Max_Temperature_RCP45",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
       "Name": "Max Temperature (Difference Relative To Base Date): Relative To Between 2006 And 2020, Based on RCP 4.5, Highest Value, Percentile 10 Across Models",
       "Types": [
@@ -126,6 +137,7 @@
       "Predicate": "typeOf",
       "ObjectID": "AggregateMax_Percentile10AcrossModels_DifferenceRelativeToBaseDate2006To2020_Max_Temperature_RCP85",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
       "Name": "Max Temperature (Difference Relative To Base Date): Relative To Between 2006 And 2020, Based on RCP 8.5, Highest Value, Percentile 10 Across Models",
       "Types": [
@@ -137,6 +149,7 @@
       "Predicate": "typeOf",
       "ObjectID": "AggregateMax_Percentile10AcrossModels_DifferenceRelativeToBaseDate2006_Max_Temperature_RCP45",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
       "Name": "Max Temperature (Difference Relative To Base Date): Relative To 2006, Based on RCP 4.5, Highest Value, Percentile 10 Across Models",
       "Types": [
@@ -148,6 +161,7 @@
       "Predicate": "typeOf",
       "ObjectID": "AggregateMax_Percentile10AcrossModels_DifferenceRelativeToBaseDate2006_Max_Temperature_RCP85",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
       "Name": "Max Temperature (Difference Relative To Base Date): Relative To 2006, Based on RCP 8.5, Highest Value, Percentile 10 Across Models",
       "Types": [
@@ -159,6 +173,7 @@
       "Predicate": "typeOf",
       "ObjectID": "AggregateMax_Percentile10AcrossModels_DifferenceRelativeToBaseDate2015To2020_Max_Temperature_SSP245",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
       "Name": "Max Temperature (Difference Relative To Base Date): Relative To Between 2015 And 2020, Based on RCP 4.5, Highest Value, Percentile 10 Across Models, SSP 2",
       "Types": [
@@ -170,6 +185,7 @@
       "Predicate": "typeOf",
       "ObjectID": "AggregateMax_Percentile10AcrossModels_DifferenceRelativeToBaseDate2015To2020_Max_Temperature_SSP585",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
       "Name": "Max Temperature (Difference Relative To Base Date): Relative To Between 2015 And 2020, Based on RCP 8.5, Highest Value, Percentile 10 Across Models, SSP 5",
       "Types": [
@@ -181,6 +197,7 @@
       "Predicate": "typeOf",
       "ObjectID": "AggregateMax_Percentile10AcrossModels_DifferenceRelativeToBaseDate2015_Max_Temperature_SSP245",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
       "Name": "Max Temperature (Difference Relative To Base Date): Relative To 2015, Based on RCP 4.5, Highest Value, Percentile 10 Across Models, SSP 2",
       "Types": [
@@ -192,6 +209,7 @@
       "Predicate": "typeOf",
       "ObjectID": "AggregateMax_Percentile10AcrossModels_DifferenceRelativeToBaseDate2015_Max_Temperature_SSP585",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
       "Name": "Max Temperature (Difference Relative To Base Date): Relative To 2015, Based on RCP 8.5, Highest Value, Percentile 10 Across Models, SSP 5",
       "Types": [
@@ -203,6 +221,7 @@
       "Predicate": "typeOf",
       "ObjectID": "AggregateMax_Percentile90AcrossModels_DifferenceRelativeToBaseDate1990_Max_Temperature",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
       "Name": "Max Temperature (Difference Relative To Base Date): Relative To 1990, Highest Value, Percentile 90 Across Models",
       "Types": [
@@ -214,6 +233,7 @@
       "Predicate": "typeOf",
       "ObjectID": "AggregateMax_Percentile90AcrossModels_DifferenceRelativeToBaseDate2006To2020_Max_Temperature_RCP45",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
       "Name": "Max Temperature (Difference Relative To Base Date): Relative To Between 2006 And 2020, Based on RCP 4.5, Highest Value, Percentile 90 Across Models",
       "Types": [

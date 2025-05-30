@@ -1,221 +1,241 @@
 {
-  "dc/g/Root": [
+  "dc/g/UN": [
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/Root",
+      "ObjectID": "dc/g/UN_SUB_THEME_13",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Global Health Observatory (WHO)",
+      "Name": "Poverty",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/AdolescentMortality",
+      "ObjectID": "dc/g/UN_SUB_THEME_14",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Adolescent Mortality",
+      "Name": "Inequality and social protection",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/AirPollution",
+      "ObjectID": "dc/g/UN_SUB_THEME_15",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Air Pollution",
+      "Name": "Food insecurity",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/AmcGlass",
+      "ObjectID": "dc/g/UN_SUB_THEME_16",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Amc Glass",
+      "Name": "Nutrition",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/AmrGasp",
+      "ObjectID": "dc/g/UN_SUB_THEME_17",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Antimicrobial Resistance (GASP)",
+      "Name": "Sustainable food and agriculture",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/AmrGlass",
+      "ObjectID": "dc/g/UN_SUB_THEME_18",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Antimicrobial Resistance (GLASS)",
+      "Name": "Child and youth health",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/AntimicrobialSurveillance",
+      "ObjectID": "dc/g/UN_SUB_THEME_19",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Antimicrobial Surveillance",
+      "Name": "Environmental and other health risks",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/AssistiveTechnology",
+      "ObjectID": "dc/g/UN_SUB_THEME_20",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Assistive Technology",
+      "Name": "Health systems, policies and financing",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/CareSeek",
+      "ObjectID": "dc/g/UN_SUB_THEME_21",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Care Seek",
+      "Name": "Infectious diseases",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/ChildHealth",
+      "ObjectID": "dc/g/UN_SUB_THEME_22",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Child Health",
+      "Name": "Non-communicable diseases",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/ChildMalnutrition",
+      "ObjectID": "dc/g/UN_SUB_THEME_23",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Child Malnutrition",
+      "Name": "Mental health",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/ChildMortality",
+      "ObjectID": "dc/g/UN_SUB_THEME_24",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Child Mortality",
+      "Name": "Reproductive and maternal health",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/ClimateChangeSurvey",
+      "ObjectID": "dc/g/UN_SUB_THEME_25",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Climate Change Survey",
+      "Name": "Child protection",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/CountryPolicy",
+      "ObjectID": "dc/g/UN_SUB_THEME_26",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Country Policy",
+      "Name": "Basic education",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/Dementia",
+      "ObjectID": "dc/g/UN_SUB_THEME_27",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Dementia",
+      "Name": "Technical and vocational education and training",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/DemographicAndSocioeconomicStatistics",
+      "ObjectID": "dc/g/UN_SUB_THEME_28",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Demographic And Socioeconomic Statistics",
+      "Name": "Early childhood development",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/Education",
+      "ObjectID": "dc/g/UN_SUB_THEME_29",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Education",
+      "Name": "Children in vulnerable situations",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/ElectrificationOfHealthCareFacilities",
+      "ObjectID": "dc/g/UN_SUB_THEME_30",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Electrification Of Health Care Facilities",
+      "Name": "Early childhood education",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/ElectromagneticFields",
+      "ObjectID": "dc/g/UN_SUB_THEME_31",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Electromagnetic Fields",
+      "Name": "Higher education",
       "Types": [
         "StatVarGroup"
       ]
     },
     {
-      "SubjectID": "dc/g/Root",
+      "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "WHO/g/EssentialHealthTechnologies",
+      "ObjectID": "dc/g/UN_SUB_THEME_32",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
-      "Name": "Essential Health Technologies",
+      "Name": "Adult literacy",
       "Types": [
         "StatVarGroup"
       ]

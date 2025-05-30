@@ -19,6 +19,7 @@ import (
 	"encoding/json"
 	"fmt"
 
+	pbs "github.com/datacommonsorg/mixer/internal/proto/storage"
 	"google.golang.org/protobuf/types/known/structpb"
 )
 
@@ -34,6 +35,7 @@ type Edge struct {
 	Predicate   string   `spanner:"predicate"`
 	ObjectID    string   `spanner:"object_id"`
 	ObjectValue string   `spanner:"object_value"`
+	ObjectBytes []byte   `spanner:"object_bytes"`
 	Provenance  string   `spanner:"provenance"`
 	Name        string   `spanner:"name"`
 	Types       []string `spanner:"types"`
@@ -41,16 +43,16 @@ type Edge struct {
 
 // Observation struct represents a single row in the Observation table.
 type Observation struct {
-	VariableMeasured  string     `spanner:"variable_measured"`
-	ObservationAbout  string     `spanner:"observation_about"`
-	Observations      TimeSeries `spanner:"observations"`
-	Provenance        string     `spanner:"provenance"`
-	ObservationPeriod string     `spanner:"observation_period"`
-	MeasurementMethod string     `spanner:"measurement_method"`
-	Unit              string     `spanner:"unit"`
-	ScalingFactor     string     `spanner:"scaling_factor"`
-	ImportName        string     `spanner:"import_name"`
-	ProvenanceURL     string     `spanner:"provenance_url"`
+	VariableMeasured string `spanner:"variable_measured"`
+	ObservationAbout string `spanner:"observation_about"`
+	// *** This doesn't work at the moment and causes decoding errors ***
+	Observations      pbs.Observations
+	ImportName        string `spanner:"import_name"`
+	ObservationPeriod string `spanner:"observation_period"`
+	MeasurementMethod string `spanner:"measurement_method"`
+	Unit              string `spanner:"unit"`
+	ScalingFactor     string `spanner:"scaling_factor"`
+	ProvenanceURL     string `spanner:"provenance_url"`
 }
 
 // Single observation in a time series.

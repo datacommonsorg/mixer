@@ -117,16 +117,16 @@ func TestGetNodeOutEdgesByID(t *testing.T) {
 			ids: []string{"Person"},
 			arc: &v2.Arc{
 				Out:        true,
-				SingleProp: "extendedName",
+				SingleProp: "source",
 			},
 			offset:     0,
 			goldenFile: "get_node_edges_out_single_prop.json",
 		},
 		{
-			ids: []string{"Person"},
+			ids: []string{"geoId/5129600"},
 			arc: &v2.Arc{
 				Out:          true,
-				BracketProps: []string{"source", "subClassOf"},
+				BracketProps: []string{"containedInPlace", "geoJsonCoordinatesDP3"},
 			},
 			offset:     0,
 			goldenFile: "get_node_edges_out_bracket_props.json",
@@ -136,8 +136,8 @@ func TestGetNodeOutEdgesByID(t *testing.T) {
 			arc: &v2.Arc{
 				Out: true,
 				Filter: map[string][]string{
-					"subClassOf":   {"AdministrativeArea"},
-					"extendedName": {"AdministrativeArea2"},
+					"subClassOf": {"AdministrativeArea"},
+					"name":       {"AdministrativeArea2"},
 				},
 			},
 			offset:     0,
@@ -235,7 +235,7 @@ func TestGetNodeInEdgesByID(t *testing.T) {
 				Out: false,
 				Filter: map[string][]string{
 					"farmInventoryType": {"Melon"},
-					"extendedName":      {"Area of Farm: Melon"},
+					"name":              {"Area of Farm: Melon"},
 				},
 			},
 			offset:     0,
@@ -282,7 +282,7 @@ func TestGetNodeInEdgesByID(t *testing.T) {
 			goldenFile: "get_node_edges_second_page.json",
 		},
 		{
-			ids: []string{"dc/g/Root"},
+			ids: []string{"dc/g/UN"},
 			arc: &v2.Arc{
 				Out:        false,
 				SingleProp: "specializationOf",
@@ -292,7 +292,7 @@ func TestGetNodeInEdgesByID(t *testing.T) {
 			goldenFile: "get_node_edges_first_page_chain.json",
 		},
 		{
-			ids: []string{"dc/g/Root"},
+			ids: []string{"dc/g/UN"},
 			arc: &v2.Arc{
 				Out:        false,
 				SingleProp: "specializationOf",

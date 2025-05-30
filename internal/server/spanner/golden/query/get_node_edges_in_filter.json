@@ -5,6 +5,7 @@
       "Predicate": "populationType",
       "ObjectID": "Area_Farm_Melon",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
       "Name": "Area of Farm: Melon",
       "Types": [
