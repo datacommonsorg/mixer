@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package datacommons;
+
+option go_package = "github.com/datacommonsorg/mixer/internal/proto";
+
+// Includes protos that are used in spanner storage.
+
+// Observations represent the observations (time series) stored in the observations column in the Observation table.
+message Observations {
+  // Map from date to value.
+  // Examples: "2024" -> "123", "2025-05" -> "-456.78"
+  map<string, string> values = 1;
+}
