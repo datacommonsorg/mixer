@@ -256,7 +256,7 @@ var statements = struct {
 			variable_measured,
 			observation_about,
 			%s,
-			provenance,
+			provenance_url AS provenance,
 			COALESCE(observation_period, '') AS observation_period,
 			COALESCE(measurement_method, '') AS measurement_method,
 			COALESCE(unit, '') AS unit,

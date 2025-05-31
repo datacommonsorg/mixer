@@ -16,10 +16,11 @@
 package spanner
 
 import (
-	"encoding/json"
+	"encoding/base64"
 	"fmt"
 
-	"google.golang.org/protobuf/types/known/structpb"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"google.golang.org/protobuf/proto"
 )
 
 // Property struct represents a subset of a row in the Edge table.
@@ -65,25 +66,23 @@ type TimeSeries []*DateValue
 // DecodeSpanner decodes the observations field to a TimeSeries value.
 // This is inherited from the spanner Decoder interface to decode from a spanner type to a custom type.
 // Reference: https://cloud.google.com/go/docs/reference/cloud.google.com/go/spanner/latest#cloud_google_com_go_spanner_Decoder
-// Note that the undecoded values are of type ListValue and each element a string value.
+// Note that the undecoded value is a base64 encoded string.
 func (ts *TimeSeries) DecodeSpanner(val interface{}) (err error) {
-	listVal, ok := val.(*structpb.ListValue)
-	if !ok {
-		return fmt.Errorf("failed to decode TimeSeries: (%v)", val)
+	obs := &pb.Observations{}
+	decodedVal, err := base64.StdEncoding.DecodeString(val.(string))
+	if err != nil {
+		return fmt.Errorf("failed to decode base64 encoded string: (%v)", err)
+	}
+	err = proto.Unmarshal(decodedVal, obs)
+	if err != nil {
+		return fmt.Errorf("failed to decode Observations: (%v)", err)
 	}
 	*ts = []*DateValue{}
-	for _, v := range listVal.Values {
-		var data map[string]string
-		err := json.Unmarshal([]byte(v.GetStringValue()), &data)
-		if err != nil {
-			return fmt.Errorf("failed to decode TimeSeries value: (%v)", v)
-		}
-		for date, strVal := range data {
-			*ts = append(*ts, &DateValue{
-				Date:  date,
-				Value: strVal,
-			})
-		}
+	for date, value := range obs.Values {
+		*ts = append(*ts, &DateValue{
+			Date:  date,
+			Value: value,
+		})
 	}
 	return nil
 }
