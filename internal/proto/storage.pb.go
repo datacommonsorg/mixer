@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.36.6
 // 	protoc        v5.29.3
-// source: storage/storage.proto
+// source: storage.proto
 
-package storage
+package proto
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -33,7 +33,7 @@ type Observations struct {
 
 func (x *Observations) Reset() {
 	*x = Observations{}
-	mi := &file_storage_storage_proto_msgTypes[0]
+	mi := &file_storage_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -45,7 +45,7 @@ func (x *Observations) String() string {
 func (*Observations) ProtoMessage() {}
 
 func (x *Observations) ProtoReflect() protoreflect.Message {
-	mi := &file_storage_storage_proto_msgTypes[0]
+	mi := &file_storage_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -58,7 +58,7 @@ func (x *Observations) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Observations.ProtoReflect.Descriptor instead.
 func (*Observations) Descriptor() ([]byte, []int) {
-	return file_storage_storage_proto_rawDescGZIP(), []int{0}
+	return file_storage_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Observations) GetValues() map[string]string {
@@ -68,35 +68,35 @@ func (x *Observations) GetValues() map[string]string {
 	return nil
 }
 
-var File_storage_storage_proto protoreflect.FileDescriptor
+var File_storage_proto protoreflect.FileDescriptor
 
-const file_storage_storage_proto_rawDesc = "" +
+const file_storage_proto_rawDesc = "" +
 	"\n" +
-	"\x15storage/storage.proto\x12\x15org.datacommons.proto\"\x92\x01\n" +
+	"\rstorage.proto\x12\x15org.datacommons.proto\"\x92\x01\n" +
 	"\fObservations\x12G\n" +
 	"\x06values\x18\x01 \x03(\v2/.org.datacommons.proto.Observations.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01B8Z6github.com/datacommonsorg/mixer/internal/proto/storageb\x06proto3"
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01B0Z.github.com/datacommonsorg/mixer/internal/protob\x06proto3"
 
 var (
-	file_storage_storage_proto_rawDescOnce sync.Once
-	file_storage_storage_proto_rawDescData []byte
+	file_storage_proto_rawDescOnce sync.Once
+	file_storage_proto_rawDescData []byte
 )
 
-func file_storage_storage_proto_rawDescGZIP() []byte {
-	file_storage_storage_proto_rawDescOnce.Do(func() {
-		file_storage_storage_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_storage_storage_proto_rawDesc), len(file_storage_storage_proto_rawDesc)))
+func file_storage_proto_rawDescGZIP() []byte {
+	file_storage_proto_rawDescOnce.Do(func() {
+		file_storage_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_storage_proto_rawDesc), len(file_storage_proto_rawDesc)))
 	})
-	return file_storage_storage_proto_rawDescData
+	return file_storage_proto_rawDescData
 }
 
-var file_storage_storage_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_storage_storage_proto_goTypes = []any{
+var file_storage_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_storage_proto_goTypes = []any{
 	(*Observations)(nil), // 0: org.datacommons.proto.Observations
 	nil,                  // 1: org.datacommons.proto.Observations.ValuesEntry
 }
-var file_storage_storage_proto_depIdxs = []int32{
+var file_storage_proto_depIdxs = []int32{
 	1, // 0: org.datacommons.proto.Observations.values:type_name -> org.datacommons.proto.Observations.ValuesEntry
 	1, // [1:1] is the sub-list for method output_type
 	1, // [1:1] is the sub-list for method input_type
@@ -105,26 +105,26 @@ var file_storage_storage_proto_depIdxs = []int32{
 	0, // [0:1] is the sub-list for field type_name
 }
 
-func init() { file_storage_storage_proto_init() }
-func file_storage_storage_proto_init() {
-	if File_storage_storage_proto != nil {
+func init() { file_storage_proto_init() }
+func file_storage_proto_init() {
+	if File_storage_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_storage_storage_proto_rawDesc), len(file_storage_storage_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_storage_proto_rawDesc), len(file_storage_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_storage_storage_proto_goTypes,
-		DependencyIndexes: file_storage_storage_proto_depIdxs,
-		MessageInfos:      file_storage_storage_proto_msgTypes,
+		GoTypes:           file_storage_proto_goTypes,
+		DependencyIndexes: file_storage_proto_depIdxs,
+		MessageInfos:      file_storage_proto_msgTypes,
 	}.Build()
-	File_storage_storage_proto = out.File
-	file_storage_storage_proto_goTypes = nil
-	file_storage_storage_proto_depIdxs = nil
+	File_storage_proto = out.File
+	file_storage_proto_goTypes = nil
+	file_storage_proto_depIdxs = nil
 }

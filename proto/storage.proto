@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package org.datacommons.proto;
 
-option go_package = "github.com/datacommonsorg/mixer/internal/proto/storage";
+option go_package = "github.com/datacommonsorg/mixer/internal/proto";
 
 // Includes protos that are used in spanner storage.
 // The protos are typically gzipped and stored in a bytes column.

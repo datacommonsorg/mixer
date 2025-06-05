@@ -241,51 +241,55 @@ func isExistenceRequest(selectFields []string) bool {
 	return !isObservationRequest(&qo) && !qo.facet
 }
 
-func buildBaseObsStatement(variables []string, entities []string, date string, filterObs bool) spanner.Statement {
+func buildBaseObsStatement(variables []string, entities []string, filterObs bool) spanner.Statement {
 	stmt := spanner.Statement{
 		Params: map[string]interface{}{},
 	}
-	filters := []string{}
 
-	var baseStmt string
-	var obsStmt string
-	switch date {
-	case "":
-		baseStmt = statements.getObs
-		obsStmt = statements.allObs
-	case shared.LATEST:
-		baseStmt = statements.getObs
-		obsStmt = statements.latestObs
-	default:
-		baseStmt = statements.getDateObs
-		stmt.Params["date"] = fmt.Sprintf("$.%s", date)
-		obsStmt = statements.dateObs
-		filters = append(filters, statements.selectDate)
-	}
-
+	obsStmt := statements.allObs
 	if filterObs {
 		obsStmt = statements.emptyObs
 	}
-	stmt.SQL = fmt.Sprintf(baseStmt, obsStmt)
+	stmt.SQL = fmt.Sprintf(statements.getObs, obsStmt)
 
+	filters := []string{}
 	if len(variables) > 0 {
 		stmt.Params["variables"] = variables
 		filters = append(filters, statements.selectVariableDcids)
 	}
-
 	if len(entities) > 0 {
 		stmt.Params["entities"] = entities
 		filters = append(filters, statements.selectEntityDcids)
 	}
-
 	stmt.SQL += WHERE + strings.Join(filters, AND)
 
 	return stmt
 }
 
-func filterObservationsByFacet(observations []*Observation, filter *pbv2.FacetFilter) []*Observation {
+func filterTimeSeriesByDate(ts *TimeSeries, date string) {
+	switch date {
+	case "":
+	case shared.LATEST:
+		if ts == nil || *ts == nil || len(*ts) == 0 {
+			*ts = TimeSeries{}
+		} else {
+			*ts = TimeSeries{(*ts)[len(*ts)-1]}
+		}
+	default:
+		for _, dv := range *ts {
+			if dv.Date == date {
+				*ts = TimeSeries{dv}
+				return
+			}
+		}
+		*ts = TimeSeries{}
+	}
+}
+
+func filterObservationsByDateAndFacet(observations []*Observation, date string, filter *pbv2.FacetFilter) []*Observation {
 	var filtered []*Observation
 	for _, observation := range observations {
+		filterTimeSeriesByDate(&observation.Observations, date)
 		facet := observationToFacet(observation)
 		if util.ShouldIncludeFacet(filter, facet) {
 			filtered = append(filtered, observation)
@@ -509,9 +513,9 @@ func observationsToOrderedFacets(observations []*Observation, includeObs bool) (
 func observationToFacetObservation(observation *Observation, includeObs bool) (*pb.PlaceVariableFacet, *pbv2.FacetObservation) {
 	facet := observationToFacet(observation)
 
-	var timeSeries []*pb.PointStat
-	for date, value := range observation.Observations.GetValues() {
-		pointStat, err := buildPointStat(date, value)
+	var observations []*pb.PointStat
+	for _, dateValue := range observation.Observations {
+		pointStat, err := dateValueToPointStat(dateValue)
 
 		// Skip observations with non-numeric values.
 		if err != nil {
@@ -519,22 +523,22 @@ func observationToFacetObservation(observation *Observation, includeObs bool) (*
 			continue
 		}
 
-		timeSeries = append(timeSeries, pointStat)
+		observations = append(observations, pointStat)
 	}
 
-	if len(timeSeries) == 0 {
+	if len(observations) == 0 {
 		return nil, nil
 	}
 
 	facetObservation := &pbv2.FacetObservation{
 		FacetId:      util.GetFacetID(facet),
-		ObsCount:     *proto.Int32(int32(len(timeSeries))),
-		EarliestDate: timeSeries[0].Date,
-		LatestDate:   timeSeries[len(timeSeries)-1].Date,
+		ObsCount:     *proto.Int32(int32(len(observations))),
+		EarliestDate: observations[0].Date,
+		LatestDate:   observations[len(observations)-1].Date,
 	}
 
 	if includeObs {
-		facetObservation.Observations = timeSeries
+		facetObservation.Observations = observations
 	}
 
 	placeVariableFacet := &pb.PlaceVariableFacet{
@@ -559,13 +563,13 @@ func observationToFacet(observation *Observation) *pb.Facet {
 	return &facet
 }
 
-func buildPointStat(date, value string) (*pb.PointStat, error) {
-	floatVal, err := strconv.ParseFloat(value, 64)
+func dateValueToPointStat(dateValue *DateValue) (*pb.PointStat, error) {
+	floatVal, err := strconv.ParseFloat(dateValue.Value, 64)
 	if err != nil {
-		return nil, fmt.Errorf("failed to decode TimeSeries float value: (%v) for date: (%v)", floatVal, date)
+		return nil, fmt.Errorf("failed to decode TimeSeries float value: (%v) for date: (%v)", floatVal, dateValue.Date)
 	}
 	return &pb.PointStat{
-		Date:  date,
+		Date:  dateValue.Date,
 		Value: proto.Float64(floatVal),
 	}, nil
 }

@@ -361,20 +361,8 @@ func TestGetObservations(t *testing.T) {
 			filterObs:  true,
 			goldenFile: "get_observations_entity.json",
 		},
-		{
-			entities:   []string{"country/CAN"},
-			variables:  []string{"Count_Person"},
-			date:       "LATEST",
-			goldenFile: "get_observations_latest.json",
-		},
-		{
-			entities:   []string{"country/CAN"},
-			variables:  []string{"Count_Person"},
-			date:       "2020",
-			goldenFile: "get_observations_date.json",
-		},
 	} {
-		actual, err := client.GetObservations(ctx, c.variables, c.entities, c.date, c.filterObs)
+		actual, err := client.GetObservations(ctx, c.variables, c.entities, c.filterObs)
 
 		if err != nil {
 			t.Fatalf("GetObservations error (%v): %v", c.goldenFile, err)
@@ -427,20 +415,8 @@ func TestGetObservationsContainedInPlace(t *testing.T) {
 			containedInPlace: &v2.ContainedInPlace{Ancestor: "geoId/06", ChildPlaceType: "County"},
 			goldenFile:       "get_observations_contained_in.json",
 		},
-		{
-			variables:        []string{"Median_Age_Person"},
-			containedInPlace: &v2.ContainedInPlace{Ancestor: "geoId/10", ChildPlaceType: "County"},
-			date:             "LATEST",
-			goldenFile:       "get_observations_contained_in_latest.json",
-		},
-		{
-			variables:        []string{"Median_Age_Person"},
-			containedInPlace: &v2.ContainedInPlace{Ancestor: "geoId/10", ChildPlaceType: "County"},
-			date:             "2020",
-			goldenFile:       "get_observations_contained_in_date.json",
-		},
 	} {
-		actual, err := client.GetObservationsContainedInPlace(ctx, c.variables, c.containedInPlace, c.date, c.filterObs)
+		actual, err := client.GetObservationsContainedInPlace(ctx, c.variables, c.containedInPlace, c.filterObs)
 
 		if err != nil {
 			t.Fatalf("GetObservations error (%v): %v", c.goldenFile, err)

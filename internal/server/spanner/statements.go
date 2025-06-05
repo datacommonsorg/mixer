@@ -45,22 +45,14 @@ var statements = struct {
 	applyLimit string
 	// Fetch Observations.
 	getObs string
-	// Fetch Observations for a specific date.
-	getDateObs string
 	// Subquery to return all Observations.
 	allObs string
-	// Subquery to return the latest Observations.
-	latestObs string
-	// Subquery to return Observations for a specific date.
-	dateObs string
 	// Subquery to return empty Observations.
 	emptyObs string
 	// Filter by variable dcids.
 	selectVariableDcids string
 	// Filter by entity dcids.
 	selectEntityDcids string
-	// Filter by date.
-	selectDate string
 	// Fetch observations for variable + contained in place.
 	getObsByVariableAndContainedInPlace string
 	// Search nodes by name only.
@@ -153,7 +145,7 @@ var statements = struct {
 			m.subject_id,
 			n.subject_id AS object_id,
 			'' AS object_value,
-			NULL AS object_bytes,
+			CAST(NULL AS BYTES) AS object_bytes,
 			COALESCE(n.name, '') AS name,
 			COALESCE(n.types, []) AS types
 		UNION ALL
@@ -214,18 +206,13 @@ var statements = struct {
 			AND m!= n
 		RETURN 
 			m.subject_id,
-			n.subject_id AS object_id,
-			COALESCE(n.name, '') AS name,
-			COALESCE(n.types, []) AS types
-		NEXT
-		RETURN
-			subject_id, 
 			@result_predicate AS predicate,
-			object_id,
+			n.subject_id AS object_id,
 			'' AS object_value,
 			'' AS provenance, 
-			name, 
-			types
+			CAST(NULL AS BYTES) AS object_bytes,
+			COALESCE(n.name, '') AS name,
+			COALESCE(n.types, []) AS types
 		ORDER BY
 			subject_id,
 			predicate,
@@ -275,41 +262,17 @@ var statements = struct {
 		FROM 
 			Observation
 	`,
-	getDateObs: `
-		SELECT
-			variable_measured,
-			observation_about,
-			%s,
-			import_name,
-			COALESCE(observation_period, '') AS observation_period,
-			COALESCE(measurement_method, '') AS measurement_method,
-			COALESCE(unit, '') AS unit,
-			COALESCE(scaling_factor, '') AS scaling_factor,
-			provenance_url
-		FROM 
-			Observation,
-			UNNEST(observations) as obs
-	`,
 	allObs: `
 		observations
 	`,
-	latestObs: `
-		[observations[ARRAY_LENGTH(observations)-1]] AS observations
-	`,
-	dateObs: `
-		[obs] AS observations
-	`,
 	emptyObs: `
-		ARRAY<JSON>[] AS observations
+		'' AS observations
 	`,
 	selectVariableDcids: `
 		variable_measured IN UNNEST(@variables)
 	`,
 	selectEntityDcids: `
 		observation_about IN UNNEST(@entities)
-	`,
-	selectDate: `
-		JSON_VALUE(obs, @date) IS NOT NULL
 	`,
 	getObsByVariableAndContainedInPlace: `
 		SELECT

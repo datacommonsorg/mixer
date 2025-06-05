@@ -5,18 +5,14 @@
         "containedInPlace+": {
           "nodes": [
             {
-              "name": "Alum Rock",
               "types": [
-                "City",
-                "Neighborhood"
+                "Thing"
               ],
               "dcid": "geoId/0601458"
             },
             {
-              "name": "Alviso",
               "types": [
-                "City",
-                "Neighborhood"
+                "Thing"
               ],
               "dcid": "geoId/0601486"
             },
@@ -37,9 +33,8 @@
               "dcid": "geoId/0608968"
             },
             {
-              "name": "Cambrian Park",
               "types": [
-                "City"
+                "Thing"
               ],
               "dcid": "geoId/0610088"
             },
@@ -66,9 +61,8 @@
               "dcid": "geoId/0620598"
             },
             {
-              "name": "Fruitdale",
               "types": [
-                "City"
+                "Thing"
               ],
               "dcid": "geoId/0627080"
             },
@@ -131,16 +125,14 @@
               "dcid": "geoId/0648956"
             },
             {
-              "name": "Morgan Hill",
               "types": [
-                "City"
+                "Thing"
               ],
               "dcid": "geoId/0649278"
             },
             {
-              "name": "Mountain View",
               "types": [
-                "City"
+                "Thing"
               ],
               "dcid": "geoId/0649670"
             },
@@ -159,9 +151,8 @@
               "dcid": "geoId/0668000"
             },
             {
-              "name": "San Martin",
               "types": [
-                "City"
+                "Thing"
               ],
               "dcid": "geoId/0668238"
             },
@@ -187,9 +178,8 @@
               "dcid": "geoId/0671074"
             },
             {
-              "name": "Stanford",
               "types": [
-                "City"
+                "Thing"
               ],
               "dcid": "geoId/0673906"
             },
@@ -201,10 +191,23 @@
               "dcid": "geoId/0677000"
             },
             {
-              "name": "Cambrian Park",
+              "name": "Mayfield",
+              "types": [
+                "City"
+              ],
+              "dcid": "wikidataId/Q122853535"
+            },
+            {
+              "name": "Lexington",
               "types": [
                 "City",
-                "Neighborhood"
+                "Village"
+              ],
+              "dcid": "wikidataId/Q14946652"
+            },
+            {
+              "types": [
+                "Thing"
               ],
               "dcid": "wikidataId/Q1911837"
             },
@@ -215,6 +218,30 @@
                 "Neighborhood"
               ],
               "dcid": "wikidataId/Q2214519"
+            },
+            {
+              "name": "Alma",
+              "types": [
+                "City",
+                "Village"
+              ],
+              "dcid": "wikidataId/Q4733495"
+            },
+            {
+              "name": "Patchen",
+              "types": [
+                "City",
+                "Village"
+              ],
+              "dcid": "wikidataId/Q7144355"
+            },
+            {
+              "name": "Wrights",
+              "types": [
+                "City",
+                "Village"
+              ],
+              "dcid": "wikidataId/Q8038293"
             }
           ]
         }

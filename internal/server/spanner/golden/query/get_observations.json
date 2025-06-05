@@ -36,12 +36,11 @@
         "Value": "36.6666666666667"
       }
     ],
-    "Provenance": "dc/base/EPA_EJSCREEN_AggCensusTract_AggCounty",
+    "ImportName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
     "ObservationPeriod": "P1Y",
-    "MeasurementMethod": "DataCommonsAggregate",
+    "MeasurementMethod": "",
     "Unit": "PerMillionPerson",
     "ScalingFactor": "",
-    "ImportName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
     "ProvenanceURL": "https://gaftp.epa.gov/EJSCREEN/"
   },
   {
@@ -70,23 +69,22 @@
       },
       {
         "Date": "2021",
-        "Value": "8"
+        "Value": "8.0"
       },
       {
         "Date": "2022",
-        "Value": "8"
+        "Value": "8.0"
       },
       {
         "Date": "2023",
-        "Value": "5"
+        "Value": "5.0"
       }
     ],
-    "Provenance": "dc/base/EPA_EJSCREEN_AggCensusTract_AggCounty",
+    "ImportName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
     "ObservationPeriod": "P1Y",
-    "MeasurementMethod": "DataCommonsAggregate",
+    "MeasurementMethod": "",
     "Unit": "PerMillionPerson",
     "ScalingFactor": "",
-    "ImportName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
     "ProvenanceURL": "https://gaftp.epa.gov/EJSCREEN/"
   }
 ]
