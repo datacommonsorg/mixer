@@ -235,22 +235,11 @@ func isObservationRequest(qo *queryOptions) bool {
 	return qo.date && qo.value
 }
 
-// Whether the queryOptions are for an existence request.
-func isExistenceRequest(selectFields []string) bool {
-	qo := selectFieldsToQueryOptions(selectFields)
-	return !isObservationRequest(&qo) && !qo.facet
-}
-
-func buildBaseObsStatement(variables []string, entities []string, filterObs bool) spanner.Statement {
+func buildBaseObsStatement(variables []string, entities []string) spanner.Statement {
 	stmt := spanner.Statement{
+		SQL:    statements.getObs,
 		Params: map[string]interface{}{},
 	}
-
-	obsStmt := statements.allObs
-	if filterObs {
-		obsStmt = statements.emptyObs
-	}
-	stmt.SQL = fmt.Sprintf(statements.getObs, obsStmt)
 
 	filters := []string{}
 	if len(variables) > 0 {

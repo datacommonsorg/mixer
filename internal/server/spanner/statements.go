@@ -45,10 +45,6 @@ var statements = struct {
 	applyLimit string
 	// Fetch Observations.
 	getObs string
-	// Subquery to return all Observations.
-	allObs string
-	// Subquery to return empty Observations.
-	emptyObs string
 	// Filter by variable dcids.
 	selectVariableDcids string
 	// Filter by entity dcids.
@@ -252,7 +248,7 @@ var statements = struct {
 		SELECT
 			variable_measured,
 			observation_about,
-			%s,
+			observations,
 			import_name,
 			COALESCE(observation_period, '') AS observation_period,
 			COALESCE(measurement_method, '') AS measurement_method,
@@ -261,12 +257,6 @@ var statements = struct {
 			provenance_url
 		FROM 
 			Observation
-	`,
-	allObs: `
-		observations
-	`,
-	emptyObs: `
-		'' AS observations
 	`,
 	selectVariableDcids: `
 		variable_measured IN UNNEST(@variables)
