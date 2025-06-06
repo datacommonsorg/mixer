@@ -2,15 +2,7 @@
   "Count_Person": [
     {
       "SubjectID": "Count_Person",
-      "Predicate": "extendedName"
-    },
-    {
-      "SubjectID": "Count_Person",
-      "Predicate": "localCuratorLevelId"
-    },
-    {
-      "SubjectID": "Count_Person",
-      "Predicate": "measuredProp"
+      "Predicate": "measuredProperty"
     },
     {
       "SubjectID": "Count_Person",
@@ -23,6 +15,10 @@
     {
       "SubjectID": "Count_Person",
       "Predicate": "populationType"
+    },
+    {
+      "SubjectID": "Count_Person",
+      "Predicate": "provenance"
     },
     {
       "SubjectID": "Count_Person",
@@ -40,15 +36,11 @@
     },
     {
       "SubjectID": "Person",
-      "Predicate": "extendedName"
-    },
-    {
-      "SubjectID": "Person",
-      "Predicate": "localCuratorLevelId"
-    },
-    {
-      "SubjectID": "Person",
       "Predicate": "name"
+    },
+    {
+      "SubjectID": "Person",
+      "Predicate": "provenance"
     },
     {
       "SubjectID": "Person",

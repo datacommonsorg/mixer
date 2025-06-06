@@ -165,7 +165,11 @@ func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge
 			nodeResponse.NextToken = nextToken
 		}
 
-		nodeResponse.Data[subjectID] = nodeEdgesToLinkedGraph(edges)
+		linkedGraph, err := nodeEdgesToLinkedGraph(edges)
+		if err != nil {
+			return nil, err
+		}
+		nodeResponse.Data[subjectID] = linkedGraph
 	}
 
 	return nodeResponse, nil
@@ -173,7 +177,7 @@ func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge
 
 // nodeEdgesToLinkedGraph converts an array of edges to a LinkedGraph proto.
 // This method assumes all edges are from the same entity.
-func nodeEdgesToLinkedGraph(edges []*Edge) *pbv2.LinkedGraph {
+func nodeEdgesToLinkedGraph(edges []*Edge) (*pbv2.LinkedGraph, error) {
 	linkedGraph := &pbv2.LinkedGraph{
 		Arcs: make(map[string]*pbv2.Nodes),
 	}
@@ -190,12 +194,22 @@ func nodeEdgesToLinkedGraph(edges []*Edge) *pbv2.LinkedGraph {
 			ProvenanceId: edge.Provenance,
 			Value:        edge.ObjectValue,
 		}
+
+		// Use object_bytes if set.
+		if edge.ObjectBytes != nil {
+			bytes, err := util.Unzip(edge.ObjectBytes)
+			if err != nil {
+				return nil, err
+			}
+			node.Value = string(bytes)
+		}
+
 		nodes.Nodes = append(nodes.Nodes, node)
 
 		linkedGraph.Arcs[edge.Predicate] = nodes
 	}
 
-	return linkedGraph
+	return linkedGraph, nil
 }
 
 func selectFieldsToQueryOptions(selectFields []string) queryOptions {
@@ -221,57 +235,50 @@ func isObservationRequest(qo *queryOptions) bool {
 	return qo.date && qo.value
 }
 
-// Whether the queryOptions are for an existence request.
-func isExistenceRequest(selectFields []string) bool {
-	qo := selectFieldsToQueryOptions(selectFields)
-	return !isObservationRequest(&qo) && !qo.facet
-}
-
-func buildBaseObsStatement(variables []string, entities []string, date string, filterObs bool) spanner.Statement {
+func buildBaseObsStatement(variables []string, entities []string) spanner.Statement {
 	stmt := spanner.Statement{
+		SQL:    statements.getObs,
 		Params: map[string]interface{}{},
 	}
+
 	filters := []string{}
-
-	var baseStmt string
-	var obsStmt string
-	switch date {
-	case "":
-		baseStmt = statements.getObs
-		obsStmt = statements.allObs
-	case shared.LATEST:
-		baseStmt = statements.getObs
-		obsStmt = statements.latestObs
-	default:
-		baseStmt = statements.getDateObs
-		stmt.Params["date"] = fmt.Sprintf("$.%s", date)
-		obsStmt = statements.dateObs
-		filters = append(filters, statements.selectDate)
-	}
-
-	if filterObs {
-		obsStmt = statements.emptyObs
-	}
-	stmt.SQL = fmt.Sprintf(baseStmt, obsStmt)
-
 	if len(variables) > 0 {
 		stmt.Params["variables"] = variables
 		filters = append(filters, statements.selectVariableDcids)
 	}
-
 	if len(entities) > 0 {
 		stmt.Params["entities"] = entities
 		filters = append(filters, statements.selectEntityDcids)
 	}
-
 	stmt.SQL += WHERE + strings.Join(filters, AND)
 
 	return stmt
 }
 
-func filterObservationsByFacet(observations []*Observation, filter *pbv2.FacetFilter) []*Observation {
+func filterTimeSeriesByDate(ts *TimeSeries, date string) {
+	switch date {
+	case "":
+	case shared.LATEST:
+		if ts == nil || *ts == nil || len(*ts) == 0 {
+			*ts = TimeSeries{}
+		} else {
+			*ts = TimeSeries{(*ts)[len(*ts)-1]}
+		}
+	default:
+		for _, dv := range *ts {
+			if dv.Date == date {
+				*ts = TimeSeries{dv}
+				return
+			}
+		}
+		*ts = TimeSeries{}
+	}
+}
+
+func filterObservationsByDateAndFacet(observations []*Observation, date string, filter *pbv2.FacetFilter) []*Observation {
 	var filtered []*Observation
 	for _, observation := range observations {
+		filterTimeSeriesByDate(&observation.Observations, date)
 		facet := observationToFacet(observation)
 		if util.ShouldIncludeFacet(filter, facet) {
 			filtered = append(filtered, observation)
@@ -496,7 +503,6 @@ func observationToFacetObservation(observation *Observation, includeObs bool) (*
 	facet := observationToFacet(observation)
 
 	var observations []*pb.PointStat
-
 	for _, dateValue := range observation.Observations {
 		pointStat, err := dateValueToPointStat(dateValue)
 

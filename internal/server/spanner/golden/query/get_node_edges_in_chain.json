@@ -5,6 +5,7 @@
       "Predicate": "specializationOf+",
       "ObjectID": "dc/g/Farm_FarmInventoryStatus-InventorySold",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
       "Name": "Farm With Farm Inventory Status = Inventory Sold",
       "Types": [
@@ -16,6 +17,7 @@
       "Predicate": "specializationOf+",
       "ObjectID": "dc/g/Farm_FarmInventoryStatus-InventorySold_FarmInventoryType",
       "ObjectValue": "",
+      "ObjectBytes": null,
       "Provenance": "",
       "Name": "Farm With Farm Inventory Status = Inventory Sold, Farm Inventory Type",
       "Types": [

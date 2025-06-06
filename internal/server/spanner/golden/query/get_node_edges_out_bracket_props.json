@@ -1,24 +1,50 @@
 {
-  "Person": [
+  "geoId/5129600": [
     {
-      "SubjectID": "Person",
-      "Predicate": "source",
-      "ObjectID": "",
-      "ObjectValue": "https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources",
-      "Provenance": "dc/base/BaseSchema",
+      "SubjectID": "geoId/5129600",
+      "Predicate": "containedInPlace",
+      "ObjectID": "geoId/51",
+      "ObjectValue": "",
+      "ObjectBytes": null,
+      "Provenance": "dc/base/BaseGeos",
       "Name": "",
-      "Types": []
+      "Types": [
+        "Thing"
+      ]
     },
     {
-      "SubjectID": "Person",
-      "Predicate": "subClassOf",
-      "ObjectID": "Thing",
+      "SubjectID": "geoId/5129600",
+      "Predicate": "containedInPlace",
+      "ObjectID": "geoId/51620",
       "ObjectValue": "",
-      "Provenance": "dc/base/BaseSchema",
-      "Name": "Thing",
+      "ObjectBytes": null,
+      "Provenance": "dc/base/BaseGeos",
+      "Name": "Franklin",
       "Types": [
-        "Class"
+        "County"
       ]
+    },
+    {
+      "SubjectID": "geoId/5129600",
+      "Predicate": "containedInPlace",
+      "ObjectID": "zip/23851",
+      "ObjectValue": "",
+      "ObjectBytes": null,
+      "Provenance": "dc/base/BaseGeos",
+      "Name": "23851",
+      "Types": [
+        "CensusZipCodeTabulationArea"
+      ]
+    },
+    {
+      "SubjectID": "geoId/5129600",
+      "Predicate": "geoJsonCoordinatesDP3",
+      "ObjectID": "",
+      "ObjectValue": "",
+      "ObjectBytes": "H4sIAAAAAAAA/6tWKqksSFWyUlAKyM+pTM/PU9JRUErOzy9KycxLLEktBspER0frmpvpWZpZGFvqKBib6ZkbGJhaxOooQIQNQTywuJmJuaGJGVwCTX1sbC0AlFmvdW0AAAA=",
+      "Provenance": "dc/base/BaseGeos",
+      "Name": "",
+      "Types": []
     }
   ]
 }

@@ -117,16 +117,16 @@ func TestGetNodeOutEdgesByID(t *testing.T) {
 			ids: []string{"Person"},
 			arc: &v2.Arc{
 				Out:        true,
-				SingleProp: "extendedName",
+				SingleProp: "source",
 			},
 			offset:     0,
 			goldenFile: "get_node_edges_out_single_prop.json",
 		},
 		{
-			ids: []string{"Person"},
+			ids: []string{"geoId/5129600"},
 			arc: &v2.Arc{
 				Out:          true,
-				BracketProps: []string{"source", "subClassOf"},
+				BracketProps: []string{"containedInPlace", "geoJsonCoordinatesDP3"},
 			},
 			offset:     0,
 			goldenFile: "get_node_edges_out_bracket_props.json",
@@ -136,8 +136,8 @@ func TestGetNodeOutEdgesByID(t *testing.T) {
 			arc: &v2.Arc{
 				Out: true,
 				Filter: map[string][]string{
-					"subClassOf":   {"AdministrativeArea"},
-					"extendedName": {"AdministrativeArea2"},
+					"subClassOf": {"AdministrativeArea"},
+					"name":       {"AdministrativeArea2"},
 				},
 			},
 			offset:     0,
@@ -235,7 +235,7 @@ func TestGetNodeInEdgesByID(t *testing.T) {
 				Out: false,
 				Filter: map[string][]string{
 					"farmInventoryType": {"Melon"},
-					"extendedName":      {"Area of Farm: Melon"},
+					"name":              {"Area of Farm: Melon"},
 				},
 			},
 			offset:     0,
@@ -282,7 +282,7 @@ func TestGetNodeInEdgesByID(t *testing.T) {
 			goldenFile: "get_node_edges_second_page.json",
 		},
 		{
-			ids: []string{"dc/g/Root"},
+			ids: []string{"dc/g/UN"},
 			arc: &v2.Arc{
 				Out:        false,
 				SingleProp: "specializationOf",
@@ -292,7 +292,7 @@ func TestGetNodeInEdgesByID(t *testing.T) {
 			goldenFile: "get_node_edges_first_page_chain.json",
 		},
 		{
-			ids: []string{"dc/g/Root"},
+			ids: []string{"dc/g/UN"},
 			arc: &v2.Arc{
 				Out:        false,
 				SingleProp: "specializationOf",
@@ -348,7 +348,6 @@ func TestGetObservations(t *testing.T) {
 		variables  []string
 		entities   []string
 		date       string
-		filterObs  bool
 		goldenFile string
 	}{
 		{
@@ -358,23 +357,10 @@ func TestGetObservations(t *testing.T) {
 		},
 		{
 			entities:   []string{"wikidataId/Q341968"},
-			filterObs:  true,
 			goldenFile: "get_observations_entity.json",
 		},
-		{
-			entities:   []string{"country/CAN"},
-			variables:  []string{"Count_Person"},
-			date:       "LATEST",
-			goldenFile: "get_observations_latest.json",
-		},
-		{
-			entities:   []string{"country/CAN"},
-			variables:  []string{"Count_Person"},
-			date:       "2020",
-			goldenFile: "get_observations_date.json",
-		},
 	} {
-		actual, err := client.GetObservations(ctx, c.variables, c.entities, c.date, c.filterObs)
+		actual, err := client.GetObservations(ctx, c.variables, c.entities)
 
 		if err != nil {
 			t.Fatalf("GetObservations error (%v): %v", c.goldenFile, err)
@@ -419,7 +405,6 @@ func TestGetObservationsContainedInPlace(t *testing.T) {
 		variables        []string
 		containedInPlace *v2.ContainedInPlace
 		date             string
-		filterObs        bool
 		goldenFile       string
 	}{
 		{
@@ -427,20 +412,8 @@ func TestGetObservationsContainedInPlace(t *testing.T) {
 			containedInPlace: &v2.ContainedInPlace{Ancestor: "geoId/06", ChildPlaceType: "County"},
 			goldenFile:       "get_observations_contained_in.json",
 		},
-		{
-			variables:        []string{"Median_Age_Person"},
-			containedInPlace: &v2.ContainedInPlace{Ancestor: "geoId/10", ChildPlaceType: "County"},
-			date:             "LATEST",
-			goldenFile:       "get_observations_contained_in_latest.json",
-		},
-		{
-			variables:        []string{"Median_Age_Person"},
-			containedInPlace: &v2.ContainedInPlace{Ancestor: "geoId/10", ChildPlaceType: "County"},
-			date:             "2020",
-			goldenFile:       "get_observations_contained_in_date.json",
-		},
 	} {
-		actual, err := client.GetObservationsContainedInPlace(ctx, c.variables, c.containedInPlace, c.date, c.filterObs)
+		actual, err := client.GetObservationsContainedInPlace(ctx, c.variables, c.containedInPlace)
 
 		if err != nil {
 			t.Fatalf("GetObservations error (%v): %v", c.goldenFile, err)

@@ -3,6 +3,14 @@
     {
       "SubjectID": "Count_Person",
       "Predicate": "measurementDenominator"
+    },
+    {
+      "SubjectID": "Count_Person",
+      "Predicate": "outputProperty"
+    },
+    {
+      "SubjectID": "Count_Person",
+      "Predicate": "relevantVariable"
     }
   ],
   "Person": [

@@ -43,7 +43,7 @@
         "wikidataId/Q4671576": {
           "ordered_facets": [
             {
-              "facet_id": "3641880131",
+              "facet_id": "1861139314",
               "observations": [
                 {
                   "date": "2012-09",
@@ -75,7 +75,7 @@
               "latest_date": "2022-02"
             },
             {
-              "facet_id": "992801983",
+              "facet_id": "2856967510",
               "observations": [
                 {
                   "date": "2012",
@@ -208,6 +208,11 @@
       "provenance_url": "https://www.wikipedia.org",
       "measurement_method": "Wikipedia"
     },
+    "1861139314": {
+      "import_name": "NASA_VIIRSActiveFiresEvents_Agg",
+      "provenance_url": "https://firms.modaps.eosdis.nasa.gov/active_fire/",
+      "observation_period": "P1M"
+    },
     "2074204934": {
       "import_name": "DynamicWorld_FloodEvents_Places_AutoRefresh",
       "provenance_url": "https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1",
@@ -223,23 +228,16 @@
       "provenance_url": "https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1",
       "observation_period": "P1Y"
     },
-    "3641880131": {
+    "2856967510": {
       "import_name": "NASA_VIIRSActiveFiresEvents_Agg",
       "provenance_url": "https://firms.modaps.eosdis.nasa.gov/active_fire/",
-      "measurement_method": "DataCommonsAggregate",
-      "observation_period": "P1M"
+      "observation_period": "P1Y"
     },
     "767211349": {
       "import_name": "DynamicWorld_FloodEvents_Places_AutoRefresh",
       "provenance_url": "https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1",
       "observation_period": "P1Y",
       "unit": "SquareKilometer"
-    },
-    "992801983": {
-      "import_name": "NASA_VIIRSActiveFiresEvents_Agg",
-      "provenance_url": "https://firms.modaps.eosdis.nasa.gov/active_fire/",
-      "measurement_method": "DataCommonsAggregate",
-      "observation_period": "P1Y"
     }
   }
 }

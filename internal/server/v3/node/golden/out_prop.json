@@ -3,13 +3,13 @@
     "Count_Person_Female": {
       "properties": [
         "constraintProperties",
-        "extendedName",
+        "description",
         "gender",
-        "localCuratorLevelId",
-        "measuredProp",
+        "measuredProperty",
         "memberOf",
         "name",
         "populationType",
+        "provenance",
         "statType",
         "typeOf"
       ]

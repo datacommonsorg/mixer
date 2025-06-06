@@ -45,22 +45,10 @@ var statements = struct {
 	applyLimit string
 	// Fetch Observations.
 	getObs string
-	// Fetch Observations for a specific date.
-	getDateObs string
-	// Subquery to return all Observations.
-	allObs string
-	// Subquery to return the latest Observations.
-	latestObs string
-	// Subquery to return Observations for a specific date.
-	dateObs string
-	// Subquery to return empty Observations.
-	emptyObs string
 	// Filter by variable dcids.
 	selectVariableDcids string
 	// Filter by entity dcids.
 	selectEntityDcids string
-	// Filter by date.
-	selectDate string
 	// Fetch observations for variable + contained in place.
 	getObsByVariableAndContainedInPlace string
 	// Search nodes by name only.
@@ -87,7 +75,7 @@ var statements = struct {
 		GRAPH DCGraph MATCH -[e:Edge
 		WHERE
 			e.object_id IN UNNEST(@ids)
-			AND e.object_value IS NULL
+			AND e.subject_id != e.object_id
 		]->
 		RETURN DISTINCT
 			e.object_id AS subject_id,
@@ -100,25 +88,27 @@ var statements = struct {
 		GRAPH DCGraph MATCH -[e:Edge]->(n:Node)
 		WHERE
 			e.subject_id IN UNNEST(@ids)
-			AND e.object_value IS NULL%[1]s
+			AND e.subject_id != e.object_id%[1]s
 		RETURN 
 			e.subject_id,
 			e.predicate,
 			e.object_id,
-			'' as object_value,
-			COALESCE(e.provenance, '') AS provenance,
-			COALESCE(n.name, '') AS name,
-			COALESCE(n.types, []) AS types
+			e.object_value,
+			e.object_bytes,
+			e.provenance,
+			n.name,
+			n.types
 		UNION ALL
 		MATCH -[e:Edge]->
 		WHERE
 			e.subject_id IN UNNEST(@ids)
-			AND e.object_value IS NOT NULL%[1]s
+			AND e.subject_id = e.object_id%[1]s
 		RETURN 
 			e.subject_id,
 			e.predicate,
 			'' as object_id,
 			e.object_value,
+			e.object_bytes,
 			e.provenance,
 			'' AS name,
 			ARRAY<STRING>[] AS types
@@ -127,7 +117,8 @@ var statements = struct {
 			subject_id,
 			predicate,
 			object_id,
-			object_value,
+			COALESCE(object_value, '') AS object_value,
+			object_bytes,
 			provenance,
 			name,
 			types
@@ -136,6 +127,7 @@ var statements = struct {
 			predicate,
 			object_id,
 			object_value,
+			object_bytes,
 			provenance
 	`,
 	getChainedEdgesBySubjectID: `
@@ -147,20 +139,22 @@ var statements = struct {
 			AND m != n
 		RETURN 
 			m.subject_id,
-			n.subject_id as object_id,
-			'' as object_value,
+			n.subject_id AS object_id,
+			'' AS object_value,
+			CAST(NULL AS BYTES) AS object_bytes,
 			COALESCE(n.name, '') AS name,
 			COALESCE(n.types, []) AS types
 		UNION ALL
 		MATCH -[e:Edge]->
 		WHERE
 			e.subject_id IN UNNEST(@ids)
-			AND e.object_value IS NOT NULL
+			AND e.subject_id = e.object_id
 			AND e.predicate = @predicate
 		RETURN 
 			e.subject_id,
 			'' AS object_id,
-			e.object_value,
+			COALESCE(e.object_value, '') AS object_value,
+			e.object_bytes,
 			'' AS name,
 			ARRAY<STRING>[] AS types
 		NEXT
@@ -169,6 +163,7 @@ var statements = struct {
 			@result_predicate AS predicate,
 			object_id,
 			object_value,
+			object_bytes,
 			'' AS provenance,
 			name, 
 			types
@@ -176,7 +171,8 @@ var statements = struct {
 			subject_id,
 			predicate,
 			object_id,
-			object_value
+			object_value,
+			object_bytes
 	`,
 	getEdgesByObjectID: `
 		GRAPH DCGraph MATCH <-[e:Edge]-(n:Node) 
@@ -188,6 +184,7 @@ var statements = struct {
 			e.predicate,
 			e.subject_id AS object_id,
 			'' AS object_value,
+			e.object_bytes,
 			COALESCE(e.provenance, '') AS provenance,
 			COALESCE(n.name, '') AS name,
 			COALESCE(n.types, []) AS types
@@ -205,18 +202,13 @@ var statements = struct {
 			AND m!= n
 		RETURN 
 			m.subject_id,
-			n.subject_id AS object_id,
-			COALESCE(n.name, '') AS name,
-			COALESCE(n.types, []) AS types
-		NEXT
-		RETURN
-			subject_id, 
 			@result_predicate AS predicate,
-			object_id,
+			n.subject_id AS object_id,
 			'' AS object_value,
 			'' AS provenance, 
-			name, 
-			types
+			CAST(NULL AS BYTES) AS object_bytes,
+			COALESCE(n.name, '') AS name,
+			COALESCE(n.types, []) AS types
 		ORDER BY
 			subject_id,
 			predicate,
@@ -241,6 +233,7 @@ var statements = struct {
 			predicate,
 			object_id,
 			object_value,
+			object_bytes,
 			provenance,
 			name,
 			types			
@@ -255,44 +248,15 @@ var statements = struct {
 		SELECT
 			variable_measured,
 			observation_about,
-			%s,
-			provenance,
+			observations,
+			import_name,
 			COALESCE(observation_period, '') AS observation_period,
 			COALESCE(measurement_method, '') AS measurement_method,
 			COALESCE(unit, '') AS unit,
 			COALESCE(scaling_factor, '') AS scaling_factor,
-			import_name,
 			provenance_url
 		FROM 
 			Observation
-	`,
-	getDateObs: `
-		SELECT
-			variable_measured,
-			observation_about,
-			%s,
-			provenance,
-			COALESCE(observation_period, '') AS observation_period,
-			COALESCE(measurement_method, '') AS measurement_method,
-			COALESCE(unit, '') AS unit,
-			COALESCE(scaling_factor, '') AS scaling_factor,
-			import_name,
-			provenance_url
-		FROM 
-			Observation,
-			UNNEST(observations) as obs
-	`,
-	allObs: `
-		observations
-	`,
-	latestObs: `
-		[observations[ARRAY_LENGTH(observations)-1]] AS observations
-	`,
-	dateObs: `
-		[obs] AS observations
-	`,
-	emptyObs: `
-		ARRAY<JSON>[] AS observations
 	`,
 	selectVariableDcids: `
 		variable_measured IN UNNEST(@variables)
@@ -300,20 +264,16 @@ var statements = struct {
 	selectEntityDcids: `
 		observation_about IN UNNEST(@entities)
 	`,
-	selectDate: `
-		JSON_VALUE(obs, @date) IS NOT NULL
-	`,
 	getObsByVariableAndContainedInPlace: `
 		SELECT
 			obs.variable_measured,
 			obs.observation_about,
 			obs.observations,
-			obs.provenance,
+			obs.import_name,
 			obs.observation_period,
 			obs.measurement_method,
 			obs.unit,
 			obs.scaling_factor,
-			obs.import_name,
 			obs.provenance_url
 		FROM 
 			GRAPH_TABLE (
