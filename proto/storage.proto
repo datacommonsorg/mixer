@@ -6,6 +6,8 @@ option go_package = "github.com/datacommonsorg/mixer/internal/proto";
 
 // Includes protos that are used in spanner storage.
 // The protos are typically gzipped and stored in a bytes column.
+// Corresponds to the proto at github.com/datacommonsorg/import/pipeline/model/src/main/proto/storage.proto
+// These should be kept in sync
 
 // Observations represent the observations (time series) stored in the observations column in the Observation table.
 message Observations {
