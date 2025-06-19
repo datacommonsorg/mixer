@@ -3807,16 +3807,16 @@
                     "placeCount": 143,
                     "topPlaces": [
                       {
-                        "dcid": "wikidataId/Q1062618",
-                        "name": "Chaoyang District"
-                      },
-                      {
                         "dcid": "wikidataId/Q1023893",
                         "name": "Nanhai District"
                       },
                       {
                         "dcid": "wikidataId/Q945428",
                         "name": "Shunde District"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1062618",
+                        "name": "Chaoyang District"
                       }
                     ],
                     "minValue": 12792,
@@ -3989,12 +3989,12 @@
                     "placeCount": 13,
                     "topPlaces": [
                       {
-                        "dcid": "wikidataId/Q2237435",
-                        "name": "Kukatpally"
-                      },
-                      {
                         "dcid": "wikidataId/Q2244063",
                         "name": "L. B. Nagar"
+                      },
+                      {
+                        "dcid": "wikidataId/Q2237435",
+                        "name": "Kukatpally"
                       },
                       {
                         "dcid": "wikidataId/Q2562718",
@@ -4008,16 +4008,16 @@
                     "placeCount": 148,
                     "topPlaces": [
                       {
+                        "dcid": "wikidataId/Q2665241",
+                        "name": "Swabi"
+                      },
+                      {
                         "dcid": "wikidataId/Q148062",
                         "name": "Zarqa"
                       },
                       {
                         "dcid": "wikidataId/Q366754",
                         "name": "Kalyan"
-                      },
-                      {
-                        "dcid": "wikidataId/Q7123293",
-                        "name": "Padawan municipality"
                       }
                     ],
                     "minValue": 12978,
