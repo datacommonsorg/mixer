@@ -24,7 +24,7 @@
             "maxValue": 1214384
           },
           "AdministrativeArea1": {
-            "placeCount": 397,
+            "placeCount": 404,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q3724",
@@ -39,11 +39,11 @@
                 "name": "Oromia Region"
               }
             ],
-            "minValue": 3619.18826,
+            "minValue": 2645,
             "maxValue": 24354012
           },
           "AdministrativeArea2": {
-            "placeCount": 6723,
+            "placeCount": 6738,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1143712",
@@ -2410,11 +2410,11 @@
                 },
                 "minValue": 12013,
                 "maxValue": 3306314,
-                "observationCount": 721,
+                "observationCount": 722,
                 "timeSeriesCount": 32
               }
             ],
-            "observationCount": 721,
+            "observationCount": 722,
             "timeSeriesCount": 32
           },
           "dc/base/Israel_Census": {
@@ -2867,7 +2867,7 @@
               {
                 "seriesKey": {},
                 "earliestDate": "2021",
-                "latestDate": "2021",
+                "latestDate": "2024",
                 "placeTypeSummary": {
                   "AdministrativeArea": {
                     "placeCount": 8,
@@ -2885,11 +2885,11 @@
                         "name": "San Ignacio Río Muerto"
                       }
                     ],
-                    "minValue": 226,
-                    "maxValue": 17209
+                    "minValue": 176,
+                    "maxValue": 19242
                   },
                   "AdministrativeArea1": {
-                    "placeCount": 30,
+                    "placeCount": 31,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q82112",
@@ -2904,11 +2904,11 @@
                         "name": "Veracruz"
                       }
                     ],
-                    "minValue": 400184,
-                    "maxValue": 9003038
+                    "minValue": 384922,
+                    "maxValue": 9063075
                   },
                   "AdministrativeArea2": {
-                    "placeCount": 2227,
+                    "placeCount": 2242,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q2360428",
@@ -2923,12 +2923,16 @@
                         "name": "Ecatepec de Morelos"
                       }
                     ],
-                    "minValue": 53,
-                    "maxValue": 930416
+                    "minValue": 36,
+                    "maxValue": 1042188
                   },
                   "City": {
-                    "placeCount": 46,
+                    "placeCount": 47,
                     "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1489",
+                        "name": "Mexico City"
+                      },
                       {
                         "dcid": "wikidataId/Q204271",
                         "name": "San Luis Potosí"
@@ -2936,25 +2940,10 @@
                       {
                         "dcid": "wikidataId/Q9022",
                         "name": "Guadalajara"
-                      },
-                      {
-                        "dcid": "wikidataId/Q189138",
-                        "name": "Hermosillo"
                       }
                     ],
-                    "minValue": 495,
-                    "maxValue": 775200
-                  },
-                  "Country": {
-                    "placeCount": 1,
-                    "topPlaces": [
-                      {
-                        "dcid": "country/MEX",
-                        "name": "Mexico"
-                      }
-                    ],
-                    "minValue": 65833180,
-                    "maxValue": 65833180
+                    "minValue": 331,
+                    "maxValue": 4788415
                   },
                   "Place": {
                     "placeCount": 29,
@@ -2972,7 +2961,7 @@
                         "name": "Jocotepec"
                       }
                     ],
-                    "minValue": 229,
+                    "minValue": 158,
                     "maxValue": 33157
                   },
                   "Village": {
@@ -2983,56 +2972,26 @@
                         "name": "Bácum"
                       },
                       {
-                        "dcid": "wikidataId/Q20262764",
-                        "name": "Plutarco Elías Calles"
-                      },
-                      {
                         "dcid": "wikidataId/Q2057767",
                         "name": "Erongarícuaro"
+                      },
+                      {
+                        "dcid": "wikidataId/Q3625184",
+                        "name": "Cuilapan de Guerrero"
                       }
                     ],
                     "minValue": 311,
-                    "maxValue": 12493
+                    "maxValue": 15798
                   }
                 },
-                "minValue": 53,
-                "maxValue": 65833180,
-                "observationCount": 2358,
-                "timeSeriesCount": 2358
+                "minValue": 36,
+                "maxValue": 9063075,
+                "observationCount": 4744,
+                "timeSeriesCount": 2374
               }
             ],
-            "observationCount": 2358,
-            "timeSeriesCount": 2358
-          },
-          "dc/base/New_Zealand_Census": {
-            "importName": "New_Zealand_Census",
-            "releaseFrequency": "P1Y",
-            "seriesSummary": [
-              {
-                "seriesKey": {},
-                "earliestDate": "1991",
-                "latestDate": "2022",
-                "placeTypeSummary": {
-                  "Country": {
-                    "placeCount": 1,
-                    "topPlaces": [
-                      {
-                        "dcid": "country/NZL",
-                        "name": "New Zealand"
-                      }
-                    ],
-                    "minValue": 1786000,
-                    "maxValue": 2595500
-                  }
-                },
-                "minValue": 1786000,
-                "maxValue": 2595500,
-                "observationCount": 32,
-                "timeSeriesCount": 1
-              }
-            ],
-            "observationCount": 32,
-            "timeSeriesCount": 1
+            "observationCount": 4744,
+            "timeSeriesCount": 2374
           },
           "dc/base/NigeriaStatistics": {
             "importName": "NigeriaStatistics",
@@ -3793,6 +3752,45 @@
             "observationCount": 17818,
             "timeSeriesCount": 322
           },
+          "dc/base/UAE_Population": {
+            "importName": "UAE_Population",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "isDcAggregate": true
+                },
+                "earliestDate": "1975",
+                "latestDate": "2005",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {
+                    "placeCount": 7,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q613",
+                        "name": "Emirate of Dubai"
+                      },
+                      {
+                        "dcid": "wikidataId/Q187712",
+                        "name": "Emirate of Abu Dhabi"
+                      },
+                      {
+                        "dcid": "wikidataId/Q188810",
+                        "name": "Emirate of Sharjah"
+                      }
+                    ],
+                    "minValue": 2645,
+                    "maxValue": 472665
+                  }
+                },
+                "minValue": 2645,
+                "maxValue": 472665,
+                "observationCount": 35,
+                "timeSeriesCount": 7
+              }
+            ],
+            "observationCount": 35,
+            "timeSeriesCount": 7
+          },
           "dc/base/UNData": {
             "importName": "UNData",
             "seriesSummary": [
@@ -3807,16 +3805,16 @@
                     "placeCount": 143,
                     "topPlaces": [
                       {
-                        "dcid": "wikidataId/Q1062618",
-                        "name": "Chaoyang District"
-                      },
-                      {
                         "dcid": "wikidataId/Q1023893",
                         "name": "Nanhai District"
                       },
                       {
                         "dcid": "wikidataId/Q945428",
                         "name": "Shunde District"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1062618",
+                        "name": "Chaoyang District"
                       }
                     ],
                     "minValue": 12792,
@@ -3989,12 +3987,12 @@
                     "placeCount": 13,
                     "topPlaces": [
                       {
-                        "dcid": "wikidataId/Q2237435",
-                        "name": "Kukatpally"
-                      },
-                      {
                         "dcid": "wikidataId/Q2244063",
                         "name": "L. B. Nagar"
+                      },
+                      {
+                        "dcid": "wikidataId/Q2237435",
+                        "name": "Kukatpally"
                       },
                       {
                         "dcid": "wikidataId/Q2562718",
@@ -4008,16 +4006,16 @@
                     "placeCount": 148,
                     "topPlaces": [
                       {
+                        "dcid": "wikidataId/Q2665241",
+                        "name": "Swabi"
+                      },
+                      {
                         "dcid": "wikidataId/Q148062",
                         "name": "Zarqa"
                       },
                       {
                         "dcid": "wikidataId/Q366754",
                         "name": "Kalyan"
-                      },
-                      {
-                        "dcid": "wikidataId/Q7123293",
-                        "name": "Padawan municipality"
                       }
                     ],
                     "minValue": 12978,
@@ -4707,38 +4705,6 @@
             ],
             "observationCount": 48,
             "timeSeriesCount": 48
-          },
-          "dc/base/New_Zealand_Census": {
-            "importName": "New_Zealand_Census",
-            "releaseFrequency": "P1Y",
-            "seriesSummary": [
-              {
-                "seriesKey": {
-                  "unit": "Percent"
-                },
-                "earliestDate": "1991",
-                "latestDate": "2022",
-                "placeTypeSummary": {
-                  "Country": {
-                    "placeCount": 1,
-                    "topPlaces": [
-                      {
-                        "dcid": "country/NZL",
-                        "name": "New Zealand"
-                      }
-                    ],
-                    "minValue": 1.61,
-                    "maxValue": 2.19
-                  }
-                },
-                "minValue": 1.61,
-                "maxValue": 2.19,
-                "observationCount": 32,
-                "timeSeriesCount": 1
-              }
-            ],
-            "observationCount": 32,
-            "timeSeriesCount": 1
           },
           "dc/base/SouthAfrica_Census": {
             "importName": "SouthAfrica_Census",

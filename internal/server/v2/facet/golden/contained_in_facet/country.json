@@ -26,9 +26,6 @@
               "facet_id": "3956865500"
             },
             {
-              "facet_id": "3251078590"
-            },
-            {
               "facet_id": "2309233061"
             },
             {
@@ -75,9 +72,6 @@
             },
             {
               "facet_id": "607884225"
-            },
-            {
-              "facet_id": "1446742247"
             },
             {
               "facet_id": "1216205004"
@@ -157,9 +151,6 @@
               "facet_id": "3614729857"
             },
             {
-              "facet_id": "1565963938"
-            },
-            {
               "facet_id": "2763329611"
             },
             {
@@ -205,10 +196,6 @@
       "provenance_url": "https://rwanda.opendataforafrica.org/",
       "observation_period": "P1Y"
     },
-    "1446742247": {
-      "import_name": "New_Zealand_Census",
-      "provenance_url": "https://www.stats.govt.nz/"
-    },
     "1456184638": {
       "import_name": "WikipediaStatsData",
       "provenance_url": "https://www.wikipedia.org",
@@ -218,11 +205,6 @@
       "import_name": "USDecennialCensus_RedistrictingRelease",
       "provenance_url": "https://www.census.gov/programs-surveys/decennial-census/about/rdo/summary-files.html",
       "measurement_method": "USDecennialCensus"
-    },
-    "1565963938": {
-      "import_name": "New_Zealand_Census",
-      "provenance_url": "https://www.stats.govt.nz/",
-      "unit": "Year"
     },
     "1733625304": {
       "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
@@ -334,10 +316,6 @@
       "import_name": "Rwanda_Census",
       "provenance_url": "https://rwanda.opendataforafrica.org/",
       "observation_period": "Annual"
-    },
-    "3251078590": {
-      "import_name": "MexicoCensus_AA2",
-      "provenance_url": "https://data.humdata.org/dataset/cod-ps-mex"
     },
     "3357919774": {
       "import_name": "CensusUSAMedianAgeIncome",
