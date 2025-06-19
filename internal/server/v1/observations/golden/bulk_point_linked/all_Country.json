@@ -3197,11 +3197,6 @@
               "facet": "3981252704"
             },
             {
-              "date": "2021",
-              "value": 128972439,
-              "facet": "3251078590"
-            },
-            {
               "date": "2020",
               "value": 126014024,
               "facet": "3614729857"
@@ -3820,11 +3815,6 @@
               "date": "2023",
               "value": 5223100,
               "facet": "3981252704"
-            },
-            {
-              "date": "2022",
-              "value": 5151600,
-              "facet": "1446742247"
             },
             {
               "date": "2023",
@@ -5640,10 +5630,6 @@
       "provenance_url": "https://rwanda.opendataforafrica.org/",
       "observation_period": "P1Y"
     },
-    "1446742247": {
-      "import_name": "New_Zealand_Census",
-      "provenance_url": "https://www.stats.govt.nz/"
-    },
     "1456184638": {
       "import_name": "WikipediaStatsData",
       "provenance_url": "https://www.wikipedia.org",
@@ -5758,10 +5744,6 @@
       "import_name": "Rwanda_Census",
       "provenance_url": "https://rwanda.opendataforafrica.org/",
       "observation_period": "Annual"
-    },
-    "3251078590": {
-      "import_name": "MexicoCensus_AA2",
-      "provenance_url": "https://data.humdata.org/dataset/cod-ps-mex"
     },
     "3614729857": {
       "import_name": "MexicoCensus",

@@ -8917,6 +8917,412 @@
               "provenanceId": "dc/base/EPA_Superfund_Sites"
             },
             {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2001_60131",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2001_60348",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2001_60606",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2001_60876",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2001_62178",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2001_63337",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2002_60257",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2002_60322",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2002_61010",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2002_61182",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2002_61271",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2002_61281",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2002_61971",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2002_62135",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2002_63143",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2002_63169",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2003_61088",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2003_61138",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2003_61434",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2003_61704",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2003_61784",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2003_61903",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2003_61971",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2003_62107",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2003_62642",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2003_62858",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2003_63564",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2004_60729",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2004_62594",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2005_60985",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2006_60320",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2006_61181",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2006_61286",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2006_62127",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2006_62772",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2007_62506",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2007_62605",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2007_63381",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2008_60894",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2008_61139",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2008_62105",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2009_61056",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2010_60725",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2010_62015",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2010_62099",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2010_62188",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2011_60672",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2011_60734",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2011_60812",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2011_60822",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2011_61243",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2011_61357",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2011_61473",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2011_62152",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2012_60632",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2013_61039",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2014_60549",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
+              "types": [
+                "VehicleCrashIncident"
+              ],
+              "dcid": "farsCase/2014_62853",
+              "provenanceId": "dc/base/FARS_CrashNodes"
+            },
+            {
               "name": "Alameda County",
               "types": [
                 "AdministrativeArea2",
