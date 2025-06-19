@@ -645,6 +645,10 @@
       "dcid": "sdg/SI_COV_MATNL.SEX--F"
     },
     {
+      "name": "Proportion of people who perceive their rights to land as secure out of total adult population [Female]",
+      "dcid": "sdg/SP_LGL_LNDSEC.SEX--F"
+    },
+    {
       "name": "Proportion of people with legally recognized documentation of their rights to land out of total adult population [Female]",
       "dcid": "sdg/SP_LGL_LNDDOC.SEX--F"
     },
@@ -3177,6 +3181,10 @@
       "dcid": "Count_MedicalConditionIncident_Female_ConditionCongenitalDisease_Rubella"
     },
     {
+      "name": "Count of female Hepatitis C incidents",
+      "dcid": "Count_MedicalConditionIncident_Female_ConditionHepatitisC"
+    },
+    {
       "name": "Count of female teachers who are civil servant vacancy professors",
       "dcid": "Count_Teacher_CivilServantVacancyProfessor_Female"
     },
@@ -3207,6 +3215,22 @@
     {
       "name": "Count of, Female Meningococcal disease incidents",
       "dcid": "Count_MedicalConditionIncident_Female_ConditionMeningococcalMeningitis"
+    },
+    {
+      "name": "Coverage of treatment interventions (pharmacological, psychosocial and rehabilitation and aftercare services) for substance use disorders [Female, Amphetamine type stimulants]",
+      "dcid": "sdg/SH_SUD_TREAT.SEX--F__SUBSTANCE--AMPHETAMINE_TYPE"
+    },
+    {
+      "name": "Coverage of treatment interventions (pharmacological, psychosocial and rehabilitation and aftercare services) for substance use disorders [Female, Cocaine]",
+      "dcid": "sdg/SH_SUD_TREAT.SEX--F__SUBSTANCE--COCAINE"
+    },
+    {
+      "name": "Coverage of treatment interventions (pharmacological, psychosocial and rehabilitation and aftercare services) for substance use disorders [Female, Drugs]",
+      "dcid": "sdg/SH_SUD_TREAT.SEX--F__SUBSTANCE--DRUGS"
+    },
+    {
+      "name": "Coverage of treatment interventions (pharmacological, psychosocial and rehabilitation and aftercare services) for substance use disorders [Female, Opioids]",
+      "dcid": "sdg/SH_SUD_TREAT.SEX--F__SUBSTANCE--OPIOIDS"
     },
     {
       "name": "Crude Suicide Rates (Per 100 000 Population), Female",
@@ -3975,30 +3999,6 @@
     {
       "name": "Disease burden (number of disability-adjusted life years, DALYs) [Birth asphyxia and birth trauma, Female]",
       "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE051__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Bladder cancer, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE075__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Breast cancer, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE070__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Cardiomyopathy, myocarditis, endocarditis, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE115__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Cardiovascular diseases, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE110__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Cataracts, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE104__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Cervix uteri cancer, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE071__SEX--F"
     }
   ],
   "matches": [

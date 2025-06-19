@@ -13,6 +13,7 @@
       "node": "geoId/06",
       "properties": [
         "affectedPlace",
+        "areaServed",
         "containedInPlace",
         "location",
         "member",
