@@ -58,6 +58,24 @@
         "hasData": true
       },
       {
+        "id": "Mean_Count_Person",
+        "searchNames": [
+          "Mean Population Count of Person",
+          "Mean count of person"
+        ],
+        "displayName": "Mean count of person",
+        "definition": "st=meanValue,mp=count,pt=Person"
+      },
+      {
+        "id": "Mean_IncrementalCount_Person",
+        "searchNames": [
+          "Mean Incremental Count of Person",
+          "Mean incremental count of person"
+        ],
+        "displayName": "Mean incremental count of person",
+        "definition": "st=meanValue,mp=incrementalCount,pt=Person"
+      },
+      {
         "id": "Median_Age_Person",
         "searchNames": [
           "Median Age of Person",
@@ -104,6 +122,16 @@
         "hasData": true
       },
       {
+        "id": "GrowthRate_Count_Person",
+        "searchNames": [
+          "Growth Rate Population Count of Person",
+          "Population growth rate"
+        ],
+        "displayName": "Population growth rate",
+        "definition": "st=growthRate,mp=count,pt=Person",
+        "hasData": true
+      },
+      {
         "id": "Count_Person_InfrastructureProject_BrazilRuralDevelopmentProgram",
         "searchNames": [
           "Population Count of Person With Affected by Is Infrastructure Project, Benefit Program is Brazil_Rural Development Program",
@@ -111,16 +139,6 @@
         ],
         "displayName": "Population: Infrastructure Project, Brazil_Rural Development Program",
         "definition": "mp=count,pt=Person,affectedBy=InfrastructureProject,benefitProgram=Brazil_RuralDevelopmentProgram"
-      },
-      {
-        "id": "GrowthRate_Count_Person",
-        "searchNames": [
-          "Growth Rate Population Count of Person",
-          "Rate of Population Growth"
-        ],
-        "displayName": "Rate of Population Growth",
-        "definition": "st=growthRate,mp=count,pt=Person",
-        "hasData": true
       },
       {
         "id": "Count_Person",
