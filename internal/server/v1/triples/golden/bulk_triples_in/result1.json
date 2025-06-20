@@ -2345,7 +2345,7 @@
         "measurementDenominator": {
           "nodes": [
             {
-              "name": "Healthcare Expenditure Per Person",
+              "name": "Healthcare expenditure per person",
               "types": [
                 "StatisticalVariable"
               ],
@@ -2353,7 +2353,7 @@
               "provenanceId": "dc/base/HumanReadableStatVars"
             },
             {
-              "name": "Amount of Economic Activity (Nominal): Gross Domestic Production (Per Capita)",
+              "name": "Nominal gross domestic product per capita",
               "types": [
                 "StatisticalVariable"
               ],

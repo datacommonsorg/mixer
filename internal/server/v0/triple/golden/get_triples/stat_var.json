@@ -106,7 +106,7 @@
     },
     {
       "subjectId": "Amount_EconomicActivity_ExpenditureActivity_HealthcareExpenditure_AsFractionOf_Count_Person",
-      "subjectName": "Healthcare Expenditure Per Person",
+      "subjectName": "Healthcare expenditure per person",
       "subjectTypes": [
         "StatisticalVariable"
       ],
@@ -120,7 +120,7 @@
     },
     {
       "subjectId": "Amount_EconomicActivity_GrossDomesticProduction_Nominal_AsAFractionOf_Count_Person",
-      "subjectName": "Amount of Economic Activity (Nominal): Gross Domestic Production (Per Capita)",
+      "subjectName": "Nominal gross domestic product per capita",
       "subjectTypes": [
         "StatisticalVariable"
       ],
