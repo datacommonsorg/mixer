@@ -31,8 +31,8 @@
           "points_by_facet": [
             {
               "date": "2024",
-              "value": 68467362,
-              "facet": "1733625304"
+              "value": 68516699,
+              "facet": "3981252704"
             }
           ]
         },
@@ -119,8 +119,8 @@
           "entity": "country/FRA",
           "points_by_facet": [
             {
-              "date": "2023",
-              "value": 59070,
+              "date": "2024",
+              "value": 62620,
               "facet": "2171028778"
             }
           ]
@@ -129,8 +129,8 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2023",
-              "value": 82340,
+              "date": "2024",
+              "value": 85980,
               "facet": "2171028778"
             }
           ]
@@ -190,8 +190,8 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2025-05",
-              "value": 7237000,
+              "date": "2025-06",
+              "value": 7015000,
               "facet": "3707913853"
             }
           ]
@@ -200,8 +200,8 @@
           "entity": "geoId/06",
           "points_by_facet": [
             {
-              "date": "2025-04",
-              "value": 988909,
+              "date": "2025-05",
+              "value": 980048,
               "facet": "324358135"
             }
           ]
@@ -210,8 +210,8 @@
           "entity": "geoId/0649670",
           "points_by_facet": [
             {
-              "date": "2025-04",
-              "value": 1529,
+              "date": "2025-05",
+              "value": 1537,
               "facet": "324358135"
             }
           ]
@@ -287,7 +287,7 @@
     },
     "217147238": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2023.S2603",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "2176550201": {

@@ -104,20 +104,6 @@
         {
           "date_place_count": {
             "2010": 58,
-            "2014": 58,
-            "2016": 58,
-            "2018": 58,
-            "2020": 58,
-            "2022": 58
-          },
-          "metadata": {
-            "import_name": "CDC_Social_Vulnerability_Index",
-            "provenance_url": "https://www.atsdr.cdc.gov/placeandhealth/svi/data_documentation_download.html"
-          }
-        },
-        {
-          "date_place_count": {
-            "2010": 58,
             "2011": 58,
             "2012": 58,
             "2013": 58,
@@ -128,12 +114,28 @@
             "2018": 58,
             "2019": 58,
             "2020": 58,
-            "2021": 58
+            "2021": 58,
+            "2022": 58,
+            "2023": 58
           },
           "metadata": {
             "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
             "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
             "measurement_method": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        {
+          "date_place_count": {
+            "2010": 58,
+            "2014": 58,
+            "2016": 58,
+            "2018": 58,
+            "2020": 58,
+            "2022": 58
+          },
+          "metadata": {
+            "import_name": "CDC_Social_Vulnerability_Index",
+            "provenance_url": "https://www.atsdr.cdc.gov/placeandhealth/svi/data_documentation_download.html"
           }
         },
         {
@@ -236,9 +238,9 @@
         },
         {
           "date_place_count": {
-            "2020": 39,
-            "2020-04-01": 17,
-            "2023-07-01": 1
+            "2020": 41,
+            "2020-04-01": 13,
+            "2024-07-01": 1
           },
           "metadata": {
             "import_name": "WikipediaStatsData",
@@ -248,19 +250,30 @@
         },
         {
           "date_place_count": {
-            "1850": 1,
+            "1850": 2,
             "1860": 1,
-            "1870": 1,
+            "1870": 2,
             "1880": 1,
-            "1890": 1,
+            "1890": 2,
             "1900": 3,
-            "1910": 3,
-            "2010-04-01": 57,
+            "1910": 4,
+            "1930": 1,
+            "1950": 1,
+            "1970": 1,
+            "1990": 1,
+            "2010-04-01": 58,
             "2010-07-01": 57,
             "2011-07-01": 57,
             "2012-07-01": 57,
             "2013-07-01": 57,
-            "2015": 58
+            "2015": 58,
+            "2018-01": 8,
+            "2019": 3,
+            "2019-01": 54,
+            "2019-07-01": 57,
+            "2020": 8,
+            "2020-04-01": 58,
+            "2021-07-01": 1
           },
           "metadata": {
             "import_name": "WikidataPopulation",
@@ -308,7 +321,9 @@
             "2018": 58,
             "2019": 58,
             "2020": 58,
-            "2021": 58
+            "2021": 58,
+            "2022": 58,
+            "2023": 58
           },
           "metadata": {
             "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",

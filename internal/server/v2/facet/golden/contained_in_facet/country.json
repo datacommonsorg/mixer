@@ -26,9 +26,6 @@
               "facet_id": "3956865500"
             },
             {
-              "facet_id": "3251078590"
-            },
-            {
               "facet_id": "2309233061"
             },
             {
@@ -54,9 +51,6 @@
             },
             {
               "facet_id": "192455881"
-            },
-            {
-              "facet_id": "2855734950"
             },
             {
               "facet_id": "2708675871"
@@ -131,9 +125,6 @@
               "facet_id": "4181918134"
             },
             {
-              "facet_id": "473499523"
-            },
-            {
               "facet_id": "1456184638"
             },
             {
@@ -149,9 +140,6 @@
           "ordered_facets": [
             {
               "facet_id": "3795540742"
-            },
-            {
-              "facet_id": "3357919774"
             },
             {
               "facet_id": "3614729857"
@@ -271,7 +259,7 @@
     },
     "217147238": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2023.S2603",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "2176550201": {
@@ -318,10 +306,6 @@
       "import_name": "CDC_Mortality_UnderlyingCause",
       "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
     },
-    "2855734950": {
-      "import_name": "Ireland_Census",
-      "provenance_url": "https://www.cso.ie/en/index.html"
-    },
     "2882445785": {
       "import_name": "Uganda_Census",
       "provenance_url": "https://uganda.opendataforafrica.org/"
@@ -334,16 +318,6 @@
       "import_name": "Rwanda_Census",
       "provenance_url": "https://rwanda.opendataforafrica.org/",
       "observation_period": "Annual"
-    },
-    "3251078590": {
-      "import_name": "MexicoCensus_AA2",
-      "provenance_url": "https://data.humdata.org/dataset/cod-ps-mex"
-    },
-    "3357919774": {
-      "import_name": "CensusUSAMedianAgeIncome",
-      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-      "measurement_method": "CensusACS5yrSurvey",
-      "unit": "Year"
     },
     "3614729857": {
       "import_name": "MexicoCensus",
@@ -393,15 +367,9 @@
     },
     "4219092424": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2023.S2603",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
-    },
-    "473499523": {
-      "import_name": "Subnational_Demographics_Stats",
-      "provenance_url": "https://databank.worldbank.org/source/subnational-population",
-      "measurement_method": "WorldBankSubnationalPopulationEstimate",
-      "observation_period": "P1Y"
     },
     "563701067": {
       "import_name": "NigeriaStatistics",

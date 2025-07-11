@@ -33,7 +33,7 @@
       "dcid": "LifeExpectancy_Person_Female"
     },
     {
-      "name": "Female Population",
+      "name": "Female population",
       "dcid": "Count_Person_Female"
     },
     {
@@ -1185,6 +1185,10 @@
       "dcid": "Count_MedicalConditionIncident_Female_ConditionCongenitalDisease_Rubella"
     },
     {
+      "name": "Count of female Hepatitis C incidents",
+      "dcid": "Count_MedicalConditionIncident_Female_ConditionHepatitisC"
+    },
+    {
       "name": "Count of invasive, ,, Female Haemophilus influenzae incidents",
       "dcid": "Count_MedicalConditionIncident_Female_ConditionInvasiveDisease_HaemophilusInfluenzae"
     },
@@ -1411,10 +1415,6 @@
     {
       "name": "Hispanic Multiracial Female Population",
       "dcid": "Count_Person_Female_HispanicOrLatino_TwoOrMoreRaces"
-    },
-    {
-      "name": "Household Reference Person in Universe: Non-Institutional, female",
-      "dcid": "Count_Household_Female_NonInstitutionalized"
     },
     {
       "name": "Infant deaths [under 1 year old, Female]",
@@ -1827,10 +1827,6 @@
     {
       "name": "Population: Bachelors Degree, Female",
       "dcid": "Count_Person_25OrMoreYears_EducationalAttainmentBachelorsDegree_Female"
-    },
-    {
-      "name": "Population: Bachelors Degree, Female",
-      "dcid": "Count_Person_EducationalAttainmentBachelorsDegree_Female"
     },
     {
       "name": "Population: Business Major, Female",

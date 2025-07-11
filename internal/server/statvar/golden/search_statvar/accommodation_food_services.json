@@ -117,14 +117,6 @@
       "dcid": "WagesWeekly_Worker_StateGovernmentOwnedEstablishment_NAICSAccommodationFoodServices"
     },
     {
-      "name": "Amount of Economic Activity (Real Value): Gross Domestic Production, Arts, Entertainment, And Recreation, And Accommodation And Food Services (NAICS/71-72)",
-      "dcid": "Amount_EconomicActivity_GrossDomesticProduction_NAICSArtsEntertainmentRecreationAccommodationFoodServices_RealValue"
-    },
-    {
-      "name": "GDP of the Accommodation and Food Services Industry",
-      "dcid": "Amount_EconomicActivity_GrossDomesticProduction_NAICSAccommodationFoodServices_RealValue"
-    },
-    {
       "name": "Population of Person (Adjusted): Hire, Accommodation And Food Services (NAICS/72)",
       "dcid": "Count_Worker_Hire_NAICSAccommodationFoodServices_Adjusted"
     },

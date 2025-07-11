@@ -82,16 +82,6 @@
         "hasData": true
       },
       {
-        "id": "Median_Age_Person",
-        "searchNames": [
-          "Median Age of Person",
-          "Median Age of Population"
-        ],
-        "displayName": "Median Age of Population",
-        "definition": "st=medianValue,mp=age,pt=Person",
-        "hasData": true
-      },
-      {
         "id": "Median_Income_Person",
         "searchNames": [
           "Median Income of Person",
@@ -99,6 +89,16 @@
         ],
         "displayName": "Median Income of a Population",
         "definition": "st=medianValue,mp=income,pt=Person",
+        "hasData": true
+      },
+      {
+        "id": "Median_Age_Person",
+        "searchNames": [
+          "Median Age of Person",
+          "Median age of population"
+        ],
+        "displayName": "Median age of population",
+        "definition": "st=medianValue,mp=age,pt=Person",
         "hasData": true
       },
       {
@@ -154,9 +154,9 @@
         "id": "Count_Person",
         "searchNames": [
           "Population Count of Person",
-          "Total Population"
+          "Total population"
         ],
-        "displayName": "Total Population",
+        "displayName": "Total population",
         "definition": "mp=count,pt=Person",
         "hasData": true
       }
@@ -166,7 +166,7 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 29624
+        "descendentStatVarCount": 29625
       },
       {
         "id": "dc/g/Person_AgeGroupClassification",
@@ -430,13 +430,13 @@
         "id": "dc/g/Person_InternetUsageLocation",
         "specializedEntity": "Internet Usage Location",
         "displayName": "Person by Internet Usage Location",
-        "descendentStatVarCount": 405
+        "descendentStatVarCount": 406
       },
       {
         "id": "dc/g/Person_IsInternetUser",
         "specializedEntity": "Is Internet User",
         "displayName": "Person by Is Internet User",
-        "descendentStatVarCount": 406
+        "descendentStatVarCount": 407
       },
       {
         "id": "dc/g/Person_LaborForceStatus",
@@ -478,7 +478,7 @@
         "id": "dc/g/MilitaryService",
         "specializedEntity": "Military Service",
         "displayName": "Military Service",
-        "descendentStatVarCount": 2402
+        "descendentStatVarCount": 2403
       },
       {
         "id": "dc/g/Demographics_Miscellaneous",
@@ -601,7 +601,7 @@
         "descendentStatVarCount": 4
       }
     ],
-    "descendentStatVarCount": 49918,
+    "descendentStatVarCount": 49919,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]
