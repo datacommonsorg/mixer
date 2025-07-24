@@ -34,6 +34,14 @@ func (s *HealthChecker) Watch(req *grpc_health_v1.HealthCheckRequest, server grp
 	})
 }
 
+func (s *HealthChecker) List(ctx context.Context, req *grpc_health_v1.HealthListRequest) (*grpc_health_v1.HealthListResponse, error) {
+	return &grpc_health_v1.HealthListResponse{
+		Statuses: map[string]*grpc_health_v1.HealthCheckResponse{
+			"": {Status: grpc_health_v1.HealthCheckResponse_SERVING},
+		},
+	}, nil
+}
+
 func NewHealthChecker() *HealthChecker {
 	return &HealthChecker{}
 }
