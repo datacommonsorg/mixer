@@ -20,7 +20,7 @@
 # server: image for mixer server
 
 
-FROM golang:1.20.7-alpine3.17 AS go-protoc
+FROM golang:1.23-alpine AS go-protoc
 
 WORKDIR /mixer
 
