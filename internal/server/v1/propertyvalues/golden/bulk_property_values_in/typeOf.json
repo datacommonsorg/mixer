@@ -581,7 +581,6 @@
         {
           "name": "Denmark",
           "types": [
-            "AdministrativeArea1",
             "Country"
           ],
           "dcid": "country/DNK",
@@ -949,14 +948,6 @@
             "Country"
           ],
           "dcid": "country/IMN",
-          "provenanceId": "dc/base/WikidataOtherIdGeos"
-        },
-        {
-          "name": "India",
-          "types": [
-            "Country"
-          ],
-          "dcid": "country/IND",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
@@ -13025,5 +13016,5 @@
       ]
     }
   ],
-  "nextToken": "H4sIAAAAAAAA/6zTzUrEQAzAcTe225j1FC/7Gn49wLqKIKKHFu8jTduBtqPjtNIH8X0F8SBzmuAek8OPP4FQSdnehoXWYXmT54bOdvVgR/sRvAl2lp0Xc85HDLhiQGDAYwbMGDBnwDUDFgyIDHjCgMQZbrZDCnqhRN9T0EslWqegV0q0SUGv1aX3EVrcOO+mtlNDdxH0MymUHDfbrxU9Rszpk9i2e3W+c65WRgndxlGV+xz/f6MX2/emFTX0QMXeTWPwf6zfhdKaqaK8DCbIIV9MvgEAAP//AQAA//8TMaUxuAMAAA=="
+  "nextToken": "H4sIAAAAAAAA/6zTzUrEQAzAcTe225j1FC/7Gn49wLqKIKKHXbyPNG0H2o6OqdIH8X0F8SBzmqDH5PDjTyC0o2Lrdaalzi/y2NDJph786N80OvXvsoniTvmAARcMCAx4yIAFA5YMuGTAigGRAY8YkLjA1XrIQc+M6GsOem5E6xz0wog2OeilufQ2QaurEMPUdmboJoG+J4NS4mr9uaD7hDl+EN92zyF2IdTGKKHrNGofPsa/3+jJ971rxQzdUbUN06jxl/WzMFpKeyp36lT+88XkCwAA//8BAAD//7pPLrG4AwAA"
 }

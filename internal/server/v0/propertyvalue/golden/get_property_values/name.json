@@ -4,10 +4,6 @@
       "out": [
         {
           "provenanceId": "dc/base/HumanReadableStatVars",
-          "value": "Total Population"
-        },
-        {
-          "provenanceId": "dc/base/HumanReadableStatVars",
           "value": "Total population"
         }
       ]

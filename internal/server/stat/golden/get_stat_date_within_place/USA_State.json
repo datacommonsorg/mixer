@@ -217,6 +217,29 @@
         },
         {
           "date_place_count": {
+            "2010": 52,
+            "2011": 52,
+            "2012": 52,
+            "2013": 52,
+            "2014": 52,
+            "2015": 52,
+            "2016": 52,
+            "2017": 52,
+            "2018": 52,
+            "2019": 52,
+            "2020": 52,
+            "2021": 52,
+            "2022": 52,
+            "2023": 52
+          },
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+            "measurement_method": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        {
+          "date_place_count": {
             "2010": 51,
             "2011": 51,
             "2012": 51,
@@ -235,6 +258,29 @@
           "metadata": {
             "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
             "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
+            "measurement_method": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        {
+          "date_place_count": {
+            "2010": 1,
+            "2011": 1,
+            "2012": 1,
+            "2013": 1,
+            "2014": 1,
+            "2015": 1,
+            "2016": 1,
+            "2017": 1,
+            "2018": 1,
+            "2019": 1,
+            "2020": 1,
+            "2021": 1,
+            "2022": 1,
+            "2023": 1
+          },
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey_SubjectTables_S2601APR",
+            "provenance_url": "https://data.census.gov/cedsci/table?q=S2601APR&tid=ACSST5Y2019.S2601APR",
             "measurement_method": "CensusACS5yrSurveySubjectTable"
           }
         },
@@ -267,48 +313,6 @@
           "metadata": {
             "import_name": "CensusACS5YearSurvey_SubjectTables_S2602PR",
             "provenance_url": "https://data.census.gov/cedsci/table?q=S2602PR&tid=ACSST5Y2019.S2602PR",
-            "measurement_method": "CensusACS5yrSurveySubjectTable"
-          }
-        },
-        {
-          "date_place_count": {
-            "2010": 52,
-            "2011": 52,
-            "2012": 52,
-            "2013": 52,
-            "2014": 52,
-            "2015": 52,
-            "2016": 52,
-            "2017": 52,
-            "2018": 52,
-            "2019": 52,
-            "2020": 52,
-            "2021": 52
-          },
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-            "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
-            "measurement_method": "CensusACS5yrSurveySubjectTable"
-          }
-        },
-        {
-          "date_place_count": {
-            "2010": 1,
-            "2011": 1,
-            "2012": 1,
-            "2013": 1,
-            "2014": 1,
-            "2015": 1,
-            "2016": 1,
-            "2017": 1,
-            "2018": 1,
-            "2019": 1,
-            "2020": 1,
-            "2021": 1
-          },
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey_SubjectTables_S2601APR",
-            "provenance_url": "https://data.census.gov/cedsci/table?q=S2601APR&tid=ACSST5Y2019.S2601APR",
             "measurement_method": "CensusACS5yrSurveySubjectTable"
           }
         },
@@ -492,7 +496,7 @@
         },
         {
           "date_place_count": {
-            "2020": 1
+            "2024": 1
           },
           "metadata": {
             "import_name": "WikipediaStatsData",
@@ -503,17 +507,30 @@
         {
           "date_place_count": {
             "1790": 1,
-            "1800": 1,
+            "1790-08-02": 1,
+            "1800": 2,
+            "1800-08-04": 1,
             "1810": 1,
-            "1820": 3,
-            "1830": 4,
-            "1840": 3,
-            "1850": 3,
+            "1810-08-06": 1,
+            "1820": 2,
+            "1820-08-07": 1,
+            "1830": 3,
+            "1830-06-01": 1,
+            "1840": 2,
+            "1840-06-01": 1,
+            "1850": 2,
+            "1850-06-01": 1,
             "1860": 4,
-            "1870": 5,
+            "1860-06-01": 1,
+            "1869": 1,
+            "1870": 4,
+            "1870-06-01": 1,
             "1880": 6,
+            "1880-06-01": 1,
             "1890": 5,
-            "1900": 5,
+            "1890-06-02": 1,
+            "1900": 4,
+            "1900-06-01": 1,
             "1901": 3,
             "1902": 3,
             "1903": 2,
@@ -523,7 +540,8 @@
             "1907": 2,
             "1908": 2,
             "1909": 1,
-            "1910": 48,
+            "1910": 47,
+            "1910-04-15": 1,
             "1911": 1,
             "1912": 1,
             "1913": 2,
@@ -533,11 +551,16 @@
             "1917": 1,
             "1918": 1,
             "1919": 2,
-            "1920": 49,
-            "1930": 49,
-            "1940": 49,
-            "1950": 49,
-            "1960": 51,
+            "1920": 48,
+            "1920-01-05": 1,
+            "1930": 48,
+            "1930-04-01": 1,
+            "1940": 48,
+            "1940-04-01": 1,
+            "1950": 48,
+            "1950-04-01": 1,
+            "1960": 50,
+            "1960-04-01": 1,
             "1961": 1,
             "1962": 1,
             "1963": 1,
@@ -547,7 +570,8 @@
             "1967": 1,
             "1968": 1,
             "1969": 1,
-            "1970": 51,
+            "1970": 50,
+            "1970-04-01": 1,
             "1971": 1,
             "1972": 1,
             "1973": 1,
@@ -557,7 +581,8 @@
             "1977": 1,
             "1978": 1,
             "1979": 1,
-            "1980": 51,
+            "1980": 50,
+            "1980-04-01": 1,
             "1981": 1,
             "1982": 1,
             "1983": 1,
@@ -567,7 +592,8 @@
             "1987": 1,
             "1988": 1,
             "1989": 1,
-            "1990": 51,
+            "1990": 50,
+            "1990-04-01": 1,
             "1991": 1,
             "1992": 1,
             "1993": 1,
@@ -577,8 +603,8 @@
             "1997": 1,
             "1998": 1,
             "1999": 1,
-            "2000": 50,
-            "2000-04-01": 1,
+            "2000": 49,
+            "2000-04-01": 2,
             "2001": 1,
             "2002": 1,
             "2003": 1,
@@ -589,7 +615,7 @@
             "2008": 1,
             "2009": 1,
             "2010": 1,
-            "2010-04-01": 49,
+            "2010-04-01": 52,
             "2011": 2,
             "2012": 3,
             "2013": 4,
@@ -598,7 +624,11 @@
             "2016": 3,
             "2018": 1,
             "2018-04": 1,
-            "2020": 1
+            "2019": 2,
+            "2019-07-01": 1,
+            "2020": 1,
+            "2020-04-01": 52,
+            "2021-07-01": 1
           },
           "metadata": {
             "import_name": "WikidataPopulation",
@@ -684,10 +714,11 @@
             "2017": 51,
             "2018": 51,
             "2019": 51,
-            "2020": 51,
-            "2021": 51,
-            "2022": 51,
-            "2023": 51
+            "2020": 102,
+            "2021": 102,
+            "2022": 102,
+            "2023": 102,
+            "2024": 51
           },
           "metadata": {
             "import_name": "USCensusPEP_Sex",
@@ -695,6 +726,29 @@
             "measurement_method": "CensusPEPSurvey_PartialAggregate",
             "observation_period": "P1Y",
             "is_dc_aggregate": true
+          }
+        },
+        {
+          "date_place_count": {
+            "2010": 52,
+            "2011": 52,
+            "2012": 52,
+            "2013": 52,
+            "2014": 52,
+            "2015": 52,
+            "2016": 52,
+            "2017": 52,
+            "2018": 52,
+            "2019": 52,
+            "2020": 52,
+            "2021": 52,
+            "2022": 52,
+            "2023": 52
+          },
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+            "measurement_method": "CensusACS5yrSurveySubjectTable"
           }
         },
         {
@@ -717,6 +771,29 @@
           "metadata": {
             "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
             "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
+            "measurement_method": "CensusACS5yrSurveySubjectTable"
+          }
+        },
+        {
+          "date_place_count": {
+            "2010": 1,
+            "2011": 1,
+            "2012": 1,
+            "2013": 1,
+            "2014": 1,
+            "2015": 1,
+            "2016": 1,
+            "2017": 1,
+            "2018": 1,
+            "2019": 1,
+            "2020": 1,
+            "2021": 1,
+            "2022": 1,
+            "2023": 1
+          },
+          "metadata": {
+            "import_name": "CensusACS5YearSurvey_SubjectTables_S2601APR",
+            "provenance_url": "https://data.census.gov/cedsci/table?q=S2601APR&tid=ACSST5Y2019.S2601APR",
             "measurement_method": "CensusACS5yrSurveySubjectTable"
           }
         },
@@ -792,48 +869,6 @@
             "provenance_url": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23&pg=40&fc=Topic&bp=true&snb=117&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_DEMO%40DF_POP_5Y&df[ag]=OECD.CFE.EDS&df[vs]=2.0&dq=A.......&to[TIME_PERIOD]=false&vw=tb&pd=%2C",
             "measurement_method": "OECDRegionalStatistics",
             "observation_period": "P1Y"
-          }
-        },
-        {
-          "date_place_count": {
-            "2010": 52,
-            "2011": 52,
-            "2012": 52,
-            "2013": 52,
-            "2014": 52,
-            "2015": 52,
-            "2016": 52,
-            "2017": 52,
-            "2018": 52,
-            "2019": 52,
-            "2020": 52,
-            "2021": 52
-          },
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-            "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
-            "measurement_method": "CensusACS5yrSurveySubjectTable"
-          }
-        },
-        {
-          "date_place_count": {
-            "2010": 1,
-            "2011": 1,
-            "2012": 1,
-            "2013": 1,
-            "2014": 1,
-            "2015": 1,
-            "2016": 1,
-            "2017": 1,
-            "2018": 1,
-            "2019": 1,
-            "2020": 1,
-            "2021": 1
-          },
-          "metadata": {
-            "import_name": "CensusACS5YearSurvey_SubjectTables_S2601APR",
-            "provenance_url": "https://data.census.gov/cedsci/table?q=S2601APR&tid=ACSST5Y2019.S2601APR",
-            "measurement_method": "CensusACS5yrSurveySubjectTable"
           }
         },
         {

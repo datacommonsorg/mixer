@@ -109,6 +109,14 @@
     {
       "node": "Count_Person",
       "triples": {
+        "description": {
+          "nodes": [
+            {
+              "provenanceId": "dc/base/HumanReadableStatVars",
+              "value": "The total number of people in a population."
+            }
+          ]
+        },
         "measuredProperty": {
           "nodes": [
             {
@@ -135,10 +143,6 @@
         },
         "name": {
           "nodes": [
-            {
-              "provenanceId": "dc/base/HumanReadableStatVars",
-              "value": "Total Population"
-            },
             {
               "provenanceId": "dc/base/HumanReadableStatVars",
               "value": "Total population"
@@ -244,7 +248,7 @@
         "variableMeasured": {
           "nodes": [
             {
-              "name": "Median Age of Population",
+              "name": "Median age of population",
               "dcid": "Median_Age_Person",
               "provenanceId": "dc/base/CensusACS5YearSurvey"
             }
