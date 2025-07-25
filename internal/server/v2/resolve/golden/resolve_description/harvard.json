@@ -95,7 +95,7 @@
       "node": "Illes Balears,Spain"
     },
     {
-      "node": "Kamchatka,Russia"
+      "node": "Kamchatka,Russia",
       "candidates": [
         {
           "dcid": "wikidataId/Q7948"
