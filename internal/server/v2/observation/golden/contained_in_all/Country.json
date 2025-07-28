@@ -169,12 +169,16 @@
                 },
                 {
                   "date": "2022",
-                  "value": 38.2
+                  "value": 38.1
+                },
+                {
+                  "date": "2023",
+                  "value": 38
                 }
               ],
-              "obs_count": 32,
+              "obs_count": 33,
               "earliest_date": "1991",
-              "latest_date": "2022"
+              "latest_date": "2023"
             }
           ]
         },
@@ -182,22 +186,6 @@
           "ordered_facets": [
             {
               "facet_id": "3795540742",
-              "observations": [
-                {
-                  "date": "2022",
-                  "value": 38.5
-                },
-                {
-                  "date": "2023",
-                  "value": 38.7
-                }
-              ],
-              "obs_count": 2,
-              "earliest_date": "2022",
-              "latest_date": "2023"
-            },
-            {
-              "facet_id": "3357919774",
               "observations": [
                 {
                   "date": "2011",
@@ -246,11 +234,79 @@
                 {
                   "date": "2022",
                   "value": 38.5
+                },
+                {
+                  "date": "2023",
+                  "value": 38.7
                 }
               ],
-              "obs_count": 12,
+              "obs_count": 13,
               "earliest_date": "2011",
-              "latest_date": "2022"
+              "latest_date": "2023"
+            },
+            {
+              "facet_id": "815809675",
+              "observations": [
+                {
+                  "date": "2010",
+                  "value": 36.9
+                },
+                {
+                  "date": "2011",
+                  "value": 37
+                },
+                {
+                  "date": "2012",
+                  "value": 37.2
+                },
+                {
+                  "date": "2013",
+                  "value": 37.3
+                },
+                {
+                  "date": "2014",
+                  "value": 37.4
+                },
+                {
+                  "date": "2015",
+                  "value": 37.6
+                },
+                {
+                  "date": "2016",
+                  "value": 37.7
+                },
+                {
+                  "date": "2017",
+                  "value": 37.8
+                },
+                {
+                  "date": "2018",
+                  "value": 37.9
+                },
+                {
+                  "date": "2019",
+                  "value": 38.1
+                },
+                {
+                  "date": "2020",
+                  "value": 38.2
+                },
+                {
+                  "date": "2021",
+                  "value": 38.4
+                },
+                {
+                  "date": "2022",
+                  "value": 38.5
+                },
+                {
+                  "date": "2023",
+                  "value": 38.7
+                }
+              ],
+              "obs_count": 14,
+              "earliest_date": "2010",
+              "latest_date": "2023"
             },
             {
               "facet_id": "2763329611",
@@ -353,62 +409,6 @@
               "latest_date": "2023"
             },
             {
-              "facet_id": "815809675",
-              "observations": [
-                {
-                  "date": "2010",
-                  "value": 36.9
-                },
-                {
-                  "date": "2011",
-                  "value": 37
-                },
-                {
-                  "date": "2012",
-                  "value": 37.2
-                },
-                {
-                  "date": "2013",
-                  "value": 37.3
-                },
-                {
-                  "date": "2014",
-                  "value": 37.4
-                },
-                {
-                  "date": "2015",
-                  "value": 37.6
-                },
-                {
-                  "date": "2016",
-                  "value": 37.7
-                },
-                {
-                  "date": "2017",
-                  "value": 37.8
-                },
-                {
-                  "date": "2018",
-                  "value": 37.9
-                },
-                {
-                  "date": "2019",
-                  "value": 38.1
-                },
-                {
-                  "date": "2020",
-                  "value": 38.2
-                },
-                {
-                  "date": "2021",
-                  "value": 38.4
-                }
-              ],
-              "obs_count": 12,
-              "earliest_date": "2010",
-              "latest_date": "2021"
-            },
-            {
               "facet_id": "4219092424",
               "observations": [
                 {
@@ -430,11 +430,19 @@
                 {
                   "date": "2021",
                   "value": 38.4
+                },
+                {
+                  "date": "2022",
+                  "value": 38.5
+                },
+                {
+                  "date": "2023",
+                  "value": 38.7
                 }
               ],
-              "obs_count": 5,
+              "obs_count": 7,
               "earliest_date": "2017",
-              "latest_date": "2021"
+              "latest_date": "2023"
             }
           ]
         }
@@ -452,12 +460,6 @@
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
-    },
-    "3357919774": {
-      "import_name": "CensusUSAMedianAgeIncome",
-      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-      "measurement_method": "CensusACS5yrSurvey",
-      "unit": "Year"
     },
     "3614729857": {
       "import_name": "MexicoCensus",
@@ -477,7 +479,7 @@
     },
     "4219092424": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2023.S2603",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
     },

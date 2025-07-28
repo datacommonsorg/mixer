@@ -67,7 +67,8 @@
             "2020": 1411100000,
             "2021": 1412360000,
             "2022": 1412175000,
-            "2023": 1410710000
+            "2023": 1410710000,
+            "2024": 1408975000
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -99,6 +100,9 @@
         },
         "GiniIndex_EconomicActivity": {
           "val": {
+            "1981": 28.2,
+            "1984": 27.1,
+            "1987": 29.4,
             "1990": 32.2,
             "1993": 33.9,
             "1996": 35.2,
@@ -128,74 +132,75 @@
         }
       }
     },
-    "country/NGA": {
+    "country/NZL": {
       "data": {
         "Count_Person": {
           "val": {
-            "1960": 45053782,
-            "1961": 45989310,
-            "1962": 46965292,
-            "1963": 47973575,
-            "1964": 49012016,
-            "1965": 50086764,
-            "1966": 51188234,
-            "1967": 52293065,
-            "1968": 53432783,
-            "1969": 54631914,
-            "1970": 55893838,
-            "1971": 57214684,
-            "1972": 58601748,
-            "1973": 60082139,
-            "1974": 61679144,
-            "1975": 63410815,
-            "1976": 65258009,
-            "1977": 67234590,
-            "1978": 69326532,
-            "1979": 71498242,
-            "1980": 73764641,
-            "1981": 76068103,
-            "1982": 78378701,
-            "1983": 80438260,
-            "1984": 82526443,
-            "1985": 84897973,
-            "1986": 87235953,
-            "1987": 89591716,
-            "1988": 92020090,
-            "1989": 94531014,
-            "1990": 97120925,
-            "1991": 99720162,
-            "1992": 102372770,
-            "1993": 105122069,
-            "1994": 107935714,
-            "1995": 110819428,
-            "1996": 113754779,
-            "1997": 116754792,
-            "1998": 119846254,
-            "1999": 123047320,
-            "2000": 126382494,
-            "2001": 129862595,
-            "2002": 133471989,
-            "2003": 137202644,
-            "2004": 141057045,
-            "2005": 145017253,
-            "2006": 149077334,
-            "2007": 153267261,
-            "2008": 157595014,
-            "2009": 162049464,
-            "2010": 166642886,
-            "2011": 171379598,
-            "2012": 176200625,
-            "2013": 181049443,
-            "2014": 185896915,
-            "2015": 190671878,
-            "2016": 195443700,
-            "2017": 200254579,
-            "2018": 204938755,
-            "2019": 209485641,
-            "2020": 213996181,
-            "2021": 218529286,
-            "2022": 223150896,
-            "2023": 227882945
+            "1960": 2371800,
+            "1961": 2419700,
+            "1962": 2482000,
+            "1963": 2531800,
+            "1964": 2585400,
+            "1965": 2628400,
+            "1966": 2675900,
+            "1967": 2724100,
+            "1968": 2748100,
+            "1969": 2772800,
+            "1970": 2810700,
+            "1971": 2853000,
+            "1972": 2903900,
+            "1973": 2961300,
+            "1974": 3023700,
+            "1975": 3083100,
+            "1976": 3110500,
+            "1977": 3120200,
+            "1978": 3121200,
+            "1979": 3109000,
+            "1980": 3112900,
+            "1981": 3124900,
+            "1982": 3156100,
+            "1983": 3199300,
+            "1984": 3227100,
+            "1985": 3247100,
+            "1986": 3246300,
+            "1987": 3274400,
+            "1988": 3283400,
+            "1989": 3299200,
+            "1990": 3329800,
+            "1991": 3495100,
+            "1992": 3531700,
+            "1993": 3572200,
+            "1994": 3620000,
+            "1995": 3673400,
+            "1996": 3732000,
+            "1997": 3781300,
+            "1998": 3815000,
+            "1999": 3835100,
+            "2000": 3857700,
+            "2001": 3880500,
+            "2002": 3948500,
+            "2003": 4027200,
+            "2004": 4087500,
+            "2005": 4133900,
+            "2006": 4184600,
+            "2007": 4223800,
+            "2008": 4259800,
+            "2009": 4302600,
+            "2010": 4350700,
+            "2011": 4384000,
+            "2012": 4408100,
+            "2013": 4442100,
+            "2014": 4516500,
+            "2015": 4609400,
+            "2016": 4714100,
+            "2017": 4813600,
+            "2018": 4900600,
+            "2019": 4979200,
+            "2020": 5090200,
+            "2021": 5111300,
+            "2022": 5117100,
+            "2023": 5245000,
+            "2024": 5338500
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -205,897 +210,98 @@
         },
         "Count_Person_Female": {
           "val": {
-            "1991": 44462612,
-            "2006": 69086302
+            "1991": 1786000,
+            "1992": 1803100,
+            "1993": 1825400,
+            "1994": 1850400,
+            "1995": 1878700,
+            "1996": 1906900,
+            "1997": 1929700,
+            "1998": 1945900,
+            "1999": 1959500,
+            "2000": 1972600,
+            "2001": 1995700,
+            "2002": 2032900,
+            "2003": 2069800,
+            "2004": 2098100,
+            "2005": 2123300,
+            "2006": 2149500,
+            "2007": 2169000,
+            "2008": 2187000,
+            "2009": 2213000,
+            "2010": 2234700,
+            "2011": 2248300,
+            "2012": 2262000,
+            "2013": 2284900,
+            "2014": 2320700,
+            "2015": 2363200,
+            "2016": 2410300,
+            "2017": 2452100,
+            "2018": 2490300,
+            "2019": 2538000,
+            "2020": 2570400,
+            "2021": 2577300,
+            "2022": 2598800,
+            "2023": 2665900
           },
           "metadata": {
-            "importName": "NigeriaStatistics",
-            "provenanceUrl": "https://nigeria.opendataforafrica.org"
+            "importName": "New_Zealand_Census",
+            "provenanceUrl": "https://www.stats.govt.nz/"
           }
         },
         "Count_Person_Male": {
           "val": {
-            "1991": 44529608,
-            "2006": 71345488
+            "1991": 1730000,
+            "1992": 1749100,
+            "1993": 1772500,
+            "1994": 1797800,
+            "1995": 1828000,
+            "1996": 1855400,
+            "1997": 1872900,
+            "1998": 1883300,
+            "1999": 1891700,
+            "2000": 1900400,
+            "2001": 1920500,
+            "2002": 1956700,
+            "2003": 1991800,
+            "2004": 2016200,
+            "2005": 2037700,
+            "2006": 2059600,
+            "2007": 2076800,
+            "2008": 2093300,
+            "2009": 2119200,
+            "2010": 2139200,
+            "2011": 2151100,
+            "2012": 2163800,
+            "2013": 2192500,
+            "2014": 2243700,
+            "2015": 2300500,
+            "2016": 2357300,
+            "2017": 2407400,
+            "2018": 2450900,
+            "2019": 2502400,
+            "2020": 2533300,
+            "2021": 2539200,
+            "2022": 2561800,
+            "2023": 2642600
           },
           "metadata": {
-            "importName": "NigeriaStatistics",
-            "provenanceUrl": "https://nigeria.opendataforafrica.org"
-          }
-        },
-        "GiniIndex_EconomicActivity": {
-          "val": {
-            "1985": 38.7,
-            "1992": 44.9,
-            "1996": 51.9,
-            "2003": 40.1,
-            "2010": 35.7,
-            "2012": 35.5,
-            "2015": 35.9,
-            "2018": 35.1
-          },
-          "metadata": {
-            "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
-            "measurementMethod": "WorldBankEstimate",
-            "observationPeriod": "P1Y"
+            "importName": "New_Zealand_Census",
+            "provenanceUrl": "https://www.stats.govt.nz/"
           }
         }
       }
     },
-    "country/USA": {
+    "oceania": {
       "data": {
         "Count_Person": {
           "val": {
-            "1900": 76094000,
-            "1901": 77584000,
-            "1902": 79163000,
-            "1903": 80632000,
-            "1904": 82166000,
-            "1905": 83822000,
-            "1906": 85450000,
-            "1907": 87008000,
-            "1908": 88710000,
-            "1909": 90490000,
-            "1910": 92407000,
-            "1911": 93863000,
-            "1912": 95335000,
-            "1913": 97225000,
-            "1914": 99111000,
-            "1915": 100546000,
-            "1916": 101961000,
-            "1917": 103268000,
-            "1918": 103208000,
-            "1919": 104514000,
-            "1920": 106461000,
-            "1921": 108538000,
-            "1922": 110049000,
-            "1923": 111947000,
-            "1924": 114109000,
-            "1925": 115829000,
-            "1926": 117397000,
-            "1927": 119035000,
-            "1928": 120509000,
-            "1929": 121767000,
-            "1930": 123076741,
-            "1931": 124039648,
-            "1932": 124840471,
-            "1933": 125578763,
-            "1934": 126373773,
-            "1935": 127250232,
-            "1936": 128053180,
-            "1937": 128824829,
-            "1938": 129824939,
-            "1939": 130879718,
-            "1940": 132122446,
-            "1941": 133402471,
-            "1942": 134859553,
-            "1943": 136739353,
-            "1944": 138397345,
-            "1945": 139928165,
-            "1946": 141388566,
-            "1947": 144126071,
-            "1948": 146631302,
-            "1949": 149188130,
-            "1950": 152271417,
-            "1951": 154877889,
-            "1952": 157552740,
-            "1953": 160184192,
-            "1954": 163025854,
-            "1955": 165931202,
-            "1956": 168903031,
-            "1957": 171984130,
-            "1958": 174881904,
-            "1959": 177829628,
-            "1960": 180671158,
-            "1961": 183691481,
-            "1962": 186537737,
-            "1963": 189241798,
-            "1964": 191888791,
-            "1965": 194302963,
-            "1966": 196560338,
-            "1967": 198712056,
-            "1968": 200706052,
-            "1969": 202676946,
-            "1970": 205052174,
-            "1971": 207660677,
-            "1972": 209896021,
-            "1973": 211908788,
-            "1974": 213853928,
-            "1975": 215973199,
-            "1976": 218035164,
-            "1977": 220239425,
-            "1978": 222584545,
-            "1979": 225055487,
-            "1980": 226542250,
-            "1981": 229465744,
-            "1982": 231664432,
-            "1983": 233792014,
-            "1984": 235824908,
-            "1985": 237923734,
-            "1986": 240132831,
-            "1987": 242288936,
-            "1988": 244499004,
-            "1989": 246819222,
-            "1990": 250131894,
-            "1991": 253492503,
-            "1992": 256894189,
-            "1993": 260255352,
-            "1994": 263435673,
-            "1995": 266557091,
-            "1996": 269667391,
-            "1997": 272911760,
-            "1998": 276115288,
-            "1999": 279294713,
-            "2000": 282162411,
-            "2001": 284968955,
-            "2002": 287625193,
-            "2003": 290107933,
-            "2004": 292805298,
-            "2005": 295516599,
-            "2006": 298379912,
-            "2007": 301231207,
-            "2008": 304093966,
-            "2009": 306771529,
-            "2010": 309327143,
-            "2011": 311583481,
-            "2012": 313877662,
-            "2013": 316059947,
-            "2014": 318386329,
-            "2015": 320738994,
-            "2016": 323071755,
-            "2017": 325122128,
-            "2018": 326838199,
-            "2019": 328329953,
-            "2020": 331526933,
-            "2021": 331893745,
-            "2022": 333271411,
-            "2023": 334914895,
-            "2024": 340110988
+            "2020": 12355695
           },
           "metadata": {
-            "importName": "USCensusPEP_Annual_Population",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
-            "measurementMethod": "CensusPEPSurvey",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Female": {
-          "val": {
-            "2011": 1909281,
-            "2012": 1954138,
-            "2013": 2001980,
-            "2014": 2056755,
-            "2015": 2103836,
-            "2016": 2143215,
-            "2017": 2185472,
-            "2018": 2218674,
-            "2019": 2233024,
-            "2020": 2269331,
-            "2021": 2250756,
-            "2022": 2217720,
-            "2023": 2199295
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "isDcAggregate": true
-          }
-        },
-        "Count_Person_25To34Years_EducationalAttainmentAssociatesDegree_Male": {
-          "val": {
-            "2011": 1510801,
-            "2012": 1554330,
-            "2013": 1597288,
-            "2014": 1647601,
-            "2015": 1693119,
-            "2016": 1738034,
-            "2017": 1790886,
-            "2018": 1832690,
-            "2019": 1859233,
-            "2020": 1915167,
-            "2021": 1900368,
-            "2022": 1905518,
-            "2023": 1891556
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "isDcAggregate": true
-          }
-        },
-        "Count_Person_25To34Years_EducationalAttainmentBachelorsDegree_Female": {
-          "val": {
-            "2011": 4976409,
-            "2012": 5073021,
-            "2013": 5172760,
-            "2014": 5298803,
-            "2015": 5431240,
-            "2016": 5568232,
-            "2017": 5736821,
-            "2018": 5893388,
-            "2019": 6046185,
-            "2020": 6229586,
-            "2021": 6345757,
-            "2022": 6415594,
-            "2023": 6571044
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "isDcAggregate": true
-          }
-        },
-        "Count_Person_25To34Years_EducationalAttainmentBachelorsDegree_Male": {
-          "val": {
-            "2011": 4133987,
-            "2012": 4209106,
-            "2013": 4301354,
-            "2014": 4413051,
-            "2015": 4571996,
-            "2016": 4728131,
-            "2017": 4909693,
-            "2018": 5078862,
-            "2019": 5257342,
-            "2020": 5449154,
-            "2021": 5536971,
-            "2022": 5699397,
-            "2023": 5776369
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "isDcAggregate": true
-          }
-        },
-        "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Female": {
-          "val": {
-            "2011": 2192942,
-            "2012": 2274679,
-            "2013": 2355597,
-            "2014": 2451486,
-            "2015": 2543848,
-            "2016": 2634248,
-            "2017": 2732153,
-            "2018": 2812096,
-            "2019": 2887192,
-            "2020": 2994545,
-            "2021": 3070884,
-            "2022": 3123999,
-            "2023": 3244645
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "isDcAggregate": true
-          }
-        },
-        "Count_Person_25To34Years_EducationalAttainmentGraduateOrProfessionalDegree_Male": {
-          "val": {
-            "2011": 1541012,
-            "2012": 1579840,
-            "2013": 1627509,
-            "2014": 1696764,
-            "2015": 1766921,
-            "2016": 1832724,
-            "2017": 1912604,
-            "2018": 1974923,
-            "2019": 2027032,
-            "2020": 2099105,
-            "2021": 2135502,
-            "2022": 2193714,
-            "2023": 2232447
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "isDcAggregate": true
-          }
-        },
-        "Count_Person_25To34Years_Female": {
-          "val": {
-            "2011": 20499509,
-            "2012": 20731138,
-            "2013": 20962306,
-            "2014": 21248614,
-            "2015": 21500042,
-            "2016": 21727428,
-            "2017": 22011410,
-            "2018": 22233800,
-            "2019": 22430348,
-            "2020": 22618584,
-            "2021": 22616848,
-            "2022": 22492679,
-            "2023": 22677011
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "isDcAggregate": true
-          }
-        },
-        "Count_Person_25To34Years_Male": {
-          "val": {
-            "2011": 20665947,
-            "2012": 20941694,
-            "2013": 21228183,
-            "2014": 21529656,
-            "2015": 21836061,
-            "2016": 22114579,
-            "2017": 22466891,
-            "2018": 22756228,
-            "2019": 23013263,
-            "2020": 23274728,
-            "2021": 23163306,
-            "2022": 23316392,
-            "2023": 23247592
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "isDcAggregate": true
-          }
-        },
-        "Count_Person_AmericanIndianOrAlaskaNativeAlone": {
-          "val": {
-            "2011": 2510207,
-            "2012": 2537708,
-            "2013": 2550780,
-            "2014": 2576622,
-            "2015": 2580945,
-            "2016": 2609631,
-            "2017": 2642951,
-            "2018": 2707577,
-            "2019": 2756981,
-            "2020": 2694311,
-            "2021": 2728068,
-            "2022": 2791497,
-            "2023": 2930594
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "isDcAggregate": true
-          }
-        },
-        "Count_Person_AsianAlone": {
-          "val": {
-            "2011": 14508886,
-            "2012": 14872290,
-            "2013": 15244082,
-            "2014": 15722143,
-            "2015": 16245464,
-            "2016": 16624199,
-            "2017": 17194109,
-            "2018": 17581234,
-            "2019": 17930446,
-            "2020": 18427519,
-            "2021": 18789187,
-            "2022": 19119274,
-            "2023": 19358694
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "isDcAggregate": true
-          }
-        },
-        "Count_Person_BelowPovertyLevelInThePast12Months_AmericanIndianOrAlaskaNativeAlone": {
-          "val": {
-            "2011": 654976,
-            "2012": 683288,
-            "2013": 706721,
-            "2014": 719668,
-            "2015": 707744,
-            "2016": 698803,
-            "2017": 686509,
-            "2018": 677541,
-            "2019": 663719,
-            "2020": 629434,
-            "2021": 617828,
-            "2022": 610809,
-            "2023": 619801
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "isDcAggregate": true
-          }
-        },
-        "Count_Person_BelowPovertyLevelInThePast12Months_AsianAlone": {
-          "val": {
-            "2011": 1668800,
-            "2012": 1769783,
-            "2013": 1878178,
-            "2014": 1963460,
-            "2015": 2006168,
-            "2016": 2013755,
-            "2017": 2015330,
-            "2018": 1993041,
-            "2019": 1925171,
-            "2020": 1919904,
-            "2021": 1903156,
-            "2022": 1899316,
-            "2023": 1886575
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "isDcAggregate": true
-          }
-        },
-        "Count_Person_BelowPovertyLevelInThePast12Months_BlackOrAfricanAmericanAlone": {
-          "val": {
-            "2011": 9599683,
-            "2012": 9963902,
-            "2013": 10294212,
-            "2014": 10481768,
-            "2015": 10457183,
-            "2016": 10255132,
-            "2017": 9961140,
-            "2018": 9656177,
-            "2019": 9290559,
-            "2020": 8891908,
-            "2021": 8775279,
-            "2022": 8642893,
-            "2023": 8503694
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "isDcAggregate": true
-          }
-        },
-        "Count_Person_BelowPovertyLevelInThePast12Months_HispanicOrLatino": {
-          "val": {
-            "2011": 12856072,
-            "2012": 13562911,
-            "2013": 14136729,
-            "2014": 14497938,
-            "2015": 14518479,
-            "2016": 14217117,
-            "2017": 13799847,
-            "2018": 13331195,
-            "2019": 12689771,
-            "2020": 12028803,
-            "2021": 11947618,
-            "2022": 11802729,
-            "2023": 11795809
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "isDcAggregate": true
-          }
-        },
-        "Count_Person_BelowPovertyLevelInThePast12Months_NativeHawaiianOrOtherPacificIslanderAlone": {
-          "val": {
-            "2011": 85401,
-            "2012": 93143,
-            "2013": 99976,
-            "2014": 107914,
-            "2015": 111178,
-            "2016": 109050,
-            "2017": 105019,
-            "2018": 103535,
-            "2019": 102052,
-            "2020": 99857,
-            "2021": 99799,
-            "2022": 103251,
-            "2023": 105018
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "isDcAggregate": true
-          }
-        },
-        "Count_Person_BelowPovertyLevelInThePast12Months_WhiteAlone": {
-          "val": {
-            "2011": 26829869,
-            "2012": 28272114,
-            "2013": 29370238,
-            "2014": 30020362,
-            "2015": 30021277,
-            "2016": 29487869,
-            "2017": 28634132,
-            "2018": 27697544,
-            "2019": 26564761,
-            "2020": 24623002,
-            "2021": 23313519,
-            "2022": 22107777,
-            "2023": 20779550
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "isDcAggregate": true
-          }
-        },
-        "Count_Person_BlackOrAfricanAmericanAlone": {
-          "val": {
-            "2011": 38670057,
-            "2012": 39108010,
-            "2013": 39451870,
-            "2014": 39855784,
-            "2015": 40209614,
-            "2016": 40561905,
-            "2017": 40949754,
-            "2018": 41281123,
-            "2019": 41621318,
-            "2020": 41595290,
-            "2021": 41722663,
-            "2022": 41574960,
-            "2023": 41308652
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "isDcAggregate": true
-          }
-        },
-        "Count_Person_Female": {
-          "val": {
-            "2011": 157812589,
-            "2012": 159055934,
-            "2013": 160208857,
-            "2014": 161487986,
-            "2015": 162649954,
-            "2016": 163636438,
-            "2017": 164800620,
-            "2018": 165692916,
-            "2019": 166551005,
-            "2020": 167459830,
-            "2021": 168258279,
-            "2022": 168618009,
-            "2023": 169556351
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "isDcAggregate": true
-          }
-        },
-        "Count_Person_Female_BelowPovertyLevelInThePast12Months": {
-          "val": {
-            "2011": 24652244,
-            "2012": 25689191,
-            "2013": 26597074,
-            "2014": 27176096,
-            "2015": 27214372,
-            "2016": 26777005,
-            "2017": 26081778,
-            "2018": 25336327,
-            "2019": 24394352,
-            "2020": 23506246,
-            "2021": 23296207,
-            "2022": 23165438,
-            "2023": 23113560
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "isDcAggregate": true
-          }
-        },
-        "Count_Person_HispanicOrLatino": {
-          "val": {
-            "2011": 52913517,
-            "2012": 54221164,
-            "2013": 55429828,
-            "2014": 56672014,
-            "2015": 57779493,
-            "2016": 58691273,
-            "2017": 59943182,
-            "2018": 60867275,
-            "2019": 61755289,
-            "2020": 62573645,
-            "2021": 64077330,
-            "2022": 64987193,
-            "2023": 66347413
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "isDcAggregate": true
-          }
-        },
-        "Count_Person_Male": {
-          "val": {
-            "2011": 152533769,
-            "2012": 153799504,
-            "2013": 155010703,
-            "2014": 156258063,
-            "2015": 157448140,
-            "2016": 158451109,
-            "2017": 159672750,
-            "2018": 160597055,
-            "2019": 161465237,
-            "2020": 162365120,
-            "2021": 164778476,
-            "2022": 165751966,
-            "2023": 166086074
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "isDcAggregate": true
-          }
-        },
-        "Count_Person_Male_BelowPovertyLevelInThePast12Months": {
-          "val": {
-            "2011": 19763735,
-            "2012": 20821748,
-            "2013": 21710487,
-            "2014": 22210475,
-            "2015": 22150788,
-            "2016": 21732295,
-            "2017": 21111787,
-            "2018": 20416812,
-            "2019": 19565582,
-            "2020": 18805038,
-            "2021": 18766426,
-            "2022": 18724506,
-            "2023": 18617122
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "isDcAggregate": true
-          }
-        },
-        "Count_Person_NativeHawaiianOrOtherPacificIslanderAlone": {
-          "val": {
-            "2011": 500669,
-            "2012": 514446,
-            "2013": 526408,
-            "2014": 535890,
-            "2015": 546384,
-            "2016": 560203,
-            "2017": 570252,
-            "2018": 583021,
-            "2019": 600137,
-            "2020": 611662,
-            "2021": 615802,
-            "2022": 625142,
-            "2023": 629460
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "isDcAggregate": true
-          }
-        },
-        "Count_Person_WhiteAlone": {
-          "val": {
-            "2011": 229862927,
-            "2012": 231930694,
-            "2013": 233168413,
-            "2014": 234383294,
-            "2015": 235439052,
-            "2016": 236105163,
-            "2017": 236759648,
-            "2018": 237188538,
-            "2019": 237565676,
-            "2020": 231913264,
-            "2021": 226482760,
-            "2022": 219548855,
-            "2023": 212021757
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey_AggCountry",
-            "provenanceUrl": "https://www.census.gov/",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "isDcAggregate": true
-          }
-        },
-        "GiniIndex_EconomicActivity": {
-          "val": {
-            "1963": 37.6,
-            "1964": 38.1,
-            "1965": 37.5,
-            "1966": 37.8,
-            "1967": 36.9,
-            "1968": 36.3,
-            "1969": 36,
-            "1970": 36.6,
-            "1971": 36.9,
-            "1972": 36.7,
-            "1973": 36.1,
-            "1974": 35.5,
-            "1975": 35.6,
-            "1976": 35.6,
-            "1977": 35.5,
-            "1978": 34.8,
-            "1979": 34.8,
-            "1980": 34.7,
-            "1981": 35.5,
-            "1982": 36.7,
-            "1983": 37.3,
-            "1984": 37.3,
-            "1985": 37.6,
-            "1986": 37.6,
-            "1987": 37.2,
-            "1988": 37.7,
-            "1989": 38.2,
-            "1990": 38.3,
-            "1991": 38,
-            "1992": 38.4,
-            "1993": 40.4,
-            "1994": 40,
-            "1995": 39.9,
-            "1996": 40.3,
-            "1997": 40.5,
-            "1998": 40,
-            "1999": 40,
-            "2000": 40.1,
-            "2001": 40.6,
-            "2002": 40.4,
-            "2003": 40.8,
-            "2004": 40.3,
-            "2005": 41,
-            "2006": 41.4,
-            "2007": 40.8,
-            "2008": 40.8,
-            "2009": 40.6,
-            "2010": 40,
-            "2011": 40.9,
-            "2012": 40.9,
-            "2013": 40.6,
-            "2014": 41.5,
-            "2015": 41.2,
-            "2016": 41.1,
-            "2017": 41.2,
-            "2018": 41.4,
-            "2019": 41.5,
-            "2020": 39.7,
-            "2021": 39.7,
-            "2022": 41.3
-          },
-          "metadata": {
-            "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
-            "measurementMethod": "WorldBankEstimate",
-            "observationPeriod": "P1Y"
-          }
-        },
-        "Median_Income_Household_HouseholderRaceAmericanIndianOrAlaskaNativeAlone": {
-          "val": {
-            "2022": 55925,
-            "2023": 59393
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "unit": "USDollar"
-          }
-        },
-        "Median_Income_Household_HouseholderRaceAsianAlone": {
-          "val": {
-            "2022": 107637,
-            "2023": 113106
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "unit": "USDollar"
-          }
-        },
-        "Median_Income_Household_HouseholderRaceBlackOrAfricanAmericanAlone": {
-          "val": {
-            "2022": 50901,
-            "2023": 53444
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "unit": "USDollar"
-          }
-        },
-        "Median_Income_Household_HouseholderRaceHispanicOrLatino": {
-          "val": {
-            "2022": 64936,
-            "2023": 68890
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "unit": "USDollar"
-          }
-        },
-        "Median_Income_Household_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone": {
-          "val": {
-            "2022": 76568,
-            "2023": 78640
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "unit": "USDollar"
-          }
-        },
-        "Median_Income_Household_HouseholderRaceWhiteAlone": {
-          "val": {
-            "2022": 80042,
-            "2023": 83784
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "unit": "USDollar"
-          }
-        },
-        "Median_Income_Person_15OrMoreYears_Female_WithIncome": {
-          "val": {
-            "2022": 30605,
-            "2023": 32546
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "unit": "USDollar"
-          }
-        },
-        "Median_Income_Person_15OrMoreYears_Male_WithIncome": {
-          "val": {
-            "2022": 45902,
-            "2023": 48138
-          },
-          "metadata": {
-            "importName": "CensusACS5YearSurvey",
-            "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey",
-            "unit": "USDollar"
+            "importName": "WikidataPopulation",
+            "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+            "measurementMethod": "WikidataPopulation"
           }
         }
       }
@@ -1103,8 +309,8 @@
   },
   "latestPopulation": {
     "country/ASM": {
-      "date": "2023",
-      "value": 47521,
+      "date": "2024",
+      "value": 46765,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
@@ -1112,8 +318,8 @@
       }
     },
     "country/CHN": {
-      "date": "2023",
-      "value": 1410710000,
+      "date": "2024",
+      "value": 1408975000,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
@@ -1121,8 +327,8 @@
       }
     },
     "country/DEU": {
-      "date": "2023",
-      "value": 83280000,
+      "date": "2024",
+      "value": 83510950,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
@@ -1130,8 +336,8 @@
       }
     },
     "country/NGA": {
-      "date": "2023",
-      "value": 227882945,
+      "date": "2024",
+      "value": 232679478,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
@@ -1139,8 +345,8 @@
       }
     },
     "country/NZL": {
-      "date": "2023",
-      "value": 5223100,
+      "date": "2024",
+      "value": 5338500,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
@@ -1155,6 +361,24 @@
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
+      }
+    },
+    "northamerica": {
+      "date": "2024",
+      "value": 613150000,
+      "metadata": {
+        "importName": "WikidataPopulation",
+        "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+        "measurementMethod": "WikidataPopulation"
+      }
+    },
+    "oceania": {
+      "date": "2020",
+      "value": 12355695,
+      "metadata": {
+        "importName": "WikidataPopulation",
+        "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+        "measurementMethod": "WikidataPopulation"
       }
     }
   },
@@ -1226,8 +450,18 @@
         "Overview"
       ]
     },
-    "northamerica": {},
-    "oceania": {}
+    "northamerica": {
+      "category": [
+        "Demographics",
+        "Overview"
+      ]
+    },
+    "oceania": {
+      "category": [
+        "Demographics",
+        "Overview"
+      ]
+    }
   },
   "parentPlaces": [
     "oceania",
