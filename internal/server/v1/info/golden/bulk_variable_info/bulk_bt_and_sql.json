@@ -43,7 +43,7 @@
             "maxValue": 24354012
           },
           "AdministrativeArea2": {
-            "placeCount": 6738,
+            "placeCount": 6711,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1143712",
@@ -62,7 +62,7 @@
             "maxValue": 3363912
           },
           "AdministrativeArea3": {
-            "placeCount": 307,
+            "placeCount": 289,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q217234",
@@ -4349,78 +4349,6 @@
             ],
             "observationCount": 1918,
             "timeSeriesCount": 70
-          },
-          "dc/base/Zurich_Population_By_Sex": {
-            "importName": "Zurich_Population_By_Sex",
-            "releaseFrequency": "P1Y",
-            "seriesSummary": [
-              {
-                "seriesKey": {},
-                "earliestDate": "1993",
-                "latestDate": "2023",
-                "placeTypeSummary": {
-                  "AdministrativeArea2": {
-                    "placeCount": 27,
-                    "topPlaces": [
-                      {
-                        "dcid": "wikidataId/Q870098",
-                        "name": "District 11"
-                      },
-                      {
-                        "dcid": "wikidataId/Q675017",
-                        "name": "Kreis 3"
-                      },
-                      {
-                        "dcid": "wikidataId/Q456159",
-                        "name": "District 9"
-                      }
-                    ],
-                    "minValue": 2394,
-                    "maxValue": 38349
-                  },
-                  "AdministrativeArea3": {
-                    "placeCount": 18,
-                    "topPlaces": [
-                      {
-                        "dcid": "wikidataId/Q370104",
-                        "name": "Sihlfeld"
-                      },
-                      {
-                        "dcid": "wikidataId/Q433012",
-                        "name": "Alt-Wiedikon"
-                      },
-                      {
-                        "dcid": "wikidataId/Q870084",
-                        "name": "Hard"
-                      }
-                    ],
-                    "minValue": 296,
-                    "maxValue": 11256
-                  },
-                  "City": {
-                    "placeCount": 2,
-                    "topPlaces": [
-                      {
-                        "dcid": "wikidataId/Q72",
-                        "name": "Zurich"
-                      },
-                      {
-                        "dcid": "wikidataId/Q445711",
-                        "name": "Altstetten"
-                      }
-                    ],
-                    "minValue": 14100,
-                    "maxValue": 222324
-                  }
-                },
-                "minValue": 296,
-                "maxValue": 222324,
-                "observationCount": 1457,
-                "timeSeriesCount": 47
-              }
-            ],
-            "observationCount": 1457,
-            "timeSeriesCount": 47
           }
         }
       }

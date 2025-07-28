@@ -56,12 +56,7 @@
       "node": "Corse,France"
     },
     {
-      "node": "Dadra And Nagar Haveli,India",
-      "candidates": [
-        {
-          "dcid": "wikidataId/Q2760659"
-        }
-      ]
+      "node": "Dadra And Nagar Haveli,India"
     },
     {
       "node": "Delhi,India",
@@ -95,12 +90,7 @@
       "node": "Illes Balears,Spain"
     },
     {
-      "node": "Kamchatka,Russia",
-      "candidates": [
-        {
-          "dcid": "wikidataId/Q7948"
-        }
-      ]
+      "node": "Kamchatka,Russia"
     },
     {
       "node": "Kansai,Japan"
