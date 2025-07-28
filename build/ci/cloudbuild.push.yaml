@@ -58,8 +58,10 @@ steps:
         set -e
         docker build -f build/Dockerfile --target server \
           -t gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA \
+          -t gcr.io/datcom-ci/datacommons-mixer:latest \
           .
         docker push gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA
+        docker push gcr.io/datcom-ci/datacommons-mixer:latest
     waitFor: ["build-proto"]
 
   # Push the grpc descriptor to gcs.
@@ -71,7 +73,9 @@ steps:
       - |
         set -e
         gsutil cp mixer-grpc.$SHORT_SHA.pb gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$SHORT_SHA.pb
+        gsutil cp mixer-grpc.$SHORT_SHA.pb gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.latest.pb
         gsutil acl ch -u AllUsers:R gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$SHORT_SHA.pb
+        gsutil acl ch -u AllUsers:R gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.latest.pb
     waitFor: ["build-proto"]
 
   # Update mixer autopush version in the GCP repo "deployment".
