@@ -35,7 +35,7 @@ RUN go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.3.0
 
 
 # Use pre-built go-protoc image from last step.
-FROM gcr.io/datcom-ci/go-protoc:latest AS server
+FROM go-protoc AS server
 WORKDIR /mixer
 # Docker cache: Download modules
 COPY go.mod go.sum /mixer/

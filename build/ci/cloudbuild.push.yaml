@@ -16,7 +16,6 @@
 # data change.
 
 steps:
-
   # Trigger downstream builds that listen for changes to multiple repos.
   - id: update-repo-version
     name: "gcr.io/cloud-builders/git"
@@ -32,7 +31,7 @@ steps:
 
   # Build protobuf and grpc descriptor
   - id: build-proto
-    name: gcr.io/datcom-ci/go-protoc
+    name: gcr.io/datcom-ci/go-protoc:${_GO_PROTOC_VERSION}
     entrypoint: "bash"
     args:
       - -c
@@ -59,10 +58,8 @@ steps:
         set -e
         docker build -f build/Dockerfile --target server \
           -t gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA \
-          -t gcr.io/datcom-ci/datacommons-mixer:latest \
           .
         docker push gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA
-        docker push gcr.io/datcom-ci/datacommons-mixer:latest
     waitFor: ["build-proto"]
 
   # Push the grpc descriptor to gcs.
@@ -74,9 +71,7 @@ steps:
       - |
         set -e
         gsutil cp mixer-grpc.$SHORT_SHA.pb gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$SHORT_SHA.pb
-        gsutil cp mixer-grpc.$SHORT_SHA.pb gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.latest.pb
         gsutil acl ch -u AllUsers:R gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$SHORT_SHA.pb
-        gsutil acl ch -u AllUsers:R gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.latest.pb
     waitFor: ["build-proto"]
 
   # Update mixer autopush version in the GCP repo "deployment".
@@ -93,6 +88,7 @@ steps:
     waitFor: ["push-grpc-descriptor", "push-image"]
 
 substitutions:
+  _GO_PROTOC_VERSION: "latest"
   _SKIP_AUTOPUSH_UPDATE: "false"
 
 options:
