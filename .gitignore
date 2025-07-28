@@ -70,3 +70,5 @@ http_memprof_out
 
 # custom dc sqlite database
 sqlite
+.gemini
+
