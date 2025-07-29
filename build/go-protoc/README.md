@@ -13,11 +13,14 @@ expected versions:
 
 To generate the Docker image and push it to GCS:
 
-1. Change the version string in the `go-protoc.version` file at `build/go-protoc.version`.
-2. Run (from this directory):
+1. Change the version string in cloudbuild.yaml
+2. Search for other occurrences of the version string and update those too.
+   Currently this includes:
+   - build/ci/cloudbuild.push.yaml
+   - build/ci/cloudbuild.test.yaml
+3. Run (from this directory):
 
 ```bash
 gcloud config set project datcom-ci
-gcloud builds submit . --config=cloudbuild.yaml \
---substitutions=_GO_PROTOC_VERSION=$(cat ../go-protoc.version)
+gcloud builds submit . --config=cloudbuild.yaml
 ```

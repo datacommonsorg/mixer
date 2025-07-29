@@ -47,7 +47,7 @@ steps:
     waitFor: ["-"]
 
   - id: test
-    name: gcr.io/datcom-ci/go-protoc
+    name: gcr.io/datcom-ci/go-protoc:${_GO_PROTOC_VERSION}
     env: ["GO111MODULE=on"]
     entrypoint: "bash"
     args:
@@ -58,7 +58,7 @@ steps:
     waitFor: ["build-proto"]
 
 substitutions:
-  _GO_PROTOC_VERSION: "latest"
+  _GO_PROTOC_VERSION: "2025-07-29"
 
 options:
   volumes:

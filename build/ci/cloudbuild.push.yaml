@@ -94,6 +94,7 @@ steps:
 
 substitutions:
   _SKIP_AUTOPUSH_UPDATE: "false"
+  _GO_PROTOC_VERSION: "2025-07-29"
 
 options:
   volumes:

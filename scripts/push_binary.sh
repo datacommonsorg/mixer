@@ -27,14 +27,8 @@ if [[ $1 != "" ]]; then
   git checkout "$TAG"
 fi
 
-GO_PROTOC_VERSION=$(cat "$ROOT/build/go-protoc.version")
-
-SUBST="SHORT_SHA=$TAG"
-SUBST="$SUBST,_SKIP_AUTOPUSH_UPDATE=true"
-SUBST="$SUBST,_GO_PROTOC_VERSION=$GO_PROTOC_VERSION"
-
 gcloud builds submit \
     --project=datcom-ci \
     --config=build/ci/cloudbuild.push.yaml \
-    --substitutions="$SUBST" \
+    --substitutions SHORT_SHA="$TAG",_SKIP_AUTOPUSH_UPDATE=true \
     .

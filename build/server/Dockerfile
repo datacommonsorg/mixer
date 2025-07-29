@@ -14,9 +14,8 @@
 
 # Image for mixer server
 
-# This has a default value to satisfy the linter, but should always be provided
-# from build/go-protoc.version to ensure consistency.
-ARG GO_PROTOC_VERSION=2025-07-29
+# This should be overridden but is included for the linter.
+ARG GO_PROTOC_VERSION=latest
 FROM gcr.io/datcom-ci/go-protoc:${GO_PROTOC_VERSION} AS server
 
 WORKDIR /mixer
