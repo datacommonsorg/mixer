@@ -14,17 +14,13 @@
 
 steps:
   - id: push-go-protoc
-    name: gcr.io/cloud-builders/docker
-    entrypoint: "bash"
+    name: "gcr.io/cloud-builders/docker"
+    env:
+      - "DOCKER_BUILDKIT=1"
     args:
-      - -c
-      - |
-        set -e
-        DOCKER_BUILDKIT=1
-        docker build -f build/Dockerfile --tag gcr.io/$_PROJECT_ID/go-protoc:${_TAG} .
-        docker push gcr.io/$_PROJECT_ID/go-protoc:${_TAG}
+      - "build"
+      - "--tag=gcr.io/datcom-ci/go-protoc:${_GO_PROTOC_VERSION}"
+      - "."
 
-timeout: 3600s
-options:
-  dynamic_substitutions: true
-  machineType: "E2_HIGHCPU_32"
+images:
+  - "gcr.io/datcom-ci/go-protoc:${_GO_PROTOC_VERSION}"

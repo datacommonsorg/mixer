@@ -1,4 +1,3 @@
-#!/bin/bash
 # Copyright 2023 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,28 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# go-protoc: image with Golang, protoc, and protoc + gRPC plugins for go
 
-# Push docker image and grpc descriptor from local build
+FROM golang:1.23-alpine AS go-protoc
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-ROOT="$(dirname "$DIR")"
+WORKDIR /mixer
 
-cd "$ROOT"
+# Install protoc
+RUN apk update
+RUN apk add bash protobuf-dev
 
-TAG=$(git rev-parse --short=7 HEAD)
-if [[ $1 != "" ]]; then
-  TAG=$1
-  git checkout "$TAG"
-fi
-
-GO_PROTOC_VERSION=$(cat "$ROOT/build/go-protoc.version")
-
-SUBST="SHORT_SHA=$TAG"
-SUBST="$SUBST,_SKIP_AUTOPUSH_UPDATE=true"
-SUBST="$SUBST,_GO_PROTOC_VERSION=$GO_PROTOC_VERSION"
-
-gcloud builds submit \
-    --project=datcom-ci \
-    --config=build/ci/cloudbuild.push.yaml \
-    --substitutions="$SUBST" \
-    .
+# Install protobuf go plugin
+RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.30.0
+RUN go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.3.0

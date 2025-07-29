@@ -12,31 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# This Dockerfile is used to build various container images. There are a few
-# targets:
-#
-# go-protoc: image with Golang, protoc and protoc-go pluggin
-# base: image with Go modules download and protobuf built
-# server: image for mixer server
+# Image for mixer server
 
-
-FROM golang:1.23-alpine AS go-protoc
+# This has a default value to satisfy the linter, but should always be provided
+# from build/go-protoc.version to ensure consistency.
+ARG GO_PROTOC_VERSION=2025-07-29
+FROM gcr.io/datcom-ci/go-protoc:${GO_PROTOC_VERSION} AS server
 
 WORKDIR /mixer
 
-# Install protoc
-RUN apk update
-RUN apk add bash protobuf-dev
-
-# Install protobuf go plugin
-ENV GO111MODULE=on
-RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.30.0
-RUN go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.3.0
-
-
-# Use pre-built go-protoc image from last step.
-FROM go-protoc AS server
-WORKDIR /mixer
 # Docker cache: Download modules
 COPY go.mod go.sum /mixer/
 RUN go mod download -x
@@ -47,20 +31,21 @@ COPY internal/ internal
 
 # Build protobuf
 RUN protoc \
-    --include_source_info \
+    --descriptor_set_out mixer-grpc.pb \
     --include_imports \
+    --include_source_info \
     --proto_path=proto \
     --go_out=paths=source_relative:internal/proto \
     --go-grpc_out=paths=source_relative:internal/proto \
     --go-grpc_opt=require_unimplemented_servers=false \
     --experimental_allow_proto3_optional \
-    --descriptor_set_out mixer-grpc.pb \
     proto/*.proto proto/**/*.proto
 
-# Adding the grpc_health_probe
+# Add the grpc_health_probe
 RUN GRPC_HEALTH_PROBE_VERSION=v0.4.7 && \
     wget -qO/bin/grpc_health_probe https://github.com/grpc-ecosystem/grpc-health-probe/releases/download/${GRPC_HEALTH_PROBE_VERSION}/grpc_health_probe-linux-amd64 && \
     chmod +x /bin/grpc_health_probe
+
 # Build binary
 COPY cmd/ cmd
 COPY esp/ esp
