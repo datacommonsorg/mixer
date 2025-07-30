@@ -57,7 +57,7 @@ steps:
     waitFor: ["build-proto"]
 
 substitutions:
-  _GO_PROTOC_VERSION: "2025-07-29"
+  _GO_PROTOC_VERSION: "2025-07-30"
 
 options:
   volumes:

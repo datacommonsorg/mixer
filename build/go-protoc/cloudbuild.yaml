@@ -13,9 +13,9 @@
 # limitations under the License.
 
 substitutions:
-  _GO_PROTOC_VERSION: "2025-07-29"
+  _GO_PROTOC_VERSION: "2025-07-30"
   # When updating this value, search for other occurrences in the codebase
-  # and update those as well.
+  # and update those as well. See the README for more details.
 
 steps:
   - id: push-go-protoc
