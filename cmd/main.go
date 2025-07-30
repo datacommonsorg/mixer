@@ -230,6 +230,7 @@ func main() {
 			log.Fatalf("Cannot open sqlite database from: %s: %v", *sqlitePath, err)
 		}
 		sqlClient.UseConnections(client)
+		//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 		defer sqlClient.Close()
 	}
 
@@ -242,6 +243,7 @@ func main() {
 				log.Fatalf("Cannot open cloud sql database from %s: %v", *cloudSQLInstance, err)
 			}
 			sqlClient.UseConnections(client)
+			//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 			defer sqlClient.Close()
 		}
 	}
@@ -309,6 +311,7 @@ func main() {
 			if err != nil {
 				log.Fatalf("Failed to create Redis client: %v", err)
 			}
+			//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 			defer redisClient.Close()
 
 			var redisProcessor dispatcher.Processor = redis.NewCacheProcessor(redisClient)
@@ -347,6 +350,7 @@ func main() {
 		if err != nil {
 			log.Fatalf("could not create memory profile: %s", err)
 		}
+		//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 		defer f.Close()
 		// explicitly trigger garbage collection to accurately understand memory
 		// still in use

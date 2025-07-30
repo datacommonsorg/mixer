@@ -161,10 +161,22 @@ go get -u ./...
 go mod tidy
 ```
 
-## Run Tests (Go)
+## Run tests (Go)
 
 ```bash
-./scripts/run_test.sh
+./run_test.sh
+```
+
+## Lint (Go)
+
+```bash
+./run_test.sh -l
+```
+
+## Auto-fix some lint issues (Go)
+
+```bash
+./run_test.sh -f
 ```
 
 ## Update e2e test golden files (Go)

@@ -325,10 +325,7 @@ func GetSVGAncestors(node string, parentSvgs map[string][]string) []*pb.EntityIn
 	visited := map[string]bool{}
 
 	q, newQ := []string{node}, []string{}
-	for {
-		if len(q) == 0 {
-			break
-		}
+	for len(q) != 0 {
 		for _, id := range q {
 			parents, ok := parentSvgs[id]
 			if !ok {

@@ -651,6 +651,7 @@ func (sc *SQLClient) checkTables() error {
 				log.Printf("Error checking table %s: %v", tableName, err)
 			}
 
+			//nolint:staticcheck // TODO: Fix pre-existing issue and remove comment.
 			return fmt.Errorf(`The SQL database does not have the required tables.
 The following tables are required: %s
 
@@ -675,6 +676,7 @@ func (sc *SQLClient) checkSchema() error {
 
 	missingObservationColumns := util.GetMissingStrings(observationColumns, allObservationsTableColumns)
 	if len(missingObservationColumns) != 0 {
+		//nolint:staticcheck // TODO: Fix pre-existing issue and remove comment.
 		return fmt.Errorf(`The following columns are missing in the %s table: %v
 
 Run a data management job to update your database schema.
@@ -695,6 +697,7 @@ func (sc *SQLClient) getTableColumns(tableName string) ([]string, error) {
 	if err != nil {
 		return nil, fmt.Errorf("table not found: %s (error: %w)", tableName, err)
 	}
+	//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 	defer rows.Close()
 
 	// Get the column names

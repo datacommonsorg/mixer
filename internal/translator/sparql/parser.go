@@ -101,20 +101,21 @@ func (p *Parser) parsePrologue() (*Prologue, *ParseError) {
 	result := Prologue{Prefix: map[string]string{}}
 	for {
 		tok, _, _ := p.ScanIgnoreWhitespace()
-		if tok == BASE {
+		switch tok {
+		case BASE:
 			if tok, pos, lit := p.ScanIgnoreWhitespace(); tok != LT {
 				return nil, newParseError(tokstr(tok, lit), []string{"<"}, pos)
 			}
 			p.Unscan()
 			result.Base = p.parseURI()
-		} else if tok == PREFIX {
+		case PREFIX:
 			_, _, pre := p.ScanIgnoreWhitespace()
 			if tok, pos, lit := p.ScanIgnoreWhitespace(); tok != LT {
 				return nil, newParseError(tokstr(tok, lit), []string{"<"}, pos)
 			}
 			p.Unscan()
 			result.Prefix[pre] = p.parseURI()
-		} else {
+		default:
 			p.Unscan()
 			return &result, nil
 		}

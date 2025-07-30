@@ -45,6 +45,7 @@ func ReadBranchTableName(ctx context.Context) (string, error) {
 	if err != nil {
 		return "", err
 	}
+	//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 	defer rc.Close()
 	folder, err := io.ReadAll(rc)
 	if err != nil {

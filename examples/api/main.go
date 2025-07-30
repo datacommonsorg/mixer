@@ -45,6 +45,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
+	//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 	defer conn.Close()
 	c := pbs.NewMixerClient(conn)
 	ctx := context.Background()
