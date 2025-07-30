@@ -48,7 +48,6 @@ steps:
 
   - id: test
     name: gcr.io/datcom-ci/go-protoc:${_GO_PROTOC_VERSION}
-    env: ["GO111MODULE=on"]
     entrypoint: "bash"
     args:
       - -c
