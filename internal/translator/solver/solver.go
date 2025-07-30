@@ -266,13 +266,14 @@ func RewriteQuery(queries []*types.Query, subTypeMap map[string]string) []*types
 	typeOfNodeInfo := map[types.Node]info{}
 	subTypeNodes := map[types.Node]struct{}{}
 	for i, q := range res {
-		if q.Pred == tmcf.TypeOf {
+		switch q.Pred {
+		case tmcf.TypeOf:
 			if v, ok := q.Obj.(string); ok {
 				if _, ok := subTypeMap[v]; ok {
 					typeOfNodeInfo[q.Sub] = info{i, v}
 				}
 			}
-		} else if q.Pred == "subType" {
+		case "subType":
 			subTypeNodes[q.Sub] = struct{}{}
 		}
 	}

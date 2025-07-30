@@ -173,12 +173,15 @@ func writeResultsToCsv(results []*MemoryProfileResult, outputPath string) {
 	if err != nil {
 		log.Fatal(err)
 	}
+	//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 	defer f.Close()
 
 	header := "ProfileKey,AllocatedMemoryMB,ResponseLength"
+	//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 	fmt.Fprintln(f, header)
 
 	for _, result := range results {
+		//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 		fmt.Fprintf(f, "%v,%.2f,%d\n", (*result).profileKey, (*result).allocMB, (*result).responseLength)
 	}
 }
@@ -215,6 +218,7 @@ func main() {
 	}
 	log.Println("Connected to gRPC succesfully")
 
+	//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 	defer conn.Close()
 	c := pbs.NewMixerClient(conn)
 	ctx := context.Background()

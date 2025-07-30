@@ -215,15 +215,16 @@ func nodeEdgesToLinkedGraph(edges []*Edge) (*pbv2.LinkedGraph, error) {
 func selectFieldsToQueryOptions(selectFields []string) queryOptions {
 	var qo queryOptions
 	for _, field := range selectFields {
-		if field == ENTITY {
+		switch field {
+		case ENTITY:
 			qo.entity = true
-		} else if field == VARIABLE {
+		case VARIABLE:
 			qo.variable = true
-		} else if field == DATE {
+		case DATE:
 			qo.date = true
-		} else if field == VALUE {
+		case VALUE:
 			qo.value = true
-		} else if field == FACET {
+		case FACET:
 			qo.facet = true
 		}
 	}
@@ -275,7 +276,11 @@ func filterTimeSeriesByDate(ts *TimeSeries, date string) {
 	}
 }
 
-func filterObservationsByDateAndFacet(observations []*Observation, date string, filter *pbv2.FacetFilter) []*Observation {
+func filterObservationsByDateAndFacet(
+	observations []*Observation,
+	date string,
+	filter *pbv2.FacetFilter,
+) []*Observation {
 	var filtered []*Observation
 	for _, observation := range observations {
 		filterTimeSeriesByDate(&observation.Observations, date)
@@ -287,7 +292,10 @@ func filterObservationsByDateAndFacet(observations []*Observation, date string, 
 	return filtered
 }
 
-func observationsToObservationResponse(req *pbv2.ObservationRequest, observations []*Observation) *pbv2.ObservationResponse {
+func observationsToObservationResponse(
+	req *pbv2.ObservationRequest,
+	observations []*Observation,
+) *pbv2.ObservationResponse {
 	// The select options are handled separately since each has a different behavior in V2.
 	// This includes:
 	// - Whether to include requested entities that are missing data
@@ -380,7 +388,10 @@ func getDistinctEntities(observations []*Observation) []string {
 	return entities
 }
 
-func mergeEntityOrderedFacets(byEntity map[string]*pbv2.EntityObservation, childPlaces []string) []*pbv2.FacetObservation {
+func mergeEntityOrderedFacets(
+	byEntity map[string]*pbv2.EntityObservation,
+	childPlaces []string,
+) []*pbv2.FacetObservation {
 	// Reuse merging logic from ContainedInFacet for consistency.
 	result := []*pbv2.FacetObservation{}
 
@@ -471,7 +482,10 @@ func obsToExistenceResponse(req *pbv2.ObservationRequest, observations []*Observ
 	return response
 }
 
-func observationsToOrderedFacets(observations []*Observation, includeObs bool) ([]*pbv2.FacetObservation, map[string]*pb.Facet) {
+func observationsToOrderedFacets(
+	observations []*Observation,
+	includeObs bool,
+) ([]*pbv2.FacetObservation, map[string]*pb.Facet) {
 	facets := map[string]*pb.Facet{}
 	placeVariableFacets := []*pb.PlaceVariableFacet{}
 	facetIdToFacetObs := map[string]*pbv2.FacetObservation{}
@@ -499,7 +513,10 @@ func observationsToOrderedFacets(observations []*Observation, includeObs bool) (
 	return orderedFacets, facets
 }
 
-func observationToFacetObservation(observation *Observation, includeObs bool) (*pb.PlaceVariableFacet, *pbv2.FacetObservation) {
+func observationToFacetObservation(
+	observation *Observation,
+	includeObs bool,
+) (*pb.PlaceVariableFacet, *pbv2.FacetObservation) {
 	facet := observationToFacet(observation)
 
 	var observations []*pb.PointStat
@@ -508,7 +525,12 @@ func observationToFacetObservation(observation *Observation, includeObs bool) (*
 
 		// Skip observations with non-numeric values.
 		if err != nil {
-			log.Printf("Error decoding PointStat for variable (%v) and entity (%v): %v", observation.VariableMeasured, observation.ObservationAbout, err)
+			log.Printf(
+				"Error decoding PointStat for variable (%v) and entity (%v): %v",
+				observation.VariableMeasured,
+				observation.ObservationAbout,
+				err,
+			)
 			continue
 		}
 

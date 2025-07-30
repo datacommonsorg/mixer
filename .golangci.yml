@@ -17,10 +17,6 @@ version: 2
 run:
   timeout: 5m
 
-issues:
-  # TODO: Fix pre-existing issues and remove this line.
-  new-from-rev: e9523a
-
 linters:
   exclusions:
     paths:
