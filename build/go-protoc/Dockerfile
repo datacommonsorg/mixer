@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# go-protoc: image with Golang, protoc, and proto + gRPC plugins for go
+# go-protoc: image with Golang, bash, protoc, and proto + gRPC plugins for go
 
 FROM golang:1.23.11-alpine3.22 AS go-protoc
 
@@ -24,9 +24,9 @@ ENV PROTOC_GEN_GO_GRPC_VERSION="1.3.0"
 
 WORKDIR /mixer
 
-# Install protoc (protobuf compiler)
+# Install bash and protoc (protobuf compiler)
 RUN apk update && \
-    apk add --no-cache protobuf-dev
+    apk add --no-cache bash protobuf-dev
 RUN INSTALLED_VERSION="$(protoc --version)" && \
     if [ "$INSTALLED_VERSION" != "libprotoc ${PROTOC_VERSION}" ]; then \
       echo "ERROR: Mismatched protoc version." && \
