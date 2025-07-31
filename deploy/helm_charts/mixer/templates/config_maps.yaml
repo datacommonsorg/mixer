@@ -28,7 +28,7 @@ metadata:
   name: {{ include "mixer.fullname" . }}-githash
   namespace: {{ .Release.Namespace }}
 data:
-  mixer_hash.txt: {{ .Values.mixer.image.tag | quote }}
+  mixer_hash.txt: {{ .Values.mixer.githash | quote }}
 
 ---
 

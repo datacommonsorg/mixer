@@ -74,7 +74,7 @@ spec:
             name: service-config-configmap
       containers:
         - name: mixer
-          image:  "{{ $.Values.mixer.image.repository }}:{{ $.Values.mixer.image.tag | default $.Chart.AppVersion }}"
+          image:  "{{ $.Values.mixer.image.repository }}{{- if $.Values.mixer.image.tag -}}:{{ $.Values.mixer.image.tag }}{{- end }}"
           imagePullPolicy: {{ $.Values.mixer.image.pullPolicy }}
           resources:
             limits:
@@ -170,7 +170,7 @@ spec:
             periodSeconds: 10
             initialDelaySeconds: 10
         - name: esp
-          image:  "{{ $.Values.esp.image.repository }}:{{ $.Values.esp.image.tag | default $.Chart.AppVersion }}"
+          image:  "{{ $.Values.esp.image.repository }}{{- if $.Values.esp.image.tag -}}:{{ $.Values.esp.image.tag }}{{- end }}"
           imagePullPolicy: {{ $.Values.esp.image.pullPolicy }}
           resources:
             limits:
