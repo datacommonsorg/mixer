@@ -69,10 +69,11 @@ func BulkVariableGroupInfo(
 		result := &pbv1.BulkVariableGroupInfoResponse{
 			Data: []*pbv1.VariableGroupInfoResponse{},
 		}
-		for svg := range cachedata.RawSvgs() {
+		rawSvgs := cachedata.RawSvgs(ctx)
+		for svg := range rawSvgs {
 			result.Data = append(result.Data, &pbv1.VariableGroupInfoResponse{
 				Node: svg,
-				Info: cachedata.RawSvgs()[svg],
+				Info: rawSvgs[svg],
 			})
 		}
 		sort.SliceStable(result.Data, func(i, j int) bool {

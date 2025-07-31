@@ -1,0 +1,223 @@
+// Copyright 2025 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package metrics
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"log"
+	"net"
+	"os"
+	"strings"
+	"time"
+
+	"net/http"
+
+	grpc_middleware "github.com/grpc-ecosystem/go-grpc-middleware"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc"
+	"go.opentelemetry.io/otel/exporters/prometheus"
+	"go.opentelemetry.io/otel/exporters/stdout/stdoutmetric"
+	"go.opentelemetry.io/otel/metric"
+	sdk "go.opentelemetry.io/otel/sdk/metric"
+	"google.golang.org/grpc"
+)
+
+const (
+	BigtableReadOutcomeOK    = "ok"    // Read was successful and returned data.
+	BigtableReadOutcomeEmpty = "empty" // Read was successful, but had no data.
+	BigtableReadOutcomeError = "error"
+)
+
+type (
+	rpcMethodKey string
+)
+
+const (
+	// Configuration values
+	prometheusPort         = 2223
+	shutdownTimeoutSeconds = 60
+	meterName              = "github.com/datacommonsorg/mixer/internal/metrics"
+
+	// Context keys
+	rpcMethodContextKey = rpcMethodKey("rpc.method")
+
+	// Bigtable metric attributes
+	btCachePrefixAttr = "bigtable.cache.prefix"
+	btReadOutcomeAttr = "bigtable.read.outcome"
+
+	// Cache data metric attributes
+	cacheDataTypeAttr = "cachedata.type"
+
+	// Common metric attributes
+	rpcMethodAttr = "rpc.method"
+
+	unknownMethodName = "UnknownMethod"
+)
+
+// getShortMethodName extracts the short method name from a full gRPC method string.
+// For example, "/datacommons.Mixer/V2Node" becomes "V2Node".
+func getShortMethodName(fullMethod string) string {
+	// If fullMethod is unset, return UnknownMethod
+	if fullMethod == "" {
+		return unknownMethodName
+	}
+	// If fullMethod has no slash, return the full value
+	if !strings.Contains(fullMethod, "/") {
+		return fullMethod
+	}
+	// If fullMethod is "/datacommons.Mixer/V2Node", shortMethodName will be "V2Node".
+	shortMethodName := fullMethod[strings.LastIndex(fullMethod, "/")+1:]
+	return shortMethodName
+}
+
+// Retrieves the RPC method name from the context.
+func getRpcMethod(ctx context.Context) string {
+	methodName, ok := ctx.Value(rpcMethodContextKey).(string)
+	if !ok {
+		return unknownMethodName
+	}
+	return methodName
+}
+
+// For non-streaming RPC endpoints, extracts the RPC method name and adds it to the context.
+func InjectMethodNameUnaryInterceptor(
+	ctx context.Context,
+	req any,
+	info *grpc.UnaryServerInfo,
+	handler grpc.UnaryHandler,
+) (any, error) {
+	newCtx := context.WithValue(ctx, rpcMethodContextKey, getShortMethodName(info.FullMethod))
+	return handler(newCtx, req)
+}
+
+// For streaming RPC endpoints, extracts the RPC method name and adds it to the context.
+func InjectMethodNameStreamInterceptor(
+	srv any,
+	ss grpc.ServerStream,
+	info *grpc.StreamServerInfo,
+	handler grpc.StreamHandler,
+) error {
+	newStream := grpc_middleware.WrapServerStream(ss)
+	newStream.WrappedContext = context.WithValue(
+		ss.Context(),
+		rpcMethodContextKey,
+		getShortMethodName(info.FullMethod),
+	)
+	return handler(srv, newStream)
+}
+
+// Sets up an HTTP endpoint serving metrics that can be scraped by Prometheus.
+func ExportPrometheusOverHttp() error {
+	exporter, err := prometheus.New()
+	if err != nil {
+		return err
+	}
+	mp := sdk.NewMeterProvider(sdk.WithReader(exporter))
+	otel.SetMeterProvider(mp)
+
+	prometheusHost := fmt.Sprintf(":%d", prometheusPort)
+	lis, err := net.Listen("tcp", prometheusHost)
+	if err != nil {
+		return err
+	}
+	go func() {
+		mux := http.NewServeMux()
+		mux.Handle("/metrics", promhttp.Handler())
+		err := http.Serve(lis, mux)
+		if err != nil {
+			log.Printf("Failed to serve prometheus: %v", err)
+		}
+	}()
+	return nil
+}
+
+// Sets up an OTLP exporter that pushes metrics to an OTLP collector over gRPC.
+func ExportOtlpOverGrpc(ctx context.Context) error {
+	exporter, err := otlpmetricgrpc.New(ctx, otlpmetricgrpc.WithInsecure())
+	if err != nil {
+		return err
+	}
+
+	mp := sdk.NewMeterProvider(sdk.WithReader(sdk.NewPeriodicReader(exporter)))
+	otel.SetMeterProvider(mp)
+	return nil
+}
+
+// ExportToConsole sets up an exporter that prints metrics to the console.
+// This is useful for local development and debugging.
+func ExportToConsole() {
+	enc := json.NewEncoder(os.Stdout)
+	enc.SetIndent("", "  ")
+
+	exp, err := stdoutmetric.New(
+		stdoutmetric.WithEncoder(enc),
+		stdoutmetric.WithoutTimestamps(),
+	)
+	if err != nil {
+		panic(err)
+	}
+
+	// Register the exporter with an SDK via a periodic reader.
+	mp := sdk.NewMeterProvider(
+		sdk.WithReader(sdk.NewPeriodicReader(exp)),
+	)
+	otel.SetMeterProvider(mp)
+}
+
+// Gracefully shuts down the meter provider with a timeout. Should be called
+// before server shutdown.
+func ShutdownWithTimeout() {
+	ctx, cancel := context.WithTimeout(context.Background(), shutdownTimeoutSeconds*time.Second)
+	defer cancel()
+	mp := otel.GetMeterProvider().(*sdk.MeterProvider)
+	err := mp.Shutdown(ctx)
+	if err != nil {
+		log.Printf("Failed to shutdown MeterProvider: %v", err)
+	}
+}
+
+// Adds the given duration to the histogram of Bigtable read latency.
+// Outcome should be one of ok, empty, or error.
+// Prefix is the cache prefix, e.g. "d/1/".
+func RecordBigtableReadDuration(
+	ctx context.Context,
+	readDuration time.Duration,
+	outcome string,
+	prefix string,
+) {
+	readLatencyHistogram, _ := otel.GetMeterProvider().Meter(meterName).
+		Int64Histogram("datacommons.mixer.bigtable.read.duration", metric.WithUnit("ms"))
+	readLatencyHistogram.Record(ctx, readDuration.Milliseconds(),
+		metric.WithAttributes(
+			attribute.String(btCachePrefixAttr, prefix),
+			attribute.String(btReadOutcomeAttr, outcome),
+			attribute.String(rpcMethodAttr, getRpcMethod(ctx)),
+		))
+}
+
+// Increments a counter of local cachedata reads broken down by type.
+func RecordCachedataRead(ctx context.Context, cacheType string) {
+	cachedataReadCounter, _ := otel.GetMeterProvider().Meter(meterName).
+		Int64Counter("datacommons.mixer.cachedata.reads")
+	cachedataReadCounter.Add(ctx, 1,
+		metric.WithAttributes(
+			attribute.String(cacheDataTypeAttr, cacheType),
+			attribute.String(rpcMethodAttr, getRpcMethod(ctx)),
+		))
+}
