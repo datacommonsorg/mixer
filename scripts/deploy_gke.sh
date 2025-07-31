@@ -18,7 +18,7 @@
 #
 # Usage:
 #
-# ./deploy_key.sh <"mixer_prod"|"mixer_staging"|"mixer_autopush"|"mixer_encode"|"mixer_dev"|"mixer_private"> <commit_hash>
+# ./deploy_gke.sh <"mixer_prod"|"mixer_staging"|"mixer_autopush"|"mixer_encode"|"mixer_dev"|"mixer_private"> <commit_hash>
 #
 # First argument is either "mixer_prod" or "mixer_staging" or "mixer_autopush" or "mixer_encode" or "mixer_dev" or mixer_private.
 # (Optional) second argument is the git commit hash of the mixer repo.
@@ -82,6 +82,10 @@ export DOMAIN=$(yq eval '.mixer.serviceName' deploy/helm_charts/envs/$ENV.yaml)
 export API_TITLE=$(yq eval '.api_title' deploy/helm_charts/envs/$ENV.yaml)
 export CLUSTER_NAME=mixer-$REGION
 
+# Create a release specific image for the deployment, if it does not exist.
+IMAGE_ERR=$(gcloud container images describe gcr.io/datcom-ci/datacommons-mixer:"$TAG" > /dev/null 2>&1; echo $?)
+if [[ "$IMAGE_ERR" == "1" ]];  then ./scripts/push_binary.sh "$TAG"; fi
+
 # Deploy Cloud Endpoints
 cp $ROOT/esp/endpoints.yaml.tmpl endpoints.yaml
 yq eval -i '.name = env(DOMAIN)' endpoints.yaml
@@ -108,9 +112,22 @@ kubectl create configmap service-config-configmap -n mixer \
 # Change "mixer_prod" for example, to "mixer-prod"
 RELEASE=${ENV//_/-}
 
-# Create a release specific image for the deployment, if it does not exist.
-IMAGE_ERR=$(gcloud container images describe gcr.io/datcom-ci/datacommons-mixer:"$TAG" > /dev/null ; echo $?)
-if [[ "$IMAGE_ERR" == "1" ]];  then ./scripts/push_binary.sh "$TAG"; fi
+# Check if enableOtlp is set in the env helm chart
+OTLP_ENABLED=$(yq eval '.mixer.enableOtlp' "deploy/helm_charts/envs/$ENV.yaml")
+if [[ "$OTLP_ENABLED" == "true" ]]; then
+  echo "OTLP is enabled for $ENV."
+  if ! kubectl get deployment opentelemetry-collector --namespace opentelemetry > /dev/null 2>&1; then
+    echo "OTLP collector deployment not found. Deploying the Google-built collector using kustomize..."
+    # Documentation: https://cloud.google.com/stackdriver/docs/instrumentation/opentelemetry-collector-gke
+    export GOOGLE_CLOUD_PROJECT=$PROJECT_ID
+    PROJECT_NUMBER=$(gcloud projects describe "$PROJECT_ID" --format="value(projectNumber)")
+    export PROJECT_NUMBER=$PROJECT_NUMBER
+    kubectl kustomize https://github.com/GoogleCloudPlatform/otlp-k8s-ingest.git/k8s/base \
+    | envsubst | kubectl apply -f -
+  else
+    echo "Verified that the OTLP collector is deployed."
+  fi
+fi
 
 # Upgrade or install Mixer helm chart into the cluster
 helm upgrade --install "$RELEASE" deploy/helm_charts/mixer \
