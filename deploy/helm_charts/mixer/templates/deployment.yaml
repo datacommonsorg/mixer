@@ -28,7 +28,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "mixer.fullname" $ }}-{{ $serviceName }}
-  namespace: {{ $.Values.namespace.name }}
+  namespace: {{ $.Release.Namespace }}
   labels:
     service:  {{ include "mixer.fullname" $ }}-{{ $serviceName }}
     {{- include "mixer.labels" $ | nindent 4 }}
@@ -146,11 +146,13 @@ spec:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-store-config
                   key: redis_info.yaml
+                  optional: true
             - name: MIXER_HASH
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-githash
                   key: mixer_hash.txt
+                  optional: true
           ports:
             - containerPort: 12345
           startupProbe:
