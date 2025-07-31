@@ -184,9 +184,10 @@ func executeEntityInfoSQL(ctx context.Context, sqlClient *sqldb.SQLClient, dcids
 			entityInfo = newEntityInfo()
 			entityInfos[row.SubjectID] = entityInfo
 		}
-		if row.Predicate == namePredicate {
+		switch row.Predicate {
+		case namePredicate:
 			entityInfo.Name = row.ObjectValue
-		} else if row.Predicate == typeOfPredicate {
+		case typeOfPredicate:
 			entityInfo.Type = row.ObjectID
 		}
 	}

@@ -89,9 +89,10 @@ func toEntityInfos(entityInfoTriples []*Triple) map[string]*entityInfo {
 			entityInfo = newEntityInfo()
 			entityInfos[row.SubjectID] = entityInfo
 		}
-		if row.Predicate == namePredicate {
+		switch row.Predicate {
+		case namePredicate:
 			entityInfo.Name = row.ObjectValue
-		} else if row.Predicate == typeOfPredicate {
+		case typeOfPredicate:
 			entityInfo.Type = row.ObjectID
 		}
 	}

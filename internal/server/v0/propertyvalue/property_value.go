@@ -59,9 +59,10 @@ func GetPropertyValues(
 		outRes = map[string][]*pb.EntityInfo{}
 	)
 	var err error
-	if direction == util.DirectionIn {
+	switch direction {
+	case util.DirectionIn:
 		outArc = false
-	} else if direction == util.DirectionOut {
+	case util.DirectionOut:
 		inArc = false
 	}
 

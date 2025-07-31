@@ -181,11 +181,11 @@
             },
             "minValue": 0,
             "maxValue": 1265920,
-            "observationCount": 126194,
+            "observationCount": 126184,
             "timeSeriesCount": 11506
           }
         ],
-        "observationCount": 126194,
+        "observationCount": 126184,
         "timeSeriesCount": 11506
       },
       "dc/base/FBIGovCrime_AggCountry": {

@@ -113,15 +113,16 @@ func ScanString(r io.RuneScanner) (string, error) {
 			// If the next character is an escape then write the escaped char.
 			// If it's not a valid escape then return an error.
 			ch1, _, _ := r.ReadRune()
-			if ch1 == 'n' {
+			switch ch1 {
+			case 'n':
 				buf.WriteRune('\n')
-			} else if ch1 == '\\' {
+			case '\\':
 				buf.WriteRune('\\')
-			} else if ch1 == '"' {
+			case '"':
 				buf.WriteRune('"')
-			} else if ch1 == '\'' {
+			case '\'':
 				buf.WriteRune('\'')
-			} else {
+			default:
 				return string(ch0) + string(ch1), errBadEscape
 			}
 		} else {
