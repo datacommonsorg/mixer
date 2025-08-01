@@ -24,6 +24,7 @@ steps:
       - -c
       - |
         set -e
+        if [ "$_SKIP_REPO_VERSION_UPDATE" == "true" ] ; then exit 0 ; fi
         gcloud source repos clone deployment /tmp/deployment --project=datcom-ci
         cd /tmp/deployment
         ./scripts/update_external_repo_version.sh $REPO_NAME $SHORT_SHA
@@ -94,6 +95,7 @@ steps:
 
 substitutions:
   _SKIP_AUTOPUSH_UPDATE: "false"
+  _SKIP_REPO_VERSION_UPDATE: "false"
   _GO_PROTOC_VERSION: "2025-07-30"
 
 options:

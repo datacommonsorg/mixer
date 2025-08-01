@@ -139,19 +139,20 @@ func GetStatVarGroupNode(
 			codes.InvalidArgument, "Missing required argument: stat_var_group")
 	}
 
+	rawSvgs := cachedata.RawSvgs(ctx)
 	result := &pb.StatVarGroupNode{}
-	if r, ok := cachedata.RawSvgs()[svg]; ok {
+	if r, ok := rawSvgs[svg]; ok {
 		// Clone into result, otherwise the server cache is modified.
 		result = proto.Clone(r).(*pb.StatVarGroupNode)
 	}
 	for _, item := range result.ChildStatVarGroups {
-		item.DisplayName = cachedata.RawSvgs()[item.Id].AbsoluteName
-		item.DescendentStatVarCount = cachedata.RawSvgs()[item.Id].DescendentStatVarCount
+		item.DisplayName = rawSvgs[item.Id].AbsoluteName
+		item.DescendentStatVarCount = rawSvgs[item.Id].DescendentStatVarCount
 	}
 	for _, item := range result.ChildStatVars {
 		item.HasData = true
 	}
-	result.ParentStatVarGroups = cachedata.ParentSvgs()[svg]
+	result.ParentStatVarGroups = cachedata.ParentSvgs(ctx)[svg]
 
 	// Filter result based on entities
 	if len(entities) > 0 {
@@ -211,7 +212,7 @@ func GetStatVarGroup(
 	cachedata *cache.Cache,
 ) (*pb.StatVarGroups, error) {
 	defer util.TimeTrack(time.Now(), "GetStatVarGroup")
-	result := &pb.StatVarGroups{StatVarGroups: cachedata.RawSvgs()}
+	result := &pb.StatVarGroups{StatVarGroups: cachedata.RawSvgs(ctx)}
 	// Only read entity stat vars when entities are provided.
 	// User can provide any arbitrary dcid, which might not be associated with
 	// stat vars. In this case, an empty response is returned.

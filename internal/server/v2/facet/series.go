@@ -132,7 +132,7 @@ func SeriesFacet(
 		sqlResponse, err := sqlSeriesFacet(
 			ctx,
 			store,
-			cachedata.SQLProvenances(),
+			cachedata.SQLProvenances(ctx),
 			variables,
 			entities,
 		)
@@ -144,7 +144,13 @@ func SeriesFacet(
 	return result, nil
 }
 
-func sqlSeriesFacet(ctx context.Context, store *store.Store, sqlProvenances map[string]*pb.Facet, variables []string, childPlaces []string) (*pbv2.ObservationResponse, error) {
+func sqlSeriesFacet(
+	ctx context.Context,
+	store *store.Store,
+	sqlProvenances map[string]*pb.Facet,
+	variables []string,
+	childPlaces []string,
+) (*pbv2.ObservationResponse, error) {
 	response, err := sqlquery.GetObservations(
 		ctx,
 		&store.SQLClient,

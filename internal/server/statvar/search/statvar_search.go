@@ -53,7 +53,7 @@ func SearchStatVar(
 	}
 	tokens := strings.Fields(
 		strings.ReplaceAll(strings.ToLower(query), ",", " "))
-	searchIndex := cachedata.SvgSearchIndex()
+	searchIndex := cachedata.SvgSearchIndex(ctx)
 	svList, matches := searchTokens(tokens, searchIndex, svOnly)
 
 	// Filter the stat var by places.

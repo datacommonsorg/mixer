@@ -206,7 +206,7 @@ func LinkedPropertyValues(
 		direction == util.DirectionOut &&
 		typeOfFilter == hierarchy.StatVarGroup {
 		res := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{}}
-		parentSvgs := cachedata.ParentSvgs()
+		parentSvgs := cachedata.ParentSvgs(ctx)
 		for _, node := range nodes {
 			res.Data[node] = &pbv2.LinkedGraph{}
 			ancestors := hierarchy.GetSVGAncestors(node, parentSvgs)

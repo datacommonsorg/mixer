@@ -17,8 +17,10 @@ package bigtable
 import (
 	"context"
 	"strings"
+	"time"
 
 	cbt "cloud.google.com/go/bigtable"
+	"github.com/datacommonsorg/mixer/internal/metrics"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
 )
@@ -141,6 +143,7 @@ func ReadWithGroupRowList(
 	}
 
 	errs, errCtx := errgroup.WithContext(ctx)
+	readStartTime := time.Now()
 	// Read from each import group tables. Note each table could have different
 	// rowList in pagination APIs.
 	for i := 0; i < len(tables); i++ {
@@ -163,11 +166,14 @@ func ReadWithGroupRowList(
 	}
 	err := errs.Wait()
 	if err != nil {
+		readDuration := time.Since(readStartTime)
+		metrics.RecordBigtableReadDuration(ctx, readDuration, metrics.BigtableReadOutcomeError, prefix)
 		return nil, err
 	}
 	for i := 0; i < len(chans); i++ {
 		close(chans[i])
 	}
+	hasData := false
 	result := [][]BtRow{}
 	if tables != nil {
 		for i := 0; i < len(tables); i++ {
@@ -175,8 +181,18 @@ func ReadWithGroupRowList(
 			for elem := range chans[i] {
 				items = append(items, elem)
 			}
+			if len(items) > 0 {
+				hasData = true
+			}
 			result = append(result, items)
 		}
 	}
+	readDuration := time.Since(readStartTime)
+	outcome := metrics.BigtableReadOutcomeOK
+	if !hasData {
+		outcome = metrics.BigtableReadOutcomeEmpty
+	}
+
+	metrics.RecordBigtableReadDuration(ctx, readDuration, outcome, prefix)
 	return result, nil
 }

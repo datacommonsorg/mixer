@@ -263,7 +263,7 @@ func (s *Server) BulkVariableGroupInfo(
 		); err != nil {
 			return nil, err
 		}
-
+		blocklistSvgs := s.cachedata.Load().BlocklistSvgs(ctx)
 		for _, remoteItem := range remoteResp.Data {
 			n := remoteItem.GetNode()
 			if s.metadata.FoldRemoteRootSvg && n == hierarchy.SvgRoot {
@@ -284,7 +284,7 @@ func (s *Server) BulkVariableGroupInfo(
 					}
 					// Decrease the count from block list svg.
 					for _, child := range remoteItem.Info.ChildStatVarGroups {
-						if _, ok := s.cachedata.Load().BlocklistSvgs()[child.Id]; ok {
+						if _, ok := blocklistSvgs[child.Id]; ok {
 							foldedSvg.DescendentStatVarCount -= child.DescendentStatVarCount
 						}
 					}
@@ -315,7 +315,7 @@ func (s *Server) BulkVariableGroupInfo(
 			// Remove all the block list svg from child svg.
 			childSvg := []*pb.StatVarGroupNode_ChildSVG{}
 			for _, child := range keyedInfo[n].Info.ChildStatVarGroups {
-				_, ok := s.cachedata.Load().BlocklistSvgs()[child.Id]
+				_, ok := blocklistSvgs[child.Id]
 				if ok {
 					keyedInfo[n].Info.DescendentStatVarCount -= child.DescendentStatVarCount
 				} else {
@@ -393,7 +393,7 @@ func (s *Server) BulkObservationDatesLinked(
 
 	errGroup.Go(func() error {
 		localResp, err := observationdates.BulkObservationDatesLinked(
-			errCtx, in, s.store, s.cachedata.Load().SQLProvenances(), s.metadata, s.httpClient)
+			errCtx, in, s.store, s.cachedata.Load().SQLProvenances(ctx), s.metadata, s.httpClient)
 		if err != nil {
 			return err
 		}

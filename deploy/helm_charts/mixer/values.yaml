@@ -45,6 +45,7 @@ mixer:
   useSpannerGraph: false
   useRedis: false
   enableV3: false
+  enableOtlp: false
 
   # If bigqueryOnly is True, bigqueryTableRef must be specified.
   bigqueryOnly: false

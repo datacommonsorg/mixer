@@ -34,23 +34,18 @@ Check if the k8s config points to the right cluster with `kubectl config current
 Sample output for dev-instance:
 `gke_datcom-mixer-dev-316822_us-central1_mixer-us-central1`
 
-### Example 1: Install/update Mixer dev instance using local mixer
+### Install/update Mixer dev instance
 
-Run the following after changes are made locally and are committed.
-push_binary.sh creates a new Mixer image based on local change. Helm then
-deploys a release that refers to the newly created image.
+First, commit your changes locally so they have an associated commit hash.
+
+After committing, run the deploy script specifying the dev env:
 
 ```sh
-./scripts/push_binary.sh
+./scripts/deploy_gke.sh mixer_dev
+```
 
-helm upgrade --install mixer-dev deploy/helm_charts/mixer \
-    --atomic \
-    --timeout 10m \
-    -f deploy/helm_charts/envs/mixer_dev.yaml \
-    --set mixer.githash=$(git rev-parse --short=7 HEAD) \
-    --set-file mixer.schemaConfigs."base\.mcf"=deploy/mapping/base.mcf \
-    --set-file mixer.schemaConfigs."encode\.mcf"=deploy/mapping/encode.mcf \
-    --set-file kgStoreConfig.bigqueryVersion=deploy/storage/bigquery.version \
-    --set-file kgStoreConfig.baseBigtableInfo=deploy/storage/base_bigtable_info.yaml \
-    --set-file kgStoreConfig.spannerGraphInfo=deploy/storage/spanner_graph_info.yaml
+To deploy a specific non-HEAD commit, you can pass the commit hash as a second argument:
+
+```sh
+./scripts/deploy_gke.sh mixer_dev <commit_hash>
 ```
