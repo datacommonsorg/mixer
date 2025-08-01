@@ -114,7 +114,7 @@ kubectl create configmap service-config-configmap -n mixer \
   --from-file=service_config.json=/tmp/service_config.json
 
 
-# Check if enableOtlp is set in the env helm chart
+# If OTLP is enabled, ensure a collector is deployed
 OTLP_ENABLED=$(yq eval '.mixer.enableOtlp' "deploy/helm_charts/envs/$ENV.yaml")
 if [[ "$OTLP_ENABLED" == "true" ]]; then
   echo "OTLP is enabled for $ENV."
