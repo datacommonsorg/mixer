@@ -26,7 +26,7 @@ fullnameOverride: ""
 # Set enabled to false to deploy into an existing namespace.
 namespace:
   create: false
-  name: "mixer"
+  name: "{{ .Values.namespace.name }}"
 
 # Everything custom DC related.
 customDC:
@@ -60,11 +60,11 @@ mixer:
   image:
     repository: gcr.io/datcom-ci/datacommons-mixer
     pullPolicy: IfNotPresent
-    tag: "latest"
+    tag: ""
 
   schemaConfigs:
-    base.mcf:
-    encode.mcf:
+    base.mcf: ""
+    encode.mcf: ""
 
 esp:
   image:

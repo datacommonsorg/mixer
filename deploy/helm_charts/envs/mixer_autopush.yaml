@@ -1,5 +1,7 @@
 # Helm config
 mixer:
+  image:
+    tag: ""
   hostProject: datcom-mixer-autopush
   serviceName: autopush.api.datacommons.org
   cacheSVFormula: true

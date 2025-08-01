@@ -1,5 +1,7 @@
 # Helm config
 mixer:
+  image:
+    tag: ""
   hostProject: datcom-mixer-staging
   serviceName: staging.api.datacommons.org
 
