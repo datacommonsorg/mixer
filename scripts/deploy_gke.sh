@@ -25,9 +25,13 @@
 #
 # !!! WARNING: Run this script in a clean Git checkout at the desired commit.
 #
-# This retrives the docker images and gRPC descriptor based on git commit hash,
-# so these binaries should have been pushed to container registry and Cloud
-# Storage by the continous deployment flow (../build/ci/cloudbuild.push.yaml).
+# This retrives the docker images and gRPC descriptor based on git commit hash
+# if they have been pushed to Artifact Registry and Cloud Storage by the
+# continous deployment flow (../build/ci/cloudbuild.push.yaml), or pushes them
+# if they are not found.
+#
+# This also checks for a telemetry collector workload and deploys one if it is
+# not found.
 
 set -e
 
@@ -109,25 +113,17 @@ kubectl delete configmap service-config-configmap -n mixer  --ignore-not-found
 kubectl create configmap service-config-configmap -n mixer \
   --from-file=service_config.json=/tmp/service_config.json
 
-# Change "mixer_prod" for example, to "mixer-prod"
-RELEASE=${ENV//_/-}
 
 # Check if enableOtlp is set in the env helm chart
 OTLP_ENABLED=$(yq eval '.mixer.enableOtlp' "deploy/helm_charts/envs/$ENV.yaml")
 if [[ "$OTLP_ENABLED" == "true" ]]; then
   echo "OTLP is enabled for $ENV."
-  if ! kubectl get deployment opentelemetry-collector --namespace opentelemetry > /dev/null 2>&1; then
-    echo "OTLP collector deployment not found. Deploying the Google-built collector using kustomize..."
-    # Documentation: https://cloud.google.com/stackdriver/docs/instrumentation/opentelemetry-collector-gke
-    export GOOGLE_CLOUD_PROJECT=$PROJECT_ID
-    PROJECT_NUMBER=$(gcloud projects describe "$PROJECT_ID" --format="value(projectNumber)")
-    export PROJECT_NUMBER=$PROJECT_NUMBER
-    kubectl kustomize https://github.com/GoogleCloudPlatform/otlp-k8s-ingest.git/k8s/base \
-    | envsubst | kubectl apply -f -
-  else
-    echo "Verified that the OTLP collector is deployed."
-  fi
+  PROJECT_NUMBER=$(gcloud projects describe "$PROJECT_ID" --format="value(projectNumber)")
+  scripts/deploy_otlp_collector.sh "$PROJECT_ID" "$PROJECT_NUMBER"
 fi
+
+# Change "mixer_prod" for example, to "mixer-prod"
+RELEASE=${ENV//_/-}
 
 # Upgrade or install Mixer helm chart into the cluster
 helm upgrade --install "$RELEASE" deploy/helm_charts/mixer \
@@ -143,4 +139,4 @@ helm upgrade --install "$RELEASE" deploy/helm_charts/mixer \
   --set-file kgStoreConfig.bigqueryVersion=deploy/storage/bigquery.version \
   --set-file kgStoreConfig.baseBigtableInfo=deploy/storage/base_bigtable_info.yaml \
   --set-file kgStoreConfig.spannerGraphInfo=deploy/storage/spanner_graph_info.yaml \
-  --set-file kgStoreConfig.redisInfo=deploy/storage/redis_info.yaml \
+  --set-file kgStoreConfig.redisInfo=deploy/storage/redis_info.yaml
