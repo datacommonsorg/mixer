@@ -31,7 +31,6 @@ steps:
         done
 
   - name: golang
-    env: ["GO111MODULE=on"]
     entrypoint: "bash"
     args:
       - -c

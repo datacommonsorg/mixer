@@ -31,7 +31,7 @@ steps:
 
   # Build protobuf to go bindings
   - id: build-proto
-    name: gcr.io/datcom-ci/go-protoc
+    name: gcr.io/datcom-ci/go-protoc:${_GO_PROTOC_VERSION}
     entrypoint: "bash"
     args:
       - -c
@@ -47,8 +47,7 @@ steps:
     waitFor: ["-"]
 
   - id: test
-    name: gcr.io/datcom-ci/go-protoc
-    env: ["GO111MODULE=on"]
+    name: gcr.io/datcom-ci/go-protoc:${_GO_PROTOC_VERSION}
     entrypoint: "bash"
     args:
       - -c
@@ -56,6 +55,9 @@ steps:
         set -e
         go test -v ./...
     waitFor: ["build-proto"]
+
+substitutions:
+  _GO_PROTOC_VERSION: "2025-07-30"
 
 options:
   volumes:
