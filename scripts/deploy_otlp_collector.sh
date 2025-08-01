@@ -49,3 +49,15 @@ echo "OTLP collector deployment not found. Deploying the Google-built collector 
 kubectl kustomize https://github.com/GoogleCloudPlatform/otlp-k8s-ingest.git/k8s/base \
 | envsubst | kubectl apply -f -
 echo "OTLP collector deployment applied."
+
+echo "Updating permissions for OTLP collector service account..."
+gcloud projects add-iam-policy-binding "$GOOGLE_CLOUD_PROJECT" \
+    --role=roles/logging.logWriter \
+    --member="principal://iam.googleapis.com/projects/${PROJECT_NUMBER}/locations/global/workloadIdentityPools/${GOOGLE_CLOUD_PROJECT}.svc.id.goog/subject/ns/opentelemetry/sa/opentelemetry-collector"
+gcloud projects add-iam-policy-binding "$GOOGLE_CLOUD_PROJECT" \
+    --role=roles/monitoring.metricWriter \
+    --member="principal://iam.googleapis.com/projects/${PROJECT_NUMBER}/locations/global/workloadIdentityPools/${GOOGLE_CLOUD_PROJECT}.svc.id.goog/subject/ns/opentelemetry/sa/opentelemetry-collector"
+gcloud projects add-iam-policy-binding "$GOOGLE_CLOUD_PROJECT" \
+    --role=roles/cloudtrace.agent \
+    --member="principal://iam.googleapis.com/projects/${PROJECT_NUMBER}/locations/global/workloadIdentityPools/${GOOGLE_CLOUD_PROJECT}.svc.id.goog/subject/ns/opentelemetry/sa/opentelemetry-collector"
+echo "OTLP collector permissions updated."
