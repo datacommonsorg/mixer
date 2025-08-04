@@ -17,7 +17,6 @@ package server
 
 import (
 	"context"
-	"math/rand"
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
@@ -73,17 +72,15 @@ func (s *Server) V2Resolve(
 	v2Resp := merger.MergeResolve(localResp, remoteResp)
 	v2Latency := time.Since(v2StartTime)
 
-	if s.v3MirrorPercent > 0 && rand.Intn(100) < s.v3MirrorPercent {
-		s.mirrorV2(
-			ctx,
-			in,
-			v2Resp,
-			v2Latency,
-			func(ctx context.Context, req proto.Message) (proto.Message, error) {
-				return s.V3Resolve(ctx, req.(*pbv2.ResolveRequest))
-			},
-		)
-	}
+	s.maybeMirrorV3(
+		ctx,
+		in,
+		v2Resp,
+		v2Latency,
+		func(ctx context.Context, req proto.Message) (proto.Message, error) {
+			return s.V3Resolve(ctx, req.(*pbv2.ResolveRequest))
+		},
+	)
 
 	return v2Resp, nil
 }
@@ -189,17 +186,15 @@ func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 	}
 	v2Latency := time.Since(v2StartTime)
 
-	if s.v3MirrorPercent > 0 && rand.Intn(100) < s.v3MirrorPercent {
-		s.mirrorV2(
-			ctx,
-			in,
-			v2Resp,
-			v2Latency,
-			func(ctx context.Context, req proto.Message) (proto.Message, error) {
-				return s.V3Node(ctx, req.(*pbv2.NodeRequest))
-			},
-		)
-	}
+	s.maybeMirrorV3(
+		ctx,
+		in,
+		v2Resp,
+		v2Latency,
+		func(ctx context.Context, req proto.Message) (proto.Message, error) {
+			return s.V3Node(ctx, req.(*pbv2.NodeRequest))
+		},
+	)
 
 	return v2Resp, nil
 }
@@ -276,17 +271,15 @@ func (s *Server) V2Observation(
 	v2Resp := merger.MergeMultiObservation(combinedResp)
 	v2Latency := time.Since(v2StartTime)
 
-	if s.v3MirrorPercent > 0 && rand.Intn(100) < s.v3MirrorPercent {
-		s.mirrorV2(
-			ctx,
-			in,
-			v2Resp,
-			v2Latency,
-			func(ctx context.Context, req proto.Message) (proto.Message, error) {
-				return s.V3Observation(ctx, req.(*pbv2.ObservationRequest))
-			},
-		)
-	}
+	s.maybeMirrorV3(
+		ctx,
+		in,
+		v2Resp,
+		v2Latency,
+		func(ctx context.Context, req proto.Message) (proto.Message, error) {
+			return s.V3Observation(ctx, req.(*pbv2.ObservationRequest))
+		},
+	)
 
 	return v2Resp, nil
 }
