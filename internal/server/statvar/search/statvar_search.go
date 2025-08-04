@@ -31,6 +31,40 @@ const (
 	maxResult      = 1000
 )
 
+// FilterStatVarsByPlace implements API for Mixer.FilterStatVarsByPlace.
+func FilterStatVarsByPlace(
+	ctx context.Context,
+	in *pb.FilterStatVarsByPlaceRequest,
+	store *store.Store,
+	cachedata *cache.Cache,
+) (*pb.FilterStatVarsByPlaceResponse, error) {
+	svList := in.GetStatVars()
+	places := in.GetPlaces()
+
+	if len(places) == 0 {
+		return &pb.FilterStatVarsByPlaceResponse{
+			StatVars: svList,
+		}, nil
+	}
+
+	ids := []string{}
+	if len(svList) > maxFilteredIds {
+		svList = svList[0:maxFilteredIds]
+	}
+	for _, item := range svList {
+		ids = append(ids, item.Dcid)
+	}
+
+	statVarCount, err := count.Count(ctx, store, cachedata, ids, places)
+	if err != nil {
+		return nil, err
+	}
+	svList = filter(svList, statVarCount, len(places))
+	return &pb.FilterStatVarsByPlaceResponse{
+		StatVars: svList,
+	}, nil
+}
+
 // SearchStatVar implements API for Mixer.SearchStatVar.
 func SearchStatVar(
 	ctx context.Context,
@@ -51,29 +85,20 @@ func SearchStatVar(
 	if query == "" {
 		return result, nil
 	}
-	tokens := strings.Fields(
-		strings.Replace(strings.ToLower(query), ",", " ", -1))
+	tokens := strings.Fields(strings.Replace(strings.ToLower(query), ",", " ", -1))
 	searchIndex := cachedata.SvgSearchIndex()
 	svList, matches := searchTokens(tokens, searchIndex, svOnly)
 
-	// Filter the stat var by places.
 	if len(places) > 0 {
-		// Read from stat existence cache, which can take several seconds when
-		// there are a lot of ids. So pre-prune the ids, as the result will be
-		// filtered anyway.
-		ids := []string{}
-		if len(svList) > maxFilteredIds {
-			svList = svList[0:maxFilteredIds]
+		filteredSvRequest := &pb.FilterStatVarsByPlaceRequest{
+			StatVars: svList,
+			Places:   places,
 		}
-		for _, item := range svList {
-			ids = append(ids, item.Dcid)
-		}
-
-		statVarCount, err := count.Count(ctx, store, cachedata, ids, places)
+		filteredSvResponse, err := FilterStatVarsByPlace(ctx, filteredSvRequest, store, cachedata)
 		if err != nil {
 			return nil, err
 		}
-		svList = filter(svList, statVarCount, len(places))
+		svList = filteredSvResponse.StatVars
 	}
 	// TODO(shifucun): return the total number of result for client to consume.
 	if len(svList) > maxResult {

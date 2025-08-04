@@ -559,6 +559,14 @@ service Mixer {
     };
   }
 
+  rpc FilterStatVarsByPlace(FilterStatVarsByPlaceRequest)
+      returns (FilterStatVarsByPlaceResponse) {
+    option (google.api.http) = {
+      post : "/v1/variable/filter" 
+      body : "*"
+    };
+  }
+
   // Get event collection for {eventType, affectedPlaceDcid, date}.
   // NOTE:
   // - The affectedPlaceDcid is only for top-level places:

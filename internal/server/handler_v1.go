@@ -550,3 +550,29 @@ func (s *Server) SearchStatVar(
 
 	return merged, nil
 }
+
+// FilterStatVarsByPlace implements API for Mixer.FilterStatVarsByPlace.
+func (s *Server) FilterStatVarsByPlace(
+	ctx context.Context, in *pb.FilterStatVarsByPlaceRequest,
+) (*pb.FilterStatVarsByPlaceResponse, error) {
+	localResp, err := search.FilterStatVarsByPlace(ctx, in, s.store, s.cachedata.Load())
+	if err != nil {
+		return nil, err
+	}
+
+	remoteResp := &pb.FilterStatVarsByPlaceResponse{}
+	if s.metadata.RemoteMixerDomain != "" {
+		if err := util.FetchRemote(
+			s.metadata,
+			s.httpClient,
+			"/v1/variable/filter",
+			in,
+			remoteResp,
+		); err != nil {
+			return nil, err
+		}
+	}
+
+	merged := merger.MergeFilterStatVarsByPlaceResponse(localResp, remoteResp)
+	return merged, nil
+}

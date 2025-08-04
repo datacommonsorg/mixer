@@ -452,6 +452,24 @@ func MergeSearchStatVarResponse(primary, secondary *pb.SearchStatVarResponse) *p
 	return merged
 }
 
+// MergeFilterStatVarsByPlaceResponse merges two FilterStatVarsByPlaceResponse.
+func MergeFilterStatVarsByPlaceResponse(primary, secondary *pb.FilterStatVarsByPlaceResponse) *pb.FilterStatVarsByPlaceResponse {
+	mergedStatVars := []*pb.EntityInfo{}
+
+	if primary != nil {
+		mergedStatVars = append(mergedStatVars, primary.StatVars...)
+	}
+	if secondary != nil {
+		mergedStatVars = append(mergedStatVars, secondary.StatVars...)
+	}
+
+	merged := &pb.FilterStatVarsByPlaceResponse{
+		StatVars: mergedStatVars,
+	}
+
+	return merged
+}
+
 // Merges multiple V2 NodeSearchResponses.
 // Cycles through responses in order of priority and add results one by one.
 func MergeMultiNodeSearch(allResp []*pbv2.NodeSearchResponse) (*pbv2.NodeSearchResponse, error) {

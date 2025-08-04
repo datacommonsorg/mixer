@@ -1578,6 +1578,119 @@ func TestMergeSearchStatVarResponse(t *testing.T) {
 	}
 }
 
+func TestMergeFilterStatVarsByPlaceResponse(t *testing.T) {
+	cmpOpts := cmp.Options{protocmp.Transform()}
+	for _, tc := range []struct {
+		desc      string
+		primary   *pb.FilterStatVarsByPlaceResponse
+		secondary *pb.FilterStatVarsByPlaceResponse
+		want      *pb.FilterStatVarsByPlaceResponse
+	}{{
+		desc: "primary only",
+		primary: &pb.FilterStatVarsByPlaceResponse{
+			StatVars: []*pb.EntityInfo{
+				{
+					Name: "sv1",
+					Dcid: "svid1",
+				},
+				{
+					Name: "sv2",
+					Dcid: "svid2",
+				},
+			},
+		},
+		want: &pb.FilterStatVarsByPlaceResponse{
+			StatVars: []*pb.EntityInfo{
+				{
+					Name: "sv1",
+					Dcid: "svid1",
+				},
+				{
+					Name: "sv2",
+					Dcid: "svid2",
+				},
+			},
+		},
+	}, {
+		desc: "secondary only",
+		secondary: &pb.FilterStatVarsByPlaceResponse{
+			StatVars: []*pb.EntityInfo{
+				{
+					Name: "sv1",
+					Dcid: "svid1",
+				},
+				{
+					Name: "sv2",
+					Dcid: "svid2",
+				},
+			},
+		},
+		want: &pb.FilterStatVarsByPlaceResponse{
+			StatVars: []*pb.EntityInfo{
+				{
+					Name: "sv1",
+					Dcid: "svid1",
+				},
+				{
+					Name: "sv2",
+					Dcid: "svid2",
+				},
+			},
+		},
+	}, {
+		desc: "combined",
+		primary: &pb.FilterStatVarsByPlaceResponse{
+			StatVars: []*pb.EntityInfo{
+				{
+					Name: "sv1",
+					Dcid: "svid1",
+				},
+				{
+					Name: "sv2",
+					Dcid: "svid2",
+				},
+			},
+		},
+		secondary: &pb.FilterStatVarsByPlaceResponse{
+			StatVars: []*pb.EntityInfo{
+				{
+					Name: "sv3",
+					Dcid: "svid3",
+				},
+				{
+					Name: "sv4",
+					Dcid: "svid4",
+				},
+			},
+		},
+		want: &pb.FilterStatVarsByPlaceResponse{
+			StatVars: []*pb.EntityInfo{
+				{
+					Name: "sv1",
+					Dcid: "svid1",
+				},
+				{
+					Name: "sv2",
+					Dcid: "svid2",
+				},
+				{
+					Name: "sv3",
+					Dcid: "svid3",
+				},
+				{
+					Name: "sv4",
+					Dcid: "svid4",
+				},
+			},
+		},
+	}} {
+		got := MergeFilterStatVarsByPlaceResponse(tc.primary, tc.secondary)
+		if diff := cmp.Diff(got, tc.want, cmpOpts); diff != "" {
+			t.Errorf("%s: got diff: %s", tc.desc, diff)
+		}
+	}
+}
+
 func TestMergeMultiNodeSearch(t *testing.T) {
 	cmpOpts := cmp.Options{protocmp.Transform()}
 	for _, c := range []struct {

@@ -236,3 +236,21 @@ message SearchStatVarResponse {
   // tokens
   repeated string matches = 3;
 }
+
+message StatVar {
+  string dcid = 1;
+  string name = 2;
+}
+
+message FilterStatVarsByPlaceRequest {
+  // A list of stat vars to be filtered.
+  repeated EntityInfo stat_vars = 1;
+  // repeated string stat_var_names = 2;
+  // Places to filter by.
+  repeated string places = 2;
+}
+
+message FilterStatVarsByPlaceResponse {
+  // A list of stat vars that match the places in the request.
+  repeated EntityInfo stat_vars = 1;
+}
