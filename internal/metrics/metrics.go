@@ -221,3 +221,30 @@ func RecordCachedataRead(ctx context.Context, cacheType string) {
 			attribute.String(rpcMethodAttr, getRpcMethod(ctx)),
 		))
 }
+
+// RecordV3LatencyDiff records the latency difference between an API call and a
+// mirrored equivalent V3 call.
+func RecordV3LatencyDiff(ctx context.Context, diff time.Duration) {
+	latencyDiffHistogram, _ := otel.GetMeterProvider().Meter(meterName).
+		Int64Histogram("datacommons.mixer.v3_latency_diff",
+			metric.WithDescription("Difference in latency between mirrored V3 API calls in milliseconds (v3 minus original)"),
+			metric.WithUnit("ms"))
+
+	latencyDiffHistogram.Record(ctx, diff.Milliseconds(),
+		metric.WithAttributes(
+			attribute.String(rpcMethodAttr, getRpcMethod(ctx)),
+		))
+}
+
+// RecordV3Mismatch increments a counter for how many times a mirrored V3 call
+// returns a different value from the original call.
+func RecordV3Mismatch(ctx context.Context) {
+	mismatchCounter, _ := otel.GetMeterProvider().Meter(meterName).
+		Int64Counter("datacommons.mixer.v3_response_mismatches",
+			metric.WithDescription("Count of V3 mirrored response mismatches"),
+		)
+	mismatchCounter.Add(ctx, 1,
+		metric.WithAttributes(
+			attribute.String(rpcMethodAttr, getRpcMethod(ctx)),
+		))
+}
