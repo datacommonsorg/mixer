@@ -43,15 +43,16 @@ func ObservationCore(
 	// (TODO): The routing logic here is very rough. This needs more work.
 	var queryDate, queryValue, queryVariable, queryEntity, queryFacet bool
 	for _, item := range in.GetSelect() {
-		if item == "date" {
+		switch item {
+		case "date":
 			queryDate = true
-		} else if item == "value" {
+		case "value":
 			queryValue = true
-		} else if item == "variable" {
+		case "variable":
 			queryVariable = true
-		} else if item == "entity" {
+		case "entity":
 			queryEntity = true
-		} else if item == "facet" {
+		case "facet":
 			queryFacet = true
 		}
 	}

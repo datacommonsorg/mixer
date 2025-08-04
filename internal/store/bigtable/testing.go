@@ -38,7 +38,7 @@ func SetupBigtable(
 		return nil, err
 	}
 
-	conn, err := grpc.Dial(srv.Addr,
+	conn, err := grpc.NewClient(srv.Addr,
 		grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		return nil, err

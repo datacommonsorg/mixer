@@ -85,7 +85,8 @@ func SearchStatVar(
 	if query == "" {
 		return result, nil
 	}
-	tokens := strings.Fields(strings.Replace(strings.ToLower(query), ",", " ", -1))
+	tokens := strings.Fields(
+		strings.ReplaceAll(strings.ToLower(query), ",", " "))
 	searchIndex := cachedata.SvgSearchIndex()
 	svList, matches := searchTokens(tokens, searchIndex, svOnly)
 

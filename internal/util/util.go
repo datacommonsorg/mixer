@@ -207,6 +207,7 @@ func Unzip(content []byte) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
+	//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 	defer gzReader.Close()
 	gzResult, err := io.ReadAll(gzReader)
 	if err != nil {
@@ -620,7 +621,7 @@ func StringListIntersection(list [][]string) []string {
 func ReadLatestSecret(ctx context.Context, projectID, secretID string) (string, error) {
 	// Environment variables can not have "-". Since these key ids are used in
 	// GCP secret manager already, change "-" to "-" here.
-	secret := os.Getenv(strings.ToUpper(strings.Replace(secretID, "-", "_", -1)))
+	secret := os.Getenv(strings.ToUpper(strings.ReplaceAll(secretID, "-", "_")))
 	if secret != "" {
 		return secret, nil
 	}
@@ -630,6 +631,7 @@ func ReadLatestSecret(ctx context.Context, projectID, secretID string) (string, 
 	if err != nil {
 		return "", fmt.Errorf("failed to create secret manager client: %v", err)
 	}
+	//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 	defer client.Close()
 
 	// Build the request to access the latest secret version.
@@ -688,6 +690,7 @@ func FetchRemote(
 	if err != nil {
 		return err
 	}
+	//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 	defer response.Body.Close()
 	// Read response body
 	var responseBodyBytes []byte

@@ -62,6 +62,7 @@ func getRegion() (string, error) {
 	if err != nil {
 		return "", fmt.Errorf("failed to get metadata: %w", err)
 	}
+	//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {

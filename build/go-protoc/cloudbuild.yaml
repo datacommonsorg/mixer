@@ -1,5 +1,4 @@
-#!/bin/bash
-# Copyright 2019 Google LLC
+# Copyright 2025 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,13 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-set -e
+substitutions:
+  _GO_PROTOC_VERSION: "2025-07-30"
+  # When updating this value, search for other occurrences in the codebase
+  # and update those as well. See the README for more details.
 
-# Get the current directory path and the root path of the repo
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-ROOT="$(dirname "$DIR")"
+steps:
+  - id: push-go-protoc
+    name: "gcr.io/cloud-builders/docker"
+    env:
+      - "DOCKER_BUILDKIT=1"
+    args:
+      - "build"
+      - "--tag=gcr.io/datcom-ci/go-protoc:${_GO_PROTOC_VERSION}"
+      - "."
 
-cd $ROOT
-
-docker build -t gcr.io/datcom-ci/go-protoc:latest -f build/Dockerfile --target go-protoc .
-docker push gcr.io/datcom-ci/go-protoc:latest
+images:
+  - "gcr.io/datcom-ci/go-protoc:${_GO_PROTOC_VERSION}"
