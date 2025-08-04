@@ -30,6 +30,7 @@ import (
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/google/pprof/profile"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/connectivity"
 	"google.golang.org/grpc/credentials/insecure"
 )
 
@@ -206,22 +207,33 @@ func main() {
 	// gRPC server start listening last, so if we have connected to gRPC, we can
 	// assume that the pprof HTTP handlers is also on.
 	fmt.Printf("Attempting to make a connection to the gRPC server at %v\n", *grpcAddr)
-	conn, err := grpc.Dial(*grpcAddr,
+	conn, err := grpc.NewClient(*grpcAddr,
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(100000000 /* 100M */)),
-		// The grpc.WithBlock() option make this call block until a connection is
-		// established, internally retrying until needed.
-		grpc.WithBlock(),
 	)
 	if err != nil {
-		log.Fatalf("Could not connect: %v\n", err)
+		log.Fatalf("Could not create client: %v", err)
+	}
+	// Wait up to 30s for the connection to be ready.
+	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	defer cancel()
+	for {
+		s := conn.GetState()
+		if s == connectivity.Ready {
+			break
+		}
+		if s == connectivity.Idle {
+			conn.Connect()
+		}
+		if !conn.WaitForStateChange(ctx, s) {
+			log.Fatalf("Could not connect to %s: timed out. Last state: %s", *grpcAddr, s)
+		}
 	}
 	log.Println("Connected to gRPC succesfully")
 
 	//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 	defer conn.Close()
 	c := pbs.NewMixerClient(conn)
-	ctx := context.Background()
 
 	// TODO: move the definition of requests to make to a config file
 	var profileResults []*MemoryProfileResult
