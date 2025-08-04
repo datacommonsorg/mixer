@@ -17,6 +17,8 @@ package server
 
 import (
 	"context"
+	"math/rand"
+	"time"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -27,12 +29,14 @@ import (
 	"golang.org/x/sync/errgroup"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"google.golang.org/protobuf/proto"
 )
 
 // V2Resolve implements API for mixer.V2Resolve.
 func (s *Server) V2Resolve(
 	ctx context.Context, in *pbv2.ResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
+	v2StartTime := time.Now()
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	localRespChan := make(chan *pbv2.ResolveResponse, 1)
 	remoteRespChan := make(chan *pbv2.ResolveResponse, 1)
@@ -66,13 +70,29 @@ func (s *Server) V2Resolve(
 	close(localRespChan)
 	close(remoteRespChan)
 	localResp, remoteResp := <-localRespChan, <-remoteRespChan
-	return merger.MergeResolve(localResp, remoteResp), nil
+	v2Resp := merger.MergeResolve(localResp, remoteResp)
+	v2Latency := time.Since(v2StartTime)
+
+	if s.v3MirrorPercent > 0 && rand.Intn(100) < s.v3MirrorPercent {
+		s.mirrorV2(
+			ctx,
+			in,
+			v2Resp,
+			v2Latency,
+			func(ctx context.Context, req proto.Message) (proto.Message, error) {
+				return s.V3Resolve(ctx, req.(*pbv2.ResolveRequest))
+			},
+		)
+	}
+
+	return v2Resp, nil
 }
 
 // V2Node implements API for mixer.V2Node.
 func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 	*pbv2.NodeResponse, error,
 ) {
+	v2StartTime := time.Now()
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	localRespChan := make(chan *pbv2.NodeResponse, 1)
 	remoteRespChan := make(chan *pbv2.NodeResponse, 1)
@@ -163,7 +183,25 @@ func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 	close(remoteRespChan)
 
 	localResp, remoteResp := <-localRespChan, <-remoteRespChan
-	return merger.MergeNode(localResp, remoteResp)
+	v2Resp, err := merger.MergeNode(localResp, remoteResp)
+	if err != nil {
+		return nil, err
+	}
+	v2Latency := time.Since(v2StartTime)
+
+	if s.v3MirrorPercent > 0 && rand.Intn(100) < s.v3MirrorPercent {
+		s.mirrorV2(
+			ctx,
+			in,
+			v2Resp,
+			v2Latency,
+			func(ctx context.Context, req proto.Message) (proto.Message, error) {
+				return s.V3Node(ctx, req.(*pbv2.NodeRequest))
+			},
+		)
+	}
+
+	return v2Resp, nil
 }
 
 // V2Event implements API for mixer.V2Event.
@@ -210,6 +248,7 @@ func (s *Server) V2Event(
 func (s *Server) V2Observation(
 	ctx context.Context, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
+	v2StartTime := time.Now()
 	initialResp, err := v2observation.ObservationInternal(
 		ctx,
 		s.store,
@@ -234,7 +273,22 @@ func (s *Server) V2Observation(
 	}
 	// initialResp is preferred over any calculated response.
 	combinedResp := append([]*pbv2.ObservationResponse{initialResp}, calculatedResps...)
-	return merger.MergeMultiObservation(combinedResp), nil
+	v2Resp := merger.MergeMultiObservation(combinedResp)
+	v2Latency := time.Since(v2StartTime)
+
+	if s.v3MirrorPercent > 0 && rand.Intn(100) < s.v3MirrorPercent {
+		s.mirrorV2(
+			ctx,
+			in,
+			v2Resp,
+			v2Latency,
+			func(ctx context.Context, req proto.Message) (proto.Message, error) {
+				return s.V3Observation(ctx, req.(*pbv2.ObservationRequest))
+			},
+		)
+	}
+
+	return v2Resp, nil
 }
 
 // V2Sparql implements API for Mixer.V2Sparql.
