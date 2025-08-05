@@ -26,7 +26,7 @@ fullnameOverride: ""
 # Set enabled to false to deploy into an existing namespace.
 namespace:
   create: false
-  name: "mixer"
+  name: "{{ .Values.namespace.name }}"
 
 # Everything custom DC related.
 customDC:
@@ -60,11 +60,11 @@ mixer:
   image:
     repository: gcr.io/datcom-ci/datacommons-mixer
     pullPolicy: IfNotPresent
-    tag: "latest"
+    tag: ""
 
   schemaConfigs:
-    base.mcf:
-    encode.mcf:
+    base.mcf: ""
+    encode.mcf: ""
 
 esp:
   image:
@@ -109,8 +109,8 @@ serviceGroups:
       - "/v1/bulk/info/variable-group"
     replicas: 1
     resources:
-      memoryRequest: "8G"
-      memoryLimit: "8G"
+      memoryRequest: "6G"
+      memoryLimit: "6G"
     cacheSVG: true
     # If the name of the recon service is changed here,
     # please also change the name in the deployment.yaml template.
