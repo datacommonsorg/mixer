@@ -121,6 +121,9 @@ func main() {
 	if *v3MirrorPercent < 0 || *v3MirrorPercent > 100 {
 		log.Fatalf("v3_mirror_percent must be between 0 and 100, got %d", *v3MirrorPercent)
 	}
+	if *v3MirrorPercent > 0 && !*enableV3 {
+		log.Fatalf("v3_mirror_percent > 0 requires --enable_v3=true")
+	}
 
 	ctx := context.Background()
 	var err error
