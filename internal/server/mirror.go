@@ -77,7 +77,6 @@ func (s *Server) mirrorV3(
 			log.Printf("V3 mirrored call failed. Method: %s, Error: %v", rpcMethod, v3Err)
 			return
 		}
-		log.Printf("%s V2 Latency: %v, V3 Mirrored Latency: %v", rpcMethod, originalLatency, v3Latency)
 
 		if diff := cmp.Diff(originalResp, v3Resp, protocmp.Transform()); diff != "" {
 			log.Printf("V3 mirrored call had a different response. Method: %s. Diff: %s", rpcMethod, diff)
