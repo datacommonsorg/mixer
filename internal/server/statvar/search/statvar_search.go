@@ -31,18 +31,18 @@ const (
 	maxResult      = 1000
 )
 
-// FilterStatVarsByPlace implements API for Mixer.FilterStatVarsByPlace.
-func FilterStatVarsByPlace(
+// FilterStatVarsByEntity implements API for Mixer.FilterStatVarsByEntity.
+func FilterStatVarsByEntity(
 	ctx context.Context,
-	in *pb.FilterStatVarsByPlaceRequest,
+	in *pb.FilterStatVarsByEntityRequest,
 	store *store.Store,
 	cachedata *cache.Cache,
-) (*pb.FilterStatVarsByPlaceResponse, error) {
+) (*pb.FilterStatVarsByEntityResponse, error) {
 	svList := in.GetStatVars()
-	places := in.GetPlaces()
+	entities := in.GetEntities()
 
-	if len(places) == 0 {
-		return &pb.FilterStatVarsByPlaceResponse{
+	if len(entities) == 0 {
+		return &pb.FilterStatVarsByEntityResponse{
 			StatVars: svList,
 		}, nil
 	}
@@ -55,12 +55,12 @@ func FilterStatVarsByPlace(
 		ids = append(ids, item.Dcid)
 	}
 
-	statVarCount, err := count.Count(ctx, store, cachedata, ids, places)
+	statVarCount, err := count.Count(ctx, store, cachedata, ids, entities)
 	if err != nil {
 		return nil, err
 	}
-	svList = filter(svList, statVarCount, len(places))
-	return &pb.FilterStatVarsByPlaceResponse{
+	svList = filter(svList, statVarCount, len(entities))
+	return &pb.FilterStatVarsByEntityResponse{
 		StatVars: svList,
 	}, nil
 }
@@ -91,11 +91,11 @@ func SearchStatVar(
 	svList, matches := searchTokens(tokens, searchIndex, svOnly)
 
 	if len(places) > 0 {
-		filteredSvRequest := &pb.FilterStatVarsByPlaceRequest{
+		filteredSvRequest := &pb.FilterStatVarsByEntityRequest{
 			StatVars: svList,
-			Places:   places,
+			Entities: places,
 		}
-		filteredSvResponse, err := FilterStatVarsByPlace(ctx, filteredSvRequest, store, cachedata)
+		filteredSvResponse, err := FilterStatVarsByEntity(ctx, filteredSvRequest, store, cachedata)
 		if err != nil {
 			return nil, err
 		}

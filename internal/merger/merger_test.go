@@ -1578,16 +1578,16 @@ func TestMergeSearchStatVarResponse(t *testing.T) {
 	}
 }
 
-func TestMergeFilterStatVarsByPlaceResponse(t *testing.T) {
+func TestMergeFilterStatVarsByEntityResponse(t *testing.T) {
 	cmpOpts := cmp.Options{protocmp.Transform()}
 	for _, tc := range []struct {
 		desc      string
-		primary   *pb.FilterStatVarsByPlaceResponse
-		secondary *pb.FilterStatVarsByPlaceResponse
-		want      *pb.FilterStatVarsByPlaceResponse
+		primary   *pb.FilterStatVarsByEntityResponse
+		secondary *pb.FilterStatVarsByEntityResponse
+		want      *pb.FilterStatVarsByEntityResponse
 	}{{
 		desc: "primary only",
-		primary: &pb.FilterStatVarsByPlaceResponse{
+		primary: &pb.FilterStatVarsByEntityResponse{
 			StatVars: []*pb.EntityInfo{
 				{
 					Name: "sv1",
@@ -1599,7 +1599,7 @@ func TestMergeFilterStatVarsByPlaceResponse(t *testing.T) {
 				},
 			},
 		},
-		want: &pb.FilterStatVarsByPlaceResponse{
+		want: &pb.FilterStatVarsByEntityResponse{
 			StatVars: []*pb.EntityInfo{
 				{
 					Name: "sv1",
@@ -1613,7 +1613,7 @@ func TestMergeFilterStatVarsByPlaceResponse(t *testing.T) {
 		},
 	}, {
 		desc: "secondary only",
-		secondary: &pb.FilterStatVarsByPlaceResponse{
+		secondary: &pb.FilterStatVarsByEntityResponse{
 			StatVars: []*pb.EntityInfo{
 				{
 					Name: "sv1",
@@ -1625,7 +1625,7 @@ func TestMergeFilterStatVarsByPlaceResponse(t *testing.T) {
 				},
 			},
 		},
-		want: &pb.FilterStatVarsByPlaceResponse{
+		want: &pb.FilterStatVarsByEntityResponse{
 			StatVars: []*pb.EntityInfo{
 				{
 					Name: "sv1",
@@ -1639,7 +1639,7 @@ func TestMergeFilterStatVarsByPlaceResponse(t *testing.T) {
 		},
 	}, {
 		desc: "combined",
-		primary: &pb.FilterStatVarsByPlaceResponse{
+		primary: &pb.FilterStatVarsByEntityResponse{
 			StatVars: []*pb.EntityInfo{
 				{
 					Name: "sv1",
@@ -1651,7 +1651,7 @@ func TestMergeFilterStatVarsByPlaceResponse(t *testing.T) {
 				},
 			},
 		},
-		secondary: &pb.FilterStatVarsByPlaceResponse{
+		secondary: &pb.FilterStatVarsByEntityResponse{
 			StatVars: []*pb.EntityInfo{
 				{
 					Name: "sv3",
@@ -1663,7 +1663,7 @@ func TestMergeFilterStatVarsByPlaceResponse(t *testing.T) {
 				},
 			},
 		},
-		want: &pb.FilterStatVarsByPlaceResponse{
+		want: &pb.FilterStatVarsByEntityResponse{
 			StatVars: []*pb.EntityInfo{
 				{
 					Name: "sv1",
@@ -1684,7 +1684,7 @@ func TestMergeFilterStatVarsByPlaceResponse(t *testing.T) {
 			},
 		},
 	}} {
-		got := MergeFilterStatVarsByPlaceResponse(tc.primary, tc.secondary)
+		got := MergeFilterStatVarsByEntityResponse(tc.primary, tc.secondary)
 		if diff := cmp.Diff(got, tc.want, cmpOpts); diff != "" {
 			t.Errorf("%s: got diff: %s", tc.desc, diff)
 		}

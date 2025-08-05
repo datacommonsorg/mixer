@@ -102,7 +102,7 @@ const (
 	Mixer_PlacePage_FullMethodName                    = "/datacommons.Mixer/PlacePage"
 	Mixer_VariableAncestors_FullMethodName            = "/datacommons.Mixer/VariableAncestors"
 	Mixer_SearchStatVar_FullMethodName                = "/datacommons.Mixer/SearchStatVar"
-	Mixer_FilterStatVarsByPlace_FullMethodName        = "/datacommons.Mixer/FilterStatVarsByPlace"
+	Mixer_FilterStatVarsByEntity_FullMethodName       = "/datacommons.Mixer/FilterStatVarsByEntity"
 	Mixer_EventCollection_FullMethodName              = "/datacommons.Mixer/EventCollection"
 	Mixer_EventCollectionDate_FullMethodName          = "/datacommons.Mixer/EventCollectionDate"
 	Mixer_ResolveEntities_FullMethodName              = "/datacommons.Mixer/ResolveEntities"
@@ -214,7 +214,7 @@ type MixerClient interface {
 	VariableAncestors(ctx context.Context, in *v1.VariableAncestorsRequest, opts ...grpc.CallOption) (*v1.VariableAncestorsResponse, error)
 	// Search stat var and stat var groups.
 	SearchStatVar(ctx context.Context, in *proto.SearchStatVarRequest, opts ...grpc.CallOption) (*proto.SearchStatVarResponse, error)
-	FilterStatVarsByPlace(ctx context.Context, in *proto.FilterStatVarsByPlaceRequest, opts ...grpc.CallOption) (*proto.FilterStatVarsByPlaceResponse, error)
+	FilterStatVarsByEntity(ctx context.Context, in *proto.FilterStatVarsByEntityRequest, opts ...grpc.CallOption) (*proto.FilterStatVarsByEntityResponse, error)
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
 	//   - The affectedPlaceDcid is only for top-level places:
@@ -783,9 +783,9 @@ func (c *mixerClient) SearchStatVar(ctx context.Context, in *proto.SearchStatVar
 	return out, nil
 }
 
-func (c *mixerClient) FilterStatVarsByPlace(ctx context.Context, in *proto.FilterStatVarsByPlaceRequest, opts ...grpc.CallOption) (*proto.FilterStatVarsByPlaceResponse, error) {
-	out := new(proto.FilterStatVarsByPlaceResponse)
-	err := c.cc.Invoke(ctx, Mixer_FilterStatVarsByPlace_FullMethodName, in, out, opts...)
+func (c *mixerClient) FilterStatVarsByEntity(ctx context.Context, in *proto.FilterStatVarsByEntityRequest, opts ...grpc.CallOption) (*proto.FilterStatVarsByEntityResponse, error) {
+	out := new(proto.FilterStatVarsByEntityResponse)
+	err := c.cc.Invoke(ctx, Mixer_FilterStatVarsByEntity_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -981,7 +981,7 @@ type MixerServer interface {
 	VariableAncestors(context.Context, *v1.VariableAncestorsRequest) (*v1.VariableAncestorsResponse, error)
 	// Search stat var and stat var groups.
 	SearchStatVar(context.Context, *proto.SearchStatVarRequest) (*proto.SearchStatVarResponse, error)
-	FilterStatVarsByPlace(context.Context, *proto.FilterStatVarsByPlaceRequest) (*proto.FilterStatVarsByPlaceResponse, error)
+	FilterStatVarsByEntity(context.Context, *proto.FilterStatVarsByEntityRequest) (*proto.FilterStatVarsByEntityResponse, error)
 	// Get event collection for {eventType, affectedPlaceDcid, date}.
 	// NOTE:
 	//   - The affectedPlaceDcid is only for top-level places:
@@ -1192,8 +1192,8 @@ func (UnimplementedMixerServer) VariableAncestors(context.Context, *v1.VariableA
 func (UnimplementedMixerServer) SearchStatVar(context.Context, *proto.SearchStatVarRequest) (*proto.SearchStatVarResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchStatVar not implemented")
 }
-func (UnimplementedMixerServer) FilterStatVarsByPlace(context.Context, *proto.FilterStatVarsByPlaceRequest) (*proto.FilterStatVarsByPlaceResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method FilterStatVarsByPlace not implemented")
+func (UnimplementedMixerServer) FilterStatVarsByEntity(context.Context, *proto.FilterStatVarsByEntityRequest) (*proto.FilterStatVarsByEntityResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FilterStatVarsByEntity not implemented")
 }
 func (UnimplementedMixerServer) EventCollection(context.Context, *v1.EventCollectionRequest) (*v1.EventCollectionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EventCollection not implemented")
@@ -2299,20 +2299,20 @@ func _Mixer_SearchStatVar_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mixer_FilterStatVarsByPlace_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.FilterStatVarsByPlaceRequest)
+func _Mixer_FilterStatVarsByEntity_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(proto.FilterStatVarsByEntityRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MixerServer).FilterStatVarsByPlace(ctx, in)
+		return srv.(MixerServer).FilterStatVarsByEntity(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: Mixer_FilterStatVarsByPlace_FullMethodName,
+		FullMethod: Mixer_FilterStatVarsByEntity_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).FilterStatVarsByPlace(ctx, req.(*proto.FilterStatVarsByPlaceRequest))
+		return srv.(MixerServer).FilterStatVarsByEntity(ctx, req.(*proto.FilterStatVarsByEntityRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2741,8 +2741,8 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Mixer_SearchStatVar_Handler,
 		},
 		{
-			MethodName: "FilterStatVarsByPlace",
-			Handler:    _Mixer_FilterStatVarsByPlace_Handler,
+			MethodName: "FilterStatVarsByEntity",
+			Handler:    _Mixer_FilterStatVarsByEntity_Handler,
 		},
 		{
 			MethodName: "EventCollection",

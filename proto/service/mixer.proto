@@ -559,10 +559,10 @@ service Mixer {
     };
   }
 
-  rpc FilterStatVarsByPlace(FilterStatVarsByPlaceRequest)
-      returns (FilterStatVarsByPlaceResponse) {
+  rpc FilterStatVarsByEntity(FilterStatVarsByEntityRequest)
+      returns (FilterStatVarsByEntityResponse) {
     option (google.api.http) = {
-      post : "/v1/variable/filter" 
+      post : "/v2/variable/filter" 
       body : "*"
     };
   }

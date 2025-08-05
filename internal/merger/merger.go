@@ -452,8 +452,8 @@ func MergeSearchStatVarResponse(primary, secondary *pb.SearchStatVarResponse) *p
 	return merged
 }
 
-// MergeFilterStatVarsByPlaceResponse merges two FilterStatVarsByPlaceResponse.
-func MergeFilterStatVarsByPlaceResponse(primary, secondary *pb.FilterStatVarsByPlaceResponse) *pb.FilterStatVarsByPlaceResponse {
+// MergeFilterStatVarsByEntityResponse merges two FilterStatVarsByEntityResponse.
+func MergeFilterStatVarsByEntityResponse(primary, secondary *pb.FilterStatVarsByEntityResponse) *pb.FilterStatVarsByEntityResponse {
 	mergedStatVars := []*pb.EntityInfo{}
 
 	if primary != nil {
@@ -463,7 +463,7 @@ func MergeFilterStatVarsByPlaceResponse(primary, secondary *pb.FilterStatVarsByP
 		mergedStatVars = append(mergedStatVars, secondary.StatVars...)
 	}
 
-	merged := &pb.FilterStatVarsByPlaceResponse{
+	merged := &pb.FilterStatVarsByEntityResponse{
 		StatVars: mergedStatVars,
 	}
 
