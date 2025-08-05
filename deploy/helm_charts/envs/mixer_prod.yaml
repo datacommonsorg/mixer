@@ -1,3 +1,6 @@
+project: datcom-mixer-prod
+cluster_prefix: mixer
+
 # Helm config
 mixer:
   hostProject: datcom-mixer
