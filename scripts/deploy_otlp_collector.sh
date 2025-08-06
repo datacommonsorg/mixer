@@ -51,13 +51,33 @@ kubectl kustomize https://github.com/GoogleCloudPlatform/otlp-k8s-ingest.git/k8s
 echo "OTLP collector deployment applied."
 
 echo "Updating permissions for OTLP collector service account..."
-gcloud projects add-iam-policy-binding "$GOOGLE_CLOUD_PROJECT" \
-    --role=roles/logging.logWriter \
-    --member="principal://iam.googleapis.com/projects/${PROJECT_NUMBER}/locations/global/workloadIdentityPools/${GOOGLE_CLOUD_PROJECT}.svc.id.goog/subject/ns/opentelemetry/sa/opentelemetry-collector"
-gcloud projects add-iam-policy-binding "$GOOGLE_CLOUD_PROJECT" \
-    --role=roles/monitoring.metricWriter \
-    --member="principal://iam.googleapis.com/projects/${PROJECT_NUMBER}/locations/global/workloadIdentityPools/${GOOGLE_CLOUD_PROJECT}.svc.id.goog/subject/ns/opentelemetry/sa/opentelemetry-collector"
-gcloud projects add-iam-policy-binding "$GOOGLE_CLOUD_PROJECT" \
-    --role=roles/cloudtrace.agent \
-    --member="principal://iam.googleapis.com/projects/${PROJECT_NUMBER}/locations/global/workloadIdentityPools/${GOOGLE_CLOUD_PROJECT}.svc.id.goog/subject/ns/opentelemetry/sa/opentelemetry-collector"
+MEMBER_PRINCIPAL="principal://iam.googleapis.com/projects/${PROJECT_NUMBER}/locations/global/workloadIdentityPools/${GOOGLE_CLOUD_PROJECT}.svc.id.goog/subject/ns/opentelemetry/sa/opentelemetry-collector"
+ROLES=(
+  "roles/logging.logWriter"
+  "roles/monitoring.metricWriter"
+  "roles/cloudtrace.agent"
+)
+
+all_ok=true
+set +e
+for role in "${ROLES[@]}"; do
+  # The command is idempotent, but prints to stderr if the binding already exists.
+  # We suppress the output here to avoid cluttering the logs.
+  gcloud projects add-iam-policy-binding "$GOOGLE_CLOUD_PROJECT" --role="$role" --member="$MEMBER_PRINCIPAL" >/dev/null 2>&1
+  if [[ $? -ne 0 ]]; then
+    all_ok=false
+  fi
+done
+set -e
+
+if [[ "$all_ok" == "false" ]]; then
+    echo "Error: Failed to grant one or more required IAM roles to the OTLP collector service account." >&2
+    echo "Please try running all of the following commands manually and then re-run the deployment:" >&2
+    echo "" >&2
+    for role in "${ROLES[@]}"; do
+      echo "  gcloud projects add-iam-policy-binding \"$GOOGLE_CLOUD_PROJECT\" --role=\"$role\" --member=\"$MEMBER_PRINCIPAL\"" >&2
+    done
+    echo "" >&2
+    exit 1
+fi
 echo "OTLP collector permissions updated."
