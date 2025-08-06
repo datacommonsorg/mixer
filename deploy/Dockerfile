@@ -15,14 +15,20 @@
 # Build docker image used in Cloud Build for deployment.
 # This image contains "gcloud", "kubectl", "yq" and "helm"
 
+FROM docker:stable AS docker-cli
 FROM google/cloud-sdk:slim
 
-RUN \
-    apt-get install kubectl && \
+COPY --from=docker-cli /usr/local/bin/docker /usr/bin/docker
+
+RUN apt-get update && \
+    apt-get install -y kubectl gettext-base google-cloud-sdk-gke-gcloud-auth-plugin && \
     curl -L https://github.com/mikefarah/yq/releases/download/v4.27.3/yq_linux_386 -o /usr/bin/yq && \
     chmod +x /usr/bin/yq && \
     curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 && \
     chmod 700 get_helm.sh && \
     ./get_helm.sh && \
+    rm get_helm.sh && \
     mv /usr/local/bin/helm /usr/bin/helm && \
-    chmod +x /usr/bin/helm
+    chmod +x /usr/bin/helm && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
