@@ -454,6 +454,7 @@ func MergeSearchStatVarResponse(primary, secondary *pb.SearchStatVarResponse) *p
 
 // MergeFilterStatVarsByEntityResponse merges two FilterStatVarsByEntityResponse.
 func MergeFilterStatVarsByEntityResponse(primary, secondary *pb.FilterStatVarsByEntityResponse) *pb.FilterStatVarsByEntityResponse {
+	// TODO: Consider deduping stat vars
 	mergedStatVars := []*pb.EntityInfo{}
 
 	if primary != nil {
