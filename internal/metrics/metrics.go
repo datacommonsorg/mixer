@@ -36,6 +36,7 @@ import (
 	"go.opentelemetry.io/otel/metric"
 	sdk "go.opentelemetry.io/otel/sdk/metric"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/status"
 )
 
 const (
@@ -65,7 +66,8 @@ const (
 	cacheDataTypeAttr = "cachedata.type"
 
 	// Common metric attributes
-	rpcMethodAttr = "rpc.method"
+	rpcMethodAttr     = "rpc.method"
+	rpcStatusCodeAttr = "rpc.grpc.status_code"
 
 	unknownMethodName = "UnknownMethod"
 )
@@ -219,5 +221,47 @@ func RecordCachedataRead(ctx context.Context, cacheType string) {
 		metric.WithAttributes(
 			attribute.String(cacheDataTypeAttr, cacheType),
 			attribute.String(rpcMethodAttr, getRpcMethod(ctx)),
+		))
+}
+
+// RecordV3LatencyDiff records the latency difference between an API call and a
+// mirrored equivalent V3 call.
+func RecordV3LatencyDiff(ctx context.Context, diff time.Duration) {
+	latencyDiffHistogram, _ := otel.GetMeterProvider().Meter(meterName).
+		Int64Histogram("datacommons.mixer.v3_latency_diff",
+			metric.WithDescription("Difference in latency between mirrored V3 API calls in milliseconds (v3 minus original)"),
+			metric.WithUnit("ms"))
+
+	latencyDiffHistogram.Record(ctx, diff.Milliseconds(),
+		metric.WithAttributes(
+			attribute.String(rpcMethodAttr, getRpcMethod(ctx)),
+		))
+}
+
+// RecordV3Mismatch increments a counter for how many times a mirrored V3 call
+// returns a different value from the original call.
+func RecordV3Mismatch(ctx context.Context) {
+	mismatchCounter, _ := otel.GetMeterProvider().Meter(meterName).
+		Int64Counter("datacommons.mixer.v3_response_mismatches",
+			metric.WithDescription("Count of V3 mirrored response mismatches"),
+		)
+	mismatchCounter.Add(ctx, 1,
+		metric.WithAttributes(
+			attribute.String(rpcMethodAttr, getRpcMethod(ctx)),
+		))
+}
+
+// RecordV3MirrorError increments a counter for mirrored V3 requests that
+// returned an error.
+func RecordV3MirrorError(ctx context.Context, err error) {
+	st, _ := status.FromError(err)
+	errorCounter, _ := otel.GetMeterProvider().Meter(meterName).
+		Int64Counter("datacommons.mixer.v3_mirror_errors",
+			metric.WithDescription("Count of errors encountered during V3 mirroring"),
+		)
+	errorCounter.Add(ctx, 1,
+		metric.WithAttributes(
+			attribute.String(rpcMethodAttr, getRpcMethod(ctx)),
+			attribute.String(rpcStatusCodeAttr, st.Code().String()),
 		))
 }
