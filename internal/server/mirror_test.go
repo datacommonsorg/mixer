@@ -41,16 +41,6 @@ func setupMetricReader(t *testing.T) *metric.ManualReader {
 	return reader
 }
 
-// Captures log output for testing.
-func captureLog(t *testing.T, f func()) string {
-	t.Helper()
-	var buf strings.Builder
-	log.SetOutput(&buf)
-	f()
-	log.SetOutput(os.Stderr)
-	return buf.String()
-}
-
 // Helper function to wait for a WaitGroup with a timeout.
 func waitForWaitGroup(t *testing.T, wg *sync.WaitGroup) {
 	t.Helper()
