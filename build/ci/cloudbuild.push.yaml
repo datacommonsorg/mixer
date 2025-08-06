@@ -17,17 +17,17 @@
 
 steps:
   # Trigger downstream builds that listen for changes to multiple repos.
-  - id: update-repo-version
-    name: "gcr.io/cloud-builders/git"
-    entrypoint: /bin/bash
-    args:
-      - -c
-      - |
-        set -e
-        gcloud source repos clone deployment /tmp/deployment --project=datcom-ci
-        cd /tmp/deployment
-        ./scripts/update_external_repo_version.sh $REPO_NAME $SHORT_SHA
-    waitFor: ["-"]
+  # - id: update-repo-version
+  #   name: "gcr.io/cloud-builders/git"
+  #   entrypoint: /bin/bash
+  #   args:
+  #     - -c
+  #     - |
+  #       set -e
+  #       gcloud source repos clone deployment /tmp/deployment --project=datcom-ci
+  #       cd /tmp/deployment
+  #       ./scripts/update_external_repo_version.sh $REPO_NAME $SHORT_SHA
+  #   waitFor: ["-"]
 
   # Build protobuf and grpc descriptor
   - id: build-proto
@@ -58,10 +58,10 @@ steps:
         set -e
         docker build -f build/server/Dockerfile \
           --build-arg GO_PROTOC_VERSION=${_GO_PROTOC_VERSION} \
-          -t gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA \
+          -t gcr.io/datcom-ci/datacommons-mixer:3322a4d \
           -t gcr.io/datcom-ci/datacommons-mixer:latest \
           .
-        docker push gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA
+        docker push gcr.io/datcom-ci/datacommons-mixer:3322a4d
         docker push gcr.io/datcom-ci/datacommons-mixer:latest
     waitFor: ["build-proto"]
 
@@ -93,7 +93,7 @@ steps:
     waitFor: ["push-grpc-descriptor", "push-image"]
 
 substitutions:
-  _SKIP_AUTOPUSH_UPDATE: "false"
+  _SKIP_AUTOPUSH_UPDATE: "true"
   _GO_PROTOC_VERSION: "2025-07-30"
 
 options:
