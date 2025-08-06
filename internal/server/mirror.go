@@ -74,12 +74,13 @@ func (s *Server) mirrorV3(
 
 		rpcMethod := reflect.TypeOf(originalReq).Elem().Name()
 		if v3Err != nil {
-			log.Printf("V3 mirrored call failed. Method: %s, Error: %v", rpcMethod, v3Err)
+			log.Printf("V3 mirrored call failed. V3 Method: %s, Error: %v", rpcMethod, v3Err)
+			metrics.RecordV3MirrorError(ctx, v3Err)
 			return
 		}
 
 		if diff := cmp.Diff(originalResp, v3Resp, protocmp.Transform()); diff != "" {
-			log.Printf("V3 mirrored call had a different response. Method: %s. Diff: %s", rpcMethod, diff)
+			log.Printf("V3 mirrored call had a different response. V3 Method: %s. Diff: %s", rpcMethod, diff)
 			metrics.RecordV3Mismatch(ctx)
 		}
 	}()

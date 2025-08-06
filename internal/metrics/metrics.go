@@ -36,6 +36,7 @@ import (
 	"go.opentelemetry.io/otel/metric"
 	sdk "go.opentelemetry.io/otel/sdk/metric"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/status"
 )
 
 const (
@@ -65,7 +66,8 @@ const (
 	cacheDataTypeAttr = "cachedata.type"
 
 	// Common metric attributes
-	rpcMethodAttr = "rpc.method"
+	rpcMethodAttr     = "rpc.method"
+	rpcStatusCodeAttr = "rpc.grpc.status_code"
 
 	unknownMethodName = "UnknownMethod"
 )
@@ -246,5 +248,20 @@ func RecordV3Mismatch(ctx context.Context) {
 	mismatchCounter.Add(ctx, 1,
 		metric.WithAttributes(
 			attribute.String(rpcMethodAttr, getRpcMethod(ctx)),
+		))
+}
+
+// RecordV3MirrorError increments a counter for mirrored V3 requests that
+// returned an error.
+func RecordV3MirrorError(ctx context.Context, err error) {
+	st, _ := status.FromError(err)
+	errorCounter, _ := otel.GetMeterProvider().Meter(meterName).
+		Int64Counter("datacommons.mixer.v3_mirror_errors",
+			metric.WithDescription("Count of errors encountered during V3 mirroring"),
+		)
+	errorCounter.Add(ctx, 1,
+		metric.WithAttributes(
+			attribute.String(rpcMethodAttr, getRpcMethod(ctx)),
+			attribute.String(rpcStatusCodeAttr, st.Code().String()),
 		))
 }
