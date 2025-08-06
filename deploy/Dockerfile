@@ -15,7 +15,10 @@
 # Build docker image used in Cloud Build for deployment.
 # This image contains "gcloud", "kubectl", "yq" and "helm"
 
+FROM docker:stable AS docker-cli
 FROM google/cloud-sdk:slim
+
+COPY --from=docker-cli /usr/local/bin/docker /usr/bin/docker
 
 RUN apt-get update && \
     apt-get install -y kubectl gettext-base google-cloud-sdk-gke-gcloud-auth-plugin && \
