@@ -1,0 +1,18 @@
+# From repo root:
+# docker run -p 4317:4317 -v ./internal/metrics/otlp_collector_local.yml:/etc/otel-collector-config.yaml otel/opentelemetry-collector-contrib --config=/etc/otel-collector-config.yaml
+
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: "0.0.0.0:4317"
+
+exporters:
+  debug:
+    verbosity: detailed
+
+service:
+  pipelines:
+    metrics:
+      receivers: [otlp]
+      exporters: [debug]

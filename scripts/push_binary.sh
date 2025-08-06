@@ -14,7 +14,9 @@
 # limitations under the License.
 
 
-# Push docker image and grpc descriptor from local build
+# Push docker image and grpc descriptor
+
+set -e
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 ROOT="$(dirname "$DIR")"
@@ -30,5 +32,5 @@ fi
 gcloud builds submit \
     --project=datcom-ci \
     --config=build/ci/cloudbuild.push.yaml \
-    --substitutions SHORT_SHA="$TAG",_SKIP_AUTOPUSH_UPDATE=true \
+    --substitutions SHORT_SHA="$TAG",_SKIP_REPO_VERSION_UPDATE=true,_SKIP_AUTOPUSH_UPDATE=true \
     .
