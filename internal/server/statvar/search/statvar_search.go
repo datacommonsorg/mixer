@@ -16,6 +16,7 @@ package search
 
 import (
 	"context"
+	"log"
 	"sort"
 	"strings"
 
@@ -40,6 +41,9 @@ func FilterStatVarsByEntity(
 ) (*pb.FilterStatVarsByEntityResponse, error) {
 	svList := in.GetStatVars()
 	entities := in.GetEntities()
+
+	log.Println("entities: ", entities)
+	log.Println("svList length: ", len(svList))
 
 	if len(entities) == 0 {
 		return &pb.FilterStatVarsByEntityResponse{

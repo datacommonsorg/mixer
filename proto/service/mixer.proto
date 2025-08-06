@@ -123,6 +123,15 @@ service Mixer {
     };
   }
 
+  // Filters a list of stat vars using a list of entities (places or sources).
+  rpc FilterStatVarsByEntity(FilterStatVarsByEntityRequest)
+      returns (FilterStatVarsByEntityResponse) {
+    option (google.api.http) = {
+      post : "/v2/variable/filter" 
+      body : "*"
+    };
+  }
+
   // ======================  V0   V0   V0   V0  ======================
 
   // Query DataCommons Graph with Sparql.
@@ -556,14 +565,6 @@ service Mixer {
     option (google.api.http) = {
       get : "/v1/variable/search"
       additional_bindings : {post : "/v1/variable/search" body : "*"}
-    };
-  }
-
-  rpc FilterStatVarsByEntity(FilterStatVarsByEntityRequest)
-      returns (FilterStatVarsByEntityResponse) {
-    option (google.api.http) = {
-      post : "/v2/variable/filter" 
-      body : "*"
     };
   }
 
