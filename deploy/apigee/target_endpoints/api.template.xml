@@ -84,7 +84,6 @@
         </Step>
       </Request>
     </Flow>
-    </Flow>
   </Flows>
   <PostFlow name="PostFlow">
     <Request>
