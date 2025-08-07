@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <RaiseFault async="false" continueOnError="false" enabled="true" name="block-internal-only-endpoints">
-    <DisplayName>Block Internal Only Endpoints</DisplayName>
+    <DisplayName>block-internal-only-endpoints</DisplayName>
     <Properties/>
     <FaultResponse>
         <Set>
