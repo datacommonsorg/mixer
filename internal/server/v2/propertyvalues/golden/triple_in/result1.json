@@ -126,7 +126,7 @@
               "provenanceId": "dc/base/HumanReadableStatVars"
             },
             {
-              "name": "Murder and non negligent manslaughter cases per capita",
+              "name": "Murder and Non Negligent Manslaughter Case Rate",
               "types": [
                 "StatisticalVariable"
               ],
@@ -4718,6 +4718,7 @@
             {
               "name": "Denmark",
               "types": [
+                "AdministrativeArea1",
                 "Country"
               ],
               "dcid": "country/DNK",

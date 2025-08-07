@@ -12,13 +12,13 @@
         "id": "dc/g/Demographics",
         "specializedEntity": "Demographics",
         "displayName": "Demographics",
-        "descendentStatVarCount": 9169
+        "descendentStatVarCount": 9163
       },
       {
         "id": "dc/g/Economy",
         "specializedEntity": "Economy",
         "displayName": "Economy",
-        "descendentStatVarCount": 9423
+        "descendentStatVarCount": 9420
       },
       {
         "id": "dc/g/Education",
@@ -41,7 +41,7 @@
         "id": "dc/g/Health",
         "specializedEntity": "Health",
         "displayName": "Health",
-        "descendentStatVarCount": 4399
+        "descendentStatVarCount": 4398
       },
       {
         "id": "dc/g/Housing",
@@ -53,7 +53,7 @@
         "id": "dc/g/Crime",
         "specializedEntity": "Crime",
         "displayName": "Crime",
-        "descendentStatVarCount": 847
+        "descendentStatVarCount": 597
       },
       {
         "id": "dc/g/AboutDataCommons",
@@ -77,6 +77,6 @@
         "displayName": "Sustainable Development Goals"
       }
     ],
-    "descendentStatVarCount": 11254
+    "descendentStatVarCount": 11248
   }
 }

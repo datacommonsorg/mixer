@@ -1995,12 +1995,6 @@
       "observation_period": "P1Y",
       "is_dc_aggregate": true
     },
-    "2390551605": {
-      "import_name": "USCensusPEP_AgeSexRaceHispanicOrigin",
-      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
-      "measurement_method": "CensusPEPSurvey_Race2000Onwards",
-      "observation_period": "P1Y"
-    },
     "2458695583": {
       "import_name": "WikidataPopulation",
       "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",

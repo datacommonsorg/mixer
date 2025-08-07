@@ -113,14 +113,6 @@
       "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
-      "name": "Denmark",
-      "types": [
-        "Country"
-      ],
-      "dcid": "country/DNK",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
-    },
-    {
       "name": "Dominican Republic",
       "types": [
         "Country"

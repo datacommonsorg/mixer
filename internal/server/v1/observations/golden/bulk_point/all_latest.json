@@ -30,8 +30,8 @@
           "entity": "country/FRA",
           "points_by_facet": [
             {
-              "date": "2024",
-              "value": 68516699,
+              "date": "2023",
+              "value": 68287487,
               "facet": "3981252704"
             },
             {
@@ -41,17 +41,17 @@
             },
             {
               "date": "2023",
-              "value": 68277210,
+              "value": 68172977,
               "facet": "4181918134"
             },
             {
-              "date": "2025-01",
-              "value": 68605616,
+              "date": "2024-01",
+              "value": 68373433,
               "facet": "1456184638"
             },
             {
-              "date": "2024",
-              "value": 68373433,
+              "date": "2017",
+              "value": 67118648,
               "facet": "2458695583"
             }
           ]
@@ -80,24 +80,14 @@
               "facet": "1541763368"
             },
             {
-              "date": "2024",
-              "value": 340110988,
+              "date": "2023",
+              "value": 334914895,
               "facet": "3981252704"
-            },
-            {
-              "date": "2024",
-              "value": 340110988,
-              "facet": "2390551605"
             },
             {
               "date": "2023",
               "value": 334914895,
               "facet": "4181918134"
-            },
-            {
-              "date": "2023",
-              "value": 332387540,
-              "facet": "1964317807"
             },
             {
               "date": "2023",
@@ -110,8 +100,13 @@
               "facet": "196790193"
             },
             {
-              "date": "2023",
-              "value": 332387540,
+              "date": "2021",
+              "value": 329725481,
+              "facet": "1964317807"
+            },
+            {
+              "date": "2021",
+              "value": 329725481,
               "facet": "217147238"
             },
             {
@@ -130,8 +125,8 @@
               "facet": "1226172227"
             },
             {
-              "date": "2024-07-01",
-              "value": 340110988,
+              "date": "2017",
+              "value": 325145963,
               "facet": "2458695583"
             }
           ]
@@ -162,17 +157,17 @@
             {
               "date": "2023",
               "value": 39242785,
-              "facet": "1964317807"
-            },
-            {
-              "date": "2023",
-              "value": 39242785,
               "facet": "10983471"
             },
             {
               "date": "2023",
               "value": 39242785,
               "facet": "196790193"
+            },
+            {
+              "date": "2021",
+              "value": 39455353,
+              "facet": "1964317807"
             },
             {
               "date": "2020",
@@ -190,8 +185,8 @@
               "facet": "1226172227"
             },
             {
-              "date": "2020-04-01",
-              "value": 39538223,
+              "date": "2016",
+              "value": 39250017,
               "facet": "2458695583"
             }
           ]
@@ -200,8 +195,8 @@
           "entity": "geoId/0649670",
           "points_by_facet": [
             {
-              "date": "2024",
-              "value": 87316,
+              "date": "2023",
+              "value": 81785,
               "facet": "2176550201"
             },
             {
@@ -215,8 +210,8 @@
               "facet": "1541763368"
             },
             {
-              "date": "2023",
-              "value": 82363,
+              "date": "2021",
+              "value": 82409,
               "facet": "1964317807"
             },
             {
@@ -235,8 +230,8 @@
               "facet": "1456184638"
             },
             {
-              "date": "2020-04-01",
-              "value": 82376,
+              "date": "2010",
+              "value": 74066,
               "facet": "2458695583"
             }
           ]
@@ -294,8 +289,8 @@
           "entity": "country/FRA",
           "points_by_facet": [
             {
-              "date": "2024",
-              "value": 62620,
+              "date": "2023",
+              "value": 59070,
               "facet": "2171028778"
             }
           ]
@@ -304,8 +299,8 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2024",
-              "value": 85980,
+              "date": "2023",
+              "value": 82340,
               "facet": "2171028778"
             }
           ]
@@ -370,13 +365,13 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2025-06",
-              "value": 7015000,
+              "date": "2025-05",
+              "value": 7237000,
               "facet": "3707913853"
             },
             {
-              "date": "2025-06",
-              "value": 7139000,
+              "date": "2025-03",
+              "value": 6995000,
               "facet": "1714978719"
             }
           ]
@@ -385,8 +380,8 @@
           "entity": "geoId/06",
           "points_by_facet": [
             {
-              "date": "2025-06",
-              "value": 1135141,
+              "date": "2025-04",
+              "value": 988909,
               "facet": "324358135"
             },
             {
@@ -395,8 +390,8 @@
               "facet": "2978659163"
             },
             {
-              "date": "2025-06",
-              "value": 1069959,
+              "date": "2025-04",
+              "value": 1054992,
               "facet": "1249140336"
             }
           ]
@@ -405,8 +400,8 @@
           "entity": "geoId/0649670",
           "points_by_facet": [
             {
-              "date": "2025-05",
-              "value": 1537,
+              "date": "2025-04",
+              "value": 1529,
               "facet": "324358135"
             },
             {
@@ -492,19 +487,13 @@
     },
     "217147238": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2023.S2603",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "2176550201": {
       "import_name": "USCensusPEP_Annual_Population",
       "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
       "measurement_method": "CensusPEPSurvey",
-      "observation_period": "P1Y"
-    },
-    "2390551605": {
-      "import_name": "USCensusPEP_AgeSexRaceHispanicOrigin",
-      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
-      "measurement_method": "CensusPEPSurvey_Race2000Onwards",
       "observation_period": "P1Y"
     },
     "2392525955": {

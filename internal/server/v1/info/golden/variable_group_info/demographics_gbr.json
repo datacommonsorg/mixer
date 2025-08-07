@@ -76,6 +76,15 @@
         "definition": "st=meanValue,mp=incrementalCount,pt=Person"
       },
       {
+        "id": "Median_Age_Person",
+        "searchNames": [
+          "Median Age of Person",
+          "Median Age of Population"
+        ],
+        "displayName": "Median Age of Population",
+        "definition": "st=medianValue,mp=age,pt=Person"
+      },
+      {
         "id": "Median_Income_Person",
         "searchNames": [
           "Median Income of Person",
@@ -83,15 +92,6 @@
         ],
         "displayName": "Median Income of a Population",
         "definition": "st=medianValue,mp=income,pt=Person"
-      },
-      {
-        "id": "Median_Age_Person",
-        "searchNames": [
-          "Median Age of Person",
-          "Median age of population"
-        ],
-        "displayName": "Median age of population",
-        "definition": "st=medianValue,mp=age,pt=Person"
       },
       {
         "id": "Count_Person_AsAFractionOf_Count_Household",
@@ -144,9 +144,9 @@
         "id": "Count_Person",
         "searchNames": [
           "Population Count of Person",
-          "Total population"
+          "Total Population"
         ],
-        "displayName": "Total population",
+        "displayName": "Total Population",
         "definition": "mp=count,pt=Person",
         "hasData": true
       }
@@ -428,7 +428,7 @@
         "id": "dc/g/Demographics_Miscellaneous",
         "specializedEntity": "Miscellaneous",
         "displayName": "Miscellaneous",
-        "descendentStatVarCount": 1181
+        "descendentStatVarCount": 1178
       },
       {
         "id": "dc/g/Mother",

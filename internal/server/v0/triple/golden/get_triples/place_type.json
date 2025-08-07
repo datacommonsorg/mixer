@@ -1155,6 +1155,7 @@
       "subjectId": "country/DNK",
       "subjectName": "Denmark",
       "subjectTypes": [
+        "AdministrativeArea1",
         "Country"
       ],
       "predicate": "typeOf",

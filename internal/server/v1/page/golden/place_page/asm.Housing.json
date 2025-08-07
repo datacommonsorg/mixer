@@ -67,8 +67,7 @@
             "2020": 1411100000,
             "2021": 1412360000,
             "2022": 1412175000,
-            "2023": 1410710000,
-            "2024": 1408975000
+            "2023": 1410710000
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -78,75 +77,74 @@
         }
       }
     },
-    "country/NZL": {
+    "country/NGA": {
       "data": {
         "Count_Person": {
           "val": {
-            "1960": 2371800,
-            "1961": 2419700,
-            "1962": 2482000,
-            "1963": 2531800,
-            "1964": 2585400,
-            "1965": 2628400,
-            "1966": 2675900,
-            "1967": 2724100,
-            "1968": 2748100,
-            "1969": 2772800,
-            "1970": 2810700,
-            "1971": 2853000,
-            "1972": 2903900,
-            "1973": 2961300,
-            "1974": 3023700,
-            "1975": 3083100,
-            "1976": 3110500,
-            "1977": 3120200,
-            "1978": 3121200,
-            "1979": 3109000,
-            "1980": 3112900,
-            "1981": 3124900,
-            "1982": 3156100,
-            "1983": 3199300,
-            "1984": 3227100,
-            "1985": 3247100,
-            "1986": 3246300,
-            "1987": 3274400,
-            "1988": 3283400,
-            "1989": 3299200,
-            "1990": 3329800,
-            "1991": 3495100,
-            "1992": 3531700,
-            "1993": 3572200,
-            "1994": 3620000,
-            "1995": 3673400,
-            "1996": 3732000,
-            "1997": 3781300,
-            "1998": 3815000,
-            "1999": 3835100,
-            "2000": 3857700,
-            "2001": 3880500,
-            "2002": 3948500,
-            "2003": 4027200,
-            "2004": 4087500,
-            "2005": 4133900,
-            "2006": 4184600,
-            "2007": 4223800,
-            "2008": 4259800,
-            "2009": 4302600,
-            "2010": 4350700,
-            "2011": 4384000,
-            "2012": 4408100,
-            "2013": 4442100,
-            "2014": 4516500,
-            "2015": 4609400,
-            "2016": 4714100,
-            "2017": 4813600,
-            "2018": 4900600,
-            "2019": 4979200,
-            "2020": 5090200,
-            "2021": 5111300,
-            "2022": 5117100,
-            "2023": 5245000,
-            "2024": 5338500
+            "1960": 45053782,
+            "1961": 45989310,
+            "1962": 46965292,
+            "1963": 47973575,
+            "1964": 49012016,
+            "1965": 50086764,
+            "1966": 51188234,
+            "1967": 52293065,
+            "1968": 53432783,
+            "1969": 54631914,
+            "1970": 55893838,
+            "1971": 57214684,
+            "1972": 58601748,
+            "1973": 60082139,
+            "1974": 61679144,
+            "1975": 63410815,
+            "1976": 65258009,
+            "1977": 67234590,
+            "1978": 69326532,
+            "1979": 71498242,
+            "1980": 73764641,
+            "1981": 76068103,
+            "1982": 78378701,
+            "1983": 80438260,
+            "1984": 82526443,
+            "1985": 84897973,
+            "1986": 87235953,
+            "1987": 89591716,
+            "1988": 92020090,
+            "1989": 94531014,
+            "1990": 97120925,
+            "1991": 99720162,
+            "1992": 102372770,
+            "1993": 105122069,
+            "1994": 107935714,
+            "1995": 110819428,
+            "1996": 113754779,
+            "1997": 116754792,
+            "1998": 119846254,
+            "1999": 123047320,
+            "2000": 126382494,
+            "2001": 129862595,
+            "2002": 133471989,
+            "2003": 137202644,
+            "2004": 141057045,
+            "2005": 145017253,
+            "2006": 149077334,
+            "2007": 153267261,
+            "2008": 157595014,
+            "2009": 162049464,
+            "2010": 166642886,
+            "2011": 171379598,
+            "2012": 176200625,
+            "2013": 181049443,
+            "2014": 185896915,
+            "2015": 190671878,
+            "2016": 195443700,
+            "2017": 200254579,
+            "2018": 204938755,
+            "2019": 209485641,
+            "2020": 213996181,
+            "2021": 218529286,
+            "2022": 223150896,
+            "2023": 227882945
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
@@ -156,16 +154,1176 @@
         }
       }
     },
-    "oceania": {
+    "country/USA": {
       "data": {
-        "Count_Person": {
+        "Count_HousingUnit": {
           "val": {
-            "2020": 12355695
+            "2011": 132535275,
+            "2012": 133139387,
+            "2013": 133582681,
+            "2014": 134294644,
+            "2015": 134922477,
+            "2016": 135626643,
+            "2017": 136960864,
+            "2018": 137947451,
+            "2019": 138989822,
+            "2020": 139992727,
+            "2021": 141200811,
+            "2022": 142506742,
+            "2023": 143907981
           },
           "metadata": {
-            "importName": "WikidataPopulation",
-            "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
-            "measurementMethod": "WikidataPopulation"
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_1940To1949DateBuilt": {
+          "val": {
+            "2011": 7499184,
+            "2012": 7414729,
+            "2013": 7287296,
+            "2014": 7174626,
+            "2015": 7089987,
+            "2016": 7009501,
+            "2017": 6958328,
+            "2018": 6890026,
+            "2019": 6803395,
+            "2020": 6712666,
+            "2021": 6639119,
+            "2022": 6562309,
+            "2023": 6486796
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_1950To1959DateBuilt": {
+          "val": {
+            "2011": 14745897,
+            "2012": 14687629,
+            "2013": 14601977,
+            "2014": 14512891,
+            "2015": 14456015,
+            "2016": 14395271,
+            "2017": 14367849,
+            "2018": 14307499,
+            "2019": 14278372,
+            "2020": 14221850,
+            "2021": 14143604,
+            "2022": 14032231,
+            "2023": 13915259
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_1960To1969DateBuilt": {
+          "val": {
+            "2011": 15022347,
+            "2012": 14975284,
+            "2013": 14903042,
+            "2014": 14891348,
+            "2015": 14856646,
+            "2016": 14831055,
+            "2017": 14843286,
+            "2018": 14840030,
+            "2019": 14799987,
+            "2020": 14778094,
+            "2021": 14705510,
+            "2022": 14624472,
+            "2023": 14528304
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_1970To1979DateBuilt": {
+          "val": {
+            "2011": 21611027,
+            "2012": 21529276,
+            "2013": 21392558,
+            "2014": 21327282,
+            "2015": 21282203,
+            "2016": 21252424,
+            "2017": 21272093,
+            "2018": 21251889,
+            "2019": 21230405,
+            "2020": 21166028,
+            "2021": 21061614,
+            "2022": 20963299,
+            "2023": 20831644
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_1980To1989DateBuilt": {
+          "val": {
+            "2011": 18684059,
+            "2012": 18664534,
+            "2013": 18601021,
+            "2014": 18604801,
+            "2015": 18588376,
+            "2016": 18613562,
+            "2017": 18661407,
+            "2018": 18684622,
+            "2019": 18716310,
+            "2020": 18748557,
+            "2021": 18754082,
+            "2022": 18800433,
+            "2023": 18798377
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_1990To1999DateBuilt": {
+          "val": {
+            "2011": 18548500,
+            "2012": 18620205,
+            "2013": 18635462,
+            "2014": 18762418,
+            "2015": 18887858,
+            "2016": 19011650,
+            "2017": 19189933,
+            "2018": 19260963,
+            "2019": 19310808,
+            "2020": 19467918,
+            "2021": 19165997,
+            "2022": 18834219,
+            "2023": 18451258
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_2000To2009DateBuilt": {
+          "val": {
+            "2012": 18810699,
+            "2013": 19553070,
+            "2014": 19995147,
+            "2015": 20065991,
+            "2016": 19910700,
+            "2017": 19866554,
+            "2018": 19633526,
+            "2019": 19382674,
+            "2020": 19064741,
+            "2021": 19147212,
+            "2022": 19275745,
+            "2023": 19525709
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_2010OrLaterDateBuilt": {
+          "val": {
+            "2012": 384714,
+            "2013": 775492,
+            "2014": 1321057
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_Before1939DateBuilt": {
+          "val": {
+            "2011": 18225577,
+            "2012": 18052317,
+            "2013": 17832763,
+            "2014": 17705074,
+            "2015": 17598432,
+            "2016": 17493924,
+            "2017": 17485791,
+            "2018": 17440740,
+            "2019": 17360244,
+            "2020": 17215640,
+            "2021": 17134856,
+            "2022": 17007303,
+            "2023": 16947456
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue1000000To1499999USDollar": {
+          "val": {
+            "2015": 913005,
+            "2016": 987967,
+            "2017": 1108620,
+            "2018": 1255818,
+            "2019": 1401775,
+            "2020": 1553384,
+            "2021": 1759165,
+            "2022": 2569858,
+            "2023": 3081839
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue100000To124999USDollar": {
+          "val": {
+            "2011": 6371305,
+            "2012": 6496773,
+            "2013": 6587575,
+            "2014": 6528350,
+            "2015": 6411570,
+            "2016": 6189188,
+            "2017": 5960414,
+            "2018": 5682565,
+            "2019": 5427688,
+            "2020": 5147921,
+            "2021": 4807123,
+            "2022": 3929811,
+            "2023": 3952018
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue10000To14999USDollar": {
+          "val": {
+            "2011": 717592,
+            "2012": 767624,
+            "2013": 768360,
+            "2014": 756209,
+            "2015": 717796,
+            "2016": 684326,
+            "2017": 640927,
+            "2018": 603156,
+            "2019": 560239,
+            "2020": 548880,
+            "2021": 538557,
+            "2022": 508183,
+            "2023": 495657
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue125000To149999USDollar": {
+          "val": {
+            "2011": 5675486,
+            "2012": 5636716,
+            "2013": 5695951,
+            "2014": 5679778,
+            "2015": 5628210,
+            "2016": 5532737,
+            "2017": 5428766,
+            "2018": 5251479,
+            "2019": 5050094,
+            "2020": 4820284,
+            "2021": 4462389,
+            "2022": 3845640,
+            "2023": 3149861
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue1500000To1999999USDollar": {
+          "val": {
+            "2015": 314418,
+            "2016": 348819,
+            "2017": 399505,
+            "2018": 453393,
+            "2019": 508692,
+            "2020": 565938,
+            "2021": 642255,
+            "2022": 835860,
+            "2023": 958797
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue150000To174999USDollar": {
+          "val": {
+            "2011": 6600386,
+            "2012": 6806554,
+            "2013": 6869017,
+            "2014": 6826336,
+            "2015": 6773434,
+            "2016": 6679302,
+            "2017": 6604499,
+            "2018": 6486896,
+            "2019": 6363471,
+            "2020": 6238694,
+            "2021": 5993284,
+            "2022": 4774005,
+            "2023": 3931782
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue15000To19999USDollar": {
+          "val": {
+            "2011": 650693,
+            "2012": 687782,
+            "2013": 685420,
+            "2014": 670660,
+            "2015": 636355,
+            "2016": 604704,
+            "2017": 567790,
+            "2018": 532441,
+            "2019": 498359,
+            "2020": 492185,
+            "2021": 481068,
+            "2022": 441211,
+            "2023": 420567
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue175000To199999USDollar": {
+          "val": {
+            "2011": 4694133,
+            "2012": 4692463,
+            "2013": 4694079,
+            "2014": 4646638,
+            "2015": 4628897,
+            "2016": 4611870,
+            "2017": 4630670,
+            "2018": 4614767,
+            "2019": 4616939,
+            "2020": 4613075,
+            "2021": 4514414,
+            "2022": 4210949,
+            "2023": 4144612
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue2000000OrMoreUSDollar": {
+          "val": {
+            "2015": 448210,
+            "2016": 503261,
+            "2017": 567188,
+            "2018": 638384,
+            "2019": 704482,
+            "2020": 771324,
+            "2021": 859369,
+            "2022": 1125130,
+            "2023": 1314849
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue200000To249999USDollar": {
+          "val": {
+            "2011": 8127179,
+            "2012": 7983422,
+            "2013": 7882082,
+            "2014": 7778388,
+            "2015": 7752616,
+            "2016": 7803258,
+            "2017": 7946561,
+            "2018": 8118431,
+            "2019": 8320041,
+            "2020": 8545997,
+            "2021": 8636577,
+            "2022": 8684751,
+            "2023": 8617756
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue20000To24999USDollar": {
+          "val": {
+            "2011": 662500,
+            "2012": 692934,
+            "2013": 696545,
+            "2014": 690573,
+            "2015": 667793,
+            "2016": 641143,
+            "2017": 612253,
+            "2018": 577426,
+            "2019": 550096,
+            "2020": 532516,
+            "2021": 520090,
+            "2022": 526851,
+            "2023": 537994
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue250000To299999USDollar": {
+          "val": {
+            "2011": 5829811,
+            "2012": 6077362,
+            "2013": 5987432,
+            "2014": 5936870,
+            "2015": 5978248,
+            "2016": 6097493,
+            "2017": 6337986,
+            "2018": 6596849,
+            "2019": 6902027,
+            "2020": 7253800,
+            "2021": 7515741,
+            "2022": 7608387,
+            "2023": 7683614
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue25000To29999USDollar": {
+          "val": {
+            "2011": 613768,
+            "2012": 627014,
+            "2013": 631589,
+            "2014": 625190,
+            "2015": 606724,
+            "2016": 581602,
+            "2017": 558227,
+            "2018": 528294,
+            "2019": 502090,
+            "2020": 488800,
+            "2021": 474189,
+            "2022": 440279,
+            "2023": 433852
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue300000To399999USDollar": {
+          "val": {
+            "2011": 8082562,
+            "2012": 7875088,
+            "2013": 7673091,
+            "2014": 7600485,
+            "2015": 7701267,
+            "2016": 7954575,
+            "2017": 8399690,
+            "2018": 8901613,
+            "2019": 9470278,
+            "2020": 10196431,
+            "2021": 10918951,
+            "2022": 11475301,
+            "2023": 11969732
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue30000To34999USDollar": {
+          "val": {
+            "2011": 726977,
+            "2012": 757444,
+            "2013": 768903,
+            "2014": 768124,
+            "2015": 751097,
+            "2016": 724508,
+            "2017": 688276,
+            "2018": 653666,
+            "2019": 618638,
+            "2020": 589246,
+            "2021": 561053,
+            "2022": 455352,
+            "2023": 361115
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue35000To39999USDollar": {
+          "val": {
+            "2011": 559924,
+            "2012": 547896,
+            "2013": 558992,
+            "2014": 558399,
+            "2015": 551106,
+            "2016": 534997,
+            "2017": 511794,
+            "2018": 484125,
+            "2019": 454940,
+            "2020": 432018,
+            "2021": 407220,
+            "2022": 341351,
+            "2023": 409943
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue400000To499999USDollar": {
+          "val": {
+            "2011": 4561122,
+            "2012": 4285515,
+            "2013": 4093681,
+            "2014": 4056509,
+            "2015": 4159367,
+            "2016": 4365631,
+            "2017": 4723924,
+            "2018": 5096614,
+            "2019": 5504538,
+            "2020": 6004025,
+            "2021": 6622409,
+            "2022": 8171917,
+            "2023": 8703840
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue40000To49999USDollar": {
+          "val": {
+            "2011": 1415515,
+            "2012": 1447030,
+            "2013": 1470324,
+            "2014": 1474328,
+            "2015": 1446070,
+            "2016": 1396464,
+            "2017": 1335856,
+            "2018": 1264896,
+            "2019": 1190133,
+            "2020": 1122225,
+            "2021": 1046942,
+            "2022": 901998,
+            "2023": 840402
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue500000To749999USDollar": {
+          "val": {
+            "2011": 5284844,
+            "2012": 4834053,
+            "2013": 4534117,
+            "2014": 4489800,
+            "2015": 4610135,
+            "2016": 4879236,
+            "2017": 5314701,
+            "2018": 5792116,
+            "2019": 6320037,
+            "2020": 6931628,
+            "2021": 7804243,
+            "2022": 9677768,
+            "2023": 11187646
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue50000To59999USDollar": {
+          "val": {
+            "2011": 1726409,
+            "2012": 1758571,
+            "2013": 1803507,
+            "2014": 1815941,
+            "2015": 1796833,
+            "2016": 1737271,
+            "2017": 1666394,
+            "2018": 1576207,
+            "2019": 1481965,
+            "2020": 1395087,
+            "2021": 1282970,
+            "2022": 1240713,
+            "2023": 1167175
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue60000To69999USDollar": {
+          "val": {
+            "2011": 2004666,
+            "2012": 2056193,
+            "2013": 2098896,
+            "2014": 2109086,
+            "2015": 2090435,
+            "2016": 2031368,
+            "2017": 1945765,
+            "2018": 1837151,
+            "2019": 1728675,
+            "2020": 1625088,
+            "2021": 1486959,
+            "2022": 918713,
+            "2023": 731890
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue70000To79999USDollar": {
+          "val": {
+            "2011": 2365126,
+            "2012": 2400705,
+            "2013": 2456252,
+            "2014": 2456408,
+            "2015": 2414626,
+            "2016": 2333657,
+            "2017": 2241352,
+            "2018": 2107377,
+            "2019": 1989423,
+            "2020": 1862066,
+            "2021": 1705259,
+            "2022": 1148976,
+            "2023": 1213352
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue750000To999999USDollar": {
+          "val": {
+            "2011": 1894717,
+            "2012": 1725728,
+            "2013": 1620382,
+            "2014": 1626763,
+            "2015": 1702463,
+            "2016": 1841559,
+            "2017": 2047938,
+            "2018": 2277645,
+            "2019": 2509000,
+            "2020": 2759425,
+            "2021": 3134999,
+            "2022": 4203213,
+            "2023": 4698554
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue80000To89999USDollar": {
+          "val": {
+            "2011": 2815287,
+            "2012": 2867555,
+            "2013": 2913714,
+            "2014": 2905443,
+            "2015": 2859030,
+            "2016": 2765679,
+            "2017": 2642447,
+            "2018": 2505731,
+            "2019": 2365448,
+            "2020": 2213742,
+            "2021": 2025514,
+            "2022": 1518705,
+            "2023": 1349305
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValue90000To99999USDollar": {
+          "val": {
+            "2011": 2619016,
+            "2012": 2617937,
+            "2013": 2631154,
+            "2014": 2601419,
+            "2015": 2536920,
+            "2016": 2421896,
+            "2017": 2297858,
+            "2018": 2160882,
+            "2019": 2014711,
+            "2020": 1879072,
+            "2021": 1716526,
+            "2022": 1718930,
+            "2023": 1298873
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HomeValueUpto10000USDollar": {
+          "val": {
+            "2011": 1021720,
+            "2012": 1051782,
+            "2013": 1259042,
+            "2014": 1470295,
+            "2015": 1473176,
+            "2016": 1477292,
+            "2017": 1491263,
+            "2018": 1267293,
+            "2019": 1033227,
+            "2020": 1035924,
+            "2021": 1049049,
+            "2022": 1053851,
+            "2023": 1081240
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HouseholderRaceAmericanIndianOrAlaskaNativeAlone": {
+          "val": {
+            "2011": 810256,
+            "2012": 814461,
+            "2013": 816145,
+            "2014": 826925,
+            "2015": 826942,
+            "2016": 834713,
+            "2017": 852713,
+            "2018": 873255,
+            "2019": 890192,
+            "2020": 876944,
+            "2021": 869656,
+            "2022": 885866,
+            "2023": 934394
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HouseholderRaceAsianAlone": {
+          "val": {
+            "2011": 4578505,
+            "2012": 4669691,
+            "2013": 4768181,
+            "2014": 4906755,
+            "2015": 5071348,
+            "2016": 5207432,
+            "2017": 5408231,
+            "2018": 5569108,
+            "2019": 5724764,
+            "2020": 5953660,
+            "2021": 6149621,
+            "2022": 6378254,
+            "2023": 6579334
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HouseholderRaceBlackOrAfricanAmericanAlone": {
+          "val": {
+            "2011": 13833010,
+            "2012": 13943236,
+            "2013": 14024351,
+            "2014": 14151381,
+            "2015": 14300836,
+            "2016": 14465097,
+            "2017": 14628650,
+            "2018": 14820140,
+            "2019": 15027284,
+            "2020": 15162278,
+            "2021": 15342897,
+            "2022": 15506438,
+            "2023": 15651166
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HouseholderRaceHispanicOrLatino": {
+          "val": {
+            "2011": 14374721,
+            "2012": 14645350,
+            "2013": 14916340,
+            "2014": 15275483,
+            "2015": 15641593,
+            "2016": 15949676,
+            "2017": 16347641,
+            "2018": 16712985,
+            "2019": 17070690,
+            "2020": 17604463,
+            "2021": 18336089,
+            "2022": 18899448,
+            "2023": 19547403
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HouseholderRaceNativeHawaiianOrOtherPacificIslanderAlone": {
+          "val": {
+            "2011": 134557,
+            "2012": 137077,
+            "2013": 138700,
+            "2014": 141134,
+            "2015": 144262,
+            "2016": 147595,
+            "2017": 151493,
+            "2018": 156254,
+            "2019": 160592,
+            "2020": 165730,
+            "2021": 168918,
+            "2022": 174648,
+            "2023": 177258
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HouseholderRaceSomeOtherRaceAlone": {
+          "val": {
+            "2011": 4299167,
+            "2012": 4018691,
+            "2013": 3987305,
+            "2014": 4002071,
+            "2015": 4070402,
+            "2016": 4168410,
+            "2017": 4299199,
+            "2018": 4410031,
+            "2019": 4502648,
+            "2020": 4797951,
+            "2021": 5352646,
+            "2022": 5918260,
+            "2023": 6571329
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HouseholderRaceTwoOrMoreRaces": {
+          "val": {
+            "2011": 1904931,
+            "2012": 2020078,
+            "2013": 2120255,
+            "2014": 2198004,
+            "2015": 2246627,
+            "2016": 2304849,
+            "2017": 2381818,
+            "2018": 2467655,
+            "2019": 2569567,
+            "2020": 4486175,
+            "2021": 6468496,
+            "2022": 8477820,
+            "2023": 10666079
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_HouseholderRaceWhiteAlone": {
+          "val": {
+            "2011": 90431026,
+            "2012": 90841152,
+            "2013": 90986147,
+            "2014": 91226276,
+            "2015": 91510090,
+            "2016": 91825321,
+            "2017": 92326423,
+            "2018": 92638760,
+            "2019": 93073655,
+            "2020": 92117230,
+            "2021": 90855548,
+            "2022": 89614725,
+            "2023": 88142548
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_OwnerOccupied": {
+          "val": {
+            "2011": 76776092,
+            "2012": 76346192,
+            "2013": 75938580,
+            "2014": 75649658,
+            "2015": 75569801,
+            "2016": 75729803,
+            "2017": 76670664,
+            "2018": 77265215,
+            "2019": 78087006,
+            "2020": 79618775,
+            "2021": 80966315,
+            "2022": 82327703,
+            "2023": 83736265
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_HousingUnit_RenterOccupied": {
+          "val": {
+            "2011": 39215360,
+            "2012": 40098194,
+            "2013": 40902504,
+            "2014": 41802888,
+            "2015": 42600706,
+            "2016": 43223614,
+            "2017": 43377863,
+            "2018": 43669988,
+            "2019": 43861696,
+            "2020": 43941193,
+            "2021": 44241467,
+            "2022": 44628308,
+            "2023": 44985843
+          },
+          "metadata": {
+            "importName": "CensusACS5YearSurvey_AggCountry",
+            "provenanceUrl": "https://www.census.gov/",
+            "measurementMethod": "CensusACS5yrSurvey",
+            "isDcAggregate": true
+          }
+        },
+        "Count_Person": {
+          "val": {
+            "1900": 76094000,
+            "1901": 77584000,
+            "1902": 79163000,
+            "1903": 80632000,
+            "1904": 82166000,
+            "1905": 83822000,
+            "1906": 85450000,
+            "1907": 87008000,
+            "1908": 88710000,
+            "1909": 90490000,
+            "1910": 92407000,
+            "1911": 93863000,
+            "1912": 95335000,
+            "1913": 97225000,
+            "1914": 99111000,
+            "1915": 100546000,
+            "1916": 101961000,
+            "1917": 103268000,
+            "1918": 103208000,
+            "1919": 104514000,
+            "1920": 106461000,
+            "1921": 108538000,
+            "1922": 110049000,
+            "1923": 111947000,
+            "1924": 114109000,
+            "1925": 115829000,
+            "1926": 117397000,
+            "1927": 119035000,
+            "1928": 120509000,
+            "1929": 121767000,
+            "1930": 123076741,
+            "1931": 124039648,
+            "1932": 124840471,
+            "1933": 125578763,
+            "1934": 126373773,
+            "1935": 127250232,
+            "1936": 128053180,
+            "1937": 128824829,
+            "1938": 129824939,
+            "1939": 130879718,
+            "1940": 132122446,
+            "1941": 133402471,
+            "1942": 134859553,
+            "1943": 136739353,
+            "1944": 138397345,
+            "1945": 139928165,
+            "1946": 141388566,
+            "1947": 144126071,
+            "1948": 146631302,
+            "1949": 149188130,
+            "1950": 152271417,
+            "1951": 154877889,
+            "1952": 157552740,
+            "1953": 160184192,
+            "1954": 163025854,
+            "1955": 165931202,
+            "1956": 168903031,
+            "1957": 171984130,
+            "1958": 174881904,
+            "1959": 177829628,
+            "1960": 180671158,
+            "1961": 183691481,
+            "1962": 186537737,
+            "1963": 189241798,
+            "1964": 191888791,
+            "1965": 194302963,
+            "1966": 196560338,
+            "1967": 198712056,
+            "1968": 200706052,
+            "1969": 202676946,
+            "1970": 205052174,
+            "1971": 207660677,
+            "1972": 209896021,
+            "1973": 211908788,
+            "1974": 213853928,
+            "1975": 215973199,
+            "1976": 218035164,
+            "1977": 220239425,
+            "1978": 222584545,
+            "1979": 225055487,
+            "1980": 226542250,
+            "1981": 229465744,
+            "1982": 231664432,
+            "1983": 233792014,
+            "1984": 235824908,
+            "1985": 237923734,
+            "1986": 240132831,
+            "1987": 242288936,
+            "1988": 244499004,
+            "1989": 246819222,
+            "1990": 250131894,
+            "1991": 253492503,
+            "1992": 256894189,
+            "1993": 260255352,
+            "1994": 263435673,
+            "1995": 266557091,
+            "1996": 269667391,
+            "1997": 272911760,
+            "1998": 276115288,
+            "1999": 279294713,
+            "2000": 282162411,
+            "2001": 284968955,
+            "2002": 287625193,
+            "2003": 290107933,
+            "2004": 292805298,
+            "2005": 295516599,
+            "2006": 298379912,
+            "2007": 301231207,
+            "2008": 304093966,
+            "2009": 306771529,
+            "2010": 309327143,
+            "2011": 311583481,
+            "2012": 313877662,
+            "2013": 316059947,
+            "2014": 318386329,
+            "2015": 320738994,
+            "2016": 323071755,
+            "2017": 325122128,
+            "2018": 326838199,
+            "2019": 328329953,
+            "2020": 331526933,
+            "2021": 331893745,
+            "2022": 333271411,
+            "2023": 334914895,
+            "2024": 340110988
+          },
+          "metadata": {
+            "importName": "USCensusPEP_Annual_Population",
+            "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
+            "measurementMethod": "CensusPEPSurvey",
+            "observationPeriod": "P1Y"
           }
         }
       }
@@ -173,8 +1331,8 @@
   },
   "latestPopulation": {
     "country/ASM": {
-      "date": "2024",
-      "value": 46765,
+      "date": "2023",
+      "value": 47521,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
@@ -182,8 +1340,8 @@
       }
     },
     "country/CHN": {
-      "date": "2024",
-      "value": 1408975000,
+      "date": "2023",
+      "value": 1410710000,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
@@ -191,8 +1349,8 @@
       }
     },
     "country/DEU": {
-      "date": "2024",
-      "value": 83510950,
+      "date": "2023",
+      "value": 83280000,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
@@ -200,8 +1358,8 @@
       }
     },
     "country/NGA": {
-      "date": "2024",
-      "value": 232679478,
+      "date": "2023",
+      "value": 227882945,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
@@ -209,8 +1367,8 @@
       }
     },
     "country/NZL": {
-      "date": "2024",
-      "value": 5338500,
+      "date": "2023",
+      "value": 5223100,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
         "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
@@ -225,24 +1383,6 @@
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
         "measurementMethod": "CensusPEPSurvey",
         "observationPeriod": "P1Y"
-      }
-    },
-    "northamerica": {
-      "date": "2024",
-      "value": 613150000,
-      "metadata": {
-        "importName": "WikidataPopulation",
-        "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
-        "measurementMethod": "WikidataPopulation"
-      }
-    },
-    "oceania": {
-      "date": "2020",
-      "value": 12355695,
-      "metadata": {
-        "importName": "WikidataPopulation",
-        "provenanceUrl": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
-        "measurementMethod": "WikidataPopulation"
       }
     }
   },
@@ -314,18 +1454,8 @@
         "Overview"
       ]
     },
-    "northamerica": {
-      "category": [
-        "Demographics",
-        "Overview"
-      ]
-    },
-    "oceania": {
-      "category": [
-        "Demographics",
-        "Overview"
-      ]
-    }
+    "northamerica": {},
+    "oceania": {}
   },
   "parentPlaces": [
     "oceania",

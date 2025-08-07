@@ -8,8 +8,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 107624
+                  "date": "2023",
+                  "value": 107359
                 }
               ]
             }
@@ -21,8 +21,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 42647492
+                  "date": "2023",
+                  "value": 41454761
                 }
               ]
             },
@@ -43,8 +43,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 37885849
+                  "date": "2023",
+                  "value": 36749906
                 }
               ]
             },
@@ -59,27 +59,14 @@
             }
           ]
         },
-        "country/AIA": {
-          "ordered_facets": [
-            {
-              "facet_id": "2458695583",
-              "observations": [
-                {
-                  "date": "2023",
-                  "value": 19079
-                }
-              ]
-            }
-          ]
-        },
         "country/ALB": {
           "ordered_facets": [
             {
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 2714617
+                  "date": "2023",
+                  "value": 2745972
                 }
               ]
             },
@@ -109,8 +96,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 81938
+                  "date": "2023",
+                  "value": 80856
                 }
               ]
             }
@@ -135,8 +122,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 10876981
+                  "date": "2023",
+                  "value": 10483751
                 }
               ]
             }
@@ -148,8 +135,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 45696159
+                  "date": "2023",
+                  "value": 45538401
                 }
               ]
             },
@@ -179,8 +166,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 3033500
+                  "date": "2023",
+                  "value": 2990900
                 }
               ]
             },
@@ -201,21 +188,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 46765
-                }
-              ]
-            }
-          ]
-        },
-        "country/ATA": {
-          "ordered_facets": [
-            {
-              "facet_id": "2458695583",
-              "observations": [
-                {
-                  "date": "2009",
-                  "value": 4400
+                  "date": "2023",
+                  "value": 47521
                 }
               ]
             }
@@ -240,8 +214,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 93772
+                  "date": "2023",
+                  "value": 93316
                 }
               ]
             }
@@ -253,8 +227,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 27204809
+                  "date": "2023",
+                  "value": 26658948
                 }
               ]
             },
@@ -284,8 +258,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 9178482
+                  "date": "2023",
+                  "value": 9131761
                 }
               ]
             },
@@ -315,8 +289,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 10202850
+                  "date": "2023",
+                  "value": 10153958
                 }
               ]
             },
@@ -337,8 +311,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 14047786
+                  "date": "2023",
+                  "value": 13689450
                 }
               ]
             },
@@ -359,8 +333,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 11876844
+                  "date": "2023",
+                  "value": 11787423
                 }
               ]
             },
@@ -390,8 +364,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 14462724
+                  "date": "2023",
+                  "value": 14111034
                 }
               ]
             },
@@ -412,8 +386,8 @@
               "facet_id": "2458695583",
               "observations": [
                 {
-                  "date": "2023",
-                  "value": 29418
+                  "date": "2016",
+                  "value": 25019
                 }
               ]
             }
@@ -425,8 +399,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 23548781
+                  "date": "2023",
+                  "value": 23025776
                 }
               ]
             },
@@ -447,8 +421,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 173562364
+                  "date": "2023",
+                  "value": 171466990
                 }
               ]
             },
@@ -469,8 +443,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 6444366
+                  "date": "2023",
+                  "value": 6446596
                 }
               ]
             },
@@ -488,7 +462,7 @@
               "observations": [
                 {
                   "date": "2023",
-                  "value": 6447710
+                  "value": 6445481
                 }
               ]
             },
@@ -509,8 +483,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 1588670
+                  "date": "2023",
+                  "value": 1577059
                 }
               ]
             }
@@ -522,8 +496,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 401283
+                  "date": "2023",
+                  "value": 399440
                 }
               ]
             }
@@ -535,8 +509,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 3164253
+                  "date": "2023",
+                  "value": 3185073
                 }
               ]
             },
@@ -557,8 +531,8 @@
               "facet_id": "2458695583",
               "observations": [
                 {
-                  "date": "2018",
-                  "value": 10124
+                  "date": "2015",
+                  "value": 9625
                 }
               ]
             }
@@ -570,8 +544,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 9133712
+                  "date": "2023",
+                  "value": 9178298
                 }
               ]
             },
@@ -592,8 +566,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 417072
+                  "date": "2023",
+                  "value": 411106
                 }
               ]
             }
@@ -605,8 +579,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 64636
+                  "date": "2023",
+                  "value": 64698
                 }
               ]
             }
@@ -618,8 +592,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 12413315
+                  "date": "2023",
+                  "value": 12244159
                 }
               ]
             },
@@ -640,8 +614,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 211998573
+                  "date": "2023",
+                  "value": 211140729
                 }
               ]
             },
@@ -689,8 +663,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 282467
+                  "date": "2023",
+                  "value": 282336
                 }
               ]
             }
@@ -702,8 +676,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 462721
+                  "date": "2023",
+                  "value": 458949
                 }
               ]
             }
@@ -715,8 +689,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 791524
+                  "date": "2023",
+                  "value": 786385
                 }
               ]
             },
@@ -737,8 +711,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 2521139
+                  "date": "2023",
+                  "value": 2480244
                 }
               ]
             }
@@ -750,8 +724,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 5330690
+                  "date": "2023",
+                  "value": 5152421
                 }
               ]
             }
@@ -763,8 +737,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 41288599
+                  "date": "2023",
+                  "value": 40097761
                 }
               ]
             },
@@ -782,7 +756,7 @@
               "observations": [
                 {
                   "date": "2023",
-                  "value": 40083484
+                  "value": 40097761
                 }
               ]
             }
@@ -794,8 +768,8 @@
               "facet_id": "2458695583",
               "observations": [
                 {
-                  "date": "2021-06-30",
-                  "value": 602
+                  "date": "2014-07",
+                  "value": 596
                 }
               ]
             }
@@ -807,8 +781,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 9034102
+                  "date": "2023",
+                  "value": 8888093
                 }
               ]
             },
@@ -838,8 +812,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 19764771
+                  "date": "2023",
+                  "value": 19658835
                 }
               ]
             },
@@ -869,8 +843,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 1408975000
+                  "date": "2023",
+                  "value": 1410710000
                 }
               ]
             },
@@ -900,8 +874,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 31934230
+                  "date": "2023",
+                  "value": 31165654
                 }
               ]
             },
@@ -931,8 +905,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 29123744
+                  "date": "2023",
+                  "value": 28372687
                 }
               ]
             },
@@ -953,8 +927,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 109276265
+                  "date": "2023",
+                  "value": 105789731
                 }
               ]
             },
@@ -975,8 +949,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 6332961
+                  "date": "2023",
+                  "value": 6182885
                 }
               ]
             }
@@ -988,8 +962,8 @@
               "facet_id": "2458695583",
               "observations": [
                 {
-                  "date": "2023",
-                  "value": 14222
+                  "date": "2016",
+                  "value": 17434
                 }
               ]
             }
@@ -1001,8 +975,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 52886363
+                  "date": "2023",
+                  "value": 52321152
                 }
               ]
             },
@@ -1032,8 +1006,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 866628
+                  "date": "2023",
+                  "value": 850387
                 }
               ]
             }
@@ -1045,8 +1019,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 524877
+                  "date": "2023",
+                  "value": 522331
                 }
               ]
             }
@@ -1058,8 +1032,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 5129910
+                  "date": "2023",
+                  "value": 5105525
                 }
               ]
             },
@@ -1089,8 +1063,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 10979783
+                  "date": "2023",
+                  "value": 11019931
                 }
               ]
             },
@@ -1111,8 +1085,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 155900
+                  "date": "2023",
+                  "value": 147862
                 }
               ]
             }
@@ -1124,8 +1098,8 @@
               "facet_id": "2458695583",
               "observations": [
                 {
-                  "date": "2021-08-10",
-                  "value": 1692
+                  "date": "2016-08-09",
+                  "value": 1843
                 }
               ]
             }
@@ -1137,8 +1111,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 74457
+                  "date": "2023",
+                  "value": 73038
                 }
               ]
             }
@@ -1150,8 +1124,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 1358282
+                  "date": "2023",
+                  "value": 1344976
                 }
               ]
             },
@@ -1172,8 +1146,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 10882164
+                  "date": "2023",
+                  "value": 10864042
                 }
               ]
             },
@@ -1212,8 +1186,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 83510950
+                  "date": "2023",
+                  "value": 83280000
                 }
               ]
             },
@@ -1231,7 +1205,7 @@
               "observations": [
                 {
                   "date": "2023",
-                  "value": 83118501
+                  "value": 84358845
                 }
               ]
             }
@@ -1243,8 +1217,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 1168722
+                  "date": "2023",
+                  "value": 1152944
                 }
               ]
             }
@@ -1256,8 +1230,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 66205
+                  "date": "2023",
+                  "value": 66510
                 }
               ]
             }
@@ -1269,8 +1243,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 5976992
+                  "date": "2023",
+                  "value": 5946952
                 }
               ]
             },
@@ -1300,8 +1274,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 11427557
+                  "date": "2023",
+                  "value": 11331265
                 }
               ]
             },
@@ -1322,8 +1296,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 46814308
+                  "date": "2023",
+                  "value": 46164219
                 }
               ]
             },
@@ -1344,8 +1318,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 18135478
+                  "date": "2023",
+                  "value": 17980083
                 }
               ]
             },
@@ -1366,8 +1340,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 116538258
+                  "date": "2023",
+                  "value": 114535772
                 }
               ]
             },
@@ -1397,8 +1371,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 3535603
+                  "date": "2023",
+                  "value": 3470390
                 }
               ]
             }
@@ -1410,8 +1384,8 @@
               "facet_id": "2458695583",
               "observations": [
                 {
-                  "date": "2021",
-                  "value": 612000
+                  "date": "2019",
+                  "value": 582000
                 }
               ]
             }
@@ -1423,8 +1397,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 48807137
+                  "date": "2023",
+                  "value": 48347910
                 }
               ]
             },
@@ -1454,8 +1428,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 1371986
+                  "date": "2023",
+                  "value": 1370286
                 }
               ]
             },
@@ -1494,8 +1468,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 132059767
+                  "date": "2023",
+                  "value": 128691692
                 }
               ]
             },
@@ -1525,8 +1499,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 5637214
+                  "date": "2023",
+                  "value": 5583911
                 }
               ]
             },
@@ -1556,8 +1530,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 928784
+                  "date": "2023",
+                  "value": 924145
                 }
               ]
             }
@@ -1582,8 +1556,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 68516699
+                  "date": "2023",
+                  "value": 68287487
                 }
               ]
             },
@@ -1601,7 +1575,7 @@
               "observations": [
                 {
                   "date": "2023",
-                  "value": 68277210
+                  "value": 68172977
                 }
               ]
             }
@@ -1613,8 +1587,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 54719
+                  "date": "2023",
+                  "value": 54482
                 }
               ]
             }
@@ -1626,8 +1600,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 113160
+                  "date": "2023",
+                  "value": 112630
                 }
               ]
             }
@@ -1652,8 +1626,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 2538952
+                  "date": "2023",
+                  "value": 2484789
                 }
               ]
             }
@@ -1665,8 +1639,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 69226000
+                  "date": "2023",
+                  "value": 68350000
                 }
               ]
             },
@@ -1696,8 +1670,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 3673850
+                  "date": "2023",
+                  "value": 3715483
                 }
               ]
             },
@@ -1731,8 +1705,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 34427414
+                  "date": "2023",
+                  "value": 33787914
                 }
               ]
             },
@@ -1753,8 +1727,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 39329
+                  "date": "2023",
+                  "value": 38471
                 }
               ]
             }
@@ -1766,8 +1740,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 14754785
+                  "date": "2023",
+                  "value": 14405468
                 }
               ]
             },
@@ -1801,8 +1775,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 2759988
+                  "date": "2023",
+                  "value": 2697845
                 }
               ]
             },
@@ -1823,8 +1797,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 2201352
+                  "date": "2023",
+                  "value": 2153339
                 }
               ]
             },
@@ -1845,8 +1819,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 1892516
+                  "date": "2023",
+                  "value": 1847549
                 }
               ]
             }
@@ -1858,8 +1832,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 10388805
+                  "date": "2023",
+                  "value": 10405588
                 }
               ]
             },
@@ -1889,8 +1863,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 117207
+                  "date": "2023",
+                  "value": 117081
                 }
               ]
             }
@@ -1902,8 +1876,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 56836
+                  "date": "2023",
+                  "value": 56865
                 }
               ]
             }
@@ -1915,8 +1889,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 18406359
+                  "date": "2023",
+                  "value": 18124838
                 }
               ]
             },
@@ -1937,8 +1911,8 @@
               "facet_id": "1456184638",
               "observations": [
                 {
-                  "date": "2025-01",
-                  "value": 292354
+                  "date": "2024-01",
+                  "value": 295385
                 }
               ]
             }
@@ -1950,8 +1924,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 167777
+                  "date": "2023",
+                  "value": 166506
                 }
               ]
             }
@@ -1963,8 +1937,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 831087
+                  "date": "2023",
+                  "value": 826353
                 }
               ]
             }
@@ -1976,8 +1950,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 7524100
+                  "date": "2023",
+                  "value": 7536100
                 }
               ]
             }
@@ -1990,7 +1964,7 @@
               "observations": [
                 {
                   "date": "2011",
-                  "value": 2
+                  "value": 0
                 }
               ]
             }
@@ -2002,8 +1976,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 10825703
+                  "date": "2023",
+                  "value": 10644851
                 }
               ]
             },
@@ -2024,8 +1998,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 3866300
+                  "date": "2023",
+                  "value": 3859686
                 }
               ]
             },
@@ -2064,8 +2038,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 11772557
+                  "date": "2023",
+                  "value": 11637398
                 }
               ]
             }
@@ -2077,8 +2051,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 9562314
+                  "date": "2023",
+                  "value": 9592186
                 }
               ]
             },
@@ -2117,8 +2091,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 283487931
+                  "date": "2023",
+                  "value": 281190067
                 }
               ]
             },
@@ -2157,8 +2131,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 84160
+                  "date": "2023",
+                  "value": 84165
                 }
               ]
             }
@@ -2170,8 +2144,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 1450935791
+                  "date": "2023",
+                  "value": 1438069596
                 }
               ]
             },
@@ -2204,27 +2178,14 @@
             }
           ]
         },
-        "country/IOT": {
-          "ordered_facets": [
-            {
-              "facet_id": "2458695583",
-              "observations": [
-                {
-                  "date": "2018",
-                  "value": 3000
-                }
-              ]
-            }
-          ]
-        },
         "country/IRL": {
           "ordered_facets": [
             {
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 5380257
+                  "date": "2023",
+                  "value": 5307600
                 }
               ]
             },
@@ -2263,8 +2224,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 91567738
+                  "date": "2023",
+                  "value": 90608707
                 }
               ]
             },
@@ -2285,8 +2246,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 46042015
+                  "date": "2023",
+                  "value": 45074049
                 }
               ]
             },
@@ -2307,8 +2268,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 404610
+                  "date": "2023",
+                  "value": 393349
                 }
               ]
             },
@@ -2338,8 +2299,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 9974400
+                  "date": "2023",
+                  "value": 9756600
                 }
               ]
             },
@@ -2369,8 +2330,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 58986023
+                  "date": "2023",
+                  "value": 58993475
                 }
               ]
             },
@@ -2400,8 +2361,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 2839175
+                  "date": "2023",
+                  "value": 2839786
                 }
               ]
             },
@@ -2435,8 +2396,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 11552876
+                  "date": "2023",
+                  "value": 11439213
                 }
               ]
             },
@@ -2457,8 +2418,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 123975371
+                  "date": "2023",
+                  "value": 124516650
                 }
               ]
             },
@@ -2475,8 +2436,8 @@
               "facet_id": "4181918134",
               "observations": [
                 {
-                  "date": "2023",
-                  "value": 124351877
+                  "date": "2022",
+                  "value": 124946000
                 }
               ]
             }
@@ -2488,8 +2449,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 20592571
+                  "date": "2023",
+                  "value": 20330104
                 }
               ]
             },
@@ -2510,8 +2471,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 56432944
+                  "date": "2023",
+                  "value": 55339003
                 }
               ]
             },
@@ -2550,8 +2511,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 7224614
+                  "date": "2023",
+                  "value": 7099750
                 }
               ]
             },
@@ -2572,8 +2533,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 17638801
+                  "date": "2023",
+                  "value": 17423880
                 }
               ]
             },
@@ -2594,8 +2555,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 134518
+                  "date": "2023",
+                  "value": 132530
                 }
               ]
             }
@@ -2607,8 +2568,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 46843
+                  "date": "2023",
+                  "value": 46758
                 }
               ]
             }
@@ -2620,8 +2581,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 51751065
+                  "date": "2023",
+                  "value": 51712619
                 }
               ]
             },
@@ -2651,8 +2612,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 4973861
+                  "date": "2023",
+                  "value": 4853420
                 }
               ]
             }
@@ -2664,8 +2625,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 7769819
+                  "date": "2023",
+                  "value": 7664993
                 }
               ]
             },
@@ -2686,8 +2647,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 5805962
+                  "date": "2023",
+                  "value": 5773493
                 }
               ]
             },
@@ -2708,8 +2669,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 5612817
+                  "date": "2023",
+                  "value": 5493031
                 }
               ]
             },
@@ -2730,8 +2691,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 7381023
+                  "date": "2023",
+                  "value": 7305659
                 }
               ]
             }
@@ -2743,8 +2704,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 179744
+                  "date": "2023",
+                  "value": 179285
                 }
               ]
             }
@@ -2756,8 +2717,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 40197
+                  "date": "2023",
+                  "value": 39850
                 }
               ]
             },
@@ -2778,8 +2739,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 21916000
+                  "date": "2023",
+                  "value": 22037000
                 }
               ]
             },
@@ -2809,8 +2770,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 2337423
+                  "date": "2023",
+                  "value": 2311472
                 }
               ]
             },
@@ -2831,8 +2792,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 2888055
+                  "date": "2023",
+                  "value": 2871585
                 }
               ]
             },
@@ -2871,8 +2832,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 677717
+                  "date": "2023",
+                  "value": 666430
                 }
               ]
             },
@@ -2902,8 +2863,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 1862441
+                  "date": "2023",
+                  "value": 1877445
                 }
               ]
             },
@@ -2933,8 +2894,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 687000
+                  "date": "2023",
+                  "value": 678800
                 }
               ]
             }
@@ -2946,8 +2907,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 26129
+                  "date": "2023",
+                  "value": 27515
                 }
               ]
             }
@@ -2959,8 +2920,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 38081173
+                  "date": "2023",
+                  "value": 37712505
                 }
               ]
             }
@@ -2972,8 +2933,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 38631
+                  "date": "2023",
+                  "value": 38956
                 }
               ]
             }
@@ -2985,8 +2946,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 2389275
+                  "date": "2023",
+                  "value": 2457783
                 }
               ]
             },
@@ -3007,8 +2968,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 31964956
+                  "date": "2023",
+                  "value": 31195932
                 }
               ]
             },
@@ -3029,8 +2990,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 527799
+                  "date": "2023",
+                  "value": 525994
                 }
               ]
             }
@@ -3042,8 +3003,17 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 130861007
+                  "date": "2023",
+                  "value": 129739759
+                }
+              ]
+            },
+            {
+              "facet_id": "3251078590",
+              "observations": [
+                {
+                  "date": "2021",
+                  "value": 128972439
                 }
               ]
             },
@@ -3082,8 +3052,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 37548
+                  "date": "2023",
+                  "value": 38827
                 }
               ]
             }
@@ -3095,8 +3065,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 1792179
+                  "date": "2023",
+                  "value": 1827816
                 }
               ]
             },
@@ -3117,8 +3087,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 24478595
+                  "date": "2023",
+                  "value": 23769127
                 }
               ]
             },
@@ -3139,8 +3109,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 574346
+                  "date": "2023",
+                  "value": 552747
                 }
               ]
             },
@@ -3170,8 +3140,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 54500091
+                  "date": "2023",
+                  "value": 54133798
                 }
               ]
             },
@@ -3192,8 +3162,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 623831
+                  "date": "2023",
+                  "value": 616177
                 }
               ]
             },
@@ -3223,8 +3193,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 3524788
+                  "date": "2023",
+                  "value": 3481145
                 }
               ]
             },
@@ -3245,8 +3215,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 44278
+                  "date": "2023",
+                  "value": 45143
                 }
               ]
             }
@@ -3258,8 +3228,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 34631766
+                  "date": "2023",
+                  "value": 33635160
                 }
               ]
             },
@@ -3280,8 +3250,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 5169395
+                  "date": "2023",
+                  "value": 5022441
                 }
               ]
             },
@@ -3302,8 +3272,8 @@
               "facet_id": "2458695583",
               "observations": [
                 {
-                  "date": "2023",
-                  "value": 5440
+                  "date": "2019",
+                  "value": 5215
                 }
               ]
             }
@@ -3328,8 +3298,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 1259509
+                  "date": "2023",
+                  "value": 1261041
                 }
               ]
             }
@@ -3341,8 +3311,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 21655286
+                  "date": "2023",
+                  "value": 21104482
                 }
               ]
             },
@@ -3363,8 +3333,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 35557673
+                  "date": "2023",
+                  "value": 35126298
                 }
               ]
             }
@@ -3389,8 +3359,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 3030131
+                  "date": "2023",
+                  "value": 2963095
                 }
               ]
             }
@@ -3402,8 +3372,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 292639
+                  "date": "2023",
+                  "value": 289870
                 }
               ]
             }
@@ -3415,8 +3385,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 27032412
+                  "date": "2023",
+                  "value": 26159867
                 }
               ]
             },
@@ -3425,7 +3395,7 @@
               "observations": [
                 {
                   "date": "2016",
-                  "value": 185990000
+                  "value": 20673000
                 }
               ]
             }
@@ -3437,8 +3407,8 @@
               "facet_id": "2458695583",
               "observations": [
                 {
-                  "date": "2021-08-10",
-                  "value": 1739
+                  "date": "2016",
+                  "value": 1748
                 }
               ]
             }
@@ -3450,8 +3420,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 232679478
+                  "date": "2023",
+                  "value": 227882945
                 }
               ]
             },
@@ -3469,7 +3439,7 @@
               "observations": [
                 {
                   "date": "2016",
-                  "value": 20673000
+                  "value": 185990000
                 }
               ]
             }
@@ -3481,8 +3451,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 6916140
+                  "date": "2023",
+                  "value": 6823613
                 }
               ]
             },
@@ -3516,8 +3486,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 17994237
+                  "date": "2023",
+                  "value": 17877117
                 }
               ]
             },
@@ -3547,8 +3517,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 5572272
+                  "date": "2023",
+                  "value": 5519594
                 }
               ]
             },
@@ -3578,8 +3548,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 29651054
+                  "date": "2023",
+                  "value": 29694614
                 }
               ]
             },
@@ -3600,8 +3570,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 11947
+                  "date": "2023",
+                  "value": 11875
                 }
               ]
             }
@@ -3613,8 +3583,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 5338500
+                  "date": "2023",
+                  "value": 5223100
                 }
               ]
             },
@@ -3622,8 +3592,8 @@
               "facet_id": "1446742247",
               "observations": [
                 {
-                  "date": "2023",
-                  "value": 5308500
+                  "date": "2022",
+                  "value": 5151600
                 }
               ]
             },
@@ -3644,8 +3614,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 5281538
+                  "date": "2023",
+                  "value": 5049269
                 }
               ]
             }
@@ -3657,8 +3627,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 251269164
+                  "date": "2023",
+                  "value": 247504495
                 }
               ]
             }
@@ -3670,8 +3640,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 4515577
+                  "date": "2023",
+                  "value": 4458759
                 }
               ]
             },
@@ -3705,8 +3675,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 34217848
+                  "date": "2023",
+                  "value": 33845617
                 }
               ]
             },
@@ -3736,8 +3706,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 115843670
+                  "date": "2023",
+                  "value": 114891199
                 }
               ]
             },
@@ -3758,8 +3728,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 17695
+                  "date": "2023",
+                  "value": 17727
                 }
               ]
             }
@@ -3771,8 +3741,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 10576502
+                  "date": "2023",
+                  "value": 10389635
                 }
               ]
             }
@@ -3784,8 +3754,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 36554707
+                  "date": "2023",
+                  "value": 36687353
                 }
               ]
             },
@@ -3824,8 +3794,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 3203295
+                  "date": "2023",
+                  "value": 3205691
                 }
               ]
             },
@@ -3846,8 +3816,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 26498823
+                  "date": "2023",
+                  "value": 26418204
                 }
               ]
             }
@@ -3859,8 +3829,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 10701636
+                  "date": "2023",
+                  "value": 10578174
                 }
               ]
             },
@@ -3890,8 +3860,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 6929153
+                  "date": "2023",
+                  "value": 6844146
                 }
               ]
             }
@@ -3903,8 +3873,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 5289152
+                  "date": "2023",
+                  "value": 5165775
                 }
               ]
             }
@@ -3916,8 +3886,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 281807
+                  "date": "2023",
+                  "value": 281118
                 }
               ]
             }
@@ -3929,8 +3899,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 2857822
+                  "date": "2023",
+                  "value": 2656032
                 }
               ]
             }
@@ -3942,8 +3912,8 @@
               "facet_id": "1456184638",
               "observations": [
                 {
-                  "date": "2025-01",
-                  "value": 896175
+                  "date": "2024-01",
+                  "value": 885700
                 }
               ]
             }
@@ -3955,8 +3925,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 19069340
+                  "date": "2023",
+                  "value": 19059479
                 }
               ]
             },
@@ -3995,8 +3965,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 143533851
+                  "date": "2023",
+                  "value": 143826130
                 }
               ]
             },
@@ -4026,8 +3996,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 14256567
+                  "date": "2023",
+                  "value": 13954471
                 }
               ]
             },
@@ -4075,8 +4045,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 35300280
+                  "date": "2023",
+                  "value": 33264292
                 }
               ]
             }
@@ -4088,8 +4058,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 50448963
+                  "date": "2023",
+                  "value": 50042791
                 }
               ]
             },
@@ -4110,8 +4080,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 18501984
+                  "date": "2023",
+                  "value": 18077573
                 }
               ]
             },
@@ -4132,8 +4102,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 6036860
+                  "date": "2023",
+                  "value": 5917648
                 }
               ]
             },
@@ -4148,19 +4118,6 @@
             }
           ]
         },
-        "country/SGS": {
-          "ordered_facets": [
-            {
-              "facet_id": "2458695583",
-              "observations": [
-                {
-                  "date": "2019",
-                  "value": 35
-                }
-              ]
-            }
-          ]
-        },
         "country/SHN": {
           "ordered_facets": [
             {
@@ -4168,20 +4125,7 @@
               "observations": [
                 {
                   "date": "2016",
-                  "value": 5633
-                }
-              ]
-            }
-          ]
-        },
-        "country/SJM": {
-          "ordered_facets": [
-            {
-              "facet_id": "2458695583",
-              "observations": [
-                {
-                  "date": "2022",
-                  "value": 2905
+                  "value": 4534
                 }
               ]
             }
@@ -4193,8 +4137,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 819198
+                  "date": "2023",
+                  "value": 800005
                 }
               ]
             }
@@ -4206,8 +4150,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 8642022
+                  "date": "2023",
+                  "value": 8460512
                 }
               ]
             },
@@ -4228,8 +4172,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 6338193
+                  "date": "2023",
+                  "value": 6309624
                 }
               ]
             },
@@ -4250,8 +4194,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 33977
+                  "date": "2023",
+                  "value": 33860
                 }
               ]
             }
@@ -4263,8 +4207,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 19009151
+                  "date": "2023",
+                  "value": 18358615
                 }
               ]
             }
@@ -4276,8 +4220,8 @@
               "facet_id": "2458695583",
               "observations": [
                 {
-                  "date": "2019",
-                  "value": 5974
+                  "date": "2013",
+                  "value": 6057
                 }
               ]
             }
@@ -4289,8 +4233,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 6587202
+                  "date": "2023",
+                  "value": 6623183
                 }
               ]
             },
@@ -4311,8 +4255,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 11943408
+                  "date": "2023",
+                  "value": 11483374
                 }
               ]
             },
@@ -4333,8 +4277,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 235536
+                  "date": "2023",
+                  "value": 230871
                 }
               ]
             }
@@ -4346,8 +4290,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 634431
+                  "date": "2023",
+                  "value": 628886
                 }
               ]
             }
@@ -4359,8 +4303,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 5422069
+                  "date": "2023",
+                  "value": 5426740
                 }
               ]
             },
@@ -4399,8 +4343,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 2126324
+                  "date": "2023",
+                  "value": 2120461
                 }
               ]
             },
@@ -4439,8 +4383,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 10569709
+                  "date": "2023",
+                  "value": 10536632
                 }
               ]
             },
@@ -4479,8 +4423,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 1242822
+                  "date": "2023",
+                  "value": 1230506
                 }
               ]
             }
@@ -4492,8 +4436,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 43350
+                  "date": "2023",
+                  "value": 42749
                 }
               ]
             }
@@ -4505,8 +4449,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 121354
+                  "date": "2023",
+                  "value": 119773
                 }
               ]
             }
@@ -4518,8 +4462,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 24672760
+                  "date": "2023",
+                  "value": 23594623
                 }
               ]
             },
@@ -4540,8 +4484,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 46535
+                  "date": "2023",
+                  "value": 46198
                 }
               ]
             }
@@ -4553,8 +4497,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 20299123
+                  "date": "2023",
+                  "value": 19319064
                 }
               ]
             }
@@ -4566,8 +4510,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 9515236
+                  "date": "2023",
+                  "value": 9304337
                 }
               ]
             },
@@ -4588,8 +4532,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 71668011
+                  "date": "2023",
+                  "value": 71702435
                 }
               ]
             },
@@ -4610,8 +4554,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 10590927
+                  "date": "2023",
+                  "value": 10389799
                 }
               ]
             },
@@ -4645,8 +4589,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 7494498
+                  "date": "2023",
+                  "value": 7364438
                 }
               ]
             }
@@ -4658,8 +4602,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 1400638
+                  "date": "2023",
+                  "value": 1384286
                 }
               ]
             },
@@ -4680,8 +4624,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 104175
+                  "date": "2023",
+                  "value": 104597
                 }
               ]
             }
@@ -4693,8 +4637,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 1368333
+                  "date": "2023",
+                  "value": 1367510
                 }
               ]
             },
@@ -4715,8 +4659,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 12277109
+                  "date": "2023",
+                  "value": 12200431
                 }
               ]
             },
@@ -4746,8 +4690,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 85518661
+                  "date": "2023",
+                  "value": 85325965
                 }
               ]
             },
@@ -4786,8 +4730,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 9646
+                  "date": "2023",
+                  "value": 9816
                 }
               ]
             }
@@ -4796,11 +4740,11 @@
         "country/TWN": {
           "ordered_facets": [
             {
-              "facet_id": "1456184638",
+              "facet_id": "2458695583",
               "observations": [
                 {
-                  "date": "2025-01",
-                  "value": 23396049
+                  "date": "2019-08",
+                  "value": 23593794
                 }
               ]
             }
@@ -4812,8 +4756,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 68560157
+                  "date": "2023",
+                  "value": 66617606
                 }
               ]
             },
@@ -4834,8 +4778,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 50015092
+                  "date": "2023",
+                  "value": 48656601
                 }
               ]
             },
@@ -4856,8 +4800,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 37860221
+                  "date": "2023",
+                  "value": 37732836
                 }
               ]
             }
@@ -4882,8 +4826,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 3386588
+                  "date": "2023",
+                  "value": 3388081
                 }
               ]
             },
@@ -4940,8 +4884,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 340110988
+                  "date": "2023",
+                  "value": 334914895
                 }
               ]
             },
@@ -4985,8 +4929,8 @@
               "facet_id": "217147238",
               "observations": [
                 {
-                  "date": "2023",
-                  "value": 332387540
+                  "date": "2021",
+                  "value": 329725481
                 }
               ]
             },
@@ -4994,8 +4938,8 @@
               "facet_id": "1964317807",
               "observations": [
                 {
-                  "date": "2023",
-                  "value": 332387540
+                  "date": "2021",
+                  "value": 329725481
                 }
               ]
             },
@@ -5005,15 +4949,6 @@
                 {
                   "date": "2019",
                   "value": 328239523
-                }
-              ]
-            },
-            {
-              "facet_id": "2390551605",
-              "observations": [
-                {
-                  "date": "2024",
-                  "value": 340110988
                 }
               ]
             },
@@ -5034,8 +4969,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 36361859
+                  "date": "2023",
+                  "value": 35652307
                 }
               ]
             },
@@ -5056,8 +4991,8 @@
               "facet_id": "1456184638",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 882
+                  "date": "2023-06-26",
+                  "value": 764
                 }
               ]
             }
@@ -5069,8 +5004,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 100616
+                  "date": "2023",
+                  "value": 101323
                 }
               ]
             }
@@ -5082,8 +5017,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 28405543
+                  "date": "2023",
+                  "value": 28300854
                 }
               ]
             },
@@ -5104,8 +5039,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 39471
+                  "date": "2023",
+                  "value": 38985
                 }
               ]
             }
@@ -5117,8 +5052,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 104377
+                  "date": "2023",
+                  "value": 104917
                 }
               ]
             }
@@ -5130,8 +5065,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 100987686
+                  "date": "2023",
+                  "value": 100352192
                 }
               ]
             },
@@ -5161,8 +5096,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 327777
+                  "date": "2023",
+                  "value": 320409
                 }
               ]
             }
@@ -5174,8 +5109,8 @@
               "facet_id": "2458695583",
               "observations": [
                 {
-                  "date": "2018",
-                  "value": 11558
+                  "date": "2013",
+                  "value": 12197
                 }
               ]
             }
@@ -5187,8 +5122,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 218019
+                  "date": "2023",
+                  "value": 216663
                 }
               ]
             }
@@ -5201,7 +5136,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 1585566
+                  "value": 1586659
                 }
               ]
             }
@@ -5213,8 +5148,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 40583164
+                  "date": "2023",
+                  "value": 39390799
                 }
               ]
             },
@@ -5248,8 +5183,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 64007187
+                  "date": "2023",
+                  "value": 63212384
                 }
               ]
             },
@@ -5288,8 +5223,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 21314956
+                  "date": "2023",
+                  "value": 20723965
                 }
               ]
             },
@@ -5310,8 +5245,8 @@
               "facet_id": "3981252704",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 16634373
+                  "date": "2023",
+                  "value": 16340822
                 }
               ]
             },
@@ -5419,7 +5354,7 @@
     },
     "217147238": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2023.S2603",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "2176550201": {
@@ -5431,12 +5366,6 @@
     "2309233061": {
       "import_name": "EthiopiaStatistics",
       "provenance_url": "https://ethiopia.opendataforafrica.org/data/#menu=topic"
-    },
-    "2390551605": {
-      "import_name": "USCensusPEP_AgeSexRaceHispanicOrigin",
-      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
-      "measurement_method": "CensusPEPSurvey_Race2000Onwards",
-      "observation_period": "P1Y"
     },
     "2458695583": {
       "import_name": "WikidataPopulation",
@@ -5482,6 +5411,10 @@
       "import_name": "Rwanda_Census",
       "provenance_url": "https://rwanda.opendataforafrica.org/",
       "observation_period": "Annual"
+    },
+    "3251078590": {
+      "import_name": "MexicoCensus_AA2",
+      "provenance_url": "https://data.humdata.org/dataset/cod-ps-mex"
     },
     "3614729857": {
       "import_name": "MexicoCensus",
