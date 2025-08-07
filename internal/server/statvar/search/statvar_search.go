@@ -31,6 +31,40 @@ const (
 	maxResult      = 1000
 )
 
+// FilterStatVarsByEntity implements API for Mixer.FilterStatVarsByEntity.
+func FilterStatVarsByEntity(
+	ctx context.Context,
+	in *pb.FilterStatVarsByEntityRequest,
+	store *store.Store,
+	cachedata *cache.Cache,
+) (*pb.FilterStatVarsByEntityResponse, error) {
+	svList := in.GetStatVars()
+	entities := in.GetEntities()
+
+	if len(entities) == 0 {
+		return &pb.FilterStatVarsByEntityResponse{
+			StatVars: svList,
+		}, nil
+	}
+
+	ids := []string{}
+	if len(svList) > maxFilteredIds {
+		svList = svList[0:maxFilteredIds]
+	}
+	for _, item := range svList {
+		ids = append(ids, item.Dcid)
+	}
+
+	statVarCount, err := count.Count(ctx, store, cachedata, ids, entities)
+	if err != nil {
+		return nil, err
+	}
+	svList = filter(svList, statVarCount, len(entities))
+	return &pb.FilterStatVarsByEntityResponse{
+		StatVars: svList,
+	}, nil
+}
+
 // SearchStatVar implements API for Mixer.SearchStatVar.
 func SearchStatVar(
 	ctx context.Context,
@@ -56,24 +90,16 @@ func SearchStatVar(
 	searchIndex := cachedata.SvgSearchIndex(ctx)
 	svList, matches := searchTokens(tokens, searchIndex, svOnly)
 
-	// Filter the stat var by places.
 	if len(places) > 0 {
-		// Read from stat existence cache, which can take several seconds when
-		// there are a lot of ids. So pre-prune the ids, as the result will be
-		// filtered anyway.
-		ids := []string{}
-		if len(svList) > maxFilteredIds {
-			svList = svList[0:maxFilteredIds]
+		filteredSvRequest := &pb.FilterStatVarsByEntityRequest{
+			StatVars: svList,
+			Entities: places,
 		}
-		for _, item := range svList {
-			ids = append(ids, item.Dcid)
-		}
-
-		statVarCount, err := count.Count(ctx, store, cachedata, ids, places)
+		filteredSvResponse, err := FilterStatVarsByEntity(ctx, filteredSvRequest, store, cachedata)
 		if err != nil {
 			return nil, err
 		}
-		svList = filter(svList, statVarCount, len(places))
+		svList = filteredSvResponse.StatVars
 	}
 	// TODO(shifucun): return the total number of result for client to consume.
 	if len(svList) > maxResult {
