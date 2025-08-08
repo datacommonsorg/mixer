@@ -57,6 +57,8 @@ message PlaceVariableFacet {
   string latest_date = 3;
   // Earliest observation date.
   string earliest_date = 4;
+  // Id of the facet.
+  string facet_id = 5;
 }
 
 message PlaceVariableFacets {

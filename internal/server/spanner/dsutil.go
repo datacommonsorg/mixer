@@ -17,6 +17,8 @@
 package spanner
 
 import (
+	"crypto/sha256"
+	"encoding/base64"
 	"fmt"
 	"log"
 	"sort"
@@ -190,18 +192,21 @@ func nodeEdgesToLinkedGraph(edges []*Edge) (*pbv2.LinkedGraph, error) {
 		node := &pb.EntityInfo{
 			Name:         edge.Name,
 			Types:        edge.Types,
-			Dcid:         edge.ObjectID,
 			ProvenanceId: edge.Provenance,
-			Value:        edge.ObjectValue,
 		}
 
-		// Use object_bytes if set.
-		if edge.ObjectBytes != nil {
-			bytes, err := util.Unzip(edge.ObjectBytes)
-			if err != nil {
-				return nil, err
+		if len(edge.Types) == 0 { // Value
+			if edge.Bytes != nil { // Use bytes if set.
+				bytes, err := util.Unzip(edge.Bytes)
+				if err != nil {
+					return nil, err
+				}
+				node.Value = string(bytes)
+			} else {
+				node.Value = edge.Value
 			}
-			node.Value = string(bytes)
+		} else { // Reference
+			node.Dcid = edge.Value
 		}
 
 		nodes.Nodes = append(nodes.Nodes, node)
@@ -498,16 +503,15 @@ func observationsToOrderedFacets(
 		}
 
 		placeVariableFacets = append(placeVariableFacets, pvf)
-		facetIdToFacetObs[facetObs.FacetId] = facetObs
-		facets[facetObs.FacetId] = pvf.Facet
+		facetIdToFacetObs[obs.FacetId] = facetObs
+		facets[obs.FacetId] = pvf.Facet
 	}
 
 	// Rank FacetObservations.
 	orderedFacets := []*pbv2.FacetObservation{}
 	sort.Sort(ranking.FacetByRank(placeVariableFacets))
 	for _, pvf := range placeVariableFacets {
-		facetId := util.GetFacetID(pvf.Facet)
-		orderedFacets = append(orderedFacets, facetIdToFacetObs[facetId])
+		orderedFacets = append(orderedFacets, facetIdToFacetObs[pvf.FacetId])
 	}
 
 	return orderedFacets, facets
@@ -542,7 +546,7 @@ func observationToFacetObservation(
 	}
 
 	facetObservation := &pbv2.FacetObservation{
-		FacetId:      util.GetFacetID(facet),
+		FacetId:      observation.FacetId,
 		ObsCount:     *proto.Int32(int32(len(observations))),
 		EarliestDate: observations[0].Date,
 		LatestDate:   observations[len(observations)-1].Date,
@@ -554,6 +558,7 @@ func observationToFacetObservation(
 
 	placeVariableFacet := &pb.PlaceVariableFacet{
 		Facet:        facet,
+		FacetId:      observation.FacetId,
 		ObsCount:     facetObservation.ObsCount,
 		EarliestDate: facetObservation.EarliestDate,
 		LatestDate:   facetObservation.LatestDate,
@@ -570,6 +575,7 @@ func observationToFacet(observation *Observation) *pb.Facet {
 		ObservationPeriod: observation.ObservationPeriod,
 		ScalingFactor:     observation.ScalingFactor,
 		Unit:              observation.Unit,
+		IsDcAggregate:     observation.IsDcAggregate,
 	}
 	return &facet
 }
@@ -602,9 +608,11 @@ func searchNodeToNodeSearchResult(node *SearchNode) *pbv2.NodeSearchResult {
 			Name:  node.Name,
 			Types: node.Types,
 		},
-		Match: &pb.PropertyValue{
-			Property: node.MatchedPredicate,
-			Value:    node.MatchedObjectValue,
-		},
 	}
+}
+
+func generateValueHash(input string) string {
+	data := []byte(input)
+	hash := sha256.Sum256(data)
+	return base64.StdEncoding.EncodeToString(hash[:])
 }

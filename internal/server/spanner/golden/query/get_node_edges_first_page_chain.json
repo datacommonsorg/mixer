@@ -3,10 +3,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/UN_SUB_THEME_13",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/UN_SUB_THEME_13",
+      "Bytes": null,
       "Name": "Poverty",
       "Types": [
         "StatVarGroup"
@@ -15,10 +14,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/UN_SUB_THEME_14",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/UN_SUB_THEME_14",
+      "Bytes": null,
       "Name": "Inequality and social protection",
       "Types": [
         "StatVarGroup"
@@ -27,10 +25,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/UN_SUB_THEME_15",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/UN_SUB_THEME_15",
+      "Bytes": null,
       "Name": "Food insecurity",
       "Types": [
         "StatVarGroup"
@@ -39,10 +36,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/UN_SUB_THEME_16",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/UN_SUB_THEME_16",
+      "Bytes": null,
       "Name": "Nutrition",
       "Types": [
         "StatVarGroup"
@@ -51,10 +47,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/UN_SUB_THEME_17",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/UN_SUB_THEME_17",
+      "Bytes": null,
       "Name": "Sustainable food and agriculture",
       "Types": [
         "StatVarGroup"
@@ -63,10 +58,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/UN_SUB_THEME_18",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/UN_SUB_THEME_18",
+      "Bytes": null,
       "Name": "Child and youth health",
       "Types": [
         "StatVarGroup"
@@ -75,10 +69,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/UN_SUB_THEME_19",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/UN_SUB_THEME_19",
+      "Bytes": null,
       "Name": "Environmental and other health risks",
       "Types": [
         "StatVarGroup"
@@ -87,10 +80,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/UN_SUB_THEME_20",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/UN_SUB_THEME_20",
+      "Bytes": null,
       "Name": "Health systems, policies and financing",
       "Types": [
         "StatVarGroup"
@@ -99,10 +91,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/UN_SUB_THEME_21",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/UN_SUB_THEME_21",
+      "Bytes": null,
       "Name": "Infectious diseases",
       "Types": [
         "StatVarGroup"
@@ -111,10 +102,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/UN_SUB_THEME_22",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/UN_SUB_THEME_22",
+      "Bytes": null,
       "Name": "Non-communicable diseases",
       "Types": [
         "StatVarGroup"
@@ -123,10 +113,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/UN_SUB_THEME_23",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/UN_SUB_THEME_23",
+      "Bytes": null,
       "Name": "Mental health",
       "Types": [
         "StatVarGroup"
@@ -135,10 +124,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/UN_SUB_THEME_24",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/UN_SUB_THEME_24",
+      "Bytes": null,
       "Name": "Reproductive and maternal health",
       "Types": [
         "StatVarGroup"
@@ -147,10 +135,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/UN_SUB_THEME_25",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/UN_SUB_THEME_25",
+      "Bytes": null,
       "Name": "Child protection",
       "Types": [
         "StatVarGroup"
@@ -159,10 +146,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/UN_SUB_THEME_26",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/UN_SUB_THEME_26",
+      "Bytes": null,
       "Name": "Basic education",
       "Types": [
         "StatVarGroup"
@@ -171,10 +157,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/UN_SUB_THEME_27",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/UN_SUB_THEME_27",
+      "Bytes": null,
       "Name": "Technical and vocational education and training",
       "Types": [
         "StatVarGroup"
@@ -183,10 +168,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/UN_SUB_THEME_28",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/UN_SUB_THEME_28",
+      "Bytes": null,
       "Name": "Early childhood development",
       "Types": [
         "StatVarGroup"
@@ -195,10 +179,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/UN_SUB_THEME_29",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/UN_SUB_THEME_29",
+      "Bytes": null,
       "Name": "Children in vulnerable situations",
       "Types": [
         "StatVarGroup"
@@ -207,10 +190,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/UN_SUB_THEME_30",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/UN_SUB_THEME_30",
+      "Bytes": null,
       "Name": "Early childhood education",
       "Types": [
         "StatVarGroup"
@@ -219,10 +201,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/UN_SUB_THEME_31",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/UN_SUB_THEME_31",
+      "Bytes": null,
       "Name": "Higher education",
       "Types": [
         "StatVarGroup"
@@ -231,10 +212,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/UN_SUB_THEME_32",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/UN_SUB_THEME_32",
+      "Bytes": null,
       "Name": "Adult literacy",
       "Types": [
         "StatVarGroup"

@@ -3,10 +3,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE061",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE061",
+      "Bytes": null,
       "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Malignant Neoplasms",
       "Types": [
         "StatVarGroup"
@@ -15,10 +14,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE061_whosex",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE061_whosex",
+      "Bytes": null,
       "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Malignant Neoplasms, Who_sex",
       "Types": [
         "StatVarGroup"
@@ -27,10 +25,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE062",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE062",
+      "Bytes": null,
       "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Mouth And Oropharynx Cancers",
       "Types": [
         "StatVarGroup"
@@ -39,10 +36,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE062_whosex",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE062_whosex",
+      "Bytes": null,
       "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Mouth And Oropharynx Cancers, Who_sex",
       "Types": [
         "StatVarGroup"
@@ -51,10 +47,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE063",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE063",
+      "Bytes": null,
       "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Oesophagus Cancer",
       "Types": [
         "StatVarGroup"
@@ -63,10 +58,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE063_whosex",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE063_whosex",
+      "Bytes": null,
       "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Oesophagus Cancer, Who_sex",
       "Types": [
         "StatVarGroup"
@@ -75,10 +69,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE064",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE064",
+      "Bytes": null,
       "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Stomach Cancer",
       "Types": [
         "StatVarGroup"
@@ -87,10 +80,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE064_whosex",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE064_whosex",
+      "Bytes": null,
       "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Stomach Cancer, Who_sex",
       "Types": [
         "StatVarGroup"
@@ -99,10 +91,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE065",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE065",
+      "Bytes": null,
       "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Colon And Rectum Cancers",
       "Types": [
         "StatVarGroup"
@@ -111,10 +102,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE065_whosex",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE065_whosex",
+      "Bytes": null,
       "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Colon And Rectum Cancers, Who_sex",
       "Types": [
         "StatVarGroup"
@@ -123,10 +113,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE066",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE066",
+      "Bytes": null,
       "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Liver Cancer",
       "Types": [
         "StatVarGroup"
@@ -135,10 +124,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE066_whosex",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE066_whosex",
+      "Bytes": null,
       "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Liver Cancer, Who_sex",
       "Types": [
         "StatVarGroup"
@@ -147,10 +135,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE067",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE067",
+      "Bytes": null,
       "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Pancreas Cancer",
       "Types": [
         "StatVarGroup"
@@ -159,10 +146,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE067_whosex",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE067_whosex",
+      "Bytes": null,
       "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Pancreas Cancer, Who_sex",
       "Types": [
         "StatVarGroup"
@@ -171,10 +157,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE068",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE068",
+      "Bytes": null,
       "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Trachea, Bronchus, Lung Cancers",
       "Types": [
         "StatVarGroup"
@@ -183,10 +168,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE068_whosex",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE068_whosex",
+      "Bytes": null,
       "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Trachea, Bronchus, Lung Cancers, Who_sex",
       "Types": [
         "StatVarGroup"
@@ -195,10 +179,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE069",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE069",
+      "Bytes": null,
       "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Melanoma And Other Skin Cancers",
       "Types": [
         "StatVarGroup"
@@ -207,10 +190,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE069_whosex",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE069_whosex",
+      "Bytes": null,
       "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Melanoma And Other Skin Cancers, Who_sex",
       "Types": [
         "StatVarGroup"
@@ -219,10 +201,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE070",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE070",
+      "Bytes": null,
       "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Breast Cancer",
       "Types": [
         "StatVarGroup"
@@ -231,10 +212,9 @@
     {
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE070_whosex",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE070_whosex",
+      "Bytes": null,
       "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Breast Cancer, Who_sex",
       "Types": [
         "StatVarGroup"

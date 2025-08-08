@@ -100,40 +100,65 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 	// Attach property arcs.
 	filterProps := ""
 	if arc.SingleProp != "" && arc.SingleProp != WILDCARD {
-		filterProps = statements.filterProps
+		filterProps = statements.filterPredicate
 		params["props"] = []string{arc.SingleProp}
 	} else if len(arc.BracketProps) > 0 {
-		filterProps = statements.filterProps
+		filterProps = statements.filterPredicate
 		params["props"] = arc.BracketProps
+	}
+
+	// Generate filters.
+	returnEdges := ""
+	i := 0
+	for prop, val := range arc.Filter {
+		params["prop"+strconv.Itoa(i)] = prop
+		objectFilter := ""
+		filterVal := val
+		for _, v := range val {
+			filterVal = append(filterVal, generateValueHash(v))
+		}
+		if len(filterVal) > 0 {
+			objectFilter = fmt.Sprintf(statements.filterValue, i)
+			params["val"+strconv.Itoa(i)] = filterVal
+		}
+		returnEdges += fmt.Sprintf(statements.filterProperty, i, objectFilter)
+		i += 1
+	}
+
+	// Generate return statement.
+	switch arc.Decorator {
+	case CHAIN:
+		if len(returnEdges) > 0 {
+			returnEdges += statements.returnFilterChainedEdges
+		} else {
+			returnEdges = statements.returnChainedEdges
+		}
+	default:
+		if len(returnEdges) > 0 {
+			returnEdges += statements.returnFilterEdges
+		} else {
+			returnEdges = statements.returnEdges
+		}
 	}
 
 	var template string
 	switch arc.Out {
 	case true:
 		if arc.Decorator == CHAIN {
-			template = fmt.Sprintf(statements.getChainedEdgesBySubjectID, MAX_HOPS)
+			template = fmt.Sprintf(statements.getChainedEdgesBySubjectID, MAX_HOPS, returnEdges)
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
 		} else {
-			template = fmt.Sprintf(statements.getEdgesBySubjectID, filterProps)
+			template = fmt.Sprintf(statements.getEdgesBySubjectID, filterProps, returnEdges)
 		}
 	case false:
 		if arc.Decorator == CHAIN {
-			template = fmt.Sprintf(statements.getChainedEdgesByObjectID, MAX_HOPS)
+			template = fmt.Sprintf(statements.getChainedEdgesByObjectID, MAX_HOPS, returnEdges)
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
 		} else {
-			template = fmt.Sprintf(statements.getEdgesByObjectID, filterProps)
+			template = fmt.Sprintf(statements.getEdgesByObjectID, filterProps, returnEdges)
 		}
-	}
-
-	// Attach filters.
-	i := 0
-	for prop, val := range arc.Filter {
-		template += fmt.Sprintf(statements.filterObjects, i)
-		params["prop"+strconv.Itoa(i)] = prop
-		params["val"+strconv.Itoa(i)] = val
-		i += 1
 	}
 
 	// Apply pagination.
@@ -231,69 +256,19 @@ func (sc *SpannerClient) SearchNodes(ctx context.Context, query string, types []
 	}
 
 	var stmt spanner.Statement
-
-	if len(types) == 0 {
-		stmt = spanner.Statement{
-			SQL: statements.searchNodesByQuery,
-			Params: map[string]interface{}{
-				"query": query,
-			},
-		}
-	} else {
-		stmt = spanner.Statement{
-			SQL: statements.searchNodesByQueryAndTypes,
-			Params: map[string]interface{}{
-				"query": query,
-				"types": types,
-			},
-		}
+	params := map[string]interface{}{
+		"query": query,
 	}
 
-	err := sc.queryAndCollect(
-		ctx,
-		stmt,
-		func() interface{} {
-			return &SearchNode{}
-		},
-		func(rowStruct interface{}) {
-			node := rowStruct.(*SearchNode)
-			nodes = append(nodes, node)
-		},
-	)
-	if err != nil {
-		return nodes, err
-	}
-
-	return nodes, nil
-}
-
-// SearchObjectValues searches object values for the specified predicates in the graph based on the query and optionally the types.
-// If the types array is empty, it searches across nodes of all types.
-// A maximum of 100 results are returned.
-func (sc *SpannerClient) SearchObjectValues(ctx context.Context, query string, predicates []string, types []string) ([]*SearchNode, error) {
-	var nodes []*SearchNode
-	if query == "" {
-		return nodes, nil
-	}
-
-	if len(predicates) == 0 {
-		predicates = defaultSearchPredicates
-	}
-
-	stmt := spanner.Statement{
-		SQL: statements.searchObjectValues,
-		Params: map[string]interface{}{
-			"query":      query,
-			"predicates": predicates,
-		},
-	}
-
-	// Interpolate the types filter if provided.
+	filterTypes := ""
 	if len(types) > 0 {
-		stmt.SQL = fmt.Sprintf(stmt.SQL, statements.filterTypes, merger.MAX_SEARCH_RESULTS)
-		stmt.Params["types"] = types
-	} else {
-		stmt.SQL = fmt.Sprintf(stmt.SQL, "", merger.MAX_SEARCH_RESULTS)
+		params["types"] = types
+		filterTypes = statements.filterTypes
+	}
+
+	stmt = spanner.Statement{
+		SQL:    fmt.Sprintf(statements.searchNodesByQuery, filterTypes, merger.MAX_SEARCH_RESULTS),
+		Params: params,
 	}
 
 	err := sc.queryAndCollect(
