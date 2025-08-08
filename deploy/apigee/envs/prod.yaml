@@ -10,6 +10,7 @@ proxies:
       - rewrite-quota-exceeded-message
       - set-southbound-key
       - strip-api-key-header-and-params
+      - block-internal-only-endpoints
     proxy_endpoints:
       - api
     target_endpoints:

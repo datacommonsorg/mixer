@@ -17,25 +17,23 @@ package server
 
 import (
 	"context"
-	"time"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
+	"github.com/datacommonsorg/mixer/internal/server/statvar/search"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	"google.golang.org/protobuf/proto"
 )
 
 // V2Resolve implements API for mixer.V2Resolve.
 func (s *Server) V2Resolve(
 	ctx context.Context, in *pbv2.ResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
-	v2StartTime := time.Now()
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	localRespChan := make(chan *pbv2.ResolveResponse, 1)
 	remoteRespChan := make(chan *pbv2.ResolveResponse, 1)
@@ -69,27 +67,13 @@ func (s *Server) V2Resolve(
 	close(localRespChan)
 	close(remoteRespChan)
 	localResp, remoteResp := <-localRespChan, <-remoteRespChan
-	v2Resp := merger.MergeResolve(localResp, remoteResp)
-	v2Latency := time.Since(v2StartTime)
-
-	s.maybeMirrorV3(
-		ctx,
-		in,
-		v2Resp,
-		v2Latency,
-		func(ctx context.Context, req proto.Message) (proto.Message, error) {
-			return s.V3Resolve(ctx, req.(*pbv2.ResolveRequest))
-		},
-	)
-
-	return v2Resp, nil
+	return merger.MergeResolve(localResp, remoteResp), nil
 }
 
 // V2Node implements API for mixer.V2Node.
 func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 	*pbv2.NodeResponse, error,
 ) {
-	v2StartTime := time.Now()
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	localRespChan := make(chan *pbv2.NodeResponse, 1)
 	remoteRespChan := make(chan *pbv2.NodeResponse, 1)
@@ -180,23 +164,7 @@ func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 	close(remoteRespChan)
 
 	localResp, remoteResp := <-localRespChan, <-remoteRespChan
-	v2Resp, err := merger.MergeNode(localResp, remoteResp)
-	if err != nil {
-		return nil, err
-	}
-	v2Latency := time.Since(v2StartTime)
-
-	s.maybeMirrorV3(
-		ctx,
-		in,
-		v2Resp,
-		v2Latency,
-		func(ctx context.Context, req proto.Message) (proto.Message, error) {
-			return s.V3Node(ctx, req.(*pbv2.NodeRequest))
-		},
-	)
-
-	return v2Resp, nil
+	return merger.MergeNode(localResp, remoteResp)
 }
 
 // V2Event implements API for mixer.V2Event.
@@ -243,7 +211,6 @@ func (s *Server) V2Event(
 func (s *Server) V2Observation(
 	ctx context.Context, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
-	v2StartTime := time.Now()
 	initialResp, err := v2observation.ObservationInternal(
 		ctx,
 		s.store,
@@ -268,20 +235,7 @@ func (s *Server) V2Observation(
 	}
 	// initialResp is preferred over any calculated response.
 	combinedResp := append([]*pbv2.ObservationResponse{initialResp}, calculatedResps...)
-	v2Resp := merger.MergeMultiObservation(combinedResp)
-	v2Latency := time.Since(v2StartTime)
-
-	s.maybeMirrorV3(
-		ctx,
-		in,
-		v2Resp,
-		v2Latency,
-		func(ctx context.Context, req proto.Message) (proto.Message, error) {
-			return s.V3Observation(ctx, req.(*pbv2.ObservationRequest))
-		},
-	)
-
-	return v2Resp, nil
+	return merger.MergeMultiObservation(combinedResp), nil
 }
 
 // V2Sparql implements API for Mixer.V2Sparql.
@@ -292,4 +246,51 @@ func (s *Server) V2Sparql(
 		Sparql: in.Query,
 	}
 	return translator.Query(ctx, legacyRequest, s.metadata, s.store)
+}
+
+// FilterStatVarsByEntity implements API for Mixer.FilterStatVarsByEntity.
+func (s *Server) FilterStatVarsByEntity(
+	ctx context.Context, in *pb.FilterStatVarsByEntityRequest,
+) (*pb.FilterStatVarsByEntityResponse, error) {
+	errGroup, _ := errgroup.WithContext(ctx)
+
+	localResponseChan := make(chan *pb.FilterStatVarsByEntityResponse, 1)
+	remoteResponseChan := make(chan *pb.FilterStatVarsByEntityResponse, 1)
+
+	errGroup.Go(func() error {
+		localResponse, err := search.FilterStatVarsByEntity(ctx, in, s.store, s.cachedata.Load())
+		if err != nil {
+			return err
+		}
+		localResponseChan <- localResponse
+		return nil
+	})
+
+	remoteResponse := &pb.FilterStatVarsByEntityResponse{}
+	if s.metadata.RemoteMixerDomain != "" {
+		errGroup.Go(func() error {
+			if err := util.FetchRemote(
+				s.metadata,
+				s.httpClient,
+				"/v2/variable/filter",
+				in,
+				remoteResponse,
+			); err != nil {
+				return err
+			}
+			remoteResponseChan <- remoteResponse
+			return nil
+		})
+	} else {
+		remoteResponseChan <- nil
+	}
+
+	if err := errGroup.Wait(); err != nil {
+		return nil, err
+	}
+	close(localResponseChan)
+	close(remoteResponseChan)
+
+	merged := merger.MergeFilterStatVarsByEntityResponse(<-localResponseChan, <-remoteResponseChan)
+	return merged, nil
 }
