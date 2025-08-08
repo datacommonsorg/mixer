@@ -21,11 +21,11 @@
               "provenanceId": "dc/base/BaseSchema"
             },
             {
-              "name": "GovernmentIdenitifierEnum",
+              "name": "GovernmentIdentifierEnum",
               "types": [
                 "Class"
               ],
-              "dcid": "GovernmentIdenitifierEnum",
+              "dcid": "GovernmentIdentifierEnum",
               "provenanceId": "dc/base/BaseSchema"
             }
           ]
@@ -42,7 +42,6 @@
             }
           ]
         },
-
         "statType": {
           "nodes": [
             {
@@ -68,7 +67,7 @@
           ]
         }
       }
-    }, 
+    },
     "foo": {}
   }
 }

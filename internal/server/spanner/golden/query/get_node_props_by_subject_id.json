@@ -2,6 +2,10 @@
   "Count_Person": [
     {
       "SubjectID": "Count_Person",
+      "Predicate": "description"
+    },
+    {
+      "SubjectID": "Count_Person",
       "Predicate": "measuredProperty"
     },
     {

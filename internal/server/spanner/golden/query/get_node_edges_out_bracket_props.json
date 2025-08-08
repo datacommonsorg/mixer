@@ -3,10 +3,9 @@
     {
       "SubjectID": "geoId/5129600",
       "Predicate": "containedInPlace",
-      "ObjectID": "geoId/51",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/BaseGeos",
+      "Value": "geoId/51",
+      "Bytes": null,
       "Name": "",
       "Types": [
         "Thing"
@@ -15,22 +14,20 @@
     {
       "SubjectID": "geoId/5129600",
       "Predicate": "containedInPlace",
-      "ObjectID": "geoId/51620",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/BaseGeos",
-      "Name": "Franklin",
+      "Value": "geoId/51620",
+      "Bytes": null,
+      "Name": "",
       "Types": [
-        "County"
+        "Thing"
       ]
     },
     {
       "SubjectID": "geoId/5129600",
       "Predicate": "containedInPlace",
-      "ObjectID": "zip/23851",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/BaseGeos",
+      "Value": "zip/23851",
+      "Bytes": null,
       "Name": "23851",
       "Types": [
         "CensusZipCodeTabulationArea"
@@ -39,10 +36,9 @@
     {
       "SubjectID": "geoId/5129600",
       "Predicate": "geoJsonCoordinatesDP3",
-      "ObjectID": "",
-      "ObjectValue": "",
-      "ObjectBytes": "H4sIAAAAAAAA/6tWKqksSFWyUlAKyM+pTM/PU9JRUErOzy9KycxLLEktBspER0frmpvpWZpZGFvqKBib6ZkbGJhaxOooQIQNQTywuJmJuaGJGVwCTX1sbC0AlFmvdW0AAAA=",
       "Provenance": "dc/base/BaseGeos",
+      "Value": "",
+      "Bytes": "H4sIAAAAAAAA/6tWKqksSFWyUlAKyM+pTM/PU9JRUErOzy9KycxLLEktBspER0frmpvpWZpZGFvqKBib6ZkbGJhaxOooQIQNQTywuJmJuaGJGVwCTX1sbC0AlFmvdW0AAAA=",
       "Name": "",
       "Types": []
     }

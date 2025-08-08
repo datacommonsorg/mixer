@@ -3,10 +3,9 @@
     {
       "SubjectID": "dc/g/Farm_FarmInventoryStatus",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/Farm_FarmInventoryStatus-InventorySold",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/Farm_FarmInventoryStatus-InventorySold",
+      "Bytes": null,
       "Name": "Farm With Farm Inventory Status = Inventory Sold",
       "Types": [
         "StatVarGroup"
@@ -15,10 +14,9 @@
     {
       "SubjectID": "dc/g/Farm_FarmInventoryStatus",
       "Predicate": "specializationOf+",
-      "ObjectID": "dc/g/Farm_FarmInventoryStatus-InventorySold_FarmInventoryType",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "",
+      "Value": "dc/g/Farm_FarmInventoryStatus-InventorySold_FarmInventoryType",
+      "Bytes": null,
       "Name": "Farm With Farm Inventory Status = Inventory Sold, Farm Inventory Type",
       "Types": [
         "StatVarGroup"

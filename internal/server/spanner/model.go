@@ -30,28 +30,29 @@ type Property struct {
 	Predicate string `spanner:"predicate"`
 }
 
-// Edge struct represents a single row in the Edge table, supplemented with the object name and types.
+// Edge struct represents a single row in the Edge table with object Node metadata.
 type Edge struct {
-	SubjectID   string   `spanner:"subject_id"`
-	Predicate   string   `spanner:"predicate"`
-	ObjectID    string   `spanner:"object_id"`
-	ObjectValue string   `spanner:"object_value"`
-	ObjectBytes []byte   `spanner:"object_bytes"`
-	Provenance  string   `spanner:"provenance"`
-	Name        string   `spanner:"name"`
-	Types       []string `spanner:"types"`
+	SubjectID  string   `spanner:"subject_id"`
+	Predicate  string   `spanner:"predicate"`
+	Provenance string   `spanner:"provenance"`
+	Value      string   `spanner:"value"`
+	Bytes      []byte   `spanner:"bytes"`
+	Name       string   `spanner:"name"`
+	Types      []string `spanner:"types"`
 }
 
 // Observation struct represents a single row in the Observation table.
 type Observation struct {
 	VariableMeasured  string     `spanner:"variable_measured"`
 	ObservationAbout  string     `spanner:"observation_about"`
+	FacetId           string     `spanner:"facet_id"`
 	Observations      TimeSeries `spanner:"observations"`
 	ImportName        string     `spanner:"import_name"`
 	ObservationPeriod string     `spanner:"observation_period"`
 	MeasurementMethod string     `spanner:"measurement_method"`
 	Unit              string     `spanner:"unit"`
 	ScalingFactor     string     `spanner:"scaling_factor"`
+	IsDcAggregate     bool       `spanner:"is_dc_aggregate"`
 	ProvenanceURL     string     `spanner:"provenance_url"`
 }
 

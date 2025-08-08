@@ -2,6 +2,7 @@
   {
     "VariableMeasured": "AirPollutant_Cancer_Risk",
     "ObservationAbout": "geoId/01001",
+    "FacetId": "1118384277",
     "Observations": [
       {
         "Date": "2016",
@@ -41,11 +42,13 @@
     "MeasurementMethod": "",
     "Unit": "PerMillionPerson",
     "ScalingFactor": "",
+    "IsDcAggregate": false,
     "ProvenanceURL": "https://gaftp.epa.gov/EJSCREEN/"
   },
   {
     "VariableMeasured": "AirPollutant_Cancer_Risk",
     "ObservationAbout": "geoId/02013",
+    "FacetId": "1118384277",
     "Observations": [
       {
         "Date": "2016",
@@ -85,6 +88,7 @@
     "MeasurementMethod": "",
     "Unit": "PerMillionPerson",
     "ScalingFactor": "",
+    "IsDcAggregate": false,
     "ProvenanceURL": "https://gaftp.epa.gov/EJSCREEN/"
   }
 ]

@@ -5,7 +5,7 @@
         "": {
           "ordered_facets": [
             {
-              "facet_id": "3037499515",
+              "facet_id": "614118256",
               "obs_count": 3,
               "earliest_date": "2017",
               "latest_date": "2017"
@@ -21,7 +21,7 @@
     }
   },
   "facets": {
-    "3037499515": {
+    "614118256": {
       "import_name": "USDA_AgricultureCensus",
       "provenance_url": "https://www.nass.usda.gov/AgCensus/",
       "observation_period": "P5Y"

@@ -2,12 +2,12 @@
   "data": {
     "Count_Person": {
       "properties": [
-        "extendedName",
-        "localCuratorLevelId",
-        "measuredProp",
+        "description",
+        "measuredProperty",
         "memberOf",
         "name",
         "populationType",
+        "provenance",
         "statType",
         "typeOf"
       ]
@@ -15,9 +15,8 @@
     "Person": {
       "properties": [
         "equivalentClass",
-        "extendedName",
-        "localCuratorLevelId",
         "name",
+        "provenance",
         "source",
         "subClassOf",
         "typeOf"

@@ -3,11 +3,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "Amount_Debt_JPY_LenderCountryBEN_AsAFractionOf_Amount_Debt_LenderCountryBEN",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Amount of Debt: JPY, Country/BEN (As Fraction of Amount Debt Lender Country BEN)",
+      "Value": "Amount_Debt_JPY_LenderArabFundforTechAssisttoAfricanCountries_AsAFractionOf_Amount_Debt_LenderArabFundforTechAssisttoAfricanCountries",
+      "Bytes": null,
+      "Name": "Amount of Debt: JPY, Arab_Fund_for_Tech_Assist_to_African_Countries (As Fraction of Amount Debt Lender Arab Fundfor Tech Assistto African Countries)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -15,11 +14,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "Amount_Debt_JPY_LenderCountryBFA_AsAFractionOf_Amount_Debt_LenderCountryBFA",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Amount of Debt: JPY, Country/BFA (As Fraction of Amount Debt Lender Country BFA)",
+      "Value": "Amount_Debt_JPY_LenderArabLeague_AsAFractionOf_Amount_Debt_LenderArabLeague",
+      "Bytes": null,
+      "Name": "Amount of Debt: JPY, Arab_League (As Fraction of Amount Debt Lender Arab League)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -27,11 +25,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "Amount_Debt_JPY_LenderCountryBGD_AsAFractionOf_Amount_Debt_LenderCountryBGD",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Amount of Debt: JPY, Country/BGD (As Fraction of Amount Debt Lender Country BGD)",
+      "Value": "Amount_Debt_JPY_LenderArabMonetaryFund_AsAFractionOf_Amount_Debt_LenderArabMonetaryFund",
+      "Bytes": null,
+      "Name": "Amount of Debt: JPY, Arab_Monetary_Fund (As Fraction of Amount Debt Lender Arab Monetary Fund)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -39,11 +36,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "Amount_Debt_JPY_LenderCountryBGR_AsAFractionOf_Amount_Debt_LenderCountryBGR",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Amount of Debt: JPY, Country/BGR (As Fraction of Amount Debt Lender Country BGR)",
+      "Value": "Amount_Debt_JPY_LenderArabTownsOrganization_AsAFractionOf_Amount_Debt_LenderArabTownsOrganization",
+      "Bytes": null,
+      "Name": "Amount of Debt: JPY, Arab_Towns_Organization (As Fraction of Amount Debt Lender Arab Towns Organization)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -51,11 +47,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "Amount_Debt_JPY_LenderCountryBHR_AsAFractionOf_Amount_Debt_LenderCountryBHR",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Amount of Debt: JPY, Country/BHR (As Fraction of Amount Debt Lender Country BHR)",
+      "Value": "Amount_Debt_JPY_LenderAsianDevBank_AsAFractionOf_Amount_Debt_LenderAsianDevBank",
+      "Bytes": null,
+      "Name": "Amount of Debt: JPY, Asian_Dev_Bank (As Fraction of Amount Debt Lender Asian Dev Bank)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -63,11 +58,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "Amount_Debt_JPY_LenderCountryBHS_AsAFractionOf_Amount_Debt_LenderCountryBHS",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Amount of Debt: JPY, Country/BHS (As Fraction of Amount Debt Lender Country BHS)",
+      "Value": "Amount_Debt_JPY_LenderAsianInfrastructureInvestmentBank_AsAFractionOf_Amount_Debt_LenderAsianInfrastructureInvestmentBank",
+      "Bytes": null,
+      "Name": "Amount of Debt: JPY, Asian_Infrastructure_Investment_Bank (As Fraction of Amount Debt Lender Asian Infrastructure Investment Bank)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -75,11 +69,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "Amount_Debt_JPY_LenderCountryBIH_AsAFractionOf_Amount_Debt_LenderCountryBIH",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Amount of Debt: JPY, Country/BIH (As Fraction of Amount Debt Lender Country BIH)",
+      "Value": "Amount_Debt_JPY_LenderBankforInternationalSettlements_AsAFractionOf_Amount_Debt_LenderBankforInternationalSettlements",
+      "Bytes": null,
+      "Name": "Amount of Debt: JPY, Bank_for_International_Settlements (As Fraction of Amount Debt Lender Bankfor International Settlements)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -87,11 +80,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "Amount_Debt_JPY_LenderCountryBLR_AsAFractionOf_Amount_Debt_LenderCountryBLR",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Amount of Debt: JPY, Country/BLR (As Fraction of Amount Debt Lender Country BLR)",
+      "Value": "Amount_Debt_JPY_LenderBolivarianAlliancefortheAmericas_AsAFractionOf_Amount_Debt_LenderBolivarianAlliancefortheAmericas",
+      "Bytes": null,
+      "Name": "Amount of Debt: JPY, Bolivarian_Alliance_for_the_Americas (As Fraction of Amount Debt Lender Bolivarian Allianceforthe Americas)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -99,11 +91,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "Amount_Debt_JPY_LenderCountryBLZ_AsAFractionOf_Amount_Debt_LenderCountryBLZ",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Amount of Debt: JPY, Country/BLZ (As Fraction of Amount Debt Lender Country BLZ)",
+      "Value": "Amount_Debt_JPY_LenderBondholders_AsAFractionOf_Amount_Debt_LenderBondholders",
+      "Bytes": null,
+      "Name": "Amount of Debt: JPY, Bondholders (As Fraction of Amount Debt Lender Bondholders)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -111,11 +102,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "Amount_Debt_JPY_LenderCountryBMU_AsAFractionOf_Amount_Debt_LenderCountryBMU",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Amount of Debt: JPY, Country/BMU (As Fraction of Amount Debt Lender Country BMU)",
+      "Value": "Amount_Debt_JPY_LenderCaribbeanCommunity_AsAFractionOf_Amount_Debt_LenderCaribbeanCommunity",
+      "Bytes": null,
+      "Name": "Amount of Debt: JPY, Caribbean_Community (As Fraction of Amount Debt Lender Caribbean Community)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -123,11 +113,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "Amount_Debt_JPY_LenderCountryBOL_AsAFractionOf_Amount_Debt_LenderCountryBOL",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Amount of Debt: JPY, Country/BOL (As Fraction of Amount Debt Lender Country BOL)",
+      "Value": "Amount_Debt_JPY_LenderCaribbeanDevBank_AsAFractionOf_Amount_Debt_LenderCaribbeanDevBank",
+      "Bytes": null,
+      "Name": "Amount of Debt: JPY, Caribbean_Dev_Bank (As Fraction of Amount Debt Lender Caribbean Dev Bank)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -135,11 +124,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "Amount_Debt_JPY_LenderCountryBRA_AsAFractionOf_Amount_Debt_LenderCountryBRA",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Amount of Debt: JPY, Country/BRA (As Fraction of Amount Debt Lender Country BRA)",
+      "Value": "Amount_Debt_JPY_LenderCentralAmericanBankforEconInteg_AsAFractionOf_Amount_Debt_LenderCentralAmericanBankforEconInteg",
+      "Bytes": null,
+      "Name": "Amount of Debt: JPY, Central_American_Bank_for_Econ_Integ (As Fraction of Amount Debt Lender Central American Bankfor Econ Integ)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -147,11 +135,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "Amount_Debt_JPY_LenderCountryBRB_AsAFractionOf_Amount_Debt_LenderCountryBRB",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Amount of Debt: JPY, Country/BRB (As Fraction of Amount Debt Lender Country BRB)",
+      "Value": "Amount_Debt_JPY_LenderCentralAmericanBankforEconIntegration_AsAFractionOf_Amount_Debt_LenderCentralAmericanBankforEconIntegration",
+      "Bytes": null,
+      "Name": "Amount of Debt: JPY, Central_American_Bank_for_Econ_Integration (As Fraction of Amount Debt Lender Central American Bankfor Econ Integration)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -159,11 +146,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "Amount_Debt_JPY_LenderCountryBRN_AsAFractionOf_Amount_Debt_LenderCountryBRN",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Amount of Debt: JPY, Country/BRN (As Fraction of Amount Debt Lender Country BRN)",
+      "Value": "Amount_Debt_JPY_LenderCentralBankofWestAfricanStates_AsAFractionOf_Amount_Debt_LenderCentralBankofWestAfricanStates",
+      "Bytes": null,
+      "Name": "Amount of Debt: JPY, Central_Bank_of_West_African_States (As Fraction of Amount Debt Lender Central Bankof West African States)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -171,11 +157,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "Amount_Debt_JPY_LenderCountryCAN_AsAFractionOf_Amount_Debt_LenderCountryCAN",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Amount of Debt: JPY, Country/CAN (As Fraction of Amount Debt Lender Country CAN)",
+      "Value": "Amount_Debt_JPY_LenderCorporacionAndinadeFomento_AsAFractionOf_Amount_Debt_LenderCorporacionAndinadeFomento",
+      "Bytes": null,
+      "Name": "Amount of Debt: JPY, Corporacion_Andina_de_Fomento (As Fraction of Amount Debt Lender Corporacion Andinade Fomento)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -183,11 +168,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "Amount_Debt_JPY_LenderCountryCHE_AsAFractionOf_Amount_Debt_LenderCountryCHE",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Amount of Debt: JPY, Country/CHE (As Fraction of Amount Debt Lender Country CHE)",
+      "Value": "Amount_Debt_JPY_LenderCouncilofEurope_AsAFractionOf_Amount_Debt_LenderCouncilofEurope",
+      "Bytes": null,
+      "Name": "Amount of Debt: JPY, Council_of_Europe (As Fraction of Amount Debt Lender Councilof Europe)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -195,11 +179,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "Amount_Debt_JPY_LenderCountryCHL_AsAFractionOf_Amount_Debt_LenderCountryCHL",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Amount of Debt: JPY, Country/CHL (As Fraction of Amount Debt Lender Country CHL)",
+      "Value": "Amount_Debt_JPY_LenderCountryAFG_AsAFractionOf_Amount_Debt_LenderCountryAFG",
+      "Bytes": null,
+      "Name": "Amount of Debt: JPY, Country/AFG (As Fraction of Amount Debt Lender Country AFG)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -207,11 +190,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "Amount_Debt_JPY_LenderCountryCHN_AsAFractionOf_Amount_Debt_LenderCountryCHN",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Amount of Debt: JPY, Country/CHN (As Fraction of Amount Debt Lender Country CHN)",
+      "Value": "Amount_Debt_JPY_LenderCountryAGO_AsAFractionOf_Amount_Debt_LenderCountryAGO",
+      "Bytes": null,
+      "Name": "Amount of Debt: JPY, Country/AGO (As Fraction of Amount Debt Lender Country AGO)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -219,11 +201,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "Amount_Debt_JPY_LenderCountryCIV_AsAFractionOf_Amount_Debt_LenderCountryCIV",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Amount of Debt: JPY, Country/CIV (As Fraction of Amount Debt Lender Country CIV)",
+      "Value": "Amount_Debt_JPY_LenderCountryARE_AsAFractionOf_Amount_Debt_LenderCountryARE",
+      "Bytes": null,
+      "Name": "Amount of Debt: JPY, Country/ARE (As Fraction of Amount Debt Lender Country ARE)",
       "Types": [
         "StatisticalVariable"
       ]
@@ -231,11 +212,10 @@
     {
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
-      "ObjectID": "Amount_Debt_JPY_LenderCountryCMR_AsAFractionOf_Amount_Debt_LenderCountryCMR",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "Amount of Debt: JPY, Country/CMR (As Fraction of Amount Debt Lender Country CMR)",
+      "Value": "Amount_Debt_JPY_LenderCountryARG_AsAFractionOf_Amount_Debt_LenderCountryARG",
+      "Bytes": null,
+      "Name": "Amount of Debt: JPY, Country/ARG (As Fraction of Amount Debt Lender Country ARG)",
       "Types": [
         "StatisticalVariable"
       ]

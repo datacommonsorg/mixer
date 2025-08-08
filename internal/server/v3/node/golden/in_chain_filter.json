@@ -5,14 +5,18 @@
         "containedInPlace+": {
           "nodes": [
             {
+              "name": "Alum Rock",
               "types": [
-                "Thing"
+                "City",
+                "Neighborhood"
               ],
               "dcid": "geoId/0601458"
             },
             {
+              "name": "Alviso",
               "types": [
-                "Thing"
+                "City",
+                "Neighborhood"
               ],
               "dcid": "geoId/0601486"
             },
@@ -33,8 +37,9 @@
               "dcid": "geoId/0608968"
             },
             {
+              "name": "Cambrian Park",
               "types": [
-                "Thing"
+                "City"
               ],
               "dcid": "geoId/0610088"
             },
@@ -61,8 +66,9 @@
               "dcid": "geoId/0620598"
             },
             {
+              "name": "Fruitdale",
               "types": [
-                "Thing"
+                "City"
               ],
               "dcid": "geoId/0627080"
             },
@@ -125,14 +131,16 @@
               "dcid": "geoId/0648956"
             },
             {
+              "name": "Morgan Hill",
               "types": [
-                "Thing"
+                "City"
               ],
               "dcid": "geoId/0649278"
             },
             {
+              "name": "Mountain View",
               "types": [
-                "Thing"
+                "City"
               ],
               "dcid": "geoId/0649670"
             },
@@ -151,8 +159,9 @@
               "dcid": "geoId/0668000"
             },
             {
+              "name": "San Martin",
               "types": [
-                "Thing"
+                "City"
               ],
               "dcid": "geoId/0668238"
             },
@@ -178,8 +187,9 @@
               "dcid": "geoId/0671074"
             },
             {
+              "name": "Stanford",
               "types": [
-                "Thing"
+                "City"
               ],
               "dcid": "geoId/0673906"
             },
@@ -206,8 +216,10 @@
               "dcid": "wikidataId/Q14946652"
             },
             {
+              "name": "Cambrian Park",
               "types": [
-                "Thing"
+                "City",
+                "Neighborhood"
               ],
               "dcid": "wikidataId/Q1911837"
             },

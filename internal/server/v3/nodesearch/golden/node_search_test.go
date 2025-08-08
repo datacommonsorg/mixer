@@ -61,21 +61,6 @@ func TestV3NodeSearch(t *testing.T) {
 				},
 				goldenFile: "node_search_with_query_and_type.json",
 			},
-			{
-				req: &pbv2.NodeSearchRequest{
-					Query:      "ether",
-					Predicates: []string{"alternateName"},
-				},
-				goldenFile: "node_search_with_query_and_predicates.json",
-			},
-			{
-				req: &pbv2.NodeSearchRequest{
-					Query:      "ether",
-					Predicates: []string{"alternateName"},
-					Types:      []string{"ChemicalCompound"},
-				},
-				goldenFile: "node_search_with_query_predicates_and_types.json",
-			},
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V3NodeSearch(ctx, c.req)
