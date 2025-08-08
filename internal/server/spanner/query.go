@@ -33,9 +33,6 @@ const (
 	PAGE_SIZE = 5000
 )
 
-// Predicates to search against if no predicates are provided.
-var defaultSearchPredicates = []string{"name", "description"}
-
 // GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction and returns a map.
 func (sc *SpannerClient) GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*Property, error) {
 	props := map[string][]*Property{}
