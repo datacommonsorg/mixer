@@ -195,7 +195,7 @@ func nodeEdgesToLinkedGraph(edges []*Edge) (*pbv2.LinkedGraph, error) {
 			ProvenanceId: edge.Provenance,
 		}
 
-		if len(edge.Types) == 0 { // Value
+		if len(edge.Types) == 0 { // If a node has no types, it's a terminal value.
 			if edge.Bytes != nil { // Use bytes if set.
 				bytes, err := util.Unzip(edge.Bytes)
 				if err != nil {
@@ -205,7 +205,7 @@ func nodeEdgesToLinkedGraph(edges []*Edge) (*pbv2.LinkedGraph, error) {
 			} else {
 				node.Value = edge.Value
 			}
-		} else { // Reference
+		} else { // Otherwise, it's a reference node with a dcid.
 			node.Dcid = edge.Value
 		}
 
