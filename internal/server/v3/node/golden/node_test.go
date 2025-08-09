@@ -43,7 +43,6 @@ func TestV3Node(t *testing.T) {
 			desc       string
 			nodes      []string
 			property   string
-			nextToken  string
 			goldenFile string
 		}{
 			{
@@ -54,7 +53,6 @@ func TestV3Node(t *testing.T) {
 					"test_var_1",
 				},
 				"->",
-				"",
 				"out_prop.json",
 			},
 			{
@@ -63,7 +61,6 @@ func TestV3Node(t *testing.T) {
 					"geoId/5129600",
 				},
 				"->[containedInPlace,geoJsonCoordinatesDP3]",
-				"",
 				"out_bracket_prop.json",
 			},
 			{
@@ -74,7 +71,6 @@ func TestV3Node(t *testing.T) {
 					"test_var_1",
 				},
 				"<-",
-				"",
 				"in_prop.json",
 			},
 			{
@@ -85,7 +81,6 @@ func TestV3Node(t *testing.T) {
 					"test_var_1",
 				},
 				"->*",
-				"",
 				"out_pv_all.json",
 			},
 			{
@@ -94,7 +89,6 @@ func TestV3Node(t *testing.T) {
 					"test_var_1",
 				},
 				"<-*",
-				"",
 				"in_pv_all.json",
 			},
 			{
@@ -103,7 +97,6 @@ func TestV3Node(t *testing.T) {
 					"test_var_1",
 				},
 				"->[name, description]",
-				"",
 				"out_pv_some.json",
 			},
 			{
@@ -112,7 +105,6 @@ func TestV3Node(t *testing.T) {
 					"test_var_1",
 				},
 				"<-measuredProperty",
-				"",
 				"in_pv_some.json",
 			},
 			{
@@ -121,7 +113,6 @@ func TestV3Node(t *testing.T) {
 					"country/USA",
 				},
 				"<-containedInPlace{typeOf:State}",
-				"",
 				"in_filter.json",
 			},
 			{
@@ -130,9 +121,64 @@ func TestV3Node(t *testing.T) {
 					"geoId/06085",
 				},
 				"<-containedInPlace+{typeOf:City}",
-				"",
 				"in_chain_filter.json",
 			},
+		} {
+			goldenFile := c.goldenFile
+			resp, err := mixer.V3Node(ctx, &pbv2.NodeRequest{
+				Nodes:    c.nodes,
+				Property: c.property,
+			})
+			if err != nil {
+				t.Errorf("Could not run V3Node: %s", err)
+				continue
+			}
+			if latencyTest {
+				continue
+			}
+			if test.GenerateGolden {
+				test.UpdateGolden(resp, goldenPath, goldenFile)
+				continue
+			}
+			var expected pbv2.NodeResponse
+			if err = test.ReadJSON(goldenPath, goldenFile, &expected); err != nil {
+				t.Errorf("Could not Unmarshal golden file: %s", err)
+				continue
+			}
+			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+				t.Errorf("%s: got diff: %s", c.desc, diff)
+				continue
+			}
+		}
+	}
+	if err := test.TestDriver(
+		"TestV3Node",
+		&test.TestOption{UseSQLite: true, UseSpannerGraph: true, EnableV3: true},
+		testSuite,
+	); err != nil {
+		t.Errorf("TestDriver() for TestV3Node = %s", err)
+	}
+}
+
+func TestV3NodePagination(t *testing.T) {
+	// TODO: Remove check once enabled.
+	if !test.EnableSpannerGraph {
+		return
+	}
+	t.Parallel()
+	ctx := context.Background()
+
+	_, filename, _, _ := runtime.Caller(0)
+	goldenPath := path.Dir(filename)
+
+	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
+		for _, c := range []struct {
+			desc       string
+			nodes      []string
+			property   string
+			nextToken  string
+			goldenFile string
+		}{
 			{
 				"First page of pagination",
 				[]string{
@@ -148,7 +194,7 @@ func TestV3Node(t *testing.T) {
 					"StatisticalVariable",
 				},
 				"<-typeOf",
-				"H4sIAAAAAAAA/+Ly43IvLkjMy0st0i0oys9KTS4p1k9JLEnOz9UtLskvStXPzCsuScxLTi3WT0nWzU7XLUktLgGpSExKLAYLxqcXJRZkxJtIMXN0qAMAAAD//wEAAP//A4QleFAAAAA=",
+				"H4sIAAAAAAAA/+Ly5/IoLkjMy0st0i0oys9KTS4p1k9JLEnOz9UtLskvStXPzCsuScxLTi3WT0nWzU7XLUktLgGpSExKLAYLxqcXJRZkxBuaSjFzdKgDAAAA//8BAAD//8kn4TlRAAAA",
 				"pagination_second_page.json",
 			},
 		} {
@@ -181,10 +227,10 @@ func TestV3Node(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"TestV3Node",
+		"TestV3NodePagination",
 		&test.TestOption{UseSQLite: true, UseSpannerGraph: true, EnableV3: true},
 		testSuite,
 	); err != nil {
-		t.Errorf("TestDriver() for TestV3Node = %s", err)
+		t.Errorf("TestDriver() for TestV3NodePagination = %s", err)
 	}
 }
