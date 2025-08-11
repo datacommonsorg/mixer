@@ -58,10 +58,10 @@ steps:
         set -e
         docker build -f build/server/Dockerfile \
           --build-arg GO_PROTOC_VERSION=${_GO_PROTOC_VERSION} \
-          -t gcr.io/datcom-ci/datacommons-mixer:3322a4d \
+          -t gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA \
           -t gcr.io/datcom-ci/datacommons-mixer:latest \
           .
-        docker push gcr.io/datcom-ci/datacommons-mixer:3322a4d
+        docker push gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA
         docker push gcr.io/datcom-ci/datacommons-mixer:latest
     waitFor: ["build-proto"]
 
@@ -90,6 +90,18 @@ steps:
       - |
         if [ "$_SKIP_AUTOPUSH_UPDATE" == "true" ] ; then exit 0 ; fi
         ./scripts/update_autopush_version.sh $SHORT_SHA
+    waitFor: ["push-grpc-descriptor", "push-image"]
+
+  # Trigger downstream builds that listen for changes to mixer images.
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - pubsub
+      - topics
+      - publish
+      - mixer-image-pushed
+      - --project=datcom-ci
+      - --message=${SHORT_SHA}
     waitFor: ["push-grpc-descriptor", "push-image"]
 
 substitutions:
