@@ -94,15 +94,14 @@ steps:
 
   # Trigger downstream builds that listen for changes to mixer images.
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: gcloud
+    entrypoint: bash
     args:
-      - pubsub
-      - topics
-      - publish
-      - mixer-image-pushed
-      - --project=datcom-ci
-      - --message=${SHORT_SHA}
-    waitFor: ["push-grpc-descriptor", "push-image"]
+      - -c
+      - |
+        export SHORT_SHA=$(echo "${SHORT_SHA}" | tr -d '\n')
+        gcloud pubsub topics publish mixer-image-pushed \
+          --project=datcom-ci \
+          --message='{"substitutions": {"_SHORT_SHA": "'"${SHORT_SHA}"'"}}'
 
 substitutions:
   _SKIP_AUTOPUSH_UPDATE: "true"
