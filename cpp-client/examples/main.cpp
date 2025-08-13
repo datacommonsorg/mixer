@@ -11,7 +11,7 @@ void TestGetPropertyValues(datacommons::DataCommons& dc) {
 }
 
 void TestGetObservations(datacommons::DataCommons& dc) {
-    std::cout << "--- Testing GetObservations (Example 1 from Docs) ---" << std::endl;
+    std::cout << "--- Testing GetObservations ---" << std::endl;
     std::vector<std::string> select = {"variable", "entity"};
     datacommons::ObservationVariable variables;
     datacommons::ObservationEntity entities;
