@@ -1,16 +1,13 @@
 #ifndef DATACOMMONS_H
 #define DATACOMMONS_H
 
+#include <nlohmann/json.hpp>
 #include <string>
 #include <vector>
 #include <map>
+#include <variant>
 
 namespace datacommons {
-
-struct PropertyValue {
-    std::string dcid;
-    std::string value;
-};
 
 struct Observation {
     std::string date;
@@ -28,21 +25,35 @@ struct QueryResult {
     std::vector<std::map<std::string, std::string>> rows;
 };
 
+struct ObservationVariable {
+    std::vector<std::string> dcids;
+    std::string expression;
+};
+
+struct ObservationEntity {
+    std::vector<std::string> dcids;
+    std::string expression;
+};
+
+using ObservationDate = std::variant<std::string, std::vector<std::string>>;
+
 class DataCommons {
 public:
     DataCommons();
     DataCommons(const std::string& api_key);
 
     // V2 Endpoints
-    std::map<std::string, std::vector<PropertyValue>> GetPropertyValues(const std::vector<std::string>& dcids, const std::string& prop);
+    nlohmann::json GetPropertyValues(
+        const std::vector<std::string>& dcids,
+        const std::string& prop_direction,
+        const std::vector<std::string>& properties);
     std::map<std::string, std::map<std::string, std::vector<Observation>>> GetObservations(
-        const std::vector<std::string>& variables,
-        const std::vector<std::string>& entities,
-        const std::string& date);
+        const ObservationVariable& variable,
+        const ObservationEntity& entity,
+        const ObservationDate& date);
     std::map<std::string, std::vector<ResolvedId>> Resolve(
         const std::vector<std::string>& nodes,
-        const std::string& from_property,
-        const std::string& to_property);
+        const std::string& property);
     QueryResult Query(const std::string& query);
 
 private:

@@ -18,10 +18,28 @@ DataCommons::DataCommons() {
 
 DataCommons::DataCommons(const std::string& api_key) : api_key_(api_key) {}
 
-std::map<std::string, std::vector<PropertyValue>> DataCommons::GetPropertyValues(const std::vector<std::string>& dcids, const std::string& prop) {
+nlohmann::json DataCommons::GetPropertyValues(
+    const std::vector<std::string>& dcids,
+    const std::string& prop_direction,
+    const std::vector<std::string>& properties) {
+    std::stringstream ss;
+    ss << prop_direction;
+    if (properties.size() > 1) {
+        ss << "[";
+    }
+    for (size_t i = 0; i < properties.size(); ++i) {
+        if (i != 0) {
+            ss << ",";
+        }
+        ss << properties[i];
+    }
+    if (properties.size() > 1) {
+        ss << "]";
+    }
+
     nlohmann::json body = {
         {"nodes", dcids},
-        {"property", "->" + prop}
+        {"property", ss.str()}
     };
 
     std::string response = Post("/v2/node", body.dump());
@@ -35,37 +53,40 @@ std::map<std::string, std::vector<PropertyValue>> DataCommons::GetPropertyValues
         return {};
     }
 
-    std::map<std::string, std::vector<PropertyValue>> result;
-    if (json.contains("data")) {
-        for (auto const& [dcid, data] : json["data"].items()) {
-            if (data.contains("arcs")) {
-                std::string arc_prop = "name";
-                if (data["arcs"].contains(arc_prop)) {
-                    for (const auto& node : data["arcs"][arc_prop]["nodes"]) {
-                        if (node.contains("provenanceId") && node.contains("value")) {
-                            result[dcid].push_back({node["provenanceId"], node["value"]});
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    return result;
+    return json;
 }
 
 std::map<std::string, std::map<std::string, std::vector<Observation>>> DataCommons::GetObservations(
-    const std::vector<std::string>& variables,
-    const std::vector<std::string>& entities,
-    const std::string& date) {
-    nlohmann::json body = {
-        {"select", {"variable", "entity", "date", "value", "provenanceId"}},
-        {"from", {
-            {"variable", {{"dcids", variables}}},
-            {"entity", {{"dcids", entities}}},
-            {"date", date}
-        }}
-    };
+    const ObservationVariable& variable,
+    const ObservationEntity& entity,
+    const ObservationDate& date) {
+    nlohmann::json body;
+    body["select"] = {"variable", "entity", "date", "value", "provenanceId"};
+
+    nlohmann::json from;
+    if (!variable.dcids.empty()) {
+        from["variable"]["dcids"] = variable.dcids;
+    }
+    if (!variable.expression.empty()) {
+        from["variable"]["expression"] = variable.expression;
+    }
+    if (!entity.dcids.empty()) {
+        from["entity"]["dcids"] = entity.dcids;
+    }
+    if (!entity.expression.empty()) {
+        from["entity"]["expression"] = entity.expression;
+    }
+
+    std::visit([&](auto&& arg) {
+        using T = std::decay_t<decltype(arg)>;
+        if constexpr (std::is_same_v<T, std::string>) {
+            from["date"] = arg;
+        } else if constexpr (std::is_same_v<T, std::vector<std::string>>) {
+            from["date"] = arg;
+        }
+    }, date);
+
+    body["from"] = from;
 
     std::string response = Post("/v2/observation", body.dump());
     if (response.empty()) {
@@ -106,12 +127,10 @@ std::map<std::string, std::map<std::string, std::vector<Observation>>> DataCommo
 
 std::map<std::string, std::vector<ResolvedId>> DataCommons::Resolve(
     const std::vector<std::string>& nodes,
-    const std::string& from_property,
-    const std::string& to_property) {
-    std::string expression = "<-" + from_property + "->" + to_property;
+    const std::string& property) {
     nlohmann::json body = {
         {"nodes", nodes},
-        {"property", expression}
+        {"property", property}
     };
 
     std::string response = Post("/v2/resolve", body.dump());

@@ -35,37 +35,37 @@ The C++ client provides access to the four core V2 endpoints of the Data Commons
 
 ### 1. GetPropertyValues
 
-Fetches the values of a specific property for one or more nodes (entities).
+Fetches property values for one or more nodes. This method returns the raw JSON response from the API, giving you the flexibility to parse it as needed.
 
-**Use Case:** Find the name, population, or any other property of a place, like a state or city.
+**Use Case:** Find the name and type of a place, like a state or city.
 
-**Example:** Get the names for California (`geoId/06`) and Colorado (`geoId/08`).
+**Example:** Get the `name` and `typeOf` for California (`geoId/06`) and Colorado (`geoId/08`).
 
 ```cpp
 std::vector<std::string> dcids = {"geoId/06", "geoId/08"};
-std::string prop = "name";
-auto result = dc.GetPropertyValues(dcids, prop);
+std::vector<std::string> properties = {"name", "typeOf"};
+auto result = dc.GetPropertyValues(dcids, "->", properties);
 
-for (const auto& [dcid, values] : result) {
-    std::cout << "DCID: " << dcid << std::endl;
-    for (const auto& value : values) {
-        std::cout << "  Value: " << value.value << std::endl;
-    }
-}
+std::cout << result.dump(2) << std::endl;
 ```
 
 ### 2. GetObservations
 
-Fetches statistical observations for a set of variables and entities at a specific date.
+Fetches statistical observations. This endpoint provides a flexible way to query for data by specifying variables, entities, and dates in various combinations.
 
-**Use Case:** Get the total, male, and female population counts for California in the year 2020.
+**Use Case:** Get the total, male, and female population counts for California and Colorado in the year 2020.
 
 **Example:**
 
 ```cpp
-std::vector<std::string> variables = {"Count_Person", "Count_Person_Male", "Count_Person_Female"};
-std::vector<std::string> entities = {"geoId/06"};
-std::string date = "2020";
+datacommons::ObservationVariable variables;
+variables.dcids = {"Count_Person", "Count_Person_Male", "Count_Person_Female"};
+
+datacommons::ObservationEntity entities;
+entities.dcids = {"geoId/06", "geoId/08"};
+
+datacommons::ObservationDate date = "2020";
+
 auto result = dc.GetObservations(variables, entities, date);
 
 for (const auto& [variable, entity_map] : result) {
@@ -78,6 +78,88 @@ for (const auto& [variable, entity_map] : result) {
     }
 }
 ```
+
+You can also use expressions to select entities, for example, to get the population of all counties in California:
+
+```cpp
+datacommons::ObservationVariable variables;
+variables.dcids = {"Count_Person"};
+
+datacommons::ObservationEntity entities;
+entities.expression = "<-containedInPlace{typeOf:County, dcid:geoId/06}";
+
+datacommons::ObservationDate date = "LATEST";
+
+auto result = dc.GetObservations(variables, entities, date);
+// ... (process results as above)
+```
+
+### 3. Resolve
+
+Resolves human-readable identifiers (like names or coordinates) to Data Commons IDs (DCIDs).
+
+**Use Case:** Find the unique DCID for a place when you only know its name.
+
+**Example:** Find the DCIDs for "California" and "Colorado".
+
+```cpp
+std::vector<std::string> nodes = {"California", "Colorado"};
+std::string property = "<-description->dcid";
+auto result = dc.Resolve(nodes, property);
+
+for (const auto& [node, candidates] : result) {
+    std::cout << "Node: " << node << std::endl;
+    for (const auto& candidate : candidates) {
+        std::cout << "  DCID: " << candidate.dcid << ", Type: " << candidate.dominant_type << std::endl;
+    }
+}
+```
+
+### 2. GetObservations
+
+Fetches statistical observations. This endpoint provides a flexible way to query for data by specifying variables, entities, and dates in various combinations.
+
+**Use Case:** Get the total, male, and female population counts for California and Colorado in the year 2020.
+
+**Example:**
+
+```cpp
+datacommons::ObservationVariable variables;
+variables.dcids = {"Count_Person", "Count_Person_Male", "Count_Person_Female"};
+
+datacommons::ObservationEntity entities;
+entities.dcids = {"geoId/06", "geoId/08"};
+
+datacommons::ObservationDate date = "2020";
+
+auto result = dc.GetObservations(variables, entities, date);
+
+for (const auto& [variable, entity_map] : result) {
+    std::cout << "Variable: " << variable << std::endl;
+    for (const auto& [entity, observations] : entity_map) {
+        std::cout << "  Entity: " << entity << std::endl;
+        for (const auto& obs : observations) {
+            std::cout << "    Date: " << obs.date << ", Value: " << obs.value << std::endl;
+        }
+    }
+}
+```
+
+You can also use expressions to select entities, for example, to get the population of all counties in California:
+
+```cpp
+datacommons::ObservationVariable variables;
+variables.dcids = {"Count_Person"};
+
+datacommons::ObservationEntity entities;
+entities.expression = "<-containedInPlace{typeOf:County, dcid:geoId/06}";
+
+datacommons::ObservationDate date = "LATEST";
+
+auto result = dc.GetObservations(variables, entities, date);
+// ... (process results as above)
+```
+
 
 ### 3. Resolve
 

@@ -8,14 +8,14 @@ int main() {
         // environment variable.
         datacommons::DataCommons dc;
 
-        // GetPropertyValues example
-        std::vector<std::string> dcids = {"geoId/06", "geoId/08"};
-        std::string prop = "name";
-        auto result = dc.GetPropertyValues(dcids, prop);
-        for (const auto& [dcid, values] : result) {
-            std::cout << "DCID: " << dcid << std::endl;
-            for (const auto& value : values) {
-                std::cout << "  Value: " << value.value << std::endl;
+        // Resolve example
+        std::vector<std::string> nodes = {"California", "Colorado"};
+        std::string property = "<-description->dcid";
+        auto resolve_result = dc.Resolve(nodes, property);
+        for (const auto& [node, candidates] : resolve_result) {
+            std::cout << "Node: " << node << std::endl;
+            for (const auto& candidate : candidates) {
+                std::cout << "  DCID: " << candidate.dcid << ", Type: " << candidate.dominant_type << std::endl;
             }
         }
     } catch (const std::runtime_error& e) {
