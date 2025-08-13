@@ -18,8 +18,19 @@ struct Observation {
     std::string provenance_id;
 };
 
+struct ResolvedId {
+    std::string dcid;
+    std::string dominant_type;
+};
+
+struct QueryResult {
+    std::vector<std::string> header;
+    std::vector<std::map<std::string, std::string>> rows;
+};
+
 class DataCommons {
 public:
+    DataCommons();
     DataCommons(const std::string& api_key);
 
     // V2 Endpoints
@@ -28,6 +39,11 @@ public:
         const std::vector<std::string>& variables,
         const std::vector<std::string>& entities,
         const std::string& date);
+    std::map<std::string, std::vector<ResolvedId>> Resolve(
+        const std::vector<std::string>& nodes,
+        const std::string& from_property,
+        const std::string& to_property);
+    QueryResult Query(const std::string& query);
 
 private:
     std::string api_key_;
