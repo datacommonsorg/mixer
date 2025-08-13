@@ -22,6 +22,37 @@ int main() {
 }
 ```
 
+## Building and Running the Example
+
+### Prerequisites
+
+- C++17 compiler (g++ or Clang)
+- CMake (3.11+)
+- Git
+- OpenSSL development libraries (`libssl-dev` on Debian/Ubuntu)
+
+### Steps
+
+1.  **Clone the repository and navigate to the client directory.**
+2.  **Create a build directory:**
+    ```bash
+    mkdir build
+    cd build
+    ```
+3.  **Configure and build the project:**
+    ```bash
+    cmake ..
+    make
+    ```
+4.  **Set your API key:**
+    ```bash
+    export DC_API_KEY="YOUR_API_KEY"
+    ```
+5.  **Run the example:**
+    ```bash
+    ./example
+    ```
+
 ## Usage
 
-See the `examples/main.cpp` file for a demonstration of how to use the library.
+See the `USAGE.md` file for a detailed guide to the library's functions.

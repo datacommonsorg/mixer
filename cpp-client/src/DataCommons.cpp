@@ -49,44 +49,60 @@ nlohmann::json DataCommons::GetPropertyValues(
 
     auto json = nlohmann::json::parse(response, nullptr, false);
     if (json.is_discarded()) {
-        std::cerr << "Failed to parse JSON response." << std::endl;
-        return {};
+        throw DataCommonsException("Failed to parse JSON response.");
     }
 
     return json;
 }
 
-std::map<std::string, std::map<std::string, std::vector<Observation>>> DataCommons::GetObservations(
+nlohmann::json DataCommons::GetObservations(
+    const std::vector<std::string>& select,
     const ObservationVariable& variable,
     const ObservationEntity& entity,
-    const ObservationDate& date) {
+    const ObservationDate& date,
+    const ObservationFilter& filter) {
     nlohmann::json body;
-    body["select"] = {"variable", "entity", "date", "value", "provenanceId"};
+    body["select"] = select;
 
-    nlohmann::json from;
+    nlohmann::json variable_json = nlohmann::json::object();
     if (!variable.dcids.empty()) {
-        from["variable"]["dcids"] = variable.dcids;
+        variable_json["dcids"] = variable.dcids;
     }
     if (!variable.expression.empty()) {
-        from["variable"]["expression"] = variable.expression;
+        variable_json["expression"] = variable.expression;
     }
+    body["variable"] = variable_json;
+
+    nlohmann::json entity_json = nlohmann::json::object();
     if (!entity.dcids.empty()) {
-        from["entity"]["dcids"] = entity.dcids;
+        entity_json["dcids"] = entity.dcids;
     }
     if (!entity.expression.empty()) {
-        from["entity"]["expression"] = entity.expression;
+        entity_json["expression"] = entity.expression;
     }
+    body["entity"] = entity_json;
 
     std::visit([&](auto&& arg) {
         using T = std::decay_t<decltype(arg)>;
         if constexpr (std::is_same_v<T, std::string>) {
-            from["date"] = arg;
+            if (!arg.empty()) {
+                body["date"] = arg;
+            }
         } else if constexpr (std::is_same_v<T, std::vector<std::string>>) {
-            from["date"] = arg;
+            body["date"] = arg;
         }
     }, date);
 
-    body["from"] = from;
+    if (!filter.facet_ids.empty() || !filter.domains.empty()) {
+        nlohmann::json filter_json = nlohmann::json::object();
+        if (!filter.facet_ids.empty()) {
+            filter_json["facet_ids"] = filter.facet_ids;
+        }
+        if (!filter.domains.empty()) {
+            filter_json["domains"] = filter.domains;
+        }
+        body["filter"] = filter_json;
+    }
 
     std::string response = Post("/v2/observation", body.dump());
     if (response.empty()) {
@@ -95,34 +111,10 @@ std::map<std::string, std::map<std::string, std::vector<Observation>>> DataCommo
 
     auto json = nlohmann::json::parse(response, nullptr, false);
     if (json.is_discarded()) {
-        std::cerr << "Failed to parse JSON response." << std::endl;
-        return {};
+        throw DataCommonsException("Failed to parse JSON response.");
     }
 
-    std::map<std::string, std::map<std::string, std::vector<Observation>>> result;
-    if (json.contains("byVariable")) {
-        for (const auto& var_data : json["byVariable"]) {
-            if (var_data.contains("variable") && var_data.contains("byEntity")) {
-                std::string variable = var_data["variable"];
-                for (const auto& entity_data : var_data["byEntity"]) {
-                    if (entity_data.contains("entity") && entity_data.contains("observations")) {
-                        std::string entity = entity_data["entity"];
-                        for (const auto& obs : entity_data["observations"]) {
-                            if (obs.contains("date") && obs.contains("value") && obs.contains("provenanceId")) {
-                                result[variable][entity].push_back({
-                                    obs["date"],
-                                    obs["value"],
-                                    obs["provenanceId"]
-                                });
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    return result;
+    return json;
 }
 
 std::map<std::string, std::vector<ResolvedId>> DataCommons::Resolve(
@@ -140,8 +132,7 @@ std::map<std::string, std::vector<ResolvedId>> DataCommons::Resolve(
 
     auto json = nlohmann::json::parse(response, nullptr, false);
     if (json.is_discarded()) {
-        std::cerr << "Failed to parse JSON response." << std::endl;
-        return {};
+        throw DataCommonsException("Failed to parse JSON response.");
     }
 
     std::map<std::string, std::vector<ResolvedId>> result;
@@ -176,8 +167,7 @@ QueryResult DataCommons::Query(const std::string& query) {
 
     auto json = nlohmann::json::parse(response, nullptr, false);
     if (json.is_discarded()) {
-        std::cerr << "Failed to parse JSON response." << std::endl;
-        return {};
+        throw DataCommonsException("Failed to parse JSON response.");
     }
 
     QueryResult result;
@@ -213,9 +203,7 @@ std::string DataCommons::Post(const std::string& endpoint, const std::string& bo
     if (r.status_code == 200) {
         return r.text;
     } else {
-        std::cerr << "Error: " << r.status_code << " - " << r.error.message << std::endl;
-        std::cerr << r.text << std::endl;
-        return "";
+        throw DataCommonsException("Error: " + std::to_string(r.status_code) + " - " + r.error.message + "\n" + r.text);
     }
 }
 

@@ -6,8 +6,14 @@
 #include <vector>
 #include <map>
 #include <variant>
+#include <stdexcept>
 
 namespace datacommons {
+
+class DataCommonsException : public std::runtime_error {
+public:
+    DataCommonsException(const std::string& message) : std::runtime_error(message) {}
+};
 
 struct Observation {
     std::string date;
@@ -37,6 +43,11 @@ struct ObservationEntity {
 
 using ObservationDate = std::variant<std::string, std::vector<std::string>>;
 
+struct ObservationFilter {
+    std::vector<std::string> facet_ids;
+    std::vector<std::string> domains;
+};
+
 class DataCommons {
 public:
     DataCommons();
@@ -47,10 +58,12 @@ public:
         const std::vector<std::string>& dcids,
         const std::string& prop_direction,
         const std::vector<std::string>& properties);
-    std::map<std::string, std::map<std::string, std::vector<Observation>>> GetObservations(
+    nlohmann::json GetObservations(
+        const std::vector<std::string>& select,
         const ObservationVariable& variable,
         const ObservationEntity& entity,
-        const ObservationDate& date);
+        const ObservationDate& date,
+        const ObservationFilter& filter = {});
     std::map<std::string, std::vector<ResolvedId>> Resolve(
         const std::vector<std::string>& nodes,
         const std::string& property);
