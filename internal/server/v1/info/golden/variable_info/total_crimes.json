@@ -99,11 +99,11 @@
             "seriesKey": {
               "observationPeriod": "P1Y"
             },
-            "earliestDate": "2008",
+            "earliestDate": "2020",
             "latestDate": "2023",
             "placeTypeSummary": {
               "CensusCountyDivision": {
-                "placeCount": 1450,
+                "placeCount": 1198,
                 "topPlaces": [
                   {
                     "dcid": "geoId/1500390810",
@@ -119,10 +119,10 @@
                   }
                 ],
                 "minValue": 0,
-                "maxValue": 36325
+                "maxValue": 29324
               },
               "City": {
-                "placeCount": 9999,
+                "placeCount": 8608,
                 "topPlaces": [
                   {
                     "dcid": "geoId/3651000",
@@ -157,36 +157,17 @@
                   }
                 ],
                 "minValue": 8,
-                "maxValue": 4043
-              },
-              "State": {
-                "placeCount": 52,
-                "topPlaces": [
-                  {
-                    "dcid": "geoId/06",
-                    "name": "California"
-                  },
-                  {
-                    "dcid": "geoId/48",
-                    "name": "Texas"
-                  },
-                  {
-                    "dcid": "geoId/12",
-                    "name": "Florida"
-                  }
-                ],
-                "minValue": 8667,
-                "maxValue": 1265920
+                "maxValue": 3459
               }
             },
             "minValue": 0,
-            "maxValue": 1265920,
-            "observationCount": 126184,
-            "timeSeriesCount": 11506
+            "maxValue": 250958,
+            "observationCount": 29656,
+            "timeSeriesCount": 9811
           }
         ],
-        "observationCount": 126184,
-        "timeSeriesCount": 11506
+        "observationCount": 29656,
+        "timeSeriesCount": 9811
       },
       "dc/base/FBIGovCrime_AggCountry": {
         "importName": "FBIGovCrime_AggCountry",
