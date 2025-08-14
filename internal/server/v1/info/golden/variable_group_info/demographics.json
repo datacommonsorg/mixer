@@ -580,7 +580,7 @@
         "id": "dc/g/VehicleCrashIncident",
         "specializedEntity": "Vehicle Crash Incident",
         "displayName": "Vehicle Crash Incident",
-        "descendentStatVarCount": 94
+        "descendentStatVarCount": 95
       },
       {
         "id": "dc/g/Person_VehicleOccupantType",
@@ -601,7 +601,7 @@
         "descendentStatVarCount": 4
       }
     ],
-    "descendentStatVarCount": 50806,
+    "descendentStatVarCount": 50807,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

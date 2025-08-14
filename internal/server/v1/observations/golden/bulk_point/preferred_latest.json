@@ -156,8 +156,8 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2020",
-              "value": 4009084999080,
+              "date": "2024",
+              "value": 4304038716900.0005,
               "facet": "2392525955"
             }
           ]
@@ -166,8 +166,8 @@
           "entity": "geoId/06",
           "points_by_facet": [
             {
-              "date": "2020",
-              "value": 194110262920,
+              "date": "2024",
+              "value": 214131497530,
               "facet": "2392525955"
             }
           ]
@@ -190,8 +190,8 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2025-06",
-              "value": 7015000,
+              "date": "2025-07",
+              "value": 7236000,
               "facet": "3707913853"
             }
           ]
@@ -210,8 +210,8 @@
           "entity": "geoId/0649670",
           "points_by_facet": [
             {
-              "date": "2025-05",
-              "value": 1537,
+              "date": "2025-06",
+              "value": 1907,
               "facet": "324358135"
             }
           ]
@@ -304,7 +304,7 @@
     },
     "2392525955": {
       "import_name": "EIA_Electricity",
-      "provenance_url": "https://www.eia.gov/opendata/qb.php?category=0",
+      "provenance_url": "https://www.eia.gov/opendata/browser/electricity",
       "unit": "KilowattHour"
     },
     "2517965213": {

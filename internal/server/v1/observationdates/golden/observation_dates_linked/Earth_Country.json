@@ -477,6 +477,42 @@
               "facet": "3022640954"
             }
           ]
+        },
+        {
+          "date": "2021",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
+        },
+        {
+          "date": "2022",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
+        },
+        {
+          "date": "2023",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
+        },
+        {
+          "date": "2024",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "3022640954"
+            }
+          ]
         }
       ]
     }
@@ -490,7 +526,7 @@
     },
     "3022640954": {
       "import_name": "EIA_Electricity",
-      "provenance_url": "https://www.eia.gov/opendata/qb.php?category=0",
+      "provenance_url": "https://www.eia.gov/opendata/browser/electricity",
       "unit": "GigawattHour"
     },
     "4226672321": {

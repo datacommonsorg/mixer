@@ -92,11 +92,15 @@
             "2017": 10.03,
             "2018": 9.93,
             "2019": 9.68,
-            "2020": 9.41
+            "2020": 9.64,
+            "2021": 9.85,
+            "2022": 10.26,
+            "2023": 10.87,
+            "2024": 11.09
           },
           "metadata": {
             "importName": "EIA_Electricity",
-            "provenanceUrl": "https://www.eia.gov/opendata/qb.php?category=0",
+            "provenanceUrl": "https://www.eia.gov/opendata/browser/electricity",
             "unit": "USCentPerKilowattHour"
           }
         },
@@ -121,11 +125,15 @@
             "2017": 84606.73066,
             "2018": 85095.38365,
             "2019": 78278.75121,
-            "2020": 73430.26579
+            "2020": 72567.87924,
+            "2021": 76941.40996,
+            "2022": 79361.03085,
+            "2023": 66703.28478,
+            "2024": 67921.14584
           },
           "metadata": {
             "importName": "EIA_Electricity",
-            "provenanceUrl": "https://www.eia.gov/opendata/qb.php?category=0",
+            "provenanceUrl": "https://www.eia.gov/opendata/browser/electricity",
             "unit": "GigawattHour"
           }
         },

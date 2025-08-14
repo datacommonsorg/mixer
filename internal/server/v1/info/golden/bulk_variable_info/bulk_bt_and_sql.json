@@ -43,7 +43,7 @@
             "maxValue": 24354012
           },
           "AdministrativeArea2": {
-            "placeCount": 6738,
+            "placeCount": 6711,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1143712",
@@ -62,7 +62,7 @@
             "maxValue": 3363912
           },
           "AdministrativeArea3": {
-            "placeCount": 307,
+            "placeCount": 289,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q217234",
@@ -415,7 +415,7 @@
             "maxValue": 138958
           },
           "Place": {
-            "placeCount": 163,
+            "placeCount": 162,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q366754",
@@ -3867,7 +3867,7 @@
                   "measurementMethod": "UNData"
                 },
                 "earliestDate": "1970",
-                "latestDate": "2024",
+                "latestDate": "2025",
                 "placeTypeSummary": {
                   "AdministrativeArea": {
                     "placeCount": 138,
@@ -3924,7 +3924,7 @@
                       }
                     ],
                     "minValue": 26186,
-                    "maxValue": 5303982
+                    "maxValue": 6118958
                   },
                   "AdministrativeArea3": {
                     "placeCount": 74,
@@ -3961,7 +3961,7 @@
                         "name": "Nuestra Señora del Rosario de Baruta"
                       }
                     ],
-                    "minValue": 2775.73322,
+                    "minValue": 2697,
                     "maxValue": 570712
                   },
                   "AdministrativeArea5": {
@@ -3984,7 +3984,7 @@
                     "maxValue": 79776
                   },
                   "City": {
-                    "placeCount": 3159,
+                    "placeCount": 3160,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q8686",
@@ -4000,7 +4000,7 @@
                       }
                     ],
                     "minValue": 307,
-                    "maxValue": 7074913
+                    "maxValue": 8860103
                   },
                   "County": {
                     "placeCount": 9,
@@ -4063,7 +4063,7 @@
                     "maxValue": 138958
                   },
                   "Place": {
-                    "placeCount": 134,
+                    "placeCount": 133,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q366754",
@@ -4117,12 +4117,12 @@
                   }
                 },
                 "minValue": 26,
-                "maxValue": 7074913,
-                "observationCount": 15986,
+                "maxValue": 8860103,
+                "observationCount": 16437,
                 "timeSeriesCount": 3960
               }
             ],
-            "observationCount": 15986,
+            "observationCount": 16437,
             "timeSeriesCount": 3960
           },
           "dc/base/USCensusPEP_AgeSexRaceHispanicOrigin": {
@@ -4211,7 +4211,7 @@
                 },
                 "minValue": 0,
                 "maxValue": 5119774,
-                "observationCount": 181550,
+                "observationCount": 172489,
                 "timeSeriesCount": 3156
               },
               {
@@ -4256,11 +4256,11 @@
                 },
                 "minValue": 138616,
                 "maxValue": 171773106,
-                "observationCount": 3137,
+                "observationCount": 2958,
                 "timeSeriesCount": 52
               }
             ],
-            "observationCount": 184687,
+            "observationCount": 175447,
             "timeSeriesCount": 3208
           },
           "dc/base/Vietnam_Census": {
@@ -4352,7 +4352,6 @@
           },
           "dc/base/Zurich_Population_By_Sex": {
             "importName": "Zurich_Population_By_Sex",
-            "releaseFrequency": "P1Y",
             "seriesSummary": [
               {
                 "seriesKey": {},
