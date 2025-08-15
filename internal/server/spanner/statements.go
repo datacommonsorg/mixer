@@ -84,7 +84,8 @@ var statements = struct {
 			predicate`,
 	getEdgesBySubjectID: `		GRAPH DCGraph MATCH (m:Node
 		WHERE
-			m.subject_id IN UNNEST(@ids))-[e:Edge%s]->(n:Node)%sORDER BY
+			m.subject_id IN UNNEST(@ids))-[e:Edge%s]->(n:Node)%s
+		ORDER BY
 			subject_id,
 			predicate,
 			value,
@@ -93,12 +94,14 @@ var statements = struct {
 		WHERE
 			m.subject_id IN UNNEST(@ids))-[e:Edge
 		WHERE
-			e.predicate = @predicate]->{1,%d}(n:Node)%sORDER BY
+			e.predicate = @predicate]->{1,%d}(n:Node)%s
+		ORDER BY
 			subject_id,
 			value`,
 	getEdgesByObjectID: `		GRAPH DCGraph MATCH (m:Node
 		WHERE
-			m.subject_id IN UNNEST(@ids))<-[e:Edge%s]-(n:Node)%sORDER BY
+			m.subject_id IN UNNEST(@ids))<-[e:Edge%s]-(n:Node)%s
+		ORDER BY
 			subject_id,
 			predicate,
 			value,
@@ -107,7 +110,8 @@ var statements = struct {
 		WHERE
 			m.subject_id IN UNNEST(@ids))<-[e:Edge
 		WHERE
-			e.predicate = @predicate]-{1,%d}(n:Node)%sORDER BY
+			e.predicate = @predicate]-{1,%d}(n:Node)%s
+		ORDER BY
 			subject_id,
 			value`,
 	filterPredicate: `
@@ -127,8 +131,7 @@ var statements = struct {
 			n.value,
 			n.bytes,
 			n.name,
-			n.types
-		`,
+			n.types`,
 	returnChainedEdges: `
 		RETURN
 			m.subject_id,
@@ -137,8 +140,7 @@ var statements = struct {
 			n.value,
 			n.bytes,
 			n.name,
-			n.types
-		`,
+			n.types`,
 	returnFilterEdges: `
 		RETURN
 		  m.subject_id,
@@ -155,8 +157,7 @@ var statements = struct {
 			n.value,
 			n.bytes,
 			n.name,
-			n.types
-		`,
+			n.types`,
 	returnFilterChainedEdges: `
 		RETURN
 			m.subject_id,
@@ -171,14 +172,22 @@ var statements = struct {
 			n.value,
 			n.bytes,
 			n.name,
-			n.types
-		`,
+			n.types`,
 	applyOffset: `
 		OFFSET %d`,
 	applyLimit: fmt.Sprintf(`
 		LIMIT %d`, PAGE_SIZE+1),
 	getObs: `		SELECT
-			*
+			variable_measured,
+			observation_about,
+			observations,
+			import_name,
+			observation_period,
+			measurement_method,
+			unit,
+			scaling_factor,
+			provenance_url,
+			facet_id
 		FROM 
 			Observation`,
 	selectVariableDcids: `variable_measured IN UNNEST(@variables)`,

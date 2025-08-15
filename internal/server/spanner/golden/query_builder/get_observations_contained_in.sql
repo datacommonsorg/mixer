@@ -19,7 +19,16 @@
 					e.subject_id as object_id
 			)result
 		INNER JOIN (		SELECT
-			*
+			variable_measured,
+			observation_about,
+			observations,
+			import_name,
+			observation_period,
+			measurement_method,
+			unit,
+			scaling_factor,
+			provenance_url,
+			facet_id
 		FROM 
 			Observation
 		WHERE
