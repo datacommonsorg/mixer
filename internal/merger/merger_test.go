@@ -1578,6 +1578,119 @@ func TestMergeSearchStatVarResponse(t *testing.T) {
 	}
 }
 
+func TestMergeFilterStatVarsByEntityResponse(t *testing.T) {
+	cmpOpts := cmp.Options{protocmp.Transform()}
+	for _, tc := range []struct {
+		desc      string
+		primary   *pb.FilterStatVarsByEntityResponse
+		secondary *pb.FilterStatVarsByEntityResponse
+		want      *pb.FilterStatVarsByEntityResponse
+	}{{
+		desc: "primary only",
+		primary: &pb.FilterStatVarsByEntityResponse{
+			StatVars: []*pb.EntityInfo{
+				{
+					Name: "sv1",
+					Dcid: "svid1",
+				},
+				{
+					Name: "sv2",
+					Dcid: "svid2",
+				},
+			},
+		},
+		want: &pb.FilterStatVarsByEntityResponse{
+			StatVars: []*pb.EntityInfo{
+				{
+					Name: "sv1",
+					Dcid: "svid1",
+				},
+				{
+					Name: "sv2",
+					Dcid: "svid2",
+				},
+			},
+		},
+	}, {
+		desc: "secondary only",
+		secondary: &pb.FilterStatVarsByEntityResponse{
+			StatVars: []*pb.EntityInfo{
+				{
+					Name: "sv1",
+					Dcid: "svid1",
+				},
+				{
+					Name: "sv2",
+					Dcid: "svid2",
+				},
+			},
+		},
+		want: &pb.FilterStatVarsByEntityResponse{
+			StatVars: []*pb.EntityInfo{
+				{
+					Name: "sv1",
+					Dcid: "svid1",
+				},
+				{
+					Name: "sv2",
+					Dcid: "svid2",
+				},
+			},
+		},
+	}, {
+		desc: "combined",
+		primary: &pb.FilterStatVarsByEntityResponse{
+			StatVars: []*pb.EntityInfo{
+				{
+					Name: "sv1",
+					Dcid: "svid1",
+				},
+				{
+					Name: "sv2",
+					Dcid: "svid2",
+				},
+			},
+		},
+		secondary: &pb.FilterStatVarsByEntityResponse{
+			StatVars: []*pb.EntityInfo{
+				{
+					Name: "sv3",
+					Dcid: "svid3",
+				},
+				{
+					Name: "sv4",
+					Dcid: "svid4",
+				},
+			},
+		},
+		want: &pb.FilterStatVarsByEntityResponse{
+			StatVars: []*pb.EntityInfo{
+				{
+					Name: "sv1",
+					Dcid: "svid1",
+				},
+				{
+					Name: "sv2",
+					Dcid: "svid2",
+				},
+				{
+					Name: "sv3",
+					Dcid: "svid3",
+				},
+				{
+					Name: "sv4",
+					Dcid: "svid4",
+				},
+			},
+		},
+	}} {
+		got := MergeFilterStatVarsByEntityResponse(tc.primary, tc.secondary)
+		if diff := cmp.Diff(got, tc.want, cmpOpts); diff != "" {
+			t.Errorf("%s: got diff: %s", tc.desc, diff)
+		}
+	}
+}
+
 func TestMergeMultiNodeSearch(t *testing.T) {
 	cmpOpts := cmp.Options{protocmp.Transform()}
 	for _, c := range []struct {
@@ -1592,24 +1705,15 @@ func TestMergeMultiNodeSearch(t *testing.T) {
 							Node: &pb.EntityInfo{
 								Dcid: "geoId/01",
 							},
-							Match: &pb.PropertyValue{
-								Property: "name",
-							},
 						},
 						{
 							Node: &pb.EntityInfo{
 								Dcid: "geoId/02",
 							},
-							Match: &pb.PropertyValue{
-								Property: "name",
-							},
 						},
 						{
 							Node: &pb.EntityInfo{
 								Dcid: "geoId/03",
-							},
-							Match: &pb.PropertyValue{
-								Property: "name",
 							},
 						},
 					},
@@ -1621,16 +1725,10 @@ func TestMergeMultiNodeSearch(t *testing.T) {
 							Node: &pb.EntityInfo{
 								Dcid: "geoId/02",
 							},
-							Match: &pb.PropertyValue{
-								Property: "description",
-							},
 						},
 						{
 							Node: &pb.EntityInfo{
 								Dcid: "geoId/04",
-							},
-							Match: &pb.PropertyValue{
-								Property: "description",
 							},
 						},
 					},
@@ -1642,32 +1740,20 @@ func TestMergeMultiNodeSearch(t *testing.T) {
 						Node: &pb.EntityInfo{
 							Dcid: "geoId/01",
 						},
-						Match: &pb.PropertyValue{
-							Property: "name",
-						},
 					},
 					{
 						Node: &pb.EntityInfo{
 							Dcid: "geoId/02",
-						},
-						Match: &pb.PropertyValue{
-							Property: "description",
 						},
 					},
 					{
 						Node: &pb.EntityInfo{
 							Dcid: "geoId/04",
 						},
-						Match: &pb.PropertyValue{
-							Property: "description",
-						},
 					},
 					{
 						Node: &pb.EntityInfo{
 							Dcid: "geoId/03",
-						},
-						Match: &pb.PropertyValue{
-							Property: "name",
 						},
 					},
 				},

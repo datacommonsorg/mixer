@@ -3,10 +3,9 @@
     {
       "SubjectID": "EarthquakeEvent",
       "Predicate": "domainIncludes",
-      "ObjectID": "affectedPlace",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/BaseSchema",
+      "Value": "affectedPlace",
+      "Bytes": null,
       "Name": "affectedPlace",
       "Types": [
         "Property"
@@ -15,10 +14,9 @@
     {
       "SubjectID": "EarthquakeEvent",
       "Predicate": "domainIncludes",
-      "ObjectID": "depth",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/BaseSchema",
+      "Value": "depth",
+      "Bytes": null,
       "Name": "depth",
       "Types": [
         "Property"
@@ -27,10 +25,9 @@
     {
       "SubjectID": "EarthquakeEvent",
       "Predicate": "domainIncludes",
-      "ObjectID": "depthError",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/BaseSchema",
+      "Value": "depthError",
+      "Bytes": null,
       "Name": "depthError",
       "Types": [
         "Property"
@@ -39,10 +36,9 @@
     {
       "SubjectID": "EarthquakeEvent",
       "Predicate": "domainIncludes",
-      "ObjectID": "magnitude",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/BaseSchema",
+      "Value": "magnitude",
+      "Bytes": null,
       "Name": "magnitude",
       "Types": [
         "Property"
@@ -51,10 +47,9 @@
     {
       "SubjectID": "EarthquakeEvent",
       "Predicate": "domainIncludes",
-      "ObjectID": "magnitudeError",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/BaseSchema",
+      "Value": "magnitudeError",
+      "Bytes": null,
       "Name": "magnitudeError",
       "Types": [
         "Property"
@@ -63,10 +58,9 @@
     {
       "SubjectID": "EarthquakeEvent",
       "Predicate": "domainIncludes",
-      "ObjectID": "magnitudeType",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/BaseSchema",
+      "Value": "magnitudeType",
+      "Bytes": null,
       "Name": "magnitudeType",
       "Types": [
         "Property"
@@ -75,10 +69,9 @@
     {
       "SubjectID": "EarthquakeEvent",
       "Predicate": "domainIncludes",
-      "ObjectID": "occurrenceTime",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/BaseSchema",
+      "Value": "occurrenceTime",
+      "Bytes": null,
       "Name": "occurrenceTime",
       "Types": [
         "Property"
@@ -87,10 +80,9 @@
     {
       "SubjectID": "EarthquakeEvent",
       "Predicate": "domainIncludes",
-      "ObjectID": "reviewStatus",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/BaseSchema",
+      "Value": "reviewStatus",
+      "Bytes": null,
       "Name": "reviewStatus",
       "Types": [
         "Property"
@@ -99,10 +91,9 @@
     {
       "SubjectID": "EarthquakeEvent",
       "Predicate": "naturalHazardType",
-      "ObjectID": "Annual_ExpectedLoss_NaturalHazardImpact_EarthquakeEvent",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
+      "Value": "Annual_ExpectedLoss_NaturalHazardImpact_EarthquakeEvent",
+      "Bytes": null,
       "Name": "Annual Expected Loss from Natural Hazard Impact: Earthquake",
       "Types": [
         "StatisticalVariable"
@@ -111,10 +102,9 @@
     {
       "SubjectID": "EarthquakeEvent",
       "Predicate": "naturalHazardType",
-      "ObjectID": "FemaNaturalHazardRiskIndex_NaturalHazardImpact_EarthquakeEvent",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
+      "Value": "FemaNaturalHazardRiskIndex_NaturalHazardImpact_EarthquakeEvent",
+      "Bytes": null,
       "Name": "FEMA National Risk Index for Natural Hazard Impact: Earthquake",
       "Types": [
         "StatisticalVariable"
@@ -123,10 +113,20 @@
     {
       "SubjectID": "EarthquakeEvent",
       "Predicate": "naturalHazardType",
-      "ObjectID": "NaturalHazardRiskScore_SuperfundSite_EarthquakeEvent",
-      "ObjectValue": "",
-      "ObjectBytes": null,
       "Provenance": "dc/base/HumanReadableStatVars",
+      "Value": "HazardTypeRiskIndexValue_NaturalHazardImpact_EarthquakeEvent",
+      "Bytes": null,
+      "Name": "FEMA Type Risk Index Value to Natural Hazard Impact: Earthquake",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "EarthquakeEvent",
+      "Predicate": "naturalHazardType",
+      "Provenance": "dc/base/HumanReadableStatVars",
+      "Value": "NaturalHazardRiskScore_SuperfundSite_EarthquakeEvent",
+      "Bytes": null,
       "Name": "Natural Hazard Risk Score of Superfund Site: Earthquake Event",
       "Types": [
         "StatisticalVariable"

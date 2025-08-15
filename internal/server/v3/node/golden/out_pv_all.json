@@ -18,7 +18,7 @@
           "nodes": [
             {
               "provenance_id": "dc/base/HumanReadableStatVars",
-              "value": "Total number of females in the population."
+              "value": "The total number of females in a population."
             }
           ]
         },
@@ -62,11 +62,7 @@
           "nodes": [
             {
               "provenance_id": "dc/base/HumanReadableStatVars",
-              "value": "Female Population"
-            },
-            {
-              "provenance_id": "dc/base/HumanReadableStatVars",
-              "value": "Total female population"
+              "value": "Female population"
             }
           ]
         },

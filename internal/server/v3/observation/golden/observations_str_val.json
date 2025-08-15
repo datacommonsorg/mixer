@@ -5,7 +5,7 @@
         "geoId/4822892": {
           "ordered_facets": [
             {
-              "facet_id": "3795540742",
+              "facet_id": "1543127381",
               "observations": [
                 {
                   "date": "2012",
@@ -57,7 +57,7 @@
               "latest_date": "2023"
             },
             {
-              "facet_id": "815809675",
+              "facet_id": "1755512982",
               "observations": [
                 {
                   "date": "2012",
@@ -88,13 +88,25 @@
                   "value": 17.5
                 },
                 {
+                  "date": "2019",
+                  "value": 1
+                },
+                {
+                  "date": "2020",
+                  "value": 1
+                },
+                {
                   "date": "2021",
                   "value": 22.3
+                },
+                {
+                  "date": "2023",
+                  "value": 18.8
                 }
               ],
-              "obs_count": 8,
+              "obs_count": 11,
               "earliest_date": "2012",
-              "latest_date": "2021"
+              "latest_date": "2023"
             }
           ]
         }
@@ -102,13 +114,13 @@
     }
   },
   "facets": {
-    "3795540742": {
+    "1543127381": {
       "import_name": "CensusACS5YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS5yrSurvey",
       "unit": "Year"
     },
-    "815809675": {
+    "1755512982": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
       "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
