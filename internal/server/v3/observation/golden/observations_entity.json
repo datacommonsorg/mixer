@@ -252,12 +252,14 @@
     "796925099": {
       "import_name": "NASA_VIIRSActiveFiresEvents_Agg",
       "provenance_url": "https://firms.modaps.eosdis.nasa.gov/active_fire/",
-      "observation_period": "P1M"
+      "observation_period": "P1M",
+      "is_dc_aggregate": true
     },
     "797282591": {
       "import_name": "NASA_VIIRSActiveFiresEvents_Agg",
       "provenance_url": "https://firms.modaps.eosdis.nasa.gov/active_fire/",
-      "observation_period": "P1Y"
+      "observation_period": "P1Y",
+      "is_dc_aggregate": true
     }
   }
 }

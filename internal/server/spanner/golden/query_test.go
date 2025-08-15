@@ -347,7 +347,6 @@ func TestGetObservations(t *testing.T) {
 	for _, c := range []struct {
 		variables  []string
 		entities   []string
-		date       string
 		goldenFile string
 	}{
 		{
@@ -404,7 +403,6 @@ func TestGetObservationsContainedInPlace(t *testing.T) {
 	for _, c := range []struct {
 		variables        []string
 		containedInPlace *v2.ContainedInPlace
-		date             string
 		goldenFile       string
 	}{
 		{
@@ -498,7 +496,6 @@ func TestSearchNodes(t *testing.T) {
 			t.Errorf("%v payload mismatch (-want +got):\n%s", c.goldenFile, diff)
 		}
 	}
-
 }
 
 // simplifySearchNodes simplifies search results for goldens.

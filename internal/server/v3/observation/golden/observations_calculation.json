@@ -40,7 +40,8 @@
   "facets": {
     "300029885": {
       "import_name": "UAE_Population",
-      "provenance_url": "https://bayanat.ae/en/Data?query=population"
+      "provenance_url": "https://bayanat.ae/en/Data?query=population",
+      "is_dc_aggregate": true
     }
   }
 }
