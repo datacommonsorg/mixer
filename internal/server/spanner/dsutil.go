@@ -23,9 +23,7 @@ import (
 	"log"
 	"sort"
 	"strconv"
-	"strings"
 
-	"cloud.google.com/go/spanner"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
@@ -43,8 +41,8 @@ const (
 	CHAIN = "+"
 	// Used for Facet responses with an entity expression.
 	ENTITY_PLACEHOLDER = ""
-	WHERE              = "\nWHERE "
-	AND                = "\nAND "
+	WHERE              = "\n\t\tWHERE\n\t\t\t"
+	AND                = "\n\t\t\tAND "
 )
 
 // Select options for Observation.
@@ -239,26 +237,6 @@ func selectFieldsToQueryOptions(selectFields []string) queryOptions {
 // Whether the queryOptions are for a full observation request.
 func isObservationRequest(qo *queryOptions) bool {
 	return qo.date && qo.value
-}
-
-func buildBaseObsStatement(variables []string, entities []string) spanner.Statement {
-	stmt := spanner.Statement{
-		SQL:    statements.getObs,
-		Params: map[string]interface{}{},
-	}
-
-	filters := []string{}
-	if len(variables) > 0 {
-		stmt.Params["variables"] = variables
-		filters = append(filters, statements.selectVariableDcids)
-	}
-	if len(entities) > 0 {
-		stmt.Params["entities"] = entities
-		filters = append(filters, statements.selectEntityDcids)
-	}
-	stmt.SQL += WHERE + strings.Join(filters, AND)
-
-	return stmt
 }
 
 func filterTimeSeriesByDate(ts *TimeSeries, date string) {

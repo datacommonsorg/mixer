@@ -279,7 +279,8 @@
     "1830475576": {
       "import_name": "CensusACS5YearSurvey_AggCountry",
       "provenance_url": "https://www.census.gov/",
-      "measurement_method": "CensusACS5yrSurvey"
+      "measurement_method": "CensusACS5yrSurvey",
+      "is_dc_aggregate": true
     },
     "1946255166": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",

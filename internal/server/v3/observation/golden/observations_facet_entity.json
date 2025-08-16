@@ -217,7 +217,8 @@
       "provenance_url": "https://www.noaa.gov/",
       "measurement_method": "NASAGSOD_NASAGHCN_EPA",
       "observation_period": "P1M",
-      "unit": "Kilometer"
+      "unit": "Kilometer",
+      "is_dc_aggregate": true
     },
     "1156717814": {
       "import_name": "WikidataPopulation",
@@ -227,19 +228,22 @@
     "2033764917": {
       "import_name": "TemperatureEvents_Agg",
       "provenance_url": "https://datacommons.org",
-      "observation_period": "P1M"
+      "observation_period": "P1M",
+      "is_dc_aggregate": true
     },
     "2034122409": {
       "import_name": "TemperatureEvents_Agg",
       "provenance_url": "https://datacommons.org",
-      "observation_period": "P1Y"
+      "observation_period": "P1Y",
+      "is_dc_aggregate": true
     },
     "456596656": {
       "import_name": "NOAA_EPA_Observed_Historical_Weather",
       "provenance_url": "https://www.noaa.gov/",
       "measurement_method": "NASAGSOD_NASAGHCN_EPA",
       "observation_period": "P1M",
-      "unit": "Millibar"
+      "unit": "Millibar",
+      "is_dc_aggregate": true
     },
     "590866011": {
       "import_name": "WikipediaStatsData",
@@ -251,14 +255,16 @@
       "provenance_url": "https://www.noaa.gov/",
       "measurement_method": "NASAGSOD_NASAGHCN_EPA",
       "observation_period": "P1M",
-      "unit": "Millimeter"
+      "unit": "Millimeter",
+      "is_dc_aggregate": true
     },
     "628741720": {
       "import_name": "NOAA_EPA_Observed_Historical_Weather",
       "provenance_url": "https://www.noaa.gov/",
       "measurement_method": "NASAGSOD_NASAGHCN_EPA",
       "observation_period": "P1M",
-      "unit": "Celsius"
+      "unit": "Celsius",
+      "is_dc_aggregate": true
     }
   }
 }
