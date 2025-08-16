@@ -1,12 +1,12 @@
 		GRAPH DCGraph MATCH (m:Node
 		WHERE
-			m.subject_id IN UNNEST(@ids))<-[e:Edge
+			m.subject_id IN ('foo OR 1=1;'))<-[e:Edge
 		WHERE
-			e.predicate IN UNNEST(@predicates)]-(n:Node)
+			e.predicate IN ('foo OR 1=1;')]-(n:Node)
 		,(n)-[filter0:Edge
 		WHERE
-			filter0.predicate = @prop0
-			AND filter0.object_id IN UNNEST(@val0)]->
+			filter0.predicate = 'foo OR 1=1;'
+			AND filter0.object_id IN ('foo OR 1=1;','OG7012T2qe10jzYRBvG6dgUEx5fj7uIxT+RkGvxpn/U=')]->
 		RETURN
 		  m.subject_id,
 			n.subject_id AS value,

@@ -12,5 +12,5 @@
 		FROM 
 			Observation
 		WHERE
-			variable_measured IN UNNEST(@variables)
-			AND observation_about IN UNNEST(@entities)
+			variable_measured IN ('AirPollutant_Cancer_Risk')
+			AND observation_about IN ('geoId/01001','geoId/02013')

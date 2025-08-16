@@ -13,8 +13,8 @@
 			GRAPH_TABLE (
 				DCGraph MATCH <-[e:Edge
 				WHERE
-					e.object_id = @ancestor
-					AND e.predicate = 'linkedContainedInPlace']-()-[{predicate: 'typeOf', object_id: @childPlaceType}]->
+					e.object_id = 'geoId/10'
+					AND e.predicate = 'linkedContainedInPlace']-()-[{predicate: 'typeOf', object_id: 'County'}]->
 				RETURN
 					e.subject_id as object_id
 			)result
@@ -32,6 +32,6 @@
 		FROM 
 			Observation
 		WHERE
-			variable_measured IN UNNEST(@variables))obs
+			variable_measured IN ('Count_Person','Median_Age_Person'))obs
 		ON 
 			result.object_id = obs.observation_about

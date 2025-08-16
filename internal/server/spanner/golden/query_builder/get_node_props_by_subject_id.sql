@@ -1,6 +1,6 @@
 		GRAPH DCGraph MATCH -[e:Edge
 		WHERE
-			e.subject_id IN UNNEST(@ids)]->
+			e.subject_id IN ('Count_Person','Person','foo')]->
 		RETURN DISTINCT
 			e.subject_id,
 			e.predicate

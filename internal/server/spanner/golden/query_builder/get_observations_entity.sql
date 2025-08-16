@@ -12,4 +12,4 @@
 		FROM 
 			Observation
 		WHERE
-			observation_about IN UNNEST(@entities)
+			observation_about IN ('wikidataId/Q341968')

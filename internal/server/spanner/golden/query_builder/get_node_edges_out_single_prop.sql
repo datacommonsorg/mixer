@@ -1,8 +1,8 @@
 		GRAPH DCGraph MATCH (m:Node
 		WHERE
-			m.subject_id IN UNNEST(@ids))-[e:Edge
+			m.subject_id IN ('Person'))-[e:Edge
 		WHERE
-			e.predicate IN UNNEST(@predicates)]->(n:Node)
+			e.predicate IN ('source')]->(n:Node)
 		RETURN
 			m.subject_id,
 			e.predicate,

@@ -1,8 +1,8 @@
 		GRAPH DCGraph MATCH (m:Node
 		WHERE
-			m.subject_id IN UNNEST(@ids))-[e:Edge
+			m.subject_id IN ('geoId/5129600'))-[e:Edge
 		WHERE
-			e.predicate IN UNNEST(@predicates)]->(n:Node)
+			e.predicate IN ('containedInPlace','geoJsonCoordinatesDP3')]->(n:Node)
 		RETURN
 			m.subject_id,
 			e.predicate,

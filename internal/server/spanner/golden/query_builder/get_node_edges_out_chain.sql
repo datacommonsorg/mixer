@@ -1,11 +1,11 @@
 		GRAPH DCGraph MATCH ANY (m:Node
 		WHERE
-			m.subject_id IN UNNEST(@ids))-[e:Edge
+			m.subject_id IN ('dc/g/Person_Gender'))-[e:Edge
 		WHERE
-			e.predicate = @predicate]->{1,10}(n:Node)
+			e.predicate = 'specializationOf']->{1,10}(n:Node)
 		RETURN
 			m.subject_id,
-			@result_predicate AS predicate,
+			'specializationOf+' AS predicate,
 			'' AS provenance,
 			n.value,
 			n.bytes,

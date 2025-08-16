@@ -1,14 +1,14 @@
 		GRAPH DCGraph MATCH (m:Node
 		WHERE
-			m.subject_id IN UNNEST(@ids))-[e:Edge]->(n:Node)
+			m.subject_id IN ('nuts/UKI1'))-[e:Edge]->(n:Node)
 		,(n)-[filter0:Edge
 		WHERE
-			filter0.predicate = @prop0
-			AND filter0.object_id IN UNNEST(@val0)]->
+			filter0.predicate = 'name'
+			AND filter0.object_id IN ('AdministrativeArea2','4cB0ui47vrAeY7MO/uBAvpsajxkYlJo3EW8fStdW4ko=')]->
 		,(n)-[filter1:Edge
 		WHERE
-			filter1.predicate = @prop1
-			AND filter1.object_id IN UNNEST(@val1)]->
+			filter1.predicate = 'subClassOf'
+			AND filter1.object_id IN ('AdministrativeArea','WXALAhw8j+Uz/Tw7uR3ClTolVepyj0tjRCKr6Xkw60s=')]->
 		RETURN
 		  m.subject_id,
 			n.subject_id AS value,
