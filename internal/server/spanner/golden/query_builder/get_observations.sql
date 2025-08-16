@@ -8,6 +8,7 @@
 			unit,
 			scaling_factor,
 			provenance_url,
+			is_dc_aggregate,
 			facet_id
 		FROM 
 			Observation

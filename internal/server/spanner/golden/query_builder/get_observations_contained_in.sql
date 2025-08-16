@@ -8,6 +8,7 @@
 			obs.unit,
 			obs.scaling_factor,
 			obs.provenance_url,
+			obs.is_dc_aggregate,
 			obs.facet_id
 		FROM 
 			GRAPH_TABLE (
@@ -28,6 +29,7 @@
 			unit,
 			scaling_factor,
 			provenance_url,
+			is_dc_aggregate,
 			facet_id
 		FROM 
 			Observation
