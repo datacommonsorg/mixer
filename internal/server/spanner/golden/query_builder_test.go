@@ -411,26 +411,32 @@ func TestSearchNodesQuery(t *testing.T) {
 
 // Replace params with values in SQL. ONLY FOR TESTS.
 func interpolateSQL(stmt *cloudSpanner.Statement) string {
-	interpolated := stmt.SQL
+	sqlString := stmt.SQL
 	for key, value := range stmt.Params {
-		var stringValue string
+		placeholder := "@" + key
+		var formattedValue string
+
 		switch v := value.(type) {
 		case string:
-			stringValue = fmt.Sprintf("'%s'", v)
-			interpolated = strings.ReplaceAll(interpolated, "@"+key, stringValue)
+			formattedValue = fmt.Sprintf("'%s'", strings.ReplaceAll(v, "'", "''"))
 		case []string:
-			quotedStrings := []string{}
+			// For UNNEST, represent the array as a comma-separated list
+			// enclosed in parentheses or brackets for clarity.
+			var quotedValues []string
 			for _, s := range v {
-				quotedStrings = append(quotedStrings, fmt.Sprintf("'%s'", s))
+				quotedValues = append(quotedValues, fmt.Sprintf("'%s'", strings.ReplaceAll(s, "'", "''")))
 			}
-			stringValue = strings.Join(quotedStrings, ",")
-			interpolated = strings.ReplaceAll(interpolated, "UNNEST(@"+key+")", "("+stringValue+")")
-			interpolated = strings.ReplaceAll(interpolated, "@"+key, "["+stringValue+"]")
-		// Add other types as needed
+			formattedValue = "(" + strings.Join(quotedValues, ",") + ")"
+			// Need to handle both UNNEST(@key) and @key
+			sqlString = strings.ReplaceAll(sqlString, "UNNEST("+placeholder+")", formattedValue)
+			placeholder = "@" + key // Ensure we don't mess up UNNEST replacement
+			formattedValue = "[" + strings.Join(quotedValues, ",") + "]"
+		// ... add more cases for int64, float64, bool, etc.
 		default:
-			stringValue = fmt.Sprintf("%v", v)
-			interpolated = strings.ReplaceAll(interpolated, "@"+key, stringValue)
+			// Catch-all for other types
+			formattedValue = fmt.Sprintf("%v", v)
 		}
+		sqlString = strings.ReplaceAll(sqlString, placeholder, formattedValue)
 	}
-	return interpolated
+	return sqlString
 }
