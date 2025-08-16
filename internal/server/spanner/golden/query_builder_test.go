@@ -417,19 +417,19 @@ func interpolateSQL(stmt *cloudSpanner.Statement) string {
 		switch v := value.(type) {
 		case string:
 			stringValue = fmt.Sprintf("'%s'", v)
-			interpolated = strings.Replace(interpolated, "@"+key, stringValue, -1)
+			interpolated = strings.ReplaceAll(interpolated, "@"+key, stringValue)
 		case []string:
 			quotedStrings := []string{}
 			for _, s := range v {
 				quotedStrings = append(quotedStrings, fmt.Sprintf("'%s'", s))
 			}
 			stringValue = strings.Join(quotedStrings, ",")
-			interpolated = strings.Replace(interpolated, "UNNEST(@"+key+")", "("+stringValue+")", -1)
-			interpolated = strings.Replace(interpolated, "@"+key, "["+stringValue+"]", -1)
+			interpolated = strings.ReplaceAll(interpolated, "UNNEST(@"+key+")", "("+stringValue+")")
+			interpolated = strings.ReplaceAll(interpolated, "@"+key, "["+stringValue+"]")
 		// Add other types as needed
 		default:
 			stringValue = fmt.Sprintf("%v", v)
-			interpolated = strings.Replace(interpolated, "@"+key, stringValue, -1)
+			interpolated = strings.ReplaceAll(interpolated, "@"+key, stringValue)
 		}
 	}
 	return interpolated
