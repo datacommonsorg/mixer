@@ -21,6 +21,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
+	"github.com/datacommonsorg/mixer/internal/server/statvar/search"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -245,4 +246,51 @@ func (s *Server) V2Sparql(
 		Sparql: in.Query,
 	}
 	return translator.Query(ctx, legacyRequest, s.metadata, s.store)
+}
+
+// FilterStatVarsByEntity implements API for Mixer.FilterStatVarsByEntity.
+func (s *Server) FilterStatVarsByEntity(
+	ctx context.Context, in *pb.FilterStatVarsByEntityRequest,
+) (*pb.FilterStatVarsByEntityResponse, error) {
+	errGroup, _ := errgroup.WithContext(ctx)
+
+	localResponseChan := make(chan *pb.FilterStatVarsByEntityResponse, 1)
+	remoteResponseChan := make(chan *pb.FilterStatVarsByEntityResponse, 1)
+
+	errGroup.Go(func() error {
+		localResponse, err := search.FilterStatVarsByEntity(ctx, in, s.store, s.cachedata.Load())
+		if err != nil {
+			return err
+		}
+		localResponseChan <- localResponse
+		return nil
+	})
+
+	remoteResponse := &pb.FilterStatVarsByEntityResponse{}
+	if s.metadata.RemoteMixerDomain != "" {
+		errGroup.Go(func() error {
+			if err := util.FetchRemote(
+				s.metadata,
+				s.httpClient,
+				"/v2/variable/filter",
+				in,
+				remoteResponse,
+			); err != nil {
+				return err
+			}
+			remoteResponseChan <- remoteResponse
+			return nil
+		})
+	} else {
+		remoteResponseChan <- nil
+	}
+
+	if err := errGroup.Wait(); err != nil {
+		return nil, err
+	}
+	close(localResponseChan)
+	close(remoteResponseChan)
+
+	merged := merger.MergeFilterStatVarsByEntityResponse(<-localResponseChan, <-remoteResponseChan)
+	return merged, nil
 }

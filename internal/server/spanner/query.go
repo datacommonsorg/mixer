@@ -18,10 +18,8 @@ package spanner
 import (
 	"context"
 	"fmt"
-	"strconv"
 
 	"cloud.google.com/go/spanner"
-	"github.com/datacommonsorg/mixer/internal/merger"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"google.golang.org/api/iterator"
 )
@@ -33,9 +31,6 @@ const (
 	PAGE_SIZE = 5000
 )
 
-// Predicates to search against if no predicates are provided.
-var defaultSearchPredicates = []string{"name", "description"}
-
 // GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction and returns a map.
 func (sc *SpannerClient) GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*Property, error) {
 	props := map[string][]*Property{}
@@ -46,24 +41,9 @@ func (sc *SpannerClient) GetNodeProps(ctx context.Context, ids []string, out boo
 		props[id] = []*Property{}
 	}
 
-	var stmt spanner.Statement
-
-	switch out {
-	case true:
-		stmt = spanner.Statement{
-			SQL:    statements.getPropsBySubjectID,
-			Params: map[string]interface{}{"ids": ids},
-		}
-	case false:
-		stmt = spanner.Statement{
-			SQL:    statements.getPropsByObjectID,
-			Params: map[string]interface{}{"ids": ids},
-		}
-	}
-
 	err := sc.queryAndCollect(
 		ctx,
-		stmt,
+		*GetNodePropsQuery(ids, out),
 		func() interface{} {
 			return &Property{}
 		},
@@ -95,61 +75,9 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 		return nil, fmt.Errorf("chain expressions are only supported for a single property")
 	}
 
-	params := map[string]interface{}{"ids": ids}
-
-	// Attach property arcs.
-	filterProps := ""
-	if arc.SingleProp != "" && arc.SingleProp != WILDCARD {
-		filterProps = statements.filterProps
-		params["props"] = []string{arc.SingleProp}
-	} else if len(arc.BracketProps) > 0 {
-		filterProps = statements.filterProps
-		params["props"] = arc.BracketProps
-	}
-
-	var template string
-	switch arc.Out {
-	case true:
-		if arc.Decorator == CHAIN {
-			template = fmt.Sprintf(statements.getChainedEdgesBySubjectID, MAX_HOPS)
-			params["predicate"] = arc.SingleProp
-			params["result_predicate"] = arc.SingleProp + arc.Decorator
-		} else {
-			template = fmt.Sprintf(statements.getEdgesBySubjectID, filterProps)
-		}
-	case false:
-		if arc.Decorator == CHAIN {
-			template = fmt.Sprintf(statements.getChainedEdgesByObjectID, MAX_HOPS)
-			params["predicate"] = arc.SingleProp
-			params["result_predicate"] = arc.SingleProp + arc.Decorator
-		} else {
-			template = fmt.Sprintf(statements.getEdgesByObjectID, filterProps)
-		}
-	}
-
-	// Attach filters.
-	i := 0
-	for prop, val := range arc.Filter {
-		template += fmt.Sprintf(statements.filterObjects, i)
-		params["prop"+strconv.Itoa(i)] = prop
-		params["val"+strconv.Itoa(i)] = val
-		i += 1
-	}
-
-	// Apply pagination.
-	if offset > 0 {
-		template += fmt.Sprintf(statements.applyOffset, offset)
-	}
-	template += statements.applyLimit
-
-	stmt := spanner.Statement{
-		SQL:    template,
-		Params: params,
-	}
-
 	err := sc.queryAndCollect(
 		ctx,
-		stmt,
+		*GetNodeEdgesByIDQuery(ids, arc, offset),
 		func() interface{} {
 			return &Edge{}
 		},
@@ -175,7 +103,7 @@ func (sc *SpannerClient) GetObservations(ctx context.Context, variables []string
 
 	err := sc.queryAndCollect(
 		ctx,
-		buildBaseObsStatement(variables, entities),
+		*GetObservationsQuery(variables, entities),
 		func() interface{} {
 			return &Observation{}
 		},
@@ -198,14 +126,9 @@ func (sc *SpannerClient) GetObservationsContainedInPlace(ctx context.Context, va
 		return observations, nil
 	}
 
-	stmt := buildBaseObsStatement(variables, []string{} /*entities*/)
-	stmt.SQL = fmt.Sprintf(statements.getObsByVariableAndContainedInPlace, stmt.SQL)
-	stmt.Params["ancestor"] = containedInPlace.Ancestor
-	stmt.Params["childPlaceType"] = containedInPlace.ChildPlaceType
-
 	err := sc.queryAndCollect(
 		ctx,
-		stmt,
+		*GetObservationsContainedInPlaceQuery(variables, containedInPlace),
 		func() interface{} {
 			return &Observation{}
 		},
@@ -230,75 +153,9 @@ func (sc *SpannerClient) SearchNodes(ctx context.Context, query string, types []
 		return nodes, nil
 	}
 
-	var stmt spanner.Statement
-
-	if len(types) == 0 {
-		stmt = spanner.Statement{
-			SQL: statements.searchNodesByQuery,
-			Params: map[string]interface{}{
-				"query": query,
-			},
-		}
-	} else {
-		stmt = spanner.Statement{
-			SQL: statements.searchNodesByQueryAndTypes,
-			Params: map[string]interface{}{
-				"query": query,
-				"types": types,
-			},
-		}
-	}
-
 	err := sc.queryAndCollect(
 		ctx,
-		stmt,
-		func() interface{} {
-			return &SearchNode{}
-		},
-		func(rowStruct interface{}) {
-			node := rowStruct.(*SearchNode)
-			nodes = append(nodes, node)
-		},
-	)
-	if err != nil {
-		return nodes, err
-	}
-
-	return nodes, nil
-}
-
-// SearchObjectValues searches object values for the specified predicates in the graph based on the query and optionally the types.
-// If the types array is empty, it searches across nodes of all types.
-// A maximum of 100 results are returned.
-func (sc *SpannerClient) SearchObjectValues(ctx context.Context, query string, predicates []string, types []string) ([]*SearchNode, error) {
-	var nodes []*SearchNode
-	if query == "" {
-		return nodes, nil
-	}
-
-	if len(predicates) == 0 {
-		predicates = defaultSearchPredicates
-	}
-
-	stmt := spanner.Statement{
-		SQL: statements.searchObjectValues,
-		Params: map[string]interface{}{
-			"query":      query,
-			"predicates": predicates,
-		},
-	}
-
-	// Interpolate the types filter if provided.
-	if len(types) > 0 {
-		stmt.SQL = fmt.Sprintf(stmt.SQL, statements.filterTypes, merger.MAX_SEARCH_RESULTS)
-		stmt.Params["types"] = types
-	} else {
-		stmt.SQL = fmt.Sprintf(stmt.SQL, "", merger.MAX_SEARCH_RESULTS)
-	}
-
-	err := sc.queryAndCollect(
-		ctx,
-		stmt,
+		*SearchNodesQuery(query, types),
 		func() interface{} {
 			return &SearchNode{}
 		},

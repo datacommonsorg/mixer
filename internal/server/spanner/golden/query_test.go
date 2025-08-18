@@ -347,7 +347,6 @@ func TestGetObservations(t *testing.T) {
 	for _, c := range []struct {
 		variables  []string
 		entities   []string
-		date       string
 		goldenFile string
 	}{
 		{
@@ -404,12 +403,11 @@ func TestGetObservationsContainedInPlace(t *testing.T) {
 	for _, c := range []struct {
 		variables        []string
 		containedInPlace *v2.ContainedInPlace
-		date             string
 		goldenFile       string
 	}{
 		{
 			variables:        []string{"Count_Person", "Median_Age_Person"},
-			containedInPlace: &v2.ContainedInPlace{Ancestor: "geoId/06", ChildPlaceType: "County"},
+			containedInPlace: &v2.ContainedInPlace{Ancestor: "geoId/10", ChildPlaceType: "County"},
 			goldenFile:       "get_observations_contained_in.json",
 		},
 	} {
@@ -498,76 +496,6 @@ func TestSearchNodes(t *testing.T) {
 			t.Errorf("%v payload mismatch (-want +got):\n%s", c.goldenFile, diff)
 		}
 	}
-
-}
-func TestSearchObjectValues(t *testing.T) {
-	client := test.NewSpannerClient()
-	if client == nil {
-		return
-	}
-
-	t.Parallel()
-	ctx := context.Background()
-	_, filename, _, _ := runtime.Caller(0)
-	goldenDir := path.Join(path.Dir(filename), "query")
-
-	for _, c := range []struct {
-		query      string
-		predicates []string
-		types      []string
-		goldenFile string
-	}{
-		{
-			query:      "income",
-			goldenFile: "search_object_values_with_query.json",
-		},
-		{
-			query:      "income",
-			types:      []string{"StatisticalVariable"},
-			goldenFile: "search_object_values_with_query_and_type.json",
-		},
-		{
-			query:      "ether",
-			predicates: []string{"alternateName"},
-			goldenFile: "search_object_values_with_query_and_predicates.json",
-		},
-		{
-			query:      "ether",
-			predicates: []string{"alternateName"},
-			types:      []string{"ChemicalCompound"},
-			goldenFile: "search_object_values_with_query_predicates_and_types.json",
-		},
-	} {
-		actual, err := client.SearchObjectValues(ctx, c.query, c.predicates, c.types)
-		if err != nil {
-			t.Fatalf("TestObjectValues error (%v): %v", c.goldenFile, err)
-		}
-
-		actual = simplifySearchNodes(actual)
-
-		got, err := test.StructToJSON(actual)
-		if err != nil {
-			t.Fatalf("StructToJSON error (%v): %v", c.goldenFile, err)
-		}
-
-		if test.GenerateGolden {
-			err = test.WriteGolden(got, goldenDir, c.goldenFile)
-			if err != nil {
-				t.Fatalf("WriteGolden error (%v): %v", c.goldenFile, err)
-			}
-			continue
-		}
-
-		want, err := test.ReadGolden(goldenDir, c.goldenFile)
-		if err != nil {
-			t.Fatalf("ReadGolden error (%v): %v", c.goldenFile, err)
-		}
-
-		if diff := cmp.Diff(want, got); diff != "" {
-			t.Errorf("%v payload mismatch (-want +got):\n%s", c.goldenFile, diff)
-		}
-	}
-
 }
 
 // simplifySearchNodes simplifies search results for goldens.

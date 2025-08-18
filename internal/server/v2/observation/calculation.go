@@ -78,7 +78,7 @@ func MaybeCalculateHoles(
 	result := []*pbv2.ObservationResponse{}
 	holes := FindObservationResponseHoles(inputReq, inputResp)
 	for variable, entity := range holes {
-		formulas, ok := cachedata.SVFormula()[variable]
+		formulas, ok := cachedata.SVFormula(ctx)[variable]
 		if !ok {
 			continue
 		}

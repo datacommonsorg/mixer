@@ -12,9 +12,8 @@
               "provenance_id": "dc/base/BaseGeos"
             },
             {
-              "name": "Franklin",
               "types": [
-                "County"
+                "Thing"
               ],
               "dcid": "geoId/51620",
               "provenance_id": "dc/base/BaseGeos"

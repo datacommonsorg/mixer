@@ -17,17 +17,18 @@
 
 steps:
   # Trigger downstream builds that listen for changes to multiple repos.
-  # - id: update-repo-version
-  #   name: "gcr.io/cloud-builders/git"
-  #   entrypoint: /bin/bash
-  #   args:
-  #     - -c
-  #     - |
-  #       set -e
-  #       gcloud source repos clone deployment /tmp/deployment --project=datcom-ci
-  #       cd /tmp/deployment
-  #       ./scripts/update_external_repo_version.sh $REPO_NAME $SHORT_SHA
-  #   waitFor: ["-"]
+  #   - id: update-repo-version
+  #     name: "gcr.io/cloud-builders/git"
+  #     entrypoint: /bin/bash
+  #     args:
+  #       - -c
+  #       - |
+  #         set -e
+  #         if [ "$_SKIP_REPO_VERSION_UPDATE" == "true" ] ; then exit 0 ; fi
+  #         gcloud source repos clone deployment /tmp/deployment --project=datcom-ci
+  #         cd /tmp/deployment
+  #          ./scripts/update_external_repo_version.sh $REPO_NAME $SHORT_SHA
+  #     waitFor: ["-"]
 
   # Build protobuf and grpc descriptor
   - id: build-proto
@@ -105,6 +106,7 @@ steps:
 
 substitutions:
   _SKIP_AUTOPUSH_UPDATE: "true"
+  _SKIP_REPO_VERSION_UPDATE: "false"
   _GO_PROTOC_VERSION: "2025-07-30"
 
 options:

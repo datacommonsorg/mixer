@@ -13,6 +13,7 @@ mixer:
   useSpannerGraph: true
   useRedis: true
   enableV3: true
+  enableOtlp: true
 
 ingress:
   enabled: true

@@ -5,7 +5,7 @@
         "geoId/01001": {
           "ordered_facets": [
             {
-              "facet_id": "1582371966",
+              "facet_id": "1118384277",
               "observations": [
                 {
                   "date": "2023",
@@ -21,7 +21,7 @@
         "geoId/02013": {
           "ordered_facets": [
             {
-              "facet_id": "1582371966",
+              "facet_id": "1118384277",
               "observations": [
                 {
                   "date": "2023",
@@ -38,11 +38,12 @@
     }
   },
   "facets": {
-    "1582371966": {
+    "1118384277": {
       "import_name": "EPA_EJSCREEN_AggCensusTract_AggCounty",
       "provenance_url": "https://gaftp.epa.gov/EJSCREEN/",
       "observation_period": "P1Y",
-      "unit": "PerMillionPerson"
+      "unit": "PerMillionPerson",
+      "is_dc_aggregate": true
     }
   }
 }

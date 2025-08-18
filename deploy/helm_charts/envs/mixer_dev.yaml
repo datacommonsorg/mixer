@@ -8,6 +8,7 @@ mixer:
   serviceName: dev.api.datacommons.org
   project: datcom-mixer-dev-316822
   cluster_prefix: mixer
+  enableOtlp: true
 
 ingress:
   enabled: true

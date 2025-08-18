@@ -236,3 +236,15 @@ message SearchStatVarResponse {
   // tokens
   repeated string matches = 3;
 }
+
+message FilterStatVarsByEntityRequest {
+  // A list of stat vars to be filtered.
+  repeated EntityInfo stat_vars = 1;
+  // Places/sources to filter by.
+  repeated string entities = 2;
+}
+
+message FilterStatVarsByEntityResponse {
+  // A list of stat vars that match the entities in the request.
+  repeated EntityInfo stat_vars = 1;
+}

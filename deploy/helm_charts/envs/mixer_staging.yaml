@@ -9,6 +9,7 @@ mixer:
   serviceName: staging.api.datacommons.org
   project: datcom-mixer-staging
   cluster_prefix: mixer
+  enableOtlp: true
 
 ingress:
   enabled: true
