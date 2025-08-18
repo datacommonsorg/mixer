@@ -158,7 +158,7 @@ func DCLog(tag DCLogTag, msg string) {
 const (
 	// Whether to skip reading from Redis cache.
 	// To use, set header "X-Skip-Cache: true"
-	XSkipCache string = "x-skip-cache"
+	XSkipCache string = "X-Skip-Cache"
 )
 
 // ZipAndEncode compresses the given content using gzip and encodes it in base64
