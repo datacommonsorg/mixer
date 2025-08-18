@@ -154,6 +154,13 @@ func DCLog(tag DCLogTag, msg string) {
 	log.Printf("[DC][%s] %s", tag, msg)
 }
 
+// Custom RPC headers
+const (
+	// Whether to skip reading from Redis cache.
+	// To use, set header "X-Skip-Cache: true"
+	XSkipCache string = "x-skip-cache"
+)
+
 // ZipAndEncode compresses the given content using gzip and encodes it in base64
 func ZipAndEncode(content []byte) (string, error) {
 	// Zip the content

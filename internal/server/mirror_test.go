@@ -24,10 +24,12 @@ import (
 	"time"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/sdk/metric"
 	"go.opentelemetry.io/otel/sdk/metric/metricdata"
 	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
 )
@@ -77,15 +79,19 @@ func TestMaybeMirrorV3_Percentage(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			s := &Server{v3MirrorPercent: tc.mirrorPercent}
 			var wg sync.WaitGroup
-			wg.Add(1)
+			wg.Add(2)
 			mirrorCallCount := 0
-			var mirroredReq proto.Message
+			var mirroredReqs []proto.Message
+			var skipCacheHeaderValues []bool
 
 			v3Call := func(ctx context.Context, req proto.Message) (proto.Message, error) {
-				// Capture the request that was actually passed to the mirror call.
-				mirroredReq = req
+				mirroredReqs = append(mirroredReqs, req)
+				md, _ := metadata.FromOutgoingContext(ctx)
+				v := md.Get(string(util.XSkipCache))
+				skipCache := len(v) > 0 && v[0] == "true"
+				skipCacheHeaderValues = append(skipCacheHeaderValues, skipCache)
 				mirrorCallCount++
-				wg.Done()
+				defer wg.Done()
 				return &pbv2.NodeResponse{}, nil
 			}
 
@@ -93,11 +99,17 @@ func TestMaybeMirrorV3_Percentage(t *testing.T) {
 
 			if tc.shouldMirror {
 				waitForWaitGroup(t, &wg)
-				if mirrorCallCount != 1 {
-					t.Errorf("expected mirror call, but it was not called")
+				if mirrorCallCount != 2 {
+					t.Errorf("expected 2 mirror calls, but got %d", mirrorCallCount)
 				}
-				if !proto.Equal(req, mirroredReq) {
+				if !proto.Equal(req, mirroredReqs[0]) || !proto.Equal(req, mirroredReqs[1]) {
 					t.Errorf("mirrored request was not equal to the original request")
+				}
+				if skipCacheHeaderValues[0] {
+					t.Errorf("expected the first call to allow cache usage")
+				}
+				if !skipCacheHeaderValues[1] {
+					t.Errorf("expected the second call to skip the cache")
 				}
 			} else {
 				// Give the goroutine a chance to run if it was incorrectly started.
@@ -106,7 +118,6 @@ func TestMaybeMirrorV3_Percentage(t *testing.T) {
 					t.Errorf("expected no mirror call, but it was called")
 				}
 			}
-
 		})
 	}
 }
@@ -140,7 +151,7 @@ func TestMaybeMirrorV3_LatencyMetric(t *testing.T) {
 	resp := &pbv2.NodeResponse{}
 
 	var wg sync.WaitGroup
-	wg.Add(1)
+	wg.Add(2)
 	v3Call := func(ctx context.Context, req proto.Message) (proto.Message, error) {
 		defer wg.Done()
 		return &pbv2.NodeResponse{}, nil
@@ -169,8 +180,20 @@ func TestMaybeMirrorV3_LatencyMetric(t *testing.T) {
 			if !ok {
 				t.Fatalf("metric is not a histogram")
 			}
-			if len(hist.DataPoints) != 1 {
-				t.Fatalf("expected 1 datapoint for latency, got %d", len(hist.DataPoints))
+			if len(hist.DataPoints) != 2 {
+				t.Fatalf("expected 2 datapoints for latency, got %d", len(hist.DataPoints))
+			}
+			for _, dp := range hist.DataPoints {
+				foundAttr := false
+				for _, attr := range dp.Attributes.ToSlice() {
+					if attr.Key == "rpc.headers.skip_cache" {
+						foundAttr = true
+						break
+					}
+				}
+				if !foundAttr {
+					t.Error("latency metric missing 'rpc.headers.skip_cache' attribute")
+				}
 			}
 			break
 		}
@@ -190,7 +213,7 @@ func TestMaybeMirrorV3_ResponseMismatch(t *testing.T) {
 	v3Resp := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{"test_diff": {}}}
 
 	var wg sync.WaitGroup
-	wg.Add(1)
+	wg.Add(2)
 	v3Call := func(ctx context.Context, req proto.Message) (proto.Message, error) {
 		defer wg.Done()
 		return v3Resp, nil
@@ -207,8 +230,8 @@ func TestMaybeMirrorV3_ResponseMismatch(t *testing.T) {
 	time.Sleep(100 * time.Millisecond)
 
 	logOutput := buf.String()
-	if !strings.Contains(logOutput, "V3 mirrored call had a different response") {
-		t.Errorf("log output should contain diff warning, but got: %q", logOutput)
+	if strings.Count(logOutput, "V3 mirrored call had a different response") != 2 {
+		t.Errorf("log output should contain 2 diff warnings, but got: %q", logOutput)
 	}
 
 	var rm metricdata.ResourceMetrics
@@ -234,8 +257,8 @@ func TestMaybeMirrorV3_ResponseMismatch(t *testing.T) {
 	if !found {
 		t.Error("datacommons.mixer.v3_response_mismatches metric not found")
 	}
-	if mismatchCount != 1 {
-		t.Errorf("mismatch count: got %d, want 1", mismatchCount)
+	if mismatchCount != 2 {
+		t.Errorf("mismatch count: got %d, want 2", mismatchCount)
 	}
 }
 
@@ -266,7 +289,7 @@ func TestMaybeMirrorV3_ResponseMatch(t *testing.T) {
 	// A WaitGroup is needed because the V3 call is made in a separate goroutine
 	// to avoid blocking the original V2 response.
 	var wg sync.WaitGroup
-	wg.Add(1)
+	wg.Add(2)
 	v3Call := func(ctx context.Context, req proto.Message) (proto.Message, error) {
 		defer wg.Done()
 		return v3Resp, nil
@@ -322,7 +345,7 @@ func TestMaybeMirrorV3_V3Error(t *testing.T) {
 	v2Resp := &pbv2.NodeResponse{}
 
 	var wg sync.WaitGroup
-	wg.Add(1)
+	wg.Add(2)
 	v3Call := func(ctx context.Context, req proto.Message) (proto.Message, error) {
 		defer wg.Done()
 		return nil, status.Error(codes.Internal, "V3 API error")
@@ -339,8 +362,8 @@ func TestMaybeMirrorV3_V3Error(t *testing.T) {
 	time.Sleep(100 * time.Millisecond)
 
 	logOutput := buf.String()
-	if !strings.Contains(logOutput, "V3 mirrored call failed") {
-		t.Errorf("log output should contain error warning, but got: %q", logOutput)
+	if strings.Count(logOutput, "V3 mirrored call failed") != 2 {
+		t.Errorf("log output should contain 2 error warnings, but got: %q", logOutput)
 	}
 
 	var rm metricdata.ResourceMetrics
@@ -377,7 +400,7 @@ func TestMaybeMirrorV3_V3Error(t *testing.T) {
 	if !found {
 		t.Error("datacommons.mixer.v3_mirror_errors metric not found")
 	}
-	if errorCount != 1 {
-		t.Errorf("error count: got %d, want 1", errorCount)
+	if errorCount != 2 {
+		t.Errorf("error count: got %d, want 2", errorCount)
 	}
 }

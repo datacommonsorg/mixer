@@ -20,14 +20,9 @@ import (
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/proto"
-)
-
-const (
-	// Whether to skip reading from Redis cache.
-	// To use, set header "X-Skip-Cache: true"
-	XSkipCache = "X-Skip-Cache"
 )
 
 // CacheProcessor implements the dispatcher.Processor interface for performing caching operations.
@@ -86,7 +81,7 @@ func newEmptyResponse(requestType dispatcher.RequestType) proto.Message {
 // skipCache checks whether to skip Redis cache.
 func skipCache(ctx context.Context) bool {
 	if md, ok := metadata.FromIncomingContext(ctx); ok {
-		headers := md.Get(XSkipCache)
+		headers := md.Get(util.XSkipCache)
 		return len(headers) > 0 && headers[0] == "true"
 	}
 	return false

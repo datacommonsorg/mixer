@@ -226,7 +226,7 @@ func RecordCachedataRead(ctx context.Context, cacheType string) {
 
 // RecordV3LatencyDiff records the latency difference between an API call and a
 // mirrored equivalent V3 call.
-func RecordV3LatencyDiff(ctx context.Context, diff time.Duration) {
+func RecordV3LatencyDiff(ctx context.Context, diff time.Duration, skipCache bool) {
 	latencyDiffHistogram, _ := otel.GetMeterProvider().Meter(meterName).
 		Int64Histogram("datacommons.mixer.v3_latency_diff",
 			metric.WithDescription("Difference in latency between mirrored V3 API calls in milliseconds (v3 minus original)"),
@@ -235,6 +235,7 @@ func RecordV3LatencyDiff(ctx context.Context, diff time.Duration) {
 	latencyDiffHistogram.Record(ctx, diff.Milliseconds(),
 		metric.WithAttributes(
 			attribute.String(rpcMethodAttr, getRpcMethod(ctx)),
+			attribute.Bool("rpc.headers.skip_cache", !skipCache),
 		))
 }
 

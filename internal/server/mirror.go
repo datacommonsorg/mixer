@@ -22,7 +22,9 @@ import (
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/metrics"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/testing/protocmp"
 )
@@ -49,12 +51,6 @@ func (s *Server) maybeMirrorV3(
 	}
 }
 
-// mirrorV3 mirrors an existing API request to its V3 equivalent, compares latency,
-// and logs any differences in the response.
-// Metrics are used to record the latency difference and count how often
-// the responses differ.
-// This is run in a separate goroutine to not block the response to the original
-// request.
 func (s *Server) mirrorV3(
 	ctx context.Context,
 	originalReq proto.Message,
@@ -62,25 +58,51 @@ func (s *Server) mirrorV3(
 	originalLatency time.Duration,
 	v3Call func(ctx context.Context, req proto.Message) (proto.Message, error),
 ) {
+	s.mirrorV3Internal(ctx, originalReq, originalResp, originalLatency, v3Call, false /* skipCache */)
+	s.mirrorV3Internal(ctx, originalReq, originalResp, originalLatency, v3Call, true /* skipCache */)
+}
+
+// mirrorV3Internal mirrors an existing API request to its V3 equivalent, compares latency,
+// and logs any differences in the response.
+// Metrics are used to record the latency difference and count how often
+// the responses differ.
+// This is run in a separate goroutine to not block the response to the original
+// request.
+func (s *Server) mirrorV3Internal(
+	ctx context.Context,
+	originalReq proto.Message,
+	originalResp proto.Message,
+	originalLatency time.Duration,
+	v3Call func(ctx context.Context, req proto.Message) (proto.Message, error),
+	skipCache bool,
+) {
 	reqClone := proto.Clone(originalReq)
 
 	go func() {
 		v3StartTime := time.Now()
-		v3Resp, v3Err := v3Call(context.Background(), reqClone)
+		var v3Resp proto.Message
+		var v3Err error
+		var v3Ctx context.Context
+		if skipCache {
+			v3Ctx = metadata.NewOutgoingContext(context.Background(), metadata.Pairs(string(util.XSkipCache), "true"))
+		} else {
+			v3Ctx = context.Background()
+		}
+		v3Resp, v3Err = v3Call(v3Ctx, reqClone)
 		v3Latency := time.Since(v3StartTime)
 
 		latencyDiff := v3Latency - originalLatency
-		metrics.RecordV3LatencyDiff(ctx, latencyDiff)
+		metrics.RecordV3LatencyDiff(ctx, latencyDiff, skipCache)
 
 		rpcMethod := reflect.TypeOf(originalReq).Elem().Name()
 		if v3Err != nil {
-			log.Printf("V3 mirrored call failed. V3 Method: %s, Error: %v", rpcMethod, v3Err)
+			log.Printf("V3 mirrored call failed. V3 Method: %s, skipCache: %t, Error: %v", rpcMethod, skipCache, v3Err)
 			metrics.RecordV3MirrorError(ctx, v3Err)
 			return
 		}
 
 		if diff := cmp.Diff(originalResp, v3Resp, protocmp.Transform()); diff != "" {
-			log.Printf("V3 mirrored call had a different response. V3 Method: %s. Diff: %s", rpcMethod, diff)
+			log.Printf("V3 mirrored call had a different response. V3 Method: %s, skipCache: %t, Diff: %s", rpcMethod, skipCache, diff)
 			metrics.RecordV3Mismatch(ctx)
 		}
 	}()
