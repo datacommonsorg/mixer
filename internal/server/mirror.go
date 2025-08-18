@@ -79,6 +79,10 @@ func (s *Server) mirrorV3Internal(
 	reqClone := proto.Clone(originalReq)
 
 	go func() {
+		// Create a new context for this goroutine, so it does not get canceled
+		// with the original request.
+		mirrorCtx := metrics.NewContext(ctx)
+
 		v3StartTime := time.Now()
 		var v3Resp proto.Message
 		var v3Err error
@@ -92,18 +96,18 @@ func (s *Server) mirrorV3Internal(
 		v3Latency := time.Since(v3StartTime)
 
 		latencyDiff := v3Latency - originalLatency
-		metrics.RecordV3LatencyDiff(ctx, latencyDiff, skipCache)
+		metrics.RecordV3LatencyDiff(mirrorCtx, latencyDiff, skipCache)
 
 		rpcMethod := reflect.TypeOf(originalReq).Elem().Name()
 		if v3Err != nil {
 			log.Printf("V3 mirrored call failed. V3 Method: %s, skipCache: %t, Error: %v", rpcMethod, skipCache, v3Err)
-			metrics.RecordV3MirrorError(ctx, v3Err)
+			metrics.RecordV3MirrorError(mirrorCtx, v3Err)
 			return
 		}
 
 		if diff := cmp.Diff(originalResp, v3Resp, protocmp.Transform()); diff != "" {
 			log.Printf("V3 mirrored call had a different response. V3 Method: %s, skipCache: %t, Diff: %s", rpcMethod, skipCache, diff)
-			metrics.RecordV3Mismatch(ctx)
+			metrics.RecordV3Mismatch(mirrorCtx)
 		}
 	}()
 }

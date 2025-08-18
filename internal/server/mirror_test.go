@@ -82,7 +82,7 @@ func TestMaybeMirrorV3_Percentage(t *testing.T) {
 			wg.Add(2)
 			mirrorCallCount := 0
 			var mirroredReqs []proto.Message
-			var skipCacheHeaderValues []bool
+			skipCacheHeaderValues := make(chan bool, 2)
 			var mu sync.Mutex
 
 			v3Call := func(ctx context.Context, req proto.Message) (proto.Message, error) {
@@ -92,7 +92,7 @@ func TestMaybeMirrorV3_Percentage(t *testing.T) {
 				md, _ := metadata.FromOutgoingContext(ctx)
 				v := md.Get(string(util.XSkipCache))
 				skipCache := len(v) > 0 && v[0] == "true"
-				skipCacheHeaderValues = append(skipCacheHeaderValues, skipCache)
+				skipCacheHeaderValues <- skipCache
 				mirrorCallCount++
 				wg.Done()
 				return &pbv2.NodeResponse{}, nil
@@ -108,10 +108,10 @@ func TestMaybeMirrorV3_Percentage(t *testing.T) {
 				if !proto.Equal(req, mirroredReqs[0]) || !proto.Equal(req, mirroredReqs[1]) {
 					t.Errorf("mirrored request was not equal to the original request")
 				}
-				if skipCacheHeaderValues[0] {
+				if <-skipCacheHeaderValues {
 					t.Errorf("expected the first call to allow cache usage")
 				}
-				if !skipCacheHeaderValues[1] {
+				if !<-skipCacheHeaderValues {
 					t.Errorf("expected the second call to skip the cache")
 				}
 			} else {

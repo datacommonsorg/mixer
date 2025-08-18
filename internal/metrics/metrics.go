@@ -97,6 +97,12 @@ func getRpcMethod(ctx context.Context) string {
 	return methodName
 }
 
+// NewContext creates a new context for mirroring, copying over the RPC method
+// from an existing context.
+func NewContext(baseCtx context.Context) context.Context {
+	return context.WithValue(context.Background(), rpcMethodContextKey, getRpcMethod(baseCtx))
+}
+
 // For non-streaming RPC endpoints, extracts the RPC method name and adds it to the context.
 func InjectMethodNameUnaryInterceptor(
 	ctx context.Context,
@@ -235,7 +241,7 @@ func RecordV3LatencyDiff(ctx context.Context, diff time.Duration, skipCache bool
 	latencyDiffHistogram.Record(ctx, diff.Milliseconds(),
 		metric.WithAttributes(
 			attribute.String(rpcMethodAttr, getRpcMethod(ctx)),
-			attribute.Bool("rpc.headers.skip_cache", !skipCache),
+			attribute.Bool("rpc.headers.skip_cache", skipCache),
 		))
 }
 
