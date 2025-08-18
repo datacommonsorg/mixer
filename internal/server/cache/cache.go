@@ -20,6 +20,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/datacommonsorg/mixer/internal/metrics"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/fetcher"
@@ -42,6 +43,7 @@ type CacheOptions struct {
 }
 
 // Cache holds cached data for the mixer server.
+// TODO Instrument this class
 type Cache struct {
 	// parentSvgs is a map of sv/svg id to a list of its parent svgs sorted alphabetically.
 	parentSvgs map[string][]string
@@ -61,31 +63,38 @@ type Cache struct {
 	options CacheOptions
 }
 
-func (c *Cache) ParentSvgs() map[string][]string {
+func (c *Cache) ParentSvgs(ctx context.Context) map[string][]string {
+	metrics.RecordCachedataRead(ctx, "parent_svgs")
 	return c.parentSvgs
 }
 
-func (c *Cache) RawSvgs() map[string]*pb.StatVarGroupNode {
+func (c *Cache) RawSvgs(ctx context.Context) map[string]*pb.StatVarGroupNode {
+	metrics.RecordCachedataRead(ctx, "raw_svgs")
 	return c.rawSvgs
 }
 
-func (c *Cache) BlocklistSvgs() map[string]struct{} {
+func (c *Cache) BlocklistSvgs(ctx context.Context) map[string]struct{} {
+	metrics.RecordCachedataRead(ctx, "blocklist_svgs")
 	return c.blocklistSvgs
 }
 
-func (c *Cache) SvgSearchIndex() *resource.SearchIndex {
+func (c *Cache) SvgSearchIndex(ctx context.Context) *resource.SearchIndex {
+	metrics.RecordCachedataRead(ctx, "svg_search_index")
 	return c.svgSearchIndex
 }
 
-func (c *Cache) SQLProvenances() map[string]*pb.Facet {
+func (c *Cache) SQLProvenances(ctx context.Context) map[string]*pb.Facet {
+	metrics.RecordCachedataRead(ctx, "sql_provenances")
 	return c.sqlProvenances
 }
 
-func (c *Cache) SQLExistenceMap() map[util.EntityVariable]struct{} {
+func (c *Cache) SQLExistenceMap(ctx context.Context) map[util.EntityVariable]struct{} {
+	metrics.RecordCachedataRead(ctx, "sql_existence_map")
 	return c.sqlExistenceMap
 }
 
-func (c *Cache) SVFormula() map[string][]string {
+func (c *Cache) SVFormula(ctx context.Context) map[string][]string {
+	metrics.RecordCachedataRead(ctx, "sv_formulas")
 	return c.svFormulas
 }
 

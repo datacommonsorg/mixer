@@ -18,16 +18,20 @@
 #
 # Usage:
 #
-# ./deploy_key.sh <"mixer_prod"|"mixer_staging"|"mixer_autopush"|"mixer_encode"|"mixer_dev"|"mixer_private"> <commit_hash>
+# ./deploy_gke.sh <"mixer_prod"|"mixer_staging"|"mixer_autopush"|"mixer_encode"|"mixer_dev"|"mixer_private"> <commit_hash>
 #
 # First argument is either "mixer_prod" or "mixer_staging" or "mixer_autopush" or "mixer_encode" or "mixer_dev" or mixer_private.
 # (Optional) second argument is the git commit hash of the mixer repo.
 #
 # !!! WARNING: Run this script in a clean Git checkout at the desired commit.
 #
-# This retrives the docker images and gRPC descriptor based on git commit hash,
-# so these binaries should have been pushed to container registry and Cloud
-# Storage by the continous deployment flow (../build/ci/cloudbuild.push.yaml).
+# This retrives the docker images and gRPC descriptor based on git commit hash
+# if they have been pushed to Artifact Registry and Cloud Storage by the
+# continous deployment flow (../build/ci/cloudbuild.push.yaml), or pushes them
+# if they are not found.
+#
+# This also checks for a telemetry collector workload and deploys one if it is
+# not found.
 
 set -e
 
@@ -82,6 +86,10 @@ export DOMAIN=$(yq eval '.mixer.serviceName' deploy/helm_charts/envs/$ENV.yaml)
 export API_TITLE=$(yq eval '.api_title' deploy/helm_charts/envs/$ENV.yaml)
 export CLUSTER_NAME=mixer-$REGION
 
+# Create a release specific image for the deployment, if it does not exist.
+IMAGE_ERR=$(gcloud container images describe gcr.io/datcom-ci/datacommons-mixer:"$TAG" > /dev/null 2>&1; echo $?)
+if [[ "$IMAGE_ERR" == "1" ]];  then ./scripts/push_binary.sh "$TAG"; fi
+
 # Deploy Cloud Endpoints
 cp $ROOT/esp/endpoints.yaml.tmpl endpoints.yaml
 yq eval -i '.name = env(DOMAIN)' endpoints.yaml
@@ -105,12 +113,17 @@ kubectl delete configmap service-config-configmap -n mixer  --ignore-not-found
 kubectl create configmap service-config-configmap -n mixer \
   --from-file=service_config.json=/tmp/service_config.json
 
+
+# If OTLP is enabled, ensure a collector is deployed
+OTLP_ENABLED=$(yq eval '.mixer.enableOtlp' "deploy/helm_charts/envs/$ENV.yaml")
+if [[ "$OTLP_ENABLED" == "true" ]]; then
+  echo "OTLP is enabled for $ENV."
+  PROJECT_NUMBER=$(gcloud projects describe "$PROJECT_ID" --format="value(projectNumber)")
+  scripts/deploy_otlp_collector.sh "$PROJECT_ID" "$PROJECT_NUMBER"
+fi
+
 # Change "mixer_prod" for example, to "mixer-prod"
 RELEASE=${ENV//_/-}
-
-# Create a release specific image for the deployment, if it does not exist.
-IMAGE_ERR=$(gcloud container images describe gcr.io/datcom-ci/datacommons-mixer:"$TAG" > /dev/null ; echo $?)
-if [[ "$IMAGE_ERR" == "1" ]];  then ./scripts/push_binary.sh "$TAG"; fi
 
 # Upgrade or install Mixer helm chart into the cluster
 helm upgrade --install "$RELEASE" deploy/helm_charts/mixer \
@@ -126,4 +139,4 @@ helm upgrade --install "$RELEASE" deploy/helm_charts/mixer \
   --set-file kgStoreConfig.bigqueryVersion=deploy/storage/bigquery.version \
   --set-file kgStoreConfig.baseBigtableInfo=deploy/storage/base_bigtable_info.yaml \
   --set-file kgStoreConfig.spannerGraphInfo=deploy/storage/spanner_graph_info.yaml \
-  --set-file kgStoreConfig.redisInfo=deploy/storage/redis_info.yaml \
+  --set-file kgStoreConfig.redisInfo=deploy/storage/redis_info.yaml

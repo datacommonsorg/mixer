@@ -6,7 +6,7 @@
         "wikidataId/Q4671576": {
           "ordered_facets": [
             {
-              "facet_id": "1286017793",
+              "facet_id": "1158702866",
               "observations": [
                 {
                   "date": "2023-11",
@@ -22,7 +22,7 @@
               "latest_date": "2023-12"
             },
             {
-              "facet_id": "767211349",
+              "facet_id": "1159060358",
               "observations": [
                 {
                   "date": "2023",
@@ -43,7 +43,7 @@
         "wikidataId/Q4671576": {
           "ordered_facets": [
             {
-              "facet_id": "1861139314",
+              "facet_id": "796925099",
               "observations": [
                 {
                   "date": "2012-09",
@@ -75,7 +75,7 @@
               "latest_date": "2022-02"
             },
             {
-              "facet_id": "2856967510",
+              "facet_id": "797282591",
               "observations": [
                 {
                   "date": "2012",
@@ -116,7 +116,7 @@
         "wikidataId/Q4671576": {
           "ordered_facets": [
             {
-              "facet_id": "2074204934",
+              "facet_id": "1332001213",
               "observations": [
                 {
                   "date": "2023-11",
@@ -132,7 +132,7 @@
               "latest_date": "2023-12"
             },
             {
-              "facet_id": "2646326466",
+              "facet_id": "1332358705",
               "observations": [
                 {
                   "date": "2023",
@@ -152,7 +152,7 @@
         "wikidataId/Q1764983": {
           "ordered_facets": [
             {
-              "facet_id": "1456184638",
+              "facet_id": "590866011",
               "observations": [
                 {
                   "date": "2021",
@@ -164,23 +164,27 @@
               "latest_date": "2021"
             },
             {
-              "facet_id": "2458695583",
+              "facet_id": "1156717814",
               "observations": [
                 {
                   "date": "2016",
                   "value": 425
+                },
+                {
+                  "date": "2021",
+                  "value": 366
                 }
               ],
-              "obs_count": 1,
+              "obs_count": 2,
               "earliest_date": "2016",
-              "latest_date": "2016"
+              "latest_date": "2021"
             }
           ]
         },
         "wikidataId/Q4671576": {
           "ordered_facets": [
             {
-              "facet_id": "1456184638",
+              "facet_id": "590866011",
               "observations": [
                 {
                   "date": "2021",
@@ -190,6 +194,22 @@
               "obs_count": 1,
               "earliest_date": "2021",
               "latest_date": "2021"
+            },
+            {
+              "facet_id": "1156717814",
+              "observations": [
+                {
+                  "date": "2016",
+                  "value": 493
+                },
+                {
+                  "date": "2021",
+                  "value": 494
+                }
+              ],
+              "obs_count": 2,
+              "earliest_date": "2016",
+              "latest_date": "2021"
             }
           ]
         }
@@ -197,47 +217,49 @@
     }
   },
   "facets": {
-    "1286017793": {
+    "1156717814": {
+      "import_name": "WikidataPopulation",
+      "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
+      "measurement_method": "WikidataPopulation"
+    },
+    "1158702866": {
       "import_name": "DynamicWorld_FloodEvents_Places_AutoRefresh",
       "provenance_url": "https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1",
       "observation_period": "P1M",
       "unit": "SquareKilometer"
     },
-    "1456184638": {
-      "import_name": "WikipediaStatsData",
-      "provenance_url": "https://www.wikipedia.org",
-      "measurement_method": "Wikipedia"
-    },
-    "1861139314": {
-      "import_name": "NASA_VIIRSActiveFiresEvents_Agg",
-      "provenance_url": "https://firms.modaps.eosdis.nasa.gov/active_fire/",
-      "observation_period": "P1M"
-    },
-    "2074204934": {
-      "import_name": "DynamicWorld_FloodEvents_Places_AutoRefresh",
-      "provenance_url": "https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1",
-      "observation_period": "P1M"
-    },
-    "2458695583": {
-      "import_name": "WikidataPopulation",
-      "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
-      "measurement_method": "WikidataPopulation"
-    },
-    "2646326466": {
-      "import_name": "DynamicWorld_FloodEvents_Places_AutoRefresh",
-      "provenance_url": "https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1",
-      "observation_period": "P1Y"
-    },
-    "2856967510": {
-      "import_name": "NASA_VIIRSActiveFiresEvents_Agg",
-      "provenance_url": "https://firms.modaps.eosdis.nasa.gov/active_fire/",
-      "observation_period": "P1Y"
-    },
-    "767211349": {
+    "1159060358": {
       "import_name": "DynamicWorld_FloodEvents_Places_AutoRefresh",
       "provenance_url": "https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1",
       "observation_period": "P1Y",
       "unit": "SquareKilometer"
+    },
+    "1332001213": {
+      "import_name": "DynamicWorld_FloodEvents_Places_AutoRefresh",
+      "provenance_url": "https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1",
+      "observation_period": "P1M"
+    },
+    "1332358705": {
+      "import_name": "DynamicWorld_FloodEvents_Places_AutoRefresh",
+      "provenance_url": "https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1",
+      "observation_period": "P1Y"
+    },
+    "590866011": {
+      "import_name": "WikipediaStatsData",
+      "provenance_url": "https://www.wikipedia.org",
+      "measurement_method": "Wikipedia"
+    },
+    "796925099": {
+      "import_name": "NASA_VIIRSActiveFiresEvents_Agg",
+      "provenance_url": "https://firms.modaps.eosdis.nasa.gov/active_fire/",
+      "observation_period": "P1M",
+      "is_dc_aggregate": true
+    },
+    "797282591": {
+      "import_name": "NASA_VIIRSActiveFiresEvents_Agg",
+      "provenance_url": "https://firms.modaps.eosdis.nasa.gov/active_fire/",
+      "observation_period": "P1Y",
+      "is_dc_aggregate": true
     }
   }
 }

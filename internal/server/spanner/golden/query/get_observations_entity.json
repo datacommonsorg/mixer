@@ -2,6 +2,7 @@
   {
     "VariableMeasured": "Count_HeatTemperatureEvent",
     "ObservationAbout": "wikidataId/Q341968",
+    "FacetId": "2033764917",
     "Observations": [
       {
         "Date": "2022-09",
@@ -17,11 +18,13 @@
     "MeasurementMethod": "",
     "Unit": "",
     "ScalingFactor": "",
+    "IsDcAggregate": false,
     "ProvenanceURL": "https://datacommons.org"
   },
   {
     "VariableMeasured": "Count_HeatTemperatureEvent",
     "ObservationAbout": "wikidataId/Q341968",
+    "FacetId": "2034122409",
     "Observations": [
       {
         "Date": "2022",
@@ -33,15 +36,21 @@
     "MeasurementMethod": "",
     "Unit": "",
     "ScalingFactor": "",
+    "IsDcAggregate": false,
     "ProvenanceURL": "https://datacommons.org"
   },
   {
     "VariableMeasured": "Count_Person",
     "ObservationAbout": "wikidataId/Q341968",
+    "FacetId": "1156717814",
     "Observations": [
       {
         "Date": "2016",
         "Value": "653.0"
+      },
+      {
+        "Date": "2021",
+        "Value": "606.0"
       }
     ],
     "ImportName": "WikidataPopulation",
@@ -49,11 +58,13 @@
     "MeasurementMethod": "WikidataPopulation",
     "Unit": "",
     "ScalingFactor": "",
+    "IsDcAggregate": false,
     "ProvenanceURL": "https://www.wikidata.org/wiki/Wikidata:Main_Page"
   },
   {
     "VariableMeasured": "Count_Person",
     "ObservationAbout": "wikidataId/Q341968",
+    "FacetId": "590866011",
     "Observations": [
       {
         "Date": "2021",
@@ -65,11 +76,13 @@
     "MeasurementMethod": "Wikipedia",
     "Unit": "",
     "ScalingFactor": "",
+    "IsDcAggregate": false,
     "ProvenanceURL": "https://www.wikipedia.org"
   },
   {
     "VariableMeasured": "Max_Rainfall",
     "ObservationAbout": "wikidataId/Q341968",
+    "FacetId": "618611898",
     "Observations": [
       {
         "Date": "1900-05",
@@ -5881,11 +5894,13 @@
     "MeasurementMethod": "NASAGSOD_NASAGHCN_EPA",
     "Unit": "Millimeter",
     "ScalingFactor": "",
+    "IsDcAggregate": false,
     "ProvenanceURL": "https://www.noaa.gov/"
   },
   {
     "VariableMeasured": "Max_Snowfall",
     "ObservationAbout": "wikidataId/Q341968",
+    "FacetId": "618611898",
     "Observations": [
       {
         "Date": "1900-05",
@@ -11309,11 +11324,13 @@
     "MeasurementMethod": "NASAGSOD_NASAGHCN_EPA",
     "Unit": "Millimeter",
     "ScalingFactor": "",
+    "IsDcAggregate": false,
     "ProvenanceURL": "https://www.noaa.gov/"
   },
   {
     "VariableMeasured": "Max_Temperature",
     "ObservationAbout": "wikidataId/Q341968",
+    "FacetId": "628741720",
     "Observations": [
       {
         "Date": "1902-06",
@@ -17069,11 +17086,13 @@
     "MeasurementMethod": "NASAGSOD_NASAGHCN_EPA",
     "Unit": "Celsius",
     "ScalingFactor": "",
+    "IsDcAggregate": false,
     "ProvenanceURL": "https://www.noaa.gov/"
   },
   {
     "VariableMeasured": "Mean_BarometricPressure",
     "ObservationAbout": "wikidataId/Q341968",
+    "FacetId": "456596656",
     "Observations": [
       {
         "Date": "1977-07",
@@ -18465,11 +18484,13 @@
     "MeasurementMethod": "NASAGSOD_NASAGHCN_EPA",
     "Unit": "Millibar",
     "ScalingFactor": "",
+    "IsDcAggregate": false,
     "ProvenanceURL": "https://www.noaa.gov/"
   },
   {
     "VariableMeasured": "Mean_Rainfall",
     "ObservationAbout": "wikidataId/Q341968",
+    "FacetId": "618611898",
     "Observations": [
       {
         "Date": "1900-05",
@@ -24281,11 +24302,13 @@
     "MeasurementMethod": "NASAGSOD_NASAGHCN_EPA",
     "Unit": "Millimeter",
     "ScalingFactor": "",
+    "IsDcAggregate": false,
     "ProvenanceURL": "https://www.noaa.gov/"
   },
   {
     "VariableMeasured": "Mean_Snowfall",
     "ObservationAbout": "wikidataId/Q341968",
+    "FacetId": "618611898",
     "Observations": [
       {
         "Date": "1900-05",
@@ -29709,11 +29732,13 @@
     "MeasurementMethod": "NASAGSOD_NASAGHCN_EPA",
     "Unit": "Millimeter",
     "ScalingFactor": "",
+    "IsDcAggregate": false,
     "ProvenanceURL": "https://www.noaa.gov/"
   },
   {
     "VariableMeasured": "Mean_Temperature",
     "ObservationAbout": "wikidataId/Q341968",
+    "FacetId": "628741720",
     "Observations": [
       {
         "Date": "1977-06",
@@ -31857,11 +31882,13 @@
     "MeasurementMethod": "NASAGSOD_NASAGHCN_EPA",
     "Unit": "Celsius",
     "ScalingFactor": "",
+    "IsDcAggregate": false,
     "ProvenanceURL": "https://www.noaa.gov/"
   },
   {
     "VariableMeasured": "Mean_Visibility",
     "ObservationAbout": "wikidataId/Q341968",
+    "FacetId": "1007834510",
     "Observations": [
       {
         "Date": "1977-06",
@@ -32913,11 +32940,13 @@
     "MeasurementMethod": "NASAGSOD_NASAGHCN_EPA",
     "Unit": "Kilometer",
     "ScalingFactor": "",
+    "IsDcAggregate": false,
     "ProvenanceURL": "https://www.noaa.gov/"
   },
   {
     "VariableMeasured": "Min_Rainfall",
     "ObservationAbout": "wikidataId/Q341968",
+    "FacetId": "618611898",
     "Observations": [
       {
         "Date": "1900-05",
@@ -38729,11 +38758,13 @@
     "MeasurementMethod": "NASAGSOD_NASAGHCN_EPA",
     "Unit": "Millimeter",
     "ScalingFactor": "",
+    "IsDcAggregate": false,
     "ProvenanceURL": "https://www.noaa.gov/"
   },
   {
     "VariableMeasured": "Min_Snowfall",
     "ObservationAbout": "wikidataId/Q341968",
+    "FacetId": "618611898",
     "Observations": [
       {
         "Date": "1900-05",
@@ -44157,11 +44188,13 @@
     "MeasurementMethod": "NASAGSOD_NASAGHCN_EPA",
     "Unit": "Millimeter",
     "ScalingFactor": "",
+    "IsDcAggregate": false,
     "ProvenanceURL": "https://www.noaa.gov/"
   },
   {
     "VariableMeasured": "Min_Temperature",
     "ObservationAbout": "wikidataId/Q341968",
+    "FacetId": "628741720",
     "Observations": [
       {
         "Date": "1902-06",
@@ -49937,6 +49970,7 @@
     "MeasurementMethod": "NASAGSOD_NASAGHCN_EPA",
     "Unit": "Celsius",
     "ScalingFactor": "",
+    "IsDcAggregate": false,
     "ProvenanceURL": "https://www.noaa.gov/"
   }
 ]

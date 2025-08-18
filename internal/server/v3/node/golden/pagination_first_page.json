@@ -2081,6 +2081,14 @@
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
+              "name": "Amount Interest Repayment of Debt: Long Term External Debt, New_Development_Bank",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AmountInterestRepayment_Debt_LongTermExternalDebt_LenderNewDevelopmentBank",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Long term external debt interest repayment to Nordic Development Fund.",
               "types": [
                 "StatisticalVariable"
@@ -2958,6 +2966,14 @@
                 "StatisticalVariable"
               ],
               "dcid": "AmountInterestRepayment_Debt_OfficialCreditor_Concessional_PubliclyGuaranteed_Multilateral_LongTermExternalDebt_LenderMultipleLenders",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Amount Interest Repayment of Debt: Official Creditor, Concessional, Publicly Guaranteed, Multilateral, Long Term External Debt, New_Development_Bank",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AmountInterestRepayment_Debt_OfficialCreditor_Concessional_PubliclyGuaranteed_Multilateral_LongTermExternalDebt_LenderNewDevelopmentBank",
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
@@ -5337,6 +5353,14 @@
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
+              "name": "Amount Interest Repayment of Debt: Official Creditor, Publicly Guaranteed, Long Term External Debt, New_Development_Bank",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AmountInterestRepayment_Debt_OfficialCreditor_PubliclyGuaranteed_LongTermExternalDebt_LenderNewDevelopmentBank",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Publicly guaranteed long term external debt interest repayment to official creditor, Nordic Development Fund.",
               "types": [
                 "StatisticalVariable"
@@ -5897,6 +5921,14 @@
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
+              "name": "Amount Interest Repayment of Debt: Official Creditor, Publicly Guaranteed, Multilateral, Long Term External Debt, New_Development_Bank",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AmountInterestRepayment_Debt_OfficialCreditor_PubliclyGuaranteed_Multilateral_LongTermExternalDebt_LenderNewDevelopmentBank",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Publicly guaranteed multilateral long term external debt interest repayment to official creditor, Nordic Development Fund.",
               "types": [
                 "StatisticalVariable"
@@ -6105,6 +6137,14 @@
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
+              "name": "Amount Interest Repayment of Debt: Private Creditor, Publicly Guaranteed, Commercial Bank, Long Term External Debt, Arab_Monetary_Fund",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_CommercialBank_LongTermExternalDebt_LenderArabMonetaryFund",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Publicly guaranteed long term external debt interest repayment to private creditor in Caribbean Dev. Bank.",
               "types": [
                 "StatisticalVariable"
@@ -6166,6 +6206,14 @@
                 "StatisticalVariable"
               ],
               "dcid": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_CommercialBank_LongTermExternalDebt_LenderCountryBFA",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Amount Interest Repayment of Debt: Private Creditor, Publicly Guaranteed, Commercial Bank, Long Term External Debt, Country/BGR",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_CommercialBank_LongTermExternalDebt_LenderCountryBGR",
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
@@ -6254,6 +6302,14 @@
                 "StatisticalVariable"
               ],
               "dcid": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_CommercialBank_LongTermExternalDebt_LenderCountryCHN",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Amount Interest Repayment of Debt: Private Creditor, Publicly Guaranteed, Commercial Bank, Long Term External Debt, Country/CIV",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_CommercialBank_LongTermExternalDebt_LenderCountryCIV",
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
@@ -6382,6 +6438,14 @@
                 "StatisticalVariable"
               ],
               "dcid": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_CommercialBank_LongTermExternalDebt_LenderCountryGTM",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Amount Interest Repayment of Debt: Private Creditor, Publicly Guaranteed, Commercial Bank, Long Term External Debt, Country/GUY",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_CommercialBank_LongTermExternalDebt_LenderCountryGUY",
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
@@ -6921,6 +6985,14 @@
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
+              "name": "Amount Interest Repayment of Debt: Private Creditor, Publicly Guaranteed, Long Term External Debt, Arab_Monetary_Fund",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_LongTermExternalDebt_LenderArabMonetaryFund",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Publicly guaranteed long term external debt interest repayment to private creditor in Bondholders.",
               "types": [
                 "StatisticalVariable"
@@ -7278,6 +7350,14 @@
                 "StatisticalVariable"
               ],
               "dcid": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_LongTermExternalDebt_LenderCountryGTM",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Amount Interest Repayment of Debt: Private Creditor, Publicly Guaranteed, Long Term External Debt, Country/GUY",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_LongTermExternalDebt_LenderCountryGUY",
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
@@ -10249,6 +10329,14 @@
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
+              "name": "Amount Interest Repayment of Debt: Publicly Guaranteed, Long Term External Debt, New_Development_Bank",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AmountInterestRepayment_Debt_PubliclyGuaranteed_LongTermExternalDebt_LenderNewDevelopmentBank",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Publicly guaranteed long term external debt interest repayment to Nordic Development Fund.",
               "types": [
                 "StatisticalVariable"
@@ -12001,6 +12089,14 @@
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
+              "name": "Long term external debt amount outstanding to New Development Bank (NDB).",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AmountOutstanding_Debt_LongTermExternalDebt_LenderNewDevelopmentBank",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Long term external debt amount outstanding to Nordic Development Fund.",
               "types": [
                 "StatisticalVariable"
@@ -13014,6 +13110,14 @@
                 "StatisticalVariable"
               ],
               "dcid": "AmountOutstanding_Debt_OfficialCreditor_Concessional_PubliclyGuaranteed_Multilateral_LongTermExternalDebt_LenderMultipleLenders",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Publicly guaranteed multilateral long term external debt amount outstanding to official creditor concessional New Development Bank (NDB).",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AmountOutstanding_Debt_OfficialCreditor_Concessional_PubliclyGuaranteed_Multilateral_LongTermExternalDebt_LenderNewDevelopmentBank",
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
@@ -15545,6 +15649,14 @@
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
+              "name": "Publicly guaranteed long term external debt amount outstanding to official creditor New Development Bank (NDB).",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AmountOutstanding_Debt_OfficialCreditor_PubliclyGuaranteed_LongTermExternalDebt_LenderNewDevelopmentBank",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Publicly guaranteed long term external debt amount outstanding to official creditor, Nordic Development Fund.",
               "types": [
                 "StatisticalVariable"
@@ -16110,6 +16222,14 @@
                 "StatisticalVariable"
               ],
               "dcid": "AmountOutstanding_Debt_OfficialCreditor_PubliclyGuaranteed_Multilateral_LongTermExternalDebt_LenderMultipleLenders",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Publicly guaranteed multilateral long term external debt amount outstanding to official creditor New Development Bank (NDB).",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AmountOutstanding_Debt_OfficialCreditor_PubliclyGuaranteed_Multilateral_LongTermExternalDebt_LenderNewDevelopmentBank",
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
@@ -20697,6 +20817,14 @@
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
+              "name": "Publicly guaranteed long term external debt amount outstanding to New Development Bank (NDB).",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AmountOutstanding_Debt_PubliclyGuaranteed_LongTermExternalDebt_LenderNewDevelopmentBank",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Publicly guaranteed long term external debt amount outstanding to Nordic Development Fund.",
               "types": [
                 "StatisticalVariable"
@@ -22409,6 +22537,14 @@
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
+              "name": "Long term external debt principal repayment to New Development Bank (NDB).",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AmountPrincipalRepayment_Debt_LongTermExternalDebt_LenderNewDevelopmentBank",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Long term external debt principal repayment to Nordic Development Fund.",
               "types": [
                 "StatisticalVariable"
@@ -23342,6 +23478,14 @@
                 "StatisticalVariable"
               ],
               "dcid": "AmountPrincipalRepayment_Debt_OfficialCreditor_Concessional_PubliclyGuaranteed_Multilateral_LongTermExternalDebt_LenderMultipleLenders",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Publicly guaranteed multilateral long term external debt principal repayment to official creditor concessional New Development Bank (NDB).",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AmountPrincipalRepayment_Debt_OfficialCreditor_Concessional_PubliclyGuaranteed_Multilateral_LongTermExternalDebt_LenderNewDevelopmentBank",
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
@@ -25729,6 +25873,14 @@
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
+              "name": "Publicly guaranteed long term external debt principal repayment to official creditor New Development Bank (NDB).",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AmountPrincipalRepayment_Debt_OfficialCreditor_PubliclyGuaranteed_LongTermExternalDebt_LenderNewDevelopmentBank",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Publicly guaranteed long term external debt principal repayment to official creditor, Nordic Development Fund.",
               "types": [
                 "StatisticalVariable"
@@ -26286,6 +26438,14 @@
                 "StatisticalVariable"
               ],
               "dcid": "AmountPrincipalRepayment_Debt_OfficialCreditor_PubliclyGuaranteed_Multilateral_LongTermExternalDebt_LenderMultipleLenders",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Publicly guaranteed multilateral long term external debt principal repayment to official creditor New Development Bank (NDB).",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AmountPrincipalRepayment_Debt_OfficialCreditor_PubliclyGuaranteed_Multilateral_LongTermExternalDebt_LenderNewDevelopmentBank",
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
@@ -30705,6 +30865,14 @@
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
+              "name": "Publicly guaranteed long term external debt principal repayment to New Development Bank (NDB).",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AmountPrincipalRepayment_Debt_PubliclyGuaranteed_LongTermExternalDebt_LenderNewDevelopmentBank",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Publicly guaranteed long term external debt principal repayment to Nordic Development Fund.",
               "types": [
                 "StatisticalVariable"
@@ -32505,6 +32673,14 @@
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
+              "name": "Amount of debt in CHF to New Development Bank (NDB) as a fraction of total debt.",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Amount_Debt_CHF_LenderNewDevelopmentBank_AsAFractionOf_Amount_Debt_LenderNewDevelopmentBank",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Amount of Debt: CHF, Nordic_Development_Fund (As Fraction of Amount Debt Lender Nordic Development Fund)",
               "types": [
                 "StatisticalVariable"
@@ -34262,6 +34438,14 @@
                 "StatisticalVariable"
               ],
               "dcid": "Amount_Debt_DEM_LenderNethAntilles_AsAFractionOf_Amount_Debt_LenderNethAntilles",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Amount of Debt: DEM, New_Development_Bank (As Fraction of Amount Debt Lender New Development Bank)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Amount_Debt_DEM_LenderNewDevelopmentBank_AsAFractionOf_Amount_Debt_LenderNewDevelopmentBank",
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
@@ -36033,6 +36217,14 @@
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
+              "name": "Amount of Debt: EUR, New_Development_Bank (As Fraction of Amount Debt Lender New Development Bank)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Amount_Debt_EUR_LenderNewDevelopmentBank_AsAFractionOf_Amount_Debt_LenderNewDevelopmentBank",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Amount of Debt: EUR, Nordic_Development_Fund (As Fraction of Amount Debt Lender Nordic Development Fund)",
               "types": [
                 "StatisticalVariable"
@@ -37790,6 +37982,14 @@
                 "StatisticalVariable"
               ],
               "dcid": "Amount_Debt_FRF_LenderNethAntilles_AsAFractionOf_Amount_Debt_LenderNethAntilles",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Amount of Debt: FRF, New_Development_Bank (As Fraction of Amount Debt Lender New Development Bank)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Amount_Debt_FRF_LenderNewDevelopmentBank_AsAFractionOf_Amount_Debt_LenderNewDevelopmentBank",
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
@@ -39561,6 +39761,14 @@
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
+              "name": "Amount of Debt: GBP, New_Development_Bank (As Fraction of Amount Debt Lender New Development Bank)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Amount_Debt_GBP_LenderNewDevelopmentBank_AsAFractionOf_Amount_Debt_LenderNewDevelopmentBank",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Amount of Debt: GBP, Nordic_Development_Fund (As Fraction of Amount Debt Lender Nordic Development Fund)",
               "types": [
                 "StatisticalVariable"
@@ -39793,214 +40001,6 @@
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
-              "name": "Amount of Debt: JPY, Arab_Fund_for_Tech_Assist_to_African_Countries (As Fraction of Amount Debt Lender Arab Fundfor Tech Assistto African Countries)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderArabFundforTechAssisttoAfricanCountries_AsAFractionOf_Amount_Debt_LenderArabFundforTechAssisttoAfricanCountries",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Arab_League (As Fraction of Amount Debt Lender Arab League)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderArabLeague_AsAFractionOf_Amount_Debt_LenderArabLeague",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Arab_Monetary_Fund (As Fraction of Amount Debt Lender Arab Monetary Fund)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderArabMonetaryFund_AsAFractionOf_Amount_Debt_LenderArabMonetaryFund",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Arab_Towns_Organization (As Fraction of Amount Debt Lender Arab Towns Organization)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderArabTownsOrganization_AsAFractionOf_Amount_Debt_LenderArabTownsOrganization",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Asian_Dev_Bank (As Fraction of Amount Debt Lender Asian Dev Bank)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderAsianDevBank_AsAFractionOf_Amount_Debt_LenderAsianDevBank",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Asian_Infrastructure_Investment_Bank (As Fraction of Amount Debt Lender Asian Infrastructure Investment Bank)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderAsianInfrastructureInvestmentBank_AsAFractionOf_Amount_Debt_LenderAsianInfrastructureInvestmentBank",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Bank_for_International_Settlements (As Fraction of Amount Debt Lender Bankfor International Settlements)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderBankforInternationalSettlements_AsAFractionOf_Amount_Debt_LenderBankforInternationalSettlements",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Bolivarian_Alliance_for_the_Americas (As Fraction of Amount Debt Lender Bolivarian Allianceforthe Americas)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderBolivarianAlliancefortheAmericas_AsAFractionOf_Amount_Debt_LenderBolivarianAlliancefortheAmericas",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Bondholders (As Fraction of Amount Debt Lender Bondholders)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderBondholders_AsAFractionOf_Amount_Debt_LenderBondholders",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Caribbean_Community (As Fraction of Amount Debt Lender Caribbean Community)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderCaribbeanCommunity_AsAFractionOf_Amount_Debt_LenderCaribbeanCommunity",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Caribbean_Dev_Bank (As Fraction of Amount Debt Lender Caribbean Dev Bank)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderCaribbeanDevBank_AsAFractionOf_Amount_Debt_LenderCaribbeanDevBank",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Central_American_Bank_for_Econ_Integ (As Fraction of Amount Debt Lender Central American Bankfor Econ Integ)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderCentralAmericanBankforEconInteg_AsAFractionOf_Amount_Debt_LenderCentralAmericanBankforEconInteg",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Central_American_Bank_for_Econ_Integration (As Fraction of Amount Debt Lender Central American Bankfor Econ Integration)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderCentralAmericanBankforEconIntegration_AsAFractionOf_Amount_Debt_LenderCentralAmericanBankforEconIntegration",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Central_Bank_of_West_African_States (As Fraction of Amount Debt Lender Central Bankof West African States)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderCentralBankofWestAfricanStates_AsAFractionOf_Amount_Debt_LenderCentralBankofWestAfricanStates",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Corporacion_Andina_de_Fomento (As Fraction of Amount Debt Lender Corporacion Andinade Fomento)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderCorporacionAndinadeFomento_AsAFractionOf_Amount_Debt_LenderCorporacionAndinadeFomento",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Council_of_Europe (As Fraction of Amount Debt Lender Councilof Europe)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderCouncilofEurope_AsAFractionOf_Amount_Debt_LenderCouncilofEurope",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Country/AFG (As Fraction of Amount Debt Lender Country AFG)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderCountryAFG_AsAFractionOf_Amount_Debt_LenderCountryAFG",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Country/AGO (As Fraction of Amount Debt Lender Country AGO)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderCountryAGO_AsAFractionOf_Amount_Debt_LenderCountryAGO",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Country/ARE (As Fraction of Amount Debt Lender Country ARE)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderCountryARE_AsAFractionOf_Amount_Debt_LenderCountryARE",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Country/ARG (As Fraction of Amount Debt Lender Country ARG)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderCountryARG_AsAFractionOf_Amount_Debt_LenderCountryARG",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Country/ARM (As Fraction of Amount Debt Lender Country ARM)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderCountryARM_AsAFractionOf_Amount_Debt_LenderCountryARM",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Country/AUS (As Fraction of Amount Debt Lender Country AUS)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderCountryAUS_AsAFractionOf_Amount_Debt_LenderCountryAUS",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Country/AUT (As Fraction of Amount Debt Lender Country AUT)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderCountryAUT_AsAFractionOf_Amount_Debt_LenderCountryAUT",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Country/AZE (As Fraction of Amount Debt Lender Country AZE)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderCountryAZE_AsAFractionOf_Amount_Debt_LenderCountryAZE",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Country/BDI (As Fraction of Amount Debt Lender Country BDI)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderCountryBDI_AsAFractionOf_Amount_Debt_LenderCountryBDI",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Amount of Debt: JPY, Country/BEL (As Fraction of Amount Debt Lender Country BEL)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderCountryBEL_AsAFractionOf_Amount_Debt_LenderCountryBEL",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
               "name": "total number of sql query used",
               "types": [
                 "StatisticalVariable"
@@ -40026,5 +40026,5 @@
       }
     }
   },
-  "next_token": "H4sIAAAAAAAA/+IK5vIpLkjMy0st0i0oys9KTS4p1k9JLEnOz9UtLskvStXPzCsuScxLTi3WT0nWzU7XLUktLgGpSExKLAYLxqcXJRZkxBeXJCblpEoxc3SoAwAAAP//AQAA//9JDxVlVQAAAA=="
+  "next_token": "H4sIAAAAAAAA/+Ly5/IoLkjMy0st0i0oys9KTS4p1k9JLEnOz9UtLskvStXPzCsuScxLTi3WT0nWzU7XLUktLgGpSExKLAYLxqcXJRZkxBuaSjFzdKgDAAAA//8BAAD//8kn4TlRAAAA"
 }

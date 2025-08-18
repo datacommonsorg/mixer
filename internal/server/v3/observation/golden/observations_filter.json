@@ -5,7 +5,7 @@
         "geoId/06": {
           "ordered_facets": [
             {
-              "facet_id": "2825511676",
+              "facet_id": "586440999",
               "observations": [
                 {
                   "date": "2020",
@@ -22,7 +22,7 @@
     }
   },
   "facets": {
-    "2825511676": {
+    "586440999": {
       "import_name": "CDC_Mortality_UnderlyingCause",
       "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
     }

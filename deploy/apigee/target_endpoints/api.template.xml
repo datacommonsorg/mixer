@@ -75,6 +75,14 @@
           <Name>enforce-quota-limit</Name>
         </Step>
       </Request>
+      <Request>
+        <Step>
+          <Condition>
+            proxy.pathsuffix MatchesPath "/v2/variable/filter" AND request.verb == "POST"
+          </Condition>
+          <Name>block-internal-only-endpoints</Name>
+        </Step>
+      </Request>
     </Flow>
   </Flows>
   <PostFlow name="PostFlow">
