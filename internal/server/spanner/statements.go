@@ -64,100 +64,83 @@ var statements = struct {
 	// Subquery to filter search results by types.
 	filterTypes string
 }{
-	getPropsBySubjectID: `
-		GRAPH DCGraph MATCH -[e:Edge
-		WHERE 
+	getPropsBySubjectID: `		GRAPH DCGraph MATCH -[e:Edge
+		WHERE
 			e.subject_id IN UNNEST(@ids)]->
 		RETURN DISTINCT
 			e.subject_id,
 			e.predicate
 		ORDER BY
 			e.subject_id,
-			e.predicate
-	`,
-	getPropsByObjectID: `
-		GRAPH DCGraph MATCH -[e:Edge
+			e.predicate`,
+	getPropsByObjectID: `		GRAPH DCGraph MATCH -[e:Edge
 		WHERE
-			e.object_id IN UNNEST(@ids)
-		]->
+			e.object_id IN UNNEST(@ids)]->
 		RETURN DISTINCT
 			e.object_id AS subject_id,
 			e.predicate
 		ORDER BY
 			subject_id,
-			predicate
-	`,
-	getEdgesBySubjectID: `
-		GRAPH DCGraph MATCH (m:Node
-		WHERE 
+			predicate`,
+	getEdgesBySubjectID: `		GRAPH DCGraph MATCH (m:Node
+		WHERE
 			m.subject_id IN UNNEST(@ids))-[e:Edge%s]->(n:Node)%s
 		ORDER BY
 			subject_id,
 			predicate,
 			value,
-			provenance
-	`,
-	getChainedEdgesBySubjectID: `
-		GRAPH DCGraph MATCH ANY (m:Node
+			provenance`,
+	getChainedEdgesBySubjectID: `		GRAPH DCGraph MATCH ANY (m:Node
 		WHERE
 			m.subject_id IN UNNEST(@ids))-[e:Edge
 		WHERE
 			e.predicate = @predicate]->{1,%d}(n:Node)%s
 		ORDER BY
 			subject_id,
-			value
-	`,
-	getEdgesByObjectID: `
-		GRAPH DCGraph MATCH (m:Node
-		WHERE 
+			value`,
+	getEdgesByObjectID: `		GRAPH DCGraph MATCH (m:Node
+		WHERE
 			m.subject_id IN UNNEST(@ids))<-[e:Edge%s]-(n:Node)%s
 		ORDER BY
 			subject_id,
 			predicate,
 			value,
-			provenance
-	`,
-	getChainedEdgesByObjectID: `
-		GRAPH DCGraph MATCH ANY (m:Node
-		WHERE 
+			provenance`,
+	getChainedEdgesByObjectID: `		GRAPH DCGraph MATCH ANY (m:Node
+		WHERE
 			m.subject_id IN UNNEST(@ids))<-[e:Edge
 		WHERE
 			e.predicate = @predicate]-{1,%d}(n:Node)%s
 		ORDER BY
 			subject_id,
-			value
-	`,
+			value`,
 	filterPredicate: `
-		WHERE e.predicate IN UNNEST(@props)
-	`,
-	filterProperty: `
-		,(n)-[filter%[1]d:Edge 
 		WHERE
-			filter%[1]d.predicate = @prop%[1]d%s]->		
-	`,
+			e.predicate IN UNNEST(@predicates)`,
+	filterProperty: `
+		,(n)-[filter%[1]d:Edge
+		WHERE
+			filter%[1]d.predicate = @prop%[1]d%s]->`,
 	filterValue: `
-		AND filter%[1]d.object_id IN UNNEST(@val%[1]d)
-	`,
+			AND filter%[1]d.object_id IN UNNEST(@val%[1]d)`,
 	returnEdges: `
-		RETURN 
+		RETURN
 			m.subject_id,
 			e.predicate,
 			e.provenance,
 			n.value,
 			n.bytes,
 			n.name,
-			n.types
-	`,
+			n.types`,
 	returnChainedEdges: `
-		RETURN 
+		RETURN
 			m.subject_id,
 			@result_predicate AS predicate,
 			'' AS provenance,
 			n.value,
 			n.bytes,
 			n.name,
-			n.types
-	`,
+			n.types`,
 	returnFilterEdges: `
 		RETURN
 		  m.subject_id,
@@ -174,8 +157,7 @@ var statements = struct {
 			n.value,
 			n.bytes,
 			n.name,
-			n.types
-	`,
+			n.types`,
 	returnFilterChainedEdges: `
 		RETURN
 			m.subject_id,
@@ -190,37 +172,28 @@ var statements = struct {
 			n.value,
 			n.bytes,
 			n.name,
-			n.types
-	`,
+			n.types`,
 	applyOffset: `
-		OFFSET %d
-	`,
+		OFFSET %d`,
 	applyLimit: fmt.Sprintf(`
-		LIMIT %d
-	`, PAGE_SIZE+1),
-	getObs: `
-		SELECT
+		LIMIT %d`, PAGE_SIZE+1),
+	getObs: `		SELECT
 			variable_measured,
 			observation_about,
 			observations,
 			import_name,
-			COALESCE(observation_period, '') AS observation_period,
-			COALESCE(measurement_method, '') AS measurement_method,
-			COALESCE(unit, '') AS unit,
-			COALESCE(scaling_factor, '') AS scaling_factor,
+			observation_period,
+			measurement_method,
+			unit,
+			scaling_factor,
 			provenance_url,
+			is_dc_aggregate,
 			facet_id
 		FROM 
-			Observation
-	`,
-	selectVariableDcids: `
-		variable_measured IN UNNEST(@variables)
-	`,
-	selectEntityDcids: `
-		observation_about IN UNNEST(@entities)
-	`,
-	getObsByVariableAndContainedInPlace: `
-		SELECT
+			Observation`,
+	selectVariableDcids: `variable_measured IN UNNEST(@variables)`,
+	selectEntityDcids:   `observation_about IN UNNEST(@entities)`,
+	getObsByVariableAndContainedInPlace: `		SELECT
 			obs.variable_measured,
 			obs.observation_about,
 			obs.observations,
@@ -230,6 +203,7 @@ var statements = struct {
 			obs.unit,
 			obs.scaling_factor,
 			obs.provenance_url,
+			obs.is_dc_aggregate,
 			obs.facet_id
 		FROM 
 			GRAPH_TABLE (
@@ -237,27 +211,25 @@ var statements = struct {
 				WHERE
 					e.object_id = @ancestor
 					AND e.predicate = 'linkedContainedInPlace']-()-[{predicate: 'typeOf', object_id: @childPlaceType}]->
-				RETURN 
-				e.subject_id as object_id
+				RETURN
+					e.subject_id as object_id
 			)result
 		INNER JOIN (%s)obs
 		ON 
-			result.object_id = obs.observation_about
-	`,
+			result.object_id = obs.observation_about`,
 	searchNodesByQuery: `
-		GRAPH DCGraph
-		MATCH (n:Node)
-		WHERE 
+		GRAPH DCGraph MATCH (n:Node)
+		WHERE
 			SEARCH(n.name_tokenlist, @query)%s
-		RETURN 
+		RETURN
 			n.subject_id, 
-			COALESCE(n.name, '') AS name,
-			COALESCE(n.types, []) AS types, 
+			n.name,
+			n.types, 
 			SCORE(n.name_tokenlist, @query, enhance_query => TRUE) AS score 
-		ORDER BY score + IF(n.name = @query, 1, 0) DESC, n.name ASC
-		LIMIT %d
-	`,
+		ORDER BY 
+			score + IF(n.name = @query, 1, 0) DESC,
+			n.name ASC
+		LIMIT %d`,
 	filterTypes: `
-		AND ARRAY_INCLUDES_ANY(n.types, @types)
-	`,
+		AND ARRAY_INCLUDES_ANY(n.types, @types)`,
 }

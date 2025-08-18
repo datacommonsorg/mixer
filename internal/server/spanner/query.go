@@ -18,10 +18,8 @@ package spanner
 import (
 	"context"
 	"fmt"
-	"strconv"
 
 	"cloud.google.com/go/spanner"
-	"github.com/datacommonsorg/mixer/internal/merger"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"google.golang.org/api/iterator"
 )
@@ -43,24 +41,9 @@ func (sc *SpannerClient) GetNodeProps(ctx context.Context, ids []string, out boo
 		props[id] = []*Property{}
 	}
 
-	var stmt spanner.Statement
-
-	switch out {
-	case true:
-		stmt = spanner.Statement{
-			SQL:    statements.getPropsBySubjectID,
-			Params: map[string]interface{}{"ids": ids},
-		}
-	case false:
-		stmt = spanner.Statement{
-			SQL:    statements.getPropsByObjectID,
-			Params: map[string]interface{}{"ids": ids},
-		}
-	}
-
 	err := sc.queryAndCollect(
 		ctx,
-		stmt,
+		*GetNodePropsQuery(ids, out),
 		func() interface{} {
 			return &Property{}
 		},
@@ -92,86 +75,9 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 		return nil, fmt.Errorf("chain expressions are only supported for a single property")
 	}
 
-	params := map[string]interface{}{"ids": ids}
-
-	// Attach property arcs.
-	filterProps := ""
-	if arc.SingleProp != "" && arc.SingleProp != WILDCARD {
-		filterProps = statements.filterPredicate
-		params["props"] = []string{arc.SingleProp}
-	} else if len(arc.BracketProps) > 0 {
-		filterProps = statements.filterPredicate
-		params["props"] = arc.BracketProps
-	}
-
-	// Generate filters.
-	returnEdges := ""
-	i := 0
-	for prop, val := range arc.Filter {
-		params["prop"+strconv.Itoa(i)] = prop
-		objectFilter := ""
-		filterVal := val
-		for _, v := range val {
-			filterVal = append(filterVal, generateValueHash(v))
-		}
-		if len(filterVal) > 0 {
-			objectFilter = fmt.Sprintf(statements.filterValue, i)
-			params["val"+strconv.Itoa(i)] = filterVal
-		}
-		returnEdges += fmt.Sprintf(statements.filterProperty, i, objectFilter)
-		i += 1
-	}
-
-	// Generate return statement.
-	switch arc.Decorator {
-	case CHAIN:
-		if len(returnEdges) > 0 {
-			returnEdges += statements.returnFilterChainedEdges
-		} else {
-			returnEdges = statements.returnChainedEdges
-		}
-	default:
-		if len(returnEdges) > 0 {
-			returnEdges += statements.returnFilterEdges
-		} else {
-			returnEdges = statements.returnEdges
-		}
-	}
-
-	var template string
-	switch arc.Out {
-	case true:
-		if arc.Decorator == CHAIN {
-			template = fmt.Sprintf(statements.getChainedEdgesBySubjectID, MAX_HOPS, returnEdges)
-			params["predicate"] = arc.SingleProp
-			params["result_predicate"] = arc.SingleProp + arc.Decorator
-		} else {
-			template = fmt.Sprintf(statements.getEdgesBySubjectID, filterProps, returnEdges)
-		}
-	case false:
-		if arc.Decorator == CHAIN {
-			template = fmt.Sprintf(statements.getChainedEdgesByObjectID, MAX_HOPS, returnEdges)
-			params["predicate"] = arc.SingleProp
-			params["result_predicate"] = arc.SingleProp + arc.Decorator
-		} else {
-			template = fmt.Sprintf(statements.getEdgesByObjectID, filterProps, returnEdges)
-		}
-	}
-
-	// Apply pagination.
-	if offset > 0 {
-		template += fmt.Sprintf(statements.applyOffset, offset)
-	}
-	template += statements.applyLimit
-
-	stmt := spanner.Statement{
-		SQL:    template,
-		Params: params,
-	}
-
 	err := sc.queryAndCollect(
 		ctx,
-		stmt,
+		*GetNodeEdgesByIDQuery(ids, arc, offset),
 		func() interface{} {
 			return &Edge{}
 		},
@@ -197,7 +103,7 @@ func (sc *SpannerClient) GetObservations(ctx context.Context, variables []string
 
 	err := sc.queryAndCollect(
 		ctx,
-		buildBaseObsStatement(variables, entities),
+		*GetObservationsQuery(variables, entities),
 		func() interface{} {
 			return &Observation{}
 		},
@@ -220,14 +126,9 @@ func (sc *SpannerClient) GetObservationsContainedInPlace(ctx context.Context, va
 		return observations, nil
 	}
 
-	stmt := buildBaseObsStatement(variables, []string{} /*entities*/)
-	stmt.SQL = fmt.Sprintf(statements.getObsByVariableAndContainedInPlace, stmt.SQL)
-	stmt.Params["ancestor"] = containedInPlace.Ancestor
-	stmt.Params["childPlaceType"] = containedInPlace.ChildPlaceType
-
 	err := sc.queryAndCollect(
 		ctx,
-		stmt,
+		*GetObservationsContainedInPlaceQuery(variables, containedInPlace),
 		func() interface{} {
 			return &Observation{}
 		},
@@ -252,25 +153,9 @@ func (sc *SpannerClient) SearchNodes(ctx context.Context, query string, types []
 		return nodes, nil
 	}
 
-	var stmt spanner.Statement
-	params := map[string]interface{}{
-		"query": query,
-	}
-
-	filterTypes := ""
-	if len(types) > 0 {
-		params["types"] = types
-		filterTypes = statements.filterTypes
-	}
-
-	stmt = spanner.Statement{
-		SQL:    fmt.Sprintf(statements.searchNodesByQuery, filterTypes, merger.MAX_SEARCH_RESULTS),
-		Params: params,
-	}
-
 	err := sc.queryAndCollect(
 		ctx,
-		stmt,
+		*SearchNodesQuery(query, types),
 		func() interface{} {
 			return &SearchNode{}
 		},

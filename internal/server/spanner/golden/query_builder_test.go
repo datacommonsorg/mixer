@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2025 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,32 +15,23 @@
 package golden
 
 import (
-	"context"
+	"fmt"
 	"path"
 	"runtime"
+	"strings"
 	"testing"
 
+	cloudSpanner "cloud.google.com/go/spanner"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 )
 
-const (
-	// Number of matches to validate for tests.
-	NUM_MATCHES = 20
-)
-
-func TestGetNodeProps(t *testing.T) {
-	client := test.NewSpannerClient()
-	if client == nil {
-		return
-	}
-
+func TestGetNodePropsQuery(t *testing.T) {
 	t.Parallel()
-	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
-	goldenDir := path.Join(path.Dir(filename), "query")
+	goldenDir := path.Join(path.Dir(filename), "query_builder")
 
 	for _, c := range []struct {
 		ids        []string
@@ -50,26 +41,19 @@ func TestGetNodeProps(t *testing.T) {
 		{
 			ids:        []string{"Count_Person", "Person", "foo"},
 			out:        true,
-			goldenFile: "get_node_props_by_subject_id.json",
+			goldenFile: "get_node_props_by_subject_id.sql",
 		},
 		{
 			ids:        []string{"Count_Person", "Person"},
 			out:        false,
-			goldenFile: "get_node_props_by_object_id.json",
+			goldenFile: "get_node_props_by_object_id.sql",
 		},
 	} {
-		actual, err := client.GetNodeProps(ctx, c.ids, c.out)
-		if err != nil {
-			t.Fatalf("GetNodeProps error (%v): %v", c.goldenFile, err)
-		}
-
-		got, err := test.StructToJSON(actual)
-		if err != nil {
-			t.Fatalf("StructToJSON error (%v): %v", c.goldenFile, err)
-		}
+		got := spanner.GetNodePropsQuery(c.ids, c.out)
+		interpolated := interpolateSQL(got)
 
 		if test.GenerateGolden {
-			err = test.WriteGolden(got, goldenDir, c.goldenFile)
+			err := test.WriteGolden(interpolated, goldenDir, c.goldenFile)
 			if err != nil {
 				t.Fatalf("WriteGolden error (%v): %v", c.goldenFile, err)
 			}
@@ -81,22 +65,16 @@ func TestGetNodeProps(t *testing.T) {
 			t.Fatalf("ReadGolden error (%v): %v", c.goldenFile, err)
 		}
 
-		if diff := cmp.Diff(want, got); diff != "" {
-			t.Errorf("%v payload mismatch (-want +got):\n%s", c.goldenFile, diff)
+		if diff := cmp.Diff(want, interpolated); diff != "" {
+			t.Errorf("%v payload mismatch (-want +got):\n%s", want, diff)
 		}
 	}
 }
 
-func TestGetNodeOutEdgesByID(t *testing.T) {
-	client := test.NewSpannerClient()
-	if client == nil {
-		return
-	}
-
+func TestGetNodeOutEdgesByIDQuery(t *testing.T) {
 	t.Parallel()
-	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
-	goldenDir := path.Join(path.Dir(filename), "query")
+	goldenDir := path.Join(path.Dir(filename), "query_builder")
 
 	for _, c := range []struct {
 		ids        []string
@@ -111,7 +89,7 @@ func TestGetNodeOutEdgesByID(t *testing.T) {
 				SingleProp: "*",
 			},
 			offset:     0,
-			goldenFile: "get_node_edges_by_subject_id.json",
+			goldenFile: "get_node_edges_by_subject_id.sql",
 		},
 		{
 			ids: []string{"Person"},
@@ -120,7 +98,7 @@ func TestGetNodeOutEdgesByID(t *testing.T) {
 				SingleProp: "source",
 			},
 			offset:     0,
-			goldenFile: "get_node_edges_out_single_prop.json",
+			goldenFile: "get_node_edges_out_single_prop.sql",
 		},
 		{
 			ids: []string{"geoId/5129600"},
@@ -129,7 +107,7 @@ func TestGetNodeOutEdgesByID(t *testing.T) {
 				BracketProps: []string{"containedInPlace", "geoJsonCoordinatesDP3"},
 			},
 			offset:     0,
-			goldenFile: "get_node_edges_out_bracket_props.json",
+			goldenFile: "get_node_edges_out_bracket_props.sql",
 		},
 		{
 			ids: []string{"nuts/UKI1"},
@@ -141,7 +119,7 @@ func TestGetNodeOutEdgesByID(t *testing.T) {
 				},
 			},
 			offset:     0,
-			goldenFile: "get_node_edges_out_filter.json",
+			goldenFile: "get_node_edges_out_filter.sql",
 		},
 		{
 			ids: []string{"dc/g/Person_Gender"},
@@ -151,23 +129,14 @@ func TestGetNodeOutEdgesByID(t *testing.T) {
 				Decorator:  "+",
 			},
 			offset:     0,
-			goldenFile: "get_node_edges_out_chain.json",
+			goldenFile: "get_node_edges_out_chain.sql",
 		},
 	} {
-		actual, err := client.GetNodeEdgesByID(ctx, c.ids, c.arc, c.offset)
-		if err != nil {
-			t.Fatalf("GetNodeEdgesByID error (%v): %v", c.goldenFile, err)
-		}
-
-		actual = simplifyNodes(actual)
-
-		got, err := test.StructToJSON(actual)
-		if err != nil {
-			t.Fatalf("StructToJSON error (%v): %v", c.goldenFile, err)
-		}
+		got := spanner.GetNodeEdgesByIDQuery(c.ids, c.arc, c.offset)
+		interpolated := interpolateSQL(got)
 
 		if test.GenerateGolden {
-			err = test.WriteGolden(got, goldenDir, c.goldenFile)
+			err := test.WriteGolden(interpolated, goldenDir, c.goldenFile)
 			if err != nil {
 				t.Fatalf("WriteGolden error (%v): %v", c.goldenFile, err)
 			}
@@ -179,22 +148,16 @@ func TestGetNodeOutEdgesByID(t *testing.T) {
 			t.Fatalf("ReadGolden error (%v): %v", c.goldenFile, err)
 		}
 
-		if diff := cmp.Diff(want, got); diff != "" {
-			t.Errorf("%v payload mismatch (-want +got):\n%s", c.goldenFile, diff)
+		if diff := cmp.Diff(want, interpolated); diff != "" {
+			t.Errorf("%v payload mismatch (-want +got):\n%s", want, diff)
 		}
 	}
 }
 
-func TestGetNodeInEdgesByID(t *testing.T) {
-	client := test.NewSpannerClient()
-	if client == nil {
-		return
-	}
-
+func TestGetNodeInEdgesByIDQuery(t *testing.T) {
 	t.Parallel()
-	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
-	goldenDir := path.Join(path.Dir(filename), "query")
+	goldenDir := path.Join(path.Dir(filename), "query_builder")
 
 	for _, c := range []struct {
 		ids        []string
@@ -209,7 +172,7 @@ func TestGetNodeInEdgesByID(t *testing.T) {
 				SingleProp: "*",
 			},
 			offset:     0,
-			goldenFile: "get_node_edges_by_object_id.json",
+			goldenFile: "get_node_edges_by_object_id.sql",
 		},
 		{
 			ids: []string{"EarthquakeEvent"},
@@ -218,7 +181,7 @@ func TestGetNodeInEdgesByID(t *testing.T) {
 				SingleProp: "domainIncludes",
 			},
 			offset:     0,
-			goldenFile: "get_node_edges_in_single_prop.json",
+			goldenFile: "get_node_edges_in_single_prop.sql",
 		},
 		{
 			ids: []string{"EarthquakeEvent"},
@@ -227,7 +190,7 @@ func TestGetNodeInEdgesByID(t *testing.T) {
 				BracketProps: []string{"domainIncludes", "naturalHazardType"},
 			},
 			offset:     0,
-			goldenFile: "get_node_edges_in_bracket_props.json",
+			goldenFile: "get_node_edges_in_bracket_props.sql",
 		},
 		{
 			ids: []string{"Farm"},
@@ -239,7 +202,7 @@ func TestGetNodeInEdgesByID(t *testing.T) {
 				},
 			},
 			offset:     0,
-			goldenFile: "get_node_edges_in_filter.json",
+			goldenFile: "get_node_edges_in_filter.sql",
 		},
 		{
 			ids: []string{"dc/g/Farm_FarmInventoryStatus"},
@@ -249,7 +212,7 @@ func TestGetNodeInEdgesByID(t *testing.T) {
 				Decorator:  "+",
 			},
 			offset:     0,
-			goldenFile: "get_node_edges_in_chain.json",
+			goldenFile: "get_node_edges_in_chain.sql",
 		},
 		{
 			ids: []string{"foo OR 1=1;"},
@@ -261,7 +224,7 @@ func TestGetNodeInEdgesByID(t *testing.T) {
 				},
 			},
 			offset:     0,
-			goldenFile: "get_node_edges_malicious.json",
+			goldenFile: "get_node_edges_malicious.sql",
 		},
 		{
 			ids: []string{"StatisticalVariable"},
@@ -270,7 +233,7 @@ func TestGetNodeInEdgesByID(t *testing.T) {
 				SingleProp: "typeOf",
 			},
 			offset:     0,
-			goldenFile: "get_node_edges_first_page.json",
+			goldenFile: "get_node_edges_first_page.sql",
 		},
 		{
 			ids: []string{"StatisticalVariable"},
@@ -279,7 +242,7 @@ func TestGetNodeInEdgesByID(t *testing.T) {
 				SingleProp: "typeOf",
 			},
 			offset:     spanner.PAGE_SIZE,
-			goldenFile: "get_node_edges_second_page.json",
+			goldenFile: "get_node_edges_second_page.sql",
 		},
 		{
 			ids: []string{"dc/g/UN"},
@@ -289,7 +252,7 @@ func TestGetNodeInEdgesByID(t *testing.T) {
 				Decorator:  "+",
 			},
 			offset:     0,
-			goldenFile: "get_node_edges_first_page_chain.json",
+			goldenFile: "get_node_edges_first_page_chain.sql",
 		},
 		{
 			ids: []string{"dc/g/UN"},
@@ -299,23 +262,14 @@ func TestGetNodeInEdgesByID(t *testing.T) {
 				Decorator:  "+",
 			},
 			offset:     spanner.PAGE_SIZE,
-			goldenFile: "get_node_edges_second_page_chain.json",
+			goldenFile: "get_node_edges_second_page_chain.sql",
 		},
 	} {
-		actual, err := client.GetNodeEdgesByID(ctx, c.ids, c.arc, c.offset)
-		if err != nil {
-			t.Fatalf("GetNodeEdgesByID error (%v): %v", c.goldenFile, err)
-		}
-
-		actual = simplifyNodes(actual)
-
-		got, err := test.StructToJSON(actual)
-		if err != nil {
-			t.Fatalf("StructToJSON error (%v): %v", c.goldenFile, err)
-		}
+		got := spanner.GetNodeEdgesByIDQuery(c.ids, c.arc, c.offset)
+		interpolated := interpolateSQL(got)
 
 		if test.GenerateGolden {
-			err = test.WriteGolden(got, goldenDir, c.goldenFile)
+			err := test.WriteGolden(interpolated, goldenDir, c.goldenFile)
 			if err != nil {
 				t.Fatalf("WriteGolden error (%v): %v", c.goldenFile, err)
 			}
@@ -327,22 +281,16 @@ func TestGetNodeInEdgesByID(t *testing.T) {
 			t.Fatalf("ReadGolden error (%v): %v", c.goldenFile, err)
 		}
 
-		if diff := cmp.Diff(want, got); diff != "" {
-			t.Errorf("%v payload mismatch (-want +got):\n%s", c.goldenFile, diff)
+		if diff := cmp.Diff(want, interpolated); diff != "" {
+			t.Errorf("%v payload mismatch (-want +got):\n%s", want, diff)
 		}
 	}
 }
 
-func TestGetObservations(t *testing.T) {
-	client := test.NewSpannerClient()
-	if client == nil {
-		return
-	}
-
+func TestGetObservationsQuery(t *testing.T) {
 	t.Parallel()
-	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
-	goldenDir := path.Join(path.Dir(filename), "query")
+	goldenDir := path.Join(path.Dir(filename), "query_builder")
 
 	for _, c := range []struct {
 		variables  []string
@@ -352,30 +300,22 @@ func TestGetObservations(t *testing.T) {
 		{
 			variables:  []string{"AirPollutant_Cancer_Risk"},
 			entities:   []string{"geoId/01001", "geoId/02013"},
-			goldenFile: "get_observations.json",
+			goldenFile: "get_observations.sql",
 		},
 		{
 			entities:   []string{"wikidataId/Q341968"},
-			goldenFile: "get_observations_entity.json",
+			goldenFile: "get_observations_entity.sql",
 		},
 	} {
-		actual, err := client.GetObservations(ctx, c.variables, c.entities)
-
-		if err != nil {
-			t.Fatalf("GetObservations error (%v): %v", c.goldenFile, err)
-		}
-
-		got, err := test.StructToJSON(actual)
-		if err != nil {
-			t.Fatalf("StructToJSON error (%v): %v", c.goldenFile, err)
-		}
+		got := spanner.GetObservationsQuery(c.variables, c.entities)
+		interpolated := interpolateSQL(got)
 
 		if test.GenerateGolden {
-			err = test.WriteGolden(got, goldenDir, c.goldenFile)
+			err := test.WriteGolden(interpolated, goldenDir, c.goldenFile)
 			if err != nil {
 				t.Fatalf("WriteGolden error (%v): %v", c.goldenFile, err)
 			}
-			continue
+			return
 		}
 
 		want, err := test.ReadGolden(goldenDir, c.goldenFile)
@@ -383,22 +323,16 @@ func TestGetObservations(t *testing.T) {
 			t.Fatalf("ReadGolden error (%v): %v", c.goldenFile, err)
 		}
 
-		if diff := cmp.Diff(want, got); diff != "" {
-			t.Errorf("%v payload mismatch (-want +got):\n%s", c.goldenFile, diff)
+		if diff := cmp.Diff(want, interpolated); diff != "" {
+			t.Errorf("%v payload mismatch (-want +got):\n%s", want, diff)
 		}
 	}
 }
 
-func TestGetObservationsContainedInPlace(t *testing.T) {
-	client := test.NewSpannerClient()
-	if client == nil {
-		return
-	}
-
+func TestGetObservationsContainedInPlaceQuery(t *testing.T) {
 	t.Parallel()
-	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
-	goldenDir := path.Join(path.Dir(filename), "query")
+	goldenDir := path.Join(path.Dir(filename), "query_builder")
 
 	for _, c := range []struct {
 		variables        []string
@@ -408,26 +342,18 @@ func TestGetObservationsContainedInPlace(t *testing.T) {
 		{
 			variables:        []string{"Count_Person", "Median_Age_Person"},
 			containedInPlace: &v2.ContainedInPlace{Ancestor: "geoId/10", ChildPlaceType: "County"},
-			goldenFile:       "get_observations_contained_in.json",
+			goldenFile:       "get_observations_contained_in.sql",
 		},
 	} {
-		actual, err := client.GetObservationsContainedInPlace(ctx, c.variables, c.containedInPlace)
-
-		if err != nil {
-			t.Fatalf("GetObservations error (%v): %v", c.goldenFile, err)
-		}
-
-		got, err := test.StructToJSON(actual)
-		if err != nil {
-			t.Fatalf("StructToJSON error (%v): %v", c.goldenFile, err)
-		}
+		got := spanner.GetObservationsContainedInPlaceQuery(c.variables, c.containedInPlace)
+		interpolated := interpolateSQL(got)
 
 		if test.GenerateGolden {
-			err = test.WriteGolden(got, goldenDir, c.goldenFile)
+			err := test.WriteGolden(interpolated, goldenDir, c.goldenFile)
 			if err != nil {
 				t.Fatalf("WriteGolden error (%v): %v", c.goldenFile, err)
 			}
-			continue
+			return
 		}
 
 		want, err := test.ReadGolden(goldenDir, c.goldenFile)
@@ -435,22 +361,16 @@ func TestGetObservationsContainedInPlace(t *testing.T) {
 			t.Fatalf("ReadGolden error (%v): %v", c.goldenFile, err)
 		}
 
-		if diff := cmp.Diff(want, got); diff != "" {
-			t.Errorf("%v payload mismatch (-want +got):\n%s", c.goldenFile, diff)
+		if diff := cmp.Diff(want, interpolated); diff != "" {
+			t.Errorf("%v payload mismatch (-want +got):\n%s", want, diff)
 		}
 	}
 }
 
-func TestSearchNodes(t *testing.T) {
-	client := test.NewSpannerClient()
-	if client == nil {
-		return
-	}
-
+func TestSearchNodesQuery(t *testing.T) {
 	t.Parallel()
-	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
-	goldenDir := path.Join(path.Dir(filename), "query")
+	goldenDir := path.Join(path.Dir(filename), "query_builder")
 
 	for _, c := range []struct {
 		query      string
@@ -460,31 +380,22 @@ func TestSearchNodes(t *testing.T) {
 		{
 			query:      "income",
 			types:      []string{"StatisticalVariable"},
-			goldenFile: "search_nodes_with_type.json",
+			goldenFile: "search_nodes_with_type.sql",
 		},
 		{
 			query:      "income",
-			goldenFile: "search_nodes_without_type.json",
+			goldenFile: "search_nodes_without_type.sql",
 		},
 	} {
-		actual, err := client.SearchNodes(ctx, c.query, c.types)
-		if err != nil {
-			t.Fatalf("SearchNodes error (%v): %v", c.goldenFile, err)
-		}
-
-		actual = simplifySearchNodes(actual)
-
-		got, err := test.StructToJSON(actual)
-		if err != nil {
-			t.Fatalf("StructToJSON error (%v): %v", c.goldenFile, err)
-		}
+		got := spanner.SearchNodesQuery(c.query, c.types)
+		interpolated := interpolateSQL(got)
 
 		if test.GenerateGolden {
-			err = test.WriteGolden(got, goldenDir, c.goldenFile)
+			err := test.WriteGolden(interpolated, goldenDir, c.goldenFile)
 			if err != nil {
 				t.Fatalf("WriteGolden error (%v): %v", c.goldenFile, err)
 			}
-			continue
+			return
 		}
 
 		want, err := test.ReadGolden(goldenDir, c.goldenFile)
@@ -492,33 +403,40 @@ func TestSearchNodes(t *testing.T) {
 			t.Fatalf("ReadGolden error (%v): %v", c.goldenFile, err)
 		}
 
-		if diff := cmp.Diff(want, got); diff != "" {
-			t.Errorf("%v payload mismatch (-want +got):\n%s", c.goldenFile, diff)
+		if diff := cmp.Diff(want, interpolated); diff != "" {
+			t.Errorf("%v payload mismatch (-want +got):\n%s", want, diff)
 		}
 	}
 }
 
-// simplifySearchNodes simplifies search results for goldens.
-func simplifySearchNodes(results []*spanner.SearchNode) []*spanner.SearchNode {
-	if len(results) > NUM_MATCHES {
-		results = results[:NUM_MATCHES]
-	}
+// Replace params with values in SQL. ONLY FOR TESTS.
+func interpolateSQL(stmt *cloudSpanner.Statement) string {
+	sqlString := stmt.SQL
+	for key, value := range stmt.Params {
+		placeholder := "@" + key
+		var formattedValue string
 
-	for _, r := range results {
-		r.Score = 0
-	}
-
-	return results
-}
-
-// simplifyNodes simplifies Node results for goldens.
-func simplifyNodes(results map[string][]*spanner.Edge) map[string][]*spanner.Edge {
-	filtered := map[string][]*spanner.Edge{}
-	for subject_id, edges := range results {
-		if len(edges) > NUM_MATCHES {
-			edges = edges[:NUM_MATCHES]
+		switch v := value.(type) {
+		case string:
+			formattedValue = fmt.Sprintf("'%s'", strings.ReplaceAll(v, "'", "''"))
+		case []string:
+			// For UNNEST, represent the array as a comma-separated list
+			// enclosed in parentheses or brackets for clarity.
+			var quotedValues []string
+			for _, s := range v {
+				quotedValues = append(quotedValues, fmt.Sprintf("'%s'", strings.ReplaceAll(s, "'", "''")))
+			}
+			formattedValue = "(" + strings.Join(quotedValues, ",") + ")"
+			// Need to handle both UNNEST(@key) and @key
+			sqlString = strings.ReplaceAll(sqlString, "UNNEST("+placeholder+")", formattedValue)
+			placeholder = "@" + key // Ensure we don't mess up UNNEST replacement
+			formattedValue = "[" + strings.Join(quotedValues, ",") + "]"
+		// ... add more cases for int64, float64, bool, etc.
+		default:
+			// Catch-all for other types
+			formattedValue = fmt.Sprintf("%v", v)
 		}
-		filtered[subject_id] = edges
+		sqlString = strings.ReplaceAll(sqlString, placeholder, formattedValue)
 	}
-	return filtered
+	return sqlString
 }
