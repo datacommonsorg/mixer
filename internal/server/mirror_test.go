@@ -83,15 +83,18 @@ func TestMaybeMirrorV3_Percentage(t *testing.T) {
 			mirrorCallCount := 0
 			var mirroredReqs []proto.Message
 			var skipCacheHeaderValues []bool
+			var mu sync.Mutex
 
 			v3Call := func(ctx context.Context, req proto.Message) (proto.Message, error) {
+				mu.Lock()
+				defer mu.Unlock()
 				mirroredReqs = append(mirroredReqs, req)
 				md, _ := metadata.FromOutgoingContext(ctx)
 				v := md.Get(string(util.XSkipCache))
 				skipCache := len(v) > 0 && v[0] == "true"
 				skipCacheHeaderValues = append(skipCacheHeaderValues, skipCache)
 				mirrorCallCount++
-				defer wg.Done()
+				wg.Done()
 				return &pbv2.NodeResponse{}, nil
 			}
 
