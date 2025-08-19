@@ -2,6 +2,7 @@
 mixer:
   hostProject: datcom-mixer-staging
   serviceName: staging.api.datacommons.org
+  enableOtlp: true
 
 ingress:
   enabled: true
