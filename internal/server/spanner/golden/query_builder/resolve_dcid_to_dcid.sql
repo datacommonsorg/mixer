@@ -4,4 +4,3 @@
 		RETURN
 			n.subject_id AS node,
 			n.subject_id AS candidate
-	

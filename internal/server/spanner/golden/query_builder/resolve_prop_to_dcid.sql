@@ -5,4 +5,3 @@
 		RETURN
 			i.object_id AS node,
 			i.subject_id AS candidate
-	

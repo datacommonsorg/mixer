@@ -245,8 +245,7 @@ var statements = struct {
 			n.subject_id IN UNNEST(@nodes))
 		RETURN
 			n.subject_id AS node,
-			n.subject_id AS candidate
-	`,
+			n.subject_id AS candidate`,
 	resolveDcidToProp: `		GRAPH DCGraph MATCH -[o:Edge
 		WHERE 
 			o.subject_id IN UNNEST(@nodes)
@@ -260,8 +259,7 @@ var statements = struct {
 			AND i.predicate = @inProp]-
 		RETURN
 			i.object_id AS node,
-			i.subject_id AS candidate
-	`,
+			i.subject_id AS candidate`,
 	resolvePropToProp: `		GRAPH DCGraph MATCH <-[i:Edge
 		WHERE
 			i.object_id IN UNNEST(@nodes)
@@ -270,6 +268,5 @@ var statements = struct {
 			o.predicate = @outProp]->(n:Node)
 		RETURN
 			i.object_id AS node,
-			n.value AS candidate
-		`,
+			n.value AS candidate`,
 }
