@@ -119,7 +119,7 @@ func main() {
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 
 	if *v3MirrorFraction < 0 || *v3MirrorFraction > 1.0 {
-		log.Fatalf("v3_mirror_fraction must be between 0 and 1.0, got %d", *v3MirrorFraction)
+		log.Fatalf("v3_mirror_fraction must be between 0 and 1.0, got %f", *v3MirrorFraction)
 	}
 	if *v3MirrorFraction > 0 && !*enableV3 {
 		log.Fatalf("v3_mirror_fraction > 0 requires --enable_v3=true")
