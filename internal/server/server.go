@@ -42,13 +42,13 @@ import (
 
 // Server holds resources for a mixer server
 type Server struct {
-	store           *store.Store
-	metadata        *resource.Metadata
-	cachedata       atomic.Pointer[cache.Cache]
-	mapsClient      *maps.Client
-	httpClient      *http.Client
-	dispatcher      *dispatcher.Dispatcher
-	v3MirrorPercent int
+	store            *store.Store
+	metadata         *resource.Metadata
+	cachedata        atomic.Pointer[cache.Cache]
+	mapsClient       *maps.Client
+	httpClient       *http.Client
+	dispatcher       *dispatcher.Dispatcher
+	v3MirrorFraction float64
 }
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) error {
@@ -164,7 +164,7 @@ func NewMixerServer(
 	return s
 }
 
-// SetV3MirrorPercent sets the mirroring percentage.
-func (s *Server) SetV3MirrorPercent(percent int) {
-	s.v3MirrorPercent = percent
+// SetV3MirrorFraction sets the mirroring percentage.
+func (s *Server) SetV3MirrorFraction(fraction float64) {
+	s.v3MirrorFraction = fraction
 }

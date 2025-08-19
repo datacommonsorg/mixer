@@ -69,15 +69,15 @@ func TestMaybeMirrorV3_Percentage(t *testing.T) {
 	resp := &pbv2.NodeResponse{}
 
 	for _, tc := range []struct {
-		name          string
-		mirrorPercent int
-		shouldMirror  bool
+		name           string
+		mirrorFraction float64
+		shouldMirror   bool
 	}{
 		{"0 percent", 0, false},
-		{"100 percent", 100, true},
+		{"100 percent", 1.0, true},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			s := &Server{v3MirrorPercent: tc.mirrorPercent}
+			s := &Server{v3MirrorFraction: tc.mirrorFraction}
 			var wg sync.WaitGroup
 			wg.Add(2)
 			mirrorCallCount := 0
@@ -127,7 +127,7 @@ func TestMaybeMirrorV3_Percentage(t *testing.T) {
 
 func TestMaybeMirrorV3_IgnoreSubsequentPages(t *testing.T) {
 	ctx := context.Background()
-	s := &Server{v3MirrorPercent: 100} // Mirroring is on
+	s := &Server{v3MirrorFraction: 1.0} // Mirroring is on
 	req := &pbv2.NodeRequest{NextToken: "some_token"}
 	resp := &pbv2.NodeResponse{}
 
@@ -148,7 +148,7 @@ func TestMaybeMirrorV3_IgnoreSubsequentPages(t *testing.T) {
 
 func TestMaybeMirrorV3_LatencyMetric(t *testing.T) {
 	ctx := context.Background()
-	s := &Server{v3MirrorPercent: 100} // Mirroring is on
+	s := &Server{v3MirrorFraction: 1.0} // Mirroring is on
 	reader := setupMetricReader(t)
 	req := &pbv2.NodeRequest{}
 	resp := &pbv2.NodeResponse{}
@@ -208,7 +208,7 @@ func TestMaybeMirrorV3_LatencyMetric(t *testing.T) {
 
 func TestMaybeMirrorV3_ResponseMismatch(t *testing.T) {
 	ctx := context.Background()
-	s := &Server{v3MirrorPercent: 100} // Mirroring is on
+	s := &Server{v3MirrorFraction: 1.0} // Mirroring is on
 	reader := setupMetricReader(t)
 
 	v2Req := &pbv2.NodeRequest{Nodes: []string{"test"}}
@@ -267,7 +267,7 @@ func TestMaybeMirrorV3_ResponseMismatch(t *testing.T) {
 
 func TestMaybeMirrorV3_ResponseMatch(t *testing.T) {
 	ctx := context.Background()
-	s := &Server{v3MirrorPercent: 100} // Mirroring is on
+	s := &Server{v3MirrorFraction: 1.0} // Mirroring is on
 	reader := setupMetricReader(t)
 
 	v2Req := &pbv2.ResolveRequest{
@@ -341,7 +341,7 @@ func TestMaybeMirrorV3_ResponseMatch(t *testing.T) {
 
 func TestMaybeMirrorV3_V3Error(t *testing.T) {
 	ctx := context.Background()
-	s := &Server{v3MirrorPercent: 100} // Mirroring is on
+	s := &Server{v3MirrorFraction: 1.0} // Mirroring is on
 	reader := setupMetricReader(t)
 
 	v2Req := &pbv2.NodeRequest{Nodes: []string{"test"}}

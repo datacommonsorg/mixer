@@ -107,8 +107,8 @@ var (
 		"",
 		"Which exporter to use for OpenTelemetry metrics. Valid values are otlp, prometheus, and console (or blank for no-op).",
 	)
-	v3MirrorPercent = flag.Int(
-		"v3_mirror_percent", 0, "Percentage of V2 API requests to mirror to V3. Value from 0 to 100.",
+	v3MirrorFraction = flag.Float64(
+		"v3_mirror_fraction", 0, "Fraction of V2 API requests to mirror to V3. Value from 0 to 1.0.",
 	)
 )
 
@@ -118,11 +118,11 @@ func main() {
 	flag.Parse()
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
 
-	if *v3MirrorPercent < 0 || *v3MirrorPercent > 100 {
-		log.Fatalf("v3_mirror_percent must be between 0 and 100, got %d", *v3MirrorPercent)
+	if *v3MirrorFraction < 0 || *v3MirrorFraction > 1.0 {
+		log.Fatalf("v3_mirror_fraction must be between 0 and 1.0, got %d", *v3MirrorFraction)
 	}
-	if *v3MirrorPercent > 0 && !*enableV3 {
-		log.Fatalf("v3_mirror_percent > 0 requires --enable_v3=true")
+	if *v3MirrorFraction > 0 && !*enableV3 {
+		log.Fatalf("v3_mirror_fraction > 0 requires --enable_v3=true")
 	}
 
 	ctx := context.Background()
@@ -378,7 +378,7 @@ func main() {
 
 	// Create server object
 	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher)
-	mixerServer.SetV3MirrorPercent(*v3MirrorPercent)
+	mixerServer.SetV3MirrorFraction(*v3MirrorFraction)
 	pbs.RegisterMixerServer(srv, mixerServer)
 
 	// Subscribe to branch cache update
