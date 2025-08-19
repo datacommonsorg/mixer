@@ -593,7 +593,8 @@ func candidatesToResolveResponse(nodeToCandidates map[string][]string) *pbv2.Res
 	response := &pbv2.ResolveResponse{}
 	for node, candidates := range nodeToCandidates {
 		entity := &pbv2.ResolveResponse_Entity{
-			Node: node,
+			Node:       node,
+			Candidates: make([]*pbv2.ResolveResponse_Entity_Candidate, 0, len(candidates)),
 		}
 		for _, candidate := range candidates {
 			entity.Candidates = append(entity.Candidates, &pbv2.ResolveResponse_Entity_Candidate{
@@ -612,7 +613,7 @@ func generateValueHash(input string) string {
 }
 
 func addValueHashes(input []string) []string {
-	result := []string{}
+	result := make([]string, 0, len(input)*2)
 	for _, v := range input {
 		result = append(result, v)
 		result = append(result, generateValueHash(v))
