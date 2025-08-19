@@ -171,6 +171,39 @@ func (sc *SpannerClient) SearchNodes(ctx context.Context, query string, types []
 	return nodes, nil
 }
 
+func (sc *SpannerClient) ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error) {
+	candidates := make(map[string][]string)
+	if len(nodes) == 0 {
+		return candidates, nil
+	}
+
+	valueMap := map[string]string{}
+	for _, node := range nodes {
+		candidates[node] = []string{}
+		value := generateValueHash(node)
+		valueMap[node] = node
+		valueMap[value] = node
+	}
+
+	err := sc.queryAndCollect(
+		ctx,
+		*ResolveByIDQuery(nodes, in, out),
+		func() interface{} {
+			return &ResolutionCandidate{}
+		},
+		func(rowStruct interface{}) {
+			resolutionCandidate := rowStruct.(*ResolutionCandidate)
+			node := valueMap[resolutionCandidate.Node]
+			candidates[node] = append(candidates[node], resolutionCandidate.Candidate)
+		},
+	)
+	if err != nil {
+		return candidates, err
+	}
+
+	return candidates, nil
+}
+
 func (sc *SpannerClient) queryAndCollect(
 	ctx context.Context,
 	stmt spanner.Statement,

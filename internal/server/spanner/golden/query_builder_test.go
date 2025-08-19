@@ -409,6 +409,64 @@ func TestSearchNodesQuery(t *testing.T) {
 	}
 }
 
+func TestResolveByIDQuery(t *testing.T) {
+	t.Parallel()
+	_, filename, _, _ := runtime.Caller(0)
+	goldenDir := path.Join(path.Dir(filename), "query_builder")
+
+	for _, c := range []struct {
+		nodes      []string
+		in         string
+		out        string
+		goldenFile string
+	}{
+		{
+			nodes:      []string{"country/USA", "undata-geo:G00003340", "Count_Person", "foo"},
+			in:         "dcid",
+			out:        "dcid",
+			goldenFile: "resolve_dcid_to_dcid.sql",
+		},
+		{
+			nodes:      []string{"country/USA", "undata-geo:G00003340", "Count_Person", "foo"},
+			in:         "dcid",
+			out:        "unDataCode",
+			goldenFile: "resolve_dcid_to_prop.sql",
+		},
+		{
+			nodes:      []string{"country/USA", "undata-geo:G00003340", "Count_Person", "foo"},
+			in:         "unDataCode",
+			out:        "dcid",
+			goldenFile: "resolve_prop_to_dcid.sql",
+		},
+		{
+			nodes:      []string{"country/USA", "undata-geo:G00003340", "Count_Person", "foo"},
+			in:         "unDataCode",
+			out:        "wikidataId",
+			goldenFile: "resolve_prop_to_prop.sql",
+		},
+	} {
+		got := spanner.ResolveByIDQuery(c.nodes, c.in, c.out)
+		interpolated := interpolateSQL(got)
+
+		if test.GenerateGolden {
+			err := test.WriteGolden(interpolated, goldenDir, c.goldenFile)
+			if err != nil {
+				t.Fatalf("WriteGolden error (%v): %v", c.goldenFile, err)
+			}
+			return
+		}
+
+		want, err := test.ReadGolden(goldenDir, c.goldenFile)
+		if err != nil {
+			t.Fatalf("ReadGolden error (%v): %v", c.goldenFile, err)
+		}
+
+		if diff := cmp.Diff(want, interpolated); diff != "" {
+			t.Errorf("%v payload mismatch (-want +got):\n%s", want, diff)
+		}
+	}
+}
+
 // Replace params with values in SQL. ONLY FOR TESTS.
 func interpolateSQL(stmt *cloudSpanner.Statement) string {
 	sqlString := stmt.SQL

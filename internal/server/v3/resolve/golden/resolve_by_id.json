@@ -1,0 +1,15 @@
+{
+  "entities": [
+    {
+      "node": "undata-geo:G00003340",
+      "candidates": [
+        {
+          "dcid": "Q30"
+        }
+      ]
+    },
+    {
+      "node": "foo"
+    }
+  ]
+}

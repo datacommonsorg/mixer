@@ -589,8 +589,33 @@ func searchNodeToNodeSearchResult(node *SearchNode) *pbv2.NodeSearchResult {
 	}
 }
 
+func candidatesToResolveResponse(nodeToCandidates map[string][]string) *pbv2.ResolveResponse {
+	response := &pbv2.ResolveResponse{}
+	for node, candidates := range nodeToCandidates {
+		entity := &pbv2.ResolveResponse_Entity{
+			Node: node,
+		}
+		for _, candidate := range candidates {
+			entity.Candidates = append(entity.Candidates, &pbv2.ResolveResponse_Entity_Candidate{
+				Dcid: candidate,
+			})
+		}
+		response.Entities = append(response.Entities, entity)
+	}
+	return response
+}
+
 func generateValueHash(input string) string {
 	data := []byte(input)
 	hash := sha256.Sum256(data)
 	return base64.StdEncoding.EncodeToString(hash[:])
+}
+
+func addValueHashes(input []string) []string {
+	result := []string{}
+	for _, v := range input {
+		result = append(result, v)
+		result = append(result, generateValueHash(v))
+	}
+	return result
 }
