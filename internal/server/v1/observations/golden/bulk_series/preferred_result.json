@@ -2315,7 +2315,23 @@
                 },
                 {
                   "date": "2020",
-                  "value": 194110262920
+                  "value": 193083537410
+                },
+                {
+                  "date": "2021",
+                  "value": 197165105640
+                },
+                {
+                  "date": "2022",
+                  "value": 203383856840
+                },
+                {
+                  "date": "2023",
+                  "value": 216628793850
+                },
+                {
+                  "date": "2024",
+                  "value": 214131497530
                 }
               ],
               "facet": "2392525955"
@@ -6060,6 +6076,10 @@
                 {
                   "date": "2025-06",
                   "value": 7015000
+                },
+                {
+                  "date": "2025-07",
+                  "value": 7236000
                 }
               ],
               "facet": "3707913853"
@@ -10155,7 +10175,11 @@
                 },
                 {
                   "date": "2025-05",
-                  "value": 1537
+                  "value": 1543
+                },
+                {
+                  "date": "2025-06",
+                  "value": 1907
                 }
               ],
               "facet": "324358135"
@@ -10198,7 +10222,7 @@
     },
     "2392525955": {
       "import_name": "EIA_Electricity",
-      "provenance_url": "https://www.eia.gov/opendata/qb.php?category=0",
+      "provenance_url": "https://www.eia.gov/opendata/browser/electricity",
       "unit": "KilowattHour"
     },
     "324358135": {

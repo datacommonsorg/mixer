@@ -166,7 +166,7 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 30498
+        "descendentStatVarCount": 30506
       },
       {
         "id": "dc/g/Person_AgeGroupClassification",
@@ -280,7 +280,7 @@
         "id": "dc/g/Person_DisabilityStatus",
         "specializedEntity": "Disability Status",
         "displayName": "Person by Disability Status",
-        "descendentStatVarCount": 545
+        "descendentStatVarCount": 547
       },
       {
         "id": "dc/g/Person_Earnings",
@@ -304,7 +304,7 @@
         "id": "dc/g/Person_Ethnicity",
         "specializedEntity": "Ethnicity",
         "displayName": "Person by Ethnicity",
-        "descendentStatVarCount": 2227
+        "descendentStatVarCount": 2233
       },
       {
         "id": "dc/g/Person_Facilities",
@@ -340,7 +340,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 27252
+        "descendentStatVarCount": 27258
       },
       {
         "id": "dc/g/Person_GovernmentId",
@@ -442,7 +442,7 @@
         "id": "dc/g/Person_LaborForceStatus",
         "specializedEntity": "Labor Force Status",
         "displayName": "Person by Labor Force Status",
-        "descendentStatVarCount": 4561
+        "descendentStatVarCount": 4569
       },
       {
         "id": "dc/g/Language",
@@ -544,7 +544,7 @@
         "id": "dc/g/Person_Race",
         "specializedEntity": "Race",
         "displayName": "Person by Race",
-        "descendentStatVarCount": 21891
+        "descendentStatVarCount": 21897
       },
       {
         "id": "dc/g/Person_Religion",
@@ -580,7 +580,7 @@
         "id": "dc/g/VehicleCrashIncident",
         "specializedEntity": "Vehicle Crash Incident",
         "displayName": "Vehicle Crash Incident",
-        "descendentStatVarCount": 94
+        "descendentStatVarCount": 100
       },
       {
         "id": "dc/g/Person_VehicleOccupantType",
@@ -601,7 +601,7 @@
         "descendentStatVarCount": 4
       }
     ],
-    "descendentStatVarCount": 50806,
+    "descendentStatVarCount": 50820,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]
