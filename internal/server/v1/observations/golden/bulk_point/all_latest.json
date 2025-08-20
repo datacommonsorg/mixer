@@ -331,13 +331,13 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2019",
-              "value": 4405511000000,
+              "date": "2023",
+              "value": 4458417904000,
               "facet": "1450533103"
             },
             {
-              "date": "2020",
-              "value": 4009084999080,
+              "date": "2024",
+              "value": 4304038716900.0005,
               "facet": "2392525955"
             }
           ]
@@ -346,8 +346,8 @@
           "entity": "geoId/06",
           "points_by_facet": [
             {
-              "date": "2020",
-              "value": 194110262920,
+              "date": "2024",
+              "value": 214131497530,
               "facet": "2392525955"
             }
           ]
@@ -370,8 +370,8 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2025-06",
-              "value": 7015000,
+              "date": "2025-07",
+              "value": 7236000,
               "facet": "3707913853"
             },
             {
@@ -385,8 +385,8 @@
           "entity": "geoId/06",
           "points_by_facet": [
             {
-              "date": "2025-06",
-              "value": 1135141,
+              "date": "2025-07",
+              "value": 1202763,
               "facet": "324358135"
             },
             {
@@ -395,8 +395,8 @@
               "facet": "2978659163"
             },
             {
-              "date": "2025-06",
-              "value": 1069959,
+              "date": "2025-07",
+              "value": 1088641,
               "facet": "1249140336"
             }
           ]
@@ -405,8 +405,8 @@
           "entity": "geoId/0649670",
           "points_by_facet": [
             {
-              "date": "2025-05",
-              "value": 1537,
+              "date": "2025-06",
+              "value": 1907,
               "facet": "324358135"
             },
             {
@@ -509,7 +509,7 @@
     },
     "2392525955": {
       "import_name": "EIA_Electricity",
-      "provenance_url": "https://www.eia.gov/opendata/qb.php?category=0",
+      "provenance_url": "https://www.eia.gov/opendata/browser/electricity",
       "unit": "KilowattHour"
     },
     "2458695583": {

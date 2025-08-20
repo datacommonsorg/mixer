@@ -61,7 +61,7 @@
               "observations": [
                 {
                   "date": "2015",
-                  "value": 4077600938550
+                  "value": 4078713772290
                 }
               ],
               "obs_count": 1,
@@ -605,7 +605,7 @@
     },
     "2392525955": {
       "import_name": "EIA_Electricity",
-      "provenance_url": "https://www.eia.gov/opendata/qb.php?category=0",
+      "provenance_url": "https://www.eia.gov/opendata/browser/electricity",
       "unit": "KilowattHour"
     },
     "2458695583": {

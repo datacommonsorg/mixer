@@ -558,11 +558,15 @@
                 {
                   "date": "2015",
                   "value": 2206488
+                },
+                {
+                  "date": "2021",
+                  "value": 2133111
                 }
               ],
-              "obs_count": 5,
+              "obs_count": 6,
               "earliest_date": "1999",
-              "latest_date": "2015"
+              "latest_date": "2021"
             },
             {
               "facet_id": "1456184638",
