@@ -141,7 +141,7 @@ func runQueryBuilderGoldenTest(t *testing.T, goldenFile string, fn goldenTestFun
 	}
 
 	if diff := cmp.Diff(want, interpolated); diff != "" {
-		t.Errorf("%v payload mismatch (-want +got):\n%s", want, diff)
+		t.Errorf("%v payload mismatch (-want +got):\n%s", goldenFile, diff)
 	}
 }
 
