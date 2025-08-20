@@ -18,7 +18,7 @@
     "MeasurementMethod": "",
     "Unit": "",
     "ScalingFactor": "",
-    "IsDcAggregate": false,
+    "IsDcAggregate": true,
     "ProvenanceURL": "https://datacommons.org"
   },
   {
@@ -36,7 +36,7 @@
     "MeasurementMethod": "",
     "Unit": "",
     "ScalingFactor": "",
-    "IsDcAggregate": false,
+    "IsDcAggregate": true,
     "ProvenanceURL": "https://datacommons.org"
   },
   {
@@ -5894,7 +5894,7 @@
     "MeasurementMethod": "NASAGSOD_NASAGHCN_EPA",
     "Unit": "Millimeter",
     "ScalingFactor": "",
-    "IsDcAggregate": false,
+    "IsDcAggregate": true,
     "ProvenanceURL": "https://www.noaa.gov/"
   },
   {
@@ -11324,7 +11324,7 @@
     "MeasurementMethod": "NASAGSOD_NASAGHCN_EPA",
     "Unit": "Millimeter",
     "ScalingFactor": "",
-    "IsDcAggregate": false,
+    "IsDcAggregate": true,
     "ProvenanceURL": "https://www.noaa.gov/"
   },
   {
@@ -17086,7 +17086,7 @@
     "MeasurementMethod": "NASAGSOD_NASAGHCN_EPA",
     "Unit": "Celsius",
     "ScalingFactor": "",
-    "IsDcAggregate": false,
+    "IsDcAggregate": true,
     "ProvenanceURL": "https://www.noaa.gov/"
   },
   {
@@ -18484,7 +18484,7 @@
     "MeasurementMethod": "NASAGSOD_NASAGHCN_EPA",
     "Unit": "Millibar",
     "ScalingFactor": "",
-    "IsDcAggregate": false,
+    "IsDcAggregate": true,
     "ProvenanceURL": "https://www.noaa.gov/"
   },
   {
@@ -24302,7 +24302,7 @@
     "MeasurementMethod": "NASAGSOD_NASAGHCN_EPA",
     "Unit": "Millimeter",
     "ScalingFactor": "",
-    "IsDcAggregate": false,
+    "IsDcAggregate": true,
     "ProvenanceURL": "https://www.noaa.gov/"
   },
   {
@@ -29732,7 +29732,7 @@
     "MeasurementMethod": "NASAGSOD_NASAGHCN_EPA",
     "Unit": "Millimeter",
     "ScalingFactor": "",
-    "IsDcAggregate": false,
+    "IsDcAggregate": true,
     "ProvenanceURL": "https://www.noaa.gov/"
   },
   {
@@ -31882,7 +31882,7 @@
     "MeasurementMethod": "NASAGSOD_NASAGHCN_EPA",
     "Unit": "Celsius",
     "ScalingFactor": "",
-    "IsDcAggregate": false,
+    "IsDcAggregate": true,
     "ProvenanceURL": "https://www.noaa.gov/"
   },
   {
@@ -32940,7 +32940,7 @@
     "MeasurementMethod": "NASAGSOD_NASAGHCN_EPA",
     "Unit": "Kilometer",
     "ScalingFactor": "",
-    "IsDcAggregate": false,
+    "IsDcAggregate": true,
     "ProvenanceURL": "https://www.noaa.gov/"
   },
   {
@@ -38758,7 +38758,7 @@
     "MeasurementMethod": "NASAGSOD_NASAGHCN_EPA",
     "Unit": "Millimeter",
     "ScalingFactor": "",
-    "IsDcAggregate": false,
+    "IsDcAggregate": true,
     "ProvenanceURL": "https://www.noaa.gov/"
   },
   {
@@ -44188,7 +44188,7 @@
     "MeasurementMethod": "NASAGSOD_NASAGHCN_EPA",
     "Unit": "Millimeter",
     "ScalingFactor": "",
-    "IsDcAggregate": false,
+    "IsDcAggregate": true,
     "ProvenanceURL": "https://www.noaa.gov/"
   },
   {
@@ -49970,7 +49970,7 @@
     "MeasurementMethod": "NASAGSOD_NASAGHCN_EPA",
     "Unit": "Celsius",
     "ScalingFactor": "",
-    "IsDcAggregate": false,
+    "IsDcAggregate": true,
     "ProvenanceURL": "https://www.noaa.gov/"
   }
 ]

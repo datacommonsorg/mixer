@@ -63,6 +63,14 @@ var statements = struct {
 	searchNodesByQuery string
 	// Subquery to filter search results by types.
 	filterTypes string
+	// Resolve dcid to dcid (ie dcid search).
+	resolveDcidToDcid string
+	// Resolve dcid to other property.
+	resolveDcidToProp string
+	// Resolve other property to dcid.
+	resolvePropToDcid string
+	// Resolve one property to another.
+	resolvePropToProp string
 }{
 	getPropsBySubjectID: `		GRAPH DCGraph MATCH -[e:Edge
 		WHERE
@@ -232,4 +240,33 @@ var statements = struct {
 		LIMIT %d`,
 	filterTypes: `
 		AND ARRAY_INCLUDES_ANY(n.types, @types)`,
+	resolveDcidToDcid: `		GRAPH DCGraph MATCH (n:Node
+		WHERE
+			n.subject_id IN UNNEST(@nodes))
+		RETURN
+			n.subject_id AS node,
+			n.subject_id AS candidate`,
+	resolveDcidToProp: `		GRAPH DCGraph MATCH -[o:Edge
+		WHERE 
+			o.subject_id IN UNNEST(@nodes)
+			AND o.predicate = @outProp]->(n:Node)
+		RETURN
+			o.subject_id AS node,
+			n.value AS candidate`,
+	resolvePropToDcid: `		GRAPH DCGraph MATCH <-[i:Edge
+		WHERE
+			i.object_id IN UNNEST(@nodes)
+			AND i.predicate = @inProp]-
+		RETURN
+			i.object_id AS node,
+			i.subject_id AS candidate`,
+	resolvePropToProp: `		GRAPH DCGraph MATCH <-[i:Edge
+		WHERE
+			i.object_id IN UNNEST(@nodes)
+			AND i.predicate = @inProp]-()-[o:Edge
+		WHERE
+			o.predicate = @outProp]->(n:Node)
+		RETURN
+			i.object_id AS node,
+			n.value AS candidate`,
 }

@@ -42,7 +42,7 @@
     "MeasurementMethod": "",
     "Unit": "PerMillionPerson",
     "ScalingFactor": "",
-    "IsDcAggregate": false,
+    "IsDcAggregate": true,
     "ProvenanceURL": "https://gaftp.epa.gov/EJSCREEN/"
   },
   {
@@ -88,7 +88,7 @@
     "MeasurementMethod": "",
     "Unit": "PerMillionPerson",
     "ScalingFactor": "",
-    "IsDcAggregate": false,
+    "IsDcAggregate": true,
     "ProvenanceURL": "https://gaftp.epa.gov/EJSCREEN/"
   }
 ]

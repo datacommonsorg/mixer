@@ -589,8 +589,35 @@ func searchNodeToNodeSearchResult(node *SearchNode) *pbv2.NodeSearchResult {
 	}
 }
 
+// candidatesToResolveResponse converts a map of node to candidates into a ResolveResponse.
+func candidatesToResolveResponse(nodeToCandidates map[string][]string) *pbv2.ResolveResponse {
+	response := &pbv2.ResolveResponse{}
+	for node, candidates := range nodeToCandidates {
+		entity := &pbv2.ResolveResponse_Entity{
+			Node:       node,
+			Candidates: make([]*pbv2.ResolveResponse_Entity_Candidate, 0, len(candidates)),
+		}
+		for _, candidate := range candidates {
+			entity.Candidates = append(entity.Candidates, &pbv2.ResolveResponse_Entity_Candidate{
+				Dcid: candidate,
+			})
+		}
+		response.Entities = append(response.Entities, entity)
+	}
+	return response
+}
+
 func generateValueHash(input string) string {
 	data := []byte(input)
 	hash := sha256.Sum256(data)
 	return base64.StdEncoding.EncodeToString(hash[:])
+}
+
+func addValueHashes(input []string) []string {
+	result := make([]string, 0, len(input)*2)
+	for _, v := range input {
+		result = append(result, v)
+		result = append(result, generateValueHash(v))
+	}
+	return result
 }
