@@ -498,6 +498,78 @@ func TestSearchNodes(t *testing.T) {
 	}
 }
 
+func TestResolveByID(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+	ctx := context.Background()
+	_, filename, _, _ := runtime.Caller(0)
+	goldenDir := path.Join(path.Dir(filename), "query")
+
+	for _, c := range []struct {
+		nodes      []string
+		in         string
+		out        string
+		goldenFile string
+	}{
+		{
+			nodes:      []string{"country/USA", "undata-geo:G00003340", "Count_Person", "foo"},
+			in:         "dcid",
+			out:        "dcid",
+			goldenFile: "resolve_dcid_to_dcid.json",
+		},
+		{
+			nodes:      []string{"country/USA", "undata-geo:G00003340", "Count_Person", "foo"},
+			in:         "dcid",
+			out:        "unDataCode",
+			goldenFile: "resolve_dcid_to_prop.json",
+		},
+		{
+			nodes:      []string{"country/USA", "undata-geo:G00003340", "Count_Person", "foo"},
+			in:         "unDataCode",
+			out:        "dcid",
+			goldenFile: "resolve_prop_to_dcid.json",
+		},
+		{
+			nodes:      []string{"country/USA", "undata-geo:G00003340", "Count_Person", "foo"},
+			in:         "unDataCode",
+			out:        "wikidataId",
+			goldenFile: "resolve_prop_to_prop.json",
+		},
+	} {
+		actual, err := client.ResolveByID(ctx, c.nodes, c.in, c.out)
+
+		if err != nil {
+			t.Fatalf("GetObservations error (%v): %v", c.goldenFile, err)
+		}
+
+		got, err := test.StructToJSON(actual)
+		if err != nil {
+			t.Fatalf("StructToJSON error (%v): %v", c.goldenFile, err)
+		}
+
+		if test.GenerateGolden {
+			err = test.WriteGolden(got, goldenDir, c.goldenFile)
+			if err != nil {
+				t.Fatalf("WriteGolden error (%v): %v", c.goldenFile, err)
+			}
+			continue
+		}
+
+		want, err := test.ReadGolden(goldenDir, c.goldenFile)
+		if err != nil {
+			t.Fatalf("ReadGolden error (%v): %v", c.goldenFile, err)
+		}
+
+		if diff := cmp.Diff(want, got); diff != "" {
+			t.Errorf("%v payload mismatch (-want +got):\n%s", c.goldenFile, diff)
+		}
+	}
+}
+
 // simplifySearchNodes simplifies search results for goldens.
 func simplifySearchNodes(results []*spanner.SearchNode) []*spanner.SearchNode {
 	if len(results) > NUM_MATCHES {
