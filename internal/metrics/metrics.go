@@ -22,6 +22,7 @@ import (
 	"net"
 	"os"
 	"strings"
+	"sync"
 	"time"
 
 	"net/http"
@@ -36,6 +37,7 @@ import (
 	"go.opentelemetry.io/otel/metric"
 	sdk "go.opentelemetry.io/otel/sdk/metric"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/status"
 )
 
 const (
@@ -65,10 +67,85 @@ const (
 	cacheDataTypeAttr = "cachedata.type"
 
 	// Common metric attributes
-	rpcMethodAttr = "rpc.method"
+	rpcMethodAttr     = "rpc.method"
+	rpcStatusCodeAttr = "rpc.grpc.status_code"
 
 	unknownMethodName = "UnknownMethod"
 )
+
+var (
+	once  sync.Once
+	meter metric.Meter
+
+	// Bigtable metrics
+	btReadLatencyHistogram metric.Int64Histogram
+
+	// Cache data metrics
+	cachedataReadCounter metric.Int64Counter
+
+	// V3 mirroring metrics
+	v3LatencyDiffHistogram    metric.Int64Histogram
+	v3ResponseMismatchCounter metric.Int64Counter
+	v3MirrorErrorCounter      metric.Int64Counter
+)
+
+// ResetForTest resets the metrics package for testing.
+// This is not thread-safe and should only be called in serial tests.
+func ResetForTest() {
+	// TODO: Use dependency injection for meter provider so this isn't needed.
+	once = sync.Once{}
+	meter = nil
+	btReadLatencyHistogram = nil
+	cachedataReadCounter = nil
+	v3LatencyDiffHistogram = nil
+	v3ResponseMismatchCounter = nil
+	v3MirrorErrorCounter = nil
+}
+
+func initMetrics() {
+	meter = otel.GetMeterProvider().Meter(meterName)
+	var err error
+
+	btReadLatencyHistogram, err = meter.Int64Histogram(
+		"datacommons.mixer.bigtable.read.duration",
+		metric.WithUnit("ms"),
+	)
+	if err != nil {
+		log.Printf("Failed to create bigtable read duration histogram: %v", err)
+	}
+
+	cachedataReadCounter, err = meter.Int64Counter("datacommons.mixer.cachedata.reads")
+	if err != nil {
+		log.Printf("Failed to create cachedata read counter: %v", err)
+	}
+
+	v3LatencyDiffHistogram, err = meter.Int64Histogram(
+		"datacommons.mixer.v3_latency_diff",
+		metric.WithDescription(
+			"Difference in latency between mirrored V3 API calls in milliseconds (v3 minus original)",
+		),
+		metric.WithUnit("ms"),
+	)
+	if err != nil {
+		log.Printf("Failed to create v3 latency diff histogram: %v", err)
+	}
+
+	v3ResponseMismatchCounter, err = meter.Int64Counter(
+		"datacommons.mixer.v3_response_mismatches",
+		metric.WithDescription("Count of V3 mirrored response mismatches"),
+	)
+	if err != nil {
+		log.Printf("Failed to create v3 mismatch counter: %v", err)
+	}
+
+	v3MirrorErrorCounter, err = meter.Int64Counter(
+		"datacommons.mixer.v3_mirror_errors",
+		metric.WithDescription("Count of errors encountered during V3 mirroring"),
+	)
+	if err != nil {
+		log.Printf("Failed to create v3 mirror error counter: %v", err)
+	}
+}
 
 // getShortMethodName extracts the short method name from a full gRPC method string.
 // For example, "/datacommons.Mixer/V2Node" becomes "V2Node".
@@ -93,6 +170,12 @@ func getRpcMethod(ctx context.Context) string {
 		return unknownMethodName
 	}
 	return methodName
+}
+
+// NewContext creates a new context for mirroring, copying over the RPC method
+// from an existing context.
+func NewContext(baseCtx context.Context) context.Context {
+	return context.WithValue(context.Background(), rpcMethodContextKey, getRpcMethod(baseCtx))
 }
 
 // For non-streaming RPC endpoints, extracts the RPC method name and adds it to the context.
@@ -201,9 +284,11 @@ func RecordBigtableReadDuration(
 	outcome string,
 	prefix string,
 ) {
-	readLatencyHistogram, _ := otel.GetMeterProvider().Meter(meterName).
-		Int64Histogram("datacommons.mixer.bigtable.read.duration", metric.WithUnit("ms"))
-	readLatencyHistogram.Record(ctx, readDuration.Milliseconds(),
+	once.Do(initMetrics)
+	if btReadLatencyHistogram == nil {
+		return
+	}
+	btReadLatencyHistogram.Record(ctx, readDuration.Milliseconds(),
 		metric.WithAttributes(
 			attribute.String(btCachePrefixAttr, prefix),
 			attribute.String(btReadOutcomeAttr, outcome),
@@ -213,11 +298,55 @@ func RecordBigtableReadDuration(
 
 // Increments a counter of local cachedata reads broken down by type.
 func RecordCachedataRead(ctx context.Context, cacheType string) {
-	cachedataReadCounter, _ := otel.GetMeterProvider().Meter(meterName).
-		Int64Counter("datacommons.mixer.cachedata.reads")
+	once.Do(initMetrics)
+	if cachedataReadCounter == nil {
+		return
+	}
 	cachedataReadCounter.Add(ctx, 1,
 		metric.WithAttributes(
 			attribute.String(cacheDataTypeAttr, cacheType),
 			attribute.String(rpcMethodAttr, getRpcMethod(ctx)),
+		))
+}
+
+// RecordV3LatencyDiff records the latency difference between an API call and a
+// mirrored equivalent V3 call.
+func RecordV3LatencyDiff(ctx context.Context, diff time.Duration, skipCache bool) {
+	once.Do(initMetrics)
+	if v3LatencyDiffHistogram == nil {
+		return
+	}
+	v3LatencyDiffHistogram.Record(ctx, diff.Milliseconds(),
+		metric.WithAttributes(
+			attribute.String(rpcMethodAttr, getRpcMethod(ctx)),
+			attribute.Bool("rpc.headers.skip_cache", skipCache),
+		))
+}
+
+// RecordV3Mismatch increments a counter for how many times a mirrored V3 call
+// returns a different value from the original call.
+func RecordV3Mismatch(ctx context.Context) {
+	once.Do(initMetrics)
+	if v3ResponseMismatchCounter == nil {
+		return
+	}
+	v3ResponseMismatchCounter.Add(ctx, 1,
+		metric.WithAttributes(
+			attribute.String(rpcMethodAttr, getRpcMethod(ctx)),
+		))
+}
+
+// RecordV3MirrorError increments a counter for mirrored V3 requests that
+// returned an error.
+func RecordV3MirrorError(ctx context.Context, err error) {
+	once.Do(initMetrics)
+	if v3MirrorErrorCounter == nil {
+		return
+	}
+	st, _ := status.FromError(err)
+	v3MirrorErrorCounter.Add(ctx, 1,
+		metric.WithAttributes(
+			attribute.String(rpcMethodAttr, getRpcMethod(ctx)),
+			attribute.String(rpcStatusCodeAttr, st.Code().String()),
 		))
 }

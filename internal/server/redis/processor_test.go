@@ -267,7 +267,7 @@ func TestSkipCache(t *testing.T) {
 	skipCacheCtx := metadata.NewIncomingContext(
 		context.Background(),
 		metadata.Pairs(
-			XSkipCache, "true",
+			util.XSkipCache, "true",
 		),
 	)
 
