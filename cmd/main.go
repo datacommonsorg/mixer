@@ -107,6 +107,9 @@ var (
 		"",
 		"Which exporter to use for OpenTelemetry metrics. Valid values are otlp, prometheus, and console (or blank for no-op).",
 	)
+	v3MirrorFraction = flag.Float64(
+		"v3_mirror_fraction", 0, "Fraction of V2 API requests to mirror to V3. Value from 0 to 1.0.",
+	)
 )
 
 func main() {
@@ -114,6 +117,13 @@ func main() {
 	// Parse flag
 	flag.Parse()
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
+
+	if *v3MirrorFraction < 0 || *v3MirrorFraction > 1.0 {
+		log.Fatalf("v3_mirror_fraction must be between 0 and 1.0, got %f", *v3MirrorFraction)
+	}
+	if *v3MirrorFraction > 0 && !*enableV3 {
+		log.Fatalf("v3_mirror_fraction > 0 requires --enable_v3=true")
+	}
 
 	ctx := context.Background()
 	var err error
@@ -368,6 +378,7 @@ func main() {
 
 	// Create server object
 	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher)
+	mixerServer.SetV3MirrorFraction(*v3MirrorFraction)
 	pbs.RegisterMixerServer(srv, mixerServer)
 
 	// Subscribe to branch cache update
