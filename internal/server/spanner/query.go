@@ -171,12 +171,14 @@ func (sc *SpannerClient) SearchNodes(ctx context.Context, query string, types []
 	return nodes, nil
 }
 
+// ResolveByID fetches ID resolution candidates for a list of input nodes and in and out properties and returns a map of node to candidates.
 func (sc *SpannerClient) ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error) {
 	candidates := make(map[string][]string)
 	if len(nodes) == 0 {
 		return candidates, nil
 	}
 
+	// Create a map of Spanner node value to dcid to decode encoded values.
 	valueMap := map[string]string{}
 	for _, node := range nodes {
 		candidates[node] = []string{}

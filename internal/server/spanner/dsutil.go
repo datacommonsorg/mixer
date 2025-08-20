@@ -589,6 +589,7 @@ func searchNodeToNodeSearchResult(node *SearchNode) *pbv2.NodeSearchResult {
 	}
 }
 
+// candidatesToResolveResponse converts a map of node to candidates into a ResolveResponse.
 func candidatesToResolveResponse(nodeToCandidates map[string][]string) *pbv2.ResolveResponse {
 	response := &pbv2.ResolveResponse{}
 	for node, candidates := range nodeToCandidates {
