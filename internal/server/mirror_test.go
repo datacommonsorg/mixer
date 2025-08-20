@@ -23,6 +23,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/datacommonsorg/mixer/internal/metrics"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"go.opentelemetry.io/otel"
@@ -37,28 +38,14 @@ import (
 // Initializes an in-memory metric reader for testing.
 func setupMetricReader(t *testing.T) *metric.ManualReader {
 	t.Helper()
+	// The metrics package uses a sync.Once to initialize its global instruments.
+	// This needs to be reset for each test to ensure that the instruments are
+	// registered with the new meter provider created for each test.
+	metrics.ResetForTest()
 	reader := metric.NewManualReader()
 	provider := metric.NewMeterProvider(metric.WithReader(reader))
 	otel.SetMeterProvider(provider)
 	return reader
-}
-
-// Helper function to wait for a WaitGroup with a timeout.
-func waitForWaitGroup(t *testing.T, wg *sync.WaitGroup) {
-	t.Helper()
-	const timeout = time.Second
-	done := make(chan struct{})
-	go func() {
-		defer close(done)
-		wg.Wait()
-	}()
-
-	select {
-	case <-done:
-		// Wait completed successfully.
-	case <-time.After(timeout):
-		// Return so that the rest of the test logic can run.
-	}
 }
 
 func TestMaybeMirrorV3_Percentage(t *testing.T) {
@@ -78,8 +65,6 @@ func TestMaybeMirrorV3_Percentage(t *testing.T) {
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			s := &Server{v3MirrorFraction: tc.mirrorFraction}
-			var wg sync.WaitGroup
-			wg.Add(2)
 			mirrorCallCount := 0
 			var mirroredReqs []proto.Message
 			skipCacheHeaderValues := make(chan bool, 2)
@@ -94,14 +79,14 @@ func TestMaybeMirrorV3_Percentage(t *testing.T) {
 				skipCache := len(v) > 0 && v[0] == "true"
 				skipCacheHeaderValues <- skipCache
 				mirrorCallCount++
-				wg.Done()
 				return &pbv2.NodeResponse{}, nil
 			}
 
-			s.maybeMirrorV3(ctx, req, resp, 0, v3Call)
+			var mirrorWg sync.WaitGroup
+			s.maybeMirrorV3(ctx, req, resp, 0, v3Call, &mirrorWg)
+			mirrorWg.Wait()
 
 			if tc.shouldMirror {
-				waitForWaitGroup(t, &wg)
 				if mirrorCallCount != 2 {
 					t.Errorf("expected 2 mirror calls, but got %d", mirrorCallCount)
 				}
@@ -137,10 +122,10 @@ func TestMaybeMirrorV3_IgnoreSubsequentPages(t *testing.T) {
 		return &pbv2.NodeResponse{}, nil
 	}
 
-	s.maybeMirrorV3(ctx, req, resp, 0, v3Call)
+	var mirrorWg sync.WaitGroup
+	s.maybeMirrorV3(ctx, req, resp, 0, v3Call, &mirrorWg)
+	mirrorWg.Wait()
 
-	// Give the goroutine a chance to run if it was incorrectly started.
-	time.Sleep(100 * time.Millisecond)
 	if mirrorCallCount > 0 {
 		t.Errorf("mirroring should only include the first page of paginated requests")
 	}
@@ -153,52 +138,45 @@ func TestMaybeMirrorV3_LatencyMetric(t *testing.T) {
 	req := &pbv2.NodeRequest{}
 	resp := &pbv2.NodeResponse{}
 
-	var wg sync.WaitGroup
-	wg.Add(2)
 	v3Call := func(ctx context.Context, req proto.Message) (proto.Message, error) {
-		defer wg.Done()
 		return &pbv2.NodeResponse{}, nil
 	}
 
-	s.maybeMirrorV3(ctx, req, resp, 0, v3Call)
-	waitForWaitGroup(t, &wg)
-
-	// Wait for metrics to be processed
-	time.Sleep(100 * time.Millisecond)
+	var mirrorWg sync.WaitGroup
+	s.maybeMirrorV3(ctx, req, resp, 0, v3Call, &mirrorWg)
+	mirrorWg.Wait()
 
 	var rm metricdata.ResourceMetrics
 	if err := reader.Collect(context.Background(), &rm); err != nil {
 		t.Fatalf("failed to collect metrics: %v", err)
 	}
 
-	if len(rm.ScopeMetrics) == 0 || len(rm.ScopeMetrics[0].Metrics) == 0 {
-		t.Fatalf("no metrics recorded")
-	}
-
 	found := false
-	for _, m := range rm.ScopeMetrics[0].Metrics {
-		if m.Name == "datacommons.mixer.v3_latency_diff" {
-			found = true
-			hist, ok := m.Data.(metricdata.Histogram[int64])
-			if !ok {
-				t.Fatalf("metric is not a histogram")
-			}
-			if len(hist.DataPoints) != 2 {
-				t.Fatalf("expected 2 datapoints for latency, got %d", len(hist.DataPoints))
-			}
-			for _, dp := range hist.DataPoints {
-				foundAttr := false
-				for _, attr := range dp.Attributes.ToSlice() {
-					if attr.Key == "rpc.headers.skip_cache" {
-						foundAttr = true
-						break
+	for _, sm := range rm.ScopeMetrics {
+		for _, m := range sm.Metrics {
+			if m.Name == "datacommons.mixer.v3_latency_diff" {
+				found = true
+				hist, ok := m.Data.(metricdata.Histogram[int64])
+				if !ok {
+					t.Fatalf("metric is not a histogram")
+				}
+				if len(hist.DataPoints) != 2 {
+					t.Fatalf("expected 2 datapoints for latency, got %d", len(hist.DataPoints))
+				}
+				for _, dp := range hist.DataPoints {
+					foundAttr := false
+					for _, attr := range dp.Attributes.ToSlice() {
+						if attr.Key == "rpc.headers.skip_cache" {
+							foundAttr = true
+							break
+						}
+					}
+					if !foundAttr {
+						t.Error("latency metric missing 'rpc.headers.skip_cache' attribute")
 					}
 				}
-				if !foundAttr {
-					t.Error("latency metric missing 'rpc.headers.skip_cache' attribute")
-				}
+				break
 			}
-			break
 		}
 	}
 	if !found {
@@ -215,10 +193,7 @@ func TestMaybeMirrorV3_ResponseMismatch(t *testing.T) {
 	v2Resp := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{"test": {}}}
 	v3Resp := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{"test_diff": {}}}
 
-	var wg sync.WaitGroup
-	wg.Add(2)
 	v3Call := func(ctx context.Context, req proto.Message) (proto.Message, error) {
-		defer wg.Done()
 		return v3Resp, nil
 	}
 
@@ -226,11 +201,9 @@ func TestMaybeMirrorV3_ResponseMismatch(t *testing.T) {
 	log.SetOutput(&buf)
 	defer log.SetOutput(os.Stderr)
 
-	s.maybeMirrorV3(ctx, v2Req, v2Resp, 0, v3Call)
-	waitForWaitGroup(t, &wg)
-
-	// Wait for logs and metrics to be processed
-	time.Sleep(100 * time.Millisecond)
+	var mirrorWg sync.WaitGroup
+	s.maybeMirrorV3(ctx, v2Req, v2Resp, 0, v3Call, &mirrorWg)
+	mirrorWg.Wait()
 
 	logOutput := buf.String()
 	if strings.Count(logOutput, "V3 mirrored call had a different response") != 2 {
@@ -244,8 +217,8 @@ func TestMaybeMirrorV3_ResponseMismatch(t *testing.T) {
 
 	mismatchCount := int64(0)
 	found := false
-	if len(rm.ScopeMetrics) > 0 {
-		for _, m := range rm.ScopeMetrics[0].Metrics {
+	for _, sm := range rm.ScopeMetrics {
+		for _, m := range sm.Metrics {
 			if m.Name == "datacommons.mixer.v3_response_mismatches" {
 				found = true
 				sum, _ := m.Data.(metricdata.Sum[int64])
@@ -291,10 +264,7 @@ func TestMaybeMirrorV3_ResponseMatch(t *testing.T) {
 
 	// A WaitGroup is needed because the V3 call is made in a separate goroutine
 	// to avoid blocking the original V2 response.
-	var wg sync.WaitGroup
-	wg.Add(2)
 	v3Call := func(ctx context.Context, req proto.Message) (proto.Message, error) {
-		defer wg.Done()
 		return v3Resp, nil
 	}
 
@@ -302,11 +272,9 @@ func TestMaybeMirrorV3_ResponseMatch(t *testing.T) {
 	log.SetOutput(&buf)
 	defer log.SetOutput(os.Stderr)
 
-	s.maybeMirrorV3(ctx, v2Req, v2Resp, 0, v3Call)
-	waitForWaitGroup(t, &wg)
-
-	// Wait for logs and metrics to be processed
-	time.Sleep(100 * time.Millisecond)
+	var mirrorWg sync.WaitGroup
+	s.maybeMirrorV3(ctx, v2Req, v2Resp, 0, v3Call, &mirrorWg)
+	mirrorWg.Wait()
 
 	logOutput := buf.String()
 	if logOutput != "" {
@@ -320,8 +288,8 @@ func TestMaybeMirrorV3_ResponseMatch(t *testing.T) {
 
 	mismatchCount := int64(0)
 	found := false
-	if len(rm.ScopeMetrics) > 0 {
-		for _, m := range rm.ScopeMetrics[0].Metrics {
+	for _, sm := range rm.ScopeMetrics {
+		for _, m := range sm.Metrics {
 			if m.Name == "datacommons.mixer.v3_response_mismatches" {
 				found = true
 				sum, _ := m.Data.(metricdata.Sum[int64])
@@ -347,10 +315,7 @@ func TestMaybeMirrorV3_V3Error(t *testing.T) {
 	v2Req := &pbv2.NodeRequest{Nodes: []string{"test"}}
 	v2Resp := &pbv2.NodeResponse{}
 
-	var wg sync.WaitGroup
-	wg.Add(2)
 	v3Call := func(ctx context.Context, req proto.Message) (proto.Message, error) {
-		defer wg.Done()
 		return nil, status.Error(codes.Internal, "V3 API error")
 	}
 
@@ -358,11 +323,9 @@ func TestMaybeMirrorV3_V3Error(t *testing.T) {
 	log.SetOutput(&buf)
 	defer log.SetOutput(os.Stderr)
 
-	s.maybeMirrorV3(ctx, v2Req, v2Resp, 0, v3Call)
-	waitForWaitGroup(t, &wg)
-
-	// Wait for logs and metrics to be processed
-	time.Sleep(100 * time.Millisecond)
+	var mirrorWg sync.WaitGroup
+	s.maybeMirrorV3(ctx, v2Req, v2Resp, 0, v3Call, &mirrorWg)
+	mirrorWg.Wait()
 
 	logOutput := buf.String()
 	if strings.Count(logOutput, "V3 mirrored call failed") != 2 {
@@ -376,8 +339,8 @@ func TestMaybeMirrorV3_V3Error(t *testing.T) {
 
 	errorCount := int64(0)
 	found := false
-	if len(rm.ScopeMetrics) > 0 {
-		for _, m := range rm.ScopeMetrics[0].Metrics {
+	for _, sm := range rm.ScopeMetrics {
+		for _, m := range sm.Metrics {
 			if m.Name == "datacommons.mixer.v3_mirror_errors" {
 				found = true
 				sum, _ := m.Data.(metricdata.Sum[int64])

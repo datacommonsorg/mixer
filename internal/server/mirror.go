@@ -19,6 +19,7 @@ import (
 	"log"
 	"math/rand"
 	"reflect"
+	"sync"
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/metrics"
@@ -32,12 +33,14 @@ import (
 // maybeMirrorV3 decides whether to send a mirror version of an API request to
 // the V3 API based on mirroring percentage and request characteristics. For
 // instance, only the first page of paginated requests is a candidate for mirroring.
+// Optionally passing a WaitGroup allows tests to wait for fire-and-forget calls.
 func (s *Server) maybeMirrorV3(
 	ctx context.Context,
 	originalReq proto.Message,
 	originalResp proto.Message,
 	originalLatency time.Duration,
 	v3Call func(ctx context.Context, req proto.Message) (proto.Message, error),
+	v3WaitGroup ...*sync.WaitGroup,
 ) {
 	// For requests with pagination, only mirror the first page.
 	if req, ok := originalReq.(interface{ GetNextToken() string }); ok {
@@ -47,7 +50,11 @@ func (s *Server) maybeMirrorV3(
 	}
 
 	if s.v3MirrorFraction > 0 && rand.Float64() < s.v3MirrorFraction {
-		s.mirrorV3(ctx, originalReq, originalResp, originalLatency, v3Call)
+		var wg *sync.WaitGroup
+		if len(v3WaitGroup) > 0 {
+			wg = v3WaitGroup[0]
+		}
+		s.mirrorV3(ctx, originalReq, originalResp, originalLatency, v3Call, wg)
 	}
 }
 
@@ -57,10 +64,17 @@ func (s *Server) mirrorV3(
 	originalResp proto.Message,
 	originalLatency time.Duration,
 	v3Call func(ctx context.Context, req proto.Message) (proto.Message, error),
+	v3WaitGroup *sync.WaitGroup,
 ) {
+	if v3WaitGroup != nil {
+		v3WaitGroup.Add(1)
+	}
 	// This is run in a separate goroutine to not block the response to the original
 	// request.
 	go func() {
+		if v3WaitGroup != nil {
+			defer v3WaitGroup.Done()
+		}
 		// Create a new context for this goroutine, so it does not get canceled
 		// with the original request.
 		mirrorCtx := metrics.NewContext(ctx)

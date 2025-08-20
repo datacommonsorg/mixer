@@ -89,6 +89,19 @@ var (
 	v3MirrorErrorCounter      metric.Int64Counter
 )
 
+// ResetForTest resets the metrics package for testing.
+// This is not thread-safe and should only be called in serial tests.
+func ResetForTest() {
+	// TODO: Use dependency injection for meter provider so this isn't needed.
+	once = sync.Once{}
+	meter = nil
+	btReadLatencyHistogram = nil
+	cachedataReadCounter = nil
+	v3LatencyDiffHistogram = nil
+	v3ResponseMismatchCounter = nil
+	v3MirrorErrorCounter = nil
+}
+
 func initMetrics() {
 	meter = otel.GetMeterProvider().Meter(meterName)
 	var err error
