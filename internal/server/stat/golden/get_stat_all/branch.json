@@ -4202,7 +4202,8 @@
                 "2025-03": 5.3,
                 "2025-04": 5,
                 "2025-05": 5,
-                "2025-06": 5.7
+                "2025-06": 5.8,
+                "2025-07": 6.1
               },
               "measurementMethod": "BLSSeasonallyUnadjusted",
               "observationPeriod": "P1M",
@@ -4863,7 +4864,8 @@
                 "2025-03": 5.3,
                 "2025-04": 5.3,
                 "2025-05": 5.3,
-                "2025-06": 5.4
+                "2025-06": 5.4,
+                "2025-07": 5.5
               },
               "measurementMethod": "BLSSeasonallyAdjusted",
               "observationPeriod": "P1M",
