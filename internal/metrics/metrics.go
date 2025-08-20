@@ -22,6 +22,7 @@ import (
 	"net"
 	"os"
 	"strings"
+	"sync"
 	"time"
 
 	"net/http"
@@ -73,6 +74,7 @@ const (
 )
 
 var (
+	once  sync.Once
 	meter metric.Meter
 
 	// Bigtable metrics
@@ -87,7 +89,7 @@ var (
 	v3MirrorErrorCounter      metric.Int64Counter
 )
 
-func init() {
+func initMetrics() {
 	meter = otel.GetMeterProvider().Meter(meterName)
 	var err error
 
@@ -269,6 +271,7 @@ func RecordBigtableReadDuration(
 	outcome string,
 	prefix string,
 ) {
+	once.Do(initMetrics)
 	if btReadLatencyHistogram == nil {
 		return
 	}
@@ -282,6 +285,7 @@ func RecordBigtableReadDuration(
 
 // Increments a counter of local cachedata reads broken down by type.
 func RecordCachedataRead(ctx context.Context, cacheType string) {
+	once.Do(initMetrics)
 	if cachedataReadCounter == nil {
 		return
 	}
@@ -295,6 +299,7 @@ func RecordCachedataRead(ctx context.Context, cacheType string) {
 // RecordV3LatencyDiff records the latency difference between an API call and a
 // mirrored equivalent V3 call.
 func RecordV3LatencyDiff(ctx context.Context, diff time.Duration, skipCache bool) {
+	once.Do(initMetrics)
 	if v3LatencyDiffHistogram == nil {
 		return
 	}
@@ -308,6 +313,7 @@ func RecordV3LatencyDiff(ctx context.Context, diff time.Duration, skipCache bool
 // RecordV3Mismatch increments a counter for how many times a mirrored V3 call
 // returns a different value from the original call.
 func RecordV3Mismatch(ctx context.Context) {
+	once.Do(initMetrics)
 	if v3ResponseMismatchCounter == nil {
 		return
 	}
@@ -320,6 +326,7 @@ func RecordV3Mismatch(ctx context.Context) {
 // RecordV3MirrorError increments a counter for mirrored V3 requests that
 // returned an error.
 func RecordV3MirrorError(ctx context.Context, err error) {
+	once.Do(initMetrics)
 	if v3MirrorErrorCounter == nil {
 		return
 	}
