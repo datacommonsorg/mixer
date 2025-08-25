@@ -287,6 +287,7 @@ func shouldIncludeFacet(filter *pbv2.FacetFilter, observation *Observation) bool
 		for _, facetId := range filter.FacetIds {
 			if observation.FacetId == facetId {
 				matchedFacetId = true
+				break
 			}
 		}
 		if !matchedFacetId {
