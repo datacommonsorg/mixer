@@ -137,6 +137,21 @@ func TestV3Observation(t *testing.T) {
 			{
 				req: &pbv2.ObservationRequest{
 					Variable: &pbv2.DcidOrExpression{
+						Dcids: []string{"Count_Person"},
+					},
+					Entity: &pbv2.DcidOrExpression{
+						Expression: "Earth<-containedInPlace+{typeOf:Country}",
+					},
+					Select: []string{"entity", "variable"},
+					Filter: &pbv2.FacetFilter{
+						FacetIds: []string{"327307087"}, // OECDRegionalDemography_Population
+					},
+				},
+				goldenFile: "observations_existence_contained_in_filter.json",
+			},
+			{
+				req: &pbv2.ObservationRequest{
+					Variable: &pbv2.DcidOrExpression{
 						Dcids: []string{"Count_Person", "Income_Farm", "fake_variable"},
 					},
 					Entity: &pbv2.DcidOrExpression{

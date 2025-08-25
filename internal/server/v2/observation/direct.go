@@ -109,7 +109,7 @@ func FetchDirectBT(
 					facet := util.GetFacet(series)
 					// If there is a facet filter, check that the series matches the
 					// filter. Otherwise, skip.
-					if !util.ShouldIncludeFacet(filter, facet) {
+					if !util.ShouldIncludeFacet(filter, facet, "" /*facetId*/) {
 						continue
 					}
 					facetID := util.GetFacetID(facet)

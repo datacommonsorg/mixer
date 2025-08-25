@@ -268,7 +268,7 @@ func filterObservationsByDateAndFacet(
 	for _, observation := range observations {
 		filterTimeSeriesByDate(&observation.Observations, date)
 		facet := observationToFacet(observation)
-		if util.ShouldIncludeFacet(filter, facet) {
+		if util.ShouldIncludeFacet(filter, facet, observation.FacetId) {
 			filtered = append(filtered, observation)
 		}
 	}
