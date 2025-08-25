@@ -92,7 +92,7 @@ func FetchContainedIn(
 						facet := util.GetFacet(cohort)
 						// If there is a facet filter, check that the cohort matches the
 						// filter. Otherwise, skip.
-						if !util.ShouldIncludeFacet(filter, facet) {
+						if !util.ShouldIncludeFacet(filter, facet, "" /*facetId*/) {
 							continue
 						}
 						facetID := util.GetFacetID(facet)

@@ -21,10 +21,8 @@ import (
 	"encoding/base64"
 	"fmt"
 	"log"
-	"net/url"
 	"sort"
 	"strconv"
-	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
@@ -269,48 +267,12 @@ func filterObservationsByDateAndFacet(
 	var filtered []*Observation
 	for _, observation := range observations {
 		filterTimeSeriesByDate(&observation.Observations, date)
-		if shouldIncludeFacet(filter, observation) {
+		facet := observationToFacet(observation)
+		if util.ShouldIncludeFacet(filter, facet, observation.FacetId) {
 			filtered = append(filtered, observation)
 		}
 	}
 	return filtered
-}
-
-// shouldIncludeFacet returns whether an Observation's Facet matches a FacetFilter.
-func shouldIncludeFacet(filter *pbv2.FacetFilter, observation *Observation) bool {
-	if filter == nil {
-		return true
-	}
-
-	if filter.FacetIds != nil {
-		matchedFacetId := false
-		for _, facetId := range filter.FacetIds {
-			if observation.FacetId == facetId {
-				matchedFacetId = true
-				break
-			}
-		}
-		if !matchedFacetId {
-			return false
-		}
-	}
-	if filter.Domains != nil {
-		url, err := url.Parse(observation.ProvenanceURL)
-		if err != nil {
-			return false
-		}
-		matchedDomain := false
-		for _, domain := range filter.Domains {
-			if strings.HasSuffix(url.Hostname(), domain) {
-				matchedDomain = true
-				break
-			}
-		}
-		if !matchedDomain {
-			return false
-		}
-	}
-	return true
 }
 
 func observationsToObservationResponse(
