@@ -20,6 +20,7 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"log/slog"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -188,7 +189,7 @@ func writeResultsToCsv(results []*MemoryProfileResult, outputPath string) {
 }
 
 func main() {
-	log.SetFlags(log.LstdFlags | log.Lshortfile)
+	slog.SetDefault(slog.New(slog.NewJSONHandler(os.Stdout, nil)))
 
 	flag.Parse()
 
@@ -229,7 +230,7 @@ func main() {
 			log.Fatalf("Could not connect to %s: timed out. Last state: %s", *grpcAddr, s)
 		}
 	}
-	log.Println("Connected to gRPC succesfully")
+	slog.Info("Connected to gRPC succesfully")
 
 	//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 	defer conn.Close()
