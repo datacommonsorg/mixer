@@ -237,7 +237,8 @@ func ExportOtlpOverGrpc(ctx context.Context) error {
 		return err
 	}
 
-	mp := sdk.NewMeterProvider(sdk.WithReader(sdk.NewPeriodicReader(exporter)))
+	reader := sdk.NewPeriodicReader(exporter, sdk.WithInterval(10*time.Minute))
+	mp := sdk.NewMeterProvider(sdk.WithReader(reader))
 	otel.SetMeterProvider(mp)
 	return nil
 }
