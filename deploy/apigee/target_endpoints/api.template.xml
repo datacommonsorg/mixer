@@ -78,7 +78,8 @@
       <Request>
         <Step>
           <Condition>
-            proxy.pathsuffix MatchesPath "/v2/variable/filter" AND request.verb == "POST"
+            (proxy.pathsuffix MatchesPath "/v2/variable/filter" AND request.verb == "POST") OR
+            (proxy.pathsuffix MatchesPath "/v3/**")
           </Condition>
           <Name>block-internal-only-endpoints</Name>
         </Step>
