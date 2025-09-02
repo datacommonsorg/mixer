@@ -52,7 +52,6 @@ import (
 	"google.golang.org/grpc/health/grpc_health_v1"
 
 	cbt "cloud.google.com/go/bigtable"
-	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 )
 
 var (
@@ -165,8 +164,6 @@ func main() {
 
 	// Create grpc server.
 	srv := grpc.NewServer(
-		// Set up gRPC middleware for per-method gRPC metrics
-		grpc.StatsHandler(otelgrpc.NewServerHandler()),
 		grpc.ChainUnaryInterceptor(
 			metrics.InjectMethodNameUnaryInterceptor,
 		),
