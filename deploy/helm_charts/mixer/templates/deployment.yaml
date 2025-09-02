@@ -103,7 +103,7 @@ spec:
             {{- end }}
             - --use_spanner_graph={{ $.Values.mixer.useSpannerGraph }}
             - --spanner_graph_info=$(SPANNER_GRAPH_INFO)
-            - --use_redis={{ $.Values.mixer.useRedis }}
+            - --use_redis={{ $.Values.mixer.redis.enabled }}
             - --redis_info=$(REDIS_INFO)
             - --enable_v3={{ $.Values.mixer.enableV3 }}
             {{- if eq $.Values.mixer.enableOtlp true}}
@@ -144,11 +144,13 @@ spec:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-store-config
                   key: spanner_graph_info.yaml
+            {{- if $.Values.mixer.redis.enabled }}
             - name: REDIS_INFO
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-store-config
                   key: redis_info.yaml
+            {{- end }}
             - name: MIXER_HASH
               valueFrom:
                 configMapKeyRef:

@@ -43,8 +43,9 @@ mixer:
   foldRemoteRootSvg: false
   cacheSVFormula: false
   useSpannerGraph: false
-  useRedis: false
   enableV3: false
+  redis:
+    enabled: false
   enableOtlp: false
 
   # If bigqueryOnly is True, bigqueryTableRef must be specified.

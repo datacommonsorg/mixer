@@ -4,8 +4,14 @@ mixer:
   serviceName: autopush.api.datacommons.org
   cacheSVFormula: true
   useSpannerGraph: true
-  useRedis: true
   enableV3: true
+  redis:
+    enabled: true
+    configFile: |
+      instances:
+        - region: "us-central1"
+          host: "10.244.163.180"
+          port: "6379"
   enableOtlp: true
 
 ingress:
