@@ -109,6 +109,9 @@ spec:
             {{- if eq $.Values.mixer.enableOtlp true}}
             - --metrics_exporter=otlp
             {{- end }}
+            {{- if $.Values.mixer.v3MirrorFraction }}
+            - --v3_mirror_fraction={{ $.Values.mixer.v3MirrorFraction }}
+            {{- end }}
           volumeMounts:
             - name: schema-mapping
               mountPath: /datacommons/mapping
