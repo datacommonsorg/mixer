@@ -2,6 +2,17 @@
 mixer:
   hostProject: datcom-mixer
   serviceName: api.datacommons.org
+  useSpannerGraph: true
+  enableV3: true
+  redis:
+    enabled: true
+    configFile: |
+      instances:
+        - region: "us-central1"
+          host: "10.139.83.75"
+          port: "6379"
+  enableOtlp: true
+  v3MirrorFraction: 0.001
 
 ingress:
   enabled: true
