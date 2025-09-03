@@ -35,6 +35,13 @@
       <Request>
         <Step>
           <Condition>
+            (proxy.pathsuffix MatchesPath "/v2/variable/filter") OR
+            (proxy.pathsuffix MatchesPath "/v3/**")
+          </Condition>
+          <Name>block-internal-only-endpoints</Name>
+        </Step>
+        <Step>
+          <Condition>
             <!-- List of endpoints that do NOT require a key -->
             !(
               (proxy.pathsuffix MatchesPath "/bulk/stats") OR
@@ -73,15 +80,6 @@
             (client_id = "REPLACE_WITH_TRIAL_API_KEY")
           </Condition>
           <Name>enforce-quota-limit</Name>
-        </Step>
-      </Request>
-      <Request>
-        <Step>
-          <Condition>
-            (proxy.pathsuffix MatchesPath "/v2/variable/filter" AND request.verb == "POST") OR
-            (proxy.pathsuffix MatchesPath "/v3/**")
-          </Condition>
-          <Name>block-internal-only-endpoints</Name>
         </Step>
       </Request>
     </Flow>
