@@ -32,6 +32,9 @@
               "facet_id": "2018634167"
             },
             {
+              "facet_id": "536518379"
+            },
+            {
               "facet_id": "563701067"
             },
             {
@@ -42,6 +45,9 @@
             },
             {
               "facet_id": "2825511676"
+            },
+            {
+              "facet_id": "723406962"
             },
             {
               "facet_id": "678784946"
@@ -396,6 +402,10 @@
       "measurement_method": "WorldBankSubnationalPopulationEstimate",
       "observation_period": "P1Y"
     },
+    "536518379": {
+      "import_name": "SouthKorea_Demographics",
+      "provenance_url": "https://kosis.kr/eng/statisticsList/statisticsListIndex.do"
+    },
     "563701067": {
       "import_name": "NigeriaStatistics",
       "provenance_url": "https://nigeria.opendataforafrica.org"
@@ -412,6 +422,10 @@
       "import_name": "Rwanda_Census",
       "provenance_url": "https://rwanda.opendataforafrica.org/",
       "observation_period": "P3M"
+    },
+    "723406962": {
+      "import_name": "Mongolia_Demographics",
+      "provenance_url": "https://www.1212.mn/en/statcate"
     },
     "815809675": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",

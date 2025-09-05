@@ -658,8 +658,8 @@
               "facet_id": "366707399",
               "observations": [
                 {
-                  "date": "2023-03",
-                  "value": 215046000
+                  "date": "2025-06",
+                  "value": 212726000
                 }
               ]
             },
@@ -2626,6 +2626,15 @@
               ]
             },
             {
+              "facet_id": "536518379",
+              "observations": [
+                {
+                  "date": "2023",
+                  "value": 51774521
+                }
+              ]
+            },
+            {
               "facet_id": "4181918134",
               "observations": [
                 {
@@ -3225,6 +3234,15 @@
                 {
                   "date": "2024",
                   "value": 3524788
+                }
+              ]
+            },
+            {
+              "facet_id": "723406962",
+              "observations": [
+                {
+                  "date": "2024",
+                  "value": 3544835
                 }
               ]
             },
@@ -4141,8 +4159,8 @@
               "facet_id": "1250580925",
               "observations": [
                 {
-                  "date": "2022",
-                  "value": 5637022
+                  "date": "2024",
+                  "value": 6036860
                 }
               ]
             }
@@ -5523,6 +5541,10 @@
       "measurement_method": "WorldBankSubnationalPopulationEstimate",
       "observation_period": "P1Y"
     },
+    "536518379": {
+      "import_name": "SouthKorea_Demographics",
+      "provenance_url": "https://kosis.kr/eng/statisticsList/statisticsListIndex.do"
+    },
     "563701067": {
       "import_name": "NigeriaStatistics",
       "provenance_url": "https://nigeria.opendataforafrica.org"
@@ -5539,6 +5561,10 @@
       "import_name": "Rwanda_Census",
       "provenance_url": "https://rwanda.opendataforafrica.org/",
       "observation_period": "P3M"
+    },
+    "723406962": {
+      "import_name": "Mongolia_Demographics",
+      "provenance_url": "https://www.1212.mn/en/statcate"
     }
   }
 }
