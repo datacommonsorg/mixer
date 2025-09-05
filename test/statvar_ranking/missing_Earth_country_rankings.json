@@ -453,9 +453,7 @@
     "title": "Marital status",
     "statsVars": [
       "Count_Person_MarriedAndNotSeparated",
-      "Count_Person_Divorced",
       "Count_Person_NeverMarried",
-      "Count_Person_Widowed",
       "Count_Person_Separated"
     ],
     "relatedChart": {
@@ -464,7 +462,6 @@
         "Count_Person_MarriedAndNotSeparated",
         "Count_Person_Divorced",
         "Count_Person_NeverMarried",
-        "Count_Person_Widowed",
         "Count_Person_Separated"
       ]
     }

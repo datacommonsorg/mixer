@@ -2512,6 +2512,14 @@
               "provenanceId": "dc/base/HumanReadableStatVars"
             },
             {
+              "name": "Count of hospital beds as a fraction of count of person",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_HospitalBed_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Count of Medical Condition Incident: 0 - 4 Years (Per Capita)",
               "types": [
                 "StatisticalVariable"
@@ -6333,14 +6341,6 @@
                 "StatisticalVariable"
               ],
               "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionEyeCondition_Urban_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 45 - 59 Years, Gastro Intestinal Condition (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionGastroIntestinalCondition_AsAFractionOf_Count_Person",
               "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]

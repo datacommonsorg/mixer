@@ -12831,4003 +12831,1147 @@
               "provenanceId": "dc/base/BaseGeos"
             },
             {
-              "name": "City Heights Preparatory Charter District",
+              "name": "Lincoln Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601700",
+              "dcid": "geoId/sch0621690",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Empire Springs Charter District",
+              "name": "Linden Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601701",
+              "dcid": "geoId/sch0621810",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Global Education Academy District",
+              "name": "Lindsay Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601702",
+              "dcid": "geoId/sch0621870",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Aspire Alexander Twilight Secondary Academy District",
+              "name": "Live Oak Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601703",
+              "dcid": "geoId/sch0622050",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Ascend District",
+              "name": "Livermore Valley Joint Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601704",
+              "dcid": "geoId/sch0622110",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Guajome Park Academy Charter District",
+              "name": "Lodi Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601705",
+              "dcid": "geoId/sch0622230",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Magnolia Science Academy District",
+              "name": "Lompoc Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601706",
+              "dcid": "geoId/sch0622410",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Alliance Margaret M.Bloomfield Technology Acad High District",
+              "name": "Lone Pine Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601707",
+              "dcid": "geoId/sch0622440",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Environmental Charter Middle District",
+              "name": "Long Beach Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601708",
+              "dcid": "geoId/sch0622500",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "New Vision Middle District",
+              "name": "Los Alamitos Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601709",
+              "dcid": "geoId/sch0622590",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Asa Charter District",
+              "name": "Los Angeles Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601711",
+              "dcid": "geoId/sch0622710",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Kid Street Learning Center Charter District",
+              "name": "Los Banos Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601712",
+              "dcid": "geoId/sch0622740",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Los Angeles College Prep Academy District",
+              "name": "Los Molinos Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601713",
+              "dcid": "geoId/sch0622860",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Aspen Valley Prep Academy District",
+              "name": "Lucia Mar Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601714",
+              "dcid": "geoId/sch0623080",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Vista Norte Public Charter District",
+              "name": "Lynwood Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601715",
+              "dcid": "geoId/sch0623160",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "California Virtual Academy @ Los Angeles District",
+              "name": "Madera Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601716",
+              "dcid": "geoId/sch0623340",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Civicorps Corpsmember Academy District",
+              "name": "Mammoth Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601717",
+              "dcid": "geoId/sch0623530",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Cox Academy District",
+              "name": "Manteca Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601718",
+              "dcid": "geoId/sch0623610",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Manzanita Public Charter District",
+              "name": "Maricopa Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601719",
+              "dcid": "geoId/sch0623820",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Animo College Preparatory Academy District",
+              "name": "Mariposa County Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601720",
+              "dcid": "geoId/sch0623940",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Rise Kohyang Elementary District",
+              "name": "Martinez Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601721",
+              "dcid": "geoId/sch0624030",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Richmond College Preparatory District",
+              "name": "Marysville Joint Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601722",
+              "dcid": "geoId/sch0624090",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Rise Kohyang Middle District",
+              "name": "Maxwell Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601723",
+              "dcid": "geoId/sch0624150",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Aerostem Academy District",
+              "name": "McFarland Unified School District",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601724",
+              "dcid": "geoId/sch0624230",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Icef Inglewood Elementary Charter Academy District",
+              "name": "Mendocino Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601725",
+              "dcid": "geoId/sch0624480",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Caliber: Beta Academy District",
+              "name": "Milpitas Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601726",
+              "dcid": "geoId/sch0624500",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "University Prep -  Fresno District",
+              "name": "Middletown Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601727",
+              "dcid": "geoId/sch0624750",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Kings Valley Academy Ii District",
+              "name": "Modoc Joint Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601728",
+              "dcid": "geoId/sch0625190",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Rocketship Rising Stars District",
+              "name": "Mojave Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601729",
+              "dcid": "geoId/sch0625230",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Horizon Charter District",
+              "name": "Monrovia Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601730",
+              "dcid": "geoId/sch0625320",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Icef View Park Preparatory High District",
+              "name": "Montebello Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601731",
+              "dcid": "geoId/sch0625470",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Accelerated District",
+              "name": "Monterey Peninsula Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601732",
+              "dcid": "geoId/sch0625530",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Opportunities For Learning - Baldwin Park District",
+              "name": "Moorpark Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601733",
+              "dcid": "geoId/sch0625690",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Core Charter District",
+              "name": "Moreno Valley Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601734",
+              "dcid": "geoId/sch0625800",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Los Feliz Charter Middle School For The Arts District",
+              "name": "Morgan Hill Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601735",
+              "dcid": "geoId/sch0625830",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Village Charter Academy District",
+              "name": "Morongo Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601736",
+              "dcid": "geoId/sch0625860",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Bella Mente Montessori Academy District",
+              "name": "Mountain Empire Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601737",
+              "dcid": "geoId/sch0626100",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Reach Leadership Steam Academy District",
+              "name": "Mount Diablo Unified School District",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601738",
+              "dcid": "geoId/sch0626370",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Epiphany Prep Charter District",
+              "name": "Muroc Joint Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601739",
+              "dcid": "geoId/sch0626490",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "South Sutter Charter District",
+              "name": "Napa Valley Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601740",
+              "dcid": "geoId/sch0626640",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Camino Nuevo Charter Academy #2 District",
+              "name": "Needles Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601741",
+              "dcid": "geoId/sch0626760",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Ararat Charter District",
+              "name": "New Haven Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601742",
+              "dcid": "geoId/sch0626910",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Sky Mountain Charter District",
+              "name": "Newark Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601743",
+              "dcid": "geoId/sch0627060",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Ballington Academy For The Arts And Sciences District",
+              "name": "Newman-Crows Landing Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601744",
+              "dcid": "geoId/sch0627200",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Insight School Of California District",
+              "name": "Newport-Mesa Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601745",
+              "dcid": "geoId/sch0627240",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Mission Academy District",
+              "name": "North Monterey County Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601746",
+              "dcid": "geoId/sch0627590",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "North Oakland Community Charter District",
+              "name": "Norwalk-La Mirada Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601747",
+              "dcid": "geoId/sch0627690",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Dr. Lewis Dolphin Stallworth Sr. Charter District",
+              "name": "Novato Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601748",
+              "dcid": "geoId/sch0627720",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Summit Public School: Rainier District",
+              "name": "Oak Park Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601749",
+              "dcid": "geoId/sch0627850",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Community Preparatory Academy District",
+              "name": "Oakland Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601750",
+              "dcid": "geoId/sch0628050",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Mojave River Academy - Marble City District",
+              "name": "Oceanside Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601751",
+              "dcid": "geoId/sch0628250",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Hume Lake Charter District",
+              "name": "Ojai Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601752",
+              "dcid": "geoId/sch0628270",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "High Tech High District",
+              "name": "Orange Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601753",
+              "dcid": "geoId/sch0628650",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Scholarship Prep District",
+              "name": "Owens Valley Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601754",
+              "dcid": "geoId/sch0629190",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Lodestar: A Lighthouse Community Charter Public District",
+              "name": "Pacific Grove Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601755",
+              "dcid": "geoId/sch0629370",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "River Islands Technology Academy Ii District",
+              "name": "Pajaro Valley Joint Unified School District",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601756",
+              "dcid": "geoId/sch0629490",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "National Univ Acad Homesch/Independent Study Orange Co Dist",
+              "name": "Palm Springs Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601757",
+              "dcid": "geoId/sch0629550",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "El Sol Santa Ana Science And Arts Academy District",
+              "name": "Palo Alto Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601758",
+              "dcid": "geoId/sch0629610",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "University Preparatory District",
+              "name": "Palo Verde Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601759",
+              "dcid": "geoId/sch0629640",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Vista Condor Global Academy District",
+              "name": "Palos Verdes Peninsula Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601760",
+              "dcid": "geoId/sch0629700",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Apex Academy District",
+              "name": "Paradise Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601761",
+              "dcid": "geoId/sch0629820",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Epic De Cesar Chavez District",
+              "name": "Paramount Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601762",
+              "dcid": "geoId/sch0629850",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Classical Academy High District",
+              "name": "Parlier Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601763",
+              "dcid": "geoId/sch0629910",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Kipp Raices Academy District",
+              "name": "Pasadena Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601764",
+              "dcid": "geoId/sch0629940",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Rio Valley Charter District",
+              "name": "Patterson Joint Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601765",
+              "dcid": "geoId/sch0630030",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Renaissance Arts Academy District",
+              "name": "Piedmont City Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601766",
+              "dcid": "geoId/sch0630330",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Yav Pem Suab Academy - Preparing For Future Charter District",
+              "name": "Pierce Joint Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601767",
+              "dcid": "geoId/sch0630360",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "High Tech Elementary Explorer District",
+              "name": "Pittsburg Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601768",
+              "dcid": "geoId/sch0630600",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "City Language Immersion Charter District",
+              "name": "Placentia-Yorba Linda Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601769",
+              "dcid": "geoId/sch0630660",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Alameda City Unified School District",
+              "name": "Plumas Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601770",
+              "dcid": "geoId/sch0631170",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Voices College-Bound Language Acad At Morgan Hill District",
+              "name": "Pomona Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601771",
+              "dcid": "geoId/sch0631320",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Uplift Monterey District",
+              "name": "Potter Valley Community Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601772",
+              "dcid": "geoId/sch0631400",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Plumas Charter District",
+              "name": "Poway Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601773",
+              "dcid": "geoId/sch0631530",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Oak Park Preparatory Academy District",
+              "name": "Princeton Joint Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601774",
+              "dcid": "geoId/sch0631620",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Futures High District",
+              "name": "Ramona City Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601775",
+              "dcid": "geoId/sch0631710",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "California Montessori Project - Elk Grove Campus District",
+              "name": "Redlands Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601776",
+              "dcid": "geoId/sch0632070",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Isana Achernar Academy District",
+              "name": "Reef-Sunset Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601777",
+              "dcid": "geoId/sch0632270",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Aspire University Charter District",
+              "name": "Rialto Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601778",
+              "dcid": "geoId/sch0632370",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Vista Oaks Charter District",
+              "name": "West Contra Costa Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601779",
+              "dcid": "geoId/sch0632550",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Gold Rush Charter District",
+              "name": "Rim Of The World Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601780",
+              "dcid": "geoId/sch0632610",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Siatech District",
+              "name": "Ripon Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601781",
+              "dcid": "geoId/sch0632880",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Rocketship Mateo Sheedy Elementary District",
+              "name": "River Delta Joint Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601782",
+              "dcid": "geoId/sch0633110",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Mare Island Technology Academy District",
+              "name": "Riverside Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601783",
+              "dcid": "geoId/sch0633150",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Desert Sands Charter District",
+              "name": "Round Valley Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601784",
+              "dcid": "geoId/sch0633720",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Puc Lakeview Charter High District",
+              "name": "Rowland Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601785",
+              "dcid": "geoId/sch0633750",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "The Language Academy Of Sacramento District",
+              "name": "Sacramento City Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601786",
+              "dcid": "geoId/sch0633840",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "High Tech La Middle District",
+              "name": "Saddleback Valley Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601787",
+              "dcid": "geoId/sch0633860",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Gompers Preparatory Academy District",
+              "name": "San Bernardino City Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601788",
+              "dcid": "geoId/sch0634170",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Valor Academy High District",
+              "name": "San Diego City Unified School District",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601789",
+              "dcid": "geoId/sch0634320",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Compass Charter Schools Of Los Angeles District",
+              "name": "San Francisco Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601790",
+              "dcid": "geoId/sch0634410",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Kipp Ignite Academy District",
+              "name": "San Gabriel Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601791",
+              "dcid": "geoId/sch0634425",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Stockton Collegiate International Secondary District",
+              "name": "San Jacinto Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601792",
+              "dcid": "geoId/sch0634440",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Rocketship Redwood City District",
+              "name": "San Jose Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601793",
+              "dcid": "geoId/sch0634590",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Options For Youth-San Juan District",
+              "name": "San Juan Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601794",
+              "dcid": "geoId/sch0634620",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Extera Public School No. 2 District",
+              "name": "San Leandro Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601795",
+              "dcid": "geoId/sch0634680",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Sava- Sacramento Acad And Vocational Academy- Egusd District",
+              "name": "San Lorenzo Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601796",
+              "dcid": "geoId/sch0634710",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Los Angeles Leadership Primary Academy District",
+              "name": "San Lorenzo Valley Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601797",
+              "dcid": "geoId/sch0634740",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Math And Science College Preparatory District",
+              "name": "San Luis Coastal Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601798",
+              "dcid": "geoId/sch0634800",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Ednovate - Brio College Prep District",
+              "name": "San Marino Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601799",
+              "dcid": "geoId/sch0634860",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "High Tech Middle Chula Vista District",
+              "name": "San Marcos Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601800",
+              "dcid": "geoId/sch0634880",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Aspire Langston Hughes Academy District",
+              "name": "San Pasqual Valley Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601801",
+              "dcid": "geoId/sch0635070",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "California Virtual Academy San Mateo District",
+              "name": "San Ramon Valley Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601802",
+              "dcid": "geoId/sch0635130",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Valley Oak Charter District",
+              "name": "Sanger Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601803",
+              "dcid": "geoId/sch0635250",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Extera Public District",
+              "name": "Santa Ana Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601804",
+              "dcid": "geoId/sch0635310",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "California Virtual Academy @ San Diego District",
+              "name": "Santa Clara Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601805",
+              "dcid": "geoId/sch0635430",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Ilead Online District",
+              "name": "Santa Monica-Malibu Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601806",
+              "dcid": "geoId/sch0635700",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "University Prep - San Bernardino District",
+              "name": "Selma Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601807",
+              "dcid": "geoId/sch0636270",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "High Tech Middle District",
+              "name": "Shandon Joint Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601808",
+              "dcid": "geoId/sch0636450",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "San Diego Cooperative Charter District",
+              "name": "Shoreline Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601809",
+              "dcid": "geoId/sch0636670",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "California Virtual Academy At Sutter District",
+              "name": "Sierra-Plumas Joint Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601810",
+              "dcid": "geoId/sch0636780",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Cottonwood Creek Charter District",
+              "name": "Sierra Sands Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601811",
+              "dcid": "geoId/sch0636800",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Reach District",
+              "name": "Sierra Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601812",
+              "dcid": "geoId/sch0636805",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Bellevue-Santa Fe Charter District",
+              "name": "Silver Valley Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601813",
+              "dcid": "geoId/sch0636820",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Barona Indian Charter District",
+              "name": "Simi Valley Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601814",
+              "dcid": "geoId/sch0636840",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Leadership Public Schools - Hayward District",
+              "name": "Snowline Joint Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601815",
+              "dcid": "geoId/sch0636970",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Urban Montessori Charter District",
+              "name": "Soledad Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601816",
+              "dcid": "geoId/sch0637050",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Harriet Tubman Village Charter District",
+              "name": "Sonoma Valley Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601817",
+              "dcid": "geoId/sch0637200",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "High Tech High North County District",
+              "name": "South Pasadena Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601818",
+              "dcid": "geoId/sch0637500",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Conservatory Of Vocal/Instrumental Arts High District",
+              "name": "South San Francisco Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601819",
+              "dcid": "geoId/sch0637530",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Lemoore Online College Preparatory High District",
+              "name": "Southern Humboldt Joint Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601820",
+              "dcid": "geoId/sch0637590",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Aspire Antonio Maria Lugo Academy District",
+              "name": "Southern Kern Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601821",
+              "dcid": "geoId/sch0637620",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Antioch Charter Academy Ii District",
+              "name": "Southern Trinity Joint Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601822",
+              "dcid": "geoId/sch0637630",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Gorman Learning Center San Bernardino/Santa Clarita District",
+              "name": "Saint Helena Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601823",
+              "dcid": "geoId/sch0637830",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Higher Learning Academy District",
+              "name": "Stockton Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601824",
+              "dcid": "geoId/sch0638010",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Opportunities For Learning - Duarte District",
+              "name": "Stony Creek Joint Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601825",
+              "dcid": "geoId/sch0638070",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Aspire Vanguard College Preparatory Academy District",
+              "name": "Surprise Valley Joint Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601826",
+              "dcid": "geoId/sch0638520",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Bay Area Technology District",
+              "name": "Tahoe-Truckee Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601827",
+              "dcid": "geoId/sch0638770",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Journey District",
+              "name": "Tehachapi Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601828",
+              "dcid": "geoId/sch0638880",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Big Picture Educational Academy District",
+              "name": "Temple City Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601829",
+              "dcid": "geoId/sch0638980",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Eje Elementary Academy Charter District",
+              "name": "Templeton Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601830",
+              "dcid": "geoId/sch0639000",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Gilroy Prep (A Navigator School) District",
+              "name": "Torrance Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601831",
+              "dcid": "geoId/sch0639420",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Kairos Public School Vacaville Academy District",
+              "name": "Travis Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601832",
+              "dcid": "geoId/sch0639630",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Puc Cals Middle School And Early College High District",
+              "name": "Trona Joint Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601833",
+              "dcid": "geoId/sch0639840",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "University High District",
+              "name": "Tulelake Basin Joint Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601834",
+              "dcid": "geoId/sch0639940",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Alliance Marine - Innovation And Techn 6-12 Complex District",
+              "name": "Tustin Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601835",
+              "dcid": "geoId/sch0640150",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "School Of Universal Learning (Soul) District",
+              "name": "Ukiah Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601836",
+              "dcid": "geoId/sch0640300",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Camino Nuevo Charter Academy #4 District",
+              "name": "Vacaville Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601837",
+              "dcid": "geoId/sch0640590",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Steele Canyon High District",
+              "name": "Vallejo City Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601838",
+              "dcid": "geoId/sch0640740",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Francophone Charter School Of Oakland District",
+              "name": "Ventura Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601839",
+              "dcid": "geoId/sch0640980",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Thompson Peak Charter District",
+              "name": "Visalia Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601840",
+              "dcid": "geoId/sch0641160",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Jcs - Manzanita District",
+              "name": "Vista Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601841",
+              "dcid": "geoId/sch0641190",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "San Carlos Charter Learning Center District",
+              "name": "Walnut Valley Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601842",
+              "dcid": "geoId/sch0641280",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
-              "name": "Core Butte Charter District",
+              "name": "Washington Unified",
               "types": [
                 "SchoolDistrict"
               ],
-              "dcid": "geoId/sch0601843",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "New West Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601844",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Sherwood Montessori District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601845",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Team Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601846",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Mirus Secondary District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601847",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Rocketship Academy Brilliant Minds District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601848",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Crown Preparatory Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601849",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Port Of Los Angeles High District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601850",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "California Connections Academy Southern California District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601851",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Ace Esperanza Middle District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601852",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Wonderful College Prep Academy - Lost Hills District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601853",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Antelope Valley Learning Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601854",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Audeo Charter Ii District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601855",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Fusion Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601856",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Aspire Ollin University Preparatory Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601857",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Ingenium Charter Middle District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601858",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Eje Middle Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601859",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Albany City Unified",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601860",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Gateway Middle District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601861",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Kepler Neighborhood District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601862",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Isana Cardinal Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601863",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Resolute Academy Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601864",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Alliance College-Ready Middle Academy 4 District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601865",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "New Los Angeles Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601866",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Synergy Quantum Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601867",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Rising Sun Montessori District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601868",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Learning Works District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601869",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Options For Youth-San Bernardino District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601870",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Vista Charter Middle District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601871",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "John Henry High District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601872",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "The Education Corps District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601873",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Sierra Montessori Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601874",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Mit Griffin Academy Middle District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601875",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Charter School Of San Diego District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601876",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Accelerated Achievement Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601877",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "High Tech Middle Media Arts District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601878",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Bridges Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601879",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "American Indian Public Charter Ii District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601880",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Icef View Park Preparatory Elementary District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601881",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Fuente Nueva Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601882",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Endeavor College Preparatory Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601883",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "California Virtual Academy At Kings District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601884",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Magnolia Science Academy 5 District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601885",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Learning Without Limits District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601886",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Nea Community Learning Center District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601887",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Discovery Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601888",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Stella Middle Charter Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601889",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "High Tech High International District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601891",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Leadership Public Schools: Richmond District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601892",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "San Diego Virtual District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601893",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Santiago Middle District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601894",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Forest Ranch Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601895",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Albert Einstein Academy Charter Middle District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601896",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Scale Leadership Academy - East District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601897",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Vaughn Next Century Learning Center District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601898",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Animo Ralph Bunche Charter High District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601899",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Alliance Piera Barbaglia Shaheen Hlt Srvs Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601900",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "East Palo Alto Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601901",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "El Camino Real Charter High District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601902",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Children'S Community Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601903",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Larchmont Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601904",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Puc Milagro Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601905",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Escuela Popular Accelerated Family Learning District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601906",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Downtown Value District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601907",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "River Oaks Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601908",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Northern United - Humboldt Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601909",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Academy For Academic Excellence District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601911",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Summit Public School K2 District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601912",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Charter School Of Morgan Hill District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601913",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "California School Of The Arts - San Gabriel Valley District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601914",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Odyssey Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601915",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Willits Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601916",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Our Community Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601917",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Icef Vista Middle Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601918",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Ballington Acad For Arts \u0026 Scis - San Bernardino District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601919",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Kipp Corazon Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601920",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Voices College-Bound Lang Acad @ W. Contra Costa Co District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601921",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Redwood Coast Montessori District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601922",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "N.E.W. Academy Of Science And Arts District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601923",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Olivet Elementary Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601924",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Anahuacalmecac International Univ Prep N. America District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601925",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Alliance Dr. Olga Mohan High District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601926",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Phoenix Charter Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601927",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Integrity Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601928",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Jcs - Mountain Oaks District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601929",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Ridgecrest Elem Acad For Language Music And Sci District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601931",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Latino College Preparatory Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601932",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Primary Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601933",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Alliance Judy Ivie Burton Technology Academy High District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601934",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Mojave River Academy - National Trails District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601935",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Novato Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601936",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Lighthouse Community Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601937",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Trivium Charter School Voyage District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601938",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Arts In Action Community Middle District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601939",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Grossmont Secondary District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601940",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Ipakanni Early College Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601941",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Northcoast Preparatory And Performing Arts Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601942",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Almond Acres Charter Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601943",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Equitas Academy #3 Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601944",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Palmdale Aerospace Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601945",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Rise Kohyang High District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601946",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Empower Generations District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601947",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Goals Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601948",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "California Academy Of Sports Science Fresno District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601949",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Foothill Leadership Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601951",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Today'S Fresh Start-Compton District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601952",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Valley International Preparatory High District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601953",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "National University Academy Dual Language Institute District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601954",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Lashon Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601955",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Elite Acad Academy - Adult Work Force Investment District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601956",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Kipp San Francisco College Preparatory District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601957",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Libertas College Preparatory Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601958",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Pacoima Charter Elementary District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601959",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Animo James B. Taylor Charter Middle District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601960",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Pacific Coast Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601961",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Oxford Preparatory Academy - South Orange County District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601962",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Venture Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601963",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Iq Academy California-Los Angeles District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601964",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Soleil Academy Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601965",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Excelsior Charter School Corona-Norco District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601966",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Lps Oakland R \u0026 D Campus District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601967",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Ednovate - East College Prep District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601968",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "John Adams Academy - El Dorado Hills District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601969",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Taylion High Desert Academy/Adelanto District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601970",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Oakland Military Institutecollege Preparatory Acad District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601971",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Woodland Star Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601972",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Da Vinci Design District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601973",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Vox Collegiate Of Los Angeles District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601974",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Clarksville Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601975",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Ca Montessori Project-Shingle Springs Campus District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601976",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Knowledge Enlightens You (Key) Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601977",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Stone Bridge District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601978",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Delta Elementary Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601979",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Leadership Military Academy - Indio District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601981",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Golden Valley Tahoe District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601982",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Camino Polytechnic District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601983",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Baypoint Preparatory Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601984",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Compass Charter Schools Of Fresno District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601985",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "John Adams Academy - Lincoln District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601986",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "National University Academy 1001 Steam District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601987",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Maac Community Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601988",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "All Tribes Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601989",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "California Virtual Academy @ San Joaquin District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601990",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Dimensions Collaborative District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601991",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Leonardo Da Vinci Health Sciences Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601992",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Voices College-Bound Language Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601993",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Aspire Eres Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601994",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Redwood Preparatory Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601995",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Yuba City Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601996",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Monarch Learning Center District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601997",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Five Keys Charter (Sf Sheriff'S) District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601998",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Three Rivers Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0601999",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Camino Nuevo High #2 District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602000",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Nextgeneration Steam Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602001",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Old Town Academy K-8 Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602002",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Natomas Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602003",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Ednovate - Esperanza College Prep District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602004",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Julian Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602005",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Northwest Prep Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602006",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Pasadena Rosebud Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602007",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Gateway College And Career Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602008",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Sycamore Academy Of Science And Cultural Arts District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602009",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Alpaugh Unified",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602010",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Univ Preparation Charter Sch @ Csu Channel Islands District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602011",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Golden Valley Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602012",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Yu Ming Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602013",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Nord Country District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602014",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "King-Chavez Primary Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602015",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Oxford Day Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602016",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Kipp Promesa Prep District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602017",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Barack Obama Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602018",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Jardin De La Infancia District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602019",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Kipp Los Angeles College Preparatory District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602020",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Sierra Academy Of Expeditionary Learning District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602021",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Camarillo Academy Of Progressive Education District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602022",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Ingenium Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602023",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "La Vida Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602024",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Ivy Academia District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602025",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Summit Public School: Tamalpais District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602026",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Antioch Charter Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602027",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Santa Cruz County Career Advancement Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602028",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Uplift California North Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602029",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Kipp Excelencia Community Preparatory District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602030",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "California Vanguard Academy - Fresno District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602031",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Global Education Academy 2 District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602032",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Atkinson Academy Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602033",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Gateway International District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602034",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Pacific Springs Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602035",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Eleanor Roosevelt Community Learning Center District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602036",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Invictus Academy Of Richmond District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602037",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Luis Valdez Leadership Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602038",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Golden Eagle Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602039",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Nova Academy - Coachella District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602040",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Kipp Vida Preparatory Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602041",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Olive Grove Charter - Orcutt/Santa Maria District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602042",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Ednovate - Legacy College Prep. District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602043",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Desert Trails Preparatory Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602044",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Stem Preparatory Elementary District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602045",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Aspire Berkley Maynard Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602046",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Kipp San Jose Collegiate District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602047",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Grace Hopper Stem Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602048",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "High Tech Elementary Mesa District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602049",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Citizens Of The World Charter School Hollywood District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602050",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Samueli Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602051",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Animo Leadership High District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602052",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Maria Montessori Charter Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602053",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Thomas Edison Charter Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602054",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Paragon Collegiate Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602055",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Kipp Philosophers Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602056",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Stream Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602057",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Union Street Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602058",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Aspire Rosa Parks Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602059",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Ilead Lancaster Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602060",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "High Tech High Chula Vista District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602061",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Blue Ridge Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602062",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Ingenium Clarion Charter Middle District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602063",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Voices College-Bound Language Acad At Mt. Pleasant District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602064",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Sacramento Valley Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602065",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Children Of Promise Preparatory Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602066",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Golden Gate Community District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602067",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Temecula Valley Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602068",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Aspire Benjamin Holt Middle District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602069",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Alpine County Unified",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602070",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Chula Vista Learning Community Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602071",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Alder Grove Charter School 2 District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602072",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Highland Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602073",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Aveson School Of Leaders District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602074",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Hawking S.T.E.A.M. Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602075",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Environmental Charter High District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602076",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Camino Nuevo Elementary School #3 District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602077",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Synergy Kinetic Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602078",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Diego Hills Central Public Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602079",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Journey District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602080",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Community Outreach Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602081",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Puc Inspire Charter Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602082",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "University Preparatory Value High District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602083",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Temecula Preparatory District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602084",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Everest Value District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602085",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Ingenium Wings Independent Study - Compton District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602086",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Rocketship Spark Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602087",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Pathways Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602088",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "River Springs Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602089",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Learning By Design Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602090",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Grimmway Academy Shafter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602091",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Alain Leroy Locke College Preparatory Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602092",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Bert Corona Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602093",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "St. Hope Public School 7 District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602094",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Aspire Summit Charter Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602095",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Animo Florence-Firestone Charter Middle District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602096",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "High Tech Elementary Chula Vista District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602097",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Literacy First Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602098",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Ivy Bound Acad Of Math Sci And Tech Charter Mid District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602099",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Santa Rosa Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602101",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Puc Excel Charter Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602102",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "City Arts And Tech High District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602103",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Escalon Charter Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602104",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Animo Westside Charter Middle District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602105",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Museum District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602106",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Yolo County Career Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602107",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "San Diego Workforce Innovation High District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602108",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "John Muir Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602109",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "School For Entrepreneurship And Technology District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602110",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Center For Advanced Learning District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602111",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Aspire College Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602112",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Unity Middle College High District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602113",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Clemente Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602114",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Public Safety Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602115",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Bert Corona Charter High District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602116",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Gorman Learning Center District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602117",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Five Keys Independence Hs (Sf Sheriff'S) District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602118",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Alliance Cindy And Bill Simon Technology Acad High District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602119",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Bay View Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602120",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Richmond Charter Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602121",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Learning Choice Academy - Chula Vista District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602122",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Aspire Alexander Twilight College Preparatory Acad District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602123",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Career Technical Education Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602124",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Valiant Santa Barbara District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602125",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Fenton Avenue Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602126",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "California Connections Academy North Bay District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602127",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Equitas Academy 4 District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602128",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Greater San Diego Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602129",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Edward B. Cole Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602130",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Central City Value District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602131",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Olive Grove Charter - Lompoc District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602132",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Achieve Charter School Of Paradise Inc. District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602133",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Ivytech Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602134",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Puc Early College Acad For Leaders\u0026Scholars(Ecals) District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602135",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "The O'Farrell Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602136",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Santa Clarita Valley International District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602137",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Ace Inspire Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602138",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Alliance College-Ready Middle Academy 5 District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602139",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Kipp Empower Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602140",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "California Prep Sutter K-7 District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602141",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Kipp Iluminar Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602142",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Gabriella Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602143",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Alpha: Jose Hernandez District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602144",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "N.E.W. Academy Canoga Park District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602145",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Today'S Fresh Start Charter School Inglewood District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602146",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Empowering Possibilities International Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602147",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Preuss School Ucsd District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602148",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Village Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602149",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Method Schools La District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602150",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Vincent Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602151",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Kipp King Collegiate High District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602152",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Ezequiel Tafoya Alvarado Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602153",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Kipp Scholar Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602154",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Creative Arts Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602155",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Placer Academy Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602156",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Tree Of Life International Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602157",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Realm Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602158",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Connecting Waters Charter - East Bay District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602159",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Live Oak Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602161",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Rocketship Futuro Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602162",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Perseverance Preparatory District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602163",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "School Of Unlimited Learning District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602164",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Achieve Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602165",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Sunrise Middle District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602166",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Ambassador Phillip V. Sanchez Ii Public Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602167",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Coastal Grove Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602168",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Summit Public School: Denali District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602169",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Connecting Waters Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602170",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Insight @ San Joaquin District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602171",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Kipp Bayview Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602172",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Feaster (Mae L.) Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602173",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Ilead Agua Dulce District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602174",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Allegiance Steam Academy - Thrive District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602175",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Alliance Gertz-Ressler Richard Merkin 6-12 Complex District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602176",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Blue Oak Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602177",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Goethe International Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602178",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "The Academy Of Alameda Elementary District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602179",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "School Of Arts And Enterprise District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602180",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Aveson Global Leadership Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602181",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Puc Comm Chrtr Mid \u0026 Puc Comm Chrtr Early College High Dist",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602182",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Growth Public District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602183",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Kipp Navigate College Prep District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602184",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "King-Chavez Community High District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602185",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Citizens Of The World Charter School Mar Vista District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602186",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Animo Compton Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602187",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Paseo Grande Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602188",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Para Los Ni?Os - Evelyn Thurman Gratts Primary District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602189",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Alliance Susan And Eric Smidt Technology High District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602190",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Rocketship Los Suenos Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602191",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "East Bay Innovation Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602192",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Ventura Charter School Of Arts And Global Education District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602193",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Magnolia Science Academy 3 District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602194",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "New Opportunities Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602195",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Aspire Slauson Academy Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602196",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Santa Ynez Valley Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602197",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "King-Chavez Athletics Academy District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602198",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Life Source International Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602199",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Intellectual Virtues Academy Of Long Beach District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602200",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Grove District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602201",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Teach Academy Of Technologies District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602202",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "North County Trade Tech High District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602203",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "River Montessori Elementary Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602204",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Magnolia Science Academy 6 District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602205",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Granada Hills Charter District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602206",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Elite Academic Academy - Lucerne District",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602207",
+              "dcid": "geoId/sch0641580",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
@@ -16876,6 +14020,14 @@
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
+              "name": "West Covina Unified",
+              "types": [
+                "SchoolDistrict"
+              ],
+              "dcid": "geoId/sch0642000",
+              "provenanceId": "dc/base/NCES_SchoolDistrict"
+            },
+            {
               "name": "West Park Elementary",
               "types": [
                 "ElementarySchoolDistrict",
@@ -16891,6 +14043,14 @@
                 "SchoolDistrict"
               ],
               "dcid": "geoId/sch0642120",
+              "provenanceId": "dc/base/NCES_SchoolDistrict"
+            },
+            {
+              "name": "Western Placer Unified",
+              "types": [
+                "SchoolDistrict"
+              ],
+              "dcid": "geoId/sch0642140",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
@@ -16930,6 +14090,14 @@
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
+              "name": "Westwood Unified",
+              "types": [
+                "SchoolDistrict"
+              ],
+              "dcid": "geoId/sch0642300",
+              "provenanceId": "dc/base/NCES_SchoolDistrict"
+            },
+            {
               "name": "Wheatland",
               "types": [
                 "ElementarySchoolDistrict",
@@ -16957,6 +14125,30 @@
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
+              "name": "Williams Unified",
+              "types": [
+                "SchoolDistrict"
+              ],
+              "dcid": "geoId/sch0642540",
+              "provenanceId": "dc/base/NCES_SchoolDistrict"
+            },
+            {
+              "name": "Willits Unified",
+              "types": [
+                "SchoolDistrict"
+              ],
+              "dcid": "geoId/sch0642560",
+              "provenanceId": "dc/base/NCES_SchoolDistrict"
+            },
+            {
+              "name": "Laytonville Unified",
+              "types": [
+                "SchoolDistrict"
+              ],
+              "dcid": "geoId/sch0642580",
+              "provenanceId": "dc/base/NCES_SchoolDistrict"
+            },
+            {
               "name": "Willow Creek Elementary",
               "types": [
                 "ElementarySchoolDistrict",
@@ -16972,6 +14164,14 @@
                 "SchoolDistrict"
               ],
               "dcid": "geoId/sch0642630",
+              "provenanceId": "dc/base/NCES_SchoolDistrict"
+            },
+            {
+              "name": "Willows Unified",
+              "types": [
+                "SchoolDistrict"
+              ],
+              "dcid": "geoId/sch0642710",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
@@ -17002,12 +14202,28 @@
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
+              "name": "Winters Joint Unified",
+              "types": [
+                "SchoolDistrict"
+              ],
+              "dcid": "geoId/sch0642930",
+              "provenanceId": "dc/base/NCES_SchoolDistrict"
+            },
+            {
               "name": "Winton",
               "types": [
                 "ElementarySchoolDistrict",
                 "SchoolDistrict"
               ],
               "dcid": "geoId/sch0642960",
+              "provenanceId": "dc/base/NCES_SchoolDistrict"
+            },
+            {
+              "name": "Woodland Joint Unified",
+              "types": [
+                "SchoolDistrict"
+              ],
+              "dcid": "geoId/sch0643080",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
@@ -17044,6 +14260,78 @@
                 "SchoolDistrict"
               ],
               "dcid": "geoId/sch0643380",
+              "provenanceId": "dc/base/NCES_SchoolDistrict"
+            },
+            {
+              "name": "Yuba City Unified",
+              "types": [
+                "SchoolDistrict"
+              ],
+              "dcid": "geoId/sch0643470",
+              "provenanceId": "dc/base/NCES_SchoolDistrict"
+            },
+            {
+              "name": "Yucaipa-Calimesa Joint Unified",
+              "types": [
+                "SchoolDistrict"
+              ],
+              "dcid": "geoId/sch0643560",
+              "provenanceId": "dc/base/NCES_SchoolDistrict"
+            },
+            {
+              "name": "Irvine Unified",
+              "types": [
+                "SchoolDistrict"
+              ],
+              "dcid": "geoId/sch0684500",
+              "provenanceId": "dc/base/NCES_SchoolDistrict"
+            },
+            {
+              "name": "Golden Plains Unified",
+              "types": [
+                "SchoolDistrict"
+              ],
+              "dcid": "geoId/sch0691134",
+              "provenanceId": "dc/base/NCES_SchoolDistrict"
+            },
+            {
+              "name": "Val Verde Unified",
+              "types": [
+                "SchoolDistrict"
+              ],
+              "dcid": "geoId/sch0691135",
+              "provenanceId": "dc/base/NCES_SchoolDistrict"
+            },
+            {
+              "name": "Aromas - San Juan Unified",
+              "types": [
+                "SchoolDistrict"
+              ],
+              "dcid": "geoId/sch0691136",
+              "provenanceId": "dc/base/NCES_SchoolDistrict"
+            },
+            {
+              "name": "Big Oak Flat-Groveland Unified",
+              "types": [
+                "SchoolDistrict"
+              ],
+              "dcid": "geoId/sch0691137",
+              "provenanceId": "dc/base/NCES_SchoolDistrict"
+            },
+            {
+              "name": "School District Not Defined",
+              "types": [
+                "SchoolDistrict"
+              ],
+              "dcid": "geoId/sch0699997",
+              "provenanceId": "dc/base/BaseGeos"
+            },
+            {
+              "name": "Sacramento Education Line Office",
+              "types": [
+                "SchoolDistrict"
+              ],
+              "dcid": "geoId/sch5900019",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
@@ -20036,7 +17324,7 @@
               "provenanceId": "dc/base/NCES_PrivateSchool"
             },
             {
-              "name": "Los Gatos Christian School",
+              "name": "Venture Christian Academy",
               "types": [
                 "ElementarySchool",
                 "PrivateSchool"
@@ -39227,42 +36515,6 @@
               "provenanceId": "dc/base/NCES_PublicSchool"
             },
             {
-              "name": "River Valley School",
-              "types": [
-                "PrivateSchool",
-                "SecondarySchool"
-              ],
-              "dcid": "nces/A9302689",
-              "provenanceId": "dc/base/NCES_PrivateSchool"
-            },
-            {
-              "name": "Somerset Educational Services",
-              "types": [
-                "PrivateSchool",
-                "SecondarySchool"
-              ],
-              "dcid": "nces/A9302703",
-              "provenanceId": "dc/base/NCES_PrivateSchool"
-            },
-            {
-              "name": "Transitional Educational Ser",
-              "types": [
-                "PrivateSchool",
-                "SecondarySchool"
-              ],
-              "dcid": "nces/A9302729",
-              "provenanceId": "dc/base/NCES_PrivateSchool"
-            },
-            {
-              "name": "New Dimension Learning Academy",
-              "types": [
-                "PrivateSchool",
-                "SecondarySchool"
-              ],
-              "dcid": "nces/A9302748",
-              "provenanceId": "dc/base/NCES_PrivateSchool"
-            },
-            {
               "name": "Advocate",
               "types": [
                 "PrivateSchool",
@@ -40649,7 +37901,7 @@
               "provenanceId": "dc/base/NCES_PrivateSchool"
             },
             {
-              "name": "Futures Academy - Westlake Village",
+              "name": "Fusion Academy Westlake Village",
               "types": [
                 "PrivateSchool",
                 "SecondarySchool"
@@ -40685,7 +37937,7 @@
               "provenanceId": "dc/base/NCES_PrivateSchool"
             },
             {
-              "name": "Futures Academy - Cupertino",
+              "name": "Fusion Academy Cupertino",
               "types": [
                 "PrivateSchool",
                 "SecondarySchool"
@@ -44960,5 +42212,5 @@
     },
     "test_stat_var": {}
   },
-  "nextToken": "H4sIAAAAAAAA/6yTX0rDQBCHzTS246RKnKfcwuqDF4gVCwqB9sE/qGyToVlYs5BsKz2Il/B4nkBC3le2eIHv9/ENQ0+EG7GL6mJ2TWlpG6d0I9WiKYwqhZJcmm7brVpVOj5iwIgBgQFHDBgz4DEDjhlwwoDIgCcMSBxjkgKtvOg4124fwBz3zIxJeanp3MiHNE61+2VZW2sCFiaYpHH2A/TunTi/tbaad06tje7qfiywTESP3gG605s62H5o/uwlTx90VRk5kP2HdWE/pS2MCu4B9OYlnxat3ikXrt0fdJR9R/Tqr1Js10aXB+K/Inrx6y+vcjHmXnZiLmf/3OZssL7RnWt10I8O/zT9BQAA//8BAAD//7ykgywBBAAA"
+  "nextToken": "H4sIAAAAAAAA/5yRX0rzQBRHv9zma683CvE+ZRdWH9xAqFhQCLQP/kFlmlyagWsGkmmlC3ETLs8VSPB9ZLqB8zucHz0SbsUtm4v5NeW167yxnTTLrlJTC2WldMNuWPem9vyPARMGBAacMGDKgP8ZcMqAMwZEBjxhQOIUsxxoHUSnpfWHCOZ0ZBZMJkjNFyrv0nnTH1Z165xGLMwwy9PiG+gtOHF+41yzGLzZqB3acSyyTEIPwQG6tds22v63+VOQfHpvm0blSPYf1pX7kL5SE90D6DVIPqt6uzc+Xns8dFJ8JfQSrlLtNmrrI/GfCT2H9VdXpajeyV70ch7b5gcAAP//AQAA//+xIVM7oQMAAA=="
 }

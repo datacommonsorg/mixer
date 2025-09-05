@@ -17664,12 +17664,16 @@
                 },
                 {
                   "date": "2025-06",
-                  "value": 1907
+                  "value": 1919
+                },
+                {
+                  "date": "2025-07",
+                  "value": 2018
                 }
               ],
-              "obs_count": 426,
+              "obs_count": 427,
               "earliest_date": "1990-01",
-              "latest_date": "2025-06"
+              "latest_date": "2025-07"
             },
             {
               "facet_id": "2978659163",

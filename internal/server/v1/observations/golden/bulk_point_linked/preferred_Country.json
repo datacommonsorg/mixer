@@ -327,9 +327,9 @@
           "entity": "country/BRA",
           "points_by_facet": [
             {
-              "date": "2024",
-              "value": 211998573,
-              "facet": "3981252704"
+              "date": "2025-06",
+              "value": 212726000,
+              "facet": "366707399"
             }
           ]
         },
@@ -2710,6 +2710,10 @@
       "measurement_method": "WorldBankSubnationalPopulationEstimate",
       "observation_period": "P1Y"
     },
+    "536518379": {
+      "import_name": "SouthKorea_Demographics",
+      "provenance_url": "https://kosis.kr/eng/statisticsList/statisticsListIndex.do"
+    },
     "563701067": {
       "import_name": "NigeriaStatistics",
       "provenance_url": "https://nigeria.opendataforafrica.org"
@@ -2726,6 +2730,10 @@
       "import_name": "Rwanda_Census",
       "provenance_url": "https://rwanda.opendataforafrica.org/",
       "observation_period": "P3M"
+    },
+    "723406962": {
+      "import_name": "Mongolia_Demographics",
+      "provenance_url": "https://www.1212.mn/en/statcate"
     }
   }
 }

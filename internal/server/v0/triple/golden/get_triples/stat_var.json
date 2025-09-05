@@ -399,6 +399,20 @@
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
+      "subjectId": "Count_HospitalBed_AsAFractionOf_Count_Person",
+      "subjectName": "Count of hospital beds as a fraction of count of person",
+      "subjectTypes": [
+        "StatisticalVariable"
+      ],
+      "predicate": "measurementDenominator",
+      "objectId": "Count_Person",
+      "objectName": "Total population",
+      "objectTypes": [
+        "StatisticalVariable"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
       "subjectId": "Count_MedicalConditionIncident_0To4Years_AsAFractionOf_Count_Person",
       "subjectName": "Count of Medical Condition Incident: 0 - 4 Years (Per Capita)",
       "subjectTypes": [
@@ -7079,20 +7093,6 @@
     {
       "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionEyeCondition_Urban_AsAFractionOf_Count_Person",
       "subjectName": "Count of Medical Condition Incident: 45 - 59 Years, Eye Condition, Urban (Per Capita)",
-      "subjectTypes": [
-        "StatisticalVariable"
-      ],
-      "predicate": "measurementDenominator",
-      "objectId": "Count_Person",
-      "objectName": "Total population",
-      "objectTypes": [
-        "StatisticalVariable"
-      ],
-      "provenanceId": "dc/base/HumanReadableStatVars"
-    },
-    {
-      "subjectId": "Count_MedicalConditionIncident_45To59Years_ConditionGastroIntestinalCondition_AsAFractionOf_Count_Person",
-      "subjectName": "Count of Medical Condition Incident: 45 - 59 Years, Gastro Intestinal Condition (Per Capita)",
       "subjectTypes": [
         "StatisticalVariable"
       ],
