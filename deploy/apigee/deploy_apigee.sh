@@ -49,6 +49,7 @@ function prep_proxies() {
     copy_resources "$proxy_name" "policies" "policies"
     copy_resources "$proxy_name" "proxy_endpoints" "proxies"
     copy_resources "$proxy_name" "target_endpoints" "targets"
+    copy_resources "$proxy_name" "resources" "resources"
     cd "$ENV_TMP_DIR"
     mv "$proxy_name" apiproxy
     # Set a constant modification timestamp on all files so zip archive hash
@@ -75,6 +76,8 @@ function copy_resources() {
 # Copies a single file for the given proxy. Looks in the given source dir for a
 # file with the given source file name. If the file name has the format
 # *.template.xml, substitutes environment variables for REPLACE_WITH_ clauses.
+# If the filename includes a path (e.g. jsc/quota.js), this creates 
+# the necessary directory structure.
 function copy_file() {
   proxy_name="$1"
   source_dir="$2"
@@ -101,8 +104,14 @@ function copy_file() {
       fi
       sed -i "" "s/REPLACE_WITH_${var_name}/${!var_name}/g" "$write_file"
     done
+  elif [[ -f "$source_dir/$source_file" ]]; then
+    write_file="$write_dir/$source_file"
+    if [[ "$source_file" == *"/"* ]]; then
+      mkdir -p "$write_dir/$(dirname "$source_file")"
+    fi
+    cp "$source_dir/$source_file" "$write_file"
   else
-    echo "Not found: $source_dir/$source_file.xml"
+    echo "Not found: $source_dir/$source_file(.xml|.template.xml)"
   fi
 }
 
