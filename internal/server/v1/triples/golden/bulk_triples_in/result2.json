@@ -12,6 +12,14 @@
         "measurementDenominator": {
           "nodes": [
             {
+              "name": "Count of Medical Condition Incident: 45 - 59 Years, Gastro Intestinal Condition (Per Capita)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionGastroIntestinalCondition_AsAFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Count of Medical Condition Incident: 45 - 59 Years, Gastro Intestinal Condition, Rural (Per Capita)",
               "types": [
                 "StatisticalVariable"
@@ -4001,14 +4009,6 @@
                 "StatisticalVariable"
               ],
               "dcid": "Count_MedicalConditionIncident_60To69Years_Female_ConditionEarCondition_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 60 - 69 Years, Female, Ear Condition, Rural (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_60To69Years_Female_ConditionEarCondition_Rural_AsAFractionOf_Count_Person",
               "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]

@@ -1,8 +1,0 @@
-# Mixer autopush redis config:
-# https://console.cloud.google.com/memorystore/redis/locations/us-central1/instances/mixer-cache/details/overview?project=datcom-mixer-autopush
-# Each deployment should use its own config.
-
-instances:
-  - region: us-central1
-    host: "10.244.163.180"
-    port: "6379"
