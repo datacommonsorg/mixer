@@ -17,6 +17,7 @@ package server
 
 import (
 	"context"
+	"log/slog"
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
@@ -29,6 +30,7 @@ import (
 	"golang.org/x/sync/errgroup"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -245,6 +247,13 @@ func (s *Server) V2Observation(
 	ctx context.Context, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
 	v2StartTime := time.Now()
+	md, ok := metadata.FromIncomingContext(ctx)
+	if !ok {
+    	// This would mean no metadata was sent, which might be an error condition.
+    	slog.Info("metadata didn't work, ")
+    } else {
+		slog.Info("Medatadata: ", "", md)
+	}
 	initialResp, err := v2observation.ObservationInternal(
 		ctx,
 		s.store,
