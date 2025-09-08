@@ -109,6 +109,8 @@ function copy_file() {
 function terraform_plan_and_maybe_apply() {
   cd "$ENV_BASE_DIR"
 
+  terraform init
+
   terraform_cmd "plan"
 
   while true; do

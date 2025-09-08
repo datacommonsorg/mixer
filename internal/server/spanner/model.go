@@ -102,6 +102,12 @@ type SearchNode struct {
 	Score              float64  `spanner:"score"`
 }
 
+// ResolutionCandidate struct represents the response of a resolution request.
+type ResolutionCandidate struct {
+	Node      string `spanner:"node"`
+	Candidate string `spanner:"candidate"`
+}
+
 // SpannerConfig struct to hold the YAML configuration to a spanner database.
 type SpannerConfig struct {
 	Project  string `yaml:"project"`

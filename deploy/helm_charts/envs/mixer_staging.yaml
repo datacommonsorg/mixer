@@ -9,7 +9,17 @@ mixer:
   serviceName: staging.api.datacommons.org
   project: datcom-mixer-staging
   cluster_prefix: mixer
+  useSpannerGraph: true
+  enableV3: true
+  redis:
+    enabled: true
+    configFile: |
+      instances:
+        - region: "us-central1"
+          host: "10.55.198.51"
+          port: "6379"
   enableOtlp: true
+  v3MirrorFraction: 0.01
 
 ingress:
   enabled: true

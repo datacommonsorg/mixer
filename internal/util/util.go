@@ -154,6 +154,13 @@ func DCLog(tag DCLogTag, msg string) {
 	log.Printf("[DC][%s] %s", tag, msg)
 }
 
+// Custom RPC headers
+const (
+	// Whether to skip reading from Redis cache.
+	// To use, set header "X-Skip-Cache: true"
+	XSkipCache = "X-Skip-Cache"
+)
+
 // ZipAndEncode compresses the given content using gzip and encodes it in base64
 func ZipAndEncode(content []byte) (string, error) {
 	// Zip the content
@@ -538,12 +545,17 @@ func GetFacetID(m *pb.Facet) string {
 	return fmt.Sprint(h.Sum32())
 }
 
-func ShouldIncludeFacet(filter *pbv2.FacetFilter, facet *pb.Facet) bool {
+func ShouldIncludeFacet(filter *pbv2.FacetFilter, facet *pb.Facet, facetId string) bool {
 	if filter == nil {
 		return true
 	}
 
-	facetID := GetFacetID(facet)
+	// Use facetID if provided, else generate.
+	facetID := facetId
+	if facetID == "" {
+		facetID = GetFacetID(facet)
+	}
+
 	if filter.FacetIds != nil {
 		matchedFacetId := false
 		for _, facetId := range filter.FacetIds {

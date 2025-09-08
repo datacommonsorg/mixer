@@ -160,7 +160,36 @@ spec:
               fi
 
               # Start the mixer with the determined configs
-              /go/bin/mixer --base_bigtable_info="$FINAL_BT_CONFIG_CONTENT" --custom_bigtable_info="${CUSTOM_BIGTABLE_INFO}" --host_project="${HOST_PROJECT}" --bq_dataset="$FINAL_BQ_VERSION" --schema_path=/datacommons/mapping --remote_mixer_domain={{ $.Values.mixer.remoteMixerDomain }} --use_base_bigtable={{ $.Values.mixer.useBaseBigtable }} --use_custom_bigtable={{ $.Values.mixer.useCustomBigtable }} --use_branch_bigtable={{ $.Values.mixer.useBranchBigtable }} {{- if eq $.Values.mixer.bigqueryOnly true }} --bigquery_only=true {{- end }} --cache_svg={{ default false $group.cacheSVG }} {{- if eq $.Values.mixer.foldRemoteRootSvg true }} --fold_remote_root_svg=true {{- end }} {{- if eq $.Values.mixer.cacheSVFormula true }} --cache_sv_formula=true {{- end }} --use_spanner_graph={{ $.Values.mixer.useSpannerGraph }} --spanner_graph_info="${SPANNER_GRAPH_INFO}" --use_redis={{ $.Values.mixer.useRedis }} --redis_info="${REDIS_INFO}" --enable_v3={{ $.Values.mixer.enableV3 }} {{- if eq $.Values.mixer.enableOtlp true}} --metrics_exporter=otlp {{- end }}
+              /go/bin/mixer --base_bigtable_info="$FINAL_BT_CONFIG_CONTENT" \
+              --custom_bigtable_info="${CUSTOM_BIGTABLE_INFO}" \
+              --host_project="${HOST_PROJECT}" \
+              --bq_dataset="$FINAL_BQ_VERSION" \
+              --schema_path=/datacommons/mapping \
+              --remote_mixer_domain={{ $.Values.mixer.remoteMixerDomain }} \
+              --use_base_bigtable={{ $.Values.mixer.useBaseBigtable }} \
+              --use_custom_bigtable={{ $.Values.mixer.useCustomBigtable }} \
+              --use_branch_bigtable={{ $.Values.mixer.useBranchBigtable }} \
+              {{- if eq $.Values.mixer.bigqueryOnly true }}
+              --bigquery_only=true \
+              {{- end }}
+              --cache_svg={{ default false $group.cacheSVG }} \
+              {{- if eq $.Values.mixer.foldRemoteRootSvg true }}
+              --fold_remote_root_svg=true \
+              {{- end }}
+              {{- if eq $.Values.mixer.cacheSVFormula true }}
+              --cache_sv_formula=true \
+              {{- end }}
+              --use_spanner_graph={{ $.Values.mixer.useSpannerGraph }} \
+              --spanner_graph_info="${SPANNER_GRAPH_INFO}" \
+              --use_redis={{ $.Values.mixer.redis.enabled }} \
+              --redis_info="${REDIS_INFO}" \
+              --enable_v3={{ $.Values.mixer.enableV3 }} \
+              {{- if eq $.Values.mixer.enableOtlp true}}
+              --metrics_exporter=otlp \
+              {{- end }}
+              {{- if $.Values.mixer.v3MirrorFraction }}
+              --v3_mirror_fraction={{ $.Values.mixer.v3MirrorFraction }} \
+              {{- end }}
           volumeMounts:
             - name: schema-mapping
               mountPath: /datacommons/mapping
@@ -196,12 +225,14 @@ spec:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-store-config
                   key: spanner_graph_info.yaml
+            {{- if $.Values.mixer.redis.enabled }}
             - name: REDIS_INFO
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-store-config
                   key: redis_info.yaml
                   optional: true
+            {{- end }}
             - name: MIXER_HASH
               valueFrom:
                 configMapKeyRef:

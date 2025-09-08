@@ -68,10 +68,7 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, offset int32) *spanner.Sta
 		for _, prop := range props {
 			params["prop"+strconv.Itoa(i)] = prop
 			objectFilter := ""
-			filterVal := arc.Filter[prop]
-			for _, v := range arc.Filter[prop] {
-				filterVal = append(filterVal, generateValueHash(v))
-			}
+			filterVal := addValueHashes(arc.Filter[prop])
 			if len(filterVal) > 0 {
 				objectFilter = fmt.Sprintf(statements.filterValue, i)
 				params["val"+strconv.Itoa(i)] = filterVal
@@ -170,6 +167,35 @@ func SearchNodesQuery(query string, types []string) *spanner.Statement {
 
 	return &spanner.Statement{
 		SQL:    fmt.Sprintf(statements.searchNodesByQuery, filterTypes, merger.MAX_SEARCH_RESULTS),
+		Params: params,
+	}
+}
+
+func ResolveByIDQuery(nodes []string, in, out string) *spanner.Statement {
+	params := map[string]interface{}{
+		"inProp":  in,
+		"outProp": out,
+	}
+
+	var sql string
+	if in == "dcid" {
+		params["nodes"] = nodes
+		if out == "dcid" { // DCID to DCID
+			sql = statements.resolveDcidToDcid
+		} else { // DCID to property
+			sql = statements.resolveDcidToProp
+		}
+	} else {
+		params["nodes"] = addValueHashes(nodes)
+		if out == "dcid" { // Property to DCID
+			sql = statements.resolvePropToDcid
+		} else { // Property to property
+			sql = statements.resolvePropToProp
+		}
+	}
+
+	return &spanner.Statement{
+		SQL:    sql,
 		Params: params,
 	}
 }

@@ -1809,6 +1809,38 @@
       "dcid": "Count_Person_75OrLessYears_Female_NeverMarried"
     },
     {
+      "name": "Number of pregnant women aged 0 to 9 years affected by Hepatitis B.",
+      "dcid": "Count_PregnantWoman_0To9Years_Female_ConditionHepatitisB"
+    },
+    {
+      "name": "Number of pregnant women aged 10 to 19 years affected by Hepatitis B.",
+      "dcid": "Count_PregnantWoman_10To19Years_Female_ConditionHepatitisB"
+    },
+    {
+      "name": "Number of pregnant women aged 20 to 29 years affected by Hepatitis B.",
+      "dcid": "Count_PregnantWoman_20To29Years_Female_ConditionHepatitisB"
+    },
+    {
+      "name": "Number of pregnant women aged 30 to 39 years affected by Hepatitis B.",
+      "dcid": "Count_PregnantWoman_30To39Years_Female_ConditionHepatitisB"
+    },
+    {
+      "name": "Number of pregnant women aged 40 to 49 years affected by Hepatitis B.",
+      "dcid": "Count_PregnantWoman_40To49Years_Female_ConditionHepatitisB"
+    },
+    {
+      "name": "Number of pregnant women aged 50 to 59 years affected by Hepatitis B.",
+      "dcid": "Count_PregnantWoman_50To59Years_Female_ConditionHepatitisB"
+    },
+    {
+      "name": "Number of pregnant women aged 60 to 69 years affected by Hepatitis B.",
+      "dcid": "Count_PregnantWoman_60To69Years_Female_ConditionHepatitisB"
+    },
+    {
+      "name": "Number of pregnant women aged 70 or more years affected by Hepatitis B.",
+      "dcid": "Count_PregnantWoman_70OrMoreYears_Female_ConditionHepatitisB"
+    },
+    {
       "name": "Number of widowed women aged 15 years and older",
       "dcid": "Count_Person_15Years_Female_Widowed"
     },

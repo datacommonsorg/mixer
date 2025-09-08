@@ -43,7 +43,7 @@
             "maxValue": 24354012
           },
           "AdministrativeArea2": {
-            "placeCount": 6738,
+            "placeCount": 6711,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q1143712",
@@ -62,7 +62,7 @@
             "maxValue": 3363912
           },
           "AdministrativeArea3": {
-            "placeCount": 307,
+            "placeCount": 289,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q217234",
@@ -415,7 +415,7 @@
             "maxValue": 138958
           },
           "Place": {
-            "placeCount": 163,
+            "placeCount": 162,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q366754",
@@ -3031,6 +3031,36 @@
             "observationCount": 4744,
             "timeSeriesCount": 2374
           },
+          "dc/base/Mongolia_Demographics": {
+            "importName": "Mongolia_Demographics",
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "1935",
+                "latestDate": "2024",
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/MNG",
+                        "name": "Mongolia"
+                      }
+                    ],
+                    "minValue": 366900,
+                    "maxValue": 1808475
+                  }
+                },
+                "minValue": 366900,
+                "maxValue": 1808475,
+                "observationCount": 90,
+                "timeSeriesCount": 1
+              }
+            ],
+            "observationCount": 90,
+            "timeSeriesCount": 1
+          },
           "dc/base/New_Zealand_Census": {
             "importName": "New_Zealand_Census",
             "releaseFrequency": "P1Y",
@@ -3630,6 +3660,35 @@
             "observationCount": 194,
             "timeSeriesCount": 61
           },
+          "dc/base/SouthKorea_Demographics": {
+            "importName": "SouthKorea_Demographics",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "2015",
+                "latestDate": "2023",
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/KOR",
+                        "name": "South Korea"
+                      }
+                    ],
+                    "minValue": 25460873,
+                    "maxValue": 25913929
+                  }
+                },
+                "minValue": 25460873,
+                "maxValue": 25913929,
+                "observationCount": 9,
+                "timeSeriesCount": 1
+              }
+            ],
+            "observationCount": 9,
+            "timeSeriesCount": 1
+          },
           "dc/base/Srilanka_Census": {
             "importName": "Srilanka_Census",
             "releaseFrequency": "P1Y",
@@ -3867,7 +3926,7 @@
                   "measurementMethod": "UNData"
                 },
                 "earliestDate": "1970",
-                "latestDate": "2024",
+                "latestDate": "2025",
                 "placeTypeSummary": {
                   "AdministrativeArea": {
                     "placeCount": 138,
@@ -3924,7 +3983,7 @@
                       }
                     ],
                     "minValue": 26186,
-                    "maxValue": 5303982
+                    "maxValue": 6118958
                   },
                   "AdministrativeArea3": {
                     "placeCount": 74,
@@ -3961,7 +4020,7 @@
                         "name": "Nuestra Señora del Rosario de Baruta"
                       }
                     ],
-                    "minValue": 2775.73322,
+                    "minValue": 2697,
                     "maxValue": 570712
                   },
                   "AdministrativeArea5": {
@@ -3984,7 +4043,7 @@
                     "maxValue": 79776
                   },
                   "City": {
-                    "placeCount": 3159,
+                    "placeCount": 3160,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q8686",
@@ -4000,7 +4059,7 @@
                       }
                     ],
                     "minValue": 307,
-                    "maxValue": 7074913
+                    "maxValue": 8860103
                   },
                   "County": {
                     "placeCount": 9,
@@ -4063,7 +4122,7 @@
                     "maxValue": 138958
                   },
                   "Place": {
-                    "placeCount": 134,
+                    "placeCount": 133,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q366754",
@@ -4117,12 +4176,12 @@
                   }
                 },
                 "minValue": 26,
-                "maxValue": 7074913,
-                "observationCount": 15986,
+                "maxValue": 8860103,
+                "observationCount": 16437,
                 "timeSeriesCount": 3960
               }
             ],
-            "observationCount": 15986,
+            "observationCount": 16437,
             "timeSeriesCount": 3960
           },
           "dc/base/USCensusPEP_AgeSexRaceHispanicOrigin": {
@@ -4352,7 +4411,6 @@
           },
           "dc/base/Zurich_Population_By_Sex": {
             "importName": "Zurich_Population_By_Sex",
-            "releaseFrequency": "P1Y",
             "seriesSummary": [
               {
                 "seriesKey": {},
