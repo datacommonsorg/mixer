@@ -699,13 +699,13 @@
               "facet_id": "324358135",
               "observations": [
                 {
-                  "date": "2025-06",
-                  "value": 1907
+                  "date": "2025-07",
+                  "value": 2018
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2025-06",
-              "latest_date": "2025-06"
+              "earliest_date": "2025-07",
+              "latest_date": "2025-07"
             },
             {
               "facet_id": "2978659163",

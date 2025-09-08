@@ -637,6 +637,10 @@
       "dcid": "Count_Person_EducationalAttainment_LessThanHighSchoolDiploma"
     },
     {
+      "name": "Population aged 15 or more years who are now married",
+      "dcid": "Count_Person_15OrMoreYears_NowMarried"
+    },
+    {
       "name": "Population in the Labor Force",
       "dcid": "Count_Person_InLaborForce"
     },
@@ -2757,6 +2761,10 @@
       "dcid": "Count_Person_USCitizenByNaturalization"
     },
     {
+      "name": "Unmarried population aged 15 or more",
+      "dcid": "Count_Person_15OrMoreYears_Unmarried"
+    },
+    {
       "name": "White Hispanic Monoracial Population",
       "dcid": "Count_Person_HispanicOrLatino_WhiteAlone"
     },
@@ -3201,6 +3209,26 @@
       "dcid": "Count_Person_WithDisability_TwoOrMoreRaces"
     },
     {
+      "name": "Divorced or separated population aged 20 to 29 years",
+      "dcid": "Count_Person_20To29Years_DivorcedOrSeparated"
+    },
+    {
+      "name": "Divorced or separated population aged 30 to 39 years",
+      "dcid": "Count_Person_30To39Years_DivorcedOrSeparated"
+    },
+    {
+      "name": "Divorced or separated population aged 40 to 49 years",
+      "dcid": "Count_Person_40To49Years_DivorcedOrSeparated"
+    },
+    {
+      "name": "Divorced or separated population aged 50 to 59 years",
+      "dcid": "Count_Person_50To59Years_DivorcedOrSeparated"
+    },
+    {
+      "name": "Divorced or separated population aged 60 to 69 years",
+      "dcid": "Count_Person_60To69Years_DivorcedOrSeparated"
+    },
+    {
       "name": "Earning Female Population",
       "dcid": "Count_Person_Female_WithEarnings"
     },
@@ -3283,6 +3311,10 @@
     {
       "name": "Female White Population, Monoracial/Multiracial",
       "dcid": "Count_Person_Female_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    },
+    {
+      "name": "Female population aged 70 or more years",
+      "dcid": "Count_Person_70OrMoreYears_Female"
     },
     {
       "name": "Food Insecure People Eligible for All Federal Benefits",
@@ -3507,6 +3539,10 @@
     {
       "name": "Male Population in Nursing Facilities",
       "dcid": "Count_Person_Male_ResidesInNursingFacilities"
+    },
+    {
+      "name": "Male population aged 70 or more years",
+      "dcid": "Count_Person_70OrMoreYears_Male"
     },
     {
       "name": "Monoracial Population Institutionalized in Group Quarters",
@@ -3785,6 +3821,10 @@
       "dcid": "Count_Person_Employed_ProfessionalScientificTechnicalServices"
     },
     {
+      "name": "Number of employed wage and salary workers",
+      "dcid": "Count_Person_WageAndSalaryWorker_Employed"
+    },
+    {
       "name": "Number of employees in limited-service eating places",
       "dcid": "Count_Person_Employed_LimitedserviceEatingPlaces"
     },
@@ -3959,46 +3999,6 @@
     {
       "name": "Number of men with general or azhari secondary education",
       "dcid": "Count_Person_EducationalAttainmentGeneralOrAzhariSecondaryEducation_Male"
-    },
-    {
-      "name": "Number of men with less than intermediate education",
-      "dcid": "Count_Person_EducationalAttainmentLessThanIntermediate_Male"
-    },
-    {
-      "name": "Number of men with technical secondary education",
-      "dcid": "Count_Person_EducationalAttainmentTechnicalSecondaryEducation_Male"
-    },
-    {
-      "name": "Number of men with university or higher education",
-      "dcid": "Count_Person_EducationalAttainmentUniversityOrHigher_Male"
-    },
-    {
-      "name": "Number of motor vehicle occupants involved in crash",
-      "dcid": "Count_Person_InvolvedInCrash_MotorVehicleOccupant"
-    },
-    {
-      "name": "Number of never married 17-year-olds",
-      "dcid": "Count_Person_17Years_NeverMarried"
-    },
-    {
-      "name": "Number of never married individuals aged 15 years or less",
-      "dcid": "Count_Person_15OrLessYears_NeverMarried"
-    },
-    {
-      "name": "Number of never married people aged 15 and over",
-      "dcid": "Count_Person_15Years_NeverMarried"
-    },
-    {
-      "name": "Number of never married people aged 16 years",
-      "dcid": "Count_Person_16Years_NeverMarried"
-    },
-    {
-      "name": "Number of never married people aged 18 and above",
-      "dcid": "Count_Person_18Years_NeverMarried"
-    },
-    {
-      "name": "Number of never married people aged 75 or less",
-      "dcid": "Count_Person_75OrLessYears_NeverMarried"
     }
   ],
   "matches": [

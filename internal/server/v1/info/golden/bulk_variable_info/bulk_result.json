@@ -3031,6 +3031,36 @@
             "observationCount": 4744,
             "timeSeriesCount": 2374
           },
+          "dc/base/Mongolia_Demographics": {
+            "importName": "Mongolia_Demographics",
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "1935",
+                "latestDate": "2024",
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/MNG",
+                        "name": "Mongolia"
+                      }
+                    ],
+                    "minValue": 366900,
+                    "maxValue": 1808475
+                  }
+                },
+                "minValue": 366900,
+                "maxValue": 1808475,
+                "observationCount": 90,
+                "timeSeriesCount": 1
+              }
+            ],
+            "observationCount": 90,
+            "timeSeriesCount": 1
+          },
           "dc/base/New_Zealand_Census": {
             "importName": "New_Zealand_Census",
             "releaseFrequency": "P1Y",
@@ -3630,6 +3660,35 @@
             "observationCount": 194,
             "timeSeriesCount": 61
           },
+          "dc/base/SouthKorea_Demographics": {
+            "importName": "SouthKorea_Demographics",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "2015",
+                "latestDate": "2023",
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/KOR",
+                        "name": "South Korea"
+                      }
+                    ],
+                    "minValue": 25460873,
+                    "maxValue": 25913929
+                  }
+                },
+                "minValue": 25460873,
+                "maxValue": 25913929,
+                "observationCount": 9,
+                "timeSeriesCount": 1
+              }
+            ],
+            "observationCount": 9,
+            "timeSeriesCount": 1
+          },
           "dc/base/Srilanka_Census": {
             "importName": "Srilanka_Census",
             "releaseFrequency": "P1Y",
@@ -4211,7 +4270,7 @@
                 },
                 "minValue": 0,
                 "maxValue": 5119774,
-                "observationCount": 172489,
+                "observationCount": 181550,
                 "timeSeriesCount": 3156
               },
               {
@@ -4256,11 +4315,11 @@
                 },
                 "minValue": 138616,
                 "maxValue": 171773106,
-                "observationCount": 2958,
+                "observationCount": 3137,
                 "timeSeriesCount": 52
               }
             ],
-            "observationCount": 175447,
+            "observationCount": 184687,
             "timeSeriesCount": 3208
           },
           "dc/base/Vietnam_Census": {
