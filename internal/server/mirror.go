@@ -124,7 +124,8 @@ func (s *Server) doMirror(
 	}
 
 	if diff := cmp.Diff(originalResp, v3Resp, protocmp.Transform()); diff != "" {
-		log.Printf("V3 mirrored call had a different response. V3 Method: %s, skipCache: %t, Diff: %s", rpcMethod, skipCache, diff)
+		// TODO(hqpho): Re-enable once structured logging is ready.
+		// log.Printf("V3 mirrored call had a different response. V3 Method: %s, skipCache: %t, Diff: %s", rpcMethod, skipCache, diff)
 		metrics.RecordV3Mismatch(ctx)
 	}
 }
