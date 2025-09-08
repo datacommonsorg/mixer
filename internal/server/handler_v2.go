@@ -26,6 +26,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/statvar/search"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
+	usagelogger "github.com/datacommonsorg/mixer/internal/server/v2/observation/usage_logger"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
 
@@ -248,11 +249,17 @@ func (s *Server) V2Observation(
 ) (*pbv2.ObservationResponse, error) {
 	v2StartTime := time.Now()
 	md, ok := metadata.FromIncomingContext(ctx)
+	surface := ""
 	if !ok {
     	// This would mean no metadata was sent, which might be an error condition.
     	slog.Info("metadata didn't work, ")
     } else {
-		slog.Info("Medatadata: ", "", md)
+		if values := md.Get("x-surface"); len(values) > 0 {
+			surface = values[0]
+			slog.Info("Feature found!", "origin", surface)
+		} else {
+			slog.Info("no x-surface found. ", "md", md)
+     }
 	}
 	initialResp, err := v2observation.ObservationInternal(
 		ctx,
@@ -290,6 +297,10 @@ func (s *Server) V2Observation(
 			return s.V3Observation(ctx, req.(*pbv2.ObservationRequest))
 		},
 	)
+
+	// handle logging 
+	slog.Info("new query")
+	usagelogger.UsageLogger(surface, " do place type later", combinedResp)
 
 	return v2Resp, nil
 }
