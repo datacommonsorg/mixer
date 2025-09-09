@@ -205,10 +205,12 @@ func TestMaybeMirrorV3_ResponseMismatch(t *testing.T) {
 	s.maybeMirrorV3(ctx, v2Req, v2Resp, 0, v3Call, &mirrorWg)
 	mirrorWg.Wait()
 
-	logOutput := buf.String()
-	if strings.Count(logOutput, "V3 mirrored call had a different response") != 2 {
-		t.Errorf("log output should contain 2 diff warnings, but got: %q", logOutput)
-	}
+	// logOutput := buf.String()
+	// TODO(hqpho): Re-enable this test once structured logging is ready and
+	// the V3 response diff logging is re-enabled.
+	// if strings.Count(logOutput, "V3 mirrored call had a different response") != 2 {
+	// 	t.Errorf("log output should contain 2 diff warnings, but got: %q", logOutput)
+	// }
 
 	var rm metricdata.ResourceMetrics
 	if err := reader.Collect(context.Background(), &rm); err != nil {

@@ -226,10 +226,9 @@ var statements = struct {
 			AND t2.object_id IN (:parentPlaces);
 	`,
 	getEntityVariables: `
-		SELECT entity, GROUP_CONCAT(DISTINCT variable) variables
+		SELECT DISTINCT entity, variable
 		FROM observations 
-		WHERE entity in (:entities)
-		GROUP BY entity;
+		WHERE entity in (:entities);
 	`,
 	getAllEntitiesAndVariables: `
 		SELECT DISTINCT entity, variable
