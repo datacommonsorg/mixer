@@ -376,10 +376,10 @@ func (sc *SQLClient) GetContainedInPlace(ctx context.Context, childPlaceType str
 func (sc *SQLClient) GetEntityVariables(ctx context.Context, entities []string) ([]*EntityVariables, error) {
 	defer util.TimeTrack(time.Now(), "SQL: GetEntityVariables")
 
-	rows := []*EntityVariables{}
+	results := []*EntityVariables{}
 
 	if len(entities) == 0 {
-		return rows, nil
+		return results, nil
 	}
 
 	stmt := statement{
@@ -389,6 +389,7 @@ func (sc *SQLClient) GetEntityVariables(ctx context.Context, entities []string) 
 		},
 	}
 
+	rows := []*EntityVariable{}
 	err := sc.queryAndCollect(
 		ctx,
 		stmt,
@@ -397,7 +398,19 @@ func (sc *SQLClient) GetEntityVariables(ctx context.Context, entities []string) 
 	if err != nil {
 		return nil, err
 	}
-	return rows, nil
+
+	// Convert []*EntityVariable to []*EntityVariables by grouping variables by entity.
+	entityVarMap := map[string][]string{}
+	for _, row := range rows {
+		entityVarMap[row.Entity] = append(entityVarMap[row.Entity], row.Variable)
+	}
+	for entity, variables := range entityVarMap {
+		results = append(results, &EntityVariables{
+			Entity:    entity,
+			Variables: variables,
+		})
+	}
+	return results, nil
 }
 
 // GetAllEntitiesAndVariables returns all entities and variables in the DB.
