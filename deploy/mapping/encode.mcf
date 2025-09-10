@@ -23,7 +23,7 @@ functionalDeps: dcid
 
 Node: E:EncodeBedLine->E2
 typeOf: EncodeBedFile
-dcid: C:EncodeBedLine->from_bed_file
+dcid: C:EncodeBedFile->from_bed_file
 functionalDeps: dcid
 
 Node: E:EncodeBedLine->E3

@@ -17,18 +17,18 @@
 
 steps:
   # Trigger downstream builds that listen for changes to multiple repos.
-  - id: update-repo-version
-    name: "gcr.io/cloud-builders/git"
-    entrypoint: /bin/bash
-    args:
-      - -c
-      - |
-        set -e
-        if [ "$_SKIP_REPO_VERSION_UPDATE" == "true" ] ; then exit 0 ; fi
-        gcloud source repos clone deployment /tmp/deployment --project=datcom-ci
-        cd /tmp/deployment
-        ./scripts/update_external_repo_version.sh $REPO_NAME $SHORT_SHA
-    waitFor: ["-"]
+  #   - id: update-repo-version
+  #     name: "gcr.io/cloud-builders/git"
+  #     entrypoint: /bin/bash
+  #     args:
+  #       - -c
+  #       - |
+  #         set -e
+  #         if [ "$_SKIP_REPO_VERSION_UPDATE" == "true" ] ; then exit 0 ; fi
+  #         gcloud source repos clone deployment /tmp/deployment --project=datcom-ci
+  #         cd /tmp/deployment
+  #          ./scripts/update_external_repo_version.sh $REPO_NAME $SHORT_SHA
+  #     waitFor: ["-"]
 
   # Build protobuf and grpc descriptor
   - id: build-proto
@@ -93,8 +93,19 @@ steps:
         ./scripts/update_autopush_version.sh $SHORT_SHA
     waitFor: ["push-grpc-descriptor", "push-image"]
 
+  # Trigger downstream builds that listen for changes to mixer images.
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        export SHORT_SHA=$(echo "${SHORT_SHA}" | tr -d '\n')
+        gcloud pubsub topics publish mixer-image-pushed \
+          --project=datcom-ci \
+          --message='{"substitutions": {"_SHORT_SHA": "'"${SHORT_SHA}"'"}}'
+
 substitutions:
-  _SKIP_AUTOPUSH_UPDATE: "false"
+  _SKIP_AUTOPUSH_UPDATE: "true"
   _SKIP_REPO_VERSION_UPDATE: "false"
   _GO_PROTOC_VERSION: "2025-07-30"
 

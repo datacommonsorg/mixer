@@ -1,7 +1,14 @@
+project: datcom-mixer-staging
+cluster_prefix: mixer
+
 # Helm config
 mixer:
+  image:
+    tag: ""
   hostProject: datcom-mixer-staging
   serviceName: staging.api.datacommons.org
+  project: datcom-mixer-staging
+  cluster_prefix: mixer
   useSpannerGraph: true
   enableV3: true
   redis:
@@ -25,12 +32,13 @@ ingress:
 serviceGroups:
   svg:
     replicas: 2
+    maxSurge: 0
   recon:
     replicas: 4
   node:
     replicas: 20
   observation:
-    replicas: 20
+    replicas: 10
   default:
     replicas: 5
 
