@@ -246,7 +246,7 @@ spec:
             - containerPort: 12345
           startupProbe:
             exec:
-              command: ["/bin/grpc_health_probe", "-addr=:12345"]
+              command: ["/bin/grpc_health_probe", "-addr=:12345", "-connect-timeout=10s"]
             failureThreshold: 30
             periodSeconds: 10
             timeoutSeconds: 10
