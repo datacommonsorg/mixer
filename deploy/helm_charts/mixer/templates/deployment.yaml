@@ -88,7 +88,7 @@ spec:
             - -c
             - |
               # This Init Container only runs for dev and autopush
-              {{- if or (eq $.Values.mixer.hostProject "datcom-website-autopush") (eq $.Values.mixer.hostProject "datcom-mixer-autopush") }}
+              {{- if or (eq $.Values.mixer.hostProject "datcom-website-autopush") (eq $.Values.mixer.hostProject "datcom-mixer-autopush") (eq $.Values.mixer.hostProject "datcom-website-dev") (eq $.Values.mixer.hostProject "datcom-mixer-dev-316822") }}
               set -e
               echo "Fetching Bigtable info from GCS for {{ $.Values.mixer.hostProject }}..."
               BT_OUTPUT_FILE="/dynamic-config/base_bigtable_info.yaml"
@@ -249,15 +249,18 @@ spec:
               command: ["/bin/grpc_health_probe", "-addr=:12345"]
             failureThreshold: 30
             periodSeconds: 10
+            timeoutSeconds: 10
           readinessProbe:
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:12345"]
             periodSeconds: 10
+            timeoutSeconds: 10
           livenessProbe:
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:12345"]
             periodSeconds: 10
             initialDelaySeconds: 10
+            timeoutSeconds: 10
         - name: esp
           image:  "{{ $.Values.esp.image.repository }}{{- if $.Values.esp.image.tag -}}:{{ $.Values.esp.image.tag }}{{- end }}"
           imagePullPolicy: {{ $.Values.esp.image.pullPolicy }}

@@ -42,10 +42,22 @@ data:
   base_bigtable_info.yaml: {{  required "baseBigtableInfo is required." .Values.kgStoreConfig.baseBigtableInfo | quote }}
   custom_bigtable_info.yaml: {{ .Values.kgStoreConfig.customBigtableInfo | quote }}
   spanner_graph_info.yaml: {{ .Values.kgStoreConfig.spannerGraphInfo | quote }}
-  {{- if .Values.mixer.redis.enabled }}
+  # {{- $redisEnabled := false -}}
+  # {{- $redisConfigFile := "" -}}
+  # {{- if and .Values.global .Values.global.mixer .Values.global.mixer.redis .Values.global.mixer.redis.enabled -}}
+  #   {{- $redisEnabled = .Values.global.mixer.redis.enabled -}}
+  #   {{- $redisConfigFile = .Values.global.mixer.redis.configFile -}}
+  # {{- else if and .Values.mixer .Values.mixer.redis .Values.mixer.redis.enabled -}}
+  #   {{- $redisEnabled = .Values.mixer.redis.enabled -}}
+  #   {{- $redisConfigFile = .Values.mixer.redis.configFile -}}
+  # {{- end -}}
+
+  # {{- if $redisEnabled }}
+  # redis_info.yaml: {{ required "Redis configFile is required" $redisConfigFile | quote }}
+  # {{- end }}
+{{- if .Values.mixer.redis.enabled }}
   redis_info.yaml: {{ required "mixer.redis.configFile is required when mixer.redis.enabled is true" .Values.mixer.redis.configFile | quote }}
   {{- end }}
-
 ---
 
 kind: ConfigMap
