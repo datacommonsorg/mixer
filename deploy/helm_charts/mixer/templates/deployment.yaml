@@ -289,6 +289,7 @@ spec:
             httpGet:
               path: /healthz
               port: 8081
+            initialDelaySeconds: 60
             periodSeconds: 5
           livenessProbe:
             httpGet:
