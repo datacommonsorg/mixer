@@ -252,13 +252,13 @@ func (s *Server) V2Observation(
 	surface := ""
 	if !ok {
     	// This would mean no metadata was sent, which might be an error condition.
-    	slog.Info("metadata didn't work, ")
+    	slog.Info("Error: There was an issue with the metadata", "err", ok)
     } else {
+		// setting the surface to use in logging later on
+		// this is the origin of the query -- website, MCP server, public API (= blank surface), etc.
 		if values := md.Get("x-surface"); len(values) > 0 {
 			surface = values[0]
-			slog.Info("Feature found!", "origin", surface)
 		} else {
-			slog.Info("no x-surface found. ", "md", md)
      }
 	}
 	initialResp, err := v2observation.ObservationInternal(
@@ -299,8 +299,7 @@ func (s *Server) V2Observation(
 	)
 
 	// handle logging 
-	slog.Info("new query")
-	usagelogger.UsageLogger(surface, " do place type later", combinedResp)
+	usagelogger.UsageLogger(surface, "do place type later", combinedResp)
 
 	return v2Resp, nil
 }

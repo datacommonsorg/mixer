@@ -31,7 +31,7 @@ type UsageLog struct {
 
 // LogValue implements slog.LogValuer.
 // It returns a group containing the fields of
-// the Name, so that they appear together in the log output.
+// the UsageLog, so that they appear together in the log output.
 func (u UsageLog) LogValue() slog.Value {
 	return slog.GroupValue(
 		slog.String("feature", u.Feature),
