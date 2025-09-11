@@ -55,7 +55,7 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, offset int32) *spanner.Sta
 	}
 
 	// Generate filters.
-	returnEdges := ""
+	subqueries := []string{}
 	if len(arc.Filter) > 0 {
 		// Sort for determinism.
 		props := make([]string, 0, len(arc.Filter))
@@ -73,46 +73,53 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, offset int32) *spanner.Sta
 				objectFilter = fmt.Sprintf(statements.filterValue, i)
 				params["val"+strconv.Itoa(i)] = filterVal
 			}
-			returnEdges += fmt.Sprintf(statements.filterProperty, i, objectFilter)
+			subqueries = append(subqueries, fmt.Sprintf(statements.filterProperty, i, objectFilter))
 			i += 1
 		}
 	}
 
-	// Generate return statement.
+	var subquery string
+	switch arc.Out {
+	case true:
+		if arc.Decorator == CHAIN {
+			subquery = fmt.Sprintf(statements.getChainedEdgesBySubjectID, MAX_HOPS)
+			params["predicate"] = arc.SingleProp
+			params["result_predicate"] = arc.SingleProp + arc.Decorator
+		} else {
+			subquery = fmt.Sprintf(statements.getEdgesBySubjectID, filterPredicate)
+		}
+		subqueries = append([]string{subquery}, subqueries...)
+	case false:
+		if arc.Decorator == CHAIN {
+			subquery = fmt.Sprintf(statements.getChainedEdgesByObjectID, MAX_HOPS)
+			params["predicate"] = arc.SingleProp
+			params["result_predicate"] = arc.SingleProp + arc.Decorator
+		} else {
+			subquery = fmt.Sprintf(statements.getEdgesByObjectID, filterPredicate)
+		}
+		subqueries = append(subqueries, subquery)
+	}
+
+	// Generate prefix and return statement.
+	var prefix, returnEdges string
 	switch arc.Decorator {
 	case CHAIN:
-		if len(returnEdges) > 0 {
-			returnEdges += statements.returnFilterChainedEdges
+		prefix = statements.chainedEdgePrefix
+		if len(arc.Filter) > 0 {
+			returnEdges = statements.returnFilterChainedEdges
 		} else {
 			returnEdges = statements.returnChainedEdges
 		}
 	default:
-		if len(returnEdges) > 0 {
+		prefix = statements.edgePrefix
+		if len(arc.Filter) > 0 {
 			returnEdges += statements.returnFilterEdges
 		} else {
 			returnEdges = statements.returnEdges
 		}
 	}
 
-	var template string
-	switch arc.Out {
-	case true:
-		if arc.Decorator == CHAIN {
-			template = fmt.Sprintf(statements.getChainedEdgesBySubjectID, MAX_HOPS, returnEdges)
-			params["predicate"] = arc.SingleProp
-			params["result_predicate"] = arc.SingleProp + arc.Decorator
-		} else {
-			template = fmt.Sprintf(statements.getEdgesBySubjectID, filterPredicate, returnEdges)
-		}
-	case false:
-		if arc.Decorator == CHAIN {
-			template = fmt.Sprintf(statements.getChainedEdgesByObjectID, MAX_HOPS, returnEdges)
-			params["predicate"] = arc.SingleProp
-			params["result_predicate"] = arc.SingleProp + arc.Decorator
-		} else {
-			template = fmt.Sprintf(statements.getEdgesByObjectID, filterPredicate, returnEdges)
-		}
-	}
+	template := prefix + strings.Join(subqueries, ",\n\t\t") + returnEdges
 
 	// Apply pagination.
 	if offset > 0 {
