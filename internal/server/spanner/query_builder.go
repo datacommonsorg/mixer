@@ -97,6 +97,7 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, offset int32) *spanner.Sta
 		} else {
 			subquery = fmt.Sprintf(statements.getEdgesByObjectID, filterPredicate)
 		}
+		// Add filters first for in-edges.
 		subqueries = append(subqueries, subquery)
 	}
 
