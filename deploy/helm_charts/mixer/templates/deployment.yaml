@@ -248,18 +248,20 @@ spec:
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:12345", "-connect-timeout=10s"]
             failureThreshold: 30
+            initialDelaySeconds: 60
             periodSeconds: 10
             timeoutSeconds: 10
           readinessProbe:
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:12345"]
             periodSeconds: 10
+            initialDelaySeconds: 60
             timeoutSeconds: 10
           livenessProbe:
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:12345"]
             periodSeconds: 10
-            initialDelaySeconds: 10
+            initialDelaySeconds: 60
             timeoutSeconds: 10
         - name: esp
           image:  "{{ $.Values.esp.image.repository }}{{- if $.Values.esp.image.tag -}}:{{ $.Values.esp.image.tag }}{{- end }}"
