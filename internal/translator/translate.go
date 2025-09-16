@@ -16,7 +16,6 @@ package translator
 
 import (
 	"fmt"
-	"log"
 	"sort"
 	"strconv"
 	"strings"
@@ -873,87 +872,41 @@ func Translate(
 	mappings []*types.Mapping, nodes []types.Node, queries []*types.Query,
 	subTypeMap map[string]string, options ...*types.QueryOptions) (
 	*Translation, error) {
-	log.Printf("Translate function called with mappings: %v, nodes: %v, queries: %v, subTypeMap: %v", mappings, nodes, queries, subTypeMap)
 	funcDeps, err := solver.GetFuncDeps(mappings)
 	if err != nil {
-		log.Printf("Error getting func deps: %v", err)
 		return nil, err
 	}
 
 	tableProv, err := solver.GetProvColumn(mappings)
 	if err != nil {
-		log.Printf("Error getting prov column: %v", err)
 		return nil, err
 	}
 
 	mappings = solver.PruneMapping(mappings)
 	queries = solver.RewriteQuery(queries, subTypeMap)
-	// Log
-	fmt.Printf("1Mappings:\n")
-	for _, m := range mappings {
-		fmt.Printf("  %s\n", fmt.Sprintf("%+v", m))
-	}
-
-	// Log queries
-	fmt.Printf("1Queries:\n")
-	for _, q := range queries {
-		fmt.Printf("  %s\n", fmt.Sprintf("%+v", q))
-	}
 	matchTriple, err := solver.MatchTriple(mappings, queries)
 	if err != nil {
-		log.Printf("Error matching triple: %v", err)
 		return nil, err
 	}
-	// Log matchTriple
-	for q, isTriple := range matchTriple {
-		fmt.Printf("Query: %s, MatchTriple: %t\n", fmt.Sprintf("%+v", q), isTriple)
-	}
 	queryID := solver.GetQueryID(queries, matchTriple)
-	// Log queryID
-	for q, id := range queryID {
-		fmt.Printf("Query: %s, ID: %d\n", fmt.Sprintf("%+v", q), id)
-	}
-
-	// bindingMap maps each query to a list of possible mappings.
 
 	bindingMap, err := Bind(mappings, queries)
 	if err != nil {
-		log.Printf("Error binding mappings and queries: %v", err)
 		return nil, err
 	}
 
-	// Log binding map
-	for q, ms := range bindingMap {
-		fmt.Printf("Query: %s\n", fmt.Sprintf("%+v", q))
-		for _, m := range ms {
-			fmt.Printf("  Mapping: %s\n", fmt.Sprintf("%+v", m))
-		}
-	}
-
-	// Log queries
-	fmt.Printf("Queries:\n")
-	for _, q := range queries {
-		fmt.Printf("  %s\n", fmt.Sprintf("%+v", q))
-	}
-	
-bindingSets := getBindingSets(bindingMap)
-	log.Printf("bindingSets: %v", bindingSets)
 	if len(bindingSets) > 1 {
 		fmt.Printf("There are %d binding sets\n", len(bindingSets))
 	} else if len(bindingSets) == 0 {
-		log.Printf("No binding sets found, failing translation")
 		return nil, status.Errorf(codes.Internal, "Failed to get translation result")
 	}
 
 	nodeRefs := solver.GetNodeRef(queries)
 	graph := getGraph(bindingSets[0], queryID, nodeRefs)
-	log.Printf("graph: %v", graph)
 	constraints, constNode, err := GetConstraint(graph, funcDeps)
 	if err != nil {
-		log.Printf("Error getting constraints: %v", err)
 		return nil, err
 	}
-	log.Printf("constraints: %v, constNode: %v", constraints, constNode)
 
 	var (
 		queryProv    bool
@@ -974,9 +927,7 @@ bindingSets := getBindingSets(bindingMap)
 		queryOptions,
 	)
 	if err != nil {
-		log.Printf("Error getting SQL: %v", err)
 		return nil, err
 	}
-	log.Printf("Successfully translated to SQL: %s, params: %v", sql, params)
 	return &Translation{sql, nodes, bindingSets[0], constraints, prov, params}, nil
 }
