@@ -399,8 +399,8 @@ serviceGroups:
       - "/v1/bulk/info/variable-group"
     replicas: 1
     resources:
-      memoryRequest: "6G"
-      memoryLimit: "6G"
+      memoryRequest: "8G"
+      memoryLimit: "8G"
     cacheSVG: true
     # If the name of the recon service is changed here,
     # please also change the name in the deployment.yaml template.
@@ -410,8 +410,8 @@ serviceGroups:
       - "/v2/resolve"
     replicas: 1
     resources:
-      memoryRequest: "1G"
-      memoryLimit: "1G"
+      memoryRequest: "2G"
+      memoryLimit: "2G"
   observation:
     urlPaths:
       - "/bulk/stats"
