@@ -62,7 +62,7 @@ mixer:
   image:
     repository: gcr.io/datcom-ci/datacommons-mixer
     pullPolicy: IfNotPresent
-    tag: ""
+    tag: "latest"
 
   schemaConfigs:
     base.mcf: |

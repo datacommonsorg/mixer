@@ -894,7 +894,7 @@ func Translate(
 	if err != nil {
 		return nil, err
 	}
-
+	bindingSets := getBindingSets(bindingMap)
 	if len(bindingSets) > 1 {
 		fmt.Printf("There are %d binding sets\n", len(bindingSets))
 	} else if len(bindingSets) == 0 {

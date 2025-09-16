@@ -5,6 +5,7 @@ cluster_prefix: mixer
 mixer:
   hostProject: datcom-mixer
   serviceName: api.datacommons.org
+  cluster_prefix: mixer
   useSpannerGraph: true
   enableV3: true
   redis:
