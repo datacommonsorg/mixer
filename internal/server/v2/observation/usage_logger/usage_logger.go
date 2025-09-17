@@ -73,9 +73,6 @@ func standardizeToYear(dateStr string) (string, error) {
 func MakeStatVarAndPlaceLogs(observations []*pbv2.ObservationResponse) []*StatVarLog {
 	// statVarDCID -> log with a list of facets
 	statVarLogs := make(map[string]*StatVarLog)
-	// make a separate map for facets so we can accumulate them for each variable
-	// var -> facetId -> FacetLog
-	// facetLogMaps := make(map[string]map[string]*FacetLog)
 
 	for _, resp := range observations {
 		if resp == nil {
@@ -88,11 +85,9 @@ func MakeStatVarAndPlaceLogs(observations []*pbv2.ObservationResponse) []*StatVa
 				statVarLogs[variable] = &StatVarLog{
 					StatVarDCID: variable,
 				}
-				// facetLogMaps[variable] = make(map[string]*FacetLog)
 			}
 
 			// for each entity in the variableResponse
-			// tempFacetLogs := facetLogMaps[variable]
 			for _, entityObs := range varObs.ByEntity {
 				for _, facetObs := range entityObs.OrderedFacets {
 					facetID := facetObs.FacetId
