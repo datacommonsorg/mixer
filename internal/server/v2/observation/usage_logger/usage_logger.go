@@ -1,6 +1,7 @@
 package usagelogger
 
 import (
+	"fmt"
 	"log/slog"
 	"os"
 	"time"
@@ -11,7 +12,7 @@ import (
 
 type FacetLog struct {
     Facet    pb.Facet `json:"facet"`
-    Count    int      `json:"count"`
+    NumSeries    int      `json:"count"`
     Earliest string   `json:"earliest"`
     Latest   string   `json:"latest"`
 }
@@ -19,7 +20,7 @@ type FacetLog struct {
 type StatVarLog struct {
     StatVarDCID string      `json:"stat_var_dcid"`
     Facets      []*FacetLog `json:"facets"`
-    Places      []string    `json:"places"`
+    // Places      []string    `json:"places"`
 }
 
 type UsageLog struct {
@@ -41,51 +42,86 @@ func (u UsageLog) LogValue() slog.Value {
 	)
 }
 
+// standardizeToYear takes a date string and returns a string with only the year.
+func standardizeToYear(dateStr string) (string, error) {
+	var t time.Time
+	var err error
+
+	// Determine the format based on the string length.
+	switch len(dateStr) {
+	case 0: // many entries have no earliest or latest
+		return "", nil
+	case 4: // YYYY
+		t, err = time.Parse("2006", dateStr)
+	case 7: // YYYY-MM
+		t, err = time.Parse("2006-01", dateStr)
+	case 10: // YYYY-MM-DD
+		t, err = time.Parse("2006-01-02", dateStr)
+	default:
+		return "", fmt.Errorf("unsupported date format: %s", dateStr)
+	}
+
+	if err != nil {
+		return "", err
+	}
+
+	// Format the time object to just the year.
+	return t.Format("2006"), err
+}
+
+
 func MakeStatVarAndPlaceLogs(observations []*pbv2.ObservationResponse) []*StatVarLog {
-	// statVarDCID -> log with a list of facets and places
+	// statVarDCID -> log with a list of facets
 	statVarLogs := make(map[string]*StatVarLog)
+	// make a separate map for facets so we can accumulate them for each variable
 	// var -> facetId -> FacetLog
-	facetLogMaps := make(map[string]map[string]*FacetLog)
-	// var id -> list of place DCIDs
-	placeSet := make(map[string][]string)
+	// facetLogMaps := make(map[string]map[string]*FacetLog)
 
 	for _, resp := range observations {
 		if resp == nil {
 			continue
 		}
 		for variable, varObs := range resp.ByVariable {
+			facetLogMaps := make(map[string]*FacetLog)
 			// adding stat var to statVarLogs list of stat vars if it hasn't been already
 			if _, ok := statVarLogs[variable]; !ok {
 				statVarLogs[variable] = &StatVarLog{
 					StatVarDCID: variable,
 				}
-				facetLogMaps[variable] = make(map[string]*FacetLog)
-				placeSet[variable] = make([]string, 0)
+				// facetLogMaps[variable] = make(map[string]*FacetLog)
 			}
 
 			// for each entity in the variableResponse
 			// tempFacetLogs := facetLogMaps[variable]
-			for entity, entityObs := range varObs.ByEntity {
-				// add the place ID to the placeSet
-				placeSet[variable] = append(placeSet[variable], entity)
+			for _, entityObs := range varObs.ByEntity {
 				for _, facetObs := range entityObs.OrderedFacets {
 					facetID := facetObs.FacetId
 
-					if facetLog, ok := facetLogMaps[variable][facetID]; ok {
-						// incrementing count and earliest/latest to account if we've seen this facet before
-						facetLog.Count++
-						if facetObs.EarliestDate != "" && (facetLog.Earliest == "" || facetObs.EarliestDate < facetLog.Earliest) {
-							facetLog.Earliest = facetObs.EarliestDate
+					if facetLog, ok := facetLogMaps[facetID]; ok {
+						// incrementing the number of entities queried and earliest/latest to account if we've seen this facet before
+						facetLog.NumSeries++
+						// formatting year dates -- some stats only have year, so we only consider granularity to the year
+						earliest, err := standardizeToYear(facetObs.EarliestDate)
+						if(err != nil){
+							fmt.Printf("Error processing %s: %v\n", facetObs.EarliestDate, err)
 						}
-						if facetObs.LatestDate != "" && (facetLog.Latest == "" || facetObs.LatestDate > facetLog.Latest) {
-							facetLog.Latest = facetObs.LatestDate
+						latest, err := standardizeToYear(facetObs.LatestDate)
+						if(err != nil){
+							fmt.Printf("Error processing %s: %v\n", facetObs.LatestDate, err)
+						}
+
+						if earliest != "" && (facetLog.Earliest == "" || earliest < facetLog.Earliest) {
+							facetLog.Earliest = earliest
+						}
+						if latest != "" && (facetLog.Latest == "" || latest > facetLog.Latest) {
+							facetLog.Latest = latest
 						}
 					} else {
-						// setting facet info as if we've only seen one entity
+						// setting facet inf o as if we've only seen one entity
 						if facetData, ok := resp.Facets[facetID]; ok {
-							facetLogMaps[variable][facetID] = &FacetLog{
+							facetLogMaps[facetID] = &FacetLog{
 								Facet:    *facetData,
-								Count:    1,
+								NumSeries:    1,
 								Earliest: facetObs.EarliestDate,
 								Latest:   facetObs.LatestDate,
 							}
@@ -93,38 +129,46 @@ func MakeStatVarAndPlaceLogs(observations []*pbv2.ObservationResponse) []*StatVa
 					}
 				}
 			}
+
+		// setting facet info
+		facetLogs := []*FacetLog{}
+		for _, facetLog := range facetLogMaps {
+			facetLogs = append(facetLogs, facetLog)
+		}
+		statVarLogs[variable].Facets = facetLogs
 		}
 	}
 
 	resultLogs := []*StatVarLog{}
 	// matching facet logs and list of places to the correct statvar
-	for variable, svLog := range statVarLogs {
-		facetLogs := []*FacetLog{}
-		for _, facetLog := range facetLogMaps[variable] {
-			facetLogs = append(facetLogs, facetLog)
-		}
-		svLog.Facets = facetLogs
+	for _, svLog := range statVarLogs {
+		// facetLogs := []*FacetLog{}
+		// for _, facetLog := range facetLogMaps[variable] {
+		// 	facetLogs = append(facetLogs, facetLog)
+		// }
+		// svLog.Facets = facetLogs
 
-		svLog.Places = placeSet[variable]
 		resultLogs = append(resultLogs, svLog)
 	}
 
 	return resultLogs
 }
 
+/**
+Writes a structured log to stdout, which is ingested by GCP cloud logging automatically
+
+Includes the following:
+- timestamp at the time of logging
+- placeType -- the type submitted for a "within" query or the types of whatever places were queried directly
+	- TODO: make this a list to account for multiple places in one query or a place with multiple types
+- feature: which product (website, custom DC, client libraries, etc.) made this call to mixer
+- statVars: all variables queried
+	- statvarDCID
+	- list of facets that were used in the result for this stat var
+		- then these include the facet details (import name, measurement method, etc.) and
+		earliest/latest date used and the number of entities that used the particular facet
+*/
 func UsageLogger(feature string, placeType string, observations []*pbv2.ObservationResponse) {
-	/*
-	- feature
-	- placeType or null
-	- observation response (by var and entity) []*pbv2.ObservationResponse
-	- facet response (facet, )
-		- earliest and latest dates, which is in the facet information
-
-	to generate:
-	- timestamp
-
-	https://pkg.go.dev/log/slog@master#example-LogValuer-Group
-	*/
 
 	statVars := MakeStatVarAndPlaceLogs(observations)
 
