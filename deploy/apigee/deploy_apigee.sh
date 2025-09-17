@@ -38,6 +38,50 @@ ENV_BASE_DIR="terraform/$ENV"
 ENV_TMP_DIR="$ENV_BASE_DIR/.tmp"
 WORKING_DIR=$(pwd)
 
+function validate_terraform_backend() {
+  TERRAFORM_CONFIG_FILE="$ENV_BASE_DIR/terraform.tf"
+  TFVARS_FILE="$ENV_BASE_DIR/vars.tfvars"
+
+  if [ ! -f "$TERRAFORM_CONFIG_FILE" ]; then
+    echo "Terraform config file not found at $TERRAFORM_CONFIG_FILE"
+    exit 1
+  fi
+
+  if [ ! -f "$TFVARS_FILE" ]; then
+    echo "Terraform vars file not found at $TFVARS_FILE"
+    exit 1
+  fi
+
+  PROJECT_ID=$(grep -o 'project_id = "[^"]*"' "$TFVARS_FILE" | cut -d '"' -f 2)
+
+  if [ -z "$PROJECT_ID" ]; then
+    echo "Could not extract project_id from $TFVARS_FILE"
+    exit 1
+  fi
+
+  # Extract the bucket name from the terraform config
+  BUCKET_NAME=$(grep -o 'bucket = "[^"]*"' "$TERRAFORM_CONFIG_FILE" | cut -d '"' -f 2)
+
+  if [ -z "$BUCKET_NAME" ]; then
+    echo "Could not extract bucket name from $TERRAFORM_CONFIG_FILE"
+    exit 1
+  fi
+
+  # Check if the bucket name matches the recommended format
+  RECOMMENDED_BUCKET_NAME="${PROJECT_ID}-tf"
+  if [ "$BUCKET_NAME" != "$RECOMMENDED_BUCKET_NAME" ]; then
+    echo "Warning: The configured bucket name '$BUCKET_NAME' does not match the recommended format '$RECOMMENDED_BUCKET_NAME'."
+    while true; do
+      read -p "Do you want to proceed with this non-standard bucket name? (yes/no) " yn
+      case $yn in
+        [Yy]*) break;;
+        [Nn]*) echo "Aborting."; exit 1;;
+        *) echo "Please answer yes or no.";;
+      esac
+    done
+  fi
+}
+
 # Copies API proxy files to the expected structure in a temp directory for the
 # chosen environment. Follows the env config yaml to decide which files to copy.
 # Substitutes environment variables for REPLACE_WITH_ clauses in the copies.
@@ -108,16 +152,32 @@ function copy_file() {
 
 function terraform_plan_and_maybe_apply() {
   cd "$ENV_BASE_DIR"
+  PLAN_FILE=$(mktemp)
 
   terraform init
 
-  terraform_cmd "plan"
+  # The -detailed-exitcode flag will cause 'plan' to return:
+  # 0 = Succeeded with empty diff
+  # 1 = Error
+  # 2 = Succeeded with non-empty diff
+  set +e
+  terraform_cmd "plan -detailed-exitcode -out=$PLAN_FILE"
+  PLAN_EXIT_CODE=$?
+  set -e
+
+  if [ $PLAN_EXIT_CODE -eq 0 ]; then
+    cd "$WORKING_DIR"
+    exit 0
+  elif [ $PLAN_EXIT_CODE -eq 1 ]; then
+    echo "Terraform plan failed."
+    exit 1
+  fi
 
   while true; do
-    read -p "Proceed to terraform apply with auto-approve? " yn
+    read -p "Proceed to apply the plan? (y/N)" yn
     case $yn in
     [Yy]*)
-      terraform_cmd "apply --auto-approve"
+      terraform_cmd "apply $PLAN_FILE"
       cd "$WORKING_DIR"
       ./sync_env.sh "$ENV" --push
       break
@@ -135,10 +195,11 @@ function terraform_plan_and_maybe_apply() {
 function terraform_cmd() {
   verb=$1
   # shellcheck disable=SC2086
-  terraform $verb \
-    --var="access_token=$(gcloud auth print-access-token)" \
-    -var-file=vars.tfvars
+    terraform $verb \
+      --var="access_token=$(gcloud auth print-access-token)" \
+      -var-file=vars.tfvars
 }
 
+validate_terraform_backend
 prep_proxies
 terraform_plan_and_maybe_apply
