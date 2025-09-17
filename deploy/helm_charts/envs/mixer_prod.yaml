@@ -1,4 +1,4 @@
-project: datcom-mixer-prod
+project: datcom-mixer
 cluster_prefix: mixer
 
 # Helm config
@@ -6,6 +6,7 @@ mixer:
   hostProject: datcom-mixer
   serviceName: api.datacommons.org
   cluster_prefix: mixer
+  project: datcom-mixer
   useSpannerGraph: true
   enableV3: true
   redis:
