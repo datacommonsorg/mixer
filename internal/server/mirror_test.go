@@ -74,7 +74,7 @@ func TestMaybeMirrorV3_Percentage(t *testing.T) {
 				mu.Lock()
 				defer mu.Unlock()
 				mirroredReqs = append(mirroredReqs, req)
-				md, _ := metadata.FromOutgoingContext(ctx)
+				md, _ := metadata.FromIncomingContext(ctx)
 				v := md.Get(string(util.XSkipCache))
 				skipCache := len(v) > 0 && v[0] == "true"
 				skipCacheHeaderValues <- skipCache

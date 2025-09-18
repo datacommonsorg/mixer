@@ -106,7 +106,7 @@ func (s *Server) doMirror(
 	var v3Err error
 	var v3Ctx context.Context
 	if skipCache {
-		v3Ctx = metadata.NewOutgoingContext(context.Background(), metadata.Pairs(string(util.XSkipCache), "true"))
+		v3Ctx = metadata.NewIncomingContext(context.Background(), metadata.Pairs(string(util.XSkipCache), "true"))
 	} else {
 		v3Ctx = context.Background()
 	}
