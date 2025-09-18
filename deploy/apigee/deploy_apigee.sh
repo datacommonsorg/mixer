@@ -174,7 +174,7 @@ function terraform_plan_and_maybe_apply() {
   fi
 
   while true; do
-    read -p "Proceed to apply the plan? (y/N)" yn
+    read -p "Proceed to apply the plan? (y/n)" yn
     case $yn in
     [Yy]*)
       terraform_cmd "apply $PLAN_FILE"
