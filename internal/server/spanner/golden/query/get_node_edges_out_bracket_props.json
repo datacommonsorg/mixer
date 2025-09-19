@@ -6,9 +6,10 @@
       "Provenance": "dc/base/BaseGeos",
       "Value": "geoId/51",
       "Bytes": null,
-      "Name": "",
+      "Name": "Virginia",
       "Types": [
-        "Thing"
+        "AdministrativeArea1",
+        "State"
       ]
     },
     {
@@ -17,9 +18,9 @@
       "Provenance": "dc/base/BaseGeos",
       "Value": "geoId/51620",
       "Bytes": null,
-      "Name": "",
+      "Name": "Franklin",
       "Types": [
-        "Thing"
+        "County"
       ]
     },
     {

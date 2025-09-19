@@ -5,6 +5,14 @@
         "typeOf": {
           "nodes": [
             {
+              "name": "Adjusted GDP Growth Rate (Quarter-over-Quarter)",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Adjusted_GrowthRate_GrossDomesticProduct_EconomicActivity_QuarterOnChange",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Max Temperature (Difference Relative To Base Date): Relative To 1990, Highest Value, Median Across Models",
               "types": [
                 "StatisticalVariable"
@@ -39993,14 +40001,6 @@
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
-              "name": "Amount of Debt: JPY, Arab_Fund_for_Economic_Social_Development (As Fraction of Amount Debt Lender Arab Fundfor Economic Social Development)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Amount_Debt_JPY_LenderArabFundforEconomicSocialDevelopment_AsAFractionOf_Amount_Debt_LenderArabFundforEconomicSocialDevelopment",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
               "name": "total number of sql query used",
               "types": [
                 "StatisticalVariable"
@@ -40026,5 +40026,5 @@
       }
     }
   },
-  "next_token": "H4sIAAAAAAAA/+Ly5/IoLkjMy0st0i0oys9KTS4p1k9JLEnOz9UtLskvStXPzCsuScxLTi3WT0nWzU7XLUktLgGpSExKLAYLxqcXJRZkxBuaSjFzdKgDAAAA//8BAAD//8kn4TlRAAAA"
+  "next_token": "H4sIAAAAAAAA/+IK5wooLkjMy0st0i0oys9KTS4p1k9JLEnOz9UtLskvStXPzCsuScxLTi3WT0nWzU7XLUktLgGpSExKLAYLxqcXJRZkxBsZGJnGG1jGG5pKMXN0qAMAAAD//wEAAP//v1/YXlkAAAA="
 }
