@@ -25,6 +25,10 @@ var statements = struct {
 	getPropsBySubjectID string
 	// Fetch Properties for in arcs.
 	getPropsByObjectID string
+	// Prefix for fetching Edges.
+	edgePrefix string
+	// Prefix for fetching Edges with chaining.
+	chainedEdgePrefix string
 	// Fetch Edges for out arcs with a single hop.
 	getEdgesBySubjectID string
 	// Fetch Edges for out arcs with chaining.
@@ -90,45 +94,30 @@ var statements = struct {
 		ORDER BY
 			subject_id,
 			predicate`,
-	getEdgesBySubjectID: `		GRAPH DCGraph MATCH (m:Node
+	edgePrefix:        `		GRAPH DCGraph MATCH `,
+	chainedEdgePrefix: `		GRAPH DCGraph MATCH ANY `,
+	getEdgesBySubjectID: `(m:Node
 		WHERE
-			m.subject_id IN UNNEST(@ids))-[e:Edge%s]->(n:Node)%s
-		ORDER BY
-			subject_id,
-			predicate,
-			value,
-			provenance`,
-	getChainedEdgesBySubjectID: `		GRAPH DCGraph MATCH ANY (m:Node
+			m.subject_id IN UNNEST(@ids))-[e:Edge%s]->(n:Node)`,
+	getChainedEdgesBySubjectID: `(m:Node
 		WHERE
 			m.subject_id IN UNNEST(@ids))-[e:Edge
 		WHERE
-			e.predicate = @predicate]->{1,%d}(n:Node)%s
-		ORDER BY
-			subject_id,
-			value`,
-	getEdgesByObjectID: `		GRAPH DCGraph MATCH (m:Node
+			e.predicate = @predicate]->{1,%d}(n:Node)`,
+	getEdgesByObjectID: `(m:Node
 		WHERE
-			m.subject_id IN UNNEST(@ids))<-[e:Edge%s]-(n:Node)%s
-		ORDER BY
-			subject_id,
-			predicate,
-			value,
-			provenance`,
-	getChainedEdgesByObjectID: `		GRAPH DCGraph MATCH ANY (m:Node
+			m.subject_id IN UNNEST(@ids))<-[e:Edge%s]-(n:Node)`,
+	getChainedEdgesByObjectID: `(m:Node
 		WHERE
 			m.subject_id IN UNNEST(@ids))<-[e:Edge
 		WHERE
-			e.predicate = @predicate]-{1,%d}(n:Node)%s
-		ORDER BY
-			subject_id,
-			value`,
+			e.predicate = @predicate]-{1,%d}(n:Node)`,
 	filterPredicate: `
 		WHERE
 			e.predicate IN UNNEST(@predicates)`,
-	filterProperty: `
-		,(n)-[filter%[1]d:Edge
+	filterProperty: `<-[filter%[1]d:Edge
 		WHERE
-			filter%[1]d.predicate = @prop%[1]d%s]->`,
+			filter%[1]d.predicate = @prop%[1]d%s]-(n)`,
 	filterValue: `
 			AND filter%[1]d.object_id IN UNNEST(@val%[1]d)`,
 	returnEdges: `
@@ -139,7 +128,12 @@ var statements = struct {
 			n.value,
 			n.bytes,
 			n.name,
-			n.types`,
+			n.types
+		ORDER BY
+			subject_id,
+			predicate,
+			value,
+			provenance`,
 	returnChainedEdges: `
 		RETURN
 			m.subject_id,
@@ -148,7 +142,10 @@ var statements = struct {
 			n.value,
 			n.bytes,
 			n.name,
-			n.types`,
+			n.types
+		ORDER BY
+			subject_id,
+			value`,
 	returnFilterEdges: `
 		RETURN
 		  m.subject_id,
@@ -165,7 +162,12 @@ var statements = struct {
 			n.value,
 			n.bytes,
 			n.name,
-			n.types`,
+			n.types
+		ORDER BY
+			subject_id,
+			predicate,
+			value,
+			provenance`,
 	returnFilterChainedEdges: `
 		RETURN
 			m.subject_id,
@@ -180,7 +182,10 @@ var statements = struct {
 			n.value,
 			n.bytes,
 			n.name,
-			n.types`,
+			n.types
+		ORDER BY
+			subject_id,
+			value`,
 	applyOffset: `
 		OFFSET %d`,
 	applyLimit: fmt.Sprintf(`
