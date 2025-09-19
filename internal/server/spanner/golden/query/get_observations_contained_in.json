@@ -474,44 +474,6 @@
   {
     "VariableMeasured": "Count_Person",
     "ObservationAbout": "geoId/10001",
-    "FacetId": "1804635804",
-    "Observations": [
-      {
-        "Date": "2010",
-        "Value": "156918.0"
-      },
-      {
-        "Date": "2014",
-        "Value": "167477.0"
-      },
-      {
-        "Date": "2016",
-        "Value": "171474.0"
-      },
-      {
-        "Date": "2018",
-        "Value": "174822.0"
-      },
-      {
-        "Date": "2020",
-        "Value": "179124.0"
-      },
-      {
-        "Date": "2022",
-        "Value": "182400.0"
-      }
-    ],
-    "ImportName": "CDC_Social_Vulnerability_Index",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "",
-    "Unit": "",
-    "ScalingFactor": "",
-    "IsDcAggregate": false,
-    "ProvenanceURL": "https://www.atsdr.cdc.gov/placeandhealth/svi/data_documentation_download.html"
-  },
-  {
-    "VariableMeasured": "Count_Person",
-    "ObservationAbout": "geoId/10001",
     "FacetId": "1984949456",
     "Observations": [
       {
@@ -1454,44 +1416,6 @@
   {
     "VariableMeasured": "Count_Person",
     "ObservationAbout": "geoId/10003",
-    "FacetId": "1804635804",
-    "Observations": [
-      {
-        "Date": "2010",
-        "Value": "533514.0"
-      },
-      {
-        "Date": "2014",
-        "Value": "545846.0"
-      },
-      {
-        "Date": "2016",
-        "Value": "551997.0"
-      },
-      {
-        "Date": "2018",
-        "Value": "555133.0"
-      },
-      {
-        "Date": "2020",
-        "Value": "558306.0"
-      },
-      {
-        "Date": "2022",
-        "Value": "570567.0"
-      }
-    ],
-    "ImportName": "CDC_Social_Vulnerability_Index",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "",
-    "Unit": "",
-    "ScalingFactor": "",
-    "IsDcAggregate": false,
-    "ProvenanceURL": "https://www.atsdr.cdc.gov/placeandhealth/svi/data_documentation_download.html"
-  },
-  {
-    "VariableMeasured": "Count_Person",
-    "ObservationAbout": "geoId/10003",
     "FacetId": "1984949456",
     "Observations": [
       {
@@ -2426,44 +2350,6 @@
     "ScalingFactor": "",
     "IsDcAggregate": false,
     "ProvenanceURL": "https://www2.census.gov/programs-surveys/popest/tables"
-  },
-  {
-    "VariableMeasured": "Count_Person",
-    "ObservationAbout": "geoId/10005",
-    "FacetId": "1804635804",
-    "Observations": [
-      {
-        "Date": "2010",
-        "Value": "190846.0"
-      },
-      {
-        "Date": "2014",
-        "Value": "203737.0"
-      },
-      {
-        "Date": "2016",
-        "Value": "211224.0"
-      },
-      {
-        "Date": "2018",
-        "Value": "219540.0"
-      },
-      {
-        "Date": "2020",
-        "Value": "230249.0"
-      },
-      {
-        "Date": "2022",
-        "Value": "240668.0"
-      }
-    ],
-    "ImportName": "CDC_Social_Vulnerability_Index",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "",
-    "Unit": "",
-    "ScalingFactor": "",
-    "IsDcAggregate": false,
-    "ProvenanceURL": "https://www.atsdr.cdc.gov/placeandhealth/svi/data_documentation_download.html"
   },
   {
     "VariableMeasured": "Count_Person",
