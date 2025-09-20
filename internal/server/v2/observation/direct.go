@@ -17,7 +17,6 @@ package observation
 
 import (
 	"context"
-	"log"
 	"sort"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
@@ -25,7 +24,6 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
-	v1pv "github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -33,41 +31,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/protobuf/proto"
 )
-
-// logEntityTypes fetches entity types and logs them for usage analysis.
-// This is run in a separate goroutine to not block the main query.
-func LogEntityTypes(ctx context.Context, store *store.Store, entities []string) (map[string]string, error){
-	data, _, err := v1pv.Fetch(
-		ctx,
-		store,
-		entities,
-		[]string{"typeOf"},
-		0,
-		"",
-		"out",
-	)
-	if err != nil {
-		log.Printf("UsageLogger: failed to fetch entity types: %v", err)
-		return nil, err
-	}
-
-	entityPlaceTypes := map[string]string{}
-	for _, entity := range entities {
-		if types, ok := data[entity]["typeOf"]; ok {
-			for _, nodes := range types {
-				if len(nodes) > 0 {
-					entityPlaceTypes[entity] = nodes[0].Dcid
-					break // Found the first type, move to the next entity
-				}
-			}
-		}
-	}
-
-	return entityPlaceTypes, err
-
-	// This is where the UsageLogger would be called.
-	// log.Printf("UsageLogger: Fetched entity types: %v", entityPlaceTypes)
-}
 
 // FetchDirect fetches data from both Bigtable cache and SQLite database.
 func FetchDirect(

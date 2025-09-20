@@ -248,20 +248,21 @@ func (s *Server) V2Observation(
 	ctx context.Context, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
 	v2StartTime := time.Now()
+	
+	// handling metadata on the request
 	md, ok := metadata.FromIncomingContext(ctx)
 	surface := ""
 	if !ok {
-    	// This would mean no metadata was sent, which might be an error condition.
-    	slog.Info("Error: There was an issue with the metadata", "err", ok)
+    	slog.Info("Error: There was a problem accessing metadata", "err", ok)
     } else {
-		// setting the surface to use in logging later on
+		// setting the surface for the usage logger
 		// this is the origin of the query -- website, MCP server, public API (= blank surface), etc.
 		if values := md.Get("x-surface"); len(values) > 0 {
 			surface = values[0]
-		} else {
-     }
+		}
 	}
-	initialResp, err := v2observation.ObservationInternal(
+	
+	initialResp, queryType, err := v2observation.ObservationInternal(
 		ctx,
 		s.store,
 		s.cachedata.Load(),
@@ -298,8 +299,8 @@ func (s *Server) V2Observation(
 		},
 	)
 
-	// handle logging 
-	usagelogger.UsageLogger(surface, "do place type later", s.store, combinedResp)
+	// handle usage logging logging 
+	usagelogger.UsageLogger(surface, "" /* place type, still WIP */, s.store, combinedResp, queryType)
 
 	return v2Resp, nil
 }

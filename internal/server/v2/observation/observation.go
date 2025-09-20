@@ -39,7 +39,7 @@ func ObservationCore(
 	metadata *resource.Metadata,
 	httpClient *http.Client,
 	in *pbv2.ObservationRequest,
-) (*pbv2.ObservationResponse, error) {
+) (*pbv2.ObservationResponse, string, error) {
 	// (TODO): The routing logic here is very rough. This needs more work.
 	var queryDate, queryValue, queryVariable, queryEntity, queryFacet bool
 	for _, item := range in.GetSelect() {
@@ -57,7 +57,7 @@ func ObservationCore(
 		}
 	}
 	if !queryVariable || !queryEntity {
-		return nil, status.Error(
+		return nil, "", status.Error(
 			codes.InvalidArgument, "Must select 'variable' and 'entity'")
 	}
 
@@ -78,7 +78,7 @@ func ObservationCore(
 				in.GetFilter(),
 			)
 
-			return result, err
+			return result, "value", err
 		}
 
 		// Collection.
@@ -88,9 +88,10 @@ func ObservationCore(
 			expr := entity.GetExpression()
 			containedInPlace, err := v2.ParseContainedInPlace(expr)
 			if err != nil {
-				return nil, err
+				return nil, "", err
 			}
-			return FetchContainedIn(
+
+			res, err := FetchContainedIn(
 				ctx,
 				store,
 				metadata,
@@ -103,16 +104,19 @@ func ObservationCore(
 				in.GetDate(),
 				in.GetFilter(),
 			)
+			return res, "value", err
 		}
 
 		// Derived series.
 		if variable.GetFormula() != "" && len(entity.GetDcids()) > 0 {
-			return DerivedSeries(
+			res, err := DerivedSeries(
 				ctx,
 				store,
 				variable.GetFormula(),
 				entity.GetDcids(),
 			)
+
+			return res, "derived", err
 		}
 	}
 
@@ -120,22 +124,24 @@ func ObservationCore(
 	if !queryDate && !queryValue && queryFacet {
 		// Series
 		if len(variable.GetDcids()) > 0 && len(entity.GetDcids()) > 0 {
-			return v2facet.SeriesFacet(
+			res, err := v2facet.SeriesFacet(
 				ctx,
 				store,
 				cachedata,
 				variable.GetDcids(),
 				entity.GetDcids(),
 			)
+
+			return res, "facet", err 
 		}
 		// Collection
 		if len(variable.GetDcids()) > 0 && entity.GetExpression() != "" {
 			expr := entity.GetExpression()
 			containedInPlace, err := v2.ParseContainedInPlace(expr)
 			if err != nil {
-				return nil, err
+				return nil, "", err
 			}
-			return v2facet.ContainedInFacet(
+			res, err := v2facet.ContainedInFacet(
 				ctx,
 				store,
 				cachedata,
@@ -148,6 +154,8 @@ func ObservationCore(
 				containedInPlace.ChildPlaceType,
 				in.GetDate(),
 			)
+
+			return res, "facet", err
 		}
 	}
 
@@ -156,15 +164,18 @@ func ObservationCore(
 		if len(entity.GetDcids()) > 0 {
 			if len(variable.GetDcids()) > 0 {
 				// Have both entity.dcids and variable.dcids. Check existence cache.
-				return Existence(
+				res, err := Existence(
 					ctx, store, cachedata, variable.GetDcids(), entity.GetDcids())
+				return res, "existence", err
 			}
 			// TODO: Support appending entities from entity.expression
 			// Only have entity.dcids, fetch variables for each entity.
-			return Variable(ctx, store, entity.GetDcids())
+			res, err := Variable(ctx, store, entity.GetDcids())
+
+			return res, "existence", err
 		}
 	}
-	return &pbv2.ObservationResponse{}, nil
+	return &pbv2.ObservationResponse{}, "", nil
 }
 
 func ObservationInternal(
@@ -174,17 +185,21 @@ func ObservationInternal(
 	metadata *resource.Metadata,
 	httpClient *http.Client,
 	in *pbv2.ObservationRequest,
-) (*pbv2.ObservationResponse, error) {
+) (*pbv2.ObservationResponse, string, error) {
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	localRespChan := make(chan *pbv2.ObservationResponse, 1)
 	remoteRespChan := make(chan *pbv2.ObservationResponse, 1)
+	queryTypeChan := make(chan string, 1)
 
 	errGroup.Go(func() error {
-		localResp, err := ObservationCore(errCtx, store, cachedata, metadata, httpClient, in)
+		localResp, queryType, err := ObservationCore(errCtx, store, cachedata, metadata, httpClient, in)
 		if err != nil {
 			return err
 		}
 		localRespChan <- localResp
+		// we only need to get the query type from the initial observation because 
+		// it's based on the query parameters and will be the same in remote and local mixers.
+		queryTypeChan <- queryType
 		return nil
 	})
 
@@ -203,12 +218,13 @@ func ObservationInternal(
 	}
 
 	if err := errGroup.Wait(); err != nil {
-		return nil, err
+		return nil, "", err
 	}
 	close(localRespChan) //
 	close(remoteRespChan)
-	localResp, remoteResp := <-localRespChan, <-remoteRespChan
+	close(queryTypeChan)
+	localResp, remoteResp, queryType := <-localRespChan, <-remoteRespChan, <- queryTypeChan
 	// The order of argument matters, localResp is prefered and will be put first
 	// in the merged result.
-	return merger.MergeObservation(localResp, remoteResp), nil
+	return merger.MergeObservation(localResp, remoteResp), queryType, nil
 }
