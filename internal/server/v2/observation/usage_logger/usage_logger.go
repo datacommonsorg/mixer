@@ -37,6 +37,7 @@ type UsageLog struct {
 	// the DC product (website, MCP server, client libraries, etc.) that the query originates from
 	Feature   string        `json:"feature"`
 	// whether the query is requesting values for a statvar, facet information, or checking existence
+	// value, facet, or existence
 	QueryType string		`json:"query_type"`
 	// all stat vars queried in this query, with each including a list of facets used in that particular variable
 	StatVars  []*StatVarLog `json:"stat_vars"`

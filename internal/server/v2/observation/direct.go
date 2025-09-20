@@ -73,20 +73,19 @@ func FetchDirect(
 func FetchDirectBT(
 	ctx context.Context,
 	btGroup *bigtable.Group,
-	// store *store.Store,
 	variables []string,
 	entities []string,
 	queryDate string,
 	filter *pbv2.FacetFilter,
 ) (*pbv2.ObservationResponse, error) {
 	result := &pbv2.ObservationResponse{
-		ByVariable: make(map[string]*pbv2.VariableObservation),
-		Facets:     make(map[string]*pb.Facet),
+		ByVariable: map[string]*pbv2.VariableObservation{},
+		Facets:     map[string]*pb.Facet{},
 	}
 	// Init result
 	for _, variable := range variables {
 		result.ByVariable[variable] = &pbv2.VariableObservation{
-			ByEntity: make(map[string]*pbv2.EntityObservation),
+			ByEntity: map[string]*pbv2.EntityObservation{},
 		}
 		for _, entity := range entities {
 			result.ByVariable[variable].ByEntity[entity] = &pbv2.EntityObservation{}
@@ -95,7 +94,6 @@ func FetchDirectBT(
 	if btGroup == nil {
 		return result, nil
 	}
-
 	btData, err := stat.ReadStatsPb(ctx, btGroup, entities, variables)
 	if err != nil {
 		return result, err
