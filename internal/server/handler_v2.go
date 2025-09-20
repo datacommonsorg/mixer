@@ -299,7 +299,7 @@ func (s *Server) V2Observation(
 	)
 
 	// handle logging 
-	usagelogger.UsageLogger(surface, "do place type later", combinedResp)
+	usagelogger.UsageLogger(surface, "do place type later", s.store, combinedResp)
 
 	return v2Resp, nil
 }

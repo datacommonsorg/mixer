@@ -68,7 +68,7 @@ func ObservationCore(
 	if queryDate && queryValue {
 		// Series.
 		if len(variable.GetDcids()) > 0 && len(entity.GetDcids()) > 0 {
-			return FetchDirect(
+			result, err := FetchDirect(
 				ctx,
 				store,
 				cachedata.SQLProvenances(ctx),
@@ -77,6 +77,8 @@ func ObservationCore(
 				in.GetDate(),
 				in.GetFilter(),
 			)
+
+			return result, err
 		}
 
 		// Collection.

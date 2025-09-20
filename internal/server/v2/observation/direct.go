@@ -17,6 +17,7 @@ package observation
 
 import (
 	"context"
+	"log"
 	"sort"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
@@ -24,6 +25,7 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
+	v1pv "github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"github.com/datacommonsorg/mixer/internal/sqldb/sqlquery"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -31,6 +33,41 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/protobuf/proto"
 )
+
+// logEntityTypes fetches entity types and logs them for usage analysis.
+// This is run in a separate goroutine to not block the main query.
+func LogEntityTypes(ctx context.Context, store *store.Store, entities []string) (map[string]string, error){
+	data, _, err := v1pv.Fetch(
+		ctx,
+		store,
+		entities,
+		[]string{"typeOf"},
+		0,
+		"",
+		"out",
+	)
+	if err != nil {
+		log.Printf("UsageLogger: failed to fetch entity types: %v", err)
+		return nil, err
+	}
+
+	entityPlaceTypes := map[string]string{}
+	for _, entity := range entities {
+		if types, ok := data[entity]["typeOf"]; ok {
+			for _, nodes := range types {
+				if len(nodes) > 0 {
+					entityPlaceTypes[entity] = nodes[0].Dcid
+					break // Found the first type, move to the next entity
+				}
+			}
+		}
+	}
+
+	return entityPlaceTypes, err
+
+	// This is where the UsageLogger would be called.
+	// log.Printf("UsageLogger: Fetched entity types: %v", entityPlaceTypes)
+}
 
 // FetchDirect fetches data from both Bigtable cache and SQLite database.
 func FetchDirect(
@@ -73,19 +110,20 @@ func FetchDirect(
 func FetchDirectBT(
 	ctx context.Context,
 	btGroup *bigtable.Group,
+	// store *store.Store,
 	variables []string,
 	entities []string,
 	queryDate string,
 	filter *pbv2.FacetFilter,
 ) (*pbv2.ObservationResponse, error) {
 	result := &pbv2.ObservationResponse{
-		ByVariable: map[string]*pbv2.VariableObservation{},
-		Facets:     map[string]*pb.Facet{},
+		ByVariable: make(map[string]*pbv2.VariableObservation),
+		Facets:     make(map[string]*pb.Facet),
 	}
 	// Init result
 	for _, variable := range variables {
 		result.ByVariable[variable] = &pbv2.VariableObservation{
-			ByEntity: map[string]*pbv2.EntityObservation{},
+			ByEntity: make(map[string]*pbv2.EntityObservation),
 		}
 		for _, entity := range entities {
 			result.ByVariable[variable].ByEntity[entity] = &pbv2.EntityObservation{}
@@ -94,6 +132,7 @@ func FetchDirectBT(
 	if btGroup == nil {
 		return result, nil
 	}
+
 	btData, err := stat.ReadStatsPb(ctx, btGroup, entities, variables)
 	if err != nil {
 		return result, err
