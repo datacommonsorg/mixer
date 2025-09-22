@@ -2,17 +2,6 @@
 mixer:
   hostProject: datcom-mixer
   serviceName: api.datacommons.org
-  useSpannerGraph: true
-  enableV3: true
-  redis:
-    enabled: true
-    configFile: |
-      instances:
-        - region: "us-central1"
-          host: "10.139.83.75"
-          port: "6379"
-  enableOtlp: true
-  v3MirrorFraction: 0.001
 
 ingress:
   enabled: true
@@ -26,13 +15,13 @@ serviceGroups:
   svg:
     replicas: 10
   recon:
-    replicas: 120
+    replicas: 60
   node:
-    replicas: 80
-  observation:
-    replicas: 80
-  default:
     replicas: 40
+  observation:
+    replicas: 40
+  default:
+    replicas: 20
 
 # GCP level config
 ip: 35.244.133.155
