@@ -161,7 +161,9 @@ function terraform_plan_and_maybe_apply() {
   # 1 = Error
   # 2 = Succeeded with non-empty diff
   set +e
-  terraform_cmd "plan -detailed-exitcode -out=$PLAN_FILE"
+  terraform plan -detailed-exitcode -out="$PLAN_FILE" \
+      --var="access_token=$(gcloud auth print-access-token)" \
+      -var-file=vars.tfvars
   PLAN_EXIT_CODE=$?
   set -e
 
@@ -170,14 +172,17 @@ function terraform_plan_and_maybe_apply() {
     exit 0
   elif [ $PLAN_EXIT_CODE -eq 1 ]; then
     echo "Terraform plan failed."
+    cd "$WORKING_DIR"
     exit 1
   fi
 
   while true; do
-    read -p "Proceed to apply the plan? (y/n)" yn
+    read -p "Proceed to apply the plan? (y/n) " yn
     case $yn in
     [Yy]*)
-      terraform_cmd "apply $PLAN_FILE"
+      # When applying a plan, vars and var-files are not allowed.
+      # The access token is only needed for the plan phase.
+      terraform apply "$PLAN_FILE"
       cd "$WORKING_DIR"
       ./sync_env.sh "$ENV" --push
       break
@@ -189,15 +194,6 @@ function terraform_plan_and_maybe_apply() {
     *) echo "Please answer yes or no." ;;
     esac
   done
-}
-
-# Runs the given Terraform verb with an access token and vars file.
-function terraform_cmd() {
-  verb=$1
-  # shellcheck disable=SC2086
-    terraform $verb \
-      --var="access_token=$(gcloud auth print-access-token)" \
-      -var-file=vars.tfvars
 }
 
 validate_terraform_backend
