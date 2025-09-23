@@ -90,7 +90,7 @@ function validate_terraform_backend() {
     while true; do
       read -p "Do you want to proceed with this non-standard bucket name? (yes/no) " yn
       case $yn in
-        [Yy]*) break ;;
+        [Yy]*) break;;
         [Nn]*) echo "Aborting."; exit 1;;
         *) echo "Please answer yes or no.";;
       esac
