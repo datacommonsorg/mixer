@@ -15,6 +15,22 @@
 
 set -e
 
+TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+TMP_DIR=$(mktemp -d)
+LOG_FILE="$TMP_DIR/deploy_apigee_$TIMESTAMP.log"
+echo "Script output will be logged to: $LOG_FILE"
+
+function finish {
+  echo
+  echo "All outputs were written to a temporary directory:"
+  echo $TMP_DIR
+}
+trap finish EXIT
+
+# Redirect stdout and stderr to the log file
+# The tee command is used to also print to the console.
+exec > >(tee -a "${LOG_FILE}") 2>&1
+
 ENV=$1
 
 if [[ $ENV == "" ]]; then
@@ -74,7 +90,7 @@ function validate_terraform_backend() {
     while true; do
       read -p "Do you want to proceed with this non-standard bucket name? (yes/no) " yn
       case $yn in
-        [Yy]*) break;;
+        [Yy]*) break ;;
         [Nn]*) echo "Aborting."; exit 1;;
         *) echo "Please answer yes or no.";;
       esac
@@ -152,7 +168,7 @@ function copy_file() {
 
 function terraform_plan_and_maybe_apply() {
   cd "$ENV_BASE_DIR"
-  PLAN_FILE=$(mktemp)
+  PLAN_FILE="$TMP_DIR/tfplan_$TIMESTAMP"
 
   terraform init
 
@@ -176,6 +192,7 @@ function terraform_plan_and_maybe_apply() {
     exit 1
   fi
 
+  echo
   while true; do
     read -p "Proceed to apply the plan? (y/n) " yn
     case $yn in
