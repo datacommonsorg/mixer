@@ -35,7 +35,7 @@ import (
 )
 
 const (
-	// Indicates that all properties should be returned.
+	// Used for Arc.SingleProp in Node requests and indicates that all properties should be returned.
 	WILDCARD = "*"
 	// Used for Arc.Decorator in Node requests and indicates that recursive property paths should be returned.
 	CHAIN = "+"
