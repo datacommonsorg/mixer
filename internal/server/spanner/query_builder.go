@@ -78,6 +78,7 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, offset int32) *spanner.Sta
 		}
 	}
 
+	// Order subqueries by selectivity (i.e. expected cardinality of edges) for query performance.
 	var subquery string
 	switch arc.Out {
 	case true:
@@ -88,6 +89,7 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, offset int32) *spanner.Sta
 		} else {
 			subquery = fmt.Sprintf(statements.getEdgesBySubjectID, filterPredicate)
 		}
+		// Add filters last for out-edges.
 		subqueries = append([]string{subquery}, subqueries...)
 	case false:
 		if arc.Decorator == CHAIN {
