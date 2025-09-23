@@ -4,6 +4,17 @@
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
       "Provenance": "dc/base/HumanReadableStatVars",
+      "Value": "Adjusted_GrowthRate_GrossDomesticProduct_EconomicActivity_QuarterOnChange",
+      "Bytes": null,
+      "Name": "Adjusted GDP Growth Rate (Quarter-over-Quarter)",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "StatisticalVariable",
+      "Predicate": "typeOf",
+      "Provenance": "dc/base/HumanReadableStatVars",
       "Value": "AggregateMax_MedianAcrossModels_DifferenceRelativeToBaseDate1990_Max_Temperature",
       "Bytes": null,
       "Name": "Max Temperature (Difference Relative To Base Date): Relative To 1990, Highest Value, Median Across Models",
@@ -205,17 +216,6 @@
       "Value": "AggregateMax_Percentile90AcrossModels_DifferenceRelativeToBaseDate1990_Max_Temperature",
       "Bytes": null,
       "Name": "Max Temperature (Difference Relative To Base Date): Relative To 1990, Highest Value, Percentile 90 Across Models",
-      "Types": [
-        "StatisticalVariable"
-      ]
-    },
-    {
-      "SubjectID": "StatisticalVariable",
-      "Predicate": "typeOf",
-      "Provenance": "dc/base/HumanReadableStatVars",
-      "Value": "AggregateMax_Percentile90AcrossModels_DifferenceRelativeToBaseDate2006To2020_Max_Temperature_RCP45",
-      "Bytes": null,
-      "Name": "Max Temperature (Difference Relative To Base Date): Relative To Between 2006 And 2020, Based on RCP 4.5, Highest Value, Percentile 90 Across Models",
       "Types": [
         "StatisticalVariable"
       ]
