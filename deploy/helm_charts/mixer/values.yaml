@@ -122,8 +122,8 @@ serviceGroups:
       - "/v2/resolve"
     replicas: 1
     resources:
-      memoryRequest: "4G"
-      memoryLimit: "4G"
+      memoryRequest: "2G"
+      memoryLimit: "2G"
   observation:
     urlPaths:
       - "/bulk/stats"
@@ -133,8 +133,8 @@ serviceGroups:
       - "/v2/observation"
     replicas: 1
     resources:
-      memoryRequest: "8G"
-      memoryLimit: "8G"
+      memoryRequest: "4G"
+      memoryLimit: "4G"
   node:
     urlPaths:
       - "/node/*"
@@ -147,12 +147,12 @@ serviceGroups:
       - "/v2/node"
     replicas: 1
     resources:
-      memoryRequest: "4G"
-      memoryLimit: "4G"
+      memoryRequest: "3G"
+      memoryLimit: "3G"
   default:
     urlPaths:
       - "/*"
     replicas: 1
     resources:
-      memoryRequest: "4G"
-      memoryLimit: "4G"
+      memoryRequest: "2G"
+      memoryLimit: "2G"
