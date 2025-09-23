@@ -4,6 +4,17 @@
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
       "Provenance": "dc/base/HumanReadableStatVars",
+      "Value": "Amount_Debt_JPY_LenderArabFundforEconomicSocialDevelopment_AsAFractionOf_Amount_Debt_LenderArabFundforEconomicSocialDevelopment",
+      "Bytes": null,
+      "Name": "Amount of Debt: JPY, Arab_Fund_for_Economic_Social_Development (As Fraction of Amount Debt Lender Arab Fundfor Economic Social Development)",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "StatisticalVariable",
+      "Predicate": "typeOf",
+      "Provenance": "dc/base/HumanReadableStatVars",
       "Value": "Amount_Debt_JPY_LenderArabFundforTechAssisttoAfricanCountries_AsAFractionOf_Amount_Debt_LenderArabFundforTechAssisttoAfricanCountries",
       "Bytes": null,
       "Name": "Amount of Debt: JPY, Arab_Fund_for_Tech_Assist_to_African_Countries (As Fraction of Amount Debt Lender Arab Fundfor Tech Assistto African Countries)",
@@ -205,17 +216,6 @@
       "Value": "Amount_Debt_JPY_LenderCountryARE_AsAFractionOf_Amount_Debt_LenderCountryARE",
       "Bytes": null,
       "Name": "Amount of Debt: JPY, Country/ARE (As Fraction of Amount Debt Lender Country ARE)",
-      "Types": [
-        "StatisticalVariable"
-      ]
-    },
-    {
-      "SubjectID": "StatisticalVariable",
-      "Predicate": "typeOf",
-      "Provenance": "dc/base/HumanReadableStatVars",
-      "Value": "Amount_Debt_JPY_LenderCountryARG_AsAFractionOf_Amount_Debt_LenderCountryARG",
-      "Bytes": null,
-      "Name": "Amount of Debt: JPY, Country/ARG (As Fraction of Amount Debt Lender Country ARG)",
       "Types": [
         "StatisticalVariable"
       ]
