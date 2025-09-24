@@ -15,6 +15,22 @@
 
 set -e
 
+TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+TMP_DIR=$(mktemp -d)
+LOG_FILE="$TMP_DIR/deploy_apigee_$TIMESTAMP.log"
+echo "Script output will be logged to: $LOG_FILE"
+
+function finish {
+  echo
+  echo "All outputs were written to a temporary directory:"
+  echo $TMP_DIR
+}
+trap finish EXIT
+
+# Redirect stdout and stderr to the log file
+# The tee command is used to also print to the console.
+exec > >(tee -a "${LOG_FILE}") 2>&1
+
 ENV=$1
 
 if [[ $ENV == "" ]]; then
@@ -37,6 +53,50 @@ source "$ENV_VARS"
 ENV_BASE_DIR="terraform/$ENV"
 ENV_TMP_DIR="$ENV_BASE_DIR/.tmp"
 WORKING_DIR=$(pwd)
+
+function validate_terraform_backend() {
+  TERRAFORM_CONFIG_FILE="$ENV_BASE_DIR/terraform.tf"
+  TFVARS_FILE="$ENV_BASE_DIR/vars.tfvars"
+
+  if [ ! -f "$TERRAFORM_CONFIG_FILE" ]; then
+    echo "Terraform config file not found at $TERRAFORM_CONFIG_FILE"
+    exit 1
+  fi
+
+  if [ ! -f "$TFVARS_FILE" ]; then
+    echo "Terraform vars file not found at $TFVARS_FILE"
+    exit 1
+  fi
+
+  PROJECT_ID=$(grep -o 'project_id = "[^"]*"' "$TFVARS_FILE" | cut -d '"' -f 2)
+
+  if [ -z "$PROJECT_ID" ]; then
+    echo "Could not extract project_id from $TFVARS_FILE"
+    exit 1
+  fi
+
+  # Extract the bucket name from the terraform config
+  BUCKET_NAME=$(grep -o 'bucket = "[^"]*"' "$TERRAFORM_CONFIG_FILE" | cut -d '"' -f 2)
+
+  if [ -z "$BUCKET_NAME" ]; then
+    echo "Could not extract bucket name from $TERRAFORM_CONFIG_FILE"
+    exit 1
+  fi
+
+  # Check if the bucket name matches the recommended format
+  RECOMMENDED_BUCKET_NAME="${PROJECT_ID}-tf"
+  if [ "$BUCKET_NAME" != "$RECOMMENDED_BUCKET_NAME" ]; then
+    echo "Warning: The configured bucket name '$BUCKET_NAME' does not match the recommended format '$RECOMMENDED_BUCKET_NAME'."
+    while true; do
+      read -p "Do you want to proceed with this non-standard bucket name? (yes/no) " yn
+      case $yn in
+        [Yy]*) break;;
+        [Nn]*) echo "Aborting."; exit 1;;
+        *) echo "Please answer yes or no.";;
+      esac
+    done
+  fi
+}
 
 # Copies API proxy files to the expected structure in a temp directory for the
 # chosen environment. Follows the env config yaml to decide which files to copy.
@@ -108,16 +168,38 @@ function copy_file() {
 
 function terraform_plan_and_maybe_apply() {
   cd "$ENV_BASE_DIR"
+  PLAN_FILE="$TMP_DIR/tfplan_$TIMESTAMP"
 
   terraform init
 
-  terraform_cmd "plan"
+  # The -detailed-exitcode flag will cause 'plan' to return:
+  # 0 = Succeeded with empty diff
+  # 1 = Error
+  # 2 = Succeeded with non-empty diff
+  set +e
+  terraform plan -detailed-exitcode -out="$PLAN_FILE" \
+      --var="access_token=$(gcloud auth print-access-token)" \
+      -var-file=vars.tfvars
+  PLAN_EXIT_CODE=$?
+  set -e
 
+  if [ $PLAN_EXIT_CODE -eq 0 ]; then
+    cd "$WORKING_DIR"
+    exit 0
+  elif [ $PLAN_EXIT_CODE -eq 1 ]; then
+    echo "Terraform plan failed."
+    cd "$WORKING_DIR"
+    exit 1
+  fi
+
+  echo
   while true; do
-    read -p "Proceed to terraform apply with auto-approve? " yn
+    read -p "Proceed to apply the plan? (y/n) " yn
     case $yn in
     [Yy]*)
-      terraform_cmd "apply --auto-approve"
+      # When applying a plan, vars and var-files are not allowed.
+      # The access token is only needed for the plan phase.
+      terraform apply "$PLAN_FILE"
       cd "$WORKING_DIR"
       ./sync_env.sh "$ENV" --push
       break
@@ -131,14 +213,6 @@ function terraform_plan_and_maybe_apply() {
   done
 }
 
-# Runs the given Terraform verb with an access token and vars file.
-function terraform_cmd() {
-  verb=$1
-  # shellcheck disable=SC2086
-  terraform $verb \
-    --var="access_token=$(gcloud auth print-access-token)" \
-    -var-file=vars.tfvars
-}
-
+validate_terraform_backend
 prep_proxies
 terraform_plan_and_maybe_apply
