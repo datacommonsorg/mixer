@@ -8,8 +8,14 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
 )
+
+type Feature struct {
+	fromRemote bool `json:"from_remote"`
+	surface string `json:"surface"`
+}
 
 // facet-specific information, separated into the facet info (import name, measurement method, etc.)
 // and the query-specific number of series that came from this facet in the query result and the
@@ -35,7 +41,7 @@ type UsageLog struct {
 	// may expand this to be a list of the number of series queried for each placeType
 	PlaceType string        `json:"place_type"`
 	// the DC product (website, MCP server, client libraries, etc.) that the query originates from
-	Feature   string        `json:"feature"`
+	Feature   Feature        `json:"feature"`
 	// whether the query is requesting values for a statvar, facet information, or checking existence
 	// value, facet, or existence
 	QueryType string		`json:"query_type"`
@@ -46,7 +52,7 @@ type UsageLog struct {
 // Handles formatting the structured log to correctly break down the structs as JSON objects in Cloud Logger
 func (u UsageLog) LogValue() slog.Value {
 	return slog.GroupValue(
-		slog.String("feature", u.Feature),
+		slog.Any("feature", u.Feature),
 		slog.Time("timestamp", u.Timestamp),
 		slog.String("place_type", u.PlaceType),
 		slog.String("query_type", u.QueryType),
@@ -161,21 +167,25 @@ Includes the following:
 - timestamp at the time of logging
 - (WIP) placeType -- the type submitted for a "within" query or the types of whatever places were queried directly
 	- TODO: make this a list to account for multiple places in one query or a place with multiple types
-- feature: which product (website, custom DC, client libraries, etc.) made this call to mixer
+- feature: which product (website, client libraries, etc.) made this call to mixer. It includes a fromRemote
+	boolean that indicates if the surface was acessed via remote mixer domain, aka from a custom DC instance.
 - statVars: all variables queried
 	- statvarDCID
 	- list of facets that were used in the result for this stat var
 		- then these include the facet details (import name, measurement method, etc.) and
 		earliest/latest date used and the number of entities that used the particular facet
 */
-func UsageLogger(feature string, placeType string, store *store.Store, observations []*pbv2.ObservationResponse, queryType string) {
+func UsageLogger(feature string, placeType string, store *store.Store, serverMetadata *resource.Metadata, observations []*pbv2.ObservationResponse, queryType string) {
 
 	statVars := MakeStatVarLogs(store, observations)
 
 	logEntry := UsageLog{
 		Timestamp: time.Now(),
 		PlaceType: placeType,
-		Feature:   feature,
+		Feature: Feature{
+			surface:    feature,
+			fromRemote: serverMetadata.RemoteMixerDomain != "",
+		},
 		QueryType: queryType,
 		StatVars:  statVars,
 	}

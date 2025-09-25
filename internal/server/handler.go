@@ -17,6 +17,7 @@ package server
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"os"
 	"sort"
 
@@ -53,6 +54,7 @@ func (s *Server) Query(ctx context.Context, in *pb.QueryRequest) (
 func (s *Server) GetStatValue(ctx context.Context, in *pb.GetStatValueRequest) (
 	*pb.GetStatValueResponse, error,
 ) {
+	fmt.Printf("REaching getStatValue!")
 	return statpoint.GetStatValue(ctx, in, s.store)
 }
 

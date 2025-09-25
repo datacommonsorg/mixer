@@ -58,7 +58,7 @@ func Calculate(
 		Filter:   inputReq.GetFilter(),
 		Select:   inputReq.GetSelect(),
 	}
-	inputObs, err := ObservationInternal(ctx, store, cachedata, metadata, httpClient, newReq)
+	inputObs, _, err := ObservationInternal(ctx, store, cachedata, metadata, httpClient, newReq)
 	if err != nil {
 		return nil, err
 	}
