@@ -202,6 +202,18 @@ func TestV3Observation(t *testing.T) {
 				},
 				goldenFile: "observations_calculation.json",
 			},
+			{
+				req: &pbv2.ObservationRequest{
+					Variable: &pbv2.DcidOrExpression{
+						Dcids: []string{"test_var_2"},
+					},
+					Entity: &pbv2.DcidOrExpression{
+						Dcids: []string{"wikidataId/Q613"},
+					},
+					Select: []string{"entity", "variable", "date", "value"},
+				},
+				goldenFile: "observations_calculation_custom_formula.json",
+			},
 			// Test for time series with mixture of string and float values.
 			// The str_val are for 2019 and 2020 for CensusACS5YearSurvey_SubjectTables_S0101.
 			{

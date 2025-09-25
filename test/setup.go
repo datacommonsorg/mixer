@@ -72,7 +72,7 @@ var (
 	// Currently this is only enabled on workstations of developers working on the spanner graph POC.
 	// This ensures that the spanner tests don't impact existing tests while in the POC phase.
 	// TODO: Remove this variable after POC.
-	EnableSpannerGraph = os.Getenv("ENABLE_SPANNER_GRAPH") == "true"
+	EnableSpannerGraph = true // os.Getenv("ENABLE_SPANNER_GRAPH") == "true"
 )
 
 // This test runs agains staging staging bt and bq dataset.
@@ -210,10 +210,16 @@ func setupInternal(
 	}
 
 	dataSources := datasources.NewDataSources(sources)
+
 	// Processors
 	processors := []*dispatcher.Processor{}
 	if enableV3 {
-		var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, c.SVFormula(ctx))
+		// Mixer in-memory cache.
+		dataSourceCache, err := cache.NewDataSourceCache(ctx, dataSources, cacheOptions)
+		if err != nil {
+			return nil, err
+		}
+		var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, dataSourceCache.SVFormula(ctx))
 		processors = append(processors, &calculationProcessor)
 	}
 
