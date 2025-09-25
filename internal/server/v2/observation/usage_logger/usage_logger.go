@@ -12,15 +12,15 @@ import (
 )
 
 type Feature struct {
-	fromRemote bool `json:"from_remote"`
-	surface string `json:"surface"`
+	FromRemote bool `json:"from_remote"`
+	Surface string `json:"surface"`
 }
 
 // facet-specific information, separated into the facet info (import name, measurement method, etc.)
 // and the query-specific number of series that came from this facet in the query result and the
 // earliest and latest dates that the facet was used for across these series
 type FacetLog struct {
-	Facet     pb.Facet `json:"facet"`
+	Facet     *pb.Facet `json:"facet"`
 	NumSeries int      `json:"count"`
 	Earliest  string   `json:"earliest"`
 	Latest    string   `json:"latest"`
@@ -131,7 +131,7 @@ func MakeStatVarLogs(store *store.Store, observations []*pbv2.ObservationRespons
 					} else {
 						if facetData, ok := resp.Facets[facetID]; ok {
 							facetLogMaps[facetID] = &FacetLog{
-								Facet:     *facetData,
+								Facet:     facetData,
 								NumSeries: 1,
 								Earliest:  facetObs.EarliestDate,
 								Latest:    facetObs.LatestDate,
@@ -182,8 +182,8 @@ func UsageLogger(feature string, fromRemote string, placeType string, store *sto
 		Timestamp: time.Now(),
 		PlaceType: placeType,
 		Feature: Feature{
-			surface:    feature,
-			fromRemote: fromRemote != "",
+			Surface:    feature,
+			FromRemote: fromRemote != "",
 		},
 		QueryType: queryType,
 		StatVars:  statVars,
