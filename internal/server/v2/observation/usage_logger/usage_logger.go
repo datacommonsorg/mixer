@@ -8,7 +8,6 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
@@ -175,7 +174,7 @@ Includes the following:
 		- then these include the facet details (import name, measurement method, etc.) and
 		earliest/latest date used and the number of entities that used the particular facet
 */
-func UsageLogger(feature string, placeType string, store *store.Store, serverMetadata *resource.Metadata, observations []*pbv2.ObservationResponse, queryType string) {
+func UsageLogger(feature string, fromRemote string, placeType string, store *store.Store, observations []*pbv2.ObservationResponse, queryType string) {
 
 	statVars := MakeStatVarLogs(store, observations)
 
@@ -184,7 +183,7 @@ func UsageLogger(feature string, placeType string, store *store.Store, serverMet
 		PlaceType: placeType,
 		Feature: Feature{
 			surface:    feature,
-			fromRemote: serverMetadata.RemoteMixerDomain != "",
+			fromRemote: fromRemote != "",
 		},
 		QueryType: queryType,
 		StatVars:  statVars,

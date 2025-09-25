@@ -185,6 +185,7 @@ func ObservationInternal(
 	metadata *resource.Metadata,
 	httpClient *http.Client,
 	in *pbv2.ObservationRequest,
+	surface string,
 ) (*pbv2.ObservationResponse, string, error) {
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	localRespChan := make(chan *pbv2.ObservationResponse, 1)
@@ -206,7 +207,14 @@ func ObservationInternal(
 	if metadata.RemoteMixerDomain != "" {
 		errGroup.Go(func() error {
 			remoteResp := &pbv2.ObservationResponse{}
-			err := util.FetchRemote(metadata, httpClient, "/v2/observation", in, remoteResp)
+			err := util.FetchRemote(
+				metadata,
+				httpClient,
+				"/v2/observation",
+				in,
+				remoteResp,
+				surface,
+			)
 			if err != nil {
 				return err
 			}

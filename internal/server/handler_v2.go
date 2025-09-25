@@ -252,6 +252,7 @@ func (s *Server) V2Observation(
 	// handling metadata
 	md, ok := metadata.FromIncomingContext(ctx)
 	surface := ""
+	fromRemote := ""
 	if !ok {
     	slog.Info("Error: There was a problem accessing the request's metadata", "err", ok)
     } else {
@@ -259,6 +260,9 @@ func (s *Server) V2Observation(
 		// this is the origin of the query -- website, MCP server, public API (= blank surface), etc.
 		if values := md.Get("x-surface"); len(values) > 0 {
 			surface = values[0]
+		}
+		if values := md.Get("x-remote"); len(values) > 0 {
+			fromRemote = values[0]
 		}
 	}
 
@@ -268,7 +272,8 @@ func (s *Server) V2Observation(
 		s.cachedata.Load(),
 		s.metadata,
 		s.httpClient,
-		in)
+		in,
+		surface)
 	if err != nil {
 		return nil, err
 	}
@@ -300,7 +305,7 @@ func (s *Server) V2Observation(
 	)
 
 	// handle usage logging logging 
-	usagelogger.UsageLogger(surface, "" /* place type, still WIP */, s.store, s.metadata, combinedResp, queryType)
+	usagelogger.UsageLogger(surface, fromRemote, "" /* place type, still WIP */, s.store, combinedResp, queryType)
 
 	return v2Resp, nil
 }

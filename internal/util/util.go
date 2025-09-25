@@ -685,7 +685,9 @@ func FetchRemote(
 	apiPath string,
 	in proto.Message,
 	out proto.Message,
+	surface ...string,
 ) error {
+
 	url := metadata.RemoteMixerDomain + apiPath
 	jsonValue, err := protojson.Marshal(in)
 	if err != nil {
@@ -697,6 +699,13 @@ func FetchRemote(
 	}
 	request.Header.Set("Content-Type", "application/json")
 	request.Header.Set("X-API-Key", metadata.RemoteMixerAPIKey)
+	// this indicates that the mixer call is made from a custom DC to a remote mixer
+	// it and surface are used in the mixer usage logs. 
+	request.Header.Set("X-Remote", "true")
+	// passing in surface header from custom mixer if it reaches that first
+	if len(surface) > 0 && surface[0] != "" {
+		request.Header.Set("X-Surface", surface[0])
+	}
 	DCLog(DCLogRemoteMixerCall, fmt.Sprintf("url=%s", url))
 	response, err := httpClient.Do(request)
 	if err != nil {
