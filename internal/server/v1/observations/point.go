@@ -16,7 +16,6 @@ package observations
 
 import (
 	"context"
-	"log/slog"
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -24,7 +23,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 )
 
@@ -34,20 +32,6 @@ func Point(
 	in *pbv1.ObservationsPointRequest,
 	store *store.Store,
 ) (*pb.PointStat, error) {
-	// reading metadata to test logs
-	md, ok := metadata.FromIncomingContext(ctx)
-	surface := ""
-	if !ok {
-    	slog.Info("Error: There was a problem accessing the request's metadata", "err", ok)
-    } else {
-		// setting the surface for the usage logger
-		// this is the origin of the query -- website, MCP server, public API (= blank surface), etc.
-		if values := md.Get("x-surface"); len(values) > 0 {
-			surface = values[0]
-		}
-	}
-	slog.Info("metadata: ", md)
-	slog.Info("surface: ", surface)
 	entityVariable := in.GetEntityVariable()
 	parts := strings.Split(entityVariable, "/")
 	if len(parts) < 2 {
