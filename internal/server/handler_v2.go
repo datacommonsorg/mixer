@@ -285,6 +285,7 @@ func (s *Server) V2Observation(
 		s.httpClient,
 		in,
 		initialResp,
+		surface,
 	)
 	if err != nil {
 		return nil, err

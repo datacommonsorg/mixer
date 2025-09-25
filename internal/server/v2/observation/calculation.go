@@ -42,6 +42,7 @@ func Calculate(
 	equation *Equation,
 	entity *pbv2.DcidOrExpression,
 	inputReq *pbv2.ObservationRequest,
+	surface string,
 ) (*pbv2.ObservationResponse, error) {
 	variableFormula, err := formula.NewVariableFormula(equation.Formula)
 	if err != nil {
@@ -58,7 +59,7 @@ func Calculate(
 		Filter:   inputReq.GetFilter(),
 		Select:   inputReq.GetSelect(),
 	}
-	inputObs, _, err := ObservationInternal(ctx, store, cachedata, metadata, httpClient, newReq)
+	inputObs, _, err := ObservationInternal(ctx, store, cachedata, metadata, httpClient, newReq, surface)
 	if err != nil {
 		return nil, err
 	}
@@ -74,6 +75,7 @@ func MaybeCalculateHoles(
 	httpClient *http.Client,
 	inputReq *pbv2.ObservationRequest,
 	inputResp *pbv2.ObservationResponse,
+	surface string,
 ) ([]*pbv2.ObservationResponse, error) {
 	result := []*pbv2.ObservationResponse{}
 	holes := FindObservationResponseHoles(inputReq, inputResp)
@@ -93,6 +95,7 @@ func MaybeCalculateHoles(
 				&Equation{variable, formula},
 				currentEntity,
 				inputReq,
+				surface,
 			)
 			if err != nil {
 				return nil, err
