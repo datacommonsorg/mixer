@@ -35,9 +35,9 @@ import (
 )
 
 const (
-	// Indicates that all properties should be returned.
+	// Used for Arc.SingleProp in Node requests and indicates that all properties should be returned.
 	WILDCARD = "*"
-	// Indicates that recursive property paths should be returned.
+	// Used for Arc.Decorator in Node requests and indicates that recursive property paths should be returned.
 	CHAIN = "+"
 	// Used for Facet responses with an entity expression.
 	ENTITY_PLACEHOLDER = ""

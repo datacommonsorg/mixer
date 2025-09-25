@@ -1,0 +1,34 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# This cloud build is triggered when there is a new mixer image pushed to artifact registry. It starts the mixer deployment via cloud deploy.
+
+# In the cloudbuild.yaml for the Cloud Deploy pipeline.
+substitutions:
+  _SHORT_SHA: ""
+
+steps:
+  # This step uses the _SHORT_SHA that was passed from the Pub/Sub message.
+  - name: 'gcr.io/datcom-ci/datacommons-script-runner:latest'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        gcloud deploy releases create release-${_SHORT_SHA} \
+          --delivery-pipeline=datacommons-mixer \
+          --region=us-central1 \
+          --skaffold-file=skaffold.yaml \
+          --images=gcr.io/datcom-ci/datacommons-mixer=us-docker.pkg.dev/datcom-ci/gcr.io/datacommons-mixer:${_SHORT_SHA} \
+          --deploy-parameters="mixer.githash=${_SHORT_SHA},MIXER_GITHASH=${_SHORT_SHA}" \
+          --project=$PROJECT_ID

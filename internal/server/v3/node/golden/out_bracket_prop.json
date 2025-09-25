@@ -5,15 +5,18 @@
         "containedInPlace": {
           "nodes": [
             {
+              "name": "Virginia",
               "types": [
-                "Thing"
+                "AdministrativeArea1",
+                "State"
               ],
               "dcid": "geoId/51",
               "provenance_id": "dc/base/BaseGeos"
             },
             {
+              "name": "Franklin",
               "types": [
-                "Thing"
+                "County"
               ],
               "dcid": "geoId/51620",
               "provenance_id": "dc/base/BaseGeos"

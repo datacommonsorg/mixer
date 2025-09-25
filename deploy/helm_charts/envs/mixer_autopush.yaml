@@ -1,7 +1,14 @@
+project: datcom-mixer-autopush
+cluster_prefix: mixer
+
 # Helm config
 mixer:
+  image:
+    tag: ""
   hostProject: datcom-mixer-autopush
   serviceName: autopush.api.datacommons.org
+  project: datcom-mixer-autopush
+  cluster_prefix: mixer
   cacheSVFormula: true
   useSpannerGraph: true
   enableV3: true

@@ -15,6 +15,22 @@
 
 set -e
 
+TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+TMP_DIR=$(mktemp -d)
+LOG_FILE="$TMP_DIR/deploy_apigee_$TIMESTAMP.log"
+echo "Script output will be logged to: $LOG_FILE"
+
+function finish {
+  echo
+  echo "All outputs were written to a temporary directory:"
+  echo $TMP_DIR
+}
+trap finish EXIT
+
+# Redirect stdout and stderr to the log file
+# The tee command is used to also print to the console.
+exec > >(tee -a "${LOG_FILE}") 2>&1
+
 ENV=$1
 
 if [[ $ENV == "" ]]; then
@@ -152,7 +168,7 @@ function copy_file() {
 
 function terraform_plan_and_maybe_apply() {
   cd "$ENV_BASE_DIR"
-  PLAN_FILE=$(mktemp)
+  PLAN_FILE="$TMP_DIR/tfplan_$TIMESTAMP"
 
   terraform init
 
@@ -161,7 +177,9 @@ function terraform_plan_and_maybe_apply() {
   # 1 = Error
   # 2 = Succeeded with non-empty diff
   set +e
-  terraform_cmd "plan -detailed-exitcode -out=$PLAN_FILE"
+  terraform plan -detailed-exitcode -out="$PLAN_FILE" \
+      --var="access_token=$(gcloud auth print-access-token)" \
+      -var-file=vars.tfvars
   PLAN_EXIT_CODE=$?
   set -e
 
@@ -170,14 +188,18 @@ function terraform_plan_and_maybe_apply() {
     exit 0
   elif [ $PLAN_EXIT_CODE -eq 1 ]; then
     echo "Terraform plan failed."
+    cd "$WORKING_DIR"
     exit 1
   fi
 
+  echo
   while true; do
-    read -p "Proceed to apply the plan? (y/n)" yn
+    read -p "Proceed to apply the plan? (y/n) " yn
     case $yn in
     [Yy]*)
-      terraform_cmd "apply $PLAN_FILE"
+      # When applying a plan, vars and var-files are not allowed.
+      # The access token is only needed for the plan phase.
+      terraform apply "$PLAN_FILE"
       cd "$WORKING_DIR"
       ./sync_env.sh "$ENV" --push
       break
@@ -189,15 +211,6 @@ function terraform_plan_and_maybe_apply() {
     *) echo "Please answer yes or no." ;;
     esac
   done
-}
-
-# Runs the given Terraform verb with an access token and vars file.
-function terraform_cmd() {
-  verb=$1
-  # shellcheck disable=SC2086
-    terraform $verb \
-      --var="access_token=$(gcloud auth print-access-token)" \
-      -var-file=vars.tfvars
 }
 
 validate_terraform_backend
