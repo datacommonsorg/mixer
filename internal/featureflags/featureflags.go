@@ -60,6 +60,11 @@ func NewFlags(path string) (*Flags, error) {
 
 	cfg := &config{Flags: setDefaultValues()}
 
+	if path == "" {
+		// No feature flag path specified. Use default flag values.
+		return cfg.Flags, nil
+	}
+
 	data, err := os.ReadFile(path)
 	if err != nil {
 		if os.IsNotExist(err) {

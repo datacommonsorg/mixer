@@ -170,6 +170,23 @@ EOF
 )"
 ```
 
+## Setting feature flags to match an environment
+
+Use the `--feature_flags_path` argument to specify a feature flag
+environment YAML file to read values from. If not specified, default flag values
+are used. This argument should be added to your `go run cmd/main.go ...` command.
+
+```bash
+# Example for local testing:
+go run cmd/main.go \
+    ... \
+    --feature_flags_path=$PWD/deploy/featureflags/local.yaml
+```
+
+```bash
+# Use the same values that are used in dev
+--feature_flags_path=$PWD/deploy/featureflags/dev.yaml
+```
 
 ## Update Go package dependencies
 
