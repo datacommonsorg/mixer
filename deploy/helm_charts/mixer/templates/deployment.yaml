@@ -28,7 +28,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "mixer.fullname" $ }}-{{ $serviceName }}
-  namespace: {{ $.Release.Namespace }}
+  namespace: {{ $.Release.Namespace | .Values.namespace.name }}
   labels:
     service:  {{ include "mixer.fullname" $ }}-{{ $serviceName }}
     {{- include "mixer.labels" $ | nindent 4 }}
