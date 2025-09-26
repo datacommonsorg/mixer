@@ -37,10 +37,7 @@ steps:
       - -c
       - |
         set -e
-        echo "Validating feature flag files..."
-        for FILE in $(find deploy/featureflags -name '*.yaml'); do
-          go run scripts/check_flags.go "$FILE"
-        done
+        ./scripts/check_flags.sh deploy/featureflags
     waitFor: ["-"]
 
   # Build protobuf to go bindings
