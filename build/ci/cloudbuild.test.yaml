@@ -27,7 +27,17 @@ steps:
           exit 1
         fi
         golangci-lint run -v
-    waitFor: ["-"]
+
+  # Validate feature flag yaml files
+  - id: validate-feature-flags
+    name: gcr.io/datcom-ci/go-protoc:${_GO_PROTOC_VERSION}
+    entrypoint: "bash"
+    args:
+      - -c
+      - |
+        set -e
+        ./scripts/check_flags.sh deploy/featureflags
+    waitFor: ["lint"]
 
   # Build protobuf to go bindings
   - id: build-proto
@@ -37,6 +47,8 @@ steps:
       - -c
       - |
         set -e
+        go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+        go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
         protoc \
           --proto_path=proto \
           --go_out=paths=source_relative:internal/proto \
@@ -44,7 +56,7 @@ steps:
           --go-grpc_opt=require_unimplemented_servers=false \
           --experimental_allow_proto3_optional \
           proto/*.proto proto/**/*.proto
-    waitFor: ["-"]
+    waitFor: ["validate-feature-flags"]
 
   - id: test
     name: gcr.io/datcom-ci/go-protoc:${_GO_PROTOC_VERSION}

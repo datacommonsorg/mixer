@@ -27,6 +27,7 @@ import (
 
 	cbt "cloud.google.com/go/bigtable"
 	pubsub "cloud.google.com/go/pubsub"
+	"github.com/datacommonsorg/mixer/internal/featureflags"
 	"github.com/datacommonsorg/mixer/internal/parser/mcf"
 	dcpubsub "github.com/datacommonsorg/mixer/internal/pubsub"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
@@ -48,6 +49,7 @@ type Server struct {
 	mapsClient       *maps.Client
 	httpClient       *http.Client
 	dispatcher       *dispatcher.Dispatcher
+	flags            *featureflags.Flags
 	v3MirrorFraction float64
 }
 
@@ -151,6 +153,7 @@ func NewMixerServer(
 	cachedata *cache.Cache,
 	mapsClient *maps.Client,
 	dispatcher *dispatcher.Dispatcher,
+	flags *featureflags.Flags,
 ) *Server {
 	s := &Server{
 		store:      store,
@@ -159,6 +162,7 @@ func NewMixerServer(
 		mapsClient: mapsClient,
 		httpClient: &http.Client{},
 		dispatcher: dispatcher,
+		flags:      flags,
 	}
 	s.cachedata.Store(cachedata)
 	return s

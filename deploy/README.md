@@ -49,3 +49,22 @@ To deploy a specific non-HEAD commit, you can pass the commit hash as a second a
 ```sh
 ./scripts/deploy_gke.sh mixer_dev <commit_hash>
 ```
+
+### Installing Reloader
+
+[Reloader](https://github.com/stakater/Reloader) watches for changes in ConfigMaps and Secrets and then trigger rolling upgrades on associated Deployments. Mixer
+is set up to use Reloader to ensure feature flag updates take effect automatically,
+so long as it is installed in the same GKE cluster.
+
+To install Reloader, run the following script with the feature flag config
+directory and an optional environment. This will install Reloader on all
+clusters defined in the specified feature flag configurations.
+
+```sh
+./deploy/install_reloader.sh <config_dir> [environment]
+```
+
+For example:
+```sh
+./deploy/install_reloader.sh deploy/featureflags dev
+```

@@ -51,6 +51,7 @@ spec:
     metadata:
       annotations:
         timestamp: {{ now | quote }}
+        configmap.reloader.stakater.com/reload: "mixer-feature-flags"
       labels:
         service:  {{ include "mixer.fullname" $ }}-{{ $serviceName }}
         {{- include "mixer.selectorLabels" $ | nindent 8 }}
@@ -80,6 +81,10 @@ spec:
             items:
               - key: base_bigtable_info.yaml
                 path: base_bigtable_info.yaml
+        - name: feature-flags
+          configMap:
+            name: mixer-feature-flags
+            optional: true
       initContainers:
         - name: update-bigtable-info
           image: gcr.io/datcom-ci/datacommons-script-runner:latest
@@ -190,6 +195,7 @@ spec:
               {{- if $.Values.mixer.v3MirrorFraction }}
               --v3_mirror_fraction={{ $.Values.mixer.v3MirrorFraction }} \
               {{- end }}
+              --feature_flags_path=/datacommons/flags/feature_flags.yaml
           volumeMounts:
             - name: schema-mapping
               mountPath: /datacommons/mapping
@@ -199,6 +205,9 @@ spec:
               mountPath: /dynamic-config
             - name: static-bt-config-volume
               mountPath: /static-config
+              readOnly: true
+            - name: feature-flags
+              mountPath: /datacommons/flags
               readOnly: true
           env:
             - name: HOST_PROJECT
