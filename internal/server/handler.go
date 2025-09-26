@@ -260,11 +260,16 @@ func (s *Server) GetVersion(
 	if s.store.BtGroup != nil {
 		tableNames = s.store.BtGroup.TableNames()
 	}
+	featureFlagsJson, err := json.Marshal(s.flags)
+	if err != nil {
+		return nil, err
+	}
 	return &pb.GetVersionResponse{
 		Tables:            tableNames,
 		Bigquery:          s.metadata.BigQueryDataset,
 		GitHash:           os.Getenv("MIXER_HASH"),
 		RemoteMixerDomain: s.metadata.RemoteMixerDomain,
+		FeatureFlags:      string(featureFlagsJson),
 	}, nil
 }
 
