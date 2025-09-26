@@ -25,7 +25,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ include "mixer.fullname" $ }}-{{ $serviceName }}
-  namespace: {{ $.Release.Namespace }}
+  namespace: {{ $.Release.Namespace | .Values.namespace.name }}
   labels:
     service: {{ include "mixer.fullname" $ }}-{{ $serviceName }}
     {{- include "mixer.labels" $ | nindent 4 }}
@@ -51,7 +51,7 @@ apiVersion: cloud.google.com/v1
 kind: BackendConfig
 metadata:
   name: {{ include "mixer.fullname" . }}-backendconfig
-  namespace: {{ .Release.Namespace }}
+  namespace: {{ .Release.Namespace | .Values.namespace.name }}
 spec:
   # Timeout for load balancer and the GKE pod connection
   timeoutSec: 300

@@ -26,7 +26,7 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: {{ include "mixer.fullname" . }}-githash
-  namespace: {{ .Release.Namespace }}
+  namespace: {{ .Release.Namespace | .Values.namespace.name }}
 data:
   mixer_hash.txt: {{ required "mixer githash is required" .Values.mixer.githash | quote }}
 
@@ -36,7 +36,7 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: {{ include "mixer.fullname" . }}-store-config
-  namespace: {{ .Release.Namespace }}
+  namespace: {{ .Release.Namespace | .Values.namespace.name }}
 data:
   bigquery.version: {{ required "kgStoreConfig.bigqueryVersion is required." .Values.kgStoreConfig.bigqueryVersion | quote }}
   base_bigtable_info.yaml: {{  required "baseBigtableInfo is required." .Values.kgStoreConfig.baseBigtableInfo | quote }}
@@ -51,7 +51,7 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: {{ include "mixer.fullname" . }}-mixer-config
-  namespace: {{ .Release.Namespace }}
+  namespace: {{ .Release.Namespace | .Values.namespace.name }}
 data:
   hostProject: {{ required "Mixer GCP project is required." .Values.mixer.hostProject }}
   serviceName:  {{ required "Mixer service name is required." .Values.mixer.serviceName }}
@@ -62,7 +62,7 @@ kind: ConfigMap
 apiVersion: v1
 metadata:
   name: {{ include "mixer.fullname" . }}-schema-mapping
-  namespace: {{ .Release.Namespace }}
+  namespace: {{ .Release.Namespace | .Values.namespace.name }}
 data:
   base.mcf: |
 {{ (index .Values.mixer.schemaConfigs "base.mcf") | nindent 4 }}
