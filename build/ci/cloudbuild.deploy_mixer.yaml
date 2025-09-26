@@ -19,6 +19,10 @@ substitutions:
   _SHORT_SHA: ""
 
 steps:
+  - name: 'gcr.io/cloud-builders/git'
+    id: 'Initialize Submodules'
+    args: ['submodule', 'update', '--init', '--recursive']
+
   # This step uses the _SHORT_SHA that was passed from the Pub/Sub message.
   - name: 'gcr.io/datcom-ci/datacommons-script-runner:latest'
     entrypoint: 'bash'
@@ -32,3 +36,4 @@ steps:
           --images=gcr.io/datcom-ci/datacommons-mixer=us-docker.pkg.dev/datcom-ci/gcr.io/datacommons-mixer:${_SHORT_SHA} \
           --deploy-parameters="mixer.githash=${_SHORT_SHA},MIXER_GITHASH=${_SHORT_SHA}" \
           --project=$PROJECT_ID
+    waitFor: ["Initialize Submodules"]
