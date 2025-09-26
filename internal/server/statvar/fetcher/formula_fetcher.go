@@ -22,6 +22,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 
 	triples "github.com/datacommonsorg/mixer/internal/server/v1/triples"
@@ -194,6 +195,75 @@ func FetchFormulas(
 			for _, inputNode := range props.Arcs[inputPropertyExpression].Nodes {
 				result[outputNode.Dcid] = append(result[outputNode.Dcid], inputNode.Value)
 			}
+		}
+	}
+	// Sort for determinism.
+	for _, formulas := range result {
+		sort.Strings(formulas)
+	}
+	return result, nil
+}
+
+// FetchSVFormulas fetches StatisticalCalculations and returns a map of SV dcids to a list of inputPropertyExpressions.
+func FetchSVFormulas(
+	ctx context.Context,
+	ds *datasources.DataSources,
+) (map[string][]string, error) {
+	// Fetch all StatisticalCalculation dcids.
+	dcids := []string{}
+	nextToken := ""
+	for {
+		req := &pbv2.NodeRequest{
+			Nodes:    []string{StatisticalCalculation},
+			Property: "<-" + typeOf,
+		}
+		resp, err := ds.Node(ctx, req)
+		if err != nil {
+			return nil, err
+		}
+		nodes, ok := resp.Data[StatisticalCalculation].Arcs[typeOf]
+		if !ok {
+			return nil, nil
+		}
+		for _, node := range nodes.Nodes {
+			dcids = append(dcids, node.Dcid)
+		}
+		nextToken = resp.GetNextToken()
+		if nextToken == "" {
+			break
+		}
+	}
+	if len(dcids) == 0 {
+		return nil, nil
+	}
+
+	// Fetch outputProperty and inputPropertyExpression for the StatisticalCalculations.
+	result := map[string][]string{}
+	for {
+		req := &pbv2.NodeRequest{
+			Nodes:    dcids,
+			Property: "->[" + outputProperty + ", " + inputPropertyExpression + "]",
+		}
+		resp, err := ds.Node(ctx, req)
+		if err != nil {
+			return nil, err
+		}
+		for _, props := range resp.Data {
+			// Skip nodes missing required properties.
+			_, out := props.Arcs[outputProperty]
+			_, in := props.Arcs[inputPropertyExpression]
+			if !out || !in {
+				continue
+			}
+			for _, outputNode := range props.Arcs[outputProperty].Nodes {
+				for _, inputNode := range props.Arcs[inputPropertyExpression].Nodes {
+					result[outputNode.Dcid] = append(result[outputNode.Dcid], inputNode.Value)
+				}
+			}
+		}
+		nextToken = resp.GetNextToken()
+		if nextToken == "" {
+			break
 		}
 	}
 	// Sort for determinism.

@@ -22,6 +22,7 @@ import (
 
 	"github.com/datacommonsorg/mixer/internal/metrics"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/fetcher"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/hierarchy"
@@ -161,5 +162,25 @@ func NewCache(
 		}
 		c.svFormulas = svFormulas
 	}
+	return c, nil
+}
+
+// NewDataSourceCache initializes the mixer cache from DataSources.
+func NewDataSourceCache(
+	ctx context.Context,
+	ds *datasources.DataSources,
+	options CacheOptions,
+) (*Cache, error) {
+	c := &Cache{options: options}
+	if options.CacheSVFormula {
+		svFormulas, err := fetcher.FetchSVFormulas(ctx, ds)
+		if err != nil {
+			return nil, err
+		}
+		c.svFormulas = svFormulas
+	}
+
+	// TODO: Add support for other options if needed.
+
 	return c, nil
 }
