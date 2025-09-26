@@ -22,21 +22,20 @@ import (
 )
 
 const (
-	// DefaultFeatureFlagsPath = "/datacommons/flags/feature_flags.yaml"
 	DefaultFeatureFlagsPath = "deploy/featureflags/local.yaml"
 )
 
 // Container for feature flag values.
 type Flags struct {
-	TestBoolFlag  bool    `yaml:"TestBoolFlag"`
-	TestFloatFlag float64 `yaml:"TestFloatFlag"`
+	EnableV3         bool    `yaml:"EnableV3"`
+	V3MirrorFraction float64 `yaml:"V3MirrorFraction"`
 }
 
 // setDefaultValues creates a new Flags struct with default values.
 func setDefaultValues() *Flags {
 	return &Flags{
-		TestBoolFlag:  false,
-		TestFloatFlag: 0.5,
+		EnableV3:         false,
+		V3MirrorFraction: 0.0,
 	}
 }
 
