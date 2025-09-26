@@ -15,6 +15,7 @@
 package featureflags
 
 import (
+	"fmt"
 	"log"
 	"os"
 
@@ -39,6 +40,17 @@ func setDefaultValues() *Flags {
 	}
 }
 
+// validateFlagValues performs any extra checks on flag value correctness.
+func (f *Flags) validateFlagValues() error {
+	if f.V3MirrorFraction < 0 || f.V3MirrorFraction > 1.0 {
+		return fmt.Errorf("V3MirrorFraction must be between 0 and 1.0, got %f", f.V3MirrorFraction)
+	}
+	if f.V3MirrorFraction > 0 && !f.EnableV3 {
+		return fmt.Errorf("V3MirrorFraction > 0 requires EnableV3 to be true")
+	}
+	return nil
+}
+
 // Creates a new Flags struct with default values,
 // then overrides them with values from the config file if it is present.
 func NewFlags(path string) (*Flags, error) {
@@ -58,6 +70,10 @@ func NewFlags(path string) (*Flags, error) {
 	}
 
 	if err := yaml.Unmarshal(data, cfg); err != nil {
+		return nil, err
+	}
+
+	if err := cfg.Flags.validateFlagValues(); err != nil {
 		return nil, err
 	}
 
