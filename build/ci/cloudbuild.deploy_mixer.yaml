@@ -19,16 +19,51 @@ substitutions:
   _SHORT_SHA: ""
 
 steps:
-  # This step uses the _SHORT_SHA that was passed from the Pub/Sub message.
+  # This step runs in the context of the already-cloned repository.
+  - name: 'gcr.io/cloud-builders/git'
+    id: 'Initialize Submodules'
+    args: ['submodule', 'update', '--init', '--recursive']
+
+  # STEP 2: Fetch the hash and create the release.
   - name: 'gcr.io/datcom-ci/datacommons-script-runner:latest'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
-        gcloud deploy releases create release-${_SHORT_SHA} \
+        set -euo pipefail # Exit on error
+
+        # 1. DETERMINE MIXER IMAGE HASH
+        echo "Fetching latest mixer image hash..."
+        mixer_githash="$(gcloud container images list-tags us-docker.pkg.dev/datcom-ci/gcr.io/datacommons-mixer \
+          --project=datcom-ci \
+          --filter="tags:latest" \
+          --format='get(tags)' | tr ';' '\n' | grep -v "latest")"
+
+        if [[ -z "$mixer_githash" ]]; then
+          echo "ERROR: Could not determine the mixer image hash from Artifact Registry. Exiting."
+          exit 1
+        fi
+        echo "Found latest mixer image hash: $mixer_githash"
+
+        # 2. CREATE DEPLOYMENT RELEASE
+        # Use standard bash variable syntax ($variable or ${variable})
+        release_name="release-${mixer_githash}-$(date +%Y%m%d-%H%M%S)"
+        echo "Creating release: ${release_name}"
+
+        # This command may not be necessary if your skaffold.yaml handles it,
+        # but leaving it as it was in your original file.
+        gcloud deploy apply --file=deploy/helm_charts/clouddeploy.yaml \
+          --region=us-central1 \
+          --project=datcom-ci
+
+        gcloud deploy releases create "${release_name}" \
           --delivery-pipeline=datacommons-mixer \
           --region=us-central1 \
           --skaffold-file=skaffold.yaml \
-          --images=gcr.io/datcom-ci/datacommons-mixer=us-docker.pkg.dev/datcom-ci/gcr.io/datacommons-mixer:${_SHORT_SHA} \
-          --deploy-parameters="mixer.githash=${_SHORT_SHA},MIXER_GITHASH=${_SHORT_SHA}" \
-          --project=$PROJECT_ID
+          --images="gcr.io/datcom-ci/datacommons-mixer=us-docker.pkg.dev/datcom-ci/gcr.io/datacommons-mixer:${mixer_githash}" \
+          --deploy-parameters="mixer.githash=${mixer_githash},MIXER_GITHASH=${mixer_githash}" \
+          --project=datcom-ci
+
+        echo "Successfully created release ${release_name}."
+    # Make sure this step waits for the submodules to be ready.
+    waitFor: ["Initialize Submodules"]
