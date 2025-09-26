@@ -29,6 +29,20 @@ steps:
         golangci-lint run -v
     waitFor: ["-"]
 
+  # Validate feature flag yaml files
+  - id: validate-feature-flags
+    name: gcr.io/datcom-ci/go-protoc:${_GO_PROTOC_VERSION}
+    entrypoint: "bash"
+    args:
+      - -c
+      - |
+        set -e
+        echo "Validating feature flag files..."
+        for FILE in $(find deploy/featureflags -name '*.yaml'); do
+          go run scripts/check_flags.go "$FILE"
+        done
+    waitFor: ["-"]
+
   # Build protobuf to go bindings
   - id: build-proto
     name: gcr.io/datcom-ci/go-protoc:${_GO_PROTOC_VERSION}
