@@ -19,13 +19,9 @@ substitutions:
   _SHORT_SHA: ""
 
 steps:
-  # This step runs in the context of the already-cloned repository.
-  - name: 'gcr.io/cloud-builders/git'
-    id: 'Initialize Submodules'
-    args: ['submodule', 'update', '--init', '--recursive']
-
   # STEP 2: Fetch the hash and create the release.
   - name: 'gcr.io/datcom-ci/datacommons-script-runner:latest'
+    submodules: true
     entrypoint: 'bash'
     args:
       - '-c'
@@ -65,5 +61,3 @@ steps:
           --project=datcom-ci
 
         echo "Successfully created release ${release_name}."
-    # Make sure this step waits for the submodules to be ready.
-    waitFor: ["Initialize Submodules"]
