@@ -17,7 +17,7 @@ package observation
 
 import (
 	"context"
-	"log"
+	"log/slog"
 	"net/http"
 	"sort"
 
@@ -143,7 +143,7 @@ func FetchContainedIn(
 					totalSeries,
 				)
 			}
-			log.Println("Fetch series cache in contained-in observation query")
+			slog.Info("Fetch series cache in contained-in observation query")
 			directResp, err := FetchDirectBT(
 				ctx,
 				store.BtGroup,
