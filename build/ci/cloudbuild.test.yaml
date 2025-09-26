@@ -16,6 +16,7 @@ steps:
   # Validate BQ version file and run golangci-lint
   - id: lint
     name: golangci/golangci-lint:v2.3.0-alpine
+    env: ["GOPATH=/workspace/.gocache"]
     entrypoint: "sh"
     args:
       - -c
