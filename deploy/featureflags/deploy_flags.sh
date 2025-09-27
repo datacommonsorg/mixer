@@ -60,10 +60,14 @@ deploy_flags_to_cluster() {
     --project="${PROJECT_ID}" \
     --location="${LOCATION}"
 
-  # Find all namespaces with a mixer deployment and store them in an array.
+  # Find all unique namespaces with a mixer deployment and store them in an array.
   # Mixer containers are matched by name label (name is defined in the Helm chart).
   echo "Finding '${CONTAINER_NAME}' deployments in cluster..."
-  mapfile -t namespaces < <(kubectl get deployment --all-namespaces -l app.kubernetes.io/name=${CONTAINER_NAME} -o jsonpath='{range .items[*]}{.metadata.namespace}{"\n"}{end}' --context="gke_${PROJECT_ID}_${LOCATION}_${CLUSTER_NAME}")
+  # Using a while-read loop for compatibility with older bash versions (pre-v4) that lack the 'mapfile' command.
+  namespaces=()
+  while IFS= read -r line; do
+    [[ -n "$line" ]] && namespaces+=("$line")
+  done < <(kubectl get deployment --all-namespaces -l app.kubernetes.io/name=${CONTAINER_NAME} -o jsonpath='{range .items[*]}{.metadata.namespace}{"\n"}{end}' --context="gke_${PROJECT_ID}_${LOCATION}_${CLUSTER_NAME}" | sort -u)
 
   if [ ${#namespaces[@]} -eq 0 ]; then
     echo "No '${CONTAINER_NAME}' deployments found in any namespace."
