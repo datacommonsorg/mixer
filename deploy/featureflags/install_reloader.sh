@@ -42,7 +42,9 @@ install_reloader_on_cluster() {
 
   # Install reloader
   echo "Installing/upgrading Reloader in cluster '${CLUSTER_NAME}'..."
-  helm upgrade --install reloader stakater/reloader --namespace default
+  helm upgrade --install reloader stakater/reloader \
+    --namespace default \
+    --set reloader.logFormat=json
 }
 
 # Add the stakater helm repository
