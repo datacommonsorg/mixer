@@ -24,8 +24,9 @@ if [[ "$#" -lt 1 || "$#" -gt 2 ]]; then
   echo "  [environment]: Optional. The specific environment to deploy to (e.g., 'dev')."
   exit 1
 fi
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-source "$DIR/../cluster_iterator.sh"
+
+# Source cluster iterator from the same directory as this script.
+source "$(dirname "${BASH_SOURCE[0]}")/cluster_iterator.sh"
 
 # Callback function to install reloader on a single cluster.
 # Arguments: $1:PROJECT_ID, $2:LOCATION, $3:CLUSTER_NAME

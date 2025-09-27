@@ -40,8 +40,9 @@ if [[ "$#" -lt 1 || "$#" -gt 2 ]]; then
   echo "  [environment]: Optional. The specific environment to deploy to (e.g., 'dev')."
   exit 1
 fi
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-source "$DIR/../cluster_iterator.sh"
+
+# Source cluster iterator from the same directory as this script.
+source "$(dirname "${BASH_SOURCE[0]}")/cluster_iterator.sh"
 
 CONFIG_MAP_NAME="mixer-feature-flags"
 CONTAINER_NAME="mixer"
