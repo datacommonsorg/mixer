@@ -75,17 +75,13 @@ deploy_flags_to_cluster() {
   fi
 
   # This block needs to be inside the callback to get the correct CONFIG_FILE
-  # Extract the 'flags' section and store it in a temporary file.
   # The application expects the data key to be 'feature_flags.yaml'.
-  FLAGS_CONTENT_FILE=$(mktemp)
-  trap 'rm -f "$FLAGS_CONTENT_FILE"' EXIT
-  yq e '.flags' "$CONFIG_FILE" > "$FLAGS_CONTENT_FILE"
 
   # Apply the ConfigMap to each namespace found.
   for ns in "${namespaces[@]}"; do
     echo "Deploying ConfigMap '${CONFIG_MAP_NAME}' to namespace '${ns}'..."
     kubectl create configmap "${CONFIG_MAP_NAME}" \
-      --from-file=feature_flags.yaml="$FLAGS_CONTENT_FILE" \
+      --from-file=feature_flags.yaml="$CONFIG_FILE" \
       --namespace="$ns" \
       --dry-run=client -o yaml | kubectl apply --context="gke_${PROJECT_ID}_${LOCATION}_${CLUSTER_NAME}" -f -
   done
