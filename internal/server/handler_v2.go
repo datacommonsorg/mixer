@@ -261,6 +261,7 @@ func (s *Server) V2Observation(
 		if values := md.Get("x-surface"); len(values) > 0 {
 			surface = values[0]
 		}
+		// and this indicates if the call came from a Custom DC making a call to remote mixer.
 		if values := md.Get("x-remote"); len(values) > 0 {
 			fromRemote = values[0]
 		}

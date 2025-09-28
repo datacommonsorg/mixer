@@ -33,8 +33,6 @@ type StatVarLog struct {
 
 // Full log with all query-level info
 type UsageLog struct {
-	// time that log is written
-	Timestamp time.Time     `json:"timestamp"`
 	// TODO: placeType (city, county, etc.) requested for collection queries
 	// See discussion here https://docs.google.com/document/d/1ETB3dj4y1rKcSrgCMcc6c2n-sQ-t8IzHWxZL0tMevkI/edit?tab=t.sy6cgv7mofcp#bookmark=id.4y4aq6f7jnmt
 	// may expand this to be a list of the number of series queried for each placeType
@@ -52,7 +50,6 @@ type UsageLog struct {
 func (u UsageLog) LogValue() slog.Value {
 	return slog.GroupValue(
 		slog.Any("feature", u.Feature),
-		slog.Time("timestamp", u.Timestamp),
 		slog.String("place_type", u.PlaceType),
 		slog.String("query_type", u.QueryType),
 		slog.Any("stat_vars", u.StatVars),
@@ -163,10 +160,9 @@ func MakeStatVarLogs(store *store.Store, observations []*pbv2.ObservationRespons
 Writes a structured log to stdout, which is ingested by GCP cloud logging automatically
 
 Includes the following:
-- timestamp at the time of logging
 - (WIP) placeType -- the type submitted for a "within" query or the types of whatever places were queried directly
 	- TODO: make this a list to account for multiple places in one query or a place with multiple types
-- feature: which product (website, client libraries, etc.) made this call to mixer. It includes a fromRemote
+- surface: which product (website, client libraries, etc.) made this call to mixer. It includes a fromRemote
 	boolean that indicates if the surface was acessed via remote mixer domain, aka from a custom DC instance.
 - statVars: all variables queried
 	- statvarDCID
@@ -174,15 +170,14 @@ Includes the following:
 		- then these include the facet details (import name, measurement method, etc.) and
 		earliest/latest date used and the number of entities that used the particular facet
 */
-func UsageLogger(feature string, fromRemote string, placeType string, store *store.Store, observations []*pbv2.ObservationResponse, queryType string) {
+func UsageLogger(surface string, fromRemote string, placeType string, store *store.Store, observations []*pbv2.ObservationResponse, queryType string) {
 
 	statVars := MakeStatVarLogs(store, observations)
 
 	logEntry := UsageLog{
-		Timestamp: time.Now(),
 		PlaceType: placeType,
 		Feature: Feature{
-			Surface:    feature,
+			Surface:    surface,
 			FromRemote: fromRemote != "",
 		},
 		QueryType: queryType,
