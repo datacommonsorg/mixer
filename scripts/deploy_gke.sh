@@ -127,6 +127,7 @@ RELEASE=${ENV//_/-}
 
 # Upgrade or install Mixer helm chart into the cluster
 helm upgrade --install "$RELEASE" deploy/helm_charts/mixer \
+  --namespace mixer \
   --atomic \
   --debug \
   --timeout 10m \
