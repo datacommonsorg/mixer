@@ -204,12 +204,29 @@ func FetchFormulas(
 	return result, nil
 }
 
-// FetchSVFormulas fetches StatisticalCalculations and returns a map of SV dcids to a list of inputPropertyExpressions.
+// FetchSVFormulas returns a map of StatisticalVariable dcids to a slice of corresponding inputPropertyExpressions.
 func FetchSVFormulas(
 	ctx context.Context,
 	ds *datasources.DataSources,
 ) (map[string][]string, error) {
 	// Fetch all StatisticalCalculation dcids.
+	dcids, err := fetchStatisticalCalculationDcids(ctx, ds)
+	if err != nil {
+		return nil, err
+	}
+	if len(dcids) == 0 {
+		return nil, nil
+	}
+
+	// Fetch outputProperty and inputPropertyExpression for the StatisticalCalculations.
+	return fetchStatisticalCalculationProperties(ctx, ds, dcids)
+}
+
+// fetchStatisticalCalculationDcids returns a slice of StatisticalCalculation dcids.
+func fetchStatisticalCalculationDcids(
+	ctx context.Context,
+	ds *datasources.DataSources,
+) ([]string, error) {
 	dcids := []string{}
 	nextToken := ""
 	for {
@@ -233,11 +250,16 @@ func FetchSVFormulas(
 			break
 		}
 	}
-	if len(dcids) == 0 {
-		return nil, nil
-	}
+	return dcids, nil
+}
 
-	// Fetch outputProperty and inputPropertyExpression for the StatisticalCalculations.
+// fetchStatisticalCalculationProperties fetches properties for StatisticalCalculation dcids.
+// Returns a map of outputProperty to inputPropertyExpression(s).
+func fetchStatisticalCalculationProperties(
+	ctx context.Context,
+	ds *datasources.DataSources,
+	dcids []string,
+) (map[string][]string, error) {
 	result := map[string][]string{}
 	for {
 		req := &pbv2.NodeRequest{
@@ -261,7 +283,7 @@ func FetchSVFormulas(
 				}
 			}
 		}
-		nextToken = resp.GetNextToken()
+		nextToken := resp.GetNextToken()
 		if nextToken == "" {
 			break
 		}

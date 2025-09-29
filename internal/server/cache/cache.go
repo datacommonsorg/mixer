@@ -165,7 +165,7 @@ func NewCache(
 	return c, nil
 }
 
-// NewDataSourceCache initializes the mixer cache from DataSources.
+// NewDataSourceCache initializes the in-memory mixer cache from DataSources.
 func NewDataSourceCache(
 	ctx context.Context,
 	ds *datasources.DataSources,
