@@ -31,13 +31,13 @@ serviceGroups:
   svg:
     replicas: 10
   recon:
-    replicas: 60
+    replicas: 90
   node:
-    replicas: 40
+    replicas: 60
   observation:
-    replicas: 40
+    replicas: 60
   default:
-    replicas: 20
+    replicas: 30
 
 # GCP level config
 ip: 35.244.133.155
