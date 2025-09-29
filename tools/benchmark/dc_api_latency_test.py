@@ -134,9 +134,9 @@ class BaseBenchmarkUser(FastHttpUser, metaclass=UserABCMeta):
     def run_latency_tests(self):
         if self.test_requests:
             for request in self.test_requests:
-                if ("api_versions" not in request or
-                        not request["api_versions"] or
-                        self.api_version in request["api_versions"]):
+                if ("api_versions" not in request
+                        or not request["api_versions"]
+                        or self.api_version in request["api_versions"]):
                     self.execute_specific_request(request)
         else:
             logging.warning("No test requests available for this user.")
