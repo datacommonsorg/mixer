@@ -49,6 +49,10 @@ Choose from 3 types of test requests:
 2. **node_search_requests.json**: Node search API requests
 3. **observation_requests.json**: Observation API requests
 
+- New tests added to these files will be automatically picked up in the next run
+- Each API is tested against v2 and v3 API versions by default
+- To limit to specific API versions, use the `"api_versions": ["v3"]` configuration in the request file
+
 ## Usage
 
 1. Run the script and provide your DC API key
