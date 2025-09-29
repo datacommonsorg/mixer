@@ -19,5 +19,5 @@ if [ -z "$DC_API_KEY" ]; then
 fi
 
 locust --config=locust.conf \
---dc_api_key=$DC_API_KEY \
---request_json_files=requests/node_requests.json
+--dc_api_key="$DC_API_KEY" \
+--request_json_files="${1:-requests/node_requests.json}"

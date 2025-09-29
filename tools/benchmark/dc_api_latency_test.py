@@ -4,6 +4,7 @@ import abc
 from abc import ABCMeta
 import json
 import logging
+import random
 from typing import Any
 
 from locust import between
@@ -124,7 +125,10 @@ class BaseBenchmarkUser(FastHttpUser, metaclass=UserABCMeta):
     abstract = True
 
     def on_start(self):
-        self.test_requests = _SHARED_TEST_REQUESTS
+        # Create a randomized copy of test requests for this user to avoid
+        # thundering herd effect while ensuring all tests are executed
+        self.test_requests = _SHARED_TEST_REQUESTS.copy()
+        random.shuffle(self.test_requests)
 
     @task
     def run_latency_tests(self):
