@@ -13,23 +13,27 @@ pip install -r requirements.txt
 
 1. Start the benchmark tool:
    ```bash
-   ./run_dc_api_latency.sh
+   locust --config=locust.conf
    ```
 
-2. Open web interface at: **http://localhost:8089**
+2. Go to http://localhost:8089/ in browser. You should see the locust UI.
 
-3. Provide your DC API key:
-   - Set environment variable: `export DC_API_KEY=your_key`
-   - Or enter when prompted during script execution
+3. Click "New test", set the mandatory parameters :
+   - **Host**: Set the target API endpoint (default: http://autopush.api.datacommons.org)
+   - **Custom Parameters**:
+     - **Dc Api Key**: Check that this is set to correct DC environment. This picks value from DC_API_KEY environment variable by default.
+     - **Request File**: Select the request file to run tests (default: node_requests.json)
 
-4. Configure test parameters in the web UI and start tests
+4. Click "Start" to begin the test and monitor results in real-time.
+
+5. View results in the web UI or download results from the "DOWNLOAD DATA" tab.
 
 ## Configuration
 
 Settings in `locust.conf` can be modified in the web interface:
 
 - **Users**: Number of concurrent users (default: 10)
-- **Spawn Rate**: Users per second (default: 5)
+- **Ramp Up**: Users per second (default: 5)
 - **Run Time**: Test duration (default: 5m)
 - **Host**: Target API endpoint (default: http://autopush.api.datacommons.org)
 
@@ -53,11 +57,3 @@ Choose from 3 types of test requests:
 - Each API is tested against v2 and v3 API versions by default
 - To limit to specific API versions, use the `"api_versions": ["v3"]` configuration in the request file
 
-## Usage
-
-1. Run the script and provide your DC API key
-2. Access the web UI at port 8089
-3. Select your desired test type and request file
-4. Configure load parameters
-5. Start the test and monitor results in real-time
-6. View results in the web UI or download data from the "DOWNLOAD DATA" tab
