@@ -1,0 +1,10 @@
+# From repo root:
+# docker run -p 9090:9090 -v ./internal/metrics/prometheus_local.yml:/etc/prometheus/prometheus.yml prom/prometheus
+
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: "mixer-server"
+    static_configs:
+      - targets: ["host.docker.internal:2223"]

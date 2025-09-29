@@ -187,7 +187,7 @@ func FetchFormulas(
 		// Skip nodes missing required properties.
 		_, out := props.Arcs[outputProperty]
 		_, in := props.Arcs[inputPropertyExpression]
-		if !(out && in) {
+		if !out || !in {
 			continue
 		}
 		for _, outputNode := range props.Arcs[outputProperty].Nodes {

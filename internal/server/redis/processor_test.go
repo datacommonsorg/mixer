@@ -35,6 +35,7 @@ import (
 type MockCacheClient struct {
 	mockResponse            *pbv2.NodeResponse
 	GetCachedResponseCalled bool
+	ResponseCached          bool
 }
 
 func (m *MockCacheClient) GetCachedResponse(ctx context.Context, request proto.Message, response proto.Message) (bool, error) {
@@ -44,6 +45,7 @@ func (m *MockCacheClient) GetCachedResponse(ctx context.Context, request proto.M
 }
 
 func (m *MockCacheClient) CacheResponse(ctx context.Context, request proto.Message, response proto.Message) error {
+	m.ResponseCached = true
 	return nil
 }
 func TestCacheProcessorPreProcess(t *testing.T) {
@@ -267,7 +269,7 @@ func TestSkipCache(t *testing.T) {
 	skipCacheCtx := metadata.NewIncomingContext(
 		context.Background(),
 		metadata.Pairs(
-			XSkipCache, "true",
+			util.XSkipCache, "true",
 		),
 	)
 
@@ -279,7 +281,8 @@ func TestSkipCache(t *testing.T) {
 		originalRequest         proto.Message
 		getCachedResponseCalled bool
 		currentResponse         proto.Message
-		wantOutcome             dispatcher.Outcome
+		wantPreProcessOutcome   dispatcher.Outcome
+		responseCached          bool
 	}{
 		{
 			name:                    "Don't Skip Cache",
@@ -288,7 +291,8 @@ func TestSkipCache(t *testing.T) {
 			originalRequest:         &pbv2.NodeRequest{Nodes: []string{"testNode"}},
 			getCachedResponseCalled: true,
 			currentResponse:         &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{"testNode": {}}},
-			wantOutcome:             dispatcher.Done,
+			wantPreProcessOutcome:   dispatcher.Done,
+			responseCached:          true,
 		},
 		{
 			name:                    "Skip Cache",
@@ -297,7 +301,8 @@ func TestSkipCache(t *testing.T) {
 			originalRequest:         &pbv2.NodeRequest{Nodes: []string{"testNode"}},
 			getCachedResponseCalled: false,
 			currentResponse:         nil,
-			wantOutcome:             dispatcher.Continue,
+			wantPreProcessOutcome:   dispatcher.Continue,
+			responseCached:          false,
 		},
 	}
 
@@ -314,17 +319,24 @@ func TestSkipCache(t *testing.T) {
 				CurrentResponse: test.currentResponse,
 			}
 
-			outcome, err := processor.PreProcess(rc)
+			preProcessOutcome, err := processor.PreProcess(rc)
 
 			if err != nil {
-				t.Errorf("Error runing TestSkipCache: %s", err)
+				t.Errorf("Error running TestSkipCache: %s", err)
 			}
 
 			assert.Equal(t, test.getCachedResponseCalled, m.GetCachedResponseCalled)
 			if diff := cmp.Diff(rc.CurrentResponse, test.currentResponse, protocmp.Transform()); diff != "" {
 				t.Errorf("TestSkipCache %s got diff: %s", test.name, diff)
 			}
-			assert.Equal(t, test.wantOutcome, outcome)
+			assert.Equal(t, test.wantPreProcessOutcome, preProcessOutcome)
+
+			postProcessOutcome, err := processor.PostProcess(rc)
+			if err != nil {
+				t.Errorf("Error running TestSkipCache: %s", err)
+			}
+			assert.Equal(t, test.responseCached, m.ResponseCached)
+			assert.Equal(t, dispatcher.Continue, postProcessOutcome)
 		})
 	}
 }

@@ -7,257 +7,177 @@
           "Property"
         ],
         "dcid": "income"
-      },
-      "match": {
-        "property": "name",
-        "value": "income"
       }
     },
     {
       "node": {
-        "name": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile",
+        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Gross earnings (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, No",
         "types": [
-          "StatVarGroup"
+          "StatisticalVariable"
         ],
-        "dcid": "dc/g/SDGSEAGPCPRA_educationalAttainment-SDGEducationLevEnumISCED112_sdgincomeWealthQuantile"
-      },
-      "match": {
-        "property": "name",
-        "value": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile"
+        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_0_1_0_0_0"
       }
     },
     {
       "node": {
-        "name": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile = Quantile 1 (poorest)",
+        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Gross earnings (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
         "types": [
-          "StatVarGroup"
+          "StatisticalVariable"
         ],
-        "dcid": "dc/g/SDGSEAGPCPRA_educationalAttainment-SDGEducationLevEnumISCED112_sdgincomeWealthQuantile-SDGIncomeWealthQuantileEnumQ1"
-      },
-      "match": {
-        "property": "name",
-        "value": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile = Quantile 1 (poorest)"
+        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_0_1_0_0_1"
       }
     },
     {
       "node": {
-        "name": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile = Quantile 1 (poorest), Urbanisation",
+        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Gross earnings (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, Yes, No",
         "types": [
-          "StatVarGroup"
+          "StatisticalVariable"
         ],
-        "dcid": "dc/g/SDGSEAGPCPRA_educationalAttainment-SDGEducationLevEnumISCED112_sdgincomeWealthQuantile-SDGIncomeWealthQuantileEnumQ1_sdgurbanisation"
-      },
-      "match": {
-        "property": "name",
-        "value": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile = Quantile 1 (poorest), Urbanisation"
+        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_0_1_0_1_0"
       }
     },
     {
       "node": {
-        "name": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile = Quantile 2",
+        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Gross earnings (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, Yes, Yes",
         "types": [
-          "StatVarGroup"
+          "StatisticalVariable"
         ],
-        "dcid": "dc/g/SDGSEAGPCPRA_educationalAttainment-SDGEducationLevEnumISCED112_sdgincomeWealthQuantile-SDGIncomeWealthQuantileEnumQ2"
-      },
-      "match": {
-        "property": "name",
-        "value": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile = Quantile 2"
+        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_0_1_0_1_1"
       }
     },
     {
       "node": {
-        "name": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile = Quantile 2, Urbanisation",
+        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Gross earnings (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, No",
         "types": [
-          "StatVarGroup"
+          "StatisticalVariable"
         ],
-        "dcid": "dc/g/SDGSEAGPCPRA_educationalAttainment-SDGEducationLevEnumISCED112_sdgincomeWealthQuantile-SDGIncomeWealthQuantileEnumQ2_sdgurbanisation"
-      },
-      "match": {
-        "property": "name",
-        "value": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile = Quantile 2, Urbanisation"
+        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_0_0_1_0_0"
       }
     },
     {
       "node": {
-        "name": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile = Quantile 3",
+        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Gross earnings (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
         "types": [
-          "StatVarGroup"
+          "StatisticalVariable"
         ],
-        "dcid": "dc/g/SDGSEAGPCPRA_educationalAttainment-SDGEducationLevEnumISCED112_sdgincomeWealthQuantile-SDGIncomeWealthQuantileEnumQ3"
-      },
-      "match": {
-        "property": "name",
-        "value": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile = Quantile 3"
+        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_0_0_1_0_1"
       }
     },
     {
       "node": {
-        "name": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile = Quantile 3, Urbanisation",
+        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Gross earnings (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), Yes, No",
         "types": [
-          "StatVarGroup"
+          "StatisticalVariable"
         ],
-        "dcid": "dc/g/SDGSEAGPCPRA_educationalAttainment-SDGEducationLevEnumISCED112_sdgincomeWealthQuantile-SDGIncomeWealthQuantileEnumQ3_sdgurbanisation"
-      },
-      "match": {
-        "property": "name",
-        "value": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile = Quantile 3, Urbanisation"
+        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_0_0_1_1_0"
       }
     },
     {
       "node": {
-        "name": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile = Quantile 4",
+        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Gross earnings (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), Yes, Yes",
         "types": [
-          "StatVarGroup"
+          "StatisticalVariable"
         ],
-        "dcid": "dc/g/SDGSEAGPCPRA_educationalAttainment-SDGEducationLevEnumISCED112_sdgincomeWealthQuantile-SDGIncomeWealthQuantileEnumQ4"
-      },
-      "match": {
-        "property": "name",
-        "value": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile = Quantile 4"
+        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_0_0_1_1_1"
       }
     },
     {
       "node": {
-        "name": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile = Quantile 4, Urbanisation",
+        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, No",
         "types": [
-          "StatVarGroup"
+          "StatisticalVariable"
         ],
-        "dcid": "dc/g/SDGSEAGPCPRA_educationalAttainment-SDGEducationLevEnumISCED112_sdgincomeWealthQuantile-SDGIncomeWealthQuantileEnumQ4_sdgurbanisation"
-      },
-      "match": {
-        "property": "name",
-        "value": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile = Quantile 4, Urbanisation"
+        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_1_1_0_0_0"
       }
     },
     {
       "node": {
-        "name": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile = Quantile 5 (richest)",
+        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
         "types": [
-          "StatVarGroup"
+          "StatisticalVariable"
         ],
-        "dcid": "dc/g/SDGSEAGPCPRA_educationalAttainment-SDGEducationLevEnumISCED112_sdgincomeWealthQuantile-SDGIncomeWealthQuantileEnumQ5"
-      },
-      "match": {
-        "property": "name",
-        "value": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile = Quantile 5 (richest)"
+        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_1_1_0_0_1"
       }
     },
     {
       "node": {
-        "name": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile = Quantile 5 (richest), Urbanisation",
+        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, Yes, No",
         "types": [
-          "StatVarGroup"
+          "StatisticalVariable"
         ],
-        "dcid": "dc/g/SDGSEAGPCPRA_educationalAttainment-SDGEducationLevEnumISCED112_sdgincomeWealthQuantile-SDGIncomeWealthQuantileEnumQ5_sdgurbanisation"
-      },
-      "match": {
-        "property": "name",
-        "value": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile = Quantile 5 (richest), Urbanisation"
+        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_1_1_0_1_0"
       }
     },
     {
       "node": {
-        "name": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile, Urbanisation = Rural",
+        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, Yes, Yes",
         "types": [
-          "StatVarGroup"
+          "StatisticalVariable"
         ],
-        "dcid": "dc/g/SDGSEAGPCPRA_educationalAttainment-SDGEducationLevEnumISCED112_sdgincomeWealthQuantile_sdgurbanisation-SDGUrbanisationEnumR"
-      },
-      "match": {
-        "property": "name",
-        "value": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile, Urbanisation = Rural"
+        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_1_1_0_1_1"
       }
     },
     {
       "node": {
-        "name": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile, Urbanisation = Urban",
+        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, No",
         "types": [
-          "StatVarGroup"
+          "StatisticalVariable"
         ],
-        "dcid": "dc/g/SDGSEAGPCPRA_educationalAttainment-SDGEducationLevEnumISCED112_sdgincomeWealthQuantile_sdgurbanisation-SDGUrbanisationEnumU"
-      },
-      "match": {
-        "property": "name",
-        "value": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Lower Secondary, Income Wealth Quantile, Urbanisation = Urban"
+        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_1_0_1_0_0"
       }
     },
     {
       "node": {
-        "name": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Primary, Income Wealth Quantile",
+        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
         "types": [
-          "StatVarGroup"
+          "StatisticalVariable"
         ],
-        "dcid": "dc/g/SDGSEAGPCPRA_educationalAttainment-SDGEducationLevEnumISCED111_sdgincomeWealthQuantile"
-      },
-      "match": {
-        "property": "name",
-        "value": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Primary, Income Wealth Quantile"
+        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_1_0_1_0_1"
       }
     },
     {
       "node": {
-        "name": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Primary, Income Wealth Quantile = Quantile 1 (poorest)",
+        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), Yes, No",
         "types": [
-          "StatVarGroup"
+          "StatisticalVariable"
         ],
-        "dcid": "dc/g/SDGSEAGPCPRA_educationalAttainment-SDGEducationLevEnumISCED111_sdgincomeWealthQuantile-SDGIncomeWealthQuantileEnumQ1"
-      },
-      "match": {
-        "property": "name",
-        "value": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Primary, Income Wealth Quantile = Quantile 1 (poorest)"
+        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_1_0_1_1_0"
       }
     },
     {
       "node": {
-        "name": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Primary, Income Wealth Quantile = Quantile 1 (poorest), Urbanisation",
+        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), Yes, Yes",
         "types": [
-          "StatVarGroup"
+          "StatisticalVariable"
         ],
-        "dcid": "dc/g/SDGSEAGPCPRA_educationalAttainment-SDGEducationLevEnumISCED111_sdgincomeWealthQuantile-SDGIncomeWealthQuantileEnumQ1_sdgurbanisation"
-      },
-      "match": {
-        "property": "name",
-        "value": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Primary, Income Wealth Quantile = Quantile 1 (poorest), Urbanisation"
+        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_1_0_1_1_1"
       }
     },
     {
       "node": {
-        "name": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Primary, Income Wealth Quantile = Quantile 2",
+        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the median wage, Gross earnings (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, No",
         "types": [
-          "StatVarGroup"
+          "StatisticalVariable"
         ],
-        "dcid": "dc/g/SDGSEAGPCPRA_educationalAttainment-SDGEducationLevEnumISCED111_sdgincomeWealthQuantile-SDGIncomeWealthQuantileEnumQ2"
-      },
-      "match": {
-        "property": "name",
-        "value": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Primary, Income Wealth Quantile = Quantile 2"
+        "dcid": "oecd/IMW_2EARNERC2C_MIN_3_0_1_0_0_0"
       }
     },
     {
       "node": {
-        "name": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Primary, Income Wealth Quantile = Quantile 2, Urbanisation",
+        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the median wage, Gross earnings (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
         "types": [
-          "StatVarGroup"
+          "StatisticalVariable"
         ],
-        "dcid": "dc/g/SDGSEAGPCPRA_educationalAttainment-SDGEducationLevEnumISCED111_sdgincomeWealthQuantile-SDGIncomeWealthQuantileEnumQ2_sdgurbanisation"
-      },
-      "match": {
-        "property": "name",
-        "value": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Primary, Income Wealth Quantile = Quantile 2, Urbanisation"
+        "dcid": "oecd/IMW_2EARNERC2C_MIN_3_0_1_0_0_1"
       }
     },
     {
       "node": {
-        "name": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Primary, Income Wealth Quantile = Quantile 3",
+        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the median wage, Gross earnings (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, Yes, No",
         "types": [
-          "StatVarGroup"
+          "StatisticalVariable"
         ],
-        "dcid": "dc/g/SDGSEAGPCPRA_educationalAttainment-SDGEducationLevEnumISCED111_sdgincomeWealthQuantile-SDGIncomeWealthQuantileEnumQ3"
-      },
-      "match": {
-        "property": "name",
-        "value": "Adjusted Gender Parity Index for Completion Rate, by Location, Wealth Quintile And Education Level With Educational Attainment = Primary, Income Wealth Quantile = Quantile 3"
+        "dcid": "oecd/IMW_2EARNERC2C_MIN_3_0_1_0_1_0"
       }
     }
   ]

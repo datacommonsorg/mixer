@@ -156,9 +156,10 @@ func (s *Scanner) scanString() (tok Token, pos Pos, lit string) {
 
 	var err error
 	lit, err = ScanString(s.r)
-	if err == errBadString {
+	switch err {
+	case errBadString:
 		return BADSTRING, pos, lit
-	} else if err == errBadEscape {
+	case errBadEscape:
 		_, pos = s.r.curr()
 		return BADESCAPE, pos, lit
 	}

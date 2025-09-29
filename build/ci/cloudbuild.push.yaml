@@ -15,8 +15,9 @@
 # This cloud build is triggered when there is code change, but can also involve
 # data change.
 
-steps:
+# TODO(gmechali): Remove step 1, and disable the autopush trigger.
 
+steps:
   # Trigger downstream builds that listen for changes to multiple repos.
   - id: update-repo-version
     name: "gcr.io/cloud-builders/git"
@@ -25,6 +26,7 @@ steps:
       - -c
       - |
         set -e
+        if [ "$_SKIP_REPO_VERSION_UPDATE" == "true" ] ; then exit 0 ; fi
         gcloud source repos clone deployment /tmp/deployment --project=datcom-ci
         cd /tmp/deployment
         ./scripts/update_external_repo_version.sh $REPO_NAME $SHORT_SHA
@@ -32,16 +34,16 @@ steps:
 
   # Build protobuf and grpc descriptor
   - id: build-proto
-    name: gcr.io/datcom-ci/go-protoc
+    name: gcr.io/datcom-ci/go-protoc:${_GO_PROTOC_VERSION}
     entrypoint: "bash"
     args:
       - -c
       - |
         protoc \
-          --proto_path=proto \
+          --descriptor_set_out mixer-grpc.$SHORT_SHA.pb \
           --include_source_info \
           --include_imports \
-          --descriptor_set_out mixer-grpc.$SHORT_SHA.pb \
+          --proto_path=proto \
           --go_out=paths=source_relative:internal/proto \
           --go-grpc_out=paths=source_relative:internal/proto \
           --go-grpc_opt=require_unimplemented_servers=false \
@@ -57,7 +59,8 @@ steps:
       - -c
       - |
         set -e
-        docker build -f build/Dockerfile --target server \
+        docker build -f build/server/Dockerfile \
+          --build-arg GO_PROTOC_VERSION=${_GO_PROTOC_VERSION} \
           -t gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA \
           -t gcr.io/datcom-ci/datacommons-mixer:latest \
           .
@@ -92,8 +95,21 @@ steps:
         ./scripts/update_autopush_version.sh $SHORT_SHA
     waitFor: ["push-grpc-descriptor", "push-image"]
 
+  # Trigger downstream builds that listen for changes to mixer images.
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        export SHORT_SHA=$(echo "${SHORT_SHA}" | tr -d '\n')
+        gcloud pubsub topics publish mixer-image-pushed \
+          --project=datcom-ci \
+          --message='{"substitutions": {"_SHORT_SHA": "'"${SHORT_SHA}"'"}}'
+
 substitutions:
   _SKIP_AUTOPUSH_UPDATE: "false"
+  _SKIP_REPO_VERSION_UPDATE: "false"
+  _GO_PROTOC_VERSION: "2025-07-30"
 
 options:
   volumes:

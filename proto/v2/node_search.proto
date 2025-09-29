@@ -29,10 +29,7 @@ message NodeSearchRequest {
   // If not specified, nodes of all types will be searched.
   repeated string types = 2;
 
-  // Optional. The predicates (aka properties) the search should be restricted to.
-  // e.g. "name", "alternateName", "footnote"
-  // If not specified, the properties "name" and "description" will be searched.
-  repeated string predicates = 3;
+  reserved 3;
 }
 
 // Node search response from mixer.
@@ -49,5 +46,5 @@ message NodeSearchResult {
   datacommons.EntityInfo node = 1;
 
   // The property-value that matched the search query.
-  datacommons.PropertyValue match = 2;
+ reserved 2;
 }

@@ -687,7 +687,6 @@
             {
               "name": "Denmark",
               "types": [
-                "AdministrativeArea1",
                 "Country"
               ],
               "dcid": "country/DNK",
@@ -2345,7 +2344,7 @@
         "measurementDenominator": {
           "nodes": [
             {
-              "name": "Healthcare Expenditure Per Person",
+              "name": "Healthcare expenditure per person",
               "types": [
                 "StatisticalVariable"
               ],
@@ -2353,7 +2352,7 @@
               "provenanceId": "dc/base/HumanReadableStatVars"
             },
             {
-              "name": "Amount of Economic Activity (Nominal): Gross Domestic Production (Per Capita)",
+              "name": "Nominal gross domestic product per capita",
               "types": [
                 "StatisticalVariable"
               ],
@@ -2465,7 +2464,7 @@
               "provenanceId": "dc/base/HumanReadableStatVars"
             },
             {
-              "name": "Murder and Non Negligent Manslaughter Case Rate",
+              "name": "Murder and non negligent manslaughter cases per capita",
               "types": [
                 "StatisticalVariable"
               ],
@@ -2510,6 +2509,14 @@
                 "StatisticalVariable"
               ],
               "dcid": "Count_Death_IntentionalSelfHarm_AsFractionOf_Count_Person",
+              "provenanceId": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Count of hospital beds as a fraction of count of person",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "Count_HospitalBed_AsAFractionOf_Count_Person",
               "provenanceId": "dc/base/HumanReadableStatVars"
             },
             {
@@ -6334,14 +6341,6 @@
                 "StatisticalVariable"
               ],
               "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionEyeCondition_Urban_AsAFractionOf_Count_Person",
-              "provenanceId": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Count of Medical Condition Incident: 45 - 59 Years, Gastro Intestinal Condition (Per Capita)",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "Count_MedicalConditionIncident_45To59Years_ConditionGastroIntestinalCondition_AsAFractionOf_Count_Person",
               "provenanceId": "dc/base/HumanReadableStatVars"
             }
           ]

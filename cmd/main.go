@@ -26,6 +26,7 @@ import (
 	"runtime"
 	"runtime/pprof"
 
+	"github.com/datacommonsorg/mixer/internal/metrics"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
@@ -99,6 +100,15 @@ var (
 	redisInfo = flag.String("redis_info", "", "Yaml formatted text containing information for redis instances.")
 	// V3 API.
 	enableV3 = flag.Bool("enable_v3", false, "Enable datasources in V3 API.")
+	// OpenTelemetry metrics exporter
+	metricsExporter = flag.String(
+		"metrics_exporter",
+		"",
+		"Which exporter to use for OpenTelemetry metrics. Valid values are otlp, prometheus, and console (or blank for no-op).",
+	)
+	v3MirrorFraction = flag.Float64(
+		"v3_mirror_fraction", 0, "Fraction of V2 API requests to mirror to V3. Value from 0 to 1.0.",
+	)
 )
 
 func main() {
@@ -106,6 +116,13 @@ func main() {
 	// Parse flag
 	flag.Parse()
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
+
+	if *v3MirrorFraction < 0 || *v3MirrorFraction > 1.0 {
+		log.Fatalf("v3_mirror_fraction must be between 0 and 1.0, got %f", *v3MirrorFraction)
+	}
+	if *v3MirrorFraction > 0 && !*enableV3 {
+		log.Fatalf("v3_mirror_fraction > 0 requires --enable_v3=true")
+	}
 
 	ctx := context.Background()
 	var err error
@@ -122,8 +139,38 @@ func main() {
 		}
 	}
 
+	// Configure metrics exporter.
+	if *metricsExporter == "otlp" {
+		// Push to an OTLP collector.
+		err := metrics.ExportOtlpOverGrpc(ctx)
+		if err != nil {
+			log.Fatalf("Failed to start metrics server: %v", err)
+		}
+	} else if *metricsExporter == "prometheus" {
+		// Serve an HTTP endpoint that can be scraped by Prometheus.
+		err := metrics.ExportPrometheusOverHttp()
+		if err != nil {
+			log.Fatalf("Failed to start metrics server: %v", err)
+		}
+	} else if *metricsExporter == "console" {
+		// Print to the console.
+		metrics.ExportToConsole()
+	} else if *metricsExporter != "" {
+		log.Fatalf("Unknown metrics exporter: %s", *metricsExporter)
+	}
+	defer func() {
+		metrics.ShutdownWithTimeout()
+	}()
+
 	// Create grpc server.
-	srv := grpc.NewServer()
+	srv := grpc.NewServer(
+		grpc.ChainUnaryInterceptor(
+			metrics.InjectMethodNameUnaryInterceptor,
+		),
+		grpc.ChainStreamInterceptor(
+			metrics.InjectMethodNameStreamInterceptor,
+		),
+	)
 
 	// Data sources.
 	sources := []*datasource.DataSource{}
@@ -230,6 +277,7 @@ func main() {
 			log.Fatalf("Cannot open sqlite database from: %s: %v", *sqlitePath, err)
 		}
 		sqlClient.UseConnections(client)
+		//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 		defer sqlClient.Close()
 	}
 
@@ -242,6 +290,7 @@ func main() {
 				log.Fatalf("Cannot open cloud sql database from %s: %v", *cloudSQLInstance, err)
 			}
 			sqlClient.UseConnections(client)
+			//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 			defer sqlClient.Close()
 		}
 	}
@@ -309,6 +358,7 @@ func main() {
 			if err != nil {
 				log.Fatalf("Failed to create Redis client: %v", err)
 			}
+			//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 			defer redisClient.Close()
 
 			var redisProcessor dispatcher.Processor = redis.NewCacheProcessor(redisClient)
@@ -316,7 +366,7 @@ func main() {
 		}
 
 		// Calculation Processor
-		var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, c.SVFormula())
+		var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, c.SVFormula(ctx))
 		processors = append(processors, &calculationProcessor)
 	}
 
@@ -325,6 +375,7 @@ func main() {
 
 	// Create server object
 	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher)
+	mixerServer.SetV3MirrorFraction(*v3MirrorFraction)
 	pbs.RegisterMixerServer(srv, mixerServer)
 
 	// Subscribe to branch cache update
@@ -347,6 +398,7 @@ func main() {
 		if err != nil {
 			log.Fatalf("could not create memory profile: %s", err)
 		}
+		//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 		defer f.Close()
 		// explicitly trigger garbage collection to accurately understand memory
 		// still in use

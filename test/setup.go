@@ -213,7 +213,7 @@ func setupInternal(
 	// Processors
 	processors := []*dispatcher.Processor{}
 	if enableV3 {
-		var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, c.SVFormula())
+		var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, c.SVFormula(ctx))
 		processors = append(processors, &calculationProcessor)
 	}
 
@@ -279,7 +279,7 @@ func newClient(
 	}()
 
 	// Create mixer client
-	conn, err := grpc.Dial(
+	conn, err := grpc.NewClient(
 		lis.Addr().String(),
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(300000000 /* 300M */)))

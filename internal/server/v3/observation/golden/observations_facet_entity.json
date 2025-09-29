@@ -5,13 +5,13 @@
         "wikidataId/Q341968": {
           "ordered_facets": [
             {
-              "facet_id": "4010764369",
+              "facet_id": "2033764917",
               "obs_count": 2,
               "earliest_date": "2022-09",
               "latest_date": "2022-10"
             },
             {
-              "facet_id": "2370098101",
+              "facet_id": "2034122409",
               "obs_count": 1,
               "earliest_date": "2022",
               "latest_date": "2022"
@@ -25,32 +25,60 @@
         "wikidataId/Q1764983": {
           "ordered_facets": [
             {
-              "facet_id": "1456184638",
+              "facet_id": "590866011",
               "obs_count": 1,
               "earliest_date": "2021",
               "latest_date": "2021"
             },
             {
-              "facet_id": "2458695583",
-              "obs_count": 1,
+              "facet_id": "1156717814",
+              "obs_count": 2,
               "earliest_date": "2016",
-              "latest_date": "2016"
+              "latest_date": "2021"
             }
           ]
         },
         "wikidataId/Q341968": {
           "ordered_facets": [
             {
-              "facet_id": "1456184638",
+              "facet_id": "590866011",
               "obs_count": 1,
               "earliest_date": "2021",
               "latest_date": "2021"
             },
             {
-              "facet_id": "2458695583",
-              "obs_count": 1,
+              "facet_id": "1156717814",
+              "obs_count": 2,
               "earliest_date": "2016",
-              "latest_date": "2016"
+              "latest_date": "2021"
+            }
+          ]
+        }
+      }
+    },
+    "Max_Rainfall": {
+      "by_entity": {
+        "wikidataId/Q341968": {
+          "ordered_facets": [
+            {
+              "facet_id": "618611898",
+              "obs_count": 1451,
+              "earliest_date": "1900-05",
+              "latest_date": "2024-03"
+            }
+          ]
+        }
+      }
+    },
+    "Max_Snowfall": {
+      "by_entity": {
+        "wikidataId/Q341968": {
+          "ordered_facets": [
+            {
+              "facet_id": "618611898",
+              "obs_count": 1354,
+              "earliest_date": "1900-05",
+              "latest_date": "2017-05"
             }
           ]
         }
@@ -61,8 +89,120 @@
         "wikidataId/Q341968": {
           "ordered_facets": [
             {
-              "facet_id": "3083194648",
+              "facet_id": "628741720",
               "obs_count": 1437,
+              "earliest_date": "1902-06",
+              "latest_date": "2024-03"
+            }
+          ]
+        }
+      }
+    },
+    "Mean_BarometricPressure": {
+      "by_entity": {
+        "wikidataId/Q341968": {
+          "ordered_facets": [
+            {
+              "facet_id": "456596656",
+              "obs_count": 346,
+              "earliest_date": "1977-07",
+              "latest_date": "2024-03"
+            }
+          ]
+        }
+      }
+    },
+    "Mean_Rainfall": {
+      "by_entity": {
+        "wikidataId/Q341968": {
+          "ordered_facets": [
+            {
+              "facet_id": "618611898",
+              "obs_count": 1451,
+              "earliest_date": "1900-05",
+              "latest_date": "2024-03"
+            }
+          ]
+        }
+      }
+    },
+    "Mean_Snowfall": {
+      "by_entity": {
+        "wikidataId/Q341968": {
+          "ordered_facets": [
+            {
+              "facet_id": "618611898",
+              "obs_count": 1354,
+              "earliest_date": "1900-05",
+              "latest_date": "2017-05"
+            }
+          ]
+        }
+      }
+    },
+    "Mean_Temperature": {
+      "by_entity": {
+        "wikidataId/Q341968": {
+          "ordered_facets": [
+            {
+              "facet_id": "628741720",
+              "obs_count": 534,
+              "earliest_date": "1977-06",
+              "latest_date": "2024-03"
+            }
+          ]
+        }
+      }
+    },
+    "Mean_Visibility": {
+      "by_entity": {
+        "wikidataId/Q341968": {
+          "ordered_facets": [
+            {
+              "facet_id": "1007834510",
+              "obs_count": 261,
+              "earliest_date": "1977-06",
+              "latest_date": "2013-04"
+            }
+          ]
+        }
+      }
+    },
+    "Min_Rainfall": {
+      "by_entity": {
+        "wikidataId/Q341968": {
+          "ordered_facets": [
+            {
+              "facet_id": "618611898",
+              "obs_count": 1451,
+              "earliest_date": "1900-05",
+              "latest_date": "2024-03"
+            }
+          ]
+        }
+      }
+    },
+    "Min_Snowfall": {
+      "by_entity": {
+        "wikidataId/Q341968": {
+          "ordered_facets": [
+            {
+              "facet_id": "618611898",
+              "obs_count": 1354,
+              "earliest_date": "1900-05",
+              "latest_date": "2017-05"
+            }
+          ]
+        }
+      }
+    },
+    "Min_Temperature": {
+      "by_entity": {
+        "wikidataId/Q341968": {
+          "ordered_facets": [
+            {
+              "facet_id": "628741720",
+              "obs_count": 1442,
               "earliest_date": "1902-06",
               "latest_date": "2024-03"
             }
@@ -72,34 +212,59 @@
     }
   },
   "facets": {
-    "1456184638": {
-      "import_name": "WikipediaStatsData",
-      "provenance_url": "https://www.wikipedia.org",
-      "measurement_method": "Wikipedia"
+    "1007834510": {
+      "import_name": "NOAA_EPA_Observed_Historical_Weather",
+      "provenance_url": "https://www.noaa.gov/",
+      "measurement_method": "NASAGSOD_NASAGHCN_EPA",
+      "observation_period": "P1M",
+      "unit": "Kilometer",
+      "is_dc_aggregate": true
     },
-    "2370098101": {
-      "import_name": "TemperatureEvents_Agg",
-      "provenance_url": "https://datacommons.org",
-      "measurement_method": "DataCommonsAggregate",
-      "observation_period": "P1Y"
-    },
-    "2458695583": {
+    "1156717814": {
       "import_name": "WikidataPopulation",
       "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
       "measurement_method": "WikidataPopulation"
     },
-    "3083194648": {
-      "import_name": "NOAA_EPA_Observed_Historical_Weather",
-      "provenance_url": "https://www.noaa.gov/",
-      "measurement_method": "dcAggregate/NASAGSOD_NASAGHCN_EPA",
-      "observation_period": "P1M",
-      "unit": "Celsius"
-    },
-    "4010764369": {
+    "2033764917": {
       "import_name": "TemperatureEvents_Agg",
       "provenance_url": "https://datacommons.org",
-      "measurement_method": "DataCommonsAggregate",
-      "observation_period": "P1M"
+      "observation_period": "P1M",
+      "is_dc_aggregate": true
+    },
+    "2034122409": {
+      "import_name": "TemperatureEvents_Agg",
+      "provenance_url": "https://datacommons.org",
+      "observation_period": "P1Y",
+      "is_dc_aggregate": true
+    },
+    "456596656": {
+      "import_name": "NOAA_EPA_Observed_Historical_Weather",
+      "provenance_url": "https://www.noaa.gov/",
+      "measurement_method": "NASAGSOD_NASAGHCN_EPA",
+      "observation_period": "P1M",
+      "unit": "Millibar",
+      "is_dc_aggregate": true
+    },
+    "590866011": {
+      "import_name": "WikipediaStatsData",
+      "provenance_url": "https://www.wikipedia.org",
+      "measurement_method": "Wikipedia"
+    },
+    "618611898": {
+      "import_name": "NOAA_EPA_Observed_Historical_Weather",
+      "provenance_url": "https://www.noaa.gov/",
+      "measurement_method": "NASAGSOD_NASAGHCN_EPA",
+      "observation_period": "P1M",
+      "unit": "Millimeter",
+      "is_dc_aggregate": true
+    },
+    "628741720": {
+      "import_name": "NOAA_EPA_Observed_Historical_Weather",
+      "provenance_url": "https://www.noaa.gov/",
+      "measurement_method": "NASAGSOD_NASAGHCN_EPA",
+      "observation_period": "P1M",
+      "unit": "Celsius",
+      "is_dc_aggregate": true
     }
   }
 }

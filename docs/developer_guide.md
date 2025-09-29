@@ -146,6 +146,31 @@ exposes the http mixer service at `localhost:8081`.
 envoy -l warning --config-path esp/envoy-config.yaml
 ```
 
+## Running Redis locally
+
+Mixer can use Redis as a cache. To run Redis locally for development and connect mixer to it:
+
+1. Install Redis and start a Redis server. On MacOS, you can use Homebrew:
+
+```bash
+brew install redis
+redis-server
+```
+
+2.  Start mixer with `go run cmd/main.go` as described above and add the following flags:
+
+```bash
+--enable_v3=true \
+--use_redis=true \
+--redis_info="$(cat <<EOF
+instances:
+  - host: "127.0.0.1"
+    port: "6379"
+EOF
+)"
+```
+
+
 ## Update Go package dependencies
 
 To view possible updates:
@@ -161,10 +186,22 @@ go get -u ./...
 go mod tidy
 ```
 
-## Run Tests (Go)
+## Run tests (Go)
 
 ```bash
-./scripts/run_test.sh
+./run_test.sh
+```
+
+## Lint (Go)
+
+```bash
+./run_test.sh -l
+```
+
+## Auto-fix some lint issues (Go)
+
+```bash
+./run_test.sh -f
 ```
 
 ## Update e2e test golden files (Go)

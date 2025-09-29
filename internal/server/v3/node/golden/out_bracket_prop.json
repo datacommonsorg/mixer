@@ -1,0 +1,45 @@
+{
+  "data": {
+    "geoId/5129600": {
+      "arcs": {
+        "containedInPlace": {
+          "nodes": [
+            {
+              "name": "Virginia",
+              "types": [
+                "AdministrativeArea1",
+                "State"
+              ],
+              "dcid": "geoId/51",
+              "provenance_id": "dc/base/BaseGeos"
+            },
+            {
+              "name": "Franklin",
+              "types": [
+                "County"
+              ],
+              "dcid": "geoId/51620",
+              "provenance_id": "dc/base/BaseGeos"
+            },
+            {
+              "name": "23851",
+              "types": [
+                "CensusZipCodeTabulationArea"
+              ],
+              "dcid": "zip/23851",
+              "provenance_id": "dc/base/BaseGeos"
+            }
+          ]
+        },
+        "geoJsonCoordinatesDP3": {
+          "nodes": [
+            {
+              "provenance_id": "dc/base/BaseGeos",
+              "value": "{\"type\": \"Polygon\", \"coordinates\": [[[-76.96839, 36.70058], [-76.910058, 36.647146], [-76.96839, 36.70058]]]}"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

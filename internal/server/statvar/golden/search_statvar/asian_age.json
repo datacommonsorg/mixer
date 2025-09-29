@@ -2437,6 +2437,18 @@
       "dcid": "Count_Person_84Years_NotHispanicOrLatino_AsianOrPacificIslander"
     },
     {
+      "name": "Population: Years 85, Asian Alone",
+      "dcid": "Count_Person_85Years_AsianAlone"
+    },
+    {
+      "name": "Population: Years 85, Hispanic or Latino \u0026 Asian Alone",
+      "dcid": "Count_Person_85Years_HispanicOrLatino_AsianAlone"
+    },
+    {
+      "name": "Population: Years 85, Not Hispanic or Latino \u0026 Asian Alone",
+      "dcid": "Count_Person_85Years_NotHispanicOrLatino_AsianAlone"
+    },
+    {
       "name": "Population: Years 9, Asian Alone",
       "dcid": "Count_Person_9Years_AsianAlone"
     },
@@ -3987,18 +3999,6 @@
     {
       "name": "Population: Years 13, Female, Not Hispanic or Latino \u0026 Asian Alone",
       "dcid": "Count_Person_13Years_Female_NotHispanicOrLatino_AsianAlone"
-    },
-    {
-      "name": "Population: Years 13, Female, Not Hispanic or Latino \u0026 Asian or Pacific Islander",
-      "dcid": "Count_Person_13Years_Female_NotHispanicOrLatino_AsianOrPacificIslander"
-    },
-    {
-      "name": "Population: Years 13, Male, Asian Alone",
-      "dcid": "Count_Person_13Years_Male_AsianAlone"
-    },
-    {
-      "name": "Population: Years 13, Male, Asian or Pacific Islander",
-      "dcid": "Count_Person_13Years_Male_AsianOrPacificIslander"
     }
   ],
   "matches": [

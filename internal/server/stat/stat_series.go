@@ -163,7 +163,7 @@ func GetStats(ctx context.Context, in *pb.GetStatsRequest, store *store.Store) (
 			result[place] = &model.GetStatsResponse{
 				PlaceName: obsSeries.PlaceName,
 			}
-			if obsSeries.SourceSeries != nil && len(obsSeries.SourceSeries) > 0 {
+			if len(obsSeries.SourceSeries) > 0 {
 				result[place].Data = obsSeries.SourceSeries[0].Val
 				result[place].ProvenanceURL = obsSeries.SourceSeries[0].ProvenanceURL
 			}

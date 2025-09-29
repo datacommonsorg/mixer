@@ -101,7 +101,7 @@ func TestV3Observation(t *testing.T) {
 						Dcids: []string{"Count_Person", "Median_Age_Person", "fake_variable"},
 					},
 					Entity: &pbv2.DcidOrExpression{
-						Expression: "geoId/06<-containedInPlace+{typeOf:County}",
+						Expression: "geoId/10<-containedInPlace+{typeOf:County}",
 					},
 					Date:   "2015",
 					Select: []string{"entity", "variable", "date", "value"},
@@ -133,6 +133,21 @@ func TestV3Observation(t *testing.T) {
 					Select: []string{"entity", "variable"},
 				},
 				goldenFile: "observations_existence_contained_in.json",
+			},
+			{
+				req: &pbv2.ObservationRequest{
+					Variable: &pbv2.DcidOrExpression{
+						Dcids: []string{"Count_Person"},
+					},
+					Entity: &pbv2.DcidOrExpression{
+						Expression: "Earth<-containedInPlace+{typeOf:Country}",
+					},
+					Select: []string{"entity", "variable"},
+					Filter: &pbv2.FacetFilter{
+						FacetIds: []string{"327307087"}, // OECDRegionalDemography_Population
+					},
+				},
+				goldenFile: "observations_existence_contained_in_filter.json",
 			},
 			{
 				req: &pbv2.ObservationRequest{
@@ -232,7 +247,7 @@ func TestV3Observation(t *testing.T) {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V3Observation(ctx, c.req)
 			if err != nil {
-				t.Errorf("Could not run v2Observation: %s", err)
+				t.Errorf("Could not run V3Observation: %s", err)
 				continue
 			}
 			if latencyTest {
@@ -254,10 +269,10 @@ func TestV3Observation(t *testing.T) {
 		}
 	}
 	if err := test.TestDriver(
-		"Testv2Observation",
+		"TestV3Observation",
 		&test.TestOption{UseSQLite: true, UseSpannerGraph: true, EnableV3: true, CacheSVFormula: true},
 		testSuite,
 	); err != nil {
-		t.Errorf("TestDriver() for Testv2Observation = %s", err)
+		t.Errorf("TestDriver() for TestV3Observation = %s", err)
 	}
 }

@@ -22,6 +22,8 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 // SpannerDataSource represents a data source that interacts with Spanner.
@@ -103,32 +105,31 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 	date := req.Date
 	var observations []*Observation
 	var err error
-	filterObs := isExistenceRequest(req.Select)
 
 	if entityExpr != "" {
 		containedInPlace, err := v2.ParseContainedInPlace(entityExpr)
 		if err != nil {
 			return nil, fmt.Errorf("error getting observations (contained in): %v", err)
 		}
-		observations, err = sds.client.GetObservationsContainedInPlace(ctx, variables, containedInPlace, date, filterObs)
+		observations, err = sds.client.GetObservationsContainedInPlace(ctx, variables, containedInPlace)
 		if err != nil {
 			return nil, fmt.Errorf("error getting observations (contained in): %v", err)
 		}
 	} else {
-		observations, err = sds.client.GetObservations(ctx, variables, entities, date, filterObs)
+		observations, err = sds.client.GetObservations(ctx, variables, entities)
 		if err != nil {
 			return nil, fmt.Errorf("error getting observations: %v", err)
 		}
 	}
 
-	observations = filterObservationsByFacet(observations, req.Filter)
+	observations = filterObservationsByDateAndFacet(observations, date, req.Filter)
 
 	return observationsToObservationResponse(req, observations), nil
 }
 
 // NodeSearch searches nodes in the spanner graph.
 func (sds *SpannerDataSource) NodeSearch(ctx context.Context, req *pbv2.NodeSearchRequest) (*pbv2.NodeSearchResponse, error) {
-	nodes, err := sds.client.SearchObjectValues(ctx, req.Query, req.Predicates, req.Types)
+	nodes, err := sds.client.SearchNodes(ctx, req.Query, req.Types)
 	if err != nil {
 		return nil, fmt.Errorf("error searching nodes: %v", err)
 	}
@@ -137,5 +138,47 @@ func (sds *SpannerDataSource) NodeSearch(ctx context.Context, req *pbv2.NodeSear
 
 // Resolve searches for nodes in the graph.
 func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
-	return nil, fmt.Errorf("unimplemented")
+	arcs, err := v2.ParseProperty(req.GetProperty())
+	if err != nil {
+		return nil, err
+	}
+
+	if len(arcs) != 2 {
+		return nil, status.Errorf(codes.InvalidArgument,
+			"invalid property for resolving: %s", req.GetProperty())
+	}
+
+	inArc := arcs[0]
+	outArc := arcs[1]
+	if inArc.Out || !outArc.Out {
+		return nil, status.Errorf(codes.InvalidArgument,
+			"invalid property for resolving: %s", req.GetProperty())
+	}
+
+	if inArc.SingleProp == "geoCoordinate" && outArc.SingleProp == "dcid" {
+		// Coordinate to ID:
+		// Example:
+		//   <-geoCoordinate->dcid
+		// TODO: Support coordinate recon with Spanner.
+		return nil, fmt.Errorf("unimplemented")
+	}
+
+	if inArc.SingleProp == "description" && outArc.SingleProp == "dcid" {
+		// Description (name) to ID:
+		// Examples:
+		//   <-description->dcid
+		//   <-description{typeOf:City}->dcid
+		//   <-description{typeOf:[City, County]}->dcid
+		// TODO: Support text resolution with Spanner.
+		return nil, fmt.Errorf("unimplemented")
+	}
+
+	// ID to ID:
+	// Example:
+	//   <-wikidataId->nutsCode
+	nodeToCandidates, err := sds.client.ResolveByID(ctx, req.GetNodes(), inArc.SingleProp, outArc.SingleProp)
+	if err != nil {
+		return nil, fmt.Errorf("error resolving ids: %v", err)
+	}
+	return candidatesToResolveResponse(nodeToCandidates), nil
 }

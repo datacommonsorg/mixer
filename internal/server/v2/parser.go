@@ -64,11 +64,12 @@ func splitExpr(expr string) []string {
 // parseArc parses an Arc object
 func parseArc(arrow, expr string) (*Arc, error) {
 	arc := &Arc{}
-	if arrow == "->" {
+	switch arrow {
+	case "->":
 		arc.Out = true
-	} else if arrow == "<-" {
+	case "<-":
 		arc.Out = false
-	} else {
+	default:
 		return nil, status.Errorf(
 			codes.InvalidArgument,
 			"arc string should start with arrow but got %s",

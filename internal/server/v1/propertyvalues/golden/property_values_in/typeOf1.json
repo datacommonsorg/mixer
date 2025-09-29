@@ -464,15 +464,6 @@
       "provenanceId": "dc/base/WikidataOtherIdGeos"
     },
     {
-      "name": "Denmark",
-      "types": [
-        "AdministrativeArea1",
-        "Country"
-      ],
-      "dcid": "country/DNK",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
-    },
-    {
       "name": "Falkland Islands",
       "types": [
         "AdministrativeArea1",

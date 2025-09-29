@@ -79,8 +79,9 @@ func countInternal(
 	if sqldb.IsConnected(&st.SQLClient) {
 		// all SV contains the SV in the request and child SV in the request SVG.
 		allSV := []string{}
+		sqlExistenceMap := cachedata.SQLExistenceMap(ctx)
 		for _, svOrSvg := range svOrSvgs {
-			if _, ok := cachedata.SQLExistenceMap()[util.EntityVariable{V: svOrSvg}]; ok {
+			if _, ok := sqlExistenceMap[util.EntityVariable{V: svOrSvg}]; ok {
 				allSV = append(allSV, svOrSvg)
 			}
 		}
@@ -94,7 +95,7 @@ func countInternal(
 		}
 		ancestorSVG := map[string][]string{}
 		for _, svg := range requestSVG {
-			descendantSVs := util.GetAllDescendentSV(cachedata.RawSvgs(), svg)
+			descendantSVs := util.GetAllDescendentSV(cachedata.RawSvgs(ctx), svg)
 			for _, sv := range descendantSVs {
 				allSV = append(allSV, sv)
 				if _, ok := ancestorSVG[sv]; !ok {
@@ -110,7 +111,7 @@ func countInternal(
 		allSV = util.MergeDedupe(allSV, []string{})
 		for _, e := range entities {
 			for _, v := range allSV {
-				if _, ok := cachedata.SQLExistenceMap()[util.EntityVariable{E: e, V: v}]; ok {
+				if _, ok := sqlExistenceMap[util.EntityVariable{E: e, V: v}]; ok {
 					// This is an sv in the original query variable list.
 					if _, ok := requestSV[v]; ok {
 						result[v][e] = 0
@@ -157,7 +158,7 @@ func Count(
 		if len(missingEntities) == 0 {
 			continue
 		}
-		formulas, ok := cachedata.SVFormula()[svOrSvg]
+		formulas, ok := cachedata.SVFormula(ctx)[svOrSvg]
 		if !ok {
 			continue
 		}

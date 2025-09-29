@@ -38,11 +38,12 @@ func API(
 		return nil, err
 	}
 	res := &pbv2.NodeResponse{Data: map[string]*pbv2.LinkedGraph{}}
-	if direction == util.DirectionIn {
+	switch direction {
+	case util.DirectionIn:
 		for node, d := range data {
 			res.Data[node] = &pbv2.LinkedGraph{Properties: d}
 		}
-	} else if direction == util.DirectionOut {
+	case util.DirectionOut:
 		for node, d := range data {
 			var properties []string
 			if strings.HasPrefix(node, "dc/o") {

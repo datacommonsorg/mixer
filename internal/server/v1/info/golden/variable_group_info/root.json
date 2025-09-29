@@ -7,49 +7,49 @@
         "id": "dc/g/Agriculture",
         "specializedEntity": "Agriculture",
         "displayName": "Agriculture",
-        "descendentStatVarCount": 405
+        "descendentStatVarCount": 450
       },
       {
         "id": "dc/g/Demographics",
         "specializedEntity": "Demographics",
         "displayName": "Demographics",
-        "descendentStatVarCount": 49916
+        "descendentStatVarCount": 50902
       },
       {
         "id": "dc/g/Economy",
         "specializedEntity": "Economy",
         "displayName": "Economy",
-        "descendentStatVarCount": 119326
+        "descendentStatVarCount": 122184
       },
       {
         "id": "dc/g/Education",
         "specializedEntity": "Education",
         "displayName": "Education",
-        "descendentStatVarCount": 70730
+        "descendentStatVarCount": 53615
       },
       {
         "id": "dc/g/Energy",
         "specializedEntity": "Energy",
         "displayName": "Energy",
-        "descendentStatVarCount": 9779
+        "descendentStatVarCount": 10151
       },
       {
         "id": "dc/g/Environment",
         "specializedEntity": "Environment",
         "displayName": "Environment",
-        "descendentStatVarCount": 3643
+        "descendentStatVarCount": 3666
       },
       {
         "id": "dc/g/Health",
         "specializedEntity": "Health",
         "displayName": "Health",
-        "descendentStatVarCount": 50965
+        "descendentStatVarCount": 53568
       },
       {
         "id": "dc/g/Housing",
         "specializedEntity": "Housing",
         "displayName": "Housing",
-        "descendentStatVarCount": 4906
+        "descendentStatVarCount": 4908
       },
       {
         "id": "dc/g/Crime",
@@ -67,7 +67,7 @@
         "id": "dc/g/Uncategorized",
         "specializedEntity": "Uncategorized",
         "displayName": "Uncategorized",
-        "descendentStatVarCount": 9331
+        "descendentStatVarCount": 9737
       },
       {
         "id": "dc/g/UN",
@@ -79,9 +79,9 @@
         "id": "dc/g/SDG",
         "specializedEntity": "Sustainable Development Goals",
         "displayName": "Sustainable Development Goals",
-        "descendentStatVarCount": 4282
+        "descendentStatVarCount": 4625
       }
     ],
-    "descendentStatVarCount": 244121
+    "descendentStatVarCount": 250285
   }
 }

@@ -62,13 +62,23 @@
         "hasData": true
       },
       {
-        "id": "Median_Age_Person",
+        "id": "Mean_Count_Person",
         "searchNames": [
-          "Median Age of Person",
-          "Median Age of Population"
+          "Mean Population Count of Person",
+          "Mean count of person"
         ],
-        "displayName": "Median Age of Population",
-        "definition": "st=medianValue,mp=age,pt=Person",
+        "displayName": "Mean count of person",
+        "definition": "st=meanValue,mp=count,pt=Person",
+        "hasData": true
+      },
+      {
+        "id": "Mean_IncrementalCount_Person",
+        "searchNames": [
+          "Mean Incremental Count of Person",
+          "Mean incremental count of person"
+        ],
+        "displayName": "Mean incremental count of person",
+        "definition": "st=meanValue,mp=incrementalCount,pt=Person",
         "hasData": true
       },
       {
@@ -79,6 +89,16 @@
         ],
         "displayName": "Median Income of a Population",
         "definition": "st=medianValue,mp=income,pt=Person",
+        "hasData": true
+      },
+      {
+        "id": "Median_Age_Person",
+        "searchNames": [
+          "Median Age of Person",
+          "Median age of population"
+        ],
+        "displayName": "Median age of population",
+        "definition": "st=medianValue,mp=age,pt=Person",
         "hasData": true
       },
       {
@@ -111,6 +131,16 @@
         "hasData": true
       },
       {
+        "id": "GrowthRate_Count_Person",
+        "searchNames": [
+          "Growth Rate Population Count of Person",
+          "Population growth rate"
+        ],
+        "displayName": "Population growth rate",
+        "definition": "st=growthRate,mp=count,pt=Person",
+        "hasData": true
+      },
+      {
         "id": "Count_Person_InfrastructureProject_BrazilRuralDevelopmentProgram",
         "searchNames": [
           "Population Count of Person With Affected by Is Infrastructure Project, Benefit Program is Brazil_Rural Development Program",
@@ -121,22 +151,12 @@
         "hasData": true
       },
       {
-        "id": "GrowthRate_Count_Person",
-        "searchNames": [
-          "Growth Rate Population Count of Person",
-          "Rate of Population Growth"
-        ],
-        "displayName": "Rate of Population Growth",
-        "definition": "st=growthRate,mp=count,pt=Person",
-        "hasData": true
-      },
-      {
         "id": "Count_Person",
         "searchNames": [
           "Population Count of Person",
-          "Total Population"
+          "Total population"
         ],
-        "displayName": "Total Population",
+        "displayName": "Total population",
         "definition": "mp=count,pt=Person",
         "hasData": true
       }
@@ -146,7 +166,7 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 29624
+        "descendentStatVarCount": 30554
       },
       {
         "id": "dc/g/Person_AgeGroupClassification",
@@ -194,7 +214,7 @@
         "id": "dc/g/Person_CitizenshipStatus",
         "specializedEntity": "Citizenship Status",
         "displayName": "Person by Citizenship Status",
-        "descendentStatVarCount": 1593
+        "descendentStatVarCount": 1604
       },
       {
         "id": "dc/g/CivicStructure",
@@ -260,7 +280,7 @@
         "id": "dc/g/Person_DisabilityStatus",
         "specializedEntity": "Disability Status",
         "displayName": "Person by Disability Status",
-        "descendentStatVarCount": 545
+        "descendentStatVarCount": 547
       },
       {
         "id": "dc/g/Person_Earnings",
@@ -284,7 +304,7 @@
         "id": "dc/g/Person_Ethnicity",
         "specializedEntity": "Ethnicity",
         "displayName": "Person by Ethnicity",
-        "descendentStatVarCount": 1845
+        "descendentStatVarCount": 2234
       },
       {
         "id": "dc/g/Person_Facilities",
@@ -320,7 +340,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 26458
+        "descendentStatVarCount": 27293
       },
       {
         "id": "dc/g/Person_GovernmentId",
@@ -350,7 +370,7 @@
         "id": "dc/g/Household",
         "specializedEntity": "Household",
         "displayName": "Household",
-        "descendentStatVarCount": 3522
+        "descendentStatVarCount": 3524
       },
       {
         "id": "dc/g/Person_HouseholdIncome",
@@ -380,7 +400,7 @@
         "id": "dc/g/ImmigrationAndCitizenship",
         "specializedEntity": "Immigration and Citizenship",
         "displayName": "Immigration and Citizenship",
-        "descendentStatVarCount": 4001
+        "descendentStatVarCount": 4012
       },
       {
         "id": "dc/g/Person_Income",
@@ -410,19 +430,19 @@
         "id": "dc/g/Person_InternetUsageLocation",
         "specializedEntity": "Internet Usage Location",
         "displayName": "Person by Internet Usage Location",
-        "descendentStatVarCount": 405
+        "descendentStatVarCount": 406
       },
       {
         "id": "dc/g/Person_IsInternetUser",
         "specializedEntity": "Is Internet User",
         "displayName": "Person by Is Internet User",
-        "descendentStatVarCount": 406
+        "descendentStatVarCount": 407
       },
       {
         "id": "dc/g/Person_LaborForceStatus",
         "specializedEntity": "Labor Force Status",
         "displayName": "Person by Labor Force Status",
-        "descendentStatVarCount": 4561
+        "descendentStatVarCount": 4587
       },
       {
         "id": "dc/g/Language",
@@ -440,7 +460,7 @@
         "id": "dc/g/Person_MaritalStatus",
         "specializedEntity": "Marital Status",
         "displayName": "Person by Marital Status",
-        "descendentStatVarCount": 2481
+        "descendentStatVarCount": 2503
       },
       {
         "id": "dc/g/MaternalMortalityEvent",
@@ -458,7 +478,7 @@
         "id": "dc/g/MilitaryService",
         "specializedEntity": "Military Service",
         "displayName": "Military Service",
-        "descendentStatVarCount": 2402
+        "descendentStatVarCount": 2403
       },
       {
         "id": "dc/g/Demographics_Miscellaneous",
@@ -470,7 +490,7 @@
         "id": "dc/g/Mother",
         "specializedEntity": "Mother",
         "displayName": "Mother",
-        "descendentStatVarCount": 37
+        "descendentStatVarCount": 38
       },
       {
         "id": "dc/g/MunicipalWard",
@@ -524,7 +544,7 @@
         "id": "dc/g/Person_Race",
         "specializedEntity": "Race",
         "displayName": "Person by Race",
-        "descendentStatVarCount": 21008
+        "descendentStatVarCount": 21900
       },
       {
         "id": "dc/g/Person_Religion",
@@ -560,7 +580,7 @@
         "id": "dc/g/VehicleCrashIncident",
         "specializedEntity": "Vehicle Crash Incident",
         "displayName": "Vehicle Crash Incident",
-        "descendentStatVarCount": 94
+        "descendentStatVarCount": 100
       },
       {
         "id": "dc/g/Person_VehicleOccupantType",
@@ -581,7 +601,7 @@
         "descendentStatVarCount": 4
       }
     ],
-    "descendentStatVarCount": 49916,
+    "descendentStatVarCount": 50902,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

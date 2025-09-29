@@ -2,10 +2,10 @@
   "Person": [
     {
       "SubjectID": "Person",
-      "Predicate": "extendedName",
-      "ObjectID": "",
-      "ObjectValue": "Person",
+      "Predicate": "source",
       "Provenance": "dc/base/BaseSchema",
+      "Value": "https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources",
+      "Bytes": null,
       "Name": "",
       "Types": []
     }

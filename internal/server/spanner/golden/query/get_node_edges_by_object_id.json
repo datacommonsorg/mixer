@@ -2,10 +2,21 @@
   "FireIncidentTypeEnum": [
     {
       "SubjectID": "FireIncidentTypeEnum",
-      "Predicate": "typeOf",
-      "ObjectID": "ComplexFire",
-      "ObjectValue": "",
+      "Predicate": "rangeIncludes",
       "Provenance": "dc/base/BaseSchema",
+      "Value": "classification",
+      "Bytes": null,
+      "Name": "classification",
+      "Types": [
+        "Property"
+      ]
+    },
+    {
+      "SubjectID": "FireIncidentTypeEnum",
+      "Predicate": "typeOf",
+      "Provenance": "dc/base/BaseSchema",
+      "Value": "ComplexFire",
+      "Bytes": null,
       "Name": "ComplexFire",
       "Types": [
         "FireIncidentTypeEnum"
@@ -14,9 +25,9 @@
     {
       "SubjectID": "FireIncidentTypeEnum",
       "Predicate": "typeOf",
-      "ObjectID": "PrescribedFire",
-      "ObjectValue": "",
       "Provenance": "dc/base/BaseSchema",
+      "Value": "PrescribedFire",
+      "Bytes": null,
       "Name": "PrescribedFire",
       "Types": [
         "EmissionSourceEnum",
@@ -28,9 +39,9 @@
     {
       "SubjectID": "FireIncidentTypeEnum",
       "Predicate": "typeOf",
-      "ObjectID": "Wildfire",
-      "ObjectValue": "",
       "Provenance": "dc/base/BaseSchema",
+      "Value": "Wildfire",
+      "Bytes": null,
       "Name": "Wildfire",
       "Types": [
         "EmissionSourceEnum",
@@ -40,9 +51,9 @@
     {
       "SubjectID": "FireIncidentTypeEnum",
       "Predicate": "typeOf",
-      "ObjectID": "WildlandFireUse",
-      "ObjectValue": "",
       "Provenance": "dc/base/BaseSchema",
+      "Value": "WildlandFireUse",
+      "Bytes": null,
       "Name": "WildlandFireUse",
       "Types": [
         "FireIncidentTypeEnum"
@@ -52,10 +63,21 @@
   "FoodTypeEnum": [
     {
       "SubjectID": "FoodTypeEnum",
-      "Predicate": "typeOf",
-      "ObjectID": "Meal",
-      "ObjectValue": "",
+      "Predicate": "rangeIncludes",
       "Provenance": "dc/base/BaseSchema",
+      "Value": "foodType",
+      "Bytes": null,
+      "Name": "foodType",
+      "Types": [
+        "Property"
+      ]
+    },
+    {
+      "SubjectID": "FoodTypeEnum",
+      "Predicate": "typeOf",
+      "Provenance": "dc/base/BaseSchema",
+      "Value": "Meal",
+      "Bytes": null,
       "Name": "Meal",
       "Types": [
         "FoodTypeEnum"

@@ -13,10 +13,10 @@
 # limitations under the License.
 
 steps:
-  # Build protobuf to go bindings
+  # Validate BQ version file and run golangci-lint
   - id: lint
-    name: gcr.io/datcom-ci/go-protoc
-    entrypoint: "bash"
+    name: golangci/golangci-lint:v2.3.0-alpine
+    entrypoint: "sh"
     args:
       - -c
       - |
@@ -26,11 +26,12 @@ steps:
           echo "bigquery.version should not have end of file newline"
           exit 1
         fi
-        wget -O- -nv https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s v1.52.2
-        ./bin/golangci-lint run --timeout=600s --skip-dirs='internal/proto'
+        golangci-lint run -v
+    waitFor: ["-"]
 
+  # Build protobuf to go bindings
   - id: build-proto
-    name: gcr.io/datcom-ci/go-protoc
+    name: gcr.io/datcom-ci/go-protoc:${_GO_PROTOC_VERSION}
     entrypoint: "bash"
     args:
       - -c
@@ -42,17 +43,21 @@ steps:
           --go-grpc_out=paths=source_relative:internal/proto \
           --go-grpc_opt=require_unimplemented_servers=false \
           --experimental_allow_proto3_optional \
-          proto/*.proto proto/v1/*.proto
+          proto/*.proto proto/**/*.proto
+    waitFor: ["-"]
 
   - id: test
-    name: golang
-    env: ["GO111MODULE=on"]
+    name: gcr.io/datcom-ci/go-protoc:${_GO_PROTOC_VERSION}
     entrypoint: "bash"
     args:
       - -c
       - |
         set -e
         go test -v ./...
+    waitFor: ["build-proto"]
+
+substitutions:
+  _GO_PROTOC_VERSION: "2025-07-30"
 
 options:
   volumes:

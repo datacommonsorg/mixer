@@ -1,5 +1,4 @@
-#!/bin/bash
-# Copyright 2023 Google LLC
+# Copyright 2025 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,10 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+version: 2
 
-# This script is used to run all the mixer test.
-# `./run_test.sh` runs the tests with local Golang enviroment.
+run:
+  timeout: 5m
 
-set -e
-
-go test -v ./...
+linters:
+  exclusions:
+    paths:
+      - internal/proto

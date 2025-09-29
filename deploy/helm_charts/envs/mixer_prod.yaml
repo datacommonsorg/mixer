@@ -1,7 +1,23 @@
+project: datcom-mixer
+cluster_prefix: mixer
+
 # Helm config
 mixer:
   hostProject: datcom-mixer
   serviceName: api.datacommons.org
+  cluster_prefix: mixer
+  project: datcom-mixer
+  useSpannerGraph: true
+  enableV3: true
+  redis:
+    enabled: true
+    configFile: |
+      instances:
+        - region: "us-central1"
+          host: "10.139.83.75"
+          port: "6379"
+  enableOtlp: true
+  v3MirrorFraction: 0.001
 
 ingress:
   enabled: true
@@ -15,13 +31,13 @@ serviceGroups:
   svg:
     replicas: 10
   recon:
-    replicas: 60
+    replicas: 90
   node:
-    replicas: 40
+    replicas: 60
   observation:
-    replicas: 40
+    replicas: 60
   default:
-    replicas: 20
+    replicas: 30
 
 # GCP level config
 ip: 35.244.133.155

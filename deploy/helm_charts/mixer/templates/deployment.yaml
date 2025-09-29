@@ -28,7 +28,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "mixer.fullname" $ }}-{{ $serviceName }}
-  namespace: {{ $.Values.namespace.name }}
+  namespace: {{ $.Release.Namespace }}
   labels:
     service:  {{ include "mixer.fullname" $ }}-{{ $serviceName }}
     {{- include "mixer.labels" $ | nindent 4 }}
@@ -39,7 +39,7 @@ spec:
     rollingUpdate:
       # maximum number of Pods that can be created over the desired number of Pods
       # 25% of default pods (+1 in case default < 4)
-      maxSurge: {{ div $group.replicas 4 | add 1 }}
+      maxSurge: {{ $group.maxSurge | default (div $group.replicas 4 | add 1) }}
       # Maximum number of pods that can be unavailable during the update process
       # 25% of default pods (+1 in case default < 4)
       maxUnavailable: {{ div $group.replicas 4 | add 1 }}
@@ -72,45 +72,134 @@ spec:
           configMap:
             defaultMode: 420
             name: service-config-configmap
+        - name: dynamic-config
+          emptyDir: {}
+        - name: static-bt-config-volume
+          configMap:
+            name: {{ include "mixer.fullname" $ }}-store-config
+            items:
+              - key: base_bigtable_info.yaml
+                path: base_bigtable_info.yaml
+      initContainers:
+        - name: update-bigtable-info
+          image: gcr.io/datcom-ci/datacommons-script-runner:latest
+          command:
+            - /bin/bash
+            - -c
+            - |
+              # This Init Container only runs for dev and autopush
+              {{- if or (eq $.Values.mixer.hostProject "datcom-website-autopush") (eq $.Values.mixer.hostProject "datcom-mixer-autopush") (eq $.Values.mixer.hostProject "datcom-website-dev") (eq $.Values.mixer.hostProject "datcom-mixer-dev-316822") }}
+              set -e
+              echo "Fetching Bigtable info from GCS for {{ $.Values.mixer.hostProject }}..."
+              BT_OUTPUT_FILE="/dynamic-config/base_bigtable_info.yaml"
+              echo "project: datcom-store" > $BT_OUTPUT_FILE
+              echo "instance: prophet-cache" >> $BT_OUTPUT_FILE
+              echo "tables:" >> $BT_OUTPUT_FILE
+              for src in $(gsutil ls gs://datcom-control/autopush/*_latest_base_cache_version.txt); do
+                TABLE="$(gsutil cat "$src")"
+                if [[ $TABLE == experimental* ]] && [[ "{{ $.Values.mixer.hostProject }}" != "datcom-website-autopush" ]] && [[ "{{ $.Values.mixer.hostProject }}" != "datcom-mixer-autopush" ]]; then
+                  continue
+                fi
+                echo "Adding table: $TABLE"
+                if [[ $TABLE != "" ]]; then
+                  echo "  - $TABLE" >> $BT_OUTPUT_FILE
+                fi
+              done
+              echo "Successfully generated dynamic Bigtable config file."
+              cat $BT_OUTPUT_FILE
+
+              echo "Fetching BigQuery version from GCS..."
+              BQ_OUTPUT_FILE="/dynamic-config/bigquery.version"
+              gsutil cp gs://datcom-control/latest_base_bigquery_version.txt $BQ_OUTPUT_FILE
+              echo "Successfully fetched BigQuery version."
+              cat $BQ_OUTPUT_FILE
+              {{- else }}
+              echo "Skipping dynamic config fetch for {{ default "unknown" $.Values.mixer.hostProject }}."
+              {{- end }}
+          volumeMounts:
+            - name: dynamic-config
+              mountPath: /dynamic-config
       containers:
         - name: mixer
-          image:  "{{ $.Values.mixer.image.repository }}:{{ $.Values.mixer.image.tag | default $.Chart.AppVersion }}"
+          image:  "{{ $.Values.mixer.image.repository }}{{- if $.Values.mixer.image.tag -}}:{{ $.Values.mixer.image.tag }}{{- end }}"
           imagePullPolicy: {{ $.Values.mixer.image.pullPolicy }}
           resources:
             limits:
               memory: {{ $group.resources.memoryLimit }}
             requests:
               memory:  {{ $group.resources.memoryRequest }}
-          args:
-            - --base_bigtable_info=$(BASE_BIGTABLE_INFO)
-            - --custom_bigtable_info=$(CUSTOM_BIGTABLE_INFO)
-            - --host_project=$(HOST_PROJECT)
-            - --bq_dataset=$(BIGQUERY)
-            - --schema_path=/datacommons/mapping
-            - --remote_mixer_domain={{ $.Values.mixer.remoteMixerDomain }}
-            - --use_base_bigtable={{ $.Values.mixer.useBaseBigtable }}
-            - --use_custom_bigtable={{ $.Values.mixer.useCustomBigtable }}
-            - --use_branch_bigtable={{ $.Values.mixer.useBranchBigtable }}
-            {{- if eq $.Values.mixer.bigqueryOnly true }}
-            - --bigquery_only=true
-            {{- end }}
-            - --cache_svg={{ default false $group.cacheSVG }}
-            {{- if eq $.Values.mixer.foldRemoteRootSvg true }}
-            - --fold_remote_root_svg=true
-            {{- end }}
-            {{- if eq $.Values.mixer.cacheSVFormula true }}
-            - --cache_sv_formula=true
-            {{- end }}
-            - --use_spanner_graph={{ $.Values.mixer.useSpannerGraph }}
-            - --spanner_graph_info=$(SPANNER_GRAPH_INFO)
-            - --use_redis={{ $.Values.mixer.useRedis }}
-            - --redis_info=$(REDIS_INFO)
-            - --enable_v3={{ $.Values.mixer.enableV3 }}
+          command:
+            - /bin/sh
+            - -c
+            - |
+              set -e
+              # Set paths for dynamic and static configs
+              DYNAMIC_BT_CONFIG_FILE="/dynamic-config/base_bigtable_info.yaml"
+              STATIC_BT_CONFIG_FILE="/static-config/base_bigtable_info.yaml"
+              DYNAMIC_BQ_VERSION_FILE="/dynamic-config/bigquery.version"
+
+              # Default to the static Bigtable config
+              FINAL_BT_CONFIG_CONTENT=$(cat $STATIC_BT_CONFIG_FILE)
+              # Default to the static BigQuery version from the original env var
+              FINAL_BQ_VERSION="${BIGQUERY}"
+
+              # If the dynamic Bigtable config file was created, use it.
+              if [ -f "$DYNAMIC_BT_CONFIG_FILE" ]; then
+                echo "Dynamic Bigtable config file found. Using it."
+                FINAL_BT_CONFIG_CONTENT=$(cat $DYNAMIC_BT_CONFIG_FILE)
+              else
+                echo "Dynamic Bigtable config file not found. Using static config."
+              fi
+
+              # If the dynamic BigQuery version file was created, use it.
+              if [ -f "$DYNAMIC_BQ_VERSION_FILE" ]; then
+                echo "Dynamic BigQuery version file found. Using it."
+                FINAL_BQ_VERSION=$(cat $DYNAMIC_BQ_VERSION_FILE)
+              else
+                echo "Dynamic BigQuery version file not found. Using static version."
+              fi
+
+              # Start the mixer with the determined configs
+              /go/bin/mixer --base_bigtable_info="$FINAL_BT_CONFIG_CONTENT" \
+              --custom_bigtable_info="${CUSTOM_BIGTABLE_INFO}" \
+              --host_project="${HOST_PROJECT}" \
+              --bq_dataset="$FINAL_BQ_VERSION" \
+              --schema_path=/datacommons/mapping \
+              --remote_mixer_domain={{ $.Values.mixer.remoteMixerDomain }} \
+              --use_base_bigtable={{ $.Values.mixer.useBaseBigtable }} \
+              --use_custom_bigtable={{ $.Values.mixer.useCustomBigtable }} \
+              --use_branch_bigtable={{ $.Values.mixer.useBranchBigtable }} \
+              {{- if eq $.Values.mixer.bigqueryOnly true }}
+              --bigquery_only=true \
+              {{- end }}
+              --cache_svg={{ default false $group.cacheSVG }} \
+              {{- if eq $.Values.mixer.foldRemoteRootSvg true }}
+              --fold_remote_root_svg=true \
+              {{- end }}
+              {{- if eq $.Values.mixer.cacheSVFormula true }}
+              --cache_sv_formula=true \
+              {{- end }}
+              --use_spanner_graph={{ $.Values.mixer.useSpannerGraph }} \
+              --spanner_graph_info="${SPANNER_GRAPH_INFO}" \
+              --use_redis={{ $.Values.mixer.redis.enabled }} \
+              --redis_info="${REDIS_INFO}" \
+              --enable_v3={{ $.Values.mixer.enableV3 }} \
+              {{- if eq $.Values.mixer.enableOtlp true}}
+              --metrics_exporter=otlp \
+              {{- end }}
+              {{- if $.Values.mixer.v3MirrorFraction }}
+              --v3_mirror_fraction={{ $.Values.mixer.v3MirrorFraction }} \
+              {{- end }}
           volumeMounts:
             - name: schema-mapping
               mountPath: /datacommons/mapping
             - name: blocklist-svg
               mountPath: /datacommons/svg
+            - name: dynamic-config
+              mountPath: /dynamic-config
+            - name: static-bt-config-volume
+              mountPath: /static-config
+              readOnly: true
           env:
             - name: HOST_PROJECT
               valueFrom:
@@ -126,11 +215,6 @@ spec:
                   name: {{ include "mixer.fullname" $ }}-store-config
                   key: bigquery.version
               {{- end }}
-            - name: BASE_BIGTABLE_INFO
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "mixer.fullname" $ }}-store-config
-                  key: base_bigtable_info.yaml
             - name: CUSTOM_BIGTABLE_INFO
               valueFrom:
                 configMapKeyRef:
@@ -141,34 +225,46 @@ spec:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-store-config
                   key: spanner_graph_info.yaml
+            {{- if $.Values.mixer.redis.enabled }}
             - name: REDIS_INFO
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-store-config
                   key: redis_info.yaml
+                  optional: true
+            {{- end }}
             - name: MIXER_HASH
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-githash
                   key: mixer_hash.txt
+            {{- if eq $.Values.mixer.enableOtlp true}}
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: http://opentelemetry-collector.opentelemetry.svc.cluster.local:4317
+            {{- end }}
           ports:
             - containerPort: 12345
           startupProbe:
             exec:
-              command: ["/bin/grpc_health_probe", "-addr=:12345"]
+              command: ["/bin/grpc_health_probe", "-addr=:12345", "-connect-timeout=10s"]
             failureThreshold: 30
+            initialDelaySeconds: 60
             periodSeconds: 10
+            timeoutSeconds: 10
           readinessProbe:
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:12345"]
             periodSeconds: 10
+            initialDelaySeconds: 60
+            timeoutSeconds: 10
           livenessProbe:
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:12345"]
             periodSeconds: 10
-            initialDelaySeconds: 10
+            initialDelaySeconds: 60
+            timeoutSeconds: 10
         - name: esp
-          image:  "{{ $.Values.esp.image.repository }}:{{ $.Values.esp.image.tag | default $.Chart.AppVersion }}"
+          image:  "{{ $.Values.esp.image.repository }}{{- if $.Values.esp.image.tag -}}:{{ $.Values.esp.image.tag }}{{- end }}"
           imagePullPolicy: {{ $.Values.esp.image.pullPolicy }}
           resources:
             limits:
@@ -195,6 +291,7 @@ spec:
             httpGet:
               path: /healthz
               port: 8081
+            initialDelaySeconds: 60
             periodSeconds: 5
           livenessProbe:
             httpGet:

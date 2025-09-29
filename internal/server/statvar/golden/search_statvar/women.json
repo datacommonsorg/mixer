@@ -5,6 +5,10 @@
       "dcid": "who/asfr1"
     },
     {
+      "name": "Countries with systems to track and make public allocations for gender equality and women's empowerment",
+      "dcid": "sdg/SG_GEN_EQPWNN"
+    },
+    {
       "name": "Degree to which the legal framework guarantees women's equal rights to land ownership and/or control",
       "dcid": "sdg/SG_LGL_LNDFEMOD"
     },
@@ -1561,7 +1565,7 @@
       "dcid": "WHO/UNICEF_PNCMOTHER"
     },
     {
-      "name": "Annual amount of economic activity sales in women clothing stores",
+      "name": "Annual sales from women clothing stores",
       "dcid": "Annual_Amount_EconomicActivity_Sales_WomenClothingStores"
     },
     {
@@ -1595,6 +1599,42 @@
     {
       "name": "Consumer Price Index of Consumer Goods And Services (Seasonally Unadjusted): Urban Consumer, Womens Underwear Nightwear Swimwear And Accessories",
       "dcid": "SeasonallyUnadjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_WomensUnderwearNightwearSwimwearAndAccessories"
+    },
+    {
+      "name": "Consumer price index for women underwear or nightwear or sportswear or accessories for urban consumers (Seasonally Adjusted)",
+      "dcid": "SeasonallyAdjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_WomenUnderwearOrNightwearOrSportswearOrAccessories"
+    },
+    {
+      "name": "Consumer price index for women underwear or nightwear or sportswear or accessories for urban consumers (Seasonally Unadjusted)",
+      "dcid": "SeasonallyUnadjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_WomenUnderwearOrNightwearOrSportswearOrAccessories"
+    },
+    {
+      "name": "Consumer price index for women's and girls' apparel for urban consumers (Seasonally Adjusted)",
+      "dcid": "SeasonallyAdjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_WomensAndGirlsApparel"
+    },
+    {
+      "name": "Consumer price index for women's apparel for urban consumers (Seasonally Adjusted)",
+      "dcid": "SeasonallyAdjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_WomensApparel"
+    },
+    {
+      "name": "Consumer price index for women's dresses for urban consumers (Seasonally Adjusted)",
+      "dcid": "SeasonallyAdjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_WomensDresses"
+    },
+    {
+      "name": "Consumer price index for women's footwear for urban consumers (Seasonally Adjusted)",
+      "dcid": "SeasonallyAdjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_WomensFootwear"
+    },
+    {
+      "name": "Consumer price index for women's outerwear for urban consumers (Seasonally Adjusted)",
+      "dcid": "SeasonallyAdjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_WomensOuterwear"
+    },
+    {
+      "name": "Consumer price index for women's suits and separates for urban consumers (Seasonally Adjusted)",
+      "dcid": "SeasonallyAdjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_WomensSuitsAndSeparates"
+    },
+    {
+      "name": "Consumer price index for women's underwear, nightwear, swimwear and accessories for urban consumers (Seasonally Adjusted)",
+      "dcid": "SeasonallyAdjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_WomensUnderwearNightwearSwimwearAndAccessories"
     },
     {
       "name": "Monthly sales of women's clothing stores",
@@ -1767,6 +1807,38 @@
     {
       "name": "Number of never-married women aged 75 years or less",
       "dcid": "Count_Person_75OrLessYears_Female_NeverMarried"
+    },
+    {
+      "name": "Number of pregnant women aged 0 to 9 years affected by Hepatitis B.",
+      "dcid": "Count_PregnantWoman_0To9Years_Female_ConditionHepatitisB"
+    },
+    {
+      "name": "Number of pregnant women aged 10 to 19 years affected by Hepatitis B.",
+      "dcid": "Count_PregnantWoman_10To19Years_Female_ConditionHepatitisB"
+    },
+    {
+      "name": "Number of pregnant women aged 20 to 29 years affected by Hepatitis B.",
+      "dcid": "Count_PregnantWoman_20To29Years_Female_ConditionHepatitisB"
+    },
+    {
+      "name": "Number of pregnant women aged 30 to 39 years affected by Hepatitis B.",
+      "dcid": "Count_PregnantWoman_30To39Years_Female_ConditionHepatitisB"
+    },
+    {
+      "name": "Number of pregnant women aged 40 to 49 years affected by Hepatitis B.",
+      "dcid": "Count_PregnantWoman_40To49Years_Female_ConditionHepatitisB"
+    },
+    {
+      "name": "Number of pregnant women aged 50 to 59 years affected by Hepatitis B.",
+      "dcid": "Count_PregnantWoman_50To59Years_Female_ConditionHepatitisB"
+    },
+    {
+      "name": "Number of pregnant women aged 60 to 69 years affected by Hepatitis B.",
+      "dcid": "Count_PregnantWoman_60To69Years_Female_ConditionHepatitisB"
+    },
+    {
+      "name": "Number of pregnant women aged 70 or more years affected by Hepatitis B.",
+      "dcid": "Count_PregnantWoman_70OrMoreYears_Female_ConditionHepatitisB"
     },
     {
       "name": "Number of widowed women aged 15 years and older",
@@ -2583,6 +2655,102 @@
     {
       "name": "Women-moderately or severely elevated blood pressure (%), urban",
       "dcid": "Count_Person_Female_WithModeratelyElevatedBloodPressureOrSeverelyElevatedBloodPressure_Urban_AsAFractionOf_Count_Person_Urban_Female"
+    },
+    {
+      "name": "Growth rate of consumer price index for women underwear or nightwear or sportswear or accessories for urban consumers (Seasonally Adjusted)",
+      "dcid": "SeasonallyAdjusted_GrowthRate_ConsumerPriceIndex_ConsumerGoodsAndServices_MonthOnChange_UrbanConsumer_WomenUnderwearOrNightwearOrSportswearOrAccessories"
+    },
+    {
+      "name": "Growth rate of consumer price index for women underwear or nightwear or sportswear or accessories for urban consumers (seasonally unadjusted, month on change)",
+      "dcid": "SeasonallyUnadjusted_GrowthRate_ConsumerPriceIndex_ConsumerGoodsAndServices_MonthOnChange_UrbanConsumer_WomenUnderwearOrNightwearOrSportswearOrAccessories"
+    },
+    {
+      "name": "Growth rate of consumer price index for women underwear or nightwear or sportswear or accessories for urban consumers (seasonally unadjusted, year on change)",
+      "dcid": "SeasonallyUnadjusted_GrowthRate_ConsumerPriceIndex_ConsumerGoodsAndServices_YearOnChange_UrbanConsumer_WomenUnderwearOrNightwearOrSportswearOrAccessories"
+    },
+    {
+      "name": "Growth rate of consumer price index for womens and girls apparel for urban consumers (Seasonally Adjusted)",
+      "dcid": "SeasonallyAdjusted_GrowthRate_ConsumerPriceIndex_ConsumerGoodsAndServices_MonthOnChange_UrbanConsumer_WomensAndGirlsApparel"
+    },
+    {
+      "name": "Growth rate of consumer price index for womens and girls apparel for urban consumers (seasonally unadjusted, month on change)",
+      "dcid": "SeasonallyUnadjusted_GrowthRate_ConsumerPriceIndex_ConsumerGoodsAndServices_MonthOnChange_UrbanConsumer_WomensAndGirlsApparel"
+    },
+    {
+      "name": "Growth rate of consumer price index for womens and girls apparel for urban consumers (seasonally unadjusted, year on change)",
+      "dcid": "SeasonallyUnadjusted_GrowthRate_ConsumerPriceIndex_ConsumerGoodsAndServices_YearOnChange_UrbanConsumer_WomensAndGirlsApparel"
+    },
+    {
+      "name": "Growth rate of consumer price index for womens apparel for urban consumers (Seasonally Adjusted)",
+      "dcid": "SeasonallyAdjusted_GrowthRate_ConsumerPriceIndex_ConsumerGoodsAndServices_MonthOnChange_UrbanConsumer_WomensApparel"
+    },
+    {
+      "name": "Growth rate of consumer price index for womens apparel for urban consumers (seasonally unadjusted, month on change)",
+      "dcid": "SeasonallyUnadjusted_GrowthRate_ConsumerPriceIndex_ConsumerGoodsAndServices_MonthOnChange_UrbanConsumer_WomensApparel"
+    },
+    {
+      "name": "Growth rate of consumer price index for womens apparel for urban consumers (seasonally unadjusted, year on change)",
+      "dcid": "SeasonallyUnadjusted_GrowthRate_ConsumerPriceIndex_ConsumerGoodsAndServices_YearOnChange_UrbanConsumer_WomensApparel"
+    },
+    {
+      "name": "Growth rate of consumer price index for womens dresses for urban consumers (Seasonally Adjusted)",
+      "dcid": "SeasonallyAdjusted_GrowthRate_ConsumerPriceIndex_ConsumerGoodsAndServices_MonthOnChange_UrbanConsumer_WomensDresses"
+    },
+    {
+      "name": "Growth rate of consumer price index for womens dresses for urban consumers (seasonally unadjusted, month on change)",
+      "dcid": "SeasonallyUnadjusted_GrowthRate_ConsumerPriceIndex_ConsumerGoodsAndServices_MonthOnChange_UrbanConsumer_WomensDresses"
+    },
+    {
+      "name": "Growth rate of consumer price index for womens dresses for urban consumers (seasonally unadjusted, year on change)",
+      "dcid": "SeasonallyUnadjusted_GrowthRate_ConsumerPriceIndex_ConsumerGoodsAndServices_YearOnChange_UrbanConsumer_WomensDresses"
+    },
+    {
+      "name": "Growth rate of consumer price index for womens footwear for urban consumers (Seasonally Adjusted)",
+      "dcid": "SeasonallyAdjusted_GrowthRate_ConsumerPriceIndex_ConsumerGoodsAndServices_MonthOnChange_UrbanConsumer_WomensFootwear"
+    },
+    {
+      "name": "Growth rate of consumer price index for womens footwear for urban consumers (seasonally unadjusted, month on change)",
+      "dcid": "SeasonallyUnadjusted_GrowthRate_ConsumerPriceIndex_ConsumerGoodsAndServices_MonthOnChange_UrbanConsumer_WomensFootwear"
+    },
+    {
+      "name": "Growth rate of consumer price index for womens footwear for urban consumers (seasonally unadjusted, year on change)",
+      "dcid": "SeasonallyUnadjusted_GrowthRate_ConsumerPriceIndex_ConsumerGoodsAndServices_YearOnChange_UrbanConsumer_WomensFootwear"
+    },
+    {
+      "name": "Growth rate of consumer price index for womens outerwear for urban consumers (Seasonally Adjusted)",
+      "dcid": "SeasonallyAdjusted_GrowthRate_ConsumerPriceIndex_ConsumerGoodsAndServices_MonthOnChange_UrbanConsumer_WomensOuterwear"
+    },
+    {
+      "name": "Growth rate of consumer price index for womens outerwear for urban consumers (seasonally unadjusted, month on change)",
+      "dcid": "SeasonallyUnadjusted_GrowthRate_ConsumerPriceIndex_ConsumerGoodsAndServices_MonthOnChange_UrbanConsumer_WomensOuterwear"
+    },
+    {
+      "name": "Growth rate of consumer price index for womens outerwear for urban consumers (seasonally unadjusted, year on change)",
+      "dcid": "SeasonallyUnadjusted_GrowthRate_ConsumerPriceIndex_ConsumerGoodsAndServices_YearOnChange_UrbanConsumer_WomensOuterwear"
+    },
+    {
+      "name": "Growth rate of consumer price index for womens suits and separates for urban consumers (Seasonally Adjusted)",
+      "dcid": "SeasonallyAdjusted_GrowthRate_ConsumerPriceIndex_ConsumerGoodsAndServices_MonthOnChange_UrbanConsumer_WomensSuitsAndSeparates"
+    },
+    {
+      "name": "Growth rate of consumer price index for womens suits and separates for urban consumers (seasonally unadjusted, month on change)",
+      "dcid": "SeasonallyUnadjusted_GrowthRate_ConsumerPriceIndex_ConsumerGoodsAndServices_MonthOnChange_UrbanConsumer_WomensSuitsAndSeparates"
+    },
+    {
+      "name": "Growth rate of consumer price index for womens suits and separates for urban consumers (seasonally unadjusted, year on change)",
+      "dcid": "SeasonallyUnadjusted_GrowthRate_ConsumerPriceIndex_ConsumerGoodsAndServices_YearOnChange_UrbanConsumer_WomensSuitsAndSeparates"
+    },
+    {
+      "name": "Growth rate of consumer price index for womens underwear nightwear swimwear and accessories for urban consumers (Seasonally Adjusted)",
+      "dcid": "SeasonallyAdjusted_GrowthRate_ConsumerPriceIndex_ConsumerGoodsAndServices_MonthOnChange_UrbanConsumer_WomensUnderwearNightwearSwimwearAndAccessories"
+    },
+    {
+      "name": "Growth rate of consumer price index for womens underwear nightwear swimwear and accessories for urban consumers (seasonally unadjusted, month on change)",
+      "dcid": "SeasonallyUnadjusted_GrowthRate_ConsumerPriceIndex_ConsumerGoodsAndServices_MonthOnChange_UrbanConsumer_WomensUnderwearNightwearSwimwearAndAccessories"
+    },
+    {
+      "name": "Growth rate of consumer price index for womens underwear nightwear swimwear and accessories for urban consumers (seasonally unadjusted, year on change)",
+      "dcid": "SeasonallyUnadjusted_GrowthRate_ConsumerPriceIndex_ConsumerGoodsAndServices_YearOnChange_UrbanConsumer_WomensUnderwearNightwearSwimwearAndAccessories"
     },
     {
       "name": "Married women of age 15 to 49 years using injectables as one of the family planning methods (%)",

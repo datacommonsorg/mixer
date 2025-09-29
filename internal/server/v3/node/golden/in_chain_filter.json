@@ -201,6 +201,21 @@
               "dcid": "geoId/0677000"
             },
             {
+              "name": "Mayfield",
+              "types": [
+                "City"
+              ],
+              "dcid": "wikidataId/Q122853535"
+            },
+            {
+              "name": "Lexington",
+              "types": [
+                "City",
+                "Village"
+              ],
+              "dcid": "wikidataId/Q14946652"
+            },
+            {
               "name": "Cambrian Park",
               "types": [
                 "City",
@@ -215,6 +230,30 @@
                 "Neighborhood"
               ],
               "dcid": "wikidataId/Q2214519"
+            },
+            {
+              "name": "Alma",
+              "types": [
+                "City",
+                "Village"
+              ],
+              "dcid": "wikidataId/Q4733495"
+            },
+            {
+              "name": "Patchen",
+              "types": [
+                "City",
+                "Village"
+              ],
+              "dcid": "wikidataId/Q7144355"
+            },
+            {
+              "name": "Wrights",
+              "types": [
+                "City",
+                "Village"
+              ],
+              "dcid": "wikidataId/Q8038293"
             }
           ]
         }

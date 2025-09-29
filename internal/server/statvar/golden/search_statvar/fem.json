@@ -177,6 +177,10 @@
       "dcid": "who/M_Est_tob_curr.SEX--F"
     },
     {
+      "name": "FEMA  to Natural Hazard Impact: Community Risk Factor",
+      "dcid": "Value_NaturalHazardImpact_CommunityRiskFactorEvent"
+    },
+    {
       "name": "FEMA National Risk Index for Natural Hazard Impact: Avalanche",
       "dcid": "FemaNaturalHazardRiskIndex_NaturalHazardImpact_AvalancheEvent"
     },
@@ -249,6 +253,78 @@
       "dcid": "FemaNaturalHazardRiskIndex_NaturalHazardImpact_WinterWeatherEvent"
     },
     {
+      "name": "FEMA Type Risk Index Value to Natural Hazard Impact: Avalanche",
+      "dcid": "HazardTypeRiskIndexValue_NaturalHazardImpact_AvalancheEvent"
+    },
+    {
+      "name": "FEMA Type Risk Index Value to Natural Hazard Impact: Coastal Flood",
+      "dcid": "HazardTypeRiskIndexValue_NaturalHazardImpact_CoastalFloodEvent"
+    },
+    {
+      "name": "FEMA Type Risk Index Value to Natural Hazard Impact: Cold Wave",
+      "dcid": "HazardTypeRiskIndexValue_NaturalHazardImpact_ColdWaveEvent"
+    },
+    {
+      "name": "FEMA Type Risk Index Value to Natural Hazard Impact: Drought",
+      "dcid": "HazardTypeRiskIndexValue_NaturalHazardImpact_DroughtEvent"
+    },
+    {
+      "name": "FEMA Type Risk Index Value to Natural Hazard Impact: Earthquake",
+      "dcid": "HazardTypeRiskIndexValue_NaturalHazardImpact_EarthquakeEvent"
+    },
+    {
+      "name": "FEMA Type Risk Index Value to Natural Hazard Impact: Hail",
+      "dcid": "HazardTypeRiskIndexValue_NaturalHazardImpact_HailEvent"
+    },
+    {
+      "name": "FEMA Type Risk Index Value to Natural Hazard Impact: Heat Wave",
+      "dcid": "HazardTypeRiskIndexValue_NaturalHazardImpact_HeatWaveEvent"
+    },
+    {
+      "name": "FEMA Type Risk Index Value to Natural Hazard Impact: Hurricane",
+      "dcid": "HazardTypeRiskIndexValue_NaturalHazardImpact_HurricaneEvent"
+    },
+    {
+      "name": "FEMA Type Risk Index Value to Natural Hazard Impact: Ice Storm",
+      "dcid": "HazardTypeRiskIndexValue_NaturalHazardImpact_IceStormEvent"
+    },
+    {
+      "name": "FEMA Type Risk Index Value to Natural Hazard Impact: Landslide",
+      "dcid": "HazardTypeRiskIndexValue_NaturalHazardImpact_LandslideEvent"
+    },
+    {
+      "name": "FEMA Type Risk Index Value to Natural Hazard Impact: Lightning",
+      "dcid": "HazardTypeRiskIndexValue_NaturalHazardImpact_LightningEvent"
+    },
+    {
+      "name": "FEMA Type Risk Index Value to Natural Hazard Impact: Riverine Flooding",
+      "dcid": "HazardTypeRiskIndexValue_NaturalHazardImpact_RiverineFloodingEvent"
+    },
+    {
+      "name": "FEMA Type Risk Index Value to Natural Hazard Impact: Strong Wind",
+      "dcid": "HazardTypeRiskIndexValue_NaturalHazardImpact_StrongWindEvent"
+    },
+    {
+      "name": "FEMA Type Risk Index Value to Natural Hazard Impact: Tornado",
+      "dcid": "HazardTypeRiskIndexValue_NaturalHazardImpact_TornadoEvent"
+    },
+    {
+      "name": "FEMA Type Risk Index Value to Natural Hazard Impact: Tsunami",
+      "dcid": "HazardTypeRiskIndexValue_NaturalHazardImpact_TsunamiEvent"
+    },
+    {
+      "name": "FEMA Type Risk Index Value to Natural Hazard Impact: Volcanic Activity",
+      "dcid": "HazardTypeRiskIndexValue_NaturalHazardImpact_VolcanicActivityEvent"
+    },
+    {
+      "name": "FEMA Type Risk Index Value to Natural Hazard Impact: Wildfire",
+      "dcid": "HazardTypeRiskIndexValue_NaturalHazardImpact_WildfireEvent"
+    },
+    {
+      "name": "FEMA Type Risk Index Value to Natural Hazard Impact: Winter Weather",
+      "dcid": "HazardTypeRiskIndexValue_NaturalHazardImpact_WinterWeatherEvent"
+    },
+    {
       "name": "Fatal occupational injuries among employees [Female]",
       "dcid": "sdg/SL_EMP_FTLINJUR.SEX--F"
     },
@@ -257,7 +333,7 @@
       "dcid": "LifeExpectancy_Person_Female"
     },
     {
-      "name": "Female Population",
+      "name": "Female population",
       "dcid": "Count_Person_Female"
     },
     {
@@ -643,6 +719,10 @@
     {
       "name": "Proportion of mothers with newborns receiving maternity cash benefit [Female]",
       "dcid": "sdg/SI_COV_MATNL.SEX--F"
+    },
+    {
+      "name": "Proportion of people who perceive their rights to land as secure out of total adult population [Female]",
+      "dcid": "sdg/SP_LGL_LNDSEC.SEX--F"
     },
     {
       "name": "Proportion of people with legally recognized documentation of their rights to land out of total adult population [Female]",
@@ -3177,6 +3257,10 @@
       "dcid": "Count_MedicalConditionIncident_Female_ConditionCongenitalDisease_Rubella"
     },
     {
+      "name": "Count of female Hepatitis C incidents",
+      "dcid": "Count_MedicalConditionIncident_Female_ConditionHepatitisC"
+    },
+    {
       "name": "Count of female teachers who are civil servant vacancy professors",
       "dcid": "Count_Teacher_CivilServantVacancyProfessor_Female"
     },
@@ -3207,6 +3291,22 @@
     {
       "name": "Count of, Female Meningococcal disease incidents",
       "dcid": "Count_MedicalConditionIncident_Female_ConditionMeningococcalMeningitis"
+    },
+    {
+      "name": "Coverage of treatment interventions (pharmacological, psychosocial and rehabilitation and aftercare services) for substance use disorders [Female, Amphetamine type stimulants]",
+      "dcid": "sdg/SH_SUD_TREAT.SEX--F__SUBSTANCE--AMPHETAMINE_TYPE"
+    },
+    {
+      "name": "Coverage of treatment interventions (pharmacological, psychosocial and rehabilitation and aftercare services) for substance use disorders [Female, Cocaine]",
+      "dcid": "sdg/SH_SUD_TREAT.SEX--F__SUBSTANCE--COCAINE"
+    },
+    {
+      "name": "Coverage of treatment interventions (pharmacological, psychosocial and rehabilitation and aftercare services) for substance use disorders [Female, Drugs]",
+      "dcid": "sdg/SH_SUD_TREAT.SEX--F__SUBSTANCE--DRUGS"
+    },
+    {
+      "name": "Coverage of treatment interventions (pharmacological, psychosocial and rehabilitation and aftercare services) for substance use disorders [Female, Opioids]",
+      "dcid": "sdg/SH_SUD_TREAT.SEX--F__SUBSTANCE--OPIOIDS"
     },
     {
       "name": "Crude Suicide Rates (Per 100 000 Population), Female",
@@ -3899,110 +3999,11 @@
     {
       "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Tuberculosis, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE003__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Unintentional injuries, Female]",
-      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE152__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Unipolar depressive disorders, Female]",
-      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE083__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Upper respiratory infections, Female]",
-      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE040__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Urolithiasis, Female]",
-      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE129__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Vitamin A deficiency, Female]",
-      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE057__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Whooping cough, Female]",
-      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE013__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [other sense organ disorders, Female]",
-      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE109__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Acute hepatitis B, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE019__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Acute hepatitis C, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE020__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Alcohol use disorders, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE086__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [All Causes, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE000__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Alzheimer's disease and other dementias, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE095__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Anxiety disorders, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE088__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Appendicitis, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE124__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Ascariasis, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE034__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Asthma, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE119__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Back and neck pain, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE138__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Bipolar disorder, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE084__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Birth asphyxia and birth trauma, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE051__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Bladder cancer, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE075__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Breast cancer, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE070__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Cardiomyopathy, myocarditis, endocarditis, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE115__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Cardiovascular diseases, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE110__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Cataracts, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE104__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years, DALYs) [Cervix uteri cancer, Female]",
-      "dcid": "who/GHE_DALYNUM.GHECAUSES--GHE071__SEX--F"
     }
   ],
   "matches": [
     "",
+    "fema",
     "female",
     "female)",
     "female]",

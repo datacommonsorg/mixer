@@ -3,9 +3,9 @@
     {
       "SubjectID": "Farm",
       "Predicate": "populationType",
-      "ObjectID": "Area_Farm_Melon",
-      "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
+      "Value": "Area_Farm_Melon",
+      "Bytes": null,
       "Name": "Area of Farm: Melon",
       "Types": [
         "StatisticalVariable"

@@ -7,7 +7,7 @@
           "date": "1850",
           "entity_count": [
             {
-              "count": 1,
+              "count": 2,
               "facet": "2458695583"
             }
           ]
@@ -25,7 +25,7 @@
           "date": "1870",
           "entity_count": [
             {
-              "count": 1,
+              "count": 2,
               "facet": "2458695583"
             }
           ]
@@ -43,7 +43,7 @@
           "date": "1890",
           "entity_count": [
             {
-              "count": 1,
+              "count": 2,
               "facet": "2458695583"
             }
           ]
@@ -61,7 +61,25 @@
           "date": "1910",
           "entity_count": [
             {
-              "count": 3,
+              "count": 4,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1930",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "1950",
+          "entity_count": [
+            {
+              "count": 1,
               "facet": "2458695583"
             }
           ]
@@ -72,6 +90,10 @@
             {
               "count": 58,
               "facet": "2176550201"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
             }
           ]
         },
@@ -296,6 +318,10 @@
             {
               "count": 56,
               "facet": "2517965213"
+            },
+            {
+              "count": 1,
+              "facet": "2458695583"
             }
           ]
         },
@@ -607,11 +633,11 @@
             },
             {
               "count": 58,
-              "facet": "2564251937"
+              "facet": "1964317807"
             },
             {
               "count": 58,
-              "facet": "1964317807"
+              "facet": "2564251937"
             },
             {
               "count": 57,
@@ -631,7 +657,7 @@
           "date": "2010-04-01",
           "entity_count": [
             {
-              "count": 57,
+              "count": 58,
               "facet": "2458695583"
             }
           ]
@@ -772,11 +798,11 @@
             },
             {
               "count": 58,
-              "facet": "2564251937"
+              "facet": "1964317807"
             },
             {
               "count": 58,
-              "facet": "1964317807"
+              "facet": "2564251937"
             },
             {
               "count": 57,
@@ -838,11 +864,11 @@
             },
             {
               "count": 58,
-              "facet": "2564251937"
+              "facet": "1964317807"
             },
             {
               "count": 58,
-              "facet": "1964317807"
+              "facet": "2564251937"
             },
             {
               "count": 57,
@@ -900,11 +926,11 @@
             },
             {
               "count": 58,
-              "facet": "2564251937"
+              "facet": "1964317807"
             },
             {
               "count": 58,
-              "facet": "1964317807"
+              "facet": "2564251937"
             },
             {
               "count": 57,
@@ -917,6 +943,15 @@
             {
               "count": 40,
               "facet": "1226172227"
+            }
+          ]
+        },
+        {
+          "date": "2018-01",
+          "entity_count": [
+            {
+              "count": 8,
+              "facet": "2458695583"
             }
           ]
         },
@@ -946,6 +981,28 @@
             {
               "count": 41,
               "facet": "1226172227"
+            },
+            {
+              "count": 3,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "2019-01",
+          "entity_count": [
+            {
+              "count": 54,
+              "facet": "2458695583"
+            }
+          ]
+        },
+        {
+          "date": "2019-07-01",
+          "entity_count": [
+            {
+              "count": 57,
+              "facet": "2458695583"
             }
           ]
         },
@@ -966,7 +1023,7 @@
             },
             {
               "count": 58,
-              "facet": "2564251937"
+              "facet": "2390551605"
             },
             {
               "count": 58,
@@ -974,11 +1031,19 @@
             },
             {
               "count": 58,
+              "facet": "2564251937"
+            },
+            {
+              "count": 58,
               "facet": "2825511676"
             },
             {
-              "count": 39,
+              "count": 41,
               "facet": "1456184638"
+            },
+            {
+              "count": 8,
+              "facet": "2458695583"
             }
           ]
         },
@@ -986,7 +1051,11 @@
           "date": "2020-04-01",
           "entity_count": [
             {
-              "count": 17,
+              "count": 58,
+              "facet": "2458695583"
+            },
+            {
+              "count": 13,
               "facet": "1456184638"
             }
           ]
@@ -1004,7 +1073,20 @@
             },
             {
               "count": 58,
+              "facet": "2390551605"
+            },
+            {
+              "count": 58,
               "facet": "1964317807"
+            }
+          ]
+        },
+        {
+          "date": "2021-07-01",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "2458695583"
             }
           ]
         },
@@ -1018,6 +1100,14 @@
             {
               "count": 58,
               "facet": "1145703171"
+            },
+            {
+              "count": 58,
+              "facet": "2390551605"
+            },
+            {
+              "count": 58,
+              "facet": "1964317807"
             },
             {
               "count": 58,
@@ -1035,15 +1125,14 @@
             {
               "count": 58,
               "facet": "1145703171"
-            }
-          ]
-        },
-        {
-          "date": "2023-07-01",
-          "entity_count": [
+            },
             {
-              "count": 1,
-              "facet": "1456184638"
+              "count": 58,
+              "facet": "2390551605"
+            },
+            {
+              "count": 58,
+              "facet": "1964317807"
             }
           ]
         },
@@ -1053,6 +1142,19 @@
             {
               "count": 58,
               "facet": "2176550201"
+            },
+            {
+              "count": 58,
+              "facet": "2390551605"
+            }
+          ]
+        },
+        {
+          "date": "2024-07-01",
+          "entity_count": [
+            {
+              "count": 1,
+              "facet": "1456184638"
             }
           ]
         }
@@ -1092,6 +1194,12 @@
       "import_name": "USCensusPEP_Annual_Population",
       "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
       "measurement_method": "CensusPEPSurvey",
+      "observation_period": "P1Y"
+    },
+    "2390551605": {
+      "import_name": "USCensusPEP_AgeSexRaceHispanicOrigin",
+      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
+      "measurement_method": "CensusPEPSurvey_Race2000Onwards",
       "observation_period": "P1Y"
     },
     "2458695583": {

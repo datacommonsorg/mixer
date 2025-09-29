@@ -295,8 +295,8 @@
             {
               "name": "New York",
               "types": [
-                "State",
-                "AdministrativeArea1"
+                "AdministrativeArea1",
+                "State"
               ],
               "dcid": "geoId/36",
               "provenance_id": "dc/base/WikidataOtherIdGeos"
@@ -304,8 +304,8 @@
             {
               "name": "North Carolina",
               "types": [
-                "State",
-                "AdministrativeArea1"
+                "AdministrativeArea1",
+                "State"
               ],
               "dcid": "geoId/37",
               "provenance_id": "dc/base/WikidataOtherIdGeos"
@@ -331,8 +331,8 @@
             {
               "name": "Oklahoma",
               "types": [
-                "State",
-                "AdministrativeArea1"
+                "AdministrativeArea1",
+                "State"
               ],
               "dcid": "geoId/40",
               "provenance_id": "dc/base/WikidataOtherIdGeos"
@@ -340,8 +340,8 @@
             {
               "name": "Oregon",
               "types": [
-                "State",
-                "AdministrativeArea1"
+                "AdministrativeArea1",
+                "State"
               ],
               "dcid": "geoId/41",
               "provenance_id": "dc/base/WikidataOtherIdGeos"
@@ -349,8 +349,8 @@
             {
               "name": "Pennsylvania",
               "types": [
-                "State",
-                "AdministrativeArea1"
+                "AdministrativeArea1",
+                "State"
               ],
               "dcid": "geoId/42",
               "provenance_id": "dc/base/WikidataOtherIdGeos"
@@ -421,8 +421,8 @@
             {
               "name": "Virginia",
               "types": [
-                "State",
-                "AdministrativeArea1"
+                "AdministrativeArea1",
+                "State"
               ],
               "dcid": "geoId/51",
               "provenance_id": "dc/base/WikidataOtherIdGeos"
@@ -439,8 +439,8 @@
             {
               "name": "West Virginia",
               "types": [
-                "State",
-                "AdministrativeArea1"
+                "AdministrativeArea1",
+                "State"
               ],
               "dcid": "geoId/54",
               "provenance_id": "dc/base/WikidataOtherIdGeos"
@@ -448,8 +448,8 @@
             {
               "name": "Wisconsin",
               "types": [
-                "State",
-                "AdministrativeArea1"
+                "AdministrativeArea1",
+                "State"
               ],
               "dcid": "geoId/55",
               "provenance_id": "dc/base/WikidataOtherIdGeos"
@@ -466,8 +466,8 @@
             {
               "name": "Puerto Rico",
               "types": [
-                "State",
-                "AdministrativeArea1"
+                "AdministrativeArea1",
+                "State"
               ],
               "dcid": "geoId/72",
               "provenance_id": "dc/base/WikidataOtherIdGeos"

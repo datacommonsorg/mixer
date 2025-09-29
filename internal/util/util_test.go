@@ -401,13 +401,15 @@ func TestGetFacetID(t *testing.T) {
 
 func TestShouldIncludeFacet(t *testing.T) {
 	for _, c := range []struct {
-		filter *pbv2.FacetFilter
-		facet  *pb.Facet
-		want   bool
+		filter  *pbv2.FacetFilter
+		facet   *pb.Facet
+		facetId string
+		want    bool
 	}{
 		{
 			nil,
 			&pb.Facet{},
+			"",
 			true,
 		},
 		{
@@ -417,6 +419,7 @@ func TestShouldIncludeFacet(t *testing.T) {
 			&pb.Facet{
 				ProvenanceUrl: "https://wonder.cdc.gov/ucd-icd10.html",
 			},
+			"",
 			true,
 		},
 		{
@@ -426,10 +429,21 @@ func TestShouldIncludeFacet(t *testing.T) {
 			&pb.Facet{
 				ProvenanceUrl: "https://wonder.cdc.gov/ucd-icd10.html",
 			},
+			"",
 			false,
 		},
+		{
+			&pbv2.FacetFilter{
+				FacetIds: []string{"1", "2"},
+			},
+			&pb.Facet{
+				ProvenanceUrl: "https://wonder.cdc.gov/ucd-icd10.html",
+			},
+			"1",
+			true,
+		},
 	} {
-		got := ShouldIncludeFacet(c.filter, c.facet)
+		got := ShouldIncludeFacet(c.filter, c.facet, c.facetId)
 		if !reflect.DeepEqual(got, c.want) {
 			t.Errorf("ShouldIncludeFacet(%v, %v) = %v, want %v", c.filter, c.facet, got, c.want)
 		}

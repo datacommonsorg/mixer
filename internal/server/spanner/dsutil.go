@@ -17,13 +17,13 @@
 package spanner
 
 import (
+	"crypto/sha256"
+	"encoding/base64"
 	"fmt"
 	"log"
 	"sort"
 	"strconv"
-	"strings"
 
-	"cloud.google.com/go/spanner"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
@@ -35,14 +35,14 @@ import (
 )
 
 const (
-	// Indicates that all properties should be returned.
+	// Used for Arc.SingleProp in Node requests and indicates that all properties should be returned.
 	WILDCARD = "*"
-	// Indicates that recursive property paths should be returned.
+	// Used for Arc.Decorator in Node requests and indicates that recursive property paths should be returned.
 	CHAIN = "+"
 	// Used for Facet responses with an entity expression.
 	ENTITY_PLACEHOLDER = ""
-	WHERE              = "\nWHERE "
-	AND                = "\nAND "
+	WHERE              = "\n\t\tWHERE\n\t\t\t"
+	AND                = "\n\t\t\tAND "
 )
 
 // Select options for Observation.
@@ -165,7 +165,11 @@ func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge
 			nodeResponse.NextToken = nextToken
 		}
 
-		nodeResponse.Data[subjectID] = nodeEdgesToLinkedGraph(edges)
+		linkedGraph, err := nodeEdgesToLinkedGraph(edges)
+		if err != nil {
+			return nil, err
+		}
+		nodeResponse.Data[subjectID] = linkedGraph
 	}
 
 	return nodeResponse, nil
@@ -173,7 +177,7 @@ func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge
 
 // nodeEdgesToLinkedGraph converts an array of edges to a LinkedGraph proto.
 // This method assumes all edges are from the same entity.
-func nodeEdgesToLinkedGraph(edges []*Edge) *pbv2.LinkedGraph {
+func nodeEdgesToLinkedGraph(edges []*Edge) (*pbv2.LinkedGraph, error) {
 	linkedGraph := &pbv2.LinkedGraph{
 		Arcs: make(map[string]*pbv2.Nodes),
 	}
@@ -186,30 +190,44 @@ func nodeEdgesToLinkedGraph(edges []*Edge) *pbv2.LinkedGraph {
 		node := &pb.EntityInfo{
 			Name:         edge.Name,
 			Types:        edge.Types,
-			Dcid:         edge.ObjectID,
 			ProvenanceId: edge.Provenance,
-			Value:        edge.ObjectValue,
 		}
+
+		if len(edge.Types) == 0 { // If a node has no types, it's a terminal value.
+			if edge.Bytes != nil { // Use bytes if set.
+				bytes, err := util.Unzip(edge.Bytes)
+				if err != nil {
+					return nil, err
+				}
+				node.Value = string(bytes)
+			} else {
+				node.Value = edge.Value
+			}
+		} else { // Otherwise, it's a reference node with a dcid.
+			node.Dcid = edge.Value
+		}
+
 		nodes.Nodes = append(nodes.Nodes, node)
 
 		linkedGraph.Arcs[edge.Predicate] = nodes
 	}
 
-	return linkedGraph
+	return linkedGraph, nil
 }
 
 func selectFieldsToQueryOptions(selectFields []string) queryOptions {
 	var qo queryOptions
 	for _, field := range selectFields {
-		if field == ENTITY {
+		switch field {
+		case ENTITY:
 			qo.entity = true
-		} else if field == VARIABLE {
+		case VARIABLE:
 			qo.variable = true
-		} else if field == DATE {
+		case DATE:
 			qo.date = true
-		} else if field == VALUE {
+		case VALUE:
 			qo.value = true
-		} else if field == FACET {
+		case FACET:
 			qo.facet = true
 		}
 	}
@@ -221,66 +239,46 @@ func isObservationRequest(qo *queryOptions) bool {
 	return qo.date && qo.value
 }
 
-// Whether the queryOptions are for an existence request.
-func isExistenceRequest(selectFields []string) bool {
-	qo := selectFieldsToQueryOptions(selectFields)
-	return !isObservationRequest(&qo) && !qo.facet
-}
-
-func buildBaseObsStatement(variables []string, entities []string, date string, filterObs bool) spanner.Statement {
-	stmt := spanner.Statement{
-		Params: map[string]interface{}{},
-	}
-	filters := []string{}
-
-	var baseStmt string
-	var obsStmt string
+func filterTimeSeriesByDate(ts *TimeSeries, date string) {
 	switch date {
 	case "":
-		baseStmt = statements.getObs
-		obsStmt = statements.allObs
 	case shared.LATEST:
-		baseStmt = statements.getObs
-		obsStmt = statements.latestObs
+		if ts == nil || *ts == nil || len(*ts) == 0 {
+			*ts = TimeSeries{}
+		} else {
+			*ts = TimeSeries{(*ts)[len(*ts)-1]}
+		}
 	default:
-		baseStmt = statements.getDateObs
-		stmt.Params["date"] = fmt.Sprintf("$.%s", date)
-		obsStmt = statements.dateObs
-		filters = append(filters, statements.selectDate)
+		for _, dv := range *ts {
+			if dv.Date == date {
+				*ts = TimeSeries{dv}
+				return
+			}
+		}
+		*ts = TimeSeries{}
 	}
-
-	if filterObs {
-		obsStmt = statements.emptyObs
-	}
-	stmt.SQL = fmt.Sprintf(baseStmt, obsStmt)
-
-	if len(variables) > 0 {
-		stmt.Params["variables"] = variables
-		filters = append(filters, statements.selectVariableDcids)
-	}
-
-	if len(entities) > 0 {
-		stmt.Params["entities"] = entities
-		filters = append(filters, statements.selectEntityDcids)
-	}
-
-	stmt.SQL += WHERE + strings.Join(filters, AND)
-
-	return stmt
 }
 
-func filterObservationsByFacet(observations []*Observation, filter *pbv2.FacetFilter) []*Observation {
+func filterObservationsByDateAndFacet(
+	observations []*Observation,
+	date string,
+	filter *pbv2.FacetFilter,
+) []*Observation {
 	var filtered []*Observation
 	for _, observation := range observations {
+		filterTimeSeriesByDate(&observation.Observations, date)
 		facet := observationToFacet(observation)
-		if util.ShouldIncludeFacet(filter, facet) {
+		if util.ShouldIncludeFacet(filter, facet, observation.FacetId) {
 			filtered = append(filtered, observation)
 		}
 	}
 	return filtered
 }
 
-func observationsToObservationResponse(req *pbv2.ObservationRequest, observations []*Observation) *pbv2.ObservationResponse {
+func observationsToObservationResponse(
+	req *pbv2.ObservationRequest,
+	observations []*Observation,
+) *pbv2.ObservationResponse {
 	// The select options are handled separately since each has a different behavior in V2.
 	// This includes:
 	// - Whether to include requested entities that are missing data
@@ -373,7 +371,10 @@ func getDistinctEntities(observations []*Observation) []string {
 	return entities
 }
 
-func mergeEntityOrderedFacets(byEntity map[string]*pbv2.EntityObservation, childPlaces []string) []*pbv2.FacetObservation {
+func mergeEntityOrderedFacets(
+	byEntity map[string]*pbv2.EntityObservation,
+	childPlaces []string,
+) []*pbv2.FacetObservation {
 	// Reuse merging logic from ContainedInFacet for consistency.
 	result := []*pbv2.FacetObservation{}
 
@@ -464,7 +465,10 @@ func obsToExistenceResponse(req *pbv2.ObservationRequest, observations []*Observ
 	return response
 }
 
-func observationsToOrderedFacets(observations []*Observation, includeObs bool) ([]*pbv2.FacetObservation, map[string]*pb.Facet) {
+func observationsToOrderedFacets(
+	observations []*Observation,
+	includeObs bool,
+) ([]*pbv2.FacetObservation, map[string]*pb.Facet) {
 	facets := map[string]*pb.Facet{}
 	placeVariableFacets := []*pb.PlaceVariableFacet{}
 	facetIdToFacetObs := map[string]*pbv2.FacetObservation{}
@@ -477,32 +481,38 @@ func observationsToOrderedFacets(observations []*Observation, includeObs bool) (
 		}
 
 		placeVariableFacets = append(placeVariableFacets, pvf)
-		facetIdToFacetObs[facetObs.FacetId] = facetObs
-		facets[facetObs.FacetId] = pvf.Facet
+		facetIdToFacetObs[obs.FacetId] = facetObs
+		facets[obs.FacetId] = pvf.Facet
 	}
 
 	// Rank FacetObservations.
 	orderedFacets := []*pbv2.FacetObservation{}
 	sort.Sort(ranking.FacetByRank(placeVariableFacets))
 	for _, pvf := range placeVariableFacets {
-		facetId := util.GetFacetID(pvf.Facet)
-		orderedFacets = append(orderedFacets, facetIdToFacetObs[facetId])
+		orderedFacets = append(orderedFacets, facetIdToFacetObs[pvf.FacetId])
 	}
 
 	return orderedFacets, facets
 }
 
-func observationToFacetObservation(observation *Observation, includeObs bool) (*pb.PlaceVariableFacet, *pbv2.FacetObservation) {
+func observationToFacetObservation(
+	observation *Observation,
+	includeObs bool,
+) (*pb.PlaceVariableFacet, *pbv2.FacetObservation) {
 	facet := observationToFacet(observation)
 
 	var observations []*pb.PointStat
-
 	for _, dateValue := range observation.Observations {
 		pointStat, err := dateValueToPointStat(dateValue)
 
 		// Skip observations with non-numeric values.
 		if err != nil {
-			log.Printf("Error decoding PointStat for variable (%v) and entity (%v): %v", observation.VariableMeasured, observation.ObservationAbout, err)
+			log.Printf(
+				"Error decoding PointStat for variable (%v) and entity (%v): %v",
+				observation.VariableMeasured,
+				observation.ObservationAbout,
+				err,
+			)
 			continue
 		}
 
@@ -514,7 +524,7 @@ func observationToFacetObservation(observation *Observation, includeObs bool) (*
 	}
 
 	facetObservation := &pbv2.FacetObservation{
-		FacetId:      util.GetFacetID(facet),
+		FacetId:      observation.FacetId,
 		ObsCount:     *proto.Int32(int32(len(observations))),
 		EarliestDate: observations[0].Date,
 		LatestDate:   observations[len(observations)-1].Date,
@@ -526,6 +536,7 @@ func observationToFacetObservation(observation *Observation, includeObs bool) (*
 
 	placeVariableFacet := &pb.PlaceVariableFacet{
 		Facet:        facet,
+		FacetId:      observation.FacetId,
 		ObsCount:     facetObservation.ObsCount,
 		EarliestDate: facetObservation.EarliestDate,
 		LatestDate:   facetObservation.LatestDate,
@@ -542,6 +553,7 @@ func observationToFacet(observation *Observation) *pb.Facet {
 		ObservationPeriod: observation.ObservationPeriod,
 		ScalingFactor:     observation.ScalingFactor,
 		Unit:              observation.Unit,
+		IsDcAggregate:     observation.IsDcAggregate,
 	}
 	return &facet
 }
@@ -574,9 +586,38 @@ func searchNodeToNodeSearchResult(node *SearchNode) *pbv2.NodeSearchResult {
 			Name:  node.Name,
 			Types: node.Types,
 		},
-		Match: &pb.PropertyValue{
-			Property: node.MatchedPredicate,
-			Value:    node.MatchedObjectValue,
-		},
 	}
+}
+
+// candidatesToResolveResponse converts a map of node to candidates into a ResolveResponse.
+func candidatesToResolveResponse(nodeToCandidates map[string][]string) *pbv2.ResolveResponse {
+	response := &pbv2.ResolveResponse{}
+	for node, candidates := range nodeToCandidates {
+		entity := &pbv2.ResolveResponse_Entity{
+			Node:       node,
+			Candidates: make([]*pbv2.ResolveResponse_Entity_Candidate, 0, len(candidates)),
+		}
+		for _, candidate := range candidates {
+			entity.Candidates = append(entity.Candidates, &pbv2.ResolveResponse_Entity_Candidate{
+				Dcid: candidate,
+			})
+		}
+		response.Entities = append(response.Entities, entity)
+	}
+	return response
+}
+
+func generateValueHash(input string) string {
+	data := []byte(input)
+	hash := sha256.Sum256(data)
+	return base64.StdEncoding.EncodeToString(hash[:])
+}
+
+func addValueHashes(input []string) []string {
+	result := make([]string, 0, len(input)*2)
+	for _, v := range input {
+		result = append(result, v)
+		result = append(result, generateValueHash(v))
+	}
+	return result
 }

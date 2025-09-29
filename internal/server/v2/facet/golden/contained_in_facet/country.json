@@ -26,13 +26,13 @@
               "facet_id": "3956865500"
             },
             {
-              "facet_id": "3251078590"
-            },
-            {
               "facet_id": "2309233061"
             },
             {
               "facet_id": "2018634167"
+            },
+            {
+              "facet_id": "536518379"
             },
             {
               "facet_id": "563701067"
@@ -45,6 +45,9 @@
             },
             {
               "facet_id": "2825511676"
+            },
+            {
+              "facet_id": "723406962"
             },
             {
               "facet_id": "678784946"
@@ -125,6 +128,9 @@
               "facet_id": "2517965213"
             },
             {
+              "facet_id": "2390551605"
+            },
+            {
               "facet_id": "1733625304"
             },
             {
@@ -149,9 +155,6 @@
           "ordered_facets": [
             {
               "facet_id": "3795540742"
-            },
-            {
-              "facet_id": "3357919774"
             },
             {
               "facet_id": "3614729857"
@@ -271,7 +274,7 @@
     },
     "217147238": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2023.S2603",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "2176550201": {
@@ -283,6 +286,12 @@
     "2309233061": {
       "import_name": "EthiopiaStatistics",
       "provenance_url": "https://ethiopia.opendataforafrica.org/data/#menu=topic"
+    },
+    "2390551605": {
+      "import_name": "USCensusPEP_AgeSexRaceHispanicOrigin",
+      "provenance_url": "https://www2.census.gov/programs-surveys/popest/tables",
+      "measurement_method": "CensusPEPSurvey_Race2000Onwards",
+      "observation_period": "P1Y"
     },
     "2458695583": {
       "import_name": "WikidataPopulation",
@@ -335,16 +344,6 @@
       "provenance_url": "https://rwanda.opendataforafrica.org/",
       "observation_period": "Annual"
     },
-    "3251078590": {
-      "import_name": "MexicoCensus_AA2",
-      "provenance_url": "https://data.humdata.org/dataset/cod-ps-mex"
-    },
-    "3357919774": {
-      "import_name": "CensusUSAMedianAgeIncome",
-      "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-      "measurement_method": "CensusACS5yrSurvey",
-      "unit": "Year"
-    },
     "3614729857": {
       "import_name": "MexicoCensus",
       "provenance_url": "https://www.inegi.org.mx/temas/"
@@ -393,7 +392,7 @@
     },
     "4219092424": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2603",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2019.S2603",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2603&tid=ACSST5Y2023.S2603",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
     },
@@ -402,6 +401,10 @@
       "provenance_url": "https://databank.worldbank.org/source/subnational-population",
       "measurement_method": "WorldBankSubnationalPopulationEstimate",
       "observation_period": "P1Y"
+    },
+    "536518379": {
+      "import_name": "SouthKorea_Demographics",
+      "provenance_url": "https://kosis.kr/eng/statisticsList/statisticsListIndex.do"
     },
     "563701067": {
       "import_name": "NigeriaStatistics",
@@ -419,6 +422,10 @@
       "import_name": "Rwanda_Census",
       "provenance_url": "https://rwanda.opendataforafrica.org/",
       "observation_period": "P3M"
+    },
+    "723406962": {
+      "import_name": "Mongolia_Demographics",
+      "provenance_url": "https://www.1212.mn/en/statcate"
     },
     "815809675": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",

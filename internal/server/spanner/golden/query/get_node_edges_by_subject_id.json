@@ -3,27 +3,18 @@
     {
       "SubjectID": "Aadhaar",
       "Predicate": "description",
-      "ObjectID": "",
-      "ObjectValue": "Aadhaar is a 12-digit unique identity number that can be obtained voluntarily by all residents of India",
       "Provenance": "dc/base/BaseSchema",
-      "Name": "",
-      "Types": []
-    },
-    {
-      "SubjectID": "Aadhaar",
-      "Predicate": "extendedName",
-      "ObjectID": "",
-      "ObjectValue": "Aadhaar",
-      "Provenance": "dc/base/BaseSchema",
+      "Value": "Aadhaar is a 12-digit unique identity number that can be obtained voluntarily by all residents of India",
+      "Bytes": null,
       "Name": "",
       "Types": []
     },
     {
       "SubjectID": "Aadhaar",
       "Predicate": "isProvisional",
-      "ObjectID": "True",
-      "ObjectValue": "",
       "Provenance": "dc/base/BaseSchema",
+      "Value": "True",
+      "Bytes": null,
       "Name": "True",
       "Types": [
         "Boolean"
@@ -31,28 +22,30 @@
     },
     {
       "SubjectID": "Aadhaar",
-      "Predicate": "localCuratorLevelId",
-      "ObjectID": "",
-      "ObjectValue": "dcid:Aadhaar",
+      "Predicate": "name",
       "Provenance": "dc/base/BaseSchema",
+      "Value": "Aadhaar",
+      "Bytes": null,
       "Name": "",
       "Types": []
     },
     {
       "SubjectID": "Aadhaar",
-      "Predicate": "name",
-      "ObjectID": "",
-      "ObjectValue": "Aadhaar",
+      "Predicate": "provenance",
       "Provenance": "dc/base/BaseSchema",
-      "Name": "",
-      "Types": []
+      "Value": "dc/base/BaseSchema",
+      "Bytes": null,
+      "Name": "BaseSchema",
+      "Types": [
+        "Provenance"
+      ]
     },
     {
       "SubjectID": "Aadhaar",
       "Predicate": "typeOf",
-      "ObjectID": "GovernmentIdEnum",
-      "ObjectValue": "",
       "Provenance": "dc/base/BaseSchema",
+      "Value": "GovernmentIdEnum",
+      "Bytes": null,
       "Name": "GovernmentIdEnum",
       "Types": [
         "Class"
@@ -61,10 +54,10 @@
     {
       "SubjectID": "Aadhaar",
       "Predicate": "typeOf",
-      "ObjectID": "GovernmentIdenitifierEnum",
-      "ObjectValue": "",
       "Provenance": "dc/base/BaseSchema",
-      "Name": "GovernmentIdenitifierEnum",
+      "Value": "GovernmentIdentifierEnum",
+      "Bytes": null,
+      "Name": "GovernmentIdentifierEnum",
       "Types": [
         "Class"
       ]
@@ -74,9 +67,9 @@
     {
       "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
       "Predicate": "constraintProperties",
-      "ObjectID": "consumingSector",
-      "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
+      "Value": "consumingSector",
+      "Bytes": null,
       "Name": "consumingSector",
       "Types": [
         "Property"
@@ -85,9 +78,9 @@
     {
       "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
       "Predicate": "consumingSector",
-      "ObjectID": "Residential",
-      "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
+      "Value": "Residential",
+      "Bytes": null,
       "Name": "Residential",
       "Types": [
         "ElectricityConsumptionSectorEnum",
@@ -96,28 +89,10 @@
     },
     {
       "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
-      "Predicate": "extendedName",
-      "ObjectID": "",
-      "ObjectValue": "Average retail price of electricity, residential, monthly",
+      "Predicate": "measuredProperty",
       "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "",
-      "Types": []
-    },
-    {
-      "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
-      "Predicate": "localCuratorLevelId",
-      "ObjectID": "",
-      "ObjectValue": "dcid:Monthly_Average_RetailPrice_Electricity_Residential",
-      "Provenance": "dc/base/HumanReadableStatVars",
-      "Name": "",
-      "Types": []
-    },
-    {
-      "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
-      "Predicate": "measuredProp",
-      "ObjectID": "retailPrice",
-      "ObjectValue": "",
-      "Provenance": "dc/base/HumanReadableStatVars",
+      "Value": "retailPrice",
+      "Bytes": null,
       "Name": "retailPrice",
       "Types": [
         "Property"
@@ -126,9 +101,9 @@
     {
       "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
       "Predicate": "measurementQualifier",
-      "ObjectID": "Monthly",
-      "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
+      "Value": "Monthly",
+      "Bytes": null,
       "Name": "Monthly",
       "Types": [
         "StatAccumulationPeriodEnum"
@@ -137,9 +112,9 @@
     {
       "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
       "Predicate": "memberOf",
-      "ObjectID": "dc/g/Electricity_ConsumingSector-Residential",
-      "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
+      "Value": "dc/g/Electricity_ConsumingSector-Residential",
+      "Bytes": null,
       "Name": "Electricity With Consuming Sector = Residential",
       "Types": [
         "StatVarGroup"
@@ -148,9 +123,9 @@
     {
       "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
       "Predicate": "memberOf",
-      "ObjectID": "eia/g/ELEC.1012",
-      "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
+      "Value": "eia/g/ELEC.1012",
+      "Bytes": null,
       "Name": "Residential",
       "Types": [
         "StatVarGroup"
@@ -159,18 +134,18 @@
     {
       "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
       "Predicate": "name",
-      "ObjectID": "",
-      "ObjectValue": "Average retail price of electricity, residential, monthly",
       "Provenance": "dc/base/HumanReadableStatVars",
+      "Value": "Average retail price of electricity, residential, monthly",
+      "Bytes": null,
       "Name": "",
       "Types": []
     },
     {
       "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
       "Predicate": "populationType",
-      "ObjectID": "Electricity",
-      "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
+      "Value": "Electricity",
+      "Bytes": null,
       "Name": "Electricity",
       "Types": [
         "Class"
@@ -178,10 +153,21 @@
     },
     {
       "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
-      "Predicate": "statType",
-      "ObjectID": "meanValue",
-      "ObjectValue": "",
+      "Predicate": "provenance",
       "Provenance": "dc/base/HumanReadableStatVars",
+      "Value": "dc/base/HumanReadableStatVars",
+      "Bytes": null,
+      "Name": "HumanReadableStatVars",
+      "Types": [
+        "Provenance"
+      ]
+    },
+    {
+      "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
+      "Predicate": "statType",
+      "Provenance": "dc/base/HumanReadableStatVars",
+      "Value": "meanValue",
+      "Bytes": null,
       "Name": "meanValue",
       "Types": [
         "Property"
@@ -190,9 +176,9 @@
     {
       "SubjectID": "Monthly_Average_RetailPrice_Electricity_Residential",
       "Predicate": "typeOf",
-      "ObjectID": "StatisticalVariable",
-      "ObjectValue": "",
       "Provenance": "dc/base/HumanReadableStatVars",
+      "Value": "StatisticalVariable",
+      "Bytes": null,
       "Name": "StatisticalVariable",
       "Types": [
         "Class"

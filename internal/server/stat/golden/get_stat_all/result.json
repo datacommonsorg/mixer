@@ -6,40 +6,41 @@
           "sourceSeries": [
             {
               "val": {
-                "1990": 23650,
-                "1991": 24100,
-                "1992": 25090,
-                "1993": 25910,
-                "1994": 27250,
-                "1995": 28450,
-                "1996": 29870,
-                "1997": 31510,
-                "1998": 33120,
-                "1999": 34730,
-                "2000": 36810,
-                "2001": 37720,
-                "2002": 38440,
-                "2003": 39780,
-                "2004": 42080,
-                "2005": 44570,
-                "2006": 47160,
-                "2007": 48330,
-                "2008": 48420,
-                "2009": 47060,
-                "2010": 49090,
-                "2011": 50910,
-                "2012": 53020,
-                "2013": 54230,
-                "2014": 56490,
-                "2015": 58020,
-                "2016": 58760,
-                "2017": 61010,
-                "2018": 63900,
-                "2019": 66290,
-                "2020": 64720,
+                "1990": 24030,
+                "1991": 24470,
+                "1992": 25540,
+                "1993": 26510,
+                "1994": 27780,
+                "1995": 28800,
+                "1996": 30080,
+                "1997": 31540,
+                "1998": 32920,
+                "1999": 34630,
+                "2000": 36470,
+                "2001": 37310,
+                "2002": 38160,
+                "2003": 39690,
+                "2004": 41990,
+                "2005": 44380,
+                "2006": 46460,
+                "2007": 48370,
+                "2008": 49050,
+                "2009": 47680,
+                "2010": 49310,
+                "2011": 50790,
+                "2012": 52450,
+                "2013": 54020,
+                "2014": 55890,
+                "2015": 57530,
+                "2016": 58690,
+                "2017": 60940,
+                "2018": 63760,
+                "2019": 66080,
+                "2020": 65040,
                 "2021": 71770,
-                "2022": 78710,
-                "2023": 82340
+                "2022": 78310,
+                "2023": 82600,
+                "2024": 85980
               },
               "observationPeriod": "P1Y",
               "importName": "WorldDevelopmentIndicators",
@@ -82,7 +83,11 @@
                 "2016": 4322038000000,
                 "2017": 4286423000000,
                 "2018": 4455439000000,
-                "2019": 4405511000000
+                "2019": 4405511000000,
+                "2020": 4260043501000,
+                "2021": 4374676380000,
+                "2022": 4495368112000,
+                "2023": 4458417904000
               },
               "observationPeriod": "P1Y",
               "importName": "UNEnergy",
@@ -105,18 +110,22 @@
                 "2011": 4100140926120,
                 "2012": 4047765266680,
                 "2013": 4065964067460,
-                "2014": 4093606004810,
-                "2015": 4077600938550,
-                "2016": 4076674983520,
-                "2017": 4034270558830,
-                "2018": 4178277343730,
-                "2019": 4127855213410,
-                "2020": 4009084999080
+                "2014": 4093564141830,
+                "2015": 4078713772290,
+                "2016": 4077573800520,
+                "2017": 4035442894830,
+                "2018": 4180987702730,
+                "2019": 4130573879410,
+                "2020": 4009766845710,
+                "2021": 4109699389840,
+                "2022": 4230667563220,
+                "2023": 4183270672300,
+                "2024": 4304038716900.0005
               },
               "importName": "EIA_Electricity",
               "provenanceDomain": "eia.gov",
               "unit": "KilowattHour",
-              "provenanceUrl": "https://www.eia.gov/opendata/qb.php?category=0"
+              "provenanceUrl": "https://www.eia.gov/opendata/browser/electricity"
             }
           ]
         },
@@ -379,25 +388,40 @@
                 "2007": 301231207,
                 "2008": 304093966,
                 "2009": 306771529,
-                "2010": 309327143,
-                "2011": 311583481,
-                "2012": 313877662,
-                "2013": 316059947,
-                "2014": 318386329,
-                "2015": 320738994,
-                "2016": 323071755,
-                "2017": 325122128,
-                "2018": 326838199,
-                "2019": 328329953,
-                "2020": 331526933,
-                "2021": 332048977,
-                "2022": 333271411,
-                "2023": 334914895
+                "2010": 309378227,
+                "2011": 311839461,
+                "2012": 314339099,
+                "2013": 316726282,
+                "2014": 319257560,
+                "2015": 321815121,
+                "2016": 324353340,
+                "2017": 326608609,
+                "2018": 328529577,
+                "2019": 330226227,
+                "2020": 331577720,
+                "2021": 332099760,
+                "2022": 334017321,
+                "2023": 336806231,
+                "2024": 340110988
               },
               "observationPeriod": "P1Y",
               "importName": "WorldDevelopmentIndicators",
               "provenanceDomain": "worldbank.org",
               "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/"
+            },
+            {
+              "val": {
+                "2020": 331577720,
+                "2021": 332099760,
+                "2022": 334017321,
+                "2023": 336806231,
+                "2024": 340110988
+              },
+              "measurementMethod": "CensusPEPSurvey_Race2000Onwards",
+              "observationPeriod": "P1Y",
+              "importName": "USCensusPEP_AgeSexRaceHispanicOrigin",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables"
             },
             {
               "val": {
@@ -460,6 +484,28 @@
                 "2023": 332387540
               },
               "measurementMethod": "CensusACS5yrSurveySubjectTable",
+              "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101"
+            },
+            {
+              "val": {
+                "2010": 303965272,
+                "2011": 306603772,
+                "2012": 309138711,
+                "2013": 311536594,
+                "2014": 314107084,
+                "2015": 316515021,
+                "2016": 318558162,
+                "2017": 321004407,
+                "2018": 322903030,
+                "2019": 324697795,
+                "2020": 326569308,
+                "2021": 329725481,
+                "2022": 331097593,
+                "2023": 332387540
+              },
+              "measurementMethod": "CensusACS5yrSurveySubjectTable",
               "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",
               "provenanceDomain": "census.gov",
               "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601A\u0026tid=ACSST5Y2019.S2601A"
@@ -481,36 +527,18 @@
             },
             {
               "val": {
-                "2010": 303965272,
-                "2011": 306603772,
-                "2012": 309138711,
-                "2013": 311536594,
-                "2014": 314107084,
-                "2015": 316515021,
-                "2016": 318558162,
                 "2017": 321004407,
                 "2018": 322903030,
                 "2019": 324697795,
                 "2020": 326569308,
-                "2021": 329725481
-              },
-              "measurementMethod": "CensusACS5yrSurveySubjectTable",
-              "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
-              "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101"
-            },
-            {
-              "val": {
-                "2017": 321004407,
-                "2018": 322903030,
-                "2019": 324697795,
-                "2020": 326569308,
-                "2021": 329725481
+                "2021": 329725481,
+                "2022": 331097593,
+                "2023": 332387540
               },
               "measurementMethod": "CensusACS5yrSurveySubjectTable",
               "importName": "CensusACS5YearSurvey_SubjectTables_S2603",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2603\u0026tid=ACSST5Y2019.S2603"
+              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2603\u0026tid=ACSST5Y2023.S2603"
             },
             {
               "val": {
@@ -697,10 +725,10 @@
                 "1840": 17069453,
                 "1850": 23191876,
                 "1860": 31443321,
-                "1870": 38558371,
-                "1880": 50155783,
+                "1870": 39818449,
+                "1880": 50189209,
                 "1890": 62979766,
-                "1900": 76212168,
+                "1900": 76303387,
                 "1901": 77584000,
                 "1902": 79163000,
                 "1903": 80632000,
@@ -710,7 +738,7 @@
                 "1907": 87008000,
                 "1908": 88710000,
                 "1909": 90490000,
-                "1910": 91972266,
+                "1910": 92407000,
                 "1911": 93863000,
                 "1912": 95335000,
                 "1913": 97225000,
@@ -733,7 +761,11 @@
                 "2011-07": 311582600,
                 "2013-07-01": 316128839,
                 "2016-07-09": 323952889,
-                "2017": 325145963
+                "2017": 325145963,
+                "2019": 328239523,
+                "2020-04-01": 331449281,
+                "2021": 332278200,
+                "2024-07-01": 340110988
               },
               "measurementMethod": "WikidataPopulation",
               "importName": "WikidataPopulation",
@@ -770,12 +802,16 @@
                 "2017": 206146519900,
                 "2018": 195465638180,
                 "2019": 201784204300,
-                "2020": 194110262920
+                "2020": 193083537410,
+                "2021": 197165105640,
+                "2022": 203383856840,
+                "2023": 216628793850,
+                "2024": 214131497530
               },
               "importName": "EIA_Electricity",
               "provenanceDomain": "eia.gov",
               "unit": "KilowattHour",
-              "provenanceUrl": "https://www.eia.gov/opendata/qb.php?category=0"
+              "provenanceUrl": "https://www.eia.gov/opendata/browser/electricity"
             }
           ]
         },
@@ -1035,6 +1071,28 @@
                 "2023": 39242785
               },
               "measurementMethod": "CensusACS5yrSurveySubjectTable",
+              "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101"
+            },
+            {
+              "val": {
+                "2010": 36637290,
+                "2011": 36969200,
+                "2012": 37325068,
+                "2013": 37659181,
+                "2014": 38066920,
+                "2015": 38421464,
+                "2016": 38654206,
+                "2017": 38982847,
+                "2018": 39148760,
+                "2019": 39283497,
+                "2020": 39346023,
+                "2021": 39455353,
+                "2022": 39356104,
+                "2023": 39242785
+              },
+              "measurementMethod": "CensusACS5yrSurveySubjectTable",
               "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",
               "provenanceDomain": "census.gov",
               "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601A\u0026tid=ACSST5Y2019.S2601A"
@@ -1053,26 +1111,6 @@
               "importName": "CensusACS5YearSurvey_SubjectTables_S2602",
               "provenanceDomain": "census.gov",
               "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2602\u0026tid=ACSST5Y2019.S2602"
-            },
-            {
-              "val": {
-                "2010": 36637290,
-                "2011": 36969200,
-                "2012": 37325068,
-                "2013": 37659181,
-                "2014": 38066920,
-                "2015": 38421464,
-                "2016": 38654206,
-                "2017": 38982847,
-                "2018": 39148760,
-                "2019": 39283497,
-                "2020": 39346023,
-                "2021": 39455353
-              },
-              "measurementMethod": "CensusACS5yrSurveySubjectTable",
-              "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
-              "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101"
             },
             {
               "val": {
@@ -1266,7 +1304,7 @@
                 "1907": 2054000,
                 "1908": 2161000,
                 "1909": 2282000,
-                "1910": 2377549,
+                "1910": 2406000,
                 "1911": 2534000,
                 "1912": 2668000,
                 "1913": 2811000,
@@ -1287,7 +1325,8 @@
                 "2000": 33871648,
                 "2010-04-01": 37253956,
                 "2015": 39144818,
-                "2016": 39250017
+                "2016": 39250017,
+                "2020-04-01": 39538223
               },
               "measurementMethod": "WikidataPopulation",
               "importName": "WikidataPopulation",
@@ -1365,8 +1404,9 @@
                 "2019": 80516,
                 "2020": 80030,
                 "2021": 81516,
-                "2022": 81853,
-                "2023": 81785
+                "2022": 82339,
+                "2023": 83938,
+                "2024": 87316
               },
               "measurementMethod": "CensusPEPSurvey",
               "observationPeriod": "P1Y",
@@ -1419,7 +1459,9 @@
                 "2018": 80993,
                 "2019": 81656,
                 "2020": 80104,
-                "2021": 82409
+                "2021": 82409,
+                "2022": 82132,
+                "2023": 82363
               },
               "measurementMethod": "CensusACS5yrSurveySubjectTable",
               "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
@@ -1492,7 +1534,8 @@
             },
             {
               "val": {
-                "2010": 74066
+                "2010-04-01": 74066,
+                "2020-04-01": 82376
               },
               "measurementMethod": "WikidataPopulation",
               "importName": "WikidataPopulation",

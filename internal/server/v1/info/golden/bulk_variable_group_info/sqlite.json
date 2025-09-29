@@ -15,49 +15,49 @@
             "id": "dc/g/Demographics",
             "specializedEntity": "Demographics",
             "displayName": "Demographics",
-            "descendentStatVarCount": 19459
+            "descendentStatVarCount": 14548
           },
           {
             "id": "dc/g/Economy",
             "specializedEntity": "Economy",
             "displayName": "Economy",
-            "descendentStatVarCount": 23379
+            "descendentStatVarCount": 20379
           },
           {
             "id": "dc/g/Education",
             "specializedEntity": "Education",
             "displayName": "Education",
-            "descendentStatVarCount": 13527
+            "descendentStatVarCount": 11261
           },
           {
             "id": "dc/g/Energy",
             "specializedEntity": "Energy",
             "displayName": "Energy",
-            "descendentStatVarCount": 2577
+            "descendentStatVarCount": 2571
           },
           {
             "id": "dc/g/Environment",
             "specializedEntity": "Environment",
             "displayName": "Environment",
-            "descendentStatVarCount": 476
+            "descendentStatVarCount": 442
           },
           {
             "id": "dc/g/Health",
             "specializedEntity": "Health",
             "displayName": "Health",
-            "descendentStatVarCount": 11233
+            "descendentStatVarCount": 7965
           },
           {
             "id": "dc/g/Housing",
             "specializedEntity": "Housing",
             "displayName": "Housing",
-            "descendentStatVarCount": 507
+            "descendentStatVarCount": 519
           },
           {
             "id": "dc/g/Crime",
             "specializedEntity": "Crime",
             "displayName": "Crime",
-            "descendentStatVarCount": 3187
+            "descendentStatVarCount": 3823
           },
           {
             "id": "dc/g/AboutDataCommons",
@@ -87,7 +87,7 @@
             "descendentStatVarCount": 2
           }
         ],
-        "descendentStatVarCount": 42529
+        "descendentStatVarCount": 42549
       }
     },
     {

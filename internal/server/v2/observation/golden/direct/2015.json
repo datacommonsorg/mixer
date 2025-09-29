@@ -25,7 +25,7 @@
               "observations": [
                 {
                   "date": "2015",
-                  "value": 58020
+                  "value": 57530
                 }
               ],
               "obs_count": 1,
@@ -61,7 +61,7 @@
               "observations": [
                 {
                   "date": "2015",
-                  "value": 4077600938550
+                  "value": 4078713772290
                 }
               ],
               "obs_count": 1,
@@ -229,7 +229,7 @@
               "observations": [
                 {
                   "date": "2015",
-                  "value": 320738994
+                  "value": 321815121
                 }
               ],
               "obs_count": 1,
@@ -249,7 +249,7 @@
               "latest_date": "2015"
             },
             {
-              "facet_id": "10983471",
+              "facet_id": "1964317807",
               "observations": [
                 {
                   "date": "2015",
@@ -261,7 +261,7 @@
               "latest_date": "2015"
             },
             {
-              "facet_id": "1964317807",
+              "facet_id": "10983471",
               "observations": [
                 {
                   "date": "2015",
@@ -350,7 +350,7 @@
               "latest_date": "2015"
             },
             {
-              "facet_id": "10983471",
+              "facet_id": "1964317807",
               "observations": [
                 {
                   "date": "2015",
@@ -362,7 +362,7 @@
               "latest_date": "2015"
             },
             {
-              "facet_id": "1964317807",
+              "facet_id": "10983471",
               "observations": [
                 {
                   "date": "2015",
@@ -605,7 +605,7 @@
     },
     "2392525955": {
       "import_name": "EIA_Electricity",
-      "provenance_url": "https://www.eia.gov/opendata/qb.php?category=0",
+      "provenance_url": "https://www.eia.gov/opendata/browser/electricity",
       "unit": "KilowattHour"
     },
     "2458695583": {
