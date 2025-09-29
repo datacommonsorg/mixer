@@ -1,4 +1,4 @@
-"""Simple loadtesting using BulkObservationsSeriesLinked rpc."""
+"""Simple load testing tool for Data Commons API endpoints using Locust."""
 
 import abc
 from abc import ABCMeta
@@ -14,8 +14,8 @@ from locust.env import Environment
 
 logging.basicConfig(level=logging.INFO)
 
-DC_API_KEY = ""
-SHARED_TEST_REQUESTS = []
+_DC_API_KEY = ""
+_SHARED_TEST_REQUESTS = []
 
 
 def load_test_requests(requests_json_files: str) -> list:
@@ -37,20 +37,22 @@ def load_test_requests(requests_json_files: str) -> list:
                             f" 'path' fields. Request: {request}")
                 requests.extend(loaded_data)
         except FileNotFoundError as e:
-            logging.exception("Error: %s not found.", file_path)
-            raise e
+            e.add_note(f"Failed to load test requests from {file_path}")
+            raise
         except json.JSONDecodeError as e:
-            logging.exception("Error: Could not decode %s as JSON.", file_path)
-            raise e
+            e.add_note(f"Failed to decode JSON from {file_path}")
+            raise
     return requests
 
 
-def send_request(client,
-                 api_version,
-                 request,
-                 skip_cache: bool = True,
-                 request_name=None):
-    headers = {"X-API-Key": DC_API_KEY}
+def send_request(
+    client,
+    api_version: str,
+    request: dict[str, Any],
+    skip_cache: bool = True,
+    request_name: str | None = None,
+) -> None:
+    headers = {"X-API-Key": _DC_API_KEY}
     if skip_cache:
         headers["X-Skip-Cache"] = str(skip_cache).lower()
     request_name = request_name or f"{request['test_name']}_{api_version}"
@@ -60,7 +62,7 @@ def send_request(client,
             json=request["json_payload"],
             headers=headers,
             name=request_name,
-    ) as resp:
+    ) as _:
         # For examples, check
         # https://docs.locust.io/en/stable/increase-performance.html#rest
         pass
@@ -98,13 +100,13 @@ def _(parser):
 # https://github.com/locustio/locust/blob/master/examples/test_data_management.py
 @events.test_start.add_listener
 def test_start(environment: Environment, **_kwargs) -> None:
-    global DC_API_KEY, SHARED_TEST_REQUESTS
+    global _DC_API_KEY, _SHARED_TEST_REQUESTS
     logging.info("Starting test run")
-    DC_API_KEY = environment.parsed_options.dc_api_key
+    _DC_API_KEY = environment.parsed_options.dc_api_key
     # Explicitly clearing as on load failure() below, tests continue with
     # previous requests.
-    SHARED_TEST_REQUESTS = []
-    SHARED_TEST_REQUESTS = load_test_requests(
+    _SHARED_TEST_REQUESTS = []
+    _SHARED_TEST_REQUESTS = load_test_requests(
         environment.parsed_options.request_json_files)
 
 
@@ -122,7 +124,7 @@ class BaseBenchmarkUser(FastHttpUser, metaclass=UserABCMeta):
     abstract = True
 
     def on_start(self):
-        self.test_requests = SHARED_TEST_REQUESTS
+        self.test_requests = _SHARED_TEST_REQUESTS
 
     @task
     def run_latency_tests(self):
