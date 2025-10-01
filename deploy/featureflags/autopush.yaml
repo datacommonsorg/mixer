@@ -1,5 +1,6 @@
 clusters:
   - projects/datcom-mixer-autopush/locations/us-central1/clusters/mixer-us-central1
+liveUrl: https://autopush.api.datacommons.org
 flags:
   EnableV3: true
   V3MirrorFraction: 0.5

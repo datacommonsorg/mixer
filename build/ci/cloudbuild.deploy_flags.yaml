@@ -23,18 +23,12 @@
 # config directory.
 
 steps:
-  # Validate feature flag yaml files
-  - id: validate-feature-flags
-    name: gcr.io/datcom-ci/go-protoc:${_GO_PROTOC_VERSION}
-    entrypoint: "bash"
-    args:
-      - -c
-      - |
-        set -e
-        ./scripts/check_flags.sh deploy/featureflags
-    waitFor: ["-"]
+  # Ensure past commits are available so they can be used for validation
+  - name: gcr.io/cloud-builders/git
+    args: ["fetch", "--unshallow"]
 
-  - name: "gcr.io/datcom-ci/datacommons-script-runner:latest"
+  # Run the flag deploy script
+  - name: gcr.io/datcom-ci/go-protoc:${_GO_PROTOC_VERSION}
     entrypoint: "bash"
     args:
       - "-c"

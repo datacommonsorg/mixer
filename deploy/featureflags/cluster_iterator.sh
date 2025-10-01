@@ -75,7 +75,7 @@ iterate_clusters() {
         CONFIG_FILES+=("$f")
       fi
     done
-    if [ ${#CONFIG_FILES[@]} -eq 0 ]; then
+    if [[ ${#CONFIG_FILES[@]} -eq 0 ]]; then
       echo "No environment config files with cluster details found."
       return 0
     fi

@@ -15,6 +15,7 @@
 # limitations under the License.
 
 # This script deploys feature flag ConfigMaps to the appropriate Kubernetes clusters and namespaces.
+# It first validates the flag configuration files before proceeding with the deployment.
 #
 # It reads a feature flag configuration file for all environments
 # (or a specific environment), extracts the list of target clusters,
@@ -41,8 +42,19 @@ if [[ "$#" -lt 1 || "$#" -gt 2 ]]; then
   exit 1
 fi
 
+CONFIG_DIR=$1
+TARGET_ENV=$2
+
 # Source cluster iterator from the same directory as this script.
 source "$(dirname "${BASH_SOURCE[0]}")/cluster_iterator.sh"
+
+echo "---"
+echo "Performing pre-deployment validation..."
+SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
+CHECK_FLAGS_SCRIPT="${SCRIPT_DIR}/../../scripts/check_flags.sh"
+"$CHECK_FLAGS_SCRIPT" "$CONFIG_DIR" "$TARGET_ENV" --live
+echo "Pre-deployment validation successful."
+echo "---"
 
 CONFIG_MAP_NAME="mixer-feature-flags"
 CONTAINER_NAME="mixer"
@@ -69,7 +81,7 @@ deploy_flags_to_cluster() {
     [[ -n "$line" ]] && namespaces+=("$line")
   done < <(kubectl get deployment --all-namespaces -l app.kubernetes.io/name=${CONTAINER_NAME} -o jsonpath='{range .items[*]}{.metadata.namespace}{"\n"}{end}' --context="gke_${PROJECT_ID}_${LOCATION}_${CLUSTER_NAME}" | sort -u)
 
-  if [ ${#namespaces[@]} -eq 0 ]; then
+  if [[ ${#namespaces[@]} -eq 0 ]]; then
     echo "No '${CONTAINER_NAME}' deployments found in any namespace."
     return
   fi
@@ -87,7 +99,7 @@ deploy_flags_to_cluster() {
   done
 }
 
-iterate_clusters "$1" "$2" "deploy_flags_to_cluster"
+iterate_clusters "$CONFIG_DIR" "$TARGET_ENV" "deploy_flags_to_cluster"
 
 echo "---"
 echo "Successfully deployed all feature flags."
