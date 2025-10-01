@@ -38,7 +38,7 @@ steps:
       - |
         set -e
         ./scripts/check_flags.sh deploy/featureflags
-    waitFor: ["-"]
+    waitFor: ["lint"]
 
   # Build protobuf to go bindings
   - id: build-proto
@@ -55,7 +55,7 @@ steps:
           --go-grpc_opt=require_unimplemented_servers=false \
           --experimental_allow_proto3_optional \
           proto/*.proto proto/**/*.proto
-    waitFor: ["-"]
+    waitFor: ["lint"]
 
   - id: test
     name: gcr.io/datcom-ci/full-env:${_FULL_ENV_VERSION}
