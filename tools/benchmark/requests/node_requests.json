@@ -1,0 +1,111 @@
+[
+  {
+    "test_name": "country_props",
+    "path": "/node",
+    "json_payload": {
+      "nodes": ["country/USA"],
+      "property": "->name"
+    }
+  },
+  {
+    "test_name": "country_props_1",
+    "path": "/node",
+    "json_payload": {
+      "nodes": ["country/FRA"],
+      "property": "->name"
+    }
+  },
+
+  {
+    "test_name": "out_properties",
+    "path": "/node",
+    "json_payload": {
+      "nodes": ["Count_Person_Female", "foo", "test_var_1"],
+      "property": "->"
+    }
+  },
+  {
+    "test_name": "in_properties",
+    "path": "/node",
+    "json_payload": {
+      "nodes": ["Count_Person_Female", "foo", "test_var_1"],
+      "property": "<-"
+    }
+  },
+  {
+    "test_name": "all_out_property_values",
+    "path": "/node",
+    "json_payload": {
+      "nodes": ["Count_Person_Female", "foo", "test_var_1"],
+      "property": "->*"
+    }
+  },
+  {
+    "test_name": "all_in_property_values",
+    "path": "/node",
+    "json_payload": {
+      "nodes": ["test_var_1"],
+      "property": "<-*"
+    }
+  },
+  {
+    "test_name": "some_out_property_values",
+    "path": "/node",
+    "json_payload": {
+      "nodes": ["test_var_1"],
+      "property": "->[name, description]"
+    }
+  },
+  {
+    "test_name": "some_in_property_values",
+    "path": "/node",
+    "json_payload": {
+      "nodes": ["test_var_1"],
+      "property": "<-measuredProperty"
+    }
+  },
+  {
+    "test_name": "in_property_values_with_filter",
+    "path": "/node",
+    "json_payload": {
+      "nodes": ["country/USA"],
+      "property": "<-containedInPlace{typeOf:State}"
+    }
+  },
+  {
+    "test_name": "in_chained_property_values_with_filter",
+    "path": "/node",
+    "json_payload": {
+      "nodes": ["geoId/06085"],
+      "property": "<-containedInPlace+{typeOf:City}"
+    }
+  },
+  {
+    "test_name": "first_page_of_pagination",
+    "path": "/node",
+    "json_payload": {
+      "nodes": ["StatisticalVariable"],
+      "property": "<-typeOf"
+    }
+  },
+  {
+    "test_name": "second_page_of_pagination",
+    "api_versions": ["v2"],
+    "path": "/node",
+    "json_payload": {
+      "nodes": ["StatisticalVariable"],
+      "property": "<-typeOf",
+      "nextToken": "H4sIAAAAAAAA/2zKsQrCMBQFUHON8fpUkOuHOQjuz5JCIENp39K/L3TufI51e3/Doy3RBu8/n5v/e7US61Q/4yHqpMz0SgIh8CwwC7wILAKvAinwJtCUed/nQ+BzAwAA//8BAAD//9/cwhNuAAAA"
+    }
+  },
+  {
+    "test_name": "second_page_of_pagination",
+    "api_versions": ["v3"],
+    "path": "/node",
+    "json_payload": {
+      "nodes": ["StatisticalVariable"],
+      "property": "<-typeOf",
+      "nextToken": "H4sIAAAAAAAA/+Ly43IvLkjMy0st0i0oys9KTS4p1k9JLEnOz9UtLskvStXPzCsuScxLTi3WT0nWzU7XLUktLgGpSExKLAYLxqcXJRZkxJtIMXN0qAMAAAD//wEAAP//A4QleFAAAAA="
+    }
+  }
+]
