@@ -24,7 +24,8 @@ def load_test_requests(requests_json_files: str) -> list:
     # Clearing previous requests. Request files can be edited in webui, so we need
     # to clear the previous requests.
     requests = []
-    assert requests_json_files, "requests_json_files is empty"
+    if not requests_json_files:
+        raise ValueError("requests_json_files is empty")
     file_paths = requests_json_files.split(",")
     for file_path in file_paths:
         logging.info("Loading requests from %s", file_path)
