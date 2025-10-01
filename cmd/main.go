@@ -363,6 +363,12 @@ func main() {
 	// Processors
 	processors := []*dispatcher.Processor{}
 	if *enableV3 {
+		// Mixer in-memory cache.
+		dataSourceCache, err := cache.NewDataSourceCache(ctx, dataSources, cacheOptions)
+		if err != nil {
+			log.Fatalf("Failed to create data source cache: %v", err)
+		}
+
 		// Cache Processor
 		if *useRedis && *redisInfo != "" {
 			redisClient, err := redis.NewCacheClient(*redisInfo)
@@ -377,7 +383,7 @@ func main() {
 		}
 
 		// Calculation Processor
-		var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, c.SVFormula(ctx))
+		var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, dataSourceCache.SVFormula(ctx))
 		processors = append(processors, &calculationProcessor)
 	}
 

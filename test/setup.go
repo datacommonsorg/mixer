@@ -214,7 +214,12 @@ func setupInternal(
 	// Processors
 	processors := []*dispatcher.Processor{}
 	if enableV3 {
-		var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, c.SVFormula(ctx))
+		// Mixer in-memory cache.
+		dataSourceCache, err := cache.NewDataSourceCache(ctx, dataSources, cacheOptions)
+		if err != nil {
+			return nil, err
+		}
+		var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, dataSourceCache.SVFormula(ctx))
 		processors = append(processors, &calculationProcessor)
 	}
 
