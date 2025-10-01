@@ -19,6 +19,7 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"log/slog"
 	"net"
 	"net/http"
 	_ "net/http/pprof"
@@ -26,6 +27,7 @@ import (
 	"runtime"
 	"runtime/pprof"
 
+	internallog "github.com/datacommonsorg/mixer/internal/log"
 	"github.com/datacommonsorg/mixer/internal/metrics"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
@@ -112,10 +114,10 @@ var (
 )
 
 func main() {
-	log.Println("Enter mixer main() function")
+	internallog.SetUpLogger()
+	slog.Info("Enter mixer main() function")
 	// Parse flag
 	flag.Parse()
-	log.SetFlags(log.LstdFlags | log.Lshortfile)
 
 	if *v3MirrorFraction < 0 || *v3MirrorFraction > 1.0 {
 		log.Fatalf("v3_mirror_fraction must be between 0 and 1.0, got %f", *v3MirrorFraction)
@@ -135,7 +137,7 @@ func main() {
 		}
 		err := profiler.Start(cfg)
 		if err != nil {
-			log.Printf("Failed to start profiler: %v", err)
+			slog.Warn("Failed to start profiler", "error", err)
 		}
 	}
 
@@ -283,7 +285,7 @@ func main() {
 
 	if *useCloudSQL {
 		if sqldb.IsConnected(&sqlClient) {
-			log.Printf("SQL client has already been created, will not use CloudSQL")
+			slog.Warn("SQL client has already been created, will not use CloudSQL")
 		} else {
 			client, err := sqldb.NewCloudSQLClient(*cloudSQLInstance)
 			if err != nil {
@@ -420,7 +422,7 @@ func main() {
 		go func() {
 			// Code from https://pkg.go.dev/net/http/pprof README
 			httpProfileFrom := fmt.Sprintf("localhost:%d", *httpProfilePort)
-			log.Printf("Serving profile over HTTP on %v", httpProfileFrom)
+			slog.Info("Serving profile over HTTP", "address", httpProfileFrom)
 			log.Printf("%s\n", http.ListenAndServe(httpProfileFrom, nil))
 		}()
 	}
@@ -430,7 +432,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to listen on network: %v", err)
 	}
-	log.Println("Mixer ready to serve!!")
+	slog.Info("Mixer ready to serve!!")
 	if err := srv.Serve(lis); err != nil {
 		log.Fatalf("Failed to serve: %v", err)
 	}

@@ -19,6 +19,7 @@ import (
 	"context"
 	"encoding/json"
 	"log"
+	"log/slog"
 	"net"
 	"os"
 	"path"
@@ -303,11 +304,11 @@ func UpdateGolden(v interface{}, root, fname string) {
 	encoder.SetIndent("", "  ")
 	err := encoder.Encode(v)
 	if err != nil {
-		log.Printf("could not encode golden response %v", err)
+		slog.Warn("could not encode golden response", "err", err)
 	}
 	if os.WriteFile(
 		path.Join(root, fname), bytes.TrimRight(buf.Bytes(), "\n"), 0644) != nil {
-		log.Printf("could not write golden files to %s", fname)
+		slog.Warn("could not write golden files to", "err", err)
 	}
 }
 
@@ -321,18 +322,18 @@ func UpdateProtoGolden(
 	// Use encoding/json to get stable output.
 	data, err := marshaller.Marshal(resp)
 	if err != nil {
-		log.Printf("marshaller.Marshal(%s) = %s", fname, err)
+		slog.Warn("marshaller.Marshal()", "err", err)
 		return
 	}
 	var rm json.RawMessage = data
 	jsonByte, err := json.MarshalIndent(rm, "", "  ")
 	if err != nil {
-		log.Printf("json.MarshalIndent(%s) = %s", fname, err)
+		slog.Warn("json.MarshalIndent()", "err", err)
 		return
 	}
 	err = os.WriteFile(path.Join(root, fname), jsonByte, 0644)
 	if err != nil {
-		log.Printf("os.WriteFile(%s) = %s", fname, err)
+		slog.Warn("os.WriteFile", "err", err)
 	}
 }
 
@@ -382,7 +383,7 @@ func ReadGolden(goldenDir string, goldenFile string) (string, error) {
 // If not enabled, it returns nil.
 func NewSpannerClient() *spanner.SpannerClient {
 	if !EnableSpannerGraph {
-		log.Println("Spanner graph not enabled.")
+		slog.Info("Spanner graph not enabled.")
 		return nil
 	}
 	_, filename, _, _ := runtime.Caller(0)
