@@ -1,0 +1,202 @@
+[
+  {
+    "test_name": "observations_all_dates",
+    "path": "/observation",
+    "json_payload": {
+      "variable": {
+        "dcids": ["AirPollutant_Cancer_Risk", "fake_variable"]
+      },
+      "entity": {
+        "dcids": ["geoId/01001", "geoId/02013", "fake_entity"]
+      },
+      "select": ["entity", "variable", "date", "value"]
+    }
+  },
+  {
+    "test_name": "observations_latest_date",
+    "path": "/observation",
+    "json_payload": {
+      "date": "LATEST",
+      "variable": {
+        "dcids": ["AirPollutant_Cancer_Risk"]
+      },
+      "entity": {
+        "dcids": ["geoId/01001", "geoId/02013"]
+      },
+      "select": ["entity", "variable", "date", "value"]
+    }
+  },
+  {
+    "test_name": "observations_specific_date",
+    "path": "/observation",
+    "json_payload": {
+      "date": "2020",
+      "variable": {
+        "dcids": ["AirPollutant_Cancer_Risk"]
+      },
+      "entity": {
+        "dcids": ["geoId/01001", "geoId/02013"]
+      },
+      "select": ["entity", "variable", "date", "value"]
+    }
+  },
+  {
+    "test_name": "observations_no_matching_date",
+    "path": "/observation",
+    "json_payload": {
+      "date": "1900",
+      "variable": {
+        "dcids": ["AirPollutant_Cancer_Risk"]
+      },
+      "entity": {
+        "dcids": ["geoId/01001", "geoId/02013"]
+      },
+      "select": ["entity", "variable", "date", "value"]
+    }
+  },
+  {
+    "test_name": "observations_contained_in",
+    "path": "/observation",
+    "json_payload": {
+      "date": "2015",
+      "variable": {
+        "dcids": ["Count_Person", "Median_Age_Person", "fake_variable"]
+      },
+      "entity": {
+        "dcids": [],
+        "expression": "geoId/06<-containedInPlace+{typeOf:County}"
+      },
+      "select": ["entity", "variable", "date", "value"]
+    }
+  },
+  {
+    "test_name": "observations_existence",
+    "path": "/observation",
+    "json_payload": {
+      "date": "2017",
+      "variable": {
+        "dcids": ["Count_Farm", "Income_Farm", "fake_variable"]
+      },
+      "entity": {
+        "dcids": ["geoId/06", "country/USA", "country/CAN", "fake_entity"]
+      },
+      "select": ["entity", "variable"]
+    }
+  },
+  {
+    "test_name": "observations_existence_contained_in",
+    "path": "/observation",
+    "json_payload": {
+      "date": "2017",
+      "variable": {
+        "dcids": ["Count_Farm", "fake_variable"]
+      },
+      "entity": {
+        "dcids": [],
+        "expression": "geoId/10<-containedInPlace+{typeOf:County}"
+      },
+      "select": ["entity", "variable"]
+    }
+  },
+  {
+    "test_name": "observations_facet",
+    "path": "/observation",
+    "json_payload": {
+      "variable": {
+        "dcids": ["Count_Person", "Income_Farm", "fake_variable"]
+      },
+      "entity": {
+        "dcids": ["geoId/06", "country/USA", "country/CAN", "fake_entity"]
+      },
+      "select": ["entity", "variable", "facet"]
+    }
+  },
+  {
+    "test_name": "observations_facet_contained_in",
+    "path": "/observation",
+    "json_payload": {
+      "date": "2017",
+      "variable": {
+        "dcids": ["Count_Farm", "fake_variable"]
+      },
+      "entity": {
+        "dcids": [],
+        "expression": "geoId/10<-containedInPlace+{typeOf:County}"
+      },
+      "select": ["entity", "variable", "facet"]
+    }
+  },
+  {
+    "test_name": "observations_filter",
+    "path": "/observation",
+    "json_payload": {
+      "date": "2020",
+      "variable": {
+        "dcids": ["Count_Person"]
+      },
+      "entity": {
+        "dcids": ["geoId/06"]
+      },
+      "filter": {
+        "domains": ["cdc.gov"]
+      },
+      "select": ["entity", "variable", "date", "value"]
+    }
+  },
+  {
+    "test_name": "observations_calculation",
+    "path": "/observation",
+    "json_payload": {
+      "variable": {
+        "dcids": ["Count_Person_Female"]
+      },
+      "entity": {
+        "dcids": ["wikidataId/Q613"]
+      },
+      "select": ["entity", "variable", "date", "value"]
+    }
+  },
+  {
+    "test_name": "observations_str_val",
+    "path": "/observation",
+    "json_payload": {
+      "variable": {
+        "dcids": ["Median_Age_Person"]
+      },
+      "entity": {
+        "dcids": ["geoId/4822892"]
+      },
+      "select": ["entity", "variable", "date", "value"]
+    }
+  },
+  {
+    "test_name": "observations_existence_entity",
+    "path": "/observation",
+    "json_payload": {
+      "entity": {
+        "dcids": ["wikidataId/Q341968", "wikidataId/Q1764983"]
+      },
+      "select": ["entity", "variable"]
+    }
+  },
+  {
+    "test_name": "observations_facet_entity",
+    "path": "/observation",
+    "json_payload": {
+      "entity": {
+        "dcids": ["wikidataId/Q341968", "wikidataId/Q1764983"]
+      },
+      "select": ["entity", "variable", "facet"]
+    }
+  },
+  {
+    "test_name": "observations_entity",
+    "path": "/observation",
+    "json_payload": {
+      "entity": {
+        "dcids": ["wikidataId/Q4671576", "wikidataId/Q1764983"]
+      },
+      "select": ["entity", "variable", "date", "value"]
+    }
+  }
+]
