@@ -35,6 +35,17 @@
 
 set -e
 
+# If this script is NOT running on Cloud Build, show a warning and require confirmation.
+if [[ -z "$BUILD_ID" ]]; then
+  echo "WARNING: This script is not running on Cloud Build."
+  echo "Feature flags should only be updated via build trigger after PR review."
+  read -r -p "Proceed with UNSAFE deployment? (y/N) " response
+  if [[ ! "$response" =~ ^([yY])$ ]]; then
+    echo "Deployment aborted."
+    exit 1
+  fi
+fi
+
 if [[ "$#" -lt 1 || "$#" -gt 2 ]]; then
   echo "Usage: $0 <config_dir> [environment]"
   echo "  <config_dir>: Directory containing the feature flag YAML files."
