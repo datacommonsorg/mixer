@@ -39,4 +39,4 @@ steps:
 
 substitutions:
   _ENV: ""
-  _FULL_ENV_VERSION: "mixer-deploy_2025-10-01"
+  _FULL_ENV_VERSION: "mixer-deploy-2025-10-01"
