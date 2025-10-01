@@ -28,7 +28,7 @@ steps:
     args: ["fetch", "--unshallow"]
 
   # Run the flag deploy script
-  - name: gcr.io/datcom-ci/go-protoc:${_GO_PROTOC_VERSION}
+  - name: gcr.io/datcom-ci/full-env:${_FULL_ENV_VERSION}
     entrypoint: "bash"
     args:
       - "-c"
@@ -39,4 +39,4 @@ steps:
 
 substitutions:
   _ENV: ""
-  _GO_PROTOC_VERSION: "2025-07-30"
+  _FULL_ENV_VERSION: "mixer-deploy_2025-10-01"
