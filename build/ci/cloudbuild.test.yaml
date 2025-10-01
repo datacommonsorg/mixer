@@ -15,8 +15,8 @@
 steps:
   # Validate BQ version file and run golangci-lint
   - id: lint
-    name: golangci/golangci-lint:v2.3.0-alpine
-    entrypoint: "sh"
+    name: gcr.io/datcom-ci/full-env:${_FULL_ENV_VERSION}
+    entrypoint: "bash"
     args:
       - -c
       - |
@@ -27,6 +27,7 @@ steps:
           exit 1
         fi
         golangci-lint run -v
+    waitFor: ["-"]
 
   # Validate feature flag yaml files
   - id: validate-feature-flags
@@ -37,7 +38,7 @@ steps:
       - |
         set -e
         ./scripts/check_flags.sh deploy/featureflags
-    waitFor: ["lint"]
+    waitFor: ["-"]
 
   # Build protobuf to go bindings
   - id: build-proto
@@ -54,7 +55,7 @@ steps:
           --go-grpc_opt=require_unimplemented_servers=false \
           --experimental_allow_proto3_optional \
           proto/*.proto proto/**/*.proto
-    waitFor: ["lint"]
+    waitFor: ["-"]
 
   - id: test
     name: gcr.io/datcom-ci/full-env:${_FULL_ENV_VERSION}
