@@ -32,6 +32,8 @@ steps:
   # Run the flag deploy script
   - name: gcr.io/datcom-ci/full-env:${_FULL_ENV_VERSION}
     env:
+      # The deploy script looks for this variable to know whether it's running
+      # on Cloud Build. It prints a warning and asks for confirmation otherwise.
       - "BUILD_ID=${BUILD_ID}"
     entrypoint: "bash"
     args:
