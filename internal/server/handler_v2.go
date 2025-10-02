@@ -17,6 +17,7 @@ package server
 
 import (
 	"context"
+	"log/slog"
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
@@ -25,10 +26,12 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/statvar/search"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
+	usagelogger "github.com/datacommonsorg/mixer/internal/server/v2/observation/usage_logger"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -245,13 +248,33 @@ func (s *Server) V2Observation(
 	ctx context.Context, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
 	v2StartTime := time.Now()
-	initialResp, err := v2observation.ObservationInternal(
+	
+	// handling metadata
+	md, ok := metadata.FromIncomingContext(ctx)
+	surface := ""
+	fromRemote := ""
+	if !ok {
+    	slog.Info("Error: There was a problem accessing the request's metadata", "err", ok)
+    } else {
+		// setting the surface for the usage logger
+		// this is the origin of the query -- website, MCP server, public API (= blank surface), etc.
+		if values := md.Get("x-surface"); len(values) > 0 {
+			surface = values[0]
+		}
+		// and this indicates if the call came from a Custom DC making a call to remote mixer.
+		if values := md.Get("x-remote"); len(values) > 0 {
+			fromRemote = values[0]
+		}
+	}
+
+	initialResp, queryType, err := v2observation.ObservationInternal(
 		ctx,
 		s.store,
 		s.cachedata.Load(),
 		s.metadata,
 		s.httpClient,
-		in)
+		in,
+		surface)
 	if err != nil {
 		return nil, err
 	}
@@ -263,6 +286,7 @@ func (s *Server) V2Observation(
 		s.httpClient,
 		in,
 		initialResp,
+		surface,
 	)
 	if err != nil {
 		return nil, err
@@ -281,6 +305,9 @@ func (s *Server) V2Observation(
 			return s.V3Observation(ctx, req.(*pbv2.ObservationRequest))
 		},
 	)
+
+	// handle usage logging logging 
+	usagelogger.UsageLogger(surface, fromRemote, "" /* place type, still WIP */, s.store, combinedResp, queryType)
 
 	return v2Resp, nil
 }
