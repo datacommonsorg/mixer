@@ -1,0 +1,42 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Deploy feature flags
+#
+# This Cloud Build configuration deploys feature flags to Kubernetes clusters.
+# It uses the deploy_flags.sh script to apply ConfigMaps.
+# The new values take effect after pods are restarted, e.g. by Reloader.
+#
+# An environment can be specified via the _ENV substitution. If _ENV is not
+# provided, the script will deploy flags for all environments it finds in the
+# config directory.
+
+steps:
+  # Ensure past commits are available so they can be used for validation
+  - name: gcr.io/cloud-builders/git
+    args: ["fetch", "--unshallow"]
+
+  # Run the flag deploy script
+  - name: gcr.io/datcom-ci/full-env:${_FULL_ENV_VERSION}
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        set -e
+        ./deploy/featureflags/deploy_flags.sh deploy/featureflags "$_ENV"
+    waitFor: ["validate-feature-flags"]
+
+substitutions:
+  _ENV: ""
+  _FULL_ENV_VERSION: "mixer-only-2025-10-02"

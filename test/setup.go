@@ -29,6 +29,7 @@ import (
 	_ "modernc.org/sqlite" // import the sqlite driver
 
 	"cloud.google.com/go/bigquery"
+	"github.com/datacommonsorg/mixer/internal/featureflags"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
@@ -267,7 +268,11 @@ func newClient(
 	mapsClient *maps.Client,
 	dispatcher *dispatcher.Dispatcher,
 ) (pbs.MixerClient, error) {
-	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient, dispatcher)
+	flags, err := featureflags.NewFlags("")
+	if err != nil {
+		return nil, err
+	}
+	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient, dispatcher, flags)
 	srv := grpc.NewServer()
 	pbs.RegisterMixerServer(srv, mixerServer)
 	reflection.Register(srv)
