@@ -36,6 +36,11 @@ CONFIG_DIR=$1
 # Use the _BASE_REF substitution provided by Google Cloud Build.
 BASE_BRANCH="origin/${_BASE_REF}"
 
+echo "------"
+echo "Git remotes"
+git remote -v
+echo "------"
+echo
 echo "Checking for modified 'prod' feature flag files in '$CONFIG_DIR' against base branch '$BASE_BRANCH'..."
 
 # Get the list of modified YAML files containing "prod" in their name within the config directory.
