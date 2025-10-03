@@ -40,7 +40,9 @@ echo "------"
 echo "Git remotes"
 git remote -v
 echo "------"
-echo
+echo Env
+printenv
+echo "------"
 echo "Checking for modified 'prod' feature flag files in '$CONFIG_DIR' against base branch '$BASE_BRANCH'..."
 
 # Get the list of modified YAML files containing "prod" in their name within the config directory.
