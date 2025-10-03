@@ -20,4 +20,4 @@ steps:
       - -c
       - |
         set -e
-        ./deploy/featureflags/enforce_merge_restrictions.sh
+        ./deploy/featureflags/enforce_merge_restrictions.sh deploy/featureflags
