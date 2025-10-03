@@ -1,0 +1,6 @@
+clusters:
+  - projects/datcom-website-autopush/locations/us-central1/clusters/website-us-central1
+liveUrl: https://autopush.datacommons.org
+flags:
+  EnableV3: true
+  V3MirrorFraction: 0.5
