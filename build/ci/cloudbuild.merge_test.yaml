@@ -14,13 +14,10 @@
 
 steps:
   - id: enforce-feature-flag-merge-restrictions
-    name: gcr.io/datcom-ci/full-env:${_FULL_ENV_VERSION}
+    name: gcr.io/cloud-builders/git
     entrypoint: "bash"
     args:
       - -c
       - |
         set -e
         ./deploy/featureflags/enforce_merge_restrictions.sh
-
-substitutions:
-  _FULL_ENV_VERSION: "mixer-only-2025-10-02"
