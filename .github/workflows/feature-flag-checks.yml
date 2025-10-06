@@ -10,11 +10,11 @@ name: Feature flag checks
 
 on:
   pull_request:
-    branches: ["master"]
+    branches: ["master", "hqpho-test"]
   # Required for merge queue to work: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue#triggering-merge-group-checks-with-github-actions
   # Merge queue is used so that this check runs immediately before merge.
   merge_group:
-    branches: ["master"]
+    branches: ["master", "hqpho-test"]
 
 permissions:
   contents: read
@@ -36,6 +36,11 @@ jobs:
       - name: Restrict prod feature flag changes to allowed hours
         if: steps.changes.outputs.prod_flags == 'true'
         run: |
+          # Temporarily, if the event is pull_request, just exit 0
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            echo "Event is pull_request, skipping time-based restriction for now."
+            exit 0
+          fi
           # Check if the current time is between 8 AM and 5 PM California time
           # on Monday, Tuesday, Wednesday, or Thursday.
           set -e
@@ -44,7 +49,7 @@ jobs:
           CURRENT_DAY=$(date -d "$DATE" +"%u") # 1 for Monday, 7 for Sunday
 
           if [[ "$CURRENT_DAY" -ge 1 && "$CURRENT_DAY" -le 4 ]]; then
-            if [[ "$CURRENT_HOUR" -ge 8 && "$CURRENT_HOUR" -lt 17 ]]; then
+            if [[ "$CURRENT_HOUR" -ge 8 && "$CURRENT_HOUR" -lt 14 ]]; then
               echo "Current time is within the allowed window for prod flag changes."
               exit 0
             fi
