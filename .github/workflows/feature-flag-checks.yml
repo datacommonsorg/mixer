@@ -1,0 +1,53 @@
+# This check enforces merge restrictions on feature flag changes.
+#
+# To work properly:
+# - Its jobs should be listed as a required status checks on each listed branch
+# - Each listed branch should be configured to require merge queue
+#
+# If the directory containing feature flag configs changes, the path filtering
+# step will need to be updated.
+name: Feature flag checks
+
+on:
+  pull_request:
+    branches: ["master"]
+  # Required for merge queue to work: https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue#triggering-merge-group-checks-with-github-actions
+  # Merge queue is used so that this check runs immediately before merge.
+  merge_group:
+    branches: ["master"]
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  enforce_feature_flag_merge_restrictions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Detect changes to prod feature flag files
+        uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          filters: |
+            prod_flags:
+              - 'deploy/featureflags/prod*'
+
+        # run only if some file in 'src' folder was changed
+      - name: Restrict prod feature flag changes to allowed hours
+        if: steps.changes.outputs.prod_flags == 'true'
+        run: |
+          # Check if the current time is between 8 AM and 5 PM California time
+          # on Monday, Tuesday, Wednesday, or Thursday.
+          set -e
+          export TZ="America/Los_Angeles"
+          CURRENT_HOUR=$(date +"%H")
+          CURRENT_DAY=$(date -d "$DATE" +"%u") # 1 for Monday, 7 for Sunday
+
+          if [[ "$CURRENT_DAY" -ge 1 && "$CURRENT_DAY" -le 4 ]]; then
+            if [[ "$CURRENT_HOUR" -ge 8 && "$CURRENT_HOUR" -lt 17 ]]; then
+              echo "Current time is within the allowed window for prod flag changes."
+              exit 0
+            fi
+          fi
+          echo "Error: Prod flag changes are only allowed between 8 AM and 5 PM California time on Monday-Thursday."
+          exit 1
