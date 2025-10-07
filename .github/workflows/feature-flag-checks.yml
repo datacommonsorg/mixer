@@ -24,6 +24,9 @@ jobs:
   enforce_feature_flag_merge_restrictions:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Detect changes to prod feature flag files
         uses: dorny/paths-filter@v3
         id: changes
