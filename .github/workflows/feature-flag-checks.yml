@@ -41,7 +41,7 @@ jobs:
         run: |
           # Temporarily, if the event is pull_request, just exit 0
           if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            echo "Event is pull_request, skipping time-based restriction for now."
+            echo "Event is pull_request; skipping time-based restriction for now."
             exit 0
           fi
           # Check if the current time is between 8 AM and 5 PM California time
