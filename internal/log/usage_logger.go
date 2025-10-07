@@ -167,6 +167,7 @@ func MakeStatVarLogs(store *store.Store, observations []*pbv2.ObservationRespons
 
 /**
 Writes a structured log to stdout, which is ingested by GCP cloud logging to track mixer usage
+Currently only used by the v2/observation endpoint
 **/
 func UsageLogger(surface string, fromRemote string, placeType string, store *store.Store, observations []*pbv2.ObservationResponse, queryType string) {
 
