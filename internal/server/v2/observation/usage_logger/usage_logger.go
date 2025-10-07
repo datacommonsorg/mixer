@@ -16,13 +16,14 @@ type Feature struct {
 	Surface string `json:"surface"`
 }
 
-// facet-specific information, separated into the facet info (import name, measurement method, etc.)
-// and the query-specific number of series that came from this facet in the query result and the
-// earliest and latest dates that the facet was used for across these series
 type FacetLog struct {
+	// import name, measurement method, etc.
 	Facet     *pb.Facet `json:"facet"`
+	// the number of series that used this facet for the current request
 	NumSeries int      `json:"count"`
+	// the earliest date across all series using this facet
 	Earliest  string   `json:"earliest"`
+	// the latest date across all series using this facet
 	Latest    string   `json:"latest"`
 }
 
@@ -37,16 +38,17 @@ type UsageLog struct {
 	// See discussion here https://docs.google.com/document/d/1ETB3dj4y1rKcSrgCMcc6c2n-sQ-t8IzHWxZL0tMevkI/edit?tab=t.sy6cgv7mofcp#bookmark=id.4y4aq6f7jnmt
 	// may expand this to be a list of the number of series queried for each placeType
 	PlaceType string        `json:"place_type"`
-	// the DC product (website, MCP server, client libraries, etc.) that the query originates from
+	// the DC product (website, MCP server, client libraries, etc.) that the query originates from,
+	// and a flag indiciating if the call comes via a custom DC's remote mixer
 	Feature   Feature        `json:"feature"`
 	// whether the query is requesting values for a statvar, facet information, or checking existence
-	// value, facet, or existence
+	// options: value, facet, or existence
 	QueryType string		`json:"query_type"`
-	// all stat vars queried in this query, with each including a list of facets used in that particular variable
+	// all stat vars queried in this request, with each including a list of facets used in that particular variable
 	StatVars  []*StatVarLog `json:"stat_vars"`
 }
 
-// Handles formatting the structured log to correctly break down the structs as JSON objects in Cloud Logger
+// breaks down the log structs to be read as JSON objects in Cloud Logger
 func (u UsageLog) LogValue() slog.Value {
 	return slog.GroupValue(
 		slog.Any("feature", u.Feature),
@@ -57,7 +59,7 @@ func (u UsageLog) LogValue() slog.Value {
 }
 
 // Takes a date string and returns a string with only the year
-// used to compute earliest and latest dates for facets
+// used to compute earliest and latest dates for facets because some data only include year-level granularity
 func standardizeToYear(dateStr string) (string, error) {
 	var t time.Time
 	var err error
@@ -86,7 +88,7 @@ func standardizeToYear(dateStr string) (string, error) {
 
 // Formats logs for the stat vars and facets
 func MakeStatVarLogs(store *store.Store, observations []*pbv2.ObservationResponse) []*StatVarLog {
-	// statVarDCID -> list of facets
+	// statVarLogs is a map statVarDCID -> list of facets
 	statVarLogs := make(map[string]*StatVarLog)
 
 	for _, resp := range observations {
@@ -157,19 +159,8 @@ func MakeStatVarLogs(store *store.Store, observations []*pbv2.ObservationRespons
 }
 
 /**
-Writes a structured log to stdout, which is ingested by GCP cloud logging automatically
-
-Includes the following:
-- (WIP) placeType -- the type submitted for a "within" query or the types of whatever places were queried directly
-	- TODO: make this a list to account for multiple places in one query or a place with multiple types
-- surface: which product (website, client libraries, etc.) made this call to mixer. It includes a fromRemote
-	boolean that indicates if the surface was acessed via remote mixer domain, aka from a custom DC instance.
-- statVars: all variables queried
-	- statvarDCID
-	- list of facets that were used in the result for this stat var
-		- then these include the facet details (import name, measurement method, etc.) and
-		earliest/latest date used and the number of entities that used the particular facet
-*/
+Writes a structured log to stdout, which is ingested by GCP cloud logging to track mixer usage
+**/
 func UsageLogger(surface string, fromRemote string, placeType string, store *store.Store, observations []*pbv2.ObservationResponse, queryType string) {
 
 	statVars := MakeStatVarLogs(store, observations)
@@ -178,6 +169,7 @@ func UsageLogger(surface string, fromRemote string, placeType string, store *sto
 		PlaceType: placeType,
 		Feature: Feature{
 			Surface:    surface,
+			// indicates if this call came from custom DC via a remote mixer call
 			FromRemote: fromRemote != "",
 		},
 		QueryType: queryType,
@@ -185,5 +177,5 @@ func UsageLogger(surface string, fromRemote string, placeType string, store *sto
 	}
 
 	logger := slog.New(slog.NewJSONHandler(os.Stdout, nil))
-	logger.Info("query_result", slog.Any("usage_log_data", logEntry))
+	logger.Info("new_query", slog.Any("usage_log", logEntry))
 }

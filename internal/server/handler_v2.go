@@ -255,7 +255,7 @@ func (s *Server) V2Observation(
 	surface := ""
 	fromRemote := ""
 	if !ok {
-    	slog.Info("Error: There was a problem accessing the request's metadata", "err", ok)
+    	slog.Warn("Error: There was a problem accessing the request's metadata", "err", ok)
     } else {
 		// setting the surface for the usage logger
 		// this is the origin of the query -- website, MCP server, public API (= blank surface), etc.
