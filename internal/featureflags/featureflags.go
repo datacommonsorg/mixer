@@ -38,7 +38,7 @@ func setDefaultValues() *Flags {
 	return &Flags{
 		EnableV3:         false,
 		V3MirrorFraction: 0.0,
-		WriteUsageLogs:   0.1,
+		WriteUsageLogs:   0.0,
 	}
 }
 
