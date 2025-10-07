@@ -50,7 +50,7 @@ func (f *Flags) validateFlagValues() error {
 	if f.V3MirrorFraction > 0 && !f.EnableV3 {
 		return fmt.Errorf("V3MirrorFraction > 0 requires EnableV3 to be true")
 	}
-	if(f.WriteUsageLogs < 0 || f.WriteUsageLogs > 1){
+	if f.WriteUsageLogs < 0 || f.WriteUsageLogs > 1 {
 		return fmt.Errorf("WriteUsageLogs must be between 0 and 1.0, got %f", f.WriteUsageLogs)
 	}
 	return nil

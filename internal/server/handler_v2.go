@@ -21,13 +21,13 @@ import (
 	"math/rand"
 	"time"
 
+	"github.com/datacommonsorg/mixer/internal/log"
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/search"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
-	usagelogger "github.com/datacommonsorg/mixer/internal/server/v2/observation/usage_logger"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
 
@@ -309,7 +309,7 @@ func (s *Server) V2Observation(
 
 	// handle usage logging
 	if rand.Float64() < s.flags.WriteUsageLogs {
-		usagelogger.UsageLogger(surface, fromRemote, "" /* place type, still WIP */, s.store, combinedResp, queryType)
+		log.UsageLogger(surface, fromRemote, "" /* place type, still WIP */, s.store, combinedResp, queryType)
 	}
 
 	return v2Resp, nil
