@@ -128,11 +128,19 @@ func MakeStatVarLogs(store *store.Store, observations []*pbv2.ObservationRespons
 						}
 					} else {
 						if facetData, ok := resp.Facets[facetID]; ok {
+							earliest, err := standardizeToYear(facetObs.EarliestDate)
+							if err != nil {
+								slog.Error("Error processing %s: %v\n", facetObs.EarliestDate, err)
+							}
+							latest, err := standardizeToYear(facetObs.LatestDate)
+							if err != nil {
+								slog.Error("Error processing %s: %v\n", facetObs.LatestDate, err)
+							}
 							facetLogMaps[facetID] = &FacetLog{
 								Facet:     facetData,
 								NumSeries: 1,
-								Earliest:  facetObs.EarliestDate,
-								Latest:    facetObs.LatestDate,
+								Earliest:  earliest,
+								Latest:    latest,
 							}
 						}
 					}
