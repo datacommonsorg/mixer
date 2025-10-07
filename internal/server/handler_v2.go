@@ -18,6 +18,7 @@ package server
 import (
 	"context"
 	"log/slog"
+	"math/rand"
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
@@ -306,8 +307,10 @@ func (s *Server) V2Observation(
 		},
 	)
 
-	// handle usage logging logging 
-	usagelogger.UsageLogger(surface, fromRemote, "" /* place type, still WIP */, s.store, combinedResp, queryType)
+	// handle usage logging
+	if rand.Float64() < s.flags.WriteUsageLogs {
+		usagelogger.UsageLogger(surface, fromRemote, "" /* place type, still WIP */, s.store, combinedResp, queryType)
+	}
 
 	return v2Resp, nil
 }
