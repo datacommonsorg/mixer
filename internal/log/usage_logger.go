@@ -114,11 +114,11 @@ func MakeStatVarLogs(store *store.Store, observations []*pbv2.ObservationRespons
 						// some stats only have year, so we only consider granularity to the year
 						earliest, err := standardizeToYear(facetObs.EarliestDate)
 						if err != nil {
-							slog.Error("Error processing %s: %v\n", facetObs.EarliestDate, err)
+							slog.Error("Error processing date", "date", facetObs.EarliestDate, "error", err)
 						}
 						latest, err := standardizeToYear(facetObs.LatestDate)
 						if err != nil {
-							slog.Error("Error processing %s: %v\n", facetObs.LatestDate, err)
+							slog.Error("Error processing date", "date", facetObs.LatestDate, "error", err)
 						}
 						if earliest != "" && (facetLog.Earliest == "" || earliest < facetLog.Earliest) {
 							facetLog.Earliest = earliest
@@ -130,11 +130,11 @@ func MakeStatVarLogs(store *store.Store, observations []*pbv2.ObservationRespons
 						if facetData, ok := resp.Facets[facetID]; ok {
 							earliest, err := standardizeToYear(facetObs.EarliestDate)
 							if err != nil {
-								slog.Error("Error processing %s: %v\n", facetObs.EarliestDate, err)
+								slog.Error("Error processing date", "date", facetObs.EarliestDate, "error", err)
 							}
 							latest, err := standardizeToYear(facetObs.LatestDate)
 							if err != nil {
-								slog.Error("Error processing %s: %v\n", facetObs.LatestDate, err)
+								slog.Error("Error processing date", "date", facetObs.LatestDate, "error", err)
 							}
 							facetLogMaps[facetID] = &FacetLog{
 								Facet:     facetData,
