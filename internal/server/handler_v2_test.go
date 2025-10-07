@@ -15,10 +15,15 @@
 package server
 
 import (
+	"bytes"
 	"context"
+	"log/slog"
 	"net/http"
+	"regexp"
+	"strings"
 	"testing"
 
+	"github.com/datacommonsorg/mixer/internal/featureflags"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
@@ -85,10 +90,10 @@ func TestObservationInternal(t *testing.T) {
 	h := &http.Client{}
 
 	for _, tc := range []struct {
-		desc          string
-		req           *pbv2.ObservationRequest
-		wantQueryType shared.QueryType
-		wantResp      *pbv2.ObservationResponse
+			desc          string
+			req           *pbv2.ObservationRequest
+			wantQueryType shared.QueryType
+			wantResp      *pbv2.ObservationResponse
 	}{
 		{
 			"series",
@@ -106,7 +111,7 @@ func TestObservationInternal(t *testing.T) {
 				ByVariable: map[string]*pbv2.VariableObservation{
 					"Count_Person": {
 						ByEntity: map[string]*pbv2.EntityObservation{
-							"country/USA": {},
+							"country/USA": {}, 
 						},
 					},
 				},
@@ -140,7 +145,7 @@ func TestObservationInternal(t *testing.T) {
 			shared.QueryTypeFacet,
 			&pbv2.ObservationResponse{
 				ByVariable: map[string]*pbv2.VariableObservation{
-					"Count_Person": {},
+					"Count_Person": {}, 
 				},
 			},
 		},
@@ -160,7 +165,7 @@ func TestObservationInternal(t *testing.T) {
 				ByVariable: map[string]*pbv2.VariableObservation{
 					"Count_Person": {
 						ByEntity: map[string]*pbv2.EntityObservation{
-							"": {},
+							"": {}, 
 						},
 					},
 				},
@@ -180,7 +185,7 @@ func TestObservationInternal(t *testing.T) {
 			shared.QueryTypeExistence,
 			&pbv2.ObservationResponse{
 				ByVariable: map[string]*pbv2.VariableObservation{
-					"Count_Person": {},
+					"Count_Person": {}, 
 				},
 			},
 		},
@@ -195,5 +200,48 @@ func TestObservationInternal(t *testing.T) {
 		if diff := cmp.Diff(resp, tc.wantResp, protocmp.Transform()); diff != "" {
 			t.Errorf("%s: unexpected resp diff %v", tc.desc, diff)
 		}
+	}
+}
+
+func TestV2Observation_UsageLog(t *testing.T) {
+	ctx := context.Background()
+	s := &Server{
+		store:    &store.Store{},
+		metadata: &resource.Metadata{},
+		flags: &featureflags.Flags{
+			WriteUsageLogs: 1.0,
+		},
+	}
+	s.cachedata.Store(&cache.Cache{})
+	req := &pbv2.ObservationRequest{
+		Select: []string{"variable", "entity", "date", "value"},
+		Variable: &pbv2.DcidOrExpression{
+			Dcids: []string{"Count_Person"},
+		},
+		Entity: &pbv2.DcidOrExpression{
+			Dcids: []string{"country/USA"},
+		},
+	}
+
+	// Capture slog output
+	var buf bytes.Buffer
+	handler := slog.NewTextHandler(&buf, nil)
+	logger := slog.New(handler)
+	originalLogger := slog.Default()
+	slog.SetDefault(logger)
+	defer slog.SetDefault(originalLogger)
+
+	s.V2Observation(ctx, req)
+
+	outStr := strings.TrimSpace(buf.String())
+
+	// Use regex to match the log message, ignoring the timestamp and pointer address.
+	wantLogRegex := `time=\S+ level=INFO msg=new_query usage_log.feature="{IsRemote:false Surface:}" usage_log.place_type="" usage_log.query_type=value usage_log.stat_vars=\[0x[0-9a-f]+\]`
+	matched, err := regexp.MatchString(wantLogRegex, outStr)
+	if err != nil {
+		t.Fatalf("Failed to compile regex: %v", err)
+	}
+	if !matched {
+		t.Errorf("log output did not match expected pattern.\nGot: %s\nWant regex: %s", outStr, wantLogRegex)
 	}
 }
