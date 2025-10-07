@@ -7,11 +7,17 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"github.com/datacommonsorg/mixer/internal/store"
 )
 
+// The source of the logged query -- because features like the MCP
+// server can be used via custom DC, we also track if a call is to a remote mixer,
+// which often indicates that it was made via a custom DC
 type Feature struct {
-	FromRemote bool `json:"from_remote"`
+	// Indicates if query came from a call to a remote mixer
+	IsRemote bool `json:"is_remote"`
+	// The DC product that the query came from, e.g. website, datagemma, etc.
 	Surface string `json:"surface"`
 }
 
@@ -26,28 +32,31 @@ type FacetLog struct {
 	Latest    string   `json:"latest"`
 }
 
+// Used so we can compile one list of all facets used for each statVar
+// across all of the series fetched
 type StatVarLog struct {
 	StatVarDCID string      `json:"stat_var_dcid"`
+	// List of all facets that provided results for the given statVar
 	Facets      []*FacetLog `json:"facets"`
 }
 
-// Full log with all query-level info
+// Full log with all information for the current query
 type UsageLog struct {
 	// TODO: placeType (city, county, etc.) requested for collection queries
-	// See discussion here https://docs.google.com/document/d/1ETB3dj4y1rKcSrgCMcc6c2n-sQ-t8IzHWxZL0tMevkI/edit?tab=t.sy6cgv7mofcp#bookmark=id.4y4aq6f7jnmt
-	// may expand this to be a list of the number of series queried for each placeType
+	// See discussion here https://docs.google.com/document/d/1ETB3dj4y1rKcSrgCMcc6c2n-sQ-t8IzHWxZL0tMevkI/edit?tab=t.sy6cgv7mofcp#bookmark=id.4y4aq6f7jnmt.
+	// May expand this to be a list of the number of series queried for each placeType.
 	PlaceType string        `json:"place_type"`
-	// the DC product (website, MCP server, client libraries, etc.) that the query originates from,
-	// and a flag indiciating if the call comes via a custom DC's remote mixer
+	// The DC product (website, MCP server, client libraries, etc.) that the query originates from,
+	// and a flag indicating if the call comes via a custom DC to remote mixer.
 	Feature   Feature        `json:"feature"`
-	// whether the query is requesting values for a statvar, facet information, or checking existence
-	// options: value, facet, or existence
+	// Whether the query is requesting values for a statvar, facet information, or checking existence.
+	// Options: value, facet, or existence.
     QueryType string         `json:"query_type"`
-	// all stat vars queried in this request, with each including a list of facets used in that particular variable
+	// All stat vars queried in this request, with each including a list of facets used in that particular variable.
 	StatVars  []*StatVarLog `json:"stat_vars"`
 }
 
-// breaks down the log structs to be read as JSON objects in Cloud Logger
+// Breaks down the log structs to be read as JSON objects in Cloud Logger.
 func (u UsageLog) LogValue() slog.Value {
 	return slog.GroupValue(
 		slog.Any("feature", u.Feature),
@@ -57,15 +66,15 @@ func (u UsageLog) LogValue() slog.Value {
 	)
 }
 
-// Takes a date string and returns a string with only the year
-// used to compute earliest and latest dates for facets because some data only include year-level granularity
+// Takes a date string and returns a string with only the year.
+// This is used to compute earliest and latest dates for facets because some data only include year-level granularity.
 func standardizeToYear(dateStr string) (string, error) {
 	var t time.Time
 	var err error
 
-	// raw dates can be year, m-year, or d-m-year
+	// Raw dates can be year, m-year, or d-m-year.
 	switch len(dateStr) {
-	case 0: // many entries have no earliest or latest date at all - we ignore those cases
+	case 0: // Many entries have no earliest or latest date at all - we ignore those cases.
 		return "", nil
 	case 4: // YYYY
 		t, err = time.Parse("2006", dateStr)
@@ -81,37 +90,38 @@ func standardizeToYear(dateStr string) (string, error) {
 		return "", err
 	}
 
-	// because a lot of our data only has the year, we only use that
+	// Because a lot of our data only has the year, we only use that.
     return t.Format("2006"), nil
 }
 
-// Formats logs for the stat vars and facets
+// Formats logs for the stat vars and facets.
 func MakeStatVarLogs(store *store.Store, observations []*pbv2.ObservationResponse) []*StatVarLog {
-	// statVarLogs is a map statVarDCID -> list of facets
+	// statVarLogs is a map statVarDCID -> list of facets.
 	statVarLogs := make(map[string]*StatVarLog)
 
 	for _, resp := range observations {
 		if resp == nil {
 			continue
 		}
+		// Iterate through each response's variables, collecting the facets used in that resp into our 
+		// cumulative list of facets used for the given variable.
 		for variable, varObs := range resp.ByVariable {
 			facetLogMaps := make(map[string]*FacetLog)
-			// adding stat var to statVarLogs list of stat vars if it hasn't been already
 			if _, ok := statVarLogs[variable]; !ok {
 				statVarLogs[variable] = &StatVarLog{
 					StatVarDCID: variable,
 				}
 			}
 
-			// we get all of the facets used for each entity
+			// Get all of the facets used for each entity.
 			for _, entityObs := range varObs.ByEntity {
-				// the entity observation contains a list of the most relevant facets -- we include all of them
+				// The entity observation contains a list of the most relevant facets -- we include all of them.
 				for _, facetObs := range entityObs.OrderedFacets {
 					facetID := facetObs.FacetId
 
 					if facetLog, ok := facetLogMaps[facetID]; ok {
 						facetLog.NumSeries++
-						// some stats only have year, so we only consider granularity to the year
+						// Some stats only have year, so we only consider granularity to the year.
 						earliest, err := standardizeToYear(facetObs.EarliestDate)
 						if err != nil {
 							slog.Error("Error processing date", "date", facetObs.EarliestDate, "error", err)
@@ -147,7 +157,7 @@ func MakeStatVarLogs(store *store.Store, observations []*pbv2.ObservationRespons
 				}
 			}
 
-			// all facets used across the result for this stat var
+			// All facets used for this stat var across all of the responses.
 			facetLogs := []*FacetLog{}
 			for _, facetLog := range facetLogMaps {
 				facetLogs = append(facetLogs, facetLog)
@@ -157,7 +167,7 @@ func MakeStatVarLogs(store *store.Store, observations []*pbv2.ObservationRespons
 	}
 
 	resultLogs := make([]*StatVarLog, 0, len(statVarLogs))
-	// moving statVarLogs from a map keyed by statVarDcid to a list
+	// Moving statVarLogs from a map keyed by statVarDcid to a list.
 	for _, svLog := range statVarLogs {
 		resultLogs = append(resultLogs, svLog)
 	}
@@ -166,10 +176,10 @@ func MakeStatVarLogs(store *store.Store, observations []*pbv2.ObservationRespons
 }
 
 /**
-Writes a structured log to stdout, which is ingested by GCP cloud logging to track mixer usage
-Currently only used by the v2/observation endpoint
+Writes a structured log to stdout, which is ingested by GCP cloud logging to track mixer usage.
+Currently only used by the v2/observation endpoint.
 **/
-func UsageLogger(surface string, fromRemote string, placeType string, store *store.Store, observations []*pbv2.ObservationResponse, queryType string) {
+func UsageLogger(surface string, isRemote string, placeType string, store *store.Store, observations []*pbv2.ObservationResponse, queryType shared.QueryType) {
 
 	statVars := MakeStatVarLogs(store, observations)
 
@@ -177,10 +187,9 @@ func UsageLogger(surface string, fromRemote string, placeType string, store *sto
 		PlaceType: placeType,
 		Feature: Feature{
 			Surface:    surface,
-			// indicates if this call came from custom DC via a remote mixer call
-			FromRemote: fromRemote != "",
+			IsRemote: isRemote != "",
 		},
-		QueryType: queryType,
+		QueryType: string(queryType),
 		StatVars:  statVars,
 	}
 

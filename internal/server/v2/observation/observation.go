@@ -25,6 +25,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	v2facet "github.com/datacommonsorg/mixer/internal/server/v2/facet"
+	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
@@ -39,7 +40,7 @@ func ObservationCore(
 	metadata *resource.Metadata,
 	httpClient *http.Client,
 	in *pbv2.ObservationRequest,
-) (*pbv2.ObservationResponse, string, error) {
+) (*pbv2.ObservationResponse, shared.QueryType, error) {
 	// (TODO): The routing logic here is very rough. This needs more work.
 	var queryDate, queryValue, queryVariable, queryEntity, queryFacet bool
 	for _, item := range in.GetSelect() {
@@ -78,7 +79,7 @@ func ObservationCore(
 				in.GetFilter(),
 			)
 
-			return result, "value", err
+			return result, shared.QueryTypeValue, err
 		}
 
 		// Collection.
@@ -104,7 +105,7 @@ func ObservationCore(
 				in.GetDate(),
 				in.GetFilter(),
 			)
-			return res, "value", err
+			return res, shared.QueryTypeValue, err
 		}
 
 		// Derived series.
@@ -116,7 +117,7 @@ func ObservationCore(
 				entity.GetDcids(),
 			)
 
-			return res, "derived", err
+			return res, shared.QueryTypeDerived, err
 		}
 	}
 
@@ -132,7 +133,7 @@ func ObservationCore(
 				entity.GetDcids(),
 			)
 
-			return res, "facet", err 
+			return res, shared.QueryTypeFacet, err
 		}
 		// Collection
 		if len(variable.GetDcids()) > 0 && entity.GetExpression() != "" {
@@ -155,7 +156,7 @@ func ObservationCore(
 				in.GetDate(),
 			)
 
-			return res, "facet", err
+			return res, shared.QueryTypeFacet, err
 		}
 	}
 
@@ -166,13 +167,13 @@ func ObservationCore(
 				// Have both entity.dcids and variable.dcids. Check existence cache.
 				res, err := Existence(
 					ctx, store, cachedata, variable.GetDcids(), entity.GetDcids())
-				return res, "existence", err
+				return res, shared.QueryTypeExistence, err
 			}
 			// TODO: Support appending entities from entity.expression
 			// Only have entity.dcids, fetch variables for each entity.
 			res, err := Variable(ctx, store, entity.GetDcids())
 
-			return res, "existence", err
+			return res, shared.QueryTypeExistence, err
 		}
 	}
 	return &pbv2.ObservationResponse{}, "", nil
@@ -186,11 +187,11 @@ func ObservationInternal(
 	httpClient *http.Client,
 	in *pbv2.ObservationRequest,
 	surface string,
-) (*pbv2.ObservationResponse, string, error) {
+) (*pbv2.ObservationResponse, shared.QueryType, error) {
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	localRespChan := make(chan *pbv2.ObservationResponse, 1)
 	remoteRespChan := make(chan *pbv2.ObservationResponse, 1)
-	queryTypeChan := make(chan string, 1)
+	queryTypeChan := make(chan shared.QueryType, 1)
 
 	errGroup.Go(func() error {
 		localResp, queryType, err := ObservationCore(errCtx, store, cachedata, metadata, httpClient, in)
@@ -198,7 +199,7 @@ func ObservationInternal(
 			return err
 		}
 		localRespChan <- localResp
-		// we only need to get the query type from the initial observation because 
+		// we only need to get the query type from the initial observation because
 		// it's based on the query parameters and will be the same in remote and local mixers.
 		queryTypeChan <- queryType
 		return nil
@@ -231,7 +232,7 @@ func ObservationInternal(
 	close(localRespChan) //
 	close(remoteRespChan)
 	close(queryTypeChan)
-	localResp, remoteResp, queryType := <-localRespChan, <-remoteRespChan, <- queryTypeChan
+	localResp, remoteResp, queryType := <-localRespChan, <-remoteRespChan, <-queryTypeChan
 	// The order of argument matters, localResp is prefered and will be put first
 	// in the merged result.
 	return merger.MergeObservation(localResp, remoteResp), queryType, nil
