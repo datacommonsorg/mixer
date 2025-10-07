@@ -119,7 +119,7 @@ var (
 )
 
 func main() {
-	// Init logger
+	// Sets up structured logger defaults.
 	logger.SetUpLogger()
 
 	log.Println("Enter mixer main() function")

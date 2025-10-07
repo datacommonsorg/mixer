@@ -704,7 +704,7 @@ func FetchRemote(
 	// X-Remote indicates that the mixer call is made to a remote mixer
 	// which is typically from a Custom DC instance.
 	request.Header.Set("X-Remote", "true")
-	// pass in the surfaceHeaderValue from the call to remote mixer
+	// Pass in the surfaceHeaderValue from the call to remote mixer.
 	if len(surfaceHeaderValue) > 0 && surfaceHeaderValue[0] != "" {
 		request.Header.Set("X-Surface", surfaceHeaderValue[0])
 	}
@@ -793,20 +793,20 @@ func MergeMaps[K comparable, V any](m1 map[K]V, ms ...map[K]V) map[K]V {
 	return merged
 }
 
-// extracts metadata from the context of a request. These headers
-// are used in the usage_logger to determine which DC feature a call originates
-// from, and if it is making a call to to a remote mixer
+// Extracts metadata from the context of a request. These headers
+// are used in the usagelogger to determine which DC feature a call originates
+// from, and if it is making a call to to a remote mixer.
 func GetMetadata(ctx context.Context) (surface string, toRemote string){
 	md, ok := metadata.FromIncomingContext(ctx)
 	if !ok {
     	slog.Warn("Error: There was a problem accessing the request's metadata", "err", ok)
     } else {
-		// Setting the surface for the usage logger
+		// Setting the surface for the usage logger.
 		// This is the origin of the query -- website, MCP server, public API (= blank surface), etc.
 		if values := md.Get("x-surface"); len(values) > 0 {
 			surface = values[0]
 		}
-		// Tndicates if the call came from a Custom DC making a call to remote mixer.
+		// Indicates if the call came from a Custom DC making a call to remote mixer.
 		if values := md.Get("x-remote"); len(values) > 0 {
 			toRemote = values[0]
 		}

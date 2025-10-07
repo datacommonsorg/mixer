@@ -199,7 +199,7 @@ func ObservationInternal(
 			return err
 		}
 		localRespChan <- localResp
-		// we only need to get the query type from the initial observation because
+		// We only need to get the query type from the initial observation because
 		// it's based on the query parameters and will be the same in remote and local mixers.
 		queryTypeChan <- queryType
 		return nil
