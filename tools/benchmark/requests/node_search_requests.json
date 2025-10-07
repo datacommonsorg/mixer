@@ -1,0 +1,38 @@
+[
+  {
+    "test_name": "node_search_with_query",
+    "path": "/node_search",
+    "json_payload": {
+      "query": "income"
+    },
+    "api_versions": ["v3"]
+  },
+  {
+    "test_name": "node_search_with_query_and_type",
+    "path": "/node_search",
+    "json_payload": {
+      "query": "income",
+      "types": ["StatisticalVariable"]
+    },
+    "api_versions": ["v3"]
+  },
+  {
+    "test_name": "node_search_with_query_and_predicates",
+    "path": "/node_search",
+    "json_payload": {
+      "query": "ether",
+      "predicates": ["alternateName"]
+    },
+    "api_versions": ["v3"]
+  },
+  {
+    "test_name": "node_search_with_query_predicates_and_types",
+    "path": "/node_search",
+    "json_payload": {
+      "query": "ether",
+      "predicates": ["alternateName"],
+      "types": ["ChemicalCompound"]
+    },
+    "api_versions": ["v3"]
+  }
+]

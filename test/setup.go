@@ -29,6 +29,7 @@ import (
 	_ "modernc.org/sqlite" // import the sqlite driver
 
 	"cloud.google.com/go/bigquery"
+	"github.com/datacommonsorg/mixer/internal/featureflags"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
@@ -213,7 +214,12 @@ func setupInternal(
 	// Processors
 	processors := []*dispatcher.Processor{}
 	if enableV3 {
-		var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, c.SVFormula(ctx))
+		// Mixer in-memory cache.
+		dataSourceCache, err := cache.NewDataSourceCache(ctx, dataSources, cacheOptions)
+		if err != nil {
+			return nil, err
+		}
+		var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, dataSourceCache.SVFormula(ctx))
 		processors = append(processors, &calculationProcessor)
 	}
 
@@ -262,7 +268,11 @@ func newClient(
 	mapsClient *maps.Client,
 	dispatcher *dispatcher.Dispatcher,
 ) (pbs.MixerClient, error) {
-	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient, dispatcher)
+	flags, err := featureflags.NewFlags("")
+	if err != nil {
+		return nil, err
+	}
+	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient, dispatcher, flags)
 	srv := grpc.NewServer()
 	pbs.RegisterMixerServer(srv, mixerServer)
 	reflection.Register(srv)

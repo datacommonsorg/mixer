@@ -15,8 +15,8 @@
 steps:
   # Validate BQ version file and run golangci-lint
   - id: lint
-    name: golangci/golangci-lint:v2.3.0-alpine
-    entrypoint: "sh"
+    name: gcr.io/datcom-ci/full-env:${_FULL_ENV_VERSION}
+    entrypoint: "bash"
     args:
       - -c
       - |
@@ -29,9 +29,20 @@ steps:
         golangci-lint run -v
     waitFor: ["-"]
 
+  # Validate feature flag yaml files
+  - id: validate-feature-flags
+    name: gcr.io/datcom-ci/full-env:${_FULL_ENV_VERSION}
+    entrypoint: "bash"
+    args:
+      - -c
+      - |
+        set -e
+        ./scripts/check_flags.sh deploy/featureflags
+    waitFor: ["lint"]
+
   # Build protobuf to go bindings
   - id: build-proto
-    name: gcr.io/datcom-ci/go-protoc:${_GO_PROTOC_VERSION}
+    name: gcr.io/datcom-ci/full-env:${_FULL_ENV_VERSION}
     entrypoint: "bash"
     args:
       - -c
@@ -44,10 +55,10 @@ steps:
           --go-grpc_opt=require_unimplemented_servers=false \
           --experimental_allow_proto3_optional \
           proto/*.proto proto/**/*.proto
-    waitFor: ["-"]
+    waitFor: ["lint"]
 
   - id: test
-    name: gcr.io/datcom-ci/go-protoc:${_GO_PROTOC_VERSION}
+    name: gcr.io/datcom-ci/full-env:${_FULL_ENV_VERSION}
     entrypoint: "bash"
     args:
       - -c
@@ -57,7 +68,7 @@ steps:
     waitFor: ["build-proto"]
 
 substitutions:
-  _GO_PROTOC_VERSION: "2025-07-30"
+  _FULL_ENV_VERSION: "mixer-only-2025-10-02"
 
 options:
   volumes:

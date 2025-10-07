@@ -26,6 +26,7 @@ import (
 	"runtime"
 	"runtime/pprof"
 
+	"github.com/datacommonsorg/mixer/internal/featureflags"
 	"github.com/datacommonsorg/mixer/internal/metrics"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
@@ -109,6 +110,11 @@ var (
 	v3MirrorFraction = flag.Float64(
 		"v3_mirror_fraction", 0, "Fraction of V2 API requests to mirror to V3. Value from 0 to 1.0.",
 	)
+	featureFlagsPath = flag.String(
+		"feature_flags_path",
+		featureflags.DefaultFeatureFlagsPath,
+		"Path to the feature flags config file.",
+	)
 )
 
 func main() {
@@ -116,6 +122,12 @@ func main() {
 	// Parse flag
 	flag.Parse()
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
+
+	var err error
+	flags, err := featureflags.NewFlags(*featureFlagsPath)
+	if err != nil {
+		log.Fatalf("Failed to create feature flags: %v", err)
+	}
 
 	if *v3MirrorFraction < 0 || *v3MirrorFraction > 1.0 {
 		log.Fatalf("v3_mirror_fraction must be between 0 and 1.0, got %f", *v3MirrorFraction)
@@ -125,7 +137,6 @@ func main() {
 	}
 
 	ctx := context.Background()
-	var err error
 
 	credentials, err := google.FindDefaultCredentials(ctx, compute.ComputeScope)
 	if err == nil && credentials.ProjectID != "" {
@@ -352,6 +363,12 @@ func main() {
 	// Processors
 	processors := []*dispatcher.Processor{}
 	if *enableV3 {
+		// Mixer in-memory cache.
+		dataSourceCache, err := cache.NewDataSourceCache(ctx, dataSources, cacheOptions)
+		if err != nil {
+			log.Fatalf("Failed to create data source cache: %v", err)
+		}
+
 		// Cache Processor
 		if *useRedis && *redisInfo != "" {
 			redisClient, err := redis.NewCacheClient(*redisInfo)
@@ -366,7 +383,7 @@ func main() {
 		}
 
 		// Calculation Processor
-		var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, c.SVFormula(ctx))
+		var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, dataSourceCache.SVFormula(ctx))
 		processors = append(processors, &calculationProcessor)
 	}
 
@@ -374,7 +391,7 @@ func main() {
 	dispatcher := dispatcher.NewDispatcher(processors, dataSources)
 
 	// Create server object
-	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher)
+	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags)
 	mixerServer.SetV3MirrorFraction(*v3MirrorFraction)
 	pbs.RegisterMixerServer(srv, mixerServer)
 
