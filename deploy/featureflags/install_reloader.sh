@@ -45,8 +45,8 @@ install_reloader_on_cluster() {
   helm upgrade --install reloader stakater/reloader \
     --namespace default \
     --set reloader.logFormat=json \
-    --set reloader.reload-on-create=true \
-    --set reloader.reload-on-delete=true
+    --set reloader.reloadOnCreate=true \
+    --set reloader.reloadOnDelete=true
 }
 
 # Add the stakater helm repository
