@@ -17,8 +17,10 @@ package server
 
 import (
 	"context"
+	"math/rand"
 	"time"
 
+	"github.com/datacommonsorg/mixer/internal/log"
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
@@ -245,13 +247,17 @@ func (s *Server) V2Observation(
 	ctx context.Context, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
 	v2StartTime := time.Now()
-	initialResp, err := v2observation.ObservationInternal(
+	
+	surface, toRemote := util.GetMetadata(ctx)
+
+	initialResp, queryType, err := v2observation.ObservationInternal(
 		ctx,
 		s.store,
 		s.cachedata.Load(),
 		s.metadata,
 		s.httpClient,
-		in)
+		in,
+		surface)
 	if err != nil {
 		return nil, err
 	}
@@ -263,6 +269,7 @@ func (s *Server) V2Observation(
 		s.httpClient,
 		in,
 		initialResp,
+		surface,
 	)
 	if err != nil {
 		return nil, err
@@ -281,6 +288,11 @@ func (s *Server) V2Observation(
 			return s.V3Observation(ctx, req.(*pbv2.ObservationRequest))
 		},
 	)
+
+	// Handle usage logging.
+	if rand.Float64() < s.flags.WriteUsageLogs {
+		log.WriteUsageLog(surface, toRemote, "" /* place type, still WIP */, s.store, combinedResp, queryType)
+	}
 
 	return v2Resp, nil
 }

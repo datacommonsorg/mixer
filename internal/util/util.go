@@ -24,6 +24,7 @@ import (
 	"hash/fnv"
 	"io"
 	"log"
+	"log/slog"
 	"math"
 	"math/rand"
 	"net/http"
@@ -43,6 +44,7 @@ import (
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
@@ -685,7 +687,9 @@ func FetchRemote(
 	apiPath string,
 	in proto.Message,
 	out proto.Message,
+	surfaceHeaderValue ...string,
 ) error {
+
 	url := metadata.RemoteMixerDomain + apiPath
 	jsonValue, err := protojson.Marshal(in)
 	if err != nil {
@@ -697,6 +701,13 @@ func FetchRemote(
 	}
 	request.Header.Set("Content-Type", "application/json")
 	request.Header.Set("X-API-Key", metadata.RemoteMixerAPIKey)
+	// X-Remote indicates that the mixer call is made to a remote mixer
+	// which is typically from a Custom DC instance.
+	request.Header.Set("X-Remote", "true")
+	// Pass in the surfaceHeaderValue from the call to remote mixer.
+	if len(surfaceHeaderValue) > 0 && surfaceHeaderValue[0] != "" {
+		request.Header.Set("X-Surface", surfaceHeaderValue[0])
+	}
 	DCLog(DCLogRemoteMixerCall, fmt.Sprintf("url=%s", url))
 	response, err := httpClient.Do(request)
 	if err != nil {
@@ -780,4 +791,25 @@ func MergeMaps[K comparable, V any](m1 map[K]V, ms ...map[K]V) map[K]V {
 		}
 	}
 	return merged
+}
+
+// Extracts metadata from the context of a request. These headers
+// are used in the usagelogger to determine which DC feature a call originates
+// from, and if it is making a call to to a remote mixer.
+func GetMetadata(ctx context.Context) (surface string, toRemote bool){
+	md, ok := metadata.FromIncomingContext(ctx)
+	if !ok {
+    	slog.Warn("Error: There was a problem accessing the request's metadata", "err", ok)
+    } else {
+		// Setting the surface for the usage logger.
+		// This is the origin of the query -- website, MCP server, public API (= blank surface), etc.
+		if values := md.Get("x-surface"); len(values) > 0 {
+			surface = values[0]
+		}
+		// Indicates if the call came from a Custom DC making a call to remote mixer.
+		if values := md.Get("x-remote"); len(values) > 0 {
+			toRemote = (values[0] != "")
+		}
+	}
+	return surface, toRemote
 }
