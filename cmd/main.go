@@ -27,6 +27,7 @@ import (
 	"runtime/pprof"
 
 	"github.com/datacommonsorg/mixer/internal/featureflags"
+	logger "github.com/datacommonsorg/mixer/internal/log"
 	"github.com/datacommonsorg/mixer/internal/metrics"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
@@ -118,6 +119,9 @@ var (
 )
 
 func main() {
+	// Sets up structured logger defaults.
+	logger.SetUpLogger()
+
 	log.Println("Enter mixer main() function")
 	// Parse flag
 	flag.Parse()

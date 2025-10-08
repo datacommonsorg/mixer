@@ -34,6 +34,21 @@ const (
 	LATEST = "LATEST"
 )
 
+// QueryType indicates the type of query requested, which dictates which
+// cache we fetch from. It is used in Mixer usage logs.
+type QueryType string
+
+const (
+	// Fetches the value of statvars for given entities.
+	QueryTypeValue QueryType = "value"
+	// Fetches information about a given facet.
+	QueryTypeFacet QueryType = "facet"
+	// Checks if a given statVar has information for a given entity.
+	QueryTypeExistence QueryType = "existence"
+	// Calculates a value from other fetches.
+	QueryTypeDerived QueryType = "derived"
+)
+
 // Num of concurrent series to read at a time. Set this to prevent OOM issue.
 const MaxSeries = 5000
 

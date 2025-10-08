@@ -30,6 +30,7 @@ const (
 type Flags struct {
 	EnableV3         bool    `yaml:"EnableV3"`
 	V3MirrorFraction float64 `yaml:"V3MirrorFraction"`
+	WriteUsageLogs	 float64 `yaml:"WriteUsageLogs"`
 }
 
 // setDefaultValues creates a new Flags struct with default values.
@@ -37,6 +38,7 @@ func setDefaultValues() *Flags {
 	return &Flags{
 		EnableV3:         false,
 		V3MirrorFraction: 0.0,
+		WriteUsageLogs:   0.0,
 	}
 }
 
@@ -47,6 +49,9 @@ func (f *Flags) validateFlagValues() error {
 	}
 	if f.V3MirrorFraction > 0 && !f.EnableV3 {
 		return fmt.Errorf("V3MirrorFraction > 0 requires EnableV3 to be true")
+	}
+	if f.WriteUsageLogs < 0 || f.WriteUsageLogs > 1 {
+		return fmt.Errorf("WriteUsageLogs must be between 0 and 1.0, got %f", f.WriteUsageLogs)
 	}
 	return nil
 }
