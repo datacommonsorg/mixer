@@ -41,13 +41,13 @@ func TestUseMetadata(t *testing.T) {
 		desc         string
 		ctx          context.Context
 		wantSurface  string
-		wantToRemote string
+		wantToRemote bool
 	}{
 		{
 			"empty context",
 			context.Background(),
 			"",
-			"",
+			false,
 		},
 		{
 			"with surface",
@@ -56,7 +56,7 @@ func TestUseMetadata(t *testing.T) {
 				metadata.Pairs("x-surface", "test-surface"),
 			),
 			"test-surface",
-			"",
+			false,
 		},
 		{
 			"with surface and remote",
@@ -68,7 +68,7 @@ func TestUseMetadata(t *testing.T) {
 				),
 			),
 			"test-surface",
-			"true",
+			true,
 		},
 	} {
 		surface, toRemote := util.GetMetadata(c.ctx)
