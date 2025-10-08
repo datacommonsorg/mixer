@@ -796,7 +796,7 @@ func MergeMaps[K comparable, V any](m1 map[K]V, ms ...map[K]V) map[K]V {
 // Extracts metadata from the context of a request. These headers
 // are used in the usagelogger to determine which DC feature a call originates
 // from, and if it is making a call to to a remote mixer.
-func GetMetadata(ctx context.Context) (surface string, toRemote string){
+func GetMetadata(ctx context.Context) (surface string, toRemote bool){
 	md, ok := metadata.FromIncomingContext(ctx)
 	if !ok {
     	slog.Warn("Error: There was a problem accessing the request's metadata", "err", ok)
@@ -808,7 +808,7 @@ func GetMetadata(ctx context.Context) (surface string, toRemote string){
 		}
 		// Indicates if the call came from a Custom DC making a call to remote mixer.
 		if values := md.Get("x-remote"); len(values) > 0 {
-			toRemote = values[0]
+			toRemote = (values[0] != "")
 		}
 	}
 	return surface, toRemote

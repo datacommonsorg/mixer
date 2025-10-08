@@ -231,7 +231,7 @@ func TestV2Observation_UsageLog(t *testing.T) {
 	slog.SetDefault(logger)
 	defer slog.SetDefault(originalLogger)
 
-	s.V2Observation(ctx, req)
+	_, _ = s.V2Observation(ctx, req)
 
 	outStr := strings.TrimSpace(buf.String())
 

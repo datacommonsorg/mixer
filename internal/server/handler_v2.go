@@ -291,7 +291,7 @@ func (s *Server) V2Observation(
 
 	// Handle usage logging.
 	if rand.Float64() < s.flags.WriteUsageLogs {
-		log.UsageLogger(surface, toRemote, "" /* place type, still WIP */, s.store, combinedResp, queryType)
+		log.WriteUsageLog(surface, toRemote, "" /* place type, still WIP */, s.store, combinedResp, queryType)
 	}
 
 	return v2Resp, nil
