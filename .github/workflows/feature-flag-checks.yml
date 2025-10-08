@@ -51,8 +51,8 @@ jobs:
           CURRENT_HOUR=$(date +"%H")
           CURRENT_DAY=$(date -d "$DATE" +"%u") # 1 for Monday, 7 for Sunday
 
-          if [[ "$CURRENT_DAY" -ge 1 && "$CURRENT_DAY" -le 4 ]]; then
-            if [[ "$CURRENT_HOUR" -ge 8 && "$CURRENT_HOUR" -lt 14 ]]; then
+          if [[ "$CURRENT_DAY" -ge 3 && "$CURRENT_DAY" -le 4 ]]; then
+            if [[ "$CURRENT_HOUR" -ge 8 && "$CURRENT_HOUR" -lt 17 ]]; then
               echo "Current time is within the allowed window for prod flag changes."
               exit 0
             fi
