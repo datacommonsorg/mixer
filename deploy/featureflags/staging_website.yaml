@@ -1,0 +1,8 @@
+# Flags for mixer bundled with website staging
+clusters:
+  - projects/datcom-website-staging/locations/us-central1/clusters/website-us-central1
+liveUrl: https://staging.datacommons.org
+flags:
+  EnableV3: true
+  V3MirrorFraction: 0.01
+  WriteUsageLogs: 0.0
