@@ -1,0 +1,9 @@
+# Flags for mixer bundled with website prod
+clusters:
+  - projects/datcom-website-prod/locations/us-central1/clusters/website-us-central1
+  - projects/datcom-website-prod/locations/us-west1/clusters/website-us-west1
+liveUrl: https://datacommons.org
+flags:
+  EnableV3: true
+  V3MirrorFraction: 0.002
+  WriteUsageLogs: 0.0
