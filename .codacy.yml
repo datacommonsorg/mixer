@@ -1,2 +1,3 @@
 exclude_paths:
-  - 'tools/benchmark/requirements.txt'
+  - "tools/benchmark/requirements.txt"
+  - ".github/**"
