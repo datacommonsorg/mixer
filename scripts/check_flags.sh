@@ -84,6 +84,14 @@ run_check_with_go() {
   go run scripts/check_flags.go "$env_file"
 }
 
+get_website_autopush_iap_token() {
+  local client_id="182452152245-0rgvlhrhhlnhgsk9ftbqb53066a9s6dm.apps.googleusercontent.com"
+  local service_account="mixer-feature-flags@datcom-ci.iam.gserviceaccount.com"
+  gcloud auth print-identity-token --include-email \
+    --impersonate-service-account="$service_account" \
+    --audiences="$client_id" 2>/dev/null
+}
+
 check_env() {
   local env_file=$1
   local env_name
@@ -108,7 +116,14 @@ check_env() {
   echo "Fetching live commit from ${version_url}"
   local commit_hash
   local version_output
-  if ! version_output=$(curl -fsS "$version_url"); then
+  local curl_opts=()
+  if [[ "$env_name" == "autopush_website" ]]; then
+    local iap_token
+    iap_token=$(get_website_autopush_iap_token)
+    curl_opts+=(-H "Authorization: Bearer $iap_token")
+  fi
+
+  if ! version_output=$(curl -fsS "${curl_opts[@]}" "$version_url"); then
     echo "Error: Failed to fetch version info from ${version_url}" >&2
     return 1
   fi
