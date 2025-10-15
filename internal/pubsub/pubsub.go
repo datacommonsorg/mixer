@@ -16,7 +16,7 @@ package pubsub
 
 import (
 	"context"
-	"log"
+	"log/slog"
 	"os"
 	"os/signal"
 	"syscall"
@@ -57,7 +57,7 @@ func Subscribe(
 	if err != nil {
 		return err
 	}
-	log.Printf("Created subscriber with id: %s\n", subID)
+	slog.Info("Created subscriber", "id", subID)
 	// Start the receiver in a goroutine.
 	go func() {
 		err = subscriber.Receive(
@@ -66,11 +66,11 @@ func Subscribe(
 				msg.Ack()
 				err = worker(ctx, msg)
 				if err != nil {
-					log.Printf("Subscriber can not complete task: %v", err)
+					slog.Error("Subscriber can not complete task", "error", err)
 				}
 			})
 		if err != nil {
-			log.Printf("Cloud pubsub receive: %v", err)
+			slog.Error("Cloud pubsub receive", "error", err)
 		}
 	}()
 	// Create a go routine to check server shutdown and delete the subscriber.
@@ -80,9 +80,10 @@ func Subscribe(
 		<-c
 		err := subscriber.Delete(ctx)
 		if err != nil {
-			log.Fatalf("Failed to delete subscriber: %v", err)
+			slog.Error("Failed to delete subscriber", "error", err)
+			os.Exit(1)
 		}
-		log.Printf("Deleted subscriber: %v", subscriber)
+		slog.Info("Deleted subscriber", "subscriber", subscriber)
 		os.Exit(1)
 	}()
 	return nil

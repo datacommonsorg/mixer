@@ -19,7 +19,7 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"fmt"
-	"log"
+	"log/slog"
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -65,7 +65,7 @@ func NewCacheClient(redisConfigYaml string) (*RedisCacheClient, error) {
 		return nil, fmt.Errorf("failed to connect to Redis: %w", err)
 	}
 
-	log.Printf("Connected to Redis at: %s", redisAddress)
+	slog.Info("Connected to Redis", "address", redisAddress)
 
 	return newCacheClient(redisClient, defaultExpiration), nil
 }
