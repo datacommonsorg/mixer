@@ -52,7 +52,6 @@ func NewCustomTextHandler(w io.Writer, opts *slog.HandlerOptions) *CustomTextHan
 		mu:   new(sync.Mutex),
 		w:    w,
 		excludedKeys: map[string]struct{}{
-			slog.TimeKey:    {},
 			slog.LevelKey:   {},
 			slog.MessageKey: {},
 			slog.SourceKey:  {},
@@ -71,9 +70,17 @@ func (h *CustomTextHandler) Enabled(_ context.Context, level slog.Level) bool {
 func (h *CustomTextHandler) Handle(_ context.Context, r slog.Record) error {
 	buf := make([]byte, 0, 1024)
 
-	// Color based on level
+	// Color based on level and highlight
+	highlight := false
+	r.Attrs(func(a slog.Attr) bool {
+		if a.Key == "highlight" {
+			highlight = a.Value.Bool()
+			return false // Stop iterating once found
+		}
+		return true
+	})
 	var color string
-	if r.Message == "Mixer ready to serve!!" {
+	if highlight {
 		color = "\033[92m" // Green
 	} else {
 		switch r.Level {
@@ -89,12 +96,17 @@ func (h *CustomTextHandler) Handle(_ context.Context, r slog.Record) error {
 		buf = append(buf, color...)
 	}
 
+	// Time
+	if !r.Time.IsZero() {
+		buf = r.Time.AppendFormat(buf, "15:04:05 ")
+	}
+
 	// Message.
 	buf = fmt.Appendf(buf, "%s\n", r.Message)
 
 	// Attributes
 	r.Attrs(func(a slog.Attr) bool {
-		if _, ok := h.excludedKeys[a.Key]; !ok {
+		if _, ok := h.excludedKeys[a.Key]; !ok && a.Key != "highlight" {
 			buf = fmt.Appendf(buf, "  %s: %s\n", a.Key, a.Value.String())
 		}
 		return true
