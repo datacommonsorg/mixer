@@ -107,10 +107,18 @@ func (h *CustomTextHandler) Handle(_ context.Context, r slog.Record) error {
 	// Attributes
 	r.Attrs(func(a slog.Attr) bool {
 		if _, ok := h.excludedKeys[a.Key]; !ok && a.Key != "highlight" {
-			buf = fmt.Appendf(buf, "  %s: %s\n", a.Key, a.Value.String())
+			buf = fmt.Appendf(buf, "    %s: %s\n", a.Key, a.Value.String())
 		}
 		return true
 	})
+
+	// Groups and attributes from WithGroup and WithAttrs.
+	for _, g := range h.groups {
+		buf = fmt.Appendf(buf, "    %s:\n", g)
+	}
+	for _, a := range h.attrs {
+		buf = fmt.Appendf(buf, "    %s: %s\n", a.Key, a.Value.String())
+	}
 
 	// Reset color if any.
 	if color != "" {
