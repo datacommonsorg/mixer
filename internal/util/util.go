@@ -140,15 +140,6 @@ const (
 	SQLDriverMySQL                    // SQLDriverMySQL = 2
 )
 
-// Define the DCLogTag enum
-type DCLogTag string
-
-// Enum values for different log types
-const (
-	DCLogRemoteMixerCall DCLogTag = "RemoteMixerCall"
-	// Add more log types as needed
-)
-
 // Custom RPC headers
 const (
 	// Whether to skip reading from Redis cache.
@@ -476,8 +467,7 @@ func Sample(m proto.Message, strategy *SamplingStrategy) proto.Message {
 // TimeTrack is used to track function execution time.
 func TimeTrack(start time.Time, name string) {
 	elapsed := time.Since(start)
-	// TODO make this clearer
-	slog.Info(name, "elapsed", elapsed)
+	slog.Info("Tracked function execution time", "name", name, "duration", elapsed)
 }
 
 // KeysToSlice stores the keys of a map in a slice.
@@ -686,8 +676,7 @@ func FetchRemote(
 	if len(surfaceHeaderValue) > 0 && surfaceHeaderValue[0] != "" {
 		request.Header.Set("X-Surface", surfaceHeaderValue[0])
 	}
-	// TODO Make sure existing Custom DC is okay with this
-	slog.Info("Remote mixer call", "url", url)
+	slog.Info(fmt.Sprintf("[DC][RemoteMixerCall] url=%s", url), "url", url)
 	response, err := httpClient.Do(request)
 	if err != nil {
 		return err

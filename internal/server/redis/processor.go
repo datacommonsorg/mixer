@@ -41,7 +41,7 @@ func (processor *CacheProcessor) PreProcess(rc *dispatcher.RequestContext) (disp
 
 	cachedResponse := newEmptyResponse(rc.Type)
 	if found, err := processor.client.GetCachedResponse(rc.Context, rc.OriginalRequest, cachedResponse); found {
-		slog.Info("Cache hit", "request_type", rc.OriginalRequest)
+		slog.Info("Cache hit", "originalRequest", rc.OriginalRequest)
 
 		rc.CurrentResponse = cachedResponse
 		return dispatcher.Done, err

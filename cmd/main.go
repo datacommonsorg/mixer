@@ -123,7 +123,7 @@ func main() {
 	// Sets up structured logger defaults.
 	logger.SetUpLogger()
 
-	slog.Info("Enter mixer main() function")
+	slog.Debug("Enter mixer main() function")
 	// Parse flag
 	flag.Parse()
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
