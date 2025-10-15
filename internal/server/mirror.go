@@ -16,7 +16,7 @@ package server
 
 import (
 	"context"
-	"log"
+	"log/slog"
 	"math/rand"
 	"reflect"
 	"sync"
@@ -118,14 +118,13 @@ func (s *Server) doMirror(
 
 	rpcMethod := reflect.TypeOf(originalReq).Elem().Name()
 	if v3Err != nil {
-		log.Printf("V3 mirrored call failed. V3 Method: %s, skipCache: %t, Error: %v", rpcMethod, skipCache, v3Err)
+		slog.Warn("V3 mirrored call failed", "method", rpcMethod, "skipCache", skipCache, "error", v3Err)
 		metrics.RecordV3MirrorError(ctx, v3Err)
 		return
 	}
 
 	if diff := cmp.Diff(originalResp, v3Resp, protocmp.Transform()); diff != "" {
-		// TODO(hqpho): Re-enable once structured logging is ready.
-		// log.Printf("V3 mirrored call had a different response. V3 Method: %s, skipCache: %t, Diff: %s", rpcMethod, skipCache, diff)
+		slog.Warn("V3 mirrored call had a different response", "method", rpcMethod, "skipCache", skipCache, "diff", diff)
 		metrics.RecordV3Mismatch(ctx)
 	}
 }
