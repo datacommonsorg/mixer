@@ -20,7 +20,7 @@ import (
 	"crypto/sha256"
 	"encoding/base64"
 	"fmt"
-	"log"
+	"log/slog"
 	"sort"
 	"strconv"
 
@@ -507,11 +507,11 @@ func observationToFacetObservation(
 
 		// Skip observations with non-numeric values.
 		if err != nil {
-			log.Printf(
-				"Error decoding PointStat for variable (%v) and entity (%v): %v",
-				observation.VariableMeasured,
-				observation.ObservationAbout,
-				err,
+			slog.Warn(
+				"Error decoding PointStat",
+				"variable", observation.VariableMeasured,
+				"entity", observation.ObservationAbout,
+				"error", err,
 			)
 			continue
 		}

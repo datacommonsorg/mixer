@@ -16,7 +16,7 @@ package redis
 
 import (
 	"context"
-	"log"
+	"log/slog"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
@@ -41,13 +41,13 @@ func (processor *CacheProcessor) PreProcess(rc *dispatcher.RequestContext) (disp
 
 	cachedResponse := newEmptyResponse(rc.Type)
 	if found, err := processor.client.GetCachedResponse(rc.Context, rc.OriginalRequest, cachedResponse); found {
-		log.Printf("Cache hit: %T", rc.OriginalRequest)
+		slog.Info("Cache hit", "originalRequest", rc.OriginalRequest)
 
 		rc.CurrentResponse = cachedResponse
 		return dispatcher.Done, err
 	} else if err != nil {
 		// Log the error but continue processing.
-		log.Printf("Error getting cached response: %v", err)
+		slog.Error("Error getting cached response", "error", err)
 	}
 	return dispatcher.Continue, nil
 }
@@ -60,7 +60,7 @@ func (processor *CacheProcessor) PostProcess(rc *dispatcher.RequestContext) (dis
 	if rc.CurrentResponse != nil {
 		if err := processor.client.CacheResponse(rc.Context, rc.OriginalRequest, rc.CurrentResponse); err != nil {
 			// Log the error but continue processing.
-			log.Printf("Error caching response: %v", err)
+			slog.Error("Error caching response", "error", err)
 		}
 	}
 	return dispatcher.Continue, nil
