@@ -126,7 +126,7 @@ func runQueryBuilderGoldenTest(t *testing.T, goldenFile string, fn goldenTestFun
 	}
 	interpolated := interpolateSQL(actual.(*cloudSpanner.Statement))
 
-	if true {
+	if test.GenerateGolden {
 		err := test.WriteGolden(interpolated, goldenDir, goldenFile)
 		if err != nil {
 			t.Fatalf("WriteGolden error (%v): %v", goldenFile, err)

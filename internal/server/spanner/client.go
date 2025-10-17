@@ -34,12 +34,12 @@ const (
 type SpannerClient struct {
 	client *spanner.Client
 
-	// Cache for storing TimestampBound for stale reads.
+	// Cache for storing CompletionTimestamp for stale reads.
 	cacheMutex      sync.RWMutex
 	cachedTimestamp *time.Time
 	cacheExpiry     time.Time
 
-	// For mocking in tests
+	// For mocking in tests.
 	timestampFetcher func(context.Context) (*time.Time, error)
 	clock            func() time.Time
 }

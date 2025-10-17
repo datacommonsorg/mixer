@@ -32,7 +32,7 @@ func TestCacheHit(t *testing.T) {
 		fetchCount++
 		return &stableTime, nil
 	}
-	// Initialization will populate cache
+	// Initialization will populate cache.
 	_, err := sc.getCompletionTimestamp(context.Background())
 	if err != nil {
 		t.Fatalf("Expected no error, got: %v", err)
@@ -64,7 +64,7 @@ func TestCacheExpiration(t *testing.T) {
 		fetchCount++
 		return &stableTime, nil
 	}
-	// Initialization will populate cache
+	// Initialization will populate cache.
 	_, err := sc.getCompletionTimestamp(context.Background())
 	if err != nil {
 		t.Fatalf("Expected no error, got: %v", err)
@@ -73,21 +73,19 @@ func TestCacheExpiration(t *testing.T) {
 		t.Fatalf("Setup failed, expected 1 fetch, got %d", fetchCount)
 	}
 
-	// Advance time past expiration
+	// Advance time past expiration.
 	mockTime = mockTime.Add(6 * time.Second)
-	t.Run("Cache miss", func(t *testing.T) {
-		_, err := sc.getCompletionTimestamp(context.Background())
-		if err != nil {
-			t.Fatalf("Expected no error, got: %v", err)
-		}
-		if fetchCount != 2 {
-			t.Errorf("Expected timestamp fetch count to increase to 2, got %d", fetchCount)
-		}
-		expectedExpiry := mockTime.Add(CACHE_DURATION)
-		if sc.cacheExpiry.Sub(expectedExpiry) > time.Millisecond {
-			t.Errorf("Cache expiry was not correctly updated after refetch.")
-		}
-	})
+	_, err = sc.getCompletionTimestamp(context.Background())
+	if err != nil {
+		t.Fatalf("Expected no error, got: %v", err)
+	}
+	if fetchCount != 2 {
+		t.Errorf("Expected timestamp fetch count to increase to 2, got %d", fetchCount)
+	}
+	expectedExpiry := mockTime.Add(CACHE_DURATION)
+	if sc.cacheExpiry.Sub(expectedExpiry) > time.Millisecond {
+		t.Errorf("Cache expiry was not correctly updated after refetch.")
+	}
 }
 
 func TestGetStalenessTimestampBound(t *testing.T) {

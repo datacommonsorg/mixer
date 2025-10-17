@@ -190,7 +190,7 @@ func runQueryGoldenTest(t *testing.T, goldenFile string, fn goldenTestFunc) {
 		t.Fatalf("StructToJSON error (%v): %v", goldenFile, err)
 	}
 
-	if true {
+	if test.GenerateGolden {
 		err = test.WriteGolden(got, goldenDir, goldenFile)
 		if err != nil {
 			t.Fatalf("WriteGolden error (%v): %v", goldenFile, err)
