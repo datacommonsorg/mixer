@@ -106,9 +106,9 @@ message Series {
 
 // Represents observation time series data.
 message ObsTimeSeries {
+  string place_name = 3;
   // Only used for time series.
   // All valid place types for the given place_dcid
-  string place_name = 3;
   repeated string place_types = 7;
   string place_dcid = 5; // Only set if the key uses mid.
   repeated SourceSeries source_series = 6;
