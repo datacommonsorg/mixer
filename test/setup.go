@@ -19,6 +19,7 @@ import (
 	"context"
 	"encoding/json"
 	"log"
+	"log/slog"
 	"net"
 	"os"
 	"path"
@@ -397,7 +398,7 @@ func NewSpannerClient() *spanner.SpannerClient {
 	// Cache initial CompletionTimestamp
 	_, err := sc.GetStalenessTimestampBound(context.Background())
 	if err != nil {
-		log.Fatalf("failed to warm up stable timestamp cache: %v", err)
+		slog.Error("failed to warm up stable timestamp cache", "error", err)
 		return nil
 	}
 
