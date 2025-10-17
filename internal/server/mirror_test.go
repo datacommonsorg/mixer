@@ -15,9 +15,9 @@
 package server
 
 import (
+	"bytes"
 	"context"
-	"log"
-	"os"
+	"log/slog"
 	"strings"
 	"sync"
 	"testing"
@@ -46,6 +46,17 @@ func setupMetricReader(t *testing.T) *metric.ManualReader {
 	provider := metric.NewMeterProvider(metric.WithReader(reader))
 	otel.SetMeterProvider(provider)
 	return reader
+}
+
+// setUpSlogCapture sets up a test-specific slog logger that writes to a buffer.
+// It returns the buffer and a cleanup function to restore the original logger.
+func setUpSlogCapture() (*bytes.Buffer, func()) {
+	var buf bytes.Buffer
+	handler := slog.NewTextHandler(&buf, nil)
+	logger := slog.New(handler)
+	originalLogger := slog.Default()
+	slog.SetDefault(logger)
+	return &buf, func() { slog.SetDefault(originalLogger) }
 }
 
 func TestMaybeMirrorV3_Percentage(t *testing.T) {
@@ -197,20 +208,17 @@ func TestMaybeMirrorV3_ResponseMismatch(t *testing.T) {
 		return v3Resp, nil
 	}
 
-	var buf strings.Builder
-	log.SetOutput(&buf)
-	defer log.SetOutput(os.Stderr)
+	buf, cleanup := setUpSlogCapture()
+	defer cleanup()
 
 	var mirrorWg sync.WaitGroup
 	s.maybeMirrorV3(ctx, v2Req, v2Resp, 0, v3Call, &mirrorWg)
 	mirrorWg.Wait()
 
-	// logOutput := buf.String()
-	// TODO(hqpho): Re-enable this test once structured logging is ready and
-	// the V3 response diff logging is re-enabled.
-	// if strings.Count(logOutput, "V3 mirrored call had a different response") != 2 {
-	// 	t.Errorf("log output should contain 2 diff warnings, but got: %q", logOutput)
-	// }
+	logOutput := buf.String()
+	if strings.Count(logOutput, "V3 mirrored call had a different response") != 2 {
+		t.Errorf("log output should contain 2 diff warnings, but got: %q", logOutput)
+	}
 
 	var rm metricdata.ResourceMetrics
 	if err := reader.Collect(context.Background(), &rm); err != nil {
@@ -270,9 +278,8 @@ func TestMaybeMirrorV3_ResponseMatch(t *testing.T) {
 		return v3Resp, nil
 	}
 
-	var buf strings.Builder
-	log.SetOutput(&buf)
-	defer log.SetOutput(os.Stderr)
+	buf, cleanup := setUpSlogCapture()
+	defer cleanup()
 
 	var mirrorWg sync.WaitGroup
 	s.maybeMirrorV3(ctx, v2Req, v2Resp, 0, v3Call, &mirrorWg)
@@ -321,9 +328,8 @@ func TestMaybeMirrorV3_V3Error(t *testing.T) {
 		return nil, status.Error(codes.Internal, "V3 API error")
 	}
 
-	var buf strings.Builder
-	log.SetOutput(&buf)
-	defer log.SetOutput(os.Stderr)
+	buf, cleanup := setUpSlogCapture()
+	defer cleanup()
 
 	var mirrorWg sync.WaitGroup
 	s.maybeMirrorV3(ctx, v2Req, v2Resp, 0, v3Call, &mirrorWg)

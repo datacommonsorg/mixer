@@ -20,7 +20,7 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
-	"log"
+	"log/slog"
 	"net"
 	"os"
 
@@ -105,7 +105,7 @@ func newSQLiteConnection(dbPath string) (*sql.DB, error) {
 	if err != nil {
 		return nil, fmt.Errorf("error opening sqlite db: %s (%w)", dbPath, err)
 	}
-	log.Printf("Connected to sqlite db: %s", dbPath)
+	slog.Info("Connected to sqlite db", "path", dbPath)
 	return db, err
 }
 
@@ -113,7 +113,8 @@ func newCloudSQLConnection(instanceName string) (*sql.DB, error) {
 	mustGetenv := func(k string) string {
 		v := os.Getenv(k)
 		if v == "" {
-			log.Fatalf("environment variable not set: %s", k)
+			slog.Error("environment variable not set", "key", k)
+			os.Exit(1)
 		}
 		return v
 	}
@@ -155,6 +156,6 @@ func newCloudSQLConnection(instanceName string) (*sql.DB, error) {
 		return nil, fmt.Errorf("db.Ping: %w", err)
 	}
 
-	log.Printf("Connected to Cloud SQL instance: %s", instanceName)
+	slog.Info("Connected to Cloud SQL instance", "instance", instanceName)
 	return db, nil
 }

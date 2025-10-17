@@ -16,7 +16,7 @@ package server
 
 import (
 	"context"
-	"log"
+	"log/slog"
 	"net/http"
 	"os"
 	"path"
@@ -67,7 +67,7 @@ func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) 
 	)
 	s.store.BtGroup.UpdateBranchTable(
 		bigtable.NewTable(branchTableName, branchTable, false /*isCustom=*/))
-	log.Printf("Updated branch table to use %s", branchTableName)
+	slog.Info("Updated branch table", "table", branchTableName)
 	return nil
 }
 
@@ -140,7 +140,7 @@ func (s *Server) SubscribeBranchCacheUpdate(ctx context.Context) error {
 		bigtable.BranchCachePubsubTopic,
 		func(ctx context.Context, msg *pubsub.Message) error {
 			branchTableName := string(msg.Data)
-			log.Printf("branch cache subscriber message received with table name: %s\n", branchTableName)
+			slog.Info("Branch cache subscriber message received", "table", branchTableName)
 			return s.updateBranchTable(ctx, branchTableName)
 		},
 	)
