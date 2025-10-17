@@ -26,6 +26,12 @@ import (
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
 
+func GetCompletionTimestampQuery() *spanner.Statement {
+	return &spanner.Statement{
+		SQL: statements.getCompletionTimestamp,
+	}
+}
+
 func GetNodePropsQuery(ids []string, out bool) *spanner.Statement {
 	switch out {
 	case true:

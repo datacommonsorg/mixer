@@ -18,10 +18,13 @@ package spanner
 import (
 	"context"
 	"fmt"
+	"log/slog"
+	"time"
 
 	"cloud.google.com/go/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"google.golang.org/api/iterator"
+	"google.golang.org/grpc/codes"
 )
 
 const (
@@ -212,16 +215,47 @@ func (sc *SpannerClient) queryAndCollect(
 	newStruct func() interface{},
 	withStruct func(interface{}),
 ) error {
-	iter := sc.client.Single().Query(ctx, stmt)
+	timestampBound, err := sc.getStalenessTimestampBound(ctx)
+	if err != nil {
+		return err
+	}
+
+	// Attempt stale read
+	iter := sc.client.Single().WithTimestampBound(*timestampBound).Query(ctx, stmt)
 	defer iter.Stop()
 
+	err = sc.processRows(iter, newStruct, withStruct)
+
+	// Check if the error is due to an expired timestamp (FAILED_PRECONDITION).
+	// Currently the timestamp is set manually so can naturally get stale.
+	// So for now, just log an error and fallback to a strong read.
+	// TODO: Once the Spanner instance is set to periodically update the timestamp, increase severity of check, as this indicates that ingestion failed.
+	if spanner.ErrCode(err) == codes.FailedPrecondition {
+		slog.Error("Stale read timestamp expired (before earliest_version_time). Falling back to StrongRead.",
+			"expiredTimestamp", timestampBound.String())
+
+		// Fallback to strong read
+		strongBound := spanner.StrongRead()
+		iter = sc.client.Single().WithTimestampBound(strongBound).Query(ctx, stmt)
+		defer iter.Stop()
+
+		err = sc.processRows(iter, newStruct, withStruct)
+	}
+	if err != nil {
+		return fmt.Errorf("failed to execute Spanner query after fallback attempt: %w", err)
+	}
+
+	return nil
+}
+
+func (sc *SpannerClient) processRows(iter *spanner.RowIterator, newStruct func() interface{}, withStruct func(interface{})) error {
 	for {
 		row, err := iter.Next()
 		if err == iterator.Done {
 			break
 		}
 		if err != nil {
-			return fmt.Errorf("failed to fetch row: %w", err)
+			return err
 		}
 
 		rowStruct := newStruct()
@@ -230,6 +264,69 @@ func (sc *SpannerClient) queryAndCollect(
 		}
 		withStruct(rowStruct)
 	}
-
 	return nil
+}
+
+// fetchCompletionTimestampFromSpanner returns the latest reported CompletionTimestamp in IngestionHistory.
+func (sc *SpannerClient) fetchCompletionTimestampFromSpanner(ctx context.Context) (*time.Time, error) {
+	iter := sc.client.Single().Query(ctx, *GetCompletionTimestampQuery())
+	defer iter.Stop()
+
+	row, err := iter.Next()
+	if err == iterator.Done {
+		return nil, fmt.Errorf("no rows found in IngestionHistory")
+	}
+	if err != nil {
+		return nil, fmt.Errorf("failed to fetch row: %w", err)
+	}
+
+	var timestamp time.Time
+	if err := row.Column(0, &timestamp); err != nil {
+		return nil, fmt.Errorf("failed to read CompletionTimestamp column: %w", err)
+	}
+
+	return &timestamp, nil
+}
+
+// getCompletionTimestamp returns the latest reported CompletionTimestamp.
+// It prioritizes returning a value from an in-memory cache to reduce Spanner traffic.
+func (sc *SpannerClient) getCompletionTimestamp(ctx context.Context) (*time.Time, error) {
+	// Check cache
+	sc.cacheMutex.RLock()
+	if sc.cachedTimestamp != nil && sc.clock().Before(sc.cacheExpiry) {
+		sc.cacheMutex.RUnlock()
+		return sc.cachedTimestamp, nil
+	}
+	sc.cacheMutex.RUnlock()
+
+	// Fetch from Spanner
+	sc.cacheMutex.Lock()
+	defer sc.cacheMutex.Unlock()
+
+	// Re-check the cache under the write lock (to prevent a race condition
+	// where another goroutine updated it between the RUnlock and this Lock)
+	if sc.cachedTimestamp != nil && sc.clock().Before(sc.cacheExpiry) {
+		return sc.cachedTimestamp, nil
+	}
+	timestamp, err := sc.timestampFetcher(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	// Update cache
+	sc.cachedTimestamp = timestamp
+	sc.cacheExpiry = sc.clock().Add(CACHE_DURATION)
+
+	return timestamp, nil
+}
+
+// GetStalenessTimestampBound returns the TimestampBound that should be used for stale reads in Spanner.
+func (sc *SpannerClient) getStalenessTimestampBound(ctx context.Context) (*spanner.TimestampBound, error) {
+	completionTimestamp, err := sc.getCompletionTimestamp(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	timestampBound := spanner.ReadTimestamp(*completionTimestamp)
+	return &timestampBound, nil
 }
