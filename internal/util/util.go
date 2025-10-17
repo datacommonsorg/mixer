@@ -23,7 +23,6 @@ import (
 	"fmt"
 	"hash/fnv"
 	"io"
-	"log"
 	"log/slog"
 	"math"
 	"math/rand"
@@ -31,7 +30,6 @@ import (
 	"net/url"
 	"os"
 	"regexp"
-	"runtime"
 	"sort"
 	"strings"
 	"time"
@@ -141,20 +139,6 @@ const (
 	SQLDriverSQLite                   // SQLDriverSQLite = 1
 	SQLDriverMySQL                    // SQLDriverMySQL = 2
 )
-
-// Define the DCLogTag enum
-type DCLogTag string
-
-// Enum values for different log types
-const (
-	DCLogRemoteMixerCall DCLogTag = "RemoteMixerCall"
-	// Add more log types as needed
-)
-
-// DCLog logs messages with the specified DCLogTag
-func DCLog(tag DCLogTag, msg string) {
-	log.Printf("[DC][%s] %s", tag, msg)
-}
 
 // Custom RPC headers
 const (
@@ -359,22 +343,6 @@ func RemoveKeyPrefix(key string) (string, error) {
 	return match[3], nil
 }
 
-// PrintMemUsage outputs the current, total and OS memory being used. As well as the number
-// of garage collection cycles completed.
-func PrintMemUsage() {
-	var m runtime.MemStats
-	runtime.ReadMemStats(&m)
-	// For info on each, see: https://golang.org/pkg/runtime/#MemStats
-	fmt.Printf("Alloc = %v MiB", bToMb(m.Alloc))
-	fmt.Printf("\tTotalAlloc = %v MiB", bToMb(m.TotalAlloc))
-	fmt.Printf("\tSys = %v MiB", bToMb(m.Sys))
-	fmt.Printf("\tNumGC = %v\n", m.NumGC)
-}
-
-func bToMb(b uint64) uint64 {
-	return b / 1024 / 1024
-}
-
 // MergeDedupe merges a list of string lists and remove duplicate elements.
 func MergeDedupe(strLists ...[]string) []string {
 	m := map[string]struct{}{}
@@ -499,7 +467,7 @@ func Sample(m proto.Message, strategy *SamplingStrategy) proto.Message {
 // TimeTrack is used to track function execution time.
 func TimeTrack(start time.Time, name string) {
 	elapsed := time.Since(start)
-	log.Printf("%s: %s", name, elapsed)
+	slog.Info("Tracked function execution time", "name", name, "duration", elapsed)
 }
 
 // KeysToSlice stores the keys of a map in a slice.
@@ -708,7 +676,7 @@ func FetchRemote(
 	if len(surfaceHeaderValue) > 0 && surfaceHeaderValue[0] != "" {
 		request.Header.Set("X-Surface", surfaceHeaderValue[0])
 	}
-	DCLog(DCLogRemoteMixerCall, fmt.Sprintf("url=%s", url))
+	slog.Info(fmt.Sprintf("[DC][RemoteMixerCall] url=%s", url), "url", url)
 	response, err := httpClient.Do(request)
 	if err != nil {
 		return err
@@ -796,11 +764,11 @@ func MergeMaps[K comparable, V any](m1 map[K]V, ms ...map[K]V) map[K]V {
 // Extracts metadata from the context of a request. These headers
 // are used in the usagelogger to determine which DC feature a call originates
 // from, and if it is making a call to to a remote mixer.
-func GetMetadata(ctx context.Context) (surface string, toRemote bool){
+func GetMetadata(ctx context.Context) (surface string, toRemote bool) {
 	md, ok := metadata.FromIncomingContext(ctx)
 	if !ok {
-    	slog.Warn("Error: There was a problem accessing the request's metadata", "err", ok)
-    } else {
+		slog.Warn("Error: There was a problem accessing the request's metadata", "err", ok)
+	} else {
 		// Setting the surface for the usage logger.
 		// This is the origin of the query -- website, MCP server, public API (= blank surface), etc.
 		if values := md.Get("x-surface"); len(values) > 0 {

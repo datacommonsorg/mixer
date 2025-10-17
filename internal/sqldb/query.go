@@ -18,7 +18,7 @@ package sqldb
 import (
 	"context"
 	"fmt"
-	"log"
+	"log/slog"
 	"strings"
 	"time"
 
@@ -661,7 +661,7 @@ func (sc *SQLClient) checkTables() error {
 		// This keeps it simple and agnostic of the underlying db.
 		if err != nil || len(columnNames) == 0 {
 			if err != nil {
-				log.Printf("Error checking table %s: %v", tableName, err)
+				slog.Error("Error checking table", "table", tableName, "error", err)
 			}
 
 			//nolint:staticcheck // TODO: Fix pre-existing issue and remove comment.
@@ -675,7 +675,7 @@ Guide: https://docs.datacommons.org/custom_dc/custom_data.html
 		}
 	}
 
-	log.Printf("SQL tables check succeeded.")
+	slog.Info("SQL tables check succeeded.")
 	return nil
 }
 
@@ -699,7 +699,7 @@ Guide: https://docs.datacommons.org/custom_dc/troubleshooting.html#schema-check-
 			TableObservations, missingObservationColumns)
 	}
 
-	log.Printf("SQL schema check succeeded.")
+	slog.Info("SQL schema check succeeded.")
 	return nil
 }
 

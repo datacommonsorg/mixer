@@ -19,6 +19,7 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"log/slog"
 	"net"
 	"net/http"
 	_ "net/http/pprof"
@@ -122,7 +123,7 @@ func main() {
 	// Sets up structured logger defaults.
 	logger.SetUpLogger()
 
-	log.Println("Enter mixer main() function")
+	slog.Debug("Enter mixer main() function")
 	// Parse flag
 	flag.Parse()
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
@@ -130,14 +131,17 @@ func main() {
 	var err error
 	flags, err := featureflags.NewFlags(*featureFlagsPath)
 	if err != nil {
-		log.Fatalf("Failed to create feature flags: %v", err)
+		slog.Error("Failed to create feature flags", "error", err)
+		os.Exit(1)
 	}
 
 	if *v3MirrorFraction < 0 || *v3MirrorFraction > 1.0 {
-		log.Fatalf("v3_mirror_fraction must be between 0 and 1.0, got %f", *v3MirrorFraction)
+		slog.Error("v3_mirror_fraction must be between 0 and 1.0", "value", *v3MirrorFraction)
+		os.Exit(1)
 	}
 	if *v3MirrorFraction > 0 && !*enableV3 {
-		log.Fatalf("v3_mirror_fraction > 0 requires --enable_v3=true")
+		slog.Error("v3_mirror_fraction > 0 requires --enable_v3=true")
+		os.Exit(1)
 	}
 
 	ctx := context.Background()
@@ -150,7 +154,7 @@ func main() {
 		}
 		err := profiler.Start(cfg)
 		if err != nil {
-			log.Printf("Failed to start profiler: %v", err)
+			slog.Warn("Failed to start profiler", "error", err)
 		}
 	}
 
@@ -159,19 +163,22 @@ func main() {
 		// Push to an OTLP collector.
 		err := metrics.ExportOtlpOverGrpc(ctx)
 		if err != nil {
-			log.Fatalf("Failed to start metrics server: %v", err)
+			slog.Error("Failed to start metrics server", "error", err)
+			os.Exit(1)
 		}
 	} else if *metricsExporter == "prometheus" {
 		// Serve an HTTP endpoint that can be scraped by Prometheus.
 		err := metrics.ExportPrometheusOverHttp()
 		if err != nil {
-			log.Fatalf("Failed to start metrics server: %v", err)
+			slog.Error("Failed to start metrics server", "error", err)
+			os.Exit(1)
 		}
 	} else if *metricsExporter == "console" {
 		// Print to the console.
 		metrics.ExportToConsole()
 	} else if *metricsExporter != "" {
-		log.Fatalf("Unknown metrics exporter: %s", *metricsExporter)
+		slog.Error("Unknown metrics exporter", "exporter", *metricsExporter)
+		os.Exit(1)
 	}
 	defer func() {
 		metrics.ShutdownWithTimeout()
@@ -194,7 +201,8 @@ func main() {
 	if *enableV3 && *useSpannerGraph {
 		spannerClient, err := spanner.NewSpannerClient(ctx, *spannerGraphInfo)
 		if err != nil {
-			log.Fatalf("Failed to create Spanner client: %v", err)
+			slog.Error("Failed to create Spanner client", "error", err)
+			os.Exit(1)
 		}
 		var ds datasource.DataSource = spanner.NewSpannerDataSource(spannerClient)
 		// TODO: Order sources by priority once other implementations are added.
@@ -207,7 +215,8 @@ func main() {
 		baseTables, err := bigtable.CreateBigtables(
 			ctx, *baseBigtableInfo, false /*isCustom=*/)
 		if err != nil {
-			log.Fatalf("Failed to create base Bigtables: %v", err)
+			slog.Error("Failed to create base Bigtables", "error", err)
+			os.Exit(1)
 		}
 		tables = append(tables, baseTables...)
 	}
@@ -215,7 +224,8 @@ func main() {
 		customTables, err := bigtable.CreateBigtables(
 			ctx, *customBigtableInfo, true /*isCustom=*/)
 		if err != nil {
-			log.Fatalf("Failed to create custom Bigtables: %v", err)
+			slog.Error("Failed to create custom Bigtables", "error", err)
+			os.Exit(1)
 		}
 		// Custom tables ranked highere than base tables.
 		tables = append(customTables, tables...)
@@ -229,7 +239,8 @@ func main() {
 		}
 		bqClient, err = bigquery.NewClient(ctx, *bqBillingProject)
 		if err != nil {
-			log.Fatalf("Failed to create Bigquery client: %v", err)
+			slog.Error("Failed to create Bigquery client", "error", err)
+			os.Exit(1)
 		}
 	}
 
@@ -238,7 +249,8 @@ func main() {
 	if *useBranchBigtable {
 		branchTableName, err = bigtable.ReadBranchTableName(ctx)
 		if err != nil {
-			log.Fatalf("Failed to read branch cache folder: %v", err)
+			slog.Error("Failed to read branch cache folder", "error", err)
+			os.Exit(1)
 		}
 		btClient, err := cbt.NewClient(
 			ctx,
@@ -246,7 +258,8 @@ func main() {
 			bigtable.BranchBigtableInstance,
 		)
 		if err != nil {
-			log.Fatalf("Failed to create branch bigtable client: %v", err)
+			slog.Error("Failed to create branch bigtable client", "error", err)
+			os.Exit(1)
 
 		}
 		branchTable := bigtable.NewBtTable(
@@ -254,7 +267,8 @@ func main() {
 			branchTableName,
 		)
 		if err != nil {
-			log.Fatalf("Failed to create BigTable client: %v", err)
+			slog.Error("Failed to create BigTable client", "error", err)
+			os.Exit(1)
 		}
 		tables = append(tables, bigtable.NewTable(branchTableName, branchTable, false /*isCustom=*/))
 	}
@@ -269,7 +283,8 @@ func main() {
 		*foldRemoteRootSvg,
 	)
 	if err != nil {
-		log.Fatalf("Failed to create metadata: %v", err)
+		slog.Error("Failed to create metadata", "error", err)
+		os.Exit(1)
 	}
 
 	// Remote Mixer.
@@ -279,7 +294,8 @@ func main() {
 	if *enableV3 && *remoteMixerDomain != "" {
 		remoteClient, err := remote.NewRemoteClient(metadata)
 		if err != nil {
-			log.Fatalf("Failed to create remote client: %v", err)
+			slog.Error("Failed to create remote client", "error", err)
+			os.Exit(1)
 		}
 		remoteDataSource = remote.NewRemoteDataSource(remoteClient)
 	}
@@ -289,7 +305,8 @@ func main() {
 	if *useSQLite {
 		client, err := sqldb.NewSQLiteClient(*sqlitePath)
 		if err != nil {
-			log.Fatalf("Cannot open sqlite database from: %s: %v", *sqlitePath, err)
+			slog.Error("Cannot open sqlite database", "path", *sqlitePath, "error", err)
+			os.Exit(1)
 		}
 		sqlClient.UseConnections(client)
 		//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
@@ -298,11 +315,12 @@ func main() {
 
 	if *useCloudSQL {
 		if sqldb.IsConnected(&sqlClient) {
-			log.Printf("SQL client has already been created, will not use CloudSQL")
+			slog.Warn("SQL client has already been created, will not use CloudSQL")
 		} else {
 			client, err := sqldb.NewCloudSQLClient(*cloudSQLInstance)
 			if err != nil {
-				log.Fatalf("Cannot open cloud sql database from %s: %v", *cloudSQLInstance, err)
+				slog.Error("Cannot open cloud sql database", "instance", *cloudSQLInstance, "error", err)
+				os.Exit(1)
 			}
 			sqlClient.UseConnections(client)
 			//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
@@ -314,7 +332,8 @@ func main() {
 	if *useSQLite || *useCloudSQL {
 		err = sqlClient.ValidateDatabase()
 		if err != nil {
-			log.Fatalf("SQL database validation failed: %v", err)
+			slog.Error("SQL database validation failed", "error", err)
+			os.Exit(1)
 		}
 	}
 
@@ -326,12 +345,14 @@ func main() {
 
 	// Store
 	if len(tables) == 0 && *remoteMixerDomain == "" && !sqldb.IsConnected(&sqlClient) {
-		log.Fatal("No bigtables or remote mixer domain or sql database are provided")
+		slog.Error("No bigtables or remote mixer domain or sql database are provided")
+		os.Exit(1)
 	}
 	store, err := store.NewStore(
 		bqClient, sqlClient, tables, branchTableName, metadata)
 	if err != nil {
-		log.Fatalf("Failed to create a new store: %s", err)
+		slog.Error("Failed to create a new store", "error", err)
+		os.Exit(1)
 	}
 
 	// Build the cache that includes stat var group info, stat var search index
@@ -344,7 +365,8 @@ func main() {
 	}
 	c, err := cache.NewCache(ctx, store, cacheOptions, metadata)
 	if err != nil {
-		log.Fatalf("Failed to create cache: %v", err)
+		slog.Error("Failed to create cache", "error", err)
+		os.Exit(1)
 	}
 
 	// Maps client
@@ -352,7 +374,8 @@ func main() {
 	if *useMapsApi {
 		mapsClient, err = util.MapsClient(ctx, metadata.HostProject)
 		if err != nil {
-			log.Fatalf("Failed to create Maps client: %v", err)
+			slog.Error("Failed to create Maps client", "error", err)
+			os.Exit(1)
 		}
 	}
 
@@ -370,14 +393,16 @@ func main() {
 		// Mixer in-memory cache.
 		dataSourceCache, err := cache.NewDataSourceCache(ctx, dataSources, cacheOptions)
 		if err != nil {
-			log.Fatalf("Failed to create data source cache: %v", err)
+			slog.Error("Failed to create data source cache", "error", err)
+			os.Exit(1)
 		}
 
 		// Cache Processor
 		if *useRedis && *redisInfo != "" {
 			redisClient, err := redis.NewCacheClient(*redisInfo)
 			if err != nil {
-				log.Fatalf("Failed to create Redis client: %v", err)
+				slog.Error("Failed to create Redis client", "error", err)
+				os.Exit(1)
 			}
 			//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 			defer redisClient.Close()
@@ -403,7 +428,8 @@ func main() {
 	if *useBranchBigtable {
 		err := mixerServer.SubscribeBranchCacheUpdate(ctx)
 		if err != nil {
-			log.Fatalf("Failed to subscribe to branch cache update: %v", err)
+			slog.Error("Failed to subscribe to branch cache update", "error", err)
+			os.Exit(1)
 		}
 	}
 
@@ -417,7 +443,8 @@ func main() {
 		// Code from https://pkg.go.dev/runtime/pprof README
 		f, err := os.Create(*startupMemoryProfile)
 		if err != nil {
-			log.Fatalf("could not create memory profile: %s", err)
+			slog.Error("could not create memory profile", "error", err)
+			os.Exit(1)
 		}
 		//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
 		defer f.Close()
@@ -425,7 +452,8 @@ func main() {
 		// still in use
 		runtime.GC()
 		if err := pprof.WriteHeapProfile(f); err != nil {
-			log.Fatalf("could not write memory profile: %s", err)
+			slog.Error("could not write memory profile", "error", err)
+			os.Exit(1)
 		}
 		return
 	}
@@ -435,18 +463,20 @@ func main() {
 		go func() {
 			// Code from https://pkg.go.dev/net/http/pprof README
 			httpProfileFrom := fmt.Sprintf("localhost:%d", *httpProfilePort)
-			log.Printf("Serving profile over HTTP on %v", httpProfileFrom)
-			log.Printf("%s\n", http.ListenAndServe(httpProfileFrom, nil))
+			slog.Info("Serving profile over HTTP", "address", httpProfileFrom)
+			slog.Error("Error serving HTTP profile", "error", http.ListenAndServe(httpProfileFrom, nil))
 		}()
 	}
 
 	// Listen on network
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
 	if err != nil {
-		log.Fatalf("Failed to listen on network: %v", err)
+		slog.Error("Failed to listen on network", "error", err)
+		os.Exit(1)
 	}
-	log.Println("Mixer ready to serve!!")
+	slog.Info("Mixer ready to serve!!")
 	if err := srv.Serve(lis); err != nil {
-		log.Fatalf("Failed to serve: %v", err)
+		slog.Error("Failed to serve", "error", err)
+		os.Exit(1)
 	}
 }

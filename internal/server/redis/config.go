@@ -17,7 +17,7 @@ package redis
 import (
 	"fmt"
 	"io"
-	"log"
+	"log/slog"
 	"net/http"
 	"strings"
 
@@ -94,7 +94,7 @@ func getRegion() (string, error) {
 func getRegionWithLogging() string {
 	region, err := getRegion()
 	if err != nil {
-		log.Printf("Failed to get region (the first redis instance in the config will be used): %v", err)
+		slog.Warn("Failed to get region (the first redis instance in the config will be used)", "error", err)
 		return ""
 	}
 	return region

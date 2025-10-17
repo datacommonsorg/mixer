@@ -16,7 +16,7 @@ package featureflags
 
 import (
 	"fmt"
-	"log"
+	"log/slog"
 	"os"
 
 	"gopkg.in/yaml.v3"
@@ -73,7 +73,7 @@ func NewFlags(path string) (*Flags, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		if os.IsNotExist(err) {
-			log.Printf("Feature flags file not found at %s. Using default values.", path)
+			slog.Warn("Feature flags file not found. Using default values.", "path", path)
 			return cfg.Flags, nil
 		}
 		return nil, err

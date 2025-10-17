@@ -53,22 +53,20 @@ protoc \
   proto/*.proto proto/**/*.proto
 ```
 
-## Start Mixer as a gRPC server backed by Cloud BigTable (BigQuery)
+## Start Mixer as a gRPC server
 
-Run the following code to start mixer gRPC server (without branch cache)
+To run the Mixer with a default configuration, use the `run_server.sh` script:
 
 ```bash
-# In repo root directory
-go run cmd/main.go \
-    --host_project=datcom-mixer-dev-316822 \
-    --bq_dataset=$(head -1 deploy/storage/bigquery.version) \
-    --base_bigtable_info="$(cat deploy/storage/base_bigtable_info.yaml)" \
-    --custom_bigtable_info="$(cat test/custom_bigtable_info.yaml)" \
-    --schema_path=$PWD/deploy/mapping/ \
-    --use_base_bigtable=true \
-    --use_custom_bigtable=true \
-    --use_branch_bigtable=false
+./run_server.sh
+```
 
+This will start the Mixer with a cleaner, less-dense log output suitable for
+local development. To use the raw JSON logs instead, pass the `--json-log` flag.
+
+Once the Mixer is ready to serve, you can send some sample gRPC requests:
+
+```bash
 go run examples/api/main.go
 ```
 
@@ -84,7 +82,7 @@ the root of this repo.
 ```bash
 # In repo root directory
 export MIXER_API_KEY=<YOUR API KEY>
-go run cmd/main.go \
+./run_server.sh \
     --use_bigquery=false \
     --use_base_bigtable=false \
     --use_branch_bigtable=false \
@@ -105,7 +103,7 @@ Mixer can load data stored from Google CloudSQL. This requires setting flag:
 export MIXER_API_KEY=<YOUR API KEY>
 export DB_USER=<user>
 export DB_PASS=<password>
-go run cmd/main.go \
+./run_server.sh \
     --use_bigquery=false \
     --use_base_bigtable=false \
     --use_branch_bigtable=false \
@@ -157,12 +155,13 @@ brew install redis
 redis-server
 ```
 
-2.  Start mixer with `go run cmd/main.go` as described above and add the following flags:
+2.  Start mixer with `./run_server.sh` as described above and add the following flags:
 
 ```bash
---enable_v3=true \
---use_redis=true \
---redis_info="$(cat <<EOF
+./run_server.sh \
+  --enable_v3=true \
+  --use_redis=true \
+  --redis_info="$(cat <<EOF
 instances:
   - host: "127.0.0.1"
     port: "6379"
@@ -174,18 +173,16 @@ EOF
 
 Use the `--feature_flags_path` argument to specify a feature flag
 environment YAML file to read values from. If not specified, default flag values
-are used. This argument should be added to your `go run cmd/main.go ...` command.
+are used.
 
 ```bash
 # Example for local testing:
-go run cmd/main.go \
-    ... \
-    --feature_flags_path=$PWD/deploy/featureflags/local.yaml
+./run_server.sh --feature_flags_path=$PWD/deploy/featureflags/local.yaml
 ```
 
 ```bash
 # Use the same values that are used in dev
---feature_flags_path=$PWD/deploy/featureflags/dev.yaml
+./run_server.sh --feature_flags_path=$PWD/deploy/featureflags/dev.yaml
 ```
 
 ## Update Go package dependencies

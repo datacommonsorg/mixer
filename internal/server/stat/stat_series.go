@@ -18,7 +18,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"log"
+	"log/slog"
 	"sort"
 	"time"
 
@@ -33,7 +33,7 @@ import (
 func logIfDurationTooLong(t time.Time, thresholdSec float32, msg string) {
 	duration := time.Since(t).Seconds()
 	if duration > float64(thresholdSec) {
-		log.Printf("%f seconds:\n%s", duration, msg)
+		slog.Warn("GetStats took too long", "duration", duration, "message", msg, "thresholdSec", thresholdSec)
 	}
 }
 

@@ -247,7 +247,7 @@ func (s *Server) V2Observation(
 	ctx context.Context, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
 	v2StartTime := time.Now()
-	
+
 	surface, toRemote := util.GetMetadata(ctx)
 
 	initialResp, queryType, err := v2observation.ObservationInternal(

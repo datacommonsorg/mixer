@@ -18,7 +18,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"log"
+	"log/slog"
 	"net"
 	"os"
 	"strings"
@@ -111,12 +111,12 @@ func initMetrics() {
 		metric.WithUnit("ms"),
 	)
 	if err != nil {
-		log.Printf("Failed to create bigtable read duration histogram: %v", err)
+		slog.Error("Failed to create bigtable read duration histogram", "error", err)
 	}
 
 	cachedataReadCounter, err = meter.Int64Counter("datacommons.mixer.cachedata.reads")
 	if err != nil {
-		log.Printf("Failed to create cachedata read counter: %v", err)
+		slog.Error("Failed to create cachedata read counter", "error", err)
 	}
 
 	v3LatencyDiffHistogram, err = meter.Int64Histogram(
@@ -127,7 +127,7 @@ func initMetrics() {
 		metric.WithUnit("ms"),
 	)
 	if err != nil {
-		log.Printf("Failed to create v3 latency diff histogram: %v", err)
+		slog.Error("Failed to create v3 latency diff histogram", "error", err)
 	}
 
 	v3ResponseMismatchCounter, err = meter.Int64Counter(
@@ -135,7 +135,7 @@ func initMetrics() {
 		metric.WithDescription("Count of V3 mirrored response mismatches"),
 	)
 	if err != nil {
-		log.Printf("Failed to create v3 mismatch counter: %v", err)
+		slog.Error("Failed to create v3 mismatch counter", "error", err)
 	}
 
 	v3MirrorErrorCounter, err = meter.Int64Counter(
@@ -143,7 +143,7 @@ func initMetrics() {
 		metric.WithDescription("Count of errors encountered during V3 mirroring"),
 	)
 	if err != nil {
-		log.Printf("Failed to create v3 mirror error counter: %v", err)
+		slog.Error("Failed to create v3 mirror error counter", "error", err)
 	}
 }
 
@@ -224,7 +224,7 @@ func ExportPrometheusOverHttp() error {
 		mux.Handle("/metrics", promhttp.Handler())
 		err := http.Serve(lis, mux)
 		if err != nil {
-			log.Printf("Failed to serve prometheus: %v", err)
+			slog.Error("Failed to serve prometheus", "error", err)
 		}
 	}()
 	return nil
@@ -272,7 +272,7 @@ func ShutdownWithTimeout() {
 	mp := otel.GetMeterProvider().(*sdk.MeterProvider)
 	err := mp.Shutdown(ctx)
 	if err != nil {
-		log.Printf("Failed to shutdown MeterProvider: %v", err)
+		slog.Error("Failed to shutdown MeterProvider", "error", err)
 	}
 }
 

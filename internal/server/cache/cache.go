@@ -17,7 +17,7 @@ package cache
 import (
 	"context"
 	"encoding/json"
-	"log"
+	"log/slog"
 	"os"
 
 	"github.com/datacommonsorg/mixer/internal/metrics"
@@ -116,11 +116,11 @@ func NewCache(
 		// Read blocklisted svg from file.
 		file, err := os.ReadFile(blocklistSvgJsonPath)
 		if err != nil {
-			log.Printf("Could not read blocklist svg file. Use empty blocklist svg list.")
+			slog.Warn("Could not read blocklist svg file. Use empty blocklist svg list.")
 			blocklistSvg = []string{}
 		} else {
 			if err := json.Unmarshal(file, &blocklistSvg); err != nil {
-				log.Printf("Could not unmarshal blocklist svg file. Use empty blocklist svg list.")
+				slog.Warn("Could not unmarshal blocklist svg file. Use empty blocklist svg list.")
 				blocklistSvg = []string{}
 			}
 		}
