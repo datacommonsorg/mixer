@@ -25,7 +25,7 @@ type FacetLog struct {
 	// Import name, measurement method, etc.
 	Facet     *pb.Facet `json:"facet"`
 	// The number of series that used this facet for the current request.
-	NumSeries int      `json:"num_series"`
+	NumSeries int      `json:"count"`
 	// The earliest date across all series using this facet.
 	Earliest  string   `json:"earliest"`
 	// The latest date across all series using this facet.
