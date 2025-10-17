@@ -215,7 +215,7 @@ func (sc *SpannerClient) queryAndCollect(
 	newStruct func() interface{},
 	withStruct func(interface{}),
 ) error {
-	timestampBound, err := sc.getStalenessTimestampBound(ctx)
+	timestampBound, err := sc.GetStalenessTimestampBound(ctx)
 	if err != nil {
 		return err
 	}
@@ -321,7 +321,7 @@ func (sc *SpannerClient) getCompletionTimestamp(ctx context.Context) (*time.Time
 }
 
 // GetStalenessTimestampBound returns the TimestampBound that should be used for stale reads in Spanner.
-func (sc *SpannerClient) getStalenessTimestampBound(ctx context.Context) (*spanner.TimestampBound, error) {
+func (sc *SpannerClient) GetStalenessTimestampBound(ctx context.Context) (*spanner.TimestampBound, error) {
 	completionTimestamp, err := sc.getCompletionTimestamp(ctx)
 	if err != nil {
 		return nil, err

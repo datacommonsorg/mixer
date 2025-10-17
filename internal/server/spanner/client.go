@@ -66,8 +66,8 @@ func NewSpannerClient(ctx context.Context, spannerConfigYaml string) (*SpannerCl
 	}
 	sc := newSpannerClient(client)
 
-	// Cache initial completionTimestamp
-	_, err = sc.getStalenessTimestampBound(ctx)
+	// Cache initial CompletionTimestamp
+	_, err = sc.GetStalenessTimestampBound(ctx)
 	if err != nil {
 		return nil, fmt.Errorf("failed to warm up stable timestamp cache: %w", err)
 	}

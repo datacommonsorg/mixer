@@ -114,11 +114,7 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, offset int32) *spanner.Sta
 	switch arc.Decorator {
 	case CHAIN:
 		prefix = statements.chainedEdgePrefix
-		if len(arc.Filter) > 0 {
-			returnEdges = statements.returnFilterChainedEdges
-		} else {
-			returnEdges = statements.returnChainedEdges
-		}
+		returnEdges = statements.returnChainedEdges
 	default:
 		prefix = statements.edgePrefix
 		if len(arc.Filter) > 0 {

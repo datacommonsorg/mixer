@@ -33,13 +33,16 @@ func TestCacheHit(t *testing.T) {
 		return &stableTime, nil
 	}
 	// Initialization will populate cache
-	sc.getCompletionTimestamp(context.Background())
+	_, err := sc.getCompletionTimestamp(context.Background())
+	if err != nil {
+		t.Fatalf("Expected no error, got: %v", err)
+	}
 	if fetchCount != 1 {
 		t.Fatalf("Setup failed, expected 1 fetch, got %d", fetchCount)
 	}
 
 	// This call is immediately after initialization, within the 5-second duration.
-	_, err := sc.getCompletionTimestamp(context.Background())
+	_, err = sc.getCompletionTimestamp(context.Background())
 	if err != nil {
 		t.Fatalf("Expected no error, got: %v", err)
 	}
@@ -62,7 +65,10 @@ func TestCacheExpiration(t *testing.T) {
 		return &stableTime, nil
 	}
 	// Initialization will populate cache
-	sc.getCompletionTimestamp(context.Background())
+	_, err := sc.getCompletionTimestamp(context.Background())
+	if err != nil {
+		t.Fatalf("Expected no error, got: %v", err)
+	}
 	if fetchCount != 1 {
 		t.Fatalf("Setup failed, expected 1 fetch, got %d", fetchCount)
 	}
@@ -88,24 +94,27 @@ func TestGetStalenessTimestampBound(t *testing.T) {
 	mockTime := time.Date(2025, time.January, 1, 10, 0, 0, 0, time.UTC)
 	stableTime := mockTime.Add(-5 * time.Minute) // Stable time is 5 minutes ago
 
-	sc := &SpannerClient{}
+	sc := &SpannerClient{
+		cacheExpiry: mockTime.Add(CACHE_DURATION),
+		clock:       func() time.Time { return mockTime },
+	}
 	sc.timestampFetcher = func(ctx context.Context) (*time.Time, error) {
 		return &stableTime, nil
 	}
 
-	timestamp, err := sc.getStalenessTimestampBound(context.Background())
+	timestamp, err := sc.GetStalenessTimestampBound(context.Background())
 
 	if err != nil {
 		t.Fatalf("Expected no error, got: %v", err)
 	}
 	if timestamp == nil {
 		t.Fatal("Expected a non-nil TimestampBound")
-	}
-
-	// Approximate check relying on String() representation of ReadTimestamp.
-	expectedString := fmt.Sprintf("ReadTimestamp(%s)", stableTime.Format(time.RFC3339Nano))
-	actualString := (*timestamp).String()
-	if !strings.Contains(actualString, stableTime.Format("2006-01-02")) {
-		t.Errorf("Expected ReadTimestamp containing %v, got %s", expectedString, actualString)
+	} else {
+		// Approximate check relying on String() representation of ReadTimestamp.
+		expectedString := fmt.Sprintf("ReadTimestamp(%s)", stableTime.Format(time.RFC3339Nano))
+		actualString := (*timestamp).String()
+		if !strings.Contains(actualString, stableTime.Format("2006-01-02")) {
+			t.Errorf("Expected ReadTimestamp containing %v, got %s", expectedString, actualString)
+		}
 	}
 }
