@@ -70,3 +70,19 @@ http_memprof_out
 
 # custom dc sqlite database
 sqlite
+
+# C++ client 
+
+# CMake
+cpp-client/build/
+cpp-client/CMakeCache.txt
+cpp-client/CMakeFiles/
+cpp-client/cmake_install.cmake
+
+# Compiled files
+*.o
+*.so
+*.a
+*.dll
+*.exe
+*.out
