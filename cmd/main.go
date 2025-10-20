@@ -98,9 +98,8 @@ var (
 	// Spanner Graph
 	spannerGraphInfo = flag.String("spanner_graph_info", "", "Yaml formatted text containing information for Spanner Graph.")
 	// Redis.
-	useRedis  = flag.Bool("use_redis", false, "Use Redis cache.")
-	redisInfo = flag.String("redis_info", "", "Yaml formatted text containing information for redis instances.")
-	// V3 API.
+	useRedis        = flag.Bool("use_redis", false, "Use Redis cache.")
+	redisInfo       = flag.String("redis_info", "", "Yaml formatted text containing information for redis instances.")
 	metricsExporter = flag.String(
 		"metrics_exporter",
 		"",
