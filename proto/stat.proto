@@ -107,6 +107,9 @@ message Series {
 // Represents observation time series data.
 message ObsTimeSeries {
   string place_name = 3;
+  // Only used for time series.
+  // All valid place types for the given place_dcid
+  repeated string place_types = 7;
   string place_dcid = 5; // Only set if the key uses mid.
   repeated SourceSeries source_series = 6;
 }
@@ -116,6 +119,16 @@ message ObsTimeSeries {
 // observation date, pop type, and an optional list of pop PVs.
 message ObsCollection {
   repeated SourceSeries source_cohorts = 5;
+
+  // All place types for a given place, used in place_dcid_to_types.
+  message PlaceTypes {
+    repeated string types = 1;
+  }
+
+  // A map of place DCID to all of the place's types
+  // All places in the val/str_val have types here
+  map<string, PlaceTypes> place_dcid_to_types = 17;
+
   reserved 1, 2, 3, 4;
 }
 
