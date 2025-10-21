@@ -602,8 +602,12 @@ func candidatesToResolveResponse(nodeToCandidates map[string][]string) *pbv2.Res
 				Dcid: candidate,
 			})
 		}
+		sort.Strings(candidates)
 		response.Entities = append(response.Entities, entity)
 	}
+	sort.Slice(response.Entities, func(i, j int) bool {
+		return response.Entities[i].GetNode() > response.Entities[j].GetNode()
+	})
 	return response
 }
 
