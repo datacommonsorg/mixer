@@ -3,8 +3,14 @@
 			m.subject_id IN ('dc/g/Farm_FarmInventoryStatus'))<-[e:Edge
 		WHERE
 			e.predicate = 'specializationOf']-{1,10}(n:Node)
-		RETURN
+		RETURN DISTINCT
 			m.subject_id,
+			n.subject_id AS value
+		NEXT MATCH (n)
+		WHERE
+		  n.subject_id = value
+		RETURN
+		  subject_id,
 			'specializationOf+' AS predicate,
 			'' AS provenance,
 			n.value,

@@ -18,6 +18,7 @@ import (
 	"context"
 	"path"
 	"runtime"
+	"sort"
 	"testing"
 
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
@@ -101,7 +102,12 @@ func TestGetObservations(t *testing.T) {
 		goldenFile := c.golden + ".json"
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return client.GetObservations(ctx, c.variables, c.entities)
+			actual, err := client.GetObservations(ctx, c.variables, c.entities)
+			if err != nil {
+				return nil, err
+			}
+			sortObservations(actual)
+			return actual, nil
 		})
 	}
 }
@@ -118,7 +124,12 @@ func TestGetObservationsContainedInPlace(t *testing.T) {
 		goldenFile := c.golden + ".json"
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return client.GetObservationsContainedInPlace(ctx, c.variables, c.containedInPlace)
+			actual, err := client.GetObservationsContainedInPlace(ctx, c.variables, c.containedInPlace)
+			if err != nil {
+				return nil, err
+			}
+			sortObservations(actual)
+			return actual, nil
 		})
 	}
 }
@@ -221,4 +232,22 @@ func simplifyNodes(results map[string][]*spanner.Edge) map[string][]*spanner.Edg
 		filtered[subject_id] = edges
 	}
 	return filtered
+}
+
+// sortObservations sorts Observations by variable, entity, facet (primary key) to ensure deterministic order in tests.
+// The final Observation responses will be sorted later based on facet rank.
+func sortObservations(results []*spanner.Observation) {
+	sort.Slice(results, func(i, j int) bool {
+		a, b := results[i], results[j]
+
+		if a.VariableMeasured != b.VariableMeasured {
+			return a.VariableMeasured < b.VariableMeasured
+		}
+
+		if a.ObservationAbout != b.ObservationAbout {
+			return a.ObservationAbout < b.ObservationAbout
+		}
+
+		return a.FacetId < b.FacetId
+	})
 }
