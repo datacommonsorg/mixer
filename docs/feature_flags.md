@@ -36,7 +36,7 @@ Feature flags can have their live values updated quickly (<15 min) on a per-envi
   - A flag value may also be incompatible if it fails manually-added validation checks in the featureflags package.
   - It is not a problem if a flag is defined in the binary but not in the config, or vice versa (in the former case, the flag will fall back to default value).
 - **Time/date prod change restrictions**: A GitHub check `enforce_feature_flag_merge_restrictions` disallows merging prod flag changes on weekends, on Fridays, or outside of California business hours.
-  - This check can be bypassed by running the `deploy_flags.sh` script manually: deploy/featureflags/deploy_flags.sh `deploy/featureflags prod`
+  - This check can be bypassed by running the `deploy_flags.sh` script manually: `deploy/featureflags/deploy_flags.sh deploy/featureflags prod`
 
 ## [How to check current live flag values](#check)
 
