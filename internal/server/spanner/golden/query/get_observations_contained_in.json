@@ -802,142 +802,6 @@
     "ProvenanceURL": "https://wonder.cdc.gov/ucd-icd10.html"
   },
   {
-    "VariableMeasured": "Median_Age_Person",
-    "ObservationAbout": "geoId/10001",
-    "FacetId": "1543127381",
-    "Observations": [
-      {
-        "Date": "2011",
-        "Value": "36.4"
-      },
-      {
-        "Date": "2012",
-        "Value": "36.6"
-      },
-      {
-        "Date": "2013",
-        "Value": "36.7"
-      },
-      {
-        "Date": "2014",
-        "Value": "36.8"
-      },
-      {
-        "Date": "2015",
-        "Value": "37.0"
-      },
-      {
-        "Date": "2016",
-        "Value": "37.2"
-      },
-      {
-        "Date": "2017",
-        "Value": "37.3"
-      },
-      {
-        "Date": "2018",
-        "Value": "37.6"
-      },
-      {
-        "Date": "2019",
-        "Value": "37.7"
-      },
-      {
-        "Date": "2020",
-        "Value": "38.1"
-      },
-      {
-        "Date": "2021",
-        "Value": "38.2"
-      },
-      {
-        "Date": "2022",
-        "Value": "38.5"
-      },
-      {
-        "Date": "2023",
-        "Value": "38.5"
-      }
-    ],
-    "ImportName": "CensusACS5YearSurvey",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurvey",
-    "Unit": "Year",
-    "ScalingFactor": "",
-    "IsDcAggregate": false,
-    "ProvenanceURL": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html"
-  },
-  {
-    "VariableMeasured": "Median_Age_Person",
-    "ObservationAbout": "geoId/10001",
-    "FacetId": "1755512982",
-    "Observations": [
-      {
-        "Date": "2010",
-        "Value": "36.1"
-      },
-      {
-        "Date": "2011",
-        "Value": "36.4"
-      },
-      {
-        "Date": "2012",
-        "Value": "36.6"
-      },
-      {
-        "Date": "2013",
-        "Value": "36.7"
-      },
-      {
-        "Date": "2014",
-        "Value": "36.8"
-      },
-      {
-        "Date": "2015",
-        "Value": "37.0"
-      },
-      {
-        "Date": "2016",
-        "Value": "37.2"
-      },
-      {
-        "Date": "2017",
-        "Value": "37.3"
-      },
-      {
-        "Date": "2018",
-        "Value": "37.6"
-      },
-      {
-        "Date": "2019",
-        "Value": "37.7"
-      },
-      {
-        "Date": "2020",
-        "Value": "38.1"
-      },
-      {
-        "Date": "2021",
-        "Value": "38.2"
-      },
-      {
-        "Date": "2022",
-        "Value": "38.5"
-      },
-      {
-        "Date": "2023",
-        "Value": "38.5"
-      }
-    ],
-    "ImportName": "CensusACS5YearSurvey_SubjectTables_S0101",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "Years",
-    "ScalingFactor": "",
-    "IsDcAggregate": false,
-    "ProvenanceURL": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101"
-  },
-  {
     "VariableMeasured": "Count_Person",
     "ObservationAbout": "geoId/10003",
     "FacetId": "1006847329",
@@ -1744,142 +1608,6 @@
     "ProvenanceURL": "https://wonder.cdc.gov/ucd-icd10.html"
   },
   {
-    "VariableMeasured": "Median_Age_Person",
-    "ObservationAbout": "geoId/10003",
-    "FacetId": "1543127381",
-    "Observations": [
-      {
-        "Date": "2011",
-        "Value": "37.0"
-      },
-      {
-        "Date": "2012",
-        "Value": "37.0"
-      },
-      {
-        "Date": "2013",
-        "Value": "37.2"
-      },
-      {
-        "Date": "2014",
-        "Value": "37.3"
-      },
-      {
-        "Date": "2015",
-        "Value": "37.5"
-      },
-      {
-        "Date": "2016",
-        "Value": "37.6"
-      },
-      {
-        "Date": "2017",
-        "Value": "37.8"
-      },
-      {
-        "Date": "2018",
-        "Value": "38.1"
-      },
-      {
-        "Date": "2019",
-        "Value": "38.4"
-      },
-      {
-        "Date": "2020",
-        "Value": "38.7"
-      },
-      {
-        "Date": "2021",
-        "Value": "38.8"
-      },
-      {
-        "Date": "2022",
-        "Value": "39.0"
-      },
-      {
-        "Date": "2023",
-        "Value": "39.2"
-      }
-    ],
-    "ImportName": "CensusACS5YearSurvey",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurvey",
-    "Unit": "Year",
-    "ScalingFactor": "",
-    "IsDcAggregate": false,
-    "ProvenanceURL": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html"
-  },
-  {
-    "VariableMeasured": "Median_Age_Person",
-    "ObservationAbout": "geoId/10003",
-    "FacetId": "1755512982",
-    "Observations": [
-      {
-        "Date": "2010",
-        "Value": "36.8"
-      },
-      {
-        "Date": "2011",
-        "Value": "37.0"
-      },
-      {
-        "Date": "2012",
-        "Value": "37.0"
-      },
-      {
-        "Date": "2013",
-        "Value": "37.2"
-      },
-      {
-        "Date": "2014",
-        "Value": "37.3"
-      },
-      {
-        "Date": "2015",
-        "Value": "37.5"
-      },
-      {
-        "Date": "2016",
-        "Value": "37.6"
-      },
-      {
-        "Date": "2017",
-        "Value": "37.8"
-      },
-      {
-        "Date": "2018",
-        "Value": "38.1"
-      },
-      {
-        "Date": "2019",
-        "Value": "38.4"
-      },
-      {
-        "Date": "2020",
-        "Value": "38.7"
-      },
-      {
-        "Date": "2021",
-        "Value": "38.8"
-      },
-      {
-        "Date": "2022",
-        "Value": "39.0"
-      },
-      {
-        "Date": "2023",
-        "Value": "39.2"
-      }
-    ],
-    "ImportName": "CensusACS5YearSurvey_SubjectTables_S0101",
-    "ObservationPeriod": "",
-    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
-    "Unit": "Years",
-    "ScalingFactor": "",
-    "IsDcAggregate": false,
-    "ProvenanceURL": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101"
-  },
-  {
     "VariableMeasured": "Count_Person",
     "ObservationAbout": "geoId/10005",
     "FacetId": "1006847329",
@@ -2680,6 +2408,278 @@
     "ScalingFactor": "",
     "IsDcAggregate": false,
     "ProvenanceURL": "https://wonder.cdc.gov/ucd-icd10.html"
+  },
+  {
+    "VariableMeasured": "Median_Age_Person",
+    "ObservationAbout": "geoId/10001",
+    "FacetId": "1543127381",
+    "Observations": [
+      {
+        "Date": "2011",
+        "Value": "36.4"
+      },
+      {
+        "Date": "2012",
+        "Value": "36.6"
+      },
+      {
+        "Date": "2013",
+        "Value": "36.7"
+      },
+      {
+        "Date": "2014",
+        "Value": "36.8"
+      },
+      {
+        "Date": "2015",
+        "Value": "37.0"
+      },
+      {
+        "Date": "2016",
+        "Value": "37.2"
+      },
+      {
+        "Date": "2017",
+        "Value": "37.3"
+      },
+      {
+        "Date": "2018",
+        "Value": "37.6"
+      },
+      {
+        "Date": "2019",
+        "Value": "37.7"
+      },
+      {
+        "Date": "2020",
+        "Value": "38.1"
+      },
+      {
+        "Date": "2021",
+        "Value": "38.2"
+      },
+      {
+        "Date": "2022",
+        "Value": "38.5"
+      },
+      {
+        "Date": "2023",
+        "Value": "38.5"
+      }
+    ],
+    "ImportName": "CensusACS5YearSurvey",
+    "ObservationPeriod": "",
+    "MeasurementMethod": "CensusACS5yrSurvey",
+    "Unit": "Year",
+    "ScalingFactor": "",
+    "IsDcAggregate": false,
+    "ProvenanceURL": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html"
+  },
+  {
+    "VariableMeasured": "Median_Age_Person",
+    "ObservationAbout": "geoId/10001",
+    "FacetId": "1755512982",
+    "Observations": [
+      {
+        "Date": "2010",
+        "Value": "36.1"
+      },
+      {
+        "Date": "2011",
+        "Value": "36.4"
+      },
+      {
+        "Date": "2012",
+        "Value": "36.6"
+      },
+      {
+        "Date": "2013",
+        "Value": "36.7"
+      },
+      {
+        "Date": "2014",
+        "Value": "36.8"
+      },
+      {
+        "Date": "2015",
+        "Value": "37.0"
+      },
+      {
+        "Date": "2016",
+        "Value": "37.2"
+      },
+      {
+        "Date": "2017",
+        "Value": "37.3"
+      },
+      {
+        "Date": "2018",
+        "Value": "37.6"
+      },
+      {
+        "Date": "2019",
+        "Value": "37.7"
+      },
+      {
+        "Date": "2020",
+        "Value": "38.1"
+      },
+      {
+        "Date": "2021",
+        "Value": "38.2"
+      },
+      {
+        "Date": "2022",
+        "Value": "38.5"
+      },
+      {
+        "Date": "2023",
+        "Value": "38.5"
+      }
+    ],
+    "ImportName": "CensusACS5YearSurvey_SubjectTables_S0101",
+    "ObservationPeriod": "",
+    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
+    "Unit": "Years",
+    "ScalingFactor": "",
+    "IsDcAggregate": false,
+    "ProvenanceURL": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101"
+  },
+  {
+    "VariableMeasured": "Median_Age_Person",
+    "ObservationAbout": "geoId/10003",
+    "FacetId": "1543127381",
+    "Observations": [
+      {
+        "Date": "2011",
+        "Value": "37.0"
+      },
+      {
+        "Date": "2012",
+        "Value": "37.0"
+      },
+      {
+        "Date": "2013",
+        "Value": "37.2"
+      },
+      {
+        "Date": "2014",
+        "Value": "37.3"
+      },
+      {
+        "Date": "2015",
+        "Value": "37.5"
+      },
+      {
+        "Date": "2016",
+        "Value": "37.6"
+      },
+      {
+        "Date": "2017",
+        "Value": "37.8"
+      },
+      {
+        "Date": "2018",
+        "Value": "38.1"
+      },
+      {
+        "Date": "2019",
+        "Value": "38.4"
+      },
+      {
+        "Date": "2020",
+        "Value": "38.7"
+      },
+      {
+        "Date": "2021",
+        "Value": "38.8"
+      },
+      {
+        "Date": "2022",
+        "Value": "39.0"
+      },
+      {
+        "Date": "2023",
+        "Value": "39.2"
+      }
+    ],
+    "ImportName": "CensusACS5YearSurvey",
+    "ObservationPeriod": "",
+    "MeasurementMethod": "CensusACS5yrSurvey",
+    "Unit": "Year",
+    "ScalingFactor": "",
+    "IsDcAggregate": false,
+    "ProvenanceURL": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html"
+  },
+  {
+    "VariableMeasured": "Median_Age_Person",
+    "ObservationAbout": "geoId/10003",
+    "FacetId": "1755512982",
+    "Observations": [
+      {
+        "Date": "2010",
+        "Value": "36.8"
+      },
+      {
+        "Date": "2011",
+        "Value": "37.0"
+      },
+      {
+        "Date": "2012",
+        "Value": "37.0"
+      },
+      {
+        "Date": "2013",
+        "Value": "37.2"
+      },
+      {
+        "Date": "2014",
+        "Value": "37.3"
+      },
+      {
+        "Date": "2015",
+        "Value": "37.5"
+      },
+      {
+        "Date": "2016",
+        "Value": "37.6"
+      },
+      {
+        "Date": "2017",
+        "Value": "37.8"
+      },
+      {
+        "Date": "2018",
+        "Value": "38.1"
+      },
+      {
+        "Date": "2019",
+        "Value": "38.4"
+      },
+      {
+        "Date": "2020",
+        "Value": "38.7"
+      },
+      {
+        "Date": "2021",
+        "Value": "38.8"
+      },
+      {
+        "Date": "2022",
+        "Value": "39.0"
+      },
+      {
+        "Date": "2023",
+        "Value": "39.2"
+      }
+    ],
+    "ImportName": "CensusACS5YearSurvey_SubjectTables_S0101",
+    "ObservationPeriod": "",
+    "MeasurementMethod": "CensusACS5yrSurveySubjectTable",
+    "Unit": "Years",
+    "ScalingFactor": "",
+    "IsDcAggregate": false,
+    "ProvenanceURL": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101"
   },
   {
     "VariableMeasured": "Median_Age_Person",

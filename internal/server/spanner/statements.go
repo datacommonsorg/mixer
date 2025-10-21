@@ -49,8 +49,6 @@ var statements = struct {
 	returnChainedEdges string
 	// Subquery to return Edges with filters.
 	returnFilterEdges string
-	// Subquery to return Edges for arcs with chaining and filters.
-	returnFilterChainedEdges string
 	// Subquery to apply page offset.
 	applyOffset string
 	// Subquery to apply page limit.
@@ -135,8 +133,14 @@ var statements = struct {
 			value,
 			provenance`,
 	returnChainedEdges: `
-		RETURN
+		RETURN DISTINCT
 			m.subject_id,
+			n.subject_id AS value
+		NEXT MATCH (n)
+		WHERE
+		  n.subject_id = value
+		RETURN
+		  subject_id,
 			@result_predicate AS predicate,
 			'' AS provenance,
 			n.value,
@@ -168,24 +172,6 @@ var statements = struct {
 			predicate,
 			value,
 			provenance`,
-	returnFilterChainedEdges: `
-		RETURN
-			m.subject_id,
-			n.subject_id AS value
-		NEXT MATCH (n)
-		WHERE
-		  n.subject_id = value
-		RETURN
-		  subject_id,
-			@result_predicate AS predicate,
-			'' AS provenance,
-			n.value,
-			n.bytes,
-			n.name,
-			n.types
-		ORDER BY
-			subject_id,
-			value`,
 	applyOffset: `
 		OFFSET %d`,
 	applyLimit: fmt.Sprintf(`
