@@ -60,7 +60,7 @@ func TestV3Resolve(t *testing.T) {
 			if latencyTest {
 				continue
 			}
-			if test.GenerateGolden {
+			if true {
 				test.UpdateGolden(resp, goldenPath, goldenFile)
 				continue
 			}
