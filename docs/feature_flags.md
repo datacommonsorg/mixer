@@ -63,7 +63,7 @@ Note: Flags should only be used for temporary values, e.g. for gradual feature r
   - Prod changes can only be merged on Monday through Thursday between 8:00 AM and 5:00 PM in California.
 1. [Optional] If your feature change will cause APIs to return different data:
   - Clear the Redis cache: from the **website** repo, `./tools/clearcache/run.sh mixer <env>`
-  - Update goldens: from the website repo, gcloud `builds submit --config build/ci/cloudbuild.update_nl_goldens.yaml --project=datcom-ci`
+  - Update goldens: from the website repo, `gcloud builds submit --config build/ci/cloudbuild.update_nl_goldens.yaml --project=datcom-ci`
 
 ## [How to debug flag value rollout](#debug)
 
