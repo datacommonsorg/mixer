@@ -18,7 +18,6 @@ package spanner
 import (
 	"context"
 	"fmt"
-	"sort"
 
 	"cloud.google.com/go/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
@@ -203,9 +202,6 @@ func (sc *SpannerClient) ResolveByID(ctx context.Context, nodes []string, in, ou
 		return nil, err
 	}
 
-	for _, candidates := range nodeToCandidates {
-		sort.Strings(candidates)
-	}
 	return nodeToCandidates, nil
 }
 

@@ -45,7 +45,7 @@ func TestV3Resolve(t *testing.T) {
 		}{
 			{
 				req: &pbv2.ResolveRequest{
-					Nodes:    []string{"undata-geo:G00003340", "foo"},
+					Nodes:    []string{"undata-geo:G00001380", "undata-geo:G00003340", "foo"},
 					Property: "<-unDataCode->wikidataId",
 				},
 				goldenFile: "resolve_by_id.json",
@@ -60,7 +60,7 @@ func TestV3Resolve(t *testing.T) {
 			if latencyTest {
 				continue
 			}
-			if true {
+			if test.GenerateGolden {
 				test.UpdateGolden(resp, goldenPath, goldenFile)
 				continue
 			}
