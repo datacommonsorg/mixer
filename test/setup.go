@@ -19,6 +19,7 @@ import (
 	"context"
 	"encoding/json"
 	"log"
+	"log/slog"
 	"net"
 	"os"
 	"path"
@@ -392,7 +393,16 @@ func NewSpannerClient() *spanner.SpannerClient {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	spannerGraphInfoYamlPath := path.Join(path.Dir(filename), "../deploy/storage/spanner_graph_info.yaml")
-	return newSpannerClient(context.Background(), spannerGraphInfoYamlPath)
+	sc := newSpannerClient(context.Background(), spannerGraphInfoYamlPath)
+
+	// Cache initial CompletionTimestamp
+	_, err := sc.GetStalenessTimestampBound(context.Background())
+	if err != nil {
+		slog.Error("failed to warm up stable timestamp cache", "error", err)
+		return nil
+	}
+
+	return sc
 }
 
 func newSpannerClient(ctx context.Context, spannerGraphInfoYamlPath string) *spanner.SpannerClient {

@@ -18,19 +18,40 @@ package spanner
 import (
 	"context"
 	"fmt"
+	"sync"
+	"time"
 
 	"cloud.google.com/go/spanner"
 	"gopkg.in/yaml.v3"
 )
 
+const (
+	// CACHE_DURATION defines how long the CompletionTimestamp is kept in memory before being refetched.
+	CACHE_DURATION = 5 * time.Second
+)
+
 // SpannerClient encapsulates the Spanner client.
 type SpannerClient struct {
 	client *spanner.Client
+
+	// Cache for storing CompletionTimestamp for stale reads.
+	cacheMutex      sync.RWMutex
+	cachedTimestamp *time.Time
+	cacheExpiry     time.Time
+
+	// For mocking in tests.
+	timestampFetcher func(context.Context) (*time.Time, error)
+	clock            func() time.Time
 }
 
 // newSpannerClient creates a new SpannerClient.
 func newSpannerClient(client *spanner.Client) *SpannerClient {
-	return &SpannerClient{client: client}
+	sc := &SpannerClient{
+		client: client,
+		clock:  time.Now, // Default to real time
+	}
+	sc.timestampFetcher = sc.fetchCompletionTimestampFromSpanner
+	return sc
 }
 
 // NewSpannerClient creates a new SpannerClient from the config yaml string.
@@ -43,7 +64,15 @@ func NewSpannerClient(ctx context.Context, spannerConfigYaml string) (*SpannerCl
 	if err != nil {
 		return nil, fmt.Errorf("failed to create SpannerClient: %w", err)
 	}
-	return newSpannerClient(client), nil
+	sc := newSpannerClient(client)
+
+	// Cache initial CompletionTimestamp
+	_, err = sc.GetStalenessTimestampBound(ctx)
+	if err != nil {
+		return nil, fmt.Errorf("failed to warm up stable timestamp cache: %w", err)
+	}
+
+	return sc, nil
 }
 
 // createSpannerClient creates the database name string and initializes the Spanner client.

@@ -21,6 +21,8 @@ import (
 
 // SQL / GQL statements executed by the SpannerClient
 var statements = struct {
+	// Fetch latest CompletionTimestamp from IngestionHistory table.
+	getCompletionTimestamp string
 	// Fetch Properties for out arcs.
 	getPropsBySubjectID string
 	// Fetch Properties for in arcs.
@@ -74,6 +76,13 @@ var statements = struct {
 	// Resolve one property to another.
 	resolvePropToProp string
 }{
+	getCompletionTimestamp: `		SELECT 
+				CompletionTimestamp
+			FROM
+				IngestionHistory
+			ORDER BY
+				CompletionTimestamp DESC
+			LIMIT 1`,
 	getPropsBySubjectID: `		GRAPH DCGraph MATCH -[e:Edge
 		WHERE
 			e.subject_id IN UNNEST(@ids)]->
