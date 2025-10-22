@@ -1,3 +1,5 @@
 flags:
   TestBoolFlag: true
   TestFloatFlag: 0.75
+  EnableV3: true
+  UseSpannerGraph: true

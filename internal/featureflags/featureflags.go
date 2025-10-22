@@ -63,8 +63,8 @@ func (f *Flags) validateFlagValues() error {
 	if f.WriteUsageLogs < 0 || f.WriteUsageLogs > 1 {
 		return fmt.Errorf("WriteUsageLogs must be between 0 and 1.0, got %f", f.WriteUsageLogs)
 	}
-	if f.SpannerGraphDatabase != "" && !f.EnableV3 {
-		return fmt.Errorf("using SpannerGraphDatabase requires EnableV3 to be true")
+	if f.SpannerGraphDatabase != "" && !(f.UseSpannerGraph && f.EnableV3) {
+		return fmt.Errorf("using SpannerGraphDatabase requires UseSpannerGraph and EnableV3 to be true")
 	}
 	return nil
 }

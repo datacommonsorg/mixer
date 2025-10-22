@@ -23,6 +23,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/datacommonsorg/mixer/internal/featureflags"
 	"github.com/datacommonsorg/mixer/internal/metrics"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -75,7 +76,11 @@ func TestMaybeMirrorV3_Percentage(t *testing.T) {
 		{"100 percent", 1.0, true},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			s := &Server{v3MirrorFraction: tc.mirrorFraction}
+			s := &Server{
+				flags: &featureflags.Flags{
+					V3MirrorFraction: tc.mirrorFraction,
+				},
+			}
 			mirrorCallCount := 0
 			var mirroredReqs []proto.Message
 			skipCacheHeaderValues := make(chan bool, 2)
@@ -123,7 +128,11 @@ func TestMaybeMirrorV3_Percentage(t *testing.T) {
 
 func TestMaybeMirrorV3_IgnoreSubsequentPages(t *testing.T) {
 	ctx := context.Background()
-	s := &Server{v3MirrorFraction: 1.0} // Mirroring is on
+	s := &Server{
+		flags: &featureflags.Flags{
+			V3MirrorFraction: 1.0, // Mirroring is on
+		},
+	}
 	req := &pbv2.NodeRequest{NextToken: "some_token"}
 	resp := &pbv2.NodeResponse{}
 
@@ -144,7 +153,11 @@ func TestMaybeMirrorV3_IgnoreSubsequentPages(t *testing.T) {
 
 func TestMaybeMirrorV3_LatencyMetric(t *testing.T) {
 	ctx := context.Background()
-	s := &Server{v3MirrorFraction: 1.0} // Mirroring is on
+	s := &Server{
+		flags: &featureflags.Flags{
+			V3MirrorFraction: 1.0, // Mirroring is on
+		},
+	}
 	reader := setupMetricReader(t)
 	req := &pbv2.NodeRequest{}
 	resp := &pbv2.NodeResponse{}
@@ -197,7 +210,11 @@ func TestMaybeMirrorV3_LatencyMetric(t *testing.T) {
 
 func TestMaybeMirrorV3_ResponseMismatch(t *testing.T) {
 	ctx := context.Background()
-	s := &Server{v3MirrorFraction: 1.0} // Mirroring is on
+	s := &Server{
+		flags: &featureflags.Flags{
+			V3MirrorFraction: 1.0, // Mirroring is on
+		},
+	}
 	reader := setupMetricReader(t)
 
 	v2Req := &pbv2.NodeRequest{Nodes: []string{"test"}}
@@ -250,7 +267,11 @@ func TestMaybeMirrorV3_ResponseMismatch(t *testing.T) {
 
 func TestMaybeMirrorV3_ResponseMatch(t *testing.T) {
 	ctx := context.Background()
-	s := &Server{v3MirrorFraction: 1.0} // Mirroring is on
+	s := &Server{
+		flags: &featureflags.Flags{
+			V3MirrorFraction: 1.0, // Mirroring is on
+		},
+	}
 	reader := setupMetricReader(t)
 
 	v2Req := &pbv2.ResolveRequest{
@@ -318,7 +339,11 @@ func TestMaybeMirrorV3_ResponseMatch(t *testing.T) {
 
 func TestMaybeMirrorV3_V3Error(t *testing.T) {
 	ctx := context.Background()
-	s := &Server{v3MirrorFraction: 1.0} // Mirroring is on
+	s := &Server{
+		flags: &featureflags.Flags{
+			V3MirrorFraction: 1.0, // Mirroring is on
+		},
+	}
 	reader := setupMetricReader(t)
 
 	v2Req := &pbv2.NodeRequest{Nodes: []string{"test"}}

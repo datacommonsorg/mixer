@@ -35,8 +35,8 @@ func newSpannerClient(client *spanner.Client) *SpannerClient {
 }
 
 // NewSpannerClient creates a new SpannerClient from the config yaml string and optional database override.
-func NewSpannerClient(ctx context.Context, spannerConfigYaml, database string) (*SpannerClient, error) {
-	cfg, err := createSpannerConfig(spannerConfigYaml, database)
+func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string) (*SpannerClient, error) {
+	cfg, err := createSpannerConfig(spannerConfigYaml, databaseOverride)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create SpannerClient: %w", err)
 	}
@@ -61,8 +61,8 @@ func createSpannerClient(ctx context.Context, cfg *SpannerConfig) (*spanner.Clie
 	return client, nil
 }
 
-// createSpannerConfig creates the config from specific yaml string.
-func createSpannerConfig(spannerConfigYaml, database string) (*SpannerConfig, error) {
+// createSpannerConfig creates the config from specific yaml string and optional database override.
+func createSpannerConfig(spannerConfigYaml, databaseOverride string) (*SpannerConfig, error) {
 	var cfg SpannerConfig
 	if err := yaml.Unmarshal([]byte(spannerConfigYaml), &cfg); err != nil {
 		return nil, fmt.Errorf("failed to create spanner config: %w", err)
@@ -71,9 +71,9 @@ func createSpannerConfig(spannerConfigYaml, database string) (*SpannerConfig, er
 	// Override database with flag value if set.
 	// This is temporary during development to allow fast rollout of version changes.
 	// TODO: Once the Spanner instance is stable, revert to using the config.
-	if database != "" {
-		slog.Debug("Setting Spanner database value from flag", "value", database)
-		cfg.Database = database
+	if databaseOverride != "" {
+		slog.Debug("Setting Spanner database value from flag", "value", databaseOverride)
+		cfg.Database = databaseOverride
 	}
 
 	return &cfg, nil

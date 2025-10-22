@@ -129,15 +129,6 @@ func main() {
 		os.Exit(1)
 	}
 
-	if flags.V3MirrorFraction < 0 || flags.V3MirrorFraction > 1.0 {
-		slog.Error("v3_mirror_fraction must be between 0 and 1.0", "value", flags.V3MirrorFraction)
-		os.Exit(1)
-	}
-	if flags.V3MirrorFraction > 0 && !flags.EnableV3 {
-		slog.Error("v3_mirror_fraction > 0 requires --enable_v3=true")
-		os.Exit(1)
-	}
-
 	ctx := context.Background()
 
 	credentials, err := google.FindDefaultCredentials(ctx, compute.ComputeScope)
@@ -415,7 +406,6 @@ func main() {
 
 	// Create server object
 	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags)
-	mixerServer.SetV3MirrorFraction(flags.V3MirrorFraction)
 	pbs.RegisterMixerServer(srv, mixerServer)
 
 	// Subscribe to branch cache update
