@@ -34,7 +34,7 @@ func newSpannerClient(client *spanner.Client) *SpannerClient {
 	return &SpannerClient{client: client}
 }
 
-// NewSpannerClient creates a new SpannerClient from the config yaml string and optional database override.
+// NewSpannerClient creates a new SpannerClient from the config yaml string and an optional database override.
 func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string) (*SpannerClient, error) {
 	cfg, err := createSpannerConfig(spannerConfigYaml, databaseOverride)
 	if err != nil {
@@ -61,7 +61,7 @@ func createSpannerClient(ctx context.Context, cfg *SpannerConfig) (*spanner.Clie
 	return client, nil
 }
 
-// createSpannerConfig creates the config from specific yaml string and optional database override.
+// createSpannerConfig creates the config from the specific yaml string and an optional database override.
 func createSpannerConfig(spannerConfigYaml, databaseOverride string) (*SpannerConfig, error) {
 	var cfg SpannerConfig
 	if err := yaml.Unmarshal([]byte(spannerConfigYaml), &cfg); err != nil {
