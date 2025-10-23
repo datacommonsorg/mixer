@@ -5,4 +5,6 @@ liveUrl: https://staging.datacommons.org
 flags:
   EnableV3: true
   V3MirrorFraction: 0.01
-  WriteUsageLogs: 0.1
+  WriteUsageLogs: 0.5
+  UseSpannerGraph: true
+  SpannerGraphDatabase: dc_graph_2025_09_15

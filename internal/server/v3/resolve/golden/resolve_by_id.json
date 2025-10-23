@@ -9,7 +9,12 @@
       ]
     },
     {
-      "node": "foo"
+      "node": "undata-geo:G00001380",
+      "candidates": [
+        {
+          "dcid": "Q668"
+        }
+      ]
     }
   ]
 }

@@ -1,8 +1,5 @@
 {
-  "Count_Person": [],
   "country/USA": [
     "undata-geo:G00003340"
-  ],
-  "foo": [],
-  "undata-geo:G00003340": []
+  ]
 }

@@ -28,4 +28,4 @@
 			predicate,
 			value,
 			provenance
-		LIMIT 5001
+		LIMIT 501

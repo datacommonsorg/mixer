@@ -28,7 +28,7 @@ const (
 	// Maximum number of edge hops to traverse for chained properties.
 	MAX_HOPS = 10
 	// Page size for paginated responses.
-	PAGE_SIZE = 5000
+	PAGE_SIZE = 500
 )
 
 // GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction and returns a map.
@@ -173,15 +173,14 @@ func (sc *SpannerClient) SearchNodes(ctx context.Context, query string, types []
 
 // ResolveByID fetches ID resolution candidates for a list of input nodes and in and out properties and returns a map of node to candidates.
 func (sc *SpannerClient) ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error) {
-	candidates := make(map[string][]string)
+	nodeToCandidates := make(map[string][]string)
 	if len(nodes) == 0 {
-		return candidates, nil
+		return nodeToCandidates, nil
 	}
 
 	// Create a map of Spanner node value to dcid to decode encoded values.
 	valueMap := map[string]string{}
 	for _, node := range nodes {
-		candidates[node] = []string{}
 		value := generateValueHash(node)
 		valueMap[node] = node
 		valueMap[value] = node
@@ -196,14 +195,14 @@ func (sc *SpannerClient) ResolveByID(ctx context.Context, nodes []string, in, ou
 		func(rowStruct interface{}) {
 			resolutionCandidate := rowStruct.(*ResolutionCandidate)
 			node := valueMap[resolutionCandidate.Node]
-			candidates[node] = append(candidates[node], resolutionCandidate.Candidate)
+			nodeToCandidates[node] = append(nodeToCandidates[node], resolutionCandidate.Candidate)
 		},
 	)
 	if err != nil {
-		return candidates, err
+		return nil, err
 	}
 
-	return candidates, nil
+	return nodeToCandidates, nil
 }
 
 func (sc *SpannerClient) queryAndCollect(
