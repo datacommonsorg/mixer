@@ -23,8 +23,11 @@ import (
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/metrics"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
+	"github.com/google/go-cmp/cmp/cmpopts"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -40,6 +43,7 @@ func (s *Server) maybeMirrorV3(
 	originalResp proto.Message,
 	originalLatency time.Duration,
 	v3Call func(ctx context.Context, req proto.Message) (proto.Message, error),
+	cmpOpts []cmp.Option,
 	v3WaitGroup ...*sync.WaitGroup,
 ) {
 	// For requests with pagination, only mirror the first page.
@@ -54,7 +58,7 @@ func (s *Server) maybeMirrorV3(
 		if len(v3WaitGroup) > 0 {
 			wg = v3WaitGroup[0]
 		}
-		s.mirrorV3(ctx, originalReq, originalResp, originalLatency, v3Call, wg)
+		s.mirrorV3(ctx, originalReq, originalResp, originalLatency, v3Call, cmpOpts, wg)
 	}
 }
 
@@ -64,6 +68,7 @@ func (s *Server) mirrorV3(
 	originalResp proto.Message,
 	originalLatency time.Duration,
 	v3Call func(ctx context.Context, req proto.Message) (proto.Message, error),
+	cmpOpts []cmp.Option,
 	v3WaitGroup *sync.WaitGroup,
 ) {
 	if v3WaitGroup != nil {
@@ -80,10 +85,10 @@ func (s *Server) mirrorV3(
 		mirrorCtx := metrics.NewContext(ctx)
 
 		// First call, without skipping cache
-		s.doMirror(mirrorCtx, originalReq, originalResp, originalLatency, v3Call, false /* skipCache */)
+		s.doMirror(mirrorCtx, originalReq, originalResp, originalLatency, v3Call, cmpOpts, false /* skipCache */)
 		// Second call, skipping cache.
 		// Must be run second so that the cache isn't always warm.
-		s.doMirror(mirrorCtx, originalReq, originalResp, originalLatency, v3Call, true /* skipCache */)
+		s.doMirror(mirrorCtx, originalReq, originalResp, originalLatency, v3Call, cmpOpts, true /* skipCache */)
 	}()
 }
 
@@ -97,6 +102,7 @@ func (s *Server) doMirror(
 	originalResp proto.Message,
 	originalLatency time.Duration,
 	v3Call func(ctx context.Context, req proto.Message) (proto.Message, error),
+	cmpOpts []cmp.Option,
 	skipCache bool,
 ) {
 	reqClone := proto.Clone(originalReq)
@@ -123,8 +129,55 @@ func (s *Server) doMirror(
 		return
 	}
 
-	if diff := cmp.Diff(originalResp, v3Resp, protocmp.Transform()); diff != "" {
+	if diff := cmp.Diff(originalResp, v3Resp, cmpOpts...); diff != "" {
 		slog.Warn("V3 mirrored call had a different response", "method", rpcMethod, "skipCache", skipCache, "diff", diff)
 		metrics.RecordV3Mismatch(ctx)
+	}
+}
+
+func GetV2ResolveCmpOpts() []cmp.Option {
+	return []cmp.Option{
+		protocmp.Transform(),
+	}
+}
+
+func GetV2NodeCmpOpts() []cmp.Option {
+	return []cmp.Option{
+		protocmp.Transform(),
+		protocmp.IgnoreFields(&pbv2.NodeResponse{}, "next_token"),
+	}
+}
+
+func GetV2ObservationCmpOpts() []cmp.Option {
+	// A custom comparer for ObservationResponse.
+	// This gives us full control over the comparison logic.
+	observationComparer := cmp.Comparer(func(x, y *pbv2.ObservationResponse) bool {
+		// 1. Compare the `Facets` map by values only.
+		xVals := []*pb.Facet{}
+		for _, v := range x.GetFacets() {
+			xVals = append(xVals, v)
+		}
+		yVals := []*pb.Facet{}
+		for _, v := range y.GetFacets() {
+			yVals = append(yVals, v)
+		}
+		// Sort slices to compare them as multisets.
+		sortProtos := cmpopts.SortSlices(func(a, b *pb.Facet) bool {
+			return util.GetFacetID(a) < util.GetFacetID(b)
+		})
+		if !cmp.Equal(xVals, yVals, protocmp.Transform(), sortProtos) {
+			return false
+		}
+
+		// 2. Compare the rest of the fields, ignoring the `facets` field
+		//    which we have already compared.
+		return cmp.Equal(x, y,
+			protocmp.Transform(),
+			protocmp.IgnoreFields(x, "facets"),
+			protocmp.IgnoreFields(&pbv2.FacetObservation{}, "facet_id"))
+	})
+
+	return []cmp.Option{
+		observationComparer,
 	}
 }
