@@ -10,6 +10,8 @@ mixer:
   project: datcom-mixer-autopush
   cluster_prefix: mixer
   cacheSVFormula: true
+  useSpannerGraph: true
+  enableV3: true
   redis:
     enabled: true
     configFile: |
@@ -18,6 +20,7 @@ mixer:
           host: "10.244.163.180"
           port: "6379"
   enableOtlp: true
+  v3MirrorFraction: 0.5
 
 ingress:
   enabled: true

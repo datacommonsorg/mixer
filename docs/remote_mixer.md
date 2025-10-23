@@ -43,7 +43,8 @@ go run cmd/main.go     \
 --use_base_bigtable=false  \
 --remote_mixer_domain=http://127.0.0.1:9091 \
 --use_custom_bigtable=true \
---fold_remote_root_svg=true
+--fold_remote_root_svg=true \
+--spanner_graph_info="$(cat deploy/storage/spanner_graph_info.yaml)" 
 ```
 
 Start envoy for remote mixer
