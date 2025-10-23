@@ -49,7 +49,7 @@ func (s *Server) maybeMirrorV3(
 		}
 	}
 
-	if s.flags.V3MirrorFraction > 0 && rand.Float64() < s.flags.V3MirrorFraction {
+	if s.v3MirrorFraction > 0 && rand.Float64() < s.v3MirrorFraction {
 		var wg *sync.WaitGroup
 		if len(v3WaitGroup) > 0 {
 			wg = v3WaitGroup[0]
