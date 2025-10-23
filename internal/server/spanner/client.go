@@ -18,7 +18,6 @@ package spanner
 import (
 	"context"
 	"fmt"
-	"log/slog"
 
 	"cloud.google.com/go/spanner"
 	"gopkg.in/yaml.v3"
@@ -34,9 +33,9 @@ func newSpannerClient(client *spanner.Client) *SpannerClient {
 	return &SpannerClient{client: client}
 }
 
-// NewSpannerClient creates a new SpannerClient from the config yaml string and an optional database override.
-func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string) (*SpannerClient, error) {
-	cfg, err := createSpannerConfig(spannerConfigYaml, databaseOverride)
+// NewSpannerClient creates a new SpannerClient from the config yaml string.
+func NewSpannerClient(ctx context.Context, spannerConfigYaml string) (*SpannerClient, error) {
+	cfg, err := createSpannerConfig(spannerConfigYaml)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create SpannerClient: %w", err)
 	}
@@ -61,19 +60,11 @@ func createSpannerClient(ctx context.Context, cfg *SpannerConfig) (*spanner.Clie
 	return client, nil
 }
 
-// createSpannerConfig creates the config from the specific yaml string and an optional database override.
-func createSpannerConfig(spannerConfigYaml, databaseOverride string) (*SpannerConfig, error) {
+// createSpannerConfig creates the config from specific yaml string.
+func createSpannerConfig(spannerConfigYaml string) (*SpannerConfig, error) {
 	var cfg SpannerConfig
 	if err := yaml.Unmarshal([]byte(spannerConfigYaml), &cfg); err != nil {
 		return nil, fmt.Errorf("failed to create spanner config: %w", err)
-	}
-
-	// Override database with flag value if set.
-	// This is temporary during development to allow fast rollout of version changes.
-	// TODO: Once the Spanner instance is stable, revert to using the config.
-	if databaseOverride != "" {
-		slog.Debug("Setting Spanner database value from flag", "value", databaseOverride)
-		cfg.Database = databaseOverride
 	}
 
 	return &cfg, nil

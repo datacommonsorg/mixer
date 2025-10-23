@@ -28,27 +28,17 @@ const (
 
 // Container for feature flag values.
 type Flags struct {
-	// Enable datasources in V3 API.
-	EnableV3 bool `yaml:"EnableV3"`
-	// Fraction of V2 API requests to mirror to V3. Value from 0 to 1.0.
+	EnableV3         bool    `yaml:"EnableV3"`
 	V3MirrorFraction float64 `yaml:"V3MirrorFraction"`
-	WriteUsageLogs   float64 `yaml:"WriteUsageLogs"`
-	// Use Google Spanner as a database.
-	UseSpannerGraph bool `yaml:"UseSpannerGraph"`
-	// Spanner Graph database for Spanner DataSource.
-	// This is temporarily loaded from flags vs spanner_graph_info.yaml.
-	// TODO: Once the Spanner instance is stable, revert to using the config.
-	SpannerGraphDatabase string `yaml:"SpannerGraphDatabase"`
+	WriteUsageLogs	 float64 `yaml:"WriteUsageLogs"`
 }
 
 // setDefaultValues creates a new Flags struct with default values.
 func setDefaultValues() *Flags {
 	return &Flags{
-		EnableV3:             false,
-		V3MirrorFraction:     0.0,
-		WriteUsageLogs:       0.0,
-		UseSpannerGraph:      false,
-		SpannerGraphDatabase: "",
+		EnableV3:         false,
+		V3MirrorFraction: 0.0,
+		WriteUsageLogs:   0.0,
 	}
 }
 
@@ -62,9 +52,6 @@ func (f *Flags) validateFlagValues() error {
 	}
 	if f.WriteUsageLogs < 0 || f.WriteUsageLogs > 1 {
 		return fmt.Errorf("WriteUsageLogs must be between 0 and 1.0, got %f", f.WriteUsageLogs)
-	}
-	if f.SpannerGraphDatabase != "" && (!f.UseSpannerGraph || !f.EnableV3) {
-		return fmt.Errorf("using SpannerGraphDatabase requires UseSpannerGraph and EnableV3 to be true")
 	}
 	return nil
 }
