@@ -198,11 +198,7 @@ func TestMaybeMirrorV3_LatencyMetric(t *testing.T) {
 
 func TestMaybeMirrorV3_NodeResponseMismatch(t *testing.T) {
 	ctx := context.Background()
-	s := &Server{
-		flags: &featureflags.Flags{
-			V3MirrorFraction: 1.0, // Mirroring is on
-		},
-	}
+	s := &Server{v3MirrorFraction: 1.0} // Mirroring is on
 	reader := setupMetricReader(t)
 
 	facet1 := &pb.Facet{
@@ -458,11 +454,7 @@ func TestMaybeMirrorV3_V3Error(t *testing.T) {
 
 func TestMaybeMirrorV3_NodeIgnoresNextTokenMismatch(t *testing.T) {
 	ctx := context.Background()
-	s := &Server{
-		flags: &featureflags.Flags{
-			V3MirrorFraction: 1.0, // Mirroring is on
-		},
-	}
+	s := &Server{v3MirrorFraction: 1.0} // Mirroring is on
 
 	v2Req := &pbv2.NodeRequest{Nodes: []string{"test"}}
 	v2Resp := &pbv2.NodeResponse{
@@ -493,11 +485,7 @@ func TestMaybeMirrorV3_NodeIgnoresNextTokenMismatch(t *testing.T) {
 
 func TestMaybeMirrorV3_ObservationIgnoresFacetIdsAndOrder(t *testing.T) {
 	ctx := context.Background()
-	s := &Server{
-		flags: &featureflags.Flags{
-			V3MirrorFraction: 1.0, // Mirroring is on
-		},
-	}
+	s := &Server{v3MirrorFraction: 1.0} // Mirroring is on
 
 	facet1 := &pb.Facet{
 		ImportName:        "test-import1",
