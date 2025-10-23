@@ -483,7 +483,7 @@ func TestMaybeMirrorV3_NodeIgnoresNextTokenMismatch(t *testing.T) {
 	}
 }
 
-func TestMaybeMirrorV3_ObservationIgnoresFacetIdsAndOrder(t *testing.T) {
+func TestMaybeMirrorV3_ObservationIgnoresFacetIdsAndMapOrder(t *testing.T) {
 	ctx := context.Background()
 	s := &Server{v3MirrorFraction: 1.0} // Mirroring is on
 
@@ -502,7 +502,8 @@ func TestMaybeMirrorV3_ObservationIgnoresFacetIdsAndOrder(t *testing.T) {
 				ByEntity: map[string]*pbv2.EntityObservation{
 					"country/USA": {
 						OrderedFacets: []*pbv2.FacetObservation{
-							{FacetId: "v2_facet_id"},
+							{FacetId: "v2_facet_id_1"},
+							{FacetId: "v2_facet_id_2"},
 						},
 					},
 				},
@@ -519,7 +520,8 @@ func TestMaybeMirrorV3_ObservationIgnoresFacetIdsAndOrder(t *testing.T) {
 				ByEntity: map[string]*pbv2.EntityObservation{
 					"country/USA": {
 						OrderedFacets: []*pbv2.FacetObservation{
-							{FacetId: "v3_facet_id"},
+							{FacetId: "v3_facet_id_2"},
+							{FacetId: "v3_facet_id_1"},
 						},
 					},
 				},
@@ -544,6 +546,6 @@ func TestMaybeMirrorV3_ObservationIgnoresFacetIdsAndOrder(t *testing.T) {
 
 	logOutput := buf.String()
 	if logOutput != "" {
-		t.Errorf("log output should be empty when responses only differ by facet IDs or ordering, but got %q", logOutput)
+		t.Errorf("log output should be empty when responses only differ by facet IDs or facet map ordering, but got %q", logOutput)
 	}
 }
