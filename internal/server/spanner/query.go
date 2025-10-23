@@ -28,7 +28,7 @@ const (
 	// Maximum number of edge hops to traverse for chained properties.
 	MAX_HOPS = 10
 	// Page size for paginated responses.
-	PAGE_SIZE = 5000
+	PAGE_SIZE = 500
 )
 
 // GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction and returns a map.
