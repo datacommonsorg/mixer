@@ -123,7 +123,7 @@ func main() {
 	// Sets up structured logger defaults.
 	logger.SetUpLogger()
 
-	slog.Debug("Enter mixer main() function")
+	slog.Info("Enter mixer main() function")
 	// Parse flag
 	flag.Parse()
 	log.SetFlags(log.LstdFlags | log.Lshortfile)
@@ -134,6 +134,7 @@ func main() {
 		slog.Error("Failed to create feature flags", "error", err)
 		os.Exit(1)
 	}
+	slog.Info("Created feature flags")
 
 	if *v3MirrorFraction < 0 || *v3MirrorFraction > 1.0 {
 		slog.Error("v3_mirror_fraction must be between 0 and 1.0", "value", *v3MirrorFraction)
@@ -208,6 +209,7 @@ func main() {
 		// TODO: Order sources by priority once other implementations are added.
 		sources = append(sources, &ds)
 	}
+	slog.Info("After Spanner client creation")
 
 	// Bigtable cache
 	var tables []*bigtable.Table
@@ -220,6 +222,7 @@ func main() {
 		}
 		tables = append(tables, baseTables...)
 	}
+	slog.Info("After base bigtable setup")
 	if *useCustomBigtable {
 		customTables, err := bigtable.CreateBigtables(
 			ctx, *customBigtableInfo, true /*isCustom=*/)
@@ -243,6 +246,7 @@ func main() {
 			os.Exit(1)
 		}
 	}
+	slog.Info("After BQ setup")
 
 	// Branch Bigtable cache
 	var branchTableName string
@@ -272,6 +276,7 @@ func main() {
 		}
 		tables = append(tables, bigtable.NewTable(branchTableName, branchTable, false /*isCustom=*/))
 	}
+	slog.Info("After branch setup")
 
 	// Metadata.
 	metadata, err := server.NewMetadata(
@@ -286,6 +291,7 @@ func main() {
 		slog.Error("Failed to create metadata", "error", err)
 		os.Exit(1)
 	}
+	slog.Info("After metadata creation")
 
 	// Remote Mixer.
 	// Create remote data source here but don't add it to sources yet since we want it to be the last source added.
@@ -299,6 +305,7 @@ func main() {
 		}
 		remoteDataSource = remote.NewRemoteDataSource(remoteClient)
 	}
+	slog.Info("After remote setup")
 
 	// SQL client
 	var sqlClient sqldb.SQLClient
@@ -368,6 +375,7 @@ func main() {
 		slog.Error("Failed to create cache", "error", err)
 		os.Exit(1)
 	}
+	slog.Info("After cache creation")
 
 	// Maps client
 	var mapsClient *maps.Client
@@ -390,6 +398,7 @@ func main() {
 	// Processors
 	processors := []*dispatcher.Processor{}
 	if *enableV3 {
+		slog.Info("V3 enabled, setting up processors")
 		// Mixer in-memory cache.
 		dataSourceCache, err := cache.NewDataSourceCache(ctx, dataSources, cacheOptions)
 		if err != nil {
@@ -399,6 +408,7 @@ func main() {
 
 		// Cache Processor
 		if *useRedis && *redisInfo != "" {
+			slog.Info("Setting up Redis cache processor")
 			redisClient, err := redis.NewCacheClient(*redisInfo)
 			if err != nil {
 				slog.Error("Failed to create Redis client", "error", err)
@@ -410,10 +420,12 @@ func main() {
 			var redisProcessor dispatcher.Processor = redis.NewCacheProcessor(redisClient)
 			processors = append(processors, &redisProcessor)
 		}
+		slog.Info("After Redis setup")
 
 		// Calculation Processor
 		var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, dataSourceCache.SVFormula(ctx))
 		processors = append(processors, &calculationProcessor)
+		slog.Info("After calculation processor setup")
 	}
 
 	// Dispatcher
@@ -467,7 +479,7 @@ func main() {
 			slog.Error("Error serving HTTP profile", "error", http.ListenAndServe(httpProfileFrom, nil))
 		}()
 	}
-
+	slog.Info("About to listen")
 	// Listen on network
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
 	if err != nil {
