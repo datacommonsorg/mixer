@@ -435,12 +435,12 @@ serviceGroups:
       - "/v2/node"
     replicas: 1
     resources:
-      memoryRequest: "2G"
-      memoryLimit: "2G"
+      memoryRequest: "3G"
+      memoryLimit: "3G"
   default:
     urlPaths:
       - "/*"
     replicas: 1
     resources:
-      memoryRequest: "2G"
-      memoryLimit: "2G"
+      memoryRequest: "3G"
+      memoryLimit: "3G"
