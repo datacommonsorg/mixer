@@ -83,7 +83,6 @@ func (s *Server) V2Resolve(
 		func(ctx context.Context, req proto.Message) (proto.Message, error) {
 			return s.V3Resolve(ctx, req.(*pbv2.ResolveRequest))
 		},
-		GetV2ResolveCmpOpts(),
 	)
 
 	return v2Resp, nil
@@ -198,7 +197,6 @@ func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 		func(ctx context.Context, req proto.Message) (proto.Message, error) {
 			return s.V3Node(ctx, req.(*pbv2.NodeRequest))
 		},
-		GetV2NodeCmpOpts(),
 	)
 
 	return v2Resp, nil
@@ -289,7 +287,6 @@ func (s *Server) V2Observation(
 		func(ctx context.Context, req proto.Message) (proto.Message, error) {
 			return s.V3Observation(ctx, req.(*pbv2.ObservationRequest))
 		},
-		GetV2ObservationCmpOpts(),
 	)
 
 	// Handle usage logging.
