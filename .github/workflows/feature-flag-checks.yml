@@ -42,7 +42,7 @@ jobs:
           # on Monday, Tuesday, Wednesday, or Thursday.
           set -e
           export TZ="America/Los_Angeles"
-          CURRENT_HOUR=$(date +"%H")
+          CURRENT_HOUR=$(date +"%-H")
           CURRENT_DAY=$(date -d "$DATE" +"%u") # 1 for Monday, 7 for Sunday
 
           if [[ "$CURRENT_DAY" -ge 1 && "$CURRENT_DAY" -le 4 ]]; then
