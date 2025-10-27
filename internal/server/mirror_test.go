@@ -196,7 +196,7 @@ func TestMaybeMirrorV3_LatencyMetric(t *testing.T) {
 	}
 }
 
-func TestMaybeMirrorV3_NodeResponseMismatch(t *testing.T) {
+func TestMaybeMirrorV3_ObservationResponseMismatch(t *testing.T) {
 	ctx := context.Background()
 	s := &Server{v3MirrorFraction: 1.0} // Mirroring is on
 	reader := setupMetricReader(t)
@@ -268,7 +268,7 @@ func TestMaybeMirrorV3_NodeResponseMismatch(t *testing.T) {
 	}
 }
 
-func TestMaybeMirrorV3_ObservationResponseMismatch(t *testing.T) {
+func TestMaybeMirrorV3_NodeResponseMismatch(t *testing.T) {
 	ctx := context.Background()
 	s := &Server{v3MirrorFraction: 1.0} // Mirroring is on
 	reader := setupMetricReader(t)
