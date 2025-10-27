@@ -6,4 +6,4 @@ liveUrl: https://datacommons.org
 flags:
   EnableV3: true
   V3MirrorFraction: 0.002
-  WriteUsageLogs: 0.0
+  WriteUsageLogs: 0.01
