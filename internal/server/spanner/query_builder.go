@@ -124,6 +124,7 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 	if offset > 0 {
 		template += fmt.Sprintf(statements.applyOffset, offset)
 	}
+	// Request pageSize+1 rows to determine whether to generate nextToken.
 	template += fmt.Sprintf(statements.applyLimit, pageSize+1)
 
 	return &spanner.Statement{
