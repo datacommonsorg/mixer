@@ -70,11 +70,6 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 		edges[id] = []*Edge{}
 	}
 
-	// Validate input.
-	if arc.Decorator != "" && (arc.SingleProp == "" || arc.SingleProp == WILDCARD || len(arc.BracketProps) > 0) {
-		return nil, fmt.Errorf("chain expressions are only supported for a single property")
-	}
-
 	err := sc.queryAndCollect(
 		ctx,
 		*GetNodeEdgesByIDQuery(ids, arc, offset),

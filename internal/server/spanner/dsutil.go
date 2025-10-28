@@ -28,6 +28,7 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
+	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"github.com/datacommonsorg/mixer/internal/util"
 
@@ -53,6 +54,16 @@ const (
 	VALUE    = "value"
 	FACET    = "facet"
 )
+
+// Chained Node properties that can be optimized before fetching from Spanner.
+var optimizedChainProps = map[string]string{
+	"containedInPlace": "linkedContainedInPlace",
+}
+
+// Represents optimizations made to Node requests.
+type nodeArtifacts struct {
+	chainProp string
+}
 
 // Represents options for Observation response.
 type queryOptions struct {
@@ -134,8 +145,37 @@ func getNextToken(offset int32, dataSourceID string) (string, error) {
 	return nextToken, nil
 }
 
+// processNodeRequest optimizes a Node request for fetching from Spanner.
+func processNodeRequest(arc *v2.Arc) *nodeArtifacts {
+	artifacts := &nodeArtifacts{}
+
+	// Maybe optimize chaining.
+	if arc.Decorator == CHAIN {
+		if replacement, ok := optimizedChainProps[arc.SingleProp]; ok {
+			artifacts.chainProp = arc.SingleProp
+			arc.Decorator = ""
+			arc.SingleProp = replacement
+		}
+	}
+
+	return artifacts
+}
+
+// processNodeResponse cleans up the intermediate Node response based on any optimizations made to the request.
+func processNodeResponse(resp *pbv2.NodeResponse, artifacts *nodeArtifacts) {
+	if artifacts.chainProp != "" {
+		for _, lg := range resp.Data {
+			nodes, ok := lg.Arcs[optimizedChainProps[artifacts.chainProp]]
+			if ok {
+				lg.Arcs[artifacts.chainProp+CHAIN] = nodes
+
+			}
+		}
+	}
+}
+
 // nodeEdgesToNodeResponse converts a map from subject id to its edges to a NodeResponse proto.
-func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge, id string, offset int32) (*pbv2.NodeResponse, error) {
+func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge, id string, offset int32, artifacts *nodeArtifacts) (*pbv2.NodeResponse, error) {
 	nodeResponse := &pbv2.NodeResponse{
 		Data: make(map[string]*pbv2.LinkedGraph),
 	}

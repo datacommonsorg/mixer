@@ -54,17 +54,23 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv2.NodeRequest) (
 	if len(arcs) == 0 {
 		return &pbv2.NodeResponse{}, nil
 	}
+	// Validate input.
 	if len(arcs) > 1 {
 		return nil, fmt.Errorf("multiple arcs in node request")
 	}
 	arc := arcs[0]
+	if arc.Decorator != "" && (arc.SingleProp == "" || arc.SingleProp == WILDCARD || len(arc.BracketProps) > 0) {
+		return nil, fmt.Errorf("chain expressions are only supported for a single property")
+	}
 
+	artifacts := processNodeRequest(arc)
+	var resp *pbv2.NodeResponse
 	if arc.SingleProp == "" && len(arc.BracketProps) == 0 {
 		props, err := sds.client.GetNodeProps(ctx, req.Nodes, arc.Out)
 		if err != nil {
 			return nil, fmt.Errorf("error getting node properties: %v", err)
 		}
-		return nodePropsToNodeResponse(props), nil
+		resp = nodePropsToNodeResponse(props)
 	} else {
 		offset, err := getOffset(req.NextToken, sds.Id())
 		if err != nil {
@@ -74,8 +80,13 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv2.NodeRequest) (
 		if err != nil {
 			return nil, fmt.Errorf("error getting node edges: %v", err)
 		}
-		return nodeEdgesToNodeResponse(req.Nodes, edges, sds.Id(), offset)
+		resp, err = nodeEdgesToNodeResponse(req.Nodes, edges, sds.Id(), offset, artifacts)
+		if err != nil {
+			return nil, err
+		}
 	}
+	processNodeResponse(resp, artifacts)
+	return resp, nil
 }
 
 // Observation retrieves observation data from Spanner.
