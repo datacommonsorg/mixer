@@ -178,6 +178,7 @@ spec:
               --bigquery_only=true \
               {{- end }}
               --cache_svg={{ default false $group.cacheSVG }} \
+              --use_spanner_graph={{ $.Values.mixer.useSpannerGraph }} \
               {{- if eq $.Values.mixer.foldRemoteRootSvg true }}
               --fold_remote_root_svg=true \
               {{- end }}
@@ -187,8 +188,12 @@ spec:
               --spanner_graph_info="${SPANNER_GRAPH_INFO}" \
               --use_redis={{ $.Values.mixer.redis.enabled }} \
               --redis_info="${REDIS_INFO}" \
+              --enable_v3={{ $.Values.mixer.enableV3 }} \
               {{- if eq $.Values.mixer.enableOtlp true}}
               --metrics_exporter=otlp \
+              {{- end }}
+              {{- if $.Values.mixer.v3MirrorFraction }}
+              --v3_mirror_fraction={{ $.Values.mixer.v3MirrorFraction }} \
               {{- end }}
               --feature_flags_path=/datacommons/flags/feature_flags.yaml
           volumeMounts:
