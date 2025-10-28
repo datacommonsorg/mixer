@@ -24,6 +24,7 @@ import (
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/metrics"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"go.opentelemetry.io/otel"
@@ -94,7 +95,7 @@ func TestMaybeMirrorV3_Percentage(t *testing.T) {
 			}
 
 			var mirrorWg sync.WaitGroup
-			s.maybeMirrorV3(ctx, req, resp, 0, v3Call, &mirrorWg)
+			s.maybeMirrorV3(ctx, req, resp, 0, v3Call, GetV2NodeCmpOpts(), &mirrorWg)
 			mirrorWg.Wait()
 
 			if tc.shouldMirror {
@@ -134,7 +135,7 @@ func TestMaybeMirrorV3_IgnoreSubsequentPages(t *testing.T) {
 	}
 
 	var mirrorWg sync.WaitGroup
-	s.maybeMirrorV3(ctx, req, resp, 0, v3Call, &mirrorWg)
+	s.maybeMirrorV3(ctx, req, resp, 0, v3Call, GetV2NodeCmpOpts(), &mirrorWg)
 	mirrorWg.Wait()
 
 	if mirrorCallCount > 0 {
@@ -154,7 +155,7 @@ func TestMaybeMirrorV3_LatencyMetric(t *testing.T) {
 	}
 
 	var mirrorWg sync.WaitGroup
-	s.maybeMirrorV3(ctx, req, resp, 0, v3Call, &mirrorWg)
+	s.maybeMirrorV3(ctx, req, resp, 0, v3Call, GetV2NodeCmpOpts(), &mirrorWg)
 	mirrorWg.Wait()
 
 	var rm metricdata.ResourceMetrics
@@ -195,7 +196,79 @@ func TestMaybeMirrorV3_LatencyMetric(t *testing.T) {
 	}
 }
 
-func TestMaybeMirrorV3_ResponseMismatch(t *testing.T) {
+func TestMaybeMirrorV3_ObservationResponseMismatch(t *testing.T) {
+	ctx := context.Background()
+	s := &Server{v3MirrorFraction: 1.0} // Mirroring is on
+	reader := setupMetricReader(t)
+
+	facet1 := &pb.Facet{
+		ImportName:        "test-import1",
+		MeasurementMethod: "test-method1",
+	}
+	facet2 := &pb.Facet{
+		ImportName:        "test-import2",
+		MeasurementMethod: "test-method2",
+	}
+	v2Req := &pbv2.ObservationRequest{}
+	v2Resp := &pbv2.ObservationResponse{
+		Facets: map[string]*pb.Facet{
+			"v2_facet_id_1": facet1,
+			"v2_facet_id_2": facet2,
+		},
+	}
+	v3Resp := &pbv2.ObservationResponse{
+		Facets: map[string]*pb.Facet{
+			"v3_facet_id_2": facet1,
+			// facet2 is not included, which is an actual diff.
+			"v3_facet_id_1": facet1,
+		},
+	}
+
+	v3Call := func(ctx context.Context, req proto.Message) (proto.Message, error) {
+		return v3Resp, nil
+	}
+
+	buf, cleanup := setUpSlogCapture()
+	defer cleanup()
+
+	var mirrorWg sync.WaitGroup
+	s.maybeMirrorV3(ctx, v2Req, v2Resp, 0, v3Call, GetV2ObservationCmpOpts(), &mirrorWg)
+	mirrorWg.Wait()
+
+	logOutput := buf.String()
+	if strings.Count(logOutput, "V3 mirrored call had a different response") != 2 {
+		t.Errorf("log output should contain 2 diff warnings, but got: %q", logOutput)
+	}
+
+	var rm metricdata.ResourceMetrics
+	if err := reader.Collect(context.Background(), &rm); err != nil {
+		t.Fatalf("failed to collect metrics: %v", err)
+	}
+
+	mismatchCount := int64(0)
+	found := false
+	for _, sm := range rm.ScopeMetrics {
+		for _, m := range sm.Metrics {
+			if m.Name == "datacommons.mixer.v3_response_mismatches" {
+				found = true
+				sum, _ := m.Data.(metricdata.Sum[int64])
+				if len(sum.DataPoints) == 1 {
+					mismatchCount = sum.DataPoints[0].Value
+				}
+				break
+			}
+		}
+	}
+
+	if !found {
+		t.Error("datacommons.mixer.v3_response_mismatches metric not found")
+	}
+	if mismatchCount != 2 {
+		t.Errorf("mismatch count: got %d, want 2", mismatchCount)
+	}
+}
+
+func TestMaybeMirrorV3_NodeResponseMismatch(t *testing.T) {
 	ctx := context.Background()
 	s := &Server{v3MirrorFraction: 1.0} // Mirroring is on
 	reader := setupMetricReader(t)
@@ -212,7 +285,7 @@ func TestMaybeMirrorV3_ResponseMismatch(t *testing.T) {
 	defer cleanup()
 
 	var mirrorWg sync.WaitGroup
-	s.maybeMirrorV3(ctx, v2Req, v2Resp, 0, v3Call, &mirrorWg)
+	s.maybeMirrorV3(ctx, v2Req, v2Resp, 0, v3Call, GetV2NodeCmpOpts(), &mirrorWg)
 	mirrorWg.Wait()
 
 	logOutput := buf.String()
@@ -282,7 +355,7 @@ func TestMaybeMirrorV3_ResponseMatch(t *testing.T) {
 	defer cleanup()
 
 	var mirrorWg sync.WaitGroup
-	s.maybeMirrorV3(ctx, v2Req, v2Resp, 0, v3Call, &mirrorWg)
+	s.maybeMirrorV3(ctx, v2Req, v2Resp, 0, v3Call, GetV2ResolveCmpOpts(), &mirrorWg)
 	mirrorWg.Wait()
 
 	logOutput := buf.String()
@@ -332,7 +405,7 @@ func TestMaybeMirrorV3_V3Error(t *testing.T) {
 	defer cleanup()
 
 	var mirrorWg sync.WaitGroup
-	s.maybeMirrorV3(ctx, v2Req, v2Resp, 0, v3Call, &mirrorWg)
+	s.maybeMirrorV3(ctx, v2Req, v2Resp, 0, v3Call, GetV2NodeCmpOpts(), &mirrorWg)
 	mirrorWg.Wait()
 
 	logOutput := buf.String()
@@ -376,5 +449,103 @@ func TestMaybeMirrorV3_V3Error(t *testing.T) {
 	}
 	if errorCount != 2 {
 		t.Errorf("error count: got %d, want 2", errorCount)
+	}
+}
+
+func TestMaybeMirrorV3_NodeIgnoresNextTokenMismatch(t *testing.T) {
+	ctx := context.Background()
+	s := &Server{v3MirrorFraction: 1.0} // Mirroring is on
+
+	v2Req := &pbv2.NodeRequest{Nodes: []string{"test"}}
+	v2Resp := &pbv2.NodeResponse{
+		Data:      map[string]*pbv2.LinkedGraph{"test": {}},
+		NextToken: "v2_token",
+	}
+	v3Resp := &pbv2.NodeResponse{
+		Data:      map[string]*pbv2.LinkedGraph{"test": {}},
+		NextToken: "v3_token",
+	}
+
+	v3Call := func(ctx context.Context, req proto.Message) (proto.Message, error) {
+		return v3Resp, nil
+	}
+
+	buf, cleanup := setUpSlogCapture()
+	defer cleanup()
+
+	var mirrorWg sync.WaitGroup
+	s.maybeMirrorV3(ctx, v2Req, v2Resp, 0, v3Call, GetV2NodeCmpOpts(), &mirrorWg)
+	mirrorWg.Wait()
+
+	logOutput := buf.String()
+	if logOutput != "" {
+		t.Errorf("log output should be empty when only next_token differs, but got %q", logOutput)
+	}
+}
+
+func TestMaybeMirrorV3_ObservationIgnoresFacetIdsAndMapOrder(t *testing.T) {
+	ctx := context.Background()
+	s := &Server{v3MirrorFraction: 1.0} // Mirroring is on
+
+	facet1 := &pb.Facet{
+		ImportName:        "test-import1",
+		MeasurementMethod: "test-method1",
+	}
+	facet2 := &pb.Facet{
+		ImportName:        "test-import2",
+		MeasurementMethod: "test-method2",
+	}
+	v2Req := &pbv2.ObservationRequest{}
+	v2Resp := &pbv2.ObservationResponse{
+		ByVariable: map[string]*pbv2.VariableObservation{
+			"Count_Person": {
+				ByEntity: map[string]*pbv2.EntityObservation{
+					"country/USA": {
+						OrderedFacets: []*pbv2.FacetObservation{
+							{FacetId: "v2_facet_id_1"},
+							{FacetId: "v2_facet_id_2"},
+						},
+					},
+				},
+			},
+		},
+		Facets: map[string]*pb.Facet{
+			"v2_facet_id_1": facet1,
+			"v2_facet_id_2": facet2,
+		},
+	}
+	v3Resp := &pbv2.ObservationResponse{
+		ByVariable: map[string]*pbv2.VariableObservation{
+			"Count_Person": {
+				ByEntity: map[string]*pbv2.EntityObservation{
+					"country/USA": {
+						OrderedFacets: []*pbv2.FacetObservation{
+							{FacetId: "v3_facet_id_2"},
+							{FacetId: "v3_facet_id_1"},
+						},
+					},
+				},
+			},
+		},
+		Facets: map[string]*pb.Facet{
+			"v3_facet_id_2": facet2,
+			"v3_facet_id_1": facet1,
+		},
+	}
+
+	v3Call := func(ctx context.Context, req proto.Message) (proto.Message, error) {
+		return v3Resp, nil
+	}
+
+	buf, cleanup := setUpSlogCapture()
+	defer cleanup()
+
+	var mirrorWg sync.WaitGroup
+	s.maybeMirrorV3(ctx, v2Req, v2Resp, 0, v3Call, GetV2ObservationCmpOpts(), &mirrorWg)
+	mirrorWg.Wait()
+
+	logOutput := buf.String()
+	if logOutput != "" {
+		t.Errorf("log output should be empty when responses only differ by facet IDs or facet map ordering, but got %q", logOutput)
 	}
 }
