@@ -183,8 +183,8 @@ spec:
               {{- end }}
               {{- if eq $.Values.mixer.cacheSVFormula true }}
               --cache_sv_formula=true \
-              --use_spanner_graph={{ $.Values.mixer.useSpannerGraph }} \
               {{- end }}
+              --use_spanner_graph={{ $.Values.mixer.useSpannerGraph }} \
               --spanner_graph_info="${SPANNER_GRAPH_INFO}" \
               --use_redis={{ $.Values.mixer.redis.enabled }} \
               --redis_info="${REDIS_INFO}" \
