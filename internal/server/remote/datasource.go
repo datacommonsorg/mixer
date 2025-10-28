@@ -41,7 +41,8 @@ func (rds *RemoteDataSource) Id() string {
 	return fmt.Sprintf("%s-%s", string(rds.Type()), rds.client.id)
 }
 
-func (rds *RemoteDataSource) Node(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+func (rds *RemoteDataSource) Node(ctx context.Context, req *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
+	// V2 Node does not use custom pageSize.
 	return rds.client.Node(req)
 }
 

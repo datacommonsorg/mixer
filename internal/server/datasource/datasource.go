@@ -34,7 +34,8 @@ const (
 type DataSource interface {
 	Type() DataSourceType
 	Id() string
-	Node(context.Context, *pbv2.NodeRequest) (*pbv2.NodeResponse, error)
+	// TODO: Once migrated off V2, update Node request to contain page size.
+	Node(context.Context, *pbv2.NodeRequest, int) (*pbv2.NodeResponse, error)
 	Observation(context.Context, *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error)
 	NodeSearch(context.Context, *pbv2.NodeSearchRequest) (*pbv2.NodeSearchResponse, error)
 	Resolve(context.Context, *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error)
