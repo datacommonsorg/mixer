@@ -54,6 +54,9 @@ type UsageLog struct {
     QueryType string         `json:"query_type"`
 	// All stat vars queried in this request, with each including a list of facets used in that particular variable.
 	StatVars  []*StatVarLog `json:"stat_vars"`
+	// A unique ID for this request generated in handler_v2. 
+	// This is used to match mixer calls with cached requests in the website
+	RequestId string         `json:"request_id"`
 }
 
 // Breaks down the log structs to be read as JSON objects in Cloud Logger.
@@ -63,6 +66,7 @@ func (u UsageLog) LogValue() slog.Value {
 		slog.String("place_type", u.PlaceType),
 		slog.String("query_type", u.QueryType),
 		slog.Any("stat_vars", u.StatVars),
+		slog.String("request_id", u.RequestId),
 	)
 }
 
@@ -95,74 +99,76 @@ func standardizeToYear(dateStr string) (string, error) {
 }
 
 // Formats logs for the stat vars and facets.
-func MakeStatVarLogs(store *store.Store, observations []*pbv2.ObservationResponse) []*StatVarLog {
+func MakeStatVarLogs(store *store.Store, observation *pbv2.ObservationResponse) []*StatVarLog {
 	// statVarLogs is a map statVarDCID -> list of facets.
 	statVarsByDcid := make(map[string]*StatVarLog)
+	resultLogs := make([]*StatVarLog, 0, len(statVarsByDcid))
 
-	for _, resp := range observations {
-		if resp == nil {
-			continue
+	// TODO: clean this up so this duplication isn't necessary, I think I was using the pre-merged observation
+	resp := observation
+
+	if resp == nil {
+		return resultLogs
+	}
+	// Iterate through each response's variables, collecting the facets used in that resp into our 
+	// cumulative list of facets used for the given variable.
+	for variable, varObs := range resp.ByVariable {
+		// A map of facetId -> FacetLog
+		facetsByFacetId := make(map[string]*FacetLog)
+		if _, ok := statVarsByDcid[variable]; !ok {
+			statVarsByDcid[variable] = &StatVarLog{
+				StatVarDCID: variable,
+			}
 		}
-		// Iterate through each response's variables, collecting the facets used in that resp into our 
-		// cumulative list of facets used for the given variable.
-		for variable, varObs := range resp.ByVariable {
-			// A map of facetId -> FacetLog
-			facetsByFacetId := make(map[string]*FacetLog)
-			if _, ok := statVarsByDcid[variable]; !ok {
-				statVarsByDcid[variable] = &StatVarLog{
-					StatVarDCID: variable,
+
+		// Get all of the facets used for each entity.
+		for _, entityObs := range varObs.ByEntity {
+			// The entity observation contains a list of the most relevant facets -- we include all of them.
+			for _, facetObs := range entityObs.OrderedFacets {
+				facetId := facetObs.FacetId
+
+				// Some stats only have year, so we only consider granularity to the year.
+				earliest, err := standardizeToYear(facetObs.EarliestDate)
+				if err != nil {
+					slog.Error("Error processing date", "date", facetObs.EarliestDate, "error", err)
+				}
+				latest, err := standardizeToYear(facetObs.LatestDate)
+				if err != nil {
+					slog.Error("Error processing date", "date", facetObs.LatestDate, "error", err)
+				}
+
+				// If we have a map for this facet, we add to it.
+				if facetLog, ok := facetsByFacetId[facetId]; ok {
+					facetLog.NumSeries++
+					if earliest != "" && (facetLog.Earliest == "" || earliest < facetLog.Earliest) {
+						facetLog.Earliest = earliest
+					}
+					if latest != "" && (facetLog.Latest == "" || latest > facetLog.Latest) {
+						facetLog.Latest = latest
+					}
+				} else {
+					// If this is the first time we see the facet, create a map entry.
+					if facetData, ok := resp.Facets[facetId]; ok {
+						facetsByFacetId[facetId] = &FacetLog{
+							Facet:     facetData,
+							NumSeries: 1,
+							Earliest:  earliest,
+							Latest:    latest,
+						}
+					}
 				}
 			}
-
-			// Get all of the facets used for each entity.
-			for _, entityObs := range varObs.ByEntity {
-				// The entity observation contains a list of the most relevant facets -- we include all of them.
-				for _, facetObs := range entityObs.OrderedFacets {
-					facetId := facetObs.FacetId
-
-					// Some stats only have year, so we only consider granularity to the year.
-					earliest, err := standardizeToYear(facetObs.EarliestDate)
-					if err != nil {
-						slog.Error("Error processing date", "date", facetObs.EarliestDate, "error", err)
-					}
-					latest, err := standardizeToYear(facetObs.LatestDate)
-					if err != nil {
-						slog.Error("Error processing date", "date", facetObs.LatestDate, "error", err)
-					}
-
-					// If we have a map for this facet, we add to it.
-					if facetLog, ok := facetsByFacetId[facetId]; ok {
-						facetLog.NumSeries++
-						if earliest != "" && (facetLog.Earliest == "" || earliest < facetLog.Earliest) {
-							facetLog.Earliest = earliest
-						}
-						if latest != "" && (facetLog.Latest == "" || latest > facetLog.Latest) {
-							facetLog.Latest = latest
-						}
-					} else {
-						// If this is the first time we see the facet, create a map entry.
-						if facetData, ok := resp.Facets[facetId]; ok {
-							facetsByFacetId[facetId] = &FacetLog{
-								Facet:     facetData,
-								NumSeries: 1,
-								Earliest:  earliest,
-								Latest:    latest,
-							}
-						}
-					}
-				}
-			}
-
-			// All facets used for this stat var across all of the responses.
-			facetLogs := []*FacetLog{}
-			for _, facetLog := range facetsByFacetId {
-				facetLogs = append(facetLogs, facetLog)
-			}
-			statVarsByDcid[variable].Facets = facetLogs
 		}
+
+		// All facets used for this stat var across all of the responses.
+		facetLogs := []*FacetLog{}
+		for _, facetLog := range facetsByFacetId {
+			facetLogs = append(facetLogs, facetLog)
+		}
+		statVarsByDcid[variable].Facets = facetLogs
 	}
 
-	resultLogs := make([]*StatVarLog, 0, len(statVarsByDcid))
+	
 	// Moving statVarLogs from a map keyed by statVarDcid to a list.
 	for _, svLog := range statVarsByDcid {
 		resultLogs = append(resultLogs, svLog)
@@ -174,9 +180,11 @@ func MakeStatVarLogs(store *store.Store, observations []*pbv2.ObservationRespons
 
 // Writes a structured log to stdout, which is ingested by GCP cloud logging to track mixer usage.
 // Currently only used by the v2/observation endpoint.
-func WriteUsageLog(surface string, isRemote bool, placeType string, store *store.Store, observations []*pbv2.ObservationResponse, queryType shared.QueryType) {
+func WriteUsageLog(surface string, isRemote bool, placeType string, store *store.Store, observation *pbv2.ObservationResponse, queryType shared.QueryType) {
 
-	statVars := MakeStatVarLogs(store, observations)
+	statVars := MakeStatVarLogs(store, observation)
+
+	slog.Info("request id", "id", observation.RequestId);
 
 	logEntry := UsageLog{
 		PlaceType: placeType,
@@ -186,6 +194,7 @@ func WriteUsageLog(surface string, isRemote bool, placeType string, store *store
 		},
 		QueryType: string(queryType),
 		StatVars:  statVars,
+		RequestId: observation.RequestId,
 	}
 
 	slog.Info("new_query", slog.Any("usage_log", logEntry))

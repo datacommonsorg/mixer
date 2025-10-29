@@ -1123,7 +1123,7 @@ func TestMergeObservation(t *testing.T) {
 					},
 				},
 			},
-			&pbv2.ObservationResponse{
+			&pbv2.{
 				ByVariable: map[string]*pbv2.VariableObservation{
 					"var1": {
 						ByEntity: map[string]*pbv2.EntityObservation{
