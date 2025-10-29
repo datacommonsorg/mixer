@@ -26,7 +26,7 @@ import (
 
 const (
 	// Default page size for paginated responses.
-	DefaultPageSize = 5000
+	DefaultPageSize = 500
 )
 
 // DataSources struct uses underlying data sources to respond to API requests.

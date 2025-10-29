@@ -20,4 +20,4 @@
 		ORDER BY
 			subject_id,
 			value
-		LIMIT 5001
+		LIMIT 501

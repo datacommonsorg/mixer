@@ -4,9 +4,9 @@
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
       "Provenance": "",
-      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE061",
+      "Value": "dc/g/WHOAIR15_age-WHOAgeEnumY55T59_whoenvcause-WHOEnvcauseEnumENVCAUSE113",
       "Bytes": null,
-      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Malignant Neoplasms",
+      "Name": "Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) With Age = 55-59 Years, Who_envcause = Ischaemic Heart Disease",
       "Types": [
         "StatVarGroup"
       ]
@@ -15,9 +15,9 @@
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
       "Provenance": "",
-      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE061_whosex",
+      "Value": "dc/g/WHOAIR15_age-WHOAgeEnumY55T59_whoenvcause-WHOEnvcauseEnumENVCAUSE113_whosex",
       "Bytes": null,
-      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Malignant Neoplasms, Who_sex",
+      "Name": "Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) With Age = 55-59 Years, Who_envcause = Ischaemic Heart Disease, Who_sex",
       "Types": [
         "StatVarGroup"
       ]
@@ -26,9 +26,9 @@
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
       "Provenance": "",
-      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE062",
+      "Value": "dc/g/WHOAIR15_age-WHOAgeEnumY55T59_whoenvcause-WHOEnvcauseEnumENVCAUSE114",
       "Bytes": null,
-      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Mouth And Oropharynx Cancers",
+      "Name": "Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) With Age = 55-59 Years, Who_envcause = Stroke",
       "Types": [
         "StatVarGroup"
       ]
@@ -37,9 +37,9 @@
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
       "Provenance": "",
-      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE062_whosex",
+      "Value": "dc/g/WHOAIR15_age-WHOAgeEnumY55T59_whoenvcause-WHOEnvcauseEnumENVCAUSE114_whosex",
       "Bytes": null,
-      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Mouth And Oropharynx Cancers, Who_sex",
+      "Name": "Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) With Age = 55-59 Years, Who_envcause = Stroke, Who_sex",
       "Types": [
         "StatVarGroup"
       ]
@@ -48,9 +48,9 @@
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
       "Provenance": "",
-      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE063",
+      "Value": "dc/g/WHOAIR15_age-WHOAgeEnumY55T59_whoenvcause-WHOEnvcauseEnumENVCAUSE118",
       "Bytes": null,
-      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Oesophagus Cancer",
+      "Name": "Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) With Age = 55-59 Years, Who_envcause = Chronic Obstructive Pulmonary Disease",
       "Types": [
         "StatVarGroup"
       ]
@@ -59,9 +59,9 @@
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
       "Provenance": "",
-      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE063_whosex",
+      "Value": "dc/g/WHOAIR15_age-WHOAgeEnumY55T59_whoenvcause-WHOEnvcauseEnumENVCAUSE118_whosex",
       "Bytes": null,
-      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Oesophagus Cancer, Who_sex",
+      "Name": "Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) With Age = 55-59 Years, Who_envcause = Chronic Obstructive Pulmonary Disease, Who_sex",
       "Types": [
         "StatVarGroup"
       ]
@@ -70,9 +70,9 @@
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
       "Provenance": "",
-      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE064",
+      "Value": "dc/g/WHOAIR15_age-WHOAgeEnumY55T59_whoenvcause_whosex-WHOSexEnumF",
       "Bytes": null,
-      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Stomach Cancer",
+      "Name": "Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) With Age = 55-59 Years, Who_envcause, Who_sex = Female",
       "Types": [
         "StatVarGroup"
       ]
@@ -81,9 +81,9 @@
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
       "Provenance": "",
-      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE064_whosex",
+      "Value": "dc/g/WHOAIR15_age-WHOAgeEnumY55T59_whoenvcause_whosex-WHOSexEnumM",
       "Bytes": null,
-      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Stomach Cancer, Who_sex",
+      "Name": "Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) With Age = 55-59 Years, Who_envcause, Who_sex = Male",
       "Types": [
         "StatVarGroup"
       ]
@@ -92,9 +92,9 @@
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
       "Provenance": "",
-      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE065",
+      "Value": "dc/g/WHOAIR15_age-WHOAgeEnumY55T59_whosex",
       "Bytes": null,
-      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Colon And Rectum Cancers",
+      "Name": "Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) With Age = 55-59 Years, Who_sex",
       "Types": [
         "StatVarGroup"
       ]
@@ -103,9 +103,9 @@
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
       "Provenance": "",
-      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE065_whosex",
+      "Value": "dc/g/WHOAIR15_age-WHOAgeEnumY55T59_whosex-WHOSexEnumF",
       "Bytes": null,
-      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Colon And Rectum Cancers, Who_sex",
+      "Name": "Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) With Age = 55-59 Years, Who_sex = Female",
       "Types": [
         "StatVarGroup"
       ]
@@ -114,9 +114,9 @@
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
       "Provenance": "",
-      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE066",
+      "Value": "dc/g/WHOAIR15_age-WHOAgeEnumY55T59_whosex-WHOSexEnumM",
       "Bytes": null,
-      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Liver Cancer",
+      "Name": "Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) With Age = 55-59 Years, Who_sex = Male",
       "Types": [
         "StatVarGroup"
       ]
@@ -125,9 +125,9 @@
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
       "Provenance": "",
-      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE066_whosex",
+      "Value": "dc/g/WHOAIR15_age-WHOAgeEnumY5T9",
       "Bytes": null,
-      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Liver Cancer, Who_sex",
+      "Name": "Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) With Age = 5-9 Years",
       "Types": [
         "StatVarGroup"
       ]
@@ -136,9 +136,9 @@
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
       "Provenance": "",
-      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE067",
+      "Value": "dc/g/WHOAIR15_age-WHOAgeEnumY5T9_whoenvcause",
       "Bytes": null,
-      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Pancreas Cancer",
+      "Name": "Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) With Age = 5-9 Years, Who_envcause",
       "Types": [
         "StatVarGroup"
       ]
@@ -147,9 +147,9 @@
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
       "Provenance": "",
-      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE067_whosex",
+      "Value": "dc/g/WHOAIR15_age-WHOAgeEnumY5T9_whoenvcause-WHOEnvcauseEnumENVCAUSE039",
       "Bytes": null,
-      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Pancreas Cancer, Who_sex",
+      "Name": "Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) With Age = 5-9 Years, Who_envcause = Lower Respiratory Infections",
       "Types": [
         "StatVarGroup"
       ]
@@ -158,9 +158,9 @@
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
       "Provenance": "",
-      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE068",
+      "Value": "dc/g/WHOAIR15_age-WHOAgeEnumY5T9_whoenvcause-WHOEnvcauseEnumENVCAUSE039_whosex",
       "Bytes": null,
-      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Trachea, Bronchus, Lung Cancers",
+      "Name": "Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) With Age = 5-9 Years, Who_envcause = Lower Respiratory Infections, Who_sex",
       "Types": [
         "StatVarGroup"
       ]
@@ -169,9 +169,9 @@
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
       "Provenance": "",
-      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE068_whosex",
+      "Value": "dc/g/WHOAIR15_age-WHOAgeEnumY5T9_whosex",
       "Bytes": null,
-      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Trachea, Bronchus, Lung Cancers, Who_sex",
+      "Name": "Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) With Age = 5-9 Years, Who_sex",
       "Types": [
         "StatVarGroup"
       ]
@@ -180,9 +180,9 @@
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
       "Provenance": "",
-      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE069",
+      "Value": "dc/g/WHOAIR15_age-WHOAgeEnumY60T64",
       "Bytes": null,
-      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Melanoma And Other Skin Cancers",
+      "Name": "Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) With Age = 60-64 Years",
       "Types": [
         "StatVarGroup"
       ]
@@ -191,9 +191,9 @@
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
       "Provenance": "",
-      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE069_whosex",
+      "Value": "dc/g/WHOAIR15_age-WHOAgeEnumY60T64_whoenvcause",
       "Bytes": null,
-      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Melanoma And Other Skin Cancers, Who_sex",
+      "Name": "Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) With Age = 60-64 Years, Who_envcause",
       "Types": [
         "StatVarGroup"
       ]
@@ -202,9 +202,9 @@
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
       "Provenance": "",
-      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE070",
+      "Value": "dc/g/WHOAIR15_age-WHOAgeEnumY60T64_whoenvcause-WHOEnvcauseEnumENVCAUSE039",
       "Bytes": null,
-      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Breast Cancer",
+      "Name": "Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) With Age = 60-64 Years, Who_envcause = Lower Respiratory Infections",
       "Types": [
         "StatVarGroup"
       ]
@@ -213,9 +213,9 @@
       "SubjectID": "dc/g/UN",
       "Predicate": "specializationOf+",
       "Provenance": "",
-      "Value": "dc/g/WHOGHEDALYNUM_age-WHOAgeEnumY15T29_whoghecauses-WHOGhecausesEnumGHE070_whosex",
+      "Value": "dc/g/WHOAIR15_age-WHOAgeEnumY60T64_whoenvcause-WHOEnvcauseEnumENVCAUSE039_whosex",
       "Bytes": null,
-      "Name": "Disease Burden (number of Disability-adjusted Life Years, DALYs) With Age = 15-29 Years, Who_ghecauses = Breast Cancer, Who_sex",
+      "Name": "Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) With Age = 60-64 Years, Who_envcause = Lower Respiratory Infections, Who_sex",
       "Types": [
         "StatVarGroup"
       ]
