@@ -57,7 +57,8 @@ const (
 
 // Chained Node properties that can be optimized before fetching from Spanner.
 var optimizedChainProps = map[string]string{
-	"containedInPlace": "linkedContainedInPlace",
+	"containedInPlace":       "linkedContainedInPlace",
+	"linkedContainedInPlace": "linkedContainedInPlace",
 }
 
 // Represents optimizations made to Node requests.
@@ -168,7 +169,7 @@ func processNodeResponse(resp *pbv2.NodeResponse, artifacts *nodeArtifacts) {
 		for _, lg := range resp.Data {
 			if nodes, ok := lg.Arcs[optimizedChainProps[artifacts.chainProp]]; ok {
 				lg.Arcs[artifacts.chainProp+CHAIN] = nodes
-				delete(lg.Arcs, artifacts.chainProp)
+				delete(lg.Arcs, optimizedChainProps[artifacts.chainProp])
 			}
 		}
 	}

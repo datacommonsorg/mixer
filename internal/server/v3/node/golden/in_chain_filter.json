@@ -10,7 +10,8 @@
                 "City",
                 "Neighborhood"
               ],
-              "dcid": "geoId/0601458"
+              "dcid": "geoId/0601458",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Alviso",
@@ -18,7 +19,8 @@
                 "City",
                 "Neighborhood"
               ],
-              "dcid": "geoId/0601486"
+              "dcid": "geoId/0601486",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Buena Vista",
@@ -26,7 +28,8 @@
                 "City",
                 "Neighborhood"
               ],
-              "dcid": "geoId/0608848"
+              "dcid": "geoId/0608848",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Burbank",
@@ -34,28 +37,32 @@
                 "City",
                 "Neighborhood"
               ],
-              "dcid": "geoId/0608968"
+              "dcid": "geoId/0608968",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Cambrian Park",
               "types": [
                 "City"
               ],
-              "dcid": "geoId/0610088"
+              "dcid": "geoId/0610088",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Campbell",
               "types": [
                 "City"
               ],
-              "dcid": "geoId/0610345"
+              "dcid": "geoId/0610345",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Cupertino",
               "types": [
                 "City"
               ],
-              "dcid": "geoId/0617610"
+              "dcid": "geoId/0617610",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "East Foothills",
@@ -63,35 +70,40 @@
                 "City",
                 "Neighborhood"
               ],
-              "dcid": "geoId/0620598"
+              "dcid": "geoId/0620598",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Fruitdale",
               "types": [
                 "City"
               ],
-              "dcid": "geoId/0627080"
+              "dcid": "geoId/0627080",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Gilroy",
               "types": [
                 "City"
               ],
-              "dcid": "geoId/0629504"
+              "dcid": "geoId/0629504",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Lexington Hills",
               "types": [
                 "City"
               ],
-              "dcid": "geoId/0641282"
+              "dcid": "geoId/0641282",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Los Altos",
               "types": [
                 "City"
               ],
-              "dcid": "geoId/0643280"
+              "dcid": "geoId/0643280",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Los Altos Hills",
@@ -99,7 +111,8 @@
                 "City",
                 "Town"
               ],
-              "dcid": "geoId/0643294"
+              "dcid": "geoId/0643294",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Los Gatos",
@@ -107,105 +120,120 @@
                 "City",
                 "Town"
               ],
-              "dcid": "geoId/0644112"
+              "dcid": "geoId/0644112",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Loyola",
               "types": [
                 "City"
               ],
-              "dcid": "geoId/0644378"
+              "dcid": "geoId/0644378",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Milpitas",
               "types": [
                 "City"
               ],
-              "dcid": "geoId/0647766"
+              "dcid": "geoId/0647766",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Monte Sereno",
               "types": [
                 "City"
               ],
-              "dcid": "geoId/0648956"
+              "dcid": "geoId/0648956",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Morgan Hill",
               "types": [
                 "City"
               ],
-              "dcid": "geoId/0649278"
+              "dcid": "geoId/0649278",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Mountain View",
               "types": [
                 "City"
               ],
-              "dcid": "geoId/0649670"
+              "dcid": "geoId/0649670",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Palo Alto",
               "types": [
                 "City"
               ],
-              "dcid": "geoId/0655282"
+              "dcid": "geoId/0655282",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "San Jose",
               "types": [
                 "City"
               ],
-              "dcid": "geoId/0668000"
+              "dcid": "geoId/0668000",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "San Martin",
               "types": [
                 "City"
               ],
-              "dcid": "geoId/0668238"
+              "dcid": "geoId/0668238",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Santa Clara",
               "types": [
                 "City"
               ],
-              "dcid": "geoId/0669084"
+              "dcid": "geoId/0669084",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Saratoga",
               "types": [
                 "City"
               ],
-              "dcid": "geoId/0670280"
+              "dcid": "geoId/0670280",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Seven Trees",
               "types": [
                 "City"
               ],
-              "dcid": "geoId/0671074"
+              "dcid": "geoId/0671074",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Stanford",
               "types": [
                 "City"
               ],
-              "dcid": "geoId/0673906"
+              "dcid": "geoId/0673906",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Sunnyvale",
               "types": [
                 "City"
               ],
-              "dcid": "geoId/0677000"
+              "dcid": "geoId/0677000",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Mayfield",
               "types": [
                 "City"
               ],
-              "dcid": "wikidataId/Q122853535"
+              "dcid": "wikidataId/Q122853535",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Lexington",
@@ -213,7 +241,8 @@
                 "City",
                 "Village"
               ],
-              "dcid": "wikidataId/Q14946652"
+              "dcid": "wikidataId/Q14946652",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Cambrian Park",
@@ -221,7 +250,8 @@
                 "City",
                 "Neighborhood"
               ],
-              "dcid": "wikidataId/Q1911837"
+              "dcid": "wikidataId/Q1911837",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Sunol-Midtown",
@@ -229,7 +259,8 @@
                 "City",
                 "Neighborhood"
               ],
-              "dcid": "wikidataId/Q2214519"
+              "dcid": "wikidataId/Q2214519",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Alma",
@@ -237,7 +268,8 @@
                 "City",
                 "Village"
               ],
-              "dcid": "wikidataId/Q4733495"
+              "dcid": "wikidataId/Q4733495",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Patchen",
@@ -245,7 +277,8 @@
                 "City",
                 "Village"
               ],
-              "dcid": "wikidataId/Q7144355"
+              "dcid": "wikidataId/Q7144355",
+              "provenance_id": "dc/base/GeneratedGraphs"
             },
             {
               "name": "Wrights",
@@ -253,7 +286,8 @@
                 "City",
                 "Village"
               ],
-              "dcid": "wikidataId/Q8038293"
+              "dcid": "wikidataId/Q8038293",
+              "provenance_id": "dc/base/GeneratedGraphs"
             }
           ]
         }
