@@ -146,30 +146,31 @@ func getNextToken(offset int, dataSourceID string) (string, error) {
 	return nextToken, nil
 }
 
-// processNodeRequest optimizes a Node request for fetching from Spanner.
+// processNodeRequest optimizes a Node request for fetching from Spanner, modifying the input arc in-place.
 func processNodeRequest(arc *v2.Arc) *nodeArtifacts {
 	artifacts := &nodeArtifacts{}
 
 	// Maybe optimize chaining.
 	if arc.Decorator == CHAIN {
-		if replacement, ok := optimizedChainProps[arc.SingleProp]; ok {
+		if replacementProp, ok := optimizedChainProps[arc.SingleProp]; ok {
 			artifacts.chainProp = arc.SingleProp
 			arc.Decorator = ""
-			arc.SingleProp = replacement
+			arc.SingleProp = replacementProp
 		}
 	}
 
 	return artifacts
 }
 
-// processNodeResponse cleans up the intermediate Node response based on any optimizations made to the request.
+// processNodeResponse cleans up the intermediate Node response based on request optimizations, modifying the response in-place.
 func processNodeResponse(resp *pbv2.NodeResponse, artifacts *nodeArtifacts) {
 	// Maybe optimize chaining.
 	if artifacts.chainProp != "" {
+		replacementProp := optimizedChainProps[artifacts.chainProp]
 		for _, lg := range resp.Data {
-			if nodes, ok := lg.Arcs[optimizedChainProps[artifacts.chainProp]]; ok {
+			if nodes, ok := lg.Arcs[replacementProp]; ok {
 				lg.Arcs[artifacts.chainProp+CHAIN] = nodes
-				delete(lg.Arcs, optimizedChainProps[artifacts.chainProp])
+				delete(lg.Arcs, replacementProp)
 			}
 		}
 	}

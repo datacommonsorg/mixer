@@ -73,7 +73,7 @@ func TestProcessNodeRequest(t *testing.T) {
 		}
 
 		if !reflect.DeepEqual(actual, c.artifacts) {
-			t.Errorf("Artifacts are not equal.\nExpected: %+v\nActual:   %+v", actual, c.artifacts)
+			t.Errorf("Artifacts are not equal.\nExpected: %+v\nActual:   %+v", c.artifacts, actual)
 		}
 	}
 }
