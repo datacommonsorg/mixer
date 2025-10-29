@@ -21,6 +21,7 @@ import (
 	"testing"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
@@ -58,7 +59,7 @@ func TestNode(t *testing.T) {
 			goldenFile: "property_values.json",
 		},
 	} {
-		got, err := ds.Node(ctx, c.req)
+		got, err := ds.Node(ctx, c.req, datasources.DefaultPageSize)
 		if err != nil {
 			t.Fatalf("Node error (%v): %v", c.goldenFile, err)
 		}

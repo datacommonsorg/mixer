@@ -18,7 +18,7 @@ package golden
 import (
 	"context"
 
-	"github.com/datacommonsorg/mixer/internal/server/spanner"
+	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
 
@@ -46,7 +46,7 @@ var nodePropsTestCases = []struct {
 var nodeOutEdgesByIDTestCases = []struct {
 	ids    []string
 	arc    *v2.Arc
-	offset int32
+	offset int
 	golden string
 }{
 	{
@@ -103,7 +103,7 @@ var nodeOutEdgesByIDTestCases = []struct {
 var nodeInEdgesByIDTestCases = []struct {
 	ids    []string
 	arc    *v2.Arc
-	offset int32
+	offset int
 	golden string
 }{
 	{
@@ -182,7 +182,7 @@ var nodeInEdgesByIDTestCases = []struct {
 			Out:        false,
 			SingleProp: "typeOf",
 		},
-		offset: spanner.PAGE_SIZE,
+		offset: datasources.DefaultPageSize,
 		golden: "get_node_edges_second_page",
 	},
 	{
@@ -202,7 +202,7 @@ var nodeInEdgesByIDTestCases = []struct {
 			SingleProp: "specializationOf",
 			Decorator:  "+",
 		},
-		offset: spanner.PAGE_SIZE,
+		offset: datasources.DefaultPageSize,
 		golden: "get_node_edges_second_page_chain",
 	},
 }

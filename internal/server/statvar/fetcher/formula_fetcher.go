@@ -32,6 +32,8 @@ import (
 )
 
 const (
+	// Use large page size for cache, since this is internal and only used at startup.
+	cachePageSize           = 5000
 	inputPropertyExpression = "inputPropertyExpression"
 	outputProperty          = "outputProperty"
 	StatisticalCalculation  = "StatisticalCalculation"
@@ -234,7 +236,7 @@ func fetchStatisticalCalculationDcids(
 			Nodes:    []string{StatisticalCalculation},
 			Property: "<-" + typeOf,
 		}
-		resp, err := ds.Node(ctx, req)
+		resp, err := ds.Node(ctx, req, cachePageSize)
 		if err != nil {
 			return nil, err
 		}
@@ -266,7 +268,7 @@ func fetchStatisticalCalculationProperties(
 			Nodes:    dcids,
 			Property: "->[" + outputProperty + ", " + inputPropertyExpression + "]",
 		}
-		resp, err := ds.Node(ctx, req)
+		resp, err := ds.Node(ctx, req, cachePageSize)
 		if err != nil {
 			return nil, err
 		}
