@@ -46,7 +46,7 @@ func (sds *SpannerDataSource) Id() string {
 }
 
 // Node retrieves node data from Spanner.
-func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
 	arcs, err := v2.ParseProperty(req.GetProperty())
 	if err != nil {
 		return nil, err
@@ -76,15 +76,14 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv2.NodeRequest) (
 		if err != nil {
 			return nil, fmt.Errorf("error decoding pagination info: %v", err)
 		}
-		edges, err := sds.client.GetNodeEdgesByID(ctx, req.Nodes, arc, offset)
+		edges, err := sds.client.GetNodeEdgesByID(ctx, req.Nodes, arc, pageSize, offset)
 		if err != nil {
 			return nil, fmt.Errorf("error getting node edges: %v", err)
 		}
-		resp, err = nodeEdgesToNodeResponse(req.Nodes, edges, sds.Id(), offset)
+		resp, err = nodeEdgesToNodeResponse(req.Nodes, edges, sds.Id(), pageSize, offset)
 		if err != nil {
 			return nil, err
 		}
-	}
 	processNodeResponse(resp, artifacts)
 	return resp, nil
 }

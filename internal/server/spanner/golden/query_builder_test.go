@@ -23,6 +23,7 @@ import (
 	"testing"
 
 	cloudSpanner "cloud.google.com/go/spanner"
+	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
@@ -47,7 +48,7 @@ func TestGetNodeOutEdgesByIDQuery(t *testing.T) {
 		goldenFile := c.golden + ".sql"
 
 		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return spanner.GetNodeEdgesByIDQuery(c.ids, c.arc, c.offset), nil
+			return spanner.GetNodeEdgesByIDQuery(c.ids, c.arc, datasources.DefaultPageSize, c.offset), nil
 		})
 	}
 }
@@ -59,7 +60,7 @@ func TestGetNodeInEdgesByIDQuery(t *testing.T) {
 		goldenFile := c.golden + ".sql"
 
 		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return spanner.GetNodeEdgesByIDQuery(c.ids, c.arc, c.offset), nil
+			return spanner.GetNodeEdgesByIDQuery(c.ids, c.arc, datasources.DefaultPageSize, c.offset), nil
 		})
 	}
 }

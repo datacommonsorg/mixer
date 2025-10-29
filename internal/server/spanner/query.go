@@ -27,8 +27,6 @@ import (
 const (
 	// Maximum number of edge hops to traverse for chained properties.
 	MAX_HOPS = 10
-	// Page size for paginated responses.
-	PAGE_SIZE = 5000
 )
 
 // GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction and returns a map.
@@ -61,7 +59,7 @@ func (sc *SpannerClient) GetNodeProps(ctx context.Context, ids []string, out boo
 }
 
 // GetNodeEdgesByID retrieves node edges from Spanner and returns a map of subjectID to Edges.
-func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc, offset int32) (map[string][]*Edge, error) {
+func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc, pageSize, offset int) (map[string][]*Edge, error) {
 	edges := make(map[string][]*Edge)
 	if len(ids) == 0 {
 		return edges, nil
@@ -72,7 +70,7 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 
 	err := sc.queryAndCollect(
 		ctx,
-		*GetNodeEdgesByIDQuery(ids, arc, offset),
+		*GetNodeEdgesByIDQuery(ids, arc, pageSize, offset),
 		func() interface{} {
 			return &Edge{}
 		},

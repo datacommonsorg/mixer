@@ -101,7 +101,7 @@ func nodePropsToNodeResponse(propsBySubjectID map[string][]*Property) *pbv2.Node
 }
 
 // getOffset returns the offset for a given Spanner data source id.
-func getOffset(nextToken, dataSourceID string) (int32, error) {
+func getOffset(nextToken, dataSourceID string) (int, error) {
 	if nextToken == "" {
 		return 0, nil
 	}
@@ -117,7 +117,7 @@ func getOffset(nextToken, dataSourceID string) (int32, error) {
 			if !ok {
 				return 0, fmt.Errorf("found different data source info for spanner data source id: %s", dataSourceID)
 			}
-			return spannerInfo.SpannerInfo.GetOffset(), nil
+			return int(spannerInfo.SpannerInfo.GetOffset()), nil
 		}
 	}
 
@@ -125,14 +125,14 @@ func getOffset(nextToken, dataSourceID string) (int32, error) {
 }
 
 // getNextToken encodes next offset in a nextToken string.
-func getNextToken(offset int32, dataSourceID string) (string, error) {
+func getNextToken(offset int, dataSourceID string) (string, error) {
 	pi := &pbv2.Pagination{
 		Info: []*pbv2.Pagination_DataSourceInfo{
 			{
 				Id: dataSourceID,
 				DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
 					SpannerInfo: &pbv2.SpannerInfo{
-						Offset: offset,
+						Offset: int32(offset),
 					},
 				},
 			},
@@ -176,7 +176,7 @@ func processNodeResponse(resp *pbv2.NodeResponse, artifacts *nodeArtifacts) {
 }
 
 // nodeEdgesToNodeResponse converts a map from subject id to its edges to a NodeResponse proto.
-func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge, id string, offset int32) (*pbv2.NodeResponse, error) {
+func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge, id string, pageSize, offset int) (*pbv2.NodeResponse, error) {
 	nodeResponse := &pbv2.NodeResponse{
 		Data: make(map[string]*pbv2.LinkedGraph),
 	}
@@ -194,12 +194,12 @@ func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge
 
 		rows += len(edges)
 
-		// We requested PAGE_SIZE+1 rows,
+		// We requested pageSize+1 rows,
 		// so having this many rows indicates that we have at least one more request,
 		// so generate nextToken.
-		if rows == PAGE_SIZE+1 && nodeResponse.NextToken == "" {
+		if rows == pageSize+1 && nodeResponse.NextToken == "" {
 			edges = edges[:len(edges)-1]
-			nextToken, err := getNextToken(offset+PAGE_SIZE, id)
+			nextToken, err := getNextToken(offset+pageSize, id)
 			if err != nil {
 				return nil, err
 			}
