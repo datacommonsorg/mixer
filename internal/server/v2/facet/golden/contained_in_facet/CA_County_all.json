@@ -35,12 +35,6 @@
               "latest_date": "2023"
             },
             {
-              "facet_id": "2564251937",
-              "obs_count": 58,
-              "earliest_date": "2010",
-              "latest_date": "2022"
-            },
-            {
               "facet_id": "2825511676",
               "obs_count": 58,
               "earliest_date": "1999",
@@ -142,10 +136,6 @@
       "import_name": "CensusPEP",
       "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
       "measurement_method": "CensusPEPSurvey"
-    },
-    "2564251937": {
-      "import_name": "CDC_Social_Vulnerability_Index",
-      "provenance_url": "https://www.atsdr.cdc.gov/placeandhealth/svi/data_documentation_download.html"
     },
     "2825511676": {
       "import_name": "CDC_Mortality_UnderlyingCause",

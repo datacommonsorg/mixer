@@ -3261,6 +3261,14 @@
       "dcid": "Count_MedicalConditionIncident_Female_ConditionHepatitisC"
     },
     {
+      "name": "Count of female student with tertiary education",
+      "dcid": "Count_Student_Female_TertiaryEducation"
+    },
+    {
+      "name": "Count of female student with university education",
+      "dcid": "Count_Student_Female_UniversityEducation"
+    },
+    {
       "name": "Count of female teachers who are civil servant vacancy professors",
       "dcid": "Count_Teacher_CivilServantVacancyProfessor_Female"
     },
@@ -3991,14 +3999,6 @@
     {
       "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Trichuriasis, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE035__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Trypanosomiasis, Female]",
-      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE023__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Tuberculosis, Female]",
-      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE003__SEX--F"
     }
   ],
   "matches": [

@@ -884,10 +884,20 @@
         "wikidataId/Q506877": {}
       }
     },
+    "Count_HailEvent": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
     "Count_HeatTemperatureEvent": {
       "by_entity": {
         "wikidataId/Q1951": {},
         "wikidataId/Q506877": {}
+      }
+    },
+    "Count_HeavyRainEvent": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
       }
     },
     "Count_Person": {
@@ -4688,6 +4698,11 @@
       }
     },
     "Count_Student_SchoolGrade9_PublicSchool": {
+      "by_entity": {
+        "wikidataId/Q1951": {}
+      }
+    },
+    "Count_ThunderstormWindEvent": {
       "by_entity": {
         "wikidataId/Q1951": {}
       }

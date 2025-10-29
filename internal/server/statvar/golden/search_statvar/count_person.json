@@ -25,6 +25,142 @@
       "dcid": "Count_Person_6To23Month"
     },
     {
+      "name": "Count of people with diabetes mellitus",
+      "dcid": "Count_Person_DiabetesMellitus"
+    },
+    {
+      "name": "Count of person with bachelor's degree in accounting and taxation major",
+      "dcid": "Count_Person_BachelorOfAccountingAndTaxationMajor"
+    },
+    {
+      "name": "Count of person with bachelor's degree in agricultural engineering, forestry engineering, and fisheries",
+      "dcid": "Count_Person_BachelorOfAgriculturalEngineeringOrForestryEngineeringOrFisheries"
+    },
+    {
+      "name": "Count of person with bachelor's degree in agricultural engineering, forestry engineering, fisheries, and veterinary",
+      "dcid": "Count_Person_BachelorOfAgriculturalEngineeringOrForestryEngineeringOrFisheriesOrVeterinary"
+    },
+    {
+      "name": "Count of person with bachelor's degree in architecture and related services major or construction engineering",
+      "dcid": "Count_Person_BachelorOfArchitectureAndRelatedServicesMajorOrConstructionEngineering"
+    },
+    {
+      "name": "Count of person with bachelor's degree in arts major",
+      "dcid": "Count_Person_BachelorOfArtsMajor"
+    },
+    {
+      "name": "Count of person with bachelor's degree in biological and biomedical sciences major",
+      "dcid": "Count_Person_BachelorOfBiologicalAndBiomedicalSciencesMajor"
+    },
+    {
+      "name": "Count of person with bachelor's degree in business administration and management or legal professions and studies major",
+      "dcid": "Count_Person_BachelorOfBusinessAdministrationAndManagementOrLegalProfessionsAndStudiesMajor"
+    },
+    {
+      "name": "Count of person with bachelor's degree in communication journalism and related major",
+      "dcid": "Count_Person_BachelorOfCommunicationJournalismAndRelatedMajor"
+    },
+    {
+      "name": "Count of person with bachelor's degree in economy major",
+      "dcid": "Count_Person_BachelorOfEconomyMajor"
+    },
+    {
+      "name": "Count of person with bachelor's degree in engineering major or industries",
+      "dcid": "Count_Person_BachelorOfEngineeringMajorOrIndustries"
+    },
+    {
+      "name": "Count of person with bachelor's degree in engineering major or production engineering",
+      "dcid": "Count_Person_BachelorOfEngineeringMajorOrProductionEngineering"
+    },
+    {
+      "name": "Count of person with bachelor's degree in engineering major, engineering manufacturing, and construction engineering",
+      "dcid": "Count_Person_BachelorOfEngineeringMajorOrEngineeringManufacturingOrConstructionEngineering"
+    },
+    {
+      "name": "Count of person with bachelor's degree in environment major",
+      "dcid": "Count_Person_BachelorOfEnvironmentMajor"
+    },
+    {
+      "name": "Count of person with bachelor's degree in general basic curriculum major",
+      "dcid": "Count_Person_BachelorOfGeneralBasicCurriculumMajor"
+    },
+    {
+      "name": "Count of person with bachelor's degree in health related major",
+      "dcid": "Count_Person_BachelorOfHealthRelatedMajor"
+    },
+    {
+      "name": "Count of person with bachelor's degree in information and communications technologies major",
+      "dcid": "Count_Person_BachelorOfInformationAndCommunicationsTechnologiesMajor"
+    },
+    {
+      "name": "Count of person with bachelor's degree in languages",
+      "dcid": "Count_Person_BachelorOfLanguages"
+    },
+    {
+      "name": "Count of person with bachelor's degree in legal professions and studies major",
+      "dcid": "Count_Person_BachelorOfLegalProfessionsAndStudiesMajor"
+    },
+    {
+      "name": "Count of person with bachelor's degree in management and administration major",
+      "dcid": "Count_Person_BachelorOfManagementAndAdministrationMajor"
+    },
+    {
+      "name": "Count of person with bachelor's degree in math and statistics major",
+      "dcid": "Count_Person_BachelorOfMathAndStatisticsMajor"
+    },
+    {
+      "name": "Count of person with bachelor's degree in medicine",
+      "dcid": "Count_Person_BachelorOfMedicine"
+    },
+    {
+      "name": "Count of person with bachelor's degree in natural sciences major",
+      "dcid": "Count_Person_BachelorOfNaturalSciencesMajor"
+    },
+    {
+      "name": "Count of person with bachelor's degree in natural sciences major or math and statistics major",
+      "dcid": "Count_Person_BachelorOfNaturalSciencesMajorOrMathAndStatisticsMajor"
+    },
+    {
+      "name": "Count of person with bachelor's degree in nursing and midwifery",
+      "dcid": "Count_Person_BachelorOfNursingAndMidwifery"
+    },
+    {
+      "name": "Count of person with bachelor's degree in oral andsetMaxillofacial Studies",
+      "dcid": "Count_Person_BachelorOfOralAndMaxillofacialStudies"
+    },
+    {
+      "name": "Count of person with bachelor's degree in pharmacology",
+      "dcid": "Count_Person_BachelorOfPharmacology"
+    },
+    {
+      "name": "Count of person with bachelor's degree in philosophy major",
+      "dcid": "Count_Person_BachelorOfPhilosophyMajor"
+    },
+    {
+      "name": "Count of person with bachelor's degree in production engineering processing engineering",
+      "dcid": "Count_Person_BachelorOfProductionEngineeringOrProcessingEngineering"
+    },
+    {
+      "name": "Count of person with bachelor's degree in services related major",
+      "dcid": "Count_Person_BachelorOfServicesRelatedMajor"
+    },
+    {
+      "name": "Count of person with bachelor's degree in social sciences major or communication journalism and related major",
+      "dcid": "Count_Person_BachelorOfSocialSciencesMajorOrCommunicationJournalismAndRelatedMajor"
+    },
+    {
+      "name": "Count of person with bachelor's degree in social welfare",
+      "dcid": "Count_Person_BachelorOfSocialWelfare"
+    },
+    {
+      "name": "Count of person with bachelor's degree in traditional",
+      "dcid": "Count_Person_BachelorOfTraditional"
+    },
+    {
+      "name": "Count of person with bachelor's degree in veterinary medicine major",
+      "dcid": "Count_Person_BachelorOfVeterinaryMedicineMajor"
+    },
+    {
       "name": "Direct Purchasers of Health Insurance",
       "dcid": "Count_Person_WithDirectPurchaseHealthInsurance"
     },
@@ -2857,10 +2993,6 @@
       "dcid": "Count_Person_15OrLessYears_AsAFractionOf_Count_Person"
     },
     {
-      "name": "Population connected to independent treatment",
-      "dcid": "Count_Person_WasteWaterIndependentlyTreated_PerWaterTreatmentSystem"
-    },
-    {
       "name": "Population covered under Aadhaar (%)",
       "dcid": "Count_Person_Aadhaar_AsAFractionOf_Count_Person"
     },
@@ -2963,18 +3095,6 @@
     {
       "name": "Proportion of the population (out of total eligible population) receiving social protection benefits under Maternity Benefit",
       "dcid": "Count_Person_ReceivingSocialProtectionBenefitUnderMaternityBenefit_AsAFractionOf_Count_Person_EligibleSocialProtectionBenefitUnderMaternityBenefit"
-    },
-    {
-      "name": "Public total treatment (connected to a wastewater treatment plant)",
-      "dcid": "Count_Person_WasteWaterTreatmentPlant_PerWaterTreatmentType"
-    },
-    {
-      "name": "Total connected to wastewater treatment",
-      "dcid": "Count_Person_WasteWaterTreated_PerWaterTreatmentStatus"
-    },
-    {
-      "name": "Total public sewerage (% of resident population connected to a wastewater collecting system), Population connected to the public sewerage without treatment",
-      "dcid": "Count_Person_PublicSewerageWithoutTreatment_PerWaterTreatmentType"
     },
     {
       "name": "African American Farmers",
@@ -3161,12 +3281,256 @@
       "dcid": "Count_Person_InvolvedInCrash_NotMotorVehicleOccupant"
     },
     {
+      "name": "Count of people 15 to 19 years old in the labor force",
+      "dcid": "Count_Person_15To19Years_InLaborForce"
+    },
+    {
+      "name": "Count of people 15 to 19 years old in the potential labor force due to labor underutilization",
+      "dcid": "Count_Person_15To19Years_LaborUnderutilizedPotentialLaborForce"
+    },
+    {
+      "name": "Count of people 15 to 19 years old who are employed",
+      "dcid": "Count_Person_15To19Years_Employed"
+    },
+    {
+      "name": "Count of people 15 to 19 years old who are time-related underemployed due to labor underutilization",
+      "dcid": "Count_Person_15To19Years_LaborUnderutilizedTimeRelatedUnderemployed"
+    },
+    {
+      "name": "Count of people 15 to 19 years old who are underutilized labor",
+      "dcid": "Count_Person_15To19Years_LaborUnderutilized"
+    },
+    {
+      "name": "Count of people 20 to 24 years old in the labor force",
+      "dcid": "Count_Person_20To24Years_InLaborForce"
+    },
+    {
+      "name": "Count of people 20 to 24 years old in the potential labor force due to labor underutilization",
+      "dcid": "Count_Person_20To24Years_LaborUnderutilizedPotentialLaborForce"
+    },
+    {
+      "name": "Count of people 20 to 24 years old who are time-related underemployed due to labor underutilization",
+      "dcid": "Count_Person_20To24Years_LaborUnderutilizedTimeRelatedUnderemployed"
+    },
+    {
+      "name": "Count of people 20 to 24 years old who are underutilized labor",
+      "dcid": "Count_Person_20To24Years_LaborUnderutilized"
+    },
+    {
+      "name": "Count of people 25 to 29 years old in the potential labor force due to labor underutilization",
+      "dcid": "Count_Person_25To29Years_LaborUnderutilizedPotentialLaborForce"
+    },
+    {
+      "name": "Count of people 25 to 29 years old who are time-related underemployed due to labor underutilization",
+      "dcid": "Count_Person_25To29Years_LaborUnderutilizedTimeRelatedUnderemployed"
+    },
+    {
+      "name": "Count of people 25 to 29 years old who are underutilized labor",
+      "dcid": "Count_Person_25To29Years_LaborUnderutilized"
+    },
+    {
+      "name": "Count of people 30 to 34 years old in the potential labor force due to labor underutilization",
+      "dcid": "Count_Person_30To34Years_LaborUnderutilizedPotentialLaborForce"
+    },
+    {
+      "name": "Count of people 30 to 34 years old who are time-related underemployed due to labor underutilization",
+      "dcid": "Count_Person_30To34Years_LaborUnderutilizedTimeRelatedUnderemployed"
+    },
+    {
+      "name": "Count of people 30 to 34 years old who are underutilized labor",
+      "dcid": "Count_Person_30To34Years_LaborUnderutilized"
+    },
+    {
+      "name": "Count of people 35 to 39 years old in the labor force",
+      "dcid": "Count_Person_35To39Years_InLaborForce"
+    },
+    {
+      "name": "Count of people 35 to 39 years old in the potential labor force due to labor underutilization",
+      "dcid": "Count_Person_35To39Years_LaborUnderutilizedPotentialLaborForce"
+    },
+    {
+      "name": "Count of people 35 to 39 years old who are time-related underemployed due to labor underutilization",
+      "dcid": "Count_Person_35To39Years_LaborUnderutilizedTimeRelatedUnderemployed"
+    },
+    {
+      "name": "Count of people 35 to 39 years old who are underutilized labor",
+      "dcid": "Count_Person_35To39Years_LaborUnderutilized"
+    },
+    {
+      "name": "Count of people 40 to 44 years old in the labor force",
+      "dcid": "Count_Person_40To44Years_InLaborForce"
+    },
+    {
+      "name": "Count of people 40 to 44 years old in the potential labor force due to labor underutilization",
+      "dcid": "Count_Person_40To44Years_LaborUnderutilizedPotentialLaborForce"
+    },
+    {
+      "name": "Count of people 40 to 44 years old who are time-related underemployed due to labor underutilization",
+      "dcid": "Count_Person_40To44Years_LaborUnderutilizedTimeRelatedUnderemployed"
+    },
+    {
+      "name": "Count of people 40 to 44 years old who are underutilized labor",
+      "dcid": "Count_Person_40To44Years_LaborUnderutilized"
+    },
+    {
+      "name": "Count of people 45 to 49 years old in the labor force",
+      "dcid": "Count_Person_45To49Years_InLaborForce"
+    },
+    {
+      "name": "Count of people 45 to 49 years old in the potential labor force due to labor underutilization",
+      "dcid": "Count_Person_45To49Years_LaborUnderutilizedPotentialLaborForce"
+    },
+    {
+      "name": "Count of people 45 to 49 years old who are time-related underemployed due to labor underutilization",
+      "dcid": "Count_Person_45To49Years_LaborUnderutilizedTimeRelatedUnderemployed"
+    },
+    {
+      "name": "Count of people 45 to 49 years old who are underutilized labor",
+      "dcid": "Count_Person_45To49Years_LaborUnderutilized"
+    },
+    {
+      "name": "Count of people 50 to 54 years old in the labor force",
+      "dcid": "Count_Person_50To54Years_InLaborForce"
+    },
+    {
+      "name": "Count of people 50 to 54 years old in the potential labor force due to labor underutilization",
+      "dcid": "Count_Person_50To54Years_LaborUnderutilizedPotentialLaborForce"
+    },
+    {
+      "name": "Count of people 50 to 54 years old who are time-related underemployed due to labor underutilization",
+      "dcid": "Count_Person_50To54Years_LaborUnderutilizedTimeRelatedUnderemployed"
+    },
+    {
+      "name": "Count of people 50 to 54 years old who are underutilized labor",
+      "dcid": "Count_Person_50To54Years_LaborUnderutilized"
+    },
+    {
+      "name": "Count of people 55 to 59 years old in the potential labor force due to labor underutilization",
+      "dcid": "Count_Person_55To59Years_LaborUnderutilizedPotentialLaborForce"
+    },
+    {
+      "name": "Count of people 55 to 59 years old who are time-related underemployed due to labor underutilization",
+      "dcid": "Count_Person_55To59Years_LaborUnderutilizedTimeRelatedUnderemployed"
+    },
+    {
+      "name": "Count of people 55 to 59 years old who are underutilized labor",
+      "dcid": "Count_Person_55To59Years_LaborUnderutilized"
+    },
+    {
+      "name": "Count of people 60 to 64 years old in the labor force",
+      "dcid": "Count_Person_60To64Years_InLaborForce"
+    },
+    {
+      "name": "Count of people 60 to 64 years old in the potential labor force due to labor underutilization",
+      "dcid": "Count_Person_60To64Years_LaborUnderutilizedPotentialLaborForce"
+    },
+    {
+      "name": "Count of people 60 to 64 years old who are time-related underemployed due to labor underutilization",
+      "dcid": "Count_Person_60To64Years_LaborUnderutilizedTimeRelatedUnderemployed"
+    },
+    {
+      "name": "Count of people 60 to 64 years old who are underutilized labor",
+      "dcid": "Count_Person_60To64Years_LaborUnderutilized"
+    },
+    {
+      "name": "Count of people 65 to 69 years old in the potential labor force due to labor underutilization",
+      "dcid": "Count_Person_65To69Years_LaborUnderutilizedPotentialLaborForce"
+    },
+    {
+      "name": "Count of people 65 to 69 years old who are time-related underemployed due to labor underutilization",
+      "dcid": "Count_Person_65To69Years_LaborUnderutilizedTimeRelatedUnderemployed"
+    },
+    {
+      "name": "Count of people 65 to 69 years old who are underutilized labor",
+      "dcid": "Count_Person_65To69Years_LaborUnderutilized"
+    },
+    {
+      "name": "Count of people 70 or more years employed",
+      "dcid": "Count_Person_70OrMoreYears_Employed"
+    },
+    {
+      "name": "Count of people 70 or more years old in the labor force",
+      "dcid": "Count_Person_70OrMoreYears_InLaborForce"
+    },
+    {
+      "name": "Count of people 70 or more years old in the potential labor force due to labor underutilization",
+      "dcid": "Count_Person_70OrMoreYears_LaborUnderutilizedPotentialLaborForce"
+    },
+    {
+      "name": "Count of people 70 or more years old who are time-related underemployed due to labor underutilization",
+      "dcid": "Count_Person_70OrMoreYears_LaborUnderutilizedTimeRelatedUnderemployed"
+    },
+    {
+      "name": "Count of people 70 or more years old who are underutilized labor",
+      "dcid": "Count_Person_70OrMoreYears_LaborUnderutilized"
+    },
+    {
+      "name": "Count of people employed as technicians and associate professional",
+      "dcid": "Count_Person_Employed_TechnicianAndAssociateProfessional"
+    },
+    {
+      "name": "Count of people employed clerical workers.",
+      "dcid": "Count_Person_Employed_ClericalWorker"
+    },
+    {
+      "name": "Count of people employed elementary workers.",
+      "dcid": "Count_Person_Employed_ElementaryWorker"
+    },
+    {
+      "name": "Count of people employed in agriculture, forestry, and fishing.",
+      "dcid": "Count_Person_Employed_AgricultureForestryFishing"
+    },
+    {
+      "name": "Count of people employed in crafts and trades.",
+      "dcid": "Count_Person_Employed_CraftsAndTrade"
+    },
+    {
+      "name": "Count of people employed in services and sales.",
+      "dcid": "Count_Person_Employed_ServicesAndSales"
+    },
+    {
+      "name": "Count of people employed managers.",
+      "dcid": "Count_Person_Employed_Manager"
+    },
+    {
+      "name": "Count of people employed plant, machine operators and assemblers.",
+      "dcid": "Count_Person_Employed_PlantOperatorAndMachineOperatorAndMachineAssemble"
+    },
+    {
+      "name": "Count of people employed professionals.",
+      "dcid": "Count_Person_Employed_Professional"
+    },
+    {
       "name": "Count of the number of motorists in the crash",
       "dcid": "Count_Person_InvolvedInCrash_Motorists"
     },
     {
       "name": "Count of the number of non-motorists in the crash",
       "dcid": "Count_Person_InvolvedInCrash_NonMotorists"
+    },
+    {
+      "name": "Count of unemployed people with a bachelors degree or diploma",
+      "dcid": "Count_Person_EducationalAttainmentBachelorsDegreeOrDiploma_Unemployed"
+    },
+    {
+      "name": "Count of unemployed people with a masters degree or doctorate",
+      "dcid": "Count_Person_EducationalAttainmentMastersDegreeOrDoctorateDegree_Unemployed"
+    },
+    {
+      "name": "Count of unemployed people with lower secondary education",
+      "dcid": "Count_Person_Unemployed_LowerSecondaryEducation"
+    },
+    {
+      "name": "Count of unemployed people with no formal education",
+      "dcid": "Count_Person_EducationalAttainmentNoEducation_Unemployed"
+    },
+    {
+      "name": "Count of unemployed people with primary education",
+      "dcid": "Count_Person_Unemployed_PrimaryEducation"
+    },
+    {
+      "name": "Count of unemployed people with specialized secondary education",
+      "dcid": "Count_Person_Unemployed_SpecializedSecondarySchool"
     },
     {
       "name": "Disabled Population Living in Nursing Facilities",
@@ -3635,370 +3999,6 @@
     {
       "name": "Native Hawaiian/Other Pacific Islander Population With Disabilities",
       "dcid": "Count_Person_WithDisability_NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Non Hispanic African American Alone Male Population",
-      "dcid": "Count_Person_Male_NotHispanicOrLatino_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Non Hispanic African American Male Population",
-      "dcid": "Count_Person_Male_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Non Hispanic American Indian/Alaska Native Alone Male Population",
-      "dcid": "Count_Person_Male_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Non Hispanic American Indian/Alaska Native Male Population",
-      "dcid": "Count_Person_Male_NotHispanicOrLatino_AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "name": "Non Hispanic Asian Alone Male Population",
-      "dcid": "Count_Person_Male_NotHispanicOrLatino_AsianAlone"
-    },
-    {
-      "name": "Non Hispanic Asian Male Population",
-      "dcid": "Count_Person_Male_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Non Hispanic Female Population",
-      "dcid": "Count_Person_Female_NotHispanicOrLatino"
-    },
-    {
-      "name": "Non Hispanic Female Population Identifying as American Indian/Alaska Native Alone",
-      "dcid": "Count_Person_Female_NotHispanicOrLatino_AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "name": "Non Hispanic Female Population Identifying as American Indian/Alaska Native, Monoracial/Multiracial",
-      "dcid": "Count_Person_Female_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Non Hispanic Female Population Identifying as Asian Alone",
-      "dcid": "Count_Person_Female_NotHispanicOrLatino_AsianAlone"
-    },
-    {
-      "name": "Non Hispanic Female Population Identifying as Asian, Monoracial/Multiracial",
-      "dcid": "Count_Person_Female_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Non Hispanic Female Population Identifying as Asian/Pacific Islander",
-      "dcid": "Count_Person_Female_NotHispanicOrLatino_AsianOrPacificIslander"
-    },
-    {
-      "name": "Non Hispanic Female Population Identifying as Black/African American Alone",
-      "dcid": "Count_Person_Female_NotHispanicOrLatino_BlackOrAfricanAmericanAlone"
-    },
-    {
-      "name": "Non Hispanic Female Population Identifying as Black/African American, Monoracial/Multiracial",
-      "dcid": "Count_Person_Female_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Non Hispanic Female Population Identifying as Multiracial",
-      "dcid": "Count_Person_Female_NotHispanicOrLatino_TwoOrMoreRaces"
-    },
-    {
-      "name": "Non Hispanic Female Population Identifying as Native Hawaiian/Other Pacific Islander Alone",
-      "dcid": "Count_Person_Female_NotHispanicOrLatino_NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Non Hispanic Female Population Identifying as Native Hawaiian/Other Pacific Islander, Monoracial/Multiracial",
-      "dcid": "Count_Person_Female_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Non Hispanic Female Population Identifying as White, Monoracial/Multiracial",
-      "dcid": "Count_Person_Female_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Non Hispanic Male Population",
-      "dcid": "Count_Person_Male_NotHispanicOrLatino"
-    },
-    {
-      "name": "Non Hispanic Multiracial Male Population",
-      "dcid": "Count_Person_Male_NotHispanicOrLatino_TwoOrMoreRaces"
-    },
-    {
-      "name": "Non Hispanic Native Hawaiian/Other Pacific Islander Alone Male Population",
-      "dcid": "Count_Person_Male_NotHispanicOrLatino_NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Non Hispanic Native Hawaiian/Other Pacific Islander Male Population",
-      "dcid": "Count_Person_Male_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Non Hispanic Population in Group Quarters",
-      "dcid": "Count_Person_NotHispanicOrLatino_ResidesInGroupQuarters"
-    },
-    {
-      "name": "Non Hispanic Population in Institutionalized Group Quarters",
-      "dcid": "Count_Person_NotHispanicOrLatino_ResidesInInstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Non Hispanic Population in Non Institutionalized Group Quarters",
-      "dcid": "Count_Person_NotHispanicOrLatino_ResidesInNoninstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Non Hispanic White Male Population",
-      "dcid": "Count_Person_Male_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Non Hispanic White Population Above Poverty Level Status in Past Year",
-      "dcid": "Count_Person_AbovePovertyLevelInThePast12Months_WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "name": "Non Hispanic or Latino White Population With Disabilities",
-      "dcid": "Count_Person_WithDisability_WhiteAloneNotHispanicOrLatino"
-    },
-    {
-      "name": "Non White Female Population",
-      "dcid": "Count_Person_Female_NonWhite"
-    },
-    {
-      "name": "Non White Male Population",
-      "dcid": "Count_Person_Male_NonWhite"
-    },
-    {
-      "name": "Number of Non Hispanic Asian/Pacific Islander Male Population",
-      "dcid": "Count_Person_Male_NotHispanicOrLatino_AsianOrPacificIslander"
-    },
-    {
-      "name": "Number of beneficiaries of the Rural Development Program without gender information",
-      "dcid": "Count_Person_BrazilRuralDevelopmentProgram_GenderUnknownOrNotStated"
-    },
-    {
-      "name": "Number of children aged 5 to 11 years in the lowest wealth index",
-      "dcid": "Count_Person_5To11Years_LowestWealthIndex"
-    },
-    {
-      "name": "Number of divorced people aged 15 years",
-      "dcid": "Count_Person_15Years_Divorced"
-    },
-    {
-      "name": "Number of divorced people aged 16 and over",
-      "dcid": "Count_Person_16Years_Divorced"
-    },
-    {
-      "name": "Number of divorced people aged 17 years",
-      "dcid": "Count_Person_17Years_Divorced"
-    },
-    {
-      "name": "Number of divorced people aged 18 years or older",
-      "dcid": "Count_Person_18Years_Divorced"
-    },
-    {
-      "name": "Number of divorced people aged 19 years",
-      "dcid": "Count_Person_19Years_Divorced"
-    },
-    {
-      "name": "Number of divorced people aged 75 or more",
-      "dcid": "Count_Person_75OrMoreYears_Divorced"
-    },
-    {
-      "name": "Number of divorced people aged 75 years or less",
-      "dcid": "Count_Person_75OrLessYears_Divorced"
-    },
-    {
-      "name": "Number of employed independent artists, writers, and performers",
-      "dcid": "Count_Person_Employed_IndependentArtistsWritersAndPerformers"
-    },
-    {
-      "name": "Number of employed individuals in residential mental health facilities",
-      "dcid": "Count_Person_Employed_ResidentialMentalHealthFacilities"
-    },
-    {
-      "name": "Number of employed people in the information sector",
-      "dcid": "Count_Person_Employed_Information"
-    },
-    {
-      "name": "Number of employed persons in beer, wine and liquor stores",
-      "dcid": "Count_Person_Employed_BeerWineAndLiquorStores"
-    },
-    {
-      "name": "Number of employed persons in indian tribes",
-      "dcid": "Count_Person_Employed_IndianTribes"
-    },
-    {
-      "name": "Number of employed persons in professional, scientific and technical services",
-      "dcid": "Count_Person_Employed_ProfessionalScientificTechnicalServices"
-    },
-    {
-      "name": "Number of employed wage and salary workers",
-      "dcid": "Count_Person_WageAndSalaryWorker_Employed"
-    },
-    {
-      "name": "Number of employees in limited-service eating places",
-      "dcid": "Count_Person_Employed_LimitedserviceEatingPlaces"
-    },
-    {
-      "name": "Number of female non-workers",
-      "dcid": "Count_Person_Female_NonWorker"
-    },
-    {
-      "name": "Number of female workers",
-      "dcid": "Count_Person_Female_Worker"
-    },
-    {
-      "name": "Number of females aged 1 year or less",
-      "dcid": "Count_Person_1OrLessYears_Female"
-    },
-    {
-      "name": "Number of females between 12 to 14 years of age",
-      "dcid": "Count_Person_12To14Years_Female"
-    },
-    {
-      "name": "Number of graduates from private higher education institutions",
-      "dcid": "Count_Person_Graduate_PrivateHigherInstitute"
-    },
-    {
-      "name": "Number of graduates from private universities",
-      "dcid": "Count_Person_Graduate_PrivateUniversity"
-    },
-    {
-      "name": "Number of graduates from public universities or al-azhar university",
-      "dcid": "Count_Person_Graduate_PublicUniversityOrAlAzharUniversity"
-    },
-    {
-      "name": "Number of graduates from the academy",
-      "dcid": "Count_Person_Graduate_Academy"
-    },
-    {
-      "name": "Number of graduates from upper medium technical institute",
-      "dcid": "Count_Person_Graduate_UpperMediumTechnicalInstitute"
-    },
-    {
-      "name": "Number of illiterate females",
-      "dcid": "Count_Person_Illiterate_Female"
-    },
-    {
-      "name": "Number of illiterate males",
-      "dcid": "Count_Person_Illiterate_Male"
-    },
-    {
-      "name": "Number of individuals aged 12 to 14 years from middle wealth index households",
-      "dcid": "Count_Person_12To14Years_MiddleWealthIndex"
-    },
-    {
-      "name": "Number of individuals aged 12 to 14 years in the fourth wealth index",
-      "dcid": "Count_Person_12To14Years_FourthWealthIndex"
-    },
-    {
-      "name": "Number of individuals aged 12 to 14 years in the lowest wealth index",
-      "dcid": "Count_Person_12To14Years_LowestWealthIndex"
-    },
-    {
-      "name": "Number of individuals aged 12 to 14 years within the highest wealth index",
-      "dcid": "Count_Person_12To14Years_HighestWealthIndex"
-    },
-    {
-      "name": "Number of individuals aged 15 years in a contract marriage",
-      "dcid": "Count_Person_15Years_ContractMarriage"
-    },
-    {
-      "name": "Number of individuals aged 18 years and over in contract marriages",
-      "dcid": "Count_Person_18Years_ContractMarriage"
-    },
-    {
-      "name": "Number of individuals aged 5 to 11 years from middle wealth index households",
-      "dcid": "Count_Person_5To11Years_MiddleWealthIndex"
-    },
-    {
-      "name": "Number of individuals between 20 and 24 years old with a contract marriage",
-      "dcid": "Count_Person_20To24Years_ContractMarriage"
-    },
-    {
-      "name": "Number of individuals in the age group 5 to 11 years in the highest wealth index",
-      "dcid": "Count_Person_5To11Years_HighestWealthIndex"
-    },
-    {
-      "name": "Number of individuals in the second wealth index aged 5 to 11 years old",
-      "dcid": "Count_Person_5To11Years_SecondWealthIndex"
-    },
-    {
-      "name": "Number of intersex people in rural areas",
-      "dcid": "Count_Person_Intersex_Rural"
-    },
-    {
-      "name": "Number of intersex people in urban areas",
-      "dcid": "Count_Person_Intersex_Urban"
-    },
-    {
-      "name": "Number of male non-workers",
-      "dcid": "Count_Person_Male_NonWorker"
-    },
-    {
-      "name": "Number of male workers",
-      "dcid": "Count_Person_Male_Worker"
-    },
-    {
-      "name": "Number of males aged 1 year or less",
-      "dcid": "Count_Person_1OrLessYears_Male"
-    },
-    {
-      "name": "Number of males aged 12-14 years",
-      "dcid": "Count_Person_12To14Years_Male"
-    },
-    {
-      "name": "Number of males aged 50 to 59 years",
-      "dcid": "Count_Person_50To59Years_Male"
-    },
-    {
-      "name": "Number of married 17-year-olds",
-      "dcid": "Count_Person_17Years_Married"
-    },
-    {
-      "name": "Number of married 19-year-olds",
-      "dcid": "Count_Person_19Years_Married"
-    },
-    {
-      "name": "Number of married individuals aged 15 years or less",
-      "dcid": "Count_Person_15OrLessYears_Married"
-    },
-    {
-      "name": "Number of married individuals aged 16 and over",
-      "dcid": "Count_Person_16Years_Married"
-    },
-    {
-      "name": "Number of married people aged 15 and older",
-      "dcid": "Count_Person_15Years_Married"
-    },
-    {
-      "name": "Number of married people aged 18",
-      "dcid": "Count_Person_18Years_Married"
-    },
-    {
-      "name": "Number of married people aged 75 or less",
-      "dcid": "Count_Person_75OrLessYears_Married"
-    },
-    {
-      "name": "Number of married people aged 75 or older",
-      "dcid": "Count_Person_75OrMoreYears_Married"
-    },
-    {
-      "name": "Number of men aged 30 to 39 years",
-      "dcid": "Count_Person_30To39Years_Male"
-    },
-    {
-      "name": "Number of men aged 40 to 49 years",
-      "dcid": "Count_Person_40To49Years_Male"
-    },
-    {
-      "name": "Number of men benefiting from the Rural Development Program",
-      "dcid": "Count_Person_BrazilRuralDevelopmentProgram_Male"
-    },
-    {
-      "name": "Number of men in water supply",
-      "dcid": "Count_Person_WaterSupplySewerageWasteManagement_Male"
-    },
-    {
-      "name": "Number of men who can read and write",
-      "dcid": "Count_Person_EducationalAttainmentReadAndWrite_Male"
-    },
-    {
-      "name": "Number of men with education above intermediate level",
-      "dcid": "Count_Person_EducationalAttainmentAboveIntermediateEducation_Male"
-    },
-    {
-      "name": "Number of men with general or azhari secondary education",
-      "dcid": "Count_Person_EducationalAttainmentGeneralOrAzhariSecondaryEducation_Male"
     }
   ],
   "matches": [
