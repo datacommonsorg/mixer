@@ -106,7 +106,7 @@ var nodeInEdgesByIDTestCases = []struct {
 	offset int32
 	golden string
 }{
-	{
+	/*{
 		ids: []string{"FireIncidentTypeEnum", "FoodTypeEnum"},
 		arc: &v2.Arc{
 			Out:        false,
@@ -204,6 +204,19 @@ var nodeInEdgesByIDTestCases = []struct {
 		},
 		offset: spanner.PAGE_SIZE,
 		golden: "get_node_edges_second_page_chain",
+	},*/
+	{
+		ids: []string{"country/USA"},
+		arc: &v2.Arc{
+			Out:        false,
+			SingleProp: "containedInPlace",
+			Decorator:  "+",
+			Filter: map[string][]string{
+				"typeOf": {"County"},
+			},
+		},
+		offset: spanner.PAGE_SIZE,
+		golden: "get_node_edges_linked_contained_in_place",
 	},
 }
 

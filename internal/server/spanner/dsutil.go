@@ -163,12 +163,12 @@ func processNodeRequest(arc *v2.Arc) *nodeArtifacts {
 
 // processNodeResponse cleans up the intermediate Node response based on any optimizations made to the request.
 func processNodeResponse(resp *pbv2.NodeResponse, artifacts *nodeArtifacts) {
+	// Maybe optimize chaining.
 	if artifacts.chainProp != "" {
 		for _, lg := range resp.Data {
-			nodes, ok := lg.Arcs[optimizedChainProps[artifacts.chainProp]]
-			if ok {
+			if nodes, ok := lg.Arcs[optimizedChainProps[artifacts.chainProp]]; ok {
 				lg.Arcs[artifacts.chainProp+CHAIN] = nodes
-
+				delete(lg.Arcs, artifacts.chainProp)
 			}
 		}
 	}
