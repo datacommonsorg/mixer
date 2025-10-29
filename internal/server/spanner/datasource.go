@@ -84,6 +84,7 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv2.NodeRequest, p
 		if err != nil {
 			return nil, err
 		}
+	}
 	processNodeResponse(resp, artifacts)
 	return resp, nil
 }
