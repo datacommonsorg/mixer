@@ -15,10 +15,6 @@
 // Query statements used by the SpannerClient.
 package spanner
 
-import (
-	"fmt"
-)
-
 // SQL / GQL statements executed by the SpannerClient
 var statements = struct {
 	// Fetch Properties for out arcs.
@@ -174,8 +170,8 @@ var statements = struct {
 			provenance`,
 	applyOffset: `
 		OFFSET %d`,
-	applyLimit: fmt.Sprintf(`
-		LIMIT %d`, PAGE_SIZE+1),
+	applyLimit: `
+		LIMIT %d`,
 	getObs: `		SELECT
 			variable_measured,
 			observation_about,

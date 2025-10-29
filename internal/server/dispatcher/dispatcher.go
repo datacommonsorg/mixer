@@ -124,11 +124,11 @@ func (dispatcher *Dispatcher) handle(requestContext *RequestContext, handler fun
 	return requestContext.CurrentResponse, nil
 }
 
-func (dispatcher *Dispatcher) Node(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+func (dispatcher *Dispatcher) Node(ctx context.Context, in *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
 	requestContext := newRequestContext(ctx, in, TypeNode)
 
 	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {
-		return dispatcher.sources.Node(ctx, request.(*pbv2.NodeRequest))
+		return dispatcher.sources.Node(ctx, request.(*pbv2.NodeRequest), pageSize)
 	})
 
 	if err != nil {

@@ -41,7 +41,7 @@ func GetNodePropsQuery(ids []string, out bool) *spanner.Statement {
 	}
 }
 
-func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, offset int32) *spanner.Statement {
+func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spanner.Statement {
 	params := map[string]interface{}{"ids": ids}
 
 	// Attach predicates.
@@ -124,7 +124,8 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, offset int32) *spanner.Sta
 	if offset > 0 {
 		template += fmt.Sprintf(statements.applyOffset, offset)
 	}
-	template += statements.applyLimit
+	// Request pageSize+1 rows to determine whether to generate nextToken.
+	template += fmt.Sprintf(statements.applyLimit, pageSize+1)
 
 	return &spanner.Statement{
 		SQL:    template,
