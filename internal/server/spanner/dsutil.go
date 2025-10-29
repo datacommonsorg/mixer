@@ -176,7 +176,7 @@ func processNodeResponse(resp *pbv2.NodeResponse, artifacts *nodeArtifacts) {
 }
 
 // nodeEdgesToNodeResponse converts a map from subject id to its edges to a NodeResponse proto.
-func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge, id string, offset int32, artifacts *nodeArtifacts) (*pbv2.NodeResponse, error) {
+func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge, id string, offset int32) (*pbv2.NodeResponse, error) {
 	nodeResponse := &pbv2.NodeResponse{
 		Data: make(map[string]*pbv2.LinkedGraph),
 	}

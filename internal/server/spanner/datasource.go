@@ -80,7 +80,7 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv2.NodeRequest) (
 		if err != nil {
 			return nil, fmt.Errorf("error getting node edges: %v", err)
 		}
-		resp, err = nodeEdgesToNodeResponse(req.Nodes, edges, sds.Id(), offset, artifacts)
+		resp, err = nodeEdgesToNodeResponse(req.Nodes, edges, sds.Id(), offset)
 		if err != nil {
 			return nil, err
 		}
