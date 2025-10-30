@@ -16,5 +16,5 @@
 			predicate,
 			value,
 			provenance
-		OFFSET 5000
-		LIMIT 5001
+		OFFSET 500
+		LIMIT 501
