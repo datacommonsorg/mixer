@@ -636,6 +636,10 @@
               "facet": "1964317807"
             },
             {
+              "count": 58,
+              "facet": "2564251937"
+            },
+            {
               "count": 57,
               "facet": "2825511676"
             },
@@ -797,6 +801,10 @@
               "facet": "1964317807"
             },
             {
+              "count": 58,
+              "facet": "2564251937"
+            },
+            {
               "count": 57,
               "facet": "2825511676"
             },
@@ -859,6 +867,10 @@
               "facet": "1964317807"
             },
             {
+              "count": 58,
+              "facet": "2564251937"
+            },
+            {
               "count": 57,
               "facet": "2825511676"
             },
@@ -915,6 +927,10 @@
             {
               "count": 58,
               "facet": "1964317807"
+            },
+            {
+              "count": 58,
+              "facet": "2564251937"
             },
             {
               "count": 57,
@@ -1015,6 +1031,10 @@
             },
             {
               "count": 58,
+              "facet": "2564251937"
+            },
+            {
+              "count": 58,
               "facet": "2825511676"
             },
             {
@@ -1088,6 +1108,10 @@
             {
               "count": 58,
               "facet": "1964317807"
+            },
+            {
+              "count": 58,
+              "facet": "2564251937"
             }
           ]
         },
@@ -1187,6 +1211,10 @@
       "import_name": "CensusPEP",
       "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
       "measurement_method": "CensusPEPSurvey"
+    },
+    "2564251937": {
+      "import_name": "CDC_Social_Vulnerability_Index",
+      "provenance_url": "https://www.atsdr.cdc.gov/place-health/php/svi/svi-data-documentation-download.html?CDC_AAref_Val=https://www.atsdr.cdc.gov/placeandhealth/svi/data_documentation_download.html"
     },
     "2825511676": {
       "import_name": "CDC_Mortality_UnderlyingCause",

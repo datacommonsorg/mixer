@@ -96,20 +96,20 @@ var (
 	// TODO: Test Custom DC and set to true after release
 	cacheSVFormula = flag.Bool("cache_sv_formula", false, "Whether to cache SV -> inputPropertyExpresions for StatisticalCaclulations.")
 	// Spanner Graph
-	useSpannerGraph  = flag.Bool("use_spanner_graph", false, "Use Google Spanner as a database.")
+	useSpannerGraph  = flag.Bool("use_spanner_graph", false, "Use Google Spanner as a database.") //nolint:unused // TODO: Remove flag after updating submodules.
 	spannerGraphInfo = flag.String("spanner_graph_info", "", "Yaml formatted text containing information for Spanner Graph.")
 	// Redis.
 	useRedis  = flag.Bool("use_redis", false, "Use Redis cache.")
 	redisInfo = flag.String("redis_info", "", "Yaml formatted text containing information for redis instances.")
 	// V3 API.
-	enableV3 = flag.Bool("enable_v3", false, "Enable datasources in V3 API.")
+	enableV3 = flag.Bool("enable_v3", false, "Enable datasources in V3 API.") //nolint:unused // TODO: Remove flag after updating submodules.
 	// OpenTelemetry metrics exporter
 	metricsExporter = flag.String(
 		"metrics_exporter",
 		"",
 		"Which exporter to use for OpenTelemetry metrics. Valid values are otlp, prometheus, and console (or blank for no-op).",
 	)
-	v3MirrorFraction = flag.Float64(
+	v3MirrorFraction = flag.Float64( //nolint:unused // TODO: Remove flag after updating submodules.
 		"v3_mirror_fraction", 0, "Fraction of V2 API requests to mirror to V3. Value from 0 to 1.0.",
 	)
 	featureFlagsPath = flag.String(
@@ -135,15 +135,6 @@ func main() {
 		os.Exit(1)
 	}
 	slog.Info("Created feature flags")
-
-	if *v3MirrorFraction < 0 || *v3MirrorFraction > 1.0 {
-		slog.Error("v3_mirror_fraction must be between 0 and 1.0", "value", *v3MirrorFraction)
-		os.Exit(1)
-	}
-	if *v3MirrorFraction > 0 && !*enableV3 {
-		slog.Error("v3_mirror_fraction > 0 requires --enable_v3=true")
-		os.Exit(1)
-	}
 
 	ctx := context.Background()
 
@@ -199,8 +190,8 @@ func main() {
 	sources := []*datasource.DataSource{}
 
 	// Spanner Graph.
-	if *enableV3 && *useSpannerGraph {
-		spannerClient, err := spanner.NewSpannerClient(ctx, *spannerGraphInfo)
+	if flags.EnableV3 && flags.UseSpannerGraph {
+		spannerClient, err := spanner.NewSpannerClient(ctx, *spannerGraphInfo, flags.SpannerGraphDatabase)
 		if err != nil {
 			slog.Error("Failed to create Spanner client", "error", err)
 			os.Exit(1)
@@ -297,7 +288,7 @@ func main() {
 	// Create remote data source here but don't add it to sources yet since we want it to be the last source added.
 	// TODO: clean up how we create and add data sources.
 	var remoteDataSource datasource.DataSource
-	if *enableV3 && *remoteMixerDomain != "" {
+	if flags.EnableV3 && *remoteMixerDomain != "" {
 		remoteClient, err := remote.NewRemoteClient(metadata)
 		if err != nil {
 			slog.Error("Failed to create remote client", "error", err)
@@ -345,7 +336,7 @@ func main() {
 	}
 
 	// SQL Data Source
-	if *enableV3 && sqldb.IsConnected(&sqlClient) {
+	if flags.EnableV3 && sqldb.IsConnected(&sqlClient) {
 		var ds datasource.DataSource = sqldb.NewSQLDataSource(&sqlClient, remoteDataSource)
 		sources = append(sources, &ds)
 	}
@@ -397,7 +388,7 @@ func main() {
 
 	// Processors
 	processors := []*dispatcher.Processor{}
-	if *enableV3 {
+	if flags.EnableV3 {
 		slog.Info("V3 enabled, setting up processors")
 		// Mixer in-memory cache.
 		dataSourceCache, err := cache.NewDataSourceCache(ctx, dataSources, cacheOptions)
@@ -433,7 +424,6 @@ func main() {
 
 	// Create server object
 	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags)
-	mixerServer.SetV3MirrorFraction(*v3MirrorFraction)
 	pbs.RegisterMixerServer(srv, mixerServer)
 
 	// Subscribe to branch cache update
