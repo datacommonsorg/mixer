@@ -50,6 +50,9 @@
               "facet_id": "723406962"
             },
             {
+              "facet_id": "1836477334"
+            },
+            {
               "facet_id": "678784946"
             },
             {
@@ -231,6 +234,10 @@
       "import_name": "EurostatData_Demographic_Balance_Crude_Rates",
       "provenance_url": "https://ec.europa.eu/eurostat/databrowser/view/demo_r_gind3/default/table?lang=en",
       "measurement_method": "EurostatRegionalStatistics"
+    },
+    "1836477334": {
+      "import_name": "Mongolia_Education",
+      "provenance_url": "https://www.1212.mn/en/statcate"
     },
     "1897073702": {
       "import_name": "SouthAfrica_Census",

@@ -96,7 +96,7 @@
                 "name": "Nuestra Señora del Rosario de Baruta"
               }
             ],
-            "minValue": 2775.73322,
+            "minValue": 2697,
             "maxValue": 570712
           },
           "AdministrativeArea5": {
@@ -434,7 +434,7 @@
             "maxValue": 560004
           },
           "SchoolDistrict": {
-            "placeCount": 13982,
+            "placeCount": 13986,
             "topPlaces": [
               {
                 "dcid": "geoId/sch3620580",
@@ -1602,7 +1602,7 @@
                     "maxValue": 793
                   },
                   "SchoolDistrict": {
-                    "placeCount": 13982,
+                    "placeCount": 13986,
                     "topPlaces": [
                       {
                         "dcid": "geoId/sch3620580",
@@ -1642,12 +1642,12 @@
                 },
                 "minValue": 0,
                 "maxValue": 167842453,
-                "observationCount": 2702118,
-                "timeSeriesCount": 219998
+                "observationCount": 2702122,
+                "timeSeriesCount": 220002
               }
             ],
-            "observationCount": 2702118,
-            "timeSeriesCount": 219998
+            "observationCount": 2702122,
+            "timeSeriesCount": 220002
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S2601A": {
             "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",
@@ -4817,11 +4817,11 @@
                 },
                 "minValue": 0.63,
                 "maxValue": 4.9,
-                "observationCount": 19187,
+                "observationCount": 19319,
                 "timeSeriesCount": 2062
               }
             ],
-            "observationCount": 19187,
+            "observationCount": 19319,
             "timeSeriesCount": 2062
           },
           "dc/base/Kenya_Census": {

@@ -178,6 +178,7 @@
     },
     {
       "subjectId": "ausSA21/507",
+      "subjectName": "Perth - South West",
       "subjectTypes": [
         "City"
       ],
@@ -192,6 +193,7 @@
     },
     {
       "subjectId": "ausSACode21/302",
+      "subjectName": "Landsborough",
       "subjectTypes": [
         "City"
       ],
@@ -206,6 +208,7 @@
     },
     {
       "subjectId": "ausSACode21/304",
+      "subjectName": "Landsborough",
       "subjectTypes": [
         "City"
       ],
@@ -220,6 +223,7 @@
     },
     {
       "subjectId": "ausSACode21/311",
+      "subjectName": "Beaudesert",
       "subjectTypes": [
         "City"
       ],
@@ -234,6 +238,7 @@
     },
     {
       "subjectId": "ausSACode21/404",
+      "subjectName": "Adelaide",
       "subjectTypes": [
         "City"
       ],

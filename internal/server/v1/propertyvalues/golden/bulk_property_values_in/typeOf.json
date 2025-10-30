@@ -2554,6 +2554,7 @@
       "node": "City",
       "values": [
         {
+          "name": "Perth - South West",
           "types": [
             "City"
           ],
@@ -2561,6 +2562,7 @@
           "provenanceId": "dc/base/AustraliaGeoCoordinates"
         },
         {
+          "name": "Landsborough",
           "types": [
             "City"
           ],
@@ -2568,6 +2570,7 @@
           "provenanceId": "dc/base/AustraliaGeoCoordinates"
         },
         {
+          "name": "Landsborough",
           "types": [
             "City"
           ],
@@ -2575,6 +2578,7 @@
           "provenanceId": "dc/base/AustraliaGeoCoordinates"
         },
         {
+          "name": "Beaudesert",
           "types": [
             "City"
           ],
@@ -2582,6 +2586,7 @@
           "provenanceId": "dc/base/AustraliaGeoCoordinates"
         },
         {
+          "name": "Adelaide",
           "types": [
             "City"
           ],
