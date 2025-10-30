@@ -24,6 +24,11 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
+const (
+	// Default page size for paginated responses.
+	DefaultPageSize = 500
+)
+
 // DataSources struct uses underlying data sources to respond to API requests.
 type DataSources struct {
 	sources []*datasource.DataSource
@@ -33,7 +38,7 @@ func NewDataSources(sources []*datasource.DataSource) *DataSources {
 	return &DataSources{sources: sources}
 }
 
-func (ds *DataSources) Node(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+func (ds *DataSources) Node(ctx context.Context, in *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	dsRespChan := []chan *pbv2.NodeResponse{}
 
@@ -42,7 +47,7 @@ func (ds *DataSources) Node(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.No
 		respChan := make(chan *pbv2.NodeResponse, 1)
 		errGroup.Go(func() error {
 			defer close(respChan)
-			resp, err := src.Node(errCtx, in)
+			resp, err := src.Node(errCtx, in, pageSize)
 			if err != nil {
 				return err
 			}
