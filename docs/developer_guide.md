@@ -113,6 +113,27 @@ export DB_PASS=<password>
     --remote_mixer_domain=https://api.datacommons.org
 ```
 
+## Start Mixer with Spanner Graph and V3 APIs
+
+Enabling Spanner Graph requires the following feature flags to be set:
+
+- `EnableV3: true`
+- `UseSpannerGraph: true`
+
+These are currently set in `local.yaml`.
+
+Additionally, to use a database other than the default in `spanner_graph_info.yaml`, set the feature flag:
+
+- `SpannerGraphDatabase: <DATABASE NAME>` 
+
+```bash
+# In repo root directory
+export MIXER_API_KEY=<YOUR API KEY>
+./run_server.sh \
+    --feature_flags_path=$PWD/deploy/featureflags/local.yaml \
+    --spanner_graph_info="$(cat deploy/storage/spanner_graph_info.yaml)" 
+```
+
 ## Running ESP locally
 
 Mixer is a gRPC service but callers (website, API clients) are normally http
@@ -134,8 +155,7 @@ protoc --proto_path=proto \
   proto/*.proto proto/**/*.proto
 ```
 
-Start mixer gRPC server (running at `localhost:12345`) by following `go run
-cmd/main.go` as instructed in the previous section.
+Start mixer gRPC server (running at `localhost:12345`) by following `./run_server.sh` as instructed in the previous section.
 
 In a new shell, run the following from repo root to spin up envoy proxy. This
 exposes the http mixer service at `localhost:8081`.
@@ -159,7 +179,7 @@ redis-server
 
 ```bash
 ./run_server.sh \
-  --enable_v3=true \
+  --feature_flags_path=$PWD/deploy/featureflags/local.yaml \
   --use_redis=true \
   --redis_info="$(cat <<EOF
 instances:

@@ -400,7 +400,8 @@ func newSpannerClient(ctx context.Context, spannerGraphInfoYamlPath string) *spa
 	if err != nil {
 		log.Fatalf("Failed to read spanner yaml: %v", err)
 	}
-	spannerClient, err := spanner.NewSpannerClient(ctx, string(spannerGraphInfoYaml))
+	// Don't override spannerGraphInfoYaml.database for testing.
+	spannerClient, err := spanner.NewSpannerClient(ctx, string(spannerGraphInfoYaml), "")
 	if err != nil {
 		log.Fatalf("Failed to create SpannerClient: %v", err)
 	}

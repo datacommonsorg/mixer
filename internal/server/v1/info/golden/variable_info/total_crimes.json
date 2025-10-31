@@ -100,7 +100,7 @@
               "observationPeriod": "P1Y"
             },
             "earliestDate": "2008",
-            "latestDate": "2023",
+            "latestDate": "2024",
             "placeTypeSummary": {
               "CensusCountyDivision": {
                 "placeCount": 1450,
@@ -138,7 +138,7 @@
                   }
                 ],
                 "minValue": 0,
-                "maxValue": 250958
+                "maxValue": 252239
               },
               "County": {
                 "placeCount": 5,
@@ -181,11 +181,11 @@
             },
             "minValue": 0,
             "maxValue": 1265920,
-            "observationCount": 126184,
+            "observationCount": 132580,
             "timeSeriesCount": 11506
           }
         ],
-        "observationCount": 126184,
+        "observationCount": 132580,
         "timeSeriesCount": 11506
       },
       "dc/base/FBIGovCrime_AggCountry": {

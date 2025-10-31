@@ -291,10 +291,10 @@ func (s *Server) V2Observation(
 		},
 		GetV2ObservationCmpOpts(),
 	)
-
+ 
 	// Handle usage logging.
 	if rand.Float64() < s.flags.WriteUsageLogs {
-		log.WriteUsageLog(surface, toRemote, "" /* place type, still WIP */, s.store, combinedResp, queryType)
+		log.WriteUsageLog(surface, toRemote, []string{} /* place types, still WIP */, s.store, v2Resp, queryType)
 	}
 
 	return v2Resp, nil
