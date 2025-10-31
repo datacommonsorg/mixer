@@ -95,19 +95,19 @@ func standardizeToYear(dateStr string) (string, error) {
 }
 
 // Formats logs for the stat vars and facets.
-func MakeStatVarLogs(store *store.Store, observation *pbv2.ObservationResponse) []*StatVarLog {
+func MakeStatVarLogs(store *store.Store, observationResponse *pbv2.ObservationResponse) []*StatVarLog {
 	// statVarLogs is a map statVarDCID -> list of facets.
 	statVarsByDcid := make(map[string]*StatVarLog)
 
 	resultLogs := make([]*StatVarLog, 0, len(statVarsByDcid))
 
-	if (observation == nil){
+	if (observationResponse == nil){
 		return resultLogs
 	}
 
 	// Iterate through each response's variables, collecting the facets used in that resp into our 
 	// cumulative list of facets used for the given variable.
-	for variable, varObs := range observation.ByVariable {
+	for variable, varObs := range observationResponse.ByVariable {
 		// A map of facetId -> FacetLog
 		facetsByFacetId := make(map[string]*FacetLog)
 		if _, ok := statVarsByDcid[variable]; !ok {
@@ -143,7 +143,7 @@ func MakeStatVarLogs(store *store.Store, observation *pbv2.ObservationResponse) 
 					}
 				} else {
 					// If this is the first time we see the facet, create a map entry.
-					if facetData, ok := observation.Facets[facetId]; ok {
+					if facetData, ok := observationResponse.Facets[facetId]; ok {
 						facetsByFacetId[facetId] = &FacetLog{
 							Facet:     facetData,
 							NumSeries: 1,
@@ -174,9 +174,9 @@ func MakeStatVarLogs(store *store.Store, observation *pbv2.ObservationResponse) 
 
 // Writes a structured log to stdout, which is ingested by GCP cloud logging to track mixer usage.
 // Currently only used by the v2/observation endpoint.
-func WriteUsageLog(surface string, isRemote bool, placeTypes []string, store *store.Store, observation *pbv2.ObservationResponse, queryType shared.QueryType) {
+func WriteUsageLog(surface string, isRemote bool, placeTypes []string, store *store.Store, observationResponse *pbv2.ObservationResponse, queryType shared.QueryType) {
 
-	statVars := MakeStatVarLogs(store, observation)
+	statVars := MakeStatVarLogs(store, observationResponse)
 
 	logEntry := UsageLog{
 		PlaceTypes: placeTypes,
