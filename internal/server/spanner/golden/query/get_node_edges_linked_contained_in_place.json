@@ -1,0 +1,244 @@
+{
+  "country/USA": [
+    {
+      "SubjectID": "country/USA",
+      "Predicate": "linkedContainedInPlace",
+      "Provenance": "dc/base/GeneratedGraphs",
+      "Value": "geoId/01001",
+      "Bytes": null,
+      "Name": "Autauga County",
+      "Types": [
+        "AdministrativeArea2",
+        "County"
+      ]
+    },
+    {
+      "SubjectID": "country/USA",
+      "Predicate": "linkedContainedInPlace",
+      "Provenance": "dc/base/GeneratedGraphs",
+      "Value": "geoId/01003",
+      "Bytes": null,
+      "Name": "Baldwin County",
+      "Types": [
+        "AdministrativeArea2",
+        "County"
+      ]
+    },
+    {
+      "SubjectID": "country/USA",
+      "Predicate": "linkedContainedInPlace",
+      "Provenance": "dc/base/GeneratedGraphs",
+      "Value": "geoId/01005",
+      "Bytes": null,
+      "Name": "Barbour County",
+      "Types": [
+        "AdministrativeArea2",
+        "County"
+      ]
+    },
+    {
+      "SubjectID": "country/USA",
+      "Predicate": "linkedContainedInPlace",
+      "Provenance": "dc/base/GeneratedGraphs",
+      "Value": "geoId/01007",
+      "Bytes": null,
+      "Name": "Bibb County",
+      "Types": [
+        "AdministrativeArea2",
+        "County"
+      ]
+    },
+    {
+      "SubjectID": "country/USA",
+      "Predicate": "linkedContainedInPlace",
+      "Provenance": "dc/base/GeneratedGraphs",
+      "Value": "geoId/01009",
+      "Bytes": null,
+      "Name": "Blount County",
+      "Types": [
+        "AdministrativeArea2",
+        "County"
+      ]
+    },
+    {
+      "SubjectID": "country/USA",
+      "Predicate": "linkedContainedInPlace",
+      "Provenance": "dc/base/GeneratedGraphs",
+      "Value": "geoId/01011",
+      "Bytes": null,
+      "Name": "Bullock County",
+      "Types": [
+        "AdministrativeArea2",
+        "County"
+      ]
+    },
+    {
+      "SubjectID": "country/USA",
+      "Predicate": "linkedContainedInPlace",
+      "Provenance": "dc/base/GeneratedGraphs",
+      "Value": "geoId/01013",
+      "Bytes": null,
+      "Name": "Butler County",
+      "Types": [
+        "AdministrativeArea2",
+        "County"
+      ]
+    },
+    {
+      "SubjectID": "country/USA",
+      "Predicate": "linkedContainedInPlace",
+      "Provenance": "dc/base/GeneratedGraphs",
+      "Value": "geoId/01015",
+      "Bytes": null,
+      "Name": "Calhoun County",
+      "Types": [
+        "AdministrativeArea2",
+        "County"
+      ]
+    },
+    {
+      "SubjectID": "country/USA",
+      "Predicate": "linkedContainedInPlace",
+      "Provenance": "dc/base/GeneratedGraphs",
+      "Value": "geoId/01017",
+      "Bytes": null,
+      "Name": "Chambers County",
+      "Types": [
+        "AdministrativeArea2",
+        "County"
+      ]
+    },
+    {
+      "SubjectID": "country/USA",
+      "Predicate": "linkedContainedInPlace",
+      "Provenance": "dc/base/GeneratedGraphs",
+      "Value": "geoId/01019",
+      "Bytes": null,
+      "Name": "Cherokee County",
+      "Types": [
+        "AdministrativeArea2",
+        "County"
+      ]
+    },
+    {
+      "SubjectID": "country/USA",
+      "Predicate": "linkedContainedInPlace",
+      "Provenance": "dc/base/GeneratedGraphs",
+      "Value": "geoId/01021",
+      "Bytes": null,
+      "Name": "Chilton County",
+      "Types": [
+        "AdministrativeArea2",
+        "County"
+      ]
+    },
+    {
+      "SubjectID": "country/USA",
+      "Predicate": "linkedContainedInPlace",
+      "Provenance": "dc/base/GeneratedGraphs",
+      "Value": "geoId/01023",
+      "Bytes": null,
+      "Name": "Choctaw County",
+      "Types": [
+        "AdministrativeArea2",
+        "County"
+      ]
+    },
+    {
+      "SubjectID": "country/USA",
+      "Predicate": "linkedContainedInPlace",
+      "Provenance": "dc/base/GeneratedGraphs",
+      "Value": "geoId/01025",
+      "Bytes": null,
+      "Name": "Clarke County",
+      "Types": [
+        "AdministrativeArea2",
+        "County"
+      ]
+    },
+    {
+      "SubjectID": "country/USA",
+      "Predicate": "linkedContainedInPlace",
+      "Provenance": "dc/base/GeneratedGraphs",
+      "Value": "geoId/01027",
+      "Bytes": null,
+      "Name": "Clay County",
+      "Types": [
+        "AdministrativeArea2",
+        "County"
+      ]
+    },
+    {
+      "SubjectID": "country/USA",
+      "Predicate": "linkedContainedInPlace",
+      "Provenance": "dc/base/GeneratedGraphs",
+      "Value": "geoId/01029",
+      "Bytes": null,
+      "Name": "Cleburne County",
+      "Types": [
+        "AdministrativeArea2",
+        "County"
+      ]
+    },
+    {
+      "SubjectID": "country/USA",
+      "Predicate": "linkedContainedInPlace",
+      "Provenance": "dc/base/GeneratedGraphs",
+      "Value": "geoId/01031",
+      "Bytes": null,
+      "Name": "Coffee County",
+      "Types": [
+        "AdministrativeArea2",
+        "County"
+      ]
+    },
+    {
+      "SubjectID": "country/USA",
+      "Predicate": "linkedContainedInPlace",
+      "Provenance": "dc/base/GeneratedGraphs",
+      "Value": "geoId/01033",
+      "Bytes": null,
+      "Name": "Colbert County",
+      "Types": [
+        "AdministrativeArea2",
+        "County"
+      ]
+    },
+    {
+      "SubjectID": "country/USA",
+      "Predicate": "linkedContainedInPlace",
+      "Provenance": "dc/base/GeneratedGraphs",
+      "Value": "geoId/01035",
+      "Bytes": null,
+      "Name": "Conecuh County",
+      "Types": [
+        "AdministrativeArea2",
+        "County"
+      ]
+    },
+    {
+      "SubjectID": "country/USA",
+      "Predicate": "linkedContainedInPlace",
+      "Provenance": "dc/base/GeneratedGraphs",
+      "Value": "geoId/01037",
+      "Bytes": null,
+      "Name": "Coosa County",
+      "Types": [
+        "AdministrativeArea2",
+        "County"
+      ]
+    },
+    {
+      "SubjectID": "country/USA",
+      "Predicate": "linkedContainedInPlace",
+      "Provenance": "dc/base/GeneratedGraphs",
+      "Value": "geoId/01039",
+      "Bytes": null,
+      "Name": "Covington County",
+      "Types": [
+        "AdministrativeArea2",
+        "County"
+      ]
+    }
+  ]
+}

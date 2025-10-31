@@ -205,6 +205,17 @@ var nodeInEdgesByIDTestCases = []struct {
 		offset: datasources.DefaultPageSize,
 		golden: "get_node_edges_second_page_chain",
 	},
+	{
+		ids: []string{"country/USA"},
+		arc: &v2.Arc{
+			Out:        false,
+			SingleProp: "linkedContainedInPlace",
+			Filter: map[string][]string{
+				"typeOf": {"County"},
+			},
+		},
+		golden: "get_node_edges_linked_contained_in_place",
+	},
 }
 
 var observationsTestCases = []struct {
