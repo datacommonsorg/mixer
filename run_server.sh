@@ -54,8 +54,7 @@ CMD=("go" "run" "cmd/main.go"
     "--base_bigtable_info=$(cat deploy/storage/base_bigtable_info.yaml)"
     "--schema_path=$PWD/deploy/mapping/"
     "--use_base_bigtable=true"
-    "--use_branch_bigtable=false"
-    "--feature_flags_path=deploy/featureflags/local.yaml")
+    "--use_branch_bigtable=false")
 
 if [ ${#args[@]} -ne 0 ]; then
   CMD+=("${args[@]}")
