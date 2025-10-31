@@ -96,21 +96,15 @@ var (
 	// TODO: Test Custom DC and set to true after release
 	cacheSVFormula = flag.Bool("cache_sv_formula", false, "Whether to cache SV -> inputPropertyExpresions for StatisticalCaclulations.")
 	// Spanner Graph
-	useSpannerGraph  = flag.Bool("use_spanner_graph", false, "Use Google Spanner as a database.") //nolint:unused // TODO: Remove flag after updating submodules.
 	spannerGraphInfo = flag.String("spanner_graph_info", "", "Yaml formatted text containing information for Spanner Graph.")
 	// Redis.
 	useRedis  = flag.Bool("use_redis", false, "Use Redis cache.")
 	redisInfo = flag.String("redis_info", "", "Yaml formatted text containing information for redis instances.")
-	// V3 API.
-	enableV3 = flag.Bool("enable_v3", false, "Enable datasources in V3 API.") //nolint:unused // TODO: Remove flag after updating submodules.
 	// OpenTelemetry metrics exporter
 	metricsExporter = flag.String(
 		"metrics_exporter",
 		"",
 		"Which exporter to use for OpenTelemetry metrics. Valid values are otlp, prometheus, and console (or blank for no-op).",
-	)
-	v3MirrorFraction = flag.Float64( //nolint:unused // TODO: Remove flag after updating submodules.
-		"v3_mirror_fraction", 0, "Fraction of V2 API requests to mirror to V3. Value from 0 to 1.0.",
 	)
 	featureFlagsPath = flag.String(
 		"feature_flags_path",
