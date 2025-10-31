@@ -24,18 +24,18 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-// SpannerClient encapsulates the Spanner client.
-type SpannerClient struct {
+// SpannerClientImpl encapsulates the Spanner client.
+type SpannerClientImpl struct {
 	client *spanner.Client
 }
 
-// newSpannerClient creates a new SpannerClient.
-func newSpannerClient(client *spanner.Client) *SpannerClient {
-	return &SpannerClient{client: client}
+// newSpannerClientImpl creates a new SpannerClientImpl.
+func newSpannerClientImpl(client *spanner.Client) *SpannerClientImpl {
+	return &SpannerClientImpl{client: client}
 }
 
-// NewSpannerClient creates a new SpannerClient from the config yaml string and an optional database override.
-func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string) (*SpannerClient, error) {
+// NewSpannerClientImpl creates a new SpannerClientImpl from the config yaml string and an optional database override.
+func NewSpannerClientImpl(ctx context.Context, spannerConfigYaml, databaseOverride string) (*SpannerClientImpl, error) {
 	cfg, err := createSpannerConfig(spannerConfigYaml, databaseOverride)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create SpannerClient: %w", err)
@@ -44,7 +44,7 @@ func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride s
 	if err != nil {
 		return nil, fmt.Errorf("failed to create SpannerClient: %w", err)
 	}
-	return newSpannerClient(client), nil
+	return newSpannerClientImpl(client), nil
 }
 
 // createSpannerClient creates the database name string and initializes the Spanner client.
@@ -77,4 +77,12 @@ func createSpannerConfig(spannerConfigYaml, databaseOverride string) (*SpannerCo
 	}
 
 	return &cfg, nil
+}
+
+func (sc *SpannerClientImpl) Id() string {
+	return sc.client.DatabaseName()
+}
+
+func (sc *SpannerClientImpl) Close() {
+	sc.client.Close()
 }

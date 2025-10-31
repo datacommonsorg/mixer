@@ -191,7 +191,7 @@ func main() {
 
 	// Spanner Graph.
 	if flags.EnableV3 && flags.UseSpannerGraph {
-		spannerClient, err := spanner.NewSpannerClient(ctx, *spannerGraphInfo, flags.SpannerGraphDatabase)
+		spannerClient, err := spanner.NewSpannerClientImpl(ctx, *spannerGraphInfo, flags.SpannerGraphDatabase)
 		if err != nil {
 			slog.Error("Failed to create Spanner client", "error", err)
 			os.Exit(1)

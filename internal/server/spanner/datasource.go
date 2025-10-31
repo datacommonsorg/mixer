@@ -28,10 +28,10 @@ import (
 
 // SpannerDataSource represents a data source that interacts with Spanner.
 type SpannerDataSource struct {
-	client *SpannerClient
+	client SpannerClient
 }
 
-func NewSpannerDataSource(client *SpannerClient) *SpannerDataSource {
+func NewSpannerDataSource(client SpannerClient) *SpannerDataSource {
 	return &SpannerDataSource{client: client}
 }
 
@@ -42,7 +42,7 @@ func (sds *SpannerDataSource) Type() datasource.DataSourceType {
 
 // Id returns the id of the data source.
 func (sds *SpannerDataSource) Id() string {
-	return fmt.Sprintf("%s-%s", string(sds.Type()), sds.client.client.DatabaseName())
+	return fmt.Sprintf("%s-%s", string(sds.Type()), sds.client.Id())
 }
 
 // Node retrieves node data from Spanner.

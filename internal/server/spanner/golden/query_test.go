@@ -33,7 +33,7 @@ const (
 )
 
 func TestGetNodeProps(t *testing.T) {
-	client := test.NewSpannerClient()
+	client := test.NewSpannerClientImpl()
 	if client == nil {
 		return
 	}
@@ -50,7 +50,7 @@ func TestGetNodeProps(t *testing.T) {
 }
 
 func TestGetNodeOutEdgesByID(t *testing.T) {
-	client := test.NewSpannerClient()
+	client := test.NewSpannerClientImpl()
 	if client == nil {
 		return
 	}
@@ -71,7 +71,7 @@ func TestGetNodeOutEdgesByID(t *testing.T) {
 }
 
 func TestGetNodeInEdgesByID(t *testing.T) {
-	client := test.NewSpannerClient()
+	client := test.NewSpannerClientImpl()
 	if client == nil {
 		return
 	}
@@ -92,7 +92,7 @@ func TestGetNodeInEdgesByID(t *testing.T) {
 }
 
 func TestGetObservations(t *testing.T) {
-	client := test.NewSpannerClient()
+	client := test.NewSpannerClientImpl()
 	if client == nil {
 		return
 	}
@@ -114,7 +114,7 @@ func TestGetObservations(t *testing.T) {
 }
 
 func TestGetObservationsContainedInPlace(t *testing.T) {
-	client := test.NewSpannerClient()
+	client := test.NewSpannerClientImpl()
 	if client == nil {
 		return
 	}
@@ -136,7 +136,7 @@ func TestGetObservationsContainedInPlace(t *testing.T) {
 }
 
 func TestSearchNodes(t *testing.T) {
-	client := test.NewSpannerClient()
+	client := test.NewSpannerClientImpl()
 	if client == nil {
 		return
 	}
@@ -157,7 +157,7 @@ func TestSearchNodes(t *testing.T) {
 }
 
 func TestResolveByID(t *testing.T) {
-	client := test.NewSpannerClient()
+	client := test.NewSpannerClientImpl()
 	if client == nil {
 		return
 	}
