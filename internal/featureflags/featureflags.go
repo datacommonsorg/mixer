@@ -22,10 +22,6 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-const (
-	DefaultFeatureFlagsPath = "deploy/featureflags/local.yaml"
-)
-
 // Container for feature flag values.
 type Flags struct {
 	// Enable datasources in V3 API.
