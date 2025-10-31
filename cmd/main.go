@@ -114,7 +114,7 @@ var (
 	)
 	featureFlagsPath = flag.String(
 		"feature_flags_path",
-		featureflags.DefaultFeatureFlagsPath,
+		"",
 		"Path to the feature flags config file.",
 	)
 )
