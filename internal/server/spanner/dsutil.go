@@ -55,14 +55,17 @@ const (
 	FACET    = "facet"
 )
 
-// Chained Node properties that can be optimized before fetching from Spanner.
+// Map of original chained property to optimized property.
+// These are chained node properties that can be replaced with optimized versions before fetching from Spanner.
 var optimizedChainProps = map[string]string{
 	"containedInPlace":       "linkedContainedInPlace",
 	"linkedContainedInPlace": "linkedContainedInPlace",
 }
 
-// Represents optimizations made to Node requests.
+// Struct to hold optimizations made to Node requests.
+// This is used to recover the original response.
 type nodeArtifacts struct {
+	// Original chained property in request that was replaced.
 	chainProp string
 }
 
@@ -146,8 +149,8 @@ func getNextToken(offset int, dataSourceID string) (string, error) {
 	return nextToken, nil
 }
 
-// processNodeRequest optimizes a Node request for fetching from Spanner, modifying the input arc in-place.
-func processNodeRequest(arc *v2.Arc) *nodeArtifacts {
+// addOptimizationsToNodeRequest optimizes a Node request for fetching from Spanner, modifying the input arc in-place.
+func addOptimizationsToNodeRequest(arc *v2.Arc) *nodeArtifacts {
 	artifacts := &nodeArtifacts{}
 
 	// Maybe optimize chaining.
@@ -162,13 +165,17 @@ func processNodeRequest(arc *v2.Arc) *nodeArtifacts {
 	return artifacts
 }
 
-// processNodeResponse cleans up the intermediate Node response based on request optimizations, modifying the response in-place.
-func processNodeResponse(resp *pbv2.NodeResponse, artifacts *nodeArtifacts) {
+// removeOptimizationsFromNodeResponse cleans up the intermediate Node response based on request optimizations, modifying the response in-place.
+func removeOptimizationsFromNodeResponse(resp *pbv2.NodeResponse, artifacts *nodeArtifacts) {
 	// Maybe optimize chaining.
 	if artifacts.chainProp != "" {
 		replacementProp := optimizedChainProps[artifacts.chainProp]
 		for _, lg := range resp.Data {
 			if nodes, ok := lg.Arcs[replacementProp]; ok {
+				// Clear provenance, since chained responses do not return a provenance.
+				for _, node := range nodes.Nodes {
+					node.ProvenanceId = ""
+				}
 				lg.Arcs[artifacts.chainProp+CHAIN] = nodes
 				delete(lg.Arcs, replacementProp)
 			}

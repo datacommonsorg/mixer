@@ -25,7 +25,7 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestProcessNodeRequest(t *testing.T) {
+func TestAddOptimizationsToNodeRequest(t *testing.T) {
 	cmpOpts := cmp.Options{
 		protocmp.Transform(),
 	}
@@ -66,7 +66,7 @@ func TestProcessNodeRequest(t *testing.T) {
 			},
 		},
 	} {
-		actual := processNodeRequest(c.in)
+		actual := addOptimizationsToNodeRequest(c.in)
 
 		if diff := cmp.Diff(c.in, c.out, cmpOpts); diff != "" {
 			t.Errorf("ProcessNodeRequest(%v) got diff: %s", c.in, diff)
@@ -78,7 +78,7 @@ func TestProcessNodeRequest(t *testing.T) {
 	}
 }
 
-func TestProcessNodeResponse(t *testing.T) {
+func TestRemoveOptimizationsFromNodeResponse(t *testing.T) {
 	cmpOpts := cmp.Options{
 		protocmp.Transform(),
 	}
@@ -97,7 +97,10 @@ func TestProcessNodeResponse(t *testing.T) {
 						Arcs: map[string]*pbv2.Nodes{
 							"name": {
 								Nodes: []*pb.EntityInfo{
-									{Value: "name1"},
+									{
+										Value:        "name1",
+										ProvenanceId: "dc/base/test",
+									},
 								},
 							},
 						},
@@ -111,7 +114,10 @@ func TestProcessNodeResponse(t *testing.T) {
 						Arcs: map[string]*pbv2.Nodes{
 							"name": {
 								Nodes: []*pb.EntityInfo{
-									{Value: "name1"},
+									{
+										Value:        "name1",
+										ProvenanceId: "dc/base/test",
+									},
 								},
 							},
 						},
@@ -127,7 +133,10 @@ func TestProcessNodeResponse(t *testing.T) {
 						Arcs: map[string]*pbv2.Nodes{
 							"linkedContainedInPlace": {
 								Nodes: []*pb.EntityInfo{
-									{Dcid: "place1"},
+									{
+										Dcid:         "place1",
+										ProvenanceId: "dc/base/GeneratedGraphs",
+									},
 								},
 							},
 						},
@@ -152,7 +161,7 @@ func TestProcessNodeResponse(t *testing.T) {
 			},
 		},
 	} {
-		processNodeResponse(c.in, c.artifacts)
+		removeOptimizationsFromNodeResponse(c.in, c.artifacts)
 
 		if diff := cmp.Diff(c.in, c.out, cmpOpts); diff != "" {
 			t.Errorf("ProcessNodeResponse(%v) got diff: %s", c.in, diff)

@@ -63,7 +63,7 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv2.NodeRequest, p
 		return nil, fmt.Errorf("chain expressions are only supported for a single property")
 	}
 
-	artifacts := processNodeRequest(arc)
+	artifacts := addOptimizationsToNodeRequest(arc)
 	var resp *pbv2.NodeResponse
 	if arc.SingleProp == "" && len(arc.BracketProps) == 0 {
 		props, err := sds.client.GetNodeProps(ctx, req.Nodes, arc.Out)
@@ -85,7 +85,7 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv2.NodeRequest, p
 			return nil, err
 		}
 	}
-	processNodeResponse(resp, artifacts)
+	removeOptimizationsFromNodeResponse(resp, artifacts)
 	return resp, nil
 }
 
