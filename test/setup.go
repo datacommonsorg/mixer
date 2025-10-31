@@ -133,7 +133,7 @@ func setupInternal(
 
 	var spannerDataSource datasource.DataSource
 	if enableV3 && useSpannerGraph {
-		spannerClient := NewSpannerClient()
+		spannerClient := NewSpannerClientImpl()
 		if spannerClient != nil {
 			spannerDataSource = spanner.NewSpannerDataSource(spannerClient)
 			// TODO: Order sources by priority once other implementations are added.
@@ -383,25 +383,25 @@ func ReadGolden(goldenDir string, goldenFile string) (string, error) {
 	return string(bytes), nil
 }
 
-// NewSpannerClient creates a new test spanner client if spanner is enabled.
+// NewSpannerClientImpl creates a new test spanner client if spanner is enabled.
 // If not enabled, it returns nil.
-func NewSpannerClient() *spanner.SpannerClient {
+func NewSpannerClientImpl() *spanner.SpannerClientImpl {
 	if !EnableSpannerGraph {
 		log.Println("Spanner graph not enabled.")
 		return nil
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	spannerGraphInfoYamlPath := path.Join(path.Dir(filename), "../deploy/storage/spanner_graph_info.yaml")
-	return newSpannerClient(context.Background(), spannerGraphInfoYamlPath)
+	return newSpannerClientImpl(context.Background(), spannerGraphInfoYamlPath)
 }
 
-func newSpannerClient(ctx context.Context, spannerGraphInfoYamlPath string) *spanner.SpannerClient {
+func newSpannerClientImpl(ctx context.Context, spannerGraphInfoYamlPath string) *spanner.SpannerClientImpl {
 	spannerGraphInfoYaml, err := os.ReadFile(spannerGraphInfoYamlPath)
 	if err != nil {
 		log.Fatalf("Failed to read spanner yaml: %v", err)
 	}
 	// Don't override spannerGraphInfoYaml.database for testing.
-	spannerClient, err := spanner.NewSpannerClient(ctx, string(spannerGraphInfoYaml), "")
+	spannerClient, err := spanner.NewSpannerClientImpl(ctx, string(spannerGraphInfoYaml), "")
 	if err != nil {
 		log.Fatalf("Failed to create SpannerClient: %v", err)
 	}

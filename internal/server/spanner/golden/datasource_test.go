@@ -29,7 +29,7 @@ import (
 )
 
 func TestNode(t *testing.T) {
-	client := test.NewSpannerClient()
+	client := test.NewSpannerClientImpl()
 	if client == nil {
 		return
 	}
