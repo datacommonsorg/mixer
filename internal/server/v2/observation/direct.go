@@ -17,6 +17,7 @@ package observation
 
 import (
 	"context"
+	"log/slog"
 	"sort"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
@@ -88,6 +89,7 @@ func FetchDirectBT(
 			ByEntity: map[string]*pbv2.EntityObservation{},
 		}
 		for _, entity := range entities {
+			// TODO: add place types to the entityObservation object
 			result.ByVariable[variable].ByEntity[entity] = &pbv2.EntityObservation{}
 		}
 	}
@@ -101,6 +103,11 @@ func FetchDirectBT(
 	for _, variable := range variables {
 		for _, entity := range entities {
 			entityObservation := &pbv2.EntityObservation{}
+			// Setting this entity's place types if they are available
+			// placeTypes := btData[entity][variable].PlaceTypes
+			placeTypes := []string{"city", "county"};
+			slog.Info("place types", "pt", placeTypes )
+			entityObservation.PlaceTypes = placeTypes;
 			series := btData[entity][variable].SourceSeries
 			if len(series) > 0 {
 				// Sort series by rank

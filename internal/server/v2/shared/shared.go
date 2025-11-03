@@ -159,6 +159,7 @@ func TrimObservationsResponse(resp *pbv2.ObservationResponse) *pbv2.ObservationR
 	result := &pbv2.ObservationResponse{
 		ByVariable: map[string]*pbv2.VariableObservation{},
 		Facets:     map[string]*pb.Facet{},
+		PlaceTypes: resp.PlaceTypes,
 	}
 	for variable, variableData := range resp.ByVariable {
 		for entity, entityData := range variableData.ByEntity {

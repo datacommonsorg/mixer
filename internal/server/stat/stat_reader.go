@@ -16,6 +16,7 @@ package stat
 
 import (
 	"context"
+	"log/slog"
 
 	"github.com/datacommonsorg/mixer/internal/server/convert"
 	"github.com/datacommonsorg/mixer/internal/server/model"
@@ -257,6 +258,12 @@ func ReadStatCollection(
 			if !ok {
 				return nil, status.Errorf(codes.Internal, "invalid data for pb.ObsCollection")
 			}
+			// result[sv].PlaceDcidToTypes = obsCollection.PlaceDcidToTypes
+			result[sv].PlaceDcidToTypes = make(map[string]*pb.ObsCollection_PlaceTypes)
+			result[sv].PlaceDcidToTypes["wikidataId/Q119158"] = &pb.ObsCollection_PlaceTypes{
+				Types: []string{"state", "state2"},
+			}
+			slog.Info("place types in collections", "pt", result[sv].PlaceDcidToTypes)
 			for _, sc := range obsCollection.SourceCohorts {
 				// Convert unit when fetching observation (not date) if possible.
 				if date != "" {

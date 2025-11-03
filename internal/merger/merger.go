@@ -294,12 +294,27 @@ func MergeObservation(main, aux *pbv2.ObservationResponse) *pbv2.ObservationResp
 			if _, ok := main.ByVariable[v].ByEntity[e]; !ok {
 				main.ByVariable[v].ByEntity[e] = &pbv2.EntityObservation{
 					OrderedFacets: []*pbv2.FacetObservation{},
+					PlaceTypes:    eData.PlaceTypes,
 				}
 			}
 			main.ByVariable[v].ByEntity[e].OrderedFacets = append(
 				main.ByVariable[v].ByEntity[e].OrderedFacets,
 				eData.OrderedFacets...,
 			)
+			// Use a map to keep track of existing place types to avoid duplicates.
+			existingPlaceTypes := make(map[string]struct{})
+			for _, pt := range main.ByVariable[v].ByEntity[e].PlaceTypes {
+				existingPlaceTypes[pt] = struct{}{}
+			}
+			for _, pt := range eData.PlaceTypes {
+				if _, ok := existingPlaceTypes[pt]; !ok {
+					main.ByVariable[v].ByEntity[e].PlaceTypes = append(
+						main.ByVariable[v].ByEntity[e].PlaceTypes,
+						pt,
+					)
+					existingPlaceTypes[pt] = struct{}{}
+				}
+			}
 		}
 	}
 	if main.Facets == nil {

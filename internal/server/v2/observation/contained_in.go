@@ -63,6 +63,7 @@ func FetchContainedIn(
 			result = &pbv2.ObservationResponse{
 				ByVariable: map[string]*pbv2.VariableObservation{},
 				Facets:     map[string]*pb.Facet{},
+				PlaceTypes: []string{},
 			}
 			readCollectionCache = util.HasCollectionCache(ancestor, childType)
 			if readCollectionCache {
@@ -124,6 +125,17 @@ func FetchContainedIn(
 								},
 							)
 							result.Facets[facetID] = facet
+						}
+					}
+					// Gathering all place types for all entities in the collection.
+					placeTypesByDcid := data.PlaceDcidToTypes
+					placeTypesMap := make(map[string]struct{})
+					for entity, placeTypes := range placeTypesByDcid {
+						for _, placeType := range placeTypes.Types {
+							if _, ok := placeTypesMap[placeType]; !ok {
+								obsByEntity[entity].PlaceTypes = append(obsByEntity[entity].PlaceTypes, placeType)
+								placeTypesMap[placeType] = struct{}{}
+							}
 						}
 					}
 				}

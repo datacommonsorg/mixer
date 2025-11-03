@@ -95,14 +95,16 @@ func standardizeToYear(dateStr string) (string, error) {
 }
 
 // Formats logs for the stat vars and facets.
-func MakeStatVarLogs(store *store.Store, observationResponse *pbv2.ObservationResponse) []*StatVarLog {
+func MakeStatVarLogs(store *store.Store, observationResponse *pbv2.ObservationResponse) ([]*StatVarLog, []string) {
 	// statVarLogs is a map statVarDCID -> list of facets.
 	statVarsByDcid := make(map[string]*StatVarLog)
 
 	resultLogs := make([]*StatVarLog, 0, len(statVarsByDcid))
 
+	placeTypes := make([]string, 0)
+
 	if (observationResponse == nil){
-		return resultLogs
+		return resultLogs, placeTypes
 	}
 
 	// Iterate through each response's variables, collecting the facets used in that resp into our 
@@ -118,6 +120,9 @@ func MakeStatVarLogs(store *store.Store, observationResponse *pbv2.ObservationRe
 
 		// Get all of the facets used for each entity.
 		for _, entityObs := range varObs.ByEntity {
+
+			placeTypes = append(placeTypes, entityObs.PlaceTypes...)
+
 			// The entity observation contains a list of the most relevant facets -- we include all of them.
 			for _, facetObs := range entityObs.OrderedFacets {
 				facetId := facetObs.FacetId
@@ -168,15 +173,15 @@ func MakeStatVarLogs(store *store.Store, observationResponse *pbv2.ObservationRe
 		resultLogs = append(resultLogs, svLog)
 	}
 
-	return resultLogs
+	return resultLogs, placeTypes
 }
 
 
 // Writes a structured log to stdout, which is ingested by GCP cloud logging to track mixer usage.
 // Currently only used by the v2/observation endpoint.
-func WriteUsageLog(surface string, isRemote bool, placeTypes []string, store *store.Store, observationResponse *pbv2.ObservationResponse, queryType shared.QueryType) {
+func WriteUsageLog(surface string, isRemote bool, store *store.Store, observationResponse *pbv2.ObservationResponse, queryType shared.QueryType) {
 
-	statVars := MakeStatVarLogs(store, observationResponse)
+	statVars, placeTypes := MakeStatVarLogs(store, observationResponse)
 
 	logEntry := UsageLog{
 		PlaceTypes: placeTypes,
