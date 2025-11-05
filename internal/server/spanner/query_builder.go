@@ -26,6 +26,7 @@ import (
 	"cloud.google.com/go/spanner"
 	"github.com/datacommonsorg/mixer/internal/merger"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
+	v3 "github.com/datacommonsorg/mixer/internal/server/v3"
 )
 
 func GetNodePropsQuery(ids []string, out bool) *spanner.Statement {
@@ -48,7 +49,7 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 
 	// Attach predicates.
 	filterPredicate := ""
-	if arc.SingleProp != "" && arc.SingleProp != wildcard && arc.Decorator != chain {
+	if arc.SingleProp != "" && arc.SingleProp != v3.Wildcard && arc.Decorator != v3.Chain {
 		filterPredicate = statements.filterPredicate
 		params["predicates"] = []string{arc.SingleProp}
 	} else if len(arc.BracketProps) > 0 {
@@ -84,7 +85,7 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 	var subquery string
 	switch arc.Out {
 	case true:
-		if arc.Decorator == chain {
+		if arc.Decorator == v3.Chain {
 			subquery = fmt.Sprintf(statements.getChainedEdgesBySubjectID, maxHops)
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
@@ -94,7 +95,7 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 		// Add filters last for out-edges.
 		subqueries = append([]string{subquery}, subqueries...)
 	case false:
-		if arc.Decorator == chain {
+		if arc.Decorator == v3.Chain {
 			subquery = fmt.Sprintf(statements.getChainedEdgesByObjectID, maxHops)
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
@@ -108,7 +109,7 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 	// Generate prefix and return statement.
 	var prefix, returnEdges string
 	switch arc.Decorator {
-	case chain:
+	case v3.Chain:
 		prefix = statements.chainedEdgePrefix
 		returnEdges = statements.returnChainedEdges
 	default:

@@ -28,12 +28,8 @@ import (
 const (
 	// Maximum number of edge hops to traverse for chained properties.
 	maxHops = 10
-	// Used for Arc.SingleProp in Node requests and indicates that all properties should be returned.
-	wildcard = "*"
-	// Used for Arc.Decorator in Node requests and indicates that recursive property paths should be returned.
-	chain = "+"
-	where = "\n\t\tWHERE\n\t\t\t"
-	and   = "\n\t\t\tAND "
+	where   = "\n\t\tWHERE\n\t\t\t"
+	and     = "\n\t\t\tAND "
 )
 
 // GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction and returns a map.
@@ -73,11 +69,6 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 	}
 	for _, id := range ids {
 		edges[id] = []*spannerds.Edge{}
-	}
-
-	// Validate input.
-	if arc.Decorator != "" && (arc.SingleProp == "" || arc.SingleProp == wildcard || len(arc.BracketProps) > 0) {
-		return nil, fmt.Errorf("chain expressions are only supported for a single property")
 	}
 
 	err := sc.queryAndCollect(
