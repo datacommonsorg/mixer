@@ -26,9 +26,9 @@ import (
 
 // spannerConfig struct to hold the YAML configuration to a spanner database.
 type spannerConfig struct {
-	Project  string `yaml:"project"`
-	Instance string `yaml:"instance"`
-	Database string `yaml:"database"`
+	project  string `yaml:"project"`
+	instance string `yaml:"instance"`
+	database string `yaml:"database"`
 }
 
 // SpannerClient encapsulates the Spanner client.
@@ -57,7 +57,7 @@ func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride s
 // createSpannerClient creates the database name string and initializes the Spanner client.
 func createSpannerClient(ctx context.Context, cfg *spannerConfig) (*spanner.Client, error) {
 	// Construct the database name string
-	databaseName := fmt.Sprintf("projects/%s/instances/%s/databases/%s", cfg.Project, cfg.Instance, cfg.Database)
+	databaseName := fmt.Sprintf("projects/%s/instances/%s/databases/%s", cfg.project, cfg.instance, cfg.database)
 
 	// Create the Spanner client
 	client, err := spanner.NewClient(ctx, databaseName)
@@ -80,7 +80,7 @@ func createSpannerConfig(spannerConfigYaml, databaseOverride string) (*spannerCo
 	// TODO: Once the Spanner instance is stable, revert to using the config.
 	if databaseOverride != "" {
 		slog.Debug("Setting Spanner database value from flag", "value", databaseOverride)
-		cfg.Database = databaseOverride
+		cfg.database = databaseOverride
 	}
 
 	return &cfg, nil
