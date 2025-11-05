@@ -128,8 +128,14 @@ func FetchContainedIn(
 					}
 					// Gathering all place types for all entities in the collection.
 					placeTypesByDcid := data.PlaceDcidToTypes
-					placeTypesMap := make(map[string]struct{})
 					for entity, placeTypes := range placeTypesByDcid {
+						if _, ok := obsByEntity[entity]; !ok {
+							continue
+						}
+						placeTypesMap := make(map[string]struct{})
+						for _, t := range obsByEntity[entity].PlaceTypes {
+							placeTypesMap[t] = struct{}{}
+						}
 						for _, placeType := range placeTypes.Types {
 							if _, ok := placeTypesMap[placeType]; !ok {
 								obsByEntity[entity].PlaceTypes = append(obsByEntity[entity].PlaceTypes, placeType)

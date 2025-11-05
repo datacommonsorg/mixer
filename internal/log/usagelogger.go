@@ -98,16 +98,14 @@ func standardizeToYear(dateStr string) (string, error) {
 func MakeStatVarLogs(store *store.Store, observationResponse *pbv2.ObservationResponse) ([]*StatVarLog, []string) {
 	// statVarLogs is a map statVarDCID -> list of facets.
 	statVarsByDcid := make(map[string]*StatVarLog)
+	resultLogs := make([]*StatVarLog, 0)
+	placeTypesSet := make(map[string]struct{})
 
-	resultLogs := make([]*StatVarLog, 0, len(statVarsByDcid))
-
-	placeTypes := make([]string, 0)
-
-	if (observationResponse == nil){
-		return resultLogs, placeTypes
+	if observationResponse == nil {
+		return resultLogs, []string{}
 	}
 
-	// Iterate through each response's variables, collecting the facets used in that resp into our 
+	// Iterate through each response's variables, collecting the facets used in that resp into our
 	// cumulative list of facets used for the given variable.
 	for variable, varObs := range observationResponse.ByVariable {
 		// A map of facetId -> FacetLog
@@ -120,8 +118,9 @@ func MakeStatVarLogs(store *store.Store, observationResponse *pbv2.ObservationRe
 
 		// Get all of the facets used for each entity.
 		for _, entityObs := range varObs.ByEntity {
-
-			placeTypes = append(placeTypes, entityObs.PlaceTypes...)
+			for _, placeType := range entityObs.PlaceTypes {
+				placeTypesSet[placeType] = struct{}{}
+			}
 
 			// The entity observation contains a list of the most relevant facets -- we include all of them.
 			for _, facetObs := range entityObs.OrderedFacets {
@@ -173,6 +172,10 @@ func MakeStatVarLogs(store *store.Store, observationResponse *pbv2.ObservationRe
 		resultLogs = append(resultLogs, svLog)
 	}
 
+	placeTypes := make([]string, 0, len(placeTypesSet))
+	for placeType := range placeTypesSet {
+		placeTypes = append(placeTypes, placeType)
+	}
 	return resultLogs, placeTypes
 }
 

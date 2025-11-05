@@ -301,7 +301,7 @@ func MergeObservation(main, aux *pbv2.ObservationResponse) *pbv2.ObservationResp
 				main.ByVariable[v].ByEntity[e].OrderedFacets,
 				eData.OrderedFacets...,
 			)
-			// Includes all place types in the main and auxiliary responses.
+			// // Includes all place types in the main and auxiliary responses.
 			existingPlaceTypes := make(map[string]struct{})
 			for _, pt := range main.ByVariable[v].ByEntity[e].PlaceTypes {
 				existingPlaceTypes[pt] = struct{}{}
