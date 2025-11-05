@@ -393,10 +393,10 @@ func NewSpannerClient() *spanner.SpannerClient {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	spannerGraphInfoYamlPath := path.Join(path.Dir(filename), "../deploy/storage/spanner_graph_info.yaml")
-	return newSpannerClientImpl(context.Background(), spannerGraphInfoYamlPath)
+	return newSpannerClient(context.Background(), spannerGraphInfoYamlPath)
 }
 
-func newSpannerClientImpl(ctx context.Context, spannerGraphInfoYamlPath string) *spanner.SpannerClient {
+func newSpannerClient(ctx context.Context, spannerGraphInfoYamlPath string) *spanner.SpannerClient {
 	spannerGraphInfoYaml, err := os.ReadFile(spannerGraphInfoYamlPath)
 	if err != nil {
 		log.Fatalf("Failed to read spanner yaml: %v", err)
