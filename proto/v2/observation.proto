@@ -53,6 +53,7 @@ message VariableObservation {
 message EntityObservation {
   // Facet are orderred by preference.
   repeated FacetObservation ordered_facets = 1;
+  // The types of place that the entity is defined as if it is a geographic place
   repeated string place_types = 7;
 }
 
@@ -102,5 +103,4 @@ message ObservationResponse {
   map<string, VariableObservation> by_variable = 1;
   // Keyed by facet ID
   map<string, datacommons.Facet> facets = 2;
-  repeated string place_types = 3;
 }

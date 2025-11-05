@@ -63,7 +63,6 @@ func FetchContainedIn(
 			result = &pbv2.ObservationResponse{
 				ByVariable: map[string]*pbv2.VariableObservation{},
 				Facets:     map[string]*pb.Facet{},
-				PlaceTypes: []string{},
 			}
 			readCollectionCache = util.HasCollectionCache(ancestor, childType)
 			if readCollectionCache {
