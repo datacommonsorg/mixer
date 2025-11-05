@@ -14,11 +14,9 @@
 
 // Utility functions used by the SpannerDataSource.
 
-package spanner
+package spannerds
 
 import (
-	"crypto/sha256"
-	"encoding/base64"
 	"fmt"
 	"log/slog"
 	"sort"
@@ -35,14 +33,8 @@ import (
 )
 
 const (
-	// Used for Arc.SingleProp in Node requests and indicates that all properties should be returned.
-	WILDCARD = "*"
-	// Used for Arc.Decorator in Node requests and indicates that recursive property paths should be returned.
-	CHAIN = "+"
 	// Used for Facet responses with an entity expression.
-	ENTITY_PLACEHOLDER = ""
-	WHERE              = "\n\t\tWHERE\n\t\t\t"
-	AND                = "\n\t\t\tAND "
+	entityPlaceholder = ""
 )
 
 // Select options for Observation.
@@ -443,7 +435,7 @@ func obsToFacetResponse(req *pbv2.ObservationRequest, observations []*Observatio
 			}
 			mergedResponse.ByVariable[variable] = variableObs
 		}
-		variableObs.ByEntity[ENTITY_PLACEHOLDER] = &pbv2.EntityObservation{
+		variableObs.ByEntity[entityPlaceholder] = &pbv2.EntityObservation{
 			OrderedFacets: mergeEntityOrderedFacets(initialVariableObs.ByEntity, childPlaces),
 		}
 	}
@@ -609,19 +601,4 @@ func candidatesToResolveResponse(nodeToCandidates map[string][]string) *pbv2.Res
 		return response.Entities[i].GetNode() > response.Entities[j].GetNode()
 	})
 	return response
-}
-
-func generateValueHash(input string) string {
-	data := []byte(input)
-	hash := sha256.Sum256(data)
-	return base64.StdEncoding.EncodeToString(hash[:])
-}
-
-func addValueHashes(input []string) []string {
-	result := make([]string, 0, len(input)*2)
-	for _, v := range input {
-		result = append(result, v)
-		result = append(result, generateValueHash(v))
-	}
-	return result
 }

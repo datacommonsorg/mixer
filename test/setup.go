@@ -34,6 +34,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
+	"github.com/datacommonsorg/mixer/internal/server/datasource/spannerds"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/remote"
@@ -133,9 +134,9 @@ func setupInternal(
 
 	var spannerDataSource datasource.DataSource
 	if enableV3 && useSpannerGraph {
-		spannerClient := NewSpannerClientImpl()
+		spannerClient := NewSpannerClient()
 		if spannerClient != nil {
-			spannerDataSource = spanner.NewSpannerDataSource(spannerClient)
+			spannerDataSource = spannerds.NewSpannerDataSource(spannerClient)
 			// TODO: Order sources by priority once other implementations are added.
 			sources = append(sources, &spannerDataSource)
 		}
@@ -383,9 +384,9 @@ func ReadGolden(goldenDir string, goldenFile string) (string, error) {
 	return string(bytes), nil
 }
 
-// NewSpannerClientImpl creates a new test spanner client if spanner is enabled.
+// NewSpannerClient creates a new test spanner client if spanner is enabled.
 // If not enabled, it returns nil.
-func NewSpannerClientImpl() *spanner.SpannerClientImpl {
+func NewSpannerClient() *spanner.SpannerClient {
 	if !EnableSpannerGraph {
 		log.Println("Spanner graph not enabled.")
 		return nil
@@ -395,13 +396,13 @@ func NewSpannerClientImpl() *spanner.SpannerClientImpl {
 	return newSpannerClientImpl(context.Background(), spannerGraphInfoYamlPath)
 }
 
-func newSpannerClientImpl(ctx context.Context, spannerGraphInfoYamlPath string) *spanner.SpannerClientImpl {
+func newSpannerClientImpl(ctx context.Context, spannerGraphInfoYamlPath string) *spanner.SpannerClient {
 	spannerGraphInfoYaml, err := os.ReadFile(spannerGraphInfoYamlPath)
 	if err != nil {
 		log.Fatalf("Failed to read spanner yaml: %v", err)
 	}
 	// Don't override spannerGraphInfoYaml.database for testing.
-	spannerClient, err := spanner.NewSpannerClientImpl(ctx, string(spannerGraphInfoYaml), "")
+	spannerClient, err := spanner.NewSpannerClient(ctx, string(spannerGraphInfoYaml), "")
 	if err != nil {
 		log.Fatalf("Failed to create SpannerClient: %v", err)
 	}

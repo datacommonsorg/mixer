@@ -21,8 +21,8 @@ import (
 	"sort"
 	"testing"
 
+	"github.com/datacommonsorg/mixer/internal/server/datasource/spannerds"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
-	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 )
@@ -33,7 +33,7 @@ const (
 )
 
 func TestGetNodeProps(t *testing.T) {
-	client := test.NewSpannerClientImpl()
+	client := test.NewSpannerClient()
 	if client == nil {
 		return
 	}
@@ -50,7 +50,7 @@ func TestGetNodeProps(t *testing.T) {
 }
 
 func TestGetNodeOutEdgesByID(t *testing.T) {
-	client := test.NewSpannerClientImpl()
+	client := test.NewSpannerClient()
 	if client == nil {
 		return
 	}
@@ -71,7 +71,7 @@ func TestGetNodeOutEdgesByID(t *testing.T) {
 }
 
 func TestGetNodeInEdgesByID(t *testing.T) {
-	client := test.NewSpannerClientImpl()
+	client := test.NewSpannerClient()
 	if client == nil {
 		return
 	}
@@ -92,7 +92,7 @@ func TestGetNodeInEdgesByID(t *testing.T) {
 }
 
 func TestGetObservations(t *testing.T) {
-	client := test.NewSpannerClientImpl()
+	client := test.NewSpannerClient()
 	if client == nil {
 		return
 	}
@@ -114,7 +114,7 @@ func TestGetObservations(t *testing.T) {
 }
 
 func TestGetObservationsContainedInPlace(t *testing.T) {
-	client := test.NewSpannerClientImpl()
+	client := test.NewSpannerClient()
 	if client == nil {
 		return
 	}
@@ -136,7 +136,7 @@ func TestGetObservationsContainedInPlace(t *testing.T) {
 }
 
 func TestSearchNodes(t *testing.T) {
-	client := test.NewSpannerClientImpl()
+	client := test.NewSpannerClient()
 	if client == nil {
 		return
 	}
@@ -157,7 +157,7 @@ func TestSearchNodes(t *testing.T) {
 }
 
 func TestResolveByID(t *testing.T) {
-	client := test.NewSpannerClientImpl()
+	client := test.NewSpannerClient()
 	if client == nil {
 		return
 	}
@@ -211,7 +211,7 @@ func runQueryGoldenTest(t *testing.T, goldenFile string, fn goldenTestFunc) {
 }
 
 // simplifySearchNodes simplifies search results for goldens.
-func simplifySearchNodes(results []*spanner.SearchNode) []*spanner.SearchNode {
+func simplifySearchNodes(results []*spannerds.SearchNode) []*spannerds.SearchNode {
 	if len(results) > NUM_MATCHES {
 		results = results[:NUM_MATCHES]
 	}
@@ -224,8 +224,8 @@ func simplifySearchNodes(results []*spanner.SearchNode) []*spanner.SearchNode {
 }
 
 // simplifyNodes simplifies Node results for goldens.
-func simplifyNodes(results map[string][]*spanner.Edge) map[string][]*spanner.Edge {
-	filtered := map[string][]*spanner.Edge{}
+func simplifyNodes(results map[string][]*spannerds.Edge) map[string][]*spannerds.Edge {
+	filtered := map[string][]*spannerds.Edge{}
 	for subject_id, edges := range results {
 		if len(edges) > NUM_MATCHES {
 			edges = edges[:NUM_MATCHES]
@@ -237,7 +237,7 @@ func simplifyNodes(results map[string][]*spanner.Edge) map[string][]*spanner.Edg
 
 // sortObservations sorts Observations by variable, entity, facet (primary key) to ensure deterministic order in tests.
 // The final Observation responses will be sorted later based on facet rank.
-func sortObservations(results []*spanner.Observation) {
+func sortObservations(results []*spannerds.Observation) {
 	sort.Slice(results, func(i, j int) bool {
 		a, b := results[i], results[j]
 

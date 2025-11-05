@@ -21,19 +21,19 @@ import (
 	"testing"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/datasource/spannerds"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
-	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
 func TestNode(t *testing.T) {
-	client := test.NewSpannerClientImpl()
+	client := test.NewSpannerClient()
 	if client == nil {
 		return
 	}
-	ds := spanner.NewSpannerDataSource(client)
+	ds := spannerds.NewSpannerDataSource(client)
 
 	t.Parallel()
 	ctx := context.Background()

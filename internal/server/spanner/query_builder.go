@@ -16,6 +16,8 @@
 package spanner
 
 import (
+	"crypto/sha256"
+	"encoding/base64"
 	"fmt"
 	"sort"
 	"strconv"
@@ -46,7 +48,7 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 
 	// Attach predicates.
 	filterPredicate := ""
-	if arc.SingleProp != "" && arc.SingleProp != WILDCARD && arc.Decorator != CHAIN {
+	if arc.SingleProp != "" && arc.SingleProp != wildcard && arc.Decorator != chain {
 		filterPredicate = statements.filterPredicate
 		params["predicates"] = []string{arc.SingleProp}
 	} else if len(arc.BracketProps) > 0 {
@@ -82,8 +84,8 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 	var subquery string
 	switch arc.Out {
 	case true:
-		if arc.Decorator == CHAIN {
-			subquery = fmt.Sprintf(statements.getChainedEdgesBySubjectID, MAX_HOPS)
+		if arc.Decorator == chain {
+			subquery = fmt.Sprintf(statements.getChainedEdgesBySubjectID, maxHops)
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
 		} else {
@@ -92,8 +94,8 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 		// Add filters last for out-edges.
 		subqueries = append([]string{subquery}, subqueries...)
 	case false:
-		if arc.Decorator == CHAIN {
-			subquery = fmt.Sprintf(statements.getChainedEdgesByObjectID, MAX_HOPS)
+		if arc.Decorator == chain {
+			subquery = fmt.Sprintf(statements.getChainedEdgesByObjectID, maxHops)
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
 		} else {
@@ -106,7 +108,7 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 	// Generate prefix and return statement.
 	var prefix, returnEdges string
 	switch arc.Decorator {
-	case CHAIN:
+	case chain:
 		prefix = statements.chainedEdgePrefix
 		returnEdges = statements.returnChainedEdges
 	default:
@@ -148,7 +150,7 @@ func GetObservationsQuery(variables []string, entities []string) *spanner.Statem
 		stmt.Params["entities"] = entities
 		filters = append(filters, statements.selectEntityDcids)
 	}
-	stmt.SQL += WHERE + strings.Join(filters, AND)
+	stmt.SQL += where + strings.Join(filters, and)
 
 	return stmt
 }
@@ -205,4 +207,19 @@ func ResolveByIDQuery(nodes []string, in, out string) *spanner.Statement {
 		SQL:    sql,
 		Params: params,
 	}
+}
+
+func generateValueHash(input string) string {
+	data := []byte(input)
+	hash := sha256.Sum256(data)
+	return base64.StdEncoding.EncodeToString(hash[:])
+}
+
+func addValueHashes(input []string) []string {
+	result := make([]string, 0, len(input)*2)
+	for _, v := range input {
+		result = append(result, v)
+		result = append(result, generateValueHash(v))
+	}
+	return result
 }
