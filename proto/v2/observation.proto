@@ -94,7 +94,6 @@ message ObservationRequest {
   FacetFilter filter = 5;
   // Fields to return, valid values are: "variable", "entity", "date", "value", "facet"
   repeated string select = 6;
-  string request_id = 7;
 }
 
 message ObservationResponse {
@@ -102,5 +101,6 @@ message ObservationResponse {
   map<string, VariableObservation> by_variable = 1;
   // Keyed by facet ID
   map<string, datacommons.Facet> facets = 2;
+  // Unique ID that identifies this response. Used in usage logging in the website
   string request_id = 3;
 }
