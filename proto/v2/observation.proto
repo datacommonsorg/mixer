@@ -102,5 +102,6 @@ message ObservationResponse {
   // Keyed by facet ID
   map<string, datacommons.Facet> facets = 2;
   // Unique ID that identifies this response. Used in usage logging in the website
-  string request_id = 3;
+  // Plural to be compatible with website logging that can have multiple IDs
+  repeated string mixer_response_ids = 3;
 }

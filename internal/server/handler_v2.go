@@ -17,7 +17,6 @@ package server
 
 import (
 	"context"
-	"math/rand"
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/log"
@@ -296,12 +295,12 @@ func (s *Server) V2Observation(
 	// Create a new ID to return with the response.
 	// This is used for usage logging and in the website to track cached usage.
 	requestId := uuid.New()
-	v2Resp.RequestId = requestId.String()
+	v2Resp.MixerResponseIds = []string{requestId.String()}
 
 	// Handle usage logging.
-	if rand.Float64() < s.flags.WriteUsageLogs {
-		log.WriteUsageLog(surface, toRemote, []string{} /* place types, still WIP */, s.store, v2Resp, queryType)
-	}
+	// if rand.Float64() < s.flags.WriteUsageLogs {
+	log.WriteUsageLog(surface, toRemote, []string{} /* place types, still WIP */, s.store, v2Resp, queryType)
+	// }
 
 	return v2Resp, nil
 }

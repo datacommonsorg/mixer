@@ -188,7 +188,7 @@ func TestFetchDirect(t *testing.T) {
 				t.Errorf("could not run V2Observation (direct): %s", err)
 				continue
 			}
-			resp.RequestId = ""
+			resp.MixerResponseIds = []string{}
 			if latencyTest {
 				continue
 			}
@@ -201,7 +201,7 @@ func TestFetchDirect(t *testing.T) {
 				t.Errorf("Can not Unmarshal golden file: %s", err)
 				continue
 			}
-			expected.RequestId = ""
+			expected.MixerResponseIds = []string{}
 			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
 				t.Errorf("payload got diff(%s): %v", goldenFile, diff)
 				continue
