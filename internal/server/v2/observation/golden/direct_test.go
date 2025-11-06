@@ -199,7 +199,7 @@ func TestFetchDirect(t *testing.T) {
 			var expected pbv2.ObservationResponse
 			if err = test.ReadJSON(goldenPath, goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file: %s", err)
-				continue	
+				continue
 			}
 			expected.RequestId = ""
 			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
