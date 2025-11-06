@@ -104,34 +104,35 @@ func TestCalculation(t *testing.T) {
 			},
 		} {
 			goldenFile := c.goldenFile
-			resp, err := mixer.V2Observation(ctx, &pbv2.ObservationRequest{
-				Select:   []string{"variable", "entity", "date", "value"},
-				Variable: &pbv2.DcidOrExpression{Dcids: c.variables},
-				Entity:   &pbv2.DcidOrExpression{Dcids: c.entities},
-				Date:     c.date,
-				Filter:   c.filter,
-			})
-			if err != nil {
-				t.Errorf("could not run V2Observation (direct): %s", err)
-				continue
-			}
-			if latencyTest {
-				continue
-			}
-			if test.GenerateGolden {
-				test.UpdateGolden(resp, goldenPath, goldenFile)
-				continue
-			}
-			var expected pbv2.ObservationResponse
-			if err = test.ReadJSON(goldenPath, goldenFile, &expected); err != nil {
-				t.Errorf("Can not Unmarshal golden file: %s", err)
-				continue
-			}
-			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
-				t.Errorf("%s: got diff: %s", c.desc, diff)
-				continue
-			}
-		}
+			            resp, err := mixer.V2Observation(ctx, &pbv2.ObservationRequest{
+			                Select:   []string{"variable", "entity", "date", "value"},
+			                Variable: &pbv2.DcidOrExpression{Dcids: c.variables},
+			                Entity:   &pbv2.DcidOrExpression{Dcids: c.entities},
+			                Date:     c.date,
+			                Filter:   c.filter,
+			            })
+			            if err != nil {
+			                t.Errorf("could not run V2Observation (direct): %s", err)
+			                continue
+			            }
+			            resp.RequestId = ""
+			            if latencyTest {
+			                continue
+			            }
+			            if test.GenerateGolden {
+			                test.UpdateGolden(resp, goldenPath, goldenFile)
+			                continue
+			            }
+			            var expected pbv2.ObservationResponse
+			            if err = test.ReadJSON(goldenPath, goldenFile, &expected); err != nil {
+			                t.Errorf("Can not Unmarshal golden file: %s", err)
+			                continue
+			            }
+			            expected.RequestId = ""
+			            if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
+			                t.Errorf("%s: got diff: %s", c.desc, diff)
+			                continue
+			            }		}
 	}
 	if err := test.TestDriver(
 		"TestCalculation",
@@ -202,6 +203,7 @@ func TestCalculationForObsCollection(t *testing.T) {
 				t.Errorf("could not run V2Observation (direct): %s", err)
 				continue
 			}
+			resp.RequestId = ""
 			if latencyTest {
 				continue
 			}
@@ -214,6 +216,7 @@ func TestCalculationForObsCollection(t *testing.T) {
 				t.Errorf("Can not Unmarshal golden file: %s", err)
 				continue
 			}
+			expected.RequestId = ""
 			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
 				t.Errorf("%s: got diff: %s", c.desc, diff)
 				continue

@@ -188,6 +188,7 @@ func TestFetchDirect(t *testing.T) {
 				t.Errorf("could not run V2Observation (direct): %s", err)
 				continue
 			}
+			resp.RequestId = ""
 			if latencyTest {
 				continue
 			}
@@ -198,8 +199,9 @@ func TestFetchDirect(t *testing.T) {
 			var expected pbv2.ObservationResponse
 			if err = test.ReadJSON(goldenPath, goldenFile, &expected); err != nil {
 				t.Errorf("Can not Unmarshal golden file: %s", err)
-				continue
+				continue	
 			}
+			expected.RequestId = ""
 			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
 				t.Errorf("payload got diff(%s): %v", goldenFile, diff)
 				continue

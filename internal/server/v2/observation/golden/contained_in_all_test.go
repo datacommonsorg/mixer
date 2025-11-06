@@ -89,6 +89,7 @@ func TestFetchContainInAll(t *testing.T) {
 				t.Errorf("could not run V2Observation (contained_in): %s", err)
 				continue
 			}
+			resp.RequestId = ""
 			if latencyTest {
 				continue
 			}
@@ -101,6 +102,7 @@ func TestFetchContainInAll(t *testing.T) {
 				t.Errorf("Can not Unmarshal golden file: %s", err)
 				continue
 			}
+			expected.RequestId = ""
 			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
 				t.Errorf("payload got diff: %v", diff)
 				continue
