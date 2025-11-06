@@ -45,7 +45,7 @@ type UsageLog struct {
 	// TODO: placeType (city, county, etc.) requested for collection queries
 	// See discussion here https://docs.google.com/document/d/1ETB3dj4y1rKcSrgCMcc6c2n-sQ-t8IzHWxZL0tMevkI/edit?tab=t.sy6cgv7mofcp#bookmark=id.4y4aq6f7jnmt.
 	// May expand this to be a list of the number of series queried for each placeType.
-	PlaceType string        `json:"place_type"`
+	PlaceTypes []string        `json:"place_types"`
 	// The DC product (website, MCP server, client libraries, etc.) that the query originates from,
 	// and a flag indicating if the call comes via a custom DC to remote mixer.
 	Feature   Feature        `json:"feature"`
@@ -63,7 +63,7 @@ type UsageLog struct {
 func (u UsageLog) LogValue() slog.Value {
 	return slog.GroupValue(
 		slog.Any("feature", u.Feature),
-		slog.String("place_type", u.PlaceType),
+		slog.Any("place_types", u.PlaceTypes),
 		slog.String("query_type", u.QueryType),
 		slog.Any("stat_vars", u.StatVars),
 		slog.String("request_id", u.RequestId),
@@ -99,20 +99,19 @@ func standardizeToYear(dateStr string) (string, error) {
 }
 
 // Formats logs for the stat vars and facets.
-func MakeStatVarLogs(store *store.Store, observation *pbv2.ObservationResponse) []*StatVarLog {
+func MakeStatVarLogs(store *store.Store, observationResponse *pbv2.ObservationResponse) []*StatVarLog {
 	// statVarLogs is a map statVarDCID -> list of facets.
 	statVarsByDcid := make(map[string]*StatVarLog)
+
 	resultLogs := make([]*StatVarLog, 0, len(statVarsByDcid))
 
-	// TODO: clean this up so this duplication isn't necessary, I think I was using the pre-merged observation
-	resp := observation
-
-	if resp == nil {
+	if (observationResponse == nil){
 		return resultLogs
 	}
+
 	// Iterate through each response's variables, collecting the facets used in that resp into our 
 	// cumulative list of facets used for the given variable.
-	for variable, varObs := range resp.ByVariable {
+	for variable, varObs := range observationResponse.ByVariable {
 		// A map of facetId -> FacetLog
 		facetsByFacetId := make(map[string]*FacetLog)
 		if _, ok := statVarsByDcid[variable]; !ok {
@@ -148,7 +147,7 @@ func MakeStatVarLogs(store *store.Store, observation *pbv2.ObservationResponse) 
 					}
 				} else {
 					// If this is the first time we see the facet, create a map entry.
-					if facetData, ok := resp.Facets[facetId]; ok {
+					if facetData, ok := observationResponse.Facets[facetId]; ok {
 						facetsByFacetId[facetId] = &FacetLog{
 							Facet:     facetData,
 							NumSeries: 1,
@@ -168,7 +167,6 @@ func MakeStatVarLogs(store *store.Store, observation *pbv2.ObservationResponse) 
 		statVarsByDcid[variable].Facets = facetLogs
 	}
 
-	
 	// Moving statVarLogs from a map keyed by statVarDcid to a list.
 	for _, svLog := range statVarsByDcid {
 		resultLogs = append(resultLogs, svLog)
@@ -180,21 +178,19 @@ func MakeStatVarLogs(store *store.Store, observation *pbv2.ObservationResponse) 
 
 // Writes a structured log to stdout, which is ingested by GCP cloud logging to track mixer usage.
 // Currently only used by the v2/observation endpoint.
-func WriteUsageLog(surface string, isRemote bool, placeType string, store *store.Store, observation *pbv2.ObservationResponse, queryType shared.QueryType) {
+func WriteUsageLog(surface string, isRemote bool, placeTypes []string, store *store.Store, observationResponse *pbv2.ObservationResponse, queryType shared.QueryType) {
 
-	statVars := MakeStatVarLogs(store, observation)
-
-	slog.Info("request id", "id", observation.RequestId);
+	statVars := MakeStatVarLogs(store, observationResponse)
 
 	logEntry := UsageLog{
-		PlaceType: placeType,
+		PlaceTypes: placeTypes,
 		Feature: Feature{
 			Surface:    surface,
 			IsRemote: isRemote,
 		},
 		QueryType: string(queryType),
 		StatVars:  statVars,
-		RequestId: observation.RequestId,
+		RequestId: observationResponse.RequestId,
 	}
 
 	slog.Info("new_query", slog.Any("usage_log", logEntry))

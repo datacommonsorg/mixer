@@ -19,13 +19,14 @@ import (
 	"context"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/datasources"
 )
 
 // V3Node implements API for mixer.V3Node.
 func (s *Server) V3Node(ctx context.Context, in *pbv2.NodeRequest) (
 	*pbv2.NodeResponse, error,
 ) {
-	return s.dispatcher.Node(ctx, in)
+	return s.dispatcher.Node(ctx, in, datasources.DefaultPageSize)
 }
 
 // V3Observation implements API for mixer.V3Observation.

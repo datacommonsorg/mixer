@@ -2941,6 +2941,10 @@
       "dcid": "Count_Person_15OrMoreYears_SpecializedScientificAndTechnicalActivities_Employed_Female"
     },
     {
+      "name": "Number of employed women aged 16 years and over who worked from home",
+      "dcid": "Count_Person_Years16Onwards_Employed_Female_WorkedFromHome"
+    },
+    {
       "name": "Number of married urban women aged 15 years",
       "dcid": "Count_Person_15Years_Female_Married_Urban"
     },

@@ -2564,6 +2564,10 @@
       "provenance_url": "https://ec.europa.eu/eurostat/databrowser/view/demo_r_gind3/default/table?lang=en",
       "measurement_method": "EurostatRegionalStatistics"
     },
+    "1836477334": {
+      "import_name": "Mongolia_Education",
+      "provenance_url": "https://www.1212.mn/en/statcate"
+    },
     "1897073702": {
       "import_name": "SouthAfrica_Census",
       "provenance_url": "https://southafrica.opendataforafrica.org/"

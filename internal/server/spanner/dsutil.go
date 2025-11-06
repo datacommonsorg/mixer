@@ -28,6 +28,7 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
+	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"github.com/datacommonsorg/mixer/internal/util"
 
@@ -53,6 +54,20 @@ const (
 	VALUE    = "value"
 	FACET    = "facet"
 )
+
+// Map of original chained property to optimized property.
+// These are chained node properties that can be replaced with optimized versions before fetching from Spanner.
+var optimizedChainProps = map[string]string{
+	"containedInPlace":       "linkedContainedInPlace",
+	"linkedContainedInPlace": "linkedContainedInPlace",
+}
+
+// Struct to hold optimizations made to Node requests.
+// This is used to recover the original response.
+type nodeArtifacts struct {
+	// Original chained property in request that was replaced.
+	chainProp string
+}
 
 // Represents options for Observation response.
 type queryOptions struct {
@@ -89,7 +104,7 @@ func nodePropsToNodeResponse(propsBySubjectID map[string][]*Property) *pbv2.Node
 }
 
 // getOffset returns the offset for a given Spanner data source id.
-func getOffset(nextToken, dataSourceID string) (int32, error) {
+func getOffset(nextToken, dataSourceID string) (int, error) {
 	if nextToken == "" {
 		return 0, nil
 	}
@@ -105,7 +120,7 @@ func getOffset(nextToken, dataSourceID string) (int32, error) {
 			if !ok {
 				return 0, fmt.Errorf("found different data source info for spanner data source id: %s", dataSourceID)
 			}
-			return spannerInfo.SpannerInfo.GetOffset(), nil
+			return int(spannerInfo.SpannerInfo.GetOffset()), nil
 		}
 	}
 
@@ -113,14 +128,14 @@ func getOffset(nextToken, dataSourceID string) (int32, error) {
 }
 
 // getNextToken encodes next offset in a nextToken string.
-func getNextToken(offset int32, dataSourceID string) (string, error) {
+func getNextToken(offset int, dataSourceID string) (string, error) {
 	pi := &pbv2.Pagination{
 		Info: []*pbv2.Pagination_DataSourceInfo{
 			{
 				Id: dataSourceID,
 				DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
 					SpannerInfo: &pbv2.SpannerInfo{
-						Offset: offset,
+						Offset: int32(offset),
 					},
 				},
 			},
@@ -134,8 +149,42 @@ func getNextToken(offset int32, dataSourceID string) (string, error) {
 	return nextToken, nil
 }
 
+// addOptimizationsToNodeRequest optimizes a Node request for fetching from Spanner, modifying the input arc in-place.
+func addOptimizationsToNodeRequest(arc *v2.Arc) *nodeArtifacts {
+	artifacts := &nodeArtifacts{}
+
+	// Maybe optimize chaining.
+	if arc.Decorator == CHAIN {
+		if replacementProp, ok := optimizedChainProps[arc.SingleProp]; ok {
+			artifacts.chainProp = arc.SingleProp
+			arc.Decorator = ""
+			arc.SingleProp = replacementProp
+		}
+	}
+
+	return artifacts
+}
+
+// removeOptimizationsFromNodeResponse cleans up the intermediate Node response based on request optimizations, modifying the response in-place.
+func removeOptimizationsFromNodeResponse(resp *pbv2.NodeResponse, artifacts *nodeArtifacts) {
+	// Maybe optimize chaining.
+	if artifacts.chainProp != "" {
+		replacementProp := optimizedChainProps[artifacts.chainProp]
+		for _, lg := range resp.Data {
+			if nodes, ok := lg.Arcs[replacementProp]; ok {
+				// Clear provenance, since chained responses do not return a provenance.
+				for _, node := range nodes.Nodes {
+					node.ProvenanceId = ""
+				}
+				lg.Arcs[artifacts.chainProp+CHAIN] = nodes
+				delete(lg.Arcs, replacementProp)
+			}
+		}
+	}
+}
+
 // nodeEdgesToNodeResponse converts a map from subject id to its edges to a NodeResponse proto.
-func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge, id string, offset int32) (*pbv2.NodeResponse, error) {
+func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge, id string, pageSize, offset int) (*pbv2.NodeResponse, error) {
 	nodeResponse := &pbv2.NodeResponse{
 		Data: make(map[string]*pbv2.LinkedGraph),
 	}
@@ -153,12 +202,12 @@ func nodeEdgesToNodeResponse(nodes []string, edgesBySubjectID map[string][]*Edge
 
 		rows += len(edges)
 
-		// We requested PAGE_SIZE+1 rows,
+		// We requested pageSize+1 rows,
 		// so having this many rows indicates that we have at least one more request,
 		// so generate nextToken.
-		if rows == PAGE_SIZE+1 && nodeResponse.NextToken == "" {
+		if rows == pageSize+1 && nodeResponse.NextToken == "" {
 			edges = edges[:len(edges)-1]
-			nextToken, err := getNextToken(offset+PAGE_SIZE, id)
+			nextToken, err := getNextToken(offset+pageSize, id)
 			if err != nil {
 				return nil, err
 			}

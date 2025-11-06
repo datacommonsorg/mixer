@@ -2013,7 +2013,7 @@
     },
     "2564251937": {
       "import_name": "CDC_Social_Vulnerability_Index",
-      "provenance_url": "https://www.atsdr.cdc.gov/placeandhealth/svi/data_documentation_download.html"
+      "provenance_url": "https://www.atsdr.cdc.gov/place-health/php/svi/svi-data-documentation-download.html?CDC_AAref_Val=https://www.atsdr.cdc.gov/placeandhealth/svi/data_documentation_download.html"
     },
     "2825511676": {
       "import_name": "CDC_Mortality_UnderlyingCause",

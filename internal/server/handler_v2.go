@@ -17,7 +17,7 @@ package server
 
 import (
 	"context"
-	"log/slog"
+	"math/rand"
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/log"
@@ -32,7 +32,6 @@ import (
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/google/uuid"
-	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -299,21 +298,9 @@ func (s *Server) V2Observation(
 	v2Resp.RequestId = requestId.String()
 
 	// Handle usage logging.
-	// if rand.Float64() < s.flags.WriteUsageLogs {
-	log.WriteUsageLog(surface, toRemote, "" /* place type, still WIP */, s.store, v2Resp, queryType)
-	// }
-
-	// START: Temporary debug logging
-	m := protojson.MarshalOptions{
-		UseProtoNames: true, // This is important to use snake_case
+	if rand.Float64() < s.flags.WriteUsageLogs {
+		log.WriteUsageLog(surface, toRemote, []string{} /* place types, still WIP */, s.store, v2Resp, queryType)
 	}
-	jsonBytes, err := m.Marshal(v2Resp)
-	if err != nil {
-		slog.Error("Error marshaling response for debugging", "err", err)
-	} else {
-		slog.Info("DEBUG: Final JSON response being sent", "json", string(jsonBytes))
-	}
-	// END: Temporary debug logging
 
 	return v2Resp, nil
 }
