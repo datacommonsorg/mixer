@@ -55,8 +55,9 @@ type UsageLog struct {
 	// All stat vars queried in this request, with each including a list of facets used in that particular variable.
 	StatVars  []*StatVarLog `json:"stat_vars"`
 	// A unique ID for this request generated in handler_v2. 
-	// This is used to match mixer calls with cached requests in the website
-	RequestId string         `json:"request_id"`
+	// This is used to match mixer calls with cached requests in the website.
+	// This is plural to match behavior in the website where we have multiple mixer request IDs in one object.
+	RequestIds string         `json:"request_ids"`
 }
 
 // Breaks down the log structs to be read as JSON objects in Cloud Logger.
@@ -66,7 +67,7 @@ func (u UsageLog) LogValue() slog.Value {
 		slog.Any("place_types", u.PlaceTypes),
 		slog.String("query_type", u.QueryType),
 		slog.Any("stat_vars", u.StatVars),
-		slog.String("request_id", u.RequestId),
+		slog.String("request_id", u.RequestIds),
 	)
 }
 
@@ -190,7 +191,7 @@ func WriteUsageLog(surface string, isRemote bool, placeTypes []string, store *st
 		},
 		QueryType: string(queryType),
 		StatVars:  statVars,
-		RequestId: observationResponse.RequestId,
+		RequestIds: observationResponse.RequestId,
 	}
 
 	slog.Info("new_query", slog.Any("usage_log", logEntry))
