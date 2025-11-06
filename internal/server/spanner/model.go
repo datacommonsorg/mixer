@@ -13,7 +13,7 @@
 // limitations under the License.
 
 // Model objects related to the spanner graph database.
-package spannerds
+package spanner
 
 import (
 	"encoding/base64"
@@ -106,4 +106,11 @@ type SearchNode struct {
 type ResolutionCandidate struct {
 	Node      string `spanner:"node"`
 	Candidate string `spanner:"candidate"`
+}
+
+// SpannerConfig struct to hold the YAML configuration to a spanner database.
+type SpannerConfig struct {
+	Project  string `yaml:"project"`
+	Instance string `yaml:"instance"`
+	Database string `yaml:"database"`
 }

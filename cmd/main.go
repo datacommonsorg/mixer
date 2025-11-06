@@ -34,7 +34,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
-	"github.com/datacommonsorg/mixer/internal/server/datasource/spannerds"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
@@ -191,7 +190,7 @@ func main() {
 			slog.Error("Failed to create Spanner client", "error", err)
 			os.Exit(1)
 		}
-		var ds datasource.DataSource = spannerds.NewSpannerDataSource(spannerClient)
+		var ds datasource.DataSource = spanner.NewSpannerDataSource(spannerClient)
 		// TODO: Order sources by priority once other implementations are added.
 		sources = append(sources, &ds)
 	}

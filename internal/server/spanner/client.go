@@ -21,43 +21,48 @@ import (
 	"log/slog"
 
 	"cloud.google.com/go/spanner"
+	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"gopkg.in/yaml.v3"
 )
 
-// spannerConfig struct to hold the YAML configuration to a spanner database.
-type spannerConfig struct {
-	project  string `yaml:"project"`
-	instance string `yaml:"instance"`
-	database string `yaml:"database"`
+// SpannerClient encapsulates the Spanner client.
+type SpannerClient interface {
+	GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*Property, error)
+	GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc, pageSize, offset int) (map[string][]*Edge, error)
+	GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error)
+	GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error)
+	SearchNodes(ctx context.Context, query string, types []string) ([]*SearchNode, error)
+	ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error)
+	Id() string
 }
 
-// SpannerClient encapsulates the Spanner client.
-type SpannerClient struct {
+// spannerDatabaseClient encapsulates the Spanner client that directly interacts with the Spanner database.
+type spannerDatabaseClient struct {
 	client *spanner.Client
 }
 
-// newSpannerClient creates a new SpannerClient.
-func newSpannerClient(client *spanner.Client) *SpannerClient {
-	return &SpannerClient{client: client}
+// newSpannerDatabaseClient creates a new spannerDatabaseClient.
+func newSpannerDatabaseClient(client *spanner.Client) *spannerDatabaseClient {
+	return &spannerDatabaseClient{client: client}
 }
 
 // NewSpannerClient creates a new SpannerClient from the config yaml string and an optional database override.
-func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string) (*SpannerClient, error) {
+func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string) (SpannerClient, error) {
 	cfg, err := createSpannerConfig(spannerConfigYaml, databaseOverride)
 	if err != nil {
-		return nil, fmt.Errorf("failed to create SpannerClient: %w", err)
+		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
 	}
 	client, err := createSpannerClient(ctx, cfg)
 	if err != nil {
-		return nil, fmt.Errorf("failed to create SpannerClient: %w", err)
+		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
 	}
-	return newSpannerClient(client), nil
+	return newSpannerDatabaseClient(client), nil
 }
 
 // createSpannerClient creates the database name string and initializes the Spanner client.
-func createSpannerClient(ctx context.Context, cfg *spannerConfig) (*spanner.Client, error) {
+func createSpannerClient(ctx context.Context, cfg *SpannerConfig) (*spanner.Client, error) {
 	// Construct the database name string
-	databaseName := fmt.Sprintf("projects/%s/instances/%s/databases/%s", cfg.project, cfg.instance, cfg.database)
+	databaseName := fmt.Sprintf("projects/%s/instances/%s/databases/%s", cfg.Project, cfg.Instance, cfg.Database)
 
 	// Create the Spanner client
 	client, err := spanner.NewClient(ctx, databaseName)
@@ -69,8 +74,8 @@ func createSpannerClient(ctx context.Context, cfg *spannerConfig) (*spanner.Clie
 }
 
 // createSpannerConfig creates the config from the specific yaml string and an optional database override.
-func createSpannerConfig(spannerConfigYaml, databaseOverride string) (*spannerConfig, error) {
-	var cfg spannerConfig
+func createSpannerConfig(spannerConfigYaml, databaseOverride string) (*SpannerConfig, error) {
+	var cfg SpannerConfig
 	if err := yaml.Unmarshal([]byte(spannerConfigYaml), &cfg); err != nil {
 		return nil, fmt.Errorf("failed to create spanner config: %w", err)
 	}
@@ -80,12 +85,12 @@ func createSpannerConfig(spannerConfigYaml, databaseOverride string) (*spannerCo
 	// TODO: Once the Spanner instance is stable, revert to using the config.
 	if databaseOverride != "" {
 		slog.Debug("Setting Spanner database value from flag", "value", databaseOverride)
-		cfg.database = databaseOverride
+		cfg.Database = databaseOverride
 	}
 
 	return &cfg, nil
 }
 
-func (sc *SpannerClient) Id() string {
+func (sc *spannerDatabaseClient) Id() string {
 	return sc.client.DatabaseName()
 }

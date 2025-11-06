@@ -14,7 +14,7 @@
 
 // Utility functions used by the SpannerDataSource.
 
-package spannerds
+package spanner
 
 import (
 	"fmt"

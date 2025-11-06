@@ -20,7 +20,6 @@ import (
 	"fmt"
 
 	"cloud.google.com/go/spanner"
-	"github.com/datacommonsorg/mixer/internal/server/datasource/spannerds"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"google.golang.org/api/iterator"
 )
@@ -33,23 +32,23 @@ const (
 )
 
 // GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction and returns a map.
-func (sc *SpannerClient) GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*spannerds.Property, error) {
-	props := map[string][]*spannerds.Property{}
+func (sc *spannerDatabaseClient) GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*Property, error) {
+	props := map[string][]*Property{}
 	if len(ids) == 0 {
 		return props, nil
 	}
 	for _, id := range ids {
-		props[id] = []*spannerds.Property{}
+		props[id] = []*Property{}
 	}
 
 	err := sc.queryAndCollect(
 		ctx,
 		*GetNodePropsQuery(ids, out),
 		func() interface{} {
-			return &spannerds.Property{}
+			return &Property{}
 		},
 		func(rowStruct interface{}) {
-			prop := rowStruct.(*spannerds.Property)
+			prop := rowStruct.(*Property)
 			subjectID := prop.SubjectID
 			props[subjectID] = append(props[subjectID], prop)
 		},
@@ -62,23 +61,23 @@ func (sc *SpannerClient) GetNodeProps(ctx context.Context, ids []string, out boo
 }
 
 // GetNodeEdgesByID retrieves node edges from Spanner and returns a map of subjectID to Edges.
-func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc, pageSize, offset int) (map[string][]*spannerds.Edge, error) {
-	edges := make(map[string][]*spannerds.Edge)
+func (sc *spannerDatabaseClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc, pageSize, offset int) (map[string][]*Edge, error) {
+	edges := make(map[string][]*Edge)
 	if len(ids) == 0 {
 		return edges, nil
 	}
 	for _, id := range ids {
-		edges[id] = []*spannerds.Edge{}
+		edges[id] = []*Edge{}
 	}
 
 	err := sc.queryAndCollect(
 		ctx,
 		*GetNodeEdgesByIDQuery(ids, arc, pageSize, offset),
 		func() interface{} {
-			return &spannerds.Edge{}
+			return &Edge{}
 		},
 		func(rowStruct interface{}) {
-			edge := rowStruct.(*spannerds.Edge)
+			edge := rowStruct.(*Edge)
 			subjectID := edge.SubjectID
 			edges[subjectID] = append(edges[subjectID], edge)
 		},
@@ -91,8 +90,8 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 }
 
 // GetObservations retrieves observations from Spanner given a list of variables and entities.
-func (sc *SpannerClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*spannerds.Observation, error) {
-	var observations []*spannerds.Observation
+func (sc *spannerDatabaseClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error) {
+	var observations []*Observation
 	if len(entities) == 0 {
 		return nil, fmt.Errorf("entity must be specified")
 	}
@@ -101,10 +100,10 @@ func (sc *SpannerClient) GetObservations(ctx context.Context, variables []string
 		ctx,
 		*GetObservationsQuery(variables, entities),
 		func() interface{} {
-			return &spannerds.Observation{}
+			return &Observation{}
 		},
 		func(rowStruct interface{}) {
-			observation := rowStruct.(*spannerds.Observation)
+			observation := rowStruct.(*Observation)
 			observations = append(observations, observation)
 		},
 	)
@@ -116,8 +115,8 @@ func (sc *SpannerClient) GetObservations(ctx context.Context, variables []string
 }
 
 // GetObservationsContainedInPlace retrieves observations from Spanner given a list of variables and an entity expression.
-func (sc *SpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*spannerds.Observation, error) {
-	var observations []*spannerds.Observation
+func (sc *spannerDatabaseClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
+	var observations []*Observation
 	if len(variables) == 0 || containedInPlace == nil {
 		return observations, nil
 	}
@@ -126,10 +125,10 @@ func (sc *SpannerClient) GetObservationsContainedInPlace(ctx context.Context, va
 		ctx,
 		*GetObservationsContainedInPlaceQuery(variables, containedInPlace),
 		func() interface{} {
-			return &spannerds.Observation{}
+			return &Observation{}
 		},
 		func(rowStruct interface{}) {
-			observation := rowStruct.(*spannerds.Observation)
+			observation := rowStruct.(*Observation)
 			observations = append(observations, observation)
 		},
 	)
@@ -143,8 +142,8 @@ func (sc *SpannerClient) GetObservationsContainedInPlace(ctx context.Context, va
 // SearchNodes searches nodes in the graph based on the query and optionally the types.
 // If the types array is empty, it searches across nodes of all types.
 // A maximum of 100 results are returned.
-func (sc *SpannerClient) SearchNodes(ctx context.Context, query string, types []string) ([]*spannerds.SearchNode, error) {
-	var nodes []*spannerds.SearchNode
+func (sc *spannerDatabaseClient) SearchNodes(ctx context.Context, query string, types []string) ([]*SearchNode, error) {
+	var nodes []*SearchNode
 	if query == "" {
 		return nodes, nil
 	}
@@ -153,10 +152,10 @@ func (sc *SpannerClient) SearchNodes(ctx context.Context, query string, types []
 		ctx,
 		*SearchNodesQuery(query, types),
 		func() interface{} {
-			return &spannerds.SearchNode{}
+			return &SearchNode{}
 		},
 		func(rowStruct interface{}) {
-			node := rowStruct.(*spannerds.SearchNode)
+			node := rowStruct.(*SearchNode)
 			nodes = append(nodes, node)
 		},
 	)
@@ -168,7 +167,7 @@ func (sc *SpannerClient) SearchNodes(ctx context.Context, query string, types []
 }
 
 // ResolveByID fetches ID resolution candidates for a list of input nodes and in and out properties and returns a map of node to candidates.
-func (sc *SpannerClient) ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error) {
+func (sc *spannerDatabaseClient) ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error) {
 	nodeToCandidates := make(map[string][]string)
 	if len(nodes) == 0 {
 		return nodeToCandidates, nil
@@ -186,10 +185,10 @@ func (sc *SpannerClient) ResolveByID(ctx context.Context, nodes []string, in, ou
 		ctx,
 		*ResolveByIDQuery(nodes, in, out),
 		func() interface{} {
-			return &spannerds.ResolutionCandidate{}
+			return &ResolutionCandidate{}
 		},
 		func(rowStruct interface{}) {
-			resolutionCandidate := rowStruct.(*spannerds.ResolutionCandidate)
+			resolutionCandidate := rowStruct.(*ResolutionCandidate)
 			node := valueMap[resolutionCandidate.Node]
 			nodeToCandidates[node] = append(nodeToCandidates[node], resolutionCandidate.Candidate)
 		},
@@ -201,7 +200,7 @@ func (sc *SpannerClient) ResolveByID(ctx context.Context, nodes []string, in, ou
 	return nodeToCandidates, nil
 }
 
-func (sc *SpannerClient) queryAndCollect(
+func (sc *spannerDatabaseClient) queryAndCollect(
 	ctx context.Context,
 	stmt spanner.Statement,
 	newStruct func() interface{},

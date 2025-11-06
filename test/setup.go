@@ -34,7 +34,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
-	"github.com/datacommonsorg/mixer/internal/server/datasource/spannerds"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/remote"
@@ -136,7 +135,7 @@ func setupInternal(
 	if enableV3 && useSpannerGraph {
 		spannerClient := NewSpannerClient()
 		if spannerClient != nil {
-			spannerDataSource = spannerds.NewSpannerDataSource(spannerClient)
+			spannerDataSource = spanner.NewSpannerDataSource(spannerClient)
 			// TODO: Order sources by priority once other implementations are added.
 			sources = append(sources, &spannerDataSource)
 		}
@@ -386,7 +385,7 @@ func ReadGolden(goldenDir string, goldenFile string) (string, error) {
 
 // NewSpannerClient creates a new test spanner client if spanner is enabled.
 // If not enabled, it returns nil.
-func NewSpannerClient() *spanner.SpannerClient {
+func NewSpannerClient() spanner.SpannerClient {
 	if !EnableSpannerGraph {
 		log.Println("Spanner graph not enabled.")
 		return nil
@@ -396,7 +395,7 @@ func NewSpannerClient() *spanner.SpannerClient {
 	return newSpannerClient(context.Background(), spannerGraphInfoYamlPath)
 }
 
-func newSpannerClient(ctx context.Context, spannerGraphInfoYamlPath string) *spanner.SpannerClient {
+func newSpannerClient(ctx context.Context, spannerGraphInfoYamlPath string) spanner.SpannerClient {
 	spannerGraphInfoYaml, err := os.ReadFile(spannerGraphInfoYamlPath)
 	if err != nil {
 		log.Fatalf("Failed to read spanner yaml: %v", err)

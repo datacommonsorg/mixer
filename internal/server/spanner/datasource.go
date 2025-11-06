@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package spannerds
+package spanner
 
 import (
 	"context"
@@ -27,22 +27,12 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-type spannerClient interface {
-	GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*Property, error)
-	GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc, pageSize, offset int) (map[string][]*Edge, error)
-	GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error)
-	GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error)
-	SearchNodes(ctx context.Context, query string, types []string) ([]*SearchNode, error)
-	ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error)
-	Id() string
-}
-
 // SpannerDataSource represents a data source that interacts with Spanner.
 type SpannerDataSource struct {
-	client spannerClient
+	client SpannerClient
 }
 
-func NewSpannerDataSource(client spannerClient) *SpannerDataSource {
+func NewSpannerDataSource(client SpannerClient) *SpannerDataSource {
 	return &SpannerDataSource{client: client}
 }
 

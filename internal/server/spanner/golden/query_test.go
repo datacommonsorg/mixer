@@ -21,8 +21,8 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/datacommonsorg/mixer/internal/server/datasource/spannerds"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
+	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 )
@@ -211,7 +211,7 @@ func runQueryGoldenTest(t *testing.T, goldenFile string, fn goldenTestFunc) {
 }
 
 // simplifySearchNodes simplifies search results for goldens.
-func simplifySearchNodes(results []*spannerds.SearchNode) []*spannerds.SearchNode {
+func simplifySearchNodes(results []*spanner.SearchNode) []*spanner.SearchNode {
 	if len(results) > NUM_MATCHES {
 		results = results[:NUM_MATCHES]
 	}
@@ -224,8 +224,8 @@ func simplifySearchNodes(results []*spannerds.SearchNode) []*spannerds.SearchNod
 }
 
 // simplifyNodes simplifies Node results for goldens.
-func simplifyNodes(results map[string][]*spannerds.Edge) map[string][]*spannerds.Edge {
-	filtered := map[string][]*spannerds.Edge{}
+func simplifyNodes(results map[string][]*spanner.Edge) map[string][]*spanner.Edge {
+	filtered := map[string][]*spanner.Edge{}
 	for subject_id, edges := range results {
 		if len(edges) > NUM_MATCHES {
 			edges = edges[:NUM_MATCHES]
@@ -237,7 +237,7 @@ func simplifyNodes(results map[string][]*spannerds.Edge) map[string][]*spannerds
 
 // sortObservations sorts Observations by variable, entity, facet (primary key) to ensure deterministic order in tests.
 // The final Observation responses will be sorted later based on facet rank.
-func sortObservations(results []*spannerds.Observation) {
+func sortObservations(results []*spanner.Observation) {
 	sort.Slice(results, func(i, j int) bool {
 		a, b := results[i], results[j]
 
