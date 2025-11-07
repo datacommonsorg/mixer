@@ -71,7 +71,6 @@ func TestExistence(t *testing.T) {
 				t.Errorf("ObservationMetric(existence) = %s", err)
 				continue
 			}
-			
 			if latencyTest {
 				continue
 			}
@@ -85,7 +84,6 @@ func TestExistence(t *testing.T) {
 				t.Errorf("Can not Unmarshal golden file: %s", err)
 				continue
 			}
-			
 			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
 				t.Errorf("payload got diff: %v", diff)
 				continue

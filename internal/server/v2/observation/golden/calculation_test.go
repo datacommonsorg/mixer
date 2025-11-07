@@ -114,7 +114,7 @@ func TestCalculation(t *testing.T) {
 			if err != nil {
 				t.Errorf("could not run V2Observation (direct): %s", err)
 				continue
-			}		
+			}
 			if latencyTest {
 				continue
 			}

@@ -71,7 +71,6 @@ func TestDerivedSeries(t *testing.T) {
 				t.Errorf("could not run mixer.V2Observation: %s", err)
 				continue
 			}
-			
 
 			if latencyTest {
 				continue
@@ -86,7 +85,6 @@ func TestDerivedSeries(t *testing.T) {
 				t.Errorf("Can not Unmarshal golden file: %s", err)
 				continue
 			}
-			
 
 			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
 				t.Errorf("payload got diff: %v", diff)
