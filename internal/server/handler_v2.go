@@ -17,6 +17,7 @@ package server
 
 import (
 	"context"
+	"math/rand"
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/log"
@@ -293,17 +294,17 @@ func (s *Server) V2Observation(
 		GetV2ObservationCmpOpts(),
 	)
 
-	// Create a new ID to return with the response.
-	// This is used for usage logging and in the website to track cached usage.
+	// Create a new ID to return as a header on the response.
+	// This is used for usage logging and in the website to log cached usage.
 	responseId := uuid.New()
 	if err := grpc.SetHeader(ctx, metadata.Pairs("x-response-id", responseId.String())); err != nil {
 		return nil, err
 	}
 
 	// Handle usage logging.
-	// if rand.Float64() < s.flags.WriteUsageLogs {
-	log.WriteUsageLog(surface, toRemote, []string{} /* place types, still WIP */, s.store, v2Resp, queryType, responseId.String())
-	// }
+	if rand.Float64() < s.flags.WriteUsageLogs {
+		log.WriteUsageLog(surface, toRemote, []string{} /* place types, still WIP */, s.store, v2Resp, queryType, responseId.String())
+	}
 
 	return v2Resp, nil
 }
