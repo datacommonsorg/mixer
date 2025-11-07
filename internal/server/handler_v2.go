@@ -17,6 +17,7 @@ package server
 
 import (
 	"context"
+	"log/slog"
 	"math/rand"
 	"time"
 
@@ -298,7 +299,7 @@ func (s *Server) V2Observation(
 	// This is used for usage logging and in the website to log cached usage.
 	responseId := uuid.New()
 	if err := grpc.SetHeader(ctx, metadata.Pairs("x-response-id", responseId.String())); err != nil {
-		return nil, err
+		slog.Warn("Failed to set responseId header", "error", err)
 	}
 
 	// Handle usage logging.
