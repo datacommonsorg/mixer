@@ -22,16 +22,17 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
+	v3 "github.com/datacommonsorg/mixer/internal/server/v3"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
 
 // SpannerDataSource represents a data source that interacts with Spanner.
 type SpannerDataSource struct {
-	client *SpannerClient
+	client SpannerClient
 }
 
-func NewSpannerDataSource(client *SpannerClient) *SpannerDataSource {
+func NewSpannerDataSource(client SpannerClient) *SpannerDataSource {
 	return &SpannerDataSource{client: client}
 }
 
@@ -42,7 +43,7 @@ func (sds *SpannerDataSource) Type() datasource.DataSourceType {
 
 // Id returns the id of the data source.
 func (sds *SpannerDataSource) Id() string {
-	return fmt.Sprintf("%s-%s", string(sds.Type()), sds.client.client.DatabaseName())
+	return fmt.Sprintf("%s-%s", string(sds.Type()), sds.client.Id())
 }
 
 // Node retrieves node data from Spanner.
@@ -59,7 +60,7 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv2.NodeRequest, p
 		return nil, fmt.Errorf("multiple arcs in node request")
 	}
 	arc := arcs[0]
-	if arc.Decorator != "" && (arc.SingleProp == "" || arc.SingleProp == WILDCARD || len(arc.BracketProps) > 0) {
+	if arc.Decorator != "" && (arc.SingleProp == "" || arc.SingleProp == v3.Wildcard || len(arc.BracketProps) > 0) {
 		return nil, fmt.Errorf("chain expressions are only supported for a single property")
 	}
 
