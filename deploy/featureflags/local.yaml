@@ -1,4 +1,3 @@
 flags:
   EnableV3: true
   UseSpannerGraph: true
-  WriteUsageLogs: 1.0
