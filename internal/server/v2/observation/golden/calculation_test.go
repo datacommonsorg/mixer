@@ -114,8 +114,7 @@ func TestCalculation(t *testing.T) {
 			if err != nil {
 				t.Errorf("could not run V2Observation (direct): %s", err)
 				continue
-			}
-			resp.MixerResponseIds = []string{}
+			}		
 			if latencyTest {
 				continue
 			}
@@ -128,7 +127,6 @@ func TestCalculation(t *testing.T) {
 				t.Errorf("Can not Unmarshal golden file: %s", err)
 				continue
 			}
-			expected.MixerResponseIds = []string{}
 			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
 				t.Errorf("%s: got diff: %s", c.desc, diff)
 				continue
@@ -204,7 +202,6 @@ func TestCalculationForObsCollection(t *testing.T) {
 				t.Errorf("could not run V2Observation (direct): %s", err)
 				continue
 			}
-			resp.MixerResponseIds = []string{}
 			if latencyTest {
 				continue
 			}
@@ -217,7 +214,6 @@ func TestCalculationForObsCollection(t *testing.T) {
 				t.Errorf("Can not Unmarshal golden file: %s", err)
 				continue
 			}
-			expected.MixerResponseIds = []string{}
 			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
 				t.Errorf("%s: got diff: %s", c.desc, diff)
 				continue

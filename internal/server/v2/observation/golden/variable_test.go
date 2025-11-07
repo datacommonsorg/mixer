@@ -57,7 +57,7 @@ func TestVariable(t *testing.T) {
 				t.Errorf("ObservationMetric(variable) = %s", err)
 				continue
 			}
-			resp.MixerResponseIds = []string{}
+			
 			if latencyTest {
 				continue
 			}
@@ -71,7 +71,7 @@ func TestVariable(t *testing.T) {
 				t.Errorf("Can not Unmarshal golden file: %s", err)
 				continue
 			}
-			expected.MixerResponseIds = []string{}
+			
 			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
 				t.Errorf("payload got diff: %v", diff)
 				continue

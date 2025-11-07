@@ -22,15 +22,16 @@ import (
 	"github.com/datacommonsorg/mixer/internal/log"
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/search"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
 	"github.com/datacommonsorg/mixer/internal/util"
-	"golang.org/x/sync/errgroup"
-
-	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/google/uuid"
+	"golang.org/x/sync/errgroup"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -294,12 +295,14 @@ func (s *Server) V2Observation(
 
 	// Create a new ID to return with the response.
 	// This is used for usage logging and in the website to track cached usage.
-	requestId := uuid.New()
-	v2Resp.MixerResponseIds = []string{requestId.String()}
+	responseId := uuid.New()
+	if err := grpc.SetHeader(ctx, metadata.Pairs("x-response-id", responseId.String())); err != nil {
+		return nil, err
+	}
 
 	// Handle usage logging.
 	// if rand.Float64() < s.flags.WriteUsageLogs {
-	log.WriteUsageLog(surface, toRemote, []string{} /* place types, still WIP */, s.store, v2Resp, queryType)
+	log.WriteUsageLog(surface, toRemote, []string{} /* place types, still WIP */, s.store, v2Resp, queryType, responseId.String())
 	// }
 
 	return v2Resp, nil
