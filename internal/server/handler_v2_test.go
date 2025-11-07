@@ -204,7 +204,7 @@ func TestObservationInternal(t *testing.T) {
 }
 
 func TestV2Observation_UsageLog(t *testing.T) {
-	ctx := context.Background()
+	ctx := metadata.NewIncomingContext(context.Background(), metadata.MD{})
 	s := &Server{
 		store:    &store.Store{},
 		metadata: &resource.Metadata{},
@@ -236,7 +236,7 @@ func TestV2Observation_UsageLog(t *testing.T) {
 	outStr := strings.TrimSpace(buf.String())
 
 	// Use regex to match the log message, ignoring the timestamp and pointer address.
-	wantLogRegex := `time=\S+ level=INFO msg=new_query usage_log.feature="{IsRemote:false Surface:}" usage_log.place_types=[] usage_log.query_type=value usage_log.stat_vars=\[0x[0-9a-f]+\]`
+	wantLogRegex := `time=\S+ level=INFO msg=new_query usage_log.feature="{IsRemote:false Surface:}" usage_log.place_types=\[] usage_log.query_type=value usage_log.stat_vars=\[0x[0-9a-f]+\] usage_log.response_id=\S+`
 	matched, err := regexp.MatchString(wantLogRegex, outStr)
 	if err != nil {
 		t.Fatalf("Failed to compile regex: %v", err)
