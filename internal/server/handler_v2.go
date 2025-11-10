@@ -18,7 +18,6 @@ package server
 import (
 	"context"
 	"log/slog"
-	"math/rand"
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/log"
@@ -303,9 +302,7 @@ func (s *Server) V2Observation(
 	}
 
 	// Handle usage logging.
-	if rand.Float64() < s.flags.WriteUsageLogs {
-		log.WriteUsageLog(surface, toRemote, v2Resp, queryType, responseId.String())
-	}
+	log.WriteUsageLog(surface, toRemote, v2Resp, queryType, responseId.String())
 
 	return v2Resp, nil
 }
