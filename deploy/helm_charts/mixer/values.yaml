@@ -53,6 +53,10 @@ mixer:
   # A special svg used to re-group the hierarchy
   remoteMixerDomain: ""
 
+  # Enable writing usage logs for the v2/observation endpoint
+  # This is an optional flag so that it is not enabled in custom DC by default
+  writeUsageLogs: true
+
   # URL root for the mixer service launched.
   # Example: dev.api.datacommons.org
   serviceName:

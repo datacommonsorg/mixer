@@ -191,6 +191,9 @@ spec:
               --metrics_exporter=otlp \
               {{- end }}
               --feature_flags_path=/datacommons/flags/feature_flags.yaml
+              {{- if eq $.Values.mixer.writeUsageLogs true}}
+               --write_usage_logs=true \
+              {{- end }}
           volumeMounts:
             - name: schema-mapping
               mountPath: /datacommons/mapping

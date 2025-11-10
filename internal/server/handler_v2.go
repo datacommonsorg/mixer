@@ -302,7 +302,9 @@ func (s *Server) V2Observation(
 	}
 
 	// Handle usage logging.
-	log.WriteUsageLog(surface, toRemote, v2Resp, queryType, responseId.String())
+	if s.writeUsageLogs {
+		log.WriteUsageLog(surface, toRemote, v2Resp, queryType, responseId.String())
+	}
 
 	return v2Resp, nil
 }
