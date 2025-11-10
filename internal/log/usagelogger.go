@@ -8,7 +8,6 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
-	"github.com/datacommonsorg/mixer/internal/store"
 )
 
 // The source of the logged query -- because features like the MCP
@@ -95,7 +94,14 @@ func standardizeToYear(dateStr string) (string, error) {
 }
 
 // Formats logs for the stat vars and facets.
-func MakeStatVarLogs(store *store.Store, observationResponse *pbv2.ObservationResponse) ([]*StatVarLog, []string) {
+// 
+// Parameters:
+// 	observationResponse: The response from an observation query. This contains all results 
+//	for each entity and variable requested.
+// Returns:
+//  A list of StatVarLog, each containing the stat var DCID and a list of facets used for that stat var.
+//  A list of all place types in the response. This is separate because it isn't broken down per stat var.
+func MakeStatVarLogs(observationResponse *pbv2.ObservationResponse) ([]*StatVarLog, []string) {
 	// statVarLogs is a map statVarDCID -> list of facets.
 	statVarsByDcid := make(map[string]*StatVarLog)
 	resultLogs := make([]*StatVarLog, 0)
@@ -182,9 +188,9 @@ func MakeStatVarLogs(store *store.Store, observationResponse *pbv2.ObservationRe
 
 // Writes a structured log to stdout, which is ingested by GCP cloud logging to track mixer usage.
 // Currently only used by the v2/observation endpoint.
-func WriteUsageLog(surface string, isRemote bool, store *store.Store, observationResponse *pbv2.ObservationResponse, queryType shared.QueryType) {
+func WriteUsageLog(surface string, isRemote bool, observationResponse *pbv2.ObservationResponse, queryType shared.QueryType) {
 
-	statVars, placeTypes := MakeStatVarLogs(store, observationResponse)
+	statVars, placeTypes := MakeStatVarLogs(observationResponse)
 
 	logEntry := UsageLog{
 		PlaceTypes: placeTypes,
