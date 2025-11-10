@@ -23,6 +23,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/datacommonsorg/mixer/internal/featureflags"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
@@ -207,6 +208,7 @@ func TestV2Observation_UsageLog(t *testing.T) {
 	s := &Server{
 		store:    &store.Store{},
 		metadata: &resource.Metadata{},
+		flags: &featureflags.Flags{},
 	}
 	s.cachedata.Store(&cache.Cache{})
 	req := &pbv2.ObservationRequest{
