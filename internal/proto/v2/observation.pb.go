@@ -172,6 +172,8 @@ type EntityObservation struct {
 	// Facet are orderred by preference.
 	OrderedFacets []*FacetObservation `protobuf:"bytes,1,rep,name=ordered_facets,json=orderedFacets,proto3" json:"ordered_facets,omitempty"`
 	// The types of place that the entity is defined as if it is a geographic place
+	// This is an experimental field used for usage logging and is not guaranteed to be populated.
+	// The absence of values is not a reliable indicator of whether the associated entity is a place.
 	PlaceTypes []string `protobuf:"bytes,7,rep,name=place_types,json=placeTypes,proto3" json:"place_types,omitempty"`
 }
 

@@ -54,8 +54,8 @@ message EntityObservation {
   // Facet are orderred by preference.
   repeated FacetObservation ordered_facets = 1;
   // The types of place that the entity is defined as if it is a geographic place
-  // Note that this is an experimental field and may not be populated in every case
-  // since it rolls out for each import group over time. It is only used for usage logging.
+  // This is an experimental field used for usage logging and is not guaranteed to be populated.
+  // The absence of values is not a reliable indicator of whether the associated entity is a place.
   repeated string place_types = 7;
 }
 
