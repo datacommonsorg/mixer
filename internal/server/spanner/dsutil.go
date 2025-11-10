@@ -17,8 +17,6 @@
 package spanner
 
 import (
-	"crypto/sha256"
-	"encoding/base64"
 	"fmt"
 	"log/slog"
 	"sort"
@@ -30,20 +28,15 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
+	v3 "github.com/datacommonsorg/mixer/internal/server/v3"
 	"github.com/datacommonsorg/mixer/internal/util"
 
 	"google.golang.org/protobuf/proto"
 )
 
 const (
-	// Used for Arc.SingleProp in Node requests and indicates that all properties should be returned.
-	WILDCARD = "*"
-	// Used for Arc.Decorator in Node requests and indicates that recursive property paths should be returned.
-	CHAIN = "+"
 	// Used for Facet responses with an entity expression.
-	ENTITY_PLACEHOLDER = ""
-	WHERE              = "\n\t\tWHERE\n\t\t\t"
-	AND                = "\n\t\t\tAND "
+	entityPlaceholder = ""
 )
 
 // Select options for Observation.
@@ -154,7 +147,7 @@ func addOptimizationsToNodeRequest(arc *v2.Arc) *nodeArtifacts {
 	artifacts := &nodeArtifacts{}
 
 	// Maybe optimize chaining.
-	if arc.Decorator == CHAIN {
+	if arc.Decorator == v3.Chain {
 		if replacementProp, ok := optimizedChainProps[arc.SingleProp]; ok {
 			artifacts.chainProp = arc.SingleProp
 			arc.Decorator = ""
@@ -176,7 +169,7 @@ func removeOptimizationsFromNodeResponse(resp *pbv2.NodeResponse, artifacts *nod
 				for _, node := range nodes.Nodes {
 					node.ProvenanceId = ""
 				}
-				lg.Arcs[artifacts.chainProp+CHAIN] = nodes
+				lg.Arcs[artifacts.chainProp+v3.Chain] = nodes
 				delete(lg.Arcs, replacementProp)
 			}
 		}
@@ -492,7 +485,7 @@ func obsToFacetResponse(req *pbv2.ObservationRequest, observations []*Observatio
 			}
 			mergedResponse.ByVariable[variable] = variableObs
 		}
-		variableObs.ByEntity[ENTITY_PLACEHOLDER] = &pbv2.EntityObservation{
+		variableObs.ByEntity[entityPlaceholder] = &pbv2.EntityObservation{
 			OrderedFacets: mergeEntityOrderedFacets(initialVariableObs.ByEntity, childPlaces),
 		}
 	}
@@ -658,19 +651,4 @@ func candidatesToResolveResponse(nodeToCandidates map[string][]string) *pbv2.Res
 		return response.Entities[i].GetNode() > response.Entities[j].GetNode()
 	})
 	return response
-}
-
-func generateValueHash(input string) string {
-	data := []byte(input)
-	hash := sha256.Sum256(data)
-	return base64.StdEncoding.EncodeToString(hash[:])
-}
-
-func addValueHashes(input []string) []string {
-	result := make([]string, 0, len(input)*2)
-	for _, v := range input {
-		result = append(result, v)
-		result = append(result, generateValueHash(v))
-	}
-	return result
 }

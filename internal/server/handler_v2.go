@@ -17,19 +17,23 @@ package server
 
 import (
 	"context"
+	"log/slog"
+	"math/rand"
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/log"
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/search"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
 	"github.com/datacommonsorg/mixer/internal/util"
+	"github.com/google/uuid"
 	"golang.org/x/sync/errgroup"
-
-	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -290,11 +294,18 @@ func (s *Server) V2Observation(
 		},
 		GetV2ObservationCmpOpts(),
 	)
- 
+
+	// Create a new ID to return as a header on the response.
+	// This is used for usage logging and in the website to log cached usage.
+	responseId := uuid.New()
+	if err := grpc.SetHeader(ctx, metadata.Pairs("x-response-id", responseId.String())); err != nil {
+		slog.Warn("Failed to set responseId header", "error", err)
+	}
+
 	// Handle usage logging.
-	// if rand.Float64() < s.flags.WriteUsageLogs {
-	log.WriteUsageLog(surface, toRemote, v2Resp, queryType)
-	// }
+	if rand.Float64() < s.flags.WriteUsageLogs {
+		log.WriteUsageLog(surface, toRemote, v2Resp, queryType, responseId.String())
+	}
 
 	return v2Resp, nil
 }

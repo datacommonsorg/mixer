@@ -26,11 +26,13 @@ import (
 
 const (
 	// Maximum number of edge hops to traverse for chained properties.
-	MAX_HOPS = 10
+	maxHops = 10
+	where   = "\n\t\tWHERE\n\t\t\t"
+	and     = "\n\t\t\tAND "
 )
 
 // GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction and returns a map.
-func (sc *SpannerClient) GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*Property, error) {
+func (sc *spannerDatabaseClient) GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*Property, error) {
 	props := map[string][]*Property{}
 	if len(ids) == 0 {
 		return props, nil
@@ -59,7 +61,7 @@ func (sc *SpannerClient) GetNodeProps(ctx context.Context, ids []string, out boo
 }
 
 // GetNodeEdgesByID retrieves node edges from Spanner and returns a map of subjectID to Edges.
-func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc, pageSize, offset int) (map[string][]*Edge, error) {
+func (sc *spannerDatabaseClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc, pageSize, offset int) (map[string][]*Edge, error) {
 	edges := make(map[string][]*Edge)
 	if len(ids) == 0 {
 		return edges, nil
@@ -88,7 +90,7 @@ func (sc *SpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc
 }
 
 // GetObservations retrieves observations from Spanner given a list of variables and entities.
-func (sc *SpannerClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error) {
+func (sc *spannerDatabaseClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error) {
 	var observations []*Observation
 	if len(entities) == 0 {
 		return nil, fmt.Errorf("entity must be specified")
@@ -113,7 +115,7 @@ func (sc *SpannerClient) GetObservations(ctx context.Context, variables []string
 }
 
 // GetObservationsContainedInPlace retrieves observations from Spanner given a list of variables and an entity expression.
-func (sc *SpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
+func (sc *spannerDatabaseClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
 	var observations []*Observation
 	if len(variables) == 0 || containedInPlace == nil {
 		return observations, nil
@@ -140,7 +142,7 @@ func (sc *SpannerClient) GetObservationsContainedInPlace(ctx context.Context, va
 // SearchNodes searches nodes in the graph based on the query and optionally the types.
 // If the types array is empty, it searches across nodes of all types.
 // A maximum of 100 results are returned.
-func (sc *SpannerClient) SearchNodes(ctx context.Context, query string, types []string) ([]*SearchNode, error) {
+func (sc *spannerDatabaseClient) SearchNodes(ctx context.Context, query string, types []string) ([]*SearchNode, error) {
 	var nodes []*SearchNode
 	if query == "" {
 		return nodes, nil
@@ -165,7 +167,7 @@ func (sc *SpannerClient) SearchNodes(ctx context.Context, query string, types []
 }
 
 // ResolveByID fetches ID resolution candidates for a list of input nodes and in and out properties and returns a map of node to candidates.
-func (sc *SpannerClient) ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error) {
+func (sc *spannerDatabaseClient) ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error) {
 	nodeToCandidates := make(map[string][]string)
 	if len(nodes) == 0 {
 		return nodeToCandidates, nil
@@ -198,7 +200,7 @@ func (sc *SpannerClient) ResolveByID(ctx context.Context, nodes []string, in, ou
 	return nodeToCandidates, nil
 }
 
-func (sc *SpannerClient) queryAndCollect(
+func (sc *spannerDatabaseClient) queryAndCollect(
 	ctx context.Context,
 	stmt spanner.Statement,
 	newStruct func() interface{},

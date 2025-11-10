@@ -53,6 +53,9 @@ type UsageLog struct {
     QueryType string         `json:"query_type"`
 	// All stat vars queried in this request, with each including a list of facets used in that particular variable.
 	StatVars  []*StatVarLog `json:"stat_vars"`
+	// A unique ID for this request generated in handler_v2. 
+	// This is used to match mixer calls with cached requests in the website.
+	ResponseId string `json:"response_id"`
 }
 
 // Breaks down the log structs to be read as JSON objects in Cloud Logger.
@@ -62,6 +65,7 @@ func (u UsageLog) LogValue() slog.Value {
 		slog.Any("place_types", u.PlaceTypes),
 		slog.String("query_type", u.QueryType),
 		slog.Any("stat_vars", u.StatVars),
+		slog.String("response_id", u.ResponseId),
 	)
 }
 
@@ -188,7 +192,7 @@ func MakeStatVarLogs(observationResponse *pbv2.ObservationResponse) ([]*StatVarL
 
 // Writes a structured log to stdout, which is ingested by GCP cloud logging to track mixer usage.
 // Currently only used by the v2/observation endpoint.
-func WriteUsageLog(surface string, isRemote bool, observationResponse *pbv2.ObservationResponse, queryType shared.QueryType) {
+func WriteUsageLog(surface string, isRemote bool, observationResponse *pbv2.ObservationResponse, queryType shared.QueryType, responseId string) {
 
 	statVars, placeTypes := MakeStatVarLogs(observationResponse)
 
@@ -200,6 +204,7 @@ func WriteUsageLog(surface string, isRemote bool, observationResponse *pbv2.Obse
 		},
 		QueryType: string(queryType),
 		StatVars:  statVars,
+		ResponseId: responseId,
 	}
 
 	slog.Info("new_query", slog.Any("usage_log", logEntry))
