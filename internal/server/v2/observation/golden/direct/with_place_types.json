@@ -1,0 +1,30 @@
+{
+  "by_variable": {
+    "Count_Person": {
+      "by_entity": {
+        "dummy_entity_with_place_type": {
+          "ordered_facets": [
+            {
+              "facet_id": "2921750529",
+              "observations": [
+                {
+                  "date": "2023",
+                  "value": 54321
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2023",
+              "latest_date": "2023"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "facets": {
+    "2921750529": {
+      "import_name": "Custom Prov",
+      "provenance_url": "custom.datacommons.org"
+    }
+  }
+}

@@ -82,3 +82,5 @@ country/USA,var_with_props,2023,1,custom,USD,,,,
 country/GBR,var_with_props,2023,2,custom,USD,,,,
 country/USA,var_with_props,2023,3,custom,GBP,,,,
 country/GBR,var_with_props,2023,4,custom,GBP,,,,
+dummy_entity_no_place_types,Count_Person,2023,12345,custom,,,,,{} 
+dummy_entity_with_place_type,Count_Person,2023,54321,custom,,,,,{}
