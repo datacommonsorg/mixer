@@ -385,7 +385,7 @@ func ReadGolden(goldenDir string, goldenFile string) (string, error) {
 
 // NewSpannerClient creates a new test spanner client if spanner is enabled.
 // If not enabled, it returns nil.
-func NewSpannerClient() *spanner.SpannerClient {
+func NewSpannerClient() spanner.SpannerClient {
 	if !EnableSpannerGraph {
 		log.Println("Spanner graph not enabled.")
 		return nil
@@ -395,7 +395,7 @@ func NewSpannerClient() *spanner.SpannerClient {
 	return newSpannerClient(context.Background(), spannerGraphInfoYamlPath)
 }
 
-func newSpannerClient(ctx context.Context, spannerGraphInfoYamlPath string) *spanner.SpannerClient {
+func newSpannerClient(ctx context.Context, spannerGraphInfoYamlPath string) spanner.SpannerClient {
 	spannerGraphInfoYaml, err := os.ReadFile(spannerGraphInfoYamlPath)
 	if err != nil {
 		log.Fatalf("Failed to read spanner yaml: %v", err)
