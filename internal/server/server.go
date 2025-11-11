@@ -50,7 +50,6 @@ type Server struct {
 	httpClient *http.Client
 	dispatcher *dispatcher.Dispatcher
 	flags      *featureflags.Flags
-	// Whether to write usage logs.
 	writeUsageLogs bool
 }
 

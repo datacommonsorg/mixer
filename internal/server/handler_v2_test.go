@@ -209,7 +209,6 @@ func TestV2Observation_UsageLog(t *testing.T) {
 		store:    &store.Store{},
 		metadata: &resource.Metadata{},
 		flags: &featureflags.Flags{},
-		// set this flag to true to activate usage logging
 		writeUsageLogs: true,
 	}
 	s.cachedata.Store(&cache.Cache{})
