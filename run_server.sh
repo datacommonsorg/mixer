@@ -31,7 +31,7 @@
 #   ./run_server.sh --json-log
 #
 #   # Add more mixer flags
-#   ./run_server.sh --use_sqlite=true --sqlite_path=$PWD/test/datacommons.db
+#   ./run_server.sh --use_sqlite=true --sqlite_path=$PWD/test/datacommons.db --write_usage_logs=true
 
 set -e
 
