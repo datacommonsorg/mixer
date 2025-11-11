@@ -273,7 +273,7 @@ func newClient(
 		return nil, err
 	}
 	// Create mixer server. writeUsageLogs is false by default for tests but is directly tested in handler_v2_test.go
-	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient, dispatcher, flags, /* writeUsageLogs= */ false)
+	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient, dispatcher, flags /* writeUsageLogs= */, false)
 	srv := grpc.NewServer()
 	pbs.RegisterMixerServer(srv, mixerServer)
 	reflection.Register(srv)
@@ -402,7 +402,7 @@ func newSpannerClient(ctx context.Context, spannerGraphInfoYamlPath string) span
 		log.Fatalf("Failed to read spanner yaml: %v", err)
 	}
 	// Don't override spannerGraphInfoYaml.database for testing.
-	spannerClient, err := spanner.NewSpannerClient(ctx, string(spannerGraphInfoYaml), "")
+	spannerClient, err := spanner.NewSpannerClient(ctx, string(spannerGraphInfoYaml), "" /*SpannerGraphDatabase*/, true /*UseStaleReads*/)
 	if err != nil {
 		log.Fatalf("Failed to create SpannerClient: %v", err)
 	}

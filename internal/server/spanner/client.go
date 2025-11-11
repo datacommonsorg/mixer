@@ -19,6 +19,7 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
+	"time"
 
 	"cloud.google.com/go/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
@@ -34,20 +35,22 @@ type SpannerClient interface {
 	SearchNodes(ctx context.Context, query string, types []string) ([]*SearchNode, error)
 	ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error)
 	Id() string
+	GetStalenessTimestamp(ctx context.Context) (*time.Time, error)
 }
 
 // spannerDatabaseClient encapsulates the Spanner client that directly interacts with the Spanner database.
 type spannerDatabaseClient struct {
-	client *spanner.Client
+	client        *spanner.Client
+	useStaleReads bool
 }
 
 // newSpannerDatabaseClient creates a new spannerDatabaseClient.
-func newSpannerDatabaseClient(client *spanner.Client) *spannerDatabaseClient {
-	return &spannerDatabaseClient{client: client}
+func newSpannerDatabaseClient(client *spanner.Client, useStaleReads bool) *spannerDatabaseClient {
+	return &spannerDatabaseClient{client: client, useStaleReads: useStaleReads}
 }
 
 // NewSpannerClient creates a new SpannerClient from the config yaml string and an optional database override.
-func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string) (SpannerClient, error) {
+func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string, useStaleReads bool) (SpannerClient, error) {
 	cfg, err := createSpannerConfig(spannerConfigYaml, databaseOverride)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
@@ -56,7 +59,7 @@ func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride s
 	if err != nil {
 		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
 	}
-	return newSpannerDatabaseClient(client), nil
+	return newSpannerDatabaseClient(client, useStaleReads), nil
 }
 
 // createSpannerClient creates the database name string and initializes the Spanner client.
