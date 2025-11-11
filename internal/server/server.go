@@ -50,6 +50,7 @@ type Server struct {
 	httpClient *http.Client
 	dispatcher *dispatcher.Dispatcher
 	flags      *featureflags.Flags
+	writeUsageLogs bool
 }
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) error {
@@ -153,6 +154,7 @@ func NewMixerServer(
 	mapsClient *maps.Client,
 	dispatcher *dispatcher.Dispatcher,
 	flags *featureflags.Flags,
+	writeUsageLogs bool,
 ) *Server {
 	s := &Server{
 		store:      store,
@@ -162,6 +164,7 @@ func NewMixerServer(
 		httpClient: &http.Client{},
 		dispatcher: dispatcher,
 		flags:      flags,
+		writeUsageLogs: writeUsageLogs,
 	}
 	s.cachedata.Store(cachedata)
 	return s

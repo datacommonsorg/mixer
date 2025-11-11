@@ -272,7 +272,8 @@ func newClient(
 	if err != nil {
 		return nil, err
 	}
-	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient, dispatcher, flags)
+	// Create mixer server. writeUsageLogs is false by default for tests but is directly tested in handler_v2_test.go
+	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient, dispatcher, flags, /* writeUsageLogs= */ false)
 	srv := grpc.NewServer()
 	pbs.RegisterMixerServer(srv, mixerServer)
 	reflection.Register(srv)

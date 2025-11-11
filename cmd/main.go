@@ -61,6 +61,7 @@ var (
 	// Server config
 	port        = flag.Int("port", 12345, "Port on which to run the server.")
 	hostProject = flag.String("host_project", "", "The GCP project to run the mixer instance.")
+	writeUsageLogs = flag.Bool("write_usage_logs", false, "Whether to write usage logs.")
 	// BigQuery (Sparql)
 	useBigquery      = flag.Bool("use_bigquery", true, "Use Bigquery to serve Sparql Query.")
 	bigQueryDataset  = flag.String("bq_dataset", "", "DataCommons BigQuery dataset.")
@@ -417,7 +418,7 @@ func main() {
 	dispatcher := dispatcher.NewDispatcher(processors, dataSources)
 
 	// Create server object
-	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags)
+	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs)
 	pbs.RegisterMixerServer(srv, mixerServer)
 
 	// Subscribe to branch cache update
