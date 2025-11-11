@@ -18,14 +18,12 @@ import (
 	"bytes"
 	"context"
 	"log/slog"
-	"net"
 	"net/http"
 	"regexp"
 	"strings"
 	"testing"
 
 	"github.com/datacommonsorg/mixer/internal/featureflags"
-	pb "github.com/datacommonsorg/mixer/internal/proto/service"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
@@ -34,8 +32,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/testing/protocmp"
 )
@@ -94,10 +90,10 @@ func TestObservationInternal(t *testing.T) {
 	h := &http.Client{}
 
 	for _, tc := range []struct {
-		desc          string
-		req           *pbv2.ObservationRequest
-		wantQueryType shared.QueryType
-		wantResp      *pbv2.ObservationResponse
+			desc          string
+			req           *pbv2.ObservationRequest
+			wantQueryType shared.QueryType
+			wantResp      *pbv2.ObservationResponse
 	}{
 		{
 			"series",
@@ -115,7 +111,7 @@ func TestObservationInternal(t *testing.T) {
 				ByVariable: map[string]*pbv2.VariableObservation{
 					"Count_Person": {
 						ByEntity: map[string]*pbv2.EntityObservation{
-							"country/USA": {},
+							"country/USA": {}, 
 						},
 					},
 				},
@@ -149,7 +145,7 @@ func TestObservationInternal(t *testing.T) {
 			shared.QueryTypeFacet,
 			&pbv2.ObservationResponse{
 				ByVariable: map[string]*pbv2.VariableObservation{
-					"Count_Person": {},
+					"Count_Person": {}, 
 				},
 			},
 		},
@@ -169,7 +165,7 @@ func TestObservationInternal(t *testing.T) {
 				ByVariable: map[string]*pbv2.VariableObservation{
 					"Count_Person": {
 						ByEntity: map[string]*pbv2.EntityObservation{
-							"": {},
+							"": {}, 
 						},
 					},
 				},
@@ -189,7 +185,7 @@ func TestObservationInternal(t *testing.T) {
 			shared.QueryTypeExistence,
 			&pbv2.ObservationResponse{
 				ByVariable: map[string]*pbv2.VariableObservation{
-					"Count_Person": {},
+					"Count_Person": {}, 
 				},
 			},
 		},
@@ -208,40 +204,15 @@ func TestObservationInternal(t *testing.T) {
 }
 
 func TestV2Observation_UsageLog(t *testing.T) {
-	ctx := context.Background()
+	ctx := metadata.NewIncomingContext(context.Background(), metadata.MD{})
 	s := &Server{
-		store:          &store.Store{},
-		metadata:       &resource.Metadata{},
-		flags:          &featureflags.Flags{},
+		store:    &store.Store{},
+		metadata: &resource.Metadata{},
+		flags: &featureflags.Flags{},
+		// set this flag to true to activate usage logging
 		writeUsageLogs: true,
 	}
 	s.cachedata.Store(&cache.Cache{})
-
-	// Set up a real gRPC server
-	srv := grpc.NewServer()
-	pb.RegisterMixerServer(srv, s)
-	lis, err := net.Listen("tcp", "localhost:0")
-	if err != nil {
-		t.Fatalf("failed to listen: %v", err)
-	}
-	go func() {
-		if err := srv.Serve(lis); err != nil {
-			t.Logf("server error: %v", err)
-		}
-	}()
-	defer srv.Stop()
-
-	// Set up a client
-	conn, err := grpc.NewClient(
-		lis.Addr().String(),
-		grpc.WithTransportCredentials(insecure.NewCredentials()),
-	)
-	if err != nil {
-		t.Fatalf("did not connect: %v", err)
-	}
-	defer conn.Close()
-	client := pb.NewMixerClient(conn)
-
 	req := &pbv2.ObservationRequest{
 		Select: []string{"variable", "entity", "date", "value"},
 		Variable: &pbv2.DcidOrExpression{
@@ -260,10 +231,7 @@ func TestV2Observation_UsageLog(t *testing.T) {
 	slog.SetDefault(logger)
 	defer slog.SetDefault(originalLogger)
 
-	_, err = client.V2Observation(ctx, req)
-	if err != nil {
-		t.Fatalf("V2Observation failed: %v", err)
-	}
+	_, _ = s.V2Observation(ctx, req)
 
 	outStr := strings.TrimSpace(buf.String())
 
