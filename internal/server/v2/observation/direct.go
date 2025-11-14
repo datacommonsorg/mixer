@@ -101,6 +101,8 @@ func FetchDirectBT(
 	for _, variable := range variables {
 		for _, entity := range entities {
 			entityObservation := &pbv2.EntityObservation{}
+			// Setting this entity's place types if they are available
+			entityObservation.PlaceTypes = btData[entity][variable].PlaceTypes
 			series := btData[entity][variable].SourceSeries
 			if len(series) > 0 {
 				// Sort series by rank

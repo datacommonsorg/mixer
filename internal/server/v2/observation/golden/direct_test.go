@@ -175,6 +175,24 @@ func TestFetchDirect(t *testing.T) {
 				nil,
 				"var_with_props.json",
 			},
+			{
+				[]string{
+					"Count_Person",
+				},
+				[]string{"dummy_entity_no_place_types"},
+				"2023",
+				nil,
+				"empty_place_types.json",
+			},
+			{
+				[]string{
+					"Count_Person",
+				},
+				[]string{"dummy_entity_with_place_type"},
+				"2023",
+				nil,
+				"with_place_types.json",
+			},
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V2Observation(ctx, &pbv2.ObservationRequest{

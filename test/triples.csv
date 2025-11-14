@@ -100,3 +100,6 @@ dc/c/test_var_3,inputPropertyExpression,,"test_var_1 + test_var_2"
 dc/c/test_var_2,typeOf,StatisticalCalculation,
 dc/c/test_var_2,outputProperty,test_var_2,
 dc/c/test_var_2,inputPropertyExpression,,"Count_Person_NotACitizen_Female / Count_Person_Citizen_Female"
+dummy_entity_no_place_types,name,,"Dummy Entity"
+dummy_entity_with_place_type,name,,"Dummy Entity With Type"
+dummy_entity_with_place_type,typeOf,City,

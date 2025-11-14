@@ -8,7 +8,6 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
-	"github.com/datacommonsorg/mixer/internal/store"
 )
 
 // The source of the logged query -- because features like the MCP
@@ -25,7 +24,7 @@ type FacetLog struct {
 	// Import name, measurement method, etc.
 	Facet     *pb.Facet `json:"facet"`
 	// The number of series that used this facet for the current request.
-	NumSeries int      `json:"count"`
+	NumSeries int      `json:"num_series"`
 	// The earliest date across all series using this facet.
 	Earliest  string   `json:"earliest"`
 	// The latest date across all series using this facet.
@@ -99,17 +98,24 @@ func standardizeToYear(dateStr string) (string, error) {
 }
 
 // Formats logs for the stat vars and facets.
-func MakeStatVarLogs(store *store.Store, observationResponse *pbv2.ObservationResponse) []*StatVarLog {
+// 
+// Parameters:
+// 	observationResponse: The response from an observation query. This contains all results 
+//	for each entity and variable requested.
+// Returns:
+//  A list of StatVarLog, each containing the stat var DCID and a list of facets used for that stat var.
+//  A list of all place types in the response. This is separate because it isn't broken down per stat var.
+func MakeStatVarLogs(observationResponse *pbv2.ObservationResponse) ([]*StatVarLog, []string) {
 	// statVarLogs is a map statVarDCID -> list of facets.
 	statVarsByDcid := make(map[string]*StatVarLog)
+	resultLogs := make([]*StatVarLog, 0)
+	placeTypesSet := make(map[string]struct{})
 
-	resultLogs := make([]*StatVarLog, 0, len(statVarsByDcid))
-
-	if (observationResponse == nil){
-		return resultLogs
+	if observationResponse == nil {
+		return resultLogs, []string{}
 	}
 
-	// Iterate through each response's variables, collecting the facets used in that resp into our 
+	// Iterate through each response's variables, collecting the facets used in that resp into our
 	// cumulative list of facets used for the given variable.
 	for variable, varObs := range observationResponse.ByVariable {
 		// A map of facetId -> FacetLog
@@ -122,6 +128,10 @@ func MakeStatVarLogs(store *store.Store, observationResponse *pbv2.ObservationRe
 
 		// Get all of the facets used for each entity.
 		for _, entityObs := range varObs.ByEntity {
+			for _, placeType := range entityObs.PlaceTypes {
+				placeTypesSet[placeType] = struct{}{}
+			}
+
 			// The entity observation contains a list of the most relevant facets -- we include all of them.
 			for _, facetObs := range entityObs.OrderedFacets {
 				facetId := facetObs.FacetId
@@ -172,15 +182,19 @@ func MakeStatVarLogs(store *store.Store, observationResponse *pbv2.ObservationRe
 		resultLogs = append(resultLogs, svLog)
 	}
 
-	return resultLogs
+	placeTypes := make([]string, 0, len(placeTypesSet))
+	for placeType := range placeTypesSet {
+		placeTypes = append(placeTypes, placeType)
+	}
+	return resultLogs, placeTypes
 }
 
 
 // Writes a structured log to stdout, which is ingested by GCP cloud logging to track mixer usage.
 // Currently only used by the v2/observation endpoint.
-func WriteUsageLog(surface string, isRemote bool, placeTypes []string, store *store.Store, observationResponse *pbv2.ObservationResponse, queryType shared.QueryType, responseId string) {
+func WriteUsageLog(surface string, isRemote bool, observationResponse *pbv2.ObservationResponse, queryType shared.QueryType, responseId string) {
 
-	statVars := MakeStatVarLogs(store, observationResponse)
+	statVars, placeTypes := MakeStatVarLogs(observationResponse)
 
 	logEntry := UsageLog{
 		PlaceTypes: placeTypes,

@@ -190,6 +190,9 @@ spec:
               {{- if eq $.Values.mixer.enableOtlp true}}
               --metrics_exporter=otlp \
               {{- end }}
+              {{- if eq $.Values.mixer.writeUsageLogs true}}
+               --write_usage_logs=true \
+              {{- end }}
               --feature_flags_path=/datacommons/flags/feature_flags.yaml
           volumeMounts:
             - name: schema-mapping

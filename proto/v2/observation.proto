@@ -53,6 +53,10 @@ message VariableObservation {
 message EntityObservation {
   // Facet are orderred by preference.
   repeated FacetObservation ordered_facets = 1;
+  // The types of place that the entity is defined as if it is a geographic place
+  // This is an experimental field used for usage logging and is not guaranteed to be populated.
+  // The absence of values is not a reliable indicator of whether the associated entity is a place.
+  repeated string place_types = 7;
 }
 
 message FacetObservation {

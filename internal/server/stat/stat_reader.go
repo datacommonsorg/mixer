@@ -257,6 +257,8 @@ func ReadStatCollection(
 			if !ok {
 				return nil, status.Errorf(codes.Internal, "invalid data for pb.ObsCollection")
 			}
+			// Include the place types in the result.
+			result[sv].PlaceDcidToTypes = obsCollection.PlaceDcidToTypes
 			for _, sc := range obsCollection.SourceCohorts {
 				// Convert unit when fetching observation (not date) if possible.
 				if date != "" {
