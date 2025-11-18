@@ -36,13 +36,17 @@ If the mixer instance to be tested lives as a k8s service that is not exposed to
 
 5.  Go to http://localhost:8089/ in browser. You should see the locust UI.
 
-6.  Click "New test", set the parameters(described below) and click "Start swarming".
+6.  Click "New", set the parameters (described below).
 
 | Parameter | Definition |
 | :---: | :---: | 
 | Number of users  | Peak number of users. Note the behavior of each user is specified by a locustfile. 100 is a good default. |
-| Spawn rate  | Number of users added per second. This value is recommended to be <5. |
-| Host  | http:// + result of `kubectl -n <mixer namespace> get svc`. | 
+| Ramp up  | Number of users added per second. This value is recommended to be <5. |
+| Host  | Target host. | 
+
+7. Set the API key for the target host under the "Custom parameters". You can optionally set the run time under the "Advanced options".
+
+8. Click "Start" to start sending requests.
 
 ## Making changes to this tool
 
@@ -57,7 +61,7 @@ If the mixer instance to be tested lives as a k8s service that is not exposed to
 3.  Build a new image and stored it in [AR](https://cloud.google.com/artifact-registry/docs)(Below assumes that you are in the loadtesting dir.).
 
     ```sh
-    gcloud builds submit --project=datcom-ci --tag=us-docker.pkg.dev/datcom-ci/mixer/loadtester:v2
+    gcloud builds submit --project=datcom-ci --tag=us-docker.pkg.dev/datcom-ci/mixer/loadtester:v3
     ```
 
 4.  Increment both the image tag version in pod.yaml and the cloud build command above. Submit all changes into 1 PR.

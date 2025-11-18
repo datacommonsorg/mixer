@@ -27,7 +27,7 @@ import (
 	"time"
 
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
-	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/google/pprof/profile"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/connectivity"
@@ -238,61 +238,71 @@ func main() {
 	// TODO: move the definition of requests to make to a config file
 	var profileResults []*MemoryProfileResult
 	var count int64
-	for _, allFacets := range []bool{true, false} {
-		for _, r := range []struct {
-			entityType   string
-			linkedEntity string
-			variables    []string
-		}{
-			{
-				"County",
-				"country/USA",
-				[]string{"dummy", "Median_Age_Person_AmericanIndianOrAlaskaNativeAlone"},
+	for _, r := range []struct {
+		variable *pbv2.DcidOrExpression
+		entity   *pbv2.DcidOrExpression
+	}{
+		{
+			&pbv2.DcidOrExpression{
+				Dcids: []string{"dummy", "Median_Age_Person_AmericanIndianOrAlaskaNativeAlone"},
 			},
-			{
-				"City",
-				"country/USA",
-				[]string{"Median_Age_Person_AmericanIndianOrAlaskaNativeAlone"},
+			&pbv2.DcidOrExpression{
+				Expression: "country/USA<-containedInPlace+{typeOf:State}",
 			},
-			{
-				"Country",
-				"Earth",
-				[]string{"Median_Age_Person"},
+		},
+		{
+			&pbv2.DcidOrExpression{
+				Dcids: []string{"dummy", "Median_Age_Person_AmericanIndianOrAlaskaNativeAlone"},
 			},
-			{
-				"EpaReportingFacility",
-				"geoId/06",
-				[]string{"Annual_Emissions_GreenhouseGas_NonBiogenic"},
+			&pbv2.DcidOrExpression{
+				Expression: "geoId/06<-containedInPlace+{typeOf:City}",
 			},
-			{
-				"AdministrativeArea2",
-				"country/FRA",
-				[]string{"Count_Person"},
+		},
+		{
+			&pbv2.DcidOrExpression{
+				Dcids: []string{"Median_Age_Person"},
 			},
-		} {
-			funcKey := fmt.Sprintf("BulkObservationsSeriesLinked_%d", count)
-			funcToProfile := func() (string, error) {
-				req := &pbv1.BulkObservationsSeriesLinkedRequest{
-					Variables:      r.variables,
-					EntityType:     r.entityType,
-					LinkedEntity:   r.linkedEntity,
-					LinkedProperty: "containedInPlace",
-					AllFacets:      allFacets,
-				}
-				resp, err := c.BulkObservationsSeriesLinked(ctx, req)
-				if err != nil {
-					return "", err
-				}
-				respStr := resp.String()
-				return respStr, nil
+			&pbv2.DcidOrExpression{
+				Expression: "Earth<-containedInPlace+{typeOf:Country}",
+			},
+		},
+		{
+			&pbv2.DcidOrExpression{
+				Dcids: []string{"Annual_Emissions_GreenhouseGas_NonBiogenic"},
+			},
+			&pbv2.DcidOrExpression{
+				Expression: "geoId/06<-containedInPlace+{typeOf:EpaReportingFacility}",
+			},
+		},
+		{
+			&pbv2.DcidOrExpression{
+				Dcids: []string{"Count_Person"},
+			},
+			&pbv2.DcidOrExpression{
+				Expression: "country/FRA<-containedInPlace+{typeOf:AdministrativeArea2}",
+			},
+		},
+	} {
+		funcKey := fmt.Sprintf("V2Observation_%d", count)
+		funcToProfile := func() (string, error) {
+			req := &pbv2.ObservationRequest{
+				Variable: r.variable,
+				Entity:   r.entity,
+				Select:   []string{"variable", "entity", "date", "value"},
 			}
-			result, err := RunWithProfile(outFolder, funcKey, funcToProfile)
+			resp, err := c.V2Observation(ctx, req)
 			if err != nil {
-				log.Fatal(err)
+				return "", err
 			}
-			profileResults = append(profileResults, result)
-			count++
+			respStr := resp.String()
+			return respStr, nil
 		}
+		result, err := RunWithProfile(outFolder, funcKey, funcToProfile)
+		if err != nil {
+			log.Fatal(err)
+		}
+		profileResults = append(profileResults, result)
+		count++
 	}
 
 	writeResultsToCsv(profileResults, filepath.Join(outFolder, resultCsvFilename))
