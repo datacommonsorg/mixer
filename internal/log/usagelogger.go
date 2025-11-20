@@ -208,8 +208,8 @@ func WriteUsageLog(surface string, isRemote bool, observationResponse *pbv2.Obse
 	}
 
 	// The GCP log router that directs these logs to BigQuery detects them
-    // based on the presence of the "usage_log" header. 
-    // If you update it here, also update the filter on the usage_logs log routers here:
+    // based on the presence of the "usage_log" field. 
+    // If you update the field here, also update the filter on the usage_logs log routers here:
     // website mixer: https://pantheon.corp.google.com/logs/router?e=13803378&mods=-monitoring_api_staging&project=datcom-website-prod
 	// mixer mixer:https://pantheon.corp.google.com/logs/router?e=13803378&mods=-monitoring_api_staging&project=datcom-mixer
 	slog.Info("new_query", slog.Any("usage_log", logEntry))
