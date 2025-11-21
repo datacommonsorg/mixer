@@ -6,4 +6,4 @@ RUN pip install -r requirements.txt
 
 COPY locustfiles .
 
-CMD ["locust", "-f", "bulk_observations_series_linked.py"]
+CMD ["locust", "-f", "v2_observation.py"]
