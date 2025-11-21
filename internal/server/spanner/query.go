@@ -18,10 +18,13 @@ package spanner
 import (
 	"context"
 	"fmt"
+	"log/slog"
+	"time"
 
 	"cloud.google.com/go/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"google.golang.org/api/iterator"
+	"google.golang.org/grpc/codes"
 )
 
 const (
@@ -200,15 +203,62 @@ func (sc *spannerDatabaseClient) ResolveByID(ctx context.Context, nodes []string
 	return nodeToCandidates, nil
 }
 
+func (sc *spannerDatabaseClient) GetStalenessTimestamp(ctx context.Context) (*time.Time, error) {
+	iter := sc.client.ReadOnlyTransaction().Query(ctx, *GetCompletionTimestampQuery())
+	defer iter.Stop()
+
+	row, err := iter.Next()
+	if err == iterator.Done {
+		return nil, fmt.Errorf("no rows found in IngestionHistory")
+	}
+	if err != nil {
+		return nil, fmt.Errorf("failed to fetch row: %w", err)
+	}
+
+	var timestamp time.Time
+	if err := row.Column(0, &timestamp); err != nil {
+		return nil, fmt.Errorf("failed to read CompletionTimestamp column: %w", err)
+	}
+
+	return &timestamp, nil
+}
+
 func (sc *spannerDatabaseClient) queryAndCollect(
 	ctx context.Context,
 	stmt spanner.Statement,
 	newStruct func() interface{},
 	withStruct func(interface{}),
 ) error {
-	iter := sc.client.Single().Query(ctx, stmt)
-	defer iter.Stop()
+	if sc.useStaleReads {
+		ts, err := sc.GetStalenessTimestamp(ctx)
+		if err != nil {
+			return err
+		}
+		ro := sc.client.Single().WithTimestampBound(spanner.ReadTimestamp(*ts))
+		iter := ro.Query(ctx, stmt)
+		defer iter.Stop()
 
+		err = sc.processRows(iter, newStruct, withStruct)
+
+		// Log error if timestamp is older than retention and fall back to strong read.
+		if spanner.ErrCode(err) == codes.FailedPrecondition {
+			slog.Error("Stale read timestamp expired. Falling back to StrongRead.",
+				"expiredTimestamp", ts.String())
+			iter = sc.client.Single().WithTimestampBound(spanner.StrongRead()).Query(ctx, stmt)
+			defer iter.Stop()
+
+			return sc.processRows(iter, newStruct, withStruct)
+		}
+
+		return nil
+	} else {
+		iter := sc.client.Single().Query(ctx, stmt)
+		defer iter.Stop()
+		return sc.processRows(iter, newStruct, withStruct)
+	}
+}
+
+func (sc *spannerDatabaseClient) processRows(iter *spanner.RowIterator, newStruct func() interface{}, withStruct func(interface{})) error {
 	for {
 		row, err := iter.Next()
 		if err == iterator.Done {

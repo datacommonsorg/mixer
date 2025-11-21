@@ -15,11 +15,15 @@
                 {
                   "date": "2023-12",
                   "value": 8.163
+                },
+                {
+                  "date": "2025-09",
+                  "value": 1.26
                 }
               ],
-              "obs_count": 2,
+              "obs_count": 3,
               "earliest_date": "2023-11",
-              "latest_date": "2023-12"
+              "latest_date": "2025-09"
             },
             {
               "facet_id": "1159060358",
@@ -27,11 +31,15 @@
                 {
                   "date": "2023",
                   "value": 32.099
+                },
+                {
+                  "date": "2025",
+                  "value": 1.26
                 }
               ],
-              "obs_count": 1,
+              "obs_count": 2,
               "earliest_date": "2023",
-              "latest_date": "2023"
+              "latest_date": "2025"
             }
           ]
         }
@@ -125,11 +133,15 @@
                 {
                   "date": "2023-12",
                   "value": 1
+                },
+                {
+                  "date": "2025-09",
+                  "value": 1
                 }
               ],
-              "obs_count": 2,
+              "obs_count": 3,
               "earliest_date": "2023-11",
-              "latest_date": "2023-12"
+              "latest_date": "2025-09"
             },
             {
               "facet_id": "1332358705",
@@ -137,11 +149,15 @@
                 {
                   "date": "2023",
                   "value": 1
+                },
+                {
+                  "date": "2025",
+                  "value": 1
                 }
               ],
-              "obs_count": 1,
+              "obs_count": 2,
               "earliest_date": "2023",
-              "latest_date": "2023"
+              "latest_date": "2025"
             }
           ]
         }
