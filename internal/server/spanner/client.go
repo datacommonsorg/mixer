@@ -124,6 +124,9 @@ func (sc *spannerDatabaseClient) Id() string {
 
 // Start starts the background goroutine to periodically fetch the timestamp.
 func (sc *spannerDatabaseClient) Start() {
+	if !sc.useStaleReads {
+		return
+	}
 	go func() {
 		ctx := context.Background()
 
@@ -146,5 +149,8 @@ func (sc *spannerDatabaseClient) Start() {
 
 // Stop sends a signal to the goroutine to stop polling.
 func (sc *spannerDatabaseClient) Stop() {
+	if !sc.useStaleReads {
+		return
+	}
 	close(sc.stopCh)
 }

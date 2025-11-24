@@ -255,13 +255,13 @@ func (sc *spannerDatabaseClient) queryAndCollect(
 		if spanner.ErrCode(err) == codes.FailedPrecondition {
 			slog.Error("Stale read timestamp expired. Falling back to StrongRead.",
 				"expiredTimestamp", ts.String())
-			iter = sc.client.Single().WithTimestampBound(spanner.StrongRead()).Query(ctx, stmt)
-			defer iter.Stop()
+			strongIter := sc.client.Single().WithTimestampBound(spanner.StrongRead()).Query(ctx, stmt)
+			defer strongIter.Stop()
 
-			return sc.processRows(iter, newStruct, withStruct)
+			return sc.processRows(strongIter, newStruct, withStruct)
 		}
 
-		return nil
+		return err
 	} else {
 		iter := sc.client.Single().Query(ctx, stmt)
 		defer iter.Stop()

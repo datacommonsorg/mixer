@@ -97,7 +97,8 @@ func getMissingStatVarRanking(
 
 func TestChartConfigRankings(t *testing.T) {
 	t.Parallel()
-	client, err := Setup()
+	client, cleanup, err := Setup()
+	defer cleanup()
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}

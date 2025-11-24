@@ -29,7 +29,8 @@ import (
 func TestSparql(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
-	client, err := test.SetupBqOnly()
+	client, cleanup, err := test.SetupBqOnly()
+	defer cleanup()
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
