@@ -191,6 +191,10 @@ func main() {
 			slog.Error("Failed to create Spanner client", "error", err)
 			os.Exit(1)
 		}
+		if flags.UseStaleReads {
+			spannerClient.Start()
+			defer spannerClient.Stop()
+		}
 		var ds datasource.DataSource = spanner.NewSpannerDataSource(spannerClient)
 		// TODO: Order sources by priority once other implementations are added.
 		sources = append(sources, &ds)

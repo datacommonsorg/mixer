@@ -203,24 +203,35 @@ func (sc *spannerDatabaseClient) ResolveByID(ctx context.Context, nodes []string
 	return nodeToCandidates, nil
 }
 
-func (sc *spannerDatabaseClient) GetStalenessTimestamp(ctx context.Context) (*time.Time, error) {
+// fetchAndUpdateTimestamp queries Spanner and updates the timestamp.
+func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) error {
 	iter := sc.client.ReadOnlyTransaction().Query(ctx, *GetCompletionTimestampQuery())
 	defer iter.Stop()
 
 	row, err := iter.Next()
 	if err == iterator.Done {
-		return nil, fmt.Errorf("no rows found in IngestionHistory")
+		return fmt.Errorf("no rows found in IngestionHistory")
 	}
 	if err != nil {
-		return nil, fmt.Errorf("failed to fetch row: %w", err)
+		return fmt.Errorf("failed to fetch row: %w", err)
 	}
 
 	var timestamp time.Time
 	if err := row.Column(0, &timestamp); err != nil {
-		return nil, fmt.Errorf("failed to read CompletionTimestamp column: %w", err)
+		return fmt.Errorf("failed to read CompletionTimestamp column: %w", err)
 	}
 
-	return &timestamp, nil
+	sc.timestamp.Store(timestamp.UnixNano())
+	return nil
+}
+
+func (sc *spannerDatabaseClient) getStalenessTimestamp() (time.Time, error) {
+	val := sc.timestamp.Load()
+	if val != 0 {
+		return time.Unix(0, val).UTC(), nil
+	}
+	slog.Error("Error fetching Spanner staleness timestamp")
+	return time.Time{}, fmt.Errorf("error getting staleness timestamp")
 }
 
 func (sc *spannerDatabaseClient) queryAndCollect(
@@ -230,11 +241,11 @@ func (sc *spannerDatabaseClient) queryAndCollect(
 	withStruct func(interface{}),
 ) error {
 	if sc.useStaleReads {
-		ts, err := sc.GetStalenessTimestamp(ctx)
+		ts, err := sc.getStalenessTimestamp()
 		if err != nil {
 			return err
 		}
-		ro := sc.client.Single().WithTimestampBound(spanner.ReadTimestamp(*ts))
+		ro := sc.client.Single().WithTimestampBound(spanner.ReadTimestamp(ts))
 		iter := ro.Query(ctx, stmt)
 		defer iter.Stop()
 

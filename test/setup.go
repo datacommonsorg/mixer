@@ -406,5 +406,7 @@ func newSpannerClient(ctx context.Context, spannerGraphInfoYamlPath string) span
 	if err != nil {
 		log.Fatalf("Failed to create SpannerClient: %v", err)
 	}
+	// Use stale reads for testing.
+	spannerClient.Start()
 	return spannerClient
 }

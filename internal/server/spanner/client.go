@@ -19,7 +19,7 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
-	"time"
+	"sync/atomic"
 
 	"cloud.google.com/go/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
@@ -35,18 +35,42 @@ type SpannerClient interface {
 	SearchNodes(ctx context.Context, query string, types []string) ([]*SearchNode, error)
 	ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error)
 	Id() string
-	GetStalenessTimestamp(ctx context.Context) (*time.Time, error)
+	Start()
+	Stop()
 }
 
 // spannerDatabaseClient encapsulates the Spanner client that directly interacts with the Spanner database.
 type spannerDatabaseClient struct {
 	client        *spanner.Client
 	useStaleReads bool
+	timestamp     atomic.Int64
+	ticker        Ticker
+	stopCh        chan struct{}
+
+	// For mocking in tests.
+	updateTimestamp func(context.Context) error
 }
 
 // newSpannerDatabaseClient creates a new spannerDatabaseClient.
-func newSpannerDatabaseClient(client *spanner.Client, useStaleReads bool) *spannerDatabaseClient {
-	return &spannerDatabaseClient{client: client, useStaleReads: useStaleReads}
+func newSpannerDatabaseClient(client *spanner.Client, useStaleReads bool) (*spannerDatabaseClient, error) {
+	sc := &spannerDatabaseClient{
+		client:        client,
+		useStaleReads: useStaleReads,
+	}
+
+	if !useStaleReads {
+		return sc, nil
+	}
+
+	// Set an initial timestamp synchronously before starting the background loop.
+	sc.ticker = NewTimestampTicker()
+	sc.stopCh = make(chan struct{})
+	sc.updateTimestamp = sc.fetchAndUpdateTimestamp
+	if err := sc.updateTimestamp(context.Background()); err != nil {
+		slog.Error("Error initializing Spanner staleness timestamp")
+		return nil, err
+	}
+	return sc, nil
 }
 
 // NewSpannerClient creates a new SpannerClient from the config yaml string and an optional database override.
@@ -59,7 +83,7 @@ func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride s
 	if err != nil {
 		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
 	}
-	return newSpannerDatabaseClient(client, useStaleReads), nil
+	return newSpannerDatabaseClient(client, useStaleReads)
 }
 
 // createSpannerClient creates the database name string and initializes the Spanner client.
@@ -96,4 +120,31 @@ func createSpannerConfig(spannerConfigYaml, databaseOverride string) (*SpannerCo
 
 func (sc *spannerDatabaseClient) Id() string {
 	return sc.client.DatabaseName()
+}
+
+// Start starts the background goroutine to periodically fetch the timestamp.
+func (sc *spannerDatabaseClient) Start() {
+	go func() {
+		ctx := context.Background()
+
+		for {
+			select {
+			case <-sc.ticker.C():
+				// Ignore the error here to allow the process to continue running
+				// even if one fetch fails. The previous timestamp remains in cache.
+				err := sc.updateTimestamp(ctx)
+				if err != nil {
+					slog.Error("Error updating Spanner staleness timestamp", "error", err)
+				}
+			case <-sc.stopCh:
+				sc.ticker.Stop()
+				return
+			}
+		}
+	}()
+}
+
+// Stop sends a signal to the goroutine to stop polling.
+func (sc *spannerDatabaseClient) Stop() {
+	close(sc.stopCh)
 }
