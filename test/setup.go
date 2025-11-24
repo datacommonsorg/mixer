@@ -73,7 +73,7 @@ var (
 	// Currently this is only enabled on workstations of developers working on the spanner graph POC.
 	// This ensures that the spanner tests don't impact existing tests while in the POC phase.
 	// TODO: Remove this variable after POC.
-	EnableSpannerGraph = true //os.Getenv("ENABLE_SPANNER_GRAPH") == "true"
+	EnableSpannerGraph = os.Getenv("ENABLE_SPANNER_GRAPH") == "true"
 )
 
 // This test runs agains staging staging bt and bq dataset.
