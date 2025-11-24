@@ -230,7 +230,7 @@ func (sc *spannerDatabaseClient) getStalenessTimestamp() (time.Time, error) {
 	if val != 0 {
 		return time.Unix(0, val).UTC(), nil
 	}
-	slog.Error("Error fetching Spanner staleness timestamp")
+	slog.Error("Spanner staleness timestamp not available")
 	return time.Time{}, fmt.Errorf("error getting staleness timestamp")
 }
 

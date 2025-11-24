@@ -47,6 +47,7 @@ func TestTimestampUpdated(t *testing.T) {
 	var updateCount int
 	mockTicker := NewMockTicker()
 	startTime := time.Date(2025, time.January, 1, 10, 0, 0, 0, time.UTC)
+	updateDone := make(chan bool, 1)
 	sc := &spannerDatabaseClient{
 		useStaleReads: true,
 		ticker:        mockTicker,
@@ -60,14 +61,15 @@ func TestTimestampUpdated(t *testing.T) {
 		updateCount++
 		nextTimestamp := startTime.Add(1 * time.Hour).UnixNano()
 		sc.timestamp.Store(nextTimestamp)
+		updateDone <- true
 		return nil
 	}
 
 	sc.Start()
-	time.Sleep(10 * time.Millisecond)
 	mockTicker.Tick()
 
-	time.Sleep(10 * time.Millisecond)
+	<-updateDone
+
 	if updateCount != 1 {
 		t.Fatalf("Expected updateTimestamp to be called 1 time, got %d", updateCount)
 	}
@@ -89,6 +91,7 @@ func TestTimestampUpdateFailure(t *testing.T) {
 	var count int
 	mockTicker := NewMockTicker()
 	startTime := time.Date(2025, time.January, 1, 10, 0, 0, 0, time.UTC)
+	updateDone := make(chan bool, 1)
 	sc := &spannerDatabaseClient{
 		useStaleReads: true,
 		ticker:        mockTicker,
@@ -100,14 +103,15 @@ func TestTimestampUpdateFailure(t *testing.T) {
 	// Mock failed update.
 	sc.updateTimestamp = func(context.Context) error {
 		count++
+		updateDone <- true
 		return fmt.Errorf("test spanner failure")
 	}
 
 	sc.Start()
-	time.Sleep(10 * time.Millisecond)
 	mockTicker.Tick()
 
-	time.Sleep(10 * time.Millisecond)
+	<-updateDone
+
 	if count != 1 {
 		t.Fatalf("Expected updateTimestamp to be called 1 time, got %d", count)
 	}

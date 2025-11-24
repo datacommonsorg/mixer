@@ -19,6 +19,7 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
+	"sync"
 	"sync/atomic"
 
 	"cloud.google.com/go/spanner"
@@ -46,6 +47,7 @@ type spannerDatabaseClient struct {
 	timestamp     atomic.Int64
 	ticker        Ticker
 	stopCh        chan struct{}
+	stopOnce      sync.Once
 
 	// For mocking in tests.
 	updateTimestamp func(context.Context) error
@@ -152,5 +154,7 @@ func (sc *spannerDatabaseClient) Stop() {
 	if !sc.useStaleReads {
 		return
 	}
-	close(sc.stopCh)
+	sc.stopOnce.Do(func() {
+		close(sc.stopCh)
+	})
 }
