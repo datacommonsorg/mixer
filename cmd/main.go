@@ -59,8 +59,8 @@ import (
 
 var (
 	// Server config
-	port        = flag.Int("port", 12345, "Port on which to run the server.")
-	hostProject = flag.String("host_project", "", "The GCP project to run the mixer instance.")
+	port           = flag.Int("port", 12345, "Port on which to run the server.")
+	hostProject    = flag.String("host_project", "", "The GCP project to run the mixer instance.")
 	writeUsageLogs = flag.Bool("write_usage_logs", false, "Whether to write usage logs.")
 	// BigQuery (Sparql)
 	useBigquery      = flag.Bool("use_bigquery", true, "Use Bigquery to serve Sparql Query.")
@@ -186,10 +186,14 @@ func main() {
 
 	// Spanner Graph.
 	if flags.EnableV3 && flags.UseSpannerGraph {
-		spannerClient, err := spanner.NewSpannerClient(ctx, *spannerGraphInfo, flags.SpannerGraphDatabase)
+		spannerClient, err := spanner.NewSpannerClient(ctx, *spannerGraphInfo, flags.SpannerGraphDatabase, flags.UseStaleReads)
 		if err != nil {
 			slog.Error("Failed to create Spanner client", "error", err)
 			os.Exit(1)
+		}
+		if flags.UseStaleReads {
+			spannerClient.Start()
+			defer spannerClient.Stop()
 		}
 		var ds datasource.DataSource = spanner.NewSpannerDataSource(spannerClient)
 		// TODO: Order sources by priority once other implementations are added.
