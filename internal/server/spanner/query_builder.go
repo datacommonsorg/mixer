@@ -22,6 +22,7 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"unicode/utf8"
 
 	"cloud.google.com/go/spanner"
 	"github.com/datacommonsorg/mixer/internal/merger"
@@ -232,7 +233,11 @@ func generateObjectValue(input string) string {
 	if len(input) <= objectValuePrefix {
 		prefix = input
 	} else {
-		prefix = input[:objectValuePrefix]
+		i := objectValuePrefix
+		for ; i > 0 && !utf8.RuneStart(input[i]); i-- {
+		}
+		prefix = input[:i]
+
 	}
 	return prefix + ":" + generateValueHash(input)
 }
