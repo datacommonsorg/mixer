@@ -42,7 +42,8 @@ func goldenTest(
 	opt *TestOption,
 	testSuite func(pbs.MixerClient, bool),
 ) error {
-	mixer, err := Setup(opt)
+	mixer, cleanup, err := Setup(opt)
+	defer cleanup()
 	if err != nil {
 		return fmt.Errorf("failed to set up mixer and client: %s", err)
 	}
@@ -56,7 +57,8 @@ func latencyTest(
 	testSuite func(pbs.MixerClient, bool),
 ) error {
 	durationStore := []float64{}
-	mixer, err := Setup(opt)
+	mixer, cleanup, err := Setup(opt)
+	defer cleanup()
 	if err != nil {
 		return fmt.Errorf("failed to set up mixer and client")
 	}

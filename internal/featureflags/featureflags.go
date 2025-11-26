@@ -34,6 +34,8 @@ type Flags struct {
 	// This is temporarily loaded from flags vs spanner_graph_info.yaml.
 	// TODO: Once the Spanner instance is stable, revert to using the config.
 	SpannerGraphDatabase string `yaml:"SpannerGraphDatabase"`
+	// Whether to use stale reads for Spanner.
+	UseStaleReads bool `yaml:"UseStaleReads"`
 }
 
 // setDefaultValues creates a new Flags struct with default values.
@@ -43,6 +45,7 @@ func setDefaultValues() *Flags {
 		V3MirrorFraction:     0.0,
 		UseSpannerGraph:      false,
 		SpannerGraphDatabase: "",
+		UseStaleReads:        false,
 	}
 }
 
@@ -56,6 +59,9 @@ func (f *Flags) validateFlagValues() error {
 	}
 	if f.SpannerGraphDatabase != "" && (!f.UseSpannerGraph || !f.EnableV3) {
 		return fmt.Errorf("using SpannerGraphDatabase requires UseSpannerGraph and EnableV3 to be true")
+	}
+	if f.UseStaleReads && !f.UseSpannerGraph {
+		return fmt.Errorf("UseStaleReads requires UseSpannerGraph to be true")
 	}
 	return nil
 }

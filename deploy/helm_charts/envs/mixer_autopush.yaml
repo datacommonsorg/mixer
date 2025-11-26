@@ -40,7 +40,13 @@ serviceGroups:
     replicas: 20
   observation:
     replicas: 20
+    resources:
+      memoryRequest: "6G"
+      memoryLimit: "6G"
   node:
     replicas: 20
+    resources:
+      memoryRequest: "4G"
+      memoryLimit: "4G"
   default:
     replicas: 10
