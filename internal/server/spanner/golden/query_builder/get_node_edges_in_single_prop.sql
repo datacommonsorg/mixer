@@ -14,6 +14,6 @@
 		ORDER BY
 			subject_id,
 			predicate,
-			value,
+			n.subject_id,
 			provenance
 		LIMIT 501

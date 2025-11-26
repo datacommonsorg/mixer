@@ -29,6 +29,10 @@ import (
 	v3 "github.com/datacommonsorg/mixer/internal/server/v3"
 )
 
+const (
+	objectValuePrefix = 16
+)
+
 func GetCompletionTimestampQuery() *spanner.Statement {
 	return &spanner.Statement{
 		SQL: statements.getCompletionTimestamp,
@@ -77,7 +81,7 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 		for _, prop := range props {
 			params["prop"+strconv.Itoa(i)] = prop
 			objectFilter := ""
-			filterVal := addValueHashes(arc.Filter[prop])
+			filterVal := addObjectValues(arc.Filter[prop])
 			if len(filterVal) > 0 {
 				objectFilter = fmt.Sprintf(statements.filterValue, i)
 				params["val"+strconv.Itoa(i)] = filterVal
@@ -202,7 +206,7 @@ func ResolveByIDQuery(nodes []string, in, out string) *spanner.Statement {
 			sql = statements.resolveDcidToProp
 		}
 	} else {
-		params["nodes"] = addValueHashes(nodes)
+		params["nodes"] = addObjectValues(nodes)
 		if out == "dcid" { // Property to DCID
 			sql = statements.resolvePropToDcid
 		} else { // Property to property
@@ -222,11 +226,21 @@ func generateValueHash(input string) string {
 	return base64.StdEncoding.EncodeToString(hash[:])
 }
 
-func addValueHashes(input []string) []string {
+func generateObjectValue(input string) string {
+	var prefix string
+	if len(input) <= objectValuePrefix {
+		prefix = input
+	} else {
+		prefix = input[:objectValuePrefix]
+	}
+	return prefix + ":" + generateValueHash(input)
+}
+
+func addObjectValues(input []string) []string {
 	result := make([]string, 0, len(input)*2)
 	for _, v := range input {
 		result = append(result, v)
-		result = append(result, generateValueHash(v))
+		result = append(result, generateObjectValue(v))
 	}
 	return result
 }

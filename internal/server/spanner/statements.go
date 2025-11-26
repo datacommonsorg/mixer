@@ -135,17 +135,17 @@ var statements = struct {
 		ORDER BY
 			subject_id,
 			predicate,
-			value,
+			n.subject_id,
 			provenance`,
 	returnChainedEdges: `
 		RETURN DISTINCT
 			m.subject_id,
-			n.subject_id AS value
+			n.subject_id AS object_id
 		NEXT MATCH (n)
 		WHERE
-		  n.subject_id = value
+		  n.subject_id = object_id
 		RETURN
-		  subject_id,
+		  	subject_id,
 			@result_predicate AS predicate,
 			'' AS provenance,
 			n.value,
@@ -154,18 +154,18 @@ var statements = struct {
 			n.types
 		ORDER BY
 			subject_id,
-			value`,
+			object_id`,
 	returnFilterEdges: `
 		RETURN
-		  m.subject_id,
-			n.subject_id AS value,
+		  	m.subject_id,
+			n.subject_id AS object_id,
 			e.predicate,
 			e.provenance
 		NEXT MATCH (n)
 		WHERE
-		  n.subject_id = value
+		  n.subject_id = object_id
 		RETURN
-		  subject_id,
+		  	subject_id,
 			predicate,
 			provenance,
 			n.value,
@@ -175,7 +175,7 @@ var statements = struct {
 		ORDER BY
 			subject_id,
 			predicate,
-			value,
+			object_id,
 			provenance`,
 	applyOffset: `
 		OFFSET %d`,
