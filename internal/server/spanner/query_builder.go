@@ -30,6 +30,7 @@ import (
 )
 
 const (
+	// Prefix length of value to include in object value ids.
 	objectValuePrefix = 16
 )
 
