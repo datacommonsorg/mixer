@@ -13,6 +13,22 @@
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
+              "name": "Age-Adjusted Mortality Rate Among Persons with Diabetes Mellitus",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AgeAdjusted_Count_MortalityEvent_DiabetesMellitus_AsAFractionOf_AgeAdjusted_Count_Person_DiabetesMellitus",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Age adjusted count of people with diabetes mellitus",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AgeAdjusted_Count_Person_DiabetesMellitus",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Max Temperature (Difference Relative To Base Date): Relative To 1990, Highest Value, Median Across Models",
               "types": [
                 "StatisticalVariable"
@@ -3985,22 +4001,6 @@
               "provenance_id": "dc/base/HumanReadableStatVars"
             },
             {
-              "name": "Publicly guaranteed bilateral external debt interest repayment to official creditor, Vietnam.",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "AmountInterestRepayment_Debt_OfficialCreditor_PubliclyGuaranteed_Bilateral_LongTermExternalDebt_LenderCountryVNM",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Publicly guaranteed bilateral external debt interest repayment to official creditor, South Africa.",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "AmountInterestRepayment_Debt_OfficialCreditor_PubliclyGuaranteed_Bilateral_LongTermExternalDebt_LenderCountryZAF",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
               "name": "total number of sql query used",
               "types": [
                 "StatisticalVariable"
@@ -4026,5 +4026,5 @@
       }
     }
   },
-  "next_token": "H4sIAAAAAAAA/+IK5wooLkjMy0st0i0oys9KTS4p1k9JLEnOz9UtLskvStXPzCsuScxLTi3WT0nWzU7XLUktLgGpSExKLAYLxqcXJRZkxBsZGJrGGxrEG5pIMXN8YQYAAAD//wEAAP//mu+m1FkAAAA="
+  "next_token": "H4sIAAAAAAAA/+IK5wooLkjMy0st0i0oys9KTS4p1k9JLEnOz9UtLskvStXPzCsuScxLTi3WT0nWzU7XLUktLgGpSExKLAYLxqcXJRZkxBsZGJnGGxrGG5hLMXN8YQYAAAD//wEAAP//De70XlkAAAA="
 }

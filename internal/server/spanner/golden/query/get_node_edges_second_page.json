@@ -4,6 +4,28 @@
       "SubjectID": "StatisticalVariable",
       "Predicate": "typeOf",
       "Provenance": "dc/base/HumanReadableStatVars",
+      "Value": "AmountInterestRepayment_Debt_OfficialCreditor_PubliclyGuaranteed_Bilateral_LongTermExternalDebt_LenderCountryVNM",
+      "Bytes": null,
+      "Name": "Publicly guaranteed bilateral external debt interest repayment to official creditor, Vietnam.",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "StatisticalVariable",
+      "Predicate": "typeOf",
+      "Provenance": "dc/base/HumanReadableStatVars",
+      "Value": "AmountInterestRepayment_Debt_OfficialCreditor_PubliclyGuaranteed_Bilateral_LongTermExternalDebt_LenderCountryZAF",
+      "Bytes": null,
+      "Name": "Publicly guaranteed bilateral external debt interest repayment to official creditor, South Africa.",
+      "Types": [
+        "StatisticalVariable"
+      ]
+    },
+    {
+      "SubjectID": "StatisticalVariable",
+      "Predicate": "typeOf",
+      "Provenance": "dc/base/HumanReadableStatVars",
       "Value": "AmountInterestRepayment_Debt_OfficialCreditor_PubliclyGuaranteed_Bilateral_LongTermExternalDebt_LenderCountryZMB",
       "Bytes": null,
       "Name": "Publicly guaranteed bilateral external debt interest repayment to official creditor, Zambia.",
@@ -194,28 +216,6 @@
       "Value": "AmountInterestRepayment_Debt_OfficialCreditor_PubliclyGuaranteed_LongTermExternalDebt_LenderBankforInternationalSettlements",
       "Bytes": null,
       "Name": "Publicly guaranteed long term external debt interest repayment to official creditor, Bank for International Settlements (BIS).",
-      "Types": [
-        "StatisticalVariable"
-      ]
-    },
-    {
-      "SubjectID": "StatisticalVariable",
-      "Predicate": "typeOf",
-      "Provenance": "dc/base/HumanReadableStatVars",
-      "Value": "AmountInterestRepayment_Debt_OfficialCreditor_PubliclyGuaranteed_LongTermExternalDebt_LenderBolivarianAlliancefortheAmericas",
-      "Bytes": null,
-      "Name": "Publicly guaranteed long term external debt interest repayment to official creditor, Bolivarian Alliance for the Americas (ALBA).",
-      "Types": [
-        "StatisticalVariable"
-      ]
-    },
-    {
-      "SubjectID": "StatisticalVariable",
-      "Predicate": "typeOf",
-      "Provenance": "dc/base/HumanReadableStatVars",
-      "Value": "AmountInterestRepayment_Debt_OfficialCreditor_PubliclyGuaranteed_LongTermExternalDebt_LenderCaribbeanCommunity",
-      "Bytes": null,
-      "Name": "Publicly guaranteed long term external debt interest repayment to official creditor, Caribbean Community (CARICOM).",
       "Types": [
         "StatisticalVariable"
       ]

@@ -179,7 +179,7 @@ func (sc *spannerDatabaseClient) ResolveByID(ctx context.Context, nodes []string
 	// Create a map of Spanner node value to dcid to decode encoded values.
 	valueMap := map[string]string{}
 	for _, node := range nodes {
-		value := generateValueHash(node)
+		value := generateObjectValue(node)
 		valueMap[node] = node
 		valueMap[value] = node
 	}

@@ -5,6 +5,22 @@
         "typeOf": {
           "nodes": [
             {
+              "name": "Publicly guaranteed bilateral external debt interest repayment to official creditor, Vietnam.",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AmountInterestRepayment_Debt_OfficialCreditor_PubliclyGuaranteed_Bilateral_LongTermExternalDebt_LenderCountryVNM",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
+              "name": "Publicly guaranteed bilateral external debt interest repayment to official creditor, South Africa.",
+              "types": [
+                "StatisticalVariable"
+              ],
+              "dcid": "AmountInterestRepayment_Debt_OfficialCreditor_PubliclyGuaranteed_Bilateral_LongTermExternalDebt_LenderCountryZAF",
+              "provenance_id": "dc/base/HumanReadableStatVars"
+            },
+            {
               "name": "Publicly guaranteed bilateral external debt interest repayment to official creditor, Zambia.",
               "types": [
                 "StatisticalVariable"
@@ -3987,27 +4003,11 @@
               ],
               "dcid": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_LongTermExternalDebt_LenderMultipleLenders",
               "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Publicly guaranteed long term external debt interest repayment to private creditor in Neth. Antilles.",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_LongTermExternalDebt_LenderNethAntilles",
-              "provenance_id": "dc/base/HumanReadableStatVars"
-            },
-            {
-              "name": "Publicly guaranteed long term external debt interest repayment to private creditor in all lenders.",
-              "types": [
-                "StatisticalVariable"
-              ],
-              "dcid": "AmountInterestRepayment_Debt_PrivateCreditor_PubliclyGuaranteed_WorldBankOtherPrivate_LongTermExternalDebt",
-              "provenance_id": "dc/base/HumanReadableStatVars"
             }
           ]
         }
       }
     }
   },
-  "next_token": "H4sIAAAAAAAA/+IK5wooLkjMy0st0i0oys9KTS4p1k9JLEnOz9UtLskvStXPzCsuScxLTi3WT0nWzU7XLUktLgGpSExKLAYLxqcXJRZkxBsZGJrGGxrEG5pIMXO8YAcAAAD//wEAAP//3na8NVkAAAA="
+  "next_token": "H4sIAAAAAAAA/+IK5wooLkjMy0st0i0oys9KTS4p1k9JLEnOz9UtLskvStXPzCsuScxLTi3WT0nWzU7XLUktLgGpSExKLAYLxqcXJRZkxBsZGJnGGxrGG5hLMXO8YAcAAAD//wEAAP//SXfuv1kAAAA="
 }
