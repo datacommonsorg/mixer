@@ -62,6 +62,10 @@ func FindEntities(
 		return nil, err
 	}
 
+	if len(bulkResp.GetEntities()) == 0 {
+		return &pb.FindEntitiesResponse{}, nil
+	}
+
 	return &pb.FindEntitiesResponse{
 		Dcids: bulkResp.GetEntities()[0].GetDcids(),
 	}, nil
