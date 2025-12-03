@@ -20,9 +20,10 @@ import (
 	"googlemaps.github.io/maps"
 )
 
+// Implements MapsClient for testing.
 type FakeMapsClient struct{}
 
-// Maps Client impl for testing. Returns a result for query "Hawaii"; empty otherwise.
+// Returns a result for query "Hawaii"; empty otherwise.
 func (*FakeMapsClient) FindPlaceFromText(ctx context.Context, r *maps.FindPlaceFromTextRequest) (maps.FindPlaceFromTextResponse, error) {
 	if r.Input == "Hawaii" {
 		return maps.FindPlaceFromTextResponse{
