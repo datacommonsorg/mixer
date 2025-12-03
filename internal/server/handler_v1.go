@@ -295,6 +295,9 @@ func (s *Server) BulkVariableGroupInfo(
 				}
 			}
 			if _, ok := keyedInfo[n]; ok {
+				if keyedInfo[n].Info.AbsoluteName == "" {
+					keyedInfo[n].Info.AbsoluteName = remoteItem.Info.AbsoluteName
+				}
 				keyedInfo[n].Info.ChildStatVarGroups = append(
 					keyedInfo[n].Info.ChildStatVarGroups,
 					remoteItem.Info.ChildStatVarGroups...,
@@ -309,6 +312,10 @@ func (s *Server) BulkVariableGroupInfo(
 					remoteItem.Info.ChildStatVars...,
 				)
 				keyedInfo[n].Info.DescendentStatVarCount += remoteItem.Info.DescendentStatVarCount
+				keyedInfo[n].Info.ParentStatVarGroups = append(
+					keyedInfo[n].Info.ParentStatVarGroups,
+					remoteItem.Info.ParentStatVarGroups...,
+				)
 			} else {
 				keyedInfo[n] = remoteItem
 			}
