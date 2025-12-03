@@ -37,6 +37,10 @@ set -e
 
 # Default to local-friendly logs
 export MIXER_LOCAL_LOGS=true
+# Default to DEBUG log level if not specified
+if [[ -z "${MIXER_LOG_LEVEL}" ]]; then
+  export MIXER_LOG_LEVEL=DEBUG
+fi
 
 # Process arguments
 args=()
