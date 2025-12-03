@@ -28,6 +28,7 @@ import (
 	cbt "cloud.google.com/go/bigtable"
 	pubsub "cloud.google.com/go/pubsub"
 	"github.com/datacommonsorg/mixer/internal/featureflags"
+	"github.com/datacommonsorg/mixer/internal/maps"
 	"github.com/datacommonsorg/mixer/internal/parser/mcf"
 	dcpubsub "github.com/datacommonsorg/mixer/internal/pubsub"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
@@ -38,18 +39,17 @@ import (
 	"github.com/datacommonsorg/mixer/internal/translator/solver"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
 	"github.com/datacommonsorg/mixer/internal/util"
-	"googlemaps.github.io/maps"
 )
 
 // Server holds resources for a mixer server
 type Server struct {
-	store      *store.Store
-	metadata   *resource.Metadata
-	cachedata  atomic.Pointer[cache.Cache]
-	mapsClient *maps.Client
-	httpClient *http.Client
-	dispatcher *dispatcher.Dispatcher
-	flags      *featureflags.Flags
+	store          *store.Store
+	metadata       *resource.Metadata
+	cachedata      atomic.Pointer[cache.Cache]
+	mapsClient     maps.MapsClient
+	httpClient     *http.Client
+	dispatcher     *dispatcher.Dispatcher
+	flags          *featureflags.Flags
 	writeUsageLogs bool
 }
 
@@ -151,19 +151,19 @@ func NewMixerServer(
 	store *store.Store,
 	metadata *resource.Metadata,
 	cachedata *cache.Cache,
-	mapsClient *maps.Client,
+	mapsClient maps.MapsClient,
 	dispatcher *dispatcher.Dispatcher,
 	flags *featureflags.Flags,
 	writeUsageLogs bool,
 ) *Server {
 	s := &Server{
-		store:      store,
-		metadata:   metadata,
-		cachedata:  atomic.Pointer[cache.Cache]{},
-		mapsClient: mapsClient,
-		httpClient: &http.Client{},
-		dispatcher: dispatcher,
-		flags:      flags,
+		store:          store,
+		metadata:       metadata,
+		cachedata:      atomic.Pointer[cache.Cache]{},
+		mapsClient:     mapsClient,
+		httpClient:     &http.Client{},
+		dispatcher:     dispatcher,
+		flags:          flags,
 		writeUsageLogs: writeUsageLogs,
 	}
 	s.cachedata.Store(cachedata)
