@@ -15,7 +15,7 @@ import (
 // The NewJSONHandler specifies that logs should be in JSON format and streamed to stdout.
 // We also add the source (function, file, and line number where the log originates) to every log by default.
 func SetUpLogger() {
-	level := getLogLevel(getDefaultLogLevel())
+	level := getLogLevel()
 	// When running locally, we use a custom text handler for cleaner, more readable output.
 	if os.Getenv("MIXER_LOCAL_LOGS") == "true" {
 		setUpLocalLogger(level)
@@ -37,14 +37,7 @@ func setUpLocalLogger(level slog.Level) {
 	slog.SetDefault(logger)
 }
 
-func getDefaultLogLevel() slog.Level {
-	if os.Getenv("MIXER_LOCAL_LOGS") == "true" {
-		return slog.LevelDebug
-	}
-	return slog.LevelInfo
-}
-
-func getLogLevel(defaultLevel slog.Level) slog.Level {
+func getLogLevel() slog.Level {
 	switch strings.ToUpper(os.Getenv("MIXER_LOG_LEVEL")) {
 	case "DEBUG":
 		return slog.LevelDebug
@@ -55,7 +48,7 @@ func getLogLevel(defaultLevel slog.Level) slog.Level {
 	case "ERROR":
 		return slog.LevelError
 	default:
-		return defaultLevel
+		return slog.LevelInfo
 	}
 }
 
