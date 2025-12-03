@@ -6,6 +6,7 @@ import (
 	"io"
 	"log/slog"
 	"os"
+	"strings"
 	"sync"
 )
 
@@ -14,22 +15,48 @@ import (
 // The NewJSONHandler specifies that logs should be in JSON format and streamed to stdout.
 // We also add the source (function, file, and line number where the log originates) to every log by default.
 func SetUpLogger() {
+	level := getLogLevel(getDefaultLogLevel())
 	// When running locally, we use a custom text handler for cleaner, more readable output.
 	if os.Getenv("MIXER_LOCAL_LOGS") == "true" {
-		setUpLocalLogger()
+		setUpLocalLogger(level)
 	} else {
-		logger := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{AddSource: true}))
+		logger := slog.New(slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{
+			AddSource: true,
+			Level:     level,
+		}))
 		slog.SetDefault(logger)
 	}
 }
 
 // setUpLocalLogger configures a custom handler for local development that provides
 // clean, color-coded, and thread-safe logging.
-func setUpLocalLogger() {
+func setUpLocalLogger(level slog.Level) {
 	logger := slog.New(NewCustomTextHandler(os.Stdout, &slog.HandlerOptions{
-		Level: slog.LevelDebug,
+		Level: level,
 	}))
 	slog.SetDefault(logger)
+}
+
+func getDefaultLogLevel() slog.Level {
+	if os.Getenv("MIXER_LOCAL_LOGS") == "true" {
+		return slog.LevelDebug
+	}
+	return slog.LevelInfo
+}
+
+func getLogLevel(defaultLevel slog.Level) slog.Level {
+	switch strings.ToUpper(os.Getenv("MIXER_LOG_LEVEL")) {
+	case "DEBUG":
+		return slog.LevelDebug
+	case "INFO":
+		return slog.LevelInfo
+	case "WARN":
+		return slog.LevelWarn
+	case "ERROR":
+		return slog.LevelError
+	default:
+		return defaultLevel
+	}
 }
 
 // CustomTextHandler is a slog.Handler that writes logs in a custom human-readable format.
