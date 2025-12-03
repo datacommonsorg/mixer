@@ -185,10 +185,14 @@ func main() {
 
 	// Spanner Graph.
 	if flags.EnableV3 && flags.UseSpannerGraph {
-		spannerClient, err := spanner.NewSpannerClient(ctx, *spannerGraphInfo, flags.SpannerGraphDatabase)
+		spannerClient, err := spanner.NewSpannerClient(ctx, *spannerGraphInfo, flags.SpannerGraphDatabase, flags.UseStaleReads)
 		if err != nil {
 			slog.Error("Failed to create Spanner client", "error", err)
 			os.Exit(1)
+		}
+		if flags.UseStaleReads {
+			spannerClient.Start()
+			defer spannerClient.Stop()
 		}
 		var ds datasource.DataSource = spanner.NewSpannerDataSource(spannerClient)
 		// TODO: Order sources by priority once other implementations are added.

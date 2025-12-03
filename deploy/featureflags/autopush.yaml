@@ -3,7 +3,8 @@ clusters:
 liveUrl: https://autopush.api.datacommons.org
 flags:
   EnableV3: true
-  V3MirrorFraction: 1.0
+  V3MirrorFraction: 0.0
   WriteUsageLogs: 1.0
   UseSpannerGraph: true
-  SpannerGraphDatabase: dc_graph_2015_10_14
+  SpannerGraphDatabase: dc_graph_2025_11_07
+  UseStaleReads: true

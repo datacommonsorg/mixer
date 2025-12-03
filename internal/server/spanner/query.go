@@ -18,10 +18,13 @@ package spanner
 import (
 	"context"
 	"fmt"
+	"log/slog"
+	"time"
 
 	"cloud.google.com/go/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"google.golang.org/api/iterator"
+	"google.golang.org/grpc/codes"
 )
 
 const (
@@ -176,7 +179,7 @@ func (sc *spannerDatabaseClient) ResolveByID(ctx context.Context, nodes []string
 	// Create a map of Spanner node value to dcid to decode encoded values.
 	valueMap := map[string]string{}
 	for _, node := range nodes {
-		value := generateValueHash(node)
+		value := generateObjectValue(node)
 		valueMap[node] = node
 		valueMap[value] = node
 	}
@@ -200,15 +203,73 @@ func (sc *spannerDatabaseClient) ResolveByID(ctx context.Context, nodes []string
 	return nodeToCandidates, nil
 }
 
+// fetchAndUpdateTimestamp queries Spanner and updates the timestamp.
+func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) error {
+	iter := sc.client.ReadOnlyTransaction().Query(ctx, *GetCompletionTimestampQuery())
+	defer iter.Stop()
+
+	row, err := iter.Next()
+	if err == iterator.Done {
+		return fmt.Errorf("no rows found in IngestionHistory")
+	}
+	if err != nil {
+		return fmt.Errorf("failed to fetch row: %w", err)
+	}
+
+	var timestamp time.Time
+	if err := row.Column(0, &timestamp); err != nil {
+		return fmt.Errorf("failed to read CompletionTimestamp column: %w", err)
+	}
+
+	sc.timestamp.Store(timestamp.UnixNano())
+	return nil
+}
+
+func (sc *spannerDatabaseClient) getStalenessTimestamp() (time.Time, error) {
+	val := sc.timestamp.Load()
+	if val != 0 {
+		return time.Unix(0, val).UTC(), nil
+	}
+	slog.Error("Spanner staleness timestamp not available")
+	return time.Time{}, fmt.Errorf("error getting staleness timestamp")
+}
+
 func (sc *spannerDatabaseClient) queryAndCollect(
 	ctx context.Context,
 	stmt spanner.Statement,
 	newStruct func() interface{},
 	withStruct func(interface{}),
 ) error {
-	iter := sc.client.Single().Query(ctx, stmt)
-	defer iter.Stop()
+	if sc.useStaleReads {
+		ts, err := sc.getStalenessTimestamp()
+		if err != nil {
+			return err
+		}
+		ro := sc.client.Single().WithTimestampBound(spanner.ReadTimestamp(ts))
+		iter := ro.Query(ctx, stmt)
+		defer iter.Stop()
 
+		err = sc.processRows(iter, newStruct, withStruct)
+
+		// Log error if timestamp is older than retention and fall back to strong read.
+		if spanner.ErrCode(err) == codes.FailedPrecondition {
+			slog.Error("Stale read timestamp expired. Falling back to StrongRead.",
+				"expiredTimestamp", ts.String())
+			strongIter := sc.client.Single().WithTimestampBound(spanner.StrongRead()).Query(ctx, stmt)
+			defer strongIter.Stop()
+
+			return sc.processRows(strongIter, newStruct, withStruct)
+		}
+
+		return err
+	} else {
+		iter := sc.client.Single().Query(ctx, stmt)
+		defer iter.Stop()
+		return sc.processRows(iter, newStruct, withStruct)
+	}
+}
+
+func (sc *spannerDatabaseClient) processRows(iter *spanner.RowIterator, newStruct func() interface{}, withStruct func(interface{})) error {
 	for {
 		row, err := iter.Next()
 		if err == iterator.Done {
