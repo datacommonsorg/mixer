@@ -29,6 +29,7 @@ import (
 
 	"github.com/datacommonsorg/mixer/internal/featureflags"
 	logger "github.com/datacommonsorg/mixer/internal/log"
+	"github.com/datacommonsorg/mixer/internal/maps"
 	"github.com/datacommonsorg/mixer/internal/metrics"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
@@ -44,9 +45,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
-	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/oauth2/google"
-	"googlemaps.github.io/maps"
 
 	"cloud.google.com/go/bigquery"
 	"cloud.google.com/go/profiler"
@@ -59,8 +58,8 @@ import (
 
 var (
 	// Server config
-	port        = flag.Int("port", 12345, "Port on which to run the server.")
-	hostProject = flag.String("host_project", "", "The GCP project to run the mixer instance.")
+	port           = flag.Int("port", 12345, "Port on which to run the server.")
+	hostProject    = flag.String("host_project", "", "The GCP project to run the mixer instance.")
 	writeUsageLogs = flag.Bool("write_usage_logs", false, "Whether to write usage logs.")
 	// BigQuery (Sparql)
 	useBigquery      = flag.Bool("use_bigquery", true, "Use Bigquery to serve Sparql Query.")
@@ -256,10 +255,6 @@ func main() {
 			btClient,
 			branchTableName,
 		)
-		if err != nil {
-			slog.Error("Failed to create BigTable client", "error", err)
-			os.Exit(1)
-		}
 		tables = append(tables, bigtable.NewTable(branchTableName, branchTable, false /*isCustom=*/))
 	}
 	slog.Info("After branch setup")
@@ -364,9 +359,9 @@ func main() {
 	slog.Info("After cache creation")
 
 	// Maps client
-	var mapsClient *maps.Client
+	var mapsClient maps.MapsClient
 	if *useMapsApi {
-		mapsClient, err = util.MapsClient(ctx, metadata.HostProject)
+		mapsClient, err = maps.NewMapsClient(ctx, metadata.HostProject)
 		if err != nil {
 			slog.Error("Failed to create Maps client", "error", err)
 			os.Exit(1)

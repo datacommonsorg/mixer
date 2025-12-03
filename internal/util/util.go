@@ -47,7 +47,6 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
-	"googlemaps.github.io/maps"
 )
 
 const (
@@ -629,15 +628,6 @@ func ReadLatestSecret(ctx context.Context, projectID, secretID string) (string, 
 
 	// Return the secret payload as a string.
 	return string(result.Payload.Data), nil
-}
-
-// MapsClient gets the client for Maps API.
-func MapsClient(ctx context.Context, projectID string) (*maps.Client, error) {
-	apiKey, err := ReadLatestSecret(ctx, projectID, MapsAPIKeyID)
-	if err != nil {
-		return nil, err
-	}
-	return maps.NewClient(maps.WithAPIKey(apiKey))
 }
 
 // StringSetToSlice is a helper to convert a string set to a string slice.

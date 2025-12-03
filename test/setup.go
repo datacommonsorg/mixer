@@ -30,6 +30,7 @@ import (
 
 	"cloud.google.com/go/bigquery"
 	"github.com/datacommonsorg/mixer/internal/featureflags"
+	"github.com/datacommonsorg/mixer/internal/maps"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
@@ -43,13 +44,11 @@ import (
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
-	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/reflection"
 	"google.golang.org/protobuf/encoding/protojson"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	"googlemaps.github.io/maps"
 )
 
 // TestOption holds the options for integration test.
@@ -196,10 +195,7 @@ func setupInternal(
 	if err != nil {
 		return nil, err
 	}
-	mapsClient, err := util.MapsClient(ctx, metadata.HostProject)
-	if err != nil {
-		return nil, err
-	}
+	mapsClient := &maps.FakeMapsClient{}
 
 	if enableV3 && remoteMixerDomain != "" {
 		remoteClient, err := remote.NewRemoteClient(metadata)
@@ -265,7 +261,7 @@ func newClient(
 	tables []*bigtable.Table,
 	metadata *resource.Metadata,
 	cachedata *cache.Cache,
-	mapsClient *maps.Client,
+	mapsClient maps.MapsClient,
 	dispatcher *dispatcher.Dispatcher,
 ) (pbs.MixerClient, error) {
 	flags, err := featureflags.NewFlags("")
@@ -273,7 +269,7 @@ func newClient(
 		return nil, err
 	}
 	// Create mixer server. writeUsageLogs is false by default for tests but is directly tested in handler_v2_test.go
-	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient, dispatcher, flags, /* writeUsageLogs= */ false)
+	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient, dispatcher, flags /* writeUsageLogs= */, false)
 	srv := grpc.NewServer()
 	pbs.RegisterMixerServer(srv, mixerServer)
 	reflection.Register(srv)
