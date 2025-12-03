@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript continueOnError="false" enabled="true" timeLimit="2000" name="set-quota-tier">
+    <DisplayName>set-quota-tier</DisplayName>
+    <Properties>
+        <Property name="default_quota_requests_per_interval">REPLACE_WITH_DEFAULT_QUOTA_REQUESTS_PER_INTERVAL</Property>
+        <Property name="default_quota_interval">REPLACE_WITH_DEFAULT_QUOTA_INTERVAL</Property>
+        <Property name="default_quota_timeunit">REPLACE_WITH_DEFAULT_QUOTA_TIMEUNIT</Property>
+        <Property name="trial_api_key">REPLACE_WITH_TRIAL_API_KEY</Property>
+        <Property name="trial_key_quota_requests_per_interval">REPLACE_WITH_TRIAL_KEY_QUOTA_REQUESTS_PER_INTERVAL</Property>
+        <Property name="trial_key_quota_interval_minutes">REPLACE_WITH_TRIAL_KEY_QUOTA_INTERVAL_MINUTES</Property>
+    </Properties>
+    <ResourceURL>jsc://set-quota-tier.js</ResourceURL>
+</Javascript>
