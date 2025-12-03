@@ -41,6 +41,12 @@ func TestFindEntities(t *testing.T) {
 			&pb.FindEntitiesRequest{Description: "California"},
 			&pb.FindEntitiesResponse{Dcids: []string{"geoId/06"}},
 		},
+		// Ensure graceful handling of empty results from both store and Maps API.
+		{
+			"EmptyResponse",
+			&pb.FindEntitiesRequest{Description: "UnresolvableQuery"},
+			&pb.FindEntitiesResponse{},
+		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			ctx := context.Background()
@@ -76,32 +82,6 @@ func TestFindEntitiesFromMapsApi(t *testing.T) {
 	want := &pb.FindEntitiesResponse{Dcids: []string{"geoId/15"}}
 	if diff := cmp.Diff(resp, want, protocmp.Transform()); diff != "" {
 		t.Errorf("FindEntities() got diff: %s", diff)
-	}
-}
-
-// Ensure graceful handling of empty results from both store and Maps API.
-func TestFindEntitiesEmptyResponse(t *testing.T) {
-	ctx := context.Background()
-	req := &pb.FindEntitiesRequest{
-		Description: "UnresolvableQuery",
-	}
-	s, err := newTestStore()
-	if err != nil {
-		t.Fatalf("newTestStore() = %v", err)
-	}
-	mc := &maps.FakeMapsClient{}
-	resp, err := FindEntities(ctx, req, s, mc)
-	if err != nil {
-		t.Fatalf("FindEntities returned error: %v", err)
-	}
-
-	if resp == nil {
-		t.Fatal("FindEntities returned nil response")
-	}
-
-	want := &pb.FindEntitiesResponse{}
-	if diff := cmp.Diff(resp, want, protocmp.Transform()); diff != "" {
-		t.Errorf("Expected empty FindEntitiesResponse, got: %v", resp)
 	}
 }
 
