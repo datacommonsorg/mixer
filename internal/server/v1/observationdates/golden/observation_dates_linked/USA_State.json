@@ -3361,11 +3361,11 @@
             },
             {
               "count": 51,
-              "facet": "10983471"
+              "facet": "4181918134"
             },
             {
               "count": 51,
-              "facet": "4181918134"
+              "facet": "10983471"
             },
             {
               "count": 51,
@@ -3398,11 +3398,11 @@
             },
             {
               "count": 51,
-              "facet": "10983471"
+              "facet": "4181918134"
             },
             {
               "count": 51,
-              "facet": "4181918134"
+              "facet": "10983471"
             },
             {
               "count": 51,
@@ -3435,11 +3435,11 @@
             },
             {
               "count": 51,
-              "facet": "10983471"
+              "facet": "4181918134"
             },
             {
               "count": 51,
-              "facet": "4181918134"
+              "facet": "10983471"
             },
             {
               "count": 51,
@@ -3472,11 +3472,11 @@
             },
             {
               "count": 51,
-              "facet": "10983471"
+              "facet": "4181918134"
             },
             {
               "count": 51,
-              "facet": "4181918134"
+              "facet": "10983471"
             },
             {
               "count": 51,
@@ -3509,11 +3509,11 @@
             },
             {
               "count": 51,
-              "facet": "10983471"
+              "facet": "4181918134"
             },
             {
               "count": 51,
-              "facet": "4181918134"
+              "facet": "10983471"
             },
             {
               "count": 51,
@@ -3546,11 +3546,11 @@
             },
             {
               "count": 51,
-              "facet": "10983471"
+              "facet": "4181918134"
             },
             {
               "count": 51,
-              "facet": "4181918134"
+              "facet": "10983471"
             },
             {
               "count": 51,
@@ -3583,11 +3583,11 @@
             },
             {
               "count": 51,
-              "facet": "10983471"
+              "facet": "4181918134"
             },
             {
               "count": 51,
-              "facet": "4181918134"
+              "facet": "10983471"
             },
             {
               "count": 51,
@@ -3620,15 +3620,15 @@
             },
             {
               "count": 51,
+              "facet": "4181918134"
+            },
+            {
+              "count": 51,
               "facet": "10983471"
             },
             {
               "count": 51,
               "facet": "196790193"
-            },
-            {
-              "count": 51,
-              "facet": "4181918134"
             },
             {
               "count": 51,
@@ -3665,15 +3665,15 @@
             },
             {
               "count": 51,
+              "facet": "4181918134"
+            },
+            {
+              "count": 51,
               "facet": "10983471"
             },
             {
               "count": 51,
               "facet": "196790193"
-            },
-            {
-              "count": 51,
-              "facet": "4181918134"
             },
             {
               "count": 51,
@@ -3710,15 +3710,15 @@
             },
             {
               "count": 51,
+              "facet": "4181918134"
+            },
+            {
+              "count": 51,
               "facet": "10983471"
             },
             {
               "count": 51,
               "facet": "196790193"
-            },
-            {
-              "count": 51,
-              "facet": "4181918134"
             },
             {
               "count": 51,
@@ -3751,15 +3751,15 @@
             },
             {
               "count": 51,
+              "facet": "4181918134"
+            },
+            {
+              "count": 51,
               "facet": "10983471"
             },
             {
               "count": 51,
               "facet": "196790193"
-            },
-            {
-              "count": 51,
-              "facet": "4181918134"
             },
             {
               "count": 51,
@@ -3792,15 +3792,15 @@
             },
             {
               "count": 51,
+              "facet": "4181918134"
+            },
+            {
+              "count": 51,
               "facet": "10983471"
             },
             {
               "count": 51,
               "facet": "196790193"
-            },
-            {
-              "count": 51,
-              "facet": "4181918134"
             },
             {
               "count": 1,
@@ -3826,6 +3826,10 @@
             {
               "count": 52,
               "facet": "1964317807"
+            },
+            {
+              "count": 51,
+              "facet": "4181918134"
             },
             {
               "count": 51,
@@ -3859,6 +3863,10 @@
             {
               "count": 52,
               "facet": "1964317807"
+            },
+            {
+              "count": 51,
+              "facet": "4181918134"
             },
             {
               "count": 51,
@@ -4006,7 +4014,7 @@
   "facets": {
     "10983471": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2023.S2601A",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "1145703171": {
@@ -4031,12 +4039,12 @@
     },
     "1964317807": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "196790193": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2023.S2602",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "2176550201": {
@@ -4061,12 +4069,12 @@
     },
     "3144703963": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602PR",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602PR&tid=ACSST5Y2019.S2602PR",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602PR&tid=ACSST5Y2023.S2602PR",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "377779557": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601APR",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601APR&tid=ACSST5Y2019.S2601APR",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601APR&tid=ACSST5Y2023.S2601APR",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "3999249536": {

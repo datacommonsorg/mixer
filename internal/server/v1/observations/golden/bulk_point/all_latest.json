@@ -91,7 +91,7 @@
             },
             {
               "date": "2023",
-              "value": 334914895,
+              "value": 336806231,
               "facet": "4181918134"
             },
             {
@@ -156,7 +156,7 @@
             },
             {
               "date": "2023",
-              "value": 38965193,
+              "value": 39198693,
               "facet": "4181918134"
             },
             {
@@ -370,13 +370,13 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2025-08",
-              "value": 7384000,
+              "date": "2025-09",
+              "value": 7603000,
               "facet": "3707913853"
             },
             {
-              "date": "2025-06",
-              "value": 7139000,
+              "date": "2025-09",
+              "value": 7408000,
               "facet": "1714978719"
             }
           ]
@@ -422,7 +422,7 @@
   "facets": {
     "10983471": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2023.S2601A",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "1145703171": {
@@ -476,12 +476,12 @@
     },
     "1964317807": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "196790193": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2023.S2602",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "2171028778": {

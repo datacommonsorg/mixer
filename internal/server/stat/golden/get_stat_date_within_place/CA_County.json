@@ -135,7 +135,7 @@
           },
           "metadata": {
             "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-            "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+            "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
             "measurement_method": "CensusACS5yrSurveySubjectTable"
           }
         },
@@ -253,7 +253,7 @@
         },
         {
           "date_place_count": {
-            "2020": 41,
+            "2020": 42,
             "2020-04-01": 13,
             "2024-07-01": 1
           },
@@ -342,7 +342,7 @@
           },
           "metadata": {
             "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-            "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+            "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
             "measurement_method": "CensusACS5yrSurveySubjectTable",
             "unit": "Years"
           }
