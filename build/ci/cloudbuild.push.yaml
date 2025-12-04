@@ -63,9 +63,11 @@ steps:
           --build-arg GO_PROTOC_VERSION=${_GO_PROTOC_VERSION} \
           -t gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA \
           -t gcr.io/datcom-ci/datacommons-mixer:latest \
+          -t gcr.io/datcom-ci/datacommons-mixer:cicd \
           .
         docker push gcr.io/datcom-ci/datacommons-mixer:$SHORT_SHA
         docker push gcr.io/datcom-ci/datacommons-mixer:latest
+        docker push gcr.io/datcom-ci/datacommons-mixer:cicd
     waitFor: ["build-proto"]
 
   # Push the grpc descriptor to gcs.

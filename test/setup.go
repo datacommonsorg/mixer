@@ -30,6 +30,7 @@ import (
 
 	"cloud.google.com/go/bigquery"
 	"github.com/datacommonsorg/mixer/internal/featureflags"
+	"github.com/datacommonsorg/mixer/internal/maps"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
@@ -43,13 +44,11 @@ import (
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
-	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/reflection"
 	"google.golang.org/protobuf/encoding/protojson"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	"googlemaps.github.io/maps"
 )
 
 // TestOption holds the options for integration test.
@@ -86,7 +85,7 @@ const (
 )
 
 // Setup creates local server and client.
-func Setup(option ...*TestOption) (pbs.MixerClient, error) {
+func Setup(option ...*TestOption) (pbs.MixerClient, func(), error) {
 	fetchSVG, searchSVG, useCustomTable, useSQLite, cacheSVFormula, useSpannerGraph, enableV3, remoteMixerDomain := false, false, false, false, false, false, false, ""
 	var cacheOptions cache.CacheOptions
 	if len(option) == 1 {
@@ -122,7 +121,7 @@ func setupInternal(
 	useCustomTable, useSQLite, useSpannerGraph, enableV3 bool,
 	cacheOptions cache.CacheOptions,
 	remoteMixerDomain string,
-) (pbs.MixerClient, error) {
+) (pbs.MixerClient, func(), error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	bqTableID, _ := os.ReadFile(path.Join(path.Dir(filename), bigqueryVersionFile))
@@ -132,9 +131,11 @@ func setupInternal(
 	sources := []*datasource.DataSource{}
 
 	var spannerDataSource datasource.DataSource
+	var spannerCleanup = func() {}
 	if enableV3 && useSpannerGraph {
 		spannerClient := NewSpannerClient()
 		if spannerClient != nil {
+			spannerCleanup = spannerClient.Stop
 			spannerDataSource = spanner.NewSpannerDataSource(spannerClient)
 			// TODO: Order sources by priority once other implementations are added.
 			sources = append(sources, &spannerDataSource)
@@ -186,7 +187,7 @@ func setupInternal(
 		false,
 	)
 	if err != nil {
-		return nil, err
+		return nil, func() {}, err
 	}
 	st, err := store.NewStore(bqClient, sqlClient, tables, "", metadata)
 	if err != nil {
@@ -194,12 +195,9 @@ func setupInternal(
 	}
 	c, err := cache.NewCache(ctx, st, cacheOptions, metadata)
 	if err != nil {
-		return nil, err
+		return nil, func() {}, err
 	}
-	mapsClient, err := util.MapsClient(ctx, metadata.HostProject)
-	if err != nil {
-		return nil, err
-	}
+	mapsClient := &maps.FakeMapsClient{}
 
 	if enableV3 && remoteMixerDomain != "" {
 		remoteClient, err := remote.NewRemoteClient(metadata)
@@ -217,7 +215,7 @@ func setupInternal(
 		// Mixer in-memory cache.
 		dataSourceCache, err := cache.NewDataSourceCache(ctx, dataSources, cacheOptions)
 		if err != nil {
-			return nil, err
+			return nil, func() {}, err
 		}
 		var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, dataSourceCache.SVFormula(ctx))
 		processors = append(processors, &calculationProcessor)
@@ -226,11 +224,15 @@ func setupInternal(
 	// Dispatcher
 	dispatcher := dispatcher.NewDispatcher(processors, dataSources)
 
-	return newClient(st, tables, metadata, c, mapsClient, dispatcher)
+	cleanup := func() {
+		spannerCleanup()
+	}
+
+	return newClient(st, tables, metadata, c, mapsClient, dispatcher, cleanup)
 }
 
 // SetupBqOnly creates local server and client with access to BigQuery only.
-func SetupBqOnly() (pbs.MixerClient, error) {
+func SetupBqOnly() (pbs.MixerClient, func(), error) {
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
 	bqTableID, _ := os.ReadFile(
@@ -251,13 +253,13 @@ func SetupBqOnly() (pbs.MixerClient, error) {
 		false,
 	)
 	if err != nil {
-		return nil, err
+		return nil, func() {}, err
 	}
 	st, err := store.NewStore(bqClient, sqldb.SQLClient{}, nil, "", nil)
 	if err != nil {
-		return nil, err
+		return nil, func() {}, err
 	}
-	return newClient(st, nil, metadata, nil, nil, nil)
+	return newClient(st, nil, metadata, nil, nil, nil, func() {})
 }
 
 func newClient(
@@ -265,21 +267,22 @@ func newClient(
 	tables []*bigtable.Table,
 	metadata *resource.Metadata,
 	cachedata *cache.Cache,
-	mapsClient *maps.Client,
+	mapsClient maps.MapsClient,
 	dispatcher *dispatcher.Dispatcher,
-) (pbs.MixerClient, error) {
+	cleanup func(),
+) (pbs.MixerClient, func(), error) {
 	flags, err := featureflags.NewFlags("")
 	if err != nil {
-		return nil, err
+		return nil, func() {}, err
 	}
 	// Create mixer server. writeUsageLogs is false by default for tests but is directly tested in handler_v2_test.go
-	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient, dispatcher, flags, /* writeUsageLogs= */ false)
+	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient, dispatcher, flags, false)
 	srv := grpc.NewServer()
 	pbs.RegisterMixerServer(srv, mixerServer)
 	reflection.Register(srv)
 	lis, err := net.Listen("tcp", "localhost:0")
 	if err != nil {
-		return nil, err
+		return nil, func() {}, err
 	}
 	// Start mixer at localhost:0
 	go func() {
@@ -295,10 +298,10 @@ func newClient(
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(300000000 /* 300M */)))
 	if err != nil {
-		return nil, err
+		return nil, func() {}, err
 	}
 	mixerClient := pbs.NewMixerClient(conn)
-	return mixerClient, nil
+	return mixerClient, cleanup, nil
 }
 
 // UpdateGolden updates the golden file for native typed response.
@@ -402,9 +405,11 @@ func newSpannerClient(ctx context.Context, spannerGraphInfoYamlPath string) span
 		log.Fatalf("Failed to read spanner yaml: %v", err)
 	}
 	// Don't override spannerGraphInfoYaml.database for testing.
-	spannerClient, err := spanner.NewSpannerClient(ctx, string(spannerGraphInfoYaml), "")
+	spannerClient, err := spanner.NewSpannerClient(ctx, string(spannerGraphInfoYaml), "", true)
 	if err != nil {
 		log.Fatalf("Failed to create SpannerClient: %v", err)
 	}
+	// Use stale reads for testing.
+	spannerClient.Start()
 	return spannerClient
 }

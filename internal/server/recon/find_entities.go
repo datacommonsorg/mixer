@@ -21,6 +21,7 @@ import (
 	"sort"
 	"strings"
 
+	internalmaps "github.com/datacommonsorg/mixer/internal/maps"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
@@ -45,7 +46,7 @@ func FindEntities(
 	ctx context.Context,
 	in *pb.FindEntitiesRequest,
 	store *store.Store,
-	mapsClient *maps.Client,
+	mapsClient internalmaps.MapsClient,
 ) (*pb.FindEntitiesResponse, error) {
 	bulkResp, err := BulkFindEntities(ctx,
 		&pb.BulkFindEntitiesRequest{
@@ -62,6 +63,10 @@ func FindEntities(
 		return nil, err
 	}
 
+	if len(bulkResp.GetEntities()) == 0 {
+		return &pb.FindEntitiesResponse{}, nil
+	}
+
 	return &pb.FindEntitiesResponse{
 		Dcids: bulkResp.GetEntities()[0].GetDcids(),
 	}, nil
@@ -72,7 +77,7 @@ func BulkFindEntities(
 	ctx context.Context,
 	in *pb.BulkFindEntitiesRequest,
 	store *store.Store,
-	mapsClient *maps.Client,
+	mapsClient internalmaps.MapsClient,
 ) (*pb.BulkFindEntitiesResponse, error) {
 	if l := len(in.GetEntities()); l == 0 {
 		return nil, fmt.Errorf("empty input")
@@ -155,7 +160,7 @@ func BulkFindEntities(
 // but use Maps API as signal to reorder the results.
 func resolveDCIDs(
 	ctx context.Context,
-	mapsClient *maps.Client,
+	mapsClient internalmaps.MapsClient,
 	store *store.Store,
 	entityInfoSet map[entityInfo]struct{},
 ) (
@@ -269,7 +274,7 @@ func resolveWithRecognizePlaces(
 
 func resolveWithMapsAPI(
 	ctx context.Context,
-	mapsClient *maps.Client,
+	mapsClient internalmaps.MapsClient,
 	store *store.Store,
 	entityInfoSet map[entityInfo]struct{},
 ) (
@@ -282,6 +287,10 @@ func resolveWithMapsAPI(
 		ctx, mapsClient, entityInfoSet)
 	if err != nil {
 		return nil, nil, err
+	}
+
+	if len(placeIDSet) == 0 {
+		return map[entityInfo]map[string]struct{}{}, map[string]struct{}{}, nil
 	}
 
 	// Resolve place IDs to get DCIDs.
@@ -309,7 +318,7 @@ func resolveWithMapsAPI(
 
 func resolvePlaceIDsFromDescriptions(
 	ctx context.Context,
-	mapsClient *maps.Client,
+	mapsClient internalmaps.MapsClient,
 	entityInfoSet map[entityInfo]struct{},
 ) (
 	map[entityInfo][]string, /* entityInfo -> [place ID] */
@@ -382,7 +391,7 @@ func resolvePlaceIDsFromDescriptions(
 
 func findPlaceIDsForEntity(
 	ctx context.Context,
-	mapsClient *maps.Client,
+	mapsClient internalmaps.MapsClient,
 	entityInfo *entityInfo,
 ) ([]string, error) {
 	// When type is supplied, we append it to the description to increase the accuracy.

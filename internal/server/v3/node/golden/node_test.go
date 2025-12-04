@@ -194,7 +194,7 @@ func TestV3NodePagination(t *testing.T) {
 					"StatisticalVariable",
 				},
 				"<-typeOf",
-				"H4sIAAAAAAAA/+IK5wooLkjMy0st0i0oys9KTS4p1k9JLEnOz9UtLskvStXPzCsuScxLTi3WT0nWzU7XLUktLgGpSExKLAYLxqcXJRZkxBsZGJnGG1jGG5pKMXN8YQYAAAD//wEAAP//lI1R4VkAAAA=",
+				"H4sIAAAAAAAA/+IK5wooLkjMy0st0i0oys9KTS4p1k9JLEnOz9UtLskvStXPzCsuScxLTi3WT0nWzU7XLUktLgGpSExKLAYLxqcXJRZkxBsZGJnGGxrGG5hLMXN8YQYAAAD//wEAAP//De70XlkAAAA=",
 				"pagination_second_page.json",
 			},
 		} {
