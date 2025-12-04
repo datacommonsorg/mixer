@@ -69,7 +69,7 @@ function confirm_and_push_env() {
     echo "Skipping upload since local and cloud versions of ${ENV_VARS} are the same."
   else
     while true; do
-      read -p "${ENV_VARS} has local changes. Upload to Secrets Manager? " yn
+      read -p "${ENV_VARS} has local changes. Upload to Secret Manager? " yn
       case $yn in
       [Yy]*)
         gcloud secrets versions add "$SECRET_NAME" \
