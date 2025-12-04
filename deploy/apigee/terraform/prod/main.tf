@@ -17,7 +17,6 @@ module "apigee" {
   project_id = var.project_id
   envgroups = {
     api  = [var.api_hostname]
-    bard = [var.nl_internal_api_hostname]
     nl   = [var.nl_api_hostname]
   }
   environments = {
@@ -25,7 +24,6 @@ module "apigee" {
       display_name = "main"
       envgroups = [
         "api",
-        "bard",
         "nl",
       ]
       type = "COMPREHENSIVE"
@@ -39,10 +37,6 @@ module "apigee" {
     }
   }
   endpoint_attachments = {
-    nl-internal-backend = {
-      region             = "us-central1"
-      service_attachment = "projects/${var.nl_internal_psc_project}/regions/us-central1/serviceAttachments/${var.nl_internal_psc_service_name}"
-    }
     nl-backend = {
       region             = "us-central1"
       service_attachment = "projects/${var.nl_psc_project}/regions/us-central1/serviceAttachments/${var.nl_psc_service_name}"
@@ -57,13 +51,6 @@ resource "apigee_proxy" "api" {
   bundle_hash = filebase64sha256(".tmp/api.zip")
 }
 
-resource "apigee_proxy" "bard" {
-  count       = var.include_proxies ? 1 : 0
-  name        = "bard"
-  bundle      = ".tmp/bard.zip"
-  bundle_hash = filebase64sha256(".tmp/bard.zip")
-}
-
 resource "apigee_proxy" "nl" {
   count       = var.include_proxies ? 1 : 0
   name        = "nl"
@@ -76,13 +63,6 @@ resource "apigee_proxy_deployment" "main-api" {
   proxy_name       = apigee_proxy.api[0].name
   environment_name = "main"
   revision         = apigee_proxy.api[0].revision # Deploy latest
-}
-
-resource "apigee_proxy_deployment" "main-bard" {
-  count            = var.include_proxies ? 1 : 0
-  proxy_name       = apigee_proxy.bard[0].name
-  environment_name = "main"
-  revision         = apigee_proxy.bard[0].revision # Deploy latest
 }
 
 resource "apigee_proxy_deployment" "main-nl" {
@@ -106,25 +86,6 @@ resource "apigee_product" "datacommons-api" {
   }
   operation {
     api_source = apigee_proxy.api[0].name
-    path       = "/"
-    methods    = [] # Accept all methods
-  }
-}
-
-resource "apigee_product" "datacommons-nl-api-internal" {
-  count              = var.include_proxies ? 1 : 0
-  name               = "datacommons-nl-api-internal"
-  display_name       = "Data Commons NL API (Internal)"
-  auto_approval_type = true
-  description        = var.nl_internal_api_hostname
-  environments = [
-    "main",
-  ]
-  attributes = {
-    access = "internal"
-  }
-  operation {
-    api_source = apigee_proxy.bard[0].name
     path       = "/"
     methods    = [] # Accept all methods
   }
