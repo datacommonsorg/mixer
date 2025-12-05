@@ -2107,7 +2107,8 @@
                 "2025-05": 4.2,
                 "2025-06": 4.1,
                 "2025-07": 4.2,
-                "2025-08": 4.3
+                "2025-08": 4.3,
+                "2025-09": 4.4
               },
               "measurementMethod": "BLSSeasonallyAdjusted",
               "observationPeriod": "P1M",
@@ -2426,7 +2427,8 @@
                 "2024-09": 4.2,
                 "2024-12": 4.2,
                 "2025-03": 4.1,
-                "2025-06": 4.2
+                "2025-06": 4.2,
+                "2025-09": 4.3
               },
               "measurementMethod": "BLSSeasonallyAdjusted",
               "observationPeriod": "P3M",

@@ -166,7 +166,7 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 31644
+        "descendentStatVarCount": 31671
       },
       {
         "id": "dc/g/Person_AgeGroupClassification",
@@ -304,7 +304,7 @@
         "id": "dc/g/Person_Ethnicity",
         "specializedEntity": "Ethnicity",
         "displayName": "Person by Ethnicity",
-        "descendentStatVarCount": 2236
+        "descendentStatVarCount": 2241
       },
       {
         "id": "dc/g/Person_Facilities",
@@ -340,7 +340,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 28185
+        "descendentStatVarCount": 28189
       },
       {
         "id": "dc/g/Person_GovernmentId",
@@ -406,7 +406,7 @@
         "id": "dc/g/Person_Income",
         "specializedEntity": "Income (Individual)",
         "displayName": "Person by Income",
-        "descendentStatVarCount": 2014
+        "descendentStatVarCount": 2019
       },
       {
         "id": "dc/g/Person_IncomeStatus",
@@ -544,7 +544,7 @@
         "id": "dc/g/Person_Race",
         "specializedEntity": "Race",
         "displayName": "Person by Race",
-        "descendentStatVarCount": 21908
+        "descendentStatVarCount": 21916
       },
       {
         "id": "dc/g/Person_Religion",
@@ -601,7 +601,7 @@
         "descendentStatVarCount": 4
       }
     ],
-    "descendentStatVarCount": 52076,
+    "descendentStatVarCount": 52108,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

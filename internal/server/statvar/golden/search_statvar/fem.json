@@ -1533,6 +1533,10 @@
       "dcid": "Count_Person_Female_BlackOrAfricanAmericanAlone"
     },
     {
+      "name": "Black or African American female student population",
+      "dcid": "Count_Student_Female_BlackOrAfricanAmericanAlone"
+    },
+    {
       "name": "Cataract Surgical Coverage Of Adults Aged 50 And Over (%), Female",
       "dcid": "WHO/CATARACTSURGICAL_Female"
     },
@@ -3995,10 +3999,6 @@
     {
       "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Trichomoniasis, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE008__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Trichuriasis, Female]",
-      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE035__SEX--F"
     }
   ],
   "matches": [

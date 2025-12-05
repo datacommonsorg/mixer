@@ -1038,7 +1038,7 @@
               "facet": "2825511676"
             },
             {
-              "count": 41,
+              "count": 43,
               "facet": "1456184638"
             },
             {
@@ -1187,7 +1187,7 @@
     },
     "1964317807": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "2176550201": {

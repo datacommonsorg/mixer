@@ -3180,7 +3180,7 @@
                       }
                     ],
                     "minValue": 53206,
-                    "maxValue": 71066
+                    "maxValue": 71083
                   },
                   "AdministrativeArea1": {
                     "placeCount": 364,
@@ -3388,11 +3388,11 @@
                 },
                 "minValue": 250,
                 "maxValue": 660361000,
-                "observationCount": 74340,
+                "observationCount": 74581,
                 "timeSeriesCount": 2557
               }
             ],
-            "observationCount": 74340,
+            "observationCount": 74581,
             "timeSeriesCount": 2557
           },
           "dc/base/Rwanda_Census": {

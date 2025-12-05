@@ -13,6 +13,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q1159": {
@@ -26,6 +30,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q1162": {
@@ -39,6 +47,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q1164": {
@@ -52,6 +64,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q1165": {
@@ -65,6 +81,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q1168": {
@@ -78,6 +98,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q1171": {
@@ -91,6 +115,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q1174": {
@@ -104,6 +132,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q1177": {
@@ -117,6 +149,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q1184": {
@@ -130,6 +166,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q1185": {
@@ -143,6 +183,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q1186": {
@@ -156,6 +200,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q1188": {
@@ -169,6 +217,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q1191": {
@@ -182,6 +234,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q1193": {
@@ -195,6 +251,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q1195": {
@@ -208,6 +268,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q1353": {
@@ -221,6 +285,11 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "City",
+            "State"
           ]
         },
         "wikidataId/Q1356": {
@@ -234,6 +303,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q1363": {
@@ -247,6 +320,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q1437": {
@@ -260,6 +337,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q1445": {
@@ -273,6 +354,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q1498": {
@@ -286,6 +371,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q1499": {
@@ -299,6 +388,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q1502": {
@@ -312,6 +405,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q1505": {
@@ -325,6 +422,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q1599": {
@@ -338,6 +439,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q22048": {
@@ -351,6 +456,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q22424": {
@@ -364,6 +473,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q26927": {
@@ -377,6 +490,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q40888": {
@@ -390,6 +507,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q43433": {
@@ -403,6 +524,11 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "City",
+            "State"
           ]
         },
         "wikidataId/Q66278313": {
@@ -416,6 +542,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q66710": {
@@ -429,6 +559,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "wikidataId/Q66743": {
@@ -442,6 +576,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         }
       }

@@ -5361,18 +5361,6 @@
         "nuts/FR71": {
           "ordered_facets": [
             {
-              "facet_id": "1456184638",
-              "observations": [
-                {
-                  "date": "2014-01-01",
-                  "value": 5645407
-                }
-              ],
-              "obs_count": 1,
-              "earliest_date": "2014-01-01",
-              "latest_date": "2014-01-01"
-            },
-            {
               "facet_id": "2458695583",
               "observations": [
                 {

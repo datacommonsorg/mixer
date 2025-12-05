@@ -455,10 +455,10 @@
                 "2017": 324985539,
                 "2018": 326687501,
                 "2019": 328239523,
-                "2020": 331526933,
-                "2021": 332048977,
-                "2022": 333271411,
-                "2023": 334914895
+                "2020": 331577720,
+                "2021": 332099760,
+                "2022": 334017321,
+                "2023": 336806231
               },
               "measurementMethod": "OECDRegionalStatistics",
               "observationPeriod": "P1Y",
@@ -486,7 +486,7 @@
               "measurementMethod": "CensusACS5yrSurveySubjectTable",
               "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101"
+              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2023.S0101"
             },
             {
               "val": {
@@ -508,7 +508,7 @@
               "measurementMethod": "CensusACS5yrSurveySubjectTable",
               "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601A\u0026tid=ACSST5Y2019.S2601A"
+              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601A\u0026tid=ACSST5Y2023.S2601A"
             },
             {
               "val": {
@@ -523,7 +523,7 @@
               "measurementMethod": "CensusACS5yrSurveySubjectTable",
               "importName": "CensusACS5YearSurvey_SubjectTables_S2602",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2602\u0026tid=ACSST5Y2019.S2602"
+              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2602\u0026tid=ACSST5Y2023.S2602"
             },
             {
               "val": {
@@ -1042,10 +1042,10 @@
                 "2017": 39358497,
                 "2018": 39461588,
                 "2019": 39512223,
-                "2020": 39503200,
-                "2021": 39145060,
-                "2022": 39040616,
-                "2023": 38965193
+                "2020": 39521958,
+                "2021": 39142565,
+                "2022": 39142414,
+                "2023": 39198693
               },
               "measurementMethod": "OECDRegionalStatistics",
               "observationPeriod": "P1Y",
@@ -1073,7 +1073,7 @@
               "measurementMethod": "CensusACS5yrSurveySubjectTable",
               "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101"
+              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2023.S0101"
             },
             {
               "val": {
@@ -1095,7 +1095,7 @@
               "measurementMethod": "CensusACS5yrSurveySubjectTable",
               "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601A\u0026tid=ACSST5Y2019.S2601A"
+              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2601A\u0026tid=ACSST5Y2023.S2601A"
             },
             {
               "val": {
@@ -1110,7 +1110,7 @@
               "measurementMethod": "CensusACS5yrSurveySubjectTable",
               "importName": "CensusACS5YearSurvey_SubjectTables_S2602",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2602\u0026tid=ACSST5Y2019.S2602"
+              "provenanceUrl": "https://data.census.gov/cedsci/table?q=S2602\u0026tid=ACSST5Y2023.S2602"
             },
             {
               "val": {
@@ -1467,7 +1467,7 @@
               "measurementMethod": "CensusACS5yrSurveySubjectTable",
               "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101"
+              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2023.S0101"
             },
             {
               "val": {
