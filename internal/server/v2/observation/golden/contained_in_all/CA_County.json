@@ -8421,6 +8421,18 @@
               "latest_date": "2018"
             },
             {
+              "facet_id": "1456184638",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 28917
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2020",
+              "latest_date": "2020"
+            },
+            {
               "facet_id": "2458695583",
               "observations": [
                 {
@@ -42933,7 +42945,7 @@
               "observations": [
                 {
                   "date": "2020-04-01",
-                  "value": 55620
+                  "value": 54226
                 }
               ],
               "obs_count": 1,

@@ -1492,11 +1492,6 @@
               "facet": "4181918134"
             },
             {
-              "date": "2024",
-              "value": 2943045,
-              "facet": "1456184638"
-            },
-            {
               "date": "2020-04-01",
               "value": 2961279,
               "facet": "2458695583"
@@ -5737,11 +5732,6 @@
       "provenance_url": "https://www.bls.gov/lau/",
       "measurement_method": "BLSSeasonallyAdjusted",
       "observation_period": "P1M"
-    },
-    "1456184638": {
-      "import_name": "WikipediaStatsData",
-      "provenance_url": "https://www.wikipedia.org",
-      "measurement_method": "Wikipedia"
     },
     "1541763368": {
       "import_name": "USDecennialCensus_RedistrictingRelease",
