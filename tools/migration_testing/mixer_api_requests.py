@@ -220,13 +220,6 @@ ENDPOINTS = [
         "variables": ["Count_Person"],
         "entities": ["country/USA"]
     }),
-    # BulkObservationsSeriesLinked
-    ("/v1/bulk/observations/series/linked", ["GET", "POST"], {
-        "linked_property": "containedInPlace",
-        "linked_entity": "country/USA",
-        "entity_type": "State",
-        "variables": "Count_Person"
-    }),
     # BulkProperties
     ("/v1/bulk/properties/out", ["GET", "POST"], {
         "nodes": ["country/USA"]
