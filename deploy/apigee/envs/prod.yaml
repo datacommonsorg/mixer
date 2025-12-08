@@ -15,14 +15,6 @@ proxies:
       - api
     target_endpoints:
       - api
-  - name: bard
-    policies:
-      - forward-host
-      - verify-api-key-in-param
-    proxy_endpoints:
-      - bard
-    target_endpoints:
-      - bard
   - name: nl
     policies:
       - copy-key-param-to-header

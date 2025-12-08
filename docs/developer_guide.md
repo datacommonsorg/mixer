@@ -70,6 +70,21 @@ Once the Mixer is ready to serve, you can send some sample gRPC requests:
 go run examples/api/main.go
 ```
 
+## Log Level Configuration
+
+You can configure the logging level using the `MIXER_LOG_LEVEL` environment variable.
+Valid values are `DEBUG`, `INFO`, `WARN`, `ERROR`.
+
+If not specified:
+- Local runs (via `run_server.sh`) default to `DEBUG`.
+- Other runs default to `INFO`.
+
+Example:
+
+```bash
+MIXER_LOG_LEVEL=ERROR ./run_server.sh
+```
+
 ## Start Mixer as a gRPC server backed by SQLite Database
 
 Mixer can load data stored in SQLite database. This requires setting flag:

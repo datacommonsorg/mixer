@@ -21,13 +21,13 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/datacommonsorg/mixer/internal/maps"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/recon"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"googlemaps.github.io/maps"
 )
 
 var resolvedPlaceTypePriorityList = []string{
@@ -133,7 +133,7 @@ func Coordinate(
 func Description(
 	ctx context.Context,
 	store *store.Store,
-	mapsClient *maps.Client,
+	mapsClient maps.MapsClient,
 	nodes []string,
 	typeOfs []string,
 ) (*pbv2.ResolveResponse, error) {
