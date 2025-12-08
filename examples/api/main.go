@@ -114,7 +114,7 @@ fmt.Printf("%s\n\n", r)
 		if err != nil {
 			log.Fatalf("could not run V2Node: %s", err)
 		}
-		fmt.Printf("%v\n\n", r)
+fmt.Printf("%s\n\n", r)
 	}
 
 }
