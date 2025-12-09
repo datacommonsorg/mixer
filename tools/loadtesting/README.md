@@ -42,9 +42,9 @@ If the mixer instance to be tested lives as a k8s service that is not exposed to
 | :---: | :---: | 
 | Number of users  | Peak number of users. Note the behavior of each user is specified by a locustfile. 100 is a good default. |
 | Ramp up  | Number of users added per second. This value is recommended to be <5. |
-| Host  | Target host. | 
+| Host  | http:// + select from result of `kubectl -n <mixer namespace> get svc`. |
 
-7. Set the API key for the target host under the "Custom parameters". You can optionally set the run time under the "Advanced options".
+7. You can optionally set the run time under the "Advanced options".
 
 8. Click "Start" to start sending requests.
 
@@ -53,7 +53,7 @@ If the mixer instance to be tested lives as a k8s service that is not exposed to
 1.  Set up the local environment.
 
     ```sh
-    virtualenv env && source env/bin/active && pip install -r requirements.txt
+    virtualenv env && source env/bin/activate && pip install -r requirements.txt
     ```
 
 2.  After desired changes (most likely edit/add of a locustfile), you may want to change the default locust file inside `Dockerfile`.

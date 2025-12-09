@@ -3,36 +3,11 @@
 from locust import HttpUser, events, task, between
 from locust.env import Environment
 
-_DC_API_KEY_HEADER = "X-API-Key"
-_DC_API_KEY = ""
-
-@events.test_start.add_listener
-def test_start(environment: Environment, **_kwargs) -> None:
-    global _DC_API_KEY
-    _DC_API_KEY = environment.parsed_options.dc_api_key
-
-
-@events.init_command_line_parser.add_listener
-def _(parser):
-    parser.add_argument(
-        "--dc_api_key",
-        type=str,
-        env_var="DC_API_KEY",
-        default="",
-        help="DC API key for authentication",
-        is_secret=True,
-    )
-
 
 # Simulates calls to the V2Observation rpc.
 class V2ObservationCaller(HttpUser):
     # Wait 1 second between tasks.
     wait_time = between(1, 1)
-
-    def on_start(self):
-        self.client.headers = {
-            _DC_API_KEY_HEADER: _DC_API_KEY,
-        }
 
     @task
     def v2_observation_1(self):
