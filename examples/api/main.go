@@ -22,7 +22,6 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
-	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -57,23 +56,24 @@ func main() {
 		if err != nil {
 			log.Fatalf("could not GetVersion: %s", err)
 		}
-		fmt.Printf("%s\n", r)
+		fmt.Printf("%s\n\n", r)
 	}
 
 	{
-		// Get Triples
-		req := &pb.GetTriplesRequest{
-			Dcids: []string{"dc/p/7c8egrk3ypkl5"},
+		// Get outgoing triples
+		req := &pbv2.NodeRequest{
+			Nodes:    []string{"Count_Person"},
+			Property: "->*",
 		}
-		r, err := c.GetTriples(ctx, req)
+		r, err := c.V2Node(ctx, req)
 		if err != nil {
-			log.Fatalf("could not GetTriples: %s", err)
+			log.Fatalf("could not run V2Node: %s", err)
 		}
-		fmt.Printf("%s\n", r.GetPayload())
+		fmt.Printf("%s\n\n", r)
 	}
 
 	{
-		// Get Observations
+		// Get custom observations (need --use_sqlite=true)
 		req := &pbv2.ObservationRequest{
 			Select:   []string{"variable", "entity", "date", "value"},
 			Variable: &pbv2.DcidOrExpression{Dcids: []string{"test_var_1"}},
@@ -83,44 +83,38 @@ func main() {
 		if err != nil {
 			log.Fatalf("could not run V2Observation: %s", err)
 		}
-		fmt.Printf("%v\n", r)
+fmt.Printf("%s\n\n", r)
 	}
 
 	{
-		// Get Stats
-		req := &pb.GetStatsRequest{
-			StatsVar: "CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased",
-			Place:    []string{"geoId/12"},
+		// Get observation facets
+		req := &pbv2.ObservationRequest{
+			Select: []string{"variable", "entity", "facet"},
+			Variable: &pbv2.DcidOrExpression{
+				Dcids: []string{"CumulativeCount_MedicalConditionIncident_COVID_19_PatientDeceased"},
+			},
+			Entity: &pbv2.DcidOrExpression{
+				Dcids: []string{"geoId/12"},
+			},
 		}
-		r, err := c.GetStats(ctx, req)
+		r, err := c.V2Observation(ctx, req)
 		if err != nil {
-			log.Fatalf("could not GetStats: %s", err)
+			log.Fatalf("could not run V2Observation: %s", err)
 		}
-		fmt.Printf("%s\n", r.GetPayload())
+		fmt.Printf("%s\n\n", r)
 	}
 
 	{
-		// Get variable info
-		req := &pbv1.BulkVariableInfoRequest{
-			Nodes: []string{"Mean_NetMeasure_Income_Farm"},
+		// Get StatVarGroup ancestors
+		req := &pbv2.NodeRequest{
+			Nodes:    []string{"dc/g/Water_UsedFor-Irrigation"},
+			Property: "->specializationOf+{typeOf:StatVarGroup}",
 		}
-		r, err := c.BulkVariableInfo(ctx, req)
+		r, err := c.V2Node(ctx, req)
 		if err != nil {
-			log.Fatalf("could not BulkVariableInfo: %s", err)
+			log.Fatalf("could not run V2Node: %s", err)
 		}
-		fmt.Printf("%v\n", r)
-	}
-
-	{
-		// Get variable ancestors
-		req := &pbv1.VariableAncestorsRequest{
-			Node: "WithdrawalRate_Water_Irrigation",
-		}
-		r, err := c.VariableAncestors(ctx, req)
-		if err != nil {
-			log.Fatalf("could not VariableAncestors: %s", err)
-		}
-		fmt.Printf("%v\n", r)
+fmt.Printf("%s\n\n", r)
 	}
 
 }

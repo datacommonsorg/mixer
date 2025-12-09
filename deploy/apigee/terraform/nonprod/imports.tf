@@ -18,21 +18,9 @@ import {
 }
 
 import {
-  to = module.apigee.google_apigee_envgroup.envgroups["staging-bard"]
-  id = "staging-bard"
-}
-
-
-import {
   to = module.apigee.google_apigee_environment.environments["dev"]
   id = "dev"
 }
-
-import {
-  to = module.apigee.google_apigee_envgroup_attachment.envgroup_attachments["dev-staging-bard"]
-  id = "staging-bard/attachments/99b235d2-31dd-4f32-ad63-fbeaa44871ca"
-}
-
 
 import {
   to = module.apigee.google_apigee_instance.instances["us-central1"]
@@ -58,18 +46,6 @@ import {
   to = apigee_proxy_deployment.dev-api
   id = "dev:api"
 }
-
-import {
-  to = apigee_proxy.bard
-  id = "bard"
-}
-
-import {
-  to = apigee_proxy_deployment.dev-bard
-  id = "dev:bard"
-}
-
-
 
 import {
   to = apigee_product.datacommons-api-staging
