@@ -5,6 +5,6 @@ metadata:
 spec:
   containers:
   - name: locust
-    image: us-docker.pkg.dev/datcom-ci/mixer/loadtester:v1
+    image: us-docker.pkg.dev/datcom-ci/mixer/loadtester:v2
     ports:
     - containerPort: 8089
