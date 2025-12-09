@@ -1,7 +1,6 @@
 """Simple loadtesting using V2Observation rpc."""
 
-from locust import HttpUser, events, task, between
-from locust.env import Environment
+from locust import HttpUser, task, between
 
 
 # Simulates calls to the V2Observation rpc.
