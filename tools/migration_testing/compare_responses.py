@@ -17,7 +17,7 @@ Tests that two different API domains return the exact same responses.
 Usage:
 $ python3 tools/migration_testing/compare_responses.py mixer api.datacommons.org staging.api.datacommons.org $PROD_API_KEY $STAGING_API_KEY
 $ python3 tools/migration_testing/compare_responses.py nl nl.datacommons.org staging.nl.datacommons.org $PROD_API_KEY $STAGING_API_KEY
-$ python3 tools/migration_testing/compare_responses.py new <current_domain> <new_domain> <current_api_key> <new_api_key
+$ python3 tools/migration_testing/compare_responses.py new <current_domain> <new_domain> <current_api_key> <new_api_key>
 """
 
 import argparse
