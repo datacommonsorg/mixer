@@ -78,4 +78,3 @@ ERROR_TESTS = [
     # 500
     ("/v2/observation?entity.expression=country/USA%3C-containedInPlace%2B%7BtypeOf%3ACity%7D&variable.dcids=Count_Person&select=entity&select=variable&select=date&select=value", ["GET", "POST"], {}),
 ]
-#https://api.datacommons.org/v2/observation?key=AIzaSyCTI4Xz-UW_G2Q2RfknhcfdAnTHq5X5XuI&variable.dcids=Count_Person&entity.expression=country/USA%3C-containedInPlace%2B%7BtypeOf%3ACity%7D&select=entity&select=variable&select=date&select=value
