@@ -97,7 +97,7 @@ def get_formatted_response(response):
   else:
     size = len(response.content)
     return f"Content-Type: {response.headers.get('Content-Type', '')}; Size: {size}"
-  
+
 
 def get_response(endpoint, method, params, domain, api_key):
   """Make an HTTP request to the specified endpoint.
@@ -122,12 +122,8 @@ def get_response(endpoint, method, params, domain, api_key):
     req_params['key'] = api_key
     return requests.get(url, params=req_params)
   elif method == "POST":
-    query_params = {}
     headers = {'x-api-key': api_key}
-    return requests.post(url,
-                                    json=params,
-                                    headers=headers,
-                                    params=query_params)
+    return requests.post(url, json=params, headers=headers)
   else:
     raise ValueError("Invalid method. Use 'GET' or 'POST'")
 
