@@ -285,13 +285,6 @@
     "relatedChart": {}
   },
   {
-    "title": "Lifetime air toxics cancer risk",
-    "statsVars": [
-      "AirPollutant_Cancer_Risk"
-    ],
-    "relatedChart": {}
-  },
-  {
     "title": "Literacy",
     "statsVars": [
       "Count_Person_Literate",
@@ -316,20 +309,6 @@
     "title": "Market capitalization of domestic companies",
     "statsVars": [
       "Amount_Stock"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Mean diesel PM concentration",
-    "statsVars": [
-      "Mean_Concentration_AirPollutant_DieselPM"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Mean ozone concentration",
-    "statsVars": [
-      "Mean_Concentration_AirPollutant_Ozone"
     ],
     "relatedChart": {}
   },
