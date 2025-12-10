@@ -15,9 +15,9 @@
 Tests that two different API domains return the exact same responses.
 
 Usage:
-$ python tools/migration_testing/compare_responses.py mixer api.datacommons.org staging.api.datacommons.org $DC_API_KEY
-
-Note that the API key provided must be valid for both domains.
+$ python3 tools/migration_testing/compare_responses.py mixer api.datacommons.org staging.api.datacommons.org $PROD_API_KEY $STAGING_API_KEY
+$ python3 tools/migration_testing/compare_responses.py nl nl.datacommons.org staging.nl.datacommons.org $PROD_API_KEY $STAGING_API_KEY
+$ python3 tools/migration_testing/compare_responses.py new <current_domain> <new_domain> <current_api_key> <new_api_key
 """
 
 import argparse
@@ -54,10 +54,26 @@ class bcolors:
 
 
 def is_json(response):
+  """Check if the response content type is JSON.
+  
+  Args:
+      response: A requests.Response object.
+      
+  Returns:
+      bool: True if the response Content-Type header contains 'application/json', False otherwise.
+  """
   return "application/json" in response.headers.get("Content-Type", "")
 
 
 def get_response_data(response):
+  """Extract response data in appropriate format based on content type.
+  
+  Args:
+      response: A requests.Response object.
+      
+  Returns:
+      dict or bytes: Parsed JSON if the response is JSON, otherwise raw response content.
+  """
   if is_json(response):
     return response.json()
   else:
@@ -65,6 +81,14 @@ def get_response_data(response):
 
 
 def get_formatted_response(response):
+  """Format response data for console output with truncation if necessary.
+  
+  Args:
+      response: A requests.Response object.
+      
+  Returns:
+      str: Formatted JSON string with optional truncation, or content type and size for non-JSON.
+  """
   if is_json(response):
     formatted = json.dumps(response.json(), indent=2).replace("\n", "\n  ")
     if len(formatted) > MAX_OUTPUT_CHARS:
@@ -73,41 +97,56 @@ def get_formatted_response(response):
   else:
     size = len(response.content)
     return f"Content-Type: {response.headers.get('Content-Type', '')}; Size: {size}"
+  
+
+def get_response(endpoint, method, params, domain, api_key):
+  """Make an HTTP request to the specified endpoint.
+  
+  Args:
+      endpoint (str): The API endpoint path.
+      method (str): HTTP method, either 'GET' or 'POST'.
+      params (dict, optional): Request parameters/body. For GET requests, passed as query params.
+          For POST requests, passed as JSON body.
+      domain (str): The domain to send the request to.
+      api_key (str): The API key for authentication.
+      
+  Returns:
+      requests.Response: The HTTP response object.
+      
+  Raises:
+      ValueError: If method is not 'GET' or 'POST'.
+  """
+  url = f"https://{domain}{endpoint}"
+  if method == "GET":
+    req_params = {} if params is None else copy.deepcopy(params)
+    req_params['key'] = api_key
+    return requests.get(url, params=req_params)
+  elif method == "POST":
+    query_params = {}
+    headers = {'x-api-key': api_key}
+    return requests.post(url,
+                                    json=params,
+                                    headers=headers,
+                                    params=query_params)
+  else:
+    raise ValueError("Invalid method. Use 'GET' or 'POST'")
 
 
-def compare_responses(endpoint, use_api_key, method="GET", params=None):
-  current_url = f"https://{args.current_domain}{endpoint}"
-  new_url = f"https://{args.new_domain}{endpoint}"
-
+def compare_responses(endpoint, method="GET", params=None):
+  """Compare API responses from current and new domains for the same endpoint.
+  
+  Makes requests to both the current (prod) and new (staging) domains with the same
+  endpoint and parameters, then compares the responses. Prints results to console
+  indicating whether responses match or differ.
+  
+  Args:
+      endpoint (str): The API endpoint path to test.
+      method (str, optional): HTTP method to use. Defaults to 'GET'.
+      params (dict, optional): Request parameters. Defaults to None.
+  """
   try:
-    if method == "GET":
-      req_params = {} if params is None else copy.deepcopy(params)
-      if use_api_key:
-        if args.endpoints == "nl":
-          # Bard API key param name is different for legacy reasons.
-          req_params['apikey'] = args.api_key
-        else:
-          req_params['key'] = args.api_key
-      current_response = requests.get(current_url, params=req_params)
-      new_response = requests.get(new_url, params=req_params)
-    elif method == "POST":
-      headers = {}
-      query_params = {}
-      if use_api_key:
-        if args.endpoints == "nl":
-          query_params['apikey'] = args.api_key
-        else:
-          headers = {'x-api-key': args.api_key}
-      current_response = requests.post(current_url,
-                                       json=params,
-                                       headers=headers,
-                                       params=query_params)
-      new_response = requests.post(new_url,
-                                   json=params,
-                                   headers=headers,
-                                   params=query_params)
-    else:
-      raise ValueError("Invalid method. Use 'GET' or 'POST'")
+    current_response = get_response(endpoint, method, params, args.current_domain, args.current_api_key)
+    new_response = get_response(endpoint, method, params, args.new_domain, args.new_api_key)
 
     current_data = get_response_data(current_response)
     new_data = get_response_data(new_response)
@@ -139,7 +178,14 @@ def compare_responses(endpoint, use_api_key, method="GET", params=None):
     print(f"Error fetching {endpoint} ({method}): {e}")
 
 
-def send_requests(endpoint_infos, use_api_key):
+def send_requests(endpoint_infos):
+  """Send comparison requests for a collection of endpoints.
+  
+  Args:
+      endpoint_infos (list): List of endpoint specifications. Each can be either:
+          - A string (endpoint path, defaults to GET method, no params)
+          - A tuple of (endpoint, methods, params) where methods is a list of HTTP methods
+  """
   for endpoint_info in endpoint_infos:
     if isinstance(endpoint_info, tuple):
       endpoint, methods, params = endpoint_info
@@ -147,10 +193,15 @@ def send_requests(endpoint_infos, use_api_key):
       endpoint, methods, params = endpoint_info, ["GET"], None
 
     for method in methods:
-      compare_responses(endpoint, use_api_key, method, params)
+      compare_responses(endpoint, method, params)
 
 
 def main():
+  """Main entry point for the response comparison script.
+  
+  Loads the appropriate endpoint set based on command-line arguments and runs
+  comparison tests for both normal endpoints and error test cases.
+  """
   if args.endpoints == "new":
     endpoints = NEW_ENDPOINTS
     error_tests = []
@@ -167,16 +218,12 @@ def main():
 
   print()
   print(f"{bcolors.BOLD}With API key{bcolors.ENDC}")
-  send_requests(endpoints, use_api_key=True)
-
-  print()
-  print(f"{bcolors.BOLD}Without API key{bcolors.ENDC}")
-  send_requests(endpoints, use_api_key=False)
+  send_requests(endpoints)
 
   if (len(error_tests) > 0):
     print()
     print(f"{bcolors.BOLD}Error tests{bcolors.ENDC}")
-    send_requests(error_tests, use_api_key=True)
+    send_requests(error_tests)
 
 
 if __name__ == "__main__":
@@ -188,10 +235,11 @@ if __name__ == "__main__":
       "Which set of endpoints to test. Values are 'mixer' for mixer_api_requests.py, 'nl' for nl_api_requests.py, or 'new' for the array at the top of the file."
   )
   parser.add_argument("current_domain",
-                      help="The domain to use as a source of truth")
+                      help="The domain to use as a source of truth (prod)")
   parser.add_argument("new_domain",
-                      help="The domain representing post-migration state")
-  parser.add_argument("api_key", help="The API key to use for requests")
+                      help="The domain representing post-migration state (staging)")
+  parser.add_argument("current_api_key", help="The API key to use for requests to the current (prod) domain")
+  parser.add_argument("new_api_key", help="The API key to use for requests to the new (staging) domain")
   args = parser.parse_args()
 
   logging.basicConfig(level=logging.WARNING)
