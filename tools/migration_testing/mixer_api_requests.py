@@ -76,5 +76,6 @@ ERROR_TESTS = [
     # 415
     ("/v2/sparql?name=example.com&type=A", ["GET", "POST"], {}),
     # 500
+    # Error due to requesting too many time series (Count_Person for cities in the US).
     ("/v2/observation?entity.expression=country/USA%3C-containedInPlace%2B%7BtypeOf%3ACity%7D&variable.dcids=Count_Person&select=entity&select=variable&select=date&select=value", ["GET", "POST"], {}),
 ]

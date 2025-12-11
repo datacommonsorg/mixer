@@ -117,12 +117,12 @@ def get_response(endpoint, method, params, domain, api_key):
       ValueError: If method is not 'GET' or 'POST'.
   """
   url = f"https://{domain}{endpoint}"
+  headers = {'x-api-key': api_key}
   if method == "GET":
     req_params = {} if params is None else copy.deepcopy(params)
     req_params['key'] = api_key
-    return requests.get(url, params=req_params)
+    return requests.get(url, params=req_params, headers=headers)
   elif method == "POST":
-    headers = {'x-api-key': api_key}
     return requests.post(url, json=params, headers=headers)
   else:
     raise ValueError("Invalid method. Use 'GET' or 'POST'")
