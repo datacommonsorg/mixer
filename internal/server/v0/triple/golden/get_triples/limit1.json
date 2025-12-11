@@ -45,7 +45,7 @@
         "Provenance"
       ],
       "predicate": "importTime",
-      "objectValue": "1761833989",
+      "objectValue": "1765376577",
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
@@ -181,6 +181,20 @@
       "subjectName": "AvailableVehicles 0",
       "subjectTypes": [
         "Quantity"
+      ],
+      "predicate": "provenance",
+      "objectId": "dc/base/HumanReadableStatVars",
+      "objectName": "HumanReadableStatVars",
+      "objectTypes": [
+        "Provenance"
+      ],
+      "provenanceId": "dc/base/HumanReadableStatVars"
+    },
+    {
+      "subjectId": "Count_Person_IncomeOfUSDollar15000To24999",
+      "subjectName": "Count of people with an income of $15000 To $24999",
+      "subjectTypes": [
+        "MeasurementDenominatorEnum"
       ],
       "predicate": "provenance",
       "objectId": "dc/base/HumanReadableStatVars",

@@ -9,10 +9,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 143219496270
+                  "value": 142921215640
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/02": {
@@ -22,10 +26,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 6531593390
+                  "value": 6690505810
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/04": {
@@ -35,10 +43,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 116227309220
+                  "value": 116026510770
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/05": {
@@ -48,10 +60,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 59640888450
+                  "value": 61542483610
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/06": {
@@ -61,10 +77,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 214131497530
+                  "value": 214191383340
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/08": {
@@ -74,10 +94,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 58664479450
+                  "value": 58798395380
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/09": {
@@ -87,10 +111,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 45158665500
+                  "value": 44761412400
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/10": {
@@ -100,10 +128,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 4723231300
+                  "value": 4799212140
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/11": {
@@ -113,10 +145,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 210585900
+                  "value": 187195220
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/12": {
@@ -126,10 +162,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 265405827579.99997
+                  "value": 266119235980
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/13": {
@@ -139,10 +179,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 140481431500
+                  "value": 139805428400
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/15": {
@@ -152,10 +196,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 9172960700
+                  "value": 9160978980
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/16": {
@@ -165,10 +213,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 18403113910
+                  "value": 20035438040
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/17": {
@@ -178,10 +230,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 186092393050
+                  "value": 185012934580
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/18": {
@@ -191,10 +247,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 94799217040
+                  "value": 97012880110
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/19": {
@@ -204,10 +264,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 69873652320
+                  "value": 70464147590
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/20": {
@@ -217,10 +281,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 58480701140
+                  "value": 57696154940
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/21": {
@@ -230,10 +298,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 67028842950.00001
+                  "value": 66950848289.99999
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/22": {
@@ -243,10 +315,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 99006067560
+                  "value": 99622835010
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/23": {
@@ -256,10 +332,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 13758413750
+                  "value": 14655177500
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/24": {
@@ -269,10 +349,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 35814708590
+                  "value": 35424815750
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/25": {
@@ -282,10 +366,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 20590914880
+                  "value": 20914889810
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/26": {
@@ -295,10 +383,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 124719294520
+                  "value": 124200090040
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/27": {
@@ -308,10 +400,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 58285899220
+                  "value": 58595221550
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/28": {
@@ -321,10 +417,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 74370854360
+                  "value": 77336711780
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/29": {
@@ -334,10 +434,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 67921145840
+                  "value": 66875709630
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/30": {
@@ -347,10 +451,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 26364996740
+                  "value": 26872883370
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/31": {
@@ -360,10 +468,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 37723337880
+                  "value": 37228949710
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/32": {
@@ -373,10 +485,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 45529552860
+                  "value": 45528427470
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/33": {
@@ -386,10 +502,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 17298031700
+                  "value": 16942479480.000002
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/34": {
@@ -399,10 +519,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 61232187460
+                  "value": 60175245330
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/35": {
@@ -412,10 +536,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 40148074960
+                  "value": 39697294060
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/36": {
@@ -425,10 +553,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 131671283070
+                  "value": 129015492650
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/37": {
@@ -438,10 +570,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 135600025060.00002
+                  "value": 134965395909.99998
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/38": {
@@ -451,10 +587,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 43252025560
+                  "value": 42557243130
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/39": {
@@ -464,10 +604,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 142876257940
+                  "value": 142746705850
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/40": {
@@ -477,10 +621,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 94998327480
+                  "value": 94069145480
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/41": {
@@ -490,10 +638,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 63228574040
+                  "value": 64661249240
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/42": {
@@ -503,10 +655,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 243613150230
+                  "value": 241498648490
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/44": {
@@ -516,10 +672,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 9461315900
+                  "value": 9777026500
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/45": {
@@ -529,10 +689,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 100380021860
+                  "value": 100485415820
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/46": {
@@ -542,10 +706,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 20502950590
+                  "value": 20871993590
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/47": {
@@ -555,10 +723,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 75426293490
+                  "value": 76166766270
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/48": {
@@ -568,10 +740,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 563753062250
+                  "value": 566502687690
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/49": {
@@ -581,10 +757,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 34684503560
+                  "value": 35133906260
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/50": {
@@ -594,10 +774,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 2535691650
+                  "value": 2258890640
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/51": {
@@ -607,10 +791,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 101921858860
+                  "value": 102698615000
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/53": {
@@ -620,10 +808,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 101534941710
+                  "value": 102397710650
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/54": {
@@ -633,10 +825,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 50845117380
+                  "value": 50594818010
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/55": {
@@ -646,10 +842,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 65567397040
+                  "value": 65276344090
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/56": {
@@ -659,10 +859,14 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 41176551730
+                  "value": 40709150170
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         }
       }
@@ -698,6 +902,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/02": {
@@ -729,6 +937,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/04": {
@@ -760,6 +972,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/05": {
@@ -791,6 +1007,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/06": {
@@ -822,6 +1042,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/08": {
@@ -853,6 +1077,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/09": {
@@ -884,6 +1112,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/10": {
@@ -915,6 +1147,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/11": {
@@ -946,6 +1182,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/12": {
@@ -977,6 +1217,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/13": {
@@ -1008,6 +1252,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/15": {
@@ -1039,6 +1287,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/16": {
@@ -1070,6 +1322,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/17": {
@@ -1101,6 +1357,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/18": {
@@ -1132,6 +1392,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/19": {
@@ -1163,6 +1427,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/20": {
@@ -1194,6 +1462,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/21": {
@@ -1225,6 +1497,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/22": {
@@ -1256,6 +1532,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/23": {
@@ -1287,6 +1567,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/24": {
@@ -1318,6 +1602,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/25": {
@@ -1349,6 +1637,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/26": {
@@ -1380,6 +1672,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/27": {
@@ -1411,6 +1707,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/28": {
@@ -1442,6 +1742,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/29": {
@@ -1473,6 +1777,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/30": {
@@ -1504,6 +1812,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/31": {
@@ -1535,6 +1847,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/32": {
@@ -1566,6 +1882,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/33": {
@@ -1597,6 +1917,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/34": {
@@ -1628,6 +1952,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/35": {
@@ -1659,6 +1987,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/36": {
@@ -1690,6 +2022,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/37": {
@@ -1721,6 +2057,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/38": {
@@ -1752,6 +2092,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/39": {
@@ -1783,6 +2127,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/40": {
@@ -1814,6 +2162,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/41": {
@@ -1845,6 +2197,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/42": {
@@ -1876,6 +2232,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/44": {
@@ -1907,6 +2267,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/45": {
@@ -1938,6 +2302,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/46": {
@@ -1969,6 +2337,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/47": {
@@ -2000,6 +2372,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/48": {
@@ -2031,6 +2407,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/49": {
@@ -2062,6 +2442,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/50": {
@@ -2093,6 +2477,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/51": {
@@ -2124,6 +2512,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/53": {
@@ -2155,6 +2547,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/54": {
@@ -2186,6 +2582,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/55": {
@@ -2217,6 +2617,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/56": {
@@ -2248,6 +2652,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/72": {
@@ -2279,6 +2687,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         }
       }
@@ -2314,6 +2726,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/02": {
@@ -2345,6 +2761,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/04": {
@@ -2376,6 +2796,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/05": {
@@ -2407,6 +2831,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/06": {
@@ -2438,6 +2866,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/08": {
@@ -2469,6 +2901,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/09": {
@@ -2500,6 +2936,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/10": {
@@ -2531,6 +2971,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/11": {
@@ -2562,6 +3006,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/12": {
@@ -2593,6 +3041,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/13": {
@@ -2624,6 +3076,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/15": {
@@ -2655,6 +3111,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/16": {
@@ -2686,6 +3146,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/17": {
@@ -2717,6 +3181,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/18": {
@@ -2748,6 +3216,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/19": {
@@ -2779,6 +3251,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/20": {
@@ -2810,6 +3286,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/21": {
@@ -2841,6 +3321,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/22": {
@@ -2872,6 +3356,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/23": {
@@ -2903,6 +3391,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/24": {
@@ -2934,6 +3426,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/25": {
@@ -2965,6 +3461,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/26": {
@@ -2996,6 +3496,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/27": {
@@ -3027,6 +3531,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/28": {
@@ -3058,6 +3566,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/29": {
@@ -3089,6 +3601,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/30": {
@@ -3120,6 +3636,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/31": {
@@ -3151,6 +3671,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/32": {
@@ -3182,6 +3706,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/33": {
@@ -3213,6 +3741,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/34": {
@@ -3244,6 +3776,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/35": {
@@ -3275,6 +3811,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/36": {
@@ -3306,6 +3846,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/37": {
@@ -3337,6 +3881,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/38": {
@@ -3368,6 +3916,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/39": {
@@ -3399,6 +3951,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/40": {
@@ -3430,6 +3986,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/41": {
@@ -3461,6 +4021,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/42": {
@@ -3492,6 +4056,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/44": {
@@ -3523,6 +4091,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/45": {
@@ -3554,6 +4126,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/46": {
@@ -3585,6 +4161,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/47": {
@@ -3616,6 +4196,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/48": {
@@ -3647,6 +4231,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/49": {
@@ -3678,6 +4266,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/50": {
@@ -3709,6 +4301,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/51": {
@@ -3740,6 +4336,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/53": {
@@ -3771,6 +4371,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/54": {
@@ -3802,6 +4406,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/55": {
@@ -3833,6 +4441,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/56": {
@@ -3864,6 +4476,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         },
         "geoId/72": {
@@ -3895,6 +4511,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "AdministrativeArea1",
+            "State"
           ]
         }
       }

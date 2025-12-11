@@ -557,7 +557,7 @@
                 },
                 {
                   "date": "2024",
-                  "value": 4304038716900.0005
+                  "value": 4308634297150
                 }
               ],
               "obs_count": 24,
@@ -666,7 +666,7 @@
                 },
                 {
                   "date": "2024",
-                  "value": 214131497530
+                  "value": 214191383340
                 }
               ],
               "obs_count": 24,
@@ -2729,19 +2729,19 @@
                 },
                 {
                   "date": "2020",
-                  "value": 331526933
+                  "value": 331577720
                 },
                 {
                   "date": "2021",
-                  "value": 332048977
+                  "value": 332099760
                 },
                 {
                   "date": "2022",
-                  "value": 333271411
+                  "value": 334017321
                 },
                 {
                   "date": "2023",
-                  "value": 334914895
+                  "value": 336806231
                 }
               ],
               "obs_count": 34,
@@ -4514,19 +4514,19 @@
                 },
                 {
                   "date": "2020",
-                  "value": 39503200
+                  "value": 39521958
                 },
                 {
                   "date": "2021",
-                  "value": 39145060
+                  "value": 39142565
                 },
                 {
                   "date": "2022",
-                  "value": 39040616
+                  "value": 39142414
                 },
                 {
                   "date": "2023",
-                  "value": 38965193
+                  "value": 39198693
                 }
               ],
               "obs_count": 34,
@@ -9724,11 +9724,15 @@
                 {
                   "date": "2025-08",
                   "value": 7384000
+                },
+                {
+                  "date": "2025-09",
+                  "value": 7603000
                 }
               ],
-              "obs_count": 932,
+              "obs_count": 933,
               "earliest_date": "1948-01",
-              "latest_date": "2025-08"
+              "latest_date": "2025-09"
             },
             {
               "facet_id": "1714978719",
@@ -10972,11 +10976,15 @@
                 {
                   "date": "2025-06",
                   "value": 7139000
+                },
+                {
+                  "date": "2025-09",
+                  "value": 7408000
                 }
               ],
-              "obs_count": 310,
+              "obs_count": 311,
               "earliest_date": "1948-03",
-              "latest_date": "2025-06"
+              "latest_date": "2025-09"
             }
           ]
         },
@@ -18637,7 +18645,7 @@
   "facets": {
     "10983471": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2023.S2601A",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "1145703171": {
@@ -18691,12 +18699,12 @@
     },
     "1964317807": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "196790193": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2023.S2602",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "2157651424": {
@@ -18751,7 +18759,7 @@
     },
     "2763329611": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2023.S2601A",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
     },
@@ -18777,7 +18785,7 @@
     },
     "3690003977": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2023.S2602",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
     },
@@ -18817,7 +18825,7 @@
     },
     "815809675": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
     }

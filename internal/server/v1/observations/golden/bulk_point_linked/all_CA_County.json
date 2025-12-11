@@ -622,6 +622,11 @@
               "facet": "2390551605"
             },
             {
+              "date": "2020",
+              "value": 28917,
+              "facet": "1456184638"
+            },
+            {
               "date": "2020-04-01",
               "value": 28917,
               "facet": "2458695583"
@@ -1025,6 +1030,11 @@
               "date": "2024",
               "value": 28340,
               "facet": "2390551605"
+            },
+            {
+              "date": "2020",
+              "value": 32730,
+              "facet": "1456184638"
             },
             {
               "date": "2020-04-01",
@@ -3183,7 +3193,7 @@
             },
             {
               "date": "2020-04-01",
-              "value": 55620,
+              "value": 54226,
               "facet": "1456184638"
             },
             {
@@ -7669,7 +7679,7 @@
     },
     "1964317807": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "2176550201": {
@@ -7745,7 +7755,7 @@
     },
     "815809675": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
     },
