@@ -41121,6 +41121,4006 @@
       "provenanceId": "dc/base/NCES_PrivateSchool"
     },
     {
+      "name": "SCHOOL FOR INTEGRATED ACADEMICS AND TECHNOLOGIES",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/040032402160",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SCHOOL FOR INTEGRATED ACADEMICS AND TECHNOLOGIES",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/040032402265",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "REGIONAL OCCUPATIONAL CENTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000008767",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "PALMITER (LEO A.) ROP",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000008768",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "VASQUEZ HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000103278",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ACTON ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000106293",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "AGUA DULCE ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000106294",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MEADOWLARK ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000107534",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HIGH DESERT",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000109444",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ASSURANCE LEARNING ACADEMY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000113121",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ALBERT EINSTEIN ACADEMY ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000113717",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Hope Charter Academy",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000113764",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Albert Einstein Acad for Ltrs Arts \u0026 Scis - Odyssey",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000113785",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SCALE Leadership Academy",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000113793",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Academy of Arts and Sciences: Los Angeles (9-12)",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000113811",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Valley Prep K-5",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000113817",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Valley Prep 6-8",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000113827",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Albert Einstein Ac. for Ltr, Art \u0026 Sci - Aqua Dulce Prs. Ac.",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000113828",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SIATech Academy South",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000113829",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Valley Prep 9-12",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000113835",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Mosaica Online Academy of Los Angeles",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000113838",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Academy of Arts and Sciences: Los Angeles (K-8)",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000113840",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Method Schools High",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000113853",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "iLEAD Hybrid",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000113859",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Method Schools K-8",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000113867",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Albert Einstein Academy for Letters Arts and Sciences-STEAM",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000113903",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Community Collaborative Charter",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000113904",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Empower Generations",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000114042",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Academy of Arts and Sciences: Los Angeles",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000114045",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Pathways Academy Charter Adult Education",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000114062",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Options for Youth-Acton",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000114202",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "iLEAD Online",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000114203",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CALIF SCHOOL FOR THE BLIND",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000208769",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CALIF SCHOOL FOR THE BLIND",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000210346",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CALIF SCHOOL FOR THE DEAF",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000308770",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CALIF SCHOOL FOR THE DEAF",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000310347",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "DIAGNOSTIC SCHOOL FOR NH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000408771",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "DIAGNOSTIC SCHOOL FOR NH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000508772",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MANOR ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000608773",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WHITE HILL",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000608774",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "BROOKSIDE ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000608775",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WADE THOMAS ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000608776",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ROSS VALLEY ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000609674",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "BROOKSIDE UPPER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000612911",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CALIF SCHOOL FOR THE DEAF",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000708777",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CALIF SCHOOL FOR THE DEAF",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000710348",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "DIAGNOSTIC SCHOOL FOR NH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000808778",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SIERRA MADRE HIGH (CONT.)",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000901478",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CUYAMA VALLEY HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000908779",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CUYAMA ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000908780",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "California STEAM Santa Barbara",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000914038",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Uplift California Santa Barbara",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000914141",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Valiant Santa Barbara",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060000914212",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CALIF MARITIME ACADEMY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001008781",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "RENDER CONTINUATION HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001109064",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HERLONG HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001109065",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "FORT SAGE MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001109066",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "LONG VALLEY CHARTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001109067",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SIERRA PRIMARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001109068",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "FORT SAGE COMMUNITY DAY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001111292",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MT. LASSEN CHARTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001112763",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "TWIN RIDGES ELEMENTARY ALTER.",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001202300",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "TWIN RIDGES ALTERNATIVE CHARTE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001204745",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "NEVADA CITY SCHOOL OF THE ARTS",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001206088",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MALAKOFF ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001206851",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WASHINGTON ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001206852",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "VILLAGE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001208232",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WOODLANDS CHARTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001208233",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "RIVER OAK CHARTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001208234",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "GOLDEN VALLEY CHARTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001208235",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "BITNEY SPRINGS CHARTER HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001208236",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MARIA MONTESSORI CHARTER ACADEMY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001208534",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "NAPA VALLEY CHARTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001208535",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "FOREST CHARTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001208749",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "GRIZZLY HILL",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001209206",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "OAK TREE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001209207",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SIERRA MONTESSORI",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001210981",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "TWIN RIDGES 3R COMMUNITY DAY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001211277",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "OAK TREE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001213085",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "TWIN RIDGES SPECIAL EDUCATION PRESCHOOL",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001213453",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ANTELOPE CREEK ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001300805",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ROCKLIN HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001302405",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "BREEN ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001303571",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "VICTORY HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001306176",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ROCKLIN ALTERNATIVE EDUCATION CENTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001306197",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "TWIN OAKS ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001308256",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "GRANITE OAKS MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001308257",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SPRING VIEW MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001308553",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ROCKLIN ACADEMY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001308762",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "VALLEY VIEW ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001308763",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SIERRA ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001308764",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "PARKER WHITNER ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001309069",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ROCKLIN ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001309070",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SPRING VIEW ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001309071",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "COBBLESTONE ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001310270",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ROCK CREEK ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001310575",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "RUHKALA ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001311009",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WHITNEY HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001311010",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ROCKLIN ACADEMY AT MEYERS STREET",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001312012",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MARIA MONTESSORI CHARTER ACADEMY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001312302",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Western Sierra Collegiate Academy",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001312390",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SUNSET RANCH ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001312558",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ROCKLIN INDEPENDENT CHARTER ACADEMY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001313722",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Rocklin Alternative Education Center",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001314465",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Quarry Trail Elementary",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001314609",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HESPERIA UNIFIED ALTERNATIVE E",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001401145",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "TOPAZ ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001403904",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SULTANA HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001405093",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "DESERT TRAILS HIGH (ALTERNATIV",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001407287",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MESQUITE TRAILS ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001407295",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HESPERIA COMMUNITY DAY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001408296",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HESPERIA HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001409072",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MOJAVE HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001409073",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "JOSHUA CIRCLE ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001409074",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "JUNIPER ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001409075",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "EUCALYPTUS ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001409076",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HESPERIA JUNIOR HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001409077",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MESA GRANDE ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001409078",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "KINGSTON ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001409079",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MAPLE ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001409080",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "COTTONWOOD ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001409081",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "LIME STREET ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001409082",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HOLLYVALE ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001409476",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CARMEL ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001409477",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HESPERIA UNIFIED",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001409675",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "RANCHERO MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001409676",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CROSSWALK: HESPERIA EXPERIENTIAL LEARNING PATHWAYS",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001410617",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MESA ACADEMY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001410618",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SUMMIT LEADERSHIP ACADEMY-HIGH DESERT",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001411118",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CYPRESS ACADEMY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001411119",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "OXFORD ACADEMY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001411120",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ACADEMICS \u0026 RESPONSIBILITY CHARTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001411121",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "OASIS CHARTER ACADEMY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001411173",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SUMMIT ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001411745",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "PATHWAYS TO COLLEGE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001411746",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MIRUS SECONDARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001411899",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CANYON RIDGE HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001412100",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CEDAR MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001412103",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MISSION CREST ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001412171",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "LAVERNE ELEMENTARY PREPARATORY ACADEMY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001412333",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ENCORE HIGH FOR THE PERFORMING AND VISUAL ARTS",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001412375",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "KRYSTAL ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001412415",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "OAK HILLS HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001412417",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Hesperia Adult",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001413323",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MOUNTAIN VIEW HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001503907",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "LUCERNE VALLEY COMMUNITY DAY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001506466",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "LUCERNE VALLEY ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001509083",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "LUCERNE VALLEY MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001509084",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "LUCERNE VALLEY HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001510305",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "COMMUNITY DAY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001511179",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SKY MOUNTAIN CHARTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001511860",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "LUCERNE VALLEY CAREER ACADEMY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001512039",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Alta Vista Innovation High",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001514154",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "OPTIONS FOR YOUTH - UPLAND",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001606467",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HILLSIDE HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001609085",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "UPLAND HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001609086",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "BALDY VIEW ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001609087",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CABRILLO ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001609088",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CITRUS ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001609089",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "FOOTHILL KNOLLS ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001609090",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MAGNOLIA ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001609091",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "PIONEER JUNIOR HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001609092",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SIERRA VISTA ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001609093",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SYCAMORE ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001609094",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "UPLAND ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001609095",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "UPLAND JUNIOR HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001609096",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "VALENCIA ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001609097",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "UPLAND UNIFIED",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001609677",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "PEPPER TREE ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001609678",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Upland Virtual",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001614642",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MESQUITE ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001701148",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "RIO VISTA ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001701149",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "VISTA CAMPANA MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001701151",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SYCAMORE ROCKS ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001705167",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ACADEMY FOR ACADEMIC EXCELLENC",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001707296",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CATO II SCHOOL OF REASON (CHAR",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001707297",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "GRANITE HILLS HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001708297",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "APPLE VALLEY ALTERNATIVE EDUCATIONAL CENTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001708588",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "APPLE VALLEY HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001709098",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WILLOW PARK HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001709099",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MARIANA ACADEMY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001709100",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "RANCHO VERDE ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001709101",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "YUCCA LOMA ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001709102",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "DESERT KNOLLS ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001709103",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "APPLE VALLEY JUNIOR HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001709104",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MOJAVE MESA",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001709105",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SANDIA",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001709272",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "APPLE VALLEY UNIFIED",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001709679",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "VANGUARD PREPARATORY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001711122",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SITTING BULL ACADEMY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001711747",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SITTING BULL MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001711748",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "PHOENIX ACADEMY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001712663",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "APPLE VALLEY UNIFIED PRESCHOOL SPECIAL EDUCATION",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001713290",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Apple Valley Virtual Academy",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001714643",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MOUNTAIN VALLEY COMMUNITY DAY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001808418",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "VALLEY HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001809106",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HAYFORK HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001809107",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HAYFORK VALLEY ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001809108",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HYAMPOM ARTS MAGNET ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001809109",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Mountain Valley Adult",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001813368",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "DUBLIN ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001906929",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "DOUGHERTY (JAMES) ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001908443",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "DUBLIN HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001909273",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "VALLEY HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001909274",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "FREDERIKSEN ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001909275",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MURRAY ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001909276",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "NEILSEN ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001909277",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WELLS INTERMEDIATE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001909278",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "DUBLIN JOINT UNIFIED",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001909680",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ELEANOR MURRAY FALLON",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001910735",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "JOHN GREEN ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001912078",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HAROLD WILLIAM KOLB",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001912927",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ELEANOR MURRAY FALLON",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001913169",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "J. M. Amador Elementary",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001913862",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Dublin Unified Preschool",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001914329",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Dublin Unified Transition Program",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001914338",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Cottonwood Creek",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001914370",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "York Alternative Learning Center",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001914628",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Emerald High",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060001914675",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HENRY P. MOHR ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002006951",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HART (THOMAS S.) MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002008444",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HEARST (PHEOBE APPERSON) ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002008445",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "FOOTHILL HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002009279",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ALT ED VILLAGE HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002009280",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "PLEASANTON UNIFIED ALTERNATIVE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002009281",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "AMADOR VALLEY HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002009282",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "DONLON ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002009283",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "LYDIKSEN ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002009284",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ALISAL ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002009285",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "FAIRLANDS ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002009286",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "VALLEY VIEW ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002009287",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WALNUT GROVE ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002009288",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HARVEST PARK INTERMEDIATE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002009289",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "VINTAGE HILLS ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002009290",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "PLEASANTON UNIFIED",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002009681",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "PLEASANTON MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002009682",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "PLEASANTON COMMUNITY DAY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002011910",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HARVEST PARK PRESCHOOL",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002013494",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "The Pleasanton Virtual Academy",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002014629",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SUNOL GLEN ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002109291",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "BAY AREA SCHOOL FOR INDEPENDENT STUDY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002110468",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MENDOTA CONTINUATION HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002200374",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MENDOTA HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002200395",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MENDOTA COMMUNITY DAY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002207970",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MCCABE ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002209292",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MCCABE JUNIOR HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002209293",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WASHINGTON ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002209294",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MENDOTA UNIFIED COMMUNITY ALTE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002209478",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CRESCENT VIEW WEST CHARTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002210789",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Mendota Elementary",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002213773",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MANZANITA COMMUNITY DAY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002307169",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CHAWANAKEE HOME STUDY (ALT)",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002307170",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "BONADELLE COMMUNITY DAY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002308140",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CHAWANAKEE ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002309295",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "NORTH FORK ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002309296",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "AUBERRY ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002309479",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "BALCH CAMP ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002309480",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SIERRA ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002309481",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SPRING VALLEY ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002309482",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "POLE CORRAL ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002309483",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SIERRA VIEW ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002309484",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "KERN HIGH SCHOOL DISTRICT ROC",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002409471",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "AURELIA PENNEKAMP ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002503570",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MANHATTAN BEACH INTERMEDIATE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002503572",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "GRAND VIEW ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002503573",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MEADOWS AVENUE ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002503575",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "PACIFIC ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002503576",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "OPAL ROBINSON ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002505922",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MIRA COSTA HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002506328",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MANHATTAN BEACH MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002507535",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MANHATTAN BEACH PRESCHOOL",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002513480",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "FRAZIER MOUNTAIN HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002604544",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MOUNTAIN COMMUNITY CHARTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002608705",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "EL TEJON ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002609485",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "FRAZIER PARK ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002609486",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "METTLER ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002609487",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "PINE MOUNTAIN LEARNING CENTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002610815",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "EL TEJON CONTINUATION HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002611986",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "TUSCANY HILLS ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002702451",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "DONALD GRAHAM ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002702452",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "BROWN (DAVID A.) MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002705011",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "TRI-VALLEY COMMUNITY DAY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002706254",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "GORDON KIEFER INDEPENDENT STUD",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002706274",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "COLLIER (WILLIAM) ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002707605",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ORTEGA HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002709488",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ELSINORE HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002709489",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ELSINORE ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002709490",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MACHADO ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002709491",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WILDOMAR ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002709492",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ELSINORE JUNIOR HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002709493",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "BUTTERFIELD ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002709494",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HAYMAN (JEAN) ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002709495",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "TERRA COTTA JUNIOR HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002709496",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "RAILROAD CANYON ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002709497",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WITHROW ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002709498",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "LAKE ELSINORE UNIFIED",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002709683",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "TEMESCAL CANYON HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002710280",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "LUISENO",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002710281",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "RICE CANYON ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002710352",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "COTTONWOOD CANYON ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002710587",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CANYON LAKE MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002710588",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "LAKESIDE HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002711036",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "REAGAN (RONALD) ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002711037",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "LAKELAND VILLAGE MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002711722",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "EARL WARREN ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002712001",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "KEITH MCCARTHY ACADEMY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002712094",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SYCAMORE ACADEMY OF SCIENCE AND CULTURAL ARTS",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002712433",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "LAKELAND VILLAGE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002712772",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SOUTHERN CALIFORNIA ONLINE ACADEMY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002712914",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "PRESCHOOL",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002713213",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Alberhill Elementary",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002714467",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "TEMECULA VALLEY UNIF. INDEP. S",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002802465",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "VAIL RANCH MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002803647",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "TEMECULA LEARNING CENTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002803648",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "PALOMA ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002805012",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "PAUBA VALLEY ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002806276",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CHAPARRAL HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002807222",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "VINTAGE HILLS ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002807223",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "LAMP CHARTER SCHOOL (161)",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002807606",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HELEN HUNT JACKSON ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002808270",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ABBY REINKE ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002808271",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "DAY (JAMES L.) MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002808272",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "TEMECULA PREPARATORY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002808564",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "TEMECULA VALLEY HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002809499",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "RANCHO VISTA HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002809500",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "TEMECULA MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002809501",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "VAIL ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002809502",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "RANCHO ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002809503",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "JOAN F. SPARKMAN ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002809504",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MARGARITA MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002809505",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "TEMECULA ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002809506",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "NICOLAS VALLEY ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002809684",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "RED HAWK ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002810282",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "YSABEL BARNETT ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002810353",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "RANCHO SANTA ROSA HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002810589",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "GREAT OAK HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002811038",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ALAMOS ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002811039",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "BELLA VISTA MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002811040",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CROWNE HILL ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002811041",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "LA VORGNA (SUSAN) ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002811042",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "TOBIN (TONY) ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002811043",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "FRENCH VALLEY ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002811170",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ERLE STANLEY GARDNER MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002811187",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "TEMECULA LUISENO ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002811838",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "KEEGAN ACADEMY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002812568",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "TEMECULA VALLEY ADULT",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002812584",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CONTEXT: MIDDLE SCHOOL TEMECULA",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002812778",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Home INstead INnovation Academy",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002814529",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Summit Academy",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002814681",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CREEKSIDE HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002902467",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "THOMPSON MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002903649",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "TOVASHAL (ELEM)",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002906282",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "COLE CANYON ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002908565",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MURRIETA ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002909507",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "AVAXAT ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002909508",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ALTA MURRIETA ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002909509",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CURRAN (E HALE) ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002909510",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "RAIL RANCH ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002909511",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MURRIETA VALLEY HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002909685",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SHIVELA MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002909686",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "BUCHANAN (DANIEL N.) ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002910354",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WARM SPRINGS MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002910590",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ANTELOPE HILLS ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002911044",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MONTE VISTA ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002911239",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Murrieta Canyon Academy",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002911241",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "VISTA MURRIETA HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002911249",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "LISA J. MAILS ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002911921",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "DOROTHY MCELHINNEY MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002912243",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MURRIETA MESA HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002912289",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Murrieta Preschool Outreach",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002914389",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Murrieta Options",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060002914598",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "COMPTON UNIFIED ROP",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003009512",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "PACIFIC VALLEY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003109475",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "BIG SUR CHARTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003112240",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Patricia Dreizler Continuation High",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003202227",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ADAMS MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003204949",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ALTA VISTA ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003204950",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "BERYL HEIGHTS ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003204951",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "BIRNEY ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003204952",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "PARRAS (NICK G.) MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003204955",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "JEFFERSON ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003204956",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "LINCOLN ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003204957",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MADISON ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003204958",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "TULITA ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003204960",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WASHINGTON ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003204961",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "REDONDO HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003206330",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "REDONDO BEACH LEARNING ACADEMY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003212165",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Redondo Beach Virtual Learning",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003214656",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "BRYANT MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003301255",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "DOS PALOS ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003301256",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "GEORGE CHRISTIAN ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003301257",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "DOS PALOS HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003301258",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ORO LOMA ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003304481",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "BERNHARD MARKS ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003304680",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "GEORGE CHRISTIAN EDUCATION CENTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003307695",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "DOS PALOS ADULT",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003310556",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "DOS PALOS ADULT",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003312608",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WESTSIDE COMMUNITY DAY MIDDLE HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003312656",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WEST SIDE COMMUNITY DAY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003312718",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "DOS PALOS CARVER CENTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003313609",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MATTIE WASHBURN ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003401797",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WINDSOR HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003405470",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WINDSOR MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003406982",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "CALI CALMECAC (CHARTER #162)",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003406983",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WINDSOR CREEK ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003408407",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WINDSOR OAKS ACADEMY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003408652",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "BROOKS ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003409465",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "VILLAGE CHARTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003411882",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "INSIGHT SCH OF CALIFORNIA - NORTH BAY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003412211",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "BRIDGES COMMUNITY BASED SCH, NORTH CO CONSORTIUM",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003412585",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Manzanita Montessori Charter",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003413987",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "North Bay Met Academy",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003414243",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Sonoma County Virtual Academy",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003414731",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "FARMERSVILLE JUNIOR HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003501547",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HESTER (J. E.) ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003501548",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "GEORGE L. SNOWDEN ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003501549",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "FARMERSVILLE HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003507903",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "DEEP CREEK ACADEMY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003508425",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "FREEDOM ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003511532",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "GREENE (LEROY F.) MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003601091",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "AMERICAN LAKES ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003601095",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "JEFFERSON ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003601108",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "BANNON CREEK ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003601114",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "NATOMAS HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003603755",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "NATOMAS CHARTER (MIDDLE)",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003603759",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "DISCOVERY HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003606335",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "NATOMAS CHARTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003607250",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "NATOMAS MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003608582",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "NATOMAS PARK ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003608583",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "TWO RIVERS ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003610359",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "INDERKUM HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003611084",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WITTER RANCH ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003611085",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SACRAMENTO VALLEY TECHNICAL HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003611086",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WESTLAKE CHARTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003611087",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HERON",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003611734",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "NATOMAS PACIFIC PATHWAYS PREP",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003611735",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "NATOMAS COMMUNITY DAY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003612349",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "H. ALLEN HIGHT ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003612351",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "H. ALLEN HIGHT MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003612420",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "NATOMAS PACIFIC PATHWAYS PREP MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003612523",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WESTLAKE CHARTER MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003612980",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "LEROY GREENE ACADEMY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003613189",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Natomas Gateways Middle",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003613761",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Natomas Pacific Pathways Prep Elementary",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003614043",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Paso Verde",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003614188",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Larry G. Meeks Academy",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003614537",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Heredia-Arriaga",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003614683",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "FERNDALE ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003701550",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "FERNDALE HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003701551",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MATTOLE TRIPLE JUNCTION HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003801994",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MATTOLE ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003803640",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MATTOLE VALLEY CHARTER (#159)",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003807500",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HONEYDEW ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003809400",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "EL CAPITAN ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003901212",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SCHENDEL ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003901213",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "DELHI HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003907540",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "DELHI MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003907541",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SHATTUCK EDUCATIONAL PARK",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003908524",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HARMONY ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003910965",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SHATTUCK INDEPENDENT STUDY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060003911971",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "RIVERDALE ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004005118",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "FIPPS PRIMARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004005119",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "RIVERDALE HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004005120",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ALTERNATIVE EDUCATION/HORIZON HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004007830",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "RIVERDALE COMMUNITY DAY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004008478",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "Riverdale Virtual",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004014691",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SHAVER LAKE ED. CENTER (CONT.)",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004103025",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WILLOW CREEK EDUC. CTR (CONT.)",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004108986",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WARNER HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004205341",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SAN JOSE VALLEY CONTINUATION H",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004206527",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WARNER ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004206844",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ALL TRIBES CHARTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004210387",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ALL TRIBES ELEMENTARY CHARTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004212735",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "WARNER I",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004212740",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "California Pacific Charter - San Diego",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004213918",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "BROOK KNOLL ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004306172",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SCOTTS VALLEY MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004306173",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "VINE HILL ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004306174",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SCOTTS VALLEY HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004308369",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "FITCH MOUNTAIN ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004402138",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HEALDSBURG ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004402139",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HEALDSBURG HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004402140",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HEALDSBURG JUNIOR HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004402141",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MOUNTAIN VIEW CONTINUATION HIG",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004402142",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MARCE BECERRA ACADEMY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004406727",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "FOSS CREEK ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004409849",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "HEALDSBURG CHARTER",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004412872",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "NORTH VALLEY HIGH (CONT.)",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004507089",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ORLAND HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004507090",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "FAIRVIEW ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004507091",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "MILL STREET ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004507092",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "PRICE INTERMEDIATE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004507093",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ORLAND COMMUNITY DAY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004508484",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "ORLAND ELEMENTARY COMMUNITY DAY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004510792",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "PINNACLES HIGH (CONT.)",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004607182",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "GONZALES HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004607183",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "FAIRVIEW MIDDLE",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004607184",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "LA GLORIA ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004607185",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "SOMAVIA HIGH",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004611204",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
+      "name": "DELTA ISLAND ELEMENTARY",
+      "types": [
+        "UrbanOrgSchool"
+      ],
+      "dcid": "nces/060004701215",
+      "provenanceId": "dc/base/US_UrbanOrg_Schools_Directory"
+    },
+    {
       "name": "American Christian Military Academy Of Excellence",
       "types": [
         "PrivateSchool",
@@ -52499,5 +56499,5 @@
       "provenanceId": "dc/base/WikidataGeos"
     }
   ],
-  "nextToken": "H4sIAAAAAAAA/5zSwUrDQBDGcTPGdjpBDHPKW1g9+ALRQ8FDIBUUUVg3oy6Mu5BsK30A31vEWw9bti/w24//Dj0RfkhYDZfLG6pt8NE4L8PKd2qsUNWKnzbTejQ28gkDFgwIDHjKgCUDnjHgjAHnDIgMuGBA4hKruqB1ki5bF3cZ5uzPbBb0mlTrO5Uv8dGMu95+hqDZq9+TfrPv37opju6IOo/Jd6gL3zJ2any+nC503o1ua6Jk55ljVUPzU9DzAX/zps4+RKd5H/w//gDeX7eiei9b0atlNv6SxC96scEPR5/OLwAAAP//AQAA///E/vpsTAMAAA=="
+  "nextToken": "H4sIAAAAAAAA/5zS30rDMBTHcXus21mKWs5V38LphS9QvRgIBrqB4h/I0uMMxATSbLIH8L1FvNtFRvoCn/z45ohngRv2i/5qfitq7V1UxnG/cNIqzaJq2Q3bYRmUjnRCgAUBAgGeEmBJgGcEOCHAKQEiAc4IUFCJVV2IZZIuWxP3Gebkz2xm4j2p1veWv9hFFfad/vTeZq/+SPrNoX9nhhjMiDpPyXeE9N8cpFUuX04XOpfB7FTk7DxTrGpofgrxcsTfrq3Rq2hs3gf/jz+CdzctW/vAO7bX82z8LYlfdqy968efzmuSv1iFtXKPYTNO/wUAAP//AQAA//9lL1nyqgMAAA=="
 }
