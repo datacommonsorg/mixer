@@ -13,7 +13,6 @@
 #  limitations under the License.
 
 # Test cases for the NL API, currently hosted at
-# bard.datacommons.org, staging.bard.datacommons.org,
 # nl.datacommons.org, and staging.nl.datacommons.org
 
 ENDPOINTS = [
