@@ -614,7 +614,7 @@ func TestMaybeMirrorV3_SlowQueryLogging(t *testing.T) {
 	mirrorWg.Wait()
 
 	logOutput := buf.String()
-	expectedMsg := "V3 mirrored call is signifcantly slower than V2"
+expectedMsg := "V3 mirrored call is significantly slower than V2"
 
 	if !strings.Contains(logOutput, expectedMsg) {
 		t.Errorf("Expected slow query log missing. Got: %q", logOutput)
