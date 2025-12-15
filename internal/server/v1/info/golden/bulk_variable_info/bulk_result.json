@@ -3180,7 +3180,7 @@
                       }
                     ],
                     "minValue": 53206,
-                    "maxValue": 71066
+                    "maxValue": 71083
                   },
                   "AdministrativeArea1": {
                     "placeCount": 364,
@@ -3388,11 +3388,11 @@
                 },
                 "minValue": 250,
                 "maxValue": 660361000,
-                "observationCount": 74340,
+                "observationCount": 74581,
                 "timeSeriesCount": 2557
               }
             ],
-            "observationCount": 74340,
+            "observationCount": 74581,
             "timeSeriesCount": 2557
           },
           "dc/base/Rwanda_Census": {
@@ -3967,7 +3967,7 @@
                     "maxValue": 4333994
                   },
                   "AdministrativeArea2": {
-                    "placeCount": 395,
+                    "placeCount": 396,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q3308170",
@@ -4043,7 +4043,7 @@
                     "maxValue": 79776
                   },
                   "City": {
-                    "placeCount": 3160,
+                    "placeCount": 3163,
                     "topPlaces": [
                       {
                         "dcid": "wikidataId/Q8686",
@@ -4177,12 +4177,12 @@
                 },
                 "minValue": 26,
                 "maxValue": 8860103,
-                "observationCount": 16437,
-                "timeSeriesCount": 3960
+                "observationCount": 16486,
+                "timeSeriesCount": 3964
               }
             ],
-            "observationCount": 16437,
-            "timeSeriesCount": 3960
+            "observationCount": 16486,
+            "timeSeriesCount": 3964
           },
           "dc/base/USCensusPEP_AgeSexRaceHispanicOrigin": {
             "importName": "USCensusPEP_AgeSexRaceHispanicOrigin",

@@ -8421,6 +8421,18 @@
               "latest_date": "2018"
             },
             {
+              "facet_id": "1456184638",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 28917
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2020",
+              "latest_date": "2020"
+            },
+            {
               "facet_id": "2458695583",
               "observations": [
                 {
@@ -13939,6 +13951,18 @@
               "obs_count": 40,
               "earliest_date": "1980",
               "latest_date": "2019"
+            },
+            {
+              "facet_id": "1456184638",
+              "observations": [
+                {
+                  "date": "2020",
+                  "value": 32730
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2020",
+              "latest_date": "2020"
             },
             {
               "facet_id": "2458695583",
@@ -42921,7 +42945,7 @@
               "observations": [
                 {
                   "date": "2020-04-01",
-                  "value": 55620
+                  "value": 54226
                 }
               ],
               "obs_count": 1,
@@ -52848,7 +52872,7 @@
     },
     "1964317807": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "2176550201": {
@@ -52889,7 +52913,7 @@
     },
     "815809675": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable",
       "unit": "Years"
     }
