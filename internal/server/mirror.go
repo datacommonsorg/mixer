@@ -127,7 +127,7 @@ func (s *Server) doMirror(
 
 	rpcMethod := reflect.TypeOf(originalReq).Elem().Name()
 	if latencyDiff >= slowQueryThreshold {
-		slog.Warn("V3 mirrored call is signifcantly slower than V2", "method", rpcMethod, "request", originalReq, "skipCache", skipCache, "latencyDiff", latencyDiff)
+slog.Warn("V3 mirrored call is significantly slower than V2", "method", rpcMethod, "request", originalReq.String(), "skipCache", skipCache, "latencyDiff", latencyDiff)
 	}
 
 	if v3Err != nil {
