@@ -586,3 +586,41 @@ func TestMaybeMirrorV3_ObservationIgnoresFacetIdsAndMapOrder(t *testing.T) {
 		t.Errorf("log output should be empty when responses only differ by facet IDs or facet map ordering, but got %q", logOutput)
 	}
 }
+
+func TestMaybeMirrorV3_SlowQueryLogging(t *testing.T) {
+	ctx := context.Background()
+	s := &Server{
+		flags: &featureflags.Flags{
+			V3MirrorFraction: 1.0,
+		},
+	}
+
+	req := &pbv2.NodeRequest{Nodes: []string{"test"}}
+	resp := &pbv2.NodeResponse{}
+
+	v3Call := func(ctx context.Context, req proto.Message) (proto.Message, error) {
+		return &pbv2.NodeResponse{}, nil
+	}
+
+	buf, cleanup := setUpSlogCapture()
+	defer cleanup()
+
+	var mirrorWg sync.WaitGroup
+	// Passing -11 seconds as originalLatency to avoid waiting for slowQueryThreshold:
+	// latencyDiff = (approx 0) - (-11s) = 11s
+	fakeV2Latency := -11 * time.Second
+
+	s.maybeMirrorV3(ctx, req, resp, fakeV2Latency, v3Call, GetV2NodeCmpOpts(), &mirrorWg)
+	mirrorWg.Wait()
+
+	logOutput := buf.String()
+	expectedMsg := "V3 mirrored call is signifcantly slower than V2"
+
+	if !strings.Contains(logOutput, expectedMsg) {
+		t.Errorf("Expected slow query log missing. Got: %q", logOutput)
+	}
+
+	if !strings.Contains(logOutput, "latencyDiff") {
+		t.Errorf("Log should contain the latencyDiff value. Got: %q", logOutput)
+	}
+}

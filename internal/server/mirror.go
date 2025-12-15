@@ -33,6 +33,8 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
+const slowQueryThreshold = 10 * time.Second
+
 // maybeMirrorV3 decides whether to send a mirror version of an API request to
 // the V3 API based on mirroring percentage and request characteristics. For
 // instance, only the first page of paginated requests is a candidate for mirroring.
@@ -123,6 +125,10 @@ func (s *Server) doMirror(
 	metrics.RecordV3LatencyDiff(ctx, latencyDiff, skipCache)
 
 	rpcMethod := reflect.TypeOf(originalReq).Elem().Name()
+	if latencyDiff >= slowQueryThreshold {
+		slog.Warn("V3 mirrored call is signifcantly slower than V2", "method", rpcMethod, "request", originalReq, "skipCache", skipCache, "latencyDiff", latencyDiff)
+	}
+
 	if v3Err != nil {
 		slog.Warn("V3 mirrored call failed", "method", rpcMethod, "skipCache", skipCache, "error", v3Err)
 		metrics.RecordV3MirrorError(ctx, v3Err)
