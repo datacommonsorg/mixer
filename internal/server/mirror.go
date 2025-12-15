@@ -16,6 +16,7 @@ package server
 
 import (
 	"context"
+	"encoding/json"
 	"log/slog"
 	"math/rand"
 	"reflect"
@@ -29,6 +30,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
 	"google.golang.org/grpc/metadata"
+	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/testing/protocmp"
 )
@@ -127,7 +129,25 @@ func (s *Server) doMirror(
 
 	rpcMethod := reflect.TypeOf(originalReq).Elem().Name()
 	if latencyDiff >= slowQueryThreshold {
-slog.Warn("V3 mirrored call is significantly slower than V2", "method", rpcMethod, "request", originalReq.String(), "skipCache", skipCache, "latencyDiff", latencyDiff)
+		marshaler := protojson.MarshalOptions{
+			UseProtoNames:   true,
+			EmitUnpopulated: false,
+		}
+
+		jsonBytes, err := marshaler.Marshal(originalReq)
+		if err != nil {
+			slog.Warn("V3 mirrored call is significantly slower than V2 (request marshal failed)",
+				"method", rpcMethod,
+				"error", err,
+				"latencyDiff", latencyDiff)
+		} else {
+			slog.Warn("V3 mirrored call is significantly slower than V2",
+				"method", rpcMethod,
+				"request", json.RawMessage(jsonBytes),
+				"skipCache", skipCache,
+				"latencyDiff", latencyDiff.String(),
+			)
+		}
 	}
 
 	if v3Err != nil {
