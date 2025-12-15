@@ -437,8 +437,9 @@ serviceGroups:
       - "/v2/node"
     replicas: 1
     resources:
-      memoryRequest: "2G"
-      memoryLimit: "2G"
+      memoryRequest: "8G"
+      memoryLimit: "8G"
+    cacheSVG: true
   default:
     urlPaths:
       - "/*"
