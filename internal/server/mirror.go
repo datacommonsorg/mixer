@@ -33,6 +33,7 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
+// slowQueryThreshold is the latency difference threshold above which the query will be logged for further investigation.
 const slowQueryThreshold = 10 * time.Second
 
 // maybeMirrorV3 decides whether to send a mirror version of an API request to
