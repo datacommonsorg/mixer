@@ -133,20 +133,19 @@ func (s *Server) doMirror(
 			UseProtoNames:   true,
 			EmitUnpopulated: false,
 		}
-
 		jsonBytes, err := marshaler.Marshal(originalReq)
 		if err != nil {
 			slog.Warn("V3 mirrored call is significantly slower than V2 (request marshal failed)",
 				"method", rpcMethod,
 				"error", err,
-				"latencyDiff", latencyDiff)
+				"skipCache", skipCache,
+				"latencyDiff", latencyDiff.String())
 		} else {
 			slog.Warn("V3 mirrored call is significantly slower than V2",
 				"method", rpcMethod,
 				"request", json.RawMessage(jsonBytes),
 				"skipCache", skipCache,
-				"latencyDiff", latencyDiff.String(),
-			)
+				"latencyDiff", latencyDiff.String())
 		}
 	}
 
