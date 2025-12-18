@@ -97,5 +97,7 @@ func NewFlags(path string) (*Flags, error) {
 		return nil, err
 	}
 
+	slog.Info("Feature flags initialized", "flags", *cfg.Flags)
+
 	return cfg.Flags, nil
 }
