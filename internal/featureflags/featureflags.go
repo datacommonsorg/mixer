@@ -76,14 +76,14 @@ func NewFlags(path string) (*Flags, error) {
 	cfg := &config{Flags: setDefaultValues()}
 
 	if path == "" {
-		// No feature flag path specified. Use default flag values.
+		slog.Info("No feature flag path specified. Using default flag values.", "flags", *cfg.Flags)
 		return cfg.Flags, nil
 	}
 
 	data, err := os.ReadFile(path)
 	if err != nil {
 		if os.IsNotExist(err) {
-			slog.Warn("Feature flags file not found. Using default values.", "path", path)
+			slog.Warn("Feature flags file not found. Using default flag values.", "path", path, "flags", *cfg.Flags)
 			return cfg.Flags, nil
 		}
 		return nil, err
