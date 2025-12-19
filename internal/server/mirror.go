@@ -16,6 +16,7 @@ package server
 
 import (
 	"context"
+	"encoding/json"
 	"log/slog"
 	"math/rand"
 	"reflect"
@@ -29,9 +30,13 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
 	"google.golang.org/grpc/metadata"
+	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/testing/protocmp"
 )
+
+// slowQueryThreshold is the latency difference threshold above which the query will be logged for further investigation.
+const slowQueryThreshold = 10 * time.Second
 
 // maybeMirrorV3 decides whether to send a mirror version of an API request to
 // the V3 API based on mirroring percentage and request characteristics. For
@@ -123,6 +128,27 @@ func (s *Server) doMirror(
 	metrics.RecordV3LatencyDiff(ctx, latencyDiff, skipCache)
 
 	rpcMethod := reflect.TypeOf(originalReq).Elem().Name()
+	if latencyDiff >= slowQueryThreshold {
+		marshaler := protojson.MarshalOptions{
+			UseProtoNames:   true,
+			EmitUnpopulated: false,
+		}
+		jsonBytes, err := marshaler.Marshal(originalReq)
+		if err != nil {
+			slog.Warn("V3 mirrored call is significantly slower than V2 (request marshal failed)",
+				"method", rpcMethod,
+				"error", err,
+				"skipCache", skipCache,
+				"latencyDiff", latencyDiff.String())
+		} else {
+			slog.Warn("V3 mirrored call is significantly slower than V2",
+				"method", rpcMethod,
+				"request", json.RawMessage(jsonBytes),
+				"skipCache", skipCache,
+				"latencyDiff", latencyDiff.String())
+		}
+	}
+
 	if v3Err != nil {
 		slog.Warn("V3 mirrored call failed", "method", rpcMethod, "skipCache", skipCache, "error", v3Err)
 		metrics.RecordV3MirrorError(ctx, v3Err)
