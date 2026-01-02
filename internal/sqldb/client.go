@@ -44,6 +44,7 @@ const (
 	cloudSQLDbPassKey            = "DB_PASS"
 	cloudSQLDbNameKey            = "DB_NAME"
 	cloudSQLDbPortKey            = "DB_PORT"
+	cloudSQLUsePrivateIPKey      = "CLOUDSQL_USE_PRIVATE_IP"
 )
 
 // SQLClient encapsulates a SQL DB connection.
@@ -126,20 +127,29 @@ func newCloudSQLConnection(instanceName string) (*sql.DB, error) {
 		return value
 	}
 	var (
-		dbUser = mustGetenv(cloudSQLDbUserKey)
-		dbPwd  = mustGetenv(cloudSQLDbPassKey)
-		dbName = getenv(cloudSQLDbNameKey, cloudSQLDefaultDbName)
-		dbPort = getenv(cloudSQLDbPortKey, cloudSQLDefaultPort)
+		dbUser       = mustGetenv(cloudSQLDbUserKey)
+		dbPwd        = mustGetenv(cloudSQLDbPassKey)
+		dbName       = getenv(cloudSQLDbNameKey, cloudSQLDefaultDbName)
+		dbPort       = getenv(cloudSQLDbPortKey, cloudSQLDefaultPort)
+		usePrivateIP = os.Getenv(cloudSQLUsePrivateIPKey) == "false"
 	)
 
-	d, err := cloudsqlconn.NewDialer(context.Background())
+	var dialerOpts []cloudsqlconn.Option
+	if usePrivateIP {
+		slog.Info("CloudSQL: Using private IP connection")
+		dialerOpts = append(dialerOpts, cloudsqlconn.WithDefaultDialOptions(cloudsqlconn.WithPrivateIP()))
+	} else {
+		slog.Info("CloudSQL: Using public IP connection")
+	}
+
+	d, err := cloudsqlconn.NewDialer(context.Background(), dialerOpts...)
 	if err != nil {
 		return nil, fmt.Errorf("cloudsqlconn.NewDialer: %w", err)
 	}
-	var opts []cloudsqlconn.DialOption
+
 	mysql.RegisterDialContext(cloudSQLConnectionIdentifier,
 		func(ctx context.Context, addr string) (net.Conn, error) {
-			return d.Dial(ctx, instanceName, opts...)
+			return d.Dial(ctx, instanceName)
 		})
 
 	dbURI := fmt.Sprintf(
@@ -156,6 +166,6 @@ func newCloudSQLConnection(instanceName string) (*sql.DB, error) {
 		return nil, fmt.Errorf("db.Ping: %w", err)
 	}
 
-	slog.Info("Connected to Cloud SQL instance", "instance", instanceName)
+	slog.Info("Connected to Cloud SQL instance", "instance", instanceName, "usePrivateIP", usePrivateIP)
 	return db, nil
 }
