@@ -131,7 +131,7 @@ func newCloudSQLConnection(instanceName string) (*sql.DB, error) {
 		dbPwd        = mustGetenv(cloudSQLDbPassKey)
 		dbName       = getenv(cloudSQLDbNameKey, cloudSQLDefaultDbName)
 		dbPort       = getenv(cloudSQLDbPortKey, cloudSQLDefaultPort)
-		usePrivateIP = os.Getenv(cloudSQLUsePrivateIPKey) == "false"
+		usePrivateIP = os.Getenv(cloudSQLUsePrivateIPKey) == "true"
 	)
 
 	var dialerOpts []cloudsqlconn.Option
