@@ -220,12 +220,6 @@ After applying these changes, you can verify the deployment:
     kubectl exec -it <recon-pod-name> -c mixer -- curl localhost:6060/healthz
     ```
 
-## Remainig Todos
-* Grant mixer service account the permissions in datcom-nl
-* push to dev and test
-* implement expansion for resolve endpoint
-
-
 ## Resolve Endpoint Expansion: Design & Implementation Plan
 
 ### 1. Objective
@@ -424,3 +418,9 @@ Coordinate resolution (Legacy) works exactly as before.
 ```bash
 curl "http://localhost:8081/v2/resolve?nodes=37.42,-122.08&property=<-geoCoordinate->dcid"
 ```
+
+
+## Remainig Todos
+* Grant mixer service account the permissions in datcom-nl
+* push to dev and test it out
+* revisit the new resolve endpoint contract
