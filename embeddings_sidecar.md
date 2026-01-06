@@ -8,6 +8,16 @@ Based on the routing configuration in `values.yaml`, the `/v2/resolve` endpoint 
 
 ## Required Modifications
 
+### 0. Feature Flags
+
+Ideally you should also enable the `EnableEmbeddingsResolver` feature flag in `deploy/featureflags/` for the environment you are deploying to (e.g. `dev.yaml`, `autopush.yaml`).
+
+```yaml
+flags:
+  # ...
+  EnableEmbeddingsResolver: true
+```
+
 ### 1. Update `deploy/helm_charts/mixer/values.yaml`
 
 Add the `embeddingsSidecar` configuration to the root level (or under `mixer` if preferred, but adjust access paths accordingly).

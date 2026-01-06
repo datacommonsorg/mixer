@@ -36,6 +36,9 @@ func (s *Server) V2ResolveCore(
 ) (*pbv2.ResolveResponse, error) {
 	// Check for explicit "indicator" resolver or implicit default (empty property and not "place" resolver)
 	if in.GetResolver() == "indicator" || (in.GetProperty() == "" && in.GetResolver() != "place") {
+		if !s.flags.EnableEmbeddingsResolver {
+			return nil, status.Errorf(codes.Unimplemented, "embeddings resolver is not enabled")
+		}
 		return resolve.ResolveEmbeddings(ctx, s.httpClient, in.GetNodes())
 	}
 
