@@ -34,6 +34,11 @@ import (
 func (s *Server) V2ResolveCore(
 	ctx context.Context, in *pbv2.ResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
+	// Check for explicit "indicator" resolver or implicit default (empty property and not "place" resolver)
+	if in.GetResolver() == "indicator" || (in.GetProperty() == "" && in.GetResolver() != "place") {
+		return resolve.ResolveEmbeddings(ctx, s.httpClient, in.GetNodes())
+	}
+
 	arcs, err := v2.ParseProperty(in.GetProperty())
 	if err != nil {
 		return nil, err

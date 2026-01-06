@@ -34,6 +34,7 @@ option go_package = "github.com/datacommonsorg/mixer/internal/proto/v2";
 message ResolveRequest{
     repeated string nodes = 1;
     string property = 2;
+    string resolver = 3;
 }
 
 message ResolveResponse{
@@ -41,6 +42,7 @@ message ResolveResponse{
         message Candidate {
             string dcid = 1;
             string dominant_type = 2;
+            map<string, string> metadata = 3;
         }
         string node = 1;
         repeated Candidate candidates = 3;

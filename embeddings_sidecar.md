@@ -223,3 +223,204 @@ After applying these changes, you can verify the deployment:
 ## Remainig Todos
 * Grant mixer service account the permissions in datcom-nl
 * push to dev and test
+* implement expansion for resolve endpoint
+
+
+## Resolve Endpoint Expansion: Design & Implementation Plan
+
+### 1. Objective
+Expand the `/v2/resolve` endpoint to support "smart" resolution using the Embeddings Sidecar. This allows resolving natural language queries (e.g., "population of california") to Statistical Variables (SVs) via vector search, separate from the existing ID/Coordinate/Description resolution logic.
+
+### 2. API Schema Changes (`proto/v2/resolve.proto`)
+
+We need to extend the Protocol Buffers definition to support the new request parameter and response metadata.
+
+**A. Update `ResolveRequest`**
+Add an optional `resolver` field to explicitly select the resolution strategy (though we will also support implicit routing).
+
+```protobuf
+message ResolveRequest {
+    repeated string nodes = 1;
+    string property = 2;
+    string resolver = 3; // New field: "place" or "indicator" (default)
+}
+```
+
+**B. Update `ResolveResponse`**
+Add a `metadata` field to the `Candidate` message to return confidence scores and matching sentences, which are critical for debugging and UI highlighting.
+
+```protobuf
+message ResolveResponse {
+    message Entity {
+        message Candidate {
+            string dcid = 1;
+            string dominant_type = 2;
+            // New field: Arbitrary metadata for debugging/UI (e.g., scores, sentence matches)
+            // Using Map<string, string> for flexibility.
+            map<string, string> metadata = 3;
+        }
+        string node = 1;
+        repeated Candidate candidates = 3;
+        // ...
+    }
+    repeated Entity entities = 1;
+}
+```
+
+### 3. Routing Logic (`internal/server/handler_core.go`)
+
+We will modify `V2ResolveCore` to implement the following decision tree:
+
+1.  **Check explicit `resolver` param:**
+    *   If `resolver == "place"`: Force Legacy Logic.
+    *   If `resolver == "indicator"`: Force New Embeddings Logic.
+2.  **Check `property` param (Implicit Fallback):**
+    *   If `property` is **NOT EMPTY**: Assume Legacy Logic (existing behavior for ID/Coordinate/Description resolution).
+    *   If `property` is **EMPTY** (and `resolver` is not "place"): Default to New Embeddings Logic.
+
+**Pseudocode:**
+```go
+func (s *Server) V2ResolveCore(ctx, in) {
+    if in.GetResolver() == "place" || in.GetProperty() != "" {
+        // ... Existing Legacy Logic (ParseProperty, Switch on SingleProp) ...
+    } else {
+        // ... New Logic ...
+        return resolve.ResolveEmbeddings(ctx, s.httpClient, in.GetNodes())
+    }
+}
+```
+
+### 4. Embeddings Logic (`internal/server/v2/resolve/embeddings.go`)
+
+Create a new file `internal/server/v2/resolve/embeddings.go` to handle the interaction with the sidecar.
+
+**A. Sidecar Client Structures**
+Define Go structs to match the Sidecar's JSON API.
+```go
+type EmbeddingsRequest struct {
+    Queries []string `json:"queries"`
+}
+
+type EmbeddingsResponse struct {
+    QueryResults map[string]struct {
+        SV            []string `json:"SV"`
+        CosineScore   []float64 `json:"CosineScore"`
+        SVToSentences map[string][]struct {
+            Sentence string  `json:"sentence"`
+            Score    float64 `json:"score"`
+        } `json:"SV_to_Sentences"`
+    } `json:"queryResults"`
+}
+```
+
+**B. `ResolveEmbeddings` Function**
+1.  **Construct Request:** Create `EmbeddingsRequest` from input `nodes`.
+2.  **Call Sidecar:** `POST http://localhost:6060/api/search_vars/` (use `s.httpClient`).
+3.  **Process Response:** Iterate through `EmbeddingsResponse.QueryResults` and map to `pbv2.ResolveResponse`.
+    *   **Candidate Mapping:**
+        *   `dcid` <- `SV[i]`
+        *   `dominant_type` <- "StatisticalVariable" (hardcoded for now as this is specifically for SV resolution).
+        *   `metadata`: Populate with "score" (from `CosineScore[i]`) and "sentence" (from `SVToSentences`).
+4.  **Error Handling:** Gracefully handle connection failures (e.g., sidecar not ready) by returning internal error or empty candidates.
+
+### 5. Verification Plan
+
+**A. Generate Protos**
+Run the repository's proto generation script (usually `go generate ./...` or `make gen`) to update `.pb.go` files.
+
+**B. Unit Tests**
+*   Create `internal/server/v2/resolve/embeddings_test.go`.
+*   Use `httptest` to mock the Sidecar's HTTP response.
+*   Verify that `ResolveEmbeddings` correctly parses the JSON and populates the Proto response.
+
+**C. Manual Integration Test**
+1.  Deploy changes to `mixer-dev` or run locally with sidecar enabled.
+2.  **Legacy Check:** `curl .../v2/resolve?property=<-geoCoordinate->dcid ...` -> Should work as before.
+3.  **New Logic Check:** `curl .../v2/resolve` (with body `{"nodes": ["population"]}`) -> Should hit sidecar path.
+4.  **Explicit Resolver Check:** `curl .../v2/resolve?resolver=indicator` -> Should hit sidecar path.
+
+### 6. Implementation Steps
+1.  **Proto:** Modify `resolve.proto` and regenerate.
+2.  **Logic:** Create `embeddings.go` with client logic.
+3.  **Routing:** Update `handler_core.go` to wire it up.
+4.  **Deploy:** Build and push new Mixer image.
+
+## Usage Guide: Smart Resolve Endpoint
+
+The `/v2/resolve` endpoint has been expanded to support **Smart Resolution** (Indicator/Statistical Variable resolution) using the embeddings sidecar. This allows users to resolve natural language queries to Statistical Variables.
+
+### Endpoint
+`POST /v2/resolve` or `GET /v2/resolve`
+
+### Request Parameters
+
+| Parameter | Type | Required | Description |
+| :--- | :--- | :--- | :--- |
+| `nodes` | List[String] | Yes | The strings to resolve (e.g., "population", "median income"). |
+| `resolver` | String | No | The resolution strategy to use.<br>• `indicator`: **Forces** Smart Resolution (Embeddings).<br>• `place`: **Forces** Legacy Resolution (ID/Coordinate/Description).<br>• `[Empty]`: Defaults to Smart Resolution if `property` is also empty. |
+| `property` | String | No | **Legacy Parameter.** If present, triggers Legacy Resolution. Examples: `<-geoCoordinate->dcid`, `<-description->dcid`. |
+
+### Response Format (Smart Resolution)
+
+The response follows the standard `ResolveResponse` structure but utilizes the `metadata` field for scoring and sentence matching.
+
+```json
+{
+  "entities": [
+    {
+      "node": "user query string",
+      "candidates": [
+        {
+          "dcid": "StatisticalVariable_DCID",
+          "dominantType": "StatisticalVariable",
+          "metadata": {
+            "score": "0.89",           // Cosine similarity score (0.0 - 1.0)
+            "sentence": "matched text", // The actual text description that matched
+            "sentence_score": "0.89"    // Score of the specific sentence match
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Examples
+
+#### 1. Smart Resolution (Implicit)
+Resolving a metric name without specifying a property.
+**Request:**
+```bash
+curl "http://localhost:8081/v2/resolve?nodes=population"
+```
+**Response:**
+```json
+{
+  "entities": [
+    {
+      "node": "population",
+      "candidates": [
+        {
+          "dcid": "Count_Person",
+          "dominantType": "StatisticalVariable",
+          "metadata": { "score": "0.98", "sentence": "population count" }
+        }
+      ]
+    }
+  ]
+}
+```
+
+#### 2. Smart Resolution (Explicit)
+Explicitly requesting the indicator resolver. Useful if you want to be certain of the behavior.
+**Request:**
+```bash
+curl "http://localhost:8081/v2/resolve?nodes=median%20income&resolver=indicator"
+```
+
+#### 3. Legacy Resolution (Backwards Compatibility)
+Coordinate resolution (Legacy) works exactly as before.
+**Request:**
+```bash
+curl "http://localhost:8081/v2/resolve?nodes=37.42,-122.08&property=<-geoCoordinate->dcid"
+```
