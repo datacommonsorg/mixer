@@ -197,8 +197,8 @@ You must grant the **Vertex AI User** (`roles/aiplatform.user`) role to the `mix
 **Principals to Authorize in `datcom-nl`:**
 *   `mixer-robot@datcom-mixer-autopush.iam.gserviceaccount.com`
 *   `mixer-robot@datcom-mixer-staging.iam.gserviceaccount.com`
-*   `mixer-robot@datcom-mixer-prod.iam.gserviceaccount.com`
-*   `mixer-robot@datcom-mixer-dev.iam.gserviceaccount.com`
+*   `mixer-robot@datcom-mixer.iam.gserviceaccount.com`
+*   `mixer-robot@datcom-mixer-dev-316822.iam.gserviceaccount.com`
 
 https://pantheon.corp.google.com/iam-admin/iam?project=datcom-nl 
 
@@ -421,7 +421,6 @@ curl "http://localhost:8081/v2/resolve?nodes=37.42,-122.08&property=<-geoCoordin
 
 
 ## Remaining Todos
-* Grant mixer service account the permissions in datcom-nl
 * push to dev and test it out
 * revisit the new resolve endpoint contract
-* Publish embeddings server image matching the tag (`gcr.io/datcom-ci/datacommons-nl:mixer-sidecar`)
+* create automatic tagging for the embeddings server
