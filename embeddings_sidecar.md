@@ -420,7 +420,8 @@ curl "http://localhost:8081/v2/resolve?nodes=37.42,-122.08&property=<-geoCoordin
 ```
 
 
-## Remainig Todos
+## Remaining Todos
 * Grant mixer service account the permissions in datcom-nl
 * push to dev and test it out
 * revisit the new resolve endpoint contract
+* Publish embeddings server image matching the tag (`gcr.io/datcom-ci/datacommons-nl:mixer-sidecar`)
