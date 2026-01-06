@@ -62,6 +62,10 @@ spec:
       {{- end }}
       serviceAccountName: {{ $.Values.serviceAccount.name }}
       volumes:
+        - name: embeddings-config
+          configMap:
+            name: mixer-embeddings-config
+            optional: true
         - name: schema-mapping
           configMap:
             name: {{ include "mixer.fullname" $ }}-schema-mapping
@@ -270,6 +274,39 @@ spec:
             periodSeconds: 10
             initialDelaySeconds: 60
             timeoutSeconds: 10
+        {{- if $group.enableEmbeddingsSidecar }}
+        - name: embeddings
+          image: "{{ $.Values.embeddingsSidecar.image.repository }}{{- if $.Values.embeddingsSidecar.image.tag }}:{{ $.Values.embeddingsSidecar.image.tag }}{{- end }}"
+          imagePullPolicy: {{ $.Values.embeddingsSidecar.image.pullPolicy }}
+          resources:
+            limits:
+              memory: {{ $.Values.embeddingsSidecar.memory }}
+            requests:
+              memory: {{ $.Values.embeddingsSidecar.memory }}
+          env:
+            - name: NUM_WORKERS
+              value: {{ $.Values.embeddingsSidecar.workers | quote }}
+            - name: ADDITIONAL_CATALOG_PATH
+              # Required to tell the app to load the catalog baked into the image at this path.
+              value: "/workspace/catalog.yaml"
+          ports:
+            - containerPort: 6060
+          startupProbe:
+            httpGet:
+              path: /healthz
+              port: 6060
+            failureThreshold: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 6060
+            timeoutSeconds: 300
+          volumeMounts:
+            - name: embeddings-config
+              mountPath: /datacommons/nl
+        {{- end }}
         - name: esp
           image:  "{{ $.Values.esp.image.repository }}{{- if $.Values.esp.image.tag -}}:{{ $.Values.esp.image.tag }}{{- end }}"
           imagePullPolicy: {{ $.Values.esp.image.pullPolicy }}
