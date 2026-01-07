@@ -43,7 +43,6 @@ api_title: DataCommons API
 nodes: 6
 
 embeddingsSidecar:
-  enabled: true
   env:
     vertex_ai_models:
       uae-large-v1-model:

@@ -16,8 +16,6 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-
-
 # Name of the Chart.
 nameOverride: ""
 # Full name of the release in the following format.
@@ -367,7 +365,6 @@ esp:
     tag: "2"
 
 embeddingsSidecar:
-  enabled: false
   image:
     repository: gcr.io/datcom-ci/datacommons-nl
     pullPolicy: IfNotPresent

@@ -49,7 +49,6 @@ serviceGroups:
     replicas: 10
 
 embeddingsSidecar:
-  enabled: true
   env:
     vertex_ai_models:
       uae-large-v1-model:

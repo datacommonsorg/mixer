@@ -46,7 +46,6 @@ api_title: DataCommons API (Staging)
 nodes: 2
 
 embeddingsSidecar:
-  enabled: true
   env:
     vertex_ai_models:
       uae-large-v1-model:
