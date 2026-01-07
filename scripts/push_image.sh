@@ -26,14 +26,14 @@
 # Example: ./scripts/push_image.sh datcom-ci DEV
 #
 # Configuration:
-#   Calls build/ci/cloudbuild.push_image.yaml
+#   Calls build/ci/cloudbuild.manual_push_image.yaml
 
 set -e
 
 PROJECT_ID=$1
 ENV=$2
 
-if [[ $PROJECT_ID == "" ]]; then
+if [[ -z $PROJECT_ID ]]; then
   PROJECT_ID=datcom-ci
 fi
 
