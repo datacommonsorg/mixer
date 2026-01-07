@@ -16,28 +16,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-embeddingsSidecar:
-  enabled: false
-  image:
-    repository: gcr.io/datcom-ci/datacommons-nl
-    pullPolicy: IfNotPresent
-    tag: "mixer-sidecar"
-  memory: "4G"
-  workers: 1
-  env:
-    default_indexes:
-      - base_uae_mem
-    enabled_indexes:
-      - base_uae_mem
-      - medium_ft
-      - sdg_ft
-      - undata_ft
-    vertex_ai_models:
-      uae-large-v1-model:
-        project_id: datcom-nl
-        location: us-central1
-        prediction_endpoint_id: "" # Must be defined per environment
-    enable_reranking: false
+
 
 # Name of the Chart.
 nameOverride: ""
@@ -388,17 +367,29 @@ esp:
     tag: "2"
 
 embeddingsSidecar:
+  enabled: false
   image:
     repository: gcr.io/datcom-ci/datacommons-nl
     pullPolicy: IfNotPresent
-    tag: "latest"
-  resources:
-    limits:
-      memory: "1G"
-      cpu: "1"
-    requests:
-      memory: "500M"
-      cpu: "500m"
+    tag: "mixer-sidecar"
+  memory: "2G"
+  workers: 1
+  env:
+    default_indexes:
+      - base_uae_mem
+    enabled_indexes:
+      - base_uae_mem
+      - medium_ft
+      - sdg_ft
+      - undata_ft
+    vertex_ai_models:
+      uae-large-v1-model:
+        project_id: datcom-nl
+        location: us-central1
+        prediction_endpoint_id: "" # Must be defined per environment
+    enable_reranking: false
+
+
 
 # Config for k8s-sa(service account). The k8s-sa will be bound to a
 # GCP-sa using annotations, specified below.
