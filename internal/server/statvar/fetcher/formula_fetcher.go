@@ -186,6 +186,9 @@ func FetchFormulas(
 		return nil, err
 	}
 	result := map[string][]string{}
+	if mergedResp == nil {
+		return result, nil
+	}
 	for _, props := range mergedResp.Data {
 		// Skip nodes missing required properties.
 		_, out := props.Arcs[outputProperty]
