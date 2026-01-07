@@ -34,21 +34,48 @@ Check if the k8s config points to the right cluster with `kubectl config current
 Sample output for dev-instance:
 `gke_datcom-mixer-dev-316822_us-central1_mixer-us-central1`
 
-### Install/update Mixer dev instance
+### Deploy to Mixer dev instance
+ 
+There are two ways to deploy updates to the Mixer dev instance, depending on what you are changing.
+ 
+#### 1. Code-Only Changes
+ 
+If you have **only** made changes to the Mixer code (Go, Python, etc) and do **not** need to update deployment configurations (Env vars, replicas, resource limits), you can use the direct Cloud Deploy script.
+ 
+1.  **Push Image:** Build and push your local code as a docker image to GCR (Artifact Registry)and upload the gRPC descriptor to GCS.
+    ```bash
+    ./scripts/push_image.sh
+    ```
+    *Note: This script uses `build/ci/cloudbuild.push_image.yaml`.*
 
-First, commit your changes locally so they have an associated commit hash.
+    The image gets uploaded here: https://pantheon.corp.google.com/artifacts/docker/datcom-ci/us/gcr.io/datacommons-mixer?project=datcom-ci
+    And the gRPC descriptor gets uploaded here: https://pantheon.corp.google.com/storage/browser/datcom-mixer-grpc/mixer-grpc?project=datcom-ci
+ 
+2.  **Deploy:** Take the image tag from the previous step (e.g., `dev-githash`) and run the deployment script **from your fork of the `website` repository**:
 
-After committing, run the deploy script specifying the dev env:
-
-```sh
-./scripts/deploy_gke.sh mixer_dev
+  To deploy to `datcom-mixer-dev`:
+    ```bash
+    # from root of website repo
+    ./scripts/deploy_mixer_cloud_deploy.sh <MIXER_IMAGE_TAG> datacommons-mixer-dev
 ```
 
-To deploy a specific non-HEAD commit, you can pass the commit hash as a second argument:
+  To deploy mixer-only changes to datcom-website-dev, use the last commit hash of the `website` repo and the image tag from the previous step:
+    ```bash
+    # from root of website repo
+    ./scripts/deploy_website_cloud_deploy.sh <WEBSITE_GITHASH> <IMAGE_TAG> datacommons-website-dev
+    ```
+  * You can double check the last website image pushed to Artifact Registry here: https://pantheon.corp.google.com/artifacts/docker/datcom-ci/us/gcr.io/datacommons-website?project=datcom-ci 
+ 
+#### 2. Configuration Changes (Full Deployment)
+ 
+If you have modified deployment configurations (e.g., `deploy/helm_charts/values.yaml`, `deploy/helm_charts/envs/*.yaml`), you **MUST** pull these changes into the `website` repository prior to deploying to ensure they are applied correctly.
+ 
+1.  Commit your changes to your fork of the `mixer` repo.
+2.  Update your local `website` repo to point to your `mixer` commit.
+3.  You still need to follow the previous steps to build and push your image (mixer repo: scripts/push_image.sh)
+4. Run the same deploy script as above, but from the website repo after updating the submodule.
 
-```sh
-./scripts/deploy_gke.sh mixer_dev <commit_hash>
-```
+For more info about deployment, see the [website developer guide](https://github.com/datacommonsorg/website/blob/master/docs/developer_guide.md#deployment).
 
 ### Installing Reloader
 
