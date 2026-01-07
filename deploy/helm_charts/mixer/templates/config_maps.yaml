@@ -63,7 +63,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: mixer-embeddings-config
-  namespace: {{ .Values.namespace.name }}
+  namespace: {{ .Release.Namespace }}
 data:
   # passes environment-specific settings (like Vertex AI Endpoint IDs) to emebeddings server
   env.yaml: |
