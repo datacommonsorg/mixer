@@ -14,6 +14,7 @@
 # limitations under the License.
 
 # This script builds and pushes the Mixer Docker image to GCR.
+# It also generates and uploads the gRPC descriptor to GCS (gs://datcom-mixer-grpc).
 # It is intended for manual or dev builds and avoids triggering the main CI/CD pipeline.
 #
 # Usage: ./scripts/push_image.sh [PROJECT_ID] [ENV]

@@ -11,7 +11,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-# This Cloud Build config is for manual or dev image builds and pushing them to Artifact Registry.
+# This Cloud Build config is for manual or dev image builds.
+# It builds the Docker image and uploads the gRPC descriptor to GCS (gs://datcom-mixer-grpc).
 # It is invoked by scripts/push_image.sh and avoids triggering the main CI/CD pipeline.
 
 steps:
