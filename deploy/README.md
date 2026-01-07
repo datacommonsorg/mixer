@@ -10,31 +10,7 @@ Mixer is deployed to Kubernetes cluster in
 - `helm_charts`: Helm charts configuration used for Kubernetes deployment.
 - `gke`: GKE cluster config.
 
-## Helm charts
-
-Each folder in `helm_charts/` contains a single
-[helm chart](https://helm.sh/docs/topics/charts/).
-
-A single helm chart organizes a collection of templatized k8s yaml files.
-
-## Installing a Helm chart
-
-Installing a Helm chart means filling in the templates with a set of values and
-applying the resources to a live cluster.
-
-Note: Helm uses
-[k8s config](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl)
-for authentication. You can visit the GCP UI and click "CONNECT" on your
-cluster's page to get the command to configure the k8s config.
-
-![Alt text](gke_connect.png?raw=true "credentials")
-
-Check if the k8s config points to the right cluster with `kubectl config current-context`.
-
-Sample output for dev-instance:
-`gke_datcom-mixer-dev-316822_us-central1_mixer-us-central1`
-
-### Deploy to Mixer dev instance
+## Deploy to Mixer dev instance
 
 To deploy changes to the Mixer dev instance, follow these steps:
 
@@ -65,6 +41,31 @@ To deploy changes to the Mixer dev instance, follow these steps:
     ```
 
     *For deploying to other environments (like `datcom-website-dev`), please refer to the [website developer guide](https://github.com/datacommonsorg/website/blob/master/docs/developer_guide.md#deployment).*
+
+## Helm charts
+
+Each folder in `helm_charts/` contains a single
+[helm chart](https://helm.sh/docs/topics/charts/).
+
+A single helm chart organizes a collection of templatized k8s yaml files.
+
+## Installing a Helm chart
+
+Installing a Helm chart means filling in the templates with a set of values and
+applying the resources to a live cluster.
+
+Note: Helm uses
+[k8s config](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl)
+for authentication. You can visit the GCP UI and click "CONNECT" on your
+cluster's page to get the command to configure the k8s config.
+
+![Alt text](gke_connect.png?raw=true "credentials")
+
+Check if the k8s config points to the right cluster with `kubectl config current-context`.
+
+Sample output for dev-instance:
+`gke_datcom-mixer-dev-316822_us-central1_mixer-us-central1`
+
 
 ### Installing Reloader
 
