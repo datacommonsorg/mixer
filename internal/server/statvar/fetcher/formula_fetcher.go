@@ -280,6 +280,9 @@ func fetchStatisticalCalculationProperties(
 		}
 		for _, props := range resp.Data {
 			// Skip nodes missing required properties.
+			if props == nil || props.Arcs == nil {
+				continue
+			}
 			_, out := props.Arcs[outputProperty]
 			_, in := props.Arcs[inputPropertyExpression]
 			if !out || !in {
