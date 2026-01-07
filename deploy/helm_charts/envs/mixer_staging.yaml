@@ -44,3 +44,10 @@ ip: 34.107.161.252
 region: us-central1
 api_title: DataCommons API (Staging)
 nodes: 2
+
+embeddingsSidecar:
+  enabled: true
+  env:
+    vertex_ai_models:
+      uae-large-v1-model:
+        prediction_endpoint_id: "8435477397553283072"

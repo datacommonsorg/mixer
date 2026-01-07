@@ -45,3 +45,10 @@ serviceGroups:
     replicas: 4
   default:
     replicas: 2
+
+embeddingsSidecar:
+  enabled: true
+  env:
+    vertex_ai_models:
+      uae-large-v1-model:
+        prediction_endpoint_id: "1400502935879680000"
