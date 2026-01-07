@@ -24,7 +24,7 @@ To deploy changes to the Mixer dev instance, follow these steps:
     ```
     *Note: This script uses `build/ci/cloudbuild.manual_push_image.yaml`.*
 
-    The image gets uploaded here: https://pantheon.corp.google.com/artifacts/docker/datcom-ci/us/gcr.io/datacommons-mixer?project=datcom-ci
+    The image gets uploaded here: https://pantheon.corp.google.com/artifacts/docker/datcom-ci/us/gcr.io/datacommons-mixer?project=datcom-ci \
     And the gRPC descriptor gets uploaded here: https://pantheon.corp.google.com/storage/browser/datcom-mixer-grpc/mixer-grpc?project=datcom-ci
 
 3.  **(Optional) Update Deployment Config:**
