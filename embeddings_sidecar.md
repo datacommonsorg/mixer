@@ -24,7 +24,6 @@ Add the `embeddingsSidecar` configuration to the root level (or under `mixer` if
 
 ```yaml
 embeddingsSidecar:
-  enabled: false
   image:
     repository: gcr.io/datcom-ci/datacommons-nl
     pullPolicy: IfNotPresent
@@ -53,7 +52,6 @@ embeddingsSidecar:
 
 ```yaml
 embeddingsSidecar:
-  enabled: true
   env:
     vertex_ai_models:
       uae-large-v1-model:
@@ -64,7 +62,6 @@ embeddingsSidecar:
 
 ```yaml
 embeddingsSidecar:
-  enabled: true
   env:
     vertex_ai_models:
       uae-large-v1-model:
@@ -75,7 +72,6 @@ embeddingsSidecar:
 
 ```yaml
 embeddingsSidecar:
-  enabled: true
   env:
     vertex_ai_models:
       uae-large-v1-model:
@@ -86,7 +82,6 @@ embeddingsSidecar:
 
 ```yaml
 embeddingsSidecar:
-  enabled: true
   env:
     vertex_ai_models:
       uae-large-v1-model:
@@ -98,6 +93,8 @@ embeddingsSidecar:
 You need to add the sidecar container definition **and** the volume definition if specific configs are needed.
 
 **A. Add the container to `spec.template.spec.containers`:**
+
+The container is conditionally added specifically for the `recon` workload using `$group.enableEmbeddingsSidecar`.
 
 ```yaml
       containers:
@@ -155,7 +152,6 @@ You must define the `embeddings-config` volume. If this points to a ConfigMap, e
         - name: embeddings-config
           configMap:
              name: mixer-embeddings-config # Make sure this ConfigMap exists!
-             optional: true # Set to true if it might not exist
 ```
 
 ### 3. Create/Update ConfigMap in `deploy/helm_charts/mixer/templates/config_maps.yaml`
@@ -163,7 +159,6 @@ You must define the `embeddings-config` volume. If this points to a ConfigMap, e
 You need to pass the `env` and `catalog` values to the sidecar, likely via a ConfigMap that is mounted as a file.
 
 ```yaml
-{{- if .Values.embeddingsSidecar.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -173,7 +168,6 @@ data:
   # env.yaml contains environment-specific settings (like Vertex AI Endpoint IDs) defined in your env files.
   env.yaml: |
     {{- toYaml .Values.embeddingsSidecar.env | nindent 4 }}
-{{- end }}
 ```
 
 ## Configuration Notes
