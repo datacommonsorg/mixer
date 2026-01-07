@@ -51,5 +51,5 @@ echo "Building and pushing mixer image to gcr.io/$PROJECT_ID/datacommons-mixer:$
 gcloud builds submit . \
   --async \
   --project=$PROJECT_ID \
-  --config=build/ci/cloudbuild.push_image.yaml \
+  --config=build/ci/cloudbuild.manual_push_image.yaml \
   --substitutions=_TAG=$TAG,_PROJECT_ID=$PROJECT_ID

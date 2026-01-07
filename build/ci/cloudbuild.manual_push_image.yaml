@@ -1,4 +1,4 @@
-# Copyright 2023 Google LLC
+# Copyright 2025 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ steps:
   # -------------------------------------------------------------------------
   
   # Build protobuf and grpc descriptor.
-  # WHY WE NEED THIS:
   # Mixer uses Google Cloud Endpoints (ESPv2) as an API gateway. ESPv2 needs a "FileDescriptorSet"
   # (a binary version of your .proto files) to know how to translate incoming JSON/HTTP requests
   # into gRPC calls that the backend server understands.
@@ -45,8 +44,7 @@ steps:
     waitFor: ["-"]
 
   # Push the grpc descriptor to gcs.
-  # WHY WE NEED THIS:
-  # The deployment script (scripts/deploy_gke.sh) downloads this specific .pb file 
+  # The deployment script downloads this specific .pb file 
   # from GCS to run `gcloud endpoints services deploy`.
   # Without this file in GCS, you cannot update the API gateway configuration,
   # meaning new endpoints or field changes won't be recognized by the gateway.
