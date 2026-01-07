@@ -22,7 +22,7 @@ steps:
   
   # Build protobuf and grpc descriptor.
   # Mixer uses Google Cloud Endpoints (ESPv2) as an API gateway. ESPv2 needs a "FileDescriptorSet"
-  # (a binary version of your .proto files) to know how to translate incoming JSON/HTTP requests
+  # (a binary version of the .proto files) to know how to translate incoming JSON/HTTP requests
   # into gRPC calls that the backend server understands.
   # This step compiles the schema so it can be deployed to ESP.
   - id: build-proto
@@ -46,7 +46,7 @@ steps:
   # Push the grpc descriptor to gcs.
   # The deployment script downloads this specific .pb file 
   # from GCS to run `gcloud endpoints services deploy`.
-  # Without this file in GCS, you cannot update the API gateway configuration,
+  # Without this file in GCS, the API gateway configuration cannot be updated,
   # meaning new endpoints or field changes won't be recognized by the gateway.
   # Note: We intentionally DO NOT overwrite mixer-grpc.latest.pb here to protect production.
   - id: push-grpc-descriptor
