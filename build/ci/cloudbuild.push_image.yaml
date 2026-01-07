@@ -15,6 +15,55 @@
 # It is invoked by scripts/push_image.sh and avoids triggering the main CI/CD pipeline.
 
 steps:
+  # -------------------------------------------------------------------------
+  # GROUP 1: Protocol Buffers & gRPC Descriptor
+  # -------------------------------------------------------------------------
+  
+  # Build protobuf and grpc descriptor.
+  # WHY WE NEED THIS:
+  # Mixer uses Google Cloud Endpoints (ESPv2) as an API gateway. ESPv2 needs a "FileDescriptorSet"
+  # (a binary version of your .proto files) to know how to translate incoming JSON/HTTP requests
+  # into gRPC calls that the backend server understands.
+  # This step compiles the schema so it can be deployed to ESP.
+  - id: build-proto
+    name: gcr.io/datcom-ci/go-protoc:${_GO_PROTOC_VERSION}
+    entrypoint: "bash"
+    args:
+      - -c
+      - |
+        protoc \
+          --descriptor_set_out mixer-grpc.$_TAG.pb \
+          --include_source_info \
+          --include_imports \
+          --proto_path=proto \
+          --go_out=paths=source_relative:internal/proto \
+          --go-grpc_out=paths=source_relative:internal/proto \
+          --go-grpc_opt=require_unimplemented_servers=false \
+          --experimental_allow_proto3_optional \
+          proto/*.proto proto/**/*.proto
+    waitFor: ["-"]
+
+  # Push the grpc descriptor to gcs.
+  # WHY WE NEED THIS:
+  # The deployment script (scripts/deploy_gke.sh) downloads this specific .pb file 
+  # from GCS to run `gcloud endpoints services deploy`.
+  # Without this file in GCS, you cannot update the API gateway configuration,
+  # meaning new endpoints or field changes won't be recognized by the gateway.
+  # Note: We intentionally DO NOT overwrite mixer-grpc.latest.pb here to protect production.
+  - id: push-grpc-descriptor
+    name: gcr.io/cloud-builders/gsutil
+    entrypoint: "bash"
+    args:
+      - -c
+      - |
+        set -e
+        gsutil cp mixer-grpc.$_TAG.pb gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$_TAG.pb
+    waitFor: ["build-proto"]
+
+  # -------------------------------------------------------------------------
+  # GROUP 2: Server Docker Image
+  # -------------------------------------------------------------------------
+
   - id: push-mixer-server
     name: gcr.io/cloud-builders/docker
     entrypoint: "bash"
