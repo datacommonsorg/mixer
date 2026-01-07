@@ -62,10 +62,12 @@ spec:
       {{- end }}
       serviceAccountName: {{ $.Values.serviceAccount.name }}
       volumes:
+        {{- if $group.enableEmbeddingsSidecar }}
         - name: embeddings-config
           configMap:
             name: mixer-embeddings-config
             optional: true
+        {{- end }}
         - name: schema-mapping
           configMap:
             name: {{ include "mixer.fullname" $ }}-schema-mapping
