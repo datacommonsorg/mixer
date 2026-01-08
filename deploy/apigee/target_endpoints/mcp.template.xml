@@ -19,7 +19,7 @@
         <Name>verify-api-key-in-header</Name>
       </Step>
     </Request>
-    <Response/>
+    <Response />
   </PreFlow>
   <PostFlow name="PostFlow">
     <Request>
@@ -27,9 +27,9 @@
         <Name>strip-api-key-header-and-params</Name>
       </Step>
     </Request>
-    <Response/>
+    <Response />
   </PostFlow>
-  <Flows/>
+  <Flows />
   <HTTPTargetConnection>
     <URL>https://REPLACE_WITH_MCP_SERVICE_URL</URL>
     <Properties>
