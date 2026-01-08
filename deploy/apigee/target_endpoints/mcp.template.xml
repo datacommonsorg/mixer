@@ -31,14 +31,14 @@
   </PostFlow>
   <Flows/>
   <HTTPTargetConnection>
-    <URL>https://mcp-server-staging-1093099542811.us-central1.run.app</URL>
+    <URL>https://REPLACE_WITH_MCP_SERVICE_URL</URL>
     <Properties>
       <Property name="response.streaming.enabled">true</Property>
       <Property name="io.timeout.millis">300000</Property>
     </Properties>
     <Authentication>
       <GoogleIDToken>
-        <Audience>https://mcp-server-staging-1093099542811.us-central1.run.app</Audience>
+        <Audience>https://REPLACE_WITH_MCP_SERVICE_URL</Audience>
       </GoogleIDToken>
     </Authentication>
   </HTTPTargetConnection>

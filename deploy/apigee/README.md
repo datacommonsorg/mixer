@@ -30,6 +30,10 @@
 1. Set up env-specific files:
    - Proxy structure config `envs/$ENV_NAME.yaml`
    - Proxy variable substitution values `./$ENV_NAME.env`. Use a temp value for PSC host IP if you haven't created an endpoint attachment yet. Other values should have been noted during previous steps.
+   - Add `MCP_SERVICE_URL` (the Cloud Run service URL) and `DEPLOYMENT_SERVICE_ACCOUNT` (the Service Account email for Apigee to invoke Cloud Run) to your `.env` file.
+     - **Note**: The `DEPLOYMENT_SERVICE_ACCOUNT` must have:
+       1. `roles/run.invoker` on the MCP Cloud Run service.
+       2. `roles/iam.serviceAccountTokenCreator` in the Apigee host project (to allow Apigee to mint tokens).
    - Apigee + load balancer Terraform `terraform/$ENV_NAME/*`
 1. **IMPORTANT**: Manually edit `terraform/$ENV_NAME/terraform.tf` to configure the `bucket` for the GCS backend. This bucket stores the Terraform state. The recommended format is `$HOST_PROJECT_ID-tf`.
 1. Create a destination in Secret Manager for your `./$ENV_NAME.env` file. For example, for the file nonprod.env, you would run `gcloud secrets create nonprod-env --project=<project_id from YAML> --data-file=nonprod.env`

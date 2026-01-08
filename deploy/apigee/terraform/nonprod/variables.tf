@@ -59,3 +59,8 @@ variable "psc_project" {
 variable "psc_service_name" {
   type = string
 }
+
+# Service Account email to use for the Apigee proxy deployment (Cloud Run invoker).
+variable "deployment_service_account" {
+  type = string
+}

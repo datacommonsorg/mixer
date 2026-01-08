@@ -179,6 +179,7 @@ function terraform_plan_and_maybe_apply() {
   set +e
   terraform plan -detailed-exitcode -out="$PLAN_FILE" \
       --var="access_token=$(gcloud auth print-access-token)" \
+      --var="deployment_service_account=$DEPLOYMENT_SERVICE_ACCOUNT" \
       -var-file=vars.tfvars
   PLAN_EXIT_CODE=$?
   set -e
