@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ProxyEndpoint name="api">
-  <Description />
-  <FaultRules />
+  <Description/>
+  <FaultRules/>
   <PreFlow name="PreFlow">
-    <Request />
-    <Response />
+    <Request/>
+    <Response/>
   </PreFlow>
   <PostFlow name="PostFlow">
-    <Request />
-    <Response />
+    <Request/>
+    <Response/>
   </PostFlow>
-  <Flows />
+  <Flows/>
   <HTTPProxyConnection>
     <BasePath>/api</BasePath>
     <Properties>
@@ -18,6 +18,10 @@
     </Properties>
     <VirtualHost>default</VirtualHost>
   </HTTPProxyConnection>
+  <RouteRule name="mcp-route">
+    <Condition>(proxy.pathsuffix MatchesPath "/mcp") or (proxy.pathsuffix MatchesPath "/mcp/**")</Condition>
+    <TargetEndpoint>mcp</TargetEndpoint>
+  </RouteRule>
   <RouteRule name="api">
     <TargetEndpoint>api</TargetEndpoint>
   </RouteRule>
