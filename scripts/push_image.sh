@@ -26,30 +26,30 @@
 # Example: ./scripts/push_image.sh datcom-ci DEV
 #
 # Configuration:
-#   Calls build/ci/cloudbuild.push_image.yaml
+#   Calls build/ci/cloudbuild.manual_push_image.yaml
 
 set -e
 
-PROJECT_ID=$1
-ENV=$2
+PROJECT_ID="$1"
+ENV="$2"
 
-if [[ $PROJECT_ID == "" ]]; then
+if [[ -z "$PROJECT_ID" ]]; then
   PROJECT_ID=datcom-ci
 fi
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 ROOT="$(dirname "$DIR")"
 
-TAG=$(git rev-parse --short=7 HEAD)
-if [[ $ENV == "DEV" ]]; then
+TAG="$(git rev-parse --short=7 HEAD)"
+if [[ "$ENV" == "DEV" ]]; then
   TAG="dev-$TAG"
 fi
 
-cd $ROOT
+cd "$ROOT"
 echo "Building and pushing mixer image to gcr.io/$PROJECT_ID/datacommons-mixer:$TAG"
 
 gcloud builds submit . \
   --async \
-  --project=$PROJECT_ID \
-  --config=build/ci/cloudbuild.push_image.yaml \
-  --substitutions=_TAG=$TAG,_PROJECT_ID=$PROJECT_ID
+  --project="$PROJECT_ID" \
+  --config=build/ci/cloudbuild.manual_push_image.yaml \
+  --substitutions=_TAG="$TAG",_PROJECT_ID="$PROJECT_ID"
