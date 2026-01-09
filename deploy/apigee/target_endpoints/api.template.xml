@@ -42,10 +42,24 @@
         </Step>
         <Step>
           <Condition>
+            (proxy.pathsuffix MatchesPath "/internal/bio") OR
+            (proxy.pathsuffix MatchesPath "/internal/import-table") OR
+            (proxy.pathsuffix MatchesPath "/place/stats-var") OR
+            (proxy.pathsuffix MatchesPath "/translate") OR
+            (proxy.pathsuffix MatchesPath "/update-cache") OR
+            (proxy.pathsuffix MatchesPath "/v1/bulk/observation-existence") OR
+            (proxy.pathsuffix MatchesPath "/v1/events") OR
+            (proxy.pathsuffix MatchesPath "/v1/events/dates") OR
+            (proxy.pathsuffix MatchesPath "/v1/observations/series/derived") OR
+            (proxy.pathsuffix MatchesPath "/v1/stat/date/within-place")
+          </Condition>
+          <Name>block-deprecated-endpoints</Name>
+        </Step>
+        <Step>
+          <Condition>
             <!-- List of endpoints that do NOT require a key -->
             !(
               (proxy.pathsuffix MatchesPath "/bulk/stats") OR
-              (proxy.pathsuffix MatchesPath "/internal/bio") OR
               (proxy.pathsuffix MatchesPath "/node/places-in") OR
               (proxy.pathsuffix MatchesPath "/node/property-labels") OR
               (proxy.pathsuffix MatchesPath "/node/property-values") OR
@@ -63,7 +77,6 @@
               (proxy.pathsuffix MatchesPath "/v1/recon/entity/resolve") OR
               (proxy.pathsuffix MatchesPath "/v1/recon/resolve/coordinate") OR
               (proxy.pathsuffix MatchesPath "/v1/recon/resolve/id") OR
-              (proxy.pathsuffix MatchesPath "/v1/stat/date/within-place") OR
               (proxy.pathsuffix MatchesPath "/v1/variable/search") OR
               (proxy.pathsuffix MatchesPath "/v2/resolve") OR
               (proxy.pathsuffix MatchesPath "/version") OR
