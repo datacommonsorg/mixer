@@ -43,14 +43,5 @@ serviceGroups:
     replicas: 4
   node:
     replicas: 4
-    resources:
-      memoryRequest: "4G"
-      memoryLimit: "4G"
   default:
     replicas: 2
-
-embeddingsSidecar:
-  env:
-    vertex_ai_models:
-      uae-large-v1-model:
-        prediction_endpoint_id: "1400502935879680000"

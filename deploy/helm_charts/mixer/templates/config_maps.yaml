@@ -56,19 +56,6 @@ data:
   hostProject: {{ required "Mixer GCP project is required." .Values.mixer.hostProject }}
   serviceName:  {{ required "Mixer service name is required." .Values.mixer.serviceName }}
 
-
----
-
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: mixer-embeddings-config
-  namespace: {{ .Release.Namespace }}
-data:
-  # passes environment-specific settings (like Vertex AI Endpoint IDs) to emebeddings server
-  env.yaml: |
-    {{- toYaml .Values.embeddingsSidecar.env | nindent 4 }}
-
 ---
 
 kind: ConfigMap
