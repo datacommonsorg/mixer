@@ -23,10 +23,10 @@ var statements = struct {
 	getPropsBySubjectID string
 	// Fetch Properties for in arcs.
 	getPropsByObjectID string
-	// Prefix for fetching Edges.
-	edgePrefix string
-	// Prefix for fetching Edges with chaining.
-	chainedEdgePrefix string
+	// Prefix for a graph query.
+	graphPrefix string
+	// Prefix for a graph query that matches any path.
+	graphPrefixAny string
 	// Fetch Edges for out arcs with a single hop.
 	getEdgesBySubjectID string
 	// Fetch Edges for out arcs with chaining.
@@ -71,6 +71,10 @@ var statements = struct {
 	resolvePropToDcid string
 	// Resolve one property to another.
 	resolvePropToProp string
+	// Generic subquery for filtering a Node.
+	nodeFilter string
+	// Generic triple pattern.
+	triple string
 }{
 	getCompletionTimestamp: `		SELECT
 		CompletionTimestamp
@@ -97,8 +101,8 @@ var statements = struct {
 		ORDER BY
 			subject_id,
 			predicate`,
-	edgePrefix:        `		GRAPH DCGraph MATCH `,
-	chainedEdgePrefix: `		GRAPH DCGraph MATCH ANY `,
+	graphPrefix:    `		GRAPH DCGraph MATCH `,
+	graphPrefixAny: `		GRAPH DCGraph MATCH ANY `,
 	getEdgesBySubjectID: `(m:Node
 		WHERE
 			m.subject_id IN UNNEST(@ids))-[e:Edge%s]->(n:Node)`,
@@ -221,8 +225,7 @@ var statements = struct {
 		INNER JOIN (%s)obs
 		ON 
 			result.object_id = obs.observation_about`,
-	searchNodesByQuery: `
-		GRAPH DCGraph MATCH (n:Node)
+	searchNodesByQuery: `		GRAPH DCGraph MATCH (n:Node)
 		WHERE
 			SEARCH(n.name_tokenlist, @query)%s
 		RETURN
@@ -265,4 +268,8 @@ var statements = struct {
 		RETURN
 			i.object_id AS node,
 			n.value AS candidate`,
+	nodeFilter: `
+		WHERE
+			%[1]s.subject_id IN UNNEST(@%[1]s)`,
+	triple: `(%[1]s:Node%[2]s)-[:Edge {predicate: @predicate%[3]d}]->(%[4]s:Node%[5]s)`,
 }

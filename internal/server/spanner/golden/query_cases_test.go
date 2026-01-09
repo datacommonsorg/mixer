@@ -20,6 +20,7 @@ import (
 
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
+	"github.com/datacommonsorg/mixer/internal/translator/types"
 )
 
 // The goldenTestFunc type represents a function that can be tested with the golden file pattern.
@@ -291,5 +292,100 @@ var resolveByIDTestCases = []struct {
 		in:     "unDataCode",
 		out:    "wikidataId",
 		golden: "resolve_prop_to_prop",
+	},
+}
+
+var sparqlTestCases = []struct {
+	nodes   []types.Node
+	queries []*types.Query
+	opts    *types.QueryOptions
+	golden  string
+}{
+	{
+		nodes: []types.Node{
+			{Alias: "?a"},
+		},
+		queries: []*types.Query{
+			{
+				Sub:  types.Node{Alias: "?a"},
+				Pred: "typeOf",
+				Obj:  "RaceCodeEnum",
+			},
+		},
+		opts: &types.QueryOptions{
+			Orderby: "?a",
+			ASC:     true,
+		},
+		golden: "sparql_race_code_enum",
+	},
+	{
+		nodes: []types.Node{
+			{Alias: "?name"},
+		},
+		queries: []*types.Query{
+			{
+				Sub:  types.Node{Alias: "?state"},
+				Pred: "typeOf",
+				Obj:  "State",
+			},
+			{
+				Sub:  types.Node{Alias: "?state"},
+				Pred: "dcid",
+				Obj:  "geoId/06",
+			},
+			{
+				Sub:  types.Node{Alias: "?state"},
+				Pred: "name",
+				Obj:  types.Node{Alias: "?name"},
+			},
+		},
+		opts:   &types.QueryOptions{},
+		golden: "sparql_name",
+	},
+	{
+		nodes: []types.Node{
+			{Alias: "?subject"},
+		},
+		queries: []*types.Query{
+			{
+				Sub:  types.Node{Alias: "?subject"},
+				Pred: "unDataLabel",
+				Obj:  types.Node{Alias: "?object"},
+			},
+			{
+				Sub:  types.Node{Alias: "?subject"},
+				Pred: "typeOf",
+				Obj:  "City",
+			},
+		},
+		opts: &types.QueryOptions{
+			Limit:    10,
+			Distinct: true,
+		},
+		golden: "sparql_un_data_label_cities",
+	},
+	{
+		nodes: []types.Node{
+			{Alias: "?name"},
+		},
+		queries: []*types.Query{
+			{
+				Sub:  types.Node{Alias: "?biologicalSpecimen"},
+				Pred: "typeOf",
+				Obj:  "BiologicalSpecimen",
+			},
+			{
+				Sub:  types.Node{Alias: "?biologicalSpecimen"},
+				Pred: "name",
+				Obj:  types.Node{Alias: "?name"},
+			},
+		},
+		opts: &types.QueryOptions{
+			Limit:    10,
+			Distinct: true,
+			Orderby:  "?name",
+			ASC:      false,
+		},
+		golden: "sparql_biological_specimen",
 	},
 }

@@ -113,6 +113,18 @@ func TestResolveByIDQuery(t *testing.T) {
 	}
 }
 
+func TestSparqlQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range sparqlTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.SparqlQuery(c.nodes, c.queries, c.opts), nil
+		})
+	}
+}
+
 // runQueryBuilderGoldenTest is a helper function that performs the golden file validation.
 func runQueryBuilderGoldenTest(t *testing.T, goldenFile string, fn goldenTestFunc) {
 	t.Helper()

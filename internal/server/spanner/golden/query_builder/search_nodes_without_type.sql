@@ -1,4 +1,3 @@
-
 		GRAPH DCGraph MATCH (n:Node)
 		WHERE
 			SEARCH(n.name_tokenlist, 'income')
