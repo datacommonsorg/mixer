@@ -1,0 +1,86 @@
+# Copyright 2025 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# This Cloud Build config is for manual or dev image builds.
+# It builds the Docker image and uploads the gRPC descriptor to GCS (gs://datcom-mixer-grpc).
+# It is invoked by scripts/push_image.sh and avoids triggering the main CI/CD pipeline.
+
+steps:
+  # -------------------------------------------------------------------------
+  # GROUP 1: Protocol Buffers & gRPC Descriptor
+  # -------------------------------------------------------------------------
+  
+  # Build protobuf and grpc descriptor.
+  # Mixer uses Google Cloud Endpoints (ESPv2) as an API gateway. ESPv2 needs a "FileDescriptorSet"
+  # (a binary version of the .proto files) to know how to translate incoming JSON/HTTP requests
+  # into gRPC calls that the backend server understands.
+  # This step compiles the schema so it can be deployed to ESP.
+  - id: build-proto
+    name: gcr.io/datcom-ci/go-protoc:${_GO_PROTOC_VERSION}
+    entrypoint: "bash"
+    args:
+      - -c
+      - |
+        protoc \
+          --descriptor_set_out mixer-grpc.$_TAG.pb \
+          --include_source_info \
+          --include_imports \
+          --proto_path=proto \
+          --go_out=paths=source_relative:internal/proto \
+          --go-grpc_out=paths=source_relative:internal/proto \
+          --go-grpc_opt=require_unimplemented_servers=false \
+          --experimental_allow_proto3_optional \
+          proto/*.proto proto/**/*.proto
+    waitFor: ["-"]
+
+  # Push the grpc descriptor to gcs.
+  # The deployment script downloads this specific .pb file 
+  # from GCS to run `gcloud endpoints services deploy`.
+  # Without this file in GCS, the API gateway configuration cannot be updated,
+  # meaning new endpoints or field changes won't be recognized by the gateway.
+  # Note: We intentionally DO NOT overwrite mixer-grpc.latest.pb here to protect production.
+  - id: push-grpc-descriptor
+    name: gcr.io/cloud-builders/gsutil
+    entrypoint: "bash"
+    args:
+      - -c
+      - |
+        set -e
+        gsutil cp mixer-grpc.$_TAG.pb gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$_TAG.pb
+    waitFor: ["build-proto"]
+
+  # -------------------------------------------------------------------------
+  # GROUP 2: Server Docker Image
+  # -------------------------------------------------------------------------
+
+  - id: push-mixer-server
+    name: gcr.io/cloud-builders/docker
+    entrypoint: "bash"
+    args:
+      - -c
+      - |
+        set -e
+        docker build -f build/server/Dockerfile \
+          --build-arg GO_PROTOC_VERSION=${_GO_PROTOC_VERSION} \
+          -t gcr.io/$_PROJECT_ID/datacommons-mixer:${_TAG} \
+          .
+        docker push gcr.io/$_PROJECT_ID/datacommons-mixer:${_TAG}
+    waitFor: ["-"]
+
+substitutions:
+  _GO_PROTOC_VERSION: "2025-07-30"
+
+timeout: 3600s
+options:
+  dynamic_substitutions: true
+  machineType: "E2_HIGHCPU_32"

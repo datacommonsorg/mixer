@@ -62,6 +62,7 @@ resource "apigee_proxy_deployment" "dev-api" {
   proxy_name       = apigee_proxy.api.name
   environment_name = "dev"
   revision         = apigee_proxy.api.revision # Deploy latest
+  service_account  = var.deployment_service_account
 }
 
 resource "apigee_proxy_deployment" "dev-nl" {
