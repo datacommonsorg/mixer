@@ -18,6 +18,10 @@
     </Properties>
     <VirtualHost>default</VirtualHost>
   </HTTPProxyConnection>
+  <RouteRule name="mcp-route">
+    <Condition>(proxy.pathsuffix MatchesPath "/mcp") or (proxy.pathsuffix MatchesPath "/mcp/**")</Condition>
+    <TargetEndpoint>mcp</TargetEndpoint>
+  </RouteRule>
   <RouteRule name="api">
     <TargetEndpoint>api</TargetEndpoint>
   </RouteRule>
