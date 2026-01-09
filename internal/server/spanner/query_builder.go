@@ -44,6 +44,7 @@ const (
 	objectValuePrefix = 16
 )
 
+// Query is the Spanner representation of one SPARQL query triple.
 type Query struct {
 	// Query predicate is a string of schema.
 	Pred string
@@ -308,7 +309,7 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 func formatSparqlQueriesForSpanner(nodes []types.Node, queries []*types.Query) ([]types.Node, []*Query) {
 	var spannerNodes []types.Node
 	for _, n := range nodes {
-		spannerNodes = append(spannerNodes, types.Node{Alias: n.Alias[1:] + "_"})
+		spannerNodes = append(spannerNodes, setAlias(n))
 	}
 
 	var spannerQueries []*Query
@@ -330,9 +331,9 @@ func formatSparqlQueriesForSpanner(nodes []types.Node, queries []*types.Query) (
 
 		// Replace triples with dcids.
 		query := &Query{
-			Sub:  formatSparqlNodeForSpanner(q.Sub, filter),
+			Sub:  formatSparqlEntityForSpanner(q.Sub, filter),
 			Pred: q.Pred,
-			Obj:  formatSparqlNodeForSpanner(q.Obj, filter),
+			Obj:  formatSparqlEntityForSpanner(q.Obj, filter),
 		}
 		if dcid, ok := dcidMap[q.Sub.Alias]; ok {
 			query.Sub = []string{dcid}
@@ -347,10 +348,10 @@ func formatSparqlQueriesForSpanner(nodes []types.Node, queries []*types.Query) (
 	return spannerNodes, spannerQueries
 }
 
-// formatSparqlNodeForSpanner updates a SPARQL node for Spanner.
-func formatSparqlNodeForSpanner(in interface{}, filter bool) interface{} {
+// formatSparqlNodeForSpanner updates a SPARQL entity for Spanner.
+func formatSparqlEntityForSpanner(in interface{}, filter bool) interface{} {
 	if node, ok := in.(types.Node); ok {
-		return types.Node{Alias: node.Alias[1:] + "_"}
+		return setAlias(node)
 	}
 
 	vals := []string{in.(string)}
@@ -358,6 +359,12 @@ func formatSparqlNodeForSpanner(in interface{}, filter bool) interface{} {
 		return vals
 	}
 	return addObjectValues(vals)
+}
+
+// setAlias updates a SPARQL alias for Spanner.
+func setAlias(node types.Node) types.Node {
+	return types.Node{Alias: node.Alias[1:] + "_"}
+
 }
 
 func generateValueHash(input string) string {

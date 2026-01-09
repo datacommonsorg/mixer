@@ -73,7 +73,7 @@ var statements = struct {
 	resolvePropToProp string
 	// Generic subquery for filtering a Node.
 	nodeFilter string
-	// Generic pattern.
+	// Generic triple pattern.
 	triple string
 }{
 	getCompletionTimestamp: `		SELECT
