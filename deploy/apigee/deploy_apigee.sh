@@ -184,6 +184,11 @@ function terraform_plan_and_maybe_apply() {
     ACCESS_TOKEN=$(gcloud auth print-access-token)
   fi
 
+  if [ -z "$ACCESS_TOKEN" ]; then
+    echo "Error: Could not obtain gcloud access token. Please ensure you are authenticated." >&2
+    exit 1
+  fi
+
   terraform plan -detailed-exitcode -out="$PLAN_FILE" \
       --var="access_token=$ACCESS_TOKEN" \
       --var="deployment_service_account=$DEPLOYMENT_SERVICE_ACCOUNT" \
