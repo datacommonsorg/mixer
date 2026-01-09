@@ -23,9 +23,9 @@ var statements = struct {
 	getPropsBySubjectID string
 	// Fetch Properties for in arcs.
 	getPropsByObjectID string
-	// Prefix for graph query.
+	// Prefix for a graph query.
 	graphPrefix string
-	// Prefix for graph query with any matching.
+	// Prefix for a graph query that matches any path.
 	graphPrefixAny string
 	// Fetch Edges for out arcs with a single hop.
 	getEdgesBySubjectID string
