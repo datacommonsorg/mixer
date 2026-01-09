@@ -28,12 +28,30 @@ import (
 	"github.com/datacommonsorg/mixer/internal/merger"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	v3 "github.com/datacommonsorg/mixer/internal/server/v3"
+	"github.com/datacommonsorg/mixer/internal/translator/types"
+)
+
+const (
+	sqlReturn   = "\n\t\tRETURN"
+	sqlDistinct = " DISTINCT "
+	sqlDesc     = "\n\t\tDESC"
+	sqlOrderBy  = "\n\t\tORDER BY "
+	sqlLimit    = "\n\t\tLIMIT "
 )
 
 const (
 	// Prefix length of value to include in object value ids.
 	objectValuePrefix = 16
 )
+
+type Query struct {
+	// Query predicate is a string of schema.
+	Pred string
+	// Query subject is a node or string
+	Sub interface{}
+	// Query object is a node or string.
+	Obj interface{}
+}
 
 func GetCompletionTimestampQuery() *spanner.Statement {
 	return &spanner.Statement{
@@ -122,10 +140,10 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 	var prefix, returnEdges string
 	switch arc.Decorator {
 	case v3.Chain:
-		prefix = statements.chainedEdgePrefix
+		prefix = statements.graphPrefixAny
 		returnEdges = statements.returnChainedEdges
 	default:
-		prefix = statements.edgePrefix
+		prefix = statements.graphPrefix
 		if len(arc.Filter) > 0 {
 			returnEdges += statements.returnFilterEdges
 		} else {
@@ -220,6 +238,126 @@ func ResolveByIDQuery(nodes []string, in, out string) *spanner.Statement {
 		SQL:    sql,
 		Params: params,
 	}
+}
+
+func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) *spanner.Statement {
+	spannerNodes, spannerQueries := formatSparqlQueriesForSpanner(nodes, queries)
+	sql := statements.graphPrefixAny
+	params := map[string]interface{}{}
+
+	count := 0
+	triples := []string{}
+	for _, q := range spannerQueries {
+		sCount := strconv.Itoa(count)
+		params["predicate"+sCount] = q.Pred
+
+		var sId, sFilter, oId, oFilter string
+		if sNode, ok := q.Sub.(types.Node); ok {
+			sId = sNode.Alias
+		} else if sVal, ok := q.Sub.([]string); ok {
+			sId = "s" + sCount
+			sFilter = fmt.Sprintf(statements.nodeFilter, sId)
+			params[sId] = sVal
+		}
+		if oNode, ok := q.Obj.(types.Node); ok {
+			oId = oNode.Alias
+		} else if oVal, ok := q.Obj.([]string); ok {
+			oId = "o" + sCount
+			oFilter = fmt.Sprintf(statements.nodeFilter, oId)
+			params[oId] = oVal
+		}
+
+		triples = append(triples, fmt.Sprintf(statements.triple, sId, sFilter, count, oId, oFilter))
+		count++
+	}
+
+	sql += strings.Join(triples, ",\n\t\t")
+
+	var distinct string
+	if opts.Distinct {
+		distinct = sqlDistinct
+	}
+	sql += sqlReturn + distinct + "\n\t\t\t" + strings.Join(func() []string {
+		var aliases []string
+		for _, n := range spannerNodes {
+			aliases = append(aliases, n.Alias+".value")
+		}
+		return aliases
+	}(), ",\n\t\t\t")
+
+	if opts.Orderby != "" {
+		sql += sqlOrderBy + "\n\t\t\t" + opts.Orderby[1:] + "_.value"
+		if !opts.ASC {
+			sql += sqlDesc
+		}
+	}
+	if opts.Limit > 0 {
+		sql += sqlLimit + strconv.Itoa(opts.Limit)
+	}
+
+	return &spanner.Statement{
+		SQL:    sql,
+		Params: params,
+	}
+}
+
+// formatSparqlQueriesForSpanner formats SPARQL queries for use in Spanner queries, including
+// - updating node aliases
+// - updating values
+// - resolving dcid triples
+func formatSparqlQueriesForSpanner(nodes []types.Node, queries []*types.Query) ([]types.Node, []*Query) {
+	var spannerNodes []types.Node
+	for _, n := range nodes {
+		spannerNodes = append(spannerNodes, types.Node{Alias: n.Alias[1:] + "_"})
+	}
+
+	var spannerQueries []*Query
+	dcidMap := make(map[string]string)
+	for _, q := range queries {
+		if q.Pred == "dcid" {
+			dcidMap[q.Sub.Alias] = q.Obj.(string)
+		}
+	}
+
+	for _, q := range queries {
+		// Skip dcid triples which are resolved.
+		if q.Pred == "dcid" {
+			continue
+		}
+
+		// SPARQL queries typically include a "typeOf" triple, which have a reference object.
+		filter := q.Pred == "typeOf"
+
+		// Replace triples with dcids.
+		query := &Query{
+			Sub:  formatSparqlNodeForSpanner(q.Sub, filter),
+			Pred: q.Pred,
+			Obj:  formatSparqlNodeForSpanner(q.Obj, filter),
+		}
+		if dcid, ok := dcidMap[q.Sub.Alias]; ok {
+			query.Sub = []string{dcid}
+		}
+		if node, ok := q.Obj.(types.Node); ok {
+			if dcid, ok := dcidMap[node.Alias]; ok {
+				query.Obj = []string{dcid}
+			}
+		}
+		spannerQueries = append(spannerQueries, query)
+	}
+	return spannerNodes, spannerQueries
+}
+
+// formatSparqlNodeForSpanner updates a SPARQL node for Spanner.
+func formatSparqlNodeForSpanner(in interface{}, filter bool) interface{} {
+	if node, ok := in.(types.Node); ok {
+		return types.Node{Alias: node.Alias[1:] + "_"}
+	}
+
+	vals := []string{in.(string)}
+	if filter {
+		return vals
+	}
+	return addObjectValues(vals)
 }
 
 func generateValueHash(input string) string {
