@@ -21,11 +21,8 @@
     </Request>
     <Response />
   </PreFlow>
-  <PostFlow name="PostFlow">
-    <Request />
-    <Response />
-  </PostFlow>
   <Flows />
+  <PostFlow />
   <HTTPTargetConnection>
     <URL>https://REPLACE_WITH_MCP_SERVICE_URL</URL>
     <Properties>
