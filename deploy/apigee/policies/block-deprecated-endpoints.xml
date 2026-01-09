@@ -4,12 +4,7 @@
     <Properties/>
     <FaultResponse>
         <Set>
-            <Payload contentType="application/json">
-              {
-                "message": "This endpoint has been deprecated. For more information, please contact support@datacommons.org.",
-                "code": 410
-              }
-            </Payload>
+            <Payload contentType="application/json">{"message":"This endpoint has been deprecated. For more information, please contact support@datacommons.org.", "code": 410}</Payload>
             <StatusCode>410</StatusCode>
             <ReasonPhrase>Gone</ReasonPhrase>
         </Set>
