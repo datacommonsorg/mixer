@@ -48,9 +48,9 @@ const (
 type Query struct {
 	// Query predicate is a string of schema.
 	Pred string
-	// Query subject is a node or string
+	// Query subject is a Node or slice of strings.
 	Sub interface{}
-	// Query object is a node or string.
+	// Query object is a Node or slice of strings.
 	Obj interface{}
 }
 
