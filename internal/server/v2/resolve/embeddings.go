@@ -81,32 +81,32 @@ func ResolveUsingEmbeddings(
 	}
 	jsonBody, err := json.Marshal(reqBody)
 	if err != nil {
-		return nil, status.Errorf(codes.Internal, "failed to marshal embeddings request: %v", err)
+		return nil, status.Errorf(codes.Internal, "Internal error preparing query for resolution: %v", err)
 	}
 
 	// Create the HTTP request
 	req, err := http.NewRequestWithContext(ctx, "POST", embeddingsServerURL+"/api/search_vars", bytes.NewBuffer(jsonBody))
 	if err != nil {
-		return nil, status.Errorf(codes.Internal, "failed to create embeddings request: %v", err)
+		return nil, status.Errorf(codes.Internal, "Failed to create embeddings server request: %v", err)
 	}
 	req.Header.Set("Content-Type", "application/json")
 
 	// Execute the request
 	resp, err := httpClient.Do(req)
 	if err != nil {
-		return nil, status.Errorf(codes.Unavailable, "failed to contact embeddings sidecar: %v", err)
+		return nil, status.Errorf(codes.Unavailable, "Failed to contact embeddings server: %v", err)
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
 		bodyBytes, _ := io.ReadAll(resp.Body)
-		return nil, status.Errorf(codes.Internal, "embeddings sidecar returned status %d: %s", resp.StatusCode, string(bodyBytes))
+		return nil, status.Errorf(codes.Internal, "Embeddings server returned status %d: %s", resp.StatusCode, string(bodyBytes))
 	}
 
 	// Parse the response
 	var embResp EmbeddingsResponse
 	if err := json.NewDecoder(resp.Body).Decode(&embResp); err != nil {
-		return nil, status.Errorf(codes.Internal, "failed to decode embeddings response: %v", err)
+		return nil, status.Errorf(codes.Internal, "Failed to decode embeddings server response: %v", err)
 	}
 
 	// Map to protobuf response
