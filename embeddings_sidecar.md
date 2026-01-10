@@ -313,13 +313,12 @@ type EmbeddingsResponse struct {
 
 **B. `ResolveEmbeddings` Function**
 1.  **Construct Request:** Create `EmbeddingsRequest` from input `nodes`.
-2.  **Call Sidecar:** `POST http://localhost:6060/api/search_vars/` (use `s.httpClient`).
+2.  **Call Sidecar:** `--embeddings_server_url="http://localhost:6060"/` (use `s.httpClient`).
 3.  **Process Response:** Iterate through `EmbeddingsResponse.QueryResults` and map to `pbv2.ResolveResponse`.
     *   **Candidate Mapping:**
         *   `dcid` <- `SV[i]`
         *   `dominant_type` <- "StatisticalVariable" (hardcoded for now as this is specifically for SV resolution).
         *   `metadata`: Populate with "score" (from `CosineScore[i]`) and "sentence" (from `SVToSentences`).
-4.  **Error Handling:** Gracefully handle connection failures (e.g., sidecar not ready) by returning internal error or empty candidates.
 
 ### 5. Verification Plan
 
@@ -372,9 +371,8 @@ The response follows the standard `ResolveResponse` structure but utilizes the `
           "dcid": "StatisticalVariable_DCID",
           "dominantType": "StatisticalVariable",
           "metadata": {
-            "score": "0.89",           // Cosine similarity score (0.0 - 1.0)
-            "sentence": "matched text", // The actual text description that matched
-            "sentence_score": "0.89"    // Score of the specific sentence match
+            "score": "0.89",           // Score of the highest scoring sentence (0.0 - 1.0)
+            "sentence": "matched text"  // The actual text description that matched
           }
         }
       ]

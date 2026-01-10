@@ -27,10 +27,6 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-var (
-	embeddingsURL = "http://localhost:6060/api/search_vars"
-)
-
 // EmbeddingsRequest represents the request body for the sidecar
 type EmbeddingsRequest struct {
 	Queries []string `json:"queries"`
@@ -52,6 +48,7 @@ type EmbeddingsResponse struct {
 func ResolveEmbeddings(
 	ctx context.Context,
 	httpClient *http.Client,
+	embeddingsURL string,
 	nodes []string,
 ) (*pbv2.ResolveResponse, error) {
 	// Construct the request body
@@ -64,7 +61,7 @@ func ResolveEmbeddings(
 	}
 
 	// Create the HTTP request
-	req, err := http.NewRequestWithContext(ctx, "POST", embeddingsURL, bytes.NewBuffer(jsonBody))
+	req, err := http.NewRequestWithContext(ctx, "POST", embeddingsURL+"/api/search_vars", bytes.NewBuffer(jsonBody))
 	if err != nil {
 		return nil, status.Errorf(codes.Internal, "failed to create embeddings request: %v", err)
 	}
@@ -106,7 +103,16 @@ func ResolveEmbeddings(
 					break
 				}
 
+				// Default to the general cosine score
 				score := result.CosineScore[i]
+				var sentence string
+
+				// If we have specific sentence matches, prefer the top sentence score
+				if sentences, hasSentences := result.SVToSentences[fileID]; hasSentences && len(sentences) > 0 {
+					score = sentences[0].Score
+					sentence = sentences[0].Sentence
+				}
+
 				candidate := &pbv2.ResolveResponse_Entity_Candidate{
 					Dcid:         fileID,
 					DominantType: "StatisticalVariable",
@@ -115,11 +121,8 @@ func ResolveEmbeddings(
 					},
 				}
 
-				// Add sentence metadata if available
-				if sentences, hasSentences := result.SVToSentences[fileID]; hasSentences && len(sentences) > 0 {
-					// Taking the top sentence match
-					candidate.Metadata["sentence"] = sentences[0].Sentence
-					candidate.Metadata["sentence_score"] = fmt.Sprintf("%f", sentences[0].Score)
+				if sentence != "" {
+					candidate.Metadata["sentence"] = sentence
 				}
 
 				candidates = append(candidates, candidate)

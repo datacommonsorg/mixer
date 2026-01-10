@@ -111,6 +111,11 @@ var (
 		"",
 		"Path to the feature flags config file.",
 	)
+	embeddingsServerURL = flag.String(
+		"embeddings_server_url",
+		"",
+		"URL for the embeddings server service.",
+	)
 )
 
 func main() {
@@ -417,7 +422,7 @@ func main() {
 	dispatcher := dispatcher.NewDispatcher(processors, dataSources)
 
 	// Create server object
-	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs)
+	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs, *embeddingsServerURL)
 	pbs.RegisterMixerServer(srv, mixerServer)
 
 	// Subscribe to branch cache update

@@ -48,8 +48,7 @@ func setDefaultValues() *Flags {
 		UseSpannerGraph:          false,
 		SpannerGraphDatabase:     "",
 		UseStaleReads:            false,
-		// DO NOT SUBMIT -- setting to true for deploying to dev only!!
-		EnableEmbeddingsResolver: true, 		// THIS SHOULD BE FALSE IN MY PR
+		EnableEmbeddingsResolver: false,
 	}
 }
 

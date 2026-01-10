@@ -48,13 +48,10 @@ func TestResolveEmbeddings(t *testing.T) {
 	}))
 	defer server.Close()
 
-	// Override the URL to point to the test server
-	originalURL := embeddingsURL
-	embeddingsURL = server.URL + "/api/search_vars"
-	defer func() { embeddingsURL = originalURL }()
+
 
 	ctx := context.Background()
-	resp, err := ResolveEmbeddings(ctx, server.Client(), []string{"population"})
+	resp, err := ResolveEmbeddings(ctx, server.Client(), server.URL, []string{"population"})
 	if err != nil {
 		t.Fatalf("ResolveEmbeddings() error: %v", err)
 	}
@@ -77,8 +74,8 @@ func TestResolveEmbeddings(t *testing.T) {
 		t.Errorf("Expected Dcid 'Count_Person', got '%s'", candidate.Dcid)
 	}
 
-	if candidate.Metadata["score"] != "0.990000" {
-		t.Errorf("Expected score '0.990000', got '%s'", candidate.Metadata["score"])
+	if candidate.Metadata["score"] != "0.950000" {
+		t.Errorf("Expected score '0.950000', got '%s'", candidate.Metadata["score"])
 	}
 
 	if candidate.Metadata["sentence"] != "number of people" {

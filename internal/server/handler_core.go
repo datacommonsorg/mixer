@@ -34,12 +34,15 @@ import (
 func (s *Server) V2ResolveCore(
 	ctx context.Context, in *pbv2.ResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
-	// Check for explicit "indicator" resolver or implicit default (empty property and not "place" resolver)
-	if in.GetResolver() == "indicator" || (in.GetProperty() == "" && in.GetResolver() != "place") {
+	// Check for explicit "indicator" resolver, otherwise default to legacy place resolver logic.
+	if in.GetResolver() == "indicator" {
 		if !s.flags.EnableEmbeddingsResolver {
-			return nil, status.Errorf(codes.Unimplemented, "embeddings resolver is not enabled")
+			return nil, status.Errorf(codes.Unimplemented, "Resolving indicators is not enabled.")
 		}
-		return resolve.ResolveEmbeddings(ctx, s.httpClient, in.GetNodes())
+		if s.embeddingsURL == "" {
+			return nil, status.Errorf(codes.FailedPrecondition, "Embeddings server for indicators is not configured for this deployment.")
+		}
+		return resolve.ResolveEmbeddings(ctx, s.httpClient, s.embeddingsURL, in.GetNodes())
 	}
 
 	arcs, err := v2.ParseProperty(in.GetProperty())
