@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -34,12 +34,12 @@ const (
 	StatisticalVariableDominantType = "StatisticalVariable"
 )
 
-// EmbeddingsRequest represents the request body for the embeddings server
-type EmbeddingsRequest struct {
+// searchVarsRequest represents the request body for the embeddings server
+type searchVarsRequest struct {
 	Queries []string `json:"queries"`
 }
 
-// EmbeddingsResponse represents the response body from the embeddings server
+// searchVarsResponse represents the response body from the embeddings server
 //
 // Expected JSON Structure:
 //
@@ -57,7 +57,7 @@ type EmbeddingsRequest struct {
 //	    }
 //	  }
 //	}
-type EmbeddingsResponse struct {
+type searchVarsResponse struct {
 	QueryResults map[string]struct {
 		SV            []string  `json:"SV"`
 		CosineScore   []float64 `json:"CosineScore"`
@@ -75,42 +75,46 @@ func ResolveUsingEmbeddings(
 	embeddingsServerURL string,
 	nodes []string,
 ) (*pbv2.ResolveResponse, error) {
+	if embeddingsServerURL == "" {
+		return nil, status.Errorf(codes.FailedPrecondition, "Embeddings server for indicators is not configured for this deployment.")
+	}
+
 	// Construct the request body
-	reqBody := EmbeddingsRequest{
+	searchReq := searchVarsRequest{
 		Queries: nodes,
 	}
-	jsonBody, err := json.Marshal(reqBody)
+	requestBytes, err := json.Marshal(searchReq)
 	if err != nil {
 		return nil, status.Errorf(codes.Internal, "Internal error preparing query for resolution: %v", err)
 	}
 
 	// Create the HTTP request
-	req, err := http.NewRequestWithContext(ctx, "POST", embeddingsServerURL+"/api/search_vars", bytes.NewBuffer(jsonBody))
+	req, err := http.NewRequestWithContext(ctx, "POST", embeddingsServerURL+"/api/search_vars", bytes.NewBuffer(requestBytes))
 	if err != nil {
 		return nil, status.Errorf(codes.Internal, "Failed to create embeddings server request: %v", err)
 	}
 	req.Header.Set("Content-Type", "application/json")
 
 	// Execute the request
-	resp, err := httpClient.Do(req)
+	httpResp, err := httpClient.Do(req)
 	if err != nil {
 		return nil, status.Errorf(codes.Unavailable, "Failed to contact embeddings server: %v", err)
 	}
-	defer resp.Body.Close()
+	defer httpResp.Body.Close()
 
-	if resp.StatusCode != http.StatusOK {
-		bodyBytes, _ := io.ReadAll(resp.Body)
-		return nil, status.Errorf(codes.Internal, "Embeddings server returned status %d: %s", resp.StatusCode, string(bodyBytes))
+	if httpResp.StatusCode != http.StatusOK {
+		bodyBytes, _ := io.ReadAll(httpResp.Body)
+		return nil, status.Errorf(codes.Internal, "Embeddings server returned status %d: %s", httpResp.StatusCode, string(bodyBytes))
 	}
 
 	// Parse the response
-	var embResp EmbeddingsResponse
-	if err := json.NewDecoder(resp.Body).Decode(&embResp); err != nil {
+	var searchResp searchVarsResponse
+	if err := json.NewDecoder(httpResp.Body).Decode(&searchResp); err != nil {
 		return nil, status.Errorf(codes.Internal, "Failed to decode embeddings server response: %v", err)
 	}
 
 	// Map to protobuf response
-	pbResp := &pbv2.ResolveResponse{
+	resolveResponse := &pbv2.ResolveResponse{
 		Entities: make([]*pbv2.ResolveResponse_Entity, 0, len(nodes)),
 	}
 
@@ -119,7 +123,7 @@ func ResolveUsingEmbeddings(
 			Node: node,
 		}
 
-		if result, ok := embResp.QueryResults[node]; ok {
+		if result, ok := searchResp.QueryResults[node]; ok {
 			candidates := make([]*pbv2.ResolveResponse_Entity_Candidate, 0, len(result.SV))
 			for i, statVarDcid := range result.SV {
 				// Safety check for parallel arrays
@@ -130,7 +134,7 @@ func ResolveUsingEmbeddings(
 				// Key logic: We use the server-provided CosineScore as the primary match score.
 				// This score is typically derived from the best matching sentence on the server side.
 				score := result.CosineScore[i]
-				
+
 				dominantType := StatisticalVariableDominantType
 				if strings.Contains(statVarDcid, TopicDcidSubstring) {
 					dominantType = TopicDominantType
@@ -140,7 +144,7 @@ func ResolveUsingEmbeddings(
 					Dcid:   statVarDcid,
 					TypeOf: []string{dominantType},
 					Metadata: map[string]string{
-						"score": fmt.Sprintf("%f", score),
+						"score": fmt.Sprintf("%.4f", score),
 					},
 				}
 
@@ -153,8 +157,8 @@ func ResolveUsingEmbeddings(
 			}
 			entity.Candidates = candidates
 		}
-		pbResp.Entities = append(pbResp.Entities, entity)
+		resolveResponse.Entities = append(resolveResponse.Entities, entity)
 	}
 
-	return pbResp, nil
+	return resolveResponse, nil
 }

@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -48,8 +48,6 @@ func TestResolveEmbeddings(t *testing.T) {
 	}))
 	defer server.Close()
 
-
-
 	ctx := context.Background()
 	resp, err := ResolveUsingEmbeddings(ctx, server.Client(), server.URL, []string{"population"})
 	if err != nil {
@@ -74,8 +72,8 @@ func TestResolveEmbeddings(t *testing.T) {
 		t.Errorf("Expected Dcid 'Count_Person', got '%s'", candidate.Dcid)
 	}
 
-	if candidate.Metadata["score"] != "0.990000" {
-		t.Errorf("Expected score '0.990000', got '%s'", candidate.Metadata["score"])
+	if candidate.Metadata["score"] != "0.9900" {
+		t.Errorf("Expected score '0.9900', got '%s'", candidate.Metadata["score"])
 	}
 
 	if candidate.Metadata["sentence"] != "number of people" {
@@ -92,7 +90,7 @@ func TestResolveEmbeddings(t *testing.T) {
 	if len(candidate2.TypeOf) != 1 || candidate2.TypeOf[0] != "Topic" {
 		t.Errorf("Expected TypeOf ['Topic'], got '%v'", candidate2.TypeOf)
 	}
-	if candidate2.Metadata["score"] != "0.880000" {
-		t.Errorf("Expected score '0.880000', got '%s'", candidate2.Metadata["score"])
+	if candidate2.Metadata["score"] != "0.8800" {
+		t.Errorf("Expected score '0.8800', got '%s'", candidate2.Metadata["score"])
 	}
 }
