@@ -51,6 +51,7 @@ type Server struct {
 	dispatcher     *dispatcher.Dispatcher
 	flags          *featureflags.Flags
 	writeUsageLogs bool
+	embeddingsServerURL  string
 }
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) error {
@@ -155,6 +156,7 @@ func NewMixerServer(
 	dispatcher *dispatcher.Dispatcher,
 	flags *featureflags.Flags,
 	writeUsageLogs bool,
+	embeddingsServerURL string,
 ) *Server {
 	s := &Server{
 		store:          store,
@@ -165,6 +167,7 @@ func NewMixerServer(
 		dispatcher:     dispatcher,
 		flags:          flags,
 		writeUsageLogs: writeUsageLogs,
+		embeddingsServerURL:embeddingsServerURL,
 	}
 	s.cachedata.Store(cachedata)
 	return s
