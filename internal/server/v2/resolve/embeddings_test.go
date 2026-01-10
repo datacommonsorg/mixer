@@ -32,8 +32,8 @@ func TestResolveEmbeddings(t *testing.T) {
 		json.NewEncoder(w).Encode(map[string]interface{}{
 			"queryResults": map[string]interface{}{
 				"population": map[string]interface{}{
-					"SV":          []string{"Count_Person"},
-					"CosineScore": []float64{0.99},
+					"SV":          []string{"Count_Person", "dc/topic/Population"},
+					"CosineScore": []float64{0.99, 0.88},
 					"SV_to_Sentences": map[string]interface{}{
 						"Count_Person": []interface{}{
 							map[string]interface{}{
@@ -51,7 +51,7 @@ func TestResolveEmbeddings(t *testing.T) {
 
 
 	ctx := context.Background()
-	resp, err := ResolveEmbeddings(ctx, server.Client(), server.URL, []string{"population"})
+	resp, err := ResolveUsingEmbeddings(ctx, server.Client(), server.URL, []string{"population"})
 	if err != nil {
 		t.Fatalf("ResolveEmbeddings() error: %v", err)
 	}
@@ -65,8 +65,8 @@ func TestResolveEmbeddings(t *testing.T) {
 		t.Errorf("Expected node 'population', got '%s'", entity.Node)
 	}
 
-	if len(entity.Candidates) != 1 {
-		t.Fatalf("Expected 1 candidate, got %d", len(entity.Candidates))
+	if len(entity.Candidates) != 2 {
+		t.Fatalf("Expected 2 candidates, got %d", len(entity.Candidates))
 	}
 
 	candidate := entity.Candidates[0]
@@ -74,11 +74,25 @@ func TestResolveEmbeddings(t *testing.T) {
 		t.Errorf("Expected Dcid 'Count_Person', got '%s'", candidate.Dcid)
 	}
 
-	if candidate.Metadata["score"] != "0.950000" {
-		t.Errorf("Expected score '0.950000', got '%s'", candidate.Metadata["score"])
+	if candidate.Metadata["score"] != "0.990000" {
+		t.Errorf("Expected score '0.990000', got '%s'", candidate.Metadata["score"])
 	}
 
 	if candidate.Metadata["sentence"] != "number of people" {
 		t.Errorf("Expected sentence 'number of people', got '%s'", candidate.Metadata["sentence"])
+	}
+
+	if len(entity.Candidates) < 2 {
+		t.Fatalf("Expected at least 2 candidates, got %d", len(entity.Candidates))
+	}
+	candidate2 := entity.Candidates[1]
+	if candidate2.Dcid != "dc/topic/Population" {
+		t.Errorf("Expected Dcid 'dc/topic/Population', got '%s'", candidate2.Dcid)
+	}
+	if len(candidate2.TypeOf) != 1 || candidate2.TypeOf[0] != "Topic" {
+		t.Errorf("Expected TypeOf ['Topic'], got '%v'", candidate2.TypeOf)
+	}
+	if candidate2.Metadata["score"] != "0.880000" {
+		t.Errorf("Expected score '0.880000', got '%s'", candidate2.Metadata["score"])
 	}
 }

@@ -21,18 +21,42 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"strings"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
 
-// EmbeddingsRequest represents the request body for the sidecar
+const (
+	TopicDcidSubstring              = "/topic/"
+	TopicDominantType               = "Topic"
+	StatisticalVariableDominantType = "StatisticalVariable"
+)
+
+// EmbeddingsRequest represents the request body for the embeddings server
 type EmbeddingsRequest struct {
 	Queries []string `json:"queries"`
 }
 
-// EmbeddingsResponse represents the response body from the sidecar
+// EmbeddingsResponse represents the response body from the embeddings server
+//
+// Expected JSON Structure:
+//
+//	{
+//	  "queryResults": {
+//	    "your_query_string": {
+//	      "SV": [ "dcid1", "dcid2", ... ],            // Sorted list of SV DCIDs
+//	      "CosineScore": [ 0.9, 0.8, ... ],           // Corresponding overall scores (parallel to SV list)
+//	      "SV_to_Sentences": {                        // Map of SV DCID to matching sentences
+//	        "dcid1": [
+//	          { "sentence": "description text", "score": 0.95 },
+//	          ...
+//	        ]
+//	      }
+//	    }
+//	  }
+//	}
 type EmbeddingsResponse struct {
 	QueryResults map[string]struct {
 		SV            []string  `json:"SV"`
@@ -44,11 +68,11 @@ type EmbeddingsResponse struct {
 	} `json:"queryResults"`
 }
 
-// ResolveEmbeddings calls the sidecar to resolve natural language queries to SVs.
-func ResolveEmbeddings(
+// ResolveUsingEmbeddings calls the embeddings server to resolve natural language queries to SVs.
+func ResolveUsingEmbeddings(
 	ctx context.Context,
 	httpClient *http.Client,
-	embeddingsURL string,
+	embeddingsServerURL string,
 	nodes []string,
 ) (*pbv2.ResolveResponse, error) {
 	// Construct the request body
@@ -61,7 +85,7 @@ func ResolveEmbeddings(
 	}
 
 	// Create the HTTP request
-	req, err := http.NewRequestWithContext(ctx, "POST", embeddingsURL+"/api/search_vars", bytes.NewBuffer(jsonBody))
+	req, err := http.NewRequestWithContext(ctx, "POST", embeddingsServerURL+"/api/search_vars", bytes.NewBuffer(jsonBody))
 	if err != nil {
 		return nil, status.Errorf(codes.Internal, "failed to create embeddings request: %v", err)
 	}
@@ -97,32 +121,32 @@ func ResolveEmbeddings(
 
 		if result, ok := embResp.QueryResults[node]; ok {
 			candidates := make([]*pbv2.ResolveResponse_Entity_Candidate, 0, len(result.SV))
-			for i, fileID := range result.SV {
+			for i, statVarDcid := range result.SV {
 				// Safety check for parallel arrays
 				if i >= len(result.CosineScore) {
 					break
 				}
 
-				// Default to the general cosine score
+				// Key logic: We use the server-provided CosineScore as the primary match score.
+				// This score is typically derived from the best matching sentence on the server side.
 				score := result.CosineScore[i]
-				var sentence string
-
-				// If we have specific sentence matches, prefer the top sentence score
-				if sentences, hasSentences := result.SVToSentences[fileID]; hasSentences && len(sentences) > 0 {
-					score = sentences[0].Score
-					sentence = sentences[0].Sentence
+				
+				dominantType := StatisticalVariableDominantType
+				if strings.Contains(statVarDcid, TopicDcidSubstring) {
+					dominantType = TopicDominantType
 				}
 
 				candidate := &pbv2.ResolveResponse_Entity_Candidate{
-					Dcid:         fileID,
-					DominantType: "StatisticalVariable",
+					Dcid:   statVarDcid,
+					TypeOf: []string{dominantType},
 					Metadata: map[string]string{
 						"score": fmt.Sprintf("%f", score),
 					},
 				}
 
-				if sentence != "" {
-					candidate.Metadata["sentence"] = sentence
+				if sentences, hasSentences := result.SVToSentences[statVarDcid]; hasSentences && len(sentences) > 0 {
+					// Taking the top sentence match for display purposes
+					candidate.Metadata["sentence"] = sentences[0].Sentence
 				}
 
 				candidates = append(candidates, candidate)

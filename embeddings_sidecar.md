@@ -290,61 +290,100 @@ func (s *Server) V2ResolveCore(ctx, in) {
 
 ### 4. Embeddings Logic (`internal/server/v2/resolve/embeddings.go`)
 
-Create a new file `internal/server/v2/resolve/embeddings.go` to handle the interaction with the sidecar.
+Create a new file `internal/server/v2/resolve/embeddings.go` to handle the interaction with the embeddings server.
 
-**A. Sidecar Client Structures**
-Define Go structs to match the Sidecar's JSON API.
+**A. Client Structures**
+Define Go structs to match the Server's JSON API.
 ```go
+// EmbeddingsRequest represents the request body for the embeddings server
 type EmbeddingsRequest struct {
-    Queries []string `json:"queries"`
+	Queries []string `json:"queries"`
 }
 
+// EmbeddingsResponse represents the response body from the embeddings server
+//
+// Expected JSON Structure:
+//
+//	{
+//	  "queryResults": {
+//	    "your_query_string": {
+//	      "SV": [ "dcid1", "dcid2", ... ],            // Sorted list of SV DCIDs
+//	      "CosineScore": [ 0.9, 0.8, ... ],           // Corresponding overall scores (parallel to SV list)
+//	      "SV_to_Sentences": {                        // Map of SV DCID to matching sentences
+//	        "dcid1": [
+//	          { "sentence": "description text", "score": 0.95 },
+//	          ...
+//	        ]
+//	      }
+//	    }
+//	  }
+//	}
 type EmbeddingsResponse struct {
-    QueryResults map[string]struct {
-        SV            []string `json:"SV"`
-        CosineScore   []float64 `json:"CosineScore"`
-        SVToSentences map[string][]struct {
-            Sentence string  `json:"sentence"`
-            Score    float64 `json:"score"`
-        } `json:"SV_to_Sentences"`
-    } `json:"queryResults"`
+	QueryResults map[string]struct {
+		SV            []string  `json:"SV"`
+		CosineScore   []float64 `json:"CosineScore"`
+		SVToSentences map[string][]struct {
+			Sentence string  `json:"sentence"`
+			Score    float64 `json:"score"`
+		} `json:"SV_to_Sentences"`
+	} `json:"queryResults"`
 }
 ```
 
-**B. `ResolveEmbeddings` Function**
+**B. `ResolveUsingEmbeddings` Function**
 1.  **Construct Request:** Create `EmbeddingsRequest` from input `nodes`.
-2.  **Call Sidecar:** `--embeddings_server_url="http://localhost:6060"/` (use `s.httpClient`).
-3.  **Process Response:** Iterate through `EmbeddingsResponse.QueryResults` and map to `pbv2.ResolveResponse`.
+2.  **Call Server:** Uses `--embeddings_server_url` flag (e.g., `http://localhost:6060`).
+3.  **Process Response:** Iterate through `EmbeddingsResponse.QueryResults`.
     *   **Candidate Mapping:**
-        *   `dcid` <- `SV[i]`
-        *   `dominant_type` <- "StatisticalVariable" (hardcoded for now as this is specifically for SV resolution).
-        *   `metadata`: Populate with "score" (from `CosineScore[i]`) and "sentence" (from `SVToSentences`).
+        *   `dcid` <- `statVarDcid` (from `SV[i]`)
+        *   `typeOf`: `["Topic"]` if ID contains `/topic/`, else `["StatisticalVariable"]`
+        *   `metadata`: Populate with `score` (from `CosineScore`).
 
-### 5. Verification Plan
+## JSON Interface
 
-**A. Generate Protos**
-Run the repository's proto generation script (usually `go generate ./...` or `make gen`) to update `.pb.go` files.
+### Request (Mixer -> Embeddings Server)
+POST `/api/search_vars`
+```json
+{
+  "queries": ["population"]
+}
+```
 
-**B. Unit Tests**
-*   Create `internal/server/v2/resolve/embeddings_test.go`.
-*   Use `httptest` to mock the Sidecar's HTTP response.
-*   Verify that `ResolveEmbeddings` correctly parses the JSON and populates the Proto response.
+### Response (Embeddings Server -> Mixer)
+```json
+{
+  "queryResults": {
+    "population": {
+      "SV": ["Count_Person", "dc/topic/Population"],
+      "CosineScore": [0.99, 0.88],
+      "SV_to_Sentences": {
+        "Count_Person": [
+          { "sentence": "number of people", "score": 0.95 }
+        ]
+      }
+    }
+  }
+}
+```
+internal/server/v2/resolve/embeddings_test.go`.
+*   Use `httptest` to mock the Embeddings Server's HTTP response.
+*   Verify that `ResolveUsingEmbeddings` correctly parses the JSON and populates the Proto response.
 
 **C. Manual Integration Test**
-1.  Deploy changes to `mixer-dev` or run locally with sidecar enabled.
+1.  Deploy changes to `mixer-dev` or run locally with embeddings server enabled.
 2.  **Legacy Check:** `curl .../v2/resolve?property=<-geoCoordinate->dcid ...` -> Should work as before.
-3.  **New Logic Check:** `curl .../v2/resolve` (with body `{"nodes": ["population"]}`) -> Should hit sidecar path.
-4.  **Explicit Resolver Check:** `curl .../v2/resolve?resolver=indicator` -> Should hit sidecar path.
+3.  **New Logic Check:** `curl .../v2/resolve` (with body `{"nodes": ["population"]}`) -> Should hit embeddings server path.
+4.  **Explicit Resolver Check:** `curl .../v2/resolve?resolver=indicator` -> Should hit embeddings server path.
 
 ### 6. Implementation Steps
 1.  **Proto:** Modify `resolve.proto` and regenerate.
-2.  **Logic:** Create `embeddings.go` with client logic.
+2.  **Logic:** Create `embeddings.go` with client logic (using `statVarDcid` internal var names).
 3.  **Routing:** Update `handler_core.go` to wire it up.
 4.  **Deploy:** Build and push new Mixer image.
 
 ## Usage Guide: Smart Resolve Endpoint
 
-The `/v2/resolve` endpoint has been expanded to support **Smart Resolution** (Indicator/Statistical Variable resolution) using the embeddings sidecar. This allows users to resolve natural language queries to Statistical Variables.
+The `/v2/resolve` endpoint has been expanded to support **Smart Resolution** (Indicator/Statistical Variable resolution) using the embeddings server. This allows users to resolve natural language queries to Statistical Variables.
 
 ### Endpoint
 `POST /v2/resolve` or `GET /v2/resolve`
@@ -369,9 +408,9 @@ The response follows the standard `ResolveResponse` structure but utilizes the `
       "candidates": [
         {
           "dcid": "StatisticalVariable_DCID",
-          "dominantType": "StatisticalVariable",
+          "typeOf": [ "StatisticalVariable" ], // ["Topic"] if ID contains "/topic/", else ["StatisticalVariable"]
           "metadata": {
-            "score": "0.89",           // Score of the highest scoring sentence (0.0 - 1.0)
+            "score": "0.89",           // Derived from CosineScore (0.0 - 1.0)
             "sentence": "matched text"  // The actual text description that matched
           }
         }

@@ -43,6 +43,7 @@ message ResolveResponse{
             string dcid = 1;
             string dominant_type = 2;
             map<string, string> metadata = 3;
+            repeated string type_of = 4;
         }
         string node = 1;
         repeated Candidate candidates = 3;

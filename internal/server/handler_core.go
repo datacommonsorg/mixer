@@ -39,10 +39,10 @@ func (s *Server) V2ResolveCore(
 		if !s.flags.EnableEmbeddingsResolver {
 			return nil, status.Errorf(codes.Unimplemented, "Resolving indicators is not enabled.")
 		}
-		if s.embeddingsURL == "" {
+		if s.embeddingsServerURL == "" {
 			return nil, status.Errorf(codes.FailedPrecondition, "Embeddings server for indicators is not configured for this deployment.")
 		}
-		return resolve.ResolveEmbeddings(ctx, s.httpClient, s.embeddingsURL, in.GetNodes())
+		return resolve.ResolveUsingEmbeddings(ctx, s.httpClient, s.embeddingsServerURL, in.GetNodes())
 	}
 
 	arcs, err := v2.ParseProperty(in.GetProperty())
