@@ -143,20 +143,25 @@ func TestResolveUsingEmbeddings_Errors(t *testing.T) {
 	}
 }
 
-func TestResolveUsingEmbeddings_Mismatch(t *testing.T) {
-	// Mock a response where SV list is longer than CosineScore list.
-	// This simulates a bug in the embeddings server where parallel arrays are out of sync.
-	// The expected behavior is to safely process only the candidates that have scores.
+func TestResolveUsingEmbeddings_InconsistentSearchVarsResponse(t *testing.T) {
+	// Mock a response with multiple inconsistencies:
+	// 1. Array Mismatch: SV list (3 items) is longer than CosineScore list (2 items).
+	// 2. Missing Metadata: "dcid2" has a score but NO entry in SV_to_Sentences.
+	// Expected Behavior:
+	// - Process "dcid1" (Normal)
+	// - Process "dcid2" (Missing Sentence -> Score only)
+	// - Ignore "dcid3" (No Score -> Safety Break)
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(map[string]interface{}{
 			"queryResults": map[string]interface{}{
 				"query": map[string]interface{}{
-					"SV":          []string{"dcid1", "dcid2"}, // 2 SVs
-					"CosineScore": []float64{0.99},            // Only 1 Score
+					"SV":          []string{"dcid1", "dcid2", "dcid3"}, // 3 SVs
+					"CosineScore": []float64{0.99, 0.88},               // Only 2 Scores
 					"SV_to_Sentences": map[string]interface{}{
 						"dcid1": []interface{}{
 							map[string]interface{}{"sentence": "s1", "score": 1.0},
 						},
+						// dcid2 is missing from map
 					},
 				},
 			},
@@ -174,11 +179,29 @@ func TestResolveUsingEmbeddings_Mismatch(t *testing.T) {
 	}
 	entity := resp.Entities[0]
 
-	// Should only have 1 candidate because the loop breaks when scores run out.
-	if len(entity.Candidates) != 1 {
-		t.Errorf("Expected 1 candidate (due to mismatch), got %d", len(entity.Candidates))
+	// Should have 2 candidates (dcid1, dcid2). dcid3 is dropped.
+	if len(entity.Candidates) != 2 {
+		t.Fatalf("Expected 2 candidates, got %d", len(entity.Candidates))
 	}
-	if len(entity.Candidates) > 0 && entity.Candidates[0].Dcid != "dcid1" {
-		t.Errorf("Expected Dcid 'dcid1', got '%s'", entity.Candidates[0].Dcid)
+
+	// Verify Candidate 1 (Normal)
+	c1 := entity.Candidates[0]
+	if c1.Dcid != "dcid1" {
+		t.Errorf("Candidate 1: Expected Dcid 'dcid1', got '%s'", c1.Dcid)
+	}
+	if val, ok := c1.Metadata["sentence"]; !ok || val != "s1" {
+		t.Errorf("Candidate 1: Expected sentence 's1', got '%v'", val)
+	}
+
+	// Verify Candidate 2 (Missing Sentence)
+	c2 := entity.Candidates[1]
+	if c2.Dcid != "dcid2" {
+		t.Errorf("Candidate 2: Expected Dcid 'dcid2', got '%s'", c2.Dcid)
+	}
+	if c2.Metadata["score"] != "0.8800" {
+		t.Errorf("Candidate 2: Expected score '0.8800', got '%s'", c2.Metadata["score"])
+	}
+	if _, hasSentence := c2.Metadata["sentence"]; hasSentence {
+		t.Errorf("Candidate 2: Expected NO sentence, but got one")
 	}
 }
