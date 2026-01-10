@@ -19,6 +19,11 @@ func (m *mockTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 	return m.RoundTripFunc(req)
 }
 
+// TestV2ResolveCore_EmbeddingsFlag verifies that the EnableEmbeddingsResolver feature flag
+// correctly gates the embeddings resolution logic in V2ResolveCore.
+// It ensures that:
+// 1. When Disabled: The endpoint returns Unimplemented.
+// 2. When Enabled: The endpoint proceeds to use the HTTP client (mocked here).
 func TestV2ResolveCore_EmbeddingsFlag(t *testing.T) {
 	ctx := context.Background()
 
