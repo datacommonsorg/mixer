@@ -114,7 +114,7 @@ var (
 	embeddingsServerURL = flag.String(
 		"embeddings_server_url",
 		"",
-		"URL for the embeddings server service.",
+		"URL for the embeddings server.",
 	)
 )
 
