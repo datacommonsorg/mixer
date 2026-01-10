@@ -1,17 +1,3 @@
-// Copyright 2026 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     https://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 package resolve
 
 import (
@@ -19,11 +5,15 @@ import (
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 )
 
-func TestResolveEmbeddings(t *testing.T) {
-	// Mock the sidecar response
+func TestResolveUsingEmbeddings(t *testing.T) {
+	// Mock the embeddings server response.
+	// We simulate a response with two candidates to verify sorting and type detection logic.
+	// Candidate 1: "Count_Person" (StatisticalVariable) with high score.
+	// Candidate 2: "dc/topic/Population" (Topic) with lower score.
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.URL.Path != "/api/search_vars" {
 			t.Errorf("Expected path /api/search_vars, got %s", r.URL.Path)
@@ -72,6 +62,9 @@ func TestResolveEmbeddings(t *testing.T) {
 		t.Errorf("Expected Dcid 'Count_Person', got '%s'", candidate.Dcid)
 	}
 
+	// Verify that the score matches the server-provided CosineScore (0.99),
+	// NOT the sentence score (0.95). This ensures we are using the primary ranking score.
+
 	if candidate.Metadata["score"] != "0.9900" {
 		t.Errorf("Expected score '0.9900', got '%s'", candidate.Metadata["score"])
 	}
@@ -79,6 +72,8 @@ func TestResolveEmbeddings(t *testing.T) {
 	if candidate.Metadata["sentence"] != "number of people" {
 		t.Errorf("Expected sentence 'number of people', got '%s'", candidate.Metadata["sentence"])
 	}
+
+	// Verify the second candidate (Topic) to ensure TypeOf logic logic is working.
 
 	if len(entity.Candidates) < 2 {
 		t.Fatalf("Expected at least 2 candidates, got %d", len(entity.Candidates))
@@ -88,9 +83,102 @@ func TestResolveEmbeddings(t *testing.T) {
 		t.Errorf("Expected Dcid 'dc/topic/Population', got '%s'", candidate2.Dcid)
 	}
 	if len(candidate2.TypeOf) != 1 || candidate2.TypeOf[0] != "Topic" {
-		t.Errorf("Expected TypeOf ['Topic'], got '%v'", candidate2.TypeOf)
+		t.Errorf("Expected TypeOf ['Topic'], got '%v'. This verifies Topic detection logic.", candidate2.TypeOf)
 	}
 	if candidate2.Metadata["score"] != "0.8800" {
 		t.Errorf("Expected score '0.8800', got '%s'", candidate2.Metadata["score"])
+	}
+}
+
+func TestResolveUsingEmbeddings_Errors(t *testing.T) {
+	tests := []struct {
+		name          string
+		serverHandler http.HandlerFunc
+		serverURL     string
+		expectedError string
+		useEmptyURL   bool
+	}{
+		{
+			name: "Server Error",
+			serverHandler: func(w http.ResponseWriter, r *http.Request) {
+				w.WriteHeader(http.StatusInternalServerError)
+				w.Write([]byte("internal error"))
+			},
+			expectedError: "Embeddings server returned status 500: internal error",
+		},
+		{
+			name: "Malformed JSON",
+			serverHandler: func(w http.ResponseWriter, r *http.Request) {
+				w.Write([]byte("{invalid-json"))
+			},
+			expectedError: "Failed to decode embeddings server response",
+		},
+		{
+			name:          "Empty Server URL",
+			useEmptyURL:   true,
+			expectedError: "Embeddings server for indicators is not configured",
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			server := httptest.NewServer(tc.serverHandler)
+			defer server.Close()
+
+			url := server.URL
+			if tc.useEmptyURL {
+				url = ""
+			}
+
+			_, err := ResolveUsingEmbeddings(context.Background(), server.Client(), url, []string{"query"})
+			if err == nil {
+				t.Errorf("Expected error containing '%s', got nil", tc.expectedError)
+				return
+			}
+
+			if !strings.Contains(err.Error(), tc.expectedError) {
+				t.Errorf("Expected error containing '%s', got '%v'", tc.expectedError, err)
+			}
+		})
+	}
+}
+
+func TestResolveUsingEmbeddings_Mismatch(t *testing.T) {
+	// Mock a response where SV list is longer than CosineScore list.
+	// This simulates a bug in the embeddings server where parallel arrays are out of sync.
+	// The expected behavior is to safely process only the candidates that have scores.
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		json.NewEncoder(w).Encode(map[string]interface{}{
+			"queryResults": map[string]interface{}{
+				"query": map[string]interface{}{
+					"SV":          []string{"dcid1", "dcid2"}, // 2 SVs
+					"CosineScore": []float64{0.99},            // Only 1 Score
+					"SV_to_Sentences": map[string]interface{}{
+						"dcid1": []interface{}{
+							map[string]interface{}{"sentence": "s1", "score": 1.0},
+						},
+					},
+				},
+			},
+		})
+	}))
+	defer server.Close()
+
+	resp, err := ResolveUsingEmbeddings(context.Background(), server.Client(), server.URL, []string{"query"})
+	if err != nil {
+		t.Fatalf("Unexpected error: %v", err)
+	}
+
+	if len(resp.Entities) != 1 {
+		t.Fatalf("Expected 1 entity, got %d", len(resp.Entities))
+	}
+	entity := resp.Entities[0]
+
+	// Should only have 1 candidate because the loop breaks when scores run out.
+	if len(entity.Candidates) != 1 {
+		t.Errorf("Expected 1 candidate (due to mismatch), got %d", len(entity.Candidates))
+	}
+	if len(entity.Candidates) > 0 && entity.Candidates[0].Dcid != "dcid1" {
+		t.Errorf("Expected Dcid 'dcid1', got '%s'", entity.Candidates[0].Dcid)
 	}
 }
