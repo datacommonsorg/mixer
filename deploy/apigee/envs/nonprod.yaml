@@ -11,6 +11,7 @@ proxies:
       - set-southbound-key
       - strip-api-key-header-and-params
       - block-internal-only-endpoints
+      - block-deprecated-endpoints
     proxy_endpoints:
       - api
     target_endpoints:
