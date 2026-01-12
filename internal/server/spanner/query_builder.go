@@ -44,16 +44,6 @@ const (
 	objectValuePrefix = 16
 )
 
-// Query is the Spanner representation of one SPARQL query triple.
-type Query struct {
-	// Query predicate is a string of schema.
-	Pred string
-	// Query subject is a Node or slice of strings.
-	Sub interface{}
-	// Query object is a Node or slice of strings.
-	Obj interface{}
-}
-
 func GetCompletionTimestampQuery() *spanner.Statement {
 	return &spanner.Statement{
 		SQL: statements.getCompletionTimestamp,
