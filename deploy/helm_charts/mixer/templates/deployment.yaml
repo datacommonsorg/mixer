@@ -88,7 +88,7 @@ spec:
       {{- if $group.enableEmbeddingsSidecar }}
         - name: embeddings-config
           configMap:
-            name: mixer-embeddings-config
+            name: {{ include "mixer.fullname" $ }}-embeddings-config
             optional: true
     {{- end }}
       initContainers:
