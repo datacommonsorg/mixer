@@ -104,19 +104,19 @@ func TestResolveUsingEmbeddings_Errors(t *testing.T) {
 				w.WriteHeader(http.StatusInternalServerError)
 				w.Write([]byte("internal error"))
 			},
-			expectedError: "Embeddings server returned status 500: internal error",
+			expectedError: "The resolution service encountered an error processing your request.",
 		},
 		{
 			name: "Malformed JSON",
 			serverHandler: func(w http.ResponseWriter, r *http.Request) {
 				w.Write([]byte("{invalid-json"))
 			},
-			expectedError: "Failed to decode embeddings server response",
+			expectedError: "An internal error occurred while parsing the resolution response.",
 		},
 		{
 			name:          "Empty Server URL",
 			useEmptyURL:   true,
-			expectedError: "Embeddings server for indicators is not configured",
+			expectedError: "Non-place resolution (resolver=indicator) is not available",
 		},
 	}
 
