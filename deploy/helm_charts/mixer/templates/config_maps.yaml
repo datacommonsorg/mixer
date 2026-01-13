@@ -77,6 +77,6 @@ metadata:
   name: {{ include "mixer.fullname" . }}-embeddings-config
   namespace: {{ .Release.Namespace }}
 data:
-  # Pass environment-specific settings (like Vertex AI Endpoint IDs) to emebeddings server
+  # Pass environment-specific settings (like Vertex AI Endpoint IDs) to embeddings server
   env.yaml: |
     {{- toYaml .Values.embeddingsSidecar.env | nindent 4 }}
