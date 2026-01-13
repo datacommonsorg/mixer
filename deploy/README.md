@@ -20,7 +20,7 @@ To deploy changes to the Mixer dev instance, follow these steps:
 2.  **Push Image:**
     Build and push your local code as a docker image to GCR (Artifact Registry) and upload the gRPC descriptor to GCS.
     ```bash
-    ./scripts/push_image.sh
+    ./scripts/push_image.sh datcom-ci DEV
     ```
     *Note: This script uses `build/ci/cloudbuild.manual_push_image.yaml`.*
 
