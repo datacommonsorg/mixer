@@ -56,6 +56,10 @@
           <Name>block-deprecated-endpoints</Name>
         </Step>
         <Step>
+          <!-- 
+            Extract 'resolver' from JSON body if present. 
+            Used to conditionally enforce API key verification (e.g. for /v2/resolve). 
+          -->
           <Name>extract-json-params</Name>
           <Condition>(request.verb = "POST") and (proxy.pathsuffix MatchesPath "/v2/resolve")</Condition>
         </Step>

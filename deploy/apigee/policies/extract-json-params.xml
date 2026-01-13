@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- 
+  Extracts specific parameters from the JSON request body into flow variables.
+  This allows us to reference body parameters (like "resolver") in logic conditions, 
+  which Apigee does not support natively without extraction.
+-->
 <ExtractVariables async="false" continueOnError="false" enabled="true" name="extract-json-params">
     <DisplayName>extract-json-params</DisplayName>
     <Source>request</Source>
