@@ -366,7 +366,11 @@ esp:
 
 embeddingsSidecar:
   image:
-    repository: gcr.io/datcom-ci/datacommons-nl
+    # NOTE: This repository does not actually exist! 
+    # It is an alias used by Skaffold to map the datacommons-nl image 
+    # (tagged as mixer-sidecar) to this specific sidecar container.
+    # The actual image is injected by Cloud Build/Skaffold during deployment.
+    repository: gcr.io/datcom-ci/datacommons-embeddings-sidecar
     pullPolicy: IfNotPresent
     tag: "mixer-sidecar"
   memory: "2G"
