@@ -37,7 +37,7 @@ func (s *Server) V2ResolveCore(
 	// Check for explicit "indicator" resolver, otherwise default to legacy place resolver logic.
 	if in.GetResolver() == "indicator" {
 		if !s.flags.EnableEmbeddingsResolver {
-			return nil, status.Errorf(codes.Unimplemented, "Resolving indicators is not enabled.")
+			return nil, status.Errorf(codes.Unimplemented, "Resolving indicators is not enabled for this environment.")
 		}
 
 		return resolve.ResolveUsingEmbeddings(ctx, s.httpClient, s.embeddingsServerURL, in.GetNodes())
