@@ -215,7 +215,7 @@ spec:
               readOnly: true
           env:
             - name: EMBEDDINGS_SERVER_URL
-              {{- if eq $.group.enableEmbeddingsSidecar true }}
+              {{- if eq $group.enableEmbeddingsSidecar true }}
               value: "http://localhost:6060"
               {{- else }}
               value: ""
