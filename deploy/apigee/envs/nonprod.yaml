@@ -2,6 +2,7 @@ project_id: datcom-apigee-dev
 proxies:
   - name: api
     policies:
+      - am-disable-compression
       - copy-key-param-to-header
       - verify-api-key-in-header
       - rewrite-missing-key-message
