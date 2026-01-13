@@ -41,11 +41,12 @@ type Flags struct {
 // setDefaultValues creates a new Flags struct with default values.
 func setDefaultValues() *Flags {
 	return &Flags{
-		EnableV3:             false,
-		V3MirrorFraction:     0.0,
-		UseSpannerGraph:      false,
-		SpannerGraphDatabase: "",
-		UseStaleReads:        false,
+		EnableV3:                 false,
+		V3MirrorFraction:         0.0,
+		UseSpannerGraph:          false,
+		SpannerGraphDatabase:     "",
+		UseStaleReads:            false,
+		EnableEmbeddingsResolver: true, // DO NOT SUBMIT: revert to false before merging
 	}
 }
 
@@ -97,7 +98,7 @@ func NewFlags(path string) (*Flags, error) {
 		return nil, err
 	}
 
-slog.Info("Feature flags initialized from file", "path", path, "flags", *cfg.Flags)
+	slog.Info("Feature flags initialized from file", "path", path, "flags", *cfg.Flags)
 
 	return cfg.Flags, nil
 }
