@@ -46,7 +46,6 @@ func setDefaultValues() *Flags {
 		UseSpannerGraph:          false,
 		SpannerGraphDatabase:     "",
 		UseStaleReads:            false,
-		EnableEmbeddingsResolver: true, // DO NOT SUBMIT: revert to false before merging
 	}
 }
 
