@@ -90,7 +90,7 @@ spec:
           configMap:
             name: {{ include "mixer.fullname" $ }}-embeddings-config
             optional: true
-    {{- end }}
+      {{- end }}
       initContainers:
         - name: update-bigtable-info
           image: gcr.io/datcom-ci/datacommons-script-runner:latest
@@ -197,11 +197,11 @@ spec:
               --metrics_exporter=otlp \
               {{- end }}
               {{- if eq $.Values.mixer.writeUsageLogs true}}
-               --write_usage_logs=true \
+              --write_usage_logs=true \
               {{- end }}
               {{- if $group.enableEmbeddingsSidecar }}
-               --embeddings_server_url="http://localhost:{{ $.Values.embeddingsSidecar.port }}" \
-               {{- end }}
+              --embeddings_server_url="http://localhost:{{ $.Values.embeddingsSidecar.port }}" \
+              {{- end }}
               --feature_flags_path=/datacommons/flags/feature_flags.yaml
           volumeMounts:
             - name: schema-mapping
@@ -241,23 +241,23 @@ spec:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-store-config
                   key: spanner_graph_info.yaml
-            {{- if $.Values.mixer.redis.enabled }}
+          {{- if $.Values.mixer.redis.enabled }}
             - name: REDIS_INFO
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-store-config
                   key: redis_info.yaml
                   optional: true
-            {{- end }}
+          {{- end }}
             - name: MIXER_HASH
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-githash
                   key: mixer_hash.txt
-            {{- if eq $.Values.mixer.enableOtlp true}}
+          {{- if eq $.Values.mixer.enableOtlp true}}
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: http://opentelemetry-collector.opentelemetry.svc.cluster.local:4317
-            {{- end }}
+          {{- end }}
           ports:
             - containerPort: 12345
           startupProbe:
@@ -281,7 +281,7 @@ spec:
             timeoutSeconds: 10
       {{- if $group.enableEmbeddingsSidecar }}
         - name: embeddings
-          image: "{{ $.Values.embeddingsSidecar.image.repository }}{{- if $.Values.embeddingsSidecar.image.tag }}:{{ $.Values.embeddingsSidecar.image.tag }}{{- end }}"
+          image: "{{ $.Values.embeddingsSidecar.image.repository }}:{{ default "latest" $.Values.embeddingsSidecar.image.tag }}"
           imagePullPolicy: {{ $.Values.embeddingsSidecar.image.pullPolicy }}
           resources:
             limits:
