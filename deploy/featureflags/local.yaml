@@ -2,4 +2,3 @@ flags:
   EnableV3: true
   UseSpannerGraph: true
   UseStaleReads: true
-  EnableEmbeddingsResolver: true
