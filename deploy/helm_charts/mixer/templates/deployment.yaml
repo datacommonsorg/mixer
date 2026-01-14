@@ -303,7 +303,7 @@ spec:
             - containerPort: 6060
           # --- 1. THE STARTUP PROBE (The "Patience" Phase) ---
           # Job: Give the container time to download embedding files and load models.
-          # Rule: While this is running, Liveness and Readiness probes are DISBALED.
+          # Rule: While this is running, Liveness and Readiness probes are DISABLED.
           startupProbe:
             httpGet:
               path: /healthz
