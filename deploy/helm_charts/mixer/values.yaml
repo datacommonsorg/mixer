@@ -374,6 +374,8 @@ embeddingsSidecar:
     pullPolicy: IfNotPresent
     tag: "mixer-sidecar"
   memory: "2G"
+  cpuLimit: "1"
+  cpuRequest: "100m"
   workers: 1
   env:
     default_indexes:

@@ -289,8 +289,10 @@ spec:
           resources:
             limits:
               memory: {{ $.Values.embeddingsSidecar.memory }}
+              cpu: {{ $.Values.embeddingsSidecar.cpuLimit }}
             requests:
               memory: {{ $.Values.embeddingsSidecar.memory }}
+              cpu: {{ $.Values.embeddingsSidecar.cpuRequest }}
           env:
             - name: NUM_WORKERS
               value: {{ $.Values.embeddingsSidecar.workers | quote }}
