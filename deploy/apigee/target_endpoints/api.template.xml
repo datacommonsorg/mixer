@@ -56,7 +56,7 @@
           <Name>block-deprecated-endpoints</Name>
         </Step>
        <Step>
-          <Condition>(request.verb = "POST") and (proxy.pathsuffix MatchesPath "/v2/resolve") and (request.header.Content-Type == null)</Condition>
+          <Condition>(request.verb = "POST") and (proxy.pathsuffix MatchesPath "/v2/resolve") and ((request.header.Content-Type == null) OR (request.header.Content-Type ~~ "^application/x-www-form-urlencoded.*"))</Condition>
           <Name>set-default-content-type</Name>
        </Step>
         <Step>
