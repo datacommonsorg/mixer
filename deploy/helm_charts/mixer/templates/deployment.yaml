@@ -193,8 +193,7 @@ spec:
               {{- if eq $.Values.mixer.writeUsageLogs true}}
                --write_usage_logs=true \
               {{- end }}
-              --feature_flags_path=/datacommons/flags/feature_flags.yaml \
-              --embeddings_server_url="${EMBEDDINGS_SERVER_URL}"
+              --feature_flags_path=/datacommons/flags/feature_flags.yaml
           volumeMounts:
             - name: schema-mapping
               mountPath: /datacommons/mapping
@@ -209,8 +208,6 @@ spec:
               mountPath: /datacommons/flags
               readOnly: true
           env:
-            - name: EMBEDDINGS_SERVER_URL
-              value: ""
             - name: HOST_PROJECT
               valueFrom:
                 configMapKeyRef:
