@@ -5,7 +5,7 @@ clusters:
 liveUrl: https://datacommons.org
 flags:
   EnableV3: true
-  V3MirrorFraction: 0.002
+  V3MirrorFraction: 0.005
   WriteUsageLogs: 1.0
   UseSpannerGraph: true
   SpannerGraphDatabase: dc_graph_2025_11_07
