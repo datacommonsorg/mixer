@@ -65,11 +65,6 @@
         </Step>
         <Step>
           <Condition>
-            <!-- Verify api key for /v2/resolve when 'resolver' param is present. -->
-            ((proxy.pathsuffix MatchesPath "/v2/resolve") AND 
-             (request.queryparam.resolver != null OR extracted_json_param_resolver != null))
-            OR
-            
             <!-- List of endpoints that do NOT require a key -->
             !(
               (proxy.pathsuffix MatchesPath "/bulk/stats") OR
@@ -91,6 +86,8 @@
               (proxy.pathsuffix MatchesPath "/v1/recon/resolve/coordinate") OR
               (proxy.pathsuffix MatchesPath "/v1/recon/resolve/id") OR
               (proxy.pathsuffix MatchesPath "/v1/variable/search") OR
+              <!-- /v2/resolve is public ONLY for legacy requests (no 'resolver' param). -->
+              ((proxy.pathsuffix MatchesPath "/v2/resolve") AND (request.queryparam.resolver Is null) AND (extracted_json_param_resolver Is null)) OR
               (proxy.pathsuffix MatchesPath "/version") OR
               (proxy.pathsuffix MatchesPath "/healthz")
             )
