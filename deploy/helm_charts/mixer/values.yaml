@@ -373,6 +373,7 @@ embeddingsSidecar:
     repository: gcr.io/datcom-ci/datacommons-embeddings-sidecar
     pullPolicy: IfNotPresent
     tag: "mixer-sidecar"
+  port: 6060
   memory: "2G"
   cpuLimit: "1"
   cpuRequest: "100m"
