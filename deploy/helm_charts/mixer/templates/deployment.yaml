@@ -324,9 +324,8 @@ spec:
             # computations to respond in 5s, stop sending traffic to avoid user timeouts.
             periodSeconds: 10
             failureThreshold: 3 # If it fails 3 times in a row, mark the Pod as "Not Ready."
-            timeoutSeconds: 5 # How long to wait for the health check response itself.
-
-
+            # How long to wait for the health check response itself.
+            timeoutSeconds: 5
           # --- 3. THE LIVENESS PROBE (The "Self-Healing" Kill-Switch) ---
           # Job: Detects if the process has deadlocked or frozen (e.g., Python GIL hang).
           # Failure: If this fails, GKE KILLS the container and starts a fresh one.
