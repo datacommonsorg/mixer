@@ -299,18 +299,48 @@ spec:
               value: "/workspace/catalog.yaml"
           ports:
             - containerPort: 6060
+          # --- 1. THE STARTUP PROBE (The "Patience" Phase) ---
+          # Job: Give the container time to download embedding files and load models.
+          # Rule: While this is running, Liveness and Readiness probes are DISBALED.
           startupProbe:
             httpGet:
               path: /healthz
               port: 6060
+            # Calculation: failureThreshold * periodSeconds = Total time allowed for startup.
+            # 30 tries * 10s = 300 seconds (5 minutes) total grace period.
             failureThreshold: 30
             periodSeconds: 10
+            # How long to wait for the health check response itself.
             timeoutSeconds: 5
+          # --- 2. THE READINESS PROBE (The "Traffic" Gatekeeper) ---
+          # Job: Determines if the Pod is healthy enough to handle user requests right now.
+          # Failure: If this fails, GKE removes the Pod from the Load Balancer/Service.
+          # Recovery: If it starts passing again, traffic resumes automatically. No restart.
           readinessProbe:
             httpGet:
               path: /healthz
               port: 6060
-            timeoutSeconds: 300
+            # Check every 10s. If the server is too bogged down by heavy embedding 
+            # computations to respond in 5s, stop sending traffic to avoid user timeouts.
+            periodSeconds: 10
+            failureThreshold: 3 # If it fails 3 times in a row, mark the Pod as "Not Ready."
+            timeoutSeconds: 5 # How long to wait for the health check response itself.
+
+
+          # --- 3. THE LIVENESS PROBE (The "Self-Healing" Kill-Switch) ---
+          # Job: Detects if the process has deadlocked or frozen (e.g., Python GIL hang).
+          # Failure: If this fails, GKE KILLS the container and starts a fresh one.
+          # Note: Only starts after the startupProbe succeeds.
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 6060
+            # Checked less frequently than readiness (every 20s) to save resources.
+            periodSeconds: 20
+            # If it fails 3 times (1 minute of silence), GKE will trigger a Pod restart.
+            failureThreshold: 3
+            # If the process is so broken it can't respond to a ping in 5s, it's a "zombie."
+            timeoutSeconds: 5
           volumeMounts:
             - name: embeddings-config
               mountPath: /datacommons/nl
