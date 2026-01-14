@@ -56,10 +56,26 @@
           <Name>block-deprecated-endpoints</Name>
         </Step>
        <Step>
+          <!-- 
+            Input Normalization:
+            For POST requests to /v2/resolve, we force the Content-Type to application/json if it isn't already.
+            This handles "curl -d" (form-urlencoded), text/plain, or null headers.
+            This ensures:
+            1. The 'extract-json-params' policy below ALWAYS runs (it requires JSON).
+            2. The backend receives JSON (preventing 415 errors for valid JSON with wrong headers).
+            3. Invalid bodies (e.g. actual form data) will fail safely at the backend with 400 Bad Request.
+          -->
           <Condition>(request.verb = "POST") and (proxy.pathsuffix MatchesPath "/v2/resolve") and !(request.header.Content-Type ~~ "^application/json.*")</Condition>
           <Name>set-content-type-to-json</Name>
        </Step>
         <Step>
+          <!--
+            Security Parameter Extraction:
+            We parse the JSON body to check for the 'resolver' parameter.
+            This is critical because /v2/resolve has a "Public" (Legacy) mode only if 'resolver' is NOT present.
+            If this extraction fails (e.g. invalid JSON), the variable remains null, but the Public check
+            (defined in verify-api-key-in-header) will explicitly fail-safe unless it's a valid legacy request.
+          -->
           <Condition>(request.verb = "POST") and (proxy.pathsuffix MatchesPath "/v2/resolve")</Condition>
           <Name>extract-json-params</Name>
         </Step>
