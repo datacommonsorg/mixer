@@ -30,12 +30,17 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+const (
+	// IndicatorResolver is the resolver name for indicator/embeddings resolution.
+	IndicatorResolver = "indicator"
+)
+
 // V2ResolveCore gets resolve results from Cloud Bigtable and Maps API.
 func (s *Server) V2ResolveCore(
 	ctx context.Context, in *pbv2.ResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
 	// Check for explicit "indicator" resolver, otherwise default to legacy place resolver logic.
-	if in.GetResolver() == "indicator" {
+	if in.GetResolver() == IndicatorResolver {
 		if !s.flags.EnableEmbeddingsResolver {
 			return nil, status.Errorf(codes.Unimplemented, "Resolving indicators is not enabled for this environment.")
 		}

@@ -19,7 +19,7 @@ func TestResolveUsingEmbeddings(t *testing.T) {
 			t.Errorf("Expected path /api/search_vars, got %s", r.URL.Path)
 		}
 
-		json.NewEncoder(w).Encode(map[string]interface{}{
+		if err := json.NewEncoder(w).Encode(map[string]interface{}{
 			"queryResults": map[string]interface{}{
 				"population": map[string]interface{}{
 					"SV":          []string{"Count_Person", "dc/topic/Population"},
@@ -34,7 +34,9 @@ func TestResolveUsingEmbeddings(t *testing.T) {
 					},
 				},
 			},
-		})
+		}); err != nil {
+			t.Errorf("Failed to encode response: %v", err)
+		}
 	}))
 	defer server.Close()
 
@@ -102,21 +104,21 @@ func TestResolveUsingEmbeddings_Errors(t *testing.T) {
 			name: "Server Error",
 			serverHandler: func(w http.ResponseWriter, r *http.Request) {
 				w.WriteHeader(http.StatusInternalServerError)
-				w.Write([]byte("internal error"))
+				_, _ = w.Write([]byte("internal error"))
 			},
 			expectedError: "The resolution service encountered an error processing your request.",
 		},
 		{
 			name: "Malformed JSON",
 			serverHandler: func(w http.ResponseWriter, r *http.Request) {
-				w.Write([]byte("{invalid-json"))
+				_, _ = w.Write([]byte("{invalid-json"))
 			},
 			expectedError: "An internal error occurred while parsing the resolution response.",
 		},
 		{
 			name:          "Empty Server URL",
 			useEmptyURL:   true,
-			expectedError: "Non-place resolution (resolver=indicator) is not available",
+			expectedError: "Indicator resolution is not available",
 		},
 	}
 
@@ -152,7 +154,7 @@ func TestResolveUsingEmbeddings_InconsistentSearchVarsResponse(t *testing.T) {
 	// - Process "dcid2" (Missing Sentence -> Score only)
 	// - Ignore "dcid3" (No Score -> Safety Break)
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		json.NewEncoder(w).Encode(map[string]interface{}{
+		if err := json.NewEncoder(w).Encode(map[string]interface{}{
 			"queryResults": map[string]interface{}{
 				"query": map[string]interface{}{
 					"SV":          []string{"dcid1", "dcid2", "dcid3"}, // 3 SVs
@@ -165,7 +167,9 @@ func TestResolveUsingEmbeddings_InconsistentSearchVarsResponse(t *testing.T) {
 					},
 				},
 			},
-		})
+		}); err != nil {
+			t.Errorf("Failed to encode response: %v", err)
+		}
 	}))
 	defer server.Close()
 

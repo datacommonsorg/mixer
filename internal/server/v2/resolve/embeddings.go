@@ -85,7 +85,7 @@ func ResolveUsingEmbeddings(
 ) (*pbv2.ResolveResponse, error) {
 	if embeddingsServerURL == "" {
 		slog.Error("resolver=indicator requested, but the embeddings server is not configured for this deployment")
-		return nil, status.Errorf(codes.FailedPrecondition, "Non-place resolution (resolver=indicator) is not available in this environment.")
+		return nil, status.Errorf(codes.FailedPrecondition, "Indicator resolution is not available in this environment.")
 	}
 
 	searchResp, err := callEmbeddingsServer(ctx, httpClient, embeddingsServerURL, nodes)
@@ -137,7 +137,11 @@ func callEmbeddingsServer(
 		slog.Error("Failed to contact embeddings server", "error", err, "url", embeddingsServerURL, "queries", nodes)
 		return nil, status.Errorf(codes.Unavailable, "The resolution service is currently unavailable. Please try again later.")
 	}
-	defer httpResp.Body.Close()
+	defer func() {
+		// Drain and close the body to let the Transport reuse the connection
+		_, _ = io.Copy(io.Discard, httpResp.Body)
+		_ = httpResp.Body.Close()
+	}()
 
 	if httpResp.StatusCode != http.StatusOK {
 		bodyBytes, _ := io.ReadAll(httpResp.Body)
