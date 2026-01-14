@@ -12,7 +12,7 @@ proxies:
       - strip-api-key-header-and-params
       - block-internal-only-endpoints
       - block-deprecated-endpoints
-      - set-default-content-type
+      - set-content-type-to-json
       - extract-json-params
     proxy_endpoints:
       - api

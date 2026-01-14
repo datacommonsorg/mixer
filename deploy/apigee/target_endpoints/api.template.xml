@@ -56,11 +56,11 @@
           <Name>block-deprecated-endpoints</Name>
         </Step>
        <Step>
-          <Condition>(request.verb = "POST") and (proxy.pathsuffix MatchesPath "/v2/resolve") and ((request.header.Content-Type == null) OR (request.header.Content-Type ~~ "^application/x-www-form-urlencoded.*"))</Condition>
-          <Name>set-default-content-type</Name>
+          <Condition>(request.verb = "POST") and (proxy.pathsuffix MatchesPath "/v2/resolve") and !(request.header.Content-Type ~~ "^application/json.*")</Condition>
+          <Name>set-content-type-to-json</Name>
        </Step>
         <Step>
-          <Condition>(request.verb = "POST") and (proxy.pathsuffix MatchesPath "/v2/resolve") and (request.header.Content-Type ~~ "^application/json.*")</Condition>
+          <Condition>(request.verb = "POST") and (proxy.pathsuffix MatchesPath "/v2/resolve")</Condition>
           <Name>extract-json-params</Name>
         </Step>
         <Step>

@@ -4,7 +4,7 @@
   This allows us to reference body parameters (like "resolver") in logic conditions, 
   which Apigee does not support natively without extraction.
 -->
-<ExtractVariables async="false" continueOnError="false" enabled="true" name="extract-json-params">
+<ExtractVariables async="false" continueOnError="true" enabled="true" name="extract-json-params">
     <DisplayName>extract-json-params</DisplayName>
     <Source>request</Source>
     <JSONPayload>
