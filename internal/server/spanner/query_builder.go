@@ -28,6 +28,21 @@ import (
 	"github.com/datacommonsorg/mixer/internal/merger"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	v3 "github.com/datacommonsorg/mixer/internal/server/v3"
+	"github.com/datacommonsorg/mixer/internal/translator/types"
+)
+
+const (
+	// SQL query snippets.
+	// Prefix for graph queries with any node selection.
+	sqlReturn = "\n\t\tRETURN"
+	// DISTINCT keyword for SQL queries.
+	sqlDistinct = " DISTINCT "
+	// DESC keyword for SQL queries.
+	sqlDesc = "\n\t\tDESC"
+	// ORDER BY clause for SQL queries.
+	sqlOrderBy = "\n\t\tORDER BY "
+	// LIMIT clause for SQL queries.
+	sqlLimit = "\n\t\tLIMIT "
 )
 
 const (
@@ -122,10 +137,10 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 	var prefix, returnEdges string
 	switch arc.Decorator {
 	case v3.Chain:
-		prefix = statements.chainedEdgePrefix
+		prefix = statements.graphPrefixAny
 		returnEdges = statements.returnChainedEdges
 	default:
-		prefix = statements.edgePrefix
+		prefix = statements.graphPrefix
 		if len(arc.Filter) > 0 {
 			returnEdges += statements.returnFilterEdges
 		} else {
@@ -220,6 +235,118 @@ func ResolveByIDQuery(nodes []string, in, out string) *spanner.Statement {
 		SQL:    sql,
 		Params: params,
 	}
+}
+
+func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) (*spanner.Statement, error) {
+	sql := statements.graphPrefixAny
+	params := map[string]interface{}{}
+
+	aliasToDcid := mapAliasToDcid(queries)
+	count := 0
+	triples := []string{}
+	dcids := map[string]bool{}
+	aliases := map[string]bool{}
+	for _, q := range queries {
+		// Skip dcid triples which will be resolved.
+		if q.Pred == "dcid" {
+			continue
+		}
+
+		eCount := strconv.Itoa(count)
+		params["predicate"+eCount] = q.Pred
+
+		// Parse subject.
+		aliases[q.Sub.Alias] = true
+		sId := getAlias(q.Sub)
+		var sFilter string
+		if dcid, ok := aliasToDcid[q.Sub.Alias]; ok {
+			if _, ok := dcids[dcid]; !ok {
+				sFilter = fmt.Sprintf(statements.nodeFilter, sId)
+				params[sId] = []string{dcid}
+				dcids[dcid] = true
+			}
+		}
+
+		// Parse object.
+		var oId, oFilter string
+		if node, ok := q.Obj.(types.Node); ok {
+			aliases[node.Alias] = true
+			oId = getAlias(node)
+			if dcid, ok := aliasToDcid[node.Alias]; ok {
+				if _, ok := dcids[dcid]; !ok {
+					oFilter = fmt.Sprintf(statements.nodeFilter, oId)
+					params[oId] = []string{dcid}
+					dcids[dcid] = true
+				}
+			}
+		} else {
+			oId = "o" + eCount
+			var vals []string
+			switch v := q.Obj.(type) {
+			case []string:
+				vals = v
+			case string:
+				vals = []string{v}
+			default:
+				return nil, fmt.Errorf("unsupported object type: %T", q.Obj)
+			}
+			if q.Pred != "typeOf" { // typeOf has reference object.
+				vals = addObjectValues(vals)
+			}
+			oFilter = fmt.Sprintf(statements.nodeFilter, oId)
+			params[oId] = vals
+		}
+
+		triples = append(triples, fmt.Sprintf(statements.triple, sId, sFilter, count, oId, oFilter))
+		count++
+	}
+
+	sql += strings.Join(triples, ",\n\t\t")
+
+	var nodeAliases []string
+	for _, n := range nodes {
+		nodeAliases = append(nodeAliases, getAlias(n)+".value")
+	}
+	var distinct string
+	if opts.Distinct {
+		distinct = sqlDistinct
+	}
+	sql += sqlReturn + distinct + "\n\t\t\t" + strings.Join(nodeAliases, ",\n\t\t\t")
+
+	if opts.Orderby != "" {
+		// Verify that the orderby alias exists.
+		if _, ok := aliases[opts.Orderby]; !ok {
+			return nil, fmt.Errorf("orderby alias %s not found", opts.Orderby)
+		}
+		sql += sqlOrderBy + "\n\t\t\t" + opts.Orderby[1:] + "_.value"
+		if !opts.ASC {
+			sql += sqlDesc
+		}
+	}
+	if opts.Limit > 0 {
+		sql += sqlLimit + strconv.Itoa(opts.Limit)
+	}
+
+	return &spanner.Statement{
+		SQL:    sql,
+		Params: params,
+	}, nil
+}
+
+// mapAliasToDcid maps SPARQL aliases to their corresponding DCIDs.
+func mapAliasToDcid(queries []*types.Query) map[string]string {
+	dcidMap := make(map[string]string)
+	for _, q := range queries {
+		if q.Pred == "dcid" {
+			dcidMap[q.Sub.Alias] = q.Obj.(string)
+		}
+	}
+	return dcidMap
+}
+
+// getAlias returns a SPARQL alias for Spanner.
+func getAlias(node types.Node) string {
+	return node.Alias[1:] + "_"
 }
 
 func generateValueHash(input string) string {
