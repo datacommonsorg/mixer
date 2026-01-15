@@ -34,13 +34,33 @@ option go_package = "github.com/datacommonsorg/mixer/internal/proto/v2";
 message ResolveRequest{
     repeated string nodes = 1;
     string property = 2;
+
+    // Optional name of a specific custom resolver to use.
+    // If not provided, defaults to place resolution using the property param.
+    // Supported Values:
+    // - "indicator": Resolves Statistical Variables and Topics.
+    string resolver = 3;
 }
 
 message ResolveResponse{
     message Entity {
         message Candidate {
+            // The DCID of the resolved entity.
             string dcid = 1;
+
+            // The dominant type of the entity (e.g. "Place", "StatisticalVariable").
             string dominant_type = 2;
+
+            // Auxiliary information describing the match quality or context.
+            // Flexible key-value pairs depending on the resolver used.
+            // 
+            // For resolver="indicator":
+            // - "score": The cosine similarity score of the match (e.g. "0.98").
+            // - "sentence": The specific description sentence that matched the query.
+            map<string, string> metadata = 3;
+
+            // All types associated with this entity.
+            repeated string type_of = 4;
         }
         string node = 1;
         repeated Candidate candidates = 3;
