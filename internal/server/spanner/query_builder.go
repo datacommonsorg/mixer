@@ -32,11 +32,17 @@ import (
 )
 
 const (
-	sqlReturn   = "\n\t\tRETURN"
+	// SQL query snippets.
+	// Prefix for graph queries with any node selection.
+	sqlReturn = "\n\t\tRETURN"
+	// DISTINCT keyword for SQL queries.
 	sqlDistinct = " DISTINCT "
-	sqlDesc     = "\n\t\tDESC"
-	sqlOrderBy  = "\n\t\tORDER BY "
-	sqlLimit    = "\n\t\tLIMIT "
+	// DESC keyword for SQL queries.
+	sqlDesc = "\n\t\tDESC"
+	// ORDER BY clause for SQL queries.
+	sqlOrderBy = "\n\t\tORDER BY "
+	// LIMIT clause for SQL queries.
+	sqlLimit = "\n\t\tLIMIT "
 )
 
 const (
@@ -231,7 +237,7 @@ func ResolveByIDQuery(nodes []string, in, out string) *spanner.Statement {
 	}
 }
 
-func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) *spanner.Statement {
+func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) (*spanner.Statement, error) {
 	sql := statements.graphPrefixAny
 	params := map[string]interface{}{}
 
@@ -239,6 +245,7 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 	count := 0
 	triples := []string{}
 	dcids := map[string]bool{}
+	aliases := map[string]bool{}
 	for _, q := range queries {
 		// Skip dcid triples which will be resolved.
 		if q.Pred == "dcid" {
@@ -249,6 +256,7 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 		params["predicate"+eCount] = q.Pred
 
 		// Parse subject.
+		aliases[q.Sub.Alias] = true
 		sId := getAlias(q.Sub)
 		var sFilter string
 		if dcid, ok := aliasToDcid[q.Sub.Alias]; ok {
@@ -262,6 +270,7 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 		// Parse object.
 		var oId, oFilter string
 		if node, ok := q.Obj.(types.Node); ok {
+			aliases[node.Alias] = true
 			oId = getAlias(node)
 			if dcid, ok := aliasToDcid[node.Alias]; ok {
 				if _, ok := dcids[dcid]; !ok {
@@ -272,7 +281,15 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 			}
 		} else {
 			oId = "o" + eCount
-			vals := []string{q.Obj.(string)}
+			var vals []string
+			switch v := q.Obj.(type) {
+			case []string:
+				vals = v
+			case string:
+				vals = []string{v}
+			default:
+				return nil, fmt.Errorf("unsupported object type: %T", q.Obj)
+			}
 			if q.Pred != "typeOf" { // typeOf has reference object.
 				vals = addObjectValues(vals)
 			}
@@ -286,17 +303,21 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 
 	sql += strings.Join(triples, ",\n\t\t")
 
-	var aliases []string
+	var nodeAliases []string
 	for _, n := range nodes {
-		aliases = append(aliases, getAlias(n)+".value")
+		nodeAliases = append(nodeAliases, getAlias(n)+".value")
 	}
 	var distinct string
 	if opts.Distinct {
 		distinct = sqlDistinct
 	}
-	sql += sqlReturn + distinct + "\n\t\t\t" + strings.Join(aliases, ",\n\t\t\t")
+	sql += sqlReturn + distinct + "\n\t\t\t" + strings.Join(nodeAliases, ",\n\t\t\t")
 
 	if opts.Orderby != "" {
+		// Verify that the orderby alias exists.
+		if _, ok := aliases[opts.Orderby]; !ok {
+			return nil, fmt.Errorf("orderby alias %s not found", opts.Orderby)
+		}
 		sql += sqlOrderBy + "\n\t\t\t" + opts.Orderby[1:] + "_.value"
 		if !opts.ASC {
 			sql += sqlDesc
@@ -309,7 +330,7 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 	return &spanner.Statement{
 		SQL:    sql,
 		Params: params,
-	}
+	}, nil
 }
 
 // mapAliasToDcid maps SPARQL aliases to their corresponding DCIDs.

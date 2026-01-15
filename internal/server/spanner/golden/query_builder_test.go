@@ -120,7 +120,7 @@ func TestSparqlQuery(t *testing.T) {
 		goldenFile := c.golden + ".sql"
 
 		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return spanner.SparqlQuery(c.nodes, c.queries, c.opts), nil
+			return spanner.SparqlQuery(c.nodes, c.queries, c.opts)
 		})
 	}
 }
