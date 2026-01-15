@@ -546,6 +546,15 @@
               ]
             },
             {
+              "facet_id": "1024534950",
+              "observations": [
+                {
+                  "date": "2024",
+                  "value": 6437360
+                }
+              ]
+            },
+            {
               "facet_id": "1733625304",
               "observations": [
                 {
@@ -3706,20 +3715,20 @@
               ]
             },
             {
-              "facet_id": "723406962",
-              "observations": [
-                {
-                  "date": "2024",
-                  "value": 3544835
-                }
-              ]
-            },
-            {
               "facet_id": "1836477334",
               "observations": [
                 {
                   "date": "2023",
                   "value": 27555
+                }
+              ]
+            },
+            {
+              "facet_id": "723406962",
+              "observations": [
+                {
+                  "date": "2024",
+                  "value": 3544835
                 }
               ]
             },
@@ -6144,6 +6153,10 @@
     }
   },
   "facets": {
+    "1024534950": {
+      "import_name": "Bulgaria_Census",
+      "provenance_url": "https://www.nsi.bg/en/statistical-data/206/649"
+    },
     "10983471": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2023.S2601A",
