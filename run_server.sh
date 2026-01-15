@@ -30,6 +30,9 @@
 #   # Run with structured JSON logs
 #   ./run_server.sh --json-log
 #
+#   # Run with a custom embeddings server URL
+#   ./run_server.sh --embeddings_server_url=http://localhost:8080
+#
 #   # Add more mixer flags
 #   ./run_server.sh --use_sqlite=true --sqlite_path=$PWD/test/datacommons.db --write_usage_logs=true
 
@@ -43,7 +46,9 @@ if [[ -z "${MIXER_LOG_LEVEL}" ]]; then
 fi
 
 # Process arguments
+
 args=()
+
 for arg in "$@"; do
   if [[ "$arg" == "--json-log" ]]; then
     export MIXER_LOCAL_LOGS=false
