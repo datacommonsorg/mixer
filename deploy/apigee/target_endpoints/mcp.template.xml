@@ -12,6 +12,9 @@
   <PreFlow name="PreFlow">
     <Request>
       <Step>
+        <Name>am-disable-compression</Name>
+      </Step>
+      <Step>
         <Condition>(request.header.x-api-key = null) and (request.queryparam.key != null)</Condition>
         <Name>copy-key-param-to-header</Name>
       </Step>
@@ -26,6 +29,7 @@
   <HTTPTargetConnection>
     <URL>https://REPLACE_WITH_MCP_SERVICE_URL</URL>
     <Properties>
+      <Property name="request.streaming.enabled">true</Property>
       <Property name="response.streaming.enabled">true</Property>
       <Property name="io.timeout.millis">300000</Property>
     </Properties>
