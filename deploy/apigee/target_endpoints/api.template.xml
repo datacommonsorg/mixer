@@ -50,20 +50,20 @@
             (proxy.pathsuffix MatchesPath "/update-cache") OR
             (proxy.pathsuffix MatchesPath "/v1/bulk/observation-existence") OR
             (proxy.pathsuffix MatchesPath "/v1/bulk/observations/point/linked") OR
-            (proxy.pathsuffix MatchesPath "/v1/bulk/variables")
+            (proxy.pathsuffix MatchesPath "/v1/bulk/variables") OR
             (proxy.pathsuffix MatchesPath "/v1/events") OR
-            <!-- The previous line also deprecates "/v1/events/dates" -->
+            (proxy.pathsuffix MatchesPath "/v1/events/dates") OR
             (proxy.pathsuffix MatchesPath "/v1/find/entities") OR
-            (proxy.pathsuffix MatchesPath "/v1/info/place") OR
-            <!-- The previous line also deprecates "/v1/info/variable-group" -->
-            (proxy.pathsuffix MatchesPath "/v1/info/variable") OR
-            (proxy.pathsuffix MatchesPath "/v1/observations/point") OR
-            (proxy.pathsuffix MatchesPath "/v1/observations/series") OR
-            <!-- The previous line also deprecates "/v1/observations/series/derived" -->
+            ((proxy.pathsuffix MatchesPath "/v1/info/place") OR (proxy.pathsuffix MatchesPath "/v1/info/place/**")) OR
+            ((proxy.pathsuffix MatchesPath "/v1/info/variable") OR (proxy.pathsuffix MatchesPath "/v1/info/variable/**")) OR
+            ((proxy.pathsuffix MatchesPath "/v1/info/variable-group") OR (proxy.pathsuffix MatchesPath "/v1/info/variable-group/**")) OR
+            ((proxy.pathsuffix MatchesPath "/v1/observations/point") OR (proxy.pathsuffix MatchesPath "/v1/observations/point/**")) OR
+            ((proxy.pathsuffix MatchesPath "/v1/observations/series") OR (proxy.pathsuffix MatchesPath "/v1/observations/series/**")) OR
+            (proxy.pathsuffix MatchesPath "/v1/observations/series/derived") OR
             (proxy.pathsuffix MatchesPath "/v1/place/stat-vars/union") OR
             (proxy.pathsuffix MatchesPath "/v1/stat/date/within-place") OR
-            (proxy.pathsuffix MatchesPath "/v1/triples") OR
-            (proxy.pathsuffix MatchesPath "/v1/variables") OR
+            ((proxy.pathsuffix MatchesPath "/v1/triples") OR (proxy.pathsuffix MatchesPath "/v1/triples/**")) OR
+            ((proxy.pathsuffix MatchesPath "/v1/variables") OR (proxy.pathsuffix MatchesPath "/v1/variables/**"))
           </Condition>
           <Name>block-deprecated-endpoints</Name>
         </Step>
