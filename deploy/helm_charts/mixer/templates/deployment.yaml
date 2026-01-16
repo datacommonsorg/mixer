@@ -85,6 +85,12 @@ spec:
           configMap:
             name: mixer-feature-flags
             optional: true
+      {{- if $group.enableEmbeddingsSidecar }}
+        - name: embeddings-config
+          configMap:
+            name: {{ include "mixer.fullname" $ }}-embeddings-config
+            optional: true
+      {{- end }}
       initContainers:
         - name: update-bigtable-info
           image: gcr.io/datcom-ci/datacommons-script-runner:latest
@@ -191,7 +197,10 @@ spec:
               --metrics_exporter=otlp \
               {{- end }}
               {{- if eq $.Values.mixer.writeUsageLogs true}}
-               --write_usage_logs=true \
+              --write_usage_logs=true \
+              {{- end }}
+              {{- if $group.enableEmbeddingsSidecar }}
+              --embeddings_server_url="http://localhost:{{ $.Values.embeddingsSidecar.port }}" \
               {{- end }}
               --feature_flags_path=/datacommons/flags/feature_flags.yaml
           volumeMounts:
@@ -232,23 +241,23 @@ spec:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-store-config
                   key: spanner_graph_info.yaml
-            {{- if $.Values.mixer.redis.enabled }}
+          {{- if $.Values.mixer.redis.enabled }}
             - name: REDIS_INFO
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-store-config
                   key: redis_info.yaml
                   optional: true
-            {{- end }}
+          {{- end }}
             - name: MIXER_HASH
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-githash
                   key: mixer_hash.txt
-            {{- if eq $.Values.mixer.enableOtlp true}}
+          {{- if eq $.Values.mixer.enableOtlp true}}
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: http://opentelemetry-collector.opentelemetry.svc.cluster.local:4317
-            {{- end }}
+          {{- end }}
           ports:
             - containerPort: 12345
           startupProbe:
@@ -270,6 +279,70 @@ spec:
             periodSeconds: 10
             initialDelaySeconds: 60
             timeoutSeconds: 10
+      {{- if $group.enableEmbeddingsSidecar }}
+        - name: embeddings
+          image: "{{ $.Values.embeddingsSidecar.image.repository }}:{{ default "latest" $.Values.embeddingsSidecar.image.tag }}"
+          imagePullPolicy: {{ $.Values.embeddingsSidecar.image.pullPolicy }}
+          resources:
+            limits:
+              memory: {{ $.Values.embeddingsSidecar.memory }}
+              cpu: {{ $.Values.embeddingsSidecar.cpuLimit }}
+            requests:
+              memory: {{ $.Values.embeddingsSidecar.memory }}
+              cpu: {{ $.Values.embeddingsSidecar.cpuRequest }}
+          env:
+            - name: NUM_WORKERS
+              value: {{ $.Values.embeddingsSidecar.workers | quote }}
+            - name: ADDITIONAL_CATALOG_PATH
+              # Required to tell the app to load the catalog baked into the image at this path.
+              value: "/workspace/catalog.yaml"
+          ports:
+            - containerPort: {{ $.Values.embeddingsSidecar.port }}
+          # --- 1. THE STARTUP PROBE (The "Patience" Phase) ---
+          # Job: Give the container time to download embedding files and load models.
+          # Rule: While this is running, Liveness and Readiness probes are DISABLED.
+          startupProbe:
+            httpGet:
+              path: /healthz
+              port: {{ $.Values.embeddingsSidecar.port }}
+            # Calculation: failureThreshold * periodSeconds = Total time allowed for startup.
+            # 30 tries * 10s = 300 seconds (5 minutes) total grace period.
+            failureThreshold: 30
+            periodSeconds: 10
+            # How long to wait for the health check response itself.
+            timeoutSeconds: 5
+          # --- 2. THE READINESS PROBE (The "Traffic" Gatekeeper) ---
+          # Job: Determines if the Pod is healthy enough to handle user requests right now.
+          # Failure: If this fails, GKE removes the Pod from the Load Balancer/Service.
+          # Recovery: If it starts passing again, traffic resumes automatically. No restart.
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: {{ $.Values.embeddingsSidecar.port }}
+            # Check every 10s. If the server is too bogged down by heavy embedding 
+            # computations to respond in 5s, stop sending traffic to avoid user timeouts.
+            periodSeconds: 10
+            failureThreshold: 3 # If it fails 3 times in a row, mark the Pod as "Not Ready."
+            # How long to wait for the health check response itself.
+            timeoutSeconds: 5
+          # --- 3. THE LIVENESS PROBE (The "Self-Healing" Kill-Switch) ---
+          # Job: Detects if the process has deadlocked or frozen (e.g., Python GIL hang).
+          # Failure: If this fails, GKE KILLS the container and starts a fresh one.
+          # Note: Only starts after the startupProbe succeeds.
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: {{ $.Values.embeddingsSidecar.port }}
+            # Checked less frequently than readiness (every 20s) to save resources.
+            periodSeconds: 20
+            # If it fails 3 times (1 minute of silence), GKE will trigger a Pod restart.
+            failureThreshold: 3
+            # If the process is so broken it can't respond to a ping in 5s, it's a "zombie."
+            timeoutSeconds: 5
+          volumeMounts:
+            - name: embeddings-config
+              mountPath: /datacommons/nl
+      {{- end }}
         - name: esp
           image:  "{{ $.Values.esp.image.repository }}{{- if $.Values.esp.image.tag -}}:{{ $.Values.esp.image.tag }}{{- end }}"
           imagePullPolicy: {{ $.Values.esp.image.pullPolicy }}

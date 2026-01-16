@@ -364,6 +364,35 @@ esp:
     pullPolicy: IfNotPresent
     tag: "2"
 
+embeddingsSidecar:
+  image:
+    # NOTE: This repository does not actually exist! 
+    # It is an alias used by Skaffold to map the datacommons-nl image 
+    # (tagged as mixer-sidecar) to this specific sidecar container.
+    # The actual image is injected by Cloud Build/Skaffold during deployment.
+    repository: gcr.io/datcom-ci/datacommons-embeddings-sidecar
+    pullPolicy: IfNotPresent
+    tag: "mixer-sidecar"
+  port: 6060
+  memory: "2G"
+  cpuLimit: "1"
+  cpuRequest: "100m"
+  workers: 1
+  env:
+    default_indexes:
+      - base_uae_mem
+    enabled_indexes:
+      - base_uae_mem
+      - medium_ft
+      - sdg_ft
+      - undata_ft
+    vertex_ai_models:
+      uae-large-v1-model:
+        project_id: datcom-nl
+        location: us-central1
+        prediction_endpoint_id: "" # Must be defined per environment
+    enable_reranking: false
+
 # Config for k8s-sa(service account). The k8s-sa will be bound to a
 # GCP-sa using annotations, specified below.
 serviceAccount:
@@ -407,6 +436,7 @@ serviceGroups:
     # If the name of the recon service is changed here,
     # please also change the name in the deployment.yaml template.
   recon:
+    enableEmbeddingsSidecar: true
     urlPaths:
       - "/v1/recon/*"
       - "/v2/resolve"

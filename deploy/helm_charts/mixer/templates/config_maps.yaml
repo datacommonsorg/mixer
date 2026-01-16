@@ -68,3 +68,15 @@ data:
 {{ (index .Values.mixer.schemaConfigs "base.mcf") | nindent 4 }}
   encode.mcf: |
 {{ (index .Values.mixer.schemaConfigs "encode.mcf") | nindent 4 }}
+
+---
+
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ include "mixer.fullname" . }}-embeddings-config
+  namespace: {{ .Release.Namespace }}
+data:
+  # Pass environment-specific settings (like Vertex AI Endpoint IDs) to embeddings server
+  env.yaml: |
+    {{- toYaml .Values.embeddingsSidecar.env | nindent 4 }}
