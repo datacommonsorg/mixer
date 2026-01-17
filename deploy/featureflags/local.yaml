@@ -3,3 +3,4 @@ flags:
   V3MirrorFraction: 1.0
   UseSpannerGraph: true
   UseStaleReads: true
+  EnableEmbeddingsResolver: true
