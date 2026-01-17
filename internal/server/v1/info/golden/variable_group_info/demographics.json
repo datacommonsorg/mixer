@@ -141,6 +141,15 @@
         "hasData": true
       },
       {
+        "id": "Count_Person_5To17Years_Poor",
+        "searchNames": [
+          "Population Count of Person With Age is 5 - 17 Years, Family Poverty Status is Poor"
+        ],
+        "displayName": "Population: 5 - 17 Years, Poor",
+        "definition": "mp=count,pt=Person,age=Years5To17,familyPovertyStatus=Poor",
+        "hasData": true
+      },
+      {
         "id": "Count_Person_InfrastructureProject_BrazilRuralDevelopmentProgram",
         "searchNames": [
           "Population Count of Person With Affected by Is Infrastructure Project, Benefit Program is Brazil_Rural Development Program",
@@ -166,13 +175,13 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 31671
+        "descendentStatVarCount": 31696
       },
       {
         "id": "dc/g/Person_AgeGroupClassification",
         "specializedEntity": "Age Group Classification",
         "displayName": "Person by Age Group Classification",
-        "descendentStatVarCount": 8
+        "descendentStatVarCount": 11
       },
       {
         "id": "dc/g/Person_BenefitProgram",
@@ -340,7 +349,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 28189
+        "descendentStatVarCount": 28220
       },
       {
         "id": "dc/g/Person_GovernmentId",
@@ -526,7 +535,7 @@
         "id": "dc/g/Person_PlaceOfResidenceClassification",
         "specializedEntity": "Place of Residence Classification (Individual)",
         "displayName": "Person by Place of Residence Classification",
-        "descendentStatVarCount": 4330
+        "descendentStatVarCount": 4354
       },
       {
         "id": "dc/g/Place_PlaceOfResidenceClassification",
@@ -556,7 +565,7 @@
         "id": "dc/g/Residence",
         "specializedEntity": "Residence",
         "displayName": "Residence",
-        "descendentStatVarCount": 6070
+        "descendentStatVarCount": 6094
       },
       {
         "id": "dc/g/Person_ResidentStatus",
@@ -601,7 +610,7 @@
         "descendentStatVarCount": 4
       }
     ],
-    "descendentStatVarCount": 52108,
+    "descendentStatVarCount": 52151,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

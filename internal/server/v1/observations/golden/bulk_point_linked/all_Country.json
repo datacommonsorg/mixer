@@ -483,6 +483,11 @@
             },
             {
               "date": "2024",
+              "value": 6437360,
+              "facet": "1024534950"
+            },
+            {
+              "date": "2024",
               "value": 6445481,
               "facet": "1733625304"
             },
@@ -3382,14 +3387,14 @@
               "facet": "3981252704"
             },
             {
-              "date": "2024",
-              "value": 3544835,
-              "facet": "723406962"
-            },
-            {
               "date": "2023",
               "value": 27555,
               "facet": "1836477334"
+            },
+            {
+              "date": "2024",
+              "value": 3544835,
+              "facet": "723406962"
             },
             {
               "date": "2016",
@@ -5602,6 +5607,10 @@
     }
   ],
   "facets": {
+    "1024534950": {
+      "import_name": "Bulgaria_Census",
+      "provenance_url": "https://www.nsi.bg/en/statistical-data/206/649"
+    },
     "10983471": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2023.S2601A",

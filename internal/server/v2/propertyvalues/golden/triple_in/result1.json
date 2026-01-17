@@ -4135,6 +4135,14 @@
               ],
               "dcid": "nationality",
               "provenanceId": "dc/base/BaseSchema"
+            },
+            {
+              "name": "tradePartner",
+              "types": [
+                "Property"
+              ],
+              "dcid": "tradePartner",
+              "provenanceId": "dc/base/BaseSchema"
             }
           ]
         },
