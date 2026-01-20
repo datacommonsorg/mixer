@@ -1,4 +1,5 @@
 flags:
   EnableV3: true
+  V3MirrorFraction: 1.0
   UseSpannerGraph: true
   UseStaleReads: true

@@ -100,7 +100,7 @@ func NewFlags(path string) (*Flags, error) {
 		return nil, err
 	}
 
-slog.Info("Feature flags initialized from file", "path", path, "flags", *cfg.Flags)
+	slog.Info("Feature flags initialized from file", "path", path, "flags", *cfg.Flags)
 
 	return cfg.Flags, nil
 }
