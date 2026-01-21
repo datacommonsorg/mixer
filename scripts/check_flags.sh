@@ -132,7 +132,7 @@ check_env() {
   commit_hash=$(echo "$version_output" | yq e '.gitHash' 2>/dev/null || true)
   if [[ -z "$commit_hash" || "$commit_hash" == "null" ]]; then
     # Fallback to HTML parsing. || true prevents grep from killing the script immediately so that the error message below is printed.
-    commit_hash=$(echo "$version_output" | grep -o 'mixer/commit/[-a-zA-Z0-9._]\{1,40\}' | sed 's|.*/||' | head -n 1 || true)
+    commit_hash=$(echo "$version_output" | grep -o 'mixer/commit/[a-zA-Z0-9._-]\{1,40\}' | sed 's|.*/||' | head -n 1 || true)
   fi
 
   if [[ -z "$commit_hash" ]]; then
@@ -141,8 +141,8 @@ check_env() {
   fi
 
   # Check if commit exists locally; fail if not.
-  if ! git cat-file -e "$commit_hash" &>/dev/null; then
-    if [[ "$env_name" == "dev" || "$env_name" == "dev_website" ]]; then
+  if ! git cat-file -e -- "$commit_hash" &>/dev/null; then
+    if [[ "$env_name" =~ ^(dev|dev_website)$ ]]; then
       echo "Warning: Live commit '${commit_hash}' not found locally. Skipping live compatibility check for ${env_name}." >&2
       return 0
     fi
@@ -155,7 +155,7 @@ check_env() {
   local TEMP_DIR
   TEMP_DIR=$(mktemp -d)
   TEMP_DIRS+=("$TEMP_DIR")
-  git worktree add --detach "$TEMP_DIR" "$commit_hash"
+  git worktree add --detach "$TEMP_DIR" -- "$commit_hash"
 
   # Run the check in a subshell to isolate directory changes.
   (
