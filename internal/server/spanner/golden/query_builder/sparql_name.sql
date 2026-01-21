@@ -5,4 +5,4 @@
 			o0.subject_id IN ('State')),
 		(state_:Node)-[:Edge {predicate: 'name'}]->(name_:Node)
 		RETURN
-			name_.value
+			name_.value AS name_

@@ -23,6 +23,7 @@ import (
 
 	"cloud.google.com/go/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
+	"github.com/datacommonsorg/mixer/internal/translator/types"
 	"google.golang.org/api/iterator"
 	"google.golang.org/grpc/codes"
 )
@@ -203,6 +204,37 @@ func (sc *spannerDatabaseClient) ResolveByID(ctx context.Context, nodes []string
 	return nodeToCandidates, nil
 }
 
+func (sc *spannerDatabaseClient) Sparql(ctx context.Context, nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) (map[string][]string, error) {
+	queryResponse := make(map[string][]string)
+	for _, node := range nodes {
+		queryResponse[node.Alias] = []string{}
+	}
+
+	stmt, err := SparqlQuery(nodes, queries, opts)
+	if err != nil {
+		return nil, err
+	}
+
+	var iter *spanner.RowIterator
+	if sc.useStaleReads {
+		ts, err := sc.getStalenessTimestamp()
+		if err != nil {
+			return nil, err
+		}
+		ro := sc.client.Single().WithTimestampBound(spanner.ReadTimestamp(ts))
+		iter = ro.Query(ctx, *stmt)
+	} else {
+		iter = sc.client.Single().Query(ctx, *stmt)
+	}
+	defer iter.Stop()
+	err = sc.processDynamicRows(iter, *queryResponse)
+	if err != nil {
+		return nil, err
+	}
+
+	return queryResponse, nil
+}
+
 // fetchAndUpdateTimestamp queries Spanner and updates the timestamp.
 func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) error {
 	iter := sc.client.ReadOnlyTransaction().Query(ctx, *GetCompletionTimestampQuery())
@@ -287,4 +319,35 @@ func (sc *spannerDatabaseClient) processRows(iter *spanner.RowIterator, newStruc
 	}
 
 	return nil
+}
+
+func (sc *spannerDatabaseClient) processDynamicRows(iter *spanner.RowIterator) map[string][]string {
+	rowData := make(map[string]string)
+	for {
+		row, err := iter.Next()
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			return err
+		}
+
+		// Create a map to hold this row's data
+		rowData := make(map[string]string)
+
+		// Iterate through all columns in the row
+		for i := 0; i < row.Size(); i++ {
+			colName := row.ColumnName(i)
+			var colValue string
+
+			if err := row.Column(i, &colValue); err != nil {
+				return err
+			}
+			rowData[colName] = colValue
+		}
+
+		// Use your rowData map here
+		fmt.Printf("Row: %+v\n", rowData)
+	}
+	return rowData
 }

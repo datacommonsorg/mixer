@@ -3,5 +3,5 @@
 		WHERE
 			o1.subject_id IN ('City'))
 		RETURN DISTINCT 
-			subject_.value
+			subject_.value AS subject_
 		LIMIT 10

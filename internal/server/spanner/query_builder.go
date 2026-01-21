@@ -305,7 +305,8 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 
 	var nodeAliases []string
 	for _, n := range nodes {
-		nodeAliases = append(nodeAliases, getAlias(n)+".value")
+		alias := getAlias(n)
+		nodeAliases = append(nodeAliases, alias+".value AS "+alias)
 	}
 	var distinct string
 	if opts.Distinct {

@@ -2,6 +2,6 @@
 		WHERE
 			o0.subject_id IN ('RaceCodeEnum'))
 		RETURN
-			a_.value
+			a_.value AS a_
 		ORDER BY 
 			a_.value
