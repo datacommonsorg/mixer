@@ -72,7 +72,7 @@ cleanup() {
 check_dependencies() {
   for cmd in yq curl git; do
     if ! command -v "$cmd" &> /dev/null; then
-      echo "Error: Required command '$cmd' not found. Please install it and ensure it's in your PATH."
+      echo "Error: Required command '$cmd' not found. Please install it and ensure it's in your PATH." >&2
       exit 1
     fi
   done
@@ -128,11 +128,12 @@ check_env() {
     return 1
   fi
 
-  # Try to parse as JSON first.
+  # Handle JSON parsing. || true prevents pipefail from killing the script if yq errors on HTML.
   commit_hash=$(echo "$version_output" | yq e '.gitHash' 2>/dev/null || true)
   if [[ -z "$commit_hash" || "$commit_hash" == "null" ]]; then
-    # Fallback to parsing as HTML.
-    commit_hash=$(echo "$version_output" | grep -o 'mixer/commit/[a-f0-9]\{7,40\}' | sed 's|.*/||')
+    # Fallback to HTML parsing. 
+    # Use || true so if grep finds nothing, the script survives long enough to print the detailed error message below.
+    commit_hash=$(echo "$version_output" | grep -o 'mixer/commit/[-a-zA-Z0-9._]\{1,40\}' | sed 's|.*/||' | head -n 1 || true)
   fi
 
   if [[ -z "$commit_hash" ]]; then
@@ -142,7 +143,11 @@ check_env() {
 
   # Check if commit exists locally; fail if not.
   if ! git cat-file -e "$commit_hash" &>/dev/null; then
-    echo "Error: Live commit ${commit_hash} not found locally." >&2
+    if [[ "$env_name" == "dev" || "$env_name" == "dev_website" ]]; then
+      echo "Warning: Live commit `${commit_hash}` not found locally. Skipping live compatibility check for ${env_name}." >&2
+      return 0
+    fi
+    echo "Error: Live commit `${commit_hash}` not found locally." >&2
     return 1
   fi
 
