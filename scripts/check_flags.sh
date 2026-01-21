@@ -144,10 +144,10 @@ check_env() {
   # Check if commit exists locally; fail if not.
   if ! git cat-file -e "$commit_hash" &>/dev/null; then
     if [[ "$env_name" == "dev" || "$env_name" == "dev_website" ]]; then
-      echo "Warning: Live commit `${commit_hash}` not found locally. Skipping live compatibility check for ${env_name}." >&2
+      echo "Warning: Live commit '${commit_hash}' not found locally. Skipping live compatibility check for ${env_name}." >&2
       return 0
     fi
-    echo "Error: Live commit `${commit_hash}` not found locally." >&2
+    echo "Error: Live commit '${commit_hash}' not found locally." >&2
     return 1
   fi
 
