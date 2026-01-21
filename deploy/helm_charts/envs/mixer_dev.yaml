@@ -25,6 +25,9 @@ ingress:
       ingress.gcp.kubernetes.io/pre-shared-cert: mixer-certificate,
     }
 
+esp:
+  v2_resolve_allow_unregistered: false
+
 # GCP level config
 ip: 35.244.157.41
 region: us-central1
