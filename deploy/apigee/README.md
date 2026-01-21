@@ -48,24 +48,24 @@ For MCP (Model Context Protocol) services running on Cloud Run, the Apigee proxy
 
 0. Ensure the [prerequisites](#prerequisites) are installed.
 1. Set gcloud project to Apigee host project: gcloud config set project $HOST_PROJECT_ID.  
-2. Create GCS bucket for Terraform state: gsutil mb "gs://$HOST_PROJECT_ID-tf".  
-3. Set ENV_NAME=\<nonprod|prod\>.  
-4. Create a local $ENV_NAME.env file with your initial variables.  
-5. Create the destination in Secret Manager:  
+1. Create GCS bucket for Terraform state: gsutil mb "gs://$HOST_PROJECT_ID-tf".  
+1. Set ENV_NAME=\<nonprod|prod\>.  
+1. Create a local $ENV_NAME.env file with your initial variables.  
+1. Create the destination in Secret Manager:  
    gcloud secrets create $ENV_NAME-env --project=$HOST_PROJECT_ID --data-file=$ENV_NAME.env  
-6. **IMPORTANT**: Manually edit terraform/$ENV_NAME/terraform.tf to configure the bucket for the GCS backend.  
-7. Configure references to resources created by Apigee one-click provisioning:  
+1. **IMPORTANT**: Manually edit terraform/$ENV_NAME/terraform.tf to configure the bucket for the GCS backend.  
+1. Configure references to resources created by Apigee one-click provisioning:  
    * Set tfvars apigee_lb_url_map_name from gcloud compute url-maps list.  
    * Set tfvars apigee_backend_service_name from gcloud compute backend-services list.  
-8. Run ./deploy_apigee.sh $ENV_NAME.
+1. Run ./deploy_apigee.sh $ENV_NAME.
 
 ### **Updates to existing deployment**
 
 0. Ensure the [prerequisites](#prerequisites) are installed.
 1. Ensure you either do not have a local $ENV_NAME.env file or it has no *unintended* changes relative to the version in Secret Manager.
-2. Run ./deploy_apigee.sh $ENV_NAME.  
-3. Type "yes" to confirm the Terraform plan.  
-4. **Auto-Sync Prompt**: After deployment completes, the script checks if your local .env matches Secret Manager. If they differ, it will prompt you to `--push` your local changes to the cloud. **Note**: Only say yes if you are certain your local file contains the most up-to-date versions of all shared variables.
+1. Run ./deploy_apigee.sh $ENV_NAME.  
+1. Type "yes" to confirm the Terraform plan.  
+1. **Auto-Sync Prompt**: After deployment completes, the script checks if your local .env matches Secret Manager. If they differ, it will prompt you to `--push` your local changes to the cloud. **Note**: Only say yes if you are certain your local file contains the most up-to-date versions of all shared variables.
 
 #### **Adding or Updating Environment Variables & Secrets**
 
