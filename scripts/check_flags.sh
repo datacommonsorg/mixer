@@ -131,8 +131,7 @@ check_env() {
   # Handle JSON parsing. || true prevents pipefail from killing the script if yq errors on HTML.
   commit_hash=$(echo "$version_output" | yq e '.gitHash' 2>/dev/null || true)
   if [[ -z "$commit_hash" || "$commit_hash" == "null" ]]; then
-    # Fallback to HTML parsing. 
-    # Use || true so if grep finds nothing, the script survives long enough to print the detailed error message below.
+    # Fallback to HTML parsing. || true prevents grep from killing the script immediately so that the error message below is printed.
     commit_hash=$(echo "$version_output" | grep -o 'mixer/commit/[-a-zA-Z0-9._]\{1,40\}' | sed 's|.*/||' | head -n 1 || true)
   fi
 
