@@ -338,11 +338,10 @@ func (sc *spannerDatabaseClient) processDynamicRows(iter *spanner.RowIterator) (
 		if err != nil {
 			return rowData, err
 		}
-		data := []string{}
 
+		data := []string{}
 		for i := 0; i < row.Size(); i++ {
 			var val spanner.GenericColumnValue
-
 			if err := row.Column(i, &val); err != nil {
 				return rowData, err
 			}
