@@ -18,12 +18,14 @@ package server
 import (
 	"context"
 	"log/slog"
+	"math/rand"
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/log"
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/search"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
@@ -95,6 +97,13 @@ func (s *Server) V2Resolve(
 func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 	*pbv2.NodeResponse, error,
 ) {
+	if s.flags.V2DivertFraction > 0.0 {
+		if rand.Float64() < s.flags.V2DivertFraction {
+			slog.Info("Diverting V2Node request to dispatcher", "request", in)
+			return s.dispatcher.Node(ctx, in, datasources.DefaultPageSize)
+		}
+	}
+
 	v2StartTime := time.Now()
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	localRespChan := make(chan *pbv2.NodeResponse, 1)
@@ -250,6 +259,13 @@ func (s *Server) V2Event(
 func (s *Server) V2Observation(
 	ctx context.Context, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
+	if s.flags.V2DivertFraction > 0.0 {
+		if rand.Float64() < s.flags.V2DivertFraction {
+			slog.Info("Diverting V2Observation request to dispatcher", "request", in)
+			return s.dispatcher.Observation(ctx, in)
+		}
+	}
+
 	v2StartTime := time.Now()
 
 	surface, toRemote := util.GetMetadata(ctx)
