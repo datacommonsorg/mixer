@@ -61,7 +61,7 @@ func (f *Flags) validateFlagValues() error {
 		return fmt.Errorf("V3MirrorFraction must be between 0 and 1.0, got %f", f.V3MirrorFraction)
 	}
 	if f.V3MirrorFraction > 0 && !f.EnableV3 {
-		return fmt.Errorf("V3MirrorFraction > 0 requires UseSpannerGraph and EnableV3 to be true")
+		return fmt.Errorf("V3MirrorFraction > 0 requires EnableV3 to be true")
 	}
 	if f.SpannerGraphDatabase != "" && (!f.UseSpannerGraph || !f.EnableV3) {
 		return fmt.Errorf("using SpannerGraphDatabase requires UseSpannerGraph and EnableV3 to be true")
