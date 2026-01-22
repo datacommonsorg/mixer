@@ -38,7 +38,7 @@ type Flags struct {
 	UseStaleReads bool `yaml:"UseStaleReads"`
 	// Whether to enable the embeddings resolver.
 	EnableEmbeddingsResolver bool `yaml:"EnableEmbeddingsResolver"`
-	// Fraction of V2 API requests to divert to the new dispatcher backend using. Value from 0 to 1.0.
+	// Fraction of V2 API requests to divert to the new dispatcher backend. Value from 0 to 1.0.
 	V2DivertFraction float64 `yaml:"V2DivertFraction"`
 }
 
@@ -60,7 +60,7 @@ func (f *Flags) validateFlagValues() error {
 	if f.V3MirrorFraction < 0 || f.V3MirrorFraction > 1.0 {
 		return fmt.Errorf("V3MirrorFraction must be between 0 and 1.0, got %f", f.V3MirrorFraction)
 	}
-	if f.V3MirrorFraction > 0 && (!f.UseSpannerGraph || !f.EnableV3) {
+	if f.V3MirrorFraction > 0 && !f.EnableV3 {
 		return fmt.Errorf("V3MirrorFraction > 0 requires UseSpannerGraph and EnableV3 to be true")
 	}
 	if f.SpannerGraphDatabase != "" && (!f.UseSpannerGraph || !f.EnableV3) {
@@ -72,8 +72,8 @@ func (f *Flags) validateFlagValues() error {
 	if f.V2DivertFraction < 0 || f.V2DivertFraction > 1.0 {
 		return fmt.Errorf("V2DivertFraction must be between 0 and 1.0, got %f", f.V2DivertFraction)
 	}
-	if f.V2DivertFraction > 0 && (!f.UseSpannerGraph || !f.EnableV3) {
-		return fmt.Errorf("V2DivertFraction > 0 requires UseSpannerGraph and EnableV3 to be true")
+	if f.V2DivertFraction > 0 && !f.EnableV3 {
+		return fmt.Errorf("V2DivertFraction > 0 requires EnableV3 to be true")
 	}
 	return nil
 }
