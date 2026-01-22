@@ -27,6 +27,7 @@ ingress:
       ingress.gcp.kubernetes.io/pre-shared-cert: "mixer-certificate,multi-domain-2025",
     }
 
+# TODO(/v2/resolve cleanup): Remove this once /v2/resolve always requires an api key.
 esp:
   v2_resolve_allow_unregistered: false
 
