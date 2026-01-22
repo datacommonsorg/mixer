@@ -319,7 +319,7 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 		if _, ok := aliases[opts.Orderby]; !ok {
 			return nil, fmt.Errorf("orderby alias %s not found", opts.Orderby)
 		}
-		sql += sqlOrderBy + "\n\t\t\t" + opts.Orderby[1:] + "_.value"
+		sql += sqlOrderBy + "\n\t\t\t" + opts.Orderby[1:] + "_"
 		if !opts.ASC {
 			sql += sqlDesc
 		}

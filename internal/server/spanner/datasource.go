@@ -19,7 +19,6 @@ import (
 	"fmt"
 	"log/slog"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
@@ -194,17 +193,4 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 		return nil, fmt.Errorf("error resolving ids: %v", err)
 	}
 	return candidatesToResolveResponse(nodeToCandidates), nil
-}
-
-// Sparql executes a SPARQL query against the Spanner graph.
-func (sds *SpannerDataSource) Sparql(ctx context.Context, req *pb.SparqlRequest) (*pb.QueryResponse, error) {
-	return nil, fmt.Errorf("unimplemented")
-	/*nodes, queries, opts, err := sparql.ParseQuery(req.GetQuery())
-	if err != nil {
-		return nil, fmt.Errorf("error parsing sparql request: %v", err)
-	}
-	queryResponse, err := sds.client.Sparql(ctx, nodes, queries, opts)
-	if err != nil {
-		return nil, fmt.Errorf("error executing sparql query: %v", err)
-	}*/
 }

@@ -4,4 +4,4 @@
 		RETURN
 			a_.value AS a_
 		ORDER BY 
-			a_.value
+			a_

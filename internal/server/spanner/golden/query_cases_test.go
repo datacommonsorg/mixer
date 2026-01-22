@@ -370,12 +370,12 @@ var sparqlTestCases = []struct {
 		},
 		queries: []*types.Query{
 			{
-				Sub:  types.Node{Alias: "?biologicalSpecimen"},
+				Sub:  types.Node{Alias: "?country"},
 				Pred: "typeOf",
-				Obj:  "BiologicalSpecimen",
+				Obj:  "Country",
 			},
 			{
-				Sub:  types.Node{Alias: "?biologicalSpecimen"},
+				Sub:  types.Node{Alias: "?country"},
 				Pred: "name",
 				Obj:  types.Node{Alias: "?name"},
 			},
@@ -386,6 +386,6 @@ var sparqlTestCases = []struct {
 			Orderby:  "?name",
 			ASC:      false,
 		},
-		golden: "sparql_biological_specimen",
+		golden: "sparql_country_names_desc",
 	},
 }

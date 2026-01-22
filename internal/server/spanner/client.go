@@ -36,7 +36,7 @@ type SpannerClient interface {
 	GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error)
 	SearchNodes(ctx context.Context, query string, types []string) ([]*SearchNode, error)
 	ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error)
-	Sparql(ctx context.Context, nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) (map[string][]string, error)
+	Sparql(ctx context.Context, nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) ([][]string, error)
 	Id() string
 	Start()
 	Stop()
