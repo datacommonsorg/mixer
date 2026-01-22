@@ -38,6 +38,7 @@ const (
 // searchVarsRequest represents the request body for the embeddings server
 type searchVarsRequest struct {
 	Queries []string `json:"queries"`
+	Idx     string   `json:"idx,omitempty"`
 }
 
 // searchVarsResponse represents the response body from the embeddings server
@@ -81,6 +82,7 @@ func ResolveUsingEmbeddings(
 	ctx context.Context,
 	httpClient *http.Client,
 	embeddingsServerURL string,
+	idx string,
 	nodes []string,
 ) (*pbv2.ResolveResponse, error) {
 	if embeddingsServerURL == "" {
@@ -88,7 +90,7 @@ func ResolveUsingEmbeddings(
 		return nil, status.Errorf(codes.FailedPrecondition, "Indicator resolution is not available in this environment.")
 	}
 
-	searchResp, err := callEmbeddingsServer(ctx, httpClient, embeddingsServerURL, nodes)
+	searchResp, err := callEmbeddingsServer(ctx, httpClient, embeddingsServerURL, idx, nodes)
 	if err != nil {
 		return nil, err
 	}
@@ -102,6 +104,7 @@ func ResolveUsingEmbeddings(
 //   - ctx: Context for the request.
 //   - httpClient: HTTP client to use for the request.
 //   - embeddingsServerURL: Base URL of the embeddings server.
+//   - idx: The index to use for resolution.
 //   - nodes: List of query strings to resolve.
 //
 // Returns:
@@ -111,11 +114,13 @@ func callEmbeddingsServer(
 	ctx context.Context,
 	httpClient *http.Client,
 	embeddingsServerURL string,
+	idx string,
 	nodes []string,
 ) (*searchVarsResponse, error) {
 	// Construct the request body
 	searchReq := searchVarsRequest{
 		Queries: nodes,
+		Idx:     idx,
 	}
 	requestBytes, err := json.Marshal(searchReq)
 	if err != nil {
