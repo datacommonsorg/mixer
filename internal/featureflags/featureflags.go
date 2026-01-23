@@ -72,7 +72,9 @@ func (f *Flags) validateFlagValues() error {
 func (f Flags) String() string {
 	b, err := yaml.Marshal(f)
 	if err != nil {
-		return fmt.Sprintf("%+v", f)
+		// Use a type alias to avoid recursive String() call
+		type rawFlags Flags
+		return fmt.Sprintf("%+v", rawFlags(f))
 	}
 	return "\n" + string(b)
 }
