@@ -1,10 +1,10 @@
-		GRAPH DCGraph MATCH ANY (country_:Node)-[:Edge {predicate: 'typeOf'}]->(o0:Node
+		GRAPH DCGraph MATCH ANY (a0:Node)-[:Edge {predicate: 'typeOf'}]->(o0:Node
 		WHERE
 			o0.subject_id IN ('Country')),
-		(country_:Node)-[:Edge {predicate: 'name'}]->(name_:Node)
+		(a0:Node)-[:Edge {predicate: 'name'}]->(a1:Node)
 		RETURN DISTINCT 
-			name_.value AS name_
+			a1.value AS a1
 		ORDER BY 
-			name_
+			a1
 		DESC
 		LIMIT 10

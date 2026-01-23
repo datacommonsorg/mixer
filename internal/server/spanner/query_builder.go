@@ -42,7 +42,7 @@ const (
 	// ORDER BY clause for SQL queries.
 	sqlOrderBy = "\n\t\tORDER BY "
 	// LIMIT clause for SQL queries.
-	sqlLimit = "\n\t\tLIMIT "
+	sqlLimit = "\n\t\tLIMIT @limit"
 )
 
 const (
@@ -242,10 +242,10 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 	params := map[string]interface{}{}
 
 	aliasToDcid := mapAliasToDcid(queries)
+	safeAliasMap := generateSafeAliasMap(queries)
 	count := 0
 	triples := []string{}
 	dcids := map[string]bool{}
-	aliases := map[string]bool{}
 	for _, q := range queries {
 		// Skip dcid triples which will be resolved.
 		if q.Pred == "dcid" {
@@ -256,8 +256,7 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 		params["predicate"+eCount] = q.Pred
 
 		// Parse subject.
-		aliases[q.Sub.Alias] = true
-		sId := getAlias(q.Sub)
+		sId := safeAliasMap[q.Sub.Alias]
 		var sFilter string
 		if dcid, ok := aliasToDcid[q.Sub.Alias]; ok {
 			if _, ok := dcids[dcid]; !ok {
@@ -270,8 +269,7 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 		// Parse object.
 		var oId, oFilter string
 		if node, ok := q.Obj.(types.Node); ok {
-			aliases[node.Alias] = true
-			oId = getAlias(node)
+			oId = safeAliasMap[node.Alias]
 			if dcid, ok := aliasToDcid[node.Alias]; ok {
 				if _, ok := dcids[dcid]; !ok {
 					oFilter = fmt.Sprintf(statements.nodeFilter, oId)
@@ -305,7 +303,7 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 
 	var nodeAliases []string
 	for _, n := range nodes {
-		alias := getAlias(n)
+		alias := safeAliasMap[n.Alias]
 		nodeAliases = append(nodeAliases, alias+".value AS "+alias)
 	}
 	var distinct string
@@ -316,16 +314,17 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 
 	if opts.Orderby != "" {
 		// Verify that the orderby alias exists.
-		if _, ok := aliases[opts.Orderby]; !ok {
+		if _, ok := safeAliasMap[opts.Orderby]; !ok {
 			return nil, fmt.Errorf("orderby alias %s not found", opts.Orderby)
 		}
-		sql += sqlOrderBy + "\n\t\t\t" + opts.Orderby[1:] + "_"
+		sql += sqlOrderBy + "\n\t\t\t" + safeAliasMap[opts.Orderby]
 		if !opts.ASC {
 			sql += sqlDesc
 		}
 	}
 	if opts.Limit > 0 {
-		sql += sqlLimit + strconv.Itoa(opts.Limit)
+		sql += sqlLimit
+		params["limit"] = opts.Limit
 	}
 
 	return &spanner.Statement{
@@ -345,9 +344,23 @@ func mapAliasToDcid(queries []*types.Query) map[string]string {
 	return dcidMap
 }
 
-// getAlias returns a SPARQL alias for Spanner.
-func getAlias(node types.Node) string {
-	return node.Alias[1:] + "_"
+// generateSafeAliasMap generates a map of safe aliases for SPARQL queries.
+func generateSafeAliasMap(queries []*types.Query) map[string]string {
+	safeAliasMap := make(map[string]string)
+	count := 0
+	for _, q := range queries {
+		if _, exists := safeAliasMap[q.Sub.Alias]; !exists {
+			safeAliasMap[q.Sub.Alias] = fmt.Sprintf("a%d", count)
+			count++
+		}
+		if node, ok := q.Obj.(types.Node); ok {
+			if _, exists := safeAliasMap[node.Alias]; !exists {
+				safeAliasMap[node.Alias] = fmt.Sprintf("a%d", count)
+				count++
+			}
+		}
+	}
+	return safeAliasMap
 }
 
 func generateValueHash(input string) string {

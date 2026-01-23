@@ -1,8 +1,8 @@
-		GRAPH DCGraph MATCH ANY (state_:Node
+		GRAPH DCGraph MATCH ANY (a0:Node
 		WHERE
-			state_.subject_id IN ('geoId/06'))-[:Edge {predicate: 'typeOf'}]->(o0:Node
+			a0.subject_id IN ('geoId/06'))-[:Edge {predicate: 'typeOf'}]->(o0:Node
 		WHERE
 			o0.subject_id IN ('State')),
-		(state_:Node)-[:Edge {predicate: 'name'}]->(name_:Node)
+		(a0:Node)-[:Edge {predicate: 'name'}]->(a1:Node)
 		RETURN
-			name_.value AS name_
+			a1.value AS a1
