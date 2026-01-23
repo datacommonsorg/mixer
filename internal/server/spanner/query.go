@@ -210,15 +210,7 @@ func (sc *spannerDatabaseClient) Sparql(ctx context.Context, nodes []types.Node,
 		return nil, fmt.Errorf("error building sparql query: %v", err)
 	}
 
-	rowData, err := sc.queryDynamic(
-		ctx,
-		*query,
-	)
-	if err != nil {
-		return nil, err
-	}
-
-	return rowData, nil
+	return sc.queryDynamic(ctx, *query)
 }
 
 // fetchAndUpdateTimestamp queries Spanner and updates the timestamp.
@@ -252,7 +244,7 @@ func (sc *spannerDatabaseClient) getStalenessTimestamp() (time.Time, error) {
 	return time.Time{}, fmt.Errorf("error getting staleness timestamp")
 }
 
-func (sc *spannerDatabaseClient) queryAndCollect(
+func (sc *spannerDatabaseClient) executeQuery(
 	ctx context.Context,
 	stmt spanner.Statement,
 	handleRows func(*spanner.RowIterator) error,
@@ -288,7 +280,7 @@ func (sc *spannerDatabaseClient) queryStructs(
 	newStruct func() interface{},
 	withStruct func(interface{}),
 ) error {
-	return sc.queryAndCollect(ctx, stmt, func(iter *spanner.RowIterator) error {
+	return sc.executeQuery(ctx, stmt, func(iter *spanner.RowIterator) error {
 		return sc.processRows(iter, newStruct, withStruct)
 	})
 }
@@ -299,7 +291,7 @@ func (sc *spannerDatabaseClient) queryDynamic(
 	stmt spanner.Statement,
 ) ([][]string, error) {
 	var rowData [][]string
-	err := sc.queryAndCollect(ctx, stmt, func(iter *spanner.RowIterator) error {
+	err := sc.executeQuery(ctx, stmt, func(iter *spanner.RowIterator) error {
 		result, err := sc.processDynamicRows(iter)
 		rowData = result
 		return err
