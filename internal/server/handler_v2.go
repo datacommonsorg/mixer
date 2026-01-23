@@ -379,6 +379,7 @@ func (s *Server) FilterStatVarsByEntity(
 
 // resolveRouting determines whether to route to local and/or remote instances
 // based on the target parameter and the presence of a remote mixer domain.
+// Returns (shouldCallLocal, shouldCallRemote).
 //
 // logic:
 // - If remoteMixerDomain is empty, we are the base instance (or standalone).
