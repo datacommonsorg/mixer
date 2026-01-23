@@ -64,7 +64,6 @@ const (
 	Mixer_GetStatAll_FullMethodName                   = "/datacommons.Mixer/GetStatAll"
 	Mixer_GetLocationsRankings_FullMethodName         = "/datacommons.Mixer/GetLocationsRankings"
 	Mixer_GetRelatedLocations_FullMethodName          = "/datacommons.Mixer/GetRelatedLocations"
-	Mixer_GetBioPageData_FullMethodName               = "/datacommons.Mixer/GetBioPageData"
 	Mixer_Search_FullMethodName                       = "/datacommons.Mixer/Search"
 	Mixer_GetVersion_FullMethodName                   = "/datacommons.Mixer/GetVersion"
 	Mixer_GetPlaceStatsVar_FullMethodName             = "/datacommons.Mixer/GetPlaceStatsVar"
@@ -157,8 +156,6 @@ type MixerClient interface {
 	GetLocationsRankings(ctx context.Context, in *proto.GetLocationsRankingsRequest, opts ...grpc.CallOption) (*proto.GetLocationsRankingsResponse, error)
 	// Get related locations for given stat var DCIDs.
 	GetRelatedLocations(ctx context.Context, in *proto.GetRelatedLocationsRequest, opts ...grpc.CallOption) (*proto.GetRelatedLocationsResponse, error)
-	// Get bio page data given a dcid.
-	GetBioPageData(ctx context.Context, in *proto.GetBioPageDataRequest, opts ...grpc.CallOption) (*proto.GraphNodes, error)
 	// Given a text search query, return all nodes matching the query.
 	Search(ctx context.Context, in *proto.SearchRequest, opts ...grpc.CallOption) (*proto.SearchResponse, error)
 	// Retrieves the version metadata.
@@ -436,15 +433,6 @@ func (c *mixerClient) GetLocationsRankings(ctx context.Context, in *proto.GetLoc
 func (c *mixerClient) GetRelatedLocations(ctx context.Context, in *proto.GetRelatedLocationsRequest, opts ...grpc.CallOption) (*proto.GetRelatedLocationsResponse, error) {
 	out := new(proto.GetRelatedLocationsResponse)
 	err := c.cc.Invoke(ctx, Mixer_GetRelatedLocations_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) GetBioPageData(ctx context.Context, in *proto.GetBioPageDataRequest, opts ...grpc.CallOption) (*proto.GraphNodes, error) {
-	out := new(proto.GraphNodes)
-	err := c.cc.Invoke(ctx, Mixer_GetBioPageData_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -925,8 +913,6 @@ type MixerServer interface {
 	GetLocationsRankings(context.Context, *proto.GetLocationsRankingsRequest) (*proto.GetLocationsRankingsResponse, error)
 	// Get related locations for given stat var DCIDs.
 	GetRelatedLocations(context.Context, *proto.GetRelatedLocationsRequest) (*proto.GetRelatedLocationsResponse, error)
-	// Get bio page data given a dcid.
-	GetBioPageData(context.Context, *proto.GetBioPageDataRequest) (*proto.GraphNodes, error)
 	// Given a text search query, return all nodes matching the query.
 	Search(context.Context, *proto.SearchRequest) (*proto.SearchResponse, error)
 	// Retrieves the version metadata.
@@ -1079,9 +1065,6 @@ func (UnimplementedMixerServer) GetLocationsRankings(context.Context, *proto.Get
 }
 func (UnimplementedMixerServer) GetRelatedLocations(context.Context, *proto.GetRelatedLocationsRequest) (*proto.GetRelatedLocationsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRelatedLocations not implemented")
-}
-func (UnimplementedMixerServer) GetBioPageData(context.Context, *proto.GetBioPageDataRequest) (*proto.GraphNodes, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetBioPageData not implemented")
 }
 func (UnimplementedMixerServer) Search(context.Context, *proto.SearchRequest) (*proto.SearchResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Search not implemented")
@@ -1613,24 +1596,6 @@ func _Mixer_GetRelatedLocations_Handler(srv interface{}, ctx context.Context, de
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).GetRelatedLocations(ctx, req.(*proto.GetRelatedLocationsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_GetBioPageData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.GetBioPageDataRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).GetBioPageData(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_GetBioPageData_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetBioPageData(ctx, req.(*proto.GetBioPageDataRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2589,10 +2554,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetRelatedLocations",
 			Handler:    _Mixer_GetRelatedLocations_Handler,
-		},
-		{
-			MethodName: "GetBioPageData",
-			Handler:    _Mixer_GetBioPageData_Handler,
 		},
 		{
 			MethodName: "Search",
