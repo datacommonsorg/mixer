@@ -45,7 +45,7 @@ func (s *Server) V2ResolveCore(
 			return nil, status.Errorf(codes.Unimplemented, "Resolving indicators is not enabled for this environment.")
 		}
 
-		return resolve.ResolveUsingEmbeddings(ctx, s.httpClient, s.embeddingsServerURL, in.GetNodes())
+		return resolve.ResolveUsingEmbeddings(ctx, s.httpClient, s.embeddingsServerURL, s.resolveEmbeddingsIndexes, in.GetNodes())
 	}
 
 	arcs, err := v2.ParseProperty(in.GetProperty())

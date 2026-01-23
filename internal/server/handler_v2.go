@@ -41,20 +41,27 @@ func (s *Server) V2Resolve(
 	ctx context.Context, in *pbv2.ResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
 	v2StartTime := time.Now()
+
+	callLocal, callRemote := resolveRouting(in.GetTarget(), s.metadata.RemoteMixerDomain)
+
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	localRespChan := make(chan *pbv2.ResolveResponse, 1)
 	remoteRespChan := make(chan *pbv2.ResolveResponse, 1)
 
-	errGroup.Go(func() error {
-		localResp, err := s.V2ResolveCore(errCtx, in)
-		if err != nil {
-			return err
-		}
-		localRespChan <- localResp
-		return nil
-	})
+	if callLocal {
+		errGroup.Go(func() error {
+			localResp, err := s.V2ResolveCore(errCtx, in)
+			if err != nil {
+				return err
+			}
+			localRespChan <- localResp
+			return nil
+		})
+	} else {
+		localRespChan <- nil
+	}
 
-	if s.metadata.RemoteMixerDomain != "" {
+	if callRemote {
 		errGroup.Go(func() error {
 			remoteResp := &pbv2.ResolveResponse{}
 			err := util.FetchRemote(s.metadata, s.httpClient, "/v2/resolve", in, remoteResp)
@@ -73,7 +80,10 @@ func (s *Server) V2Resolve(
 	}
 	close(localRespChan)
 	close(remoteRespChan)
+
 	localResp, remoteResp := <-localRespChan, <-remoteRespChan
+
+	// Note: merger.MergeResolve handles nil inputs (e.g. error handling or empty) gracefully
 	v2Resp := merger.MergeResolve(localResp, remoteResp)
 	v2Latency := time.Since(v2StartTime)
 
@@ -364,4 +374,30 @@ func (s *Server) FilterStatVarsByEntity(
 
 	merged := merger.MergeFilterStatVarsByEntityResponse(<-localResponseChan, <-remoteResponseChan)
 	return merged, nil
+}
+
+// resolveRouting determines whether to route to local and/or remote instances
+// based on the target parameter and the presence of a remote mixer domain.
+// Returns (shouldCallLocal, shouldCallRemote).
+//
+// logic:
+// - If remoteMixerDomain is empty, we are the base instance (or standalone).
+//   Always process locally, ignore target.
+// - If remoteMixerDomain is set, we are a custom instance.
+//   Route based on target:
+//   - "base_only": Call remote only.
+//   - "custom_only": Call local only.
+//   - "base_and_custom" (or empty): Call both.
+func resolveRouting(target, remoteMixerDomain string) (bool, bool) {
+	if remoteMixerDomain == "" {
+		return true, false
+	}
+	switch target {
+	case "base_only":
+		return false, true
+	case "custom_only":
+		return true, false
+	default: // "base_and_custom" or empty
+		return true, true
+	}
 }

@@ -40,6 +40,14 @@ message ResolveRequest{
     // Supported Values:
     // - "indicator": Resolves Statistical Variables and Topics.
     string resolver = 3;
+
+    // Optional target for the resolution request.
+    // This parameter controls which Data Commons instances are used for resolution.
+    // Supported Values:
+    // - "base_only": Uses only the base Data Commons instance (remote).
+    // - "custom_only": Uses only the custom Data Commons instance (local).
+    // - "base_and_custom": Uses both base and custom instances.
+    string target = 4;
 }
 
 message ResolveResponse{
