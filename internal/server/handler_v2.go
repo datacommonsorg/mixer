@@ -83,8 +83,7 @@ func (s *Server) V2Resolve(
 
 	localResp, remoteResp := <-localRespChan, <-remoteRespChan
 
-	// If one is nil (e.g. error handling or empty), handle gracefully
-	// Note: merger.MergeResolve handles nil inputs gracefully
+	// Note: merger.MergeResolve handles nil inputs (e.g. error handling or empty) gracefully
 	v2Resp := merger.MergeResolve(localResp, remoteResp)
 	v2Latency := time.Since(v2StartTime)
 
