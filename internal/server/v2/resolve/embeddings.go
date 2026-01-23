@@ -38,7 +38,6 @@ const (
 // searchVarsRequest represents the request body for the embeddings server
 type searchVarsRequest struct {
 	Queries []string `json:"queries"`
-	Idx     string   `json:"idx,omitempty"`
 }
 
 // searchVarsResponse represents the response body from the embeddings server
@@ -120,7 +119,6 @@ func callEmbeddingsServer(
 	// Construct the request body
 	searchReq := searchVarsRequest{
 		Queries: nodes,
-		Idx:     idx,
 	}
 	requestBytes, err := json.Marshal(searchReq)
 	if err != nil {
@@ -129,7 +127,12 @@ func callEmbeddingsServer(
 	}
 
 	// Create the HTTP request
-	req, err := http.NewRequestWithContext(ctx, "POST", embeddingsServerURL+"/api/search_vars", bytes.NewBuffer(requestBytes))
+	url := embeddingsServerURL + "/api/search_vars"
+	// The embeddings server expects the index to be passed as a query parameter
+	if idx != "" {
+		url += "?idx=" + idx
+	}
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bytes.NewBuffer(requestBytes))
 	if err != nil {
 		slog.Error("Failed to create embeddings server request", "error", err, "url", embeddingsServerURL)
 		return nil, status.Errorf(codes.Internal, "An internal error occurred while connecting to the resolution service.")

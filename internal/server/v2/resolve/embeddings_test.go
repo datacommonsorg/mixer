@@ -229,14 +229,16 @@ func TestResolveUsingEmbeddings_IdxParameter(t *testing.T) {
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				// Verify idx is in the URL query parameters
+				gotIdx := r.URL.Query().Get("idx")
+				if gotIdx != tc.expectedIdx {
+					t.Errorf("Expected idx '%s' in URL, got '%s'", tc.expectedIdx, gotIdx)
+				}
+				
 				var req searchVarsRequest
 				if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 					t.Errorf("Failed to decode request: %v", err)
 					return
-				}
-
-				if req.Idx != tc.expectedIdx {
-					t.Errorf("Expected idx '%s', got '%s'", tc.expectedIdx, req.Idx)
 				}
 
 				// Return empty valid response
