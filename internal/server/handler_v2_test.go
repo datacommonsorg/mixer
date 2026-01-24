@@ -286,14 +286,8 @@ func TestResolveRouting(t *testing.T) {
 			wantErr:           false,
 		},
 		{
-			desc:              "Custom instance, target empty (should ideally be handled by defaults but if passed direct it errors or defaults)",
-			target:            "", // strict validation says default must be explicit if we rely on setResolveDefaults? 
-			// Wait, the logic I implemented: default -> Error. 
-			// But setResolveDefaults turns "" -> "custom_and_base".
-			// So if we test resolveRouting directly with "", it WILL error now based on my implementation.
-			// Let's check my implementation again.
-			// default: return error.
-			// So "" -> Error.
+			desc:              "Custom instance, target empty",
+			target:            "",
 			remoteMixerDomain: "remote.com",
 			wantLocal:         false,
 			wantRemote:        false,
