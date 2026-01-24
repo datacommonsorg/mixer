@@ -35,7 +35,6 @@ func (s *Server) V2ResolveCore(
 	ctx context.Context, in *pbv2.ResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
 	// Check for explicit "indicator" resolver, otherwise default to legacy place resolver logic.
-	// Check for explicit "indicator" resolver, otherwise default to legacy place resolver logic.
 	resolver := in.GetResolver()
 	if resolver == ResolveResolverIndicator {
 		if !s.flags.EnableEmbeddingsResolver {
