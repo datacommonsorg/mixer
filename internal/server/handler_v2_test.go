@@ -251,6 +251,7 @@ func TestResolveRouting(t *testing.T) {
 		remoteMixerDomain string
 		wantLocal         bool
 		wantRemote        bool
+		wantErr           bool
 	}{
 		{
 			desc:              "Base instance (empty remote domain)",
@@ -258,6 +259,7 @@ func TestResolveRouting(t *testing.T) {
 			remoteMixerDomain: "",
 			wantLocal:         true,
 			wantRemote:        false,
+			wantErr:           false,
 		},
 		{
 			desc:              "Custom instance, target base_only",
@@ -265,6 +267,7 @@ func TestResolveRouting(t *testing.T) {
 			remoteMixerDomain: "remote.com",
 			wantLocal:         false,
 			wantRemote:        true,
+			wantErr:           false,
 		},
 		{
 			desc:              "Custom instance, target custom_only",
@@ -272,29 +275,114 @@ func TestResolveRouting(t *testing.T) {
 			remoteMixerDomain: "remote.com",
 			wantLocal:         true,
 			wantRemote:        false,
+			wantErr:           false,
 		},
 		{
-			desc:              "Custom instance, target base_and_custom",
-			target:            "base_and_custom",
+			desc:              "Custom instance, target custom_and_base",
+			target:            "custom_and_base",
 			remoteMixerDomain: "remote.com",
 			wantLocal:         true,
 			wantRemote:        true,
+			wantErr:           false,
 		},
 		{
-			desc:              "Custom instance, empty target (default)",
-			target:            "",
+			desc:              "Custom instance, target empty (should ideally be handled by defaults but if passed direct it errors or defaults)",
+			target:            "", // strict validation says default must be explicit if we rely on setResolveDefaults? 
+			// Wait, the logic I implemented: default -> Error. 
+			// But setResolveDefaults turns "" -> "custom_and_base".
+			// So if we test resolveRouting directly with "", it WILL error now based on my implementation.
+			// Let's check my implementation again.
+			// default: return error.
+			// So "" -> Error.
 			remoteMixerDomain: "remote.com",
-			wantLocal:         true,
-			wantRemote:        true,
+			wantLocal:         false,
+			wantRemote:        false,
+			wantErr:           true,
+		},
+		{
+			desc:              "Custom instance, invalid target",
+			target:            "invalid_target",
+			remoteMixerDomain: "remote.com",
+			wantLocal:         false,
+			wantRemote:        false,
+			wantErr:           true,
 		},
 	}
 
 	for _, tc := range tests {
 		t.Run(tc.desc, func(t *testing.T) {
-			gotLocal, gotRemote := resolveRouting(tc.target, tc.remoteMixerDomain)
-			if gotLocal != tc.wantLocal || gotRemote != tc.wantRemote {
-				t.Errorf("resolveRouting(%q, %q) = (%v, %v), want (%v, %v)",
-					tc.target, tc.remoteMixerDomain, gotLocal, gotRemote, tc.wantLocal, tc.wantRemote)
+			gotLocal, gotRemote, err := resolveRouting(tc.target, tc.remoteMixerDomain)
+			if (err != nil) != tc.wantErr {
+				t.Errorf("resolveRouting(%q, %q) error = %v, wantErr %v", tc.target, tc.remoteMixerDomain, err, tc.wantErr)
+				return
+			}
+			if !tc.wantErr {
+				if gotLocal != tc.wantLocal || gotRemote != tc.wantRemote {
+					t.Errorf("resolveRouting(%q, %q) = (%v, %v), want (%v, %v)",
+						tc.target, tc.remoteMixerDomain, gotLocal, gotRemote, tc.wantLocal, tc.wantRemote)
+				}
+			}
+		})
+	}
+}
+
+func TestSetResolveDefaults(t *testing.T) {
+	tests := []struct {
+		desc string
+		in   *pbv2.ResolveRequest
+		want *pbv2.ResolveRequest
+	}{
+		{
+			desc: "all empty",
+			in:   &pbv2.ResolveRequest{},
+			want: &pbv2.ResolveRequest{
+				Target:   "custom_and_base",
+				Resolver: "place",
+				Property: "<-description->dcid",
+			},
+		},
+		{
+			desc: "partial set - target",
+			in: &pbv2.ResolveRequest{
+				Target: "custom_only",
+			},
+			want: &pbv2.ResolveRequest{
+				Target:   "custom_only",
+				Resolver: "place",
+				Property: "<-description->dcid",
+			},
+		},
+		{
+			desc: "partial set - resolver",
+			in: &pbv2.ResolveRequest{
+				Resolver: "id",
+			},
+			want: &pbv2.ResolveRequest{
+				Target:   "custom_and_base",
+				Resolver: "id",
+				Property: "<-description->dcid",
+			},
+		},
+		{
+			desc: "fully set",
+			in: &pbv2.ResolveRequest{
+				Target:   "base_only",
+				Resolver: "id",
+				Property: "custom_prop",
+			},
+			want: &pbv2.ResolveRequest{
+				Target:   "base_only",
+				Resolver: "id",
+				Property: "custom_prop",
+			},
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.desc, func(t *testing.T) {
+			setResolveDefaults(tc.in)
+			if diff := cmp.Diff(tc.in, tc.want, protocmp.Transform()); diff != "" {
+				t.Errorf("setResolveDefaults() diff (-got +want):\n%s", diff)
 			}
 		})
 	}
