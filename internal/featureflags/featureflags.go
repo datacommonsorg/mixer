@@ -48,7 +48,7 @@ func setDefaultValues() *Flags {
 		UseSpannerGraph:          false,
 		SpannerGraphDatabase:     "",
 		UseStaleReads:            false,
-		EnableEmbeddingsResolver: false,
+		EnableEmbeddingsResolver: true,
 	}
 }
 
