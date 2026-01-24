@@ -21,6 +21,7 @@ package merger
 
 import (
 	"sort"
+	"strconv"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
@@ -69,7 +70,35 @@ func MergeResolve(main, aux *pbv2.ResolveResponse) *pbv2.ResolveResponse {
 			main.Entities = append(main.Entities, e)
 		}
 	}
+	
+	// Sort candidates by score
+	for _, e := range main.Entities {
+		sortCandidatesByScore(e.Candidates)
+	}
+	
 	return main
+}
+
+func sortCandidatesByScore(candidates []*pbv2.ResolveResponse_Entity_Candidate) {
+	sort.Slice(candidates, func(i, j int) bool {
+		scoreI, errI := strconv.ParseFloat(candidates[i].Metadata["score"], 64)
+		scoreJ, errJ := strconv.ParseFloat(candidates[j].Metadata["score"], 64)
+		
+		// If both have valid scores, sort descending
+		if errI == nil && errJ == nil {
+			return scoreI > scoreJ
+		}
+		// If only i has valid score, i comes first
+		if errI == nil {
+			return true
+		}
+		// If only j has valid score, j comes first
+		if errJ == nil {
+			return false
+		}
+		// If neither has valid score, keep original order
+		return i < j
+	})
 }
 
 // Merges multiple V2 ResolveResponses.

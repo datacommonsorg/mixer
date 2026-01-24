@@ -42,7 +42,7 @@ func (s *Server) V2Resolve(
 ) (*pbv2.ResolveResponse, error) {
 	v2StartTime := time.Now()
 
-	callLocal, callRemote := resolveRouting(in.GetTarget(), s.metadata.RemoteMixerDomain)
+	callLocal, callRemote := resolveRouting(in.GetResolver(), in.GetTarget(), s.metadata.RemoteMixerDomain)
 
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	localRespChan := make(chan *pbv2.ResolveResponse, 1)
@@ -384,13 +384,18 @@ func (s *Server) FilterStatVarsByEntity(
 // - If remoteMixerDomain is empty, we are the base instance (or standalone).
 //   Always process locally, ignore target.
 // - If remoteMixerDomain is set, we are a custom instance.
-//   Route based on target:
-//   - "base_only": Call remote only.
-//   - "custom_only": Call local only.
-//   - "base_and_custom" (or empty): Call both.
-func resolveRouting(target, remoteMixerDomain string) (bool, bool) {
+//   Check resolver:
+//   - If resolver != "indicator", ignore target and call both local and remote.
+//   - If resolver == "indicator", route based on target:
+//     - "base_only": Call remote only.
+//     - "custom_only": Call local only.
+//     - "base_and_custom" (or empty): Call both.
+func resolveRouting(resolver, target, remoteMixerDomain string) (bool, bool) {
 	if remoteMixerDomain == "" {
 		return true, false
+	}
+	if resolver != IndicatorResolver {
+		return true, true
 	}
 	switch target {
 	case "base_only":
