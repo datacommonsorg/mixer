@@ -80,7 +80,7 @@ func MergeResolve(main, aux *pbv2.ResolveResponse) *pbv2.ResolveResponse {
 }
 
 func sortCandidatesByScore(candidates []*pbv2.ResolveResponse_Entity_Candidate) {
-	sort.Slice(candidates, func(i, j int) bool {
+	sort.SliceStable(candidates, func(i, j int) bool {
 		scoreI, errI := strconv.ParseFloat(candidates[i].Metadata["score"], 64)
 		scoreJ, errJ := strconv.ParseFloat(candidates[j].Metadata["score"], 64)
 		
