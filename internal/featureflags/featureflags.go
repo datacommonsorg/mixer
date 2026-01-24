@@ -69,6 +69,16 @@ func (f *Flags) validateFlagValues() error {
 	return nil
 }
 
+func (f Flags) String() string {
+	b, err := yaml.Marshal(f)
+	if err != nil {
+		// Use a type alias to avoid recursive String() call
+		type rawFlags Flags
+		return fmt.Sprintf("%+v", rawFlags(f))
+	}
+	return "\n" + string(b)
+}
+
 // Creates a new Flags struct with default values,
 // then overrides them with values from the config file if it is present.
 func NewFlags(path string) (*Flags, error) {

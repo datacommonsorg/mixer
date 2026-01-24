@@ -202,6 +202,9 @@ spec:
               {{- if $group.enableEmbeddingsSidecar }}
               --embeddings_server_url="http://localhost:{{ $.Values.embeddingsSidecar.port }}" \
               {{- end }}
+              {{- if $.Values.mixer.resolveEmbeddingsIndexes }}
+              --resolve_embeddings_indexes={{ $.Values.mixer.resolveEmbeddingsIndexes }} \
+              {{- end }}
               --feature_flags_path=/datacommons/flags/feature_flags.yaml
           volumeMounts:
             - name: schema-mapping
