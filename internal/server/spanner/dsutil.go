@@ -655,7 +655,7 @@ func candidatesToResolveResponse(nodeToCandidates map[string][]string) *pbv2.Res
 }
 
 // sparqlResultsToQueryResponse converts SPARQL row data results into a QueryResponse.
-func sparqlResultsToQueryResponse(nodes []types.Node, results [][]string) *pb.QueryResponse {
+func sparqlResultsToQueryResponse(nodes []types.Node, results [][]string) (*pb.QueryResponse, error) {
 	response := &pb.QueryResponse{
 		Header: make([]string, 0, len(nodes)),
 		Rows:   make([]*pb.QueryResponseRow, 0, len(results)),
@@ -664,6 +664,9 @@ func sparqlResultsToQueryResponse(nodes []types.Node, results [][]string) *pb.Qu
 		response.Header = append(response.Header, node.Alias)
 	}
 	for _, data := range results {
+		if len(data) != len(nodes) {
+			return nil, fmt.Errorf("mismatched number of columns in SPARQL result row: got %d, want %d", len(data), len(nodes))
+		}
 		row := &pb.QueryResponseRow{
 			Cells: make([]*pb.QueryResponseCell, 0, len(data)),
 		}
@@ -674,5 +677,5 @@ func sparqlResultsToQueryResponse(nodes []types.Node, results [][]string) *pb.Qu
 		}
 		response.Rows = append(response.Rows, row)
 	}
-	return response
+	return response, nil
 }

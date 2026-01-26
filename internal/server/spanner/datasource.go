@@ -207,5 +207,9 @@ func (sds *SpannerDataSource) Sparql(ctx context.Context, req *pb.SparqlRequest)
 	if err != nil {
 		return nil, status.Errorf(codes.Internal, "error executing sparql query: %v", err)
 	}
-	return sparqlResultsToQueryResponse(nodes, results), nil
+	response, err := sparqlResultsToQueryResponse(nodes, results)
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, "error converting sparql results to query response: %v", err)
+	}
+	return response, nil
 }
