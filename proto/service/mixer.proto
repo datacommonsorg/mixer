@@ -229,14 +229,6 @@ service Mixer {
     };
   }
 
-  // Get bio page data given a dcid.
-  rpc GetBioPageData(GetBioPageDataRequest) returns (GraphNodes) {
-    option (google.api.http) = {
-      get : "/internal/bio"
-      additional_bindings : {post : "/internal/bio" body : "*"}
-    };
-  }
-
   // Given a text search query, return all nodes matching the query.
   rpc Search(SearchRequest) returns (SearchResponse) {
     option (google.api.http) = {

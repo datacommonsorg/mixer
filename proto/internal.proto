@@ -20,7 +20,6 @@
 // REST API URL from the proto in this file:
 // ========================================
 //    /internal/place (/landing-page)
-//    /internal/bio
 //    /internal/import-table
 // ========================================
 
@@ -28,12 +27,6 @@ syntax = "proto3";
 package datacommons;
 
 option go_package = "github.com/datacommonsorg/mixer/internal/proto";
-
-// Request to get all data in bio page.
-message GetBioPageDataRequest {
-  // The dcid of the entity
-  string dcid = 1;
-}
 
 // Request to update cache for server based on SQL storage.
 message UpdateCacheRequest {
