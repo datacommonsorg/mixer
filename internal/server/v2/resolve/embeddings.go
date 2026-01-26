@@ -81,6 +81,7 @@ func ResolveUsingEmbeddings(
 	ctx context.Context,
 	httpClient *http.Client,
 	embeddingsServerURL string,
+	idx string,
 	nodes []string,
 ) (*pbv2.ResolveResponse, error) {
 	if embeddingsServerURL == "" {
@@ -88,7 +89,7 @@ func ResolveUsingEmbeddings(
 		return nil, status.Errorf(codes.FailedPrecondition, "Indicator resolution is not available in this environment.")
 	}
 
-	searchResp, err := callEmbeddingsServer(ctx, httpClient, embeddingsServerURL, nodes)
+	searchResp, err := callEmbeddingsServer(ctx, httpClient, embeddingsServerURL, idx, nodes)
 	if err != nil {
 		return nil, err
 	}
@@ -102,6 +103,7 @@ func ResolveUsingEmbeddings(
 //   - ctx: Context for the request.
 //   - httpClient: HTTP client to use for the request.
 //   - embeddingsServerURL: Base URL of the embeddings server.
+//   - idx: The index to use for resolution.
 //   - nodes: List of query strings to resolve.
 //
 // Returns:
@@ -111,6 +113,7 @@ func callEmbeddingsServer(
 	ctx context.Context,
 	httpClient *http.Client,
 	embeddingsServerURL string,
+	idx string,
 	nodes []string,
 ) (*searchVarsResponse, error) {
 	// Construct the request body
@@ -124,7 +127,12 @@ func callEmbeddingsServer(
 	}
 
 	// Create the HTTP request
-	req, err := http.NewRequestWithContext(ctx, "POST", embeddingsServerURL+"/api/search_vars", bytes.NewBuffer(requestBytes))
+	url := embeddingsServerURL + "/api/search_vars"
+	// The embeddings server expects the index to be passed as a query parameter
+	if idx != "" {
+		url += "?idx=" + idx
+	}
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bytes.NewBuffer(requestBytes))
 	if err != nil {
 		slog.Error("Failed to create embeddings server request", "error", err, "url", embeddingsServerURL)
 		return nil, status.Errorf(codes.Internal, "An internal error occurred while connecting to the resolution service.")
