@@ -664,7 +664,9 @@ func sparqlResultsToQueryResponse(nodes []types.Node, results [][]string) *pb.Qu
 		response.Header = append(response.Header, node.Alias)
 	}
 	for _, data := range results {
-		row := &pb.QueryResponseRow{}
+		row := &pb.QueryResponseRow{
+			Cells: make([]*pb.QueryResponseCell, 0, len(data)),
+		}
 		for _, value := range data {
 			row.Cells = append(row.Cells, &pb.QueryResponseCell{
 				Value: value,
