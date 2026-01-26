@@ -42,6 +42,8 @@ mixer:
   useCustomBigtable: false
   foldRemoteRootSvg: false
   cacheSVFormula: false
+  # Comma separated embeddings indexes for resolving indicators.
+  resolveEmbeddingsIndexes: "base_uae_mem"
   redis:
     enabled: false
   enableOtlp: false

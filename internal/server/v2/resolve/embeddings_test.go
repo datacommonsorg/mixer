@@ -41,10 +41,11 @@ func TestResolveUsingEmbeddings(t *testing.T) {
 	defer server.Close()
 
 	ctx := context.Background()
-	resp, err := ResolveUsingEmbeddings(ctx, server.Client(), server.URL, []string{"population"})
+	resp, err := ResolveUsingEmbeddings(ctx, server.Client(), server.URL, "test_idx", []string{"population"})
 	if err != nil {
 		t.Fatalf("ResolveEmbeddings() error: %v", err)
 	}
+
 
 	if len(resp.Entities) != 1 {
 		t.Fatalf("Expected 1 entity, got %d", len(resp.Entities))
@@ -132,7 +133,7 @@ func TestResolveUsingEmbeddings_Errors(t *testing.T) {
 				url = ""
 			}
 
-			_, err := ResolveUsingEmbeddings(context.Background(), server.Client(), url, []string{"query"})
+			_, err := ResolveUsingEmbeddings(context.Background(), server.Client(), url, "", []string{"query"})
 			if err == nil {
 				t.Errorf("Expected error containing '%s', got nil", tc.expectedError)
 				return
@@ -173,7 +174,7 @@ func TestResolveUsingEmbeddings_InconsistentSearchVarsResponse(t *testing.T) {
 	}))
 	defer server.Close()
 
-	resp, err := ResolveUsingEmbeddings(context.Background(), server.Client(), server.URL, []string{"query"})
+	resp, err := ResolveUsingEmbeddings(context.Background(), server.Client(), server.URL, "", []string{"query"})
 	if err != nil {
 		t.Fatalf("Unexpected error: %v", err)
 	}
@@ -207,5 +208,50 @@ func TestResolveUsingEmbeddings_InconsistentSearchVarsResponse(t *testing.T) {
 	}
 	if _, hasSentence := c2.Metadata["sentence"]; hasSentence {
 		t.Errorf("Candidate 2: Expected NO sentence, but got one")
+	}
+}
+
+func TestResolveUsingEmbeddings_IdxParameter(t *testing.T) {
+	tests := []struct {
+		name        string
+		expectedIdx string
+	}{
+		{
+			name:        "With Custom Indexes",
+			expectedIdx: "custom_index_1,custom_index_2",
+		},
+		{
+			name:        "With Empty Index",
+			expectedIdx: "",
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				// Verify idx is in the URL query parameters
+				gotIdx := r.URL.Query().Get("idx")
+				if gotIdx != tc.expectedIdx {
+					t.Errorf("Expected idx '%s' in URL, got '%s'", tc.expectedIdx, gotIdx)
+				}
+				
+				var req searchVarsRequest
+				if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+					t.Errorf("Failed to decode request: %v", err)
+					return
+				}
+
+				// Return empty valid response
+				_ = json.NewEncoder(w).Encode(map[string]interface{}{
+					"queryResults": map[string]interface{}{},
+				})
+			}))
+			defer server.Close()
+
+			_, err := ResolveUsingEmbeddings(context.Background(), server.Client(), server.URL, tc.expectedIdx, []string{"query"})
+			if err != nil {
+				t.Fatalf("Unexpected error: %v", err)
+			}
+		})
 	}
 }

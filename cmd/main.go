@@ -116,6 +116,11 @@ var (
 		"",
 		"URL for the embeddings server.",
 	)
+	resolveEmbeddingsIndexes = flag.String(
+		"resolve_embeddings_indexes",
+		"",
+		"Comma separated list of indexes to use for embeddings resolution.",
+	)
 )
 
 func main() {
@@ -422,7 +427,7 @@ func main() {
 	dispatcher := dispatcher.NewDispatcher(processors, dataSources)
 
 	// Create server object
-	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs, *embeddingsServerURL)
+	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs, *embeddingsServerURL, *resolveEmbeddingsIndexes)
 	pbs.RegisterMixerServer(srv, mixerServer)
 
 	// Subscribe to branch cache update
