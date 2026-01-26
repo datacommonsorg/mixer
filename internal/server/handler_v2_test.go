@@ -248,7 +248,6 @@ func TestResolveRouting(t *testing.T) {
 	tests := []struct {
 		desc              string
 		target            string
-		resolver          string
 		remoteMixerDomain string
 		wantLocal         bool
 		wantRemote        bool
@@ -256,47 +255,34 @@ func TestResolveRouting(t *testing.T) {
 		{
 			desc:              "Base instance (empty remote domain)",
 			target:            "any_target",
-			resolver:          IndicatorResolver,
 			remoteMixerDomain: "",
 			wantLocal:         true,
 			wantRemote:        false,
 		},
 		{
-			desc:              "Custom instance, target base_only, resolver indicator",
+			desc:              "Custom instance, target base_only",
 			target:            "base_only",
-			resolver:          IndicatorResolver,
 			remoteMixerDomain: "remote.com",
 			wantLocal:         false,
 			wantRemote:        true,
 		},
 		{
-			desc:              "Custom instance, target custom_only, resolver indicator",
+			desc:              "Custom instance, target custom_only",
 			target:            "custom_only",
-			resolver:          IndicatorResolver,
 			remoteMixerDomain: "remote.com",
 			wantLocal:         true,
 			wantRemote:        false,
 		},
 		{
-			desc:              "Custom instance, target base_and_custom, resolver indicator",
+			desc:              "Custom instance, target base_and_custom",
 			target:            "base_and_custom",
-			resolver:          IndicatorResolver,
 			remoteMixerDomain: "remote.com",
 			wantLocal:         true,
 			wantRemote:        true,
 		},
 		{
-			desc:              "Custom instance, empty target (default), resolver indicator",
+			desc:              "Custom instance, empty target (default)",
 			target:            "",
-			resolver:          IndicatorResolver,
-			remoteMixerDomain: "remote.com",
-			wantLocal:         true,
-			wantRemote:        true,
-		},
-		{
-			desc:              "Custom instance, target base_only, RESOLVER NOT INDICATOR",
-			target:            "base_only",
-			resolver:          "place",
 			remoteMixerDomain: "remote.com",
 			wantLocal:         true,
 			wantRemote:        true,
@@ -305,10 +291,10 @@ func TestResolveRouting(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.desc, func(t *testing.T) {
-			gotLocal, gotRemote := resolveRouting(tc.resolver, tc.target, tc.remoteMixerDomain)
+			gotLocal, gotRemote := resolveRouting(tc.target, tc.remoteMixerDomain)
 			if gotLocal != tc.wantLocal || gotRemote != tc.wantRemote {
-				t.Errorf("resolveRouting(%q, %q, %q) = (%v, %v), want (%v, %v)",
-					tc.resolver, tc.target, tc.remoteMixerDomain, gotLocal, gotRemote, tc.wantLocal, tc.wantRemote)
+				t.Errorf("resolveRouting(%q, %q) = (%v, %v), want (%v, %v)",
+					tc.target, tc.remoteMixerDomain, gotLocal, gotRemote, tc.wantLocal, tc.wantRemote)
 			}
 		})
 	}
