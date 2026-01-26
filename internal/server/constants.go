@@ -15,12 +15,13 @@
 package server
 
 const (
+	// --- Constants related to the resolve endpoint ---
 	// ResolveTargetBaseOnly indicates resolution should only use the base mixer.
 	ResolveTargetBaseOnly = "base_only"
 	// ResolveTargetCustomOnly indicates resolution should only use the custom mixer.
 	ResolveTargetCustomOnly = "custom_only"
-	// ResolveTargetCustomAndBase indicates resolution should use both custom and base mixers.
-	ResolveTargetCustomAndBase = "base_and_custom"
+	// ResolveTargetBaseAndCustom indicates resolution should use both custom and base mixers.
+	ResolveTargetBaseAndCustom = "base_and_custom"
 
 	// ResolveResolverPlace is the default resolver type.
 	ResolveResolverPlace = "place"

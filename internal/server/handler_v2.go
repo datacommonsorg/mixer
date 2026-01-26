@@ -17,7 +17,9 @@ package server
 
 import (
 	"context"
+	"fmt"
 	"log/slog"
+	"strings"
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/log"
@@ -42,7 +44,9 @@ import (
 func (s *Server) V2Resolve(
 	ctx context.Context, in *pbv2.ResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
-	setResolveDefaults(in)
+	if err := setDefaultsAndValidateResolveInputs(in); err != nil {
+		return nil, err
+	}
 	v2StartTime := time.Now()
 
 	callLocal, callRemote, err := resolveRouting(in.GetTarget(), s.metadata.RemoteMixerDomain)
@@ -406,19 +410,19 @@ func resolveRouting(target, remoteMixerDomain string) (bool, bool, error) {
 		return false, true, nil
 	case ResolveTargetCustomOnly:
 		return true, false, nil
-	case ResolveTargetCustomAndBase:
+	case ResolveTargetBaseAndCustom:
 		return true, true, nil
 	default:
 		return false, false, status.Errorf(codes.InvalidArgument,
 			"Invalid value for target parameter provided: %s. Valid values are: \"%s\", \"%s\", \"%s\"",
-			target, ResolveTargetCustomOnly, ResolveTargetBaseOnly, ResolveTargetCustomAndBase)
+			target, ResolveTargetCustomOnly, ResolveTargetBaseOnly, ResolveTargetBaseAndCustom)
 	}
 }
 
-func setResolveDefaults(in *pbv2.ResolveRequest) {
+func setDefaultsAndValidateResolveInputs(in *pbv2.ResolveRequest) error {
 	if in.GetTarget() == "" {
 		// ignored if current call is to base dc
-		in.Target = ResolveTargetCustomAndBase
+		in.Target = ResolveTargetBaseAndCustom
 	}
 	if in.GetResolver() == "" {
 		in.Resolver = ResolveResolverPlace
@@ -426,4 +430,25 @@ func setResolveDefaults(in *pbv2.ResolveRequest) {
 	if in.GetProperty() == "" {
 		in.Property = ResolvePropertyDescription
 	}
+
+	var validationErrors []string
+
+	switch in.GetTarget() {
+	case ResolveTargetBaseOnly, ResolveTargetCustomOnly, ResolveTargetBaseAndCustom:
+	default:
+		validationErrors = append(validationErrors, fmt.Sprintf("Invalid value for target '%s', valid values are: \"%s\", \"%s\", \"%s\"",
+			in.GetTarget(), ResolveTargetCustomOnly, ResolveTargetBaseOnly, ResolveTargetBaseAndCustom))
+	}
+
+	switch in.GetResolver() {
+	case ResolveResolverPlace, ResolveResolverIndicator:
+	default:
+		validationErrors = append(validationErrors, fmt.Sprintf("Invalid value for resolver '%s', valid values are: \"%s\", \"%s\"",
+			in.GetResolver(), ResolveResolverIndicator, ResolveResolverPlace))
+	}
+
+	if len(validationErrors) > 0 {
+		return status.Errorf(codes.InvalidArgument, "Invalid inputs in request: %s", strings.Join(validationErrors, ". "))
+	}
+	return nil
 }

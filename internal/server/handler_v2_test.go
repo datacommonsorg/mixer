@@ -263,7 +263,7 @@ func TestResolveRouting(t *testing.T) {
 		},
 		{
 			desc:              "Custom instance, target base_only",
-			target:            "base_only",
+			target:            ResolveTargetBaseOnly,
 			remoteMixerDomain: "remote.com",
 			wantLocal:         false,
 			wantRemote:        true,
@@ -271,15 +271,15 @@ func TestResolveRouting(t *testing.T) {
 		},
 		{
 			desc:              "Custom instance, target custom_only",
-			target:            "custom_only",
+			target:            ResolveTargetCustomOnly,
 			remoteMixerDomain: "remote.com",
 			wantLocal:         true,
 			wantRemote:        false,
 			wantErr:           false,
 		},
 		{
-			desc:              "Custom instance, target custom_and_base",
-			target:            "custom_and_base",
+			desc:              "Custom instance, target base_and_custom",
+			target:            ResolveTargetBaseAndCustom,
 			remoteMixerDomain: "remote.com",
 			wantLocal:         true,
 			wantRemote:        true,
@@ -320,63 +320,111 @@ func TestResolveRouting(t *testing.T) {
 	}
 }
 
-func TestSetResolveDefaults(t *testing.T) {
+func TestSetDefaultsAndValidateResolveInputs(t *testing.T) {
 	tests := []struct {
-		desc string
-		in   *pbv2.ResolveRequest
-		want *pbv2.ResolveRequest
+		desc    string
+		in      *pbv2.ResolveRequest
+		want    *pbv2.ResolveRequest
+		wantErr bool
+		wantErrMsg string
 	}{
 		{
 			desc: "all empty",
 			in:   &pbv2.ResolveRequest{},
 			want: &pbv2.ResolveRequest{
-				Target:   "custom_and_base",
-				Resolver: "place",
-				Property: "<-description->dcid",
+				Target:   ResolveTargetBaseAndCustom,
+				Resolver: ResolveResolverPlace,
+				Property: ResolvePropertyDescription,
 			},
 		},
 		{
 			desc: "partial set - target",
 			in: &pbv2.ResolveRequest{
-				Target: "custom_only",
+				Target: ResolveTargetCustomOnly,
 			},
 			want: &pbv2.ResolveRequest{
-				Target:   "custom_only",
-				Resolver: "place",
-				Property: "<-description->dcid",
+				Target:   ResolveTargetCustomOnly,
+				Resolver: ResolveResolverPlace,
+				Property: ResolvePropertyDescription,
 			},
 		},
 		{
 			desc: "partial set - resolver",
 			in: &pbv2.ResolveRequest{
-				Resolver: "id",
+				Resolver: ResolveResolverIndicator,
 			},
 			want: &pbv2.ResolveRequest{
-				Target:   "custom_and_base",
-				Resolver: "id",
-				Property: "<-description->dcid",
+				Target:   ResolveTargetBaseAndCustom,
+				Resolver: ResolveResolverIndicator,
+				Property: ResolvePropertyDescription,
 			},
 		},
 		{
 			desc: "fully set",
 			in: &pbv2.ResolveRequest{
-				Target:   "base_only",
-				Resolver: "id",
+				Target:   ResolveTargetBaseOnly,
+				Resolver: ResolveResolverIndicator,
 				Property: "custom_prop",
 			},
 			want: &pbv2.ResolveRequest{
-				Target:   "base_only",
-				Resolver: "id",
+				Target:   ResolveTargetBaseOnly,
+				Resolver: ResolveResolverIndicator,
 				Property: "custom_prop",
 			},
+		},
+		{
+			desc: "invalid target",
+			in: &pbv2.ResolveRequest{
+				Target: "invalid",
+			},
+			want: &pbv2.ResolveRequest{
+				Target:   "invalid",
+				Resolver: ResolveResolverPlace,
+				Property: ResolvePropertyDescription,
+			},
+			wantErr: true,
+			wantErrMsg: "Invalid inputs in request: Invalid value for target 'invalid'",
+		},
+		{
+			desc: "invalid resolver",
+			in: &pbv2.ResolveRequest{
+				Resolver: "invalid",
+			},
+			want: &pbv2.ResolveRequest{
+				Target:   ResolveTargetBaseAndCustom,
+				Resolver: "invalid",
+				Property: ResolvePropertyDescription,
+			},
+			wantErr: true,
+			wantErrMsg: "Invalid inputs in request: Invalid value for resolver 'invalid', valid values are: \"indicator\", \"place\"",
+		},
+		{
+			desc: "invalid target and resolver",
+			in: &pbv2.ResolveRequest{
+				Target:   "invalid_target",
+				Resolver: "invalid_resolver",
+			},
+			want: &pbv2.ResolveRequest{
+				Target:   "invalid_target",
+				Resolver: "invalid_resolver",
+				Property: ResolvePropertyDescription,
+			},
+			wantErr: true,
+			wantErrMsg: "Invalid inputs in request: Invalid value for target 'invalid_target', valid values are: \"custom_only\", \"base_only\", \"base_and_custom\". Invalid value for resolver 'invalid_resolver', valid values are: \"indicator\", \"place\"",
 		},
 	}
 
 	for _, tc := range tests {
 		t.Run(tc.desc, func(t *testing.T) {
-			setResolveDefaults(tc.in)
+			err := setDefaultsAndValidateResolveInputs(tc.in)
+			if (err != nil) != tc.wantErr {
+				t.Errorf("setDefaultsAndValidateResolveInputs() error = %v, wantErr %v", err, tc.wantErr)
+			}
+			if tc.wantErr && !strings.Contains(err.Error(), tc.wantErrMsg) {
+				t.Errorf("setDefaultsAndValidateResolveInputs() error = %v, wantErrMsg %v", err, tc.wantErrMsg)
+			}
 			if diff := cmp.Diff(tc.in, tc.want, protocmp.Transform()); diff != "" {
-				t.Errorf("setResolveDefaults() diff (-got +want):\n%s", diff)
+				t.Errorf("setDefaultsAndValidateResolveInputs() diff (-got +want):\n%s", diff)
 			}
 		})
 	}
