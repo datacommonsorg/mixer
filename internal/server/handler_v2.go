@@ -98,6 +98,7 @@ func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 	*pbv2.NodeResponse, error,
 ) {
 	if rand.Float64() < s.flags.V2DivertFraction {
+		slog.Info("V2Node request diverted to dispatcher backend", "request", in)
 		return s.dispatcher.Node(ctx, in, datasources.DefaultPageSize)
 	}
 
@@ -257,6 +258,7 @@ func (s *Server) V2Observation(
 	ctx context.Context, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
 	if rand.Float64() < s.flags.V2DivertFraction {
+		slog.Info("V2Observation request diverted to dispatcher backend", "request", in)
 		return s.dispatcher.Observation(ctx, in)
 	}
 
