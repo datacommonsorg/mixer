@@ -19,6 +19,7 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
+	"math/rand"
 	"strings"
 	"time"
 
@@ -26,6 +27,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/search"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
@@ -115,6 +117,11 @@ func (s *Server) V2Resolve(
 func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 	*pbv2.NodeResponse, error,
 ) {
+	if rand.Float64() < s.flags.V2DivertFraction {
+		slog.Info("V2Node request diverted to dispatcher backend", "request", in)
+		return s.dispatcher.Node(ctx, in, datasources.DefaultPageSize)
+	}
+
 	v2StartTime := time.Now()
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	localRespChan := make(chan *pbv2.NodeResponse, 1)
@@ -270,6 +277,11 @@ func (s *Server) V2Event(
 func (s *Server) V2Observation(
 	ctx context.Context, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
+	if rand.Float64() < s.flags.V2DivertFraction {
+		slog.Info("V2Observation request diverted to dispatcher backend", "request", in)
+		return s.dispatcher.Observation(ctx, in)
+	}
+
 	v2StartTime := time.Now()
 
 	surface, toRemote := util.GetMetadata(ctx)
@@ -393,10 +405,10 @@ func (s *Server) FilterStatVarsByEntity(
 // Assumes setResolveDefaults has been called prior.
 //
 // logic:
-// - If remoteMixerDomain is empty, we are the base instance (or standalone).
-//   Always process locally, ignore target.
-// - If remoteMixerDomain is set, we are a custom instance.
-//   Route based on target:
+//   - If remoteMixerDomain is empty, we are the base instance (or standalone).
+//     Always process locally, ignore target.
+//   - If remoteMixerDomain is set, we are a custom instance.
+//     Route based on target:
 //   - "base_only": Call remote only.
 //   - "custom_only": Call local only.
 //   - "custom_and_base": Call both.

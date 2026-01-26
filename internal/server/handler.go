@@ -21,7 +21,6 @@ import (
 	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/convert"
 	"github.com/datacommonsorg/mixer/internal/server/place"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
@@ -30,7 +29,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
-	"github.com/datacommonsorg/mixer/internal/server/v0/internalbio"
 	"github.com/datacommonsorg/mixer/internal/server/v0/placestatvar"
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertylabel"
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertyvalue"
@@ -238,13 +236,6 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest,
 	return &pb.PayloadResponse{Payload: string(jsonRaw)}, nil
 }
 
-// GetBioPageData implements API for Mixer.GetBioPageData.
-func (s *Server) GetBioPageData(
-	ctx context.Context, in *pb.GetBioPageDataRequest,
-) (*pb.GraphNodes, error) {
-	return internalbio.GetBioPageData(ctx, in, s.store)
-}
-
 // Search implements API for Mixer.Search.
 func (s *Server) Search(
 	ctx context.Context, in *pb.SearchRequest,
@@ -306,18 +297,6 @@ func (s *Server) BulkFindEntities(
 	ctx context.Context, in *pb.BulkFindEntitiesRequest,
 ) (*pb.BulkFindEntitiesResponse, error) {
 	return recon.BulkFindEntities(ctx, in, s.store, s.mapsClient)
-}
-
-// UpdateCache implements API for Mixer.UpdateCache
-func (s *Server) UpdateCache(
-	ctx context.Context, in *pb.UpdateCacheRequest,
-) (*pb.UpdateCacheResponse, error) {
-	newCache, err := cache.NewCache(ctx, s.store, *s.cachedata.Load().Options(), s.metadata)
-	if err != nil {
-		return nil, err
-	}
-	s.cachedata.Swap(newCache)
-	return &pb.UpdateCacheResponse{}, err
 }
 
 // GetImportTableData implements API for Mixer.GetImportTableData

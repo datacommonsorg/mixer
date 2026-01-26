@@ -49,7 +49,7 @@ static_resources:
                       print_options:
                         always_print_enums_as_ints: false
                         preserve_proto_field_names: false
-                      ignored_query_parameters: ["key"]
+                      ignore_unknown_query_parameters: true
                   - name: envoy.filters.http.router
                     typed_config:
                       "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
