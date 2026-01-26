@@ -20,7 +20,7 @@ const (
 	// ResolveTargetCustomOnly indicates resolution should only use the custom mixer.
 	ResolveTargetCustomOnly = "custom_only"
 	// ResolveTargetCustomAndBase indicates resolution should use both custom and base mixers.
-	ResolveTargetCustomAndBase = "custom_and_base"
+	ResolveTargetCustomAndBase = "base_and_custom"
 
 	// ResolveResolverPlace is the default resolver type.
 	ResolveResolverPlace = "place"
