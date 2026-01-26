@@ -66,7 +66,6 @@ const (
 	Mixer_GetRelatedLocations_FullMethodName          = "/datacommons.Mixer/GetRelatedLocations"
 	Mixer_Search_FullMethodName                       = "/datacommons.Mixer/Search"
 	Mixer_GetVersion_FullMethodName                   = "/datacommons.Mixer/GetVersion"
-	Mixer_GetPlaceStatsVar_FullMethodName             = "/datacommons.Mixer/GetPlaceStatsVar"
 	Mixer_GetPlaceStatVars_FullMethodName             = "/datacommons.Mixer/GetPlaceStatVars"
 	Mixer_GetEntityStatVarsUnionV1_FullMethodName     = "/datacommons.Mixer/GetEntityStatVarsUnionV1"
 	Mixer_GetPlaceStatDateWithinPlace_FullMethodName  = "/datacommons.Mixer/GetPlaceStatDateWithinPlace"
@@ -161,11 +160,6 @@ type MixerClient interface {
 	GetVersion(ctx context.Context, in *proto.GetVersionRequest, opts ...grpc.CallOption) (*proto.GetVersionResponse, error)
 	// Give a list of place dcids, return all the statistical variables for each
 	// place.
-	GetPlaceStatsVar(ctx context.Context, in *proto.GetPlaceStatsVarRequest, opts ...grpc.CallOption) (*proto.GetPlaceStatsVarResponse, error)
-	// Give a list of place dcids, return all the statistical variables for each
-	// place.
-	// TODO(shifucun): Deprecate GetPlaceStatsVar when all internal clients are
-	// migrated.
 	GetPlaceStatVars(ctx context.Context, in *proto.GetPlaceStatVarsRequest, opts ...grpc.CallOption) (*proto.GetPlaceStatVarsResponse, error)
 	// Given a list of entity dcids, returns the union of available
 	// statistical variables for the entities.
@@ -449,15 +443,6 @@ func (c *mixerClient) Search(ctx context.Context, in *proto.SearchRequest, opts 
 func (c *mixerClient) GetVersion(ctx context.Context, in *proto.GetVersionRequest, opts ...grpc.CallOption) (*proto.GetVersionResponse, error) {
 	out := new(proto.GetVersionResponse)
 	err := c.cc.Invoke(ctx, Mixer_GetVersion_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) GetPlaceStatsVar(ctx context.Context, in *proto.GetPlaceStatsVarRequest, opts ...grpc.CallOption) (*proto.GetPlaceStatsVarResponse, error) {
-	out := new(proto.GetPlaceStatsVarResponse)
-	err := c.cc.Invoke(ctx, Mixer_GetPlaceStatsVar_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -908,11 +893,6 @@ type MixerServer interface {
 	GetVersion(context.Context, *proto.GetVersionRequest) (*proto.GetVersionResponse, error)
 	// Give a list of place dcids, return all the statistical variables for each
 	// place.
-	GetPlaceStatsVar(context.Context, *proto.GetPlaceStatsVarRequest) (*proto.GetPlaceStatsVarResponse, error)
-	// Give a list of place dcids, return all the statistical variables for each
-	// place.
-	// TODO(shifucun): Deprecate GetPlaceStatsVar when all internal clients are
-	// migrated.
 	GetPlaceStatVars(context.Context, *proto.GetPlaceStatVarsRequest) (*proto.GetPlaceStatVarsResponse, error)
 	// Given a list of entity dcids, returns the union of available
 	// statistical variables for the entities.
@@ -1059,9 +1039,6 @@ func (UnimplementedMixerServer) Search(context.Context, *proto.SearchRequest) (*
 }
 func (UnimplementedMixerServer) GetVersion(context.Context, *proto.GetVersionRequest) (*proto.GetVersionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetVersion not implemented")
-}
-func (UnimplementedMixerServer) GetPlaceStatsVar(context.Context, *proto.GetPlaceStatsVarRequest) (*proto.GetPlaceStatsVarResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetPlaceStatsVar not implemented")
 }
 func (UnimplementedMixerServer) GetPlaceStatVars(context.Context, *proto.GetPlaceStatVarsRequest) (*proto.GetPlaceStatVarsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPlaceStatVars not implemented")
@@ -1617,24 +1594,6 @@ func _Mixer_GetVersion_Handler(srv interface{}, ctx context.Context, dec func(in
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).GetVersion(ctx, req.(*proto.GetVersionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_GetPlaceStatsVar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.GetPlaceStatsVarRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).GetPlaceStatsVar(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_GetPlaceStatsVar_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetPlaceStatsVar(ctx, req.(*proto.GetPlaceStatsVarRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2529,10 +2488,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetVersion",
 			Handler:    _Mixer_GetVersion_Handler,
-		},
-		{
-			MethodName: "GetPlaceStatsVar",
-			Handler:    _Mixer_GetPlaceStatsVar_Handler,
 		},
 		{
 			MethodName: "GetPlaceStatVars",

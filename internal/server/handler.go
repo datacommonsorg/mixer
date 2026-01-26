@@ -162,14 +162,6 @@ func (s *Server) GetPlaceStatDateWithinPlace(
 	return place.GetPlaceStatDateWithinPlace(ctx, in, s.store)
 }
 
-// GetPlaceStatsVar implements API for Mixer.GetPlaceStatsVar.
-// TODO(shifucun): Migrate clients to use GetPlaceStatVars and deprecate this.
-func (s *Server) GetPlaceStatsVar(
-	ctx context.Context, in *pb.GetPlaceStatsVarRequest,
-) (*pb.GetPlaceStatsVarResponse, error) {
-	return statvar.GetPlaceStatsVar(ctx, in, s.store)
-}
-
 // GetPlaceStatVars implements API for Mixer.GetPlaceStatVars.
 func (s *Server) GetPlaceStatVars(
 	ctx context.Context, in *pb.GetPlaceStatVarsRequest,

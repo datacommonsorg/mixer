@@ -245,18 +245,6 @@ service Mixer {
 
   // Give a list of place dcids, return all the statistical variables for each
   // place.
-  rpc GetPlaceStatsVar(GetPlaceStatsVarRequest)
-      returns (GetPlaceStatsVarResponse) {
-    option (google.api.http) = {
-      get : "/place/stats-var"
-      additional_bindings : {post : "/place/stats-var" body : "*"}
-    };
-  }
-
-  // Give a list of place dcids, return all the statistical variables for each
-  // place.
-  // TODO(shifucun): Deprecate GetPlaceStatsVar when all internal clients are
-  // migrated.
   rpc GetPlaceStatVars(GetPlaceStatVarsRequest)
       returns (GetPlaceStatVarsResponse) {
     option (google.api.http) = {
