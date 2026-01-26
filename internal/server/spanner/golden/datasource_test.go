@@ -20,6 +20,7 @@ import (
 	"runtime"
 	"testing"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
@@ -28,7 +29,7 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestNode(t *testing.T) {
+func TestSpannerNode(t *testing.T) {
 	client := test.NewSpannerClient()
 	if client == nil {
 		return
@@ -49,14 +50,14 @@ func TestNode(t *testing.T) {
 				Nodes:    []string{"Person", "Count_Person"},
 				Property: "->",
 			},
-			goldenFile: "properties.json",
+			goldenFile: "node_properties.json",
 		},
 		{
 			req: &pbv2.NodeRequest{
 				Nodes:    []string{"Monthly_Average_RetailPrice_Electricity_Residential", "Aadhaar", "foo"},
 				Property: "->[typeOf, name, statType]",
 			},
-			goldenFile: "property_values.json",
+			goldenFile: "node_property_values.json",
 		},
 	} {
 		got, err := ds.Node(ctx, c.req, datasources.DefaultPageSize)
@@ -70,6 +71,75 @@ func TestNode(t *testing.T) {
 		}
 
 		var want pbv2.NodeResponse
+		if err = test.ReadJSON(goldenDir, c.goldenFile, &want); err != nil {
+			t.Fatalf("ReadJSON error (%v): %v", c.goldenFile, err)
+		}
+
+		cmpOpts := cmp.Options{
+			protocmp.Transform(),
+		}
+		if diff := cmp.Diff(got, &want, cmpOpts); diff != "" {
+			t.Errorf("%v payload mismatch:\n%v", c.goldenFile, diff)
+		}
+	}
+}
+
+func TestSpannerSparql(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+	ds := spanner.NewSpannerDataSource(client)
+
+	t.Parallel()
+	ctx := context.Background()
+	_, filename, _, _ := runtime.Caller(0)
+	goldenDir := path.Join(path.Dir(filename), "datasource")
+
+	for _, c := range []struct {
+		req        *pb.SparqlRequest
+		goldenFile string
+	}{
+		{
+			req: &pb.SparqlRequest{
+				Query: `SELECT ?name
+		                WHERE {
+		                  ?country typeOf Country .
+		                  ?country name ?name .
+		                }
+		                ORDER BY DESC(?name)
+		                LIMIT 10
+						`,
+			},
+			goldenFile: "sparql_country_names_desc.json",
+		},
+		{
+			req: &pb.SparqlRequest{
+				Query: `SELECT ?dcid ?name
+                WHERE {
+                  ?state typeOf State .
+				  ?state dcid geoId/10 .
+                  ?dcid containedInPlace ?state .
+				  ?dcid typeOf County .
+				  ?dcid name ?name .
+                }
+                ORDER BY ASC(?dcid)
+				`,
+			},
+			goldenFile: "sparql_delaware_counties.json",
+		},
+	} {
+		got, err := ds.Sparql(ctx, c.req)
+		if err != nil {
+			t.Fatalf("Sparql error (%v): %v", c.goldenFile, err)
+		}
+
+		if test.GenerateGolden {
+			test.UpdateProtoGolden(got, goldenDir, c.goldenFile)
+			return
+		}
+
+		var want pb.QueryResponse
 		if err = test.ReadJSON(goldenDir, c.goldenFile, &want); err != nil {
 			t.Fatalf("ReadJSON error (%v): %v", c.goldenFile, err)
 		}

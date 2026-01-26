@@ -29,6 +29,7 @@ import (
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	v3 "github.com/datacommonsorg/mixer/internal/server/v3"
+	"github.com/datacommonsorg/mixer/internal/translator/types"
 	"github.com/datacommonsorg/mixer/internal/util"
 
 	"google.golang.org/protobuf/proto"
@@ -650,5 +651,23 @@ func candidatesToResolveResponse(nodeToCandidates map[string][]string) *pbv2.Res
 	sort.Slice(response.Entities, func(i, j int) bool {
 		return response.Entities[i].GetNode() > response.Entities[j].GetNode()
 	})
+	return response
+}
+
+// sparqlResultsToQueryResponse converts SPARQL row data results into a QueryResponse.
+func sparqlResultsToQueryResponse(nodes []types.Node, results [][]string) *pb.QueryResponse {
+	response := &pb.QueryResponse{}
+	for _, node := range nodes {
+		response.Header = append(response.Header, node.Alias)
+	}
+	for _, data := range results {
+		row := &pb.QueryResponseRow{}
+		for _, value := range data {
+			row.Cells = append(row.Cells, &pb.QueryResponseCell{
+				Value: value,
+			})
+		}
+		response.Rows = append(response.Rows, row)
+	}
 	return response
 }
