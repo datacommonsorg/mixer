@@ -648,11 +648,4 @@ service Mixer {
       additional_bindings : {post : "/v1/recognize/entities" body : "*"}
     };
   }
-
-  rpc UpdateCache(UpdateCacheRequest) returns (UpdateCacheResponse) {
-    option (google.api.http) = {
-      post: "/update-cache"
-      body: "*"
-    };
-  }
 }
