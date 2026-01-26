@@ -26,7 +26,7 @@ option go_package = "github.com/datacommonsorg/mixer/internal/proto/service";
 
 import "google/api/annotations.proto";
 import "common.proto";
-import "internal.proto";
+import "custom.proto";
 import "misc.proto";
 import "node.proto";
 import "place.proto";
@@ -283,16 +283,6 @@ service Mixer {
       additional_bindings : {post : "/v1/stat/date/within-place" body : "*"}
     };
   }
-
-  // Get data from the imports table, used to populate import history table
-  // of the admin page for custom DCs
-  rpc GetImportTableData(GetImportTableDataRequest)
-    returns (GetImportTableDataResponse) {
-      option (google.api.http) = {
-        get: "/internal/import-table"
-        additional_bindings : {post : "/internal/import-table" body : "*"}
-      };
-    }
 
   // ======================  V1   V1   V1   V1  ======================
 
@@ -634,6 +624,18 @@ service Mixer {
     option (google.api.http) = {
       get : "/v1/recognize/entities"
       additional_bindings : {post : "/v1/recognize/entities" body : "*"}
+    };
+  }
+
+  // ==================  CUSTOM CUSTOM CUSTOM CUSTOM  ================
+
+  // Get data from the imports table, used to populate import history table
+  // of the admin page for custom DCs
+  rpc GetImportTableData(GetImportTableDataRequest)
+      returns (GetImportTableDataResponse) {
+    option (google.api.http) = {
+      get: "/custom/import-table"
+      additional_bindings : {post : "/custom/import-table" body : "*"}
     };
   }
 }

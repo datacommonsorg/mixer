@@ -19,7 +19,7 @@
 
 // REST API URL from the proto in this file:
 // ========================================
-//    /internal/import-table
+//    /custom/import-table
 // ========================================
 
 syntax = "proto3";

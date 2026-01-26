@@ -70,7 +70,6 @@ const (
 	Mixer_GetEntityStatVarsUnionV1_FullMethodName     = "/datacommons.Mixer/GetEntityStatVarsUnionV1"
 	Mixer_GetPlaceStatDateWithinPlace_FullMethodName  = "/datacommons.Mixer/GetPlaceStatDateWithinPlace"
 	Mixer_GetStatDateWithinPlace_FullMethodName       = "/datacommons.Mixer/GetStatDateWithinPlace"
-	Mixer_GetImportTableData_FullMethodName           = "/datacommons.Mixer/GetImportTableData"
 	Mixer_QueryV1_FullMethodName                      = "/datacommons.Mixer/QueryV1"
 	Mixer_Properties_FullMethodName                   = "/datacommons.Mixer/Properties"
 	Mixer_BulkProperties_FullMethodName               = "/datacommons.Mixer/BulkProperties"
@@ -110,6 +109,7 @@ const (
 	Mixer_BulkFindEntities_FullMethodName             = "/datacommons.Mixer/BulkFindEntities"
 	Mixer_RecognizePlaces_FullMethodName              = "/datacommons.Mixer/RecognizePlaces"
 	Mixer_RecognizeEntities_FullMethodName            = "/datacommons.Mixer/RecognizeEntities"
+	Mixer_GetImportTableData_FullMethodName           = "/datacommons.Mixer/GetImportTableData"
 )
 
 // MixerClient is the client API for Mixer service.
@@ -171,9 +171,6 @@ type MixerClient interface {
 	// Given ancestor place, child place type and stat vars, return the dates and
 	// place count for each source
 	GetStatDateWithinPlace(ctx context.Context, in *proto.GetStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*proto.GetStatDateWithinPlaceResponse, error)
-	// Get data from the imports table, used to populate import history table
-	// of the admin page for custom DCs
-	GetImportTableData(ctx context.Context, in *proto.GetImportTableDataRequest, opts ...grpc.CallOption) (*proto.GetImportTableDataResponse, error)
 	// Query DataCommons Graph with Sparql.
 	QueryV1(ctx context.Context, in *proto.QueryRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error)
 	Properties(ctx context.Context, in *v1.PropertiesRequest, opts ...grpc.CallOption) (*v1.PropertiesResponse, error)
@@ -232,6 +229,9 @@ type MixerClient interface {
 	RecognizePlaces(ctx context.Context, in *proto.RecognizePlacesRequest, opts ...grpc.CallOption) (*proto.RecognizePlacesResponse, error)
 	// Recognize non-place entities from a NL query.
 	RecognizeEntities(ctx context.Context, in *proto.RecognizeEntitiesRequest, opts ...grpc.CallOption) (*proto.RecognizeEntitiesResponse, error)
+	// Get data from the imports table, used to populate import history table
+	// of the admin page for custom DCs
+	GetImportTableData(ctx context.Context, in *proto.GetImportTableDataRequest, opts ...grpc.CallOption) (*proto.GetImportTableDataResponse, error)
 }
 
 type mixerClient struct {
@@ -479,15 +479,6 @@ func (c *mixerClient) GetPlaceStatDateWithinPlace(ctx context.Context, in *proto
 func (c *mixerClient) GetStatDateWithinPlace(ctx context.Context, in *proto.GetStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*proto.GetStatDateWithinPlaceResponse, error) {
 	out := new(proto.GetStatDateWithinPlaceResponse)
 	err := c.cc.Invoke(ctx, Mixer_GetStatDateWithinPlace_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) GetImportTableData(ctx context.Context, in *proto.GetImportTableDataRequest, opts ...grpc.CallOption) (*proto.GetImportTableDataResponse, error) {
-	out := new(proto.GetImportTableDataResponse)
-	err := c.cc.Invoke(ctx, Mixer_GetImportTableData_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -845,6 +836,15 @@ func (c *mixerClient) RecognizeEntities(ctx context.Context, in *proto.Recognize
 	return out, nil
 }
 
+func (c *mixerClient) GetImportTableData(ctx context.Context, in *proto.GetImportTableDataRequest, opts ...grpc.CallOption) (*proto.GetImportTableDataResponse, error) {
+	out := new(proto.GetImportTableDataResponse)
+	err := c.cc.Invoke(ctx, Mixer_GetImportTableData_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MixerServer is the server API for Mixer service.
 // All implementations should embed UnimplementedMixerServer
 // for forward compatibility
@@ -904,9 +904,6 @@ type MixerServer interface {
 	// Given ancestor place, child place type and stat vars, return the dates and
 	// place count for each source
 	GetStatDateWithinPlace(context.Context, *proto.GetStatDateWithinPlaceRequest) (*proto.GetStatDateWithinPlaceResponse, error)
-	// Get data from the imports table, used to populate import history table
-	// of the admin page for custom DCs
-	GetImportTableData(context.Context, *proto.GetImportTableDataRequest) (*proto.GetImportTableDataResponse, error)
 	// Query DataCommons Graph with Sparql.
 	QueryV1(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error)
 	Properties(context.Context, *v1.PropertiesRequest) (*v1.PropertiesResponse, error)
@@ -965,6 +962,9 @@ type MixerServer interface {
 	RecognizePlaces(context.Context, *proto.RecognizePlacesRequest) (*proto.RecognizePlacesResponse, error)
 	// Recognize non-place entities from a NL query.
 	RecognizeEntities(context.Context, *proto.RecognizeEntitiesRequest) (*proto.RecognizeEntitiesResponse, error)
+	// Get data from the imports table, used to populate import history table
+	// of the admin page for custom DCs
+	GetImportTableData(context.Context, *proto.GetImportTableDataRequest) (*proto.GetImportTableDataResponse, error)
 }
 
 // UnimplementedMixerServer should be embedded to have forward compatible implementations.
@@ -1051,9 +1051,6 @@ func (UnimplementedMixerServer) GetPlaceStatDateWithinPlace(context.Context, *pr
 }
 func (UnimplementedMixerServer) GetStatDateWithinPlace(context.Context, *proto.GetStatDateWithinPlaceRequest) (*proto.GetStatDateWithinPlaceResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetStatDateWithinPlace not implemented")
-}
-func (UnimplementedMixerServer) GetImportTableData(context.Context, *proto.GetImportTableDataRequest) (*proto.GetImportTableDataResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetImportTableData not implemented")
 }
 func (UnimplementedMixerServer) QueryV1(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method QueryV1 not implemented")
@@ -1171,6 +1168,9 @@ func (UnimplementedMixerServer) RecognizePlaces(context.Context, *proto.Recogniz
 }
 func (UnimplementedMixerServer) RecognizeEntities(context.Context, *proto.RecognizeEntitiesRequest) (*proto.RecognizeEntitiesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RecognizeEntities not implemented")
+}
+func (UnimplementedMixerServer) GetImportTableData(context.Context, *proto.GetImportTableDataRequest) (*proto.GetImportTableDataResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetImportTableData not implemented")
 }
 
 // UnsafeMixerServer may be embedded to opt out of forward compatibility for this service.
@@ -1666,24 +1666,6 @@ func _Mixer_GetStatDateWithinPlace_Handler(srv interface{}, ctx context.Context,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).GetStatDateWithinPlace(ctx, req.(*proto.GetStatDateWithinPlaceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_GetImportTableData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.GetImportTableDataRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).GetImportTableData(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_GetImportTableData_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetImportTableData(ctx, req.(*proto.GetImportTableDataRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2390,6 +2372,24 @@ func _Mixer_RecognizeEntities_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_GetImportTableData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(proto.GetImportTableDataRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).GetImportTableData(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_GetImportTableData_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).GetImportTableData(ctx, req.(*proto.GetImportTableDataRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Mixer_ServiceDesc is the grpc.ServiceDesc for Mixer service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -2504,10 +2504,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetStatDateWithinPlace",
 			Handler:    _Mixer_GetStatDateWithinPlace_Handler,
-		},
-		{
-			MethodName: "GetImportTableData",
-			Handler:    _Mixer_GetImportTableData_Handler,
 		},
 		{
 			MethodName: "QueryV1",
@@ -2664,6 +2660,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RecognizeEntities",
 			Handler:    _Mixer_RecognizeEntities_Handler,
+		},
+		{
+			MethodName: "GetImportTableData",
+			Handler:    _Mixer_GetImportTableData_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

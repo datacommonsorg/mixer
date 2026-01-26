@@ -19,10 +19,12 @@ import (
 	"fmt"
 	"log/slog"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	v3 "github.com/datacommonsorg/mixer/internal/server/v3"
+	"github.com/datacommonsorg/mixer/internal/translator/sparql"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -193,4 +195,21 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 		return nil, fmt.Errorf("error resolving ids: %v", err)
 	}
 	return candidatesToResolveResponse(nodeToCandidates), nil
+}
+
+// Sparql executes a SPARQL query against the Spanner data source.
+func (sds *SpannerDataSource) Sparql(ctx context.Context, req *pb.SparqlRequest) (*pb.QueryResponse, error) {
+	nodes, queries, opts, err := sparql.ParseQuery(req.GetQuery())
+	if err != nil {
+		return nil, status.Errorf(codes.InvalidArgument, "error parsing sparql request: %v", err)
+	}
+	results, err := sds.client.Sparql(ctx, nodes, queries, opts)
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, "error executing sparql query: %v", err)
+	}
+	response, err := sparqlResultsToQueryResponse(nodes, results)
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, "error converting sparql results to query response: %v", err)
+	}
+	return response, nil
 }
