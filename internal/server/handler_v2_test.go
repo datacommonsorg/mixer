@@ -244,3 +244,58 @@ func TestV2Observation_UsageLog(t *testing.T) {
 		t.Errorf("log output did not match expected pattern.\nGot: %s\nWant regex: %s", outStr, wantLogRegex)
 	}
 }
+func TestResolveRouting(t *testing.T) {
+	tests := []struct {
+		desc              string
+		target            string
+		remoteMixerDomain string
+		wantLocal         bool
+		wantRemote        bool
+	}{
+		{
+			desc:              "Base instance (empty remote domain)",
+			target:            "any_target",
+			remoteMixerDomain: "",
+			wantLocal:         true,
+			wantRemote:        false,
+		},
+		{
+			desc:              "Custom instance, target base_only",
+			target:            "base_only",
+			remoteMixerDomain: "remote.com",
+			wantLocal:         false,
+			wantRemote:        true,
+		},
+		{
+			desc:              "Custom instance, target custom_only",
+			target:            "custom_only",
+			remoteMixerDomain: "remote.com",
+			wantLocal:         true,
+			wantRemote:        false,
+		},
+		{
+			desc:              "Custom instance, target base_and_custom",
+			target:            "base_and_custom",
+			remoteMixerDomain: "remote.com",
+			wantLocal:         true,
+			wantRemote:        true,
+		},
+		{
+			desc:              "Custom instance, empty target (default)",
+			target:            "",
+			remoteMixerDomain: "remote.com",
+			wantLocal:         true,
+			wantRemote:        true,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.desc, func(t *testing.T) {
+			gotLocal, gotRemote := resolveRouting(tc.target, tc.remoteMixerDomain)
+			if gotLocal != tc.wantLocal || gotRemote != tc.wantRemote {
+				t.Errorf("resolveRouting(%q, %q) = (%v, %v), want (%v, %v)",
+					tc.target, tc.remoteMixerDomain, gotLocal, gotRemote, tc.wantLocal, tc.wantRemote)
+			}
+		})
+	}
+}

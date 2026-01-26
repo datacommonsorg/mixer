@@ -30,7 +30,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
-	"github.com/datacommonsorg/mixer/internal/server/v0/internalbio"
 	"github.com/datacommonsorg/mixer/internal/server/v0/placestatvar"
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertylabel"
 	"github.com/datacommonsorg/mixer/internal/server/v0/propertyvalue"
@@ -236,13 +235,6 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest,
 		return nil, err
 	}
 	return &pb.PayloadResponse{Payload: string(jsonRaw)}, nil
-}
-
-// GetBioPageData implements API for Mixer.GetBioPageData.
-func (s *Server) GetBioPageData(
-	ctx context.Context, in *pb.GetBioPageDataRequest,
-) (*pb.GraphNodes, error) {
-	return internalbio.GetBioPageData(ctx, in, s.store)
 }
 
 // Search implements API for Mixer.Search.
