@@ -21,7 +21,6 @@ import (
 	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/convert"
 	"github.com/datacommonsorg/mixer/internal/server/place"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
@@ -298,18 +297,6 @@ func (s *Server) BulkFindEntities(
 	ctx context.Context, in *pb.BulkFindEntitiesRequest,
 ) (*pb.BulkFindEntitiesResponse, error) {
 	return recon.BulkFindEntities(ctx, in, s.store, s.mapsClient)
-}
-
-// UpdateCache implements API for Mixer.UpdateCache
-func (s *Server) UpdateCache(
-	ctx context.Context, in *pb.UpdateCacheRequest,
-) (*pb.UpdateCacheResponse, error) {
-	newCache, err := cache.NewCache(ctx, s.store, *s.cachedata.Load().Options(), s.metadata)
-	if err != nil {
-		return nil, err
-	}
-	s.cachedata.Swap(newCache)
-	return &pb.UpdateCacheResponse{}, err
 }
 
 // GetImportTableData implements API for Mixer.GetImportTableData

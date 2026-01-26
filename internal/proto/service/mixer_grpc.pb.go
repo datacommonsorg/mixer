@@ -111,7 +111,6 @@ const (
 	Mixer_BulkFindEntities_FullMethodName             = "/datacommons.Mixer/BulkFindEntities"
 	Mixer_RecognizePlaces_FullMethodName              = "/datacommons.Mixer/RecognizePlaces"
 	Mixer_RecognizeEntities_FullMethodName            = "/datacommons.Mixer/RecognizeEntities"
-	Mixer_UpdateCache_FullMethodName                  = "/datacommons.Mixer/UpdateCache"
 )
 
 // MixerClient is the client API for Mixer service.
@@ -239,7 +238,6 @@ type MixerClient interface {
 	RecognizePlaces(ctx context.Context, in *proto.RecognizePlacesRequest, opts ...grpc.CallOption) (*proto.RecognizePlacesResponse, error)
 	// Recognize non-place entities from a NL query.
 	RecognizeEntities(ctx context.Context, in *proto.RecognizeEntitiesRequest, opts ...grpc.CallOption) (*proto.RecognizeEntitiesResponse, error)
-	UpdateCache(ctx context.Context, in *proto.UpdateCacheRequest, opts ...grpc.CallOption) (*proto.UpdateCacheResponse, error)
 }
 
 type mixerClient struct {
@@ -862,15 +860,6 @@ func (c *mixerClient) RecognizeEntities(ctx context.Context, in *proto.Recognize
 	return out, nil
 }
 
-func (c *mixerClient) UpdateCache(ctx context.Context, in *proto.UpdateCacheRequest, opts ...grpc.CallOption) (*proto.UpdateCacheResponse, error) {
-	out := new(proto.UpdateCacheResponse)
-	err := c.cc.Invoke(ctx, Mixer_UpdateCache_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // MixerServer is the server API for Mixer service.
 // All implementations should embed UnimplementedMixerServer
 // for forward compatibility
@@ -996,7 +985,6 @@ type MixerServer interface {
 	RecognizePlaces(context.Context, *proto.RecognizePlacesRequest) (*proto.RecognizePlacesResponse, error)
 	// Recognize non-place entities from a NL query.
 	RecognizeEntities(context.Context, *proto.RecognizeEntitiesRequest) (*proto.RecognizeEntitiesResponse, error)
-	UpdateCache(context.Context, *proto.UpdateCacheRequest) (*proto.UpdateCacheResponse, error)
 }
 
 // UnimplementedMixerServer should be embedded to have forward compatible implementations.
@@ -1206,9 +1194,6 @@ func (UnimplementedMixerServer) RecognizePlaces(context.Context, *proto.Recogniz
 }
 func (UnimplementedMixerServer) RecognizeEntities(context.Context, *proto.RecognizeEntitiesRequest) (*proto.RecognizeEntitiesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RecognizeEntities not implemented")
-}
-func (UnimplementedMixerServer) UpdateCache(context.Context, *proto.UpdateCacheRequest) (*proto.UpdateCacheResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateCache not implemented")
 }
 
 // UnsafeMixerServer may be embedded to opt out of forward compatibility for this service.
@@ -2446,24 +2431,6 @@ func _Mixer_RecognizeEntities_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mixer_UpdateCache_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.UpdateCacheRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).UpdateCache(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_UpdateCache_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).UpdateCache(ctx, req.(*proto.UpdateCacheRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // Mixer_ServiceDesc is the grpc.ServiceDesc for Mixer service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -2742,10 +2709,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RecognizeEntities",
 			Handler:    _Mixer_RecognizeEntities_Handler,
-		},
-		{
-			MethodName: "UpdateCache",
-			Handler:    _Mixer_UpdateCache_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

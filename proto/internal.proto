@@ -19,7 +19,6 @@
 
 // REST API URL from the proto in this file:
 // ========================================
-//    /internal/place (/landing-page)
 //    /internal/import-table
 // ========================================
 
@@ -27,14 +26,6 @@ syntax = "proto3";
 package datacommons;
 
 option go_package = "github.com/datacommonsorg/mixer/internal/proto";
-
-// Request to update cache for server based on SQL storage.
-message UpdateCacheRequest {
-}
-
-// Response of UpdateCache request.
-message UpdateCacheResponse {
-}
 
 // Request to get data in the import table
 message GetImportTableDataRequest {
