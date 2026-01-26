@@ -461,6 +461,7 @@ func (c *mixerClient) GetRelatedLocations(ctx context.Context, in *proto.GetRela
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 func (c *mixerClient) GetBioPageData(ctx context.Context, in *proto.GetBioPageDataRequest, opts ...grpc.CallOption) (*proto.GraphNodes, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
@@ -473,6 +474,8 @@ func (c *mixerClient) GetBioPageData(ctx context.Context, in *proto.GetBioPageDa
 }
 
 >>>>>>> 03247a796e735df9e65c109ac9ed6b5f891ff933
+=======
+>>>>>>> 51cbe15a60439f6c61b44426c65099a713798c85
 func (c *mixerClient) Search(ctx context.Context, in *proto.SearchRequest, opts ...grpc.CallOption) (*proto.SearchResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(proto.SearchResponse)
@@ -1152,11 +1155,14 @@ func (UnimplementedMixerServer) GetRelatedLocations(context.Context, *proto.GetR
 	return nil, status.Error(codes.Unimplemented, "method GetRelatedLocations not implemented")
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 func (UnimplementedMixerServer) GetBioPageData(context.Context, *proto.GetBioPageDataRequest) (*proto.GraphNodes, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetBioPageData not implemented")
 }
 >>>>>>> 03247a796e735df9e65c109ac9ed6b5f891ff933
+=======
+>>>>>>> 51cbe15a60439f6c61b44426c65099a713798c85
 func (UnimplementedMixerServer) Search(context.Context, *proto.SearchRequest) (*proto.SearchResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method Search not implemented")
 }
