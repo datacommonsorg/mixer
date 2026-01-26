@@ -29,6 +29,7 @@ import (
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	v3 "github.com/datacommonsorg/mixer/internal/server/v3"
+	"github.com/datacommonsorg/mixer/internal/translator/types"
 	"github.com/datacommonsorg/mixer/internal/util"
 
 	"google.golang.org/protobuf/proto"
@@ -651,4 +652,30 @@ func candidatesToResolveResponse(nodeToCandidates map[string][]string) *pbv2.Res
 		return response.Entities[i].GetNode() > response.Entities[j].GetNode()
 	})
 	return response
+}
+
+// sparqlResultsToQueryResponse converts SPARQL row data results into a QueryResponse.
+func sparqlResultsToQueryResponse(nodes []types.Node, results [][]string) (*pb.QueryResponse, error) {
+	response := &pb.QueryResponse{
+		Header: make([]string, 0, len(nodes)),
+		Rows:   make([]*pb.QueryResponseRow, 0, len(results)),
+	}
+	for _, node := range nodes {
+		response.Header = append(response.Header, node.Alias)
+	}
+	for _, data := range results {
+		if len(data) != len(nodes) {
+			return nil, fmt.Errorf("mismatched number of columns in SPARQL result row: got %d, want %d", len(data), len(nodes))
+		}
+		row := &pb.QueryResponseRow{
+			Cells: make([]*pb.QueryResponseCell, 0, len(data)),
+		}
+		for _, value := range data {
+			row.Cells = append(row.Cells, &pb.QueryResponseCell{
+				Value: value,
+			})
+		}
+		response.Rows = append(response.Rows, row)
+	}
+	return response, nil
 }
