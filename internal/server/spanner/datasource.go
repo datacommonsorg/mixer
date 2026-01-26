@@ -205,7 +205,7 @@ func (sds *SpannerDataSource) Sparql(ctx context.Context, req *pb.SparqlRequest)
 	}
 	results, err := sds.client.Sparql(ctx, nodes, queries, opts)
 	if err != nil {
-		return nil, fmt.Errorf("error executing sparql query: %v", err)
+		return nil, status.Errorf(codes.Internal, "error executing sparql query: %v", err)
 	}
 	return sparqlResultsToQueryResponse(nodes, results), nil
 }
