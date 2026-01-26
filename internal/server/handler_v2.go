@@ -396,7 +396,6 @@ func (s *Server) FilterStatVarsByEntity(
 // - If remoteMixerDomain is empty, we are the base instance (or standalone).
 //   Always process locally, ignore target.
 // - If remoteMixerDomain is set, we are a custom instance.
-// - If remoteMixerDomain is set, we are a custom instance.
 //   Route based on target:
 //   - "base_only": Call remote only.
 //   - "custom_only": Call local only.
