@@ -656,7 +656,10 @@ func candidatesToResolveResponse(nodeToCandidates map[string][]string) *pbv2.Res
 
 // sparqlResultsToQueryResponse converts SPARQL row data results into a QueryResponse.
 func sparqlResultsToQueryResponse(nodes []types.Node, results [][]string) *pb.QueryResponse {
-	response := &pb.QueryResponse{}
+	response := &pb.QueryResponse{
+		Header: make([]string, 0, len(nodes)),
+		Rows:   make([]*pb.QueryResponseRow, 0, len(results)),
+	}
 	for _, node := range nodes {
 		response.Header = append(response.Header, node.Alias)
 	}
