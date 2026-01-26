@@ -201,7 +201,7 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 func (sds *SpannerDataSource) Sparql(ctx context.Context, req *pb.SparqlRequest) (*pb.QueryResponse, error) {
 	nodes, queries, opts, err := sparql.ParseQuery(req.GetQuery())
 	if err != nil {
-		return nil, fmt.Errorf("error parsing sparql request: %v", err)
+		return nil, status.Errorf(codes.InvalidArgument, "error parsing sparql request: %v", err)
 	}
 	results, err := sds.client.Sparql(ctx, nodes, queries, opts)
 	if err != nil {
