@@ -1,0 +1,38 @@
+{
+  "header": [
+    "?dcid",
+    "?name"
+  ],
+  "rows": [
+    {
+      "cells": [
+        {
+          "value": "geoId/10001"
+        },
+        {
+          "value": "Kent County"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/10003"
+        },
+        {
+          "value": "New Castle County"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "geoId/10005"
+        },
+        {
+          "value": "Sussex County"
+        }
+      ]
+    }
+  ]
+}

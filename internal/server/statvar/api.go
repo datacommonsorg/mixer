@@ -31,34 +31,6 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-// GetPlaceStatsVar implements API for Mixer.GetPlaceStatsVar.
-// TODO(shifucun): Migrate clients to use GetPlaceStatVars and deprecate this.
-func GetPlaceStatsVar(
-	ctx context.Context,
-	in *pb.GetPlaceStatsVarRequest,
-	store *store.Store,
-) (
-	*pb.GetPlaceStatsVarResponse, error,
-) {
-	dcids := in.GetDcids()
-	if len(dcids) == 0 {
-		return nil, status.Error(codes.InvalidArgument, "Missing required arguments: dcids")
-	}
-	if err := util.CheckValidDCIDs(dcids); err != nil {
-		return nil, err
-	}
-
-	resp, err := fetcher.FetchEntityVariables(ctx, store, dcids)
-	if err != nil {
-		return nil, err
-	}
-	out := pb.GetPlaceStatsVarResponse{Places: map[string]*pb.StatsVars{}}
-	for dcid, statVars := range resp {
-		out.Places[dcid] = &pb.StatsVars{StatsVars: statVars.StatVars}
-	}
-	return &out, nil
-}
-
 // GetEntityStatVarsUnionV1 implements API for Mixer.GetEntityStatVarsUnionV1.
 func GetEntityStatVarsUnionV1(
 	ctx context.Context,

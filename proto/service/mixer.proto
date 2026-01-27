@@ -26,7 +26,7 @@ option go_package = "github.com/datacommonsorg/mixer/internal/proto/service";
 
 import "google/api/annotations.proto";
 import "common.proto";
-import "internal.proto";
+import "custom.proto";
 import "misc.proto";
 import "node.proto";
 import "place.proto";
@@ -229,14 +229,6 @@ service Mixer {
     };
   }
 
-  // Get bio page data given a dcid.
-  rpc GetBioPageData(GetBioPageDataRequest) returns (GraphNodes) {
-    option (google.api.http) = {
-      get : "/internal/bio"
-      additional_bindings : {post : "/internal/bio" body : "*"}
-    };
-  }
-
   // Given a text search query, return all nodes matching the query.
   rpc Search(SearchRequest) returns (SearchResponse) {
     option (google.api.http) = {
@@ -253,18 +245,6 @@ service Mixer {
 
   // Give a list of place dcids, return all the statistical variables for each
   // place.
-  rpc GetPlaceStatsVar(GetPlaceStatsVarRequest)
-      returns (GetPlaceStatsVarResponse) {
-    option (google.api.http) = {
-      get : "/place/stats-var"
-      additional_bindings : {post : "/place/stats-var" body : "*"}
-    };
-  }
-
-  // Give a list of place dcids, return all the statistical variables for each
-  // place.
-  // TODO(shifucun): Deprecate GetPlaceStatsVar when all internal clients are
-  // migrated.
   rpc GetPlaceStatVars(GetPlaceStatVarsRequest)
       returns (GetPlaceStatVarsResponse) {
     option (google.api.http) = {
@@ -303,16 +283,6 @@ service Mixer {
       additional_bindings : {post : "/v1/stat/date/within-place" body : "*"}
     };
   }
-
-  // Get data from the imports table, used to populate import history table
-  // of the admin page for custom DCs
-  rpc GetImportTableData(GetImportTableDataRequest)
-    returns (GetImportTableDataResponse) {
-      option (google.api.http) = {
-        get: "/internal/import-table"
-        additional_bindings : {post : "/internal/import-table" body : "*"}
-      };
-    }
 
   // ======================  V1   V1   V1   V1  ======================
 
@@ -657,10 +627,15 @@ service Mixer {
     };
   }
 
-  rpc UpdateCache(UpdateCacheRequest) returns (UpdateCacheResponse) {
+  // ==================  CUSTOM CUSTOM CUSTOM CUSTOM  ================
+
+  // Get data from the imports table, used to populate import history table
+  // of the admin page for custom DCs
+  rpc GetImportTableData(GetImportTableDataRequest)
+      returns (GetImportTableDataResponse) {
     option (google.api.http) = {
-      post: "/update-cache"
-      body: "*"
+      get: "/custom/import-table"
+      additional_bindings : {post : "/custom/import-table" body : "*"}
     };
   }
 }

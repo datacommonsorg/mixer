@@ -1,6 +1,5 @@
 method,total-latency
 CompareEntities,0.000
-GetBioPageData,0.636
 GetLocationsRankings,0.434
 GetPlaceMetadata,0.394
 GetPlaceStatDateWithinPlace,0.302

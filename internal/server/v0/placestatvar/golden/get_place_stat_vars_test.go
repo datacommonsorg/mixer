@@ -72,12 +72,12 @@ func TestGetPlaceStatVars(t *testing.T) {
 			resp, err := mixer.GetPlaceStatVars(ctx, req)
 			if c.wanterr {
 				if err == nil {
-					t.Errorf("Expect to get error for GetPlaceStatsVar() but succeed")
+					t.Errorf("Expect to get error for GetPlaceStatVars() but succeed")
 				}
 				continue
 			}
 			if err != nil {
-				t.Errorf("Could not GetPlaceStatsVar: %s", err)
+				t.Errorf("Could not GetPlaceStatVars: %s", err)
 				continue
 			}
 
