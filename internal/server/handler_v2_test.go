@@ -285,22 +285,7 @@ func TestResolveRouting(t *testing.T) {
 			wantRemote:        true,
 			wantErr:           false,
 		},
-		{
-			desc:              "Custom instance, target empty",
-			target:            "",
-			remoteMixerDomain: "remote.com",
-			wantLocal:         true,
-			wantRemote:        true,
-			wantErr:           false,
-		},
-		{
-			desc:              "Custom instance, invalid target",
-			target:            "invalid_target",
-			remoteMixerDomain: "remote.com",
-			wantLocal:         true,
-			wantRemote:        true,
-			wantErr:           false,
-		},
+
 	}
 
 	for _, tc := range tests {

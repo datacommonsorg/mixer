@@ -412,7 +412,7 @@ func (s *Server) FilterStatVarsByEntity(
 //   - "base_only": Call remote only.
 //   - "custom_only": Call local only.
 //   - "base_and_custom": Call both.
-//   - Any other value returns an InvalidArgument error.
+//   - Any other value defaults to calling both.
 func resolveRouting(target, remoteMixerDomain string) (bool, bool, error) {
 	if remoteMixerDomain == "" {
 		return true, false, nil
