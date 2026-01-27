@@ -500,14 +500,6 @@ service Mixer {
     };
   }
 
-  rpc BulkObservationExistence(datacommons.v1.BulkObservationExistenceRequest)
-      returns (datacommons.v1.BulkObservationExistenceResponse) {
-    option (google.api.http) = {
-      get : "/v1/bulk/observation-existence"
-      additional_bindings : {post : "/v1/bulk/observation-existence" body : "*"}
-    };
-  }
-
   rpc BioPage(datacommons.v1.BioPageRequest) returns (GraphNodes) {
     option (google.api.http) = {
       get : "/v1/internal/page/bio/{node=**}"
