@@ -42,7 +42,6 @@ import "v1/variable.proto";
 import "v1/info.proto";
 import "v1/observations.proto";
 import "v1/observation_dates.proto";
-import "v1/observation_existence.proto";
 import "v1/page.proto";
 import "v1/triples.proto";
 
