@@ -36,6 +36,7 @@ func TestV2ResolveCore_EmbeddingsFlag(t *testing.T) {
 	}
 	req := &pbv2.ResolveRequest{
 		Resolver: "indicator",
+		Property: "<-description->dcid", // Must be valid for indicator resolver
 		Nodes:    []string{"foo"},
 	}
 	_, err := sDisabled.V2ResolveCore(ctx, req)
