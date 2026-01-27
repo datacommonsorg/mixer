@@ -28,7 +28,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v1/event"
 	"github.com/datacommonsorg/mixer/internal/server/v1/info"
 	"github.com/datacommonsorg/mixer/internal/server/v1/observationdates"
-	"github.com/datacommonsorg/mixer/internal/server/v1/observationexistence"
 	"github.com/datacommonsorg/mixer/internal/server/v1/observations"
 	"github.com/datacommonsorg/mixer/internal/server/v1/page"
 	"github.com/datacommonsorg/mixer/internal/server/v1/properties"
@@ -430,13 +429,6 @@ func (s *Server) BulkObservationDatesLinked(
 	localResp, remoteResp := <-localRespChan, <-remoteRespChan
 	return merger.MergeObservationDates(localResp, remoteResp), nil
 
-}
-
-// BulkObservationExistence implements API for mixer.BulkObservationExistence.
-func (s *Server) BulkObservationExistence(
-	ctx context.Context, in *pbv1.BulkObservationExistenceRequest,
-) (*pbv1.BulkObservationExistenceResponse, error) {
-	return observationexistence.BulkObservationExistence(ctx, in, s.store)
 }
 
 // BioPage implements API for mixer.BioPage.

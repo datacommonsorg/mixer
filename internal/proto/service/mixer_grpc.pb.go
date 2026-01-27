@@ -95,7 +95,6 @@ const (
 	Mixer_BulkObservationsSeriesLinked_FullMethodName = "/datacommons.Mixer/BulkObservationsSeriesLinked"
 	Mixer_DerivedObservationsSeries_FullMethodName    = "/datacommons.Mixer/DerivedObservationsSeries"
 	Mixer_BulkObservationDatesLinked_FullMethodName   = "/datacommons.Mixer/BulkObservationDatesLinked"
-	Mixer_BulkObservationExistence_FullMethodName     = "/datacommons.Mixer/BulkObservationExistence"
 	Mixer_BioPage_FullMethodName                      = "/datacommons.Mixer/BioPage"
 	Mixer_PlacePage_FullMethodName                    = "/datacommons.Mixer/PlacePage"
 	Mixer_VariableAncestors_FullMethodName            = "/datacommons.Mixer/VariableAncestors"
@@ -197,7 +196,6 @@ type MixerClient interface {
 	BulkObservationsSeriesLinked(ctx context.Context, in *v1.BulkObservationsSeriesLinkedRequest, opts ...grpc.CallOption) (*v1.BulkObservationsSeriesResponse, error)
 	DerivedObservationsSeries(ctx context.Context, in *v1.DerivedObservationsSeriesRequest, opts ...grpc.CallOption) (*v1.DerivedObservationsSeriesResponse, error)
 	BulkObservationDatesLinked(ctx context.Context, in *v1.BulkObservationDatesLinkedRequest, opts ...grpc.CallOption) (*v1.BulkObservationDatesLinkedResponse, error)
-	BulkObservationExistence(ctx context.Context, in *v1.BulkObservationExistenceRequest, opts ...grpc.CallOption) (*v1.BulkObservationExistenceResponse, error)
 	BioPage(ctx context.Context, in *v1.BioPageRequest, opts ...grpc.CallOption) (*proto.GraphNodes, error)
 	PlacePage(ctx context.Context, in *v1.PlacePageRequest, opts ...grpc.CallOption) (*v1.PlacePageResponse, error)
 	VariableAncestors(ctx context.Context, in *v1.VariableAncestorsRequest, opts ...grpc.CallOption) (*v1.VariableAncestorsResponse, error)
@@ -710,15 +708,6 @@ func (c *mixerClient) BulkObservationDatesLinked(ctx context.Context, in *v1.Bul
 	return out, nil
 }
 
-func (c *mixerClient) BulkObservationExistence(ctx context.Context, in *v1.BulkObservationExistenceRequest, opts ...grpc.CallOption) (*v1.BulkObservationExistenceResponse, error) {
-	out := new(v1.BulkObservationExistenceResponse)
-	err := c.cc.Invoke(ctx, Mixer_BulkObservationExistence_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *mixerClient) BioPage(ctx context.Context, in *v1.BioPageRequest, opts ...grpc.CallOption) (*proto.GraphNodes, error) {
 	out := new(proto.GraphNodes)
 	err := c.cc.Invoke(ctx, Mixer_BioPage_FullMethodName, in, out, opts...)
@@ -930,7 +919,6 @@ type MixerServer interface {
 	BulkObservationsSeriesLinked(context.Context, *v1.BulkObservationsSeriesLinkedRequest) (*v1.BulkObservationsSeriesResponse, error)
 	DerivedObservationsSeries(context.Context, *v1.DerivedObservationsSeriesRequest) (*v1.DerivedObservationsSeriesResponse, error)
 	BulkObservationDatesLinked(context.Context, *v1.BulkObservationDatesLinkedRequest) (*v1.BulkObservationDatesLinkedResponse, error)
-	BulkObservationExistence(context.Context, *v1.BulkObservationExistenceRequest) (*v1.BulkObservationExistenceResponse, error)
 	BioPage(context.Context, *v1.BioPageRequest) (*proto.GraphNodes, error)
 	PlacePage(context.Context, *v1.PlacePageRequest) (*v1.PlacePageResponse, error)
 	VariableAncestors(context.Context, *v1.VariableAncestorsRequest) (*v1.VariableAncestorsResponse, error)
@@ -1126,9 +1114,6 @@ func (UnimplementedMixerServer) DerivedObservationsSeries(context.Context, *v1.D
 }
 func (UnimplementedMixerServer) BulkObservationDatesLinked(context.Context, *v1.BulkObservationDatesLinkedRequest) (*v1.BulkObservationDatesLinkedResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkObservationDatesLinked not implemented")
-}
-func (UnimplementedMixerServer) BulkObservationExistence(context.Context, *v1.BulkObservationExistenceRequest) (*v1.BulkObservationExistenceResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method BulkObservationExistence not implemented")
 }
 func (UnimplementedMixerServer) BioPage(context.Context, *v1.BioPageRequest) (*proto.GraphNodes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BioPage not implemented")
@@ -2120,24 +2105,6 @@ func _Mixer_BulkObservationDatesLinked_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mixer_BulkObservationExistence_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(v1.BulkObservationExistenceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).BulkObservationExistence(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_BulkObservationExistence_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).BulkObservationExistence(ctx, req.(*v1.BulkObservationExistenceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _Mixer_BioPage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(v1.BioPageRequest)
 	if err := dec(in); err != nil {
@@ -2604,10 +2571,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "BulkObservationDatesLinked",
 			Handler:    _Mixer_BulkObservationDatesLinked_Handler,
-		},
-		{
-			MethodName: "BulkObservationExistence",
-			Handler:    _Mixer_BulkObservationExistence_Handler,
 		},
 		{
 			MethodName: "BioPage",
