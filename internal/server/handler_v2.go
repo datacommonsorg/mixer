@@ -402,7 +402,7 @@ func (s *Server) FilterStatVarsByEntity(
 // based on the target parameter and the presence of a remote mixer domain.
 // Returns (shouldCallLocal, shouldCallRemote, error).
 //
-// Assumes setResolveDefaults has been called prior.
+// Assumes setDefaultsAndValidateResolveInputs has been called prior.
 //
 // logic:
 //   - If remoteMixerDomain is empty, we are the base instance (or standalone).
@@ -411,7 +411,7 @@ func (s *Server) FilterStatVarsByEntity(
 //     Route based on target:
 //   - "base_only": Call remote only.
 //   - "custom_only": Call local only.
-//   - "custom_and_base": Call both.
+//   - "base_and_custom": Call both.
 //   - Any other value returns an InvalidArgument error.
 func resolveRouting(target, remoteMixerDomain string) (bool, bool, error) {
 	if remoteMixerDomain == "" {
@@ -422,12 +422,8 @@ func resolveRouting(target, remoteMixerDomain string) (bool, bool, error) {
 		return false, true, nil
 	case ResolveTargetCustomOnly:
 		return true, false, nil
-	case ResolveTargetBaseAndCustom:
-		return true, true, nil
 	default:
-		return false, false, status.Errorf(codes.InvalidArgument,
-			"Invalid value for target parameter provided: %s. Valid values are: \"%s\", \"%s\", \"%s\"",
-			target, ResolveTargetCustomOnly, ResolveTargetBaseOnly, ResolveTargetBaseAndCustom)
+		return true, true, nil
 	}
 }
 

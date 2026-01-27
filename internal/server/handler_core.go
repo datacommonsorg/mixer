@@ -46,11 +46,6 @@ func (s *Server) V2ResolveCore(
 		return resolve.ResolveUsingEmbeddings(ctx, s.httpClient, s.embeddingsServerURL, s.resolveEmbeddingsIndexes, in.GetNodes())
 	}
 
-	if resolver != "" && resolver != ResolveResolverPlace {
-		return nil, status.Errorf(codes.InvalidArgument, "Invalid resolver: %s. Valid values are: \"%s\", \"%s\"",
-			resolver, ResolveResolverIndicator, ResolveResolverPlace)
-	}
-
 	arcs, err := v2.ParseProperty(in.GetProperty())
 	if err != nil {
 		return nil, err
