@@ -50,7 +50,7 @@ func setDefaultValues() *Flags {
 		UseSpannerGraph:          false,
 		SpannerGraphDatabase:     "",
 		UseStaleReads:            false,
-		EnableEmbeddingsResolver: false,
+		EnableEmbeddingsResolver: true,
 		V2DivertFraction:         0.0,
 	}
 }
