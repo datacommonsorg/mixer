@@ -448,15 +448,15 @@ func setDefaultsAndValidateResolveInputs(in *pbv2.ResolveRequest) error {
 	switch in.GetTarget() {
 	case ResolveTargetBaseOnly, ResolveTargetCustomOnly, ResolveTargetBaseAndCustom:
 	default:
-		validationErrors = append(validationErrors, fmt.Sprintf("Invalid value for target '%s', valid values are: \"%s\", \"%s\", \"%s\"",
-			in.GetTarget(), ResolveTargetCustomOnly, ResolveTargetBaseOnly, ResolveTargetBaseAndCustom))
+		validationErrors = append(validationErrors, fmt.Sprintf("Invalid value for target, valid values are: '%s', '%s', '%s'",
+			ResolveTargetCustomOnly, ResolveTargetBaseOnly, ResolveTargetBaseAndCustom))
 	}
 
 	switch in.GetResolver() {
 	case ResolveResolverPlace, ResolveResolverIndicator:
 	default:
-		validationErrors = append(validationErrors, fmt.Sprintf("Invalid value for resolver '%s', valid values are: \"%s\", \"%s\"",
-			in.GetResolver(), ResolveResolverIndicator, ResolveResolverPlace))
+		validationErrors = append(validationErrors, fmt.Sprintf("Invalid value for resolver, valid values are: '%s', '%s'",
+			ResolveResolverIndicator, ResolveResolverPlace))
 	}
 
 	if len(validationErrors) > 0 {

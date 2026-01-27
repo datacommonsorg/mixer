@@ -383,7 +383,7 @@ func TestSetDefaultsAndValidateResolveInputs(t *testing.T) {
 				Property: ResolvePropertyDescription,
 			},
 			wantErr: true,
-			wantErrMsg: "Invalid inputs in request: Invalid value for target 'invalid'",
+			wantErrMsg: "Invalid inputs in request: Invalid value for target, valid values are: 'custom_only', 'base_only', 'base_and_custom'",
 		},
 		{
 			desc: "invalid resolver",
@@ -396,7 +396,7 @@ func TestSetDefaultsAndValidateResolveInputs(t *testing.T) {
 				Property: ResolvePropertyDescription,
 			},
 			wantErr: true,
-			wantErrMsg: "Invalid inputs in request: Invalid value for resolver 'invalid', valid values are: \"indicator\", \"place\"",
+			wantErrMsg: "Invalid inputs in request: Invalid value for resolver, valid values are: 'indicator', 'place'",
 		},
 		{
 			desc: "invalid target and resolver",
@@ -410,7 +410,7 @@ func TestSetDefaultsAndValidateResolveInputs(t *testing.T) {
 				Property: ResolvePropertyDescription,
 			},
 			wantErr: true,
-			wantErrMsg: "Invalid inputs in request: Invalid value for target 'invalid_target', valid values are: \"custom_only\", \"base_only\", \"base_and_custom\". Invalid value for resolver 'invalid_resolver', valid values are: \"indicator\", \"place\"",
+			wantErrMsg: "Invalid inputs in request: Invalid value for target, valid values are: 'custom_only', 'base_only', 'base_and_custom'. Invalid value for resolver, valid values are: 'indicator', 'place'",
 		},
 	}
 
