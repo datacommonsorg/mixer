@@ -17,8 +17,10 @@ package server
 
 import (
 	"context"
+	"fmt"
 	"log/slog"
 	"math/rand"
+	"strings"
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/log"
@@ -34,7 +36,9 @@ import (
 	"github.com/google/uuid"
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
+	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -42,9 +46,15 @@ import (
 func (s *Server) V2Resolve(
 	ctx context.Context, in *pbv2.ResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
+	if err := setDefaultsAndValidateResolveInputs(in); err != nil {
+		return nil, err
+	}
 	v2StartTime := time.Now()
 
-	callLocal, callRemote := resolveRouting(in.GetTarget(), s.metadata.RemoteMixerDomain)
+	callLocal, callRemote, err := resolveRouting(in.GetTarget(), s.metadata.RemoteMixerDomain)
+	if err != nil {
+		return nil, err
+	}
 
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	localRespChan := make(chan *pbv2.ResolveResponse, 1)
@@ -390,26 +400,63 @@ func (s *Server) FilterStatVarsByEntity(
 
 // resolveRouting determines whether to route to local and/or remote instances
 // based on the target parameter and the presence of a remote mixer domain.
-// Returns (shouldCallLocal, shouldCallRemote).
+// Returns (shouldCallLocal, shouldCallRemote, error).
+//
+// Assumes setDefaultsAndValidateResolveInputs has been called prior.
 //
 // logic:
-// - If remoteMixerDomain is empty, we are the base instance (or standalone).
-//   Always process locally, ignore target.
-// - If remoteMixerDomain is set, we are a custom instance.
-//   Route based on target:
+//   - If remoteMixerDomain is empty, we are the base instance (or standalone).
+//     Always process locally, ignore target.
+//   - If remoteMixerDomain is set, we are a custom instance.
+//     Route based on target:
 //   - "base_only": Call remote only.
 //   - "custom_only": Call local only.
-//   - "base_and_custom" (or empty): Call both.
-func resolveRouting(target, remoteMixerDomain string) (bool, bool) {
+//   - "base_and_custom": Call both.
+//   - Any other value defaults to calling both.
+func resolveRouting(target, remoteMixerDomain string) (bool, bool, error) {
 	if remoteMixerDomain == "" {
-		return true, false
+		return true, false, nil
 	}
 	switch target {
-	case "base_only":
-		return false, true
-	case "custom_only":
-		return true, false
-	default: // "base_and_custom" or empty
-		return true, true
+	case ResolveTargetBaseOnly:
+		return false, true, nil
+	case ResolveTargetCustomOnly:
+		return true, false, nil
+	default:
+		return true, true, nil
 	}
+}
+
+func setDefaultsAndValidateResolveInputs(in *pbv2.ResolveRequest) error {
+	if in.GetTarget() == "" {
+		// ignored if current call is to base dc
+		in.Target = ResolveTargetBaseAndCustom
+	}
+	if in.GetResolver() == "" {
+		in.Resolver = ResolveResolverPlace
+	}
+	if in.GetProperty() == "" {
+		in.Property = ResolvePropertyDescription
+	}
+
+	var validationErrors []string
+
+	switch in.GetTarget() {
+	case ResolveTargetBaseOnly, ResolveTargetCustomOnly, ResolveTargetBaseAndCustom:
+	default:
+		validationErrors = append(validationErrors, fmt.Sprintf("Invalid value for target, valid values are: '%s', '%s', '%s'",
+			ResolveTargetCustomOnly, ResolveTargetBaseOnly, ResolveTargetBaseAndCustom))
+	}
+
+	switch in.GetResolver() {
+	case ResolveResolverPlace, ResolveResolverIndicator:
+	default:
+		validationErrors = append(validationErrors, fmt.Sprintf("Invalid value for resolver, valid values are: '%s', '%s'",
+			ResolveResolverIndicator, ResolveResolverPlace))
+	}
+
+	if len(validationErrors) > 0 {
+		return status.Errorf(codes.InvalidArgument, "Invalid inputs in request: %s", strings.Join(validationErrors, ". "))
+	}
+	return nil
 }

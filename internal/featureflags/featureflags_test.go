@@ -22,12 +22,23 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestNewFlags(t *testing.T) {
-	defaultFlags := &Flags{
-		EnableV3:         false,
-		V3MirrorFraction: 0.0,
+// expectedFlags creates a Flags struct with default values, applying any provided modifications.
+// This ensures tests are robust to future changes in default flag values.
+//
+// Example usage:
+//
+//	want: expectedFlags(func(f *Flags) {
+//		f.EnableV3 = true
+//	}),
+func expectedFlags(mods ...func(*Flags)) *Flags {
+	f := setDefaultValues()
+	for _, mod := range mods {
+		mod(f)
 	}
+	return f
+}
 
+func TestNewFlags(t *testing.T) {
 	testCases := []struct {
 		name        string
 		fileContent string
@@ -37,7 +48,7 @@ func TestNewFlags(t *testing.T) {
 		{
 			name:        "file not found",
 			fileContent: "", // Special case for file not found
-			want:        defaultFlags,
+			want:        expectedFlags(),
 			wantErr:     false,
 		},
 		{
@@ -52,7 +63,9 @@ func TestNewFlags(t *testing.T) {
 flags:
   EnableV3: true
 `,
-			want:    &Flags{EnableV3: true, V3MirrorFraction: 0.0},
+			want: expectedFlags(func(f *Flags) {
+				f.EnableV3 = true
+			}),
 			wantErr: false,
 		},
 		{
@@ -62,7 +75,10 @@ flags:
   EnableV3: true
   V3MirrorFraction: 0.7
 `,
-			want:    &Flags{EnableV3: true, V3MirrorFraction: 0.7},
+			want: expectedFlags(func(f *Flags) {
+				f.EnableV3 = true
+				f.V3MirrorFraction = 0.7
+			}),
 			wantErr: false,
 		},
 		{
@@ -75,7 +91,10 @@ flags:
   EnableV3: true
   V3MirrorFraction: 0.7
 `,
-			want:    &Flags{EnableV3: true, V3MirrorFraction: 0.7},
+			want: expectedFlags(func(f *Flags) {
+				f.EnableV3 = true
+				f.V3MirrorFraction = 0.7
+			}),
 			wantErr: false,
 		},
 		{
@@ -85,7 +104,7 @@ clusters:
   - projects/datcom-website-prod/locations/us-central1/clusters/website-us-central1
   - projects/datcom-website-prod/locations/us-west1/clusters/website-us-west1
 `,
-			want:    defaultFlags,
+			want:    expectedFlags(),
 			wantErr: false,
 		},
 		{
