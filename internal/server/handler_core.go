@@ -40,9 +40,6 @@ func (s *Server) V2ResolveCore(
 		if !s.flags.EnableEmbeddingsResolver {
 			return nil, status.Errorf(codes.Unimplemented, "Resolving indicators is not enabled for this environment.")
 		}
-		if in.GetProperty() != ResolvePropertyDescription {
-			return nil, status.Errorf(codes.InvalidArgument, "Invalid property: %s. Indicator resolution only supports: %s", in.GetProperty(), ResolvePropertyDescription)
-		}
 		return resolve.ResolveUsingEmbeddings(ctx, s.httpClient, s.embeddingsServerURL, s.resolveEmbeddingsIndexes, in.GetNodes())
 	}
 

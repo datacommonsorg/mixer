@@ -348,12 +348,12 @@ func TestSetDefaultsAndValidateResolveInputs(t *testing.T) {
 			desc: "fully set",
 			in: &pbv2.ResolveRequest{
 				Target:   ResolveTargetBaseOnly,
-				Resolver: ResolveResolverIndicator,
+				Resolver: ResolveResolverPlace,
 				Property: "custom_prop",
 			},
 			want: &pbv2.ResolveRequest{
 				Target:   ResolveTargetBaseOnly,
-				Resolver: ResolveResolverIndicator,
+				Resolver: ResolveResolverPlace,
 				Property: "custom_prop",
 			},
 		},
@@ -396,6 +396,20 @@ func TestSetDefaultsAndValidateResolveInputs(t *testing.T) {
 			},
 			wantErr: true,
 			wantErrMsg: "Invalid inputs in request: Invalid value for target, valid values are: 'custom_only', 'base_only', 'base_and_custom'. Invalid value for resolver, valid values are: 'indicator', 'place'",
+		},
+		{
+			desc: "invalid property for indicator resolver",
+			in: &pbv2.ResolveRequest{
+				Resolver: ResolveResolverIndicator,
+				Property: "invalid_property",
+			},
+			want: &pbv2.ResolveRequest{
+				Target:   ResolveTargetBaseAndCustom,
+				Resolver: ResolveResolverIndicator,
+				Property: "invalid_property",
+			},
+			wantErr: true,
+			wantErrMsg: "Invalid inputs in request: Invalid value for property, indicator resolution only supports the 'description' based property",
 		},
 	}
 
