@@ -449,11 +449,7 @@ func setDefaultsAndValidateResolveInputs(in *pbv2.ResolveRequest) error {
 	}
 
 	switch in.GetResolver() {
-	case ResolveResolverPlace:
-	case ResolveResolverIndicator:
-		if in.GetProperty() != ResolvePropertyDescription {
-			validationErrors = append(validationErrors, "Invalid value for property, indicator resolution only supports the 'description' based property")
-		}
+	case ResolveResolverPlace, ResolveResolverIndicator:
 	default:
 		validationErrors = append(validationErrors, fmt.Sprintf("Invalid value for resolver, valid values are: '%s', '%s'",
 			ResolveResolverIndicator, ResolveResolverPlace))

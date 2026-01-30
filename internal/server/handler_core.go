@@ -35,17 +35,41 @@ func (s *Server) V2ResolveCore(
 	ctx context.Context, in *pbv2.ResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
 	// Check for explicit "indicator" resolver, otherwise default to legacy place resolver logic.
+	// Check for explicit "indicator" resolver, otherwise default to legacy place resolver logic.
 	resolver := in.GetResolver()
-	if resolver == ResolveResolverIndicator {
-		if !s.flags.EnableEmbeddingsResolver {
-			return nil, status.Errorf(codes.Unimplemented, "Resolving indicators is not enabled for this environment.")
-		}
-		return resolve.ResolveUsingEmbeddings(ctx, s.httpClient, s.embeddingsServerURL, s.resolveEmbeddingsIndexes, in.GetNodes())
-	}
 
 	arcs, err := v2.ParseProperty(in.GetProperty())
 	if err != nil {
 		return nil, err
+	}
+
+	if resolver == ResolveResolverIndicator {
+		if !s.flags.EnableEmbeddingsResolver {
+			return nil, status.Errorf(codes.Unimplemented, "Resolving indicators is not enabled for this environment.")
+		}
+
+		// Validation for indicator resolver
+		// Expecting: <-description{typeOf:[...]}->dcid (or just <-description...)
+		if len(arcs) < 1 || len(arcs) > 2 {
+			return nil, status.Errorf(codes.InvalidArgument, "invalid property for indicator resolving: %s", in.GetProperty())
+		}
+		inArc := arcs[0]
+		if inArc.Out || inArc.SingleProp != "description" {
+			return nil, status.Errorf(codes.InvalidArgument, "invalid property for indicator resolving: %s", in.GetProperty())
+		}
+
+		var filterType []string
+		if len(inArc.Filter) > 0 {
+			// Validate that only 'typeOf' filter is present
+			for k, v := range inArc.Filter {
+				if k != "typeOf" {
+					return nil, status.Errorf(codes.InvalidArgument, "invalid filter key for indicator resolving: %s", k)
+				}
+				filterType = v
+			}
+		}
+
+		return resolve.ResolveUsingEmbeddings(ctx, s.httpClient, s.embeddingsServerURL, s.resolveEmbeddingsIndexes, in.GetNodes(), filterType)
 	}
 
 	if len(arcs) != 2 {
