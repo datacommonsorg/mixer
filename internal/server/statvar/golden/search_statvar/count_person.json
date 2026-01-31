@@ -125,7 +125,7 @@
       "dcid": "Count_Person_BachelorOfNursingAndMidwifery"
     },
     {
-      "name": "Count of person with bachelor's degree in oral andsetMaxillofacial Studies",
+      "name": "Count of person with bachelor's degree in oral and Maxillofacial Studies",
       "dcid": "Count_Person_BachelorOfOralAndMaxillofacialStudies"
     },
     {
@@ -307,6 +307,10 @@
     {
       "name": "Number of intersex people",
       "dcid": "Count_Person_Intersex"
+    },
+    {
+      "name": "Number of people infected with COVID-19",
+      "dcid": "Count_Person_COVID19"
     },
     {
       "name": "Number of people living in slum area",
@@ -3995,10 +3999,6 @@
     {
       "name": "Native Hawaiian Farmers",
       "dcid": "Count_Person_Producer_NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Native Hawaiian/Other Pacific Islander Population With Disabilities",
-      "dcid": "Count_Person_WithDisability_NativeHawaiianOrOtherPacificIslanderAlone"
     }
   ],
   "matches": [

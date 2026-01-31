@@ -132,6 +132,14 @@
         "hasData": true
       },
       {
+        "id": "Count_Person_5To17Years_Poor",
+        "searchNames": [
+          "Population Count of Person With Age is 5 - 17 Years, Family Poverty Status is Poor"
+        ],
+        "displayName": "Population: 5 - 17 Years, Poor",
+        "definition": "mp=count,pt=Person,age=Years5To17,familyPovertyStatus=Poor"
+      },
+      {
         "id": "Count_Person_InfrastructureProject_BrazilRuralDevelopmentProgram",
         "searchNames": [
           "Population Count of Person With Affected by Is Infrastructure Project, Benefit Program is Brazil_Rural Development Program",
@@ -161,7 +169,8 @@
       {
         "id": "dc/g/Person_AgeGroupClassification",
         "specializedEntity": "Age Group Classification",
-        "displayName": "Person by Age Group Classification"
+        "displayName": "Person by Age Group Classification",
+        "descendentStatVarCount": 3
       },
       {
         "id": "dc/g/Person_BenefitProgram",

@@ -24,7 +24,7 @@
             "maxValue": 1214384
           },
           "AdministrativeArea1": {
-            "placeCount": 401,
+            "placeCount": 402,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q3724",
@@ -725,6 +725,65 @@
             ],
             "observationCount": 4577,
             "timeSeriesCount": 4516
+          },
+          "dc/base/Bulgaria_Census": {
+            "importName": "Bulgaria_Census",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "2001",
+                "latestDate": "2024",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1585725",
+                        "name": "Sofia Capital"
+                      }
+                    ],
+                    "minValue": 610991,
+                    "maxValue": 676145
+                  },
+                  "City": {
+                    "placeCount": 27,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/SOF46",
+                        "name": "Sofia"
+                      },
+                      {
+                        "dcid": "wikidataId/Q459",
+                        "name": "Plovdiv"
+                      },
+                      {
+                        "dcid": "wikidataId/Q6506",
+                        "name": "Varna"
+                      }
+                    ],
+                    "minValue": 36757,
+                    "maxValue": 367338
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/BGR",
+                        "name": "Bulgaria"
+                      }
+                    ],
+                    "minValue": 3342220,
+                    "maxValue": 4035676
+                  }
+                },
+                "minValue": 36757,
+                "maxValue": 4035676,
+                "observationCount": 609,
+                "timeSeriesCount": 29
+              }
+            ],
+            "observationCount": 609,
+            "timeSeriesCount": 29
           },
           "dc/base/CDC_Mortality_UnderlyingCause": {
             "importName": "CDC_Mortality_UnderlyingCause",
@@ -4270,7 +4329,7 @@
                 },
                 "minValue": 0,
                 "maxValue": 5119774,
-                "observationCount": 181550,
+                "observationCount": 172489,
                 "timeSeriesCount": 3156
               },
               {
@@ -4315,11 +4374,11 @@
                 },
                 "minValue": 138616,
                 "maxValue": 171773106,
-                "observationCount": 3137,
+                "observationCount": 2930,
                 "timeSeriesCount": 52
               }
             ],
-            "observationCount": 184687,
+            "observationCount": 175419,
             "timeSeriesCount": 3208
           },
           "dc/base/Vietnam_Census": {
