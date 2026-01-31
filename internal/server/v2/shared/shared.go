@@ -43,8 +43,10 @@ const (
 	QueryTypeValue QueryType = "value"
 	// Fetches information about a given facet.
 	QueryTypeFacet QueryType = "facet"
-	// Checks if a given statVar has information for a given entity.
-	QueryTypeExistence QueryType = "existence"
+	// Checks if a given statVar has information for a given set of entities AND variables.
+	QueryTypeExistenceByVar QueryType = "existence-var"
+	// Checks if a given statVar has ANY statVars for a given set of entities
+	QueryTypeExistenceByEntity QueryType = "existence-entity"
 	// Calculates a value from other fetches.
 	QueryTypeDerived QueryType = "derived"
 )
