@@ -99,7 +99,6 @@ const (
 	Mixer_PlacePage_FullMethodName                    = "/datacommons.Mixer/PlacePage"
 	Mixer_VariableAncestors_FullMethodName            = "/datacommons.Mixer/VariableAncestors"
 	Mixer_SearchStatVar_FullMethodName                = "/datacommons.Mixer/SearchStatVar"
-	Mixer_EventCollection_FullMethodName              = "/datacommons.Mixer/EventCollection"
 	Mixer_EventCollectionDate_FullMethodName          = "/datacommons.Mixer/EventCollectionDate"
 	Mixer_ResolveEntities_FullMethodName              = "/datacommons.Mixer/ResolveEntities"
 	Mixer_ResolveCoordinates_FullMethodName           = "/datacommons.Mixer/ResolveCoordinates"
@@ -201,12 +200,6 @@ type MixerClient interface {
 	VariableAncestors(ctx context.Context, in *v1.VariableAncestorsRequest, opts ...grpc.CallOption) (*v1.VariableAncestorsResponse, error)
 	// Search stat var and stat var groups.
 	SearchStatVar(ctx context.Context, in *proto.SearchStatVarRequest, opts ...grpc.CallOption) (*proto.SearchStatVarResponse, error)
-	// Get event collection for {eventType, affectedPlaceDcid, date}.
-	// NOTE:
-	//   - The affectedPlaceDcid is only for top-level places:
-	//     Earth, continent, country, state, adminArea1.
-	//   - The date format should be: YYYY-MM.
-	EventCollection(ctx context.Context, in *v1.EventCollectionRequest, opts ...grpc.CallOption) (*v1.EventCollectionResponse, error)
 	// Get all dates for event collection for {eventType, affectedPlaceDcid}.
 	//   - The affectedPlaceDcid is only for top-level places:
 	//     Earth, continent, country, state, adminArea1.
@@ -744,15 +737,6 @@ func (c *mixerClient) SearchStatVar(ctx context.Context, in *proto.SearchStatVar
 	return out, nil
 }
 
-func (c *mixerClient) EventCollection(ctx context.Context, in *v1.EventCollectionRequest, opts ...grpc.CallOption) (*v1.EventCollectionResponse, error) {
-	out := new(v1.EventCollectionResponse)
-	err := c.cc.Invoke(ctx, Mixer_EventCollection_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *mixerClient) EventCollectionDate(ctx context.Context, in *v1.EventCollectionDateRequest, opts ...grpc.CallOption) (*v1.EventCollectionDateResponse, error) {
 	out := new(v1.EventCollectionDateResponse)
 	err := c.cc.Invoke(ctx, Mixer_EventCollectionDate_FullMethodName, in, out, opts...)
@@ -924,12 +908,6 @@ type MixerServer interface {
 	VariableAncestors(context.Context, *v1.VariableAncestorsRequest) (*v1.VariableAncestorsResponse, error)
 	// Search stat var and stat var groups.
 	SearchStatVar(context.Context, *proto.SearchStatVarRequest) (*proto.SearchStatVarResponse, error)
-	// Get event collection for {eventType, affectedPlaceDcid, date}.
-	// NOTE:
-	//   - The affectedPlaceDcid is only for top-level places:
-	//     Earth, continent, country, state, adminArea1.
-	//   - The date format should be: YYYY-MM.
-	EventCollection(context.Context, *v1.EventCollectionRequest) (*v1.EventCollectionResponse, error)
 	// Get all dates for event collection for {eventType, affectedPlaceDcid}.
 	//   - The affectedPlaceDcid is only for top-level places:
 	//     Earth, continent, country, state, adminArea1.
@@ -1126,9 +1104,6 @@ func (UnimplementedMixerServer) VariableAncestors(context.Context, *v1.VariableA
 }
 func (UnimplementedMixerServer) SearchStatVar(context.Context, *proto.SearchStatVarRequest) (*proto.SearchStatVarResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchStatVar not implemented")
-}
-func (UnimplementedMixerServer) EventCollection(context.Context, *v1.EventCollectionRequest) (*v1.EventCollectionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method EventCollection not implemented")
 }
 func (UnimplementedMixerServer) EventCollectionDate(context.Context, *v1.EventCollectionDateRequest) (*v1.EventCollectionDateResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method EventCollectionDate not implemented")
@@ -2177,24 +2152,6 @@ func _Mixer_SearchStatVar_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mixer_EventCollection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(v1.EventCollectionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).EventCollection(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_EventCollection_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).EventCollection(ctx, req.(*v1.EventCollectionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _Mixer_EventCollectionDate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(v1.EventCollectionDateRequest)
 	if err := dec(in); err != nil {
@@ -2587,10 +2544,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SearchStatVar",
 			Handler:    _Mixer_SearchStatVar_Handler,
-		},
-		{
-			MethodName: "EventCollection",
-			Handler:    _Mixer_EventCollection_Handler,
 		},
 		{
 			MethodName: "EventCollectionDate",
