@@ -31,7 +31,13 @@ import (
 )
 
 // V2ResolveCore gets resolve results from Cloud Bigtable and Maps API.
+//
 // Assumes inputs have been validated and the property expression has been parsed.
+//
+// Inputs:
+//   - inProp: The property of the input nodes to match against (e.g., "description", "geoCoordinate", "wikidataId").
+//   - outProp: The target property to retrieve (e.g., "dcid", "nutsCode").
+//   - typeOfValues: Optional values to filter by type (e.g., ["City", "County"]). Only used when inProp is "description" or "geoCoordinate" (or for indicator resolution).
 func (s *Server) V2ResolveCore(
 	ctx context.Context,
 	in *pbv2.ResolveRequest,
