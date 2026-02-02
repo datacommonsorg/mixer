@@ -502,13 +502,6 @@ func (s *Server) EventCollection(
 	return event.Collection(ctx, in, s.store)
 }
 
-// EventCollectionDate implements API for mixer.EventCollectionDate.
-func (s *Server) EventCollectionDate(
-	ctx context.Context, in *pbv1.EventCollectionDateRequest,
-) (*pbv1.EventCollectionDateResponse, error) {
-	return event.CollectionDate(ctx, in, s.store)
-}
-
 // RecognizePlaces implements API for Mixer.RecognizePlaces.
 func (s *Server) RecognizePlaces(
 	ctx context.Context, in *pb.RecognizePlacesRequest,
