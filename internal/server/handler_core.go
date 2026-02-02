@@ -31,90 +31,43 @@ import (
 )
 
 // V2ResolveCore gets resolve results from Cloud Bigtable and Maps API.
+// Assumes inputs have been validated and the property expression has been parsed.
 func (s *Server) V2ResolveCore(
-	ctx context.Context, in *pbv2.ResolveRequest,
+	ctx context.Context,
+	in *pbv2.ResolveRequest,
+	inProp string,
+	outProp string,
+	typeOfValues []string,
 ) (*pbv2.ResolveResponse, error) {
 	// Check for explicit "indicator" resolver, otherwise default to legacy place resolver logic.
-	// Check for explicit "indicator" resolver, otherwise default to legacy place resolver logic.
-	resolver := in.GetResolver()
-
-	arcs, err := v2.ParseProperty(in.GetProperty())
-	if err != nil {
-		return nil, err
-	}
-
-	if resolver == ResolveResolverIndicator {
+	if resolver := in.GetResolver(); resolver == ResolveResolverIndicator {
 		if !s.flags.EnableEmbeddingsResolver {
 			return nil, status.Errorf(codes.Unimplemented, "Resolving indicators is not enabled for this environment.")
 		}
-
-		// Validation for indicator resolver
-		// Expecting: <-description{typeOf:[...]}->dcid (or just <-description...)
-		if len(arcs) < 1 || len(arcs) > 2 {
-			return nil, status.Errorf(codes.InvalidArgument, "invalid property for indicator resolving: %s", in.GetProperty())
-		}
-		inArc := arcs[0]
-		if inArc.Out || inArc.SingleProp != "description" {
-			return nil, status.Errorf(codes.InvalidArgument, "invalid property for indicator resolving: %s", in.GetProperty())
-		}
-
-		var filterType []string
-		if len(inArc.Filter) > 0 {
-			// Validate that only 'typeOf' filter is present
-			for k, v := range inArc.Filter {
-				if k != "typeOf" {
-					return nil, status.Errorf(codes.InvalidArgument, "invalid filter key for indicator resolving: %s", k)
-				}
-				filterType = v
-			}
-		}
-
-		return resolve.ResolveUsingEmbeddings(ctx, s.httpClient, s.embeddingsServerURL, s.resolveEmbeddingsIndexes, in.GetNodes(), filterType)
+		return resolve.ResolveUsingEmbeddings(ctx, s.httpClient, s.embeddingsServerURL, s.resolveEmbeddingsIndexes, in.GetNodes(), typeOfValues)
 	}
 
-	if len(arcs) != 2 {
-		return nil, status.Errorf(codes.InvalidArgument,
-			"invalid property for resolving: %s", in.GetProperty())
-	}
-
-	inArc := arcs[0]
-	outArc := arcs[1]
-	if inArc.Out || !outArc.Out {
-		return nil, status.Errorf(codes.InvalidArgument,
-			"invalid property for resolving: %s", in.GetProperty())
-	}
-
-	if inArc.SingleProp == "geoCoordinate" && outArc.SingleProp == "dcid" {
+	// Resolve places based on property expression
+	switch inProp {
+	case GeoCoordinateProperty:
 		// Coordinate to ID:
 		// Example:
 		//   <-geoCoordinate->dcid
-		return resolve.Coordinate(ctx, s.store, in.GetNodes(),
-			inArc.Filter["typeOf"])
-	}
-
-	if inArc.SingleProp == "description" && outArc.SingleProp == "dcid" {
+		return resolve.Coordinate(ctx, s.store, in.GetNodes(), typeOfValues)
+	case DescriptionProperty:
 		// Description (name) to ID:
 		// Examples:
 		//   <-description->dcid
 		//   <-description{typeOf:City}->dcid
 		//   <-description{typeOf:[City, County]}->dcid
-		return resolve.Description(
-			ctx,
-			s.store,
-			s.mapsClient,
-			in.GetNodes(),
-			inArc.Filter["typeOf"])
+		return resolve.Description(ctx, s.store, s.mapsClient, in.GetNodes(), typeOfValues)
+	default:
+		// ID to ID:
+		// Example:
+		//   <-wikidataId->dcid
+		//   <-countryNumericCode->wikidataId
+		return resolve.ID(ctx, s.store, in.GetNodes(), inProp, outProp)
 	}
-
-	// ID to ID:
-	// Example:
-	//   <-wikidataId->nutsCode
-	return resolve.ID(
-		ctx,
-		s.store,
-		in.GetNodes(),
-		inArc.SingleProp,
-		outArc.SingleProp)
 }
 
 // V2NodeCore gets node results from Cloud Bigtable.
