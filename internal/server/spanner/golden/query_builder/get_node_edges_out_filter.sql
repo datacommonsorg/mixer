@@ -3,12 +3,11 @@
 			m.subject_id IN ('nuts/UKI1'))-[e:Edge]->(n:Node),
 		<-[filter0:Edge
 		WHERE
-			filter0.predicate = 'name'
-			AND filter0.object_id IN ('AdministrativeArea2','AdministrativeAr:4cB0ui47vrAeY7MO/uBAvpsajxkYlJo3EW8fStdW4ko=')]-(n),
+			filter0.predicate = 'description']-(n),
 		<-[filter1:Edge
 		WHERE
 			filter1.predicate = 'subClassOf'
-			AND filter1.object_id IN ('AdministrativeArea','AdministrativeAr:WXALAhw8j+Uz/Tw7uR3ClTolVepyj0tjRCKr6Xkw60s=')]-(n)
+			AND filter1.object_id IN ('AdministrativeArea')]-(n)
 		RETURN
 		  	m.subject_id,
 			n.subject_id AS object_id,

@@ -82,8 +82,8 @@ var nodeOutEdgesByIDTestCases = []struct {
 		arc: &v2.Arc{
 			Out: true,
 			Filter: map[string][]string{
-				"subClassOf": {"AdministrativeArea"},
-				"name":       {"AdministrativeArea2"},
+				"subClassOf":  {"AdministrativeArea"},
+				"description": {},
 			},
 		},
 		offset: 0,
@@ -140,7 +140,7 @@ var nodeInEdgesByIDTestCases = []struct {
 			Out: false,
 			Filter: map[string][]string{
 				"farmInventoryType": {"Melon"},
-				"name":              {"Area of Farm: Melon"},
+				"typeOf":            {"StatisticalVariable"},
 			},
 		},
 		offset: 0,

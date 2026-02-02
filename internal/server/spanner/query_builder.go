@@ -98,7 +98,7 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 		for _, prop := range props {
 			params["prop"+strconv.Itoa(i)] = prop
 			objectFilter := ""
-			filterVal := addObjectValues(arc.Filter[prop])
+			filterVal := arc.Filter[prop]
 			if len(filterVal) > 0 {
 				objectFilter = fmt.Sprintf(statements.filterValue, i)
 				params["val"+strconv.Itoa(i)] = filterVal

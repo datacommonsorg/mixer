@@ -1,7 +1,7 @@
 		GRAPH DCGraph MATCH <-[filter0:Edge
 		WHERE
 			filter0.predicate = 'foo OR 1=1;'
-			AND filter0.object_id IN ('foo OR 1=1;','foo OR 1=1;:OG7012T2qe10jzYRBvG6dgUEx5fj7uIxT+RkGvxpn/U=')]-(n),
+			AND filter0.object_id IN ('foo OR 1=1;')]-(n),
 		(m:Node
 		WHERE
 			m.subject_id IN ('foo OR 1=1;'))<-[e:Edge

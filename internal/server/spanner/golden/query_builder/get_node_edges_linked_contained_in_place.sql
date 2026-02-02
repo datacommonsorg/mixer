@@ -1,7 +1,7 @@
 		GRAPH DCGraph MATCH <-[filter0:Edge
 		WHERE
 			filter0.predicate = 'typeOf'
-			AND filter0.object_id IN ('County','County:E2yH3sRpXO/vAw/W3Hwy+utigKeV/acLAXGXtg47eHM=')]-(n),
+			AND filter0.object_id IN ('County')]-(n),
 		(m:Node
 		WHERE
 			m.subject_id IN ('country/USA'))<-[e:Edge

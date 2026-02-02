@@ -1,11 +1,11 @@
 		GRAPH DCGraph MATCH <-[filter0:Edge
 		WHERE
 			filter0.predicate = 'farmInventoryType'
-			AND filter0.object_id IN ('Melon','Melon:mxuMmhySOejKGXRXFbMXdorKlNV934EOop6b21kOJGw=')]-(n),
+			AND filter0.object_id IN ('Melon')]-(n),
 		<-[filter1:Edge
 		WHERE
-			filter1.predicate = 'name'
-			AND filter1.object_id IN ('Area of Farm: Melon','Area of Farm: Me:xblU8pfFl5m+cg9tsR1EsW19+PLlpqfNhwYkFu0mgzE=')]-(n),
+			filter1.predicate = 'typeOf'
+			AND filter1.object_id IN ('StatisticalVariable')]-(n),
 		(m:Node
 		WHERE
 			m.subject_id IN ('Farm'))<-[e:Edge]-(n:Node)
