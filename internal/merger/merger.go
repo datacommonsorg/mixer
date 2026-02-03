@@ -20,6 +20,7 @@
 package merger
 
 import (
+	"log/slog"
 	"slices"
 	"sort"
 	"strconv"
@@ -566,16 +567,30 @@ func MergeMultiQueryResponse(allResp []*pb.QueryResponse, orderby string, asc bo
 	if len(allResp) == 1 {
 		return allResp[0], nil
 	}
-	merged := &pb.QueryResponse{
-		Header: allResp[0].GetHeader(),
-	}
+
+	merged := &pb.QueryResponse{}
 	for _, resp := range allResp {
+		if resp == nil {
+			continue
+		}
+		if merged.GetHeader() == nil {
+			merged.Header = resp.GetHeader()
+		}
 		merged.Rows = append(merged.Rows, resp.GetRows()...)
 	}
 
 	if i := slices.Index(merged.GetHeader(), orderby); i != -1 {
 		// Sort merged.Rows by the specified orderby column
 		sort.SliceStable(merged.Rows, func(j, k int) bool {
+			// Validate rows.
+			if merged.Rows[j] == nil || merged.Rows[k] == nil ||
+				len(merged.Rows[j].Cells) != len(merged.Rows[k].Cells) ||
+				i >= len(merged.Rows[j].Cells) || i >= len(merged.Rows[k].Cells) ||
+				merged.Rows[j].Cells[i] == nil || merged.Rows[k].Cells[i] == nil {
+				slog.Error("Invalid QueryResponseRow encountered during merging", "row 1", merged.Rows[j], "row 2", merged.Rows[k])
+				return false
+			}
+
 			v1 := merged.Rows[j].Cells[i].Value
 			v2 := merged.Rows[k].Cells[i].Value
 

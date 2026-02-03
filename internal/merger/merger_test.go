@@ -1847,6 +1847,7 @@ func TestMergeMultiQueryResponse(t *testing.T) {
 					Header: []string{"?a", "?b"},
 					Rows:   []*pb.QueryResponseRow{},
 				},
+				nil,
 				{
 					Header: []string{"?a", "?b"},
 					Rows: []*pb.QueryResponseRow{
