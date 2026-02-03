@@ -119,32 +119,35 @@ func parseResolvePropertyExpression(prop string) (string, string, []string, erro
 	// Parse property expression into Arcs.
 	arcs, err := v2.ParseProperty(prop)
 	if err != nil {
-		return "", "", nil,fmt.Errorf("invalid property expression: %v", err)
+		return "", "", nil, fmt.Errorf("Error parsing 'property' expression: %v", err)
 	}
 
 	if len(arcs) != 2 {
-		return "", "", nil, fmt.Errorf("invalid property for resolution: '%s'. Property expressions must consist of exactly two parts (incoming arc and outgoing arc), e.g., '<-description->dcid'. Found %d parts", prop, len(arcs))
+		return "", "", nil, fmt.Errorf("Invalid 'property' expression: must define exactly two parts (incoming and outgoing arcs). Found %d parts", len(arcs))
 	}
 
 	inArc := arcs[0]
 	outArc := arcs[1]
 	if inArc.Out || !outArc.Out {
-		return "", "", nil, fmt.Errorf("invalid property structure: '%s'. Resolution properties must start with an incoming arc ('<-') and end with an outgoing arc ('->')", prop)
+		return "", "", nil, fmt.Errorf("Invalid 'property' expression: must start with an incoming arc and end with an outgoing arc")
 	}
 
+	if inArc.SingleProp == "" {
+		return "", "", nil, fmt.Errorf("Invalid 'property' expression: input property must be provided")
+	}
 	if outArc.SingleProp == "" {
-		return "", "", nil, fmt.Errorf("invalid output property: '%s'. Resolution outputs must be 'dcid' (e.g., '<-description->dcid')", outArc.SingleProp)
+		return "", "", nil, fmt.Errorf("Invalid 'property' expression: output property must be provided")
 	}
 
 	var typeOfValues []string
 	// Validate filters
 	if len(inArc.Filter) > 0 {
 		if len(inArc.Filter) > 1 {
-			return "", "", nil, fmt.Errorf("invalid filters. Resolution only supports 'typeOf' filter")
+			return "", "", nil, fmt.Errorf("Invalid 'property' expression: only 'typeOf' filter is supported")
 		}
 		if filter, ok := inArc.Filter["typeOf"]; !ok {
 			for k := range inArc.Filter {
-				return "", "", nil, fmt.Errorf("invalid filter key: '%s'. Resolution only supports the 'typeOf' filter", k)
+				return "", "", nil, fmt.Errorf("Invalid 'property' expression: invalid filter key '%s'. Only 'typeOf' filter is supported", k)
 			}
 		} else {
 			typeOfValues = filter
@@ -164,7 +167,7 @@ func validateAndParseResolveInputs(in *pbv2.ResolveRequest) (string, string, []s
 		// Set default value; ignored if current call is to base dc
 		in.Target = ResolveTargetBaseAndCustom
 	default:
-		validationErrors = append(validationErrors, fmt.Sprintf("Invalid value for target, valid values are: '%s', '%s', '%s'",
+		validationErrors = append(validationErrors, fmt.Sprintf("Invalid 'target': valid values are '%s', '%s', '%s'",
 			ResolveTargetCustomOnly, ResolveTargetBaseOnly, ResolveTargetBaseAndCustom))
 	}
 
@@ -175,7 +178,7 @@ func validateAndParseResolveInputs(in *pbv2.ResolveRequest) (string, string, []s
 		// Set default value
 		in.Resolver = ResolveResolverPlace
 	default:
-		validationErrors = append(validationErrors, fmt.Sprintf("Invalid value for resolver, valid values are: '%s', '%s'",
+		validationErrors = append(validationErrors, fmt.Sprintf("Invalid 'resolver': valid values are '%s', '%s'",
 			ResolveResolverIndicator, ResolveResolverPlace))
 	}
 
@@ -194,29 +197,29 @@ func validateAndParseResolveInputs(in *pbv2.ResolveRequest) (string, string, []s
 		switch in.GetResolver() {
 		case ResolveResolverPlace:
 			// geoCoordinate and description only support dcid as outArc
-			if (inProp == DescriptionProperty || inProp == GeoCoordinateProperty ) && outProp != DcidProperty {
+			if (inProp == DescriptionProperty || inProp == GeoCoordinateProperty) && outProp != DcidProperty {
 				validationErrors = append(validationErrors, fmt.Sprintf(
-					"Invalid outArc property for '%s' resolution. Only '%s' is supported.",
+					"Invalid 'property' expression: given input property '%s', output property can only be '%s'",
 					inProp, DcidProperty))
 			}
 		case ResolveResolverIndicator:
 			// Indicator resolution only supports description as inArc.
 			if inProp != DescriptionProperty {
 				validationErrors = append(validationErrors, fmt.Sprintf(
-					"Invalid inArc property '%s' for indicator resolution. Supported properties are: '%s'",
-					inProp, DescriptionProperty))
+					"Invalid 'property' expression: indicator resolution only supports '%s' as input property",
+					DescriptionProperty))
 			}
 			// Indicator resolution only supports dcid as outArc.
 			if outProp != DcidProperty {
 				validationErrors = append(validationErrors, fmt.Sprintf(
-					"Invalid outArc property '%s' for indicator resolution. Supported properties are: '%s'",
-					outProp, DcidProperty))
+					"Invalid 'property' expression: indicator resolution only supports '%s' as output property",
+					DcidProperty))
 			}
 		}
 	}
 
 	if len(validationErrors) > 0 {
-		return "", "", nil, status.Errorf(codes.InvalidArgument, "Invalid inputs in request: %s", strings.Join(validationErrors, ". "))
+		return "", "", nil, status.Errorf(codes.InvalidArgument, "Invalid inputs in request. %s", strings.Join(validationErrors, ". "))
 	}
 
 	return inProp, outProp, typeOfValues, nil

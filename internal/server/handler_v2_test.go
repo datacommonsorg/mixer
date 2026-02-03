@@ -366,7 +366,7 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 				Target: "invalid",
 			},
 			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request: Invalid value for target, valid values are: 'custom_only', 'base_only', 'base_and_custom'",
+			wantErrMsg: "Invalid inputs in request. Invalid 'target': valid values are 'custom_only', 'base_only', 'base_and_custom'",
 		},
 		{
 			desc: "invalid resolver",
@@ -374,7 +374,7 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 				Resolver: "invalid",
 			},
 			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request: Invalid value for resolver, valid values are: 'indicator', 'place'",
+			wantErrMsg: "Invalid inputs in request. Invalid 'resolver': valid values are 'indicator', 'place'",
 		},
 		{
 			desc: "invalid target and resolver",
@@ -383,7 +383,7 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 				Resolver: "invalid_resolver",
 			},
 			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request: Invalid value for target, valid values are: 'custom_only', 'base_only', 'base_and_custom'. Invalid value for resolver, valid values are: 'indicator', 'place'",
+			wantErrMsg: "Invalid inputs in request. Invalid 'target': valid values are 'custom_only', 'base_only', 'base_and_custom'. Invalid 'resolver': valid values are 'indicator', 'place'",
 		},
 		{
 			desc: "invalid property expression",
@@ -391,7 +391,7 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 				Property: "invalid_prop",
 			},
 			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request: invalid property expression",
+			wantErrMsg: "Invalid inputs in request. Error parsing 'property' expression",
 		},
 		{
 			desc: "unknown property for place resolver",
@@ -410,7 +410,7 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 				Property: "<-geoCoordinate->dcid",
 			},
 			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request: Invalid inArc property 'geoCoordinate' for indicator resolution. Supported properties are: 'description'",
+			wantErrMsg: "Invalid inputs in request. Invalid 'property' expression: indicator resolution only supports 'description' as input property",
 		},
 		{
 			desc: "invalid property for indicator resolver (outProp)",
@@ -419,7 +419,7 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 				Property: "<-description->nutsCode",
 			},
 			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request: Invalid outArc property 'nutsCode' for indicator resolution. Supported properties are: 'dcid'",
+			wantErrMsg: "Invalid inputs in request. Invalid 'property' expression: indicator resolution only supports 'dcid' as output property",
 		},
 		{
 			desc: "invalid target + valid unknown property",
@@ -429,7 +429,7 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 				Property: "<-unknown->dcid",
 			},
 			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request: Invalid value for target, valid values are: 'custom_only', 'base_only', 'base_and_custom'",
+			wantErrMsg: "Invalid inputs in request. Invalid 'target': valid values are 'custom_only', 'base_only', 'base_and_custom'",
 		},
 		{
 			desc: "invalid output property for place (description)",
@@ -437,7 +437,7 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 				Property: "<-description->nutsCode",
 			},
 			wantErr:    true,
-			wantErrMsg: "Invalid outArc property for 'description' resolution. Only 'dcid' is supported.",
+			wantErrMsg: "Invalid inputs in request. Invalid 'property' expression: given input property 'description', output property can only be 'dcid'",
 		},
 	}
 
