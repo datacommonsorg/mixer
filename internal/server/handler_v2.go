@@ -115,6 +115,16 @@ func (s *Server) V2Resolve(
 	return v2Resp, nil
 }
 
+// parseResolvePropertyExpression parses and validates a property expression string.
+//
+// The expression generally takes the form "<-inProp->outProp", optionally with filters
+// like "<-inProp{typeOf:Type}->outProp".
+//
+// Returns:
+// - input property (string)
+// - output property (string)
+// - typeOf filter values ([]string, from the input property filter)
+// - error if validation fails
 func parseResolvePropertyExpression(prop string) (string, string, []string, error) {
 	// Parse property expression into Arcs.
 	arcs, err := v2.ParseProperty(prop)
@@ -157,6 +167,16 @@ func parseResolvePropertyExpression(prop string) (string, string, []string, erro
 	return inArc.SingleProp, outArc.SingleProp, typeOfValues, nil
 }
 
+// validateAndParseResolveInputs validates and parses the inputs for the resolve request.
+//
+// Validation logic:
+// - `target`: Must be one of "base_only", "custom_only", "base_and_custom". Defaults to "base_and_custom".
+// - `resolver`: Must be one of "place", "indicator". Defaults to "place".
+// - `property`:
+//   - Must match the format "<-inProp->outProp" (optionally with filters).
+//   - "inProp" and "outProp" validation depends on the resolver:
+//     - "place": if "inProp" is "description" or "geoCoordinate", "outProp" must be "dcid".
+//     - "indicator": "inProp" must be "description" and "outProp" must be "dcid".
 func validateAndParseResolveInputs(in *pbv2.ResolveRequest) (string, string, []string, error) {
 	var validationErrors []string
 
