@@ -257,13 +257,7 @@ func TestMergeLinkedGraph(t *testing.T) {
 			},
 		},
 	} {
-		var err error
-
 		got := mergeLinkedGraph(c.local, c.remote)
-		if err != nil {
-			t.Errorf("mergeLinkedGraph(%v, %v) = %s", c.local, c.remote, err)
-			continue
-		}
 		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
 			t.Errorf("mergeLinkedGraph(%v, %v) got diff: %s", c.local, c.remote, diff)
 		}
@@ -1834,6 +1828,97 @@ func TestMergeMultiNodeSearch(t *testing.T) {
 		}
 		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
 			t.Errorf("MergeMultiNodeSearch(%v) got diff: %s", c.allResp, diff)
+		}
+	}
+}
+
+func TestMergeMultiQueryResponse(t *testing.T) {
+	cmpOpts := cmp.Options{protocmp.Transform()}
+	for _, c := range []struct {
+		allResp []*pb.QueryResponse
+		orderby string
+		asc     bool
+		limit   int
+		want    *pb.QueryResponse
+	}{
+		{
+			[]*pb.QueryResponse{
+				{
+					Header: []string{"?a", "?b"},
+					Rows:   []*pb.QueryResponseRow{},
+				},
+				nil,
+				{
+					Header: []string{"?a", "?b"},
+					Rows: []*pb.QueryResponseRow{
+						{
+							Cells: []*pb.QueryResponseCell{
+								{Value: "A"},
+								{Value: "b3"},
+							},
+						},
+						{
+							Cells: []*pb.QueryResponseCell{
+								{Value: "B"},
+								{Value: "b1"},
+							},
+						},
+					},
+				},
+				{
+					Header: []string{"?a", "?b"},
+					Rows: []*pb.QueryResponseRow{
+
+						{
+							Cells: []*pb.QueryResponseCell{
+								{Value: "C"},
+								{Value: "b4"},
+							},
+						},
+
+						{
+							Cells: []*pb.QueryResponseCell{
+								{Value: "D"},
+								{Value: "b2"},
+							},
+						},
+					},
+				},
+			},
+			"?b",
+			false,
+			3,
+			&pb.QueryResponse{
+				Header: []string{"?a", "?b"},
+				Rows: []*pb.QueryResponseRow{
+					{
+						Cells: []*pb.QueryResponseCell{
+							{Value: "C"},
+							{Value: "b4"},
+						},
+					},
+					{
+						Cells: []*pb.QueryResponseCell{
+							{Value: "A"},
+							{Value: "b3"},
+						},
+					},
+					{
+						Cells: []*pb.QueryResponseCell{
+							{Value: "D"},
+							{Value: "b2"},
+						},
+					},
+				},
+			},
+		},
+	} {
+		got, err := MergeMultiQueryResponse(c.allResp, c.orderby, c.asc, c.limit)
+		if err != nil {
+			t.Errorf("MergeMultiQueryResponse(%v) got err: %s", c.allResp, err)
+		}
+		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
+			t.Errorf("MergeMultiQueryResponse(%v) got diff: %s", c.allResp, diff)
 		}
 	}
 }
