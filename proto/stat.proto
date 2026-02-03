@@ -292,14 +292,3 @@ message StatDate {
 message StatDateList {
   repeated StatDate stat_date = 1;
 }
-
-message GetStatDateWithinPlaceRequest {
-  string ancestor_place = 1;
-  string child_place_type = 2;
-  repeated string stat_vars = 3;
-}
-
-message GetStatDateWithinPlaceResponse {
-  // Keyed by stat var.
-  map<string, StatDateList> data = 1;
-}
