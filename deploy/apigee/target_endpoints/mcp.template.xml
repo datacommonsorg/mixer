@@ -16,6 +16,8 @@
         <Name>copy-key-param-to-header</Name>
       </Step>
       <Step>
+        <!-- Bypass API key check for health endpoint -->
+        <Condition>!(proxy.pathsuffix MatchesPath "/mcp/health")</Condition>
         <Name>verify-api-key-in-header</Name>
       </Step>
     </Request>
