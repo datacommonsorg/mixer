@@ -68,8 +68,6 @@ const (
 	Mixer_GetVersion_FullMethodName                   = "/datacommons.Mixer/GetVersion"
 	Mixer_GetPlaceStatVars_FullMethodName             = "/datacommons.Mixer/GetPlaceStatVars"
 	Mixer_GetEntityStatVarsUnionV1_FullMethodName     = "/datacommons.Mixer/GetEntityStatVarsUnionV1"
-	Mixer_GetPlaceStatDateWithinPlace_FullMethodName  = "/datacommons.Mixer/GetPlaceStatDateWithinPlace"
-	Mixer_GetStatDateWithinPlace_FullMethodName       = "/datacommons.Mixer/GetStatDateWithinPlace"
 	Mixer_QueryV1_FullMethodName                      = "/datacommons.Mixer/QueryV1"
 	Mixer_Properties_FullMethodName                   = "/datacommons.Mixer/Properties"
 	Mixer_BulkProperties_FullMethodName               = "/datacommons.Mixer/BulkProperties"
@@ -162,13 +160,6 @@ type MixerClient interface {
 	// Given a list of entity dcids, returns the union of available
 	// statistical variables for the entities.
 	GetEntityStatVarsUnionV1(ctx context.Context, in *proto.GetEntityStatVarsUnionRequest, opts ...grpc.CallOption) (*proto.GetEntityStatVarsUnionResponse, error)
-	// Given ancestor place, child place type and stat vars, return the dates that
-	// have data for each stat var across all child places.
-	// [!! Deprecated] in favor of GetStatDateWithinPlace
-	GetPlaceStatDateWithinPlace(ctx context.Context, in *proto.GetPlaceStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*proto.GetPlaceStatDateWithinPlaceResponse, error)
-	// Given ancestor place, child place type and stat vars, return the dates and
-	// place count for each source
-	GetStatDateWithinPlace(ctx context.Context, in *proto.GetStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*proto.GetStatDateWithinPlaceResponse, error)
 	// Query DataCommons Graph with Sparql.
 	QueryV1(ctx context.Context, in *proto.QueryRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error)
 	Properties(ctx context.Context, in *v1.PropertiesRequest, opts ...grpc.CallOption) (*v1.PropertiesResponse, error)
@@ -452,24 +443,6 @@ func (c *mixerClient) GetPlaceStatVars(ctx context.Context, in *proto.GetPlaceSt
 func (c *mixerClient) GetEntityStatVarsUnionV1(ctx context.Context, in *proto.GetEntityStatVarsUnionRequest, opts ...grpc.CallOption) (*proto.GetEntityStatVarsUnionResponse, error) {
 	out := new(proto.GetEntityStatVarsUnionResponse)
 	err := c.cc.Invoke(ctx, Mixer_GetEntityStatVarsUnionV1_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) GetPlaceStatDateWithinPlace(ctx context.Context, in *proto.GetPlaceStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*proto.GetPlaceStatDateWithinPlaceResponse, error) {
-	out := new(proto.GetPlaceStatDateWithinPlaceResponse)
-	err := c.cc.Invoke(ctx, Mixer_GetPlaceStatDateWithinPlace_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) GetStatDateWithinPlace(ctx context.Context, in *proto.GetStatDateWithinPlaceRequest, opts ...grpc.CallOption) (*proto.GetStatDateWithinPlaceResponse, error) {
-	out := new(proto.GetStatDateWithinPlaceResponse)
-	err := c.cc.Invoke(ctx, Mixer_GetStatDateWithinPlace_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -870,13 +843,6 @@ type MixerServer interface {
 	// Given a list of entity dcids, returns the union of available
 	// statistical variables for the entities.
 	GetEntityStatVarsUnionV1(context.Context, *proto.GetEntityStatVarsUnionRequest) (*proto.GetEntityStatVarsUnionResponse, error)
-	// Given ancestor place, child place type and stat vars, return the dates that
-	// have data for each stat var across all child places.
-	// [!! Deprecated] in favor of GetStatDateWithinPlace
-	GetPlaceStatDateWithinPlace(context.Context, *proto.GetPlaceStatDateWithinPlaceRequest) (*proto.GetPlaceStatDateWithinPlaceResponse, error)
-	// Given ancestor place, child place type and stat vars, return the dates and
-	// place count for each source
-	GetStatDateWithinPlace(context.Context, *proto.GetStatDateWithinPlaceRequest) (*proto.GetStatDateWithinPlaceResponse, error)
 	// Query DataCommons Graph with Sparql.
 	QueryV1(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error)
 	Properties(context.Context, *v1.PropertiesRequest) (*v1.PropertiesResponse, error)
@@ -1011,12 +977,6 @@ func (UnimplementedMixerServer) GetPlaceStatVars(context.Context, *proto.GetPlac
 }
 func (UnimplementedMixerServer) GetEntityStatVarsUnionV1(context.Context, *proto.GetEntityStatVarsUnionRequest) (*proto.GetEntityStatVarsUnionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetEntityStatVarsUnionV1 not implemented")
-}
-func (UnimplementedMixerServer) GetPlaceStatDateWithinPlace(context.Context, *proto.GetPlaceStatDateWithinPlaceRequest) (*proto.GetPlaceStatDateWithinPlaceResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetPlaceStatDateWithinPlace not implemented")
-}
-func (UnimplementedMixerServer) GetStatDateWithinPlace(context.Context, *proto.GetStatDateWithinPlaceRequest) (*proto.GetStatDateWithinPlaceResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetStatDateWithinPlace not implemented")
 }
 func (UnimplementedMixerServer) QueryV1(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method QueryV1 not implemented")
@@ -1590,42 +1550,6 @@ func _Mixer_GetEntityStatVarsUnionV1_Handler(srv interface{}, ctx context.Contex
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).GetEntityStatVarsUnionV1(ctx, req.(*proto.GetEntityStatVarsUnionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_GetPlaceStatDateWithinPlace_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.GetPlaceStatDateWithinPlaceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).GetPlaceStatDateWithinPlace(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_GetPlaceStatDateWithinPlace_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetPlaceStatDateWithinPlace(ctx, req.(*proto.GetPlaceStatDateWithinPlaceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_GetStatDateWithinPlace_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.GetStatDateWithinPlaceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).GetStatDateWithinPlace(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_GetStatDateWithinPlace_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).GetStatDateWithinPlace(ctx, req.(*proto.GetStatDateWithinPlaceRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2420,14 +2344,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetEntityStatVarsUnionV1",
 			Handler:    _Mixer_GetEntityStatVarsUnionV1_Handler,
-		},
-		{
-			MethodName: "GetPlaceStatDateWithinPlace",
-			Handler:    _Mixer_GetPlaceStatDateWithinPlace_Handler,
-		},
-		{
-			MethodName: "GetStatDateWithinPlace",
-			Handler:    _Mixer_GetStatDateWithinPlace_Handler,
 		},
 		{
 			MethodName: "QueryV1",
