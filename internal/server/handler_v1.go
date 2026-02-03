@@ -495,13 +495,6 @@ func (s *Server) DerivedObservationsSeries(
 	return observations.DerivedSeries(ctx, in, s.store)
 }
 
-// EventCollection implements API for mixer.EventCollection.
-func (s *Server) EventCollection(
-	ctx context.Context, in *pbv1.EventCollectionRequest,
-) (*pbv1.EventCollectionResponse, error) {
-	return event.Collection(ctx, in, s.store)
-}
-
 // EventCollectionDate implements API for mixer.EventCollectionDate.
 func (s *Server) EventCollectionDate(
 	ctx context.Context, in *pbv1.EventCollectionDateRequest,
