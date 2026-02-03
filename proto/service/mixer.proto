@@ -82,6 +82,13 @@ service Mixer {
     };
   }
 
+  rpc V3Sparql(SparqlRequest) returns (QueryResponse) {
+    option (google.api.http) = {
+      get : "/v3/sparql"
+      additional_bindings : {post : "/v3/sparql" body : "*"}
+    };
+  }
+
   // ======================  V2   V2   V2   V2  ======================
 
   rpc V2Sparql(SparqlRequest) returns (QueryResponse) {
