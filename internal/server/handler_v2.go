@@ -177,6 +177,12 @@ func parseResolvePropertyExpression(prop string) (string, string, []string, erro
 //   - "inProp" and "outProp" validation depends on the resolver:
 //     - "place": if "inProp" is "description" or "geoCoordinate", "outProp" must be "dcid".
 //     - "indicator": "inProp" must be "description" and "outProp" must be "dcid".
+//
+// Returns:
+// - input property (string)
+// - output property (string)
+// - typeOf filter values ([]string, from the input property filter)
+// - error if validation fails
 func validateAndParseResolveInputs(in *pbv2.ResolveRequest) (string, string, []string, error) {
 	var validationErrors []string
 
