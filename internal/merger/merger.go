@@ -582,7 +582,7 @@ func MergeMultiQueryResponse(allResp []*pb.QueryResponse, orderby string, asc bo
 	if i := slices.Index(merged.GetHeader(), orderby); i != -1 {
 		// Sort merged.Rows by the specified orderby column
 		sort.SliceStable(merged.Rows, func(j, k int) bool {
-			// Validate rows.
+			// Validate rows
 			if merged.Rows[j] == nil || merged.Rows[k] == nil ||
 				len(merged.Rows[j].Cells) != len(merged.Rows[k].Cells) ||
 				i >= len(merged.Rows[j].Cells) || i >= len(merged.Rows[k].Cells) ||
