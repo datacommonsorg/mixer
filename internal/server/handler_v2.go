@@ -129,35 +129,35 @@ func parseResolvePropertyExpression(prop string) (string, string, []string, erro
 	// Parse property expression into Arcs.
 	arcs, err := v2.ParseProperty(prop)
 	if err != nil {
-		return "", "", nil, fmt.Errorf("Error parsing 'property' expression: %v", err)
+		return "", "", nil, err
 	}
 
 	if len(arcs) != 2 {
-		return "", "", nil, fmt.Errorf("Invalid 'property' expression: must define exactly two parts (incoming and outgoing arcs). Found %d parts", len(arcs))
+		return "", "", nil, fmt.Errorf("must define exactly two parts (incoming and outgoing arcs). Found %d parts", len(arcs))
 	}
 
 	inArc := arcs[0]
 	outArc := arcs[1]
 	if inArc.Out || !outArc.Out {
-		return "", "", nil, fmt.Errorf("Invalid 'property' expression: must start with an incoming arc and end with an outgoing arc")
+		return "", "", nil, fmt.Errorf("must start with an incoming arc and end with an outgoing arc")
 	}
 
 	if inArc.SingleProp == "" {
-		return "", "", nil, fmt.Errorf("Invalid 'property' expression: input property must be provided")
+		return "", "", nil, fmt.Errorf("input property must be provided")
 	}
 	if outArc.SingleProp == "" {
-		return "", "", nil, fmt.Errorf("Invalid 'property' expression: output property must be provided")
+		return "", "", nil, fmt.Errorf("output property must be provided")
 	}
 
 	var typeOfValues []string
 	// Validate filters
 	if len(inArc.Filter) > 0 {
 		if len(inArc.Filter) > 1 {
-			return "", "", nil, fmt.Errorf("Invalid 'property' expression: only 'typeOf' filter is supported")
+			return "", "", nil, fmt.Errorf("only '%s' filter is supported", TypeOfProperty)
 		}
-		if filter, ok := inArc.Filter["typeOf"]; !ok {
+		if filter, ok := inArc.Filter[TypeOfProperty]; !ok {
 			for k := range inArc.Filter {
-				return "", "", nil, fmt.Errorf("Invalid 'property' expression: invalid filter key '%s'. Only 'typeOf' filter is supported", k)
+				return "", "", nil, fmt.Errorf("invalid filter key '%s'. Only '%s' filter is supported", k, TypeOfProperty)
 			}
 		} else {
 			typeOfValues = filter
@@ -215,7 +215,7 @@ func validateAndParseResolveInputs(in *pbv2.ResolveRequest) (string, string, []s
 
 	inProp, outProp, typeOfValues,err := parseResolvePropertyExpression(in.GetProperty())
 	if err != nil {
-		validationErrors = append(validationErrors, err.Error())
+		validationErrors = append(validationErrors, fmt.Sprintf("Invalid 'property' expression: %v", err))
 	}
 
 	// Validate property expression based on resolver

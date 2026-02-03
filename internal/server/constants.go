@@ -36,4 +36,6 @@ const (
 	DescriptionProperty = "description"
 	// GeoCoordinateProperty is the property name for geoCoordinate.
 	GeoCoordinateProperty = "geoCoordinate"
+	// TypeOfProperty is the property name for typeOf.
+	TypeOfProperty = "typeOf"
 )

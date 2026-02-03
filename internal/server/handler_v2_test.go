@@ -391,7 +391,7 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 				Property: "invalid_prop",
 			},
 			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Error parsing 'property' expression",
+			wantErrMsg: "Invalid inputs in request. Invalid 'property' expression",
 		},
 		{
 			desc: "unknown property for place resolver",
