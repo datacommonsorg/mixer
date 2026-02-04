@@ -91,7 +91,6 @@ const (
 	Mixer_ObservationsSeries_FullMethodName           = "/datacommons.Mixer/ObservationsSeries"
 	Mixer_BulkObservationsSeries_FullMethodName       = "/datacommons.Mixer/BulkObservationsSeries"
 	Mixer_BulkObservationsSeriesLinked_FullMethodName = "/datacommons.Mixer/BulkObservationsSeriesLinked"
-	Mixer_DerivedObservationsSeries_FullMethodName    = "/datacommons.Mixer/DerivedObservationsSeries"
 	Mixer_BulkObservationDatesLinked_FullMethodName   = "/datacommons.Mixer/BulkObservationDatesLinked"
 	Mixer_BioPage_FullMethodName                      = "/datacommons.Mixer/BioPage"
 	Mixer_PlacePage_FullMethodName                    = "/datacommons.Mixer/PlacePage"
@@ -184,7 +183,6 @@ type MixerClient interface {
 	ObservationsSeries(ctx context.Context, in *v1.ObservationsSeriesRequest, opts ...grpc.CallOption) (*v1.ObservationsSeriesResponse, error)
 	BulkObservationsSeries(ctx context.Context, in *v1.BulkObservationsSeriesRequest, opts ...grpc.CallOption) (*v1.BulkObservationsSeriesResponse, error)
 	BulkObservationsSeriesLinked(ctx context.Context, in *v1.BulkObservationsSeriesLinkedRequest, opts ...grpc.CallOption) (*v1.BulkObservationsSeriesResponse, error)
-	DerivedObservationsSeries(ctx context.Context, in *v1.DerivedObservationsSeriesRequest, opts ...grpc.CallOption) (*v1.DerivedObservationsSeriesResponse, error)
 	BulkObservationDatesLinked(ctx context.Context, in *v1.BulkObservationDatesLinkedRequest, opts ...grpc.CallOption) (*v1.BulkObservationDatesLinkedResponse, error)
 	BioPage(ctx context.Context, in *v1.BioPageRequest, opts ...grpc.CallOption) (*proto.GraphNodes, error)
 	PlacePage(ctx context.Context, in *v1.PlacePageRequest, opts ...grpc.CallOption) (*v1.PlacePageResponse, error)
@@ -656,15 +654,6 @@ func (c *mixerClient) BulkObservationsSeriesLinked(ctx context.Context, in *v1.B
 	return out, nil
 }
 
-func (c *mixerClient) DerivedObservationsSeries(ctx context.Context, in *v1.DerivedObservationsSeriesRequest, opts ...grpc.CallOption) (*v1.DerivedObservationsSeriesResponse, error) {
-	out := new(v1.DerivedObservationsSeriesResponse)
-	err := c.cc.Invoke(ctx, Mixer_DerivedObservationsSeries_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *mixerClient) BulkObservationDatesLinked(ctx context.Context, in *v1.BulkObservationDatesLinkedRequest, opts ...grpc.CallOption) (*v1.BulkObservationDatesLinkedResponse, error) {
 	out := new(v1.BulkObservationDatesLinkedResponse)
 	err := c.cc.Invoke(ctx, Mixer_BulkObservationDatesLinked_FullMethodName, in, out, opts...)
@@ -867,7 +856,6 @@ type MixerServer interface {
 	ObservationsSeries(context.Context, *v1.ObservationsSeriesRequest) (*v1.ObservationsSeriesResponse, error)
 	BulkObservationsSeries(context.Context, *v1.BulkObservationsSeriesRequest) (*v1.BulkObservationsSeriesResponse, error)
 	BulkObservationsSeriesLinked(context.Context, *v1.BulkObservationsSeriesLinkedRequest) (*v1.BulkObservationsSeriesResponse, error)
-	DerivedObservationsSeries(context.Context, *v1.DerivedObservationsSeriesRequest) (*v1.DerivedObservationsSeriesResponse, error)
 	BulkObservationDatesLinked(context.Context, *v1.BulkObservationDatesLinkedRequest) (*v1.BulkObservationDatesLinkedResponse, error)
 	BioPage(context.Context, *v1.BioPageRequest) (*proto.GraphNodes, error)
 	PlacePage(context.Context, *v1.PlacePageRequest) (*v1.PlacePageResponse, error)
@@ -1046,9 +1034,6 @@ func (UnimplementedMixerServer) BulkObservationsSeries(context.Context, *v1.Bulk
 }
 func (UnimplementedMixerServer) BulkObservationsSeriesLinked(context.Context, *v1.BulkObservationsSeriesLinkedRequest) (*v1.BulkObservationsSeriesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkObservationsSeriesLinked not implemented")
-}
-func (UnimplementedMixerServer) DerivedObservationsSeries(context.Context, *v1.DerivedObservationsSeriesRequest) (*v1.DerivedObservationsSeriesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DerivedObservationsSeries not implemented")
 }
 func (UnimplementedMixerServer) BulkObservationDatesLinked(context.Context, *v1.BulkObservationDatesLinkedRequest) (*v1.BulkObservationDatesLinkedResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkObservationDatesLinked not implemented")
@@ -1968,24 +1953,6 @@ func _Mixer_BulkObservationsSeriesLinked_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mixer_DerivedObservationsSeries_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(v1.DerivedObservationsSeriesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).DerivedObservationsSeries(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_DerivedObservationsSeries_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).DerivedObservationsSeries(ctx, req.(*v1.DerivedObservationsSeriesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _Mixer_BulkObservationDatesLinked_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(v1.BulkObservationDatesLinkedRequest)
 	if err := dec(in); err != nil {
@@ -2436,10 +2403,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "BulkObservationsSeriesLinked",
 			Handler:    _Mixer_BulkObservationsSeriesLinked_Handler,
-		},
-		{
-			MethodName: "DerivedObservationsSeries",
-			Handler:    _Mixer_DerivedObservationsSeries_Handler,
 		},
 		{
 			MethodName: "BulkObservationDatesLinked",

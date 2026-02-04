@@ -488,13 +488,6 @@ func (s *Server) VariableAncestors(
 	return localResp, nil
 }
 
-// DerivedObservationsSeries implements API for mixer.ObservationsSeries.
-func (s *Server) DerivedObservationsSeries(
-	ctx context.Context, in *pbv1.DerivedObservationsSeriesRequest,
-) (*pbv1.DerivedObservationsSeriesResponse, error) {
-	return observations.DerivedSeries(ctx, in, s.store)
-}
-
 // EventCollectionDate implements API for mixer.EventCollectionDate.
 func (s *Server) EventCollectionDate(
 	ctx context.Context, in *pbv1.EventCollectionDateRequest,
