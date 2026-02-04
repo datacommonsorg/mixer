@@ -18,6 +18,7 @@ package server
 import (
 	"context"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 )
@@ -48,4 +49,11 @@ func (s *Server) V3Resolve(ctx context.Context, in *pbv2.ResolveRequest) (
 	*pbv2.ResolveResponse, error,
 ) {
 	return s.dispatcher.Resolve(ctx, in)
+}
+
+// V3Sparql implements API for mixer.V3Sparql.
+func (s *Server) V3Sparql(ctx context.Context, in *pb.SparqlRequest) (
+	*pb.QueryResponse, error,
+) {
+	return s.dispatcher.Sparql(ctx, in)
 }

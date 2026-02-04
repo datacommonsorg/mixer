@@ -18,6 +18,7 @@ import (
 	"context"
 	"fmt"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
@@ -113,4 +114,10 @@ func (sds *SQLDataSource) NodeSearch(ctx context.Context, req *pbv2.NodeSearchRe
 // However, resolve is not currently supported for SQL data sources so it returns an empty response.
 func (sds *SQLDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
 	return &pbv2.ResolveResponse{}, nil
+}
+
+// Sparql executes a SPARQL query against the data source.
+// However, Sparql is not currently supported for SQL data sources so it returns an empty response.
+func (sds *SQLDataSource) Sparql(ctx context.Context, req *pb.SparqlRequest) (*pb.QueryResponse, error) {
+	return &pb.QueryResponse{}, nil
 }

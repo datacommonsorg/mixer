@@ -18,6 +18,7 @@ import (
 	"context"
 	"fmt"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 )
@@ -56,4 +57,8 @@ func (rds *RemoteDataSource) NodeSearch(ctx context.Context, req *pbv2.NodeSearc
 
 func (rds *RemoteDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
 	return rds.client.Resolve(req)
+}
+
+func (rds *RemoteDataSource) Sparql(ctx context.Context, req *pb.SparqlRequest) (*pb.QueryResponse, error) {
+	return rds.client.Sparql(req)
 }
