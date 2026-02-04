@@ -170,6 +170,7 @@ func (ds *DataSources) Sparql(ctx context.Context, in *pb.SparqlRequest) (*pb.Qu
 		return nil, err
 	}
 
+	// TODO: Collect common code pattern into shared function.
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	dsRespChan := []chan *pb.QueryResponse{}
 
