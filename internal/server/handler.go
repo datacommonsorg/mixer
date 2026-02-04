@@ -237,6 +237,7 @@ func (s *Server) GetVersion(
 		GitHash:           os.Getenv("MIXER_HASH"),
 		RemoteMixerDomain: s.metadata.RemoteMixerDomain,
 		FeatureFlags:      string(featureFlagsJson),
+		DataSourceIds:     s.dispatcher.GetSources(),
 	}, nil
 }
 
