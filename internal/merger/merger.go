@@ -20,6 +20,8 @@
 package merger
 
 import (
+	"log/slog"
+	"slices"
 	"sort"
 	"strconv"
 
@@ -70,12 +72,12 @@ func MergeResolve(main, aux *pbv2.ResolveResponse) *pbv2.ResolveResponse {
 			main.Entities = append(main.Entities, e)
 		}
 	}
-	
+
 	// Sort candidates by score
 	for _, e := range main.Entities {
 		sortCandidatesByScore(e.Candidates)
 	}
-	
+
 	return main
 }
 
@@ -83,7 +85,7 @@ func sortCandidatesByScore(candidates []*pbv2.ResolveResponse_Entity_Candidate) 
 	sort.SliceStable(candidates, func(i, j int) bool {
 		scoreI, errI := strconv.ParseFloat(candidates[i].Metadata["score"], 64)
 		scoreJ, errJ := strconv.ParseFloat(candidates[j].Metadata["score"], 64)
-		
+
 		// If both have valid scores, sort descending
 		if errI == nil && errJ == nil {
 			return scoreI > scoreJ
@@ -552,6 +554,55 @@ func MergeMultiNodeSearch(allResp []*pbv2.NodeSearchResponse) (*pbv2.NodeSearchR
 
 		// Update responses with the remaining sub-responses
 		allResp = newResp
+	}
+
+	return merged, nil
+}
+
+// Merges multiple QueryResponses.
+func MergeMultiQueryResponse(allResp []*pb.QueryResponse, orderby string, asc bool, limit int) (*pb.QueryResponse, error) {
+	if len(allResp) == 0 {
+		return &pb.QueryResponse{}, nil
+	}
+	if len(allResp) == 1 {
+		return allResp[0], nil
+	}
+
+	merged := &pb.QueryResponse{}
+	for _, resp := range allResp {
+		if resp == nil {
+			continue
+		}
+		if merged.GetHeader() == nil {
+			merged.Header = resp.GetHeader()
+		}
+		merged.Rows = append(merged.Rows, resp.GetRows()...)
+	}
+
+	if i := slices.Index(merged.GetHeader(), orderby); i != -1 {
+		// Sort merged.Rows by the specified orderby column
+		sort.SliceStable(merged.Rows, func(j, k int) bool {
+			// Validate rows
+			if merged.Rows[j] == nil || merged.Rows[k] == nil ||
+				len(merged.Rows[j].Cells) != len(merged.Rows[k].Cells) ||
+				i >= len(merged.Rows[j].Cells) || i >= len(merged.Rows[k].Cells) ||
+				merged.Rows[j].Cells[i] == nil || merged.Rows[k].Cells[i] == nil {
+				slog.Error("Invalid QueryResponseRow encountered during merging", "row 1", merged.Rows[j], "row 2", merged.Rows[k])
+				return false
+			}
+
+			v1 := merged.Rows[j].Cells[i].Value
+			v2 := merged.Rows[k].Cells[i].Value
+
+			if asc {
+				return v1 < v2
+			}
+			return v1 > v2
+		})
+	}
+
+	if limit > 0 && len(merged.Rows) > limit {
+		merged.Rows = merged.Rows[:limit]
 	}
 
 	return merged, nil

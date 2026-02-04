@@ -79,14 +79,6 @@ func (s *Server) GetStatAll(ctx context.Context, in *pb.GetStatAllRequest,
 	return stat.GetStatAll(ctx, in, s.store)
 }
 
-// GetStatDateWithinPlace implements API for Mixer.GetStatDateWithinPlace.
-// Endpoint: /v1/stat/date/within-place
-func (s *Server) GetStatDateWithinPlace(
-	ctx context.Context, in *pb.GetStatDateWithinPlaceRequest,
-) (*pb.GetStatDateWithinPlaceResponse, error) {
-	return stat.GetStatDateWithinPlace(ctx, in, s.store)
-}
-
 // GetPlacesIn implements API for Mixer.GetPlacesIn.
 func (s *Server) GetPlacesIn(ctx context.Context, in *pb.GetPlacesInRequest,
 ) (*pb.GetPlacesInResponse, error) {
@@ -152,14 +144,6 @@ func (s *Server) GetLocationsRankings(
 		return remoteResp, nil
 	}
 	return localResp, nil
-}
-
-// GetPlaceStatDateWithinPlace implements API for Mixer.GetPlaceStatDateWithinPlace.
-// Endpoint: /place/stat/date/within-place
-func (s *Server) GetPlaceStatDateWithinPlace(
-	ctx context.Context, in *pb.GetPlaceStatDateWithinPlaceRequest,
-) (*pb.GetPlaceStatDateWithinPlaceResponse, error) {
-	return place.GetPlaceStatDateWithinPlace(ctx, in, s.store)
 }
 
 // GetPlaceStatVars implements API for Mixer.GetPlaceStatVars.

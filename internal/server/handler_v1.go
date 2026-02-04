@@ -25,7 +25,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/statvar/hierarchy"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/search"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
-	"github.com/datacommonsorg/mixer/internal/server/v1/event"
 	"github.com/datacommonsorg/mixer/internal/server/v1/info"
 	"github.com/datacommonsorg/mixer/internal/server/v1/observationdates"
 	"github.com/datacommonsorg/mixer/internal/server/v1/observations"
@@ -493,13 +492,6 @@ func (s *Server) DerivedObservationsSeries(
 	ctx context.Context, in *pbv1.DerivedObservationsSeriesRequest,
 ) (*pbv1.DerivedObservationsSeriesResponse, error) {
 	return observations.DerivedSeries(ctx, in, s.store)
-}
-
-// EventCollection implements API for mixer.EventCollection.
-func (s *Server) EventCollection(
-	ctx context.Context, in *pbv1.EventCollectionRequest,
-) (*pbv1.EventCollectionResponse, error) {
-	return event.Collection(ctx, in, s.store)
 }
 
 // RecognizePlaces implements API for Mixer.RecognizePlaces.

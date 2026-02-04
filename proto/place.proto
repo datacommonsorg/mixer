@@ -26,7 +26,6 @@
 //    /place/stat-vars
 //    /place/metadata
 //    /v1/place/stat-vars/union
-//    /place/stat/date/within-place
 // ========================================
 
 syntax = "proto3";
@@ -138,17 +137,6 @@ message GetEntityStatVarsUnionRequest {
 }
 // Response message for GetEntityStatVarsUnionV1 API.
 message GetEntityStatVarsUnionResponse { repeated string stat_vars = 1; }
-
-message GetPlaceStatDateWithinPlaceRequest {
-  string ancestor_place = 1;
-  string place_type = 2;
-  repeated string stat_vars = 3;
-}
-
-message GetPlaceStatDateWithinPlaceResponse {
-  // Keyed by statVar.
-  map<string, DateList> data = 1;
-}
 
 // Metadata of a place. This is the raw cache data.
 message PlaceMetadataCache {

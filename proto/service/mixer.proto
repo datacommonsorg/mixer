@@ -35,7 +35,6 @@ import "stat.proto";
 import "stat_var.proto";
 import "recon.proto";
 
-import "v1/event.proto";
 import "v1/properties.proto";
 import "v1/property_values.proto";
 import "v1/variable.proto";
@@ -259,27 +258,6 @@ service Mixer {
     option (google.api.http) = {
       get : "/v1/place/stat-vars/union"
       additional_bindings : {post : "/v1/place/stat-vars/union" body : "*"}
-    };
-  }
-
-  // Given ancestor place, child place type and stat vars, return the dates that
-  // have data for each stat var across all child places.
-  // [!! Deprecated] in favor of GetStatDateWithinPlace
-  rpc GetPlaceStatDateWithinPlace(GetPlaceStatDateWithinPlaceRequest)
-      returns (GetPlaceStatDateWithinPlaceResponse) {
-    option (google.api.http) = {
-      get : "/place/stat/date/within-place"
-      additional_bindings : {post : "/place/stat/date/within-place" body : "*"}
-    };
-  }
-
-  // Given ancestor place, child place type and stat vars, return the dates and
-  // place count for each source
-  rpc GetStatDateWithinPlace(GetStatDateWithinPlaceRequest)
-      returns (GetStatDateWithinPlaceResponse) {
-    option (google.api.http) = {
-      get : "/v1/stat/date/within-place"
-      additional_bindings : {post : "/v1/stat/date/within-place" body : "*"}
     };
   }
 
@@ -526,19 +504,6 @@ service Mixer {
     option (google.api.http) = {
       get : "/v1/variable/search"
       additional_bindings : {post : "/v1/variable/search" body : "*"}
-    };
-  }
-
-  // Get event collection for {eventType, affectedPlaceDcid, date}.
-  // NOTE:
-  // - The affectedPlaceDcid is only for top-level places:
-  //   Earth, continent, country, state, adminArea1.
-  // - The date format should be: YYYY-MM.
-  rpc EventCollection(datacommons.v1.EventCollectionRequest)
-      returns (datacommons.v1.EventCollectionResponse) {
-    option (google.api.http) = {
-      get : "/v1/events"
-      additional_bindings : {post : "/v1/events" body : "*"}
     };
   }
 
