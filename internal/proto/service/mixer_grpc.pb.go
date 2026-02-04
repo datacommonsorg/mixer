@@ -47,6 +47,7 @@ const (
 	Mixer_V3Observation_FullMethodName                = "/datacommons.Mixer/V3Observation"
 	Mixer_V3NodeSearch_FullMethodName                 = "/datacommons.Mixer/V3NodeSearch"
 	Mixer_V3Resolve_FullMethodName                    = "/datacommons.Mixer/V3Resolve"
+	Mixer_V3Sparql_FullMethodName                     = "/datacommons.Mixer/V3Sparql"
 	Mixer_V2Sparql_FullMethodName                     = "/datacommons.Mixer/V2Sparql"
 	Mixer_V2Resolve_FullMethodName                    = "/datacommons.Mixer/V2Resolve"
 	Mixer_V2Node_FullMethodName                       = "/datacommons.Mixer/V2Node"
@@ -115,6 +116,7 @@ type MixerClient interface {
 	V3Observation(ctx context.Context, in *v2.ObservationRequest, opts ...grpc.CallOption) (*v2.ObservationResponse, error)
 	V3NodeSearch(ctx context.Context, in *v2.NodeSearchRequest, opts ...grpc.CallOption) (*v2.NodeSearchResponse, error)
 	V3Resolve(ctx context.Context, in *v2.ResolveRequest, opts ...grpc.CallOption) (*v2.ResolveResponse, error)
+	V3Sparql(ctx context.Context, in *proto.SparqlRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error)
 	V2Sparql(ctx context.Context, in *proto.SparqlRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error)
 	V2Resolve(ctx context.Context, in *v2.ResolveRequest, opts ...grpc.CallOption) (*v2.ResolveResponse, error)
 	V2Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error)
@@ -247,6 +249,15 @@ func (c *mixerClient) V3NodeSearch(ctx context.Context, in *v2.NodeSearchRequest
 func (c *mixerClient) V3Resolve(ctx context.Context, in *v2.ResolveRequest, opts ...grpc.CallOption) (*v2.ResolveResponse, error) {
 	out := new(v2.ResolveResponse)
 	err := c.cc.Invoke(ctx, Mixer_V3Resolve_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) V3Sparql(ctx context.Context, in *proto.SparqlRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error) {
+	out := new(proto.QueryResponse)
+	err := c.cc.Invoke(ctx, Mixer_V3Sparql_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -783,6 +794,7 @@ type MixerServer interface {
 	V3Observation(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error)
 	V3NodeSearch(context.Context, *v2.NodeSearchRequest) (*v2.NodeSearchResponse, error)
 	V3Resolve(context.Context, *v2.ResolveRequest) (*v2.ResolveResponse, error)
+	V3Sparql(context.Context, *proto.SparqlRequest) (*proto.QueryResponse, error)
 	V2Sparql(context.Context, *proto.SparqlRequest) (*proto.QueryResponse, error)
 	V2Resolve(context.Context, *v2.ResolveRequest) (*v2.ResolveResponse, error)
 	V2Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error)
@@ -892,6 +904,9 @@ func (UnimplementedMixerServer) V3NodeSearch(context.Context, *v2.NodeSearchRequ
 }
 func (UnimplementedMixerServer) V3Resolve(context.Context, *v2.ResolveRequest) (*v2.ResolveResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V3Resolve not implemented")
+}
+func (UnimplementedMixerServer) V3Sparql(context.Context, *proto.SparqlRequest) (*proto.QueryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method V3Sparql not implemented")
 }
 func (UnimplementedMixerServer) V2Sparql(context.Context, *proto.SparqlRequest) (*proto.QueryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V2Sparql not implemented")
@@ -1147,6 +1162,24 @@ func _Mixer_V3Resolve_Handler(srv interface{}, ctx context.Context, dec func(int
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).V3Resolve(ctx, req.(*v2.ResolveRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_V3Sparql_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(proto.SparqlRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).V3Sparql(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_V3Sparql_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).V3Sparql(ctx, req.(*proto.SparqlRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2217,6 +2250,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "V3Resolve",
 			Handler:    _Mixer_V3Resolve_Handler,
+		},
+		{
+			MethodName: "V3Sparql",
+			Handler:    _Mixer_V3Sparql_Handler,
 		},
 		{
 			MethodName: "V2Sparql",

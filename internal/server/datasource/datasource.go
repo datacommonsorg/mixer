@@ -17,6 +17,7 @@ package datasource
 import (
 	"context"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
 
@@ -38,4 +39,5 @@ type DataSource interface {
 	Observation(context.Context, *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error)
 	NodeSearch(context.Context, *pbv2.NodeSearchRequest) (*pbv2.NodeSearchResponse, error)
 	Resolve(context.Context, *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error)
+	Sparql(context.Context, *pb.SparqlRequest) (*pb.QueryResponse, error)
 }
