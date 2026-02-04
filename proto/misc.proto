@@ -87,6 +87,4 @@ message GetVersionResponse {
   string remote_mixer_domain = 4;
   // Feature flag values
   string feature_flags = 5;
-  // DataSource ids
-  repeated string data_source_ids = 6;
 }
