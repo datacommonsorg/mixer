@@ -207,3 +207,9 @@ func GetV2ObservationCmpOpts() []cmp.Option {
 		observationComparer,
 	}
 }
+
+func GetV2SparqlCmpOpts() []cmp.Option {
+	return []cmp.Option{
+		protocmp.Transform(),
+	}
+}
