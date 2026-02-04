@@ -70,20 +70,25 @@ type Processor interface {
 
 // Dispatcher struct handles requests by dispatching requests to various processors and datasources as appropriate.
 type Dispatcher struct {
-	processors []*Processor
+	Processors []*Processor
 	sources    *datasources.DataSources
 }
 
 func NewDispatcher(processors []*Processor, sources *datasources.DataSources) *Dispatcher {
 	return &Dispatcher{
-		processors: processors,
+		Processors: processors,
 		sources:    sources,
 	}
 }
 
+// GetSources returns the list of data source IDs.
+func (dispatcher *Dispatcher) GetSources() []string {
+	return dispatcher.sources.GetSources()
+}
+
 // handle handles a request lifecycle - pre-processing, core handling and post-processing.
 func (dispatcher *Dispatcher) handle(requestContext *RequestContext, handler func(context.Context, proto.Message) (proto.Message, error)) (proto.Message, error) {
-	for _, processor := range dispatcher.processors {
+	for _, processor := range dispatcher.Processors {
 		outcome, err := (*processor).PreProcess(requestContext)
 		if err != nil {
 			return nil, err
@@ -105,8 +110,8 @@ func (dispatcher *Dispatcher) handle(requestContext *RequestContext, handler fun
 
 	requestContext.CurrentResponse = response
 
-	for i := len(dispatcher.processors) - 1; i >= 0; i-- {
-		processor := dispatcher.processors[i]
+	for i := len(dispatcher.Processors) - 1; i >= 0; i-- {
+		processor := dispatcher.Processors[i]
 		outcome, err := (*processor).PostProcess(requestContext)
 		if err != nil {
 			return nil, err
