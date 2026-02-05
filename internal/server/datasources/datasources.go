@@ -18,8 +18,10 @@ import (
 	"context"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
+	"github.com/datacommonsorg/mixer/internal/translator/sparql"
 
 	"golang.org/x/sync/errgroup"
 )
@@ -160,4 +162,41 @@ func (ds *DataSources) Resolve(ctx context.Context, in *pbv2.ResolveRequest) (*p
 	}
 
 	return merger.MergeMultiResolve(allResp), nil
+}
+
+func (ds *DataSources) Sparql(ctx context.Context, in *pb.SparqlRequest) (*pb.QueryResponse, error) {
+	_, _, opts, err := sparql.ParseQuery(in.GetQuery())
+	if err != nil {
+		return nil, err
+	}
+
+	// TODO: Collect common code pattern into shared function.
+	errGroup, errCtx := errgroup.WithContext(ctx)
+	dsRespChan := []chan *pb.QueryResponse{}
+
+	for _, source := range ds.sources {
+		src := *source
+		respChan := make(chan *pb.QueryResponse, 1)
+		errGroup.Go(func() error {
+			defer close(respChan)
+			resp, err := src.Sparql(errCtx, in)
+			if err != nil {
+				return err
+			}
+			respChan <- resp
+			return nil
+		})
+		dsRespChan = append(dsRespChan, respChan)
+	}
+
+	if err := errGroup.Wait(); err != nil {
+		return nil, err
+	}
+
+	allResp := []*pb.QueryResponse{}
+	for _, respChan := range dsRespChan {
+		allResp = append(allResp, <-respChan)
+	}
+
+	return merger.MergeMultiQueryResponse(allResp, opts.Orderby, opts.ASC, opts.Limit)
 }

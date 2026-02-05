@@ -19,6 +19,7 @@ import (
 	"fmt"
 	"net/http"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 
@@ -85,6 +86,15 @@ func (rc *RemoteClient) NodeSearch(req *pbv2.NodeSearchRequest) (*pbv2.NodeSearc
 func (rc *RemoteClient) Resolve(req *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
 	resp := &pbv2.ResolveResponse{}
 	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/resolve", req, resp)
+	if err != nil {
+		return nil, err
+	}
+	return resp, nil
+}
+
+func (rc *RemoteClient) Sparql(req *pb.SparqlRequest) (*pb.QueryResponse, error) {
+	resp := &pb.QueryResponse{}
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/sparql", req, resp)
 	if err != nil {
 		return nil, err
 	}
