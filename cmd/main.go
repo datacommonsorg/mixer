@@ -191,7 +191,7 @@ func main() {
 	)
 
 	// Data sources.
-	sources := []*datasource.DataSource{}
+	sources := []datasource.DataSource{}
 
 	// Spanner Graph.
 	if flags.EnableV3 && flags.UseSpannerGraph {
@@ -206,7 +206,7 @@ func main() {
 		}
 		var ds datasource.DataSource = spanner.NewSpannerDataSource(spannerClient)
 		// TODO: Order sources by priority once other implementations are added.
-		sources = append(sources, &ds)
+		sources = append(sources, ds)
 	}
 	slog.Info("After Spanner client creation")
 
@@ -342,7 +342,7 @@ func main() {
 	// SQL Data Source
 	if flags.EnableV3 && sqldb.IsConnected(&sqlClient) {
 		var ds datasource.DataSource = sqldb.NewSQLDataSource(&sqlClient, remoteDataSource)
-		sources = append(sources, &ds)
+		sources = append(sources, ds)
 	}
 
 	// Store
@@ -384,7 +384,7 @@ func main() {
 
 	// Add remote data source if it was created.
 	if remoteDataSource != nil {
-		sources = append(sources, &remoteDataSource)
+		sources = append(sources, remoteDataSource)
 	}
 
 	// DataSources

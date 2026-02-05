@@ -33,16 +33,16 @@ const (
 
 // DataSources struct uses underlying data sources to respond to API requests.
 type DataSources struct {
-	sources []*datasource.DataSource
+	sources []datasource.DataSource
 }
 
-func NewDataSources(sources []*datasource.DataSource) *DataSources {
+func NewDataSources(sources []datasource.DataSource) *DataSources {
 	return &DataSources{sources: sources}
 }
 
 func fetchAndMerge[req any, resp any](
 	ctx context.Context,
-	sources []*datasource.DataSource,
+	sources []datasource.DataSource,
 	in req,
 	fetcher func(context.Context, datasource.DataSource, req) (resp, error),
 	merger func([]resp) (resp, error),
@@ -51,7 +51,7 @@ func fetchAndMerge[req any, resp any](
 	resps := make([]resp, len(sources))
 
 	for i, source := range sources {
-		i, src := i, *source
+		i, src := i, source
 		errGroup.Go(func() error {
 			resp, err := fetcher(errCtx, src, in)
 			if err != nil {
