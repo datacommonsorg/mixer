@@ -25,7 +25,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/statvar/hierarchy"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/search"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
-	"github.com/datacommonsorg/mixer/internal/server/v1/event"
 	"github.com/datacommonsorg/mixer/internal/server/v1/info"
 	"github.com/datacommonsorg/mixer/internal/server/v1/observationdates"
 	"github.com/datacommonsorg/mixer/internal/server/v1/observations"
@@ -486,13 +485,6 @@ func (s *Server) VariableAncestors(
 		return remoteResp, nil
 	}
 	return localResp, nil
-}
-
-// EventCollectionDate implements API for mixer.EventCollectionDate.
-func (s *Server) EventCollectionDate(
-	ctx context.Context, in *pbv1.EventCollectionDateRequest,
-) (*pbv1.EventCollectionDateResponse, error) {
-	return event.CollectionDate(ctx, in, s.store)
 }
 
 // RecognizePlaces implements API for Mixer.RecognizePlaces.
