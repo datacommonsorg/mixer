@@ -826,7 +826,9 @@
             "2025-05": 1134773,
             "2025-06": 1121580,
             "2025-07": 1121240,
-            "2025-08": 1129303
+            "2025-08": 1128874,
+            "2025-09": 1136039,
+            "2025-11": 1151049
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -1264,7 +1266,9 @@
             "2025-05": 1192978,
             "2025-06": 1193443,
             "2025-07": 1198743,
-            "2025-08": 1204926
+            "2025-08": 1204825,
+            "2025-09": 1209645,
+            "2025-11": 1218349
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -1924,7 +1928,9 @@
             "2025-05": 4.9,
             "2025-06": 6,
             "2025-07": 6.5,
-            "2025-08": 6.3
+            "2025-08": 6.3,
+            "2025-09": 6.1,
+            "2025-11": 5.5
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -2325,9 +2331,10 @@
             "2019": 6140475,
             "2020": 6151548,
             "2021": 6168187,
-            "2022": 6179414,
-            "2023": 6208038,
-            "2024": 6245466
+            "2022": 6179285,
+            "2023": 6205956,
+            "2024": 6243544,
+            "2025": 6270541
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
@@ -2999,7 +3006,10 @@
             "2025-05": 3043297,
             "2025-06": 3067983,
             "2025-07": 3055909,
-            "2025-08": 3042555
+            "2025-08": 3042579,
+            "2025-09": 3073133,
+            "2025-11": 3088803,
+            "2025-12": 3086234
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -3605,7 +3615,10 @@
             "2025-05": 3166007,
             "2025-06": 3208960,
             "2025-07": 3205325,
-            "2025-08": 3185115
+            "2025-08": 3185114,
+            "2025-09": 3183406,
+            "2025-11": 3199905,
+            "2025-12": 3190413
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -5866,7 +5879,15 @@
             "2025-11-08": 22571,
             "2025-11-15": 22044,
             "2025-11-22": 22451,
-            "2025-11-29": 18707
+            "2025-11-29": 18707,
+            "2025-12-06": 22790,
+            "2025-12-13": 21819,
+            "2025-12-20": 25920,
+            "2025-12-27": 28598,
+            "2026-01-03": 29025,
+            "2026-01-10": 32540,
+            "2026-01-17": 30121,
+            "2026-01-24": 29333
           },
           "metadata": {
             "importName": "USDOL_ETA539",
@@ -6519,7 +6540,10 @@
             "2025-05": 3.9,
             "2025-06": 4.4,
             "2025-07": 4.7,
-            "2025-08": 4.5
+            "2025-08": 4.5,
+            "2025-09": 3.5,
+            "2025-11": 3.5,
+            "2025-12": 3.3
           },
           "metadata": {
             "importName": "BLS_LAUS",
@@ -6845,8 +6869,8 @@
   },
   "latestPopulation": {
     "country/USA": {
-      "date": "2024",
-      "value": 340110988,
+      "date": "2025",
+      "value": 341784857,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -6855,8 +6879,8 @@
       }
     },
     "geoId/04": {
-      "date": "2024",
-      "value": 7582384,
+      "date": "2025",
+      "value": 7623818,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -6865,8 +6889,8 @@
       }
     },
     "geoId/06": {
-      "date": "2024",
-      "value": 39431263,
+      "date": "2025",
+      "value": 39355309,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -6925,8 +6949,8 @@
       }
     },
     "geoId/08": {
-      "date": "2024",
-      "value": 5957493,
+      "date": "2025",
+      "value": 6012561,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -6935,8 +6959,8 @@
       }
     },
     "geoId/18": {
-      "date": "2024",
-      "value": 6924275,
+      "date": "2025",
+      "value": 6973333,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -6945,8 +6969,8 @@
       }
     },
     "geoId/22": {
-      "date": "2024",
-      "value": 4597740,
+      "date": "2025",
+      "value": 4618189,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -6955,8 +6979,8 @@
       }
     },
     "geoId/29": {
-      "date": "2024",
-      "value": 6245466,
+      "date": "2025",
+      "value": 6270541,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -6965,8 +6989,8 @@
       }
     },
     "geoId/38": {
-      "date": "2024",
-      "value": 796568,
+      "date": "2025",
+      "value": 799358,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -6975,8 +6999,8 @@
       }
     },
     "geoId/47": {
-      "date": "2024",
-      "value": 7227750,
+      "date": "2025",
+      "value": 7315076,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -6985,8 +7009,8 @@
       }
     },
     "geoId/48": {
-      "date": "2024",
-      "value": 31290831,
+      "date": "2025",
+      "value": 31709821,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -6995,8 +7019,8 @@
       }
     },
     "geoId/53": {
-      "date": "2024",
-      "value": 7958180,
+      "date": "2025",
+      "value": 8001020,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -7005,8 +7029,8 @@
       }
     },
     "geoId/72": {
-      "date": "2024",
-      "value": 3203295,
+      "date": "2025",
+      "value": 3184835,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
