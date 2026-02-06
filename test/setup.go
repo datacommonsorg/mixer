@@ -128,7 +128,7 @@ func setupInternal(
 	schemaPath := path.Join(path.Dir(filename), mcfPath)
 
 	// Data sources.
-	sources := []*datasource.DataSource{}
+	sources := []datasource.DataSource{}
 
 	var spannerDataSource datasource.DataSource
 	var spannerCleanup = func() {}
@@ -138,7 +138,7 @@ func setupInternal(
 			spannerCleanup = spannerClient.Stop
 			spannerDataSource = spanner.NewSpannerDataSource(spannerClient)
 			// TODO: Order sources by priority once other implementations are added.
-			sources = append(sources, &spannerDataSource)
+			sources = append(sources, spannerDataSource)
 		}
 	}
 
@@ -174,7 +174,7 @@ func setupInternal(
 		}
 		if enableV3 {
 			var ds datasource.DataSource = sqldb.NewSQLDataSource(&sqlClient, spannerDataSource)
-			sources = append(sources, &ds)
+			sources = append(sources, ds)
 		}
 	}
 
@@ -205,7 +205,7 @@ func setupInternal(
 			log.Fatalf("Failed to create remote client: %v", err)
 		}
 		var ds datasource.DataSource = remote.NewRemoteDataSource(remoteClient)
-		sources = append(sources, &ds)
+		sources = append(sources, ds)
 	}
 
 	dataSources := datasources.NewDataSources(sources)
