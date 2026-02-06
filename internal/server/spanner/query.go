@@ -251,12 +251,11 @@ func (sc *spannerDatabaseClient) executeQuery(
 	handleRows func(*spanner.RowIterator) error,
 ) error {
 	runQuery := func(tb spanner.TimestampBound) error {
+		metrics.RecordSpannerQuery(ctx)
 		iter := sc.client.Single().WithTimestampBound(tb).Query(ctx, stmt)
 		defer iter.Stop()
 		return handleRows(iter)
 	}
-
-	metrics.RecordSpannerQuery(ctx)
 
 	if sc.useStaleReads {
 		ts, err := sc.getStalenessTimestamp()
