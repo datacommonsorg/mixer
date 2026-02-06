@@ -30,7 +30,7 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/util"
-	"google.golang.org/protobuf/encoding/prototext"
+	"google.golang.org/protobuf/proto"
 )
 
 const (
@@ -583,7 +583,12 @@ func MergeMultiQueryResponse(allResp []*pb.QueryResponse, orderby string, asc bo
 				continue
 			}
 
-			rowKey := prototext.Format(row)
+			rowBytes, err := proto.Marshal(row)
+			if err != nil {
+				slog.Error("Failed to marshal query response row", "err", err)
+				continue
+			}
+			rowKey := string(rowBytes)
 			if !seen[rowKey] {
 				merged.Rows = append(merged.Rows, row)
 				seen[rowKey] = true
