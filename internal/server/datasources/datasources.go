@@ -40,6 +40,15 @@ func NewDataSources(sources []*datasource.DataSource) *DataSources {
 	return &DataSources{sources: sources}
 }
 
+// GetSources returns the list of data source IDs.
+func (ds *DataSources) GetSources() []string {
+	sources := make([]string, 0, len(ds.sources))
+	for _, source := range ds.sources {
+		sources = append(sources, (*source).Id())
+	}
+	return sources
+}
+
 func (ds *DataSources) Node(ctx context.Context, in *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	dsRespChan := []chan *pbv2.NodeResponse{}

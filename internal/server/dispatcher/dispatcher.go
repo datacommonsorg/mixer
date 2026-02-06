@@ -83,6 +83,11 @@ func NewDispatcher(processors []*Processor, sources *datasources.DataSources) *D
 	}
 }
 
+// GetSources returns the list of data source IDs.
+func (dispatcher *Dispatcher) GetSources() []string {
+	return dispatcher.sources.GetSources()
+}
+
 // handle handles a request lifecycle - pre-processing, core handling and post-processing.
 func (dispatcher *Dispatcher) handle(requestContext *RequestContext, handler func(context.Context, proto.Message) (proto.Message, error)) (proto.Message, error) {
 	for _, processor := range dispatcher.processors {
