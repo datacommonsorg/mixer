@@ -42,7 +42,7 @@ func NewDataSources(sources []*datasource.DataSource) *DataSources {
 
 // GetSources returns the list of data source IDs.
 func (ds *DataSources) GetSources() []string {
-	sources := []string{}
+	sources := make([]string, 0, len(ds.sources))
 	for _, source := range ds.sources {
 		sources = append(sources, (*source).Id())
 	}
