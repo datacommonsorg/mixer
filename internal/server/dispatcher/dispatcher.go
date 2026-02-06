@@ -21,6 +21,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"google.golang.org/protobuf/proto"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
 
@@ -32,6 +33,7 @@ const (
 	TypeNodeSearch  RequestType = "NodeSearch"
 	TypeObservation RequestType = "Observation"
 	TypeResolve     RequestType = "Resolve"
+	TypeSparql      RequestType = "Sparql"
 )
 
 // RequestContext holds the context for a given request.
@@ -179,6 +181,19 @@ func (dispatcher *Dispatcher) Resolve(ctx context.Context, in *pbv2.ResolveReque
 		return nil, err
 	}
 	return response.(*pbv2.ResolveResponse), nil
+}
+
+func (dispatcher *Dispatcher) Sparql(ctx context.Context, in *pb.SparqlRequest) (*pb.QueryResponse, error) {
+	requestContext := newRequestContext(ctx, in, TypeSparql)
+
+	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {
+		return dispatcher.sources.Sparql(ctx, request.(*pb.SparqlRequest))
+	})
+
+	if err != nil {
+		return nil, err
+	}
+	return response.(*pb.QueryResponse), nil
 }
 
 func newRequestContext(ctx context.Context, request proto.Message, requestType RequestType) *RequestContext {

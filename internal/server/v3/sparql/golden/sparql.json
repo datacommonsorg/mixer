@@ -1,0 +1,528 @@
+{
+  "header": [
+    "?name",
+    "?state"
+  ],
+  "rows": [
+    {
+      "cells": [
+        {
+          "value": "Alabama"
+        },
+        {
+          "value": "geoId/01"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Alaska"
+        },
+        {
+          "value": "geoId/02"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Arizona"
+        },
+        {
+          "value": "geoId/04"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Arkansas"
+        },
+        {
+          "value": "geoId/05"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "California"
+        },
+        {
+          "value": "geoId/06"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Colorado"
+        },
+        {
+          "value": "geoId/08"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Connecticut"
+        },
+        {
+          "value": "geoId/09"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Delaware"
+        },
+        {
+          "value": "geoId/10"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "District of Columbia"
+        },
+        {
+          "value": "geoId/11"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Florida"
+        },
+        {
+          "value": "geoId/12"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Georgia"
+        },
+        {
+          "value": "geoId/13"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Hawaii"
+        },
+        {
+          "value": "geoId/15"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Idaho"
+        },
+        {
+          "value": "geoId/16"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Illinois"
+        },
+        {
+          "value": "geoId/17"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Indiana"
+        },
+        {
+          "value": "geoId/18"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Iowa"
+        },
+        {
+          "value": "geoId/19"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Kansas"
+        },
+        {
+          "value": "geoId/20"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Kentucky"
+        },
+        {
+          "value": "geoId/21"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Louisiana"
+        },
+        {
+          "value": "geoId/22"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Maine"
+        },
+        {
+          "value": "geoId/23"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Maryland"
+        },
+        {
+          "value": "geoId/24"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Massachusetts"
+        },
+        {
+          "value": "geoId/25"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Michigan"
+        },
+        {
+          "value": "geoId/26"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Minnesota"
+        },
+        {
+          "value": "geoId/27"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Mississippi"
+        },
+        {
+          "value": "geoId/28"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Missouri"
+        },
+        {
+          "value": "geoId/29"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Montana"
+        },
+        {
+          "value": "geoId/30"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Nebraska"
+        },
+        {
+          "value": "geoId/31"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Nevada"
+        },
+        {
+          "value": "geoId/32"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "New Hampshire"
+        },
+        {
+          "value": "geoId/33"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "New Jersey"
+        },
+        {
+          "value": "geoId/34"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "New Mexico"
+        },
+        {
+          "value": "geoId/35"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "New York"
+        },
+        {
+          "value": "geoId/36"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "North Carolina"
+        },
+        {
+          "value": "geoId/37"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "North Dakota"
+        },
+        {
+          "value": "geoId/38"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Ohio"
+        },
+        {
+          "value": "geoId/39"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Oklahoma"
+        },
+        {
+          "value": "geoId/40"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Oregon"
+        },
+        {
+          "value": "geoId/41"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Pennsylvania"
+        },
+        {
+          "value": "geoId/42"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Puerto Rico"
+        },
+        {
+          "value": "geoId/72"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Rhode Island"
+        },
+        {
+          "value": "geoId/44"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "South Carolina"
+        },
+        {
+          "value": "geoId/45"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "South Dakota"
+        },
+        {
+          "value": "geoId/46"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Tennessee"
+        },
+        {
+          "value": "geoId/47"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Texas"
+        },
+        {
+          "value": "geoId/48"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Utah"
+        },
+        {
+          "value": "geoId/49"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Vermont"
+        },
+        {
+          "value": "geoId/50"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Virginia"
+        },
+        {
+          "value": "geoId/51"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Washington"
+        },
+        {
+          "value": "geoId/53"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "West Virginia"
+        },
+        {
+          "value": "geoId/54"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Wisconsin"
+        },
+        {
+          "value": "geoId/55"
+        }
+      ]
+    },
+    {
+      "cells": [
+        {
+          "value": "Wyoming"
+        },
+        {
+          "value": "geoId/56"
+        }
+      ]
+    }
+  ]
+}
