@@ -22,6 +22,7 @@ import (
 	"time"
 
 	"cloud.google.com/go/spanner"
+	"github.com/datacommonsorg/mixer/internal/metrics"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
 	"google.golang.org/api/iterator"
@@ -254,6 +255,8 @@ func (sc *spannerDatabaseClient) executeQuery(
 		defer iter.Stop()
 		return handleRows(iter)
 	}
+
+	metrics.RecordSpannerQuery(ctx)
 
 	if sc.useStaleReads {
 		ts, err := sc.getStalenessTimestamp()
