@@ -251,7 +251,7 @@
     },
     "1258723724": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2022.S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "1457828370": {
@@ -284,7 +284,7 @@
     },
     "1946255166": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2019.S2601A",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2023.S2601A",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "1984949456": {
@@ -294,7 +294,7 @@
     },
     "2091528328": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2602",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2019.S2602",
+      "provenance_url": "https://data.census.gov/cedsci/table?q=S2602&tid=ACSST5Y2023.S2602",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "2120157479": {
