@@ -1863,19 +1863,29 @@ func TestMergeMultiQueryResponse(t *testing.T) {
 								{Value: "b1"},
 							},
 						},
+						{
+							Cells: []*pb.QueryResponseCell{
+								{Value: "D"},
+								{Value: "b5"},
+							},
+						},
+						{
+							Cells: []*pb.QueryResponseCell{
+								{Value: "D"},
+								{Value: "b2"},
+							},
+						},
 					},
 				},
 				{
 					Header: []string{"?a", "?b"},
 					Rows: []*pb.QueryResponseRow{
-
 						{
 							Cells: []*pb.QueryResponseCell{
 								{Value: "C"},
 								{Value: "b4"},
 							},
 						},
-
 						{
 							Cells: []*pb.QueryResponseCell{
 								{Value: "D"},
@@ -1887,10 +1897,16 @@ func TestMergeMultiQueryResponse(t *testing.T) {
 			},
 			"?b",
 			false,
-			3,
+			4,
 			&pb.QueryResponse{
 				Header: []string{"?a", "?b"},
 				Rows: []*pb.QueryResponseRow{
+					{
+						Cells: []*pb.QueryResponseCell{
+							{Value: "D"},
+							{Value: "b5"},
+						},
+					},
 					{
 						Cells: []*pb.QueryResponseCell{
 							{Value: "C"},
