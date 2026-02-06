@@ -487,13 +487,6 @@ func (s *Server) VariableAncestors(
 	return localResp, nil
 }
 
-// DerivedObservationsSeries implements API for mixer.ObservationsSeries.
-func (s *Server) DerivedObservationsSeries(
-	ctx context.Context, in *pbv1.DerivedObservationsSeriesRequest,
-) (*pbv1.DerivedObservationsSeriesResponse, error) {
-	return observations.DerivedSeries(ctx, in, s.store)
-}
-
 // RecognizePlaces implements API for Mixer.RecognizePlaces.
 func (s *Server) RecognizePlaces(
 	ctx context.Context, in *pb.RecognizePlacesRequest,

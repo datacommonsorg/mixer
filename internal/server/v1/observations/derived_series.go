@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// API Implementation for /v1/bulk/observations/series/derived
-
 // Package observations contain code for observations.
 package observations
 
@@ -31,7 +29,7 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-// DerivedSeries implements API for Mixer.DerivedObservationsSeries.
+// DerivedSeries produces a series of derived observations based on the input formula and entity.
 func DerivedSeries(
 	ctx context.Context,
 	in *pbv1.DerivedObservationsSeriesRequest,
