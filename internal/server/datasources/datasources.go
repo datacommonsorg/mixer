@@ -40,6 +40,15 @@ func NewDataSources(sources []datasource.DataSource) *DataSources {
 	return &DataSources{sources: sources}
 }
 
+// GetSources returns the list of data source IDs.
+func (ds *DataSources) GetSources() []string {
+	sources := make([]string, 0, len(ds.sources))
+	for _, source := range ds.sources {
+		sources = append(sources, source.Id())
+	}
+	return sources
+}
+
 func fetchAndMerge[req any, resp any](
 	ctx context.Context,
 	sources []datasource.DataSource,
