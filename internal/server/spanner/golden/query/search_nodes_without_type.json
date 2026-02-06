@@ -10,190 +10,190 @@
     "Score": 0
   },
   {
-    "SubjectID": "oecd/IMW_2EARNERC2C_MIN_2_0_1_0_0_0",
-    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Gross earnings (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, No",
+    "SubjectID": "dc/g/Household_HouseholdType-FamilyHousehold_Income_IncomeStatus-WithIncome",
+    "Name": "Household With Household Type = Family Household, Income, Income Status = With Income",
     "Types": [
-      "StatisticalVariable"
+      "StatVarGroup"
     ],
     "MatchedPredicate": "",
     "MatchedObjectValue": "",
     "Score": 0
   },
   {
-    "SubjectID": "oecd/IMW_2EARNERC2C_MIN_2_0_1_0_0_1",
-    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Gross earnings (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
+    "SubjectID": "dc/g/Household_HouseholdType-MarriedCoupleFamilyHousehold_Income_IncomeStatus-WithIncome",
+    "Name": "Household With Household Type = Married Couple Family Household, Income, Income Status = With Income",
     "Types": [
-      "StatisticalVariable"
+      "StatVarGroup"
     ],
     "MatchedPredicate": "",
     "MatchedObjectValue": "",
     "Score": 0
   },
   {
-    "SubjectID": "oecd/IMW_2EARNERC2C_MIN_2_0_1_0_1_0",
-    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Gross earnings (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, Yes, No",
+    "SubjectID": "dc/g/Household_HouseholdType-NonfamilyHousehold_Income_IncomeStatus-WithIncome",
+    "Name": "Household With Household Type = Nonfamily Household, Income, Income Status = With Income",
     "Types": [
-      "StatisticalVariable"
+      "StatVarGroup"
     ],
     "MatchedPredicate": "",
     "MatchedObjectValue": "",
     "Score": 0
   },
   {
-    "SubjectID": "oecd/IMW_2EARNERC2C_MIN_2_0_1_0_1_1",
-    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Gross earnings (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, Yes, Yes",
+    "SubjectID": "dc/g/Household_HouseholdType_Income-InflationAdjustedUSDCurrentYear10000To14999_IncomeStatus-WithIncome",
+    "Name": "Household With Household Type, Income = 10,000 - 14,999 Inflation Adjusted USD_Current Year, Income Status = With Income",
     "Types": [
-      "StatisticalVariable"
+      "StatVarGroup"
     ],
     "MatchedPredicate": "",
     "MatchedObjectValue": "",
     "Score": 0
   },
   {
-    "SubjectID": "oecd/IMW_2EARNERC2C_MIN_2_0_0_1_0_0",
-    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Gross earnings (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, No",
+    "SubjectID": "dc/g/Household_HouseholdType_Income-InflationAdjustedUSDCurrentYearUpto10000_IncomeStatus-WithIncome",
+    "Name": "Household With Household Type, Income = 10,000 Inflation Adjusted USD_Current Year or Less, Income Status = With Income",
     "Types": [
-      "StatisticalVariable"
+      "StatVarGroup"
     ],
     "MatchedPredicate": "",
     "MatchedObjectValue": "",
     "Score": 0
   },
   {
-    "SubjectID": "oecd/IMW_2EARNERC2C_MIN_2_0_0_1_0_1",
-    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Gross earnings (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
+    "SubjectID": "dc/g/Household_HouseholdType_Income-InflationAdjustedUSDCurrentYear100000To149999_IncomeStatus-WithIncome",
+    "Name": "Household With Household Type, Income = 100,000 - 149,999 Inflation Adjusted USD_Current Year, Income Status = With Income",
     "Types": [
-      "StatisticalVariable"
+      "StatVarGroup"
     ],
     "MatchedPredicate": "",
     "MatchedObjectValue": "",
     "Score": 0
   },
   {
-    "SubjectID": "oecd/IMW_2EARNERC2C_MIN_2_0_0_1_1_0",
-    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Gross earnings (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), Yes, No",
+    "SubjectID": "dc/g/Household_HouseholdType_Income-InflationAdjustedUSDCurrentYear15000To24999_IncomeStatus-WithIncome",
+    "Name": "Household With Household Type, Income = 15,000 - 24,999 Inflation Adjusted USD_Current Year, Income Status = With Income",
     "Types": [
-      "StatisticalVariable"
+      "StatVarGroup"
     ],
     "MatchedPredicate": "",
     "MatchedObjectValue": "",
     "Score": 0
   },
   {
-    "SubjectID": "oecd/IMW_2EARNERC2C_MIN_2_0_0_1_1_1",
-    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Gross earnings (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), Yes, Yes",
+    "SubjectID": "dc/g/Household_HouseholdType_Income-InflationAdjustedUSDCurrentYear150000To199999_IncomeStatus-WithIncome",
+    "Name": "Household With Household Type, Income = 150,000 - 199,999 Inflation Adjusted USD_Current Year, Income Status = With Income",
     "Types": [
-      "StatisticalVariable"
+      "StatVarGroup"
     ],
     "MatchedPredicate": "",
     "MatchedObjectValue": "",
     "Score": 0
   },
   {
-    "SubjectID": "oecd/IMW_2EARNERC2C_MIN_2_1_1_0_0_0",
-    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, No",
+    "SubjectID": "dc/g/Household_HouseholdType_Income-InflationAdjustedUSDCurrentYear200000Onwards_IncomeStatus-WithIncome",
+    "Name": "Household With Household Type, Income = 200,000 Inflation Adjusted USD_Current Year or More, Income Status = With Income",
     "Types": [
-      "StatisticalVariable"
+      "StatVarGroup"
     ],
     "MatchedPredicate": "",
     "MatchedObjectValue": "",
     "Score": 0
   },
   {
-    "SubjectID": "oecd/IMW_2EARNERC2C_MIN_2_1_1_0_0_1",
-    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
+    "SubjectID": "dc/g/Household_HouseholdType_Income-InflationAdjustedUSDCurrentYear25000To34999_IncomeStatus-WithIncome",
+    "Name": "Household With Household Type, Income = 25,000 - 34,999 Inflation Adjusted USD_Current Year, Income Status = With Income",
     "Types": [
-      "StatisticalVariable"
+      "StatVarGroup"
     ],
     "MatchedPredicate": "",
     "MatchedObjectValue": "",
     "Score": 0
   },
   {
-    "SubjectID": "oecd/IMW_2EARNERC2C_MIN_2_1_1_0_1_0",
-    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, Yes, No",
+    "SubjectID": "dc/g/Household_HouseholdType_Income-InflationAdjustedUSDCurrentYear35000To49999_IncomeStatus-WithIncome",
+    "Name": "Household With Household Type, Income = 35,000 - 49,999 Inflation Adjusted USD_Current Year, Income Status = With Income",
     "Types": [
-      "StatisticalVariable"
+      "StatVarGroup"
     ],
     "MatchedPredicate": "",
     "MatchedObjectValue": "",
     "Score": 0
   },
   {
-    "SubjectID": "oecd/IMW_2EARNERC2C_MIN_2_1_1_0_1_1",
-    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, Yes, Yes",
+    "SubjectID": "dc/g/Household_HouseholdType_Income-InflationAdjustedUSDCurrentYear50000To74999_IncomeStatus-WithIncome",
+    "Name": "Household With Household Type, Income = 50,000 - 74,999 Inflation Adjusted USD_Current Year, Income Status = With Income",
     "Types": [
-      "StatisticalVariable"
+      "StatVarGroup"
     ],
     "MatchedPredicate": "",
     "MatchedObjectValue": "",
     "Score": 0
   },
   {
-    "SubjectID": "oecd/IMW_2EARNERC2C_MIN_2_1_0_1_0_0",
-    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, No",
+    "SubjectID": "dc/g/Household_HouseholdType_Income-InflationAdjustedUSDCurrentYear75000To99999_IncomeStatus-WithIncome",
+    "Name": "Household With Household Type, Income = 75,000 - 99,999 Inflation Adjusted USD_Current Year, Income Status = With Income",
     "Types": [
-      "StatisticalVariable"
+      "StatVarGroup"
     ],
     "MatchedPredicate": "",
     "MatchedObjectValue": "",
     "Score": 0
   },
   {
-    "SubjectID": "oecd/IMW_2EARNERC2C_MIN_2_1_0_1_0_1",
-    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
+    "SubjectID": "dc/g/Household_Income-InflationAdjustedUSDCurrentYear10000To14999_IncomeStatus-WithIncome",
+    "Name": "Household With Income = 10,000 - 14,999 Inflation Adjusted USD_Current Year, Income Status = With Income",
     "Types": [
-      "StatisticalVariable"
+      "StatVarGroup"
     ],
     "MatchedPredicate": "",
     "MatchedObjectValue": "",
     "Score": 0
   },
   {
-    "SubjectID": "oecd/IMW_2EARNERC2C_MIN_2_1_0_1_1_0",
-    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), Yes, No",
+    "SubjectID": "dc/g/Household_Income-InflationAdjustedUSDCurrentYearUpto10000_IncomeStatus-WithIncome",
+    "Name": "Household With Income = 10,000 Inflation Adjusted USD_Current Year or Less, Income Status = With Income",
     "Types": [
-      "StatisticalVariable"
+      "StatVarGroup"
     ],
     "MatchedPredicate": "",
     "MatchedObjectValue": "",
     "Score": 0
   },
   {
-    "SubjectID": "oecd/IMW_2EARNERC2C_MIN_2_1_0_1_1_1",
-    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), Yes, Yes",
+    "SubjectID": "dc/g/Household_Income-InflationAdjustedUSDCurrentYear100000To149999_IncomeStatus-WithIncome",
+    "Name": "Household With Income = 100,000 - 149,999 Inflation Adjusted USD_Current Year, Income Status = With Income",
     "Types": [
-      "StatisticalVariable"
+      "StatVarGroup"
     ],
     "MatchedPredicate": "",
     "MatchedObjectValue": "",
     "Score": 0
   },
   {
-    "SubjectID": "oecd/IMW_2EARNERC2C_MIN_3_0_1_0_0_0",
-    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the median wage, Gross earnings (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, No",
+    "SubjectID": "dc/g/Household_Income-InflationAdjustedUSDCurrentYear15000To24999_IncomeStatus-WithIncome",
+    "Name": "Household With Income = 15,000 - 24,999 Inflation Adjusted USD_Current Year, Income Status = With Income",
     "Types": [
-      "StatisticalVariable"
+      "StatVarGroup"
     ],
     "MatchedPredicate": "",
     "MatchedObjectValue": "",
     "Score": 0
   },
   {
-    "SubjectID": "oecd/IMW_2EARNERC2C_MIN_3_0_1_0_0_1",
-    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the median wage, Gross earnings (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
+    "SubjectID": "dc/g/Household_Income-InflationAdjustedUSDCurrentYear150000To199999_IncomeStatus-WithIncome",
+    "Name": "Household With Income = 150,000 - 199,999 Inflation Adjusted USD_Current Year, Income Status = With Income",
     "Types": [
-      "StatisticalVariable"
+      "StatVarGroup"
     ],
     "MatchedPredicate": "",
     "MatchedObjectValue": "",
     "Score": 0
   },
   {
-    "SubjectID": "oecd/IMW_2EARNERC2C_MIN_3_0_1_0_1_0",
-    "Name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the median wage, Gross earnings (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, Yes, No",
+    "SubjectID": "dc/g/Household_Income-InflationAdjustedUSDCurrentYear200000Onwards_IncomeStatus-WithIncome",
+    "Name": "Household With Income = 200,000 Inflation Adjusted USD_Current Year or More, Income Status = With Income",
     "Types": [
-      "StatisticalVariable"
+      "StatVarGroup"
     ],
     "MatchedPredicate": "",
     "MatchedObjectValue": "",

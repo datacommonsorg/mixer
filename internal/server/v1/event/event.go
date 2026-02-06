@@ -114,7 +114,7 @@ func getAffectedPlaces(ctx context.Context, placeDcid string, store *store.Store
 	return affectedPlaces, nil
 }
 
-// Collection implements API for Mixer.EventCollection.
+// Collection returns a list of events given the event type, affected place, date, and optional filter criteria.
 func Collection(
 	ctx context.Context,
 	in *pbv1.EventCollectionRequest,
@@ -208,7 +208,7 @@ func Collection(
 	return resp, nil
 }
 
-// CollectionDate implements API for Mixer.EventCollectionDate.
+// CollectionDate returns a list of dates given the event type and affected place.
 func CollectionDate(
 	ctx context.Context,
 	in *pbv1.EventCollectionDateRequest,

@@ -32,10 +32,6 @@
     },
     {
       "SubjectID": "Person",
-      "Predicate": "typeOf"
-    },
-    {
-      "SubjectID": "Person",
       "Predicate": "unitOfMeasure"
     },
     {
