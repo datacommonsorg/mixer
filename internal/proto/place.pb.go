@@ -22,7 +22,6 @@
 //    /node/places-in
 //    /node/related-locations
 //    /node/ranking-locations
-//    /place/stats-var
 //    /place/stat-vars
 //    /place/metadata
 //    /v1/place/stat-vars/union

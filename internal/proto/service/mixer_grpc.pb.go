@@ -88,7 +88,6 @@ const (
 	Mixer_BulkVariableGroupInfo_FullMethodName        = "/datacommons.Mixer/BulkVariableGroupInfo"
 	Mixer_ObservationsPoint_FullMethodName            = "/datacommons.Mixer/ObservationsPoint"
 	Mixer_BulkObservationsPoint_FullMethodName        = "/datacommons.Mixer/BulkObservationsPoint"
-	Mixer_BulkObservationsPointLinked_FullMethodName  = "/datacommons.Mixer/BulkObservationsPointLinked"
 	Mixer_ObservationsSeries_FullMethodName           = "/datacommons.Mixer/ObservationsSeries"
 	Mixer_BulkObservationsSeries_FullMethodName       = "/datacommons.Mixer/BulkObservationsSeries"
 	Mixer_BulkObservationsSeriesLinked_FullMethodName = "/datacommons.Mixer/BulkObservationsSeriesLinked"
@@ -180,7 +179,6 @@ type MixerClient interface {
 	BulkVariableGroupInfo(ctx context.Context, in *v1.BulkVariableGroupInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableGroupInfoResponse, error)
 	ObservationsPoint(ctx context.Context, in *v1.ObservationsPointRequest, opts ...grpc.CallOption) (*proto.PointStat, error)
 	BulkObservationsPoint(ctx context.Context, in *v1.BulkObservationsPointRequest, opts ...grpc.CallOption) (*v1.BulkObservationsPointResponse, error)
-	BulkObservationsPointLinked(ctx context.Context, in *v1.BulkObservationsPointLinkedRequest, opts ...grpc.CallOption) (*v1.BulkObservationsPointResponse, error)
 	ObservationsSeries(ctx context.Context, in *v1.ObservationsSeriesRequest, opts ...grpc.CallOption) (*v1.ObservationsSeriesResponse, error)
 	BulkObservationsSeries(ctx context.Context, in *v1.BulkObservationsSeriesRequest, opts ...grpc.CallOption) (*v1.BulkObservationsSeriesResponse, error)
 	BulkObservationsSeriesLinked(ctx context.Context, in *v1.BulkObservationsSeriesLinkedRequest, opts ...grpc.CallOption) (*v1.BulkObservationsSeriesResponse, error)
@@ -622,15 +620,6 @@ func (c *mixerClient) BulkObservationsPoint(ctx context.Context, in *v1.BulkObse
 	return out, nil
 }
 
-func (c *mixerClient) BulkObservationsPointLinked(ctx context.Context, in *v1.BulkObservationsPointLinkedRequest, opts ...grpc.CallOption) (*v1.BulkObservationsPointResponse, error) {
-	out := new(v1.BulkObservationsPointResponse)
-	err := c.cc.Invoke(ctx, Mixer_BulkObservationsPointLinked_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *mixerClient) ObservationsSeries(ctx context.Context, in *v1.ObservationsSeriesRequest, opts ...grpc.CallOption) (*v1.ObservationsSeriesResponse, error) {
 	out := new(v1.ObservationsSeriesResponse)
 	err := c.cc.Invoke(ctx, Mixer_ObservationsSeries_FullMethodName, in, out, opts...)
@@ -848,7 +837,6 @@ type MixerServer interface {
 	BulkVariableGroupInfo(context.Context, *v1.BulkVariableGroupInfoRequest) (*v1.BulkVariableGroupInfoResponse, error)
 	ObservationsPoint(context.Context, *v1.ObservationsPointRequest) (*proto.PointStat, error)
 	BulkObservationsPoint(context.Context, *v1.BulkObservationsPointRequest) (*v1.BulkObservationsPointResponse, error)
-	BulkObservationsPointLinked(context.Context, *v1.BulkObservationsPointLinkedRequest) (*v1.BulkObservationsPointResponse, error)
 	ObservationsSeries(context.Context, *v1.ObservationsSeriesRequest) (*v1.ObservationsSeriesResponse, error)
 	BulkObservationsSeries(context.Context, *v1.BulkObservationsSeriesRequest) (*v1.BulkObservationsSeriesResponse, error)
 	BulkObservationsSeriesLinked(context.Context, *v1.BulkObservationsSeriesLinkedRequest) (*v1.BulkObservationsSeriesResponse, error)
@@ -1015,9 +1003,6 @@ func (UnimplementedMixerServer) ObservationsPoint(context.Context, *v1.Observati
 }
 func (UnimplementedMixerServer) BulkObservationsPoint(context.Context, *v1.BulkObservationsPointRequest) (*v1.BulkObservationsPointResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BulkObservationsPoint not implemented")
-}
-func (UnimplementedMixerServer) BulkObservationsPointLinked(context.Context, *v1.BulkObservationsPointLinkedRequest) (*v1.BulkObservationsPointResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method BulkObservationsPointLinked not implemented")
 }
 func (UnimplementedMixerServer) ObservationsSeries(context.Context, *v1.ObservationsSeriesRequest) (*v1.ObservationsSeriesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ObservationsSeries not implemented")
@@ -1889,24 +1874,6 @@ func _Mixer_BulkObservationsPoint_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mixer_BulkObservationsPointLinked_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(v1.BulkObservationsPointLinkedRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).BulkObservationsPointLinked(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_BulkObservationsPointLinked_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).BulkObservationsPointLinked(ctx, req.(*v1.BulkObservationsPointLinkedRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _Mixer_ObservationsSeries_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(v1.ObservationsSeriesRequest)
 	if err := dec(in); err != nil {
@@ -2381,10 +2348,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "BulkObservationsPoint",
 			Handler:    _Mixer_BulkObservationsPoint_Handler,
-		},
-		{
-			MethodName: "BulkObservationsPointLinked",
-			Handler:    _Mixer_BulkObservationsPointLinked_Handler,
 		},
 		{
 			MethodName: "ObservationsSeries",
