@@ -22,6 +22,7 @@ import (
 	"time"
 
 	"cloud.google.com/go/spanner"
+	"github.com/datacommonsorg/mixer/internal/metrics"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
 	"google.golang.org/api/iterator"
@@ -250,6 +251,7 @@ func (sc *spannerDatabaseClient) executeQuery(
 	handleRows func(*spanner.RowIterator) error,
 ) error {
 	runQuery := func(tb spanner.TimestampBound) error {
+		metrics.RecordSpannerQuery(ctx)
 		iter := sc.client.Single().WithTimestampBound(tb).Query(ctx, stmt)
 		defer iter.Stop()
 		return handleRows(iter)

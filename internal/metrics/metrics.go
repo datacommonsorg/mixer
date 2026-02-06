@@ -90,6 +90,9 @@ var (
 
 	// V2 diversion metrics
 	v2DiversionCounter metric.Int64Counter
+
+	// Spanner metrics
+	spannerQueryCounter metric.Int64Counter
 )
 
 // ResetForTest resets the metrics package for testing.
@@ -104,6 +107,7 @@ func ResetForTest() {
 	v3ResponseMismatchCounter = nil
 	v3MirrorErrorCounter = nil
 	v2DiversionCounter = nil
+	spannerQueryCounter = nil
 }
 
 func initMetrics() {
@@ -156,6 +160,14 @@ func initMetrics() {
 	)
 	if err != nil {
 		slog.Error("Failed to create v2 diversion counter", "error", err)
+	}
+
+	spannerQueryCounter, err = meter.Int64Counter(
+		"datacommons.mixer.spanner_query",
+		metric.WithDescription("Count of Spanner queries from Mixer APIs"),
+	)
+	if err != nil {
+		slog.Error("Failed to create Spanner query counter", "error", err)
 	}
 }
 
@@ -372,6 +384,18 @@ func RecordV2Diversion(ctx context.Context) {
 		return
 	}
 	v2DiversionCounter.Add(ctx, 1,
+		metric.WithAttributes(
+			attribute.String(rpcMethodAttr, getRpcMethod(ctx)),
+		))
+}
+
+// RecordSpannerQuery increments a counter for Spanner queries from Mixer APIs.
+func RecordSpannerQuery(ctx context.Context) {
+	once.Do(initMetrics)
+	if spannerQueryCounter == nil {
+		return
+	}
+	spannerQueryCounter.Add(ctx, 1,
 		metric.WithAttributes(
 			attribute.String(rpcMethodAttr, getRpcMethod(ctx)),
 		))
