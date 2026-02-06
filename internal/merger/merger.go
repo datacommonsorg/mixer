@@ -30,6 +30,7 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/util"
+	"google.golang.org/protobuf/proto"
 )
 
 const (
@@ -569,6 +570,7 @@ func MergeMultiQueryResponse(allResp []*pb.QueryResponse, orderby string, asc bo
 	}
 
 	merged := &pb.QueryResponse{}
+	seen := make(map[string]bool)
 	for _, resp := range allResp {
 		if resp == nil {
 			continue
@@ -576,7 +578,22 @@ func MergeMultiQueryResponse(allResp []*pb.QueryResponse, orderby string, asc bo
 		if merged.GetHeader() == nil {
 			merged.Header = resp.GetHeader()
 		}
-		merged.Rows = append(merged.Rows, resp.GetRows()...)
+		for _, row := range resp.GetRows() {
+			if row == nil {
+				continue
+			}
+
+			rowBytes, err := proto.Marshal(row)
+			if err != nil {
+				slog.Error("Failed to marshal query response row", "err", err)
+				continue
+			}
+			rowKey := string(rowBytes)
+			if !seen[rowKey] {
+				merged.Rows = append(merged.Rows, row)
+				seen[rowKey] = true
+			}
+		}
 	}
 
 	if i := slices.Index(merged.GetHeader(), orderby); i != -1 {
