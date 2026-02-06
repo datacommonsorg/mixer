@@ -19,13 +19,11 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
-	"math/rand"
 	"strings"
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/log"
 	"github.com/datacommonsorg/mixer/internal/merger"
-	"github.com/datacommonsorg/mixer/internal/metrics"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
@@ -118,8 +116,7 @@ func (s *Server) V2Resolve(
 func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 	*pbv2.NodeResponse, error,
 ) {
-	if rand.Float64() < s.flags.V2DivertFraction {
-		metrics.RecordV2Diversion(ctx)
+	if s.shouldDivertV2(ctx) {
 		return s.dispatcher.Node(ctx, in, datasources.DefaultPageSize)
 	}
 
@@ -278,8 +275,7 @@ func (s *Server) V2Event(
 func (s *Server) V2Observation(
 	ctx context.Context, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
-	if rand.Float64() < s.flags.V2DivertFraction {
-		metrics.RecordV2Diversion(ctx)
+	if s.shouldDivertV2(ctx) {
 		return s.dispatcher.Observation(ctx, in)
 	}
 
@@ -346,8 +342,7 @@ func (s *Server) V2Observation(
 func (s *Server) V2Sparql(
 	ctx context.Context, in *pb.SparqlRequest,
 ) (*pb.QueryResponse, error) {
-	if rand.Float64() < s.flags.V2DivertFraction {
-		slog.Info("V2Sparql request diverted to dispatcher backend", "request", in)
+	if s.shouldDivertV2(ctx) {
 		return s.dispatcher.Sparql(ctx, in)
 	}
 

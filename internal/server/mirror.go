@@ -208,6 +208,7 @@ func GetV2ObservationCmpOpts() []cmp.Option {
 	}
 }
 
+// GetV2SparqlCmpOpts sorts the QueryResponseRows for comparing, since order is not guaranteed.
 func GetV2SparqlCmpOpts() []cmp.Option {
 	rowComparer := func(a, b *pb.QueryResponseRow) bool {
 		aCells, bCells := a.GetCells(), b.GetCells()
