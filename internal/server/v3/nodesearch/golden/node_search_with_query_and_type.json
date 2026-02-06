@@ -2,182 +2,182 @@
   "results": [
     {
       "node": {
-        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Gross earnings (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, No",
+        "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Architecture And Engineering Occupations, With Earnings, Full Time Year Round Worker",
         "types": [
           "StatisticalVariable"
         ],
-        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_0_1_0_0_0"
+        "dcid": "dc/27eg6kfgxbb07"
       }
     },
     {
       "node": {
-        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Gross earnings (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
+        "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Arts, Design, Entertainment, Sports, And Media Occupations, With Earnings, Full Time Year Round Worker",
         "types": [
           "StatisticalVariable"
         ],
-        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_0_1_0_0_1"
+        "dcid": "dc/c78fb7n4fg5t"
       }
     },
     {
       "node": {
-        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Gross earnings (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, Yes, No",
+        "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Building And Grounds Cleaning And Maintenance Occupations, With Earnings, Full Time Year Round Worker",
         "types": [
           "StatisticalVariable"
         ],
-        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_0_1_0_1_0"
+        "dcid": "dc/ngxd3wfd871sf"
       }
     },
     {
       "node": {
-        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Gross earnings (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, Yes, Yes",
+        "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Business And Financial Operations Occupations, With Earnings, Full Time Year Round Worker",
         "types": [
           "StatisticalVariable"
         ],
-        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_0_1_0_1_1"
+        "dcid": "dc/9t1nk24nllnw6"
       }
     },
     {
       "node": {
-        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Gross earnings (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, No",
+        "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Community And Social Service Occupations, With Earnings, Full Time Year Round Worker",
         "types": [
           "StatisticalVariable"
         ],
-        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_0_0_1_0_0"
+        "dcid": "dc/24gxks3k9ggp2"
       }
     },
     {
       "node": {
-        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Gross earnings (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
+        "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Computer And Mathematical Occupations, With Earnings, Full Time Year Round Worker",
         "types": [
           "StatisticalVariable"
         ],
-        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_0_0_1_0_1"
+        "dcid": "dc/7lydbsw4ne5w9"
       }
     },
     {
       "node": {
-        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Gross earnings (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), Yes, No",
+        "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Computer, Engineering, And Science Occupations, With Earnings, Full Time Year Round Worker",
         "types": [
           "StatisticalVariable"
         ],
-        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_0_0_1_1_0"
+        "dcid": "dc/kbspbwxjsmg67"
       }
     },
     {
       "node": {
-        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Gross earnings (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), Yes, Yes",
+        "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Construction And Extraction Occupations, With Earnings, Full Time Year Round Worker",
         "types": [
           "StatisticalVariable"
         ],
-        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_0_0_1_1_1"
+        "dcid": "dc/ws53s0ne6kb27"
       }
     },
     {
       "node": {
-        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, No",
+        "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Education, Legal, Community Service, Arts, And Media Occupations, With Earnings, Full Time Year Round Worker",
         "types": [
           "StatisticalVariable"
         ],
-        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_1_1_0_0_0"
+        "dcid": "dc/89fndld3xy4z7"
       }
     },
     {
       "node": {
-        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
+        "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Educational Instruction And Library Occupations, With Earnings, Full Time Year Round Worker",
         "types": [
           "StatisticalVariable"
         ],
-        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_1_1_0_0_1"
+        "dcid": "dc/xhbfvtmdlnt8c"
       }
     },
     {
       "node": {
-        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, Yes, No",
+        "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Farming, Fishing, And Forestry Occupations, With Earnings, Full Time Year Round Worker",
         "types": [
           "StatisticalVariable"
         ],
-        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_1_1_0_1_0"
+        "dcid": "dc/jfd54v03tebw3"
       }
     },
     {
       "node": {
-        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, Yes, Yes",
+        "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Food Preparation And Serving Related Occupations, With Earnings, Full Time Year Round Worker",
         "types": [
           "StatisticalVariable"
         ],
-        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_1_1_0_1_1"
+        "dcid": "dc/wtecthfq7p0h6"
       }
     },
     {
       "node": {
-        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, No",
+        "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Health Technologists And Technicians, With Earnings, Full Time Year Round Worker",
         "types": [
           "StatisticalVariable"
         ],
-        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_1_0_1_0_0"
+        "dcid": "dc/92mnbbgvfskf7"
       }
     },
     {
       "node": {
-        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), No, Yes",
+        "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Healthcare Practitioners And Technical Occupations, With Earnings, Full Time Year Round Worker",
         "types": [
           "StatisticalVariable"
         ],
-        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_1_0_1_0_1"
+        "dcid": "dc/p2w035955wkhh"
       }
     },
     {
       "node": {
-        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), Yes, No",
+        "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Healthcare Support Occupations, With Earnings, Full Time Year Round Worker",
         "types": [
           "StatisticalVariable"
         ],
-        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_1_0_1_1_0"
+        "dcid": "dc/46v056n28d2e5"
       }
     },
     {
       "node": {
-        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the average wage, Net income (family level), Full-time employees working in ISIC sectors C-K (see metadata for details), Minimum wage that applies on a selected date of the year (see metadata for details), Yes, Yes",
+        "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Installation, Maintenance, And Repair Occupations, With Earnings, Full Time Year Round Worker",
         "types": [
           "StatisticalVariable"
         ],
-        "dcid": "oecd/IMW_2EARNERC2C_MIN_2_1_0_1_1_1"
+        "dcid": "dc/5ehtzjsp45dy3"
       }
     },
     {
       "node": {
-        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the median wage, Gross earnings (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, No",
+        "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Legal Occupations, With Earnings, Full Time Year Round Worker",
         "types": [
           "StatisticalVariable"
         ],
-        "dcid": "oecd/IMW_2EARNERC2C_MIN_3_0_1_0_0_0"
+        "dcid": "dc/h3ej80jh908nc"
       }
     },
     {
       "node": {
-        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the median wage, Gross earnings (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, No, Yes",
+        "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Life, Physical, And Social Science Occupations, With Earnings, Full Time Year Round Worker",
         "types": [
           "StatisticalVariable"
         ],
-        "dcid": "oecd/IMW_2EARNERC2C_MIN_3_0_1_0_0_1"
+        "dcid": "dc/0bm3wdelm2vf6"
       }
     },
     {
       "node": {
-        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the median wage, Gross earnings (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, Yes, No",
+        "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Management Occupations, With Earnings, Full Time Year Round Worker",
         "types": [
           "StatisticalVariable"
         ],
-        "dcid": "oecd/IMW_2EARNERC2C_MIN_3_0_1_0_1_0"
+        "dcid": "dc/112v7fggz4mv1"
       }
     },
     {
       "node": {
-        "name": "Incomes of minimum wage earners: Couple with 2 children - partner's earnings: Minimum Wage, Family income, divided by the income of an otherwise identical family working at the median wage, Gross earnings (family level), All employees, expressed in full-time equivalent units, Weighted average of minimum wage amounts throughout the calendar year, Yes, Yes",
+        "name": "Median Income (Real Individual Earnings Before Deductions): 16 Years or More, Civilian, Employed, Female, Management, Business, And Financial Occupations, With Earnings, Full Time Year Round Worker",
         "types": [
           "StatisticalVariable"
         ],
-        "dcid": "oecd/IMW_2EARNERC2C_MIN_3_0_1_0_1_1"
+        "dcid": "dc/r7eqgnsy4b4c5"
       }
     }
   ]
