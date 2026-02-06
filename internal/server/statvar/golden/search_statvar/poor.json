@@ -57,6 +57,10 @@
       "dcid": "Count_Student_KenyaCertificateSecondaryEducation_PoorPerformance"
     },
     {
+      "name": "Population: 5 - 17 Years, Poor",
+      "dcid": "Count_Person_5To17Years_Poor"
+    },
+    {
       "name": "Percentage Receiving Poor Social Support Among Citizen Population",
       "dcid": "Percent_ReceivingPoorSocialSupport_In_Count_Person_Citizen"
     },

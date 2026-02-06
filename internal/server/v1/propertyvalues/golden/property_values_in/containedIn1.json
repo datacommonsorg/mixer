@@ -30659,6 +30659,4006 @@
       "provenanceId": "dc/base/TideGaugeStations"
     },
     {
+      "name": "\"PINE GROVE YOUTH CONSERVATION CAMP\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000060199991",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"MARY B. PERRY HIGH SCHOOL\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000060199994",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"JACK B. CLARKE HIGH SCHOOL\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000060199995",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"MARY B. PERRY HIGH SCHOOL\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000060199996",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"N.A. CHADERJIAN HIGH SCHOOL\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000060199997",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"PINE GROVE YOUTH CONSERVATION CAMP\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000060199998",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"JOHANNA BOSS HIGH SCHOOL\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000060199999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ROCKLIN ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000600100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ROCKLIN ACADEMY AT MEYERS STREET\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000600200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"MARIA MONTESSORI CHARTER ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000600300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Fenton STEM Academy: Elementary Center for Science Technology Engineering and Ma\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000600400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"SYCAMORE ACADEMY OF SCIENCE AND CULTURAL ARTS\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000600500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"VILLAGE CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000600600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"INSIGHT SCH OF CALIFORNIA - NORTH BAY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000600700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"DISCOVERY CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000600800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"PRIMARY CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000600900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"MILLENNIUM CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000601000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Fenton Academy for Social and Emotional Learning\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000601100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Magnolia Science Academy Santa Clara\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000601200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ALTA VISTA PUBLIC\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000601300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ACADEMY OF ALAMEDA\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000601400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"The Academy of Alameda Elementary School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000601499999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ALAMEDA COMMUNITY LRN CENTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000601500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"BAY AREA SCH OF ENTERPRISE\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000601600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Alternatives in Action High School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000601699999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"NEA COMMUNITY LRN CENTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000601700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"KIPP HEARTWOOD ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000601800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"OPPORTUNITIES FOR LRN - BALDWIN PARK\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000601900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"OPPORTUNITIES FOR LRN - BALDWIN PARK II\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000602000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Voices College Bound Language Academy Mt. Pleasant\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000602099999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"REALM HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000602100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"REALM MIDDLE\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000602200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"JUAN BAUTISTA DE ANZA\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000602300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Voices College Bound Language Academy Morgan Hil\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000602399999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CALIFORNIA MONTESSORI PROJECT-SHINGLE SPRINGS CAMP\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000602400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"EJE ELEMENTARY ACADEMY CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000602500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"EJE MIDDLE ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000602599999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"EJE MIDDLE ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000602600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"EJE ELEMENTARY ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000602699999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE SUMMIT CHARTER ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000602700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Alliance Marine - Innovation and Technology 6-12 Complex\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000602800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"LATINO COLLEGE PREPARATORY ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000602900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"SAN JOSE CONSERVATION CORPS CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000603000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"San Jose Conservation Corps Charter School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000603099999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ESCUELA POPULAR ACCELERATED FAMILY LRN\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000603100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ESCUELA POPULAR ACCELERATED FAMILY LEARNING CENTER (9-12)\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000603199999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"\"ESCUELA POPULAR/CENTER FOR TRAINING AND CAREERS",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000603200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"KIPP SAN JOSE COLLEGIATE\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000603300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"SUMMIT PUBLIC SCH: RAINIER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000603400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CALIFORNIA MONTESSORI PROJECT-ELK GROVE CAMPUS\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000603500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ESCONDIDO CHARTER HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000603600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CLASSICAL ACADEMY HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000603700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CLASSICAL ACADEMY HIGH SCHOOL (OCEANSIDE)\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000603799998",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CLASSICAL ACADEMY HIGH SCHOOL (ONLINE PROGRAM)\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000603799999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"VOICES COLLEGE-BOUND LANGUAGE ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000603800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Voices College-Bound Language Academy Mt. Pleasant\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000603899998",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Voices College-Bound Language Academy Morgan Hill\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000603899999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ROCKETSHIP FOUR ELEMENTARY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000603900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"GILROY PREP\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000604000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"LEADERSHIP PUBLIC SCHS - HAYWARD\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000604100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"IMPACT ACADEMY OF ARTS \u0026 TECHNOLOGY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000604200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"GOLDEN OAK MONTESSORI OF HAYWARD\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000604300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Alliance Virgil Roberts Leadership Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000604400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"WILDER'S PREPARATORY ACADEMY CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000604500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"WILDER'S PREPARATORY ACADEMY CHARTER MIDDLE\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000604600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"TODAY'S FRESH START CHARTER SCH INGLEWOOD\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000604700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ICEF INGLEWOOD ELEMENTARY CHARTER ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000604800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Golden Valley Orchard\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000604900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ICEF INGLEWOOD MIDDLE CHARTER ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000605000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CHILDREN OF PROMISE PREPARATORY ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000605100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"LIFE SOURCE INTERNATIONAL CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000605200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Great Valley Academy - Salida\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000605300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CENTURY COMMUNITY CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000605400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CENTURY ACADEMY FOR EXCELLENCE\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000605500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE VINCENT SHALVEY ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000605600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE RIVER OAKS CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000605700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE BENJAMIN HOLT COLLEGE PREPARATORY ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000605800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"RIO VALLEY CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000605900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"MANZANITA PUBLIC CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000606000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"BIRMINGHAM COMMUNITY CHARTER HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000606100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"EL CAMINO REAL SENIOR HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000606200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"FENTON AVENUE CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000606300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"GRANADA HILLS CHARTER HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000606400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Global Education Academy II\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000606500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"MONTAGUE CHARTER ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000606600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ACCELERATED\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000606700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"PACOIMA CHARTER ELEMENTARY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000606800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"SANTA MONICA BOULEVARD COMMUNITY CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000606900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"VAUGHN NEXT CENTURY LRN CENTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000607000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"PALISADES CHARTER HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000607100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"WATTS LRN CENTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000607200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"COMMUNITY CHARTER MIDDLE\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000607300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"VIEW PARK PREPARATORY ACCELERATED CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000607400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CAMINO NUEVO CHARTER ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000607500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CALIFORNIA ACADEMY FOR LIBERAL STUDIES\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000607600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"MULTICULTURAL LRN CENTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000607700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CHIME CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000607800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"LOS ANGELES LEADERSHIP ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000607900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Global Education Academy Middle School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000608000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"DOWNTOWN VALUE\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000608100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ACADEMIA SEMILLAS DEL PUEBLO\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000608200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"MAGNOLIA SCIENCE ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000608300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"PUENTE CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000608400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"PARA LOS NINOS CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000608500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"VIEW PARK PREPARATORY ACCELERATED CHARTER MIDDLE\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000608600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"HIGH TECH LA\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000608700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ACCELERATED ELEMENTARY CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000608800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"OCEAN CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000608900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"MILAGRO CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000609000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Inspire Charter School - South\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000609100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"LAKEVIEW CHARTER ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000609200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"NEW ACADEMY CANOGA PARK\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000609300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"NEW DESIGNS CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000609400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"IVY ACADEMIA\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000609500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"SYNERGY CHARTER ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000609600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CAMINO NUEVO HS CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000609700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Resolute Charter Academy School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000609800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Academy of Arts and Sciences: Sonoma\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000609900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"GERTZ-RESSLER ACADEMY HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000610000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"BERT CORONA CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000610100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"JARDIN DE LA INFANCIA\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000610200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"PORT OF LOS ANGELES HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000610300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Academy of Arts and  Sciences Del Mar Elementary K-5\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000610400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"GABRIELLA CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000610500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"HERITAGE COLLEGE-READY HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000610600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"RICHARD MERKIN MIDDLE ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000610700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CELERITY NASCENT CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000610800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"LARCHMONT CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000610900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Larchmont Charter School at LaFayette Park Place\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000610999997",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Larchmont Charter School at Hollygrove\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000610999998",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Larchmont Charter School at Fairfax\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000610999999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"HUNTINGTON PARK COLLEGE-READY ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000611000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Alliance Collins Family College-Ready High School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000611099999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CA ACADEMY FOR LIBERAL STUDIES EARLY COLLEGE HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000611100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE ANTONIO MARIA LUGO ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000611200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"COMMUNITY CHARTER EARLY COLLEGE HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000611300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"JAMES JORDAN MIDDLE\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000611400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"OUR COMMUNITY CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000611500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"KIPP ACADEMY OF OPPORTUNITY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000611600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"KIPP ACADEMY OF OPPORTUNITY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000611699999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CHIME MIDDLE CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000611700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CRENSHAW ARTS/TECH CHARTER HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000611800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Academy of Arts and  Sciences El Cajon Middle and High 6-12\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000611900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"RENAISSANCE ARTS ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000612000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"KIPP LOS ANGELES COLLEGE PREPARATORY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000612100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"N.E.W. ACADEMY OF SCIENCE AND ARTS\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000612200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"N.E.W. ACADEMY OF SCIENCE AND ARTS\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000612299999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CENTRAL CITY VALUE\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000612300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"NORTH VALLEY CHARTER ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000612400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CLAS AFFIRMATION\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000612500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"VIEW PARK PREPARATORY ACCELERATED HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000612600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"STELLA MIDDLE CHARTER ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000612700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Stella Middle Charter Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000612799999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"WALLIS ANNENBERG HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000612800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"LOS ANGELES ACADEMY OF ARTS \u0026 ENTERPRISE CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000612900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"NEW HEIGHTS CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000613000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"NEW HEIGHTS CHARTER  (UPPER CAMPUS)\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000613099999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"NEW VILLAGE CHARTER HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000613100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"COLLEGE READY ACADEMY HIGH #5\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000613200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Alliance Patti \u0026 Peter Neuwirth Leadership Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000613299999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"DR. OLGA MOHAN HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000613300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"JACK H. SKIRBALL MIDDLE\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000613400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Academy of Arts and  Sciences Thousand Oaks and Simi\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000613500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Aspire Vanguard College Preparatory Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000613700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Inspire Charter School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000613800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"WILLIAM AND CAROL OUCHI HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000613900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"MARC \u0026 EVA STERN MATH AND SCIENCE\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000614000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE CENTENNIAL COLLEGE PREPARATORY ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000614100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"TRIUMPH ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000614200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"EXCEL CHARTER ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000614300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"LOU DANTZLER PREPARATORY CHARTER MIDDLE\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000614400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"LOS FELIZ CHARTER SCH FOR THE ARTS\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000614500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"GARR ACADEMY OF MATH AND ENTREPRENEURIAL STUDIES\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000614600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"FREDERICK DOUGLASS ACADEMY MIDDLE\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000614700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"BRIGHT STAR SECONDARY CHARTER ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000614800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"New Horizons Charter Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000614900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"FREDERICK DOUGLASS ACADEMY HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000615000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"MAGNOLIA SCIENCE ACADEMY 2\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000615100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"COLLEGE READY ACADEMY HIGH #7\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000615200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"\"IVY BOUND ACADEMY OF MATH",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000615300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Ivy Bound Academy 2\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000615399999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"THURGOOD MARSHALL CHARTER MIDDLE\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000615400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"City Middle\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000615400002",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"DISCOVERY CHARTER PREPARATORY #2\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000615500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"MONSENOR OSCAR ROMERO CHARTER MIDDLE\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000615600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"GLOBAL EDUCATION ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000615700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Edison Charter Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000615800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ICEF VISTA MIDDLE ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000615900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"MAGNOLIA SCIENCE ACADEMY 3\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000616000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"FENTON PRIMARY CENTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000616100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CENTER FOR ADVANCED LRN\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000616200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CELERITY TROIKA CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000616300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CELERITY DYAD CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000616400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"FREDERICK DOUGLASS ACADEMY ELEMENTARY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000616500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE HUNTINGTON PARK CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000616600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"GOETHE INTERNATIONAL CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000616700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ICEF VISTA ELEMENTARY ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000616800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"LOU DANTZLER PREPARATORY CHARTER ELEMENTARY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000616900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"MAGNOLIA SCIENCE ACADEMY 7\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000617000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"NEW MILLENNIUM SECONDARY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000617200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"MEDIA ARTS AND ENTERTAINMENT HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000617300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ANAHUACALMECAC UNIVERSITY PREPARATORY HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000617400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"SYNERGY KINETIC ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000617500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"KIPP RAICES ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000617600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CHRISTINE O'DONOVAN MIDDLE ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000617700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"LARCHMONT CHARTER SCH-WEST HOLLYWOOD\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000617900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"MAGNOLIA SCIENCE ACADEMY 6\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000618000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"NEW LOS ANGELES CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000618100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ENVIRONMENTAL SCIENCE AND TECHNOLOGY HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000618200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"MAGNOLIA SCIENCE ACADEMY 5\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000618300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"MAGNOLIA SCIENCE ACADEMY 4\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000618400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"PARA LOS NINOS MIDDLE\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000618500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"HEALTH SERVICES ACADEMY HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000618600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ARARAT CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000618700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ACADEMIA MODERNA\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000618800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"NEW DESIGNS CHARTER SCH-WATTS\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000618900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"COLLEGE READY MIDDLE ACADEMY #5\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000619000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"NUEVA ESPERANZA CHARTER ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000619100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"EQUITAS ACADEMY CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000619200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Equitas Academy 4\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000619299997",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Equitas Academy #3 Charter School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000619299998",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Equitas Academy #2 Charter School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000619299999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"WATTS LRN CENTER CHARTER MIDDLE\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000619300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"VALOR ACADEMY CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000619400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"FUTURO COLLEGE PREPARATORY ELEMENTARY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000619500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"WESTSIDE INNOVATIVE SCH HOUSE\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000619600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"WISH Academy High School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000619699999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"COLLEGE READY MIDDLE ACADEMY #4\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000619700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ENDEAVOR COLLEGE PREPARATORY CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000619800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Endeavor College Preparatory Charter\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000619899998",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"SANTA ROSA CHARTER ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000619900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"COLLEGE READY ACADEMY HIGH #11\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000620000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ALLIANCE TECHNOLOGY AND MATH SCIENCE HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000620100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"COLLEGE READY MIDDLE ACADEMY #7\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000620200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CELERITY PALMATI CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000620300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"PARA LOS NINOS - EVELYN THURMAN GRATTS PRIMARY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000620400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"TEACH ACADEMY OF TECHNOLOGIES\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000620500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"TEACH Tech Charter High\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000620600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE PACIFIC ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000620700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"VALLEY CHARTER ELEMENTARY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000620800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Valley Charter Elementary\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000620899999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"VALLEY CHARTER MIDDLE\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000620900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Valley Charter Middle\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000620999999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE GATEWAY ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000621000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ARTS IN ACTION COMMUNITY CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000621100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Arts In Action Community Charter School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000621199999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"USC East College Prep\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000621200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"MAGNOLIA SCIENCE ACADEMY BELL\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000621300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Magnolia Science Academy 8 Bell\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000621399999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"KIPP COMIENZA COMMUNITY PREP\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000621400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"KIPP Comienza Community Prep\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000621499999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CITIZENS OF THE WORLD CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000621500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Citizens of the World Charter School Mar Vista\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000621599997",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Citizens of the World Charter School Silver Lake\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000621599998",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Citizens of the World Charter School Hollywood\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000621599999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"KIPP EMPOWER ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000621600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"KIPP Empower Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000621699999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CAMINO NUEVO ACADEMY #2\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000621700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Camino Nuevo Academy #2\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000621799999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE FIRESTONE ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000621800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ALLIANCE COLLEGE-READY ACADEMY HIGH NO. 16\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000621900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Alliance Ted K. Tajima High School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000621999999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"VISTA CHARTER MIDDLE\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000622000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Vista Charter Middle School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000622099999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CELERITY OCTAVIA CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000622100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Celerity Octavia Charter\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000622199999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Executive Preparatory Academy of Finance\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000622200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CAMINO NUEVO ELEMENTARY 3\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000622300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CAMINO NUEVO ELEMENTARY #3\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000622399999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CROWN PREPARATORY ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000622400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CROWN PREPARATORY ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000622499999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"TRIUMPH CHARTER HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000622500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"LAKEVIEW CHARTER HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000622600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Ingenium Charter\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000622700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Ingenium Charter Middle\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000622800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"SYNERGY QUANTUM ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000622900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"SYNERGY QUANTUM ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000622999999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"LOS ANGELES LEADERSHIP PRIMARY ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000623000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"FILM AND THEATRE ARTS CHARTER HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000623100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"EXTERA PUBLIC\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000623200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Extera Public School No. 2\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000623299998",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Extera Public School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000623299999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"EARLY COLLEGE ACADEMY FOR LEADERS AND SCHOLARS (EC\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000623300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CAMINO NUEVO CHARTER ACADEMY NO. 4\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000623400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Camino Nuevo  Charter Academy #4\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000623499999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CELERITY CARDINAL CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000623500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Celerity Cardinal Charter\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000623599999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE JUANITA TATE ACADEMY CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000623600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE SLAUSON ACADEMY CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000623700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE INSKEEP ACADEMY CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000623800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Metro Charter\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000623900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"SOUTH SUTTER CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000624000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"South Sutter Charter School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000624099999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"MERCURY ON-LINE ACADEMY OF SOUTHERN CALIFORNIA\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000624100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Diego Hills Central Public Charter\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000624200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ACHIEVE CHARTER SCH OF PARADISE INC.\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000624300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Achieve Charter School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000624399999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"MONARCH LRN CENTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000624400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Monarch Learning Center Charter School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000624499999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"DELTA ELEMENTARY CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000624500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"THE LANGUAGE ACADEMY OF SACRAMENTO\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000624600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE CAPITOL HEIGHTS ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000624700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"SACRAMENTO CHARTER HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000624800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Sacramento Charter High School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000624899999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ST. HOPE PUBLIC SCH 7 (PS7)\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000625000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"St. HOPE Public School 7\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000625099999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CALIFORNIA MONTESSORI PROJECT-CAPITOL CAMPUS\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000625100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"California Montessori Project-Capitol Campus\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000625199999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"YAV PEM SUAB ACADEMY - PREPARING FOR THE FUTURE CH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000625200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Yav Pem Suab Academy - Preparing for the Future Charter\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000625299999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CAPITOL COLLEGIATE ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000625300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Capitol Collegiate Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000625399999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"DOWNTOWN COLLEGE PREPARATORY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000625400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Downtown College Prep High School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000625499998",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Downtown College Prep Middle School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000625499999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"OPTIONS FOR YOUTH-SAN JUAN\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000625500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"OFY-San Juan\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000625599999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CALIFORNIA MONTESSORI PROJECT-SAN JUAN CAMPUS\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000625600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"California Montessori Project-San Juan Campus\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000625699999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"GOLDEN VALLEY CHARTER SCH OF SACRAMENTO\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000625700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"KIPP SUMMIT ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000625800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"KIPP Summit Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000625899999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"KIPP KING COLLEGIATE HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000625900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"KIPP King Collegiate\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000625999999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"OCEAN GROVE CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000626000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Ocean Grove Charter School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000626099999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"SUMMIT PREPARATORY CHARTER HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000626100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Summit Preparatory Charter High School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000626199999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE EAST PALO ALTO PHOENIX ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000626200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"SONOMA CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000626400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"WOODLAND STAR CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000626500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"WESTWOOD CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000626600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"WILLITS CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000626700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Willits Charter School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000626799999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"DA VINCI SCIENCE\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000627000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Da Vinci Science\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000627012208",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"DA VINCI DESIGN\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000627100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Da Vinci Design\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000627112410",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"TWIN RIVERS CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000627300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Twin Rivers Charter School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000627399999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"BLUE OAK CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000627400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"EDISON-BETHUNE CHARTER ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000627500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Edison-Bethune Charter Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000627599999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CRESCENT VIEW WEST CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000627600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Crescent View West Charter\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000627699999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"HUME LAKE CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000627700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Hume Lake Charter School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000627799999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"BIG PICTURE HS - FRESNO\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000627800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Big Picture Educational Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000627899998",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"PARAMOUNT BARD ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000627900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"RIVER SPRINGS CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000628000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"LITERACY FIRST CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000628100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"LITERACY FIRST CHARTER SCHOOLS LIBERTY CHARTER HIGH SCHOOL\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000628199996",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"LITERACY FIRST CHARTER SCHOOLS LIBERTY ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000628199997",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"LITERACY FIRST CHARTER SCHOOLS JUNIOR ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000628199998",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"LITERACY FIRST CHARTER SCHOOLS PRIMARY ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000628199999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"GOLDEN EAGLE CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000628200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Golden Eagle Charter\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000628299999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"COX ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000628300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"FAME PUBLIC CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000628400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ENVISION ACADEMY FOR ARTS \u0026 TECHNOLOGY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000628500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Envision Academy of Arts and Technology\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000628599999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE CALIFORNIA COLLEGE PREPARATORY ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000628600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"City Language Immersion Charter\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000628700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"UNCHARTED SHORES ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000628800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"OPTIONS FOR YOUTH-BURBANK CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000628900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"OFY-Burbank\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000628999999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"JULIAN CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000629000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"OAKLAND CHARTER ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000629100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Oakland Charter Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000629199999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Clemente Charter\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000629200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"REEMS (ERNESTINE C.) ACADEMY OF TECHNOLOGY AND ART\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000629300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE MONARCH ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000629400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"NORTH OAKLAND COMMUNITY CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000629500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"LIGHTHOUSE COMMUNITY CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000629600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE LIONEL WILSON COLLEGE PREPARATORY ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000629700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"OAKLAND SCH FOR THE ARTS\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000629800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"LPS COLLEGE PARK\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000629900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE MILLSMONT ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000630100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"LIGHTHOUSE COMMUNITY CHARTER HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000630200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE BERKLEY MAYNARD ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000630300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"WORLD ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000630400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"\"OAKLAND MILITARY INSTITUTE",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000630500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"OAKLAND UNITY HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000630600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Oakland Unity Middle School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000630600002",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"SEBASTOPOL INDEPENDENT CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000630700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"REACH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000630800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CALIFORNIA VIRTUAL ACADEMY @ SAN JOAQUIN\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000630900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Stanislaus Alternative Charter School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000630999999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE UNIVERSITY CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000631000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"MUIR CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000631100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"John Muir Charter Schools\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000631199999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"LOS ANGELES EDUCATION CORPS CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000631200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Riverside County Education Academy Indio\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000631299998",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Riverside County Education Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000631299999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE EAST PALO ALTO CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000631300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE ERES ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000631400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE GOLDEN STATE COLLEGE PREPARATORY ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000631500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Aspire Langston Hughes Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000631600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"ASPIRE ROSA PARKS ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000631700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"BAY AREA TECHNOLOGY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000631800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CALIFORNIA AEROSPACE ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000631900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"COMMUNITY COLLABORATIVE CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000632000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"COMMUNITY OUTREACH ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000632100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"FUTURES HIGH\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000632200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"HERITAGE PEAK CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000632300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"VALLEY VIEW CHARTER PREP\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000632399999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"HIGHER LRN ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000632400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"IvyTech Charter\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000632500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"LIVE OAK CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000632600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"SAVA: SACRAMENTO ACADEMIC AND VOCATIONAL ACADEMY\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000632700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"KIPP BRIDGE CHARTER\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000632800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"OPTIONS FOR YOUTH SAN GABRIEL\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000632900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CROSSWALK: HESPERIA EXPERIENTIAL LRN PATHWAYS\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000633000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"KIPP Bayview Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000633100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"KIPP San Francisco Bay Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000633200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Laverne Elementary Preparatory Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000633300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Mirus Secondary\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000633400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Summit Leadership Academy-High Desert\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000633700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Summit Leadership Academy - High Desert\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000633799999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Dr. Lewis Dolphin Stallworth Sr. Charter\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000633800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"\"OPTIONS FOR YOUTH-HERMOSA BEACH",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000633900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Opportunities for Learning - Duarte\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000634000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Options for Youth-San Bernardino\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000634100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Opportunities for Learning Â Fresno\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000634200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Sierra Foothill Charter School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000634399999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Kipp Sol Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000634400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Kipp Scholar Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000634500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"KIPP Philosophers Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000634600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"KIPP Academy of Innovation\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000634700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"KIPP Vida Prep\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000634800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"KIPP Iluminar Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000634900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Aspire Ollin University Preparatory Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000635000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Aspire College Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000635100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Aspire Junior Collegiate Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000635200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Aspire Port City Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000635300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Aspire Titan Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000635400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Aspire Alexander Twilight College Preparatory Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000635500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Aspire APEX Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000635600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Aspire Alexander Twilight Secondary Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000635700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Stockton Collegiate International Elementary\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000635800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Stockton Collegiate International Secondary\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000635900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"TEAM Charter\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"TEAM Charter Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636099998",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Everest Value School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Math and Science College Preparatory\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Temecula Preparatory\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Redwood Academy of Ukiah\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636499999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Accelerated Achievement Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Animo Inglewood Charter High\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Animo Leadership High\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636600002",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Animo South Los Angeles Charter\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636600003",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Animo Venice Charter High\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636600004",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Animo Pat Brown\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636600005",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Oscar De La Hoya Animo Charter High\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636600006",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Animo Ralph Bunche Charter High\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636600007",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Animo Jackie Robinson High\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636600008",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Animo Watts College Preparatory Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636600009",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Animo Westside Charter Middle\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636600010",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Animo Jefferson Charter Middle\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636600011",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Animo College Preparatory Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636600012",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Animo Ellen Ochoa Charter Middle\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636600013",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Animo James B. Taylor Charter Middle\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636600014",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Animo Mae Jemison Charter Middle\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636600015",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Animo Phillis Wheatley Charter Middle\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636600016",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Animo Western Charter Middle\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636600017",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Alain Leroy Locke College Preparatory Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636600018",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Animo Florence-Firestone Charter Middle School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636699998",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Animo City of Champions Charter High School\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636699999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Tree of Life Charter\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636799999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Da Vinci Innovation Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636813702",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Da Vinci Communications High\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000636913832",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"John Adams Academy - Roseville\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000637000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"John Adams Academy - Lincoln\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000637099998",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"John Adams Academy - El Dorado Hills\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000637099999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Aspire Richmond Technology Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000637100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Aspire Richmond Ca. College Preparatory Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000637200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Richmond Charter Elementary-Benito Juarez\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000637300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Richmond Charter Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000637400001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"John Henry High\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000637500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Leadership Public Schools: Richmond\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000637600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Manzanita Middle\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000637700001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Richmond College Preparatory\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000637800001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Western Sierra Collegiate Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000638000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Rocklin Academy Gateway\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000638100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Desert Trails Preparatory Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000638200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Downtown Charter Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000638300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"PATHWAYS COMMUNITY CHARTER SCHOOL\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000638499999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Gompers Preparatory Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000638500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Alta Vista South Public Charter\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000638600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Almond Acres Charter Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000638799999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Rocketship Redwood City\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000638899999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"KIPP Promesa Prep\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000638900001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"KIPP Ignite Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000639000001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Norton Science \u0026 Language Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000639100001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"River Charter Schools Lighthouse Charter\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000639200001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Sacramento Valley Charter\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000639300001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"California Connections Academy @ North Bay\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000639499999",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"Aspire Triumph Technology Academy\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000639500001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
+      "name": "\"CHAMPS - Charter HS of Arts-Multimedia \u0026 Performing\"",
+      "types": [
+        "PublicSchool"
+      ],
+      "dcid": "nces/000639600001",
+      "provenanceId": "dc/base/US_CRDC_Schools_Directory"
+    },
+    {
       "name": "St Thomas More School",
       "types": [
         "ElementarySchool",
@@ -56499,5 +60499,5 @@
       "provenanceId": "dc/base/WikidataGeos"
     }
   ],
-  "nextToken": "H4sIAAAAAAAA/5zS30rDMBTHcXus21mKWs5V38LphS9QvRgIBrqB4h/I0uMMxATSbLIH8L1FvNtFRvoCn/z45ohngRv2i/5qfitq7V1UxnG/cNIqzaJq2Q3bYRmUjnRCgAUBAgGeEmBJgGcEOCHAKQEiAc4IUFCJVV2IZZIuWxP3Gebkz2xm4j2p1veWv9hFFfad/vTeZq/+SPrNoX9nhhjMiDpPyXeE9N8cpFUuX04XOpfB7FTk7DxTrGpofgrxcsTfrq3Rq2hs3gf/jz+CdzctW/vAO7bX82z8LYlfdqy968efzmuSv1iFtXKPYTNO/wUAAP//AQAA//9lL1nyqgMAAA=="
+  "nextToken": "H4sIAAAAAAAA/5zSTU7zMBDG8Tfzhnbq8BHNKregsOACgUUlJCyllfiWXGcolowtOW5RD8C9ESxZGJwL/Gb01yPuBG7YL/rT+YWotXdRGcf9wkmrNIuqZTdsh2VQOtI/AiwIEAjwPwGWBHhAgBMCnBIgEuCMAAWVWNWFWCbpsjVxn2FOvsxmJp6Tan1l+Y1dVGHf6VfvbfbXL0m/+elfmiEGM6LObfKOkP6dg7TK5cvpQkcymJ2KnJ1nilUNzUch7pP+odyurdEj6z/88vu3vYrG5o3nT3h33rK117xjezbPxp+S+EnH2rt+/Cwfk/zxKqyVuwmbcfonAAAA//8BAAD//xka0ZoGBAAA"
 }

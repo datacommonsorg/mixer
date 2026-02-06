@@ -16,9 +16,9 @@
           "ordered_facets": [
             {
               "facet_id": "2176550201",
-              "obs_count": 125,
+              "obs_count": 126,
               "earliest_date": "1900",
-              "latest_date": "2024"
+              "latest_date": "2025"
             },
             {
               "facet_id": "2645850372",
@@ -121,9 +121,9 @@
             },
             {
               "facet_id": "2176550201",
-              "obs_count": 125,
+              "obs_count": 126,
               "earliest_date": "1900",
-              "latest_date": "2024"
+              "latest_date": "2025"
             },
             {
               "facet_id": "1145703171",

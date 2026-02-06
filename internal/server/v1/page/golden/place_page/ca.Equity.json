@@ -781,6 +781,16 @@
         },
         "Percent_Person_18To64Years_Female_NoHealthInsurance": {
           "val": {
+            "2008": 23.8,
+            "2009": 25.1,
+            "2010": 26.8,
+            "2011": 25.4,
+            "2012": 26.1,
+            "2013": 24.7,
+            "2014": 18.3,
+            "2015": 12,
+            "2016": 11.1,
+            "2017": 9.6,
             "2018": 9.5,
             "2019": 10.9,
             "2020": 10.7,
@@ -796,6 +806,16 @@
         },
         "Percent_Person_18To64Years_Male_NoHealthInsurance": {
           "val": {
+            "2008": 29.8,
+            "2009": 30.9,
+            "2010": 31.7,
+            "2011": 30.5,
+            "2012": 30.7,
+            "2013": 30,
+            "2014": 23.5,
+            "2015": 16.2,
+            "2016": 14,
+            "2017": 13,
             "2018": 13.7,
             "2019": 14.1,
             "2020": 13,
@@ -937,9 +957,10 @@
             "2019": 6140475,
             "2020": 6151548,
             "2021": 6168187,
-            "2022": 6179414,
-            "2023": 6208038,
-            "2024": 6245466
+            "2022": 6179285,
+            "2023": 6205956,
+            "2024": 6243544,
+            "2025": 6270541
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
@@ -1662,6 +1683,16 @@
         },
         "Percent_Person_18To64Years_Female_NoHealthInsurance": {
           "val": {
+            "2008": 15.8,
+            "2009": 16.6,
+            "2010": 17.2,
+            "2011": 18.2,
+            "2012": 17.8,
+            "2013": 17.3,
+            "2014": 14.8,
+            "2015": 12.4,
+            "2016": 11.6,
+            "2017": 12,
             "2018": 12,
             "2019": 12.7,
             "2020": 12.6,
@@ -1677,6 +1708,16 @@
         },
         "Percent_Person_18To64Years_Male_NoHealthInsurance": {
           "val": {
+            "2008": 18.6,
+            "2009": 20.3,
+            "2010": 20.5,
+            "2011": 20.9,
+            "2012": 20.6,
+            "2013": 19.7,
+            "2014": 17.5,
+            "2015": 15,
+            "2016": 14.1,
+            "2017": 14.4,
             "2018": 15.1,
             "2019": 15.5,
             "2020": 16,
@@ -1692,6 +1733,16 @@
         },
         "Percent_Person_18To64Years_NoHealthInsurance_BlackOrAfricanAmericanAlone": {
           "val": {
+            "2008": 23.5,
+            "2009": 26.1,
+            "2010": 28.2,
+            "2011": 28.4,
+            "2012": 27.7,
+            "2013": 26.2,
+            "2014": 23.3,
+            "2015": 17.9,
+            "2016": 16.5,
+            "2017": 18.1,
             "2018": 17.7,
             "2019": 17.2,
             "2020": 19.4,
@@ -1707,6 +1758,16 @@
         },
         "Percent_Person_18To64Years_NoHealthInsurance_HispanicOrLatino": {
           "val": {
+            "2008": 40.7,
+            "2009": 42.5,
+            "2010": 42.7,
+            "2011": 43.5,
+            "2012": 41.9,
+            "2013": 41.6,
+            "2014": 36.1,
+            "2015": 32.9,
+            "2016": 32.3,
+            "2017": 29.7,
             "2018": 31.3,
             "2019": 30,
             "2020": 30.5,
@@ -1722,6 +1783,16 @@
         },
         "Percent_Person_18To64Years_NoHealthInsurance_WhiteAlone": {
           "val": {
+            "2008": 15.3,
+            "2009": 16.3,
+            "2010": 16.4,
+            "2011": 17,
+            "2012": 16.8,
+            "2013": 16.2,
+            "2014": 14.1,
+            "2015": 12.1,
+            "2016": 11.3,
+            "2017": 11.5,
             "2018": 12,
             "2019": 12.7,
             "2020": 12.6,
@@ -2052,8 +2123,8 @@
   },
   "latestPopulation": {
     "country/USA": {
-      "date": "2024",
-      "value": 340110988,
+      "date": "2025",
+      "value": 341784857,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -2062,8 +2133,8 @@
       }
     },
     "geoId/04": {
-      "date": "2024",
-      "value": 7582384,
+      "date": "2025",
+      "value": 7623818,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -2072,8 +2143,8 @@
       }
     },
     "geoId/06": {
-      "date": "2024",
-      "value": 39431263,
+      "date": "2025",
+      "value": 39355309,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -2132,8 +2203,8 @@
       }
     },
     "geoId/08": {
-      "date": "2024",
-      "value": 5957493,
+      "date": "2025",
+      "value": 6012561,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -2142,8 +2213,8 @@
       }
     },
     "geoId/18": {
-      "date": "2024",
-      "value": 6924275,
+      "date": "2025",
+      "value": 6973333,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -2152,8 +2223,8 @@
       }
     },
     "geoId/22": {
-      "date": "2024",
-      "value": 4597740,
+      "date": "2025",
+      "value": 4618189,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -2162,8 +2233,8 @@
       }
     },
     "geoId/29": {
-      "date": "2024",
-      "value": 6245466,
+      "date": "2025",
+      "value": 6270541,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -2172,8 +2243,8 @@
       }
     },
     "geoId/38": {
-      "date": "2024",
-      "value": 796568,
+      "date": "2025",
+      "value": 799358,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -2182,8 +2253,8 @@
       }
     },
     "geoId/47": {
-      "date": "2024",
-      "value": 7227750,
+      "date": "2025",
+      "value": 7315076,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -2192,8 +2263,8 @@
       }
     },
     "geoId/48": {
-      "date": "2024",
-      "value": 31290831,
+      "date": "2025",
+      "value": 31709821,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -2202,8 +2273,8 @@
       }
     },
     "geoId/53": {
-      "date": "2024",
-      "value": 7958180,
+      "date": "2025",
+      "value": 8001020,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -2212,8 +2283,8 @@
       }
     },
     "geoId/72": {
-      "date": "2024",
-      "value": 3203295,
+      "date": "2025",
+      "value": 3184835,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",

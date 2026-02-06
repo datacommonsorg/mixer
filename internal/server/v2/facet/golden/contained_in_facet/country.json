@@ -38,7 +38,13 @@
               "facet_id": "563701067"
             },
             {
+              "facet_id": "2667716919"
+            },
+            {
               "facet_id": "1897073702"
+            },
+            {
+              "facet_id": "248325961"
             },
             {
               "facet_id": "2882445785"
@@ -75,6 +81,9 @@
             },
             {
               "facet_id": "3614729857"
+            },
+            {
+              "facet_id": "1024534950"
             },
             {
               "facet_id": "1250580925"
@@ -137,6 +146,9 @@
               "facet_id": "1733625304"
             },
             {
+              "facet_id": "2488031303"
+            },
+            {
               "facet_id": "4181918134"
             },
             {
@@ -183,6 +195,10 @@
     }
   },
   "facets": {
+    "1024534950": {
+      "import_name": "Bulgaria_Census",
+      "provenance_url": "https://www.nsi.bg/en/statistical-data/206/649"
+    },
     "10983471": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S2601A",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S2601A&tid=ACSST5Y2023.S2601A",
@@ -305,6 +321,16 @@
       "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
       "measurement_method": "WikidataPopulation"
     },
+    "248325961": {
+      "import_name": "Poland_Census",
+      "provenance_url": "https://stat.gov.pl/en/databases/"
+    },
+    "2488031303": {
+      "import_name": "NITIIndiaPopulationProjection",
+      "provenance_url": "https://ndap.niti.gov.in/dataset/7208, https://ndap.niti.gov.in/dataset/7209",
+      "measurement_method": "NITIIndiaProjection",
+      "is_dc_aggregate": true
+    },
     "2517965213": {
       "import_name": "CensusPEP",
       "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
@@ -319,6 +345,10 @@
       "provenance_url": "https://www.census.gov/",
       "measurement_method": "CensusACS5yrSurvey",
       "is_dc_aggregate": true
+    },
+    "2667716919": {
+      "import_name": "Finland_Census",
+      "provenance_url": "https://pxdata.stat.fi/PxWeb/pxweb/en/StatFin/StatFin__vaerak/statfin_vaerak_pxt_11ra.px/table/tableViewLayout1/"
     },
     "2708675871": {
       "import_name": "Japan_Census",

@@ -957,6 +957,10 @@
       "dcid": "dc/e351bke5y8c75"
     },
     {
+      "name": "Count of pregnant women, male, condition hepatitis B",
+      "dcid": "Count_PregnantWoman_Male_ConditionHepatitisB"
+    },
+    {
       "name": "Estimated Number Of Pregnant Women Living With Hiv",
       "dcid": "WHO/HIV_0000000020"
     },
@@ -1753,6 +1757,18 @@
       "dcid": "Count_Person_Female_WithModeratelyElevatedBloodPressureOrSeverelyElevatedBloodPressure_AsAFractionOf_Count_Person_Female"
     },
     {
+      "name": "Count of Pregnant Women, 10 To 19 Years, Male, Condition Hepatitis B",
+      "dcid": "Count_PregnantWoman_10To19Years_Male_ConditionHepatitisB"
+    },
+    {
+      "name": "Count of Pregnant Women, 20 To 29 Years, Male, Condition Hepatitis B",
+      "dcid": "Count_PregnantWoman_20To29Years_Male_ConditionHepatitisB"
+    },
+    {
+      "name": "Count of Pregnant Women, 70 Or More Years, Male, Condition Hepatitis B",
+      "dcid": "Count_PregnantWoman_70OrMoreYears_Male_ConditionHepatitisB"
+    },
+    {
       "name": "Number of divorced women aged 15 years",
       "dcid": "Count_Person_15Years_Female_Divorced"
     },
@@ -1839,6 +1855,10 @@
     {
       "name": "Number of pregnant women aged 70 or more years affected by Hepatitis B.",
       "dcid": "Count_PregnantWoman_70OrMoreYears_Female_ConditionHepatitisB"
+    },
+    {
+      "name": "Number of pregnant women infected with COVID-19 who have received at least one vaccine dose",
+      "dcid": "Count_Person_COVID19_ConditionPregnant_AtLeastOneVaccineDose"
     },
     {
       "name": "Number of widowed women aged 15 years and older",

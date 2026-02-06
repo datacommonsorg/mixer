@@ -865,6 +865,10 @@
       "dcid": "sdg/VC_PRS_UNSNT.SEX--F"
     },
     {
+      "name": "Average age of females",
+      "dcid": "Mean_Age_Person_Female"
+    },
+    {
       "name": "Count of Live Birth Pregnancy Event: Male or Female Sterilization (As Fraction of Count Birth Event Live Birth)",
       "dcid": "Percent_LiveBirthPregnancyEvent_MaleOrFemaleSterilization_AsAFractionOf_Count_BirthEvent_LiveBirth"
     },
@@ -3995,10 +3999,6 @@
     {
       "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Trachoma, Female]",
       "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE031__SEX--F"
-    },
-    {
-      "name": "Disease burden (number of disability-adjusted life years (DALYs) per 100 000 population) [Trichomoniasis, Female]",
-      "dcid": "who/GHE_DALYRATE.GHECAUSES--GHE008__SEX--F"
     }
   ],
   "matches": [
