@@ -354,14 +354,6 @@ service Mixer {
     };
   }
 
-  rpc BulkVariables(datacommons.v1.BulkVariablesRequest)
-      returns (datacommons.v1.BulkVariablesResponse) {
-    option (google.api.http) = {
-      get : "/v1/bulk/variables"
-      additional_bindings : {post : "/v1/bulk/variables" body : "*"}
-    };
-  }
-
   rpc PlaceInfo(datacommons.v1.PlaceInfoRequest)
       returns (datacommons.v1.PlaceInfoResponse) {
     option (google.api.http) = {

@@ -110,13 +110,6 @@ func (s *Server) Variables(
 	return variables.Variables(ctx, in, s.store)
 }
 
-// BulkVariables implements API for mixer.BulkVariables.
-func (s *Server) BulkVariables(
-	ctx context.Context, in *pbv1.BulkVariablesRequest,
-) (*pbv1.BulkVariablesResponse, error) {
-	return variables.BulkVariables(ctx, in, s.store)
-}
-
 // PlaceInfo implements API for mixer.PlaceInfo.
 func (s *Server) PlaceInfo(
 	ctx context.Context, in *pbv1.PlaceInfoRequest,
