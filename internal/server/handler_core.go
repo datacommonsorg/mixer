@@ -31,66 +31,49 @@ import (
 )
 
 // V2ResolveCore gets resolve results from Cloud Bigtable and Maps API.
+//
+// Assumes inputs have been validated and the property expression has been parsed.
+//
+// Inputs:
+//   - inProp: The property of the input nodes to match against (e.g., "description", "geoCoordinate", "wikidataId").
+//   - outProp: The target property to retrieve (e.g., "dcid", "nutsCode").
+//   - typeOfValues: Optional values to filter by type (e.g., ["City", "County"]). Only used when inProp is "description" or "geoCoordinate" (or for indicator resolution).
 func (s *Server) V2ResolveCore(
-	ctx context.Context, in *pbv2.ResolveRequest,
+	ctx context.Context,
+	in *pbv2.ResolveRequest,
+	inProp string,
+	outProp string,
+	typeOfValues []string,
 ) (*pbv2.ResolveResponse, error) {
 	// Check for explicit "indicator" resolver, otherwise default to legacy place resolver logic.
-	resolver := in.GetResolver()
-	if resolver == ResolveResolverIndicator {
+	if resolver := in.GetResolver(); resolver == ResolveResolverIndicator {
 		if !s.flags.EnableEmbeddingsResolver {
 			return nil, status.Errorf(codes.Unimplemented, "Resolving indicators is not enabled for this environment.")
 		}
-		return resolve.ResolveUsingEmbeddings(ctx, s.httpClient, s.embeddingsServerURL, s.resolveEmbeddingsIndexes, in.GetNodes())
+		return resolve.ResolveUsingEmbeddings(ctx, s.httpClient, s.embeddingsServerURL, s.resolveEmbeddingsIndexes, in.GetNodes(), typeOfValues)
 	}
 
-	arcs, err := v2.ParseProperty(in.GetProperty())
-	if err != nil {
-		return nil, err
-	}
-
-	if len(arcs) != 2 {
-		return nil, status.Errorf(codes.InvalidArgument,
-			"invalid property for resolving: %s", in.GetProperty())
-	}
-
-	inArc := arcs[0]
-	outArc := arcs[1]
-	if inArc.Out || !outArc.Out {
-		return nil, status.Errorf(codes.InvalidArgument,
-			"invalid property for resolving: %s", in.GetProperty())
-	}
-
-	if inArc.SingleProp == "geoCoordinate" && outArc.SingleProp == "dcid" {
+	// Resolve places based on property expression
+	switch inProp {
+	case GeoCoordinateProperty:
 		// Coordinate to ID:
 		// Example:
 		//   <-geoCoordinate->dcid
-		return resolve.Coordinate(ctx, s.store, in.GetNodes(),
-			inArc.Filter["typeOf"])
-	}
-
-	if inArc.SingleProp == "description" && outArc.SingleProp == "dcid" {
+		return resolve.Coordinate(ctx, s.store, in.GetNodes(), typeOfValues)
+	case DescriptionProperty:
 		// Description (name) to ID:
 		// Examples:
 		//   <-description->dcid
 		//   <-description{typeOf:City}->dcid
 		//   <-description{typeOf:[City, County]}->dcid
-		return resolve.Description(
-			ctx,
-			s.store,
-			s.mapsClient,
-			in.GetNodes(),
-			inArc.Filter["typeOf"])
+		return resolve.Description(ctx, s.store, s.mapsClient, in.GetNodes(), typeOfValues)
+	default:
+		// ID to ID:
+		// Example:
+		//   <-wikidataId->dcid
+		//   <-countryNumericCode->wikidataId
+		return resolve.ID(ctx, s.store, in.GetNodes(), inProp, outProp)
 	}
-
-	// ID to ID:
-	// Example:
-	//   <-wikidataId->nutsCode
-	return resolve.ID(
-		ctx,
-		s.store,
-		in.GetNodes(),
-		inArc.SingleProp,
-		outArc.SingleProp)
 }
 
 // V2NodeCore gets node results from Cloud Bigtable.
