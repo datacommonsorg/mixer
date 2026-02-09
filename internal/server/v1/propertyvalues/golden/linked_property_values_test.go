@@ -28,8 +28,6 @@ import (
 )
 
 func TestLinkedPropertyValues(t *testing.T) {
-	// TODO: re-enable after b/459854585 is fixed.
-	t.Skip("This test is currently disabled")
 	t.Parallel()
 	ctx := context.Background()
 
