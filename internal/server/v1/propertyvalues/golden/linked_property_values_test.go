@@ -14,6 +14,8 @@
 
 package golden
 
+/*
+ * TODO(b/59854585): disabled to unblock data release
 import (
 	"context"
 	"path"
@@ -27,8 +29,6 @@ import (
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-/*
- * TODO(b/59854585): disabled to unblock data release
 func TestLinkedPropertyValues(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
