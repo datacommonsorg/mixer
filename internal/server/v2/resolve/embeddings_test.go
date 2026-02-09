@@ -15,8 +15,8 @@ func TestResolveUsingEmbeddings(t *testing.T) {
 	// Candidate 1: "Count_Person" (StatisticalVariable) with high score.
 	// Candidate 2: "dc/topic/Population" (Topic) with lower score.
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if r.URL.Path != "/api/search_vars" {
-			t.Errorf("Expected path /api/search_vars, got %s", r.URL.Path)
+		if r.URL.Path != SearchVarsQueryEndpoint {
+			t.Errorf("Expected path %s, got %s", SearchVarsQueryEndpoint, r.URL.Path)
 		}
 
 		if err := json.NewEncoder(w).Encode(map[string]interface{}{
