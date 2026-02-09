@@ -33,6 +33,7 @@ const (
 	TopicDcidSubstring              = "/topic/"
 	TopicDominantType               = "Topic"
 	StatisticalVariableDominantType = "StatisticalVariable"
+	SearchVarsQueryEndpoint         = "/api/search_vars/"
 )
 
 // searchVarsRequest represents the request body for the embeddings server
@@ -127,12 +128,12 @@ func callEmbeddingsServer(
 	}
 
 	// Create the HTTP request
-	url := embeddingsServerURL + "/api/search_vars"
+	searchVarsUrl := embeddingsServerURL + SearchVarsQueryEndpoint
 	// The embeddings server expects the index to be passed as a query parameter
 	if idx != "" {
-		url += "?idx=" + idx
+		searchVarsUrl += "?idx=" + idx
 	}
-	req, err := http.NewRequestWithContext(ctx, "POST", url, bytes.NewBuffer(requestBytes))
+	req, err := http.NewRequestWithContext(ctx, "POST", searchVarsUrl, bytes.NewBuffer(requestBytes))
 	if err != nil {
 		slog.Error("Failed to create embeddings server request", "error", err, "url", embeddingsServerURL)
 		return nil, status.Errorf(codes.Internal, "An internal error occurred while connecting to the resolution service.")
