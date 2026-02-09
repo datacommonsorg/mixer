@@ -79,7 +79,6 @@ const (
 	Mixer_Triples_FullMethodName                      = "/datacommons.Mixer/Triples"
 	Mixer_BulkTriples_FullMethodName                  = "/datacommons.Mixer/BulkTriples"
 	Mixer_Variables_FullMethodName                    = "/datacommons.Mixer/Variables"
-	Mixer_BulkVariables_FullMethodName                = "/datacommons.Mixer/BulkVariables"
 	Mixer_PlaceInfo_FullMethodName                    = "/datacommons.Mixer/PlaceInfo"
 	Mixer_BulkPlaceInfo_FullMethodName                = "/datacommons.Mixer/BulkPlaceInfo"
 	Mixer_VariableInfo_FullMethodName                 = "/datacommons.Mixer/VariableInfo"
@@ -170,7 +169,6 @@ type MixerClient interface {
 	Triples(ctx context.Context, in *v1.TriplesRequest, opts ...grpc.CallOption) (*v1.TriplesResponse, error)
 	BulkTriples(ctx context.Context, in *v1.BulkTriplesRequest, opts ...grpc.CallOption) (*v1.BulkTriplesResponse, error)
 	Variables(ctx context.Context, in *v1.VariablesRequest, opts ...grpc.CallOption) (*v1.VariablesResponse, error)
-	BulkVariables(ctx context.Context, in *v1.BulkVariablesRequest, opts ...grpc.CallOption) (*v1.BulkVariablesResponse, error)
 	PlaceInfo(ctx context.Context, in *v1.PlaceInfoRequest, opts ...grpc.CallOption) (*v1.PlaceInfoResponse, error)
 	BulkPlaceInfo(ctx context.Context, in *v1.BulkPlaceInfoRequest, opts ...grpc.CallOption) (*v1.BulkPlaceInfoResponse, error)
 	VariableInfo(ctx context.Context, in *v1.VariableInfoRequest, opts ...grpc.CallOption) (*v1.VariableInfoResponse, error)
@@ -539,15 +537,6 @@ func (c *mixerClient) Variables(ctx context.Context, in *v1.VariablesRequest, op
 	return out, nil
 }
 
-func (c *mixerClient) BulkVariables(ctx context.Context, in *v1.BulkVariablesRequest, opts ...grpc.CallOption) (*v1.BulkVariablesResponse, error) {
-	out := new(v1.BulkVariablesResponse)
-	err := c.cc.Invoke(ctx, Mixer_BulkVariables_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *mixerClient) PlaceInfo(ctx context.Context, in *v1.PlaceInfoRequest, opts ...grpc.CallOption) (*v1.PlaceInfoResponse, error) {
 	out := new(v1.PlaceInfoResponse)
 	err := c.cc.Invoke(ctx, Mixer_PlaceInfo_FullMethodName, in, out, opts...)
@@ -828,7 +817,6 @@ type MixerServer interface {
 	Triples(context.Context, *v1.TriplesRequest) (*v1.TriplesResponse, error)
 	BulkTriples(context.Context, *v1.BulkTriplesRequest) (*v1.BulkTriplesResponse, error)
 	Variables(context.Context, *v1.VariablesRequest) (*v1.VariablesResponse, error)
-	BulkVariables(context.Context, *v1.BulkVariablesRequest) (*v1.BulkVariablesResponse, error)
 	PlaceInfo(context.Context, *v1.PlaceInfoRequest) (*v1.PlaceInfoResponse, error)
 	BulkPlaceInfo(context.Context, *v1.BulkPlaceInfoRequest) (*v1.BulkPlaceInfoResponse, error)
 	VariableInfo(context.Context, *v1.VariableInfoRequest) (*v1.VariableInfoResponse, error)
@@ -976,9 +964,6 @@ func (UnimplementedMixerServer) BulkTriples(context.Context, *v1.BulkTriplesRequ
 }
 func (UnimplementedMixerServer) Variables(context.Context, *v1.VariablesRequest) (*v1.VariablesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Variables not implemented")
-}
-func (UnimplementedMixerServer) BulkVariables(context.Context, *v1.BulkVariablesRequest) (*v1.BulkVariablesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method BulkVariables not implemented")
 }
 func (UnimplementedMixerServer) PlaceInfo(context.Context, *v1.PlaceInfoRequest) (*v1.PlaceInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PlaceInfo not implemented")
@@ -1712,24 +1697,6 @@ func _Mixer_Variables_Handler(srv interface{}, ctx context.Context, dec func(int
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Mixer_BulkVariables_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(v1.BulkVariablesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).BulkVariables(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_BulkVariables_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).BulkVariables(ctx, req.(*v1.BulkVariablesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _Mixer_PlaceInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(v1.PlaceInfoRequest)
 	if err := dec(in); err != nil {
@@ -2312,10 +2279,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Variables",
 			Handler:    _Mixer_Variables_Handler,
-		},
-		{
-			MethodName: "BulkVariables",
-			Handler:    _Mixer_BulkVariables_Handler,
 		},
 		{
 			MethodName: "PlaceInfo",
