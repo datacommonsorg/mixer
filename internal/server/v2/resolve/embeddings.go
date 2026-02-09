@@ -128,12 +128,12 @@ func callEmbeddingsServer(
 	}
 
 	// Create the HTTP request
-	searchVarsUrl := embeddingsServerURL + SearchVarsQueryEndpoint
+	searchVarsURL := embeddingsServerURL + SearchVarsQueryEndpoint
 	// The embeddings server expects the index to be passed as a query parameter
 	if idx != "" {
-		searchVarsUrl += "?idx=" + idx
+		searchVarsURL += "?idx=" + idx
 	}
-	req, err := http.NewRequestWithContext(ctx, "POST", searchVarsUrl, bytes.NewBuffer(requestBytes))
+	req, err := http.NewRequestWithContext(ctx, "POST", searchVarsURL, bytes.NewBuffer(requestBytes))
 	if err != nil {
 		slog.Error("Failed to create embeddings server request", "error", err, "url", embeddingsServerURL)
 		return nil, status.Errorf(codes.Internal, "An internal error occurred while connecting to the resolution service.")
