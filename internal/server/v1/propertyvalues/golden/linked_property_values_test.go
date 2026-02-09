@@ -14,8 +14,6 @@
 
 package golden
 
-/*
- * TODO(b/59854585): disabled to unblock data release
 import (
 	"context"
 	"path"
@@ -30,6 +28,8 @@ import (
 )
 
 func TestLinkedPropertyValues(t *testing.T) {
+	// TODO: re-enable after b/459854585 is fixed.
+	t.Skip("This test is currently disabled")
 	t.Parallel()
 	ctx := context.Background()
 
@@ -80,4 +80,3 @@ func TestLinkedPropertyValues(t *testing.T) {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }
-*/
