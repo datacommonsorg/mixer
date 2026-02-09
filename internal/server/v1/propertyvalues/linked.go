@@ -16,6 +16,7 @@ package propertyvalues
 
 import (
 	"context"
+	"log/slog"
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -80,7 +81,11 @@ func LinkedPropertyValues(
 	for _, dcid := range valueDcids {
 		var name string
 		if tmp, ok := data[dcid]["name"]; ok {
-			name = tmp[""][0].Value
+			if values, ok := tmp[""]; ok && len(values) > 0 {
+				name = values[0].Value
+			} else {
+				slog.Error("LinkedPropertyValues response missing name", "dcid", dcid)
+			}
 		}
 		result.Values = append(result.Values,
 			&pb.EntityInfo{
