@@ -369,7 +369,7 @@
     "Unit": "",
     "ScalingFactor": "",
     "IsDcAggregate": false,
-    "ProvenanceURL": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101"
+    "ProvenanceURL": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2023.S0101"
   },
   {
     "VariableMeasured": "Count_Person",
@@ -1213,7 +1213,7 @@
     "Unit": "",
     "ScalingFactor": "",
     "IsDcAggregate": false,
-    "ProvenanceURL": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101"
+    "ProvenanceURL": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2023.S0101"
   },
   {
     "VariableMeasured": "Count_Person",
@@ -2053,7 +2053,7 @@
     "Unit": "",
     "ScalingFactor": "",
     "IsDcAggregate": false,
-    "ProvenanceURL": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101"
+    "ProvenanceURL": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2023.S0101"
   },
   {
     "VariableMeasured": "Count_Person",
@@ -2657,7 +2657,7 @@
     "Unit": "Years",
     "ScalingFactor": "",
     "IsDcAggregate": false,
-    "ProvenanceURL": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101"
+    "ProvenanceURL": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2023.S0101"
   },
   {
     "VariableMeasured": "Median_Age_Person",
@@ -2793,7 +2793,7 @@
     "Unit": "Years",
     "ScalingFactor": "",
     "IsDcAggregate": false,
-    "ProvenanceURL": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101"
+    "ProvenanceURL": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2023.S0101"
   },
   {
     "VariableMeasured": "Median_Age_Person",
@@ -2929,6 +2929,6 @@
     "Unit": "Years",
     "ScalingFactor": "",
     "IsDcAggregate": false,
-    "ProvenanceURL": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2022.S0101"
+    "ProvenanceURL": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2023.S0101"
   }
 ]

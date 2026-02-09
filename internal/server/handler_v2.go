@@ -19,7 +19,6 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
-	"math/rand"
 	"strings"
 	"time"
 
@@ -117,8 +116,7 @@ func (s *Server) V2Resolve(
 func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 	*pbv2.NodeResponse, error,
 ) {
-	if rand.Float64() < s.flags.V2DivertFraction {
-		slog.Info("V2Node request diverted to dispatcher backend", "request", in)
+	if s.shouldDivertV2(ctx) {
 		return s.dispatcher.Node(ctx, in, datasources.DefaultPageSize)
 	}
 
@@ -277,8 +275,7 @@ func (s *Server) V2Event(
 func (s *Server) V2Observation(
 	ctx context.Context, in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, error) {
-	if rand.Float64() < s.flags.V2DivertFraction {
-		slog.Info("V2Observation request diverted to dispatcher backend", "request", in)
+	if s.shouldDivertV2(ctx) {
 		return s.dispatcher.Observation(ctx, in)
 	}
 
@@ -345,10 +342,33 @@ func (s *Server) V2Observation(
 func (s *Server) V2Sparql(
 	ctx context.Context, in *pb.SparqlRequest,
 ) (*pb.QueryResponse, error) {
+	if s.shouldDivertV2(ctx) {
+		return s.dispatcher.Sparql(ctx, in)
+	}
+
+	v2StartTime := time.Now()
+
 	legacyRequest := &pb.QueryRequest{
 		Sparql: in.Query,
 	}
-	return translator.Query(ctx, legacyRequest, s.metadata, s.store)
+	v2Resp, err := translator.Query(ctx, legacyRequest, s.metadata, s.store)
+	if err != nil {
+		return nil, err
+	}
+	v2Latency := time.Since(v2StartTime)
+
+	s.maybeMirrorV3(
+		ctx,
+		in,
+		v2Resp,
+		v2Latency,
+		func(ctx context.Context, req proto.Message) (proto.Message, error) {
+			return s.V3Sparql(ctx, req.(*pb.SparqlRequest))
+		},
+		GetV2SparqlCmpOpts(),
+	)
+
+	return v2Resp, nil
 }
 
 // FilterStatVarsByEntity implements API for Mixer.FilterStatVarsByEntity.

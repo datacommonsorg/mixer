@@ -33,135 +33,90 @@ const (
 
 // DataSources struct uses underlying data sources to respond to API requests.
 type DataSources struct {
-	sources []*datasource.DataSource
+	sources []datasource.DataSource
 }
 
-func NewDataSources(sources []*datasource.DataSource) *DataSources {
+func NewDataSources(sources []datasource.DataSource) *DataSources {
 	return &DataSources{sources: sources}
 }
 
-func (ds *DataSources) Node(ctx context.Context, in *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
-	errGroup, errCtx := errgroup.WithContext(ctx)
-	dsRespChan := []chan *pbv2.NodeResponse{}
-
+// GetSources returns the list of data source IDs.
+func (ds *DataSources) GetSources() []string {
+	sources := make([]string, 0, len(ds.sources))
 	for _, source := range ds.sources {
-		src := *source
-		respChan := make(chan *pbv2.NodeResponse, 1)
+		sources = append(sources, source.Id())
+	}
+	return sources
+}
+
+func fetchAndMerge[req any, resp any](
+	ctx context.Context,
+	sources []datasource.DataSource,
+	in req,
+	fetcher func(context.Context, datasource.DataSource, req) (resp, error),
+	merger func([]resp) (resp, error),
+) (resp, error) {
+	errGroup, errCtx := errgroup.WithContext(ctx)
+	resps := make([]resp, len(sources))
+
+	for i, source := range sources {
+		i, src := i, source
 		errGroup.Go(func() error {
-			defer close(respChan)
-			resp, err := src.Node(errCtx, in, pageSize)
+			resp, err := fetcher(errCtx, src, in)
 			if err != nil {
 				return err
 			}
-			respChan <- resp
+			resps[i] = resp
 			return nil
 		})
-		dsRespChan = append(dsRespChan, respChan)
 	}
 
+	var zero resp
 	if err := errGroup.Wait(); err != nil {
-		return nil, err
+		return zero, err
 	}
 
-	allResp := []*pbv2.NodeResponse{}
-	for _, respChan := range dsRespChan {
-		allResp = append(allResp, <-respChan)
-	}
+	return merger(resps)
+}
 
-	return merger.MergeMultiNode(allResp)
+func (ds *DataSources) Node(ctx context.Context, in *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
+	return fetchAndMerge(ctx, ds.sources, in,
+		func(c context.Context, s datasource.DataSource, r *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+			return s.Node(c, r, pageSize)
+		},
+		merger.MergeMultiNode,
+	)
 }
 
 func (ds *DataSources) Observation(ctx context.Context, in *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
-	errGroup, errCtx := errgroup.WithContext(ctx)
-	dsRespChan := []chan *pbv2.ObservationResponse{}
-
-	for _, source := range ds.sources {
-		src := *source
-		respChan := make(chan *pbv2.ObservationResponse, 1)
-		errGroup.Go(func() error {
-			defer close(respChan)
-			resp, err := src.Observation(errCtx, in)
-			if err != nil {
-				return err
-			}
-			respChan <- resp
-			return nil
-		})
-		dsRespChan = append(dsRespChan, respChan)
-	}
-
-	if err := errGroup.Wait(); err != nil {
-		return nil, err
-	}
-
-	allResp := []*pbv2.ObservationResponse{}
-	for _, respChan := range dsRespChan {
-		allResp = append(allResp, <-respChan)
-	}
-
-	return merger.MergeMultiObservation(allResp), nil
+	return fetchAndMerge(ctx, ds.sources, in,
+		func(c context.Context, s datasource.DataSource, r *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
+			return s.Observation(c, r)
+		},
+		func(all []*pbv2.ObservationResponse) (*pbv2.ObservationResponse, error) {
+			return merger.MergeMultiObservation(all), nil
+		},
+	)
 }
 
 func (ds *DataSources) NodeSearch(ctx context.Context, in *pbv2.NodeSearchRequest) (*pbv2.NodeSearchResponse, error) {
-	errGroup, errCtx := errgroup.WithContext(ctx)
-	dsRespChan := []chan *pbv2.NodeSearchResponse{}
-
-	for _, source := range ds.sources {
-		src := *source
-		respChan := make(chan *pbv2.NodeSearchResponse, 1)
-		errGroup.Go(func() error {
-			defer close(respChan)
-			resp, err := src.NodeSearch(errCtx, in)
-			if err != nil {
-				return err
-			}
-			respChan <- resp
-			return nil
-		})
-		dsRespChan = append(dsRespChan, respChan)
-	}
-
-	if err := errGroup.Wait(); err != nil {
-		return nil, err
-	}
-
-	allResp := []*pbv2.NodeSearchResponse{}
-	for _, respChan := range dsRespChan {
-		allResp = append(allResp, <-respChan)
-	}
-
-	return merger.MergeMultiNodeSearch(allResp)
+	return fetchAndMerge(ctx, ds.sources, in,
+		func(c context.Context, s datasource.DataSource, r *pbv2.NodeSearchRequest) (*pbv2.NodeSearchResponse, error) {
+			return s.NodeSearch(c, r)
+		},
+		merger.MergeMultiNodeSearch,
+	)
 }
 
 func (ds *DataSources) Resolve(ctx context.Context, in *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
-	errGroup, errCtx := errgroup.WithContext(ctx)
-	dsRespChan := []chan *pbv2.ResolveResponse{}
-
-	for _, source := range ds.sources {
-		src := *source
-		respChan := make(chan *pbv2.ResolveResponse, 1)
-		errGroup.Go(func() error {
-			defer close(respChan)
-			resp, err := src.Resolve(errCtx, in)
-			if err != nil {
-				return err
-			}
-			respChan <- resp
-			return nil
-		})
-		dsRespChan = append(dsRespChan, respChan)
-	}
-
-	if err := errGroup.Wait(); err != nil {
-		return nil, err
-	}
-
-	allResp := []*pbv2.ResolveResponse{}
-	for _, respChan := range dsRespChan {
-		allResp = append(allResp, <-respChan)
-	}
-
-	return merger.MergeMultiResolve(allResp), nil
+	return fetchAndMerge(ctx, ds.sources, in,
+		func(c context.Context, s datasource.DataSource, r *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
+			return s.Resolve(c, r)
+		},
+		func(all []*pbv2.ResolveResponse) (*pbv2.ResolveResponse, error) {
+			return merger.MergeMultiResolve(all), nil
+		},
+	)
 }
 
 func (ds *DataSources) Sparql(ctx context.Context, in *pb.SparqlRequest) (*pb.QueryResponse, error) {
@@ -170,33 +125,12 @@ func (ds *DataSources) Sparql(ctx context.Context, in *pb.SparqlRequest) (*pb.Qu
 		return nil, err
 	}
 
-	// TODO: Collect common code pattern into shared function.
-	errGroup, errCtx := errgroup.WithContext(ctx)
-	dsRespChan := []chan *pb.QueryResponse{}
-
-	for _, source := range ds.sources {
-		src := *source
-		respChan := make(chan *pb.QueryResponse, 1)
-		errGroup.Go(func() error {
-			defer close(respChan)
-			resp, err := src.Sparql(errCtx, in)
-			if err != nil {
-				return err
-			}
-			respChan <- resp
-			return nil
-		})
-		dsRespChan = append(dsRespChan, respChan)
-	}
-
-	if err := errGroup.Wait(); err != nil {
-		return nil, err
-	}
-
-	allResp := []*pb.QueryResponse{}
-	for _, respChan := range dsRespChan {
-		allResp = append(allResp, <-respChan)
-	}
-
-	return merger.MergeMultiQueryResponse(allResp, opts.Orderby, opts.ASC, opts.Limit)
+	return fetchAndMerge(ctx, ds.sources, in,
+		func(c context.Context, s datasource.DataSource, r *pb.SparqlRequest) (*pb.QueryResponse, error) {
+			return s.Sparql(c, r)
+		},
+		func(all []*pb.QueryResponse) (*pb.QueryResponse, error) {
+			return merger.MergeMultiQueryResponse(all, opts.Orderby, opts.ASC, opts.Limit)
+		},
+	)
 }

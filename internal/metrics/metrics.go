@@ -87,6 +87,12 @@ var (
 	v3LatencyDiffHistogram    metric.Int64Histogram
 	v3ResponseMismatchCounter metric.Int64Counter
 	v3MirrorErrorCounter      metric.Int64Counter
+
+	// V2 diversion metrics
+	v2DiversionCounter metric.Int64Counter
+
+	// Spanner metrics
+	spannerQueryCounter metric.Int64Counter
 )
 
 // ResetForTest resets the metrics package for testing.
@@ -100,6 +106,8 @@ func ResetForTest() {
 	v3LatencyDiffHistogram = nil
 	v3ResponseMismatchCounter = nil
 	v3MirrorErrorCounter = nil
+	v2DiversionCounter = nil
+	spannerQueryCounter = nil
 }
 
 func initMetrics() {
@@ -144,6 +152,22 @@ func initMetrics() {
 	)
 	if err != nil {
 		slog.Error("Failed to create v3 mirror error counter", "error", err)
+	}
+
+	v2DiversionCounter, err = meter.Int64Counter(
+		"datacommons.mixer.v2_diversion",
+		metric.WithDescription("Count of V2 API calls that were diverted to the new backend"),
+	)
+	if err != nil {
+		slog.Error("Failed to create v2 diversion counter", "error", err)
+	}
+
+	spannerQueryCounter, err = meter.Int64Counter(
+		"datacommons.mixer.spanner_query",
+		metric.WithDescription("Count of Spanner queries from Mixer APIs"),
+	)
+	if err != nil {
+		slog.Error("Failed to create Spanner query counter", "error", err)
 	}
 }
 
@@ -349,5 +373,30 @@ func RecordV3MirrorError(ctx context.Context, err error) {
 		metric.WithAttributes(
 			attribute.String(rpcMethodAttr, getRpcMethod(ctx)),
 			attribute.String(rpcStatusCodeAttr, st.Code().String()),
+		))
+}
+
+// RecordV2Diversion increments a counter for V2 API calls that were diverted
+// to the new backend.
+func RecordV2Diversion(ctx context.Context) {
+	once.Do(initMetrics)
+	if v2DiversionCounter == nil {
+		return
+	}
+	v2DiversionCounter.Add(ctx, 1,
+		metric.WithAttributes(
+			attribute.String(rpcMethodAttr, getRpcMethod(ctx)),
+		))
+}
+
+// RecordSpannerQuery increments a counter for Spanner queries from Mixer APIs.
+func RecordSpannerQuery(ctx context.Context) {
+	once.Do(initMetrics)
+	if spannerQueryCounter == nil {
+		return
+	}
+	spannerQueryCounter.Add(ctx, 1,
+		metric.WithAttributes(
+			attribute.String(rpcMethodAttr, getRpcMethod(ctx)),
 		))
 }

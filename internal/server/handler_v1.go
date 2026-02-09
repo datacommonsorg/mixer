@@ -359,13 +359,6 @@ func (s *Server) BulkObservationsPoint(
 	return observations.BulkPoint(ctx, in, s.store)
 }
 
-// BulkObservationsPointLinked implements API for mixer.BulkObservationsPointLinked.
-func (s *Server) BulkObservationsPointLinked(
-	ctx context.Context, in *pbv1.BulkObservationsPointLinkedRequest,
-) (*pbv1.BulkObservationsPointResponse, error) {
-	return observations.BulkPointLinked(ctx, in, s.store)
-}
-
 // ObservationsSeries implements API for mixer.ObservationsSeries.
 func (s *Server) ObservationsSeries(
 	ctx context.Context, in *pbv1.ObservationsSeriesRequest,
@@ -485,13 +478,6 @@ func (s *Server) VariableAncestors(
 		return remoteResp, nil
 	}
 	return localResp, nil
-}
-
-// DerivedObservationsSeries implements API for mixer.ObservationsSeries.
-func (s *Server) DerivedObservationsSeries(
-	ctx context.Context, in *pbv1.DerivedObservationsSeriesRequest,
-) (*pbv1.DerivedObservationsSeriesResponse, error) {
-	return observations.DerivedSeries(ctx, in, s.store)
 }
 
 // RecognizePlaces implements API for Mixer.RecognizePlaces.
