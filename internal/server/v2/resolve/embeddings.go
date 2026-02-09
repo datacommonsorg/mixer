@@ -22,6 +22,8 @@ import (
 	"io"
 	"log/slog"
 	"net/http"
+	"net/url"
+	"path"
 	"strings"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
@@ -33,7 +35,7 @@ const (
 	TopicDcidSubstring              = "/topic/"
 	TopicDominantType               = "Topic"
 	StatisticalVariableDominantType = "StatisticalVariable"
-	SearchVarsQueryEndpoint         = "/api/search_vars/"
+	SearchVarsQueryEndpoint         = "/api/search_vars"
 )
 
 // searchVarsRequest represents the request body for the embeddings server
@@ -128,12 +130,21 @@ func callEmbeddingsServer(
 	}
 
 	// Create the HTTP request
-	searchVarsURL := embeddingsServerURL + SearchVarsQueryEndpoint
+	searchVarsURL, err := url.Parse(embeddingsServerURL)
+	if err != nil {
+		slog.Error("Failed to parse embeddings server URL", "error", err, "url", embeddingsServerURL)
+		return nil, status.Errorf(codes.Internal, "An internal error occurred while connecting to the resolution service.")
+	}
+	searchVarsURL.Path = path.Join(searchVarsURL.Path, SearchVarsQueryEndpoint)
+
 	// The embeddings server expects the index to be passed as a query parameter
 	if idx != "" {
-		searchVarsURL += "?idx=" + idx
+		q := searchVarsURL.Query()
+		q.Set("idx", idx)
+		searchVarsURL.RawQuery = q.Encode()
 	}
-	req, err := http.NewRequestWithContext(ctx, "POST", searchVarsURL, bytes.NewBuffer(requestBytes))
+
+	req, err := http.NewRequestWithContext(ctx, "POST", searchVarsURL.String(), bytes.NewBuffer(requestBytes))
 	if err != nil {
 		slog.Error("Failed to create embeddings server request", "error", err, "url", embeddingsServerURL)
 		return nil, status.Errorf(codes.Internal, "An internal error occurred while connecting to the resolution service.")
