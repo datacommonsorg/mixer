@@ -86,6 +86,7 @@ func ResolveUsingEmbeddings(
 	embeddingsServerURL string,
 	idx string,
 	nodes []string,
+	typeOfValues []string,
 ) (*pbv2.ResolveResponse, error) {
 	if embeddingsServerURL == "" {
 		slog.Error("resolver=indicator requested, but the embeddings server is not configured for this deployment")
@@ -97,7 +98,7 @@ func ResolveUsingEmbeddings(
 		return nil, err
 	}
 
-	return buildResolveResponse(nodes, searchResp), nil
+	return buildResolveResponse(nodes, searchResp, typeOfValues), nil
 }
 
 // callEmbeddingsServer handles the HTTP communication with the embeddings server.
@@ -183,7 +184,7 @@ func callEmbeddingsServer(
 // It iterates through the original requested nodes (queries) and attempts to find
 // corresponding results in the searchResp. If results are found, it delegates
 // to buildEntityCandidates to construct the candidate list.
-func buildResolveResponse(nodes []string, searchResp *searchVarsResponse) *pbv2.ResolveResponse {
+func buildResolveResponse(nodes []string, searchResp *searchVarsResponse, typeOfValues []string) *pbv2.ResolveResponse {
 	resolveResponse := &pbv2.ResolveResponse{
 		Entities: make([]*pbv2.ResolveResponse_Entity, 0, len(nodes)),
 	}
@@ -194,7 +195,7 @@ func buildResolveResponse(nodes []string, searchResp *searchVarsResponse) *pbv2.
 		}
 
 		if result, ok := searchResp.QueryResults[node]; ok {
-			entity.Candidates = buildEntityCandidates(&result)
+			entity.Candidates = buildEntityCandidates(&result, typeOfValues)
 		}
 		resolveResponse.Entities = append(resolveResponse.Entities, entity)
 	}
@@ -208,7 +209,7 @@ func buildResolveResponse(nodes []string, searchResp *searchVarsResponse) *pbv2.
 //   - Uses 'CosineScore' as the primary score.
 //   - Determines 'DominantType' based on the DCID (Topic vs StatVar).
 //   - Extracts the best matching sentence for metadata if available.
-func buildEntityCandidates(result *searchResult) []*pbv2.ResolveResponse_Entity_Candidate {
+func buildEntityCandidates(result *searchResult, typeOfValues []string) []*pbv2.ResolveResponse_Entity_Candidate {
 	candidates := make([]*pbv2.ResolveResponse_Entity_Candidate, 0, len(result.SV))
 	for i, statVarDcid := range result.SV {
 		// Safety check for parallel arrays
@@ -223,6 +224,20 @@ func buildEntityCandidates(result *searchResult) []*pbv2.ResolveResponse_Entity_
 		dominantType := StatisticalVariableDominantType
 		if strings.Contains(statVarDcid, TopicDcidSubstring) {
 			dominantType = TopicDominantType
+		}
+
+		// Filter by type if provided
+		if len(typeOfValues) > 0 {
+			match := false
+			for _, t := range typeOfValues {
+				if t == dominantType {
+					match = true
+					break
+				}
+			}
+			if !match {
+				continue
+			}
 		}
 
 		candidate := &pbv2.ResolveResponse_Entity_Candidate{

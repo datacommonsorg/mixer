@@ -28,6 +28,14 @@ const (
 	// ResolveResolverIndicator is the resolver name for indicator/embeddings resolution.
 	ResolveResolverIndicator = "indicator"
 
-	// ResolvePropertyDescription is the default property for resolution.
-	ResolvePropertyDescription = "<-description->dcid"
+	// ResolveDefaultPropertyExpression is the property name for description.
+	ResolveDefaultPropertyExpression = "<-description->dcid"
+	// DcidProperty is the property name for dcid.
+	DcidProperty = "dcid"
+	// DescriptionProperty is the property name for description.
+	DescriptionProperty = "description"
+	// GeoCoordinateProperty is the property name for geoCoordinate.
+	GeoCoordinateProperty = "geoCoordinate"
+	// TypeOfProperty is the property name for typeOf.
+	TypeOfProperty = "typeOf"
 )
