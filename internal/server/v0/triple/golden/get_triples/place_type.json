@@ -3983,6 +3983,20 @@
       "provenanceId": "dc/base/BaseSchema"
     },
     {
+      "subjectId": "tradePartner",
+      "subjectName": "tradePartner",
+      "subjectTypes": [
+        "Property"
+      ],
+      "predicate": "rangeIncludes",
+      "objectId": "Country",
+      "objectName": "Country",
+      "objectTypes": [
+        "Class"
+      ],
+      "provenanceId": "dc/base/BaseSchema"
+    },
+    {
       "subjectId": "wikidataId/Q130340667",
       "subjectName": "Sovereign State of the Bektashi Order",
       "subjectTypes": [
