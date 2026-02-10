@@ -125,7 +125,7 @@
       "dcid": "Count_Person_BachelorOfNursingAndMidwifery"
     },
     {
-      "name": "Count of person with bachelor's degree in oral andsetMaxillofacial Studies",
+      "name": "Count of person with bachelor's degree in oral and Maxillofacial Studies",
       "dcid": "Count_Person_BachelorOfOralAndMaxillofacialStudies"
     },
     {
@@ -309,6 +309,10 @@
       "dcid": "Count_Person_Intersex"
     },
     {
+      "name": "Number of people infected with COVID-19",
+      "dcid": "Count_Person_COVID19"
+    },
+    {
       "name": "Number of people living in slum area",
       "dcid": "Count_Person_SlumArea"
     },
@@ -357,6 +361,18 @@
       "dcid": "Count_Person_16To30Years"
     },
     {
+      "name": "Number of persons born in Finland",
+      "dcid": "Count_Person_PlaceOfBirthCountryFIN"
+    },
+    {
+      "name": "Number of persons born in the area of the residence",
+      "dcid": "Count_Person_PlaceOfBirthBornInAreaOfResidence"
+    },
+    {
+      "name": "Number of persons born outside the area of the residence",
+      "dcid": "Count_Person_PlaceOfBirthBornOutsideAreaOfResidence"
+    },
+    {
       "name": "Number of persons employed in the commodity sector",
       "dcid": "Count_Person_CommoditySector"
     },
@@ -373,6 +389,22 @@
       "dcid": "Count_Person_SubsistenceAgriculture"
     },
     {
+      "name": "Number of persons who speak Finnish at home",
+      "dcid": "Count_Person_FinnishSpokenAtHome"
+    },
+    {
+      "name": "Number of persons who speak Sami at home",
+      "dcid": "Count_Person_SamiSpokenAtHome"
+    },
+    {
+      "name": "Number of persons who speak Swedish at home",
+      "dcid": "Count_Person_SwedishSpokenAtHome"
+    },
+    {
+      "name": "Number of persons who speak a language other than Finnish at home",
+      "dcid": "Count_Person_FINOtherLanguagesSpokenAtHome"
+    },
+    {
       "name": "Number of persons with agriculture degree",
       "dcid": "Count_Person_Agriculture"
     },
@@ -383,6 +415,10 @@
     {
       "name": "Number of persons with engineering manufacturing degree",
       "dcid": "Count_Person_EngineeringManufacturing"
+    },
+    {
+      "name": "Number of persons with foreign background",
+      "dcid": "Count_Person_ForeignBackground"
     },
     {
       "name": "Number of persons with general education degree",
@@ -795,6 +831,18 @@
     {
       "name": "Population of non-citizens",
       "dcid": "Count_Person_NotACitizen"
+    },
+    {
+      "name": "Population, 0 to 2 years",
+      "dcid": "Count_Person_0To2Years"
+    },
+    {
+      "name": "Population, 13 to 15 years",
+      "dcid": "Count_Person_13To15Years"
+    },
+    {
+      "name": "Population, 3 to 6 years",
+      "dcid": "Count_Person_3To6Years"
     },
     {
       "name": "Population: 0 - 14 Years",
@@ -2977,6 +3025,86 @@
       "dcid": "Count_Person_Male_AsAFractionOf_Count_Person"
     },
     {
+      "name": "Percentage of persons aged 14 years or younger or aged 65 years or older",
+      "dcid": "Count_Person_YearsUpto14OrYears65Onwards_AsAFractionOf_Count_Person_15To64Years"
+    },
+    {
+      "name": "Percentage of persons aged 15 to 64 years",
+      "dcid": "Count_Person_15To64Years_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Percentage of persons born in the area of the residence",
+      "dcid": "Count_Person_PlaceOfBirthBornInAreaOfResidence_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Percentage of persons born outside Finland",
+      "dcid": "Count_Person_PlaceOfBirthForeignBorn_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Percentage of persons living in inner urban areas",
+      "dcid": "Count_Person_InnerUrban_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Percentage of persons living in local centres in rural areas",
+      "dcid": "Count_Person_LocalCentreRural_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Percentage of persons living in outer urban areas",
+      "dcid": "Count_Person_OuterUrban_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Percentage of persons living in peri-urban areas",
+      "dcid": "Count_Person_PeriUrban_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Percentage of persons living in rural areas close to urban areas",
+      "dcid": "Count_Person_RuralCloseToUrban_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Percentage of persons living in rural heartland areas",
+      "dcid": "Count_Person_RuralHeartland_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Percentage of persons living in sparse rural areas",
+      "dcid": "Count_Person_SparseRural_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Percentage of persons living in the area of birth",
+      "dcid": "Count_Person_AreaOfBirth_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Percentage of persons who are in other religious groups in Finland",
+      "dcid": "Count_Person_FINOtherReligiousGroup_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Percentage of persons who are in the Lutheran Church.",
+      "dcid": "Count_Person_LutheranChurchMissouriSynod_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Percentage of persons who are not citizens of Finland",
+      "dcid": "Count_Person_NotACitizen_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Percentage of persons who are not in any religious group",
+      "dcid": "Count_Person_NoReligiousAffiliation_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Percentage of persons who speak Finnish at home",
+      "dcid": "Count_Person_FinnishSpokenAtHome_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Percentage of persons who speak Swedish at home",
+      "dcid": "Count_Person_SwedishSpokenAtHome_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Percentage of persons who speak a language other than Finnish at home",
+      "dcid": "Count_Person_FINOtherLanguagesSpokenAtHome_AsAFractionOf_Count_Person"
+    },
+    {
+      "name": "Percentage of persons with foreign background",
+      "dcid": "Count_Person_ForeignBackground_AsAFractionOf_Count_Person"
+    },
+    {
       "name": "Percentage of urban population",
       "dcid": "Count_Person_Urban_AsAFractionOf_Count_Person"
     },
@@ -3871,134 +3999,6 @@
     {
       "name": "Male Population Who Are Native Hawaiian or Other Pacific Islander Alone",
       "dcid": "Count_Person_Male_NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Male Population With Disabilities",
-      "dcid": "Count_Person_WithDisability_Male"
-    },
-    {
-      "name": "Male Population in Adult Correctional Facilities",
-      "dcid": "Count_Person_Male_ResidesInAdultCorrectionalFacilities"
-    },
-    {
-      "name": "Male Population in College/University Student Housing",
-      "dcid": "Count_Person_Male_ResidesInCollegeOrUniversityStudentHousing"
-    },
-    {
-      "name": "Male Population in Group Quarters",
-      "dcid": "Count_Person_Male_ResidesInGroupQuarters"
-    },
-    {
-      "name": "Male Population in Juvenile Facilities",
-      "dcid": "Count_Person_Male_ResidesInJuvenileFacilities"
-    },
-    {
-      "name": "Male Population in Military Quarters/on Ships",
-      "dcid": "Count_Person_Male_ResidesInMilitaryQuartersOrMilitaryShips"
-    },
-    {
-      "name": "Male Population in Non Institutionalized Group Quarters",
-      "dcid": "Count_Person_Male_ResidesInNoninstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Male Population in Nursing Facilities",
-      "dcid": "Count_Person_Male_ResidesInNursingFacilities"
-    },
-    {
-      "name": "Male population aged 70 or more years",
-      "dcid": "Count_Person_70OrMoreYears_Male"
-    },
-    {
-      "name": "Monoracial Population Institutionalized in Group Quarters",
-      "dcid": "Count_Person_OneRace_ResidesInInstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Monoracial Population Residing in Non Institutionalized Group Quarters",
-      "dcid": "Count_Person_OneRace_ResidesInNoninstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Monoracial Population in Adult Correctional Facilities",
-      "dcid": "Count_Person_OneRace_ResidesInAdultCorrectionalFacilities"
-    },
-    {
-      "name": "Monoracial Population in College or University Student Housing",
-      "dcid": "Count_Person_OneRace_ResidesInCollegeOrUniversityStudentHousing"
-    },
-    {
-      "name": "Monoracial Population in Group Quarters",
-      "dcid": "Count_Person_OneRace_ResidesInGroupQuarters"
-    },
-    {
-      "name": "Monoracial Population in Juvenile Facilities",
-      "dcid": "Count_Person_OneRace_ResidesInJuvenileFacilities"
-    },
-    {
-      "name": "Monoracial Population in Military Quarters or on Military Ships",
-      "dcid": "Count_Person_OneRace_ResidesInMilitaryQuartersOrMilitaryShips"
-    },
-    {
-      "name": "Monoracial Population in Nursing Facilities",
-      "dcid": "Count_Person_OneRace_ResidesInNursingFacilities"
-    },
-    {
-      "name": "Multi Racial Population Above Poverty Level Status in Past Year",
-      "dcid": "Count_Person_AbovePovertyLevelInThePast12Months_TwoOrMoreRaces"
-    },
-    {
-      "name": "Multiracial Farmers",
-      "dcid": "Count_Person_Producer_TwoOrMoreRaces"
-    },
-    {
-      "name": "Multiracial Hispanic Male Population",
-      "dcid": "Count_Person_Male_HispanicOrLatino_TwoOrMoreRaces"
-    },
-    {
-      "name": "Multiracial Male Population",
-      "dcid": "Count_Person_Male_TwoOrMoreRaces"
-    },
-    {
-      "name": "Multiracial Population in Adult Correctional Facilities",
-      "dcid": "Count_Person_TwoOrMoreRaces_ResidesInAdultCorrectionalFacilities"
-    },
-    {
-      "name": "Multiracial Population in College or University Student Housing",
-      "dcid": "Count_Person_TwoOrMoreRaces_ResidesInCollegeOrUniversityStudentHousing"
-    },
-    {
-      "name": "Multiracial Population in Group Quarters",
-      "dcid": "Count_Person_TwoOrMoreRaces_ResidesInGroupQuarters"
-    },
-    {
-      "name": "Multiracial Population in Institutionalized Group Quarters",
-      "dcid": "Count_Person_TwoOrMoreRaces_ResidesInInstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Multiracial Population in Juvenile Facilities",
-      "dcid": "Count_Person_TwoOrMoreRaces_ResidesInJuvenileFacilities"
-    },
-    {
-      "name": "Multiracial Population in Military Quarters or on Military Ships",
-      "dcid": "Count_Person_TwoOrMoreRaces_ResidesInMilitaryQuartersOrMilitaryShips"
-    },
-    {
-      "name": "Multiracial Population in Non Institutionalized Group Quarters",
-      "dcid": "Count_Person_TwoOrMoreRaces_ResidesInNoninstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Multiracial Population in Nursing Facilities",
-      "dcid": "Count_Person_TwoOrMoreRaces_ResidesInNursingFacilities"
-    },
-    {
-      "name": "Native American Population Above Poverty Level Status in Past Year",
-      "dcid": "Count_Person_AbovePovertyLevelInThePast12Months_AmericanIndianOrAlaskaNativeAlone"
-    },
-    {
-      "name": "Native Hawaiian Farmers",
-      "dcid": "Count_Person_Producer_NativeHawaiianOrOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Native Hawaiian/Other Pacific Islander Population With Disabilities",
-      "dcid": "Count_Person_WithDisability_NativeHawaiianOrOtherPacificIslanderAlone"
     }
   ],
   "matches": [
