@@ -24,7 +24,7 @@
             "maxValue": 1214384
           },
           "AdministrativeArea1": {
-            "placeCount": 401,
+            "placeCount": 416,
             "topPlaces": [
               {
                 "dcid": "wikidataId/Q3724",
@@ -725,6 +725,65 @@
             ],
             "observationCount": 4577,
             "timeSeriesCount": 4516
+          },
+          "dc/base/Bulgaria_Census": {
+            "importName": "Bulgaria_Census",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "2001",
+                "latestDate": "2024",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1585725",
+                        "name": "Sofia Capital"
+                      }
+                    ],
+                    "minValue": 610991,
+                    "maxValue": 676145
+                  },
+                  "City": {
+                    "placeCount": 27,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/SOF46",
+                        "name": "Sofia"
+                      },
+                      {
+                        "dcid": "wikidataId/Q459",
+                        "name": "Plovdiv"
+                      },
+                      {
+                        "dcid": "wikidataId/Q6506",
+                        "name": "Varna"
+                      }
+                    ],
+                    "minValue": 36757,
+                    "maxValue": 367338
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/BGR",
+                        "name": "Bulgaria"
+                      }
+                    ],
+                    "minValue": 3342220,
+                    "maxValue": 4035676
+                  }
+                },
+                "minValue": 36757,
+                "maxValue": 4035676,
+                "observationCount": 609,
+                "timeSeriesCount": 29
+              }
+            ],
+            "observationCount": 609,
+            "timeSeriesCount": 29
           },
           "dc/base/CDC_Mortality_UnderlyingCause": {
             "importName": "CDC_Mortality_UnderlyingCause",
@@ -3061,6 +3120,85 @@
             "observationCount": 90,
             "timeSeriesCount": 1
           },
+          "dc/base/NITIIndiaPopulationProjection": {
+            "importName": "NITIIndiaPopulationProjection",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "NITIIndiaProjection"
+                },
+                "earliestDate": "2011",
+                "latestDate": "2026",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {
+                    "placeCount": 2,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q120971341",
+                        "name": "Chandigarh"
+                      },
+                      {
+                        "dcid": "wikidataId/Q77997266",
+                        "name": "Dadra and Nagar Haveli and Daman and Diu"
+                      }
+                    ],
+                    "minValue": 250000,
+                    "maxValue": 589000
+                  },
+                  "State": {
+                    "placeCount": 34,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1498",
+                        "name": "Uttar Pradesh"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1191",
+                        "name": "Maharashtra"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1165",
+                        "name": "Bihar"
+                      }
+                    ],
+                    "minValue": 31000,
+                    "maxValue": 117075000
+                  }
+                },
+                "minValue": 31000,
+                "maxValue": 117075000,
+                "observationCount": 576,
+                "timeSeriesCount": 36
+              },
+              {
+                "seriesKey": {
+                  "measurementMethod": "NITIIndiaProjection",
+                  "isDcAggregate": true
+                },
+                "earliestDate": "2011",
+                "latestDate": "2026",
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/IND",
+                        "name": "India"
+                      }
+                    ],
+                    "minValue": 592150000,
+                    "maxValue": 696945000
+                  }
+                },
+                "minValue": 592150000,
+                "maxValue": 696945000,
+                "observationCount": 16,
+                "timeSeriesCount": 1
+              }
+            ],
+            "observationCount": 592,
+            "timeSeriesCount": 37
+          },
           "dc/base/New_Zealand_Census": {
             "importName": "New_Zealand_Census",
             "releaseFrequency": "P1Y",
@@ -3394,6 +3532,73 @@
             ],
             "observationCount": 74581,
             "timeSeriesCount": 2557
+          },
+          "dc/base/Poland_Census": {
+            "importName": "Poland_Census",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "2003",
+                "latestDate": "2024",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {
+                    "placeCount": 12,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q54169",
+                        "name": "Masovian Voivodeship"
+                      },
+                      {
+                        "dcid": "wikidataId/Q54181",
+                        "name": "Silesian Voivodeship"
+                      },
+                      {
+                        "dcid": "wikidataId/Q54187",
+                        "name": "Greater Poland Voivodeship"
+                      }
+                    ],
+                    "minValue": 480884,
+                    "maxValue": 2875257
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/POL",
+                        "name": "Poland"
+                      }
+                    ],
+                    "minValue": 19382060,
+                    "maxValue": 19883965
+                  },
+                  "EurostatNUTS2": {
+                    "placeCount": 4,
+                    "topPlaces": [
+                      {
+                        "dcid": "nuts/PL21",
+                        "name": "Małopolskie"
+                      },
+                      {
+                        "dcid": "nuts/PL71",
+                        "name": "Łódzkie"
+                      },
+                      {
+                        "dcid": "nuts/PL61",
+                        "name": "Kujawsko-pomorskie"
+                      }
+                    ],
+                    "minValue": 595062,
+                    "maxValue": 1767192
+                  }
+                },
+                "minValue": 480884,
+                "maxValue": 19883965,
+                "observationCount": 374,
+                "timeSeriesCount": 17
+              }
+            ],
+            "observationCount": 374,
+            "timeSeriesCount": 17
           },
           "dc/base/Rwanda_Census": {
             "importName": "Rwanda_Census",
@@ -4270,7 +4475,7 @@
                 },
                 "minValue": 0,
                 "maxValue": 5119774,
-                "observationCount": 181550,
+                "observationCount": 172489,
                 "timeSeriesCount": 3156
               },
               {
@@ -4315,11 +4520,11 @@
                 },
                 "minValue": 138616,
                 "maxValue": 171773106,
-                "observationCount": 3137,
+                "observationCount": 2930,
                 "timeSeriesCount": 52
               }
             ],
-            "observationCount": 184687,
+            "observationCount": 175419,
             "timeSeriesCount": 3208
           },
           "dc/base/Vietnam_Census": {
@@ -4541,7 +4746,7 @@
                 "name": "Vienna"
               }
             ],
-            "minValue": 0.98,
+            "minValue": 0.94,
             "maxValue": 2.69
           },
           "Country": {
@@ -4598,7 +4803,7 @@
                 "name": "Istanbul"
               }
             ],
-            "minValue": 0.84,
+            "minValue": 0.82,
             "maxValue": 3.59
           },
           "EurostatNUTS2": {
@@ -4617,7 +4822,7 @@
                 "name": "Lombardia"
               }
             ],
-            "minValue": 0.84,
+            "minValue": 0.82,
             "maxValue": 4.9
           },
           "EurostatNUTS3": {
@@ -4698,7 +4903,7 @@
                   "measurementMethod": "EurostatRegionalStatistics"
                 },
                 "earliestDate": "2013",
-                "latestDate": "2023",
+                "latestDate": "2024",
                 "placeTypeSummary": {
                   "City": {
                     "placeCount": 141,
@@ -4716,7 +4921,7 @@
                         "name": "Vienna"
                       }
                     ],
-                    "minValue": 0.98,
+                    "minValue": 0.94,
                     "maxValue": 2.69
                   },
                   "Country": {
@@ -4773,7 +4978,7 @@
                         "name": "Istanbul"
                       }
                     ],
-                    "minValue": 0.84,
+                    "minValue": 0.82,
                     "maxValue": 3.59
                   },
                   "EurostatNUTS2": {
@@ -4792,7 +4997,7 @@
                         "name": "Lombardia"
                       }
                     ],
-                    "minValue": 0.84,
+                    "minValue": 0.82,
                     "maxValue": 4.9
                   },
                   "EurostatNUTS3": {
@@ -4817,11 +5022,11 @@
                 },
                 "minValue": 0.63,
                 "maxValue": 4.9,
-                "observationCount": 19319,
+                "observationCount": 19991,
                 "timeSeriesCount": 2062
               }
             ],
-            "observationCount": 19319,
+            "observationCount": 19991,
             "timeSeriesCount": 2062
           },
           "dc/base/Kenya_Census": {
