@@ -8,6 +8,9 @@
               "facet_id": "2123271870"
             },
             {
+              "facet_id": "2488031303"
+            },
+            {
               "facet_id": "4181918134"
             },
             {
@@ -51,6 +54,12 @@
       "import_name": "WikidataPopulation",
       "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
       "measurement_method": "WikidataPopulation"
+    },
+    "2488031303": {
+      "import_name": "NITIIndiaPopulationProjection",
+      "provenance_url": "https://ndap.niti.gov.in/dataset/7208, https://ndap.niti.gov.in/dataset/7209",
+      "measurement_method": "NITIIndiaProjection",
+      "is_dc_aggregate": true
     },
     "4181918134": {
       "import_name": "OECDRegionalDemography_Population",

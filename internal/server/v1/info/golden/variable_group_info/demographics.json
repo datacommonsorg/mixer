@@ -14,6 +14,16 @@
         "hasData": true
       },
       {
+        "id": "Mean_Age_Person",
+        "searchNames": [
+          "Mean Age of Person",
+          "Average age of people"
+        ],
+        "displayName": "Average age of people",
+        "definition": "st=meanValue,mp=age,pt=Person",
+        "hasData": true
+      },
+      {
         "id": "Count_Company",
         "searchNames": [
           "Count of Company"
@@ -141,6 +151,15 @@
         "hasData": true
       },
       {
+        "id": "Count_Person_5To17Years_Poor",
+        "searchNames": [
+          "Population Count of Person With Age is 5 - 17 Years, Family Poverty Status is Poor"
+        ],
+        "displayName": "Population: 5 - 17 Years, Poor",
+        "definition": "mp=count,pt=Person,age=Years5To17,familyPovertyStatus=Poor",
+        "hasData": true
+      },
+      {
         "id": "Count_Person_InfrastructureProject_BrazilRuralDevelopmentProgram",
         "searchNames": [
           "Population Count of Person With Affected by Is Infrastructure Project, Benefit Program is Brazil_Rural Development Program",
@@ -166,13 +185,13 @@
         "id": "dc/g/Person_Age",
         "specializedEntity": "Age",
         "displayName": "Person by Age",
-        "descendentStatVarCount": 31671
+        "descendentStatVarCount": 31763
       },
       {
         "id": "dc/g/Person_AgeGroupClassification",
         "specializedEntity": "Age Group Classification",
         "displayName": "Person by Age Group Classification",
-        "descendentStatVarCount": 8
+        "descendentStatVarCount": 11
       },
       {
         "id": "dc/g/Person_BenefitProgram",
@@ -214,7 +233,7 @@
         "id": "dc/g/Person_CitizenshipStatus",
         "specializedEntity": "Citizenship Status",
         "displayName": "Person by Citizenship Status",
-        "descendentStatVarCount": 1606
+        "descendentStatVarCount": 1607
       },
       {
         "id": "dc/g/CivicStructure",
@@ -340,7 +359,7 @@
         "id": "dc/g/Person_Gender",
         "specializedEntity": "Gender",
         "displayName": "Person by Gender",
-        "descendentStatVarCount": 28189
+        "descendentStatVarCount": 28274
       },
       {
         "id": "dc/g/Person_GovernmentId",
@@ -400,7 +419,7 @@
         "id": "dc/g/ImmigrationAndCitizenship",
         "specializedEntity": "Immigration and Citizenship",
         "displayName": "Immigration and Citizenship",
-        "descendentStatVarCount": 4016
+        "descendentStatVarCount": 4022
       },
       {
         "id": "dc/g/Person_Income",
@@ -442,13 +461,13 @@
         "id": "dc/g/Person_LaborForceStatus",
         "specializedEntity": "Labor Force Status",
         "displayName": "Person by Labor Force Status",
-        "descendentStatVarCount": 5762
+        "descendentStatVarCount": 5764
       },
       {
         "id": "dc/g/Language",
         "specializedEntity": "Language",
         "displayName": "Language",
-        "descendentStatVarCount": 514
+        "descendentStatVarCount": 521
       },
       {
         "id": "dc/g/Person_LiteracyStatus",
@@ -511,6 +530,12 @@
         "descendentStatVarCount": 28
       },
       {
+        "id": "dc/g/Person_OriginBackgroundType",
+        "specializedEntity": "Origin Background Type",
+        "displayName": "Person by Origin Background Type",
+        "descendentStatVarCount": 2
+      },
+      {
         "id": "dc/g/Place_PlaceType",
         "specializedEntity": "Place Type",
         "displayName": "Place by Place Type",
@@ -520,13 +545,13 @@
         "id": "dc/g/Person_PlaceOfBirth",
         "specializedEntity": "Place of Birth",
         "displayName": "Person by Place of Birth",
-        "descendentStatVarCount": 1958
+        "descendentStatVarCount": 1963
       },
       {
         "id": "dc/g/Person_PlaceOfResidenceClassification",
         "specializedEntity": "Place of Residence Classification (Individual)",
         "displayName": "Person by Place of Residence Classification",
-        "descendentStatVarCount": 4330
+        "descendentStatVarCount": 4422
       },
       {
         "id": "dc/g/Place_PlaceOfResidenceClassification",
@@ -553,10 +578,16 @@
         "descendentStatVarCount": 2050
       },
       {
+        "id": "dc/g/Person_ReligiousOrientation",
+        "specializedEntity": "Religious Orientation",
+        "displayName": "Person by Religious Orientation",
+        "descendentStatVarCount": 3
+      },
+      {
         "id": "dc/g/Residence",
         "specializedEntity": "Residence",
         "displayName": "Residence",
-        "descendentStatVarCount": 6070
+        "descendentStatVarCount": 6162
       },
       {
         "id": "dc/g/Person_ResidentStatus",
@@ -601,7 +632,7 @@
         "descendentStatVarCount": 4
       }
     ],
-    "descendentStatVarCount": 52108,
+    "descendentStatVarCount": 52255,
     "parentStatVarGroups": [
       "dc/g/Root"
     ]

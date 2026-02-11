@@ -45,7 +45,7 @@
         "Provenance"
       ],
       "predicate": "importTime",
-      "objectValue": "1765376577",
+      "objectValue": "1770711251",
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
@@ -149,10 +149,10 @@
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
-      "subjectId": "Acre1000Onwards",
-      "subjectName": "Acre 1000 Onwards",
+      "subjectId": "AbsoluteVorticity_Place_0.01Millibar",
+      "subjectName": "Absolute Vorticity: Millibar 0.01",
       "subjectTypes": [
-        "QuantityRange"
+        "StatisticalVariable"
       ],
       "predicate": "provenance",
       "objectId": "dc/base/HumanReadableStatVars",
@@ -163,10 +163,10 @@
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
-      "subjectId": "Adjusted_GrowthRate_GrossDomesticProduct_EconomicActivity_QuarterOnChange",
-      "subjectName": "Adjusted GDP Growth Rate (Quarter-over-Quarter)",
+      "subjectId": "Acre1000Onwards",
+      "subjectName": "Acre 1000 Onwards",
       "subjectTypes": [
-        "StatisticalVariable"
+        "QuantityRange"
       ],
       "predicate": "provenance",
       "objectId": "dc/base/HumanReadableStatVars",
