@@ -41,7 +41,7 @@ func TestResolveUsingEmbeddings(t *testing.T) {
 	defer server.Close()
 
 	ctx := context.Background()
-	resp, err := ResolveUsingEmbeddings(ctx, server.Client(), server.URL, "test_idx", []string{"population"})
+	resp, err := ResolveUsingEmbeddings(ctx, server.Client(), server.URL, "test_idx", []string{"population"}, nil)
 	if err != nil {
 		t.Fatalf("ResolveEmbeddings() error: %v", err)
 	}
@@ -133,7 +133,7 @@ func TestResolveUsingEmbeddings_Errors(t *testing.T) {
 				url = ""
 			}
 
-			_, err := ResolveUsingEmbeddings(context.Background(), server.Client(), url, "", []string{"query"})
+			_, err := ResolveUsingEmbeddings(context.Background(), server.Client(), url, "", []string{"query"}, nil)
 			if err == nil {
 				t.Errorf("Expected error containing '%s', got nil", tc.expectedError)
 				return
@@ -174,7 +174,7 @@ func TestResolveUsingEmbeddings_InconsistentSearchVarsResponse(t *testing.T) {
 	}))
 	defer server.Close()
 
-	resp, err := ResolveUsingEmbeddings(context.Background(), server.Client(), server.URL, "", []string{"query"})
+	resp, err := ResolveUsingEmbeddings(context.Background(), server.Client(), server.URL, "", []string{"query"}, nil)
 	if err != nil {
 		t.Fatalf("Unexpected error: %v", err)
 	}
@@ -248,10 +248,53 @@ func TestResolveUsingEmbeddings_IdxParameter(t *testing.T) {
 			}))
 			defer server.Close()
 
-			_, err := ResolveUsingEmbeddings(context.Background(), server.Client(), server.URL, tc.expectedIdx, []string{"query"})
+			_, err := ResolveUsingEmbeddings(context.Background(), server.Client(), server.URL, tc.expectedIdx, []string{"query"}, nil)
 			if err != nil {
 				t.Fatalf("Unexpected error: %v", err)
 			}
 		})
+	}
+}
+
+func TestResolveUsingEmbeddings_Filter(t *testing.T) {
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if err := json.NewEncoder(w).Encode(map[string]interface{}{
+			"queryResults": map[string]interface{}{
+				"filter_test": map[string]interface{}{
+					"SV":          []string{"Count_Person", "dc/topic/Population"},
+					"CosineScore": []float64{0.99, 0.88},
+					"SV_to_Sentences": map[string]interface{}{},
+				},
+			},
+		}); err != nil {
+			t.Errorf("Failed to encode response: %v", err)
+		}
+	}))
+	defer server.Close()
+
+	ctx := context.Background()
+	
+	// Test 1: Filter for StatisticalVariable
+	resp, err := ResolveUsingEmbeddings(ctx, server.Client(), server.URL, "test_idx", []string{"filter_test"}, []string{"StatisticalVariable"})
+	if err != nil {
+		t.Fatalf("ResolveEmbeddings() error: %v", err)
+	}
+	if len(resp.Entities[0].Candidates) != 1 {
+		t.Fatalf("Expected 1 candidate, got %d", len(resp.Entities[0].Candidates))
+	}
+	if resp.Entities[0].Candidates[0].Dcid != "Count_Person" {
+		t.Errorf("Expected 'Count_Person', got '%s'", resp.Entities[0].Candidates[0].Dcid)
+	}
+
+	// Test 2: Filter for Topic
+	resp, err = ResolveUsingEmbeddings(ctx, server.Client(), server.URL, "test_idx", []string{"filter_test"}, []string{"Topic"})
+	if err != nil {
+		t.Fatalf("ResolveEmbeddings() error: %v", err)
+	}
+	if len(resp.Entities[0].Candidates) != 1 {
+		t.Fatalf("Expected 1 candidate, got %d", len(resp.Entities[0].Candidates))
+	}
+	if resp.Entities[0].Candidates[0].Dcid != "dc/topic/Population" {
+		t.Errorf("Expected 'dc/topic/Population', got '%s'", resp.Entities[0].Candidates[0].Dcid)
 	}
 }
