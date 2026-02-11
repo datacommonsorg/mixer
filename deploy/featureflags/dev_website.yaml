@@ -9,3 +9,4 @@ flags:
   UseSpannerGraph: true
   SpannerGraphDatabase: dc_graph_2026_01_27
   UseStaleReads: true
+  V2DivertFraction: 1.0
