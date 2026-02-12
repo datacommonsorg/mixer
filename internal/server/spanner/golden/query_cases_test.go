@@ -320,6 +320,7 @@ var sparqlTestCases = []struct {
 	},
 	{
 		nodes: []types.Node{
+			{Alias: "?state"},
 			{Alias: "?name"},
 		},
 		queries: []*types.Query{
@@ -387,5 +388,25 @@ var sparqlTestCases = []struct {
 			ASC:      false,
 		},
 		golden: "sparql_country_names_desc",
+	},
+	{
+		nodes: []types.Node{
+			{Alias: "?subject"},
+			{Alias: "?dcid"},
+		},
+		queries: []*types.Query{
+			{
+				Sub:  types.Node{Alias: "?subject"},
+				Pred: "dcid",
+				Obj:  "geoId/06",
+			},
+			{
+				Sub:  types.Node{Alias: "?subject"},
+				Pred: "dcid",
+				Obj:  types.Node{Alias: "?dcid"},
+			},
+		},
+		opts:   &types.QueryOptions{},
+		golden: "sparql_dcid_california",
 	},
 }
