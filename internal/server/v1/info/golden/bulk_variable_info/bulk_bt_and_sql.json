@@ -2293,6 +2293,39 @@
             "observationCount": 462,
             "timeSeriesCount": 67
           },
+          "dc/base/France_Demographics": {
+            "importName": "France_Demographics",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "1946",
+                "latestDate": "2025",
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 2,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/FRA",
+                        "name": "France"
+                      },
+                      {
+                        "dcid": "country/FXX",
+                        "name": "Metropolitan France"
+                      }
+                    ],
+                    "minValue": 21006069,
+                    "maxValue": 35326405
+                  }
+                },
+                "minValue": 21006069,
+                "maxValue": 35326405,
+                "observationCount": 115,
+                "timeSeriesCount": 2
+              }
+            ],
+            "observationCount": 115,
+            "timeSeriesCount": 2
+          },
           "dc/base/IndiaCensus_Primary": {
             "importName": "IndiaCensus_Primary",
             "seriesSummary": [

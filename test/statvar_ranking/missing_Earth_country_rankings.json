@@ -488,21 +488,6 @@
     "relatedChart": {}
   },
   {
-    "title": "Median Age",
-    "statsVars": [
-      "Median_Age_Person"
-    ],
-    "relatedChart": {}
-  },
-  {
-    "title": "Median age by gender",
-    "statsVars": [
-      "Median_Age_Person_Female",
-      "Median_Age_Person_Male"
-    ],
-    "relatedChart": {}
-  },
-  {
     "title": "Median age by race",
     "statsVars": [
       "Median_Age_Person_AmericanIndianOrAlaskaNativeAlone",

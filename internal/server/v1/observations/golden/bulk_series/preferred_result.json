@@ -281,15 +281,15 @@
                 },
                 {
                   "date": "2022",
-                  "value": 68065015
+                  "value": 68184457
                 },
                 {
                   "date": "2023",
-                  "value": 68287487
+                  "value": 68372286
                 },
                 {
                   "date": "2024",
-                  "value": 68516699
+                  "value": 68551653
                 }
               ],
               "facet": "3981252704"
@@ -1804,35 +1804,35 @@
               "series": [
                 {
                   "date": "1990",
-                  "value": 17540
+                  "value": 17550
                 },
                 {
                   "date": "1991",
-                  "value": 18240
+                  "value": 18260
                 },
                 {
                   "date": "1992",
-                  "value": 18880
+                  "value": 18890
                 },
                 {
                   "date": "1993",
-                  "value": 19180
+                  "value": 19200
                 },
                 {
                   "date": "1994",
-                  "value": 19950
+                  "value": 19970
                 },
                 {
                   "date": "1995",
-                  "value": 20770
+                  "value": 20790
                 },
                 {
                   "date": "1996",
-                  "value": 21460
+                  "value": 21470
                 },
                 {
                   "date": "1997",
-                  "value": 22470
+                  "value": 22480
                 },
                 {
                   "date": "1998",
@@ -1844,7 +1844,7 @@
                 },
                 {
                   "date": "2000",
-                  "value": 26440
+                  "value": 26450
                 },
                 {
                   "date": "2001",
@@ -1868,7 +1868,7 @@
                 },
                 {
                   "date": "2006",
-                  "value": 33110
+                  "value": 33100
                 },
                 {
                   "date": "2007",
@@ -1880,11 +1880,11 @@
                 },
                 {
                   "date": "2009",
-                  "value": 35500
+                  "value": 35520
                 },
                 {
                   "date": "2010",
-                  "value": 36790
+                  "value": 36780
                 },
                 {
                   "date": "2011",
@@ -1904,7 +1904,7 @@
                 },
                 {
                   "date": "2015",
-                  "value": 41740
+                  "value": 41730
                 },
                 {
                   "date": "2016",
@@ -1932,15 +1932,15 @@
                 },
                 {
                   "date": "2022",
-                  "value": 57750
+                  "value": 58630
                 },
                 {
                   "date": "2023",
-                  "value": 59410
+                  "value": 61980
                 },
                 {
                   "date": "2024",
-                  "value": 62620
+                  "value": 63880
                 }
               ],
               "facet": "2171028778"
@@ -6124,6 +6124,10 @@
                 {
                   "date": "2025-12",
                   "value": 7503000
+                },
+                {
+                  "date": "2026-01",
+                  "value": 7362000
                 }
               ],
               "facet": "3707913853"
@@ -10294,7 +10298,7 @@
     },
     "2171028778": {
       "import_name": "WorldDevelopmentIndicators",
-      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "provenance_url": "https://datatopics.worldbank.org/world-development-indicators/",
       "observation_period": "P1Y",
       "unit": "InternationalDollar"
     },
@@ -10323,7 +10327,7 @@
     },
     "3981252704": {
       "import_name": "WorldDevelopmentIndicators",
-      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "provenance_url": "https://datatopics.worldbank.org/world-development-indicators/",
       "observation_period": "P1Y"
     },
     "4277990144": {
