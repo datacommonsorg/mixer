@@ -2293,6 +2293,39 @@
             "observationCount": 462,
             "timeSeriesCount": 67
           },
+          "dc/base/France_Demographics": {
+            "importName": "France_Demographics",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "1946",
+                "latestDate": "2025",
+                "placeTypeSummary": {
+                  "Country": {
+                    "placeCount": 2,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/FRA",
+                        "name": "France"
+                      },
+                      {
+                        "dcid": "country/FXX",
+                        "name": "Metropolitan France"
+                      }
+                    ],
+                    "minValue": 21006069,
+                    "maxValue": 35326405
+                  }
+                },
+                "minValue": 21006069,
+                "maxValue": 35326405,
+                "observationCount": 115,
+                "timeSeriesCount": 2
+              }
+            ],
+            "observationCount": 115,
+            "timeSeriesCount": 2
+          },
           "dc/base/IndiaCensus_Primary": {
             "importName": "IndiaCensus_Primary",
             "seriesSummary": [
@@ -4750,7 +4783,7 @@
             "maxValue": 2.69
           },
           "Country": {
-            "placeCount": 215,
+            "placeCount": 216,
             "topPlaces": [
               {
                 "dcid": "country/CHN",
@@ -4859,6 +4892,17 @@
             ],
             "minValue": 1.31,
             "maxValue": 2.91
+          },
+          "UNGeoRegion": {
+            "placeCount": 1,
+            "topPlaces": [
+              {
+                "dcid": "ChannelIslands",
+                "name": "Channel Islands"
+              }
+            ],
+            "minValue": 1.33,
+            "maxValue": 2.66
           }
         },
         "provenanceSummary": {
@@ -5213,7 +5257,7 @@
                 "latestDate": "2023",
                 "placeTypeSummary": {
                   "Country": {
-                    "placeCount": 215,
+                    "placeCount": 216,
                     "topPlaces": [
                       {
                         "dcid": "country/CHN",
@@ -5239,18 +5283,29 @@
                         "name": "World"
                       }
                     ],
-                    "minValue": 2.1958260326,
+                    "minValue": 2.1959091159,
                     "maxValue": 5.314304709
+                  },
+                  "UNGeoRegion": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "ChannelIslands",
+                        "name": "Channel Islands"
+                      }
+                    ],
+                    "minValue": 1.33,
+                    "maxValue": 2.66
                   }
                 },
                 "minValue": 0.586,
                 "maxValue": 8.864,
-                "observationCount": 13792,
-                "timeSeriesCount": 216
+                "observationCount": 13920,
+                "timeSeriesCount": 218
               }
             ],
-            "observationCount": 13792,
-            "timeSeriesCount": 216
+            "observationCount": 13920,
+            "timeSeriesCount": 218
           }
         }
       }

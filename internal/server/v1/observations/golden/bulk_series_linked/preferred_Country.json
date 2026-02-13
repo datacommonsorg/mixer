@@ -241,7 +241,154 @@
           "entity": "country/FLK"
         },
         {
-          "entity": "country/FRA"
+          "entity": "country/FRA",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "1991",
+                  "value": 33.7
+                },
+                {
+                  "date": "1992",
+                  "value": 33.97
+                },
+                {
+                  "date": "1993",
+                  "value": 34.26
+                },
+                {
+                  "date": "1994",
+                  "value": 34.56
+                },
+                {
+                  "date": "1995",
+                  "value": 34.87
+                },
+                {
+                  "date": "1996",
+                  "value": 35.18
+                },
+                {
+                  "date": "1997",
+                  "value": 35.47
+                },
+                {
+                  "date": "1998",
+                  "value": 35.77
+                },
+                {
+                  "date": "1999",
+                  "value": 36.05
+                },
+                {
+                  "date": "2000",
+                  "value": 36.33
+                },
+                {
+                  "date": "2001",
+                  "value": 36.59
+                },
+                {
+                  "date": "2002",
+                  "value": 36.86
+                },
+                {
+                  "date": "2003",
+                  "value": 37.14
+                },
+                {
+                  "date": "2004",
+                  "value": 37.39
+                },
+                {
+                  "date": "2005",
+                  "value": 37.65
+                },
+                {
+                  "date": "2006",
+                  "value": 37.89
+                },
+                {
+                  "date": "2007",
+                  "value": 38.11
+                },
+                {
+                  "date": "2008",
+                  "value": 38.34
+                },
+                {
+                  "date": "2009",
+                  "value": 38.57
+                },
+                {
+                  "date": "2010",
+                  "value": 38.79
+                },
+                {
+                  "date": "2011",
+                  "value": 39.03
+                },
+                {
+                  "date": "2012",
+                  "value": 39.3
+                },
+                {
+                  "date": "2013",
+                  "value": 39.55
+                },
+                {
+                  "date": "2014",
+                  "value": 39.74
+                },
+                {
+                  "date": "2015",
+                  "value": 39.99
+                },
+                {
+                  "date": "2016",
+                  "value": 40.22
+                },
+                {
+                  "date": "2017",
+                  "value": 40.43
+                },
+                {
+                  "date": "2018",
+                  "value": 40.58
+                },
+                {
+                  "date": "2019",
+                  "value": 40.75
+                },
+                {
+                  "date": "2020",
+                  "value": 40.93
+                },
+                {
+                  "date": "2021",
+                  "value": 40.58
+                },
+                {
+                  "date": "2022",
+                  "value": 41.15
+                },
+                {
+                  "date": "2023",
+                  "value": 41.32
+                },
+                {
+                  "date": "2024",
+                  "value": 41.53
+                },
+                {
+                  "date": "2025",
+                  "value": 41.74
+                }
+              ],
+              "facet": "2911625765"
+            }
+          ]
         },
         {
           "entity": "country/FRO"
@@ -250,7 +397,334 @@
           "entity": "country/FSM"
         },
         {
-          "entity": "country/FXX"
+          "entity": "country/FXX",
+          "series_by_facet": [
+            {
+              "series": [
+                {
+                  "date": "1946",
+                  "value": 34.04
+                },
+                {
+                  "date": "1947",
+                  "value": 34.03
+                },
+                {
+                  "date": "1948",
+                  "value": 33.99
+                },
+                {
+                  "date": "1949",
+                  "value": 33.97
+                },
+                {
+                  "date": "1950",
+                  "value": 33.81
+                },
+                {
+                  "date": "1951",
+                  "value": 32.99
+                },
+                {
+                  "date": "1952",
+                  "value": 32.18
+                },
+                {
+                  "date": "1953",
+                  "value": 31.81
+                },
+                {
+                  "date": "1954",
+                  "value": 31.9
+                },
+                {
+                  "date": "1955",
+                  "value": 31.98
+                },
+                {
+                  "date": "1956",
+                  "value": 31.99
+                },
+                {
+                  "date": "1957",
+                  "value": 31.97
+                },
+                {
+                  "date": "1958",
+                  "value": 31.93
+                },
+                {
+                  "date": "1959",
+                  "value": 31.96
+                },
+                {
+                  "date": "1960",
+                  "value": 31.97
+                },
+                {
+                  "date": "1961",
+                  "value": 31.96
+                },
+                {
+                  "date": "1962",
+                  "value": 31.96
+                },
+                {
+                  "date": "1963",
+                  "value": 31.88
+                },
+                {
+                  "date": "1964",
+                  "value": 31.84
+                },
+                {
+                  "date": "1965",
+                  "value": 31.81
+                },
+                {
+                  "date": "1966",
+                  "value": 31.79
+                },
+                {
+                  "date": "1967",
+                  "value": 31.75
+                },
+                {
+                  "date": "1968",
+                  "value": 31.72
+                },
+                {
+                  "date": "1969",
+                  "value": 31.63
+                },
+                {
+                  "date": "1970",
+                  "value": 31.52
+                },
+                {
+                  "date": "1971",
+                  "value": 31.37
+                },
+                {
+                  "date": "1972",
+                  "value": 31.19
+                },
+                {
+                  "date": "1973",
+                  "value": 30.95
+                },
+                {
+                  "date": "1974",
+                  "value": 30.66
+                },
+                {
+                  "date": "1975",
+                  "value": 30.56
+                },
+                {
+                  "date": "1976",
+                  "value": 30.52
+                },
+                {
+                  "date": "1977",
+                  "value": 30.54
+                },
+                {
+                  "date": "1978",
+                  "value": 30.67
+                },
+                {
+                  "date": "1979",
+                  "value": 30.93
+                },
+                {
+                  "date": "1980",
+                  "value": 31.21
+                },
+                {
+                  "date": "1981",
+                  "value": 31.46
+                },
+                {
+                  "date": "1982",
+                  "value": 31.71
+                },
+                {
+                  "date": "1983",
+                  "value": 31.95
+                },
+                {
+                  "date": "1984",
+                  "value": 32.21
+                },
+                {
+                  "date": "1985",
+                  "value": 32.46
+                },
+                {
+                  "date": "1986",
+                  "value": 32.7
+                },
+                {
+                  "date": "1987",
+                  "value": 32.94
+                },
+                {
+                  "date": "1988",
+                  "value": 33.18
+                },
+                {
+                  "date": "1989",
+                  "value": 33.43
+                },
+                {
+                  "date": "1990",
+                  "value": 33.67
+                },
+                {
+                  "date": "1991",
+                  "value": 33.95
+                },
+                {
+                  "date": "1992",
+                  "value": 34.22
+                },
+                {
+                  "date": "1993",
+                  "value": 34.5
+                },
+                {
+                  "date": "1994",
+                  "value": 34.8
+                },
+                {
+                  "date": "1995",
+                  "value": 35.11
+                },
+                {
+                  "date": "1996",
+                  "value": 35.42
+                },
+                {
+                  "date": "1997",
+                  "value": 35.71
+                },
+                {
+                  "date": "1998",
+                  "value": 36.01
+                },
+                {
+                  "date": "1999",
+                  "value": 36.29
+                },
+                {
+                  "date": "2000",
+                  "value": 36.56
+                },
+                {
+                  "date": "2001",
+                  "value": 36.81
+                },
+                {
+                  "date": "2002",
+                  "value": 37.07
+                },
+                {
+                  "date": "2003",
+                  "value": 37.34
+                },
+                {
+                  "date": "2004",
+                  "value": 37.59
+                },
+                {
+                  "date": "2005",
+                  "value": 37.84
+                },
+                {
+                  "date": "2006",
+                  "value": 38.09
+                },
+                {
+                  "date": "2007",
+                  "value": 38.3
+                },
+                {
+                  "date": "2008",
+                  "value": 38.53
+                },
+                {
+                  "date": "2009",
+                  "value": 38.75
+                },
+                {
+                  "date": "2010",
+                  "value": 38.96
+                },
+                {
+                  "date": "2011",
+                  "value": 39.18
+                },
+                {
+                  "date": "2012",
+                  "value": 39.44
+                },
+                {
+                  "date": "2013",
+                  "value": 39.69
+                },
+                {
+                  "date": "2014",
+                  "value": 39.95
+                },
+                {
+                  "date": "2015",
+                  "value": 40.19
+                },
+                {
+                  "date": "2016",
+                  "value": 40.43
+                },
+                {
+                  "date": "2017",
+                  "value": 40.64
+                },
+                {
+                  "date": "2018",
+                  "value": 40.79
+                },
+                {
+                  "date": "2019",
+                  "value": 40.96
+                },
+                {
+                  "date": "2020",
+                  "value": 41.14
+                },
+                {
+                  "date": "2021",
+                  "value": 41.24
+                },
+                {
+                  "date": "2022",
+                  "value": 41.34
+                },
+                {
+                  "date": "2023",
+                  "value": 41.5
+                },
+                {
+                  "date": "2024",
+                  "value": 41.71
+                },
+                {
+                  "date": "2025",
+                  "value": 41.92
+                }
+              ],
+              "facet": "2911625765"
+            }
+          ]
         },
         {
           "entity": "country/GAB"
@@ -1008,6 +1482,10 @@
       "import_name": "New_Zealand_Census",
       "provenance_url": "https://www.stats.govt.nz/",
       "unit": "Year"
+    },
+    "2911625765": {
+      "import_name": "France_Demographics",
+      "provenance_url": "https://www.insee.fr/en/statistiques/8333211?sommaire=8333329"
     },
     "3614729857": {
       "import_name": "MexicoCensus",

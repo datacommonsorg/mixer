@@ -83,6 +83,9 @@
               "facet_id": "3614729857"
             },
             {
+              "facet_id": "2911625765"
+            },
+            {
               "facet_id": "1024534950"
             },
             {
@@ -173,6 +176,9 @@
             },
             {
               "facet_id": "3614729857"
+            },
+            {
+              "facet_id": "2911625765"
             },
             {
               "facet_id": "1565963938"
@@ -372,6 +378,10 @@
       "import_name": "Uganda_Census",
       "provenance_url": "https://uganda.opendataforafrica.org/"
     },
+    "2911625765": {
+      "import_name": "France_Demographics",
+      "provenance_url": "https://www.insee.fr/en/statistiques/8333211?sommaire=8333329"
+    },
     "318580725": {
       "import_name": "Indonesia_Census",
       "provenance_url": "https://www.bps.go.id/"
@@ -413,7 +423,7 @@
     },
     "3981252704": {
       "import_name": "WorldDevelopmentIndicators",
-      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "provenance_url": "https://datatopics.worldbank.org/world-development-indicators/",
       "observation_period": "P1Y"
     },
     "4036334630": {

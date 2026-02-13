@@ -31,8 +31,13 @@
           "points_by_facet": [
             {
               "date": "2024",
-              "value": 68516699,
+              "value": 68551653,
               "facet": "3981252704"
+            },
+            {
+              "date": "2025",
+              "value": 68605616,
+              "facet": "2911625765"
             },
             {
               "date": "2024",
@@ -295,7 +300,7 @@
           "points_by_facet": [
             {
               "date": "2024",
-              "value": 62620,
+              "value": 63880,
               "facet": "2171028778"
             }
           ]
@@ -370,8 +375,8 @@
           "entity": "country/USA",
           "points_by_facet": [
             {
-              "date": "2025-12",
-              "value": 7503000,
+              "date": "2026-01",
+              "value": 7362000,
               "facet": "3707913853"
             },
             {
@@ -486,7 +491,7 @@
     },
     "2171028778": {
       "import_name": "WorldDevelopmentIndicators",
-      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "provenance_url": "https://datatopics.worldbank.org/world-development-indicators/",
       "observation_period": "P1Y",
       "unit": "InternationalDollar"
     },
@@ -532,6 +537,10 @@
       "import_name": "CDC_Mortality_UnderlyingCause",
       "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
     },
+    "2911625765": {
+      "import_name": "France_Demographics",
+      "provenance_url": "https://www.insee.fr/en/statistiques/8333211?sommaire=8333329"
+    },
     "2978659163": {
       "import_name": "BLS_LAUS",
       "provenance_url": "https://www.bls.gov/lau/",
@@ -552,7 +561,7 @@
     },
     "3981252704": {
       "import_name": "WorldDevelopmentIndicators",
-      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "provenance_url": "https://datatopics.worldbank.org/world-development-indicators/",
       "observation_period": "P1Y"
     },
     "4181918134": {

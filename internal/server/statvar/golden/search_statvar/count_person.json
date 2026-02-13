@@ -309,6 +309,26 @@
       "dcid": "Count_Person_Intersex"
     },
     {
+      "name": "Number of people aged 101 years",
+      "dcid": "Count_Person_Years101"
+    },
+    {
+      "name": "Number of people aged 102 years",
+      "dcid": "Count_Person_Years102"
+    },
+    {
+      "name": "Number of people aged 103 years",
+      "dcid": "Count_Person_Years103"
+    },
+    {
+      "name": "Number of people aged 104 years",
+      "dcid": "Count_Person_Years104"
+    },
+    {
+      "name": "Number of people aged 20 to 59 years",
+      "dcid": "Count_Person_20To59Years"
+    },
+    {
       "name": "Number of people infected with COVID-19",
       "dcid": "Count_Person_COVID19"
     },
@@ -3979,26 +3999,6 @@
     {
       "name": "Male Population Below Poverty Status in the Last Year",
       "dcid": "Count_Person_Male_BelowPovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Male Population From Some Other Race Alone",
-      "dcid": "Count_Person_Male_SomeOtherRaceAlone"
-    },
-    {
-      "name": "Male Population Institutionalized in Group Quarters",
-      "dcid": "Count_Person_Male_ResidesInInstitutionalizedGroupQuarters"
-    },
-    {
-      "name": "Male Population Who Are Native Hawaiian and Other Pacific Islander Alone",
-      "dcid": "Count_Person_Male_NativeHawaiianAndOtherPacificIslanderAlone"
-    },
-    {
-      "name": "Male Population Who Are Native Hawaiian or Other Pacific Islander",
-      "dcid": "Count_Person_Male_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Male Population Who Are Native Hawaiian or Other Pacific Islander Alone",
-      "dcid": "Count_Person_Male_NativeHawaiianOrOtherPacificIslanderAlone"
     }
   ],
   "matches": [

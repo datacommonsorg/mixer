@@ -60,7 +60,7 @@
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y",
             "unit": "KilowattHour"
           }
@@ -123,7 +123,7 @@
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y",
             "unit": "KilogramOfOilEquivalent"
           }
@@ -241,7 +241,7 @@
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y"
           }
         }
@@ -310,15 +310,15 @@
             "2016": 8741.4352686621,
             "2017": 8662.1239820509,
             "2018": 8519.7730890095,
-            "2019": 8464.4119537275,
-            "2020": 8167.0661270677,
-            "2021": 8160.5462406824,
-            "2022": 8099.5094877958,
-            "2023": 7952.335557674
+            "2019": 8479.568637708,
+            "2020": 8195.7258891255,
+            "2021": 8203.3984974236,
+            "2022": 8155.9320699766,
+            "2023": 8021.1538461538
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y",
             "unit": "KilowattHour"
           }
@@ -384,15 +384,15 @@
             "2016": 4265.9383952751,
             "2017": 4200.7126269208,
             "2018": 4109.2206852685,
-            "2019": 4163.3499168522,
-            "2020": 3849.0779673752,
-            "2021": 3887.2353087419,
-            "2022": 3738.4650211826,
-            "2023": 3629.1962309617
+            "2019": 4170.8049626764,
+            "2020": 3862.585101635,
+            "2021": 3907.6477665052,
+            "2022": 3764.5078142931,
+            "2023": 3660.6027368066
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y",
             "unit": "KilogramOfOilEquivalent"
           }
@@ -502,16 +502,16 @@
             "2016": 4714100,
             "2017": 4813600,
             "2018": 4900600,
-            "2019": 4979200,
-            "2020": 5090200,
-            "2021": 5111300,
-            "2022": 5117100,
-            "2023": 5245000,
-            "2024": 5338500
+            "2019": 4970300,
+            "2020": 5072400,
+            "2021": 5084600,
+            "2022": 5081700,
+            "2023": 5200000,
+            "2024": 5287500
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y"
           }
         }
@@ -538,7 +538,7 @@
       "value": 46765,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
-        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
         "observationPeriod": "P1Y"
       }
     },
@@ -547,16 +547,16 @@
       "value": 1408975000,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
-        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
         "observationPeriod": "P1Y"
       }
     },
     "country/DEU": {
       "date": "2024",
-      "value": 83510950,
+      "value": 83516593,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
-        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
         "observationPeriod": "P1Y"
       }
     },
@@ -565,16 +565,16 @@
       "value": 232679478,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
-        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
         "observationPeriod": "P1Y"
       }
     },
     "country/NZL": {
       "date": "2024",
-      "value": 5338500,
+      "value": 5287500,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
-        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
         "observationPeriod": "P1Y"
       }
     },
