@@ -182,7 +182,7 @@ func TestObservationInternal(t *testing.T) {
 					Dcids: []string{"country/USA"},
 				},
 			},
-			shared.QueryTypeExistence,
+			shared.QueryTypeExistenceByEntity,
 			&pbv2.ObservationResponse{
 				ByVariable: map[string]*pbv2.VariableObservation{
 					"Count_Person": {}, 
