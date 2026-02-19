@@ -27,7 +27,7 @@ import (
 	"sync/atomic"
 
 	cbt "cloud.google.com/go/bigtable"
-	pubsub "cloud.google.com/go/pubsub"
+	pubsub "cloud.google.com/go/pubsub/v2"
 	"github.com/datacommonsorg/mixer/internal/featureflags"
 	"github.com/datacommonsorg/mixer/internal/maps"
 	"github.com/datacommonsorg/mixer/internal/metrics"

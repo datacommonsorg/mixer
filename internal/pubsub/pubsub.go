@@ -20,10 +20,11 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
-	"time"
 
-	"cloud.google.com/go/pubsub"
+	"cloud.google.com/go/pubsub/v2"
+	"cloud.google.com/go/pubsub/v2/apiv1/pubsubpb"
 	"github.com/datacommonsorg/mixer/internal/util"
+	"google.golang.org/protobuf/types/known/durationpb"
 )
 
 // Subscribe does the following:
@@ -45,19 +46,21 @@ func Subscribe(
 		return err
 	}
 	// Always create a new subscriber with default expiration date of 2 days.
-	subID := prefix + util.RandomString()
-	expiration, _ := time.ParseDuration("36h")
-	retention, _ := time.ParseDuration("24h")
-	subscriber, err := client.CreateSubscription(ctx, subID,
-		pubsub.SubscriptionConfig{
-			Topic:             client.Topic(topic),
-			ExpirationPolicy:  expiration,
-			RetentionDuration: retention,
-		})
+	subName := "projects/" + project + "/subscriptions/" + prefix + util.RandomString()
+	topicName := "projects/" + project + "/topics/" + topic
+	expiration := &durationpb.Duration{Seconds: int64(36 * 60 * 60)} // 36 hours
+	retention := &durationpb.Duration{Seconds: int64(24 * 60 * 60)}  // 24 hours
+	subscription, err := client.SubscriptionAdminClient.CreateSubscription(ctx, &pubsubpb.Subscription{
+		Name:                     subName,
+		Topic:                    topicName,
+		ExpirationPolicy:         &pubsubpb.ExpirationPolicy{Ttl: expiration},
+		MessageRetentionDuration: retention,
+	})
+	subscriber := client.Subscriber(subscription.GetName())
 	if err != nil {
 		return err
 	}
-	slog.Info("Created subscriber", "id", subID)
+	slog.Info("Created subscriber", "name", subName, "topic", topicName)
 	// Start the receiver in a goroutine.
 	go func() {
 		err = subscriber.Receive(
@@ -78,7 +81,9 @@ func Subscribe(
 	signal.Notify(c, syscall.SIGINT, syscall.SIGTERM)
 	go func() {
 		<-c
-		err := subscriber.Delete(ctx)
+		err := client.SubscriptionAdminClient.DeleteSubscription(ctx, &pubsubpb.DeleteSubscriptionRequest{
+			Subscription: subscription.GetName(),
+		})
 		if err != nil {
 			slog.Error("Failed to delete subscriber", "error", err)
 			os.Exit(1)
