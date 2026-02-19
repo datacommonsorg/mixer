@@ -107,7 +107,6 @@ func createSpannerClient(ctx context.Context, cfg *SpannerConfig) (*spanner.Clie
 	if err != nil {
 		return nil, fmt.Errorf("failed to create Spanner client: %w", err)
 	}
-	defer client.Close()
 
 	return client, nil
 }
@@ -161,6 +160,8 @@ func (sc *spannerDatabaseClient) Start() {
 
 // Stop sends a signal to the goroutine to stop polling.
 func (sc *spannerDatabaseClient) Stop() {
+	sc.client.Close()
+
 	if !sc.useStaleReads {
 		return
 	}
