@@ -96,10 +96,18 @@ func createSpannerClient(ctx context.Context, cfg *SpannerConfig) (*spanner.Clie
 	databaseName := fmt.Sprintf("projects/%s/instances/%s/databases/%s", cfg.Project, cfg.Instance, cfg.Database)
 
 	// Create the Spanner client
-	client, err := spanner.NewClient(ctx, databaseName)
+	client, err := spanner.NewClientWithConfig(ctx, databaseName, spanner.ClientConfig{
+		SessionPoolConfig: spanner.SessionPoolConfig{
+			TrackSessionHandles: true,
+			InactiveTransactionRemovalOptions: spanner.InactiveTransactionRemovalOptions{
+				ActionOnInactiveTransaction: spanner.WarnAndClose,
+			},
+		},
+	})
 	if err != nil {
 		return nil, fmt.Errorf("failed to create Spanner client: %w", err)
 	}
+	defer client.Close()
 
 	return client, nil
 }
