@@ -16,6 +16,7 @@ package pubsub
 
 import (
 	"context"
+	"fmt"
 	"log/slog"
 	"os"
 	"os/signal"
@@ -56,10 +57,10 @@ func Subscribe(
 		ExpirationPolicy:         &pubsubpb.ExpirationPolicy{Ttl: expiration},
 		MessageRetentionDuration: retention,
 	})
-	subscriber := client.Subscriber(subscription.GetName())
 	if err != nil {
-		return err
+		return fmt.Errorf("failed to create subscription: %w", err)
 	}
+	subscriber := client.Subscriber(subscription.GetName())
 	slog.Info("Created subscriber", "name", subName, "topic", topicName)
 	// Start the receiver in a goroutine.
 	go func() {
