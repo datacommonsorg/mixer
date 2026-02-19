@@ -84,7 +84,7 @@ func TestTimestampUpdated(t *testing.T) {
 		t.Fatalf("Expected timestamp to be %v, but got %v", expectedTimestamp, timestamp)
 	}
 
-	sc.Stop()
+	sc.Close()
 }
 
 func TestTimestampUpdateFailure(t *testing.T) {
@@ -126,5 +126,5 @@ func TestTimestampUpdateFailure(t *testing.T) {
 		t.Fatalf("Expected timestamp to be %v, but got %v", expectedTimestamp, timestamp)
 	}
 
-	sc.Stop()
+	sc.Close()
 }

@@ -39,7 +39,7 @@ type SpannerClient interface {
 	Sparql(ctx context.Context, nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) ([][]string, error)
 	Id() string
 	Start()
-	Stop()
+	Close()
 }
 
 // spannerDatabaseClient encapsulates the Spanner client that directly interacts with the Spanner database.
@@ -151,8 +151,12 @@ func (sc *spannerDatabaseClient) Start() {
 	}()
 }
 
-// Stop sends a signal to the goroutine to stop polling.
-func (sc *spannerDatabaseClient) Stop() {
+// Close closes the Spanner client and stops the background goroutine.
+func (sc *spannerDatabaseClient) Close() {
+	if sc.client != nil {
+		sc.client.Close()
+	}
+
 	if !sc.useStaleReads {
 		return
 	}

@@ -202,8 +202,8 @@ func main() {
 		}
 		if flags.UseStaleReads {
 			spannerClient.Start()
-			defer spannerClient.Stop()
 		}
+		defer spannerClient.Close()
 		var ds datasource.DataSource = spanner.NewSpannerDataSource(spannerClient)
 		// TODO: Order sources by priority once other implementations are added.
 		sources = append(sources, ds)
