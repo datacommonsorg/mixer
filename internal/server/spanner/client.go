@@ -21,6 +21,7 @@ import (
 	"log/slog"
 	"sync"
 	"sync/atomic"
+	"time"
 
 	"cloud.google.com/go/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
@@ -50,6 +51,7 @@ type spannerDatabaseClient struct {
 	ticker        Ticker
 	stopCh        chan struct{}
 	stopOnce      sync.Once
+	wg            sync.WaitGroup
 
 	// For mocking in tests.
 	updateTimestamp func(context.Context) error
@@ -70,7 +72,9 @@ func newSpannerDatabaseClient(client *spanner.Client, useStaleReads bool) (*span
 	sc.ticker = NewTimestampTicker()
 	sc.stopCh = make(chan struct{})
 	sc.updateTimestamp = sc.fetchAndUpdateTimestamp
-	if err := sc.updateTimestamp(context.Background()); err != nil {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+	if err := sc.updateTimestamp(ctx); err != nil {
 		slog.Error("Error initializing Spanner staleness timestamp")
 		return nil, err
 	}
@@ -131,11 +135,18 @@ func (sc *spannerDatabaseClient) Start() {
 	if !sc.useStaleReads {
 		return
 	}
+	ctx, cancel := context.WithCancel(context.Background())
+
+	sc.wg.Add(1)
 	go func() {
-		ctx := context.Background()
+		defer sc.wg.Done()
+		defer cancel()
+		defer sc.ticker.Stop()
 
 		for {
 			select {
+			case <-sc.stopCh:
+				return
 			case <-sc.ticker.C():
 				// Ignore the error here to allow the process to continue running
 				// even if one fetch fails. The previous timestamp remains in cache.
@@ -143,9 +154,6 @@ func (sc *spannerDatabaseClient) Start() {
 				if err != nil {
 					slog.Error("Error updating Spanner staleness timestamp", "error", err)
 				}
-			case <-sc.stopCh:
-				sc.ticker.Stop()
-				return
 			}
 		}
 	}()
@@ -153,14 +161,15 @@ func (sc *spannerDatabaseClient) Start() {
 
 // Close closes the Spanner client and stops the background goroutine.
 func (sc *spannerDatabaseClient) Close() {
-	if sc.client != nil {
-		sc.client.Close()
-	}
-
-	if !sc.useStaleReads {
-		return
-	}
 	sc.stopOnce.Do(func() {
-		close(sc.stopCh)
+		if sc.useStaleReads {
+			close(sc.stopCh)
+		}
+
+		sc.wg.Wait()
+
+		if sc.client != nil {
+			sc.client.Close()
+		}
 	})
 }

@@ -135,7 +135,7 @@ func setupInternal(
 	if enableV3 && useSpannerGraph {
 		spannerClient := NewSpannerClient()
 		if spannerClient != nil {
-			spannerCleanup = spannerClient.Stop
+			spannerCleanup = spannerClient.Close
 			spannerDataSource = spanner.NewSpannerDataSource(spannerClient)
 			// TODO: Order sources by priority once other implementations are added.
 			sources = append(sources, spannerDataSource)
