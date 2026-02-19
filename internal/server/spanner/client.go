@@ -50,6 +50,7 @@ type spannerDatabaseClient struct {
 	timestamp     atomic.Int64
 	ticker        Ticker
 	stopCh        chan struct{}
+	startOnce     sync.Once
 	stopOnce      sync.Once
 	wg            sync.WaitGroup
 
@@ -135,28 +136,31 @@ func (sc *spannerDatabaseClient) Start() {
 	if !sc.useStaleReads {
 		return
 	}
-	ctx, cancel := context.WithCancel(context.Background())
 
-	sc.wg.Add(1)
-	go func() {
-		defer sc.wg.Done()
-		defer cancel()
-		defer sc.ticker.Stop()
+	sc.startOnce.Do(func() {
+		ctx, cancel := context.WithCancel(context.Background())
 
-		for {
-			select {
-			case <-sc.stopCh:
-				return
-			case <-sc.ticker.C():
-				// Ignore the error here to allow the process to continue running
-				// even if one fetch fails. The previous timestamp remains in cache.
-				err := sc.updateTimestamp(ctx)
-				if err != nil {
-					slog.Error("Error updating Spanner staleness timestamp", "error", err)
+		sc.wg.Add(1)
+		go func() {
+			defer sc.wg.Done()
+			defer cancel()
+			defer sc.ticker.Stop()
+
+			for {
+				select {
+				case <-sc.stopCh:
+					return
+				case <-sc.ticker.C():
+					// Ignore the error here to allow the process to continue running
+					// even if one fetch fails. The previous timestamp remains in cache.
+					err := sc.updateTimestamp(ctx)
+					if err != nil {
+						slog.Error("Error updating Spanner staleness timestamp", "error", err)
+					}
 				}
 			}
-		}
-	}()
+		}()
+	})
 }
 
 // Close closes the Spanner client and stops the background goroutine.
