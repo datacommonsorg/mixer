@@ -13,7 +13,7 @@
 # limitations under the License.
 
 substitutions:
-  _GO_PROTOC_VERSION: "2025-07-30"
+  _GO_PROTOC_VERSION: "2026-02-20"
   # When updating this value, search for other occurrences in the codebase
   # and update those as well. See the README for more details.
 
