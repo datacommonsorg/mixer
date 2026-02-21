@@ -142,8 +142,12 @@ func (sc *spannerDatabaseClient) Start() {
 
 		sc.wg.Add(1)
 		go func() {
+			// Defer statements are processed in LIFO order.
+			// Mark the wait group as done.
 			defer sc.wg.Done()
+			// Cancel the context to clean up any in-flight operations.
 			defer cancel()
+			// Stop the ticker.
 			defer sc.ticker.Stop()
 
 			for {
