@@ -216,7 +216,7 @@ func (sc *spannerDatabaseClient) Sparql(ctx context.Context, nodes []types.Node,
 
 // fetchAndUpdateTimestamp queries Spanner and updates the timestamp.
 func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) error {
-	iter := sc.client.ReadOnlyTransaction().Query(ctx, *GetCompletionTimestampQuery())
+	iter := sc.client.Single().Query(ctx, *GetCompletionTimestampQuery())
 	defer iter.Stop()
 
 	row, err := iter.Next()
