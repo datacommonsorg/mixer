@@ -82,6 +82,8 @@ var statements = struct {
 		CompletionTimestamp
 		FROM
 			IngestionHistory
+		WHERE
+			IngestionFailure = FALSE
 		ORDER BY 
 			CompletionTimestamp DESC
 		LIMIT 1`,

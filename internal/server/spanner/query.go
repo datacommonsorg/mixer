@@ -221,7 +221,7 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 
 	row, err := iter.Next()
 	if err == iterator.Done {
-		return fmt.Errorf("no rows found in IngestionHistory")
+		return fmt.Errorf("no valid rows found in IngestionHistory")
 	}
 	if err != nil {
 		return fmt.Errorf("failed to fetch row: %w", err)
@@ -262,6 +262,7 @@ func (sc *spannerDatabaseClient) executeQuery(
 		if err != nil {
 			return err
 		}
+		slog.Info("Running query with stale read", "timestamp", ts.String())
 		err = runQuery(spanner.ReadTimestamp(ts))
 
 		// Log error if timestamp is older than retention and fall back to strong read.
