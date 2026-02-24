@@ -262,7 +262,6 @@ func (sc *spannerDatabaseClient) executeQuery(
 		if err != nil {
 			return err
 		}
-		slog.Info("Running query with stale read", "timestamp", ts.String())
 		err = runQuery(spanner.ReadTimestamp(ts))
 
 		// Log error if timestamp is older than retention and fall back to strong read.
