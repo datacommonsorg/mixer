@@ -46,8 +46,8 @@
             (proxy.pathsuffix MatchesPath "/internal/import-table") OR
             (proxy.pathsuffix MatchesPath "/place/stat/date/within-place") OR
             (proxy.pathsuffix MatchesPath "/place/stats-var") OR
-            (proxy.pathsuffix MatchesPath "/translate") OR
             (proxy.pathsuffix MatchesPath "/search") OR
+            (proxy.pathsuffix MatchesPath "/translate") OR
             (proxy.pathsuffix MatchesPath "/update-cache") OR
             (proxy.pathsuffix MatchesPath "/v1/bulk/observation-existence") OR
             (proxy.pathsuffix MatchesPath "/v1/bulk/observations/point/linked") OR
