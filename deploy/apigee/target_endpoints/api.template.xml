@@ -58,13 +58,14 @@
             ((proxy.pathsuffix MatchesPath "/v1/info/place") OR (proxy.pathsuffix MatchesPath "/v1/info/place/**")) OR
             ((proxy.pathsuffix MatchesPath "/v1/info/variable") OR (proxy.pathsuffix MatchesPath "/v1/info/variable/**")) OR
             ((proxy.pathsuffix MatchesPath "/v1/info/variable-group") OR (proxy.pathsuffix MatchesPath "/v1/info/variable-group/**")) OR
+            ((proxy.pathsuffix MatchesPath "/v1/internal/page/bio") OR (proxy.pathsuffix MatchesPath "/v1/internal/page/bio/**"))
             ((proxy.pathsuffix MatchesPath "/v1/observations/point") OR (proxy.pathsuffix MatchesPath "/v1/observations/point/**")) OR
             ((proxy.pathsuffix MatchesPath "/v1/observations/series") OR (proxy.pathsuffix MatchesPath "/v1/observations/series/**")) OR
             (proxy.pathsuffix MatchesPath "/v1/observations/series/derived") OR
             (proxy.pathsuffix MatchesPath "/v1/place/stat-vars/union") OR
             (proxy.pathsuffix MatchesPath "/v1/stat/date/within-place") OR
             ((proxy.pathsuffix MatchesPath "/v1/triples") OR (proxy.pathsuffix MatchesPath "/v1/triples/**")) OR
-            ((proxy.pathsuffix MatchesPath "/v1/variables") OR (proxy.pathsuffix MatchesPath "/v1/variables/**"))
+            ((proxy.pathsuffix MatchesPath "/v1/variables") OR (proxy.pathsuffix MatchesPath "/v1/variables/**")) OR
           </Condition>
           <Name>block-deprecated-endpoints</Name>
         </Step>
