@@ -41,37 +41,6 @@ type entityInfo struct {
 	typeOf      string
 }
 
-// FindEntities implements API for Mixer.FindEntities.
-func FindEntities(
-	ctx context.Context,
-	in *pb.FindEntitiesRequest,
-	store *store.Store,
-	mapsClient internalmaps.MapsClient,
-) (*pb.FindEntitiesResponse, error) {
-	bulkResp, err := BulkFindEntities(ctx,
-		&pb.BulkFindEntitiesRequest{
-			Entities: []*pb.BulkFindEntitiesRequest_Entity{
-				{
-					Description: in.GetDescription(),
-					Type:        in.GetType(),
-				},
-			},
-		},
-		store,
-		mapsClient)
-	if err != nil {
-		return nil, err
-	}
-
-	if len(bulkResp.GetEntities()) == 0 {
-		return &pb.FindEntitiesResponse{}, nil
-	}
-
-	return &pb.FindEntitiesResponse{
-		Dcids: bulkResp.GetEntities()[0].GetDcids(),
-	}, nil
-}
-
 // BulkFindEntities implements API for Mixer.BulkFindEntities.
 func BulkFindEntities(
 	ctx context.Context,
