@@ -30,6 +30,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/search"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
+	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/uuid"
@@ -45,7 +46,8 @@ import (
 func (s *Server) V2Resolve(
 	ctx context.Context, in *pbv2.ResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
-	if err := setDefaultsAndValidateResolveInputs(in); err != nil {
+	inProp, outProp, typeOfValues, err := validateAndParseResolveInputs(in)
+	if err != nil {
 		return nil, err
 	}
 	v2StartTime := time.Now()
@@ -61,7 +63,7 @@ func (s *Server) V2Resolve(
 
 	if callLocal {
 		errGroup.Go(func() error {
-			localResp, err := s.V2ResolveCore(errCtx, in)
+			localResp, err := s.V2ResolveCore(errCtx, in, inProp, outProp, typeOfValues)
 			if err != nil {
 				return err
 			}
@@ -110,6 +112,142 @@ func (s *Server) V2Resolve(
 	)
 
 	return v2Resp, nil
+}
+
+// parseResolvePropertyExpression parses and validates a property expression string.
+//
+// The expression generally takes the form "<-inProp->outProp", optionally with filters
+// like "<-inProp{typeOf:Type}->outProp".
+//
+// Returns:
+// - input property (string)
+// - output property (string)
+// - typeOf filter values ([]string, from the input property filter)
+// - error if validation fails
+func parseResolvePropertyExpression(prop string) (string, string, []string, error) {
+	// Parse property expression into Arcs.
+	arcs, err := v2.ParseProperty(prop)
+	if err != nil {
+		return "", "", nil, err
+	}
+
+	if len(arcs) != 2 {
+		return "", "", nil, fmt.Errorf("must define exactly two parts (incoming and outgoing arcs). Found %d parts", len(arcs))
+	}
+
+	inArc := arcs[0]
+	outArc := arcs[1]
+	if inArc.Out || !outArc.Out {
+		return "", "", nil, fmt.Errorf("must start with an incoming arc and end with an outgoing arc")
+	}
+
+	if inArc.SingleProp == "" {
+		return "", "", nil, fmt.Errorf("input property must be provided")
+	}
+	if outArc.SingleProp == "" {
+		return "", "", nil, fmt.Errorf("output property must be provided")
+	}
+
+	var typeOfValues []string
+	// Validate filters
+	if len(inArc.Filter) > 0 {
+		if len(inArc.Filter) > 1 {
+			return "", "", nil, fmt.Errorf("only '%s' filter is supported", TypeOfProperty)
+		}
+		if filter, ok := inArc.Filter[TypeOfProperty]; !ok {
+			for k := range inArc.Filter {
+				return "", "", nil, fmt.Errorf("invalid filter key '%s'. Only '%s' filter is supported", k, TypeOfProperty)
+			}
+		} else {
+			typeOfValues = filter
+		}
+	}
+
+	return inArc.SingleProp, outArc.SingleProp, typeOfValues, nil
+}
+
+// validateAndParseResolveInputs validates and parses the inputs for the resolve request.
+//
+// Validation logic:
+// - `target`: Must be one of "base_only", "custom_only", "base_and_custom". Defaults to "base_and_custom".
+// - `resolver`: Must be one of "place", "indicator". Defaults to "place".
+// - `property`:
+//   - Must match the format "<-inProp->outProp" (optionally with filters).
+//   - "inProp" and "outProp" validation depends on the resolver:
+//     - "place": if "inProp" is "description" or "geoCoordinate", "outProp" must be "dcid".
+//     - "indicator": "inProp" must be "description" and "outProp" must be "dcid".
+//
+// Returns:
+// - input property (string)
+// - output property (string)
+// - typeOf filter values ([]string, from the input property filter)
+// - error if validation fails
+func validateAndParseResolveInputs(in *pbv2.ResolveRequest) (string, string, []string, error) {
+	var validationErrors []string
+
+	// Parse and validate `target`
+	switch in.GetTarget() {
+	case ResolveTargetBaseOnly, ResolveTargetCustomOnly, ResolveTargetBaseAndCustom:
+	case "":
+		// Set default value; ignored if current call is to base dc
+		in.Target = ResolveTargetBaseAndCustom
+	default:
+		validationErrors = append(validationErrors, fmt.Sprintf("Invalid 'target': valid values are '%s', '%s', '%s'",
+			ResolveTargetCustomOnly, ResolveTargetBaseOnly, ResolveTargetBaseAndCustom))
+	}
+
+	// Parse and validate `resolver`
+	switch in.GetResolver() {
+	case ResolveResolverPlace, ResolveResolverIndicator:
+	case "":
+		// Set default value
+		in.Resolver = ResolveResolverPlace
+	default:
+		validationErrors = append(validationErrors, fmt.Sprintf("Invalid 'resolver': valid values are '%s', '%s'",
+			ResolveResolverIndicator, ResolveResolverPlace))
+	}
+
+	// Parse `property` expression into its in arc property, out arc property and typeOf filter values
+	if in.GetProperty() == "" {
+		in.Property = ResolveDefaultPropertyExpression
+	}
+
+	inProp, outProp, typeOfValues,err := parseResolvePropertyExpression(in.GetProperty())
+	if err != nil {
+		validationErrors = append(validationErrors, fmt.Sprintf("Invalid 'property' expression: %v", err))
+	}
+
+	// Validate property expression based on resolver
+	if err == nil {
+		switch in.GetResolver() {
+		case ResolveResolverPlace:
+			// geoCoordinate and description only support dcid as outArc
+			if (inProp == DescriptionProperty || inProp == GeoCoordinateProperty) && outProp != DcidProperty {
+				validationErrors = append(validationErrors, fmt.Sprintf(
+					"Invalid 'property' expression: given input property '%s', output property can only be '%s'",
+					inProp, DcidProperty))
+			}
+		case ResolveResolverIndicator:
+			// Indicator resolution only supports description as inArc.
+			if inProp != DescriptionProperty {
+				validationErrors = append(validationErrors, fmt.Sprintf(
+					"Invalid 'property' expression: indicator resolution only supports '%s' as input property",
+					DescriptionProperty))
+			}
+			// Indicator resolution only supports dcid as outArc.
+			if outProp != DcidProperty {
+				validationErrors = append(validationErrors, fmt.Sprintf(
+					"Invalid 'property' expression: indicator resolution only supports '%s' as output property",
+					DcidProperty))
+			}
+		}
+	}
+
+	if len(validationErrors) > 0 {
+		return "", "", nil, status.Errorf(codes.InvalidArgument, "Invalid inputs in request. %s", strings.Join(validationErrors, ". "))
+	}
+
+	return inProp, outProp, typeOfValues, nil
 }
 
 // V2Node implements API for mixer.V2Node.
@@ -398,7 +536,7 @@ func (s *Server) FilterStatVarsByEntity(
 				"/v2/variable/filter",
 				in,
 				remoteResponse,
-			); err != nil {
+				); err != nil {
 				return err
 			}
 			remoteResponseChan <- remoteResponse
@@ -422,7 +560,7 @@ func (s *Server) FilterStatVarsByEntity(
 // based on the target parameter and the presence of a remote mixer domain.
 // Returns (shouldCallLocal, shouldCallRemote, error).
 //
-// Assumes setDefaultsAndValidateResolveInputs has been called prior.
+// Assumes that `target` has been validated.
 //
 // logic:
 //   - If remoteMixerDomain is empty, we are the base instance (or standalone).
@@ -445,42 +583,4 @@ func resolveRouting(target, remoteMixerDomain string) (bool, bool, error) {
 	default:
 		return true, true, nil
 	}
-}
-
-func setDefaultsAndValidateResolveInputs(in *pbv2.ResolveRequest) error {
-	if in.GetTarget() == "" {
-		// ignored if current call is to base dc
-		in.Target = ResolveTargetBaseAndCustom
-	}
-	if in.GetResolver() == "" {
-		in.Resolver = ResolveResolverPlace
-	}
-	if in.GetProperty() == "" {
-		in.Property = ResolvePropertyDescription
-	}
-
-	var validationErrors []string
-
-	switch in.GetTarget() {
-	case ResolveTargetBaseOnly, ResolveTargetCustomOnly, ResolveTargetBaseAndCustom:
-	default:
-		validationErrors = append(validationErrors, fmt.Sprintf("Invalid value for target, valid values are: '%s', '%s', '%s'",
-			ResolveTargetCustomOnly, ResolveTargetBaseOnly, ResolveTargetBaseAndCustom))
-	}
-
-	switch in.GetResolver() {
-	case ResolveResolverPlace:
-	case ResolveResolverIndicator:
-		if in.GetProperty() != ResolvePropertyDescription {
-			validationErrors = append(validationErrors, "Invalid value for property, indicator resolution only supports the 'description' based property")
-		}
-	default:
-		validationErrors = append(validationErrors, fmt.Sprintf("Invalid value for resolver, valid values are: '%s', '%s'",
-			ResolveResolverIndicator, ResolveResolverPlace))
-	}
-
-	if len(validationErrors) > 0 {
-		return status.Errorf(codes.InvalidArgument, "Invalid inputs in request: %s", strings.Join(validationErrors, ". "))
-	}
-	return nil
 }

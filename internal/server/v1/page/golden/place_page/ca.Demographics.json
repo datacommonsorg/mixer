@@ -1362,9 +1362,10 @@
             "2019": 6140475,
             "2020": 6151548,
             "2021": 6168187,
-            "2022": 6179414,
-            "2023": 6208038,
-            "2024": 6245466
+            "2022": 6179285,
+            "2023": 6205956,
+            "2024": 6243544,
+            "2025": 6270541
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
@@ -3352,8 +3353,8 @@
   },
   "latestPopulation": {
     "country/USA": {
-      "date": "2024",
-      "value": 340110988,
+      "date": "2025",
+      "value": 341784857,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -3362,8 +3363,8 @@
       }
     },
     "geoId/04": {
-      "date": "2024",
-      "value": 7582384,
+      "date": "2025",
+      "value": 7623818,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -3372,8 +3373,8 @@
       }
     },
     "geoId/06": {
-      "date": "2024",
-      "value": 39431263,
+      "date": "2025",
+      "value": 39355309,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -3432,8 +3433,8 @@
       }
     },
     "geoId/08": {
-      "date": "2024",
-      "value": 5957493,
+      "date": "2025",
+      "value": 6012561,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -3442,8 +3443,8 @@
       }
     },
     "geoId/18": {
-      "date": "2024",
-      "value": 6924275,
+      "date": "2025",
+      "value": 6973333,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -3452,8 +3453,8 @@
       }
     },
     "geoId/22": {
-      "date": "2024",
-      "value": 4597740,
+      "date": "2025",
+      "value": 4618189,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -3462,8 +3463,8 @@
       }
     },
     "geoId/29": {
-      "date": "2024",
-      "value": 6245466,
+      "date": "2025",
+      "value": 6270541,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -3472,8 +3473,8 @@
       }
     },
     "geoId/38": {
-      "date": "2024",
-      "value": 796568,
+      "date": "2025",
+      "value": 799358,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -3482,8 +3483,8 @@
       }
     },
     "geoId/47": {
-      "date": "2024",
-      "value": 7227750,
+      "date": "2025",
+      "value": 7315076,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -3492,8 +3493,8 @@
       }
     },
     "geoId/48": {
-      "date": "2024",
-      "value": 31290831,
+      "date": "2025",
+      "value": 31709821,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -3502,8 +3503,8 @@
       }
     },
     "geoId/53": {
-      "date": "2024",
-      "value": 7958180,
+      "date": "2025",
+      "value": 8001020,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -3512,8 +3513,8 @@
       }
     },
     "geoId/72": {
-      "date": "2024",
-      "value": 3203295,
+      "date": "2025",
+      "value": 3184835,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",

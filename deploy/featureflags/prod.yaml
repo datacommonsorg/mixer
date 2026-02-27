@@ -6,5 +6,5 @@ flags:
   V3MirrorFraction: 0.6
   WriteUsageLogs: 1.0
   UseSpannerGraph: true
-  SpannerGraphDatabase: dc_graph_2025_11_07
+  SpannerGraphDatabase: dc_graph_2026_01_27
   UseStaleReads: true

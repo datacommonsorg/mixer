@@ -236,6 +236,7 @@ service Mixer {
 
   // Given a text search query, return all nodes matching the query.
   rpc Search(SearchRequest) returns (SearchResponse) {
+    option deprecated = true;
     option (google.api.http) = {
       get : "/search"
     };

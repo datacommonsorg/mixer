@@ -1908,8 +1908,8 @@
       }
     },
     "country/USA": {
-      "date": "2024",
-      "value": 340110988,
+      "date": "2025",
+      "value": 341784857,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",

@@ -13,6 +13,15 @@
         "definition": "st=meanValue,mp=cost,pt=Person,foodSecurityStatus=FoodSecure,foodType=Meal"
       },
       {
+        "id": "Mean_Age_Person",
+        "searchNames": [
+          "Mean Age of Person",
+          "Average age of people"
+        ],
+        "displayName": "Average age of people",
+        "definition": "st=meanValue,mp=age,pt=Person"
+      },
+      {
         "id": "Count_Company",
         "searchNames": [
           "Count of Company"
@@ -132,6 +141,14 @@
         "hasData": true
       },
       {
+        "id": "Count_Person_5To17Years_Poor",
+        "searchNames": [
+          "Population Count of Person With Age is 5 - 17 Years, Family Poverty Status is Poor"
+        ],
+        "displayName": "Population: 5 - 17 Years, Poor",
+        "definition": "mp=count,pt=Person,age=Years5To17,familyPovertyStatus=Poor"
+      },
+      {
         "id": "Count_Person_InfrastructureProject_BrazilRuralDevelopmentProgram",
         "searchNames": [
           "Population Count of Person With Affected by Is Infrastructure Project, Benefit Program is Brazil_Rural Development Program",
@@ -161,7 +178,8 @@
       {
         "id": "dc/g/Person_AgeGroupClassification",
         "specializedEntity": "Age Group Classification",
-        "displayName": "Person by Age Group Classification"
+        "displayName": "Person by Age Group Classification",
+        "descendentStatVarCount": 3
       },
       {
         "id": "dc/g/Person_BenefitProgram",
@@ -451,6 +469,11 @@
         "displayName": "Person by Number of Vehicles in Household"
       },
       {
+        "id": "dc/g/Person_OriginBackgroundType",
+        "specializedEntity": "Origin Background Type",
+        "displayName": "Person by Origin Background Type"
+      },
+      {
         "id": "dc/g/Place_PlaceType",
         "specializedEntity": "Place Type",
         "displayName": "Place by Place Type"
@@ -485,6 +508,11 @@
         "id": "dc/g/Person_Religion",
         "specializedEntity": "Religion",
         "displayName": "Person by Religion"
+      },
+      {
+        "id": "dc/g/Person_ReligiousOrientation",
+        "specializedEntity": "Religious Orientation",
+        "displayName": "Person by Religious Orientation"
       },
       {
         "id": "dc/g/Residence",

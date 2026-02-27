@@ -94,6 +94,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "City",
+            "Neighborhood"
           ]
         },
         "geoId/0608968": {
@@ -188,6 +192,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "City",
+            "Neighborhood"
           ]
         },
         "geoId/0610345": {
@@ -282,6 +290,9 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "City"
           ]
         },
         "geoId/0617610": {
@@ -376,6 +387,9 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "City"
           ]
         },
         "geoId/0620598": {
@@ -470,6 +484,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "City",
+            "Neighborhood"
           ]
         },
         "geoId/0627080": {
@@ -564,6 +582,9 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "City"
           ]
         },
         "geoId/0629504": {
@@ -658,6 +679,9 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "City"
           ]
         },
         "geoId/0641282": {
@@ -752,6 +776,9 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "City"
           ]
         },
         "geoId/0643280": {
@@ -846,6 +873,9 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "City"
           ]
         },
         "geoId/0643294": {
@@ -940,6 +970,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "City",
+            "Town"
           ]
         },
         "geoId/0644112": {
@@ -1034,6 +1068,10 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "City",
+            "Town"
           ]
         },
         "geoId/0644378": {
@@ -1128,6 +1166,9 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "City"
           ]
         },
         "geoId/0647766": {
@@ -1222,6 +1263,9 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "City"
           ]
         },
         "geoId/0648956": {
@@ -1316,6 +1360,9 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "City"
           ]
         },
         "geoId/0649278": {
@@ -1410,6 +1457,9 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "City"
           ]
         },
         "geoId/0649670": {
@@ -1504,6 +1554,9 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "City"
           ]
         },
         "geoId/0655282": {
@@ -1598,6 +1651,9 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "City"
           ]
         },
         "geoId/0668000": {
@@ -1692,6 +1748,9 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "City"
           ]
         },
         "geoId/0668238": {
@@ -1786,6 +1845,9 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "City"
           ]
         },
         "geoId/0669084": {
@@ -1880,6 +1942,9 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "City"
           ]
         },
         "geoId/0670280": {
@@ -1974,6 +2039,9 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "City"
           ]
         },
         "geoId/0673906": {
@@ -2068,6 +2136,9 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "City"
           ]
         },
         "geoId/0677000": {
@@ -2162,6 +2233,9 @@
                 }
               ]
             }
+          ],
+          "place_types": [
+            "City"
           ]
         }
       }
