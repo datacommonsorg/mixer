@@ -33,6 +33,8 @@ import (
 
 const (
 	// SQL query snippets.
+	// WHERE keyword for SQL queries.
+	sqlWhere = "\n\t\tWHERE\n\t\t\t"
 	// Prefix for graph queries with any node selection.
 	sqlReturn = "\n\t\tRETURN"
 	// DISTINCT keyword for SQL queries.
@@ -241,44 +243,26 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 	sql := statements.graphPrefixAny
 	params := map[string]interface{}{}
 
-	aliasToDcid := mapAliasToDcid(queries)
 	safeAliasMap := generateSafeAliasMap(queries)
 	count := 0
 	triples := []string{}
-	dcids := map[string]bool{}
+	nodeMaps := []string{}
 	for _, q := range queries {
-		// Skip dcid triples which will be resolved.
-		if q.Pred == "dcid" {
-			continue
-		}
-
 		eCount := strconv.Itoa(count)
 		params["predicate"+eCount] = q.Pred
 
 		// Parse subject.
 		sId := safeAliasMap[q.Sub.Alias]
 		var sFilter string
-		if dcid, ok := aliasToDcid[q.Sub.Alias]; ok {
-			if _, ok := dcids[dcid]; !ok {
-				sFilter = fmt.Sprintf(statements.nodeFilter, sId)
-				params[sId] = []string{dcid}
-				dcids[dcid] = true
-			}
-		}
 
 		// Parse object.
 		var oId, oFilter string
 		if node, ok := q.Obj.(types.Node); ok {
 			oId = safeAliasMap[node.Alias]
-			if dcid, ok := aliasToDcid[node.Alias]; ok {
-				if _, ok := dcids[dcid]; !ok {
-					oFilter = fmt.Sprintf(statements.nodeFilter, oId)
-					params[oId] = []string{dcid}
-					dcids[dcid] = true
-				}
+			if q.Pred == "dcid" {
+				nodeMaps = append(nodeMaps, oId+" = "+sId)
 			}
 		} else {
-			oId = "o" + eCount
 			var vals []string
 			switch v := q.Obj.(type) {
 			case []string:
@@ -288,18 +272,38 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 			default:
 				return nil, fmt.Errorf("unsupported object type: %T", q.Obj)
 			}
-			if q.Pred != "typeOf" { // typeOf has reference object.
+			if q.Pred != "typeOf" && q.Pred != "dcid" { // typeOf has reference object.
 				vals = addObjectValues(vals)
 			}
-			oFilter = fmt.Sprintf(statements.nodeFilter, oId)
-			params[oId] = vals
+			if q.Pred == "dcid" {
+				sFilter = fmt.Sprintf(statements.nodeFilter, sId)
+				params[sId] = vals
+			} else {
+				oId = "o" + eCount
+				oFilter = fmt.Sprintf(statements.nodeFilter, oId)
+				params[oId] = vals
+			}
+
 		}
 
-		triples = append(triples, fmt.Sprintf(statements.triple, sId, sFilter, count, oId, oFilter))
-		count++
+		if q.Pred == "dcid" {
+			if oId == "" {
+				triples = append(triples, fmt.Sprintf(statements.node, sId, sFilter))
+			} else {
+				triples = append(triples, fmt.Sprintf(statements.node, oId, oFilter))
+			}
+		} else {
+			triples = append(triples, fmt.Sprintf(statements.triple, sId, sFilter, count, oId, oFilter))
+			count++
+		}
+
 	}
 
 	sql += strings.Join(triples, ",\n\t\t")
+
+	if len(nodeMaps) > 0 {
+		sql += sqlWhere + strings.Join(nodeMaps, "\n\t\t\tAND ")
+	}
 
 	var nodeAliases []string
 	for _, n := range nodes {
@@ -331,17 +335,6 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 		SQL:    sql,
 		Params: params,
 	}, nil
-}
-
-// mapAliasToDcid maps SPARQL aliases to their corresponding DCIDs.
-func mapAliasToDcid(queries []*types.Query) map[string]string {
-	dcidMap := make(map[string]string)
-	for _, q := range queries {
-		if q.Pred == "dcid" {
-			dcidMap[q.Sub.Alias] = q.Obj.(string)
-		}
-	}
-	return dcidMap
 }
 
 // generateSafeAliasMap generates a map of safe aliases for SPARQL queries.

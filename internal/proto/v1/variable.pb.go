@@ -136,109 +136,6 @@ func (x *VariablesResponse) GetVariables() []string {
 	return nil
 }
 
-type BulkVariablesRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Entities []string `protobuf:"bytes,1,rep,name=entities,proto3" json:"entities,omitempty"`
-	// If set, return the union of all variables of all entities.
-	Union bool `protobuf:"varint,2,opt,name=union,proto3" json:"union,omitempty"`
-}
-
-func (x *BulkVariablesRequest) Reset() {
-	*x = BulkVariablesRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_v1_variable_proto_msgTypes[2]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *BulkVariablesRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*BulkVariablesRequest) ProtoMessage() {}
-
-func (x *BulkVariablesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_variable_proto_msgTypes[2]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use BulkVariablesRequest.ProtoReflect.Descriptor instead.
-func (*BulkVariablesRequest) Descriptor() ([]byte, []int) {
-	return file_v1_variable_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *BulkVariablesRequest) GetEntities() []string {
-	if x != nil {
-		return x.Entities
-	}
-	return nil
-}
-
-func (x *BulkVariablesRequest) GetUnion() bool {
-	if x != nil {
-		return x.Union
-	}
-	return false
-}
-
-type BulkVariablesResponse struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Data []*VariablesResponse `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
-}
-
-func (x *BulkVariablesResponse) Reset() {
-	*x = BulkVariablesResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_v1_variable_proto_msgTypes[3]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *BulkVariablesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*BulkVariablesResponse) ProtoMessage() {}
-
-func (x *BulkVariablesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_variable_proto_msgTypes[3]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use BulkVariablesResponse.ProtoReflect.Descriptor instead.
-func (*BulkVariablesResponse) Descriptor() ([]byte, []int) {
-	return file_v1_variable_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *BulkVariablesResponse) GetData() []*VariablesResponse {
-	if x != nil {
-		return x.Data
-	}
-	return nil
-}
-
 type VariableAncestorsRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -251,7 +148,7 @@ type VariableAncestorsRequest struct {
 func (x *VariableAncestorsRequest) Reset() {
 	*x = VariableAncestorsRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v1_variable_proto_msgTypes[4]
+		mi := &file_v1_variable_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -264,7 +161,7 @@ func (x *VariableAncestorsRequest) String() string {
 func (*VariableAncestorsRequest) ProtoMessage() {}
 
 func (x *VariableAncestorsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_variable_proto_msgTypes[4]
+	mi := &file_v1_variable_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -277,7 +174,7 @@ func (x *VariableAncestorsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VariableAncestorsRequest.ProtoReflect.Descriptor instead.
 func (*VariableAncestorsRequest) Descriptor() ([]byte, []int) {
-	return file_v1_variable_proto_rawDescGZIP(), []int{4}
+	return file_v1_variable_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *VariableAncestorsRequest) GetNode() string {
@@ -304,7 +201,7 @@ type VariableAncestorsResponse struct {
 func (x *VariableAncestorsResponse) Reset() {
 	*x = VariableAncestorsResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_v1_variable_proto_msgTypes[5]
+		mi := &file_v1_variable_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -317,7 +214,7 @@ func (x *VariableAncestorsResponse) String() string {
 func (*VariableAncestorsResponse) ProtoMessage() {}
 
 func (x *VariableAncestorsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_v1_variable_proto_msgTypes[5]
+	mi := &file_v1_variable_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -330,7 +227,7 @@ func (x *VariableAncestorsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VariableAncestorsResponse.ProtoReflect.Descriptor instead.
 func (*VariableAncestorsResponse) Descriptor() ([]byte, []int) {
-	return file_v1_variable_proto_rawDescGZIP(), []int{5}
+	return file_v1_variable_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *VariableAncestorsResponse) GetAncestors() []string {
@@ -352,27 +249,18 @@ var file_v1_variable_proto_rawDesc = []byte{
 	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x18, 0x01,
 	0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x79, 0x12, 0x1c, 0x0a, 0x09,
 	0x76, 0x61, 0x72, 0x69, 0x61, 0x62, 0x6c, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x09, 0x52,
-	0x09, 0x76, 0x61, 0x72, 0x69, 0x61, 0x62, 0x6c, 0x65, 0x73, 0x22, 0x48, 0x0a, 0x14, 0x42, 0x75,
-	0x6c, 0x6b, 0x56, 0x61, 0x72, 0x69, 0x61, 0x62, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x18, 0x01,
-	0x20, 0x03, 0x28, 0x09, 0x52, 0x08, 0x65, 0x6e, 0x74, 0x69, 0x74, 0x69, 0x65, 0x73, 0x12, 0x14,
-	0x0a, 0x05, 0x75, 0x6e, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x08, 0x52, 0x05, 0x75,
-	0x6e, 0x69, 0x6f, 0x6e, 0x22, 0x4e, 0x0a, 0x15, 0x42, 0x75, 0x6c, 0x6b, 0x56, 0x61, 0x72, 0x69,
-	0x61, 0x62, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x35, 0x0a,
-	0x04, 0x64, 0x61, 0x74, 0x61, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x21, 0x2e, 0x64, 0x61,
-	0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x56, 0x61, 0x72,
-	0x69, 0x61, 0x62, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x52, 0x04,
-	0x64, 0x61, 0x74, 0x61, 0x22, 0x2e, 0x0a, 0x18, 0x56, 0x61, 0x72, 0x69, 0x61, 0x62, 0x6c, 0x65,
-	0x41, 0x6e, 0x63, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x12, 0x12, 0x0a, 0x04, 0x6e, 0x6f, 0x64, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
-	0x6e, 0x6f, 0x64, 0x65, 0x22, 0x39, 0x0a, 0x19, 0x56, 0x61, 0x72, 0x69, 0x61, 0x62, 0x6c, 0x65,
-	0x41, 0x6e, 0x63, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x12, 0x1c, 0x0a, 0x09, 0x61, 0x6e, 0x63, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x73, 0x18, 0x01,
-	0x20, 0x03, 0x28, 0x09, 0x52, 0x09, 0x61, 0x6e, 0x63, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x73, 0x42,
-	0x33, 0x5a, 0x31, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x64, 0x61,
-	0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x6f, 0x72, 0x67, 0x2f, 0x6d, 0x69, 0x78,
-	0x65, 0x72, 0x2f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x2f, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x2f, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x09, 0x76, 0x61, 0x72, 0x69, 0x61, 0x62, 0x6c, 0x65, 0x73, 0x22, 0x2e, 0x0a, 0x18, 0x56, 0x61,
+	0x72, 0x69, 0x61, 0x62, 0x6c, 0x65, 0x41, 0x6e, 0x63, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x73, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x6f, 0x64, 0x65, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x6f, 0x64, 0x65, 0x22, 0x39, 0x0a, 0x19, 0x56, 0x61,
+	0x72, 0x69, 0x61, 0x62, 0x6c, 0x65, 0x41, 0x6e, 0x63, 0x65, 0x73, 0x74, 0x6f, 0x72, 0x73, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x1c, 0x0a, 0x09, 0x61, 0x6e, 0x63, 0x65, 0x73,
+	0x74, 0x6f, 0x72, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x09, 0x61, 0x6e, 0x63, 0x65,
+	0x73, 0x74, 0x6f, 0x72, 0x73, 0x42, 0x33, 0x5a, 0x31, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e,
+	0x63, 0x6f, 0x6d, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x73, 0x6f,
+	0x72, 0x67, 0x2f, 0x6d, 0x69, 0x78, 0x65, 0x72, 0x2f, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x6e, 0x61,
+	0x6c, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x33,
 }
 
 var (
@@ -387,22 +275,19 @@ func file_v1_variable_proto_rawDescGZIP() []byte {
 	return file_v1_variable_proto_rawDescData
 }
 
-var file_v1_variable_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_v1_variable_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_v1_variable_proto_goTypes = []interface{}{
 	(*VariablesRequest)(nil),          // 0: datacommons.v1.VariablesRequest
 	(*VariablesResponse)(nil),         // 1: datacommons.v1.VariablesResponse
-	(*BulkVariablesRequest)(nil),      // 2: datacommons.v1.BulkVariablesRequest
-	(*BulkVariablesResponse)(nil),     // 3: datacommons.v1.BulkVariablesResponse
-	(*VariableAncestorsRequest)(nil),  // 4: datacommons.v1.VariableAncestorsRequest
-	(*VariableAncestorsResponse)(nil), // 5: datacommons.v1.VariableAncestorsResponse
+	(*VariableAncestorsRequest)(nil),  // 2: datacommons.v1.VariableAncestorsRequest
+	(*VariableAncestorsResponse)(nil), // 3: datacommons.v1.VariableAncestorsResponse
 }
 var file_v1_variable_proto_depIdxs = []int32{
-	1, // 0: datacommons.v1.BulkVariablesResponse.data:type_name -> datacommons.v1.VariablesResponse
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	0, // [0:0] is the sub-list for method output_type
+	0, // [0:0] is the sub-list for method input_type
+	0, // [0:0] is the sub-list for extension type_name
+	0, // [0:0] is the sub-list for extension extendee
+	0, // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_v1_variable_proto_init() }
@@ -436,30 +321,6 @@ func file_v1_variable_proto_init() {
 			}
 		}
 		file_v1_variable_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BulkVariablesRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_v1_variable_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*BulkVariablesResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_v1_variable_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*VariableAncestorsRequest); i {
 			case 0:
 				return &v.state
@@ -471,7 +332,7 @@ func file_v1_variable_proto_init() {
 				return nil
 			}
 		}
-		file_v1_variable_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+		file_v1_variable_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*VariableAncestorsResponse); i {
 			case 0:
 				return &v.state
@@ -490,7 +351,7 @@ func file_v1_variable_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_v1_variable_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

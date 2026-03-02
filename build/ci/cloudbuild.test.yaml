@@ -68,7 +68,7 @@ steps:
     waitFor: ["build-proto"]
 
 substitutions:
-  _FULL_ENV_VERSION: "mixer-only-2025-10-02"
+  _FULL_ENV_VERSION: "mixer-only-2026-02-20"
 
 options:
   volumes:

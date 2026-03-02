@@ -71,6 +71,8 @@ var statements = struct {
 	resolvePropToDcid string
 	// Resolve one property to another.
 	resolvePropToProp string
+	// Generic node pattern.
+	node string
 	// Generic subquery for filtering a Node.
 	nodeFilter string
 	// Generic triple pattern.
@@ -80,6 +82,8 @@ var statements = struct {
 		CompletionTimestamp
 		FROM
 			IngestionHistory
+		WHERE
+			IngestionFailure = FALSE
 		ORDER BY 
 			CompletionTimestamp DESC
 		LIMIT 1`,
@@ -268,6 +272,7 @@ var statements = struct {
 		RETURN
 			i.object_id AS node,
 			n.value AS candidate`,
+	node: `(%[1]s:Node%[2]s)`,
 	nodeFilter: `
 		WHERE
 			%[1]s.subject_id IN UNNEST(@%[1]s)`,
