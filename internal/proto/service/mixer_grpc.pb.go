@@ -147,6 +147,7 @@ type MixerClient interface {
 	GetLocationsRankings(ctx context.Context, in *proto.GetLocationsRankingsRequest, opts ...grpc.CallOption) (*proto.GetLocationsRankingsResponse, error)
 	// Get related locations for given stat var DCIDs.
 	GetRelatedLocations(ctx context.Context, in *proto.GetRelatedLocationsRequest, opts ...grpc.CallOption) (*proto.GetRelatedLocationsResponse, error)
+	// Deprecated: Do not use.
 	// Given a text search query, return all nodes matching the query.
 	Search(ctx context.Context, in *proto.SearchRequest, opts ...grpc.CallOption) (*proto.SearchResponse, error)
 	// Retrieves the version metadata.
@@ -409,6 +410,7 @@ func (c *mixerClient) GetRelatedLocations(ctx context.Context, in *proto.GetRela
 	return out, nil
 }
 
+// Deprecated: Do not use.
 func (c *mixerClient) Search(ctx context.Context, in *proto.SearchRequest, opts ...grpc.CallOption) (*proto.SearchResponse, error) {
 	out := new(proto.SearchResponse)
 	err := c.cc.Invoke(ctx, Mixer_Search_FullMethodName, in, out, opts...)
@@ -785,6 +787,7 @@ type MixerServer interface {
 	GetLocationsRankings(context.Context, *proto.GetLocationsRankingsRequest) (*proto.GetLocationsRankingsResponse, error)
 	// Get related locations for given stat var DCIDs.
 	GetRelatedLocations(context.Context, *proto.GetRelatedLocationsRequest) (*proto.GetRelatedLocationsResponse, error)
+	// Deprecated: Do not use.
 	// Given a text search query, return all nodes matching the query.
 	Search(context.Context, *proto.SearchRequest) (*proto.SearchResponse, error)
 	// Retrieves the version metadata.
