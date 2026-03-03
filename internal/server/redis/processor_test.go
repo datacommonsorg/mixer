@@ -20,6 +20,7 @@ import (
 	"testing"
 	"time"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -254,6 +255,11 @@ func TestNewEmptyResponse(t *testing.T) {
 			name:        "Resolve",
 			requestType: dispatcher.TypeResolve,
 			want:        &pbv2.ResolveResponse{},
+		},
+		{
+			name:        "Sparql",
+			requestType: dispatcher.TypeSparql,
+			want:        &pb.QueryResponse{},
 		},
 	}
 

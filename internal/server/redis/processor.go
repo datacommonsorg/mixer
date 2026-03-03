@@ -18,6 +18,7 @@ import (
 	"context"
 	"log/slog"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -77,7 +78,10 @@ func newEmptyResponse(requestType dispatcher.RequestType) proto.Message {
 		return &pbv2.ObservationResponse{}
 	case dispatcher.TypeResolve:
 		return &pbv2.ResolveResponse{}
+	case dispatcher.TypeSparql:
+		return &pb.QueryResponse{}
 	default:
+		slog.Error("Unknown request type for caching", "requestType", requestType)
 		return nil
 	}
 }
