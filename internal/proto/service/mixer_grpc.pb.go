@@ -65,7 +65,6 @@ const (
 	Mixer_GetStatAll_FullMethodName                   = "/datacommons.Mixer/GetStatAll"
 	Mixer_GetLocationsRankings_FullMethodName         = "/datacommons.Mixer/GetLocationsRankings"
 	Mixer_GetRelatedLocations_FullMethodName          = "/datacommons.Mixer/GetRelatedLocations"
-	Mixer_Search_FullMethodName                       = "/datacommons.Mixer/Search"
 	Mixer_GetVersion_FullMethodName                   = "/datacommons.Mixer/GetVersion"
 	Mixer_GetPlaceStatVars_FullMethodName             = "/datacommons.Mixer/GetPlaceStatVars"
 	Mixer_GetEntityStatVarsUnionV1_FullMethodName     = "/datacommons.Mixer/GetEntityStatVarsUnionV1"
@@ -148,8 +147,6 @@ type MixerClient interface {
 	GetLocationsRankings(ctx context.Context, in *proto.GetLocationsRankingsRequest, opts ...grpc.CallOption) (*proto.GetLocationsRankingsResponse, error)
 	// Get related locations for given stat var DCIDs.
 	GetRelatedLocations(ctx context.Context, in *proto.GetRelatedLocationsRequest, opts ...grpc.CallOption) (*proto.GetRelatedLocationsResponse, error)
-	// Given a text search query, return all nodes matching the query.
-	Search(ctx context.Context, in *proto.SearchRequest, opts ...grpc.CallOption) (*proto.SearchResponse, error)
 	// Retrieves the version metadata.
 	GetVersion(ctx context.Context, in *proto.GetVersionRequest, opts ...grpc.CallOption) (*proto.GetVersionResponse, error)
 	// Give a list of place dcids, return all the statistical variables for each
@@ -405,15 +402,6 @@ func (c *mixerClient) GetLocationsRankings(ctx context.Context, in *proto.GetLoc
 func (c *mixerClient) GetRelatedLocations(ctx context.Context, in *proto.GetRelatedLocationsRequest, opts ...grpc.CallOption) (*proto.GetRelatedLocationsResponse, error) {
 	out := new(proto.GetRelatedLocationsResponse)
 	err := c.cc.Invoke(ctx, Mixer_GetRelatedLocations_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *mixerClient) Search(ctx context.Context, in *proto.SearchRequest, opts ...grpc.CallOption) (*proto.SearchResponse, error) {
-	out := new(proto.SearchResponse)
-	err := c.cc.Invoke(ctx, Mixer_Search_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -796,8 +784,6 @@ type MixerServer interface {
 	GetLocationsRankings(context.Context, *proto.GetLocationsRankingsRequest) (*proto.GetLocationsRankingsResponse, error)
 	// Get related locations for given stat var DCIDs.
 	GetRelatedLocations(context.Context, *proto.GetRelatedLocationsRequest) (*proto.GetRelatedLocationsResponse, error)
-	// Given a text search query, return all nodes matching the query.
-	Search(context.Context, *proto.SearchRequest) (*proto.SearchResponse, error)
 	// Retrieves the version metadata.
 	GetVersion(context.Context, *proto.GetVersionRequest) (*proto.GetVersionResponse, error)
 	// Give a list of place dcids, return all the statistical variables for each
@@ -922,9 +908,6 @@ func (UnimplementedMixerServer) GetLocationsRankings(context.Context, *proto.Get
 }
 func (UnimplementedMixerServer) GetRelatedLocations(context.Context, *proto.GetRelatedLocationsRequest) (*proto.GetRelatedLocationsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRelatedLocations not implemented")
-}
-func (UnimplementedMixerServer) Search(context.Context, *proto.SearchRequest) (*proto.SearchResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Search not implemented")
 }
 func (UnimplementedMixerServer) GetVersion(context.Context, *proto.GetVersionRequest) (*proto.GetVersionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetVersion not implemented")
@@ -1441,24 +1424,6 @@ func _Mixer_GetRelatedLocations_Handler(srv interface{}, ctx context.Context, de
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).GetRelatedLocations(ctx, req.(*proto.GetRelatedLocationsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Mixer_Search_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(proto.SearchRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(MixerServer).Search(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: Mixer_Search_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MixerServer).Search(ctx, req.(*proto.SearchRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2223,10 +2188,6 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetRelatedLocations",
 			Handler:    _Mixer_GetRelatedLocations_Handler,
-		},
-		{
-			MethodName: "Search",
-			Handler:    _Mixer_Search_Handler,
 		},
 		{
 			MethodName: "GetVersion",
