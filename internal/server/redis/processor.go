@@ -16,6 +16,7 @@ package redis
 
 import (
 	"context"
+	"fmt"
 	"log/slog"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -40,7 +41,11 @@ func (processor *CacheProcessor) PreProcess(rc *dispatcher.RequestContext) (disp
 		return dispatcher.Continue, nil
 	}
 
-	cachedResponse := newEmptyResponse(rc.Type)
+	cachedResponse, err := newEmptyResponse(rc.Type)
+	if err != nil {
+		slog.Error("Skipping cache", "error", err)
+		return dispatcher.Continue, err
+	}
 	if found, err := processor.client.GetCachedResponse(rc.Context, rc.OriginalRequest, cachedResponse); found {
 		slog.Info("Cache hit", "originalRequest", rc.OriginalRequest)
 
@@ -68,21 +73,20 @@ func (processor *CacheProcessor) PostProcess(rc *dispatcher.RequestContext) (dis
 }
 
 // newEmptyResponse returns a new empty response for the given request type.
-func newEmptyResponse(requestType dispatcher.RequestType) proto.Message {
+func newEmptyResponse(requestType dispatcher.RequestType) (proto.Message, error) {
 	switch requestType {
 	case dispatcher.TypeNode:
-		return &pbv2.NodeResponse{}
+		return &pbv2.NodeResponse{}, nil
 	case dispatcher.TypeNodeSearch:
-		return &pbv2.NodeSearchResponse{}
+		return &pbv2.NodeSearchResponse{}, nil
 	case dispatcher.TypeObservation:
-		return &pbv2.ObservationResponse{}
+		return &pbv2.ObservationResponse{}, nil
 	case dispatcher.TypeResolve:
-		return &pbv2.ResolveResponse{}
+		return &pbv2.ResolveResponse{}, nil
 	case dispatcher.TypeSparql:
-		return &pb.QueryResponse{}
+		return &pb.QueryResponse{}, nil
 	default:
-		slog.Error("Unknown request type for caching", "requestType", requestType)
-		return nil
+		return nil, fmt.Errorf("unknown request type for caching: %v", requestType)
 	}
 }
 
