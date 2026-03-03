@@ -22,12 +22,6 @@
 
 set -e
 
-# Check if running from root
-if [[ ! -d "proto" ]]; then
-  echo "Error: 'proto' directory not found. Please run this script from the repository root."
-  exit 1
-fi
-
 # Check for protoc
 if ! command -v protoc &> /dev/null; then
   echo "Error: 'protoc' compiler not found. Please install Protocol Buffers compiler."
@@ -44,6 +38,11 @@ if [[ "$protoc_version" != "$required_version" ]]; then
 fi
 
 echo "Compiling proto files..."
+
+# Navigate to repo root directory
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+ROOT="$(dirname "$DIR")"
+cd "$ROOT"
 
 protoc \
   --proto_path=proto \
