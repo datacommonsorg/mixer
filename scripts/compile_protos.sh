@@ -17,9 +17,6 @@
 
 # Script to compile proto files.
 
-# Usage: Run ./scripts/compile_protos.sh from repo root directory.
-
-
 set -e
 
 # Check for protoc
