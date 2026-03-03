@@ -34,6 +34,15 @@ if ! command -v protoc &> /dev/null; then
   exit 1
 fi
 
+# Check protoc version
+required_version="3.21.12"
+protoc_version=$(protoc --version | cut -d ' ' -f 2)
+
+if [[ "$protoc_version" != "$required_version" ]]; then
+  echo "Error: 'protoc' version must be exactly $required_version. Found $protoc_version."
+  exit 1
+fi
+
 echo "Compiling proto files..."
 
 protoc \
