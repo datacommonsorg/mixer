@@ -454,12 +454,6 @@ service Mixer {
     };
   }
 
-  rpc BioPage(datacommons.v1.BioPageRequest) returns (GraphNodes) {
-    option (google.api.http) = {
-      get : "/v1/internal/page/bio/{node=**}"
-    };
-  }
-
   rpc PlacePage(datacommons.v1.PlacePageRequest)
       returns (datacommons.v1.PlacePageResponse) {
     option (google.api.http) = {
