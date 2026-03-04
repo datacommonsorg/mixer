@@ -41,16 +41,7 @@ Run the following command to generate Go proto files.
 
 ```bash
 # In repo root directory
-protoc \
-  --proto_path=proto \
-  --go_out=paths=source_relative:internal/proto \
-  --go-grpc_out=paths=source_relative:internal/proto \
-  --go-grpc_opt=require_unimplemented_servers=false \
-  --experimental_allow_proto3_optional \
-  --include_imports \
-  --include_source_info \
-  --descriptor_set_out mixer-grpc.pb \
-  proto/*.proto proto/**/*.proto
+./scripts/compile_protos.sh
 ```
 
 ## Start Mixer as a gRPC server
