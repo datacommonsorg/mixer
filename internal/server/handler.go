@@ -25,7 +25,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/place"
 	"github.com/datacommonsorg/mixer/internal/server/placein"
 	"github.com/datacommonsorg/mixer/internal/server/recon"
-	"github.com/datacommonsorg/mixer/internal/server/search"
 	"github.com/datacommonsorg/mixer/internal/server/stat"
 	"github.com/datacommonsorg/mixer/internal/server/statvar"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
@@ -210,13 +209,6 @@ func (s *Server) GetTriples(ctx context.Context, in *pb.GetTriplesRequest,
 		return nil, err
 	}
 	return &pb.PayloadResponse{Payload: string(jsonRaw)}, nil
-}
-
-// Search implements API for Mixer.Search.
-func (s *Server) Search(
-	ctx context.Context, in *pb.SearchRequest,
-) (*pb.SearchResponse, error) {
-	return search.Search(ctx, in, s.store.BqClient, s.metadata.BigQueryDataset)
 }
 
 // GetVersion implements API for Mixer.GetVersion.
