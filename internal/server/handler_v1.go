@@ -416,13 +416,6 @@ func (s *Server) BulkObservationDatesLinked(
 
 }
 
-// BioPage implements API for mixer.BioPage.
-func (s *Server) BioPage(
-	ctx context.Context, in *pbv1.BioPageRequest,
-) (*pb.GraphNodes, error) {
-	return page.BioPage(ctx, in, s.store)
-}
-
 // PlacePage implements API for mixer.PlacePage.
 func (s *Server) PlacePage(ctx context.Context, in *pbv1.PlacePageRequest) (
 	*pbv1.PlacePageResponse, error) {
