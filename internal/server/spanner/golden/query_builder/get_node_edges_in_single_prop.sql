@@ -1,8 +1,8 @@
 		GRAPH DCGraph MATCH (m:Node
 		WHERE
-			m.subject_id IN ('EarthquakeEvent'))<-[e:Edge
+			m.subject_id = 'EarthquakeEvent')<-[e:Edge
 		WHERE
-			e.predicate IN ('domainIncludes')]-(n:Node)
+			e.predicate = 'domainIncludes']-(n:Node)
 		RETURN
 			m.subject_id,
 			e.predicate,

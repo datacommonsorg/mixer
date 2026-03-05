@@ -59,31 +59,43 @@ func GetCompletionTimestampQuery() *spanner.Statement {
 }
 
 func GetNodePropsQuery(ids []string, out bool) *spanner.Statement {
+	params := map[string]interface{}{"id": ids}
+	getIds := statements.getIds
+	if len(ids) == 1 {
+		getIds = statements.getId
+		params["id"] = ids[0]
+	}
+
 	switch out {
 	case true:
 		return &spanner.Statement{
-			SQL:    statements.getPropsBySubjectID,
-			Params: map[string]interface{}{"ids": ids},
+			SQL:    fmt.Sprintf(statements.getPropsBySubjectID, getIds),
+			Params: params,
 		}
 	default:
 		return &spanner.Statement{
-			SQL:    statements.getPropsByObjectID,
-			Params: map[string]interface{}{"ids": ids},
+			SQL:    fmt.Sprintf(statements.getPropsByObjectID, getIds),
+			Params: params,
 		}
 	}
 }
 
 func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spanner.Statement {
-	params := map[string]interface{}{"ids": ids}
+	params := map[string]interface{}{"id": ids}
+	getIds := statements.getIds
+	if len(ids) == 1 {
+		getIds = statements.getId
+		params["id"] = ids[0]
+	}
 
 	// Attach predicates.
 	filterPredicate := ""
 	if arc.SingleProp != "" && arc.SingleProp != v3.Wildcard && arc.Decorator != v3.Chain {
 		filterPredicate = statements.filterPredicate
-		params["predicates"] = []string{arc.SingleProp}
+		params["predicate"] = arc.SingleProp
 	} else if len(arc.BracketProps) > 0 {
-		filterPredicate = statements.filterPredicate
-		params["predicates"] = arc.BracketProps
+		filterPredicate = statements.filterPredicates
+		params["predicate"] = arc.BracketProps
 	}
 
 	// Generate filters.
@@ -102,38 +114,39 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 			objectFilter := ""
 			filterVal := addObjectValues(arc.Filter[prop])
 			if len(filterVal) > 0 {
-				objectFilter = fmt.Sprintf(statements.filterValue, i)
-				params["val"+strconv.Itoa(i)] = filterVal
+				if len(filterVal) == 1 {
+					objectFilter = fmt.Sprintf(statements.filterValue, i)
+					params["val"+strconv.Itoa(i)] = filterVal[0]
+				} else {
+					objectFilter = fmt.Sprintf(statements.filterValues, i)
+					params["val"+strconv.Itoa(i)] = filterVal
+				}
 			}
 			subqueries = append(subqueries, fmt.Sprintf(statements.filterProperty, i, objectFilter))
 			i += 1
 		}
 	}
 
-	// Order subqueries by selectivity (i.e. expected cardinality of edges) for query performance.
 	var subquery string
 	switch arc.Out {
 	case true:
 		if arc.Decorator == v3.Chain {
-			subquery = fmt.Sprintf(statements.getChainedEdgesBySubjectID, maxHops)
+			subquery = fmt.Sprintf(statements.getChainedEdgesBySubjectID, getIds, maxHops)
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
 		} else {
-			subquery = fmt.Sprintf(statements.getEdgesBySubjectID, filterPredicate)
+			subquery = fmt.Sprintf(statements.getEdgesBySubjectID, getIds, filterPredicate)
 		}
-		// Add filters last for out-edges.
-		subqueries = append([]string{subquery}, subqueries...)
 	case false:
 		if arc.Decorator == v3.Chain {
-			subquery = fmt.Sprintf(statements.getChainedEdgesByObjectID, maxHops)
+			subquery = fmt.Sprintf(statements.getChainedEdgesByObjectID, getIds, maxHops)
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
 		} else {
-			subquery = fmt.Sprintf(statements.getEdgesByObjectID, filterPredicate)
+			subquery = fmt.Sprintf(statements.getEdgesByObjectID, getIds, filterPredicate)
 		}
-		// Add filters first for in-edges.
-		subqueries = append(subqueries, subquery)
 	}
+	subqueries = append([]string{subquery}, subqueries...)
 
 	// Generate prefix and return statement.
 	var prefix, returnEdges string
