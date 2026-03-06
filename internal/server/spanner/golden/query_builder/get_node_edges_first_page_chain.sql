@@ -1,6 +1,6 @@
 		GRAPH DCGraph MATCH ANY (m:Node
 		WHERE
-			m.subject_id IN ('dc/g/UN'))<-[e:Edge
+			m.subject_id = 'dc/g/UN')<-[e:Edge
 		WHERE
 			e.predicate = 'specializationOf']-{1,10}(n:Node)
 		RETURN DISTINCT

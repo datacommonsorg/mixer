@@ -19,6 +19,10 @@ package spanner
 var statements = struct {
 	// Fetch latest CompletionTimestamp from IngestionHistory table.
 	getCompletionTimestamp string
+	// Filter by single id.
+	getId string
+	// Filter by multiple ids.
+	getIds string
 	// Fetch Properties for out arcs.
 	getPropsBySubjectID string
 	// Fetch Properties for in arcs.
@@ -37,10 +41,14 @@ var statements = struct {
 	getChainedEdgesByObjectID string
 	// Subquery to filter edges by predicate.
 	filterPredicate string
+	// Subquery to filter edges by multiple predicates.
+	filterPredicates string
 	// Subquery to filter edges by object properties.
 	filterProperty string
-	// Subquery to filter edges by object values.
+	// Subquery to filter edges by an object value.
 	filterValue string
+	// Subquery to filter edges by multiple object values.
+	filterValues string
 	// Default subquery to return Edges.
 	returnEdges string
 	// Default subquery to return Edges for arcs with chaining.
@@ -87,9 +95,11 @@ var statements = struct {
 		ORDER BY 
 			CompletionTimestamp DESC
 		LIMIT 1`,
+	getId:  `= @id`,
+	getIds: `IN UNNEST(@id)`,
 	getPropsBySubjectID: `		GRAPH DCGraph MATCH -[e:Edge
 		WHERE
-			e.subject_id IN UNNEST(@ids)]->
+			e.subject_id %s]->
 		RETURN DISTINCT
 			e.subject_id,
 			e.predicate
@@ -98,7 +108,7 @@ var statements = struct {
 			e.predicate`,
 	getPropsByObjectID: `		GRAPH DCGraph MATCH -[e:Edge
 		WHERE
-			e.object_id IN UNNEST(@ids)]->
+			e.object_id %s]->
 		RETURN DISTINCT
 			e.object_id AS subject_id,
 			e.predicate
@@ -109,27 +119,32 @@ var statements = struct {
 	graphPrefixAny: `		GRAPH DCGraph MATCH ANY `,
 	getEdgesBySubjectID: `(m:Node
 		WHERE
-			m.subject_id IN UNNEST(@ids))-[e:Edge%s]->(n:Node)`,
+			m.subject_id %[1]s)-[e:Edge%[2]s]->(n:Node)`,
 	getChainedEdgesBySubjectID: `(m:Node
 		WHERE
-			m.subject_id IN UNNEST(@ids))-[e:Edge
+			m.subject_id %s)-[e:Edge
 		WHERE
 			e.predicate = @predicate]->{1,%d}(n:Node)`,
 	getEdgesByObjectID: `(m:Node
 		WHERE
-			m.subject_id IN UNNEST(@ids))<-[e:Edge%s]-(n:Node)`,
+			m.subject_id %[1]s)<-[e:Edge%[2]s]-(n:Node)`,
 	getChainedEdgesByObjectID: `(m:Node
 		WHERE
-			m.subject_id IN UNNEST(@ids))<-[e:Edge
+			m.subject_id %s)<-[e:Edge
 		WHERE
 			e.predicate = @predicate]-{1,%d}(n:Node)`,
 	filterPredicate: `
 		WHERE
-			e.predicate IN UNNEST(@predicates)`,
-	filterProperty: `<-[filter%[1]d:Edge
+			e.predicate = @predicate`,
+	filterPredicates: `
 		WHERE
-			filter%[1]d.predicate = @prop%[1]d%s]-(n)`,
+			e.predicate IN UNNEST(@predicate)`,
+	filterProperty: `(n)-[filter%[1]d:Edge
+		WHERE
+			filter%[1]d.predicate = @prop%[1]d%s]->`,
 	filterValue: `
+			AND filter%[1]d.object_id = @val%[1]d`,
+	filterValues: `
 			AND filter%[1]d.object_id IN UNNEST(@val%[1]d)`,
 	returnEdges: `
 		RETURN
