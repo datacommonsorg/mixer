@@ -59,12 +59,7 @@ func GetCompletionTimestampQuery() *spanner.Statement {
 }
 
 func GetNodePropsQuery(ids []string, out bool) *spanner.Statement {
-	params := map[string]interface{}{"id": ids}
-	getIds := statements.getIds
-	if len(ids) == 1 {
-		getIds = statements.getId
-		params["id"] = ids[0]
-	}
+	getIds, params := getIdStatement(ids)
 
 	switch out {
 	case true:
@@ -81,12 +76,7 @@ func GetNodePropsQuery(ids []string, out bool) *spanner.Statement {
 }
 
 func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spanner.Statement {
-	params := map[string]interface{}{"id": ids}
-	getIds := statements.getIds
-	if len(ids) == 1 {
-		getIds = statements.getId
-		params["id"] = ids[0]
-	}
+	getIds, params := getIdStatement(ids)
 
 	// Attach predicates.
 	filterPredicate := ""
@@ -396,4 +386,12 @@ func addObjectValues(input []string) []string {
 		result = append(result, generateObjectValue(v))
 	}
 	return result
+}
+
+// getIdStatement returns the appropriate SQL statement and parameters for fetching IDs based on the number of input nodes.
+func getIdStatement(ids []string) (string, map[string]interface{}) {
+	if len(ids) == 1 {
+		return statements.getId, map[string]interface{}{"id": ids[0]}
+	}
+	return statements.getIds, map[string]interface{}{"id": ids}
 }
