@@ -9,7 +9,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 107624
+                  "value": 107995
                 }
               ]
             }
@@ -92,7 +92,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 2714617
+                  "value": 2377128
                 }
               ]
             },
@@ -158,7 +158,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 10876981
+                  "value": 10986400
                 }
               ]
             }
@@ -298,7 +298,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 27204809
+                  "value": 27196812
                 }
               ]
             },
@@ -332,7 +332,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 9178482
+                  "value": 9177982
                 }
               ]
             },
@@ -366,7 +366,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 10202850
+                  "value": 10202830
                 }
               ]
             },
@@ -416,7 +416,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 11876844
+                  "value": 11858610
                 }
               ]
             },
@@ -541,7 +541,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 6444366
+                  "value": 6441421
                 }
               ]
             },
@@ -666,7 +666,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 9133712
+                  "value": 9132629
                 }
               ]
             },
@@ -941,7 +941,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 9034102
+                  "value": 9005582
                 }
               ]
             },
@@ -1284,7 +1284,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 155900
+                  "value": 155967
                 }
               ]
             }
@@ -1359,7 +1359,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 10882164
+                  "value": 10905028
                 }
               ]
             },
@@ -1402,7 +1402,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 83510950
+                  "value": 83516593
                 }
               ]
             },
@@ -1643,7 +1643,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 48807137
+                  "value": 48848840
                 }
               ]
             },
@@ -1677,7 +1677,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 1371986
+                  "value": 1372341
                 }
               ]
             },
@@ -1754,7 +1754,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 5637214
+                  "value": 5619911
                 }
               ]
             },
@@ -1830,7 +1830,16 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 68516699
+                  "value": 68551653
+                }
+              ]
+            },
+            {
+              "facet_id": "2911625765",
+              "observations": [
+                {
+                  "date": "2025",
+                  "value": 68605616
                 }
               ]
             },
@@ -1864,7 +1873,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 54719
+                  "value": 54681
                 }
               ]
             }
@@ -1893,11 +1902,11 @@
         "country/FXX": {
           "ordered_facets": [
             {
-              "facet_id": "2458695583",
+              "facet_id": "2911625765",
               "observations": [
                 {
-                  "date": "2020",
-                  "value": 64897954
+                  "date": "2025",
+                  "value": 66351959
                 }
               ]
             }
@@ -1963,7 +1972,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 3673850
+                  "value": 3699557
                 }
               ]
             },
@@ -2155,7 +2164,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 10388805
+                  "value": 10405134
                 }
               ]
             },
@@ -2358,7 +2367,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 3866300
+                  "value": 3866200
                 }
               ]
             },
@@ -2417,7 +2426,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 9562314
+                  "value": 9562065
                 }
               ]
             },
@@ -2588,7 +2597,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 5380257
+                  "value": 5395790
                 }
               ]
             },
@@ -2681,7 +2690,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 404610
+                  "value": 386506
                 }
               ]
             },
@@ -2749,7 +2758,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 58986023
+                  "value": 58952704
                 }
               ]
             },
@@ -2951,7 +2960,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 7224614
+                  "value": 7221868
                 }
               ]
             },
@@ -3076,7 +3085,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 4973861
+                  "value": 4897263
                 }
               ]
             }
@@ -3199,7 +3208,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 40197
+                  "value": 40450
                 }
               ]
             },
@@ -3283,7 +3292,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 2888055
+                  "value": 2888278
                 }
               ]
             },
@@ -3326,7 +3335,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 677717
+                  "value": 677012
                 }
               ]
             },
@@ -3360,7 +3369,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 1862441
+                  "value": 1866124
                 }
               ]
             },
@@ -3460,7 +3469,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 2389275
+                  "value": 2402306
                 }
               ]
             },
@@ -3585,7 +3594,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 1792179
+                  "value": 1824359
                 }
               ]
             },
@@ -3635,7 +3644,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 574346
+                  "value": 568847
                 }
               ]
             },
@@ -3694,7 +3703,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 623831
+                  "value": 623525
                 }
               ]
             },
@@ -3873,7 +3882,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 1259509
+                  "value": 1245779
                 }
               ]
             }
@@ -4098,7 +4107,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 17994237
+                  "value": 17993485
                 }
               ]
             },
@@ -4132,7 +4141,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 5572272
+                  "value": 5572279
                 }
               ]
             },
@@ -4207,7 +4216,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 5338500
+                  "value": 5287500
                 }
               ]
             },
@@ -4406,7 +4415,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 36554707
+                  "value": 36559233
                 }
               ]
             },
@@ -4496,7 +4505,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 10701636
+                  "value": 10694681
                 }
               ]
             },
@@ -4612,7 +4621,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 19069340
+                  "value": 19051804
                 }
               ]
             },
@@ -4996,7 +5005,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 6587202
+                  "value": 6586476
                 }
               ]
             },
@@ -5121,7 +5130,7 @@
               "observations": [
                 {
                   "date": "2024",
-                  "value": 2126324
+                  "value": 2127400
                 }
               ]
             },
@@ -6029,11 +6038,11 @@
         "country/XKS": {
           "ordered_facets": [
             {
-              "facet_id": "1456184638",
+              "facet_id": "3981252704",
               "observations": [
                 {
                   "date": "2024",
-                  "value": 1585566
+                  "value": 1594353
                 }
               ]
             }
@@ -6346,6 +6355,10 @@
       "import_name": "Uganda_Census",
       "provenance_url": "https://uganda.opendataforafrica.org/"
     },
+    "2911625765": {
+      "import_name": "France_Demographics",
+      "provenance_url": "https://www.insee.fr/en/statistiques/8333211?sommaire=8333329"
+    },
     "318580725": {
       "import_name": "Indonesia_Census",
       "provenance_url": "https://www.bps.go.id/"
@@ -6375,7 +6388,7 @@
     },
     "3981252704": {
       "import_name": "WorldDevelopmentIndicators",
-      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "provenance_url": "https://datatopics.worldbank.org/world-development-indicators/",
       "observation_period": "P1Y"
     },
     "4036334630": {

@@ -100,7 +100,7 @@
           "points_by_facet": [
             {
               "date": "2010",
-              "value": 36790,
+              "value": 36780,
               "facet": "2171028778"
             }
           ]
@@ -133,7 +133,7 @@
     },
     "2171028778": {
       "import_name": "WorldDevelopmentIndicators",
-      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "provenance_url": "https://datatopics.worldbank.org/world-development-indicators/",
       "observation_period": "P1Y",
       "unit": "InternationalDollar"
     },
@@ -145,7 +145,7 @@
     },
     "3981252704": {
       "import_name": "WorldDevelopmentIndicators",
-      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "provenance_url": "https://datatopics.worldbank.org/world-development-indicators/",
       "observation_period": "P1Y"
     },
     "4277990144": {
