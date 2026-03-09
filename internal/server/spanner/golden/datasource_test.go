@@ -34,7 +34,7 @@ func TestSpannerNode(t *testing.T) {
 	if client == nil {
 		return
 	}
-	ds := spanner.NewSpannerDataSource(client)
+	ds := spanner.NewSpannerDataSource(client, nil, nil)
 
 	t.Parallel()
 	ctx := context.Background()
@@ -89,7 +89,7 @@ func TestSpannerSparql(t *testing.T) {
 	if client == nil {
 		return
 	}
-	ds := spanner.NewSpannerDataSource(client)
+	ds := spanner.NewSpannerDataSource(client, nil, nil)
 
 	t.Parallel()
 	ctx := context.Background()

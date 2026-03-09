@@ -131,14 +131,12 @@ func setupInternal(
 	sources := []datasource.DataSource{}
 
 	var spannerDataSource datasource.DataSource
+	var spannerClient spanner.SpannerClient
 	var spannerCleanup = func() {}
 	if enableV3 && useSpannerGraph {
-		spannerClient := NewSpannerClient()
+		spannerClient = NewSpannerClient()
 		if spannerClient != nil {
 			spannerCleanup = spannerClient.Close
-			spannerDataSource = spanner.NewSpannerDataSource(spannerClient)
-			// TODO: Order sources by priority once other implementations are added.
-			sources = append(sources, spannerDataSource)
 		}
 	}
 
@@ -192,6 +190,10 @@ func setupInternal(
 	st, err := store.NewStore(bqClient, sqlClient, tables, "", metadata)
 	if err != nil {
 		log.Fatalf("Failed to create a new store: %s", err)
+	}
+	if spannerClient != nil {
+		spannerDataSource = spanner.NewSpannerDataSource(spannerClient, st.RecogPlaceStore, nil)
+		sources = append(sources, spannerDataSource)
 	}
 	c, err := cache.NewCache(ctx, st, cacheOptions, metadata)
 	if err != nil {
