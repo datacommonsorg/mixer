@@ -85,6 +85,8 @@ var statements = struct {
 	nodeFilter string
 	// Generic triple pattern.
 	triple string
+	// Get variable metadata.
+	getVariableMetadata string
 }{
 	getCompletionTimestamp: `		SELECT
 		CompletionTimestamp
@@ -292,4 +294,10 @@ var statements = struct {
 		WHERE
 			%[1]s.subject_id IN UNNEST(@%[1]s)`,
 	triple: `(%[1]s:Node%[2]s)-[:Edge {predicate: @predicate%[3]d}]->(%[4]s:Node%[5]s)`,
+	getVariableMetadata: `		SELECT
+			*
+		FROM
+			VariableMetadata
+		WHERE
+			variable_measured = @variable`,
 }

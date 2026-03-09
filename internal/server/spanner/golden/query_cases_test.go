@@ -410,3 +410,13 @@ var sparqlTestCases = []struct {
 		golden: "sparql_dcid_california",
 	},
 }
+
+var variableMetadataTestCases = []struct {
+	variable string
+	golden   string
+}{
+	{
+		variable: "Count_Household_HasComputer",
+		golden:   "get_variable_metadata",
+	},
+}

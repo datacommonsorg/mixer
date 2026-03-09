@@ -214,6 +214,30 @@ func (sc *spannerDatabaseClient) Sparql(ctx context.Context, nodes []types.Node,
 	return sc.queryDynamic(ctx, *query)
 }
 
+func (sc *spannerDatabaseClient) GetVariableMetadata(ctx context.Context, variable string) ([]*VariableMetadata, error) {
+	var metadata []*VariableMetadata
+	if variable == "" {
+		return metadata, nil
+	}
+
+	err := sc.queryStructs(
+		ctx,
+		*GetVariableMetadataQuery(variable),
+		func() interface{} {
+			return &VariableMetadata{}
+		},
+		func(rowStruct interface{}) {
+			varMeta := rowStruct.(*VariableMetadata)
+			metadata = append(metadata, varMeta)
+		},
+	)
+	if err != nil {
+		return metadata, err
+	}
+
+	return metadata, nil
+}
+
 // fetchAndUpdateTimestamp queries Spanner and updates the timestamp.
 func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) error {
 	iter := sc.client.Single().Query(ctx, *GetCompletionTimestampQuery())

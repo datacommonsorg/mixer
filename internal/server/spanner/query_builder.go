@@ -340,6 +340,13 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 	}, nil
 }
 
+func GetVariableMetadataQuery(variable string) *spanner.Statement {
+	return &spanner.Statement{
+		SQL:    statements.getVariableMetadata,
+		Params: map[string]interface{}{"variable": variable},
+	}
+}
+
 // generateSafeAliasMap generates a map of safe aliases for SPARQL queries.
 func generateSafeAliasMap(queries []*types.Query) map[string]string {
 	safeAliasMap := make(map[string]string)

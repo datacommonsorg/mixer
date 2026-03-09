@@ -1,0 +1,43 @@
+[
+  {
+    "VariableMeasured": "Count_Household_HasComputer",
+    "ImportName": "CensusACS5YearSurvey",
+    "FacetId": "1457828370",
+    "ObservationPeriod": "",
+    "MeasurementMethod": "CensusACS5yrSurvey",
+    "Unit": "",
+    "ScalingFactor": "",
+    "IsDcAggregate": false,
+    "TotalObservations": 2805865,
+    "ObservedPlaces": 511517,
+    "MinDate": "2017",
+    "MaxDate": "2023",
+    "PlaceTypes": [
+      "AdministrativeArea1",
+      "AdministrativeArea2",
+      "AdministrativeArea4",
+      "AdministrativeArea5",
+      "Borough",
+      "CensusBlockGroup",
+      "CensusCoreBasedStatisticalArea",
+      "CensusCountyDivision",
+      "CensusDivision",
+      "CensusTract",
+      "CensusZipCodeTabulationArea",
+      "City",
+      "CongressionalDistrict",
+      "Country",
+      "County",
+      "ElementarySchoolDistrict",
+      "HighSchoolDistrict",
+      "Neighborhood",
+      "Place",
+      "ProvisionalNode",
+      "SchoolDistrict",
+      "State",
+      "StateComponent",
+      "Town",
+      "Village"
+    ]
+  }
+]
