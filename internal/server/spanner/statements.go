@@ -299,5 +299,5 @@ var statements = struct {
 		FROM
 			VariableMetadata
 		WHERE
-			variable_measured = @variable`,
+			variable_measured %s`,
 }

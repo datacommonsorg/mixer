@@ -412,11 +412,11 @@ var sparqlTestCases = []struct {
 }
 
 var variableMetadataTestCases = []struct {
-	variable string
-	golden   string
+	ids    []string
+	golden string
 }{
 	{
-		variable: "Count_Household_HasComputer",
-		golden:   "get_variable_metadata",
+		ids:    []string{"Count_Household_FamilyHousehold", "Count_Household_HasComputer"},
+		golden: "get_variable_metadata",
 	},
 }

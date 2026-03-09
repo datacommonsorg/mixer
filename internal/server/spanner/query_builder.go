@@ -340,10 +340,12 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 	}, nil
 }
 
-func GetVariableMetadataQuery(variable string) *spanner.Statement {
+func GetVariableMetadataQuery(ids []string) *spanner.Statement {
+	getIds, params := getIdStatement(ids)
+
 	return &spanner.Statement{
-		SQL:    statements.getVariableMetadata,
-		Params: map[string]interface{}{"variable": variable},
+		SQL:    fmt.Sprintf(statements.getVariableMetadata, getIds),
+		Params: params,
 	}
 }
 
