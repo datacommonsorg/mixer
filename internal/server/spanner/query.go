@@ -233,7 +233,7 @@ func (sc *spannerDatabaseClient) GetVariableMetadata(ctx context.Context, ids []
 		},
 	)
 	if err != nil {
-		return idToMetadata, err
+		return nil, err
 	}
 
 	return idToMetadata, nil
