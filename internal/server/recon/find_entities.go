@@ -26,6 +26,7 @@ import (
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
 	"github.com/datacommonsorg/mixer/internal/store"
+	"github.com/datacommonsorg/mixer/internal/store/files"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
 	"googlemaps.github.io/maps"
@@ -35,6 +36,12 @@ const (
 	maxNumEntitiesPerRequest  = 5000
 	maxMapsAPICallsInParallel = 25
 )
+
+// PlaceIdToDcidFunc is a function that resolves a list of place IDs to a map of place ID to DCIDs.
+type PlaceIdToDcidFunc func(ctx context.Context, placeIds []string) (map[string][]string, error)
+
+// GetPlaceTypesFunc is a function that resolves a set of DCIDs to their types.
+type GetPlaceTypesFunc func(ctx context.Context, dcidSet map[string]struct{}) (map[string]map[string]struct{}, error)
 
 type entityInfo struct {
 	description string
@@ -98,14 +105,25 @@ func BulkFindEntities(
 	}
 
 	// Get DCIDs.
-	entityInfoToDCIDs, dcidSet, err := resolveDCIDs(
-		ctx, mapsClient, store, entityInfoSet)
+	placeIdToDcidFunc := func(ctx context.Context, placeIds []string) (map[string][]string, error) {
+		placeIdSet := map[string]struct{}{}
+		for _, id := range placeIds {
+			placeIdSet[id] = struct{}{}
+		}
+		res, _, err := resolveDCIDsFromPlaceIDs(ctx, placeIdSet, store)
+		return res, err
+	}
+	entityInfoToDCIDs, dcidSet, err := ResolveDCIDs(
+		ctx, mapsClient, store.RecogPlaceStore, placeIdToDcidFunc, entityInfoSet)
 	if err != nil {
 		return nil, err
 	}
 
 	// Get types of the DCIDs.
-	dcidToTypeSet, err := getPlaceTypes(ctx, dcidSet, store)
+	getPlaceTypesFunc := func(ctx context.Context, dcidSet map[string]struct{}) (map[string]map[string]struct{}, error) {
+		return getPlaceTypes(ctx, dcidSet, store)
+	}
+	dcidToTypeSet, err := getPlaceTypesFunc(ctx, dcidSet)
 	if err != nil {
 		return nil, err
 	}
@@ -158,10 +176,11 @@ func BulkFindEntities(
 //
 // Consider calling both, if both have results, prefer RecognizePlaces,
 // but use Maps API as signal to reorder the results.
-func resolveDCIDs(
+func ResolveDCIDs(
 	ctx context.Context,
 	mapsClient internalmaps.MapsClient,
-	store *store.Store,
+	recogPlaceStore *files.RecogPlaceStore,
+	placeIdToDcidFunc PlaceIdToDcidFunc,
 	entityInfoSet map[entityInfo]struct{},
 ) (
 	map[entityInfo][]string, /* entityInfo -> [DCID] */
@@ -170,7 +189,7 @@ func resolveDCIDs(
 ) {
 	// First try to resolve DCIDs by RecognizePlaces.
 	entityInfoToDCIDs, dcidSet, err := resolveWithRecognizePlaces(
-		ctx, store, entityInfoSet)
+		ctx, recogPlaceStore, entityInfoSet)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -185,7 +204,7 @@ func resolveDCIDs(
 	if len(missingEntityInfoSet) > 0 {
 		// For entities that cannot be resolved by RecognizePlaces, try Maps API.
 		missingEntityInfoToDCIDSet, missingDcidSet, err := resolveWithMapsAPI(
-			ctx, mapsClient, store, missingEntityInfoSet)
+			ctx, mapsClient, placeIdToDcidFunc, missingEntityInfoSet)
 		if err != nil {
 			return nil, nil, err
 		}
@@ -212,7 +231,7 @@ func resolveDCIDs(
 
 func resolveWithRecognizePlaces(
 	ctx context.Context,
-	store *store.Store,
+	recogPlaceStore *files.RecogPlaceStore,
 	entityInfoSet map[entityInfo]struct{},
 ) (
 	map[entityInfo][]string, /* entityInfo -> [DCID] */
@@ -226,7 +245,7 @@ func resolveWithRecognizePlaces(
 			s := strings.ReplaceAll(strings.ToLower(n), " ", "")
 			return strings.ReplaceAll(s, ",", "")
 		}
-		names, ok := store.RecogPlaceStore.DcidToNames[dcid]
+		names, ok := recogPlaceStore.DcidToNames[dcid]
 		if !ok {
 			return false
 		}
@@ -247,7 +266,7 @@ func resolveWithRecognizePlaces(
 		descriptionToType[e.description] = e.typeOf
 	}
 
-	resp, err := RecognizePlaces(ctx, req, store, true)
+	resp, err := RecognizePlaces(ctx, req, recogPlaceStore, true)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -275,7 +294,7 @@ func resolveWithRecognizePlaces(
 func resolveWithMapsAPI(
 	ctx context.Context,
 	mapsClient internalmaps.MapsClient,
-	store *store.Store,
+	placeIdToDcidFunc PlaceIdToDcidFunc,
 	entityInfoSet map[entityInfo]struct{},
 ) (
 	map[entityInfo]map[string]struct{}, /* entityInfo -> DCID set */
@@ -294,9 +313,15 @@ func resolveWithMapsAPI(
 	}
 
 	// Resolve place IDs to get DCIDs.
-	placeIDToDCIDs, dcidSet, err := resolveDCIDsFromPlaceIDs(ctx, placeIDSet, store)
+	placeIDToDCIDs, err := placeIdToDcidFunc(ctx, util.StringSetToSlice(placeIDSet))
 	if err != nil {
 		return nil, nil, err
+	}
+	dcidSet := map[string]struct{}{}
+	for _, dcids := range placeIDToDCIDs {
+		for _, dcid := range dcids {
+			dcidSet[dcid] = struct{}{}
+		}
 	}
 
 	res := map[entityInfo]map[string]struct{}{}
