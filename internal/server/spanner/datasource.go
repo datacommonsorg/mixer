@@ -213,6 +213,10 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 			}
 		}
 
+		if sds.mapsClient == nil {
+			return nil, status.Error(codes.FailedPrecondition, "Maps API client is required but not configured for description resolution")
+		}
+
 		// Define Spanner-specific lookup functions.
 		placeIdToDcidFunc := func(ctx context.Context, placeIds []string) (map[string][]string, error) {
 			return sds.client.ResolveByID(ctx, placeIds, "placeId", "dcid")

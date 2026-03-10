@@ -366,7 +366,8 @@ func resolvePlaceIDsFromDescriptions(
 	mapsAPICallWorkerFunc := func(ctx context.Context, i int) func() error {
 		return func() error {
 			for _, entityInfo := range entityInfoListShards[i] {
-				placeIDs, err := findPlaceIDsForEntity(ctx, mapsClient, &entityInfo)
+				info := entityInfo
+				placeIDs, err := findPlaceIDsForEntity(ctx, mapsClient, &info)
 				if err != nil {
 					return err
 				}
@@ -376,7 +377,7 @@ func resolvePlaceIDsFromDescriptions(
 					usedPlaceIds = []string{placeIDs[0]}
 				}
 				resolveResultChan <- resolveResult{
-					entityInfo: &entityInfo,
+					entityInfo: &info,
 					placeIDs:   usedPlaceIds}
 			}
 			return nil
