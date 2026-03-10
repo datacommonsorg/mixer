@@ -106,11 +106,7 @@ func BulkFindEntities(
 
 	// Get DCIDs.
 	placeIdToDcidFunc := func(ctx context.Context, placeIds []string) (map[string][]string, error) {
-		placeIdSet := map[string]struct{}{}
-		for _, id := range placeIds {
-			placeIdSet[id] = struct{}{}
-		}
-		res, _, err := resolveDCIDsFromPlaceIDs(ctx, placeIdSet, store)
+		res, _, err := resolveDCIDsFromPlaceIDs(ctx, placeIds, store)
 		return res, err
 	}
 	entityInfoToDCIDs, dcidSet, err := ResolveDCIDs(
@@ -120,10 +116,7 @@ func BulkFindEntities(
 	}
 
 	// Get types of the DCIDs.
-	getPlaceTypesFunc := func(ctx context.Context, dcidSet map[string]struct{}) (map[string]map[string]struct{}, error) {
-		return getPlaceTypes(ctx, dcidSet, store)
-	}
-	dcidToTypeSet, err := getPlaceTypesFunc(ctx, dcidSet)
+	dcidToTypeSet, err := getPlaceTypes(ctx, dcidSet, store)
 	if err != nil {
 		return nil, err
 	}
@@ -444,7 +437,7 @@ func findPlaceIDsForEntity(
 
 func resolveDCIDsFromPlaceIDs(
 	ctx context.Context,
-	placeIDSet map[string]struct{},
+	placeIDs []string,
 	store *store.Store,
 ) (
 	map[string][]string, /* Place ID -> [DCID] */
@@ -455,7 +448,7 @@ func resolveDCIDsFromPlaceIDs(
 		&pb.ResolveIdsRequest{
 			InProp:  "placeId",
 			OutProp: "dcid",
-			Ids:     util.StringSetToSlice(placeIDSet),
+			Ids:     placeIDs,
 		},
 		store)
 	if err != nil {

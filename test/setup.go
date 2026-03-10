@@ -191,15 +191,15 @@ func setupInternal(
 	if err != nil {
 		log.Fatalf("Failed to create a new store: %s", err)
 	}
+	mapsClient := &maps.FakeMapsClient{}
 	if spannerClient != nil {
-		spannerDataSource = spanner.NewSpannerDataSource(spannerClient, st.RecogPlaceStore, nil)
+		spannerDataSource = spanner.NewSpannerDataSource(spannerClient, st.RecogPlaceStore, mapsClient)
 		sources = append(sources, spannerDataSource)
 	}
 	c, err := cache.NewCache(ctx, st, cacheOptions, metadata)
 	if err != nil {
 		return nil, func() {}, err
 	}
-	mapsClient := &maps.FakeMapsClient{}
 
 	if enableV3 && remoteMixerDomain != "" {
 		remoteClient, err := remote.NewRemoteClient(metadata)

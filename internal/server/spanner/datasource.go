@@ -254,11 +254,11 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 					for _, dcid := range dcids {
 						if typeOf != "" {
 							// Filter by type.
-							if types, ok := dcidToTypeSet[dcid]; ok {
-								if _, ok := types[typeOf]; !ok {
-									continue
-								}
-							} else {
+							types, ok := dcidToTypeSet[dcid]
+							if !ok {
+								continue
+							}
+							if _, ok := types[typeOf]; !ok {
 								continue
 							}
 						}
