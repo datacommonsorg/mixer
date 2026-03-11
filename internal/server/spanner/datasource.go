@@ -198,91 +198,7 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 		//   <-description->dcid
 		//   <-description{typeOf:City}->dcid
 		//   <-description{typeOf:[City, County]}->dcid
-
-		// Extract typeOf from filter.
-		typeOfs, ok := inArc.Filter["typeOf"]
-		if !ok {
-			typeOfs = []string{""}
-		}
-
-		// Prepare entity info set.
-		entityInfoSet := map[recon.EntityInfo]struct{}{}
-		for _, node := range req.GetNodes() {
-			for _, typeOf := range typeOfs {
-				entityInfoSet[recon.EntityInfo{Description: node, TypeOf: typeOf}] = struct{}{}
-			}
-		}
-
-		if sds.mapsClient == nil {
-			return nil, status.Error(codes.FailedPrecondition, "Maps API client is required but not configured for description resolution")
-		}
-
-		// Define Spanner-specific lookup functions.
-		placeIdToDcidFunc := func(ctx context.Context, placeIds []string) (map[string][]string, error) {
-			return sds.client.ResolveByID(ctx, placeIds, "placeId", "dcid")
-		}
-
-		// Resolve DCIDs.
-		entityInfoToDCIDs, dcidSet, err := recon.ResolveDCIDs(
-			ctx, sds.mapsClient, sds.recogPlaceStore, placeIdToDcidFunc, entityInfoSet)
-		if err != nil {
-			return nil, err
-		}
-
-		// Get types of the DCIDs from Spanner.
-		dcidToTypeSet := map[string]map[string]struct{}{}
-		if len(dcidSet) > 0 {
-			typeArc := &v2.Arc{SingleProp: "typeOf", Out: true}
-			dcidToEdges, err := sds.client.GetNodeEdgesByID(ctx, util.StringSetToSlice(dcidSet), typeArc, 0, 0)
-			if err != nil {
-				return nil, err
-			}
-			for dcid, edges := range dcidToEdges {
-				dcidToTypeSet[dcid] = map[string]struct{}{}
-				for _, edge := range edges {
-					dcidToTypeSet[dcid][edge.Value] = struct{}{}
-				}
-			}
-		}
-
-		// Assemble results.
-		resp := &pbv2.ResolveResponse{}
-		for _, node := range req.GetNodes() {
-			resEntity := &pbv2.ResolveResponse_Entity{
-				Node: node,
-			}
-			candidateSet := map[string]struct{}{}
-			for _, typeOf := range typeOfs {
-				e := recon.EntityInfo{Description: node, TypeOf: typeOf}
-				if dcids, ok := entityInfoToDCIDs[e]; ok {
-					for _, dcid := range dcids {
-						if typeOf != "" {
-							// Filter by type.
-							types, ok := dcidToTypeSet[dcid]
-							if !ok {
-								continue
-							}
-							if _, ok := types[typeOf]; !ok {
-								continue
-							}
-						}
-						candidateSet[dcid] = struct{}{}
-					}
-				}
-			}
-			for candidate := range candidateSet {
-				resEntity.Candidates = append(resEntity.Candidates, &pbv2.ResolveResponse_Entity_Candidate{
-					Dcid: candidate,
-				})
-			}
-			// Sort candidates for determinism.
-			sort.Slice(resEntity.Candidates, func(i, j int) bool {
-				return resEntity.Candidates[i].Dcid < resEntity.Candidates[j].Dcid
-			})
-			resp.Entities = append(resp.Entities, resEntity)
-		}
-
-		return resp, nil
+		return sds.resolveDescription(ctx, req, inArc)
 	}
 
 	// ID to ID:
@@ -311,3 +227,110 @@ func (sds *SpannerDataSource) Sparql(ctx context.Context, req *pb.SparqlRequest)
 	}
 	return response, nil
 }
+
+// resolveDescription resolves entity descriptions to DCIDs.
+func (sds *SpannerDataSource) resolveDescription(
+	ctx context.Context,
+	req *pbv2.ResolveRequest,
+	inArc *v2.Arc,
+) (*pbv2.ResolveResponse, error) {
+	// Extract typeOf from filter.
+	typeOfs, ok := inArc.Filter["typeOf"]
+	if !ok {
+		typeOfs = []string{""}
+	}
+
+	// Prepare entity info set.
+	entityInfoSet := map[recon.EntityInfo]struct{}{}
+	for _, node := range req.GetNodes() {
+		for _, typeOf := range typeOfs {
+			entityInfoSet[recon.EntityInfo{Description: node, TypeOf: typeOf}] = struct{}{}
+		}
+	}
+
+	if sds.mapsClient == nil {
+		return nil, status.Error(codes.FailedPrecondition, "Maps API client is required but not configured for description resolution")
+	}
+
+	// Define Spanner-specific lookup functions.
+	placeIdToDcidFunc := func(ctx context.Context, placeIds []string) (map[string][]string, error) {
+		return sds.client.ResolveByID(ctx, placeIds, "placeId", "dcid")
+	}
+
+	// Resolve DCIDs.
+	entityInfoToDCIDs, dcidSet, err := recon.ResolveDCIDs(
+		ctx, sds.mapsClient, sds.recogPlaceStore, placeIdToDcidFunc, entityInfoSet)
+	if err != nil {
+		return nil, err
+	}
+
+	// Get types of the DCIDs from Spanner.
+	dcidToTypeSet, err := sds.fetchTypes(ctx, dcidSet)
+	if err != nil {
+		return nil, err
+	}
+
+	// Assemble results.
+	resp := &pbv2.ResolveResponse{}
+	for _, node := range req.GetNodes() {
+		resEntity := &pbv2.ResolveResponse_Entity{
+			Node: node,
+		}
+		candidateSet := map[string]struct{}{}
+		for _, typeOf := range typeOfs {
+			e := recon.EntityInfo{Description: node, TypeOf: typeOf}
+			if dcids, ok := entityInfoToDCIDs[e]; ok {
+				for _, dcid := range dcids {
+					if typeOf != "" {
+						// Filter by type.
+						types, ok := dcidToTypeSet[dcid]
+						if !ok {
+							continue
+						}
+						if _, ok := types[typeOf]; !ok {
+							continue
+						}
+					}
+					candidateSet[dcid] = struct{}{}
+				}
+			}
+		}
+		for candidate := range candidateSet {
+			resEntity.Candidates = append(resEntity.Candidates, &pbv2.ResolveResponse_Entity_Candidate{
+				Dcid: candidate,
+			})
+		}
+		// Sort candidates for determinism.
+		sort.Slice(resEntity.Candidates, func(i, j int) bool {
+			return resEntity.Candidates[i].Dcid < resEntity.Candidates[j].Dcid
+		})
+		resp.Entities = append(resp.Entities, resEntity)
+	}
+
+	return resp, nil
+}
+
+// fetchTypes gets the types of the provided DCIDs from Spanner.
+func (sds *SpannerDataSource) fetchTypes(
+	ctx context.Context,
+	dcidSet map[string]struct{},
+) (map[string]map[string]struct{}, error) {
+	dcidToTypeSet := map[string]map[string]struct{}{}
+	if len(dcidSet) == 0 {
+		return dcidToTypeSet, nil
+	}
+
+	typeArc := &v2.Arc{SingleProp: "typeOf", Out: true}
+	dcidToEdges, err := sds.client.GetNodeEdgesByID(ctx, util.StringSetToSlice(dcidSet), typeArc, 0, 0)
+	if err != nil {
+		return nil, err
+	}
+	for dcid, edges := range dcidToEdges {
+		dcidToTypeSet[dcid] = map[string]struct{}{}
+		for _, edge := range edges {
+			dcidToTypeSet[dcid][edge.Value] = struct{}{}
+		}
+	}
+	return dcidToTypeSet, nil
+}
+
