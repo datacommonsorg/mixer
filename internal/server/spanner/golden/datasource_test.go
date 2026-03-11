@@ -54,6 +54,8 @@ func (m *mockSpannerClient) SearchNodes(ctx context.Context, query string, types
 	return nil, nil
 }
 func (m *mockSpannerClient) ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error) {
+	// ResolveByID mocks the Spanner lookup of placeId to DCID.
+	// Maps-specific fallbacks are not required for these unit tests.
 	return m.resolveByIDRes, nil
 }
 func (m *mockSpannerClient) Sparql(ctx context.Context, nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) ([][]string, error) {
