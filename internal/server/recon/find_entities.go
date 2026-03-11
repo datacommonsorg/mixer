@@ -29,6 +29,8 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store/files"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"googlemaps.github.io/maps"
 )
 
@@ -195,6 +197,10 @@ func ResolveDCIDs(
 		}
 	}
 	if len(missingEntityInfoSet) > 0 {
+		if mapsClient == nil {
+			return nil, nil, status.Error(codes.FailedPrecondition, "Maps API client is required but not configured for description resolution")
+		}
+
 		// For entities that cannot be resolved by RecognizePlaces, try Maps API.
 		missingEntityInfoToDCIDSet, missingDcidSet, err := resolveWithMapsAPI(
 			ctx, mapsClient, placeIdToDcidFunc, missingEntityInfoSet)
