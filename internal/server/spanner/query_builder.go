@@ -59,7 +59,10 @@ func GetCompletionTimestampQuery() *spanner.Statement {
 }
 
 func GetNodePropsQuery(ids []string, out bool) *spanner.Statement {
-	getIds, params := getIdStatement(ids)
+	getIds, idVal := getParamStatement("id", ids)
+	params := map[string]interface{}{
+		"id": idVal,
+	}
 
 	switch out {
 	case true:
@@ -76,7 +79,10 @@ func GetNodePropsQuery(ids []string, out bool) *spanner.Statement {
 }
 
 func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spanner.Statement {
-	getIds, params := getIdStatement(ids)
+	getIds, idVal := getParamStatement("id", ids)
+	params := map[string]interface{}{
+		"id": idVal,
+	}
 
 	// Attach predicates.
 	filterPredicate := ""
@@ -176,12 +182,14 @@ func GetObservationsQuery(variables []string, entities []string) *spanner.Statem
 
 	filters := []string{}
 	if len(variables) > 0 {
-		stmt.Params["variables"] = variables
-		filters = append(filters, statements.selectVariableDcids)
+		getVariableStatement, variableVal := getParamStatement("variable", variables)
+		stmt.Params["variable"] = variableVal
+		filters = append(filters, fmt.Sprintf(statements.selectVariableDcids, getVariableStatement))
 	}
 	if len(entities) > 0 {
-		stmt.Params["entities"] = entities
-		filters = append(filters, statements.selectEntityDcids)
+		getEntityStatement, entityVal := getParamStatement("entity", entities)
+		stmt.Params["entity"] = entityVal
+		filters = append(filters, fmt.Sprintf(statements.selectEntityDcids, getEntityStatement))
 	}
 	stmt.SQL += where + strings.Join(filters, and)
 
@@ -388,10 +396,10 @@ func addObjectValues(input []string) []string {
 	return result
 }
 
-// getIdStatement returns the appropriate SQL statement and parameters for fetching IDs based on the number of input nodes.
-func getIdStatement(ids []string) (string, map[string]interface{}) {
-	if len(ids) == 1 {
-		return statements.getId, map[string]interface{}{"id": ids[0]}
+// getParamStatement returns the appropriate SQL statement and parameter value for filtering by a parameter based on the number of inputs.
+func getParamStatement(param string, inputs []string) (string, interface{}) {
+	if len(inputs) == 1 {
+		return fmt.Sprintf(statements.getParam, param), inputs[0]
 	}
-	return statements.getIds, map[string]interface{}{"id": ids}
+	return fmt.Sprintf(statements.getParams, param), inputs
 }

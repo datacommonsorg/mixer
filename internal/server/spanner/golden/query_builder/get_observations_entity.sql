@@ -13,4 +13,4 @@
 		FROM 
 			Observation
 		WHERE
-			observation_about IN ('wikidataId/Q341968')
+			observation_about = 'wikidataId/Q341968'

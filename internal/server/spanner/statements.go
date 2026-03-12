@@ -19,10 +19,10 @@ package spanner
 var statements = struct {
 	// Fetch latest CompletionTimestamp from IngestionHistory table.
 	getCompletionTimestamp string
-	// Filter by single id.
-	getId string
-	// Filter by multiple ids.
-	getIds string
+	// Filter by single parameter value.
+	getParam string
+	// Filter by multiple parameter values.
+	getParams string
 	// Fetch Properties for out arcs.
 	getPropsBySubjectID string
 	// Fetch Properties for in arcs.
@@ -95,8 +95,8 @@ var statements = struct {
 		ORDER BY 
 			CompletionTimestamp DESC
 		LIMIT 1`,
-	getId:  `= @id`,
-	getIds: `IN UNNEST(@id)`,
+	getParam:  `= @%s`,
+	getParams: `IN UNNEST(@%s)`,
 	getPropsBySubjectID: `		GRAPH DCGraph MATCH -[e:Edge
 		WHERE
 			e.subject_id %s]->
@@ -218,8 +218,8 @@ var statements = struct {
 			facet_id
 		FROM 
 			Observation`,
-	selectVariableDcids: `variable_measured IN UNNEST(@variables)`,
-	selectEntityDcids:   `observation_about IN UNNEST(@entities)`,
+	selectVariableDcids: `variable_measured %s`,
+	selectEntityDcids:   `observation_about %s`,
 	getObsByVariableAndContainedInPlace: `		SELECT
 			obs.variable_measured,
 			obs.observation_about,
