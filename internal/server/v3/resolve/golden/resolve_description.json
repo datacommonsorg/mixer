@@ -1,0 +1,27 @@
+{
+  "entities": [
+    {
+      "node": "California",
+      "candidates": [
+        {
+          "dcid": "geoId/06"
+        },
+        {
+          "dcid": "geoId/2111872"
+        },
+        {
+          "dcid": "geoId/2412150"
+        },
+        {
+          "dcid": "geoId/2910468"
+        },
+        {
+          "dcid": "geoId/4210768"
+        }
+      ]
+    },
+    {
+      "node": "foo"
+    }
+  ]
+}
