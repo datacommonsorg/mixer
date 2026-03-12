@@ -24,7 +24,7 @@ ingress:
   name: mixer-ingress-autopush
   annotations:
     {
-      ingress.gcp.kubernetes.io/pre-shared-cert: "mixer-certificate,multi-domain-2025",
+      ingress.gcp.kubernetes.io/pre-shared-cert: "mixer-certificate,multi-domain-2026",
     }
 
 # TODO(/v2/resolve cleanup): Remove this once /v2/resolve always requires an api key.
