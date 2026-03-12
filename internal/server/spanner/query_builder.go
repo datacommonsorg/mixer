@@ -59,7 +59,7 @@ func GetCompletionTimestampQuery() *spanner.Statement {
 }
 
 func GetNodePropsQuery(ids []string, out bool) *spanner.Statement {
-	getIds, idVal := getParamStatement("id", ids)
+	idFilter, idVal := getParamStatement("id", ids)
 	params := map[string]interface{}{
 		"id": idVal,
 	}
@@ -67,19 +67,19 @@ func GetNodePropsQuery(ids []string, out bool) *spanner.Statement {
 	switch out {
 	case true:
 		return &spanner.Statement{
-			SQL:    fmt.Sprintf(statements.getPropsBySubjectID, getIds),
+			SQL:    fmt.Sprintf(statements.getPropsBySubjectID, idFilter),
 			Params: params,
 		}
 	default:
 		return &spanner.Statement{
-			SQL:    fmt.Sprintf(statements.getPropsByObjectID, getIds),
+			SQL:    fmt.Sprintf(statements.getPropsByObjectID, idFilter),
 			Params: params,
 		}
 	}
 }
 
 func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spanner.Statement {
-	getIds, idVal := getParamStatement("id", ids)
+	idFilter, idVal := getParamStatement("id", ids)
 	params := map[string]interface{}{
 		"id": idVal,
 	}
@@ -127,19 +127,19 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 	switch arc.Out {
 	case true:
 		if arc.Decorator == v3.Chain {
-			subquery = fmt.Sprintf(statements.getChainedEdgesBySubjectID, getIds, maxHops)
+			subquery = fmt.Sprintf(statements.getChainedEdgesBySubjectID, idFilter, maxHops)
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
 		} else {
-			subquery = fmt.Sprintf(statements.getEdgesBySubjectID, getIds, filterPredicate)
+			subquery = fmt.Sprintf(statements.getEdgesBySubjectID, idFilter, filterPredicate)
 		}
 	case false:
 		if arc.Decorator == v3.Chain {
-			subquery = fmt.Sprintf(statements.getChainedEdgesByObjectID, getIds, maxHops)
+			subquery = fmt.Sprintf(statements.getChainedEdgesByObjectID, idFilter, maxHops)
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
 		} else {
-			subquery = fmt.Sprintf(statements.getEdgesByObjectID, getIds, filterPredicate)
+			subquery = fmt.Sprintf(statements.getEdgesByObjectID, idFilter, filterPredicate)
 		}
 	}
 	subqueries = append([]string{subquery}, subqueries...)
@@ -182,14 +182,14 @@ func GetObservationsQuery(variables []string, entities []string) *spanner.Statem
 
 	filters := []string{}
 	if len(variables) > 0 {
-		getVariableStatement, variableVal := getParamStatement("variable", variables)
+		variableFilter, variableVal := getParamStatement("variable", variables)
 		stmt.Params["variable"] = variableVal
-		filters = append(filters, fmt.Sprintf(statements.selectVariableDcids, getVariableStatement))
+		filters = append(filters, fmt.Sprintf(statements.selectVariableDcids, variableFilter))
 	}
 	if len(entities) > 0 {
-		getEntityStatement, entityVal := getParamStatement("entity", entities)
+		entityFilter, entityVal := getParamStatement("entity", entities)
 		stmt.Params["entity"] = entityVal
-		filters = append(filters, fmt.Sprintf(statements.selectEntityDcids, getEntityStatement))
+		filters = append(filters, fmt.Sprintf(statements.selectEntityDcids, entityFilter))
 	}
 	stmt.SQL += where + strings.Join(filters, and)
 
