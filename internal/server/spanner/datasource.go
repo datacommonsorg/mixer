@@ -20,10 +20,11 @@ import (
 	"log/slog"
 	"sort"
 
-	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	internalmaps "github.com/datacommonsorg/mixer/internal/maps"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/recon"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	v3 "github.com/datacommonsorg/mixer/internal/server/v3"
@@ -330,3 +331,59 @@ func (sds *SpannerDataSource) fetchTypes(
 	return dcidToTypeSet, nil
 }
 
+type eventCollectionDateRequest struct {
+	placeID   string
+	eventType string
+}
+
+// Event retrieves event data from Spanner.
+func (sds *SpannerDataSource) Event(ctx context.Context, req *pbv2.EventRequest) (*pbv2.EventResponse, error) {
+	arcs, err := v2.ParseProperty(req.GetProperty())
+	if err != nil {
+		return nil, err
+	}
+
+	if parsedReq := parseEventCollectionDate(req, arcs); parsedReq != nil {
+		return sds.handleEventCollectionDate(ctx, parsedReq)
+	}
+
+	return nil, status.Errorf(codes.InvalidArgument, "unsupported event request property: %s", req.GetProperty())
+}
+
+// parseEventCollectionDate checks if the arcs match the pattern for EventCollectionDate and returns the parsed elements.
+// Pattern: <-location{typeOf:EventType}->date
+func parseEventCollectionDate(req *pbv2.EventRequest, arcs []*v2.Arc) *eventCollectionDateRequest {
+	if len(arcs) != 2 {
+		return nil
+	}
+	// arcs[0] should be <-location
+	// arcs[1] should be ->date
+	if arcs[0].Out || !arcs[1].Out {
+		return nil
+	}
+	if arcs[0].SingleProp != "location" || arcs[1].SingleProp != "date" {
+		return nil
+	}
+	typeOfs, ok := arcs[0].Filter["typeOf"]
+	if !ok || len(typeOfs) == 0 {
+		return nil
+	}
+	return &eventCollectionDateRequest{
+		placeID:   req.GetNode(),
+		eventType: typeOfs[0],
+	}
+}
+
+// handleEventCollectionDate handles EventCollectionDate requests.
+func (sds *SpannerDataSource) handleEventCollectionDate(ctx context.Context, req *eventCollectionDateRequest) (*pbv2.EventResponse, error) {
+	dates, err := sds.client.GetEventCollectionDate(ctx, req.placeID, req.eventType)
+	if err != nil {
+		return nil, fmt.Errorf("error getting event collection date: %v", err)
+	}
+
+	return &pbv2.EventResponse{
+		EventCollectionDate: &pbv1.EventCollectionDate{
+			Dates: dates,
+		},
+	}, nil
+}

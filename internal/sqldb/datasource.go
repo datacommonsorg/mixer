@@ -121,3 +121,7 @@ func (sds *SQLDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequest)
 func (sds *SQLDataSource) Sparql(ctx context.Context, req *pb.SparqlRequest) (*pb.QueryResponse, error) {
 	return &pb.QueryResponse{}, nil
 }
+
+func (sds *SQLDataSource) Event(ctx context.Context, req *pbv2.EventRequest) (*pbv2.EventResponse, error) {
+	return &pbv2.EventResponse{}, nil
+}

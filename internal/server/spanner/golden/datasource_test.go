@@ -265,3 +265,51 @@ func TestSpannerSparql(t *testing.T) {
 		}
 	}
 }
+
+func TestSpannerEvent(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+	ds := spanner.NewSpannerDataSource(client)
+
+	t.Parallel()
+	ctx := context.Background()
+	_, filename, _, _ := runtime.Caller(0)
+	goldenDir := path.Join(path.Dir(filename), "datasource")
+
+	for _, c := range []struct {
+		req        *pbv2.EventRequest
+		goldenFile string
+	}{
+		{
+			req: &pbv2.EventRequest{
+				Node:     "country/LBR",
+				Property: "<-location{typeOf:FireEvent}->date",
+			},
+			goldenFile: "event_collection_date_lbr.json",
+		},
+	} {
+		got, err := ds.Event(ctx, c.req)
+		if err != nil {
+			t.Fatalf("Event error (%v): %v", c.goldenFile, err)
+		}
+
+		if test.GenerateGolden {
+			test.UpdateProtoGolden(got, goldenDir, c.goldenFile)
+			return
+		}
+
+		var want pbv2.EventResponse
+		if err = test.ReadJSON(goldenDir, c.goldenFile, &want); err != nil {
+			t.Fatalf("ReadJSON error (%v): %v", c.goldenFile, err)
+		}
+
+		cmpOpts := cmp.Options{
+			protocmp.Transform(),
+		}
+		if diff := cmp.Diff(got, &want, cmpOpts); diff != "" {
+			t.Errorf("%v payload mismatch:\n%v", c.goldenFile, diff)
+		}
+	}
+}

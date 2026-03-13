@@ -100,3 +100,12 @@ func (rc *RemoteClient) Sparql(req *pb.SparqlRequest) (*pb.QueryResponse, error)
 	}
 	return resp, nil
 }
+
+func (rc *RemoteClient) Event(req *pbv2.EventRequest) (*pbv2.EventResponse, error) {
+	resp := &pbv2.EventResponse{}
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v3/event", req, resp)
+	if err != nil {
+		return nil, err
+	}
+	return resp, nil
+}
