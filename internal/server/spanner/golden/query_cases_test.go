@@ -417,7 +417,7 @@ var eventCollectionDateTestCases = []struct {
 	golden    string
 }{
 	{
-		placeDcid: "country/USA",
+		placeDcid: "country/LBR",
 		eventType: "FireEvent",
 		golden:    "get_event_collection_date",
 	},
