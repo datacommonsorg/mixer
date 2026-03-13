@@ -38,6 +38,7 @@ type SpannerClient interface {
 	SearchNodes(ctx context.Context, query string, types []string) ([]*SearchNode, error)
 	ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error)
 	Sparql(ctx context.Context, nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) ([][]string, error)
+	GetVariableMetadata(ctx context.Context, ids []string) (map[string][]*VariableMetadata, error)
 	Id() string
 	Start()
 	Close()
