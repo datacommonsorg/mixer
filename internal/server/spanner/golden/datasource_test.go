@@ -64,6 +64,9 @@ func (m *mockSpannerClient) Sparql(ctx context.Context, nodes []types.Node, quer
 func (m *mockSpannerClient) GetEventCollectionDate(ctx context.Context, placeID, eventType string) ([]string, error) {
 	return nil, nil
 }
+func (m *mockSpannerClient) GetEventCollectionDcids(ctx context.Context, placeID, eventType, date string) ([]string, error) {
+	return nil, nil
+}
 func (m *mockSpannerClient) Id() string { return "mock" }
 func (m *mockSpannerClient) Start()    {}
 func (m *mockSpannerClient) Close()    {}

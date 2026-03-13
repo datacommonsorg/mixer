@@ -222,6 +222,23 @@ func (sc *spannerDatabaseClient) GetEventCollectionDate(ctx context.Context, pla
 	return res, nil
 }
 
+// GetEventCollectionDcids retrieves event DCIDs from Spanner.
+func (sc *spannerDatabaseClient) GetEventCollectionDcids(ctx context.Context, placeID, eventType, date string) ([]string, error) {
+	stmt := GetEventCollectionDcidsQuery(placeID, eventType, date)
+	rows, err := sc.queryDynamic(ctx, *stmt)
+	if err != nil {
+		return nil, err
+	}
+
+	var dcids []string
+	for _, row := range rows {
+		if len(row) > 0 {
+			dcids = append(dcids, row[0])
+		}
+	}
+	return dcids, nil
+}
+
 func (sc *spannerDatabaseClient) Sparql(ctx context.Context, nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) ([][]string, error) {
 	query, err := SparqlQuery(nodes, queries, opts)
 	if err != nil {

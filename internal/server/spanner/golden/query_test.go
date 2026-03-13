@@ -207,6 +207,23 @@ func TestGetEventCollectionDate(t *testing.T) {
 	}
 }
 
+func TestFindEventDcids(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+
+	for _, c := range eventCollectionDcidsTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return client.GetEventCollectionDcids(ctx, c.placeDcid, c.eventType, c.date)
+		})
+	}
+}
+
 // runQueryGoldenTest is a helper function that performs the golden file validation.
 func runQueryGoldenTest(t *testing.T, goldenFile string, fn goldenTestFunc) {
 	t.Helper()
