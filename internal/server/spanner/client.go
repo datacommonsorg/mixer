@@ -24,6 +24,7 @@ import (
 	"time"
 
 	"cloud.google.com/go/spanner"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
 	"gopkg.in/yaml.v3"
@@ -38,6 +39,8 @@ type SpannerClient interface {
 	SearchNodes(ctx context.Context, query string, types []string) ([]*SearchNode, error)
 	ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error)
 	GetEventCollectionDate(ctx context.Context, placeID, eventType string) ([]string, error)
+	GetEventCollectionDcids(ctx context.Context, placeID, eventType, date string) ([]string, error)
+	GetEventCollection(ctx context.Context, req *pbv1.EventCollectionRequest) (*pbv1.EventCollection, error)
 	Sparql(ctx context.Context, nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) ([][]string, error)
 	Id() string
 	Start()

@@ -87,6 +87,8 @@ var statements = struct {
 	triple string
 	// Fetch event dates for a given type and location.
 	getEventCollectionDate string
+	// Fetch events for a given type, location and date.
+	getEventCollectionDcids string
 }{
 	getCompletionTimestamp: `		SELECT
 		CompletionTimestamp
@@ -300,4 +302,10 @@ var statements = struct {
 			SUBSTR(dateNode.value, 1, 7) AS month
 		ORDER BY 
 			month`,
+	getEventCollectionDcids: `		@{force_join_order=true}
+		GRAPH DCGraph MATCH (event:Node)-[:Edge {predicate: 'affectedPlace', object_id: @placeID}]->(), (event)-[:Edge {predicate: 'typeOf', object_id: @eventType}]->(), (event)-[:Edge {predicate: 'startDate'}]->(dateNode:Node)
+		WHERE 
+			SUBSTR(dateNode.value, 1, 7) = @date
+		RETURN DISTINCT 
+			event.subject_id AS dcid`,
 }
