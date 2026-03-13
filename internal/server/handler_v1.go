@@ -470,7 +470,7 @@ func (s *Server) VariableAncestors(
 func (s *Server) RecognizePlaces(
 	ctx context.Context, in *pb.RecognizePlacesRequest,
 ) (*pb.RecognizePlacesResponse, error) {
-	return recon.RecognizePlaces(ctx, in, s.store, false)
+	return recon.RecognizePlaces(ctx, in, s.store.RecogPlaceStore, false)
 }
 
 // RecognizeEntities implements API for Mixer.RecognizeEntities.
