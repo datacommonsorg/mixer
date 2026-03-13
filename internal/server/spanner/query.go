@@ -19,14 +19,22 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
+	"net/url"
+	"sort"
+	"strconv"
+	"strings"
 	"time"
 
 	"cloud.google.com/go/spanner"
 	"github.com/datacommonsorg/mixer/internal/metrics"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
+	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/api/iterator"
 	"google.golang.org/grpc/codes"
+	"google.golang.org/protobuf/proto"
 )
 
 const (
@@ -34,6 +42,17 @@ const (
 	maxHops = 10
 	where   = "\n\t\tWHERE\n\t\t\t"
 	and     = "\n\t\t\tAND "
+
+	// Special edge predicates.
+	predAffectedPlace      = "affectedPlace"
+	predStartDate          = "startDate"
+	predStartLocation      = "startLocation"
+	predProvenance         = "provenance"
+	predTypeOf             = "typeOf"
+	predGeoJsonCoordinates = "geoJsonCoordinates"
+	predName               = "name"
+	predUrl                = "url"
+	predDomain             = "domain"
 )
 
 // GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction and returns a map.
@@ -220,6 +239,241 @@ func (sc *spannerDatabaseClient) GetEventCollectionDate(ctx context.Context, pla
 		}
 	}
 	return res, nil
+}
+
+// GetEventCollection retrieves and filters event collection from Spanner.
+func (sc *spannerDatabaseClient) GetEventCollection(ctx context.Context, req *pbv1.EventCollectionRequest) (*pbv1.EventCollection, error) {
+	// Get event DCIDs
+	dcids, err := sc.GetEventCollectionDcids(ctx, req.AffectedPlaceDcid, req.EventType, req.Date)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get event dcids: %w", err)
+	}
+	if len(dcids) == 0 {
+		return &pbv1.EventCollection{}, nil
+	}
+
+	// Get properties for all DCIDs
+	arc := &v2.Arc{
+		Out:        true,
+		SingleProp: "*",
+	}
+	edgesMap, err := sc.GetNodeEdgesByID(ctx, dcids, arc, datasources.DefaultPageSize, 0)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get node edges: %w", err)
+	}
+
+	// Filter and Assemble
+	res := assembleEventCollection(edgesMap, req)
+
+	// Fetch and populate provenance info.
+	if err := sc.populateProvenanceInfo(ctx, res); err != nil {
+		return nil, err
+	}
+
+	return res, nil
+}
+func (sc *spannerDatabaseClient) populateProvenanceInfo(ctx context.Context, res *pbv1.EventCollection) error {
+	provDcids := []string{}
+	seen := map[string]bool{}
+	for _, event := range res.Events {
+		if event.ProvenanceId != "" && !seen[event.ProvenanceId] {
+			seen[event.ProvenanceId] = true
+			provDcids = append(provDcids, event.ProvenanceId)
+		}
+	}
+
+	if len(provDcids) == 0 {
+		return nil
+	}
+
+	provArc := &v2.Arc{
+		Out:          true,
+		BracketProps: []string{predUrl, predName, predDomain},
+	}
+	provEdgesMap, err := sc.GetNodeEdgesByID(ctx, provDcids, provArc, datasources.DefaultPageSize, 0)
+	if err != nil {
+		return fmt.Errorf("failed to get provenance info: %w", err)
+	}
+
+	for provDcid, edges := range provEdgesMap {
+		info := &pbv1.EventCollection_ProvenanceInfo{}
+		res.ProvenanceInfo[provDcid] = info
+		for _, edge := range edges {
+			if edge.Predicate == predUrl {
+				info.ProvenanceUrl = edge.Value
+			} else if edge.Predicate == predName {
+				info.ImportName = edge.Value
+			} else if edge.Predicate == predDomain {
+				info.Domain = edge.Value
+			}
+		}
+		// Fallback if domain still empty.
+		if info.Domain == "" && info.ProvenanceUrl != "" {
+			info.Domain = parseDomain(info.ProvenanceUrl)
+		}
+	}
+
+	return nil
+}
+
+// parseDomain parses the URL to get the host domain.
+func parseDomain(provUrl string) string {
+	u, err := url.Parse(provUrl)
+	if err != nil {
+		return ""
+	}
+	host := u.Hostname()
+	parts := strings.Split(host, ".")
+	if len(parts) >= 2 {
+		return strings.Join(parts[len(parts)-2:], ".")
+	}
+	return host
+}
+
+
+func assembleEventCollection(edgesMap map[string][]*Edge, req *pbv1.EventCollectionRequest) *pbv1.EventCollection {
+	res := &pbv1.EventCollection{
+		Events:         []*pbv1.EventCollection_Event{},
+		ProvenanceInfo: make(map[string]*pbv1.EventCollection_ProvenanceInfo),
+	}
+
+	for dcid, edges := range edgesMap {
+		event := assembleAndFilterEvent(dcid, edges, req)
+		if event != nil {
+			res.Events = append(res.Events, event)
+		}
+	}
+
+	// Sort events by DCID for determinism.
+	sort.Slice(res.Events, func(i, j int) bool {
+		return res.Events[i].Dcid < res.Events[j].Dcid
+	})
+
+	return res
+}
+
+// assembleAndFilterEvent assembles an event from its edges and filters it based on the request.
+// Returns nil if the event should be filtered out.
+func assembleAndFilterEvent(dcid string, edges []*Edge, req *pbv1.EventCollectionRequest) *pbv1.EventCollection_Event {
+	event := &pbv1.EventCollection_Event{
+		Dcid:         dcid,
+		Places:       []string{},
+		Dates:        []string{},
+		GeoLocations: []*pbv1.EventCollection_GeoLocation{}, // Initialize
+		PropVals:     make(map[string]*pbv1.EventCollection_ValList),
+	}
+
+	for _, edge := range edges {
+		populateSpecialFields(event, edge)
+		populatePropVals(event, edge)
+	}
+
+	// Filter events.
+	// We must filter AFTER populating because we need the full event data
+	// (e.g. PropVals) for filtering logic (keepEvent).
+	if !keepEvent(event, req) {
+		return nil
+	}
+
+	cleanUpPropVals(event)
+
+	return event
+}
+
+func populateSpecialFields(event *pbv1.EventCollection_Event, edge *Edge) {
+	switch edge.Predicate {
+	case predAffectedPlace:
+		// Exclude S2Cell places as per proto contract (proto/v1/event.proto).
+		if !strings.HasPrefix(edge.Value, "s2CellId/") {
+			event.Places = append(event.Places, edge.Value)
+		}
+	case predStartDate:
+		// Do NOT trim date.
+		event.Dates = append(event.Dates, edge.Value)
+	case predStartLocation:
+		// Populate GeoLocations from startLocation value.
+		populateGeoLocation(event, edge.Value)
+	}
+}
+
+func populateGeoLocation(event *pbv1.EventCollection_Event, value string) {
+	// Note: The startLocation value in Spanner is usually a latLong/ DCID (e.g. latLong/577521_-958960).
+	// We parse it here for performance to avoid an extra database roundtrip.
+	//
+	// TODO(task): Revisit this optimization if we encounter valid startLocation values 
+	// that are NOT latLong/ DCIDs but still need to be resolved to points, or if the 
+	// assumption that dcids always contain coordinates is not true.
+	if strings.HasPrefix(value, "latLong/") {
+		parts := strings.Split(strings.TrimPrefix(value, "latLong/"), "_")
+		if len(parts) == 2 {
+			lat, err1 := strconv.ParseFloat(parts[0], 64)
+			lon, err2 := strconv.ParseFloat(parts[1], 64)
+			if err1 == nil && err2 == nil {
+				event.GeoLocations = append(event.GeoLocations, &pbv1.EventCollection_GeoLocation{
+					Geo: &pbv1.EventCollection_GeoLocation_Point_{
+						Point: &pbv1.EventCollection_GeoLocation_Point{
+							Latitude:  proto.Float64(lat / 100000.0),
+							Longitude: proto.Float64(lon / 100000.0),
+						},
+					},
+				})
+			}
+		}
+	}
+}
+
+func populatePropVals(event *pbv1.EventCollection_Event, edge *Edge) {
+	val := edge.Value
+	if edge.Predicate == predGeoJsonCoordinates && len(edge.Bytes) > 0 {
+		if len(edge.Bytes) > 2 && edge.Bytes[0] == 0x1f && edge.Bytes[1] == 0x8b {
+			decompressed, err := util.Unzip(edge.Bytes)
+			if err == nil {
+				val = string(decompressed)
+			} else {
+				slog.Error("failed to decompress geoJsonCoordinates", "err", err, "dcid", event.Dcid)
+				val = ""
+			}
+		} else {
+			val = string(edge.Bytes)
+		}
+	}
+	if _, ok := event.PropVals[edge.Predicate]; !ok {
+		event.PropVals[edge.Predicate] = &pbv1.EventCollection_ValList{Vals: []string{}}
+	}
+	event.PropVals[edge.Predicate].Vals = append(event.PropVals[edge.Predicate].Vals, val)
+
+	if edge.Provenance != "" {
+		event.ProvenanceId = edge.Provenance
+	}
+}
+
+func cleanUpPropVals(event *pbv1.EventCollection_Event) {
+	// Clean up PropVals (remove specialized fields to match V2).
+	delete(event.PropVals, predAffectedPlace)
+	delete(event.PropVals, predStartDate)
+	delete(event.PropVals, predStartLocation)
+	delete(event.PropVals, predProvenance)
+	delete(event.PropVals, predTypeOf)
+}
+
+func keepEvent(event *pbv1.EventCollection_Event, req *pbv1.EventCollectionRequest) bool {
+	if req.FilterProp == "" {
+		return true
+	}
+	for prop, vals := range event.GetPropVals() {
+		if prop == req.FilterProp {
+			if len(vals.Vals) == 0 {
+				return false
+			}
+			valStr := strings.TrimSpace(strings.TrimPrefix(vals.Vals[0], req.FilterUnit))
+			v, err := strconv.ParseFloat(valStr, 64)
+			if err != nil {
+				return false
+			}
+			return v >= req.FilterLowerLimit && v <= req.FilterUpperLimit
+		}
+	}
+	return false
 }
 
 // GetEventCollectionDcids retrieves event DCIDs from Spanner.
