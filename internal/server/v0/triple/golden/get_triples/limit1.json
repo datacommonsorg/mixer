@@ -45,7 +45,7 @@
         "Provenance"
       ],
       "predicate": "importTime",
-      "objectValue": "1770711251",
+      "objectValue": "1773148626",
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
@@ -163,10 +163,10 @@
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
-      "subjectId": "Acre1000Onwards",
-      "subjectName": "Acre 1000 Onwards",
+      "subjectId": "AvailableVehicles0",
+      "subjectName": "AvailableVehicles 0",
       "subjectTypes": [
-        "QuantityRange"
+        "Quantity"
       ],
       "predicate": "provenance",
       "objectId": "dc/base/HumanReadableStatVars",
@@ -177,10 +177,10 @@
       "provenanceId": "dc/base/HumanReadableStatVars"
     },
     {
-      "subjectId": "AvailableVehicles0",
-      "subjectName": "AvailableVehicles 0",
+      "subjectId": "CelsiusUpto-5",
+      "subjectName": "Celsius UpTo -5",
       "subjectTypes": [
-        "Quantity"
+        "QuantityRange"
       ],
       "predicate": "provenance",
       "objectId": "dc/base/HumanReadableStatVars",
