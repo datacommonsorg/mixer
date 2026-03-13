@@ -302,6 +302,20 @@ func MergeEvent(main, aux *pbv2.EventResponse) *pbv2.EventResponse {
 	return main
 }
 
+// MergeMultiEvent merges multiple V2 EventResponses.
+// Assumes the responses are in order of priority.
+func MergeMultiEvent(allResp []*pbv2.EventResponse) *pbv2.EventResponse {
+	if len(allResp) == 0 {
+		return &pbv2.EventResponse{}
+	}
+	prev := allResp[0]
+	for i := 1; i < len(allResp); i++ {
+		cur := MergeEvent(prev, allResp[i])
+		prev = cur
+	}
+	return prev
+}
+
 // MergeObservation merges two V2 observation responses.
 func MergeObservation(main, aux *pbv2.ObservationResponse) *pbv2.ObservationResponse {
 	if main == nil {
