@@ -20,13 +20,13 @@ import (
 	"runtime"
 	"testing"
 
+	"github.com/datacommonsorg/mixer/internal/maps"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/store/files"
-	"github.com/datacommonsorg/mixer/internal/maps"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
@@ -59,6 +59,9 @@ func (m *mockSpannerClient) ResolveByID(ctx context.Context, nodes []string, in,
 	return m.resolveByIDRes, nil
 }
 func (m *mockSpannerClient) Sparql(ctx context.Context, nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) ([][]string, error) {
+	return nil, nil
+}
+func (m *mockSpannerClient) GetEventCollectionDate(ctx context.Context, placeID, eventType string) ([]string, error) {
 	return nil, nil
 }
 func (m *mockSpannerClient) Id() string { return "mock" }
@@ -271,7 +274,7 @@ func TestSpannerEvent(t *testing.T) {
 	if client == nil {
 		return
 	}
-	ds := spanner.NewSpannerDataSource(client)
+	ds := spanner.NewSpannerDataSource(client, nil, nil)
 
 	t.Parallel()
 	ctx := context.Background()
