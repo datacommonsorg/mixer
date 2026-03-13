@@ -446,3 +446,31 @@ var eventCollectionDcidsTestCases = []struct {
 		golden:    "get_event_collection_dcids",
 	},
 }
+
+var eventCollectionTestCases = []struct {
+	placeDcid        string
+	eventType        string
+	date             string
+	filterProp       string
+	filterUnit       string
+	filterLowerLimit float64
+	filterUpperLimit float64
+	golden           string
+}{
+	{
+		placeDcid: "country/LBR",
+		eventType: "FireEvent",
+		date:      "2020-10",
+		golden:    "get_event_collection",
+	},
+	{
+		placeDcid:        "country/LBR",
+		eventType:        "FireEvent",
+		date:             "2020-10",
+		filterProp:       "area",
+		filterUnit:       "SquareKilometer",
+		filterLowerLimit: 100,
+		filterUpperLimit: 200,
+		golden:           "get_event_collection_filtered",
+	},
+}
