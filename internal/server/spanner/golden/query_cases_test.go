@@ -432,3 +432,17 @@ var eventCollectionDateTestCases = []struct {
 		golden:    "get_event_collection_date",
 	},
 }
+
+var eventCollectionDcidsTestCases = []struct {
+	placeDcid string
+	eventType string
+	date      string
+	golden    string
+}{
+	{
+		placeDcid: "country/LBR",
+		eventType: "FireEvent",
+		date:      "2020-10",
+		golden:    "get_event_collection_dcids",
+	},
+}
