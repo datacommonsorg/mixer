@@ -307,11 +307,12 @@ func (sc *spannerDatabaseClient) populateProvenanceInfo(ctx context.Context, res
 		info := &pbv1.EventCollection_ProvenanceInfo{}
 		res.ProvenanceInfo[provDcid] = info
 		for _, edge := range edges {
-			if edge.Predicate == predUrl {
+			switch edge.Predicate {
+			case predUrl:
 				info.ProvenanceUrl = edge.Value
-			} else if edge.Predicate == predName {
+			case predName:
 				info.ImportName = edge.Value
-			} else if edge.Predicate == predDomain {
+			case predDomain:
 				info.Domain = edge.Value
 			}
 		}
