@@ -205,6 +205,23 @@ func (sc *spannerDatabaseClient) ResolveByID(ctx context.Context, nodes []string
 	return nodeToCandidates, nil
 }
 
+// GetEventCollectionDate retrieves event collection dates from Spanner.
+func (sc *spannerDatabaseClient) GetEventCollectionDate(ctx context.Context, placeID, eventType string) ([]string, error) {
+	stmt := GetEventCollectionDateQuery(placeID, eventType)
+	rows, err := sc.queryDynamic(ctx, *stmt)
+	if err != nil {
+		return nil, err
+	}
+
+	var res []string
+	for _, row := range rows {
+		if len(row) > 0 {
+			res = append(res, row[0])
+		}
+	}
+	return res, nil
+}
+
 func (sc *spannerDatabaseClient) Sparql(ctx context.Context, nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) ([][]string, error) {
 	query, err := SparqlQuery(nodes, queries, opts)
 	if err != nil {

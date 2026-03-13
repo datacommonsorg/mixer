@@ -20,13 +20,13 @@ import (
 	"runtime"
 	"testing"
 
+	"github.com/datacommonsorg/mixer/internal/maps"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/store/files"
-	"github.com/datacommonsorg/mixer/internal/maps"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
@@ -59,6 +59,9 @@ func (m *mockSpannerClient) ResolveByID(ctx context.Context, nodes []string, in,
 	return m.resolveByIDRes, nil
 }
 func (m *mockSpannerClient) Sparql(ctx context.Context, nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) ([][]string, error) {
+	return nil, nil
+}
+func (m *mockSpannerClient) GetEventCollectionDate(ctx context.Context, placeID, eventType string) ([]string, error) {
 	return nil, nil
 }
 func (m *mockSpannerClient) Id() string { return "mock" }
@@ -253,6 +256,54 @@ func TestSpannerSparql(t *testing.T) {
 		}
 
 		var want pb.QueryResponse
+		if err = test.ReadJSON(goldenDir, c.goldenFile, &want); err != nil {
+			t.Fatalf("ReadJSON error (%v): %v", c.goldenFile, err)
+		}
+
+		cmpOpts := cmp.Options{
+			protocmp.Transform(),
+		}
+		if diff := cmp.Diff(got, &want, cmpOpts); diff != "" {
+			t.Errorf("%v payload mismatch:\n%v", c.goldenFile, diff)
+		}
+	}
+}
+
+func TestSpannerEvent(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+	ds := spanner.NewSpannerDataSource(client, nil, nil)
+
+	t.Parallel()
+	ctx := context.Background()
+	_, filename, _, _ := runtime.Caller(0)
+	goldenDir := path.Join(path.Dir(filename), "datasource")
+
+	for _, c := range []struct {
+		req        *pbv2.EventRequest
+		goldenFile string
+	}{
+		{
+			req: &pbv2.EventRequest{
+				Node:     "country/LBR",
+				Property: "<-location{typeOf:FireEvent}->date",
+			},
+			goldenFile: "event_collection_date_lbr.json",
+		},
+	} {
+		got, err := ds.Event(ctx, c.req)
+		if err != nil {
+			t.Fatalf("Event error (%v): %v", c.goldenFile, err)
+		}
+
+		if test.GenerateGolden {
+			test.UpdateProtoGolden(got, goldenDir, c.goldenFile)
+			return
+		}
+
+		var want pbv2.EventResponse
 		if err = test.ReadJSON(goldenDir, c.goldenFile, &want); err != nil {
 			t.Fatalf("ReadJSON error (%v): %v", c.goldenFile, err)
 		}

@@ -410,3 +410,15 @@ var sparqlTestCases = []struct {
 		golden: "sparql_dcid_california",
 	},
 }
+
+var eventCollectionDateTestCases = []struct {
+	placeDcid string
+	eventType string
+	golden    string
+}{
+	{
+		placeDcid: "country/LBR",
+		eventType: "FireEvent",
+		golden:    "get_event_collection_date",
+	},
+}

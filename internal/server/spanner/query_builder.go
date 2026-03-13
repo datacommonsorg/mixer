@@ -403,3 +403,12 @@ func getParamStatement(param string, inputs []string) (string, interface{}) {
 	}
 	return fmt.Sprintf(statements.getParams, param), inputs
 }
+func GetEventCollectionDateQuery(placeID, eventType string) *spanner.Statement {
+	return &spanner.Statement{
+		SQL: statements.getEventCollectionDate,
+		Params: map[string]interface{}{
+			"placeID":   placeID,
+			"eventType": eventType,
+		},
+	}
+}

@@ -40,4 +40,5 @@ type DataSource interface {
 	NodeSearch(context.Context, *pbv2.NodeSearchRequest) (*pbv2.NodeSearchResponse, error)
 	Resolve(context.Context, *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error)
 	Sparql(context.Context, *pb.SparqlRequest) (*pb.QueryResponse, error)
+	Event(context.Context, *pbv2.EventRequest) (*pbv2.EventResponse, error)
 }
