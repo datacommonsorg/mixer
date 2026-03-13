@@ -294,7 +294,8 @@ var statements = struct {
 		WHERE
 			%[1]s.subject_id IN UNNEST(@%[1]s)`,
 	triple: `(%[1]s:Node%[2]s)-[:Edge {predicate: @predicate%[3]d}]->(%[4]s:Node%[5]s)`,
-	getEventCollectionDate: `		GRAPH DCGraph MATCH (event:Node)-[:Edge {predicate: 'affectedPlace', object_id: @placeID}]->(), (event)-[:Edge {predicate: 'typeOf', object_id: @eventType}]->(), (event)-[:Edge {predicate: 'startDate'}]->(dateNode:Node)
+	getEventCollectionDate: `		@{force_join_order=true}
+		GRAPH DCGraph MATCH (event:Node)-[:Edge {predicate: 'affectedPlace', object_id: @placeID}]->(), (event)-[:Edge {predicate: 'typeOf', object_id: @eventType}]->(), (event)-[:Edge {predicate: 'startDate'}]->(dateNode:Node)
 		RETURN DISTINCT 
 			SUBSTR(dateNode.value, 1, 7) AS month
 		ORDER BY 
