@@ -67,6 +67,9 @@ func (m *mockSpannerClient) GetProvenanceSummary(ctx context.Context, ids []stri
 func (m *mockSpannerClient) GetEventCollectionDate(ctx context.Context, placeID, eventType string) ([]string, error) {
 	return nil, nil
 }
+func (m *mockSpannerClient) GetEventCollectionDcids(ctx context.Context, placeID, eventType, date string) ([]string, error) {
+	return nil, nil
+}
 func (m *mockSpannerClient) Id() string { return "mock" }
 func (m *mockSpannerClient) Start()     {}
 func (m *mockSpannerClient) Close()     {}
