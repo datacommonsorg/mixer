@@ -34,6 +34,7 @@ const (
 	TypeObservation RequestType = "Observation"
 	TypeResolve     RequestType = "Resolve"
 	TypeSparql      RequestType = "Sparql"
+	TypeEvent       RequestType = "Event"
 )
 
 // RequestContext holds the context for a given request.
@@ -194,6 +195,19 @@ func (dispatcher *Dispatcher) Sparql(ctx context.Context, in *pb.SparqlRequest) 
 		return nil, err
 	}
 	return response.(*pb.QueryResponse), nil
+}
+
+func (dispatcher *Dispatcher) Event(ctx context.Context, in *pbv2.EventRequest) (*pbv2.EventResponse, error) {
+	requestContext := newRequestContext(ctx, in, TypeEvent)
+
+	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {
+		return dispatcher.sources.Event(ctx, request.(*pbv2.EventRequest))
+	})
+
+	if err != nil {
+		return nil, err
+	}
+	return response.(*pbv2.EventResponse), nil
 }
 
 func newRequestContext(ctx context.Context, request proto.Message, requestType RequestType) *RequestContext {
