@@ -50,6 +50,20 @@ func TestV3Resolve(t *testing.T) {
 				},
 				goldenFile: "resolve_by_id.json",
 			},
+			{
+				req: &pbv2.ResolveRequest{
+					Nodes:    []string{"California", "foo"},
+					Property: "<-description->dcid",
+				},
+				goldenFile: "resolve_description.json",
+			},
+			{
+				req: &pbv2.ResolveRequest{
+					Nodes:    []string{"California"},
+					Property: "<-description{typeOf:State}->dcid",
+				},
+				goldenFile: "resolve_description_type_filter.json",
+			},
 		} {
 			goldenFile := c.goldenFile
 			resp, err := mixer.V3Resolve(ctx, c.req)
