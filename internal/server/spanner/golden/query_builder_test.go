@@ -137,6 +137,18 @@ func TestGetEventCollectionDateQuery(t *testing.T) {
 	}
 }
 
+func TestGetEventCollectionDcidsQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range eventCollectionDcidsTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.GetEventCollectionDcidsQuery(c.placeDcid, c.eventType, c.date), nil
+		})
+	}
+}
+
 // runQueryBuilderGoldenTest is a helper function that performs the golden file validation.
 func runQueryBuilderGoldenTest(t *testing.T, goldenFile string, fn goldenTestFunc) {
 	t.Helper()
