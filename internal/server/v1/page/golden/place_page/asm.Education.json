@@ -72,7 +72,7 @@
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y"
           }
         }
@@ -141,16 +141,16 @@
             "2016": 4714100,
             "2017": 4813600,
             "2018": 4900600,
-            "2019": 4979200,
-            "2020": 5090200,
-            "2021": 5111300,
-            "2022": 5117100,
-            "2023": 5245000,
-            "2024": 5338500
+            "2019": 4970300,
+            "2020": 5072400,
+            "2021": 5084600,
+            "2022": 5081700,
+            "2023": 5200000,
+            "2024": 5287500
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y"
           }
         }
@@ -177,7 +177,7 @@
       "value": 46765,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
-        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
         "observationPeriod": "P1Y"
       }
     },
@@ -186,16 +186,16 @@
       "value": 1408975000,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
-        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
         "observationPeriod": "P1Y"
       }
     },
     "country/DEU": {
       "date": "2024",
-      "value": 83510950,
+      "value": 83516593,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
-        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
         "observationPeriod": "P1Y"
       }
     },
@@ -204,16 +204,16 @@
       "value": 232679478,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
-        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
         "observationPeriod": "P1Y"
       }
     },
     "country/NZL": {
       "date": "2024",
-      "value": 5338500,
+      "value": 5287500,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
-        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
         "observationPeriod": "P1Y"
       }
     },
