@@ -649,18 +649,21 @@ func MergeMultiBulkVariableInfo(allResp []*pbv1.BulkVariableInfoResponse) *pbv1.
 		if resp == nil {
 			continue
 		}
-		for _, item := range resp.GetData() {
-			if item == nil || item.Info == nil {
-				continue
-			}
-			for provId, provSummary := range item.Info.ProvenanceSummary {
-				if mergedSummaries[item.Node] == nil {
-					mergedSummaries[item.Node] = &pb.StatVarSummary{
-						ProvenanceSummary: map[string]*pb.StatVarSummary_ProvenanceSummary{}}
-				}
-				mergedSummaries[item.Node].ProvenanceSummary[provId] = provSummary
-			}
-		}
+    for _, item := range resp.GetData() {
+      if item == nil || item.Info == nil {
+        continue
+      }
+      summary, ok := mergedSummaries[item.Node]
+      if !ok {
+        summary = &pb.StatVarSummary{
+          ProvenanceSummary: map[string]*pb.StatVarSummary_ProvenanceSummary{},
+        }
+        mergedSummaries[item.Node] = summary
+      }
+      for provId, provSummary := range item.Info.ProvenanceSummary {
+        summary.ProvenanceSummary[provId] = provSummary
+      }
+    }
 	}
 	merged := &pbv1.BulkVariableInfoResponse{
 		Data: make([]*pbv1.VariableInfoResponse, 0, len(mergedSummaries)),
