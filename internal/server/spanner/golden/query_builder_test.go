@@ -132,7 +132,7 @@ func TestGetVariableMetadataQuery(t *testing.T) {
 		goldenFile := c.golden + ".sql"
 
 		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return spanner.GetVariableMetadataQuery(c.ids), nil
+			return spanner.GetCacheDataQuery(spanner.TypeProvenanceSummary, c.variables), nil
 		})
 	}
 }

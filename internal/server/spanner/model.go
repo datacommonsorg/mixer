@@ -24,6 +24,13 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
+// CacheDataType represents the type of cache data.
+type CacheDataType string
+
+const (
+	TypeProvenanceSummary = "ProvenanceSummary"
+)
+
 // Property struct represents a subset of a row in the Edge table.
 type Property struct {
 	SubjectID string `spanner:"subject_id"`
@@ -106,23 +113,6 @@ type SearchNode struct {
 type ResolutionCandidate struct {
 	Node      string `spanner:"node"`
 	Candidate string `spanner:"candidate"`
-}
-
-// VariableMetadata struct represents a single row in the VariableMetadata table.
-type VariableMetadata struct {
-	VariableMeasured  string   `spanner:"variable_measured"`
-	ImportName        string   `spanner:"import_name"`
-	FacetId           string   `spanner:"facet_id"`
-	ObservationPeriod string   `spanner:"observation_period"`
-	MeasurementMethod string   `spanner:"measurement_method"`
-	Unit              string   `spanner:"unit"`
-	ScalingFactor     string   `spanner:"scaling_factor"`
-	IsDcAggregate     bool     `spanner:"is_dc_aggregate"`
-	TotalObservations int64    `spanner:"total_observations"`
-	ObservedPlaces    int64    `spanner:"observed_places"`
-	MinDate           string   `spanner:"min_date"`
-	MaxDate           string   `spanner:"max_date"`
-	PlaceTypes        []string `spanner:"place_types"`
 }
 
 // SpannerConfig struct to hold the YAML configuration to a spanner database.

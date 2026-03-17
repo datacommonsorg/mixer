@@ -348,14 +348,15 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 	}, nil
 }
 
-func GetVariableMetadataQuery(ids []string) *spanner.Statement {
-	idFilter, idVal := getParamStatement("id", ids)
+func GetCacheDataQuery(typeFilter CacheDataType, keys []string) *spanner.Statement {
+	keyFilter, keyVal := getParamStatement("key", keys)
 	params := map[string]interface{}{
-		"id": idVal,
+		"type": string(typeFilter),
+		"key":  keyVal,
 	}
 
 	return &spanner.Statement{
-		SQL:    fmt.Sprintf(statements.getVariableMetadata, idFilter),
+		SQL:    fmt.Sprintf(statements.getCacheData, keyFilter),
 		Params: params,
 	}
 }
@@ -415,6 +416,7 @@ func getParamStatement(param string, inputs []string) (string, interface{}) {
 	}
 	return fmt.Sprintf(statements.getParams, param), inputs
 }
+
 func GetEventCollectionDateQuery(placeID, eventType string) *spanner.Statement {
 	return &spanner.Statement{
 		SQL: statements.getEventCollectionDate,

@@ -202,7 +202,7 @@ func TestGetVariableMetadata(t *testing.T) {
 		goldenFile := c.golden + ".json"
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return client.GetVariableMetadata(ctx, c.ids)
+			return client.GetVariableMetadata(ctx, c.variables)
 		})
 	}
 }
