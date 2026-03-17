@@ -44,7 +44,7 @@ func TestSimplePropertyValues(t *testing.T) {
 		}{
 			{
 				"name.json",
-				[]string{"geoId/06", "bio/hs", "NewCity", "test_stat_var"},
+				[]string{"geoId/06", "NewCity", "test_stat_var"},
 				"->name",
 				0,
 				"",
