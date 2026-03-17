@@ -640,6 +640,7 @@ func MergeMultiQueryResponse(allResp []*pb.QueryResponse, orderby string, asc bo
 	return merged, nil
 }
 
+// MergeMultiBulkVariableInfo merges multiple BulkVariableInfoResponses.
 func MergeMultiBulkVariableInfo(allResp []*pbv1.BulkVariableInfoResponse) *pbv1.BulkVariableInfoResponse {
 	if len(allResp) == 0 {
 		return &pbv1.BulkVariableInfoResponse{}
