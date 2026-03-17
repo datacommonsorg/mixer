@@ -3,19 +3,7 @@
     "the birds in san jose are chirpy": {
       "items": [
         {
-          "span": "the"
-        },
-        {
-          "span": "birds"
-        },
-        {
-          "span": "in"
-        },
-        {
-          "span": "san"
-        },
-        {
-          "span": "jose are chirpy"
+          "span": "the birds in san jose are chirpy"
         }
       ]
     }
