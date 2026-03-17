@@ -125,10 +125,10 @@ func TestSparqlQuery(t *testing.T) {
 	}
 }
 
-func TestGetVariableMetadataQuery(t *testing.T) {
+func TestGetProvenanceSummaryQuery(t *testing.T) {
 	t.Parallel()
 
-	for _, c := range variableMetadataTestCases {
+	for _, c := range provenanceSummaryTestCases {
 		goldenFile := c.golden + ".sql"
 
 		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {

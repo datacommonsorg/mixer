@@ -240,9 +240,9 @@ func (sc *spannerDatabaseClient) Sparql(ctx context.Context, nodes []types.Node,
 	return queryDynamic(ctx, sc, *query)
 }
 
-func (sc *spannerDatabaseClient) GetVariableMetadata(ctx context.Context, variables []string) (map[string][]*pb.StatVarSummary_ProvenanceSummary, error) {
+func (sc *spannerDatabaseClient) GetProvenanceSummary(ctx context.Context, variables []string) (map[string]map[string]*pb.StatVarSummary_ProvenanceSummary, error) {
 	if len(variables) == 0 {
-		return map[string][]*pb.StatVarSummary_ProvenanceSummary{},
+		return map[string]map[string]*pb.StatVarSummary_ProvenanceSummary{},
 			nil
 	}
 
@@ -356,8 +356,8 @@ func queryCache[T proto.Message](
 	sc *spannerDatabaseClient,
 	stmt spanner.Statement,
 	newProto func() T,
-) (map[string][]T, error) {
-	var data map[string][]T
+) (map[string]map[string]T, error) {
+	var data map[string]map[string]T
 	err := sc.executeQuery(ctx, stmt, func(iter *spanner.RowIterator) error {
 		result, err := processCacheRows(iter, newProto)
 		data = result
@@ -412,8 +412,8 @@ func processDynamicRows(iter *spanner.RowIterator) ([][]string, error) {
 }
 
 // processCacheRows processes rows and maps them to a proto struct.
-func processCacheRows[T proto.Message](iter *spanner.RowIterator, newProto func() T) (map[string][]T, error) {
-	results := make(map[string][]T)
+func processCacheRows[T proto.Message](iter *spanner.RowIterator, newProto func() T) (map[string]map[string]T, error) {
+	results := make(map[string]map[string]T)
 	unmarshaler := protojson.UnmarshalOptions{DiscardUnknown: true}
 
 	for {
@@ -430,6 +430,11 @@ func processCacheRows[T proto.Message](iter *spanner.RowIterator, newProto func(
 			return nil, fmt.Errorf("failed to read key column: %w", err)
 		}
 
+		var provenance string
+		if err := row.ColumnByName("provenance", &provenance); err != nil {
+			return nil, fmt.Errorf("failed to read provenance column: %w", err)
+		}
+
 		var jsonStr spanner.NullString
 		if err := row.ColumnByName("value", &jsonStr); err != nil {
 			return nil, fmt.Errorf("failed to read value column: %w", err)
@@ -440,7 +445,11 @@ func processCacheRows[T proto.Message](iter *spanner.RowIterator, newProto func(
 			if err := unmarshaler.Unmarshal([]byte(jsonStr.StringVal), msg); err != nil {
 				return nil, fmt.Errorf("failed to unmarshal proto: %w", err)
 			}
-			results[key] = append(results[key], msg)
+
+			if results[key] == nil {
+				results[key] = make(map[string]T)
+			}
+			results[key][provenance] = msg
 		}
 	}
 

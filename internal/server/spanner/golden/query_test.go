@@ -190,7 +190,7 @@ func TestSparql(t *testing.T) {
 	}
 }
 
-func TestGetVariableMetadata(t *testing.T) {
+func TestGetProvenanceSummary(t *testing.T) {
 	client := test.NewSpannerClient()
 	if client == nil {
 		return
@@ -198,11 +198,11 @@ func TestGetVariableMetadata(t *testing.T) {
 
 	t.Parallel()
 
-	for _, c := range variableMetadataTestCases {
+	for _, c := range provenanceSummaryTestCases {
 		goldenFile := c.golden + ".json"
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return client.GetVariableMetadata(ctx, c.variables)
+			return client.GetProvenanceSummary(ctx, c.variables)
 		})
 	}
 }

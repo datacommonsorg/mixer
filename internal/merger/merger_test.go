@@ -2051,3 +2051,78 @@ func TestMergeMultiQueryResponse(t *testing.T) {
 		}
 	}
 }
+
+func TestMergeMultiBulkVariableInfoResponse(t *testing.T) {
+	cmpOpts := cmp.Options{protocmp.Transform()}
+	for _, c := range []struct {
+		allResp []*pbv1.BulkVariableInfoResponse
+		want    *pbv1.BulkVariableInfoResponse
+	}{
+		{
+			[]*pbv1.BulkVariableInfoResponse{
+				{
+					Data: []*pbv1.VariableInfoResponse{
+						{
+							Node: "v1",
+							Info: &pb.StatVarSummary{
+								ProvenanceSummary: map[string]*pb.StatVarSummary_ProvenanceSummary{
+									"prov1": {ImportName: "import1"},
+									"prov2": {ImportName: "import2"},
+								},
+							},
+						},
+					},
+				},
+				{
+					Data: []*pbv1.VariableInfoResponse{
+						{
+							Node: "v1",
+							Info: &pb.StatVarSummary{
+								ProvenanceSummary: map[string]*pb.StatVarSummary_ProvenanceSummary{
+									"prov3": {ImportName: "import3"},
+								},
+							},
+						},
+						{
+							Node: "v2",
+							Info: &pb.StatVarSummary{
+								ProvenanceSummary: map[string]*pb.StatVarSummary_ProvenanceSummary{
+									"prov1": {ImportName: "import1"},
+									"prov4": {ImportName: "import4"},
+								},
+							},
+						},
+					},
+				},
+			},
+			&pbv1.BulkVariableInfoResponse{
+				Data: []*pbv1.VariableInfoResponse{
+					{
+						Node: "v1",
+						Info: &pb.StatVarSummary{
+							ProvenanceSummary: map[string]*pb.StatVarSummary_ProvenanceSummary{
+								"prov1": {ImportName: "import1"},
+								"prov2": {ImportName: "import2"},
+								"prov3": {ImportName: "import3"},
+							},
+						},
+					},
+					{
+						Node: "v2",
+						Info: &pb.StatVarSummary{
+							ProvenanceSummary: map[string]*pb.StatVarSummary_ProvenanceSummary{
+								"prov1": {ImportName: "import1"},
+								"prov4": {ImportName: "import4"},
+							},
+						},
+					},
+				},
+			},
+		},
+	} {
+		got := MergeMultiBulkVariableInfo(c.allResp)
+		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
+			t.Errorf("MergeMultiBulkVariableInfo(%v) got diff: %s", c.allResp, diff)
+		}
+	}
+}

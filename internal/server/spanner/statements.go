@@ -298,6 +298,7 @@ var statements = struct {
 	triple: `(%[1]s:Node%[2]s)-[:Edge {predicate: @predicate%[3]d}]->(%[4]s:Node%[5]s)`,
 	getCacheData: `		SELECT
 			key,
+			provenance,
 			TO_JSON_STRING(value) AS value,
 		FROM
 			Cache

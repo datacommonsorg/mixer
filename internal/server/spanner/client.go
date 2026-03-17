@@ -40,7 +40,7 @@ type SpannerClient interface {
 	ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error)
 	GetEventCollectionDate(ctx context.Context, placeID, eventType string) ([]string, error)
 	Sparql(ctx context.Context, nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) ([][]string, error)
-	GetVariableMetadata(ctx context.Context, ids []string) (map[string][]*pb.StatVarSummary_ProvenanceSummary, error)
+	GetProvenanceSummary(ctx context.Context, ids []string) (map[string]map[string]*pb.StatVarSummary_ProvenanceSummary, error)
 	Id() string
 	Start()
 	Close()

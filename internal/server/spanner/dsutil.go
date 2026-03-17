@@ -19,10 +19,13 @@ package spanner
 import (
 	"fmt"
 	"log/slog"
+	"slices"
 	"sort"
 	"strconv"
+	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
@@ -678,4 +681,23 @@ func sparqlResultsToQueryResponse(nodes []types.Node, results [][]string) (*pb.Q
 		response.Rows = append(response.Rows, row)
 	}
 	return response, nil
+}
+
+func generateBulkVariableInfoResponse(variableInfo map[string]map[string]*pb.StatVarSummary_ProvenanceSummary) *pbv1.BulkVariableInfoResponse {
+	response := &pbv1.BulkVariableInfoResponse{
+		Data: make([]*pbv1.VariableInfoResponse, 0, len(variableInfo)),
+	}
+	for key, provToValue := range variableInfo {
+		response.Data = append(response.Data, &pbv1.VariableInfoResponse{
+			Node: key,
+			Info: &pb.StatVarSummary{
+				ProvenanceSummary: provToValue,
+			},
+		})
+	}
+	// Sort response by variable.
+	slices.SortFunc(response.Data, func(a, b *pbv1.VariableInfoResponse) int {
+		return strings.Compare(a.Node, b.Node)
+	})
+	return response
 }
