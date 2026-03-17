@@ -241,6 +241,11 @@ func (sc *spannerDatabaseClient) Sparql(ctx context.Context, nodes []types.Node,
 }
 
 func (sc *spannerDatabaseClient) GetVariableMetadata(ctx context.Context, variables []string) (map[string][]*pb.StatVarSummary_ProvenanceSummary, error) {
+	if len(variables) == 0 {
+		return map[string][]*pb.StatVarSummary_ProvenanceSummary{},
+			nil
+	}
+
 	results, err := queryCache(
 		ctx,
 		sc,
