@@ -19,10 +19,10 @@ package spanner
 var statements = struct {
 	// Fetch latest CompletionTimestamp from IngestionHistory table.
 	getCompletionTimestamp string
-	// Filter by single id.
-	getId string
-	// Filter by multiple ids.
-	getIds string
+	// Filter by single parameter value.
+	getParam string
+	// Filter by multiple parameter values.
+	getParams string
 	// Fetch Properties for out arcs.
 	getPropsBySubjectID string
 	// Fetch Properties for in arcs.
@@ -85,8 +85,13 @@ var statements = struct {
 	nodeFilter string
 	// Generic triple pattern.
 	triple string
+<<<<<<< HEAD
 	// Get variable metadata.
 	getVariableMetadata string
+=======
+	// Fetch event dates for a given type and location.
+	getEventCollectionDate string
+>>>>>>> 1cc7a2dd5b0617c462e6e25fc70416d062a08eae
 }{
 	getCompletionTimestamp: `		SELECT
 		CompletionTimestamp
@@ -97,8 +102,8 @@ var statements = struct {
 		ORDER BY 
 			CompletionTimestamp DESC
 		LIMIT 1`,
-	getId:  `= @id`,
-	getIds: `IN UNNEST(@id)`,
+	getParam:  `= @%s`,
+	getParams: `IN UNNEST(@%s)`,
 	getPropsBySubjectID: `		GRAPH DCGraph MATCH -[e:Edge
 		WHERE
 			e.subject_id %s]->
@@ -220,8 +225,8 @@ var statements = struct {
 			facet_id
 		FROM 
 			Observation`,
-	selectVariableDcids: `variable_measured IN UNNEST(@variables)`,
-	selectEntityDcids:   `observation_about IN UNNEST(@entities)`,
+	selectVariableDcids: `variable_measured %s`,
+	selectEntityDcids:   `observation_about %s`,
 	getObsByVariableAndContainedInPlace: `		SELECT
 			obs.variable_measured,
 			obs.observation_about,
@@ -294,6 +299,7 @@ var statements = struct {
 		WHERE
 			%[1]s.subject_id IN UNNEST(@%[1]s)`,
 	triple: `(%[1]s:Node%[2]s)-[:Edge {predicate: @predicate%[3]d}]->(%[4]s:Node%[5]s)`,
+<<<<<<< HEAD
 	getVariableMetadata: `		SELECT
 			variable_measured,
 			import_name,
@@ -312,4 +318,12 @@ var statements = struct {
 			VariableMetadata
 		WHERE
 			variable_measured %s`,
+=======
+	getEventCollectionDate: `		@{force_join_order=true}
+		GRAPH DCGraph MATCH (event:Node)-[:Edge {predicate: 'affectedPlace', object_id: @placeID}]->(), (event)-[:Edge {predicate: 'typeOf', object_id: @eventType}]->(), (event)-[:Edge {predicate: 'startDate'}]->(dateNode:Node)
+		RETURN DISTINCT 
+			SUBSTR(dateNode.value, 1, 7) AS month
+		ORDER BY 
+			month`,
+>>>>>>> 1cc7a2dd5b0617c462e6e25fc70416d062a08eae
 }

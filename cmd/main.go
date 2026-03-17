@@ -194,8 +194,10 @@ func main() {
 	sources := []datasource.DataSource{}
 
 	// Spanner Graph.
+	var spannerClient spanner.SpannerClient
 	if flags.EnableV3 && flags.UseSpannerGraph {
-		spannerClient, err := spanner.NewSpannerClient(ctx, *spannerGraphInfo, flags.SpannerGraphDatabase, flags.UseStaleReads)
+		var err error
+		spannerClient, err = spanner.NewSpannerClient(ctx, *spannerGraphInfo, flags.SpannerGraphDatabase, flags.UseStaleReads)
 		if err != nil {
 			slog.Error("Failed to create Spanner client", "error", err)
 			os.Exit(1)
@@ -204,9 +206,6 @@ func main() {
 			spannerClient.Start()
 		}
 		defer spannerClient.Close()
-		var ds datasource.DataSource = spanner.NewSpannerDataSource(spannerClient)
-		// TODO: Order sources by priority once other implementations are added.
-		sources = append(sources, ds)
 	}
 	slog.Info("After Spanner client creation")
 
@@ -380,6 +379,13 @@ func main() {
 			slog.Error("Failed to create Maps client", "error", err)
 			os.Exit(1)
 		}
+	}
+
+	// Initialize SpannerDataSource now that dependencies are ready.
+	if spannerClient != nil {
+		var ds datasource.DataSource = spanner.NewSpannerDataSource(spannerClient, store.RecogPlaceStore, mapsClient)
+		// TODO: Order sources by priority once other implementations are added.
+		sources = append(sources, ds)
 	}
 
 	// Add remote data source if it was created.

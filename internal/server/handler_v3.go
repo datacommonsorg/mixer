@@ -51,6 +51,13 @@ func (s *Server) V3Resolve(ctx context.Context, in *pbv2.ResolveRequest) (
 	return s.dispatcher.Resolve(ctx, in)
 }
 
+// V3Event implements API for mixer.V3Event.
+func (s *Server) V3Event(ctx context.Context, in *pbv2.EventRequest) (
+	*pbv2.EventResponse, error,
+) {
+	return s.dispatcher.Event(ctx, in)
+}
+
 // V3Sparql implements API for mixer.V3Sparql.
 func (s *Server) V3Sparql(ctx context.Context, in *pb.SparqlRequest) (
 	*pb.QueryResponse, error,

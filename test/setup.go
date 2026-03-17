@@ -131,14 +131,12 @@ func setupInternal(
 	sources := []datasource.DataSource{}
 
 	var spannerDataSource datasource.DataSource
+	var spannerClient spanner.SpannerClient
 	var spannerCleanup = func() {}
 	if enableV3 && useSpannerGraph {
-		spannerClient := NewSpannerClient()
+		spannerClient = NewSpannerClient()
 		if spannerClient != nil {
 			spannerCleanup = spannerClient.Close
-			spannerDataSource = spanner.NewSpannerDataSource(spannerClient)
-			// TODO: Order sources by priority once other implementations are added.
-			sources = append(sources, spannerDataSource)
 		}
 	}
 
@@ -193,11 +191,15 @@ func setupInternal(
 	if err != nil {
 		log.Fatalf("Failed to create a new store: %s", err)
 	}
+	mapsClient := &maps.FakeMapsClient{}
+	if spannerClient != nil {
+		spannerDataSource = spanner.NewSpannerDataSource(spannerClient, st.RecogPlaceStore, mapsClient)
+		sources = append(sources, spannerDataSource)
+	}
 	c, err := cache.NewCache(ctx, st, cacheOptions, metadata)
 	if err != nil {
 		return nil, func() {}, err
 	}
-	mapsClient := &maps.FakeMapsClient{}
 
 	if enableV3 && remoteMixerDomain != "" {
 		remoteClient, err := remote.NewRemoteClient(metadata)

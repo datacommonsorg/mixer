@@ -59,24 +59,30 @@ func GetCompletionTimestampQuery() *spanner.Statement {
 }
 
 func GetNodePropsQuery(ids []string, out bool) *spanner.Statement {
-	getIds, params := getIdStatement(ids)
+	idFilter, idVal := getParamStatement("id", ids)
+	params := map[string]interface{}{
+		"id": idVal,
+	}
 
 	switch out {
 	case true:
 		return &spanner.Statement{
-			SQL:    fmt.Sprintf(statements.getPropsBySubjectID, getIds),
+			SQL:    fmt.Sprintf(statements.getPropsBySubjectID, idFilter),
 			Params: params,
 		}
 	default:
 		return &spanner.Statement{
-			SQL:    fmt.Sprintf(statements.getPropsByObjectID, getIds),
+			SQL:    fmt.Sprintf(statements.getPropsByObjectID, idFilter),
 			Params: params,
 		}
 	}
 }
 
 func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spanner.Statement {
-	getIds, params := getIdStatement(ids)
+	idFilter, idVal := getParamStatement("id", ids)
+	params := map[string]interface{}{
+		"id": idVal,
+	}
 
 	// Attach predicates.
 	filterPredicate := ""
@@ -121,19 +127,19 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 	switch arc.Out {
 	case true:
 		if arc.Decorator == v3.Chain {
-			subquery = fmt.Sprintf(statements.getChainedEdgesBySubjectID, getIds, maxHops)
+			subquery = fmt.Sprintf(statements.getChainedEdgesBySubjectID, idFilter, maxHops)
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
 		} else {
-			subquery = fmt.Sprintf(statements.getEdgesBySubjectID, getIds, filterPredicate)
+			subquery = fmt.Sprintf(statements.getEdgesBySubjectID, idFilter, filterPredicate)
 		}
 	case false:
 		if arc.Decorator == v3.Chain {
-			subquery = fmt.Sprintf(statements.getChainedEdgesByObjectID, getIds, maxHops)
+			subquery = fmt.Sprintf(statements.getChainedEdgesByObjectID, idFilter, maxHops)
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
 		} else {
-			subquery = fmt.Sprintf(statements.getEdgesByObjectID, getIds, filterPredicate)
+			subquery = fmt.Sprintf(statements.getEdgesByObjectID, idFilter, filterPredicate)
 		}
 	}
 	subqueries = append([]string{subquery}, subqueries...)
@@ -176,12 +182,14 @@ func GetObservationsQuery(variables []string, entities []string) *spanner.Statem
 
 	filters := []string{}
 	if len(variables) > 0 {
-		stmt.Params["variables"] = variables
-		filters = append(filters, statements.selectVariableDcids)
+		variableFilter, variableVal := getParamStatement("variable", variables)
+		stmt.Params["variable"] = variableVal
+		filters = append(filters, fmt.Sprintf(statements.selectVariableDcids, variableFilter))
 	}
 	if len(entities) > 0 {
-		stmt.Params["entities"] = entities
-		filters = append(filters, statements.selectEntityDcids)
+		entityFilter, entityVal := getParamStatement("entity", entities)
+		stmt.Params["entity"] = entityVal
+		filters = append(filters, fmt.Sprintf(statements.selectEntityDcids, entityFilter))
 	}
 	stmt.SQL += where + strings.Join(filters, and)
 
@@ -341,10 +349,13 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 }
 
 func GetVariableMetadataQuery(ids []string) *spanner.Statement {
-	getIds, params := getIdStatement(ids)
+	idFilter, idVal := getParamStatement("id", ids)
+	params := map[string]interface{}{
+		"id": idVal,
+	}
 
 	return &spanner.Statement{
-		SQL:    fmt.Sprintf(statements.getVariableMetadata, getIds),
+		SQL:    fmt.Sprintf(statements.getVariableMetadata, idFilter),
 		Params: params,
 	}
 }
@@ -397,10 +408,19 @@ func addObjectValues(input []string) []string {
 	return result
 }
 
-// getIdStatement returns the appropriate SQL statement and parameters for fetching IDs based on the number of input nodes.
-func getIdStatement(ids []string) (string, map[string]interface{}) {
-	if len(ids) == 1 {
-		return statements.getId, map[string]interface{}{"id": ids[0]}
+// getParamStatement returns the appropriate SQL statement and parameter value for filtering by a parameter based on the number of inputs.
+func getParamStatement(param string, inputs []string) (string, interface{}) {
+	if len(inputs) == 1 {
+		return fmt.Sprintf(statements.getParam, param), inputs[0]
 	}
-	return statements.getIds, map[string]interface{}{"id": ids}
+	return fmt.Sprintf(statements.getParams, param), inputs
+}
+func GetEventCollectionDateQuery(placeID, eventType string) *spanner.Statement {
+	return &spanner.Statement{
+		SQL: statements.getEventCollectionDate,
+		Params: map[string]interface{}{
+			"placeID":   placeID,
+			"eventType": eventType,
+		},
+	}
 }

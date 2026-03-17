@@ -134,3 +134,14 @@ func (ds *DataSources) Sparql(ctx context.Context, in *pb.SparqlRequest) (*pb.Qu
 		},
 	)
 }
+
+func (ds *DataSources) Event(ctx context.Context, in *pbv2.EventRequest) (*pbv2.EventResponse, error) {
+	return fetchAndMerge(ctx, ds.sources, in,
+		func(c context.Context, s datasource.DataSource, r *pbv2.EventRequest) (*pbv2.EventResponse, error) {
+			return s.Event(c, r)
+		},
+		func(all []*pbv2.EventResponse) (*pbv2.EventResponse, error) {
+			return merger.MergeMultiEvent(all), nil
+		},
+	)
+}

@@ -13,5 +13,5 @@
 		FROM 
 			Observation
 		WHERE
-			variable_measured IN ('AirPollutant_Cancer_Risk')
+			variable_measured = 'AirPollutant_Cancer_Risk'
 			AND observation_about IN ('geoId/01001','geoId/02013')

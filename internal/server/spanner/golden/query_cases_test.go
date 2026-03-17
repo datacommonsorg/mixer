@@ -420,3 +420,15 @@ var variableMetadataTestCases = []struct {
 		golden: "get_variable_metadata",
 	},
 }
+
+var eventCollectionDateTestCases = []struct {
+	placeDcid string
+	eventType string
+	golden    string
+}{
+	{
+		placeDcid: "country/LBR",
+		eventType: "FireEvent",
+		golden:    "get_event_collection_date",
+	},
+}

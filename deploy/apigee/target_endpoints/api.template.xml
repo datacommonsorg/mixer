@@ -47,6 +47,7 @@
             (proxy.pathsuffix MatchesPath "/place/stat/date/within-place") OR
             (proxy.pathsuffix MatchesPath "/place/stats-var") OR
             (proxy.pathsuffix MatchesPath "/search") OR
+            (proxy.pathsuffix MatchesPath "/sparql") OR
             (proxy.pathsuffix MatchesPath "/translate") OR
             (proxy.pathsuffix MatchesPath "/update-cache") OR
             (proxy.pathsuffix MatchesPath "/v1/bulk/observation-existence") OR
@@ -66,6 +67,7 @@
             (proxy.pathsuffix MatchesPath "/v1/stat/date/within-place") OR
             ((proxy.pathsuffix MatchesPath "/v1/triples") OR (proxy.pathsuffix MatchesPath "/v1/triples/**")) OR
             ((proxy.pathsuffix MatchesPath "/v1/variables") OR (proxy.pathsuffix MatchesPath "/v1/variables/**")) OR
+            (proxy.pathsuffix MatchesPath "/v2/sparql") OR
           </Condition>
           <Name>block-deprecated-endpoints</Name>
         </Step>

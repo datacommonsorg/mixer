@@ -62,3 +62,7 @@ func (rds *RemoteDataSource) Resolve(ctx context.Context, req *pbv2.ResolveReque
 func (rds *RemoteDataSource) Sparql(ctx context.Context, req *pb.SparqlRequest) (*pb.QueryResponse, error) {
 	return rds.client.Sparql(req)
 }
+
+func (rds *RemoteDataSource) Event(ctx context.Context, req *pbv2.EventRequest) (*pbv2.EventResponse, error) {
+	return rds.client.Event(req)
+}

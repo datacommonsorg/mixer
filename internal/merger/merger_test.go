@@ -1060,6 +1060,119 @@ func TestMergeEvent(t *testing.T) {
 	}
 }
 
+func TestMergeMultiEvent(t *testing.T) {
+	cmpOpts := cmp.Options{
+		protocmp.Transform(),
+	}
+
+	for _, c := range []struct {
+		desc    string
+		allResp []*pbv2.EventResponse
+		want    *pbv2.EventResponse
+	}{
+		{
+			desc:    "Empty input",
+			allResp: []*pbv2.EventResponse{},
+			want:    &pbv2.EventResponse{},
+		},
+		{
+			desc: "Single input",
+			allResp: []*pbv2.EventResponse{
+				{
+					EventCollectionDate: &pbv1.EventCollectionDate{
+						Dates: []string{"2021"},
+					},
+				},
+			},
+			want: &pbv2.EventResponse{
+				EventCollectionDate: &pbv1.EventCollectionDate{
+					Dates: []string{"2021"},
+				},
+			},
+		},
+		{
+			desc: "Multiple inputs with date merging",
+			allResp: []*pbv2.EventResponse{
+				{
+					EventCollectionDate: &pbv1.EventCollectionDate{
+						Dates: []string{"2021"},
+					},
+				},
+				{
+					EventCollectionDate: &pbv1.EventCollectionDate{
+						Dates: []string{"2022"},
+					},
+				},
+				{
+					EventCollectionDate: &pbv1.EventCollectionDate{
+						Dates: []string{"2021", "2023"},
+					},
+				},
+			},
+			want: &pbv2.EventResponse{
+				EventCollectionDate: &pbv1.EventCollectionDate{
+					Dates: []string{"2021", "2022", "2023"},
+				},
+			},
+		},
+		{
+			desc: "Multiple inputs with event merging",
+			allResp: []*pbv2.EventResponse{
+				{
+					EventCollection: &pbv1.EventCollection{
+						Events: []*pbv1.EventCollection_Event{
+							{Dcid: "event1", ProvenanceId: "prov1"},
+						},
+						ProvenanceInfo: map[string]*pbv1.EventCollection_ProvenanceInfo{
+							"prov1": {ImportName: "import1"},
+						},
+					},
+				},
+				{
+					EventCollection: &pbv1.EventCollection{
+						Events: []*pbv1.EventCollection_Event{
+							{Dcid: "event2", ProvenanceId: "prov2"},
+						},
+						ProvenanceInfo: map[string]*pbv1.EventCollection_ProvenanceInfo{
+							"prov2": {ImportName: "import2"},
+						},
+					},
+				},
+				{
+					EventCollection: &pbv1.EventCollection{
+						Events: []*pbv1.EventCollection_Event{
+							{Dcid: "event1", ProvenanceId: "prov3"}, // Duplicate ID
+						},
+						ProvenanceInfo: map[string]*pbv1.EventCollection_ProvenanceInfo{
+							"prov3": {ImportName: "import3"},
+						},
+					},
+				},
+			},
+			want: &pbv2.EventResponse{
+				EventCollection: &pbv1.EventCollection{
+					Events: []*pbv1.EventCollection_Event{
+						{Dcid: "event1", ProvenanceId: "prov1"},
+						{Dcid: "event2", ProvenanceId: "prov2"},
+					},
+					ProvenanceInfo: map[string]*pbv1.EventCollection_ProvenanceInfo{
+						"prov1": {ImportName: "import1"},
+						"prov2": {ImportName: "import2"},
+					},
+				},
+				EventCollectionDate: &pbv1.EventCollectionDate{},
+			},
+		},
+	} {
+		t.Run(c.desc, func(t *testing.T) {
+			got := MergeMultiEvent(c.allResp)
+			if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
+				t.Errorf("MergeMultiEvent mismatch (-got +want):\n%s", diff)
+			}
+		})
+	}
+}
+
 func TestMergeObservation(t *testing.T) {
 	cmpOpts := cmp.Options{
 		protocmp.Transform(),
