@@ -7,19 +7,43 @@
       "node": "geoId/06053",
       "values": [
         {
-          "name": "95004",
+          "name": "93210",
           "types": [
             "CensusZipCodeTabulationArea"
           ],
-          "dcid": "zip/95004",
+          "dcid": "zip/93210",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
-          "name": "95076",
+          "name": "93426",
           "types": [
             "CensusZipCodeTabulationArea"
           ],
-          "dcid": "zip/95076",
+          "dcid": "zip/93426",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "93451",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/93451",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "93461",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/93461",
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
+        },
+        {
+          "name": "93930",
+          "types": [
+            "CensusZipCodeTabulationArea"
+          ],
+          "dcid": "zip/93930",
           "provenanceId": "dc/base/WikidataOtherIdGeos"
         }
       ]
@@ -27,5 +51,6 @@
     {
       "node": "geoId/06"
     }
-  ]
+  ],
+  "nextToken": "H4sIAAAAAAAA/xzHsQrCMBgEYD0TPdPtpoIPYUF0l05OLk5ukf5IoDSlMT6/4PiFFJq35dtw7C7d+fTH/WvLGOcSDr1NpZZnmvs82CO+6hg/KU/XxaJWAtcCIXAj0An0ArcCdwIpcC/H0Ho5Nq3/AQAA//8BAAD//7LxYilrAAAA"
 }
