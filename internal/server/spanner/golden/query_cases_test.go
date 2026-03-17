@@ -411,6 +411,16 @@ var sparqlTestCases = []struct {
 	},
 }
 
+var variableMetadataTestCases = []struct {
+	variables []string
+	golden    string
+}{
+	{
+		variables: []string{"Count_Household_FamilyHousehold", "Count_Household_HasComputer"},
+		golden:    "get_variable_metadata",
+	},
+}
+
 var eventCollectionDateTestCases = []struct {
 	placeDcid string
 	eventType string

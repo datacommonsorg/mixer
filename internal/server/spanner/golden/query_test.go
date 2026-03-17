@@ -190,6 +190,23 @@ func TestSparql(t *testing.T) {
 	}
 }
 
+func TestGetVariableMetadata(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+
+	for _, c := range variableMetadataTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return client.GetVariableMetadata(ctx, c.variables)
+		})
+	}
+}
+
 func TestGetEventCollectionDate(t *testing.T) {
 	client := test.NewSpannerClient()
 	if client == nil {

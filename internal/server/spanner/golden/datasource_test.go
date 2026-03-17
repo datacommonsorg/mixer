@@ -61,12 +61,15 @@ func (m *mockSpannerClient) ResolveByID(ctx context.Context, nodes []string, in,
 func (m *mockSpannerClient) Sparql(ctx context.Context, nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) ([][]string, error) {
 	return nil, nil
 }
+func (m *mockSpannerClient) GetVariableMetadata(ctx context.Context, ids []string) (map[string][]*pb.StatVarSummary_ProvenanceSummary, error) {
+	return nil, nil
+}
 func (m *mockSpannerClient) GetEventCollectionDate(ctx context.Context, placeID, eventType string) ([]string, error) {
 	return nil, nil
 }
 func (m *mockSpannerClient) Id() string { return "mock" }
-func (m *mockSpannerClient) Start()    {}
-func (m *mockSpannerClient) Close()    {}
+func (m *mockSpannerClient) Start()     {}
+func (m *mockSpannerClient) Close()     {}
 
 func TestSpannerResolve(t *testing.T) {
 	client := test.NewSpannerClient()

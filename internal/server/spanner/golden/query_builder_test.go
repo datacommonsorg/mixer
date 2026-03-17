@@ -125,6 +125,18 @@ func TestSparqlQuery(t *testing.T) {
 	}
 }
 
+func TestGetVariableMetadataQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range variableMetadataTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.GetCacheDataQuery(spanner.TypeProvenanceSummary, c.variables), nil
+		})
+	}
+}
+
 func TestGetEventCollectionDateQuery(t *testing.T) {
 	t.Parallel()
 
