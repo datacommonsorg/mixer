@@ -2052,7 +2052,7 @@ func TestMergeMultiQueryResponse(t *testing.T) {
 	}
 }
 
-func TestMergeMultiBulkVariableInfoResponse(t *testing.T) {
+func TestMergeMultiBulkVariableInfo(t *testing.T) {
 	cmpOpts := cmp.Options{protocmp.Transform()}
 	for _, c := range []struct {
 		allResp []*pbv1.BulkVariableInfoResponse
