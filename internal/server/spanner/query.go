@@ -17,6 +17,7 @@ package spanner
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"log/slog"
 	"time"
@@ -263,7 +264,10 @@ func (sc *spannerDatabaseClient) GetVariableMetadata(ctx context.Context, variab
 
 // fetchAndUpdateTimestamp queries Spanner and updates the timestamp.
 func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) error {
-	iter := sc.client.Single().Query(ctx, *GetCompletionTimestampQuery())
+	queryCtx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	defer cancel()
+
+	iter := sc.client.Single().Query(queryCtx, *GetCompletionTimestampQuery())
 	defer iter.Stop()
 
 	row, err := iter.Next()
@@ -271,6 +275,12 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 		return fmt.Errorf("no valid rows found in IngestionHistory")
 	}
 	if err != nil {
+		if spanner.ErrCode(err) == codes.DeadlineExceeded || errors.Is(err, context.DeadlineExceeded) {
+			slog.ErrorContext(queryCtx, "Spanner timestamp polling timed out",
+				"timeout_duration", "10s",
+				"error", err.Error(),
+			)
+		}
 		return fmt.Errorf("failed to fetch row: %w", err)
 	}
 
@@ -297,11 +307,37 @@ func (sc *spannerDatabaseClient) executeQuery(
 	stmt spanner.Statement,
 	handleRows func(*spanner.RowIterator) error,
 ) error {
+	var queryCtx context.Context
+	var cancel context.CancelFunc
+	var timeout time.Duration
+
+	if deadline, ok := ctx.Deadline(); ok {
+		timeout = time.Until(deadline)
+	} else {
+		// Fallback if the parent context surprisingly has no deadline
+		// Using the default API timeout of 60 seconds.
+		slog.Warn("Parent context has no deadline; using default Spanner query timeout of 60 seconds")
+		timeout = 60 * time.Second
+	}
+	queryCtx, cancel = context.WithTimeout(ctx, timeout)
+	defer cancel()
+
 	runQuery := func(tb spanner.TimestampBound) error {
-		metrics.RecordSpannerQuery(ctx)
-		iter := sc.client.Single().WithTimestampBound(tb).Query(ctx, stmt)
+		metrics.RecordSpannerQuery(queryCtx)
+		iter := sc.client.Single().WithTimestampBound(tb).Query(queryCtx, stmt)
 		defer iter.Stop()
-		return handleRows(iter)
+		err := handleRows(iter)
+
+		// Log slow Spanner queries that timed out.
+		if err != nil && (spanner.ErrCode(err) == codes.DeadlineExceeded || errors.Is(err, context.DeadlineExceeded)) {
+			slog.ErrorContext(queryCtx, "Spanner query timed out",
+				"sql", stmt.SQL,
+				"timeout", timeout.String(),
+				"error", err.Error(),
+			)
+		}
+
+		return err
 	}
 
 	if sc.useStaleReads {
