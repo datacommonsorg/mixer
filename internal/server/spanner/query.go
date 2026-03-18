@@ -275,7 +275,7 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 		return fmt.Errorf("no valid rows found in IngestionHistory")
 	}
 	if err != nil {
-		if spanner.ErrCode(err) == codes.DeadlineExceeded || errors.Is(err, context.DeadlineExceeded) {
+		if isTimeoutError(err) {
 			slog.ErrorContext(queryCtx, "Spanner timestamp polling timed out",
 				"timeout_duration", "10s",
 				"error", err.Error(),
@@ -329,7 +329,7 @@ func (sc *spannerDatabaseClient) executeQuery(
 		err := handleRows(iter)
 
 		// Log slow Spanner queries that timed out.
-		if err != nil && (spanner.ErrCode(err) == codes.DeadlineExceeded || errors.Is(err, context.DeadlineExceeded)) {
+		if isTimeoutError(err) {
 			slog.ErrorContext(queryCtx, "Spanner query timed out",
 				"sql", stmt.SQL,
 				"timeout", timeout.String(),
@@ -481,4 +481,9 @@ func processCacheRows[T proto.Message](iter *spanner.RowIterator, newProto func(
 	}
 
 	return results, nil
+}
+
+// isTimeoutError checks if an error is a timeout error from Spanner or context.
+func isTimeoutError(err error) bool {
+	return spanner.ErrCode(err) == codes.DeadlineExceeded || errors.Is(err, context.DeadlineExceeded)
 }
