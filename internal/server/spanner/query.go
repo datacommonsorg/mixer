@@ -314,9 +314,9 @@ func (sc *spannerDatabaseClient) executeQuery(
 	if deadline, ok := ctx.Deadline(); ok {
 		timeout = time.Until(deadline)
 	} else {
-		// Fallback if the parent context surprisingly has no deadline
+		// Fallback if the parent context surprisingly has no deadline.
 		// Using the default API timeout of 60 seconds.
-		slog.Warn("Parent context has no deadline; using default Spanner query timeout of 60 seconds")
+		slog.Warn("Parent context has no deadline; using default API timeout of 60 seconds")
 		timeout = 60 * time.Second
 	}
 	queryCtx, cancel = context.WithTimeout(ctx, timeout)
