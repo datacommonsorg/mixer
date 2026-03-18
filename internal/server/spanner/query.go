@@ -426,9 +426,12 @@ func populateGeoLocation(event *pbv1.EventCollection_Event, value string) {
 						},
 					},
 				})
+				return // Success
 			}
 		}
 	}
+
+	slog.Warn("startLocation is not a valid latLong/ DCID, skipping parsing optimization", "value", value)
 }
 
 func populatePropVals(event *pbv1.EventCollection_Event, edge *Edge) {
@@ -488,7 +491,7 @@ func keepEvent(event *pbv1.EventCollection_Event, req *pbv1.EventCollectionReque
 // GetEventCollectionDcids retrieves event DCIDs from Spanner.
 func (sc *spannerDatabaseClient) GetEventCollectionDcids(ctx context.Context, placeID, eventType, date string) ([]string, error) {
 	stmt := GetEventCollectionDcidsQuery(placeID, eventType, date)
-	rows, err := sc.queryDynamic(ctx, *stmt)
+	rows, err := queryDynamic(ctx, sc, *stmt)
 	if err != nil {
 		return nil, err
 	}

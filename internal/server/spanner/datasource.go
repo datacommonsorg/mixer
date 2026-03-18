@@ -348,7 +348,11 @@ func (sds *SpannerDataSource) Event(ctx context.Context, req *pbv2.EventRequest)
 		return sds.handleEventCollectionDate(ctx, parsedReq)
 	}
 
-	if parsedReq := parseEventCollection(req, arcs); parsedReq != nil {
+	parsedReq, err := parseEventCollection(req, arcs)
+	if err != nil {
+		return nil, err
+	}
+	if parsedReq != nil {
 		return sds.handleEventCollection(ctx, parsedReq)
 	}
 
@@ -403,17 +407,17 @@ func (sds *SpannerDataSource) BulkVariableInfo(ctx context.Context, req *pbv1.Bu
 
 // parseEventCollection checks if the arcs match the pattern for EventCollection and returns the parsed request.
 // Pattern: <-location{typeOf:EventType, date:Date, filter_prop:filter_val}
-func parseEventCollection(req *pbv2.EventRequest, arcs []*v2.Arc) *pbv1.EventCollectionRequest {
+func parseEventCollection(req *pbv2.EventRequest, arcs []*v2.Arc) (*pbv1.EventCollectionRequest, error) {
 	if len(arcs) != 1 {
-		return nil
+		return nil, nil
 	}
 	arc := arcs[0]
 	if arc.Out || arc.SingleProp != "location" {
-		return nil
+		return nil, nil
 	}
 	typeOfs, ok := arc.Filter["typeOf"]
 	if !ok || len(typeOfs) == 0 {
-		return nil
+		return nil, fmt.Errorf("event collection requires 'typeOf' filter")
 	}
 
 	res := &pbv1.EventCollectionRequest{
@@ -431,11 +435,11 @@ func parseEventCollection(req *pbv2.EventRequest, arcs []*v2.Arc) *pbv1.EventCol
 			continue
 		}
 		if len(v) != 1 {
-			return nil // Invalid filter
+			return nil, fmt.Errorf("extra filter '%s' can only have one value", k)
 		}
 		spec, err := v2e.ParseEventCollectionFilter(k, v[0])
 		if err != nil {
-			return nil // Invalid filter format
+			return nil, fmt.Errorf("invalid filter format for '%s': %v", k, err)
 		}
 		res.FilterProp = spec.Prop
 		res.FilterLowerLimit = spec.LowerLimit
@@ -444,7 +448,7 @@ func parseEventCollection(req *pbv2.EventRequest, arcs []*v2.Arc) *pbv1.EventCol
 		break // V2 supports at most one extra filter
 	}
 
-	return res
+	return res, nil
 }
 
 // handleEventCollection handles EventCollection requests.
