@@ -85,6 +85,8 @@ func newEmptyResponse(requestType dispatcher.RequestType) (proto.Message, error)
 		return &pbv2.ResolveResponse{}, nil
 	case dispatcher.TypeSparql:
 		return &pb.QueryResponse{}, nil
+	case dispatcher.TypeEvent:
+		return &pbv2.EventResponse{}, nil
 	default:
 		return nil, fmt.Errorf("unknown request type for caching: %v", requestType)
 	}

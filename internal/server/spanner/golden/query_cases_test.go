@@ -410,3 +410,25 @@ var sparqlTestCases = []struct {
 		golden: "sparql_dcid_california",
 	},
 }
+
+var variableMetadataTestCases = []struct {
+	variables []string
+	golden    string
+}{
+	{
+		variables: []string{"Count_Household_FamilyHousehold", "Count_Household_HasComputer"},
+		golden:    "get_variable_metadata",
+	},
+}
+
+var eventCollectionDateTestCases = []struct {
+	placeDcid string
+	eventType string
+	golden    string
+}{
+	{
+		placeDcid: "country/LBR",
+		eventType: "FireEvent",
+		golden:    "get_event_collection_date",
+	},
+}

@@ -24,6 +24,13 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
+// CacheDataType represents the type of cache data.
+type CacheDataType string
+
+const (
+	TypeProvenanceSummary = "ProvenanceSummary"
+)
+
 // Property struct represents a subset of a row in the Edge table.
 type Property struct {
 	SubjectID string `spanner:"subject_id"`

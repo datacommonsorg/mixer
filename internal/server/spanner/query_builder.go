@@ -348,6 +348,19 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 	}, nil
 }
 
+func GetCacheDataQuery(typeFilter CacheDataType, keys []string) *spanner.Statement {
+	keyFilter, keyVal := getParamStatement("key", keys)
+	params := map[string]interface{}{
+		"type": string(typeFilter),
+		"key":  keyVal,
+	}
+
+	return &spanner.Statement{
+		SQL:    fmt.Sprintf(statements.getCacheData, keyFilter),
+		Params: params,
+	}
+}
+
 // generateSafeAliasMap generates a map of safe aliases for SPARQL queries.
 func generateSafeAliasMap(queries []*types.Query) map[string]string {
 	safeAliasMap := make(map[string]string)
@@ -402,4 +415,14 @@ func getParamStatement(param string, inputs []string) (string, interface{}) {
 		return fmt.Sprintf(statements.getParam, param), inputs[0]
 	}
 	return fmt.Sprintf(statements.getParams, param), inputs
+}
+
+func GetEventCollectionDateQuery(placeID, eventType string) *spanner.Statement {
+	return &spanner.Statement{
+		SQL: statements.getEventCollectionDate,
+		Params: map[string]interface{}{
+			"placeID":   placeID,
+			"eventType": eventType,
+		},
+	}
 }

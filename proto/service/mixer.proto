@@ -81,6 +81,13 @@ service Mixer {
     };
   }
 
+  rpc V3Event(datacommons.v2.EventRequest) returns (datacommons.v2.EventResponse) {
+    option (google.api.http) = {
+      get : "/v3/event"
+      additional_bindings : {post : "/v3/event" body : "*"}
+    };
+  }
+
   rpc V3Sparql(SparqlRequest) returns (QueryResponse) {
     option (google.api.http) = {
       get : "/v3/sparql"

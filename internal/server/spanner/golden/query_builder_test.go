@@ -125,6 +125,30 @@ func TestSparqlQuery(t *testing.T) {
 	}
 }
 
+func TestGetVariableMetadataQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range variableMetadataTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.GetCacheDataQuery(spanner.TypeProvenanceSummary, c.variables), nil
+		})
+	}
+}
+
+func TestGetEventCollectionDateQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range eventCollectionDateTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.GetEventCollectionDateQuery(c.placeDcid, c.eventType), nil
+		})
+	}
+}
+
 // runQueryBuilderGoldenTest is a helper function that performs the golden file validation.
 func runQueryBuilderGoldenTest(t *testing.T, goldenFile string, fn goldenTestFunc) {
 	t.Helper()

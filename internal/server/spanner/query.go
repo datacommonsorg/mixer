@@ -23,10 +23,13 @@ import (
 
 	"cloud.google.com/go/spanner"
 	"github.com/datacommonsorg/mixer/internal/metrics"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
 	"google.golang.org/api/iterator"
 	"google.golang.org/grpc/codes"
+	"google.golang.org/protobuf/encoding/protojson"
+	"google.golang.org/protobuf/proto"
 )
 
 const (
@@ -46,8 +49,9 @@ func (sc *spannerDatabaseClient) GetNodeProps(ctx context.Context, ids []string,
 		props[id] = []*Property{}
 	}
 
-	err := sc.queryStructs(
+	err := queryStructs(
 		ctx,
+		sc,
 		*GetNodePropsQuery(ids, out),
 		func() interface{} {
 			return &Property{}
@@ -75,8 +79,9 @@ func (sc *spannerDatabaseClient) GetNodeEdgesByID(ctx context.Context, ids []str
 		edges[id] = []*Edge{}
 	}
 
-	err := sc.queryStructs(
+	err := queryStructs(
 		ctx,
+		sc,
 		*GetNodeEdgesByIDQuery(ids, arc, pageSize, offset),
 		func() interface{} {
 			return &Edge{}
@@ -101,8 +106,9 @@ func (sc *spannerDatabaseClient) GetObservations(ctx context.Context, variables 
 		return nil, fmt.Errorf("entity must be specified")
 	}
 
-	err := sc.queryStructs(
+	err := queryStructs(
 		ctx,
+		sc,
 		*GetObservationsQuery(variables, entities),
 		func() interface{} {
 			return &Observation{}
@@ -126,8 +132,9 @@ func (sc *spannerDatabaseClient) GetObservationsContainedInPlace(ctx context.Con
 		return observations, nil
 	}
 
-	err := sc.queryStructs(
+	err := queryStructs(
 		ctx,
+		sc,
 		*GetObservationsContainedInPlaceQuery(variables, containedInPlace),
 		func() interface{} {
 			return &Observation{}
@@ -153,8 +160,9 @@ func (sc *spannerDatabaseClient) SearchNodes(ctx context.Context, query string, 
 		return nodes, nil
 	}
 
-	err := sc.queryStructs(
+	err := queryStructs(
 		ctx,
+		sc,
 		*SearchNodesQuery(query, types),
 		func() interface{} {
 			return &SearchNode{}
@@ -186,8 +194,9 @@ func (sc *spannerDatabaseClient) ResolveByID(ctx context.Context, nodes []string
 		valueMap[value] = node
 	}
 
-	err := sc.queryStructs(
+	err := queryStructs(
 		ctx,
+		sc,
 		*ResolveByIDQuery(nodes, in, out),
 		func() interface{} {
 			return &ResolutionCandidate{}
@@ -205,13 +214,51 @@ func (sc *spannerDatabaseClient) ResolveByID(ctx context.Context, nodes []string
 	return nodeToCandidates, nil
 }
 
+// GetEventCollectionDate retrieves event collection dates from Spanner.
+func (sc *spannerDatabaseClient) GetEventCollectionDate(ctx context.Context, placeID, eventType string) ([]string, error) {
+	stmt := GetEventCollectionDateQuery(placeID, eventType)
+	rows, err := queryDynamic(ctx, sc, *stmt)
+	if err != nil {
+		return nil, err
+	}
+
+	var res []string
+	for _, row := range rows {
+		if len(row) > 0 {
+			res = append(res, row[0])
+		}
+	}
+	return res, nil
+}
+
 func (sc *spannerDatabaseClient) Sparql(ctx context.Context, nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) ([][]string, error) {
 	query, err := SparqlQuery(nodes, queries, opts)
 	if err != nil {
 		return nil, fmt.Errorf("error building sparql query: %v", err)
 	}
 
-	return sc.queryDynamic(ctx, *query)
+	return queryDynamic(ctx, sc, *query)
+}
+
+func (sc *spannerDatabaseClient) GetVariableMetadata(ctx context.Context, variables []string) (map[string][]*pb.StatVarSummary_ProvenanceSummary, error) {
+	if len(variables) == 0 {
+		return map[string][]*pb.StatVarSummary_ProvenanceSummary{},
+			nil
+	}
+
+	results, err := queryCache(
+		ctx,
+		sc,
+		*GetCacheDataQuery(TypeProvenanceSummary, variables),
+		func() *pb.StatVarSummary_ProvenanceSummary {
+			return &pb.StatVarSummary_ProvenanceSummary{}
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return results, nil
 }
 
 // fetchAndUpdateTimestamp queries Spanner and updates the timestamp.
@@ -276,32 +323,50 @@ func (sc *spannerDatabaseClient) executeQuery(
 }
 
 // queryStructs executes a query and maps the results to an input struct.
-func (sc *spannerDatabaseClient) queryStructs(
+func queryStructs(
 	ctx context.Context,
+	sc *spannerDatabaseClient,
 	stmt spanner.Statement,
 	newStruct func() interface{},
 	withStruct func(interface{}),
 ) error {
 	return sc.executeQuery(ctx, stmt, func(iter *spanner.RowIterator) error {
-		return sc.processRows(iter, newStruct, withStruct)
+		return processRows(iter, newStruct, withStruct)
 	})
 }
 
 // queryDynamic executes a dynamically constructed query and returns the results as a slice of string slices.
-func (sc *spannerDatabaseClient) queryDynamic(
+func queryDynamic(
 	ctx context.Context,
+	sc *spannerDatabaseClient,
 	stmt spanner.Statement,
 ) ([][]string, error) {
 	var rowData [][]string
 	err := sc.executeQuery(ctx, stmt, func(iter *spanner.RowIterator) error {
-		result, err := sc.processDynamicRows(iter)
+		result, err := processDynamicRows(iter)
 		rowData = result
 		return err
 	})
 	return rowData, err
 }
 
-func (sc *spannerDatabaseClient) processRows(iter *spanner.RowIterator, newStruct func() interface{}, withStruct func(interface{})) error {
+// queryCache executes a query and maps the results to an input cache proto.
+func queryCache[T proto.Message](
+	ctx context.Context,
+	sc *spannerDatabaseClient,
+	stmt spanner.Statement,
+	newProto func() T,
+) (map[string][]T, error) {
+	var data map[string][]T
+	err := sc.executeQuery(ctx, stmt, func(iter *spanner.RowIterator) error {
+		result, err := processCacheRows(iter, newProto)
+		data = result
+		return err
+	})
+	return data, err
+}
+
+func processRows(iter *spanner.RowIterator, newStruct func() interface{}, withStruct func(interface{})) error {
 	for {
 		row, err := iter.Next()
 		if err == iterator.Done {
@@ -322,7 +387,7 @@ func (sc *spannerDatabaseClient) processRows(iter *spanner.RowIterator, newStruc
 }
 
 // processDynamicRows processes rows from dynamically constructed queries.
-func (sc *spannerDatabaseClient) processDynamicRows(iter *spanner.RowIterator) ([][]string, error) {
+func processDynamicRows(iter *spanner.RowIterator) ([][]string, error) {
 	rowData := [][]string{}
 	for {
 		row, err := iter.Next()
@@ -344,4 +409,40 @@ func (sc *spannerDatabaseClient) processDynamicRows(iter *spanner.RowIterator) (
 		rowData = append(rowData, data)
 	}
 	return rowData, nil
+}
+
+// processCacheRows processes rows and maps them to a proto struct.
+func processCacheRows[T proto.Message](iter *spanner.RowIterator, newProto func() T) (map[string][]T, error) {
+	results := make(map[string][]T)
+	unmarshaler := protojson.UnmarshalOptions{DiscardUnknown: true}
+
+	for {
+		row, err := iter.Next()
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			return nil, fmt.Errorf("failed to fetch row: %w", err)
+		}
+
+		var key string
+		if err := row.ColumnByName("key", &key); err != nil {
+			return nil, fmt.Errorf("failed to read key column: %w", err)
+		}
+
+		var jsonStr spanner.NullString
+		if err := row.ColumnByName("value", &jsonStr); err != nil {
+			return nil, fmt.Errorf("failed to read value column: %w", err)
+		}
+
+		if jsonStr.Valid {
+			msg := newProto()
+			if err := unmarshaler.Unmarshal([]byte(jsonStr.StringVal), msg); err != nil {
+				return nil, fmt.Errorf("failed to unmarshal proto: %w", err)
+			}
+			results[key] = append(results[key], msg)
+		}
+	}
+
+	return results, nil
 }
