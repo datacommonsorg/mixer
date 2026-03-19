@@ -387,3 +387,11 @@ func (sds *SpannerDataSource) handleEventCollectionDate(ctx context.Context, req
 		},
 	}, nil
 }
+
+func (sds *SpannerDataSource) BulkVariableInfo(ctx context.Context, req *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error) {
+	metadata, err := sds.client.GetProvenanceSummary(ctx, req.GetNodes())
+	if err != nil {
+		return nil, fmt.Errorf("error getting variable metadata from Spanner: %v", err)
+	}
+	return generateBulkVariableInfoResponse(metadata), nil
+}

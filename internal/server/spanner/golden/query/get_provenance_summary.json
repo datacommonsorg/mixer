@@ -1,6 +1,6 @@
 {
-  "Count_Household_FamilyHousehold": [
-    {
+  "Count_Household_FamilyHousehold": {
+    "dc/base/CensusACS5YearSurvey": {
       "import_name": "CensusACS5YearSurvey",
       "series_summary": [
         {
@@ -42,9 +42,9 @@
       "observation_count": 2547106,
       "time_series_count": 220438
     }
-  ],
-  "Count_Household_HasComputer": [
-    {
+  },
+  "Count_Household_HasComputer": {
+    "dc/base/CensusACS5YearSurvey": {
       "import_name": "CensusACS5YearSurvey",
       "series_summary": [
         {
@@ -87,5 +87,5 @@
       "observation_count": 2805865,
       "time_series_count": 511517
     }
-  ]
+  }
 }
