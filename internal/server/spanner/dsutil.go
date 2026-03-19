@@ -257,13 +257,16 @@ func nodeEdgesToLinkedGraph(edges []*Edge) (*pbv2.LinkedGraph, error) {
 		linkedGraph.Arcs[edge.Predicate] = nodes
 	}
 
-	// Sort nodes in each arc.
+	// Sort nodes in each arc: Dcid -> Value -> ProvenanceId
 	for _, nodes := range linkedGraph.Arcs {
 		slices.SortFunc(nodes.Nodes, func(i, j *pb.EntityInfo) int {
-			if c := cmp.Compare(i.Dcid, j.Dcid); c != 0 {
+			if c := cmp.Compare(i.GetDcid(), j.GetDcid()); c != 0 {
 				return c
 			}
-			return cmp.Compare(i.Value, j.Value)
+			if c := cmp.Compare(i.GetValue(), j.GetValue()); c != 0 {
+				return c
+			}
+			return cmp.Compare(i.GetProvenanceId(), j.GetProvenanceId())
 		})
 	}
 
