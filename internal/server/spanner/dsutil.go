@@ -17,6 +17,7 @@
 package spanner
 
 import (
+	"cmp"
 	"fmt"
 	"log/slog"
 	"slices"
@@ -256,6 +257,19 @@ func nodeEdgesToLinkedGraph(edges []*Edge) (*pbv2.LinkedGraph, error) {
 		nodes.Nodes = append(nodes.Nodes, node)
 
 		linkedGraph.Arcs[edge.Predicate] = nodes
+	}
+
+	// Sort nodes in each arc: Dcid -> Value -> ProvenanceId
+	for _, nodes := range linkedGraph.Arcs {
+		slices.SortFunc(nodes.Nodes, func(i, j *pb.EntityInfo) int {
+			if c := cmp.Compare(i.GetDcid(), j.GetDcid()); c != 0 {
+				return c
+			}
+			if c := cmp.Compare(i.GetValue(), j.GetValue()); c != 0 {
+				return c
+			}
+			return cmp.Compare(i.GetProvenanceId(), j.GetProvenanceId())
+		})
 	}
 
 	return linkedGraph, nil
