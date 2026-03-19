@@ -226,3 +226,9 @@ func GetV2SparqlCmpOpts() []cmp.Option {
 		cmpopts.SortSlices(rowComparer),
 	}
 }
+
+func GetV2BulkVariableInfoCmpOpts() []cmp.Option {
+	return []cmp.Option{
+		protocmp.Transform(),
+	}
+}
