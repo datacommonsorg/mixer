@@ -431,6 +431,11 @@ var eventCollectionDateTestCases = []struct {
 		eventType: "FireEvent",
 		golden:    "get_event_collection_date",
 	},
+	{
+		placeDcid: "country/GBR",
+		eventType: "FloodEvent",
+		golden:    "get_event_collection_date_flood",
+	},
 }
 
 var eventCollectionDcidsTestCases = []struct {
@@ -444,6 +449,12 @@ var eventCollectionDcidsTestCases = []struct {
 		eventType: "FireEvent",
 		date:      "2020-10",
 		golden:    "get_event_collection_dcids",
+	},
+	{
+		placeDcid: "country/GBR",
+		eventType: "FloodEvent",
+		date:      "2025-01",
+		golden:    "get_event_collection_dcids_flood",
 	},
 }
 
