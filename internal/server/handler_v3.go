@@ -64,3 +64,10 @@ func (s *Server) V3Sparql(ctx context.Context, in *pb.SparqlRequest) (
 ) {
 	return s.dispatcher.Sparql(ctx, in)
 }
+
+// V3FilterStatVarsByEntity implements API for mixer.V3FilterStatVarsByEntity.
+func (s *Server) V3FilterStatVarsByEntity(ctx context.Context, in *pb.FilterStatVarsByEntityRequest) (
+	*pb.FilterStatVarsByEntityResponse, error,
+) {
+	return s.dispatcher.FilterStatVarsByEntity(ctx, in)
+}

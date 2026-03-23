@@ -196,6 +196,16 @@ func GetObservationsQuery(variables []string, entities []string) *spanner.Statem
 	return stmt
 }
 
+func FilterStatVarsByEntityQuery(variables []string, entities []string) *spanner.Statement {
+	return &spanner.Statement{
+		SQL: statements.filterStatVarsByEntity,
+		Params: map[string]interface{}{
+			"variables": variables,
+			"entities":  entities,
+		},
+	}
+}
+
 func GetObservationsContainedInPlaceQuery(variables []string, containedInPlace *v2.ContainedInPlace) *spanner.Statement {
 	stmt := GetObservationsQuery(variables, []string{} /*entities*/)
 	stmt.SQL = fmt.Sprintf(statements.getObsByVariableAndContainedInPlace, stmt.SQL)

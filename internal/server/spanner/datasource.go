@@ -158,6 +158,41 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 	return observationsToObservationResponse(req, observations), nil
 }
 
+// FilterStatVarsByEntity retrieves a list of variables that have data for the given entities.
+func (sds *SpannerDataSource) FilterStatVarsByEntity(ctx context.Context, req *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
+	if len(req.GetStatVars()) == 0 || len(req.GetEntities()) == 0 {
+		return &pb.FilterStatVarsByEntityResponse{}, nil
+	}
+
+	variables := []string{}
+	for _, sv := range req.GetStatVars() {
+		variables = append(variables, sv.GetDcid())
+	}
+
+	rows, err := sds.client.FilterStatVarsByEntity(ctx, variables, req.GetEntities())
+	if err != nil {
+		return nil, fmt.Errorf("error filtering stat vars by entity from Spanner: %v", err)
+	}
+
+	// Spanner query returns [entity, variable] pairs.
+	// We only need the set of matched variables.
+	matchedVars := map[string]struct{}{}
+	for _, row := range rows {
+		if len(row) == 2 {
+			matchedVars[row[1]] = struct{}{}
+		}
+	}
+
+	resp := &pb.FilterStatVarsByEntityResponse{}
+	for _, sv := range req.GetStatVars() {
+		if _, ok := matchedVars[sv.GetDcid()]; ok {
+			resp.StatVars = append(resp.StatVars, sv)
+		}
+	}
+
+	return resp, nil
+}
+
 // NodeSearch searches nodes in the spanner graph.
 func (sds *SpannerDataSource) NodeSearch(ctx context.Context, req *pbv2.NodeSearchRequest) (*pbv2.NodeSearchResponse, error) {
 	nodes, err := sds.client.SearchNodes(ctx, req.Query, req.Types)

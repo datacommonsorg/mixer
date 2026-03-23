@@ -37,6 +37,7 @@ import (
 type mockSpannerClient struct {
 	resolveByIDRes  map[string][]string
 	getNodeEdgesRes map[string][]*spanner.Edge
+	filterStatVarsByEntityRes [][]string
 }
 
 func (m *mockSpannerClient) GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*spanner.Property, error) {
@@ -47,6 +48,9 @@ func (m *mockSpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, 
 }
 func (m *mockSpannerClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*spanner.Observation, error) {
 	return nil, nil
+}
+func (m *mockSpannerClient) FilterStatVarsByEntity(ctx context.Context, variables []string, entities []string) ([][]string, error) {
+	return m.filterStatVarsByEntityRes, nil
 }
 func (m *mockSpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*spanner.Observation, error) {
 	return nil, nil
@@ -332,6 +336,63 @@ func TestSpannerEvent(t *testing.T) {
 		}
 
 		var want pbv2.EventResponse
+		if err = test.ReadJSON(goldenDir, c.goldenFile, &want); err != nil {
+			t.Fatalf("ReadJSON error (%v): %v", c.goldenFile, err)
+		}
+
+		cmpOpts := cmp.Options{
+			protocmp.Transform(),
+		}
+		if diff := cmp.Diff(got, &want, cmpOpts); diff != "" {
+			t.Errorf("%v payload mismatch:\n%v", c.goldenFile, diff)
+		}
+	}
+}
+
+func TestSpannerFilterStatVarsByEntity(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		client = &mockSpannerClient{
+			filterStatVarsByEntityRes: [][]string{
+				{"geoId/06", "Count_Person"},
+				{"geoId/06", "Median_Income_Person"},
+			},
+		}
+	}
+	ds := spanner.NewSpannerDataSource(client, nil, nil)
+
+	t.Parallel()
+	ctx := context.Background()
+	_, filename, _, _ := runtime.Caller(0)
+	goldenDir := path.Join(path.Dir(filename), "datasource")
+
+	for _, c := range []struct {
+		req        *pb.FilterStatVarsByEntityRequest
+		goldenFile string
+	}{
+		{
+			req: &pb.FilterStatVarsByEntityRequest{
+				StatVars: []*pb.EntityInfo{
+					{Dcid: "Count_Person"},
+					{Dcid: "NonExistent_Var"},
+					{Dcid: "Median_Income_Person"},
+				},
+				Entities: []string{"geoId/06"},
+			},
+			goldenFile: "filter_stat_vars.json",
+		},
+	} {
+		got, err := ds.FilterStatVarsByEntity(ctx, c.req)
+		if err != nil {
+			t.Fatalf("FilterStatVarsByEntity error (%v): %v", c.goldenFile, err)
+		}
+
+		if test.GenerateGolden {
+			test.UpdateProtoGolden(got, goldenDir, c.goldenFile)
+			continue
+		}
+
+		var want pb.FilterStatVarsByEntityResponse
 		if err = test.ReadJSON(goldenDir, c.goldenFile, &want); err != nil {
 			t.Fatalf("ReadJSON error (%v): %v", c.goldenFile, err)
 		}

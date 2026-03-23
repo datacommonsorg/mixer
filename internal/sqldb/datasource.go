@@ -130,3 +130,7 @@ func (sds *SQLDataSource) Event(ctx context.Context, req *pbv2.EventRequest) (*p
 func (sds *SQLDataSource) BulkVariableInfo(ctx context.Context, req *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error) {
 	return &pbv1.BulkVariableInfoResponse{}, nil
 }
+
+func (sds *SQLDataSource) FilterStatVarsByEntity(ctx context.Context, req *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
+	return &pb.FilterStatVarsByEntityResponse{}, nil
+}

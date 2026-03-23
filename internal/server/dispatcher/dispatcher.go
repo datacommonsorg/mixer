@@ -37,6 +37,7 @@ const (
 	TypeSparql           RequestType = "Sparql"
 	TypeEvent            RequestType = "Event"
 	TypeBulkVariableInfo RequestType = "BulkVariableInfo"
+	TypeFilterStatVarsByEntity RequestType = "FilterStatVarsByEntity"
 )
 
 // RequestContext holds the context for a given request.
@@ -223,6 +224,19 @@ func (dispatcher *Dispatcher) BulkVariableInfo(ctx context.Context, in *pbv1.Bul
 		return nil, err
 	}
 	return response.(*pbv1.BulkVariableInfoResponse), nil
+}
+
+func (dispatcher *Dispatcher) FilterStatVarsByEntity(ctx context.Context, in *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
+	requestContext := newRequestContext(ctx, in, TypeFilterStatVarsByEntity)
+
+	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {
+		return dispatcher.sources.FilterStatVarsByEntity(ctx, request.(*pb.FilterStatVarsByEntityRequest))
+	})
+
+	if err != nil {
+		return nil, err
+	}
+	return response.(*pb.FilterStatVarsByEntityResponse), nil
 }
 
 func newRequestContext(ctx context.Context, request proto.Message, requestType RequestType) *RequestContext {

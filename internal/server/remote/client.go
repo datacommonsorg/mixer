@@ -120,3 +120,12 @@ func (rc *RemoteClient) BulkVariableInfo(req *pbv1.BulkVariableInfoRequest) (*pb
 	}
 	return resp, nil
 }
+
+func (rc *RemoteClient) FilterStatVarsByEntity(req *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
+	resp := &pb.FilterStatVarsByEntityResponse{}
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v3/variable/filter", req, resp)
+	if err != nil {
+		return nil, err
+	}
+	return resp, nil
+}

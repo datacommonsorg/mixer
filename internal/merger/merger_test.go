@@ -2126,3 +2126,65 @@ func TestMergeMultiBulkVariableInfo(t *testing.T) {
 		}
 	}
 }
+
+func TestMergeMultiFilterStatVarsByEntity(t *testing.T) {
+	cmpOpts := cmp.Options{protocmp.Transform()}
+	for _, c := range []struct {
+		desc    string
+		allResp []*pb.FilterStatVarsByEntityResponse
+		want    *pb.FilterStatVarsByEntityResponse
+	}{
+		{
+			desc:    "Empty input",
+			allResp: []*pb.FilterStatVarsByEntityResponse{},
+			want:    &pb.FilterStatVarsByEntityResponse{},
+		},
+		{
+			desc: "Single input",
+			allResp: []*pb.FilterStatVarsByEntityResponse{
+				{
+					StatVars: []*pb.EntityInfo{
+						{Dcid: "Count_Person"},
+					},
+				},
+			},
+			want: &pb.FilterStatVarsByEntityResponse{
+				StatVars: []*pb.EntityInfo{
+					{Dcid: "Count_Person"},
+				},
+			},
+		},
+		{
+			desc: "Multiple inputs with deduplication",
+			allResp: []*pb.FilterStatVarsByEntityResponse{
+				{
+					StatVars: []*pb.EntityInfo{
+						{Dcid: "Count_Person"},
+						{Dcid: "Median_Income_Person"},
+					},
+				},
+				nil,
+				{
+					StatVars: []*pb.EntityInfo{
+						{Dcid: "Count_Person"},
+						{Dcid: "Count_Person_Male"},
+					},
+				},
+			},
+			want: &pb.FilterStatVarsByEntityResponse{
+				StatVars: []*pb.EntityInfo{
+					{Dcid: "Count_Person"},
+					{Dcid: "Median_Income_Person"},
+					{Dcid: "Count_Person_Male"},
+				},
+			},
+		},
+	} {
+		t.Run(c.desc, func(t *testing.T) {
+			got := MergeMultiFilterStatVarsByEntity(c.allResp)
+			if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
+				t.Errorf("MergeMultiFilterStatVarsByEntity mismatch (-got +want):\n%s", diff)
+			}
+		})
+	}
+}

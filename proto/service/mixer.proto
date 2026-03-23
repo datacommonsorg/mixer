@@ -95,6 +95,14 @@ service Mixer {
     };
   }
 
+  rpc V3FilterStatVarsByEntity(FilterStatVarsByEntityRequest)
+      returns (FilterStatVarsByEntityResponse) {
+    option (google.api.http) = {
+      get : "/v3/variable/filter"
+      additional_bindings : {post : "/v3/variable/filter" body : "*"}
+    };
+  }
+
   // ======================  V2   V2   V2   V2  ======================
 
   rpc V2Sparql(SparqlRequest) returns (QueryResponse) {

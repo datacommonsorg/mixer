@@ -43,4 +43,5 @@ type DataSource interface {
 	Sparql(context.Context, *pb.SparqlRequest) (*pb.QueryResponse, error)
 	Event(context.Context, *pbv2.EventRequest) (*pbv2.EventResponse, error)
 	BulkVariableInfo(context.Context, *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error)
+	FilterStatVarsByEntity(context.Context, *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error)
 }
