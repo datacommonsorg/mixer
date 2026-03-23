@@ -354,8 +354,8 @@ func TestSpannerFilterStatVarsByEntity(t *testing.T) {
 	if client == nil {
 		client = &mockSpannerClient{
 			filterStatVarsByEntityRes: [][]string{
-				{"geoId/06", "Count_Person"},
-				{"geoId/06", "Median_Income_Person"},
+				{"Count_Person"},
+				{"Median_Income_Person"},
 			},
 		}
 	}

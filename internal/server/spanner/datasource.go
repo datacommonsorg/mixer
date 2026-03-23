@@ -174,12 +174,11 @@ func (sds *SpannerDataSource) FilterStatVarsByEntity(ctx context.Context, req *p
 		return nil, fmt.Errorf("error filtering stat vars by entity from Spanner: %v", err)
 	}
 
-	// Spanner query returns [entity, variable] pairs.
-	// We only need the set of matched variables.
+	// Spanner query returns a list of matched variables.
 	matchedVars := map[string]struct{}{}
 	for _, row := range rows {
-		if len(row) == 2 {
-			matchedVars[row[1]] = struct{}{}
+		if len(row) == 1 {
+			matchedVars[row[0]] = struct{}{}
 		}
 	}
 

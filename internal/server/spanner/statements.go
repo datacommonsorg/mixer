@@ -253,7 +253,6 @@ var statements = struct {
 		ON 
 			result.object_id = obs.observation_about`,
 	filterStatVarsByEntity: `		SELECT DISTINCT
-			observation_about,
 			variable_measured
 		FROM
 			Observation
