@@ -144,7 +144,7 @@ func (sc *spannerDatabaseClient) GetObservations(ctx context.Context, variables 
 }
 
 // FilterStatVarsByEntity checks for the existence of observations for the given variables and entities.
-// Returns a slice of [entity, variable] pairs that have at least one observation.
+// Returns a slice of rows, where each row contains a single element: a variable that has at least one observation.
 func (sc *spannerDatabaseClient) FilterStatVarsByEntity(ctx context.Context, variables []string, entities []string) ([][]string, error) {
 	stmt := FilterStatVarsByEntityQuery(variables, entities)
 	rows, err := queryDynamic(ctx, sc, *stmt)
