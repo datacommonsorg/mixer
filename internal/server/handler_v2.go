@@ -375,6 +375,38 @@ func (s *Server) V2Node(ctx context.Context, in *pbv2.NodeRequest) (
 func (s *Server) V2Event(
 	ctx context.Context, in *pbv2.EventRequest,
 ) (*pbv2.EventResponse, error) {
+	// Divert to dispatcher if enabled.
+	if s.shouldDivertV2(ctx) {
+		return s.dispatcher.Event(ctx, in)
+	}
+
+	// Handle V2 Event.
+	v2StartTime := time.Now()
+	v2Resp, err :=  s.handleV2Event(ctx, in)
+	if err != nil {
+		return nil, err
+	}
+	v2Latency := time.Since(v2StartTime)
+
+	// Mirror to V3 for comparison.
+	s.maybeMirrorV3(
+		ctx,
+		in,
+		v2Resp,
+		v2Latency,
+		func(ctx context.Context, req proto.Message) (proto.Message, error) {
+			return s.V3Event(ctx, req.(*pbv2.EventRequest))
+		},
+		GetV2EventCmpOpts(),
+	)
+
+	return v2Resp, nil
+}
+
+// handleV2Event wraps the core V2 implementation of mixer.V2Event.
+func (s *Server) handleV2Event(
+	ctx context.Context, in *pbv2.EventRequest,
+) (*pbv2.EventResponse, error) {
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	localRespChan := make(chan *pbv2.EventResponse, 1)
 	remoteRespChan := make(chan *pbv2.EventResponse, 1)
