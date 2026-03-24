@@ -49,6 +49,7 @@ const (
 	Mixer_V3Resolve_FullMethodName                    = "/datacommons.Mixer/V3Resolve"
 	Mixer_V3Event_FullMethodName                      = "/datacommons.Mixer/V3Event"
 	Mixer_V3Sparql_FullMethodName                     = "/datacommons.Mixer/V3Sparql"
+	Mixer_V3BulkVariableInfo_FullMethodName           = "/datacommons.Mixer/V3BulkVariableInfo"
 	Mixer_V2Sparql_FullMethodName                     = "/datacommons.Mixer/V2Sparql"
 	Mixer_V2Resolve_FullMethodName                    = "/datacommons.Mixer/V2Resolve"
 	Mixer_V2Node_FullMethodName                       = "/datacommons.Mixer/V2Node"
@@ -56,6 +57,7 @@ const (
 	Mixer_V2Observation_FullMethodName                = "/datacommons.Mixer/V2Observation"
 	Mixer_V2RecognizePlaces_FullMethodName            = "/datacommons.Mixer/V2RecognizePlaces"
 	Mixer_FilterStatVarsByEntity_FullMethodName       = "/datacommons.Mixer/FilterStatVarsByEntity"
+	Mixer_V2BulkVariableInfo_FullMethodName           = "/datacommons.Mixer/V2BulkVariableInfo"
 	Mixer_Query_FullMethodName                        = "/datacommons.Mixer/Query"
 	Mixer_GetPropertyLabels_FullMethodName            = "/datacommons.Mixer/GetPropertyLabels"
 	Mixer_GetPropertyValues_FullMethodName            = "/datacommons.Mixer/GetPropertyValues"
@@ -115,6 +117,7 @@ type MixerClient interface {
 	V3Resolve(ctx context.Context, in *v2.ResolveRequest, opts ...grpc.CallOption) (*v2.ResolveResponse, error)
 	V3Event(ctx context.Context, in *v2.EventRequest, opts ...grpc.CallOption) (*v2.EventResponse, error)
 	V3Sparql(ctx context.Context, in *proto.SparqlRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error)
+	V3BulkVariableInfo(ctx context.Context, in *v1.BulkVariableInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableInfoResponse, error)
 	V2Sparql(ctx context.Context, in *proto.SparqlRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error)
 	V2Resolve(ctx context.Context, in *v2.ResolveRequest, opts ...grpc.CallOption) (*v2.ResolveResponse, error)
 	V2Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error)
@@ -124,6 +127,7 @@ type MixerClient interface {
 	V2RecognizePlaces(ctx context.Context, in *proto.RecognizePlacesRequest, opts ...grpc.CallOption) (*proto.RecognizePlacesResponse, error)
 	// Filters a list of stat vars using a list of entities (places or sources).
 	FilterStatVarsByEntity(ctx context.Context, in *proto.FilterStatVarsByEntityRequest, opts ...grpc.CallOption) (*proto.FilterStatVarsByEntityResponse, error)
+	V2BulkVariableInfo(ctx context.Context, in *v1.BulkVariableInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableInfoResponse, error)
 	// Query DataCommons Graph with Sparql.
 	Query(ctx context.Context, in *proto.QueryRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error)
 	// Fetch property labels adjacent of nodes
@@ -267,6 +271,15 @@ func (c *mixerClient) V3Sparql(ctx context.Context, in *proto.SparqlRequest, opt
 	return out, nil
 }
 
+func (c *mixerClient) V3BulkVariableInfo(ctx context.Context, in *v1.BulkVariableInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableInfoResponse, error) {
+	out := new(v1.BulkVariableInfoResponse)
+	err := c.cc.Invoke(ctx, Mixer_V3BulkVariableInfo_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *mixerClient) V2Sparql(ctx context.Context, in *proto.SparqlRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error) {
 	out := new(proto.QueryResponse)
 	err := c.cc.Invoke(ctx, Mixer_V2Sparql_FullMethodName, in, out, opts...)
@@ -324,6 +337,15 @@ func (c *mixerClient) V2RecognizePlaces(ctx context.Context, in *proto.Recognize
 func (c *mixerClient) FilterStatVarsByEntity(ctx context.Context, in *proto.FilterStatVarsByEntityRequest, opts ...grpc.CallOption) (*proto.FilterStatVarsByEntityResponse, error) {
 	out := new(proto.FilterStatVarsByEntityResponse)
 	err := c.cc.Invoke(ctx, Mixer_FilterStatVarsByEntity_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) V2BulkVariableInfo(ctx context.Context, in *v1.BulkVariableInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableInfoResponse, error) {
+	out := new(v1.BulkVariableInfoResponse)
+	err := c.cc.Invoke(ctx, Mixer_V2BulkVariableInfo_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -763,6 +785,7 @@ type MixerServer interface {
 	V3Resolve(context.Context, *v2.ResolveRequest) (*v2.ResolveResponse, error)
 	V3Event(context.Context, *v2.EventRequest) (*v2.EventResponse, error)
 	V3Sparql(context.Context, *proto.SparqlRequest) (*proto.QueryResponse, error)
+	V3BulkVariableInfo(context.Context, *v1.BulkVariableInfoRequest) (*v1.BulkVariableInfoResponse, error)
 	V2Sparql(context.Context, *proto.SparqlRequest) (*proto.QueryResponse, error)
 	V2Resolve(context.Context, *v2.ResolveRequest) (*v2.ResolveResponse, error)
 	V2Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error)
@@ -772,6 +795,7 @@ type MixerServer interface {
 	V2RecognizePlaces(context.Context, *proto.RecognizePlacesRequest) (*proto.RecognizePlacesResponse, error)
 	// Filters a list of stat vars using a list of entities (places or sources).
 	FilterStatVarsByEntity(context.Context, *proto.FilterStatVarsByEntityRequest) (*proto.FilterStatVarsByEntityResponse, error)
+	V2BulkVariableInfo(context.Context, *v1.BulkVariableInfoRequest) (*v1.BulkVariableInfoResponse, error)
 	// Query DataCommons Graph with Sparql.
 	Query(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error)
 	// Fetch property labels adjacent of nodes
@@ -875,6 +899,9 @@ func (UnimplementedMixerServer) V3Event(context.Context, *v2.EventRequest) (*v2.
 func (UnimplementedMixerServer) V3Sparql(context.Context, *proto.SparqlRequest) (*proto.QueryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V3Sparql not implemented")
 }
+func (UnimplementedMixerServer) V3BulkVariableInfo(context.Context, *v1.BulkVariableInfoRequest) (*v1.BulkVariableInfoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method V3BulkVariableInfo not implemented")
+}
 func (UnimplementedMixerServer) V2Sparql(context.Context, *proto.SparqlRequest) (*proto.QueryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V2Sparql not implemented")
 }
@@ -895,6 +922,9 @@ func (UnimplementedMixerServer) V2RecognizePlaces(context.Context, *proto.Recogn
 }
 func (UnimplementedMixerServer) FilterStatVarsByEntity(context.Context, *proto.FilterStatVarsByEntityRequest) (*proto.FilterStatVarsByEntityResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FilterStatVarsByEntity not implemented")
+}
+func (UnimplementedMixerServer) V2BulkVariableInfo(context.Context, *v1.BulkVariableInfoRequest) (*v1.BulkVariableInfoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method V2BulkVariableInfo not implemented")
 }
 func (UnimplementedMixerServer) Query(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Query not implemented")
@@ -1157,6 +1187,24 @@ func _Mixer_V3Sparql_Handler(srv interface{}, ctx context.Context, dec func(inte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Mixer_V3BulkVariableInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(v1.BulkVariableInfoRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).V3BulkVariableInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_V3BulkVariableInfo_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).V3BulkVariableInfo(ctx, req.(*v1.BulkVariableInfoRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Mixer_V2Sparql_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(proto.SparqlRequest)
 	if err := dec(in); err != nil {
@@ -1279,6 +1327,24 @@ func _Mixer_FilterStatVarsByEntity_Handler(srv interface{}, ctx context.Context,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).FilterStatVarsByEntity(ctx, req.(*proto.FilterStatVarsByEntityRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_V2BulkVariableInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(v1.BulkVariableInfoRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).V2BulkVariableInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_V2BulkVariableInfo_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).V2BulkVariableInfo(ctx, req.(*v1.BulkVariableInfoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2161,6 +2227,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Mixer_V3Sparql_Handler,
 		},
 		{
+			MethodName: "V3BulkVariableInfo",
+			Handler:    _Mixer_V3BulkVariableInfo_Handler,
+		},
+		{
 			MethodName: "V2Sparql",
 			Handler:    _Mixer_V2Sparql_Handler,
 		},
@@ -2187,6 +2257,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "FilterStatVarsByEntity",
 			Handler:    _Mixer_FilterStatVarsByEntity_Handler,
+		},
+		{
+			MethodName: "V2BulkVariableInfo",
+			Handler:    _Mixer_V2BulkVariableInfo_Handler,
 		},
 		{
 			MethodName: "Query",

@@ -25,6 +25,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/log"
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
@@ -562,6 +563,53 @@ func (s *Server) FilterStatVarsByEntity(
 
 	merged := merger.MergeFilterStatVarsByEntityResponse(<-localResponseChan, <-remoteResponseChan)
 	return merged, nil
+}
+
+// V2BulkVariableInfo implements API for Mixer.V2BulkVariableInfo.
+func (s *Server) V2BulkVariableInfo(
+	ctx context.Context, in *pbv1.BulkVariableInfoRequest,
+) (*pbv1.BulkVariableInfoResponse, error) {
+	v2StartTime := time.Now()
+
+	// Use the V1 implementation for now.
+	v2Resp, err := s.BulkVariableInfo(ctx, in)
+	if err != nil {
+		return nil, err
+	}
+
+	// The new response will not contain all legacy V1 fields.
+	// To ensure the new response is sufficient, clear all legacy fields until swapping over to the new backend.
+	for _, varInfo := range v2Resp.GetData() {
+		if varInfo.GetInfo() == nil {
+			continue
+		}
+		varInfo.Info.PlaceTypeSummary = map[string]*pb.StatVarSummary_PlaceTypeSummary{}
+		for _, provSummary := range varInfo.GetInfo().GetProvenanceSummary() {
+			provSummary.ReleaseFrequency = ""
+			for _, seriesSummary := range provSummary.GetSeriesSummary() {
+				for key := range seriesSummary.GetPlaceTypeSummary() {
+					seriesSummary.PlaceTypeSummary[key] = &pb.StatVarSummary_PlaceTypeSummary{}
+				}
+				seriesSummary.MinValue = nil
+				seriesSummary.MaxValue = nil
+			}
+		}
+	}
+
+	v2Latency := time.Since(v2StartTime)
+
+	s.maybeMirrorV3(
+		ctx,
+		in,
+		v2Resp,
+		v2Latency,
+		func(ctx context.Context, req proto.Message) (proto.Message, error) {
+			return s.V3BulkVariableInfo(ctx, req.(*pbv1.BulkVariableInfoRequest))
+		},
+		GetV2BulkVariableInfoCmpOpts(),
+	)
+
+	return v2Resp, nil
 }
 
 // resolveRouting determines whether to route to local and/or remote instances
