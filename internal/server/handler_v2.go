@@ -29,6 +29,7 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
+	"github.com/datacommonsorg/mixer/internal/server/recon"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/search"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
@@ -475,6 +476,13 @@ func (s *Server) V2Observation(
 	}
 
 	return v2Resp, nil
+}
+
+// V2RecognizePlaces implements API for Mixer.V2RecognizePlaces.
+func (s *Server) V2RecognizePlaces(
+	ctx context.Context, in *pb.RecognizePlacesRequest,
+) (*pb.RecognizePlacesResponse, error) {
+	return recon.RecognizePlaces(ctx, in, s.store.RecogPlaceStore, false)
 }
 
 // V2Sparql implements API for Mixer.V2Sparql.

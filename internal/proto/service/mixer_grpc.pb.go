@@ -55,6 +55,7 @@ const (
 	Mixer_V2Node_FullMethodName                       = "/datacommons.Mixer/V2Node"
 	Mixer_V2Event_FullMethodName                      = "/datacommons.Mixer/V2Event"
 	Mixer_V2Observation_FullMethodName                = "/datacommons.Mixer/V2Observation"
+	Mixer_V2RecognizePlaces_FullMethodName            = "/datacommons.Mixer/V2RecognizePlaces"
 	Mixer_FilterStatVarsByEntity_FullMethodName       = "/datacommons.Mixer/FilterStatVarsByEntity"
 	Mixer_V2BulkVariableInfo_FullMethodName           = "/datacommons.Mixer/V2BulkVariableInfo"
 	Mixer_Query_FullMethodName                        = "/datacommons.Mixer/Query"
@@ -122,6 +123,8 @@ type MixerClient interface {
 	V2Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error)
 	V2Event(ctx context.Context, in *v2.EventRequest, opts ...grpc.CallOption) (*v2.EventResponse, error)
 	V2Observation(ctx context.Context, in *v2.ObservationRequest, opts ...grpc.CallOption) (*v2.ObservationResponse, error)
+	// Recognize places from a NL query.
+	V2RecognizePlaces(ctx context.Context, in *proto.RecognizePlacesRequest, opts ...grpc.CallOption) (*proto.RecognizePlacesResponse, error)
 	// Filters a list of stat vars using a list of entities (places or sources).
 	FilterStatVarsByEntity(ctx context.Context, in *proto.FilterStatVarsByEntityRequest, opts ...grpc.CallOption) (*proto.FilterStatVarsByEntityResponse, error)
 	V2BulkVariableInfo(ctx context.Context, in *v1.BulkVariableInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableInfoResponse, error)
@@ -316,6 +319,15 @@ func (c *mixerClient) V2Event(ctx context.Context, in *v2.EventRequest, opts ...
 func (c *mixerClient) V2Observation(ctx context.Context, in *v2.ObservationRequest, opts ...grpc.CallOption) (*v2.ObservationResponse, error) {
 	out := new(v2.ObservationResponse)
 	err := c.cc.Invoke(ctx, Mixer_V2Observation_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) V2RecognizePlaces(ctx context.Context, in *proto.RecognizePlacesRequest, opts ...grpc.CallOption) (*proto.RecognizePlacesResponse, error) {
+	out := new(proto.RecognizePlacesResponse)
+	err := c.cc.Invoke(ctx, Mixer_V2RecognizePlaces_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -779,6 +791,8 @@ type MixerServer interface {
 	V2Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error)
 	V2Event(context.Context, *v2.EventRequest) (*v2.EventResponse, error)
 	V2Observation(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error)
+	// Recognize places from a NL query.
+	V2RecognizePlaces(context.Context, *proto.RecognizePlacesRequest) (*proto.RecognizePlacesResponse, error)
 	// Filters a list of stat vars using a list of entities (places or sources).
 	FilterStatVarsByEntity(context.Context, *proto.FilterStatVarsByEntityRequest) (*proto.FilterStatVarsByEntityResponse, error)
 	V2BulkVariableInfo(context.Context, *v1.BulkVariableInfoRequest) (*v1.BulkVariableInfoResponse, error)
@@ -902,6 +916,9 @@ func (UnimplementedMixerServer) V2Event(context.Context, *v2.EventRequest) (*v2.
 }
 func (UnimplementedMixerServer) V2Observation(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V2Observation not implemented")
+}
+func (UnimplementedMixerServer) V2RecognizePlaces(context.Context, *proto.RecognizePlacesRequest) (*proto.RecognizePlacesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method V2RecognizePlaces not implemented")
 }
 func (UnimplementedMixerServer) FilterStatVarsByEntity(context.Context, *proto.FilterStatVarsByEntityRequest) (*proto.FilterStatVarsByEntityResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FilterStatVarsByEntity not implemented")
@@ -1274,6 +1291,24 @@ func _Mixer_V2Observation_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).V2Observation(ctx, req.(*v2.ObservationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_V2RecognizePlaces_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(proto.RecognizePlacesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).V2RecognizePlaces(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_V2RecognizePlaces_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).V2RecognizePlaces(ctx, req.(*proto.RecognizePlacesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2214,6 +2249,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "V2Observation",
 			Handler:    _Mixer_V2Observation_Handler,
+		},
+		{
+			MethodName: "V2RecognizePlaces",
+			Handler:    _Mixer_V2RecognizePlaces_Handler,
 		},
 		{
 			MethodName: "FilterStatVarsByEntity",
