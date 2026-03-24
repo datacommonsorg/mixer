@@ -67,36 +67,37 @@ func TestRecognizePlaces(t *testing.T) {
 				"result.json",
 			},
 		} {
-			resp, err := mixer.RecognizePlaces(ctx, &pb.RecognizePlacesRequest{
-				Queries: c.queries,
+			t.Run(c.goldenFile, func(t *testing.T) {
+				resp, err := mixer.V2RecognizePlaces(ctx, &pb.RecognizePlacesRequest{
+					Queries: c.queries,
+				})
+				if err != nil {
+					t.Errorf("RecognizePlaces() = %s", err)
+					return
+				}
+
+				if latencyTest {
+					return
+				}
+
+				if test.GenerateGolden {
+					test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
+					return
+				}
+
+				var expected pb.RecognizePlacesResponse
+				if err = test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+					t.Errorf("Can not Unmarshal golden file")
+					return
+				}
+
+				cmpOpts := cmp.Options{
+					protocmp.Transform(),
+				}
+				if diff := cmp.Diff(resp, &expected, cmpOpts); diff != "" {
+					t.Errorf("payload got diff: %v", diff)
+				}
 			})
-			if err != nil {
-				t.Errorf("RecognizePlaces() = %s", err)
-				continue
-			}
-
-			if latencyTest {
-				continue
-			}
-
-			if test.GenerateGolden {
-				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
-				continue
-			}
-
-			var expected pb.RecognizePlacesResponse
-			if err = test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
-				t.Errorf("Can not Unmarshal golden file")
-				continue
-			}
-
-			cmpOpts := cmp.Options{
-				protocmp.Transform(),
-			}
-			if diff := cmp.Diff(resp, &expected, cmpOpts); diff != "" {
-				t.Errorf("payload got diff: %v", diff)
-				continue
-			}
 		}
 	}
 

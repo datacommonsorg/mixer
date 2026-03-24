@@ -28,6 +28,7 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
+	"github.com/datacommonsorg/mixer/internal/server/recon"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/search"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
@@ -174,8 +175,8 @@ func parseResolvePropertyExpression(prop string) (string, string, []string, erro
 // - `property`:
 //   - Must match the format "<-inProp->outProp" (optionally with filters).
 //   - "inProp" and "outProp" validation depends on the resolver:
-//     - "place": if "inProp" is "description" or "geoCoordinate", "outProp" must be "dcid".
-//     - "indicator": "inProp" must be "description" and "outProp" must be "dcid".
+//   - "place": if "inProp" is "description" or "geoCoordinate", "outProp" must be "dcid".
+//   - "indicator": "inProp" must be "description" and "outProp" must be "dcid".
 //
 // Returns:
 // - input property (string)
@@ -212,7 +213,7 @@ func validateAndParseResolveInputs(in *pbv2.ResolveRequest) (string, string, []s
 		in.Property = ResolveDefaultPropertyExpression
 	}
 
-	inProp, outProp, typeOfValues,err := parseResolvePropertyExpression(in.GetProperty())
+	inProp, outProp, typeOfValues, err := parseResolvePropertyExpression(in.GetProperty())
 	if err != nil {
 		validationErrors = append(validationErrors, fmt.Sprintf("Invalid 'property' expression: %v", err))
 	}
@@ -476,6 +477,13 @@ func (s *Server) V2Observation(
 	return v2Resp, nil
 }
 
+// V2RecognizePlaces implements API for Mixer.V2RecognizePlaces.
+func (s *Server) V2RecognizePlaces(
+	ctx context.Context, in *pb.RecognizePlacesRequest,
+) (*pb.RecognizePlacesResponse, error) {
+	return recon.RecognizePlaces(ctx, in, s.store.RecogPlaceStore, false)
+}
+
 // V2Sparql implements API for Mixer.V2Sparql.
 func (s *Server) V2Sparql(
 	ctx context.Context, in *pb.SparqlRequest,
@@ -536,7 +544,7 @@ func (s *Server) FilterStatVarsByEntity(
 				"/v2/variable/filter",
 				in,
 				remoteResponse,
-				); err != nil {
+			); err != nil {
 				return err
 			}
 			remoteResponseChan <- remoteResponse
