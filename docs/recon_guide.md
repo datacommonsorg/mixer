@@ -63,7 +63,7 @@ Given a sentence, find all the place entities in it.
 
 ```bash
 curl -X POST \
---url https://api.datacommons.org/v1/recognize/places \
+--url https://api.datacommons.org/v2/recognize/places \
 --header 'X-API-Key: <YOUR-API-KEY>' \
 --data '{
   "queries": [
@@ -73,5 +73,4 @@ curl -X POST \
 }'
 ```
 
-`/v2/recognize/places` is also available with the same request and response
-shape.
+
