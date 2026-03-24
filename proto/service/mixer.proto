@@ -559,6 +559,7 @@ service Mixer {
   // Recognize non-place entities from a NL query.
   rpc RecognizeEntities(RecognizeEntitiesRequest)
       returns (RecognizeEntitiesResponse) {
+    option deprecated = true;
     option (google.api.http) = {
       get : "/v1/recognize/entities"
       additional_bindings : {post : "/v1/recognize/entities" body : "*"}
