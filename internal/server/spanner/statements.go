@@ -325,7 +325,7 @@ var statements = struct {
 		GRAPH DCGraph MATCH (event:Node)-[:Edge {predicate: 'affectedPlace', object_id: @placeID}]->(), (event)-[:Edge {predicate: 'typeOf', object_id: @eventType}]->(), (event)-[:Edge {predicate: 'startDate'}]->(dateNode:Node)
 		WHERE 
 			SUBSTR(dateNode.value, 1, 7) = @date
-		OPTIONAL MATCH (event)-[magEdge:Edge {predicate: @magnitudeProp}]->()
+		MATCH (event)-[magEdge:Edge {predicate: @magnitudeProp}]->()
 		RETURN DISTINCT 
 			event.subject_id AS dcid,
 			magEdge.object_id AS magnitude`,
