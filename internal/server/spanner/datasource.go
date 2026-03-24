@@ -141,12 +141,18 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 	var err error
 
 	qo := selectFieldsToQueryOptions(req.Select)
-	if !qo.date && !qo.value && !qo.facet && len(entities) > 0 && entityExpr == "" {
+
+	// Check if this is an existence-only request:
+	// 1. Only 'variable' and 'entity' are requested (no date, value, or facet).
+	// 2. A simple list of entities is provided (no complex entity expression).
+	isExistenceRequest := !qo.date && !qo.value && !qo.facet && len(entities) > 0 && entityExpr == ""
+
+	if isExistenceRequest {
 		rows, err := sds.client.CheckVariableExistence(ctx, variables, entities)
 		if err != nil {
-			return nil, fmt.Errorf("error checking variable existence: %v", err)
+			return nil, fmt.Errorf("error checking variable existence: %w", err)
 		}
-		
+
 		obs := make([]*Observation, 0, len(rows))
 		for _, row := range rows {
 			if len(row) != 2 {
