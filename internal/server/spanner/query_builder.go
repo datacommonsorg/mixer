@@ -204,6 +204,16 @@ func GetObservationsContainedInPlaceQuery(variables []string, containedInPlace *
 	return stmt
 }
 
+func FilterStatVarsByEntityQuery(variables []string, entities []string) *spanner.Statement {
+	return &spanner.Statement{
+		SQL: statements.filterStatVarsByEntity,
+		Params: map[string]interface{}{
+			"variables": variables,
+			"entities":  entities,
+		},
+	}
+}
+
 func SearchNodesQuery(query string, types []string) *spanner.Statement {
 	params := map[string]interface{}{
 		"query": query,

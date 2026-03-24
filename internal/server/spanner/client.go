@@ -36,6 +36,7 @@ type SpannerClient interface {
 	GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*Property, error)
 	GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc, pageSize, offset int) (map[string][]*Edge, error)
 	GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error)
+	CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error)
 	GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error)
 	SearchNodes(ctx context.Context, query string, types []string) ([]*SearchNode, error)
 	ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error)

@@ -119,6 +119,9 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 	if len(entities) > 0 && entityExpr != "" {
 		return nil, fmt.Errorf("only one of entity.dcids and entity.expression should be specified")
 	}
+	if len(entities) == 0 && entityExpr == "" {
+		return nil, fmt.Errorf("entity must be specified")
+	}
 
 	variables := []string{}
 	if req.Variable != nil {
@@ -136,6 +139,23 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 	date := req.Date
 	var observations []*Observation
 	var err error
+
+	qo := selectFieldsToQueryOptions(req.Select)
+	if !qo.date && !qo.value && !qo.facet && len(entities) > 0 && entityExpr == "" {
+		rows, err := sds.client.CheckVariableExistence(ctx, variables, entities)
+		if err != nil {
+			return nil, fmt.Errorf("error checking variable existence: %v", err)
+		}
+		for _, row := range rows {
+			if len(row) == 2 {
+				observations = append(observations, &Observation{
+					VariableMeasured: row[0],
+					ObservationAbout: row[1],
+				})
+			}
+		}
+		return obsToExistenceResponse(req, observations), nil
+	}
 
 	if entityExpr != "" {
 		containedInPlace, err := v2.ParseContainedInPlace(entityExpr)

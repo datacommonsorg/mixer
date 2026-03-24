@@ -67,6 +67,8 @@ var statements = struct {
 	selectEntityDcids string
 	// Fetch observations for variable + contained in place.
 	getObsByVariableAndContainedInPlace string
+	// Filter variables by entity.
+	filterStatVarsByEntity string
 	// Search nodes by name only.
 	searchNodesByQuery string
 	// Subquery to filter search results by types.
@@ -250,6 +252,14 @@ var statements = struct {
 		INNER JOIN (%s)obs
 		ON 
 			result.object_id = obs.observation_about`,
+	filterStatVarsByEntity: `		SELECT DISTINCT
+			variable_measured,
+			observation_about
+		FROM
+			Observation
+		WHERE
+			variable_measured IN UNNEST(@variables)
+			AND observation_about IN UNNEST(@entities)`,
 	searchNodesByQuery: `		GRAPH DCGraph MATCH (n:Node)
 		WHERE
 			SEARCH(n.name_tokenlist, @query)%s

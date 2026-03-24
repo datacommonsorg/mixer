@@ -143,6 +143,13 @@ func (sc *spannerDatabaseClient) GetObservations(ctx context.Context, variables 
 	return observations, nil
 }
 
+// CheckVariableExistence checks for the existence of observations for the given variables and entities.
+// Returns a slice of rows, where each row contains [variable, entity] that has at least one observation.
+func (sc *spannerDatabaseClient) CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
+	stmt := FilterStatVarsByEntityQuery(variables, entities)
+	return queryDynamic(ctx, sc, *stmt)
+}
+
 // GetObservationsContainedInPlace retrieves observations from Spanner given a list of variables and an entity expression.
 func (sc *spannerDatabaseClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
 	var observations []*Observation
@@ -339,7 +346,6 @@ func parseDomain(provUrl string) string {
 	return host
 }
 
-
 func assembleEventCollection(edgesMap map[string][]*Edge, req *pbv1.EventCollectionRequest) *pbv1.EventCollection {
 	res := &pbv1.EventCollection{
 		Events:         []*pbv1.EventCollection_Event{},
@@ -409,8 +415,8 @@ func populateGeoLocation(event *pbv1.EventCollection_Event, value string) {
 	// Note: The startLocation value in Spanner is usually a latLong/ DCID (e.g. latLong/577521_-958960).
 	// We parse it here for performance to avoid an extra database roundtrip.
 	//
-	// TODO(task): Revisit this optimization if we encounter valid startLocation values 
-	// that are NOT latLong/ DCIDs but still need to be resolved to points, or if the 
+	// TODO(task): Revisit this optimization if we encounter valid startLocation values
+	// that are NOT latLong/ DCIDs but still need to be resolved to points, or if the
 	// assumption that dcids always contain coordinates is not true.
 	if strings.HasPrefix(value, "latLong/") {
 		parts := strings.Split(strings.TrimPrefix(value, "latLong/"), "_")
