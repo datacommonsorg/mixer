@@ -43,6 +43,11 @@ const (
 	// Maximum number of events to return for an event collection.
 	maxEvents = 100
 
+	// Use a large page size for the batch to ensure we get properties for all events.
+	// Since we have up to maxEvents (100) events, and each event might have multiple edges,
+	// DefaultPageSize (500) is too small and truncates the results for events at the end of the batch.
+	eventBatchPageSize = 10000
+
 	// Maximum number of edge hops to traverse for chained properties.
 	maxHops = 10
 	where   = "\n\t\tWHERE\n\t\t\t"
@@ -270,7 +275,7 @@ func (sc *spannerDatabaseClient) GetEventCollection(ctx context.Context, req *pb
 		Out:        true,
 		SingleProp: "*",
 	}
-	edgesMap, err := sc.GetNodeEdgesByID(ctx, dcids, arc, datasources.DefaultPageSize, 0)
+	edgesMap, err := sc.GetNodeEdgesByID(ctx, dcids, arc, eventBatchPageSize, 0)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get node edges: %w", err)
 	}
