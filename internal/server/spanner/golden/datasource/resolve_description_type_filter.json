@@ -1,12 +1,7 @@
 {
   "entities": [
     {
-      "node": "California",
-      "candidates": [
-        {
-          "dcid": "geoId/06"
-        }
-      ]
+      "node": "California"
     }
   ]
 }

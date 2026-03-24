@@ -5,14 +5,15 @@
         "Earth",
         "country/USA",
         "geoId/37",
-        "geoId/3700991448"
+        "geoId/37033",
+        "wikidataId/Q6030882"
       ],
       "geo_locations": [
         {
           "Geo": {
             "Point": {
-              "latitude": 36.5547,
-              "longitude": -81.47628
+              "latitude": 36.5117,
+              "longitude": -79.4491
             }
           }
         }
@@ -23,7 +24,138 @@
       "prop_vals": {
         "differenceTemperature": {
           "vals": [
-            "Celsius13.835843750000004"
+            "Celsius14.78281092896176"
+          ]
+        },
+        "endDate": {
+          "vals": [
+            "2022-01-03"
+          ]
+        },
+        "maxTemperature": {
+          "vals": [
+            "Celsius26.7"
+          ]
+        },
+        "minTemperature": {
+          "vals": [
+            "Celsius-3.3"
+          ]
+        },
+        "name": {
+          "vals": [
+            "HeatTemperatureEvent at Pelham Township on 2022-01-01"
+          ]
+        },
+        "observationDate": {
+          "vals": [
+            "2022-01-03"
+          ]
+        },
+        "observationPeriod": {
+          "vals": [
+            "P3D"
+          ]
+        },
+        "referenceTemperature": {
+          "vals": [
+            "Celsius11.91718907103824"
+          ]
+        }
+      },
+      "dcid": "heatTemperatureEvent/2022-01-01_wikidataId/Q6030882",
+      "provenance_id": "dc/base/TemperatureEvents"
+    },
+    {
+      "places": [
+        "Earth",
+        "country/USA",
+        "geoId/37",
+        "geoId/37033",
+        "geoId/3743300"
+      ],
+      "geo_locations": [
+        {
+          "Geo": {
+            "Point": {
+              "latitude": 36.53667,
+              "longitude": -79.20794
+            }
+          }
+        }
+      ],
+      "dates": [
+        "2022-01-01"
+      ],
+      "prop_vals": {
+        "differenceTemperature": {
+          "vals": [
+            "Celsius14.462256550218337"
+          ]
+        },
+        "endDate": {
+          "vals": [
+            "2022-01-03"
+          ]
+        },
+        "maxTemperature": {
+          "vals": [
+            "Celsius26.7"
+          ]
+        },
+        "minTemperature": {
+          "vals": [
+            "Celsius-3.3"
+          ]
+        },
+        "name": {
+          "vals": [
+            "HeatTemperatureEvent at Milton on 2022-01-01"
+          ]
+        },
+        "observationDate": {
+          "vals": [
+            "2022-01-03"
+          ]
+        },
+        "observationPeriod": {
+          "vals": [
+            "P3D"
+          ]
+        },
+        "referenceTemperature": {
+          "vals": [
+            "Celsius12.237743449781664"
+          ]
+        }
+      },
+      "dcid": "heatTemperatureEvent/2022-01-01_geoId/3743300",
+      "provenance_id": "dc/base/TemperatureEvents"
+    },
+    {
+      "places": [
+        "Earth",
+        "country/USA",
+        "geoId/37",
+        "geoId/3715792020"
+      ],
+      "geo_locations": [
+        {
+          "Geo": {
+            "Point": {
+              "latitude": 36.4576,
+              "longitude": -79.89
+            }
+          }
+        }
+      ],
+      "dates": [
+        "2022-01-01"
+      ],
+      "prop_vals": {
+        "differenceTemperature": {
+          "vals": [
+            "Celsius14.45337816341287"
           ]
         },
         "endDate": {
@@ -33,17 +165,17 @@
         },
         "maxTemperature": {
           "vals": [
-            "Celsius25.0"
+            "Celsius26.7"
           ]
         },
         "minTemperature": {
           "vals": [
-            "Celsius2.2"
+            "Celsius3.9"
           ]
         },
         "name": {
           "vals": [
-            "HeatTemperatureEvent at Helton on 2022-01-01"
+            "HeatTemperatureEvent at Mayo on 2022-01-01"
           ]
         },
         "observationDate": {
@@ -58,11 +190,11 @@
         },
         "referenceTemperature": {
           "vals": [
-            "Celsius11.164156249999996"
+            "Celsius12.24662183658713"
           ]
         }
       },
-      "dcid": "heatTemperatureEvent/2022-01-01_geoId/3700991448",
+      "dcid": "heatTemperatureEvent/2022-01-01_geoId/3715792020",
       "provenance_id": "dc/base/TemperatureEvents"
     },
     {
@@ -70,14 +202,15 @@
         "Earth",
         "country/USA",
         "geoId/37",
-        "geoId/3701190212"
+        "geoId/37157",
+        "geoId/3765100"
       ],
       "geo_locations": [
         {
           "Geo": {
             "Point": {
-              "latitude": 36.23338,
-              "longitude": -81.93034
+              "latitude": 36.46533,
+              "longitude": -79.90635
             }
           }
         }
@@ -88,7 +221,7 @@
       "prop_vals": {
         "differenceTemperature": {
           "vals": [
-            "Celsius14.058621653279792"
+            "Celsius14.453378163412864"
           ]
         },
         "endDate": {
@@ -98,17 +231,17 @@
         },
         "maxTemperature": {
           "vals": [
-            "Celsius25.6"
+            "Celsius26.7"
           ]
         },
         "minTemperature": {
           "vals": [
-            "Celsius2.2"
+            "Celsius3.9"
           ]
         },
         "name": {
           "vals": [
-            "HeatTemperatureEvent at Beech Mountain on 2022-01-01"
+            "HeatTemperatureEvent at Stoneville on 2022-01-01"
           ]
         },
         "observationDate": {
@@ -123,11 +256,11 @@
         },
         "referenceTemperature": {
           "vals": [
-            "Celsius11.54137834672021"
+            "Celsius12.246621836587137"
           ]
         }
       },
-      "dcid": "heatTemperatureEvent/2022-01-01_geoId/3701190212",
+      "dcid": "heatTemperatureEvent/2022-01-01_geoId/3765100",
       "provenance_id": "dc/base/TemperatureEvents"
     },
     {
@@ -135,14 +268,15 @@
         "Earth",
         "country/USA",
         "geoId/37",
-        "geoId/37033"
+        "geoId/37157",
+        "wikidataId/Q2843482"
       ],
       "geo_locations": [
         {
           "Geo": {
             "Point": {
-              "latitude": 36.4,
-              "longitude": -79.33
+              "latitude": 36.4535,
+              "longitude": -79.8903
             }
           }
         }
@@ -153,7 +287,73 @@
       "prop_vals": {
         "differenceTemperature": {
           "vals": [
-            "Celsius14.198363043478256"
+            "Celsius14.453378163412852"
+          ]
+        },
+        "endDate": {
+          "vals": [
+            "2022-01-02"
+          ]
+        },
+        "maxTemperature": {
+          "vals": [
+            "Celsius26.7"
+          ]
+        },
+        "minTemperature": {
+          "vals": [
+            "Celsius3.9"
+          ]
+        },
+        "name": {
+          "vals": [
+            "HeatTemperatureEvent at Mayo Township on 2022-01-01"
+          ]
+        },
+        "observationDate": {
+          "vals": [
+            "2022-01-02"
+          ]
+        },
+        "observationPeriod": {
+          "vals": [
+            "P2D"
+          ]
+        },
+        "referenceTemperature": {
+          "vals": [
+            "Celsius12.246621836587147"
+          ]
+        }
+      },
+      "dcid": "heatTemperatureEvent/2022-01-01_wikidataId/Q2843482",
+      "provenance_id": "dc/base/TemperatureEvents"
+    },
+    {
+      "places": [
+        "Earth",
+        "country/USA",
+        "geoId/37",
+        "geoId/37033",
+        "wikidataId/Q6030295"
+      ],
+      "geo_locations": [
+        {
+          "Geo": {
+            "Point": {
+              "latitude": 36.4915,
+              "longitude": -79.2228
+            }
+          }
+        }
+      ],
+      "dates": [
+        "2022-01-01"
+      ],
+      "prop_vals": {
+        "differenceTemperature": {
+          "vals": [
+            "Celsius14.443358078602618"
           ]
         },
         "endDate": {
@@ -173,7 +373,7 @@
         },
         "name": {
           "vals": [
-            "HeatTemperatureEvent at Caswell County on 2022-01-01"
+            "HeatTemperatureEvent at Milton Township on 2022-01-01"
           ]
         },
         "observationDate": {
@@ -188,141 +388,11 @@
         },
         "referenceTemperature": {
           "vals": [
-            "Celsius12.501636956521743"
+            "Celsius12.256641921397382"
           ]
         }
       },
-      "dcid": "heatTemperatureEvent/2022-01-01_geoId/37033",
-      "provenance_id": "dc/base/TemperatureEvents"
-    },
-    {
-      "places": [
-        "Earth",
-        "country/USA",
-        "geoId/37",
-        "geoId/3703390880"
-      ],
-      "geo_locations": [
-        {
-          "Geo": {
-            "Point": {
-              "latitude": 36.49349,
-              "longitude": -79.33261
-            }
-          }
-        }
-      ],
-      "dates": [
-        "2022-01-01"
-      ],
-      "prop_vals": {
-        "differenceTemperature": {
-          "vals": [
-            "Celsius14.11514782608696"
-          ]
-        },
-        "endDate": {
-          "vals": [
-            "2022-01-03"
-          ]
-        },
-        "maxTemperature": {
-          "vals": [
-            "Celsius26.7"
-          ]
-        },
-        "minTemperature": {
-          "vals": [
-            "Celsius-3.3"
-          ]
-        },
-        "name": {
-          "vals": [
-            "HeatTemperatureEvent at Dan River on 2022-01-01"
-          ]
-        },
-        "observationDate": {
-          "vals": [
-            "2022-01-03"
-          ]
-        },
-        "observationPeriod": {
-          "vals": [
-            "P3D"
-          ]
-        },
-        "referenceTemperature": {
-          "vals": [
-            "Celsius12.58485217391304"
-          ]
-        }
-      },
-      "dcid": "heatTemperatureEvent/2022-01-01_geoId/3703390880",
-      "provenance_id": "dc/base/TemperatureEvents"
-    },
-    {
-      "places": [
-        "Earth",
-        "country/USA",
-        "geoId/37",
-        "geoId/3703391888"
-      ],
-      "geo_locations": [
-        {
-          "Geo": {
-            "Point": {
-              "latitude": 36.4016,
-              "longitude": -79.45536
-            }
-          }
-        }
-      ],
-      "dates": [
-        "2022-01-01"
-      ],
-      "prop_vals": {
-        "differenceTemperature": {
-          "vals": [
-            "Celsius14.237837616117742"
-          ]
-        },
-        "endDate": {
-          "vals": [
-            "2022-01-03"
-          ]
-        },
-        "maxTemperature": {
-          "vals": [
-            "Celsius26.7"
-          ]
-        },
-        "minTemperature": {
-          "vals": [
-            "Celsius-3.3"
-          ]
-        },
-        "name": {
-          "vals": [
-            "HeatTemperatureEvent at Locust Hill on 2022-01-01"
-          ]
-        },
-        "observationDate": {
-          "vals": [
-            "2022-01-03"
-          ]
-        },
-        "observationPeriod": {
-          "vals": [
-            "P3D"
-          ]
-        },
-        "referenceTemperature": {
-          "vals": [
-            "Celsius12.462162383882257"
-          ]
-        }
-      },
-      "dcid": "heatTemperatureEvent/2022-01-01_geoId/3703391888",
+      "dcid": "heatTemperatureEvent/2022-01-01_wikidataId/Q6030295",
       "provenance_id": "dc/base/TemperatureEvents"
     },
     {
@@ -395,14 +465,15 @@
         "Earth",
         "country/USA",
         "geoId/37",
-        "geoId/3703392468"
+        "geoId/37033",
+        "wikidataId/Q6028240"
       ],
       "geo_locations": [
         {
           "Geo": {
             "Point": {
-              "latitude": 36.50156,
-              "longitude": -79.44965
+              "latitude": 36.4981,
+              "longitude": -79.3162
             }
           }
         }
@@ -413,7 +484,7 @@
       "prop_vals": {
         "differenceTemperature": {
           "vals": [
-            "Celsius14.320169749727974"
+            "Celsius14.43651637554585"
           ]
         },
         "endDate": {
@@ -433,7 +504,7 @@
         },
         "name": {
           "vals": [
-            "HeatTemperatureEvent at Pelham on 2022-01-01"
+            "HeatTemperatureEvent at LatLong(36.4981:-79.3162) on 2022-01-01"
           ]
         },
         "observationDate": {
@@ -448,11 +519,11 @@
         },
         "referenceTemperature": {
           "vals": [
-            "Celsius12.379830250272024"
+            "Celsius12.26348362445415"
           ]
         }
       },
-      "dcid": "heatTemperatureEvent/2022-01-01_geoId/3703392468",
+      "dcid": "heatTemperatureEvent/2022-01-01_wikidataId/Q6028240",
       "provenance_id": "dc/base/TemperatureEvents"
     },
     {
@@ -460,14 +531,14 @@
         "Earth",
         "country/USA",
         "geoId/37",
-        "geoId/3703393137"
+        "geoId/3715792568"
       ],
       "geo_locations": [
         {
           "Geo": {
             "Point": {
-              "latitude": 36.29919,
-              "longitude": -79.45782
+              "latitude": 36.51588,
+              "longitude": -79.89389
             }
           }
         }
@@ -478,137 +549,7 @@
       "prop_vals": {
         "differenceTemperature": {
           "vals": [
-            "Celsius14.170774647887336"
-          ]
-        },
-        "endDate": {
-          "vals": [
-            "2022-01-03"
-          ]
-        },
-        "maxTemperature": {
-          "vals": [
-            "Celsius26.7"
-          ]
-        },
-        "minTemperature": {
-          "vals": [
-            "Celsius-3.3"
-          ]
-        },
-        "name": {
-          "vals": [
-            "HeatTemperatureEvent at Stoney Creek on 2022-01-01"
-          ]
-        },
-        "observationDate": {
-          "vals": [
-            "2022-01-03"
-          ]
-        },
-        "observationPeriod": {
-          "vals": [
-            "P3D"
-          ]
-        },
-        "referenceTemperature": {
-          "vals": [
-            "Celsius12.529225352112665"
-          ]
-        }
-      },
-      "dcid": "heatTemperatureEvent/2022-01-01_geoId/3703393137",
-      "provenance_id": "dc/base/TemperatureEvents"
-    },
-    {
-      "places": [
-        "Earth",
-        "country/USA",
-        "geoId/37",
-        "geoId/3703394120"
-      ],
-      "geo_locations": [
-        {
-          "Geo": {
-            "Point": {
-              "latitude": 36.3971,
-              "longitude": -79.31685
-            }
-          }
-        }
-      ],
-      "dates": [
-        "2022-01-01"
-      ],
-      "prop_vals": {
-        "differenceTemperature": {
-          "vals": [
-            "Celsius14.198363043478256"
-          ]
-        },
-        "endDate": {
-          "vals": [
-            "2022-01-03"
-          ]
-        },
-        "maxTemperature": {
-          "vals": [
-            "Celsius26.7"
-          ]
-        },
-        "minTemperature": {
-          "vals": [
-            "Celsius-3.3"
-          ]
-        },
-        "name": {
-          "vals": [
-            "HeatTemperatureEvent at Yanceyville on 2022-01-01"
-          ]
-        },
-        "observationDate": {
-          "vals": [
-            "2022-01-03"
-          ]
-        },
-        "observationPeriod": {
-          "vals": [
-            "P3D"
-          ]
-        },
-        "referenceTemperature": {
-          "vals": [
-            "Celsius12.501636956521743"
-          ]
-        }
-      },
-      "dcid": "heatTemperatureEvent/2022-01-01_geoId/3703394120",
-      "provenance_id": "dc/base/TemperatureEvents"
-    },
-    {
-      "places": [
-        "Earth",
-        "country/USA",
-        "geoId/37",
-        "geoId/3708191952"
-      ],
-      "geo_locations": [
-        {
-          "Geo": {
-            "Point": {
-              "latitude": 36.20266,
-              "longitude": -79.65663
-            }
-          }
-        }
-      ],
-      "dates": [
-        "2022-01-01"
-      ],
-      "prop_vals": {
-        "differenceTemperature": {
-          "vals": [
-            "Celsius14.139483568075123"
+            "Celsius14.384811316202196"
           ]
         },
         "endDate": {
@@ -623,12 +564,12 @@
         },
         "minTemperature": {
           "vals": [
-            "Celsius11.7"
+            "Celsius3.9"
           ]
         },
         "name": {
           "vals": [
-            "HeatTemperatureEvent at Madison on 2022-01-01"
+            "HeatTemperatureEvent at Price on 2022-01-01"
           ]
         },
         "observationDate": {
@@ -643,11 +584,76 @@
         },
         "referenceTemperature": {
           "vals": [
-            "Celsius12.560516431924876"
+            "Celsius12.315188683797803"
           ]
         }
       },
-      "dcid": "heatTemperatureEvent/2022-01-01_geoId/3708191952",
+      "dcid": "heatTemperatureEvent/2022-01-01_geoId/3715792568",
+      "provenance_id": "dc/base/TemperatureEvents"
+    },
+    {
+      "places": [
+        "Earth",
+        "country/USA",
+        "geoId/37",
+        "geoId/3714594100"
+      ],
+      "geo_locations": [
+        {
+          "Geo": {
+            "Point": {
+              "latitude": 36.50414,
+              "longitude": -78.97529
+            }
+          }
+        }
+      ],
+      "dates": [
+        "2022-01-01"
+      ],
+      "prop_vals": {
+        "differenceTemperature": {
+          "vals": [
+            "Celsius14.367725490196092"
+          ]
+        },
+        "endDate": {
+          "vals": [
+            "2022-01-03"
+          ]
+        },
+        "maxTemperature": {
+          "vals": [
+            "Celsius26.7"
+          ]
+        },
+        "minTemperature": {
+          "vals": [
+            "Celsius-3.3"
+          ]
+        },
+        "name": {
+          "vals": [
+            "HeatTemperatureEvent at Woodsdale on 2022-01-01"
+          ]
+        },
+        "observationDate": {
+          "vals": [
+            "2022-01-03"
+          ]
+        },
+        "observationPeriod": {
+          "vals": [
+            "P3D"
+          ]
+        },
+        "referenceTemperature": {
+          "vals": [
+            "Celsius12.332274509803907"
+          ]
+        }
+      },
+      "dcid": "heatTemperatureEvent/2022-01-01_geoId/3714594100",
       "provenance_id": "dc/base/TemperatureEvents"
     }
   ],

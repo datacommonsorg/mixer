@@ -281,7 +281,7 @@ func (sc *spannerDatabaseClient) GetEventCollection(ctx context.Context, req *pb
 	}
 
 	// Filter and Assemble
-	res := assembleEventCollection(edgesMap, req)
+	res := assembleEventCollection(dcids, edgesMap, req)
 
 	// Fetch and populate provenance info.
 	if err := sc.populateProvenanceInfo(ctx, res); err != nil {
@@ -350,23 +350,20 @@ func parseDomain(provUrl string) string {
 }
 
 
-func assembleEventCollection(edgesMap map[string][]*Edge, req *pbv1.EventCollectionRequest) *pbv1.EventCollection {
+func assembleEventCollection(dcids []string, edgesMap map[string][]*Edge, req *pbv1.EventCollectionRequest) *pbv1.EventCollection {
 	res := &pbv1.EventCollection{
 		Events:         []*pbv1.EventCollection_Event{},
 		ProvenanceInfo: make(map[string]*pbv1.EventCollection_ProvenanceInfo),
 	}
 
-	for dcid, edges := range edgesMap {
-		event := assembleAndFilterEvent(dcid, edges, req)
-		if event != nil {
-			res.Events = append(res.Events, event)
+	for _, dcid := range dcids {
+		if edges, ok := edgesMap[dcid]; ok {
+			event := assembleAndFilterEvent(dcid, edges, req)
+			if event != nil {
+				res.Events = append(res.Events, event)
+			}
 		}
 	}
-
-	// Sort events by DCID for determinism.
-	sort.Slice(res.Events, func(i, j int) bool {
-		return res.Events[i].Dcid < res.Events[j].Dcid
-	})
 
 	return res
 }
