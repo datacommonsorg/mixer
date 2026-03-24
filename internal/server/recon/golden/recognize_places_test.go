@@ -34,96 +34,70 @@ func TestRecognizePlaces(t *testing.T) {
 	goldenPath := path.Join(path.Dir(filename), "recognize_places")
 
 	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
-		for _, api := range []struct {
-			name string
-			call func(pbs.MixerClient, context.Context, *pb.RecognizePlacesRequest) (*pb.RecognizePlacesResponse, error)
+		for _, c := range []struct {
+			queries    []string
+			goldenFile string
 		}{
 			{
-				name: "v1",
-				call: func(
-					mixer pbs.MixerClient,
-					ctx context.Context,
-					req *pb.RecognizePlacesRequest,
-				) (*pb.RecognizePlacesResponse, error) {
-					return mixer.RecognizePlaces(ctx, req)
+				[]string{
+					"median income in africa",
+					"economy of Asia",
+					"tell me about chicago",
+					"tell me about palo alto",
+					"what about mountain view",
+					"crime in new york state",
+					"California economy and Florida",
+					"life expectancy in Australia and Canada",
+					"life expectancy in New York city and Alabama",
+					"the birds in San Jose are chirpy",
+					"the birds in San Jose, California are chirpy",
+					"the birds in San Jose California are chirpy",
+					"the birds in San Jose, Mountain View and Sunnyvale are chirpy",
+					"the birds in San Jose, CA, USA, Mountain View, CA and Canada are chirpy",
+					"the birds in ME and USA are chirpy, according to me",
+					"I want to find the Middle Point of a line",
+					"I went to Middle Point, USA",
+					"I went to Half Moon Bay California and California, Washington County",
+					"What is the electricity access in african countries",
+					"Compare literacy among Chinese provinces",
+					// This should only match California
+					"Chinese speakers in California",
+					"population in 94043 vs sunnyvale",
 				},
-			},
-			{
-				name: "v2",
-				call: func(
-					mixer pbs.MixerClient,
-					ctx context.Context,
-					req *pb.RecognizePlacesRequest,
-				) (*pb.RecognizePlacesResponse, error) {
-					return mixer.V2RecognizePlaces(ctx, req)
-				},
+				"result.json",
 			},
 		} {
-			for _, c := range []struct {
-				queries    []string
-				goldenFile string
-			}{
-				{
-					[]string{
-						"median income in africa",
-						"economy of Asia",
-						"tell me about chicago",
-						"tell me about palo alto",
-						"what about mountain view",
-						"crime in new york state",
-						"California economy and Florida",
-						"life expectancy in Australia and Canada",
-						"life expectancy in New York city and Alabama",
-						"the birds in San Jose are chirpy",
-						"the birds in San Jose, California are chirpy",
-						"the birds in San Jose California are chirpy",
-						"the birds in San Jose, Mountain View and Sunnyvale are chirpy",
-						"the birds in San Jose, CA, USA, Mountain View, CA and Canada are chirpy",
-						"the birds in ME and USA are chirpy, according to me",
-						"I want to find the Middle Point of a line",
-						"I went to Middle Point, USA",
-						"I went to Half Moon Bay California and California, Washington County",
-						"What is the electricity access in african countries",
-						"Compare literacy among Chinese provinces",
-						// This should only match California
-						"Chinese speakers in California",
-						"population in 94043 vs sunnyvale",
-					},
-					"result.json",
-				},
-			} {
-				t.Run(api.name+"/"+c.goldenFile, func(t *testing.T) {
-					resp, err := api.call(mixer, ctx, &pb.RecognizePlacesRequest{
-						Queries: c.queries,
-					})
-					if err != nil {
-						t.Errorf("RecognizePlaces() = %s", err)
-						return
-					}
-
-					if latencyTest {
-						return
-					}
-
-					if test.GenerateGolden {
-						test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
-						return
-					}
-
-					var expected pb.RecognizePlacesResponse
-					if err = test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
-						t.Errorf("Can not Unmarshal golden file")
-						return
-					}
-
-					cmpOpts := cmp.Options{
-						protocmp.Transform(),
-					}
-					if diff := cmp.Diff(resp, &expected, cmpOpts); diff != "" {
-						t.Errorf("payload got diff: %v", diff)
-					}
+			t.Run(c.goldenFile, func(t *testing.T) {
+				resp, err := mixer.V2RecognizePlaces(ctx, &pb.RecognizePlacesRequest{
+					Queries: c.queries,
 				})
-			}
+				if err != nil {
+					t.Errorf("RecognizePlaces() = %s", err)
+					return
+				}
+
+				if latencyTest {
+					return
+				}
+
+				if test.GenerateGolden {
+					test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
+					return
+				}
+
+				var expected pb.RecognizePlacesResponse
+				if err = test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
+					t.Errorf("Can not Unmarshal golden file")
+					return
+				}
+
+				cmpOpts := cmp.Options{
+					protocmp.Transform(),
+				}
+				if diff := cmp.Diff(resp, &expected, cmpOpts); diff != "" {
+					t.Errorf("payload got diff: %v", diff)
+				}
+			})
 		}
 	}
 
