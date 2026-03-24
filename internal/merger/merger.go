@@ -24,6 +24,7 @@ import (
 	"slices"
 	"sort"
 	"strconv"
+	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
@@ -637,4 +638,45 @@ func MergeMultiQueryResponse(allResp []*pb.QueryResponse, orderby string, asc bo
 	}
 
 	return merged, nil
+}
+
+// MergeMultiBulkVariableInfo merges multiple BulkVariableInfoResponses.
+func MergeMultiBulkVariableInfo(allResp []*pbv1.BulkVariableInfoResponse) *pbv1.BulkVariableInfoResponse {
+	if len(allResp) == 0 {
+		return &pbv1.BulkVariableInfoResponse{}
+	}
+	mergedSummaries := map[string]*pb.StatVarSummary{}
+	for _, resp := range allResp {
+		if resp == nil {
+			continue
+		}
+    for _, item := range resp.GetData() {
+      if item == nil || item.Info == nil {
+        continue
+      }
+      summary, ok := mergedSummaries[item.Node]
+      if !ok {
+        summary = &pb.StatVarSummary{
+          ProvenanceSummary: map[string]*pb.StatVarSummary_ProvenanceSummary{},
+        }
+        mergedSummaries[item.Node] = summary
+      }
+      for provId, provSummary := range item.Info.ProvenanceSummary {
+        summary.ProvenanceSummary[provId] = provSummary
+      }
+    }
+	}
+	merged := &pbv1.BulkVariableInfoResponse{
+		Data: make([]*pbv1.VariableInfoResponse, 0, len(mergedSummaries)),
+	}
+	for node, summary := range mergedSummaries {
+		merged.Data = append(merged.Data, &pbv1.VariableInfoResponse{
+			Node: node,
+			Info: summary,
+		})
+	}
+	slices.SortFunc(merged.Data, func(a, b *pbv1.VariableInfoResponse) int {
+		return strings.Compare(a.Node, b.Node)
+	})
+	return merged
 }

@@ -9,7 +9,7 @@
               "observations": [
                 {
                   "date": "2015",
-                  "value": 41740
+                  "value": 41730
                 }
               ],
               "obs_count": 1,
@@ -154,6 +154,18 @@
                 {
                   "date": "2015",
                   "value": 66548272
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2015",
+              "latest_date": "2015"
+            },
+            {
+              "facet_id": "2911625765",
+              "observations": [
+                {
+                  "date": "2015",
+                  "value": 66422469
                 }
               ],
               "obs_count": 1,
@@ -593,7 +605,7 @@
     },
     "2171028778": {
       "import_name": "WorldDevelopmentIndicators",
-      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "provenance_url": "https://datatopics.worldbank.org/world-development-indicators/",
       "observation_period": "P1Y",
       "unit": "InternationalDollar"
     },
@@ -628,6 +640,10 @@
       "import_name": "CDC_Mortality_UnderlyingCause",
       "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
     },
+    "2911625765": {
+      "import_name": "France_Demographics",
+      "provenance_url": "https://www.insee.fr/en/statistiques/8333211?sommaire=8333329"
+    },
     "2921750529": {
       "import_name": "Custom Prov",
       "provenance_url": "custom.datacommons.org"
@@ -640,7 +656,7 @@
     },
     "3981252704": {
       "import_name": "WorldDevelopmentIndicators",
-      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "provenance_url": "https://datatopics.worldbank.org/world-development-indicators/",
       "observation_period": "P1Y"
     },
     "4181918134": {

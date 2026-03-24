@@ -17,12 +17,16 @@
 package spanner
 
 import (
+	"cmp"
 	"fmt"
 	"log/slog"
+	"slices"
 	"sort"
 	"strconv"
+	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
@@ -253,6 +257,19 @@ func nodeEdgesToLinkedGraph(edges []*Edge) (*pbv2.LinkedGraph, error) {
 		nodes.Nodes = append(nodes.Nodes, node)
 
 		linkedGraph.Arcs[edge.Predicate] = nodes
+	}
+
+	// Sort nodes in each arc: Dcid -> Value -> ProvenanceId
+	for _, nodes := range linkedGraph.Arcs {
+		slices.SortFunc(nodes.Nodes, func(i, j *pb.EntityInfo) int {
+			if c := cmp.Compare(i.GetDcid(), j.GetDcid()); c != 0 {
+				return c
+			}
+			if c := cmp.Compare(i.GetValue(), j.GetValue()); c != 0 {
+				return c
+			}
+			return cmp.Compare(i.GetProvenanceId(), j.GetProvenanceId())
+		})
 	}
 
 	return linkedGraph, nil
@@ -678,4 +695,23 @@ func sparqlResultsToQueryResponse(nodes []types.Node, results [][]string) (*pb.Q
 		response.Rows = append(response.Rows, row)
 	}
 	return response, nil
+}
+
+func generateBulkVariableInfoResponse(variableInfo map[string]map[string]*pb.StatVarSummary_ProvenanceSummary) *pbv1.BulkVariableInfoResponse {
+	response := &pbv1.BulkVariableInfoResponse{
+		Data: make([]*pbv1.VariableInfoResponse, 0, len(variableInfo)),
+	}
+	for key, provToValue := range variableInfo {
+		response.Data = append(response.Data, &pbv1.VariableInfoResponse{
+			Node: key,
+			Info: &pb.StatVarSummary{
+				ProvenanceSummary: provToValue,
+			},
+		})
+	}
+	// Sort response by variable.
+	slices.SortFunc(response.Data, func(a, b *pbv1.VariableInfoResponse) int {
+		return strings.Compare(a.Node, b.Node)
+	})
+	return response
 }

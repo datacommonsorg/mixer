@@ -21,7 +21,7 @@
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y",
             "scalingFactor": "100",
             "unit": "Percent"
@@ -58,7 +58,7 @@
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y",
             "scalingFactor": "100",
             "unit": "Percent"
@@ -134,7 +134,7 @@
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y",
             "unit": "USDollar"
           }
@@ -174,12 +174,12 @@
             "2020": 25575086905083.5,
             "2021": 29237453096281.7,
             "2022": 32253389995977.8,
-            "2023": 35229761391397.6,
-            "2024": 37923660945962.1
+            "2023": 35259774523995.8,
+            "2024": 37927697690815.3
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y",
             "unit": "InternationalDollar"
           }
@@ -219,12 +219,12 @@
             "2020": 18120,
             "2021": 20700,
             "2022": 22840,
-            "2023": 24970,
+            "2023": 24990,
             "2024": 26920
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y",
             "unit": "InternationalDollar"
           }
@@ -260,10 +260,10 @@
             "2008": 9136546899.82745,
             "2009": 9209489821,
             "2010": 13636040942,
-            "2011": 16568371453,
+            "2011": 16568371453.000002,
             "2012": 17065623287,
             "2013": 17790105219,
-            "2014": 29910500593.04,
+            "2014": 29910500593.039997,
             "2015": 33104675861.87,
             "2016": 26883278893.8,
             "2017": 28675983092.3,
@@ -277,7 +277,7 @@
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "measurementMethod": "WorldBankEstimate",
             "observationPeriod": "P1Y",
             "unit": "USDollar"
@@ -331,7 +331,7 @@
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "measurementMethod": "WorldBankEstimate",
             "observationPeriod": "P1Y",
             "scalingFactor": "100",
@@ -362,22 +362,22 @@
             "2001": 936000000,
             "2002": 1172943240.3348,
             "2003": 1597068954.4748,
-            "2004": 1997994275.7942,
+            "2004": 1997994275.7941997,
             "2005": 1817413689.7668,
             "2006": 2329992812.5743,
             "2007": 2493058145.24102,
             "2008": 2736390791.37784,
-            "2009": 2051656434,
+            "2009": 2051656433.9999998,
             "2010": 1455455375,
             "2011": 1618147148,
             "2012": 1788058506,
             "2013": 1714202599,
-            "2014": 4155302052.29,
+            "2014": 4155302052.2899995,
             "2015": 5718191072.59,
             "2016": 6210890955.57,
             "2017": 16253286877.31,
-            "2018": 16548078395.86,
-            "2019": 15135300288.47,
+            "2018": 16548078395.859999,
+            "2019": 15135300288.469997,
             "2020": 18295889482.74,
             "2021": 22957840161.89,
             "2022": 22156035784.91,
@@ -386,7 +386,7 @@
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "measurementMethod": "WorldBankEstimate",
             "observationPeriod": "P1Y",
             "unit": "USDollar"
@@ -394,7 +394,7 @@
         },
         "Amount_Stock": {
           "val": {
-            "2003": 512978770000,
+            "2003": 512978769999.99994,
             "2004": 447720260000,
             "2005": 401852250000,
             "2006": 1145454870000,
@@ -419,7 +419,7 @@
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y",
             "unit": "USDollar"
           }
@@ -451,7 +451,7 @@
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y",
             "scalingFactor": "100",
             "unit": "Percent"
@@ -527,7 +527,7 @@
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y"
           }
         },
@@ -539,14 +539,14 @@
             "1993": 0.82708,
             "1994": 0.82262,
             "1995": 0.81805,
-            "1996": 0.8133,
-            "1997": 0.80834,
+            "1996": 0.81331,
+            "1997": 0.80835,
             "1998": 0.80346,
-            "1999": 0.79852,
-            "2000": 0.79328,
+            "1999": 0.79853,
+            "2000": 0.79329,
             "2001": 0.79121,
-            "2002": 0.78889,
-            "2003": 0.78643,
+            "2002": 0.7889,
+            "2003": 0.78644,
             "2004": 0.7838,
             "2005": 0.78104,
             "2006": 0.77849,
@@ -554,24 +554,24 @@
             "2008": 0.77363,
             "2009": 0.7712,
             "2010": 0.76894,
-            "2011": 0.7691,
-            "2012": 0.76583,
-            "2013": 0.76298,
-            "2014": 0.76179,
-            "2015": 0.76085,
-            "2016": 0.75948,
-            "2017": 0.75726,
-            "2018": 0.75507,
-            "2019": 0.754,
-            "2020": 0.74262,
-            "2021": 0.75862,
-            "2022": 0.747,
-            "2023": 0.7503,
-            "2024": 0.74698
+            "2011": 0.76911,
+            "2012": 0.76585,
+            "2013": 0.76301,
+            "2014": 0.76183,
+            "2015": 0.7609,
+            "2016": 0.75955,
+            "2017": 0.75735,
+            "2018": 0.75519,
+            "2019": 0.75415,
+            "2020": 0.74014,
+            "2021": 0.75936,
+            "2022": 0.74821,
+            "2023": 0.75202,
+            "2024": 0.7436
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y"
           }
         },
@@ -585,15 +585,15 @@
             "1995": 671238114,
             "1996": 678359927,
             "1997": 686473251,
-            "1998": 694001983,
-            "1999": 700421936,
+            "1998": 694011207,
+            "1999": 700431310,
             "2000": 706837950,
             "2001": 715928584,
             "2002": 725938760,
             "2003": 735682023,
             "2004": 744936890,
             "2005": 754465388,
-            "2006": 761948735,
+            "2006": 761959276,
             "2007": 766486940,
             "2008": 769779554,
             "2009": 772141043,
@@ -607,15 +607,15 @@
             "2017": 779166682,
             "2018": 776868988,
             "2019": 775928449,
-            "2020": 763830073,
+            "2020": 760877838,
             "2021": 781187865,
             "2022": 770113477,
             "2023": 774607590,
-            "2024": 773879678
+            "2024": 768163717
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "measurementMethod": "InternationalLaborOrganization",
             "observationPeriod": "P1Y"
           }
@@ -689,7 +689,7 @@
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y"
           }
         }
@@ -724,7 +724,7 @@
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y",
             "scalingFactor": "100",
             "unit": "Percent"
@@ -768,7 +768,7 @@
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y",
             "scalingFactor": "100",
             "unit": "Percent"
@@ -835,106 +835,106 @@
             "2016": 40113.7195382428,
             "2017": 42950.3841711138,
             "2018": 43257.0769238879,
-            "2019": 42779.2298164101,
-            "2020": 41850.92032802,
-            "2021": 49689.498134519,
-            "2022": 48760.0381935936,
-            "2023": 48654.904227478,
-            "2024": 48747.0136853042
+            "2019": 42855.831861632,
+            "2020": 41997.7830324279,
+            "2021": 49950.4251691316,
+            "2022": 49099.7090423358,
+            "2023": 49075.9562832927,
+            "2024": 49205.1792146792
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y",
             "unit": "USDollar"
           }
         },
         "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity": {
           "val": {
-            "1990": 47454352676.3935,
-            "1991": 47466374411.996,
-            "1992": 49341569162.5126,
-            "1993": 52920456139.2152,
-            "1994": 57740402693.7408,
-            "1995": 61571787670.2135,
-            "1996": 63698837624.8744,
-            "1997": 67991258631.4804,
-            "1998": 70330449757.7548,
+            "1990": 47265086952.5218,
+            "1991": 47272409461.1535,
+            "1992": 49141382333.1945,
+            "1993": 52707784881.5344,
+            "1994": 57729390831.6808,
+            "1995": 61497895042.6106,
+            "1996": 63527970855.2907,
+            "1997": 67893812431.913605,
+            "1998": 70339961991.827,
             "1999": 74201552981.1942,
-            "2000": 78230332023.8421,
-            "2001": 82972059285.8351,
+            "2000": 78228599429.152,
+            "2001": 82935400502.7663,
             "2002": 87388918161.2594,
-            "2003": 92011899588.8625,
-            "2004": 96803760859.1622,
+            "2003": 92046728246.9417,
+            "2004": 96908794693.0455,
             "2005": 99289902280.1303,
-            "2006": 108301879660.678,
-            "2007": 115139841793.801,
-            "2008": 118129695332.892,
-            "2009": 126920811311.563,
-            "2010": 129395571186.331,
+            "2006": 108256137959.883,
+            "2007": 115052423256.573,
+            "2008": 118129695332.89198,
+            "2009": 126879260704.697,
+            "2010": 129446750569.07002,
             "2011": 137028699488.194,
             "2012": 139656945404.654,
             "2013": 154737378620.298,
             "2014": 161822825928.522,
-            "2015": 167424166433.972,
+            "2015": 167135764613.867,
             "2016": 182353602478.265,
             "2017": 195602389726.051,
             "2018": 200761873665.02,
             "2019": 219312001926.69,
             "2020": 226310607492.76,
             "2021": 238656549590.616,
-            "2022": 265491966869.922,
-            "2023": 272733884441.328,
-            "2024": 283799109066.24
+            "2022": 265555136900.276,
+            "2023": 274627431601.68497,
+            "2024": 283422626142.535
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y",
             "unit": "InternationalDollar"
           }
         },
         "Amount_EconomicActivity_GrossNationalIncome_PurchasingPowerParity_PerCapita": {
           "val": {
-            "1990": 14250,
-            "1991": 13580,
-            "1992": 13970,
-            "1993": 14810,
+            "1990": 14190,
+            "1991": 13530,
+            "1992": 13910,
+            "1993": 14750,
             "1994": 15950,
-            "1995": 16760,
-            "1996": 17070,
-            "1997": 17980,
+            "1995": 16740,
+            "1996": 17020,
+            "1997": 17960,
             "1998": 18440,
             "1999": 19350,
             "2000": 20280,
-            "2001": 21380,
+            "2001": 21370,
             "2002": 22130,
-            "2003": 22850,
-            "2004": 23680,
+            "2003": 22860,
+            "2004": 23710,
             "2005": 24020,
-            "2006": 25880,
-            "2007": 27260,
+            "2006": 25870,
+            "2007": 27240,
             "2008": 27730,
-            "2009": 29500,
-            "2010": 29740,
+            "2009": 29490,
+            "2010": 29750,
             "2011": 31260,
             "2012": 31680,
             "2013": 34830,
             "2014": 35830,
-            "2015": 36320,
+            "2015": 36260,
             "2016": 38680,
             "2017": 40640,
             "2018": 40970,
-            "2019": 44050,
-            "2020": 44460,
-            "2021": 46690,
-            "2022": 51880,
-            "2023": 52000,
-            "2024": 53160
+            "2019": 44120,
+            "2020": 44620,
+            "2021": 46940,
+            "2022": 52260,
+            "2023": 52810,
+            "2024": 53600
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y",
             "unit": "InternationalDollar"
           }
@@ -966,7 +966,7 @@
             "1994": 1154772705,
             "1995": 1651630371,
             "1996": 2039780396,
-            "1997": 1010340271,
+            "1997": 1010340271.0000001,
             "1998": 259445526.1,
             "1999": 257530822.8,
             "2000": 215300354.565708,
@@ -984,20 +984,20 @@
             "2012": 461782564.228344,
             "2013": 459239108.402163,
             "2014": 535105600.069009,
-            "2015": 531736255.251462,
-            "2016": 528072446.592254,
+            "2015": 531736255.2514619,
+            "2016": 528072446.5922539,
             "2017": 538592709.732017,
-            "2018": 508952374.772123,
+            "2018": 508952374.7721229,
             "2019": 473929653.243396,
             "2020": 428486699.091892,
-            "2021": 661455084.266965,
-            "2022": 577354203.649818,
+            "2021": 461909394.86959594,
+            "2022": 407205402.471988,
             "2023": 555765329.002892,
             "2024": 598191538.973225
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "measurementMethod": "WorldBankEstimate",
             "observationPeriod": "P1Y",
             "unit": "USDollar"
@@ -1054,14 +1054,14 @@
             "2018": 0.2400881475,
             "2019": 0.2224955608,
             "2020": 0.2011395554,
-            "2021": 0.260438015,
-            "2022": 0.231395224,
+            "2021": 0.1818698938,
+            "2022": 0.1632020426,
             "2023": 0.217780673,
-            "2024": 0.2298650817
+            "2024": 0.2299212266
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "measurementMethod": "WorldBankEstimate",
             "observationPeriod": "P1Y",
             "scalingFactor": "100",
@@ -1115,18 +1115,18 @@
             "2014": 777100681.565818,
             "2015": 728535221.092358,
             "2016": 790898226.118918,
-            "2017": 849237896.512304,
+            "2017": 849968072.241263,
             "2018": 872298866.65562,
-            "2019": 883151923.461171,
-            "2020": 883159351.524922,
-            "2021": 895065160.208359,
-            "2022": 887928400.476622,
-            "2023": 1034642135.40053,
-            "2024": 1188927276.723
+            "2019": 880567493.922824,
+            "2020": 877935551.869655,
+            "2021": 900531667.107737,
+            "2022": 902135105.761868,
+            "2023": 1060990299.8939102,
+            "2024": 1169619979.51191
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "measurementMethod": "WorldBankEstimate",
             "observationPeriod": "P1Y",
             "unit": "USDollar"
@@ -1136,7 +1136,7 @@
           "val": {
             "1985": 8785860000,
             "1986": 22215470000,
-            "1987": 15653890000,
+            "1987": 15653889999.999998,
             "1988": 13448730000,
             "1989": 13487070000,
             "1990": 8823770000,
@@ -1160,14 +1160,14 @@
             "2008": 24209610000,
             "2009": 35506850000,
             "2012": 52870100000,
-            "2013": 65961560000,
+            "2013": 65961560000.00001,
             "2014": 74415690000,
             "2015": 74350500000,
             "2016": 80048458701.5517,
             "2017": 94691280000,
             "2018": 86132630000,
             "2019": 107879780000,
-            "2020": 132198460000,
+            "2020": 132198459999.99998,
             "2021": 122933780000,
             "2022": 97545700000,
             "2023": 96578060000,
@@ -1175,7 +1175,7 @@
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y",
             "unit": "USDollar"
           }
@@ -1219,11 +1219,11 @@
             "2021": 48.4033313924,
             "2022": 39.094907357,
             "2023": 37.8448129242,
-            "2024": 35.6855831118
+            "2024": 35.6942993643
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y",
             "scalingFactor": "100",
             "unit": "Percent"
@@ -1290,16 +1290,16 @@
             "2016": 4714100,
             "2017": 4813600,
             "2018": 4900600,
-            "2019": 4979200,
-            "2020": 5090200,
-            "2021": 5111300,
-            "2022": 5117100,
-            "2023": 5245000,
-            "2024": 5338500
+            "2019": 4970300,
+            "2020": 5072400,
+            "2021": 5084600,
+            "2022": 5081700,
+            "2023": 5200000,
+            "2024": 5287500
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y"
           }
         },
@@ -1337,13 +1337,13 @@
             "2019": 0.80932,
             "2020": 0.80654,
             "2021": 0.81576,
-            "2022": 0.82531,
-            "2023": 0.83274,
-            "2024": 0.83429
+            "2022": 0.82526,
+            "2023": 0.83267,
+            "2024": 0.82565
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y"
           }
         },
@@ -1378,16 +1378,16 @@
             "2016": 2634836,
             "2017": 2732646,
             "2018": 2787916,
-            "2019": 2824420,
-            "2020": 2879819,
-            "2021": 2919514,
-            "2022": 2953125,
-            "2023": 3061562,
-            "2024": 3124165
+            "2019": 2819371,
+            "2020": 2869748,
+            "2021": 2904263,
+            "2022": 2932530,
+            "2023": 3034955,
+            "2024": 3054575
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "measurementMethod": "InternationalLaborOrganization",
             "observationPeriod": "P1Y"
           }
@@ -1457,11 +1457,11 @@
             "2021": 4.5354056572,
             "2022": 3.4963868646,
             "2023": 1.3942518156,
-            "2024": -0.1264624186
+            "2024": 1.2886200471
           },
           "metadata": {
             "importName": "WorldDevelopmentIndicators",
-            "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+            "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
             "observationPeriod": "P1Y"
           }
         }
@@ -1488,7 +1488,7 @@
       "value": 46765,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
-        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
         "observationPeriod": "P1Y"
       }
     },
@@ -1497,16 +1497,16 @@
       "value": 1408975000,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
-        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
         "observationPeriod": "P1Y"
       }
     },
     "country/DEU": {
       "date": "2024",
-      "value": 83510950,
+      "value": 83516593,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
-        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
         "observationPeriod": "P1Y"
       }
     },
@@ -1515,16 +1515,16 @@
       "value": 232679478,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
-        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
         "observationPeriod": "P1Y"
       }
     },
     "country/NZL": {
       "date": "2024",
-      "value": 5338500,
+      "value": 5287500,
       "metadata": {
         "importName": "WorldDevelopmentIndicators",
-        "provenanceUrl": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+        "provenanceUrl": "https://datatopics.worldbank.org/world-development-indicators/",
         "observationPeriod": "P1Y"
       }
     },

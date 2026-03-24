@@ -27,6 +27,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/recon"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
+	v2e "github.com/datacommonsorg/mixer/internal/server/v2/event"
 	v3 "github.com/datacommonsorg/mixer/internal/server/v3"
 	"github.com/datacommonsorg/mixer/internal/store/files"
 	"github.com/datacommonsorg/mixer/internal/translator/sparql"
@@ -347,6 +348,14 @@ func (sds *SpannerDataSource) Event(ctx context.Context, req *pbv2.EventRequest)
 		return sds.handleEventCollectionDate(ctx, parsedReq)
 	}
 
+	parsedReq, err := parseEventCollection(req, arcs)
+	if err != nil {
+		return nil, err
+	}
+	if parsedReq != nil {
+		return sds.handleEventCollection(ctx, parsedReq)
+	}
+
 	return nil, status.Errorf(codes.InvalidArgument, "unsupported event request property: %s", req.GetProperty())
 }
 
@@ -386,4 +395,71 @@ func (sds *SpannerDataSource) handleEventCollectionDate(ctx context.Context, req
 			Dates: dates,
 		},
 	}, nil
+}
+
+func (sds *SpannerDataSource) BulkVariableInfo(ctx context.Context, req *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error) {
+	metadata, err := sds.client.GetProvenanceSummary(ctx, req.GetNodes())
+	if err != nil {
+		return nil, fmt.Errorf("error getting variable metadata from Spanner: %v", err)
+	}
+	return generateBulkVariableInfoResponse(metadata), nil
+}
+
+// parseEventCollection checks if the arcs match the pattern for EventCollection and returns the parsed request.
+// Pattern: <-location{typeOf:EventType, date:Date, filter_prop:filter_val}
+func parseEventCollection(req *pbv2.EventRequest, arcs []*v2.Arc) (*pbv1.EventCollectionRequest, error) {
+	if len(arcs) != 1 {
+		return nil, nil
+	}
+	arc := arcs[0]
+	if arc.Out || arc.SingleProp != "location" {
+		return nil, nil
+	}
+	typeOfs, ok := arc.Filter["typeOf"]
+	if !ok || len(typeOfs) == 0 {
+		return nil, fmt.Errorf("event collection requires 'typeOf' filter")
+	}
+
+	res := &pbv1.EventCollectionRequest{
+		EventType:         typeOfs[0],
+		AffectedPlaceDcid: req.GetNode(),
+	}
+
+	if dates, ok := arc.Filter["date"]; ok && len(dates) > 0 {
+		res.Date = dates[0]
+	}
+
+	// Handle standard filters (e.g. area).
+	for k, v := range arc.Filter {
+		if k == "typeOf" || k == "date" {
+			continue
+		}
+		if len(v) != 1 {
+			return nil, fmt.Errorf("extra filter '%s' can only have one value", k)
+		}
+		spec, err := v2e.ParseEventCollectionFilter(k, v[0])
+		if err != nil {
+			return nil, fmt.Errorf("invalid filter format for '%s': %v", k, err)
+		}
+		res.FilterProp = spec.Prop
+		res.FilterLowerLimit = spec.LowerLimit
+		res.FilterUpperLimit = spec.UpperLimit
+		res.FilterUnit = spec.Unit
+		break // V2 supports at most one extra filter
+	}
+
+	return res, nil
+}
+
+// handleEventCollection handles EventCollection requests.
+func (sds *SpannerDataSource) handleEventCollection(ctx context.Context, req *pbv1.EventCollectionRequest) (*pbv2.EventResponse, error) {
+	collection, err := sds.client.GetEventCollection(ctx, req)
+	if err != nil {
+		return nil, fmt.Errorf("error getting event collection: %v", err)
+	}
+
+	return &pbv2.EventResponse{
+		EventCollection: collection,
+	}, nil
+
 }

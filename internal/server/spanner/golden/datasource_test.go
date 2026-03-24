@@ -22,6 +22,7 @@ import (
 
 	"github.com/datacommonsorg/mixer/internal/maps"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
@@ -61,10 +62,16 @@ func (m *mockSpannerClient) ResolveByID(ctx context.Context, nodes []string, in,
 func (m *mockSpannerClient) Sparql(ctx context.Context, nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) ([][]string, error) {
 	return nil, nil
 }
-func (m *mockSpannerClient) GetVariableMetadata(ctx context.Context, ids []string) (map[string][]*pb.StatVarSummary_ProvenanceSummary, error) {
+func (m *mockSpannerClient) GetProvenanceSummary(ctx context.Context, ids []string) (map[string]map[string]*pb.StatVarSummary_ProvenanceSummary, error) {
 	return nil, nil
 }
 func (m *mockSpannerClient) GetEventCollectionDate(ctx context.Context, placeID, eventType string) ([]string, error) {
+	return nil, nil
+}
+func (m *mockSpannerClient) GetEventCollectionDcids(ctx context.Context, placeID, eventType, date string) ([]string, error) {
+	return nil, nil
+}
+func (m *mockSpannerClient) GetEventCollection(ctx context.Context, req *pbv1.EventCollectionRequest) (*pbv1.EventCollection, error) {
 	return nil, nil
 }
 func (m *mockSpannerClient) Id() string { return "mock" }
@@ -295,15 +302,33 @@ func TestSpannerEvent(t *testing.T) {
 			},
 			goldenFile: "event_collection_date_lbr.json",
 		},
+		{
+			req: &pbv2.EventRequest{
+				Node:     "country/LBR",
+				Property: "<-location{typeOf:FireEvent,date:2020-10}",
+			},
+			goldenFile: "event_collection_lbr.json",
+		},
+		{
+			req: &pbv2.EventRequest{
+				Node:     "country/LBR",
+				Property: "<-location{typeOf:FireEvent,date:2020-10,area:100#200#SquareKilometer}",
+			},
+			goldenFile: "event_collection_lbr_filtered.json",
+		},
 	} {
 		got, err := ds.Event(ctx, c.req)
 		if err != nil {
 			t.Fatalf("Event error (%v): %v", c.goldenFile, err)
 		}
+		// Trim to 10 events to avoid very large golden files.
+		if got.EventCollection != nil && len(got.EventCollection.Events) > 10 {
+			got.EventCollection.Events = got.EventCollection.Events[:10]
+		}
 
 		if test.GenerateGolden {
 			test.UpdateProtoGolden(got, goldenDir, c.goldenFile)
-			return
+			continue
 		}
 
 		var want pbv2.EventResponse

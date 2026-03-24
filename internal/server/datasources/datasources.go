@@ -19,6 +19,7 @@ import (
 
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/translator/sparql"
@@ -142,6 +143,17 @@ func (ds *DataSources) Event(ctx context.Context, in *pbv2.EventRequest) (*pbv2.
 		},
 		func(all []*pbv2.EventResponse) (*pbv2.EventResponse, error) {
 			return merger.MergeMultiEvent(all), nil
+		},
+	)
+}
+
+func (ds *DataSources) BulkVariableInfo(ctx context.Context, in *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error) {
+	return fetchAndMerge(ctx, ds.sources, in,
+		func(c context.Context, s datasource.DataSource, r *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error) {
+			return s.BulkVariableInfo(c, r)
+		},
+		func(all []*pbv1.BulkVariableInfoResponse) (*pbv1.BulkVariableInfoResponse, error) {
+			return merger.MergeMultiBulkVariableInfo(all), nil
 		},
 	)
 }

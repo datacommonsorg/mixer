@@ -21,6 +21,7 @@ import (
 	"sort"
 	"testing"
 
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/test"
@@ -190,7 +191,7 @@ func TestSparql(t *testing.T) {
 	}
 }
 
-func TestGetVariableMetadata(t *testing.T) {
+func TestGetProvenanceSummary(t *testing.T) {
 	client := test.NewSpannerClient()
 	if client == nil {
 		return
@@ -198,11 +199,11 @@ func TestGetVariableMetadata(t *testing.T) {
 
 	t.Parallel()
 
-	for _, c := range variableMetadataTestCases {
+	for _, c := range provenanceSummaryTestCases {
 		goldenFile := c.golden + ".json"
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return client.GetVariableMetadata(ctx, c.variables)
+			return client.GetProvenanceSummary(ctx, c.variables)
 		})
 	}
 }
@@ -220,6 +221,59 @@ func TestGetEventCollectionDate(t *testing.T) {
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
 			return client.GetEventCollectionDate(ctx, c.placeDcid, c.eventType)
+		})
+	}
+}
+
+func TestFindEventDcids(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+
+	for _, c := range eventCollectionDcidsTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return client.GetEventCollectionDcids(ctx, c.placeDcid, c.eventType, c.date)
+		})
+	}
+}
+
+func TestGetEventCollection(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+
+	for _, c := range eventCollectionTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			req := &pbv1.EventCollectionRequest{
+				AffectedPlaceDcid: c.placeDcid,
+				EventType:         c.eventType,
+				Date:              c.date,
+			}
+			if c.filterProp != "" {
+				req.FilterProp = c.filterProp
+				req.FilterUnit = c.filterUnit
+				req.FilterUpperLimit = c.filterUpperLimit
+				req.FilterLowerLimit = c.filterLowerLimit
+			}
+			res, err := client.GetEventCollection(ctx, req)
+			if err != nil {
+				return nil, err
+			}
+			// Trim to 10 events to avoid very large golden files.
+			if len(res.Events) > 10 {
+				res.Events = res.Events[:10]
+			}
+			return res, nil
 		})
 	}
 }

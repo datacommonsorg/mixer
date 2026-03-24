@@ -18,6 +18,7 @@ import (
 	"context"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
 
@@ -41,4 +42,5 @@ type DataSource interface {
 	Resolve(context.Context, *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error)
 	Sparql(context.Context, *pb.SparqlRequest) (*pb.QueryResponse, error)
 	Event(context.Context, *pbv2.EventRequest) (*pbv2.EventResponse, error)
+	BulkVariableInfo(context.Context, *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error)
 }

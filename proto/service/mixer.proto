@@ -95,6 +95,14 @@ service Mixer {
     };
   }
 
+  rpc V3BulkVariableInfo(datacommons.v1.BulkVariableInfoRequest)
+      returns (datacommons.v1.BulkVariableInfoResponse) {
+    option (google.api.http) = {
+      get : "/v3/bulk/info/variable"
+      additional_bindings : {post : "/v3/bulk/info/variable" body : "*"}
+    };
+  }
+
   // ======================  V2   V2   V2   V2  ======================
 
   rpc V2Sparql(SparqlRequest) returns (QueryResponse) {
@@ -135,12 +143,29 @@ service Mixer {
     };
   }
 
+  // Recognize places from a NL query.
+  rpc V2RecognizePlaces(RecognizePlacesRequest)
+      returns (RecognizePlacesResponse) {
+    option (google.api.http) = {
+      get : "/v2/recognize/places"
+      additional_bindings : {post : "/v2/recognize/places" body : "*"}
+    };
+  }
+
   // Filters a list of stat vars using a list of entities (places or sources).
   rpc FilterStatVarsByEntity(FilterStatVarsByEntityRequest)
       returns (FilterStatVarsByEntityResponse) {
     option (google.api.http) = {
       post : "/v2/variable/filter" 
       body : "*"
+    };
+  }
+
+  rpc V2BulkVariableInfo(datacommons.v1.BulkVariableInfoRequest)
+      returns (datacommons.v1.BulkVariableInfoResponse) {
+    option (google.api.http) = {
+      get : "/v2/bulk/info/variable"
+      additional_bindings : {post : "/v2/bulk/info/variable" body : "*"}
     };
   }
 
