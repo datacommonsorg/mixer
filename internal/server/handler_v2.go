@@ -569,6 +569,10 @@ func (s *Server) FilterStatVarsByEntity(
 func (s *Server) V2BulkVariableInfo(
 	ctx context.Context, in *pbv1.BulkVariableInfoRequest,
 ) (*pbv1.BulkVariableInfoResponse, error) {
+	if s.shouldDivertV2(ctx) {
+		return s.dispatcher.BulkVariableInfo(ctx, in)
+	}
+
 	v2StartTime := time.Now()
 
 	// Use the V1 implementation for now.
