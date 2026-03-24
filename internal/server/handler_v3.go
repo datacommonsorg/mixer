@@ -19,6 +19,7 @@ import (
 	"context"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 )
@@ -63,4 +64,11 @@ func (s *Server) V3Sparql(ctx context.Context, in *pb.SparqlRequest) (
 	*pb.QueryResponse, error,
 ) {
 	return s.dispatcher.Sparql(ctx, in)
+}
+
+// V3BulkVariableInfo implements API for mixer.V3BulkVariableInfo.
+func (s *Server) V3BulkVariableInfo(ctx context.Context, in *pbv1.BulkVariableInfoRequest) (
+	*pbv1.BulkVariableInfoResponse, error,
+) {
+	return s.dispatcher.BulkVariableInfo(ctx, in)
 }

@@ -17,6 +17,7 @@ package spanner
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"log/slog"
 	"net/url"
@@ -52,6 +53,12 @@ const (
 	maxHops = 10
 	where   = "\n\t\tWHERE\n\t\t\t"
 	and     = "\n\t\t\tAND "
+
+	// Default timeout for timestamp polling.
+	timestampPollingTimeout = 10 * time.Second
+
+	// Default timeout for API requests.
+	apiTimeout = 60 * time.Second
 
 	// Special edge predicates.
 	predAffectedPlace      = "affectedPlace"
@@ -349,7 +356,6 @@ func parseDomain(provUrl string) string {
 	return host
 }
 
-
 func assembleEventCollection(dcids []string, edgesMap map[string][]*Edge, req *pbv1.EventCollectionRequest) *pbv1.EventCollection {
 	res := &pbv1.EventCollection{
 		Events:         []*pbv1.EventCollection_Event{},
@@ -416,8 +422,8 @@ func populateGeoLocation(event *pbv1.EventCollection_Event, value string) {
 	// Note: The startLocation value in Spanner is usually a latLong/ DCID (e.g. latLong/577521_-958960).
 	// We parse it here for performance to avoid an extra database roundtrip.
 	//
-	// TODO(task): Revisit this optimization if we encounter valid startLocation values 
-	// that are NOT latLong/ DCIDs but still need to be resolved to points, or if the 
+	// TODO(task): Revisit this optimization if we encounter valid startLocation values
+	// that are NOT latLong/ DCIDs but still need to be resolved to points, or if the
 	// assumption that dcids always contain coordinates is not true.
 	if strings.HasPrefix(value, "latLong/") {
 		parts := strings.Split(strings.TrimPrefix(value, "latLong/"), "_")
@@ -607,7 +613,10 @@ func (sc *spannerDatabaseClient) GetProvenanceSummary(ctx context.Context, varia
 
 // fetchAndUpdateTimestamp queries Spanner and updates the timestamp.
 func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) error {
-	iter := sc.client.Single().Query(ctx, *GetCompletionTimestampQuery())
+	queryCtx, cancel := context.WithTimeout(ctx, timestampPollingTimeout)
+	defer cancel()
+
+	iter := sc.client.Single().Query(queryCtx, *GetCompletionTimestampQuery())
 	defer iter.Stop()
 
 	row, err := iter.Next()
@@ -615,6 +624,12 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 		return fmt.Errorf("no valid rows found in IngestionHistory")
 	}
 	if err != nil {
+		if isTimeoutError(err) {
+			slog.ErrorContext(queryCtx, "Spanner timestamp polling timed out",
+				"timeout_duration", timestampPollingTimeout.String(),
+				"error", err.Error(),
+			)
+		}
 		return fmt.Errorf("failed to fetch row: %w", err)
 	}
 
@@ -641,11 +656,37 @@ func (sc *spannerDatabaseClient) executeQuery(
 	stmt spanner.Statement,
 	handleRows func(*spanner.RowIterator) error,
 ) error {
+	var queryCtx context.Context
+	var cancel context.CancelFunc
+	var timeout time.Duration
+
+	if deadline, ok := ctx.Deadline(); ok {
+		timeout = time.Until(deadline)
+	} else {
+		// Fallback if the parent context surprisingly has no deadline.
+		// Using the default API timeout.
+		slog.Warn("Parent context has no deadline; using default API timeout", "timeout", apiTimeout.String())
+		timeout = apiTimeout
+	}
+	queryCtx, cancel = context.WithTimeout(ctx, timeout)
+	defer cancel()
+
 	runQuery := func(tb spanner.TimestampBound) error {
-		metrics.RecordSpannerQuery(ctx)
-		iter := sc.client.Single().WithTimestampBound(tb).Query(ctx, stmt)
+		metrics.RecordSpannerQuery(queryCtx)
+		iter := sc.client.Single().WithTimestampBound(tb).Query(queryCtx, stmt)
 		defer iter.Stop()
-		return handleRows(iter)
+		err := handleRows(iter)
+
+		// Log slow Spanner queries that timed out.
+		if isTimeoutError(err) {
+			slog.ErrorContext(queryCtx, "Spanner query timed out",
+				"sql", stmt.SQL,
+				"timeout", timeout.String(),
+				"error", err.Error(),
+			)
+		}
+
+		return err
 	}
 
 	if sc.useStaleReads {
@@ -798,4 +839,9 @@ func processCacheRows[T proto.Message](iter *spanner.RowIterator, newProto func(
 	}
 
 	return results, nil
+}
+
+// isTimeoutError checks if an error is a timeout error from Spanner or context.
+func isTimeoutError(err error) bool {
+	return spanner.ErrCode(err) == codes.DeadlineExceeded || errors.Is(err, context.DeadlineExceeded)
 }
