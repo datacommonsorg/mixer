@@ -556,7 +556,7 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 	if err != nil {
 		if isTimeoutError(err) {
 			slog.ErrorContext(queryCtx, "Spanner timestamp polling timed out",
-				"timeout_duration", "10s",
+				"timeout_duration", timestampPollingTimeout.String(),
 				"error", err.Error(),
 			)
 		}
