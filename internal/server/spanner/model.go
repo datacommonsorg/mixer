@@ -115,6 +115,12 @@ type ResolutionCandidate struct {
 	Candidate string `spanner:"candidate"`
 }
 
+// EventIdWithMagnitudeDcid represents a raw event row from Spanner graph queries.
+type EventIdWithMagnitudeDcid struct {
+	EventID       string
+	MagnitudeDcid string
+}
+
 // SpannerConfig struct to hold the YAML configuration to a spanner database.
 type SpannerConfig struct {
 	Project  string `yaml:"project"`

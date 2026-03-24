@@ -5,104 +5,57 @@
         "places": [
           "Earth",
           "africa",
-          "country/LBR"
+          "country/LBR",
+          "wikidataId/Q1052737",
+          "wikidataId/Q3031456"
         ],
         "geoLocations": [
           {
             "point": {
-              "latitude": 6.91239,
-              "longitude": -11.3885
+              "latitude": 6.17426,
+              "longitude": -10.57462
             }
           }
         ],
         "dates": [
-          "2020-10-09"
+          "2020-10-30"
         ],
         "propVals": {
           "area": {
             "vals": [
-              "SquareKilometer94.06721"
+              "SquareKilometer277.41648"
             ]
           },
           "endDate": {
             "vals": [
-              "2020-10-09"
+              "2020-11-04"
             ]
           },
           "geoJsonCoordinates": {
             "vals": [
-              "{\"type\": \"Polygon\", \"coordinates\": [[[-11.433914835336811, 6.869123530871398], [-11.343105834556939, 6.8712958445565695], [-11.343105834556939, 6.95570216102805], [-11.433914835336813, 6.953503685766837], [-11.433914835336811, 6.869123530871398]]]}"
+              "{\"type\": \"Polygon\", \"coordinates\": [[[-10.529611502460163, 6.133364634991164], [-10.619655276155134, 6.131579141607962], [-10.619655276155134, 6.2151696081960255], [-10.529611502460162, 6.216979062186408], [-10.439656018971009, 6.218771517569171], [-10.34978946920158, 6.220547002385851], [-10.34978946920158, 6.136885329844586], [-10.439656018971007, 6.135133355182975], [-10.529611502460163, 6.133364634991164]]]}"
             ]
           },
           "name": {
             "vals": [
-              "FireEvent at Liberia on 2020-10-09"
+              "FireEvent at Mambah-Kaba District on 2020-10-30"
             ]
           },
           "observationDate": {
             "vals": [
-              "2020-10-09"
+              "2020-10-30",
+              "2020-10-31",
+              "2020-11-02",
+              "2020-11-04"
             ]
           },
           "observationPeriod": {
             "vals": [
-              "P1D"
+              "P6D"
             ]
           }
         },
-        "dcid": "fireEvent/2020-10-09_0x0f09010000000000",
-        "provenanceId": "dc/base/NASA_VIIRSActiveFiresEvents"
-      },
-      {
-        "places": [
-          "Earth",
-          "africa",
-          "country/LBR"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 5.93404,
-              "longitude": -10.03597
-            }
-          }
-        ],
-        "dates": [
-          "2020-10-14"
-        ],
-        "propVals": {
-          "area": {
-            "vals": [
-              "SquareKilometer91.79452"
-            ]
-          },
-          "endDate": {
-            "vals": [
-              "2020-10-14"
-            ]
-          },
-          "geoJsonCoordinates": {
-            "vals": [
-              "{\"type\": \"Polygon\", \"coordinates\": [[[-10.080729817659453, 5.891543516844587], [-9.991225384867022, 5.893161056496378], [-9.991225384867024, 5.976566489231818], [-10.080729817659453, 5.97492638725516], [-10.080729817659453, 5.891543516844587]]]}"
-            ]
-          },
-          "name": {
-            "vals": [
-              "FireEvent at Liberia on 2020-10-14"
-            ]
-          },
-          "observationDate": {
-            "vals": [
-              "2020-10-14"
-            ]
-          },
-          "observationPeriod": {
-            "vals": [
-              "P1D"
-            ]
-          }
-        },
-        "dcid": "fireEvent/2020-10-14_0x0fa0e70000000000",
+        "dcid": "fireEvent/2020-10-30_0x0fa0af0000000000",
         "provenanceId": "dc/base/NASA_VIIRSActiveFiresEvents"
       },
       {
@@ -110,158 +63,54 @@
           "Earth",
           "africa",
           "country/LBR",
-          "wikidataId/Q1047921"
+          "wikidataId/Q3031987",
+          "wikidataId/Q870130"
         ],
         "geoLocations": [
           {
             "point": {
-              "latitude": 6.668,
-              "longitude": -11.02593
+              "latitude": 8.14251,
+              "longitude": -9.94651
             }
           }
         ],
         "dates": [
-          "2020-10-15"
+          "2020-10-29"
         ],
         "propVals": {
           "area": {
             "vals": [
-              "SquareKilometer93.51209"
+              "SquareKilometer188.83275"
             ]
           },
           "endDate": {
             "vals": [
-              "2020-10-15"
+              "2020-10-31"
             ]
           },
           "geoJsonCoordinates": {
             "vals": [
-              "{\"type\": \"Polygon\", \"coordinates\": [[[-11.071175792204036, 6.624915859903759], [-10.980700311326265, 6.626936443101766], [-10.980700311326265, 6.711110758715905], [-11.071175792204036, 6.709064978357141], [-11.071175792204036, 6.624915859903759]]]}"
+              "{\"type\": \"MultiPolygon\", \"coordinates\": [[[[-9.991225384867024, 8.012114400365196], [-10.080729817659453, 8.009928422929677], [-10.080729817659451, 8.096073968017157], [-9.991225384867024, 8.098282829280363], [-9.991225384867024, 8.012114400365196]]], [[[-9.991225384867022, 8.18455498758315], [-9.901813063435178, 8.186764746913918], [-9.901813063435178, 8.100469923343903], [-9.991225384867024, 8.098282829280363], [-9.991225384867022, 8.18455498758315]]]]}"
             ]
           },
           "name": {
             "vals": [
-              "FireEvent at Grand Cape Mount County on 2020-10-15"
+              "FireEvent at Voinjama District on 2020-10-29"
             ]
           },
           "observationDate": {
             "vals": [
-              "2020-10-15"
+              "2020-10-29",
+              "2020-10-31"
             ]
           },
           "observationPeriod": {
             "vals": [
-              "P1D"
+              "P3D"
             ]
           }
         },
-        "dcid": "fireEvent/2020-10-15_0x0f09bf0000000000",
-        "provenanceId": "dc/base/NASA_VIIRSActiveFiresEvents"
-      },
-      {
-        "places": [
-          "Earth",
-          "africa",
-          "country/LBR",
-          "wikidataId/Q3711106",
-          "wikidataId/Q868497"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 7.13476,
-              "longitude": -8.9687
-            }
-          }
-        ],
-        "dates": [
-          "2020-10-19"
-        ],
-        "propVals": {
-          "area": {
-            "vals": [
-              "SquareKilometer92.40039"
-            ]
-          },
-          "endDate": {
-            "vals": [
-              "2020-10-19"
-            ]
-          },
-          "geoJsonCoordinates": {
-            "vals": [
-              "{\"type\": \"Polygon\", \"coordinates\": [[[-9.01289263966051, 7.0912954005685185], [-8.924534343172422, 7.093003969627144], [-8.924534343172423, 7.178251858528139], [-9.012892639660508, 7.176523183651866], [-9.01289263966051, 7.0912954005685185]]]}"
-            ]
-          },
-          "name": {
-            "vals": [
-              "FireEvent at Leewehpea-Mahn District on 2020-10-19"
-            ]
-          },
-          "observationDate": {
-            "vals": [
-              "2020-10-19"
-            ]
-          },
-          "observationPeriod": {
-            "vals": [
-              "P1D"
-            ]
-          }
-        },
-        "dcid": "fireEvent/2020-10-19_0x0fa5cf0000000000",
-        "provenanceId": "dc/base/NASA_VIIRSActiveFiresEvents"
-      },
-      {
-        "places": [
-          "Earth",
-          "africa",
-          "country/LBR"
-        ],
-        "geoLocations": [
-          {
-            "point": {
-              "latitude": 7.63675,
-              "longitude": -9.50061
-            }
-          }
-        ],
-        "dates": [
-          "2020-10-19"
-        ],
-        "propVals": {
-          "area": {
-            "vals": [
-              "SquareKilometer93.4783"
-            ]
-          },
-          "endDate": {
-            "vals": [
-              "2020-10-19"
-            ]
-          },
-          "geoJsonCoordinates": {
-            "vals": [
-              "{\"type\": \"Polygon\", \"coordinates\": [[[-9.54509739864785, 7.5929002105543235], [-9.45615499039193, 7.594849999197043], [-9.45615499039193, 7.680623968033509], [-9.545097398647847, 7.6786526859513415], [-9.54509739864785, 7.5929002105543235]]]}"
-            ]
-          },
-          "name": {
-            "vals": [
-              "FireEvent at Liberia on 2020-10-19"
-            ]
-          },
-          "observationDate": {
-            "vals": [
-              "2020-10-19"
-            ]
-          },
-          "observationPeriod": {
-            "vals": [
-              "P1D"
-            ]
-          }
-        },
-        "dcid": "fireEvent/2020-10-19_0x0fa61f0000000000",
+        "dcid": "fireEvent/2020-10-29_0x0fa85d0000000000",
         "provenanceId": "dc/base/NASA_VIIRSActiveFiresEvents"
       },
       {
@@ -275,38 +124,38 @@
         "geoLocations": [
           {
             "point": {
-              "latitude": 6.76423,
-              "longitude": -10.48462
+              "latitude": 6.68178,
+              "longitude": -10.39471
             }
           }
         ],
         "dates": [
-          "2020-10-19"
+          "2020-10-30"
         ],
         "propVals": {
           "area": {
             "vals": [
-              "SquareKilometer93.24245"
+              "SquareKilometer186.24469"
             ]
           },
           "endDate": {
             "vals": [
-              "2020-10-19"
+              "2020-10-30"
             ]
           },
           "geoJsonCoordinates": {
             "vals": [
-              "{\"type\": \"Polygon\", \"coordinates\": [[[-10.529611502460162, 6.721062747897819], [-10.439656018971009, 6.722997964061528], [-10.439656018971007, 6.807430721330982], [-10.529611502460162, 6.805471657239533], [-10.529611502460162, 6.721062747897819]]]}"
+              "{\"type\": \"Polygon\", \"coordinates\": [[[-10.34978946920158, 6.640570531019608], [-10.439656018971007, 6.6386772462403485], [-10.439656018971009, 6.722997964061528], [-10.439656018971007, 6.807430721330982], [-10.34978946920158, 6.809371234843888], [-10.34978946920158, 6.724914855847337], [-10.34978946920158, 6.640570531019608]]]}"
             ]
           },
           "name": {
             "vals": [
-              "FireEvent at Todee District on 2020-10-19"
+              "FireEvent at Todee District on 2020-10-30"
             ]
           },
           "observationDate": {
             "vals": [
-              "2020-10-19"
+              "2020-10-30"
             ]
           },
           "observationPeriod": {
@@ -315,7 +164,60 @@
             ]
           }
         },
-        "dcid": "fireEvent/2020-10-19_0x0fa7650000000000",
+        "dcid": "fireEvent/2020-10-30_0x0fa7690000000000",
+        "provenanceId": "dc/base/NASA_VIIRSActiveFiresEvents"
+      },
+      {
+        "places": [
+          "Earth",
+          "africa",
+          "country/LBR"
+        ],
+        "geoLocations": [
+          {
+            "point": {
+              "latitude": 7.03166,
+              "longitude": -9.85714
+            }
+          }
+        ],
+        "dates": [
+          "2020-10-29"
+        ],
+        "propVals": {
+          "area": {
+            "vals": [
+              "SquareKilometer185.96912"
+            ]
+          },
+          "endDate": {
+            "vals": [
+              "2020-10-30"
+            ]
+          },
+          "geoJsonCoordinates": {
+            "vals": [
+              "{\"type\": \"MultiPolygon\", \"coordinates\": [[[[-9.901813063435178, 6.988273240173706], [-9.901813063435178, 7.073177701895403], [-9.812493480789382, 7.075074485328742], [-9.812493480789382, 6.990147711575564], [-9.901813063435178, 6.988273240173706]]], [[[-9.72326726161636, 6.992003415497629], [-9.723267261616362, 6.907165189418345], [-9.812493480789382, 6.905331561283287], [-9.812493480789382, 6.990147711575564], [-9.72326726161636, 6.992003415497629]]]]}"
+            ]
+          },
+          "name": {
+            "vals": [
+              "FireEvent at Liberia on 2020-10-29"
+            ]
+          },
+          "observationDate": {
+            "vals": [
+              "2020-10-29",
+              "2020-10-30"
+            ]
+          },
+          "observationPeriod": {
+            "vals": [
+              "P2D"
+            ]
+          }
+        },
+        "dcid": "fireEvent/2020-10-29_0x0fa6550000000000",
         "provenanceId": "dc/base/NASA_VIIRSActiveFiresEvents"
       },
       {
@@ -323,43 +225,44 @@
           "Earth",
           "africa",
           "country/LBR",
-          "wikidataId/Q27466632"
+          "wikidataId/Q3031804",
+          "wikidataId/Q877578"
         ],
         "geoLocations": [
           {
             "point": {
-              "latitude": 6.66595,
-              "longitude": -11.11645
+              "latitude": 6.77187,
+              "longitude": -10.12552
             }
           }
         ],
         "dates": [
-          "2020-10-24"
+          "2020-10-29"
         ],
         "propVals": {
           "area": {
             "vals": [
-              "SquareKilometer93.57154"
+              "SquareKilometer185.83528"
             ]
           },
           "endDate": {
             "vals": [
-              "2020-10-24"
+              "2020-10-29"
             ]
           },
           "geoJsonCoordinates": {
             "vals": [
-              "{\"type\": \"Polygon\", \"coordinates\": [[[-11.161735647774723, 6.622876980100405], [-11.071175792204036, 6.624915859903759], [-11.071175792204036, 6.709064978357141], [-11.161735647774721, 6.707000672797649], [-11.161735647774723, 6.622876980100405]]]}"
+              "{\"type\": \"Polygon\", \"coordinates\": [[[-10.080729817659453, 6.646142102885027], [-10.17032573166423, 6.644302928060019], [-10.17032573166423, 6.728693790334738], [-10.17032573166423, 6.813196735755789], [-10.080729817659451, 6.815081787321996], [-10.080729817659453, 6.730555896401217], [-10.080729817659453, 6.646142102885027]]]}"
             ]
           },
           "name": {
             "vals": [
-              "FireEvent at Garwula on 2020-10-24"
+              "FireEvent at Salala District on 2020-10-29"
             ]
           },
           "observationDate": {
             "vals": [
-              "2020-10-24"
+              "2020-10-29"
             ]
           },
           "observationPeriod": {
@@ -368,7 +271,62 @@
             ]
           }
         },
-        "dcid": "fireEvent/2020-10-24_0x0f09bd0000000000",
+        "dcid": "fireEvent/2020-10-29_0x0fa7170000000000",
+        "provenanceId": "dc/base/NASA_VIIRSActiveFiresEvents"
+      },
+      {
+        "places": [
+          "Earth",
+          "africa",
+          "country/LBR",
+          "wikidataId/Q3711155",
+          "wikidataId/Q868497"
+        ],
+        "geoLocations": [
+          {
+            "point": {
+              "latitude": 6.96111,
+              "longitude": -9.14562
+            }
+          }
+        ],
+        "dates": [
+          "2020-10-29"
+        ],
+        "propVals": {
+          "area": {
+            "vals": [
+              "SquareKilometer184.68923"
+            ]
+          },
+          "endDate": {
+            "vals": [
+              "2020-10-30"
+            ]
+          },
+          "geoJsonCoordinates": {
+            "vals": [
+              "{\"type\": \"MultiPolygon\", \"coordinates\": [[[[-9.189905212974633, 7.002745568141814], [-9.101349796048224, 7.004470933809298], [-9.101349796048222, 6.919484400964278], [-9.189905212974635, 6.917779558359327], [-9.189905212974633, 7.002745568141814]]], [[[-9.189905212974633, 6.832924767497727], [-9.27855828820766, 6.831222371480414], [-9.27855828820766, 6.9160564308838435], [-9.189905212974635, 6.917779558359327], [-9.189905212974633, 6.832924767497727]]]]}"
+            ]
+          },
+          "name": {
+            "vals": [
+              "FireEvent at Meinpea-Mahn District on 2020-10-29"
+            ]
+          },
+          "observationDate": {
+            "vals": [
+              "2020-10-29",
+              "2020-10-30"
+            ]
+          },
+          "observationPeriod": {
+            "vals": [
+              "P2D"
+            ]
+          }
+        },
+        "dcid": "fireEvent/2020-10-29_0x0fa42b0000000000",
         "provenanceId": "dc/base/NASA_VIIRSActiveFiresEvents"
       },
       {
@@ -429,15 +387,13 @@
         "places": [
           "Earth",
           "africa",
-          "country/LBR",
-          "wikidataId/Q3710912",
-          "wikidataId/Q868497"
+          "country/LBR"
         ],
         "geoLocations": [
           {
             "point": {
-              "latitude": 7.22005,
-              "longitude": -8.9687
+              "latitude": 8.22436,
+              "longitude": -10.12552
             }
           }
         ],
@@ -447,7 +403,7 @@
         "propVals": {
           "area": {
             "vals": [
-              "SquareKilometer92.50197"
+              "SquareKilometer94.66404"
             ]
           },
           "endDate": {
@@ -457,12 +413,12 @@
           },
           "geoJsonCoordinates": {
             "vals": [
-              "{\"type\": \"Polygon\", \"coordinates\": [[[-9.012892639660508, 7.176523183651866], [-8.924534343172423, 7.178251858528139], [-8.924534343172423, 7.263609456476478], [-9.012892639660508, 7.261860665238935], [-9.012892639660508, 7.176523183651866]]]}"
+              "{\"type\": \"Polygon\", \"coordinates\": [[[-10.170325731664231, 8.180069448848954], [-10.080729817659451, 8.182323234956812], [-10.080729817659453, 8.268675675247762], [-10.170325731664231, 8.266398764056506], [-10.170325731664231, 8.180069448848954]]]}"
             ]
           },
           "name": {
             "vals": [
-              "FireEvent at Garr Bain District on 2020-10-24"
+              "FireEvent at Liberia on 2020-10-24"
             ]
           },
           "observationDate": {
@@ -476,7 +432,59 @@
             ]
           }
         },
-        "dcid": "fireEvent/2020-10-24_0x0fa5c50000000000",
+        "dcid": "fireEvent/2020-10-24_0x0fa84f0000000000",
+        "provenanceId": "dc/base/NASA_VIIRSActiveFiresEvents"
+      },
+      {
+        "places": [
+          "Earth",
+          "africa",
+          "country/LBR"
+        ],
+        "geoLocations": [
+          {
+            "point": {
+              "latitude": 6.91239,
+              "longitude": -11.3885
+            }
+          }
+        ],
+        "dates": [
+          "2020-10-09"
+        ],
+        "propVals": {
+          "area": {
+            "vals": [
+              "SquareKilometer94.06721"
+            ]
+          },
+          "endDate": {
+            "vals": [
+              "2020-10-09"
+            ]
+          },
+          "geoJsonCoordinates": {
+            "vals": [
+              "{\"type\": \"Polygon\", \"coordinates\": [[[-11.433914835336811, 6.869123530871398], [-11.343105834556939, 6.8712958445565695], [-11.343105834556939, 6.95570216102805], [-11.433914835336813, 6.953503685766837], [-11.433914835336811, 6.869123530871398]]]}"
+            ]
+          },
+          "name": {
+            "vals": [
+              "FireEvent at Liberia on 2020-10-09"
+            ]
+          },
+          "observationDate": {
+            "vals": [
+              "2020-10-09"
+            ]
+          },
+          "observationPeriod": {
+            "vals": [
+              "P1D"
+            ]
+          }
+        },
+        "dcid": "fireEvent/2020-10-09_0x0f09010000000000",
         "provenanceId": "dc/base/NASA_VIIRSActiveFiresEvents"
       },
       {
@@ -484,44 +492,44 @@
           "Earth",
           "africa",
           "country/LBR",
-          "wikidataId/Q3031879",
-          "wikidataId/Q877578"
+          "wikidataId/Q3031045",
+          "wikidataId/Q592251"
         ],
         "geoLocations": [
           {
             "point": {
-              "latitude": 7.03723,
-              "longitude": -9.5896
+              "latitude": 7.18978,
+              "longitude": -10.39471
             }
           }
         ],
         "dates": [
-          "2020-10-24"
+          "2020-10-30"
         ],
         "propVals": {
           "area": {
             "vals": [
-              "SquareKilometer92.85048"
+              "SquareKilometer93.70108"
             ]
           },
           "endDate": {
             "vals": [
-              "2020-10-24"
+              "2020-10-30"
             ]
           },
           "geoJsonCoordinates": {
             "vals": [
-              "{\"type\": \"Polygon\", \"coordinates\": [[[-9.634135027848398, 6.993840387817968], [-9.54509739864785, 6.995658664946421], [-9.54509739864785, 7.080651034016841], [-9.6341350278484, 7.078811114804452], [-9.634135027848398, 6.993840387817968]]]}"
+              "{\"type\": \"Polygon\", \"coordinates\": [[[-10.439656018971007, 7.146272110924559], [-10.34978946920158, 7.148307250289902], [-10.34978946920158, 7.233316342142611], [-10.439656018971009, 7.231257513660932], [-10.439656018971007, 7.146272110924559]]]}"
             ]
           },
           "name": {
             "vals": [
-              "FireEvent at Suakoko District on 2020-10-24"
+              "FireEvent at Bopolu District on 2020-10-30"
             ]
           },
           "observationDate": {
             "vals": [
-              "2020-10-24"
+              "2020-10-30"
             ]
           },
           "observationPeriod": {
@@ -530,7 +538,7 @@
             ]
           }
         },
-        "dcid": "fireEvent/2020-10-24_0x0fa65f0000000000",
+        "dcid": "fireEvent/2020-10-30_0x0fa7910000000000",
         "provenanceId": "dc/base/NASA_VIIRSActiveFiresEvents"
       }
     ],

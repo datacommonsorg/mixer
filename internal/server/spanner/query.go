@@ -41,6 +41,14 @@ import (
 )
 
 const (
+	// Maximum number of events to return for an event collection.
+	maxEvents = 100
+
+	// Use a large page size for the batch to ensure we get properties for all events.
+	// Since we have up to maxEvents (100) events, and each event might have multiple edges,
+	// DefaultPageSize (500) is too small and truncates the results for events at the end of the batch.
+	eventBatchPageSize = 10000
+
 	// Maximum number of edge hops to traverse for chained properties.
 	maxHops = 10
 	where   = "\n\t\tWHERE\n\t\t\t"
@@ -259,26 +267,28 @@ func (sc *spannerDatabaseClient) GetEventCollectionDate(ctx context.Context, pla
 // GetEventCollection retrieves and filters event collection from Spanner.
 func (sc *spannerDatabaseClient) GetEventCollection(ctx context.Context, req *pbv1.EventCollectionRequest) (*pbv1.EventCollection, error) {
 	// Get event DCIDs
-	dcids, err := sc.GetEventCollectionDcids(ctx, req.AffectedPlaceDcid, req.EventType, req.Date)
+	eventRows, err := sc.GetEventCollectionDcids(ctx, req.AffectedPlaceDcid, req.EventType, req.Date)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get event dcids: %w", err)
 	}
-	if len(dcids) == 0 {
+	if len(eventRows) == 0 {
 		return &pbv1.EventCollection{}, nil
 	}
+
+	dcids := parseAndSortEvents(eventRows, req.EventType)
 
 	// Get properties for all DCIDs
 	arc := &v2.Arc{
 		Out:        true,
 		SingleProp: "*",
 	}
-	edgesMap, err := sc.GetNodeEdgesByID(ctx, dcids, arc, datasources.DefaultPageSize, 0)
+	edgesMap, err := sc.GetNodeEdgesByID(ctx, dcids, arc, eventBatchPageSize, 0)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get node edges: %w", err)
 	}
 
 	// Filter and Assemble
-	res := assembleEventCollection(edgesMap, req)
+	res := assembleEventCollection(dcids, edgesMap, req)
 
 	// Fetch and populate provenance info.
 	if err := sc.populateProvenanceInfo(ctx, res); err != nil {
@@ -346,23 +356,20 @@ func parseDomain(provUrl string) string {
 	return host
 }
 
-func assembleEventCollection(edgesMap map[string][]*Edge, req *pbv1.EventCollectionRequest) *pbv1.EventCollection {
+func assembleEventCollection(dcids []string, edgesMap map[string][]*Edge, req *pbv1.EventCollectionRequest) *pbv1.EventCollection {
 	res := &pbv1.EventCollection{
 		Events:         []*pbv1.EventCollection_Event{},
 		ProvenanceInfo: make(map[string]*pbv1.EventCollection_ProvenanceInfo),
 	}
 
-	for dcid, edges := range edgesMap {
-		event := assembleAndFilterEvent(dcid, edges, req)
-		if event != nil {
-			res.Events = append(res.Events, event)
+	for _, dcid := range dcids {
+		if edges, ok := edgesMap[dcid]; ok {
+			event := assembleAndFilterEvent(dcid, edges, req)
+			if event != nil {
+				res.Events = append(res.Events, event)
+			}
 		}
 	}
-
-	// Sort events by DCID for determinism.
-	sort.Slice(res.Events, func(i, j int) bool {
-		return res.Events[i].Dcid < res.Events[j].Dcid
-	})
 
 	return res
 }
@@ -495,20 +502,83 @@ func keepEvent(event *pbv1.EventCollection_Event, req *pbv1.EventCollectionReque
 }
 
 // GetEventCollectionDcids retrieves event DCIDs from Spanner.
-func (sc *spannerDatabaseClient) GetEventCollectionDcids(ctx context.Context, placeID, eventType, date string) ([]string, error) {
+func (sc *spannerDatabaseClient) GetEventCollectionDcids(ctx context.Context, placeID, eventType, date string) ([]EventIdWithMagnitudeDcid, error) {
 	stmt := GetEventCollectionDcidsQuery(placeID, eventType, date)
 	rows, err := queryDynamic(ctx, sc, *stmt)
 	if err != nil {
 		return nil, err
 	}
 
-	var dcids []string
+	var res []EventIdWithMagnitudeDcid
 	for _, row := range rows {
-		if len(row) > 0 {
-			dcids = append(dcids, row[0])
+		if len(row) == 0 {
+			continue
 		}
+		item := EventIdWithMagnitudeDcid{EventID: row[0]}
+		if len(row) > 1 {
+			item.MagnitudeDcid = row[1]
+		}
+		res = append(res, item)
 	}
-	return dcids, nil
+	return res, nil
+}
+
+type parsedEvent struct {
+	dcid      string
+	magnitude float64
+}
+
+// parseMagnitudeDcid parses the numeric magnitude value from a DCID string.
+//
+// Background:
+// In the Spanner graph, quantity nodes have a `value` property that is identical to their DCID
+// (e.g. `SquareKilometer91.57871`). Since we'd still receive a string with a prefix even after
+// another jump, we can bypass the redundant join and parse the numeric value directly from the
+// `object_id` of the edge in-memory.
+// Ideally the value in Spanner should be stored as just the value and not this awkward string.
+// If that happens, we can remove this function and just use the value directly.
+func parseMagnitudeDcid(magnitudeDcid, unit string) float64 {
+	if magnitudeDcid == "" || unit == "" {
+		return 0.0
+	}
+	valStr := strings.TrimPrefix(magnitudeDcid, unit)
+	v, err := strconv.ParseFloat(valStr, 64)
+	if err != nil {
+		slog.Error("failed to parse magnitude DCID", "err", err, "valStr", valStr, "magnitudeDcid", magnitudeDcid)
+		return 0.0
+	}
+	return v
+}
+
+// parseAndSortEvents parses magnitude DCIDs, sorts events by magnitude then DCID alphabetical, and truncates to top 100.
+func parseAndSortEvents(rows []EventIdWithMagnitudeDcid, eventType string) []string {
+	cfg, hasCfg := EventConfigs[eventType]
+
+	var events []parsedEvent
+	for _, r := range rows {
+		mag := 0.0
+		if hasCfg {
+			mag = parseMagnitudeDcid(r.MagnitudeDcid, cfg.MagnitudeValUnit)
+		}
+		events = append(events, parsedEvent{dcid: r.EventID, magnitude: mag})
+	}
+
+	// Stable sort: magnitude descending (or ascending per config), DCID ascending tie-breaker
+	sort.SliceStable(events, func(i, j int) bool {
+		if events[i].magnitude != events[j].magnitude {
+			if hasCfg && cfg.Order == ASC {
+				return events[i].magnitude < events[j].magnitude
+			}
+			return events[i].magnitude > events[j].magnitude
+		}
+		return events[i].dcid < events[j].dcid
+	})
+
+	var res []string
+	for i := 0; i < len(events) && i < maxEvents; i++ {
+		res = append(res, events[i].dcid)
+	}
+	return res
 }
 
 func (sc *spannerDatabaseClient) Sparql(ctx context.Context, nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) ([][]string, error) {
