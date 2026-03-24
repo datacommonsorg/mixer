@@ -73,7 +73,7 @@ fi
 git checkout "$latest_release_tag"
 
 # Confirm before updating the tag
-read -r -p "Update the website prod tag to point to '$latest_release_tag'? [y/N] " response
+read -r -p "Update the mixer prod tag to point to '$latest_release_tag'? [y/N] " response
 if [[ ! "$response" =~ ^[Yy]([Ee][Ss])?$ ]]; then
   echo "Aborting..."
   exit 0
