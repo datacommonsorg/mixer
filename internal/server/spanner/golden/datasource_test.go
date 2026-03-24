@@ -350,18 +350,6 @@ func TestSpannerEvent(t *testing.T) {
 }
 
 func TestSpannerObservation(t *testing.T) {
-	client := test.NewSpannerClient()
-	if client == nil {
-		client = &mockSpannerClient{
-			checkVariableExistenceRes: [][]string{
-				{"Count_Person", "geoId/06"},
-				{"Median_Income_Person", "geoId/06"},
-				{"Count_Person", "geoId/01"},
-			},
-		}
-	}
-	ds := spanner.NewSpannerDataSource(client, nil, nil)
-
 	t.Parallel()
 	ctx := context.Background()
 	_, filename, _, _ := runtime.Caller(0)
@@ -370,6 +358,7 @@ func TestSpannerObservation(t *testing.T) {
 	for _, c := range []struct {
 		desc       string
 		req        *pbv2.ObservationRequest
+		mockRes    [][]string
 		goldenFile string
 		wantErr    bool
 	}{
@@ -384,6 +373,10 @@ func TestSpannerObservation(t *testing.T) {
 				},
 				Select: []string{"variable", "entity"},
 			},
+			mockRes: [][]string{
+				{"Count_Person", "geoId/06"},
+				{"Median_Income_Person", "geoId/06"},
+			},
 			goldenFile: "observation_existence.json",
 		},
 		{
@@ -396,6 +389,10 @@ func TestSpannerObservation(t *testing.T) {
 					Dcids: []string{"geoId/06", "geoId/01"},
 				},
 				Select: []string{"variable", "entity"},
+			},
+			mockRes: [][]string{
+				{"Count_Person", "geoId/06"},
+				{"Count_Person", "geoId/01"},
 			},
 			goldenFile: "observation_existence_multi_entity.json",
 		},
@@ -410,6 +407,7 @@ func TestSpannerObservation(t *testing.T) {
 				},
 				Select: []string{"variable", "entity"},
 			},
+			mockRes:    [][]string{},
 			goldenFile: "observation_existence_no_vars.json",
 		},
 		{
@@ -423,9 +421,15 @@ func TestSpannerObservation(t *testing.T) {
 				},
 				Select: []string{"variable", "entity"},
 			},
+			mockRes: [][]string{},
 			wantErr: true,
 		},
 	} {
+		client := &mockSpannerClient{
+			checkVariableExistenceRes: c.mockRes,
+		}
+		ds := spanner.NewSpannerDataSource(client, nil, nil)
+
 		got, err := ds.Observation(ctx, c.req)
 		if (err != nil) != c.wantErr {
 			t.Fatalf("%s: Observation error = %v, wantErr %v", c.desc, err, c.wantErr)

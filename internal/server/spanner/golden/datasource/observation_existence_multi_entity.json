@@ -5,11 +5,6 @@
         "geoId/01": {},
         "geoId/06": {}
       }
-    },
-    "Median_Income_Person": {
-      "byEntity": {
-        "geoId/06": {}
-      }
     }
   }
 }

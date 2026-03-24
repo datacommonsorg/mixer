@@ -2,7 +2,6 @@
   "byVariable": {
     "Count_Person": {
       "byEntity": {
-        "geoId/01": {},
         "geoId/06": {}
       }
     },

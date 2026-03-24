@@ -146,15 +146,19 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 		if err != nil {
 			return nil, fmt.Errorf("error checking variable existence: %v", err)
 		}
+		
+		obs := make([]*Observation, 0, len(rows))
 		for _, row := range rows {
-			if len(row) == 2 {
-				observations = append(observations, &Observation{
-					VariableMeasured: row[0],
-					ObservationAbout: row[1],
-				})
+			if len(row) != 2 {
+				slog.Warn("CheckVariableExistence returned row with unexpected length", "length", len(row))
+				continue
 			}
+			obs = append(obs, &Observation{
+				VariableMeasured: row[0],
+				ObservationAbout: row[1],
+			})
 		}
-		return obsToExistenceResponse(req, observations), nil
+		return obsToExistenceResponse(req, obs), nil
 	}
 
 	if entityExpr != "" {
