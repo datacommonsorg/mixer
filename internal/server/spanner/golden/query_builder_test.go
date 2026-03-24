@@ -125,10 +125,10 @@ func TestSparqlQuery(t *testing.T) {
 	}
 }
 
-func TestGetVariableMetadataQuery(t *testing.T) {
+func TestGetProvenanceSummaryQuery(t *testing.T) {
 	t.Parallel()
 
-	for _, c := range variableMetadataTestCases {
+	for _, c := range provenanceSummaryTestCases {
 		goldenFile := c.golden + ".sql"
 
 		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
@@ -145,6 +145,18 @@ func TestGetEventCollectionDateQuery(t *testing.T) {
 
 		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
 			return spanner.GetEventCollectionDateQuery(c.placeDcid, c.eventType), nil
+		})
+	}
+}
+
+func TestGetEventCollectionDcidsQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range eventCollectionDcidsTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.GetEventCollectionDcidsQuery(c.placeDcid, c.eventType, c.date), nil
 		})
 	}
 }

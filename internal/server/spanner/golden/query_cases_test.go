@@ -411,13 +411,13 @@ var sparqlTestCases = []struct {
 	},
 }
 
-var variableMetadataTestCases = []struct {
+var provenanceSummaryTestCases = []struct {
 	variables []string
 	golden    string
 }{
 	{
-		variables: []string{"Count_Household_FamilyHousehold", "Count_Household_HasComputer"},
-		golden:    "get_variable_metadata",
+		variables: []string{"Count_Household_FamilyHousehold", "Count_Household_HasComputer", "foo"},
+		golden:    "get_provenance_summary",
 	},
 }
 
@@ -430,5 +430,58 @@ var eventCollectionDateTestCases = []struct {
 		placeDcid: "country/LBR",
 		eventType: "FireEvent",
 		golden:    "get_event_collection_date",
+	},
+	{
+		placeDcid: "country/GBR",
+		eventType: "FloodEvent",
+		golden:    "get_event_collection_date_flood",
+	},
+}
+
+var eventCollectionDcidsTestCases = []struct {
+	placeDcid string
+	eventType string
+	date      string
+	golden    string
+}{
+	{
+		placeDcid: "country/LBR",
+		eventType: "FireEvent",
+		date:      "2020-10",
+		golden:    "get_event_collection_dcids",
+	},
+	{
+		placeDcid: "country/GBR",
+		eventType: "FloodEvent",
+		date:      "2025-01",
+		golden:    "get_event_collection_dcids_flood",
+	},
+}
+
+var eventCollectionTestCases = []struct {
+	placeDcid        string
+	eventType        string
+	date             string
+	filterProp       string
+	filterUnit       string
+	filterLowerLimit float64
+	filterUpperLimit float64
+	golden           string
+}{
+	{
+		placeDcid: "country/LBR",
+		eventType: "FireEvent",
+		date:      "2020-10",
+		golden:    "get_event_collection",
+	},
+	{
+		placeDcid:        "country/LBR",
+		eventType:        "FireEvent",
+		date:             "2020-10",
+		filterProp:       "area",
+		filterUnit:       "SquareKilometer",
+		filterLowerLimit: 100,
+		filterUpperLimit: 200,
+		golden:           "get_event_collection_filtered",
 	},
 }

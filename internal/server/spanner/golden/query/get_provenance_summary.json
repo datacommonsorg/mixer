@@ -1,0 +1,212 @@
+{
+  "Count_Household_FamilyHousehold": {
+    "dc/base/CensusACS5YearSurvey": {
+      "import_name": "CensusACS5YearSurvey",
+      "series_summary": [
+        {
+          "series_key": {
+            "measurement_method": "CensusACS5yrSurvey"
+          },
+          "earliest_date": "2011",
+          "latest_date": "2023",
+          "place_type_summary": {
+            "AdministrativeArea1": {},
+            "AdministrativeArea2": {},
+            "AdministrativeArea4": {},
+            "AdministrativeArea5": {},
+            "Borough": {},
+            "CensusCoreBasedStatisticalArea": {},
+            "CensusCountyDivision": {},
+            "CensusDivision": {},
+            "CensusTract": {},
+            "CensusZipCodeTabulationArea": {},
+            "City": {},
+            "CongressionalDistrict": {},
+            "Country": {},
+            "County": {},
+            "ElementarySchoolDistrict": {},
+            "HighSchoolDistrict": {},
+            "Neighborhood": {},
+            "Place": {},
+            "ProvisionalNode": {},
+            "SchoolDistrict": {},
+            "State": {},
+            "StateComponent": {},
+            "Town": {},
+            "Village": {}
+          },
+          "observation_count": 2547106,
+          "time_series_count": 220438
+        }
+      ],
+      "observation_count": 2547106,
+      "time_series_count": 220438
+    },
+    "dc/base/CensusACS5YearSurvey_AggCountry": {
+      "import_name": "CensusACS5YearSurvey_AggCountry",
+      "series_summary": [
+        {
+          "series_key": {
+            "measurement_method": "CensusACS5yrSurvey",
+            "is_dc_aggregate": true
+          },
+          "earliest_date": "2011",
+          "latest_date": "2023",
+          "place_type_summary": {
+            "Country": {}
+          },
+          "observation_count": 13,
+          "time_series_count": 1
+        }
+      ],
+      "observation_count": 13,
+      "time_series_count": 1
+    },
+    "dc/base/CensusACS5YearSurvey_SubjectTables_S1702": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S1702",
+      "series_summary": [
+        {
+          "series_key": {
+            "measurement_method": "CensusACS5yrSurveySubjectTable"
+          },
+          "earliest_date": "2010",
+          "latest_date": "2023",
+          "place_type_summary": {
+            "AdministrativeArea1": {},
+            "AdministrativeArea2": {},
+            "AdministrativeArea4": {},
+            "AdministrativeArea5": {},
+            "Borough": {},
+            "CensusCoreBasedStatisticalArea": {},
+            "CensusCountyDivision": {},
+            "CensusDivision": {},
+            "CensusTract": {},
+            "CensusZipCodeTabulationArea": {},
+            "City": {},
+            "CongressionalDistrict": {},
+            "Country": {},
+            "County": {},
+            "ElementarySchoolDistrict": {},
+            "HighSchoolDistrict": {},
+            "Neighborhood": {},
+            "Place": {},
+            "ProvisionalNode": {},
+            "SchoolDistrict": {},
+            "State": {},
+            "Town": {},
+            "Village": {}
+          },
+          "observation_count": 2702027,
+          "time_series_count": 220002
+        }
+      ],
+      "observation_count": 2702027,
+      "time_series_count": 220002
+    },
+    "dc/base/CensusACS5YearSurvey_SubjectTables_S1901": {
+      "import_name": "CensusACS5YearSurvey_SubjectTables_S1901",
+      "series_summary": [
+        {
+          "series_key": {
+            "measurement_method": "CensusACS5yrSurveySubjectTable"
+          },
+          "earliest_date": "2010",
+          "latest_date": "2023",
+          "place_type_summary": {
+            "AdministrativeArea1": {},
+            "AdministrativeArea2": {},
+            "AdministrativeArea4": {},
+            "AdministrativeArea5": {},
+            "Borough": {},
+            "CensusCoreBasedStatisticalArea": {},
+            "CensusCountyDivision": {},
+            "CensusTract": {},
+            "CensusZipCodeTabulationArea": {},
+            "City": {},
+            "CongressionalDistrict": {},
+            "Country": {},
+            "County": {},
+            "ElementarySchoolDistrict": {},
+            "HighSchoolDistrict": {},
+            "Neighborhood": {},
+            "Place": {},
+            "ProvisionalNode": {},
+            "SchoolDistrict": {},
+            "State": {},
+            "Town": {},
+            "Village": {}
+          },
+          "observation_count": 2701901,
+          "time_series_count": 219993
+        }
+      ],
+      "observation_count": 2701901,
+      "time_series_count": 219993
+    }
+  },
+  "Count_Household_HasComputer": {
+    "dc/base/CensusACS5YearSurvey": {
+      "import_name": "CensusACS5YearSurvey",
+      "series_summary": [
+        {
+          "series_key": {
+            "measurement_method": "CensusACS5yrSurvey"
+          },
+          "earliest_date": "2017",
+          "latest_date": "2023",
+          "place_type_summary": {
+            "AdministrativeArea1": {},
+            "AdministrativeArea2": {},
+            "AdministrativeArea4": {},
+            "AdministrativeArea5": {},
+            "Borough": {},
+            "CensusBlockGroup": {},
+            "CensusCoreBasedStatisticalArea": {},
+            "CensusCountyDivision": {},
+            "CensusDivision": {},
+            "CensusTract": {},
+            "CensusZipCodeTabulationArea": {},
+            "City": {},
+            "CongressionalDistrict": {},
+            "Country": {},
+            "County": {},
+            "ElementarySchoolDistrict": {},
+            "HighSchoolDistrict": {},
+            "Neighborhood": {},
+            "Place": {},
+            "ProvisionalNode": {},
+            "SchoolDistrict": {},
+            "State": {},
+            "StateComponent": {},
+            "Town": {},
+            "Village": {}
+          },
+          "observation_count": 2805865,
+          "time_series_count": 511517
+        }
+      ],
+      "observation_count": 2805865,
+      "time_series_count": 511517
+    },
+    "dc/base/CensusACS5YearSurvey_AggCountry": {
+      "import_name": "CensusACS5YearSurvey_AggCountry",
+      "series_summary": [
+        {
+          "series_key": {
+            "measurement_method": "CensusACS5yrSurvey",
+            "is_dc_aggregate": true
+          },
+          "earliest_date": "2017",
+          "latest_date": "2023",
+          "place_type_summary": {
+            "Country": {}
+          },
+          "observation_count": 7,
+          "time_series_count": 1
+        }
+      ],
+      "observation_count": 7,
+      "time_series_count": 1
+    }
+  }
+}

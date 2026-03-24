@@ -19,6 +19,7 @@ import (
 	"fmt"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 )
@@ -65,4 +66,8 @@ func (rds *RemoteDataSource) Sparql(ctx context.Context, req *pb.SparqlRequest) 
 
 func (rds *RemoteDataSource) Event(ctx context.Context, req *pbv2.EventRequest) (*pbv2.EventResponse, error) {
 	return rds.client.Event(req)
+}
+
+func (rds *RemoteDataSource) BulkVariableInfo(ctx context.Context, req *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error) {
+	return rds.client.BulkVariableInfo(req)
 }

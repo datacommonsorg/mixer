@@ -19,6 +19,7 @@ import (
 	"fmt"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
@@ -124,4 +125,8 @@ func (sds *SQLDataSource) Sparql(ctx context.Context, req *pb.SparqlRequest) (*p
 
 func (sds *SQLDataSource) Event(ctx context.Context, req *pbv2.EventRequest) (*pbv2.EventResponse, error) {
 	return &pbv2.EventResponse{}, nil
+}
+
+func (sds *SQLDataSource) BulkVariableInfo(ctx context.Context, req *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error) {
+	return &pbv1.BulkVariableInfoResponse{}, nil
 }

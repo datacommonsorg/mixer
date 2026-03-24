@@ -20,6 +20,7 @@ import (
 	"net/http"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 
@@ -104,6 +105,16 @@ func (rc *RemoteClient) Sparql(req *pb.SparqlRequest) (*pb.QueryResponse, error)
 func (rc *RemoteClient) Event(req *pbv2.EventRequest) (*pbv2.EventResponse, error) {
 	resp := &pbv2.EventResponse{}
 	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/event", req, resp)
+	if err != nil {
+		return nil, err
+	}
+	return resp, nil
+}
+
+func (rc *RemoteClient) BulkVariableInfo(req *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error) {
+	resp := &pbv1.BulkVariableInfoResponse{}
+	// TODO: Update the endpoint to /v2/bulk/info/variable once it's supported by the remote mixer.
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v1/bulk/info/variable", req, resp)
 	if err != nil {
 		return nil, err
 	}
