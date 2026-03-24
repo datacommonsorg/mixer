@@ -49,8 +49,8 @@ const (
 	// Default timeout for timestamp polling.
 	timestampPollingTimeout = 10 * time.Second
 
-	// Default timeout for RPC requests.
-	rpcTimeout = 60 * time.Second
+	// Default timeout for API requests.
+	apiTimeout = 60 * time.Second
 
 	// Special edge predicates.
 	predAffectedPlace      = "affectedPlace"
@@ -594,9 +594,9 @@ func (sc *spannerDatabaseClient) executeQuery(
 		timeout = time.Until(deadline)
 	} else {
 		// Fallback if the parent context surprisingly has no deadline.
-		// Using the default API timeout of 60 seconds.
-		slog.Warn("Parent context has no deadline; using default API timeout of 60 seconds")
-		timeout = rpcTimeout
+		// Using the default API timeout.
+		slog.Warn("Parent context has no deadline; using default API timeout", "timeout", apiTimeout.String())
+		timeout = apiTimeout
 	}
 	queryCtx, cancel = context.WithTimeout(ctx, timeout)
 	defer cancel()
