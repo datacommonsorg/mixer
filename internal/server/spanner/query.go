@@ -38,6 +38,12 @@ const (
 	maxHops = 10
 	where   = "\n\t\tWHERE\n\t\t\t"
 	and     = "\n\t\t\tAND "
+
+	// Default timeout for timestamp polling.
+	timestampPollingTimeout = 10 * time.Second
+
+	// Default timeout for RPC requests.
+	rpcTimeout = 60 * time.Second
 )
 
 // GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction and returns a map.
@@ -264,7 +270,7 @@ func (sc *spannerDatabaseClient) GetVariableMetadata(ctx context.Context, variab
 
 // fetchAndUpdateTimestamp queries Spanner and updates the timestamp.
 func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) error {
-	queryCtx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	queryCtx, cancel := context.WithTimeout(ctx, timestampPollingTimeout)
 	defer cancel()
 
 	iter := sc.client.Single().Query(queryCtx, *GetCompletionTimestampQuery())
@@ -317,7 +323,7 @@ func (sc *spannerDatabaseClient) executeQuery(
 		// Fallback if the parent context surprisingly has no deadline.
 		// Using the default API timeout of 60 seconds.
 		slog.Warn("Parent context has no deadline; using default API timeout of 60 seconds")
-		timeout = 60 * time.Second
+		timeout = rpcTimeout
 	}
 	queryCtx, cancel = context.WithTimeout(ctx, timeout)
 	defer cancel()
