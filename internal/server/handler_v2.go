@@ -572,6 +572,9 @@ func (s *Server) V2BulkVariableInfo(
 	// The new response will not contain all legacy V1 fields.
 	// To ensure the new response is sufficient, clear all legacy fields until swapping over to the new backend.
 	for _, varInfo := range v2Resp.GetData() {
+		if varInfo.GetInfo() == nil {
+			continue
+		}
 		varInfo.Info.PlaceTypeSummary = map[string]*pb.StatVarSummary_PlaceTypeSummary{}
 		for _, provSummary := range varInfo.GetInfo().GetProvenanceSummary() {
 			provSummary.ReleaseFrequency = ""
