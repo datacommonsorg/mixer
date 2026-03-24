@@ -135,6 +135,15 @@ service Mixer {
     };
   }
 
+  // Recognize places from a NL query.
+  rpc V2RecognizePlaces(RecognizePlacesRequest)
+      returns (RecognizePlacesResponse) {
+    option (google.api.http) = {
+      get : "/v2/recognize/places"
+      additional_bindings : {post : "/v2/recognize/places" body : "*"}
+    };
+  }
+
   // Filters a list of stat vars using a list of entities (places or sources).
   rpc FilterStatVarsByEntity(FilterStatVarsByEntityRequest)
       returns (FilterStatVarsByEntityResponse) {

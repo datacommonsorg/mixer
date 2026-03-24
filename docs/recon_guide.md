@@ -72,3 +72,6 @@ curl -X POST \
   ],
 }'
 ```
+
+`/v2/recognize/places` is also available with the same request and response
+shape.
