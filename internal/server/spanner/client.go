@@ -21,7 +21,6 @@ import (
 	"log/slog"
 	"sync"
 	"sync/atomic"
-	"time"
 
 	"cloud.google.com/go/spanner"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -79,10 +78,8 @@ func newSpannerDatabaseClient(client *spanner.Client, useStaleReads bool) (*span
 	sc.ticker = NewTimestampTicker()
 	sc.stopCh = make(chan struct{})
 	sc.updateTimestamp = sc.fetchAndUpdateTimestamp
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
-	if err := sc.updateTimestamp(ctx); err != nil {
-		slog.Error("Error initializing Spanner staleness timestamp")
+	if err := sc.updateTimestamp(context.Background()); err != nil {
+		slog.Error("Error initializing Spanner staleness timestamp", "error", err.Error())
 		return nil, err
 	}
 	return sc, nil
