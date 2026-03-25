@@ -93,6 +93,8 @@ var statements = struct {
 	getEventCollectionDate string
 	// Fetch events for a given type, location and date.
 	getEventCollectionDcids string
+	// Fetch events for a given type, location and date, along with magnitude property.
+	getEventCollectionDcidsWithMagnitude string
 }{
 	getCompletionTimestamp: `		SELECT
 		CompletionTimestamp
@@ -326,4 +328,12 @@ var statements = struct {
 			SUBSTR(dateNode.value, 1, 7) = @date
 		RETURN DISTINCT 
 			event.subject_id AS dcid`,
+	getEventCollectionDcidsWithMagnitude: `		@{force_join_order=true}
+		GRAPH DCGraph MATCH (event:Node)-[:Edge {predicate: 'affectedPlace', object_id: @placeID}]->(), (event)-[:Edge {predicate: 'typeOf', object_id: @eventType}]->(), (event)-[:Edge {predicate: 'startDate'}]->(dateNode:Node)
+		WHERE 
+			SUBSTR(dateNode.value, 1, 7) = @date
+		MATCH (event)-[magEdge:Edge {predicate: @magnitudeProp}]->()
+		RETURN DISTINCT 
+			event.subject_id AS dcid,
+			magEdge.object_id AS magnitude`,
 }

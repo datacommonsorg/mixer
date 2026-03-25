@@ -42,7 +42,7 @@
       "observation_count": 2547106,
       "time_series_count": 220438
     },
-    {
+    "dc/base/CensusACS5YearSurvey_AggCountry": {
       "import_name": "CensusACS5YearSurvey_AggCountry",
       "series_summary": [
         {
@@ -62,7 +62,7 @@
       "observation_count": 13,
       "time_series_count": 1
     },
-    {
+    "dc/base/CensusACS5YearSurvey_SubjectTables_S1702": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S1702",
       "series_summary": [
         {
@@ -103,7 +103,7 @@
       "observation_count": 2702027,
       "time_series_count": 220002
     },
-    {
+    "dc/base/CensusACS5YearSurvey_SubjectTables_S1901": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S1901",
       "series_summary": [
         {
@@ -188,7 +188,7 @@
       "observation_count": 2805865,
       "time_series_count": 511517
     },
-    {
+    "dc/base/CensusACS5YearSurvey_AggCountry": {
       "import_name": "CensusACS5YearSurvey_AggCountry",
       "series_summary": [
         {

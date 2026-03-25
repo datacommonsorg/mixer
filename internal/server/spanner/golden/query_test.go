@@ -237,7 +237,15 @@ func TestFindEventDcids(t *testing.T) {
 		goldenFile := c.golden + ".json"
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return client.GetEventCollectionDcids(ctx, c.placeDcid, c.eventType, c.date)
+			res, err := client.GetEventCollectionDcids(ctx, c.placeDcid, c.eventType, c.date)
+			if err != nil {
+				return nil, err
+			}
+			// Trim to 100 events to avoid very large golden files.
+			if len(res) > 100 {
+				res = res[:100]
+			}
+			return res, nil
 		})
 	}
 }

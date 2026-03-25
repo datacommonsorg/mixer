@@ -472,10 +472,10 @@ var eventCollectionDcidsTestCases = []struct {
 		golden:    "get_event_collection_dcids",
 	},
 	{
-		placeDcid: "country/GBR",
-		eventType: "FloodEvent",
-		date:      "2025-01",
-		golden:    "get_event_collection_dcids_flood",
+		placeDcid: "geoId/37",
+		eventType: "HeatTemperatureEvent",
+		date:      "2022-01",
+		golden:    "get_event_collection_dcids_heat",
 	},
 }
 
@@ -504,5 +504,11 @@ var eventCollectionTestCases = []struct {
 		filterLowerLimit: 100,
 		filterUpperLimit: 200,
 		golden:           "get_event_collection_filtered",
+	},
+	{
+		placeDcid: "geoId/37",
+		eventType: "HeatTemperatureEvent",
+		date:      "2022-01",
+		golden:    "get_event_collection_heat",
 	},
 }

@@ -21,7 +21,6 @@ import (
 	"log/slog"
 	"sync"
 	"sync/atomic"
-	"time"
 
 	"cloud.google.com/go/spanner"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -41,7 +40,7 @@ type SpannerClient interface {
 	SearchNodes(ctx context.Context, query string, types []string) ([]*SearchNode, error)
 	ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error)
 	GetEventCollectionDate(ctx context.Context, placeID, eventType string) ([]string, error)
-	GetEventCollectionDcids(ctx context.Context, placeID, eventType, date string) ([]string, error)
+	GetEventCollectionDcids(ctx context.Context, placeID, eventType, date string) ([]EventIdWithMagnitudeDcid, error)
 	GetEventCollection(ctx context.Context, req *pbv1.EventCollectionRequest) (*pbv1.EventCollection, error)
 	Sparql(ctx context.Context, nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) ([][]string, error)
 	GetProvenanceSummary(ctx context.Context, ids []string) (map[string]map[string]*pb.StatVarSummary_ProvenanceSummary, error)
@@ -80,10 +79,8 @@ func newSpannerDatabaseClient(client *spanner.Client, useStaleReads bool) (*span
 	sc.ticker = NewTimestampTicker()
 	sc.stopCh = make(chan struct{})
 	sc.updateTimestamp = sc.fetchAndUpdateTimestamp
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
-	if err := sc.updateTimestamp(ctx); err != nil {
-		slog.Error("Error initializing Spanner staleness timestamp")
+	if err := sc.updateTimestamp(context.Background()); err != nil {
+		slog.Error("Error initializing Spanner staleness timestamp", "error", err.Error())
 		return nil, err
 	}
 	return sc, nil

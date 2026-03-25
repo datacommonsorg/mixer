@@ -1,0 +1,402 @@
+[
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q6026694",
+    "MagnitudeDcid": "Celsius11.163441334768574"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3706593544",
+    "MagnitudeDcid": "Celsius11.854542824074075"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3760180",
+    "MagnitudeDcid": "Celsius13.120226560617027"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3712994044",
+    "MagnitudeDcid": "Celsius11.150409677419368"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3718990332",
+    "MagnitudeDcid": "Celsius11.969937669376684"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q6032448",
+    "MagnitudeDcid": "Celsius13.959170570570553"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3771460",
+    "MagnitudeDcid": "Celsius11.404088362068975"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3701593988",
+    "MagnitudeDcid": "Celsius11.310365853658547"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3708790704",
+    "MagnitudeDcid": "Celsius13.160964247020567"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3704790436",
+    "MagnitudeDcid": "Celsius10.510586652314338"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3702391928",
+    "MagnitudeDcid": "Celsius12.589672786177108"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3766960",
+    "MagnitudeDcid": "Celsius13.25198486486487"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q6030673",
+    "MagnitudeDcid": "Celsius12.735474006116206"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3722600",
+    "MagnitudeDcid": "Celsius11.332909090909096"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q6028697",
+    "MagnitudeDcid": "Celsius11.077284946236562"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q2893719",
+    "MagnitudeDcid": "Celsius11.483478448275864"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q6030576",
+    "MagnitudeDcid": "Celsius12.445155339805831"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-02_geoId/3718591684",
+    "MagnitudeDcid": "Celsius10.79586327077748"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3712593578",
+    "MagnitudeDcid": "Celsius13.212283950617293"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3718990132",
+    "MagnitudeDcid": "Celsius12.107135575942925"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3719790952",
+    "MagnitudeDcid": "Celsius13.727255760646658"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q6028458",
+    "MagnitudeDcid": "Celsius13.331083662064426"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q6031355",
+    "MagnitudeDcid": "Celsius11.647947311827965"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q6026741",
+    "MagnitudeDcid": "Celsius12.182942764578826"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q6026680",
+    "MagnitudeDcid": "Celsius12.054223060344826"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3718393984",
+    "MagnitudeDcid": "Celsius13.431829373650116"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3703190888",
+    "MagnitudeDcid": "Celsius10.255331896551732"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3714193248",
+    "MagnitudeDcid": "Celsius11.472154838709656"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3717992280",
+    "MagnitudeDcid": "Celsius11.42982461170848"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3705390816",
+    "MagnitudeDcid": "Celsius11.530358695652168"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3701192502",
+    "MagnitudeDcid": "Celsius11.230869175627252"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/37021",
+    "MagnitudeDcid": "Celsius13.208748108108123"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3703591636",
+    "MagnitudeDcid": "Celsius12.467930885529167"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3705793796",
+    "MagnitudeDcid": "Celsius12.568024358051357"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q9035850",
+    "MagnitudeDcid": "Celsius12.914842162162165"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3702192832",
+    "MagnitudeDcid": "Celsius13.17630119176598"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3742620",
+    "MagnitudeDcid": "Celsius13.22218626393384"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3721360",
+    "MagnitudeDcid": "Celsius11.854542824074072"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3712860",
+    "MagnitudeDcid": "Celsius13.360231091933342"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q5808046",
+    "MagnitudeDcid": "Celsius12.541750350631146"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q6027868",
+    "MagnitudeDcid": "Celsius12.33337808975282"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q6030573",
+    "MagnitudeDcid": "Celsius10.952226299694193"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3709192188",
+    "MagnitudeDcid": "Celsius11.73758315334773"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-02_geoId/3701392436",
+    "MagnitudeDcid": "Celsius10.434756097560964"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q7590442",
+    "MagnitudeDcid": "Celsius13.331146988240942"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3714791064",
+    "MagnitudeDcid": "Celsius11.928806872605373"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3751820",
+    "MagnitudeDcid": "Celsius14.113151382823885"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3700640",
+    "MagnitudeDcid": "Celsius12.780649028077748"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3701790860",
+    "MagnitudeDcid": "Celsius12.962155339805838"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q6030020",
+    "MagnitudeDcid": "Celsius12.785398128149753"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3771240",
+    "MagnitudeDcid": "Celsius11.172413793103445"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3764460",
+    "MagnitudeDcid": "Celsius12.455049742298923"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q6027055",
+    "MagnitudeDcid": "Celsius13.359318872017337"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3719140",
+    "MagnitudeDcid": "Celsius10.07031794871795"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q6031199",
+    "MagnitudeDcid": "Celsius11.945630787037048"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3739700",
+    "MagnitudeDcid": "Celsius12.794693577323285"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-02_geoId/3748740",
+    "MagnitudeDcid": "Celsius10.628706580366778"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q578503",
+    "MagnitudeDcid": "Celsius13.878450235251522"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3735440",
+    "MagnitudeDcid": "Celsius11.773199999999974"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3719990456",
+    "MagnitudeDcid": "Celsius13.279262518518507"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3701760",
+    "MagnitudeDcid": "Celsius13.124418075032954"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3712190128",
+    "MagnitudeDcid": "Celsius11.73333333333334"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q5573821",
+    "MagnitudeDcid": "Celsius12.64622503516176"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q6027686",
+    "MagnitudeDcid": "Celsius11.2002688172043"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3700791808",
+    "MagnitudeDcid": "Celsius11.74258897637794"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3710991824",
+    "MagnitudeDcid": "Celsius12.264141316073369"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3742020",
+    "MagnitudeDcid": "Celsius12.206635448136955"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3716594036",
+    "MagnitudeDcid": "Celsius12.185337858220228"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3712340",
+    "MagnitudeDcid": "Celsius12.109919093851138"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3753950",
+    "MagnitudeDcid": "Celsius12.614443966032782"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3713590268",
+    "MagnitudeDcid": "Celsius12.47868574514038"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3753900",
+    "MagnitudeDcid": "Celsius11.365856304985352"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3717590364",
+    "MagnitudeDcid": "Celsius10.42430021598271"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3709790160",
+    "MagnitudeDcid": "Celsius11.374950168350168"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3708390752",
+    "MagnitudeDcid": "Celsius10.651882697947205"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q6026576",
+    "MagnitudeDcid": "Celsius11.671966469428002"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q6030767",
+    "MagnitudeDcid": "Celsius11.241612903225787"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q6029498",
+    "MagnitudeDcid": "Celsius12.028367741935476"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3702392996",
+    "MagnitudeDcid": "Celsius12.876369930405575"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q6027737",
+    "MagnitudeDcid": "Celsius11.549658764367813"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3715191800",
+    "MagnitudeDcid": "Celsius12.590811651651654"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3702593644",
+    "MagnitudeDcid": "Celsius12.514491360691135"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q6026661",
+    "MagnitudeDcid": "Celsius11.903820974322048"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3746060",
+    "MagnitudeDcid": "Celsius11.08145913978498"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3725980",
+    "MagnitudeDcid": "Celsius13.213473513513518"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-02_wikidataId/Q6031502",
+    "MagnitudeDcid": "Celsius11.003763440860196"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3790872",
+    "MagnitudeDcid": "Celsius12.04279433645309"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3719790340",
+    "MagnitudeDcid": "Celsius13.53433406352681"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3704993308",
+    "MagnitudeDcid": "Celsius10.803239784946246"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3728240",
+    "MagnitudeDcid": "Celsius11.640877022653727"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q7928349",
+    "MagnitudeDcid": "Celsius13.184709475709486"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3711993736",
+    "MagnitudeDcid": "Celsius11.994657427405816"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3716593080",
+    "MagnitudeDcid": "Celsius12.938395713601526"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3712390628",
+    "MagnitudeDcid": "Celsius12.357929577464802"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q5852581",
+    "MagnitudeDcid": "Celsius11.163817948717949"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3717340",
+    "MagnitudeDcid": "Celsius13.191455156950672"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_wikidataId/Q6026978",
+    "MagnitudeDcid": "Celsius11.097446236559144"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3711192112",
+    "MagnitudeDcid": "Celsius12.06809731221504"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3715190716",
+    "MagnitudeDcid": "Celsius12.277353982300882"
+  },
+  {
+    "EventID": "heatTemperatureEvent/2022-01-01_geoId/3703790136",
+    "MagnitudeDcid": "Celsius12.338321814254863"
+  }
+]

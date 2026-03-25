@@ -1,0 +1,394 @@
+{
+  "data": [
+    {
+      "node": "LifeExpectancy_Person",
+      "info": {
+        "provenanceSummary": {
+          "dc/base/Cotedivoire_Census": {
+            "importName": "Cotedivoire_Census",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "observationPeriod": "P1Y",
+                  "unit": "Years"
+                },
+                "earliestDate": "2015",
+                "latestDate": "2020",
+                "placeTypeSummary": {
+                  "Country": {}
+                },
+                "observationCount": 6,
+                "timeSeriesCount": 1
+              }
+            ],
+            "observationCount": 6,
+            "timeSeriesCount": 1
+          },
+          "dc/base/India_LifeExpectancy": {
+            "importName": "India_LifeExpectancy",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "observationPeriod": "P4Y",
+                  "unit": "Year"
+                },
+                "earliestDate": "1997",
+                "latestDate": "2020",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {},
+                  "City": {},
+                  "State": {}
+                },
+                "observationCount": 415,
+                "timeSeriesCount": 21
+              }
+            ],
+            "observationCount": 415,
+            "timeSeriesCount": 21
+          },
+          "dc/base/MexicoCensus": {
+            "importName": "MexicoCensus",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "2010",
+                "latestDate": "2022",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {},
+                  "City": {},
+                  "Country": {}
+                },
+                "observationCount": 429,
+                "timeSeriesCount": 33
+              }
+            ],
+            "observationCount": 429,
+            "timeSeriesCount": 33
+          },
+          "dc/base/OECDRegionalDemography_LifeExpectancy": {
+            "importName": "OECDRegionalDemography_LifeExpectancy",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "OECDRegionalStatistics",
+                  "observationPeriod": "P1Y",
+                  "unit": "Year"
+                },
+                "earliestDate": "1990",
+                "latestDate": "2024",
+                "placeTypeSummary": {
+                  "AdministrativeArea": {},
+                  "AdministrativeArea1": {},
+                  "AdministrativeArea2": {},
+                  "AdministrativeArea3": {},
+                  "AdministrativeArea4": {},
+                  "AdministrativeArea5": {},
+                  "Canton": {},
+                  "City": {},
+                  "Country": {},
+                  "County": {},
+                  "District": {},
+                  "EurostatNUTS1": {},
+                  "EurostatNUTS2": {},
+                  "EurostatNUTS3": {},
+                  "Place": {},
+                  "Prefecture": {},
+                  "ProvisionalNode": {},
+                  "Region": {},
+                  "State": {}
+                },
+                "observationCount": 44681,
+                "timeSeriesCount": 1915
+              }
+            ],
+            "observationCount": 44681,
+            "timeSeriesCount": 1915
+          },
+          "dc/base/Vietnam_Census": {
+            "importName": "Vietnam_Census",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "unit": "Year"
+                },
+                "earliestDate": "2018",
+                "latestDate": "2022",
+                "placeTypeSummary": {
+                  "AdministrativeArea": {},
+                  "AdministrativeArea1": {},
+                  "City": {},
+                  "Country": {}
+                },
+                "observationCount": 345,
+                "timeSeriesCount": 69
+              }
+            ],
+            "observationCount": 345,
+            "timeSeriesCount": 69
+          },
+          "dc/base/WorldDevelopmentIndicators": {
+            "importName": "WorldDevelopmentIndicators",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "unit": "Year"
+                },
+                "earliestDate": "1960",
+                "latestDate": "2023",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {},
+                  "City": {},
+                  "Country": {},
+                  "Place": {}
+                },
+                "observationCount": 13790,
+                "timeSeriesCount": 216
+              }
+            ],
+            "observationCount": 13790,
+            "timeSeriesCount": 216
+          }
+        }
+      }
+    },
+    {
+      "node": "Median_Age_Person",
+      "info": {
+        "provenanceSummary": {
+          "dc/base/CensusACS5YearSurvey": {
+            "importName": "CensusACS5YearSurvey",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "CensusACS5yrSurvey",
+                  "unit": "Year"
+                },
+                "earliestDate": "2011",
+                "latestDate": "2023",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {},
+                  "AdministrativeArea2": {},
+                  "AdministrativeArea4": {},
+                  "AdministrativeArea5": {},
+                  "Borough": {},
+                  "CensusBlockGroup": {},
+                  "CensusCoreBasedStatisticalArea": {},
+                  "CensusCountyDivision": {},
+                  "CensusDivision": {},
+                  "CensusTract": {},
+                  "CensusZipCodeTabulationArea": {},
+                  "City": {},
+                  "CongressionalDistrict": {},
+                  "Country": {},
+                  "County": {},
+                  "ElementarySchoolDistrict": {},
+                  "HighSchoolDistrict": {},
+                  "Neighborhood": {},
+                  "Place": {},
+                  "ProvisionalNode": {},
+                  "SchoolDistrict": {},
+                  "State": {},
+                  "StateComponent": {},
+                  "Town": {},
+                  "Village": {}
+                },
+                "observationCount": 5443184,
+                "timeSeriesCount": 508451
+              }
+            ],
+            "observationCount": 5443184,
+            "timeSeriesCount": 508451
+          },
+          "dc/base/CensusACS5YearSurvey_SubjectTables_S0101": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "CensusACS5yrSurveySubjectTable",
+                  "unit": "Years"
+                },
+                "earliestDate": "2010",
+                "latestDate": "2023",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {},
+                  "AdministrativeArea2": {},
+                  "AdministrativeArea4": {},
+                  "AdministrativeArea5": {},
+                  "Borough": {},
+                  "CensusCoreBasedStatisticalArea": {},
+                  "CensusCountyDivision": {},
+                  "CensusDivision": {},
+                  "CensusTract": {},
+                  "CensusZipCodeTabulationArea": {},
+                  "City": {},
+                  "CongressionalDistrict": {},
+                  "Country": {},
+                  "County": {},
+                  "ElementarySchoolDistrict": {},
+                  "HighSchoolDistrict": {},
+                  "Neighborhood": {},
+                  "Place": {},
+                  "ProvisionalNode": {},
+                  "SchoolDistrict": {},
+                  "State": {},
+                  "Town": {},
+                  "Village": {}
+                },
+                "observationCount": 2664064,
+                "timeSeriesCount": 218044
+              }
+            ],
+            "observationCount": 2664064,
+            "timeSeriesCount": 218044
+          },
+          "dc/base/CensusACS5YearSurvey_SubjectTables_S2601A": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "CensusACS5yrSurveySubjectTable",
+                  "unit": "Years"
+                },
+                "earliestDate": "2010",
+                "latestDate": "2023",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {},
+                  "CensusDivision": {},
+                  "Country": {},
+                  "State": {}
+                },
+                "observationCount": 854,
+                "timeSeriesCount": 61
+              }
+            ],
+            "observationCount": 854,
+            "timeSeriesCount": 61
+          },
+          "dc/base/CensusACS5YearSurvey_SubjectTables_S2601APR": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S2601APR",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "CensusACS5yrSurveySubjectTable",
+                  "unit": "Years"
+                },
+                "earliestDate": "2010",
+                "latestDate": "2023",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {},
+                  "State": {}
+                },
+                "observationCount": 14,
+                "timeSeriesCount": 1
+              }
+            ],
+            "observationCount": 14,
+            "timeSeriesCount": 1
+          },
+          "dc/base/CensusACS5YearSurvey_SubjectTables_S2602": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S2602",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "CensusACS5yrSurveySubjectTable",
+                  "unit": "Years"
+                },
+                "earliestDate": "2017",
+                "latestDate": "2023",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {},
+                  "CensusDivision": {},
+                  "Country": {},
+                  "State": {}
+                },
+                "observationCount": 427,
+                "timeSeriesCount": 61
+              }
+            ],
+            "observationCount": 427,
+            "timeSeriesCount": 61
+          },
+          "dc/base/CensusACS5YearSurvey_SubjectTables_S2602PR": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S2602PR",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "CensusACS5yrSurveySubjectTable",
+                  "unit": "Years"
+                },
+                "earliestDate": "2017",
+                "latestDate": "2023",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {},
+                  "State": {}
+                },
+                "observationCount": 7,
+                "timeSeriesCount": 1
+              }
+            ],
+            "observationCount": 7,
+            "timeSeriesCount": 1
+          },
+          "dc/base/CensusACS5YearSurvey_SubjectTables_S2603": {
+            "importName": "CensusACS5YearSurvey_SubjectTables_S2603",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "measurementMethod": "CensusACS5yrSurveySubjectTable",
+                  "unit": "Years"
+                },
+                "earliestDate": "2017",
+                "latestDate": "2023",
+                "placeTypeSummary": {
+                  "Country": {}
+                },
+                "observationCount": 7,
+                "timeSeriesCount": 1
+              }
+            ],
+            "observationCount": 7,
+            "timeSeriesCount": 1
+          },
+          "dc/base/MexicoCensus": {
+            "importName": "MexicoCensus",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "1995",
+                "latestDate": "2020",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {},
+                  "City": {},
+                  "Country": {}
+                },
+                "observationCount": 198,
+                "timeSeriesCount": 33
+              }
+            ],
+            "observationCount": 198,
+            "timeSeriesCount": 33
+          },
+          "dc/base/New_Zealand_Census": {
+            "importName": "New_Zealand_Census",
+            "seriesSummary": [
+              {
+                "seriesKey": {
+                  "unit": "Year"
+                },
+                "earliestDate": "1991",
+                "latestDate": "2023",
+                "placeTypeSummary": {
+                  "Country": {}
+                },
+                "observationCount": 33,
+                "timeSeriesCount": 1
+              }
+            ],
+            "observationCount": 33,
+            "timeSeriesCount": 1
+          }
+        }
+      }
+    }
+  ]
+}

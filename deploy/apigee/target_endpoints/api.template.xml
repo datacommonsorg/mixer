@@ -68,6 +68,7 @@
             ((proxy.pathsuffix MatchesPath "/v1/triples") OR (proxy.pathsuffix MatchesPath "/v1/triples/**")) OR
             ((proxy.pathsuffix MatchesPath "/v1/variables") OR (proxy.pathsuffix MatchesPath "/v1/variables/**")) OR
             (proxy.pathsuffix MatchesPath "/v2/sparql") OR
+            (proxy.pathsuffix MatchesPath "/v1/recognize/entities")
           </Condition>
           <Name>block-deprecated-endpoints</Name>
         </Step>

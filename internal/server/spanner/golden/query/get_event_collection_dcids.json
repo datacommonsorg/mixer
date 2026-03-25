@@ -1,31 +1,118 @@
 [
-  "fireEvent/2020-10-30_0x0fa7690000000000",
-  "fireEvent/2020-10-24_0x0fa5c50000000000",
-  "fireEvent/2020-10-14_0x0fa0e70000000000",
-  "fireEvent/2020-10-31_0x0fa3490000000000",
-  "fireEvent/2020-10-29_0x0fa7790000000000",
-  "fireEvent/2020-10-24_0x0fa84f0000000000",
-  "fireEvent/2020-10-29_0x0fa85d0000000000",
-  "fireEvent/2020-10-29_0x0fa6550000000000",
-  "fireEvent/2020-10-19_0x0fa7650000000000",
-  "fireEvent/2020-10-24_0x0f09bd0000000000",
-  "fireEvent/2020-10-30_0x0fa7550000000000",
-  "fireEvent/2020-10-29_0x0fa7170000000000",
-  "fireEvent/2020-10-30_0x0fa7910000000000",
-  "fireEvent/2020-10-09_0x0f09010000000000",
-  "fireEvent/2020-10-30_0x0f97810000000000",
-  "fireEvent/2020-10-26_0x0f09c50000000000",
-  "fireEvent/2020-10-26_0x0fa5d30000000000",
-  "fireEvent/2020-10-15_0x0f09bf0000000000",
-  "fireEvent/2020-10-19_0x0fa61f0000000000",
-  "fireEvent/2020-10-25_0x0fa43d0000000000",
-  "fireEvent/2020-10-29_0x0fa42b0000000000",
-  "fireEvent/2020-10-19_0x0fa5cf0000000000",
-  "fireEvent/2020-10-31_0x0fa75b0000000000",
-  "fireEvent/2020-10-31_0x0fa1250000000000",
-  "fireEvent/2020-10-30_0x0fa65f0000000000",
-  "fireEvent/2020-10-30_0x0fa0af0000000000",
-  "fireEvent/2020-10-24_0x0fa65f0000000000",
-  "fireEvent/2020-10-24_0x0fa4290000000000",
-  "fireEvent/2020-10-30_0x0fa6e30000000000"
+  {
+    "EventID": "fireEvent/2020-10-30_0x0fa7690000000000",
+    "MagnitudeDcid": "SquareKilometer186.24469"
+  },
+  {
+    "EventID": "fireEvent/2020-10-29_0x0fa6550000000000",
+    "MagnitudeDcid": "SquareKilometer185.96912"
+  },
+  {
+    "EventID": "fireEvent/2020-10-24_0x0fa4290000000000",
+    "MagnitudeDcid": "SquareKilometer184.52895"
+  },
+  {
+    "EventID": "fireEvent/2020-10-29_0x0fa85d0000000000",
+    "MagnitudeDcid": "SquareKilometer188.83275"
+  },
+  {
+    "EventID": "fireEvent/2020-10-30_0x0fa7550000000000",
+    "MagnitudeDcid": "SquareKilometer92.76135"
+  },
+  {
+    "EventID": "fireEvent/2020-10-31_0x0fa1250000000000",
+    "MagnitudeDcid": "SquareKilometer91.80851"
+  },
+  {
+    "EventID": "fireEvent/2020-10-30_0x0fa0af0000000000",
+    "MagnitudeDcid": "SquareKilometer277.41648"
+  },
+  {
+    "EventID": "fireEvent/2020-10-24_0x0f09bd0000000000",
+    "MagnitudeDcid": "SquareKilometer93.57154"
+  },
+  {
+    "EventID": "fireEvent/2020-10-29_0x0fa7790000000000",
+    "MagnitudeDcid": "SquareKilometer93.45514"
+  },
+  {
+    "EventID": "fireEvent/2020-10-09_0x0f09010000000000",
+    "MagnitudeDcid": "SquareKilometer94.06721"
+  },
+  {
+    "EventID": "fireEvent/2020-10-19_0x0fa61f0000000000",
+    "MagnitudeDcid": "SquareKilometer93.4783"
+  },
+  {
+    "EventID": "fireEvent/2020-10-24_0x0fa5c50000000000",
+    "MagnitudeDcid": "SquareKilometer92.50197"
+  },
+  {
+    "EventID": "fireEvent/2020-10-25_0x0fa43d0000000000",
+    "MagnitudeDcid": "SquareKilometer91.88009"
+  },
+  {
+    "EventID": "fireEvent/2020-10-31_0x0fa75b0000000000",
+    "MagnitudeDcid": "SquareKilometer92.91728"
+  },
+  {
+    "EventID": "fireEvent/2020-10-24_0x0fa65f0000000000",
+    "MagnitudeDcid": "SquareKilometer92.85048"
+  },
+  {
+    "EventID": "fireEvent/2020-10-31_0x0fa3490000000000",
+    "MagnitudeDcid": "SquareKilometer89.97378"
+  },
+  {
+    "EventID": "fireEvent/2020-10-26_0x0f09c50000000000",
+    "MagnitudeDcid": "SquareKilometer93.49824"
+  },
+  {
+    "EventID": "fireEvent/2020-10-15_0x0f09bf0000000000",
+    "MagnitudeDcid": "SquareKilometer93.51209"
+  },
+  {
+    "EventID": "fireEvent/2020-10-19_0x0fa5cf0000000000",
+    "MagnitudeDcid": "SquareKilometer92.40039"
+  },
+  {
+    "EventID": "fireEvent/2020-10-30_0x0fa6e30000000000",
+    "MagnitudeDcid": "SquareKilometer92.7578"
+  },
+  {
+    "EventID": "fireEvent/2020-10-24_0x0fa84f0000000000",
+    "MagnitudeDcid": "SquareKilometer94.66404"
+  },
+  {
+    "EventID": "fireEvent/2020-10-19_0x0fa7650000000000",
+    "MagnitudeDcid": "SquareKilometer93.24245"
+  },
+  {
+    "EventID": "fireEvent/2020-10-30_0x0fa65f0000000000",
+    "MagnitudeDcid": "SquareKilometer92.85048"
+  },
+  {
+    "EventID": "fireEvent/2020-10-29_0x0fa42b0000000000",
+    "MagnitudeDcid": "SquareKilometer184.68923"
+  },
+  {
+    "EventID": "fireEvent/2020-10-26_0x0fa5d30000000000",
+    "MagnitudeDcid": "SquareKilometer92.37965"
+  },
+  {
+    "EventID": "fireEvent/2020-10-30_0x0f97810000000000",
+    "MagnitudeDcid": "SquareKilometer87.42925"
+  },
+  {
+    "EventID": "fireEvent/2020-10-29_0x0fa7170000000000",
+    "MagnitudeDcid": "SquareKilometer185.83528"
+  },
+  {
+    "EventID": "fireEvent/2020-10-14_0x0fa0e70000000000",
+    "MagnitudeDcid": "SquareKilometer91.79452"
+  },
+  {
+    "EventID": "fireEvent/2020-10-30_0x0fa7910000000000",
+    "MagnitudeDcid": "SquareKilometer93.70108"
+  }
 ]

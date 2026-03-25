@@ -454,6 +454,17 @@ func GetEventCollectionDateQuery(placeID, eventType string) *spanner.Statement {
 }
 
 func GetEventCollectionDcidsQuery(placeID, eventType, date string) *spanner.Statement {
+	if cfg, ok := EventConfigs[eventType]; ok && cfg.MagnitudeProp != "" {
+		return &spanner.Statement{
+			SQL: statements.getEventCollectionDcidsWithMagnitude,
+			Params: map[string]interface{}{
+				"placeID":       placeID,
+				"eventType":     eventType,
+				"date":          date,
+				"magnitudeProp": cfg.MagnitudeProp,
+			},
+		}
+	}
 	return &spanner.Statement{
 		SQL: statements.getEventCollectionDcids,
 		Params: map[string]interface{}{
