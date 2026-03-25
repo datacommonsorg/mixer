@@ -205,12 +205,28 @@ func GetObservationsContainedInPlaceQuery(variables []string, containedInPlace *
 }
 
 func FilterStatVarsByEntityQuery(variables []string, entities []string) *spanner.Statement {
+	sql := statements.getStatVarsByEntity
+	params := map[string]interface{}{}
+
+	var filters []string
+	if len(variables) > 0 {
+		filter, val := getParamStatement("variables", variables)
+		params["variables"] = val
+		filters = append(filters, fmt.Sprintf("variable_measured %s", filter))
+	}
+	if len(entities) > 0 {
+		filter, val := getParamStatement("entities", entities)
+		params["entities"] = val
+		filters = append(filters, fmt.Sprintf("observation_about %s", filter))
+	}
+
+	if len(filters) > 0 {
+		sql += where + strings.Join(filters, and)
+	}
+
 	return &spanner.Statement{
-		SQL: statements.filterStatVarsByEntity,
-		Params: map[string]interface{}{
-			"variables": variables,
-			"entities":  entities,
-		},
+		SQL:    sql,
+		Params: params,
 	}
 }
 

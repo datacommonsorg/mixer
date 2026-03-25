@@ -397,7 +397,7 @@ func TestSpannerObservation(t *testing.T) {
 			goldenFile: "observation_existence_multi_entity.json",
 		},
 		{
-			desc: "No variables requested",
+			desc: "No variables requested (returns all vars for entity)",
 			req: &pbv2.ObservationRequest{
 				Variable: &pbv2.DcidOrExpression{
 					Dcids: []string{},
@@ -407,8 +407,27 @@ func TestSpannerObservation(t *testing.T) {
 				},
 				Select: []string{"variable", "entity"},
 			},
-			mockRes:    [][]string{},
+			mockRes: [][]string{
+				{"Count_Person", "geoId/06"},
+				{"Median_Income_Person", "geoId/06"},
+			},
 			goldenFile: "observation_existence_no_vars.json",
+		},
+		{
+			desc: "Single entity existence check",
+			req: &pbv2.ObservationRequest{
+				Variable: &pbv2.DcidOrExpression{
+					Dcids: []string{"Count_Person"},
+				},
+				Entity: &pbv2.DcidOrExpression{
+					Dcids: []string{"geoId/06"},
+				},
+				Select: []string{"variable", "entity"},
+			},
+			mockRes: [][]string{
+				{"Count_Person", "geoId/06"},
+			},
+			goldenFile: "observation_existence_single.json",
 		},
 		{
 			desc: "No entities requested (error case)",
