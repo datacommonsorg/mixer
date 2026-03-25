@@ -204,7 +204,10 @@ func GetObservationsContainedInPlaceQuery(variables []string, containedInPlace *
 	return stmt
 }
 
-func FilterStatVarsByEntityQuery(variables []string, entities []string) *spanner.Statement {
+func FilterStatVarsByEntityQuery(variables []string, entities []string) (*spanner.Statement, error) {
+	if len(variables) == 0 && len(entities) == 0 {
+		return nil, fmt.Errorf("FilterStatVarsByEntityQuery must be called with at least one variable or entity")
+	}
 	sql := statements.getStatVarsByEntity
 	params := map[string]interface{}{}
 
@@ -227,7 +230,7 @@ func FilterStatVarsByEntityQuery(variables []string, entities []string) *spanner
 	return &spanner.Statement{
 		SQL:    sql,
 		Params: params,
-	}
+	}, nil
 }
 
 func SearchNodesQuery(query string, types []string) *spanner.Statement {

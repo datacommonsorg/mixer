@@ -161,7 +161,10 @@ func (sc *spannerDatabaseClient) GetObservations(ctx context.Context, variables 
 // CheckVariableExistence checks for the existence of observations for the given variables and entities.
 // Returns a slice of rows, where each row contains [variable, entity] that has at least one observation.
 func (sc *spannerDatabaseClient) CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
-	stmt := FilterStatVarsByEntityQuery(variables, entities)
+	stmt, err := FilterStatVarsByEntityQuery(variables, entities)
+	if err != nil {
+		return nil, err
+	}
 	return queryDynamic(ctx, sc, *stmt)
 }
 
