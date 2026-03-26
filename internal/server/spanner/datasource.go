@@ -119,6 +119,9 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 	if len(entities) > 0 && entityExpr != "" {
 		return nil, fmt.Errorf("only one of entity.dcids and entity.expression should be specified")
 	}
+	if len(entities) == 0 && entityExpr == "" {
+		return nil, fmt.Errorf("entity must be specified")
+	}
 
 	variables := []string{}
 	if req.Variable != nil {
@@ -136,6 +139,33 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 	date := req.Date
 	var observations []*Observation
 	var err error
+
+	qo := selectFieldsToQueryOptions(req.Select)
+
+	// Check if this is an existence-only request:
+	// 1. Only 'variable' and 'entity' are requested (no date, value, or facet).
+	// 2. A simple list of entities is provided (no complex entity expression).
+	isExistenceRequest := !qo.date && !qo.value && !qo.facet && len(entities) > 0 && entityExpr == ""
+
+	if isExistenceRequest {
+		rows, err := sds.client.CheckVariableExistence(ctx, variables, entities)
+		if err != nil {
+			return nil, fmt.Errorf("error checking variable existence: %w", err)
+		}
+
+		obs := make([]*Observation, 0, len(rows))
+		for _, row := range rows {
+			if len(row) != 2 {
+				slog.Warn("CheckVariableExistence returned row with unexpected length", "length", len(row))
+				continue
+			}
+			obs = append(obs, &Observation{
+				VariableMeasured: row[0],
+				ObservationAbout: row[1],
+			})
+		}
+		return obsToExistenceResponse(req, obs), nil
+	}
 
 	if entityExpr != "" {
 		containedInPlace, err := v2.ParseContainedInPlace(entityExpr)

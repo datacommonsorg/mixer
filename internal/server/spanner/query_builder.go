@@ -204,6 +204,35 @@ func GetObservationsContainedInPlaceQuery(variables []string, containedInPlace *
 	return stmt
 }
 
+func FilterStatVarsByEntityQuery(variables []string, entities []string) (*spanner.Statement, error) {
+	if len(variables) == 0 && len(entities) == 0 {
+		return nil, fmt.Errorf("FilterStatVarsByEntityQuery must be called with at least one variable or entity")
+	}
+	sql := statements.getStatVarsByEntity
+	params := map[string]interface{}{}
+
+	var filters []string
+	if len(variables) > 0 {
+		filter, val := getParamStatement("variables", variables)
+		params["variables"] = val
+		filters = append(filters, fmt.Sprintf("variable_measured %s", filter))
+	}
+	if len(entities) > 0 {
+		filter, val := getParamStatement("entities", entities)
+		params["entities"] = val
+		filters = append(filters, fmt.Sprintf("observation_about %s", filter))
+	}
+
+	if len(filters) > 0 {
+		sql += where + strings.Join(filters, and)
+	}
+
+	return &spanner.Statement{
+		SQL:    sql,
+		Params: params,
+	}, nil
+}
+
 func SearchNodesQuery(query string, types []string) *spanner.Statement {
 	params := map[string]interface{}{
 		"query": query,

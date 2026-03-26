@@ -35,8 +35,9 @@ import (
 )
 
 type mockSpannerClient struct {
-	resolveByIDRes  map[string][]string
-	getNodeEdgesRes map[string][]*spanner.Edge
+	resolveByIDRes            map[string][]string
+	getNodeEdgesRes           map[string][]*spanner.Edge
+	checkVariableExistenceRes [][]string
 }
 
 func (m *mockSpannerClient) GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*spanner.Property, error) {
@@ -47,6 +48,9 @@ func (m *mockSpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, 
 }
 func (m *mockSpannerClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*spanner.Observation, error) {
 	return nil, nil
+}
+func (m *mockSpannerClient) CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
+	return m.checkVariableExistenceRes, nil
 }
 func (m *mockSpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*spanner.Observation, error) {
 	return nil, nil
@@ -341,6 +345,133 @@ func TestSpannerEvent(t *testing.T) {
 		}
 		if diff := cmp.Diff(got, &want, cmpOpts); diff != "" {
 			t.Errorf("%v payload mismatch:\n%v", c.goldenFile, diff)
+		}
+	}
+}
+
+func TestSpannerObservation(t *testing.T) {
+	t.Parallel()
+	ctx := context.Background()
+	_, filename, _, _ := runtime.Caller(0)
+	goldenDir := path.Join(path.Dir(filename), "datasource")
+
+	for _, c := range []struct {
+		desc       string
+		req        *pbv2.ObservationRequest
+		mockRes    [][]string
+		goldenFile string
+		wantErr    bool
+	}{
+		{
+			desc: "Basic existence check (single entity)",
+			req: &pbv2.ObservationRequest{
+				Variable: &pbv2.DcidOrExpression{
+					Dcids: []string{"Count_Person", "Median_Income_Person", "NonExistent"},
+				},
+				Entity: &pbv2.DcidOrExpression{
+					Dcids: []string{"geoId/06"},
+				},
+				Select: []string{"variable", "entity"},
+			},
+			mockRes: [][]string{
+				{"Count_Person", "geoId/06"},
+				{"Median_Income_Person", "geoId/06"},
+			},
+			goldenFile: "observation_existence.json",
+		},
+		{
+			desc: "Multi-entity existence check",
+			req: &pbv2.ObservationRequest{
+				Variable: &pbv2.DcidOrExpression{
+					Dcids: []string{"Count_Person"},
+				},
+				Entity: &pbv2.DcidOrExpression{
+					Dcids: []string{"geoId/06", "geoId/01"},
+				},
+				Select: []string{"variable", "entity"},
+			},
+			mockRes: [][]string{
+				{"Count_Person", "geoId/06"},
+				{"Count_Person", "geoId/01"},
+			},
+			goldenFile: "observation_existence_multi_entity.json",
+		},
+		{
+			desc: "No variables requested (returns all vars for entity)",
+			req: &pbv2.ObservationRequest{
+				Variable: &pbv2.DcidOrExpression{
+					Dcids: []string{},
+				},
+				Entity: &pbv2.DcidOrExpression{
+					Dcids: []string{"geoId/06"},
+				},
+				Select: []string{"variable", "entity"},
+			},
+			mockRes: [][]string{
+				{"Count_Person", "geoId/06"},
+				{"Median_Income_Person", "geoId/06"},
+			},
+			goldenFile: "observation_existence_no_vars.json",
+		},
+		{
+			desc: "Single entity existence check",
+			req: &pbv2.ObservationRequest{
+				Variable: &pbv2.DcidOrExpression{
+					Dcids: []string{"Count_Person"},
+				},
+				Entity: &pbv2.DcidOrExpression{
+					Dcids: []string{"geoId/06"},
+				},
+				Select: []string{"variable", "entity"},
+			},
+			mockRes: [][]string{
+				{"Count_Person", "geoId/06"},
+			},
+			goldenFile: "observation_existence_single.json",
+		},
+		{
+			desc: "No entities requested (error case)",
+			req: &pbv2.ObservationRequest{
+				Variable: &pbv2.DcidOrExpression{
+					Dcids: []string{"Count_Person"},
+				},
+				Entity: &pbv2.DcidOrExpression{
+					Dcids: []string{},
+				},
+				Select: []string{"variable", "entity"},
+			},
+			mockRes: [][]string{},
+			wantErr: true,
+		},
+	} {
+		client := &mockSpannerClient{
+			checkVariableExistenceRes: c.mockRes,
+		}
+		ds := spanner.NewSpannerDataSource(client, nil, nil)
+
+		got, err := ds.Observation(ctx, c.req)
+		if (err != nil) != c.wantErr {
+			t.Fatalf("%s: Observation error = %v, wantErr %v", c.desc, err, c.wantErr)
+		}
+		if c.wantErr {
+			continue
+		}
+
+		if test.GenerateGolden {
+			test.UpdateProtoGolden(got, goldenDir, c.goldenFile)
+			continue
+		}
+
+		var want pbv2.ObservationResponse
+		if err = test.ReadJSON(goldenDir, c.goldenFile, &want); err != nil {
+			t.Fatalf("%s: ReadJSON error (%v): %v", c.desc, c.goldenFile, err)
+		}
+
+		cmpOpts := cmp.Options{
+			protocmp.Transform(),
+		}
+		if diff := cmp.Diff(got, &want, cmpOpts); diff != "" {
+			t.Errorf("%s: %v payload mismatch:\n%v", c.desc, c.goldenFile, diff)
 		}
 	}
 }

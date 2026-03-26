@@ -89,6 +89,27 @@ func TestGetObservationsContainedInPlaceQuery(t *testing.T) {
 	}
 }
 
+func TestFilterStatVarsByEntityQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range filterStatVarsByEntityTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.FilterStatVarsByEntityQuery(c.variables, c.entities)
+		})
+	}
+}
+
+func TestFilterStatVarsByEntityQueryError(t *testing.T) {
+	t.Parallel()
+
+	_, err := spanner.FilterStatVarsByEntityQuery([]string{}, []string{})
+	if err == nil {
+		t.Errorf("FilterStatVarsByEntityQuery() expected error, got nil")
+	}
+}
+
 func TestSearchNodesQuery(t *testing.T) {
 	t.Parallel()
 

@@ -247,6 +247,27 @@ var observationsContainedInPlaceTestCases = []struct {
 	},
 }
 
+var filterStatVarsByEntityTestCases = []struct {
+	variables []string
+	entities  []string
+	golden    string
+}{
+	{
+		variables: []string{"Count_Person", "Median_Income_Person"},
+		entities:  []string{"geoId/06"},
+		golden:    "filter_stat_vars_by_entity_multi",
+	},
+	{
+		entities: []string{"geoId/06"},
+		golden:   "filter_stat_vars_by_entity_no_vars",
+	},
+	{
+		variables: []string{"Count_Person"},
+		entities:  []string{"geoId/06"},
+		golden:    "filter_stat_vars_by_entity_single",
+	},
+}
+
 var searchNodesTestCases = []struct {
 	query  string
 	types  []string
