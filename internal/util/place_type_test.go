@@ -15,6 +15,9 @@
 package util
 
 import (
+	"os"
+	"path/filepath"
+	"strings"
 	"testing"
 )
 
@@ -58,10 +61,49 @@ func TestGetDominantType(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			got := GetDominantType(tc.input)
+			got, err := GetDominantType(tc.input)
+			if err != nil {
+				t.Fatalf("GetDominantType(%v) error = %v", tc.input, err)
+			}
 			if got != tc.expected {
 				t.Errorf("GetDominantType(%v) = %v; want %v", tc.input, got, tc.expected)
 			}
 		})
+	}
+}
+
+func TestLoadPlaceTypesFromFile_MissingFile(t *testing.T) {
+	t.Parallel()
+
+	path := filepath.Join(t.TempDir(), "missing.yaml")
+	_, err := loadPlaceTypesFromFile(path)
+	if err == nil {
+		t.Fatal("loadPlaceTypesFromFile() error = nil, want non-nil")
+	}
+	if !strings.Contains(err.Error(), "read place types config") {
+		t.Fatalf("loadPlaceTypesFromFile() error = %v, want read context", err)
+	}
+}
+
+func TestLoadPlaceTypesFromFile_InvalidYAML(t *testing.T) {
+	t.Parallel()
+
+	path := filepath.Join(t.TempDir(), "place_types.yaml")
+	writeFile(t, path, ": not valid yaml")
+
+	_, err := loadPlaceTypesFromFile(path)
+	if err == nil {
+		t.Fatal("loadPlaceTypesFromFile() error = nil, want non-nil")
+	}
+	if !strings.Contains(err.Error(), "unmarshal place types config") {
+		t.Fatalf("loadPlaceTypesFromFile() error = %v, want unmarshal context", err)
+	}
+}
+
+func writeFile(t *testing.T, path, contents string) {
+	t.Helper()
+
+	if err := os.WriteFile(path, []byte(contents), 0o644); err != nil {
+		t.Fatalf("os.WriteFile(%q) error = %v", path, err)
 	}
 }

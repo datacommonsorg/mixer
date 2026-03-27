@@ -316,7 +316,10 @@ func (sds *SpannerDataSource) resolveCoordinate(
 			if edge.Value == "" || strings.HasPrefix(edge.Value, "s2CellId/") {
 				continue
 			}
-			dominantType := util.GetDominantType(edge.Types)
+			dominantType, err := util.GetDominantType(edge.Types)
+			if err != nil {
+				return nil, err
+			}
 			// Coordinate resolve filters by dominant type only. Secondary types on
 			// the place node do not qualify a candidate for a typeOf match.
 			if len(typeOfs) > 0 && !matchesRequestedType(dominantType, typeOfs) {

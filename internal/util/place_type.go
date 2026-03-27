@@ -15,7 +15,7 @@
 package util
 
 import (
-	"log/slog"
+	"fmt"
 	"os"
 	"path"
 	"runtime"
@@ -25,37 +25,49 @@ import (
 )
 
 var (
-	placeTypes     []string
-	loadPlaceTypes sync.Once
+	placeTypes        []string
+	loadPlaceTypes    sync.Once
+	loadPlaceTypesErr error
 )
 
 // GetDominantType returns the dominant type from a list of place types based on a priority list.
-func GetDominantType(types []string) string {
+func GetDominantType(types []string) (string, error) {
 	loadPlaceTypes.Do(func() {
-		_, filename, _, _ := runtime.Caller(0)
-		filePath := path.Join(path.Dir(filename), "resource/place_types.yaml")
-		bytes, err := os.ReadFile(filePath)
-		if err != nil {
-			slog.Error("Failed to read place types config", "path", filePath, "err", err)
-			return
-		}
-		if err := yaml.Unmarshal(bytes, &placeTypes); err != nil {
-			slog.Error("Failed to unmarshal place types config", "path", filePath, "err", err)
-			return
-		}
+		placeTypes, loadPlaceTypesErr = loadPlaceTypesFromFile(getPlaceTypesConfigPath())
 	})
+	if loadPlaceTypesErr != nil {
+		return "", loadPlaceTypesErr
+	}
 
 	// 1. Check non-place types first (PoliticalCampaignCmte, Currency)
 	for _, t := range []string{"PoliticalCampaignCmte", "Currency"} {
 		if StringContainedIn(t, types) {
-			return t
+			return t, nil
 		}
 	}
 
 	for _, pt := range placeTypes {
 		if StringContainedIn(pt, types) {
-			return pt
+			return pt, nil
 		}
 	}
-	return ""
+	return "", nil
+}
+
+func getPlaceTypesConfigPath() string {
+	_, filename, _, _ := runtime.Caller(0)
+	return path.Join(path.Dir(filename), "resource/place_types.yaml")
+}
+
+func loadPlaceTypesFromFile(filePath string) ([]string, error) {
+	bytes, err := os.ReadFile(filePath)
+	if err != nil {
+		return nil, fmt.Errorf("read place types config %q: %w", filePath, err)
+	}
+
+	placeTypes := []string{}
+	if err := yaml.Unmarshal(bytes, &placeTypes); err != nil {
+		return nil, fmt.Errorf("unmarshal place types config %q: %w", filePath, err)
+	}
+	return placeTypes, nil
 }
