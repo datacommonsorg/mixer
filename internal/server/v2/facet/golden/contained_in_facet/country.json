@@ -83,16 +83,10 @@
               "facet_id": "3614729857"
             },
             {
-              "facet_id": "2911625765"
-            },
-            {
               "facet_id": "1024534950"
             },
             {
               "facet_id": "1250580925"
-            },
-            {
-              "facet_id": "1915134240"
             },
             {
               "facet_id": "607884225"
@@ -181,9 +175,6 @@
               "facet_id": "3614729857"
             },
             {
-              "facet_id": "2911625765"
-            },
-            {
               "facet_id": "1565963938"
             },
             {
@@ -267,10 +258,6 @@
     "1897073702": {
       "import_name": "SouthAfrica_Census",
       "provenance_url": "https://southafrica.opendataforafrica.org/"
-    },
-    "1915134240": {
-      "import_name": "Denmark_Demographics",
-      "provenance_url": "https://www.statbank.dk/statbank5a/default.asp?w=1280"
     },
     "192455881": {
       "import_name": "Israel_Census",
@@ -384,10 +371,6 @@
     "2882445785": {
       "import_name": "Uganda_Census",
       "provenance_url": "https://uganda.opendataforafrica.org/"
-    },
-    "2911625765": {
-      "import_name": "France_Demographics",
-      "provenance_url": "https://www.insee.fr/en/statistiques/8333211?sommaire=8333329"
     },
     "318580725": {
       "import_name": "Indonesia_Census",

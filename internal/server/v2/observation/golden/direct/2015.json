@@ -161,18 +161,6 @@
               "latest_date": "2015"
             },
             {
-              "facet_id": "2911625765",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 66422469
-                }
-              ],
-              "obs_count": 1,
-              "earliest_date": "2015",
-              "latest_date": "2015"
-            },
-            {
               "facet_id": "1733625304",
               "observations": [
                 {
@@ -639,10 +627,6 @@
     "2825511676": {
       "import_name": "CDC_Mortality_UnderlyingCause",
       "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
-    },
-    "2911625765": {
-      "import_name": "France_Demographics",
-      "provenance_url": "https://www.insee.fr/en/statistiques/8333211?sommaire=8333329"
     },
     "2921750529": {
       "import_name": "Custom Prov",
