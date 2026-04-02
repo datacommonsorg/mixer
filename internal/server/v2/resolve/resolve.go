@@ -96,7 +96,7 @@ func Coordinate(
 	coordinates := []*pb.ResolveCoordinatesRequest_Coordinate{}
 	latLngToNode := map[latLng]string{}
 	for _, node := range nodes {
-		lat, lng, err := parseCoordinate(node)
+		lat, lng, err := ParseCoordinate(node)
 		if err != nil {
 			return nil, err
 		}
@@ -123,7 +123,7 @@ func Coordinate(
 		resp.Entities = append(resp.Entities,
 			&pbv2.ResolveResponse_Entity{
 				Node:       node,
-				Candidates: getSortedResolvedPlaceCandidates(e.GetPlaces()),
+				Candidates: GetSortedResolvedPlaceCandidates(e.GetPlaces()),
 			})
 	}
 	return resp, nil
@@ -174,7 +174,8 @@ func Description(
 	return resp, nil
 }
 
-func parseCoordinate(coordinateExpr string) (float64, float64, error) {
+// ParseCoordinate parses a `lat#lng` coordinate expression used by resolve.
+func ParseCoordinate(coordinateExpr string) (float64, float64, error) {
 	parts := strings.Split(coordinateExpr, "#")
 	if len(parts) != 2 {
 		return 0, 0, status.Errorf(codes.InvalidArgument,
@@ -196,9 +197,9 @@ func parseCoordinate(coordinateExpr string) (float64, float64, error) {
 	return lat, lng, nil
 }
 
-// Sort resolved place candidates by a priority list of place types.
+// GetSortedResolvedPlaceCandidates sorts resolved place candidates by place-type priority.
 // If a candidate's type is not in the priority list, then sort by DCID alphabetically.
-func getSortedResolvedPlaceCandidates(
+func GetSortedResolvedPlaceCandidates(
 	places []*pb.ResolveCoordinatesResponse_Place) []*pbv2.ResolveResponse_Entity_Candidate {
 	typeToCandidate := map[string]*pbv2.ResolveResponse_Entity_Candidate{}
 	for _, place := range places {

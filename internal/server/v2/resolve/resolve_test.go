@@ -28,7 +28,7 @@ func TestParseCoordinate(t *testing.T) {
 		{"-1.2#abc", 0, 0, true},
 		{"1.2,3.4", 0, 0, true},
 	} {
-		gotLat, gotLng, err := parseCoordinate(c.coordinateExpr)
+		gotLat, gotLng, err := ParseCoordinate(c.coordinateExpr)
 		if c.wantErr {
 			if err == nil {
 				t.Errorf("parseCoordinate(%s) got no error, want error",

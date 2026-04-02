@@ -19,6 +19,7 @@ import (
 	"fmt"
 	"log/slog"
 	"sort"
+	"strings"
 
 	internalmaps "github.com/datacommonsorg/mixer/internal/maps"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -28,10 +29,12 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/recon"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	v2e "github.com/datacommonsorg/mixer/internal/server/v2/event"
+	resolvev2 "github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	v3 "github.com/datacommonsorg/mixer/internal/server/v3"
 	"github.com/datacommonsorg/mixer/internal/store/files"
 	"github.com/datacommonsorg/mixer/internal/translator/sparql"
 	"github.com/datacommonsorg/mixer/internal/util"
+	"github.com/golang/geo/s2"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -42,6 +45,12 @@ type SpannerDataSource struct {
 	recogPlaceStore *files.RecogPlaceStore
 	mapsClient      internalmaps.MapsClient
 }
+
+const (
+	maxContainedInPlaceEdgesPerS2Cell = 50
+	s2CellIDPrefix                    = "s2CellId/"
+	s2CellTypePrefix                  = "S2CellLevel"
+)
 
 func NewSpannerDataSource(
 	client SpannerClient,
@@ -220,8 +229,7 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 		// Coordinate to ID:
 		// Example:
 		//   <-geoCoordinate->dcid
-		// TODO: Support coordinate recon with Spanner.
-		return nil, fmt.Errorf("unimplemented")
+		return sds.resolveCoordinate(ctx, req, inArc)
 	}
 
 	if inArc.SingleProp == "description" && outArc.SingleProp == "dcid" {
@@ -258,6 +266,85 @@ func (sds *SpannerDataSource) Sparql(ctx context.Context, req *pb.SparqlRequest)
 		return nil, status.Errorf(codes.Internal, "error converting sparql results to query response: %v", err)
 	}
 	return response, nil
+}
+
+// resolveCoordinate resolves geo coordinates to DCIDs using S2 level-10 cell mappings.
+func (sds *SpannerDataSource) resolveCoordinate(
+	ctx context.Context,
+	req *pbv2.ResolveRequest,
+	inArc *v2.Arc,
+) (*pbv2.ResolveResponse, error) {
+	type coordinateNode struct {
+		node   string
+		cellID string
+	}
+
+	typeOfs := inArc.Filter["typeOf"]
+	coordinateNodes := []coordinateNode{}
+	cellIDSet := map[string]struct{}{}
+	for _, node := range req.GetNodes() {
+		lat, lng, err := resolvev2.ParseCoordinate(node)
+		if err != nil {
+			return nil, err
+		}
+		cellID := level10S2CellID(lat, lng)
+		coordinateNodes = append(coordinateNodes, coordinateNode{
+			node:   node,
+			cellID: cellID,
+		})
+		cellIDSet[cellID] = struct{}{}
+	}
+
+	containedInPlaceArc := &v2.Arc{SingleProp: v2.ContainedInPlaceProperty, Out: true}
+	// GetNodeEdgesByIDQuery always applies LIMIT pageSize+1. Coordinate resolve
+	// expects at most 50 relevant place edges per S2 cell, so size the batched
+	// lookup by the number of unique cells in the request.
+	cellToEdges, err := sds.client.GetNodeEdgesByID(
+		ctx,
+		util.StringSetToSlice(cellIDSet),
+		containedInPlaceArc,
+		len(cellIDSet)*maxContainedInPlaceEdgesPerS2Cell,
+		0,
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	resp := &pbv2.ResolveResponse{}
+	for _, coordinateNode := range coordinateNodes {
+		candidateSet := map[string]struct{}{}
+		places := []*pb.ResolveCoordinatesResponse_Place{}
+		for _, edge := range cellToEdges[coordinateNode.cellID] {
+			// Skip S2 cells to return actual places only (S2 cells can point to other
+			// S2 cells via containedInPlace).
+			if edge.Value == "" || isS2CellNode(edge) {
+				continue
+			}
+			dominantType, err := util.GetDominantType(edge.Types)
+			if err != nil {
+				return nil, err
+			}
+			// Coordinate resolve filters by dominant type only. Secondary types on
+			// the place node do not qualify a candidate for a typeOf match.
+			if len(typeOfs) > 0 && !matchesRequestedType(dominantType, typeOfs) {
+				continue
+			}
+			if _, ok := candidateSet[edge.Value]; ok {
+				continue
+			}
+			candidateSet[edge.Value] = struct{}{}
+			places = append(places, &pb.ResolveCoordinatesResponse_Place{
+				Dcid:         edge.Value,
+				DominantType: dominantType,
+			})
+		}
+		resp.Entities = append(resp.Entities, &pbv2.ResolveResponse_Entity{
+			Node:       coordinateNode.node,
+			Candidates: resolvev2.GetSortedResolvedPlaceCandidates(places),
+		})
+	}
+
+	return resp, nil
 }
 
 // resolveDescription resolves entity descriptions to DCIDs.
@@ -360,6 +447,30 @@ func (sds *SpannerDataSource) fetchTypes(
 		}
 	}
 	return dcidToTypeSet, nil
+}
+
+func level10S2CellID(lat, lng float64) string {
+	cellID := s2.CellIDFromLatLng(s2.LatLngFromDegrees(lat, lng)).Parent(10)
+	return fmt.Sprintf("%s0x%016x", s2CellIDPrefix, uint64(cellID))
+}
+
+func matchesRequestedType(candidateType string, filterTypes []string) bool {
+	for _, filterType := range filterTypes {
+		if candidateType == filterType {
+			return true
+		}
+	}
+	return false
+}
+
+// isS2CellNode checks if the edge points to an S2 cell node by checking its types.
+func isS2CellNode(edge *Edge) bool {
+	for _, nodeType := range edge.Types {
+		if strings.HasPrefix(nodeType, s2CellTypePrefix) {
+			return true
+		}
+	}
+	return false
 }
 
 type eventCollectionDateRequest struct {
