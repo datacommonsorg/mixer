@@ -293,7 +293,7 @@ func (sds *SpannerDataSource) resolveCoordinate(
 		cellIDSet[cellID] = struct{}{}
 	}
 
-	containedInPlaceArc := &v2.Arc{SingleProp: "containedInPlace", Out: true}
+	containedInPlaceArc := &v2.Arc{SingleProp: v2.ContainedInPlaceProperty, Out: true}
 	// GetNodeEdgesByIDQuery always applies LIMIT pageSize+1. Coordinate resolve
 	// expects at most 50 relevant place edges per S2 cell, so size the batched
 	// lookup by the number of unique cells in the request.
