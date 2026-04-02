@@ -274,3 +274,53 @@ func TestResolveCoordinateTypeFilterUsesDominantType(t *testing.T) {
 		t.Fatalf("Resolve() diff (-want +got):\n%s", diff)
 	}
 }
+
+func TestResolveCoordinateSkipsS2CellCandidatesByType(t *testing.T) {
+	t.Parallel()
+
+	cellID := level10S2CellID(37.42, -122.08)
+	ds := NewSpannerDataSource(&coordinateMockSpannerClient{
+		getNodeEdgesByProp: map[string]map[string][]*Edge{
+			"containedInPlace": {
+				cellID: {
+					{
+						SubjectID: cellID,
+						Predicate: "containedInPlace",
+						Value:     level10S2CellID(37.43, -122.09),
+						Types:     []string{"S2CellLevel10"},
+					},
+					{
+						SubjectID: cellID,
+						Predicate: "containedInPlace",
+						Value:     "geoId/06085",
+						Types:     []string{"County", "AdministrativeArea2"},
+					},
+				},
+			},
+		},
+	}, nil, nil)
+
+	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
+		Nodes:    []string{"37.42#-122.08"},
+		Property: "<-geoCoordinate->dcid",
+	})
+	if err != nil {
+		t.Fatalf("Resolve() error: %v", err)
+	}
+
+	want := &pbv2.ResolveResponse{
+		Entities: []*pbv2.ResolveResponse_Entity{
+			{
+				Node: "37.42#-122.08",
+				Candidates: []*pbv2.ResolveResponse_Entity_Candidate{
+					{Dcid: "geoId/06085", DominantType: "County"},
+				},
+			},
+		},
+	}
+
+	if diff := cmp.Diff(want, got, protocmp.Transform()); diff != "" {
+		t.Fatalf("Resolve() diff (-want +got):\n%s", diff)
+	}
+}
+

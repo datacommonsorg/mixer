@@ -48,6 +48,8 @@ type SpannerDataSource struct {
 
 const (
 	maxContainedInPlaceEdgesPerS2Cell = 50
+	s2CellIDPrefix                    = "s2CellId/"
+	s2CellTypePrefix                  = "S2CellLevel"
 )
 
 func NewSpannerDataSource(
@@ -313,7 +315,9 @@ func (sds *SpannerDataSource) resolveCoordinate(
 		candidateSet := map[string]struct{}{}
 		places := []*pb.ResolveCoordinatesResponse_Place{}
 		for _, edge := range cellToEdges[coordinateNode.cellID] {
-			if edge.Value == "" || strings.HasPrefix(edge.Value, "s2CellId/") {
+			// Skip S2 cells to return actual places only (S2 cells can point to other
+			// S2 cells via containedInPlace).
+			if edge.Value == "" || isS2CellNode(edge) {
 				continue
 			}
 			dominantType, err := util.GetDominantType(edge.Types)
@@ -447,12 +451,22 @@ func (sds *SpannerDataSource) fetchTypes(
 
 func level10S2CellID(lat, lng float64) string {
 	cellID := s2.CellIDFromLatLng(s2.LatLngFromDegrees(lat, lng)).Parent(10)
-	return fmt.Sprintf("s2CellId/0x%016x", uint64(cellID))
+	return fmt.Sprintf("%s0x%016x", s2CellIDPrefix, uint64(cellID))
 }
 
 func matchesRequestedType(candidateType string, filterTypes []string) bool {
 	for _, filterType := range filterTypes {
 		if candidateType == filterType {
+			return true
+		}
+	}
+	return false
+}
+
+// isS2CellNode checks if the edge points to an S2 cell node by checking its types.
+func isS2CellNode(edge *Edge) bool {
+	for _, nodeType := range edge.Types {
+		if strings.HasPrefix(nodeType, s2CellTypePrefix) {
 			return true
 		}
 	}
