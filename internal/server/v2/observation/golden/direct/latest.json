@@ -252,25 +252,25 @@
               "facet_id": "2645850372",
               "observations": [
                 {
-                  "date": "2023",
-                  "value": 335642425
+                  "date": "2024",
+                  "value": 338156808
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2023",
-              "latest_date": "2023"
+              "earliest_date": "2024",
+              "latest_date": "2024"
             },
             {
               "facet_id": "1145703171",
               "observations": [
                 {
-                  "date": "2023",
-                  "value": 332387540
+                  "date": "2024",
+                  "value": 334922499
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2023",
-              "latest_date": "2023"
+              "earliest_date": "2024",
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -437,13 +437,13 @@
               "facet_id": "1145703171",
               "observations": [
                 {
-                  "date": "2023",
-                  "value": 39242785
+                  "date": "2024",
+                  "value": 39287377
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2023",
-              "latest_date": "2023"
+              "earliest_date": "2024",
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -561,13 +561,13 @@
               "facet_id": "1145703171",
               "observations": [
                 {
-                  "date": "2023",
-                  "value": 82363
+                  "date": "2024",
+                  "value": 83732
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2023",
-              "latest_date": "2023"
+              "earliest_date": "2024",
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
