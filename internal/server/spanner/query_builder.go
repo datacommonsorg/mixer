@@ -390,6 +390,7 @@ func GetCacheDataQuery(typeFilter CacheDataType, keys []string) *spanner.Stateme
 	}
 }
 
+// CountDescendentStatVarsQuery returns a query to count descendent stat vars for given stat var groups, with optional filtering by constrained entities and existence threshold.
 func CountDescendentStatVarsQuery(nodes []string, constrainedEntities []string, numEntitiesExistence int, filterProp string) *spanner.Statement {
 	nodeFilter, nodeVal := getParamStatement("nodes", nodes)
 	params := map[string]interface{}{
@@ -399,7 +400,8 @@ func CountDescendentStatVarsQuery(nodes []string, constrainedEntities []string, 
 
 	var entityFilter string
 	var distinct string
-	if filterProp == "isPartOf" || filterProp == "source" {
+	// Filter by import if filterProp is set, otherwise default to filtering by place.
+	if filterProp != "" {
 		importFilter, importVal := getParamStatement("imports", constrainedEntities)
 		entityFilter = fmt.Sprintf(statements.filterDescendentStatVarsByImport, importFilter)
 		params["importPredicate"] = filterProp
