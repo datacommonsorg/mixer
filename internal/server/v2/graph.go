@@ -17,11 +17,6 @@ package v2
 
 import "github.com/datacommonsorg/mixer/internal/util"
 
-const (
-	// Indicates that all properties should be returned.
-	WILDCARD = "*"
-)
-
 // Arc represents an arc in the graph.
 type Arc struct {
 	// Whether it's out or in arc.
