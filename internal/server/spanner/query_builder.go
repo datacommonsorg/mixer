@@ -34,7 +34,7 @@ import (
 const (
 	// SQL query snippets.
 	// WHERE keyword for SQL queries.
-	sqlWhere = "\n\t\tWHERE\n\t\t\t"
+	sqlWhere = "WHERE"
 	// Prefix for graph queries with any node selection.
 	sqlReturn = "\n\t\tRETURN"
 	// DISTINCT keyword for SQL queries.
@@ -342,7 +342,7 @@ func SparqlQuery(nodes []types.Node, queries []*types.Query, opts *types.QueryOp
 	sql += strings.Join(triples, ",\n\t\t")
 
 	if len(nodeMaps) > 0 {
-		sql += sqlWhere + strings.Join(nodeMaps, "\n\t\t\tAND ")
+		sql += "\n\t\t" + sqlWhere + "\n\t\t\t" + strings.Join(nodeMaps, "\n\t\t\tAND ")
 	}
 
 	var nodeAliases []string
@@ -386,6 +386,40 @@ func GetCacheDataQuery(typeFilter CacheDataType, keys []string) *spanner.Stateme
 
 	return &spanner.Statement{
 		SQL:    fmt.Sprintf(statements.getCacheData, keyFilter),
+		Params: params,
+	}
+}
+
+func CountDescendentStatVarsQuery(nodes []string, constrainedEntities []string, numEntitiesExistence int, filterProp string) *spanner.Statement {
+	nodeFilter, nodeVal := getParamStatement("nodes", nodes)
+	params := map[string]interface{}{
+		"nodes":                nodeVal,
+		"numEntitiesExistence": numEntitiesExistence,
+	}
+
+	var entityFilter string
+	var distinct string
+	if filterProp == "isPartOf" || filterProp == "source" {
+		importFilter, importVal := getParamStatement("imports", constrainedEntities)
+		entityFilter = fmt.Sprintf(statements.filterDescendentStatVarsByImport, importFilter)
+		params["importPredicate"] = filterProp
+		params["imports"] = importVal
+		distinct = "e1.subject_id"
+	} else {
+		placeFilter, placeVal := getParamStatement("places", constrainedEntities)
+		entityFilter = "\n\t\t\t" + sqlWhere + " " + fmt.Sprintf(statements.selectEntityDcids, placeFilter)
+		params["places"] = placeVal
+		distinct = "observation_about"
+	}
+
+	var numFilter string
+	if numEntitiesExistence > 1 {
+		numFilter = fmt.Sprintf(statements.filterDescendentStatVarsByNumEntitiesExistence, distinct)
+		params["numEntitiesExistence"] = numEntitiesExistence
+	}
+
+	return &spanner.Statement{
+		SQL:    fmt.Sprintf(statements.countDescendentStatVars, entityFilter, numFilter, nodeFilter),
 		Params: params,
 	}
 }

@@ -95,6 +95,12 @@ var statements = struct {
 	getEventCollectionDcids string
 	// Fetch events for a given type, location and date, along with magnitude property.
 	getEventCollectionDcidsWithMagnitude string
+	// Fetch number of descendent stat vars for given variable groups and entities.
+	countDescendentStatVars string
+	// Filter descendent stat vars by import.
+	filterDescendentStatVarsByImport string
+	// Filter descendent stat vars by num_entities_existences.
+	filterDescendentStatVarsByNumEntitiesExistence string
 }{
 	getCompletionTimestamp: `		SELECT
 		CompletionTimestamp
@@ -336,4 +342,24 @@ var statements = struct {
 		RETURN DISTINCT 
 			event.subject_id AS dcid,
 			magEdge.object_id AS magnitude`,
+	countDescendentStatVars: `		SELECT
+			e.object_id,
+			COUNT(e.subject_id) AS descendent_stat_vars
+		FROM Edge@{FORCE_INDEX=InEdge} e
+		JOIN@{JOIN_TYPE=HASH_JOIN} (
+			SELECT variable_measured
+			FROM Observation%[1]s
+			GROUP BY variable_measured%[2]s	
+		) o ON o.variable_measured = e.subject_id
+		WHERE
+		 	e.predicate = 'linkedMemberOf'
+			AND e.object_id %[3]s
+			GROUP BY e.object_id`,
+	filterDescendentStatVarsByImport: `
+			JOIN Edge@{FORCE_INDEX=InEdge} e1
+			ON import_name = SUBSTR(e1.subject_id, 9)
+			WHERE e1.predicate = @importPredicate
+				AND e1.object_id %s`,
+	filterDescendentStatVarsByNumEntitiesExistence: `
+			HAVING COUNT(DISTINCT %s) >= @numEntitiesExistence`,
 }
