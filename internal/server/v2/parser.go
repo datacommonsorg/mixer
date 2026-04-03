@@ -204,7 +204,7 @@ func ParseContainedInPlace(expr string) (*ContainedInPlace, error) {
 	}
 	arc := g.Arcs[0]
 	typeOfs, typeOfsOK := arc.Filter["typeOf"]
-	if arc.SingleProp != "containedInPlace" ||
+	if arc.SingleProp != ContainedInPlaceProperty ||
 		arc.Decorator != "+" ||
 		arc.Filter == nil ||
 		!typeOfsOK || len(typeOfs) != 1 {
