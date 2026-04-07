@@ -48,7 +48,7 @@ For MCP (Model Context Protocol) services running on Cloud Run, the Apigee proxy
 
 0. Ensure the [prerequisites](#prerequisites) are installed.
 1. Set gcloud project to Apigee host project: gcloud config set project $HOST_PROJECT_ID.  
-1. Create GCS bucket for Terraform state: gsutil mb "gs://$HOST_PROJECT_ID-tf".  
+1. Create GCS bucket for Terraform state: gcloud storage buckets create "gs://$HOST_PROJECT_ID-tf".  
 1. Set ENV_NAME=\<nonprod|prod\>.  
 1. Create a local $ENV_NAME.env file with your initial variables.  
 1. Create the destination in Secret Manager:  
