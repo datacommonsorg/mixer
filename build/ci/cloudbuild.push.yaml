@@ -72,14 +72,14 @@ steps:
 
   # Push the grpc descriptor to gcs.
   - id: push-grpc-descriptor
-    name: gcr.io/cloud-builders/gsutil
+    name: gcr.io/cloud-builders/gcloud
     entrypoint: "bash"
     args:
       - -c
       - |
         set -e
-        gsutil cp mixer-grpc.$SHORT_SHA.pb gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$SHORT_SHA.pb
-        gsutil cp mixer-grpc.$SHORT_SHA.pb gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.latest.pb
+        gcloud storage cp mixer-grpc.$SHORT_SHA.pb gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.$SHORT_SHA.pb
+        gcloud storage cp mixer-grpc.$SHORT_SHA.pb gs://datcom-mixer-grpc/mixer-grpc/mixer-grpc.latest.pb
     waitFor: ["build-proto"]
 
   # Update mixer autopush version in the GCP repo "deployment".
