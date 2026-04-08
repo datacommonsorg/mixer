@@ -309,6 +309,14 @@
       "dcid": "Count_Person_Intersex"
     },
     {
+      "name": "Number of people aged 0 to 15 years",
+      "dcid": "Count_Person_0To15Years"
+    },
+    {
+      "name": "Number of people aged 0 to 16 years",
+      "dcid": "Count_Person_0To16Years"
+    },
+    {
       "name": "Number of people aged 101 years",
       "dcid": "Count_Person_Years101"
     },
@@ -323,6 +331,10 @@
     {
       "name": "Number of people aged 104 years",
       "dcid": "Count_Person_Years104"
+    },
+    {
+      "name": "Number of people aged 17 to 64 years",
+      "dcid": "Count_Person_17To64Years"
     },
     {
       "name": "Number of people aged 20 to 59 years",
@@ -3987,18 +3999,6 @@
     {
       "name": "Hispanic-White Male Population",
       "dcid": "Count_Person_Male_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
-    },
-    {
-      "name": "Hispanic/Latino Population With Disabilities",
-      "dcid": "Count_Person_WithDisability_HispanicOrLatino"
-    },
-    {
-      "name": "Male Population Above Poverty Level in the Past Year",
-      "dcid": "Count_Person_Male_AbovePovertyLevelInThePast12Months"
-    },
-    {
-      "name": "Male Population Aged 25 to 34",
-      "dcid": "Count_Person_25To34Years_Male"
     }
   ],
   "matches": [
