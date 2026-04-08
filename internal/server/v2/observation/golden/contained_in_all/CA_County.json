@@ -286,11 +286,15 @@
                 {
                   "date": "2023",
                   "value": 1651949
+                },
+                {
+                  "date": "2024",
+                  "value": 1649473
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -1106,11 +1110,15 @@
                 {
                   "date": "2023",
                   "value": 1695
+                },
+                {
+                  "date": "2024",
+                  "value": 1616
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -1778,11 +1786,15 @@
                 {
                   "date": "2023",
                   "value": 41029
+                },
+                {
+                  "date": "2024",
+                  "value": 41428
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -2530,11 +2542,15 @@
                 {
                   "date": "2023",
                   "value": 209470
+                },
+                {
+                  "date": "2024",
+                  "value": 207929
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -3334,11 +3350,15 @@
                 {
                   "date": "2023",
                   "value": 45995
+                },
+                {
+                  "date": "2024",
+                  "value": 46248
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -4086,11 +4106,15 @@
                 {
                   "date": "2023",
                   "value": 21895
+                },
+                {
+                  "date": "2024",
+                  "value": 21984
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -4838,11 +4862,15 @@
                 {
                   "date": "2023",
                   "value": 1161458
+                },
+                {
+                  "date": "2024",
+                  "value": 1165012
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -5646,11 +5674,15 @@
                 {
                   "date": "2023",
                   "value": 27293
+                },
+                {
+                  "date": "2024",
+                  "value": 27107
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -6402,11 +6434,15 @@
                 {
                   "date": "2023",
                   "value": 192299
+                },
+                {
+                  "date": "2024",
+                  "value": 192662
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -7206,11 +7242,15 @@
                 {
                   "date": "2023",
                   "value": 1012152
+                },
+                {
+                  "date": "2024",
+                  "value": 1016725
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -8010,11 +8050,15 @@
                 {
                   "date": "2023",
                   "value": 28623
+                },
+                {
+                  "date": "2024",
+                  "value": 28494
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -8762,11 +8806,15 @@
                 {
                   "date": "2023",
                   "value": 135418
+                },
+                {
+                  "date": "2024",
+                  "value": 134541
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -9566,11 +9614,15 @@
                 {
                   "date": "2023",
                   "value": 179319
+                },
+                {
+                  "date": "2024",
+                  "value": 180202
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -10370,11 +10422,15 @@
                 {
                   "date": "2023",
                   "value": 18803
+                },
+                {
+                  "date": "2024",
+                  "value": 18739
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -11122,11 +11178,15 @@
                 {
                   "date": "2023",
                   "value": 910433
+                },
+                {
+                  "date": "2024",
+                  "value": 915075
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -11926,11 +11986,15 @@
                 {
                   "date": "2023",
                   "value": 152830
+                },
+                {
+                  "date": "2024",
+                  "value": 153298
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -12734,11 +12798,15 @@
                 {
                   "date": "2023",
                   "value": 68139
+                },
+                {
+                  "date": "2024",
+                  "value": 68152
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -13538,11 +13606,15 @@
                 {
                   "date": "2023",
                   "value": 31177
+                },
+                {
+                  "date": "2024",
+                  "value": 30356
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -14294,11 +14366,15 @@
                 {
                   "date": "2023",
                   "value": 9848406
+                },
+                {
+                  "date": "2024",
+                  "value": 9808667
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -15130,11 +15206,15 @@
                 {
                   "date": "2023",
                   "value": 158790
+                },
+                {
+                  "date": "2024",
+                  "value": 160940
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -15934,11 +16014,15 @@
                 {
                   "date": "2023",
                   "value": 258765
+                },
+                {
+                  "date": "2024",
+                  "value": 257969
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -16742,11 +16826,15 @@
                 {
                   "date": "2023",
                   "value": 17060
+                },
+                {
+                  "date": "2024",
+                  "value": 17082
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -17494,11 +17582,15 @@
                 {
                   "date": "2023",
                   "value": 90709
+                },
+                {
+                  "date": "2024",
+                  "value": 90244
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -18298,11 +18390,15 @@
                 {
                   "date": "2023",
                   "value": 285597
+                },
+                {
+                  "date": "2024",
+                  "value": 290201
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -19102,11 +19198,15 @@
                 {
                   "date": "2023",
                   "value": 8646
+                },
+                {
+                  "date": "2024",
+                  "value": 8600
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -19854,11 +19954,15 @@
                 {
                   "date": "2023",
                   "value": 13169
+                },
+                {
+                  "date": "2024",
+                  "value": 13148
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -20606,11 +20710,15 @@
                 {
                   "date": "2023",
                   "value": 435834
+                },
+                {
+                  "date": "2024",
+                  "value": 437613
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -21442,11 +21550,15 @@
                 {
                   "date": "2023",
                   "value": 136070
+                },
+                {
+                  "date": "2024",
+                  "value": 134869
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -22250,11 +22362,15 @@
                 {
                   "date": "2023",
                   "value": 102452
+                },
+                {
+                  "date": "2024",
+                  "value": 102481
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -23054,11 +23170,15 @@
                 {
                   "date": "2023",
                   "value": 3164063
+                },
+                {
+                  "date": "2024",
+                  "value": 3165820
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -23862,11 +23982,15 @@
                 {
                   "date": "2023",
                   "value": 412435
+                },
+                {
+                  "date": "2024",
+                  "value": 419156
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -24666,11 +24790,15 @@
                 {
                   "date": "2023",
                   "value": 19607
+                },
+                {
+                  "date": "2024",
+                  "value": 19423
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -25418,11 +25546,15 @@
                 {
                   "date": "2023",
                   "value": 2449909
+                },
+                {
+                  "date": "2024",
+                  "value": 2478600
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -26226,11 +26358,15 @@
                 {
                   "date": "2023",
                   "value": 1584047
+                },
+                {
+                  "date": "2024",
+                  "value": 1594006
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -27034,11 +27170,15 @@
                 {
                   "date": "2023",
                   "value": 66056
+                },
+                {
+                  "date": "2024",
+                  "value": 67290
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -27790,11 +27930,15 @@
                 {
                   "date": "2023",
                   "value": 2187816
+                },
+                {
+                  "date": "2024",
+                  "value": 2197104
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -28598,11 +28742,15 @@
                 {
                   "date": "2023",
                   "value": 3282782
+                },
+                {
+                  "date": "2024",
+                  "value": 3288774
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -29402,11 +29550,15 @@
                 {
                   "date": "2023",
                   "value": 836321
+                },
+                {
+                  "date": "2024",
+                  "value": 830235
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -30002,11 +30154,15 @@
                 {
                   "date": "2023",
                   "value": 787416
+                },
+                {
+                  "date": "2024",
+                  "value": 797334
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -30806,11 +30962,15 @@
                 {
                   "date": "2023",
                   "value": 281486
+                },
+                {
+                  "date": "2024",
+                  "value": 281555
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -31610,11 +31770,15 @@
                 {
                   "date": "2023",
                   "value": 745100
+                },
+                {
+                  "date": "2024",
+                  "value": 742340
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -32254,11 +32418,15 @@
                 {
                   "date": "2023",
                   "value": 443975
+                },
+                {
+                  "date": "2024",
+                  "value": 443701
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -33058,11 +33226,15 @@
                 {
                   "date": "2023",
                   "value": 1903297
+                },
+                {
+                  "date": "2024",
+                  "value": 1902047
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -33870,11 +34042,15 @@
                 {
                   "date": "2023",
                   "value": 266021
+                },
+                {
+                  "date": "2024",
+                  "value": 264926
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -34674,11 +34850,15 @@
                 {
                   "date": "2023",
                   "value": 181554
+                },
+                {
+                  "date": "2024",
+                  "value": 181436
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -35478,11 +35658,15 @@
                 {
                   "date": "2023",
                   "value": 2731
+                },
+                {
+                  "date": "2024",
+                  "value": 2746
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -36226,11 +36410,15 @@
                 {
                   "date": "2023",
                   "value": 43834
+                },
+                {
+                  "date": "2024",
+                  "value": 43466
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -36978,11 +37166,15 @@
                 {
                   "date": "2023",
                   "value": 450824
+                },
+                {
+                  "date": "2024",
+                  "value": 451918
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -37786,11 +37978,15 @@
                 {
                   "date": "2023",
                   "value": 485642
+                },
+                {
+                  "date": "2024",
+                  "value": 485040
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -38594,11 +38790,15 @@
                 {
                   "date": "2023",
                   "value": 552250
+                },
+                {
+                  "date": "2024",
+                  "value": 553990
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -39398,11 +39598,15 @@
                 {
                   "date": "2023",
                   "value": 98971
+                },
+                {
+                  "date": "2024",
+                  "value": 98857
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -40202,11 +40406,15 @@
                 {
                   "date": "2023",
                   "value": 65520
+                },
+                {
+                  "date": "2024",
+                  "value": 65167
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -40970,11 +41178,15 @@
                 {
                   "date": "2023",
                   "value": 15886
+                },
+                {
+                  "date": "2024",
+                  "value": 15860
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -41722,11 +41934,15 @@
                 {
                   "date": "2023",
                   "value": 475774
+                },
+                {
+                  "date": "2024",
+                  "value": 478693
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -42526,11 +42742,15 @@
                 {
                   "date": "2023",
                   "value": 54873
+                },
+                {
+                  "date": "2024",
+                  "value": 54498
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -43282,11 +43502,15 @@
                 {
                   "date": "2023",
                   "value": 838259
+                },
+                {
+                  "date": "2024",
+                  "value": 837469
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -44094,11 +44318,15 @@
                 {
                   "date": "2023",
                   "value": 217782
+                },
+                {
+                  "date": "2024",
+                  "value": 220564
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -44898,11 +45126,15 @@
                 {
                   "date": "2023",
                   "value": 83079
+                },
+                {
+                  "date": "2024",
+                  "value": 84507
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "1541763368",
@@ -45478,11 +45710,15 @@
                 {
                   "date": "2023",
                   "value": 38.7
+                },
+                {
+                  "date": "2024",
+                  "value": 39
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -45606,11 +45842,15 @@
                 {
                   "date": "2023",
                   "value": 41.1
+                },
+                {
+                  "date": "2024",
+                  "value": 39.8
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -45734,11 +45974,15 @@
                 {
                   "date": "2023",
                   "value": 49.9
+                },
+                {
+                  "date": "2024",
+                  "value": 49.7
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -45862,11 +46106,15 @@
                 {
                   "date": "2023",
                   "value": 36.3
+                },
+                {
+                  "date": "2024",
+                  "value": 36.2
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -45990,11 +46238,15 @@
                 {
                   "date": "2023",
                   "value": 52
+                },
+                {
+                  "date": "2024",
+                  "value": 52
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -46118,11 +46370,15 @@
                 {
                   "date": "2023",
                   "value": 35.7
+                },
+                {
+                  "date": "2024",
+                  "value": 35.9
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -46246,11 +46502,15 @@
                 {
                   "date": "2023",
                   "value": 40.3
+                },
+                {
+                  "date": "2024",
+                  "value": 40.5
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -46374,11 +46634,15 @@
                 {
                   "date": "2023",
                   "value": 40.8
+                },
+                {
+                  "date": "2024",
+                  "value": 39.9
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -46502,11 +46766,15 @@
                 {
                   "date": "2023",
                   "value": 46.1
+                },
+                {
+                  "date": "2024",
+                  "value": 46.1
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -46630,11 +46898,15 @@
                 {
                   "date": "2023",
                   "value": 33.2
+                },
+                {
+                  "date": "2024",
+                  "value": 33.5
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -46758,11 +47030,15 @@
                 {
                   "date": "2023",
                   "value": 35.9
+                },
+                {
+                  "date": "2024",
+                  "value": 36.2
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -46886,11 +47162,15 @@
                 {
                   "date": "2023",
                   "value": 39.6
+                },
+                {
+                  "date": "2024",
+                  "value": 39.9
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -47014,11 +47294,15 @@
                 {
                   "date": "2023",
                   "value": 33
+                },
+                {
+                  "date": "2024",
+                  "value": 33.2
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -47142,11 +47426,15 @@
                 {
                   "date": "2023",
                   "value": 45.6
+                },
+                {
+                  "date": "2024",
+                  "value": 45.5
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -47270,11 +47558,15 @@
                 {
                   "date": "2023",
                   "value": 32.4
+                },
+                {
+                  "date": "2024",
+                  "value": 32.7
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -47398,11 +47690,15 @@
                 {
                   "date": "2023",
                   "value": 32.3
+                },
+                {
+                  "date": "2024",
+                  "value": 32.5
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -47526,11 +47822,15 @@
                 {
                   "date": "2023",
                   "value": 44.2
+                },
+                {
+                  "date": "2024",
+                  "value": 44.1
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -47654,11 +47954,15 @@
                 {
                   "date": "2023",
                   "value": 37.8
+                },
+                {
+                  "date": "2024",
+                  "value": 38.3
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -47782,11 +48086,15 @@
                 {
                   "date": "2023",
                   "value": 37.9
+                },
+                {
+                  "date": "2024",
+                  "value": 38.2
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -47910,11 +48218,15 @@
                 {
                   "date": "2023",
                   "value": 34.6
+                },
+                {
+                  "date": "2024",
+                  "value": 34.6
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -48038,11 +48350,15 @@
                 {
                   "date": "2023",
                   "value": 47.3
+                },
+                {
+                  "date": "2024",
+                  "value": 47.4
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -48166,11 +48482,15 @@
                 {
                   "date": "2023",
                   "value": 51.6
+                },
+                {
+                  "date": "2024",
+                  "value": 51.2
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -48294,11 +48614,15 @@
                 {
                   "date": "2023",
                   "value": 43.9
+                },
+                {
+                  "date": "2024",
+                  "value": 44.1
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -48422,11 +48746,15 @@
                 {
                   "date": "2023",
                   "value": 31.8
+                },
+                {
+                  "date": "2024",
+                  "value": 31.8
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -48550,11 +48878,15 @@
                 {
                   "date": "2023",
                   "value": 49
+                },
+                {
+                  "date": "2024",
+                  "value": 47.5
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -48678,11 +49010,15 @@
                 {
                   "date": "2023",
                   "value": 40.3
+                },
+                {
+                  "date": "2024",
+                  "value": 41.5
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -48806,11 +49142,15 @@
                 {
                   "date": "2023",
                   "value": 35.3
+                },
+                {
+                  "date": "2024",
+                  "value": 35.5
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -48934,11 +49274,15 @@
                 {
                   "date": "2023",
                   "value": 42.8
+                },
+                {
+                  "date": "2024",
+                  "value": 42.9
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -49062,11 +49406,15 @@
                 {
                   "date": "2023",
                   "value": 50.3
+                },
+                {
+                  "date": "2024",
+                  "value": 50.1
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -49190,11 +49538,15 @@
                 {
                   "date": "2023",
                   "value": 39.1
+                },
+                {
+                  "date": "2024",
+                  "value": 39.4
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -49318,11 +49670,15 @@
                 {
                   "date": "2023",
                   "value": 42.4
+                },
+                {
+                  "date": "2024",
+                  "value": 42.5
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -49446,11 +49802,15 @@
                 {
                   "date": "2023",
                   "value": 52.1
+                },
+                {
+                  "date": "2024",
+                  "value": 52
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -49574,11 +49934,15 @@
                 {
                   "date": "2023",
                   "value": 36.7
+                },
+                {
+                  "date": "2024",
+                  "value": 37
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -49702,11 +50066,15 @@
                 {
                   "date": "2023",
                   "value": 37.2
+                },
+                {
+                  "date": "2024",
+                  "value": 37.5
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -49830,11 +50198,15 @@
                 {
                   "date": "2023",
                   "value": 35.9
+                },
+                {
+                  "date": "2024",
+                  "value": 36.1
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -49958,11 +50330,15 @@
                 {
                   "date": "2023",
                   "value": 34.4
+                },
+                {
+                  "date": "2024",
+                  "value": 34.7
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -50086,11 +50462,15 @@
                 {
                   "date": "2023",
                   "value": 37.1
+                },
+                {
+                  "date": "2024",
+                  "value": 37.3
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -50214,11 +50594,15 @@
                 {
                   "date": "2023",
                   "value": 39.7
+                },
+                {
+                  "date": "2024",
+                  "value": 40
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -50342,11 +50726,15 @@
                 {
                   "date": "2023",
                   "value": 35.2
+                },
+                {
+                  "date": "2024",
+                  "value": 35.4
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -50470,11 +50858,15 @@
                 {
                   "date": "2023",
                   "value": 40.2
+                },
+                {
+                  "date": "2024",
+                  "value": 40.4
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -50598,11 +50990,15 @@
                 {
                   "date": "2023",
                   "value": 40.6
+                },
+                {
+                  "date": "2024",
+                  "value": 40.9
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -50726,11 +51122,15 @@
                 {
                   "date": "2023",
                   "value": 34.5
+                },
+                {
+                  "date": "2024",
+                  "value": 34.6
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -50854,11 +51254,15 @@
                 {
                   "date": "2023",
                   "value": 37.9
+                },
+                {
+                  "date": "2024",
+                  "value": 38.1
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -50982,11 +51386,15 @@
                 {
                   "date": "2023",
                   "value": 39.6
+                },
+                {
+                  "date": "2024",
+                  "value": 39.8
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -51110,11 +51518,15 @@
                 {
                   "date": "2023",
                   "value": 41.7
+                },
+                {
+                  "date": "2024",
+                  "value": 41.7
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -51238,11 +51650,15 @@
                 {
                   "date": "2023",
                   "value": 56
+                },
+                {
+                  "date": "2024",
+                  "value": 54.7
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -51366,11 +51782,15 @@
                 {
                   "date": "2023",
                   "value": 47.4
+                },
+                {
+                  "date": "2024",
+                  "value": 47.2
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -51494,11 +51914,15 @@
                 {
                   "date": "2023",
                   "value": 39.1
+                },
+                {
+                  "date": "2024",
+                  "value": 39.2
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -51622,11 +52046,15 @@
                 {
                   "date": "2023",
                   "value": 42.7
+                },
+                {
+                  "date": "2024",
+                  "value": 42.9
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -51750,11 +52178,15 @@
                 {
                   "date": "2023",
                   "value": 34.8
+                },
+                {
+                  "date": "2024",
+                  "value": 34.9
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -51878,11 +52310,15 @@
                 {
                   "date": "2023",
                   "value": 36.4
+                },
+                {
+                  "date": "2024",
+                  "value": 36.5
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -52006,11 +52442,15 @@
                 {
                   "date": "2023",
                   "value": 40.1
+                },
+                {
+                  "date": "2024",
+                  "value": 40
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -52134,11 +52574,15 @@
                 {
                   "date": "2023",
                   "value": 54.8
+                },
+                {
+                  "date": "2024",
+                  "value": 54.9
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -52262,11 +52706,15 @@
                 {
                   "date": "2023",
                   "value": 31.9
+                },
+                {
+                  "date": "2024",
+                  "value": 32.1
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -52390,11 +52838,15 @@
                 {
                   "date": "2023",
                   "value": 48.8
+                },
+                {
+                  "date": "2024",
+                  "value": 48.4
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -52518,11 +52970,15 @@
                 {
                   "date": "2023",
                   "value": 39.4
+                },
+                {
+                  "date": "2024",
+                  "value": 39.6
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -52646,11 +53102,15 @@
                 {
                   "date": "2023",
                   "value": 32.3
+                },
+                {
+                  "date": "2024",
+                  "value": 32.1
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",
@@ -52774,11 +53234,15 @@
                 {
                   "date": "2023",
                   "value": 33.9
+                },
+                {
+                  "date": "2024",
+                  "value": 34.2
                 }
               ],
-              "obs_count": 13,
+              "obs_count": 14,
               "earliest_date": "2011",
-              "latest_date": "2023"
+              "latest_date": "2024"
             },
             {
               "facet_id": "815809675",

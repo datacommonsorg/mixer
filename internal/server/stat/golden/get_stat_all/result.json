@@ -308,7 +308,8 @@
                 "2020": 329824950,
                 "2021": 333036755,
                 "2022": 334369975,
-                "2023": 335642425
+                "2023": 335642425,
+                "2024": 338156808
               },
               "measurementMethod": "CensusACS5yrSurvey",
               "importName": "CensusACS5YearSurvey_AggCountry",
@@ -319,7 +320,8 @@
             {
               "val": {
                 "2022": 331097593,
-                "2023": 332387540
+                "2023": 332387540,
+                "2024": 334922499
               },
               "measurementMethod": "CensusACS5yrSurvey",
               "importName": "CensusACS5YearSurvey",
@@ -994,7 +996,8 @@
                 "2020": 39346023,
                 "2021": 39455353,
                 "2022": 39356104,
-                "2023": 39242785
+                "2023": 39242785,
+                "2024": 39287377
               },
               "measurementMethod": "CensusACS5yrSurvey",
               "importName": "CensusACS5YearSurvey",
@@ -1431,7 +1434,8 @@
                 "2020": 80104,
                 "2021": 82409,
                 "2022": 82132,
-                "2023": 82363
+                "2023": 82363,
+                "2024": 83732
               },
               "measurementMethod": "CensusACS5yrSurvey",
               "importName": "CensusACS5YearSurvey",

@@ -904,6 +904,15 @@
               ]
             },
             {
+              "facet_id": "1257006254",
+              "observations": [
+                {
+                  "date": "2025",
+                  "value": 41651653
+                }
+              ]
+            },
+            {
               "facet_id": "4181918134",
               "observations": [
                 {
@@ -1476,8 +1485,8 @@
               "facet_id": "1915134240",
               "observations": [
                 {
-                  "date": "2025",
-                  "value": 5992734
+                  "date": "2026-03",
+                  "value": 6025603
                 }
               ]
             },
@@ -5729,8 +5738,8 @@
               "facet_id": "2645850372",
               "observations": [
                 {
-                  "date": "2023",
-                  "value": 335642425
+                  "date": "2024",
+                  "value": 338156808
                 }
               ]
             },
@@ -5738,8 +5747,8 @@
               "facet_id": "1145703171",
               "observations": [
                 {
-                  "date": "2023",
-                  "value": 332387540
+                  "date": "2024",
+                  "value": 334922499
                 }
               ]
             },
@@ -6224,6 +6233,10 @@
     "1250580925": {
       "import_name": "Singapore_Census",
       "provenance_url": "https://www.singstat.gov.sg/"
+    },
+    "1257006254": {
+      "import_name": "CanadaStatisticsAgeGender",
+      "provenance_url": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000501"
     },
     "1389069806": {
       "import_name": "Rwanda_Census",

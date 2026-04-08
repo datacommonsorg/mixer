@@ -1501,6 +1501,18 @@
       "dcid": "sdg/SH_DTH_NCD.SEX--F__NAME_OF_NON_COMMUNICABLE_DISEASE--NCD_DIABTS"
     },
     {
+      "name": "Number of females divorced",
+      "dcid": "Count_Person_Female_Divorced"
+    },
+    {
+      "name": "Number of females never married",
+      "dcid": "Count_Person_Female_NeverMarried"
+    },
+    {
+      "name": "Number of females widowed",
+      "dcid": "Count_Person_Female_Widowed"
+    },
+    {
       "name": "Number of new HIV infections per 1,000 uninfected population [15 to 24 years old, Female]",
       "dcid": "sdg/SH_HIV_INCD.AGE--Y15T24__SEX--F"
     },
@@ -1941,10 +1953,6 @@
       "dcid": "Count_Person_Female_AmericanIndianAndAlaskaNativeAlone"
     },
     {
-      "name": "Population: Female, Divorced",
-      "dcid": "Count_Person_Female_Divorced"
-    },
-    {
       "name": "Population: Female, Divorced in The Past 12 Months",
       "dcid": "Count_Person_15OrMoreYears_Female_DivorcedInThePast12Months"
     },
@@ -1989,10 +1997,6 @@
       "dcid": "Count_Person_15OrMoreYears_Female_MarriedInThePast12Months"
     },
     {
-      "name": "Population: Female, Never Married",
-      "dcid": "Count_Person_Female_NeverMarried"
-    },
-    {
       "name": "Population: Female, No Health Insurance",
       "dcid": "Count_Person_Female_NoHealthInsurance"
     },
@@ -2023,10 +2027,6 @@
     {
       "name": "Population: Female, Separated",
       "dcid": "Count_Person_Female_Separated"
-    },
-    {
-      "name": "Population: Female, Widowed",
-      "dcid": "Count_Person_Female_Widowed"
     },
     {
       "name": "Population: Female, With Health Insurance",

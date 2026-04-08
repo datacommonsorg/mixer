@@ -281,7 +281,7 @@
               "dcid": "geoId/02016"
             },
             {
-              "name": "Anchorage Municipality",
+              "name": "Anchorage",
               "dcid": "geoId/02020"
             },
             {
@@ -321,7 +321,7 @@
               "dcid": "geoId/02105"
             },
             {
-              "name": "Juneau City and Borough",
+              "name": "Juneau",
               "dcid": "geoId/02110"
             },
             {
@@ -369,11 +369,11 @@
               "dcid": "geoId/02198"
             },
             {
-              "name": "Sitka City and Borough",
+              "name": "Sitka",
               "dcid": "geoId/02220"
             },
             {
-              "name": "Skagway Municipality",
+              "name": "Skagway",
               "dcid": "geoId/02230"
             },
             {
@@ -385,7 +385,7 @@
               "dcid": "geoId/02261"
             },
             {
-              "name": "Wrangell City and Borough",
+              "name": "Wrangell",
               "dcid": "geoId/02275"
             },
             {
@@ -393,7 +393,7 @@
               "dcid": "geoId/02280"
             },
             {
-              "name": "Yakutat City and Borough",
+              "name": "Yakutat",
               "dcid": "geoId/02282"
             },
             {
@@ -1021,7 +1021,7 @@
               "dcid": "geoId/08013"
             },
             {
-              "name": "Broomfield County",
+              "name": "Broomfield",
               "dcid": "geoId/08014"
             },
             {
@@ -1057,7 +1057,7 @@
               "dcid": "geoId/08029"
             },
             {
-              "name": "Denver County",
+              "name": "Denver",
               "dcid": "geoId/08031"
             },
             {
@@ -7525,7 +7525,7 @@
               "dcid": "geoId/36079"
             },
             {
-              "name": "Queens County",
+              "name": "Queens",
               "dcid": "geoId/36081"
             },
             {
@@ -12645,315 +12645,315 @@
               "dcid": "geoId/60050"
             },
             {
-              "name": "Adjuntas Municipio",
+              "name": "Adjuntas",
               "dcid": "geoId/72001"
             },
             {
-              "name": "Aguada Municipio",
+              "name": "Aguada",
               "dcid": "geoId/72003"
             },
             {
-              "name": "Aguadilla Municipio",
+              "name": "Aguadilla",
               "dcid": "geoId/72005"
             },
             {
-              "name": "Aguas Buenas Municipio",
+              "name": "Aguas Buenas",
               "dcid": "geoId/72007"
             },
             {
-              "name": "Aibonito Municipio",
+              "name": "Aibonito",
               "dcid": "geoId/72009"
             },
             {
-              "name": "Añasco Municipio",
+              "name": "Añasco",
               "dcid": "geoId/72011"
             },
             {
-              "name": "Arecibo Municipio",
+              "name": "Arecibo",
               "dcid": "geoId/72013"
             },
             {
-              "name": "Arroyo Municipio",
+              "name": "Arroyo",
               "dcid": "geoId/72015"
             },
             {
-              "name": "Barceloneta Municipio",
+              "name": "Barceloneta",
               "dcid": "geoId/72017"
             },
             {
-              "name": "Barranquitas Municipio",
+              "name": "Barranquitas",
               "dcid": "geoId/72019"
             },
             {
-              "name": "Bayamón Municipio",
+              "name": "Bayamón",
               "dcid": "geoId/72021"
             },
             {
-              "name": "Cabo Rojo Municipio",
+              "name": "Cabo Rojo",
               "dcid": "geoId/72023"
             },
             {
-              "name": "Caguas Municipio",
+              "name": "Caguas",
               "dcid": "geoId/72025"
             },
             {
-              "name": "Camuy Municipio",
+              "name": "Camuy",
               "dcid": "geoId/72027"
             },
             {
-              "name": "Canóvanas Municipio",
+              "name": "Canóvanas",
               "dcid": "geoId/72029"
             },
             {
-              "name": "Carolina Municipio",
+              "name": "Carolina",
               "dcid": "geoId/72031"
             },
             {
-              "name": "Cataño Municipio",
+              "name": "Cataño",
               "dcid": "geoId/72033"
             },
             {
-              "name": "Cayey Municipio",
+              "name": "Cayey",
               "dcid": "geoId/72035"
             },
             {
-              "name": "Ceiba Municipio",
+              "name": "Ceiba",
               "dcid": "geoId/72037"
             },
             {
-              "name": "Ciales Municipio",
+              "name": "Ciales",
               "dcid": "geoId/72039"
             },
             {
-              "name": "Cidra Municipio",
+              "name": "Cidra",
               "dcid": "geoId/72041"
             },
             {
-              "name": "Coamo Municipio",
+              "name": "Coamo",
               "dcid": "geoId/72043"
             },
             {
-              "name": "Comerío Municipio",
+              "name": "Comerío",
               "dcid": "geoId/72045"
             },
             {
-              "name": "Corozal Municipio",
+              "name": "Corozal",
               "dcid": "geoId/72047"
             },
             {
-              "name": "Culebra Municipio",
+              "name": "Culebra",
               "dcid": "geoId/72049"
             },
             {
-              "name": "Dorado Municipio",
+              "name": "Dorado",
               "dcid": "geoId/72051"
             },
             {
-              "name": "Fajardo Municipio",
+              "name": "Fajardo",
               "dcid": "geoId/72053"
             },
             {
-              "name": "Florida Municipio",
+              "name": "Florida",
               "dcid": "geoId/72054"
             },
             {
-              "name": "Guánica Municipio",
+              "name": "Guánica",
               "dcid": "geoId/72055"
             },
             {
-              "name": "Guayama Municipio",
+              "name": "Guayama",
               "dcid": "geoId/72057"
             },
             {
-              "name": "Guayanilla Municipio",
+              "name": "Guayanilla",
               "dcid": "geoId/72059"
             },
             {
-              "name": "Guaynabo Municipio",
+              "name": "Guaynabo",
               "dcid": "geoId/72061"
             },
             {
-              "name": "Gurabo Municipio",
+              "name": "Gurabo",
               "dcid": "geoId/72063"
             },
             {
-              "name": "Hatillo Municipio",
+              "name": "Hatillo",
               "dcid": "geoId/72065"
             },
             {
-              "name": "Hormigueros Municipio",
+              "name": "Hormigueros",
               "dcid": "geoId/72067"
             },
             {
-              "name": "Humacao Municipio",
+              "name": "Humacao",
               "dcid": "geoId/72069"
             },
             {
-              "name": "Isabela Municipio",
+              "name": "Isabela",
               "dcid": "geoId/72071"
             },
             {
-              "name": "Jayuya Municipio",
+              "name": "Jayuya",
               "dcid": "geoId/72073"
             },
             {
-              "name": "Juana Díaz Municipio",
+              "name": "Juana Díaz",
               "dcid": "geoId/72075"
             },
             {
-              "name": "Juncos Municipio",
+              "name": "Juncos",
               "dcid": "geoId/72077"
             },
             {
-              "name": "Lajas Municipio",
+              "name": "Lajas",
               "dcid": "geoId/72079"
             },
             {
-              "name": "Lares Municipio",
+              "name": "Lares",
               "dcid": "geoId/72081"
             },
             {
-              "name": "Las Marías Municipio",
+              "name": "Las Marías",
               "dcid": "geoId/72083"
             },
             {
-              "name": "Las Piedras Municipio",
+              "name": "Las Piedras",
               "dcid": "geoId/72085"
             },
             {
-              "name": "Loíza Municipio",
+              "name": "Loíza",
               "dcid": "geoId/72087"
             },
             {
-              "name": "Luquillo Municipio",
+              "name": "Luquillo",
               "dcid": "geoId/72089"
             },
             {
-              "name": "Manatí Municipio",
+              "name": "Manatí",
               "dcid": "geoId/72091"
             },
             {
-              "name": "Maricao Municipio",
+              "name": "Maricao",
               "dcid": "geoId/72093"
             },
             {
-              "name": "Maunabo Municipio",
+              "name": "Maunabo",
               "dcid": "geoId/72095"
             },
             {
-              "name": "Mayagüez Municipio",
+              "name": "Mayagüez",
               "dcid": "geoId/72097"
             },
             {
-              "name": "Moca Municipio",
+              "name": "Moca",
               "dcid": "geoId/72099"
             },
             {
-              "name": "Morovis Municipio",
+              "name": "Morovis",
               "dcid": "geoId/72101"
             },
             {
-              "name": "Naguabo Municipio",
+              "name": "Naguabo",
               "dcid": "geoId/72103"
             },
             {
-              "name": "Naranjito Municipio",
+              "name": "Naranjito",
               "dcid": "geoId/72105"
             },
             {
-              "name": "Orocovis Municipio",
+              "name": "Orocovis",
               "dcid": "geoId/72107"
             },
             {
-              "name": "Patillas Municipio",
+              "name": "Patillas",
               "dcid": "geoId/72109"
             },
             {
-              "name": "Peñuelas Municipio",
+              "name": "Peñuelas",
               "dcid": "geoId/72111"
             },
             {
-              "name": "Ponce Municipio",
+              "name": "Ponce",
               "dcid": "geoId/72113"
             },
             {
-              "name": "Quebradillas Municipio",
+              "name": "Quebradillas",
               "dcid": "geoId/72115"
             },
             {
-              "name": "Rincón Municipio",
+              "name": "Rincón",
               "dcid": "geoId/72117"
             },
             {
-              "name": "Río Grande Municipio",
+              "name": "Río Grande",
               "dcid": "geoId/72119"
             },
             {
-              "name": "Sabana Grande Municipio",
+              "name": "Sabana Grande",
               "dcid": "geoId/72121"
             },
             {
-              "name": "Salinas Municipio",
+              "name": "Salinas",
               "dcid": "geoId/72123"
             },
             {
-              "name": "San Germán Municipio",
+              "name": "San Germán",
               "dcid": "geoId/72125"
             },
             {
-              "name": "San Juan Municipio",
+              "name": "San Juan",
               "dcid": "geoId/72127"
             },
             {
-              "name": "San Lorenzo Municipio",
+              "name": "San Lorenzo",
               "dcid": "geoId/72129"
             },
             {
-              "name": "San Sebastián Municipio",
+              "name": "San Sebastián",
               "dcid": "geoId/72131"
             },
             {
-              "name": "Santa Isabel Municipio",
+              "name": "Santa Isabel",
               "dcid": "geoId/72133"
             },
             {
-              "name": "Toa Alta Municipio",
+              "name": "Toa Alta",
               "dcid": "geoId/72135"
             },
             {
-              "name": "Toa Baja Municipio",
+              "name": "Toa Baja",
               "dcid": "geoId/72137"
             },
             {
-              "name": "Trujillo Alto Municipio",
+              "name": "Trujillo Alto",
               "dcid": "geoId/72139"
             },
             {
-              "name": "Utuado Municipio",
+              "name": "Utuado",
               "dcid": "geoId/72141"
             },
             {
-              "name": "Vega Alta Municipio",
+              "name": "Vega Alta",
               "dcid": "geoId/72143"
             },
             {
-              "name": "Vega Baja Municipio",
+              "name": "Vega Baja",
               "dcid": "geoId/72145"
             },
             {
-              "name": "Vieques Municipio",
+              "name": "Vieques",
               "dcid": "geoId/72147"
             },
             {
-              "name": "Villalba Municipio",
+              "name": "Villalba",
               "dcid": "geoId/72149"
             },
             {
-              "name": "Yabucoa Municipio",
+              "name": "Yabucoa",
               "dcid": "geoId/72151"
             },
             {
-              "name": "Yauco Municipio",
+              "name": "Yauco",
               "dcid": "geoId/72153"
             }
           ]

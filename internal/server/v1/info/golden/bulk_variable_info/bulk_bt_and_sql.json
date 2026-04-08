@@ -173,7 +173,7 @@
               }
             ],
             "minValue": 0,
-            "maxValue": 1744717
+            "maxValue": 1771413
           },
           "CensusDivision": {
             "placeCount": 9,
@@ -192,7 +192,7 @@
               }
             ],
             "minValue": 7372402,
-            "maxValue": 34090199
+            "maxValue": 34572513
           },
           "CensusTract": {
             "placeCount": 97783,
@@ -230,7 +230,7 @@
               }
             ],
             "minValue": 0,
-            "maxValue": 70086
+            "maxValue": 70230
           },
           "City": {
             "placeCount": 32463,
@@ -305,7 +305,7 @@
                 "name": "Harris County"
               }
             ],
-            "minValue": 14,
+            "minValue": 6,
             "maxValue": 5160965
           },
           "ElementarySchoolDistrict": {
@@ -1015,6 +1015,55 @@
             "observationCount": 640,
             "timeSeriesCount": 640
           },
+          "dc/base/CanadaStatisticsAgeGender": {
+            "importName": "CanadaStatisticsAgeGender",
+            "releaseFrequency": "P1Y",
+            "seriesSummary": [
+              {
+                "seriesKey": {},
+                "earliestDate": "1971",
+                "latestDate": "2025",
+                "placeTypeSummary": {
+                  "AdministrativeArea1": {
+                    "placeCount": 13,
+                    "topPlaces": [
+                      {
+                        "dcid": "wikidataId/Q1904",
+                        "name": "Ontario"
+                      },
+                      {
+                        "dcid": "wikidataId/Q176",
+                        "name": "Quebec"
+                      },
+                      {
+                        "dcid": "wikidataId/Q1974",
+                        "name": "British Columbia"
+                      }
+                    ],
+                    "minValue": 8706,
+                    "maxValue": 8158746
+                  },
+                  "Country": {
+                    "placeCount": 1,
+                    "topPlaces": [
+                      {
+                        "dcid": "country/CAN",
+                        "name": "Canada"
+                      }
+                    ],
+                    "minValue": 10935563,
+                    "maxValue": 20841344
+                  }
+                },
+                "minValue": 8706,
+                "maxValue": 20841344,
+                "observationCount": 750,
+                "timeSeriesCount": 14
+              }
+            ],
+            "observationCount": 750,
+            "timeSeriesCount": 14
+          },
           "dc/base/CensusACS1YearSurvey": {
             "importName": "CensusACS1YearSurvey",
             "seriesSummary": [
@@ -1112,7 +1161,7 @@
                   "measurementMethod": "CensusACS5yrSurvey"
                 },
                 "earliestDate": "2011",
-                "latestDate": "2023",
+                "latestDate": "2024",
                 "placeTypeSummary": {
                   "CensusBlockGroup": {
                     "placeCount": 291800,
@@ -1169,7 +1218,7 @@
                       }
                     ],
                     "minValue": 0,
-                    "maxValue": 1744717
+                    "maxValue": 1771413
                   },
                   "CensusDivision": {
                     "placeCount": 9,
@@ -1188,7 +1237,7 @@
                       }
                     ],
                     "minValue": 7670097,
-                    "maxValue": 34090199
+                    "maxValue": 34572513
                   },
                   "CensusTract": {
                     "placeCount": 97771,
@@ -1226,7 +1275,7 @@
                       }
                     ],
                     "minValue": 0,
-                    "maxValue": 70086
+                    "maxValue": 70230
                   },
                   "City": {
                     "placeCount": 32398,
@@ -1275,7 +1324,7 @@
                       }
                     ],
                     "minValue": 166897295,
-                    "maxValue": 167842453
+                    "maxValue": 169114481
                   },
                   "County": {
                     "placeCount": 3233,
@@ -1293,7 +1342,7 @@
                         "name": "Harris County"
                       }
                     ],
-                    "minValue": 14,
+                    "minValue": 6,
                     "maxValue": 5126081
                   },
                   "ElementarySchoolDistrict": {
@@ -1401,12 +1450,12 @@
                   }
                 },
                 "minValue": 0,
-                "maxValue": 167842453,
-                "observationCount": 5499323,
+                "maxValue": 169114481,
+                "observationCount": 5944771,
                 "timeSeriesCount": 512238
               }
             ],
-            "observationCount": 5499323,
+            "observationCount": 5944771,
             "timeSeriesCount": 512238
           },
           "dc/base/CensusACS5YearSurvey_AggCountry": {
@@ -1418,7 +1467,7 @@
                   "isDcAggregate": true
                 },
                 "earliestDate": "2011",
-                "latestDate": "2023",
+                "latestDate": "2024",
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -1429,16 +1478,16 @@
                       }
                     ],
                     "minValue": 157812589,
-                    "maxValue": 169556351
+                    "maxValue": 170819521
                   }
                 },
                 "minValue": 157812589,
-                "maxValue": 169556351,
-                "observationCount": 13,
+                "maxValue": 170819521,
+                "observationCount": 14,
                 "timeSeriesCount": 1
               }
             ],
-            "observationCount": 13,
+            "observationCount": 14,
             "timeSeriesCount": 1
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S0101": {
@@ -1885,7 +1934,7 @@
                   "measurementMethod": "CensusACS5yrSurveySubjectTable"
                 },
                 "earliestDate": "2017",
-                "latestDate": "2023",
+                "latestDate": "2024",
                 "placeTypeSummary": {
                   "State": {
                     "placeCount": 1,
@@ -1895,17 +1944,17 @@
                         "name": "Puerto Rico"
                       }
                     ],
-                    "minValue": 1709212.05,
+                    "minValue": 1704480.843,
                     "maxValue": 1814267.649
                   }
                 },
-                "minValue": 1709212.05,
+                "minValue": 1704480.843,
                 "maxValue": 1814267.649,
-                "observationCount": 7,
+                "observationCount": 8,
                 "timeSeriesCount": 1
               }
             ],
-            "observationCount": 7,
+            "observationCount": 8,
             "timeSeriesCount": 1
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S2603": {
@@ -2112,7 +2161,7 @@
               {
                 "seriesKey": {},
                 "earliestDate": "1901",
-                "latestDate": "2025",
+                "latestDate": "2026-03",
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -2123,16 +2172,16 @@
                       }
                     ],
                     "minValue": 1255000,
-                    "maxValue": 3013749
+                    "maxValue": 3029291
                   }
                 },
                 "minValue": 1255000,
-                "maxValue": 3013749,
-                "observationCount": 125,
+                "maxValue": 3029291,
+                "observationCount": 199,
                 "timeSeriesCount": 1
               }
             ],
-            "observationCount": 125,
+            "observationCount": 199,
             "timeSeriesCount": 1
           },
           "dc/base/Egypt_Census": {
@@ -2324,6 +2373,7 @@
           },
           "dc/base/France_Demographics": {
             "importName": "France_Demographics",
+            "releaseFrequency": "P1Y",
             "seriesSummary": [
               {
                 "seriesKey": {},
