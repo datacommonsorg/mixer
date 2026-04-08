@@ -380,7 +380,7 @@ var statements = struct {
 		ChildSVs AS (
 			SELECT DISTINCT
 				subject_id AS child_sv, 
-				object_id AS parent_group_id
+				object_id AS svg
 			FROM Edge
 			WHERE predicate = 'memberOf'
 			AND object_id %[1]s
@@ -401,7 +401,7 @@ var statements = struct {
 		ON n.subject_id = svg.child_svg
 		UNION ALL
 		SELECT 
-			sv.child_sv,
+			sv.svg,
 			n.subject_id, 
 			n.name, 
 			-1 AS descendent_stat_var_count,

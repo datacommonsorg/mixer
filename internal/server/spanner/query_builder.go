@@ -440,7 +440,7 @@ func GetFilteredSVGChildrenQuery(template string, node string, constrainedPlaces
 	var distinct string
 	if constrainedImport != "" {
 		entityFilter = statements.filterDescendentStatVarsByImport
-		params["predicate"] = getImporFilterPredicate(constrainedImport)
+		params["predicate"] = getImportFilterPredicate(constrainedImport)
 		params["import"] = constrainedImport
 		distinct = "e1.subject_id"
 	}
@@ -534,7 +534,7 @@ func getParamStatement(param string, inputs []string) (string, interface{}) {
 }
 
 // getImportFilterPredicate returns the appropriate filter predicate for a given filter entity.
-func getImporFilterPredicate(entity string) string {
+func getImportFilterPredicate(entity string) string {
 	if strings.HasPrefix(entity, "dc/d/") {
 		return predicateIsPartOf
 	}
