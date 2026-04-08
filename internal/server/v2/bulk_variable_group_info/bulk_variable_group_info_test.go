@@ -62,7 +62,7 @@ func TestV2BulkVariableGroupInfo(t *testing.T) {
 				continue
 			}
 
-			if true {
+			if test.GenerateGolden {
 				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
