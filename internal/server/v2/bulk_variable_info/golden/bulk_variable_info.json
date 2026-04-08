@@ -153,7 +153,7 @@
                   "unit": "Year"
                 },
                 "earliestDate": "2011",
-                "latestDate": "2023",
+                "latestDate": "2024",
                 "placeTypeSummary": {
                   "CensusBlockGroup": {},
                   "CensusCoreBasedStatisticalArea": {},
@@ -172,12 +172,12 @@
                   "State": {},
                   "StateComponent": {}
                 },
-                "observationCount": 5443184,
-                "timeSeriesCount": 508451
+                "observationCount": 5882506,
+                "timeSeriesCount": 508545
               }
             ],
-            "observationCount": 5443184,
-            "timeSeriesCount": 508451
+            "observationCount": 5882506,
+            "timeSeriesCount": 508545
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S0101": {
             "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
@@ -285,15 +285,15 @@
                   "unit": "Years"
                 },
                 "earliestDate": "2017",
-                "latestDate": "2023",
+                "latestDate": "2024",
                 "placeTypeSummary": {
                   "State": {}
                 },
-                "observationCount": 7,
+                "observationCount": 8,
                 "timeSeriesCount": 1
               }
             ],
-            "observationCount": 7,
+            "observationCount": 8,
             "timeSeriesCount": 1
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S2603": {

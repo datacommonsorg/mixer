@@ -15,7 +15,7 @@
             "id": "dc/g/Demographics",
             "specializedEntity": "Demographics",
             "displayName": "Demographics",
-            "descendentStatVarCount": 12853
+            "descendentStatVarCount": 12861
           },
           {
             "id": "dc/g/Economy",

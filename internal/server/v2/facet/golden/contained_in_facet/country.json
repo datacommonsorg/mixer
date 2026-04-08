@@ -104,6 +104,9 @@
               "facet_id": "1216205004"
             },
             {
+              "facet_id": "1257006254"
+            },
+            {
               "facet_id": "3189273983"
             },
             {
@@ -230,6 +233,10 @@
     "1250580925": {
       "import_name": "Singapore_Census",
       "provenance_url": "https://www.singstat.gov.sg/"
+    },
+    "1257006254": {
+      "import_name": "CanadaStatisticsAgeGender",
+      "provenance_url": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000501"
     },
     "1389069806": {
       "import_name": "Rwanda_Census",
