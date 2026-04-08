@@ -382,7 +382,7 @@ func (s *Server) V2Event(
 
 	// Handle V2 Event.
 	v2StartTime := time.Now()
-	v2Resp, err :=  s.handleV2Event(ctx, in)
+	v2Resp, err := s.handleV2Event(ctx, in)
 	if err != nil {
 		return nil, err
 	}
@@ -644,6 +644,33 @@ func (s *Server) V2BulkVariableInfo(
 		},
 		GetV2BulkVariableInfoCmpOpts(),
 	)
+
+	return v2Resp, nil
+}
+
+// V2BulkVariableInfo implements API for Mixer.V2BulkVariableGroupInfo.
+func (s *Server) V2BulkVariableGroupInfo(
+	ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest,
+) (*pbv1.BulkVariableGroupInfoResponse, error) {
+	// Use the V1 implementation for now.
+	v2Resp, err := s.BulkVariableGroupInfo(ctx, in)
+	if err != nil {
+		return nil, err
+	}
+
+	// The new response will not contain all legacy V1 fields.
+	// To ensure the new response is sufficient, clear all legacy fields until swapping over to the new backend.
+	for _, info := range v2Resp.GetData() {
+		if info.GetInfo() == nil {
+			continue
+		}
+		info.Info.ParentStatVarGroups = nil
+		for _, childSV := range info.GetInfo().GetChildStatVars() {
+			childSV.SearchName = ""
+			childSV.SearchNames = nil
+			childSV.Definition = ""
+		}
+	}
 
 	return v2Resp, nil
 }
