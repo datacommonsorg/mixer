@@ -106,8 +106,8 @@ spec:
               echo "project: datcom-store" > $BT_OUTPUT_FILE
               echo "instance: prophet-cache" >> $BT_OUTPUT_FILE
               echo "tables:" >> $BT_OUTPUT_FILE
-              for src in $(gsutil ls gs://datcom-control/autopush/*_latest_base_cache_version.txt); do
-                TABLE="$(gsutil cat "$src")"
+              for src in $(gcloud storage ls gs://datcom-control/autopush/*_latest_base_cache_version.txt); do
+                TABLE="$(gcloud storage cat "$src")"
                 if [[ $TABLE == experimental* ]] && [[ "{{ $.Values.mixer.hostProject }}" != "datcom-website-autopush" ]] && [[ "{{ $.Values.mixer.hostProject }}" != "datcom-mixer-autopush" ]]; then
                   continue
                 fi
@@ -121,7 +121,7 @@ spec:
 
               echo "Fetching BigQuery version from GCS..."
               BQ_OUTPUT_FILE="/dynamic-config/bigquery.version"
-              gsutil cp gs://datcom-control/latest_base_bigquery_version.txt $BQ_OUTPUT_FILE
+              gcloud storage cp gs://datcom-control/latest_base_bigquery_version.txt $BQ_OUTPUT_FILE
               echo "Successfully fetched BigQuery version."
               cat $BQ_OUTPUT_FILE
               {{- else }}

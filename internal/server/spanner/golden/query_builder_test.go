@@ -182,6 +182,18 @@ func TestGetEventCollectionDcidsQuery(t *testing.T) {
 	}
 }
 
+func TestCountDescendentStatVarsQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range countDescendentStatVarsTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.CountDescendentStatVarsQuery(c.nodes, c.constrainedEntities, c.numEntitiesExistence, c.filterProp), nil
+		})
+	}
+}
+
 // runQueryBuilderGoldenTest is a helper function that performs the golden file validation.
 func runQueryBuilderGoldenTest(t *testing.T, goldenFile string, fn goldenTestFunc) {
 	t.Helper()

@@ -512,3 +512,33 @@ var eventCollectionTestCases = []struct {
 		golden:    "get_event_collection_heat",
 	},
 }
+
+var countDescendentStatVarsTestCases = []struct {
+	nodes                []string
+	constrainedEntities  []string
+	numEntitiesExistence int
+	filterProp           string
+	golden               string
+}{
+	{
+		nodes:                []string{"dc/g/Demographics", "dc/g/Economy"},
+		constrainedEntities:  []string{"country/USA", "country/IND"},
+		numEntitiesExistence: 1,
+		filterProp:           "",
+		golden:               "count_descendent_stat_vars_places",
+	},
+	{
+		nodes:                []string{"dc/g/Demographics"},
+		constrainedEntities:  []string{"dc/s/WorldBank"},
+		numEntitiesExistence: 1,
+		filterProp:           "source",
+		golden:               "count_descendent_stat_vars_import",
+	},
+	{
+		nodes:                []string{"dc/g/Economy"},
+		constrainedEntities:  []string{"country/USA", "country/IND", "country/CAN"},
+		numEntitiesExistence: 2,
+		filterProp:           "",
+		golden:               "count_descendent_stat_vars_places_num_entities_existence",
+	},
+}
