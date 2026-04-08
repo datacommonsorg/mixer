@@ -182,14 +182,38 @@ func TestGetEventCollectionDcidsQuery(t *testing.T) {
 	}
 }
 
-func TestCountDescendentStatVarsQuery(t *testing.T) {
+func TestGetStatVarGroupNodeQuery(t *testing.T) {
 	t.Parallel()
 
-	for _, c := range countDescendentStatVarsTestCases {
+	for _, c := range getStatVarGroupNodeTestCases {
 		goldenFile := c.golden + ".sql"
 
 		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return spanner.CountDescendentStatVarsQuery(c.nodes, c.constrainedEntities, c.numEntitiesExistence, c.filterProp), nil
+			return spanner.GetStatVarGroupNodeQuery(c.nodes), nil
+		})
+	}
+}
+
+func TestGetSVGChildrenQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range getSVGChildrenTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.GetSVGChildrenQuery(c.node), nil
+		})
+	}
+}
+
+func TestGetFilteredSVGChildren(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range getFilteredSVGChildrenTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.GetFilteredSVGChildrenQuery(c.template, c.node, c.constrainedPlaces, c.constrainedImport, c.numEntitiesExistence), nil
 		})
 	}
 }
@@ -246,7 +270,7 @@ func interpolateSQL(stmt *cloudSpanner.Statement) string {
 			}
 			formattedValue = "(" + strings.Join(quotedValues, ",") + ")"
 			// Need to handle both UNNEST(@key) and @key
-			sqlString = strings.ReplaceAll(sqlString, "UNNEST("+placeholder+")", formattedValue)
+			sqlString = strings.ReplaceAll(sqlString, "IN UNNEST("+placeholder+")", "IN "+formattedValue)
 			placeholder = "@" + key // Ensure we don't mess up UNNEST replacement
 			formattedValue = "[" + strings.Join(quotedValues, ",") + "]"
 		// ... add more cases for int64, float64, bool, etc.

@@ -45,11 +45,23 @@ const (
 	sqlOrderBy = "\n\t\tORDER BY "
 	// LIMIT clause for SQL queries.
 	sqlLimit = "\n\t\tLIMIT @limit"
+	// AND keyword for SQL queries.
+	sqlAnd = "AND"
 )
 
 const (
 	// Prefix length of value to include in object value ids.
 	objectValuePrefix = 16
+	// Template for fetching child SVs
+	templateSV = "SV"
+	// Template for fetching child SVGs
+	templateSVG = "SVG"
+	// Template for fetching children of a Topic
+	templateTopic = "Topic"
+	// isPartOf predicate
+	predicateIsPartOf = "isPartOf"
+	// source predicate
+	predicateSource = "source"
 )
 
 func GetCompletionTimestampQuery() *spanner.Statement {
@@ -390,26 +402,55 @@ func GetCacheDataQuery(typeFilter CacheDataType, keys []string) *spanner.Stateme
 	}
 }
 
-// CountDescendentStatVarsQuery returns a query to count descendent stat vars for given stat var groups, with optional filtering by constrained entities and existence threshold.
-func CountDescendentStatVarsQuery(nodes []string, constrainedEntities []string, numEntitiesExistence int, filterProp string) *spanner.Statement {
+// GetStatVarGroupNode returns a query to get StatVarGroupNode info.
+func GetStatVarGroupNodeQuery(nodes []string) *spanner.Statement {
 	nodeFilter, nodeVal := getParamStatement("nodes", nodes)
+
+	selfFilter := statements.attachSVG
+	if len(nodes) > 1 {
+		selfFilter = statements.attachSVGs
+	}
+
+	return &spanner.Statement{
+		SQL: fmt.Sprintf(statements.getStatVarGroupNode, nodeFilter, selfFilter),
+		Params: map[string]interface{}{
+			"nodes": nodeVal,
+		},
+	}
+}
+
+// GetSVGChildren returns a query to get all children for a given stat var group.
+func GetSVGChildrenQuery(node string) *spanner.Statement {
+	return &spanner.Statement{
+		SQL: statements.getSVGChildren,
+		Params: map[string]interface{}{
+			"node": node,
+		},
+	}
+}
+
+// GetFilteredSVGChildren returns a query to get children for a given stat var group filtered by constrained entities and existence threshold.
+func GetFilteredSVGChildrenQuery(template string, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) *spanner.Statement {
 	params := map[string]interface{}{
-		"nodes":                nodeVal,
+		"node":                 node,
 		"numEntitiesExistence": numEntitiesExistence,
 	}
 
 	var entityFilter string
 	var distinct string
-	// Filter by import if filterProp is set, otherwise default to filtering by place.
-	if filterProp != "" {
-		importFilter, importVal := getParamStatement("imports", constrainedEntities)
-		entityFilter = fmt.Sprintf(statements.filterDescendentStatVarsByImport, importFilter)
-		params["importPredicate"] = filterProp
-		params["imports"] = importVal
+	if constrainedImport != "" {
+		entityFilter = statements.filterDescendentStatVarsByImport
+		params["predicate"] = getImporFilterPredicate(constrainedImport)
+		params["import"] = constrainedImport
 		distinct = "e1.subject_id"
-	} else {
-		placeFilter, placeVal := getParamStatement("places", constrainedEntities)
-		entityFilter = "\n\t\t\t" + sqlWhere + " " + fmt.Sprintf(statements.selectEntityDcids, placeFilter)
+	}
+	if len(constrainedPlaces) > 0 {
+		placeFilter, placeVal := getParamStatement("places", constrainedPlaces)
+		if entityFilter == "" {
+			entityFilter = "\n\t\t\t\t" + sqlWhere + " " + fmt.Sprintf(statements.selectEntityDcids, placeFilter)
+		} else {
+			entityFilter = entityFilter + "\n\t\t\t\t\t" + sqlAnd + " " + fmt.Sprintf(statements.selectEntityDcids, placeFilter)
+		}
 		params["places"] = placeVal
 		distinct = "observation_about"
 	}
@@ -420,8 +461,18 @@ func CountDescendentStatVarsQuery(nodes []string, constrainedEntities []string, 
 		params["numEntitiesExistence"] = numEntitiesExistence
 	}
 
+	var baseStatement string
+	switch template {
+	case templateSV:
+		baseStatement = statements.getFilteredChildSVs
+	case templateSVG:
+		baseStatement = statements.getFilteredChildSVGs
+	case templateTopic:
+		baseStatement = statements.getFilteredTopic
+	}
+
 	return &spanner.Statement{
-		SQL:    fmt.Sprintf(statements.countDescendentStatVars, entityFilter, numFilter, nodeFilter),
+		SQL:    fmt.Sprintf(baseStatement, entityFilter, numFilter),
 		Params: params,
 	}
 }
@@ -480,6 +531,14 @@ func getParamStatement(param string, inputs []string) (string, interface{}) {
 		return fmt.Sprintf(statements.getParam, param), inputs[0]
 	}
 	return fmt.Sprintf(statements.getParams, param), inputs
+}
+
+// getImportFilterPredicate returns the appropriate filter predicate for a given filter entity.
+func getImporFilterPredicate(entity string) string {
+	if strings.HasPrefix(entity, "dc/d/") {
+		return predicateIsPartOf
+	}
+	return predicateSource
 }
 
 func GetEventCollectionDateQuery(placeID, eventType string) *spanner.Statement {

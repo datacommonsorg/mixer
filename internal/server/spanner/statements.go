@@ -95,8 +95,20 @@ var statements = struct {
 	getEventCollectionDcids string
 	// Fetch events for a given type, location and date, along with magnitude property.
 	getEventCollectionDcidsWithMagnitude string
-	// Fetch number of descendent stat vars for given variable groups and entities.
-	countDescendentStatVars string
+	// Fetch StatVarGroupNode info.
+	getStatVarGroupNode string
+	// Attach single stat var group.
+	attachSVG string
+	// Attach multiple stat var groups.
+	attachSVGs string
+	// Fetch all children of a stat var group.
+	getSVGChildren string
+	// Fetch filtered count of descendent stat vars for a given variable group.
+	getFilteredChildSVGs string
+	// Fetch filtered descendent stat vars for a given variable group.
+	getFilteredChildSVs string
+	// Fetch filtered count of descendent stat vars for a given topic.
+	getFilteredTopic string
 	// Filter descendent stat vars by import.
 	filterDescendentStatVarsByImport string
 	// Filter descendent stat vars by num_entities_existences.
@@ -342,24 +354,154 @@ var statements = struct {
 		RETURN DISTINCT 
 			event.subject_id AS dcid,
 			magEdge.object_id AS magnitude`,
-	countDescendentStatVars: `		SELECT
-			e.object_id,
+	getStatVarGroupNode: `		WITH ChildSVGs AS (
+			SELECT DISTINCT
+				subject_id AS child_svg, 
+				object_id AS svg
+			FROM Edge
+			WHERE predicate = 'specializationOf'
+			AND object_id %[1]s
+			UNION ALL
+			%[2]s
+		),
+		UniqueChildSVGs AS (
+			SELECT DISTINCT child_svg FROM ChildSVGs
+		),
+		ChildSVGCounts AS (
+			SELECT 
+				e.object_id AS child_svg, 
+				COUNT(e.subject_id) AS descendent_stat_vars
+			FROM UniqueChildSVGs u
+			JOIN@{JOIN_METHOD=APPLY_JOIN} Edge e 
+			ON e.object_id = u.child_svg
+			WHERE e.predicate = 'linkedMemberOf' 
+			GROUP BY e.object_id
+		),
+		ChildSVs AS (
+			SELECT DISTINCT
+				subject_id AS child_sv, 
+				object_id AS parent_group_id
+			FROM Edge
+			WHERE predicate = 'memberOf'
+			AND object_id %[1]s
+		),
+		UniqueChildSVs AS (
+			SELECT DISTINCT child_sv FROM ChildSVs
+		)
+		SELECT 
+			svg.svg,
+			n.subject_id, 
+			n.name, 
+			c.descendent_stat_vars,
+			FALSE AS has_data
+		FROM ChildSVGs svg
+		JOIN ChildSVGCounts c 
+		ON svg.child_svg = c.child_svg
+		JOIN Node n 
+		ON n.subject_id = svg.child_svg
+		UNION ALL
+		SELECT 
+			sv.child_sv,
+			n.subject_id, 
+			n.name, 
+			-1 AS descendent_stat_var_count,
+			EXISTS (
+				SELECT 1 
+				FROM Observation o 
+				WHERE o.variable_measured = sv.child_sv
+				LIMIT 1
+			) AS has_data
+		FROM ChildSVs sv
+		JOIN Node n 
+		ON n.subject_id = sv.child_sv
+	`,
+	attachSVG: `SELECT 
+				@nodes AS child_svg,
+				@nodes AS svg`,
+	attachSVGs: `SELECT
+				node AS child_svg,
+				node AS svg
+				FROM UNNEST(@nodes) AS node`,
+	getSVGChildren: `		SELECT
+			n.subject_id,
+			n.name,
+			e.predicate
+		FROM Node n
+		JOIN (
+			SELECT subject_id, predicate FROM Edge@{FORCE_INDEX=InEdge}
+			WHERE predicate IN ('memberOf', 'specializationOf')
+				AND object_id = @node
+		) e ON n.subject_id = e.subject_id
+	`,
+	getFilteredChildSVs: `		SELECT
+			n.subject_id,
+			n.name
+		FROM Node n
+		JOIN (
+			SELECT
+				e.subject_id AS subject_id
+			FROM Edge e
+			JOIN@{JOIN_TYPE=HASH_JOIN} (
+				SELECT variable_measured
+				FROM Observation %[1]s
+				GROUP BY variable_measured%[2]s
+			) o ON o.variable_measured = e.subject_id
+			WHERE e.subject_id IN (
+				SELECT subject_id
+				FROM Edge
+				WHERE object_id = @node
+					AND predicate = 'memberOf'
+			)
+			GROUP BY
+				e.subject_id
+		) e_existence 
+			ON n.subject_id = e_existence.subject_id`,
+	getFilteredChildSVGs: `		SELECT
+			n.subject_id,
+			n.name,
+			e_counts.descendent_stat_vars
+		FROM Node n
+		JOIN (
+			SELECT
+				e.object_id AS subject_id,
+				COUNT(e.subject_id) AS descendent_stat_vars
+			FROM Edge e
+			JOIN@{JOIN_TYPE=HASH_JOIN} (
+				SELECT variable_measured
+				FROM Observation %[1]s
+				GROUP BY variable_measured%[2]s
+			) o ON o.variable_measured = e.subject_id
+			WHERE e.predicate = 'linkedMemberOf'
+				AND e.object_id IN (
+					SELECT subject_id
+					FROM Edge
+					WHERE object_id = @node
+						AND predicate = 'specializationOf'
+					UNION ALL
+					SELECT @node AS subject_id
+				)
+			GROUP BY
+				e.object_id
+		) e_counts
+			ON n.subject_id = e_counts.subject_id`,
+	getFilteredTopic: `		SELECT
+			e.object_id AS subject_id,
 			COUNT(e.subject_id) AS descendent_stat_vars
 		FROM Edge@{FORCE_INDEX=InEdge} e
 		JOIN@{JOIN_TYPE=HASH_JOIN} (
 			SELECT variable_measured
-			FROM Observation%[1]s
-			GROUP BY variable_measured%[2]s	
+			FROM Observation %[1]s
+			GROUP BY variable_measured%[2]s
 		) o ON o.variable_measured = e.subject_id
-		WHERE
-		 	e.predicate = 'linkedMemberOf'
-			AND e.object_id %[3]s
-			GROUP BY e.object_id`,
+		WHERE e.predicate = 'linkedMember'
+			AND e.object_id = @node
+		GROUP BY
+			e.object_id`,
 	filterDescendentStatVarsByImport: `
-			JOIN Edge@{FORCE_INDEX=InEdge} e1
-			ON import_name = SUBSTR(e1.subject_id, 9)
-			WHERE e1.predicate = @importPredicate
-				AND e1.object_id %s`,
+				JOIN Edge@{FORCE_INDEX=InEdge} e1
+				ON import_name = SUBSTR(e1.subject_id, 9)
+				WHERE e1.predicate = @predicate
+					AND e1.object_id = @import`,
 	filterDescendentStatVarsByNumEntitiesExistence: `
-			HAVING COUNT(DISTINCT %s) >= @numEntitiesExistence`,
+				HAVING COUNT(DISTINCT %s) >= @numEntitiesExistence`,
 }
