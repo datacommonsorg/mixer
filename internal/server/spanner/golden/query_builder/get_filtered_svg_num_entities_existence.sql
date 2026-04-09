@@ -17,7 +17,7 @@
 			) o ON o.variable_measured = e.subject_id
 			WHERE e.predicate = 'linkedMemberOf'
 				AND e.object_id IN (
-					SELECT subject_id
+					SELECT DISTINCT subject_id
 					FROM Edge
 					WHERE object_id = 'dc/g/Demographics'
 						AND predicate = 'specializationOf'

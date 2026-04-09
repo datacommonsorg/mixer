@@ -1,6 +1,125 @@
 [
   {
     "Svg": "dc/g/Demographics",
+    "SubjectID": "Count_Company",
+    "Name": "",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "Count_Person",
+    "Name": "Total population",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "Count_Person_5To17Years_Poor",
+    "Name": "",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "Count_Person_AsAFractionOf_Count_Household",
+    "Name": "",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "Count_Person_InfrastructureProject_BrazilRuralDevelopmentProgram",
+    "Name": "",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "Count_Person_PerArea",
+    "Name": "Population Density",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "FertilityRate_Person_Female",
+    "Name": "Fertility rate of women",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "FertilityRate_Person_Female_AsAFractionOf_Count_Person_Female",
+    "Name": "Fertility rate (%)",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "GenderIncomeInequality_Person_15OrMoreYears_WithIncome",
+    "Name": "Income Inequality Between Men and Women of Working Age",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "GrowthRate_Count_Person",
+    "Name": "Population growth rate",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "IncrementalCount_Person",
+    "Name": "Population Change",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "LifeExpectancy_Person",
+    "Name": "Life Expectancy",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "Mean_Count_Person",
+    "Name": "Mean count of person",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "Mean_IncrementalCount_Person",
+    "Name": "Mean incremental count of person",
+    "DescendentStatVarCount": -1,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "Mean_MealCost_Person_FoodSecure",
+    "Name": "Average Meal Cost for Food Secure People",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "Median_Age_Person",
+    "Name": "Median age of population",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "Median_Income_Person",
+    "Name": "Median Income of a Population",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
     "SubjectID": "dc/g/Child",
     "Name": "Child",
     "DescendentStatVarCount": 19,
@@ -516,124 +635,5 @@
     "Name": "Village",
     "DescendentStatVarCount": 2,
     "HasData": false
-  },
-  {
-    "Svg": "dc/g/Demographics",
-    "SubjectID": "Count_Company",
-    "Name": "",
-    "DescendentStatVarCount": -1,
-    "HasData": true
-  },
-  {
-    "Svg": "dc/g/Demographics",
-    "SubjectID": "Count_Person",
-    "Name": "Total population",
-    "DescendentStatVarCount": -1,
-    "HasData": true
-  },
-  {
-    "Svg": "dc/g/Demographics",
-    "SubjectID": "Count_Person_5To17Years_Poor",
-    "Name": "",
-    "DescendentStatVarCount": -1,
-    "HasData": true
-  },
-  {
-    "Svg": "dc/g/Demographics",
-    "SubjectID": "Count_Person_AsAFractionOf_Count_Household",
-    "Name": "",
-    "DescendentStatVarCount": -1,
-    "HasData": true
-  },
-  {
-    "Svg": "dc/g/Demographics",
-    "SubjectID": "Count_Person_InfrastructureProject_BrazilRuralDevelopmentProgram",
-    "Name": "",
-    "DescendentStatVarCount": -1,
-    "HasData": true
-  },
-  {
-    "Svg": "dc/g/Demographics",
-    "SubjectID": "Count_Person_PerArea",
-    "Name": "Population Density",
-    "DescendentStatVarCount": -1,
-    "HasData": true
-  },
-  {
-    "Svg": "dc/g/Demographics",
-    "SubjectID": "FertilityRate_Person_Female",
-    "Name": "Fertility rate of women",
-    "DescendentStatVarCount": -1,
-    "HasData": true
-  },
-  {
-    "Svg": "dc/g/Demographics",
-    "SubjectID": "FertilityRate_Person_Female_AsAFractionOf_Count_Person_Female",
-    "Name": "Fertility rate (%)",
-    "DescendentStatVarCount": -1,
-    "HasData": true
-  },
-  {
-    "Svg": "dc/g/Demographics",
-    "SubjectID": "GenderIncomeInequality_Person_15OrMoreYears_WithIncome",
-    "Name": "Income Inequality Between Men and Women of Working Age",
-    "DescendentStatVarCount": -1,
-    "HasData": true
-  },
-  {
-    "Svg": "dc/g/Demographics",
-    "SubjectID": "GrowthRate_Count_Person",
-    "Name": "Population growth rate",
-    "DescendentStatVarCount": -1,
-    "HasData": true
-  },
-  {
-    "Svg": "dc/g/Demographics",
-    "SubjectID": "IncrementalCount_Person",
-    "Name": "Population Change",
-    "DescendentStatVarCount": -1,
-    "HasData": true
-  },
-  {
-    "Svg": "dc/g/Demographics",
-    "SubjectID": "LifeExpectancy_Person",
-    "Name": "Life Expectancy",
-    "DescendentStatVarCount": -1,
-    "HasData": true
-  },
-  {
-    "Svg": "dc/g/Demographics",
-    "SubjectID": "Mean_Count_Person",
-    "Name": "Mean count of person",
-    "DescendentStatVarCount": -1,
-    "HasData": true
-  },
-  {
-    "Svg": "dc/g/Demographics",
-    "SubjectID": "Mean_IncrementalCount_Person",
-    "Name": "Mean incremental count of person",
-    "DescendentStatVarCount": -1,
-    "HasData": false
-  },
-  {
-    "Svg": "dc/g/Demographics",
-    "SubjectID": "Mean_MealCost_Person_FoodSecure",
-    "Name": "Average Meal Cost for Food Secure People",
-    "DescendentStatVarCount": -1,
-    "HasData": true
-  },
-  {
-    "Svg": "dc/g/Demographics",
-    "SubjectID": "Median_Age_Person",
-    "Name": "Median age of population",
-    "DescendentStatVarCount": -1,
-    "HasData": true
-  },
-  {
-    "Svg": "dc/g/Demographics",
-    "SubjectID": "Median_Income_Person",
-    "Name": "Median Income of a Population",
-    "DescendentStatVarCount": -1,
-    "HasData": true
   }
 ]

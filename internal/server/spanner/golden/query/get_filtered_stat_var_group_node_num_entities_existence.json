@@ -106,18 +106,8 @@
       "Predicate": "specializationOf"
     },
     {
-      "SubjectID": "dc/g/Commute",
-      "Name": "Commute",
-      "Predicate": "specializationOf"
-    },
-    {
       "SubjectID": "dc/g/Courthouse",
       "Name": "Courthouse",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Demographics_Miscellaneous",
-      "Name": "Miscellaneous",
       "Predicate": "specializationOf"
     },
     {
@@ -146,18 +136,8 @@
       "Predicate": "specializationOf"
     },
     {
-      "SubjectID": "dc/g/Household",
-      "Name": "Household",
-      "Predicate": "specializationOf"
-    },
-    {
       "SubjectID": "dc/g/Households",
       "Name": "Households",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/ImmigrationAndCitizenship",
-      "Name": "Immigration and Citizenship",
       "Predicate": "specializationOf"
     },
     {
@@ -176,18 +156,8 @@
       "Predicate": "specializationOf"
     },
     {
-      "SubjectID": "dc/g/Language",
-      "Name": "Language",
-      "Predicate": "specializationOf"
-    },
-    {
       "SubjectID": "dc/g/MaternalMortalityEvent",
       "Name": "Maternal Mortality Event",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/MilitaryService",
-      "Name": "Military Service",
       "Predicate": "specializationOf"
     },
     {
@@ -466,11 +436,6 @@
       "Predicate": "specializationOf"
     },
     {
-      "SubjectID": "dc/g/Residence",
-      "Name": "Residence",
-      "Predicate": "specializationOf"
-    },
-    {
       "SubjectID": "dc/g/Vehicle",
       "Name": "Vehicle",
       "Predicate": "specializationOf"
@@ -488,74 +453,74 @@
   ],
   "ChildSV": [
     {
-      "SubjectId": "Count_Person",
+      "SubjectID": "Count_Person",
       "Name": "Total population"
     },
     {
-      "SubjectId": "Count_Person_PerArea",
+      "SubjectID": "Count_Person_PerArea",
       "Name": "Population Density"
     },
     {
-      "SubjectId": "FertilityRate_Person_Female",
+      "SubjectID": "FertilityRate_Person_Female",
       "Name": "Fertility rate of women"
     },
     {
-      "SubjectId": "GrowthRate_Count_Person",
+      "SubjectID": "GrowthRate_Count_Person",
       "Name": "Population growth rate"
     },
     {
-      "SubjectId": "LifeExpectancy_Person",
+      "SubjectID": "LifeExpectancy_Person",
       "Name": "Life Expectancy"
     }
   ],
   "ChildSVG": [
     {
-      "SubjectId": "dc/g/Demographics",
+      "SubjectID": "dc/g/Demographics",
       "Name": "Demographics",
       "DescendentStatVarCount": 1228
     },
     {
-      "SubjectId": "dc/g/Demographics_Miscellaneous",
+      "SubjectID": "dc/g/Demographics_Miscellaneous",
       "Name": "Miscellaneous",
       "DescendentStatVarCount": 1075
     },
     {
-      "SubjectId": "dc/g/Household",
+      "SubjectID": "dc/g/Household",
       "Name": "Household",
       "DescendentStatVarCount": 1
     },
     {
-      "SubjectId": "dc/g/Person_Age",
+      "SubjectID": "dc/g/Person_Age",
       "Name": "Person by Age",
       "DescendentStatVarCount": 129
     },
     {
-      "SubjectId": "dc/g/Person_Gender",
+      "SubjectID": "dc/g/Person_Gender",
       "Name": "Person by Gender",
       "DescendentStatVarCount": 85
     },
     {
-      "SubjectId": "dc/g/Person_IsInternetUser",
+      "SubjectID": "dc/g/Person_IsInternetUser",
       "Name": "Person by Is Internet User",
       "DescendentStatVarCount": 1
     },
     {
-      "SubjectId": "dc/g/Person_LaborForceStatus",
+      "SubjectID": "dc/g/Person_LaborForceStatus",
       "Name": "Person by Labor Force Status",
       "DescendentStatVarCount": 5
     },
     {
-      "SubjectId": "dc/g/Person_PlaceOfResidenceClassification",
+      "SubjectID": "dc/g/Person_PlaceOfResidenceClassification",
       "Name": "Person by Place of Residence Classification",
       "DescendentStatVarCount": 2
     },
     {
-      "SubjectId": "dc/g/Person_PovertyStatus",
+      "SubjectID": "dc/g/Person_PovertyStatus",
       "Name": "Person by Poverty Status",
       "DescendentStatVarCount": 1
     },
     {
-      "SubjectId": "dc/g/Residence",
+      "SubjectID": "dc/g/Residence",
       "Name": "Residence",
       "DescendentStatVarCount": 3
     }

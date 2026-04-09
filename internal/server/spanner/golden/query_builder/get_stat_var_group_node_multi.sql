@@ -61,4 +61,3 @@
 		FROM ChildSVs sv
 		JOIN Node n 
 		ON n.subject_id = sv.child_sv
-	

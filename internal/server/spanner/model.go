@@ -139,13 +139,13 @@ type SVGChild struct {
 
 // ChildSV represents the info to build a child SV of an SVG.
 type ChildSV struct {
-	SubjectId string `spanner:"subject_id"`
+	SubjectID string `spanner:"subject_id"`
 	Name      string `spanner:"name"`
 }
 
 // ChildSVG represents the info to build a child SVG an an SVG.
 type ChildSVG struct {
-	SubjectId              string `spanner:"subject_id"`
+	SubjectID              string `spanner:"subject_id"`
 	Name                   string `spanner:"name"`
 	DescendentStatVarCount int64  `spanner:"descendent_stat_var_count"`
 }

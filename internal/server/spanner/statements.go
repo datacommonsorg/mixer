@@ -413,8 +413,7 @@ var statements = struct {
 			) AS has_data
 		FROM ChildSVs sv
 		JOIN Node n 
-		ON n.subject_id = sv.child_sv
-	`,
+		ON n.subject_id = sv.child_sv`,
 	attachSVG: `SELECT 
 				@nodes AS child_svg,
 				@nodes AS svg`,
@@ -422,7 +421,7 @@ var statements = struct {
 				node AS child_svg,
 				node AS svg
 				FROM UNNEST(@nodes) AS node`,
-	getSVGChildren: `		SELECT
+	getSVGChildren: `		SELECT DISTINCT
 			n.subject_id,
 			n.name,
 			e.predicate
@@ -431,8 +430,7 @@ var statements = struct {
 			SELECT subject_id, predicate FROM Edge@{FORCE_INDEX=InEdge}
 			WHERE predicate IN ('memberOf', 'specializationOf')
 				AND object_id = @node
-		) e ON n.subject_id = e.subject_id
-	`,
+		) e ON n.subject_id = e.subject_id`,
 	getFilteredChildSVs: `		SELECT
 			n.subject_id,
 			n.name
@@ -447,7 +445,7 @@ var statements = struct {
 				GROUP BY variable_measured%[2]s
 			) o ON o.variable_measured = e.subject_id
 			WHERE e.subject_id IN (
-				SELECT subject_id
+				SELECT DISTINCT subject_id
 				FROM Edge
 				WHERE object_id = @node
 					AND predicate = 'memberOf'
@@ -473,7 +471,7 @@ var statements = struct {
 			) o ON o.variable_measured = e.subject_id
 			WHERE e.predicate = 'linkedMemberOf'
 				AND e.object_id IN (
-					SELECT subject_id
+					SELECT DISTINCT subject_id
 					FROM Edge
 					WHERE object_id = @node
 						AND predicate = 'specializationOf'

@@ -106,18 +106,8 @@
       "Predicate": "specializationOf"
     },
     {
-      "SubjectID": "dc/g/Commute",
-      "Name": "Commute",
-      "Predicate": "specializationOf"
-    },
-    {
       "SubjectID": "dc/g/Courthouse",
       "Name": "Courthouse",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Demographics_Miscellaneous",
-      "Name": "Miscellaneous",
       "Predicate": "specializationOf"
     },
     {
@@ -146,18 +136,8 @@
       "Predicate": "specializationOf"
     },
     {
-      "SubjectID": "dc/g/Household",
-      "Name": "Household",
-      "Predicate": "specializationOf"
-    },
-    {
       "SubjectID": "dc/g/Households",
       "Name": "Households",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/ImmigrationAndCitizenship",
-      "Name": "Immigration and Citizenship",
       "Predicate": "specializationOf"
     },
     {
@@ -176,18 +156,8 @@
       "Predicate": "specializationOf"
     },
     {
-      "SubjectID": "dc/g/Language",
-      "Name": "Language",
-      "Predicate": "specializationOf"
-    },
-    {
       "SubjectID": "dc/g/MaternalMortalityEvent",
       "Name": "Maternal Mortality Event",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/MilitaryService",
-      "Name": "Military Service",
       "Predicate": "specializationOf"
     },
     {
@@ -466,11 +436,6 @@
       "Predicate": "specializationOf"
     },
     {
-      "SubjectID": "dc/g/Residence",
-      "Name": "Residence",
-      "Predicate": "specializationOf"
-    },
-    {
       "SubjectID": "dc/g/Vehicle",
       "Name": "Vehicle",
       "Predicate": "specializationOf"
@@ -488,251 +453,251 @@
   ],
   "ChildSV": [
     {
-      "SubjectId": "Count_Person",
+      "SubjectID": "Count_Person",
       "Name": "Total population"
     },
     {
-      "SubjectId": "Count_Person_PerArea",
+      "SubjectID": "Count_Person_PerArea",
       "Name": "Population Density"
     },
     {
-      "SubjectId": "FertilityRate_Person_Female",
+      "SubjectID": "FertilityRate_Person_Female",
       "Name": "Fertility rate of women"
     },
     {
-      "SubjectId": "GenderIncomeInequality_Person_15OrMoreYears_WithIncome",
+      "SubjectID": "GenderIncomeInequality_Person_15OrMoreYears_WithIncome",
       "Name": "Income Inequality Between Men and Women of Working Age"
     },
     {
-      "SubjectId": "GrowthRate_Count_Person",
+      "SubjectID": "GrowthRate_Count_Person",
       "Name": "Population growth rate"
     },
     {
-      "SubjectId": "LifeExpectancy_Person",
+      "SubjectID": "LifeExpectancy_Person",
       "Name": "Life Expectancy"
     },
     {
-      "SubjectId": "Median_Age_Person",
+      "SubjectID": "Median_Age_Person",
       "Name": "Median age of population"
     },
     {
-      "SubjectId": "Median_Income_Person",
+      "SubjectID": "Median_Income_Person",
       "Name": "Median Income of a Population"
     }
   ],
   "ChildSVG": [
     {
-      "SubjectId": "dc/g/Commute",
+      "SubjectID": "dc/g/Commute",
       "Name": "Commute",
       "DescendentStatVarCount": 191
     },
     {
-      "SubjectId": "dc/g/Demographics",
+      "SubjectID": "dc/g/Demographics",
       "Name": "Demographics",
       "DescendentStatVarCount": 34401
     },
     {
-      "SubjectId": "dc/g/Demographics_Miscellaneous",
+      "SubjectID": "dc/g/Demographics_Miscellaneous",
       "Name": "Miscellaneous",
       "DescendentStatVarCount": 1303
     },
     {
-      "SubjectId": "dc/g/Household",
+      "SubjectID": "dc/g/Household",
       "Name": "Household",
       "DescendentStatVarCount": 3335
     },
     {
-      "SubjectId": "dc/g/ImmigrationAndCitizenship",
+      "SubjectID": "dc/g/ImmigrationAndCitizenship",
       "Name": "Immigration and Citizenship",
       "DescendentStatVarCount": 2689
     },
     {
-      "SubjectId": "dc/g/Language",
+      "SubjectID": "dc/g/Language",
       "Name": "Language",
       "DescendentStatVarCount": 498
     },
     {
-      "SubjectId": "dc/g/MilitaryService",
+      "SubjectID": "dc/g/MilitaryService",
       "Name": "Military Service",
       "DescendentStatVarCount": 2353
     },
     {
-      "SubjectId": "dc/g/Person_Age",
+      "SubjectID": "dc/g/Person_Age",
       "Name": "Person by Age",
       "DescendentStatVarCount": 20811
     },
     {
-      "SubjectId": "dc/g/Person_BenefitsStatus",
+      "SubjectID": "dc/g/Person_BenefitsStatus",
       "Name": "Person by Benefits Status",
       "DescendentStatVarCount": 7
     },
     {
-      "SubjectId": "dc/g/Person_CarpoolOccupancy",
+      "SubjectID": "dc/g/Person_CarpoolOccupancy",
       "Name": "Person by Carpool Occupancy",
       "DescendentStatVarCount": 9
     },
     {
-      "SubjectId": "dc/g/Person_ChildrenStatus",
+      "SubjectID": "dc/g/Person_ChildrenStatus",
       "Name": "Person by Children Status",
       "DescendentStatVarCount": 7
     },
     {
-      "SubjectId": "dc/g/Person_CitizenshipStatus",
+      "SubjectID": "dc/g/Person_CitizenshipStatus",
       "Name": "Person by Citizenship Status",
       "DescendentStatVarCount": 735
     },
     {
-      "SubjectId": "dc/g/Person_CommuteStartTime",
+      "SubjectID": "dc/g/Person_CommuteStartTime",
       "Name": "Person by Commute Start Time",
       "DescendentStatVarCount": 30
     },
     {
-      "SubjectId": "dc/g/Person_CommuteType",
+      "SubjectID": "dc/g/Person_CommuteType",
       "Name": "Person by Commute Type",
       "DescendentStatVarCount": 102
     },
     {
-      "SubjectId": "dc/g/Person_CrashInvolvement",
+      "SubjectID": "dc/g/Person_CrashInvolvement",
       "Name": "Person by Crash Involvement",
       "DescendentStatVarCount": 4
     },
     {
-      "SubjectId": "dc/g/Person_DateOfEntry",
+      "SubjectID": "dc/g/Person_DateOfEntry",
       "Name": "Person by Date of Entry",
       "DescendentStatVarCount": 236
     },
     {
-      "SubjectId": "dc/g/Person_DisabilityStatus",
+      "SubjectID": "dc/g/Person_DisabilityStatus",
       "Name": "Person by Disability Status",
       "DescendentStatVarCount": 544
     },
     {
-      "SubjectId": "dc/g/Person_Earnings",
+      "SubjectID": "dc/g/Person_Earnings",
       "Name": "Person by Earnings",
       "DescendentStatVarCount": 139
     },
     {
-      "SubjectId": "dc/g/Person_ElectronicGadgetUsed",
+      "SubjectID": "dc/g/Person_ElectronicGadgetUsed",
       "Name": "Person by Electronic Gadget Used",
       "DescendentStatVarCount": 406
     },
     {
-      "SubjectId": "dc/g/Person_Ethnicity",
+      "SubjectID": "dc/g/Person_Ethnicity",
       "Name": "Person by Ethnicity",
       "DescendentStatVarCount": 1343
     },
     {
-      "SubjectId": "dc/g/Person_Gender",
+      "SubjectID": "dc/g/Person_Gender",
       "Name": "Person by Gender",
       "DescendentStatVarCount": 18032
     },
     {
-      "SubjectId": "dc/g/Person_HealthInsurance",
+      "SubjectID": "dc/g/Person_HealthInsurance",
       "Name": "Person by Health Insurance",
       "DescendentStatVarCount": 1292
     },
     {
-      "SubjectId": "dc/g/Person_HouseholdIncome",
+      "SubjectID": "dc/g/Person_HouseholdIncome",
       "Name": "Person by Household Income",
       "DescendentStatVarCount": 40
     },
     {
-      "SubjectId": "dc/g/Person_HouseholdType",
+      "SubjectID": "dc/g/Person_HouseholdType",
       "Name": "Person by Household Type",
       "DescendentStatVarCount": 462
     },
     {
-      "SubjectId": "dc/g/Person_Income",
+      "SubjectID": "dc/g/Person_Income",
       "Name": "Person by Income",
       "DescendentStatVarCount": 1092
     },
     {
-      "SubjectId": "dc/g/Person_IncomeStatus",
+      "SubjectID": "dc/g/Person_IncomeStatus",
       "Name": "Person by Income Status",
       "DescendentStatVarCount": 549
     },
     {
-      "SubjectId": "dc/g/Person_InternetUsageLocation",
+      "SubjectID": "dc/g/Person_InternetUsageLocation",
       "Name": "Person by Internet Usage Location",
       "DescendentStatVarCount": 406
     },
     {
-      "SubjectId": "dc/g/Person_IsInternetUser",
+      "SubjectID": "dc/g/Person_IsInternetUser",
       "Name": "Person by Is Internet User",
       "DescendentStatVarCount": 407
     },
     {
-      "SubjectId": "dc/g/Person_LaborForceStatus",
+      "SubjectID": "dc/g/Person_LaborForceStatus",
       "Name": "Person by Labor Force Status",
       "DescendentStatVarCount": 2678
     },
     {
-      "SubjectId": "dc/g/Person_LiteracyStatus",
+      "SubjectID": "dc/g/Person_LiteracyStatus",
       "Name": "Person by Literacy Status",
       "DescendentStatVarCount": 216
     },
     {
-      "SubjectId": "dc/g/Person_MaritalStatus",
+      "SubjectID": "dc/g/Person_MaritalStatus",
       "Name": "Person by Marital Status",
       "DescendentStatVarCount": 509
     },
     {
-      "SubjectId": "dc/g/Person_MemberStatus",
+      "SubjectID": "dc/g/Person_MemberStatus",
       "Name": "Person by Member Status",
       "DescendentStatVarCount": 96
     },
     {
-      "SubjectId": "dc/g/Person_NumberOfVehiclesInHousehold",
+      "SubjectID": "dc/g/Person_NumberOfVehiclesInHousehold",
       "Name": "Person by Number of Vehicles in Household",
       "DescendentStatVarCount": 12
     },
     {
-      "SubjectId": "dc/g/Person_PlaceOfBirth",
+      "SubjectID": "dc/g/Person_PlaceOfBirth",
       "Name": "Person by Place of Birth",
       "DescendentStatVarCount": 1940
     },
     {
-      "SubjectId": "dc/g/Person_PlaceOfResidenceClassification",
+      "SubjectID": "dc/g/Person_PlaceOfResidenceClassification",
       "Name": "Person by Place of Residence Classification",
       "DescendentStatVarCount": 1995
     },
     {
-      "SubjectId": "dc/g/Person_PovertyStatus",
+      "SubjectID": "dc/g/Person_PovertyStatus",
       "Name": "Person by Poverty Status",
       "DescendentStatVarCount": 1042
     },
     {
-      "SubjectId": "dc/g/Person_Race",
+      "SubjectID": "dc/g/Person_Race",
       "Name": "Person by Race",
       "DescendentStatVarCount": 17853
     },
     {
-      "SubjectId": "dc/g/Person_Religion",
+      "SubjectID": "dc/g/Person_Religion",
       "Name": "Person by Religion",
       "DescendentStatVarCount": 1872
     },
     {
-      "SubjectId": "dc/g/Person_ResidentStatus",
+      "SubjectID": "dc/g/Person_ResidentStatus",
       "Name": "Person by Resident Status",
       "DescendentStatVarCount": 376
     },
     {
-      "SubjectId": "dc/g/Person_VehicleOccupantType",
+      "SubjectID": "dc/g/Person_VehicleOccupantType",
       "Name": "Person by Vehicle Occupant Type",
       "DescendentStatVarCount": 4
     },
     {
-      "SubjectId": "dc/g/Residence",
+      "SubjectID": "dc/g/Residence",
       "Name": "Residence",
       "DescendentStatVarCount": 3184
     },
     {
-      "SubjectId": "dc/g/Vehicle",
+      "SubjectID": "dc/g/Vehicle",
       "Name": "Vehicle",
       "DescendentStatVarCount": 5
     },
     {
-      "SubjectId": "dc/g/VehicleCrashIncident",
+      "SubjectID": "dc/g/VehicleCrashIncident",
       "Name": "Vehicle Crash Incident",
       "DescendentStatVarCount": 100
     }
