@@ -1,4 +1,4 @@
-// Copyright 2024 Google LLC
+// Copyright 2026 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -20,36 +20,41 @@ import (
 	"runtime"
 	"testing"
 
-	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
+	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/test"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 )
 
-func TestRecognizeEntities(t *testing.T) {
+func TestV2BulkVariableGroupInfo(t *testing.T) {
 	t.Parallel()
 	ctx := context.Background()
+
 	_, filename, _, _ := runtime.Caller(0)
-	goldenPath := path.Join(path.Dir(filename), "recognize_entities")
+	goldenPath := path.Dir(filename)
 
 	testSuite := func(mixer pbs.MixerClient, latencyTest bool) {
 		for _, c := range []struct {
-			queries    []string
-			goldenFile string
+			nodes                []string
+			constrainedEntities  []string
+			numEntitiesExistence int
+			goldenFile           string
 		}{
 			{
-				[]string{
-					"the birds in San Jose are chirpy",
-				},
-				"result.json",
+				[]string{"dc/g/Agriculture", "dc/g/Housing"},
+				[]string{"country/USA"},
+				1,
+				"bulk_variable_group_info.json",
 			},
 		} {
-			resp, err := mixer.RecognizeEntities(ctx, &pb.RecognizeEntitiesRequest{
-				Queries: c.queries,
+			resp, err := mixer.V2BulkVariableGroupInfo(ctx, &pbv1.BulkVariableGroupInfoRequest{
+				Nodes:                c.nodes,
+				ConstrainedEntities:  c.constrainedEntities,
+				NumEntitiesExistence: int32(c.numEntitiesExistence),
 			})
 			if err != nil {
-				t.Errorf("RecognizeEntities() = %s", err)
+				t.Errorf("could not run V2BulkVariableInfo: %s", err)
 				continue
 			}
 
@@ -61,25 +66,24 @@ func TestRecognizeEntities(t *testing.T) {
 				test.UpdateProtoGolden(resp, goldenPath, c.goldenFile)
 				continue
 			}
-
-			var expected pb.RecognizeEntitiesResponse
+			var expected pbv1.BulkVariableGroupInfoResponse
 			if err = test.ReadJSON(goldenPath, c.goldenFile, &expected); err != nil {
-				t.Errorf("Can not Unmarshal golden file")
+				t.Errorf("Can not Unmarshal golden file: %s", err)
 				continue
 			}
 
-			cmpOpts := cmp.Options{
-				protocmp.Transform(),
-			}
-			if diff := cmp.Diff(resp, &expected, cmpOpts); diff != "" {
+			if diff := cmp.Diff(resp, &expected, protocmp.Transform()); diff != "" {
 				t.Errorf("payload got diff: %v", diff)
 				continue
 			}
+
 		}
 	}
-
 	if err := test.TestDriver(
-		"RecognizePlaces", &test.TestOption{}, testSuite); err != nil {
+		"V2BulkVariableGroupInfo",
+		&test.TestOption{FetchSVG: true},
+		testSuite,
+	); err != nil {
 		t.Errorf("TestDriver() = %s", err)
 	}
 }

@@ -1,0 +1,237 @@
+{
+  "data": [
+    {
+      "node": "dc/g/Agriculture",
+      "info": {
+        "absoluteName": "Agriculture",
+        "childStatVars": [
+          {
+            "id": "Count_Person_5OrLessMeter_Rural_AsAFractionOf_Count_Person",
+            "displayName": "Population: 5 Meter or Less, Rural (Per Capita)"
+          }
+        ],
+        "childStatVarGroups": [
+          {
+            "id": "dc/g/Person_EconomicSector",
+            "specializedEntity": "Economic Sector",
+            "displayName": "Person by Economic Sector"
+          },
+          {
+            "id": "dc/g/Farm",
+            "specializedEntity": "Farm",
+            "displayName": "Farm",
+            "descendentStatVarCount": 122
+          },
+          {
+            "id": "dc/g/FarmInventory",
+            "specializedEntity": "Farm Inventory",
+            "displayName": "Farm Inventory",
+            "descendentStatVarCount": 28
+          },
+          {
+            "id": "dc/g/Agriculture_Miscellaneous",
+            "specializedEntity": "Miscellaneous",
+            "displayName": "Miscellaneous",
+            "descendentStatVarCount": 16
+          },
+          {
+            "id": "dc/g/Person_OwnershipStatus",
+            "specializedEntity": "Ownership Status",
+            "displayName": "Person by Ownership Status",
+            "descendentStatVarCount": 8
+          }
+        ],
+        "descendentStatVarCount": 174
+      }
+    },
+    {
+      "node": "dc/g/Housing",
+      "info": {
+        "absoluteName": "Housing",
+        "childStatVars": [
+          {
+            "id": "Count_HousingUnit",
+            "displayName": "Housing Units",
+            "hasData": true
+          },
+          {
+            "id": "Monthly_Median_GrossRent_HousingUnit",
+            "displayName": "Median Monthly Gross Rent of Housing Unit",
+            "hasData": true
+          }
+        ],
+        "childStatVarGroups": [
+          {
+            "id": "dc/g/HousingUnit_Age",
+            "specializedEntity": "Age",
+            "displayName": "Housing Unit by Age"
+          },
+          {
+            "id": "dc/g/HousingUnit_CashRentStatus",
+            "specializedEntity": "Cash Rent Status",
+            "displayName": "Housing Unit by Cash Rent Status",
+            "descendentStatVarCount": 3
+          },
+          {
+            "id": "dc/g/HousingUnit_CommuteMode",
+            "specializedEntity": "Commute Mode",
+            "displayName": "Housing Unit by Commute Mode"
+          },
+          {
+            "id": "dc/g/HousingUnit_DateBuilt",
+            "specializedEntity": "Date Built",
+            "displayName": "Housing Unit by Date Built",
+            "descendentStatVarCount": 15
+          },
+          {
+            "id": "dc/g/HousingUnit_DateMovedIn",
+            "specializedEntity": "Date Moved In",
+            "displayName": "Housing Unit by Date Moved In",
+            "descendentStatVarCount": 9
+          },
+          {
+            "id": "dc/g/HousingUnit_Facilities",
+            "specializedEntity": "Facilities",
+            "displayName": "Housing Unit by Facilities",
+            "descendentStatVarCount": 4
+          },
+          {
+            "id": "dc/g/HousingUnit_GrossRent",
+            "specializedEntity": "Gross Rent",
+            "displayName": "Housing Unit by Gross Rent",
+            "descendentStatVarCount": 57
+          },
+          {
+            "id": "dc/g/HousingUnit_HomeValue",
+            "specializedEntity": "Home Value",
+            "displayName": "Housing Unit by Home Value",
+            "descendentStatVarCount": 33
+          },
+          {
+            "id": "dc/g/Person_HouseholdDecisionMaking",
+            "specializedEntity": "Household Decision Making",
+            "displayName": "Person by Household Decision Making"
+          },
+          {
+            "id": "dc/g/HousingUnit_HouseholderAge",
+            "specializedEntity": "Householder Age",
+            "displayName": "Housing Unit by Householder Age",
+            "descendentStatVarCount": 21
+          },
+          {
+            "id": "dc/g/HousingUnit_HouseholderEducationalAttainment",
+            "specializedEntity": "Householder Educational Attainment",
+            "displayName": "Housing Unit by Householder Educational Attainment",
+            "descendentStatVarCount": 12
+          },
+          {
+            "id": "dc/g/HousingUnit_HouseholderRace",
+            "specializedEntity": "Householder Race",
+            "displayName": "Housing Unit by Householder Race",
+            "descendentStatVarCount": 38
+          },
+          {
+            "id": "dc/g/HousingUnit_LaborForceStatus",
+            "specializedEntity": "Labor Force Status",
+            "displayName": "Housing Unit by Labor Force Status"
+          },
+          {
+            "id": "dc/g/HousingUnit_MortgageStatus",
+            "specializedEntity": "Mortgage Status",
+            "displayName": "Housing Unit by Mortgage Status",
+            "descendentStatVarCount": 16
+          },
+          {
+            "id": "dc/g/HousingUnit_Nativity",
+            "specializedEntity": "Nativity",
+            "displayName": "Housing Unit by Nativity",
+            "descendentStatVarCount": 304
+          },
+          {
+            "id": "dc/g/HousingUnit_NumberOfBedrooms",
+            "specializedEntity": "Number of Bedrooms",
+            "displayName": "Housing Unit by Number of Bedrooms",
+            "descendentStatVarCount": 6
+          },
+          {
+            "id": "dc/g/HousingUnit_NumberOfOccupants",
+            "specializedEntity": "Number of Occupants",
+            "displayName": "Housing Unit by Number of Occupants",
+            "descendentStatVarCount": 16
+          },
+          {
+            "id": "dc/g/HousingUnit_NumberOfRooms",
+            "specializedEntity": "Number of Rooms",
+            "displayName": "Housing Unit by Number of Rooms",
+            "descendentStatVarCount": 89
+          },
+          {
+            "id": "dc/g/HousingUnit_NumberOfVehicles",
+            "specializedEntity": "Number of Vehicles",
+            "displayName": "Housing Unit by Number of Vehicles",
+            "descendentStatVarCount": 32
+          },
+          {
+            "id": "dc/g/HousingUnit_OccupancyStatus",
+            "specializedEntity": "Occupancy Status (Housing Unit)",
+            "displayName": "Housing Unit by Occupancy Status",
+            "descendentStatVarCount": 360
+          },
+          {
+            "id": "dc/g/Person_OccupancyStatus",
+            "specializedEntity": "Occupancy Status (Individual)",
+            "displayName": "Person by Occupancy Status",
+            "descendentStatVarCount": 12
+          },
+          {
+            "id": "dc/g/HousingUnit_OccupancyTenure",
+            "specializedEntity": "Occupancy Tenure",
+            "displayName": "Housing Unit by Occupancy Tenure",
+            "descendentStatVarCount": 189
+          },
+          {
+            "id": "dc/g/HousingUnit_OwnerCost",
+            "specializedEntity": "Owner Cost",
+            "displayName": "Housing Unit by Owner Cost",
+            "descendentStatVarCount": 32
+          },
+          {
+            "id": "dc/g/HousingUnit_PlaceOfBirth",
+            "specializedEntity": "Place of Birth",
+            "displayName": "Housing Unit by Place of Birth",
+            "descendentStatVarCount": 304
+          },
+          {
+            "id": "dc/g/Person_PlaceOfResidenceClassification",
+            "specializedEntity": "Place of Residence Classification (Individual)",
+            "displayName": "Person by Place of Residence Classification",
+            "descendentStatVarCount": 90
+          },
+          {
+            "id": "dc/g/HousingUnit_PlaceOfWork",
+            "specializedEntity": "Place of Work",
+            "displayName": "Housing Unit by Place of Work"
+          },
+          {
+            "id": "dc/g/HousingUnit_PropertyTax",
+            "specializedEntity": "Property Tax",
+            "displayName": "Housing Unit by Property Tax",
+            "descendentStatVarCount": 12
+          },
+          {
+            "id": "dc/g/HousingUnit_ResidenceType",
+            "specializedEntity": "Residence Type",
+            "displayName": "Housing Unit by Residence Type"
+          },
+          {
+            "id": "dc/g/HousingUnit_TelephoneServiceAvailability",
+            "specializedEntity": "Telephone Service Availability",
+            "displayName": "Housing Unit by Telephone Service Availability",
+            "descendentStatVarCount": 16
+          }
+        ],
+        "descendentStatVarCount": 511
+      }
+    }
+  ]
+}
