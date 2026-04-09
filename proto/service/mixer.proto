@@ -169,6 +169,14 @@ service Mixer {
     };
   }
 
+  rpc V2BulkVariableGroupInfo(datacommons.v1.BulkVariableGroupInfoRequest)
+      returns (datacommons.v1.BulkVariableGroupInfoResponse) {
+    option (google.api.http) = {
+      get : "/v2/bulk/info/variable-group"
+      additional_bindings : {post : "/v2/bulk/info/variable-group" body : "*"}
+    };
+  }
+
   // ======================  V0   V0   V0   V0  ======================
 
   // Query DataCommons Graph with Sparql.
