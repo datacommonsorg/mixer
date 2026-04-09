@@ -648,31 +648,19 @@ func (s *Server) V2BulkVariableInfo(
 	return v2Resp, nil
 }
 
-// V2BulkVariableInfo implements API for Mixer.V2BulkVariableGroupInfo.
+// V2BulkVariableGroupInfo implements API for Mixer.V2BulkVariableGroupInfo.
 func (s *Server) V2BulkVariableGroupInfo(
 	ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest,
 ) (*pbv1.BulkVariableGroupInfoResponse, error) {
 	// Use the V1 implementation for now.
-	v2Resp, err := s.BulkVariableGroupInfo(ctx, in)
+	resp, err := s.BulkVariableGroupInfo(ctx, in)
 	if err != nil {
 		return nil, err
 	}
 
-	// The new response will not contain all legacy V1 fields.
-	// To ensure the new response is sufficient, clear all legacy fields until swapping over to the new backend.
-	for _, info := range v2Resp.GetData() {
-		if info.GetInfo() == nil {
-			continue
-		}
-		info.Info.ParentStatVarGroups = nil
-		for _, childSV := range info.GetInfo().GetChildStatVars() {
-			childSV.SearchName = ""
-			childSV.SearchNames = nil
-			childSV.Definition = ""
-		}
-	}
+	convertV1ToV2BulkVariableGroupInfo(resp)
 
-	return v2Resp, nil
+	return resp, nil
 }
 
 // resolveRouting determines whether to route to local and/or remote instances
@@ -701,5 +689,22 @@ func resolveRouting(target, remoteMixerDomain string) (bool, bool, error) {
 		return true, false, nil
 	default:
 		return true, true, nil
+	}
+}
+
+// convertV1ToV2BulkVariableGroupInfo converts a V1 BulkVariableGroupInfoResponse to the V2 version.
+func convertV1ToV2BulkVariableGroupInfo(resp *pbv1.BulkVariableGroupInfoResponse) {
+	// The new response will not contain all legacy V1 fields.
+	// To ensure the new response is sufficient, clear all legacy fields until swapping over to the new backend.
+	for _, info := range resp.GetData() {
+		if info.GetInfo() == nil {
+			continue
+		}
+		info.Info.ParentStatVarGroups = nil
+		for _, childSV := range info.GetInfo().GetChildStatVars() {
+			childSV.SearchName = ""
+			childSV.SearchNames = nil
+			childSV.Definition = ""
+		}
 	}
 }
