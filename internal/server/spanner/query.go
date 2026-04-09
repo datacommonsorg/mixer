@@ -34,6 +34,7 @@ import (
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
 	"github.com/datacommonsorg/mixer/internal/util"
+	"golang.org/x/sync/errgroup"
 	"google.golang.org/api/iterator"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/protobuf/encoding/protojson"
@@ -619,6 +620,135 @@ func (sc *spannerDatabaseClient) GetProvenanceSummary(ctx context.Context, varia
 	}
 
 	return results, nil
+}
+
+// GetStatVarGroupNode fetches StatVarGroupNode info from Spanner.
+func (sc *spannerDatabaseClient) GetStatVarGroupNode(ctx context.Context, nodes []string) ([]*StatVarGroupNode, error) {
+	var svgNodes []*StatVarGroupNode
+	if len(nodes) == 0 {
+		return svgNodes, nil
+	}
+
+	err := queryStructs(
+		ctx,
+		sc,
+		*GetStatVarGroupNodeQuery(nodes),
+		func() interface{} {
+			return &StatVarGroupNode{}
+		},
+		func(rowStruct interface{}) {
+			svgNodes = append(svgNodes, rowStruct.(*StatVarGroupNode))
+		},
+	)
+	if err != nil {
+		return svgNodes, err
+	}
+
+	return svgNodes, nil
+}
+
+// GetFilteredStatVarGroupNode fetches the relevant info to build a filtered StatVarGroupNode from Spanner.
+func (sc *spannerDatabaseClient) GetFilteredStatVarGroupNode(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (*FilteredStatVarGroupNode, error) {
+	filteredStatVarGroupNode := &FilteredStatVarGroupNode{}
+	errGroup, errCtx := errgroup.WithContext(ctx)
+	svgChildChan := make(chan []*SVGChild, 1)
+	childSVChan := make(chan []*ChildSV, 1)
+	childSVGChan := make(chan []*ChildSVG, 1)
+
+	errGroup.Go(func() error {
+		var svgChildren []*SVGChild
+		err := queryStructs(
+			errCtx,
+			sc,
+			*GetSVGChildrenQuery(node),
+			func() interface{} {
+				return &SVGChild{}
+			},
+			func(rowStruct interface{}) {
+				svgChildren = append(svgChildren, rowStruct.(*SVGChild))
+			},
+		)
+		if err != nil {
+			return err
+		}
+		svgChildChan <- svgChildren
+		return nil
+	})
+
+	errGroup.Go(func() error {
+		var childSVs []*ChildSV
+		err := queryStructs(
+			errCtx,
+			sc,
+			*GetFilteredSVGChildrenQuery(templateSV, node, constrainedPlaces, constrainedImport, numEntitiesExistence),
+			func() interface{} {
+				return &ChildSV{}
+			},
+			func(rowStruct interface{}) {
+				childSVs = append(childSVs, rowStruct.(*ChildSV))
+			},
+		)
+		if err != nil {
+			return err
+		}
+		childSVChan <- childSVs
+		return nil
+	})
+
+	errGroup.Go(func() error {
+		var childSVGs []*ChildSVG
+		err := queryStructs(
+			errCtx,
+			sc,
+			*GetFilteredSVGChildrenQuery(templateSVG, node, constrainedPlaces, constrainedImport, numEntitiesExistence),
+			func() interface{} {
+				return &ChildSVG{}
+			},
+			func(rowStruct interface{}) {
+				childSVGs = append(childSVGs, rowStruct.(*ChildSVG))
+			},
+		)
+		if err != nil {
+			return err
+		}
+		childSVGChan <- childSVGs
+		return nil
+	})
+
+	if err := errGroup.Wait(); err != nil {
+		return filteredStatVarGroupNode, err
+	}
+
+	close(svgChildChan)
+	close(childSVChan)
+	close(childSVGChan)
+
+	filteredStatVarGroupNode.SVGChild = <-svgChildChan
+	filteredStatVarGroupNode.ChildSV = <-childSVChan
+	filteredStatVarGroupNode.ChildSVG = <-childSVGChan
+
+	return filteredStatVarGroupNode, nil
+}
+
+// GetFilteredTopic fetches the relevant info to build a filtered Topic response from Spanner.
+func (sc *spannerDatabaseClient) GetFilteredTopic(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (int, error) {
+	stmt := GetFilteredSVGChildrenQuery(templateTopic, node, constrainedPlaces, constrainedImport, numEntitiesExistence)
+	rows, err := queryDynamic(ctx, sc, *stmt)
+	if err != nil {
+		return 0, err
+	}
+	if len(rows) == 0 {
+		// No child SVs.
+		return 0, nil
+	}
+	if len(rows[0]) == 0 {
+		return 0, fmt.Errorf("malformed response when fetching count of Topic children")
+	}
+	count, err := strconv.Atoi(rows[0][0])
+	if err != nil {
+		return 0, fmt.Errorf("error converting Topic children count to int")
+	}
+	return count, nil
 }
 
 // fetchAndUpdateTimestamp queries Spanner and updates the timestamp.

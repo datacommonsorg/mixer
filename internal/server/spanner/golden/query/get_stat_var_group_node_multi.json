@@ -1,0 +1,961 @@
+[
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Amount",
+    "Name": "Amount",
+    "DescendentStatVarCount": 4,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Child",
+    "Name": "Child",
+    "DescendentStatVarCount": 19,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Children",
+    "Name": "Children",
+    "DescendentStatVarCount": 33,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/CivicStructure",
+    "Name": "Civic Structure",
+    "DescendentStatVarCount": 4,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Commodity",
+    "Name": "Commodity",
+    "DescendentStatVarCount": 173,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Commute",
+    "Name": "Commute",
+    "DescendentStatVarCount": 566,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/ConsumerGoodsAndServices",
+    "Name": "Consumer Goods And Services",
+    "DescendentStatVarCount": 2879,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Courthouse",
+    "Name": "Courthouse",
+    "DescendentStatVarCount": 2,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Currency",
+    "Name": "Currency",
+    "DescendentStatVarCount": 454,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Debt",
+    "Name": "Debt",
+    "DescendentStatVarCount": 6252,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Demographics",
+    "Name": "Demographics",
+    "DescendentStatVarCount": 52214,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Demographics_Miscellaneous",
+    "Name": "Miscellaneous",
+    "DescendentStatVarCount": 1546,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/EconomicActivity",
+    "Name": "Economic Activity",
+    "DescendentStatVarCount": 31860,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Economy",
+    "Name": "Economy",
+    "DescendentStatVarCount": 127372,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Economy_Miscellaneous",
+    "Name": "Miscellaneous",
+    "DescendentStatVarCount": 1002,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Employment",
+    "Name": "Employment and Business",
+    "DescendentStatVarCount": 71693,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/ExpenditureActivity",
+    "Name": "Expenditure Activity",
+    "DescendentStatVarCount": 34,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/FinancialInstrument",
+    "Name": "Financial Instrument",
+    "DescendentStatVarCount": 11,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/FinancialTransaction",
+    "Name": "Financial Transaction",
+    "DescendentStatVarCount": 561,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Food",
+    "Name": "Food",
+    "DescendentStatVarCount": 10,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/FoodBasket",
+    "Name": "Food Basket",
+    "DescendentStatVarCount": 34,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/House",
+    "Name": "House",
+    "DescendentStatVarCount": 3,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Household",
+    "Name": "Household",
+    "DescendentStatVarCount": 3524,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Household_HouseholdType",
+    "Name": "Household by Household Type",
+    "DescendentStatVarCount": 358,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Household_Income",
+    "Name": "Household by Income",
+    "DescendentStatVarCount": 1136,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Household_IncomeStatus",
+    "Name": "Household by Income Status",
+    "DescendentStatVarCount": 63,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Households",
+    "Name": "Households",
+    "DescendentStatVarCount": 47,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/ImmigrationAndCitizenship",
+    "Name": "Immigration and Citizenship",
+    "DescendentStatVarCount": 4016,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Infant",
+    "Name": "Infant",
+    "DescendentStatVarCount": 2,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Investment",
+    "Name": "Investment",
+    "DescendentStatVarCount": 10,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Jobs",
+    "Name": "Jobs",
+    "DescendentStatVarCount": 2,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Language",
+    "Name": "Language",
+    "DescendentStatVarCount": 514,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/MaternalMortalityEvent",
+    "Name": "Maternal Mortality Event",
+    "DescendentStatVarCount": 3,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/MilitaryService",
+    "Name": "Military Service",
+    "DescendentStatVarCount": 2441,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Mother",
+    "Name": "Mother",
+    "DescendentStatVarCount": 38,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/MunicipalWard",
+    "Name": "Municipal Ward",
+    "DescendentStatVarCount": 3,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/NetworkSubscriber",
+    "Name": "Network Subscriber",
+    "DescendentStatVarCount": 14,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/NonPregnantWoman",
+    "Name": "Non Pregnant Woman",
+    "DescendentStatVarCount": 6,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_Age",
+    "Name": "Person by Age",
+    "DescendentStatVarCount": 31759,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Person_Age",
+    "Name": "Person by Age",
+    "DescendentStatVarCount": 31759,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_AgeGroupClassification",
+    "Name": "Person by Age Group Classification",
+    "DescendentStatVarCount": 11,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Person_AssessmentType",
+    "Name": "Person by Assessment Type",
+    "DescendentStatVarCount": 9,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Person_AssetsOwned",
+    "Name": "Person by Assets Owned",
+    "DescendentStatVarCount": 6,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Person_BankAccountType",
+    "Name": "Person by Bank Account Type",
+    "DescendentStatVarCount": 3,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_BenefitProgram",
+    "Name": "Person by Benefit Program",
+    "DescendentStatVarCount": 18,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_BenefitsStatus",
+    "Name": "Person by Benefits Status",
+    "DescendentStatVarCount": 16,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Person_CandidatesStatus",
+    "Name": "Person by Candidates Status",
+    "DescendentStatVarCount": 3,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_CarpoolOccupancy",
+    "Name": "Person by Carpool Occupancy",
+    "DescendentStatVarCount": 9,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_ChildrenStatus",
+    "Name": "Person by Children Status",
+    "DescendentStatVarCount": 9,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_CitizenshipStatus",
+    "Name": "Person by Citizenship Status",
+    "DescendentStatVarCount": 1606,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_CommuteStartTime",
+    "Name": "Person by Commute Start Time",
+    "DescendentStatVarCount": 70,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_CommuteType",
+    "Name": "Person by Commute Type",
+    "DescendentStatVarCount": 135,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_ComparisonRegion",
+    "Name": "Person by Comparison Region",
+    "DescendentStatVarCount": 53,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_CrashInvolvement",
+    "Name": "Person by Crash Involvement",
+    "DescendentStatVarCount": 4,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_DateOfEntry",
+    "Name": "Person by Date of Entry",
+    "DescendentStatVarCount": 236,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_DeprivationDomain",
+    "Name": "Person by Deprivation Domain",
+    "DescendentStatVarCount": 45,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_DeviceUsed",
+    "Name": "Person by Device Used",
+    "DescendentStatVarCount": 3,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_DisabilityStatus",
+    "Name": "Person by Disability Status",
+    "DescendentStatVarCount": 547,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_Earnings",
+    "Name": "Person by Earnings",
+    "DescendentStatVarCount": 139,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Person_EconomicActivitySource",
+    "Name": "Person by Economic Activity Source",
+    "DescendentStatVarCount": 94,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_ElectronicGadgetUsed",
+    "Name": "Person by Electronic Gadget Used",
+    "DescendentStatVarCount": 407,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_Employer",
+    "Name": "Person by Employer",
+    "DescendentStatVarCount": 2,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_Ethnicity",
+    "Name": "Person by Ethnicity",
+    "DescendentStatVarCount": 2241,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_Facilities",
+    "Name": "Person by Facilities",
+    "DescendentStatVarCount": 3,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_FoodSecurityStatus",
+    "Name": "Person by Food Security Status",
+    "DescendentStatVarCount": 15,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_Gender",
+    "Name": "Person by Gender",
+    "DescendentStatVarCount": 28266,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_GovernmentId",
+    "Name": "Person by Government Id",
+    "DescendentStatVarCount": 2,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_GovernmentIdentifier",
+    "Name": "Person by Government Identifier",
+    "DescendentStatVarCount": 2,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_HealthInsurance",
+    "Name": "Person by Health Insurance",
+    "DescendentStatVarCount": 2029,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_HouseholdIncome",
+    "Name": "Person by Household Income",
+    "DescendentStatVarCount": 44,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_HouseholdType",
+    "Name": "Person by Household Type",
+    "DescendentStatVarCount": 476,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_IdentityActivity",
+    "Name": "Person by Identity Activity",
+    "DescendentStatVarCount": 2,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_Income",
+    "Name": "Person by Income",
+    "DescendentStatVarCount": 2019,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Person_Income",
+    "Name": "Person by Income",
+    "DescendentStatVarCount": 2019,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Person_IncomeSource",
+    "Name": "Person by Income Source",
+    "DescendentStatVarCount": 27,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_IncomeStatus",
+    "Name": "Person by Income Status",
+    "DescendentStatVarCount": 664,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Person_IncomeStatus",
+    "Name": "Person by Income Status",
+    "DescendentStatVarCount": 664,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Person_IncomeType",
+    "Name": "Person by Income Type",
+    "DescendentStatVarCount": 3,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_InternetAccessStatus",
+    "Name": "Person by Internet Access Status",
+    "DescendentStatVarCount": 5,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_InternetUsageLocation",
+    "Name": "Person by Internet Usage Location",
+    "DescendentStatVarCount": 406,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_IsInternetUser",
+    "Name": "Person by Is Internet User",
+    "DescendentStatVarCount": 407,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_LaborForceStatus",
+    "Name": "Person by Labor Force Status",
+    "DescendentStatVarCount": 5762,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Person_LaborForceStatus",
+    "Name": "Person by Labor Force Status",
+    "DescendentStatVarCount": 5762,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_LiteracyStatus",
+    "Name": "Person by Literacy Status",
+    "DescendentStatVarCount": 305,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_MaritalStatus",
+    "Name": "Person by Marital Status",
+    "DescendentStatVarCount": 2503,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_MemberStatus",
+    "Name": "Person by Member Status",
+    "DescendentStatVarCount": 96,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_NumberOfVehiclesInHousehold",
+    "Name": "Person by Number of Vehicles in Household",
+    "DescendentStatVarCount": 28,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Person_Occupation",
+    "Name": "Person by Occupation",
+    "DescendentStatVarCount": 5344,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Person_OccupationalCategory",
+    "Name": "Person by Occupational Category",
+    "DescendentStatVarCount": 414,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Person_PaymentMethod",
+    "Name": "Person by Payment Method",
+    "DescendentStatVarCount": 3,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_PlaceOfBirth",
+    "Name": "Person by Place of Birth",
+    "DescendentStatVarCount": 1958,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_PlaceOfResidenceClassification",
+    "Name": "Person by Place of Residence Classification",
+    "DescendentStatVarCount": 4408,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_PovertyStatus",
+    "Name": "Person by Poverty Status",
+    "DescendentStatVarCount": 1100,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Person_PovertyStatus",
+    "Name": "Person by Poverty Status",
+    "DescendentStatVarCount": 1100,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_Race",
+    "Name": "Person by Race",
+    "DescendentStatVarCount": 21916,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Person_RegistrationStatus",
+    "Name": "Person by Registration Status",
+    "DescendentStatVarCount": 6,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_Religion",
+    "Name": "Person by Religion",
+    "DescendentStatVarCount": 2050,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_ResidentStatus",
+    "Name": "Person by Resident Status",
+    "DescendentStatVarCount": 807,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_VehicleOccupantType",
+    "Name": "Person by Vehicle Occupant Type",
+    "DescendentStatVarCount": 4,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Person_VulnerabilityStatus",
+    "Name": "Person by Vulnerability Status",
+    "DescendentStatVarCount": 4,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Person_WealthIndex",
+    "Name": "Person by Wealth Index",
+    "DescendentStatVarCount": 20,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Place_Facilities",
+    "Name": "Place by Facilities",
+    "DescendentStatVarCount": 3,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Place_PlaceOfResidenceClassification",
+    "Name": "Place by Place of Residence Classification",
+    "DescendentStatVarCount": 4,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Place_PlaceType",
+    "Name": "Place by Place Type",
+    "DescendentStatVarCount": 2,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Place_SocialCondition",
+    "Name": "Place by Social Condition",
+    "DescendentStatVarCount": 2,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Remittance",
+    "Name": "Remittance",
+    "DescendentStatVarCount": 3,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Residence",
+    "Name": "Residence",
+    "DescendentStatVarCount": 6148,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Stock",
+    "Name": "Stock",
+    "DescendentStatVarCount": 2,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/Transportation",
+    "Name": "Transportation",
+    "DescendentStatVarCount": 5,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/TreasuryBill",
+    "Name": "Treasury Bill",
+    "DescendentStatVarCount": 8,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/TreasuryBond",
+    "Name": "Treasury Bond",
+    "DescendentStatVarCount": 2,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/TreasuryNote",
+    "Name": "Treasury Note",
+    "DescendentStatVarCount": 5,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "dc/g/TreasurySecurity",
+    "Name": "Treasury Security",
+    "DescendentStatVarCount": 17,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Vehicle",
+    "Name": "Vehicle",
+    "DescendentStatVarCount": 5,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/VehicleCrashIncident",
+    "Name": "Vehicle Crash Incident",
+    "DescendentStatVarCount": 100,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "dc/g/Village",
+    "Name": "Village",
+    "DescendentStatVarCount": 2,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "Count_Company",
+    "Name": "",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "Count_Person",
+    "Name": "Total population",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "Count_Person_5To17Years_Poor",
+    "Name": "",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "Count_Person_AsAFractionOf_Count_Household",
+    "Name": "",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "Count_Person_InfrastructureProject_BrazilRuralDevelopmentProgram",
+    "Name": "",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "Count_Person_PerArea",
+    "Name": "Population Density",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "Count_Product_MobileCellularSubscription_AsFractionOf_Count_Person",
+    "Name": "Mobile Phone Subscriptions Per Person in a Population",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "FertilityRate_Person_Female",
+    "Name": "Fertility rate of women",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "FertilityRate_Person_Female_AsAFractionOf_Count_Person_Female",
+    "Name": "Fertility rate (%)",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "GenderIncomeInequality_Person_15OrMoreYears_WithIncome",
+    "Name": "Income Inequality Between Men and Women of Working Age",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "GrowthRate_Count_Person",
+    "Name": "Population growth rate",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "IncrementalCount_Person",
+    "Name": "Population Change",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "LifeExpectancy_Person",
+    "Name": "Life Expectancy",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "Mean_Count_Person",
+    "Name": "Mean count of person",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "Mean_IncrementalCount_Person",
+    "Name": "Mean incremental count of person",
+    "DescendentStatVarCount": -1,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "Mean_MealCost_Person_FoodSecure",
+    "Name": "Average Meal Cost for Food Secure People",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "Median_Age_Person",
+    "Name": "Median age of population",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "Median_Income_Household",
+    "Name": "Median Income for All Households",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Demographics",
+    "SubjectID": "Median_Income_Person",
+    "Name": "Median Income of a Population",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "Monthly_Count_Bank_FinancialProduct_UPI",
+    "Name": "No. of Banks live on UPI",
+    "DescendentStatVarCount": -1,
+    "HasData": false
+  },
+  {
+    "Svg": "dc/g/Economy",
+    "SubjectID": "Weekly_Median_Income_Household",
+    "Name": "",
+    "DescendentStatVarCount": -1,
+    "HasData": true
+  }
+]

@@ -286,6 +286,57 @@ func TestGetEventCollection(t *testing.T) {
 	}
 }
 
+func TestGetStatVarGroupNode(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+
+	for _, c := range getStatVarGroupNodeTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return client.GetStatVarGroupNode(ctx, c.nodes)
+		})
+	}
+}
+
+func TestGetFilteredStatVarGroupNode(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+
+	for _, c := range getFilteredStatVarGroupNodeTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return client.GetFilteredStatVarGroupNode(ctx, c.node, c.constrainedPlaces, c.constrainedImport, c.numEntitiesExistence)
+		})
+	}
+}
+
+func TestGetFilteredTopic(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+
+	for _, c := range getFilteredTopicTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return client.GetFilteredTopic(ctx, c.node, c.constrainedPlaces, c.constrainedImport, c.numEntitiesExistence)
+		})
+	}
+}
+
 // runQueryGoldenTest is a helper function that performs the golden file validation.
 func runQueryGoldenTest(t *testing.T, goldenFile string, fn goldenTestFunc) {
 	t.Helper()

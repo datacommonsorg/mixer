@@ -370,7 +370,7 @@ var statements = struct {
 		ChildSVGCounts AS (
 			SELECT 
 				e.object_id AS child_svg, 
-				COUNT(e.subject_id) AS descendent_stat_vars
+				COUNT(e.subject_id) AS descendent_stat_var_count
 			FROM UniqueChildSVGs u
 			JOIN@{JOIN_METHOD=APPLY_JOIN} Edge e 
 			ON e.object_id = u.child_svg
@@ -392,7 +392,7 @@ var statements = struct {
 			svg.svg,
 			n.subject_id, 
 			n.name, 
-			c.descendent_stat_vars,
+			c.descendent_stat_var_count,
 			FALSE AS has_data
 		FROM ChildSVGs svg
 		JOIN ChildSVGCounts c 
@@ -459,12 +459,12 @@ var statements = struct {
 	getFilteredChildSVGs: `		SELECT
 			n.subject_id,
 			n.name,
-			e_counts.descendent_stat_vars
+			e_counts.descendent_stat_var_count
 		FROM Node n
 		JOIN (
 			SELECT
 				e.object_id AS subject_id,
-				COUNT(e.subject_id) AS descendent_stat_vars
+				COUNT(e.subject_id) AS descendent_stat_var_count
 			FROM Edge e
 			JOIN@{JOIN_TYPE=HASH_JOIN} (
 				SELECT variable_measured
@@ -485,8 +485,7 @@ var statements = struct {
 		) e_counts
 			ON n.subject_id = e_counts.subject_id`,
 	getFilteredTopic: `		SELECT
-			e.object_id AS subject_id,
-			COUNT(e.subject_id) AS descendent_stat_vars
+			COUNT(e.subject_id) AS descendent_stat_var_count
 		FROM Edge@{FORCE_INDEX=InEdge} e
 		JOIN@{JOIN_TYPE=HASH_JOIN} (
 			SELECT variable_measured
