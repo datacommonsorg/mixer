@@ -21,23 +21,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 )
 
-var normalizedObservationsTestCases = []struct {
-	golden    string
-	variables []string
-	entities  []string
-}{
-	{
-		golden:    "get_normalized_obs_basic",
-		variables: []string{"Count_Person"},
-		entities:  []string{"geoId/06"},
-	},
-	{
-		golden:    "get_normalized_obs_multi",
-		variables: []string{"Count_Person", "Count_Household"},
-		entities:  []string{"geoId/06", "geoId/08"},
-	},
-}
-
 func TestGetNormalizedObservationsQuery(t *testing.T) {
 	t.Parallel()
 

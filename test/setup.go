@@ -25,6 +25,7 @@ import (
 	"path/filepath"
 	"runtime"
 	"strings"
+	"testing"
 
 	_ "modernc.org/sqlite" // import the sqlite driver
 
@@ -73,6 +74,8 @@ var (
 	// This ensures that the spanner tests don't impact existing tests while in the POC phase.
 	// TODO: Remove this variable after POC.
 	EnableSpannerGraph = os.Getenv("ENABLE_SPANNER_GRAPH") == "true"
+	// EnableSpannerNormalizedSchema is used to check whether normalized spanner schema should be used.
+	EnableSpannerNormalizedSchema = os.Getenv("ENABLE_SPANNER_NORMALIZED_SCHEMA") == "true"
 )
 
 // This test runs agains staging staging bt and bq dataset.
@@ -399,6 +402,24 @@ func NewSpannerClient() spanner.SpannerClient {
 	_, filename, _, _ := runtime.Caller(0)
 	spannerGraphInfoYamlPath := path.Join(path.Dir(filename), "../deploy/storage/spanner_graph_info.yaml")
 	return newSpannerClient(context.Background(), spannerGraphInfoYamlPath)
+}
+
+// SkipIfNormalizedSchemaDisabled skips the test if ENABLE_SPANNER_NORMALIZED_SCHEMA is not set.
+func SkipIfNormalizedSchemaDisabled(t *testing.T) {
+	if !EnableSpannerNormalizedSchema {
+		t.Skip("Skipping normalized schema tests (ENABLE_SPANNER_NORMALIZED_SCHEMA not set)")
+	}
+}
+
+// NewNormalizedSpannerClient creates a new test spanner client for normalized schema tests.
+// It handles flag checks and skips the test if flags are not enabled.
+func NewNormalizedSpannerClient(t *testing.T) spanner.SpannerClient {
+	SkipIfNormalizedSchemaDisabled(t)
+	client := NewSpannerClient()
+	if client == nil {
+		t.Skip("Skipping normalized schema tests (Spanner graph not enabled)")
+	}
+	return client
 }
 
 func newSpannerClient(ctx context.Context, spannerGraphInfoYamlPath string) spanner.SpannerClient {
