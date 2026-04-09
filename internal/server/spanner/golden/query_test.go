@@ -432,8 +432,8 @@ func sortStatVarGroupNode(results []*spanner.StatVarGroupNode) {
 	sort.Slice(results, func(i, j int) bool {
 		a, b := results[i], results[j]
 
-		if a.Svg != b.Svg {
-			return a.Svg < b.Svg
+		if a.SVG != b.SVG {
+			return a.SVG < b.SVG
 		}
 
 		return a.SubjectID < b.SubjectID

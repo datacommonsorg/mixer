@@ -123,7 +123,7 @@ type EventIdWithMagnitudeDcid struct {
 
 // StatVarGroupNode represents the info to build a StatVarGroupNode.
 type StatVarGroupNode struct {
-	Svg                    string `spanner:"svg"`
+	SVG                    string `spanner:"svg"`
 	SubjectID              string `spanner:"subject_id"`
 	Name                   string `spanner:"name"`
 	DescendentStatVarCount int64  `spanner:"descendent_stat_var_count"`
