@@ -144,6 +144,9 @@ const (
 	// Whether to skip reading from Redis cache.
 	// To use, set header "X-Skip-Cache: true"
 	XSkipCache = "X-Skip-Cache"
+	// Whether to use normalized Spanner schema.
+	// To use, set header "X-Use-Normalized-Schema: true"
+	XUseNormalizedSchema = "X-Use-Normalized-Schema"
 )
 
 // ZipAndEncode compresses the given content using gzip and encodes it in base64
