@@ -58,6 +58,7 @@ const (
 	Mixer_V2RecognizePlaces_FullMethodName            = "/datacommons.Mixer/V2RecognizePlaces"
 	Mixer_FilterStatVarsByEntity_FullMethodName       = "/datacommons.Mixer/FilterStatVarsByEntity"
 	Mixer_V2BulkVariableInfo_FullMethodName           = "/datacommons.Mixer/V2BulkVariableInfo"
+	Mixer_V2BulkVariableGroupInfo_FullMethodName      = "/datacommons.Mixer/V2BulkVariableGroupInfo"
 	Mixer_Query_FullMethodName                        = "/datacommons.Mixer/Query"
 	Mixer_GetPropertyLabels_FullMethodName            = "/datacommons.Mixer/GetPropertyLabels"
 	Mixer_GetPropertyValues_FullMethodName            = "/datacommons.Mixer/GetPropertyValues"
@@ -128,6 +129,7 @@ type MixerClient interface {
 	// Filters a list of stat vars using a list of entities (places or sources).
 	FilterStatVarsByEntity(ctx context.Context, in *proto.FilterStatVarsByEntityRequest, opts ...grpc.CallOption) (*proto.FilterStatVarsByEntityResponse, error)
 	V2BulkVariableInfo(ctx context.Context, in *v1.BulkVariableInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableInfoResponse, error)
+	V2BulkVariableGroupInfo(ctx context.Context, in *v1.BulkVariableGroupInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableGroupInfoResponse, error)
 	// Query DataCommons Graph with Sparql.
 	Query(ctx context.Context, in *proto.QueryRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error)
 	// Fetch property labels adjacent of nodes
@@ -202,6 +204,7 @@ type MixerClient interface {
 	BulkFindEntities(ctx context.Context, in *proto.BulkFindEntitiesRequest, opts ...grpc.CallOption) (*proto.BulkFindEntitiesResponse, error)
 	// Recognize places from a NL query.
 	RecognizePlaces(ctx context.Context, in *proto.RecognizePlacesRequest, opts ...grpc.CallOption) (*proto.RecognizePlacesResponse, error)
+	// Deprecated: Do not use.
 	// Recognize non-place entities from a NL query.
 	RecognizeEntities(ctx context.Context, in *proto.RecognizeEntitiesRequest, opts ...grpc.CallOption) (*proto.RecognizeEntitiesResponse, error)
 	// Get data from the imports table, used to populate import history table
@@ -346,6 +349,15 @@ func (c *mixerClient) FilterStatVarsByEntity(ctx context.Context, in *proto.Filt
 func (c *mixerClient) V2BulkVariableInfo(ctx context.Context, in *v1.BulkVariableInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableInfoResponse, error) {
 	out := new(v1.BulkVariableInfoResponse)
 	err := c.cc.Invoke(ctx, Mixer_V2BulkVariableInfo_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) V2BulkVariableGroupInfo(ctx context.Context, in *v1.BulkVariableGroupInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableGroupInfoResponse, error) {
+	out := new(v1.BulkVariableGroupInfoResponse)
+	err := c.cc.Invoke(ctx, Mixer_V2BulkVariableGroupInfo_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -757,6 +769,7 @@ func (c *mixerClient) RecognizePlaces(ctx context.Context, in *proto.RecognizePl
 	return out, nil
 }
 
+// Deprecated: Do not use.
 func (c *mixerClient) RecognizeEntities(ctx context.Context, in *proto.RecognizeEntitiesRequest, opts ...grpc.CallOption) (*proto.RecognizeEntitiesResponse, error) {
 	out := new(proto.RecognizeEntitiesResponse)
 	err := c.cc.Invoke(ctx, Mixer_RecognizeEntities_FullMethodName, in, out, opts...)
@@ -796,6 +809,7 @@ type MixerServer interface {
 	// Filters a list of stat vars using a list of entities (places or sources).
 	FilterStatVarsByEntity(context.Context, *proto.FilterStatVarsByEntityRequest) (*proto.FilterStatVarsByEntityResponse, error)
 	V2BulkVariableInfo(context.Context, *v1.BulkVariableInfoRequest) (*v1.BulkVariableInfoResponse, error)
+	V2BulkVariableGroupInfo(context.Context, *v1.BulkVariableGroupInfoRequest) (*v1.BulkVariableGroupInfoResponse, error)
 	// Query DataCommons Graph with Sparql.
 	Query(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error)
 	// Fetch property labels adjacent of nodes
@@ -870,6 +884,7 @@ type MixerServer interface {
 	BulkFindEntities(context.Context, *proto.BulkFindEntitiesRequest) (*proto.BulkFindEntitiesResponse, error)
 	// Recognize places from a NL query.
 	RecognizePlaces(context.Context, *proto.RecognizePlacesRequest) (*proto.RecognizePlacesResponse, error)
+	// Deprecated: Do not use.
 	// Recognize non-place entities from a NL query.
 	RecognizeEntities(context.Context, *proto.RecognizeEntitiesRequest) (*proto.RecognizeEntitiesResponse, error)
 	// Get data from the imports table, used to populate import history table
@@ -925,6 +940,9 @@ func (UnimplementedMixerServer) FilterStatVarsByEntity(context.Context, *proto.F
 }
 func (UnimplementedMixerServer) V2BulkVariableInfo(context.Context, *v1.BulkVariableInfoRequest) (*v1.BulkVariableInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V2BulkVariableInfo not implemented")
+}
+func (UnimplementedMixerServer) V2BulkVariableGroupInfo(context.Context, *v1.BulkVariableGroupInfoRequest) (*v1.BulkVariableGroupInfoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method V2BulkVariableGroupInfo not implemented")
 }
 func (UnimplementedMixerServer) Query(context.Context, *proto.QueryRequest) (*proto.QueryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Query not implemented")
@@ -1345,6 +1363,24 @@ func _Mixer_V2BulkVariableInfo_Handler(srv interface{}, ctx context.Context, dec
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).V2BulkVariableInfo(ctx, req.(*v1.BulkVariableInfoRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_V2BulkVariableGroupInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(v1.BulkVariableGroupInfoRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).V2BulkVariableGroupInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_V2BulkVariableGroupInfo_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).V2BulkVariableGroupInfo(ctx, req.(*v1.BulkVariableGroupInfoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2261,6 +2297,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "V2BulkVariableInfo",
 			Handler:    _Mixer_V2BulkVariableInfo_Handler,
+		},
+		{
+			MethodName: "V2BulkVariableGroupInfo",
+			Handler:    _Mixer_V2BulkVariableGroupInfo_Handler,
 		},
 		{
 			MethodName: "Query",
