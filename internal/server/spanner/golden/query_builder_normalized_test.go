@@ -33,6 +33,14 @@ func TestGetNormalizedObservationsQuery(t *testing.T) {
 	}
 }
 
+func TestGetNormalizedStatVarsByEntityQuery(t *testing.T) {
+	t.Parallel()
 
+	for _, c := range checkVariableExistenceTestCases {
+		goldenFile := c.golden + ".sql"
 
-
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.GetNormalizedStatVarsByEntityQuery(c.variables, c.entities)
+		})
+	}
+}

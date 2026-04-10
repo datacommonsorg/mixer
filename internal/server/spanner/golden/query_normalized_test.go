@@ -16,6 +16,7 @@ package golden
 
 import (
 	"context"
+	"sort"
 	"testing"
 
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
@@ -43,4 +44,38 @@ func TestGetNormalizedObservations(t *testing.T) {
 			return actual, nil
 		})
 	}
+}
+
+func TestCheckVariableExistence(t *testing.T) {
+	client := test.NewNormalizedSpannerClient(t)
+	t.Parallel()
+
+	nc, err := spanner.NewNormalizedClient(client)
+	if err != nil {
+		t.Fatalf("NewNormalizedClient failed: %v", err)
+	}
+
+	for _, c := range checkVariableExistenceTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			actual, err := nc.CheckVariableExistence(ctx, c.variables, c.entities)
+			if err != nil {
+				return nil, err
+			}
+			sort2DStringSlice(actual)
+			return actual, nil
+		})
+	}
+}
+
+func sort2DStringSlice(slice [][]string) {
+	sort.Slice(slice, func(i, j int) bool {
+		for k := 0; k < len(slice[i]) && k < len(slice[j]); k++ {
+			if slice[i][k] != slice[j][k] {
+				return slice[i][k] < slice[j][k]
+			}
+		}
+		return len(slice[i]) < len(slice[j])
+	})
 }

@@ -46,3 +46,33 @@ func GetNormalizedObservationsQuery(variables []string, entities []string) *span
 
 	return stmt
 }
+
+// GetNormalizedStatVarsByEntityQuery returns a query to fetch distinct variable and entity pairs for the normalized schema.
+func GetNormalizedStatVarsByEntityQuery(variables []string, entities []string) (*spanner.Statement, error) {
+	if len(variables) == 0 && len(entities) == 0 {
+		return nil, fmt.Errorf("GetNormalizedStatVarsByEntityQuery must be called with at least one variable or entity")
+	}
+	sql := statementsNormalized.getStatVarsByEntity
+	params := map[string]interface{}{}
+
+	var filters []string
+	if len(variables) > 0 {
+		filter, val := getParamStatement("variables", variables)
+		params["variables"] = val
+		filters = append(filters, fmt.Sprintf("ts.variable_measured %s", filter))
+	}
+	if len(entities) > 0 {
+		filter, val := getParamStatement("entities", entities)
+		params["entities"] = val
+		filters = append(filters, fmt.Sprintf("a.value %s", filter))
+	}
+
+	if len(filters) > 0 {
+		sql += "\n\t\tWHERE " + strings.Join(filters, " AND ")
+	}
+
+	return &spanner.Statement{
+		SQL:    sql,
+		Params: params,
+	}, nil
+}

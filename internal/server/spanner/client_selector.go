@@ -40,6 +40,18 @@ func (s *schemaSelectorClient) GetObservations(ctx context.Context, variables []
 	return s.SpannerClient.GetObservations(ctx, variables, entities)
 }
 
+// CheckVariableExistence overrides the embedded client's CheckVariableExistence to dispatch based on schema selection.
+func (s *schemaSelectorClient) CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
+	if useNormalizedSchema(ctx) {
+		logNormalizedInvocation("CheckVariableExistence",
+			"num_variables", len(variables),
+			"num_entities", len(entities),
+		)
+		return s.normalized.CheckVariableExistence(ctx, variables, entities)
+	}
+	return s.SpannerClient.CheckVariableExistence(ctx, variables, entities)
+}
+
 // NewSchemaSelectorClient creates a new SpannerClient that dispatches calls to either default or normalized client.
 func NewSchemaSelectorClient(baseClient SpannerClient) (SpannerClient, error) {
 	normalizedClient, err := NewNormalizedClient(baseClient)

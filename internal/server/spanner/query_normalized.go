@@ -94,3 +94,12 @@ func reconstructObservations(rawObs []*rawObservation) []*Observation {
 
 	return result
 }
+
+// CheckVariableExistence checks which variables exist for which entities using the normalized schema.
+func (nc *normalizedClient) CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
+	stmt, err := GetNormalizedStatVarsByEntityQuery(variables, entities)
+	if err != nil {
+		return nil, err
+	}
+	return queryDynamic(ctx, nc.sc, *stmt)
+}

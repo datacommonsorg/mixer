@@ -25,6 +25,9 @@ var statementsNormalized = struct {
 	
 	// Filter by entity dcids (by looking up in TimeSeriesAttribute).
 	selectEntityDcids string
+
+	// Fetch distinct variable and entity pairs.
+	getStatVarsByEntity string
 }{
 	getObs: `		SELECT
 			ts.variable_measured,
@@ -46,4 +49,15 @@ var statementsNormalized = struct {
 	// Uses the index on TimeSeriesAttribute(property, value).
 	// For now we assume property is 'observationAbout'.
 	selectEntityDcids:   "ts.id IN (SELECT id FROM TimeSeriesAttribute@{FORCE_INDEX=TimeSeriesAttributePropertyValue} WHERE property = 'observationAbout' AND value %s)", 
+	
+	// We're intentionally not filtering by property since we'll be supporting multiple entities.
+	// If we want to restrict queries only to entities (vs other attributes), the schema should
+	// support a new property_type field and we can filter by property_type = "entity".
+	getStatVarsByEntity: `		SELECT DISTINCT
+			ts.variable_measured,
+			a.value AS entity
+		FROM 
+			TimeSeries@{FORCE_INDEX=TimeSeriesByVariableMeasured} ts
+		JOIN
+			TimeSeriesAttribute@{FORCE_INDEX=TimeSeriesAttributePropertyValue} a ON ts.id = a.id`,
 }

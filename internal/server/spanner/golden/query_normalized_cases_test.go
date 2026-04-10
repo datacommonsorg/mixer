@@ -25,3 +25,15 @@ var normalizedObservationsTestCases = []struct {
 		golden:    "get_observations_normalized",
 	},
 }
+
+var checkVariableExistenceTestCases = []struct {
+	variables []string
+	entities  []string
+	golden    string
+}{
+	{
+		variables: []string{"AirPollutant_Cancer_Risk"},
+		entities:  []string{"geoId/01001", "geoId/02013"},
+		golden:    "check_variable_existence_normalized",
+	},
+}
