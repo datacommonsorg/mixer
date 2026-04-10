@@ -33,26 +33,6 @@ func TestGetNormalizedObservationsQuery(t *testing.T) {
 	}
 }
 
-var getTimeSeriesAttributesTestCases = []struct {
-	golden string
-	ids    []string
-}{
-	{
-		golden: "get_timeseries_attributes_basic",
-		ids:    []string{"123", "456"},
-	},
-}
 
-func TestGetTimeSeriesAttributesQuery(t *testing.T) {
-	t.Parallel()
-
-	for _, c := range getTimeSeriesAttributesTestCases {
-		goldenFile := c.golden + ".sql"
-
-		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return spanner.GetTimeSeriesAttributesQuery(c.ids), nil
-		})
-	}
-}
 
 

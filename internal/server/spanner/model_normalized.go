@@ -14,18 +14,21 @@
 
 package spanner
 
-// rawObservation represents a raw row from the query combining TimeSeries and StatVarObservation.
+// rawObservation represents a row from the coalesced query.
 type rawObservation struct {
-	VariableMeasured string `spanner:"variable_measured"`
-	Id               string `spanner:"id"`
-	Provenance       string `spanner:"provenance"`
-	Date             string `spanner:"date"`
-	Value            string `spanner:"value"`
+	VariableMeasured string                  `spanner:"variable_measured"`
+	DatesAndValues   []*spannerObservation   `spanner:"dates_and_values"`
+	Attributes       []*spannerAttribute     `spanner:"attributes"`
 }
 
-// rawAttr represents a raw row from the TimeSeriesAttribute table.
-type rawAttr struct {
-	Id       string `spanner:"id"`
+// spannerObservation represents the STRUCT returned in dates_and_values array.
+type spannerObservation struct {
+	Date  string `spanner:"date"`
+	Value string `spanner:"value"`
+}
+
+// spannerAttribute represents the STRUCT returned in attributes array.
+type spannerAttribute struct {
 	Property string `spanner:"property"`
 	Value    string `spanner:"value"`
 }

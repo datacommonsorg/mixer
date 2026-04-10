@@ -1,12 +1,16 @@
 		SELECT
 			ts.variable_measured,
-			ts.id,
-			ts.provenance,
-			svo.date,
-			svo.value
+			ARRAY(
+				SELECT STRUCT(date, value)
+				FROM StatVarObservation
+				WHERE id = ts.id
+				ORDER BY date ASC
+			) as dates_and_values,
+			ARRAY(
+				SELECT STRUCT(property, value)
+				FROM TimeSeriesAttribute
+				WHERE id = ts.id
+			) as attributes
 		FROM 
-			TimeSeries ts
-		JOIN 
-			StatVarObservation svo ON ts.id = svo.id
-		WHERE ts.variable_measured = 'AirPollutant_Cancer_Risk' AND ts.id IN (SELECT id FROM TimeSeriesAttribute WHERE property = 'observationAbout' AND value IN ('geoId/01001','geoId/02013'))
-		ORDER BY svo.date ASC
+			TimeSeries@{FORCE_INDEX=TimeSeriesByVariableMeasured} ts
+		WHERE ts.variable_measured = 'AirPollutant_Cancer_Risk' AND ts.id IN (SELECT id FROM TimeSeriesAttribute@{FORCE_INDEX=TimeSeriesAttributePropertyValue} WHERE property = 'observationAbout' AND value IN ('geoId/01001','geoId/02013'))

@@ -44,17 +44,5 @@ func GetNormalizedObservationsQuery(variables []string, entities []string) *span
 		stmt.SQL += "\n\t\tWHERE " + strings.Join(filters, " AND ")
 	}
 
-	stmt.SQL += "\n\t\tORDER BY svo.date ASC"
-
 	return stmt
-}
-
-// GetTimeSeriesAttributesQuery returns a query to fetch attributes for a list of time series IDs.
-func GetTimeSeriesAttributesQuery(ids []string) *spanner.Statement {
-	return &spanner.Statement{
-		SQL: statementsNormalized.getTimeSeriesAttributes,
-		Params: map[string]interface{}{
-			"ids": ids,
-		},
-	}
 }

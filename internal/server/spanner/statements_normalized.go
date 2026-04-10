@@ -17,7 +17,7 @@ package spanner
 
 // SQL statements executed by the normalized SpannerClient
 var statementsNormalized = struct {
-	// Fetch Observations by joining TimeSeries and StatVarObservation.
+	// Fetch Observations with coalesced dates, values and attributes.
 	getObs string
 	
 	// Filter by variable dcids.
@@ -25,32 +25,25 @@ var statementsNormalized = struct {
 	
 	// Filter by entity dcids (by looking up in TimeSeriesAttribute).
 	selectEntityDcids string
-
-	// Fetch attributes for a list of time series IDs.
-	getTimeSeriesAttributes string
 }{
 	getObs: `		SELECT
 			ts.variable_measured,
-			ts.id,
-			ts.provenance,
-			svo.date,
-			svo.value
+			ARRAY(
+				SELECT STRUCT(date, value)
+				FROM StatVarObservation
+				WHERE id = ts.id
+				ORDER BY date ASC
+			) as dates_and_values,
+			ARRAY(
+				SELECT STRUCT(property, value)
+				FROM TimeSeriesAttribute
+				WHERE id = ts.id
+			) as attributes
 		FROM 
-			TimeSeries ts
-		JOIN 
-			StatVarObservation svo ON ts.id = svo.id`,
+			TimeSeries@{FORCE_INDEX=TimeSeriesByVariableMeasured} ts`,
 	selectVariableDcids: "ts.variable_measured %s",
 	
 	// Uses the index on TimeSeriesAttribute(property, value).
 	// For now we assume property is 'observationAbout'.
-	selectEntityDcids:   "ts.id IN (SELECT id FROM TimeSeriesAttribute WHERE property = 'observationAbout' AND value %s)", 
-
-	getTimeSeriesAttributes: `		SELECT
-			id,
-			property,
-			value
-		FROM 
-			TimeSeriesAttribute
-		WHERE
-			id IN UNNEST(@ids)`,
+	selectEntityDcids:   "ts.id IN (SELECT id FROM TimeSeriesAttribute@{FORCE_INDEX=TimeSeriesAttributePropertyValue} WHERE property = 'observationAbout' AND value %s)", 
 }

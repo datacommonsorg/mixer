@@ -37,22 +37,7 @@ func (nc *normalizedClient) GetObservations(ctx context.Context, variables []str
 		return nil, nil
 	}
 
-	// Collect unique IDs
-	idMap := map[string]struct{}{}
-	for _, r := range rawObs {
-		idMap[r.Id] = struct{}{}
-	}
-	var ids []string
-	for id := range idMap {
-		ids = append(ids, id)
-	}
-
-	attrs, err := nc.fetchTimeSeriesAttributes(ctx, ids)
-	if err != nil {
-		return nil, err
-	}
-
-	return reconstructObservations(rawObs, attrs), nil
+	return reconstructObservations(rawObs), nil
 }
 
 // fetchRawObservations fetches data from TimeSeries and StatVarObservation tables.
@@ -66,35 +51,21 @@ func (nc *normalizedClient) fetchRawObservations(ctx context.Context, variables 
 	return rawObs, err
 }
 
-// fetchTimeSeriesAttributes fetches attributes from TimeSeriesAttribute table for given IDs.
-func (nc *normalizedClient) fetchTimeSeriesAttributes(ctx context.Context, ids []string) ([]*rawAttr, error) {
-	stmt := GetTimeSeriesAttributesQuery(ids)
-	var attrs []*rawAttr
-	err := queryStructs(ctx, nc.sc, *stmt, func() interface{} { return &rawAttr{} }, func(row interface{}) {
-		attrs = append(attrs, row.(*rawAttr))
-	})
-	return attrs, err
-}
-
 // reconstructObservations combines raw observations and attributes into full Observation structs.
-func reconstructObservations(rawObs []*rawObservation, attrs []*rawAttr) []*Observation {
-	obsMap := map[string]*Observation{}
+func reconstructObservations(rawObs []*rawObservation) []*Observation {
+	var result []*Observation
 
 	for _, r := range rawObs {
-		obs, ok := obsMap[r.Id]
-		if !ok {
-			obs = &Observation{
-				VariableMeasured: r.VariableMeasured,
-				Observations:     TimeSeries{},
-			}
-			obsMap[r.Id] = obs
+		obs := &Observation{
+			VariableMeasured: r.VariableMeasured,
+			Observations:     TimeSeries{},
 		}
-		obs.Observations = append(obs.Observations, &DateValue{Date: r.Date, Value: r.Value})
-	}
 
-	for _, attr := range attrs {
-		obs, ok := obsMap[attr.Id]
-		if ok {
+		for _, dv := range r.DatesAndValues {
+			obs.Observations = append(obs.Observations, &DateValue{Date: dv.Date, Value: dv.Value})
+		}
+
+		for _, attr := range r.Attributes {
 			switch attr.Property {
 			case "observationAbout":
 				obs.ObservationAbout = attr.Value
@@ -116,11 +87,8 @@ func reconstructObservations(rawObs []*rawObservation, attrs []*rawAttr) []*Obse
 				obs.IsDcAggregate, _ = strconv.ParseBool(attr.Value)
 			}
 		}
-	}
-
-	var result []*Observation
-	for _, obs := range obsMap {
 		result = append(result, obs)
 	}
+
 	return result
 }
