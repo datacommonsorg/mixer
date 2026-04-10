@@ -14,30 +14,26 @@
 
 package resolve
 
-type SearchAlgorithm string
-
 const (
-	VectorSearch   SearchAlgorithm = "vector_search"
-	FullTextSearch SearchAlgorithm = "full_text_search"
-	HybridSearch   SearchAlgorithm = "hybrid_search"
+	VectorSearch   = "vector_search"
+	FullTextSearch = "full_text_search"
+	HybridSearch   = "hybrid_search"
 )
 
-type GraphConfig string
-
 const (
-	GraphConfigDefault        GraphConfig = "default"
-	GraphConfigReranking      GraphConfig = "reranking"
-	GraphConfigGraphTraversal GraphConfig = "graph_traversal"
+	GraphConfigDefault        = "default"
+	GraphConfigReranking      = "reranking"
+	GraphConfigGraphTraversal = "graph_traversal"
 )
 
 type EmbeddingConfig struct {
-	EmbeddingModel string `json:"embedding_model"`
-	EmbeddingType  string `json:"embedding_type"`
-	EmbeddingSpace int    `json:"embedding_space"`
+	EmbeddingModel     string `json:"embedding_model"`
+	EmbeddingType      string `json:"embedding_type"`
+	EmbeddingDimension int    `json:"embedding_dimension"`
 }
 
 type SpannerSearchConfig struct {
-	SearchAlgorithm SearchAlgorithm `json:"search_algorithm"`
+	SearchAlgorithm string `json:"search_algorithm"`
 	EmbeddingConfig EmbeddingConfig `json:"embedding_config"`
-	GraphConfig     GraphConfig     `json:"graph_config"`
+	GraphMode       string `json:"graph_mode"`
 }
