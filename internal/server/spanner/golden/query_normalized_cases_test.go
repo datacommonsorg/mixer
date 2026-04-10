@@ -37,3 +37,17 @@ var checkVariableExistenceTestCases = []struct {
 		golden:    "check_variable_existence_normalized",
 	},
 }
+
+var getObservationsContainedInPlaceTestCases = []struct {
+	variables        []string
+	ancestor         string
+	childPlaceType string
+	golden           string
+}{
+	{
+		variables:        []string{"AirPollutant_Cancer_Risk"},
+		ancestor:         "geoId/10",
+		childPlaceType: "County",
+		golden:           "get_observations_contained_in_place_normalized",
+	},
+}

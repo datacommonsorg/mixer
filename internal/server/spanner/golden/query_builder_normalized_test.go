@@ -19,9 +19,10 @@ import (
 	"testing"
 
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
+	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
 
-func TestGetNormalizedObservationsQuery(t *testing.T) {
+func TestNormalizedGetObservationsQuery(t *testing.T) {
 	t.Parallel()
 
 	for _, c := range normalizedObservationsTestCases {
@@ -33,7 +34,7 @@ func TestGetNormalizedObservationsQuery(t *testing.T) {
 	}
 }
 
-func TestGetNormalizedStatVarsByEntityQuery(t *testing.T) {
+func TestNormalizedGetStatVarsByEntityQuery(t *testing.T) {
 	t.Parallel()
 
 	for _, c := range checkVariableExistenceTestCases {
@@ -41,6 +42,21 @@ func TestGetNormalizedStatVarsByEntityQuery(t *testing.T) {
 
 		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
 			return spanner.GetNormalizedStatVarsByEntityQuery(c.variables, c.entities)
+		})
+	}
+}
+
+func TestNormalizedGetObservationsContainedInPlaceQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range getObservationsContainedInPlaceTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.GetNormalizedObservationsContainedInPlaceQuery(c.variables, &v2.ContainedInPlace{
+				Ancestor:         c.ancestor,
+				ChildPlaceType: c.childPlaceType,
+			}), nil
 		})
 	}
 }

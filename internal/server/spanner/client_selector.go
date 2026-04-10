@@ -19,6 +19,7 @@ import (
 	"log/slog"
 
 	"github.com/datacommonsorg/mixer/internal/util"
+	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"google.golang.org/grpc/metadata"
 )
 
@@ -50,6 +51,19 @@ func (s *schemaSelectorClient) CheckVariableExistence(ctx context.Context, varia
 		return s.normalized.CheckVariableExistence(ctx, variables, entities)
 	}
 	return s.SpannerClient.CheckVariableExistence(ctx, variables, entities)
+}
+
+// GetObservationsContainedInPlace overrides the embedded client's GetObservationsContainedInPlace to dispatch based on schema selection.
+func (s *schemaSelectorClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
+	if useNormalizedSchema(ctx) {
+		logNormalizedInvocation("GetObservationsContainedInPlace",
+			"num_variables", len(variables),
+			"ancestor", containedInPlace.Ancestor,
+			"child_place_type", containedInPlace.ChildPlaceType,
+		)
+		return s.normalized.GetObservationsContainedInPlace(ctx, variables, containedInPlace)
+	}
+	return s.SpannerClient.GetObservationsContainedInPlace(ctx, variables, containedInPlace)
 }
 
 // NewSchemaSelectorClient creates a new SpannerClient that dispatches calls to either default or normalized client.

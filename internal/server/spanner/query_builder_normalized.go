@@ -19,6 +19,7 @@ import (
 	"strings"
 
 	"cloud.google.com/go/spanner"
+	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
 
 // GetNormalizedObservationsQuery returns a query to fetch observations based on variables and entities for the normalized schema.
@@ -75,4 +76,23 @@ func GetNormalizedStatVarsByEntityQuery(variables []string, entities []string) (
 		SQL:    sql,
 		Params: params,
 	}, nil
+}
+
+// GetNormalizedObservationsContainedInPlaceQuery returns a query to fetch observations for entities contained in a place.
+func GetNormalizedObservationsContainedInPlaceQuery(variables []string, containedInPlace *v2.ContainedInPlace) *spanner.Statement {
+	stmt := &spanner.Statement{
+		SQL: statementsNormalized.getObsByContainedInPlace,
+		Params: map[string]interface{}{
+			"ancestor":         containedInPlace.Ancestor,
+			"childPlaceType": containedInPlace.ChildPlaceType,
+		},
+	}
+
+	if len(variables) > 0 {
+		filter, val := getParamStatement("variables", variables)
+		stmt.Params["variables"] = val
+		stmt.SQL += "\n\t\tWHERE ts.variable_measured " + filter
+	}
+
+	return stmt
 }

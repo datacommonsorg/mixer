@@ -20,10 +20,11 @@ import (
 	"testing"
 
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
+	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/test"
 )
 
-func TestGetNormalizedObservations(t *testing.T) {
+func TestNormalizedGetObservations(t *testing.T) {
 	client := test.NewNormalizedSpannerClient(t)
 	t.Parallel()
 
@@ -46,7 +47,7 @@ func TestGetNormalizedObservations(t *testing.T) {
 	}
 }
 
-func TestCheckVariableExistence(t *testing.T) {
+func TestNormalizedCheckVariableExistence(t *testing.T) {
 	client := test.NewNormalizedSpannerClient(t)
 	t.Parallel()
 
@@ -78,4 +79,30 @@ func sort2DStringSlice(slice [][]string) {
 		}
 		return len(slice[i]) < len(slice[j])
 	})
+}
+
+func TestNormalizedGetObservationsContainedInPlace(t *testing.T) {
+	client := test.NewNormalizedSpannerClient(t)
+	t.Parallel()
+
+	nc, err := spanner.NewNormalizedClient(client)
+	if err != nil {
+		t.Fatalf("NewNormalizedClient failed: %v", err)
+	}
+
+	for _, c := range getObservationsContainedInPlaceTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			actual, err := nc.GetObservationsContainedInPlace(ctx, c.variables, &v2.ContainedInPlace{
+				Ancestor:         c.ancestor,
+				ChildPlaceType: c.childPlaceType,
+			})
+			if err != nil {
+				return nil, err
+			}
+			sortObservations(actual)
+			return actual, nil
+		})
+	}
 }

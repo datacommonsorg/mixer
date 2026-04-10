@@ -28,6 +28,9 @@ var statementsNormalized = struct {
 
 	// Fetch distinct variable and entity pairs.
 	getStatVarsByEntity string
+
+	// Fetch observations for entities contained in a place.
+	getObsByContainedInPlace string
 }{
 	getObs: `		SELECT
 			ts.variable_measured,
@@ -60,4 +63,36 @@ var statementsNormalized = struct {
 			TimeSeries@{FORCE_INDEX=TimeSeriesByVariableMeasured} ts
 		JOIN
 			TimeSeriesAttribute@{FORCE_INDEX=TimeSeriesAttributePropertyValue} a ON ts.id = a.id`,
+
+	getObsByContainedInPlace: `		SELECT
+			ts.variable_measured,
+			ARRAY(
+				SELECT STRUCT(date, value)
+				FROM StatVarObservation
+				WHERE id = ts.id
+				ORDER BY date ASC
+			) as dates_and_values,
+			ARRAY(
+				SELECT STRUCT(property, value)
+				FROM TimeSeriesAttribute
+				WHERE id = ts.id
+			) as attributes
+		FROM 
+			GRAPH_TABLE (
+				DCGraph MATCH <-[e:Edge
+				WHERE
+					e.object_id = @ancestor
+					AND e.predicate = 'linkedContainedInPlace']-()-[{predicate: 'typeOf', object_id: @childPlaceType}]->
+				RETURN
+					e.subject_id as object_id
+			) result
+		JOIN
+			TimeSeriesAttribute@{FORCE_INDEX=TimeSeriesAttributeValue} tsa
+		ON
+			tsa.value = result.object_id
+		JOIN
+			TimeSeries@{FORCE_INDEX=TimeSeriesByVariableMeasured} ts
+		ON
+			ts.id = tsa.id`,
 }
+

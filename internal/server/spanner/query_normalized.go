@@ -18,6 +18,8 @@ import (
 	"context"
 	"fmt"
 	"strconv"
+
+	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
 
 
@@ -102,4 +104,34 @@ func (nc *normalizedClient) CheckVariableExistence(ctx context.Context, variable
 		return nil, err
 	}
 	return queryDynamic(ctx, nc.sc, *stmt)
+}
+
+// GetObservationsContainedInPlace retrieves observations for entities contained in a place
+// using the normalized schema.
+func (nc *normalizedClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
+	if containedInPlace == nil {
+		return nil, fmt.Errorf("containedInPlace must be specified")
+	}
+
+	rawObs, err := nc.fetchRawObservationsContainedInPlace(ctx, variables, containedInPlace)
+	if err != nil {
+		return nil, err
+	}
+
+	if len(rawObs) == 0 {
+		return []*Observation{}, nil
+	}
+
+	return reconstructObservations(rawObs), nil
+}
+
+// fetchRawObservationsContainedInPlace fetches data from Graph, TimeSeries and StatVarObservation tables.
+func (nc *normalizedClient) fetchRawObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*rawObservation, error) {
+	stmt := GetNormalizedObservationsContainedInPlaceQuery(variables, containedInPlace)
+
+	var rawObs []*rawObservation
+	err := queryStructs(ctx, nc.sc, *stmt, func() interface{} { return &rawObservation{} }, func(row interface{}) {
+		rawObs = append(rawObs, row.(*rawObservation))
+	})
+	return rawObs, err
 }
