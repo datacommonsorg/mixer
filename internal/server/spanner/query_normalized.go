@@ -34,7 +34,7 @@ func (nc *normalizedClient) GetObservations(ctx context.Context, variables []str
 	}
 
 	if len(rawObs) == 0 {
-		return nil, nil
+		return []*Observation{}, nil
 	}
 
 	return reconstructObservations(rawObs), nil
@@ -84,7 +84,9 @@ func reconstructObservations(rawObs []*rawObservation) []*Observation {
 			case "scalingFactor":
 				obs.ScalingFactor = attr.Value
 			case "isDcAggregate":
-				obs.IsDcAggregate, _ = strconv.ParseBool(attr.Value)
+				if b, err := strconv.ParseBool(attr.Value); err == nil {
+					obs.IsDcAggregate = b
+				}
 			}
 		}
 		result = append(result, obs)

@@ -26,7 +26,10 @@ func TestGetNormalizedObservations(t *testing.T) {
 	client := test.NewNormalizedSpannerClient(t)
 	t.Parallel()
 
-	nc := spanner.NewNormalizedClient(client)
+	nc, err := spanner.NewNormalizedClient(client)
+	if err != nil {
+		t.Fatalf("NewNormalizedClient failed: %v", err)
+	}
 
 	for _, c := range normalizedObservationsTestCases {
 		goldenFile := c.golden + ".json"

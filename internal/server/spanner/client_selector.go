@@ -42,7 +42,10 @@ func (s *schemaSelectorClient) GetObservations(ctx context.Context, variables []
 
 // NewSchemaSelectorClient creates a new SpannerClient that dispatches calls to either default or normalized client.
 func NewSchemaSelectorClient(baseClient SpannerClient) (SpannerClient, error) {
-	normalizedClient := NewNormalizedClient(baseClient)
+	normalizedClient, err := NewNormalizedClient(baseClient)
+	if err != nil {
+		return nil, err
+	}
 
 	return &schemaSelectorClient{
 		SpannerClient: baseClient,

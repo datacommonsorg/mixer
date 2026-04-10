@@ -14,6 +14,8 @@
 
 package spanner
 
+import "fmt"
+
 // TODO(task): Decouple normalizedClient from spannerDatabaseClient by extracting
 // common execution and staleness logic into a shared executor.
 
@@ -27,10 +29,10 @@ type normalizedClient struct {
 // to reuse internal helpers like queryStructs. This is a compromise to avoid
 // exporting internal implementation details while allowing tests in the golden package
 // to construct it.
-func NewNormalizedClient(client SpannerClient) *normalizedClient {
+func NewNormalizedClient(client SpannerClient) (*normalizedClient, error) {
 	sc, ok := client.(*spannerDatabaseClient)
 	if !ok {
-		panic("NewNormalizedClient: expected *spannerDatabaseClient")
+		return nil, fmt.Errorf("NewNormalizedClient: expected *spannerDatabaseClient, got %T", client)
 	}
-	return &normalizedClient{sc: sc}
+	return &normalizedClient{sc: sc}, nil
 }
