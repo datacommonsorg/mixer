@@ -45,6 +45,7 @@
             (proxy.pathsuffix MatchesPath "/internal/bio") OR
             (proxy.pathsuffix MatchesPath "/internal/import-table") OR
             (proxy.pathsuffix MatchesPath "/place/stat/date/within-place") OR
+            (proxy.pathsuffix MatchesPath "/place/stat-vars") OR
             (proxy.pathsuffix MatchesPath "/place/stats-var") OR
             (proxy.pathsuffix MatchesPath "/search") OR
             (proxy.pathsuffix MatchesPath "/sparql") OR
@@ -105,7 +106,6 @@
               (proxy.pathsuffix MatchesPath "/node/property-labels") OR
               (proxy.pathsuffix MatchesPath "/node/property-values") OR
               (proxy.pathsuffix MatchesPath "/node/triples") OR
-              (proxy.pathsuffix MatchesPath "/place/stat-vars") OR
               (proxy.pathsuffix MatchesPath "/query") OR
               (proxy.pathsuffix MatchesPath "/search") OR
               (proxy.pathsuffix MatchesPath "/stat/all") OR
