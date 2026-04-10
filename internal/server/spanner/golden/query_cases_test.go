@@ -513,32 +513,84 @@ var eventCollectionTestCases = []struct {
 	},
 }
 
-var countDescendentStatVarsTestCases = []struct {
-	nodes                []string
-	constrainedEntities  []string
+var getStatVarGroupNodeTestCases = []struct {
+	nodes  []string
+	golden string
+}{
+	{
+		nodes:  []string{"dc/g/Demographics"},
+		golden: "get_stat_var_group_node",
+	},
+	{
+		nodes:  []string{"dc/g/Demographics", "dc/g/Economy"},
+		golden: "get_stat_var_group_node_multi",
+	},
+}
+
+var getSVGChildrenTestCases = []struct {
+	node   string
+	golden string
+}{
+	{
+		node:   "dc/g/Demographics",
+		golden: "get_svg_children",
+	},
+}
+
+var getFilteredSVGChildrenTestCases = []struct {
+	template             string
+	node                 string
+	constrainedPlaces    []string
+	constrainedImport    string
 	numEntitiesExistence int
-	filterProp           string
 	golden               string
 }{
 	{
-		nodes:                []string{"dc/g/Demographics", "dc/g/Economy"},
-		constrainedEntities:  []string{"country/USA", "country/IND"},
+		template:             "SV",
+		node:                 "dc/g/Demographics",
+		constrainedPlaces:    []string{"country/USA", "country/IND"},
+		constrainedImport:    "",
 		numEntitiesExistence: 1,
-		filterProp:           "",
-		golden:               "count_descendent_stat_vars_places",
+		golden:               "get_filtered_sv_places",
 	},
 	{
-		nodes:                []string{"dc/g/Demographics"},
-		constrainedEntities:  []string{"dc/s/WorldBank"},
+		template:             "SVG",
+		node:                 "dc/g/Demographics",
+		constrainedPlaces:    []string{"country/USA", "country/IND"},
+		constrainedImport:    "",
 		numEntitiesExistence: 1,
-		filterProp:           "source",
-		golden:               "count_descendent_stat_vars_import",
+		golden:               "get_filtered_svg_places",
 	},
 	{
-		nodes:                []string{"dc/g/Economy"},
-		constrainedEntities:  []string{"country/USA", "country/IND", "country/CAN"},
+		template:             "SV",
+		node:                 "dc/g/Demographics",
+		constrainedPlaces:    []string{},
+		constrainedImport:    "dc/s/WorldBank",
+		numEntitiesExistence: 1,
+		golden:               "get_filtered_sv_import",
+	},
+	{
+		template:             "SV",
+		node:                 "dc/g/Demographics",
+		constrainedPlaces:    []string{"country/USA", "country/IND"},
+		constrainedImport:    "dc/s/WorldBank",
+		numEntitiesExistence: 1,
+		golden:               "get_filtered_svg_place_import",
+	},
+	{
+		template:             "SVG",
+		node:                 "dc/g/Demographics",
+		constrainedPlaces:    []string{"country/USA", "country/IND", "country/CAN"},
+		constrainedImport:    "",
 		numEntitiesExistence: 2,
-		filterProp:           "",
-		golden:               "count_descendent_stat_vars_places_num_entities_existence",
+		golden:               "get_filtered_svg_num_entities_existence",
+	},
+	{
+		template:             "Topic",
+		node:                 "dc/topic/Demographics",
+		constrainedPlaces:    []string{"country/CAN", "country/IND"},
+		constrainedImport:    "",
+		numEntitiesExistence: 1,
+		golden:               "get_filtered_topic_places",
 	},
 }
