@@ -81,12 +81,12 @@ func (s *Server) mirrorV3(
 		v3WaitGroup.Add(1)
 	}
 
-	var mirrorTimeout time.Duration
+	var mirrorDeadline time.Time
 	if deadline, ok := ctx.Deadline(); ok {
-		mirrorTimeout = time.Until(deadline)
+		mirrorDeadline = deadline
 	} else {
 		slog.Warn("Original context has no deadline; using default API timeout", "timeout", spanner.ApiTimeout.String())
-		mirrorTimeout = spanner.ApiTimeout
+		mirrorDeadline = time.Now().Add(spanner.ApiTimeout)
 	}
 
 	// This is run in a separate goroutine to not block the response to the original
@@ -97,10 +97,10 @@ func (s *Server) mirrorV3(
 		}
 		// Create a new context for this goroutine, so it does not get canceled
 		// with the original request.
-		baseMirrorCtx := metrics.NewContext(ctx)
+		baseMirrorCtx := metrics.NewContext(context.WithoutCancel(ctx))
 
-		// Re-apply the timeout to the detached context
-		mirrorCtx, cancel := context.WithTimeout(baseMirrorCtx, mirrorTimeout)
+		// Re-apply the deadline to the detached context
+		mirrorCtx, cancel := context.WithDeadline(baseMirrorCtx, mirrorDeadline)
 		defer cancel()
 
 		// First call, without skipping cache

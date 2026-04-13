@@ -27,6 +27,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/metrics"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/sdk/metric"
@@ -62,7 +63,9 @@ func setUpSlogCapture() (*bytes.Buffer, func()) {
 }
 
 func TestMaybeMirrorV3_Percentage(t *testing.T) {
-	ctx := context.Background()
+	baseCtx := context.Background()
+	ctx, cancel := context.WithTimeout(baseCtx, 5*time.Second)
+	defer cancel()
 	req := &pbv2.NodeRequest{
 		Nodes: []string{"test"},
 	}
@@ -128,7 +131,8 @@ func TestMaybeMirrorV3_Percentage(t *testing.T) {
 }
 
 func TestMaybeMirrorV3_IgnoreSubsequentPages(t *testing.T) {
-	ctx := context.Background()
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
 	s := &Server{
 		flags: &featureflags.Flags{
 			V3MirrorFraction: 1.0, // Mirroring is on
@@ -153,7 +157,8 @@ func TestMaybeMirrorV3_IgnoreSubsequentPages(t *testing.T) {
 }
 
 func TestMaybeMirrorV3_LatencyMetric(t *testing.T) {
-	ctx := context.Background()
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
 	s := &Server{
 		flags: &featureflags.Flags{
 			V3MirrorFraction: 1.0, // Mirroring is on
@@ -210,7 +215,8 @@ func TestMaybeMirrorV3_LatencyMetric(t *testing.T) {
 }
 
 func TestMaybeMirrorV3_ObservationResponseMismatch(t *testing.T) {
-	ctx := context.Background()
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
 	s := &Server{
 		flags: &featureflags.Flags{
 			V3MirrorFraction: 1.0, // Mirroring is on
@@ -286,7 +292,8 @@ func TestMaybeMirrorV3_ObservationResponseMismatch(t *testing.T) {
 }
 
 func TestMaybeMirrorV3_NodeResponseMismatch(t *testing.T) {
-	ctx := context.Background()
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
 	s := &Server{
 		flags: &featureflags.Flags{
 			V3MirrorFraction: 1.0, // Mirroring is on
@@ -343,7 +350,8 @@ func TestMaybeMirrorV3_NodeResponseMismatch(t *testing.T) {
 }
 
 func TestMaybeMirrorV3_ResponseMatch(t *testing.T) {
-	ctx := context.Background()
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
 	s := &Server{
 		flags: &featureflags.Flags{
 			V3MirrorFraction: 1.0, // Mirroring is on
@@ -415,7 +423,8 @@ func TestMaybeMirrorV3_ResponseMatch(t *testing.T) {
 }
 
 func TestMaybeMirrorV3_V3Error(t *testing.T) {
-	ctx := context.Background()
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
 	s := &Server{
 		flags: &featureflags.Flags{
 			V3MirrorFraction: 1.0, // Mirroring is on
@@ -482,7 +491,8 @@ func TestMaybeMirrorV3_V3Error(t *testing.T) {
 }
 
 func TestMaybeMirrorV3_NodeIgnoresNextTokenMismatch(t *testing.T) {
-	ctx := context.Background()
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
 	s := &Server{
 		flags: &featureflags.Flags{
 			V3MirrorFraction: 1.0, // Mirroring is on
@@ -517,7 +527,8 @@ func TestMaybeMirrorV3_NodeIgnoresNextTokenMismatch(t *testing.T) {
 }
 
 func TestMaybeMirrorV3_ObservationIgnoresFacetIdsAndMapOrder(t *testing.T) {
-	ctx := context.Background()
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
 	s := &Server{
 		flags: &featureflags.Flags{
 			V3MirrorFraction: 1.0, // Mirroring is on
@@ -588,7 +599,8 @@ func TestMaybeMirrorV3_ObservationIgnoresFacetIdsAndMapOrder(t *testing.T) {
 }
 
 func TestMaybeMirrorV3_SlowQueryLogging(t *testing.T) {
-	ctx := context.Background()
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
 	s := &Server{
 		flags: &featureflags.Flags{
 			V3MirrorFraction: 1.0,
@@ -622,5 +634,57 @@ func TestMaybeMirrorV3_SlowQueryLogging(t *testing.T) {
 
 	if !strings.Contains(logOutput, "latencyDiff") {
 		t.Errorf("Log should contain the latencyDiff value. Got: %q", logOutput)
+	}
+}
+
+func TestMirrorV3_FallsBackToDefaultDeadline(t *testing.T) {
+	// 1. Pass a context intentionally lacking a deadline
+	ctx := context.Background()
+
+	s := &Server{
+		flags: &featureflags.Flags{
+			V3MirrorFraction: 1.0, // Ensure mirroring is enabled
+		},
+	}
+
+	req := &pbv2.NodeRequest{}
+	resp := &pbv2.NodeResponse{}
+
+	var mirrorWg sync.WaitGroup
+
+	callCount := 0
+	var mu sync.Mutex
+	startTime := time.Now()
+
+	v3Call := func(v3Ctx context.Context, req proto.Message) (proto.Message, error) {
+		mu.Lock()
+		callCount++
+		mu.Unlock()
+
+		// Assert the deadline exists
+		deadline, ok := v3Ctx.Deadline()
+		if !ok {
+			t.Errorf("Expected context to have a fallback deadline, but it had none")
+			return &pbv2.NodeResponse{}, nil
+		}
+
+		// Assert the deadline is roughly equal to spanner.ApiTimeout
+		expectedDeadline := startTime.Add(spanner.ApiTimeout)
+
+		// Calculate the difference between the actual deadline and our expected deadline.
+		// We allow a small 1-second buffer because time.Now() inside mirrorV3
+		// will be slightly later than our startTime.
+		diff := deadline.Sub(expectedDeadline)
+		if diff < -time.Second || diff > time.Second {
+			t.Errorf("Fallback deadline is outside expected bounds. Got %v, expected ~%v", deadline, expectedDeadline)
+		}
+
+		return &pbv2.NodeResponse{}, nil
+	}
+
+	s.mirrorV3(ctx, req, resp, 0, v3Call, GetV2NodeCmpOpts(), &mirrorWg)
+	mirrorWg.Wait()
+	if callCount != 2 {
+		t.Errorf("Expected v3Call to be executed exactly 2 times, got %d", callCount)
 	}
 }
