@@ -2255,7 +2255,7 @@ func TestMergeMultiBulkVariableGroupInfo(t *testing.T) {
 	} {
 		got := MergeMultiBulkVariableGroupInfo(c.allResp)
 		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
-			t.Errorf("MergeMultiBulkVariableInfo(%v) got diff: %s", c.allResp, diff)
+			t.Errorf("MergeMultiBulkVariableGroupInfo(%v) got diff: %s", c.allResp, diff)
 		}
 	}
 }

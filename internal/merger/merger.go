@@ -708,6 +708,9 @@ func MergeMultiBulkVariableGroupInfo(allResp []*pbv1.BulkVariableGroupInfoRespon
 				mergedItem.Info = item.Info
 				continue
 			}
+			if item.Info == nil {
+				continue
+			}
 			if mergedItem.Info.AbsoluteName == "" {
 				mergedItem.Info.AbsoluteName = item.Info.AbsoluteName
 			}
