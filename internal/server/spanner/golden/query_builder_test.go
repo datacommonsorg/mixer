@@ -218,6 +218,30 @@ func TestGetFilteredSVGChildren(t *testing.T) {
 	}
 }
 
+func TestGetTermEmbeddingQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range embeddingFromQueryTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.GetTermEmbeddingQuery(c.modelName, c.searchLabel, c.taskType), nil
+		})
+	}
+}
+
+func TestVectorSearchQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range vectorSearchNodeTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.VectorSearchQuery(c.limit, c.embeddings), nil
+		})
+	}
+}
+
 // runQueryBuilderGoldenTest is a helper function that performs the golden file validation.
 func runQueryBuilderGoldenTest(t *testing.T, goldenFile string, fn goldenTestFunc) {
 	t.Helper()
@@ -273,6 +297,12 @@ func interpolateSQL(stmt *cloudSpanner.Statement) string {
 			sqlString = strings.ReplaceAll(sqlString, "IN UNNEST("+placeholder+")", "IN "+formattedValue)
 			placeholder = "@" + key // Ensure we don't mess up UNNEST replacement
 			formattedValue = "[" + strings.Join(quotedValues, ",") + "]"
+		case []float64:
+			var stringValues []string
+			for _, f := range v {
+				stringValues = append(stringValues, fmt.Sprintf("%v", f))
+			}
+			formattedValue = "[" + strings.Join(stringValues, ",") + "]"
 		// ... add more cases for int64, float64, bool, etc.
 		default:
 			// Catch-all for other types

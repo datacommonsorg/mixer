@@ -512,9 +512,11 @@ var statements = struct {
 		FROM ML.PREDICT(MODEL @model_name, (SELECT @search_label AS content, @task_type AS task_type))`,
 	vectorSearchNode: `		GRAPH DCGraph MATCH (n:Node)
 		WHERE n.name_embeddings IS NOT NULL
-			AND APPROX_EUCLIDEAN_DISTANCE(@embeddings, n.name_embeddings, options => JSON '{"num_leaves_to_search": 20}') > 0.6
+			AND APPROX_COSINE_DISTANCE(@embeddings, n.name_embeddings, options => JSON '{"num_leaves_to_search": 20}') > 0.6
 		RETURN
-			n.subject_id
-		ORDER BY APPROX_EUCLIDEAN_DISTANCE(@embeddings, n.name_embeddings, options => JSON '{"num_leaves_to_search": 20}')
+			n.subject_id,
+			n.name, 
+			1 - COSINE_DISTANCE(@embeddings, n.name_embeddings) AS cosine_similarity
+		ORDER BY APPROX_COSINE_DISTANCE(@embeddings, n.name_embeddings, options => JSON '{"num_leaves_to_search": 20}')
 		LIMIT @limit`,
 }

@@ -621,6 +621,40 @@ func (sc *spannerDatabaseClient) GetProvenanceSummary(ctx context.Context, varia
 	return results, nil
 }
 
+// GetEmbeddingFromQuery retrieves embeddings from Spanner for a given query.
+func (sc *spannerDatabaseClient) GetEmbeddingFromQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error) {
+	var embeddings []float64
+	err := sc.executeQuery(ctx, *GetTermEmbeddingQuery(modelName, searchLabel, taskType), func(iter *spanner.RowIterator) error {
+		row, err := iter.Next()
+		if err == iterator.Done {
+			return fmt.Errorf("no embedding returned")
+		}
+		if err != nil {
+			return err
+		}
+		return row.Column(0, &embeddings)
+	})
+	return embeddings, err
+}
+
+// VectorSearchNode performs vector similarity search in Spanner.
+func (sc *spannerDatabaseClient) VectorSearchNode(ctx context.Context, limit int, embeddings []float64) ([]*VectorSearchResult, error) {
+	var results []*VectorSearchResult
+	err := queryStructs(
+		ctx,
+		sc,
+		*VectorSearchQuery(limit, embeddings),
+		func() interface{} {
+			return &VectorSearchResult{}
+		},
+		func(rowStruct interface{}) {
+			res := rowStruct.(*VectorSearchResult)
+			results = append(results, res)
+		},
+	)
+	return results, err
+}
+
 // fetchAndUpdateTimestamp queries Spanner and updates the timestamp.
 func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) error {
 	queryCtx, cancel := context.WithTimeout(ctx, timestampPollingTimeout)

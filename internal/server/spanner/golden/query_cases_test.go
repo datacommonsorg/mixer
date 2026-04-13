@@ -594,3 +594,29 @@ var getFilteredSVGChildrenTestCases = []struct {
 		golden:               "get_filtered_topic_places",
 	},
 }
+
+var embeddingFromQueryTestCases = []struct {
+	modelName   string
+	searchLabel string
+	taskType    string
+	golden      string
+}{
+	{
+		modelName:   "test_model",
+		searchLabel: "test_query",
+		taskType:    "RETRIEVAL_QUERY",
+		golden:      "get_embedding_from_query",
+	},
+}
+
+var vectorSearchNodeTestCases = []struct {
+	limit       int
+	embeddings  []float64
+	golden      string
+}{
+	{
+		limit:      5,
+		embeddings: []float64{0.1, 0.2, 0.3},
+		golden:     "vector_search_node",
+	},
+}

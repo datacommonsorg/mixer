@@ -286,6 +286,40 @@ func TestGetEventCollection(t *testing.T) {
 	}
 }
 
+func TestGetEmbeddingFromQuery(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+
+	for _, c := range embeddingFromQueryTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return client.GetEmbeddingFromQuery(ctx, c.modelName, c.searchLabel, c.taskType)
+		})
+	}
+}
+
+func TestVectorSearchNode(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+
+	for _, c := range vectorSearchNodeTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return client.VectorSearchNode(ctx, c.limit, c.embeddings)
+		})
+	}
+}
+
 // runQueryGoldenTest is a helper function that performs the golden file validation.
 func runQueryGoldenTest(t *testing.T, goldenFile string, fn goldenTestFunc) {
 	t.Helper()
