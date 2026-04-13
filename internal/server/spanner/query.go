@@ -621,13 +621,13 @@ func (sc *spannerDatabaseClient) GetProvenanceSummary(ctx context.Context, varia
 	return results, nil
 }
 
-// GetEmbeddingFromQuery retrieves embeddings from Spanner for a given query.
-func (sc *spannerDatabaseClient) GetEmbeddingFromQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error) {
+// GetTermEmbeddingQuery retrieves embeddings from Spanner for a given query.
+func (sc *spannerDatabaseClient) GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error) {
 	var embeddings []float64
 	err := sc.executeQuery(ctx, *GetTermEmbeddingQuery(modelName, searchLabel, taskType), func(iter *spanner.RowIterator) error {
 		row, err := iter.Next()
 		if err == iterator.Done {
-			return fmt.Errorf("no embedding returned")
+			return fmt.Errorf("no embedding returned for model %s and label %s", modelName, searchLabel)
 		}
 		if err != nil {
 			return err
@@ -637,13 +637,13 @@ func (sc *spannerDatabaseClient) GetEmbeddingFromQuery(ctx context.Context, mode
 	return embeddings, err
 }
 
-// VectorSearchNode performs vector similarity search in Spanner.
-func (sc *spannerDatabaseClient) VectorSearchNode(ctx context.Context, limit int, embeddings []float64) ([]*VectorSearchResult, error) {
+// VectorSearchQuery performs vector similarity search in Spanner.
+func (sc *spannerDatabaseClient) VectorSearchQuery(ctx context.Context, limit int, embeddings []float64, numLeaves int, threshold float64) ([]*VectorSearchResult, error) {
 	var results []*VectorSearchResult
 	err := queryStructs(
 		ctx,
 		sc,
-		*VectorSearchQuery(limit, embeddings),
+		*VectorSearchQuery(limit, embeddings, numLeaves, threshold),
 		func() interface{} {
 			return &VectorSearchResult{}
 		},

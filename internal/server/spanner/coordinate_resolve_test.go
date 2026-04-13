@@ -88,6 +88,14 @@ func (m *coordinateMockSpannerClient) GetProvenanceSummary(ctx context.Context, 
 	return nil, nil
 }
 
+func (m *coordinateMockSpannerClient) GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error) {
+	return nil, nil
+}
+
+func (m *coordinateMockSpannerClient) VectorSearchQuery(ctx context.Context, limit int, embeddings []float64, numLeaves int, threshold float64) ([]*VectorSearchResult, error) {
+	return nil, nil
+}
+
 func (m *coordinateMockSpannerClient) Id() string { return "mock" }
 func (m *coordinateMockSpannerClient) Start()     {}
 func (m *coordinateMockSpannerClient) Close()     {}

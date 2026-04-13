@@ -286,7 +286,7 @@ func TestGetEventCollection(t *testing.T) {
 	}
 }
 
-func TestGetEmbeddingFromQuery(t *testing.T) {
+func TestGetTermEmbeddingQueryExecution(t *testing.T) {
 	client := test.NewSpannerClient()
 	if client == nil {
 		return
@@ -298,12 +298,12 @@ func TestGetEmbeddingFromQuery(t *testing.T) {
 		goldenFile := c.golden + ".json"
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return client.GetEmbeddingFromQuery(ctx, c.modelName, c.searchLabel, c.taskType)
+			return client.GetTermEmbeddingQuery(ctx, c.modelName, c.searchLabel, c.taskType)
 		})
 	}
 }
 
-func TestVectorSearchNode(t *testing.T) {
+func TestVectorSearchQueryExecution(t *testing.T) {
 	client := test.NewSpannerClient()
 	if client == nil {
 		return
@@ -315,7 +315,7 @@ func TestVectorSearchNode(t *testing.T) {
 		goldenFile := c.golden + ".json"
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return client.VectorSearchNode(ctx, c.limit, c.embeddings)
+			return client.VectorSearchQuery(ctx, c.limit, c.embeddings, c.numLeaves, c.threshold)
 		})
 	}
 }

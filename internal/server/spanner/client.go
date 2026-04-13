@@ -44,8 +44,8 @@ type SpannerClient interface {
 	GetEventCollection(ctx context.Context, req *pbv1.EventCollectionRequest) (*pbv1.EventCollection, error)
 	Sparql(ctx context.Context, nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) ([][]string, error)
 	GetProvenanceSummary(ctx context.Context, ids []string) (map[string]map[string]*pb.StatVarSummary_ProvenanceSummary, error)
-	GetEmbeddingFromQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error)
-	VectorSearchNode(ctx context.Context, limit int, embeddings []float64) ([]*VectorSearchResult, error)
+	GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error)
+	VectorSearchQuery(ctx context.Context, limit int, embeddings []float64, numLeaves int, threshold float64) ([]*VectorSearchResult, error)
 	Id() string
 	Start()
 	Close()
