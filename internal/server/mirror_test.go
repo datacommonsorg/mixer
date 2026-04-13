@@ -638,7 +638,6 @@ func TestMaybeMirrorV3_SlowQueryLogging(t *testing.T) {
 }
 
 func TestMirrorV3_FallsBackToDefaultDeadline(t *testing.T) {
-	// 1. Pass a context intentionally lacking a deadline
 	ctx := context.Background()
 
 	s := &Server{
