@@ -86,8 +86,9 @@ func newSpannerDatabaseClient(client *spanner.Client, useStaleReads bool) (*span
 	return sc, nil
 }
 
-// NewSpannerClient creates a new SpannerClient from the config yaml string and an optional database override.
-func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string, useStaleReads bool) (SpannerClient, error) {
+// NewRawSpannerClient creates a new SpannerClient without the schema selector.
+// This is intended for testing and internal use where a direct client is needed.
+func NewRawSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string, useStaleReads bool) (SpannerClient, error) {
 	cfg, err := createSpannerConfig(spannerConfigYaml, databaseOverride)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
@@ -97,6 +98,16 @@ func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride s
 		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
 	}
 	return newSpannerDatabaseClient(client, useStaleReads)
+}
+
+// NewSpannerClient creates a new SpannerClient from the config yaml string and an optional database override.
+// It returns a wrapper client that handles request-time schema dispatching.
+func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string, useStaleReads bool) (SpannerClient, error) {
+	rawClient, err := NewRawSpannerClient(ctx, spannerConfigYaml, databaseOverride, useStaleReads)
+	if err != nil {
+		return nil, err
+	}
+	return NewSchemaSelectorClient(rawClient)
 }
 
 // createSpannerClient creates the database name string and initializes the Spanner client.
