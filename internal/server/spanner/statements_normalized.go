@@ -62,7 +62,7 @@ var statementsNormalized = struct {
 		FROM 
 			TimeSeries@{FORCE_INDEX=TimeSeriesByVariableMeasured} ts
 		JOIN
-			TimeSeriesAttribute@{FORCE_INDEX=TimeSeriesAttributePropertyValue} a ON ts.id = a.id`,
+			TimeSeriesAttribute@{FORCE_INDEX=TimeSeriesAttributeValue} a ON ts.id = a.id`,
 
 	getObsByContainedInPlace: `		SELECT
 			ts.variable_measured,
