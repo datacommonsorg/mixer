@@ -36,6 +36,10 @@ serviceGroups:
     replicas: 20
   observation:
     replicas: 10
+    resources:
+      memoryRequest: "4Gi"
+      memoryLimit: "8Gi"
+      cpuRequest: "100m"
   default:
     replicas: 5
 
