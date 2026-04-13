@@ -32,7 +32,11 @@ serviceGroups:
   node:
     replicas: 60
   observation:
-    replicas: 60
+    replicas: 30
+    resources:
+      memoryRequest: "4Gi"
+      memoryLimit: "8Gi"
+      cpuRequest: "100m"
   default:
     replicas: 30
 

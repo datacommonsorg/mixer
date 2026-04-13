@@ -137,8 +137,14 @@ spec:
           resources:
             limits:
               memory: {{ $group.resources.memoryLimit }}
+              {{- if $group.resources.cpuLimit }}
+              cpu: {{ $group.resources.cpuLimit }}
+              {{- end }}
             requests:
               memory:  {{ $group.resources.memoryRequest }}
+              {{- if $group.resources.cpuRequest }}
+              cpu: {{ $group.resources.cpuRequest }}
+              {{- end }}
           command:
             - /bin/sh
             - -c
