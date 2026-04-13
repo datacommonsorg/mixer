@@ -26,6 +26,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/metrics"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-cmp/cmp/cmpopts"
@@ -79,6 +80,15 @@ func (s *Server) mirrorV3(
 	if v3WaitGroup != nil {
 		v3WaitGroup.Add(1)
 	}
+
+	var mirrorTimeout time.Duration
+	if deadline, ok := ctx.Deadline(); ok {
+		mirrorTimeout = time.Until(deadline)
+	} else {
+		slog.Warn("Original context has no deadline; using default API timeout", "timeout", spanner.ApiTimeout.String())
+		mirrorTimeout = spanner.ApiTimeout
+	}
+
 	// This is run in a separate goroutine to not block the response to the original
 	// request.
 	go func() {
@@ -87,7 +97,11 @@ func (s *Server) mirrorV3(
 		}
 		// Create a new context for this goroutine, so it does not get canceled
 		// with the original request.
-		mirrorCtx := metrics.NewContext(ctx)
+		baseMirrorCtx := metrics.NewContext(ctx)
+
+		// Re-apply the timeout to the detached context
+		mirrorCtx, cancel := context.WithTimeout(baseMirrorCtx, mirrorTimeout)
+		defer cancel()
 
 		// First call, without skipping cache
 		s.doMirror(mirrorCtx, originalReq, originalResp, originalLatency, v3Call, cmpOpts, false /* skipCache */)
@@ -115,11 +129,9 @@ func (s *Server) doMirror(
 	v3StartTime := time.Now()
 	var v3Resp proto.Message
 	var v3Err error
-	var v3Ctx context.Context
+	v3Ctx := ctx
 	if skipCache {
-		v3Ctx = metadata.NewIncomingContext(context.Background(), metadata.Pairs(string(util.XSkipCache), "true"))
-	} else {
-		v3Ctx = context.Background()
+		v3Ctx = metadata.NewIncomingContext(v3Ctx, metadata.Pairs(string(util.XSkipCache), "true"))
 	}
 	v3Resp, v3Err = v3Call(v3Ctx, reqClone)
 	v3Latency := time.Since(v3StartTime)
