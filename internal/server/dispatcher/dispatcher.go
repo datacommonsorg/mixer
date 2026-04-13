@@ -30,13 +30,14 @@ import (
 type RequestType string
 
 const (
-	TypeNode             RequestType = "Node"
-	TypeNodeSearch       RequestType = "NodeSearch"
-	TypeObservation      RequestType = "Observation"
-	TypeResolve          RequestType = "Resolve"
-	TypeSparql           RequestType = "Sparql"
-	TypeEvent            RequestType = "Event"
-	TypeBulkVariableInfo RequestType = "BulkVariableInfo"
+	TypeNode                  RequestType = "Node"
+	TypeNodeSearch            RequestType = "NodeSearch"
+	TypeObservation           RequestType = "Observation"
+	TypeResolve               RequestType = "Resolve"
+	TypeSparql                RequestType = "Sparql"
+	TypeEvent                 RequestType = "Event"
+	TypeBulkVariableInfo      RequestType = "BulkVariableInfo"
+	TypeBulkVariableGroupInfo RequestType = "BulkVariableGroupInfo"
 )
 
 // RequestContext holds the context for a given request.
@@ -223,6 +224,19 @@ func (dispatcher *Dispatcher) BulkVariableInfo(ctx context.Context, in *pbv1.Bul
 		return nil, err
 	}
 	return response.(*pbv1.BulkVariableInfoResponse), nil
+}
+
+func (dispatcher *Dispatcher) BulkVariableGroupInfo(ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error) {
+	requestContext := newRequestContext(ctx, in, TypeBulkVariableGroupInfo)
+
+	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {
+		return dispatcher.sources.BulkVariableGroupInfo(ctx, request.(*pbv1.BulkVariableGroupInfoRequest))
+	})
+
+	if err != nil {
+		return nil, err
+	}
+	return response.(*pbv1.BulkVariableGroupInfoResponse), nil
 }
 
 func newRequestContext(ctx context.Context, request proto.Message, requestType RequestType) *RequestContext {

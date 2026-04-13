@@ -71,3 +71,7 @@ func (rds *RemoteDataSource) Event(ctx context.Context, req *pbv2.EventRequest) 
 func (rds *RemoteDataSource) BulkVariableInfo(ctx context.Context, req *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error) {
 	return rds.client.BulkVariableInfo(req)
 }
+
+func (rds *RemoteDataSource) BulkVariableGroupInfo(ctx context.Context, req *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error) {
+	return rds.client.BulkVariableGroupInfo(req)
+}
