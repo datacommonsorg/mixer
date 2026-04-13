@@ -5,11 +5,11 @@
       "values": [
         {
           "provenanceId": "dc/base/WikidataOtherIdGeos",
-          "value": "United States"
+          "value": "United States of America"
         },
         {
           "provenanceId": "dc/base/WikidataOtherIdGeos",
-          "value": "United States of America"
+          "value": "United States"
         }
       ]
     },
