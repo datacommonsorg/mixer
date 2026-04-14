@@ -511,6 +511,7 @@ func generateObjectValue(input string) string {
 		for ; i > 0 && !utf8.RuneStart(input[i]); i-- {
 		}
 		prefix = input[:i]
+
 	}
 	return prefix + ":" + generateValueHash(input)
 }
