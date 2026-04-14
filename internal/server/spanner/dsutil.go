@@ -24,6 +24,7 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"unicode"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
@@ -713,5 +714,220 @@ func generateBulkVariableInfoResponse(variableInfo map[string]map[string]*pb.Sta
 	slices.SortFunc(response.Data, func(a, b *pbv1.VariableInfoResponse) int {
 		return strings.Compare(a.Node, b.Node)
 	})
+	return response
+}
+
+// splitPascalCase splits a PascalCase string into separate words with spaces.
+func splitPascalCase(s string) string {
+	var builder strings.Builder
+
+	// Pre-allocate memory.
+	builder.Grow(len(s) + 5)
+
+	runes := []rune(s)
+	for i, r := range runes {
+		if i > 0 {
+			prev := runes[i-1]
+
+			// Rule 1: Lowercase to Uppercase (e.g., "m" -> "I")
+			isLowerToUpper := unicode.IsLower(prev) && unicode.IsUpper(r)
+
+			// Rule 2: Acronym boundary (e.g., "X" -> "M" -> "L")
+			isAcronym := unicode.IsUpper(prev) && unicode.IsUpper(r) &&
+				i+1 < len(runes) && unicode.IsLower(runes[i+1])
+
+			// Rule 3: Letter to Number (e.g., "s" -> "6")
+			isLetterToDigit := unicode.IsLetter(prev) && unicode.IsDigit(r)
+
+			// Rule 4: Number to Letter (e.g., "5" -> "Y")
+			isDigitToLetter := unicode.IsDigit(prev) && unicode.IsLetter(r)
+
+			// If any of our boundaries are met, insert a space
+			if isLowerToUpper || isAcronym || isLetterToDigit || isDigitToLetter {
+				builder.WriteRune(' ')
+			}
+		}
+		builder.WriteRune(r)
+	}
+
+	return builder.String()
+}
+
+// processSvgId removes the SVG prefix up through the population type and splits into pvs.
+func processSvgId(svg string) []string {
+	var trimmed string
+	_, after, found := strings.Cut(svg, "_")
+	if found {
+		trimmed = after
+	} else {
+		trimmed = strings.TrimPrefix(svg, prefixSVG)
+	}
+
+	return strings.FieldsFunc(trimmed, func(r rune) bool {
+		return r == '_' || r == '-'
+	})
+}
+
+// isCuratedHierarchy checks if the SVG is part of a curated hierarchy, which have different naming conventions that do not follow the standard specialization pattern.
+func isCuratedHierarchy(svg string) bool {
+	return strings.HasPrefix(svg, "dc/g/UN") || strings.HasPrefix(svg, "dc/g/SDG")
+}
+
+// getSpecializedEntity returns the specialized entity for a child SVG given its parent SVG.
+func getSpecializedEntity(parent, child, childName string) string {
+	if !strings.Contains(child, "_") || isCuratedHierarchy(child) { // Child is likely curated.
+		return childName
+	}
+	parentParts := processSvgId(parent)
+	childParts := processSvgId(child)
+
+	for i := 0; i < len(parentParts) && i < len(childParts); i++ {
+		if parentParts[i] != childParts[i] {
+			return splitPascalCase(childParts[i])
+		}
+	}
+
+	return splitPascalCase(childParts[len(childParts)-1])
+}
+
+// sortSVGNode sorts the child SVGs and SVs of a StatVarGroupNode. Child SVGs are sorted by specialized entity, with special handling for curated hierarchies, and child SVs are sorted by display name.
+func sortSVGNode(node *pb.StatVarGroupNode) {
+	sort.Slice(node.ChildStatVarGroups, func(i, j int) bool {
+		// Use numeric sorting for special groups.
+		if isCuratedHierarchy(node.ChildStatVarGroups[i].Id) {
+			iName := strings.Split(node.ChildStatVarGroups[i].SpecializedEntity, ":")[0]
+			jName := strings.Split(node.ChildStatVarGroups[j].SpecializedEntity, ":")[0]
+			iNum, err1 := strconv.Atoi(iName)
+			jNum, err2 := strconv.Atoi(jName)
+			if err1 == nil && err2 == nil {
+				return iNum < jNum
+			}
+			// Fall back to string comparison if numeric parsing fails.
+		}
+		return node.ChildStatVarGroups[i].SpecializedEntity < node.ChildStatVarGroups[j].SpecializedEntity
+	})
+	sort.Slice(node.ChildStatVars, func(i, j int) bool {
+		return node.ChildStatVars[i].DisplayName < node.ChildStatVars[j].DisplayName
+	})
+}
+
+// svgInfoToBulkVariableGroupInfoResponse converts a list of StatVarGroupNode info to a BulkVariableGroupInfoResponse.
+func svgInfoToBulkVariableGroupInfoResponse(svgInfo []*StatVarGroupNode, nodes []string) *pbv1.BulkVariableGroupInfoResponse {
+	response := &pbv1.BulkVariableGroupInfoResponse{
+		Data: make([]*pbv1.VariableGroupInfoResponse, 0, len(nodes)),
+	}
+
+	nodeToSVG := map[string]*pb.StatVarGroupNode{}
+	for _, node := range nodes {
+		nodeToSVG[node] = &pb.StatVarGroupNode{}
+	}
+	for _, row := range svgInfo {
+		// We are trimming excess quotes to help with sorting.
+		// TODO: This should really be handled at ingestion time instead.
+		name := strings.Trim(row.Name, "\"")
+		svgNode := nodeToSVG[row.SVG]
+		if row.DescendentStatVarCount >= 0 { // Child SVG.
+			if row.SubjectID == row.SVG { // Self.
+				svgNode.AbsoluteName = name
+				svgNode.DescendentStatVarCount = int32(row.DescendentStatVarCount)
+				continue
+			}
+			childSVG := &pb.StatVarGroupNode_ChildSVG{
+				Id:                     row.SubjectID,
+				SpecializedEntity:      getSpecializedEntity(row.SVG, row.SubjectID, name),
+				DisplayName:            name,
+				DescendentStatVarCount: int32(row.DescendentStatVarCount),
+			}
+			svgNode.ChildStatVarGroups = append(svgNode.ChildStatVarGroups, childSVG)
+		} else { // Child SV.
+			childSV := &pb.StatVarGroupNode_ChildSV{
+				Id:          row.SubjectID,
+				DisplayName: name,
+				HasData:     row.HasData,
+			}
+			svgNode.ChildStatVars = append(svgNode.ChildStatVars, childSV)
+		}
+	}
+
+	// Sort results.
+	for node, svgNode := range nodeToSVG {
+		sortSVGNode(svgNode)
+		response.Data = append(response.Data, &pbv1.VariableGroupInfoResponse{
+			Node: node,
+			Info: nodeToSVG[node],
+		})
+	}
+	slices.SortFunc(response.Data, func(a, b *pbv1.VariableGroupInfoResponse) int {
+		return strings.Compare(a.Node, b.Node)
+	})
+	return response
+}
+
+// filteredSVGInfoToBulkVariableGroupInfoResponse converts a list of FilteredStatVarGroupNode info to a BulkVariableGroupInfoResponse.
+func filteredSVGInfoToBulkVariableGroupInfoResponse(svgInfo *FilteredStatVarGroupNode, node string) *pbv1.BulkVariableGroupInfoResponse {
+	response := &pbv1.BulkVariableGroupInfoResponse{
+		Data: []*pbv1.VariableGroupInfoResponse{
+			{
+				Node: node,
+				Info: &pb.StatVarGroupNode{},
+			},
+		},
+	}
+
+	svgNode := response.Data[0].Info
+	allChildren := map[string]bool{}
+
+	// Attach Child SVGs.
+	for _, row := range svgInfo.ChildSVG {
+		name := strings.Trim(row.Name, "\"")
+		if row.SubjectID == node { // Self.
+			svgNode.AbsoluteName = name
+			svgNode.DescendentStatVarCount = int32(row.DescendentStatVarCount)
+			continue
+		}
+		svgNode.ChildStatVarGroups = append(svgNode.ChildStatVarGroups, &pb.StatVarGroupNode_ChildSVG{
+			Id:                     row.SubjectID,
+			SpecializedEntity:      getSpecializedEntity(node, row.SubjectID, name),
+			DisplayName:            name,
+			DescendentStatVarCount: int32(row.DescendentStatVarCount),
+		})
+		allChildren[row.SubjectID] = true
+	}
+
+	// Attach Child SVs.
+	for _, row := range svgInfo.ChildSV {
+		name := strings.Trim(row.Name, "\"")
+		svgNode.ChildStatVars = append(svgNode.ChildStatVars, &pb.StatVarGroupNode_ChildSV{
+			Id:          row.SubjectID,
+			DisplayName: name,
+			HasData:     true,
+		})
+		allChildren[row.SubjectID] = true
+	}
+
+	// Attach missing children.
+	for _, row := range svgInfo.SVGChild {
+		if _, ok := allChildren[row.SubjectID]; ok {
+			continue
+		}
+		name := strings.Trim(row.Name, "\"")
+		switch row.Predicate {
+		case predicateSpecializationOf:
+			svgNode.ChildStatVarGroups = append(svgNode.ChildStatVarGroups, &pb.StatVarGroupNode_ChildSVG{
+				Id:                row.SubjectID,
+				SpecializedEntity: getSpecializedEntity(node, row.SubjectID, row.Name),
+				DisplayName:       row.Name,
+			})
+		case predicateMemberOf:
+			svgNode.ChildStatVars = append(svgNode.ChildStatVars, &pb.StatVarGroupNode_ChildSV{
+				Id:          row.SubjectID,
+				DisplayName: name,
+				HasData:     false,
+			})
+		}
+	}
+
+	sortSVGNode(svgNode)
+
 	return response
 }

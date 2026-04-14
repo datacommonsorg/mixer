@@ -1,1 +1,10 @@
-{}
+{
+  "data": [
+    {
+      "node": "dc/topic/Demographics",
+      "info": {
+        "descendentStatVarCount": 2
+      }
+    }
+  ]
+}

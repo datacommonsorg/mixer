@@ -606,6 +606,67 @@ func (sds *SpannerDataSource) handleEventCollection(ctx context.Context, req *pb
 }
 
 func (sds *SpannerDataSource) BulkVariableGroupInfo(ctx context.Context, req *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error) {
-	// TODO: Update with implementation.
-	return &pbv1.BulkVariableGroupInfoResponse{}, nil
+	// Validate input.
+	if len(req.GetNodes()) == 0 {
+		return nil, status.Errorf(codes.InvalidArgument, "request must specify at least one node")
+	}
+	if len(req.GetNodes()) > 1 && (len(req.ConstrainedEntities) > 0 || req.NumEntitiesExistence > 0) {
+		return nil, status.Errorf(codes.InvalidArgument, "constrainedEntities and numEntitiesExistence can only be used when one node is specified")
+	}
+	if req.NumEntitiesExistence < 0 {
+		return nil, status.Errorf(codes.InvalidArgument, "numEntitiesExistence must be non-negative")
+	}
+	var svgs []string
+	for _, node := range req.GetNodes() {
+		if !strings.HasPrefix(node, prefixTopic) {
+			svgs = append(svgs, node)
+		}
+	}
+
+	// Unfiltered case.
+	if len(req.ConstrainedEntities) == 0 && req.NumEntitiesExistence == 0 {
+		svgInfo, err := sds.client.GetStatVarGroupNode(ctx, svgs)
+		if err != nil {
+			return nil, status.Errorf(codes.Internal, "error getting StatVarGroupNode from Spanner: %v", err)
+		}
+		return svgInfoToBulkVariableGroupInfoResponse(svgInfo, req.GetNodes()), nil
+	}
+
+	var constrainedPlaces []string
+	var constrainedImport string
+	for _, constraint := range req.ConstrainedEntities {
+		if strings.HasPrefix(constraint, prefixDataset) || strings.HasPrefix(constraint, prefixSource) {
+			if constrainedImport != "" {
+				return nil, status.Errorf(codes.InvalidArgument, "only one import constraint can be specified")
+			}
+			constrainedImport = constraint
+		} else {
+			constrainedPlaces = append(constrainedPlaces, constraint)
+		}
+	}
+
+	// Filter Topic.
+	if strings.HasPrefix(req.GetNodes()[0], prefixTopic) {
+		count, err := sds.client.GetFilteredTopic(ctx, req.GetNodes()[0], constrainedPlaces, constrainedImport, int(req.NumEntitiesExistence))
+		if err != nil {
+			return nil, status.Errorf(codes.Internal, "error getting filtered topic count from Spanner: %v", err)
+		}
+		return &pbv1.BulkVariableGroupInfoResponse{
+			Data: []*pbv1.VariableGroupInfoResponse{
+				{
+					Node: req.GetNodes()[0],
+					Info: &pb.StatVarGroupNode{
+						DescendentStatVarCount: int32(count),
+					},
+				},
+			},
+		}, nil
+	}
+
+	// Filter StatVarGroup.
+	filteredSVGInfo, err := sds.client.GetFilteredStatVarGroupNode(ctx, svgs[0], constrainedPlaces, constrainedImport, int(req.NumEntitiesExistence))
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, "error getting filtered StatVarGroupNode from Spanner: %v", err)
+	}
+	return filteredSVGInfoToBulkVariableGroupInfoResponse(filteredSVGInfo, req.GetNodes()[0]), nil
 }
