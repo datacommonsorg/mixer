@@ -604,3 +604,8 @@ func (sds *SpannerDataSource) handleEventCollection(ctx context.Context, req *pb
 	}, nil
 
 }
+
+func (sds *SpannerDataSource) BulkVariableGroupInfo(ctx context.Context, req *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error) {
+	// TODO: Update with implementation.
+	return &pbv1.BulkVariableGroupInfoResponse{}, nil
+}

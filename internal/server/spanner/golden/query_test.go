@@ -286,6 +286,67 @@ func TestGetEventCollection(t *testing.T) {
 	}
 }
 
+func TestGetStatVarGroupNode(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+
+	for _, c := range getStatVarGroupNodeTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			actual, err := client.GetStatVarGroupNode(ctx, c.nodes)
+			if err != nil {
+				return nil, err
+			}
+			sortStatVarGroupNode(actual)
+			return actual, nil
+		})
+	}
+}
+
+func TestGetFilteredStatVarGroupNode(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+
+	for _, c := range getFilteredStatVarGroupNodeTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			actual, err := client.GetFilteredStatVarGroupNode(ctx, c.node, c.constrainedPlaces, c.constrainedImport, c.numEntitiesExistence)
+			if err != nil {
+				return nil, err
+			}
+			sortFilteredStatVarGroupNode(actual)
+			return actual, nil
+		})
+	}
+}
+
+func TestGetFilteredTopic(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+
+	for _, c := range getFilteredTopicTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return client.GetFilteredTopic(ctx, c.node, c.constrainedPlaces, c.constrainedImport, c.numEntitiesExistence)
+		})
+	}
+}
+
 // runQueryGoldenTest is a helper function that performs the golden file validation.
 func runQueryGoldenTest(t *testing.T, goldenFile string, fn goldenTestFunc) {
 	t.Helper()
@@ -363,5 +424,31 @@ func sortObservations(results []*spanner.Observation) {
 		}
 
 		return a.FacetId < b.FacetId
+	})
+}
+
+// sortStatVarGroupNode sorts StatVarGroupNode results by SVG and subject_id to ensure deterministic order in tests.
+func sortStatVarGroupNode(results []*spanner.StatVarGroupNode) {
+	sort.Slice(results, func(i, j int) bool {
+		a, b := results[i], results[j]
+
+		if a.SVG != b.SVG {
+			return a.SVG < b.SVG
+		}
+
+		return a.SubjectID < b.SubjectID
+	})
+}
+
+// sortFilteredStatVarGroupNode sorts the children of a FilteredStatVarGroupNode by subject_id to ensure deterministic order in tests.
+func sortFilteredStatVarGroupNode(results *spanner.FilteredStatVarGroupNode) {
+	sort.Slice(results.SVGChild, func(i, j int) bool {
+		return results.SVGChild[i].SubjectID < results.SVGChild[j].SubjectID
+	})
+	sort.Slice(results.ChildSV, func(i, j int) bool {
+		return results.ChildSV[i].SubjectID < results.ChildSV[j].SubjectID
+	})
+	sort.Slice(results.ChildSVG, func(i, j int) bool {
+		return results.ChildSVG[i].SubjectID < results.ChildSVG[j].SubjectID
 	})
 }

@@ -78,6 +78,15 @@ func (m *mockSpannerClient) GetEventCollectionDcids(ctx context.Context, placeID
 func (m *mockSpannerClient) GetEventCollection(ctx context.Context, req *pbv1.EventCollectionRequest) (*pbv1.EventCollection, error) {
 	return nil, nil
 }
+func (m *mockSpannerClient) GetStatVarGroupNode(ctx context.Context, nodes []string) ([]*spanner.StatVarGroupNode, error) {
+	return nil, nil
+}
+func (m *mockSpannerClient) GetFilteredStatVarGroupNode(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (*spanner.FilteredStatVarGroupNode, error) {
+	return nil, nil
+}
+func (m *mockSpannerClient) GetFilteredTopic(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (int, error) {
+	return 0, nil
+}
 func (m *mockSpannerClient) Id() string { return "mock" }
 func (m *mockSpannerClient) Start()     {}
 func (m *mockSpannerClient) Close()     {}

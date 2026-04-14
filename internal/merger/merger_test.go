@@ -2126,3 +2126,136 @@ func TestMergeMultiBulkVariableInfo(t *testing.T) {
 		}
 	}
 }
+
+func TestMergeMultiBulkVariableGroupInfo(t *testing.T) {
+	cmpOpts := cmp.Options{protocmp.Transform()}
+	for _, c := range []struct {
+		allResp []*pbv1.BulkVariableGroupInfoResponse
+		want    *pbv1.BulkVariableGroupInfoResponse
+	}{
+		{
+			[]*pbv1.BulkVariableGroupInfoResponse{
+				{
+					Data: []*pbv1.VariableGroupInfoResponse{
+						{
+							Node: "dc/g/Root",
+							Info: &pb.StatVarGroupNode{
+								AbsoluteName: "Data Commons Variables",
+								ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+									{
+										Id: "dc/g/Demographics",
+									},
+									{
+										Id: "dc/g/Economy",
+									},
+								},
+								ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+									{
+										Id: "Count_Person",
+									},
+								},
+								DescendentStatVarCount: 10,
+							},
+						},
+					},
+				},
+				nil,
+				{
+					Data: []*pbv1.VariableGroupInfoResponse{
+						{
+							Node: "dc/g/Custom",
+							Info: &pb.StatVarGroupNode{
+								AbsoluteName: "Custom Group",
+								ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+									{
+										Id: "dc/g/CustomSubgroup",
+									},
+								},
+								ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+									{
+										Id: "Custom_SV",
+									},
+								},
+								DescendentStatVarCount: 3,
+							},
+						},
+						{
+							Node: "dc/g/Root",
+							Info: &pb.StatVarGroupNode{
+								ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+									{
+										Id: "dc/g/Health",
+									},
+								},
+								ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+									{
+										Id: "Life_ExpectancyPerson",
+									},
+									{
+										Id: "Median_Age_Person",
+									},
+								},
+								DescendentStatVarCount: 5,
+							},
+						},
+					},
+				},
+			},
+			&pbv1.BulkVariableGroupInfoResponse{
+				Data: []*pbv1.VariableGroupInfoResponse{
+					{
+						Node: "dc/g/Custom",
+						Info: &pb.StatVarGroupNode{
+							AbsoluteName: "Custom Group",
+							ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+								{
+									Id: "dc/g/CustomSubgroup",
+								},
+							},
+							ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+								{
+									Id: "Custom_SV",
+								},
+							},
+							DescendentStatVarCount: 3,
+						},
+					},
+					{
+						Node: "dc/g/Root",
+						Info: &pb.StatVarGroupNode{
+							AbsoluteName: "Data Commons Variables",
+							ChildStatVarGroups: []*pb.StatVarGroupNode_ChildSVG{
+								{
+									Id: "dc/g/Demographics",
+								},
+								{
+									Id: "dc/g/Economy",
+								},
+								{
+									Id: "dc/g/Health",
+								},
+							},
+							ChildStatVars: []*pb.StatVarGroupNode_ChildSV{
+								{
+									Id: "Count_Person",
+								},
+								{
+									Id: "Life_ExpectancyPerson",
+								},
+								{
+									Id: "Median_Age_Person",
+								},
+							},
+							DescendentStatVarCount: 15,
+						},
+					},
+				},
+			},
+		},
+	} {
+		got := MergeMultiBulkVariableGroupInfo(c.allResp)
+		if diff := cmp.Diff(got, c.want, cmpOpts); diff != "" {
+			t.Errorf("MergeMultiBulkVariableGroupInfo(%v) got diff: %s", c.allResp, diff)
+		}
+	}
+}

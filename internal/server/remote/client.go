@@ -120,3 +120,13 @@ func (rc *RemoteClient) BulkVariableInfo(req *pbv1.BulkVariableInfoRequest) (*pb
 	}
 	return resp, nil
 }
+
+func (rc *RemoteClient) BulkVariableGroupInfo(req *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error) {
+	resp := &pbv1.BulkVariableGroupInfoResponse{}
+	// TODO: Update the endpoint to /v2/bulk/info/variable-group once it's supported by the remote mixer.
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v1/bulk/info/variable-group", req, resp)
+	if err != nil {
+		return nil, err
+	}
+	return resp, nil
+}
