@@ -915,14 +915,13 @@ func filteredSVGInfoToBulkVariableGroupInfoResponse(svgInfo *FilteredStatVarGrou
 		case predicateSpecializationOf:
 			svgNode.ChildStatVarGroups = append(svgNode.ChildStatVarGroups, &pb.StatVarGroupNode_ChildSVG{
 				Id:                row.SubjectID,
-				SpecializedEntity: getSpecializedEntity(node, row.SubjectID, row.Name),
-				DisplayName:       row.Name,
+				SpecializedEntity: getSpecializedEntity(node, row.SubjectID, name),
+				DisplayName:       name,
 			})
 		case predicateMemberOf:
 			svgNode.ChildStatVars = append(svgNode.ChildStatVars, &pb.StatVarGroupNode_ChildSV{
 				Id:          row.SubjectID,
 				DisplayName: name,
-				HasData:     false,
 			})
 		}
 	}
