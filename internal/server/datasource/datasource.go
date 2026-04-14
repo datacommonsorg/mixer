@@ -43,4 +43,5 @@ type DataSource interface {
 	Sparql(context.Context, *pb.SparqlRequest) (*pb.QueryResponse, error)
 	Event(context.Context, *pbv2.EventRequest) (*pbv2.EventResponse, error)
 	BulkVariableInfo(context.Context, *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error)
+	BulkVariableGroupInfo(context.Context, *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error)
 }

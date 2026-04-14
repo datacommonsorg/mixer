@@ -50,6 +50,7 @@ const (
 	Mixer_V3Event_FullMethodName                      = "/datacommons.Mixer/V3Event"
 	Mixer_V3Sparql_FullMethodName                     = "/datacommons.Mixer/V3Sparql"
 	Mixer_V3BulkVariableInfo_FullMethodName           = "/datacommons.Mixer/V3BulkVariableInfo"
+	Mixer_V3BulkVariableGroupInfo_FullMethodName      = "/datacommons.Mixer/V3BulkVariableGroupInfo"
 	Mixer_V2Sparql_FullMethodName                     = "/datacommons.Mixer/V2Sparql"
 	Mixer_V2Resolve_FullMethodName                    = "/datacommons.Mixer/V2Resolve"
 	Mixer_V2Node_FullMethodName                       = "/datacommons.Mixer/V2Node"
@@ -119,6 +120,7 @@ type MixerClient interface {
 	V3Event(ctx context.Context, in *v2.EventRequest, opts ...grpc.CallOption) (*v2.EventResponse, error)
 	V3Sparql(ctx context.Context, in *proto.SparqlRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error)
 	V3BulkVariableInfo(ctx context.Context, in *v1.BulkVariableInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableInfoResponse, error)
+	V3BulkVariableGroupInfo(ctx context.Context, in *v1.BulkVariableGroupInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableGroupInfoResponse, error)
 	V2Sparql(ctx context.Context, in *proto.SparqlRequest, opts ...grpc.CallOption) (*proto.QueryResponse, error)
 	V2Resolve(ctx context.Context, in *v2.ResolveRequest, opts ...grpc.CallOption) (*v2.ResolveResponse, error)
 	V2Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error)
@@ -277,6 +279,15 @@ func (c *mixerClient) V3Sparql(ctx context.Context, in *proto.SparqlRequest, opt
 func (c *mixerClient) V3BulkVariableInfo(ctx context.Context, in *v1.BulkVariableInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableInfoResponse, error) {
 	out := new(v1.BulkVariableInfoResponse)
 	err := c.cc.Invoke(ctx, Mixer_V3BulkVariableInfo_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) V3BulkVariableGroupInfo(ctx context.Context, in *v1.BulkVariableGroupInfoRequest, opts ...grpc.CallOption) (*v1.BulkVariableGroupInfoResponse, error) {
+	out := new(v1.BulkVariableGroupInfoResponse)
+	err := c.cc.Invoke(ctx, Mixer_V3BulkVariableGroupInfo_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -799,6 +810,7 @@ type MixerServer interface {
 	V3Event(context.Context, *v2.EventRequest) (*v2.EventResponse, error)
 	V3Sparql(context.Context, *proto.SparqlRequest) (*proto.QueryResponse, error)
 	V3BulkVariableInfo(context.Context, *v1.BulkVariableInfoRequest) (*v1.BulkVariableInfoResponse, error)
+	V3BulkVariableGroupInfo(context.Context, *v1.BulkVariableGroupInfoRequest) (*v1.BulkVariableGroupInfoResponse, error)
 	V2Sparql(context.Context, *proto.SparqlRequest) (*proto.QueryResponse, error)
 	V2Resolve(context.Context, *v2.ResolveRequest) (*v2.ResolveResponse, error)
 	V2Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error)
@@ -916,6 +928,9 @@ func (UnimplementedMixerServer) V3Sparql(context.Context, *proto.SparqlRequest) 
 }
 func (UnimplementedMixerServer) V3BulkVariableInfo(context.Context, *v1.BulkVariableInfoRequest) (*v1.BulkVariableInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V3BulkVariableInfo not implemented")
+}
+func (UnimplementedMixerServer) V3BulkVariableGroupInfo(context.Context, *v1.BulkVariableGroupInfoRequest) (*v1.BulkVariableGroupInfoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method V3BulkVariableGroupInfo not implemented")
 }
 func (UnimplementedMixerServer) V2Sparql(context.Context, *proto.SparqlRequest) (*proto.QueryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V2Sparql not implemented")
@@ -1219,6 +1234,24 @@ func _Mixer_V3BulkVariableInfo_Handler(srv interface{}, ctx context.Context, dec
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).V3BulkVariableInfo(ctx, req.(*v1.BulkVariableInfoRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_V3BulkVariableGroupInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(v1.BulkVariableGroupInfoRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).V3BulkVariableGroupInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_V3BulkVariableGroupInfo_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).V3BulkVariableGroupInfo(ctx, req.(*v1.BulkVariableGroupInfoRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2265,6 +2298,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "V3BulkVariableInfo",
 			Handler:    _Mixer_V3BulkVariableInfo_Handler,
+		},
+		{
+			MethodName: "V3BulkVariableGroupInfo",
+			Handler:    _Mixer_V3BulkVariableGroupInfo_Handler,
 		},
 		{
 			MethodName: "V2Sparql",
