@@ -90,6 +90,8 @@ func newEmptyResponse(requestType dispatcher.RequestType) (proto.Message, error)
 		return &pbv2.EventResponse{}, nil
 	case dispatcher.TypeBulkVariableInfo:
 		return &pbv1.BulkVariableInfoResponse{}, nil
+	case dispatcher.TypeBulkVariableGroupInfo:
+		return &pbv1.BulkVariableGroupInfoResponse{}, nil
 	default:
 		return nil, fmt.Errorf("unknown request type for caching: %v", requestType)
 	}
