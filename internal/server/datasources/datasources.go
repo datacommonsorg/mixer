@@ -157,3 +157,14 @@ func (ds *DataSources) BulkVariableInfo(ctx context.Context, in *pbv1.BulkVariab
 		},
 	)
 }
+
+func (ds *DataSources) BulkVariableGroupInfo(ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error) {
+	return fetchAndMerge(ctx, ds.sources, in,
+		func(c context.Context, s datasource.DataSource, r *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error) {
+			return s.BulkVariableGroupInfo(c, r)
+		},
+		func(all []*pbv1.BulkVariableGroupInfoResponse) (*pbv1.BulkVariableGroupInfoResponse, error) {
+			return merger.MergeMultiBulkVariableGroupInfo(all), nil
+		},
+	)
+}

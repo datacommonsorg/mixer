@@ -103,6 +103,14 @@ service Mixer {
     };
   }
 
+  rpc V3BulkVariableGroupInfo(datacommons.v1.BulkVariableGroupInfoRequest)
+      returns (datacommons.v1.BulkVariableGroupInfoResponse) {
+    option (google.api.http) = {
+      get : "/v3/bulk/info/variable-group"
+      additional_bindings : {post : "/v3/bulk/info/variable-group" body : "*"}
+    };
+  }
+
   // ======================  V2   V2   V2   V2  ======================
 
   rpc V2Sparql(SparqlRequest) returns (QueryResponse) {

@@ -88,12 +88,16 @@ func (m *coordinateMockSpannerClient) GetProvenanceSummary(ctx context.Context, 
 	return nil, nil
 }
 
-func (m *coordinateMockSpannerClient) GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error) {
+func (m *coordinateMockSpannerClient) GetStatVarGroupNode(ctx context.Context, nodes []string) ([]*StatVarGroupNode, error) {
 	return nil, nil
 }
 
-func (m *coordinateMockSpannerClient) VectorSearchQuery(ctx context.Context, limit int, embeddings []float64, numLeaves int, threshold float64) ([]*VectorSearchResult, error) {
+func (m *coordinateMockSpannerClient) GetFilteredStatVarGroupNode(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (*FilteredStatVarGroupNode, error) {
 	return nil, nil
+}
+
+func (m *coordinateMockSpannerClient) GetFilteredTopic(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (int, error) {
+	return 0, nil
 }
 
 func (m *coordinateMockSpannerClient) Id() string { return "mock" }
@@ -331,4 +335,3 @@ func TestResolveCoordinateSkipsS2CellCandidatesByType(t *testing.T) {
 		t.Fatalf("Resolve() diff (-want +got):\n%s", diff)
 	}
 }
-

@@ -1,0 +1,140 @@
+[
+  {
+    "VariableMeasured": "AirPollutant_Cancer_Risk",
+    "ObservationAbout": "geoId/10001",
+    "FacetId": "1118384277",
+    "Observations": [
+      {
+        "Date": "2016",
+        "Value": "32.3797007406031"
+      },
+      {
+        "Date": "2017",
+        "Value": "32.3797007406031"
+      },
+      {
+        "Date": "2018",
+        "Value": "32.3797007406031"
+      },
+      {
+        "Date": "2019",
+        "Value": "25.9511845860844"
+      },
+      {
+        "Date": "2020",
+        "Value": "25.9511845860823"
+      },
+      {
+        "Date": "2021",
+        "Value": "20.3125"
+      },
+      {
+        "Date": "2022",
+        "Value": "20.3846153846154"
+      },
+      {
+        "Date": "2023",
+        "Value": "20.0"
+      }
+    ],
+    "ImportName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
+    "ObservationPeriod": "P1Y",
+    "MeasurementMethod": "",
+    "Unit": "PerMillionPerson",
+    "ScalingFactor": "",
+    "IsDcAggregate": true,
+    "ProvenanceURL": "https://gaftp.epa.gov/EJSCREEN/"
+  },
+  {
+    "VariableMeasured": "AirPollutant_Cancer_Risk",
+    "ObservationAbout": "geoId/10003",
+    "FacetId": "1118384277",
+    "Observations": [
+      {
+        "Date": "2016",
+        "Value": "42.3204624980178"
+      },
+      {
+        "Date": "2017",
+        "Value": "42.3204624980178"
+      },
+      {
+        "Date": "2018",
+        "Value": "42.3204624980178"
+      },
+      {
+        "Date": "2019",
+        "Value": "36.5939077478992"
+      },
+      {
+        "Date": "2020",
+        "Value": "36.5939077478982"
+      },
+      {
+        "Date": "2021",
+        "Value": "31.7829457364341"
+      },
+      {
+        "Date": "2022",
+        "Value": "32.4347826086956"
+      },
+      {
+        "Date": "2023",
+        "Value": "30.1739130434783"
+      }
+    ],
+    "ImportName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
+    "ObservationPeriod": "P1Y",
+    "MeasurementMethod": "",
+    "Unit": "PerMillionPerson",
+    "ScalingFactor": "",
+    "IsDcAggregate": true,
+    "ProvenanceURL": "https://gaftp.epa.gov/EJSCREEN/"
+  },
+  {
+    "VariableMeasured": "AirPollutant_Cancer_Risk",
+    "ObservationAbout": "geoId/10005",
+    "FacetId": "1118384277",
+    "Observations": [
+      {
+        "Date": "2016",
+        "Value": "28.1008918899321"
+      },
+      {
+        "Date": "2017",
+        "Value": "28.1008918899321"
+      },
+      {
+        "Date": "2018",
+        "Value": "28.1008918899321"
+      },
+      {
+        "Date": "2019",
+        "Value": "22.7780138123528"
+      },
+      {
+        "Date": "2020",
+        "Value": "22.7780138123566"
+      },
+      {
+        "Date": "2021",
+        "Value": "20.0"
+      },
+      {
+        "Date": "2022",
+        "Value": "20.0"
+      },
+      {
+        "Date": "2023",
+        "Value": "20.0"
+      }
+    ],
+    "ImportName": "EPA_EJSCREEN_AggCensusTract_AggCounty",
+    "ObservationPeriod": "P1Y",
+    "MeasurementMethod": "",
+    "Unit": "PerMillionPerson",
+    "ScalingFactor": "",
+    "IsDcAggregate": true,
+    "ProvenanceURL": "https://gaftp.epa.gov/EJSCREEN/"
+  }
+]

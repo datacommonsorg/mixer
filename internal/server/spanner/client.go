@@ -44,8 +44,9 @@ type SpannerClient interface {
 	GetEventCollection(ctx context.Context, req *pbv1.EventCollectionRequest) (*pbv1.EventCollection, error)
 	Sparql(ctx context.Context, nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) ([][]string, error)
 	GetProvenanceSummary(ctx context.Context, ids []string) (map[string]map[string]*pb.StatVarSummary_ProvenanceSummary, error)
-	GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error)
-	VectorSearchQuery(ctx context.Context, limit int, embeddings []float64, numLeaves int, threshold float64) ([]*VectorSearchResult, error)
+	GetStatVarGroupNode(ctx context.Context, nodes []string) ([]*StatVarGroupNode, error)
+	GetFilteredStatVarGroupNode(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (*FilteredStatVarGroupNode, error)
+	GetFilteredTopic(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (int, error)
 	Id() string
 	Start()
 	Close()
@@ -88,8 +89,9 @@ func newSpannerDatabaseClient(client *spanner.Client, useStaleReads bool) (*span
 	return sc, nil
 }
 
-// NewSpannerClient creates a new SpannerClient from the config yaml string and an optional database override.
-func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string, useStaleReads bool) (SpannerClient, error) {
+// NewRawSpannerClient creates a new SpannerClient without the schema selector.
+// This is intended for testing and internal use where a direct client is needed.
+func NewRawSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string, useStaleReads bool) (SpannerClient, error) {
 	cfg, err := createSpannerConfig(spannerConfigYaml, databaseOverride)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
@@ -99,6 +101,16 @@ func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride s
 		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
 	}
 	return newSpannerDatabaseClient(client, useStaleReads)
+}
+
+// NewSpannerClient creates a new SpannerClient from the config yaml string and an optional database override.
+// It returns a wrapper client that handles request-time schema dispatching.
+func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string, useStaleReads bool) (SpannerClient, error) {
+	rawClient, err := NewRawSpannerClient(ctx, spannerConfigYaml, databaseOverride, useStaleReads)
+	if err != nil {
+		return nil, err
+	}
+	return NewSchemaSelectorClient(rawClient)
 }
 
 // createSpannerClient creates the database name string and initializes the Spanner client.

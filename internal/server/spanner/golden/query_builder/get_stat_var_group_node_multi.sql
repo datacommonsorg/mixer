@@ -17,7 +17,7 @@
 		ChildSVGCounts AS (
 			SELECT 
 				e.object_id AS child_svg, 
-				COUNT(e.subject_id) AS descendent_stat_vars
+				COUNT(e.subject_id) AS descendent_stat_var_count
 			FROM UniqueChildSVGs u
 			JOIN@{JOIN_METHOD=APPLY_JOIN} Edge e 
 			ON e.object_id = u.child_svg
@@ -39,7 +39,7 @@
 			svg.svg,
 			n.subject_id, 
 			n.name, 
-			c.descendent_stat_vars,
+			c.descendent_stat_var_count,
 			FALSE AS has_data
 		FROM ChildSVGs svg
 		JOIN ChildSVGCounts c 
@@ -61,4 +61,3 @@
 		FROM ChildSVs sv
 		JOIN Node n 
 		ON n.subject_id = sv.child_sv
-	

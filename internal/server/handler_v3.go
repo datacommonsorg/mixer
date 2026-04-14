@@ -72,3 +72,10 @@ func (s *Server) V3BulkVariableInfo(ctx context.Context, in *pbv1.BulkVariableIn
 ) {
 	return s.dispatcher.BulkVariableInfo(ctx, in)
 }
+
+// V3BulkVariableGroupInfo implements API for mixer.V3BulkVariableGroupInfo.
+func (s *Server) V3BulkVariableGroupInfo(ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest) (
+	*pbv1.BulkVariableGroupInfoResponse, error,
+) {
+	return s.dispatcher.BulkVariableGroupInfo(ctx, in)
+}
