@@ -44,6 +44,9 @@ type SpannerClient interface {
 	GetEventCollection(ctx context.Context, req *pbv1.EventCollectionRequest) (*pbv1.EventCollection, error)
 	Sparql(ctx context.Context, nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) ([][]string, error)
 	GetProvenanceSummary(ctx context.Context, ids []string) (map[string]map[string]*pb.StatVarSummary_ProvenanceSummary, error)
+	GetStatVarGroupNode(ctx context.Context, nodes []string) ([]*StatVarGroupNode, error)
+	GetFilteredStatVarGroupNode(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (*FilteredStatVarGroupNode, error)
+	GetFilteredTopic(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (int, error)
 	Id() string
 	Start()
 	Close()

@@ -121,6 +121,42 @@ type EventIdWithMagnitudeDcid struct {
 	MagnitudeDcid string
 }
 
+// StatVarGroupNode represents the info to build a StatVarGroupNode.
+type StatVarGroupNode struct {
+	SVG                    string `spanner:"svg"`
+	SubjectID              string `spanner:"subject_id"`
+	Name                   string `spanner:"name"`
+	DescendentStatVarCount int64  `spanner:"descendent_stat_var_count"`
+	HasData                bool   `spanner:"has_data"`
+}
+
+// SVGChild represents the info to build a base SVG child.
+type SVGChild struct {
+	SubjectID string `spanner:"subject_id"`
+	Name      string `spanner:"name"`
+	Predicate string `spanner:"predicate"`
+}
+
+// ChildSV represents the info to build a child SV of an SVG.
+type ChildSV struct {
+	SubjectID string `spanner:"subject_id"`
+	Name      string `spanner:"name"`
+}
+
+// ChildSVG represents the info to build a child SVG an an SVG.
+type ChildSVG struct {
+	SubjectID              string `spanner:"subject_id"`
+	Name                   string `spanner:"name"`
+	DescendentStatVarCount int64  `spanner:"descendent_stat_var_count"`
+}
+
+// FilteredStatVarGroupNode represents the info to build a filtered StatVarGroupNode.
+type FilteredStatVarGroupNode struct {
+	SVGChild []*SVGChild
+	ChildSV  []*ChildSV
+	ChildSVG []*ChildSVG
+}
+
 // SpannerConfig struct to hold the YAML configuration to a spanner database.
 type SpannerConfig struct {
 	Project  string `yaml:"project"`

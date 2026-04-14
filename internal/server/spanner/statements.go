@@ -370,7 +370,7 @@ var statements = struct {
 		ChildSVGCounts AS (
 			SELECT 
 				e.object_id AS child_svg, 
-				COUNT(e.subject_id) AS descendent_stat_vars
+				COUNT(e.subject_id) AS descendent_stat_var_count
 			FROM UniqueChildSVGs u
 			JOIN@{JOIN_METHOD=APPLY_JOIN} Edge e 
 			ON e.object_id = u.child_svg
@@ -392,7 +392,7 @@ var statements = struct {
 			svg.svg,
 			n.subject_id, 
 			n.name, 
-			c.descendent_stat_vars,
+			c.descendent_stat_var_count,
 			FALSE AS has_data
 		FROM ChildSVGs svg
 		JOIN ChildSVGCounts c 
@@ -413,8 +413,7 @@ var statements = struct {
 			) AS has_data
 		FROM ChildSVs sv
 		JOIN Node n 
-		ON n.subject_id = sv.child_sv
-	`,
+		ON n.subject_id = sv.child_sv`,
 	attachSVG: `SELECT 
 				@nodes AS child_svg,
 				@nodes AS svg`,
@@ -422,7 +421,7 @@ var statements = struct {
 				node AS child_svg,
 				node AS svg
 				FROM UNNEST(@nodes) AS node`,
-	getSVGChildren: `		SELECT
+	getSVGChildren: `		SELECT DISTINCT
 			n.subject_id,
 			n.name,
 			e.predicate
@@ -431,8 +430,7 @@ var statements = struct {
 			SELECT subject_id, predicate FROM Edge@{FORCE_INDEX=InEdge}
 			WHERE predicate IN ('memberOf', 'specializationOf')
 				AND object_id = @node
-		) e ON n.subject_id = e.subject_id
-	`,
+		) e ON n.subject_id = e.subject_id`,
 	getFilteredChildSVs: `		SELECT
 			n.subject_id,
 			n.name
@@ -447,7 +445,7 @@ var statements = struct {
 				GROUP BY variable_measured%[2]s
 			) o ON o.variable_measured = e.subject_id
 			WHERE e.subject_id IN (
-				SELECT subject_id
+				SELECT DISTINCT subject_id
 				FROM Edge
 				WHERE object_id = @node
 					AND predicate = 'memberOf'
@@ -459,12 +457,12 @@ var statements = struct {
 	getFilteredChildSVGs: `		SELECT
 			n.subject_id,
 			n.name,
-			e_counts.descendent_stat_vars
+			e_counts.descendent_stat_var_count
 		FROM Node n
 		JOIN (
 			SELECT
 				e.object_id AS subject_id,
-				COUNT(e.subject_id) AS descendent_stat_vars
+				COUNT(e.subject_id) AS descendent_stat_var_count
 			FROM Edge e
 			JOIN@{JOIN_TYPE=HASH_JOIN} (
 				SELECT variable_measured
@@ -473,7 +471,7 @@ var statements = struct {
 			) o ON o.variable_measured = e.subject_id
 			WHERE e.predicate = 'linkedMemberOf'
 				AND e.object_id IN (
-					SELECT subject_id
+					SELECT DISTINCT subject_id
 					FROM Edge
 					WHERE object_id = @node
 						AND predicate = 'specializationOf'
@@ -485,8 +483,7 @@ var statements = struct {
 		) e_counts
 			ON n.subject_id = e_counts.subject_id`,
 	getFilteredTopic: `		SELECT
-			e.object_id AS subject_id,
-			COUNT(e.subject_id) AS descendent_stat_vars
+			COUNT(e.subject_id) AS descendent_stat_var_count
 		FROM Edge@{FORCE_INDEX=InEdge} e
 		JOIN@{JOIN_TYPE=HASH_JOIN} (
 			SELECT variable_measured

@@ -16,7 +16,7 @@
 				GROUP BY variable_measured
 			) o ON o.variable_measured = e.subject_id
 			WHERE e.subject_id IN (
-				SELECT subject_id
+				SELECT DISTINCT subject_id
 				FROM Edge
 				WHERE object_id = 'dc/g/Demographics'
 					AND predicate = 'memberOf'

@@ -1,6 +1,5 @@
 		SELECT
-			e.object_id AS subject_id,
-			COUNT(e.subject_id) AS descendent_stat_vars
+			COUNT(e.subject_id) AS descendent_stat_var_count
 		FROM Edge@{FORCE_INDEX=InEdge} e
 		JOIN@{JOIN_TYPE=HASH_JOIN} (
 			SELECT variable_measured
