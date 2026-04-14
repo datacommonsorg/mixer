@@ -16,18 +16,19 @@ package resolve
 
 import (
 	"encoding/json"
+	"strings"
 	"testing"
 )
 
 func TestSpannerSearchConfig_JSON(t *testing.T) {
 	data := []byte(`{
 		"search_algorithm": "vector_search",
-		"embedding_config": {
+		"vector_search_config": {
 			"embedding_model": "text-embedding-005",
 			"embedding_type": "RETRIEVAL_QUERY",
-			"embedding_dimension": 768
+			"vector_search_algo": "ANN"
 		},
-		"graph_mode": "default"
+		"postprocessing": ["none"]
 	}`)
 
 	var cfg SpannerSearchConfig
@@ -38,13 +39,46 @@ func TestSpannerSearchConfig_JSON(t *testing.T) {
 	if cfg.SearchAlgorithm != VectorSearch {
 		t.Errorf("Expected SearchAlgorithm=%s, got %s", VectorSearch, cfg.SearchAlgorithm)
 	}
-	if cfg.EmbeddingConfig.EmbeddingModel != "text-embedding-005" {
-		t.Errorf("Expected EmbeddingModel=text-embedding-005, got %s", cfg.EmbeddingConfig.EmbeddingModel)
+	if cfg.VectorSearchConfig.VectorSearchAlgo != VectorSearchAlgoANN {
+		t.Errorf("Expected VectorSearchAlgo=%s, got %s", VectorSearchAlgoANN, cfg.VectorSearchConfig.VectorSearchAlgo)
 	}
-	if cfg.EmbeddingConfig.EmbeddingDimension != 768 {
-		t.Errorf("Expected EmbeddingDimension=768, got %d", cfg.EmbeddingConfig.EmbeddingDimension)
+	if cfg.VectorSearchConfig.EmbeddingModel != "text-embedding-005" {
+		t.Errorf("Expected EmbeddingModel=text-embedding-005, got %s", cfg.VectorSearchConfig.EmbeddingModel)
 	}
-	if cfg.GraphMode != GraphConfigDefault {
-		t.Errorf("Expected GraphMode=%s, got %s", GraphConfigDefault, cfg.GraphMode)
+	if cfg.VectorSearchConfig.EmbeddingType != EmbeddingTypeRetrievalQuery {
+		t.Errorf("Expected EmbeddingType=%s, got %s", EmbeddingTypeRetrievalQuery, cfg.VectorSearchConfig.EmbeddingType)
+	}
+	if len(cfg.Postprocessing) != 1 || cfg.Postprocessing[0] != PostprocessingNone {
+		t.Errorf("Expected Postprocessing=[none], got %v", cfg.Postprocessing)
+	}
+}
+
+func TestGetSpannerSearchConfigPath(t *testing.T) {
+	path := GetSpannerSearchConfigPath("production")
+	if !strings.HasSuffix(path, "internal/server/v2/resolve/spanner_config/production.yaml") {
+		t.Errorf("Unexpected path suffix: %s", path)
+	}
+}
+
+func TestReadSpannerSearchConfig(t *testing.T) {
+	path := GetSpannerSearchConfigPath("production")
+	cfg, err := ReadSpannerSearchConfig(path)
+	if err != nil {
+		t.Fatalf("Failed to read SpannerSearchConfig: %v", err)
+	}
+	if cfg.SearchAlgorithm != VectorSearch {
+		t.Errorf("Expected SearchAlgorithm=%s, got %s", VectorSearch, cfg.SearchAlgorithm)
+	}
+	if cfg.VectorSearchConfig.VectorSearchAlgo != VectorSearchAlgoANN {
+		t.Errorf("Expected VectorSearchAlgo=%s, got %s", VectorSearchAlgoANN, cfg.VectorSearchConfig.VectorSearchAlgo)
+	}
+	if cfg.VectorSearchConfig.EmbeddingModel != "TextEmbeddings" {
+		t.Errorf("Expected EmbeddingModel=TextEmbeddings, got %s", cfg.VectorSearchConfig.EmbeddingModel)
+	}
+	if cfg.VectorSearchConfig.EmbeddingType != EmbeddingTypeRetrievalQuery {
+		t.Errorf("Expected EmbeddingType=%s, got %s", EmbeddingTypeRetrievalQuery, cfg.VectorSearchConfig.EmbeddingType)
+	}
+	if len(cfg.Postprocessing) != 1 || cfg.Postprocessing[0] != PostprocessingNone {
+		t.Errorf("Expected Postprocessing=[none], got %v", cfg.Postprocessing)
 	}
 }
