@@ -58,7 +58,7 @@ const (
 	timestampPollingTimeout = 10 * time.Second
 
 	// Default timeout for API requests.
-	apiTimeout = 60 * time.Second
+	ApiTimeout = 60 * time.Second
 
 	// Special edge predicates.
 	predAffectedPlace      = "affectedPlace"
@@ -668,17 +668,15 @@ func (sc *spannerDatabaseClient) executeQuery(
 ) error {
 	var queryCtx context.Context
 	var cancel context.CancelFunc
-	var timeout time.Duration
 
-	if deadline, ok := ctx.Deadline(); ok {
-		timeout = time.Until(deadline)
+	if _, ok := ctx.Deadline(); ok {
+		queryCtx, cancel = context.WithCancel(ctx)
 	} else {
 		// Fallback if the parent context surprisingly has no deadline.
 		// Using the default API timeout.
-		slog.Warn("Parent context has no deadline; using default API timeout", "timeout", apiTimeout.String())
-		timeout = apiTimeout
+		slog.Warn("Parent context has no deadline; using default API timeout", "timeout", ApiTimeout.String())
+		queryCtx, cancel = context.WithTimeout(ctx, ApiTimeout)
 	}
-	queryCtx, cancel = context.WithTimeout(ctx, timeout)
 	defer cancel()
 
 	runQuery := func(tb spanner.TimestampBound) error {
@@ -691,7 +689,6 @@ func (sc *spannerDatabaseClient) executeQuery(
 		if isTimeoutError(err) {
 			slog.ErrorContext(queryCtx, "Spanner query timed out",
 				"sql", stmt.SQL,
-				"timeout", timeout.String(),
 				"error", err.Error(),
 			)
 		}
