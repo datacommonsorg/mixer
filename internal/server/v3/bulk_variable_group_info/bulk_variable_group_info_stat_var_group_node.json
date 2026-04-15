@@ -1,1 +1,160 @@
-{}
+{
+  "data": [
+    {
+      "node": "dc/g/Agriculture",
+      "info": {
+        "absoluteName": "Agriculture",
+        "childStatVars": [
+          {
+            "id": "Count_Person_5OrLessMeter_Rural_AsAFractionOf_Count_Person",
+            "hasData": true
+          }
+        ],
+        "childStatVarGroups": [
+          {
+            "id": "dc/g/Person_EconomicSector",
+            "specializedEntity": "Economic Sector",
+            "displayName": "Person by Economic Sector",
+            "descendentStatVarCount": 702
+          },
+          {
+            "id": "dc/g/Farm",
+            "specializedEntity": "Farm",
+            "displayName": "Farm",
+            "descendentStatVarCount": 132
+          },
+          {
+            "id": "dc/g/FarmInventory",
+            "specializedEntity": "Farm Inventory",
+            "displayName": "Farm Inventory",
+            "descendentStatVarCount": 81
+          },
+          {
+            "id": "dc/g/Agriculture_Miscellaneous",
+            "specializedEntity": "Miscellaneous",
+            "displayName": "Miscellaneous",
+            "descendentStatVarCount": 41
+          },
+          {
+            "id": "dc/g/Person_OwnershipStatus",
+            "specializedEntity": "Ownership Status",
+            "displayName": "Person by Ownership Status",
+            "descendentStatVarCount": 8
+          }
+        ],
+        "descendentStatVarCount": 965
+      }
+    },
+    {
+      "node": "dc/g/SDG",
+      "info": {
+        "absoluteName": "Sustainable Development Goals",
+        "childStatVarGroups": [
+          {
+            "id": "dc/g/SDG_1",
+            "specializedEntity": "1: No Poverty",
+            "displayName": "1: No Poverty",
+            "descendentStatVarCount": 131
+          },
+          {
+            "id": "dc/g/SDG_2",
+            "specializedEntity": "2: Zero Hunger",
+            "displayName": "2: Zero Hunger",
+            "descendentStatVarCount": 75
+          },
+          {
+            "id": "dc/g/SDG_3",
+            "specializedEntity": "3: Good Health and Well-being",
+            "displayName": "3: Good Health and Well-being",
+            "descendentStatVarCount": 152
+          },
+          {
+            "id": "dc/g/SDG_4",
+            "specializedEntity": "4: Quality Education",
+            "displayName": "4: Quality Education",
+            "descendentStatVarCount": 918
+          },
+          {
+            "id": "dc/g/SDG_5",
+            "specializedEntity": "5: Gender Equality",
+            "displayName": "5: Gender Equality",
+            "descendentStatVarCount": 401
+          },
+          {
+            "id": "dc/g/SDG_6",
+            "specializedEntity": "6: Clean Water and Sanitation",
+            "displayName": "6: Clean Water and Sanitation",
+            "descendentStatVarCount": 94
+          },
+          {
+            "id": "dc/g/SDG_7",
+            "specializedEntity": "7: Affordable and Clean Energy",
+            "displayName": "7: Affordable and Clean Energy",
+            "descendentStatVarCount": 23
+          },
+          {
+            "id": "dc/g/SDG_8",
+            "specializedEntity": "8: Decent Work and Economic Growth",
+            "displayName": "8: Decent Work and Economic Growth",
+            "descendentStatVarCount": 277
+          },
+          {
+            "id": "dc/g/SDG_9",
+            "specializedEntity": "9: Industry, Innovation and Infrastructure",
+            "displayName": "9: Industry, Innovation and Infrastructure",
+            "descendentStatVarCount": 30
+          },
+          {
+            "id": "dc/g/SDG_10",
+            "specializedEntity": "10: Reduced Inequality",
+            "displayName": "10: Reduced Inequality",
+            "descendentStatVarCount": 696
+          },
+          {
+            "id": "dc/g/SDG_11",
+            "specializedEntity": "11: Sustainable Cities and Communities",
+            "displayName": "11: Sustainable Cities and Communities",
+            "descendentStatVarCount": 52
+          },
+          {
+            "id": "dc/g/SDG_12",
+            "specializedEntity": "12: Responsible Consumption and Production",
+            "displayName": "12: Responsible Consumption and Production",
+            "descendentStatVarCount": 202
+          },
+          {
+            "id": "dc/g/SDG_13",
+            "specializedEntity": "13: Climate Action",
+            "displayName": "13: Climate Action",
+            "descendentStatVarCount": 66
+          },
+          {
+            "id": "dc/g/SDG_14",
+            "specializedEntity": "14: Life Below Water",
+            "displayName": "14: Life Below Water",
+            "descendentStatVarCount": 319
+          },
+          {
+            "id": "dc/g/SDG_15",
+            "specializedEntity": "15: Life on Land",
+            "displayName": "15: Life on Land",
+            "descendentStatVarCount": 165
+          },
+          {
+            "id": "dc/g/SDG_16",
+            "specializedEntity": "16: Peace and Justice Strong Institutions",
+            "displayName": "16: Peace and Justice Strong Institutions",
+            "descendentStatVarCount": 1439
+          },
+          {
+            "id": "dc/g/SDG_17",
+            "specializedEntity": "17: Partnerships to achieve the Goal",
+            "displayName": "17: Partnerships to achieve the Goal",
+            "descendentStatVarCount": 135
+          }
+        ],
+        "descendentStatVarCount": 4625
+      }
+    }
+  ]
+}

@@ -652,15 +652,34 @@ func (s *Server) V2BulkVariableInfo(
 func (s *Server) V2BulkVariableGroupInfo(
 	ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest,
 ) (*pbv1.BulkVariableGroupInfoResponse, error) {
+	if s.shouldDivertV2(ctx) {
+		return s.dispatcher.BulkVariableGroupInfo(ctx, in)
+	}
+
+	v2StartTime := time.Now()
+
 	// Use the V1 implementation for now.
-	resp, err := s.BulkVariableGroupInfo(ctx, in)
+	v2Resp, err := s.BulkVariableGroupInfo(ctx, in)
 	if err != nil {
 		return nil, err
 	}
 
-	convertV1ToV2BulkVariableGroupInfo(resp)
+	convertV1ToV2BulkVariableGroupInfo(v2Resp)
 
-	return resp, nil
+	v2Latency := time.Since(v2StartTime)
+
+	s.maybeMirrorV3(
+		ctx,
+		in,
+		v2Resp,
+		v2Latency,
+		func(ctx context.Context, req proto.Message) (proto.Message, error) {
+			return s.V3BulkVariableGroupInfo(ctx, req.(*pbv1.BulkVariableGroupInfoRequest))
+		},
+		GetV2BulkVariableGroupInfoCmpOpts(),
+	)
+
+	return v2Resp, nil
 }
 
 // resolveRouting determines whether to route to local and/or remote instances
