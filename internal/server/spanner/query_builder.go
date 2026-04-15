@@ -62,6 +62,18 @@ const (
 	predicateIsPartOf = "isPartOf"
 	// source predicate
 	predicateSource = "source"
+	// memberOf predicate
+	predicateMemberOf = "memberOf"
+	// specializationOf predicate
+	predicateSpecializationOf = "specializationOf"
+	// Dataset dcid prefix
+	prefixDataset = "dc/d/"
+	// Source dcid prefix
+	prefixSource = "dc/s/"
+	// Topic dcid prefix
+	prefixTopic = "dc/topic/"
+	// StatVarGroup dcid prefix
+	prefixSVG = "dc/g/"
 )
 
 func GetCompletionTimestampQuery() *spanner.Statement {
@@ -535,7 +547,7 @@ func getParamStatement(param string, inputs []string) (string, interface{}) {
 
 // getImportFilterPredicate returns the appropriate filter predicate for a given filter entity.
 func getImportFilterPredicate(entity string) string {
-	if strings.HasPrefix(entity, "dc/d/") {
+	if strings.HasPrefix(entity, prefixDataset) {
 		return predicateIsPartOf
 	}
 	return predicateSource

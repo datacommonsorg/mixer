@@ -1,1 +1,131 @@
-{}
+{
+  "data": [
+    {
+      "node": "dc/g/Environment",
+      "info": {
+        "absoluteName": "Environment",
+        "childStatVars": [
+          {
+            "id": "Mean_WindDirection"
+          },
+          {
+            "id": "Mean_PalmerDroughtSeverityIndex",
+            "displayName": "Mean Palmer Drought Severity Index (PDSI)"
+          }
+        ],
+        "childStatVarGroups": [
+          {
+            "id": "dc/g/Place_AreaType",
+            "specializedEntity": "Area Type",
+            "displayName": "Place by Area Type"
+          },
+          {
+            "id": "dc/g/Atmosphere",
+            "specializedEntity": "Atmosphere",
+            "displayName": "Atmosphere"
+          },
+          {
+            "id": "dc/g/BodyOfWater",
+            "specializedEntity": "Body of Water",
+            "displayName": "Body of Water"
+          },
+          {
+            "id": "dc/g/Disasters",
+            "specializedEntity": "Disasters",
+            "displayName": "Disasters",
+            "descendentStatVarCount": 22
+          },
+          {
+            "id": "dc/g/Emissions",
+            "specializedEntity": "Emissions",
+            "displayName": "Emissions",
+            "descendentStatVarCount": 246
+          },
+          {
+            "id": "dc/g/LandCover",
+            "specializedEntity": "Land Cover",
+            "displayName": "Land Cover"
+          },
+          {
+            "id": "dc/g/Environment_Miscellaneous",
+            "specializedEntity": "Miscellaneous",
+            "displayName": "Miscellaneous",
+            "descendentStatVarCount": 85
+          },
+          {
+            "id": "dc/g/NaturalHazardImpact",
+            "specializedEntity": "Natural Hazard Impact",
+            "displayName": "Natural Hazard Impact"
+          },
+          {
+            "id": "dc/g/Household_NumberOfVehicles",
+            "specializedEntity": "Number Of Vehicles",
+            "displayName": "Household by Number of Vehicles"
+          },
+          {
+            "id": "dc/g/PollutedSites",
+            "specializedEntity": "Polluted Sites",
+            "displayName": "Polluted Sites"
+          },
+          {
+            "id": "dc/g/SeaBodyOfWater",
+            "specializedEntity": "Sea Body of Water",
+            "displayName": "Sea Body of Water"
+          },
+          {
+            "id": "dc/g/Household_TransportationType",
+            "specializedEntity": "Transportation Type",
+            "displayName": "Household by Transportation Type"
+          },
+          {
+            "id": "dc/g/WasteGenerated",
+            "specializedEntity": "Waste Generated",
+            "displayName": "Waste Generated"
+          },
+          {
+            "id": "dc/g/Person_WasteTreatmentType",
+            "specializedEntity": "Waste Treatment Type",
+            "displayName": "Person by Waste Treatment Type",
+            "descendentStatVarCount": 7
+          },
+          {
+            "id": "dc/g/Water",
+            "specializedEntity": "Water",
+            "displayName": "Water"
+          },
+          {
+            "id": "dc/g/Person_WaterTreatmentLevel",
+            "specializedEntity": "Water Treatment Level",
+            "displayName": "Person by Water Treatment Level",
+            "descendentStatVarCount": 4
+          },
+          {
+            "id": "dc/g/Person_WaterTreatmentStatus",
+            "specializedEntity": "Water Treatment Status",
+            "displayName": "Person by Water Treatment Status",
+            "descendentStatVarCount": 6
+          },
+          {
+            "id": "dc/g/Person_WaterTreatmentSystem",
+            "specializedEntity": "Water Treatment System",
+            "displayName": "Person by Water Treatment System",
+            "descendentStatVarCount": 7
+          },
+          {
+            "id": "dc/g/Person_WaterTreatmentType",
+            "specializedEntity": "Water Treatment Type",
+            "displayName": "Person by Water Treatment Type",
+            "descendentStatVarCount": 6
+          },
+          {
+            "id": "dc/g/Weather",
+            "specializedEntity": "Weather",
+            "displayName": "Weather",
+            "descendentStatVarCount": 735
+          }
+        ],
+        "descendentStatVarCount": 1095
+      }
+    }
+  ]
+}
