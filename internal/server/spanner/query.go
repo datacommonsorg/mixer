@@ -760,9 +760,20 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 	defer iter.Stop()
 
 	row, err := iter.Next()
+	
+	// Handle missing or empty table cases gracefully
+	var warnMsg string
 	if err == iterator.Done {
-		return fmt.Errorf("no valid rows found in IngestionHistory")
+		warnMsg = "No valid rows found in IngestionHistory."
+	} else if err != nil && spanner.ErrCode(err) == codes.NotFound {
+		warnMsg = "IngestionHistory table not found."
 	}
+
+	if warnMsg != "" {
+		slog.Warn(warnMsg + " Startup will proceed with strong reads.")
+		return nil
+	}
+
 	if err != nil {
 		if isTimeoutError(err) {
 			slog.ErrorContext(queryCtx, "Spanner timestamp polling timed out",
@@ -829,7 +840,8 @@ func (sc *spannerDatabaseClient) executeQuery(
 	if sc.useStaleReads {
 		ts, err := sc.getStalenessTimestamp()
 		if err != nil {
-			return err
+			slog.Warn("Staleness timestamp not available. Falling back to StrongRead.", "error", err.Error())
+			return runQuery(spanner.StrongRead())
 		}
 		err = runQuery(spanner.ReadTimestamp(ts))
 
