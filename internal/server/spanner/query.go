@@ -770,7 +770,7 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 	}
 
 	if warnMsg != "" {
-		slog.Warn(warnMsg + " Startup will proceed with strong reads.")
+		slog.Warn(warnMsg + " Falling back to strong reads.")
 		return nil
 	}
 
@@ -840,7 +840,6 @@ func (sc *spannerDatabaseClient) executeQuery(
 	if sc.useStaleReads {
 		ts, err := sc.getStalenessTimestamp()
 		if err != nil {
-			slog.Warn("Staleness timestamp not available. Falling back to StrongRead.", "error", err.Error())
 			return runQuery(spanner.StrongRead())
 		}
 		err = runQuery(spanner.ReadTimestamp(ts))
