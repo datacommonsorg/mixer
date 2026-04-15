@@ -180,6 +180,7 @@ spec:
               --use_base_bigtable={{ $.Values.mixer.useBaseBigtable }} \
               --use_custom_bigtable={{ $.Values.mixer.useCustomBigtable }} \
               --use_branch_bigtable={{ $.Values.mixer.useBranchBigtable }} \
+              --use_bigquery={{ $.Values.mixer.useBigQuery }} \
               {{- if eq $.Values.mixer.bigqueryOnly true }}
               --bigquery_only=true \
               {{- end }}
