@@ -54,14 +54,14 @@ func TestSpannerSearchConfig_JSON(t *testing.T) {
 }
 
 func TestGetSpannerSearchConfigPath(t *testing.T) {
-	path := GetSpannerSearchConfigPath("production")
-	if !strings.HasSuffix(path, "internal/server/v2/resolve/spanner_config/production.yaml") {
+	path := GetSpannerSearchConfigPath("default")
+	if !strings.HasSuffix(path, "internal/server/v2/resolve/spanner_config/default.yaml") {
 		t.Errorf("Unexpected path suffix: %s", path)
 	}
 }
 
 func TestReadSpannerSearchConfig(t *testing.T) {
-	path := GetSpannerSearchConfigPath("production")
+	path := GetSpannerSearchConfigPath("default")
 	cfg, err := ReadSpannerSearchConfig(path)
 	if err != nil {
 		t.Fatalf("Failed to read SpannerSearchConfig: %v", err)
