@@ -11,6 +11,6 @@
 			is_dc_aggregate,
 			facet_id
 		FROM 
-			Observation
+			Observation@{FORCE_INDEX=_BASE_TABLE}
 		WHERE
 			observation_about = 'wikidataId/Q341968'
