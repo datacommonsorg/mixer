@@ -24,6 +24,7 @@ import (
 )
 
 // SearchMethod defines the type of search algorithm to use. Either vector search, full text search, or hybrid search.
+// The SearchMethod will be mapped with related SQL query/DDL statements to be executed in Query.
 type SearchMethod string
 
 const (
@@ -41,6 +42,7 @@ const (
 )
 
 // EmbeddingType defines the task type for the embedding model (e.g., RETRIEVAL_QUERY) to generate embeddings for the term/node to resolve.
+// Supported types can be found in this document: https://ai.google.dev/gemini-api/docs/embeddings#supported-task-types
 type EmbeddingType string
 
 const (
