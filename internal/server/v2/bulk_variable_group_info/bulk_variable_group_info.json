@@ -7,7 +7,11 @@
         "childStatVars": [
           {
             "id": "Count_Person_5OrLessMeter_Rural_AsAFractionOf_Count_Person",
-            "displayName": "Population: 5 Meter or Less, Rural (Per Capita)"
+            "searchNames": [
+              "Population Count of Person With Elevation is 5 Meter or Less, Place of Residence Classification is Rural (Per Capita)"
+            ],
+            "displayName": "Population: 5 Meter or Less, Rural (Per Capita)",
+            "definition": "md=Count_Person,mp=count,pt=Person,elevation=MeterUpto5,placeOfResidenceClassification=Rural"
           }
         ],
         "childStatVarGroups": [
@@ -41,7 +45,10 @@
             "descendentStatVarCount": 8
           }
         ],
-        "descendentStatVarCount": 174
+        "descendentStatVarCount": 174,
+        "parentStatVarGroups": [
+          "dc/g/Root"
+        ]
       }
     },
     {
@@ -51,12 +58,21 @@
         "childStatVars": [
           {
             "id": "Count_HousingUnit",
+            "searchNames": [
+              "Count of Housing Unit",
+              "Housing Units"
+            ],
             "displayName": "Housing Units",
+            "definition": "mp=count,pt=HousingUnit",
             "hasData": true
           },
           {
             "id": "Monthly_Median_GrossRent_HousingUnit",
+            "searchNames": [
+              "Median Monthly Gross Rent of Housing Unit"
+            ],
             "displayName": "Median Monthly Gross Rent of Housing Unit",
+            "definition": "mq=Monthly,st=medianValue,mp=grossRent,pt=HousingUnit",
             "hasData": true
           }
         ],
@@ -230,7 +246,10 @@
             "descendentStatVarCount": 16
           }
         ],
-        "descendentStatVarCount": 511
+        "descendentStatVarCount": 511,
+        "parentStatVarGroups": [
+          "dc/g/Root"
+        ]
       }
     }
   ]
