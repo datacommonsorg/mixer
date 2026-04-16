@@ -17,6 +17,7 @@ package dispatcher
 import (
 	"context"
 	"fmt"
+	"log/slog"
 
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"google.golang.org/protobuf/proto"
@@ -227,6 +228,7 @@ func (dispatcher *Dispatcher) BulkVariableInfo(ctx context.Context, in *pbv1.Bul
 }
 
 func (dispatcher *Dispatcher) BulkVariableGroupInfo(ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error) {
+	slog.Info("TESTING-BulkVariableGroupInfo Received dispatcher BulkVariableGroupInfo request", "request", in)
 	requestContext := newRequestContext(ctx, in, TypeBulkVariableGroupInfo)
 
 	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {
@@ -236,6 +238,7 @@ func (dispatcher *Dispatcher) BulkVariableGroupInfo(ctx context.Context, in *pbv
 	if err != nil {
 		return nil, err
 	}
+	slog.Info("TESTING-BulkVariableGroupInfo Completed dispatcher BulkVariableGroupInfo request", "response", response, "error", nil)
 	return response.(*pbv1.BulkVariableGroupInfoResponse), nil
 }
 

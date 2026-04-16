@@ -16,6 +16,7 @@ package server
 
 import (
 	"context"
+	"log/slog"
 	"sort"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
@@ -227,10 +228,12 @@ func (s *Server) VariableGroupInfo(
 func (s *Server) BulkVariableGroupInfo(
 	ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest,
 ) (*pbv1.BulkVariableGroupInfoResponse, error) {
+	slog.Info("TESTING-BulkVariableGroupInfo Received BulkVariableGroupInfo request", "request", in)
 	localResp, err := info.BulkVariableGroupInfo(ctx, in, s.store, s.cachedata.Load())
 	if err != nil {
 		return nil, err
 	}
+	slog.Info("TESTING-BulkVariableGroupInfo Completed local BulkVariableGroupInfo request", "response", localResp, "error", nil)
 	keyedInfo := map[string]*pbv1.VariableGroupInfoResponse{}
 	for _, item := range localResp.Data {
 		keyedInfo[item.GetNode()] = item
@@ -335,6 +338,7 @@ func (s *Server) BulkVariableGroupInfo(
 	sort.SliceStable(result.Data, func(i, j int) bool {
 		return result.Data[i].Node < result.Data[j].Node
 	})
+	slog.Info("TESTING-BulkVariableGroupInfo Completed BulkVariableGroupInfo request", "response", result, "error", nil)
 	return result, nil
 }
 
