@@ -245,7 +245,7 @@ var statements = struct {
 			is_dc_aggregate,
 			facet_id
 		FROM 
-			Observation`,
+			Observation@{FORCE_INDEX=_BASE_TABLE}`,
 	selectVariableDcids: `variable_measured %s`,
 	selectEntityDcids:   `observation_about %s`,
 	getObsByVariableAndContainedInPlace: `		SELECT

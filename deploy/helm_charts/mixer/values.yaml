@@ -40,6 +40,7 @@ mixer:
   useBaseBigtable: true
   useBranchBigtable: true
   useCustomBigtable: false
+  useBigquery: true
   foldRemoteRootSvg: false
   cacheSVFormula: false
   # Comma separated embeddings indexes for resolving indicators.
