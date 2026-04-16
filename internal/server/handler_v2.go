@@ -652,7 +652,12 @@ func (s *Server) V2BulkVariableInfo(
 func (s *Server) V2BulkVariableGroupInfo(
 	ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest,
 ) (*pbv1.BulkVariableGroupInfoResponse, error) {
-	return s.BulkVariableGroupInfo(ctx, in)
+	slog.Info("TESTING-BulkVariableGroupInfo Received V2BulkVariableGroupInfo request", "request", in)
+
+	resp, err := s.BulkVariableGroupInfo(ctx, in)
+	slog.Info("TESTING-BulkVariableGroupInfo Completed V2BulkVariableGroupInfo request", "response", resp, "error", err)
+
+	return resp, err
 }
 
 // resolveRouting determines whether to route to local and/or remote instances
