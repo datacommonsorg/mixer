@@ -16,7 +16,6 @@ package statvar
 
 import (
 	"context"
-	"log/slog"
 	"sort"
 	"time"
 
@@ -99,7 +98,6 @@ func GetStatVarGroupNode(
 	store *store.Store,
 	cachedata *cache.Cache,
 ) (*pb.StatVarGroupNode, error) {
-	slog.Info("TESTING-BulkVariableGroupInfo Received GetStatVarGroupNode request", "request", in)
 	entities := in.GetEntities()
 	svg := in.GetStatVarGroup()
 	numEntitiesExistence := int(in.GetNumEntitiesExistence())
@@ -175,7 +173,6 @@ func GetStatVarGroupNode(
 			}
 		}
 	}
-	slog.Info("TESTING-BulkVariableGroupInfo Completed GetStatVarGroupNode request", "response", result, "error", nil)
 	return result, nil
 }
 
