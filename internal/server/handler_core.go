@@ -46,7 +46,7 @@ func (s *Server) V2ResolveCore(
 	typeOfValues []string,
 ) (*pbv2.ResolveResponse, error) {
 	// Check for explicit "indicator" resolver, otherwise default to legacy place resolver logic.
-	if resolver := in.GetResolver(); resolver == ResolveResolverIndicator {
+	if resolver := in.GetResolver(); resolver == resolve.ResolveResolverIndicator {
 		if !s.flags.EnableEmbeddingsResolver {
 			return nil, status.Errorf(codes.Unimplemented, "Resolving indicators is not enabled for this environment.")
 		}
@@ -55,12 +55,12 @@ func (s *Server) V2ResolveCore(
 
 	// Resolve places based on property expression
 	switch inProp {
-	case GeoCoordinateProperty:
+	case resolve.GeoCoordinateProperty:
 		// Coordinate to ID:
 		// Example:
 		//   <-geoCoordinate->dcid
 		return resolve.Coordinate(ctx, s.store, in.GetNodes(), typeOfValues)
-	case DescriptionProperty:
+	case resolve.DescriptionProperty:
 		// Description (name) to ID:
 		// Examples:
 		//   <-description->dcid

@@ -22,6 +22,7 @@ import (
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
+	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/translator/sparql"
 
 	"golang.org/x/sync/errgroup"
@@ -110,7 +111,9 @@ func (ds *DataSources) NodeSearch(ctx context.Context, in *pbv2.NodeSearchReques
 }
 
 func (ds *DataSources) Resolve(ctx context.Context, in *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
-	return fetchAndMerge(ctx, ds.sources, in,
+	filteredResolveSources := filterResolveSources(ds.sources, in)
+
+	return fetchAndMerge(ctx, filteredResolveSources, in,
 		func(c context.Context, s datasource.DataSource, r *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
 			return s.Resolve(c, r)
 		},
@@ -167,4 +170,30 @@ func (ds *DataSources) BulkVariableGroupInfo(ctx context.Context, in *pbv1.BulkV
 			return merger.MergeMultiBulkVariableGroupInfo(all), nil
 		},
 	)
+}
+
+// Resolve API specifies which sources to call in the target input params.
+// filterResolveSources filters sources accordingly.
+func filterResolveSources(sources []datasource.DataSource, in *pbv2.ResolveRequest) []datasource.DataSource {
+	hasRemoteMixerDomain := false
+	for _, source := range sources {
+		if source.Type() == datasource.TypeRemote {
+			hasRemoteMixerDomain = true
+			break
+		}
+	}
+
+	callLocal, callRemote := resolve.ResolveRouting(in.GetTarget(), hasRemoteMixerDomain)
+	var filteredSources []datasource.DataSource
+	for _, source := range sources {
+		isRemote := source.Type() == datasource.TypeRemote
+		if isRemote && callRemote {
+			filteredSources = append(filteredSources, source)
+		}
+		if !isRemote && callLocal {
+			filteredSources = append(filteredSources, source)
+		}
+	}
+
+	return filteredSources
 }
