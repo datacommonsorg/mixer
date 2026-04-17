@@ -914,7 +914,6 @@ func processRows(iter *spanner.RowIterator, newStruct func() interface{}, withSt
 		if err := row.ToStructLenient(rowStruct); err != nil {
 			return fmt.Errorf("failed to parse row: %w", err)
 		}
-
 		withStruct(rowStruct)
 	}
 
