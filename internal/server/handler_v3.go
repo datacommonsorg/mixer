@@ -24,6 +24,7 @@ import (
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
+	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -101,7 +102,7 @@ func (s *Server) V3SdmxData(ctx context.Context, in *pbv3.SdmxDataRequest) (
 	}
 
 	// Validation Gate: At least one anchor component required or variableMeasured
-	if constraints["variableMeasured"] == "" && len(constraints) == 0 {
+	if constraints[datasource.DimVariableMeasured] == "" && len(constraints) == 0 {
 		slog.Error("SDMX request missing required constraints", "input", in.C)
 		return nil, status.Error(codes.InvalidArgument, "At least one constraint or variableMeasured is required.")
 	}

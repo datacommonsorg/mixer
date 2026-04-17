@@ -34,6 +34,14 @@ const (
 	TypeMock    DataSourceType = "mock"
 )
 
+const (
+	DimVariableMeasured = "variableMeasured"
+	DimObservationDate  = "observationDate"
+	FallbackNotAvailable = "_N/A_"
+	ParamStartPeriod     = "startPeriod"
+	ParamEndPeriod       = "endPeriod"
+)
+
 // DataSource interface defines the common methods for all data sources.
 type DataSource interface {
 	Type() DataSourceType

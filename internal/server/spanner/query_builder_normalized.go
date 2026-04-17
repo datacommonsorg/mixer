@@ -20,6 +20,7 @@ import (
 	"strings"
 
 	"cloud.google.com/go/spanner"
+	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
 
@@ -106,12 +107,12 @@ func GetSdmxObservationsQuery(constraints map[string]string) *spanner.Statement 
 	}
 
 	var subqueryFilters []string
-	if start, ok := constraints["startPeriod"]; ok {
-		stmt.Params["startPeriod"] = start
+	if start, ok := constraints[datasource.ParamStartPeriod]; ok {
+		stmt.Params[datasource.ParamStartPeriod] = start
 		subqueryFilters = append(subqueryFilters, "date >= @startPeriod")
 	}
-	if end, ok := constraints["endPeriod"]; ok {
-		stmt.Params["endPeriod"] = end
+	if end, ok := constraints[datasource.ParamEndPeriod]; ok {
+		stmt.Params[datasource.ParamEndPeriod] = end
 		subqueryFilters = append(subqueryFilters, "date <= @endPeriod")
 	}
 
@@ -122,15 +123,15 @@ func GetSdmxObservationsQuery(constraints map[string]string) *spanner.Statement 
 	var filters []string
 
 	// Extract variableMeasured if present
-	if varMeasured, ok := constraints["variableMeasured"]; ok {
-		stmt.Params["variableMeasured"] = varMeasured
+	if varMeasured, ok := constraints[datasource.DimVariableMeasured]; ok {
+		stmt.Params[datasource.DimVariableMeasured] = varMeasured
 		filters = append(filters, "ts.variable_measured = @variableMeasured")
 	}
 
 	// Handle other constraints in map 'c'
 	var props []string
 	for prop := range constraints {
-		if prop == "variableMeasured" || prop == "startPeriod" || prop == "endPeriod" {
+		if prop == datasource.DimVariableMeasured || prop == datasource.ParamStartPeriod || prop == datasource.ParamEndPeriod {
 			continue // Already handled
 		}
 		props = append(props, prop)

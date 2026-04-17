@@ -24,8 +24,8 @@ import (
 )
 
 const (
-	dimVariableMeasured = "variableMeasured"
-	dimObservationDate  = "observationDate"
+	dimVariableMeasured = datasource.DimVariableMeasured
+	dimObservationDate  = datasource.DimObservationDate
 	dimProvenance       = "provenance"
 )
 
@@ -109,7 +109,7 @@ func (f *JSONStatFormatter) Format(obs []*datasource.SdmxObservation) (string, e
 				continue
 			}
 			if _, ok := o.Dimensions[dim]; !ok {
-				dimensions[dim]["_N/A_"] = true
+				dimensions[dim][datasource.FallbackNotAvailable] = true
 			}
 		}
 	}
@@ -180,7 +180,7 @@ func (f *JSONStatFormatter) Format(obs []*datasource.SdmxObservation) (string, e
 			}
 			val, ok := o.Dimensions[dim]
 			if !ok {
-				val = "_N/A_"
+				val = datasource.FallbackNotAvailable
 			}
 			idx := categoryIndices[dim][val]
 			baseIdx += idx * strides[dimIdx]
