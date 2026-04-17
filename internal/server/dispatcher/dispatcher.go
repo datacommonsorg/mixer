@@ -25,7 +25,6 @@ import (
 	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"google.golang.org/protobuf/proto"
-
 )
 
 // RequestType represents the type of request.
@@ -229,6 +228,7 @@ func (dispatcher *Dispatcher) BulkVariableInfo(ctx context.Context, in *pbv1.Bul
 }
 
 func (dispatcher *Dispatcher) BulkVariableGroupInfo(ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error) {
+	slog.Info("TESTING-BulkVariableGroupInfo Received dispatcher BulkVariableGroupInfo request", "request", in)
 	requestContext := newRequestContext(ctx, in, TypeBulkVariableGroupInfo)
 
 	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {
@@ -238,6 +238,7 @@ func (dispatcher *Dispatcher) BulkVariableGroupInfo(ctx context.Context, in *pbv
 	if err != nil {
 		return nil, err
 	}
+	slog.Info("TESTING-BulkVariableGroupInfo Completed dispatcher BulkVariableGroupInfo request", "response", response, "error", nil)
 	return response.(*pbv1.BulkVariableGroupInfoResponse), nil
 }
 
@@ -269,6 +270,3 @@ func (dispatcher *Dispatcher) SdmxData(ctx context.Context, in *pbv3.SdmxDataReq
 
 	return &pbv3.SdmxDataResponse{Payload: payload}, nil
 }
-
-
-

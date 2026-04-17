@@ -16,6 +16,7 @@ package info
 
 import (
 	"context"
+	"log/slog"
 	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -33,6 +34,7 @@ func VariableGroupInfo(
 	store *store.Store,
 	cachedata *cache.Cache,
 ) (*pbv1.VariableGroupInfoResponse, error) {
+	slog.Info("TESTING-BulkVariableGroupInfo Received VariableGroupInfo request", "request", in)
 	data, err := statvar.GetStatVarGroupNode(
 		ctx,
 		&pb.GetStatVarGroupNodeRequest{
@@ -46,6 +48,7 @@ func VariableGroupInfo(
 	if err != nil {
 		return nil, err
 	}
+	slog.Info("TESTING-BulkVariableGroupInfo Completed VariableGroupInfo request", "response", data, "error", nil)
 	return &pbv1.VariableGroupInfoResponse{Node: in.GetNode(), Info: data}, nil
 }
 
@@ -56,6 +59,7 @@ func BulkVariableGroupInfo(
 	store *store.Store,
 	cachedata *cache.Cache,
 ) (*pbv1.BulkVariableGroupInfoResponse, error) {
+	slog.Info("TESTING-BulkVariableGroupInfo Received variable_group BulkVariableGroupInfo request", "request", in)
 	// TODO (shifucun):
 	// Ideally, both APIs need to filter out the child variable (group) that has
 	// no data, but this is indicated with a "has_data" field, to
@@ -116,5 +120,6 @@ func BulkVariableGroupInfo(
 	sort.Slice(resp.Data, func(i, j int) bool {
 		return resp.Data[i].Node < resp.Data[j].Node
 	})
+	slog.Info("TESTING-BulkVariableGroupInfo Completed variable_group BulkVariableGroupInfo request", "response", resp, "error", nil)
 	return resp, nil
 }

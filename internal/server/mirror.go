@@ -245,12 +245,6 @@ func GetV2BulkVariableInfoCmpOpts() []cmp.Option {
 	}
 }
 
-func GetV2BulkVariableGroupInfoCmpOpts() []cmp.Option {
-	return []cmp.Option{
-		protocmp.Transform(),
-	}
-}
-
 func GetV2EventCmpOpts() []cmp.Option {
 	return []cmp.Option{
 		protocmp.Transform(),
