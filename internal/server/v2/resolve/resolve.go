@@ -407,7 +407,7 @@ func parseResolvePropertyExpression(prop string) (string, string, []string, erro
 
 // resolveRouting determines whether to route to local and/or remote instances
 // based on the target parameter and the presence of a remote mixer domain.
-// Returns (shouldCallLocal, shouldCallRemote, error).
+// Returns (shouldCallLocal, shouldCallRemote).
 //
 // Assumes that `target` has been validated.
 //
