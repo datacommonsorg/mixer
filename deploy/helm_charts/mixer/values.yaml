@@ -431,6 +431,7 @@ serviceGroups:
       - "/v1/info/variable-group/*"
       - "/v1/variable/*"
       - "/v1/bulk/info/variable-group"
+      - "/v2/bulk/info/variable-group"
     replicas: 1
     resources:
       memoryRequest: "8G"
