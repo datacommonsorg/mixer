@@ -148,10 +148,10 @@ func GetSdmxObservationsQuery(constraints map[string]string) *spanner.Statement 
 		if strings.Contains(val, ",") {
 			vals := strings.Split(val, ",")
 			stmt.Params[paramName] = vals
-			filters = append(filters, fmt.Sprintf("ts.id IN (SELECT id FROM TimeSeriesAttribute WHERE property = @%s AND value IN UNNEST(@%s))", propParam, paramName))
+			filters = append(filters, fmt.Sprintf("ts.id IN (SELECT id FROM TimeSeriesAttribute@{FORCE_INDEX=TimeSeriesAttributePropertyValue} WHERE property = @%s AND value IN UNNEST(@%s))", propParam, paramName))
 		} else {
 			stmt.Params[paramName] = val
-			filters = append(filters, fmt.Sprintf("ts.id IN (SELECT id FROM TimeSeriesAttribute WHERE property = @%s AND value = @%s)", propParam, paramName))
+			filters = append(filters, fmt.Sprintf("ts.id IN (SELECT id FROM TimeSeriesAttribute@{FORCE_INDEX=TimeSeriesAttributePropertyValue} WHERE property = @%s AND value = @%s)", propParam, paramName))
 		}
 		paramIdx++
 	}

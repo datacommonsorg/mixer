@@ -13,5 +13,5 @@
 				WHERE id = ts.id
 			) as attributes
 		FROM 
-			TimeSeries ts
-		WHERE ts.variable_measured = 'Count_Person' AND ts.id IN (SELECT id FROM TimeSeriesAttribute WHERE property = 'place' AND value = 'country/USA') AND ts.id IN (SELECT id FROM TimeSeriesAttribute WHERE property = 'race' AND value = 'Race_Asian')
+			TimeSeries@{FORCE_INDEX=TimeSeriesByVariableMeasured} ts
+		WHERE ts.variable_measured = 'Count_Person' AND ts.id IN (SELECT id FROM TimeSeriesAttribute@{FORCE_INDEX=TimeSeriesAttributePropertyValue} WHERE property = 'place' AND value = 'country/USA') AND ts.id IN (SELECT id FROM TimeSeriesAttribute@{FORCE_INDEX=TimeSeriesAttributePropertyValue} WHERE property = 'race' AND value = 'Race_Asian')

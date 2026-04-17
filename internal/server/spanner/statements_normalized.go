@@ -65,7 +65,7 @@ var statementsNormalized = struct {
 				WHERE id = ts.id
 			) as attributes
 		FROM 
-			TimeSeries ts`,
+			TimeSeries@{FORCE_INDEX=TimeSeriesByVariableMeasured} ts`,
 	selectVariableDcids: "ts.variable_measured %s",
 	
 	// Uses the index on TimeSeriesAttribute(property, value).
