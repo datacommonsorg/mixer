@@ -19,6 +19,9 @@ package spanner
 var statementsNormalized = struct {
 	// Fetch Observations with coalesced dates, values and attributes.
 	getObs string
+
+	// Fetch Observations for SDMX with provenance.
+	getSdmxObs string
 	
 	// Filter by variable dcids.
 	selectVariableDcids string
@@ -47,6 +50,22 @@ var statementsNormalized = struct {
 			) as attributes
 		FROM 
 			TimeSeries@{FORCE_INDEX=TimeSeriesByVariableMeasured} ts`,
+	getSdmxObs: `		SELECT
+			ts.variable_measured,
+			ts.provenance,
+			ARRAY(
+				SELECT STRUCT(date, value)
+				FROM StatVarObservation
+				WHERE id = ts.id
+				ORDER BY date ASC
+			) as dates_and_values,
+			ARRAY(
+				SELECT STRUCT(property, value)
+				FROM TimeSeriesAttribute
+				WHERE id = ts.id
+			) as attributes
+		FROM 
+			TimeSeries ts`,
 	selectVariableDcids: "ts.variable_measured %s",
 	
 	// Uses the index on TimeSeriesAttribute(property, value).

@@ -17,13 +17,15 @@ package dispatcher
 import (
 	"context"
 	"fmt"
-
-	"github.com/datacommonsorg/mixer/internal/server/datasources"
-	"google.golang.org/protobuf/proto"
+	"log/slog"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
+	"github.com/datacommonsorg/mixer/internal/server/datasources"
+	"github.com/datacommonsorg/mixer/internal/server/spanner"
+	"google.golang.org/protobuf/proto"
 )
 
 // RequestType represents the type of request.
@@ -247,3 +249,31 @@ func newRequestContext(ctx context.Context, request proto.Message, requestType R
 		CurrentRequest:  request,
 	}
 }
+
+// SdmxData handles SDMX Data requests.
+func (dispatcher *Dispatcher) SdmxData(ctx context.Context, in *pbv3.SdmxDataRequest, constraints map[string]string) (*pbv3.SdmxDataResponse, error) {
+	// For now, SDMX is Spanner-only. Search for Spanner source.
+	for _, s := range dispatcher.sources.GetRawSources() {
+		if s.Type() == "spanner" {
+			if sds, ok := s.(*spanner.SpannerDataSource); ok {
+				obs, err := sds.GetSdmxObservations(ctx, constraints)
+				if err != nil {
+					slog.Error("Failed to get SDMX observations from Spanner", "error", err)
+					return nil, fmt.Errorf("failed to get SDMX observations: %w", err)
+				}
+				// Format response
+				formatter := &JSONStatFormatter{}
+				payload, err := formatter.Format(obs)
+				if err != nil {
+					slog.Error("Failed to format SDMX response", "error", err)
+					return nil, fmt.Errorf("failed to format SDMX response: %w", err)
+				}
+				return &pbv3.SdmxDataResponse{Payload: payload}, nil
+			}
+		}
+	}
+	slog.Error("Spanner data source not found for SDMX request")
+	return nil, fmt.Errorf("Spanner data source not found or not supported")
+}
+
+

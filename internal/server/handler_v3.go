@@ -17,11 +17,16 @@ package server
 
 import (
 	"context"
+	"encoding/json"
+	"log/slog"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 // V3Node implements API for mixer.V3Node.
@@ -78,4 +83,33 @@ func (s *Server) V3BulkVariableGroupInfo(ctx context.Context, in *pbv1.BulkVaria
 	*pbv1.BulkVariableGroupInfoResponse, error,
 ) {
 	return s.dispatcher.BulkVariableGroupInfo(ctx, in)
+}
+
+
+
+// V3SdmxData handles SDMX Data requests.
+func (s *Server) V3SdmxData(ctx context.Context, in *pbv3.SdmxDataRequest) (
+	*pbv3.SdmxDataResponse, error,
+) {
+	// Parse constraints JSON string into map
+	constraints := map[string]string{}
+	if in.C != "" {
+		if err := json.Unmarshal([]byte(in.C), &constraints); err != nil {
+			slog.Error("Failed to parse constraints JSON for SDMX request", "error", err, "input", in.C)
+			return nil, status.Error(codes.InvalidArgument, "Invalid constraints format. Please provide a valid JSON object.")
+		}
+	}
+
+	// Validation Gate: At least one anchor component required or variableMeasured
+	if constraints["variableMeasured"] == "" && len(constraints) == 0 {
+		slog.Error("SDMX request missing required constraints", "input", in.C)
+		return nil, status.Error(codes.InvalidArgument, "At least one constraint or variableMeasured is required.")
+	}
+
+	resp, err := s.dispatcher.SdmxData(ctx, in, constraints)
+	if err != nil {
+		slog.Error("Failed to handle SDMX data request in dispatcher", "error", err)
+		return nil, status.Error(codes.Internal, "Internal server error occurred while processing the request.")
+	}
+	return resp, nil
 }

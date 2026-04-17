@@ -16,6 +16,7 @@ package spanner
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 
 	"cloud.google.com/go/spanner"
@@ -92,6 +93,70 @@ func GetNormalizedObservationsContainedInPlaceQuery(variables []string, containe
 		filter, val := getParamStatement("variables", variables)
 		stmt.Params["variables"] = val
 		stmt.SQL += "\n\t\tWHERE ts.variable_measured " + filter
+	}
+
+	return stmt
+}
+
+// GetSdmxObservationsQuery returns a query to fetch observations based on SDMX constraints.
+func GetSdmxObservationsQuery(constraints map[string]string) *spanner.Statement {
+	stmt := &spanner.Statement{
+		SQL:    statementsNormalized.getSdmxObs, // Base query
+		Params: map[string]interface{}{},
+	}
+
+	var subqueryFilters []string
+	if start, ok := constraints["startPeriod"]; ok {
+		stmt.Params["startPeriod"] = start
+		subqueryFilters = append(subqueryFilters, "date >= @startPeriod")
+	}
+	if end, ok := constraints["endPeriod"]; ok {
+		stmt.Params["endPeriod"] = end
+		subqueryFilters = append(subqueryFilters, "date <= @endPeriod")
+	}
+
+	if len(subqueryFilters) > 0 {
+		stmt.SQL = strings.Replace(stmt.SQL, "WHERE id = ts.id", "WHERE id = ts.id AND "+strings.Join(subqueryFilters, " AND "), 1)
+	}
+
+	var filters []string
+
+	// Extract variableMeasured if present
+	if varMeasured, ok := constraints["variableMeasured"]; ok {
+		stmt.Params["variableMeasured"] = varMeasured
+		filters = append(filters, "ts.variable_measured = @variableMeasured")
+	}
+
+	// Handle other constraints in map 'c'
+	var props []string
+	for prop := range constraints {
+		if prop == "variableMeasured" || prop == "startPeriod" || prop == "endPeriod" {
+			continue // Already handled
+		}
+		props = append(props, prop)
+	}
+	sort.Strings(props)
+
+	paramIdx := 0
+	for _, prop := range props {
+		val := constraints[prop]
+		paramName := fmt.Sprintf("param_%d", paramIdx)
+		propParam := fmt.Sprintf("prop_%d", paramIdx)
+		stmt.Params[propParam] = prop
+		
+		if strings.Contains(val, ",") {
+			vals := strings.Split(val, ",")
+			stmt.Params[paramName] = vals
+			filters = append(filters, fmt.Sprintf("ts.id IN (SELECT id FROM TimeSeriesAttribute WHERE property = @%s AND value IN UNNEST(@%s))", propParam, paramName))
+		} else {
+			stmt.Params[paramName] = val
+			filters = append(filters, fmt.Sprintf("ts.id IN (SELECT id FROM TimeSeriesAttribute WHERE property = @%s AND value = @%s)", propParam, paramName))
+		}
+		paramIdx++
+	}
+
+	if len(filters) > 0 {
+		stmt.SQL += "\n\t\tWHERE " + strings.Join(filters, " AND ")
 	}
 
 	return stmt

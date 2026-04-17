@@ -51,3 +51,25 @@ var getObservationsContainedInPlaceTestCases = []struct {
 		golden:           "get_observations_contained_in_place_normalized",
 	},
 }
+
+var sdmxObservationsTestCases = []struct {
+	constraints map[string]string
+	golden      string
+}{
+	{
+		constraints: map[string]string{
+			"variableMeasured": "Count_Person",
+			"observationAbout": "country/USA",
+		},
+		golden: "get_sdmx_observations_basic",
+	},
+	{
+		constraints: map[string]string{
+			"variableMeasured": "Count_Person",
+			"place":            "country/USA",
+			"race":             "Race_Asian",
+		},
+		golden: "get_sdmx_observations_multi_constraints",
+	},
+}
+

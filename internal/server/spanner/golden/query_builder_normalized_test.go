@@ -60,3 +60,16 @@ func TestNormalizedGetObservationsContainedInPlaceQuery(t *testing.T) {
 		})
 	}
 }
+
+func TestGetSdmxObservationsQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range sdmxObservationsTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.GetSdmxObservationsQuery(c.constraints), nil
+		})
+	}
+}
+
