@@ -901,7 +901,6 @@ func queryCache[T proto.Message](
 }
 
 func processRows(iter *spanner.RowIterator, newStruct func() interface{}, withStruct func(interface{})) error {
-	rowCount := 0
 	for {
 		row, err := iter.Next()
 		if err == iterator.Done {
@@ -910,20 +909,10 @@ func processRows(iter *spanner.RowIterator, newStruct func() interface{}, withSt
 		if err != nil {
 			return fmt.Errorf("failed to fetch row: %w", err)
 		}
-		rowCount++
 
 		rowStruct := newStruct()
 		if err := row.ToStructLenient(rowStruct); err != nil {
 			return fmt.Errorf("failed to parse row: %w", err)
-		}
-
-		// Log the row content thoroughly
-		if edge, ok := rowStruct.(*Edge); ok {
-			slog.Info("Fetched Edge row", "subject", edge.SubjectID, "predicate", edge.Predicate, "value", edge.Value, "prov", edge.Provenance)
-		} else if prop, ok := rowStruct.(*Property); ok {
-			slog.Info("Fetched Property row", "subject", prop.SubjectID, "predicate", prop.Predicate)
-		} else {
-			slog.Info("Fetched unknown row struct", "struct", fmt.Sprintf("%+v", rowStruct))
 		}
 
 		withStruct(rowStruct)
