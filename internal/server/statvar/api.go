@@ -113,12 +113,16 @@ func GetStatVarGroupNode(
 			codes.InvalidArgument, "Missing required argument: stat_var_group")
 	}
 
+	slog.Info("TESTING-BulkVariableGroupInfo Start GetStatVarGroupNode request", "stat_var_group", svg, "entities", entities, "num_entities_existence", numEntitiesExistence, "context", ctx)
 	rawSvgs := cachedata.RawSvgs(ctx)
+	slog.Info("TESTING-BulkVariableGroupInfo Retrieved raw SVGs from cache", "raw_svgs_count", len(rawSvgs))
 	result := &pb.StatVarGroupNode{}
 	if r, ok := rawSvgs[svg]; ok {
 		// Clone into result, otherwise the server cache is modified.
 		result = proto.Clone(r).(*pb.StatVarGroupNode)
+		slog.Info("TESTING-BulkVariableGroupInfo Cloned raw SVG into result", "result", result)
 	}
+	slog.Info("TESTING-BulkVariableGroupInfo Fetched raw SVG for requested stat var group", "svg", svg, "result", result)
 	for _, item := range result.ChildStatVarGroups {
 		item.DisplayName = rawSvgs[item.Id].AbsoluteName
 		item.DescendentStatVarCount = rawSvgs[item.Id].DescendentStatVarCount
@@ -130,6 +134,7 @@ func GetStatVarGroupNode(
 
 	// Filter result based on entities
 	if len(entities) > 0 {
+		slog.Info("TESTING-BulkVariableGroupInfo Filtering result based on entities", "entities", entities, "result_before_filtering", result)
 		// Get the stat var and stat var group IDs to check if they are valid for
 		// given entities.
 		allIDs := []string{svg}

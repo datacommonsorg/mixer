@@ -59,7 +59,7 @@ func BulkVariableGroupInfo(
 	store *store.Store,
 	cachedata *cache.Cache,
 ) (*pbv1.BulkVariableGroupInfoResponse, error) {
-	slog.Info("TESTING-BulkVariableGroupInfo Received variable_group BulkVariableGroupInfo request", "request", in)
+	slog.Info("TESTING-BulkVariableGroupInfo Received variable_group BulkVariableGroupInfo request", "request", in, "context", ctx)
 	// TODO (shifucun):
 	// Ideally, both APIs need to filter out the child variable (group) that has
 	// no data, but this is indicated with a "has_data" field, to

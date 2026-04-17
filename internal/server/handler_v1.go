@@ -228,7 +228,7 @@ func (s *Server) VariableGroupInfo(
 func (s *Server) BulkVariableGroupInfo(
 	ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest,
 ) (*pbv1.BulkVariableGroupInfoResponse, error) {
-	slog.Info("TESTING-BulkVariableGroupInfo Received BulkVariableGroupInfo request", "request", in)
+	slog.Info("TESTING-BulkVariableGroupInfo Received BulkVariableGroupInfo request", "request", in, "context", ctx)
 	localResp, err := info.BulkVariableGroupInfo(ctx, in, s.store, s.cachedata.Load())
 	if err != nil {
 		return nil, err
