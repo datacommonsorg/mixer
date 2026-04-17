@@ -209,23 +209,23 @@ func (sds *SpannerDataSource) NodeSearch(ctx context.Context, req *pbv2.NodeSear
 
 // Resolve searches for nodes in the graph.
 func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
-	inProp, outProp, typeOfValues, err := resolvev2.ValidateAndParseResolveInputs(req)
+	normalizedReq, inProp, outProp, typeOfValues, err := resolvev2.ValidateAndParseResolveInputs(req)
 	if err != nil {
 		return nil, err
 	}
 
-	if resolver := req.GetResolver(); resolver == resolvev2.ResolveResolverIndicator {
+	if resolver := normalizedReq.GetResolver(); resolver == resolvev2.ResolveResolverIndicator {
 		// Spanner doesn't do embeddings resolution yet.
 		return &pbv2.ResolveResponse{}, nil
 	}
 
 	switch inProp {
 	case resolvev2.GeoCoordinateProperty:
-		return sds.resolveCoordinate(ctx, req, typeOfValues)
+		return sds.resolveCoordinate(ctx, normalizedReq, typeOfValues)
 	case resolvev2.DescriptionProperty:
-		return sds.resolveDescription(ctx, req, typeOfValues)
+		return sds.resolveDescription(ctx, normalizedReq, typeOfValues)
 	default:
-		return sds.resolveID(ctx, req.GetNodes(), inProp, outProp)
+		return sds.resolveID(ctx, normalizedReq.GetNodes(), inProp, outProp)
 	}
 }
 

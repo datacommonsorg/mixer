@@ -21,6 +21,7 @@ import (
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 func TestParseCoordinate(t *testing.T) {
@@ -112,6 +113,7 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 	tests := []struct {
 		desc             string
 		in               *pbv2.ResolveRequest
+		wantReq          *pbv2.ResolveRequest
 		wantInProp       string
 		wantOutProp      string
 		wantTypeOfValues []string
@@ -119,8 +121,13 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 		wantErrMsg       string
 	}{
 		{
-			desc:             "all empty",
-			in:               &pbv2.ResolveRequest{},
+			desc: "all empty",
+			in:   &pbv2.ResolveRequest{},
+			wantReq: &pbv2.ResolveRequest{
+				Target:   ResolveTargetBaseAndCustom,
+				Resolver: ResolveResolverPlace,
+				Property: ResolveDefaultPropertyExpression,
+			},
 			wantInProp:       "description",
 			wantOutProp:      "dcid",
 			wantTypeOfValues: nil,
@@ -130,6 +137,11 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 			in: &pbv2.ResolveRequest{
 				Target: ResolveTargetCustomOnly,
 			},
+			wantReq: &pbv2.ResolveRequest{
+				Target:   ResolveTargetCustomOnly,
+				Resolver: ResolveResolverPlace,
+				Property: ResolveDefaultPropertyExpression,
+			},
 			wantInProp:       "description",
 			wantOutProp:      "dcid",
 			wantTypeOfValues: nil,
@@ -138,6 +150,11 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 			desc: "partial set - resolver",
 			in: &pbv2.ResolveRequest{
 				Resolver: ResolveResolverIndicator,
+			},
+			wantReq: &pbv2.ResolveRequest{
+				Target:   ResolveTargetBaseAndCustom,
+				Resolver: ResolveResolverIndicator,
+				Property: ResolveDefaultPropertyExpression,
 			},
 			wantInProp:       "description",
 			wantOutProp:      "dcid",
@@ -150,6 +167,11 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 				Resolver: ResolveResolverPlace,
 				Property: "<-wikidataId->dcid",
 			},
+			wantReq: &pbv2.ResolveRequest{
+				Target:   ResolveTargetBaseOnly,
+				Resolver: ResolveResolverPlace,
+				Property: "<-wikidataId->dcid",
+			},
 			wantInProp:       "wikidataId",
 			wantOutProp:      "dcid",
 			wantTypeOfValues: nil,
@@ -157,6 +179,11 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 		{
 			desc: "typeOf filter",
 			in: &pbv2.ResolveRequest{
+				Property: "<-description{typeOf:City}->dcid",
+			},
+			wantReq: &pbv2.ResolveRequest{
+				Target:   ResolveTargetBaseAndCustom,
+				Resolver: ResolveResolverPlace,
 				Property: "<-description{typeOf:City}->dcid",
 			},
 			wantInProp:       "description",
@@ -199,6 +226,11 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 		{
 			desc: "unknown property for place resolver",
 			in: &pbv2.ResolveRequest{
+				Resolver: ResolveResolverPlace,
+				Property: "<-unknown->dcid",
+			},
+			wantReq: &pbv2.ResolveRequest{
+				Target:   ResolveTargetBaseAndCustom,
 				Resolver: ResolveResolverPlace,
 				Property: "<-unknown->dcid",
 			},
@@ -246,22 +278,25 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.desc, func(t *testing.T) {
-			inProp, outProp, typeOfValues, err := ValidateAndParseResolveInputs(tc.in)
+			normalizedReq, inProp, outProp, typeOfValues, err := ValidateAndParseResolveInputs(tc.in)
 			if (err != nil) != tc.wantErr {
-				t.Errorf("validateAndParseResolveInputs() error = %v, wantErr %v", err, tc.wantErr)
+				t.Errorf("%s validateAndParseResolveInputs() error = %v, wantErr %v", tc.desc, err, tc.wantErr)
 			}
 			if tc.wantErr && err != nil && !strings.Contains(err.Error(), tc.wantErrMsg) {
-				t.Errorf("validateAndParseResolveInputs() error = %v, wantErrMsg %v", err, tc.wantErrMsg)
+				t.Errorf("%s validateAndParseResolveInputs() error = %v, wantErrMsg %v", tc.desc, err, tc.wantErrMsg)
 			}
 			if !tc.wantErr {
+				if diff := cmp.Diff(normalizedReq, tc.wantReq, protocmp.Transform()); diff != "" {
+					t.Errorf("%s normalizedReq mismatch (-got +want):\n%s", tc.desc, diff)
+				}
 				if inProp != tc.wantInProp {
-					t.Errorf("inProp got %s, want %s", inProp, tc.wantInProp)
+					t.Errorf("%s inProp got %s, want %s", tc.desc, inProp, tc.wantInProp)
 				}
 				if outProp != tc.wantOutProp {
-					t.Errorf("outProp got %s, want %s", outProp, tc.wantOutProp)
+					t.Errorf("%s outProp got %s, want %s", tc.desc, outProp, tc.wantOutProp)
 				}
 				if diff := cmp.Diff(typeOfValues, tc.wantTypeOfValues); diff != "" {
-					t.Errorf("typeOfValues diff (-got +want):\n%s", diff)
+					t.Errorf("%s typeOfValues diff (-got +want):\n%s", tc.desc, diff)
 				}
 			}
 		})

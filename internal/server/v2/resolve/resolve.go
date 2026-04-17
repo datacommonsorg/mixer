@@ -30,6 +30,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/store"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/proto"
 )
 
 const (
@@ -278,48 +279,50 @@ func GetSortedResolvedPlaceCandidates(
 //   - "indicator": "inProp" must be "description" and "outProp" must be "dcid".
 //
 // Returns:
+// - normalized request (ResolveRequest)
 // - input property (string)
 // - output property (string)
 // - typeOf filter values ([]string, from the input property filter)
 // - error if validation fails
-func ValidateAndParseResolveInputs(in *pbv2.ResolveRequest) (string, string, []string, error) {
+func ValidateAndParseResolveInputs(in *pbv2.ResolveRequest) (*pbv2.ResolveRequest, string, string, []string, error) {
+	normalizedRequest := proto.Clone(in).(*pbv2.ResolveRequest)
 	var validationErrors []string
 
 	// Parse and validate `target`
-	switch in.GetTarget() {
+	switch normalizedRequest.GetTarget() {
 	case ResolveTargetBaseOnly, ResolveTargetCustomOnly, ResolveTargetBaseAndCustom:
 	case "":
 		// Set default value; ignored if current call is to base dc
-		in.Target = ResolveTargetBaseAndCustom
+		normalizedRequest.Target = ResolveTargetBaseAndCustom
 	default:
 		validationErrors = append(validationErrors, fmt.Sprintf("Invalid 'target': valid values are '%s', '%s', '%s'",
 			ResolveTargetCustomOnly, ResolveTargetBaseOnly, ResolveTargetBaseAndCustom))
 	}
 
 	// Parse and validate `resolver`
-	switch in.GetResolver() {
+	switch normalizedRequest.GetResolver() {
 	case ResolveResolverPlace, ResolveResolverIndicator:
 	case "":
 		// Set default value
-		in.Resolver = ResolveResolverPlace
+		normalizedRequest.Resolver = ResolveResolverPlace
 	default:
 		validationErrors = append(validationErrors, fmt.Sprintf("Invalid 'resolver': valid values are '%s', '%s'",
 			ResolveResolverIndicator, ResolveResolverPlace))
 	}
 
 	// Parse `property` expression into its in arc property, out arc property and typeOf filter values
-	if in.GetProperty() == "" {
-		in.Property = ResolveDefaultPropertyExpression
+	if normalizedRequest.GetProperty() == "" {
+		normalizedRequest.Property = ResolveDefaultPropertyExpression
 	}
 
-	inProp, outProp, typeOfValues, err := parseResolvePropertyExpression(in.GetProperty())
+	inProp, outProp, typeOfValues, err := parseResolvePropertyExpression(normalizedRequest.GetProperty())
 	if err != nil {
 		validationErrors = append(validationErrors, fmt.Sprintf("Invalid 'property' expression: %v", err))
 	}
 
 	// Validate property expression based on resolver
 	if err == nil {
-		switch in.GetResolver() {
+		switch normalizedRequest.GetResolver() {
 		case ResolveResolverPlace:
 			// geoCoordinate and description only support dcid as outArc
 			if (inProp == DescriptionProperty || inProp == GeoCoordinateProperty) && outProp != DcidProperty {
@@ -344,10 +347,10 @@ func ValidateAndParseResolveInputs(in *pbv2.ResolveRequest) (string, string, []s
 	}
 
 	if len(validationErrors) > 0 {
-		return "", "", nil, status.Errorf(codes.InvalidArgument, "Invalid inputs in request. %s", strings.Join(validationErrors, ". "))
+		return normalizedRequest, "", "", nil, status.Errorf(codes.InvalidArgument, "Invalid inputs in request. %s", strings.Join(validationErrors, ". "))
 	}
 
-	return inProp, outProp, typeOfValues, nil
+	return normalizedRequest, inProp, outProp, typeOfValues, nil
 }
 
 // parseResolvePropertyExpression parses and validates a property expression string.
