@@ -652,7 +652,35 @@ func (s *Server) V2BulkVariableInfo(
 func (s *Server) V2BulkVariableGroupInfo(
 	ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest,
 ) (*pbv1.BulkVariableGroupInfoResponse, error) {
-	return s.BulkVariableGroupInfo(ctx, in)
+	if s.shouldDivertV2(ctx) {
+		return s.dispatcher.BulkVariableGroupInfo(ctx, in)
+	}
+
+	v2StartTime := time.Now()
+
+	// Use the V1 implementation for now.
+v1Resp, err := s.BulkVariableGroupInfo(ctx, in)
+if err != nil {
+	return nil, err
+}
+v2Resp := proto.Clone(v1Resp).(*pbv1.BulkVariableGroupInfoResponse)
+
+convertV1ToV2BulkVariableGroupInfo(v2Resp)
+
+	v2Latency := time.Since(v2StartTime)
+
+	s.maybeMirrorV3(
+		ctx,
+		in,
+		v2Resp,
+		v2Latency,
+		func(ctx context.Context, req proto.Message) (proto.Message, error) {
+			return s.V3BulkVariableGroupInfo(ctx, req.(*pbv1.BulkVariableGroupInfoRequest))
+		},
+		GetV2BulkVariableGroupInfoCmpOpts(),
+	)
+
+	return v2Resp, nil
 }
 
 // resolveRouting determines whether to route to local and/or remote instances
@@ -681,5 +709,22 @@ func resolveRouting(target, remoteMixerDomain string) (bool, bool, error) {
 		return true, false, nil
 	default:
 		return true, true, nil
+	}
+}
+
+// convertV1ToV2BulkVariableGroupInfo converts a V1 BulkVariableGroupInfoResponse to the V2 version.
+func convertV1ToV2BulkVariableGroupInfo(resp *pbv1.BulkVariableGroupInfoResponse) {
+	// The new response will not contain all legacy V1 fields.
+	// To ensure the new response is sufficient, clear all legacy fields until swapping over to the new backend.
+	for _, info := range resp.GetData() {
+		if info.GetInfo() == nil {
+			continue
+		}
+		info.Info.ParentStatVarGroups = nil
+		for _, childSV := range info.GetInfo().GetChildStatVars() {
+			childSV.SearchName = ""
+			childSV.SearchNames = nil
+			childSV.Definition = ""
+		}
 	}
 }
