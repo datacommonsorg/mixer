@@ -65,36 +65,57 @@ type Cache struct {
 }
 
 func (c *Cache) ParentSvgs(ctx context.Context) map[string][]string {
+	if !c.options.FetchSVG {
+		slog.Warn("Unexpected access to uninitialized Cache ParentSvgs")
+	}
 	metrics.RecordCachedataRead(ctx, "parent_svgs")
 	return c.parentSvgs
 }
 
 func (c *Cache) RawSvgs(ctx context.Context) map[string]*pb.StatVarGroupNode {
+	if !c.options.FetchSVG {
+		slog.Warn("Unexpected access to uninitialized RawSvgs")
+	}
 	metrics.RecordCachedataRead(ctx, "raw_svgs")
 	return c.rawSvgs
 }
 
 func (c *Cache) BlocklistSvgs(ctx context.Context) map[string]struct{} {
+	if !c.options.FetchSVG {
+		slog.Warn("Unexpected access to uninitialized BlocklistSvgs")
+	}
 	metrics.RecordCachedataRead(ctx, "blocklist_svgs")
 	return c.blocklistSvgs
 }
 
 func (c *Cache) SvgSearchIndex(ctx context.Context) *resource.SearchIndex {
+	if !c.options.SearchSVG {
+		slog.Warn("Unexpected access to uninitialized SvgSearchIndex")
+	}
 	metrics.RecordCachedataRead(ctx, "svg_search_index")
 	return c.svgSearchIndex
 }
 
 func (c *Cache) SQLProvenances(ctx context.Context) map[string]*pb.Facet {
+	if !c.options.CacheSQL {
+		slog.Warn("Unexpected access to uninitialized SQLProvenances")
+	}
 	metrics.RecordCachedataRead(ctx, "sql_provenances")
 	return c.sqlProvenances
 }
 
 func (c *Cache) SQLExistenceMap(ctx context.Context) map[util.EntityVariable]struct{} {
+	if !c.options.CacheSQL {
+		slog.Warn("Unexpected access to uninitialized SQLExistenceMap")
+	}
 	metrics.RecordCachedataRead(ctx, "sql_existence_map")
 	return c.sqlExistenceMap
 }
 
 func (c *Cache) SVFormula(ctx context.Context) map[string][]string {
+	if !c.options.CacheSVFormula {
+		slog.Warn("Unexpected access to uninitialized SVFormula")
+	}
 	metrics.RecordCachedataRead(ctx, "sv_formulas")
 	return c.svFormulas
 }

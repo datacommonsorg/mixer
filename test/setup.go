@@ -54,14 +54,14 @@ import (
 
 // TestOption holds the options for integration test.
 type TestOption struct {
-	FetchSVG          bool
-	SearchSVG         bool
-	UseCustomTable    bool
-	UseSQLite         bool
-	CacheSVFormula    bool
-	UseSpannerGraph   bool
-	EnableV3          bool
-	RemoteMixerDomain string
+	FetchSVG                  bool
+	SearchSVG                 bool
+	UseCustomTable            bool
+	UseSQLite                 bool
+	UseStatisticalCalculation bool
+	UseSpannerGraph           bool
+	EnableV3                  bool
+	RemoteMixerDomain         string
 }
 
 var (
@@ -89,18 +89,18 @@ const (
 
 // Setup creates local server and client.
 func Setup(option ...*TestOption) (pbs.MixerClient, func(), error) {
-	fetchSVG, searchSVG, useCustomTable, useSQLite, cacheSVFormula, useSpannerGraph, enableV3, remoteMixerDomain := false, false, false, false, false, false, false, ""
+	fetchSVG, searchSVG, useCustomTable, useSQLite, useStatisticalCalculation, useSpannerGraph, enableV3, remoteMixerDomain := false, false, false, false, false, false, false, ""
 	var cacheOptions cache.CacheOptions
 	if len(option) == 1 {
 		fetchSVG = option[0].FetchSVG
 		searchSVG = option[0].SearchSVG
 		useCustomTable = option[0].UseCustomTable
 		useSQLite = option[0].UseSQLite
-		cacheSVFormula = option[0].CacheSVFormula
+		useStatisticalCalculation = option[0].UseStatisticalCalculation
 		cacheOptions.CacheSQL = useSQLite
 		cacheOptions.FetchSVG = fetchSVG
 		cacheOptions.SearchSVG = searchSVG
-		cacheOptions.CacheSVFormula = cacheSVFormula
+		cacheOptions.CacheSVFormula = useStatisticalCalculation
 		useSpannerGraph = option[0].UseSpannerGraph
 		enableV3 = option[0].EnableV3
 		remoteMixerDomain = option[0].RemoteMixerDomain
