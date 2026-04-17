@@ -765,7 +765,8 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 	var warnMsg string
 	if err == iterator.Done {
 		warnMsg = "No valid rows found in IngestionHistory."
-	} else if err != nil && spanner.ErrCode(err) == codes.NotFound {
+	} else if code := spanner.ErrCode(err); code == codes.NotFound ||
+		(code == codes.InvalidArgument && strings.Contains(err.Error(), "Table not found: IngestionHistory")) {
 		warnMsg = "IngestionHistory table not found."
 	}
 
