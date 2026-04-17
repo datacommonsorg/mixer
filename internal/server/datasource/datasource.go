@@ -20,6 +20,8 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
+
 )
 
 // DataSourceType represents the type of data source.
@@ -44,4 +46,21 @@ type DataSource interface {
 	Event(context.Context, *pbv2.EventRequest) (*pbv2.EventResponse, error)
 	BulkVariableInfo(context.Context, *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error)
 	BulkVariableGroupInfo(context.Context, *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error)
+	SdmxData(context.Context, *pbv3.SdmxDataRequest, map[string]string) ([]*SdmxObservation, error)
 }
+
+// SdmxObservation represents a structured row for SDMX data with split dimensions and attributes.
+type SdmxObservation struct {
+	VariableMeasured string
+	Provenance       string
+	DatesAndValues   []*SdmxDateValue
+	Dimensions       map[string]string
+	Attributes       map[string]string
+}
+
+// SdmxDateValue represents a date-value pair.
+type SdmxDateValue struct {
+	Date  string
+	Value string
+}
+

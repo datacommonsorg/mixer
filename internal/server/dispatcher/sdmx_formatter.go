@@ -20,7 +20,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/datacommonsorg/mixer/internal/server/spanner"
+	"github.com/datacommonsorg/mixer/internal/server/datasource"
 )
 
 const (
@@ -31,8 +31,9 @@ const (
 
 // Formatter defines the interface for formatting SDMX query results.
 type Formatter interface {
-	Format(obs []*spanner.Observation) (string, error)
+	Format(obs []*datasource.SdmxObservation) (string, error)
 }
+
 
 // JSONStatFormatter implements Formatter for JSON-stat format.
 type JSONStatFormatter struct{}
@@ -64,7 +65,7 @@ type JSONStatResponse struct {
 }
 
 // Format converts Spanner observations into a full JSON-stat 2.0 string.
-func (f *JSONStatFormatter) Format(obs []*spanner.Observation) (string, error) {
+func (f *JSONStatFormatter) Format(obs []*datasource.SdmxObservation) (string, error) {
 	if len(obs) == 0 {
 		return "{}", nil
 	}
@@ -74,34 +75,26 @@ func (f *JSONStatFormatter) Format(obs []*spanner.Observation) (string, error) {
 	dimensions[dimVariableMeasured] = map[string]bool{}
 	dimensions[dimObservationDate] = map[string]bool{}
 
-	// Universal exclude list for facet attributes.
-	facetAttributes := map[string]bool{
-		"measurementMethod": true,
-		"unit":              true,
-		"scalingFactor":     true,
-		"observationPeriod": true,
-	}
-
 	extensions := map[string]map[string]string{} // provenance -> attr -> value
 
 	for _, o := range obs {
 		dimensions[dimVariableMeasured][o.VariableMeasured] = true
-		for _, dv := range o.Observations {
+		for _, dv := range o.DatesAndValues {
 			dimensions[dimObservationDate][dv.Date] = true
 		}
 
-		prov := o.Attributes[dimProvenance]
+		prov := o.Provenance
 		if prov != "" && extensions[prov] == nil {
 			extensions[prov] = map[string]string{}
 		}
 
 		for k, v := range o.Attributes {
-			if facetAttributes[k] {
-				if prov != "" {
-					extensions[prov][k] = v
-				}
-				continue // Skip adding as dimension
+			if prov != "" {
+				extensions[prov][k] = v
 			}
+		}
+
+		for k, v := range o.Dimensions {
 			if _, ok := dimensions[k]; !ok {
 				dimensions[k] = map[string]bool{}
 			}
@@ -112,14 +105,15 @@ func (f *JSONStatFormatter) Format(obs []*spanner.Observation) (string, error) {
 	// Handle observations missing a dimension found in other observations
 	for _, o := range obs {
 		for dim := range dimensions {
-			if dim == dimVariableMeasured || dim == dimObservationDate {
+			if dim == dimVariableMeasured || dim == dimObservationDate || dim == dimProvenance {
 				continue
 			}
-			if _, ok := o.Attributes[dim]; !ok {
+			if _, ok := o.Dimensions[dim]; !ok {
 				dimensions[dim]["_N/A_"] = true
 			}
 		}
 	}
+
 
 	// Step 2: Determine dimension order and sort categories
 	// Order: variableMeasured -> middle dimensions -> observationDate
@@ -184,7 +178,7 @@ func (f *JSONStatFormatter) Format(obs []*spanner.Observation) (string, error) {
 			if dim == dimVariableMeasured || dim == dimObservationDate {
 				continue
 			}
-			val, ok := o.Attributes[dim]
+			val, ok := o.Dimensions[dim]
 			if !ok {
 				val = "_N/A_"
 			}
@@ -192,7 +186,7 @@ func (f *JSONStatFormatter) Format(obs []*spanner.Observation) (string, error) {
 			baseIdx += idx * strides[dimIdx]
 		}
 
-		for _, dv := range o.Observations {
+		for _, dv := range o.DatesAndValues {
 			dateIdx := categoryIndices[dimObservationDate][dv.Date]
 			flatIdx := baseIdx + dateIdx*strides[len(dimensionOrder)-1]
 
@@ -203,6 +197,7 @@ func (f *JSONStatFormatter) Format(obs []*spanner.Observation) (string, error) {
 			}
 		}
 	}
+
 
 	// Step 5: Construct final response
 	dimMap := map[string]DimensionEntry{}

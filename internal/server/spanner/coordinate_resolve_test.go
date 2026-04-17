@@ -22,6 +22,7 @@ import (
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
+	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
@@ -57,6 +58,10 @@ func (m *coordinateMockSpannerClient) CheckVariableExistence(ctx context.Context
 }
 
 func (m *coordinateMockSpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
+	return nil, nil
+}
+
+func (m *coordinateMockSpannerClient) GetSdmxObservations(ctx context.Context, constraints map[string]string) ([]*datasource.SdmxObservation, error) {
 	return nil, nil
 }
 

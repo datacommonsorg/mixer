@@ -25,7 +25,9 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
+
 	"github.com/datacommonsorg/mixer/internal/server/recon"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	v2e "github.com/datacommonsorg/mixer/internal/server/v2/event"
@@ -670,3 +672,9 @@ func (sds *SpannerDataSource) BulkVariableGroupInfo(ctx context.Context, req *pb
 	}
 	return filteredSVGInfoToBulkVariableGroupInfoResponse(filteredSVGInfo, req.GetNodes()[0]), nil
 }
+
+// SdmxData retrieves observations from Spanner.
+func (sds *SpannerDataSource) SdmxData(ctx context.Context, req *pbv3.SdmxDataRequest, constraints map[string]string) ([]*datasource.SdmxObservation, error) {
+	return sds.client.GetSdmxObservations(ctx, constraints)
+}
+

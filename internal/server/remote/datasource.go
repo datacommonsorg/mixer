@@ -21,6 +21,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 )
 
@@ -75,3 +76,9 @@ func (rds *RemoteDataSource) BulkVariableInfo(ctx context.Context, req *pbv1.Bul
 func (rds *RemoteDataSource) BulkVariableGroupInfo(ctx context.Context, req *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error) {
 	return rds.client.BulkVariableGroupInfo(req)
 }
+
+func (rds *RemoteDataSource) SdmxData(ctx context.Context, req *pbv3.SdmxDataRequest, constraints map[string]string) ([]*datasource.SdmxObservation, error) {
+	// Remote mixer does not support SDMX yet, return empty result to not break fetchAndMerge.
+	return []*datasource.SdmxObservation{}, nil
+}
+

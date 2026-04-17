@@ -21,7 +21,9 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
+
 	"github.com/datacommonsorg/mixer/internal/translator/sparql"
 
 	"golang.org/x/sync/errgroup"
@@ -49,6 +51,7 @@ func (ds *DataSources) GetSources() []string {
 	}
 	return sources
 }
+
 
 func fetchAndMerge[req any, resp any](
 	ctx context.Context,
@@ -168,3 +171,19 @@ func (ds *DataSources) BulkVariableGroupInfo(ctx context.Context, in *pbv1.BulkV
 		},
 	)
 }
+
+func (ds *DataSources) SdmxData(ctx context.Context, in *pbv3.SdmxDataRequest, constraints map[string]string) ([]*datasource.SdmxObservation, error) {
+	return fetchAndMerge(ctx, ds.sources, in,
+		func(c context.Context, s datasource.DataSource, r *pbv3.SdmxDataRequest) ([]*datasource.SdmxObservation, error) {
+			return s.SdmxData(c, r, constraints)
+		},
+		func(all [][] *datasource.SdmxObservation) ([]*datasource.SdmxObservation, error) {
+			var res []*datasource.SdmxObservation
+			for _, slice := range all {
+				res = append(res, slice...)
+			}
+			return res, nil
+		},
+	)
+}
+

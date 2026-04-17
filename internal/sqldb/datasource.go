@@ -21,6 +21,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
@@ -133,4 +134,10 @@ func (sds *SQLDataSource) BulkVariableInfo(ctx context.Context, req *pbv1.BulkVa
 
 func (sds *SQLDataSource) BulkVariableGroupInfo(ctx context.Context, req *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error) {
 	return &pbv1.BulkVariableGroupInfoResponse{}, nil
+}
+
+// SdmxData retrieves SDMX data from the data source.
+// However, SDMX data is not currently supported for SQL data sources so it returns an empty response.
+func (sds *SQLDataSource) SdmxData(ctx context.Context, req *pbv3.SdmxDataRequest, constraints map[string]string) ([]*datasource.SdmxObservation, error) {
+	return []*datasource.SdmxObservation{}, nil
 }

@@ -24,6 +24,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
@@ -53,6 +54,9 @@ func (m *mockSpannerClient) CheckVariableExistence(ctx context.Context, variable
 	return m.checkVariableExistenceRes, nil
 }
 func (m *mockSpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*spanner.Observation, error) {
+	return nil, nil
+}
+func (m *mockSpannerClient) GetSdmxObservations(ctx context.Context, constraints map[string]string) ([]*datasource.SdmxObservation, error) {
 	return nil, nil
 }
 func (m *mockSpannerClient) SearchNodes(ctx context.Context, query string, types []string) ([]*spanner.SearchNode, error) {

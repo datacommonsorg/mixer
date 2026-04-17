@@ -345,8 +345,8 @@ func main() {
 	}
 
 	// Store
-	if len(tables) == 0 && *remoteMixerDomain == "" && !sqldb.IsConnected(&sqlClient) {
-		slog.Error("No bigtables or remote mixer domain or sql database are provided")
+	if len(tables) == 0 && *remoteMixerDomain == "" && !sqldb.IsConnected(&sqlClient) && spannerClient == nil {
+		slog.Error("No bigtables, remote mixer domain, SQL database, or Spanner client provided")
 		os.Exit(1)
 	}
 	store, err := store.NewStore(

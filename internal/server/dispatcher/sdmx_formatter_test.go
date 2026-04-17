@@ -18,38 +18,38 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/datacommonsorg/mixer/internal/server/spanner"
+	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/google/go-cmp/cmp"
+
 )
 
 func TestJSONStatFormatter(t *testing.T) {
 	formatter := &JSONStatFormatter{}
 
-	obs := []*spanner.Observation{
+	obs := []*datasource.SdmxObservation{
 		{
 			VariableMeasured: "Count_Person",
-			ObservationAbout: "country/USA",
-			Observations: spanner.TimeSeries{
+			DatesAndValues: []*datasource.SdmxDateValue{
 				{Date: "2020", Value: "331000000"},
 				{Date: "2021", Value: "332000000"},
 			},
-			Attributes: map[string]string{
+			Dimensions: map[string]string{
 				"gender":           "Male",
 				"observationAbout": "country/USA",
 			},
 		},
 		{
 			VariableMeasured: "Count_Person",
-			ObservationAbout: "country/USA",
-			Observations: spanner.TimeSeries{
+			DatesAndValues: []*datasource.SdmxDateValue{
 				{Date: "2020", Value: "160000000"},
 			},
-			Attributes: map[string]string{
+			Dimensions: map[string]string{
 				"gender":           "Female",
 				"observationAbout": "country/USA",
 			},
 		},
 	}
+
 
 	output, err := formatter.Format(obs)
 	if err != nil {
@@ -100,18 +100,19 @@ func TestJSONStatFormatter(t *testing.T) {
 func TestJSONStatFormatter_NoObservationAbout(t *testing.T) {
 	formatter := &JSONStatFormatter{}
 
-	obs := []*spanner.Observation{
+	obs := []*datasource.SdmxObservation{
 		{
 			VariableMeasured: "Exports",
-			Observations: spanner.TimeSeries{
+			DatesAndValues: []*datasource.SdmxDateValue{
 				{Date: "2020", Value: "1000"},
 			},
-			Attributes: map[string]string{
+			Dimensions: map[string]string{
 				"source":      "country/USA",
 				"destination": "country/CHN",
 			},
 		},
 	}
+
 
 	output, err := formatter.Format(obs)
 	if err != nil {
@@ -142,30 +143,29 @@ func TestJSONStatFormatter_NoObservationAbout(t *testing.T) {
 func TestJSONStatFormatter_MissingDimensions(t *testing.T) {
 	formatter := &JSONStatFormatter{}
 
-	obs := []*spanner.Observation{
+	obs := []*datasource.SdmxObservation{
 		{
 			VariableMeasured: "Count_Person",
-			ObservationAbout: "country/USA",
-			Observations: spanner.TimeSeries{
+			DatesAndValues: []*datasource.SdmxDateValue{
 				{Date: "2020", Value: "331000000"},
 			},
-			Attributes: map[string]string{
+			Dimensions: map[string]string{
 				"gender":           "Male",
 				"observationAbout": "country/USA",
 			},
 		},
 		{
 			VariableMeasured: "Count_Person",
-			ObservationAbout: "country/USA",
-			Observations: spanner.TimeSeries{
+			DatesAndValues: []*datasource.SdmxDateValue{
 				{Date: "2020", Value: "332000000"},
 			},
 			// gender is missing!
-			Attributes: map[string]string{
+			Dimensions: map[string]string{
 				"observationAbout": "country/USA",
 			},
 		},
 	}
+
 
 	output, err := formatter.Format(obs)
 	if err != nil {
@@ -196,22 +196,24 @@ func TestJSONStatFormatter_MissingDimensions(t *testing.T) {
 func TestJSONStatFormatter_FacetAttributes(t *testing.T) {
 	formatter := &JSONStatFormatter{}
 
-	obs := []*spanner.Observation{
+	obs := []*datasource.SdmxObservation{
 		{
 			VariableMeasured: "Count_Person",
-			ObservationAbout: "country/USA",
-			Observations: spanner.TimeSeries{
+			Provenance:       "prov1",
+			DatesAndValues: []*datasource.SdmxDateValue{
 				{Date: "2020", Value: "331000000"},
 			},
-			Attributes: map[string]string{
+			Dimensions: map[string]string{
 				"gender":           "Male",
 				"observationAbout": "country/USA",
+			},
+			Attributes: map[string]string{
 				"unit":              "Person",
 				"measurementMethod": "Census",
-				"provenance":        "prov1",
 			},
 		},
 	}
+
 
 	output, err := formatter.Format(obs)
 	if err != nil {

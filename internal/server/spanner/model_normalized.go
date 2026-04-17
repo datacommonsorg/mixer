@@ -17,6 +17,7 @@ package spanner
 // rawObservation represents a row from the coalesced query.
 type rawObservation struct {
 	VariableMeasured string                  `spanner:"variable_measured"`
+	Provenance       string                  `spanner:"provenance"`
 	DatesAndValues   []*spannerObservation   `spanner:"dates_and_values"`
 	Attributes       []*spannerAttribute     `spanner:"attributes"`
 }

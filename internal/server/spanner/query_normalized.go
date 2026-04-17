@@ -19,6 +19,7 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
 
@@ -61,9 +62,7 @@ func reconstructObservations(rawObs []*rawObservation) []*Observation {
 		obs := &Observation{
 			VariableMeasured: r.VariableMeasured,
 			Observations:     TimeSeries{},
-			Attributes:       map[string]string{},
 		}
-		obs.Attributes["provenance"] = r.Provenance
 
 		for _, dv := range r.DatesAndValues {
 			obs.Observations = append(obs.Observations, &DateValue{Date: dv.Date, Value: dv.Value})
@@ -83,8 +82,6 @@ func reconstructObservations(rawObs []*rawObservation) []*Observation {
 				if b, err := strconv.ParseBool(attr.Value); err == nil {
 					obs.IsDcAggregate = b
 				}
-			default:
-				obs.Attributes[attr.Property] = attr.Value
 			}
 		}
 		result = append(result, obs)
@@ -132,9 +129,18 @@ func (nc *normalizedClient) fetchRawObservationsContainedInPlace(ctx context.Con
 	return rawObs, err
 }
 
+var facetAttributes = map[string]bool{
+	"unit":              true,
+	"measurementMethod": true,
+	"scalingFactor":     true,
+	"observationPeriod": true,
+	"importName":        true,
+	"provenanceUrl":     true,
+}
+
 // GetSdmxObservations retrieves observations from Spanner given a list of constraints
 // using the normalized schema and relational division.
-func (nc *normalizedClient) GetSdmxObservations(ctx context.Context, constraints map[string]string) ([]*Observation, error) {
+func (nc *normalizedClient) GetSdmxObservations(ctx context.Context, constraints map[string]string) ([]*datasource.SdmxObservation, error) {
 	stmt := GetSdmxObservationsQuery(constraints)
 
 	var rawObs []*rawObservation
@@ -146,31 +152,38 @@ func (nc *normalizedClient) GetSdmxObservations(ctx context.Context, constraints
 	}
 
 	if len(rawObs) == 0 {
-		return []*Observation{}, nil
+		return []*datasource.SdmxObservation{}, nil
 	}
 
 	return reconstructSdmxObservations(rawObs), nil
 }
 
-// reconstructSdmxObservations combines raw observations and attributes into full Observation structs for SDMX.
-// It puts ALL attributes into the Attributes map to avoid legacy top-level field bindings.
-func reconstructSdmxObservations(rawObs []*rawObservation) []*Observation {
-	var result []*Observation
+// reconstructSdmxObservations combines raw observations and attributes into full SdmxObservation structs for SDMX.
+func reconstructSdmxObservations(rawObs []*rawObservation) []*datasource.SdmxObservation {
+	var result []*datasource.SdmxObservation
 
 	for _, r := range rawObs {
-		obs := &Observation{
+		obs := &datasource.SdmxObservation{
 			VariableMeasured: r.VariableMeasured,
-			Observations:     TimeSeries{},
+			Provenance:       r.Provenance,
+			DatesAndValues:   []*datasource.SdmxDateValue{},
+			Dimensions:       map[string]string{},
 			Attributes:       map[string]string{},
 		}
-		obs.Attributes["provenance"] = r.Provenance
 
 		for _, dv := range r.DatesAndValues {
-			obs.Observations = append(obs.Observations, &DateValue{Date: dv.Date, Value: dv.Value})
+			obs.DatesAndValues = append(obs.DatesAndValues, &datasource.SdmxDateValue{Date: dv.Date, Value: dv.Value})
 		}
 
 		for _, attr := range r.Attributes {
-			obs.Attributes[attr.Property] = attr.Value
+			if attr.Property == "provenance" {
+				continue
+			}
+			if facetAttributes[attr.Property] {
+				obs.Attributes[attr.Property] = attr.Value
+			} else {
+				obs.Dimensions[attr.Property] = attr.Value
+			}
 		}
 		result = append(result, obs)
 	}
