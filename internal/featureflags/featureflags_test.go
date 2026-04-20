@@ -28,7 +28,7 @@ import (
 // Example usage:
 //
 //	want: expectedFlags(func(f *Flags) {
-//		f.EnableV3 = true
+//		f.UseSpannerGraph = true
 //	}),
 func expectedFlags(mods ...func(*Flags)) *Flags {
 	f := setDefaultValues()
@@ -53,7 +53,7 @@ func TestNewFlags(t *testing.T) {
 		},
 		{
 			name:        "invalid yaml",
-			fileContent: "flags: \n  EnableV3: true\n V3MirrorFraction: 0.5", // bad indentation
+			fileContent: "flags: \n  UseSpannerGraph: true\n V3MirrorFraction: 0.5", // bad indentation
 			want:        nil,
 			wantErr:     true,
 		},
@@ -61,10 +61,10 @@ func TestNewFlags(t *testing.T) {
 			name: "partial flags",
 			fileContent: `
 flags:
-  EnableV3: true
+  UseSpannerGraph: true
 `,
 			want: expectedFlags(func(f *Flags) {
-				f.EnableV3 = true
+				f.UseSpannerGraph = true
 			}),
 			wantErr: false,
 		},
@@ -72,11 +72,11 @@ flags:
 			name: "all flags",
 			fileContent: `
 flags:
-  EnableV3: true
+  UseSpannerGraph: true
   V3MirrorFraction: 0.7
 `,
 			want: expectedFlags(func(f *Flags) {
-				f.EnableV3 = true
+				f.UseSpannerGraph = true
 				f.V3MirrorFraction = 0.7
 			}),
 			wantErr: false,
@@ -88,11 +88,11 @@ clusters:
   - projects/datcom-website-prod/locations/us-central1/clusters/website-us-central1
   - projects/datcom-website-prod/locations/us-west1/clusters/website-us-west1
 flags:
-  EnableV3: true
+  UseSpannerGraph: true
   V3MirrorFraction: 0.7
 `,
 			want: expectedFlags(func(f *Flags) {
-				f.EnableV3 = true
+				f.UseSpannerGraph = true
 				f.V3MirrorFraction = 0.7
 			}),
 			wantErr: false,
@@ -111,7 +111,7 @@ clusters:
 			name: "validation error - fraction too high",
 			fileContent: `
 flags:
-  EnableV3: true
+  UseSpannerGraph: true
   V3MirrorFraction: 1.1
 `,
 			want:    nil,
@@ -121,17 +121,17 @@ flags:
 			name: "validation error - fraction too low",
 			fileContent: `
 flags:
-  EnableV3: true
+  UseSpannerGraph: true
   V3MirrorFraction: -0.1
 `,
 			want:    nil,
 			wantErr: true,
 		},
 		{
-			name: "validation error - mirror without v3",
+			name: "validation error - mirror without spanner graph",
 			fileContent: `
 flags:
-  EnableV3: false
+  UseSpannerGraph: false
   V3MirrorFraction: 0.5
 `,
 			want:    nil,

@@ -60,7 +60,6 @@ type TestOption struct {
 	UseSQLite                 bool
 	UseStatisticalCalculation bool
 	UseSpannerGraph           bool
-	EnableV3                  bool
 	RemoteMixerDomain         string
 }
 
@@ -89,7 +88,7 @@ const (
 
 // Setup creates local server and client.
 func Setup(option ...*TestOption) (pbs.MixerClient, func(), error) {
-	fetchSVG, searchSVG, useCustomTable, useSQLite, useStatisticalCalculation, useSpannerGraph, enableV3, remoteMixerDomain := false, false, false, false, false, false, false, ""
+	fetchSVG, searchSVG, useCustomTable, useSQLite, useStatisticalCalculation, useSpannerGraph, remoteMixerDomain := false, false, false, false, false, false, ""
 	var cacheOptions cache.CacheOptions
 	if len(option) == 1 {
 		fetchSVG = option[0].FetchSVG
@@ -102,7 +101,6 @@ func Setup(option ...*TestOption) (pbs.MixerClient, func(), error) {
 		cacheOptions.SearchSVG = searchSVG
 		cacheOptions.CacheSVFormula = useStatisticalCalculation
 		useSpannerGraph = option[0].UseSpannerGraph
-		enableV3 = option[0].EnableV3
 		remoteMixerDomain = option[0].RemoteMixerDomain
 	}
 	return setupInternal(
@@ -113,7 +111,6 @@ func Setup(option ...*TestOption) (pbs.MixerClient, func(), error) {
 		useCustomTable,
 		useSQLite,
 		useSpannerGraph,
-		enableV3,
 		cacheOptions,
 		remoteMixerDomain,
 	)
@@ -121,7 +118,7 @@ func Setup(option ...*TestOption) (pbs.MixerClient, func(), error) {
 
 func setupInternal(
 	bigqueryVersionFile, baseBigtableInfoYaml, testBigtableInfoYaml, mcfPath string,
-	useCustomTable, useSQLite, useSpannerGraph, enableV3 bool,
+	useCustomTable, useSQLite, useSpannerGraph bool,
 	cacheOptions cache.CacheOptions,
 	remoteMixerDomain string,
 ) (pbs.MixerClient, func(), error) {
@@ -136,7 +133,7 @@ func setupInternal(
 	var spannerDataSource datasource.DataSource
 	var spannerClient spanner.SpannerClient
 	var spannerCleanup = func() {}
-	if enableV3 && useSpannerGraph {
+	if useSpannerGraph {
 		spannerClient = NewSpannerClient()
 		if spannerClient != nil {
 			spannerCleanup = spannerClient.Close
@@ -173,7 +170,7 @@ func setupInternal(
 		if err != nil {
 			log.Fatalf("SQL database validation failed: %v", err)
 		}
-		if enableV3 {
+		if useSpannerGraph {
 			var ds datasource.DataSource = sqldb.NewSQLDataSource(&sqlClient, spannerDataSource)
 			sources = append(sources, ds)
 		}
@@ -205,7 +202,7 @@ func setupInternal(
 	}
 
 	var remoteDataSource datasource.DataSource
-	if enableV3 && remoteMixerDomain != "" {
+	if useSpannerGraph && remoteMixerDomain != "" {
 		remoteClient, err := remote.NewRemoteClient(metadata)
 		if err != nil {
 			log.Fatalf("Failed to create remote client: %v", err)
@@ -221,7 +218,7 @@ func setupInternal(
 	dataSources := datasources.NewDataSources(sources, remoteDataSource)
 	// Processors
 	processors := []*dispatcher.Processor{}
-	if enableV3 {
+	if useSpannerGraph {
 		// Mixer in-memory cache.
 		dataSourceCache, err := cache.NewDataSourceCache(ctx, dataSources, cacheOptions)
 		if err != nil {

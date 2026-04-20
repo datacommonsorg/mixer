@@ -192,7 +192,7 @@ func main() {
 
 	// Spanner Graph.
 	var spannerClient spanner.SpannerClient
-	if flags.EnableV3 && flags.UseSpannerGraph {
+	if flags.UseSpannerGraph {
 		var err error
 		spannerClient, err = spanner.NewSpannerClient(ctx, *spannerGraphInfo, flags.SpannerGraphDatabase)
 		if err != nil {
@@ -286,7 +286,7 @@ func main() {
 	// Create remote data source here but don't add it to sources yet since we want it to be the last source added.
 	// TODO: clean up how we create and add data sources.
 	var remoteDataSource datasource.DataSource
-	if flags.EnableV3 && *remoteMixerDomain != "" {
+	if flags.UseSpannerGraph && *remoteMixerDomain != "" {
 		remoteClient, err := remote.NewRemoteClient(metadata)
 		if err != nil {
 			slog.Error("Failed to create remote client", "error", err)
@@ -334,7 +334,7 @@ func main() {
 	}
 
 	// SQL Data Source
-	if flags.EnableV3 && sqldb.IsConnected(&sqlClient) {
+	if flags.UseSpannerGraph && sqldb.IsConnected(&sqlClient) {
 		var ds datasource.DataSource = sqldb.NewSQLDataSource(&sqlClient, remoteDataSource)
 		sources = append(sources, ds)
 	}
@@ -393,8 +393,8 @@ func main() {
 
 	// Processors
 	processors := []*dispatcher.Processor{}
-	if flags.EnableV3 {
-		slog.Info("V3 enabled, setting up processors")
+	if flags.UseSpannerGraph {
+	slog.Info("New backend enabled, setting up processors")
 		// Mixer in-memory cache.
 		dataSourceCache, err := cache.NewDataSourceCache(ctx, dataSources, cacheOptions)
 		if err != nil {
