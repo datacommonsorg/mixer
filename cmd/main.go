@@ -394,7 +394,7 @@ func main() {
 	// Processors
 	processors := []*dispatcher.Processor{}
 	if flags.UseSpannerGraph {
-		slog.Info("V3 enabled, setting up processors")
+	slog.Info("New backend enabled, setting up processors")
 		// Mixer in-memory cache.
 		dataSourceCache, err := cache.NewDataSourceCache(ctx, dataSources, cacheOptions)
 		if err != nil {
