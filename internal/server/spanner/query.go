@@ -760,7 +760,7 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 	defer iter.Stop()
 
 	row, err := iter.Next()
-	
+
 	// Handle missing or empty table cases gracefully
 	var warnMsg string
 	if err == iterator.Done {
@@ -838,22 +838,19 @@ func (sc *spannerDatabaseClient) executeQuery(
 		return err
 	}
 
-	if sc.useStaleReads {
-		ts, err := sc.getStalenessTimestamp()
-		if err != nil {
-			return runQuery(spanner.StrongRead())
-		}
-		err = runQuery(spanner.ReadTimestamp(ts))
-
-		// Log error if timestamp is older than retention and fall back to strong read.
-		if spanner.ErrCode(err) == codes.FailedPrecondition {
-			slog.Error("Stale read timestamp expired. Falling back to StrongRead.",
-				"expiredTimestamp", ts.String())
-			return runQuery(spanner.StrongRead())
-		}
-		return err
+	ts, err := sc.getStalenessTimestamp()
+	if err != nil {
+		return runQuery(spanner.StrongRead())
 	}
-	return runQuery(spanner.StrongRead())
+	err = runQuery(spanner.ReadTimestamp(ts))
+
+	// Log error if timestamp is older than retention and fall back to strong read.
+	if spanner.ErrCode(err) == codes.FailedPrecondition {
+		slog.Error("Stale read timestamp expired. Falling back to StrongRead.",
+			"expiredTimestamp", ts.String())
+		return runQuery(spanner.StrongRead())
+	}
+	return err
 }
 
 // queryStructs executes a query and maps the results to an input struct.

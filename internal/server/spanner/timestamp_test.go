@@ -54,9 +54,8 @@ func TestTimestampUpdated(t *testing.T) {
 	updateDone := make(chan bool, 1)
 
 	sc := &spannerDatabaseClient{
-		useStaleReads: true,
-		ticker:        mockTicker,
-		stopCh:        make(chan struct{}),
+		ticker: mockTicker,
+		stopCh: make(chan struct{}),
 	}
 	// Store intial timestamp.
 	sc.timestamp.Store(startTime.UnixNano())
@@ -98,9 +97,8 @@ func TestTimestampUpdateFailure(t *testing.T) {
 	updateDone := make(chan bool, 1)
 
 	sc := &spannerDatabaseClient{
-		useStaleReads: true,
-		ticker:        mockTicker,
-		stopCh:        make(chan struct{}),
+		ticker: mockTicker,
+		stopCh: make(chan struct{}),
 	}
 	// Store initial timestamp
 	sc.timestamp.Store(startTime.UnixNano())
