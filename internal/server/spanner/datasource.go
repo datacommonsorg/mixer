@@ -26,6 +26,7 @@ import (
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
+	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/recon"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	v2e "github.com/datacommonsorg/mixer/internal/server/v2/event"
@@ -208,47 +209,25 @@ func (sds *SpannerDataSource) NodeSearch(ctx context.Context, req *pbv2.NodeSear
 
 // Resolve searches for nodes in the graph.
 func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
-	arcs, err := v2.ParseProperty(req.GetProperty())
+	normalizedResolveRequest, err := resolvev2.ValidateAndParseResolveInputs(req)
 	if err != nil {
 		return nil, err
 	}
 
-	if len(arcs) != 2 {
-		return nil, status.Errorf(codes.InvalidArgument,
-			"invalid property for resolving: %s", req.GetProperty())
+	if resolver := normalizedResolveRequest.Request.GetResolver(); resolver == resolvev2.ResolveResolverIndicator {
+		// Spanner doesn't do embeddings resolution yet.
+		slog.Warn("Received unsupported ResolveResolverIndicator request to Spanner", "request", req)
+		return &pbv2.ResolveResponse{}, nil
 	}
 
-	inArc := arcs[0]
-	outArc := arcs[1]
-	if inArc.Out || !outArc.Out {
-		return nil, status.Errorf(codes.InvalidArgument,
-			"invalid property for resolving: %s", req.GetProperty())
+	switch normalizedResolveRequest.InProp {
+	case resolvev2.GeoCoordinateProperty:
+		return sds.resolveCoordinate(ctx, normalizedResolveRequest)
+	case resolvev2.DescriptionProperty:
+		return sds.resolveDescription(ctx, normalizedResolveRequest)
+	default:
+		return sds.resolveID(ctx, normalizedResolveRequest)
 	}
-
-	if inArc.SingleProp == "geoCoordinate" && outArc.SingleProp == "dcid" {
-		// Coordinate to ID:
-		// Example:
-		//   <-geoCoordinate->dcid
-		return sds.resolveCoordinate(ctx, req, inArc)
-	}
-
-	if inArc.SingleProp == "description" && outArc.SingleProp == "dcid" {
-		// Description (name) to ID:
-		// Examples:
-		//   <-description->dcid
-		//   <-description{typeOf:City}->dcid
-		//   <-description{typeOf:[City, County]}->dcid
-		return sds.resolveDescription(ctx, req, inArc)
-	}
-
-	// ID to ID:
-	// Example:
-	//   <-wikidataId->nutsCode
-	nodeToCandidates, err := sds.client.ResolveByID(ctx, req.GetNodes(), inArc.SingleProp, outArc.SingleProp)
-	if err != nil {
-		return nil, fmt.Errorf("error resolving ids: %v", err)
-	}
-	return candidatesToResolveResponse(nodeToCandidates), nil
 }
 
 // Sparql executes a SPARQL query against the Spanner data source.
@@ -271,18 +250,16 @@ func (sds *SpannerDataSource) Sparql(ctx context.Context, req *pb.SparqlRequest)
 // resolveCoordinate resolves geo coordinates to DCIDs using S2 level-10 cell mappings.
 func (sds *SpannerDataSource) resolveCoordinate(
 	ctx context.Context,
-	req *pbv2.ResolveRequest,
-	inArc *v2.Arc,
+	req *resolvev2.NormalizedResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
 	type coordinateNode struct {
 		node   string
 		cellID string
 	}
 
-	typeOfs := inArc.Filter["typeOf"]
 	coordinateNodes := []coordinateNode{}
 	cellIDSet := map[string]struct{}{}
-	for _, node := range req.GetNodes() {
+	for _, node := range req.Request.GetNodes() {
 		lat, lng, err := resolvev2.ParseCoordinate(node)
 		if err != nil {
 			return nil, err
@@ -326,7 +303,7 @@ func (sds *SpannerDataSource) resolveCoordinate(
 			}
 			// Coordinate resolve filters by dominant type only. Secondary types on
 			// the place node do not qualify a candidate for a typeOf match.
-			if len(typeOfs) > 0 && !matchesRequestedType(dominantType, typeOfs) {
+			if len(req.TypeOfValues) > 0 && !matchesRequestedType(dominantType, req.TypeOfValues) {
 				continue
 			}
 			if _, ok := candidateSet[edge.Value]; ok {
@@ -350,18 +327,16 @@ func (sds *SpannerDataSource) resolveCoordinate(
 // resolveDescription resolves entity descriptions to DCIDs.
 func (sds *SpannerDataSource) resolveDescription(
 	ctx context.Context,
-	req *pbv2.ResolveRequest,
-	inArc *v2.Arc,
+	req *resolvev2.NormalizedResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
-	// Extract typeOf from filter.
-	typeOfs, ok := inArc.Filter["typeOf"]
-	if !ok {
+	typeOfs := req.TypeOfValues
+	if len(typeOfs) == 0 {
 		typeOfs = []string{""}
 	}
 
 	// Prepare entity info set.
 	entityInfoSet := map[recon.EntityInfo]struct{}{}
-	for _, node := range req.GetNodes() {
+	for _, node := range req.Request.GetNodes() {
 		for _, typeOf := range typeOfs {
 			entityInfoSet[recon.EntityInfo{Description: node, TypeOf: typeOf}] = struct{}{}
 		}
@@ -387,7 +362,7 @@ func (sds *SpannerDataSource) resolveDescription(
 
 	// Assemble results.
 	resp := &pbv2.ResolveResponse{}
-	for _, node := range req.GetNodes() {
+	for _, node := range req.Request.GetNodes() {
 		resEntity := &pbv2.ResolveResponse_Entity{
 			Node: node,
 		}
@@ -425,6 +400,14 @@ func (sds *SpannerDataSource) resolveDescription(
 	return resp, nil
 }
 
+func (sds *SpannerDataSource) resolveID(ctx context.Context, req *resolvev2.NormalizedResolveRequest) (*pbv2.ResolveResponse, error) {
+	nodeToCandidates, err := sds.client.ResolveByID(ctx, req.Request.GetNodes(), req.InProp, req.OutProp)
+	if err != nil {
+		return nil, fmt.Errorf("error resolving ids: %v", err)
+	}
+	return candidatesToResolveResponse(nodeToCandidates), nil
+}
+
 // fetchTypes gets the types of the provided DCIDs from Spanner.
 func (sds *SpannerDataSource) fetchTypes(
 	ctx context.Context,
@@ -436,7 +419,7 @@ func (sds *SpannerDataSource) fetchTypes(
 	}
 
 	typeArc := &v2.Arc{SingleProp: "typeOf", Out: true}
-	dcidToEdges, err := sds.client.GetNodeEdgesByID(ctx, util.StringSetToSlice(dcidSet), typeArc, 0, 0)
+	dcidToEdges, err := sds.client.GetNodeEdgesByID(ctx, util.StringSetToSlice(dcidSet), typeArc, datasources.DefaultPageSize, 0)
 	if err != nil {
 		return nil, err
 	}
