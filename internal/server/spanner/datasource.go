@@ -209,23 +209,24 @@ func (sds *SpannerDataSource) NodeSearch(ctx context.Context, req *pbv2.NodeSear
 
 // Resolve searches for nodes in the graph.
 func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
-	normalizedReq, inProp, outProp, typeOfValues, err := resolvev2.ValidateAndParseResolveInputs(req)
+	normalizedResolveRequest, err := resolvev2.ValidateAndParseResolveInputs(req)
 	if err != nil {
 		return nil, err
 	}
 
-	if resolver := normalizedReq.GetResolver(); resolver == resolvev2.ResolveResolverIndicator {
+	if resolver := normalizedResolveRequest.Request.GetResolver(); resolver == resolvev2.ResolveResolverIndicator {
 		// Spanner doesn't do embeddings resolution yet.
+		slog.Warn("Received unsupported ResolveResolverIndicator request to Spanner", "request", req)
 		return &pbv2.ResolveResponse{}, nil
 	}
 
-	switch inProp {
+	switch normalizedResolveRequest.InProp {
 	case resolvev2.GeoCoordinateProperty:
-		return sds.resolveCoordinate(ctx, normalizedReq, typeOfValues)
+		return sds.resolveCoordinate(ctx, normalizedResolveRequest)
 	case resolvev2.DescriptionProperty:
-		return sds.resolveDescription(ctx, normalizedReq, typeOfValues)
+		return sds.resolveDescription(ctx, normalizedResolveRequest)
 	default:
-		return sds.resolveID(ctx, normalizedReq.GetNodes(), inProp, outProp)
+		return sds.resolveID(ctx, normalizedResolveRequest)
 	}
 }
 
@@ -249,8 +250,7 @@ func (sds *SpannerDataSource) Sparql(ctx context.Context, req *pb.SparqlRequest)
 // resolveCoordinate resolves geo coordinates to DCIDs using S2 level-10 cell mappings.
 func (sds *SpannerDataSource) resolveCoordinate(
 	ctx context.Context,
-	req *pbv2.ResolveRequest,
-	typeOfValues []string,
+	req *resolvev2.NormalizedResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
 	type coordinateNode struct {
 		node   string
@@ -259,7 +259,7 @@ func (sds *SpannerDataSource) resolveCoordinate(
 
 	coordinateNodes := []coordinateNode{}
 	cellIDSet := map[string]struct{}{}
-	for _, node := range req.GetNodes() {
+	for _, node := range req.Request.GetNodes() {
 		lat, lng, err := resolvev2.ParseCoordinate(node)
 		if err != nil {
 			return nil, err
@@ -303,7 +303,7 @@ func (sds *SpannerDataSource) resolveCoordinate(
 			}
 			// Coordinate resolve filters by dominant type only. Secondary types on
 			// the place node do not qualify a candidate for a typeOf match.
-			if len(typeOfValues) > 0 && !matchesRequestedType(dominantType, typeOfValues) {
+			if len(req.TypeOfValues) > 0 && !matchesRequestedType(dominantType, req.TypeOfValues) {
 				continue
 			}
 			if _, ok := candidateSet[edge.Value]; ok {
@@ -327,17 +327,16 @@ func (sds *SpannerDataSource) resolveCoordinate(
 // resolveDescription resolves entity descriptions to DCIDs.
 func (sds *SpannerDataSource) resolveDescription(
 	ctx context.Context,
-	req *pbv2.ResolveRequest,
-	typeOfValues []string,
+	req *resolvev2.NormalizedResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
-	typeOfs := typeOfValues
+	typeOfs := req.TypeOfValues
 	if len(typeOfs) == 0 {
 		typeOfs = []string{""}
 	}
 
 	// Prepare entity info set.
 	entityInfoSet := map[recon.EntityInfo]struct{}{}
-	for _, node := range req.GetNodes() {
+	for _, node := range req.Request.GetNodes() {
 		for _, typeOf := range typeOfs {
 			entityInfoSet[recon.EntityInfo{Description: node, TypeOf: typeOf}] = struct{}{}
 		}
@@ -363,7 +362,7 @@ func (sds *SpannerDataSource) resolveDescription(
 
 	// Assemble results.
 	resp := &pbv2.ResolveResponse{}
-	for _, node := range req.GetNodes() {
+	for _, node := range req.Request.GetNodes() {
 		resEntity := &pbv2.ResolveResponse_Entity{
 			Node: node,
 		}
@@ -401,8 +400,8 @@ func (sds *SpannerDataSource) resolveDescription(
 	return resp, nil
 }
 
-func (sds *SpannerDataSource) resolveID(ctx context.Context, nodes []string, inProp, outProp string) (*pbv2.ResolveResponse, error) {
-	nodeToCandidates, err := sds.client.ResolveByID(ctx, nodes, inProp, outProp)
+func (sds *SpannerDataSource) resolveID(ctx context.Context, req *resolvev2.NormalizedResolveRequest) (*pbv2.ResolveResponse, error) {
+	nodeToCandidates, err := sds.client.ResolveByID(ctx, req.Request.GetNodes(), req.InProp, req.OutProp)
 	if err != nil {
 		return nil, fmt.Errorf("error resolving ids: %v", err)
 	}

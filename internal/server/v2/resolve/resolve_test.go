@@ -278,7 +278,7 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.desc, func(t *testing.T) {
-			normalizedReq, inProp, outProp, typeOfValues, err := ValidateAndParseResolveInputs(tc.in)
+			result, err := ValidateAndParseResolveInputs(tc.in)
 			if (err != nil) != tc.wantErr {
 				t.Errorf("%s validateAndParseResolveInputs() error = %v, wantErr %v", tc.desc, err, tc.wantErr)
 			}
@@ -286,16 +286,16 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 				t.Errorf("%s validateAndParseResolveInputs() error = %v, wantErrMsg %v", tc.desc, err, tc.wantErrMsg)
 			}
 			if !tc.wantErr {
-				if diff := cmp.Diff(normalizedReq, tc.wantReq, protocmp.Transform()); diff != "" {
+				if diff := cmp.Diff(result.Request, tc.wantReq, protocmp.Transform()); diff != "" {
 					t.Errorf("%s normalizedReq mismatch (-got +want):\n%s", tc.desc, diff)
 				}
-				if inProp != tc.wantInProp {
-					t.Errorf("%s inProp got %s, want %s", tc.desc, inProp, tc.wantInProp)
+				if result.InProp != tc.wantInProp {
+					t.Errorf("%s inProp got %s, want %s", tc.desc, result.InProp, tc.wantInProp)
 				}
-				if outProp != tc.wantOutProp {
-					t.Errorf("%s outProp got %s, want %s", tc.desc, outProp, tc.wantOutProp)
+				if result.OutProp != tc.wantOutProp {
+					t.Errorf("%s outProp got %s, want %s", tc.desc, result.OutProp, tc.wantOutProp)
 				}
-				if diff := cmp.Diff(typeOfValues, tc.wantTypeOfValues); diff != "" {
+				if diff := cmp.Diff(result.TypeOfValues, tc.wantTypeOfValues); diff != "" {
 					t.Errorf("%s typeOfValues diff (-got +want):\n%s", tc.desc, diff)
 				}
 			}

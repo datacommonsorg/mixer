@@ -391,7 +391,7 @@ func main() {
 	}
 
 	// DataSources
-	dataSources := datasources.NewDataSources(sources)
+	dataSources := datasources.NewDataSources(sources, remoteDataSource)
 
 	// Processors
 	processors := []*dispatcher.Processor{}

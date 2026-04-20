@@ -50,13 +50,13 @@ func (s *Server) V2Resolve(
 
 	v2StartTime := time.Now()
 
-	normalizedReq, inProp, outProp, typeOfValues, err := resolve.ValidateAndParseResolveInputs(in)
+	normalizedResolveRequest, err := resolve.ValidateAndParseResolveInputs(in)
 	if err != nil {
 		return nil, err
 	}
 
 	hasRemoteMixerDomain := s.metadata.RemoteMixerDomain != ""
-	callLocal, callRemote := resolve.ResolveRouting(normalizedReq.GetTarget(), hasRemoteMixerDomain)
+	callLocal, callRemote := resolve.ResolveRouting(normalizedResolveRequest.Request.GetTarget(), hasRemoteMixerDomain)
 
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	localRespChan := make(chan *pbv2.ResolveResponse, 1)
@@ -64,7 +64,7 @@ func (s *Server) V2Resolve(
 
 	if callLocal {
 		errGroup.Go(func() error {
-			localResp, err := s.V2ResolveCore(errCtx, normalizedReq, inProp, outProp, typeOfValues)
+			localResp, err := s.V2ResolveCore(errCtx, normalizedResolveRequest)
 			if err != nil {
 				return err
 			}
@@ -78,7 +78,7 @@ func (s *Server) V2Resolve(
 	if callRemote {
 		errGroup.Go(func() error {
 			remoteResp := &pbv2.ResolveResponse{}
-			err := util.FetchRemote(s.metadata, s.httpClient, "/v2/resolve", normalizedReq, remoteResp)
+			err := util.FetchRemote(s.metadata, s.httpClient, "/v2/resolve", normalizedResolveRequest.Request, remoteResp)
 			if err != nil {
 				return err
 			}

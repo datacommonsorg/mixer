@@ -59,6 +59,13 @@ const (
 	TypeOfProperty = "typeOf"
 )
 
+type NormalizedResolveRequest struct {
+	Request      *pbv2.ResolveRequest
+	InProp       string
+	OutProp      string
+	TypeOfValues []string
+}
+
 var resolvedPlaceTypePriorityList = []string{
 	"AdministrativeArea5",
 	"AdministrativeArea4",
@@ -279,35 +286,22 @@ func GetSortedResolvedPlaceCandidates(
 //   - "indicator": "inProp" must be "description" and "outProp" must be "dcid".
 //
 // Returns:
-// - normalized request (ResolveRequest)
-// - input property (string)
-// - output property (string)
-// - typeOf filter values ([]string, from the input property filter)
+// - normalized request (*NormalizedResolveRequest)
 // - error if validation fails
-func ValidateAndParseResolveInputs(in *pbv2.ResolveRequest) (*pbv2.ResolveRequest, string, string, []string, error) {
+func ValidateAndParseResolveInputs(in *pbv2.ResolveRequest) (*NormalizedResolveRequest, error) {
 	normalizedRequest := proto.Clone(in).(*pbv2.ResolveRequest)
 	var validationErrors []string
 
 	// Parse and validate `target`
-	switch normalizedRequest.GetTarget() {
-	case ResolveTargetBaseOnly, ResolveTargetCustomOnly, ResolveTargetBaseAndCustom:
-	case "":
-		// Set default value; ignored if current call is to base dc
-		normalizedRequest.Target = ResolveTargetBaseAndCustom
-	default:
-		validationErrors = append(validationErrors, fmt.Sprintf("Invalid 'target': valid values are '%s', '%s', '%s'",
-			ResolveTargetCustomOnly, ResolveTargetBaseOnly, ResolveTargetBaseAndCustom))
+	targetError := parseAndValidateResolveTarget(normalizedRequest)
+	if targetError != "" {
+		validationErrors = append(validationErrors, targetError)
 	}
 
 	// Parse and validate `resolver`
-	switch normalizedRequest.GetResolver() {
-	case ResolveResolverPlace, ResolveResolverIndicator:
-	case "":
-		// Set default value
-		normalizedRequest.Resolver = ResolveResolverPlace
-	default:
-		validationErrors = append(validationErrors, fmt.Sprintf("Invalid 'resolver': valid values are '%s', '%s'",
-			ResolveResolverIndicator, ResolveResolverPlace))
+	resolverError := parseAndValidateResolveResolver(normalizedRequest)
+	if resolverError != "" {
+		validationErrors = append(validationErrors, resolverError)
 	}
 
 	// Parse `property` expression into its in arc property, out arc property and typeOf filter values
@@ -347,10 +341,52 @@ func ValidateAndParseResolveInputs(in *pbv2.ResolveRequest) (*pbv2.ResolveReques
 	}
 
 	if len(validationErrors) > 0 {
-		return normalizedRequest, "", "", nil, status.Errorf(codes.InvalidArgument, "Invalid inputs in request. %s", strings.Join(validationErrors, ". "))
+		return &NormalizedResolveRequest{
+			Request:      normalizedRequest,
+			InProp:       "",
+			OutProp:      "",
+			TypeOfValues: nil,
+		}, status.Errorf(codes.InvalidArgument, "Invalid inputs in request. %s", strings.Join(validationErrors, ". "))
 	}
 
-	return normalizedRequest, inProp, outProp, typeOfValues, nil
+	return &NormalizedResolveRequest{
+		Request:      normalizedRequest,
+		InProp:       inProp,
+		OutProp:      outProp,
+		TypeOfValues: typeOfValues,
+	}, nil
+}
+
+// parseAndValidateResolveTarget parses and validates ResolveRequest.Target.
+// Returns an optional error string.
+func parseAndValidateResolveTarget(req *pbv2.ResolveRequest) string {
+	switch req.GetTarget() {
+	case ResolveTargetBaseOnly, ResolveTargetCustomOnly, ResolveTargetBaseAndCustom:
+		return ""
+	case "":
+		// Set default value; ignored if current call is to base dc
+		req.Target = ResolveTargetBaseAndCustom
+		return ""
+	default:
+		return fmt.Sprintf("Invalid 'target': valid values are '%s', '%s', '%s'",
+			ResolveTargetCustomOnly, ResolveTargetBaseOnly, ResolveTargetBaseAndCustom)
+	}
+}
+
+// parseAndValidateResolveResolver parses and validates ResolveRequest.Resolver.
+// Returns an optional error string.
+func parseAndValidateResolveResolver(req *pbv2.ResolveRequest) string {
+	switch req.GetResolver() {
+	case ResolveResolverPlace, ResolveResolverIndicator:
+		return ""
+	case "":
+		// Set default value
+		req.Resolver = ResolveResolverPlace
+		return ""
+	default:
+		return fmt.Sprintf("Invalid 'resolver': valid values are '%s', '%s'",
+			ResolveResolverIndicator, ResolveResolverPlace)
+	}
 }
 
 // parseResolvePropertyExpression parses and validates a property expression string.

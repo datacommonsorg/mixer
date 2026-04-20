@@ -204,16 +204,21 @@ func setupInternal(
 		return nil, func() {}, err
 	}
 
+	var remoteDataSource datasource.DataSource
 	if enableV3 && remoteMixerDomain != "" {
 		remoteClient, err := remote.NewRemoteClient(metadata)
 		if err != nil {
 			log.Fatalf("Failed to create remote client: %v", err)
 		}
-		var ds datasource.DataSource = remote.NewRemoteDataSource(remoteClient)
-		sources = append(sources, ds)
+		remoteDataSource = remote.NewRemoteDataSource(remoteClient)
+
 	}
 
-	dataSources := datasources.NewDataSources(sources)
+	if remoteDataSource != nil {
+		sources = append(sources, remoteDataSource)
+	}
+
+	dataSources := datasources.NewDataSources(sources, remoteDataSource)
 	// Processors
 	processors := []*dispatcher.Processor{}
 	if enableV3 {
