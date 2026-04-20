@@ -659,12 +659,13 @@ func (s *Server) V2BulkVariableGroupInfo(
 	v2StartTime := time.Now()
 
 	// Use the V1 implementation for now.
-	v2Resp, err := s.BulkVariableGroupInfo(ctx, in)
-	if err != nil {
-		return nil, err
-	}
+v1Resp, err := s.BulkVariableGroupInfo(ctx, in)
+if err != nil {
+	return nil, err
+}
+v2Resp := proto.Clone(v1Resp).(*pbv1.BulkVariableGroupInfoResponse)
 
-	convertV1ToV2BulkVariableGroupInfo(v2Resp)
+convertV1ToV2BulkVariableGroupInfo(v2Resp)
 
 	v2Latency := time.Since(v2StartTime)
 
