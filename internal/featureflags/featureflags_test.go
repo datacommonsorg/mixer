@@ -128,7 +128,7 @@ flags:
 			wantErr: true,
 		},
 		{
-			name: "validation error - mirror without v3",
+			name: "validation error - mirror without spanner graph",
 			fileContent: `
 flags:
   UseSpannerGraph: false
