@@ -194,14 +194,12 @@ func main() {
 	var spannerClient spanner.SpannerClient
 	if flags.EnableV3 && flags.UseSpannerGraph {
 		var err error
-		spannerClient, err = spanner.NewSpannerClient(ctx, *spannerGraphInfo, flags.SpannerGraphDatabase, flags.UseStaleReads)
+		spannerClient, err = spanner.NewSpannerClient(ctx, *spannerGraphInfo, flags.SpannerGraphDatabase)
 		if err != nil {
 			slog.Error("Failed to create Spanner client", "error", err)
 			os.Exit(1)
 		}
-		if flags.UseStaleReads {
-			spannerClient.Start()
-		}
+		spannerClient.Start()
 		defer spannerClient.Close()
 	}
 	slog.Info("After Spanner client creation")

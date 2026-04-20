@@ -34,8 +34,6 @@ type Flags struct {
 	// This is temporarily loaded from flags vs spanner_graph_info.yaml.
 	// TODO: Once the Spanner instance is stable, revert to using the config.
 	SpannerGraphDatabase string `yaml:"SpannerGraphDatabase"`
-	// Whether to use stale reads for Spanner.
-	UseStaleReads bool `yaml:"UseStaleReads"`
 	// Whether to enable the embeddings resolver.
 	EnableEmbeddingsResolver bool `yaml:"EnableEmbeddingsResolver"`
 	// Fraction of V2 API requests to divert to the new dispatcher backend. Value from 0 to 1.0.
@@ -51,7 +49,6 @@ func setDefaultValues() *Flags {
 		V3MirrorFraction:          0.0,
 		UseSpannerGraph:           false,
 		SpannerGraphDatabase:      "",
-		UseStaleReads:             false,
 		EnableEmbeddingsResolver:  true,
 		V2DivertFraction:          0.0,
 		UseStatisticalCalculation: false,
@@ -68,9 +65,6 @@ func (f *Flags) validateFlagValues() error {
 	}
 	if f.SpannerGraphDatabase != "" && (!f.UseSpannerGraph || !f.EnableV3) {
 		return fmt.Errorf("using SpannerGraphDatabase requires UseSpannerGraph and EnableV3 to be true")
-	}
-	if f.UseStaleReads && !f.UseSpannerGraph {
-		return fmt.Errorf("UseStaleReads requires UseSpannerGraph to be true")
 	}
 	if f.V2DivertFraction < 0 || f.V2DivertFraction > 1.0 {
 		return fmt.Errorf("V2DivertFraction must be between 0 and 1.0, got %f", f.V2DivertFraction)

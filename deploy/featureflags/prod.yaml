@@ -7,4 +7,3 @@ flags:
   WriteUsageLogs: 1.0
   UseSpannerGraph: true
   SpannerGraphDatabase: dc_graph_2025_11_07
-  UseStaleReads: true
