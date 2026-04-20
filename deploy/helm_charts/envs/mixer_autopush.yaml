@@ -9,7 +9,6 @@ mixer:
   serviceName: autopush.api.datacommons.org
   project: datcom-mixer-autopush
   cluster_prefix: mixer
-  cacheSVFormula: true
   redis:
     enabled: true
     configFile: |

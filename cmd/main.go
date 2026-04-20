@@ -92,9 +92,6 @@ var (
 	// Serve live profiles of the process (CPU, memory, etc.) over HTTP on this port
 	httpProfilePort   = flag.Int("httpprof_port", 0, "Port to serve HTTP profiles from")
 	foldRemoteRootSvg = flag.Bool("fold_remote_root_svg", false, "Whether to fold root SVG from remote mixer")
-	// Cache map of SV dcid to list of inputPropertyExpressions for StatisticalCalculations
-	// TODO: Test Custom DC and set to true after release
-	cacheSVFormula = flag.Bool("cache_sv_formula", false, "Whether to cache SV -> inputPropertyExpresions for StatisticalCaclulations.")
 	// Spanner Graph
 	spannerGraphInfo = flag.String("spanner_graph_info", "", "Yaml formatted text containing information for Spanner Graph.")
 	// Redis.
@@ -362,7 +359,7 @@ func main() {
 		FetchSVG:       *cacheSVG,
 		SearchSVG:      *cacheSVG,
 		CacheSQL:       sqldb.IsConnected(&store.SQLClient),
-		CacheSVFormula: *cacheSVFormula,
+		CacheSVFormula: flags.UseStatisticalCalculation,
 	}
 	c, err := cache.NewCache(ctx, store, cacheOptions, metadata)
 	if err != nil {
@@ -424,8 +421,11 @@ func main() {
 		slog.Info("After Redis setup")
 
 		// Calculation Processor
-		var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, dataSourceCache.SVFormula(ctx))
-		processors = append(processors, &calculationProcessor)
+		if flags.UseStatisticalCalculation {
+			var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, dataSourceCache.SVFormula(ctx))
+			processors = append(processors, &calculationProcessor)
+
+		}
 		slog.Info("After calculation processor setup")
 	}
 

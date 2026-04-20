@@ -40,18 +40,21 @@ type Flags struct {
 	EnableEmbeddingsResolver bool `yaml:"EnableEmbeddingsResolver"`
 	// Fraction of V2 API requests to divert to the new dispatcher backend. Value from 0 to 1.0.
 	V2DivertFraction float64 `yaml:"V2DivertFraction"`
+	// Use inputPropertyExpressions for StatisticalCalculations to fill observation holes.
+	UseStatisticalCalculation bool `yaml:"UseStatisticalCalculation"`
 }
 
 // setDefaultValues creates a new Flags struct with default values.
 func setDefaultValues() *Flags {
 	return &Flags{
-		EnableV3:                 false,
-		V3MirrorFraction:         0.0,
-		UseSpannerGraph:          false,
-		SpannerGraphDatabase:     "",
-		UseStaleReads:            false,
-		EnableEmbeddingsResolver: true,
-		V2DivertFraction:         0.0,
+		EnableV3:                  false,
+		V3MirrorFraction:          0.0,
+		UseSpannerGraph:           false,
+		SpannerGraphDatabase:      "",
+		UseStaleReads:             false,
+		EnableEmbeddingsResolver:  true,
+		V2DivertFraction:          0.0,
+		UseStatisticalCalculation: false,
 	}
 }
 
