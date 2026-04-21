@@ -124,7 +124,6 @@ export DB_PASS=<password>
 
 Enabling Spanner Graph requires the following feature flags to be set:
 
-- `EnableV3: true`
 - `UseSpannerGraph: true`
 
 These are currently set in `local.yaml`.

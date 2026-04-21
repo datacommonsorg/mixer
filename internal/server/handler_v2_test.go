@@ -90,10 +90,10 @@ func TestObservationInternal(t *testing.T) {
 	h := &http.Client{}
 
 	for _, tc := range []struct {
-			desc          string
-			req           *pbv2.ObservationRequest
-			wantQueryType shared.QueryType
-			wantResp      *pbv2.ObservationResponse
+		desc          string
+		req           *pbv2.ObservationRequest
+		wantQueryType shared.QueryType
+		wantResp      *pbv2.ObservationResponse
 	}{
 		{
 			"series",
@@ -111,7 +111,7 @@ func TestObservationInternal(t *testing.T) {
 				ByVariable: map[string]*pbv2.VariableObservation{
 					"Count_Person": {
 						ByEntity: map[string]*pbv2.EntityObservation{
-							"country/USA": {}, 
+							"country/USA": {},
 						},
 					},
 				},
@@ -145,7 +145,7 @@ func TestObservationInternal(t *testing.T) {
 			shared.QueryTypeFacet,
 			&pbv2.ObservationResponse{
 				ByVariable: map[string]*pbv2.VariableObservation{
-					"Count_Person": {}, 
+					"Count_Person": {},
 				},
 			},
 		},
@@ -165,7 +165,7 @@ func TestObservationInternal(t *testing.T) {
 				ByVariable: map[string]*pbv2.VariableObservation{
 					"Count_Person": {
 						ByEntity: map[string]*pbv2.EntityObservation{
-							"": {}, 
+							"": {},
 						},
 					},
 				},
@@ -185,7 +185,7 @@ func TestObservationInternal(t *testing.T) {
 			shared.QueryTypeExistence,
 			&pbv2.ObservationResponse{
 				ByVariable: map[string]*pbv2.VariableObservation{
-					"Count_Person": {}, 
+					"Count_Person": {},
 				},
 			},
 		},
@@ -206,9 +206,9 @@ func TestObservationInternal(t *testing.T) {
 func TestV2Observation_UsageLog(t *testing.T) {
 	ctx := metadata.NewIncomingContext(context.Background(), metadata.MD{})
 	s := &Server{
-		store:    &store.Store{},
-		metadata: &resource.Metadata{},
-		flags: &featureflags.Flags{},
+		store:          &store.Store{},
+		metadata:       &resource.Metadata{},
+		flags:          &featureflags.Flags{},
 		writeUsageLogs: true,
 	}
 	s.cachedata.Store(&cache.Cache{})
@@ -242,225 +242,5 @@ func TestV2Observation_UsageLog(t *testing.T) {
 	}
 	if !matched {
 		t.Errorf("log output did not match expected pattern.\nGot: %s\nWant regex: %s", outStr, wantLogRegex)
-	}
-}
-func TestResolveRouting(t *testing.T) {
-	tests := []struct {
-		desc              string
-		target            string
-		remoteMixerDomain string
-		wantLocal         bool
-		wantRemote        bool
-		wantErr           bool
-	}{
-		{
-			desc:              "Base instance (empty remote domain)",
-			target:            "any_target",
-			remoteMixerDomain: "",
-			wantLocal:         true,
-			wantRemote:        false,
-			wantErr:           false,
-		},
-		{
-			desc:              "Custom instance, target base_only",
-			target:            ResolveTargetBaseOnly,
-			remoteMixerDomain: "remote.com",
-			wantLocal:         false,
-			wantRemote:        true,
-			wantErr:           false,
-		},
-		{
-			desc:              "Custom instance, target custom_only",
-			target:            ResolveTargetCustomOnly,
-			remoteMixerDomain: "remote.com",
-			wantLocal:         true,
-			wantRemote:        false,
-			wantErr:           false,
-		},
-		{
-			desc:              "Custom instance, target base_and_custom",
-			target:            ResolveTargetBaseAndCustom,
-			remoteMixerDomain: "remote.com",
-			wantLocal:         true,
-			wantRemote:        true,
-			wantErr:           false,
-		},
-
-	}
-
-	for _, tc := range tests {
-		t.Run(tc.desc, func(t *testing.T) {
-			gotLocal, gotRemote, err := resolveRouting(tc.target, tc.remoteMixerDomain)
-			if (err != nil) != tc.wantErr {
-				t.Errorf("resolveRouting(%q, %q) error = %v, wantErr %v", tc.target, tc.remoteMixerDomain, err, tc.wantErr)
-				return
-			}
-			if !tc.wantErr {
-				if gotLocal != tc.wantLocal || gotRemote != tc.wantRemote {
-					t.Errorf("resolveRouting(%q, %q) = (%v, %v), want (%v, %v)",
-						tc.target, tc.remoteMixerDomain, gotLocal, gotRemote, tc.wantLocal, tc.wantRemote)
-				}
-			}
-		})
-	}
-}
-
-func TestValidateAndParseResolveInputs(t *testing.T) {
-	tests := []struct {
-		desc             string
-		in               *pbv2.ResolveRequest
-		wantInProp       string
-		wantOutProp      string
-		wantTypeOfValues []string
-		wantErr          bool
-		wantErrMsg       string
-	}{
-		{
-			desc: "all empty",
-			in:   &pbv2.ResolveRequest{},
-			wantInProp:       "description",
-			wantOutProp:      "dcid",
-			wantTypeOfValues: nil,
-		},
-		{
-			desc: "partial set - target",
-			in: &pbv2.ResolveRequest{
-				Target: ResolveTargetCustomOnly,
-			},
-			wantInProp:       "description",
-			wantOutProp:      "dcid",
-			wantTypeOfValues: nil,
-		},
-		{
-			desc: "partial set - resolver",
-			in: &pbv2.ResolveRequest{
-				Resolver: ResolveResolverIndicator,
-			},
-			wantInProp:       "description",
-			wantOutProp:      "dcid",
-			wantTypeOfValues: nil,
-		},
-		{
-			desc: "fully set",
-			in: &pbv2.ResolveRequest{
-				Target:   ResolveTargetBaseOnly,
-				Resolver: ResolveResolverPlace,
-				Property: "<-wikidataId->dcid",
-			},
-			wantInProp:       "wikidataId",
-			wantOutProp:      "dcid",
-			wantTypeOfValues: nil,
-		},
-		{
-			desc: "typeOf filter",
-			in: &pbv2.ResolveRequest{
-				Property: "<-description{typeOf:City}->dcid",
-			},
-			wantInProp:       "description",
-			wantOutProp:      "dcid",
-			wantTypeOfValues: []string{"City"},
-		},
-		{
-			desc: "invalid target",
-			in: &pbv2.ResolveRequest{
-				Target: "invalid",
-			},
-			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Invalid 'target': valid values are 'custom_only', 'base_only', 'base_and_custom'",
-		},
-		{
-			desc: "invalid resolver",
-			in: &pbv2.ResolveRequest{
-				Resolver: "invalid",
-			},
-			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Invalid 'resolver': valid values are 'indicator', 'place'",
-		},
-		{
-			desc: "invalid target and resolver",
-			in: &pbv2.ResolveRequest{
-				Target:   "invalid_target",
-				Resolver: "invalid_resolver",
-			},
-			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Invalid 'target': valid values are 'custom_only', 'base_only', 'base_and_custom'. Invalid 'resolver': valid values are 'indicator', 'place'",
-		},
-		{
-			desc: "invalid property expression",
-			in: &pbv2.ResolveRequest{
-				Property: "invalid_prop",
-			},
-			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Invalid 'property' expression",
-		},
-		{
-			desc: "unknown property for place resolver",
-			in: &pbv2.ResolveRequest{
-				Resolver: ResolveResolverPlace,
-				Property: "<-unknown->dcid",
-			},
-			wantInProp:       "unknown",
-			wantOutProp:      "dcid",
-			wantTypeOfValues: nil,
-		},
-		{
-			desc: "invalid property for indicator resolver (inProp)",
-			in: &pbv2.ResolveRequest{
-				Resolver: ResolveResolverIndicator,
-				Property: "<-geoCoordinate->dcid",
-			},
-			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Invalid 'property' expression: indicator resolution only supports 'description' as input property",
-		},
-		{
-			desc: "invalid property for indicator resolver (outProp)",
-			in: &pbv2.ResolveRequest{
-				Resolver: ResolveResolverIndicator,
-				Property: "<-description->nutsCode",
-			},
-			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Invalid 'property' expression: indicator resolution only supports 'dcid' as output property",
-		},
-		{
-			desc: "invalid target + valid unknown property",
-			in: &pbv2.ResolveRequest{
-				Target:   "invalid",
-				Resolver: ResolveResolverPlace,
-				Property: "<-unknown->dcid",
-			},
-			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Invalid 'target': valid values are 'custom_only', 'base_only', 'base_and_custom'",
-		},
-		{
-			desc: "invalid output property for place (description)",
-			in: &pbv2.ResolveRequest{
-				Property: "<-description->nutsCode",
-			},
-			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Invalid 'property' expression: given input property 'description', output property can only be 'dcid'",
-		},
-	}
-
-	for _, tc := range tests {
-		t.Run(tc.desc, func(t *testing.T) {
-			inProp, outProp, typeOfValues, err := validateAndParseResolveInputs(tc.in)
-			if (err != nil) != tc.wantErr {
-				t.Errorf("validateAndParseResolveInputs() error = %v, wantErr %v", err, tc.wantErr)
-			}
-			if tc.wantErr && err != nil && !strings.Contains(err.Error(), tc.wantErrMsg) {
-				t.Errorf("validateAndParseResolveInputs() error = %v, wantErrMsg %v", err, tc.wantErrMsg)
-			}
-			if !tc.wantErr {
-				if inProp != tc.wantInProp {
-					t.Errorf("inProp got %s, want %s", inProp, tc.wantInProp)
-				}
-				if outProp != tc.wantOutProp {
-					t.Errorf("outProp got %s, want %s", outProp, tc.wantOutProp)
-				}
-				if diff := cmp.Diff(typeOfValues, tc.wantTypeOfValues); diff != "" {
-					t.Errorf("typeOfValues diff (-got +want):\n%s", diff)
-				}
-			}
-		})
 	}
 }

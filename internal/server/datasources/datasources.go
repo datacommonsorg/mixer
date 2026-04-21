@@ -22,6 +22,7 @@ import (
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
+	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/translator/sparql"
 
 	"golang.org/x/sync/errgroup"
@@ -34,11 +35,12 @@ const (
 
 // DataSources struct uses underlying data sources to respond to API requests.
 type DataSources struct {
-	sources []datasource.DataSource
+	sources          []datasource.DataSource
+	remoteDataSource datasource.DataSource
 }
 
-func NewDataSources(sources []datasource.DataSource) *DataSources {
-	return &DataSources{sources: sources}
+func NewDataSources(sources []datasource.DataSource, remoteDataSource datasource.DataSource) *DataSources {
+	return &DataSources{sources, remoteDataSource}
 }
 
 // GetSources returns the list of data source IDs.
@@ -110,7 +112,9 @@ func (ds *DataSources) NodeSearch(ctx context.Context, in *pbv2.NodeSearchReques
 }
 
 func (ds *DataSources) Resolve(ctx context.Context, in *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
-	return fetchAndMerge(ctx, ds.sources, in,
+	filteredResolveSources := filterResolveSources(ds, in)
+
+	return fetchAndMerge(ctx, filteredResolveSources, in,
 		func(c context.Context, s datasource.DataSource, r *pbv2.ResolveRequest) (*pbv2.ResolveResponse, error) {
 			return s.Resolve(c, r)
 		},
@@ -167,4 +171,21 @@ func (ds *DataSources) BulkVariableGroupInfo(ctx context.Context, in *pbv1.BulkV
 			return merger.MergeMultiBulkVariableGroupInfo(all), nil
 		},
 	)
+}
+
+// Resolve API specifies which sources to call in the target input params.
+// filterResolveSources filters sources accordingly.
+func filterResolveSources(ds *DataSources, in *pbv2.ResolveRequest) []datasource.DataSource {
+	hasRemoteMixerDomain := ds.remoteDataSource != nil
+
+	callLocal, callRemote := resolve.ResolveRouting(in.GetTarget(), hasRemoteMixerDomain)
+	var filteredSources []datasource.DataSource
+	for _, source := range ds.sources {
+		isRemote := source == ds.remoteDataSource
+		if (isRemote && callRemote) || (!isRemote && callLocal) {
+			filteredSources = append(filteredSources, source)
+		}
+	}
+
+	return filteredSources
 }

@@ -793,9 +793,21 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 	defer iter.Stop()
 
 	row, err := iter.Next()
+
+	// Handle missing or empty table cases gracefully
+	var warnMsg string
 	if err == iterator.Done {
-		return fmt.Errorf("no valid rows found in IngestionHistory")
+		warnMsg = "No valid rows found in IngestionHistory."
+	} else if code := spanner.ErrCode(err); code == codes.NotFound ||
+		(code == codes.InvalidArgument && strings.Contains(err.Error(), "Table not found: IngestionHistory")) {
+		warnMsg = "IngestionHistory table not found."
 	}
+
+	if warnMsg != "" {
+		slog.Warn(warnMsg + " Falling back to strong reads.")
+		return nil
+	}
+
 	if err != nil {
 		if isTimeoutError(err) {
 			slog.ErrorContext(queryCtx, "Spanner timestamp polling timed out",
@@ -859,22 +871,19 @@ func (sc *spannerDatabaseClient) executeQuery(
 		return err
 	}
 
-	if sc.useStaleReads {
-		ts, err := sc.getStalenessTimestamp()
-		if err != nil {
-			return err
-		}
-		err = runQuery(spanner.ReadTimestamp(ts))
-
-		// Log error if timestamp is older than retention and fall back to strong read.
-		if spanner.ErrCode(err) == codes.FailedPrecondition {
-			slog.Error("Stale read timestamp expired. Falling back to StrongRead.",
-				"expiredTimestamp", ts.String())
-			return runQuery(spanner.StrongRead())
-		}
-		return err
+	ts, err := sc.getStalenessTimestamp()
+	if err != nil {
+		return runQuery(spanner.StrongRead())
 	}
-	return runQuery(spanner.StrongRead())
+	err = runQuery(spanner.ReadTimestamp(ts))
+
+	// Log error if timestamp is older than retention and fall back to strong read.
+	if spanner.ErrCode(err) == codes.FailedPrecondition {
+		slog.Error("Stale read timestamp expired. Falling back to StrongRead.",
+			"expiredTimestamp", ts.String())
+		return runQuery(spanner.StrongRead())
+	}
+	return err
 }
 
 // queryStructs executes a query and maps the results to an input struct.
