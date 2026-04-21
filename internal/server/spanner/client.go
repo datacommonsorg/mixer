@@ -47,6 +47,8 @@ type SpannerClient interface {
 	GetStatVarGroupNode(ctx context.Context, nodes []string) ([]*StatVarGroupNode, error)
 	GetFilteredStatVarGroupNode(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (*FilteredStatVarGroupNode, error)
 	GetFilteredTopic(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (int, error)
+	VectorSearchQuery(ctx context.Context, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string) ([]*VectorSearchResult, error)
+	GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error)
 	Id() string
 	Start()
 	Close()

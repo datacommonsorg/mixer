@@ -598,7 +598,7 @@ func GetTermEmbeddingQuery(modelName, searchLabel, taskType string) *spanner.Sta
 }
 
 // VectorSearchQuery returns a Spanner statement to search nodes using vector similarity.
-func VectorSearchQuery(limit int, embeddings []float64, numLeaves int, threshold float64) *spanner.Statement {
+func VectorSearchQuery(limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string) *spanner.Statement {
 	optionsJSON := fmt.Sprintf(`{"num_leaves_to_search": %d}`, numLeaves)
 	return &spanner.Statement{
 		SQL: statements.vectorSearchNode,
@@ -607,6 +607,7 @@ func VectorSearchQuery(limit int, embeddings []float64, numLeaves int, threshold
 			"limit":              limit,
 			"options":            optionsJSON,
 			"distance_threshold": threshold,
+			"node_types":         nodeTypes,
 		},
 	}
 }

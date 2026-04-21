@@ -516,6 +516,9 @@ var statements = struct {
 		WHERE
 			embeddings IS NOT NULL
 			AND APPROX_COSINE_DISTANCE(@embeddings, embeddings, options => JSON @options) > @distance_threshold
+			AND EXISTS (
+				SELECT 1 FROM UNNEST(types) AS t WHERE t IN UNNEST(@node_types)
+			)
 		ORDER BY
 			APPROX_COSINE_DISTANCE(@embeddings, embeddings, options => JSON @options)
 		LIMIT @limit`,

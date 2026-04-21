@@ -218,6 +218,8 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 		// Spanner doesn't do embeddings resolution yet.
 		slog.Warn("Received unsupported ResolveResolverIndicator request to Spanner", "request", req)
 		return &pbv2.ResolveResponse{}, nil
+	} else if resolver := normalizedResolveRequest.Request.GetResolver(); resolver == resolvev2.ResolveResolverEmbeddings {
+		return sds.resolveEmbeddings(ctx, normalizedResolveRequest)
 	}
 
 	switch normalizedResolveRequest.InProp {
@@ -228,6 +230,100 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 	default:
 		return sds.resolveID(ctx, normalizedResolveRequest)
 	}
+}
+
+// loadSpannerSearchConfig loads the default search config for Spanner.
+func loadSpannerSearchConfig() (*resolvev2.SpannerSearchConfig, error) {
+	cfgPath := resolvev2.GetSpannerSearchConfigPath("default")
+	if cfgPath == "" {
+		return nil, fmt.Errorf("failed to get search config path")
+	}
+	return resolvev2.ReadSpannerSearchConfig(cfgPath)
+}
+
+// resolveEmbeddings resolves nodes using Spanner vector search.
+func (sds *SpannerDataSource) resolveEmbeddings(
+	ctx context.Context,
+	req *resolvev2.NormalizedResolveRequest,
+) (*pbv2.ResolveResponse, error) {
+	cfg, err := loadSpannerSearchConfig()
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, "failed to load search config: %v", err)
+	}
+
+	resolveResponse := &pbv2.ResolveResponse{
+		Entities: []*pbv2.ResolveResponse_Entity{},
+	}
+	typeOfs := req.TypeOfValues
+	if len(typeOfs) == 0 {
+		typeOfs = []string{"StatisticalVariable", "Topic"}
+	}
+
+	for _, node := range req.Request.GetNodes() {
+		entity := &pbv2.ResolveResponse_Entity{
+			Node: node,
+		}
+
+		// 1. Get term embedding
+		embeddings, err := sds.client.GetTermEmbeddingQuery(
+			ctx,
+			cfg.VectorSearchConfig.EmbeddingModel,
+			node,
+			string(cfg.VectorSearchConfig.EmbeddingType),
+		)
+		if err != nil {
+			return nil, status.Errorf(codes.Internal, "failed to get term embedding for %s: %v", node, err)
+		}
+
+		// 2. Vector search
+		searchResults, err := sds.client.VectorSearchQuery(
+			ctx,
+			cfg.VectorSearchConfig.Limit,
+			embeddings,
+			cfg.VectorSearchConfig.NumLeaves,
+			cfg.VectorSearchConfig.Threshold,
+			typeOfs,
+		)
+		if err != nil {
+			return nil, status.Errorf(codes.Internal, "failed to perform vector search for %s: %v", node, err)
+		}
+
+		// 3. Build candidates
+		candidates := []*pbv2.ResolveResponse_Entity_Candidate{}
+		for _, res := range searchResults {
+			dominantType := resolvev2.StatisticalVariableDominantType
+			if strings.Contains(res.SubjectID, resolvev2.TopicDcidSubstring) {
+				dominantType = resolvev2.TopicDominantType
+			}
+
+			// Filter by type if provided
+			if len(req.Request.GetTypeOfValues()) > 0 {
+				match := false
+				for _, t := range req.Request.GetTypeOfValues() {
+					if t == dominantType {
+						match = true
+						break
+					}
+				}
+				if !match {
+					continue
+					}
+			}
+
+			candidates = append(candidates, &pbv2.ResolveResponse_Entity_Candidate{
+				Dcid:   res.SubjectID,
+				TypeOf: []string{dominantType},
+				Metadata: map[string]string{
+					"score":    fmt.Sprintf("%.4f", res.CosineSimilarity),
+					"sentence": res.Name,
+				},
+			})
+		}
+		entity.Candidates = candidates
+		resolveResponse.Entities = append(resolveResponse.Entities, entity)
+	}
+
+	return resolveResponse, nil
 }
 
 // Sparql executes a SPARQL query against the Spanner data source.

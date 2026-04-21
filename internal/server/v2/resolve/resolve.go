@@ -46,6 +46,8 @@ const (
 	ResolveResolverPlace = "place"
 	// ResolveResolverIndicator is the resolver name for indicator/embeddings resolution.
 	ResolveResolverIndicator = "indicator"
+	// ResolveResolverEmbeddings is the resolver name for Spanner embeddings resolution.
+	ResolveResolverEmbeddings = "embeddings"
 
 	// ResolveDefaultPropertyExpression is the property name for description.
 	ResolveDefaultPropertyExpression = "<-description->dcid"

@@ -4,5 +4,8 @@ vector_search_config:
   embedding_model: "TextEmbeddings"
   embedding_type: "RETRIEVAL_QUERY"
   vector_search_algo: "ANN"
+  limit: 50
+  num_leaves: 10
+  threshold: 0.5
 postprocessing:
   - "none"
