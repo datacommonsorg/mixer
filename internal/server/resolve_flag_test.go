@@ -7,6 +7,7 @@ import (
 
 	"github.com/datacommonsorg/mixer/internal/featureflags"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -40,7 +41,14 @@ func TestV2ResolveCore_EmbeddingsFlag(t *testing.T) {
 		Nodes:    []string{"foo"},
 	}
 
-	_, err := sDisabled.V2ResolveCore(ctx, req, "description", "dcid", nil)
+	_, err := sDisabled.V2ResolveCore(
+		ctx,
+		&resolve.NormalizedResolveRequest{
+			Request:      req,
+			InProp:       "description",
+			OutProp:      "dcid",
+			TypeOfValues: nil,
+		})
 	if err == nil {
 		t.Error("Expected error when flag is disabled, got nil")
 	} else {
@@ -71,7 +79,14 @@ func TestV2ResolveCore_EmbeddingsFlag(t *testing.T) {
 		embeddingsServerURL: "http://example.com",
 	}
 
-	_, _ = sEnabled.V2ResolveCore(ctx, req, "description", "dcid", nil)
+	_, _ = sEnabled.V2ResolveCore(
+		ctx,
+		&resolve.NormalizedResolveRequest{
+			Request:      req,
+			InProp:       "description",
+			OutProp:      "dcid",
+			TypeOfValues: nil,
+		})
 
 	if !called {
 		t.Error("Expected HTTP client to be called when flag is enabled")

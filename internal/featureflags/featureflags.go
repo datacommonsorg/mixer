@@ -25,10 +25,12 @@ import (
 // Container for feature flag values.
 type Flags struct {
 	// Enable datasources in V3 API.
+	// Deprecated in favor of UseSpannerGraph.
+	// TODO: Clean up flag once code changes roll out.
 	EnableV3 bool `yaml:"EnableV3"`
 	// Fraction of V2 API requests to mirror to V3. Value from 0 to 1.0.
 	V3MirrorFraction float64 `yaml:"V3MirrorFraction"`
-	// Use Google Spanner as a database.
+	// Enabled new Spanner-based dispatcher/datasource backend.
 	UseSpannerGraph bool `yaml:"UseSpannerGraph"`
 	// Spanner Graph database for Spanner DataSource.
 	// This is temporarily loaded from flags vs spanner_graph_info.yaml.
@@ -40,18 +42,21 @@ type Flags struct {
 	EnableEmbeddingsResolver bool `yaml:"EnableEmbeddingsResolver"`
 	// Fraction of V2 API requests to divert to the new dispatcher backend. Value from 0 to 1.0.
 	V2DivertFraction float64 `yaml:"V2DivertFraction"`
+	// Use inputPropertyExpressions for StatisticalCalculations to fill observation holes.
+	UseStatisticalCalculation bool `yaml:"UseStatisticalCalculation"`
 }
 
 // setDefaultValues creates a new Flags struct with default values.
 func setDefaultValues() *Flags {
 	return &Flags{
-		EnableV3:                 false,
-		V3MirrorFraction:         0.0,
-		UseSpannerGraph:          false,
-		SpannerGraphDatabase:     "",
-		UseStaleReads:            false,
-		EnableEmbeddingsResolver: true,
-		V2DivertFraction:         0.0,
+		EnableV3:                  false,
+		V3MirrorFraction:          0.0,
+		UseSpannerGraph:           false,
+		SpannerGraphDatabase:      "",
+		UseStaleReads:             false,
+		EnableEmbeddingsResolver:  true,
+		V2DivertFraction:          0.0,
+		UseStatisticalCalculation: false,
 	}
 }
 
@@ -60,11 +65,11 @@ func (f *Flags) validateFlagValues() error {
 	if f.V3MirrorFraction < 0 || f.V3MirrorFraction > 1.0 {
 		return fmt.Errorf("V3MirrorFraction must be between 0 and 1.0, got %f", f.V3MirrorFraction)
 	}
-	if f.V3MirrorFraction > 0 && !f.EnableV3 {
-		return fmt.Errorf("V3MirrorFraction > 0 requires EnableV3 to be true")
+	if f.V3MirrorFraction > 0 && !f.UseSpannerGraph {
+		return fmt.Errorf("V3MirrorFraction > 0 requires UseSpannerGraph to be true")
 	}
-	if f.SpannerGraphDatabase != "" && (!f.UseSpannerGraph || !f.EnableV3) {
-		return fmt.Errorf("using SpannerGraphDatabase requires UseSpannerGraph and EnableV3 to be true")
+	if f.SpannerGraphDatabase != "" && !f.UseSpannerGraph {
+		return fmt.Errorf("using SpannerGraphDatabase requires UseSpannerGraph to be true")
 	}
 	if f.UseStaleReads && !f.UseSpannerGraph {
 		return fmt.Errorf("UseStaleReads requires UseSpannerGraph to be true")
@@ -72,8 +77,8 @@ func (f *Flags) validateFlagValues() error {
 	if f.V2DivertFraction < 0 || f.V2DivertFraction > 1.0 {
 		return fmt.Errorf("V2DivertFraction must be between 0 and 1.0, got %f", f.V2DivertFraction)
 	}
-	if f.V2DivertFraction > 0 && !f.EnableV3 {
-		return fmt.Errorf("V2DivertFraction > 0 requires EnableV3 to be true")
+	if f.V2DivertFraction > 0 && !f.UseSpannerGraph {
+		return fmt.Errorf("V2DivertFraction > 0 requires UseSpannerGraph to be true")
 	}
 	return nil
 }

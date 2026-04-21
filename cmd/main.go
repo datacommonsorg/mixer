@@ -92,9 +92,6 @@ var (
 	// Serve live profiles of the process (CPU, memory, etc.) over HTTP on this port
 	httpProfilePort   = flag.Int("httpprof_port", 0, "Port to serve HTTP profiles from")
 	foldRemoteRootSvg = flag.Bool("fold_remote_root_svg", false, "Whether to fold root SVG from remote mixer")
-	// Cache map of SV dcid to list of inputPropertyExpressions for StatisticalCalculations
-	// TODO: Test Custom DC and set to true after release
-	cacheSVFormula = flag.Bool("cache_sv_formula", false, "Whether to cache SV -> inputPropertyExpresions for StatisticalCaclulations.")
 	// Spanner Graph
 	spannerGraphInfo = flag.String("spanner_graph_info", "", "Yaml formatted text containing information for Spanner Graph.")
 	// Redis.
@@ -195,16 +192,14 @@ func main() {
 
 	// Spanner Graph.
 	var spannerClient spanner.SpannerClient
-	if flags.EnableV3 && flags.UseSpannerGraph {
+	if flags.UseSpannerGraph {
 		var err error
-		spannerClient, err = spanner.NewSpannerClient(ctx, *spannerGraphInfo, flags.SpannerGraphDatabase, flags.UseStaleReads)
+		spannerClient, err = spanner.NewSpannerClient(ctx, *spannerGraphInfo, flags.SpannerGraphDatabase)
 		if err != nil {
 			slog.Error("Failed to create Spanner client", "error", err)
 			os.Exit(1)
 		}
-		if flags.UseStaleReads {
-			spannerClient.Start()
-		}
+		spannerClient.Start()
 		defer spannerClient.Close()
 	}
 	slog.Info("After Spanner client creation")
@@ -291,7 +286,7 @@ func main() {
 	// Create remote data source here but don't add it to sources yet since we want it to be the last source added.
 	// TODO: clean up how we create and add data sources.
 	var remoteDataSource datasource.DataSource
-	if flags.EnableV3 && *remoteMixerDomain != "" {
+	if flags.UseSpannerGraph && *remoteMixerDomain != "" {
 		remoteClient, err := remote.NewRemoteClient(metadata)
 		if err != nil {
 			slog.Error("Failed to create remote client", "error", err)
@@ -339,7 +334,7 @@ func main() {
 	}
 
 	// SQL Data Source
-	if flags.EnableV3 && sqldb.IsConnected(&sqlClient) {
+	if flags.UseSpannerGraph && sqldb.IsConnected(&sqlClient) {
 		var ds datasource.DataSource = sqldb.NewSQLDataSource(&sqlClient, remoteDataSource)
 		sources = append(sources, ds)
 	}
@@ -362,7 +357,7 @@ func main() {
 		FetchSVG:       *cacheSVG,
 		SearchSVG:      *cacheSVG,
 		CacheSQL:       sqldb.IsConnected(&store.SQLClient),
-		CacheSVFormula: *cacheSVFormula,
+		CacheSVFormula: flags.UseStatisticalCalculation,
 	}
 	c, err := cache.NewCache(ctx, store, cacheOptions, metadata)
 	if err != nil {
@@ -394,12 +389,12 @@ func main() {
 	}
 
 	// DataSources
-	dataSources := datasources.NewDataSources(sources)
+	dataSources := datasources.NewDataSources(sources, remoteDataSource)
 
 	// Processors
 	processors := []*dispatcher.Processor{}
-	if flags.EnableV3 {
-		slog.Info("V3 enabled, setting up processors")
+	if flags.UseSpannerGraph {
+	slog.Info("New backend enabled, setting up processors")
 		// Mixer in-memory cache.
 		dataSourceCache, err := cache.NewDataSourceCache(ctx, dataSources, cacheOptions)
 		if err != nil {
@@ -424,8 +419,11 @@ func main() {
 		slog.Info("After Redis setup")
 
 		// Calculation Processor
-		var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, dataSourceCache.SVFormula(ctx))
-		processors = append(processors, &calculationProcessor)
+		if flags.UseStatisticalCalculation {
+			var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, dataSourceCache.SVFormula(ctx))
+			processors = append(processors, &calculationProcessor)
+
+		}
 		slog.Info("After calculation processor setup")
 	}
 

@@ -54,14 +54,13 @@ import (
 
 // TestOption holds the options for integration test.
 type TestOption struct {
-	FetchSVG          bool
-	SearchSVG         bool
-	UseCustomTable    bool
-	UseSQLite         bool
-	CacheSVFormula    bool
-	UseSpannerGraph   bool
-	EnableV3          bool
-	RemoteMixerDomain string
+	FetchSVG                  bool
+	SearchSVG                 bool
+	UseCustomTable            bool
+	UseSQLite                 bool
+	UseStatisticalCalculation bool
+	UseSpannerGraph           bool
+	RemoteMixerDomain         string
 }
 
 var (
@@ -89,20 +88,19 @@ const (
 
 // Setup creates local server and client.
 func Setup(option ...*TestOption) (pbs.MixerClient, func(), error) {
-	fetchSVG, searchSVG, useCustomTable, useSQLite, cacheSVFormula, useSpannerGraph, enableV3, remoteMixerDomain := false, false, false, false, false, false, false, ""
+	fetchSVG, searchSVG, useCustomTable, useSQLite, useStatisticalCalculation, useSpannerGraph, remoteMixerDomain := false, false, false, false, false, false, ""
 	var cacheOptions cache.CacheOptions
 	if len(option) == 1 {
 		fetchSVG = option[0].FetchSVG
 		searchSVG = option[0].SearchSVG
 		useCustomTable = option[0].UseCustomTable
 		useSQLite = option[0].UseSQLite
-		cacheSVFormula = option[0].CacheSVFormula
+		useStatisticalCalculation = option[0].UseStatisticalCalculation
 		cacheOptions.CacheSQL = useSQLite
 		cacheOptions.FetchSVG = fetchSVG
 		cacheOptions.SearchSVG = searchSVG
-		cacheOptions.CacheSVFormula = cacheSVFormula
+		cacheOptions.CacheSVFormula = useStatisticalCalculation
 		useSpannerGraph = option[0].UseSpannerGraph
-		enableV3 = option[0].EnableV3
 		remoteMixerDomain = option[0].RemoteMixerDomain
 	}
 	return setupInternal(
@@ -113,7 +111,6 @@ func Setup(option ...*TestOption) (pbs.MixerClient, func(), error) {
 		useCustomTable,
 		useSQLite,
 		useSpannerGraph,
-		enableV3,
 		cacheOptions,
 		remoteMixerDomain,
 	)
@@ -121,7 +118,7 @@ func Setup(option ...*TestOption) (pbs.MixerClient, func(), error) {
 
 func setupInternal(
 	bigqueryVersionFile, baseBigtableInfoYaml, testBigtableInfoYaml, mcfPath string,
-	useCustomTable, useSQLite, useSpannerGraph, enableV3 bool,
+	useCustomTable, useSQLite, useSpannerGraph bool,
 	cacheOptions cache.CacheOptions,
 	remoteMixerDomain string,
 ) (pbs.MixerClient, func(), error) {
@@ -136,7 +133,7 @@ func setupInternal(
 	var spannerDataSource datasource.DataSource
 	var spannerClient spanner.SpannerClient
 	var spannerCleanup = func() {}
-	if enableV3 && useSpannerGraph {
+	if useSpannerGraph {
 		spannerClient = NewSpannerClient()
 		if spannerClient != nil {
 			spannerCleanup = spannerClient.Close
@@ -173,7 +170,7 @@ func setupInternal(
 		if err != nil {
 			log.Fatalf("SQL database validation failed: %v", err)
 		}
-		if enableV3 {
+		if useSpannerGraph {
 			var ds datasource.DataSource = sqldb.NewSQLDataSource(&sqlClient, spannerDataSource)
 			sources = append(sources, ds)
 		}
@@ -204,19 +201,24 @@ func setupInternal(
 		return nil, func() {}, err
 	}
 
-	if enableV3 && remoteMixerDomain != "" {
+	var remoteDataSource datasource.DataSource
+	if useSpannerGraph && remoteMixerDomain != "" {
 		remoteClient, err := remote.NewRemoteClient(metadata)
 		if err != nil {
 			log.Fatalf("Failed to create remote client: %v", err)
 		}
-		var ds datasource.DataSource = remote.NewRemoteDataSource(remoteClient)
-		sources = append(sources, ds)
+		remoteDataSource = remote.NewRemoteDataSource(remoteClient)
+
 	}
 
-	dataSources := datasources.NewDataSources(sources)
+	if remoteDataSource != nil {
+		sources = append(sources, remoteDataSource)
+	}
+
+	dataSources := datasources.NewDataSources(sources, remoteDataSource)
 	// Processors
 	processors := []*dispatcher.Processor{}
-	if enableV3 {
+	if useSpannerGraph {
 		// Mixer in-memory cache.
 		dataSourceCache, err := cache.NewDataSourceCache(ctx, dataSources, cacheOptions)
 		if err != nil {
@@ -428,7 +430,7 @@ func newSpannerClient(ctx context.Context, spannerGraphInfoYamlPath string) span
 		log.Fatalf("Failed to read spanner yaml: %v", err)
 	}
 	// Don't override spannerGraphInfoYaml.database for testing.
-	spannerClient, err := spanner.NewRawSpannerClient(ctx, string(spannerGraphInfoYaml), "", true)
+	spannerClient, err := spanner.NewRawSpannerClient(ctx, string(spannerGraphInfoYaml), "")
 	if err != nil {
 		log.Fatalf("Failed to create SpannerClient: %v", err)
 	}
