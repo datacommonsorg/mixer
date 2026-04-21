@@ -1,0 +1,8 @@
+# this file get reads by v2/resolve when we set resolver to use spanner and an feature flag to experiment for resolution experimentation
+search_algorithm: "vector_search"
+vector_search_config:
+  embedding_model: "TextEmbeddings"
+  embedding_type: "RETRIEVAL_QUERY"
+  vector_search_algo: "ANN"
+postprocessing:
+  - "none"
