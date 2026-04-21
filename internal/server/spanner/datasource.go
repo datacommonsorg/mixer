@@ -291,28 +291,9 @@ func (sds *SpannerDataSource) resolveEmbeddings(
 		// 3. Build candidates
 		candidates := []*pbv2.ResolveResponse_Entity_Candidate{}
 		for _, res := range searchResults {
-			dominantType := resolvev2.StatisticalVariableDominantType
-			if strings.Contains(res.SubjectID, resolvev2.TopicDcidSubstring) {
-				dominantType = resolvev2.TopicDominantType
-			}
-
-			// Filter by type if provided
-			if len(req.Request.GetTypeOfValues()) > 0 {
-				match := false
-				for _, t := range req.Request.GetTypeOfValues() {
-					if t == dominantType {
-						match = true
-						break
-					}
-				}
-				if !match {
-					continue
-					}
-			}
-
 			candidates = append(candidates, &pbv2.ResolveResponse_Entity_Candidate{
 				Dcid:   res.SubjectID,
-				TypeOf: []string{dominantType},
+				TypeOf: res.Types,
 				Metadata: map[string]string{
 					"score":    fmt.Sprintf("%.4f", res.CosineSimilarity),
 					"sentence": res.Name,

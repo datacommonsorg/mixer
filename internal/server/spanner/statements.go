@@ -509,7 +509,8 @@ var statements = struct {
 		FROM ML.PREDICT(MODEL @model_name, (SELECT @search_label AS content, @task_type AS task_type))`,
 	vectorSearchNode: `		SELECT
 			subject_id,
-			embedding_content,
+			embedding_content AS name,
+			types,
 			1 - COSINE_DISTANCE(@embeddings, embeddings) AS cosine_similarity
 		FROM
 			NodeEmbeddings

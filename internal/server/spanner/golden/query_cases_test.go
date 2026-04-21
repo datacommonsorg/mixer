@@ -614,6 +614,7 @@ var vectorSearchNodeTestCases = []struct {
 	embeddings  []float64
 	numLeaves   int
 	threshold   float64
+	nodeTypes   []string
 	golden      string
 }{
 	{
@@ -621,6 +622,7 @@ var vectorSearchNodeTestCases = []struct {
 		embeddings: []float64{0.1, 0.2, 0.3},
 		numLeaves:  20,
 		threshold:  0.6,
+		nodeTypes:  []string{"StatisticalVariable", "Topic"},
 		golden:     "vector_search_node",
    },
 }
