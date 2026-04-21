@@ -109,6 +109,13 @@ type SearchNode struct {
 	Score              float64  `spanner:"score"`
 }
 
+// VectorSearchResult struct represents a single row returned for vector searches.
+type VectorSearchResult struct {
+	SubjectID        string  `spanner:"subject_id"`
+	Name             string  `spanner:"name"`
+	CosineSimilarity float64 `spanner:"cosine_similarity"`
+}
+
 // ResolutionCandidate struct represents the response of a resolution request.
 type ResolutionCandidate struct {
 	Node      string `spanner:"node"`

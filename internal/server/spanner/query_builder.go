@@ -584,3 +584,29 @@ func GetEventCollectionDcidsQuery(placeID, eventType, date string) *spanner.Stat
 		},
 	}
 }
+
+// GetTermEmbeddingQuery returns a Spanner statement to extract embedding from a query.
+func GetTermEmbeddingQuery(modelName, searchLabel, taskType string) *spanner.Statement {
+	return &spanner.Statement{
+		SQL: statements.getEmbeddingFromQuery,
+		Params: map[string]interface{}{
+			"model_name":   modelName,
+			"search_label": searchLabel,
+			"task_type":    taskType,
+		},
+	}
+}
+
+// VectorSearchQuery returns a Spanner statement to search nodes using vector similarity.
+func VectorSearchQuery(limit int, embeddings []float64, numLeaves int, threshold float64) *spanner.Statement {
+	optionsJSON := fmt.Sprintf(`{"num_leaves_to_search": %d}`, numLeaves)
+	return &spanner.Statement{
+		SQL: statements.vectorSearchNode,
+		Params: map[string]interface{}{
+			"embeddings":         embeddings,
+			"limit":              limit,
+			"options":            optionsJSON,
+			"distance_threshold": threshold,
+		},
+	}
+}
