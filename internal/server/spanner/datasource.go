@@ -45,6 +45,7 @@ type SpannerDataSource struct {
 	client          SpannerClient
 	recogPlaceStore *files.RecogPlaceStore
 	mapsClient      internalmaps.MapsClient
+	searchConfig    *resolvev2.SpannerSearchConfig
 }
 
 const (
@@ -58,10 +59,12 @@ func NewSpannerDataSource(
 	recogPlaceStore *files.RecogPlaceStore,
 	mapsClient internalmaps.MapsClient,
 ) *SpannerDataSource {
+	cfg, _ := loadSpannerSearchConfig()
 	return &SpannerDataSource{
 		client:          client,
 		recogPlaceStore: recogPlaceStore,
 		mapsClient:      mapsClient,
+		searchConfig:    cfg,
 	}
 }
 
@@ -246,9 +249,9 @@ func (sds *SpannerDataSource) resolveEmbeddings(
 	ctx context.Context,
 	req *resolvev2.NormalizedResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
-	cfg, err := loadSpannerSearchConfig()
-	if err != nil {
-		return nil, status.Errorf(codes.Internal, "failed to load search config: %v", err)
+	cfg := sds.searchConfig
+	if cfg == nil {
+		return nil, status.Errorf(codes.Internal, "failed to load search config")
 	}
 
 	resolveResponse := &pbv2.ResolveResponse{
