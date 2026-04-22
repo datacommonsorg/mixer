@@ -624,11 +624,11 @@ func (sc *spannerDatabaseClient) GetProvenanceSummary(ctx context.Context, varia
 
 // GetTermEmbeddingQuery retrieves embeddings from Spanner for a given query.
 func (sc *spannerDatabaseClient) GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error) {
-	var embeddings []float64
+	embeddings := []float64{}
 	err := sc.executeQuery(ctx, *GetTermEmbeddingQuery(modelName, searchLabel, taskType), func(iter *spanner.RowIterator) error {
 		row, err := iter.Next()
 		if err == iterator.Done {
-			return fmt.Errorf("no embedding returned for model %s and label %s", modelName, searchLabel)
+			return nil
 		}
 		if err != nil {
 			return err

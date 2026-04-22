@@ -30,6 +30,8 @@ import (
 type coordinateMockSpannerClient struct {
 	getNodeEdgesByProp map[string]map[string][]*Edge
 	assertGetNodeEdges func(ids []string, arc *v2.Arc, pageSize, offset int)
+	embeddingsRes      []float64
+	vectorSearchRes    []*VectorSearchResult
 }
 
 func (m *coordinateMockSpannerClient) GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*Property, error) {
@@ -101,11 +103,11 @@ func (m *coordinateMockSpannerClient) GetFilteredTopic(ctx context.Context, node
 }
 
 func (m *coordinateMockSpannerClient) VectorSearchQuery(ctx context.Context, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string) ([]*VectorSearchResult, error) {
-	return nil, nil
+	return m.vectorSearchRes, nil
 }
 
 func (m *coordinateMockSpannerClient) GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error) {
-	return nil, nil
+	return m.embeddingsRes, nil
 }
 
 func (m *coordinateMockSpannerClient) Id() string { return "mock" }
@@ -334,6 +336,81 @@ func TestResolveCoordinateSkipsS2CellCandidatesByType(t *testing.T) {
 				Node: "37.42#-122.08",
 				Candidates: []*pbv2.ResolveResponse_Entity_Candidate{
 					{Dcid: "geoId/06085", DominantType: "County"},
+				},
+			},
+		},
+	}
+
+	if diff := cmp.Diff(want, got, protocmp.Transform()); diff != "" {
+		t.Fatalf("Resolve() diff (-want +got):\n%s", diff)
+	}
+}
+
+func TestResolveEmbeddingsEmpty(t *testing.T) {
+	t.Parallel()
+
+	ds := NewSpannerDataSource(&coordinateMockSpannerClient{
+		embeddingsRes: []float64{},
+	}, nil, nil)
+
+	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
+		Nodes:    []string{"California"},
+		Resolver: "embeddings",
+	})
+	if err != nil {
+		t.Fatalf("Resolve() error: %v", err)
+	}
+
+	want := &pbv2.ResolveResponse{
+		Entities: []*pbv2.ResolveResponse_Entity{
+			{
+				Node:       "California",
+				Candidates: []*pbv2.ResolveResponse_Entity_Candidate{},
+			},
+		},
+	}
+
+	if diff := cmp.Diff(want, got, protocmp.Transform()); diff != "" {
+		t.Fatalf("Resolve() diff (-want +got):\n%s", diff)
+	}
+}
+
+func TestResolveEmbeddingsSuccess(t *testing.T) {
+	t.Parallel()
+
+	ds := NewSpannerDataSource(&coordinateMockSpannerClient{
+		embeddingsRes: []float64{0.1, 0.2},
+		vectorSearchRes: []*VectorSearchResult{
+			{
+				SubjectID:        "dc/topic/Climate",
+				Name:             "Climate Change",
+				CosineSimilarity: 0.85,
+				Types:            []string{"Topic"},
+			},
+		},
+	}, nil, nil)
+
+	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
+		Nodes:    []string{"Climate"},
+		Resolver: "embeddings",
+	})
+	if err != nil {
+		t.Fatalf("Resolve() error: %v", err)
+	}
+
+	want := &pbv2.ResolveResponse{
+		Entities: []*pbv2.ResolveResponse_Entity{
+			{
+				Node: "Climate",
+				Candidates: []*pbv2.ResolveResponse_Entity_Candidate{
+					{
+						Dcid:   "dc/topic/Climate",
+						TypeOf: []string{"Topic"},
+						Metadata: map[string]string{
+							"score":    "0.8500",
+							"sentence": "Climate Change",
+						},
+					},
 				},
 			},
 		},

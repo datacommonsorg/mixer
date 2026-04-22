@@ -379,15 +379,15 @@ func parseAndValidateResolveTarget(req *pbv2.ResolveRequest) string {
 // Returns an optional error string.
 func parseAndValidateResolveResolver(req *pbv2.ResolveRequest) string {
 	switch req.GetResolver() {
-	case ResolveResolverPlace, ResolveResolverIndicator:
+	case ResolveResolverPlace, ResolveResolverIndicator, ResolveResolverEmbeddings:
 		return ""
 	case "":
 		// Set default value
 		req.Resolver = ResolveResolverPlace
 		return ""
 	default:
-		return fmt.Sprintf("Invalid 'resolver': valid values are '%s', '%s'",
-			ResolveResolverIndicator, ResolveResolverPlace)
+		return fmt.Sprintf("Invalid 'resolver': valid values are '%s', '%s', '%s'",
+			ResolveResolverIndicator, ResolveResolverEmbeddings, ResolveResolverPlace)
 	}
 }
 

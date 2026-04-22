@@ -274,6 +274,10 @@ func (sds *SpannerDataSource) resolveEmbeddings(
 		if err != nil {
 			return nil, status.Errorf(codes.Internal, "failed to get term embedding for %s: %v", node, err)
 		}
+		if len(embeddings) == 0 {
+			resolveResponse.Entities = append(resolveResponse.Entities, entity)
+			continue
+		}
 
 		// 2. Vector search
 		searchResults, err := sds.client.VectorSearchQuery(
