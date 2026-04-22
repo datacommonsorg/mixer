@@ -55,6 +55,8 @@ type Server struct {
 	writeUsageLogs           bool
 	embeddingsServerURL      string
 	resolveEmbeddingsIndexes string
+	// Whether to use dispatcher flow with Spanner as a default datasource.
+	useSpannerGraph bool
 }
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) error {
@@ -161,6 +163,7 @@ func NewMixerServer(
 	writeUsageLogs bool,
 	embeddingsServerURL string,
 	resolveEmbeddingsIndexes string,
+	useSpannerGraph bool,
 ) *Server {
 	s := &Server{
 		store:                    store,
@@ -173,6 +176,7 @@ func NewMixerServer(
 		writeUsageLogs:           writeUsageLogs,
 		embeddingsServerURL:      embeddingsServerURL,
 		resolveEmbeddingsIndexes: resolveEmbeddingsIndexes,
+		useSpannerGraph:          useSpannerGraph,
 	}
 	s.cachedata.Store(cachedata)
 	return s
@@ -180,6 +184,10 @@ func NewMixerServer(
 
 // shouldDivertV2 returns true if the request should be diverted to the dispatcher.
 func (s *Server) shouldDivertV2(ctx context.Context) bool {
+	if s.useSpannerGraph {
+		return true
+	}
+
 	fraction := s.flags.V2DivertFraction
 	if fraction <= 0 {
 		return false

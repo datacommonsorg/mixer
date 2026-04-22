@@ -41,6 +41,7 @@ mixer:
   useBranchBigtable: true
   useCustomBigtable: false
   useBigquery: true
+  useSpannerGraph: false
   foldRemoteRootSvg: false
   # Comma separated embeddings indexes for resolving indicators.
   resolveEmbeddingsIndexes: "base_uae_mem"

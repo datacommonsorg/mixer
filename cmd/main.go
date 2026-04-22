@@ -93,6 +93,7 @@ var (
 	httpProfilePort   = flag.Int("httpprof_port", 0, "Port to serve HTTP profiles from")
 	foldRemoteRootSvg = flag.Bool("fold_remote_root_svg", false, "Whether to fold root SVG from remote mixer")
 	// Spanner Graph
+	useSpannerGraph  = flag.Bool("use_spanner_graph", false, "Use Cloud Spanner Graph as database.")
 	spannerGraphInfo = flag.String("spanner_graph_info", "", "Yaml formatted text containing information for Spanner Graph.")
 	// Redis.
 	useRedis  = flag.Bool("use_redis", false, "Use Redis cache.")
@@ -138,6 +139,10 @@ func main() {
 	slog.Info("Created feature flags")
 
 	ctx := context.Background()
+
+	// The new Spanner-based backend can be enabled either by a server config flag (for stable configuration) or a feature flag (for experimental configuration).
+	// After launch, only the server config should be used.
+	shouldUseSpannerGraph := *useSpannerGraph || flags.UseSpannerGraph
 
 	credentials, err := google.FindDefaultCredentials(ctx, compute.ComputeScope)
 	if err == nil && credentials.ProjectID != "" {
@@ -192,7 +197,7 @@ func main() {
 
 	// Spanner Graph.
 	var spannerClient spanner.SpannerClient
-	if flags.UseSpannerGraph {
+	if shouldUseSpannerGraph {
 		var err error
 		spannerClient, err = spanner.NewSpannerClient(ctx, *spannerGraphInfo, flags.SpannerGraphDatabase)
 		if err != nil {
@@ -286,7 +291,7 @@ func main() {
 	// Create remote data source here but don't add it to sources yet since we want it to be the last source added.
 	// TODO: clean up how we create and add data sources.
 	var remoteDataSource datasource.DataSource
-	if flags.UseSpannerGraph && *remoteMixerDomain != "" {
+	if shouldUseSpannerGraph && *remoteMixerDomain != "" {
 		remoteClient, err := remote.NewRemoteClient(metadata)
 		if err != nil {
 			slog.Error("Failed to create remote client", "error", err)
@@ -334,13 +339,15 @@ func main() {
 	}
 
 	// SQL Data Source
-	if flags.UseSpannerGraph && sqldb.IsConnected(&sqlClient) {
+	if shouldUseSpannerGraph && sqldb.IsConnected(&sqlClient) {
 		var ds datasource.DataSource = sqldb.NewSQLDataSource(&sqlClient, remoteDataSource)
 		sources = append(sources, ds)
 	}
 
 	// Store
-	if len(tables) == 0 && *remoteMixerDomain == "" && !sqldb.IsConnected(&sqlClient) {
+	// An empty store is allowed *only* when there's a stable Spanner configuration.
+	// In particular, feature-flag-enabled Spanner configurations should still require Bigtable as a fallback.
+	if len(tables) == 0 && *remoteMixerDomain == "" && !sqldb.IsConnected(&sqlClient) && !*useSpannerGraph {
 		slog.Error("No bigtables or remote mixer domain or sql database are provided")
 		os.Exit(1)
 	}
@@ -393,8 +400,8 @@ func main() {
 
 	// Processors
 	processors := []*dispatcher.Processor{}
-	if flags.UseSpannerGraph {
-	slog.Info("New backend enabled, setting up processors")
+	if shouldUseSpannerGraph {
+		slog.Info("New backend enabled, setting up processors")
 		// Mixer in-memory cache.
 		dataSourceCache, err := cache.NewDataSourceCache(ctx, dataSources, cacheOptions)
 		if err != nil {
@@ -431,7 +438,7 @@ func main() {
 	dispatcher := dispatcher.NewDispatcher(processors, dataSources)
 
 	// Create server object
-	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs, *embeddingsServerURL, *resolveEmbeddingsIndexes)
+	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs, *embeddingsServerURL, *resolveEmbeddingsIndexes, *useSpannerGraph)
 	pbs.RegisterMixerServer(srv, mixerServer)
 
 	// Subscribe to branch cache update
