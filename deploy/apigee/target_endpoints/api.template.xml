@@ -69,7 +69,12 @@
             ((proxy.pathsuffix MatchesPath "/v1/triples") OR (proxy.pathsuffix MatchesPath "/v1/triples/**")) OR
             ((proxy.pathsuffix MatchesPath "/v1/variables") OR (proxy.pathsuffix MatchesPath "/v1/variables/**")) OR
             (proxy.pathsuffix MatchesPath "/v2/sparql") OR
+            (proxy.pathsuffix MatchesPath "/v3/sparql") OR
+            (proxy.pathsuffix MatchesPath "/query") OR
+            (proxy.pathsuffix MatchesPath "/v1/query") OR
             (proxy.pathsuffix MatchesPath "/v1/recognize/entities") OR
+            (proxy.pathsuffix MatchesPath "/node/property-labels") OR
+            (proxy.pathsuffix MatchesPath "/node/property-values") OR
           </Condition>
           <Name>block-deprecated-endpoints</Name>
         </Step>
@@ -103,10 +108,7 @@
             !(
               (proxy.pathsuffix MatchesPath "/bulk/stats") OR
               (proxy.pathsuffix MatchesPath "/node/places-in") OR
-              (proxy.pathsuffix MatchesPath "/node/property-labels") OR
-              (proxy.pathsuffix MatchesPath "/node/property-values") OR
               (proxy.pathsuffix MatchesPath "/node/triples") OR
-              (proxy.pathsuffix MatchesPath "/query") OR
               (proxy.pathsuffix MatchesPath "/search") OR
               (proxy.pathsuffix MatchesPath "/stat/all") OR
               (proxy.pathsuffix MatchesPath "/stat/series") OR

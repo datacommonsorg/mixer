@@ -7,6 +7,10 @@ mixer:
   hostProject: datcom-mixer-dev-316822
   serviceName: dev.api.datacommons.org
   cluster_prefix: mixer
+  useBaseBigtable: false
+  useBranchBigtable: false
+  useBigquery: false
+  useSpannerGraph: true
   redis:
     enabled: true
     configFile: |

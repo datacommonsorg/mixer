@@ -58,28 +58,22 @@ type SpannerClient interface {
 
 // spannerDatabaseClient encapsulates the Spanner client that directly interacts with the Spanner database.
 type spannerDatabaseClient struct {
-	client        *spanner.Client
-	useStaleReads bool
-	timestamp     atomic.Int64
-	ticker        Ticker
-	stopCh        chan struct{}
-	startOnce     sync.Once
-	stopOnce      sync.Once
-	wg            sync.WaitGroup
+	client    *spanner.Client
+	timestamp atomic.Int64
+	ticker    Ticker
+	stopCh    chan struct{}
+	startOnce sync.Once
+	stopOnce  sync.Once
+	wg        sync.WaitGroup
 
 	// For mocking in tests.
 	updateTimestamp func(context.Context) error
 }
 
 // newSpannerDatabaseClient creates a new spannerDatabaseClient.
-func newSpannerDatabaseClient(client *spanner.Client, useStaleReads bool) (*spannerDatabaseClient, error) {
+func newSpannerDatabaseClient(client *spanner.Client) (*spannerDatabaseClient, error) {
 	sc := &spannerDatabaseClient{
-		client:        client,
-		useStaleReads: useStaleReads,
-	}
-
-	if !useStaleReads {
-		return sc, nil
+		client: client,
 	}
 
 	// Set an initial timestamp synchronously before starting the background loop.
@@ -95,7 +89,7 @@ func newSpannerDatabaseClient(client *spanner.Client, useStaleReads bool) (*span
 
 // NewRawSpannerClient creates a new SpannerClient without the schema selector.
 // This is intended for testing and internal use where a direct client is needed.
-func NewRawSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string, useStaleReads bool) (SpannerClient, error) {
+func NewRawSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string) (SpannerClient, error) {
 	cfg, err := createSpannerConfig(spannerConfigYaml, databaseOverride)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
@@ -104,13 +98,13 @@ func NewRawSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverrid
 	if err != nil {
 		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
 	}
-	return newSpannerDatabaseClient(client, useStaleReads)
+	return newSpannerDatabaseClient(client)
 }
 
 // NewSpannerClient creates a new SpannerClient from the config yaml string and an optional database override.
 // It returns a wrapper client that handles request-time schema dispatching.
-func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string, useStaleReads bool) (SpannerClient, error) {
-	rawClient, err := NewRawSpannerClient(ctx, spannerConfigYaml, databaseOverride, useStaleReads)
+func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string) (SpannerClient, error) {
+	rawClient, err := NewRawSpannerClient(ctx, spannerConfigYaml, databaseOverride)
 	if err != nil {
 		return nil, err
 	}
@@ -155,10 +149,6 @@ func (sc *spannerDatabaseClient) Id() string {
 
 // Start starts the background goroutine to periodically fetch the timestamp.
 func (sc *spannerDatabaseClient) Start() {
-	if !sc.useStaleReads {
-		return
-	}
-
 	sc.startOnce.Do(func() {
 		ctx, cancel := context.WithCancel(context.Background())
 
@@ -192,9 +182,7 @@ func (sc *spannerDatabaseClient) Start() {
 // Close closes the Spanner client and stops the background goroutine.
 func (sc *spannerDatabaseClient) Close() {
 	sc.stopOnce.Do(func() {
-		if sc.useStaleReads {
-			close(sc.stopCh)
-		}
+		close(sc.stopCh)
 
 		sc.wg.Wait()
 

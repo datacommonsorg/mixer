@@ -35,44 +35,39 @@ import (
 // Assumes inputs have been validated and the property expression has been parsed.
 //
 // Inputs:
-//   - inProp: The property of the input nodes to match against (e.g., "description", "geoCoordinate", "wikidataId").
-//   - outProp: The target property to retrieve (e.g., "dcid", "nutsCode").
-//   - typeOfValues: Optional values to filter by type (e.g., ["City", "County"]). Only used when inProp is "description" or "geoCoordinate" (or for indicator resolution).
+//   - in: NormalizedResolveRequest.
 func (s *Server) V2ResolveCore(
 	ctx context.Context,
-	in *pbv2.ResolveRequest,
-	inProp string,
-	outProp string,
-	typeOfValues []string,
+	in *resolve.NormalizedResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
 	// Check for explicit "indicator" resolver, otherwise default to legacy place resolver logic.
-	if resolver := in.GetResolver(); resolver == ResolveResolverIndicator {
+	if resolver := in.Request.GetResolver(); resolver == resolve.ResolveResolverIndicator {
 		if !s.flags.EnableEmbeddingsResolver {
 			return nil, status.Errorf(codes.Unimplemented, "Resolving indicators is not enabled for this environment.")
 		}
-		return resolve.ResolveUsingEmbeddings(ctx, s.httpClient, s.embeddingsServerURL, s.resolveEmbeddingsIndexes, in.GetNodes(), typeOfValues)
+		return resolve.ResolveUsingEmbeddings(ctx, s.httpClient, s.embeddingsServerURL, s.resolveEmbeddingsIndexes, in.Request.GetNodes(), in.TypeOfValues)
 	}
 
 	// Resolve places based on property expression
-	switch inProp {
-	case GeoCoordinateProperty:
+	switch in.InProp {
+	case resolve.GeoCoordinateProperty:
 		// Coordinate to ID:
 		// Example:
 		//   <-geoCoordinate->dcid
-		return resolve.Coordinate(ctx, s.store, in.GetNodes(), typeOfValues)
-	case DescriptionProperty:
+		return resolve.Coordinate(ctx, s.store, in.Request.GetNodes(), in.TypeOfValues)
+	case resolve.DescriptionProperty:
 		// Description (name) to ID:
 		// Examples:
 		//   <-description->dcid
 		//   <-description{typeOf:City}->dcid
 		//   <-description{typeOf:[City, County]}->dcid
-		return resolve.Description(ctx, s.store, s.mapsClient, in.GetNodes(), typeOfValues)
+		return resolve.Description(ctx, s.store, s.mapsClient, in.Request.GetNodes(), in.TypeOfValues)
 	default:
 		// ID to ID:
 		// Example:
 		//   <-wikidataId->dcid
 		//   <-countryNumericCode->wikidataId
-		return resolve.ID(ctx, s.store, in.GetNodes(), inProp, outProp)
+		return resolve.ID(ctx, s.store, in.Request.GetNodes(), in.InProp, in.OutProp)
 	}
 }
 

@@ -113,6 +113,10 @@ var statements = struct {
 	filterDescendentStatVarsByImport string
 	// Filter descendent stat vars by num_entities_existences.
 	filterDescendentStatVarsByNumEntitiesExistence string
+	// Extract embedding values for a retrieval query.
+	getEmbeddingFromQuery string
+	// Search nodes using vector search.
+	vectorSearchNode string
 }{
 	getCompletionTimestamp: `		SELECT
 		CompletionTimestamp
@@ -501,4 +505,18 @@ var statements = struct {
 					AND e1.object_id = @import`,
 	filterDescendentStatVarsByNumEntitiesExistence: `
 				HAVING COUNT(DISTINCT %s) >= @numEntitiesExistence`,
+	getEmbeddingFromQuery: `		SELECT embeddings.values
+		FROM ML.PREDICT(MODEL @model_name, (SELECT @search_label AS content, @task_type AS task_type))`,
+	vectorSearchNode: `		SELECT
+			subject_id,
+			embedding_content,
+			1 - COSINE_DISTANCE(@embeddings, embeddings) AS cosine_similarity
+		FROM
+			NodeEmbeddings
+		WHERE
+			embeddings IS NOT NULL
+			AND APPROX_COSINE_DISTANCE(@embeddings, embeddings, options => JSON @options) > @distance_threshold
+		ORDER BY
+			APPROX_COSINE_DISTANCE(@embeddings, embeddings, options => JSON @options)
+		LIMIT @limit`,
 }

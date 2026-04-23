@@ -92,7 +92,7 @@ func TestExistence(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"Observation(existence)",
-		&test.TestOption{FetchSVG: true, UseSQLite: true, CacheSVFormula: true},
+		&test.TestOption{FetchSVG: true, UseSQLite: true, UseStatisticalCalculation: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

@@ -79,7 +79,7 @@ func TestV3BulkVariableInfo(t *testing.T) {
 	}
 	if err := test.TestDriver(
 		"V3BulkVariableInfo",
-		&test.TestOption{UseSpannerGraph: true, EnableV3: true},
+		&test.TestOption{UseSpannerGraph: true},
 		testSuite,
 	); err != nil {
 		t.Errorf("TestDriver() = %s", err)

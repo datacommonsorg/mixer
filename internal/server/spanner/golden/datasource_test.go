@@ -73,6 +73,12 @@ func (m *mockSpannerClient) Sparql(ctx context.Context, nodes []types.Node, quer
 func (m *mockSpannerClient) GetProvenanceSummary(ctx context.Context, ids []string) (map[string]map[string]*pb.StatVarSummary_ProvenanceSummary, error) {
 	return nil, nil
 }
+func (m *mockSpannerClient) GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error) {
+	return nil, nil
+}
+func (m *mockSpannerClient) VectorSearchQuery(ctx context.Context, limit int, embeddings []float64, numLeaves int, threshold float64) ([]*spanner.VectorSearchResult, error) {
+	return nil, nil
+}
 func (m *mockSpannerClient) GetEventCollectionDate(ctx context.Context, placeID, eventType string) ([]string, error) {
 	return nil, nil
 }

@@ -124,7 +124,6 @@ export DB_PASS=<password>
 
 Enabling Spanner Graph requires the following feature flags to be set:
 
-- `EnableV3: true`
 - `UseSpannerGraph: true`
 
 These are currently set in `local.yaml`.
@@ -138,6 +137,10 @@ Additionally, to use a database other than the default in `spanner_graph_info.ya
 export MIXER_API_KEY=<YOUR API KEY>
 ./run_server.sh \
     --feature_flags_path=$PWD/deploy/featureflags/local.yaml \
+    --use_base_bigtable=false \
+    --use_branch_bigtable=false \
+    --use_bigquery=false \
+    --use_spanner_graph=true \
     --spanner_graph_info="$(cat deploy/storage/spanner_graph_info.yaml)" 
 ```
 

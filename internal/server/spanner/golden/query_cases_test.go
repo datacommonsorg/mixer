@@ -595,6 +595,35 @@ var getFilteredSVGChildrenTestCases = []struct {
 	},
 }
 
+var embeddingFromQueryTestCases = []struct {
+	modelName   string
+	searchLabel string
+	taskType    string
+	golden      string
+}{
+	{
+		modelName:   "test_model",
+		searchLabel: "test_query",
+		taskType:    "RETRIEVAL_QUERY",
+		golden:      "get_embedding_from_query",
+	},
+}
+
+var vectorSearchNodeTestCases = []struct {
+	limit       int
+	embeddings  []float64
+	numLeaves   int
+	threshold   float64
+	golden      string
+}{
+	{
+		limit:      5,
+		embeddings: []float64{0.1, 0.2, 0.3},
+		numLeaves:  20,
+		threshold:  0.6,
+		golden:     "vector_search_node",
+   },
+}
 var getFilteredStatVarGroupNodeTestCases = []struct {
 	node                 string
 	constrainedPlaces    []string

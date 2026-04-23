@@ -622,6 +622,39 @@ func (sc *spannerDatabaseClient) GetProvenanceSummary(ctx context.Context, varia
 	return results, nil
 }
 
+// GetTermEmbeddingQuery retrieves embeddings from Spanner for a given query.
+func (sc *spannerDatabaseClient) GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error) {
+	var embeddings []float64
+	err := sc.executeQuery(ctx, *GetTermEmbeddingQuery(modelName, searchLabel, taskType), func(iter *spanner.RowIterator) error {
+		row, err := iter.Next()
+		if err == iterator.Done {
+			return fmt.Errorf("no embedding returned for model %s and label %s", modelName, searchLabel)
+		}
+		if err != nil {
+			return err
+		}
+		return row.Column(0, &embeddings)
+	})
+	return embeddings, err
+}
+
+// VectorSearchQuery performs vector similarity search in Spanner.
+func (sc *spannerDatabaseClient) VectorSearchQuery(ctx context.Context, limit int, embeddings []float64, numLeaves int, threshold float64) ([]*VectorSearchResult, error) {
+	var results []*VectorSearchResult
+	err := queryStructs(
+		ctx,
+		sc,
+		*VectorSearchQuery(limit, embeddings, numLeaves, threshold),
+		func() interface{} {
+			return &VectorSearchResult{}
+		},
+		func(rowStruct interface{}) {
+			res := rowStruct.(*VectorSearchResult)
+			results = append(results, res)
+		},
+	)
+	return results, err
+}
 // GetStatVarGroupNode fetches StatVarGroupNode info from Spanner.
 func (sc *spannerDatabaseClient) GetStatVarGroupNode(ctx context.Context, nodes []string) ([]*StatVarGroupNode, error) {
 	var svgNodes []*StatVarGroupNode
@@ -760,12 +793,13 @@ func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) er
 	defer iter.Stop()
 
 	row, err := iter.Next()
-	
+
 	// Handle missing or empty table cases gracefully
 	var warnMsg string
 	if err == iterator.Done {
 		warnMsg = "No valid rows found in IngestionHistory."
-	} else if err != nil && spanner.ErrCode(err) == codes.NotFound {
+	} else if code := spanner.ErrCode(err); code == codes.NotFound ||
+		(code == codes.InvalidArgument && strings.Contains(err.Error(), "Table not found: IngestionHistory")) {
 		warnMsg = "IngestionHistory table not found."
 	}
 
@@ -837,22 +871,19 @@ func (sc *spannerDatabaseClient) executeQuery(
 		return err
 	}
 
-	if sc.useStaleReads {
-		ts, err := sc.getStalenessTimestamp()
-		if err != nil {
-			return runQuery(spanner.StrongRead())
-		}
-		err = runQuery(spanner.ReadTimestamp(ts))
-
-		// Log error if timestamp is older than retention and fall back to strong read.
-		if spanner.ErrCode(err) == codes.FailedPrecondition {
-			slog.Error("Stale read timestamp expired. Falling back to StrongRead.",
-				"expiredTimestamp", ts.String())
-			return runQuery(spanner.StrongRead())
-		}
-		return err
+	ts, err := sc.getStalenessTimestamp()
+	if err != nil {
+		return runQuery(spanner.StrongRead())
 	}
-	return runQuery(spanner.StrongRead())
+	err = runQuery(spanner.ReadTimestamp(ts))
+
+	// Log error if timestamp is older than retention and fall back to strong read.
+	if spanner.ErrCode(err) == codes.FailedPrecondition {
+		slog.Error("Stale read timestamp expired. Falling back to StrongRead.",
+			"expiredTimestamp", ts.String())
+		return runQuery(spanner.StrongRead())
+	}
+	return err
 }
 
 // queryStructs executes a query and maps the results to an input struct.

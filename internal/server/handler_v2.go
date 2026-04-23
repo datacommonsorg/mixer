@@ -17,9 +17,7 @@ package server
 
 import (
 	"context"
-	"fmt"
 	"log/slog"
-	"strings"
 	"time"
 
 	"github.com/datacommonsorg/mixer/internal/log"
@@ -32,15 +30,13 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/recon"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/search"
 	"github.com/datacommonsorg/mixer/internal/server/translator"
-	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
+	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/uuid"
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
-	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -48,16 +44,19 @@ import (
 func (s *Server) V2Resolve(
 	ctx context.Context, in *pbv2.ResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
-	inProp, outProp, typeOfValues, err := validateAndParseResolveInputs(in)
-	if err != nil {
-		return nil, err
+	if s.shouldDivertV2(ctx) {
+		return s.dispatcher.Resolve(ctx, in)
 	}
+
 	v2StartTime := time.Now()
 
-	callLocal, callRemote, err := resolveRouting(in.GetTarget(), s.metadata.RemoteMixerDomain)
+	normalizedResolveRequest, err := resolve.ValidateAndParseResolveInputs(in)
 	if err != nil {
 		return nil, err
 	}
+
+	hasRemoteMixerDomain := s.metadata.RemoteMixerDomain != ""
+	callLocal, callRemote := resolve.ResolveRouting(normalizedResolveRequest.Request.GetTarget(), hasRemoteMixerDomain)
 
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	localRespChan := make(chan *pbv2.ResolveResponse, 1)
@@ -65,7 +64,7 @@ func (s *Server) V2Resolve(
 
 	if callLocal {
 		errGroup.Go(func() error {
-			localResp, err := s.V2ResolveCore(errCtx, in, inProp, outProp, typeOfValues)
+			localResp, err := s.V2ResolveCore(errCtx, normalizedResolveRequest)
 			if err != nil {
 				return err
 			}
@@ -79,7 +78,7 @@ func (s *Server) V2Resolve(
 	if callRemote {
 		errGroup.Go(func() error {
 			remoteResp := &pbv2.ResolveResponse{}
-			err := util.FetchRemote(s.metadata, s.httpClient, "/v2/resolve", in, remoteResp)
+			err := util.FetchRemote(s.metadata, s.httpClient, "/v2/resolve", normalizedResolveRequest.Request, remoteResp)
 			if err != nil {
 				return err
 			}
@@ -114,142 +113,6 @@ func (s *Server) V2Resolve(
 	)
 
 	return v2Resp, nil
-}
-
-// parseResolvePropertyExpression parses and validates a property expression string.
-//
-// The expression generally takes the form "<-inProp->outProp", optionally with filters
-// like "<-inProp{typeOf:Type}->outProp".
-//
-// Returns:
-// - input property (string)
-// - output property (string)
-// - typeOf filter values ([]string, from the input property filter)
-// - error if validation fails
-func parseResolvePropertyExpression(prop string) (string, string, []string, error) {
-	// Parse property expression into Arcs.
-	arcs, err := v2.ParseProperty(prop)
-	if err != nil {
-		return "", "", nil, err
-	}
-
-	if len(arcs) != 2 {
-		return "", "", nil, fmt.Errorf("must define exactly two parts (incoming and outgoing arcs). Found %d parts", len(arcs))
-	}
-
-	inArc := arcs[0]
-	outArc := arcs[1]
-	if inArc.Out || !outArc.Out {
-		return "", "", nil, fmt.Errorf("must start with an incoming arc and end with an outgoing arc")
-	}
-
-	if inArc.SingleProp == "" {
-		return "", "", nil, fmt.Errorf("input property must be provided")
-	}
-	if outArc.SingleProp == "" {
-		return "", "", nil, fmt.Errorf("output property must be provided")
-	}
-
-	var typeOfValues []string
-	// Validate filters
-	if len(inArc.Filter) > 0 {
-		if len(inArc.Filter) > 1 {
-			return "", "", nil, fmt.Errorf("only '%s' filter is supported", TypeOfProperty)
-		}
-		if filter, ok := inArc.Filter[TypeOfProperty]; !ok {
-			for k := range inArc.Filter {
-				return "", "", nil, fmt.Errorf("invalid filter key '%s'. Only '%s' filter is supported", k, TypeOfProperty)
-			}
-		} else {
-			typeOfValues = filter
-		}
-	}
-
-	return inArc.SingleProp, outArc.SingleProp, typeOfValues, nil
-}
-
-// validateAndParseResolveInputs validates and parses the inputs for the resolve request.
-//
-// Validation logic:
-// - `target`: Must be one of "base_only", "custom_only", "base_and_custom". Defaults to "base_and_custom".
-// - `resolver`: Must be one of "place", "indicator". Defaults to "place".
-// - `property`:
-//   - Must match the format "<-inProp->outProp" (optionally with filters).
-//   - "inProp" and "outProp" validation depends on the resolver:
-//   - "place": if "inProp" is "description" or "geoCoordinate", "outProp" must be "dcid".
-//   - "indicator": "inProp" must be "description" and "outProp" must be "dcid".
-//
-// Returns:
-// - input property (string)
-// - output property (string)
-// - typeOf filter values ([]string, from the input property filter)
-// - error if validation fails
-func validateAndParseResolveInputs(in *pbv2.ResolveRequest) (string, string, []string, error) {
-	var validationErrors []string
-
-	// Parse and validate `target`
-	switch in.GetTarget() {
-	case ResolveTargetBaseOnly, ResolveTargetCustomOnly, ResolveTargetBaseAndCustom:
-	case "":
-		// Set default value; ignored if current call is to base dc
-		in.Target = ResolveTargetBaseAndCustom
-	default:
-		validationErrors = append(validationErrors, fmt.Sprintf("Invalid 'target': valid values are '%s', '%s', '%s'",
-			ResolveTargetCustomOnly, ResolveTargetBaseOnly, ResolveTargetBaseAndCustom))
-	}
-
-	// Parse and validate `resolver`
-	switch in.GetResolver() {
-	case ResolveResolverPlace, ResolveResolverIndicator:
-	case "":
-		// Set default value
-		in.Resolver = ResolveResolverPlace
-	default:
-		validationErrors = append(validationErrors, fmt.Sprintf("Invalid 'resolver': valid values are '%s', '%s'",
-			ResolveResolverIndicator, ResolveResolverPlace))
-	}
-
-	// Parse `property` expression into its in arc property, out arc property and typeOf filter values
-	if in.GetProperty() == "" {
-		in.Property = ResolveDefaultPropertyExpression
-	}
-
-	inProp, outProp, typeOfValues, err := parseResolvePropertyExpression(in.GetProperty())
-	if err != nil {
-		validationErrors = append(validationErrors, fmt.Sprintf("Invalid 'property' expression: %v", err))
-	}
-
-	// Validate property expression based on resolver
-	if err == nil {
-		switch in.GetResolver() {
-		case ResolveResolverPlace:
-			// geoCoordinate and description only support dcid as outArc
-			if (inProp == DescriptionProperty || inProp == GeoCoordinateProperty) && outProp != DcidProperty {
-				validationErrors = append(validationErrors, fmt.Sprintf(
-					"Invalid 'property' expression: given input property '%s', output property can only be '%s'",
-					inProp, DcidProperty))
-			}
-		case ResolveResolverIndicator:
-			// Indicator resolution only supports description as inArc.
-			if inProp != DescriptionProperty {
-				validationErrors = append(validationErrors, fmt.Sprintf(
-					"Invalid 'property' expression: indicator resolution only supports '%s' as input property",
-					DescriptionProperty))
-			}
-			// Indicator resolution only supports dcid as outArc.
-			if outProp != DcidProperty {
-				validationErrors = append(validationErrors, fmt.Sprintf(
-					"Invalid 'property' expression: indicator resolution only supports '%s' as output property",
-					DcidProperty))
-			}
-		}
-	}
-
-	if len(validationErrors) > 0 {
-		return "", "", nil, status.Errorf(codes.InvalidArgument, "Invalid inputs in request. %s", strings.Join(validationErrors, ". "))
-	}
-
-	return inProp, outProp, typeOfValues, nil
 }
 
 // V2Node implements API for mixer.V2Node.
@@ -652,39 +515,50 @@ func (s *Server) V2BulkVariableInfo(
 func (s *Server) V2BulkVariableGroupInfo(
 	ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest,
 ) (*pbv1.BulkVariableGroupInfoResponse, error) {
-	slog.Info("TESTING-BulkVariableGroupInfo Received V2BulkVariableGroupInfo request", "request", in)
+	if s.shouldDivertV2(ctx) {
+		return s.dispatcher.BulkVariableGroupInfo(ctx, in)
+	}
 
-	resp, err := s.BulkVariableGroupInfo(ctx, in)
-	slog.Info("TESTING-BulkVariableGroupInfo Completed V2BulkVariableGroupInfo request", "response", resp, "error", err)
+	v2StartTime := time.Now()
 
-	return resp, err
+	// Use the V1 implementation for now.
+	v1Resp, err := s.BulkVariableGroupInfo(ctx, in)
+	if err != nil {
+		return nil, err
+	}
+	v2Resp := proto.Clone(v1Resp).(*pbv1.BulkVariableGroupInfoResponse)
+
+	convertV1ToV2BulkVariableGroupInfo(v2Resp)
+
+	v2Latency := time.Since(v2StartTime)
+
+	s.maybeMirrorV3(
+		ctx,
+		in,
+		v2Resp,
+		v2Latency,
+		func(ctx context.Context, req proto.Message) (proto.Message, error) {
+			return s.V3BulkVariableGroupInfo(ctx, req.(*pbv1.BulkVariableGroupInfoRequest))
+		},
+		GetV2BulkVariableGroupInfoCmpOpts(),
+	)
+
+	return v2Resp, nil
 }
 
-// resolveRouting determines whether to route to local and/or remote instances
-// based on the target parameter and the presence of a remote mixer domain.
-// Returns (shouldCallLocal, shouldCallRemote, error).
-//
-// Assumes that `target` has been validated.
-//
-// logic:
-//   - If remoteMixerDomain is empty, we are the base instance (or standalone).
-//     Always process locally, ignore target.
-//   - If remoteMixerDomain is set, we are a custom instance.
-//     Route based on target:
-//   - "base_only": Call remote only.
-//   - "custom_only": Call local only.
-//   - "base_and_custom": Call both.
-//   - Any other value defaults to calling both.
-func resolveRouting(target, remoteMixerDomain string) (bool, bool, error) {
-	if remoteMixerDomain == "" {
-		return true, false, nil
-	}
-	switch target {
-	case ResolveTargetBaseOnly:
-		return false, true, nil
-	case ResolveTargetCustomOnly:
-		return true, false, nil
-	default:
-		return true, true, nil
+// convertV1ToV2BulkVariableGroupInfo converts a V1 BulkVariableGroupInfoResponse to the V2 version.
+func convertV1ToV2BulkVariableGroupInfo(resp *pbv1.BulkVariableGroupInfoResponse) {
+	// The new response will not contain all legacy V1 fields.
+	// To ensure the new response is sufficient, clear all legacy fields until swapping over to the new backend.
+	for _, info := range resp.GetData() {
+		if info.GetInfo() == nil {
+			continue
+		}
+		info.Info.ParentStatVarGroups = nil
+		for _, childSV := range info.GetInfo().GetChildStatVars() {
+			childSV.SearchName = ""
+			childSV.SearchNames = nil
+			childSV.Definition = ""
+		}
 	}
 }
