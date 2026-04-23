@@ -90,6 +90,10 @@ func (s *Server) V3BulkVariableGroupInfo(ctx context.Context, in *pbv1.BulkVaria
 func (s *Server) V3SdmxData(ctx context.Context, in *pbv3.SdmxDataRequest) (
 	*pbv3.SdmxDataResponse, error,
 ) {
+	if !s.flags.EnableSDMXDataApi {
+		return nil, status.Error(codes.Unimplemented, "SDMX API is not enabled")
+	}
+
 	// Parse constraints JSON string to support both scalar strings and string arrays
 	rawConstraints := map[string]any{}
 	if in.C != "" {

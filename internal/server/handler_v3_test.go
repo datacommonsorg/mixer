@@ -20,24 +20,34 @@ import (
 	"testing"
 
 	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
+	"github.com/datacommonsorg/mixer/internal/featureflags"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
 
 func TestV3SdmxData_Validation(t *testing.T) {
-	server := &Server{} // Dispatcher is nil, but we only test validation before calling it.
-
 	tests := []struct {
 		name       string
 		request    *pbv3.SdmxDataRequest
+		enableSDMXDataApi bool
 		wantCode   codes.Code
 		wantErrSub string
 	}{
+		{
+			name: "API not enabled",
+			request: &pbv3.SdmxDataRequest{
+				C: "{}",
+			},
+			enableSDMXDataApi: false,
+			wantCode:   codes.Unimplemented,
+			wantErrSub: "SDMX API is not enabled",
+		},
 		{
 			name: "Invalid JSON in c",
 			request: &pbv3.SdmxDataRequest{
 				C: "{invalid json}",
 			},
+			enableSDMXDataApi: true,
 			wantCode:   codes.InvalidArgument,
 			wantErrSub: "Invalid constraints format. Please provide a valid JSON object.",
 		},
@@ -46,6 +56,7 @@ func TestV3SdmxData_Validation(t *testing.T) {
 			request: &pbv3.SdmxDataRequest{
 				C: "",
 			},
+			enableSDMXDataApi: true,
 			wantCode:   codes.InvalidArgument,
 			wantErrSub: "At least one constraint or variableMeasured is required.",
 		},
@@ -54,6 +65,7 @@ func TestV3SdmxData_Validation(t *testing.T) {
 			request: &pbv3.SdmxDataRequest{
 				C: "{}",
 			},
+			enableSDMXDataApi: true,
 			wantCode:   codes.InvalidArgument,
 			wantErrSub: "At least one constraint or variableMeasured is required.",
 		},
@@ -61,6 +73,7 @@ func TestV3SdmxData_Validation(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
+			server := &Server{flags: &featureflags.Flags{EnableSDMXDataApi: tt.enableSDMXDataApi}}
 			_, err := server.V3SdmxData(context.Background(), tt.request)
 			if err == nil {
 				t.Fatal("Expected error, got nil")
