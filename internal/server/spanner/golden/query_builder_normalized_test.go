@@ -54,7 +54,7 @@ func TestNormalizedGetObservationsContainedInPlaceQuery(t *testing.T) {
 
 		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
 			return spanner.GetNormalizedObservationsContainedInPlaceQuery(c.variables, &v2.ContainedInPlace{
-				Ancestor:         c.ancestor,
+				Ancestor:       c.ancestor,
 				ChildPlaceType: c.childPlaceType,
 			}), nil
 		})
@@ -72,4 +72,3 @@ func TestGetSdmxObservationsQuery(t *testing.T) {
 		})
 	}
 }
-

@@ -95,7 +95,7 @@ func TestNormalizedGetObservationsContainedInPlace(t *testing.T) {
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
 			actual, err := nc.GetObservationsContainedInPlace(ctx, c.variables, &v2.ContainedInPlace{
-				Ancestor:         c.ancestor,
+				Ancestor:       c.ancestor,
 				ChildPlaceType: c.childPlaceType,
 			})
 			if err != nil {

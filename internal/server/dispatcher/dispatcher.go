@@ -17,11 +17,12 @@ package dispatcher
 import (
 	"context"
 	"fmt"
+	"log/slog"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pb_int "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"google.golang.org/protobuf/proto"
 )
@@ -249,21 +250,11 @@ func newRequestContext(ctx context.Context, request proto.Message, requestType R
 }
 
 // SdmxData handles SDMX Data requests.
-func (dispatcher *Dispatcher) SdmxData(ctx context.Context, in *pbv3.SdmxDataRequest, constraints map[string]string) (*pbv3.SdmxDataResponse, error) {
-	// Call facade
-	obs, err := dispatcher.sources.SdmxData(ctx, in, constraints)
+func (dispatcher *Dispatcher) SdmxData(ctx context.Context, in *pb_int.SdmxDataQuery) (*pb_int.SdmxDataResult, error) {
+	res, err := dispatcher.sources.SdmxData(ctx, in)
 	if err != nil {
 		slog.Error("Failed to get SDMX data from sources", "error", err)
 		return nil, fmt.Errorf("failed to get SDMX data: %w", err)
 	}
-
-	// Format response
-	formatter := &JSONStatFormatter{}
-	payload, err := formatter.Format(obs)
-	if err != nil {
-		slog.Error("Failed to format SDMX response", "error", err)
-		return nil, fmt.Errorf("failed to format SDMX response: %w", err)
-	}
-
-	return &pbv3.SdmxDataResponse{Payload: payload}, nil
+	return res, nil
 }

@@ -22,10 +22,10 @@ var statementsNormalized = struct {
 
 	// Fetch Observations for SDMX with provenance.
 	getSdmxObs string
-	
+
 	// Filter by variable dcids.
 	selectVariableDcids string
-	
+
 	// Filter by entity dcids (by looking up in TimeSeriesAttribute).
 	selectEntityDcids string
 
@@ -67,11 +67,11 @@ var statementsNormalized = struct {
 		FROM 
 			TimeSeries@{FORCE_INDEX=TimeSeriesByVariableMeasured} ts`,
 	selectVariableDcids: "ts.variable_measured %s",
-	
+
 	// Uses the index on TimeSeriesAttribute(property, value).
 	// For now we assume property is 'observationAbout'.
-	selectEntityDcids:   "ts.id IN (SELECT id FROM TimeSeriesAttribute@{FORCE_INDEX=TimeSeriesAttributePropertyValue} WHERE property = 'observationAbout' AND value %s)", 
-	
+	selectEntityDcids: "ts.id IN (SELECT id FROM TimeSeriesAttribute@{FORCE_INDEX=TimeSeriesAttributePropertyValue} WHERE property = 'observationAbout' AND value %s)",
+
 	// We're intentionally not filtering by property since we'll be supporting multiple entities.
 	// If we want to restrict queries only to entities (vs other attributes), the schema should
 	// support a new property_type field and we can filter by property_type = "entity".
@@ -114,4 +114,3 @@ var statementsNormalized = struct {
 		ON
 			ts.id = tsa.id`,
 }
-

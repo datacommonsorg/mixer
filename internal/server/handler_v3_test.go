@@ -28,34 +28,34 @@ func TestV3SdmxData_Validation(t *testing.T) {
 	server := &Server{} // Dispatcher is nil, but we only test validation before calling it.
 
 	tests := []struct {
-		name        string
-		request     *pbv3.SdmxDataRequest
-		wantCode    codes.Code
-		wantErrSub  string
+		name       string
+		request    *pbv3.SdmxDataRequest
+		wantCode   codes.Code
+		wantErrSub string
 	}{
 		{
 			name: "Invalid JSON in c",
 			request: &pbv3.SdmxDataRequest{
 				C: "{invalid json}",
 			},
-			wantCode:    codes.InvalidArgument,
-			wantErrSub:  "Invalid constraints format. Please provide a valid JSON object.",
+			wantCode:   codes.InvalidArgument,
+			wantErrSub: "Invalid constraints format. Please provide a valid JSON object.",
 		},
 		{
 			name: "Empty constraints string",
 			request: &pbv3.SdmxDataRequest{
 				C: "",
 			},
-			wantCode:    codes.InvalidArgument,
-			wantErrSub:  "At least one constraint or variableMeasured is required.",
+			wantCode:   codes.InvalidArgument,
+			wantErrSub: "At least one constraint or variableMeasured is required.",
 		},
 		{
 			name: "Empty JSON object",
 			request: &pbv3.SdmxDataRequest{
 				C: "{}",
 			},
-			wantCode:    codes.InvalidArgument,
-			wantErrSub:  "At least one constraint or variableMeasured is required.",
+			wantCode:   codes.InvalidArgument,
+			wantErrSub: "At least one constraint or variableMeasured is required.",
 		},
 	}
 
@@ -65,16 +65,16 @@ func TestV3SdmxData_Validation(t *testing.T) {
 			if err == nil {
 				t.Fatal("Expected error, got nil")
 			}
-			
+
 			st, ok := status.FromError(err)
 			if !ok {
 				t.Fatalf("Expected gRPC status error, got: %v", err)
 			}
-			
+
 			if st.Code() != tt.wantCode {
 				t.Errorf("Got status code %v, want %v", st.Code(), tt.wantCode)
 			}
-			
+
 			if !strings.Contains(st.Message(), tt.wantErrSub) {
 				t.Errorf("Got error message %q, want it to contain %q", st.Message(), tt.wantErrSub)
 			}

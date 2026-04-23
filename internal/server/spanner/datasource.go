@@ -23,6 +23,7 @@ import (
 
 	internalmaps "github.com/datacommonsorg/mixer/internal/maps"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pb_int "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
@@ -655,6 +656,6 @@ func (sds *SpannerDataSource) BulkVariableGroupInfo(ctx context.Context, req *pb
 }
 
 // SdmxData retrieves observations from Spanner.
-func (sds *SpannerDataSource) SdmxData(ctx context.Context, req *pbv3.SdmxDataRequest, constraints map[string]string) ([]*datasource.SdmxObservation, error) {
-	return sds.client.GetSdmxObservations(ctx, constraints)
+func (sds *SpannerDataSource) SdmxData(ctx context.Context, req *pb_int.SdmxDataQuery) (*pb_int.SdmxDataResult, error) {
+	return sds.client.GetSdmxObservations(ctx, req)
 }

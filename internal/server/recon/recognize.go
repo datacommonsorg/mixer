@@ -463,7 +463,7 @@ func getNumSpansForContainedIn(spans []*pb.TokenSpans_Span, startIdx int) int {
 
 func combineTokenSpans(spans []*pb.TokenSpans_Span, startIdx, numSpans int) *pb.TokenSpans_Span {
 	startSpan := spans[startIdx]
-	
+
 	res := &pb.TokenSpans_Span{Tokens: startSpan.Tokens}
 	for i := 1; i < numSpans; i++ {
 		res.Tokens = append(res.Tokens, spans[startIdx+i].GetTokens()...)
@@ -486,7 +486,7 @@ func getNextPlaceTokenSpan(spans []*pb.TokenSpans_Span, startIdx int) (*pb.Token
 // - DCIDs of nextSpan's containingPlaces to the DCIDs of the corresponding startSpan place DCID.
 func findRecogPlaces(startSpan, nextSpan *pb.TokenSpans_Span) (map[string]*pb.RecogPlace, map[string][]string) {
 	dcidToRecogPlaces := map[string]*pb.RecogPlace{}
-	nextContainingPlaceToStartDcid :=map[string][]string{}
+	nextContainingPlaceToStartDcid := map[string][]string{}
 
 	for _, p1 := range startSpan.GetPlaces() {
 		for _, containingPlace := range p1.GetContainingPlaces() {
@@ -510,10 +510,10 @@ func findRecogPlaces(startSpan, nextSpan *pb.TokenSpans_Span) (map[string]*pb.Re
 }
 
 func combineContainedInTokens(
-	res *pb.TokenSpans_Span, 
+	res *pb.TokenSpans_Span,
 	spans []*pb.TokenSpans_Span, startIdx, numSpans int) *pb.TokenSpans_Span {
 	startSpan := spans[startIdx]
-	nextSpan, nextSpanIndex :=  getNextPlaceTokenSpan(spans, startIdx+1)
+	nextSpan, nextSpanIndex := getNextPlaceTokenSpan(spans, startIdx+1)
 
 	startingDcids := []string{}
 	for _, v := range startSpan.GetPlaces() {

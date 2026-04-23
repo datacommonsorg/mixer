@@ -21,11 +21,12 @@ import (
 	"log/slog"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pb_int "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
-	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
+	"github.com/datacommonsorg/mixer/internal/server/sdmx"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -86,31 +87,68 @@ func (s *Server) V3BulkVariableGroupInfo(ctx context.Context, in *pbv1.BulkVaria
 	return s.dispatcher.BulkVariableGroupInfo(ctx, in)
 }
 
-
-
 // V3SdmxData handles SDMX Data requests.
 func (s *Server) V3SdmxData(ctx context.Context, in *pbv3.SdmxDataRequest) (
 	*pbv3.SdmxDataResponse, error,
 ) {
-	// Parse constraints JSON string into map
-	constraints := map[string]string{}
+	// Parse constraints JSON string to support both scalar strings and string arrays
+	rawConstraints := map[string]any{}
 	if in.C != "" {
-		if err := json.Unmarshal([]byte(in.C), &constraints); err != nil {
+		if err := json.Unmarshal([]byte(in.C), &rawConstraints); err != nil {
 			slog.Error("Failed to parse constraints JSON for SDMX request", "error", err, "input", in.C)
 			return nil, status.Error(codes.InvalidArgument, "Invalid constraints format. Please provide a valid JSON object.")
 		}
 	}
 
-	// Validation Gate: At least one anchor component required or variableMeasured
-	if constraints[datasource.DimVariableMeasured] == "" && len(constraints) == 0 {
+	// Validation constraint limit from TODO
+	if len(rawConstraints) > 20 {
+		slog.Error("SDMX request exceeded maximum allowed constraints depth", "count", len(rawConstraints))
+		return nil, status.Error(codes.InvalidArgument, "Constraints payload exceeded maximum allowed key limit.")
+	}
+
+	query := &pb_int.SdmxDataQuery{
+		Constraints: map[string]*pb_int.ConstraintList{},
+	}
+
+	for k, v := range rawConstraints {
+		switch val := v.(type) {
+		case string:
+			query.Constraints[k] = &pb_int.ConstraintList{Values: []string{val}}
+		case []interface{}:
+			var lst []string
+			for _, item := range val {
+				if strItem, ok := item.(string); ok {
+					lst = append(lst, strItem)
+				}
+			}
+			query.Constraints[k] = &pb_int.ConstraintList{Values: lst}
+		}
+	}
+
+	// Validation Gate
+	if query.Constraints[sdmx.DimVariableMeasured] == nil && len(query.Constraints) == 0 {
 		slog.Error("SDMX request missing required constraints", "input", in.C)
 		return nil, status.Error(codes.InvalidArgument, "At least one constraint or variableMeasured is required.")
 	}
 
-	resp, err := s.dispatcher.SdmxData(ctx, in, constraints)
+	// Query the dispatcher
+	res, err := s.dispatcher.SdmxData(ctx, query)
 	if err != nil {
 		slog.Error("Failed to handle SDMX data request in dispatcher", "error", err)
 		return nil, status.Error(codes.Internal, "Internal server error occurred while processing the request.")
 	}
-	return resp, nil
+
+	if res == nil || len(res.Observations) == 0 {
+		return &pbv3.SdmxDataResponse{Payload: "{}"}, nil
+	}
+
+	// Format response
+	formatter := &sdmx.JSONStatFormatter{}
+	payload, err := formatter.Format(res.Observations)
+	if err != nil {
+		slog.Error("Failed to format SDMX response", "error", err)
+		return nil, status.Error(codes.Internal, "Internal mapping error occurred.")
+	}
+
+	return &pbv3.SdmxDataResponse{Payload: payload}, nil
 }

@@ -14,6 +14,10 @@
 
 package golden
 
+import (
+	pb_int "github.com/datacommonsorg/mixer/internal/proto/sdmx"
+)
+
 var normalizedObservationsTestCases = []struct {
 	variables []string
 	entities  []string
@@ -39,37 +43,40 @@ var checkVariableExistenceTestCases = []struct {
 }
 
 var getObservationsContainedInPlaceTestCases = []struct {
-	variables        []string
-	ancestor         string
+	variables      []string
+	ancestor       string
 	childPlaceType string
-	golden           string
+	golden         string
 }{
 	{
-		variables:        []string{"AirPollutant_Cancer_Risk"},
-		ancestor:         "geoId/10",
+		variables:      []string{"AirPollutant_Cancer_Risk"},
+		ancestor:       "geoId/10",
 		childPlaceType: "County",
-		golden:           "get_observations_contained_in_place_normalized",
+		golden:         "get_observations_contained_in_place_normalized",
 	},
 }
 
 var sdmxObservationsTestCases = []struct {
-	constraints map[string]string
+	constraints *pb_int.SdmxDataQuery
 	golden      string
 }{
 	{
-		constraints: map[string]string{
-			"variableMeasured": "Count_Person",
-			"observationAbout": "country/USA",
+		constraints: &pb_int.SdmxDataQuery{
+			Constraints: map[string]*pb_int.ConstraintList{
+				"variableMeasured": {Values: []string{"Count_Person"}},
+				"observationAbout": {Values: []string{"country/USA"}},
+			},
 		},
 		golden: "get_sdmx_observations_basic",
 	},
 	{
-		constraints: map[string]string{
-			"variableMeasured": "Count_Person",
-			"place":            "country/USA",
-			"race":             "Race_Asian",
+		constraints: &pb_int.SdmxDataQuery{
+			Constraints: map[string]*pb_int.ConstraintList{
+				"variableMeasured": {Values: []string{"Count_Person"}},
+				"place":            {Values: []string{"country/USA"}},
+				"race":             {Values: []string{"Race_Asian"}},
+			},
 		},
 		golden: "get_sdmx_observations_multi_constraints",
 	},
 }
-

@@ -610,11 +610,11 @@ var embeddingFromQueryTestCases = []struct {
 }
 
 var vectorSearchNodeTestCases = []struct {
-	limit       int
-	embeddings  []float64
-	numLeaves   int
-	threshold   float64
-	golden      string
+	limit      int
+	embeddings []float64
+	numLeaves  int
+	threshold  float64
+	golden     string
 }{
 	{
 		limit:      5,
@@ -622,7 +622,7 @@ var vectorSearchNodeTestCases = []struct {
 		numLeaves:  20,
 		threshold:  0.6,
 		golden:     "vector_search_node",
-   },
+	},
 }
 var getFilteredStatVarGroupNodeTestCases = []struct {
 	node                 string

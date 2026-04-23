@@ -12,28 +12,28 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package dispatcher
+package sdmx
 
 import (
 	"encoding/json"
+	"fmt"
 	"sort"
 	"strconv"
 	"time"
 
-	"github.com/datacommonsorg/mixer/internal/server/datasource"
+	pb_int "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 )
 
 const (
-	dimVariableMeasured = datasource.DimVariableMeasured
-	dimObservationDate  = datasource.DimObservationDate
+	dimVariableMeasured = DimVariableMeasured
+	dimObservationDate  = DimObservationDate
 	dimProvenance       = "provenance"
 )
 
 // Formatter defines the interface for formatting SDMX query results.
 type Formatter interface {
-	Format(obs []*datasource.SdmxObservation) (string, error)
+	Format(obs []*pb_int.SdmxObservation) (string, error)
 }
-
 
 // JSONStatFormatter implements Formatter for JSON-stat format.
 type JSONStatFormatter struct{}
@@ -65,141 +65,18 @@ type JSONStatResponse struct {
 }
 
 // Format converts Spanner observations into a full JSON-stat 2.0 string.
-func (f *JSONStatFormatter) Format(obs []*datasource.SdmxObservation) (string, error) {
+func (f *JSONStatFormatter) Format(obs []*pb_int.SdmxObservation) (string, error) {
 	if len(obs) == 0 {
 		return "{}", nil
 	}
 
-	// Step 1: Identify all dimensions and their unique values
-	dimensions := map[string]map[string]bool{}
-	dimensions[dimVariableMeasured] = map[string]bool{}
-	dimensions[dimObservationDate] = map[string]bool{}
-
-	extensions := map[string]map[string]string{} // provenance -> attr -> value
-
-	for _, o := range obs {
-		dimensions[dimVariableMeasured][o.VariableMeasured] = true
-		for _, dv := range o.DatesAndValues {
-			dimensions[dimObservationDate][dv.Date] = true
-		}
-
-		prov := o.Provenance
-		if prov != "" && extensions[prov] == nil {
-			extensions[prov] = map[string]string{}
-		}
-
-		for k, v := range o.Attributes {
-			if prov != "" {
-				extensions[prov][k] = v
-			}
-		}
-
-		for k, v := range o.Dimensions {
-			if _, ok := dimensions[k]; !ok {
-				dimensions[k] = map[string]bool{}
-			}
-			dimensions[k][v] = true
-		}
+	dimensions, extensions := f.extractDimensions(obs)
+	dimensionOrder, sortedCategories, size, strides, categoryIndices, err := f.computeStrides(dimensions)
+	if err != nil {
+		return "", err
 	}
+	values := f.mapGridValues(obs, strides, categoryIndices, dimensionOrder)
 
-	// Handle observations missing a dimension found in other observations
-	for _, o := range obs {
-		for dim := range dimensions {
-			if dim == dimVariableMeasured || dim == dimObservationDate || dim == dimProvenance {
-				continue
-			}
-			if _, ok := o.Dimensions[dim]; !ok {
-				dimensions[dim][datasource.FallbackNotAvailable] = true
-			}
-		}
-	}
-
-
-	// Step 2: Determine dimension order and sort categories
-	// Order: variableMeasured -> middle dimensions -> observationDate
-	dimensionOrder := []string{dimVariableMeasured}
-	middleDims := make([]string, 0, len(dimensions)-2)
-	for dim := range dimensions {
-		if dim != dimVariableMeasured && dim != dimObservationDate {
-			middleDims = append(middleDims, dim)
-		}
-	}
-	sort.Strings(middleDims)
-	dimensionOrder = append(dimensionOrder, middleDims...)
-	dimensionOrder = append(dimensionOrder, dimObservationDate)
-
-	sortedCategories := map[string][]string{}
-	for dim, values := range dimensions {
-		var vals []string
-		for v := range values {
-			vals = append(vals, v)
-		}
-		sort.Strings(vals)
-		sortedCategories[dim] = vals
-	}
-
-	// Step 3: Build JSON-stat structure and compute strides
-	size := []int{}
-	totalSize := 1
-	for _, dim := range dimensionOrder {
-		sz := len(sortedCategories[dim])
-		size = append(size, sz)
-		totalSize *= sz
-	}
-
-	strides := make([]int, len(dimensionOrder))
-	stride := 1
-	for i := len(dimensionOrder) - 1; i >= 0; i-- {
-		strides[i] = stride
-		stride *= len(sortedCategories[dimensionOrder[i]])
-	}
-
-	categoryIndices := map[string]map[string]int{}
-	for dim, vals := range sortedCategories {
-		categoryIndices[dim] = map[string]int{}
-		for idx, val := range vals {
-			categoryIndices[dim][val] = idx
-		}
-	}
-
-	// Initialize dense value array with nulls
-	values := make([]interface{}, totalSize)
-	for i := range values {
-		values[i] = nil
-	}
-
-	// Step 4: Map observations to the dense array
-	for _, o := range obs {
-		varIdx := categoryIndices[dimVariableMeasured][o.VariableMeasured]
-
-		baseIdx := varIdx * strides[0]
-		// Add middle dimensions
-		for dimIdx, dim := range dimensionOrder {
-			if dim == dimVariableMeasured || dim == dimObservationDate {
-				continue
-			}
-			val, ok := o.Dimensions[dim]
-			if !ok {
-				val = datasource.FallbackNotAvailable
-			}
-			idx := categoryIndices[dim][val]
-			baseIdx += idx * strides[dimIdx]
-		}
-
-		for _, dv := range o.DatesAndValues {
-			dateIdx := categoryIndices[dimObservationDate][dv.Date]
-			flatIdx := baseIdx + dateIdx*strides[len(dimensionOrder)-1]
-
-			if f, err := strconv.ParseFloat(dv.Value, 64); err == nil {
-				values[flatIdx] = f
-			} else {
-				values[flatIdx] = dv.Value // Fallback to string if not numeric
-			}
-		}
-	}
-
-
-	// Step 5: Construct final response
 	dimMap := map[string]DimensionEntry{}
 	for _, dim := range dimensionOrder {
 		dimMap[dim] = DimensionEntry{
@@ -229,6 +106,157 @@ func (f *JSONStatFormatter) Format(obs []*datasource.SdmxObservation) (string, e
 	if err != nil {
 		return "", err
 	}
-
 	return string(b), nil
+}
+
+func (f *JSONStatFormatter) extractDimensions(obs []*pb_int.SdmxObservation) (map[string]map[string]bool, map[string]map[string]string) {
+	dimensions := map[string]map[string]bool{}
+	dimensions[dimVariableMeasured] = map[string]bool{}
+	dimensions[dimObservationDate] = map[string]bool{}
+
+	extensions := map[string]map[string]string{}
+
+	for _, o := range obs {
+		dimensions[dimVariableMeasured][o.VariableMeasured] = true
+		for _, dv := range o.DatesAndValues {
+			dimensions[dimObservationDate][dv.Date] = true
+		}
+
+		prov := o.Provenance
+		if prov != "" && extensions[prov] == nil {
+			extensions[prov] = map[string]string{}
+		}
+
+		for k, v := range o.Attributes {
+			if prov != "" {
+				extensions[prov][k] = v
+			}
+		}
+
+		for k, v := range o.Dimensions {
+			if _, ok := dimensions[k]; !ok {
+				dimensions[k] = map[string]bool{}
+			}
+			dimensions[k][v] = true
+		}
+	}
+
+	for _, o := range obs {
+		for dim := range dimensions {
+			if dim == dimVariableMeasured || dim == dimObservationDate || dim == dimProvenance {
+				continue
+			}
+			if _, ok := o.Dimensions[dim]; !ok {
+				dimensions[dim][FallbackNotAvailable] = true
+			}
+		}
+	}
+
+	return dimensions, extensions
+}
+
+func (f *JSONStatFormatter) computeStrides(dimensions map[string]map[string]bool) (
+	dimensionOrder []string,
+	sortedCategories map[string][]string,
+	size []int,
+	strides []int,
+	categoryIndices map[string]map[string]int,
+	err error,
+) {
+	dimensionOrder = []string{dimVariableMeasured}
+	middleDims := make([]string, 0, len(dimensions)-2)
+	for dim := range dimensions {
+		if dim != dimVariableMeasured && dim != dimObservationDate {
+			middleDims = append(middleDims, dim)
+		}
+	}
+	sort.Strings(middleDims)
+	dimensionOrder = append(dimensionOrder, middleDims...)
+	dimensionOrder = append(dimensionOrder, dimObservationDate)
+
+	sortedCategories = map[string][]string{}
+	for dim, values := range dimensions {
+		var vals []string
+		for v := range values {
+			vals = append(vals, v)
+		}
+		sort.Strings(vals)
+		sortedCategories[dim] = vals
+	}
+
+	size = []int{}
+	totalSize := 1
+	for _, dim := range dimensionOrder {
+		sz := len(sortedCategories[dim])
+		size = append(size, sz)
+		totalSize *= sz
+	}
+
+	if totalSize > 100000 {
+		return nil, nil, nil, nil, nil, fmt.Errorf("requested dimensions result in a grid exceeding maximum allowed size of 100,000 cells (computed size: %d)", totalSize)
+	}
+
+	strides = make([]int, len(dimensionOrder))
+	stride := 1
+	for i := len(dimensionOrder) - 1; i >= 0; i-- {
+		strides[i] = stride
+		stride *= len(sortedCategories[dimensionOrder[i]])
+	}
+
+	categoryIndices = map[string]map[string]int{}
+	for dim, vals := range sortedCategories {
+		categoryIndices[dim] = map[string]int{}
+		for idx, val := range vals {
+			categoryIndices[dim][val] = idx
+		}
+	}
+
+	return dimensionOrder, sortedCategories, size, strides, categoryIndices, nil
+}
+
+func (f *JSONStatFormatter) mapGridValues(
+	obs []*pb_int.SdmxObservation,
+	strides []int,
+	categoryIndices map[string]map[string]int,
+	dimensionOrder []string,
+) []interface{} {
+	totalSize := 1
+	for _, dim := range dimensionOrder {
+		totalSize *= len(categoryIndices[dim])
+	}
+
+	values := make([]interface{}, totalSize)
+	for i := range values {
+		values[i] = nil
+	}
+
+	for _, o := range obs {
+		varIdx := categoryIndices[dimVariableMeasured][o.VariableMeasured]
+		baseIdx := varIdx * strides[0]
+
+		for dimIdx, dim := range dimensionOrder {
+			if dim == dimVariableMeasured || dim == dimObservationDate {
+				continue
+			}
+			val, ok := o.Dimensions[dim]
+			if !ok {
+				val = FallbackNotAvailable
+			}
+			idx := categoryIndices[dim][val]
+			baseIdx += idx * strides[dimIdx]
+		}
+
+		for _, dv := range o.DatesAndValues {
+			dateIdx := categoryIndices[dimObservationDate][dv.Date]
+			flatIdx := baseIdx + dateIdx*strides[len(dimensionOrder)-1]
+
+			if fl, err := strconv.ParseFloat(dv.Value, 64); err == nil {
+				values[flatIdx] = fl
+			} else {
+				values[flatIdx] = dv.Value
+			}
+		}
+	}
+
+	return values
 }
