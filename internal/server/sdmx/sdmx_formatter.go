@@ -27,6 +27,13 @@ const (
 	dimVariableMeasured = DimVariableMeasured
 	dimObservationDate  = DimObservationDate
 	dimProvenance       = "provenance"
+
+	jsonStatVersion   = "2.0"
+	jsonStatClass     = "dataset"
+	defaultLabel      = "Data Commons SDMX Query Results"
+	defaultSource     = "Data Commons"
+	extAnnotations    = "annotations"
+	emptyJSONResponse = "{}"
 )
 
 // Formatter defines the interface for formatting SDMX query results.
@@ -70,7 +77,7 @@ type JSONStatResponse struct {
 // Format converts Spanner observations into a full JSON-stat 2.0 string.
 func (f *JSONStatFormatter) Format(obs []*pb.SdmxObservation) (string, error) {
 	if len(obs) == 0 {
-		return "{}", nil
+		return emptyJSONResponse, nil
 	}
 
 	dimensions, extensions := f.extractDimensions(obs)
@@ -93,17 +100,17 @@ func (f *JSONStatFormatter) Format(obs []*pb.SdmxObservation) (string, error) {
 	}
 
 	resp := JSONStatResponse{
-		Version:   "2.0",
-		Class:     "dataset",
-		Label:     "Data Commons SDMX Query Results",
-		Source:    "Data Commons",
+		Version:   jsonStatVersion,
+		Class:     jsonStatClass,
+		Label:     defaultLabel,
+		Source:    defaultSource,
 		Updated:   now.Format(time.RFC3339),
 		Id:        dimensionOrder,
 		Size:      size,
 		Dimension: dimMap,
 		Value:     values,
 		Extension: map[string]interface{}{
-			"annotations": extensions,
+			extAnnotations: extensions,
 		},
 	}
 
@@ -114,6 +121,9 @@ func (f *JSONStatFormatter) Format(obs []*pb.SdmxObservation) (string, error) {
 	return string(b), nil
 }
 
+// extractDimensions identifies all unique values for each dimension (like date, variable, and location)
+// present in the input observations. This effectively determines the "shape" of the multi-dimensional
+// data cube we are building for the JSON-stat output.
 func (f *JSONStatFormatter) extractDimensions(obs []*pb.SdmxObservation) (map[string]map[string]bool, map[string]map[string]string) {
 	dimensions := map[string]map[string]bool{}
 	dimensions[dimVariableMeasured] = map[string]bool{}
@@ -160,6 +170,10 @@ func (f *JSONStatFormatter) extractDimensions(obs []*pb.SdmxObservation) (map[st
 	return dimensions, extensions
 }
 
+// computeStrides establishes a consistent order for dimensions and sorts their values alphabetically.
+// It then calculates the "strides" (step sizes) needed to map a multi-dimensional coordinate
+// (e.g., [Location, Date, Variable]) into a single unique index in the flat, linear array
+// that JSON-stat uses to store values.
 func (f *JSONStatFormatter) computeStrides(dimensions map[string]map[string]bool) (
 	dimensionOrder []string,
 	sortedCategories map[string][]string,
@@ -215,6 +229,9 @@ func (f *JSONStatFormatter) computeStrides(dimensions map[string]map[string]bool
 	return dimensionOrder, sortedCategories, size, strides, categoryIndices
 }
 
+// mapGridValues places each observation's value into its correct spot in the final flat array.
+// It uses the sorted value indices and computed strides to calculate the exact 1D position
+// for each combination of dimension values.
 func (f *JSONStatFormatter) mapGridValues(
 	obs []*pb.SdmxObservation,
 	strides []int,
