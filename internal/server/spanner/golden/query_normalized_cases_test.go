@@ -15,7 +15,7 @@
 package golden
 
 import (
-	pb_int "github.com/datacommonsorg/mixer/internal/proto/sdmx"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 )
 
 var normalizedObservationsTestCases = []struct {
@@ -57,12 +57,12 @@ var getObservationsContainedInPlaceTestCases = []struct {
 }
 
 var sdmxObservationsTestCases = []struct {
-	constraints *pb_int.SdmxDataQuery
+	constraints *pb.SdmxDataQuery
 	golden      string
 }{
 	{
-		constraints: &pb_int.SdmxDataQuery{
-			Constraints: map[string]*pb_int.ConstraintList{
+		constraints: &pb.SdmxDataQuery{
+			Constraints: map[string]*pb.ConstraintList{
 				"variableMeasured": {Values: []string{"Count_Person"}},
 				"observationAbout": {Values: []string{"country/USA"}},
 			},
@@ -70,8 +70,8 @@ var sdmxObservationsTestCases = []struct {
 		golden: "get_sdmx_observations_basic",
 	},
 	{
-		constraints: &pb_int.SdmxDataQuery{
-			Constraints: map[string]*pb_int.ConstraintList{
+		constraints: &pb.SdmxDataQuery{
+			Constraints: map[string]*pb.ConstraintList{
 				"variableMeasured": {Values: []string{"Count_Person"}},
 				"place":            {Values: []string{"country/USA"}},
 				"race":             {Values: []string{"Race_Asian"}},

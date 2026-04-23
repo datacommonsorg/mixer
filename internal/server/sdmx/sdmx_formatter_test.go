@@ -5,26 +5,34 @@ import (
 	"os"
 	"path/filepath"
 	"testing"
+	"time"
 
-	pb_int "github.com/datacommonsorg/mixer/internal/proto/sdmx"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/google/go-cmp/cmp"
 )
 
+const mockTimestampStr = "2026-04-22T19:00:00Z"
+
 func TestJSONStatFormatter_Golden(t *testing.T) {
-	formatter := &JSONStatFormatter{}
+	mockTime, _ := time.Parse(time.RFC3339, mockTimestampStr)
+	formatter := &JSONStatFormatter{
+		TimeNow: func() time.Time {
+			return mockTime
+		},
+	}
 
 	tests := []struct {
 		name       string
 		goldenFile string
-		obs        []*pb_int.SdmxObservation
+		obs        []*pb.SdmxObservation
 	}{
 		{
 			name:       "Basic grid with missing cell",
 			goldenFile: "basic_grid.json",
-			obs: []*pb_int.SdmxObservation{
+			obs: []*pb.SdmxObservation{
 				{
 					VariableMeasured: "Count_Person",
-					DatesAndValues: []*pb_int.SdmxDateValue{
+					DatesAndValues: []*pb.SdmxDateValue{
 						{Date: "2020", Value: "331000000"},
 						{Date: "2021", Value: "332000000"},
 					},
@@ -35,7 +43,7 @@ func TestJSONStatFormatter_Golden(t *testing.T) {
 				},
 				{
 					VariableMeasured: "Count_Person",
-					DatesAndValues: []*pb_int.SdmxDateValue{
+					DatesAndValues: []*pb.SdmxDateValue{
 						{Date: "2020", Value: "160000000"},
 					},
 					Dimensions: map[string]string{
@@ -48,10 +56,10 @@ func TestJSONStatFormatter_Golden(t *testing.T) {
 		{
 			name:       "No observationAbout",
 			goldenFile: "no_observation_about.json",
-			obs: []*pb_int.SdmxObservation{
+			obs: []*pb.SdmxObservation{
 				{
 					VariableMeasured: "Exports",
-					DatesAndValues: []*pb_int.SdmxDateValue{
+					DatesAndValues: []*pb.SdmxDateValue{
 						{Date: "2020", Value: "1000"},
 					},
 					Dimensions: map[string]string{
@@ -64,10 +72,10 @@ func TestJSONStatFormatter_Golden(t *testing.T) {
 		{
 			name:       "Missing Dimensions",
 			goldenFile: "missing_dimensions.json",
-			obs: []*pb_int.SdmxObservation{
+			obs: []*pb.SdmxObservation{
 				{
 					VariableMeasured: "Count_Person",
-					DatesAndValues: []*pb_int.SdmxDateValue{
+					DatesAndValues: []*pb.SdmxDateValue{
 						{Date: "2020", Value: "331000000"},
 					},
 					Dimensions: map[string]string{
@@ -77,7 +85,7 @@ func TestJSONStatFormatter_Golden(t *testing.T) {
 				},
 				{
 					VariableMeasured: "Count_Person",
-					DatesAndValues: []*pb_int.SdmxDateValue{
+					DatesAndValues: []*pb.SdmxDateValue{
 						{Date: "2020", Value: "332000000"},
 					},
 					Dimensions: map[string]string{
@@ -89,11 +97,11 @@ func TestJSONStatFormatter_Golden(t *testing.T) {
 		{
 			name:       "Facet Attributes",
 			goldenFile: "facet_attributes.json",
-			obs: []*pb_int.SdmxObservation{
+			obs: []*pb.SdmxObservation{
 				{
 					VariableMeasured: "Count_Person",
 					Provenance:       "prov1",
-					DatesAndValues: []*pb_int.SdmxDateValue{
+					DatesAndValues: []*pb.SdmxDateValue{
 						{Date: "2020", Value: "331000000"},
 					},
 					Dimensions: map[string]string{

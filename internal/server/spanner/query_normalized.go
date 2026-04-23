@@ -19,7 +19,7 @@ import (
 	"fmt"
 	"strconv"
 
-	pb_int "github.com/datacommonsorg/mixer/internal/proto/sdmx"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
 
@@ -139,7 +139,7 @@ var facetAttributes = map[string]bool{
 
 // GetSdmxObservations retrieves observations from Spanner given a list of constraints
 // using the normalized schema and relational division.
-func (nc *normalizedClient) GetSdmxObservations(ctx context.Context, req *pb_int.SdmxDataQuery) (*pb_int.SdmxDataResult, error) {
+func (nc *normalizedClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
 	stmt := GetSdmxObservationsQuery(req)
 
 	var rawObs []*rawObservation
@@ -151,27 +151,27 @@ func (nc *normalizedClient) GetSdmxObservations(ctx context.Context, req *pb_int
 	}
 
 	if len(rawObs) == 0 {
-		return &pb_int.SdmxDataResult{Observations: []*pb_int.SdmxObservation{}}, nil
+		return &pb.SdmxDataResult{Observations: []*pb.SdmxObservation{}}, nil
 	}
 
-	return &pb_int.SdmxDataResult{Observations: reconstructSdmxObservations(rawObs)}, nil
+	return &pb.SdmxDataResult{Observations: reconstructSdmxObservations(rawObs)}, nil
 }
 
 // reconstructSdmxObservations combines raw observations and attributes into full SdmxObservation structs for SDMX.
-func reconstructSdmxObservations(rawObs []*rawObservation) []*pb_int.SdmxObservation {
-	var result []*pb_int.SdmxObservation
+func reconstructSdmxObservations(rawObs []*rawObservation) []*pb.SdmxObservation {
+	var result []*pb.SdmxObservation
 
 	for _, r := range rawObs {
-		obs := &pb_int.SdmxObservation{
+		obs := &pb.SdmxObservation{
 			VariableMeasured: r.VariableMeasured,
 			Provenance:       r.Provenance,
-			DatesAndValues:   []*pb_int.SdmxDateValue{},
+			DatesAndValues:   []*pb.SdmxDateValue{},
 			Dimensions:       map[string]string{},
 			Attributes:       map[string]string{},
 		}
 
 		for _, dv := range r.DatesAndValues {
-			obs.DatesAndValues = append(obs.DatesAndValues, &pb_int.SdmxDateValue{Date: dv.Date, Value: dv.Value})
+			obs.DatesAndValues = append(obs.DatesAndValues, &pb.SdmxDateValue{Date: dv.Date, Value: dv.Value})
 		}
 
 		for _, attr := range r.Attributes {

@@ -18,7 +18,7 @@ import (
 	"context"
 	"log/slog"
 
-	pb_int "github.com/datacommonsorg/mixer/internal/proto/sdmx"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/metadata"
@@ -69,7 +69,7 @@ func (s *schemaSelectorClient) GetObservationsContainedInPlace(ctx context.Conte
 
 // GetSdmxObservations overrides the embedded client's GetSdmxObservations.
 // SDMX is only supported on the normalized schema, so it always delegates to the normalized client.
-func (s *schemaSelectorClient) GetSdmxObservations(ctx context.Context, req *pb_int.SdmxDataQuery) (*pb_int.SdmxDataResult, error) {
+func (s *schemaSelectorClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
 	logNormalizedInvocation("GetSdmxObservations",
 		"query", req,
 	)

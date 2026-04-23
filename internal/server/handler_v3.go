@@ -21,7 +21,6 @@ import (
 	"log/slog"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	pb_int "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	pbv3 "github.com/datacommonsorg/mixer/internal/proto/v3"
@@ -100,20 +99,16 @@ func (s *Server) V3SdmxData(ctx context.Context, in *pbv3.SdmxDataRequest) (
 		}
 	}
 
-	// Validation constraint limit from TODO
-	if len(rawConstraints) > 20 {
-		slog.Error("SDMX request exceeded maximum allowed constraints depth", "count", len(rawConstraints))
-		return nil, status.Error(codes.InvalidArgument, "Constraints payload exceeded maximum allowed key limit.")
-	}
+	// TODO: Address parameter exhaustion and cache-busting via malicious HTTP map manipulation by enforcing payload request depth and key limits in parseConstraints
 
-	query := &pb_int.SdmxDataQuery{
-		Constraints: map[string]*pb_int.ConstraintList{},
+	query := &pb.SdmxDataQuery{
+		Constraints: map[string]*pb.ConstraintList{},
 	}
 
 	for k, v := range rawConstraints {
 		switch val := v.(type) {
 		case string:
-			query.Constraints[k] = &pb_int.ConstraintList{Values: []string{val}}
+			query.Constraints[k] = &pb.ConstraintList{Values: []string{val}}
 		case []interface{}:
 			var lst []string
 			for _, item := range val {
@@ -121,7 +116,7 @@ func (s *Server) V3SdmxData(ctx context.Context, in *pbv3.SdmxDataRequest) (
 					lst = append(lst, strItem)
 				}
 			}
-			query.Constraints[k] = &pb_int.ConstraintList{Values: lst}
+			query.Constraints[k] = &pb.ConstraintList{Values: lst}
 		}
 	}
 

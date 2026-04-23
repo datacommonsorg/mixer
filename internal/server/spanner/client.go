@@ -24,7 +24,6 @@ import (
 
 	"cloud.google.com/go/spanner"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	pb_int "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
@@ -50,7 +49,7 @@ type SpannerClient interface {
 	GetStatVarGroupNode(ctx context.Context, nodes []string) ([]*StatVarGroupNode, error)
 	GetFilteredStatVarGroupNode(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (*FilteredStatVarGroupNode, error)
 	GetFilteredTopic(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (int, error)
-	GetSdmxObservations(ctx context.Context, req *pb_int.SdmxDataQuery) (*pb_int.SdmxDataResult, error)
+	GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error)
 	Id() string
 	Start()
 	Close()
@@ -193,6 +192,6 @@ func (sc *spannerDatabaseClient) Close() {
 }
 
 // GetSdmxObservations is not supported on the default client.
-func (sc *spannerDatabaseClient) GetSdmxObservations(ctx context.Context, req *pb_int.SdmxDataQuery) (*pb_int.SdmxDataResult, error) {
+func (sc *spannerDatabaseClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
 	return nil, status.Error(codes.Unimplemented, "SDMX queries are only supported on the normalized schema")
 }

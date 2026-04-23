@@ -19,7 +19,6 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
-	pb_int "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
 
@@ -45,5 +44,5 @@ type DataSource interface {
 	Event(context.Context, *pbv2.EventRequest) (*pbv2.EventResponse, error)
 	BulkVariableInfo(context.Context, *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error)
 	BulkVariableGroupInfo(context.Context, *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error)
-	SdmxData(context.Context, *pb_int.SdmxDataQuery) (*pb_int.SdmxDataResult, error)
+	SdmxData(context.Context, *pb.SdmxDataQuery) (*pb.SdmxDataResult, error)
 }

@@ -21,7 +21,6 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	pb_int "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
@@ -138,6 +137,6 @@ func (sds *SQLDataSource) BulkVariableGroupInfo(ctx context.Context, req *pbv1.B
 
 // SdmxData retrieves SDMX data from the data source.
 // Note: SQLite / CloudSQL does not natively support graph property traversal required for SDMX without complex JOIN chains.
-func (sds *SQLDataSource) SdmxData(ctx context.Context, req *pb_int.SdmxDataQuery) (*pb_int.SdmxDataResult, error) {
-	return &pb_int.SdmxDataResult{}, nil
+func (sds *SQLDataSource) SdmxData(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+	return &pb.SdmxDataResult{}, nil
 }

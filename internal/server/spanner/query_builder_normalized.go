@@ -20,7 +20,7 @@ import (
 	"strings"
 
 	"cloud.google.com/go/spanner"
-	pb_int "github.com/datacommonsorg/mixer/internal/proto/sdmx"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/sdmx"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
@@ -101,7 +101,7 @@ func GetNormalizedObservationsContainedInPlaceQuery(variables []string, containe
 }
 
 // GetSdmxObservationsQuery returns a query to fetch observations based on SDMX constraints.
-func GetSdmxObservationsQuery(req *pb_int.SdmxDataQuery) *spanner.Statement {
+func GetSdmxObservationsQuery(req *pb.SdmxDataQuery) *spanner.Statement {
 	stmt := &spanner.Statement{
 		SQL:    statementsNormalized.getSdmxObs, // Base query
 		Params: map[string]interface{}{},

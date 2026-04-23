@@ -20,7 +20,6 @@ import (
 	"log/slog"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	pb_int "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
@@ -250,7 +249,7 @@ func newRequestContext(ctx context.Context, request proto.Message, requestType R
 }
 
 // SdmxData handles SDMX Data requests.
-func (dispatcher *Dispatcher) SdmxData(ctx context.Context, in *pb_int.SdmxDataQuery) (*pb_int.SdmxDataResult, error) {
+func (dispatcher *Dispatcher) SdmxData(ctx context.Context, in *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
 	res, err := dispatcher.sources.SdmxData(ctx, in)
 	if err != nil {
 		slog.Error("Failed to get SDMX data from sources", "error", err)

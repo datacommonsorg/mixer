@@ -19,7 +19,6 @@ import (
 
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	pb_int "github.com/datacommonsorg/mixer/internal/proto/sdmx"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
@@ -191,13 +190,13 @@ func filterResolveSources(ds *DataSources, in *pbv2.ResolveRequest) []datasource
 	return filteredSources
 }
 
-func (ds *DataSources) SdmxData(ctx context.Context, in *pb_int.SdmxDataQuery) (*pb_int.SdmxDataResult, error) {
+func (ds *DataSources) SdmxData(ctx context.Context, in *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
 	return fetchAndMerge(ctx, ds.sources, in,
-		func(c context.Context, s datasource.DataSource, r *pb_int.SdmxDataQuery) (*pb_int.SdmxDataResult, error) {
+		func(c context.Context, s datasource.DataSource, r *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
 			return s.SdmxData(c, r)
 		},
-		func(all []*pb_int.SdmxDataResult) (*pb_int.SdmxDataResult, error) {
-			res := &pb_int.SdmxDataResult{}
+		func(all []*pb.SdmxDataResult) (*pb.SdmxDataResult, error) {
+			res := &pb.SdmxDataResult{}
 			for _, result := range all {
 				if result != nil && result.Observations != nil {
 					res.Observations = append(res.Observations, result.Observations...)

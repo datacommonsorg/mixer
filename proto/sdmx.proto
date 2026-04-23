@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package datacommons;
+option go_package = "github.com/datacommonsorg/mixer/internal/proto";
+
+message SdmxDataQuery {
+  map<string, ConstraintList> constraints = 1;
+}
+
+message ConstraintList {
+  repeated string values = 1;
+}
+
+message SdmxDataResult {
+  repeated SdmxObservation observations = 1;
+}
+
+message SdmxDateValue {
+  string date = 1;
+  string value = 2;
+}
+
+message SdmxObservation {
+  string variable_measured = 1;
+  string provenance = 2;
+  repeated SdmxDateValue dates_and_values = 3;
+  map<string, string> dimensions = 4;
+  map<string, string> attributes = 5;
+}

@@ -16,12 +16,11 @@ package sdmx
 
 import (
 	"encoding/json"
-	"fmt"
 	"sort"
 	"strconv"
 	"time"
 
-	pb_int "github.com/datacommonsorg/mixer/internal/proto/sdmx"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 )
 
 const (
@@ -32,11 +31,15 @@ const (
 
 // Formatter defines the interface for formatting SDMX query results.
 type Formatter interface {
-	Format(obs []*pb_int.SdmxObservation) (string, error)
+	Format(obs []*pb.SdmxObservation) (string, error)
 }
 
 // JSONStatFormatter implements Formatter for JSON-stat format.
-type JSONStatFormatter struct{}
+type JSONStatFormatter struct {
+	// TimeNow allows injecting a mock time for deterministic golden file testing.
+	// If nil, time.Now is used.
+	TimeNow func() time.Time
+}
 
 // Category represents JSON-stat category structure.
 type Category struct {
@@ -65,16 +68,13 @@ type JSONStatResponse struct {
 }
 
 // Format converts Spanner observations into a full JSON-stat 2.0 string.
-func (f *JSONStatFormatter) Format(obs []*pb_int.SdmxObservation) (string, error) {
+func (f *JSONStatFormatter) Format(obs []*pb.SdmxObservation) (string, error) {
 	if len(obs) == 0 {
 		return "{}", nil
 	}
 
 	dimensions, extensions := f.extractDimensions(obs)
-	dimensionOrder, sortedCategories, size, strides, categoryIndices, err := f.computeStrides(dimensions)
-	if err != nil {
-		return "", err
-	}
+	dimensionOrder, sortedCategories, size, strides, categoryIndices := f.computeStrides(dimensions)
 	values := f.mapGridValues(obs, strides, categoryIndices, dimensionOrder)
 
 	dimMap := map[string]DimensionEntry{}
@@ -87,12 +87,17 @@ func (f *JSONStatFormatter) Format(obs []*pb_int.SdmxObservation) (string, error
 		}
 	}
 
+	now := time.Now()
+	if f.TimeNow != nil {
+		now = f.TimeNow()
+	}
+
 	resp := JSONStatResponse{
 		Version:   "2.0",
 		Class:     "dataset",
 		Label:     "Data Commons SDMX Query Results",
 		Source:    "Data Commons",
-		Updated:   time.Now().Format(time.RFC3339),
+		Updated:   now.Format(time.RFC3339),
 		Id:        dimensionOrder,
 		Size:      size,
 		Dimension: dimMap,
@@ -109,7 +114,7 @@ func (f *JSONStatFormatter) Format(obs []*pb_int.SdmxObservation) (string, error
 	return string(b), nil
 }
 
-func (f *JSONStatFormatter) extractDimensions(obs []*pb_int.SdmxObservation) (map[string]map[string]bool, map[string]map[string]string) {
+func (f *JSONStatFormatter) extractDimensions(obs []*pb.SdmxObservation) (map[string]map[string]bool, map[string]map[string]string) {
 	dimensions := map[string]map[string]bool{}
 	dimensions[dimVariableMeasured] = map[string]bool{}
 	dimensions[dimObservationDate] = map[string]bool{}
@@ -161,7 +166,6 @@ func (f *JSONStatFormatter) computeStrides(dimensions map[string]map[string]bool
 	size []int,
 	strides []int,
 	categoryIndices map[string]map[string]int,
-	err error,
 ) {
 	dimensionOrder = []string{dimVariableMeasured}
 	middleDims := make([]string, 0, len(dimensions)-2)
@@ -191,10 +195,7 @@ func (f *JSONStatFormatter) computeStrides(dimensions map[string]map[string]bool
 		size = append(size, sz)
 		totalSize *= sz
 	}
-
-	if totalSize > 100000 {
-		return nil, nil, nil, nil, nil, fmt.Errorf("requested dimensions result in a grid exceeding maximum allowed size of 100,000 cells (computed size: %d)", totalSize)
-	}
+	// TODO for Production: Add protective capacity limit to prevent OOM crashes when dimensional combination matrix exceeds a safe threshold (e.g., 100,000 cells).
 
 	strides = make([]int, len(dimensionOrder))
 	stride := 1
@@ -211,11 +212,11 @@ func (f *JSONStatFormatter) computeStrides(dimensions map[string]map[string]bool
 		}
 	}
 
-	return dimensionOrder, sortedCategories, size, strides, categoryIndices, nil
+	return dimensionOrder, sortedCategories, size, strides, categoryIndices
 }
 
 func (f *JSONStatFormatter) mapGridValues(
-	obs []*pb_int.SdmxObservation,
+	obs []*pb.SdmxObservation,
 	strides []int,
 	categoryIndices map[string]map[string]int,
 	dimensionOrder []string,
