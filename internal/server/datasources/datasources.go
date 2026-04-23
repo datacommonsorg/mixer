@@ -52,6 +52,8 @@ func (ds *DataSources) GetSources() []string {
 	return sources
 }
 
+// fetchAndMerge is a generic helper that fetches data from multiple sources in parallel
+// and merges the responses using the provided fetcher and merger functions.
 func fetchAndMerge[req any, resp any](
 	ctx context.Context,
 	sources []datasource.DataSource,

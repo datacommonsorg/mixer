@@ -17,7 +17,6 @@ package dispatcher
 import (
 	"context"
 	"fmt"
-	"log/slog"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
@@ -38,6 +37,7 @@ const (
 	TypeEvent                 RequestType = "Event"
 	TypeBulkVariableInfo      RequestType = "BulkVariableInfo"
 	TypeBulkVariableGroupInfo RequestType = "BulkVariableGroupInfo"
+	TypeSdmxData              RequestType = "SdmxData"
 )
 
 // RequestContext holds the context for a given request.
@@ -250,10 +250,14 @@ func newRequestContext(ctx context.Context, request proto.Message, requestType R
 
 // SdmxData handles SDMX Data requests.
 func (dispatcher *Dispatcher) SdmxData(ctx context.Context, in *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
-	res, err := dispatcher.sources.SdmxData(ctx, in)
+	requestContext := newRequestContext(ctx, in, TypeSdmxData)
+
+	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {
+		return dispatcher.sources.SdmxData(ctx, request.(*pb.SdmxDataQuery))
+	})
+
 	if err != nil {
-		slog.Error("Failed to get SDMX data from sources", "error", err)
-		return nil, fmt.Errorf("failed to get SDMX data: %w", err)
+		return nil, err
 	}
-	return res, nil
+	return response.(*pb.SdmxDataResult), nil
 }

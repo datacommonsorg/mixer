@@ -24,6 +24,8 @@ message SdmxObservation {
   string variable_measured = 1;
   string provenance = 2;
   repeated SdmxDateValue dates_and_values = 3;
+  // Dimensions that identify the observation (e.g., location, gender).
   map<string, string> dimensions = 4;
+  // Attributes that provide metadata about the observation (e.g., unit, measurementMethod).
   map<string, string> attributes = 5;
 }

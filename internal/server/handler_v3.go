@@ -94,34 +94,14 @@ func (s *Server) V3SdmxData(ctx context.Context, in *pbv3.SdmxDataRequest) (
 		return nil, status.Error(codes.Unimplemented, "SDMX API is not enabled")
 	}
 
-	// Parse constraints JSON string to support both scalar strings and string arrays
-	rawConstraints := map[string]any{}
-	if in.C != "" {
-		if err := json.Unmarshal([]byte(in.C), &rawConstraints); err != nil {
-			slog.Error("Failed to parse constraints JSON for SDMX request", "error", err, "input", in.C)
-			return nil, status.Error(codes.InvalidArgument, "Invalid constraints format. Please provide a valid JSON object.")
-		}
+	constraints, err := parseConstraints(in.C)
+	if err != nil {
+		slog.Error("Failed to parse constraints for SDMX request", "error", err, "input", in.C)
+		return nil, err
 	}
-
-	// TODO: Address parameter exhaustion and cache-busting via malicious HTTP map manipulation by enforcing payload request depth and key limits in parseConstraints
 
 	query := &pb.SdmxDataQuery{
-		Constraints: map[string]*pb.ConstraintList{},
-	}
-
-	for k, v := range rawConstraints {
-		switch val := v.(type) {
-		case string:
-			query.Constraints[k] = &pb.ConstraintList{Values: []string{val}}
-		case []interface{}:
-			var lst []string
-			for _, item := range val {
-				if strItem, ok := item.(string); ok {
-					lst = append(lst, strItem)
-				}
-			}
-			query.Constraints[k] = &pb.ConstraintList{Values: lst}
-		}
+		Constraints: constraints,
 	}
 
 	// Validation Gate
@@ -150,4 +130,33 @@ func (s *Server) V3SdmxData(ctx context.Context, in *pbv3.SdmxDataRequest) (
 	}
 
 	return &pbv3.SdmxDataResponse{Payload: payload}, nil
+}
+
+// parseConstraints parses the JSON string containing SDMX constraints.
+func parseConstraints(cStr string) (map[string]*pb.ConstraintList, error) {
+	// TODO: Address parameter exhaustion and cache-busting via malicious HTTP map manipulation by enforcing payload request depth and key limits in parseConstraints
+
+	rawConstraints := map[string]any{}
+	if cStr != "" {
+		if err := json.Unmarshal([]byte(cStr), &rawConstraints); err != nil {
+			return nil, status.Error(codes.InvalidArgument, "Invalid constraints format. Please provide a valid JSON object.")
+		}
+	}
+
+	constraints := map[string]*pb.ConstraintList{}
+	for k, v := range rawConstraints {
+		switch val := v.(type) {
+		case string:
+			constraints[k] = &pb.ConstraintList{Values: []string{val}}
+		case []interface{}:
+			var lst []string
+			for _, item := range val {
+				if strItem, ok := item.(string); ok {
+					lst = append(lst, strItem)
+				}
+			}
+			constraints[k] = &pb.ConstraintList{Values: lst}
+		}
+	}
+	return constraints, nil
 }

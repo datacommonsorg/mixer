@@ -106,3 +106,31 @@ func TestNormalizedGetObservationsContainedInPlace(t *testing.T) {
 		})
 	}
 }
+
+func TestNormalizedGetSdmxObservations(t *testing.T) {
+	client := test.NewNormalizedSpannerClient(t)
+	t.Parallel()
+
+	nc, err := spanner.NewNormalizedClient(client)
+	if err != nil {
+		t.Fatalf("NewNormalizedClient failed: %v", err)
+	}
+
+	for _, c := range sdmxObservationsTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			actual, err := nc.GetSdmxObservations(ctx, c.constraints)
+			if err != nil {
+				return nil, err
+			}
+			sort.Slice(actual.Observations, func(i, j int) bool {
+				if actual.Observations[i].VariableMeasured != actual.Observations[j].VariableMeasured {
+					return actual.Observations[i].VariableMeasured < actual.Observations[j].VariableMeasured
+				}
+				return actual.Observations[i].Provenance < actual.Observations[j].Provenance
+			})
+			return actual, nil
+		})
+	}
+}
