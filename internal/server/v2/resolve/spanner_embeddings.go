@@ -28,9 +28,9 @@ import (
 type SearchMethod string
 
 const (
-	VectorSearch   SearchMethod = "vector_search"    // search by embeddings
+	VectorSearch   SearchMethod = "vector_search" // search by embeddings
 	FullTextSearch SearchMethod = "full_text_search" // search by term match
-	HybridSearch   SearchMethod = "hybrid_search"    // combine vector search and full text search
+	HybridSearch   SearchMethod = "hybrid_search" // combine vector search and full text search
 )
 
 // VectorSearchAlgo defines whether to use exact KNN or approximate ANN search.
@@ -46,8 +46,8 @@ const (
 type EmbeddingType string
 
 const (
-	EmbeddingTypeRetrievalQuery     EmbeddingType = "RETRIEVAL_QUERY"     // embedding task optimized for query to search from
-	EmbeddingTypeRetrievalDocument  EmbeddingType = "RETRIEVAL_DOCUMENT"  // embedding task optimized for document to search on
+	EmbeddingTypeRetrievalQuery      EmbeddingType = "RETRIEVAL_QUERY" // embedding task optimized for query to search from
+	EmbeddingTypeRetrievalDocument   EmbeddingType = "RETRIEVAL_DOCUMENT" // embedding task optimized for document to search on
 	EmbeddingTypeSemanticSimilarity EmbeddingType = "SEMANTIC_SIMILARITY" // embedding task optimized for finding semantic
 )
 

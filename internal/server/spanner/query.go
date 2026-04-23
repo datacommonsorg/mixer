@@ -655,7 +655,6 @@ func (sc *spannerDatabaseClient) VectorSearchQuery(ctx context.Context, limit in
 	)
 	return results, err
 }
-
 // GetStatVarGroupNode fetches StatVarGroupNode info from Spanner.
 func (sc *spannerDatabaseClient) GetStatVarGroupNode(ctx context.Context, nodes []string) ([]*StatVarGroupNode, error) {
 	var svgNodes []*StatVarGroupNode

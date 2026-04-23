@@ -46,6 +46,7 @@ func TestResolveUsingEmbeddings(t *testing.T) {
 		t.Fatalf("ResolveEmbeddings() error: %v", err)
 	}
 
+
 	if len(resp.Entities) != 1 {
 		t.Fatalf("Expected 1 entity, got %d", len(resp.Entities))
 	}
@@ -233,7 +234,7 @@ func TestResolveUsingEmbeddings_IdxParameter(t *testing.T) {
 				if gotIdx != tc.expectedIdx {
 					t.Errorf("Expected idx '%s' in URL, got '%s'", tc.expectedIdx, gotIdx)
 				}
-
+				
 				var req searchVarsRequest
 				if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 					t.Errorf("Failed to decode request: %v", err)
@@ -260,8 +261,8 @@ func TestResolveUsingEmbeddings_Filter(t *testing.T) {
 		if err := json.NewEncoder(w).Encode(map[string]interface{}{
 			"queryResults": map[string]interface{}{
 				"filter_test": map[string]interface{}{
-					"SV":              []string{"Count_Person", "dc/topic/Population"},
-					"CosineScore":     []float64{0.99, 0.88},
+					"SV":          []string{"Count_Person", "dc/topic/Population"},
+					"CosineScore": []float64{0.99, 0.88},
 					"SV_to_Sentences": map[string]interface{}{},
 				},
 			},
@@ -272,7 +273,7 @@ func TestResolveUsingEmbeddings_Filter(t *testing.T) {
 	defer server.Close()
 
 	ctx := context.Background()
-
+	
 	// Test 1: Filter for StatisticalVariable
 	resp, err := ResolveUsingEmbeddings(ctx, server.Client(), server.URL, "test_idx", []string{"filter_test"}, []string{"StatisticalVariable"})
 	if err != nil {
