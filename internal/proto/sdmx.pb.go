@@ -221,11 +221,13 @@ type SdmxObservation struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	VariableMeasured string            `protobuf:"bytes,1,opt,name=variable_measured,json=variableMeasured,proto3" json:"variable_measured,omitempty"`
-	Provenance       string            `protobuf:"bytes,2,opt,name=provenance,proto3" json:"provenance,omitempty"`
-	DatesAndValues   []*SdmxDateValue  `protobuf:"bytes,3,rep,name=dates_and_values,json=datesAndValues,proto3" json:"dates_and_values,omitempty"`
-	Dimensions       map[string]string `protobuf:"bytes,4,rep,name=dimensions,proto3" json:"dimensions,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	Attributes       map[string]string `protobuf:"bytes,5,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	VariableMeasured string           `protobuf:"bytes,1,opt,name=variable_measured,json=variableMeasured,proto3" json:"variable_measured,omitempty"`
+	Provenance       string           `protobuf:"bytes,2,opt,name=provenance,proto3" json:"provenance,omitempty"`
+	DatesAndValues   []*SdmxDateValue `protobuf:"bytes,3,rep,name=dates_and_values,json=datesAndValues,proto3" json:"dates_and_values,omitempty"`
+	// Dimensions that identify the observation (e.g., location, gender).
+	Dimensions map[string]string `protobuf:"bytes,4,rep,name=dimensions,proto3" json:"dimensions,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	// Attributes that provide metadata about the observation (e.g., unit, measurementMethod).
+	Attributes map[string]string `protobuf:"bytes,5,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 }
 
 func (x *SdmxObservation) Reset() {
