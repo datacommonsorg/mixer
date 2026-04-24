@@ -19,9 +19,9 @@ import (
 	"fmt"
 	"strconv"
 
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
-
 
 // GetObservations retrieves observations from Spanner given a list of variables and entities
 // using the normalized schema.
@@ -40,6 +40,26 @@ func (nc *normalizedClient) GetObservations(ctx context.Context, variables []str
 	}
 
 	return reconstructObservations(rawObs), nil
+}
+
+func (nc *normalizedClient) GetMultiEntityObservations(
+	ctx context.Context,
+	variables []string,
+	dimensions []*pbv2.ObservationDimensionConstraint,
+) ([]*multiEntityObservation, error) {
+	stmt, err := GetNormalizedMultiEntityObservationsQuery(variables, dimensions)
+	if err != nil {
+		return nil, err
+	}
+
+	var rawObs []*rawMultiEntityObservation
+	err = queryStructs(ctx, nc.sc, *stmt, func() interface{} { return &rawMultiEntityObservation{} }, func(row interface{}) {
+		rawObs = append(rawObs, row.(*rawMultiEntityObservation))
+	})
+	if err != nil {
+		return nil, err
+	}
+	return reconstructMultiEntityObservations(rawObs), nil
 }
 
 // fetchRawObservations fetches data from TimeSeries and StatVarObservation tables.
@@ -90,6 +110,26 @@ func reconstructObservations(rawObs []*rawObservation) []*Observation {
 					obs.IsDcAggregate = b
 				}
 			}
+		}
+		result = append(result, obs)
+	}
+
+	return result
+}
+
+func reconstructMultiEntityObservations(rawObs []*rawMultiEntityObservation) []*multiEntityObservation {
+	var result []*multiEntityObservation
+
+	for _, r := range rawObs {
+		obs := &multiEntityObservation{
+			VariableMeasured: r.VariableMeasured,
+			Provenance:       r.Provenance,
+			Attributes:       r.Attributes,
+			Observations:     TimeSeries{},
+		}
+
+		for _, dv := range r.DatesAndValues {
+			obs.Observations = append(obs.Observations, &DateValue{Date: dv.Date, Value: dv.Value})
 		}
 		result = append(result, obs)
 	}

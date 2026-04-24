@@ -16,9 +16,23 @@ package spanner
 
 // rawObservation represents a row from the coalesced query.
 type rawObservation struct {
-	VariableMeasured string                  `spanner:"variable_measured"`
-	DatesAndValues   []*spannerObservation   `spanner:"dates_and_values"`
-	Attributes       []*spannerAttribute     `spanner:"attributes"`
+	VariableMeasured string                `spanner:"variable_measured"`
+	DatesAndValues   []*spannerObservation `spanner:"dates_and_values"`
+	Attributes       []*spannerAttribute   `spanner:"attributes"`
+}
+
+type rawMultiEntityObservation struct {
+	VariableMeasured string                `spanner:"variable_measured"`
+	Provenance       string                `spanner:"provenance"`
+	DatesAndValues   []*spannerObservation `spanner:"dates_and_values"`
+	Attributes       []*spannerAttribute   `spanner:"attributes"`
+}
+
+type multiEntityObservation struct {
+	VariableMeasured string
+	Provenance       string
+	Observations     TimeSeries
+	Attributes       []*spannerAttribute
 }
 
 // spannerObservation represents the STRUCT returned in dates_and_values array.

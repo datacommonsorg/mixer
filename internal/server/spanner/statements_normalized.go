@@ -19,10 +19,10 @@ package spanner
 var statementsNormalized = struct {
 	// Fetch Observations with coalesced dates, values and attributes.
 	getObs string
-	
+
 	// Filter by variable dcids.
 	selectVariableDcids string
-	
+
 	// Filter by entity dcids (by looking up in TimeSeriesAttribute).
 	selectEntityDcids string
 
@@ -31,6 +31,12 @@ var statementsNormalized = struct {
 
 	// Fetch observations for entities contained in a place.
 	getObsByContainedInPlace string
+
+	// Fetch observations with multi-entity dimension filters.
+	getMultiEntityObs string
+
+	// Filter by one multi-entity dimension.
+	selectMultiEntityDimension string
 }{
 	getObs: `		SELECT
 			ts.variable_measured,
@@ -48,11 +54,11 @@ var statementsNormalized = struct {
 		FROM 
 			TimeSeries@{FORCE_INDEX=TimeSeriesByVariableMeasured} ts`,
 	selectVariableDcids: "ts.variable_measured %s",
-	
+
 	// Uses the index on TimeSeriesAttribute(property, value).
 	// For now we assume property is 'observationAbout'.
-	selectEntityDcids:   "ts.id IN (SELECT id FROM TimeSeriesAttribute@{FORCE_INDEX=TimeSeriesAttributePropertyValue} WHERE property = 'observationAbout' AND value %s)", 
-	
+	selectEntityDcids: "ts.id IN (SELECT id FROM TimeSeriesAttribute@{FORCE_INDEX=TimeSeriesAttributePropertyValue} WHERE property = 'observationAbout' AND value %s)",
+
 	// We're intentionally not filtering by property since we'll be supporting multiple entities.
 	// If we want to restrict queries only to entities (vs other attributes), the schema should
 	// support a new property_type field and we can filter by property_type = "entity".
@@ -94,5 +100,23 @@ var statementsNormalized = struct {
 			TimeSeries@{FORCE_INDEX=TimeSeriesByVariableMeasured} ts
 		ON
 			ts.id = tsa.id`,
-}
 
+	getMultiEntityObs: `		SELECT
+			ts.variable_measured,
+			ts.provenance,
+			ARRAY(
+				SELECT STRUCT(date, value)
+				FROM StatVarObservation
+				WHERE id = ts.id
+				ORDER BY date ASC
+			) as dates_and_values,
+			ARRAY(
+				SELECT STRUCT(property, value)
+				FROM TimeSeriesAttribute
+				WHERE id = ts.id
+				ORDER BY property ASC, value ASC
+			) as attributes
+		FROM 
+			TimeSeries@{FORCE_INDEX=TimeSeriesByVariableMeasured} ts`,
+	selectMultiEntityDimension: "ts.id IN (SELECT id FROM TimeSeriesAttribute@{FORCE_INDEX=TimeSeriesAttributePropertyValue} WHERE property = @%s AND value %s)",
+}
