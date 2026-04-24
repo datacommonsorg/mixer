@@ -121,6 +121,13 @@ func (sds *SpannerDataSource) Node(ctx context.Context, req *pbv2.NodeRequest, p
 
 // Observation retrieves observation data from Spanner.
 func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
+	if len(req.GetObservationDimensions()) > 0 {
+		return sds.multiEntityObservation(ctx, req)
+	}
+	if len(req.GetNodeProperties()) > 0 {
+		return nil, fmt.Errorf("node_properties are only supported for multi-entity observation requests")
+	}
+
 	if req.Entity == nil {
 		return nil, fmt.Errorf("entity must be specified")
 	}

@@ -16,10 +16,12 @@ package spanner
 
 import (
 	"context"
+	"fmt"
 	"log/slog"
 
-	"github.com/datacommonsorg/mixer/internal/util"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/metadata"
 )
 
@@ -64,6 +66,21 @@ func (s *schemaSelectorClient) GetObservationsContainedInPlace(ctx context.Conte
 		return s.normalized.GetObservationsContainedInPlace(ctx, variables, containedInPlace)
 	}
 	return s.SpannerClient.GetObservationsContainedInPlace(ctx, variables, containedInPlace)
+}
+
+func (s *schemaSelectorClient) GetMultiEntityObservations(
+	ctx context.Context,
+	variables []string,
+	dimensions []*pbv2.ObservationDimensionConstraint,
+) ([]*multiEntityObservation, error) {
+	if !useNormalizedSchema(ctx) {
+		return nil, fmt.Errorf("multi-entity observations require normalized Spanner schema")
+	}
+	logNormalizedInvocation("GetMultiEntityObservations",
+		"num_variables", len(variables),
+		"num_dimensions", len(dimensions),
+	)
+	return s.normalized.GetMultiEntityObservations(ctx, variables, dimensions)
 }
 
 // NewSchemaSelectorClient creates a new SpannerClient that dispatches calls to either default or normalized client.

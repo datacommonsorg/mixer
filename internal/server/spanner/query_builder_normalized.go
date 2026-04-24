@@ -16,9 +16,11 @@ package spanner
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 
 	"cloud.google.com/go/spanner"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
 
@@ -83,7 +85,7 @@ func GetNormalizedObservationsContainedInPlaceQuery(variables []string, containe
 	stmt := &spanner.Statement{
 		SQL: statementsNormalized.getObsByContainedInPlace,
 		Params: map[string]interface{}{
-			"ancestor":         containedInPlace.Ancestor,
+			"ancestor":       containedInPlace.Ancestor,
 			"childPlaceType": containedInPlace.ChildPlaceType,
 		},
 	}
@@ -95,4 +97,49 @@ func GetNormalizedObservationsContainedInPlaceQuery(variables []string, containe
 	}
 
 	return stmt
+}
+
+// GetNormalizedMultiEntityObservationsQuery returns a query to fetch observations
+// based on variable dcids and multi-entity dimension constraints.
+func GetNormalizedMultiEntityObservationsQuery(
+	variables []string,
+	dimensions []*pbv2.ObservationDimensionConstraint,
+) (*spanner.Statement, error) {
+	if len(variables) == 0 {
+		return nil, fmt.Errorf("variables must be specified")
+	}
+	if len(dimensions) == 0 {
+		return nil, fmt.Errorf("observation_dimensions must be specified")
+	}
+
+	stmt := &spanner.Statement{
+		SQL:    statementsNormalized.getMultiEntityObs,
+		Params: map[string]interface{}{},
+	}
+
+	filters := []string{}
+	variableFilter, variableVal := getParamStatement("variables", variables)
+	stmt.Params["variables"] = variableVal
+	filters = append(filters, fmt.Sprintf(statementsNormalized.selectVariableDcids, variableFilter))
+
+	sortedDimensions := append([]*pbv2.ObservationDimensionConstraint(nil), dimensions...)
+	sort.Slice(sortedDimensions, func(i, j int) bool {
+		return sortedDimensions[i].GetProperty() < sortedDimensions[j].GetProperty()
+	})
+
+	for i, dimension := range sortedDimensions {
+		propertyParam := fmt.Sprintf("dimension_property_%d", i)
+		valueParam := fmt.Sprintf("dimension_values_%d", i)
+		valueFilter, valueVal := getParamStatement(valueParam, dimension.GetValue().GetDcids())
+		stmt.Params[propertyParam] = dimension.GetProperty()
+		stmt.Params[valueParam] = valueVal
+		filters = append(filters, fmt.Sprintf(
+			statementsNormalized.selectMultiEntityDimension,
+			propertyParam,
+			valueFilter,
+		))
+	}
+
+	stmt.SQL += "\n\t\tWHERE " + strings.Join(filters, " AND ")
+	return stmt, nil
 }
