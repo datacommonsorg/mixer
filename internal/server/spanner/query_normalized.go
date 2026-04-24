@@ -85,7 +85,11 @@ func reconstructObservations(rawObs []*rawObservation) []*Observation {
 		}
 
 		for _, dv := range r.DatesAndValues {
-			obs.Observations = append(obs.Observations, &DateValue{Date: dv.Date, Value: dv.Value})
+			obs.Observations = append(obs.Observations, &DateValue{
+				Date:       dv.Date,
+				Value:      dv.Value,
+				Attributes: dv.Attributes,
+			})
 		}
 
 		for _, attr := range r.Attributes {
@@ -122,7 +126,11 @@ func reconstructMultiEntityObservations(rawObs []*rawMultiEntityObservation) []*
 		}
 
 		for _, dv := range r.DatesAndValues {
-			obs.Observations = append(obs.Observations, &DateValue{Date: dv.Date, Value: dv.Value})
+			obs.Observations = append(obs.Observations, &DateValue{
+				Date:       dv.Date,
+				Value:      dv.Value,
+				Attributes: dv.Attributes,
+			})
 		}
 		result = append(result, obs)
 	}

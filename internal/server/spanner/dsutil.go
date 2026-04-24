@@ -625,9 +625,24 @@ func dateValueToPointStat(dateValue *DateValue) (*pb.PointStat, error) {
 		return nil, fmt.Errorf("failed to decode TimeSeries float value: (%v) for date: (%v)", floatVal, dateValue.Date)
 	}
 	return &pb.PointStat{
-		Date:  dateValue.Date,
-		Value: proto.Float64(floatVal),
+		Date:                  dateValue.Date,
+		Value:                 proto.Float64(floatVal),
+		ObservationAttributes: observationAttributesToProto(dateValue.Attributes),
 	}, nil
+}
+
+func observationAttributesToProto(attributes []*spannerAttribute) []*pb.ObservationAttribute {
+	if len(attributes) == 0 {
+		return nil
+	}
+	result := make([]*pb.ObservationAttribute, 0, len(attributes))
+	for _, attr := range attributes {
+		result = append(result, &pb.ObservationAttribute{
+			Property: attr.Property,
+			Value:    attr.Value,
+		})
+	}
+	return result
 }
 
 func searchNodesToNodeSearchResponse(nodes []*SearchNode) *pbv2.NodeSearchResponse {
