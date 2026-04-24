@@ -337,6 +337,10 @@ func MergeObservation(main, aux *pbv2.ObservationResponse) *pbv2.ObservationResp
 		if main.ByVariable[v].ByEntity == nil {
 			main.ByVariable[v].ByEntity = map[string]*pbv2.EntityObservation{}
 		}
+		main.ByVariable[v].MultiEntityObservations = append(
+			main.ByVariable[v].MultiEntityObservations,
+			vData.MultiEntityObservations...,
+		)
 		for e, eData := range vData.ByEntity {
 			if _, ok := main.ByVariable[v].ByEntity[e]; !ok {
 				main.ByVariable[v].ByEntity[e] = &pbv2.EntityObservation{
@@ -369,6 +373,12 @@ func MergeObservation(main, aux *pbv2.ObservationResponse) *pbv2.ObservationResp
 	}
 	for facetID, facet := range aux.Facets {
 		main.Facets[facetID] = facet
+	}
+	if main.Nodes == nil {
+		main.Nodes = map[string]*pbv2.LinkedGraph{}
+	}
+	for dcid, node := range aux.Nodes {
+		main.Nodes[dcid] = node
 	}
 	return main
 }
