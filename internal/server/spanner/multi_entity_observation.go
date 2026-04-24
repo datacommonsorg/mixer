@@ -18,11 +18,13 @@ import (
 	"context"
 	"fmt"
 	"sort"
+	"strconv"
 	"strings"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
+	"github.com/datacommonsorg/mixer/internal/util"
 )
 
 type multiEntityObservationClient interface {
@@ -152,7 +154,8 @@ func multiEntityObservationsToResponse(
 	}
 
 	for _, observation := range observations {
-		facetObservation := multiEntityFacetObservation(observation)
+		facetID, facet := multiEntityFacet(observation)
+		facetObservation := multiEntityFacetObservation(observation, facetID)
 		if facetObservation == nil {
 			continue
 		}
@@ -172,15 +175,13 @@ func multiEntityObservationsToResponse(
 				},
 			},
 		)
-		if observation.Provenance != "" {
-			resp.Facets[observation.Provenance] = &pb.Facet{ImportName: observation.Provenance}
-		}
+		resp.Facets[facetID] = facet
 	}
 
 	return resp
 }
 
-func multiEntityFacetObservation(observation *multiEntityObservation) *pbv2.FacetObservation {
+func multiEntityFacetObservation(observation *multiEntityObservation, facetID string) *pbv2.FacetObservation {
 	pointStats := []*pb.PointStat{}
 	for _, dateValue := range observation.Observations {
 		pointStat, err := dateValueToPointStat(dateValue)
@@ -196,12 +197,45 @@ func multiEntityFacetObservation(observation *multiEntityObservation) *pbv2.Face
 		return pointStats[i].GetDate() < pointStats[j].GetDate()
 	})
 	return &pbv2.FacetObservation{
-		FacetId:      observation.Provenance,
+		FacetId:      facetID,
 		Observations: pointStats,
 		ObsCount:     int32(len(pointStats)),
 		EarliestDate: pointStats[0].GetDate(),
 		LatestDate:   pointStats[len(pointStats)-1].GetDate(),
 	}
+}
+
+func multiEntityFacet(observation *multiEntityObservation) (string, *pb.Facet) {
+	facetID := ""
+	facet := &pb.Facet{
+		ImportName: observation.Provenance,
+	}
+	for _, attr := range observation.Attributes {
+		switch attr.Property {
+		case "facetId":
+			facetID = attr.Value
+		case "importName":
+			facet.ImportName = attr.Value
+		case "provenanceUrl":
+			facet.ProvenanceUrl = attr.Value
+		case "observationPeriod":
+			facet.ObservationPeriod = attr.Value
+		case "measurementMethod":
+			facet.MeasurementMethod = attr.Value
+		case "unit":
+			facet.Unit = attr.Value
+		case "scalingFactor":
+			facet.ScalingFactor = attr.Value
+		case "isDcAggregate":
+			if b, err := strconv.ParseBool(attr.Value); err == nil {
+				facet.IsDcAggregate = b
+			}
+		}
+	}
+	if facetID == "" {
+		facetID = util.GetFacetID(facet)
+	}
+	return facetID, facet
 }
 
 func multiEntityObservationDimensions(attributes []*spannerAttribute) []*pbv2.ObservationDimension {

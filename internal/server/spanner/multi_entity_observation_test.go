@@ -18,7 +18,9 @@ import (
 	"strings"
 	"testing"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/util"
 )
 
 func TestValidateMultiEntityObservationRequest(t *testing.T) {
@@ -121,11 +123,18 @@ func TestMultiEntityObservationsToResponse(t *testing.T) {
 				Attributes: []*spannerAttribute{
 					{Property: "recipient", Value: "country/GHA"},
 					{Property: "unit", Value: "dcs:USDollar"},
+					{Property: "measurementMethod", Value: "dcid:OECD_UnvalidatedValue"},
 					{Property: "donor", Value: "country/IRL"},
 				},
 				Observations: TimeSeries{
 					{Date: "1998", Value: "520000"},
-					{Date: "1997", Value: "510000"},
+					{
+						Date:  "1997",
+						Value: "510000",
+						Attributes: []*spannerAttribute{
+							{Property: "footnote", Value: "Preliminary data for early Q1"},
+						},
+					},
 				},
 			},
 		},
@@ -143,14 +152,44 @@ func TestMultiEntityObservationsToResponse(t *testing.T) {
 		t.Fatalf("observation_dimensions = %v, want donor then recipient", obs.GetObservationDimensions())
 	}
 
+	wantFacet := &pb.Facet{
+		ImportName:        "provenance/OECD",
+		MeasurementMethod: "dcid:OECD_UnvalidatedValue",
+		Unit:              "dcs:USDollar",
+	}
+	wantFacetID := util.GetFacetID(wantFacet)
 	facet := obs.GetObservation().GetOrderedFacets()[0]
-	if facet.GetFacetId() != "provenance/OECD" {
-		t.Fatalf("facet_id = %q, want provenance/OECD", facet.GetFacetId())
+	if facet.GetFacetId() != wantFacetID {
+		t.Fatalf("facet_id = %q, want %q", facet.GetFacetId(), wantFacetID)
 	}
 	if facet.GetEarliestDate() != "1997" || facet.GetLatestDate() != "1998" {
 		t.Fatalf("date range = %s-%s, want 1997-1998", facet.GetEarliestDate(), facet.GetLatestDate())
 	}
-	if resp.GetFacets()["provenance/OECD"].GetImportName() != "provenance/OECD" {
-		t.Fatalf("facet import_name = %q, want provenance/OECD", resp.GetFacets()["provenance/OECD"].GetImportName())
+	if resp.GetFacets()[wantFacetID].GetUnit() != "dcs:USDollar" {
+		t.Fatalf("facet unit = %q, want dcs:USDollar", resp.GetFacets()[wantFacetID].GetUnit())
+	}
+	if resp.GetFacets()[wantFacetID].GetMeasurementMethod() != "dcid:OECD_UnvalidatedValue" {
+		t.Fatalf("facet measurement_method = %q, want dcid:OECD_UnvalidatedValue", resp.GetFacets()[wantFacetID].GetMeasurementMethod())
+	}
+	pointAttrs := facet.GetObservations()[0].GetObservationAttributes()
+	if len(pointAttrs) != 1 || pointAttrs[0].GetProperty() != "footnote" {
+		t.Fatalf("point attributes = %v, want footnote", pointAttrs)
+	}
+}
+
+func TestMultiEntityFacetPrefersStoredFacetID(t *testing.T) {
+	facetID, facet := multiEntityFacet(&multiEntityObservation{
+		Provenance: "provenance/OECD",
+		Attributes: []*spannerAttribute{
+			{Property: "facetId", Value: "storedFacet"},
+			{Property: "unit", Value: "dcs:USDollar"},
+		},
+	})
+
+	if facetID != "storedFacet" {
+		t.Fatalf("facetID = %q, want storedFacet", facetID)
+	}
+	if facet.GetUnit() != "dcs:USDollar" {
+		t.Fatalf("facet unit = %q, want dcs:USDollar", facet.GetUnit())
 	}
 }

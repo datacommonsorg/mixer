@@ -41,10 +41,19 @@ var statementsNormalized = struct {
 	getObs: `		SELECT
 			ts.variable_measured,
 			ARRAY(
-				SELECT STRUCT(date, value)
-				FROM StatVarObservation
-				WHERE id = ts.id
-				ORDER BY date ASC
+				SELECT STRUCT(
+					svo.date AS date,
+					svo.value AS value,
+					ARRAY(
+						SELECT STRUCT(oa.property, oa.value)
+						FROM ObservationAttribute oa
+						WHERE oa.id = svo.id AND oa.date = svo.date
+						ORDER BY oa.property ASC, oa.value ASC
+					) AS attributes
+				)
+				FROM StatVarObservation svo
+				WHERE svo.id = ts.id
+				ORDER BY svo.date ASC
 			) as dates_and_values,
 			ARRAY(
 				SELECT STRUCT(property, value)
@@ -73,10 +82,19 @@ var statementsNormalized = struct {
 	getObsByContainedInPlace: `		SELECT
 			ts.variable_measured,
 			ARRAY(
-				SELECT STRUCT(date, value)
-				FROM StatVarObservation
-				WHERE id = ts.id
-				ORDER BY date ASC
+				SELECT STRUCT(
+					svo.date AS date,
+					svo.value AS value,
+					ARRAY(
+						SELECT STRUCT(oa.property, oa.value)
+						FROM ObservationAttribute oa
+						WHERE oa.id = svo.id AND oa.date = svo.date
+						ORDER BY oa.property ASC, oa.value ASC
+					) AS attributes
+				)
+				FROM StatVarObservation svo
+				WHERE svo.id = ts.id
+				ORDER BY svo.date ASC
 			) as dates_and_values,
 			ARRAY(
 				SELECT STRUCT(property, value)
@@ -105,10 +123,19 @@ var statementsNormalized = struct {
 			ts.variable_measured,
 			ts.provenance,
 			ARRAY(
-				SELECT STRUCT(date, value)
-				FROM StatVarObservation
-				WHERE id = ts.id
-				ORDER BY date ASC
+				SELECT STRUCT(
+					svo.date AS date,
+					svo.value AS value,
+					ARRAY(
+						SELECT STRUCT(oa.property, oa.value)
+						FROM ObservationAttribute oa
+						WHERE oa.id = svo.id AND oa.date = svo.date
+						ORDER BY oa.property ASC, oa.value ASC
+					) AS attributes
+				)
+				FROM StatVarObservation svo
+				WHERE svo.id = ts.id
+				ORDER BY svo.date ASC
 			) as dates_and_values,
 			ARRAY(
 				SELECT STRUCT(property, value)
