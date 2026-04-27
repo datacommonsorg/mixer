@@ -427,7 +427,7 @@ func sortObservations(results []*spanner.Observation) {
 	})
 }
 
-func TestGetTermEmbeddingsAPI(t *testing.T) {
+func TestGetTermEmbeddings(t *testing.T) {
 	client := test.NewSpannerClient()
 	if client == nil {
 		return
@@ -435,7 +435,7 @@ func TestGetTermEmbeddingsAPI(t *testing.T) {
 
 	t.Parallel()
 
-	for _, c := range getTermEmbeddingsAPITestCases {
+	for _, c := range getTermEmbeddingsTestCases {
 		goldenFile := c.golden + ".json"
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {

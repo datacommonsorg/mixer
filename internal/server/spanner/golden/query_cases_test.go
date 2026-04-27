@@ -679,7 +679,7 @@ var getFilteredTopicTestCases = []struct {
 	},
 }
 
-var getTermEmbeddingsAPITestCases = []struct {
+var getTermEmbeddingsTestCases = []struct {
 	modelName   string
 	searchLabel string
 	taskType    string
