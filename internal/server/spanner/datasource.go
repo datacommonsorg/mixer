@@ -218,10 +218,6 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 	}
 
 	if resolver := normalizedResolveRequest.Request.GetResolver(); resolver == resolvev2.ResolveResolverIndicator {
-		// Spanner doesn't do embeddings resolution yet.
-		slog.Warn("Received unsupported ResolveResolverIndicator request to Spanner", "request", req)
-		return &pbv2.ResolveResponse{}, nil
-	} else if resolver := normalizedResolveRequest.Request.GetResolver(); resolver == resolvev2.ResolveResolverEmbeddings {
 		return sds.resolveEmbeddings(ctx, normalizedResolveRequest)
 	}
 

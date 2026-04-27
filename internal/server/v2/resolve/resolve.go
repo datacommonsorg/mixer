@@ -46,8 +46,6 @@ const (
 	ResolveResolverPlace = "place"
 	// ResolveResolverIndicator is the resolver name for indicator/embeddings resolution.
 	ResolveResolverIndicator = "indicator"
-	// ResolveResolverEmbeddings is the resolver name for Spanner embeddings resolution.
-	ResolveResolverEmbeddings = "embeddings"
 
 	// ResolveDefaultPropertyExpression is the property name for description.
 	ResolveDefaultPropertyExpression = "<-description->dcid"
@@ -379,15 +377,15 @@ func parseAndValidateResolveTarget(req *pbv2.ResolveRequest) string {
 // Returns an optional error string.
 func parseAndValidateResolveResolver(req *pbv2.ResolveRequest) string {
 	switch req.GetResolver() {
-	case ResolveResolverPlace, ResolveResolverIndicator, ResolveResolverEmbeddings:
+	case ResolveResolverPlace, ResolveResolverIndicator:
 		return ""
 	case "":
 		// Set default value
 		req.Resolver = ResolveResolverPlace
 		return ""
 	default:
-		return fmt.Sprintf("Invalid 'resolver': valid values are '%s', '%s', '%s'",
-			ResolveResolverIndicator, ResolveResolverEmbeddings, ResolveResolverPlace)
+		return fmt.Sprintf("Invalid 'resolver': valid values are '%s', '%s'",
+			ResolveResolverIndicator, ResolveResolverPlace)
 	}
 }
 

@@ -355,7 +355,7 @@ func TestResolveEmbeddingsEmpty(t *testing.T) {
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"California"},
-		Resolver: "embeddings",
+		Resolver: "indicator",
 	})
 	if err != nil {
 		t.Fatalf("Resolve() error: %v", err)
@@ -392,7 +392,7 @@ func TestResolveEmbeddingsSuccess(t *testing.T) {
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"Climate"},
-		Resolver: "embeddings",
+		Resolver: "indicator",
 	})
 	if err != nil {
 		t.Fatalf("Resolve() error: %v", err)

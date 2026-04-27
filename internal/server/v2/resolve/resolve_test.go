@@ -204,7 +204,7 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 				Resolver: "invalid",
 			},
 			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Invalid 'resolver': valid values are 'indicator', 'embeddings', 'place'",
+			wantErrMsg: "Invalid inputs in request. Invalid 'resolver': valid values are 'indicator', 'place'",
 		},
 		{
 			desc: "invalid target and resolver",
@@ -213,7 +213,7 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 				Resolver: "invalid_resolver",
 			},
 			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Invalid 'target': valid values are 'custom_only', 'base_only', 'base_and_custom'. Invalid 'resolver': valid values are 'indicator', 'embeddings', 'place'",
+			wantErrMsg: "Invalid inputs in request. Invalid 'target': valid values are 'custom_only', 'base_only', 'base_and_custom'. Invalid 'resolver': valid values are 'indicator', 'place'",
 		},
 		{
 			desc: "invalid property expression",
