@@ -69,6 +69,24 @@ func TestV3SdmxData_Validation(t *testing.T) {
 			wantCode:   codes.InvalidArgument,
 			wantErrSub: "At least one constraint or variableMeasured is required.",
 		},
+		{
+			name: "Unsupported type in constraints (number)",
+			request: &pbv3.SdmxDataRequest{
+				C: `{"dim": 123}`,
+			},
+			enableSDMXDataApi: true,
+			wantCode:   codes.InvalidArgument,
+			wantErrSub: "unsupported type for constraint dim",
+		},
+		{
+			name: "Non-string item in array constraint",
+			request: &pbv3.SdmxDataRequest{
+				C: `{"dim": ["val1", 123]}`,
+			},
+			enableSDMXDataApi: true,
+			wantCode:   codes.InvalidArgument,
+			wantErrSub: "non-string item in array for constraint dim",
+		},
 	}
 
 	for _, tt := range tests {

@@ -152,11 +152,15 @@ func parseConstraints(cStr string) (map[string]*pb.ConstraintList, error) {
 		case []interface{}:
 			var lst []string
 			for _, item := range val {
-				if strItem, ok := item.(string); ok {
-					lst = append(lst, strItem)
+				strItem, ok := item.(string)
+				if !ok {
+					return nil, status.Errorf(codes.InvalidArgument, "non-string item in array for constraint %s", k)
 				}
+				lst = append(lst, strItem)
 			}
 			constraints[k] = &pb.ConstraintList{Values: lst}
+		default:
+			return nil, status.Errorf(codes.InvalidArgument, "unsupported type for constraint %s", k)
 		}
 	}
 	return constraints, nil
