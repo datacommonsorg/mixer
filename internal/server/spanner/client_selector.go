@@ -98,6 +98,15 @@ func useNormalizedSchema(ctx context.Context) bool {
 	return false
 }
 
+// shouldLogSQL checks whether to log the full interpolated SQL query based on request header.
+func shouldLogSQL(ctx context.Context) bool {
+	if md, ok := metadata.FromIncomingContext(ctx); ok {
+		headers := md.Get(util.XLogSQL)
+		return len(headers) > 0 && headers[0] == "true"
+	}
+	return false
+}
+
 // logNormalizedInvocation logs that the normalized schema was invoked for a method with custom arguments.
 func logNormalizedInvocation(methodName string, args ...any) {
 	fullArgs := append([]any{"method", methodName}, args...)

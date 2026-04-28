@@ -909,9 +909,19 @@ func (sc *spannerDatabaseClient) executeQuery(
 
 	runQuery := func(tb spanner.TimestampBound) error {
 		metrics.RecordSpannerQuery(queryCtx)
+		startTime := time.Now()
 		iter := sc.client.Single().WithTimestampBound(tb).Query(queryCtx, stmt)
 		defer iter.Stop()
 		err := handleRows(iter)
+		duration := time.Since(startTime)
+
+		if shouldLogSQL(queryCtx) {
+			interpolatedSQL := InterpolateSQL(&stmt)
+			slog.InfoContext(queryCtx, "Spanner query",
+				"sql", interpolatedSQL,
+				"duration_seconds", duration.Seconds(),
+			)
+		}
 
 		// Log slow Spanner queries that timed out.
 		if isTimeoutError(err) {
