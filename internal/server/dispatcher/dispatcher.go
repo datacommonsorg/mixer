@@ -18,12 +18,11 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/datacommonsorg/mixer/internal/server/datasources"
-	"google.golang.org/protobuf/proto"
-
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/datasources"
+	"google.golang.org/protobuf/proto"
 )
 
 // RequestType represents the type of request.
@@ -38,6 +37,7 @@ const (
 	TypeEvent                 RequestType = "Event"
 	TypeBulkVariableInfo      RequestType = "BulkVariableInfo"
 	TypeBulkVariableGroupInfo RequestType = "BulkVariableGroupInfo"
+	TypeSdmxData              RequestType = "SdmxData"
 )
 
 // RequestContext holds the context for a given request.
@@ -246,4 +246,18 @@ func newRequestContext(ctx context.Context, request proto.Message, requestType R
 		OriginalRequest: proto.Clone(request),
 		CurrentRequest:  request,
 	}
+}
+
+// SdmxData handles SDMX Data requests.
+func (dispatcher *Dispatcher) SdmxData(ctx context.Context, in *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+	requestContext := newRequestContext(ctx, in, TypeSdmxData)
+
+	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {
+		return dispatcher.sources.SdmxData(ctx, request.(*pb.SdmxDataQuery))
+	})
+
+	if err != nil {
+		return nil, err
+	}
+	return response.(*pb.SdmxDataResult), nil
 }

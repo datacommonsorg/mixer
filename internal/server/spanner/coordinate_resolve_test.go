@@ -60,6 +60,10 @@ func (m *coordinateMockSpannerClient) GetObservationsContainedInPlace(ctx contex
 	return nil, nil
 }
 
+func (m *coordinateMockSpannerClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+	return nil, nil
+}
+
 func (m *coordinateMockSpannerClient) SearchNodes(ctx context.Context, query string, types []string) ([]*SearchNode, error) {
 	return nil, nil
 }

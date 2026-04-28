@@ -649,3 +649,8 @@ func (sds *SpannerDataSource) BulkVariableGroupInfo(ctx context.Context, req *pb
 	}
 	return filteredSVGInfoToBulkVariableGroupInfoResponse(filteredSVGInfo), nil
 }
+
+// SdmxData retrieves observations from Spanner.
+func (sds *SpannerDataSource) SdmxData(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+	return sds.client.GetSdmxObservations(ctx, req)
+}
