@@ -107,6 +107,14 @@ func shouldLogSQL(ctx context.Context) bool {
 	return false
 }
 
+// getSchemaName returns the name of the schema being used based on context.
+func getSchemaName(ctx context.Context) string {
+	if useNormalizedSchema(ctx) {
+		return "Normalized"
+	}
+	return "Legacy"
+}
+
 // logNormalizedInvocation logs that the normalized schema was invoked for a method with custom arguments.
 func logNormalizedInvocation(methodName string, args ...any) {
 	fullArgs := append([]any{"method", methodName}, args...)

@@ -917,10 +917,10 @@ func (sc *spannerDatabaseClient) executeQuery(
 
 		if shouldLogSQL(queryCtx) {
 			interpolatedSQL := InterpolateSQL(&stmt)
-			slog.InfoContext(queryCtx, "Spanner query",
-				"sql", interpolatedSQL,
-				"duration_seconds", duration.Seconds(),
-			)
+			schema := getSchemaName(queryCtx)
+			fmt.Printf("\n=== [%s] Spanner Query (Took %v) ===\n", schema, duration)
+			fmt.Println(interpolatedSQL)
+			fmt.Println("================================================")
 		}
 
 		// Log slow Spanner queries that timed out.
