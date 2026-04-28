@@ -105,7 +105,7 @@ func (s *Server) V3SdmxData(ctx context.Context, in *pbv3.SdmxDataRequest) (
 	}
 
 	// Validation Gate
-	if query.Constraints[sdmx.DimVariableMeasured] == nil && len(query.Constraints) == 0 {
+	if len(query.Constraints) == 0 {
 		slog.Error("SDMX request missing required constraints", "input", in.C)
 		return nil, status.Error(codes.InvalidArgument, "At least one constraint or variableMeasured is required.")
 	}
@@ -135,6 +135,7 @@ func (s *Server) V3SdmxData(ctx context.Context, in *pbv3.SdmxDataRequest) (
 // parseConstraints parses the JSON string containing SDMX constraints.
 func parseConstraints(cStr string) (map[string]*pb.ConstraintList, error) {
 	// TODO: Address parameter exhaustion and cache-busting via malicious HTTP map manipulation by enforcing payload request depth and key limits in parseConstraints
+	// TODO: alternatively support pagination
 
 	rawConstraints := map[string]any{}
 	if cStr != "" {
