@@ -18,7 +18,6 @@ import (
 	"encoding/json"
 	"sort"
 	"strconv"
-	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 )
@@ -43,9 +42,6 @@ type Formatter interface {
 
 // JSONStatFormatter implements Formatter for JSON-stat format.
 type JSONStatFormatter struct {
-	// TimeNow allows injecting a mock time for deterministic golden file testing.
-	// If nil, time.Now is used.
-	TimeNow func() time.Time
 }
 
 // Category represents JSON-stat category structure.
@@ -66,7 +62,6 @@ type JSONStatResponse struct {
 	Class     string                    `json:"class"`
 	Label     string                    `json:"label"`
 	Source    string                    `json:"source"`
-	Updated   string                    `json:"updated"`
 	Id        []string                  `json:"id"`
 	Size      []int                     `json:"size"`
 	Dimension map[string]DimensionEntry `json:"dimension"`
@@ -94,17 +89,12 @@ func (f *JSONStatFormatter) Format(obs []*pb.SdmxObservation) (string, error) {
 		}
 	}
 
-	now := time.Now()
-	if f.TimeNow != nil {
-		now = f.TimeNow()
-	}
 
 	resp := JSONStatResponse{
 		Version:   jsonStatVersion,
 		Class:     jsonStatClass,
 		Label:     defaultLabel,
 		Source:    defaultSource,
-		Updated:   now.Format(time.RFC3339),
 		Id:        dimensionOrder,
 		Size:      size,
 		Dimension: dimMap,

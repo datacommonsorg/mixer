@@ -5,7 +5,6 @@ import (
 	"os"
 	"path/filepath"
 	"testing"
-	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/google/go-cmp/cmp"
@@ -14,12 +13,7 @@ import (
 const mockTimestampStr = "2026-04-22T19:00:00Z"
 
 func TestJSONStatFormatter_Golden(t *testing.T) {
-	mockTime, _ := time.Parse(time.RFC3339, mockTimestampStr)
-	formatter := &JSONStatFormatter{
-		TimeNow: func() time.Time {
-			return mockTime
-		},
-	}
+	formatter := &JSONStatFormatter{}
 
 	tests := []struct {
 		name       string
