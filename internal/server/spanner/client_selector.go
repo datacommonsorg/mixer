@@ -18,8 +18,9 @@ import (
 	"context"
 	"log/slog"
 
-	"github.com/datacommonsorg/mixer/internal/util"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/metadata"
 )
 
@@ -64,6 +65,15 @@ func (s *schemaSelectorClient) GetObservationsContainedInPlace(ctx context.Conte
 		return s.normalized.GetObservationsContainedInPlace(ctx, variables, containedInPlace)
 	}
 	return s.SpannerClient.GetObservationsContainedInPlace(ctx, variables, containedInPlace)
+}
+
+// GetSdmxObservations overrides the embedded client's GetSdmxObservations.
+// SDMX is only supported on the normalized schema, so it always delegates to the normalized client.
+func (s *schemaSelectorClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+	logNormalizedInvocation("GetSdmxObservations",
+		"query", req,
+	)
+	return s.normalized.GetSdmxObservations(ctx, req)
 }
 
 // NewSchemaSelectorClient creates a new SpannerClient that dispatches calls to either default or normalized client.

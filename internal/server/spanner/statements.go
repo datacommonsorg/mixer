@@ -109,6 +109,8 @@ var statements = struct {
 	getFilteredChildSVs string
 	// Fetch filtered count of descendent stat vars for a given topic.
 	getFilteredTopic string
+	// Filter descendent stat vars.
+	filterDescendentStatVars string
 	// Filter descendent stat vars by import.
 	filterDescendentStatVarsByImport string
 	// Filter descendent stat vars by num_entities_existences.
@@ -443,11 +445,7 @@ var statements = struct {
 			SELECT
 				e.subject_id AS subject_id
 			FROM Edge e
-			JOIN@{JOIN_TYPE=HASH_JOIN} (
-				SELECT variable_measured
-				FROM Observation %[1]s
-				GROUP BY variable_measured%[2]s
-			) o ON o.variable_measured = e.subject_id
+			%s
 			WHERE e.subject_id IN (
 				SELECT DISTINCT subject_id
 				FROM Edge
@@ -468,11 +466,7 @@ var statements = struct {
 				e.object_id AS subject_id,
 				COUNT(e.subject_id) AS descendent_stat_var_count
 			FROM Edge e
-			JOIN@{JOIN_TYPE=HASH_JOIN} (
-				SELECT variable_measured
-				FROM Observation %[1]s
-				GROUP BY variable_measured%[2]s
-			) o ON o.variable_measured = e.subject_id
+			%s
 			WHERE e.predicate = 'linkedMemberOf'
 				AND e.object_id IN (
 					SELECT DISTINCT subject_id
@@ -487,17 +481,19 @@ var statements = struct {
 		) e_counts
 			ON n.subject_id = e_counts.subject_id`,
 	getFilteredTopic: `		SELECT
+			e.object_id AS subject_id,
 			COUNT(e.subject_id) AS descendent_stat_var_count
 		FROM Edge@{FORCE_INDEX=InEdge} e
-		JOIN@{JOIN_TYPE=HASH_JOIN} (
-			SELECT variable_measured
-			FROM Observation %[1]s
-			GROUP BY variable_measured%[2]s
-		) o ON o.variable_measured = e.subject_id
+		%[1]s
 		WHERE e.predicate = 'linkedMember'
-			AND e.object_id = @node
+			AND e.object_id %[2]s
 		GROUP BY
 			e.object_id`,
+	filterDescendentStatVars: `JOIN@{JOIN_TYPE=HASH_JOIN} (
+				SELECT variable_measured
+				FROM Observation %[1]s
+				GROUP BY variable_measured%[2]s
+			) o ON o.variable_measured = e.subject_id`,
 	filterDescendentStatVarsByImport: `
 				JOIN Edge@{FORCE_INDEX=InEdge} e1
 				ON import_name = SUBSTR(e1.subject_id, 9)

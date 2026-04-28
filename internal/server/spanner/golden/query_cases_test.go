@@ -585,14 +585,6 @@ var getFilteredSVGChildrenTestCases = []struct {
 		numEntitiesExistence: 2,
 		golden:               "get_filtered_svg_num_entities_existence",
 	},
-	{
-		template:             "Topic",
-		node:                 "dc/topic/Demographics",
-		constrainedPlaces:    []string{"country/CAN", "country/IND"},
-		constrainedImport:    "",
-		numEntitiesExistence: 1,
-		golden:               "get_filtered_topic_places",
-	},
 }
 
 var embeddingFromQueryTestCases = []struct {
@@ -624,38 +616,38 @@ var vectorSearchNodeTestCases = []struct {
 		threshold:  0.6,
 		nodeTypes:  []string{"StatisticalVariable", "Topic"},
 		golden:     "vector_search_node",
-   },
+	},
 }
 var getFilteredStatVarGroupNodeTestCases = []struct {
-	node                 string
+	nodes                []string
 	constrainedPlaces    []string
 	constrainedImport    string
 	numEntitiesExistence int
 	golden               string
 }{
 	{
-		node:                 "dc/g/Demographics",
+		nodes:                []string{"dc/g/Demographics", "dc/g/Agriculture"},
 		constrainedPlaces:    []string{"country/USA", "country/IND"},
 		constrainedImport:    "",
 		numEntitiesExistence: 1,
 		golden:               "get_filtered_stat_var_group_node_places",
 	},
 	{
-		node:                 "dc/g/Demographics",
+		nodes:                []string{"dc/g/Demographics"},
 		constrainedPlaces:    []string{},
 		constrainedImport:    "dc/s/WorldBank",
 		numEntitiesExistence: 1,
 		golden:               "get_filtered_stat_var_group_node_import",
 	},
 	{
-		node:                 "dc/g/Demographics",
+		nodes:                []string{"dc/g/Demographics"},
 		constrainedPlaces:    []string{"country/USA", "country/IND"},
 		constrainedImport:    "dc/s/WorldBank",
 		numEntitiesExistence: 1,
 		golden:               "get_filtered_stat_var_group_node_place_import",
 	},
 	{
-		node:                 "dc/g/Demographics",
+		nodes:                []string{"dc/g/Demographics"},
 		constrainedPlaces:    []string{"country/USA", "country/IND", "country/CAN"},
 		constrainedImport:    "",
 		numEntitiesExistence: 2,
@@ -664,18 +656,25 @@ var getFilteredStatVarGroupNodeTestCases = []struct {
 }
 
 var getFilteredTopicTestCases = []struct {
-	node                 string
+	nodes                []string
 	constrainedPlaces    []string
 	constrainedImport    string
 	numEntitiesExistence int
 	golden               string
 }{
 	{
-		node:                 "dc/topic/Demographics",
+		nodes:                []string{"dc/topic/Demographics"},
 		constrainedPlaces:    []string{"country/CAN", "country/IND"},
 		constrainedImport:    "",
 		numEntitiesExistence: 1,
 		golden:               "get_filtered_topic_places",
+	},
+	{
+		nodes:                []string{"dc/topic/Demographics", "dc/topic/Economy"},
+		constrainedPlaces:    []string{"country/CAN", "country/IND"},
+		constrainedImport:    "",
+		numEntitiesExistence: 1,
+		golden:               "get_filtered_topic_places_multiple_topics",
 	},
 }
 

@@ -44,6 +44,8 @@ type Flags struct {
 	V2DivertFraction float64 `yaml:"V2DivertFraction"`
 	// Use inputPropertyExpressions for StatisticalCalculations to fill observation holes.
 	UseStatisticalCalculation bool `yaml:"UseStatisticalCalculation"`
+	// Whether to enable the SDMX API endpoint.
+	EnableSDMXDataApi bool `yaml:"EnableSDMXDataApi"`
 }
 
 // setDefaultValues creates a new Flags struct with default values.
@@ -57,6 +59,7 @@ func setDefaultValues() *Flags {
 		EnableEmbeddingsResolver:  true,
 		V2DivertFraction:          0.0,
 		UseStatisticalCalculation: false,
+		EnableSDMXDataApi:         false,
 	}
 }
 

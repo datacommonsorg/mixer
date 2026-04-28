@@ -71,6 +71,9 @@ const (
 	predName               = "name"
 	predUrl                = "url"
 	predDomain             = "domain"
+
+	// Maximum number of concurrent goroutines for fetching filtered StatVarGroupNode info.
+	maxConcurrentFilteredSVGGoroutines = 10
 )
 
 // GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction and returns a map.
@@ -655,6 +658,7 @@ func (sc *spannerDatabaseClient) VectorSearchQuery(ctx context.Context, limit in
 	)
 	return results, err
 }
+
 // GetStatVarGroupNode fetches StatVarGroupNode info from Spanner.
 func (sc *spannerDatabaseClient) GetStatVarGroupNode(ctx context.Context, nodes []string) ([]*StatVarGroupNode, error) {
 	var svgNodes []*StatVarGroupNode
@@ -680,8 +684,44 @@ func (sc *spannerDatabaseClient) GetStatVarGroupNode(ctx context.Context, nodes 
 	return svgNodes, nil
 }
 
-// GetFilteredStatVarGroupNode fetches the relevant info to build a filtered StatVarGroupNode from Spanner.
-func (sc *spannerDatabaseClient) GetFilteredStatVarGroupNode(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (*FilteredStatVarGroupNode, error) {
+// GetFilteredStatVarGroupNode fetches filtered StatVarGroupNode info from Spanner.
+func (sc *spannerDatabaseClient) GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]*FilteredStatVarGroupNode, error) {
+	response := map[string]*FilteredStatVarGroupNode{}
+	errGroup, errCtx := errgroup.WithContext(ctx)
+	errGroup.SetLimit(maxConcurrentFilteredSVGGoroutines) // Limit the number of concurrent goroutines to avoid overwhelming Spanner with too many requests.
+
+	type nodeResult struct {
+		node string
+		resp *FilteredStatVarGroupNode
+	}
+	resps := make(chan nodeResult, len(nodes))
+
+	for _, node := range nodes {
+		node := node
+		errGroup.Go(func() error {
+			resp, err := sc.getSingleFilteredStatVarGroupNode(errCtx, node, constrainedPlaces, constrainedImport, numEntitiesExistence)
+			if err != nil {
+				return fmt.Errorf("error fetching filtered StatVarGroupNode for node %s: %w", node, err)
+			}
+			resps <- nodeResult{node: node, resp: resp}
+			return nil
+		})
+	}
+
+	if err := errGroup.Wait(); err != nil {
+		return nil, err
+	}
+	close(resps)
+
+	for res := range resps {
+		response[res.node] = res.resp
+	}
+
+	return response, nil
+}
+
+// getSingleFilteredStatVarGroupNode fetches the relevant info to build a single filtered StatVarGroupNode from Spanner.
+func (sc *spannerDatabaseClient) getSingleFilteredStatVarGroupNode(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (*FilteredStatVarGroupNode, error) {
 	filteredStatVarGroupNode := &FilteredStatVarGroupNode{}
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	svgChildChan := make(chan []*SVGChild, 1)
@@ -764,24 +804,37 @@ func (sc *spannerDatabaseClient) GetFilteredStatVarGroupNode(ctx context.Context
 }
 
 // GetFilteredTopic fetches the relevant info to build a filtered Topic response from Spanner.
-func (sc *spannerDatabaseClient) GetFilteredTopic(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (int, error) {
-	stmt := GetFilteredSVGChildrenQuery(templateTopic, node, constrainedPlaces, constrainedImport, numEntitiesExistence)
-	rows, err := queryDynamic(ctx, sc, *stmt)
+func (sc *spannerDatabaseClient) GetFilteredTopic(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]int, error) {
+	counts := make(map[string]int, len(nodes))
+	for _, node := range nodes {
+		counts[node] = 0
+	}
+
+	stmt := GetFilteredTopicChildrenQuery(nodes, constrainedPlaces, constrainedImport, numEntitiesExistence)
+	err := sc.executeQuery(ctx, *stmt, func(iter *spanner.RowIterator) error {
+		for {
+			row, err := iter.Next()
+			if err == iterator.Done {
+				break
+			}
+			if err != nil {
+				return err
+			}
+
+			var parent string
+			var count int64
+			if err := row.Columns(&parent, &count); err != nil {
+				return fmt.Errorf("error reading row for filtered Topic children count: %w", err)
+			}
+			counts[parent] = int(count)
+		}
+		return nil
+	})
 	if err != nil {
-		return 0, err
+		return counts, err
 	}
-	if len(rows) == 0 {
-		// No child SVs.
-		return 0, nil
-	}
-	if len(rows[0]) == 0 {
-		return 0, fmt.Errorf("malformed response when fetching count of Topic children")
-	}
-	count, err := strconv.Atoi(rows[0][0])
-	if err != nil {
-		return 0, fmt.Errorf("error converting Topic children count to int")
-	}
-	return count, nil
+
+	return counts, nil
 }
 
 // fetchAndUpdateTimestamp queries Spanner and updates the timestamp.

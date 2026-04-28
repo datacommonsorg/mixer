@@ -19,9 +19,9 @@ import (
 	"fmt"
 	"strconv"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
-
 
 // GetObservations retrieves observations from Spanner given a list of variables and entities
 // using the normalized schema.
@@ -77,14 +77,6 @@ func reconstructObservations(rawObs []*rawObservation) []*Observation {
 				obs.ImportName = attr.Value
 			case "provenanceUrl":
 				obs.ProvenanceURL = attr.Value
-			case "observationPeriod":
-				obs.ObservationPeriod = attr.Value
-			case "measurementMethod":
-				obs.MeasurementMethod = attr.Value
-			case "unit":
-				obs.Unit = attr.Value
-			case "scalingFactor":
-				obs.ScalingFactor = attr.Value
 			case "isDcAggregate":
 				if b, err := strconv.ParseBool(attr.Value); err == nil {
 					obs.IsDcAggregate = b
@@ -134,4 +126,66 @@ func (nc *normalizedClient) fetchRawObservationsContainedInPlace(ctx context.Con
 		rawObs = append(rawObs, row.(*rawObservation))
 	})
 	return rawObs, err
+}
+
+var facetAttributes = map[string]bool{
+	"unit":              true,
+	"measurementMethod": true,
+	"scalingFactor":     true,
+	"observationPeriod": true,
+	"importName":        true,
+	"provenanceUrl":     true,
+}
+
+// GetSdmxObservations retrieves observations from Spanner given a list of constraints
+// using the normalized schema and relational division.
+func (nc *normalizedClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+	stmt := GetSdmxObservationsQuery(req)
+
+	var rawObs []*rawObservation
+	err := queryStructs(ctx, nc.sc, *stmt, func() interface{} { return &rawObservation{} }, func(row interface{}) {
+		rawObs = append(rawObs, row.(*rawObservation))
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	if len(rawObs) == 0 {
+		return &pb.SdmxDataResult{Observations: []*pb.SdmxObservation{}}, nil
+	}
+
+	return &pb.SdmxDataResult{Observations: reconstructSdmxObservations(rawObs)}, nil
+}
+
+// reconstructSdmxObservations combines raw observations and attributes into full SdmxObservation structs for SDMX.
+func reconstructSdmxObservations(rawObs []*rawObservation) []*pb.SdmxObservation {
+	var result []*pb.SdmxObservation
+
+	for _, r := range rawObs {
+		obs := &pb.SdmxObservation{
+			VariableMeasured: r.VariableMeasured,
+			Provenance:       r.Provenance,
+			DatesAndValues:   []*pb.SdmxDateValue{},
+			Dimensions:       map[string]string{},
+			Attributes:       map[string]string{},
+		}
+
+		for _, dv := range r.DatesAndValues {
+			obs.DatesAndValues = append(obs.DatesAndValues, &pb.SdmxDateValue{Date: dv.Date, Value: dv.Value})
+		}
+
+		for _, attr := range r.Attributes {
+			if attr.Property == "provenance" {
+				continue
+			}
+			if facetAttributes[attr.Property] {
+				obs.Attributes[attr.Property] = attr.Value
+			} else {
+				obs.Dimensions[attr.Property] = attr.Value
+			}
+		}
+		result = append(result, obs)
+	}
+
+	return result
 }

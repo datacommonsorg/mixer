@@ -62,6 +62,10 @@ func (m *coordinateMockSpannerClient) GetObservationsContainedInPlace(ctx contex
 	return nil, nil
 }
 
+func (m *coordinateMockSpannerClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+	return nil, nil
+}
+
 func (m *coordinateMockSpannerClient) SearchNodes(ctx context.Context, query string, types []string) ([]*SearchNode, error) {
 	return nil, nil
 }
@@ -94,12 +98,12 @@ func (m *coordinateMockSpannerClient) GetStatVarGroupNode(ctx context.Context, n
 	return nil, nil
 }
 
-func (m *coordinateMockSpannerClient) GetFilteredStatVarGroupNode(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (*FilteredStatVarGroupNode, error) {
+func (m *coordinateMockSpannerClient) GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]*FilteredStatVarGroupNode, error) {
 	return nil, nil
 }
 
-func (m *coordinateMockSpannerClient) GetFilteredTopic(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (int, error) {
-	return 0, nil
+func (m *coordinateMockSpannerClient) GetFilteredTopic(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]int, error) {
+	return nil, nil
 }
 
 func (m *coordinateMockSpannerClient) VectorSearchQuery(ctx context.Context, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string) ([]*VectorSearchResult, error) {
