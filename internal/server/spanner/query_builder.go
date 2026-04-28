@@ -56,8 +56,6 @@ const (
 	templateSV = "SV"
 	// Template for fetching child SVGs
 	templateSVG = "SVG"
-	// Template for fetching children of a Topic
-	templateTopic = "Topic"
 	// isPartOf predicate
 	predicateIsPartOf = "isPartOf"
 	// source predicate
@@ -441,12 +439,9 @@ func GetSVGChildrenQuery(node string) *spanner.Statement {
 	}
 }
 
-// GetFilteredSVGChildren returns a query to get children for a given stat var group filtered by constrained entities and existence threshold.
-func GetFilteredSVGChildrenQuery(template string, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) *spanner.Statement {
-	params := map[string]interface{}{
-		"node":                 node,
-		"numEntitiesExistence": numEntitiesExistence,
-	}
+// filterDescentStatVarsQuery returns a subquery to filter descendent stat vars for a given variable group or topic based on constrained entities and existence threshold.
+func filterDescentStatVarsQuery(constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) *spanner.Statement {
+	var params = map[string]interface{}{}
 
 	var entityFilter string
 	var distinct string
@@ -473,19 +468,41 @@ func GetFilteredSVGChildrenQuery(template string, node string, constrainedPlaces
 		params["numEntitiesExistence"] = numEntitiesExistence
 	}
 
+	return &spanner.Statement{
+		SQL:    fmt.Sprintf(statements.filterDescendentStatVars, entityFilter, numFilter),
+		Params: params,
+	}
+}
+
+// GetFilteredSVGChildren returns a query to get children for a given stat var group filtered by constrained entities and existence threshold.
+func GetFilteredSVGChildrenQuery(template string, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) *spanner.Statement {
+	subquery := filterDescentStatVarsQuery(constrainedPlaces, constrainedImport, numEntitiesExistence)
+	subquery.Params["node"] = node
+
 	var baseStatement string
 	switch template {
 	case templateSV:
 		baseStatement = statements.getFilteredChildSVs
 	case templateSVG:
 		baseStatement = statements.getFilteredChildSVGs
-	case templateTopic:
-		baseStatement = statements.getFilteredTopic
 	}
 
 	return &spanner.Statement{
-		SQL:    fmt.Sprintf(baseStatement, entityFilter, numFilter),
-		Params: params,
+		SQL:    fmt.Sprintf(baseStatement, subquery.SQL),
+		Params: subquery.Params,
+	}
+}
+
+// GetFilteredTopicChildren returns a query to get children for given topics filtered by constrained entities and existence threshold.
+func GetFilteredTopicChildrenQuery(nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) *spanner.Statement {
+	subquery := filterDescentStatVarsQuery(constrainedPlaces, constrainedImport, numEntitiesExistence)
+
+	nodeFilter, nodeVal := getParamStatement("node", nodes)
+	subquery.Params["node"] = nodeVal
+
+	return &spanner.Statement{
+		SQL:    fmt.Sprintf(statements.getFilteredTopic, subquery.SQL, nodeFilter),
+		Params: subquery.Params,
 	}
 }
 
