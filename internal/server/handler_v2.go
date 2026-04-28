@@ -520,9 +520,9 @@ func (s *Server) V2BulkVariableGroupInfo(
 		if err != nil {
 			return nil, err
 		}
-		clonedResp := proto.Clone(resp).(*pbv1.BulkVariableGroupInfoResponse)
-		clonedResp.Data = filterVariableGroupInfo(clonedResp.GetData())
-		return clonedResp, nil
+		return &pbv1.BulkVariableGroupInfoResponse{
+			Data: filterVariableGroupInfo(resp.GetData()),
+		}, nil
 	}
 
 	v2StartTime := time.Now()
@@ -556,28 +556,47 @@ func (s *Server) V2BulkVariableGroupInfo(
 }
 
 // filterVariableGroupInfo filters out excluded SVGs from the response data.
+// We use a copy-on-write approach to perform a more efficient mutation without cloning the whole response
 func filterVariableGroupInfo(data []*pbv1.VariableGroupInfoResponse) []*pbv1.VariableGroupInfoResponse {
+	// Pre-allocate to avoid underlying array resizing
 	filteredData := make([]*pbv1.VariableGroupInfoResponse, 0, len(data))
+
 	for _, item := range data {
 		if _, ok := svgGroupInfoExclusionList[item.GetNode()]; ok {
 			continue
 		}
+
+		itemToAppend := item
+		needsModification := false
+
 		if item.GetInfo() != nil {
-			childGroups := item.GetInfo().GetChildStatVarGroups()
+			for _, child := range item.GetInfo().GetChildStatVarGroups() {
+				if _, ok := svgGroupInfoExclusionList[child.Id]; ok {
+					needsModification = true
+					break
+				}
+			}
+		}
+
+		if needsModification {
+			// Only clone items that needs mutation
+			itemToAppend = proto.Clone(item).(*pbv1.VariableGroupInfoResponse)
+			childGroups := itemToAppend.GetInfo().GetChildStatVarGroups()
 			filteredChildren := make([]*pb.StatVarGroupNode_ChildSVG, 0, len(childGroups))
 			for _, child := range childGroups {
 				if _, ok := svgGroupInfoExclusionList[child.Id]; ok {
-					item.Info.DescendentStatVarCount -= child.DescendentStatVarCount
+					itemToAppend.Info.DescendentStatVarCount -= child.DescendentStatVarCount
 				} else {
 					filteredChildren = append(filteredChildren, child)
 				}
 			}
-			if item.Info.DescendentStatVarCount < 0 {
-				item.Info.DescendentStatVarCount = 0
+			if itemToAppend.Info.DescendentStatVarCount < 0 {
+				itemToAppend.Info.DescendentStatVarCount = 0
 			}
-			item.Info.ChildStatVarGroups = filteredChildren
+			itemToAppend.Info.ChildStatVarGroups = filteredChildren
 		}
-		filteredData = append(filteredData, item)
+
+		filteredData = append(filteredData, itemToAppend)
 	}
 	return filteredData
 }
