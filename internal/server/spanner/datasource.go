@@ -256,6 +256,12 @@ func (sds *SpannerDataSource) resolveEmbeddings(
 	typeOfs := req.TypeOfValues
 	if len(typeOfs) == 0 {
 		typeOfs = []string{"StatisticalVariable", "Topic"}
+	} else {
+		for _, t := range typeOfs {
+			if t != "StatisticalVariable" && t != "Topic" {
+				slog.Warn("Embeddings resolution requested for unsupported type. Current support is only for StatisticalVariable and Topic.", "type", t)
+			}
+		}
 	}
 
 	for _, node := range req.Request.GetNodes() {
