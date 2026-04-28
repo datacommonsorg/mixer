@@ -681,7 +681,7 @@ func (sc *spannerDatabaseClient) GetStatVarGroupNode(ctx context.Context, nodes 
 	return svgNodes, nil
 }
 
-// GetFilteredStatVarGroupNode fetches filtered StatVarGroupNode info from Spanner based on constrained places and import, and number of entities existence.
+// GetFilteredStatVarGroupNode fetches filtered StatVarGroupNode info from Spanner.
 func (sc *spannerDatabaseClient) GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]*FilteredStatVarGroupNode, error) {
 	response := map[string]*FilteredStatVarGroupNode{}
 	errGroup, errCtx := errgroup.WithContext(ctx)

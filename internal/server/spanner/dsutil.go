@@ -731,7 +731,7 @@ func filteredTopicInfoToBulkVariableGroupInfoResponse(counts map[string]int, nod
 		})
 	}
 
-	// Sort response by SVG.
+	// Sort response by node.
 	slices.SortFunc(response.Data, func(a, b *pbv1.VariableGroupInfoResponse) int {
 		return strings.Compare(a.Node, b.Node)
 	})
