@@ -36,6 +36,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/translator/sparql"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/golang/geo/s2"
+	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -264,53 +265,65 @@ func (sds *SpannerDataSource) resolveEmbeddings(
 		}
 	}
 
-	for _, node := range req.Request.GetNodes() {
-		entity := &pbv2.ResolveResponse_Entity{
-			Node: node,
-		}
+	nodes := req.Request.GetNodes()
+	errGroup, errCtx := errgroup.WithContext(ctx)
+	resolveResponse.Entities = make([]*pbv2.ResolveResponse_Entity, len(nodes))
 
-		// 1. Get term embedding
-		embeddings, err := sds.client.GetTermEmbeddingQuery(
-			ctx,
-			cfg.VectorSearchConfig.EmbeddingModel,
-			node,
-			string(cfg.VectorSearchConfig.EmbeddingType),
-		)
-		if err != nil {
-			return nil, status.Errorf(codes.Internal, "failed to get term embedding for %s: %v", node, err)
-		}
-		if len(embeddings) == 0 {
-			resolveResponse.Entities = append(resolveResponse.Entities, entity)
-			continue
-		}
+	for i, node := range nodes {
+		i, node := i, node // Capture loop variables
+		errGroup.Go(func() error {
+			entity := &pbv2.ResolveResponse_Entity{
+				Node: node,
+			}
 
-		// 2. Vector search
-		searchResults, err := sds.client.VectorSearchQuery(
-			ctx,
-			cfg.VectorSearchConfig.Limit,
-			embeddings,
-			cfg.VectorSearchConfig.NumLeaves,
-			cfg.VectorSearchConfig.Threshold,
-			typeOfs,
-		)
-		if err != nil {
-			return nil, status.Errorf(codes.Internal, "failed to perform vector search for %s: %v", node, err)
-		}
+			// 1. Get term embedding
+			embeddings, err := sds.client.GetTermEmbeddingQuery(
+				errCtx,
+				cfg.VectorSearchConfig.EmbeddingModel,
+				node,
+				string(cfg.VectorSearchConfig.EmbeddingType),
+			)
+			if err != nil {
+				return status.Errorf(codes.Internal, "failed to get term embedding for %s: %v", node, err)
+			}
+			if len(embeddings) == 0 {
+				resolveResponse.Entities[i] = entity
+				return nil
+			}
 
-		// 3. Build candidates
-		candidates := []*pbv2.ResolveResponse_Entity_Candidate{}
-		for _, res := range searchResults {
-			candidates = append(candidates, &pbv2.ResolveResponse_Entity_Candidate{
-				Dcid:   res.SubjectID,
-				TypeOf: res.Types,
-				Metadata: map[string]string{
-					"score":    fmt.Sprintf("%.4f", res.CosineSimilarity),
-					"sentence": res.Name,
-				},
-			})
-		}
-		entity.Candidates = candidates
-		resolveResponse.Entities = append(resolveResponse.Entities, entity)
+			// 2. Vector search
+			searchResults, err := sds.client.VectorSearchQuery(
+				errCtx,
+				cfg.VectorSearchConfig.Limit,
+				embeddings,
+				cfg.VectorSearchConfig.NumLeaves,
+				cfg.VectorSearchConfig.Threshold,
+				typeOfs,
+			)
+			if err != nil {
+				return status.Errorf(codes.Internal, "failed to perform vector search for %s: %v", node, err)
+			}
+
+			// 3. Build candidates
+			candidates := []*pbv2.ResolveResponse_Entity_Candidate{}
+			for _, res := range searchResults {
+				candidates = append(candidates, &pbv2.ResolveResponse_Entity_Candidate{
+					Dcid:   res.SubjectID,
+					TypeOf: res.Types,
+					Metadata: map[string]string{
+						"score":    fmt.Sprintf("%.4f", res.CosineSimilarity),
+						"sentence": res.Name,
+					},
+				})
+			}
+			entity.Candidates = candidates
+			resolveResponse.Entities[i] = entity
+			return nil
+		})
+	}
+
+	if err := errGroup.Wait(); err != nil {
+		return nil, err
 	}
 
 	return resolveResponse, nil
