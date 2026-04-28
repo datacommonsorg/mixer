@@ -717,6 +717,27 @@ func generateBulkVariableInfoResponse(variableInfo map[string]map[string]*pb.Sta
 	return response
 }
 
+func filteredTopicInfoToBulkVariableGroupInfoResponse(counts map[string]int, nodes []string) *pbv1.BulkVariableGroupInfoResponse {
+	response := &pbv1.BulkVariableGroupInfoResponse{
+		Data: make([]*pbv1.VariableGroupInfoResponse, 0, len(nodes)),
+	}
+
+	for node, count := range counts {
+		response.Data = append(response.Data, &pbv1.VariableGroupInfoResponse{
+			Node: node,
+			Info: &pb.StatVarGroupNode{
+				DescendentStatVarCount: int32(count),
+			},
+		})
+	}
+
+	// Sort response by node.
+	slices.SortFunc(response.Data, func(a, b *pbv1.VariableGroupInfoResponse) int {
+		return strings.Compare(a.Node, b.Node)
+	})
+	return response
+}
+
 // splitPascalCase splits a PascalCase string into separate words with spaces.
 func splitPascalCase(s string) string {
 	var builder strings.Builder
@@ -863,18 +884,28 @@ func svgInfoToBulkVariableGroupInfoResponse(svgInfo []*StatVarGroupNode, nodes [
 	return response
 }
 
-// filteredSVGInfoToBulkVariableGroupInfoResponse converts a list of FilteredStatVarGroupNode info to a BulkVariableGroupInfoResponse.
-func filteredSVGInfoToBulkVariableGroupInfoResponse(svgInfo *FilteredStatVarGroupNode, node string) *pbv1.BulkVariableGroupInfoResponse {
+// filteredSVGInfoToBulkVariableGroupInfoResponse converts a map of FilteredStatVarGroupNode info to a BulkVariableGroupInfoResponse.
+func filteredSVGInfoToBulkVariableGroupInfoResponse(svgInfo map[string]*FilteredStatVarGroupNode) *pbv1.BulkVariableGroupInfoResponse {
 	response := &pbv1.BulkVariableGroupInfoResponse{
-		Data: []*pbv1.VariableGroupInfoResponse{
-			{
-				Node: node,
-				Info: &pb.StatVarGroupNode{},
-			},
-		},
+		Data: []*pbv1.VariableGroupInfoResponse{},
 	}
 
-	svgNode := response.Data[0].Info
+	for node, info := range svgInfo {
+		response.Data = append(response.Data, &pbv1.VariableGroupInfoResponse{
+			Node: node,
+			Info: filteredSVGInfoToStatVarGroupNode(info, node),
+		})
+	}
+
+	slices.SortFunc(response.Data, func(a, b *pbv1.VariableGroupInfoResponse) int {
+		return strings.Compare(a.Node, b.Node)
+	})
+	return response
+}
+
+// filteredSVGInfoToStatVarGroupNode converts a FilteredStatVarGroupNode info to a BulkVariableGroupInfoResponse.
+func filteredSVGInfoToStatVarGroupNode(svgInfo *FilteredStatVarGroupNode, node string) *pb.StatVarGroupNode {
+	svgNode := &pb.StatVarGroupNode{}
 	allChildren := map[string]bool{}
 
 	// Attach Child SVGs.
@@ -928,5 +959,5 @@ func filteredSVGInfoToBulkVariableGroupInfoResponse(svgInfo *FilteredStatVarGrou
 
 	sortSVGNode(svgNode)
 
-	return response
+	return svgNode
 }

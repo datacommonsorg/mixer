@@ -1,514 +1,516 @@
 {
-  "SVGChild": [
-    {
-      "SubjectID": "Count_Company",
-      "Name": "",
-      "Predicate": "memberOf"
-    },
-    {
-      "SubjectID": "Count_Person",
-      "Name": "Total population",
-      "Predicate": "memberOf"
-    },
-    {
-      "SubjectID": "Count_Person_5To17Years_Poor",
-      "Name": "",
-      "Predicate": "memberOf"
-    },
-    {
-      "SubjectID": "Count_Person_AsAFractionOf_Count_Household",
-      "Name": "",
-      "Predicate": "memberOf"
-    },
-    {
-      "SubjectID": "Count_Person_InfrastructureProject_BrazilRuralDevelopmentProgram",
-      "Name": "",
-      "Predicate": "memberOf"
-    },
-    {
-      "SubjectID": "Count_Person_PerArea",
-      "Name": "Population Density",
-      "Predicate": "memberOf"
-    },
-    {
-      "SubjectID": "FertilityRate_Person_Female",
-      "Name": "Fertility rate of women",
-      "Predicate": "memberOf"
-    },
-    {
-      "SubjectID": "FertilityRate_Person_Female_AsAFractionOf_Count_Person_Female",
-      "Name": "Fertility rate (%)",
-      "Predicate": "memberOf"
-    },
-    {
-      "SubjectID": "GenderIncomeInequality_Person_15OrMoreYears_WithIncome",
-      "Name": "Income Inequality Between Men and Women of Working Age",
-      "Predicate": "memberOf"
-    },
-    {
-      "SubjectID": "GrowthRate_Count_Person",
-      "Name": "Population growth rate",
-      "Predicate": "memberOf"
-    },
-    {
-      "SubjectID": "IncrementalCount_Person",
-      "Name": "Population Change",
-      "Predicate": "memberOf"
-    },
-    {
-      "SubjectID": "LifeExpectancy_Person",
-      "Name": "Life Expectancy",
-      "Predicate": "memberOf"
-    },
-    {
-      "SubjectID": "Mean_Count_Person",
-      "Name": "Mean count of person",
-      "Predicate": "memberOf"
-    },
-    {
-      "SubjectID": "Mean_IncrementalCount_Person",
-      "Name": "Mean incremental count of person",
-      "Predicate": "memberOf"
-    },
-    {
-      "SubjectID": "Mean_MealCost_Person_FoodSecure",
-      "Name": "Average Meal Cost for Food Secure People",
-      "Predicate": "memberOf"
-    },
-    {
-      "SubjectID": "Median_Age_Person",
-      "Name": "Median age of population",
-      "Predicate": "memberOf"
-    },
-    {
-      "SubjectID": "Median_Income_Person",
-      "Name": "Median Income of a Population",
-      "Predicate": "memberOf"
-    },
-    {
-      "SubjectID": "dc/g/Child",
-      "Name": "Child",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Children",
-      "Name": "Children",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/CivicStructure",
-      "Name": "Civic Structure",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Commute",
-      "Name": "Commute",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Courthouse",
-      "Name": "Courthouse",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Demographics_Miscellaneous",
-      "Name": "Miscellaneous",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Food",
-      "Name": "Food",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/FoodBasket",
-      "Name": "Food Basket",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/House",
-      "Name": "House",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Household",
-      "Name": "Household",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Households",
-      "Name": "Households",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/ImmigrationAndCitizenship",
-      "Name": "Immigration and Citizenship",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Infant",
-      "Name": "Infant",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Language",
-      "Name": "Language",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/MaternalMortalityEvent",
-      "Name": "Maternal Mortality Event",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/MilitaryService",
-      "Name": "Military Service",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Mother",
-      "Name": "Mother",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/MunicipalWard",
-      "Name": "Municipal Ward",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/NonPregnantWoman",
-      "Name": "Non Pregnant Woman",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_Age",
-      "Name": "Person by Age",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_AgeGroupClassification",
-      "Name": "Person by Age Group Classification",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_BenefitProgram",
-      "Name": "Person by Benefit Program",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_BenefitsStatus",
-      "Name": "Person by Benefits Status",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_CarpoolOccupancy",
-      "Name": "Person by Carpool Occupancy",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_ChildrenStatus",
-      "Name": "Person by Children Status",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_CitizenshipStatus",
-      "Name": "Person by Citizenship Status",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_CommuteStartTime",
-      "Name": "Person by Commute Start Time",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_CommuteType",
-      "Name": "Person by Commute Type",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_ComparisonRegion",
-      "Name": "Person by Comparison Region",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_CrashInvolvement",
-      "Name": "Person by Crash Involvement",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_DateOfEntry",
-      "Name": "Person by Date of Entry",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_DeprivationDomain",
-      "Name": "Person by Deprivation Domain",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_DeviceUsed",
-      "Name": "Person by Device Used",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_DisabilityStatus",
-      "Name": "Person by Disability Status",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_Earnings",
-      "Name": "Person by Earnings",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_ElectronicGadgetUsed",
-      "Name": "Person by Electronic Gadget Used",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_Employer",
-      "Name": "Person by Employer",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_Ethnicity",
-      "Name": "Person by Ethnicity",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_Facilities",
-      "Name": "Person by Facilities",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_FoodSecurityStatus",
-      "Name": "Person by Food Security Status",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_Gender",
-      "Name": "Person by Gender",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_GovernmentId",
-      "Name": "Person by Government Id",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_GovernmentIdentifier",
-      "Name": "Person by Government Identifier",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_HealthInsurance",
-      "Name": "Person by Health Insurance",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_HouseholdIncome",
-      "Name": "Person by Household Income",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_HouseholdType",
-      "Name": "Person by Household Type",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_IdentityActivity",
-      "Name": "Person by Identity Activity",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_Income",
-      "Name": "Person by Income",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_IncomeStatus",
-      "Name": "Person by Income Status",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_InternetAccessStatus",
-      "Name": "Person by Internet Access Status",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_InternetUsageLocation",
-      "Name": "Person by Internet Usage Location",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_IsInternetUser",
-      "Name": "Person by Is Internet User",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_LaborForceStatus",
-      "Name": "Person by Labor Force Status",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_LiteracyStatus",
-      "Name": "Person by Literacy Status",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_MaritalStatus",
-      "Name": "Person by Marital Status",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_MemberStatus",
-      "Name": "Person by Member Status",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_NumberOfVehiclesInHousehold",
-      "Name": "Person by Number of Vehicles in Household",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_PlaceOfBirth",
-      "Name": "Person by Place of Birth",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_PlaceOfResidenceClassification",
-      "Name": "Person by Place of Residence Classification",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_PovertyStatus",
-      "Name": "Person by Poverty Status",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_Race",
-      "Name": "Person by Race",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_Religion",
-      "Name": "Person by Religion",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_ResidentStatus",
-      "Name": "Person by Resident Status",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_VehicleOccupantType",
-      "Name": "Person by Vehicle Occupant Type",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Person_VulnerabilityStatus",
-      "Name": "Person by Vulnerability Status",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Place_Facilities",
-      "Name": "Place by Facilities",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Place_PlaceOfResidenceClassification",
-      "Name": "Place by Place of Residence Classification",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Place_PlaceType",
-      "Name": "Place by Place Type",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Place_SocialCondition",
-      "Name": "Place by Social Condition",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Residence",
-      "Name": "Residence",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Vehicle",
-      "Name": "Vehicle",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/VehicleCrashIncident",
-      "Name": "Vehicle Crash Incident",
-      "Predicate": "specializationOf"
-    },
-    {
-      "SubjectID": "dc/g/Village",
-      "Name": "Village",
-      "Predicate": "specializationOf"
-    }
-  ],
-  "ChildSV": [
-    {
-      "SubjectID": "Count_Person",
-      "Name": "Total population"
-    },
-    {
-      "SubjectID": "FertilityRate_Person_Female",
-      "Name": "Fertility rate of women"
-    },
-    {
-      "SubjectID": "GrowthRate_Count_Person",
-      "Name": "Population growth rate"
-    },
-    {
-      "SubjectID": "LifeExpectancy_Person",
-      "Name": "Life Expectancy"
-    }
-  ],
-  "ChildSVG": [
-    {
-      "SubjectID": "dc/g/Demographics",
-      "Name": "Demographics",
-      "DescendentStatVarCount": 1425
-    },
-    {
-      "SubjectID": "dc/g/Demographics_Miscellaneous",
-      "Name": "Miscellaneous",
-      "DescendentStatVarCount": 1385
-    },
-    {
-      "SubjectID": "dc/g/Person_Age",
-      "Name": "Person by Age",
-      "DescendentStatVarCount": 21
-    },
-    {
-      "SubjectID": "dc/g/Person_Gender",
-      "Name": "Person by Gender",
-      "DescendentStatVarCount": 23
-    },
-    {
-      "SubjectID": "dc/g/Person_IsInternetUser",
-      "Name": "Person by Is Internet User",
-      "DescendentStatVarCount": 1
-    },
-    {
-      "SubjectID": "dc/g/Person_LaborForceStatus",
-      "Name": "Person by Labor Force Status",
-      "DescendentStatVarCount": 5
-    },
-    {
-      "SubjectID": "dc/g/Person_PlaceOfResidenceClassification",
-      "Name": "Person by Place of Residence Classification",
-      "DescendentStatVarCount": 2
-    },
-    {
-      "SubjectID": "dc/g/Residence",
-      "Name": "Residence",
-      "DescendentStatVarCount": 3
-    }
-  ]
+  "dc/g/Demographics": {
+    "SVGChild": [
+      {
+        "SubjectID": "Count_Company",
+        "Name": "",
+        "Predicate": "memberOf"
+      },
+      {
+        "SubjectID": "Count_Person",
+        "Name": "Total population",
+        "Predicate": "memberOf"
+      },
+      {
+        "SubjectID": "Count_Person_5To17Years_Poor",
+        "Name": "",
+        "Predicate": "memberOf"
+      },
+      {
+        "SubjectID": "Count_Person_AsAFractionOf_Count_Household",
+        "Name": "",
+        "Predicate": "memberOf"
+      },
+      {
+        "SubjectID": "Count_Person_InfrastructureProject_BrazilRuralDevelopmentProgram",
+        "Name": "",
+        "Predicate": "memberOf"
+      },
+      {
+        "SubjectID": "Count_Person_PerArea",
+        "Name": "Population Density",
+        "Predicate": "memberOf"
+      },
+      {
+        "SubjectID": "FertilityRate_Person_Female",
+        "Name": "Fertility rate of women",
+        "Predicate": "memberOf"
+      },
+      {
+        "SubjectID": "FertilityRate_Person_Female_AsAFractionOf_Count_Person_Female",
+        "Name": "Fertility rate (%)",
+        "Predicate": "memberOf"
+      },
+      {
+        "SubjectID": "GenderIncomeInequality_Person_15OrMoreYears_WithIncome",
+        "Name": "Income Inequality Between Men and Women of Working Age",
+        "Predicate": "memberOf"
+      },
+      {
+        "SubjectID": "GrowthRate_Count_Person",
+        "Name": "Population growth rate",
+        "Predicate": "memberOf"
+      },
+      {
+        "SubjectID": "IncrementalCount_Person",
+        "Name": "Population Change",
+        "Predicate": "memberOf"
+      },
+      {
+        "SubjectID": "LifeExpectancy_Person",
+        "Name": "Life Expectancy",
+        "Predicate": "memberOf"
+      },
+      {
+        "SubjectID": "Mean_Count_Person",
+        "Name": "Mean count of person",
+        "Predicate": "memberOf"
+      },
+      {
+        "SubjectID": "Mean_IncrementalCount_Person",
+        "Name": "Mean incremental count of person",
+        "Predicate": "memberOf"
+      },
+      {
+        "SubjectID": "Mean_MealCost_Person_FoodSecure",
+        "Name": "Average Meal Cost for Food Secure People",
+        "Predicate": "memberOf"
+      },
+      {
+        "SubjectID": "Median_Age_Person",
+        "Name": "Median age of population",
+        "Predicate": "memberOf"
+      },
+      {
+        "SubjectID": "Median_Income_Person",
+        "Name": "Median Income of a Population",
+        "Predicate": "memberOf"
+      },
+      {
+        "SubjectID": "dc/g/Child",
+        "Name": "Child",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Children",
+        "Name": "Children",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/CivicStructure",
+        "Name": "Civic Structure",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Commute",
+        "Name": "Commute",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Courthouse",
+        "Name": "Courthouse",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Demographics_Miscellaneous",
+        "Name": "Miscellaneous",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Food",
+        "Name": "Food",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/FoodBasket",
+        "Name": "Food Basket",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/House",
+        "Name": "House",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Household",
+        "Name": "Household",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Households",
+        "Name": "Households",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/ImmigrationAndCitizenship",
+        "Name": "Immigration and Citizenship",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Infant",
+        "Name": "Infant",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Language",
+        "Name": "Language",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/MaternalMortalityEvent",
+        "Name": "Maternal Mortality Event",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/MilitaryService",
+        "Name": "Military Service",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Mother",
+        "Name": "Mother",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/MunicipalWard",
+        "Name": "Municipal Ward",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/NonPregnantWoman",
+        "Name": "Non Pregnant Woman",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_Age",
+        "Name": "Person by Age",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_AgeGroupClassification",
+        "Name": "Person by Age Group Classification",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_BenefitProgram",
+        "Name": "Person by Benefit Program",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_BenefitsStatus",
+        "Name": "Person by Benefits Status",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_CarpoolOccupancy",
+        "Name": "Person by Carpool Occupancy",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_ChildrenStatus",
+        "Name": "Person by Children Status",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_CitizenshipStatus",
+        "Name": "Person by Citizenship Status",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_CommuteStartTime",
+        "Name": "Person by Commute Start Time",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_CommuteType",
+        "Name": "Person by Commute Type",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_ComparisonRegion",
+        "Name": "Person by Comparison Region",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_CrashInvolvement",
+        "Name": "Person by Crash Involvement",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_DateOfEntry",
+        "Name": "Person by Date of Entry",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_DeprivationDomain",
+        "Name": "Person by Deprivation Domain",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_DeviceUsed",
+        "Name": "Person by Device Used",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_DisabilityStatus",
+        "Name": "Person by Disability Status",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_Earnings",
+        "Name": "Person by Earnings",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_ElectronicGadgetUsed",
+        "Name": "Person by Electronic Gadget Used",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_Employer",
+        "Name": "Person by Employer",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_Ethnicity",
+        "Name": "Person by Ethnicity",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_Facilities",
+        "Name": "Person by Facilities",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_FoodSecurityStatus",
+        "Name": "Person by Food Security Status",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_Gender",
+        "Name": "Person by Gender",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_GovernmentId",
+        "Name": "Person by Government Id",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_GovernmentIdentifier",
+        "Name": "Person by Government Identifier",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_HealthInsurance",
+        "Name": "Person by Health Insurance",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_HouseholdIncome",
+        "Name": "Person by Household Income",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_HouseholdType",
+        "Name": "Person by Household Type",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_IdentityActivity",
+        "Name": "Person by Identity Activity",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_Income",
+        "Name": "Person by Income",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_IncomeStatus",
+        "Name": "Person by Income Status",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_InternetAccessStatus",
+        "Name": "Person by Internet Access Status",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_InternetUsageLocation",
+        "Name": "Person by Internet Usage Location",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_IsInternetUser",
+        "Name": "Person by Is Internet User",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_LaborForceStatus",
+        "Name": "Person by Labor Force Status",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_LiteracyStatus",
+        "Name": "Person by Literacy Status",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_MaritalStatus",
+        "Name": "Person by Marital Status",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_MemberStatus",
+        "Name": "Person by Member Status",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_NumberOfVehiclesInHousehold",
+        "Name": "Person by Number of Vehicles in Household",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_PlaceOfBirth",
+        "Name": "Person by Place of Birth",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_PlaceOfResidenceClassification",
+        "Name": "Person by Place of Residence Classification",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_PovertyStatus",
+        "Name": "Person by Poverty Status",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_Race",
+        "Name": "Person by Race",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_Religion",
+        "Name": "Person by Religion",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_ResidentStatus",
+        "Name": "Person by Resident Status",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_VehicleOccupantType",
+        "Name": "Person by Vehicle Occupant Type",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Person_VulnerabilityStatus",
+        "Name": "Person by Vulnerability Status",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Place_Facilities",
+        "Name": "Place by Facilities",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Place_PlaceOfResidenceClassification",
+        "Name": "Place by Place of Residence Classification",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Place_PlaceType",
+        "Name": "Place by Place Type",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Place_SocialCondition",
+        "Name": "Place by Social Condition",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Residence",
+        "Name": "Residence",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Vehicle",
+        "Name": "Vehicle",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/VehicleCrashIncident",
+        "Name": "Vehicle Crash Incident",
+        "Predicate": "specializationOf"
+      },
+      {
+        "SubjectID": "dc/g/Village",
+        "Name": "Village",
+        "Predicate": "specializationOf"
+      }
+    ],
+    "ChildSV": [
+      {
+        "SubjectID": "Count_Person",
+        "Name": "Total population"
+      },
+      {
+        "SubjectID": "FertilityRate_Person_Female",
+        "Name": "Fertility rate of women"
+      },
+      {
+        "SubjectID": "GrowthRate_Count_Person",
+        "Name": "Population growth rate"
+      },
+      {
+        "SubjectID": "LifeExpectancy_Person",
+        "Name": "Life Expectancy"
+      }
+    ],
+    "ChildSVG": [
+      {
+        "SubjectID": "dc/g/Demographics",
+        "Name": "Demographics",
+        "DescendentStatVarCount": 1425
+      },
+      {
+        "SubjectID": "dc/g/Demographics_Miscellaneous",
+        "Name": "Miscellaneous",
+        "DescendentStatVarCount": 1385
+      },
+      {
+        "SubjectID": "dc/g/Person_Age",
+        "Name": "Person by Age",
+        "DescendentStatVarCount": 21
+      },
+      {
+        "SubjectID": "dc/g/Person_Gender",
+        "Name": "Person by Gender",
+        "DescendentStatVarCount": 23
+      },
+      {
+        "SubjectID": "dc/g/Person_IsInternetUser",
+        "Name": "Person by Is Internet User",
+        "DescendentStatVarCount": 1
+      },
+      {
+        "SubjectID": "dc/g/Person_LaborForceStatus",
+        "Name": "Person by Labor Force Status",
+        "DescendentStatVarCount": 5
+      },
+      {
+        "SubjectID": "dc/g/Person_PlaceOfResidenceClassification",
+        "Name": "Person by Place of Residence Classification",
+        "DescendentStatVarCount": 2
+      },
+      {
+        "SubjectID": "dc/g/Residence",
+        "Name": "Residence",
+        "DescendentStatVarCount": 3
+      }
+    ]
+  }
 }

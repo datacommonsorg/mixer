@@ -218,6 +218,18 @@ func TestGetFilteredSVGChildren(t *testing.T) {
 	}
 }
 
+func TestGetFilteredTopicChildren(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range getFilteredTopicTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.GetFilteredTopicChildrenQuery(c.nodes, c.constrainedPlaces, c.constrainedImport, c.numEntitiesExistence), nil
+		})
+	}
+}
+
 func TestGetTermEmbeddingQuery(t *testing.T) {
 	t.Parallel()
 
