@@ -10,8 +10,6 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-const mockTimestampStr = "2026-04-22T19:00:00Z"
-
 func TestJSONStatFormatter_Golden(t *testing.T) {
 	formatter := &JSONStatFormatter{}
 
