@@ -893,7 +893,7 @@ func filteredSVGInfoToBulkVariableGroupInfoResponse(svgInfo map[string]*Filtered
 	for node, info := range svgInfo {
 		response.Data = append(response.Data, &pbv1.VariableGroupInfoResponse{
 			Node: node,
-			Info: filteredSingleSVGInfoToBulkVariableGroupInfoResponse(info, node),
+			Info: filteredSVGInfoToStatVarGroupNode(info, node),
 		})
 	}
 
@@ -903,8 +903,8 @@ func filteredSVGInfoToBulkVariableGroupInfoResponse(svgInfo map[string]*Filtered
 	return response
 }
 
-// filteredSingleSVGInfoToBulkVariableGroupInfoResponse converts a FilteredStatVarGroupNode info to a BulkVariableGroupInfoResponse.
-func filteredSingleSVGInfoToBulkVariableGroupInfoResponse(svgInfo *FilteredStatVarGroupNode, node string) *pb.StatVarGroupNode {
+// filteredSVGInfoToStatVarGroupNode converts a FilteredStatVarGroupNode info to a BulkVariableGroupInfoResponse.
+func filteredSVGInfoToStatVarGroupNode(svgInfo *FilteredStatVarGroupNode, node string) *pb.StatVarGroupNode {
 	svgNode := &pb.StatVarGroupNode{}
 	allChildren := map[string]bool{}
 

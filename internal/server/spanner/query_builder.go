@@ -444,7 +444,7 @@ func filterDescentStatVarsQuery(constrainedPlaces []string, constrainedImport st
 	var params = map[string]interface{}{}
 
 	var entityFilter string
-	var distinct string
+	distinct := "observation_about"
 	if constrainedImport != "" {
 		entityFilter = statements.filterDescendentStatVarsByImport
 		params["predicate"] = getImportFilterPredicate(constrainedImport)
@@ -459,7 +459,6 @@ func filterDescentStatVarsQuery(constrainedPlaces []string, constrainedImport st
 			entityFilter = entityFilter + "\n\t\t\t\t\t" + sqlAnd + " " + fmt.Sprintf(statements.selectEntityDcids, placeFilter)
 		}
 		params["places"] = placeVal
-		distinct = "observation_about"
 	}
 
 	var numFilter string
