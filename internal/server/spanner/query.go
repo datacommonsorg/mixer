@@ -71,6 +71,9 @@ const (
 	predName               = "name"
 	predUrl                = "url"
 	predDomain             = "domain"
+
+	// Maximum number of concurrent goroutines for fetching filtered StatVarGroupNode info.
+	maxConcurrentFilteredSVGGoroutines = 10
 )
 
 // GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction and returns a map.
@@ -685,6 +688,7 @@ func (sc *spannerDatabaseClient) GetStatVarGroupNode(ctx context.Context, nodes 
 func (sc *spannerDatabaseClient) GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]*FilteredStatVarGroupNode, error) {
 	response := map[string]*FilteredStatVarGroupNode{}
 	errGroup, errCtx := errgroup.WithContext(ctx)
+	errGroup.SetLimit(maxConcurrentFilteredSVGGoroutines) // Limit the number of concurrent goroutines to avoid overwhelming Spanner with too many requests.
 
 	type nodeResult struct {
 		node string
@@ -807,25 +811,29 @@ func (sc *spannerDatabaseClient) GetFilteredTopic(ctx context.Context, nodes []s
 	}
 
 	stmt := GetFilteredTopicChildrenQuery(nodes, constrainedPlaces, constrainedImport, numEntitiesExistence)
-	rows, err := queryDynamic(ctx, sc, *stmt)
+	err := sc.executeQuery(ctx, *stmt, func(iter *spanner.RowIterator) error {
+		for {
+			row, err := iter.Next()
+			if err == iterator.Done {
+				break
+			}
+			if err != nil {
+				return err
+			}
+
+			var parent string
+			var count int64
+			if err := row.Columns(&parent, &count); err != nil {
+				return fmt.Errorf("error reading row for filtered Topic children count: %w", err)
+			}
+			counts[parent] = int(count)
+		}
+		return nil
+	})
 	if err != nil {
 		return counts, err
 	}
-	if len(rows) == 0 {
-		// No child SVs.
-		return counts, nil
-	}
-	for _, row := range rows {
-		if len(row) != 2 {
-			return counts, fmt.Errorf("malformed response when fetching count of Topic children")
-		}
-		parent := row[0]
-		count, err := strconv.Atoi(row[1])
-		if err != nil {
-			return counts, fmt.Errorf("error converting Topic children count to int")
-		}
-		counts[parent] = count
-	}
+
 	return counts, nil
 }
 
