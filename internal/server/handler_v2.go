@@ -516,7 +516,13 @@ func (s *Server) V2BulkVariableGroupInfo(
 	ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest,
 ) (*pbv1.BulkVariableGroupInfoResponse, error) {
 	if s.shouldDivertV2(ctx) {
-		return s.dispatcher.BulkVariableGroupInfo(ctx, in)
+		resp, err := s.dispatcher.BulkVariableGroupInfo(ctx, in)
+		if err != nil {
+			return nil, err
+		}
+		clonedResp := proto.Clone(resp).(*pbv1.BulkVariableGroupInfoResponse)
+		clonedResp.Data = filterVariableGroupInfo(clonedResp.GetData())
+		return clonedResp, nil
 	}
 
 	v2StartTime := time.Now()
@@ -529,6 +535,9 @@ func (s *Server) V2BulkVariableGroupInfo(
 	v2Resp := proto.Clone(v1Resp).(*pbv1.BulkVariableGroupInfoResponse)
 
 	convertV1ToV2BulkVariableGroupInfo(v2Resp)
+
+	// Filter out excluded SVGs.
+	v2Resp.Data = filterVariableGroupInfo(v2Resp.GetData())
 
 	v2Latency := time.Since(v2StartTime)
 
@@ -544,6 +553,33 @@ func (s *Server) V2BulkVariableGroupInfo(
 	)
 
 	return v2Resp, nil
+}
+
+// filterVariableGroupInfo filters out excluded SVGs from the response data.
+func filterVariableGroupInfo(data []*pbv1.VariableGroupInfoResponse) []*pbv1.VariableGroupInfoResponse {
+	filteredData := make([]*pbv1.VariableGroupInfoResponse, 0, len(data))
+	for _, item := range data {
+		if _, ok := svgGroupInfoExclusionList[item.GetNode()]; ok {
+			continue
+		}
+		if item.GetInfo() != nil {
+			childGroups := item.GetInfo().GetChildStatVarGroups()
+			filteredChildren := make([]*pb.StatVarGroupNode_ChildSVG, 0, len(childGroups))
+			for _, child := range childGroups {
+				if _, ok := svgGroupInfoExclusionList[child.Id]; ok {
+					item.Info.DescendentStatVarCount -= child.DescendentStatVarCount
+				} else {
+					filteredChildren = append(filteredChildren, child)
+				}
+			}
+			if item.Info.DescendentStatVarCount < 0 {
+				item.Info.DescendentStatVarCount = 0
+			}
+			item.Info.ChildStatVarGroups = filteredChildren
+		}
+		filteredData = append(filteredData, item)
+	}
+	return filteredData
 }
 
 // convertV1ToV2BulkVariableGroupInfo converts a V1 BulkVariableGroupInfoResponse to the V2 version.
