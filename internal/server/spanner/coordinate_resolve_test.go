@@ -96,12 +96,12 @@ func (m *coordinateMockSpannerClient) GetStatVarGroupNode(ctx context.Context, n
 	return nil, nil
 }
 
-func (m *coordinateMockSpannerClient) GetFilteredStatVarGroupNode(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (*FilteredStatVarGroupNode, error) {
+func (m *coordinateMockSpannerClient) GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]*FilteredStatVarGroupNode, error) {
 	return nil, nil
 }
 
-func (m *coordinateMockSpannerClient) GetFilteredTopic(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (int, error) {
-	return 0, nil
+func (m *coordinateMockSpannerClient) GetFilteredTopic(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]int, error) {
+	return nil, nil
 }
 
 func (m *coordinateMockSpannerClient) Id() string { return "mock" }

@@ -9,6 +9,6 @@
 				GROUP BY variable_measured
 			) o ON o.variable_measured = e.subject_id
 		WHERE e.predicate = 'linkedMember'
-			AND e.object_id = 'dc/topic/Demographics'
+			AND e.object_id IN ('dc/topic/Demographics','dc/topic/Economy')
 		GROUP BY
 			e.object_id
