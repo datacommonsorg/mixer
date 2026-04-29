@@ -613,7 +613,6 @@ func convertV1ToV2BulkVariableGroupInfo(resp *pbv1.BulkVariableGroupInfoResponse
 		for _, childSV := range info.GetInfo().GetChildStatVars() {
 			childSV.SearchName = ""
 			childSV.SearchNames = nil
-			childSV.Definition = ""
 		}
 	}
 }
