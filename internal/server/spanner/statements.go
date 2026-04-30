@@ -416,14 +416,14 @@ var statements = struct {
 				WHERE o.variable_measured = sv.child_sv
 				LIMIT 1
 			) AS has_data,
-			 (
+			IFNULL((
 				SELECT n_def.value
 				FROM Edge e_def
 				JOIN Node n_def ON e_def.object_id = n_def.subject_id
 				WHERE e_def.subject_id = sv.child_sv
 				AND e_def.predicate = 'definition'
 				LIMIT 1
-			 ) AS definition
+			), '') AS definition
 		FROM ChildSVs sv
 		JOIN Node n 
 		ON n.subject_id = sv.child_sv`,
