@@ -135,6 +135,7 @@ type StatVarGroupNode struct {
 	Name                   string `spanner:"name"`
 	DescendentStatVarCount int64  `spanner:"descendent_stat_var_count"`
 	HasData                bool   `spanner:"has_data"`
+	Definition             string `spanner:"definition"`
 }
 
 // SVGChild represents the info to build a base SVG child.
@@ -142,12 +143,14 @@ type SVGChild struct {
 	SubjectID string `spanner:"subject_id"`
 	Name      string `spanner:"name"`
 	Predicate string `spanner:"predicate"`
+	Definition string `spanner:"definition"`
 }
 
 // ChildSV represents the info to build a child SV of an SVG.
 type ChildSV struct {
 	SubjectID string `spanner:"subject_id"`
 	Name      string `spanner:"name"`
+	Definition string `spanner:"definition"`
 }
 
 // ChildSVG represents the info to build a child SVG an an SVG.

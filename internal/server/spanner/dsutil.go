@@ -844,6 +844,7 @@ func svgInfoToBulkVariableGroupInfoResponse(svgInfo []*StatVarGroupNode, nodes [
 				Id:          row.SubjectID,
 				DisplayName: name,
 				HasData:     row.HasData,
+				Definition:  row.Definition,
 			}
 			svgNode.ChildStatVars = append(svgNode.ChildStatVars, childSV)
 		}
@@ -901,6 +902,7 @@ func filteredSVGInfoToBulkVariableGroupInfoResponse(svgInfo *FilteredStatVarGrou
 			Id:          row.SubjectID,
 			DisplayName: name,
 			HasData:     true,
+			Definition:  row.Definition,
 		})
 		allChildren[row.SubjectID] = true
 	}
@@ -922,6 +924,7 @@ func filteredSVGInfoToBulkVariableGroupInfoResponse(svgInfo *FilteredStatVarGrou
 			svgNode.ChildStatVars = append(svgNode.ChildStatVars, &pb.StatVarGroupNode_ChildSV{
 				Id:          row.SubjectID,
 				DisplayName: name,
+				Definition:  row.Definition,
 			})
 		}
 	}
