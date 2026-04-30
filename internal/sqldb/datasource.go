@@ -134,3 +134,9 @@ func (sds *SQLDataSource) BulkVariableInfo(ctx context.Context, req *pbv1.BulkVa
 func (sds *SQLDataSource) BulkVariableGroupInfo(ctx context.Context, req *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error) {
 	return &pbv1.BulkVariableGroupInfoResponse{}, nil
 }
+
+// SdmxData retrieves SDMX data from the data source.
+// Note: SQLite / CloudSQL does not natively support graph property traversal required for SDMX without complex JOIN chains.
+func (sds *SQLDataSource) SdmxData(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+	return &pb.SdmxDataResult{}, nil
+}

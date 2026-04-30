@@ -1,0 +1,63 @@
+{
+  "class": "dataset",
+  "dimension": {
+    "gender": {
+      "category": {
+        "index": [
+          "Female",
+          "Male"
+        ]
+      },
+      "label": "gender"
+    },
+    "observationAbout": {
+      "category": {
+        "index": [
+          "country/USA"
+        ]
+      },
+      "label": "observationAbout"
+    },
+    "observationDate": {
+      "category": {
+        "index": [
+          "2020",
+          "2021"
+        ]
+      },
+      "label": "observationDate"
+    },
+    "variableMeasured": {
+      "category": {
+        "index": [
+          "Count_Person"
+        ]
+      },
+      "label": "variableMeasured"
+    }
+  },
+  "extension": {
+    "annotations": {}
+  },
+  "id": [
+    "variableMeasured",
+    "gender",
+    "observationAbout",
+    "observationDate"
+  ],
+  "label": "Data Commons SDMX Query Results",
+  "size": [
+    1,
+    2,
+    1,
+    2
+  ],
+  "source": "Data Commons",
+  "value": [
+    160000000,
+    null,
+    331000000,
+    332000000
+  ],
+  "version": "2.0"
+}

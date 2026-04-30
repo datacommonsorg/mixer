@@ -16,10 +16,8 @@ package golden
 
 import (
 	"context"
-	"fmt"
 	"path"
 	"runtime"
-	"strings"
 	"testing"
 
 	cloudSpanner "cloud.google.com/go/spanner"
@@ -218,6 +216,18 @@ func TestGetFilteredSVGChildren(t *testing.T) {
 	}
 }
 
+func TestGetFilteredTopicChildren(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range getFilteredTopicTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.GetFilteredTopicChildrenQuery(c.nodes, c.constrainedPlaces, c.constrainedImport, c.numEntitiesExistence), nil
+		})
+	}
+}
+
 func TestGetTermEmbeddingQuery(t *testing.T) {
 	t.Parallel()
 
@@ -254,7 +264,7 @@ func runQueryBuilderGoldenTest(t *testing.T, goldenFile string, fn goldenTestFun
 	if err != nil {
 		t.Fatalf("test function error (%v): %v", goldenFile, err)
 	}
-	interpolated := interpolateSQL(actual.(*cloudSpanner.Statement))
+	interpolated := spanner.InterpolateSQL(actual.(*cloudSpanner.Statement))
 
 	if test.GenerateGolden {
 		err := test.WriteGolden(interpolated, goldenDir, goldenFile)
@@ -275,40 +285,4 @@ func runQueryBuilderGoldenTest(t *testing.T, goldenFile string, fn goldenTestFun
 	}
 }
 
-// Replace params with values in SQL. ONLY FOR TESTS.
-func interpolateSQL(stmt *cloudSpanner.Statement) string {
-	sqlString := stmt.SQL
-	for key, value := range stmt.Params {
-		placeholder := "@" + key
-		var formattedValue string
 
-		switch v := value.(type) {
-		case string:
-			formattedValue = fmt.Sprintf("'%s'", strings.ReplaceAll(v, "'", "''"))
-		case []string:
-			// For UNNEST, represent the array as a comma-separated list
-			// enclosed in parentheses or brackets for clarity.
-			var quotedValues []string
-			for _, s := range v {
-				quotedValues = append(quotedValues, fmt.Sprintf("'%s'", strings.ReplaceAll(s, "'", "''")))
-			}
-			formattedValue = "(" + strings.Join(quotedValues, ",") + ")"
-			// Need to handle both UNNEST(@key) and @key
-			sqlString = strings.ReplaceAll(sqlString, "IN UNNEST("+placeholder+")", "IN "+formattedValue)
-			placeholder = "@" + key // Ensure we don't mess up UNNEST replacement
-			formattedValue = "[" + strings.Join(quotedValues, ",") + "]"
-		case []float64:
-			var stringValues []string
-			for _, f := range v {
-				stringValues = append(stringValues, fmt.Sprintf("%v", f))
-			}
-			formattedValue = "[" + strings.Join(stringValues, ",") + "]"
-		// ... add more cases for int64, float64, bool, etc.
-		default:
-			// Catch-all for other types
-			formattedValue = fmt.Sprintf("%v", v)
-		}
-		sqlString = strings.ReplaceAll(sqlString, placeholder, formattedValue)
-	}
-	return sqlString
-}

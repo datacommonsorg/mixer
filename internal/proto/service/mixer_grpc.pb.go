@@ -32,6 +32,7 @@ import (
 	proto "github.com/datacommonsorg/mixer/internal/proto"
 	v1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	v2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	v3 "github.com/datacommonsorg/mixer/internal/proto/v3"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -45,6 +46,7 @@ const _ = grpc.SupportPackageIsVersion7
 const (
 	Mixer_V3Node_FullMethodName                       = "/datacommons.Mixer/V3Node"
 	Mixer_V3Observation_FullMethodName                = "/datacommons.Mixer/V3Observation"
+	Mixer_V3SdmxData_FullMethodName                   = "/datacommons.Mixer/V3SdmxData"
 	Mixer_V3NodeSearch_FullMethodName                 = "/datacommons.Mixer/V3NodeSearch"
 	Mixer_V3Resolve_FullMethodName                    = "/datacommons.Mixer/V3Resolve"
 	Mixer_V3Event_FullMethodName                      = "/datacommons.Mixer/V3Event"
@@ -115,6 +117,7 @@ const (
 type MixerClient interface {
 	V3Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error)
 	V3Observation(ctx context.Context, in *v2.ObservationRequest, opts ...grpc.CallOption) (*v2.ObservationResponse, error)
+	V3SdmxData(ctx context.Context, in *v3.SdmxDataRequest, opts ...grpc.CallOption) (*v3.SdmxDataResponse, error)
 	V3NodeSearch(ctx context.Context, in *v2.NodeSearchRequest, opts ...grpc.CallOption) (*v2.NodeSearchResponse, error)
 	V3Resolve(ctx context.Context, in *v2.ResolveRequest, opts ...grpc.CallOption) (*v2.ResolveResponse, error)
 	V3Event(ctx context.Context, in *v2.EventRequest, opts ...grpc.CallOption) (*v2.EventResponse, error)
@@ -234,6 +237,15 @@ func (c *mixerClient) V3Node(ctx context.Context, in *v2.NodeRequest, opts ...gr
 func (c *mixerClient) V3Observation(ctx context.Context, in *v2.ObservationRequest, opts ...grpc.CallOption) (*v2.ObservationResponse, error) {
 	out := new(v2.ObservationResponse)
 	err := c.cc.Invoke(ctx, Mixer_V3Observation_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) V3SdmxData(ctx context.Context, in *v3.SdmxDataRequest, opts ...grpc.CallOption) (*v3.SdmxDataResponse, error) {
+	out := new(v3.SdmxDataResponse)
+	err := c.cc.Invoke(ctx, Mixer_V3SdmxData_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -805,6 +817,7 @@ func (c *mixerClient) GetImportTableData(ctx context.Context, in *proto.GetImpor
 type MixerServer interface {
 	V3Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error)
 	V3Observation(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error)
+	V3SdmxData(context.Context, *v3.SdmxDataRequest) (*v3.SdmxDataResponse, error)
 	V3NodeSearch(context.Context, *v2.NodeSearchRequest) (*v2.NodeSearchResponse, error)
 	V3Resolve(context.Context, *v2.ResolveRequest) (*v2.ResolveResponse, error)
 	V3Event(context.Context, *v2.EventRequest) (*v2.EventResponse, error)
@@ -913,6 +926,9 @@ func (UnimplementedMixerServer) V3Node(context.Context, *v2.NodeRequest) (*v2.No
 }
 func (UnimplementedMixerServer) V3Observation(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V3Observation not implemented")
+}
+func (UnimplementedMixerServer) V3SdmxData(context.Context, *v3.SdmxDataRequest) (*v3.SdmxDataResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method V3SdmxData not implemented")
 }
 func (UnimplementedMixerServer) V3NodeSearch(context.Context, *v2.NodeSearchRequest) (*v2.NodeSearchResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V3NodeSearch not implemented")
@@ -1144,6 +1160,24 @@ func _Mixer_V3Observation_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).V3Observation(ctx, req.(*v2.ObservationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_V3SdmxData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(v3.SdmxDataRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).V3SdmxData(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_V3SdmxData_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).V3SdmxData(ctx, req.(*v3.SdmxDataRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2278,6 +2312,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "V3Observation",
 			Handler:    _Mixer_V3Observation_Handler,
+		},
+		{
+			MethodName: "V3SdmxData",
+			Handler:    _Mixer_V3SdmxData_Handler,
 		},
 		{
 			MethodName: "V3NodeSearch",
