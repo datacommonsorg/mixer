@@ -30,6 +30,8 @@ import (
 type coordinateMockSpannerClient struct {
 	getNodeEdgesByProp map[string]map[string][]*Edge
 	assertGetNodeEdges func(ids []string, arc *v2.Arc, pageSize, offset int)
+	embeddingsRes      []float64
+	vectorSearchRes    []*VectorSearchResult
 }
 
 func (m *coordinateMockSpannerClient) GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*Property, error) {
@@ -102,6 +104,14 @@ func (m *coordinateMockSpannerClient) GetFilteredStatVarGroupNode(ctx context.Co
 
 func (m *coordinateMockSpannerClient) GetFilteredTopic(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]int, error) {
 	return nil, nil
+}
+
+func (m *coordinateMockSpannerClient) VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string) ([]*VectorSearchResult, error) {
+	return m.vectorSearchRes, nil
+}
+
+func (m *coordinateMockSpannerClient) GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error) {
+	return m.embeddingsRes, nil
 }
 
 func (m *coordinateMockSpannerClient) Id() string { return "mock" }
@@ -339,3 +349,5 @@ func TestResolveCoordinateSkipsS2CellCandidatesByType(t *testing.T) {
 		t.Fatalf("Resolve() diff (-want +got):\n%s", diff)
 	}
 }
+
+

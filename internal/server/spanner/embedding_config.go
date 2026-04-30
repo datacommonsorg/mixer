@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package resolve
+package spanner
 
 import (
 	"fmt"
@@ -54,8 +54,12 @@ const (
 // VectorSearchConfig holds the configuration for the parameters necessary to vector search.
 type VectorSearchConfig struct {
 	EmbeddingModel   string           `json:"embedding_model" yaml:"embedding_model"` // the model name registered in spanner to invoke
+	EmbeddingTable   string           `json:"embedding_table" yaml:"embedding_table"` // the table name in spanner for embeddings
 	EmbeddingType    EmbeddingType    `json:"embedding_type" yaml:"embedding_type"`
 	VectorSearchAlgo VectorSearchAlgo `json:"vector_search_algo" yaml:"vector_search_algo"`
+	Limit            int              `json:"limit" yaml:"limit"`
+	NumLeaves        int              `json:"num_leaves" yaml:"num_leaves"`
+	Threshold        float64          `json:"threshold" yaml:"threshold"`
 }
 
 // PostprocessingType defines post-processing steps applied to search results. Currently only have no prostprocessing setup.

@@ -602,17 +602,21 @@ var embeddingFromQueryTestCases = []struct {
 }
 
 var vectorSearchNodeTestCases = []struct {
-	limit      int
-	embeddings []float64
-	numLeaves  int
-	threshold  float64
-	golden     string
+	tableName   string
+	limit       int
+	embeddings  []float64
+	numLeaves   int
+	threshold   float64
+	nodeTypes   []string
+	golden      string
 }{
 	{
+		tableName:  "NodeEmbedding",
 		limit:      5,
 		embeddings: []float64{0.1, 0.2, 0.3},
 		numLeaves:  20,
 		threshold:  0.6,
+		nodeTypes:  []string{"StatisticalVariable", "Topic"},
 		golden:     "vector_search_node",
 	},
 }
@@ -673,5 +677,45 @@ var getFilteredTopicTestCases = []struct {
 		constrainedImport:    "",
 		numEntitiesExistence: 1,
 		golden:               "get_filtered_topic_places_multiple_topics",
+	},
+}
+
+var getTermEmbeddingsTestCases = []struct {
+	modelName   string
+	searchLabel string
+	taskType    string
+	golden      string
+}{
+	{
+		modelName:   "text_embeddings",
+		searchLabel: "California",
+		taskType:    "RETRIEVAL_QUERY",
+		golden:      "get_term_embeddings_california",
+	},
+	{
+		modelName:   "text_embeddings",
+		searchLabel: "NonExistentTerm12345",
+		taskType:    "RETRIEVAL_QUERY",
+		golden:      "get_term_embeddings_empty",
+	},
+}
+
+var vectorSearchQueryTestCases = []struct {
+	tableName  string
+	limit      int
+	embeddings []float64
+	numLeaves  int
+	threshold  float64
+	nodeTypes  []string
+	golden     string
+}{
+	{
+		tableName:  "NodeEmbedding",
+		limit:      5,
+		embeddings: []float64{0.1, 0.2, 0.3},
+		numLeaves:  20,
+		threshold:  0.5,
+		nodeTypes:  []string{"StatisticalVariable", "Topic"},
+		golden:     "vector_search",
 	},
 }

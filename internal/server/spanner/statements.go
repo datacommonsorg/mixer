@@ -502,17 +502,21 @@ var statements = struct {
 	filterDescendentStatVarsByNumEntitiesExistence: `
 				HAVING COUNT(DISTINCT %s) >= @numEntitiesExistence`,
 	getEmbeddingFromQuery: `		SELECT embeddings.values
-		FROM ML.PREDICT(MODEL @model_name, (SELECT @search_label AS content, @task_type AS task_type))`,
+		FROM ML.PREDICT(MODEL %s, (SELECT @search_label AS content, @task_type AS task_type))`,
 	vectorSearchNode: `		SELECT
 			subject_id,
-			embedding_content,
+			embedding_content AS name,
+			types,
 			1 - COSINE_DISTANCE(@embeddings, embeddings) AS cosine_similarity
 		FROM
-			NodeEmbeddings
+			%[1]s
 		WHERE
 			embeddings IS NOT NULL
-			AND APPROX_COSINE_DISTANCE(@embeddings, embeddings, options => JSON @options) > @distance_threshold
+			AND APPROX_COSINE_DISTANCE(@embeddings, embeddings, options => JSON '%[2]s') > %[3]s
+			AND EXISTS (
+				SELECT 1 FROM UNNEST(types) AS t WHERE t IN UNNEST(@node_types)
+			)
 		ORDER BY
-			APPROX_COSINE_DISTANCE(@embeddings, embeddings, options => JSON @options)
+			APPROX_COSINE_DISTANCE(@embeddings, embeddings, options => JSON '%[2]s')
 		LIMIT @limit`,
 }
