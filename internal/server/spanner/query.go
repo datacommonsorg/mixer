@@ -17,6 +17,7 @@ package spanner
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"log/slog"
@@ -909,9 +910,27 @@ func (sc *spannerDatabaseClient) executeQuery(
 
 	runQuery := func(tb spanner.TimestampBound) error {
 		metrics.RecordSpannerQuery(queryCtx)
+		startTime := time.Now()
 		iter := sc.client.Single().WithTimestampBound(tb).Query(queryCtx, stmt)
 		defer iter.Stop()
 		err := handleRows(iter)
+		duration := time.Since(startTime)
+
+		if shouldLogSQL(queryCtx) {
+			interpolatedSQL := InterpolateSQL(&stmt)
+			schema := getSchemaName(queryCtx)
+			fmt.Printf("\n=== [%s] Spanner Query (Took %v) ===\n", schema, duration)
+			fmt.Println("[Parameterized Query]")
+			for k, v := range stmt.Params {
+				jsonVal, _ := json.Marshal(v)
+				fmt.Printf("SET @%s = %s;\n", k, string(jsonVal))
+			}
+			fmt.Println()
+			fmt.Println(stmt.SQL)
+			fmt.Println("\n[Interpolated Query]")
+			fmt.Println(interpolatedSQL)
+			fmt.Println("================================================")
+		}
 
 		// Log slow Spanner queries that timed out.
 		if isTimeoutError(err) {
