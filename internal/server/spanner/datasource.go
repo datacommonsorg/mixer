@@ -38,7 +38,12 @@ import (
 	"github.com/golang/geo/s2"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/proto"
 )
+
+var svgGroupInfoExclusionList = map[string]struct{}{
+	"dc/g/Hidden": {},
+}
 
 // SpannerDataSource represents a data source that interacts with Spanner.
 type SpannerDataSource struct {
@@ -602,7 +607,10 @@ func (sds *SpannerDataSource) BulkVariableGroupInfo(ctx context.Context, req *pb
 		if strings.HasPrefix(node, prefixTopic) {
 			topics = append(topics, node)
 		} else if strings.HasPrefix(node, prefixSVG) {
-			svgs = append(svgs, node)
+			// Exclude hidden nodes from the database query
+			if _, ok := svgGroupInfoExclusionList[node]; !ok {
+				svgs = append(svgs, node)
+			}
 		} else {
 			return nil, status.Errorf(codes.InvalidArgument, "node %s is not a valid StatVarGroup or Topic node", node)
 		}
@@ -617,7 +625,9 @@ func (sds *SpannerDataSource) BulkVariableGroupInfo(ctx context.Context, req *pb
 		if err != nil {
 			return nil, status.Errorf(codes.Internal, "error getting StatVarGroupNode from Spanner: %v", err)
 		}
-		return svgInfoToBulkVariableGroupInfoResponse(svgInfo, req.GetNodes()), nil
+		resp := svgInfoToBulkVariableGroupInfoResponse(svgInfo, req.GetNodes())
+		resp.Data = filterVariableGroupInfo(resp.GetData())
+		return resp, nil
 	}
 
 	var constrainedPlaces []string
@@ -639,7 +649,9 @@ func (sds *SpannerDataSource) BulkVariableGroupInfo(ctx context.Context, req *pb
 		if err != nil {
 			return nil, status.Errorf(codes.Internal, "error getting filtered topic count from Spanner: %v", err)
 		}
-		return filteredTopicInfoToBulkVariableGroupInfoResponse(counts, topics), nil
+		resp := filteredTopicInfoToBulkVariableGroupInfoResponse(counts, topics)
+		resp.Data = filterVariableGroupInfo(resp.GetData())
+		return resp, nil
 	}
 
 	// Filter StatVarGroup.
@@ -647,10 +659,61 @@ func (sds *SpannerDataSource) BulkVariableGroupInfo(ctx context.Context, req *pb
 	if err != nil {
 		return nil, status.Errorf(codes.Internal, "error getting filtered StatVarGroupNode from Spanner: %v", err)
 	}
-	return filteredSVGInfoToBulkVariableGroupInfoResponse(filteredSVGInfo), nil
+	resp := filteredSVGInfoToBulkVariableGroupInfoResponse(filteredSVGInfo)
+	resp.Data = filterVariableGroupInfo(resp.GetData())
+	return resp, nil
 }
 
 // SdmxData retrieves observations from Spanner.
 func (sds *SpannerDataSource) SdmxData(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
 	return sds.client.GetSdmxObservations(ctx, req)
+}
+
+// filterVariableGroupInfo filters out excluded SVGs from the response data.
+func filterVariableGroupInfo(data []*pbv1.VariableGroupInfoResponse) []*pbv1.VariableGroupInfoResponse {
+	filteredData := make([]*pbv1.VariableGroupInfoResponse, 0, len(data))
+
+	for _, item := range data {
+		// Respect API contract: keep the node identifier but clear the info object.
+		if _, ok := svgGroupInfoExclusionList[item.GetNode()]; ok {
+			filteredData = append(filteredData, &pbv1.VariableGroupInfoResponse{
+				Node: item.GetNode(),
+				Info: &pb.StatVarGroupNode{},
+			})
+			continue
+		}
+
+		itemToAppend := item
+		needsModification := false
+
+		if item.GetInfo() != nil {
+			for _, child := range item.GetInfo().GetChildStatVarGroups() {
+				if _, ok := svgGroupInfoExclusionList[child.Id]; ok {
+					needsModification = true
+					break
+				}
+			}
+		}
+
+		if needsModification {
+			// Only clone items that needs mutation
+			itemToAppend = proto.Clone(item).(*pbv1.VariableGroupInfoResponse)
+			childGroups := itemToAppend.GetInfo().GetChildStatVarGroups()
+			filteredChildren := make([]*pb.StatVarGroupNode_ChildSVG, 0, len(childGroups))
+			for _, child := range childGroups {
+				if _, ok := svgGroupInfoExclusionList[child.Id]; ok {
+					itemToAppend.Info.DescendentStatVarCount -= child.DescendentStatVarCount
+				} else {
+					filteredChildren = append(filteredChildren, child)
+				}
+			}
+			if itemToAppend.Info.DescendentStatVarCount < 0 {
+				itemToAppend.Info.DescendentStatVarCount = 0
+			}
+			itemToAppend.Info.ChildStatVarGroups = filteredChildren
+		}
+
+		filteredData = append(filteredData, itemToAppend)
+	}
+	return filteredData
 }
