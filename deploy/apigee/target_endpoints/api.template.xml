@@ -44,15 +44,25 @@
           <Condition>
             (proxy.pathsuffix MatchesPath "/internal/bio") OR
             (proxy.pathsuffix MatchesPath "/internal/import-table") OR
+            (proxy.pathsuffix MatchesPath "/node/places-in") OR
+            (proxy.pathsuffix MatchesPath "/node/property-labels") OR
+            (proxy.pathsuffix MatchesPath "/node/property-values") OR
+            (proxy.pathsuffix MatchesPath "/node/triples") OR
             (proxy.pathsuffix MatchesPath "/place/stat/date/within-place") OR
             (proxy.pathsuffix MatchesPath "/place/stat-vars") OR
             (proxy.pathsuffix MatchesPath "/place/stats-var") OR
+            (proxy.pathsuffix MatchesPath "/query") OR
             (proxy.pathsuffix MatchesPath "/search") OR
             (proxy.pathsuffix MatchesPath "/sparql") OR
+            (proxy.pathsuffix MatchesPath "/stat/all") OR
+            (proxy.pathsuffix MatchesPath "/stat/series") OR
+            (proxy.pathsuffix MatchesPath "/stat/value") OR
             (proxy.pathsuffix MatchesPath "/translate") OR
             (proxy.pathsuffix MatchesPath "/update-cache") OR
             (proxy.pathsuffix MatchesPath "/v1/bulk/observation-existence") OR
             (proxy.pathsuffix MatchesPath "/v1/bulk/observations/point/linked") OR
+            ((proxy.pathsuffix MatchesPath "/v1/bulk/properties") OR (proxy.pathsuffix MatchesPath "/v1/bulk/properties/**")) OR
+            ((proxy.pathsuffix MatchesPath "/v1/bulk/triples") OR (proxy.pathsuffix MatchesPath "/v1/bulk/triples/**")) OR
             (proxy.pathsuffix MatchesPath "/v1/bulk/variables") OR
             (proxy.pathsuffix MatchesPath "/v1/events") OR
             (proxy.pathsuffix MatchesPath "/v1/events/dates") OR
@@ -65,16 +75,13 @@
             ((proxy.pathsuffix MatchesPath "/v1/observations/series") OR (proxy.pathsuffix MatchesPath "/v1/observations/series/**")) OR
             (proxy.pathsuffix MatchesPath "/v1/observations/series/derived") OR
             (proxy.pathsuffix MatchesPath "/v1/place/stat-vars/union") OR
+            (proxy.pathsuffix MatchesPath "/v1/query") OR
+            (proxy.pathsuffix MatchesPath "/v1/recognize/entities") OR
             (proxy.pathsuffix MatchesPath "/v1/stat/date/within-place") OR
             ((proxy.pathsuffix MatchesPath "/v1/triples") OR (proxy.pathsuffix MatchesPath "/v1/triples/**")) OR
             ((proxy.pathsuffix MatchesPath "/v1/variables") OR (proxy.pathsuffix MatchesPath "/v1/variables/**")) OR
             (proxy.pathsuffix MatchesPath "/v2/sparql") OR
             (proxy.pathsuffix MatchesPath "/v3/sparql") OR
-            (proxy.pathsuffix MatchesPath "/query") OR
-            (proxy.pathsuffix MatchesPath "/v1/query") OR
-            (proxy.pathsuffix MatchesPath "/v1/recognize/entities") OR
-            (proxy.pathsuffix MatchesPath "/node/property-labels") OR
-            (proxy.pathsuffix MatchesPath "/node/property-values") OR
           </Condition>
           <Name>block-deprecated-endpoints</Name>
         </Step>
@@ -107,12 +114,7 @@
             <!-- List of endpoints that do NOT require a key -->
             !(
               (proxy.pathsuffix MatchesPath "/bulk/stats") OR
-              (proxy.pathsuffix MatchesPath "/node/places-in") OR
-              (proxy.pathsuffix MatchesPath "/node/triples") OR
               (proxy.pathsuffix MatchesPath "/search") OR
-              (proxy.pathsuffix MatchesPath "/stat/all") OR
-              (proxy.pathsuffix MatchesPath "/stat/series") OR
-              (proxy.pathsuffix MatchesPath "/stat/value") OR
               (proxy.pathsuffix MatchesPath "/v1/place/ranking") OR
               (proxy.pathsuffix MatchesPath "/v1/place/related") OR
               (proxy.pathsuffix MatchesPath "/v1/recon/entity/resolve") OR

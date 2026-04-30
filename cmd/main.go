@@ -348,7 +348,7 @@ func main() {
 	// An empty store is allowed *only* when there's a stable Spanner configuration.
 	// In particular, feature-flag-enabled Spanner configurations should still require Bigtable as a fallback.
 	if len(tables) == 0 && *remoteMixerDomain == "" && !sqldb.IsConnected(&sqlClient) && !*useSpannerGraph {
-		slog.Error("No bigtables or remote mixer domain or sql database are provided")
+		slog.Error("No bigtables, remote mixer domain, SQL database, or Spanner client provided")
 		os.Exit(1)
 	}
 	store, err := store.NewStore(

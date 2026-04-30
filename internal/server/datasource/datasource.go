@@ -44,4 +44,5 @@ type DataSource interface {
 	Event(context.Context, *pbv2.EventRequest) (*pbv2.EventResponse, error)
 	BulkVariableInfo(context.Context, *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error)
 	BulkVariableGroupInfo(context.Context, *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error)
+	SdmxData(context.Context, *pb.SdmxDataQuery) (*pb.SdmxDataResult, error)
 }

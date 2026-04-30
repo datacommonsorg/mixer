@@ -75,3 +75,8 @@ func (rds *RemoteDataSource) BulkVariableInfo(ctx context.Context, req *pbv1.Bul
 func (rds *RemoteDataSource) BulkVariableGroupInfo(ctx context.Context, req *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error) {
 	return rds.client.BulkVariableGroupInfo(req)
 }
+
+func (rds *RemoteDataSource) SdmxData(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+	// Remote mixer does not support SDMX yet, return empty result to not break fetchAndMerge.
+	return &pb.SdmxDataResult{}, nil
+}

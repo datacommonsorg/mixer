@@ -54,9 +54,21 @@ func TestNormalizedGetObservationsContainedInPlaceQuery(t *testing.T) {
 
 		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
 			return spanner.GetNormalizedObservationsContainedInPlaceQuery(c.variables, &v2.ContainedInPlace{
-				Ancestor:         c.ancestor,
+				Ancestor:       c.ancestor,
 				ChildPlaceType: c.childPlaceType,
 			}), nil
+		})
+	}
+}
+
+func TestGetSdmxObservationsQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range sdmxObservationsTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.GetSdmxObservationsQuery(c.constraints), nil
 		})
 	}
 }

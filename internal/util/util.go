@@ -147,6 +147,9 @@ const (
 	// Whether to use normalized Spanner schema.
 	// To use, set header "X-Use-Normalized-Schema: true"
 	XUseNormalizedSchema = "X-Use-Normalized-Schema"
+	// Whether to log the full interpolated SQL query.
+	// To use, set header "X-Log-SQL: true"
+	XLogSQL = "X-Log-SQL"
 )
 
 // ZipAndEncode compresses the given content using gzip and encodes it in base64

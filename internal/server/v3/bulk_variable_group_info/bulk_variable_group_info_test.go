@@ -51,7 +51,7 @@ func TestV3BulkVariableGroupInfo(t *testing.T) {
 			},
 			{
 				&pbv1.BulkVariableGroupInfoRequest{
-					Nodes:                []string{"dc/g/Environment"},
+					Nodes:                []string{"dc/g/Environment", "dc/g/Agriculture"},
 					ConstrainedEntities:  []string{"country/USA", "country/IND", "country/CAN"},
 					NumEntitiesExistence: 2,
 				},
@@ -59,7 +59,7 @@ func TestV3BulkVariableGroupInfo(t *testing.T) {
 			},
 			{
 				&pbv1.BulkVariableGroupInfoRequest{
-					Nodes:               []string{"dc/topic/Demographics"},
+					Nodes:               []string{"dc/topic/Demographics", "dc/topic/Economy"},
 					ConstrainedEntities: []string{"dc/s/WorldBank"},
 				},
 				"bulk_variable_group_info_filtered_topic.json",

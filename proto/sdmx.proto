@@ -1,0 +1,72 @@
+// Copyright 2026 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// This file defines internal protocol buffer messages used for handling SDMX data requests.
+// These messages are NOT exposed directly to external clients.
+//
+// They represent:
+// 1. The parsed SDMX query (SdmxDataQuery) after validation and parsing in the API handler.
+// 2. The intermediate data objects (SdmxDataResult, SdmxObservation, SdmxDateValue)
+//    read from the database (e.g., Spanner) before being formatted into the final
+//    response payload (e.g., JSON-stat).
+
+syntax = "proto3";
+
+package datacommons;
+option go_package = "github.com/datacommonsorg/mixer/internal/proto";
+
+// Represents a query for SDMX data.
+message SdmxDataQuery {
+  // Map of constraints where the key is the dimension ID (e.g., "sex", "age")
+  // and the value is a list of allowed values for that dimension.
+  map<string, ConstraintList> constraints = 1;
+}
+
+// A list of string values for a constraint.
+message ConstraintList {
+  // The list of allowed values for the constraint dimension.
+  repeated string values = 1;
+}
+
+// The result of an SDMX data query.
+message SdmxDataResult {
+  // The list of observations matching the query.
+  repeated SdmxObservation observations = 1;
+}
+
+// A pair representing a date and its associated value.
+message SdmxDateValue {
+  // The date of the observation (e.g., "2020", "2020-01").
+  string date = 1;
+  // The numeric or string value of the observation.
+  string value = 2;
+}
+
+// Represents an intermediate observation object containing data and metadata read from the database.
+message SdmxObservation {
+  // The statistical variable being measured (e.g., "Count_Person").
+  string variable_measured = 1;
+  
+  // The provenance or source of the data.
+  string provenance = 2;
+  
+  // The time series of dates and values for this observation.
+  repeated SdmxDateValue dates_and_values = 3;
+  
+  // Dimensions that identify the observation (e.g., location, gender).
+  map<string, string> dimensions = 4;
+  
+  // Attributes that provide metadata about the observation (e.g., unit, measurementMethod).
+  map<string, string> attributes = 5;
+}

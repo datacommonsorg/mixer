@@ -1,6 +1,47 @@
 {
   "data": [
     {
+      "node": "dc/g/Agriculture",
+      "info": {
+        "absoluteName": "Agriculture",
+        "childStatVars": [
+          {
+            "id": "Count_Person_5OrLessMeter_Rural_AsAFractionOf_Count_Person"
+          }
+        ],
+        "childStatVarGroups": [
+          {
+            "id": "dc/g/Person_EconomicSector",
+            "specializedEntity": "Economic Sector",
+            "displayName": "Person by Economic Sector"
+          },
+          {
+            "id": "dc/g/Farm",
+            "specializedEntity": "Farm",
+            "displayName": "Farm"
+          },
+          {
+            "id": "dc/g/FarmInventory",
+            "specializedEntity": "Farm Inventory",
+            "displayName": "Farm Inventory",
+            "descendentStatVarCount": 4
+          },
+          {
+            "id": "dc/g/Agriculture_Miscellaneous",
+            "specializedEntity": "Miscellaneous",
+            "displayName": "Miscellaneous",
+            "descendentStatVarCount": 16
+          },
+          {
+            "id": "dc/g/Person_OwnershipStatus",
+            "specializedEntity": "Ownership Status",
+            "displayName": "Person by Ownership Status"
+          }
+        ],
+        "descendentStatVarCount": 20
+      }
+    },
+    {
       "node": "dc/g/Environment",
       "info": {
         "absoluteName": "Environment",
