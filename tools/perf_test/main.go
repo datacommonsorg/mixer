@@ -23,7 +23,6 @@ import (
 	"os"
 	"strings"
 	"sync"
-	"time"
 
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
@@ -130,7 +129,7 @@ func initSpannerClient(ctx context.Context, configPath string) (spanner.SpannerC
 	return spanner.NewSpannerClient(ctx, string(yamlFile), "")
 }
 
-// runParallelTest runs two operations in parallel and compares their execution time.
+// runParallelTest runs two operations in parallel and injects metadata headers.
 // It injects X-Log-SQL=true for both, and X-Use-Normalized-Schema=true for the second operation.
 func runParallelTest(
 	ctx context.Context,
@@ -140,7 +139,6 @@ func runParallelTest(
 	var wg sync.WaitGroup
 	wg.Add(2)
 
-	var time1, time2 time.Duration
 	var err1, err2 error
 
 	// Run Operation 1 (Legacy usually)
@@ -148,9 +146,7 @@ func runParallelTest(
 		defer wg.Done()
 		// Inject X-Log-SQL to see the query
 		c1 := metadata.NewIncomingContext(ctx, metadata.Pairs(util.XLogSQL, "true"))
-		start := time.Now()
 		err1 = op1(c1)
-		time1 = time.Since(start)
 	}()
 
 	// Run Operation 2 (Normalized usually)
@@ -161,23 +157,21 @@ func runParallelTest(
 			util.XLogSQL, "true",
 			util.XUseNormalizedSchema, "true",
 		))
-		start := time.Now()
 		err2 = op2(c2)
-		time2 = time.Since(start)
 	}()
 
 	wg.Wait()
 
-	fmt.Println("\n=== Performance Results ===")
+	fmt.Println("\n=== Execution Status ===")
 	if err1 != nil {
 		fmt.Printf("%s: Failed with error: %v\n", name1, err1)
 	} else {
-		fmt.Printf("%s: Took %v\n", name1, time1)
+		fmt.Printf("%s: Succeeded\n", name1)
 	}
 
 	if err2 != nil {
 		fmt.Printf("%s: Failed with error: %v\n", name2, err2)
 	} else {
-		fmt.Printf("%s: Took %v\n", name2, time2)
+		fmt.Printf("%s: Succeeded\n", name2)
 	}
 }
