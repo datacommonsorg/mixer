@@ -17,6 +17,7 @@ package spanner
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"log/slog"
@@ -919,6 +920,14 @@ func (sc *spannerDatabaseClient) executeQuery(
 			interpolatedSQL := InterpolateSQL(&stmt)
 			schema := getSchemaName(queryCtx)
 			fmt.Printf("\n=== [%s] Spanner Query (Took %v) ===\n", schema, duration)
+			fmt.Println("[Parameterized Query]")
+			for k, v := range stmt.Params {
+				jsonVal, _ := json.Marshal(v)
+				fmt.Printf("SET @%s = %s;\n", k, string(jsonVal))
+			}
+			fmt.Println()
+			fmt.Println(stmt.SQL)
+			fmt.Println("\n[Interpolated Query]")
 			fmt.Println(interpolatedSQL)
 			fmt.Println("================================================")
 		}
