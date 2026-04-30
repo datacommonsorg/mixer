@@ -399,7 +399,8 @@ var statements = struct {
 			n.subject_id, 
 			n.name, 
 			c.descendent_stat_var_count,
-			FALSE AS has_data
+			FALSE AS has_data,
+			'' AS definition
 		FROM ChildSVGs svg
 		JOIN ChildSVGCounts c 
 		ON svg.child_svg = c.child_svg
@@ -416,7 +417,15 @@ var statements = struct {
 				FROM Observation o 
 				WHERE o.variable_measured = sv.child_sv
 				LIMIT 1
-			) AS has_data
+			) AS has_data,
+			IFNULL((
+				SELECT n_def.value
+				FROM Edge e_def
+				JOIN Node n_def ON e_def.object_id = n_def.subject_id
+				WHERE e_def.subject_id = sv.child_sv
+				AND e_def.predicate = 'definition'
+				LIMIT 1
+			), '') AS definition
 		FROM ChildSVs sv
 		JOIN Node n 
 		ON n.subject_id = sv.child_sv`,
@@ -430,7 +439,15 @@ var statements = struct {
 	getSVGChildren: `		SELECT DISTINCT
 			n.subject_id,
 			n.name,
-			e.predicate
+			e.predicate,
+			IFNULL((
+				SELECT n_def.value
+				FROM Edge e_def
+				JOIN Node n_def ON e_def.object_id = n_def.subject_id
+				WHERE e_def.subject_id = n.subject_id
+				AND e_def.predicate = 'definition'
+				LIMIT 1
+			), '') AS definition
 		FROM Node n
 		JOIN (
 			SELECT subject_id, predicate FROM Edge@{FORCE_INDEX=InEdge}
@@ -439,7 +456,15 @@ var statements = struct {
 		) e ON n.subject_id = e.subject_id`,
 	getFilteredChildSVs: `		SELECT
 			n.subject_id,
-			n.name
+			n.name,
+			IFNULL((
+				SELECT n_def.value
+				FROM Edge e_def
+				JOIN Node n_def ON e_def.object_id = n_def.subject_id
+				WHERE e_def.subject_id = n.subject_id
+				AND e_def.predicate = 'definition'
+				LIMIT 1
+			), '') AS definition
 		FROM Node n
 		JOIN (
 			SELECT
