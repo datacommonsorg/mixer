@@ -602,6 +602,7 @@ var embeddingFromQueryTestCases = []struct {
 }
 
 var vectorSearchNodeTestCases = []struct {
+	tableName   string
 	limit       int
 	embeddings  []float64
 	numLeaves   int
@@ -610,6 +611,7 @@ var vectorSearchNodeTestCases = []struct {
 	golden      string
 }{
 	{
+		tableName:  "NodeEmbedding",
 		limit:      5,
 		embeddings: []float64{0.1, 0.2, 0.3},
 		numLeaves:  20,
@@ -699,6 +701,7 @@ var getTermEmbeddingsTestCases = []struct {
 }
 
 var vectorSearchQueryTestCases = []struct {
+	tableName  string
 	limit      int
 	embeddings []float64
 	numLeaves  int
@@ -707,6 +710,7 @@ var vectorSearchQueryTestCases = []struct {
 	golden     string
 }{
 	{
+		tableName:  "NodeEmbedding",
 		limit:      5,
 		embeddings: []float64{0.1, 0.2, 0.3},
 		numLeaves:  20,

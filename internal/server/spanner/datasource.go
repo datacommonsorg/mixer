@@ -46,7 +46,7 @@ type SpannerDataSource struct {
 	client          SpannerClient
 	recogPlaceStore *files.RecogPlaceStore
 	mapsClient      internalmaps.MapsClient
-	searchConfig    *resolvev2.SpannerSearchConfig
+	searchConfig    *SpannerSearchConfig
 }
 
 const (
@@ -233,12 +233,12 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 }
 
 // loadSpannerSearchConfig loads the default search config for Spanner.
-func loadSpannerSearchConfig() (*resolvev2.SpannerSearchConfig, error) {
-	cfgPath := resolvev2.GetSpannerSearchConfigPath("default")
+func loadSpannerSearchConfig() (*SpannerSearchConfig, error) {
+	cfgPath := GetSpannerSearchConfigPath("default")
 	if cfgPath == "" {
 		return nil, fmt.Errorf("failed to get search config path")
 	}
-	return resolvev2.ReadSpannerSearchConfig(cfgPath)
+	return ReadSpannerSearchConfig(cfgPath)
 }
 
 // resolveEmbeddings resolves nodes using Spanner vector search.
@@ -294,6 +294,7 @@ func (sds *SpannerDataSource) resolveEmbeddings(
 			// 2. Vector search
 			searchResults, err := sds.client.VectorSearchQuery(
 				errCtx,
+				cfg.VectorSearchConfig.EmbeddingTable,
 				cfg.VectorSearchConfig.Limit,
 				embeddings,
 				cfg.VectorSearchConfig.NumLeaves,

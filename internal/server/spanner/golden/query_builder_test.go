@@ -249,7 +249,7 @@ func TestVectorSearchQuery(t *testing.T) {
 		goldenFile := c.golden + ".sql"
 
 		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return spanner.VectorSearchQuery(c.limit, c.embeddings, c.numLeaves, c.threshold, c.nodeTypes), nil
+			return spanner.VectorSearchQuery(c.tableName, c.limit, c.embeddings, c.numLeaves, c.threshold, c.nodeTypes), nil
 		})
 	}
 }
