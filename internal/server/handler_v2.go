@@ -516,13 +516,7 @@ func (s *Server) V2BulkVariableGroupInfo(
 	ctx context.Context, in *pbv1.BulkVariableGroupInfoRequest,
 ) (*pbv1.BulkVariableGroupInfoResponse, error) {
 	if s.shouldDivertV2(ctx) {
-		resp, err := s.dispatcher.BulkVariableGroupInfo(ctx, in)
-		if err != nil {
-			return nil, err
-		}
-		return &pbv1.BulkVariableGroupInfoResponse{
-			Data: filterVariableGroupInfo(resp.GetData()),
-		}, nil
+		return s.dispatcher.BulkVariableGroupInfo(ctx, in)
 	}
 
 	v2StartTime := time.Now()
@@ -535,9 +529,6 @@ func (s *Server) V2BulkVariableGroupInfo(
 	v2Resp := proto.Clone(v1Resp).(*pbv1.BulkVariableGroupInfoResponse)
 
 	convertV1ToV2BulkVariableGroupInfo(v2Resp)
-
-	// Filter out excluded SVGs.
-	v2Resp.Data = filterVariableGroupInfo(v2Resp.GetData())
 
 	v2Latency := time.Since(v2StartTime)
 
@@ -553,52 +544,6 @@ func (s *Server) V2BulkVariableGroupInfo(
 	)
 
 	return v2Resp, nil
-}
-
-// filterVariableGroupInfo filters out excluded SVGs from the response data.
-// We use a copy-on-write approach to perform a more efficient mutation without cloning the whole response
-func filterVariableGroupInfo(data []*pbv1.VariableGroupInfoResponse) []*pbv1.VariableGroupInfoResponse {
-	// Pre-allocate to avoid underlying array resizing
-	filteredData := make([]*pbv1.VariableGroupInfoResponse, 0, len(data))
-
-	for _, item := range data {
-		if _, ok := svgGroupInfoExclusionList[item.GetNode()]; ok {
-			continue
-		}
-
-		itemToAppend := item
-		needsModification := false
-
-		if item.GetInfo() != nil {
-			for _, child := range item.GetInfo().GetChildStatVarGroups() {
-				if _, ok := svgGroupInfoExclusionList[child.Id]; ok {
-					needsModification = true
-					break
-				}
-			}
-		}
-
-		if needsModification {
-			// Only clone items that needs mutation
-			itemToAppend = proto.Clone(item).(*pbv1.VariableGroupInfoResponse)
-			childGroups := itemToAppend.GetInfo().GetChildStatVarGroups()
-			filteredChildren := make([]*pb.StatVarGroupNode_ChildSVG, 0, len(childGroups))
-			for _, child := range childGroups {
-				if _, ok := svgGroupInfoExclusionList[child.Id]; ok {
-					itemToAppend.Info.DescendentStatVarCount -= child.DescendentStatVarCount
-				} else {
-					filteredChildren = append(filteredChildren, child)
-				}
-			}
-			if itemToAppend.Info.DescendentStatVarCount < 0 {
-				itemToAppend.Info.DescendentStatVarCount = 0
-			}
-			itemToAppend.Info.ChildStatVarGroups = filteredChildren
-		}
-
-		filteredData = append(filteredData, itemToAppend)
-	}
-	return filteredData
 }
 
 // convertV1ToV2BulkVariableGroupInfo converts a V1 BulkVariableGroupInfoResponse to the V2 version.
