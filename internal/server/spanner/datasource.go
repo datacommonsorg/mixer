@@ -712,7 +712,7 @@ func (sds *SpannerDataSource) BulkVariableGroupInfo(ctx context.Context, req *pb
 	}
 
 	// Unfiltered case.
-	if len(req.ConstrainedEntities) == 0 && req.NumEntitiesExistence == 0 {
+	if len(req.ConstrainedEntities) == 0 {
 		svgInfo, err := sds.client.GetStatVarGroupNode(ctx, svgs)
 		if err != nil {
 			return nil, status.Errorf(codes.Internal, "error getting StatVarGroupNode from Spanner: %v", err)
