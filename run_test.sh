@@ -36,15 +36,18 @@ done
 
 set -e
 
+REQUIRED_LINT_VERSION="2.3.0"
+
 if [ "$FIX" = true ] || [ "$LINT" = true ]; then
   if ! [ -x "$(command -v golangci-lint)" ]; then
     echo 'Error: golangci-lint is not installed.' >&2
-    echo 'Install it from https://golangci-lint.run/usage/install/' >&2
+    echo "Version $REQUIRED_LINT_VERSION is required." >&2
+    echo "Install it from https://golangci-lint.run/docs/welcome/install/" >&2
     exit 1
   fi
-  REQUIRED_VERSION="2.3.0"
-  if ! golangci-lint --version | grep -q "$REQUIRED_VERSION"; then
-    echo "Error: wrong golangci-lint version. Want $REQUIRED_VERSION" >&2
+
+  if ! golangci-lint --version | grep -q "$REQUIRED_LINT_VERSION"; then
+    echo "Error: wrong golangci-lint version. Want $REQUIRED_LINT_VERSION" >&2
     echo "Found: $(golangci-lint --version)"
     exit 1
   fi
