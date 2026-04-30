@@ -1,14 +1,14 @@
 		SELECT
 			n.subject_id,
 			n.name,
-			(
+			IFNULL((
 				SELECT n_def.value
 				FROM Edge e_def
 				JOIN Node n_def ON e_def.object_id = n_def.subject_id
 				WHERE e_def.subject_id = n.subject_id
 				AND e_def.predicate = 'definition'
 				LIMIT 1
-			) AS definition
+			), '') AS definition
 		FROM Node n
 		JOIN (
 			SELECT
