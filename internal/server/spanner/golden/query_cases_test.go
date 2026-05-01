@@ -602,13 +602,13 @@ var embeddingFromQueryTestCases = []struct {
 }
 
 var vectorSearchNodeTestCases = []struct {
-	tableName   string
-	limit       int
-	embeddings  []float64
-	numLeaves   int
-	threshold   float64
-	nodeTypes   []string
-	golden      string
+	tableName  string
+	limit      int
+	embeddings []float64
+	numLeaves  int
+	threshold  float64
+	nodeTypes  []string
+	golden     string
 }{
 	{
 		tableName:  "NodeEmbedding",

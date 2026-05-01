@@ -385,7 +385,7 @@ func main() {
 
 	// Initialize SpannerDataSource now that dependencies are ready.
 	if spannerClient != nil {
-		var ds datasource.DataSource = spanner.NewSpannerDataSource(spannerClient, store.RecogPlaceStore, mapsClient)
+		var ds datasource.DataSource = spanner.NewSpannerDataSource(spannerClient, store.RecogPlaceStore, mapsClient, flags.EnableSpannerSearchEmbeddings)
 		// TODO: Order sources by priority once other implementations are added.
 		sources = append(sources, ds)
 	}

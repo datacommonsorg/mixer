@@ -14,7 +14,7 @@ func TestResolveEmbeddingsEmpty(t *testing.T) {
 
 	ds := NewSpannerDataSource(&coordinateMockSpannerClient{
 		embeddingsRes: []float64{},
-	}, nil, nil)
+	}, nil, nil, true)
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"California"},
@@ -51,7 +51,7 @@ func TestResolveEmbeddingsSuccess(t *testing.T) {
 				Types:            []string{"Topic"},
 			},
 		},
-	}, nil, nil)
+	}, nil, nil, true)
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"Climate"},
@@ -97,7 +97,7 @@ func TestResolveEmbeddingsConcurrentSuccess(t *testing.T) {
 				Types:            []string{"Topic"},
 			},
 		},
-	}, nil, nil)
+	}, nil, nil, true)
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"Climate", "Environment", "Weather"},

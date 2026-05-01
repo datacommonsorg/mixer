@@ -284,5 +284,3 @@ func runQueryBuilderGoldenTest(t *testing.T, goldenFile string, fn goldenTestFun
 		t.Errorf("%v payload mismatch (-want +got):\n%s", goldenFile, diff)
 	}
 }
-
-

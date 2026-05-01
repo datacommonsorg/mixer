@@ -46,20 +46,23 @@ type Flags struct {
 	UseStatisticalCalculation bool `yaml:"UseStatisticalCalculation"`
 	// Whether to enable the SDMX API endpoint.
 	EnableSDMXDataApi bool `yaml:"EnableSDMXDataApi"`
+	// Whether to enable Spanner search embeddings.
+	EnableSpannerSearchEmbeddings bool `yaml:"EnableSpannerSearchEmbeddings"`
 }
 
 // setDefaultValues creates a new Flags struct with default values.
 func setDefaultValues() *Flags {
 	return &Flags{
-		EnableV3:                  false,
-		V3MirrorFraction:          0.0,
-		UseSpannerGraph:           false,
-		SpannerGraphDatabase:      "",
-		UseStaleReads:             false,
-		EnableEmbeddingsResolver:  true,
-		V2DivertFraction:          0.0,
-		UseStatisticalCalculation: false,
-		EnableSDMXDataApi:         false,
+		EnableV3:                      false,
+		V3MirrorFraction:              0.0,
+		UseSpannerGraph:               false,
+		SpannerGraphDatabase:          "",
+		UseStaleReads:                 false,
+		EnableEmbeddingsResolver:      true,
+		V2DivertFraction:              0.0,
+		UseStatisticalCalculation:     false,
+		EnableSDMXDataApi:             false,
+		EnableSpannerSearchEmbeddings: false,
 	}
 }
 

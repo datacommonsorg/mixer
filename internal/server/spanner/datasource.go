@@ -43,10 +43,11 @@ import (
 
 // SpannerDataSource represents a data source that interacts with Spanner.
 type SpannerDataSource struct {
-	client          SpannerClient
-	recogPlaceStore *files.RecogPlaceStore
-	mapsClient      internalmaps.MapsClient
-	searchConfig    *SpannerSearchConfig
+	client                        SpannerClient
+	recogPlaceStore               *files.RecogPlaceStore
+	mapsClient                    internalmaps.MapsClient
+	searchConfig                  *SpannerSearchConfig
+	enableSpannerSearchEmbeddings bool
 }
 
 const (
@@ -59,13 +60,15 @@ func NewSpannerDataSource(
 	client SpannerClient,
 	recogPlaceStore *files.RecogPlaceStore,
 	mapsClient internalmaps.MapsClient,
+	enableSpannerSearchEmbeddings bool,
 ) *SpannerDataSource {
 	cfg, _ := loadSpannerSearchConfig()
 	return &SpannerDataSource{
-		client:          client,
-		recogPlaceStore: recogPlaceStore,
-		mapsClient:      mapsClient,
-		searchConfig:    cfg,
+		client:                        client,
+		recogPlaceStore:               recogPlaceStore,
+		mapsClient:                    mapsClient,
+		searchConfig:                  cfg,
+		enableSpannerSearchEmbeddings: enableSpannerSearchEmbeddings,
 	}
 }
 
@@ -219,6 +222,10 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 	}
 
 	if resolver := normalizedResolveRequest.Request.GetResolver(); resolver == resolvev2.ResolveResolverIndicator {
+		if !sds.enableSpannerSearchEmbeddings {
+			slog.Warn("Received unsupported ResolveResolverIndicator request to Spanner", "request", req)
+			return &pbv2.ResolveResponse{}, nil
+		}
 		return sds.resolveEmbeddings(ctx, normalizedResolveRequest)
 	}
 
