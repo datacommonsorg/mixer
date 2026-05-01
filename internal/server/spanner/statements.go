@@ -512,7 +512,7 @@ var statements = struct {
 			%[1]s
 		WHERE
 			embeddings IS NOT NULL
-			AND APPROX_COSINE_DISTANCE(@embeddings, embeddings, options => JSON '%[2]s') > %[3]s
+			AND COSINE_DISTANCE(@embeddings, embeddings) <= 1 - %[3]s
 			AND EXISTS (
 				SELECT 1 FROM UNNEST(types) AS t WHERE t IN UNNEST(@node_types)
 			)
