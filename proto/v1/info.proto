@@ -82,6 +82,8 @@ message BulkVariableGroupInfoRequest {
   // (optional) Number of passed in entities that should have data for the stat
   // var (group)s that are returned. Default to 1 if unspecified.
   int32 num_entities_existence = 4;
+  // (optional) Whether to include definitions in the response.
+  bool include_definitions = 5;
 }
 
 message BulkVariableGroupInfoResponse {
