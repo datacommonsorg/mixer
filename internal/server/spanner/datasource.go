@@ -226,7 +226,7 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 			slog.Warn("Received unsupported ResolveResolverIndicator request to Spanner", "request", req)
 			return &pbv2.ResolveResponse{}, nil
 		}
-		return sds.resolveEmbeddings(ctx, normalizedResolveRequest)
+		return sds.vectorSearchResolution(ctx, normalizedResolveRequest)
 	}
 
 	switch normalizedResolveRequest.InProp {
@@ -248,8 +248,8 @@ func loadSpannerSearchConfig() (*SpannerSearchConfig, error) {
 	return ReadSpannerSearchConfig(cfgPath)
 }
 
-// resolveEmbeddings resolves nodes using Spanner vector search.
-func (sds *SpannerDataSource) resolveEmbeddings(
+// vectorSearchResolution resolves nodes using Spanner vector search.
+func (sds *SpannerDataSource) vectorSearchResolution(
 	ctx context.Context,
 	req *resolvev2.NormalizedResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
@@ -268,6 +268,7 @@ func (sds *SpannerDataSource) resolveEmbeddings(
 		for _, t := range typeOfs {
 			if t != "StatisticalVariable" && t != "Topic" {
 				slog.Warn("Embeddings resolution requested for unsupported type. Current support is only for StatisticalVariable and Topic.", "type", t)
+				return &pbv2.ResolveResponse{}, nil
 			}
 		}
 	}

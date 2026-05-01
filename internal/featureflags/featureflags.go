@@ -47,6 +47,7 @@ type Flags struct {
 	// Whether to enable the SDMX API endpoint.
 	EnableSDMXDataApi bool `yaml:"EnableSDMXDataApi"`
 	// Whether to enable Spanner search embeddings.
+	// switch this to true in local.yaml for easier development
 	EnableSpannerSearchEmbeddings bool `yaml:"EnableSpannerSearchEmbeddings"`
 }
 
