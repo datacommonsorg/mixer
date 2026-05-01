@@ -514,8 +514,9 @@ var eventCollectionTestCases = []struct {
 }
 
 var getStatVarGroupNodeTestCases = []struct {
-	nodes  []string
-	golden string
+	nodes              []string
+	includeDefinitions bool
+	golden             string
 }{
 	{
 		nodes:  []string{"dc/g/Demographics"},
@@ -525,15 +526,26 @@ var getStatVarGroupNodeTestCases = []struct {
 		nodes:  []string{"dc/g/Demographics", "dc/g/Economy"},
 		golden: "get_stat_var_group_node_multi",
 	},
+	{
+		nodes:              []string{"dc/g/Demographics"},
+		includeDefinitions: true,
+		golden:             "get_stat_var_group_node_with_definitions",
+	},
 }
 
 var getSVGChildrenTestCases = []struct {
-	node   string
-	golden string
+	node               string
+	includeDefinitions bool
+	golden             string
 }{
 	{
 		node:   "dc/g/Demographics",
 		golden: "get_svg_children",
+	},
+	{
+		node:               "dc/g/Demographics",
+		includeDefinitions: true,
+		golden:             "get_svg_children_with_definitions",
 	},
 }
 
@@ -543,6 +555,7 @@ var getFilteredSVGChildrenTestCases = []struct {
 	constrainedPlaces    []string
 	constrainedImport    string
 	numEntitiesExistence int
+	includeDefinitions   bool
 	golden               string
 }{
 	{
@@ -585,6 +598,15 @@ var getFilteredSVGChildrenTestCases = []struct {
 		numEntitiesExistence: 2,
 		golden:               "get_filtered_svg_num_entities_existence",
 	},
+	{
+		template:             "SV",
+		node:                 "dc/g/Demographics",
+		constrainedPlaces:    []string{"country/USA"},
+		constrainedImport:    "",
+		numEntitiesExistence: 1,
+		includeDefinitions:   true,
+		golden:               "get_filtered_sv_with_definitions",
+	},
 }
 
 var embeddingFromQueryTestCases = []struct {
@@ -621,6 +643,7 @@ var getFilteredStatVarGroupNodeTestCases = []struct {
 	constrainedPlaces    []string
 	constrainedImport    string
 	numEntitiesExistence int
+	includeDefinitions   bool
 	golden               string
 }{
 	{
@@ -650,6 +673,14 @@ var getFilteredStatVarGroupNodeTestCases = []struct {
 		constrainedImport:    "",
 		numEntitiesExistence: 2,
 		golden:               "get_filtered_stat_var_group_node_num_entities_existence",
+	},
+	{
+		nodes:                []string{"dc/g/Demographics"},
+		constrainedPlaces:    []string{"country/USA"},
+		constrainedImport:    "",
+		numEntitiesExistence: 1,
+		includeDefinitions:   true,
+		golden:               "get_filtered_stat_var_group_node_with_definitions",
 	},
 }
 

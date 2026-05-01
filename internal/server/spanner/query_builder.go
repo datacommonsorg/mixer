@@ -413,7 +413,7 @@ func GetCacheDataQuery(typeFilter CacheDataType, keys []string) *spanner.Stateme
 }
 
 // GetStatVarGroupNode returns a query to get StatVarGroupNode info.
-func GetStatVarGroupNodeQuery(nodes []string) *spanner.Statement {
+func GetStatVarGroupNodeQuery(nodes []string, includeDefinitions bool) *spanner.Statement {
 	nodeFilter, nodeVal := getParamStatement("nodes", nodes)
 
 	selfFilter := statements.attachSVG
@@ -421,8 +421,13 @@ func GetStatVarGroupNodeQuery(nodes []string) *spanner.Statement {
 		selfFilter = statements.attachSVGs
 	}
 
+	sqlTemplate := statements.getStatVarGroupNode
+	if includeDefinitions {
+		sqlTemplate = statements.getStatVarGroupNodeWithDefinitions
+	}
+
 	return &spanner.Statement{
-		SQL: fmt.Sprintf(statements.getStatVarGroupNode, nodeFilter, selfFilter),
+		SQL: fmt.Sprintf(sqlTemplate, nodeFilter, selfFilter),
 		Params: map[string]interface{}{
 			"nodes": nodeVal,
 		},
@@ -430,9 +435,13 @@ func GetStatVarGroupNodeQuery(nodes []string) *spanner.Statement {
 }
 
 // GetSVGChildren returns a query to get all children for a given stat var group.
-func GetSVGChildrenQuery(node string) *spanner.Statement {
+func GetSVGChildrenQuery(node string, includeDefinitions bool) *spanner.Statement {
+	sqlTemplate := statements.getSVGChildren
+	if includeDefinitions {
+		sqlTemplate = statements.getSVGChildrenWithDefinitions
+	}
 	return &spanner.Statement{
-		SQL: statements.getSVGChildren,
+		SQL: sqlTemplate,
 		Params: map[string]interface{}{
 			"node": node,
 		},
@@ -474,14 +483,18 @@ func filterDescentStatVarsQuery(constrainedPlaces []string, constrainedImport st
 }
 
 // GetFilteredSVGChildren returns a query to get children for a given stat var group filtered by constrained entities and existence threshold.
-func GetFilteredSVGChildrenQuery(template string, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) *spanner.Statement {
+func GetFilteredSVGChildrenQuery(template string, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) *spanner.Statement {
 	subquery := filterDescentStatVarsQuery(constrainedPlaces, constrainedImport, numEntitiesExistence)
 	subquery.Params["node"] = node
 
 	var baseStatement string
 	switch template {
 	case templateSV:
-		baseStatement = statements.getFilteredChildSVs
+		if includeDefinitions {
+			baseStatement = statements.getFilteredChildSVsWithDefinitions
+		} else {
+			baseStatement = statements.getFilteredChildSVs
+		}
 	case templateSVG:
 		baseStatement = statements.getFilteredChildSVGs
 	}
