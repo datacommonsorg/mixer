@@ -41,6 +41,8 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
+// svgGroupInfoExclusionList contains StatVarGroup IDs that should be excluded
+// from BulkVariableGroupInfo responses (e.g., hidden nodes).
 var svgGroupInfoExclusionList = map[string]struct{}{
 	"dc/g/Hidden": {},
 }
