@@ -1,0 +1,8 @@
+[
+  {
+    "SubjectID": "dc/topic/Climate",
+    "Name": "Climate Change",
+    "CosineSimilarity": 0.5,
+    "Types": ["Topic"]
+  }
+]

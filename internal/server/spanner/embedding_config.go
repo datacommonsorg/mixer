@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package resolve
+package spanner
 
 import (
 	"fmt"
@@ -28,9 +28,9 @@ import (
 type SearchMethod string
 
 const (
-	VectorSearch   SearchMethod = "vector_search" // search by embeddings
+	VectorSearch   SearchMethod = "vector_search"    // search by embeddings
 	FullTextSearch SearchMethod = "full_text_search" // search by term match
-	HybridSearch   SearchMethod = "hybrid_search" // combine vector search and full text search
+	HybridSearch   SearchMethod = "hybrid_search"    // combine vector search and full text search
 )
 
 // VectorSearchAlgo defines whether to use exact KNN or approximate ANN search.
@@ -46,16 +46,20 @@ const (
 type EmbeddingType string
 
 const (
-	EmbeddingTypeRetrievalQuery      EmbeddingType = "RETRIEVAL_QUERY" // embedding task optimized for query to search from
-	EmbeddingTypeRetrievalDocument   EmbeddingType = "RETRIEVAL_DOCUMENT" // embedding task optimized for document to search on
+	EmbeddingTypeRetrievalQuery     EmbeddingType = "RETRIEVAL_QUERY"     // embedding task optimized for query to search from
+	EmbeddingTypeRetrievalDocument  EmbeddingType = "RETRIEVAL_DOCUMENT"  // embedding task optimized for document to search on
 	EmbeddingTypeSemanticSimilarity EmbeddingType = "SEMANTIC_SIMILARITY" // embedding task optimized for finding semantic
 )
 
 // VectorSearchConfig holds the configuration for the parameters necessary to vector search.
 type VectorSearchConfig struct {
 	EmbeddingModel   string           `json:"embedding_model" yaml:"embedding_model"` // the model name registered in spanner to invoke
+	EmbeddingTable   string           `json:"embedding_table" yaml:"embedding_table"` // the table name in spanner for embeddings
 	EmbeddingType    EmbeddingType    `json:"embedding_type" yaml:"embedding_type"`
 	VectorSearchAlgo VectorSearchAlgo `json:"vector_search_algo" yaml:"vector_search_algo"`
+	Limit            int              `json:"limit" yaml:"limit"`
+	NumLeaves        int              `json:"num_leaves" yaml:"num_leaves"`
+	Threshold        float64          `json:"threshold" yaml:"threshold"`
 }
 
 // PostprocessingType defines post-processing steps applied to search results. Currently only have no prostprocessing setup.

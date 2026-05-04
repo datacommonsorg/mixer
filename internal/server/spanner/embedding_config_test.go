@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package resolve
+package spanner
 
 import (
 	"encoding/json"
@@ -55,7 +55,7 @@ func TestSpannerSearchConfig_JSON(t *testing.T) {
 
 func TestGetSpannerSearchConfigPath(t *testing.T) {
 	path := GetSpannerSearchConfigPath("default")
-	if !strings.HasSuffix(path, "internal/server/v2/resolve/spanner_config/default.yaml") {
+	if !strings.HasSuffix(path, "internal/server/spanner/spanner_config/default.yaml") {
 		t.Errorf("Unexpected path suffix: %s", path)
 	}
 }
@@ -72,8 +72,8 @@ func TestReadSpannerSearchConfig(t *testing.T) {
 	if cfg.VectorSearchConfig.VectorSearchAlgo != VectorSearchAlgoANN {
 		t.Errorf("Expected VectorSearchAlgo=%s, got %s", VectorSearchAlgoANN, cfg.VectorSearchConfig.VectorSearchAlgo)
 	}
-	if cfg.VectorSearchConfig.EmbeddingModel != "TextEmbeddings" {
-		t.Errorf("Expected EmbeddingModel=TextEmbeddings, got %s", cfg.VectorSearchConfig.EmbeddingModel)
+	if cfg.VectorSearchConfig.EmbeddingModel != "NodeEmbeddingModel" {
+		t.Errorf("Expected EmbeddingModel=NodeEmbeddingModel, got %s", cfg.VectorSearchConfig.EmbeddingModel)
 	}
 	if cfg.VectorSearchConfig.EmbeddingType != EmbeddingTypeRetrievalQuery {
 		t.Errorf("Expected EmbeddingType=%s, got %s", EmbeddingTypeRetrievalQuery, cfg.VectorSearchConfig.EmbeddingType)

@@ -75,7 +75,7 @@ func (m *mockSpannerClient) GetProvenanceSummary(ctx context.Context, ids []stri
 func (m *mockSpannerClient) GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error) {
 	return nil, nil
 }
-func (m *mockSpannerClient) VectorSearchQuery(ctx context.Context, limit int, embeddings []float64, numLeaves int, threshold float64) ([]*spanner.VectorSearchResult, error) {
+func (m *mockSpannerClient) VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string) ([]*spanner.VectorSearchResult, error) {
 	return nil, nil
 }
 func (m *mockSpannerClient) GetEventCollectionDate(ctx context.Context, placeID, eventType string) ([]string, error) {
@@ -127,7 +127,7 @@ func TestSpannerResolve(t *testing.T) {
 			},
 		},
 	}
-	ds := spanner.NewSpannerDataSource(client, recogPlaceStore, &maps.FakeMapsClient{})
+	ds := spanner.NewSpannerDataSource(client, recogPlaceStore, &maps.FakeMapsClient{}, false)
 
 	t.Parallel()
 	ctx := context.Background()
@@ -182,7 +182,7 @@ func TestSpannerNode(t *testing.T) {
 	if client == nil {
 		return
 	}
-	ds := spanner.NewSpannerDataSource(client, nil, nil)
+	ds := spanner.NewSpannerDataSource(client, nil, nil, false)
 
 	t.Parallel()
 	ctx := context.Background()
@@ -237,7 +237,7 @@ func TestSpannerSparql(t *testing.T) {
 	if client == nil {
 		return
 	}
-	ds := spanner.NewSpannerDataSource(client, nil, nil)
+	ds := spanner.NewSpannerDataSource(client, nil, nil, false)
 
 	t.Parallel()
 	ctx := context.Background()
@@ -306,7 +306,7 @@ func TestSpannerEvent(t *testing.T) {
 	if client == nil {
 		return
 	}
-	ds := spanner.NewSpannerDataSource(client, nil, nil)
+	ds := spanner.NewSpannerDataSource(client, nil, nil, false)
 
 	t.Parallel()
 	ctx := context.Background()
@@ -465,7 +465,7 @@ func TestSpannerObservation(t *testing.T) {
 		client := &mockSpannerClient{
 			checkVariableExistenceRes: c.mockRes,
 		}
-		ds := spanner.NewSpannerDataSource(client, nil, nil)
+		ds := spanner.NewSpannerDataSource(client, nil, nil, false)
 
 		got, err := ds.Observation(ctx, c.req)
 		if (err != nil) != c.wantErr {

@@ -36,6 +36,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/translator/sparql"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/golang/geo/s2"
+	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
@@ -49,9 +50,11 @@ var svgGroupInfoExclusionList = map[string]struct{}{
 
 // SpannerDataSource represents a data source that interacts with Spanner.
 type SpannerDataSource struct {
-	client          SpannerClient
-	recogPlaceStore *files.RecogPlaceStore
-	mapsClient      internalmaps.MapsClient
+	client                        SpannerClient
+	recogPlaceStore               *files.RecogPlaceStore
+	mapsClient                    internalmaps.MapsClient
+	searchConfig                  *SpannerSearchConfig
+	enableSpannerSearchEmbeddings bool
 }
 
 const (
@@ -64,11 +67,15 @@ func NewSpannerDataSource(
 	client SpannerClient,
 	recogPlaceStore *files.RecogPlaceStore,
 	mapsClient internalmaps.MapsClient,
+	enableSpannerSearchEmbeddings bool,
 ) *SpannerDataSource {
+	cfg, _ := loadSpannerSearchConfig()
 	return &SpannerDataSource{
-		client:          client,
-		recogPlaceStore: recogPlaceStore,
-		mapsClient:      mapsClient,
+		client:                        client,
+		recogPlaceStore:               recogPlaceStore,
+		mapsClient:                    mapsClient,
+		searchConfig:                  cfg,
+		enableSpannerSearchEmbeddings: enableSpannerSearchEmbeddings,
 	}
 }
 
@@ -222,9 +229,11 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 	}
 
 	if resolver := normalizedResolveRequest.Request.GetResolver(); resolver == resolvev2.ResolveResolverIndicator {
-		// Spanner doesn't do embeddings resolution yet.
-		slog.Warn("Received unsupported ResolveResolverIndicator request to Spanner", "request", req)
-		return &pbv2.ResolveResponse{}, nil
+		if !sds.enableSpannerSearchEmbeddings {
+			slog.Warn("Received unsupported ResolveResolverIndicator request to Spanner", "request", req)
+			return &pbv2.ResolveResponse{}, nil
+		}
+		return sds.vectorSearchResolution(ctx, normalizedResolveRequest)
 	}
 
 	switch normalizedResolveRequest.InProp {
@@ -235,6 +244,105 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 	default:
 		return sds.resolveID(ctx, normalizedResolveRequest)
 	}
+}
+
+// loadSpannerSearchConfig loads the default search config for Spanner.
+func loadSpannerSearchConfig() (*SpannerSearchConfig, error) {
+	cfgPath := GetSpannerSearchConfigPath("default")
+	if cfgPath == "" {
+		return nil, fmt.Errorf("failed to get search config path")
+	}
+	return ReadSpannerSearchConfig(cfgPath)
+}
+
+// vectorSearchResolution resolves nodes using Spanner vector search.
+func (sds *SpannerDataSource) vectorSearchResolution(
+	ctx context.Context,
+	req *resolvev2.NormalizedResolveRequest,
+) (*pbv2.ResolveResponse, error) {
+	cfg := sds.searchConfig
+	if cfg == nil {
+		return nil, status.Errorf(codes.Internal, "failed to load search config")
+	}
+
+	resolveResponse := &pbv2.ResolveResponse{
+		Entities: []*pbv2.ResolveResponse_Entity{},
+	}
+	typeOfs := req.TypeOfValues
+	if len(typeOfs) == 0 {
+		typeOfs = []string{"StatisticalVariable", "Topic"}
+	} else {
+		for _, t := range typeOfs {
+			if t != "StatisticalVariable" && t != "Topic" {
+				slog.Warn("Embeddings resolution requested for unsupported type. Current support is only for StatisticalVariable and Topic.", "type", t)
+				return &pbv2.ResolveResponse{}, nil
+			}
+		}
+	}
+
+	nodes := req.Request.GetNodes()
+	errGroup, errCtx := errgroup.WithContext(ctx)
+	resolveResponse.Entities = make([]*pbv2.ResolveResponse_Entity, len(nodes))
+
+	for i, node := range nodes {
+		i, node := i, node // Capture loop variables
+		errGroup.Go(func() error {
+			entity := &pbv2.ResolveResponse_Entity{
+				Node: node,
+			}
+
+			// 1. Get term embedding
+			embeddings, err := sds.client.GetTermEmbeddingQuery(
+				errCtx,
+				cfg.VectorSearchConfig.EmbeddingModel,
+				node,
+				string(cfg.VectorSearchConfig.EmbeddingType),
+			)
+			if err != nil {
+				return status.Errorf(codes.Internal, "failed to get term embedding for %s: %v", node, err)
+			}
+			if len(embeddings) == 0 {
+				resolveResponse.Entities[i] = entity
+				return nil
+			}
+
+			// 2. Vector search
+			searchResults, err := sds.client.VectorSearchQuery(
+				errCtx,
+				cfg.VectorSearchConfig.EmbeddingTable,
+				cfg.VectorSearchConfig.Limit,
+				embeddings,
+				cfg.VectorSearchConfig.NumLeaves,
+				cfg.VectorSearchConfig.Threshold,
+				typeOfs,
+			)
+			if err != nil {
+				return status.Errorf(codes.Internal, "failed to perform vector search for %s: %v", node, err)
+			}
+
+			// 3. Build candidates
+			candidates := []*pbv2.ResolveResponse_Entity_Candidate{}
+			for _, res := range searchResults {
+				candidates = append(candidates, &pbv2.ResolveResponse_Entity_Candidate{
+					Dcid:   res.SubjectID,
+					TypeOf: res.Types,
+					Metadata: map[string]string{
+						"score":    fmt.Sprintf("%.4f", res.CosineSimilarity),
+						"sentence": res.Name,
+					},
+				})
+			}
+			entity.Candidates = candidates
+			resolveResponse.Entities[i] = entity
+			return nil
+		})
+	}
+
+	if err := errGroup.Wait(); err != nil {
+		return nil, err
+	}
+
+	return resolveResponse, nil
 }
 
 // Sparql executes a SPARQL query against the Spanner data source.

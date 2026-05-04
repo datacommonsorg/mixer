@@ -30,6 +30,8 @@ import (
 type coordinateMockSpannerClient struct {
 	getNodeEdgesByProp map[string]map[string][]*Edge
 	assertGetNodeEdges func(ids []string, arc *v2.Arc, pageSize, offset int)
+	embeddingsRes      []float64
+	vectorSearchRes    []*VectorSearchResult
 }
 
 func (m *coordinateMockSpannerClient) GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*Property, error) {
@@ -104,6 +106,14 @@ func (m *coordinateMockSpannerClient) GetFilteredTopic(ctx context.Context, node
 	return nil, nil
 }
 
+func (m *coordinateMockSpannerClient) VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string) ([]*VectorSearchResult, error) {
+	return m.vectorSearchRes, nil
+}
+
+func (m *coordinateMockSpannerClient) GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error) {
+	return m.embeddingsRes, nil
+}
+
 func (m *coordinateMockSpannerClient) Id() string { return "mock" }
 func (m *coordinateMockSpannerClient) Start()     {}
 func (m *coordinateMockSpannerClient) Close()     {}
@@ -145,7 +155,7 @@ func TestResolveCoordinate(t *testing.T) {
 				},
 			},
 		},
-	}, nil, nil)
+	}, nil, nil, false)
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"37.42#-122.08"},
@@ -212,7 +222,7 @@ func TestResolveCoordinateFetchesAllCellsInBatch(t *testing.T) {
 				},
 			},
 		},
-	}, nil, nil)
+	}, nil, nil, false)
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"37.42#-122.08", "36.77#-119.41"},
@@ -267,7 +277,7 @@ func TestResolveCoordinateTypeFilterUsesDominantType(t *testing.T) {
 				},
 			},
 		},
-	}, nil, nil)
+	}, nil, nil, false)
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"37.42#-122.08"},
@@ -314,7 +324,7 @@ func TestResolveCoordinateSkipsS2CellCandidatesByType(t *testing.T) {
 				},
 			},
 		},
-	}, nil, nil)
+	}, nil, nil, false)
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"37.42#-122.08"},
