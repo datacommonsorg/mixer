@@ -47,6 +47,12 @@ func TestV2BulkVariableGroupInfo(t *testing.T) {
 				1,
 				"bulk_variable_group_info.json",
 			},
+			{
+				[]string{"dc/g/Hidden"},
+				nil,
+				0,
+				"bulk_variable_group_info_hidden_excluded.json",
+			},
 		} {
 			resp, err := mixer.V2BulkVariableGroupInfo(ctx, &pbv1.BulkVariableGroupInfoRequest{
 				Nodes:                c.nodes,
