@@ -51,6 +51,12 @@ func TestV3BulkVariableGroupInfo(t *testing.T) {
 			},
 			{
 				&pbv1.BulkVariableGroupInfoRequest{
+					Nodes: []string{"dc/g/Hidden"},
+				},
+				"bulk_variable_group_info_hidden_excluded.json",
+			},
+			{
+				&pbv1.BulkVariableGroupInfoRequest{
 					Nodes:                []string{"dc/g/Environment", "dc/g/Agriculture"},
 					ConstrainedEntities:  []string{"country/USA", "country/IND", "country/CAN"},
 					NumEntitiesExistence: 2,
