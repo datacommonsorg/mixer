@@ -352,22 +352,34 @@ var statements = struct {
 			type = @type
 			AND key %s`,
 	getEventCollectionDate: `		@{force_join_order=true}
-		GRAPH DCGraph MATCH (event:Node)-[:Edge {predicate: 'affectedPlace', object_id: @placeID}]->(), (event)-[:Edge {predicate: 'typeOf', object_id: @eventType}]->(), (event)-[:Edge {predicate: 'startDate'}]->(dateNode:Node)
+		GRAPH DCGraph
+		MATCH (event:Node)-[:Edge {predicate: 'typeOf', object_id: @eventType}]->()
+		WITH DISTINCT event
+		MATCH (event:Node)-[:Edge {predicate: 'affectedPlace', object_id: @placeID}]->()
+		MATCH (event:Node)-[:Edge {predicate: 'startDate'}]->(dateNode:Node)
 		RETURN DISTINCT 
 			SUBSTR(dateNode.value, 1, 7) AS month
 		ORDER BY 
 			month`,
 	getEventCollectionDcids: `		@{force_join_order=true}
-		GRAPH DCGraph MATCH (event:Node)-[:Edge {predicate: 'affectedPlace', object_id: @placeID}]->(), (event)-[:Edge {predicate: 'typeOf', object_id: @eventType}]->(), (event)-[:Edge {predicate: 'startDate'}]->(dateNode:Node)
+		GRAPH DCGraph
+		MATCH (event:Node)-[:Edge {predicate: 'typeOf', object_id: @eventType}]->()
+		WITH DISTINCT event
+		MATCH (event:Node)-[:Edge {predicate: 'affectedPlace', object_id: @placeID}]->()
+		MATCH (event:Node)-[:Edge {predicate: 'startDate'}]->(dateNode:Node)
 		WHERE 
 			SUBSTR(dateNode.value, 1, 7) = @date
 		RETURN DISTINCT 
 			event.subject_id AS dcid`,
 	getEventCollectionDcidsWithMagnitude: `		@{force_join_order=true}
-		GRAPH DCGraph MATCH (event:Node)-[:Edge {predicate: 'affectedPlace', object_id: @placeID}]->(), (event)-[:Edge {predicate: 'typeOf', object_id: @eventType}]->(), (event)-[:Edge {predicate: 'startDate'}]->(dateNode:Node)
+		GRAPH DCGraph
+		MATCH (event:Node)-[:Edge {predicate: 'typeOf', object_id: @eventType}]->()
+		WITH DISTINCT event
+		MATCH (event:Node)-[:Edge {predicate: 'affectedPlace', object_id: @placeID}]->()
+		MATCH (event:Node)-[:Edge {predicate: 'startDate'}]->(dateNode:Node)
 		WHERE 
 			SUBSTR(dateNode.value, 1, 7) = @date
-		MATCH (event)-[magEdge:Edge {predicate: @magnitudeProp}]->()
+		MATCH (event:Node)-[magEdge:Edge {predicate: @magnitudeProp}]->()
 		RETURN DISTINCT 
 			event.subject_id AS dcid,
 			magEdge.object_id AS magnitude`,
