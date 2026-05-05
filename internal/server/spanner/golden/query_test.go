@@ -298,7 +298,7 @@ func TestGetStatVarGroupNode(t *testing.T) {
 		goldenFile := c.golden + ".json"
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			actual, err := client.GetStatVarGroupNode(ctx, c.nodes)
+			actual, err := client.GetStatVarGroupNode(ctx, c.nodes, c.includeDefinitions)
 			if err != nil {
 				return nil, err
 			}
@@ -320,7 +320,7 @@ func TestGetFilteredStatVarGroupNode(t *testing.T) {
 		goldenFile := c.golden + ".json"
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			actual, err := client.GetFilteredStatVarGroupNode(ctx, c.nodes, c.constrainedPlaces, c.constrainedImport, c.numEntitiesExistence)
+			actual, err := client.GetFilteredStatVarGroupNode(ctx, c.nodes, c.constrainedPlaces, c.constrainedImport, c.numEntitiesExistence, c.includeDefinitions)
 			if err != nil {
 				return nil, err
 			}

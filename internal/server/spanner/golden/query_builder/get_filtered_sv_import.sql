@@ -1,6 +1,7 @@
 		SELECT
 			n.subject_id,
-			n.name
+			n.name,
+			'' AS definition
 		FROM Node n
 		JOIN (
 			SELECT

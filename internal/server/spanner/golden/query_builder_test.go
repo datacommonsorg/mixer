@@ -187,7 +187,7 @@ func TestGetStatVarGroupNodeQuery(t *testing.T) {
 		goldenFile := c.golden + ".sql"
 
 		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return spanner.GetStatVarGroupNodeQuery(c.nodes), nil
+			return spanner.GetStatVarGroupNodeQuery(c.nodes, c.includeDefinitions), nil
 		})
 	}
 }
@@ -199,7 +199,7 @@ func TestGetSVGChildrenQuery(t *testing.T) {
 		goldenFile := c.golden + ".sql"
 
 		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return spanner.GetSVGChildrenQuery(c.node), nil
+			return spanner.GetSVGChildrenQuery(c.node, c.includeDefinitions), nil
 		})
 	}
 }
@@ -211,7 +211,7 @@ func TestGetFilteredSVGChildren(t *testing.T) {
 		goldenFile := c.golden + ".sql"
 
 		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return spanner.GetFilteredSVGChildrenQuery(c.template, c.node, c.constrainedPlaces, c.constrainedImport, c.numEntitiesExistence), nil
+			return spanner.GetFilteredSVGChildrenQuery(c.template, c.node, c.constrainedPlaces, c.constrainedImport, c.numEntitiesExistence, c.includeDefinitions), nil
 		})
 	}
 }

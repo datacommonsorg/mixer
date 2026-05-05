@@ -661,7 +661,7 @@ func (sc *spannerDatabaseClient) VectorSearchQuery(ctx context.Context, tableNam
 }
 
 // GetStatVarGroupNode fetches StatVarGroupNode info from Spanner.
-func (sc *spannerDatabaseClient) GetStatVarGroupNode(ctx context.Context, nodes []string) ([]*StatVarGroupNode, error) {
+func (sc *spannerDatabaseClient) GetStatVarGroupNode(ctx context.Context, nodes []string, includeDefinitions bool) ([]*StatVarGroupNode, error) {
 	var svgNodes []*StatVarGroupNode
 	if len(nodes) == 0 {
 		return svgNodes, nil
@@ -670,7 +670,7 @@ func (sc *spannerDatabaseClient) GetStatVarGroupNode(ctx context.Context, nodes 
 	err := queryStructs(
 		ctx,
 		sc,
-		*GetStatVarGroupNodeQuery(nodes),
+		*GetStatVarGroupNodeQuery(nodes, includeDefinitions),
 		func() interface{} {
 			return &StatVarGroupNode{}
 		},
@@ -686,7 +686,7 @@ func (sc *spannerDatabaseClient) GetStatVarGroupNode(ctx context.Context, nodes 
 }
 
 // GetFilteredStatVarGroupNode fetches filtered StatVarGroupNode info from Spanner.
-func (sc *spannerDatabaseClient) GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]*FilteredStatVarGroupNode, error) {
+func (sc *spannerDatabaseClient) GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (map[string]*FilteredStatVarGroupNode, error) {
 	response := map[string]*FilteredStatVarGroupNode{}
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	errGroup.SetLimit(maxConcurrentFilteredSVGGoroutines) // Limit the number of concurrent goroutines to avoid overwhelming Spanner with too many requests.
@@ -700,7 +700,7 @@ func (sc *spannerDatabaseClient) GetFilteredStatVarGroupNode(ctx context.Context
 	for _, node := range nodes {
 		node := node
 		errGroup.Go(func() error {
-			resp, err := sc.getSingleFilteredStatVarGroupNode(errCtx, node, constrainedPlaces, constrainedImport, numEntitiesExistence)
+			resp, err := sc.getSingleFilteredStatVarGroupNode(errCtx, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions)
 			if err != nil {
 				return fmt.Errorf("error fetching filtered StatVarGroupNode for node %s: %w", node, err)
 			}
@@ -722,7 +722,7 @@ func (sc *spannerDatabaseClient) GetFilteredStatVarGroupNode(ctx context.Context
 }
 
 // getSingleFilteredStatVarGroupNode fetches the relevant info to build a single filtered StatVarGroupNode from Spanner.
-func (sc *spannerDatabaseClient) getSingleFilteredStatVarGroupNode(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (*FilteredStatVarGroupNode, error) {
+func (sc *spannerDatabaseClient) getSingleFilteredStatVarGroupNode(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (*FilteredStatVarGroupNode, error) {
 	filteredStatVarGroupNode := &FilteredStatVarGroupNode{}
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	svgChildChan := make(chan []*SVGChild, 1)
@@ -734,7 +734,7 @@ func (sc *spannerDatabaseClient) getSingleFilteredStatVarGroupNode(ctx context.C
 		err := queryStructs(
 			errCtx,
 			sc,
-			*GetSVGChildrenQuery(node),
+			*GetSVGChildrenQuery(node, includeDefinitions),
 			func() interface{} {
 				return &SVGChild{}
 			},
@@ -754,7 +754,7 @@ func (sc *spannerDatabaseClient) getSingleFilteredStatVarGroupNode(ctx context.C
 		err := queryStructs(
 			errCtx,
 			sc,
-			*GetFilteredSVGChildrenQuery(templateSV, node, constrainedPlaces, constrainedImport, numEntitiesExistence),
+			*GetFilteredSVGChildrenQuery(templateSV, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions),
 			func() interface{} {
 				return &ChildSV{}
 			},
@@ -774,7 +774,7 @@ func (sc *spannerDatabaseClient) getSingleFilteredStatVarGroupNode(ctx context.C
 		err := queryStructs(
 			errCtx,
 			sc,
-			*GetFilteredSVGChildrenQuery(templateSVG, node, constrainedPlaces, constrainedImport, numEntitiesExistence),
+			*GetFilteredSVGChildrenQuery(templateSVG, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions),
 			func() interface{} {
 				return &ChildSVG{}
 			},

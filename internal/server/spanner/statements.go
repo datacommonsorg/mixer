@@ -95,18 +95,24 @@ var statements = struct {
 	getEventCollectionDcids string
 	// Fetch events for a given type, location and date, along with magnitude property.
 	getEventCollectionDcidsWithMagnitude string
-	// Fetch StatVarGroupNode info.
+	// Fetch StatVarGroupNode info without definitions.
 	getStatVarGroupNode string
+	// Fetch StatVarGroupNode info with definitions.
+	getStatVarGroupNodeWithDefinitions string
 	// Attach single stat var group.
 	attachSVG string
 	// Attach multiple stat var groups.
 	attachSVGs string
-	// Fetch all children of a stat var group.
+	// Fetch all children of a stat var group without definitions.
 	getSVGChildren string
+	// Fetch all children of a stat var group with definitions.
+	getSVGChildrenWithDefinitions string
 	// Fetch filtered count of descendent stat vars for a given variable group.
 	getFilteredChildSVGs string
-	// Fetch filtered descendent stat vars for a given variable group.
+	// Fetch filtered descendent stat vars for a given variable group without definitions.
 	getFilteredChildSVs string
+	// Fetch filtered descendent stat vars for a given variable group with definitions.
+	getFilteredChildSVsWithDefinitions string
 	// Fetch filtered count of descendent stat vars for a given topic.
 	getFilteredTopic string
 	// Filter descendent stat vars.
@@ -399,7 +405,8 @@ var statements = struct {
 			n.subject_id, 
 			n.name, 
 			c.descendent_stat_var_count,
-			FALSE AS has_data
+			FALSE AS has_data,
+			'' AS definition
 		FROM ChildSVGs svg
 		JOIN ChildSVGCounts c 
 		ON svg.child_svg = c.child_svg
@@ -416,7 +423,77 @@ var statements = struct {
 				FROM Observation o 
 				WHERE o.variable_measured = sv.child_sv
 				LIMIT 1
-			) AS has_data
+			) AS has_data,
+			'' AS definition
+		FROM ChildSVs sv
+		JOIN Node n 
+		ON n.subject_id = sv.child_sv`,
+	getStatVarGroupNodeWithDefinitions: `		WITH ChildSVGs AS (
+			SELECT DISTINCT
+				subject_id AS child_svg, 
+				object_id AS svg
+			FROM Edge
+			WHERE predicate = 'specializationOf'
+			AND object_id %[1]s
+			UNION ALL
+			%[2]s
+		),
+		UniqueChildSVGs AS (
+			SELECT DISTINCT child_svg FROM ChildSVGs
+		),
+		ChildSVGCounts AS (
+			SELECT 
+				e.object_id AS child_svg, 
+				COUNT(e.subject_id) AS descendent_stat_var_count
+			FROM UniqueChildSVGs u
+			JOIN@{JOIN_METHOD=APPLY_JOIN} Edge e 
+			ON e.object_id = u.child_svg
+			WHERE e.predicate = 'linkedMemberOf' 
+			GROUP BY e.object_id
+		),
+		ChildSVs AS (
+			SELECT DISTINCT
+				subject_id AS child_sv, 
+				object_id AS svg
+			FROM Edge
+			WHERE predicate = 'memberOf'
+			AND object_id %[1]s
+		),
+		UniqueChildSVs AS (
+			SELECT DISTINCT child_sv FROM ChildSVs
+		)
+		SELECT 
+			svg.svg,
+			n.subject_id, 
+			n.name, 
+			c.descendent_stat_var_count,
+			FALSE AS has_data,
+			'' AS definition
+		FROM ChildSVGs svg
+		JOIN ChildSVGCounts c 
+		ON svg.child_svg = c.child_svg
+		JOIN Node n 
+		ON n.subject_id = svg.child_svg
+		UNION ALL
+		SELECT 
+			sv.svg,
+			n.subject_id, 
+			n.name, 
+			-1 AS descendent_stat_var_count,
+			EXISTS (
+				SELECT 1 
+				FROM Observation o 
+				WHERE o.variable_measured = sv.child_sv
+				LIMIT 1
+			) AS has_data,
+			IFNULL((
+				SELECT n_def.value
+				FROM Edge e_def
+				JOIN Node n_def ON e_def.object_id = n_def.subject_id
+				WHERE e_def.subject_id = sv.child_sv
+				AND e_def.predicate = 'definition'
+				LIMIT 1
+			), '') AS definition
 		FROM ChildSVs sv
 		JOIN Node n 
 		ON n.subject_id = sv.child_sv`,
@@ -430,7 +507,26 @@ var statements = struct {
 	getSVGChildren: `		SELECT DISTINCT
 			n.subject_id,
 			n.name,
-			e.predicate
+			e.predicate,
+			'' AS definition
+		FROM Node n
+		JOIN (
+			SELECT subject_id, predicate FROM Edge@{FORCE_INDEX=InEdge}
+			WHERE predicate IN ('memberOf', 'specializationOf')
+				AND object_id = @node
+		) e ON n.subject_id = e.subject_id`,
+	getSVGChildrenWithDefinitions: `		SELECT DISTINCT
+			n.subject_id,
+			n.name,
+			e.predicate,
+			IFNULL((
+				SELECT n_def.value
+				FROM Edge e_def
+				JOIN Node n_def ON e_def.object_id = n_def.subject_id
+				WHERE e_def.subject_id = n.subject_id
+				AND e_def.predicate = 'definition'
+				LIMIT 1
+			), '') AS definition
 		FROM Node n
 		JOIN (
 			SELECT subject_id, predicate FROM Edge@{FORCE_INDEX=InEdge}
@@ -439,7 +535,35 @@ var statements = struct {
 		) e ON n.subject_id = e.subject_id`,
 	getFilteredChildSVs: `		SELECT
 			n.subject_id,
-			n.name
+			n.name,
+			'' AS definition
+		FROM Node n
+		JOIN (
+			SELECT
+				e.subject_id AS subject_id
+			FROM Edge e
+			%s
+			WHERE e.subject_id IN (
+				SELECT DISTINCT subject_id
+				FROM Edge
+				WHERE object_id = @node
+					AND predicate = 'memberOf'
+			)
+			GROUP BY
+				e.subject_id
+		) e_existence 
+			ON n.subject_id = e_existence.subject_id`,
+	getFilteredChildSVsWithDefinitions: `		SELECT
+			n.subject_id,
+			n.name,
+			IFNULL((
+				SELECT n_def.value
+				FROM Edge e_def
+				JOIN Node n_def ON e_def.object_id = n_def.subject_id
+				WHERE e_def.subject_id = n.subject_id
+				AND e_def.predicate = 'definition'
+				LIMIT 1
+			), '') AS definition
 		FROM Node n
 		JOIN (
 			SELECT

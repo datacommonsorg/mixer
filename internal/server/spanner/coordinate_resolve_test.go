@@ -94,11 +94,11 @@ func (m *coordinateMockSpannerClient) GetProvenanceSummary(ctx context.Context, 
 	return nil, nil
 }
 
-func (m *coordinateMockSpannerClient) GetStatVarGroupNode(ctx context.Context, nodes []string) ([]*StatVarGroupNode, error) {
+func (m *coordinateMockSpannerClient) GetStatVarGroupNode(ctx context.Context, nodes []string, includeDefinitions bool) ([]*StatVarGroupNode, error) {
 	return nil, nil
 }
 
-func (m *coordinateMockSpannerClient) GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]*FilteredStatVarGroupNode, error) {
+func (m *coordinateMockSpannerClient) GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (map[string]*FilteredStatVarGroupNode, error) {
 	return nil, nil
 }
 

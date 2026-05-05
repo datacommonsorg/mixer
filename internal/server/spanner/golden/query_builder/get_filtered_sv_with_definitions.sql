@@ -1,7 +1,14 @@
 		SELECT
 			n.subject_id,
 			n.name,
-			'' AS definition
+			IFNULL((
+				SELECT n_def.value
+				FROM Edge e_def
+				JOIN Node n_def ON e_def.object_id = n_def.subject_id
+				WHERE e_def.subject_id = n.subject_id
+				AND e_def.predicate = 'definition'
+				LIMIT 1
+			), '') AS definition
 		FROM Node n
 		JOIN (
 			SELECT
@@ -10,11 +17,7 @@
 			JOIN@{JOIN_TYPE=HASH_JOIN} (
 				SELECT variable_measured
 				FROM Observation 
-				JOIN Edge@{FORCE_INDEX=InEdge} e1
-				ON import_name = SUBSTR(e1.subject_id, 9)
-				WHERE e1.predicate = 'source'
-					AND e1.object_id = 'dc/s/WorldBank'
-					AND observation_about IN ('country/USA','country/IND')
+				WHERE observation_about = 'country/USA'
 				GROUP BY variable_measured
 			) o ON o.variable_measured = e.subject_id
 			WHERE e.subject_id IN (
