@@ -74,9 +74,9 @@
             ((proxy.pathsuffix MatchesPath "/v1/observations/point") OR (proxy.pathsuffix MatchesPath "/v1/observations/point/**")) OR
             ((proxy.pathsuffix MatchesPath "/v1/observations/series") OR (proxy.pathsuffix MatchesPath "/v1/observations/series/**")) OR
             (proxy.pathsuffix MatchesPath "/v1/observations/series/derived") OR
+            (proxy.pathsuffix MatchesPath "/v1/place/stat-vars/union") OR
             (proxy.pathsuffix MatchesPath "/v1/properties") OR (proxy.pathsuffix MatchesPath "/v1/properties/**") OR
             (proxy.pathsuffix MatchesPath "/v1/property/values") OR (proxy.pathsuffix MatchesPath "/v1/property/values/**") OR
-            (proxy.pathsuffix MatchesPath "/v1/place/stat-vars/union") OR
             (proxy.pathsuffix MatchesPath "/v1/query") OR
             (proxy.pathsuffix MatchesPath "/v1/recognize/entities") OR
             (proxy.pathsuffix MatchesPath "/v1/stat/date/within-place") OR
