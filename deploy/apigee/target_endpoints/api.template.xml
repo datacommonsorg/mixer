@@ -65,9 +65,7 @@
             (proxy.pathsuffix MatchesPath "/v1/bulk/observation-existence") OR
             ((proxy.pathsuffix MatchesPath "/v1/bulk/observations/point") OR (proxy.pathsuffix MatchesPath "/v1/bulk/observations/point/**")) OR
             (proxy.pathsuffix MatchesPath "/v1/bulk/observations/point/linked") OR
-            ((proxy.pathsuffix MatchesPath "/v1/bulk/observations/series") OR (proxy.pathsuffix MatchesPath "/v1/bulk/observations/series/**")) OR
             ((proxy.pathsuffix MatchesPath "/v1/bulk/properties") OR (proxy.pathsuffix MatchesPath "/v1/bulk/properties/**")) OR
-            ((proxy.pathsuffix MatchesPath "/v1/bulk/property/values") OR (proxy.pathsuffix MatchesPath "/v1/bulk/property/values/**")) OR
             ((proxy.pathsuffix MatchesPath "/v1/bulk/property/values/linked") OR (proxy.pathsuffix MatchesPath "/v1/bulk/property/values/linked/**")) OR
             ((proxy.pathsuffix MatchesPath "/v1/bulk/triples") OR (proxy.pathsuffix MatchesPath "/v1/bulk/triples/**")) OR
             (proxy.pathsuffix MatchesPath "/v1/bulk/variables") OR
