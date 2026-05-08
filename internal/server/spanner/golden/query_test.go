@@ -461,6 +461,23 @@ func TestVectorSearch(t *testing.T) {
 	}
 }
 
+func TestFilterNodesByType(t *testing.T) {
+	client := test.NewSpannerClient()
+	if client == nil {
+		return
+	}
+
+	t.Parallel()
+
+	for _, c := range filterNodesByTypeTestCases {
+		goldenFile := c.golden + ".json"
+
+		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return client.FilterNodesByType(ctx, c.nodes, c.typeFilter)
+		})
+	}
+}
+
 // sortStatVarGroupNode sorts StatVarGroupNode results by SVG and subject_id to ensure deterministic order in tests.
 func sortStatVarGroupNode(results []*spanner.StatVarGroupNode) {
 	sort.Slice(results, func(i, j int) bool {

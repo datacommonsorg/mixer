@@ -114,6 +114,10 @@ func (m *coordinateMockSpannerClient) GetTermEmbeddingQuery(ctx context.Context,
 	return m.embeddingsRes, nil
 }
 
+func (m *coordinateMockSpannerClient) FilterNodesByType(ctx context.Context, nodes []string, typeFilter string) ([]string, error) {
+	return nil, nil
+}
+
 func (m *coordinateMockSpannerClient) Id() string { return "mock" }
 func (m *coordinateMockSpannerClient) Start()     {}
 func (m *coordinateMockSpannerClient) Close()     {}

@@ -711,17 +711,29 @@ func (sds *SpannerDataSource) BulkVariableGroupInfo(ctx context.Context, req *pb
 	if req.NumEntitiesExistence < 0 {
 		return nil, status.Errorf(codes.InvalidArgument, "numEntitiesExistence must be non-negative")
 	}
+	dbSvgs, err := sds.client.FilterNodesByType(ctx, req.GetNodes(), "StatVarGroup")
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, "error filtering svgs: %v", err)
+	}
+	topics, err := sds.client.FilterNodesByType(ctx, req.GetNodes(), "Topic")
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, "error filtering topics: %v", err)
+	}
+
+	foundNodes := map[string]bool{}
 	var svgs []string
-	var topics []string
+	for _, node := range dbSvgs {
+		foundNodes[node] = true
+		if _, ok := svgGroupInfoExclusionList[node]; !ok {
+			svgs = append(svgs, node)
+		}
+	}
+	for _, node := range topics {
+		foundNodes[node] = true
+	}
+
 	for _, node := range req.GetNodes() {
-		if strings.HasPrefix(node, prefixTopic) {
-			topics = append(topics, node)
-		} else if strings.HasPrefix(node, prefixSVG) {
-			// Exclude hidden nodes from the database query
-			if _, ok := svgGroupInfoExclusionList[node]; !ok {
-				svgs = append(svgs, node)
-			}
-		} else {
+		if !foundNodes[node] {
 			return nil, status.Errorf(codes.InvalidArgument, "node %s is not a valid StatVarGroup or Topic node", node)
 		}
 	}

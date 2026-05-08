@@ -75,6 +75,9 @@ func (m *mockSpannerClient) GetProvenanceSummary(ctx context.Context, ids []stri
 func (m *mockSpannerClient) GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error) {
 	return nil, nil
 }
+func (m *mockSpannerClient) FilterNodesByType(ctx context.Context, nodes []string, typeFilter string) ([]string, error) {
+	return nil, nil
+}
 func (m *mockSpannerClient) VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string) ([]*spanner.VectorSearchResult, error) {
 	return nil, nil
 }
