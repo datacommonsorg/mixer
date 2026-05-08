@@ -629,7 +629,7 @@ func GetTermEmbeddingQuery(modelName, searchLabel, taskType string) *spanner.Sta
 func VectorSearchQuery(tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string) *spanner.Statement {
 	optionsJSON := fmt.Sprintf(`{"num_leaves_to_search": %d}`, numLeaves)
 	return &spanner.Statement{
-		SQL:    fmt.Sprintf(statements.vectorSearchNode, "`"+tableName+"`", optionsJSON, fmt.Sprintf("%.2f", threshold)),
+		SQL: fmt.Sprintf(statements.vectorSearchNode, "`"+tableName+"`", optionsJSON, fmt.Sprintf("%.2f", threshold)),
 		Params: map[string]interface{}{
 			"embeddings": embeddings,
 			"limit":      limit,

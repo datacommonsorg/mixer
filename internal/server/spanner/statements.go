@@ -646,10 +646,9 @@ var statements = struct {
 				HAVING COUNT(DISTINCT %s) >= @numEntitiesExistence`,
 	getEmbeddingFromQuery: `		SELECT embeddings.values
 		FROM ML.PREDICT(MODEL %s, (SELECT @search_label AS content, @task_type AS task_type))`,
-	filterNodesByType: `		SELECT DISTINCT subject_id
+	filterNodesByType: `		SELECT subject_id
 		FROM Node
-		WHERE ARRAY_LENGTH(types) > 0
-			AND @type_filter IN UNNEST(types)
+		WHERE @type_filter IN UNNEST(types)
 			AND subject_id IN UNNEST(@nodes)`,
 	vectorSearchNode: `		SELECT
 			subject_id,

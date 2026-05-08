@@ -18,6 +18,8 @@ import (
 	"context"
 	"path"
 	"runtime"
+	"slices"
+	"strings"
 	"testing"
 
 	"github.com/datacommonsorg/mixer/internal/maps"
@@ -38,6 +40,7 @@ type mockSpannerClient struct {
 	resolveByIDRes            map[string][]string
 	getNodeEdgesRes           map[string][]*spanner.Edge
 	checkVariableExistenceRes [][]string
+	filterNodesByTypeRes      map[string][]string
 }
 
 func (m *mockSpannerClient) GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*spanner.Property, error) {
@@ -76,7 +79,14 @@ func (m *mockSpannerClient) GetTermEmbeddingQuery(ctx context.Context, modelName
 	return nil, nil
 }
 func (m *mockSpannerClient) FilterNodesByType(ctx context.Context, nodes []string, typeFilter string) ([]string, error) {
-	return nil, nil
+	res := []string{}
+	allowedNodes := m.filterNodesByTypeRes[typeFilter]
+	for _, node := range nodes {
+		if slices.Contains(allowedNodes, node) {
+			res = append(res, node)
+		}
+	}
+	return res, nil
 }
 func (m *mockSpannerClient) VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string) ([]*spanner.VectorSearchResult, error) {
 	return nil, nil
@@ -494,5 +504,58 @@ func TestSpannerObservation(t *testing.T) {
 		if diff := cmp.Diff(got, &want, cmpOpts); diff != "" {
 			t.Errorf("%s: %v payload mismatch:\n%v", c.desc, c.goldenFile, diff)
 		}
+	}
+}
+
+func TestBulkVariableGroupInfo_Filtering(t *testing.T) {
+	ctx := context.Background()
+
+	// Setup mock to return specific nodes for specific types
+	client := &mockSpannerClient{
+		filterNodesByTypeRes: map[string][]string{
+			"StatVarGroup": {"dc/g/Demographics", "WHO/Root"},
+			"Topic":        {"dc/topic/Demographics"},
+		},
+	}
+	ds := spanner.NewSpannerDataSource(client, nil, nil, false)
+
+	// Test Case 1: Valid SVGs including WHO/Root
+	req1 := &pbv1.BulkVariableGroupInfoRequest{
+		Nodes: []string{"dc/g/Demographics", "WHO/Root"},
+	}
+	_, err := ds.BulkVariableGroupInfo(ctx, req1)
+	// We expect no error here regarding node validation
+	if err != nil && strings.Contains(err.Error(), "is not a valid StatVarGroup") {
+		t.Errorf("Expected WHO/Root to be valid, got error: %v", err)
+	}
+
+	// Test Case 2: Invalid node (neither SVG nor Topic) should return empty result without duplication
+	req2 := &pbv1.BulkVariableGroupInfoRequest{
+		Nodes: []string{"InvalidNode", "InvalidNode"},
+	}
+	resp, err := ds.BulkVariableGroupInfo(ctx, req2)
+	if err != nil {
+		t.Errorf("Expected no error for InvalidNode, got: %v", err)
+	}
+	count := 0
+	for _, data := range resp.GetData() {
+		if data.Node == "InvalidNode" {
+			count++
+			if data.Info != nil && (data.Info.AbsoluteName != "" || len(data.Info.ChildStatVars) > 0) {
+				t.Errorf("Expected empty result for InvalidNode, got: %v", data.Info)
+			}
+		}
+	}
+	if count != 1 {
+		t.Errorf("Expected exactly one InvalidNode in response, got: %d", count)
+	}
+
+	// Test Case 3: Mixed nodes (Topics and SVGs)
+	req3 := &pbv1.BulkVariableGroupInfoRequest{
+		Nodes: []string{"dc/g/Demographics", "dc/topic/Demographics"},
+	}
+	_, err = ds.BulkVariableGroupInfo(ctx, req3)
+	if err == nil || !strings.Contains(err.Error(), "cannot mix Topic and StatVarGroup nodes") {
+		t.Errorf("Expected error for mixed nodes, got: %v", err)
 	}
 }
