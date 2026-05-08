@@ -7,7 +7,7 @@
 			e.provenance,
 			n.value,
 			n.bytes,
-			n.name,
+			IFNULL(n.name, '') AS name,
 			n.types
 		ORDER BY
 			subject_id,

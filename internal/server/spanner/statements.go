@@ -195,7 +195,7 @@ var statements = struct {
 			e.provenance,
 			n.value,
 			n.bytes,
-			n.name,
+			IFNULL(n.name, '') AS name,
 			n.types
 		ORDER BY
 			subject_id,
@@ -215,7 +215,7 @@ var statements = struct {
 			'' AS provenance,
 			n.value,
 			n.bytes,
-			n.name,
+			IFNULL(n.name, '') AS name,
 			n.types
 		ORDER BY
 			subject_id,
@@ -235,7 +235,7 @@ var statements = struct {
 			provenance,
 			ANY_VALUE(n.value) AS value,
 			ANY_VALUE(n.bytes) AS bytes,
-			ANY_VALUE(n.name) AS name,
+			ANY_VALUE(IFNULL(n.name, '')) AS name,
 			ANY_VALUE(n.types) AS types
 		GROUP BY
 			subject_id,
