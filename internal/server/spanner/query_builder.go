@@ -68,8 +68,6 @@ const (
 	prefixDataset = "dc/d/"
 	// Source dcid prefix
 	prefixSource = "dc/s/"
-	// Topic dcid prefix
-	prefixTopic = "dc/topic/"
 	// StatVarGroup dcid prefix
 	prefixSVG = "dc/g/"
 )
