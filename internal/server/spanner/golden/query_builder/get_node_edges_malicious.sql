@@ -21,7 +21,7 @@
 			provenance,
 			ANY_VALUE(n.value) AS value,
 			ANY_VALUE(n.bytes) AS bytes,
-			ANY_VALUE(n.name) AS name,
+			ANY_VALUE(IFNULL(n.name, '')) AS name,
 			ANY_VALUE(n.types) AS types
 		GROUP BY
 			subject_id,
