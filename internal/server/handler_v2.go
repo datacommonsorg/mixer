@@ -44,7 +44,10 @@ import (
 func (s *Server) V2Resolve(
 	ctx context.Context, in *pbv2.ResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
-	if s.shouldDivertV2(ctx) {
+	// If request is for embeddings search (resolver == "indicator"),
+	// do not divert to Spanner. Note, we will need to remove this once
+	// Spanner embeddings are supported.
+	if s.shouldDivertV2(ctx) && in.GetResolver() != "indicator" {
 		return s.dispatcher.Resolve(ctx, in)
 	}
 
@@ -465,7 +468,35 @@ func (s *Server) V2BulkVariableInfo(
 	ctx context.Context, in *pbv1.BulkVariableInfoRequest,
 ) (*pbv1.BulkVariableInfoResponse, error) {
 	if s.shouldDivertV2(ctx) {
-		return s.dispatcher.BulkVariableInfo(ctx, in)
+		// return s.dispatcher.BulkVariableInfo(ctx, in)
+
+		slog.Info("V2BulkVariableInfo diverted to Spanner")
+		
+		localResp, err := s.dispatcher.BulkVariableInfo(ctx, in)
+		if err != nil {
+			slog.Warn("Local BulkVariableInfo failed", "error", err)
+			localResp = &pbv1.BulkVariableInfoResponse{}
+		}
+
+		if s.metadata.RemoteMixerDomain != "" {
+			slog.Info("V2BulkVariableInfo calling remote Mixer", "domain", s.metadata.RemoteMixerDomain)
+			remoteResp := &pbv1.BulkVariableInfoResponse{}
+			
+			errRemote := util.FetchRemote(s.metadata, s.httpClient, "/v2/bulk/info/variable", in, remoteResp)
+			if errRemote != nil {
+				slog.Error("Failed to fetch remote variable info in V2", "error", errRemote)
+				if err != nil {
+					return nil, err // Return original local error if both failed
+				}
+				return nil, errRemote
+			}
+			return merger.MergeBulkVariableInfoResponse(localResp, remoteResp), nil
+		}
+
+		if err != nil {
+			return nil, err // Return original local error if no remote and local failed
+		}
+		return localResp, nil
 	}
 
 	v2StartTime := time.Now()
