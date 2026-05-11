@@ -46,7 +46,7 @@ func (s *Server) V2Resolve(
 ) (*pbv2.ResolveResponse, error) {
 	// TODO: Remove this once embeddings search (resolver == "indicator") are
 	// supported thorugh Spanner.
-	if s.shouldDivertV2(ctx) && in != nil && in.GetResolver() != "indicator" {
+	if s.shouldDivertV2(ctx) && (in == nil || in.GetResolver() != "indicator") {
 		return s.dispatcher.Resolve(ctx, in)
 	}
 
