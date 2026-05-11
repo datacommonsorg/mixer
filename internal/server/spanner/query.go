@@ -642,6 +642,37 @@ func (sc *spannerDatabaseClient) GetTermEmbeddingQuery(ctx context.Context, mode
 	return embeddings, err
 }
 
+// FilterNodesByTypes filters a list of nodes by types and returns a map of node to matched types.
+func (sc *spannerDatabaseClient) FilterNodesByTypes(ctx context.Context, nodes []string, typeFilters []string) (map[string][]string, error) {
+	if len(nodes) == 0 {
+		return map[string][]string{}, nil
+	}
+
+	stmt := FilterNodesByTypesQuery(nodes, typeFilters)
+	res := map[string][]string{}
+
+	type rowResult struct {
+		SubjectID    string   `spanner:"subject_id"`
+		MatchedTypes []string `spanner:"matched_types"`
+	}
+
+	err := queryStructs(
+		ctx,
+		sc,
+		*stmt,
+		func() interface{} { return &rowResult{} },
+		func(rowStruct interface{}) {
+			r := rowStruct.(*rowResult)
+			res[r.SubjectID] = r.MatchedTypes
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return res, nil
+}
+
 // VectorSearchQuery performs vector similarity search in Spanner.
 func (sc *spannerDatabaseClient) VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string) ([]*VectorSearchResult, error) {
 	var results []*VectorSearchResult

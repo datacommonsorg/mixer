@@ -711,19 +711,39 @@ func (sds *SpannerDataSource) BulkVariableGroupInfo(ctx context.Context, req *pb
 	if req.NumEntitiesExistence < 0 {
 		return nil, status.Errorf(codes.InvalidArgument, "numEntitiesExistence must be non-negative")
 	}
+	nodeToTypes, err := sds.client.FilterNodesByTypes(ctx, req.GetNodes(), []string{"StatVarGroup", "Topic"})
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, "error filtering nodes: %v", err)
+	}
+
+	foundNodes := map[string]bool{}
+	invalidNodeMap := map[string]bool{}
 	var svgs []string
 	var topics []string
-	for _, node := range req.GetNodes() {
-		if strings.HasPrefix(node, prefixTopic) {
-			topics = append(topics, node)
-		} else if strings.HasPrefix(node, prefixSVG) {
-			// Exclude hidden nodes from the database query
-			if _, ok := svgGroupInfoExclusionList[node]; !ok {
-				svgs = append(svgs, node)
+
+	for node, matchedTypes := range nodeToTypes {
+		foundNodes[node] = true
+		for _, t := range matchedTypes {
+			switch t {
+			case "StatVarGroup":
+				if _, ok := svgGroupInfoExclusionList[node]; ok {
+					invalidNodeMap[node] = true
+				} else {
+					svgs = append(svgs, node)
+				}
+			case "Topic":
+				topics = append(topics, node)
 			}
-		} else {
-			return nil, status.Errorf(codes.InvalidArgument, "node %s is not a valid StatVarGroup or Topic node", node)
 		}
+	}
+	for _, node := range req.GetNodes() {
+		if !foundNodes[node] {
+			invalidNodeMap[node] = true
+		}
+	}
+	var invalidNodes []string
+	for node := range invalidNodeMap {
+		invalidNodes = append(invalidNodes, node)
 	}
 	if len(svgs) > 0 && len(topics) > 0 {
 		return nil, status.Errorf(codes.InvalidArgument, "cannot mix Topic and StatVarGroup nodes in request")
@@ -735,8 +755,8 @@ func (sds *SpannerDataSource) BulkVariableGroupInfo(ctx context.Context, req *pb
 		if err != nil {
 			return nil, status.Errorf(codes.Internal, "error getting StatVarGroupNode from Spanner: %v", err)
 		}
-		resp := svgInfoToBulkVariableGroupInfoResponse(svgInfo, req.GetNodes())
-		resp.Data = filterVariableGroupInfo(resp.GetData())
+		resp := svgInfoToBulkVariableGroupInfoResponse(svgInfo, svgs)
+		resp.Data = filterVariableGroupInfo(resp.GetData(), invalidNodes)
 		return resp, nil
 	}
 
@@ -760,7 +780,7 @@ func (sds *SpannerDataSource) BulkVariableGroupInfo(ctx context.Context, req *pb
 			return nil, status.Errorf(codes.Internal, "error getting filtered topic count from Spanner: %v", err)
 		}
 		resp := filteredTopicInfoToBulkVariableGroupInfoResponse(counts, topics)
-		resp.Data = filterVariableGroupInfo(resp.GetData())
+		resp.Data = filterVariableGroupInfo(resp.GetData(), invalidNodes)
 		return resp, nil
 	}
 
@@ -770,7 +790,7 @@ func (sds *SpannerDataSource) BulkVariableGroupInfo(ctx context.Context, req *pb
 		return nil, status.Errorf(codes.Internal, "error getting filtered StatVarGroupNode from Spanner: %v", err)
 	}
 	resp := filteredSVGInfoToBulkVariableGroupInfoResponse(filteredSVGInfo)
-	resp.Data = filterVariableGroupInfo(resp.GetData())
+	resp.Data = filterVariableGroupInfo(resp.GetData(), invalidNodes)
 	return resp, nil
 }
 
@@ -779,20 +799,11 @@ func (sds *SpannerDataSource) SdmxData(ctx context.Context, req *pb.SdmxDataQuer
 	return sds.client.GetSdmxObservations(ctx, req)
 }
 
-// filterVariableGroupInfo filters out excluded SVGs from the response data.
-func filterVariableGroupInfo(data []*pbv1.VariableGroupInfoResponse) []*pbv1.VariableGroupInfoResponse {
-	filteredData := make([]*pbv1.VariableGroupInfoResponse, 0, len(data))
+// filterVariableGroupInfo filters out excluded SVGs from the response data and appends invalid nodes.
+func filterVariableGroupInfo(data []*pbv1.VariableGroupInfoResponse, invalidNodes []string) []*pbv1.VariableGroupInfoResponse {
+	filteredData := make([]*pbv1.VariableGroupInfoResponse, 0, len(data)+len(invalidNodes))
 
 	for _, item := range data {
-		// Respect API contract: keep the node identifier but clear the info object.
-		if _, ok := svgGroupInfoExclusionList[item.GetNode()]; ok {
-			filteredData = append(filteredData, &pbv1.VariableGroupInfoResponse{
-				Node: item.GetNode(),
-				Info: &pb.StatVarGroupNode{},
-			})
-			continue
-		}
-
 		itemToAppend := item
 		needsModification := false
 
@@ -825,5 +836,13 @@ func filterVariableGroupInfo(data []*pbv1.VariableGroupInfoResponse) []*pbv1.Var
 
 		filteredData = append(filteredData, itemToAppend)
 	}
+
+	for _, node := range invalidNodes {
+		filteredData = append(filteredData, &pbv1.VariableGroupInfoResponse{
+			Node: node,
+			Info: &pb.StatVarGroupNode{},
+		})
+	}
+
 	return filteredData
 }

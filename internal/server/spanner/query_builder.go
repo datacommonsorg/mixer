@@ -68,8 +68,6 @@ const (
 	prefixDataset = "dc/d/"
 	// Source dcid prefix
 	prefixSource = "dc/s/"
-	// Topic dcid prefix
-	prefixTopic = "dc/topic/"
 	// StatVarGroup dcid prefix
 	prefixSVG = "dc/g/"
 )
@@ -634,6 +632,17 @@ func VectorSearchQuery(tableName string, limit int, embeddings []float64, numLea
 			"embeddings": embeddings,
 			"limit":      limit,
 			"node_types": nodeTypes,
+		},
+	}
+}
+
+// FilterNodesByTypesQuery returns a Spanner statement to filter nodes by type.
+func FilterNodesByTypesQuery(nodes []string, typeFilters []string) *spanner.Statement {
+	return &spanner.Statement{
+		SQL: statements.filterNodesByTypes,
+		Params: map[string]interface{}{
+			"nodes":        nodes,
+			"type_filters": typeFilters,
 		},
 	}
 }

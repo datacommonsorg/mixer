@@ -252,6 +252,18 @@ func TestVectorSearchQuery(t *testing.T) {
 	}
 }
 
+func TestFilterNodesByTypesQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range filterNodesByTypeTestCases {
+		goldenFile := c.golden + ".sql"
+
+		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+			return spanner.FilterNodesByTypesQuery(c.nodes, c.typeFilters), nil
+		})
+	}
+}
+
 // runQueryBuilderGoldenTest is a helper function that performs the golden file validation.
 func runQueryBuilderGoldenTest(t *testing.T, goldenFile string, fn goldenTestFunc) {
 	t.Helper()
