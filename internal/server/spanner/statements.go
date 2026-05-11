@@ -126,7 +126,7 @@ var statements = struct {
 	// Search nodes using vector search.
 	vectorSearchNode string
 	// Filter nodes by type.
-	filterNodesByType string
+	filterNodesByTypes string
 }{
 	getCompletionTimestamp: `		SELECT
 		CompletionTimestamp
@@ -646,10 +646,10 @@ var statements = struct {
 				HAVING COUNT(DISTINCT %s) >= @numEntitiesExistence`,
 	getEmbeddingFromQuery: `		SELECT embeddings.values
 		FROM ML.PREDICT(MODEL %s, (SELECT @search_label AS content, @task_type AS task_type))`,
-	filterNodesByType: `		SELECT subject_id
+	filterNodesByTypes: `		SELECT subject_id, ARRAY(SELECT t FROM UNNEST(types) t WHERE t IN UNNEST(@type_filters)) AS matched_types
 		FROM Node
-		WHERE @type_filter IN UNNEST(types)
-			AND subject_id IN UNNEST(@nodes)`,
+		WHERE subject_id IN UNNEST(@nodes)
+			AND EXISTS (SELECT 1 FROM UNNEST(types) t WHERE t IN UNNEST(@type_filters))`,
 	vectorSearchNode: `		SELECT
 			subject_id,
 			embedding_content AS name,

@@ -252,14 +252,14 @@ func TestVectorSearchQuery(t *testing.T) {
 	}
 }
 
-func TestFilterNodesByTypeQuery(t *testing.T) {
+func TestFilterNodesByTypesQuery(t *testing.T) {
 	t.Parallel()
 
 	for _, c := range filterNodesByTypeTestCases {
 		goldenFile := c.golden + ".sql"
 
 		runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return spanner.FilterNodesByTypeQuery(c.nodes, c.typeFilter), nil
+			return spanner.FilterNodesByTypesQuery(c.nodes, c.typeFilters), nil
 		})
 	}
 }

@@ -78,12 +78,14 @@ func (m *mockSpannerClient) GetProvenanceSummary(ctx context.Context, ids []stri
 func (m *mockSpannerClient) GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error) {
 	return nil, nil
 }
-func (m *mockSpannerClient) FilterNodesByType(ctx context.Context, nodes []string, typeFilter string) ([]string, error) {
-	res := []string{}
-	allowedNodes := m.filterNodesByTypeRes[typeFilter]
-	for _, node := range nodes {
-		if slices.Contains(allowedNodes, node) {
-			res = append(res, node)
+func (m *mockSpannerClient) FilterNodesByTypes(ctx context.Context, nodes []string, typeFilters []string) (map[string][]string, error) {
+	res := map[string][]string{}
+	for _, typeFilter := range typeFilters {
+		allowedNodes := m.filterNodesByTypeRes[typeFilter]
+		for _, node := range nodes {
+			if slices.Contains(allowedNodes, node) {
+				res[node] = append(res[node], typeFilter)
+			}
 		}
 	}
 	return res, nil

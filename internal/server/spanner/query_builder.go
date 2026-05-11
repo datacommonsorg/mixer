@@ -636,13 +636,13 @@ func VectorSearchQuery(tableName string, limit int, embeddings []float64, numLea
 	}
 }
 
-// FilterNodesByTypeQuery returns a Spanner statement to filter nodes by type.
-func FilterNodesByTypeQuery(nodes []string, typeFilter string) *spanner.Statement {
+// FilterNodesByTypesQuery returns a Spanner statement to filter nodes by type.
+func FilterNodesByTypesQuery(nodes []string, typeFilters []string) *spanner.Statement {
 	return &spanner.Statement{
-		SQL: statements.filterNodesByType,
+		SQL: statements.filterNodesByTypes,
 		Params: map[string]interface{}{
-			"nodes":       nodes,
-			"type_filter": typeFilter,
+			"nodes":        nodes,
+			"type_filters": typeFilters,
 		},
 	}
 }

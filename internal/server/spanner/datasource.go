@@ -711,33 +711,26 @@ func (sds *SpannerDataSource) BulkVariableGroupInfo(ctx context.Context, req *pb
 	if req.NumEntitiesExistence < 0 {
 		return nil, status.Errorf(codes.InvalidArgument, "numEntitiesExistence must be non-negative")
 	}
-	var dbSvgs, topics []string
-	g, errCtx := errgroup.WithContext(ctx)
-	g.SetLimit(2)
-	g.Go(func() error {
-		var err error
-		dbSvgs, err = sds.client.FilterNodesByType(errCtx, req.GetNodes(), "StatVarGroup")
-		return err
-	})
-	g.Go(func() error {
-		var err error
-		topics, err = sds.client.FilterNodesByType(errCtx, req.GetNodes(), "Topic")
-		return err
-	})
-	if err := g.Wait(); err != nil {
+	nodeToTypes, err := sds.client.FilterNodesByTypes(ctx, req.GetNodes(), []string{"StatVarGroup", "Topic"})
+	if err != nil {
 		return nil, status.Errorf(codes.Internal, "error filtering nodes: %v", err)
 	}
 
 	foundNodes := map[string]bool{}
 	var svgs []string
-	for _, node := range dbSvgs {
+	var topics []string
+
+	for node, matchedTypes := range nodeToTypes {
 		foundNodes[node] = true
-		if _, ok := svgGroupInfoExclusionList[node]; !ok {
-			svgs = append(svgs, node)
+		for _, t := range matchedTypes {
+			if t == "StatVarGroup" {
+				if _, ok := svgGroupInfoExclusionList[node]; !ok {
+					svgs = append(svgs, node)
+				}
+			} else if t == "Topic" {
+				topics = append(topics, node)
+			}
 		}
-	}
-	for _, node := range topics {
-		foundNodes[node] = true
 	}
 
 	invalidNodeMap := map[string]bool{}

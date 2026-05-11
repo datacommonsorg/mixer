@@ -642,24 +642,34 @@ func (sc *spannerDatabaseClient) GetTermEmbeddingQuery(ctx context.Context, mode
 	return embeddings, err
 }
 
-// FilterNodesByType filters a list of nodes by type and returns the subset that matches.
-func (sc *spannerDatabaseClient) FilterNodesByType(ctx context.Context, nodes []string, typeFilter string) ([]string, error) {
+// FilterNodesByTypes filters a list of nodes by types and returns a map of node to matched types.
+func (sc *spannerDatabaseClient) FilterNodesByTypes(ctx context.Context, nodes []string, typeFilters []string) (map[string][]string, error) {
 	if len(nodes) == 0 {
-		return []string{}, nil
+		return map[string][]string{}, nil
 	}
 
-	stmt := FilterNodesByTypeQuery(nodes, typeFilter)
-	rows, err := queryDynamic(ctx, sc, *stmt)
+	stmt := FilterNodesByTypesQuery(nodes, typeFilters)
+	res := map[string][]string{}
+
+	type rowResult struct {
+		SubjectID    string   `spanner:"subject_id"`
+		MatchedTypes []string `spanner:"matched_types"`
+	}
+
+	err := queryStructs(
+		ctx,
+		sc,
+		*stmt,
+		func() interface{} { return &rowResult{} },
+		func(rowStruct interface{}) {
+			r := rowStruct.(*rowResult)
+			res[r.SubjectID] = r.MatchedTypes
+		},
+	)
 	if err != nil {
 		return nil, err
 	}
 
-	var res []string
-	for _, row := range rows {
-		if len(row) > 0 {
-			res = append(res, row[0])
-		}
-	}
 	return res, nil
 }
 

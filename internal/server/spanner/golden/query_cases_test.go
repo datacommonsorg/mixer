@@ -752,18 +752,23 @@ var vectorSearchQueryTestCases = []struct {
 }
 
 var filterNodesByTypeTestCases = []struct {
-	nodes      []string
-	typeFilter string
-	golden     string
+	nodes       []string
+	typeFilters []string
+	golden      string
 }{
 	{
-		nodes:      []string{"dc/g/Demographics", "dc/topic/Demographics", "WHO/Root"},
-		typeFilter: "StatVarGroup",
-		golden:     "filter_nodes_by_type_svg",
+		nodes:       []string{"dc/g/Demographics", "dc/topic/Demographics", "WHO/Root"},
+		typeFilters: []string{"StatVarGroup"},
+		golden:      "filter_nodes_by_type_svg",
 	},
 	{
-		nodes:      []string{"dc/g/Demographics", "dc/topic/Demographics", "WHO/Root"},
-		typeFilter: "Topic",
-		golden:     "filter_nodes_by_type_topic",
+		nodes:       []string{"dc/g/Demographics", "dc/topic/Demographics", "WHO/Root"},
+		typeFilters: []string{"Topic"},
+		golden:      "filter_nodes_by_type_topic",
+	},
+	{
+		nodes:       []string{"dc/g/Demographics", "dc/topic/Demographics", "WHO/Root"},
+		typeFilters: []string{"StatVarGroup", "Topic"},
+		golden:      "filter_nodes_by_types_combined",
 	},
 }

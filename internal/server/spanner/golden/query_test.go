@@ -461,7 +461,7 @@ func TestVectorSearch(t *testing.T) {
 	}
 }
 
-func TestFilterNodesByType(t *testing.T) {
+func TestFilterNodesByTypes(t *testing.T) {
 	client := test.NewSpannerClient()
 	if client == nil {
 		return
@@ -473,7 +473,7 @@ func TestFilterNodesByType(t *testing.T) {
 		goldenFile := c.golden + ".json"
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return client.FilterNodesByType(ctx, c.nodes, c.typeFilter)
+			return client.FilterNodesByTypes(ctx, c.nodes, c.typeFilters)
 		})
 	}
 }

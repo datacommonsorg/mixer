@@ -1,4 +1,4 @@
-		SELECT subject_id
+		SELECT subject_id, ARRAY(SELECT t FROM UNNEST(types) t WHERE t IN ('StatVarGroup')) AS matched_types
 		FROM Node
-		WHERE 'StatVarGroup' IN UNNEST(types)
-			AND subject_id IN ('dc/g/Demographics','dc/topic/Demographics','WHO/Root')
+		WHERE subject_id IN ('dc/g/Demographics','dc/topic/Demographics','WHO/Root')
+			AND EXISTS (SELECT 1 FROM UNNEST(types) t WHERE t IN ('StatVarGroup'))
