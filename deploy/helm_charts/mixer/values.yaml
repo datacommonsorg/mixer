@@ -461,7 +461,7 @@ serviceGroups:
     resources:
       memoryRequest: "4G"
       memoryLimit: "4G"
-      cpuRequest: "1"
+      cpuRequest: "2"
   node:
     urlPaths:
       - "/node/*"
