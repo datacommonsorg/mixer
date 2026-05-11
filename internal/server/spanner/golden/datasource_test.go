@@ -560,4 +560,28 @@ func TestBulkVariableGroupInfo_Filtering(t *testing.T) {
 	if err == nil || !strings.Contains(err.Error(), "cannot mix Topic and StatVarGroup nodes") {
 		t.Errorf("Expected error for mixed nodes, got: %v", err)
 	}
+
+	// Test Case 4: Excluded node should return empty result
+	req4 := &pbv1.BulkVariableGroupInfoRequest{
+		Nodes: []string{"dc/g/Hidden"},
+	}
+	// Update mock to return it as a StatVarGroup
+	client.filterNodesByTypeRes["StatVarGroup"] = append(client.filterNodesByTypeRes["StatVarGroup"], "dc/g/Hidden")
+
+	resp4, err := ds.BulkVariableGroupInfo(ctx, req4)
+	if err != nil {
+		t.Errorf("Expected no error for ExcludedNode, got: %v", err)
+	}
+	found := false
+	for _, data := range resp4.GetData() {
+		if data.Node == "dc/g/Hidden" {
+			found = true
+			if data.Info != nil && (data.Info.AbsoluteName != "" || len(data.Info.ChildStatVars) > 0) {
+				t.Errorf("Expected empty result for ExcludedNode, got: %v", data.Info)
+			}
+		}
+	}
+	if !found {
+		t.Errorf("Expected ExcludedNode in response, but it was missing")
+	}
 }

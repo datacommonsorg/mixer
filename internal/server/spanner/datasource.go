@@ -717,23 +717,25 @@ func (sds *SpannerDataSource) BulkVariableGroupInfo(ctx context.Context, req *pb
 	}
 
 	foundNodes := map[string]bool{}
+	invalidNodeMap := map[string]bool{}
 	var svgs []string
 	var topics []string
 
 	for node, matchedTypes := range nodeToTypes {
 		foundNodes[node] = true
 		for _, t := range matchedTypes {
-			if t == "StatVarGroup" {
-				if _, ok := svgGroupInfoExclusionList[node]; !ok {
+			switch t {
+			case "StatVarGroup":
+				if _, ok := svgGroupInfoExclusionList[node]; ok {
+					invalidNodeMap[node] = true
+				} else {
 					svgs = append(svgs, node)
 				}
-			} else if t == "Topic" {
+			case "Topic":
 				topics = append(topics, node)
 			}
 		}
 	}
-
-	invalidNodeMap := map[string]bool{}
 	for _, node := range req.GetNodes() {
 		if !foundNodes[node] {
 			invalidNodeMap[node] = true
@@ -802,15 +804,6 @@ func filterVariableGroupInfo(data []*pbv1.VariableGroupInfoResponse, invalidNode
 	filteredData := make([]*pbv1.VariableGroupInfoResponse, 0, len(data)+len(invalidNodes))
 
 	for _, item := range data {
-		// Respect API contract: keep the node identifier but clear the info object.
-		if _, ok := svgGroupInfoExclusionList[item.GetNode()]; ok {
-			filteredData = append(filteredData, &pbv1.VariableGroupInfoResponse{
-				Node: item.GetNode(),
-				Info: &pb.StatVarGroupNode{},
-			})
-			continue
-		}
-
 		itemToAppend := item
 		needsModification := false
 
