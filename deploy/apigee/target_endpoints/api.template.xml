@@ -60,7 +60,6 @@
             (proxy.pathsuffix MatchesPath "/stat/value") OR
             (proxy.pathsuffix MatchesPath "/translate") OR
             (proxy.pathsuffix MatchesPath "/update-cache") OR
-            ((proxy.pathsuffix MatchesPath "/v1/bulk/info/place") OR (proxy.pathsuffix MatchesPath "/v1/bulk/info/place/**")) OR
             ((proxy.pathsuffix MatchesPath "/v1/bulk/observation-dates/linked") OR (proxy.pathsuffix MatchesPath "/v1/bulk/observation-dates/linked/**")) OR
             (proxy.pathsuffix MatchesPath "/v1/bulk/observation-existence") OR
             ((proxy.pathsuffix MatchesPath "/v1/bulk/observations/point") OR (proxy.pathsuffix MatchesPath "/v1/bulk/observations/point/**")) OR
