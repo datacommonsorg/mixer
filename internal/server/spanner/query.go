@@ -217,16 +217,31 @@ func (sc *spannerDatabaseClient) CheckVariableGroupExistence(ctx context.Context
 	var result [][]string
 
 	// Step 2: Get import_names for the entities
-	predicate := getImportFilterPredicate(entities[0])
+	entitiesByPredicate := map[string][]string{}
+	for _, e := range entities {
+		p := getImportFilterPredicate(e)
+		entitiesByPredicate[p] = append(entitiesByPredicate[p], e)
+	}
+
+	var keys []string
+	for k := range entitiesByPredicate {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+
+	var filters []string
+	params := map[string]interface{}{}
+	for _, p := range keys {
+		ents := entitiesByPredicate[p]
+		filters = append(filters, fmt.Sprintf(`(predicate = '%s' AND object_id IN UNNEST(@%s))`, p, p))
+		params[p] = ents
+	}
+
 	sourceEdgesStmt := spanner.Statement{
 		SQL: `SELECT DISTINCT subject_id, object_id
 			FROM Edge
-			WHERE predicate = @predicate
-			  AND object_id IN UNNEST(@entities)`,
-		Params: map[string]interface{}{
-			"predicate": predicate,
-			"entities":  entities,
-		},
+			WHERE ` + strings.Join(filters, " OR "),
+		Params: params,
 	}
 
 	sourceEdgeRows, err := queryDynamic(ctx, sc, sourceEdgesStmt)
