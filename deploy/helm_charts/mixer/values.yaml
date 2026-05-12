@@ -460,7 +460,7 @@ serviceGroups:
     replicas: 1
     resources:
       memoryRequest: "4G"
-      memoryLimit: "4G"
+      memoryLimit: "8G"
       cpuRequest: "2"
   node:
     urlPaths:
