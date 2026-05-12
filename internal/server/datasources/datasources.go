@@ -16,14 +16,17 @@ package datasources
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
+	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/translator/sparql"
+	"google.golang.org/protobuf/proto"
 
 	"golang.org/x/sync/errgroup"
 )
@@ -94,9 +97,74 @@ func (ds *DataSources) Node(ctx context.Context, in *pbv2.NodeRequest, pageSize 
 }
 
 func (ds *DataSources) Observation(ctx context.Context, in *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
+	expandedReq := in
+	hasLocalSource := false
+	for _, s := range ds.sources {
+		if s.Type() != datasource.TypeRemote {
+			hasLocalSource = true
+			break
+		}
+	}
+	if in.Entity != nil && in.Entity.Expression != "" && ds.remoteDataSource != nil && hasLocalSource {
+		// When a remote mixer is present, we need to ensure that local sources fetch data
+		// for entities discovered by the remote mixer as well.
+		// We do this by resolving the expression against all sources (local + remote) first,
+		// and then passing the resolved DCIDs to the local sources.
+
+		// 1. Parse expression to extract ancestor and child type.
+		containedInPlace, err := v2.ParseContainedInPlace(in.Entity.Expression)
+		if err != nil {
+			return nil, err
+		}
+
+		// 2. Resolve expression via Node API.
+		// This calls all configured sources (local and remote) in parallel and merges results.
+		// This gives us a unified list of entities across both graphs before executing the local observation query.
+		property := fmt.Sprintf("<-containedInPlace+{typeOf:%s}", containedInPlace.ChildPlaceType)
+		nodeReq := &pbv2.NodeRequest{
+			Nodes:    []string{containedInPlace.Ancestor},
+			Property: property,
+		}
+		nodeResp, err := ds.Node(ctx, nodeReq, 0)
+		if err != nil {
+			return nil, err
+		}
+
+		// 3. Extract DCIDs from NodeResponse.
+		var dcids []string
+		for _, graph := range nodeResp.Data {
+			if nodes, ok := graph.Arcs[property]; ok {
+				for _, node := range nodes.Nodes {
+					if node.Dcid != "" {
+						dcids = append(dcids, node.Dcid)
+					}
+				}
+			}
+		}
+
+		// 4. Short-circuit if empty to avoid backend errors.
+		if len(dcids) == 0 {
+			return &pbv2.ObservationResponse{}, nil
+		}
+
+		// 5. Create cloned request for local sources with resolved DCIDs.
+		// The remote mixer must receive the original expression to do its own expansion.
+		// Local sources get the resolved list of DCIDs and have the expression cleared
+		// to prevent them from doing their own un-federated expansion or failing if both are set.
+		expandedReq = proto.Clone(in).(*pbv2.ObservationRequest)
+		expandedReq.Entity.Dcids = dcids
+		expandedReq.Entity.Expression = ""
+	}
+
 	return fetchAndMerge(ctx, ds.sources, in,
 		func(c context.Context, s datasource.DataSource, r *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
-			return s.Observation(c, r)
+			reqForSource := r
+			// Send the expanded DCIDs request to all local (non-remote) sources.
+			// Send the original request (with expression) to the remote mixer.
+			if s.Type() != datasource.TypeRemote {
+				reqForSource = expandedReq
+			}
+			return s.Observation(c, reqForSource)
 		},
 		func(all []*pbv2.ObservationResponse) (*pbv2.ObservationResponse, error) {
 			return merger.MergeMultiObservation(all), nil
