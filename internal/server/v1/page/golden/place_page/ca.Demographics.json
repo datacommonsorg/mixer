@@ -79,9 +79,10 @@
             "2019": 2465569,
             "2020": 2489188,
             "2021": 2458395,
-            "2022": 2479628,
-            "2023": 2503549,
-            "2024": 2529933
+            "2022": 2479339,
+            "2023": 2503742,
+            "2024": 2529112,
+            "2025": 2544916
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
@@ -92,17 +93,26 @@
         },
         "Count_Person_10To14Years": {
           "val": {
-            "2020": 181367,
-            "2021": 180692,
-            "2022": 177828,
-            "2023": 174632,
-            "2024": 173183
+            "2010": 175085.512,
+            "2011": 176697.208,
+            "2012": 177631.542,
+            "2013": 178282.24,
+            "2014": 176818.122,
+            "2015": 174650.432,
+            "2016": 174291.9,
+            "2017": 176427,
+            "2018": 177796,
+            "2019": 180144,
+            "2020": 183687,
+            "2021": 184845,
+            "2022": 181112,
+            "2023": 181182,
+            "2024": 181028
           },
           "metadata": {
-            "importName": "USCensusPEP_AgeSexRaceHispanicOrigin",
-            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-            "measurementMethod": "CensusPEPSurvey_Race2000Onwards",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_15OrMoreYears": {
@@ -130,17 +140,26 @@
         },
         "Count_Person_15To19Years": {
           "val": {
-            "2020": 175127,
-            "2021": 175302,
-            "2022": 181356,
-            "2023": 184296,
-            "2024": 185124
+            "2010": 179304.44,
+            "2011": 183161.74,
+            "2012": 184210.488,
+            "2013": 182739.296,
+            "2014": 181351.92,
+            "2015": 179246.496,
+            "2016": 178939.684,
+            "2017": 178501,
+            "2018": 177697,
+            "2019": 177328,
+            "2020": 177309,
+            "2021": 176653,
+            "2022": 178591,
+            "2023": 177679,
+            "2024": 180219
           },
           "metadata": {
-            "importName": "USCensusPEP_AgeSexRaceHispanicOrigin",
-            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-            "measurementMethod": "CensusPEPSurvey_Race2000Onwards",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_18To24Years": {
@@ -168,32 +187,50 @@
         },
         "Count_Person_20To24Years": {
           "val": {
-            "2020": 159372,
-            "2021": 161157,
-            "2022": 162463,
-            "2023": 163572,
-            "2024": 165548
+            "2010": 145553.016,
+            "2011": 150839.08,
+            "2012": 155701.722,
+            "2013": 162682.544,
+            "2014": 167750.526,
+            "2015": 170054.368,
+            "2016": 171968.008,
+            "2017": 171312,
+            "2018": 170153,
+            "2019": 168426,
+            "2020": 167306,
+            "2021": 161765,
+            "2022": 167645,
+            "2023": 160879,
+            "2024": 162452
           },
           "metadata": {
-            "importName": "USCensusPEP_AgeSexRaceHispanicOrigin",
-            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-            "measurementMethod": "CensusPEPSurvey_Race2000Onwards",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_25To29Years": {
           "val": {
-            "2020": 167514,
-            "2021": 168467,
-            "2022": 166465,
-            "2023": 165481,
-            "2024": 165458
+            "2010": 139224.624,
+            "2011": 142219.704,
+            "2012": 144736.812,
+            "2013": 147082.848,
+            "2014": 151882.233,
+            "2015": 156266.176,
+            "2016": 160348.548,
+            "2017": 164817,
+            "2018": 169261,
+            "2019": 173060,
+            "2020": 175683,
+            "2021": 169272,
+            "2022": 168509,
+            "2023": 167140,
+            "2024": 166665
           },
           "metadata": {
-            "importName": "USCensusPEP_AgeSexRaceHispanicOrigin",
-            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-            "measurementMethod": "CensusPEPSurvey_Race2000Onwards",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_25To34Years": {
@@ -221,32 +258,50 @@
         },
         "Count_Person_30To34Years": {
           "val": {
-            "2020": 166148,
-            "2021": 172288,
-            "2022": 175974,
-            "2023": 178113,
-            "2024": 179678
+            "2010": 135005.696,
+            "2011": 135755.172,
+            "2012": 140350.848,
+            "2013": 144854.32,
+            "2014": 147348.435,
+            "2015": 151670.112,
+            "2016": 153376.872,
+            "2017": 157343,
+            "2018": 159656,
+            "2019": 161865,
+            "2020": 164629,
+            "2021": 163894,
+            "2022": 166740,
+            "2023": 170530,
+            "2024": 174440
           },
           "metadata": {
-            "importName": "USCensusPEP_AgeSexRaceHispanicOrigin",
-            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-            "measurementMethod": "CensusPEPSurvey_Race2000Onwards",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_35To39Years": {
           "val": {
-            "2020": 165729,
-            "2021": 169352,
-            "2022": 170638,
-            "2023": 172991,
-            "2024": 176134
+            "2010": 147662.48,
+            "2011": 146529.392,
+            "2012": 144736.812,
+            "2013": 147082.848,
+            "2014": 147348.435,
+            "2015": 147074.048,
+            "2016": 148729.088,
+            "2017": 149671,
+            "2018": 151684,
+            "2019": 155508,
+            "2020": 158872,
+            "2021": 159213,
+            "2022": 163097,
+            "2023": 167149,
+            "2024": 169109
           },
           "metadata": {
-            "importName": "USCensusPEP_AgeSexRaceHispanicOrigin",
-            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-            "measurementMethod": "CensusPEPSurvey_Race2000Onwards",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_35To44Years": {
@@ -274,32 +329,50 @@
         },
         "Count_Person_40To44Years": {
           "val": {
-            "2020": 154330,
-            "2021": 160123,
-            "2022": 165164,
-            "2023": 170471,
-            "2024": 173972
+            "2010": 145553.016,
+            "2011": 148684.236,
+            "2012": 149122.776,
+            "2013": 147082.848,
+            "2014": 149615.334,
+            "2015": 149372.08,
+            "2016": 148729.088,
+            "2017": 150622,
+            "2018": 151943,
+            "2019": 152765,
+            "2020": 154821,
+            "2021": 156956,
+            "2022": 157848,
+            "2023": 160949,
+            "2024": 166673
           },
           "metadata": {
-            "importName": "USCensusPEP_AgeSexRaceHispanicOrigin",
-            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-            "measurementMethod": "CensusPEPSurvey_Race2000Onwards",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_45To49Years": {
           "val": {
-            "2020": 148568,
-            "2021": 148141,
-            "2022": 149275,
-            "2023": 152157,
-            "2024": 155737
+            "2010": 147662.48,
+            "2011": 150839.08,
+            "2012": 151315.758,
+            "2013": 151539.904,
+            "2014": 151882.233,
+            "2015": 151670.112,
+            "2016": 151052.98,
+            "2017": 151821,
+            "2018": 152310,
+            "2019": 152629,
+            "2020": 152504,
+            "2021": 150032,
+            "2022": 149016,
+            "2023": 149317,
+            "2024": 150776
           },
           "metadata": {
-            "importName": "USCensusPEP_AgeSexRaceHispanicOrigin",
-            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-            "measurementMethod": "CensusPEPSurvey_Race2000Onwards",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_45To54Years": {
@@ -327,17 +400,26 @@
         },
         "Count_Person_50To54Years": {
           "val": {
-            "2020": 148571,
-            "2021": 150802,
-            "2022": 151607,
-            "2023": 151449,
-            "2024": 150924
+            "2010": 128677.304,
+            "2011": 135755.172,
+            "2012": 140350.848,
+            "2013": 142625.792,
+            "2014": 147348.435,
+            "2015": 149372.08,
+            "2016": 151052.98,
+            "2017": 151679,
+            "2018": 151574,
+            "2019": 150965,
+            "2020": 150262,
+            "2021": 148658,
+            "2022": 148537,
+            "2023": 149784,
+            "2024": 150671
           },
           "metadata": {
-            "importName": "USCensusPEP_AgeSexRaceHispanicOrigin",
-            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-            "measurementMethod": "CensusPEPSurvey_Race2000Onwards",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_55To59Years": {
@@ -388,17 +470,26 @@
         },
         "Count_Person_5To9Years": {
           "val": {
-            "2020": 164202,
-            "2021": 165404,
-            "2022": 165398,
-            "2023": 164040,
-            "2024": 161907
+            "2010": 162428.728,
+            "2011": 165922.988,
+            "2012": 166666.632,
+            "2013": 167139.6,
+            "2014": 170017.425,
+            "2015": 170054.368,
+            "2016": 171968.008,
+            "2017": 170526,
+            "2018": 169403,
+            "2019": 168073,
+            "2020": 165641,
+            "2021": 162846,
+            "2022": 161783,
+            "2023": 162328,
+            "2024": 160700
           },
           "metadata": {
-            "importName": "USCensusPEP_AgeSexRaceHispanicOrigin",
-            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-            "measurementMethod": "CensusPEPSurvey_Race2000Onwards",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_60To61Years": {
@@ -426,17 +517,26 @@
         },
         "Count_Person_60To64Years": {
           "val": {
-            "2020": 136673,
-            "2021": 139726,
-            "2022": 141462,
-            "2023": 142826,
-            "2024": 145077
+            "2010": 88597.488,
+            "2011": 94813.136,
+            "2012": 98684.19,
+            "2013": 104740.816,
+            "2014": 108811.152,
+            "2015": 112603.568,
+            "2016": 116194.6,
+            "2017": 120201,
+            "2018": 123126,
+            "2019": 126595,
+            "2020": 128808,
+            "2021": 131815,
+            "2022": 135226,
+            "2023": 138747,
+            "2024": 141723
           },
           "metadata": {
-            "importName": "USCensusPEP_AgeSexRaceHispanicOrigin",
-            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-            "measurementMethod": "CensusPEPSurvey_Race2000Onwards",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_62To64Years": {
@@ -464,17 +564,26 @@
         },
         "Count_Person_65To69Years": {
           "val": {
-            "2020": 114286,
-            "2021": 117275,
-            "2022": 121043,
-            "2023": 125010,
-            "2024": 128532
+            "2010": 71721.776,
+            "2011": 75419.54,
+            "2012": 78947.352,
+            "2013": 84684.064,
+            "2014": 88409.061,
+            "2015": 94219.312,
+            "2016": 99927.356,
+            "2017": 102478,
+            "2018": 106248,
+            "2019": 108723,
+            "2020": 111467,
+            "2021": 109981,
+            "2022": 113442,
+            "2023": 117619,
+            "2024": 122780
           },
           "metadata": {
-            "importName": "USCensusPEP_AgeSexRaceHispanicOrigin",
-            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-            "measurementMethod": "CensusPEPSurvey_Race2000Onwards",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_65To74Years": {
@@ -502,17 +611,26 @@
         },
         "Count_Person_70To74Years": {
           "val": {
-            "2020": 95867,
-            "2021": 98880,
-            "2022": 98396,
-            "2023": 100221,
-            "2024": 103615
+            "2010": 59064.992,
+            "2011": 60335.632,
+            "2012": 63596.478,
+            "2013": 64627.312,
+            "2014": 68006.97,
+            "2015": 71238.992,
+            "2016": 72040.652,
+            "2017": 77265,
+            "2018": 80524,
+            "2019": 84962,
+            "2020": 88933,
+            "2021": 91133,
+            "2022": 92311,
+            "2023": 96871,
+            "2024": 97894
           },
           "metadata": {
-            "importName": "USCensusPEP_AgeSexRaceHispanicOrigin",
-            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-            "measurementMethod": "CensusPEPSurvey_Race2000Onwards",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_75OrMoreYears": {
@@ -540,17 +658,26 @@
         },
         "Count_Person_75To79Years": {
           "val": {
-            "2020": 67089,
-            "2021": 68635,
-            "2022": 74616,
-            "2023": 77732,
-            "2024": 81018
+            "2010": 48517.672,
+            "2011": 49561.412,
+            "2012": 50438.586,
+            "2013": 51256.144,
+            "2014": 52138.677,
+            "2015": 55152.768,
+            "2016": 55773.408,
+            "2017": 58072,
+            "2018": 60605,
+            "2019": 64457,
+            "2020": 66428,
+            "2021": 64073,
+            "2022": 69199,
+            "2023": 70933,
+            "2024": 73538
           },
           "metadata": {
-            "importName": "USCensusPEP_AgeSexRaceHispanicOrigin",
-            "provenanceUrl": "https://www2.census.gov/programs-surveys/popest/tables",
-            "measurementMethod": "CensusPEPSurvey_Race2000Onwards",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_AmericanIndianOrAlaskaNativeAlone": {
@@ -1419,46 +1546,26 @@
         },
         "Count_Person_10To14Years": {
           "val": {
-            "1990": 360957,
-            "1991": 373027,
-            "1992": 382738,
-            "1993": 391960,
-            "1994": 395529,
-            "1995": 398570,
-            "1996": 402736,
-            "1997": 404498,
-            "1998": 407256,
-            "1999": 410286,
-            "2000": 413652,
-            "2001": 416035,
-            "2002": 418434,
-            "2003": 418748,
-            "2004": 417060,
-            "2005": 411255,
-            "2006": 406969,
-            "2007": 401640,
-            "2008": 399324,
-            "2009": 397266,
-            "2010": 397084,
-            "2011": 396837,
-            "2012": 394322,
-            "2013": 392281,
-            "2014": 390758,
-            "2015": 388427,
-            "2016": 388296,
-            "2017": 390281,
-            "2018": 391940,
+            "2010": 402717.352,
+            "2011": 399038.734,
+            "2012": 394839.258,
+            "2013": 396474.012,
+            "2014": 397853.016,
+            "2015": 392954.12,
+            "2016": 393877.315,
+            "2017": 393177,
+            "2018": 392635,
             "2019": 392875,
-            "2020": 406150,
-            "2021": 402479,
-            "2022": 397228,
-            "2023": 392016
+            "2020": 397010,
+            "2021": 404107,
+            "2022": 398284,
+            "2023": 399589,
+            "2024": 398897
           },
           "metadata": {
-            "importName": "OECDRegionalDemography_Population",
-            "provenanceUrl": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23\u0026pg=40\u0026fc=Topic\u0026bp=true\u0026snb=117\u0026df[ds]=dsDisseminateFinalDMZ\u0026df[id]=DSD_REG_DEMO%40DF_POP_5Y\u0026df[ag]=OECD.CFE.EDS\u0026df[vs]=2.0\u0026dq=A.......\u0026to[TIME_PERIOD]=false\u0026vw=tb\u0026pd=%2C",
-            "measurementMethod": "OECDRegionalStatistics",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_15OrMoreYears": {
@@ -1486,46 +1593,26 @@
         },
         "Count_Person_15To19Years": {
           "val": {
-            "1990": 361636,
-            "1991": 351949,
-            "1992": 351645,
-            "1993": 358690,
-            "1994": 369067,
-            "1995": 381564,
-            "1996": 394460,
-            "1997": 404178,
-            "1998": 411707,
-            "1999": 413459,
-            "2000": 414965,
-            "2001": 415777,
-            "2002": 415166,
-            "2003": 416265,
-            "2004": 420602,
-            "2005": 423695,
-            "2006": 427559,
-            "2007": 430494,
-            "2008": 430379,
-            "2009": 428169,
-            "2010": 422089,
-            "2011": 413051,
-            "2012": 403798,
-            "2013": 398301,
-            "2014": 394786,
-            "2015": 395210,
-            "2016": 394746,
-            "2017": 392725,
-            "2018": 391387,
+            "2010": 432328.922,
+            "2011": 428817.744,
+            "2012": 418768.91,
+            "2013": 414495.558,
+            "2014": 409909.168,
+            "2015": 405045.016,
+            "2016": 399936.966,
+            "2017": 398602,
+            "2018": 396819,
             "2019": 395905,
-            "2020": 398650,
-            "2021": 401810,
-            "2022": 404214,
-            "2023": 409057
+            "2020": 396255,
+            "2021": 401712,
+            "2022": 406068,
+            "2023": 406290,
+            "2024": 407938
           },
           "metadata": {
-            "importName": "OECDRegionalDemography_Population",
-            "provenanceUrl": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23\u0026pg=40\u0026fc=Topic\u0026bp=true\u0026snb=117\u0026df[ds]=dsDisseminateFinalDMZ\u0026df[id]=DSD_REG_DEMO%40DF_POP_5Y\u0026df[ag]=OECD.CFE.EDS\u0026df[vs]=2.0\u0026dq=A.......\u0026to[TIME_PERIOD]=false\u0026vw=tb\u0026pd=%2C",
-            "measurementMethod": "OECDRegionalStatistics",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_18To24Years": {
@@ -1553,90 +1640,50 @@
         },
         "Count_Person_20To24Years": {
           "val": {
-            "1990": 363611,
-            "1991": 367296,
-            "1992": 369073,
-            "1993": 367609,
-            "1994": 364142,
-            "1995": 358596,
-            "1996": 350305,
-            "1997": 350057,
-            "1998": 354034,
-            "1999": 362424,
-            "2000": 372379,
-            "2001": 386041,
-            "2002": 397942,
-            "2003": 406936,
-            "2004": 414199,
-            "2005": 415824,
-            "2006": 414187,
-            "2007": 411781,
-            "2008": 411104,
-            "2009": 410469,
-            "2010": 414612,
-            "2011": 420880,
-            "2012": 429783,
-            "2013": 434910,
-            "2014": 434768,
-            "2015": 430271,
-            "2016": 421689,
-            "2017": 413865,
-            "2018": 409228,
+            "2010": 414561.98,
+            "2011": 410950.338,
+            "2012": 418768.91,
+            "2013": 420502.74,
+            "2014": 421965.32,
+            "2015": 429226.808,
+            "2016": 430235.221,
+            "2017": 425687,
+            "2018": 421255,
             "2019": 414394,
-            "2020": 401884,
-            "2021": 405466,
-            "2022": 404277,
-            "2023": 407663
+            "2020": 408372,
+            "2021": 400642,
+            "2022": 415129,
+            "2023": 402879,
+            "2024": 405498
           },
           "metadata": {
-            "importName": "OECDRegionalDemography_Population",
-            "provenanceUrl": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23\u0026pg=40\u0026fc=Topic\u0026bp=true\u0026snb=117\u0026df[ds]=dsDisseminateFinalDMZ\u0026df[id]=DSD_REG_DEMO%40DF_POP_5Y\u0026df[ag]=OECD.CFE.EDS\u0026df[vs]=2.0\u0026dq=A.......\u0026to[TIME_PERIOD]=false\u0026vw=tb\u0026pd=%2C",
-            "measurementMethod": "OECDRegionalStatistics",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_25To29Years": {
           "val": {
-            "1990": 417950,
-            "1991": 403843,
-            "1992": 388599,
-            "1993": 374879,
-            "1994": 365460,
-            "1995": 363380,
-            "1996": 368900,
-            "1997": 371051,
-            "1998": 368888,
-            "1999": 365607,
-            "2000": 359760,
-            "2001": 349012,
-            "2002": 346768,
-            "2003": 348171,
-            "2004": 354087,
-            "2005": 364912,
-            "2006": 380117,
-            "2007": 391458,
-            "2008": 399785,
-            "2009": 403227,
-            "2010": 403691,
-            "2011": 403486,
-            "2012": 400436,
-            "2013": 398206,
-            "2014": 401068,
-            "2015": 405415,
-            "2016": 411941,
-            "2017": 421746,
-            "2018": 426568,
+            "2010": 396795.038,
+            "2011": 399038.734,
+            "2012": 400821.671,
+            "2013": 402481.194,
+            "2014": 397853.016,
+            "2015": 398999.568,
+            "2016": 399936.966,
+            "2017": 407251,
+            "2018": 411115,
             "2019": 415251,
-            "2020": 410627,
-            "2021": 405141,
-            "2022": 398733,
-            "2023": 397486
+            "2020": 419089,
+            "2021": 411737,
+            "2022": 407783,
+            "2023": 403064,
+            "2024": 401143
           },
           "metadata": {
-            "importName": "OECDRegionalDemography_Population",
-            "provenanceUrl": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23\u0026pg=40\u0026fc=Topic\u0026bp=true\u0026snb=117\u0026df[ds]=dsDisseminateFinalDMZ\u0026df[id]=DSD_REG_DEMO%40DF_POP_5Y\u0026df[ag]=OECD.CFE.EDS\u0026df[vs]=2.0\u0026dq=A.......\u0026to[TIME_PERIOD]=false\u0026vw=tb\u0026pd=%2C",
-            "measurementMethod": "OECDRegionalStatistics",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_25To34Years": {
@@ -1664,90 +1711,50 @@
         },
         "Count_Person_30To34Years": {
           "val": {
-            "1990": 434713,
-            "1991": 440481,
-            "1992": 442247,
-            "1993": 442747,
-            "1994": 441388,
-            "1995": 433252,
-            "1996": 419885,
-            "1997": 404258,
-            "1998": 388197,
-            "1999": 378212,
-            "2000": 376802,
-            "2001": 379226,
-            "2002": 379454,
-            "2003": 378278,
-            "2004": 371746,
-            "2005": 364417,
-            "2006": 355013,
-            "2007": 353815,
-            "2008": 354404,
-            "2009": 363468,
-            "2010": 375004,
-            "2011": 384573,
-            "2012": 391321,
-            "2013": 398344,
-            "2014": 400465,
-            "2015": 399635,
-            "2016": 399366,
-            "2017": 398437,
-            "2018": 396937,
+            "2010": 361261.154,
+            "2011": 369259.724,
+            "2012": 376892.019,
+            "2013": 384459.648,
+            "2014": 391824.94,
+            "2015": 398999.568,
+            "2016": 399936.966,
+            "2017": 398688,
+            "2018": 397909,
             "2019": 398156,
-            "2020": 404175,
-            "2021": 409672,
-            "2022": 415002,
-            "2023": 419479
+            "2020": 399955,
+            "2021": 402614,
+            "2022": 404313,
+            "2023": 409977,
+            "2024": 414103
           },
           "metadata": {
-            "importName": "OECDRegionalDemography_Population",
-            "provenanceUrl": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23\u0026pg=40\u0026fc=Topic\u0026bp=true\u0026snb=117\u0026df[ds]=dsDisseminateFinalDMZ\u0026df[id]=DSD_REG_DEMO%40DF_POP_5Y\u0026df[ag]=OECD.CFE.EDS\u0026df[vs]=2.0\u0026dq=A.......\u0026to[TIME_PERIOD]=false\u0026vw=tb\u0026pd=%2C",
-            "measurementMethod": "OECDRegionalStatistics",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_35To39Years": {
           "val": {
-            "1990": 391115,
-            "1991": 401990,
-            "1992": 413890,
-            "1993": 425935,
-            "1994": 435843,
-            "1995": 444992,
-            "1996": 451900,
-            "1997": 453912,
-            "1998": 451713,
-            "1999": 449019,
-            "2000": 442038,
-            "2001": 427192,
-            "2002": 411906,
-            "2003": 395069,
-            "2004": 383804,
-            "2005": 380255,
-            "2006": 383443,
-            "2007": 383384,
-            "2008": 380590,
-            "2009": 374618,
-            "2010": 365819,
-            "2011": 354942,
-            "2012": 352235,
-            "2013": 354860,
-            "2014": 360783,
-            "2015": 370037,
-            "2016": 380150,
-            "2017": 387693,
-            "2018": 394342,
+            "2010": 379028.096,
+            "2011": 375215.526,
+            "2012": 364927.193,
+            "2013": 360430.92,
+            "2014": 361684.56,
+            "2015": 362726.88,
+            "2016": 363579.06,
+            "2017": 371221,
+            "2018": 378991,
             "2019": 387177,
-            "2020": 402693,
-            "2021": 403999,
-            "2022": 402923,
-            "2023": 402522
+            "2020": 389985,
+            "2021": 397400,
+            "2022": 401010,
+            "2023": 405421,
+            "2024": 407707
           },
           "metadata": {
-            "importName": "OECDRegionalDemography_Population",
-            "provenanceUrl": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23\u0026pg=40\u0026fc=Topic\u0026bp=true\u0026snb=117\u0026df[ds]=dsDisseminateFinalDMZ\u0026df[id]=DSD_REG_DEMO%40DF_POP_5Y\u0026df[ag]=OECD.CFE.EDS\u0026df[vs]=2.0\u0026dq=A.......\u0026to[TIME_PERIOD]=false\u0026vw=tb\u0026pd=%2C",
-            "measurementMethod": "OECDRegionalStatistics",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_35To44Years": {
@@ -1775,90 +1782,50 @@
         },
         "Count_Person_40To44Years": {
           "val": {
-            "1990": 350000,
-            "1991": 367721,
-            "1992": 367270,
-            "1993": 375118,
-            "1994": 386316,
-            "1995": 397148,
-            "1996": 408497,
-            "1997": 420532,
-            "1998": 429940,
-            "1999": 437805,
-            "2000": 445640,
-            "2001": 450999,
-            "2002": 452399,
-            "2003": 450957,
-            "2004": 449170,
-            "2005": 441908,
-            "2006": 428000,
-            "2007": 412527,
-            "2008": 396710,
-            "2009": 384652,
-            "2010": 380618,
-            "2011": 381576,
-            "2012": 379605,
-            "2013": 375599,
-            "2014": 368790,
-            "2015": 360001,
-            "2016": 348961,
-            "2017": 346803,
-            "2018": 350197,
+            "2010": 402717.352,
+            "2011": 393082.932,
+            "2012": 382874.432,
+            "2013": 378452.466,
+            "2014": 373740.712,
+            "2015": 368772.328,
+            "2016": 363579.06,
+            "2017": 358949,
+            "2018": 354529,
             "2019": 351006,
-            "2020": 370301,
-            "2021": 381939,
-            "2022": 390897,
-            "2023": 398898
+            "2020": 355804,
+            "2021": 365684,
+            "2022": 369896,
+            "2023": 377970,
+            "2024": 386160
           },
           "metadata": {
-            "importName": "OECDRegionalDemography_Population",
-            "provenanceUrl": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23\u0026pg=40\u0026fc=Topic\u0026bp=true\u0026snb=117\u0026df[ds]=dsDisseminateFinalDMZ\u0026df[id]=DSD_REG_DEMO%40DF_POP_5Y\u0026df[ag]=OECD.CFE.EDS\u0026df[vs]=2.0\u0026dq=A.......\u0026to[TIME_PERIOD]=false\u0026vw=tb\u0026pd=%2C",
-            "measurementMethod": "OECDRegionalStatistics",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_45To49Years": {
           "val": {
-            "1990": 283846,
-            "1991": 286501,
-            "1992": 308680,
-            "1993": 318624,
-            "1994": 333001,
-            "1995": 348815,
-            "1996": 368075,
-            "1997": 369104,
-            "1998": 376052,
-            "1999": 386754,
-            "2000": 398210,
-            "2001": 409074,
-            "2002": 418751,
-            "2003": 429736,
-            "2004": 436126,
-            "2005": 444773,
-            "2006": 451757,
-            "2007": 452718,
-            "2008": 453322,
-            "2009": 450652,
-            "2010": 441756,
-            "2011": 424271,
-            "2012": 407290,
-            "2013": 390903,
-            "2014": 378035,
-            "2015": 373051,
-            "2016": 375075,
-            "2017": 373750,
-            "2018": 369939,
+            "2010": 450095.864,
+            "2011": 446685.15,
+            "2012": 436716.149,
+            "2013": 420502.74,
+            "2014": 409909.168,
+            "2015": 392954.12,
+            "2016": 387817.664,
+            "2017": 379164,
+            "2018": 374569,
             "2019": 371082,
-            "2020": 358797,
-            "2021": 348833,
-            "2022": 347432,
-            "2023": 352825
+            "2020": 367006,
+            "2021": 363323,
+            "2022": 356887,
+            "2023": 353893,
+            "2024": 352505
           },
           "metadata": {
-            "importName": "OECDRegionalDemography_Population",
-            "provenanceUrl": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23\u0026pg=40\u0026fc=Topic\u0026bp=true\u0026snb=117\u0026df[ds]=dsDisseminateFinalDMZ\u0026df[id]=DSD_REG_DEMO%40DF_POP_5Y\u0026df[ag]=OECD.CFE.EDS\u0026df[vs]=2.0\u0026dq=A.......\u0026to[TIME_PERIOD]=false\u0026vw=tb\u0026pd=%2C",
-            "measurementMethod": "OECDRegionalStatistics",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_45To54Years": {
@@ -1886,46 +1853,26 @@
         },
         "Count_Person_50To54Years": {
           "val": {
-            "1990": 240254,
-            "1991": 245800,
-            "1992": 254026,
-            "1993": 267989,
-            "1994": 277685,
-            "1995": 285450,
-            "1996": 289125,
-            "1997": 312216,
-            "1998": 320985,
-            "1999": 334433,
-            "2000": 350347,
-            "2001": 368845,
-            "2002": 369480,
-            "2003": 376234,
-            "2004": 386308,
-            "2005": 396180,
-            "2006": 406791,
-            "2007": 419481,
-            "2008": 430544,
-            "2009": 437634,
-            "2010": 444888,
-            "2011": 448681,
-            "2012": 447301,
-            "2013": 444809,
-            "2014": 440225,
-            "2015": 429635,
-            "2016": 413386,
-            "2017": 397281,
-            "2018": 381749,
+            "2010": 426406.608,
+            "2011": 434773.546,
+            "2012": 442698.562,
+            "2013": 444531.468,
+            "2014": 446077.624,
+            "2015": 441317.704,
+            "2016": 436294.872,
+            "2017": 426181,
+            "2018": 413391,
             "2019": 398845,
-            "2020": 369474,
-            "2021": 372127,
-            "2022": 371318,
-            "2023": 367669
+            "2020": 385639,
+            "2021": 380808,
+            "2022": 373491,
+            "2023": 370017,
+            "2024": 367921
           },
           "metadata": {
-            "importName": "OECDRegionalDemography_Population",
-            "provenanceUrl": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23\u0026pg=40\u0026fc=Topic\u0026bp=true\u0026snb=117\u0026df[ds]=dsDisseminateFinalDMZ\u0026df[id]=DSD_REG_DEMO%40DF_POP_5Y\u0026df[ag]=OECD.CFE.EDS\u0026df[vs]=2.0\u0026dq=A.......\u0026to[TIME_PERIOD]=false\u0026vw=tb\u0026pd=%2C",
-            "measurementMethod": "OECDRegionalStatistics",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_55To59Years": {
@@ -1976,46 +1923,26 @@
         },
         "Count_Person_5To9Years": {
           "val": {
-            "1990": 376008,
-            "1991": 377700,
-            "1992": 377955,
-            "1993": 378934,
-            "1994": 382597,
-            "1995": 388017,
-            "1996": 393579,
-            "1997": 398988,
-            "1998": 403093,
-            "1999": 401327,
-            "2000": 397418,
-            "2001": 391194,
-            "2002": 385111,
-            "2003": 382493,
-            "2004": 379682,
-            "2005": 379677,
-            "2006": 383138,
-            "2007": 386128,
-            "2008": 386431,
-            "2009": 388466,
-            "2010": 390330,
-            "2011": 389594,
-            "2012": 390802,
-            "2013": 391791,
-            "2014": 389513,
-            "2015": 386897,
-            "2016": 384100,
-            "2017": 381044,
-            "2018": 377947,
+            "2010": 384950.41,
+            "2011": 387127.13,
+            "2012": 388856.845,
+            "2013": 390466.83,
+            "2014": 391824.94,
+            "2015": 392954.12,
+            "2016": 387817.664,
+            "2017": 384484,
+            "2018": 381583,
             "2019": 380117,
-            "2020": 380023,
-            "2021": 380605,
-            "2022": 381181,
-            "2023": 381736
+            "2020": 374685,
+            "2021": 380122,
+            "2022": 375657,
+            "2023": 382076,
+            "2024": 379555
           },
           "metadata": {
-            "importName": "OECDRegionalDemography_Population",
-            "provenanceUrl": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23\u0026pg=40\u0026fc=Topic\u0026bp=true\u0026snb=117\u0026df[ds]=dsDisseminateFinalDMZ\u0026df[id]=DSD_REG_DEMO%40DF_POP_5Y\u0026df[ag]=OECD.CFE.EDS\u0026df[vs]=2.0\u0026dq=A.......\u0026to[TIME_PERIOD]=false\u0026vw=tb\u0026pd=%2C",
-            "measurementMethod": "OECDRegionalStatistics",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_60To61Years": {
@@ -2043,46 +1970,26 @@
         },
         "Count_Person_60To64Years": {
           "val": {
-            "1990": 229363,
-            "1991": 227974,
-            "1992": 224933,
-            "1993": 221789,
-            "1994": 220213,
-            "1995": 220481,
-            "1996": 219142,
-            "1997": 219435,
-            "1998": 222059,
-            "1999": 226460,
-            "2000": 229159,
-            "2001": 233989,
-            "2002": 243227,
-            "2003": 255225,
-            "2004": 264390,
-            "2005": 270664,
-            "2006": 275767,
-            "2007": 296428,
-            "2008": 308020,
-            "2009": 321409,
-            "2010": 336657,
-            "2011": 352916,
-            "2012": 352259,
-            "2013": 357670,
-            "2014": 364970,
-            "2015": 373501,
-            "2016": 381341,
-            "2017": 391505,
-            "2018": 399255,
+            "2010": 313882.642,
+            "2011": 327569.11,
+            "2012": 335015.128,
+            "2013": 348416.556,
+            "2014": 355656.484,
+            "2015": 362726.88,
+            "2016": 369638.711,
+            "2017": 377806,
+            "2018": 387303,
             "2019": 395479,
-            "2020": 410341,
-            "2021": 415467,
-            "2022": 415457,
-            "2023": 414157
+            "2020": 400095,
+            "2021": 411935,
+            "2022": 416138,
+            "2023": 418252,
+            "2024": 418691
           },
           "metadata": {
-            "importName": "OECDRegionalDemography_Population",
-            "provenanceUrl": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23\u0026pg=40\u0026fc=Topic\u0026bp=true\u0026snb=117\u0026df[ds]=dsDisseminateFinalDMZ\u0026df[id]=DSD_REG_DEMO%40DF_POP_5Y\u0026df[ag]=OECD.CFE.EDS\u0026df[vs]=2.0\u0026dq=A.......\u0026to[TIME_PERIOD]=false\u0026vw=tb\u0026pd=%2C",
-            "measurementMethod": "OECDRegionalStatistics",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_62To64Years": {
@@ -2110,46 +2017,26 @@
         },
         "Count_Person_65To69Years": {
           "val": {
-            "1990": 218347,
-            "1991": 217018,
-            "1992": 216095,
-            "1993": 217028,
-            "1994": 215305,
-            "1995": 214468,
-            "1996": 213454,
-            "1997": 211149,
-            "1998": 208664,
-            "1999": 205558,
-            "2000": 204372,
-            "2001": 204952,
-            "2002": 206115,
-            "2003": 207858,
-            "2004": 211687,
-            "2005": 214642,
-            "2006": 220907,
-            "2007": 230106,
-            "2008": 240939,
-            "2009": 251290,
-            "2010": 257890,
-            "2011": 260939,
-            "2012": 279899,
-            "2013": 289005,
-            "2014": 300310,
-            "2015": 313114,
-            "2016": 328156,
-            "2017": 327452,
-            "2018": 332509,
+            "2010": 242814.874,
+            "2011": 250143.684,
+            "2012": 257243.759,
+            "2013": 270323.19,
+            "2014": 277291.496,
+            "2015": 284136.056,
+            "2016": 296922.899,
+            "2017": 310479,
+            "2018": 317927,
             "2019": 325865,
-            "2020": 347416,
-            "2021": 354879,
-            "2022": 363372,
-            "2023": 371555
+            "2020": 335264,
+            "2021": 340428,
+            "2022": 344298,
+            "2023": 353710,
+            "2024": 359719
           },
           "metadata": {
-            "importName": "OECDRegionalDemography_Population",
-            "provenanceUrl": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23\u0026pg=40\u0026fc=Topic\u0026bp=true\u0026snb=117\u0026df[ds]=dsDisseminateFinalDMZ\u0026df[id]=DSD_REG_DEMO%40DF_POP_5Y\u0026df[ag]=OECD.CFE.EDS\u0026df[vs]=2.0\u0026dq=A.......\u0026to[TIME_PERIOD]=false\u0026vw=tb\u0026pd=%2C",
-            "measurementMethod": "OECDRegionalStatistics",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_65To74Years": {
@@ -2177,46 +2064,26 @@
         },
         "Count_Person_70To74Years": {
           "val": {
-            "1990": 175805,
-            "1991": 179135,
-            "1992": 183814,
-            "1993": 186173,
-            "1994": 188071,
-            "1995": 190150,
-            "1996": 189202,
-            "1997": 188143,
-            "1998": 188799,
-            "1999": 188365,
-            "2000": 187352,
-            "2001": 186414,
-            "2002": 183992,
-            "2003": 182728,
-            "2004": 182021,
-            "2005": 182493,
-            "2006": 183679,
-            "2007": 185363,
-            "2008": 187225,
-            "2009": 191898,
-            "2010": 194456,
-            "2011": 199367,
-            "2012": 207040,
-            "2013": 217890,
-            "2014": 225310,
-            "2015": 230441,
-            "2016": 233334,
-            "2017": 251312,
-            "2018": 260068,
+            "2010": 189514.048,
+            "2011": 190585.664,
+            "2012": 197419.629,
+            "2013": 204244.188,
+            "2014": 210982.66,
+            "2015": 217636.128,
+            "2016": 224207.087,
+            "2017": 233718,
+            "2018": 243559,
             "2019": 251861,
-            "2020": 277719,
-            "2021": 290735,
-            "2022": 289710,
-            "2023": 295727
+            "2020": 260506,
+            "2021": 271181,
+            "2022": 278132,
+            "2023": 286488,
+            "2024": 296006
           },
           "metadata": {
-            "importName": "OECDRegionalDemography_Population",
-            "provenanceUrl": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23\u0026pg=40\u0026fc=Topic\u0026bp=true\u0026snb=117\u0026df[ds]=dsDisseminateFinalDMZ\u0026df[id]=DSD_REG_DEMO%40DF_POP_5Y\u0026df[ag]=OECD.CFE.EDS\u0026df[vs]=2.0\u0026dq=A.......\u0026to[TIME_PERIOD]=false\u0026vw=tb\u0026pd=%2C",
-            "measurementMethod": "OECDRegionalStatistics",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_75OrMoreYears": {
@@ -2244,46 +2111,26 @@
         },
         "Count_Person_75To79Years": {
           "val": {
-            "1990": 143591,
-            "1991": 144705,
-            "1992": 144551,
-            "1993": 144806,
-            "1994": 145877,
-            "1995": 146635,
-            "1996": 149823,
-            "1997": 153321,
-            "1998": 155521,
-            "1999": 156690,
-            "2000": 157276,
-            "2001": 157923,
-            "2002": 157846,
-            "2003": 158460,
-            "2004": 156673,
-            "2005": 156851,
-            "2006": 156054,
-            "2007": 154519,
-            "2008": 153886,
-            "2009": 154225,
-            "2010": 155274,
-            "2011": 155981,
-            "2012": 156638,
-            "2013": 158878,
-            "2014": 162195,
-            "2015": 164871,
-            "2016": 169330,
-            "2017": 176044,
-            "2018": 185960,
+            "2010": 153980.164,
+            "2011": 154850.852,
+            "2012": 155542.738,
+            "2013": 156186.732,
+            "2014": 156729.976,
+            "2015": 157181.648,
+            "2016": 163610.577,
+            "2017": 168699,
+            "2018": 174980,
             "2019": 181461,
-            "2020": 188012,
-            "2021": 189587,
-            "2022": 205901,
-            "2023": 213709
+            "2020": 184132,
+            "2021": 180289,
+            "2022": 189106,
+            "2023": 190540,
+            "2024": 198437
           },
           "metadata": {
-            "importName": "OECDRegionalDemography_Population",
-            "provenanceUrl": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23\u0026pg=40\u0026fc=Topic\u0026bp=true\u0026snb=117\u0026df[ds]=dsDisseminateFinalDMZ\u0026df[id]=DSD_REG_DEMO%40DF_POP_5Y\u0026df[ag]=OECD.CFE.EDS\u0026df[vs]=2.0\u0026dq=A.......\u0026to[TIME_PERIOD]=false\u0026vw=tb\u0026pd=%2C",
-            "measurementMethod": "OECDRegionalStatistics",
-            "observationPeriod": "P1Y"
+            "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+            "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101",
+            "measurementMethod": "CensusACS5yrSurveySubjectTable"
           }
         },
         "Count_Person_80OrMoreYears": {
@@ -3145,292 +2992,292 @@
         {
           "dcid": "geoId/06037",
           "name": "Los Angeles County",
-          "pop": 9757179
+          "pop": 9694934
         },
         {
           "dcid": "geoId/06073",
           "name": "San Diego County",
-          "pop": 3298799
+          "pop": 3282248
         },
         {
           "dcid": "geoId/06059",
           "name": "Orange County",
-          "pop": 3170435
+          "pop": 3149507
         },
         {
           "dcid": "geoId/06065",
           "name": "Riverside County",
-          "pop": 2529933
+          "pop": 2544916
         },
         {
           "dcid": "geoId/06071",
           "name": "San Bernardino County",
-          "pop": 2214281
+          "pop": 2224091
         },
         {
           "dcid": "geoId/06085",
           "name": "Santa Clara County",
-          "pop": 1926325
+          "pop": 1914391
         },
         {
           "dcid": "geoId/06001",
           "name": "Alameda County",
-          "pop": 1649060
+          "pop": 1636630
         },
         {
           "dcid": "geoId/06067",
           "name": "Sacramento County",
-          "pop": 1611231
+          "pop": 1618460
         },
         {
           "dcid": "geoId/06013",
           "name": "Contra Costa County",
-          "pop": 1172607
+          "pop": 1170070
         },
         {
           "dcid": "geoId/06019",
           "name": "Fresno County",
-          "pop": 1024125
+          "pop": 1035456
         },
         {
           "dcid": "geoId/06029",
           "name": "Kern County",
-          "pop": 922529
+          "pop": 927068
         },
         {
           "dcid": "geoId/06111",
           "name": "Ventura County",
-          "pop": 835427
+          "pop": 830851
         },
         {
           "dcid": "geoId/06075",
           "name": "San Francisco County",
-          "pop": 827526
+          "pop": 826079
         },
         {
           "dcid": "geoId/06077",
           "name": "San Joaquin County",
-          "pop": 816108
+          "pop": 823815
         },
         {
           "dcid": "geoId/06081",
           "name": "San Mateo County",
-          "pop": 742893
+          "pop": 743568
         },
         {
           "dcid": "geoId/06099",
           "name": "Stanislaus County",
-          "pop": 556972
+          "pop": 557719
         },
         {
           "dcid": "geoId/06097",
           "name": "Sonoma County",
-          "pop": 485375
+          "pop": 486444
         },
         {
           "dcid": "geoId/06107",
           "name": "Tulare County",
-          "pop": 483546
+          "pop": 485146
         },
         {
           "dcid": "geoId/06095",
           "name": "Solano County",
-          "pop": 455101
-        },
-        {
-          "dcid": "geoId/06083",
-          "name": "Santa Barbara County",
-          "pop": 444500
-        },
-        {
-          "dcid": "geoId/06053",
-          "name": "Monterey County",
-          "pop": 436251
+          "pop": 455376
         },
         {
           "dcid": "geoId/06061",
           "name": "Placer County",
-          "pop": 433822
+          "pop": 442081
+        },
+        {
+          "dcid": "geoId/06083",
+          "name": "Santa Barbara County",
+          "pop": 442065
+        },
+        {
+          "dcid": "geoId/06053",
+          "name": "Monterey County",
+          "pop": 433729
         },
         {
           "dcid": "geoId/06047",
           "name": "Merced County",
-          "pop": 296774
+          "pop": 297260
         },
         {
           "dcid": "geoId/06079",
           "name": "San Luis Obispo County",
-          "pop": 281843
+          "pop": 282367
         },
         {
           "dcid": "geoId/06087",
           "name": "Santa Cruz County",
-          "pop": 262406
+          "pop": 258852
         },
         {
           "dcid": "geoId/06041",
           "name": "Marin County",
-          "pop": 256400
+          "pop": 253694
         },
         {
           "dcid": "geoId/06113",
           "name": "Yolo County",
-          "pop": 225251
+          "pop": 224410
         },
         {
           "dcid": "geoId/06007",
           "name": "Butte County",
-          "pop": 208334
+          "pop": 209211
         },
         {
           "dcid": "geoId/06017",
           "name": "El Dorado County",
-          "pop": 192823
-        },
-        {
-          "dcid": "geoId/06025",
-          "name": "Imperial County",
-          "pop": 181724
+          "pop": 192323
         },
         {
           "dcid": "geoId/06089",
           "name": "Shasta County",
-          "pop": 181121
+          "pop": 181648
+        },
+        {
+          "dcid": "geoId/06025",
+          "name": "Imperial County",
+          "pop": 181411
         },
         {
           "dcid": "geoId/06039",
           "name": "Madera County",
-          "pop": 165432
+          "pop": 167927
         },
         {
           "dcid": "geoId/06031",
           "name": "Kings County",
-          "pop": 154913
+          "pop": 154327
         },
         {
           "dcid": "geoId/06055",
           "name": "Napa County",
-          "pop": 132727
+          "pop": 132949
         },
         {
           "dcid": "geoId/06023",
           "name": "Humboldt County",
-          "pop": 132380
+          "pop": 131647
         },
         {
           "dcid": "geoId/06057",
           "name": "Nevada County",
-          "pop": 102195
+          "pop": 101911
         },
         {
           "dcid": "geoId/06101",
           "name": "Sutter County",
-          "pop": 98545
-        },
-        {
-          "dcid": "geoId/06045",
-          "name": "Mendocino County",
-          "pop": 89175
+          "pop": 98787
         },
         {
           "dcid": "geoId/06115",
           "name": "Yuba County",
-          "pop": 87469
+          "pop": 88691
+        },
+        {
+          "dcid": "geoId/06045",
+          "name": "Mendocino County",
+          "pop": 88122
         },
         {
           "dcid": "geoId/06069",
           "name": "San Benito County",
-          "pop": 69159
+          "pop": 70082
         },
         {
           "dcid": "geoId/06033",
           "name": "Lake County",
-          "pop": 67764
+          "pop": 67772
         },
         {
           "dcid": "geoId/06103",
           "name": "Tehama County",
-          "pop": 64451
+          "pop": 64665
         },
         {
           "dcid": "geoId/06109",
           "name": "Tuolumne County",
-          "pop": 53893
+          "pop": 53160
         },
         {
           "dcid": "geoId/06009",
           "name": "Calaveras County",
-          "pop": 46505
+          "pop": 46605
         },
         {
           "dcid": "geoId/06093",
           "name": "Siskiyou County",
-          "pop": 42498
+          "pop": 42013
         },
         {
           "dcid": "geoId/06005",
           "name": "Amador County",
-          "pop": 42026
-        },
-        {
-          "dcid": "geoId/06035",
-          "name": "Lassen County",
-          "pop": 28340
+          "pop": 41876
         },
         {
           "dcid": "geoId/06021",
           "name": "Glenn County",
-          "pop": 28304
+          "pop": 28141
+        },
+        {
+          "dcid": "geoId/06035",
+          "name": "Lassen County",
+          "pop": 28117
         },
         {
           "dcid": "geoId/06015",
           "name": "Del Norte County",
-          "pop": 27009
+          "pop": 26410
         },
         {
           "dcid": "geoId/06011",
           "name": "Colusa County",
-          "pop": 22074
+          "pop": 21836
         },
         {
           "dcid": "geoId/06063",
           "name": "Plumas County",
-          "pop": 18834
+          "pop": 18583
         },
         {
           "dcid": "geoId/06027",
           "name": "Inyo County",
-          "pop": 18485
+          "pop": 18158
         },
         {
           "dcid": "geoId/06043",
           "name": "Mariposa County",
-          "pop": 17048
+          "pop": 16918
         },
         {
           "dcid": "geoId/06105",
           "name": "Trinity County",
-          "pop": 15642
+          "pop": 15720
         },
         {
           "dcid": "geoId/06051",
           "name": "Mono County",
-          "pop": 12991
+          "pop": 12505
         },
         {
           "dcid": "geoId/06049",
           "name": "Modoc County",
-          "pop": 8491
+          "pop": 8426
         },
         {
           "dcid": "geoId/06091",
           "name": "Sierra County",
-          "pop": 3113
+          "pop": 3098
         },
         {
           "dcid": "geoId/06003",
           "name": "Alpine County",
-          "pop": 1099
+          "pop": 1043
         }
       ]
     }
@@ -3467,8 +3314,8 @@
       }
     },
     "geoId/06037": {
-      "date": "2024",
-      "value": 9757179,
+      "date": "2025",
+      "value": 9694934,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -3477,8 +3324,8 @@
       }
     },
     "geoId/06059": {
-      "date": "2024",
-      "value": 3170435,
+      "date": "2025",
+      "value": 3149507,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -3487,8 +3334,8 @@
       }
     },
     "geoId/06065": {
-      "date": "2024",
-      "value": 2529933,
+      "date": "2025",
+      "value": 2544916,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -3497,8 +3344,8 @@
       }
     },
     "geoId/06071": {
-      "date": "2024",
-      "value": 2214281,
+      "date": "2025",
+      "value": 2224091,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -3507,8 +3354,8 @@
       }
     },
     "geoId/06073": {
-      "date": "2024",
-      "value": 3298799,
+      "date": "2025",
+      "value": 3282248,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
