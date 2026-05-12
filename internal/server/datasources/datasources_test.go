@@ -16,8 +16,11 @@ package datasources
 
 import (
 	"context"
+	"fmt"
 	"slices"
 	"testing"
+
+	"github.com/datacommonsorg/mixer/internal/util"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
@@ -72,7 +75,7 @@ func TestObservation_ExpressionExpansion(t *testing.T) {
 				Data: map[string]*pbv2.LinkedGraph{
 					"geoId/06": {
 						Arcs: map[string]*pbv2.Nodes{
-							"<-containedInPlace+{typeOf:County}": {
+							"containedInPlace+": {
 								Nodes: []*pb.EntityInfo{
 									{Dcid: "geoId/06001"},
 								},
@@ -217,7 +220,7 @@ func TestObservation_ExpressionExpansion_NonSpanner(t *testing.T) {
 				Data: map[string]*pbv2.LinkedGraph{
 					"geoId/06": {
 						Arcs: map[string]*pbv2.Nodes{
-							"<-containedInPlace+{typeOf:County}": {
+							"containedInPlace+": {
 								Nodes: []*pb.EntityInfo{
 									{Dcid: "geoId/06001"},
 								},
@@ -273,5 +276,85 @@ func TestObservation_ExpressionExpansion_NonSpanner(t *testing.T) {
 	}
 	if remoteReceivedReq.Entity.Expression != "geoId/06<-containedInPlace+{typeOf:County}" {
 		t.Errorf("Remote received unexpected expression: %s", remoteReceivedReq.Entity.Expression)
+	}
+}
+
+func TestFetchAllDCIDs(t *testing.T) {
+	ctx := context.Background()
+
+	pi := &pbv2.Pagination{
+		Info: []*pbv2.Pagination_DataSourceInfo{
+			{
+				Id: "mock-source",
+				DataSourceInfo: &pbv2.Pagination_DataSourceInfo_SpannerInfo{
+					SpannerInfo: &pbv2.SpannerInfo{
+						Offset: 1000,
+					},
+				},
+			},
+		},
+	}
+	token1, err := util.EncodeProto(pi)
+	if err != nil {
+		t.Fatalf("failed to encode proto: %v", err)
+	}
+
+	// Mock source that returns paginated results.
+	mockSource := &mockSource{
+		id:         "mock-source",
+		sourceType: datasource.TypeSpanner,
+		nodeFunc: func(ctx context.Context, req *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
+			if req.NextToken == "" {
+				return &pbv2.NodeResponse{
+					Data: map[string]*pbv2.LinkedGraph{
+						"geoId/06": {
+							Arcs: map[string]*pbv2.Nodes{
+								"containedInPlace+": {
+									Nodes: []*pb.EntityInfo{
+										{Dcid: "geoId/06001"},
+									},
+								},
+							},
+						},
+					},
+					NextToken: token1,
+				}, nil
+			} else if req.NextToken == token1 {
+				return &pbv2.NodeResponse{
+					Data: map[string]*pbv2.LinkedGraph{
+						"geoId/06": {
+							Arcs: map[string]*pbv2.Nodes{
+								"containedInPlace+": {
+									Nodes: []*pb.EntityInfo{
+										{Dcid: "geoId/06002"},
+									},
+								},
+							},
+						},
+					},
+					NextToken: "",
+				}, nil
+			}
+			return nil, fmt.Errorf("unexpected next token: %s", req.NextToken)
+		},
+	}
+
+	ds := &DataSources{
+		sources: []datasource.DataSource{mockSource},
+	}
+
+	req := &pbv2.NodeRequest{
+		Nodes:    []string{"geoId/06"},
+		Property: "<-containedInPlace+{typeOf:County}",
+	}
+
+	dcids, err := ds.fetchAllDCIDs(ctx, req, "containedInPlace+")
+	if err != nil {
+		t.Fatalf("fetchAllDCIDs failed: %v", err)
+	}
+
+	expected := []string{"geoId/06001", "geoId/06002"}
+	if !slices.Equal(dcids, expected) {
+		t.Errorf("fetchAllDCIDs = %v, want %v", dcids, expected)
 	}
 }

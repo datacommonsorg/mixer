@@ -17,6 +17,7 @@ package datasources
 import (
 	"context"
 	"fmt"
+	"log/slog"
 
 	"github.com/datacommonsorg/mixer/internal/merger"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -88,12 +89,21 @@ func fetchAndMerge[req any, resp any](
 }
 
 func (ds *DataSources) Node(ctx context.Context, in *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
-	return fetchAndMerge(ctx, ds.sources, in,
+	resp, err := fetchAndMerge(ctx, ds.sources, in,
 		func(c context.Context, s datasource.DataSource, r *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
-			return s.Node(c, r, pageSize)
+			sourceResp, sourceErr := s.Node(c, r, pageSize)
+			if sourceErr != nil {
+				slog.Error("DataSources.Node: source failed", "id", s.Id(), "error", sourceErr)
+				return nil, sourceErr
+			}
+			return sourceResp, nil
 		},
 		merger.MergeMultiNode,
 	)
+	if err != nil {
+		return nil, err
+	}
+	return resp, nil
 }
 
 func (ds *DataSources) Observation(ctx context.Context, in *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
@@ -114,32 +124,20 @@ func (ds *DataSources) Observation(ctx context.Context, in *pbv2.ObservationRequ
 		// 1. Parse expression to extract ancestor and child type.
 		containedInPlace, err := v2.ParseContainedInPlace(in.Entity.Expression)
 		if err != nil {
+			slog.Error("DataSources.Observation: failed to parse containedInPlace expression", "expression", in.Entity.Expression, "error", err)
 			return nil, err
 		}
 
-		// 2. Resolve expression via Node API.
-		// This calls all configured sources (local and remote) in parallel and merges results.
-		// This gives us a unified list of entities across both graphs before executing the local observation query.
+		// 2. Resolve expression via Node API, fetching all pages.
 		property := fmt.Sprintf("<-containedInPlace+{typeOf:%s}", containedInPlace.ChildPlaceType)
 		nodeReq := &pbv2.NodeRequest{
 			Nodes:    []string{containedInPlace.Ancestor},
 			Property: property,
 		}
-		nodeResp, err := ds.Node(ctx, nodeReq, 0)
+		dcids, err := ds.fetchAllDCIDs(ctx, nodeReq, "containedInPlace+")
 		if err != nil {
+			slog.Error("DataSources.Observation: failed to resolve expression", "expression", in.Entity.Expression, "error", err)
 			return nil, err
-		}
-
-		// 3. Extract DCIDs from NodeResponse.
-		var dcids []string
-		for _, graph := range nodeResp.Data {
-			if nodes, ok := graph.Arcs[property]; ok {
-				for _, node := range nodes.Nodes {
-					if node.Dcid != "" {
-						dcids = append(dcids, node.Dcid)
-					}
-				}
-			}
 		}
 
 		// 4. Short-circuit if empty to avoid backend errors.
@@ -156,7 +154,7 @@ func (ds *DataSources) Observation(ctx context.Context, in *pbv2.ObservationRequ
 		expandedReq.Entity.Expression = ""
 	}
 
-	return fetchAndMerge(ctx, ds.sources, in,
+	resp, err := fetchAndMerge(ctx, ds.sources, in,
 		func(c context.Context, s datasource.DataSource, r *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
 			reqForSource := r
 			// Send the expanded DCIDs request to all local (non-remote) sources.
@@ -164,12 +162,53 @@ func (ds *DataSources) Observation(ctx context.Context, in *pbv2.ObservationRequ
 			if s.Type() != datasource.TypeRemote {
 				reqForSource = expandedReq
 			}
-			return s.Observation(c, reqForSource)
+			sourceResp, sourceErr := s.Observation(c, reqForSource)
+			if sourceErr != nil {
+				slog.Error("DataSources.Observation: source failed", "id", s.Id(), "error", sourceErr)
+				return nil, sourceErr
+			}
+			return sourceResp, nil
 		},
 		func(all []*pbv2.ObservationResponse) (*pbv2.ObservationResponse, error) {
 			return merger.MergeMultiObservation(all), nil
 		},
 	)
+	if err != nil {
+		slog.Error("DataSources.Observation: fetchAndMerge failed", "error", err)
+		return nil, err
+	}
+	return resp, nil
+}
+
+// fetchAllDCIDs fetches all pages of NodeResponse and extracts DCIDs for a specific arc key.
+func (ds *DataSources) fetchAllDCIDs(ctx context.Context, nodeReq *pbv2.NodeRequest, arcKey string) ([]string, error) {
+	var dcids []string
+	nextToken := ""
+	for {
+		req := proto.Clone(nodeReq).(*pbv2.NodeRequest)
+		req.NextToken = nextToken
+
+		resp, err := ds.Node(ctx, req, 1000)
+		if err != nil {
+			return nil, err
+		}
+
+		for _, graph := range resp.Data {
+			if nodes, ok := graph.Arcs[arcKey]; ok {
+				for _, node := range nodes.Nodes {
+					if node.Dcid != "" {
+						dcids = append(dcids, node.Dcid)
+					}
+				}
+			}
+		}
+
+		nextToken = resp.GetNextToken()
+		if nextToken == "" {
+			break
+		}
+	}
+	return dcids, nil
 }
 
 func (ds *DataSources) NodeSearch(ctx context.Context, in *pbv2.NodeSearchRequest) (*pbv2.NodeSearchResponse, error) {
