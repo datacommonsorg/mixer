@@ -1,0 +1,4086 @@
+{
+  "dc/topic/AdolescentBirthRate": {
+    "dcid": "dc/topic/AdolescentBirthRate",
+    "name": "Adolescent Birth Rate",
+    "relevantVariables": [
+      "sdg/SP_DYN_ADKL.AGE--Y10T14__SEX--F",
+      "sdg/SP_DYN_ADKL.AGE--Y15T19__SEX--F"
+    ]
+  },
+  "dc/topic/AdultCorrectionalFacilitiesResidents": {
+    "dcid": "dc/topic/AdultCorrectionalFacilitiesResidents",
+    "name": "Adult Correctional Facilities Residents",
+    "relevantVariables": [
+      "Count_Person_ResidesInAdultCorrectionalFacilities",
+      "Count_Person_ResidesInAdultCorrectionalFacilities_Veteran",
+      "Count_Person_WithFoodStampsInThePast12Months_ResidesInAdultCorrectionalFacilities"
+    ]
+  },
+  "dc/topic/Age": {
+    "dcid": "dc/topic/Age",
+    "name": "Age",
+    "relevantVariables": [
+      "dc/topic/AgeMedians",
+      "dc/topic/AgeDistribution",
+      "dc/topic/VeryOldAndVeryYoungPopulation"
+    ]
+  },
+  "dc/topic/AgeDistribution": {
+    "dcid": "dc/topic/AgeDistribution",
+    "name": "Age Distribution",
+    "relevantVariables": [
+      "Count_Person_1To4Years",
+      "Count_Person_5To17Years",
+      "Count_Person_18To24Years"
+    ]
+  },
+  "dc/topic/AgeMedians": {
+    "dcid": "dc/topic/AgeMedians",
+    "name": "Age Medians",
+    "relevantVariables": [
+      "Median_Age_Person",
+      "Median_Age_Person_Female",
+      "Median_Age_Person_Male"
+    ]
+  },
+  "dc/topic/AgriculturalProduction": {
+    "dcid": "dc/topic/AgriculturalProduction",
+    "name": "Agricultural Output",
+    "relevantVariables": [
+      "Income_Farm",
+      "Amount_FarmInventory_Cotton",
+      "Amount_FarmInventory_Rice"
+    ]
+  },
+  "dc/topic/Agriculture": {
+    "dcid": "dc/topic/Agriculture",
+    "name": "Agriculture",
+    "relevantVariables": [
+      "Area_Farm",
+      "Count_Farm",
+      "Income_Farm"
+    ]
+  },
+  "dc/topic/AirQualityIndex": {
+    "dcid": "dc/topic/AirQualityIndex",
+    "name": "Air Quality Index",
+    "relevantVariables": [
+      "AirQualityIndex_AirPollutant",
+      "AirQualityIndex_AirPollutant_CO",
+      "AirQualityIndex_AirPollutant_NO2"
+    ]
+  },
+  "dc/topic/AlcoholIndustry": {
+    "dcid": "dc/topic/AlcoholIndustry",
+    "name": "Alcohol Industry",
+    "relevantVariables": [
+      "dc/1zpdg2hsjnrld",
+      "dc/4sr6g7jvff3q7",
+      "dc/5g33rewtyql8"
+    ]
+  },
+  "dc/topic/AmbientAirPollution": {
+    "dcid": "dc/topic/AmbientAirPollution",
+    "name": "Ambient Air Pollution",
+    "relevantVariables": [
+      "sdg/SH_AAP_ASMORT",
+      "sdg/SH_HAP_ASMORT",
+      "sdg/SH_STA_ASAIRP"
+    ]
+  },
+  "dc/topic/AmericanIndianAndAlaskaNativeAloneFemalePopulationByAge": {
+    "dcid": "dc/topic/AmericanIndianAndAlaskaNativeAloneFemalePopulationByAge",
+    "name": "American Indian and Alaska Native Alone Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_AmericanIndianAndAlaskaNativeAlone",
+      "Count_Person_10To14Years_Female_AmericanIndianAndAlaskaNativeAlone",
+      "Count_Person_15To19Years_Female_AmericanIndianAndAlaskaNativeAlone"
+    ]
+  },
+  "dc/topic/AmericanIndianAndAlaskaNativeAloneMalePopulationByAge": {
+    "dcid": "dc/topic/AmericanIndianAndAlaskaNativeAloneMalePopulationByAge",
+    "name": "American Indian and Alaska Native Alone Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_AmericanIndianAndAlaskaNativeAlone",
+      "Count_Person_10To14Years_Male_AmericanIndianAndAlaskaNativeAlone",
+      "Count_Person_15To19Years_Male_AmericanIndianAndAlaskaNativeAlone"
+    ]
+  },
+  "dc/topic/AmericanIndianAndAlaskaNativeAlonePopulationByAge": {
+    "dcid": "dc/topic/AmericanIndianAndAlaskaNativeAlonePopulationByAge",
+    "name": "American Indian and Alaska Native Alone Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_AmericanIndianAndAlaskaNativeAlone",
+      "Count_Person_10To14Years_AmericanIndianAndAlaskaNativeAlone",
+      "Count_Person_15To19Years_AmericanIndianAndAlaskaNativeAlone"
+    ]
+  },
+  "dc/topic/Arthritis": {
+    "dcid": "dc/topic/Arthritis",
+    "name": "Arthritis",
+    "relevantVariables": [
+      "Percent_Person_WithArthritis",
+      "Count_Person_Female_ConditionArthritis",
+      "Count_Person_Male_ConditionArthritis"
+    ]
+  },
+  "dc/topic/ArthritisFemalePopulationByAge": {
+    "dcid": "dc/topic/ArthritisFemalePopulationByAge",
+    "name": "Women With Arthritis by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_ConditionArthritis",
+      "Count_Person_10To14Years_Female_ConditionArthritis",
+      "Count_Person_15To19Years_Female_ConditionArthritis"
+    ]
+  },
+  "dc/topic/ArthritisMalePopulationByAge": {
+    "dcid": "dc/topic/ArthritisMalePopulationByAge",
+    "name": "Arthritis Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_ConditionArthritis",
+      "Count_Person_10To14Years_Male_ConditionArthritis",
+      "Count_Person_15To19Years_Male_ConditionArthritis"
+    ]
+  },
+  "dc/topic/AsianAloneFemalePopulationByAge": {
+    "dcid": "dc/topic/AsianAloneFemalePopulationByAge",
+    "name": "Asian Alone Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_AsianAlone",
+      "Count_Person_10To14Years_Female_AsianAlone",
+      "Count_Person_15To19Years_Female_AsianAlone"
+    ]
+  },
+  "dc/topic/AsianAloneMalePopulationByAge": {
+    "dcid": "dc/topic/AsianAloneMalePopulationByAge",
+    "name": "Asian Alone Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_AsianAlone",
+      "Count_Person_10To14Years_Male_AsianAlone",
+      "Count_Person_15To19Years_Male_AsianAlone"
+    ]
+  },
+  "dc/topic/AsianAlonePopulationByAge": {
+    "dcid": "dc/topic/AsianAlonePopulationByAge",
+    "name": "Asian Alone Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_AsianAlone",
+      "Count_Person_10To14Years_AsianAlone",
+      "Count_Person_15To19Years_AsianAlone"
+    ]
+  },
+  "dc/topic/AsianOrPacificIslanderFemalePopulationByAge": {
+    "dcid": "dc/topic/AsianOrPacificIslanderFemalePopulationByAge",
+    "name": "Asian or Pacific Islander Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_AsianOrPacificIslander",
+      "Count_Person_10To14Years_Female_AsianOrPacificIslander",
+      "Count_Person_15To19Years_Female_AsianOrPacificIslander"
+    ]
+  },
+  "dc/topic/AsianOrPacificIslanderMalePopulationByAge": {
+    "dcid": "dc/topic/AsianOrPacificIslanderMalePopulationByAge",
+    "name": "Asian or Pacific Islander Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_AsianOrPacificIslander",
+      "Count_Person_10To14Years_Male_AsianOrPacificIslander",
+      "Count_Person_15To19Years_Male_AsianOrPacificIslander"
+    ]
+  },
+  "dc/topic/AsianOrPacificIslanderPopulationByAge": {
+    "dcid": "dc/topic/AsianOrPacificIslanderPopulationByAge",
+    "name": "Asian or Pacific Islander Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_AsianOrPacificIslander",
+      "Count_Person_10To14Years_AsianOrPacificIslander",
+      "Count_Person_15To19Years_AsianOrPacificIslander"
+    ]
+  },
+  "dc/topic/Asthma": {
+    "dcid": "dc/topic/Asthma",
+    "name": "Asthma",
+    "relevantVariables": [
+      "Percent_Person_WithAsthma",
+      "Percent_Person_Children_WithAsthma"
+    ]
+  },
+  "dc/topic/AsthmaFemalePopulationByAge": {
+    "dcid": "dc/topic/AsthmaFemalePopulationByAge",
+    "name": "Asthma Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_ConditionAsthma",
+      "Count_Person_10To14Years_Female_ConditionAsthma",
+      "Count_Person_15To19Years_Female_ConditionAsthma"
+    ]
+  },
+  "dc/topic/AsthmaMalePopulationByAge": {
+    "dcid": "dc/topic/AsthmaMalePopulationByAge",
+    "name": "Asthma Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_ConditionAsthma",
+      "Count_Person_10To14Years_Male_ConditionAsthma",
+      "Count_Person_15To19Years_Male_ConditionAsthma"
+    ]
+  },
+  "dc/topic/Avalanche": {
+    "dcid": "dc/topic/Avalanche",
+    "name": "Avalanche",
+    "relevantVariables": [
+      "Count_AvalancheEvent",
+      "Annual_ExpectedLoss_NaturalHazardImpact_AvalancheEvent",
+      "FemaNaturalHazardRiskIndex_NaturalHazardImpact_AvalancheEvent"
+    ]
+  },
+  "dc/topic/BachelorsMajor": {
+    "dcid": "dc/topic/BachelorsMajor",
+    "name": "Bachelors Major",
+    "relevantVariables": [
+      "Count_Person_BachelorOfArtsHumanitiesAndOtherMajor",
+      "Count_Person_BachelorOfBusinessMajor",
+      "Count_Person_BachelorOfEducationMajor"
+    ]
+  },
+  "dc/topic/BankingAccess": {
+    "dcid": "dc/topic/BankingAccess",
+    "name": "Banking Access",
+    "relevantVariables": [
+      "sdg/FB_BNK_ACCSS.AGE--Y_GE15__INCOME_WEALTH_QUANTILE--B40",
+      "sdg/FB_BNK_ACCSS.AGE--Y_GE15__INCOME_WEALTH_QUANTILE--R60",
+      "sdg/FB_BNK_ACCSS.AGE--Y_GE15__EDUCATION_LEV--AGG_0_1"
+    ]
+  },
+  "dc/topic/Benefits": {
+    "dcid": "dc/topic/Benefits",
+    "name": "Benefits",
+    "relevantVariables": [
+      "Count_Household_WithFoodStampsInThePast12Months_AmericanIndianOrAlaskaNativeAlone",
+      "Count_Household_WithFoodStampsInThePast12Months_AsianAlone",
+      "Count_Household_WithFoodStampsInThePast12Months_BlackOrAfricanAmericanAlone"
+    ]
+  },
+  "dc/topic/Births": {
+    "dcid": "dc/topic/Births",
+    "name": "Births",
+    "relevantVariables": [
+      "Count_BirthEvent",
+      "Count_BirthEvent_AsAFractionOfCount_Person",
+      "FertilityRate_Person_Female"
+    ]
+  },
+  "dc/topic/BlackOrAfricanAmericanAloneFemalePopulationByAge": {
+    "dcid": "dc/topic/BlackOrAfricanAmericanAloneFemalePopulationByAge",
+    "name": "Black or African American Alone Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_BlackOrAfricanAmericanAlone",
+      "Count_Person_10To14Years_Female_BlackOrAfricanAmericanAlone",
+      "Count_Person_15To19Years_Female_BlackOrAfricanAmericanAlone"
+    ]
+  },
+  "dc/topic/BlackOrAfricanAmericanAloneMalePopulationByAge": {
+    "dcid": "dc/topic/BlackOrAfricanAmericanAloneMalePopulationByAge",
+    "name": "Black or African American Alone Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_BlackOrAfricanAmericanAlone",
+      "Count_Person_10To14Years_Male_BlackOrAfricanAmericanAlone",
+      "Count_Person_15To19Years_Male_BlackOrAfricanAmericanAlone"
+    ]
+  },
+  "dc/topic/BlackOrAfricanAmericanAlonePopulationByAge": {
+    "dcid": "dc/topic/BlackOrAfricanAmericanAlonePopulationByAge",
+    "name": "Black or African American Alone Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_BlackOrAfricanAmericanAlone",
+      "Count_Person_10To14Years_BlackOrAfricanAmericanAlone",
+      "Count_Person_15To19Years_BlackOrAfricanAmericanAlone"
+    ]
+  },
+  "dc/topic/BloodPressure": {
+    "dcid": "dc/topic/BloodPressure",
+    "name": "Blood Pressure",
+    "relevantVariables": [
+      "Percent_Person_WithHighBloodPressure",
+      "Percent_Person_18OrMoreYears_WithHighBloodPressure_ReceivedTakingBloodPressureMedication"
+    ]
+  },
+  "dc/topic/Businesses": {
+    "dcid": "dc/topic/Businesses",
+    "name": "Businesses",
+    "relevantVariables": [
+      "dc/topic/NumberOfBusinessesByIndustry",
+      "dc/topic/NumberOfBusinessesByOwnership"
+    ]
+  },
+  "dc/topic/CO2Emissions": {
+    "dcid": "dc/topic/CO2Emissions",
+    "name": "Carbondioxide ( CO2)",
+    "relevantVariables": [
+      "eia/INTL.4008-8-MMTCD.A",
+      "Amount_Emissions_CarbonDioxide_PerCapita",
+      "Annual_Emissions_CarbonDioxide_NonBiogenic"
+    ]
+  },
+  "dc/topic/COVID19": {
+    "dcid": "dc/topic/COVID19",
+    "name": "COVID-19",
+    "relevantVariables": [
+      "CumulativeCount_MedicalTest_ConditionCOVID_19",
+      "CumulativeCount_Vaccine_COVID_19_Administered",
+      "IncrementalCount_MedicalTest_ConditionCOVID_19"
+    ]
+  },
+  "dc/topic/Cancer": {
+    "dcid": "dc/topic/Cancer",
+    "name": "Cancer",
+    "relevantVariables": [
+      "Percent_Person_WithCancerExcludingSkinCancer",
+      "Count_Death_Neoplasms",
+      "Count_Death_Upto1Years_Neoplasms"
+    ]
+  },
+  "dc/topic/CancerFemalePopulationByAge": {
+    "dcid": "dc/topic/CancerFemalePopulationByAge",
+    "name": "Cancer Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_ConditionCancer",
+      "Count_Person_10To14Years_Female_ConditionCancer",
+      "Count_Person_15To19Years_Female_ConditionCancer"
+    ]
+  },
+  "dc/topic/CancerMalePopulationByAge": {
+    "dcid": "dc/topic/CancerMalePopulationByAge",
+    "name": "Cancer Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_ConditionCancer",
+      "Count_Person_10To14Years_Male_ConditionCancer",
+      "Count_Person_15To19Years_Male_ConditionCancer"
+    ]
+  },
+  "dc/topic/CarbonMonoxide": {
+    "dcid": "dc/topic/CarbonMonoxide",
+    "name": "Carbon Monoxide",
+    "relevantVariables": [
+      "Max_Concentration_AirPollutant_CO",
+      "Mean_Concentration_AirPollutant_CO",
+      "Median_Concentration_AirPollutant_CO"
+    ]
+  },
+  "dc/topic/CausesOfDeath": {
+    "dcid": "dc/topic/CausesOfDeath",
+    "name": "Causes of Death",
+    "relevantVariables": [
+      "Count_Death_DiseasesOfTheNervousSystem",
+      "Count_Death_DiseasesOfTheRespiratorySystem",
+      "Count_Death_DiseasesOfTheCirculatorySystem"
+    ]
+  },
+  "dc/topic/Cholesterol": {
+    "dcid": "dc/topic/Cholesterol",
+    "name": "Cholesterol",
+    "relevantVariables": [
+      "Percent_Person_WithHighCholesterol",
+      "Percent_Person_ReceivedCholesterolScreening"
+    ]
+  },
+  "dc/topic/CitizenshipStatus": {
+    "dcid": "dc/topic/CitizenshipStatus",
+    "name": "Citizenship Status",
+    "relevantVariables": [
+      "Count_Person_NotAUSCitizen",
+      "Count_Person_USCitizenBornInTheUnitedStates",
+      "Count_Person_USCitizenByNaturalization"
+    ]
+  },
+  "dc/topic/CoastalFlood": {
+    "dcid": "dc/topic/CoastalFlood",
+    "name": "Coastal Flood",
+    "relevantVariables": [
+      "Annual_ExpectedLoss_NaturalHazardImpact_CoastalFloodEvent",
+      "FemaNaturalHazardRiskIndex_NaturalHazardImpact_CoastalFloodEvent"
+    ]
+  },
+  "dc/topic/ColdEvent": {
+    "dcid": "dc/topic/ColdEvent",
+    "name": "Cold Events",
+    "relevantVariables": [
+      "Count_ColdWindChillEvent",
+      "Count_ExtremeColdWindChillEvent",
+      "Count_FreezingFogEvent"
+    ]
+  },
+  "dc/topic/CollegeEducationAttainment": {
+    "dcid": "dc/topic/CollegeEducationAttainment",
+    "name": "College Education",
+    "relevantVariables": [
+      "Count_Person_EducationalAttainmentAssociatesDegree",
+      "Count_Person_EducationalAttainmentBachelorsDegree",
+      "Count_Person_EducationalAttainmentMastersDegree"
+    ]
+  },
+  "dc/topic/CollegeOrUniversityStudentHousingResidents": {
+    "dcid": "dc/topic/CollegeOrUniversityStudentHousingResidents",
+    "name": "College or University Student Housing Residents",
+    "relevantVariables": [
+      "Count_Person_ResidesInCollegeOrUniversityStudentHousing",
+      "Count_Person_ResidesInCollegeOrUniversityStudentHousing_Veteran",
+      "Count_Person_WithFoodStampsInThePast12Months_ResidesInCollegeOrUniversityStudentHousing"
+    ]
+  },
+  "dc/topic/CommuteMode": {
+    "dcid": "dc/topic/CommuteMode",
+    "name": "Commute Mode",
+    "relevantVariables": [
+      "dc/0gettc3bc60cb",
+      "dc/6rltk4kf75612",
+      "dc/hbkh95kc7pkb6"
+    ]
+  },
+  "dc/topic/CommuteModeByOccupation": {
+    "dcid": "dc/topic/CommuteModeByOccupation",
+    "name": "Commute Mode by Occupation",
+    "relevantVariables": [
+      "dc/nfdf9rt7kbggb",
+      "dc/v33p7mwnpe9vb",
+      "dc/4xklqxfc27w1f"
+    ]
+  },
+  "dc/topic/CommuteTime": {
+    "dcid": "dc/topic/CommuteTime",
+    "name": "Commute Time",
+    "relevantVariables": [
+      "Mean_CommuteTime_Person_Years16Onwards_WorkCommute_Employed_WorkedOutsideOfHome",
+      "dc/fyc3yvjy0xw6g",
+      "dc/dbe0drezxrpv6"
+    ]
+  },
+  "dc/topic/ConsumerPriceIndex": {
+    "dcid": "dc/topic/ConsumerPriceIndex",
+    "name": "Consumer Price Index",
+    "relevantVariables": [
+      "worldBank/FP_CPI_TOTL",
+      "worldBank/FP_CPI_TOTL_ZG",
+      "dc/x6l3mg60hpe7c"
+    ]
+  },
+  "dc/topic/ConsumerPriceIndexCategory": {
+    "dcid": "dc/topic/ConsumerPriceIndexCategory",
+    "name": "Consumer Price Index by Category",
+    "relevantVariables": [
+      "SeasonallyUnadjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_AllItemsExceptEnergy",
+      "SeasonallyUnadjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_AllItemsExceptFood",
+      "SeasonallyUnadjusted_ConsumerPriceIndex_ConsumerGoodsAndServices_UrbanConsumer_AllItemsExceptFoodAndShelter"
+    ]
+  },
+  "dc/topic/Crime": {
+    "dcid": "dc/topic/Crime",
+    "name": "Crime",
+    "relevantVariables": [
+      "Count_CriminalActivities_CombinedCrime",
+      "Count_CriminalActivities_MurderAndNonNegligentManslaughter_AsFractionOf_Count_Person",
+      "Count_CriminalActivities_AggravatedAssault"
+    ]
+  },
+  "dc/topic/Cyclone": {
+    "dcid": "dc/topic/Cyclone",
+    "name": "Cyclones",
+    "relevantVariables": [
+      "Count_CycloneEvent",
+      "Count_CycloneEvent_ExtratropicalCyclone",
+      "Count_CycloneEvent_TropicalDisturbance"
+    ]
+  },
+  "dc/topic/Debt": {
+    "dcid": "dc/topic/Debt",
+    "name": "Debt",
+    "relevantVariables": [
+      "Amount_Debt_Government",
+      "sdg/DT_DOD_DECT_GN_ZS"
+    ]
+  },
+  "dc/topic/DecadeProjectedTemperatureHighs": {
+    "dcid": "dc/topic/DecadeProjectedTemperatureHighs",
+    "name": "Decade Projected Temperature Highs",
+    "relevantVariables": [
+      "dc/topic/MaxTemperature95PercentLikelyAtLeastOncePerDecadeDifferenceToBaseline",
+      "dc/topic/MaxTemperature95PercentLikelyAtLeastOncePerDecade"
+    ]
+  },
+  "dc/topic/DecadeProjectedTemperatureLows": {
+    "dcid": "dc/topic/DecadeProjectedTemperatureLows",
+    "name": "Decade Projected Temperature Lows",
+    "relevantVariables": [
+      "dc/topic/MinTemperature95PercentLikelyAtLeastOncePerDecadeDifferenceToBaseline",
+      "dc/topic/MinTemperature95PercentLikelyAtLeastOncePerDecade"
+    ]
+  },
+  "dc/topic/DementiaFemalePopulationByAge": {
+    "dcid": "dc/topic/DementiaFemalePopulationByAge",
+    "name": "Dementia Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_ConditionDementia",
+      "Count_Person_10To14Years_Female_ConditionDementia",
+      "Count_Person_15To19Years_Female_ConditionDementia"
+    ]
+  },
+  "dc/topic/DementiaMalePopulationByAge": {
+    "dcid": "dc/topic/DementiaMalePopulationByAge",
+    "name": "Dementia Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_ConditionDementia",
+      "Count_Person_10To14Years_Male_ConditionDementia",
+      "Count_Person_15To19Years_Male_ConditionDementia"
+    ]
+  },
+  "dc/topic/Demographics": {
+    "dcid": "dc/topic/Demographics",
+    "name": "Demographics",
+    "relevantVariables": [
+      "Count_Person",
+      "Count_Person_PerArea",
+      "GrowthRate_Count_Person"
+    ]
+  },
+  "dc/topic/Dengue": {
+    "dcid": "dc/topic/Dengue",
+    "name": "Dengue",
+    "relevantVariables": [
+      "Count_MedicalConditionIncident_ConditionDengueDisease",
+      "Count_MedicalConditionIncident_15To24Years_ConditionDengueDisease",
+      "Count_MedicalConditionIncident_1To4Years_ConditionDengueDisease"
+    ]
+  },
+  "dc/topic/Dentists": {
+    "dcid": "dc/topic/Dentists",
+    "name": "Dentists",
+    "relevantVariables": [
+      "dc/17ckwyxwctzm2",
+      "dc/dv0w29brm5866",
+      "dc/w2gdszr0f3sh2"
+    ]
+  },
+  "dc/topic/Diabetes": {
+    "dcid": "dc/topic/Diabetes",
+    "name": "Diabetes",
+    "relevantVariables": [
+      "Percent_Person_WithDiabetes"
+    ]
+  },
+  "dc/topic/DiabetesFemalePopulationByAge": {
+    "dcid": "dc/topic/DiabetesFemalePopulationByAge",
+    "name": "Diabetes Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_ConditionDiabetes",
+      "Count_Person_10To14Years_Female_ConditionDiabetes",
+      "Count_Person_15To19Years_Female_ConditionDiabetes"
+    ]
+  },
+  "dc/topic/DiabetesMalePopulationByAge": {
+    "dcid": "dc/topic/DiabetesMalePopulationByAge",
+    "name": "Diabetes Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_ConditionDiabetes",
+      "Count_Person_10To14Years_Male_ConditionDiabetes",
+      "Count_Person_15To19Years_Male_ConditionDiabetes"
+    ]
+  },
+  "dc/topic/DieselPM": {
+    "dcid": "dc/topic/DieselPM",
+    "name": "Diesel PM",
+    "relevantVariables": [
+      "Mean_Concentration_AirPollutant_DieselPM"
+    ]
+  },
+  "dc/topic/Disabilities": {
+    "dcid": "dc/topic/Disabilities",
+    "name": "Disabilities",
+    "relevantVariables": [
+      "Count_Person_WithDisability_Female",
+      "Count_Person_WithDisability_Male",
+      "Count_Person_WithDisability_ResidesInAdultCorrectionalFacilities"
+    ]
+  },
+  "dc/topic/DisabilitiesByGender": {
+    "dcid": "dc/topic/DisabilitiesByGender",
+    "name": "Disabilities by Gender",
+    "relevantVariables": [
+      "Count_Person_WithDisability_Female",
+      "Count_Person_WithDisability_Male"
+    ]
+  },
+  "dc/topic/DisabilitiesByRace": {
+    "dcid": "dc/topic/DisabilitiesByRace",
+    "name": "Disabilities by Race",
+    "relevantVariables": [
+      "Count_Person_WithDisability_AmericanIndianOrAlaskaNativeAlone",
+      "Count_Person_WithDisability_BlackOrAfricanAmericanAlone",
+      "Count_Person_WithDisability_HispanicOrLatino"
+    ]
+  },
+  "dc/topic/DiseasesOfHeartFemalePopulationByAge": {
+    "dcid": "dc/topic/DiseasesOfHeartFemalePopulationByAge",
+    "name": "Diseases of Heart Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_ConditionDiseasesOfHeart",
+      "Count_Person_10To14Years_Female_ConditionDiseasesOfHeart",
+      "Count_Person_15To19Years_Female_ConditionDiseasesOfHeart"
+    ]
+  },
+  "dc/topic/DiseasesOfHeartMalePopulationByAge": {
+    "dcid": "dc/topic/DiseasesOfHeartMalePopulationByAge",
+    "name": "Diseases of Heart Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_ConditionDiseasesOfHeart",
+      "Count_Person_10To14Years_Male_ConditionDiseasesOfHeart",
+      "Count_Person_15To19Years_Male_ConditionDiseasesOfHeart"
+    ]
+  },
+  "dc/topic/DivorcedFemalePopulationByAge": {
+    "dcid": "dc/topic/DivorcedFemalePopulationByAge",
+    "name": "Divorced Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_10To14Years_Female_Divorced",
+      "Count_Person_15To19Years_Female_Divorced",
+      "Count_Person_20To24Years_Female_Divorced"
+    ]
+  },
+  "dc/topic/DivorcedMalePopulationByAge": {
+    "dcid": "dc/topic/DivorcedMalePopulationByAge",
+    "name": "Divorced Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_10To14Years_Male_Divorced",
+      "Count_Person_15To19Years_Male_Divorced",
+      "Count_Person_20To24Years_Male_Divorced"
+    ]
+  },
+  "dc/topic/DivorcedPopulationByAge": {
+    "dcid": "dc/topic/DivorcedPopulationByAge",
+    "name": "Divorced Population by Age",
+    "relevantVariables": [
+      "Count_Person_10To14Years_Divorced",
+      "Count_Person_15To19Years_Divorced",
+      "Count_Person_20To24Years_Divorced"
+    ]
+  },
+  "dc/topic/DivorcedPopulationByDemographic": {
+    "dcid": "dc/topic/DivorcedPopulationByDemographic",
+    "name": "Divorced Population",
+    "relevantVariables": [
+      "Count_Person_Divorced",
+      "Count_Person_Female_Divorced",
+      "Count_Person_Male_Divorced"
+    ]
+  },
+  "dc/topic/Drought": {
+    "dcid": "dc/topic/Drought",
+    "name": "Drought",
+    "relevantVariables": [
+      "Area_DroughtEvent",
+      "ConsecutiveDryDays",
+      "Count_DroughtEvent"
+    ]
+  },
+  "dc/topic/Earthquake": {
+    "dcid": "dc/topic/Earthquake",
+    "name": "Earthquake",
+    "relevantVariables": [
+      "Count_EarthquakeEvent",
+      "Annual_ExpectedLoss_NaturalHazardImpact_EarthquakeEvent",
+      "FemaNaturalHazardRiskIndex_NaturalHazardImpact_EarthquakeEvent"
+    ]
+  },
+  "dc/topic/EconomicActivity": {
+    "dcid": "dc/topic/EconomicActivity",
+    "name": "Economic Activity",
+    "relevantVariables": [
+      "dc/topic/IndustriesByGDP",
+      "dc/topic/IndustriesByRevenue"
+    ]
+  },
+  "dc/topic/EconomicEquity": {
+    "dcid": "dc/topic/EconomicEquity",
+    "name": "Economic Equity",
+    "relevantVariables": [
+      "GiniIndex_EconomicActivity",
+      "dc/topic/PovertyByGender",
+      "dc/topic/PovertyByRace"
+    ]
+  },
+  "dc/topic/Economy": {
+    "dcid": "dc/topic/Economy",
+    "name": "Economy",
+    "relevantVariables": [
+      "dc/topic/Businesses",
+      "dc/topic/EconomicActivity",
+      "dc/topic/Employment"
+    ]
+  },
+  "dc/topic/Education": {
+    "dcid": "dc/topic/Education",
+    "name": "Education",
+    "relevantVariables": [
+      "dc/topic/EducationalAttainment",
+      "dc/topic/SchoolType",
+      "dc/topic/Schools"
+    ]
+  },
+  "dc/topic/EducationEquity": {
+    "dcid": "dc/topic/EducationEquity",
+    "name": "Education Equity",
+    "relevantVariables": [
+      "dc/topic/EducationalAttainmentByGenderAndLevel",
+      "dc/topic/EducationalAttainmentByRaceAndLevel"
+    ]
+  },
+  "dc/topic/EducationExpenditure": {
+    "dcid": "dc/topic/EducationExpenditure",
+    "name": "Education Expenditure",
+    "relevantVariables": [
+      "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_ExpenditureActivity_Government",
+      "Amount_EconomicActivity_ExpenditureActivity_EducationExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal"
+    ]
+  },
+  "dc/topic/EducationFaculty": {
+    "dcid": "dc/topic/EducationFaculty",
+    "name": "Education Faculty",
+    "relevantVariables": [
+      "Count_Teacher_ElementaryTeacher",
+      "Count_Teacher_SecondaryTeacher",
+      "Count_Teacher_UngradedTeacher"
+    ]
+  },
+  "dc/topic/EducationHousingAndCommute": {
+    "dcid": "dc/topic/EducationHousingAndCommute",
+    "name": "\"Education, Housing and Commute\"",
+    "relevantVariables": [
+      "dc/topic/Education",
+      "dc/topic/Housing",
+      "dc/topic/WorkCommute"
+    ]
+  },
+  "dc/topic/EducationalAttainment": {
+    "dcid": "dc/topic/EducationalAttainment",
+    "name": "Educational Attainment",
+    "relevantVariables": [
+      "dc/topic/BachelorsMajor",
+      "dc/topic/EducationalAttainmentByGenderAndLevel",
+      "dc/topic/LevelOfEducationalAttainment"
+    ]
+  },
+  "dc/topic/EducationalAttainmentByGenderAndLevel": {
+    "dcid": "dc/topic/EducationalAttainmentByGenderAndLevel",
+    "name": "Educational Attainment by Gender and Level",
+    "relevantVariables": [
+      "Count_Person_25OrMoreYears_EducationalAttainmentAssociatesDegree_Female",
+      "Count_Person_25OrMoreYears_EducationalAttainmentAssociatesDegree_Male",
+      "Count_Person_25OrMoreYears_EducationalAttainmentBachelorsDegree_Female"
+    ]
+  },
+  "dc/topic/EducationalAttainmentByRaceAndLevel": {
+    "dcid": "dc/topic/EducationalAttainmentByRaceAndLevel",
+    "name": "Educational Attainment by Race",
+    "relevantVariables": [
+      "dc/06f0jf8xvzw4f",
+      "dc/4qtse8536dg63",
+      "dc/5hc4etrfyj9qg"
+    ]
+  },
+  "dc/topic/Electricity_Consumption": {
+    "dcid": "dc/topic/Electricity_Consumption",
+    "name": "Electricity Consumption",
+    "relevantVariables": [
+      "Amount_Consumption_Electricity_PerCapita",
+      "Annual_Consumption_Electricity",
+      "Annual_Consumption_Electricity_Agriculture"
+    ]
+  },
+  "dc/topic/Emissions": {
+    "dcid": "dc/topic/Emissions",
+    "name": "Emissions",
+    "relevantVariables": [
+      "Annual_Emissions_GreenhouseGas",
+      "Annual_Emissions_GreenhouseGas_NonBiogenic",
+      "dc/topic/GreenhouseGasEmissions"
+    ]
+  },
+  "dc/topic/Emissions_FlourinatedGases": {
+    "dcid": "dc/topic/Emissions_FlourinatedGases",
+    "name": "Flourinated Gas",
+    "relevantVariables": [
+      "Annual_Emissions_Hydrofluorocarbon_NonBiogenic",
+      "Annual_Emissions_Hydrofluoroether_NonBiogenic",
+      "Annual_Emissions_NitrogenTrifluoride_NonBiogenic"
+    ]
+  },
+  "dc/topic/Emissions_Methane_EmissionsbySource": {
+    "dcid": "dc/topic/Emissions_Methane_EmissionsbySource",
+    "name": "Methane",
+    "relevantVariables": [
+      "Annual_Emissions_Methane_Agriculture",
+      "Annual_Emissions_Methane_FossilFuelOperations",
+      "Annual_Emissions_Methane_NonBiogenic"
+    ]
+  },
+  "dc/topic/Emissions_NitrousOxide_EmissionsbySource": {
+    "dcid": "dc/topic/Emissions_NitrousOxide_EmissionsbySource",
+    "name": "Nitrous Oxide",
+    "relevantVariables": [
+      "Annual_Emissions_NitrousOxide_Agriculture",
+      "Annual_Emissions_NitrousOxide_FuelCombustionForResidentialCommercialOnsiteHeating",
+      "Annual_Emissions_NitrousOxide_Manufacturing"
+    ]
+  },
+  "dc/topic/Emissions_PM2.5_EmissionsbySource": {
+    "dcid": "dc/topic/Emissions_PM2.5_EmissionsbySource",
+    "name": "PM 2.5",
+    "relevantVariables": [
+      "Annual_Amount_Emissions_PM2.5_SCC_1_ExternalCombustion",
+      "Annual_Amount_Emissions_PM2.5_SCC_2_InternalCombustionEngines",
+      "Annual_Amount_Emissions_PM2.5_SCC_3_IndustrialProcesses"
+    ]
+  },
+  "dc/topic/Emissions_SulfurDioxide_EmissionsbySource": {
+    "dcid": "dc/topic/Emissions_SulfurDioxide_EmissionsbySource",
+    "name": "Sulfur Dioxide",
+    "relevantVariables": [
+      "Annual_Amount_Emissions_SulfurDioxide_SCC_1_ExternalCombustion",
+      "Annual_Amount_Emissions_SulfurDioxide_SCC_2_InternalCombustionEngines",
+      "Annual_Amount_Emissions_SulfurDioxide_SCC_3_IndustrialProcesses"
+    ]
+  },
+  "dc/topic/Employment": {
+    "dcid": "dc/topic/Employment",
+    "name": "Employment",
+    "relevantVariables": [
+      "Count_Person_Employed",
+      "Count_Person_Employed_Female",
+      "Count_Person_Employed_Male"
+    ]
+  },
+  "dc/topic/EmploymentEquity": {
+    "dcid": "dc/topic/EmploymentEquity",
+    "name": "Employment Equity",
+    "relevantVariables": [
+      "Count_Person_InLaborForce",
+      "Count_Person_NotInLaborForce",
+      "dc/topic/UnemploymentRate"
+    ]
+  },
+  "dc/topic/Energy": {
+    "dcid": "dc/topic/Energy",
+    "name": "Energy",
+    "relevantVariables": [
+      "dc/topic/Energy_Generation",
+      "dc/topic/Energy_Consumption_FossilFuels",
+      "dc/topic/Energy_Renewables"
+    ]
+  },
+  "dc/topic/Energy_Consumption_FossilFuels": {
+    "dcid": "dc/topic/Energy_Consumption_FossilFuels",
+    "name": "Energy Consumption by Fossil Fuels",
+    "relevantVariables": [
+      "Annual_Consumption_Fuel_HardCoal",
+      "Annual_Consumption_Fuel_NaturalGas",
+      "Annual_Consumption_Fuel_PetroleumCoke"
+    ]
+  },
+  "dc/topic/Energy_Fraction": {
+    "dcid": "dc/topic/Energy_Fraction",
+    "name": "Energy Percentages",
+    "relevantVariables": [
+      "Amount_Production_ElectricityFromNuclearSources_AsFractionOf_Amount_Production_Energy",
+      "Amount_Production_ElectricityFromOilGasOrCoalSources_AsFractionOf_Amount_Production_Energy",
+      "Amount_Consumption_RenewableEnergy_AsFractionOf_Amount_Consumption_Energy"
+    ]
+  },
+  "dc/topic/Energy_Generation": {
+    "dcid": "dc/topic/Energy_Generation",
+    "name": "Energy Generation",
+    "relevantVariables": [
+      "dc/topic/Energy_Generation_FossilFuels",
+      "dc/topic/Energy_Generation_NonFossilFuel"
+    ]
+  },
+  "dc/topic/Energy_Generation_FossilFuels": {
+    "dcid": "dc/topic/Energy_Generation_FossilFuels",
+    "name": "Energy Generation by Fossil Fuels",
+    "relevantVariables": [
+      "Annual_Generation_Energy_NaturalGas",
+      "Annual_Generation_Energy_Coal",
+      "Annual_Generation_Fuel_HardCoal"
+    ]
+  },
+  "dc/topic/Energy_Generation_NonFossilFuel": {
+    "dcid": "dc/topic/Energy_Generation_NonFossilFuel",
+    "name": "Energy Generation by Non-Fossil Fuels",
+    "relevantVariables": [
+      "Annual_Generation_Electricity_Households",
+      "Annual_Generation_Energy_Geothermal",
+      "Annual_Generation_Energy_Solar"
+    ]
+  },
+  "dc/topic/Energy_Renewables": {
+    "dcid": "dc/topic/Energy_Renewables",
+    "name": "Renewables",
+    "relevantVariables": [
+      "Annual_Consumption_Energy_Geothermal",
+      "Annual_Generation_Energy_Geothermal",
+      "Annual_Generation_Energy_Solar"
+    ]
+  },
+  "dc/topic/EnglishLanguageAtHome": {
+    "dcid": "dc/topic/EnglishLanguageAtHome",
+    "name": "English Language",
+    "relevantVariables": [
+      "Count_Person_5OrMoreYears_OnlyEnglishSpokenAtHome",
+      "Count_Person_5OrMoreYears_LanguageOtherThanEnglishSpokenAtHome"
+    ]
+  },
+  "dc/topic/Equity": {
+    "dcid": "dc/topic/Equity",
+    "name": "Equity",
+    "relevantVariables": [
+      "dc/topic/EconomicEquity",
+      "dc/topic/EducationEquity",
+      "dc/topic/HealthEquity"
+    ]
+  },
+  "dc/topic/FemaleMortality": {
+    "dcid": "dc/topic/FemaleMortality",
+    "name": "Female Mortality",
+    "relevantVariables": [
+      "Count_Death_Female",
+      "Count_Death_AbnormalNotClassfied_Female",
+      "Count_Death_CertainConditionsOriginatingInThePerinatalPeriod_Female"
+    ]
+  },
+  "dc/topic/Fire": {
+    "dcid": "dc/topic/Fire",
+    "name": "Fire",
+    "relevantVariables": [
+      "Count_FireEvent",
+      "Count_WildfireEvent",
+      "Count_WildlandFireEvent"
+    ]
+  },
+  "dc/topic/Flood": {
+    "dcid": "dc/topic/Flood",
+    "name": "Flood",
+    "relevantVariables": [
+      "Area_FloodEvent",
+      "Count_CoastalFloodEvent",
+      "Count_FloodEvent"
+    ]
+  },
+  "dc/topic/Fog": {
+    "dcid": "dc/topic/Fog",
+    "name": "Fog",
+    "relevantVariables": [
+      "Count_DenseFogEvent"
+    ]
+  },
+  "dc/topic/FoodInsecurity": {
+    "dcid": "dc/topic/FoodInsecurity",
+    "name": "Food Security",
+    "relevantVariables": [
+      "Count_Person_FoodInsecure",
+      "Count_Person_FoodInsecure_AsAFractionOf_Count_Person",
+      "Mean_MealCost_Person_FoodSecure"
+    ]
+  },
+  "dc/topic/Forest": {
+    "dcid": "dc/topic/Forest",
+    "name": "Forest",
+    "relevantVariables": [
+      "Area_Forest",
+      "Mean_MaxTemperature_Forest",
+      "Mean_PalmerDroughtSeverityIndex_Forest"
+    ]
+  },
+  "dc/topic/GDP": {
+    "dcid": "dc/topic/GDP",
+    "name": "GDP",
+    "relevantVariables": [
+      "Amount_EconomicActivity_GrossDomesticProduction_Nominal",
+      "Amount_EconomicActivity_GrossDomesticProduction_Nominal_PerCapita",
+      "Amount_EconomicActivity_GrossDomesticProduction_RealValue"
+    ]
+  },
+  "dc/topic/GDPByIndustry": {
+    "dcid": "dc/topic/GDPByIndustry",
+    "name": "GDP by Industry",
+    "relevantVariables": [
+      "Amount_EconomicActivity_GrossDomesticProduction_NAICSAccommodationFoodServices_RealValue",
+      "Amount_EconomicActivity_GrossDomesticProduction_NAICSAdministrativeSupportWasteManagementRemediationServices_RealValue",
+      "Amount_EconomicActivity_GrossDomesticProduction_NAICSAgricultureForestryFishingHunting_RealValue"
+    ]
+  },
+  "dc/topic/Gender": {
+    "dcid": "dc/topic/Gender",
+    "name": "Gender",
+    "relevantVariables": [
+      "Count_Person_Female",
+      "Count_Person_Male"
+    ]
+  },
+  "dc/topic/GlobalEconomicActivity": {
+    "dcid": "dc/topic/GlobalEconomicActivity",
+    "name": "Global Economic Activity",
+    "relevantVariables": [
+      "dc/topic/GDP",
+      "dc/topic/Debt",
+      "dc/topic/EducationExpenditure"
+    ]
+  },
+  "dc/topic/GlobalElectricityAccess": {
+    "dcid": "dc/topic/GlobalElectricityAccess",
+    "name": "Access to Electricity",
+    "relevantVariables": [
+      "worldBank/EG_ELC_ACCS_ZS",
+      "worldBank/EG_ELC_ACCS_UR_ZS",
+      "worldBank/EG_ELC_ACCS_RU_ZS"
+    ]
+  },
+  "dc/topic/GlobalHealth": {
+    "dcid": "dc/topic/GlobalHealth",
+    "name": "Global Health",
+    "relevantVariables": [
+      "dc/topic/WHOHealthBehavior",
+      "dc/topic/WHOImmunization",
+      "dc/topic/WHOMortality"
+    ]
+  },
+  "dc/topic/GreenJobs": {
+    "dcid": "dc/topic/GreenJobs",
+    "name": "Green Jobs",
+    "relevantVariables": [
+      "dc/00dyzp11kk35g",
+      "dc/eptfljlz7bgbg",
+      "dc/evcytmdmc9xgd"
+    ]
+  },
+  "dc/topic/GreenhouseGasEmissions": {
+    "dcid": "dc/topic/GreenhouseGasEmissions",
+    "name": "Greenhouse Gasses",
+    "relevantVariables": [
+      "Annual_Emissions_GreenhouseGas_Agriculture",
+      "Annual_Emissions_GreenhouseGas_ElectricityGeneration",
+      "Annual_Emissions_GreenhouseGas_FuelCombustionInBuildings"
+    ]
+  },
+  "dc/topic/GroupQuartersResidents": {
+    "dcid": "dc/topic/GroupQuartersResidents",
+    "name": "Group Quarters Residents",
+    "relevantVariables": [
+      "Count_Person_ResidesInGroupQuarters",
+      "Count_Person_ResidesInGroupQuarters_Veteran",
+      "Count_Person_WithFoodStampsInThePast12Months_ResidesInGroupQuarters"
+    ]
+  },
+  "dc/topic/HIV": {
+    "dcid": "dc/topic/HIV",
+    "name": "Hiv",
+    "relevantVariables": [
+      "Count_MedicalConditionIncident_ConditionHIVAIDS",
+      "dc/topic/sdg_3.3.1",
+      "Count_MedicalConditionIncident_15To24Years_ConditionHIVAIDS"
+    ]
+  },
+  "dc/topic/HateCrimes": {
+    "dcid": "dc/topic/HateCrimes",
+    "name": "Hate Crimes",
+    "relevantVariables": [
+      "Count_CriminalIncidents_IsHateCrime",
+      "Count_CriminalIncidents_BiasMotivationDisabilityStatus_AggravatedAssault_IsHateCrime",
+      "Count_CriminalIncidents_BiasMotivationDisabilityStatus_AllOtherLarceny_IsHateCrime"
+    ]
+  },
+  "dc/topic/Health": {
+    "dcid": "dc/topic/Health",
+    "name": "Health",
+    "relevantVariables": [
+      "dc/topic/HealthConditions",
+      "dc/topic/HealthEquity",
+      "dc/topic/HealthInsurance"
+    ]
+  },
+  "dc/topic/HealthBehavior": {
+    "dcid": "dc/topic/HealthBehavior",
+    "name": "Health Behavior",
+    "relevantVariables": [
+      "Percent_Person_BingeDrinking",
+      "Percent_Person_Obesity",
+      "Percent_Person_PhysicalInactivity"
+    ]
+  },
+  "dc/topic/HealthConditions": {
+    "dcid": "dc/topic/HealthConditions",
+    "name": "Health Conditions",
+    "relevantVariables": [
+      "Percent_Person_WithArthritis",
+      "Percent_Person_WithAsthma",
+      "Percent_Person_WithCancerExcludingSkinCancer"
+    ]
+  },
+  "dc/topic/HealthEquity": {
+    "dcid": "dc/topic/HealthEquity",
+    "name": "Health Equity",
+    "relevantVariables": [
+      "dc/topic/DisabilitiesByGender",
+      "dc/topic/DisabilitiesByRace",
+      "dc/topic/HealthInsuranceByGender"
+    ]
+  },
+  "dc/topic/HealthInsurance": {
+    "dcid": "dc/topic/HealthInsurance",
+    "name": "Health Insurance",
+    "relevantVariables": [
+      "Count_Person_WithHealthInsurance",
+      "Count_Person_NoHealthInsurance",
+      "dc/topic/HealthInsuranceType"
+    ]
+  },
+  "dc/topic/HealthInsuranceByGender": {
+    "dcid": "dc/topic/HealthInsuranceByGender",
+    "name": "Health Insurance by Gender",
+    "relevantVariables": [
+      "dc/topic/NoHealthInsuranceByGender",
+      "dc/topic/WithHealthInsuranceByGender"
+    ]
+  },
+  "dc/topic/HealthInsuranceByRace": {
+    "dcid": "dc/topic/HealthInsuranceByRace",
+    "name": "Health Insurance by Race",
+    "relevantVariables": [
+      "dc/topic/NoHealthInsuranceByRace",
+      "dc/topic/WithHealthInsuranceByRace"
+    ]
+  },
+  "dc/topic/HealthInsuranceType": {
+    "dcid": "dc/topic/HealthInsuranceType",
+    "name": "Health Insurance Type",
+    "relevantVariables": [
+      "Count_Person_WithPrivateHealthInsurance",
+      "Count_Person_WithPrivateHealthInsuranceOnly",
+      "Count_Person_WithPublicHealthInsurance"
+    ]
+  },
+  "dc/topic/HealthWorkerDensity": {
+    "dcid": "dc/topic/HealthWorkerDensity",
+    "name": "Health Worker Density",
+    "relevantVariables": [
+      "sdg/SH_MED_DEN.OCCUPATION--ISCO08_2261",
+      "sdg/SH_MED_DEN.OCCUPATION--ISCO08_222_322",
+      "sdg/SH_MED_DEN.OCCUPATION--ISCO08_2262"
+    ]
+  },
+  "dc/topic/HealthcareExpenditure": {
+    "dcid": "dc/topic/HealthcareExpenditure",
+    "name": "Healthcare Expenditure",
+    "relevantVariables": [
+      "Amount_EconomicActivity_ExpenditureActivity_HealthcareExpenditure_AsFractionOf_Count_Person"
+    ]
+  },
+  "dc/topic/HeartDisease": {
+    "dcid": "dc/topic/HeartDisease",
+    "name": "Heart Disease",
+    "relevantVariables": [
+      "Percent_Person_WithCoronaryHeartDisease",
+      "Percent_Person_WithChronicObstructivePulmonaryDisease",
+      "Count_Person_Female_ConditionDiseasesOfHeart"
+    ]
+  },
+  "dc/topic/HeatIllnesses": {
+    "dcid": "dc/topic/HeatIllnesses",
+    "name": "Heat Illnesses",
+    "relevantVariables": [
+      "Count_MedicalConditionIncident_SummerSeason_ConditionHeatStress_PatientDeceased",
+      "Count_MedicalConditionIncident_SummerSeason_ConditionHeatStress_PatientHospitalized",
+      "Count_MedicalConditionIncident_SummerSeason_ConditionHeatStress_VisitedEmergencyDepartment"
+    ]
+  },
+  "dc/topic/HeatWave": {
+    "dcid": "dc/topic/HeatWave",
+    "name": "Heat Wave",
+    "relevantVariables": [
+      "Count_HeatWaveEvent",
+      "Intensity_HeatWaveEvent",
+      "NumberOfDays_HeatWaveEvent"
+    ]
+  },
+  "dc/topic/HeightStunting": {
+    "dcid": "dc/topic/HeightStunting",
+    "name": "Height Stunting",
+    "relevantVariables": [
+      "sdg/SH_STA_STNTN.AGE--Y0T4",
+      "sdg/SH_STA_STNT.AGE--Y0T4"
+    ]
+  },
+  "dc/topic/HispanicOrLatinoFemalePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatinoFemalePopulationByAge",
+    "name": "Hispanic or Latino Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_HispanicOrLatino",
+      "Count_Person_10To14Years_Female_HispanicOrLatino",
+      "Count_Person_15To19Years_Female_HispanicOrLatino"
+    ]
+  },
+  "dc/topic/HispanicOrLatinoMalePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatinoMalePopulationByAge",
+    "name": "Hispanic or Latino Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_HispanicOrLatino",
+      "Count_Person_10To14Years_Male_HispanicOrLatino",
+      "Count_Person_15To19Years_Male_HispanicOrLatino"
+    ]
+  },
+  "dc/topic/HispanicOrLatinoPopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatinoPopulationByAge",
+    "name": "Hispanic or Latino Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_HispanicOrLatino",
+      "Count_Person_10To14Years_HispanicOrLatino",
+      "Count_Person_15To19Years_HispanicOrLatino"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneFemalePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneFemalePopulationByAge",
+    "name": "Hispanic or Latino_ American Indian and Alaska Native Alone Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_HispanicOrLatino_AmericanIndianAndAlaskaNativeAlone",
+      "Count_Person_10To14Years_Female_HispanicOrLatino_AmericanIndianAndAlaskaNativeAlone",
+      "Count_Person_15To19Years_Female_HispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneMalePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneMalePopulationByAge",
+    "name": "Hispanic or Latino_ American Indian and Alaska Native Alone Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_HispanicOrLatino_AmericanIndianAndAlaskaNativeAlone",
+      "Count_Person_10To14Years_Male_HispanicOrLatino_AmericanIndianAndAlaskaNativeAlone",
+      "Count_Person_15To19Years_Male_HispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRacesFemalePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRacesFemalePopulationByAge",
+    "name": "Hispanic or Latino_ American Indian and Alaska Native Alone or in Combination With One or More Other Races Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_Female_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_Female_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRacesMalePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRacesMalePopulationByAge",
+    "name": "Hispanic or Latino_ American Indian and Alaska Native Alone or in Combination With One or More Other Races Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_Male_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_Male_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRacesPopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRacesPopulationByAge",
+    "name": "Hispanic or Latino_ American Indian and Alaska Native Alone or in Combination With One or More Other Races Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_HispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_AmericanIndianAndAlaskaNativeAlonePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_AmericanIndianAndAlaskaNativeAlonePopulationByAge",
+    "name": "Hispanic or Latino_ American Indian and Alaska Native Alone Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_HispanicOrLatino_AmericanIndianAndAlaskaNativeAlone",
+      "Count_Person_10To14Years_HispanicOrLatino_AmericanIndianAndAlaskaNativeAlone",
+      "Count_Person_15To19Years_HispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_AsianAloneFemalePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_AsianAloneFemalePopulationByAge",
+    "name": "Hispanic or Latino_ Asian Alone Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_HispanicOrLatino_AsianAlone",
+      "Count_Person_10To14Years_Female_HispanicOrLatino_AsianAlone",
+      "Count_Person_15To19Years_Female_HispanicOrLatino_AsianAlone"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_AsianAloneMalePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_AsianAloneMalePopulationByAge",
+    "name": "Hispanic or Latino_ Asian Alone Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_HispanicOrLatino_AsianAlone",
+      "Count_Person_10To14Years_Male_HispanicOrLatino_AsianAlone",
+      "Count_Person_15To19Years_Male_HispanicOrLatino_AsianAlone"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRacesFemalePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRacesFemalePopulationByAge",
+    "name": "Hispanic or Latino_ Asian Alone or in Combination With One or More Other Races Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_Female_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_Female_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRacesMalePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRacesMalePopulationByAge",
+    "name": "Hispanic or Latino_ Asian Alone or in Combination With One or More Other Races Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_Male_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_Male_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRacesPopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRacesPopulationByAge",
+    "name": "Hispanic or Latino_ Asian Alone or in Combination With One or More Other Races Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_HispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_AsianAlonePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_AsianAlonePopulationByAge",
+    "name": "Hispanic or Latino_ Asian Alone Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_HispanicOrLatino_AsianAlone",
+      "Count_Person_10To14Years_HispanicOrLatino_AsianAlone",
+      "Count_Person_15To19Years_HispanicOrLatino_AsianAlone"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_BlackOrAfricanAmericanAloneFemalePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_BlackOrAfricanAmericanAloneFemalePopulationByAge",
+    "name": "Hispanic or Latino_ Black or African American Alone Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_HispanicOrLatino_BlackOrAfricanAmericanAlone",
+      "Count_Person_10To14Years_Female_HispanicOrLatino_BlackOrAfricanAmericanAlone",
+      "Count_Person_15To19Years_Female_HispanicOrLatino_BlackOrAfricanAmericanAlone"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_BlackOrAfricanAmericanAloneMalePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_BlackOrAfricanAmericanAloneMalePopulationByAge",
+    "name": "Hispanic or Latino_ Black or African American Alone Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_HispanicOrLatino_BlackOrAfricanAmericanAlone",
+      "Count_Person_10To14Years_Male_HispanicOrLatino_BlackOrAfricanAmericanAlone",
+      "Count_Person_15To19Years_Male_HispanicOrLatino_BlackOrAfricanAmericanAlone"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRacesFemalePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRacesFemalePopulationByAge",
+    "name": "Hispanic or Latino_ Black or African American Alone or in Combination With One or More Other Races Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_Female_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_Female_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRacesMalePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRacesMalePopulationByAge",
+    "name": "Hispanic or Latino_ Black or African American Alone or in Combination With One or More Other Races Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_Male_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_Male_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRacesPopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRacesPopulationByAge",
+    "name": "Hispanic or Latino_ Black or African American Alone or in Combination With One or More Other Races Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_HispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_BlackOrAfricanAmericanAlonePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_BlackOrAfricanAmericanAlonePopulationByAge",
+    "name": "Hispanic or Latino_ Black or African American Alone Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_HispanicOrLatino_BlackOrAfricanAmericanAlone",
+      "Count_Person_10To14Years_HispanicOrLatino_BlackOrAfricanAmericanAlone",
+      "Count_Person_15To19Years_HispanicOrLatino_BlackOrAfricanAmericanAlone"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneFemalePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneFemalePopulationByAge",
+    "name": "Hispanic or Latino_ Native Hawaiian and Other Pacific Islander Alone Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone",
+      "Count_Person_10To14Years_Female_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone",
+      "Count_Person_15To19Years_Female_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneMalePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneMalePopulationByAge",
+    "name": "Hispanic or Latino_ Native Hawaiian and Other Pacific Islander Alone Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone",
+      "Count_Person_10To14Years_Male_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone",
+      "Count_Person_15To19Years_Male_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRacesFemalePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRacesFemalePopulationByAge",
+    "name": "Hispanic or Latino_ Native Hawaiian and Other Pacific Islander Alone or in Combination With One or More Other Races Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_Female_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_Female_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRacesMalePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRacesMalePopulationByAge",
+    "name": "Hispanic or Latino_ Native Hawaiian and Other Pacific Islander Alone or in Combination With One or More Other Races Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_Male_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_Male_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRacesPopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRacesPopulationByAge",
+    "name": "Hispanic or Latino_ Native Hawaiian and Other Pacific Islander Alone or in Combination With One or More Other Races Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlonePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlonePopulationByAge",
+    "name": "Hispanic or Latino_ Native Hawaiian and Other Pacific Islander Alone Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone",
+      "Count_Person_10To14Years_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone",
+      "Count_Person_15To19Years_HispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_TwoOrMoreRacesFemalePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_TwoOrMoreRacesFemalePopulationByAge",
+    "name": "Hispanic or Latino_ Two or More Races Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_HispanicOrLatino_TwoOrMoreRaces",
+      "Count_Person_10To14Years_Female_HispanicOrLatino_TwoOrMoreRaces",
+      "Count_Person_15To19Years_Female_HispanicOrLatino_TwoOrMoreRaces"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_TwoOrMoreRacesMalePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_TwoOrMoreRacesMalePopulationByAge",
+    "name": "Hispanic or Latino_ Two or More Races Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_HispanicOrLatino_TwoOrMoreRaces",
+      "Count_Person_10To14Years_Male_HispanicOrLatino_TwoOrMoreRaces",
+      "Count_Person_15To19Years_Male_HispanicOrLatino_TwoOrMoreRaces"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_TwoOrMoreRacesPopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_TwoOrMoreRacesPopulationByAge",
+    "name": "Hispanic or Latino_ Two or More Races Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_HispanicOrLatino_TwoOrMoreRaces",
+      "Count_Person_10To14Years_HispanicOrLatino_TwoOrMoreRaces",
+      "Count_Person_15To19Years_HispanicOrLatino_TwoOrMoreRaces"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_WhiteAloneFemalePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_WhiteAloneFemalePopulationByAge",
+    "name": "Hispanic or Latino_ White Alone Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_HispanicOrLatino_WhiteAlone",
+      "Count_Person_10To14Years_Female_HispanicOrLatino_WhiteAlone",
+      "Count_Person_15To19Years_Female_HispanicOrLatino_WhiteAlone"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_WhiteAloneMalePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_WhiteAloneMalePopulationByAge",
+    "name": "Hispanic or Latino_ White Alone Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_HispanicOrLatino_WhiteAlone",
+      "Count_Person_10To14Years_Male_HispanicOrLatino_WhiteAlone",
+      "Count_Person_15To19Years_Male_HispanicOrLatino_WhiteAlone"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRacesFemalePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRacesFemalePopulationByAge",
+    "name": "Hispanic or Latino_ White Alone or in Combination With One or More Other Races Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_Female_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_Female_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRacesMalePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRacesMalePopulationByAge",
+    "name": "Hispanic or Latino_ White Alone or in Combination With One or More Other Races Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_Male_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_Male_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRacesPopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRacesPopulationByAge",
+    "name": "Hispanic or Latino_ White Alone or in Combination With One or More Other Races Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/HispanicOrLatino_WhiteAlonePopulationByAge": {
+    "dcid": "dc/topic/HispanicOrLatino_WhiteAlonePopulationByAge",
+    "name": "Hispanic or Latino_ White Alone Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_HispanicOrLatino_WhiteAlone",
+      "Count_Person_10To14Years_HispanicOrLatino_WhiteAlone",
+      "Count_Person_15To19Years_HispanicOrLatino_WhiteAlone"
+    ]
+  },
+  "dc/topic/HomeOwnership": {
+    "dcid": "dc/topic/HomeOwnership",
+    "name": "Home Ownership",
+    "relevantVariables": [
+      "Median_HomeValue_HousingUnit_OccupiedHousingUnit_OwnerOccupied",
+      "dc/topic/HousesByHomeValue",
+      "dc/topic/HousesByOwnershipCost"
+    ]
+  },
+  "dc/topic/HouseFeatures": {
+    "dcid": "dc/topic/HouseFeatures",
+    "name": "House Features",
+    "relevantVariables": [
+      "dc/topic/HousesByDateofBuild",
+      "dc/topic/HousesByFacilities",
+      "dc/topic/HousesByRoomCount"
+    ]
+  },
+  "dc/topic/HouseOccupants": {
+    "dcid": "dc/topic/HouseOccupants",
+    "name": "House Occupants",
+    "relevantVariables": [
+      "Mean_HouseholdSize_HousingUnit_OccupiedHousingUnit",
+      "dc/topic/HousesByHouseholderAge",
+      "dc/topic/HousesByHouseholderEducationalAttainment"
+    ]
+  },
+  "dc/topic/HouseholdIncomeDistribution": {
+    "dcid": "dc/topic/HouseholdIncomeDistribution",
+    "name": "Household Income Distribution",
+    "relevantVariables": [
+      "Median_Income_Household_FamilyHousehold",
+      "Median_Income_Household_MarriedCoupleFamilyHousehold",
+      "Median_Income_Household_NonfamilyHousehold"
+    ]
+  },
+  "dc/topic/HousesByDateofBuild": {
+    "dcid": "dc/topic/HousesByDateofBuild",
+    "name": "Houses by Date of Build",
+    "relevantVariables": [
+      "Count_HousingUnit_Before1939DateBuilt",
+      "Count_HousingUnit_1940To1949DateBuilt",
+      "Count_HousingUnit_1950To1959DateBuilt"
+    ]
+  },
+  "dc/topic/HousesByFacilities": {
+    "dcid": "dc/topic/HousesByFacilities",
+    "name": "Houses by Facilities",
+    "relevantVariables": [
+      "Count_HousingUnit_CompleteKitchenFacilities_OccupiedHousingUnit",
+      "Count_HousingUnit_IncompleteKitchenFacilities_OccupiedHousingUnit",
+      "Count_HousingUnit_CompletePlumbingFacilities_OccupiedHousingUnit"
+    ]
+  },
+  "dc/topic/HousesByHomeValue": {
+    "dcid": "dc/topic/HousesByHomeValue",
+    "name": "Houses by Home Value",
+    "relevantVariables": [
+      "Count_HousingUnit_HomeValueUpto49999USDollar",
+      "Count_HousingUnit_HomeValue50000To99999USDollar",
+      "Count_HousingUnit_HomeValue100000To199999USDollar"
+    ]
+  },
+  "dc/topic/HousesByHouseholderAge": {
+    "dcid": "dc/topic/HousesByHouseholderAge",
+    "name": "Houses by Householder Age",
+    "relevantVariables": [
+      "Count_HousingUnit_HouseholderAge35OrLessYears_OccupiedHousingUnit",
+      "Count_HousingUnit_HouseholderAge35To44Years_OccupiedHousingUnit",
+      "Count_HousingUnit_HouseholderAge45To54Years_OccupiedHousingUnit"
+    ]
+  },
+  "dc/topic/HousesByHouseholderEducationalAttainment": {
+    "dcid": "dc/topic/HousesByHouseholderEducationalAttainment",
+    "name": "Houses by Householder Educational Attainment",
+    "relevantVariables": [
+      "Count_HousingUnit_HouseholderEducationalAttainmentBachelorsDegreeOrHigher_OccupiedHousingUnit",
+      "Count_HousingUnit_HouseholderEducationalAttainmentHighSchoolGraduateIncludesEquivalency_OccupiedHousingUnit",
+      "Count_HousingUnit_HouseholderEducationalAttainmentLessThanHighSchoolGraduate_OccupiedHousingUnit"
+    ]
+  },
+  "dc/topic/HousesByHouseholderRace": {
+    "dcid": "dc/topic/HousesByHouseholderRace",
+    "name": "Houses by Householder Race",
+    "relevantVariables": [
+      "Count_HousingUnit_HouseholderRaceAmericanIndianOrAlaskaNativeAlone",
+      "Count_HousingUnit_HouseholderRaceAsianAlone",
+      "Count_HousingUnit_HouseholderRaceBlackOrAfricanAmericanAlone"
+    ]
+  },
+  "dc/topic/HousesByOwnershipCost": {
+    "dcid": "dc/topic/HousesByOwnershipCost",
+    "name": "Houses by Ownership Cost",
+    "relevantVariables": [
+      "Median_Cost_HousingUnit_WithMortgage_OccupiedHousingUnit_OwnerOccupied_SelectedMonthlyOwnerCosts",
+      "Median_Cost_HousingUnit_WithoutMortgage_OccupiedHousingUnit_OwnerOccupied_SelectedMonthlyOwnerCosts"
+    ]
+  },
+  "dc/topic/HousesByRoomCount": {
+    "dcid": "dc/topic/HousesByRoomCount",
+    "name": "Houses by Room Count",
+    "relevantVariables": [
+      "Count_HousingUnit_WithTotal1Rooms",
+      "Count_HousingUnit_WithTotal2Rooms",
+      "Count_HousingUnit_WithTotal3Rooms"
+    ]
+  },
+  "dc/topic/HousesByTaxAmount": {
+    "dcid": "dc/topic/HousesByTaxAmount",
+    "name": "Houses by Tax Amount",
+    "relevantVariables": [
+      "dc/065dmg2ls1heb",
+      "dc/9b9gqxj27fqwc",
+      "dc/ejpm616jd1pq1"
+    ]
+  },
+  "dc/topic/Housing": {
+    "dcid": "dc/topic/Housing",
+    "name": "Housing",
+    "relevantVariables": [
+      "Count_HousingUnit",
+      "Count_HousingUnit_OwnerOccupied",
+      "Count_HousingUnit_VacantHousingUnit"
+    ]
+  },
+  "dc/topic/Hurricane": {
+    "dcid": "dc/topic/Hurricane",
+    "name": "Hurricanes",
+    "relevantVariables": [
+      "Count_HurricaneEvent",
+      "Count_HurricaneTyphoonEvent",
+      "Annual_ExpectedLoss_NaturalHazardImpact_HurricaneEvent"
+    ]
+  },
+  "dc/topic/Immigration": {
+    "dcid": "dc/topic/Immigration",
+    "name": "Immigration",
+    "relevantVariables": [
+      "Count_Person_ForeignBorn",
+      "Count_Person_Native",
+      "dc/topic/PlaceOfBirth"
+    ]
+  },
+  "dc/topic/Incarceration": {
+    "dcid": "dc/topic/Incarceration",
+    "name": "Incarceration",
+    "relevantVariables": [
+      "dc/62pg70d2beyh9",
+      "dc/36d93ckypx3bb",
+      "dc/ttms13r578hq9"
+    ]
+  },
+  "dc/topic/Income": {
+    "dcid": "dc/topic/Income",
+    "name": "Income",
+    "relevantVariables": [
+      "Median_Income_Household",
+      "Median_Income_Person",
+      "Mean_WagesMonthly_Worker"
+    ]
+  },
+  "dc/topic/IncomeEquity": {
+    "dcid": "dc/topic/IncomeEquity",
+    "name": "Income Equity",
+    "relevantVariables": [
+      "dc/topic/IndividualIncomeDistribution",
+      "dc/topic/MedianHouseholdIncomeByRace",
+      "dc/topic/MedianHouseholdIncomeByGender"
+    ]
+  },
+  "dc/topic/IndividualIncomeByGender": {
+    "dcid": "dc/topic/IndividualIncomeByGender",
+    "name": "Individual income by gender",
+    "relevantVariables": [
+      "Mean_WagesMonthly_Worker_Female",
+      "Mean_WagesMonthly_Worker_Male"
+    ]
+  },
+  "dc/topic/IndividualIncomeByIndustry": {
+    "dcid": "dc/topic/IndividualIncomeByIndustry",
+    "name": "Individual Income by Industry",
+    "relevantVariables": [
+      "dc/015d58s9xh8kd",
+      "dc/2wgh04kx6es88",
+      "dc/3ex11eg2q9hp6"
+    ]
+  },
+  "dc/topic/IndividualIncomeByPlaceOfResidence": {
+    "dcid": "dc/topic/IndividualIncomeByPlaceOfResidence",
+    "name": "Individual income by place of residence",
+    "relevantVariables": [
+      "Mean_WagesMonthly_Worker_Urban",
+      "Mean_WagesMonthly_Worker_Rural"
+    ]
+  },
+  "dc/topic/IndividualIncomeDistribution": {
+    "dcid": "dc/topic/IndividualIncomeDistribution",
+    "name": "Individual Income Distribution",
+    "relevantVariables": [
+      "Count_Person_IncomeOfUpto9999USDollar",
+      "Count_Person_IncomeOf10000To14999USDollar",
+      "Count_Person_IncomeOf25000To34999USDollar"
+    ]
+  },
+  "dc/topic/IndustriesByGDP": {
+    "dcid": "dc/topic/IndustriesByGDP",
+    "name": "Industries by GDP",
+    "relevantVariables": [
+      "Amount_EconomicActivity_GrossDomesticProduction_NAICSAccommodationFoodServices_RealValue",
+      "Amount_EconomicActivity_GrossDomesticProduction_NAICSAdministrativeSupportWasteManagementRemediationServices_RealValue",
+      "Amount_EconomicActivity_GrossDomesticProduction_NAICSAgricultureForestryFishingHunting_RealValue"
+    ]
+  },
+  "dc/topic/IndustriesByRevenue": {
+    "dcid": "dc/topic/IndustriesByRevenue",
+    "name": "Industries by Revenue",
+    "relevantVariables": [
+      "Sales_Establishment_NAICSAccommodationFoodServices_WithPayroll",
+      "Receipts_Establishment_NAICSAdministrativeSupportWasteManagementRemediationServices_WithPayroll",
+      "ReceiptsOrRevenue_Establishment_NAICSArtsEntertainmentRecreation_WithPayroll"
+    ]
+  },
+  "dc/topic/InfantMortality": {
+    "dcid": "dc/topic/InfantMortality",
+    "name": "Infant Mortality",
+    "relevantVariables": [
+      "sdg/SH_DYN_NMRT.AGE--M0",
+      "Count_Death_Upto1Years",
+      "Count_Death_Upto1Years_AbnormalNotClassfied"
+    ]
+  },
+  "dc/topic/InflationAdjustedGDP": {
+    "dcid": "dc/topic/InflationAdjustedGDP",
+    "name": "Inflation Adjusted GDP",
+    "relevantVariables": [
+      "InflationAdjustedGDP"
+    ]
+  },
+  "dc/topic/InstitutionalizedGroupQuartersResidents": {
+    "dcid": "dc/topic/InstitutionalizedGroupQuartersResidents",
+    "name": "Institutionalized Group Quarters Residents",
+    "relevantVariables": [
+      "Count_Person_ResidesInInstitutionalizedGroupQuarters",
+      "Count_Person_ResidesInInstitutionalizedGroupQuarters_Veteran",
+      "Count_Person_WithFoodStampsInThePast12Months_ResidesInInstitutionalizedGroupQuarters"
+    ]
+  },
+  "dc/topic/Internet": {
+    "dcid": "dc/topic/Internet",
+    "name": "Internet",
+    "relevantVariables": [
+      "dc/topic/InternetAccess",
+      "dc/topic/InternetPublishingAndBroadcastingIndustry"
+    ]
+  },
+  "dc/topic/InternetAccess": {
+    "dcid": "dc/topic/InternetAccess",
+    "name": "Internet Access",
+    "relevantVariables": [
+      "Count_Household_HasComputer_NoInternetAccess",
+      "Count_Household_InternetWithoutSubscription",
+      "Count_Household_NoInternetAccess"
+    ]
+  },
+  "dc/topic/InternetPublishingAndBroadcastingIndustry": {
+    "dcid": "dc/topic/InternetPublishingAndBroadcastingIndustry",
+    "name": "Internet Publishing and Broadcasting Industry",
+    "relevantVariables": [
+      "dc/0tpmz5zd30ns5",
+      "dc/8h18wselqtgwb",
+      "dc/9fh1pt5cb8sl2"
+    ]
+  },
+  "dc/topic/Jobs": {
+    "dcid": "dc/topic/Jobs",
+    "name": "Jobs",
+    "relevantVariables": [
+      "Count_Worker_NAICSAccommodationFoodServices",
+      "Count_Worker_NAICSAdministrativeSupportWasteManagementRemediationServices",
+      "Count_Worker_NAICSAgricultureForestryFishingHunting"
+    ]
+  },
+  "dc/topic/JusticeSystemEquity": {
+    "dcid": "dc/topic/JusticeSystemEquity",
+    "name": "Justice System Equity",
+    "relevantVariables": [
+      "dc/0tn58fc77r0z6",
+      "dc/510pv6eq2vtw7",
+      "dc/fs27m9j4vpvc7"
+    ]
+  },
+  "dc/topic/JuvenileFacilitiesResidents": {
+    "dcid": "dc/topic/JuvenileFacilitiesResidents",
+    "name": "Juvenile Facilities Residents",
+    "relevantVariables": [
+      "Count_Person_ResidesInJuvenileFacilities",
+      "Count_Person_ResidesInJuvenileFacilities_Veteran",
+      "Count_Person_WithFoodStampsInThePast12Months_ResidesInJuvenileFacilities"
+    ]
+  },
+  "dc/topic/KidneyDisease": {
+    "dcid": "dc/topic/KidneyDisease",
+    "name": "Kidney Disease",
+    "relevantVariables": [
+      "Percent_Person_WithChronicKidneyDisease"
+    ]
+  },
+  "dc/topic/KidneyDiseaseFemalePopulationByAge": {
+    "dcid": "dc/topic/KidneyDiseaseFemalePopulationByAge",
+    "name": "Kidney Disease Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_ConditionKidneyDisease",
+      "Count_Person_10To14Years_Female_ConditionKidneyDisease",
+      "Count_Person_15To19Years_Female_ConditionKidneyDisease"
+    ]
+  },
+  "dc/topic/KidneyDiseaseMalePopulationByAge": {
+    "dcid": "dc/topic/KidneyDiseaseMalePopulationByAge",
+    "name": "Kidney Disease Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_ConditionKidneyDisease",
+      "Count_Person_10To14Years_Male_ConditionKidneyDisease",
+      "Count_Person_15To19Years_Male_ConditionKidneyDisease"
+    ]
+  },
+  "dc/topic/LandCover": {
+    "dcid": "dc/topic/LandCover",
+    "name": "Land Cover",
+    "relevantVariables": [
+      "LandCoverFraction_BareSparseVegetation",
+      "LandCoverFraction_BuiltUp",
+      "LandCoverFraction_Cropland"
+    ]
+  },
+  "dc/topic/LandUseAndCoverage": {
+    "dcid": "dc/topic/LandUseAndCoverage",
+    "name": "Land Use and Coverage",
+    "relevantVariables": [
+      "dc/topic/LandCover",
+      "dc/topic/SDGBiodiversity",
+      "dc/topic/SDGReforestations"
+    ]
+  },
+  "dc/topic/Landslide": {
+    "dcid": "dc/topic/Landslide",
+    "name": "Landslide",
+    "relevantVariables": [
+      "Count_LandslideEvent",
+      "Annual_ExpectedLoss_NaturalHazardImpact_LandslideEvent",
+      "FemaNaturalHazardRiskIndex_NaturalHazardImpact_LandslideEvent"
+    ]
+  },
+  "dc/topic/Language": {
+    "dcid": "dc/topic/Language",
+    "name": "Language Spoken At Home",
+    "relevantVariables": [
+      "dc/topic/EnglishLanguageAtHome",
+      "dc/topic/NonEnglishLanguageAtHome"
+    ]
+  },
+  "dc/topic/LanguageSpokenAtHome_ForeignBorn": {
+    "dcid": "dc/topic/LanguageSpokenAtHome_ForeignBorn",
+    "name": "Language Spoken by Foreign Born Population",
+    "relevantVariables": [
+      "Count_Person_5OrMoreYears_OnlyEnglishSpokenAtHome_ForeignBorn",
+      "Count_Person_5OrMoreYears_SpanishSpokenAtHome_ForeignBorn",
+      "dc/1lm9k2vdxj4c6"
+    ]
+  },
+  "dc/topic/LevelOfEducationalAttainment": {
+    "dcid": "dc/topic/LevelOfEducationalAttainment",
+    "name": "Level of Educational Attainment",
+    "relevantVariables": [
+      "Count_Person_EducationalAttainmentKindergarten",
+      "Count_Person_EducationalAttainmentNurserySchool",
+      "Count_Person_EducationalAttainmentPrimarySchool"
+    ]
+  },
+  "dc/topic/LifeExpectancy": {
+    "dcid": "dc/topic/LifeExpectancy",
+    "name": "Life Expectancy",
+    "relevantVariables": [
+      "LifeExpectancy_Person",
+      "LifeExpectancy_Person_Female",
+      "LifeExpectancy_Person_Male"
+    ]
+  },
+  "dc/topic/Literacy": {
+    "dcid": "dc/topic/Literacy",
+    "name": "Literacy",
+    "relevantVariables": [
+      "Count_Person_Literate",
+      "Count_Person_Illiterate"
+    ]
+  },
+  "dc/topic/LungConditionFemalePopulationByAge": {
+    "dcid": "dc/topic/LungConditionFemalePopulationByAge",
+    "name": "Lung Condition Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_ConditionLungCondition",
+      "Count_Person_10To14Years_Female_ConditionLungCondition",
+      "Count_Person_15To19Years_Female_ConditionLungCondition"
+    ]
+  },
+  "dc/topic/LungConditionMalePopulationByAge": {
+    "dcid": "dc/topic/LungConditionMalePopulationByAge",
+    "name": "Lung Condition Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_ConditionLungCondition",
+      "Count_Person_10To14Years_Male_ConditionLungCondition",
+      "Count_Person_15To19Years_Male_ConditionLungCondition"
+    ]
+  },
+  "dc/topic/Malaria": {
+    "dcid": "dc/topic/Malaria",
+    "name": "Malaria",
+    "relevantVariables": [
+      "Count_MedicalConditionIncident_ConditionMalaria",
+      "Count_MedicalConditionIncident_ConditionMalaria_AsAFractionOf_Count_Person",
+      "sdg/SH_STA_MALR"
+    ]
+  },
+  "dc/topic/Malnutrition": {
+    "dcid": "dc/topic/Malnutrition",
+    "name": "Malnutrition",
+    "relevantVariables": [
+      "sdg/SN_ITK_DEFC",
+      "Percent_Underweight_In_Count_Person",
+      "dc/topic/HeightStunting"
+    ]
+  },
+  "dc/topic/MaritalStatus": {
+    "dcid": "dc/topic/MaritalStatus",
+    "name": "Marital Status",
+    "relevantVariables": [
+      "dc/topic/MaritalStatusBreakdown",
+      "dc/topic/DivorcedPopulationByDemographic",
+      "dc/topic/MarriedPopulationByDemographic"
+    ]
+  },
+  "dc/topic/MaritalStatusBreakdown": {
+    "dcid": "dc/topic/MaritalStatusBreakdown",
+    "name": "Marital Status Breakdown",
+    "relevantVariables": [
+      "Count_Person_Divorced",
+      "Count_Person_MarriedAndNotSeparated",
+      "Count_Person_NeverMarried"
+    ]
+  },
+  "dc/topic/MarriedPopulationByDemographic": {
+    "dcid": "dc/topic/MarriedPopulationByDemographic",
+    "name": "Married Population",
+    "relevantVariables": [
+      "Count_Person_MarriedAndNotSeparated",
+      "Count_Person_Female_MarriedAndNotSeparated",
+      "Count_Person_Male_MarriedAndNotSeparated"
+    ]
+  },
+  "dc/topic/MaxTemperature95PercentLikelyAtLeastOncePerDecade": {
+    "dcid": "dc/topic/MaxTemperature95PercentLikelyAtLeastOncePerDecade",
+    "name": "Max Temperature 95 Percent Likely At Least Once Per Decade",
+    "relevantVariables": [
+      "MaxTemp_Daily_Hist_95PctProb_Greater_Atleast1DayADecade_CMIP6_Ensemble_SSP245",
+      "MaxTemp_Daily_Hist_95PctProb_Greater_Atleast1DayADecade_CMIP6_Ensemble_SSP585"
+    ]
+  },
+  "dc/topic/MaxTemperature95PercentLikelyAtLeastOncePerDecadeDifferenceToBaseline": {
+    "dcid": "dc/topic/MaxTemperature95PercentLikelyAtLeastOncePerDecadeDifferenceToBaseline",
+    "name": "\"Relative to Average in 1980-2010, Max Temperature 95 Percent Likely At Least Once Per Decade\"",
+    "relevantVariables": [
+      "DiffRelativeToAvg_1980_2010_MaxTemp_Daily_Hist_95PctProb_Greater_Atleast1DayADecade_CMIP6_Ensemble_SSP245",
+      "DiffRelativeToAvg_1980_2010_MaxTemp_Daily_Hist_95PctProb_Greater_Atleast1DayADecade_CMIP6_Ensemble_SSP585"
+    ]
+  },
+  "dc/topic/MaxTemperature95PercentLikelyAtLeastOncePerYear": {
+    "dcid": "dc/topic/MaxTemperature95PercentLikelyAtLeastOncePerYear",
+    "name": "Max Temperature 95 Percent Likely At Least Once Per Year",
+    "relevantVariables": [
+      "MaxTemp_Daily_Hist_95PctProb_Greater_Atleast1DayAYear_CMIP6_Ensemble_SSP245",
+      "MaxTemp_Daily_Hist_95PctProb_Greater_Atleast1DayAYear_CMIP6_Ensemble_SSP585"
+    ]
+  },
+  "dc/topic/MaxTemperature95PercentLikelyAtLeastOncePerYearDifferenceToBaseline": {
+    "dcid": "dc/topic/MaxTemperature95PercentLikelyAtLeastOncePerYearDifferenceToBaseline",
+    "name": "Max Temperature 95 Percent Likely At Least Once Per Year",
+    "relevantVariables": [
+      "DiffRelativeToAvg_1980_2010_MaxTemp_Daily_Hist_95PctProb_Greater_Atleast1DayAYear_CMIP6_Ensemble_SSP245",
+      "DiffRelativeToAvg_1980_2010_MaxTemp_Daily_Hist_95PctProb_Greater_Atleast1DayAYear_CMIP6_Ensemble_SSP585"
+    ]
+  },
+  "dc/topic/MedianHouseholdIncomeByGender": {
+    "dcid": "dc/topic/MedianHouseholdIncomeByGender",
+    "name": "Median Household Income by Gender",
+    "relevantVariables": [
+      "Median_Earnings_Person_Female",
+      "Median_Earnings_Person_Male"
+    ]
+  },
+  "dc/topic/MedianHouseholdIncomeByRace": {
+    "dcid": "dc/topic/MedianHouseholdIncomeByRace",
+    "name": "Median Household Income by Race",
+    "relevantVariables": [
+      "Median_Income_Household_HouseholderRaceWhiteAlone",
+      "Median_Income_Household_HouseholderRaceAmericanIndianOrAlaskaNativeAlone",
+      "Median_Income_Household_HouseholderRaceAsianAlone"
+    ]
+  },
+  "dc/topic/MentalHealth": {
+    "dcid": "dc/topic/MentalHealth",
+    "name": "Mental Health",
+    "relevantVariables": [
+      "Percent_Person_WithMentalHealthNotGood",
+      "Percent_Person_18OrMoreYears_WithDepression",
+      "Count_Death_MentalBehaviouralDisorders"
+    ]
+  },
+  "dc/topic/MentalHealthNotGoodFemalePopulationByAge": {
+    "dcid": "dc/topic/MentalHealthNotGoodFemalePopulationByAge",
+    "name": "Mental Health Not Good Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_ConditionMentalHealthNotGood",
+      "Count_Person_10To14Years_Female_ConditionMentalHealthNotGood",
+      "Count_Person_15To19Years_Female_ConditionMentalHealthNotGood"
+    ]
+  },
+  "dc/topic/MentalHealthNotGoodMalePopulationByAge": {
+    "dcid": "dc/topic/MentalHealthNotGoodMalePopulationByAge",
+    "name": "Mental Health Not Good Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_ConditionMentalHealthNotGood",
+      "Count_Person_10To14Years_Male_ConditionMentalHealthNotGood",
+      "Count_Person_15To19Years_Male_ConditionMentalHealthNotGood"
+    ]
+  },
+  "dc/topic/Military": {
+    "dcid": "dc/topic/Military",
+    "name": "Military",
+    "relevantVariables": [
+      "Count_Person_Veteran",
+      "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government",
+      "Amount_EconomicActivity_ExpenditureActivity_MilitaryExpenditure_Government_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal"
+    ]
+  },
+  "dc/topic/MilitaryShipsResidents": {
+    "dcid": "dc/topic/MilitaryShipsResidents",
+    "name": "Military Ships Residents",
+    "relevantVariables": [
+      "Count_Person_ResidesInMilitaryQuartersOrMilitaryShips",
+      "Count_Person_ResidesInMilitaryQuartersOrMilitaryShips_Veteran",
+      "Median_Age_Person_ResidesInMilitaryQuartersOrMilitaryShips"
+    ]
+  },
+  "dc/topic/MinTemperature95PercentLikelyAtLeastOncePerDecade": {
+    "dcid": "dc/topic/MinTemperature95PercentLikelyAtLeastOncePerDecade",
+    "name": "Min Temperature 95 Percent Likely At Least Once Per Decade",
+    "relevantVariables": [
+      "MinTemp_Daily_Hist_95PctProb_LessThan_Atleast1DayADecade_CMIP6_Ensemble_SSP245",
+      "MinTemp_Daily_Hist_95PctProb_LessThan_Atleast1DayADecade_CMIP6_Ensemble_SSP585"
+    ]
+  },
+  "dc/topic/MinTemperature95PercentLikelyAtLeastOncePerDecadeDifferenceToBaseline": {
+    "dcid": "dc/topic/MinTemperature95PercentLikelyAtLeastOncePerDecadeDifferenceToBaseline",
+    "name": "\"Relative to Average in 1980-2010, Min Temperature 95 Percent Likely At Least Once Per Decade\"",
+    "relevantVariables": [
+      "DiffRelativeToAvg_1980_2010_MinTemp_Daily_Hist_95PctProb_LessThan_Atleast1DayADecade_CMIP6_Ensemble_SSP245",
+      "DiffRelativeToAvg_1980_2010_MinTemp_Daily_Hist_95PctProb_LessThan_Atleast1DayADecade_CMIP6_Ensemble_SSP585"
+    ]
+  },
+  "dc/topic/MinTemperature95PercentLikelyAtLeastOncePerYear": {
+    "dcid": "dc/topic/MinTemperature95PercentLikelyAtLeastOncePerYear",
+    "name": "Min Temperature 95 Percent Likely At Least Once Per Year",
+    "relevantVariables": [
+      "MinTemp_Daily_Hist_95PctProb_LessThan_Atleast1DayAYear_CMIP6_Ensemble_SSP245",
+      "MinTemp_Daily_Hist_95PctProb_LessThan_Atleast1DayAYear_CMIP6_Ensemble_SSP585"
+    ]
+  },
+  "dc/topic/MinTemperature95PercentLikelyAtLeastOncePerYearDifferenceToBaseline": {
+    "dcid": "dc/topic/MinTemperature95PercentLikelyAtLeastOncePerYearDifferenceToBaseline",
+    "name": "\"Relative to Average in 1980-2010, Min Temperature 95 Percent Likely At Least Once Per Year\"",
+    "relevantVariables": [
+      "DiffRelativeToAvg_1980_2010_MinTemp_Daily_Hist_95PctProb_LessThan_Atleast1DayAYear_CMIP6_Ensemble_SSP245",
+      "DiffRelativeToAvg_1980_2010_MinTemp_Daily_Hist_95PctProb_LessThan_Atleast1DayAYear_CMIP6_Ensemble_SSP585"
+    ]
+  },
+  "dc/topic/MobilePhoneOwnership": {
+    "dcid": "dc/topic/MobilePhoneOwnership",
+    "name": "Mobile Phone Ownership",
+    "relevantVariables": [
+      "sdg/IT_MOB_OWN",
+      "sdg/IT_MOB_OWN.SEX--F",
+      "sdg/IT_MOB_OWN.SEX--M"
+    ]
+  },
+  "dc/topic/MobilePhoneUsage": {
+    "dcid": "dc/topic/MobilePhoneUsage",
+    "name": "Mobile Phone Usage",
+    "relevantVariables": [
+      "Count_Product_MobileCellularSubscription_AsFractionOf_Count_Person",
+      "dc/topic/MobilePhoneOwnership",
+      "sdg/FB_BNK_ACCSS_ILF.AGE--Y_GE15"
+    ]
+  },
+  "dc/topic/Mortality": {
+    "dcid": "dc/topic/Mortality",
+    "name": "Mortality",
+    "relevantVariables": [
+      "Count_Death",
+      "Count_Death_AsAFractionOfCount_Person",
+      "dc/topic/LifeExpectancy"
+    ]
+  },
+  "dc/topic/MortalityAmongIncarcerated": {
+    "dcid": "dc/topic/MortalityAmongIncarcerated",
+    "name": "Mortality Among The Incarcerated",
+    "relevantVariables": [
+      "dc/67ttwfn9dswch",
+      "dc/3kk4xws30zxlb",
+      "dc/3s7lndm5j3wp4"
+    ]
+  },
+  "dc/topic/MortalityByGender": {
+    "dcid": "dc/topic/MortalityByGender",
+    "name": "Mortality by Gender",
+    "relevantVariables": [
+      "Count_Death_Female",
+      "Count_Death_Male"
+    ]
+  },
+  "dc/topic/MortalityByRace": {
+    "dcid": "dc/topic/MortalityByRace",
+    "name": "Mortality by Race",
+    "relevantVariables": [
+      "Count_Death_AmericanIndianAndAlaskaNativeAlone",
+      "Count_Death_AsianOrPacificIslander",
+      "Count_Death_BlackOrAfricanAmerican"
+    ]
+  },
+  "dc/topic/Nationality": {
+    "dcid": "dc/topic/Nationality",
+    "name": "Nationality",
+    "relevantVariables": [
+      "dc/topic/Immigration",
+      "dc/topic/CitizenshipStatus"
+    ]
+  },
+  "dc/topic/NativeHawaiianAndOtherPacificIslanderAloneFemalePopulationByAge": {
+    "dcid": "dc/topic/NativeHawaiianAndOtherPacificIslanderAloneFemalePopulationByAge",
+    "name": "Native Hawaiian and Other Pacific Islander Alone Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_NativeHawaiianAndOtherPacificIslanderAlone",
+      "Count_Person_10To14Years_Female_NativeHawaiianAndOtherPacificIslanderAlone",
+      "Count_Person_15To19Years_Female_NativeHawaiianAndOtherPacificIslanderAlone"
+    ]
+  },
+  "dc/topic/NativeHawaiianAndOtherPacificIslanderAloneMalePopulationByAge": {
+    "dcid": "dc/topic/NativeHawaiianAndOtherPacificIslanderAloneMalePopulationByAge",
+    "name": "Native Hawaiian and Other Pacific Islander Alone Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_NativeHawaiianAndOtherPacificIslanderAlone",
+      "Count_Person_10To14Years_Male_NativeHawaiianAndOtherPacificIslanderAlone",
+      "Count_Person_15To19Years_Male_NativeHawaiianAndOtherPacificIslanderAlone"
+    ]
+  },
+  "dc/topic/NativeHawaiianAndOtherPacificIslanderAlonePopulationByAge": {
+    "dcid": "dc/topic/NativeHawaiianAndOtherPacificIslanderAlonePopulationByAge",
+    "name": "Native Hawaiian and Other Pacific Islander Alone Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_NativeHawaiianAndOtherPacificIslanderAlone",
+      "Count_Person_10To14Years_NativeHawaiianAndOtherPacificIslanderAlone",
+      "Count_Person_15To19Years_NativeHawaiianAndOtherPacificIslanderAlone"
+    ]
+  },
+  "dc/topic/NaturalDisasters": {
+    "dcid": "dc/topic/NaturalDisasters",
+    "name": "Natural Disasters",
+    "relevantVariables": [
+      "dc/topic/Drought",
+      "dc/topic/Flood",
+      "dc/topic/Fire"
+    ]
+  },
+  "dc/topic/NeglectedTropicalDiseases": {
+    "dcid": "dc/topic/NeglectedTropicalDiseases",
+    "name": "Neglected Tropical Diseases",
+    "relevantVariables": [
+      "Count_MedicalConditionIncident_ConditionDengueDisease",
+      "sdg/SH_STA_MALR",
+      "sdg/SH_TRP_INTVN"
+    ]
+  },
+  "dc/topic/NeverMarriedFemalePopulationByAge": {
+    "dcid": "dc/topic/NeverMarriedFemalePopulationByAge",
+    "name": "Never Married Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_10To14Years_Female_NeverMarried",
+      "Count_Person_15To19Years_Female_NeverMarried",
+      "Count_Person_20To24Years_Female_NeverMarried"
+    ]
+  },
+  "dc/topic/NeverMarriedMalePopulationByAge": {
+    "dcid": "dc/topic/NeverMarriedMalePopulationByAge",
+    "name": "Never Married Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_10To14Years_Male_NeverMarried",
+      "Count_Person_15To19Years_Male_NeverMarried",
+      "Count_Person_20To24Years_Male_NeverMarried"
+    ]
+  },
+  "dc/topic/NeverMarriedPopulationByAge": {
+    "dcid": "dc/topic/NeverMarriedPopulationByAge",
+    "name": "Never Married Population by Age",
+    "relevantVariables": [
+      "Count_Person_10To14Years_NeverMarried",
+      "Count_Person_15To19Years_NeverMarried",
+      "Count_Person_20To24Years_NeverMarried"
+    ]
+  },
+  "dc/topic/NeverMarriedPopulationByDemographic": {
+    "dcid": "dc/topic/NeverMarriedPopulationByDemographic",
+    "name": "Never Married Population",
+    "relevantVariables": [
+      "Count_Person_NeverMarried",
+      "Count_Person_Female_NeverMarried",
+      "Count_Person_Male_NeverMarried"
+    ]
+  },
+  "dc/topic/NitrogenDioxide": {
+    "dcid": "dc/topic/NitrogenDioxide",
+    "name": "Nitrogen Dioxide",
+    "relevantVariables": [
+      "Max_Concentration_AirPollutant_NO2",
+      "Mean_Concentration_AirPollutant_NO2"
+    ]
+  },
+  "dc/topic/NoHealthInsurance": {
+    "dcid": "dc/topic/NoHealthInsurance",
+    "name": "No Health Insurance",
+    "relevantVariables": [
+      "Count_Person_NoHealthInsurance",
+      "dc/topic/NoHealthInsuranceByGender",
+      "dc/topic/NoHealthInsuranceByIncome"
+    ]
+  },
+  "dc/topic/NoHealthInsuranceByGender": {
+    "dcid": "dc/topic/NoHealthInsuranceByGender",
+    "name": "No Health Insurance by Gender",
+    "relevantVariables": [
+      "Count_Person_Female_NoHealthInsurance",
+      "Count_Person_Male_NoHealthInsurance"
+    ]
+  },
+  "dc/topic/NoHealthInsuranceByIncome": {
+    "dcid": "dc/topic/NoHealthInsuranceByIncome",
+    "name": "No Health Insurance by Income",
+    "relevantVariables": [
+      "Count_Person_16OrMoreYears_NoHealthInsurance_IncomeOf4999OrLessUSDollar_WithEarnings",
+      "Count_Person_16OrMoreYears_NoHealthInsurance_IncomeOf5000To14999USDollar_WithEarnings",
+      "Count_Person_16OrMoreYears_NoHealthInsurance_IncomeOf15000To24999USDollar_WithEarnings"
+    ]
+  },
+  "dc/topic/NoHealthInsuranceByRace": {
+    "dcid": "dc/topic/NoHealthInsuranceByRace",
+    "name": "No Health Insurance by Race",
+    "relevantVariables": [
+      "Count_Person_NoHealthInsurance_WhiteAlone",
+      "Count_Person_NoHealthInsurance_BlackOrAfricanAmericanAlone",
+      "Count_Person_NoHealthInsurance_HispanicOrLatino"
+    ]
+  },
+  "dc/topic/NonEnglishLanguageAtHome": {
+    "dcid": "dc/topic/NonEnglishLanguageAtHome",
+    "name": "Non-English Languages",
+    "relevantVariables": [
+      "Count_Person_5OrMoreYears_AfricanLanguagesSpokenAtHome",
+      "Count_Person_5OrMoreYears_ArabicSpokenAtHome",
+      "Count_Person_5OrMoreYears_ArmenianSpokenAtHome"
+    ]
+  },
+  "dc/topic/NoninstitutionalizedGroupQuartersResidents": {
+    "dcid": "dc/topic/NoninstitutionalizedGroupQuartersResidents",
+    "name": "Noninstitutionalized Group Quarters Residents",
+    "relevantVariables": [
+      "Count_Person_ResidesInNoninstitutionalizedGroupQuarters",
+      "Count_Person_ResidesInNoninstitutionalizedGroupQuarters_Veteran",
+      "Count_Person_WithFoodStampsInThePast12Months_ResidesInNoninstitutionalizedGroupQuarters"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatinoFemalePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatinoFemalePopulationByAge",
+    "name": "Not Hispanic or Latino Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_NotHispanicOrLatino",
+      "Count_Person_10To14Years_Female_NotHispanicOrLatino",
+      "Count_Person_15To19Years_Female_NotHispanicOrLatino"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatinoMalePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatinoMalePopulationByAge",
+    "name": "Not Hispanic or Latino Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_NotHispanicOrLatino",
+      "Count_Person_10To14Years_Male_NotHispanicOrLatino",
+      "Count_Person_15To19Years_Male_NotHispanicOrLatino"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatinoPopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatinoPopulationByAge",
+    "name": "Not Hispanic or Latino Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_NotHispanicOrLatino",
+      "Count_Person_10To14Years_NotHispanicOrLatino",
+      "Count_Person_15To19Years_NotHispanicOrLatino"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneFemalePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneFemalePopulationByAge",
+    "name": "Not Hispanic or Latino_ American Indian and Alaska Native Alone Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAlone",
+      "Count_Person_10To14Years_Female_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAlone",
+      "Count_Person_15To19Years_Female_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneMalePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneMalePopulationByAge",
+    "name": "Not Hispanic or Latino_ American Indian and Alaska Native Alone Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAlone",
+      "Count_Person_10To14Years_Male_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAlone",
+      "Count_Person_15To19Years_Male_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRacesFemalePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRacesFemalePopulationByAge",
+    "name": "Not Hispanic or Latino_ American Indian and Alaska Native Alone or in Combination With One or More Other Races Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_Female_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_Female_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRacesMalePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRacesMalePopulationByAge",
+    "name": "Not Hispanic or Latino_ American Indian and Alaska Native Alone or in Combination With One or More Other Races Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_Male_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_Male_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRacesPopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRacesPopulationByAge",
+    "name": "Not Hispanic or Latino_ American Indian and Alaska Native Alone or in Combination With One or More Other Races Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAlonePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAlonePopulationByAge",
+    "name": "Not Hispanic or Latino_ American Indian and Alaska Native Alone Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAlone",
+      "Count_Person_10To14Years_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAlone",
+      "Count_Person_15To19Years_NotHispanicOrLatino_AmericanIndianAndAlaskaNativeAlone"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_AsianAloneFemalePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_AsianAloneFemalePopulationByAge",
+    "name": "Not Hispanic or Latino_ Asian Alone Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_NotHispanicOrLatino_AsianAlone",
+      "Count_Person_10To14Years_Female_NotHispanicOrLatino_AsianAlone",
+      "Count_Person_15To19Years_Female_NotHispanicOrLatino_AsianAlone"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_AsianAloneMalePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_AsianAloneMalePopulationByAge",
+    "name": "Not Hispanic or Latino_ Asian Alone Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_NotHispanicOrLatino_AsianAlone",
+      "Count_Person_10To14Years_Male_NotHispanicOrLatino_AsianAlone",
+      "Count_Person_15To19Years_Male_NotHispanicOrLatino_AsianAlone"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRacesFemalePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRacesFemalePopulationByAge",
+    "name": "Not Hispanic or Latino_ Asian Alone or in Combination With One or More Other Races Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_Female_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_Female_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRacesMalePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRacesMalePopulationByAge",
+    "name": "Not Hispanic or Latino_ Asian Alone or in Combination With One or More Other Races Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_Male_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_Male_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRacesPopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRacesPopulationByAge",
+    "name": "Not Hispanic or Latino_ Asian Alone or in Combination With One or More Other Races Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_NotHispanicOrLatino_AsianAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_AsianAlonePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_AsianAlonePopulationByAge",
+    "name": "Not Hispanic or Latino_ Asian Alone Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_NotHispanicOrLatino_AsianAlone",
+      "Count_Person_10To14Years_NotHispanicOrLatino_AsianAlone",
+      "Count_Person_15To19Years_NotHispanicOrLatino_AsianAlone"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_AsianOrPacificIslanderFemalePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_AsianOrPacificIslanderFemalePopulationByAge",
+    "name": "Not Hispanic or Latino_ Asian or Pacific Islander Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_NotHispanicOrLatino_AsianOrPacificIslander",
+      "Count_Person_10To14Years_Female_NotHispanicOrLatino_AsianOrPacificIslander",
+      "Count_Person_15To19Years_Female_NotHispanicOrLatino_AsianOrPacificIslander"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_AsianOrPacificIslanderMalePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_AsianOrPacificIslanderMalePopulationByAge",
+    "name": "Not Hispanic or Latino_ Asian or Pacific Islander Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_NotHispanicOrLatino_AsianOrPacificIslander",
+      "Count_Person_10To14Years_Male_NotHispanicOrLatino_AsianOrPacificIslander",
+      "Count_Person_15To19Years_Male_NotHispanicOrLatino_AsianOrPacificIslander"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_BlackOrAfricanAmericanAloneFemalePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_BlackOrAfricanAmericanAloneFemalePopulationByAge",
+    "name": "Not Hispanic or Latino_ Black or African American Alone Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_NotHispanicOrLatino_BlackOrAfricanAmericanAlone",
+      "Count_Person_10To14Years_Female_NotHispanicOrLatino_BlackOrAfricanAmericanAlone",
+      "Count_Person_15To19Years_Female_NotHispanicOrLatino_BlackOrAfricanAmericanAlone"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_BlackOrAfricanAmericanAloneMalePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_BlackOrAfricanAmericanAloneMalePopulationByAge",
+    "name": "Not Hispanic or Latino_ Black or African American Alone Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_NotHispanicOrLatino_BlackOrAfricanAmericanAlone",
+      "Count_Person_10To14Years_Male_NotHispanicOrLatino_BlackOrAfricanAmericanAlone",
+      "Count_Person_15To19Years_Male_NotHispanicOrLatino_BlackOrAfricanAmericanAlone"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRacesFemalePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRacesFemalePopulationByAge",
+    "name": "Not Hispanic or Latino_ Black or African American Alone or in Combination With One or More Other Races Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_Female_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_Female_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRacesMalePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRacesMalePopulationByAge",
+    "name": "Not Hispanic or Latino_ Black or African American Alone or in Combination With One or More Other Races Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_Male_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_Male_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRacesPopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRacesPopulationByAge",
+    "name": "Not Hispanic or Latino_ Black or African American Alone or in Combination With One or More Other Races Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_NotHispanicOrLatino_BlackOrAfricanAmericanAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_BlackOrAfricanAmericanAlonePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_BlackOrAfricanAmericanAlonePopulationByAge",
+    "name": "Not Hispanic or Latino_ Black or African American Alone Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_NotHispanicOrLatino_BlackOrAfricanAmericanAlone",
+      "Count_Person_10To14Years_NotHispanicOrLatino_BlackOrAfricanAmericanAlone",
+      "Count_Person_15To19Years_NotHispanicOrLatino_BlackOrAfricanAmericanAlone"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneFemalePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneFemalePopulationByAge",
+    "name": "Not Hispanic or Latino_ Native Hawaiian and Other Pacific Islander Alone Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone",
+      "Count_Person_10To14Years_Female_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone",
+      "Count_Person_15To19Years_Female_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneMalePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneMalePopulationByAge",
+    "name": "Not Hispanic or Latino_ Native Hawaiian and Other Pacific Islander Alone Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone",
+      "Count_Person_10To14Years_Male_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone",
+      "Count_Person_15To19Years_Male_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRacesFemalePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRacesFemalePopulationByAge",
+    "name": "Not Hispanic or Latino_ Native Hawaiian and Other Pacific Islander Alone or in Combination With One or More Other Races Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_Female_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_Female_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRacesMalePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRacesMalePopulationByAge",
+    "name": "Not Hispanic or Latino_ Native Hawaiian and Other Pacific Islander Alone or in Combination With One or More Other Races Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_Male_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_Male_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRacesPopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRacesPopulationByAge",
+    "name": "Not Hispanic or Latino_ Native Hawaiian and Other Pacific Islander Alone or in Combination With One or More Other Races Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlonePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlonePopulationByAge",
+    "name": "Not Hispanic or Latino_ Native Hawaiian and Other Pacific Islander Alone Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone",
+      "Count_Person_10To14Years_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone",
+      "Count_Person_15To19Years_NotHispanicOrLatino_NativeHawaiianAndOtherPacificIslanderAlone"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_TwoOrMoreRacesFemalePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_TwoOrMoreRacesFemalePopulationByAge",
+    "name": "Not Hispanic or Latino_ Two or More Races Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_NotHispanicOrLatino_TwoOrMoreRaces",
+      "Count_Person_10To14Years_Female_NotHispanicOrLatino_TwoOrMoreRaces",
+      "Count_Person_15To19Years_Female_NotHispanicOrLatino_TwoOrMoreRaces"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_TwoOrMoreRacesMalePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_TwoOrMoreRacesMalePopulationByAge",
+    "name": "Not Hispanic or Latino_ Two or More Races Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_NotHispanicOrLatino_TwoOrMoreRaces",
+      "Count_Person_10To14Years_Male_NotHispanicOrLatino_TwoOrMoreRaces",
+      "Count_Person_15To19Years_Male_NotHispanicOrLatino_TwoOrMoreRaces"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_TwoOrMoreRacesPopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_TwoOrMoreRacesPopulationByAge",
+    "name": "Not Hispanic or Latino_ Two or More Races Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_NotHispanicOrLatino_TwoOrMoreRaces",
+      "Count_Person_10To14Years_NotHispanicOrLatino_TwoOrMoreRaces",
+      "Count_Person_15To19Years_NotHispanicOrLatino_TwoOrMoreRaces"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRacesFemalePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRacesFemalePopulationByAge",
+    "name": "Not Hispanic or Latino_ White Alone or in Combination With One or More Other Races Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_Female_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_Female_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRacesMalePopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRacesMalePopulationByAge",
+    "name": "Not Hispanic or Latino_ White Alone or in Combination With One or More Other Races Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_Male_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_Male_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRacesPopulationByAge": {
+    "dcid": "dc/topic/NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRacesPopulationByAge",
+    "name": "Not Hispanic or Latino_ White Alone or in Combination With One or More Other Races Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_10To14Years_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces",
+      "Count_Person_15To19Years_NotHispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
+    ]
+  },
+  "dc/topic/NowMarriedFemalePopulationByAge": {
+    "dcid": "dc/topic/NowMarriedFemalePopulationByAge",
+    "name": "Now Married Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_10To14Years_Female_NowMarried",
+      "Count_Person_15To19Years_Female_NowMarried",
+      "Count_Person_20To24Years_Female_NowMarried"
+    ]
+  },
+  "dc/topic/NowMarriedMalePopulationByAge": {
+    "dcid": "dc/topic/NowMarriedMalePopulationByAge",
+    "name": "Now Married Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_10To14Years_Male_NowMarried",
+      "Count_Person_15To19Years_Male_NowMarried",
+      "Count_Person_20To24Years_Male_NowMarried"
+    ]
+  },
+  "dc/topic/NowMarriedPopulationByAge": {
+    "dcid": "dc/topic/NowMarriedPopulationByAge",
+    "name": "Now Married Population by Age",
+    "relevantVariables": [
+      "Count_Person_10To14Years_NowMarried",
+      "Count_Person_15To19Years_NowMarried",
+      "Count_Person_20To24Years_NowMarried"
+    ]
+  },
+  "dc/topic/NumberOfBusinessesByIndustry": {
+    "dcid": "dc/topic/NumberOfBusinessesByIndustry",
+    "name": "Number of Businesses by Industry",
+    "relevantVariables": [
+      "Count_Establishment_NAICSAdministrativeSupportWasteManagementRemediationServices",
+      "Count_Establishment_NAICSConstruction",
+      "Count_Establishment_NAICSFinanceInsurance"
+    ]
+  },
+  "dc/topic/NumberOfBusinessesByOwnership": {
+    "dcid": "dc/topic/NumberOfBusinessesByOwnership",
+    "name": "Number of Businesses by Ownership",
+    "relevantVariables": [
+      "Count_Establishment_FederalGovernmentOwnedEstablishment_NAICSTotalAllIndustries",
+      "Count_Establishment_LocalGovernmentOwnedEstablishment_NAICSTotalAllIndustries",
+      "Count_Establishment_PrivatelyOwnedEstablishment_NAICSTotalAllIndustries"
+    ]
+  },
+  "dc/topic/NursesAndMidwives": {
+    "dcid": "dc/topic/NursesAndMidwives",
+    "name": "Nurses and Midwives",
+    "relevantVariables": [
+      "dc/05w24m0n6t758",
+      "dc/enr63cx8vt23f",
+      "dc/815ytn0488dy2"
+    ]
+  },
+  "dc/topic/NursingFacilitiesResidents": {
+    "dcid": "dc/topic/NursingFacilitiesResidents",
+    "name": "Nursing Facilities Residents",
+    "relevantVariables": [
+      "Count_Person_ResidesInNursingFacilities",
+      "Count_Person_ResidesInNursingFacilities_Veteran",
+      "Count_Person_WithFoodStampsInThePast12Months_ResidesInNursingFacilities"
+    ]
+  },
+  "dc/topic/OceanHealth": {
+    "dcid": "dc/topic/OceanHealth",
+    "name": "Ocean Health",
+    "relevantVariables": [
+      "sdg/EN_SCP_FSHGDP",
+      "sdg/ER_H2O_FWTL",
+      "sdg/EN_MAR_BEALITSQ"
+    ]
+  },
+  "dc/topic/Ozone": {
+    "dcid": "dc/topic/Ozone",
+    "name": "Ozone",
+    "relevantVariables": [
+      "Max_Concentration_AirPollutant_Ozone",
+      "Mean_Concentration_AirPollutant_Ozone",
+      "Median_Concentration_AirPollutant_Ozone"
+    ]
+  },
+  "dc/topic/PM10": {
+    "dcid": "dc/topic/PM10",
+    "name": "PM10",
+    "relevantVariables": [
+      "Max_Concentration_AirPollutant_PM10",
+      "Mean_Concentration_AirPollutant_PM10"
+    ]
+  },
+  "dc/topic/PM2.5": {
+    "dcid": "dc/topic/PM2.5",
+    "name": "PM 2.5",
+    "relevantVariables": [
+      "Max_Concentration_AirPollutant_PM2.5",
+      "Mean_Concentration_AirPollutant_PM2.5",
+      "Median_Concentration_AirPollutant_PM2.5"
+    ]
+  },
+  "dc/topic/Parents": {
+    "dcid": "dc/topic/Parents",
+    "name": "Parents",
+    "relevantVariables": [
+      "dc/topic/ParentsEducationalAttainment"
+    ]
+  },
+  "dc/topic/ParentsEducationalAttainment": {
+    "dcid": "dc/topic/ParentsEducationalAttainment",
+    "name": "Parents Educational Attainment",
+    "relevantVariables": [
+      "Percent_Parent_25OrMoreYears_ChildEnrolledInPublicSchool_EducationalAttainmentBachelorsDegreeOrHigher",
+      "Percent_Parent_25OrMoreYears_ChildEnrolledInPublicSchool_EducationalAttainmentHighSchoolGraduateOrHigher"
+    ]
+  },
+  "dc/topic/Parliament": {
+    "dcid": "dc/topic/Parliament",
+    "name": "Parliament",
+    "relevantVariables": [
+      "sdg/SG_DMK_PARLSP_LC.AGE--_X__SEX--_X",
+      "sdg/SG_DMK_PARLSP_LC.SEX--F",
+      "sdg/SG_DMK_PARLSP_LC.SEX--M"
+    ]
+  },
+  "dc/topic/PhysicalActivity": {
+    "dcid": "dc/topic/PhysicalActivity",
+    "name": "Physical Activity",
+    "relevantVariables": [
+      "Percent_PhysicalActivity_In_Count_Person",
+      "Percent_AtLeast30MinutesPerDay_WalkingOrCycling_PhysicalActivity_In_Count_Person_LessThanPrimaryEducationOrPrimaryEducationOrLowerSecondaryEducation",
+      "Percent_AtLeast30MinutesPerDay_WalkingOrCycling_PhysicalActivity_In_Count_Person_TertiaryEducation"
+    ]
+  },
+  "dc/topic/Physicians": {
+    "dcid": "dc/topic/Physicians",
+    "name": "Physicians",
+    "relevantVariables": [
+      "dc/mxqzyt970qks1",
+      "dc/7yw96gdck5em4",
+      "dc/cerdgf14fp2z1"
+    ]
+  },
+  "dc/topic/PlaceOfBirth": {
+    "dcid": "dc/topic/PlaceOfBirth",
+    "name": "Place of Birth",
+    "relevantVariables": [
+      "Count_Person_ForeignBorn_PlaceOfBirthAfrica",
+      "Count_Person_PlaceOfBirthAsia",
+      "Count_Person_ForeignBorn_PlaceOfBirthCaribbean"
+    ]
+  },
+  "dc/topic/Pollutants": {
+    "dcid": "dc/topic/Pollutants",
+    "name": "Air Pollutants",
+    "relevantVariables": [
+      "dc/topic/AirQualityIndex",
+      "dc/topic/CarbonMonoxide",
+      "dc/topic/NitrogenDioxide"
+    ]
+  },
+  "dc/topic/PopulationEnrolledInSchoolTypeByRace": {
+    "dcid": "dc/topic/PopulationEnrolledInSchoolTypeByRace",
+    "name": "Population Enrolled in School Type by Race",
+    "relevantVariables": [
+      "Count_Person_15To19Years_BlackOrAfricanAmericanAlone_EnrolledInPrivateSchool",
+      "Count_Person_15To19Years_HispanicOrLatino_EnrolledInPrivateSchool",
+      "Count_Person_15To19Years_WhiteAloneNotHispanicOrLatino_EnrolledInPrivateSchool"
+    ]
+  },
+  "dc/topic/PopulationFormerSmoker": {
+    "dcid": "dc/topic/PopulationFormerSmoker",
+    "name": "Population Former Smoker",
+    "relevantVariables": [
+      "Percent_FormerSmoker_Daily_TobaccoProducts_In_Count_Person",
+      "Percent_FormerSmoker_Daily_TobaccoProducts_In_Count_Person_Female",
+      "Percent_FormerSmoker_Daily_TobaccoProducts_In_Count_Person_Male"
+    ]
+  },
+  "dc/topic/PopulationNonsmokingTobaccoUser": {
+    "dcid": "dc/topic/PopulationNonsmokingTobaccoUser",
+    "name": "Population Nonsmoking Tobacco User",
+    "relevantVariables": [
+      "Percent_NonSmoker_TobaccoProducts_In_Count_Person",
+      "Percent_NonSmoker_TobaccoProducts_In_Count_Person_Female",
+      "Percent_NonSmoker_TobaccoProducts_In_Count_Person_Male"
+    ]
+  },
+  "dc/topic/PopulationNormalWeight": {
+    "dcid": "dc/topic/PopulationNormalWeight",
+    "name": "Population Normal Weight",
+    "relevantVariables": [
+      "Percent_Normalweight_In_Count_Person",
+      "Percent_Normalweight_In_Count_Person_Rural",
+      "Percent_Normalweight_In_Count_Person_SemiUrban"
+    ]
+  },
+  "dc/topic/PopulationWithArthritisByAge": {
+    "dcid": "dc/topic/PopulationWithArthritisByAge",
+    "name": "Population With Arthritis by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_ConditionArthritis",
+      "Count_Person_10To14Years_ConditionArthritis",
+      "Count_Person_15To19Years_ConditionArthritis"
+    ]
+  },
+  "dc/topic/PopulationWithAsthmaByAge": {
+    "dcid": "dc/topic/PopulationWithAsthmaByAge",
+    "name": "Population With Asthma by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_ConditionAsthma",
+      "Count_Person_10To14Years_ConditionAsthma",
+      "Count_Person_15To19Years_ConditionAsthma"
+    ]
+  },
+  "dc/topic/PopulationWithCancerByAge": {
+    "dcid": "dc/topic/PopulationWithCancerByAge",
+    "name": "Population With Cancer by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_ConditionCancer",
+      "Count_Person_10To14Years_ConditionCancer",
+      "Count_Person_15To19Years_ConditionCancer"
+    ]
+  },
+  "dc/topic/PopulationWithDementiaByAge": {
+    "dcid": "dc/topic/PopulationWithDementiaByAge",
+    "name": "Population With Dementia by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_ConditionDementia",
+      "Count_Person_10To14Years_ConditionDementia",
+      "Count_Person_15To19Years_ConditionDementia"
+    ]
+  },
+  "dc/topic/PopulationWithDiabetesByAge": {
+    "dcid": "dc/topic/PopulationWithDiabetesByAge",
+    "name": "Population With Diabetes by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_ConditionDiabetes",
+      "Count_Person_10To14Years_ConditionDiabetes",
+      "Count_Person_15To19Years_ConditionDiabetes"
+    ]
+  },
+  "dc/topic/PopulationWithDiseasesOfHeartByAge": {
+    "dcid": "dc/topic/PopulationWithDiseasesOfHeartByAge",
+    "name": "Population With Diseases of Heart by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_ConditionDiseasesOfHeart",
+      "Count_Person_10To14Years_ConditionDiseasesOfHeart",
+      "Count_Person_15To19Years_ConditionDiseasesOfHeart"
+    ]
+  },
+  "dc/topic/PopulationWithKidneyDiseaseByAge": {
+    "dcid": "dc/topic/PopulationWithKidneyDiseaseByAge",
+    "name": "Population With Kidney Disease by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_ConditionKidneyDisease",
+      "Count_Person_10To14Years_ConditionKidneyDisease",
+      "Count_Person_15To19Years_ConditionKidneyDisease"
+    ]
+  },
+  "dc/topic/PopulationWithLungConditionByAge": {
+    "dcid": "dc/topic/PopulationWithLungConditionByAge",
+    "name": "Population With Lung Condition by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_ConditionLungCondition",
+      "Count_Person_10To14Years_ConditionLungCondition",
+      "Count_Person_15To19Years_ConditionLungCondition"
+    ]
+  },
+  "dc/topic/PopulationWithMentalHealthNotGoodByAge": {
+    "dcid": "dc/topic/PopulationWithMentalHealthNotGoodByAge",
+    "name": "Population With Mental Health Not Good by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_ConditionMentalHealthNotGood",
+      "Count_Person_10To14Years_ConditionMentalHealthNotGood",
+      "Count_Person_15To19Years_ConditionMentalHealthNotGood"
+    ]
+  },
+  "dc/topic/PopulationWithStrokeByAge": {
+    "dcid": "dc/topic/PopulationWithStrokeByAge",
+    "name": "Population With Stroke by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_ConditionStroke",
+      "Count_Person_10To14Years_ConditionStroke",
+      "Count_Person_15To19Years_ConditionStroke"
+    ]
+  },
+  "dc/topic/Poverty": {
+    "dcid": "dc/topic/Poverty",
+    "name": "Poverty",
+    "relevantVariables": [
+      "Count_Person_BelowPovertyLevelInThePast12Months",
+      "Count_Person_BelowPovertyLevelInThePast12Months_AsFractionOf_Count_Person",
+      "dc/topic/PovertyByGender"
+    ]
+  },
+  "dc/topic/PovertyByGender": {
+    "dcid": "dc/topic/PovertyByGender",
+    "name": "Poverty by Gender",
+    "relevantVariables": [
+      "Count_Person_Female_BelowPovertyLevelInThePast12Months",
+      "Count_Person_Male_BelowPovertyLevelInThePast12Months"
+    ]
+  },
+  "dc/topic/PovertyByLanguageSpokenAtHome": {
+    "dcid": "dc/topic/PovertyByLanguageSpokenAtHome",
+    "name": "Poverty by Language Spoken At Home",
+    "relevantVariables": [
+      "Count_Person_5OrMoreYears_LanguageOtherThanEnglishSpokenAtHome_BelowPovertyLevelInThePast12Months",
+      "Count_Person_5OrMoreYears_OnlyEnglishSpokenAtHome_BelowPovertyLevelInThePast12Months",
+      "Count_Person_5OrMoreYears_SpanishOrSpanishCreoleSpokenAtHome_BelowPovertyLevelInThePast12Months"
+    ]
+  },
+  "dc/topic/PovertyByRace": {
+    "dcid": "dc/topic/PovertyByRace",
+    "name": "Poverty by Race",
+    "relevantVariables": [
+      "Count_Person_BelowPovertyLevelInThePast12Months_AsianAlone",
+      "Count_Person_BelowPovertyLevelInThePast12Months_BlackOrAfricanAmericanAlone",
+      "Count_Person_BelowPovertyLevelInThePast12Months_HispanicOrLatino"
+    ]
+  },
+  "dc/topic/PovertyByResidency": {
+    "dcid": "dc/topic/PovertyByResidency",
+    "name": "Poverty by Residency",
+    "relevantVariables": [
+      "Count_Person_Rural_BelowPovertyLevelInThePast12Months",
+      "Count_Person_Urban_BelowPovertyLevelInThePast12Months"
+    ]
+  },
+  "dc/topic/Precipitation": {
+    "dcid": "dc/topic/Precipitation",
+    "name": "Precipitation",
+    "relevantVariables": [
+      "HeavyPrecipitationIndex",
+      "InterannualRange_Monthly_Precipitation",
+      "PrecipitationRate"
+    ]
+  },
+  "dc/topic/PreventativeHealth": {
+    "dcid": "dc/topic/PreventativeHealth",
+    "name": "Preventive Health",
+    "relevantVariables": [
+      "Percent_Person_ReceivedAnnualCheckup",
+      "Percent_Person_21To65Years_Female_ReceivedCervicalCancerScreening",
+      "Percent_Person_50To75Years_ReceivedColorectalCancerScreening"
+    ]
+  },
+  "dc/topic/PreventativeHealthAndBehavior": {
+    "dcid": "dc/topic/PreventativeHealthAndBehavior",
+    "name": "Preventive Health and Behavior",
+    "relevantVariables": [
+      "dc/topic/HealthBehavior",
+      "dc/topic/PreventativeHealth"
+    ]
+  },
+  "dc/topic/PrivateHealthInsuranceType": {
+    "dcid": "dc/topic/PrivateHealthInsuranceType",
+    "name": "Private Health Insurance Type",
+    "relevantVariables": [
+      "Count_Person_WithDirectPurchaseHealthInsurance",
+      "Count_Person_WithDirectPurchaseHealthInsuranceOnly",
+      "Count_Person_WithEmployerBasedHealthInsurance"
+    ]
+  },
+  "dc/topic/ProductionConsumptionandWaste": {
+    "dcid": "dc/topic/ProductionConsumptionandWaste",
+    "name": "Production Consumption and Waste",
+    "relevantVariables": [
+      "sdg/EN_MAT_DOMCMPG",
+      "sdg/EN_MAT_DOMCMPT",
+      "sdg/EN_MAT_DOMCMPT.PRODUCT--MF1"
+    ]
+  },
+  "dc/topic/PublicHealthInsuranceType": {
+    "dcid": "dc/topic/PublicHealthInsuranceType",
+    "name": "Public Health Insurance Type",
+    "relevantVariables": [
+      "Count_Person_WithMedicaidOrMeansTestedPublicCoverage",
+      "Count_Person_WithMedicaidOrMeansTestedPublicCoverageOnly",
+      "Count_Person_WithMedicareCoverage"
+    ]
+  },
+  "dc/topic/Race": {
+    "dcid": "dc/topic/Race",
+    "name": "Population by Race",
+    "relevantVariables": [
+      "Count_Person_WhiteAlone",
+      "Count_Person_BlackOrAfricanAmericanAlone",
+      "Count_Person_HispanicOrLatino"
+    ]
+  },
+  "dc/topic/Rainfall": {
+    "dcid": "dc/topic/Rainfall",
+    "name": "Rainfall",
+    "relevantVariables": [
+      "Max_Rainfall",
+      "Mean_Rainfall",
+      "Min_Rainfall"
+    ]
+  },
+  "dc/topic/Religion": {
+    "dcid": "dc/topic/Religion",
+    "name": "Religion",
+    "relevantVariables": [
+      "Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime",
+      "Offender_Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime",
+      "Victim_Count_CriminalIncidents_BiasMotivationReligion_IsHateCrime"
+    ]
+  },
+  "dc/topic/Remittance": {
+    "dcid": "dc/topic/Remittance",
+    "name": "Remittance",
+    "relevantVariables": [
+      "Amount_Remittance_InwardRemittance",
+      "Amount_Remittance_InwardRemittance_AsFractionOf_Amount_EconomicActivity_GrossDomesticProduction_Nominal",
+      "Amount_Remittance_OutwardRemittance"
+    ]
+  },
+  "dc/topic/RentalHouses": {
+    "dcid": "dc/topic/RentalHouses",
+    "name": "Rental Houses",
+    "relevantVariables": [
+      "Median_GrossRent_HousingUnit_WithCashRent_OccupiedHousingUnit_RenterOccupied",
+      "Count_HousingUnit_WithRent_Upto100USDollar",
+      "Count_HousingUnit_WithRent_100To149USDollar"
+    ]
+  },
+  "dc/topic/RiverineFlood": {
+    "dcid": "dc/topic/RiverineFlood",
+    "name": "Riverine Flood",
+    "relevantVariables": [
+      "Annual_ExpectedLoss_NaturalHazardImpact_RiverineFloodingEvent",
+      "FemaNaturalHazardRiskIndex_NaturalHazardImpact_RiverineFloodingEvent"
+    ]
+  },
+  "dc/topic/RoadTrafficDeaths": {
+    "dcid": "dc/topic/RoadTrafficDeaths",
+    "name": "Road Traffic Deaths",
+    "relevantVariables": [
+      "sdg/SH_STA_TRAF",
+      "sdg/SH_STA_TRAF.SEX--F",
+      "sdg/SH_STA_TRAF.SEX--M"
+    ]
+  },
+  "dc/topic/Root": {
+    "dcid": "dc/topic/Root",
+    "name": "Statistics",
+    "relevantVariables": [
+      "dc/topic/Demographics",
+      "dc/topic/Health",
+      "dc/topic/Economy"
+    ]
+  },
+  "dc/topic/RuralFemalePopulationByAge": {
+    "dcid": "dc/topic/RuralFemalePopulationByAge",
+    "name": "Rural Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Rural_Female",
+      "Count_Person_10To14Years_Rural_Female",
+      "Count_Person_15To19Years_Rural_Female"
+    ]
+  },
+  "dc/topic/RuralMalePopulationByAge": {
+    "dcid": "dc/topic/RuralMalePopulationByAge",
+    "name": "Rural Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Rural_Male",
+      "Count_Person_10To14Years_Rural_Male",
+      "Count_Person_15To19Years_Rural_Male"
+    ]
+  },
+  "dc/topic/RuralPopulationByAge": {
+    "dcid": "dc/topic/RuralPopulationByAge",
+    "name": "Rural Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Rural",
+      "Count_Person_10To14Years_Rural",
+      "Count_Person_15To19Years_Rural"
+    ]
+  },
+  "dc/topic/SDGBiodiversity": {
+    "dcid": "dc/topic/SDGBiodiversity",
+    "name": "Biodiversity",
+    "relevantVariables": [
+      "sdg/DC_ODA_BDVDL",
+      "sdg/ER_PTD_FRHWTR",
+      "sdg/ER_PTD_MTN"
+    ]
+  },
+  "dc/topic/SDGReforestations": {
+    "dcid": "dc/topic/SDGReforestations",
+    "name": "Reforestations",
+    "relevantVariables": [
+      "sdg/AG_LND_FRST",
+      "sdg/AG_LND_FRSTBIOPHA",
+      "sdg/AG_LND_FRSTCERT"
+    ]
+  },
+  "dc/topic/Sanitation": {
+    "dcid": "dc/topic/Sanitation",
+    "name": "Sanitation",
+    "relevantVariables": [
+      "sdg/SP_ACS_BSRVSAN",
+      "sdg/SP_ACS_BSRVSAN.URBANISATION--R",
+      "sdg/SP_ACS_BSRVSAN.URBANISATION--U"
+    ]
+  },
+  "dc/topic/SchoolType": {
+    "dcid": "dc/topic/SchoolType",
+    "name": "School Type",
+    "relevantVariables": [
+      "dc/topic/PopulationEnrolledInSchoolTypeByRace"
+    ]
+  },
+  "dc/topic/Schools": {
+    "dcid": "dc/topic/Schools",
+    "name": "Schools",
+    "relevantVariables": [
+      "dc/topic/StudentPopulation",
+      "dc/topic/StudentLunchEligibility",
+      "dc/topic/Teacher"
+    ]
+  },
+  "dc/topic/SeparatedFemalePopulationByAge": {
+    "dcid": "dc/topic/SeparatedFemalePopulationByAge",
+    "name": "Separated Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_10To14Years_Female_Separated",
+      "Count_Person_15To19Years_Female_Separated",
+      "Count_Person_20To24Years_Female_Separated"
+    ]
+  },
+  "dc/topic/SeparatedMalePopulationByAge": {
+    "dcid": "dc/topic/SeparatedMalePopulationByAge",
+    "name": "Separated Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_10To14Years_Male_Separated",
+      "Count_Person_15To19Years_Male_Separated",
+      "Count_Person_20To24Years_Male_Separated"
+    ]
+  },
+  "dc/topic/SeparatedPopulationByAge": {
+    "dcid": "dc/topic/SeparatedPopulationByAge",
+    "name": "Separated Population by Age",
+    "relevantVariables": [
+      "Count_Person_10To14Years_Separated",
+      "Count_Person_15To19Years_Separated",
+      "Count_Person_20To24Years_Separated"
+    ]
+  },
+  "dc/topic/Smoke": {
+    "dcid": "dc/topic/Smoke",
+    "name": "Smoke",
+    "relevantVariables": [
+      "Count_DenseSmokeEvent"
+    ]
+  },
+  "dc/topic/SmokePM2.5": {
+    "dcid": "dc/topic/SmokePM2.5",
+    "name": "Smoke PM 2.5",
+    "relevantVariables": [
+      "Concentration_AirPollutant_SmokePM25",
+      "Max_Concentration_AirPollutant_SmokePM25",
+      "Mean_Concentration_AirPollutant_SmokePM25"
+    ]
+  },
+  "dc/topic/Snowfall": {
+    "dcid": "dc/topic/Snowfall",
+    "name": "Snowfall",
+    "relevantVariables": [
+      "Max_Snowfall",
+      "Mean_Snowfall",
+      "Min_Snowfall"
+    ]
+  },
+  "dc/topic/SocialSupport": {
+    "dcid": "dc/topic/SocialSupport",
+    "name": "Social Support",
+    "relevantVariables": [
+      "Percent_AtLeastOnceAWeek_NonRelatives_ProvidingInformalCareOrAssistance_In_Count_Person",
+      "Percent_AtLeastOnceAWeek_ProvidingInformalCareOrAssistance_In_Count_Person",
+      "Percent_AtLeastOnceAWeek_Relatives_ProvidingInformalCareOrAssistance_In_Count_Person"
+    ]
+  },
+  "dc/topic/SolarConsumption": {
+    "dcid": "dc/topic/SolarConsumption",
+    "name": "Solar Consumption",
+    "relevantVariables": [
+      "eia/TOTAL.SOT7B.A",
+      "eia/TOTAL.SOT8B.A",
+      "eia/TOTAL.SOC7B.A"
+    ]
+  },
+  "dc/topic/SomeOtherRaceAloneFemalePopulationByAge": {
+    "dcid": "dc/topic/SomeOtherRaceAloneFemalePopulationByAge",
+    "name": "Some Other Race Alone Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_10To14Years_Female_SomeOtherRaceAlone",
+      "Count_Person_20To24Years_Female_SomeOtherRaceAlone",
+      "Count_Person_25To29Years_Female_SomeOtherRaceAlone"
+    ]
+  },
+  "dc/topic/SomeOtherRaceAloneMalePopulationByAge": {
+    "dcid": "dc/topic/SomeOtherRaceAloneMalePopulationByAge",
+    "name": "Some Other Race Alone Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_10To14Years_Male_SomeOtherRaceAlone",
+      "Count_Person_20To24Years_Male_SomeOtherRaceAlone",
+      "Count_Person_25To29Years_Male_SomeOtherRaceAlone"
+    ]
+  },
+  "dc/topic/Storm": {
+    "dcid": "dc/topic/Storm",
+    "name": "Storms",
+    "relevantVariables": [
+      "Count_DustStormEvent",
+      "Count_ThunderstormWindEvent",
+      "Count_TropicalStormEvent"
+    ]
+  },
+  "dc/topic/Stroke": {
+    "dcid": "dc/topic/Stroke",
+    "name": "Stroke",
+    "relevantVariables": [
+      "Percent_Person_WithStroke"
+    ]
+  },
+  "dc/topic/StrokeFemalePopulationByAge": {
+    "dcid": "dc/topic/StrokeFemalePopulationByAge",
+    "name": "Stroke Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_ConditionStroke",
+      "Count_Person_10To14Years_Female_ConditionStroke",
+      "Count_Person_15To19Years_Female_ConditionStroke"
+    ]
+  },
+  "dc/topic/StrokeMalePopulationByAge": {
+    "dcid": "dc/topic/StrokeMalePopulationByAge",
+    "name": "Stroke Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_ConditionStroke",
+      "Count_Person_10To14Years_Male_ConditionStroke",
+      "Count_Person_15To19Years_Male_ConditionStroke"
+    ]
+  },
+  "dc/topic/StudentEnrollmentLevels": {
+    "dcid": "dc/topic/StudentEnrollmentLevels",
+    "name": "Student Enrollment Levels",
+    "relevantVariables": [
+      "Count_Person_DetailedEnrolledInKindergarten",
+      "Count_Person_DetailedPrimarySchool",
+      "Count_Person_DetailedMiddleSchool"
+    ]
+  },
+  "dc/topic/StudentLunchEligibility": {
+    "dcid": "dc/topic/StudentLunchEligibility",
+    "name": "Student Lunch Eligibility",
+    "relevantVariables": [
+      "Count_Student_DirectCertificationLunch",
+      "Count_Student_FreeLunch"
+    ]
+  },
+  "dc/topic/StudentPopulation": {
+    "dcid": "dc/topic/StudentPopulation",
+    "name": "Student Population",
+    "relevantVariables": [
+      "dc/topic/StudentEnrollmentLevels",
+      "dc/topic/StudentsInKindergarten",
+      "dc/topic/StudentsInPrimarySchool"
+    ]
+  },
+  "dc/topic/StudentPopulationDemographics": {
+    "dcid": "dc/topic/StudentPopulationDemographics",
+    "name": "Student Population Demographics",
+    "relevantVariables": [
+      "Count_Student",
+      "Count_Student_Female",
+      "Count_Student_Male"
+    ]
+  },
+  "dc/topic/StudentTeacherRatio": {
+    "dcid": "dc/topic/StudentTeacherRatio",
+    "name": "Student Teacher Ratio",
+    "relevantVariables": [
+      "Percent_Student_AsAFractionOf_Count_Teacher"
+    ]
+  },
+  "dc/topic/StudentsInCollege": {
+    "dcid": "dc/topic/StudentsInCollege",
+    "name": "Students in College",
+    "relevantVariables": [
+      "dc/0yv0ry7tjmwzc",
+      "dc/pltrqb2ng8dp8",
+      "dc/0jtctjm33mgh1"
+    ]
+  },
+  "dc/topic/StudentsInGraduateOrProfessionalSchool": {
+    "dcid": "dc/topic/StudentsInGraduateOrProfessionalSchool",
+    "name": "Students in Graduate or Professional School",
+    "relevantVariables": [
+      "dc/3z6z9w930dl7b",
+      "dc/7fdfhnnjr5sh8",
+      "dc/9cqv67nn7pn1b"
+    ]
+  },
+  "dc/topic/StudentsInHighSchool": {
+    "dcid": "dc/topic/StudentsInHighSchool",
+    "name": "Students in High School",
+    "relevantVariables": [
+      "dc/1kt512ynvpmc2",
+      "dc/3bg4r46ly61q9",
+      "dc/4hzyqndyzntm"
+    ]
+  },
+  "dc/topic/StudentsInKindergarten": {
+    "dcid": "dc/topic/StudentsInKindergarten",
+    "name": "Students in Kindergarten",
+    "relevantVariables": [
+      "dc/g8kg52zcxzw9f",
+      "dc/p34mhcpgtth76",
+      "dc/1c4zcyw02n71g"
+    ]
+  },
+  "dc/topic/StudentsInMiddleSchool": {
+    "dcid": "dc/topic/StudentsInMiddleSchool",
+    "name": "Students in Middle School",
+    "relevantVariables": [
+      "dc/6zbb7s5nx6rxb",
+      "dc/b3nmcj3w1lhed",
+      "dc/c57vzg7l74577"
+    ]
+  },
+  "dc/topic/StudentsInPrimarySchool": {
+    "dcid": "dc/topic/StudentsInPrimarySchool",
+    "name": "Students in Primary School",
+    "relevantVariables": [
+      "dc/68cg2z97cpl7d",
+      "dc/b6h698m2vmdcc",
+      "dc/bf85zc6wypd2h"
+    ]
+  },
+  "dc/topic/Suicide": {
+    "dcid": "dc/topic/Suicide",
+    "name": "Suicide",
+    "relevantVariables": [
+      "sdg/SH_STA_SCIDE",
+      "sdg/SH_STA_SCIDE.SEX--F",
+      "sdg/SH_STA_SCIDE.SEX--M"
+    ]
+  },
+  "dc/topic/SupportServicesStaffInSchools": {
+    "dcid": "dc/topic/SupportServicesStaffInSchools",
+    "name": "Support Services Staff in Schools",
+    "relevantVariables": [
+      "Count_Faculty_ElementarySchoolCounselor",
+      "Count_Faculty_LEAAdministrativeSupportStaff",
+      "Count_Faculty_LEAAdministrator"
+    ]
+  },
+  "dc/topic/Sustainability": {
+    "dcid": "dc/topic/Sustainability",
+    "name": "Sustainability",
+    "relevantVariables": [
+      "dc/topic/Emissions",
+      "dc/topic/Pollutants",
+      "dc/topic/Temperatures"
+    ]
+  },
+  "dc/topic/Tariffs": {
+    "dcid": "dc/topic/Tariffs",
+    "name": "Tariffs",
+    "relevantVariables": [
+      "sdg/TM_TAX_DMFN",
+      "sdg/TM_TAX_WMPS",
+      "sdg/TM_TRF_ZERO"
+    ]
+  },
+  "dc/topic/Teacher": {
+    "dcid": "dc/topic/Teacher",
+    "name": "Teacher",
+    "relevantVariables": [
+      "dc/topic/EducationFaculty",
+      "dc/topic/StudentTeacherRatio",
+      "dc/topic/SupportServicesStaffInSchools"
+    ]
+  },
+  "dc/topic/TemperaturePredictions": {
+    "dcid": "dc/topic/TemperaturePredictions",
+    "name": "Temperature Predictions",
+    "relevantVariables": [
+      "dc/topic/DecadeProjectedTemperatureHighs",
+      "dc/topic/DecadeProjectedTemperatureLows",
+      "dc/topic/YearlyProjectedTemperatureHighs"
+    ]
+  },
+  "dc/topic/Temperatures": {
+    "dcid": "dc/topic/Temperatures",
+    "name": "Temperature",
+    "relevantVariables": [
+      "Max_Temperature",
+      "Mean_Temperature",
+      "Min_Temperature"
+    ]
+  },
+  "dc/topic/Tornado": {
+    "dcid": "dc/topic/Tornado",
+    "name": "Tornado",
+    "relevantVariables": [
+      "Count_TornadoEvent",
+      "Annual_ExpectedLoss_NaturalHazardImpact_TornadoEvent",
+      "FemaNaturalHazardRiskIndex_NaturalHazardImpact_TornadoEvent"
+    ]
+  },
+  "dc/topic/Tsunami": {
+    "dcid": "dc/topic/Tsunami",
+    "name": "Tsunami",
+    "relevantVariables": [
+      "Count_TsunamiEvent",
+      "Annual_ExpectedLoss_NaturalHazardImpact_TsunamiEvent",
+      "FemaNaturalHazardRiskIndex_NaturalHazardImpact_TsunamiEvent"
+    ]
+  },
+  "dc/topic/Tuberculosis": {
+    "dcid": "dc/topic/Tuberculosis",
+    "name": "Tuberculosis",
+    "relevantVariables": [
+      "Count_MedicalConditionIncident_ConditionTuberculosis",
+      "Count_MedicalConditionIncident_ConditionTuberculosis_AsAFractionOf_Count_Person",
+      "Count_MedicalConditionIncident_15To24Years_ConditionTuberculosis"
+    ]
+  },
+  "dc/topic/TwoOrMoreRacesFemalePopulationByAge": {
+    "dcid": "dc/topic/TwoOrMoreRacesFemalePopulationByAge",
+    "name": "Two or More Races Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Female_TwoOrMoreRaces",
+      "Count_Person_10To14Years_Female_TwoOrMoreRaces",
+      "Count_Person_15To19Years_Female_TwoOrMoreRaces"
+    ]
+  },
+  "dc/topic/TwoOrMoreRacesMalePopulationByAge": {
+    "dcid": "dc/topic/TwoOrMoreRacesMalePopulationByAge",
+    "name": "Two or More Races Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Male_TwoOrMoreRaces",
+      "Count_Person_10To14Years_Male_TwoOrMoreRaces",
+      "Count_Person_15To19Years_Male_TwoOrMoreRaces"
+    ]
+  },
+  "dc/topic/TwoOrMoreRacesPopulationByAge": {
+    "dcid": "dc/topic/TwoOrMoreRacesPopulationByAge",
+    "name": "Two or More Races Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_TwoOrMoreRaces",
+      "Count_Person_10To14Years_TwoOrMoreRaces",
+      "Count_Person_15To19Years_TwoOrMoreRaces"
+    ]
+  },
+  "dc/topic/UN": {
+    "dcid": "dc/topic/UN",
+    "name": "12 UN Data Thematic Areas",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_13": {
+    "dcid": "dc/topic/UN_SUB_THEME_13",
+    "name": "Poverty",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_14": {
+    "dcid": "dc/topic/UN_SUB_THEME_14",
+    "name": "Inequality and social protection",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_16": {
+    "dcid": "dc/topic/UN_SUB_THEME_16",
+    "name": "Nutrition",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_18": {
+    "dcid": "dc/topic/UN_SUB_THEME_18",
+    "name": "Child and youth health",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_19": {
+    "dcid": "dc/topic/UN_SUB_THEME_19",
+    "name": "Environmental and other health risks",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_20": {
+    "dcid": "dc/topic/UN_SUB_THEME_20",
+    "name": "\"Health systems, policies and financing\"",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_21": {
+    "dcid": "dc/topic/UN_SUB_THEME_21",
+    "name": "Infectious diseases",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_22": {
+    "dcid": "dc/topic/UN_SUB_THEME_22",
+    "name": "Non-communicable diseases",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_23": {
+    "dcid": "dc/topic/UN_SUB_THEME_23",
+    "name": "Mental health",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_24": {
+    "dcid": "dc/topic/UN_SUB_THEME_24",
+    "name": "Reproductive and maternal health",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_25": {
+    "dcid": "dc/topic/UN_SUB_THEME_25",
+    "name": "Child protection",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_27": {
+    "dcid": "dc/topic/UN_SUB_THEME_27",
+    "name": "Technical and vocational education and training",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_29": {
+    "dcid": "dc/topic/UN_SUB_THEME_29",
+    "name": "Children in vulnerable situations",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_38": {
+    "dcid": "dc/topic/UN_SUB_THEME_38",
+    "name": "\"Science, technology and innovation\"",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_39": {
+    "dcid": "dc/topic/UN_SUB_THEME_39",
+    "name": "Gender equality",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_41": {
+    "dcid": "dc/topic/UN_SUB_THEME_41",
+    "name": "Inequality",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_42": {
+    "dcid": "dc/topic/UN_SUB_THEME_42",
+    "name": "Work and employment",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_43": {
+    "dcid": "dc/topic/UN_SUB_THEME_43",
+    "name": "Infrastructure",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_48": {
+    "dcid": "dc/topic/UN_SUB_THEME_48",
+    "name": "Public finance and fiscal policies",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_54": {
+    "dcid": "dc/topic/UN_SUB_THEME_54",
+    "name": "Drinking water",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_55": {
+    "dcid": "dc/topic/UN_SUB_THEME_55",
+    "name": "Sanitation",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_56": {
+    "dcid": "dc/topic/UN_SUB_THEME_56",
+    "name": "Hygiene",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_57": {
+    "dcid": "dc/topic/UN_SUB_THEME_57",
+    "name": "Climate Change",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_58": {
+    "dcid": "dc/topic/UN_SUB_THEME_58",
+    "name": "Energy",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_61": {
+    "dcid": "dc/topic/UN_SUB_THEME_61",
+    "name": "Air quality and waste management",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_67": {
+    "dcid": "dc/topic/UN_SUB_THEME_67",
+    "name": "Ageing and longevity",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_68": {
+    "dcid": "dc/topic/UN_SUB_THEME_68",
+    "name": "Workforce",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_69": {
+    "dcid": "dc/topic/UN_SUB_THEME_69",
+    "name": "Indigenous populations",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_72": {
+    "dcid": "dc/topic/UN_SUB_THEME_72",
+    "name": "Disaster loss",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_74": {
+    "dcid": "dc/topic/UN_SUB_THEME_74",
+    "name": "Emergency Response",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_75": {
+    "dcid": "dc/topic/UN_SUB_THEME_75",
+    "name": "Conflict and violence",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_SUB_THEME_78": {
+    "dcid": "dc/topic/UN_SUB_THEME_78",
+    "name": "Rule of law and access to justice",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_THEME_1": {
+    "dcid": "dc/topic/UN_THEME_1",
+    "name": "1: Poverty and food security",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_THEME_10": {
+    "dcid": "dc/topic/UN_THEME_10",
+    "name": "10: Population and demography",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_THEME_11": {
+    "dcid": "dc/topic/UN_THEME_11",
+    "name": "11: Disasters and humanitarian action",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_THEME_12": {
+    "dcid": "dc/topic/UN_THEME_12",
+    "name": "12: Governance and peace",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_THEME_2": {
+    "dcid": "dc/topic/UN_THEME_2",
+    "name": "2: Health",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_THEME_3": {
+    "dcid": "dc/topic/UN_THEME_3",
+    "name": "3: Children and youth",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_THEME_4": {
+    "dcid": "dc/topic/UN_THEME_4",
+    "name": "4: Education and culture",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_THEME_5": {
+    "dcid": "dc/topic/UN_THEME_5",
+    "name": "5: Equality and human rights",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_THEME_6": {
+    "dcid": "dc/topic/UN_THEME_6",
+    "name": "6: Economic development",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_THEME_8": {
+    "dcid": "dc/topic/UN_THEME_8",
+    "name": "\"8: Drinking water, sanitation and hygiene\"",
+    "relevantVariables": null
+  },
+  "dc/topic/UN_THEME_9": {
+    "dcid": "dc/topic/UN_THEME_9",
+    "name": "9: Climate and the environment",
+    "relevantVariables": null
+  },
+  "dc/topic/UnemploymentRate": {
+    "dcid": "dc/topic/UnemploymentRate",
+    "name": "Unemployment Rate",
+    "relevantVariables": [
+      "UnemploymentRate_Person",
+      "UnemploymentRate_Person_Female",
+      "UnemploymentRate_Person_Male"
+    ]
+  },
+  "dc/topic/UnintentionalPoisonings": {
+    "dcid": "dc/topic/UnintentionalPoisonings",
+    "name": "Unintentional Poisonings",
+    "relevantVariables": [
+      "sdg/SH_STA_POISN",
+      "sdg/SH_STA_POISN.SEX--F",
+      "sdg/SH_STA_POISN.SEX--M"
+    ]
+  },
+  "dc/topic/UnpaidFamilyWorkers": {
+    "dcid": "dc/topic/UnpaidFamilyWorkers",
+    "name": "Unpaid Family Workers",
+    "relevantVariables": [
+      "Count_Person_16OrMoreYears_PrivatelyOwnedEstablishment_NoHealthInsurance_UnpaidFamilyWorker_Worker"
+    ]
+  },
+  "dc/topic/UrbanFemalePopulationByAge": {
+    "dcid": "dc/topic/UrbanFemalePopulationByAge",
+    "name": "Urban Female Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Urban_Female",
+      "Count_Person_10To14Years_Urban_Female",
+      "Count_Person_15To19Years_Urban_Female"
+    ]
+  },
+  "dc/topic/UrbanMalePopulationByAge": {
+    "dcid": "dc/topic/UrbanMalePopulationByAge",
+    "name": "Urban Male Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Urban_Male",
+      "Count_Person_10To14Years_Urban_Male",
+      "Count_Person_15To19Years_Urban_Male"
+    ]
+  },
+  "dc/topic/UrbanPopulationByAge": {
+    "dcid": "dc/topic/UrbanPopulationByAge",
+    "name": "Urban Population by Age",
+    "relevantVariables": [
+      "Count_Person_0To4Years_Urban",
+      "Count_Person_10To14Years_Urban",
+      "Count_Person_15To19Years_Urban"
+    ]
+  },
+  "dc/topic/Vaccines": {
+    "dcid": "dc/topic/Vaccines",
+    "name": "Vaccines",
+    "relevantVariables": [
+      "CumulativeCount_Vaccine_COVID_19_Administered",
+      "IncrementalCount_Vaccine_COVID_19_Administered",
+      "Count_Infant_VaccineAdministered_BCG"
+    ]
+  },
+  "dc/topic/VeryOldAndVeryYoungPopulation": {
+    "dcid": "dc/topic/VeryOldAndVeryYoungPopulation",
+    "name": "Very Old and Very Young Population",
+    "relevantVariables": [
+      "Count_Person_85OrMoreYears_Female",
+      "Count_Person_85OrMoreYears_Male",
+      "Count_Person_0To4Years_Female"
+    ]
+  },
+  "dc/topic/Veterans": {
+    "dcid": "dc/topic/Veterans",
+    "name": "Veterans",
+    "relevantVariables": [
+      "Count_Person_Veteran",
+      "dc/topic/VeteransIncome",
+      "dc/topic/VeteransByWar"
+    ]
+  },
+  "dc/topic/VeteransByGender": {
+    "dcid": "dc/topic/VeteransByGender",
+    "name": "Veterans By Gender",
+    "relevantVariables": [
+      "dc/2qn8p1m6xx3d",
+      "dc/l6vp0xtccglcb",
+      "dc/lcptt9lhzrnrg"
+    ]
+  },
+  "dc/topic/VeteransByGroupQuartersResidence": {
+    "dcid": "dc/topic/VeteransByGroupQuartersResidence",
+    "name": "Veterans By Group Quarters Residence",
+    "relevantVariables": [
+      "Count_Person_ResidesInNoninstitutionalizedGroupQuarters_Veteran",
+      "Count_Person_ResidesInNursingFacilities_Veteran",
+      "Count_Person_ResidesInMilitaryQuartersOrMilitaryShips_Veteran"
+    ]
+  },
+  "dc/topic/VeteransByWar": {
+    "dcid": "dc/topic/VeteransByWar",
+    "name": "Veterans By War",
+    "relevantVariables": [
+      "dc/ll54s8y2d720d",
+      "dc/wpkqjslkwknbc",
+      "dc/2d5rby4n8sf38"
+    ]
+  },
+  "dc/topic/VeteransIncome": {
+    "dcid": "dc/topic/VeteransIncome",
+    "name": "Veterans Income",
+    "relevantVariables": [
+      "dc/ec13z1eh1d5d8",
+      "dc/21j845ny0gpl6",
+      "dc/xg4bepzr1wb93"
+    ]
+  },
+  "dc/topic/Visibility": {
+    "dcid": "dc/topic/Visibility",
+    "name": "Visibility",
+    "relevantVariables": [
+      "Max_Visibility",
+      "Mean_Visibility",
+      "Min_Visibility"
+    ]
+  },
+  "dc/topic/Volcano": {
+    "dcid": "dc/topic/Volcano",
+    "name": "Volcano",
+    "relevantVariables": [
+      "Count_VolcanicAshEvent",
+      "Count_VolcanicAshfallEvent",
+      "Annual_ExpectedLoss_NaturalHazardImpact_VolcanicActivityEvent"
+    ]
+  },
+  "dc/topic/Voting": {
+    "dcid": "dc/topic/Voting",
+    "name": "Voting",
+    "relevantVariables": [
+      "sdg/SG_INT_VRTDEV.NAME_OF_INTERNATIONAL_INSTITUTION--IO_ADB",
+      "sdg/SG_INT_VRTDEV.NAME_OF_INTERNATIONAL_INSTITUTION--IO_AFDB",
+      "sdg/SG_INT_VRTDEV.NAME_OF_INTERNATIONAL_INSTITUTION--IO_ECOSOC"
+    ]
+  },
+  "dc/topic/WHOAIR10": {
+    "dcid": "dc/topic/WHOAIR10",
+    "name": "Ambient Air Pollution Attributable Disability-adjusted Life Years (DALYs) Per 100'000 Children Under 5 Years",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR11": {
+    "dcid": "dc/topic/WHOAIR11",
+    "name": "Household Air Pollution Attributable Deaths",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR12": {
+    "dcid": "dc/topic/WHOAIR12",
+    "name": "Household Air Pollution Attributable Deaths in Children Under 5 Years",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR15": {
+    "dcid": "dc/topic/WHOAIR15",
+    "name": "Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs)",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR16": {
+    "dcid": "dc/topic/WHOAIR16",
+    "name": "Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) in Children Under 5 Years",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR17": {
+    "dcid": "dc/topic/WHOAIR17",
+    "name": "Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) (per 100 000 Population)",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR39": {
+    "dcid": "dc/topic/WHOAIR39",
+    "name": "\"Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) (per 100 000, Age-standardized)\"",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR39_age": {
+    "dcid": "dc/topic/WHOAIR39_age",
+    "name": "\"Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) (per 100 000, Age-standardized) by Age\"",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR39_age-WHOAgeEnumY60T64": {
+    "dcid": "dc/topic/WHOAIR39_age-WHOAgeEnumY60T64",
+    "name": "\"Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) (per 100 000, Age-standardized) With Age = 60-64 Years\"",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR39_age-WHOAgeEnumY60T64_whoenvcause": {
+    "dcid": "dc/topic/WHOAIR39_age-WHOAgeEnumY60T64_whoenvcause",
+    "name": "\"Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) (per 100 000, Age-standardized) With Age = 60-64 Years, Envcause\"",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR39_age-WHOAgeEnumY60T64_whoenvcause-WHOEnvcauseEnumENVCAUSE068": {
+    "dcid": "dc/topic/WHOAIR39_age-WHOAgeEnumY60T64_whoenvcause-WHOEnvcauseEnumENVCAUSE068",
+    "name": "\"Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) (per 100 000, Age-standardized) With Age = 60-64 Years, Envcause = Trachea, Bronchus, Lung Cancers\"",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR39_age-WHOAgeEnumY60T64_whoenvcause-WHOEnvcauseEnumENVCAUSE068_whosex": {
+    "dcid": "dc/topic/WHOAIR39_age-WHOAgeEnumY60T64_whoenvcause-WHOEnvcauseEnumENVCAUSE068_whosex",
+    "name": "\"Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) (per 100 000, Age-standardized) With Age = 60-64 Years, Envcause = Trachea, Bronchus, Lung Cancers, Sex\"",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR39_age-WHOAgeEnumY60T64_whoenvcause_whosex-WHOSexEnumM": {
+    "dcid": "dc/topic/WHOAIR39_age-WHOAgeEnumY60T64_whoenvcause_whosex-WHOSexEnumM",
+    "name": "\"Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) (per 100 000, Age-standardized) With Age = 60-64 Years, Envcause, Sex = Male\"",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR39_age-WHOAgeEnumY60T64_whosex": {
+    "dcid": "dc/topic/WHOAIR39_age-WHOAgeEnumY60T64_whosex",
+    "name": "\"Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) (per 100 000, Age-standardized) With Age = 60-64 Years, Sex\"",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR39_age-WHOAgeEnumY60T64_whosex-WHOSexEnumM": {
+    "dcid": "dc/topic/WHOAIR39_age-WHOAgeEnumY60T64_whosex-WHOSexEnumM",
+    "name": "\"Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) (per 100 000, Age-standardized) With Age = 60-64 Years, Sex = Male\"",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR39_age_whoenvcause-WHOEnvcauseEnumENVCAUSE068": {
+    "dcid": "dc/topic/WHOAIR39_age_whoenvcause-WHOEnvcauseEnumENVCAUSE068",
+    "name": "\"Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) (per 100 000, Age-standardized) With Age, Envcause = Trachea, Bronchus, Lung Cancers\"",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR39_age_whoenvcause-WHOEnvcauseEnumENVCAUSE068_whosex-WHOSexEnumM": {
+    "dcid": "dc/topic/WHOAIR39_age_whoenvcause-WHOEnvcauseEnumENVCAUSE068_whosex-WHOSexEnumM",
+    "name": "\"Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) (per 100 000, Age-standardized) With Age, Envcause = Trachea, Bronchus, Lung Cancers, Sex = Male\"",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR39_age_whosex-WHOSexEnumM": {
+    "dcid": "dc/topic/WHOAIR39_age_whosex-WHOSexEnumM",
+    "name": "\"Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) (per 100 000, Age-standardized) With Age, Sex = Male\"",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR39_whoenvcause": {
+    "dcid": "dc/topic/WHOAIR39_whoenvcause",
+    "name": "\"Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) (per 100 000, Age-standardized) by Envcause\"",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR39_whoenvcause-WHOEnvcauseEnumENVCAUSE068": {
+    "dcid": "dc/topic/WHOAIR39_whoenvcause-WHOEnvcauseEnumENVCAUSE068",
+    "name": "\"Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) (per 100 000, Age-standardized) With Envcause = Trachea, Bronchus, Lung Cancers\"",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR39_whoenvcause-WHOEnvcauseEnumENVCAUSE068_whosex": {
+    "dcid": "dc/topic/WHOAIR39_whoenvcause-WHOEnvcauseEnumENVCAUSE068_whosex",
+    "name": "\"Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) (per 100 000, Age-standardized) With Envcause = Trachea, Bronchus, Lung Cancers, Sex\"",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR39_whoenvcause-WHOEnvcauseEnumENVCAUSE068_whosex-WHOSexEnumM": {
+    "dcid": "dc/topic/WHOAIR39_whoenvcause-WHOEnvcauseEnumENVCAUSE068_whosex-WHOSexEnumM",
+    "name": "\"Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) (per 100 000, Age-standardized) With Envcause = Trachea, Bronchus, Lung Cancers, Sex = Male\"",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR39_whoenvcause_whosex-WHOSexEnumM": {
+    "dcid": "dc/topic/WHOAIR39_whoenvcause_whosex-WHOSexEnumM",
+    "name": "\"Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) (per 100 000, Age-standardized) With Envcause, Sex = Male\"",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR39_whosex": {
+    "dcid": "dc/topic/WHOAIR39_whosex",
+    "name": "\"Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) (per 100 000, Age-standardized) by Sex\"",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR39_whosex-WHOSexEnumM": {
+    "dcid": "dc/topic/WHOAIR39_whosex-WHOSexEnumM",
+    "name": "\"Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) (per 100 000, Age-standardized) With Sex = Male\"",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR4": {
+    "dcid": "dc/topic/WHOAIR4",
+    "name": "Ambient Air Pollution Attributable Deaths in Children Under 5 Years",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR41": {
+    "dcid": "dc/topic/WHOAIR41",
+    "name": "Ambient Air Pollution Attributable Deaths",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR42": {
+    "dcid": "dc/topic/WHOAIR42",
+    "name": "\"Ambient Air Pollution Attributable Death Rate (per 100 000 Population, Age-standardized)\"",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR43": {
+    "dcid": "dc/topic/WHOAIR43",
+    "name": "Ambient Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs)",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR45": {
+    "dcid": "dc/topic/WHOAIR45",
+    "name": "Ambient Air Pollution Attributable Number of Years Life Lost (YLLs)",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR46": {
+    "dcid": "dc/topic/WHOAIR46",
+    "name": "Years Life Lost (YLLs) Attributable To Ambient Air Pollution (age-standardized)",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR5": {
+    "dcid": "dc/topic/WHOAIR5",
+    "name": "Ambient Air Pollution Attributable Death Rate (per 100 000 Population)",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR51": {
+    "dcid": "dc/topic/WHOAIR51",
+    "name": "Household Air Pollution: Household Air Pollution Attributable Death Rate (per 100 000 Population)",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR52": {
+    "dcid": "dc/topic/WHOAIR52",
+    "name": "\"Household Air Pollution: Household Air Pollution Attributable Death Rate (per 100 000 Population, Age-standardized)\"",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR6": {
+    "dcid": "dc/topic/WHOAIR6",
+    "name": "Ambient Air Pollution Attributable Death Rate Per 100 000 Children Under 5 Years",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR7": {
+    "dcid": "dc/topic/WHOAIR7",
+    "name": "Ambient Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs)",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR71": {
+    "dcid": "dc/topic/WHOAIR71",
+    "name": "Ambient Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) in Children Under 15 Years",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR72": {
+    "dcid": "dc/topic/WHOAIR72",
+    "name": "Ambient Air Pollution Attributable Deaths in Children Under 15 Years",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR73": {
+    "dcid": "dc/topic/WHOAIR73",
+    "name": "Ambient Air Pollution Attributable Number of Years Life Lost (YLLs) in Children Under 15 Years",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR74": {
+    "dcid": "dc/topic/WHOAIR74",
+    "name": "Household Air Pollution: Household Air Pollution Attributable Deaths in Children Under 15 Years",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR75": {
+    "dcid": "dc/topic/WHOAIR75",
+    "name": "Household Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) in Children Under 15 Years",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR8": {
+    "dcid": "dc/topic/WHOAIR8",
+    "name": "Ambient Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) in Children Under 5 Years",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR9": {
+    "dcid": "dc/topic/WHOAIR9",
+    "name": "Ambient Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) (per 100 000 Population)",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAIR90": {
+    "dcid": "dc/topic/WHOAIR90",
+    "name": "\"Ambient Air Pollution Attributable Number of Disability-adjusted Life Years (DALYs) (per 100 000 Population, Age-standardized)\"",
+    "relevantVariables": null
+  },
+  "dc/topic/WHOAMRGLASSCOORD01": {
+    "dcid": "dc/topic/WHOAMRGLASSCOORD01",
+    "name": "Functioning National Antimicrobial Resistance (AMR) Surveillance Plan",
+    "relevantVariables": null
+  }
+}
