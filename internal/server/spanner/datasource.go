@@ -172,15 +172,60 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 	isExistenceRequest := !qo.date && !qo.value && !qo.facet && len(entities) > 0 && entityExpr == ""
 
 	if isExistenceRequest {
-		rows, err := sds.client.CheckVariableExistence(ctx, variables, entities)
-		if err != nil {
-			return nil, fmt.Errorf("error checking variable existence: %w", err)
+		if len(variables) == 0 {
+			rows, err := sds.client.CheckVariableExistence(ctx, variables, entities)
+			if err != nil {
+				return nil, fmt.Errorf("error checking variable existence: %w", err)
+			}
+			obs := make([]*Observation, 0, len(rows))
+			for _, row := range rows {
+				if len(row) != 2 {
+					continue
+				}
+				obs = append(obs, &Observation{
+					VariableMeasured: row[0],
+					ObservationAbout: row[1],
+				})
+			}
+			return obsToExistenceResponse(req, obs), nil
 		}
 
-		obs := make([]*Observation, 0, len(rows))
-		for _, row := range rows {
+		nodeToTypes, err := sds.client.FilterNodesByTypes(ctx, variables, []string{"StatVarGroup", "Topic"})
+		if err != nil {
+			return nil, fmt.Errorf("error filtering nodes by types: %w", err)
+		}
+
+		// We now split the variables we are searching for into two categories: svs and svgs/topics (groups)
+		// as these need to be handled differently.
+		var statVars []string
+		var groups []string
+		for _, v := range variables {
+			if types, ok := nodeToTypes[v]; ok && len(types) > 0 {
+				groups = append(groups, v)
+			} else {
+				statVars = append(statVars, v)
+			}
+		}
+
+		var allRows [][]string
+		if len(statVars) > 0 {
+			rows, err := sds.client.CheckVariableExistence(ctx, statVars, entities)
+			if err != nil {
+				return nil, fmt.Errorf("error checking variable existence: %w", err)
+			}
+			allRows = append(allRows, rows...)
+		}
+		if len(groups) > 0 {
+			rows, err := sds.client.CheckVariableGroupExistence(ctx, groups, entities)
+			if err != nil {
+				return nil, fmt.Errorf("error checking variable group existence: %w", err)
+			}
+			allRows = append(allRows, rows...)
+		}
+
+		obs := make([]*Observation, 0, len(allRows))
+		for _, row := range allRows {
 			if len(row) != 2 {
-				slog.Warn("CheckVariableExistence returned row with unexpected length", "length", len(row))
 				continue
 			}
 			obs = append(obs, &Observation{

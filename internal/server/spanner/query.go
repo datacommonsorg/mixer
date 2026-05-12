@@ -173,6 +173,139 @@ func (sc *spannerDatabaseClient) CheckVariableExistence(ctx context.Context, var
 	return queryDynamic(ctx, sc, *stmt)
 }
 
+// CheckVariableGroupExistence checks for the existence of observations for the given variable groups/topics and entities.
+// Returns a slice of rows, where each row contains [variable, entity] that has at least one observation.
+func (sc *spannerDatabaseClient) CheckVariableGroupExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
+	if len(variables) == 0 || len(entities) == 0 {
+		return [][]string{}, nil
+	}
+
+	// Step 1: Identify which variables are root nodes (have no parents).
+	// We are doing this because a query on root involve a massive join involving
+	// a large number of variables (causing a slow query and risk of timeout).
+	stmtRoots := spanner.Statement{
+		SQL: `SELECT DISTINCT subject_id
+			FROM Edge
+			WHERE predicate = 'specializationOf'
+			  AND subject_id IN UNNEST(@variables)`,
+		Params: map[string]interface{}{
+			"variables": variables,
+		},
+	}
+	rowsRoots, err := queryDynamic(ctx, sc, stmtRoots)
+	if err != nil {
+		return nil, err
+	}
+
+	hasParent := map[string]bool{}
+	for _, row := range rowsRoots {
+		if len(row) > 0 {
+			hasParent[row[0]] = true
+		}
+	}
+
+	var roots []string
+	var nonRoots []string
+	for _, v := range variables {
+		if !hasParent[v] {
+			roots = append(roots, v)
+		} else {
+			nonRoots = append(nonRoots, v)
+		}
+	}
+
+	var result [][]string
+
+	// Step 2: Get import_names for the entities
+	predicate := getImportFilterPredicate(entities[0])
+	sourceEdgesStmt := spanner.Statement{
+		SQL: `SELECT DISTINCT subject_id, object_id
+			FROM Edge
+			WHERE predicate = @predicate
+			  AND object_id IN UNNEST(@entities)`,
+		Params: map[string]interface{}{
+			"predicate": predicate,
+			"entities":  entities,
+		},
+	}
+
+	sourceEdgeRows, err := queryDynamic(ctx, sc, sourceEdgesStmt)
+	if err != nil {
+		return nil, err
+	}
+
+	importToEntities := map[string][]string{}
+	var importNames []string
+	for _, row := range sourceEdgeRows {
+		if len(row) != 2 {
+			continue
+		}
+		subjectID := row[0]
+		entity := row[1]
+
+		importName := subjectID
+		// Extract import name by dropping the 8-char prefix, mirroring SUBSTR(..., 9) in SQL queries.
+		if len(subjectID) > 8 {
+			importName = subjectID[8:]
+		}
+
+		importToEntities[importName] = append(importToEntities[importName], entity)
+		importNames = append(importNames, importName)
+	}
+
+	if len(importNames) == 0 {
+		return [][]string{}, nil
+	}
+	importNames = util.MergeDedupe(importNames, []string{})
+
+	// Handle roots: assume all found sources exist for roots.
+	for _, root := range roots {
+		for _, importName := range importNames {
+			if ents, ok := importToEntities[importName]; ok {
+				for _, entity := range ents {
+					result = append(result, []string{root, entity})
+				}
+			}
+		}
+	}
+
+	// Handle non-roots
+	if len(nonRoots) > 0 {
+		existenceQueryStmt := spanner.Statement{
+			SQL: `SELECT DISTINCT e.object_id AS variable, o.import_name
+				FROM Edge e
+				JOIN Observation o ON o.variable_measured = e.subject_id
+				WHERE e.predicate = 'linkedMemberOf'
+				  AND e.object_id IN UNNEST(@variables)
+				  AND o.import_name IN UNNEST(@import_names)`,
+			Params: map[string]interface{}{
+				"variables":    nonRoots,
+				"import_names": importNames,
+			},
+		}
+
+		existenceQueryRows, err := queryDynamic(ctx, sc, existenceQueryStmt)
+		if err != nil {
+			return nil, err
+		}
+
+		for _, row := range existenceQueryRows {
+			if len(row) != 2 {
+				continue
+			}
+			variable := row[0]
+			importName := row[1]
+			if ents, ok := importToEntities[importName]; ok {
+				for _, entity := range ents {
+					result = append(result, []string{variable, entity})
+				}
+			}
+		}
+	}
+
+	return result, nil
+}
+
 // GetObservationsContainedInPlace retrieves observations from Spanner given a list of variables and an entity expression.
 func (sc *spannerDatabaseClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
 	var observations []*Observation
