@@ -49,7 +49,7 @@ func TestFetchTopicsFromKGGolden(t *testing.T) {
 	}
 
 	// Trim relevant variables to at most 3 elements to keep the golden JSON size compact
-	for _, node := range got {
+	for _, node := range got.Topics {
 		if len(node.RelevantVariables) > 3 {
 			node.RelevantVariables = node.RelevantVariables[:3]
 		}
@@ -78,7 +78,7 @@ func TestFetchTopicsFromKGGolden(t *testing.T) {
 		t.Fatalf("Failed to read golden file: %v", err)
 	}
 
-	var want map[string]*TopicNode
+	var want *TopicHierarchy
 	if err := json.Unmarshal(data, &want); err != nil {
 		t.Fatalf("Failed to unmarshal golden: %v", err)
 	}

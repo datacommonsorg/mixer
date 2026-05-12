@@ -18,6 +18,7 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
+	"sort"
 	"strings"
 	"sync"
 	"time"
@@ -29,7 +30,9 @@ import (
 )
 
 const (
-	defaultPageSize = 1000
+	defaultPageSize      = 1000
+	rootTopicThreshold   = 10
+	defaultRootTopicDcid = "dc/topic/Root"
 )
 
 // TopicNode represents a topic and its immediate children.
@@ -41,8 +44,8 @@ type TopicNode struct {
 
 // TopicHierarchy represents the processed graph of topics.
 type TopicHierarchy struct {
-	Topics         map[string]*TopicNode `json:"topics"`
 	RootTopicDcids []string              `json:"rootTopicDcids"`
+	Topics         map[string]*TopicNode `json:"topics"`
 }
 
 // TopicVariableCache is a composite struct to allow synchronized invalidation
@@ -138,6 +141,60 @@ func parseCommaSeparatedList(val string) []string {
 func isSvpgDcid(dcid string) bool {
 	return strings.Contains(dcid, "/svpg/")
 }
+
+// isTopicDcid checks if the DCID belongs to a Topic.
+func isTopicDcid(dcid string) bool {
+	return strings.Contains(dcid, "/topic/")
+}
+
+// buildHierarchy processes the raw topics map, tracks parent-child relationships,
+// identifies root topics, and returns a populated TopicHierarchy.
+func (m *TopicCacheManager) buildHierarchy(topics map[string]*TopicNode) *TopicHierarchy {
+	defer util.TimeTrack(time.Now(), "topic: buildHierarchy")
+
+	// Set of all topics that are referenced as a child in any topic
+	childTopicsSet := make(map[string]struct{})
+	for _, t := range topics {
+		for _, childDcid := range t.RelevantVariables {
+			if isTopicDcid(childDcid) {
+				childTopicsSet[childDcid] = struct{}{}
+			}
+		}
+	}
+
+	// A topic is a root topic if it is never referenced as a child
+	var roots []string
+	hasDefaultRoot := false
+	for dcid := range topics {
+		if _, isChild := childTopicsSet[dcid]; !isChild {
+			roots = append(roots, dcid)
+			if dcid == defaultRootTopicDcid {
+				hasDefaultRoot = true
+			}
+		}
+	}
+
+	// Fallback Hack: If there are too many roots, and the default root "dc/topic/Root" exists,
+	// set it as the only root topic and log a warning instructing KG curation to be trimmed.
+	if len(roots) > rootTopicThreshold && hasDefaultRoot {
+		slog.Warn(
+			"Detected excessive number of root topics, falling back to single default root. Please trim the number of roots in the KG.",
+			"detectedRootCount", len(roots),
+			"fallbackRootDcid", defaultRootTopicDcid,
+		)
+		roots = []string{defaultRootTopicDcid}
+	} else {
+		// Sort root DCIDs alphabetically for determinism
+		sort.Strings(roots)
+	}
+
+	slog.Info("Topic hierarchy built", "totalTopics", len(topics), "rootCount", len(roots))
+	return &TopicHierarchy{
+		Topics:         topics,
+		RootTopicDcids: roots,
+	}
+}
+
 
 // parseTopicMembers parses the relevantVariableList arcs, extracting children and collecting referenced SVPGs.
 func parseTopicMembers(nodes *pbv2.Nodes, svpgSet map[string]struct{}) []string {
@@ -278,8 +335,8 @@ func (m *TopicCacheManager) fetchRelevantVariables(ctx context.Context, topicDci
 	return expandTopicMembers(topicToChildren, svpgToMembers), nil
 }
 
-// fetchTopicsFromKG fetches all topics and their relevant variables from the KG.
-func (m *TopicCacheManager) fetchTopicsFromKG(ctx context.Context) (map[string]*TopicNode, error) {
+// fetchTopicsFromKG fetches all topics and their relevant variables from the KG, builds the hierarchy, detects roots, and returns a TopicHierarchy.
+func (m *TopicCacheManager) fetchTopicsFromKG(ctx context.Context) (*TopicHierarchy, error) {
 	defer util.TimeTrack(time.Now(), "topic: fetchTopicsFromKG")
 	// Fetch core topic nodes, populating their DCID and Name.
 	topics, err := m.fetchTopicNodes(ctx)
@@ -288,7 +345,9 @@ func (m *TopicCacheManager) fetchTopicsFromKG(ctx context.Context) (map[string]*
 	}
 
 	if len(topics) == 0 {
-		return topics, nil
+		return &TopicHierarchy{
+			Topics: make(map[string]*TopicNode),
+		}, nil
 	}
 
 	// Collect topic DCIDs
@@ -310,6 +369,9 @@ func (m *TopicCacheManager) fetchTopicsFromKG(ctx context.Context) (map[string]*
 		}
 	}
 
-	return topics, nil
+	// Build the hierarchy and automatically discover root topics
+	hierarchy := m.buildHierarchy(topics)
+
+	return hierarchy, nil
 }
 
