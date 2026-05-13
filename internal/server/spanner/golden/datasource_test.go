@@ -597,7 +597,7 @@ func TestSpannerObservation_ExpressionExpansion(t *testing.T) {
 		// Mock GetNodeEdgesByID to return local child places
 		getNodeEdgesRes: map[string][]*spanner.Edge{
 			"geoId/06": {
-				{Value: "geoId/06002", Predicate: "containedInPlace"},
+				{Value: "geoId/06002", Predicate: "linkedContainedInPlace"},
 			},
 		},
 		// Mock GetObservations to return observations for merged list

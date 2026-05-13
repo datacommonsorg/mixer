@@ -247,21 +247,27 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 //   Inputs: ancestor="geoId/06", childType="County"
 //   Outputs: []string{"geoId/06001", "geoId/06002"}, nil
 func (sds *SpannerDataSource) fetchLocalChildPlaces(ctx context.Context, ancestor, childType string) ([]string, error) {
-	arc := &v2.Arc{
-		Out:        false, // <-
-		SingleProp: v2.ContainedInPlaceProperty,
-		Filter:     map[string][]string{"typeOf": {childType}},
+	property := fmt.Sprintf("<-%s+{typeOf:%s}", v2.ContainedInPlaceProperty, childType)
+	nodeReq := &pbv2.NodeRequest{
+		Nodes:    []string{ancestor},
+		Property: property,
 	}
-	localEdges, err := sds.client.GetNodeEdgesByID(ctx, []string{ancestor}, arc, 1000, 0)
+
+	// Call Node API to let it handle optimizations (e.g., mapping to linkedContainedInPlace).
+	// TODO: Handle iterating paged response if NextToken is present.
+	resp, err := sds.Node(ctx, nodeReq, 1000)
 	if err != nil {
+		slog.Error("SpannerDataSource: failed to get local child places", "error", err)
 		return nil, fmt.Errorf("error getting local child places: %w", err)
 	}
 
 	var localDcids []string
-	if edges, ok := localEdges[ancestor]; ok {
-		for _, edge := range edges {
-			if edge.Value != "" {
-				localDcids = append(localDcids, edge.Value)
+	for _, graph := range resp.Data {
+		for _, nodes := range graph.Arcs {
+			for _, node := range nodes.Nodes {
+				if node.Dcid != "" {
+					localDcids = append(localDcids, node.Dcid)
+				}
 			}
 		}
 	}
