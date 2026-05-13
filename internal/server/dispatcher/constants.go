@@ -17,5 +17,5 @@ package dispatcher
 // Custom unexported type for context keys prevents collisions across packages.
 type contextKey string
 
-// RelationExpressionExpandedEntities is the context key for expanded entities from relation expressions.
+// RelationExpressionExpandedEntities is the context key for expanded entities from pre-processed relation expressions.
 const RelationExpressionExpandedEntities contextKey = "RelationExpressionExpandedEntities"

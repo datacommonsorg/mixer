@@ -429,7 +429,7 @@ func main() {
 		// Relation Expression Processor
 		if remoteDataSource != nil {
 			slog.Info("remoteDataSource is configured, setting up relation expression processor")
-			var relationExpressionProcessor dispatcher.Processor = dispatcher.NewRelationExpressionProcessor(dataSources)
+			var relationExpressionProcessor dispatcher.Processor = dispatcher.NewRelationExpressionProcessor(remoteDataSource)
 			processors = append(processors, &relationExpressionProcessor)
 		}
 

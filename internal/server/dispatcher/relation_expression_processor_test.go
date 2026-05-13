@@ -12,7 +12,7 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
-	"github.com/datacommonsorg/mixer/internal/server/datasources"
+
 	"google.golang.org/protobuf/proto"
 )
 
@@ -132,14 +132,15 @@ func TestRelationExpressionProcessor_PreProcess(t *testing.T) {
 			expectedDCIDs:      nil,
 		},
 		{
-			name:        "Error: Remote call fails",
+			name:        "Fallback: Remote call fails, proceed without expansion",
 			requestType: TypeObservation,
 			initialRequest: &pbv2.ObservationRequest{
 				Entity: &pbv2.DcidOrExpression{Expression: "geoId/06<-containedInPlace+{typeOf:County}"},
 			},
 			hasRemoteMixer:     true,
 			mockNodeError:      fmt.Errorf("remote failed"),
-			expectedErr:        true,
+			expectedErr:        false,
+			expectedOutcome:    Continue,
 			expectNodeCalled:   true,
 			expectedContextKey: false,
 		},
@@ -164,8 +165,7 @@ func TestRelationExpressionProcessor_PreProcess(t *testing.T) {
 			if test.hasRemoteMixer {
 				remoteSource = mockRemote
 			}
-			ds := datasources.NewDataSources([]datasource.DataSource{mockRemote}, remoteSource)
-			processor := NewRelationExpressionProcessor(ds)
+			processor := NewRelationExpressionProcessor(remoteSource)
 
 			rc := &RequestContext{
 				Context:        ctx,

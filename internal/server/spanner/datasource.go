@@ -194,40 +194,24 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 	}
 
 	if entityExpr != "" {
-		containedInPlace, err := v2.ParseContainedInPlace(entityExpr)
+		mergedDcids, containedInPlace, err := sds.expandRelationExpression(ctx, entityExpr)
 		if err != nil {
-			return nil, fmt.Errorf("error getting observations (contained in): %v", err)
+			return nil, err
 		}
-
-		// Check if expanded DCIDs are available in context (passed by preprocessor).
-		if remoteDcids, ok := ctx.Value(dispatcher.RelationExpressionExpandedEntities).([]string); ok {
-			slog.Debug("SpannerDataSource: using expanded remote entities from context", "count", len(remoteDcids))
-			// 1. Fetch local child places from Spanner.
-			localDcids, err := sds.fetchLocalChildPlaces(ctx, containedInPlace.Ancestor, containedInPlace.ChildPlaceType)
+		if containedInPlace != nil {
+			slog.Debug("SpannerDataSource: context key not found, falling back to one-shot query")
+			observations, err = sds.client.GetObservationsContainedInPlace(ctx, variables, containedInPlace)
 			if err != nil {
-				return nil, err
+				return nil, fmt.Errorf("error getting observations (contained in): %v", err)
 			}
-			slog.Debug("SpannerDataSource: fetched local child places", "count", len(localDcids))
-
-			// 2. Merge local and remote DCIDs.
-			mergedDcids := append(localDcids, remoteDcids...)
-			slices.Sort(mergedDcids)
-			mergedDcids = slices.Compact(mergedDcids)
-
-			// 3. Fetch observations for the merged list.
+		} else {
 			if len(mergedDcids) == 0 {
+				slog.Info("SpannerDataSource: no child DCIDs found after merging local and remote")
 				return &pbv2.ObservationResponse{}, nil
 			}
 			observations, err = sds.client.GetObservations(ctx, variables, mergedDcids)
 			if err != nil {
 				return nil, fmt.Errorf("error getting observations for merged DCIDs: %w", err)
-			}
-		} else {
-			slog.Debug("SpannerDataSource: context key not found, falling back to one-shot query")
-			// Fallback to one-shot query if no remote data in context.
-			observations, err = sds.client.GetObservationsContainedInPlace(ctx, variables, containedInPlace)
-			if err != nil {
-				return nil, fmt.Errorf("error getting observations (contained in): %v", err)
 			}
 		}
 	} else {
@@ -240,6 +224,35 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 	observations = filterObservationsByDateAndFacet(observations, date, req.Filter)
 
 	return observationsToObservationResponse(req, observations), nil
+}
+
+// expandRelationExpression expands an entity expression to a list of DCIDs if possible (using context from preprocessor),
+// or returns a ContainedInPlace struct for fallback one-shot query.
+func (sds *SpannerDataSource) expandRelationExpression(ctx context.Context, entityExpr string) ([]string, *v2.ContainedInPlace, error) {
+	containedInPlace, err := v2.ParseContainedInPlace(entityExpr)
+	if err != nil {
+		return nil, nil, fmt.Errorf("error parsing containedInPlace: %v", err)
+	}
+
+	// Check if expanded DCIDs are available in context (passed by preprocessor).
+	if remoteDcids, ok := ctx.Value(dispatcher.RelationExpressionExpandedEntities).([]string); ok {
+		slog.Info("SpannerDataSource: using expanded remote entities from context", "count", len(remoteDcids))
+		// 1. Fetch local child places from Spanner.
+		localDcids, err := sds.fetchLocalChildPlaces(ctx, containedInPlace.Ancestor, containedInPlace.ChildPlaceType)
+		if err != nil {
+			return nil, nil, err
+		}
+		slog.Info("SpannerDataSource: fetched local child places", "count", len(localDcids))
+
+		// 2. Merge local and remote DCIDs.
+		mergedDcids := append(localDcids, remoteDcids...)
+		slices.Sort(mergedDcids)
+		mergedDcids = slices.Compact(mergedDcids)
+
+		return mergedDcids, nil, nil
+	}
+
+	return nil, containedInPlace, nil
 }
 
 // fetchLocalChildPlaces fetches child places from Spanner.

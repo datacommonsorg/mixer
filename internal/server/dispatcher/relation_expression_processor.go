@@ -21,23 +21,24 @@ import (
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
-	"github.com/datacommonsorg/mixer/internal/server/datasources"
+
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
 
-// RelationExpressionProcessor implements dispatcher.Processor to expand relation expressions.
+// RelationExpressionProcessor implements dispatcher.Processor to expand relation expressions
+// by fetching child entities from the provided datasource.
 type RelationExpressionProcessor struct {
-	dataSources *datasources.DataSources
+	source datasource.DataSource
 }
 
 // NewRelationExpressionProcessor creates a new RelationExpressionProcessor.
-func NewRelationExpressionProcessor(ds *datasources.DataSources) *RelationExpressionProcessor {
+func NewRelationExpressionProcessor(source datasource.DataSource) *RelationExpressionProcessor {
 	return &RelationExpressionProcessor{
-		dataSources: ds,
+		source: source,
 	}
 }
 
-// PreProcess handles expression expansion if a remote mixer is configured.
+// PreProcess handles expression expansion using the configured source.
 func (p *RelationExpressionProcessor) PreProcess(rc *RequestContext) (Outcome, error) {
 	// Only process observation requests.
 	if rc.Type != TypeObservation {
@@ -50,10 +51,8 @@ func (p *RelationExpressionProcessor) PreProcess(rc *RequestContext) (Outcome, e
 		return Continue, fmt.Errorf("failed to cast request to ObservationRequest")
 	}
 
-	remoteSource := p.dataSources.GetRemoteDataSource()
-
-	// Only process if there is an expression and a remote source is available.
-	if req.Entity == nil || req.Entity.Expression == "" || remoteSource == nil {
+	// Only process if there is an expression and a source is available.
+	if req.Entity == nil || req.Entity.Expression == "" || p.source == nil {
 		return Continue, nil
 	}
 
@@ -67,10 +66,11 @@ func (p *RelationExpressionProcessor) PreProcess(rc *RequestContext) (Outcome, e
 		return Continue, fmt.Errorf("failed to parse expression: %w", err)
 	}
 
-	// Fetch entities from remote source.
-	dcids, err := p.fetchRemoteEntities(rc.Context, remoteSource, containedInPlace)
+	// Fetch entities from source.
+	dcids, err := p.fetchEntities(rc.Context, p.source, containedInPlace)
 	if err != nil {
-		return Continue, err
+		slog.Warn("RelationExpressionProcessor: falling back to local-only expression expansion", "error", err)
+		return Continue, nil
 	}
 
 	// Add the list of DCIDs to context
@@ -80,14 +80,14 @@ func (p *RelationExpressionProcessor) PreProcess(rc *RequestContext) (Outcome, e
 	return Continue, nil
 }
 
-// fetchRemoteEntities calls the remote source to expand the expression.
+// fetchEntities calls the source to expand the expression.
 // Example:
 //
 //	Inputs: containedInPlace={Ancestor: "geoId/06", ChildPlaceType: "County"}
 //	Outputs: []string{"geoId/06001", "geoId/06003"}, nil
-func (p *RelationExpressionProcessor) fetchRemoteEntities(
+func (p *RelationExpressionProcessor) fetchEntities(
 	ctx context.Context,
-	remoteSource datasource.DataSource,
+	source datasource.DataSource,
 	containedInPlace *v2.ContainedInPlace,
 ) ([]string, error) {
 	property := fmt.Sprintf("<-containedInPlace+{typeOf:%s}", containedInPlace.ChildPlaceType)
@@ -96,12 +96,13 @@ func (p *RelationExpressionProcessor) fetchRemoteEntities(
 		Property: property,
 	}
 
-	// Call Node API on the remote source directly.
-	// Pass 0 for pageSize to match legacy flow (ignored by RemoteDataSource.Node).
-	resp, err := remoteSource.Node(ctx, nodeReq, 0)
+	// Call Node API on the source directly.
+	// PageSize (0) is ignored for now.
+	// TODO: iterate paged responses to compile full entity set
+	resp, err := source.Node(ctx, nodeReq, 0)
 	if err != nil {
-		slog.Error("RelationExpressionProcessor: Remote Node call failed", "error", err)
-		return nil, fmt.Errorf("failed to resolve expression via Remote Node API: %w", err)
+		slog.Error("RelationExpressionProcessor: Node call failed", "error", err)
+		return nil, fmt.Errorf("failed to resolve expression via Node API: %w", err)
 	}
 
 	var dcids []string
