@@ -639,6 +639,7 @@ func TestSpannerObservation_ExpressionExpansion(t *testing.T) {
 
 	if resp == nil {
 		t.Fatal("Expected non-nil response")
+		return
 	}
 
 	// Verify that we have data for both geoId/06001 and geoId/06002
@@ -695,6 +696,7 @@ func TestSpannerObservation_ExpressionExpansion_Fallback(t *testing.T) {
 
 	if resp == nil {
 		t.Fatal("Expected non-nil response")
+		return
 	}
 
 	byVariable := resp.ByVariable
@@ -738,6 +740,7 @@ func TestSpannerObservation_NoExpression(t *testing.T) {
 
 	if resp == nil {
 		t.Fatal("Expected non-nil response")
+		return
 	}
 
 	byVariable := resp.ByVariable
