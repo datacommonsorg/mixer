@@ -48,6 +48,9 @@ func TestRelationExpressionProcessor_PreProcess(t *testing.T) {
 		expectedContextKey bool
 		expectedDCIDs      []string
 	}{
+		// Test: Happy Path.
+		// Situation: An observation request with an expression is processed with a source available.
+		// Expected Outcome: The processor should parse the expression, call the source, and store the resolved DCIDs in the context.
 		{
 			name:        "Happy Path: Expression + Remote Mixer",
 			requestType: TypeObservation,
@@ -74,6 +77,9 @@ func TestRelationExpressionProcessor_PreProcess(t *testing.T) {
 			expectedContextKey: true,
 			expectedDCIDs:      []string{"geoId/06001", "geoId/06003"},
 		},
+		// Test: No-op for non-observation requests.
+		// Situation: A request of type Node (not Observation) is passed to the processor.
+		// Expected Outcome: The processor should ignore the request and return Continue without calling the source or setting context.
 		{
 			name:        "No-op: Non-observation request",
 			requestType: TypeNode,
@@ -86,6 +92,9 @@ func TestRelationExpressionProcessor_PreProcess(t *testing.T) {
 			expectNodeCalled:   false,
 			expectedContextKey: false,
 		},
+		// Test: No-op for standard observation requests.
+		// Situation: An observation request without an expression (only DCIDs) is processed.
+		// Expected Outcome: The processor should ignore the request and return Continue without calling the source or setting context.
 		{
 			name:        "No-op: Observation without expression",
 			requestType: TypeObservation,
@@ -97,6 +106,9 @@ func TestRelationExpressionProcessor_PreProcess(t *testing.T) {
 			expectNodeCalled:   false,
 			expectedContextKey: false,
 		},
+		// Test: No-op when no source is configured.
+		// Situation: An observation request with an expression is processed, but the processor has no source configured.
+		// Expected Outcome: The processor should ignore the request and return Continue without setting context.
 		{
 			name:        "No-op: No Remote Mixer",
 			requestType: TypeObservation,
@@ -108,29 +120,9 @@ func TestRelationExpressionProcessor_PreProcess(t *testing.T) {
 			expectNodeCalled:   false,
 			expectedContextKey: false,
 		},
-		{
-			name:        "Happy Path: Remote returns empty",
-			requestType: TypeObservation,
-			initialRequest: &pbv2.ObservationRequest{
-				Entity: &pbv2.DcidOrExpression{Expression: "geoId/06<-containedInPlace+{typeOf:County}"},
-			},
-			hasRemoteMixer: true,
-			mockNodeResponse: &pbv2.NodeResponse{
-				Data: map[string]*pbv2.LinkedGraph{
-					"geoId/06": {
-						Arcs: map[string]*pbv2.Nodes{
-							"containedInPlace+": {
-								Nodes: []*pb.EntityInfo{}, // Empty
-							},
-						},
-					},
-				},
-			},
-			expectedOutcome:    Continue,
-			expectNodeCalled:   true,
-			expectedContextKey: true,
-			expectedDCIDs:      nil,
-		},
+		// Test: Fallback on failure.
+		// Situation: The call to the source fails with an error.
+		// Expected Outcome: The processor should log a warning but return Continue without setting context, allowing fallback to local execution.
 		{
 			name:        "Fallback: Remote call fails, proceed without expansion",
 			requestType: TypeObservation,

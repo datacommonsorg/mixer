@@ -589,6 +589,7 @@ func TestBulkVariableGroupInfo_Filtering(t *testing.T) {
 	}
 }
 
+// TODO: Move unit tests to a separate test file since this file is meant for golden tests.
 func TestSpannerObservation_ExpressionExpansion(t *testing.T) {
 	ctx := context.Background()
 
