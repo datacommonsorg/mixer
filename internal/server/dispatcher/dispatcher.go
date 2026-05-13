@@ -25,55 +25,6 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-// RequestType represents the type of request.
-type RequestType string
-
-const (
-	TypeNode                  RequestType = "Node"
-	TypeNodeSearch            RequestType = "NodeSearch"
-	TypeObservation           RequestType = "Observation"
-	TypeResolve               RequestType = "Resolve"
-	TypeSparql                RequestType = "Sparql"
-	TypeEvent                 RequestType = "Event"
-	TypeBulkVariableInfo      RequestType = "BulkVariableInfo"
-	TypeBulkVariableGroupInfo RequestType = "BulkVariableGroupInfo"
-	TypeSdmxData              RequestType = "SdmxData"
-)
-
-// RequestContext holds the context for a given request.
-
-// NOTE: We are using the base proto.Message for requests and responses.
-// Other options were using generics or going with different *RequestContext struct for each type of request.
-// The downside of using a base type is that it needs casting wherever it it used.
-// The upside is that we only have one context object
-// and if there aren't many processors that deal with the RequestContext, casting in a small number of places is ok.
-// We can revisit and use a different approach if this proves to be cumbersome.
-type RequestContext struct {
-	context.Context
-	Type            RequestType
-	OriginalRequest proto.Message
-	CurrentRequest  proto.Message
-	CurrentResponse proto.Message
-}
-
-// Outcome represents the result of a processing step.
-type Outcome int
-
-const (
-	// Continue indicates that processing should continue.
-	// This should be the default outcome of most processing steps.
-	Continue Outcome = iota
-	// Done indicates that processing should stop.
-	// With this outcome, the current response is returned immediately.
-	Done
-)
-
-// Processor interface defines methods for performing pre and post processing operations.
-type Processor interface {
-	PreProcess(*RequestContext) (Outcome, error)
-	PostProcess(*RequestContext) (Outcome, error)
-}
-
 // Dispatcher struct handles requests by dispatching requests to various processors and datasources as appropriate.
 type Dispatcher struct {
 	processors []*Processor
