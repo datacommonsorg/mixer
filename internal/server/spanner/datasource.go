@@ -18,6 +18,7 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
+	"slices"
 	"sort"
 	"strings"
 
@@ -27,6 +28,7 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
+	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/recon"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	v2e "github.com/datacommonsorg/mixer/internal/server/v2/event"
@@ -160,7 +162,6 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 		return nil, fmt.Errorf("variable must be specified for entity.expression")
 	}
 
-	date := req.Date
 	var observations []*Observation
 	var err error
 
@@ -191,25 +192,107 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 		return obsToExistenceResponse(req, obs), nil
 	}
 
-	if entityExpr != "" {
-		containedInPlace, err := v2.ParseContainedInPlace(entityExpr)
-		if err != nil {
-			return nil, fmt.Errorf("error getting observations (contained in): %v", err)
-		}
-		observations, err = sds.client.GetObservationsContainedInPlace(ctx, variables, containedInPlace)
-		if err != nil {
-			return nil, fmt.Errorf("error getting observations (contained in): %v", err)
-		}
-	} else {
-		observations, err = sds.client.GetObservations(ctx, variables, entities)
-		if err != nil {
-			return nil, fmt.Errorf("error getting observations: %v", err)
-		}
+	observations, err = sds.fetchObservations(ctx, req)
+	if err != nil {
+		return nil, err
 	}
 
-	observations = filterObservationsByDateAndFacet(observations, date, req.Filter)
+	observations = filterObservationsByDateAndFacet(observations, req.Date, req.Filter)
 
 	return observationsToObservationResponse(req, observations), nil
+}
+
+// fetchObservations retrieves observations from Spanner, supporting both direct entity lists and relation expressions (federated or local-only).
+func (sds *SpannerDataSource) fetchObservations(ctx context.Context, req *pbv2.ObservationRequest) ([]*Observation, error) {
+	entityExpr := req.GetEntity().GetExpression()
+	variables := req.GetVariable().GetDcids()
+	entities := req.GetEntity().GetDcids()
+
+	if entityExpr == "" {
+		// Path 1: Direct fetch for list of entities.
+		slog.Debug("SpannerDataSource: fetching observations for direct entity list", "count", len(entities))
+		return sds.client.GetObservations(ctx, variables, entities)
+	}
+
+	containedInPlace, err := v2.ParseContainedInPlace(entityExpr)
+	if err != nil {
+		slog.Error("Spanner.Observation: failed to parse containedInPlace expression", "expression", entityExpr, "error", err)
+		return nil, fmt.Errorf("error parsing containedInPlace: %v", err)
+	}
+
+	// Check if expanded DCIDs are available in context (passed by preprocessor).
+	preExpandedDcids, ok := ctx.Value(dispatcher.RelationExpressionExpandedEntities).([]string)
+	if !ok {
+		// Path 2: Local-only execution using one-shot containment query.
+		slog.Debug("Spanner.Observation: no expanded entities found in context, using one-shot containment query")
+		return sds.client.GetObservationsContainedInPlace(ctx, variables, containedInPlace)
+	}
+
+	// Path 3: We have pre-expanded entities from the context (e.g., from a remote source).
+	// We must combine them by expanding the expression locally, then query for observations for the merged set.
+	mergedDcids, err := sds.expandAndMergeEntities(ctx, containedInPlace, preExpandedDcids)
+	if err != nil {
+		return nil, err
+	}
+
+	if len(mergedDcids) == 0 {
+		slog.Info("Spanner.Observation: no child DCIDs found after merging local and pre-expanded")
+		return []*Observation{}, nil
+	}
+
+	slog.Debug("Spanner.Observation: fetching observations for merged entities", "count", len(mergedDcids))
+	return sds.client.GetObservations(ctx, variables, mergedDcids)
+}
+
+// expandAndMergeEntities fetches local child places and merges them with pre-expanded DCIDs.
+func (sds *SpannerDataSource) expandAndMergeEntities(ctx context.Context, containedInPlace *v2.ContainedInPlace, preExpandedDcids []string) ([]string, error) {
+	slog.Info("Spanner.Observation: using pre-expanded entities from context", "count", len(preExpandedDcids))
+	
+	// 1. Fetch local child places from Spanner.
+	localDcids, err := sds.fetchLocalChildPlaces(ctx, containedInPlace.Ancestor, containedInPlace.ChildPlaceType)
+	if err != nil {
+		return nil, err
+	}
+	slog.Info("Spanner.Observation: fetched local child places", "count", len(localDcids))
+
+	// 2. Merge local and remote DCIDs.
+	mergedDcids := append(localDcids, preExpandedDcids...)
+	slices.Sort(mergedDcids)
+	mergedDcids = slices.Compact(mergedDcids)
+
+	return mergedDcids, nil
+}
+
+// fetchLocalChildPlaces fetches child places from Spanner.
+// Example:
+//   Inputs: ancestor="geoId/06", childType="County"
+//   Outputs: []string{"geoId/06001", "geoId/06002"}, nil
+func (sds *SpannerDataSource) fetchLocalChildPlaces(ctx context.Context, ancestor, childType string) ([]string, error) {
+	property := fmt.Sprintf("<-%s+{typeOf:%s}", v2.ContainedInPlaceProperty, childType)
+	nodeReq := &pbv2.NodeRequest{
+		Nodes:    []string{ancestor},
+		Property: property,
+	}
+
+	// Call Node API to let it handle optimizations (e.g., mapping to linkedContainedInPlace).
+	// TODO: Handle iterating paged response if NextToken is present.
+	resp, err := sds.Node(ctx, nodeReq, 1000)
+	if err != nil {
+		slog.Error("Spanner.Observation: failed to get local child places", "error", err)
+		return nil, fmt.Errorf("error getting local child places: %w", err)
+	}
+
+	var localDcids []string
+	for _, graph := range resp.Data {
+		for _, nodes := range graph.Arcs {
+			for _, node := range nodes.Nodes {
+				if node.Dcid != "" {
+					localDcids = append(localDcids, node.Dcid)
+				}
+			}
+		}
+	}
+	return localDcids, nil
 }
 
 // NodeSearch searches nodes in the spanner graph.
