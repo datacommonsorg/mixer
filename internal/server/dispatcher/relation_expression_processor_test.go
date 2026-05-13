@@ -18,13 +18,13 @@ import (
 
 type mockSource struct {
 	datasource.DataSource // Embed to avoid implementing all methods
-	id         string
-	sourceType datasource.DataSourceType
-	nodeFunc   func(context.Context, *pbv2.NodeRequest, int) (*pbv2.NodeResponse, error)
+	id                    string
+	sourceType            datasource.DataSourceType
+	nodeFunc              func(context.Context, *pbv2.NodeRequest, int) (*pbv2.NodeResponse, error)
 }
 
 func (m *mockSource) Type() datasource.DataSourceType { return m.sourceType }
-func (m *mockSource) Id() string { return m.id }
+func (m *mockSource) Id() string                      { return m.id }
 func (m *mockSource) Node(ctx context.Context, req *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
 	if m.nodeFunc != nil {
 		return m.nodeFunc(ctx, req, pageSize)
@@ -199,7 +199,7 @@ func TestRelationExpressionProcessor_PreProcess(t *testing.T) {
 			}
 
 			if test.expectedContextKey {
-				val := rc.Context.Value(RelationExpressionExpandedEntities)
+				val := rc.Value(RelationExpressionExpandedEntities)
 				if val == nil {
 					t.Errorf("Expected context key %v to be set", RelationExpressionExpandedEntities)
 				} else {
@@ -211,7 +211,7 @@ func TestRelationExpressionProcessor_PreProcess(t *testing.T) {
 					}
 				}
 			} else {
-				val := rc.Context.Value(RelationExpressionExpandedEntities)
+				val := rc.Value(RelationExpressionExpandedEntities)
 				if val != nil {
 					t.Errorf("Expected context key %v to NOT be set, got %v", RelationExpressionExpandedEntities, val)
 				}
