@@ -109,6 +109,29 @@ func TestRelationExpressionProcessor_PreProcess(t *testing.T) {
 			expectedContextKey: false,
 		},
 		{
+			name:        "Happy Path: Remote returns empty",
+			requestType: TypeObservation,
+			initialRequest: &pbv2.ObservationRequest{
+				Entity: &pbv2.DcidOrExpression{Expression: "geoId/06<-containedInPlace+{typeOf:County}"},
+			},
+			hasRemoteMixer: true,
+			mockNodeResponse: &pbv2.NodeResponse{
+				Data: map[string]*pbv2.LinkedGraph{
+					"geoId/06": {
+						Arcs: map[string]*pbv2.Nodes{
+							"containedInPlace+": {
+								Nodes: []*pb.EntityInfo{}, // Empty
+							},
+						},
+					},
+				},
+			},
+			expectedOutcome:    Continue,
+			expectNodeCalled:   true,
+			expectedContextKey: true,
+			expectedDCIDs:      nil,
+		},
+		{
 			name:        "Error: Remote call fails",
 			requestType: TypeObservation,
 			initialRequest: &pbv2.ObservationRequest{

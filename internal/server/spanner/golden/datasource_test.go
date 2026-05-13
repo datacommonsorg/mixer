@@ -662,3 +662,89 @@ func TestSpannerObservation_ExpressionExpansion(t *testing.T) {
 		t.Errorf("Expected data for geoId/06002 (local place)")
 	}
 }
+
+func TestSpannerObservation_ExpressionExpansion_Fallback(t *testing.T) {
+	ctx := context.Background()
+
+	// Mock Spanner client
+	client := &mockSpannerClient{
+		// Mock GetObservationsContainedInPlace to return observations
+		getObservationsContainedInPlaceRes: []*spanner.Observation{
+			{
+				VariableMeasured: "Count_Person",
+				ObservationAbout: "geoId/06002", // Local place
+				Observations: []*spanner.DateValue{
+					{Date: "2020", Value: "67890"},
+				},
+			},
+		},
+	}
+
+	ds := spanner.NewSpannerDataSource(client, nil, nil, false)
+
+	req := &pbv2.ObservationRequest{
+		Variable: &pbv2.DcidOrExpression{Dcids: []string{"Count_Person"}},
+		Entity:   &pbv2.DcidOrExpression{Expression: "geoId/06<-containedInPlace+{typeOf:County}"},
+		Select:   []string{"variable", "entity", "value"},
+	}
+
+	resp, err := ds.Observation(ctx, req)
+	if err != nil {
+		t.Fatalf("Observation failed: %v", err)
+	}
+
+	if resp == nil {
+		t.Fatal("Expected non-nil response")
+	}
+
+	byVariable := resp.ByVariable
+	countPerson := byVariable["Count_Person"]
+	byEntity := countPerson.ByEntity
+
+	if _, ok := byEntity["geoId/06002"]; !ok {
+		t.Errorf("Expected data for geoId/06002 (local place)")
+	}
+}
+
+func TestSpannerObservation_NoExpression(t *testing.T) {
+	ctx := context.Background()
+
+	// Mock Spanner client
+	client := &mockSpannerClient{
+		// Mock GetObservations to return observations
+		getObservationsRes: []*spanner.Observation{
+			{
+				VariableMeasured: "Count_Person",
+				ObservationAbout: "geoId/06",
+				Observations: []*spanner.DateValue{
+					{Date: "2020", Value: "12345"},
+				},
+			},
+		},
+	}
+
+	ds := spanner.NewSpannerDataSource(client, nil, nil, false)
+
+	req := &pbv2.ObservationRequest{
+		Variable: &pbv2.DcidOrExpression{Dcids: []string{"Count_Person"}},
+		Entity:   &pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}},
+		Select:   []string{"variable", "entity", "value"},
+	}
+
+	resp, err := ds.Observation(ctx, req)
+	if err != nil {
+		t.Fatalf("Observation failed: %v", err)
+	}
+
+	if resp == nil {
+		t.Fatal("Expected non-nil response")
+	}
+
+	byVariable := resp.ByVariable
+	countPerson := byVariable["Count_Person"]
+	byEntity := countPerson.ByEntity
+
+	if _, ok := byEntity["geoId/06"]; !ok {
+		t.Errorf("Expected data for geoId/06")
+	}
+}
