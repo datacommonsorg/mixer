@@ -26,7 +26,9 @@ import (
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
+	"github.com/datacommonsorg/mixer/internal/server/redis"
 	"github.com/datacommonsorg/mixer/internal/util"
+	"google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -35,40 +37,98 @@ const (
 	defaultRootTopicDcid = "dc/topic/Root"
 )
 
-// TopicNode represents a topic and its immediate children.
-type TopicNode struct {
-	Dcid              string   `json:"dcid"`
-	Name              string   `json:"name"`
-	RelevantVariables []string `json:"relevantVariables"` // Can be SVs or Sub-Topics
-}
+var (
+	redisCacheKeyProto = &wrapperspb.StringValue{Value: "topic/topic_cache"}
+)
 
-// TopicHierarchy represents the processed graph of topics.
-type TopicHierarchy struct {
-	RootTopicDcids []string              `json:"rootTopicDcids"`
-	Topics         map[string]*TopicNode `json:"topics"`
-}
-
-// TopicVariableCache is a composite struct to allow synchronized invalidation
-// of both Topics and SVs in the future.
+// TopicVariableCache is an in-memory composite struct caching server-wide topic hierarchy
+// and variable metadata.
 type TopicVariableCache struct {
-	TopicHierarchy *TopicHierarchy `json:"topicHierarchy"`
-	// SVs map[string]*SVInfo `json:"svs,omitempty"` // Placeholder for follow-up task
+	TopicHierarchy *pbv2.TopicHierarchy
+	// SVs map[string]*SVInfo // Placeholder for follow-up task
 }
 
 // TopicCacheManager manages the loading, building, and caching of topics.
 type TopicCacheManager struct {
-	ds datasource.DataSource
+	ds          datasource.DataSource
+	redisClient redis.CacheClient
 
 	mu    sync.RWMutex
 	cache *TopicVariableCache
 }
 
 // NewTopicCacheManager creates a new TopicCacheManager.
-func NewTopicCacheManager(ds datasource.DataSource) *TopicCacheManager {
+func NewTopicCacheManager(ds datasource.DataSource, redisClient redis.CacheClient) *TopicCacheManager {
 	return &TopicCacheManager{
-		ds: ds,
+		ds:          ds,
+		redisClient: redisClient,
 	}
 }
+
+// GetHierarchy returns the currently cached TopicHierarchy in a thread-safe manner.
+func (m *TopicCacheManager) GetHierarchy() *pbv2.TopicHierarchy {
+	m.mu.RLock()
+	defer m.mu.RUnlock()
+	if m.cache == nil {
+		return nil
+	}
+	return m.cache.TopicHierarchy
+}
+
+// Update thread-safely updates the internal in-memory TopicVariableCache.
+// Note: Updating the hierarchy replaces the entire composite cache object. Any other cached metadata
+// (such as Statistical Variables) will be refreshed/repopulated alongside the hierarchy.
+func (m *TopicCacheManager) Update(hierarchy *pbv2.TopicHierarchy) {
+	m.mu.Lock()
+	defer m.mu.Unlock()
+	m.cache = &TopicVariableCache{
+		TopicHierarchy: hierarchy,
+	}
+}
+
+// LoadHierarchy retrieves the cached TopicHierarchy.
+// It first checks the local L1 in-memory cache.
+// If L1 is empty/cold, it checks the L2 Redis cache.
+// If both L1 and L2 are misses, it synchronously loads from the KG, populates both L1 and L2 caches, and returns it.
+func (m *TopicCacheManager) LoadHierarchy(ctx context.Context) (*pbv2.TopicHierarchy, error) {
+	// Check local L1 in-memory cache
+	if h := m.GetHierarchy(); h != nil {
+		return h, nil
+	}
+
+	// Try loading from L2 Redis cache
+	if m.redisClient != nil {
+		var cachedHierarchy pbv2.TopicHierarchy
+		if found, err := m.redisClient.GetCachedResponse(ctx, redisCacheKeyProto, &cachedHierarchy); found && err == nil {
+			slog.Info("Topic cache hit in Redis")
+			m.Update(&cachedHierarchy)
+			return &cachedHierarchy, nil
+		} else if err != nil {
+			slog.Error("Failed to read topic cache from Redis", "error", err)
+		}
+	}
+
+	// L1 & L2 Miss: synchronous load from KG
+	slog.Info("Topic cache miss: loading synchronously from KG")
+	hierarchy, err := m.FetchTopicsFromKG(ctx)
+	if err != nil {
+		return nil, fmt.Errorf("failed to load topic cache from KG during miss: %w", err)
+	}
+
+	m.Update(hierarchy)
+
+	// Populate Redis warm L2 cache
+	if m.redisClient != nil {
+		if err := m.redisClient.CacheResponse(ctx, redisCacheKeyProto, hierarchy); err != nil {
+			slog.Error("Failed to write topic cache to Redis", "error", err)
+		} else {
+			slog.Info("Saved topic cache in Redis successfully")
+		}
+	}
+
+	return hierarchy, nil
+}
+
 
 // extractName attempts to extract a name for the entity.
 // It prioritizes Name, then Value, and falls back to Dcid.
@@ -86,8 +146,8 @@ func extractName(entity *pb.EntityInfo) string {
 }
 
 // fetchTopicNodes fetches all topic nodes from the KG.
-// It returns a map of DCID to newly instantiated TopicNodes with Dcid and Name populated.
-func (m *TopicCacheManager) fetchTopicNodes(ctx context.Context) (map[string]*TopicNode, error) {
+// It returns a map of DCID to newly instantiated TopicNode with Dcid and Name populated.
+func (m *TopicCacheManager) fetchTopicNodes(ctx context.Context) (map[string]*pbv2.TopicNode, error) {
 	defer util.TimeTrack(time.Now(), "topic: fetchTopicNodes")
 	req := &pbv2.NodeRequest{
 		Nodes:    []string{"Topic"},
@@ -97,9 +157,9 @@ func (m *TopicCacheManager) fetchTopicNodes(ctx context.Context) (map[string]*To
 	if err != nil {
 		return nil, fmt.Errorf("failed to fetch topic nodes: %w", err)
 	}
-	slog.Info("fetchTopicNodes response data", "data", resp.GetData())
+	slog.Debug("fetchTopicNodes response data", "data", resp.GetData())
 
-	topics := make(map[string]*TopicNode)
+	topics := make(map[string]*pbv2.TopicNode)
 	graph, ok := resp.GetData()["Topic"]
 	if !ok {
 		return topics, nil
@@ -115,7 +175,7 @@ func (m *TopicCacheManager) fetchTopicNodes(ctx context.Context) (map[string]*To
 		if dcid == "" {
 			continue
 		}
-		topics[dcid] = &TopicNode{
+		topics[dcid] = &pbv2.TopicNode{
 			Dcid: dcid,
 			Name: extractName(n),
 		}
@@ -149,7 +209,7 @@ func isTopicDcid(dcid string) bool {
 
 // buildHierarchy processes the raw topics map, tracks parent-child relationships,
 // identifies root topics, and returns a populated TopicHierarchy.
-func (m *TopicCacheManager) buildHierarchy(topics map[string]*TopicNode) *TopicHierarchy {
+func (m *TopicCacheManager) buildHierarchy(topics map[string]*pbv2.TopicNode) *pbv2.TopicHierarchy {
 	defer util.TimeTrack(time.Now(), "topic: buildHierarchy")
 
 	// Set of all topics that are referenced as a child in any topic
@@ -189,7 +249,7 @@ func (m *TopicCacheManager) buildHierarchy(topics map[string]*TopicNode) *TopicH
 	}
 
 	slog.Info("Topic hierarchy built", "totalTopics", len(topics), "rootCount", len(roots))
-	return &TopicHierarchy{
+	return &pbv2.TopicHierarchy{
 		Topics:         topics,
 		RootTopicDcids: roots,
 	}
@@ -313,7 +373,7 @@ func (m *TopicCacheManager) fetchRelevantVariables(ctx context.Context, topicDci
 	topicToChildren := make(map[string][]string)
 	svpgSet := make(map[string]struct{})
 
-	// Step 1: Fetch Topic relations
+	// Fetch Topic relations
 	if err := m.fetchTopicMembers(ctx, topicDcids, topicToChildren, svpgSet); err != nil {
 		return nil, err
 	}
@@ -323,7 +383,7 @@ func (m *TopicCacheManager) fetchRelevantVariables(ctx context.Context, topicDci
 		return expandTopicMembers(topicToChildren, nil), nil
 	}
 
-	// Step 2: Fetch SVPG member lists
+	// Fetch SVPG member lists
 	svpgDcids := util.StringSetToSlice(svpgSet)
 
 	svpgToMembers := make(map[string][]string)
@@ -331,12 +391,12 @@ func (m *TopicCacheManager) fetchRelevantVariables(ctx context.Context, topicDci
 		return nil, err
 	}
 
-	// Step 3: Perform in-memory inline expansion of SVPGs
+	// Perform in-memory inline expansion of SVPGs
 	return expandTopicMembers(topicToChildren, svpgToMembers), nil
 }
 
-// fetchTopicsFromKG fetches all topics and their relevant variables from the KG, builds the hierarchy, detects roots, and returns a TopicHierarchy.
-func (m *TopicCacheManager) fetchTopicsFromKG(ctx context.Context) (*TopicHierarchy, error) {
+// FetchTopicsFromKG fetches all topics and their relevant variables from the KG, builds the hierarchy, detects roots, and returns a TopicHierarchy.
+func (m *TopicCacheManager) FetchTopicsFromKG(ctx context.Context) (*pbv2.TopicHierarchy, error) {
 	defer util.TimeTrack(time.Now(), "topic: fetchTopicsFromKG")
 	// Fetch core topic nodes, populating their DCID and Name.
 	topics, err := m.fetchTopicNodes(ctx)
@@ -345,8 +405,8 @@ func (m *TopicCacheManager) fetchTopicsFromKG(ctx context.Context) (*TopicHierar
 	}
 
 	if len(topics) == 0 {
-		return &TopicHierarchy{
-			Topics: make(map[string]*TopicNode),
+		return &pbv2.TopicHierarchy{
+			Topics: make(map[string]*pbv2.TopicNode),
 		}, nil
 	}
 
@@ -374,4 +434,7 @@ func (m *TopicCacheManager) fetchTopicsFromKG(ctx context.Context) (*TopicHierar
 
 	return hierarchy, nil
 }
+
+
+
 

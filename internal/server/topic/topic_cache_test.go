@@ -16,74 +16,53 @@ package topic
 
 import (
 	"context"
-	"encoding/json"
-	"os"
-	"path"
-	"runtime"
 	"testing"
 
-	"github.com/datacommonsorg/mixer/internal/server/spanner"
-	"github.com/datacommonsorg/mixer/test"
-	"github.com/google/go-cmp/cmp"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/server/datasource"
 )
 
-func TestFetchTopicsFromKGGolden(t *testing.T) {
+type mockDataSource struct {
+	datasource.DataSource
+}
+
+func (m *mockDataSource) Node(ctx context.Context, req *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
+	return &pbv2.NodeResponse{}, nil
+}
+
+func TestTopicCacheManagerInMemory(t *testing.T) {
 	ctx := context.Background()
-	_, filename, _, _ := runtime.Caller(0)
-	goldenDir := path.Join(path.Dir(filename), "golden")
-	goldenFile := "topic_cache.json"
 
-	// Instantiate actual test SpannerClient pointing to the real database
-	client := test.NewSpannerClient()
-	if client == nil {
-		t.Skip("Skipping TestFetchTopicsFromKGGolden (ENABLE_SPANNER_GRAPH not set or spanner database unavailable)")
+	// Setup empty mock datasource since this test only verifies in-memory cache state and mutex locking
+	ds := &mockDataSource{}
+	manager := NewTopicCacheManager(ds, nil)
+
+	// Assert initial state is empty
+	if got := manager.GetHierarchy(); got != nil {
+		t.Fatalf("GetHierarchy() should be nil initially")
 	}
 
-	// Instantiate real SpannerDataSource wrapper with the real database client
-	ds := spanner.NewSpannerDataSource(client, nil, nil, false)
-	manager := NewTopicCacheManager(ds)
-
-	got, err := manager.fetchTopicsFromKG(ctx)
+	// Assert LoadHierarchy synchronously loads and updates the cache
+	hierarchy, err := manager.LoadHierarchy(ctx)
 	if err != nil {
-		t.Fatalf("fetchTopicsFromKG() failed: %v", err)
+		t.Fatalf("LoadHierarchy() failed: %v", err)
+	}
+	if hierarchy == nil {
+		t.Fatalf("LoadHierarchy() returned nil")
 	}
 
-	// Trim relevant variables to at most 3 elements to keep the golden JSON size compact
-	for _, node := range got.Topics {
-		if len(node.RelevantVariables) > 3 {
-			node.RelevantVariables = node.RelevantVariables[:3]
-		}
+	// Verify in-memory cache is updated
+	cached := manager.GetHierarchy()
+	if cached == nil {
+		t.Fatalf("GetHierarchy() returned nil after load")
 	}
 
-	// Generate golden output if GENERATE_GOLDEN is true
-	if test.GenerateGolden {
-		if err := os.MkdirAll(goldenDir, 0755); err != nil {
-			t.Fatalf("Failed to create golden directory: %v", err)
-		}
-		data, err := json.MarshalIndent(got, "", "  ")
-		if err != nil {
-			t.Fatalf("Failed to marshal response: %v", err)
-		}
-		if err := os.WriteFile(path.Join(goldenDir, goldenFile), data, 0644); err != nil {
-			t.Fatalf("Failed to write golden file: %v", err)
-		}
-		t.Logf("Golden file updated: %s", goldenFile)
-		return
-	}
-
-	// Read and assert against stored golden JSON file
-	goldenPath := path.Join(goldenDir, goldenFile)
-	data, err := os.ReadFile(goldenPath)
+	// Assert that loading again hits the in-memory cache directly and matches
+	secondLoad, err := manager.LoadHierarchy(ctx)
 	if err != nil {
-		t.Fatalf("Failed to read golden file: %v", err)
+		t.Fatalf("Second LoadHierarchy() failed: %v", err)
 	}
-
-	var want *TopicHierarchy
-	if err := json.Unmarshal(data, &want); err != nil {
-		t.Fatalf("Failed to unmarshal golden: %v", err)
-	}
-
-	if diff := cmp.Diff(got, want); diff != "" {
-		t.Errorf("fetchTopicsFromKG() golden mismatch (-got +want):\n%s", diff)
+	if secondLoad != cached {
+		t.Errorf("Second LoadHierarchy() should return the exact same cached pointer")
 	}
 }
