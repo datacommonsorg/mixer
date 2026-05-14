@@ -45,6 +45,7 @@ serviceGroups:
     resources:
       memoryRequest: "4G"
       memoryLimit: "4G"
+      cpuRequest: "100m"
   recon:
     replicas: 4
   observation:
@@ -54,6 +55,7 @@ serviceGroups:
     resources:
       memoryRequest: "4G"
       memoryLimit: "4G"
+      cpuRequest: "500m"
   default:
     replicas: 2
 

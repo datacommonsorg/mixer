@@ -43,6 +43,11 @@ func NewDataSources(sources []datasource.DataSource, remoteDataSource datasource
 	return &DataSources{sources, remoteDataSource}
 }
 
+// GetRemoteDataSource returns the remote data source.
+func (ds *DataSources) GetRemoteDataSource() datasource.DataSource {
+	return ds.remoteDataSource
+}
+
 // GetSources returns the list of data source IDs.
 func (ds *DataSources) GetSources() []string {
 	sources := make([]string, 0, len(ds.sources))

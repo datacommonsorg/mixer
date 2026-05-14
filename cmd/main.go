@@ -397,6 +397,7 @@ func main() {
 
 	// DataSources
 	dataSources := datasources.NewDataSources(sources, remoteDataSource)
+	slog.Info("DataSources initialized", "sources", dataSources.GetSources())
 
 	// Processors
 	processors := []*dispatcher.Processor{}
@@ -408,6 +409,7 @@ func main() {
 			slog.Error("Failed to create data source cache", "error", err)
 			os.Exit(1)
 		}
+		slog.Info("In-memory data source cache initialized successfully")
 
 		// Cache Processor
 		if *useRedis && *redisInfo != "" {
@@ -423,19 +425,26 @@ func main() {
 			var redisProcessor dispatcher.Processor = redis.NewCacheProcessor(redisClient)
 			processors = append(processors, &redisProcessor)
 		}
-		slog.Info("After Redis setup")
+
+		// Relation Expression Processor
+		if remoteDataSource != nil {
+			slog.Info("remoteDataSource is configured, setting up relation expression processor")
+			var relationExpressionProcessor dispatcher.Processor = dispatcher.NewRelationExpressionProcessor(remoteDataSource)
+			processors = append(processors, &relationExpressionProcessor)
+		}
 
 		// Calculation Processor
 		if flags.UseStatisticalCalculation {
+			slog.Info("Setting up calculation processor")
 			var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, dataSourceCache.SVFormula(ctx))
 			processors = append(processors, &calculationProcessor)
 
 		}
-		slog.Info("After calculation processor setup")
 	}
 
 	// Dispatcher
 	dispatcher := dispatcher.NewDispatcher(processors, dataSources)
+	slog.Info("Dispatcher initialized", "processorsCount", len(processors))
 
 	// Create server object
 	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs, *embeddingsServerURL, *resolveEmbeddingsIndexes, *useSpannerGraph)
