@@ -279,7 +279,6 @@ func (sds *SpannerDataSource) fetchLocalChildPlaces(ctx context.Context, ancesto
 	}
 
 	// Call Node API to let it handle optimizations (e.g., mapping to linkedContainedInPlace).
-
 	resp, err := datasource.NodeFetchAll(ctx, sds, nodeReq, fetchAllPageSize)
 	if err != nil {
 		return nil, err
