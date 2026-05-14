@@ -16,7 +16,9 @@ package topic
 
 import (
 	"context"
+	"sync"
 	"testing"
+	"time"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
@@ -24,9 +26,14 @@ import (
 
 type mockDataSource struct {
 	datasource.DataSource
+	mu        sync.Mutex
+	callCount int
 }
 
 func (m *mockDataSource) Node(ctx context.Context, req *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
+	m.mu.Lock()
+	m.callCount++
+	m.mu.Unlock()
 	return &pbv2.NodeResponse{}, nil
 }
 
@@ -38,31 +45,56 @@ func TestTopicCacheManagerInMemory(t *testing.T) {
 	manager := NewTopicCacheManager(ds, nil)
 
 	// Assert initial state is empty
-	if got := manager.GetHierarchy(); got != nil {
-		t.Fatalf("GetHierarchy() should be nil initially")
+	if got := manager.CachedHierarchy(); got != nil {
+		t.Fatalf("CachedHierarchy() should be nil initially")
 	}
 
-	// Assert LoadHierarchy synchronously loads and updates the cache
-	hierarchy, err := manager.LoadHierarchy(ctx)
+	// Assert GetHierarchy synchronously loads and updates the cache
+	hierarchy, err := manager.GetHierarchy(ctx)
 	if err != nil {
-		t.Fatalf("LoadHierarchy() failed: %v", err)
+		t.Fatalf("GetHierarchy() failed: %v", err)
 	}
 	if hierarchy == nil {
-		t.Fatalf("LoadHierarchy() returned nil")
+		t.Fatalf("GetHierarchy() returned nil")
 	}
 
 	// Verify in-memory cache is updated
-	cached := manager.GetHierarchy()
+	cached := manager.CachedHierarchy()
 	if cached == nil {
-		t.Fatalf("GetHierarchy() returned nil after load")
+		t.Fatalf("CachedHierarchy() returned nil after load")
 	}
 
 	// Assert that loading again hits the in-memory cache directly and matches
-	secondLoad, err := manager.LoadHierarchy(ctx)
+	secondLoad, err := manager.GetHierarchy(ctx)
 	if err != nil {
-		t.Fatalf("Second LoadHierarchy() failed: %v", err)
+		t.Fatalf("Second GetHierarchy() failed: %v", err)
 	}
 	if secondLoad != cached {
-		t.Errorf("Second LoadHierarchy() should return the exact same cached pointer")
+		t.Errorf("Second GetHierarchy() should return the exact same cached pointer")
+	}
+}
+
+func TestTopicCacheManagerRefresher(t *testing.T) {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	ds := &mockDataSource{}
+	manager := NewTopicCacheManager(ds, nil)
+
+	// Start refresher with a fast interval
+	manager.Start(ctx, 10*time.Millisecond)
+
+	// Let ticker fire a couple of times
+	time.Sleep(35 * time.Millisecond)
+
+	// Verify Close shuts down goroutines cleanly
+	manager.Close()
+
+	ds.mu.Lock()
+	count := ds.callCount
+	ds.mu.Unlock()
+
+	if count < 2 {
+		t.Errorf("Expected refresher to trigger LoadHierarchy at least 2 times, got %d", count)
 	}
 }
