@@ -27,6 +27,7 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/redis"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/protobuf/types/known/wrapperspb"
 )
 
@@ -45,6 +46,14 @@ var (
 type TopicVariableCache struct {
 	TopicHierarchy *pbv2.TopicHierarchy
 	// SVs map[string]*SVInfo // Placeholder for follow-up task
+}
+
+// String implements fmt.Stringer to provide a concise summary of the cached hierarchy contents.
+func (c *TopicVariableCache) String() string {
+	if c == nil || c.TopicHierarchy == nil {
+		return "TopicVariableCache{topicCount: 0, rootCount: 0}"
+	}
+	return fmt.Sprintf("TopicVariableCache{topicCount: %d, rootCount: %d}", len(c.TopicHierarchy.GetTopics()), len(c.TopicHierarchy.GetRootTopicDcids()))
 }
 
 // TopicCacheManager manages the loading, building, and caching of topics.
@@ -71,8 +80,14 @@ func NewTopicCacheManager(ds datasource.DataSource, redisClient redis.CacheClien
 }
 
 // Start starts the background goroutine to periodically refresh the topic hierarchy cache from the KG.
+// It performs an initial synchronous load before starting the background ticker loop.
 func (m *TopicCacheManager) Start(ctx context.Context, interval time.Duration) {
 	m.startOnce.Do(func() {
+		slog.Info("Performing initial topic cache load")
+		if _, err := m.LoadHierarchy(ctx); err != nil {
+			slog.Error("Error during initial topic cache load", "error", err)
+		}
+
 		m.ticker = time.NewTicker(interval)
 		m.stopCh = make(chan struct{})
 		m.wg.Add(1)
@@ -127,6 +142,8 @@ func (m *TopicCacheManager) Update(hierarchy *pbv2.TopicHierarchy) {
 	m.cache = &TopicVariableCache{
 		TopicHierarchy: hierarchy,
 	}
+
+	slog.Info("Topic cache updated in memory", "cache", m.cache.String())
 }
 
 // GetHierarchy retrieves the cached TopicHierarchy.
@@ -147,6 +164,7 @@ func (m *TopicCacheManager) GetHierarchy(ctx context.Context) (*pbv2.TopicHierar
 // LoadHierarchy loads the TopicHierarchy either from the L2 Redis cache or synchronously from the KG.
 // It populates both L1 and L2 caches upon loading.
 func (m *TopicCacheManager) LoadHierarchy(ctx context.Context) (*pbv2.TopicHierarchy, error) {
+	defer util.TimeTrack(time.Now(), "topic: LoadHierarchy")
 	// Try loading from L2 Redis cache
 	if m.redisClient != nil {
 		var cachedHierarchy pbv2.TopicHierarchy
