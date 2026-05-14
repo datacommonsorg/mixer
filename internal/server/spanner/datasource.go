@@ -44,6 +44,10 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
+// fetchAllPageSize is used when we want to fetch all pages of nodes.
+// 1000 is chosen as an initial balance between minimizing round-trips and OOM risks.
+const fetchAllPageSize = 1000
+
 // svgGroupInfoExclusionList contains StatVarGroup IDs that should be excluded
 // from BulkVariableGroupInfo responses (e.g., hidden nodes).
 var svgGroupInfoExclusionList = map[string]struct{}{
@@ -247,7 +251,7 @@ func (sds *SpannerDataSource) fetchObservations(ctx context.Context, req *pbv2.O
 // expandAndMergeEntities fetches local child places and merges them with pre-expanded DCIDs.
 func (sds *SpannerDataSource) expandAndMergeEntities(ctx context.Context, containedInPlace *v2.ContainedInPlace, preExpandedDcids []string) ([]string, error) {
 	slog.Info("Spanner.Observation: using pre-expanded entities from context", "count", len(preExpandedDcids))
-	
+
 	// 1. Fetch local child places from Spanner.
 	localDcids, err := sds.fetchLocalChildPlaces(ctx, containedInPlace.Ancestor, containedInPlace.ChildPlaceType)
 	if err != nil {
@@ -275,8 +279,7 @@ func (sds *SpannerDataSource) fetchLocalChildPlaces(ctx context.Context, ancesto
 	}
 
 	// Call Node API to let it handle optimizations (e.g., mapping to linkedContainedInPlace).
-	// TODO: Handle iterating paged response if NextToken is present.
-	resp, err := sds.Node(ctx, nodeReq, 1000)
+	resp, err := datasource.NodeFetchAll(ctx, sds, nodeReq, fetchAllPageSize)
 	if err != nil {
 		slog.Error("Spanner.Observation: failed to get local child places", "error", err)
 		return nil, fmt.Errorf("error getting local child places: %w", err)
