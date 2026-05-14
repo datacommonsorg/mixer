@@ -44,6 +44,10 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
+// fetchAllPageSize is used when we want to fetch all pages of nodes.
+// 1000 is chosen as an initial balance between minimizing round-trips and OOM risks.
+const fetchAllPageSize = 1000
+
 // svgGroupInfoExclusionList contains StatVarGroup IDs that should be excluded
 // from BulkVariableGroupInfo responses (e.g., hidden nodes).
 var svgGroupInfoExclusionList = map[string]struct{}{
@@ -265,9 +269,8 @@ func (sds *SpannerDataSource) expandAndMergeEntities(ctx context.Context, contai
 
 // fetchLocalChildPlaces fetches child places from Spanner.
 // Example:
-//
-//	Inputs: ancestor="geoId/06", childType="County"
-//	Outputs: []string{"geoId/06001", "geoId/06002"}, nil
+//   Inputs: ancestor="geoId/06", childType="County"
+//   Outputs: []string{"geoId/06001", "geoId/06002"}, nil
 func (sds *SpannerDataSource) fetchLocalChildPlaces(ctx context.Context, ancestor, childType string) ([]string, error) {
 	property := fmt.Sprintf("<-%s+{typeOf:%s}", v2.ContainedInPlaceProperty, childType)
 	nodeReq := &pbv2.NodeRequest{
@@ -277,7 +280,7 @@ func (sds *SpannerDataSource) fetchLocalChildPlaces(ctx context.Context, ancesto
 
 	// Call Node API to let it handle optimizations (e.g., mapping to linkedContainedInPlace).
 
-	resp, err := datasource.NodeFetchAll(ctx, sds, nodeReq, 1000)
+	resp, err := datasource.NodeFetchAll(ctx, sds, nodeReq, fetchAllPageSize)
 	if err != nil {
 		return nil, err
 	}
