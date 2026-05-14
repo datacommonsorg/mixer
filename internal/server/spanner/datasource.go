@@ -281,7 +281,8 @@ func (sds *SpannerDataSource) fetchLocalChildPlaces(ctx context.Context, ancesto
 	// Call Node API to let it handle optimizations (e.g., mapping to linkedContainedInPlace).
 	resp, err := datasource.NodeFetchAll(ctx, sds, nodeReq, fetchAllPageSize)
 	if err != nil {
-		return nil, err
+		slog.Error("Spanner.Observation: failed to get local child places", "error", err)
+		return nil, fmt.Errorf("error getting local child places: %w", err)
 	}
 
 	var localDcids []string
