@@ -21,6 +21,7 @@ import (
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
+	"github.com/datacommonsorg/mixer/internal/server/datasources"
 
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
@@ -96,13 +97,10 @@ func (p *RelationExpressionProcessor) fetchEntities(
 		Property: property,
 	}
 
-	// Call Node API on the source directly.
-	// PageSize (0) is ignored for now.
-	// TODO: iterate paged responses to compile full entity set
-	resp, err := source.Node(ctx, nodeReq, 0)
+	// Call Node API on the source, fetching all pages.
+	resp, err := datasource.NodeFetchAll(ctx, source, nodeReq, datasources.DefaultPageSize)
 	if err != nil {
-		slog.Error("RelationExpressionProcessor: Node call failed", "error", err)
-		return nil, fmt.Errorf("failed to resolve expression via Node API: %w", err)
+		return nil, err
 	}
 
 	var dcids []string

@@ -247,7 +247,7 @@ func (sds *SpannerDataSource) fetchObservations(ctx context.Context, req *pbv2.O
 // expandAndMergeEntities fetches local child places and merges them with pre-expanded DCIDs.
 func (sds *SpannerDataSource) expandAndMergeEntities(ctx context.Context, containedInPlace *v2.ContainedInPlace, preExpandedDcids []string) ([]string, error) {
 	slog.Info("Spanner.Observation: using pre-expanded entities from context", "count", len(preExpandedDcids))
-	
+
 	// 1. Fetch local child places from Spanner.
 	localDcids, err := sds.fetchLocalChildPlaces(ctx, containedInPlace.Ancestor, containedInPlace.ChildPlaceType)
 	if err != nil {
@@ -265,8 +265,9 @@ func (sds *SpannerDataSource) expandAndMergeEntities(ctx context.Context, contai
 
 // fetchLocalChildPlaces fetches child places from Spanner.
 // Example:
-//   Inputs: ancestor="geoId/06", childType="County"
-//   Outputs: []string{"geoId/06001", "geoId/06002"}, nil
+//
+//	Inputs: ancestor="geoId/06", childType="County"
+//	Outputs: []string{"geoId/06001", "geoId/06002"}, nil
 func (sds *SpannerDataSource) fetchLocalChildPlaces(ctx context.Context, ancestor, childType string) ([]string, error) {
 	property := fmt.Sprintf("<-%s+{typeOf:%s}", v2.ContainedInPlaceProperty, childType)
 	nodeReq := &pbv2.NodeRequest{
@@ -275,11 +276,10 @@ func (sds *SpannerDataSource) fetchLocalChildPlaces(ctx context.Context, ancesto
 	}
 
 	// Call Node API to let it handle optimizations (e.g., mapping to linkedContainedInPlace).
-	// TODO: Handle iterating paged response if NextToken is present.
-	resp, err := sds.Node(ctx, nodeReq, 1000)
+
+	resp, err := datasource.NodeFetchAll(ctx, sds, nodeReq, 1000)
 	if err != nil {
-		slog.Error("Spanner.Observation: failed to get local child places", "error", err)
-		return nil, fmt.Errorf("error getting local child places: %w", err)
+		return nil, err
 	}
 
 	var localDcids []string

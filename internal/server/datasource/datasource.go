@@ -16,10 +16,13 @@ package datasource
 
 import (
 	"context"
+	"fmt"
+	"log/slog"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"google.golang.org/protobuf/proto"
 )
 
 // DataSourceType represents the type of data source.
@@ -45,4 +48,61 @@ type DataSource interface {
 	BulkVariableInfo(context.Context, *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error)
 	BulkVariableGroupInfo(context.Context, *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error)
 	SdmxData(context.Context, *pb.SdmxDataQuery) (*pb.SdmxDataResult, error)
+}
+
+// NodeFetchAll fetches all NodeResponse pages for a given request by repeatedly calling ds.Node
+// as long as a NextToken is returned and merges into single response.
+func NodeFetchAll(ctx context.Context, ds DataSource, req *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
+
+	// NOTE: Consider introducing datasource-specific default page sizes in the future.
+	if pageSize <= 0 {
+		return nil, fmt.Errorf("pageSize must be positive")
+	}
+
+	// Make initial call.
+	resp, err := ds.Node(ctx, req, pageSize)
+	if err != nil {
+		slog.Error("NodeFetchAll: initial fetch failed", "error", err)
+		return nil, err
+	}
+
+	if resp.NextToken == "" {
+		return resp, nil
+	}
+
+	// Clone the request to avoid modifying the caller's object when setting NextToken.
+	reqClone := proto.Clone(req).(*pbv2.NodeRequest)
+	
+	// Initialize accumulated response with data from the first page.
+	accumulatedResp := resp
+	
+	for accumulatedResp.NextToken != "" {
+		reqClone.NextToken = accumulatedResp.NextToken
+		
+		nextResp, err := ds.Node(ctx, reqClone, pageSize)
+		if err != nil {
+			slog.Error("NodeFetchAll: subsequent fetch failed", "nextToken", reqClone.NextToken, "error", err)
+			return nil, err
+		}
+		
+		// Merge nextResp into accumulatedResp.
+		accumulatedResp.NextToken = nextResp.NextToken
+		for subjectID, newGraph := range nextResp.Data {
+			accumulatedGraph, ok := accumulatedResp.Data[subjectID]
+			if !ok {
+				accumulatedResp.Data[subjectID] = newGraph
+				continue
+			}
+			for prop, newNodes := range newGraph.Arcs {
+				accumulatedNodes, ok := accumulatedGraph.Arcs[prop]
+				if !ok {
+					accumulatedGraph.Arcs[prop] = newNodes
+					continue
+				}
+				accumulatedNodes.Nodes = append(accumulatedNodes.Nodes, newNodes.Nodes...)
+			}
+		}
+	}
+
+	return accumulatedResp, nil
 }
