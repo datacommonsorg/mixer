@@ -13,201 +13,125 @@ import (
 
 type mockDataSource struct {
 	DataSource
-	nodeFunc func(ctx context.Context, req *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error)
+	responses []*pbv2.NodeResponse
+	errs      []error
+	calls     int
 }
 
 func (m *mockDataSource) Node(ctx context.Context, req *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
-	return m.nodeFunc(ctx, req, pageSize)
+	if m.calls >= len(m.responses) {
+		return nil, errors.New("too many calls")
+	}
+	resp := m.responses[m.calls]
+	err := m.errs[m.calls]
+	m.calls++
+	return resp, err
+}
+
+// makeNodeResponse helper generates the standard test response graph.
+func makeNodeResponse(nextToken string, childDcids ...string) *pbv2.NodeResponse {
+	var nodes []*pb.EntityInfo
+	for _, dcid := range childDcids {
+		nodes = append(nodes, &pb.EntityInfo{Dcid: dcid})
+	}
+	return &pbv2.NodeResponse{
+		NextToken: nextToken,
+		Data: map[string]*pbv2.LinkedGraph{
+			"geoId/06": {
+				Arcs: map[string]*pbv2.Nodes{
+					"containedInPlace": {Nodes: nodes},
+				},
+			},
+		},
+	}
 }
 
 func TestNodeFetchAll(t *testing.T) {
 	ctx := context.Background()
+	req := &pbv2.NodeRequest{Nodes: []string{"geoId/06"}}
 
-	// Test: Single page response.
-	// Situation: The data source returns a response with no NextToken.
-	// Expectation: The helper returns the response directly without further calls.
-	t.Run("SinglePage", func(t *testing.T) {
-		mockDS := &mockDataSource{
-			nodeFunc: func(ctx context.Context, req *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
-				return &pbv2.NodeResponse{
-					Data: map[string]*pbv2.LinkedGraph{
-						"geoId/06": {
-							Arcs: map[string]*pbv2.Nodes{
-								"containedInPlace": {
-									Nodes: []*pb.EntityInfo{{Dcid: "geoId/06001"}},
-								},
-							},
-						},
-					},
-				}, nil
+	cases := []struct {
+		name      string
+		responses []*pbv2.NodeResponse
+		errs      []error
+		want      *pbv2.NodeResponse
+		wantErr   bool
+		errStr    string
+	}{
+		// Test: Single page response.
+		// Situation: The data source returns a response with no NextToken.
+		// Expectation: The helper returns the response directly without further calls.
+		{
+			name: "SinglePage",
+			responses: []*pbv2.NodeResponse{
+				makeNodeResponse("", "geoId/06001"),
 			},
-		}
-
-		req := &pbv2.NodeRequest{Nodes: []string{"geoId/06"}}
-		resp, err := NodeFetchAll(ctx, mockDS, req, 10)
-		if err != nil {
-			t.Fatalf("NodeFetchAll failed: %v", err)
-		}
-
-		expected := &pbv2.NodeResponse{
-			Data: map[string]*pbv2.LinkedGraph{
-				"geoId/06": {
-					Arcs: map[string]*pbv2.Nodes{
-						"containedInPlace": {
-							Nodes: []*pb.EntityInfo{{Dcid: "geoId/06001"}},
-						},
-					},
-				},
+			errs: []error{nil},
+			want: makeNodeResponse("", "geoId/06001"),
+		},
+		// Test: Multi-page response.
+		// Situation: The data source returns 3 pages of data, linked by NextToken.
+		// Expectation: The helper loops 3 times, fetches all pages, and merges the nodes correctly.
+		{
+			name: "MultiPage",
+			responses: []*pbv2.NodeResponse{
+				makeNodeResponse("token1", "geoId/06001"),
+				makeNodeResponse("token2", "geoId/06002"),
+				makeNodeResponse("", "geoId/06003"),
 			},
-		}
+			errs: []error{nil, nil, nil},
+			want: makeNodeResponse("", "geoId/06001", "geoId/06002", "geoId/06003"),
+		},
+		// Test: Error on initial call.
+		// Situation: The data source fails on the very first call.
+		// Expectation: The helper immediately returns the error.
+		{
+			name:      "InitialError",
+			responses: []*pbv2.NodeResponse{nil},
+			errs:      []error{errors.New("initial error")},
+			wantErr:   true,
+			errStr:    "initial error",
+		},
+		// Test: Error on subsequent call.
+		// Situation: The data source succeeds on the first call but fails on the second.
+		// Expectation: The helper returns the error encountered on the second call.
+		{
+			name: "SubsequentError",
+			responses: []*pbv2.NodeResponse{
+				makeNodeResponse("token1", "geoId/06001"),
+				nil,
+			},
+			errs:    []error{nil, errors.New("subsequent error")},
+			wantErr: true,
+			errStr:  "subsequent error",
+		},
+	}
 
-		if diff := cmp.Diff(expected, resp, protocmp.Transform()); diff != "" {
-			t.Errorf("NodeFetchAll mismatch (-want +got):\n%s", diff)
-		}
-	})
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			mockDS := &mockDataSource{
+				responses: tc.responses,
+				errs:      tc.errs,
+			}
 
-	// Test: Multi-page response.
-	// Situation: The data source returns 3 pages of data, linked by NextToken.
-	// Expectation: The helper loops 3 times, fetches all pages, and merges the nodes correctly.
-	t.Run("MultiPage", func(t *testing.T) {
-		calls := 0
-		mockDS := &mockDataSource{
-			nodeFunc: func(ctx context.Context, req *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
-				calls++
-				switch calls {
-				case 1:
-					return &pbv2.NodeResponse{
-						Data: map[string]*pbv2.LinkedGraph{
-							"geoId/06": {
-								Arcs: map[string]*pbv2.Nodes{
-									"containedInPlace": {
-										Nodes: []*pb.EntityInfo{{Dcid: "geoId/06001"}},
-									},
-								},
-							},
-						},
-						NextToken: "token1",
-					}, nil
-				case 2:
-					if req.NextToken != "token1" {
-						return nil, errors.New("unexpected nextToken")
-					}
-					return &pbv2.NodeResponse{
-						Data: map[string]*pbv2.LinkedGraph{
-							"geoId/06": {
-								Arcs: map[string]*pbv2.Nodes{
-									"containedInPlace": {
-										Nodes: []*pb.EntityInfo{{Dcid: "geoId/06002"}},
-									},
-								},
-							},
-						},
-						NextToken: "token2",
-					}, nil
-				case 3:
-					if req.NextToken != "token2" {
-						return nil, errors.New("unexpected nextToken")
-					}
-					return &pbv2.NodeResponse{
-						Data: map[string]*pbv2.LinkedGraph{
-							"geoId/06": {
-								Arcs: map[string]*pbv2.Nodes{
-									"containedInPlace": {
-										Nodes: []*pb.EntityInfo{{Dcid: "geoId/06003"}},
-									},
-								},
-							},
-						},
-					}, nil
-				default:
-					return nil, errors.New("too many calls")
+			got, err := NodeFetchAll(ctx, mockDS, req, 10)
+			if (err != nil) != tc.wantErr {
+				t.Fatalf("NodeFetchAll() error = %v, wantErr %v", err, tc.wantErr)
+			}
+			if tc.wantErr {
+				if err.Error() != tc.errStr {
+					t.Errorf("Expected error '%s', got '%v'", tc.errStr, err)
 				}
-			},
-		}
+				return
+			}
 
-		req := &pbv2.NodeRequest{Nodes: []string{"geoId/06"}}
-		resp, err := NodeFetchAll(ctx, mockDS, req, 10)
-		if err != nil {
-			t.Fatalf("NodeFetchAll failed: %v", err)
-		}
+			if diff := cmp.Diff(tc.want, got, protocmp.Transform()); diff != "" {
+				t.Errorf("NodeFetchAll() mismatch (-want +got):\n%s", diff)
+			}
 
-		expected := &pbv2.NodeResponse{
-			Data: map[string]*pbv2.LinkedGraph{
-				"geoId/06": {
-					Arcs: map[string]*pbv2.Nodes{
-						"containedInPlace": {
-							Nodes: []*pb.EntityInfo{
-								{Dcid: "geoId/06001"},
-								{Dcid: "geoId/06002"},
-								{Dcid: "geoId/06003"},
-							},
-						},
-					},
-				},
-			},
-		}
-
-		if diff := cmp.Diff(expected, resp, protocmp.Transform()); diff != "" {
-			t.Errorf("NodeFetchAll mismatch (-want +got):\n%s", diff)
-		}
-		if calls != 3 {
-			t.Errorf("Expected 3 calls, got %d", calls)
-		}
-	})
-
-	// Test: Error on initial call.
-	// Situation: The data source fails on the very first call.
-	// Expectation: The helper immediately returns the error.
-	t.Run("InitialError", func(t *testing.T) {
-		mockDS := &mockDataSource{
-			nodeFunc: func(ctx context.Context, req *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
-				return nil, errors.New("initial error")
-			},
-		}
-
-		req := &pbv2.NodeRequest{Nodes: []string{"geoId/06"}}
-		_, err := NodeFetchAll(ctx, mockDS, req, 10)
-		if err == nil {
-			t.Fatal("Expected error, got nil")
-		}
-		if err.Error() != "initial error" {
-			t.Errorf("Expected 'initial error', got '%v'", err)
-		}
-	})
-
-	// Test: Error on subsequent call.
-	// Situation: The data source succeeds on the first call but fails on the second.
-	// Expectation: The helper returns the error encountered on the second call.
-	t.Run("SubsequentError", func(t *testing.T) {
-		calls := 0
-		mockDS := &mockDataSource{
-			nodeFunc: func(ctx context.Context, req *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
-				calls++
-				if calls == 1 {
-					return &pbv2.NodeResponse{
-						Data: map[string]*pbv2.LinkedGraph{
-							"geoId/06": {
-								Arcs: map[string]*pbv2.Nodes{
-									"containedInPlace": {
-										Nodes: []*pb.EntityInfo{{Dcid: "geoId/06001"}},
-									},
-								},
-							},
-						},
-						NextToken: "token1",
-					}, nil
-				}
-				return nil, errors.New("subsequent error")
-			},
-		}
-
-		req := &pbv2.NodeRequest{Nodes: []string{"geoId/06"}}
-		_, err := NodeFetchAll(ctx, mockDS, req, 10)
-		if err == nil {
-			t.Fatal("Expected error, got nil")
-		}
-		if err.Error() != "subsequent error" {
-			t.Errorf("Expected 'subsequent error', got '%v'", err)
-		}
-	})
+			if mockDS.calls != len(tc.responses) {
+				t.Errorf("Expected %d calls, got %d", len(tc.responses), mockDS.calls)
+			}
+		})
+	}
 }
