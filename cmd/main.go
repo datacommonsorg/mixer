@@ -460,7 +460,12 @@ func main() {
 	var topicCacheManager *topic.TopicCacheManager
 	if spannerDS != nil && flags.EnableEmbeddingsResolver {
 		slog.Info("Initializing topic cache manager")
-		topicCacheManager = topic.NewTopicCacheManager(spannerDS, redisCacheClient)
+		// Assign to interface only if concrete pointer is non-nil to avoid typed nil interface panics.
+		var cacheClient redis.CacheClient
+		if redisCacheClient != nil {
+			cacheClient = redisCacheClient
+		}
+		topicCacheManager = topic.NewTopicCacheManager(spannerDS, cacheClient)
 		topicCacheManager.Start(ctx, topicCacheRefreshInterval)
 		defer topicCacheManager.Close()
 	}
