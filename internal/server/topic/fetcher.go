@@ -98,7 +98,6 @@ func (m *TopicCacheManager) fetchTopicNodes(ctx context.Context) (map[string]*pb
 	if err != nil {
 		return nil, fmt.Errorf("failed to fetch topic nodes: %w", err)
 	}
-	slog.Debug("fetchTopicNodes response data", "data", resp.GetData())
 
 	topics := make(map[string]*pb.TopicNode)
 	graph, ok := resp.GetData()["Topic"]
