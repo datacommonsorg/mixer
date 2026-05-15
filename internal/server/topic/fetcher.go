@@ -201,6 +201,8 @@ func expandTopicMembers(topicToChildren map[string][]string, svpgToMembers map[s
 							expanded = append(expanded, m)
 						}
 					}
+				} else {
+					slog.Warn("Referenced SVPG not found in datasource; dropping from topic", "svpgDcid", childDcid, "topicDcid", topicDcid)
 				}
 			} else {
 				if _, exists := seen[childDcid]; !exists {
@@ -304,29 +306,36 @@ func (m *TopicCacheManager) buildHierarchy(topics map[string]*pb.TopicNode) *pb.
 
 	// A topic is a root topic if it is never referenced as a child
 	var roots []string
-	hasDefaultRoot := false
+	rootsMap := make(map[string]struct{})
 	for dcid := range topics {
 		if _, isChild := childTopicsSet[dcid]; !isChild {
 			roots = append(roots, dcid)
-			if dcid == defaultRootTopicDcid {
-				hasDefaultRoot = true
-			}
+			rootsMap[dcid] = struct{}{}
 		}
 	}
 
-	// Fallback Hack: If there are too many roots, and the default root "dc/topic/Root" exists,
-	// set it as the only root topic and log a warning instructing KG curation to be trimmed.
-	if len(roots) > rootTopicThreshold && hasDefaultRoot {
-		slog.Warn(
-			"Detected excessive number of root topics, falling back to single default root. Please trim the number of roots in the KG.",
-			"detectedRootCount", len(roots),
-			"fallbackRootDcid", defaultRootTopicDcid,
-		)
-		roots = []string{defaultRootTopicDcid}
-	} else {
-		// Sort root DCIDs alphabetically for determinism
-		sort.Strings(roots)
+	// Fallback Hack: If there are too many roots, filter the detected roots down to only the curated default roots
+	// that actually exist in the detected roots list. Log a warning instructing KG curation to be trimmed.
+	if len(roots) > rootTopicThreshold {
+		var fallbackRoots []string
+		for _, defaultRoot := range defaultRootTopicDcids {
+			if _, exists := rootsMap[defaultRoot]; exists {
+				fallbackRoots = append(fallbackRoots, defaultRoot)
+			}
+		}
+
+		if len(fallbackRoots) > 0 {
+			slog.Warn(
+				"Detected excessive number of root topics, falling back to curated default roots. Please trim the number of roots in the KG.",
+				"detectedRootCount", len(roots),
+				"fallbackRoots", fallbackRoots,
+			)
+			roots = fallbackRoots
+		}
 	}
+
+	// Sort root DCIDs alphabetically for determinism
+	sort.Strings(roots)
 
 	slog.Info("Topic hierarchy built", "totalTopics", len(topics), "rootCount", len(roots))
 	return &pb.TopicHierarchy{

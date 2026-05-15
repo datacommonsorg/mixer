@@ -32,13 +32,13 @@ import (
 )
 
 const (
-	defaultPageSize      = 1000
-	rootTopicThreshold   = 10
-	defaultRootTopicDcid = "dc/topic/Root"
+	defaultPageSize    = 1000
+	rootTopicThreshold = 10
 )
 
 var (
-	redisCacheKeyProto = &wrapperspb.StringValue{Value: "topic/topic_cache"}
+	defaultRootTopicDcids = []string{"dc/topic/Root", "dc/topic/sdg"}
+	redisCacheKeyProto    = &wrapperspb.StringValue{Value: "topic/topic_cache"}
 )
 
 // TopicVariableCache is an in-memory composite struct caching server-wide topic hierarchy
