@@ -22,7 +22,7 @@ import (
 	"runtime"
 	"testing"
 
-	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/internal/server/topic"
 	"github.com/datacommonsorg/mixer/test"
@@ -82,7 +82,7 @@ func TestFetchTopicsFromKGGolden(t *testing.T) {
 		t.Fatalf("Failed to read golden file: %v", err)
 	}
 
-	var want *pbv2.TopicHierarchy
+	var want *pb.TopicHierarchy
 	if err := json.Unmarshal(data, &want); err != nil {
 		t.Fatalf("Failed to unmarshal golden: %v", err)
 	}

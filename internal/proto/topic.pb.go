@@ -16,9 +16,9 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        v3.21.12
-// source: v2/topic.proto
+// source: topic.proto
 
-package v2
+package proto
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -50,7 +50,7 @@ type TopicNode struct {
 
 func (x *TopicNode) Reset() {
 	*x = TopicNode{}
-	mi := &file_v2_topic_proto_msgTypes[0]
+	mi := &file_topic_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -62,7 +62,7 @@ func (x *TopicNode) String() string {
 func (*TopicNode) ProtoMessage() {}
 
 func (x *TopicNode) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_topic_proto_msgTypes[0]
+	mi := &file_topic_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -75,7 +75,7 @@ func (x *TopicNode) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TopicNode.ProtoReflect.Descriptor instead.
 func (*TopicNode) Descriptor() ([]byte, []int) {
-	return file_v2_topic_proto_rawDescGZIP(), []int{0}
+	return file_topic_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *TopicNode) GetDcid() string {
@@ -112,7 +112,7 @@ type TopicHierarchy struct {
 
 func (x *TopicHierarchy) Reset() {
 	*x = TopicHierarchy{}
-	mi := &file_v2_topic_proto_msgTypes[1]
+	mi := &file_topic_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -124,7 +124,7 @@ func (x *TopicHierarchy) String() string {
 func (*TopicHierarchy) ProtoMessage() {}
 
 func (x *TopicHierarchy) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_topic_proto_msgTypes[1]
+	mi := &file_topic_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -137,7 +137,7 @@ func (x *TopicHierarchy) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TopicHierarchy.ProtoReflect.Descriptor instead.
 func (*TopicHierarchy) Descriptor() ([]byte, []int) {
-	return file_v2_topic_proto_rawDescGZIP(), []int{1}
+	return file_topic_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *TopicHierarchy) GetRootTopicDcids() []string {
@@ -154,43 +154,43 @@ func (x *TopicHierarchy) GetTopics() map[string]*TopicNode {
 	return nil
 }
 
-var File_v2_topic_proto protoreflect.FileDescriptor
+var File_topic_proto protoreflect.FileDescriptor
 
-const file_v2_topic_proto_rawDesc = "" +
+const file_topic_proto_rawDesc = "" +
 	"\n" +
-	"\x0ev2/topic.proto\x12\x0edatacommons.v2\"b\n" +
+	"\vtopic.proto\x12\vdatacommons\"b\n" +
 	"\tTopicNode\x12\x12\n" +
 	"\x04dcid\x18\x01 \x01(\tR\x04dcid\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12-\n" +
-	"\x12relevant_variables\x18\x03 \x03(\tR\x11relevantVariables\"\xd4\x01\n" +
+	"\x12relevant_variables\x18\x03 \x03(\tR\x11relevantVariables\"\xce\x01\n" +
 	"\x0eTopicHierarchy\x12(\n" +
-	"\x10root_topic_dcids\x18\x01 \x03(\tR\x0erootTopicDcids\x12B\n" +
-	"\x06topics\x18\x02 \x03(\v2*.datacommons.v2.TopicHierarchy.TopicsEntryR\x06topics\x1aT\n" +
+	"\x10root_topic_dcids\x18\x01 \x03(\tR\x0erootTopicDcids\x12?\n" +
+	"\x06topics\x18\x02 \x03(\v2'.datacommons.TopicHierarchy.TopicsEntryR\x06topics\x1aQ\n" +
 	"\vTopicsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12/\n" +
-	"\x05value\x18\x02 \x01(\v2\x19.datacommons.v2.TopicNodeR\x05value:\x028\x01B3Z1github.com/datacommonsorg/mixer/internal/proto/v2b\x06proto3"
+	"\x03key\x18\x01 \x01(\tR\x03key\x12,\n" +
+	"\x05value\x18\x02 \x01(\v2\x16.datacommons.TopicNodeR\x05value:\x028\x01B0Z.github.com/datacommonsorg/mixer/internal/protob\x06proto3"
 
 var (
-	file_v2_topic_proto_rawDescOnce sync.Once
-	file_v2_topic_proto_rawDescData []byte
+	file_topic_proto_rawDescOnce sync.Once
+	file_topic_proto_rawDescData []byte
 )
 
-func file_v2_topic_proto_rawDescGZIP() []byte {
-	file_v2_topic_proto_rawDescOnce.Do(func() {
-		file_v2_topic_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_v2_topic_proto_rawDesc), len(file_v2_topic_proto_rawDesc)))
+func file_topic_proto_rawDescGZIP() []byte {
+	file_topic_proto_rawDescOnce.Do(func() {
+		file_topic_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_topic_proto_rawDesc), len(file_topic_proto_rawDesc)))
 	})
-	return file_v2_topic_proto_rawDescData
+	return file_topic_proto_rawDescData
 }
 
-var file_v2_topic_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
-var file_v2_topic_proto_goTypes = []any{
-	(*TopicNode)(nil),      // 0: datacommons.v2.TopicNode
-	(*TopicHierarchy)(nil), // 1: datacommons.v2.TopicHierarchy
-	nil,                    // 2: datacommons.v2.TopicHierarchy.TopicsEntry
+var file_topic_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_topic_proto_goTypes = []any{
+	(*TopicNode)(nil),      // 0: datacommons.TopicNode
+	(*TopicHierarchy)(nil), // 1: datacommons.TopicHierarchy
+	nil,                    // 2: datacommons.TopicHierarchy.TopicsEntry
 }
-var file_v2_topic_proto_depIdxs = []int32{
-	2, // 0: datacommons.v2.TopicHierarchy.topics:type_name -> datacommons.v2.TopicHierarchy.TopicsEntry
-	0, // 1: datacommons.v2.TopicHierarchy.TopicsEntry.value:type_name -> datacommons.v2.TopicNode
+var file_topic_proto_depIdxs = []int32{
+	2, // 0: datacommons.TopicHierarchy.topics:type_name -> datacommons.TopicHierarchy.TopicsEntry
+	0, // 1: datacommons.TopicHierarchy.TopicsEntry.value:type_name -> datacommons.TopicNode
 	2, // [2:2] is the sub-list for method output_type
 	2, // [2:2] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
@@ -198,26 +198,26 @@ var file_v2_topic_proto_depIdxs = []int32{
 	0, // [0:2] is the sub-list for field type_name
 }
 
-func init() { file_v2_topic_proto_init() }
-func file_v2_topic_proto_init() {
-	if File_v2_topic_proto != nil {
+func init() { file_topic_proto_init() }
+func file_topic_proto_init() {
+	if File_topic_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_v2_topic_proto_rawDesc), len(file_v2_topic_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_topic_proto_rawDesc), len(file_topic_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_v2_topic_proto_goTypes,
-		DependencyIndexes: file_v2_topic_proto_depIdxs,
-		MessageInfos:      file_v2_topic_proto_msgTypes,
+		GoTypes:           file_topic_proto_goTypes,
+		DependencyIndexes: file_topic_proto_depIdxs,
+		MessageInfos:      file_topic_proto_msgTypes,
 	}.Build()
-	File_v2_topic_proto = out.File
-	file_v2_topic_proto_goTypes = nil
-	file_v2_topic_proto_depIdxs = nil
+	File_topic_proto = out.File
+	file_topic_proto_goTypes = nil
+	file_topic_proto_depIdxs = nil
 }

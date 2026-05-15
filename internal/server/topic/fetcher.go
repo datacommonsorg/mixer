@@ -32,7 +32,7 @@ import (
 )
 
 // FetchTopicsFromKG fetches all topics and their relevant variables from the KG, builds the hierarchy, detects roots, and returns a TopicHierarchy.
-func (m *TopicCacheManager) FetchTopicsFromKG(ctx context.Context) (*pbv2.TopicHierarchy, error) {
+func (m *TopicCacheManager) FetchTopicsFromKG(ctx context.Context) (*pb.TopicHierarchy, error) {
 	defer util.TimeTrack(time.Now(), "topic: fetchTopicsFromKG")
 	// Fetch core topic nodes, populating their DCID and Name.
 	topics, err := m.fetchTopicNodes(ctx)
@@ -41,8 +41,8 @@ func (m *TopicCacheManager) FetchTopicsFromKG(ctx context.Context) (*pbv2.TopicH
 	}
 
 	if len(topics) == 0 {
-		return &pbv2.TopicHierarchy{
-			Topics: make(map[string]*pbv2.TopicNode),
+		return &pb.TopicHierarchy{
+			Topics: make(map[string]*pb.TopicNode),
 		}, nil
 	}
 
@@ -88,7 +88,7 @@ func extractName(entity *pb.EntityInfo) string {
 
 // fetchTopicNodes fetches all topic nodes from the KG.
 // It returns a map of DCID to newly instantiated TopicNode with Dcid and Name populated.
-func (m *TopicCacheManager) fetchTopicNodes(ctx context.Context) (map[string]*pbv2.TopicNode, error) {
+func (m *TopicCacheManager) fetchTopicNodes(ctx context.Context) (map[string]*pb.TopicNode, error) {
 	defer util.TimeTrack(time.Now(), "topic: fetchTopicNodes")
 	req := &pbv2.NodeRequest{
 		Nodes:    []string{"Topic"},
@@ -100,7 +100,7 @@ func (m *TopicCacheManager) fetchTopicNodes(ctx context.Context) (map[string]*pb
 	}
 	slog.Debug("fetchTopicNodes response data", "data", resp.GetData())
 
-	topics := make(map[string]*pbv2.TopicNode)
+	topics := make(map[string]*pb.TopicNode)
 	graph, ok := resp.GetData()["Topic"]
 	if !ok {
 		return topics, nil
@@ -116,7 +116,7 @@ func (m *TopicCacheManager) fetchTopicNodes(ctx context.Context) (map[string]*pb
 		if dcid == "" {
 			continue
 		}
-		topics[dcid] = &pbv2.TopicNode{
+		topics[dcid] = &pb.TopicNode{
 			Dcid: dcid,
 			Name: extractName(n),
 		}
@@ -289,7 +289,7 @@ func (m *TopicCacheManager) fetchRelevantVariables(ctx context.Context, topicDci
 
 // buildHierarchy processes the raw topics map, tracks parent-child relationships,
 // identifies root topics, and returns a populated TopicHierarchy.
-func (m *TopicCacheManager) buildHierarchy(topics map[string]*pbv2.TopicNode) *pbv2.TopicHierarchy {
+func (m *TopicCacheManager) buildHierarchy(topics map[string]*pb.TopicNode) *pb.TopicHierarchy {
 	defer util.TimeTrack(time.Now(), "topic: buildHierarchy")
 
 	// Set of all topics that are referenced as a child in any topic
@@ -329,7 +329,7 @@ func (m *TopicCacheManager) buildHierarchy(topics map[string]*pbv2.TopicNode) *p
 	}
 
 	slog.Info("Topic hierarchy built", "totalTopics", len(topics), "rootCount", len(roots))
-	return &pbv2.TopicHierarchy{
+	return &pb.TopicHierarchy{
 		Topics:         topics,
 		RootTopicDcids: roots,
 	}

@@ -24,7 +24,7 @@ import (
 	"sync"
 	"time"
 
-	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/redis"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -44,7 +44,7 @@ var (
 // TopicVariableCache is an in-memory composite struct caching server-wide topic hierarchy
 // and variable metadata.
 type TopicVariableCache struct {
-	TopicHierarchy *pbv2.TopicHierarchy
+	TopicHierarchy *pb.TopicHierarchy
 	// SVs map[string]*SVInfo // Placeholder for follow-up task
 }
 
@@ -124,7 +124,8 @@ func (m *TopicCacheManager) Close() {
 }
 
 // CachedHierarchy returns the currently cached TopicHierarchy in local L1 memory, or nil if empty.
-func (m *TopicCacheManager) CachedHierarchy() *pbv2.TopicHierarchy {
+// Note: The returned TopicHierarchy pointer references the live in-memory cache and must be treated as read-only by callers.
+func (m *TopicCacheManager) CachedHierarchy() *pb.TopicHierarchy {
 	m.mu.RLock()
 	defer m.mu.RUnlock()
 	if m.cache == nil {
@@ -136,7 +137,7 @@ func (m *TopicCacheManager) CachedHierarchy() *pbv2.TopicHierarchy {
 // Update thread-safely updates the internal in-memory TopicVariableCache.
 // Note: Updating the hierarchy replaces the entire composite cache object. Any other cached metadata
 // (such as Statistical Variables) will be refreshed/repopulated alongside the hierarchy.
-func (m *TopicCacheManager) Update(hierarchy *pbv2.TopicHierarchy) {
+func (m *TopicCacheManager) Update(hierarchy *pb.TopicHierarchy) {
 	m.mu.Lock()
 	defer m.mu.Unlock()
 	m.cache = &TopicVariableCache{
@@ -149,25 +150,20 @@ func (m *TopicCacheManager) Update(hierarchy *pbv2.TopicHierarchy) {
 // GetHierarchy retrieves the cached TopicHierarchy.
 // It first checks the local L1 in-memory cache.
 // If L1 is empty/cold, it falls back to LoadHierarchy to load it from Redis or the KG.
-func (m *TopicCacheManager) GetHierarchy(ctx context.Context) (*pbv2.TopicHierarchy, error) {
-	m.mu.RLock()
-	if m.cache != nil && m.cache.TopicHierarchy != nil {
-		h := m.cache.TopicHierarchy
-		m.mu.RUnlock()
+func (m *TopicCacheManager) GetHierarchy(ctx context.Context) (*pb.TopicHierarchy, error) {
+	if h := m.CachedHierarchy(); h != nil {
 		return h, nil
 	}
-	m.mu.RUnlock()
-
 	return m.LoadHierarchy(ctx)
 }
 
 // LoadHierarchy loads the TopicHierarchy either from the L2 Redis cache or synchronously from the KG.
 // It populates both L1 and L2 caches upon loading.
-func (m *TopicCacheManager) LoadHierarchy(ctx context.Context) (*pbv2.TopicHierarchy, error) {
+func (m *TopicCacheManager) LoadHierarchy(ctx context.Context) (*pb.TopicHierarchy, error) {
 	defer util.TimeTrack(time.Now(), "topic: LoadHierarchy")
 	// Try loading from L2 Redis cache
 	if m.redisClient != nil {
-		var cachedHierarchy pbv2.TopicHierarchy
+		var cachedHierarchy pb.TopicHierarchy
 		if found, err := m.redisClient.GetCachedResponse(ctx, redisCacheKeyProto, &cachedHierarchy); found && err == nil {
 			slog.Info("Topic cache hit in Redis")
 			m.Update(&cachedHierarchy)
@@ -181,6 +177,7 @@ func (m *TopicCacheManager) LoadHierarchy(ctx context.Context) (*pbv2.TopicHiera
 	slog.Info("Topic cache miss: loading synchronously from KG")
 	hierarchy, err := m.FetchTopicsFromKG(ctx)
 	if err != nil {
+		slog.Error("Failed to load topic cache from KG during miss", "error", err)
 		return nil, fmt.Errorf("failed to load topic cache from KG during miss: %w", err)
 	}
 

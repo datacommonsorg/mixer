@@ -13,9 +13,9 @@
 // limitations under the License.
 
 syntax = "proto3";
-package datacommons.v2;
+package datacommons;
 
-option go_package = "github.com/datacommonsorg/mixer/internal/proto/v2";
+option go_package = "github.com/datacommonsorg/mixer/internal/proto";
 
 // Represents a single topic node in the Knowledge Graph and its immediate children.
 message TopicNode {
