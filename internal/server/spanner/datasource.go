@@ -938,6 +938,10 @@ func (sds *SpannerDataSource) FilterStatVarsByEntity(ctx context.Context, req *p
 	svList := req.GetStatVars()
 	entities := req.GetEntities()
 
+	if len(svList) == 0 {
+		return &pb.FilterStatVarsByEntityResponse{}, nil
+	}
+
 	if len(entities) == 0 {
 		return &pb.FilterStatVarsByEntityResponse{
 			StatVars: svList,
