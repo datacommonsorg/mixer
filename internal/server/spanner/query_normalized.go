@@ -18,6 +18,7 @@ package spanner
 import (
 	"context"
 	"fmt"
+	"log/slog"
 	"strconv"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -34,6 +35,12 @@ func useNormalizedSchema(ctx context.Context) bool {
 	return false
 }
 
+// logNormalizedInvocation logs that the normalized schema was invoked for a method with custom arguments.
+func logNormalizedInvocation(methodName string, args ...any) {
+	fullArgs := append([]any{"method", methodName}, args...)
+	slog.Info("Invoking normalized Spanner schema", fullArgs...)
+}
+
 // GetObservations retrieves observations from Spanner given a list of variables and entities
 // using the normalized schema.
 func (nc *normalizedSchemaClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error) {
@@ -44,6 +51,11 @@ func (nc *normalizedSchemaClient) GetObservations(ctx context.Context, variables
 	if !useNormalizedSchema(ctx) {
 		return nc.SpannerClient.GetObservations(ctx, variables, entities)
 	}
+
+	logNormalizedInvocation("GetObservations",
+		"num_variables", len(variables),
+		"num_entities", len(entities),
+	)
 
 	rawObs, err := nc.fetchRawObservations(ctx, variables, entities)
 	if err != nil {
@@ -110,6 +122,11 @@ func (nc *normalizedSchemaClient) CheckVariableExistence(ctx context.Context, va
 		return nc.SpannerClient.CheckVariableExistence(ctx, variables, entities)
 	}
 
+	logNormalizedInvocation("CheckVariableExistence",
+		"num_variables", len(variables),
+		"num_entities", len(entities),
+	)
+
 	stmt, err := GetNormalizedStatVarsByEntityQuery(variables, entities)
 	if err != nil {
 		return nil, err
@@ -127,6 +144,12 @@ func (nc *normalizedSchemaClient) GetObservationsContainedInPlace(ctx context.Co
 	if !useNormalizedSchema(ctx) {
 		return nc.SpannerClient.GetObservationsContainedInPlace(ctx, variables, containedInPlace)
 	}
+
+	logNormalizedInvocation("GetObservationsContainedInPlace",
+		"num_variables", len(variables),
+		"ancestor", containedInPlace.Ancestor,
+		"child_place_type", containedInPlace.ChildPlaceType,
+	)
 
 	rawObs, err := nc.fetchRawObservationsContainedInPlace(ctx, variables, containedInPlace)
 	if err != nil {
@@ -163,6 +186,10 @@ var facetAttributes = map[string]bool{
 // GetSdmxObservations retrieves observations from Spanner given a list of constraints
 // using the normalized schema and relational division.
 func (nc *normalizedSchemaClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+	logNormalizedInvocation("GetSdmxObservations",
+		"query", req,
+	)
+
 	stmt := GetSdmxObservationsQuery(req)
 
 	var rawObs []*rawObservation
