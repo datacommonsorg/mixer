@@ -224,13 +224,13 @@
               "facet_id": "1733625304",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 68467362
+                  "date": "2025",
+                  "value": 68882600
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2024",
-              "latest_date": "2024"
+              "earliest_date": "2025",
+              "latest_date": "2025"
             },
             {
               "facet_id": "4181918134",
@@ -309,6 +309,18 @@
               "latest_date": "2024"
             },
             {
+              "facet_id": "1964317807",
+              "observations": [
+                {
+                  "date": "2024",
+                  "value": 334922499
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2024",
+              "latest_date": "2024"
+            },
+            {
               "facet_id": "2390551605",
               "observations": [
                 {
@@ -326,18 +338,6 @@
                 {
                   "date": "2023",
                   "value": 336806231
-                }
-              ],
-              "obs_count": 1,
-              "earliest_date": "2023",
-              "latest_date": "2023"
-            },
-            {
-              "facet_id": "1964317807",
-              "observations": [
-                {
-                  "date": "2023",
-                  "value": 332387540
                 }
               ],
               "obs_count": 1,
@@ -470,23 +470,23 @@
               "latest_date": "2020"
             },
             {
+              "facet_id": "1964317807",
+              "observations": [
+                {
+                  "date": "2024",
+                  "value": 39287377
+                }
+              ],
+              "obs_count": 1,
+              "earliest_date": "2024",
+              "latest_date": "2024"
+            },
+            {
               "facet_id": "4181918134",
               "observations": [
                 {
                   "date": "2023",
                   "value": 39198693
-                }
-              ],
-              "obs_count": 1,
-              "earliest_date": "2023",
-              "latest_date": "2023"
-            },
-            {
-              "facet_id": "1964317807",
-              "observations": [
-                {
-                  "date": "2023",
-                  "value": 39242785
                 }
               ],
               "obs_count": 1,
@@ -597,13 +597,13 @@
               "facet_id": "1964317807",
               "observations": [
                 {
-                  "date": "2023",
-                  "value": 82363
+                  "date": "2024",
+                  "value": 83732
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2023",
-              "latest_date": "2023"
+              "earliest_date": "2024",
+              "latest_date": "2024"
             },
             {
               "facet_id": "1226172227",
@@ -642,25 +642,25 @@
               "facet_id": "3707913853",
               "observations": [
                 {
-                  "date": "2026-02",
-                  "value": 7571000
+                  "date": "2026-04",
+                  "value": 7373000
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2026-02",
-              "latest_date": "2026-02"
+              "earliest_date": "2026-04",
+              "latest_date": "2026-04"
             },
             {
               "facet_id": "1714978719",
               "observations": [
                 {
-                  "date": "2025-09",
-                  "value": 7419000
+                  "date": "2026-03",
+                  "value": 7392000
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2025-09",
-              "latest_date": "2025-09"
+              "earliest_date": "2026-03",
+              "latest_date": "2026-03"
             }
           ]
         },
@@ -671,37 +671,37 @@
               "facet_id": "324358135",
               "observations": [
                 {
-                  "date": "2025-12",
-                  "value": 1020843
+                  "date": "2026-03",
+                  "value": 1017182
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2025-12",
-              "latest_date": "2025-12"
+              "earliest_date": "2026-03",
+              "latest_date": "2026-03"
             },
             {
               "facet_id": "2978659163",
               "observations": [
                 {
-                  "date": "2024",
-                  "value": 1043140
+                  "date": "2025",
+                  "value": 1085280
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2024",
-              "latest_date": "2024"
+              "earliest_date": "2025",
+              "latest_date": "2025"
             },
             {
               "facet_id": "1249140336",
               "observations": [
                 {
-                  "date": "2025-12",
-                  "value": 1096058
+                  "date": "2026-03",
+                  "value": 1053299
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2025-12",
-              "latest_date": "2025-12"
+              "earliest_date": "2026-03",
+              "latest_date": "2026-03"
             }
           ]
         },
@@ -711,13 +711,13 @@
               "facet_id": "324358135",
               "observations": [
                 {
-                  "date": "2025-12",
-                  "value": 1747
+                  "date": "2026-02",
+                  "value": 1819
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2025-12",
-              "latest_date": "2025-12"
+              "earliest_date": "2026-02",
+              "latest_date": "2026-02"
             },
             {
               "facet_id": "2978659163",
@@ -812,7 +812,7 @@
     },
     "1964317807": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2024.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "196790193": {
