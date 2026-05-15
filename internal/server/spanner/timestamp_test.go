@@ -53,7 +53,7 @@ func TestTimestampUpdated(t *testing.T) {
 	startTime := time.Date(2025, time.January, 1, 10, 0, 0, 0, time.UTC)
 	updateDone := make(chan bool, 1)
 
-	sc := &spannerDatabaseClient{
+	sc := &SpannerExecutor{
 		ticker: mockTicker,
 		stopCh: make(chan struct{}),
 	}
@@ -96,7 +96,7 @@ func TestTimestampUpdateFailure(t *testing.T) {
 	startTime := time.Date(2025, time.January, 1, 10, 0, 0, 0, time.UTC)
 	updateDone := make(chan bool, 1)
 
-	sc := &spannerDatabaseClient{
+	sc := &SpannerExecutor{
 		ticker: mockTicker,
 		stopCh: make(chan struct{}),
 	}

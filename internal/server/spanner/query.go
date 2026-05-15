@@ -17,8 +17,6 @@ package spanner
 
 import (
 	"context"
-	"encoding/json"
-	"errors"
 	"fmt"
 	"log/slog"
 	"net/url"
@@ -28,7 +26,6 @@ import (
 	"time"
 
 	"cloud.google.com/go/spanner"
-	"github.com/datacommonsorg/mixer/internal/metrics"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
@@ -37,8 +34,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/api/iterator"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -78,7 +73,7 @@ const (
 )
 
 // GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction and returns a map.
-func (sc *spannerDatabaseClient) GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*Property, error) {
+func (sc *defaultSpannerClient) GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*Property, error) {
 	props := map[string][]*Property{}
 	if len(ids) == 0 {
 		return props, nil
@@ -87,9 +82,8 @@ func (sc *spannerDatabaseClient) GetNodeProps(ctx context.Context, ids []string,
 		props[id] = []*Property{}
 	}
 
-	err := queryStructs(
+	err := sc.exec.queryStructs(
 		ctx,
-		sc,
 		*GetNodePropsQuery(ids, out),
 		func() interface{} {
 			return &Property{}
@@ -108,7 +102,7 @@ func (sc *spannerDatabaseClient) GetNodeProps(ctx context.Context, ids []string,
 }
 
 // GetNodeEdgesByID retrieves node edges from Spanner and returns a map of subjectID to Edges.
-func (sc *spannerDatabaseClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc, pageSize, offset int) (map[string][]*Edge, error) {
+func (sc *defaultSpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc, pageSize, offset int) (map[string][]*Edge, error) {
 	edges := make(map[string][]*Edge)
 	if len(ids) == 0 {
 		return edges, nil
@@ -117,9 +111,8 @@ func (sc *spannerDatabaseClient) GetNodeEdgesByID(ctx context.Context, ids []str
 		edges[id] = []*Edge{}
 	}
 
-	err := queryStructs(
+	err := sc.exec.queryStructs(
 		ctx,
-		sc,
 		*GetNodeEdgesByIDQuery(ids, arc, pageSize, offset),
 		func() interface{} {
 			return &Edge{}
@@ -138,15 +131,14 @@ func (sc *spannerDatabaseClient) GetNodeEdgesByID(ctx context.Context, ids []str
 }
 
 // GetObservations retrieves observations from Spanner given a list of variables and entities.
-func (sc *spannerDatabaseClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error) {
+func (sc *defaultSpannerClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error) {
 	var observations []*Observation
 	if len(entities) == 0 {
 		return nil, fmt.Errorf("entity must be specified")
 	}
 
-	err := queryStructs(
+	err := sc.exec.queryStructs(
 		ctx,
-		sc,
 		*GetObservationsQuery(variables, entities),
 		func() interface{} {
 			return &Observation{}
@@ -165,24 +157,23 @@ func (sc *spannerDatabaseClient) GetObservations(ctx context.Context, variables 
 
 // CheckVariableExistence checks for the existence of observations for the given variables and entities.
 // Returns a slice of rows, where each row contains [variable, entity] that has at least one observation.
-func (sc *spannerDatabaseClient) CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
+func (sc *defaultSpannerClient) CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
 	stmt, err := FilterStatVarsByEntityQuery(variables, entities)
 	if err != nil {
 		return nil, err
 	}
-	return queryDynamic(ctx, sc, *stmt)
+	return sc.exec.queryDynamic(ctx, *stmt)
 }
 
 // GetObservationsContainedInPlace retrieves observations from Spanner given a list of variables and an entity expression.
-func (sc *spannerDatabaseClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
+func (sc *defaultSpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
 	var observations []*Observation
 	if len(variables) == 0 || containedInPlace == nil {
 		return observations, nil
 	}
 
-	err := queryStructs(
+	err := sc.exec.queryStructs(
 		ctx,
-		sc,
 		*GetObservationsContainedInPlaceQuery(variables, containedInPlace),
 		func() interface{} {
 			return &Observation{}
@@ -202,15 +193,14 @@ func (sc *spannerDatabaseClient) GetObservationsContainedInPlace(ctx context.Con
 // SearchNodes searches nodes in the graph based on the query and optionally the types.
 // If the types array is empty, it searches across nodes of all types.
 // A maximum of 100 results are returned.
-func (sc *spannerDatabaseClient) SearchNodes(ctx context.Context, query string, types []string) ([]*SearchNode, error) {
+func (sc *defaultSpannerClient) SearchNodes(ctx context.Context, query string, types []string) ([]*SearchNode, error) {
 	var nodes []*SearchNode
 	if query == "" {
 		return nodes, nil
 	}
 
-	err := queryStructs(
+	err := sc.exec.queryStructs(
 		ctx,
-		sc,
 		*SearchNodesQuery(query, types),
 		func() interface{} {
 			return &SearchNode{}
@@ -228,7 +218,7 @@ func (sc *spannerDatabaseClient) SearchNodes(ctx context.Context, query string, 
 }
 
 // ResolveByID fetches ID resolution candidates for a list of input nodes and in and out properties and returns a map of node to candidates.
-func (sc *spannerDatabaseClient) ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error) {
+func (sc *defaultSpannerClient) ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error) {
 	nodeToCandidates := make(map[string][]string)
 	if len(nodes) == 0 {
 		return nodeToCandidates, nil
@@ -242,9 +232,8 @@ func (sc *spannerDatabaseClient) ResolveByID(ctx context.Context, nodes []string
 		valueMap[value] = node
 	}
 
-	err := queryStructs(
+	err := sc.exec.queryStructs(
 		ctx,
-		sc,
 		*ResolveByIDQuery(nodes, in, out),
 		func() interface{} {
 			return &ResolutionCandidate{}
@@ -263,9 +252,9 @@ func (sc *spannerDatabaseClient) ResolveByID(ctx context.Context, nodes []string
 }
 
 // GetEventCollectionDate retrieves event collection dates from Spanner.
-func (sc *spannerDatabaseClient) GetEventCollectionDate(ctx context.Context, placeID, eventType string) ([]string, error) {
+func (sc *defaultSpannerClient) GetEventCollectionDate(ctx context.Context, placeID, eventType string) ([]string, error) {
 	stmt := GetEventCollectionDateQuery(placeID, eventType)
-	rows, err := queryDynamic(ctx, sc, *stmt)
+	rows, err := sc.exec.queryDynamic(ctx, *stmt)
 	if err != nil {
 		return nil, err
 	}
@@ -280,7 +269,7 @@ func (sc *spannerDatabaseClient) GetEventCollectionDate(ctx context.Context, pla
 }
 
 // GetEventCollection retrieves and filters event collection from Spanner.
-func (sc *spannerDatabaseClient) GetEventCollection(ctx context.Context, req *pbv1.EventCollectionRequest) (*pbv1.EventCollection, error) {
+func (sc *defaultSpannerClient) GetEventCollection(ctx context.Context, req *pbv1.EventCollectionRequest) (*pbv1.EventCollection, error) {
 	// Get event DCIDs
 	eventRows, err := sc.GetEventCollectionDcids(ctx, req.AffectedPlaceDcid, req.EventType, req.Date)
 	if err != nil {
@@ -312,7 +301,7 @@ func (sc *spannerDatabaseClient) GetEventCollection(ctx context.Context, req *pb
 
 	return res, nil
 }
-func (sc *spannerDatabaseClient) populateProvenanceInfo(ctx context.Context, res *pbv1.EventCollection) error {
+func (sc *defaultSpannerClient) populateProvenanceInfo(ctx context.Context, res *pbv1.EventCollection) error {
 	provDcids := []string{}
 	seen := map[string]bool{}
 	for _, event := range res.Events {
@@ -517,9 +506,9 @@ func keepEvent(event *pbv1.EventCollection_Event, req *pbv1.EventCollectionReque
 }
 
 // GetEventCollectionDcids retrieves event DCIDs from Spanner.
-func (sc *spannerDatabaseClient) GetEventCollectionDcids(ctx context.Context, placeID, eventType, date string) ([]EventIdWithMagnitudeDcid, error) {
+func (sc *defaultSpannerClient) GetEventCollectionDcids(ctx context.Context, placeID, eventType, date string) ([]EventIdWithMagnitudeDcid, error) {
 	stmt := GetEventCollectionDcidsQuery(placeID, eventType, date)
-	rows, err := queryDynamic(ctx, sc, *stmt)
+	rows, err := sc.exec.queryDynamic(ctx, *stmt)
 	if err != nil {
 		return nil, err
 	}
@@ -596,16 +585,16 @@ func parseAndSortEvents(rows []EventIdWithMagnitudeDcid, eventType string) []str
 	return res
 }
 
-func (sc *spannerDatabaseClient) Sparql(ctx context.Context, nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) ([][]string, error) {
+func (sc *defaultSpannerClient) Sparql(ctx context.Context, nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) ([][]string, error) {
 	query, err := SparqlQuery(nodes, queries, opts)
 	if err != nil {
 		return nil, fmt.Errorf("error building sparql query: %v", err)
 	}
 
-	return queryDynamic(ctx, sc, *query)
+	return sc.exec.queryDynamic(ctx, *query)
 }
 
-func (sc *spannerDatabaseClient) GetProvenanceSummary(ctx context.Context, variables []string) (map[string]map[string]*pb.StatVarSummary_ProvenanceSummary, error) {
+func (sc *defaultSpannerClient) GetProvenanceSummary(ctx context.Context, variables []string) (map[string]map[string]*pb.StatVarSummary_ProvenanceSummary, error) {
 	if len(variables) == 0 {
 		return map[string]map[string]*pb.StatVarSummary_ProvenanceSummary{},
 			nil
@@ -613,7 +602,7 @@ func (sc *spannerDatabaseClient) GetProvenanceSummary(ctx context.Context, varia
 
 	results, err := queryCache(
 		ctx,
-		sc,
+		sc.exec,
 		*GetCacheDataQuery(TypeProvenanceSummary, variables),
 		func() *pb.StatVarSummary_ProvenanceSummary {
 			return &pb.StatVarSummary_ProvenanceSummary{}
@@ -627,9 +616,9 @@ func (sc *spannerDatabaseClient) GetProvenanceSummary(ctx context.Context, varia
 }
 
 // GetTermEmbeddingQuery retrieves embeddings from Spanner for a given query.
-func (sc *spannerDatabaseClient) GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error) {
+func (sc *defaultSpannerClient) GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error) {
 	embeddings := []float64{}
-	err := sc.executeQuery(ctx, *GetTermEmbeddingQuery(modelName, searchLabel, taskType), func(iter *spanner.RowIterator) error {
+	err := sc.exec.executeQuery(ctx, *GetTermEmbeddingQuery(modelName, searchLabel, taskType), func(iter *spanner.RowIterator) error {
 		row, err := iter.Next()
 		if err == iterator.Done {
 			return nil
@@ -643,7 +632,7 @@ func (sc *spannerDatabaseClient) GetTermEmbeddingQuery(ctx context.Context, mode
 }
 
 // FilterNodesByTypes filters a list of nodes by types and returns a map of node to matched types.
-func (sc *spannerDatabaseClient) FilterNodesByTypes(ctx context.Context, nodes []string, typeFilters []string) (map[string][]string, error) {
+func (sc *defaultSpannerClient) FilterNodesByTypes(ctx context.Context, nodes []string, typeFilters []string) (map[string][]string, error) {
 	if len(nodes) == 0 {
 		return map[string][]string{}, nil
 	}
@@ -656,9 +645,8 @@ func (sc *spannerDatabaseClient) FilterNodesByTypes(ctx context.Context, nodes [
 		MatchedTypes []string `spanner:"matched_types"`
 	}
 
-	err := queryStructs(
+	err := sc.exec.queryStructs(
 		ctx,
-		sc,
 		*stmt,
 		func() interface{} { return &rowResult{} },
 		func(rowStruct interface{}) {
@@ -674,11 +662,10 @@ func (sc *spannerDatabaseClient) FilterNodesByTypes(ctx context.Context, nodes [
 }
 
 // VectorSearchQuery performs vector similarity search in Spanner.
-func (sc *spannerDatabaseClient) VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string) ([]*VectorSearchResult, error) {
+func (sc *defaultSpannerClient) VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string) ([]*VectorSearchResult, error) {
 	var results []*VectorSearchResult
-	err := queryStructs(
+	err := sc.exec.queryStructs(
 		ctx,
-		sc,
 		*VectorSearchQuery(tableName, limit, embeddings, numLeaves, threshold, nodeTypes),
 		func() interface{} {
 			return &VectorSearchResult{}
@@ -692,15 +679,14 @@ func (sc *spannerDatabaseClient) VectorSearchQuery(ctx context.Context, tableNam
 }
 
 // GetStatVarGroupNode fetches StatVarGroupNode info from Spanner.
-func (sc *spannerDatabaseClient) GetStatVarGroupNode(ctx context.Context, nodes []string, includeDefinitions bool) ([]*StatVarGroupNode, error) {
+func (sc *defaultSpannerClient) GetStatVarGroupNode(ctx context.Context, nodes []string, includeDefinitions bool) ([]*StatVarGroupNode, error) {
 	var svgNodes []*StatVarGroupNode
 	if len(nodes) == 0 {
 		return svgNodes, nil
 	}
 
-	err := queryStructs(
+	err := sc.exec.queryStructs(
 		ctx,
-		sc,
 		*GetStatVarGroupNodeQuery(nodes, includeDefinitions),
 		func() interface{} {
 			return &StatVarGroupNode{}
@@ -717,7 +703,7 @@ func (sc *spannerDatabaseClient) GetStatVarGroupNode(ctx context.Context, nodes 
 }
 
 // GetFilteredStatVarGroupNode fetches filtered StatVarGroupNode info from Spanner.
-func (sc *spannerDatabaseClient) GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (map[string]*FilteredStatVarGroupNode, error) {
+func (sc *defaultSpannerClient) GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (map[string]*FilteredStatVarGroupNode, error) {
 	response := map[string]*FilteredStatVarGroupNode{}
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	errGroup.SetLimit(maxConcurrentFilteredSVGGoroutines) // Limit the number of concurrent goroutines to avoid overwhelming Spanner with too many requests.
@@ -753,7 +739,7 @@ func (sc *spannerDatabaseClient) GetFilteredStatVarGroupNode(ctx context.Context
 }
 
 // getSingleFilteredStatVarGroupNode fetches the relevant info to build a single filtered StatVarGroupNode from Spanner.
-func (sc *spannerDatabaseClient) getSingleFilteredStatVarGroupNode(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (*FilteredStatVarGroupNode, error) {
+func (sc *defaultSpannerClient) getSingleFilteredStatVarGroupNode(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (*FilteredStatVarGroupNode, error) {
 	filteredStatVarGroupNode := &FilteredStatVarGroupNode{}
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	svgChildChan := make(chan []*SVGChild, 1)
@@ -762,9 +748,8 @@ func (sc *spannerDatabaseClient) getSingleFilteredStatVarGroupNode(ctx context.C
 
 	errGroup.Go(func() error {
 		var svgChildren []*SVGChild
-		err := queryStructs(
+		err := sc.exec.queryStructs(
 			errCtx,
-			sc,
 			*GetSVGChildrenQuery(node, includeDefinitions),
 			func() interface{} {
 				return &SVGChild{}
@@ -782,9 +767,8 @@ func (sc *spannerDatabaseClient) getSingleFilteredStatVarGroupNode(ctx context.C
 
 	errGroup.Go(func() error {
 		var childSVs []*ChildSV
-		err := queryStructs(
+		err := sc.exec.queryStructs(
 			errCtx,
-			sc,
 			*GetFilteredSVGChildrenQuery(templateSV, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions),
 			func() interface{} {
 				return &ChildSV{}
@@ -802,9 +786,8 @@ func (sc *spannerDatabaseClient) getSingleFilteredStatVarGroupNode(ctx context.C
 
 	errGroup.Go(func() error {
 		var childSVGs []*ChildSVG
-		err := queryStructs(
+		err := sc.exec.queryStructs(
 			errCtx,
-			sc,
 			*GetFilteredSVGChildrenQuery(templateSVG, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions),
 			func() interface{} {
 				return &ChildSVG{}
@@ -836,14 +819,14 @@ func (sc *spannerDatabaseClient) getSingleFilteredStatVarGroupNode(ctx context.C
 }
 
 // GetFilteredTopic fetches the relevant info to build a filtered Topic response from Spanner.
-func (sc *spannerDatabaseClient) GetFilteredTopic(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]int, error) {
+func (sc *defaultSpannerClient) GetFilteredTopic(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]int, error) {
 	counts := make(map[string]int, len(nodes))
 	for _, node := range nodes {
 		counts[node] = 0
 	}
 
 	stmt := GetFilteredTopicChildrenQuery(nodes, constrainedPlaces, constrainedImport, numEntitiesExistence)
-	err := sc.executeQuery(ctx, *stmt, func(iter *spanner.RowIterator) error {
+	err := sc.exec.executeQuery(ctx, *stmt, func(iter *spanner.RowIterator) error {
 		for {
 			row, err := iter.Next()
 			if err == iterator.Done {
@@ -869,261 +852,5 @@ func (sc *spannerDatabaseClient) GetFilteredTopic(ctx context.Context, nodes []s
 	return counts, nil
 }
 
-// fetchAndUpdateTimestamp queries Spanner and updates the timestamp.
-func (sc *spannerDatabaseClient) fetchAndUpdateTimestamp(ctx context.Context) error {
-	queryCtx, cancel := context.WithTimeout(ctx, timestampPollingTimeout)
-	defer cancel()
 
-	iter := sc.client.Single().Query(queryCtx, *GetCompletionTimestampQuery())
-	defer iter.Stop()
 
-	row, err := iter.Next()
-
-	// Handle missing or empty table cases gracefully
-	var warnMsg string
-	if err == iterator.Done {
-		warnMsg = "No valid rows found in IngestionHistory."
-	} else if code := spanner.ErrCode(err); code == codes.NotFound ||
-		(code == codes.InvalidArgument && strings.Contains(err.Error(), "Table not found: IngestionHistory")) {
-		warnMsg = "IngestionHistory table not found."
-	}
-
-	if warnMsg != "" {
-		slog.Warn(warnMsg + " Falling back to strong reads.")
-		return nil
-	}
-
-	if err != nil {
-		if isTimeoutError(err) {
-			slog.ErrorContext(queryCtx, "Spanner timestamp polling timed out",
-				"timeout_duration", timestampPollingTimeout.String(),
-				"error", err.Error(),
-			)
-		}
-		return fmt.Errorf("failed to fetch row: %w", err)
-	}
-
-	var timestamp time.Time
-	if err := row.Column(0, &timestamp); err != nil {
-		return fmt.Errorf("failed to read CompletionTimestamp column: %w", err)
-	}
-
-	sc.timestamp.Store(timestamp.UnixNano())
-	return nil
-}
-
-func (sc *spannerDatabaseClient) getStalenessTimestamp() (time.Time, error) {
-	val := sc.timestamp.Load()
-	if val != 0 {
-		return time.Unix(0, val).UTC(), nil
-	}
-	slog.Error("Spanner staleness timestamp not available")
-	return time.Time{}, fmt.Errorf("error getting staleness timestamp")
-}
-
-func (sc *spannerDatabaseClient) executeQuery(
-	ctx context.Context,
-	stmt spanner.Statement,
-	handleRows func(*spanner.RowIterator) error,
-) error {
-	var queryCtx context.Context
-	var cancel context.CancelFunc
-
-	if _, ok := ctx.Deadline(); ok {
-		queryCtx, cancel = context.WithCancel(ctx)
-	} else {
-		// Fallback if the parent context surprisingly has no deadline.
-		// Using the default API timeout.
-		slog.Warn("Parent context has no deadline; using default API timeout", "timeout", ApiTimeout.String())
-		queryCtx, cancel = context.WithTimeout(ctx, ApiTimeout)
-	}
-	defer cancel()
-
-	runQuery := func(tb spanner.TimestampBound) error {
-		metrics.RecordSpannerQuery(queryCtx)
-		startTime := time.Now()
-		iter := sc.client.Single().WithTimestampBound(tb).Query(queryCtx, stmt)
-		defer iter.Stop()
-		err := handleRows(iter)
-		duration := time.Since(startTime)
-
-		if shouldLogSQL(queryCtx) {
-			interpolatedSQL := InterpolateSQL(&stmt)
-			schema := getSchemaName(queryCtx)
-			fmt.Printf("\n=== [%s] Spanner Query (Took %v) ===\n", schema, duration)
-			fmt.Println("[Parameterized Query]")
-			for k, v := range stmt.Params {
-				jsonVal, _ := json.Marshal(v)
-				fmt.Printf("SET @%s = %s;\n", k, string(jsonVal))
-			}
-			fmt.Println()
-			fmt.Println(stmt.SQL)
-			fmt.Println("\n[Interpolated Query]")
-			fmt.Println(interpolatedSQL)
-			fmt.Println("================================================")
-		}
-
-		// Log slow Spanner queries that timed out.
-		if isTimeoutError(err) {
-			slog.ErrorContext(queryCtx, "Spanner query timed out",
-				"sql", stmt.SQL,
-				"error", err.Error(),
-			)
-		}
-
-		return err
-	}
-
-	ts, err := sc.getStalenessTimestamp()
-	if err != nil {
-		return runQuery(spanner.StrongRead())
-	}
-	err = runQuery(spanner.ReadTimestamp(ts))
-
-	// Log error if timestamp is older than retention and fall back to strong read.
-	if spanner.ErrCode(err) == codes.FailedPrecondition {
-		slog.Error("Stale read timestamp expired. Falling back to StrongRead.",
-			"expiredTimestamp", ts.String())
-		return runQuery(spanner.StrongRead())
-	}
-	return err
-}
-
-// queryStructs executes a query and maps the results to an input struct.
-func queryStructs(
-	ctx context.Context,
-	sc *spannerDatabaseClient,
-	stmt spanner.Statement,
-	newStruct func() interface{},
-	withStruct func(interface{}),
-) error {
-	return sc.executeQuery(ctx, stmt, func(iter *spanner.RowIterator) error {
-		return processRows(iter, newStruct, withStruct)
-	})
-}
-
-// queryDynamic executes a dynamically constructed query and returns the results as a slice of string slices.
-func queryDynamic(
-	ctx context.Context,
-	sc *spannerDatabaseClient,
-	stmt spanner.Statement,
-) ([][]string, error) {
-	var rowData [][]string
-	err := sc.executeQuery(ctx, stmt, func(iter *spanner.RowIterator) error {
-		result, err := processDynamicRows(iter)
-		rowData = result
-		return err
-	})
-	return rowData, err
-}
-
-// queryCache executes a query and maps the results to an input cache proto.
-func queryCache[T proto.Message](
-	ctx context.Context,
-	sc *spannerDatabaseClient,
-	stmt spanner.Statement,
-	newProto func() T,
-) (map[string]map[string]T, error) {
-	var data map[string]map[string]T
-	err := sc.executeQuery(ctx, stmt, func(iter *spanner.RowIterator) error {
-		result, err := processCacheRows(iter, newProto)
-		data = result
-		return err
-	})
-	return data, err
-}
-
-func processRows(iter *spanner.RowIterator, newStruct func() interface{}, withStruct func(interface{})) error {
-	for {
-		row, err := iter.Next()
-		if err == iterator.Done {
-			break
-		}
-		if err != nil {
-			return fmt.Errorf("failed to fetch row: %w", err)
-		}
-
-		rowStruct := newStruct()
-		if err := row.ToStructLenient(rowStruct); err != nil {
-			return fmt.Errorf("failed to parse row: %w", err)
-		}
-		withStruct(rowStruct)
-	}
-
-	return nil
-}
-
-// processDynamicRows processes rows from dynamically constructed queries.
-func processDynamicRows(iter *spanner.RowIterator) ([][]string, error) {
-	rowData := [][]string{}
-	for {
-		row, err := iter.Next()
-		if err == iterator.Done {
-			break
-		}
-		if err != nil {
-			return rowData, err
-		}
-
-		data := []string{}
-		for i := 0; i < row.Size(); i++ {
-			var val spanner.GenericColumnValue
-			if err := row.Column(i, &val); err != nil {
-				return rowData, err
-			}
-			data = append(data, val.Value.GetStringValue())
-		}
-		rowData = append(rowData, data)
-	}
-	return rowData, nil
-}
-
-// processCacheRows processes rows and maps them to a proto struct.
-func processCacheRows[T proto.Message](iter *spanner.RowIterator, newProto func() T) (map[string]map[string]T, error) {
-	results := make(map[string]map[string]T)
-	unmarshaler := protojson.UnmarshalOptions{DiscardUnknown: true}
-
-	for {
-		row, err := iter.Next()
-		if err == iterator.Done {
-			break
-		}
-		if err != nil {
-			return nil, fmt.Errorf("failed to fetch row: %w", err)
-		}
-
-		var key string
-		if err := row.ColumnByName("key", &key); err != nil {
-			return nil, fmt.Errorf("failed to read key column: %w", err)
-		}
-
-		var provenance string
-		if err := row.ColumnByName("provenance", &provenance); err != nil {
-			return nil, fmt.Errorf("failed to read provenance column: %w", err)
-		}
-
-		var jsonStr spanner.NullString
-		if err := row.ColumnByName("value", &jsonStr); err != nil {
-			return nil, fmt.Errorf("failed to read value column: %w", err)
-		}
-
-		if jsonStr.Valid {
-			msg := newProto()
-			if err := unmarshaler.Unmarshal([]byte(jsonStr.StringVal), msg); err != nil {
-				return nil, fmt.Errorf("failed to unmarshal proto: %w", err)
-			}
-
-			if results[key] == nil {
-				results[key] = make(map[string]T)
-			}
-			results[key][provenance] = msg
-		}
-	}
-
-	return results, nil
-}
-
-// isTimeoutError checks if an error is a timeout error from Spanner or context.
-func isTimeoutError(err error) bool {
-	return spanner.ErrCode(err) == codes.DeadlineExceeded || errors.Is(err, context.DeadlineExceeded)
-}

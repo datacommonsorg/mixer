@@ -47,7 +47,7 @@ func (nc *normalizedClient) fetchRawObservations(ctx context.Context, variables 
 	stmt := GetNormalizedObservationsQuery(variables, entities)
 
 	var rawObs []*rawObservation
-	err := queryStructs(ctx, nc.sc, *stmt, func() interface{} { return &rawObservation{} }, func(row interface{}) {
+	err := nc.exec.queryStructs(ctx, *stmt, func() interface{} { return &rawObservation{} }, func(row interface{}) {
 		rawObs = append(rawObs, row.(*rawObservation))
 	})
 	return rawObs, err
@@ -95,7 +95,7 @@ func (nc *normalizedClient) CheckVariableExistence(ctx context.Context, variable
 	if err != nil {
 		return nil, err
 	}
-	return queryDynamic(ctx, nc.sc, *stmt)
+	return nc.exec.queryDynamic(ctx, *stmt)
 }
 
 // GetObservationsContainedInPlace retrieves observations for entities contained in a place
@@ -122,7 +122,7 @@ func (nc *normalizedClient) fetchRawObservationsContainedInPlace(ctx context.Con
 	stmt := GetNormalizedObservationsContainedInPlaceQuery(variables, containedInPlace)
 
 	var rawObs []*rawObservation
-	err := queryStructs(ctx, nc.sc, *stmt, func() interface{} { return &rawObservation{} }, func(row interface{}) {
+	err := nc.exec.queryStructs(ctx, *stmt, func() interface{} { return &rawObservation{} }, func(row interface{}) {
 		rawObs = append(rawObs, row.(*rawObservation))
 	})
 	return rawObs, err
@@ -143,7 +143,7 @@ func (nc *normalizedClient) GetSdmxObservations(ctx context.Context, req *pb.Sdm
 	stmt := GetSdmxObservationsQuery(req)
 
 	var rawObs []*rawObservation
-	err := queryStructs(ctx, nc.sc, *stmt, func() interface{} { return &rawObservation{} }, func(row interface{}) {
+	err := nc.exec.queryStructs(ctx, *stmt, func() interface{} { return &rawObservation{} }, func(row interface{}) {
 		rawObs = append(rawObs, row.(*rawObservation))
 	})
 	if err != nil {

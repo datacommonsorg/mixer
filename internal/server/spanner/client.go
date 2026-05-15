@@ -19,8 +19,6 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
-	"sync"
-	"sync/atomic"
 
 	"cloud.google.com/go/spanner"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -58,35 +56,38 @@ type SpannerClient interface {
 	Close()
 }
 
-// spannerDatabaseClient encapsulates the Spanner client that directly interacts with the Spanner database.
-type spannerDatabaseClient struct {
-	client    *spanner.Client
-	timestamp atomic.Int64
-	ticker    Ticker
-	stopCh    chan struct{}
-	startOnce sync.Once
-	stopOnce  sync.Once
-	wg        sync.WaitGroup
-
-	// For mocking in tests.
-	updateTimestamp func(context.Context) error
+// NormalizedObservationProvider defines the subset of methods supported by the normalized schema path.
+type NormalizedObservationProvider interface {
+	GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error)
+	CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error)
+	GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error)
+	GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error)
 }
 
-// newSpannerDatabaseClient creates a new spannerDatabaseClient.
-func newSpannerDatabaseClient(client *spanner.Client) (*spannerDatabaseClient, error) {
-	sc := &spannerDatabaseClient{
-		client: client,
-	}
+// defaultSpannerClient encapsulates the Spanner client that directly interacts with the Spanner database.
+type defaultSpannerClient struct {
+	exec *SpannerExecutor
+}
 
-	// Set an initial timestamp synchronously before starting the background loop.
-	sc.ticker = NewTimestampTicker()
-	sc.stopCh = make(chan struct{})
-	sc.updateTimestamp = sc.fetchAndUpdateTimestamp
-	if err := sc.updateTimestamp(context.Background()); err != nil {
-		slog.Error("Error initializing Spanner staleness timestamp", "error", err.Error())
+// newDefaultSpannerClient creates a new defaultSpannerClient.
+func newDefaultSpannerClient(exec *SpannerExecutor) *defaultSpannerClient {
+	return &defaultSpannerClient{exec: exec}
+}
+
+// normalizedClient encapsulates the Spanner client for the normalized schema.
+type normalizedClient struct {
+	exec *SpannerExecutor
+}
+
+// NewNormalizedClient creates a new normalizedClient.
+func NewNormalizedClient(client SpannerClient) (*normalizedClient, error) {
+	sc, ok := client.(*defaultSpannerClient)
+	if !ok {
+		err := fmt.Errorf("NewNormalizedClient: expected *defaultSpannerClient, got %T", client)
+		slog.Error("Failed to create normalized client", "error", err)
 		return nil, err
 	}
-	return sc, nil
+	return &normalizedClient{exec: sc.exec}, nil
 }
 
 // NewRawSpannerClient creates a new SpannerClient without the schema selector.
@@ -94,23 +95,43 @@ func newSpannerDatabaseClient(client *spanner.Client) (*spannerDatabaseClient, e
 func NewRawSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string) (SpannerClient, error) {
 	cfg, err := createSpannerConfig(spannerConfigYaml, databaseOverride)
 	if err != nil {
-		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
+		return nil, fmt.Errorf("failed to create defaultSpannerClient: %w", err)
 	}
 	client, err := createSpannerClient(ctx, cfg)
 	if err != nil {
-		return nil, fmt.Errorf("failed to create spannerDatabaseClient: %w", err)
+		return nil, fmt.Errorf("failed to create defaultSpannerClient: %w", err)
 	}
-	return newSpannerDatabaseClient(client)
+	exec, err := NewSpannerExecutor(client)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create defaultSpannerClient: %w", err)
+	}
+	return newDefaultSpannerClient(exec), nil
 }
 
 // NewSpannerClient creates a new SpannerClient from the config yaml string and an optional database override.
 // It returns a wrapper client that handles request-time schema dispatching.
 func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string) (SpannerClient, error) {
-	rawClient, err := NewRawSpannerClient(ctx, spannerConfigYaml, databaseOverride)
+	cfg, err := createSpannerConfig(spannerConfigYaml, databaseOverride)
 	if err != nil {
 		return nil, err
 	}
-	return NewSchemaSelectorClient(rawClient)
+	client, err := createSpannerClient(ctx, cfg)
+	if err != nil {
+		return nil, err
+	}
+	exec, err := NewSpannerExecutor(client)
+	if err != nil {
+		return nil, err
+	}
+
+	defaultClient := newDefaultSpannerClient(exec)
+	normalizedClient, err := NewNormalizedClient(defaultClient)
+	if err != nil {
+		slog.Error("Failed to create normalized client in NewSpannerClient", "error", err)
+		return nil, err
+	}
+
+	return NewSchemaSelectorClient(defaultClient, normalizedClient)
 }
 
 // createSpannerClient creates the database name string and initializes the Spanner client.
@@ -145,56 +166,21 @@ func createSpannerConfig(spannerConfigYaml, databaseOverride string) (*SpannerCo
 	return &cfg, nil
 }
 
-func (sc *spannerDatabaseClient) Id() string {
-	return sc.client.DatabaseName()
+func (sc *defaultSpannerClient) Id() string {
+	return sc.exec.Id()
 }
 
 // Start starts the background goroutine to periodically fetch the timestamp.
-func (sc *spannerDatabaseClient) Start() {
-	sc.startOnce.Do(func() {
-		ctx, cancel := context.WithCancel(context.Background())
-
-		sc.wg.Add(1)
-		go func() {
-			// Defer statements are processed in LIFO order.
-			// Mark the wait group as done.
-			defer sc.wg.Done()
-			// Cancel the context to clean up any in-flight operations.
-			defer cancel()
-			// Stop the ticker.
-			defer sc.ticker.Stop()
-
-			for {
-				select {
-				case <-sc.stopCh:
-					return
-				case <-sc.ticker.C():
-					// Ignore the error here to allow the process to continue running
-					// even if one fetch fails. The previous timestamp remains in cache.
-					err := sc.updateTimestamp(ctx)
-					if err != nil {
-						slog.Error("Error updating Spanner staleness timestamp", "error", err)
-					}
-				}
-			}
-		}()
-	})
+func (sc *defaultSpannerClient) Start() {
+	sc.exec.Start()
 }
 
 // Close closes the Spanner client and stops the background goroutine.
-func (sc *spannerDatabaseClient) Close() {
-	sc.stopOnce.Do(func() {
-		close(sc.stopCh)
-
-		sc.wg.Wait()
-
-		if sc.client != nil {
-			sc.client.Close()
-		}
-	})
+func (sc *defaultSpannerClient) Close() {
+	sc.exec.Close()
 }
 
 // GetSdmxObservations is not supported on the default client.
-func (sc *spannerDatabaseClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+func (sc *defaultSpannerClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
 	return nil, status.Error(codes.Unimplemented, "SDMX queries are only supported on the normalized schema")
 }

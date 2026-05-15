@@ -430,22 +430,17 @@ func newSpannerClient(ctx context.Context, spannerGraphInfoYamlPath string) span
 	if err != nil {
 		log.Fatalf("Failed to read spanner yaml: %v", err)
 	}
-	// Don't override spannerGraphInfoYaml.database for testing.
-	spannerClient, err := spanner.NewRawSpannerClient(ctx, string(spannerGraphInfoYaml), "")
+	// Use NewSpannerClient to get the full setup with selector.
+	spannerClient, err := spanner.NewSpannerClient(ctx, string(spannerGraphInfoYaml), "")
 	if err != nil {
 		log.Fatalf("Failed to create SpannerClient: %v", err)
 	}
-	// Use stale reads for testing.
 	spannerClient.Start()
 	return spannerClient
 }
 
 // NewSchemaSelectorSpannerClient creates a new test schema selector spanner client.
 func NewSchemaSelectorSpannerClient(t *testing.T) spanner.SpannerClient {
-	baseClient := NewNormalizedSpannerClient(t)
-	selectorClient, err := spanner.NewSchemaSelectorClient(baseClient)
-	if err != nil {
-		t.Fatalf("Failed to create SchemaSelectorClient: %v", err)
-	}
-	return selectorClient
+	// NewNormalizedSpannerClient already returns the selector client because newSpannerClient uses NewSpannerClient!
+	return NewNormalizedSpannerClient(t)
 }

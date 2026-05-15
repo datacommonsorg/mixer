@@ -27,7 +27,7 @@ import (
 // schemaSelectorClient dispatches calls to either default or normalized client.
 type schemaSelectorClient struct {
 	SpannerClient // Embeds the default client
-	normalized    *normalizedClient
+	normalized    NormalizedObservationProvider
 }
 
 // GetObservations overrides the embedded client's GetObservations to dispatch based on schema selection.
@@ -77,12 +77,7 @@ func (s *schemaSelectorClient) GetSdmxObservations(ctx context.Context, req *pb.
 }
 
 // NewSchemaSelectorClient creates a new SpannerClient that dispatches calls to either default or normalized client.
-func NewSchemaSelectorClient(baseClient SpannerClient) (SpannerClient, error) {
-	normalizedClient, err := NewNormalizedClient(baseClient)
-	if err != nil {
-		return nil, err
-	}
-
+func NewSchemaSelectorClient(baseClient SpannerClient, normalizedClient NormalizedObservationProvider) (SpannerClient, error) {
 	return &schemaSelectorClient{
 		SpannerClient: baseClient,
 		normalized:    normalizedClient,
