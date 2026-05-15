@@ -38,11 +38,11 @@ import (
 )
 
 type mockSpannerClient struct {
-	resolveByIDRes            map[string][]string
-	getNodeEdgesRes           map[string][]*spanner.Edge
-	checkVariableExistenceRes [][]string
-	filterNodesByTypeRes      map[string][]string
-	getObservationsRes        []*spanner.Observation
+	resolveByIDRes                     map[string][]string
+	getNodeEdgesRes                    map[string][]*spanner.Edge
+	checkVariableExistenceRes          [][]string
+	filterNodesByTypeRes               map[string][]string
+	getObservationsRes                 []*spanner.Observation
 	getObservationsContainedInPlaceRes []*spanner.Observation
 }
 
@@ -766,7 +766,7 @@ func TestSpannerFilterStatVarsByEntity(t *testing.T) {
 		goldenFile string
 	}{
 		{
-			desc: "Filter SVs",
+			desc: "Happy path - Filter SVs",
 			req: &pb.FilterStatVarsByEntityRequest{
 				StatVars: []*pb.EntityInfo{
 					{Dcid: "Count_Person"},
@@ -779,34 +779,82 @@ func TestSpannerFilterStatVarsByEntity(t *testing.T) {
 				{"Count_Person", "geoId/06"},
 				{"Median_Income_Person", "geoId/06"},
 			},
-			goldenFile: "filter_stat_vars.json",
+			goldenFile: "filter_stat_vars_happy.json",
+		},
+		{
+			desc: "Empty entities list",
+			req: &pb.FilterStatVarsByEntityRequest{
+				StatVars: []*pb.EntityInfo{
+					{Dcid: "Count_Person"},
+				},
+				Entities: []string{},
+			},
+			mockExist:  [][]string{},
+			goldenFile: "filter_stat_vars_empty_entities.json",
+		},
+		{
+			desc: "Empty stat vars list",
+			req: &pb.FilterStatVarsByEntityRequest{
+				StatVars: []*pb.EntityInfo{},
+				Entities: []string{"geoId/06"},
+			},
+			mockExist:  [][]string{},
+			goldenFile: "filter_stat_vars_empty_statvars.json",
+		},
+		{
+			desc: "Zero matches from DB",
+			req: &pb.FilterStatVarsByEntityRequest{
+				StatVars: []*pb.EntityInfo{
+					{Dcid: "Count_Person"},
+				},
+				Entities: []string{"geoId/06"},
+			},
+			mockExist:  [][]string{},
+			goldenFile: "filter_stat_vars_no_matches.json",
+		},
+		{
+			desc: "Multiple entities",
+			req: &pb.FilterStatVarsByEntityRequest{
+				StatVars: []*pb.EntityInfo{
+					{Dcid: "Count_Person"},
+					{Dcid: "Median_Income_Person"},
+				},
+				Entities: []string{"geoId/06", "geoId/08"},
+			},
+			mockExist: [][]string{
+				{"Count_Person", "geoId/06"},
+				{"Median_Income_Person", "geoId/08"},
+			},
+			goldenFile: "filter_stat_vars_multi_entity.json",
 		},
 	} {
-		client := &mockSpannerClient{
-			checkVariableExistenceRes: c.mockExist,
-		}
-		ds := spanner.NewSpannerDataSource(client, nil, nil, false)
+		t.Run(c.desc, func(t *testing.T) {
+			client := &mockSpannerClient{
+				checkVariableExistenceRes: c.mockExist,
+			}
+			ds := spanner.NewSpannerDataSource(client, nil, nil, false)
 
-		got, err := ds.FilterStatVarsByEntity(ctx, c.req)
-		if err != nil {
-			t.Fatalf("%s: FilterStatVarsByEntity error: %v", c.desc, err)
-		}
+			got, err := ds.FilterStatVarsByEntity(ctx, c.req)
+			if err != nil {
+				t.Fatalf("FilterStatVarsByEntity error: %v", err)
+			}
 
-		if test.GenerateGolden {
-			test.UpdateProtoGolden(got, goldenDir, c.goldenFile)
-			continue
-		}
+			if test.GenerateGolden {
+				test.UpdateProtoGolden(got, goldenDir, c.goldenFile)
+				return
+			}
 
-		var want pb.FilterStatVarsByEntityResponse
-		if err = test.ReadJSON(goldenDir, c.goldenFile, &want); err != nil {
-			t.Fatalf("%s: ReadJSON error (%v): %v", c.desc, c.goldenFile, err)
-		}
+			var want pb.FilterStatVarsByEntityResponse
+			if err = test.ReadJSON(goldenDir, c.goldenFile, &want); err != nil {
+				t.Fatalf("ReadJSON error (%v): %v", c.goldenFile, err)
+			}
 
-		cmpOpts := cmp.Options{
-			protocmp.Transform(),
-		}
-		if diff := cmp.Diff(got, &want, cmpOpts); diff != "" {
-			t.Errorf("%s: %v payload mismatch:\n%v", c.desc, c.goldenFile, diff)
-		}
+			cmpOpts := cmp.Options{
+				protocmp.Transform(),
+			}
+			if diff := cmp.Diff(got, &want, cmpOpts); diff != "" {
+				t.Errorf("%v payload mismatch:\n%v", c.goldenFile, diff)
+			}
+		})
 	}
 }
