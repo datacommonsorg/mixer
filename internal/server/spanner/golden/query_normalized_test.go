@@ -28,7 +28,10 @@ func TestNormalizedGetObservations(t *testing.T) {
 	client := test.NewNormalizedSpannerClient(t)
 	t.Parallel()
 
-	nc := spanner.NewNormalizedClient(client)
+	nc, err := spanner.NewNormalizedClient(client)
+	if err != nil {
+		t.Fatalf("NewNormalizedClient failed: %v", err)
+	}
 
 	for _, c := range normalizedObservationsTestCases {
 		goldenFile := c.golden + ".json"
@@ -48,7 +51,10 @@ func TestNormalizedCheckVariableExistence(t *testing.T) {
 	client := test.NewNormalizedSpannerClient(t)
 	t.Parallel()
 
-	nc := spanner.NewNormalizedClient(client)
+	nc, err := spanner.NewNormalizedClient(client)
+	if err != nil {
+		t.Fatalf("NewNormalizedClient failed: %v", err)
+	}
 
 	for _, c := range checkVariableExistenceTestCases {
 		goldenFile := c.golden + ".json"
@@ -79,7 +85,10 @@ func TestNormalizedGetObservationsContainedInPlace(t *testing.T) {
 	client := test.NewNormalizedSpannerClient(t)
 	t.Parallel()
 
-	nc := spanner.NewNormalizedClient(client)
+	nc, err := spanner.NewNormalizedClient(client)
+	if err != nil {
+		t.Fatalf("NewNormalizedClient failed: %v", err)
+	}
 
 	for _, c := range getObservationsContainedInPlaceTestCases {
 		goldenFile := c.golden + ".json"
@@ -102,7 +111,10 @@ func TestNormalizedGetSdmxObservations(t *testing.T) {
 	client := test.NewNormalizedSpannerClient(t)
 	t.Parallel()
 
-	nc := spanner.NewNormalizedClient(client)
+	nc, err := spanner.NewNormalizedClient(client)
+	if err != nil {
+		t.Fatalf("NewNormalizedClient failed: %v", err)
+	}
 
 	for _, c := range sdmxObservationsTestCases {
 		goldenFile := c.golden + ".json"

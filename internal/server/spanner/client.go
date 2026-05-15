@@ -74,15 +74,17 @@ type normalizedSchemaClient struct {
 }
 
 // NewNormalizedClient creates a new normalizedSchemaClient.
-func NewNormalizedClient(client SpannerClient) *normalizedSchemaClient {
+func NewNormalizedClient(client SpannerClient) (*normalizedSchemaClient, error) {
 	sc, ok := client.(*standardSpannerClient)
 	if !ok {
-		panic(fmt.Sprintf("NewNormalizedClient: expected *standardSpannerClient, got %T", client))
+		err := fmt.Errorf("NewNormalizedClient: expected *standardSpannerClient, got %T", client)
+		slog.Error("Failed to create normalized client", "error", err)
+		return nil, err
 	}
 	return &normalizedSchemaClient{
 		SpannerClient: client,
 		exec:          sc.exec,
-	}
+	}, nil
 }
 
 // Force compiler that all methods required by the interface are implemented by clients
@@ -124,7 +126,10 @@ func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride s
 	}
 
 	defaultClient := newStandardSpannerClient(exec)
-	normalizedSchemaClient := NewNormalizedClient(defaultClient)
+	normalizedSchemaClient, err := NewNormalizedClient(defaultClient)
+	if err != nil {
+		return nil, err
+	}
 
 	return normalizedSchemaClient, nil
 }
