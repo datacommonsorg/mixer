@@ -907,6 +907,9 @@
           "dcid": "geoId/0610508"
         },
         {
+          "dcid": "geoId/0610536"
+        },
+        {
           "name": "Camp Pendleton Mainside",
           "dcid": "geoId/0610554"
         },
@@ -1703,6 +1706,9 @@
           "dcid": "geoId/0619724"
         },
         {
+          "dcid": "geoId/0619738"
+        },
+        {
           "name": "Downey",
           "dcid": "geoId/0619766"
         },
@@ -1949,6 +1955,10 @@
         {
           "name": "Elmira",
           "dcid": "geoId/0622146"
+        },
+        {
+          "name": "El Modena",
+          "dcid": "geoId/0622188"
         },
         {
           "name": "El Monte",
@@ -2215,7 +2225,7 @@
           "dcid": "geoId/0625093"
         },
         {
-          "name": "Fort Irwin National Training Center",
+          "name": "Fort Irwin",
           "dcid": "geoId/0625114"
         },
         {
@@ -2369,6 +2379,9 @@
         {
           "name": "Glen Avon",
           "dcid": "geoId/0629644"
+        },
+        {
+          "dcid": "geoId/0629714"
         },
         {
           "name": "Glendale",
@@ -2601,6 +2614,9 @@
         {
           "name": "Hat Creek",
           "dcid": "geoId/0632408"
+        },
+        {
+          "dcid": "geoId/0632436"
         },
         {
           "name": "Hawaiian Gardens",
@@ -3051,7 +3067,7 @@
           "dcid": "geoId/0638800"
         },
         {
-          "name": "La Cañada Flintridge",
+          "name": "La CaÃ±ada Flintridge",
           "dcid": "geoId/0639003"
         },
         {
@@ -4454,6 +4470,10 @@
           "dcid": "geoId/0654008"
         },
         {
+          "name": "Orange Park Acres",
+          "dcid": "geoId/0654064"
+        },
+        {
           "name": "Orangevale",
           "dcid": "geoId/0654092"
         },
@@ -4548,6 +4568,9 @@
         {
           "name": "Palo Cedro",
           "dcid": "geoId/0655296"
+        },
+        {
+          "dcid": "geoId/0655310"
         },
         {
           "name": "Palos Verdes Estates",
@@ -4746,7 +4769,7 @@
           "dcid": "geoId/0657288"
         },
         {
-          "name": "Piñon Hills",
+          "name": "PiÃ±on Hills",
           "dcid": "geoId/0657302"
         },
         {
@@ -5648,6 +5671,9 @@
         {
           "name": "Shaver Lake",
           "dcid": "geoId/0671246"
+        },
+        {
+          "dcid": "geoId/0671302"
         },
         {
           "name": "Shell Ridge",
@@ -6716,6 +6742,9 @@
         {
           "name": "Willows",
           "dcid": "geoId/0685684"
+        },
+        {
+          "dcid": "geoId/0685810"
         },
         {
           "name": "Wilsonia",

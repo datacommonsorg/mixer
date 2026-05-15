@@ -16638,9 +16638,10 @@
             "2019": 2465569,
             "2020": 2489188,
             "2021": 2458395,
-            "2022": 2479628,
-            "2023": 2503549,
-            "2024": 2529933
+            "2022": 2479339,
+            "2023": 2503742,
+            "2024": 2529112,
+            "2025": 2544916
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
@@ -23044,292 +23045,292 @@
         {
           "dcid": "geoId/06037",
           "name": "Los Angeles County",
-          "pop": 9757179
+          "pop": 9694934
         },
         {
           "dcid": "geoId/06073",
           "name": "San Diego County",
-          "pop": 3298799
+          "pop": 3282248
         },
         {
           "dcid": "geoId/06059",
           "name": "Orange County",
-          "pop": 3170435
+          "pop": 3149507
         },
         {
           "dcid": "geoId/06065",
           "name": "Riverside County",
-          "pop": 2529933
+          "pop": 2544916
         },
         {
           "dcid": "geoId/06071",
           "name": "San Bernardino County",
-          "pop": 2214281
+          "pop": 2224091
         },
         {
           "dcid": "geoId/06085",
           "name": "Santa Clara County",
-          "pop": 1926325
+          "pop": 1914391
         },
         {
           "dcid": "geoId/06001",
           "name": "Alameda County",
-          "pop": 1649060
+          "pop": 1636630
         },
         {
           "dcid": "geoId/06067",
           "name": "Sacramento County",
-          "pop": 1611231
+          "pop": 1618460
         },
         {
           "dcid": "geoId/06013",
           "name": "Contra Costa County",
-          "pop": 1172607
+          "pop": 1170070
         },
         {
           "dcid": "geoId/06019",
           "name": "Fresno County",
-          "pop": 1024125
+          "pop": 1035456
         },
         {
           "dcid": "geoId/06029",
           "name": "Kern County",
-          "pop": 922529
+          "pop": 927068
         },
         {
           "dcid": "geoId/06111",
           "name": "Ventura County",
-          "pop": 835427
+          "pop": 830851
         },
         {
           "dcid": "geoId/06075",
           "name": "San Francisco County",
-          "pop": 827526
+          "pop": 826079
         },
         {
           "dcid": "geoId/06077",
           "name": "San Joaquin County",
-          "pop": 816108
+          "pop": 823815
         },
         {
           "dcid": "geoId/06081",
           "name": "San Mateo County",
-          "pop": 742893
+          "pop": 743568
         },
         {
           "dcid": "geoId/06099",
           "name": "Stanislaus County",
-          "pop": 556972
+          "pop": 557719
         },
         {
           "dcid": "geoId/06097",
           "name": "Sonoma County",
-          "pop": 485375
+          "pop": 486444
         },
         {
           "dcid": "geoId/06107",
           "name": "Tulare County",
-          "pop": 483546
+          "pop": 485146
         },
         {
           "dcid": "geoId/06095",
           "name": "Solano County",
-          "pop": 455101
-        },
-        {
-          "dcid": "geoId/06083",
-          "name": "Santa Barbara County",
-          "pop": 444500
-        },
-        {
-          "dcid": "geoId/06053",
-          "name": "Monterey County",
-          "pop": 436251
+          "pop": 455376
         },
         {
           "dcid": "geoId/06061",
           "name": "Placer County",
-          "pop": 433822
+          "pop": 442081
+        },
+        {
+          "dcid": "geoId/06083",
+          "name": "Santa Barbara County",
+          "pop": 442065
+        },
+        {
+          "dcid": "geoId/06053",
+          "name": "Monterey County",
+          "pop": 433729
         },
         {
           "dcid": "geoId/06047",
           "name": "Merced County",
-          "pop": 296774
+          "pop": 297260
         },
         {
           "dcid": "geoId/06079",
           "name": "San Luis Obispo County",
-          "pop": 281843
+          "pop": 282367
         },
         {
           "dcid": "geoId/06087",
           "name": "Santa Cruz County",
-          "pop": 262406
+          "pop": 258852
         },
         {
           "dcid": "geoId/06041",
           "name": "Marin County",
-          "pop": 256400
+          "pop": 253694
         },
         {
           "dcid": "geoId/06113",
           "name": "Yolo County",
-          "pop": 225251
+          "pop": 224410
         },
         {
           "dcid": "geoId/06007",
           "name": "Butte County",
-          "pop": 208334
+          "pop": 209211
         },
         {
           "dcid": "geoId/06017",
           "name": "El Dorado County",
-          "pop": 192823
-        },
-        {
-          "dcid": "geoId/06025",
-          "name": "Imperial County",
-          "pop": 181724
+          "pop": 192323
         },
         {
           "dcid": "geoId/06089",
           "name": "Shasta County",
-          "pop": 181121
+          "pop": 181648
+        },
+        {
+          "dcid": "geoId/06025",
+          "name": "Imperial County",
+          "pop": 181411
         },
         {
           "dcid": "geoId/06039",
           "name": "Madera County",
-          "pop": 165432
+          "pop": 167927
         },
         {
           "dcid": "geoId/06031",
           "name": "Kings County",
-          "pop": 154913
+          "pop": 154327
         },
         {
           "dcid": "geoId/06055",
           "name": "Napa County",
-          "pop": 132727
+          "pop": 132949
         },
         {
           "dcid": "geoId/06023",
           "name": "Humboldt County",
-          "pop": 132380
+          "pop": 131647
         },
         {
           "dcid": "geoId/06057",
           "name": "Nevada County",
-          "pop": 102195
+          "pop": 101911
         },
         {
           "dcid": "geoId/06101",
           "name": "Sutter County",
-          "pop": 98545
-        },
-        {
-          "dcid": "geoId/06045",
-          "name": "Mendocino County",
-          "pop": 89175
+          "pop": 98787
         },
         {
           "dcid": "geoId/06115",
           "name": "Yuba County",
-          "pop": 87469
+          "pop": 88691
+        },
+        {
+          "dcid": "geoId/06045",
+          "name": "Mendocino County",
+          "pop": 88122
         },
         {
           "dcid": "geoId/06069",
           "name": "San Benito County",
-          "pop": 69159
+          "pop": 70082
         },
         {
           "dcid": "geoId/06033",
           "name": "Lake County",
-          "pop": 67764
+          "pop": 67772
         },
         {
           "dcid": "geoId/06103",
           "name": "Tehama County",
-          "pop": 64451
+          "pop": 64665
         },
         {
           "dcid": "geoId/06109",
           "name": "Tuolumne County",
-          "pop": 53893
+          "pop": 53160
         },
         {
           "dcid": "geoId/06009",
           "name": "Calaveras County",
-          "pop": 46505
+          "pop": 46605
         },
         {
           "dcid": "geoId/06093",
           "name": "Siskiyou County",
-          "pop": 42498
+          "pop": 42013
         },
         {
           "dcid": "geoId/06005",
           "name": "Amador County",
-          "pop": 42026
-        },
-        {
-          "dcid": "geoId/06035",
-          "name": "Lassen County",
-          "pop": 28340
+          "pop": 41876
         },
         {
           "dcid": "geoId/06021",
           "name": "Glenn County",
-          "pop": 28304
+          "pop": 28141
+        },
+        {
+          "dcid": "geoId/06035",
+          "name": "Lassen County",
+          "pop": 28117
         },
         {
           "dcid": "geoId/06015",
           "name": "Del Norte County",
-          "pop": 27009
+          "pop": 26410
         },
         {
           "dcid": "geoId/06011",
           "name": "Colusa County",
-          "pop": 22074
+          "pop": 21836
         },
         {
           "dcid": "geoId/06063",
           "name": "Plumas County",
-          "pop": 18834
+          "pop": 18583
         },
         {
           "dcid": "geoId/06027",
           "name": "Inyo County",
-          "pop": 18485
+          "pop": 18158
         },
         {
           "dcid": "geoId/06043",
           "name": "Mariposa County",
-          "pop": 17048
+          "pop": 16918
         },
         {
           "dcid": "geoId/06105",
           "name": "Trinity County",
-          "pop": 15642
+          "pop": 15720
         },
         {
           "dcid": "geoId/06051",
           "name": "Mono County",
-          "pop": 12991
+          "pop": 12505
         },
         {
           "dcid": "geoId/06049",
           "name": "Modoc County",
-          "pop": 8491
+          "pop": 8426
         },
         {
           "dcid": "geoId/06091",
           "name": "Sierra County",
-          "pop": 3113
+          "pop": 3098
         },
         {
           "dcid": "geoId/06003",
           "name": "Alpine County",
-          "pop": 1099
+          "pop": 1043
         }
       ]
     }
@@ -23366,8 +23367,8 @@
       }
     },
     "geoId/06037": {
-      "date": "2024",
-      "value": 9757179,
+      "date": "2025",
+      "value": 9694934,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -23376,8 +23377,8 @@
       }
     },
     "geoId/06059": {
-      "date": "2024",
-      "value": 3170435,
+      "date": "2025",
+      "value": 3149507,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -23386,8 +23387,8 @@
       }
     },
     "geoId/06065": {
-      "date": "2024",
-      "value": 2529933,
+      "date": "2025",
+      "value": 2544916,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -23396,8 +23397,8 @@
       }
     },
     "geoId/06071": {
-      "date": "2024",
-      "value": 2214281,
+      "date": "2025",
+      "value": 2224091,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -23406,8 +23407,8 @@
       }
     },
     "geoId/06073": {
-      "date": "2024",
-      "value": 3298799,
+      "date": "2025",
+      "value": 3282248,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
