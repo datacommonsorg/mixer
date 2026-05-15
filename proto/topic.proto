@@ -1,0 +1,37 @@
+// Copyright 2026 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+package datacommons;
+
+option go_package = "github.com/datacommonsorg/mixer/internal/proto";
+
+// Represents a single topic node in the Knowledge Graph and its immediate children.
+message TopicNode {
+  // The Data Commons identifier (DCID) of the topic.
+  string dcid = 1;
+  // The human-readable display name of the topic.
+  string name = 2;
+  // List of child entity DCIDs (can be Statistical Variables or Sub-Topics).
+  repeated string relevant_variables = 3;
+}
+
+// Represents the complete processed graph of all topics in the Knowledge Graph.
+message TopicHierarchy {
+  // List of root topic DCIDs (topics that are never referenced as children by other topics).
+  repeated string root_topic_dcids = 1;
+  // Map of topic DCID to its populated TopicNode definition.
+  map<string, TopicNode> topics = 2;
+}
+
