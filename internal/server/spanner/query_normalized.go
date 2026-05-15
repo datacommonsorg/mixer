@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// This file implements the methods for normalizedClient (Normalized Schema).
 package spanner
 
 import (
@@ -21,13 +22,27 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
+	"github.com/datacommonsorg/mixer/internal/util"
+	"google.golang.org/grpc/metadata"
 )
+
+func useNormalizedSchema(ctx context.Context) bool {
+	if md, ok := metadata.FromIncomingContext(ctx); ok {
+		headers := md.Get(util.XUseNormalizedSchema)
+		return len(headers) > 0 && headers[0] == "true"
+	}
+	return false
+}
 
 // GetObservations retrieves observations from Spanner given a list of variables and entities
 // using the normalized schema.
-func (nc *normalizedClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error) {
+func (nc *normalizedSchemaClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error) {
 	if len(entities) == 0 {
 		return nil, fmt.Errorf("entity must be specified")
+	}
+
+	if !useNormalizedSchema(ctx) {
+		return nc.SpannerClient.GetObservations(ctx, variables, entities)
 	}
 
 	rawObs, err := nc.fetchRawObservations(ctx, variables, entities)
@@ -43,7 +58,7 @@ func (nc *normalizedClient) GetObservations(ctx context.Context, variables []str
 }
 
 // fetchRawObservations fetches data from TimeSeries and StatVarObservation tables.
-func (nc *normalizedClient) fetchRawObservations(ctx context.Context, variables []string, entities []string) ([]*rawObservation, error) {
+func (nc *normalizedSchemaClient) fetchRawObservations(ctx context.Context, variables []string, entities []string) ([]*rawObservation, error) {
 	stmt := GetNormalizedObservationsQuery(variables, entities)
 
 	var rawObs []*rawObservation
@@ -90,7 +105,11 @@ func reconstructObservations(rawObs []*rawObservation) []*Observation {
 }
 
 // CheckVariableExistence checks which variables exist for which entities using the normalized schema.
-func (nc *normalizedClient) CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
+func (nc *normalizedSchemaClient) CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
+	if !useNormalizedSchema(ctx) {
+		return nc.SpannerClient.CheckVariableExistence(ctx, variables, entities)
+	}
+
 	stmt, err := GetNormalizedStatVarsByEntityQuery(variables, entities)
 	if err != nil {
 		return nil, err
@@ -100,9 +119,13 @@ func (nc *normalizedClient) CheckVariableExistence(ctx context.Context, variable
 
 // GetObservationsContainedInPlace retrieves observations for entities contained in a place
 // using the normalized schema.
-func (nc *normalizedClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
+func (nc *normalizedSchemaClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
 	if containedInPlace == nil {
 		return nil, fmt.Errorf("containedInPlace must be specified")
+	}
+
+	if !useNormalizedSchema(ctx) {
+		return nc.SpannerClient.GetObservationsContainedInPlace(ctx, variables, containedInPlace)
 	}
 
 	rawObs, err := nc.fetchRawObservationsContainedInPlace(ctx, variables, containedInPlace)
@@ -118,7 +141,7 @@ func (nc *normalizedClient) GetObservationsContainedInPlace(ctx context.Context,
 }
 
 // fetchRawObservationsContainedInPlace fetches data from Graph, TimeSeries and StatVarObservation tables.
-func (nc *normalizedClient) fetchRawObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*rawObservation, error) {
+func (nc *normalizedSchemaClient) fetchRawObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*rawObservation, error) {
 	stmt := GetNormalizedObservationsContainedInPlaceQuery(variables, containedInPlace)
 
 	var rawObs []*rawObservation
@@ -139,7 +162,7 @@ var facetAttributes = map[string]bool{
 
 // GetSdmxObservations retrieves observations from Spanner given a list of constraints
 // using the normalized schema and relational division.
-func (nc *normalizedClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+func (nc *normalizedSchemaClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
 	stmt := GetSdmxObservationsQuery(req)
 
 	var rawObs []*rawObservation

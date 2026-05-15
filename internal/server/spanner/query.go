@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Queries executed by the SpannerClient.
+// This file implements the methods for standardClient (Default/Legacy Schema).
 package spanner
 
 import (
@@ -73,7 +73,7 @@ const (
 )
 
 // GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction and returns a map.
-func (sc *defaultSpannerClient) GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*Property, error) {
+func (sc *standardSpannerClient) GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*Property, error) {
 	props := map[string][]*Property{}
 	if len(ids) == 0 {
 		return props, nil
@@ -102,7 +102,7 @@ func (sc *defaultSpannerClient) GetNodeProps(ctx context.Context, ids []string, 
 }
 
 // GetNodeEdgesByID retrieves node edges from Spanner and returns a map of subjectID to Edges.
-func (sc *defaultSpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc, pageSize, offset int) (map[string][]*Edge, error) {
+func (sc *standardSpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc, pageSize, offset int) (map[string][]*Edge, error) {
 	edges := make(map[string][]*Edge)
 	if len(ids) == 0 {
 		return edges, nil
@@ -131,7 +131,7 @@ func (sc *defaultSpannerClient) GetNodeEdgesByID(ctx context.Context, ids []stri
 }
 
 // GetObservations retrieves observations from Spanner given a list of variables and entities.
-func (sc *defaultSpannerClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error) {
+func (sc *standardSpannerClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error) {
 	var observations []*Observation
 	if len(entities) == 0 {
 		return nil, fmt.Errorf("entity must be specified")
@@ -157,7 +157,7 @@ func (sc *defaultSpannerClient) GetObservations(ctx context.Context, variables [
 
 // CheckVariableExistence checks for the existence of observations for the given variables and entities.
 // Returns a slice of rows, where each row contains [variable, entity] that has at least one observation.
-func (sc *defaultSpannerClient) CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
+func (sc *standardSpannerClient) CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
 	stmt, err := FilterStatVarsByEntityQuery(variables, entities)
 	if err != nil {
 		return nil, err
@@ -166,7 +166,7 @@ func (sc *defaultSpannerClient) CheckVariableExistence(ctx context.Context, vari
 }
 
 // GetObservationsContainedInPlace retrieves observations from Spanner given a list of variables and an entity expression.
-func (sc *defaultSpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
+func (sc *standardSpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
 	var observations []*Observation
 	if len(variables) == 0 || containedInPlace == nil {
 		return observations, nil
@@ -193,7 +193,7 @@ func (sc *defaultSpannerClient) GetObservationsContainedInPlace(ctx context.Cont
 // SearchNodes searches nodes in the graph based on the query and optionally the types.
 // If the types array is empty, it searches across nodes of all types.
 // A maximum of 100 results are returned.
-func (sc *defaultSpannerClient) SearchNodes(ctx context.Context, query string, types []string) ([]*SearchNode, error) {
+func (sc *standardSpannerClient) SearchNodes(ctx context.Context, query string, types []string) ([]*SearchNode, error) {
 	var nodes []*SearchNode
 	if query == "" {
 		return nodes, nil
@@ -218,7 +218,7 @@ func (sc *defaultSpannerClient) SearchNodes(ctx context.Context, query string, t
 }
 
 // ResolveByID fetches ID resolution candidates for a list of input nodes and in and out properties and returns a map of node to candidates.
-func (sc *defaultSpannerClient) ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error) {
+func (sc *standardSpannerClient) ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error) {
 	nodeToCandidates := make(map[string][]string)
 	if len(nodes) == 0 {
 		return nodeToCandidates, nil
@@ -252,7 +252,7 @@ func (sc *defaultSpannerClient) ResolveByID(ctx context.Context, nodes []string,
 }
 
 // GetEventCollectionDate retrieves event collection dates from Spanner.
-func (sc *defaultSpannerClient) GetEventCollectionDate(ctx context.Context, placeID, eventType string) ([]string, error) {
+func (sc *standardSpannerClient) GetEventCollectionDate(ctx context.Context, placeID, eventType string) ([]string, error) {
 	stmt := GetEventCollectionDateQuery(placeID, eventType)
 	rows, err := sc.exec.queryDynamic(ctx, *stmt)
 	if err != nil {
@@ -269,7 +269,7 @@ func (sc *defaultSpannerClient) GetEventCollectionDate(ctx context.Context, plac
 }
 
 // GetEventCollection retrieves and filters event collection from Spanner.
-func (sc *defaultSpannerClient) GetEventCollection(ctx context.Context, req *pbv1.EventCollectionRequest) (*pbv1.EventCollection, error) {
+func (sc *standardSpannerClient) GetEventCollection(ctx context.Context, req *pbv1.EventCollectionRequest) (*pbv1.EventCollection, error) {
 	// Get event DCIDs
 	eventRows, err := sc.GetEventCollectionDcids(ctx, req.AffectedPlaceDcid, req.EventType, req.Date)
 	if err != nil {
@@ -301,7 +301,7 @@ func (sc *defaultSpannerClient) GetEventCollection(ctx context.Context, req *pbv
 
 	return res, nil
 }
-func (sc *defaultSpannerClient) populateProvenanceInfo(ctx context.Context, res *pbv1.EventCollection) error {
+func (sc *standardSpannerClient) populateProvenanceInfo(ctx context.Context, res *pbv1.EventCollection) error {
 	provDcids := []string{}
 	seen := map[string]bool{}
 	for _, event := range res.Events {
@@ -506,7 +506,7 @@ func keepEvent(event *pbv1.EventCollection_Event, req *pbv1.EventCollectionReque
 }
 
 // GetEventCollectionDcids retrieves event DCIDs from Spanner.
-func (sc *defaultSpannerClient) GetEventCollectionDcids(ctx context.Context, placeID, eventType, date string) ([]EventIdWithMagnitudeDcid, error) {
+func (sc *standardSpannerClient) GetEventCollectionDcids(ctx context.Context, placeID, eventType, date string) ([]EventIdWithMagnitudeDcid, error) {
 	stmt := GetEventCollectionDcidsQuery(placeID, eventType, date)
 	rows, err := sc.exec.queryDynamic(ctx, *stmt)
 	if err != nil {
@@ -585,7 +585,7 @@ func parseAndSortEvents(rows []EventIdWithMagnitudeDcid, eventType string) []str
 	return res
 }
 
-func (sc *defaultSpannerClient) Sparql(ctx context.Context, nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) ([][]string, error) {
+func (sc *standardSpannerClient) Sparql(ctx context.Context, nodes []types.Node, queries []*types.Query, opts *types.QueryOptions) ([][]string, error) {
 	query, err := SparqlQuery(nodes, queries, opts)
 	if err != nil {
 		return nil, fmt.Errorf("error building sparql query: %v", err)
@@ -594,7 +594,7 @@ func (sc *defaultSpannerClient) Sparql(ctx context.Context, nodes []types.Node, 
 	return sc.exec.queryDynamic(ctx, *query)
 }
 
-func (sc *defaultSpannerClient) GetProvenanceSummary(ctx context.Context, variables []string) (map[string]map[string]*pb.StatVarSummary_ProvenanceSummary, error) {
+func (sc *standardSpannerClient) GetProvenanceSummary(ctx context.Context, variables []string) (map[string]map[string]*pb.StatVarSummary_ProvenanceSummary, error) {
 	if len(variables) == 0 {
 		return map[string]map[string]*pb.StatVarSummary_ProvenanceSummary{},
 			nil
@@ -616,7 +616,7 @@ func (sc *defaultSpannerClient) GetProvenanceSummary(ctx context.Context, variab
 }
 
 // GetTermEmbeddingQuery retrieves embeddings from Spanner for a given query.
-func (sc *defaultSpannerClient) GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error) {
+func (sc *standardSpannerClient) GetTermEmbeddingQuery(ctx context.Context, modelName, searchLabel, taskType string) ([]float64, error) {
 	embeddings := []float64{}
 	err := sc.exec.executeQuery(ctx, *GetTermEmbeddingQuery(modelName, searchLabel, taskType), func(iter *spanner.RowIterator) error {
 		row, err := iter.Next()
@@ -632,7 +632,7 @@ func (sc *defaultSpannerClient) GetTermEmbeddingQuery(ctx context.Context, model
 }
 
 // FilterNodesByTypes filters a list of nodes by types and returns a map of node to matched types.
-func (sc *defaultSpannerClient) FilterNodesByTypes(ctx context.Context, nodes []string, typeFilters []string) (map[string][]string, error) {
+func (sc *standardSpannerClient) FilterNodesByTypes(ctx context.Context, nodes []string, typeFilters []string) (map[string][]string, error) {
 	if len(nodes) == 0 {
 		return map[string][]string{}, nil
 	}
@@ -662,7 +662,7 @@ func (sc *defaultSpannerClient) FilterNodesByTypes(ctx context.Context, nodes []
 }
 
 // VectorSearchQuery performs vector similarity search in Spanner.
-func (sc *defaultSpannerClient) VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string) ([]*VectorSearchResult, error) {
+func (sc *standardSpannerClient) VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string) ([]*VectorSearchResult, error) {
 	var results []*VectorSearchResult
 	err := sc.exec.queryStructs(
 		ctx,
@@ -679,7 +679,7 @@ func (sc *defaultSpannerClient) VectorSearchQuery(ctx context.Context, tableName
 }
 
 // GetStatVarGroupNode fetches StatVarGroupNode info from Spanner.
-func (sc *defaultSpannerClient) GetStatVarGroupNode(ctx context.Context, nodes []string, includeDefinitions bool) ([]*StatVarGroupNode, error) {
+func (sc *standardSpannerClient) GetStatVarGroupNode(ctx context.Context, nodes []string, includeDefinitions bool) ([]*StatVarGroupNode, error) {
 	var svgNodes []*StatVarGroupNode
 	if len(nodes) == 0 {
 		return svgNodes, nil
@@ -703,7 +703,7 @@ func (sc *defaultSpannerClient) GetStatVarGroupNode(ctx context.Context, nodes [
 }
 
 // GetFilteredStatVarGroupNode fetches filtered StatVarGroupNode info from Spanner.
-func (sc *defaultSpannerClient) GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (map[string]*FilteredStatVarGroupNode, error) {
+func (sc *standardSpannerClient) GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (map[string]*FilteredStatVarGroupNode, error) {
 	response := map[string]*FilteredStatVarGroupNode{}
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	errGroup.SetLimit(maxConcurrentFilteredSVGGoroutines) // Limit the number of concurrent goroutines to avoid overwhelming Spanner with too many requests.
@@ -739,7 +739,7 @@ func (sc *defaultSpannerClient) GetFilteredStatVarGroupNode(ctx context.Context,
 }
 
 // getSingleFilteredStatVarGroupNode fetches the relevant info to build a single filtered StatVarGroupNode from Spanner.
-func (sc *defaultSpannerClient) getSingleFilteredStatVarGroupNode(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (*FilteredStatVarGroupNode, error) {
+func (sc *standardSpannerClient) getSingleFilteredStatVarGroupNode(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (*FilteredStatVarGroupNode, error) {
 	filteredStatVarGroupNode := &FilteredStatVarGroupNode{}
 	errGroup, errCtx := errgroup.WithContext(ctx)
 	svgChildChan := make(chan []*SVGChild, 1)
@@ -819,7 +819,7 @@ func (sc *defaultSpannerClient) getSingleFilteredStatVarGroupNode(ctx context.Co
 }
 
 // GetFilteredTopic fetches the relevant info to build a filtered Topic response from Spanner.
-func (sc *defaultSpannerClient) GetFilteredTopic(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]int, error) {
+func (sc *standardSpannerClient) GetFilteredTopic(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]int, error) {
 	counts := make(map[string]int, len(nodes))
 	for _, node := range nodes {
 		counts[node] = 0

@@ -27,7 +27,9 @@ import (
 
 	"cloud.google.com/go/spanner"
 	"github.com/datacommonsorg/mixer/internal/metrics"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/api/iterator"
@@ -349,4 +351,21 @@ func processCacheRows[T proto.Message](iter *spanner.RowIterator, newProto func(
 
 func isTimeoutError(err error) bool {
 	return spanner.ErrCode(err) == codes.DeadlineExceeded || errors.Is(err, context.DeadlineExceeded)
+}
+
+// shouldLogSQL checks whether to log the full interpolated SQL query based on request header.
+func shouldLogSQL(ctx context.Context) bool {
+	if md, ok := metadata.FromIncomingContext(ctx); ok {
+		headers := md.Get(util.XLogSQL)
+		return len(headers) > 0 && headers[0] == "true"
+	}
+	return false
+}
+
+// getSchemaName returns the name of the schema being used based on context.
+func getSchemaName(ctx context.Context) string {
+	if useNormalizedSchema(ctx) {
+		return "Normalized"
+	}
+	return "Legacy"
 }
