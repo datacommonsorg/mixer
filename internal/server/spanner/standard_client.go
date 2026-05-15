@@ -868,3 +868,17 @@ func (sc *standardSpannerClient) GetFilteredTopic(ctx context.Context, nodes []s
 
 	return counts, nil
 }
+
+// NewStandardClient creates a new SpannerClient without the schema selector.
+// This is intended for testing and internal use where a direct client is needed.
+func NewStandardClient(ctx context.Context, spannerConfigYaml, databaseOverride string) (SpannerClient, error) {
+	cfg, err := createSpannerConfig(spannerConfigYaml, databaseOverride)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create standardSpannerClient: %w", err)
+	}
+	exec, err := NewSpannerConnector(ctx, cfg)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create standardSpannerClient: %w", err)
+	}
+	return newStandardSpannerClient(exec), nil
+}

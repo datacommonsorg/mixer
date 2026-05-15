@@ -28,11 +28,11 @@ import (
 	"cloud.google.com/go/spanner"
 	"github.com/datacommonsorg/mixer/internal/metrics"
 	"github.com/datacommonsorg/mixer/internal/util"
+	"google.golang.org/api/iterator"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
-	"google.golang.org/api/iterator"
 )
 
 // SpannerConnector handles the low-level details of connecting to Spanner and executing queries.
@@ -48,7 +48,11 @@ type SpannerConnector struct {
 }
 
 // NewSpannerConnector creates a new SpannerConnector.
-func NewSpannerConnector(client *spanner.Client) (*SpannerConnector, error) {
+func NewSpannerConnector(ctx context.Context, cfg *SpannerConfig) (*SpannerConnector, error) {
+	client, err := newDBClient(ctx, cfg)
+	if err != nil {
+		return nil, err
+	}
 	se := &SpannerConnector{
 		client: client,
 	}
@@ -57,7 +61,7 @@ func NewSpannerConnector(client *spanner.Client) (*SpannerConnector, error) {
 	se.ticker = NewTimestampTicker()
 	se.stopCh = make(chan struct{})
 	se.updateTimestamp = se.fetchAndUpdateTimestamp
-	if err := se.updateTimestamp(context.Background()); err != nil {
+	if err := se.updateTimestamp(ctx); err != nil {
 		slog.Error("Error initializing Spanner staleness timestamp", "error", err.Error())
 		return nil, err
 	}
@@ -368,4 +372,18 @@ func getSchemaName(ctx context.Context) string {
 		return "Normalized"
 	}
 	return "Legacy"
+}
+
+// newDBClient creates the database name string and initializes the Spanner client.
+func newDBClient(ctx context.Context, cfg *SpannerConfig) (*spanner.Client, error) {
+	// Construct the database name string
+	databaseName := fmt.Sprintf("projects/%s/instances/%s/databases/%s", cfg.Project, cfg.Instance, cfg.Database)
+
+	// Create the Spanner client
+	client, err := spanner.NewClient(ctx, databaseName)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create Spanner client: %w", err)
+	}
+
+	return client, nil
 }

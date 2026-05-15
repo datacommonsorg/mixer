@@ -20,7 +20,6 @@ import (
 	"fmt"
 	"log/slog"
 
-	"cloud.google.com/go/spanner"
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
@@ -56,16 +55,6 @@ type SpannerClient interface {
 	Close()
 }
 
-
-
-func useNormalizedSchema(ctx context.Context) bool {
-	if md, ok := metadata.FromIncomingContext(ctx); ok {
-		headers := md.Get(util.XUseNormalizedSchema)
-		return len(headers) > 0 && headers[0] == "true"
-	}
-	return false
-}
-
 // selectorClient dispatches calls to either default or normalized client based on request headers.
 // It serves as the main entry point for the Spanner client, centralizing routing concerns.
 //
@@ -76,15 +65,32 @@ func useNormalizedSchema(ctx context.Context) bool {
 // internal fallback for general request routing, ensuring that the standard path remains
 // the explicit default.
 type selectorClient struct {
-	SpannerClient // Embeds the default client
+	SpannerClient // Embeds the standard client as the default client
 	normalized    *normalizedSchemaClient
 }
 
-// logNormalizedInvocation logs that the normalized schema was invoked for a method with custom arguments.
-func logNormalizedInvocation(methodName string, args ...any) {
-	fullArgs := append([]any{"method", methodName}, args...)
-	slog.Info("Invoking normalized Spanner schema", fullArgs...)
+// NewSpannerClient creates a new SpannerClient from the config yaml string and an optional database override.
+// It returns a wrapper client that handles request-time schema dispatching.
+func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string) (SpannerClient, error) {
+	cfg, err := createSpannerConfig(spannerConfigYaml, databaseOverride)
+	if err != nil {
+		return nil, err
+	}
+	exec, err := NewSpannerConnector(ctx, cfg)
+	if err != nil {
+		return nil, err
+	}
+
+	defaultClient := newStandardSpannerClient(exec)
+	normalizedClient := NewNormalizedClient(defaultClient)
+
+	return &selectorClient{
+		SpannerClient: defaultClient,
+		normalized:    normalizedClient,
+	}, nil
 }
+
+
 
 // GetObservations overrides the embedded client's GetObservations to dispatch based on schema selection.
 func (s *selectorClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error) {
@@ -132,67 +138,6 @@ func (s *selectorClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDa
 	return s.normalized.GetSdmxObservations(ctx, req)
 }
 
-// Force compiler that all methods required by the interface are implemented by clients
-var _ SpannerClient = (*standardSpannerClient)(nil)
-var _ SpannerClient = (*selectorClient)(nil)
-
-// NewRawSpannerClient creates a new SpannerClient without the schema selector.
-// This is intended for testing and internal use where a direct client is needed.
-func NewRawSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string) (SpannerClient, error) {
-	cfg, err := createSpannerConfig(spannerConfigYaml, databaseOverride)
-	if err != nil {
-		return nil, fmt.Errorf("failed to create standardSpannerClient: %w", err)
-	}
-	client, err := createSpannerClient(ctx, cfg)
-	if err != nil {
-		return nil, fmt.Errorf("failed to create standardSpannerClient: %w", err)
-	}
-	exec, err := NewSpannerConnector(client)
-	if err != nil {
-		return nil, fmt.Errorf("failed to create standardSpannerClient: %w", err)
-	}
-	return newStandardSpannerClient(exec), nil
-}
-
-// NewSpannerClient creates a new SpannerClient from the config yaml string and an optional database override.
-// It returns a wrapper client that handles request-time schema dispatching.
-func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string) (SpannerClient, error) {
-	cfg, err := createSpannerConfig(spannerConfigYaml, databaseOverride)
-	if err != nil {
-		return nil, err
-	}
-	client, err := createSpannerClient(ctx, cfg)
-	if err != nil {
-		return nil, err
-	}
-	exec, err := NewSpannerConnector(client)
-	if err != nil {
-		return nil, err
-	}
-
-	defaultClient := newStandardSpannerClient(exec)
-	normalizedClient := NewNormalizedClient(defaultClient)
-
-	return &selectorClient{
-		SpannerClient: defaultClient,
-		normalized:    normalizedClient,
-	}, nil
-}
-
-// createSpannerClient creates the database name string and initializes the Spanner client.
-func createSpannerClient(ctx context.Context, cfg *SpannerConfig) (*spanner.Client, error) {
-	// Construct the database name string
-	databaseName := fmt.Sprintf("projects/%s/instances/%s/databases/%s", cfg.Project, cfg.Instance, cfg.Database)
-
-	// Create the Spanner client
-	client, err := spanner.NewClient(ctx, databaseName)
-	if err != nil {
-		return nil, fmt.Errorf("failed to create Spanner client: %w", err)
-	}
-
-	return client, nil
-}
-
 // createSpannerConfig creates the config from the specific yaml string and an optional database override.
 func createSpannerConfig(spannerConfigYaml, databaseOverride string) (*SpannerConfig, error) {
 	var cfg SpannerConfig
@@ -209,6 +154,21 @@ func createSpannerConfig(spannerConfigYaml, databaseOverride string) (*SpannerCo
 	}
 
 	return &cfg, nil
+}
+
+// useNormalizedSchema checks whether to use the normalized Spanner schema based on request header.
+func useNormalizedSchema(ctx context.Context) bool {
+	if md, ok := metadata.FromIncomingContext(ctx); ok {
+		headers := md.Get(util.XUseNormalizedSchema)
+		return len(headers) > 0 && headers[0] == "true"
+	}
+	return false
+}
+
+// logNormalizedInvocation logs that the normalized schema was invoked for a method with custom arguments.
+func logNormalizedInvocation(methodName string, args ...any) {
+	fullArgs := append([]any{"method", methodName}, args...)
+	slog.Info("Invoking normalized Spanner schema", fullArgs...)
 }
 
 
