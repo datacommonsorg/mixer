@@ -932,3 +932,47 @@ func filterVariableGroupInfo(data []*pbv1.VariableGroupInfoResponse, invalidNode
 
 	return filteredData
 }
+
+// FilterStatVarsByEntity filters a list of stat vars by entity existence.
+func (sds *SpannerDataSource) FilterStatVarsByEntity(ctx context.Context, req *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
+	svList := req.GetStatVars()
+	entities := req.GetEntities()
+
+	if len(entities) == 0 {
+		return &pb.FilterStatVarsByEntityResponse{
+			StatVars: svList,
+		}, nil
+	}
+
+	ids := make([]string, 0, len(svList))
+	for _, item := range svList {
+		ids = append(ids, item.Dcid)
+	}
+
+	rows, err := sds.client.CheckVariableExistence(ctx, ids, entities)
+	if err != nil {
+		return nil, fmt.Errorf("error checking variable existence: %w", err)
+	}
+
+	// Build a set of valid variables
+	validVars := make(map[string]struct{}, len(svList))
+	for _, row := range rows {
+		if len(row) < 1 {
+			continue
+		}
+		v := row[0]
+		validVars[v] = struct{}{}
+	}
+
+	// Filter the input list based on the set above
+	result := make([]*pb.EntityInfo, 0, len(svList))
+	for _, node := range svList {
+		if _, exists := validVars[node.Dcid]; exists {
+			result = append(result, node)
+		}
+	}
+
+	return &pb.FilterStatVarsByEntityResponse{
+		StatVars: result,
+	}, nil
+}

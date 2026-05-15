@@ -213,3 +213,21 @@ func (ds *DataSources) SdmxData(ctx context.Context, in *pb.SdmxDataQuery) (*pb.
 		},
 	)
 }
+
+func (ds *DataSources) FilterStatVarsByEntity(ctx context.Context, in *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
+	return fetchAndMerge(ctx, ds.sources, in,
+		func(c context.Context, s datasource.DataSource, r *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
+			return s.FilterStatVarsByEntity(c, r)
+		},
+		func(all []*pb.FilterStatVarsByEntityResponse) (*pb.FilterStatVarsByEntityResponse, error) {
+			if len(all) == 0 {
+				return &pb.FilterStatVarsByEntityResponse{}, nil
+			}
+			res := all[0]
+			for i := 1; i < len(all); i++ {
+				res = merger.MergeFilterStatVarsByEntityResponse(res, all[i])
+			}
+			return res, nil
+		},
+	)
+}

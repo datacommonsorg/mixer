@@ -28,15 +28,16 @@ import (
 type RequestType string
 
 const (
-	TypeNode                  RequestType = "Node"
-	TypeNodeSearch            RequestType = "NodeSearch"
-	TypeObservation           RequestType = "Observation"
-	TypeResolve               RequestType = "Resolve"
-	TypeSparql                RequestType = "Sparql"
-	TypeEvent                 RequestType = "Event"
-	TypeBulkVariableInfo      RequestType = "BulkVariableInfo"
-	TypeBulkVariableGroupInfo RequestType = "BulkVariableGroupInfo"
-	TypeSdmxData              RequestType = "SdmxData"
+	TypeNode                   RequestType = "Node"
+	TypeNodeSearch             RequestType = "NodeSearch"
+	TypeObservation            RequestType = "Observation"
+	TypeResolve                RequestType = "Resolve"
+	TypeSparql                 RequestType = "Sparql"
+	TypeEvent                  RequestType = "Event"
+	TypeBulkVariableInfo       RequestType = "BulkVariableInfo"
+	TypeBulkVariableGroupInfo  RequestType = "BulkVariableGroupInfo"
+	TypeSdmxData               RequestType = "SdmxData"
+	TypeFilterStatVarsByEntity RequestType = "FilterStatVarsByEntity"
 )
 
 // RequestContext holds state for a single request as it flows through processors.

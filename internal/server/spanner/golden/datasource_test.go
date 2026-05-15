@@ -752,3 +752,61 @@ func TestSpannerObservation_NoExpression(t *testing.T) {
 		t.Errorf("Expected data for geoId/06")
 	}
 }
+
+func TestSpannerFilterStatVarsByEntity(t *testing.T) {
+	t.Parallel()
+	ctx := context.Background()
+	_, filename, _, _ := runtime.Caller(0)
+	goldenDir := path.Join(path.Dir(filename), "datasource")
+
+	for _, c := range []struct {
+		desc       string
+		req        *pb.FilterStatVarsByEntityRequest
+		mockExist  [][]string
+		goldenFile string
+	}{
+		{
+			desc: "Filter SVs",
+			req: &pb.FilterStatVarsByEntityRequest{
+				StatVars: []*pb.EntityInfo{
+					{Dcid: "Count_Person"},
+					{Dcid: "Median_Income_Person"},
+					{Dcid: "NonExistent"},
+				},
+				Entities: []string{"geoId/06"},
+			},
+			mockExist: [][]string{
+				{"Count_Person", "geoId/06"},
+				{"Median_Income_Person", "geoId/06"},
+			},
+			goldenFile: "filter_stat_vars.json",
+		},
+	} {
+		client := &mockSpannerClient{
+			checkVariableExistenceRes: c.mockExist,
+		}
+		ds := spanner.NewSpannerDataSource(client, nil, nil, false)
+
+		got, err := ds.FilterStatVarsByEntity(ctx, c.req)
+		if err != nil {
+			t.Fatalf("%s: FilterStatVarsByEntity error: %v", c.desc, err)
+		}
+
+		if test.GenerateGolden {
+			test.UpdateProtoGolden(got, goldenDir, c.goldenFile)
+			continue
+		}
+
+		var want pb.FilterStatVarsByEntityResponse
+		if err = test.ReadJSON(goldenDir, c.goldenFile, &want); err != nil {
+			t.Fatalf("%s: ReadJSON error (%v): %v", c.desc, c.goldenFile, err)
+		}
+
+		cmpOpts := cmp.Options{
+			protocmp.Transform(),
+		}
+		if diff := cmp.Diff(got, &want, cmpOpts); diff != "" {
+			t.Errorf("%s: %v payload mismatch:\n%v", c.desc, c.goldenFile, diff)
+		}
+	}
+}
