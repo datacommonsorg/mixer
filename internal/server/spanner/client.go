@@ -25,8 +25,8 @@ import (
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
+	"github.com/datacommonsorg/mixer/internal/util"
+	"google.golang.org/grpc/metadata"
 	"gopkg.in/yaml.v3"
 )
 
@@ -56,40 +56,85 @@ type SpannerClient interface {
 	Close()
 }
 
-// standardSpannerClient encapsulates the Spanner client that directly interacts with the Spanner database.
-type standardSpannerClient struct {
-	exec *SpannerExecutor
-}
 
-// newStandardSpannerClient creates a new standardSpannerClient.
-func newStandardSpannerClient(exec *SpannerExecutor) *standardSpannerClient {
-	return &standardSpannerClient{exec: exec}
-}
 
-// normalizedSchemaClient encapsulates the Spanner client for the normalized schema.
-// It embeds SpannerClient to inherit default behavior and only overrides specific methods.
-type normalizedSchemaClient struct {
-	SpannerClient // Embeds standardSpannerClient
-	exec          *SpannerExecutor
-}
-
-// NewNormalizedClient creates a new normalizedSchemaClient.
-func NewNormalizedClient(client SpannerClient) (*normalizedSchemaClient, error) {
-	sc, ok := client.(*standardSpannerClient)
-	if !ok {
-		err := fmt.Errorf("NewNormalizedClient: expected *standardSpannerClient, got %T", client)
-		slog.Error("Failed to create normalized client", "error", err)
-		return nil, err
+func useNormalizedSchema(ctx context.Context) bool {
+	if md, ok := metadata.FromIncomingContext(ctx); ok {
+		headers := md.Get(util.XUseNormalizedSchema)
+		return len(headers) > 0 && headers[0] == "true"
 	}
-	return &normalizedSchemaClient{
-		SpannerClient: client,
-		exec:          sc.exec,
-	}, nil
+	return false
+}
+
+// selectorClient dispatches calls to either default or normalized client based on request headers.
+// It serves as the main entry point for the Spanner client, centralizing routing concerns.
+//
+// DESIGN NOTE: This client embeds the standard client (SpannerClient) to handle automatic
+// fallback for methods that do not have a specialized normalized implementation.
+// For methods that DO have a specialized implementation (like GetObservations), it explicitly
+// checks the header and routes accordingly. It does NOT rely on the normalized client's
+// internal fallback for general request routing, ensuring that the standard path remains
+// the explicit default.
+type selectorClient struct {
+	SpannerClient // Embeds the default client
+	normalized    *normalizedSchemaClient
+}
+
+// logNormalizedInvocation logs that the normalized schema was invoked for a method with custom arguments.
+func logNormalizedInvocation(methodName string, args ...any) {
+	fullArgs := append([]any{"method", methodName}, args...)
+	slog.Info("Invoking normalized Spanner schema", fullArgs...)
+}
+
+// GetObservations overrides the embedded client's GetObservations to dispatch based on schema selection.
+func (s *selectorClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error) {
+	if useNormalizedSchema(ctx) {
+		logNormalizedInvocation("GetObservations",
+			"num_variables", len(variables),
+			"num_entities", len(entities),
+		)
+		return s.normalized.GetObservations(ctx, variables, entities)
+	}
+	return s.SpannerClient.GetObservations(ctx, variables, entities)
+}
+
+// CheckVariableExistence overrides the embedded client's CheckVariableExistence to dispatch based on schema selection.
+func (s *selectorClient) CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
+	if useNormalizedSchema(ctx) {
+		logNormalizedInvocation("CheckVariableExistence",
+			"num_variables", len(variables),
+			"num_entities", len(entities),
+		)
+		return s.normalized.CheckVariableExistence(ctx, variables, entities)
+	}
+	return s.SpannerClient.CheckVariableExistence(ctx, variables, entities)
+}
+
+// GetObservationsContainedInPlace overrides the embedded client's GetObservationsContainedInPlace to dispatch based on schema selection.
+func (s *selectorClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
+	if useNormalizedSchema(ctx) {
+		logNormalizedInvocation("GetObservationsContainedInPlace",
+			"num_variables", len(variables),
+			"ancestor", containedInPlace.Ancestor,
+			"child_place_type", containedInPlace.ChildPlaceType,
+		)
+		return s.normalized.GetObservationsContainedInPlace(ctx, variables, containedInPlace)
+	}
+	return s.SpannerClient.GetObservationsContainedInPlace(ctx, variables, containedInPlace)
+}
+
+// GetSdmxObservations overrides the embedded client's GetSdmxObservations.
+// SDMX is only supported on the normalized schema, so it always delegates to the normalized client.
+func (s *selectorClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+	logNormalizedInvocation("GetSdmxObservations",
+		"query", req,
+	)
+	return s.normalized.GetSdmxObservations(ctx, req)
 }
 
 // Force compiler that all methods required by the interface are implemented by clients
 var _ SpannerClient = (*standardSpannerClient)(nil)
-var _ SpannerClient = (*normalizedSchemaClient)(nil)
+var _ SpannerClient = (*selectorClient)(nil)
 
 // NewRawSpannerClient creates a new SpannerClient without the schema selector.
 // This is intended for testing and internal use where a direct client is needed.
@@ -102,7 +147,7 @@ func NewRawSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverrid
 	if err != nil {
 		return nil, fmt.Errorf("failed to create standardSpannerClient: %w", err)
 	}
-	exec, err := NewSpannerExecutor(client)
+	exec, err := NewSpannerConnector(client)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create standardSpannerClient: %w", err)
 	}
@@ -120,18 +165,18 @@ func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride s
 	if err != nil {
 		return nil, err
 	}
-	exec, err := NewSpannerExecutor(client)
+	exec, err := NewSpannerConnector(client)
 	if err != nil {
 		return nil, err
 	}
 
 	defaultClient := newStandardSpannerClient(exec)
-	normalizedSchemaClient, err := NewNormalizedClient(defaultClient)
-	if err != nil {
-		return nil, err
-	}
+	normalizedClient := NewNormalizedClient(defaultClient)
 
-	return normalizedSchemaClient, nil
+	return &selectorClient{
+		SpannerClient: defaultClient,
+		normalized:    normalizedClient,
+	}, nil
 }
 
 // createSpannerClient creates the database name string and initializes the Spanner client.
@@ -166,21 +211,4 @@ func createSpannerConfig(spannerConfigYaml, databaseOverride string) (*SpannerCo
 	return &cfg, nil
 }
 
-func (sc *standardSpannerClient) Id() string {
-	return sc.exec.Id()
-}
 
-// Start starts the background goroutine to periodically fetch the timestamp.
-func (sc *standardSpannerClient) Start() {
-	sc.exec.Start()
-}
-
-// Close closes the Spanner client and stops the background goroutine.
-func (sc *standardSpannerClient) Close() {
-	sc.exec.Close()
-}
-
-// GetSdmxObservations is not supported on the default client.
-func (sc *standardSpannerClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
-	return nil, status.Error(codes.Unimplemented, "SDMX queries are only supported on the normalized schema")
-}

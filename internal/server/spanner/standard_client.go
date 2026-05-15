@@ -34,6 +34,8 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/api/iterator"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -71,6 +73,35 @@ const (
 	// Maximum number of concurrent goroutines for fetching filtered StatVarGroupNode info.
 	maxConcurrentFilteredSVGGoroutines = 10
 )
+
+// standardSpannerClient encapsulates the Spanner client that directly interacts with the Spanner database.
+type standardSpannerClient struct {
+	exec *SpannerConnector
+}
+
+// newStandardSpannerClient creates a new standardSpannerClient.
+func newStandardSpannerClient(exec *SpannerConnector) *standardSpannerClient {
+	return &standardSpannerClient{exec: exec}
+}
+
+func (sc *standardSpannerClient) Id() string {
+	return sc.exec.Id()
+}
+
+// Start starts the background goroutine to periodically fetch the timestamp.
+func (sc *standardSpannerClient) Start() {
+	sc.exec.Start()
+}
+
+// Close closes the Spanner client and stops the background goroutine.
+func (sc *standardSpannerClient) Close() {
+	sc.exec.Close()
+}
+
+// GetSdmxObservations is not supported on the default client.
+func (sc *standardSpannerClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+	return nil, status.Error(codes.Unimplemented, "SDMX queries are only supported on the normalized schema")
+}
 
 // GetNodeProps retrieves node properties from Spanner given a list of IDs and a direction and returns a map.
 func (sc *standardSpannerClient) GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*Property, error) {
@@ -423,12 +454,6 @@ func populateSpecialFields(event *pbv1.EventCollection_Event, edge *Edge) {
 }
 
 func populateGeoLocation(event *pbv1.EventCollection_Event, value string) {
-	// Note: The startLocation value in Spanner is usually a latLong/ DCID (e.g. latLong/577521_-958960).
-	// We parse it here for performance to avoid an extra database roundtrip.
-	//
-	// TODO(task): Revisit this optimization if we encounter valid startLocation values
-	// that are NOT latLong/ DCIDs but still need to be resolved to points, or if the
-	// assumption that dcids always contain coordinates is not true.
 	if strings.HasPrefix(value, "latLong/") {
 		parts := strings.Split(strings.TrimPrefix(value, "latLong/"), "_")
 		if len(parts) == 2 {
@@ -527,20 +552,7 @@ func (sc *standardSpannerClient) GetEventCollectionDcids(ctx context.Context, pl
 	return res, nil
 }
 
-type parsedEvent struct {
-	dcid      string
-	magnitude float64
-}
-
 // parseMagnitudeDcid parses the numeric magnitude value from a DCID string.
-//
-// Background:
-// In the Spanner graph, quantity nodes have a `value` property that is identical to their DCID
-// (e.g. `SquareKilometer91.57871`). Since we'd still receive a string with a prefix even after
-// another jump, we can bypass the redundant join and parse the numeric value directly from the
-// `object_id` of the edge in-memory.
-// Ideally the value in Spanner should be stored as just the value and not this awkward string.
-// If that happens, we can remove this function and just use the value directly.
 func parseMagnitudeDcid(magnitudeDcid, unit string) float64 {
 	if magnitudeDcid == "" || unit == "" {
 		return 0.0
@@ -552,6 +564,11 @@ func parseMagnitudeDcid(magnitudeDcid, unit string) float64 {
 		return 0.0
 	}
 	return v
+}
+
+type parsedEvent struct {
+	dcid      string
+	magnitude float64
 }
 
 // parseAndSortEvents parses magnitude DCIDs, sorts events by magnitude then DCID alphabetical, and truncates to top 100.
@@ -706,7 +723,7 @@ func (sc *standardSpannerClient) GetStatVarGroupNode(ctx context.Context, nodes 
 func (sc *standardSpannerClient) GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (map[string]*FilteredStatVarGroupNode, error) {
 	response := map[string]*FilteredStatVarGroupNode{}
 	errGroup, errCtx := errgroup.WithContext(ctx)
-	errGroup.SetLimit(maxConcurrentFilteredSVGGoroutines) // Limit the number of concurrent goroutines to avoid overwhelming Spanner with too many requests.
+	errGroup.SetLimit(maxConcurrentFilteredSVGGoroutines)
 
 	type nodeResult struct {
 		node string
@@ -851,6 +868,3 @@ func (sc *standardSpannerClient) GetFilteredTopic(ctx context.Context, nodes []s
 
 	return counts, nil
 }
-
-
-

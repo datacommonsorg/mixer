@@ -18,28 +18,47 @@ package spanner
 import (
 	"context"
 	"fmt"
-	"log/slog"
 	"strconv"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
-	"github.com/datacommonsorg/mixer/internal/util"
-	"google.golang.org/grpc/metadata"
 )
 
-func useNormalizedSchema(ctx context.Context) bool {
-	if md, ok := metadata.FromIncomingContext(ctx); ok {
-		headers := md.Get(util.XUseNormalizedSchema)
-		return len(headers) > 0 && headers[0] == "true"
-	}
-	return false
+// normalizedSchemaClient encapsulates the Spanner client for the normalized schema.
+// It implements specialized queries optimized for the normalized schema.
+//
+// DESIGN NOTE: This client embeds the SpannerClient interface (initialized with the
+// standard client) primarily to fulfill the full interface and to provide full
+// internal-facing functionality (e.g., if a normalized method needs to call a
+// standard method like GetNodeProps internally). It is NOT intended to be used
+// by the Selector for general request fallbacks, which are handled explicitly
+// by the Selector itself.
+type normalizedSchemaClient struct {
+	SpannerClient
+	conn *SpannerConnector
 }
 
-// logNormalizedInvocation logs that the normalized schema was invoked for a method with custom arguments.
-func logNormalizedInvocation(methodName string, args ...any) {
-	fullArgs := append([]any{"method", methodName}, args...)
-	slog.Info("Invoking normalized Spanner schema", fullArgs...)
+// NewNormalizedClient creates a new normalizedSchemaClient.
+func NewNormalizedClient(client SpannerClient) *normalizedSchemaClient {
+	var conn *SpannerConnector
+	if sc, ok := client.(*standardSpannerClient); ok {
+		conn = sc.exec
+	} else if sc, ok := client.(*selectorClient); ok {
+		if std, ok := sc.SpannerClient.(*standardSpannerClient); ok {
+			conn = std.exec
+		}
+	}
+	if conn == nil {
+		panic(fmt.Sprintf("NewNormalizedClient: unexpected client type %T", client))
+	}
+	return &normalizedSchemaClient{
+		SpannerClient: client,
+		conn:          conn,
+	}
 }
+
+// Force compiler that all methods required by the interface are implemented by clients
+var _ SpannerClient = (*normalizedSchemaClient)(nil)
 
 // GetObservations retrieves observations from Spanner given a list of variables and entities
 // using the normalized schema.
@@ -47,15 +66,6 @@ func (nc *normalizedSchemaClient) GetObservations(ctx context.Context, variables
 	if len(entities) == 0 {
 		return nil, fmt.Errorf("entity must be specified")
 	}
-
-	if !useNormalizedSchema(ctx) {
-		return nc.SpannerClient.GetObservations(ctx, variables, entities)
-	}
-
-	logNormalizedInvocation("GetObservations",
-		"num_variables", len(variables),
-		"num_entities", len(entities),
-	)
 
 	rawObs, err := nc.fetchRawObservations(ctx, variables, entities)
 	if err != nil {
@@ -74,7 +84,7 @@ func (nc *normalizedSchemaClient) fetchRawObservations(ctx context.Context, vari
 	stmt := GetNormalizedObservationsQuery(variables, entities)
 
 	var rawObs []*rawObservation
-	err := nc.exec.queryStructs(ctx, *stmt, func() interface{} { return &rawObservation{} }, func(row interface{}) {
+	err := nc.conn.queryStructs(ctx, *stmt, func() interface{} { return &rawObservation{} }, func(row interface{}) {
 		rawObs = append(rawObs, row.(*rawObservation))
 	})
 	return rawObs, err
@@ -118,20 +128,11 @@ func reconstructObservations(rawObs []*rawObservation) []*Observation {
 
 // CheckVariableExistence checks which variables exist for which entities using the normalized schema.
 func (nc *normalizedSchemaClient) CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
-	if !useNormalizedSchema(ctx) {
-		return nc.SpannerClient.CheckVariableExistence(ctx, variables, entities)
-	}
-
-	logNormalizedInvocation("CheckVariableExistence",
-		"num_variables", len(variables),
-		"num_entities", len(entities),
-	)
-
 	stmt, err := GetNormalizedStatVarsByEntityQuery(variables, entities)
 	if err != nil {
 		return nil, err
 	}
-	return nc.exec.queryDynamic(ctx, *stmt)
+	return nc.conn.queryDynamic(ctx, *stmt)
 }
 
 // GetObservationsContainedInPlace retrieves observations for entities contained in a place
@@ -140,16 +141,6 @@ func (nc *normalizedSchemaClient) GetObservationsContainedInPlace(ctx context.Co
 	if containedInPlace == nil {
 		return nil, fmt.Errorf("containedInPlace must be specified")
 	}
-
-	if !useNormalizedSchema(ctx) {
-		return nc.SpannerClient.GetObservationsContainedInPlace(ctx, variables, containedInPlace)
-	}
-
-	logNormalizedInvocation("GetObservationsContainedInPlace",
-		"num_variables", len(variables),
-		"ancestor", containedInPlace.Ancestor,
-		"child_place_type", containedInPlace.ChildPlaceType,
-	)
 
 	rawObs, err := nc.fetchRawObservationsContainedInPlace(ctx, variables, containedInPlace)
 	if err != nil {
@@ -168,7 +159,7 @@ func (nc *normalizedSchemaClient) fetchRawObservationsContainedInPlace(ctx conte
 	stmt := GetNormalizedObservationsContainedInPlaceQuery(variables, containedInPlace)
 
 	var rawObs []*rawObservation
-	err := nc.exec.queryStructs(ctx, *stmt, func() interface{} { return &rawObservation{} }, func(row interface{}) {
+	err := nc.conn.queryStructs(ctx, *stmt, func() interface{} { return &rawObservation{} }, func(row interface{}) {
 		rawObs = append(rawObs, row.(*rawObservation))
 	})
 	return rawObs, err
@@ -186,14 +177,10 @@ var facetAttributes = map[string]bool{
 // GetSdmxObservations retrieves observations from Spanner given a list of constraints
 // using the normalized schema and relational division.
 func (nc *normalizedSchemaClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
-	logNormalizedInvocation("GetSdmxObservations",
-		"query", req,
-	)
-
 	stmt := GetSdmxObservationsQuery(req)
 
 	var rawObs []*rawObservation
-	err := nc.exec.queryStructs(ctx, *stmt, func() interface{} { return &rawObservation{} }, func(row interface{}) {
+	err := nc.conn.queryStructs(ctx, *stmt, func() interface{} { return &rawObservation{} }, func(row interface{}) {
 		rawObs = append(rawObs, row.(*rawObservation))
 	})
 	if err != nil {

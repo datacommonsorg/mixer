@@ -35,8 +35,8 @@ import (
 	"google.golang.org/api/iterator"
 )
 
-// SpannerExecutor handles the low-level details of connecting to Spanner and executing queries.
-type SpannerExecutor struct {
+// SpannerConnector handles the low-level details of connecting to Spanner and executing queries.
+type SpannerConnector struct {
 	client          *spanner.Client
 	timestamp       atomic.Int64
 	ticker          Ticker
@@ -47,9 +47,9 @@ type SpannerExecutor struct {
 	updateTimestamp func(context.Context) error
 }
 
-// NewSpannerExecutor creates a new SpannerExecutor.
-func NewSpannerExecutor(client *spanner.Client) (*SpannerExecutor, error) {
-	se := &SpannerExecutor{
+// NewSpannerConnector creates a new SpannerConnector.
+func NewSpannerConnector(client *spanner.Client) (*SpannerConnector, error) {
+	se := &SpannerConnector{
 		client: client,
 	}
 
@@ -65,12 +65,12 @@ func NewSpannerExecutor(client *spanner.Client) (*SpannerExecutor, error) {
 }
 
 // Id returns the database name.
-func (se *SpannerExecutor) Id() string {
+func (se *SpannerConnector) Id() string {
 	return se.client.DatabaseName()
 }
 
 // Start starts the background goroutine to periodically fetch the timestamp.
-func (se *SpannerExecutor) Start() {
+func (se *SpannerConnector) Start() {
 	se.startOnce.Do(func() {
 		ctx, cancel := context.WithCancel(context.Background())
 
@@ -96,7 +96,7 @@ func (se *SpannerExecutor) Start() {
 }
 
 // Close closes the Spanner client and stops the background goroutine.
-func (se *SpannerExecutor) Close() {
+func (se *SpannerConnector) Close() {
 	se.stopOnce.Do(func() {
 		close(se.stopCh)
 		se.wg.Wait()
@@ -107,7 +107,7 @@ func (se *SpannerExecutor) Close() {
 }
 
 // fetchAndUpdateTimestamp queries Spanner and updates the timestamp.
-func (se *SpannerExecutor) fetchAndUpdateTimestamp(ctx context.Context) error {
+func (se *SpannerConnector) fetchAndUpdateTimestamp(ctx context.Context) error {
 	queryCtx, cancel := context.WithTimeout(ctx, timestampPollingTimeout)
 	defer cancel()
 
@@ -148,7 +148,7 @@ func (se *SpannerExecutor) fetchAndUpdateTimestamp(ctx context.Context) error {
 	return nil
 }
 
-func (se *SpannerExecutor) getStalenessTimestamp() (time.Time, error) {
+func (se *SpannerConnector) getStalenessTimestamp() (time.Time, error) {
 	val := se.timestamp.Load()
 	if val != 0 {
 		return time.Unix(0, val).UTC(), nil
@@ -157,7 +157,7 @@ func (se *SpannerExecutor) getStalenessTimestamp() (time.Time, error) {
 	return time.Time{}, fmt.Errorf("error getting staleness timestamp")
 }
 
-func (se *SpannerExecutor) executeQuery(
+func (se *SpannerConnector) executeQuery(
 	ctx context.Context,
 	stmt spanner.Statement,
 	handleRows func(*spanner.RowIterator) error,
@@ -222,7 +222,7 @@ func (se *SpannerExecutor) executeQuery(
 }
 
 // queryStructs executes a query and maps the results to an input struct.
-func (se *SpannerExecutor) queryStructs(
+func (se *SpannerConnector) queryStructs(
 	ctx context.Context,
 	stmt spanner.Statement,
 	newStruct func() interface{},
@@ -234,7 +234,7 @@ func (se *SpannerExecutor) queryStructs(
 }
 
 // queryDynamic executes a dynamically constructed query and returns the results as a slice of string slices.
-func (se *SpannerExecutor) queryDynamic(
+func (se *SpannerConnector) queryDynamic(
 	ctx context.Context,
 	stmt spanner.Statement,
 ) ([][]string, error) {
@@ -250,7 +250,7 @@ func (se *SpannerExecutor) queryDynamic(
 // queryCache executes a query and maps the results to an input cache proto.
 func queryCache[T proto.Message](
 	ctx context.Context,
-	se *SpannerExecutor,
+	se *SpannerConnector,
 	stmt spanner.Statement,
 	newProto func() T,
 ) (map[string]map[string]T, error) {
