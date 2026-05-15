@@ -36,6 +36,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
+	"github.com/datacommonsorg/mixer/internal/server/topic"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/translator/solver"
@@ -56,7 +57,8 @@ type Server struct {
 	embeddingsServerURL      string
 	resolveEmbeddingsIndexes string
 	// Whether to use dispatcher flow with Spanner as a default datasource.
-	useSpannerGraph bool
+	useSpannerGraph   bool
+	topicCacheManager *topic.TopicCacheManager
 }
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) error {
@@ -164,6 +166,7 @@ func NewMixerServer(
 	embeddingsServerURL string,
 	resolveEmbeddingsIndexes string,
 	useSpannerGraph bool,
+	topicCacheManager *topic.TopicCacheManager,
 ) *Server {
 	s := &Server{
 		store:                    store,
@@ -177,6 +180,7 @@ func NewMixerServer(
 		embeddingsServerURL:      embeddingsServerURL,
 		resolveEmbeddingsIndexes: resolveEmbeddingsIndexes,
 		useSpannerGraph:          useSpannerGraph,
+		topicCacheManager:        topicCacheManager,
 	}
 	s.cachedata.Store(cachedata)
 	return s

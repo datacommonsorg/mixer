@@ -26,6 +26,7 @@ import (
 	"os"
 	"runtime"
 	"runtime/pprof"
+	"time"
 
 	"github.com/datacommonsorg/mixer/internal/featureflags"
 	logger "github.com/datacommonsorg/mixer/internal/log"
@@ -41,6 +42,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/redis"
 	"github.com/datacommonsorg/mixer/internal/server/remote"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
+	"github.com/datacommonsorg/mixer/internal/server/topic"
 	"github.com/datacommonsorg/mixer/internal/server/v3/observation"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -54,6 +56,13 @@ import (
 	"google.golang.org/grpc/health/grpc_health_v1"
 
 	cbt "cloud.google.com/go/bigtable"
+)
+
+const (
+	// Redis cache entries have a TTL of 1 day.
+	// Setting refresh interval to 1 hour minimizes the staleness window when Redis TTL expires
+	// without incurring excessive Redis polling overhead.
+	topicCacheRefreshInterval = 1 * time.Hour
 )
 
 var (
@@ -384,10 +393,11 @@ func main() {
 	}
 
 	// Initialize SpannerDataSource now that dependencies are ready.
+	var spannerDS datasource.DataSource
 	if spannerClient != nil {
-		var ds datasource.DataSource = spanner.NewSpannerDataSource(spannerClient, store.RecogPlaceStore, mapsClient, flags.EnableSpannerSearchEmbeddings)
+		spannerDS = spanner.NewSpannerDataSource(spannerClient, store.RecogPlaceStore, mapsClient, flags.EnableSpannerSearchEmbeddings)
 		// TODO: Order sources by priority once other implementations are added.
-		sources = append(sources, ds)
+		sources = append(sources, spannerDS)
 	}
 
 	// Add remote data source if it was created.
@@ -398,6 +408,9 @@ func main() {
 	// DataSources
 	dataSources := datasources.NewDataSources(sources, remoteDataSource)
 	slog.Info("DataSources initialized", "sources", dataSources.GetSources())
+
+	// Declare Redis client at higher scope for injection
+	var redisCacheClient *redis.RedisCacheClient
 
 	// Processors
 	processors := []*dispatcher.Processor{}
@@ -414,15 +427,16 @@ func main() {
 		// Cache Processor
 		if *useRedis && *redisInfo != "" {
 			slog.Info("Setting up Redis cache processor")
-			redisClient, err := redis.NewCacheClient(*redisInfo)
+			var err error
+			redisCacheClient, err = redis.NewCacheClient(*redisInfo)
 			if err != nil {
 				slog.Error("Failed to create Redis client", "error", err)
 				os.Exit(1)
 			}
 			//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
-			defer redisClient.Close()
+			defer redisCacheClient.Close()
 
-			var redisProcessor dispatcher.Processor = redis.NewCacheProcessor(redisClient)
+			var redisProcessor dispatcher.Processor = redis.NewCacheProcessor(redisCacheClient)
 			processors = append(processors, &redisProcessor)
 		}
 
@@ -442,12 +456,21 @@ func main() {
 		}
 	}
 
+	// Topic Cache Manager
+	var topicCacheManager *topic.TopicCacheManager
+	if spannerDS != nil && flags.EnableEmbeddingsResolver {
+		slog.Info("Initializing topic cache manager")
+		topicCacheManager = topic.NewTopicCacheManager(spannerDS, redisCacheClient)
+		topicCacheManager.Start(ctx, topicCacheRefreshInterval)
+		defer topicCacheManager.Close()
+	}
+
 	// Dispatcher
 	dispatcher := dispatcher.NewDispatcher(processors, dataSources)
 	slog.Info("Dispatcher initialized", "processorsCount", len(processors))
 
 	// Create server object
-	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs, *embeddingsServerURL, *resolveEmbeddingsIndexes, *useSpannerGraph)
+	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs, *embeddingsServerURL, *resolveEmbeddingsIndexes, *useSpannerGraph, topicCacheManager)
 	pbs.RegisterMixerServer(srv, mixerServer)
 
 	// Subscribe to branch cache update

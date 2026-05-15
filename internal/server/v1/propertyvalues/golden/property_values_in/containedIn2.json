@@ -11170,7 +11170,7 @@
         "City"
       ],
       "dcid": "geoId/0600296",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "Census Tract 100, Alpine County, California",
@@ -12206,7 +12206,7 @@
         "City"
       ],
       "dcid": "geoId/0601514",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "Amador Pines",
@@ -12270,7 +12270,7 @@
         "City"
       ],
       "dcid": "geoId/0602168",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "Antelope",
@@ -12286,7 +12286,7 @@
         "City"
       ],
       "dcid": "geoId/0602252",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "Anza",
@@ -12326,7 +12326,7 @@
         "City"
       ],
       "dcid": "geoId/0602462",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "Arcata",
@@ -12398,7 +12398,7 @@
         "City"
       ],
       "dcid": "geoId/0602924",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "Ashland",
@@ -12582,7 +12582,7 @@
         "City"
       ],
       "dcid": "geoId/0603820",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "Barstow",
@@ -12862,7 +12862,7 @@
         "City"
       ],
       "dcid": "geoId/0606406",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "Big Bear Lake",
@@ -13142,7 +13142,7 @@
         "City"
       ],
       "dcid": "geoId/0607652",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "Boulevard",
@@ -13190,7 +13190,7 @@
         "City"
       ],
       "dcid": "geoId/0608058",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "Brea",
@@ -13406,7 +13406,7 @@
         "City"
       ],
       "dcid": "geoId/0609598",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "Calexico",
@@ -13422,7 +13422,7 @@
         "City"
       ],
       "dcid": "geoId/0609780",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "California Hot Springs",
@@ -13462,7 +13462,7 @@
         "City"
       ],
       "dcid": "geoId/0609878",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "Calistoga",
@@ -13534,7 +13534,7 @@
         "City"
       ],
       "dcid": "geoId/0610074",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "Cambrian Park",
@@ -13590,6 +13590,14 @@
         "City"
       ],
       "dcid": "geoId/0610508",
+      "provenanceId": "dc/base/BaseGeos"
+    },
+    {
+      "name": "Campo Seco",
+      "types": [
+        "City"
+      ],
+      "dcid": "geoId/0610536",
       "provenanceId": "dc/base/BaseGeos"
     },
     {
@@ -13742,7 +13750,7 @@
         "City"
       ],
       "dcid": "geoId/0611530",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "Cartago",
@@ -13854,7 +13862,7 @@
         "City"
       ],
       "dcid": "geoId/0612048",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "Catheys Valley",
@@ -13942,7 +13950,7 @@
         "City"
       ],
       "dcid": "geoId/0612552",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "Chalfant",
@@ -14070,7 +14078,7 @@
         "City"
       ],
       "dcid": "geoId/0613214",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "Choctaw Valley",
@@ -14422,7 +14430,7 @@
         "City"
       ],
       "dcid": "geoId/0616224",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "Corning",
@@ -14614,7 +14622,7 @@
         "City"
       ],
       "dcid": "geoId/0617274",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "Cromberg",
@@ -14782,7 +14790,7 @@
         "City"
       ],
       "dcid": "geoId/0618394",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "Del Dios",
@@ -15073,6 +15081,14 @@
       "provenanceId": "dc/base/BaseGeos"
     },
     {
+      "name": "Douglas Flat",
+      "types": [
+        "City"
+      ],
+      "dcid": "geoId/0619738",
+      "provenanceId": "dc/base/BaseGeos"
+    },
+    {
       "name": "Downey",
       "types": [
         "City"
@@ -15118,7 +15134,7 @@
         "City"
       ],
       "dcid": "geoId/0620018",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "Ducor",
@@ -15214,7 +15230,7 @@
         "City"
       ],
       "dcid": "geoId/0620802",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "East Nicolaus",
@@ -15521,6 +15537,14 @@
       "provenanceId": "dc/base/BaseGeos"
     },
     {
+      "name": "El Modena",
+      "types": [
+        "City"
+      ],
+      "dcid": "geoId/0622188",
+      "provenanceId": "dc/base/BaseGeos"
+    },
+    {
       "name": "El Monte",
       "types": [
         "City"
@@ -15814,7 +15838,7 @@
         "City"
       ],
       "dcid": "geoId/0623910",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "Fetters Hot Springs-Agua Caliente",
@@ -15918,30 +15942,6 @@
         "City"
       ],
       "dcid": "geoId/0624680",
-      "provenanceId": "dc/base/WikidataOtherIdGeos"
-    },
-    {
-      "name": "Foothill Farms",
-      "types": [
-        "City"
-      ],
-      "dcid": "geoId/0624722",
-      "provenanceId": "dc/base/BaseGeos"
-    },
-    {
-      "name": "Foothill Ranch",
-      "types": [
-        "City"
-      ],
-      "dcid": "geoId/0624730",
-      "provenanceId": "dc/base/WikidataGeos"
-    },
-    {
-      "name": "Forbestown",
-      "types": [
-        "City"
-      ],
-      "dcid": "geoId/0624750",
       "provenanceId": "dc/base/BaseGeos"
     },
     {
@@ -16670,6 +16670,14 @@
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0602450",
+      "provenanceId": "dc/base/NCES_SchoolDistrict"
+    },
+    {
+      "name": "Banta Unified",
+      "types": [
+        "SchoolDistrict"
+      ],
+      "dcid": "geoId/sch0602571",
       "provenanceId": "dc/base/NCES_SchoolDistrict"
     },
     {
@@ -19479,7 +19487,7 @@
         "SchoolDistrict"
       ],
       "dcid": "geoId/sch0620130",
-      "provenanceId": "dc/base/NCES_SchoolDistrict"
+      "provenanceId": "dc/base/BaseGeos"
     },
     {
       "name": "La Habra City Elementary",
