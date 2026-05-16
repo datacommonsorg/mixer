@@ -404,7 +404,17 @@ func NewSpannerClient() spanner.SpannerClient {
 	}
 	_, filename, _, _ := runtime.Caller(0)
 	spannerGraphInfoYamlPath := path.Join(path.Dir(filename), "../deploy/storage/spanner_graph_info.yaml")
-	return newSpannerClient(context.Background(), spannerGraphInfoYamlPath)
+	
+	spannerGraphInfoYaml, err := os.ReadFile(spannerGraphInfoYamlPath)
+	if err != nil {
+		log.Fatalf("Failed to read spanner yaml: %v", err)
+	}
+	spannerClient, err := spanner.NewSpannerClient(context.Background(), string(spannerGraphInfoYaml), "")
+	if err != nil {
+		log.Fatalf("Failed to create SpannerClient: %v", err)
+	}
+	spannerClient.Start()
+	return spannerClient
 }
 
 // SkipIfNormalizedSchemaDisabled skips the test if ENABLE_SPANNER_NORMALIZED_SCHEMA is not set.
@@ -425,27 +435,14 @@ func NewNormalizedSpannerClient(t *testing.T) spanner.SpannerClient {
 	return client
 }
 
-func newSpannerClient(ctx context.Context, spannerGraphInfoYamlPath string) spanner.SpannerClient {
-	spannerGraphInfoYaml, err := os.ReadFile(spannerGraphInfoYamlPath)
-	if err != nil {
-		log.Fatalf("Failed to read spanner yaml: %v", err)
-	}
-	// Don't override spannerGraphInfoYaml.database for testing.
-	spannerClient, err := spanner.NewRawSpannerClient(ctx, string(spannerGraphInfoYaml), "")
-	if err != nil {
-		log.Fatalf("Failed to create SpannerClient: %v", err)
-	}
-	// Use stale reads for testing.
-	spannerClient.Start()
-	return spannerClient
-}
+
 
 // NewSchemaSelectorSpannerClient creates a new test schema selector spanner client.
 func NewSchemaSelectorSpannerClient(t *testing.T) spanner.SpannerClient {
-	baseClient := NewNormalizedSpannerClient(t)
-	selectorClient, err := spanner.NewSchemaSelectorClient(baseClient)
-	if err != nil {
-		t.Fatalf("Failed to create SchemaSelectorClient: %v", err)
+	SkipIfNormalizedSchemaDisabled(t)
+	client := NewSpannerClient()
+	if client == nil {
+		t.Skip("Skipping selector tests (Spanner graph not enabled)")
 	}
-	return selectorClient
+	return client
 }
