@@ -66,7 +66,7 @@ type SpannerClient interface {
 // the explicit default.
 type selectorClient struct {
 	SpannerClient // Embeds the standard client as the default client
-	normalized    *normalizedSchemaClient
+	normalized    SpannerClient
 }
 
 // NewSpannerClient creates a new SpannerClient from the config yaml string and an optional database override.
