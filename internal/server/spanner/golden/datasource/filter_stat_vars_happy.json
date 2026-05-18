@@ -1,0 +1,10 @@
+{
+  "statVars": [
+    {
+      "dcid": "Count_Person"
+    },
+    {
+      "dcid": "Median_Income_Person"
+    }
+  ]
+}

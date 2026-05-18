@@ -212,3 +212,16 @@ func (dispatcher *Dispatcher) SdmxData(ctx context.Context, in *pb.SdmxDataQuery
 	}
 	return response.(*pb.SdmxDataResult), nil
 }
+
+func (dispatcher *Dispatcher) FilterStatVarsByEntity(ctx context.Context, in *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
+	requestContext := newRequestContext(ctx, in, TypeFilterStatVarsByEntity)
+
+	response, err := dispatcher.handle(requestContext, func(ctx context.Context, request proto.Message) (proto.Message, error) {
+		return dispatcher.sources.FilterStatVarsByEntity(ctx, request.(*pb.FilterStatVarsByEntityRequest))
+	})
+
+	if err != nil {
+		return nil, err
+	}
+	return response.(*pb.FilterStatVarsByEntityResponse), nil
+}

@@ -269,8 +269,9 @@ func (sds *SpannerDataSource) expandAndMergeEntities(ctx context.Context, contai
 
 // fetchLocalChildPlaces fetches child places from Spanner.
 // Example:
-//   Inputs: ancestor="geoId/06", childType="County"
-//   Outputs: []string{"geoId/06001", "geoId/06002"}, nil
+//
+//	Inputs: ancestor="geoId/06", childType="County"
+//	Outputs: []string{"geoId/06001", "geoId/06002"}, nil
 func (sds *SpannerDataSource) fetchLocalChildPlaces(ctx context.Context, ancestor, childType string) ([]string, error) {
 	property := fmt.Sprintf("<-%s+{typeOf:%s}", v2.ContainedInPlaceProperty, childType)
 	nodeReq := &pbv2.NodeRequest{
@@ -931,4 +932,59 @@ func filterVariableGroupInfo(data []*pbv1.VariableGroupInfoResponse, invalidNode
 	}
 
 	return filteredData
+}
+
+// FilterStatVarsByEntity filters a list of stat vars by entity existence.
+func (sds *SpannerDataSource) FilterStatVarsByEntity(ctx context.Context, req *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
+	svList := req.GetStatVars()
+	entities := req.GetEntities()
+
+	if len(svList) == 0 {
+		return &pb.FilterStatVarsByEntityResponse{}, nil
+	}
+
+	if len(entities) == 0 {
+		return &pb.FilterStatVarsByEntityResponse{
+			StatVars: svList,
+		}, nil
+	}
+
+	ids := make([]string, 0, len(svList))
+	for _, item := range svList {
+		ids = append(ids, item.Dcid)
+	}
+
+	rows, err := sds.client.CheckVariableExistence(ctx, ids, entities)
+	if err != nil {
+		slog.Error("Error checking variable existence",
+			"error", err,
+			"num_stat_vars", len(ids),
+			"num_entities", len(entities),
+			"stat_vars_sample", ids[:min(5, len(ids))],
+			"entities_sample", entities[:min(5, len(entities))],
+		)
+		return nil, fmt.Errorf("error checking variable existence: %w", err)
+	}
+
+	// Build a set of valid variables
+	validVars := make(map[string]struct{}, len(svList))
+	for _, row := range rows {
+		if len(row) < 1 {
+			continue
+		}
+		v := row[0]
+		validVars[v] = struct{}{}
+	}
+
+	// Filter the input list based on the set above
+	result := make([]*pb.EntityInfo, 0, len(svList))
+	for _, node := range svList {
+		if _, exists := validVars[node.Dcid]; exists {
+			result = append(result, node)
+		}
+	}
+
+	return &pb.FilterStatVarsByEntityResponse{
+		StatVars: result,
+	}, nil
 }
