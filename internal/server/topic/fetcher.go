@@ -27,7 +27,6 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
@@ -94,7 +93,7 @@ func (m *TopicCacheManager) fetchTopicNodes(ctx context.Context) (map[string]*pb
 		Nodes:    []string{"Topic"},
 		Property: "<-typeOf",
 	}
-	resp, err := datasource.NodeFetchAll(ctx, m.ds, req, defaultPageSize)
+	resp, err := m.fetcher.NodeFetchAll(ctx, req)
 	if err != nil {
 		return nil, fmt.Errorf("failed to fetch topic nodes: %w", err)
 	}
@@ -222,7 +221,7 @@ func (m *TopicCacheManager) fetchTopicMembers(ctx context.Context, topicDcids []
 		Nodes:    topicDcids,
 		Property: "->relevantVariableList",
 	}
-	resp, err := datasource.NodeFetchAll(ctx, m.ds, req, defaultPageSize)
+	resp, err := m.fetcher.NodeFetchAll(ctx, req)
 	if err != nil {
 		return fmt.Errorf("failed to fetch topic properties: %w", err)
 	}
@@ -242,7 +241,7 @@ func (m *TopicCacheManager) fetchSvpgMembers(ctx context.Context, svpgDcids []st
 		Nodes:    svpgDcids,
 		Property: "->memberList",
 	}
-	resp, err := datasource.NodeFetchAll(ctx, m.ds, req, defaultPageSize)
+	resp, err := m.fetcher.NodeFetchAll(ctx, req)
 	if err != nil {
 		return fmt.Errorf("failed to fetch svpg properties: %w", err)
 	}

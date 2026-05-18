@@ -17,12 +17,11 @@ package datasource
 import (
 	"context"
 	"fmt"
-	"log/slog"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
-	"google.golang.org/protobuf/proto"
+	"github.com/datacommonsorg/mixer/internal/nodefetcher"
 )
 
 // DataSourceType represents the type of data source.
@@ -56,70 +55,9 @@ func NodeFetchAll(ctx context.Context, ds DataSource, req *pbv2.NodeRequest, pag
 	if pageSize <= 0 {
 		return nil, fmt.Errorf("pageSize must be positive")
 	}
-
-	// Make initial call.
-	resp, err := ds.Node(ctx, req, pageSize)
-	if err != nil {
-		slog.Error("NodeFetchAll: initial fetch failed", "error", err)
-		return nil, err
-	}
-	if resp == nil {
-		return nil, fmt.Errorf("NodeFetchAll: initial fetch returned nil response")
-	}
-
-	if resp.NextToken == "" {
-		return resp, nil
-	}
-
-	// Clone the request to avoid modifying the caller's object and prevent data races.
-	reqClone := proto.Clone(req).(*pbv2.NodeRequest)
-	
-	// Initialize accumulated response with data from the first page.
-	accumulatedResp := resp
-	
-	for accumulatedResp.NextToken != "" {
-		reqClone.NextToken = accumulatedResp.NextToken
-		
-		nextResp, err := ds.Node(ctx, reqClone, pageSize)
-		if err != nil {
-			slog.Error("NodeFetchAll: subsequent fetch failed", "nextToken", reqClone.NextToken, "error", err)
-			return nil, err
-		}
-		if nextResp == nil {
-			return nil, fmt.Errorf("NodeFetchAll: subsequent fetch returned nil response")
-		}
-		
-		// Capture next token before merging.
-		nextToken := nextResp.NextToken
-		
-		// Manual deep merge to avoid proto.Merge issues (which failed in tests by overwriting).
-		if accumulatedResp.Data == nil {
-			accumulatedResp.Data = make(map[string]*pbv2.LinkedGraph)
-		}
-		
-		for subjectID, newGraph := range nextResp.Data {
-			accumulatedGraph, ok := accumulatedResp.Data[subjectID]
-			if !ok {
-				accumulatedResp.Data[subjectID] = newGraph
-				continue
-			}
-			
-			if accumulatedGraph.Arcs == nil {
-				accumulatedGraph.Arcs = make(map[string]*pbv2.Nodes)
-			}
-			
-			for prop, newNodes := range newGraph.Arcs {
-				accumulatedNodes, ok := accumulatedGraph.Arcs[prop]
-				if !ok {
-					accumulatedGraph.Arcs[prop] = newNodes
-					continue
-				}
-				accumulatedNodes.Nodes = append(accumulatedNodes.Nodes, newNodes.Nodes...)
-			}
-		}
-		
-		accumulatedResp.NextToken = nextToken
-	}
-
-	return accumulatedResp, nil
+	return nodefetcher.NodeFetchAllFunc(ctx, func(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+		return ds.Node(ctx, req, pageSize)
+	}, req)
 }
+
+

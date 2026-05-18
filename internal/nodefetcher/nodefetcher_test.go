@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package datasource
+package nodefetcher
 
 import (
 	"context"
@@ -24,23 +24,6 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 )
-
-type mockDataSource struct {
-	DataSource
-	responses []*pbv2.NodeResponse
-	errs      []error
-	calls     int
-}
-
-func (m *mockDataSource) Node(ctx context.Context, req *pbv2.NodeRequest, pageSize int) (*pbv2.NodeResponse, error) {
-	if m.calls >= len(m.responses) {
-		return nil, errors.New("too many calls")
-	}
-	resp := m.responses[m.calls]
-	err := m.errs[m.calls]
-	m.calls++
-	return resp, err
-}
 
 // makeNodeResponse helper generates the standard test response graph.
 func makeNodeResponse(nextToken string, childDcids ...string) *pbv2.NodeResponse {
@@ -60,7 +43,7 @@ func makeNodeResponse(nextToken string, childDcids ...string) *pbv2.NodeResponse
 	}
 }
 
-func TestNodeFetchAll(t *testing.T) {
+func TestNodeFetchAllFunc(t *testing.T) {
 	ctx := context.Background()
 	req := &pbv2.NodeRequest{Nodes: []string{"geoId/06"}}
 
@@ -91,27 +74,30 @@ func TestNodeFetchAll(t *testing.T) {
 			want: makeNodeResponse("", "geoId/06001", "geoId/06002", "geoId/06003"),
 		},
 		{
-			name: "FetchError",
-			responses: []*pbv2.NodeResponse{
-				makeNodeResponse("token1", "geoId/06001"),
-				nil,
-			},
-			errs:    []error{nil, errors.New("fetch error")},
-			wantErr: true,
-			errStr:  "fetch error",
+			name:      "FetchError",
+			responses: []*pbv2.NodeResponse{nil},
+			errs:      []error{errors.New("fetch error")},
+			wantErr:   true,
+			errStr:    "fetch error",
 		},
 	}
 
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
-			mockDS := &mockDataSource{
-				responses: tc.responses,
-				errs:      tc.errs,
+			calls := 0
+			fetch := func(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+				if calls >= len(tc.responses) {
+					return nil, errors.New("too many calls")
+				}
+				resp := tc.responses[calls]
+				err := tc.errs[calls]
+				calls++
+				return resp, err
 			}
 
-			got, err := NodeFetchAll(ctx, mockDS, req, 10)
+			got, err := NodeFetchAllFunc(ctx, fetch, req)
 			if (err != nil) != tc.wantErr {
-				t.Fatalf("NodeFetchAll() error = %v, wantErr %v", err, tc.wantErr)
+				t.Fatalf("NodeFetchAllFunc() error = %v, wantErr %v", err, tc.wantErr)
 			}
 			if tc.wantErr {
 				if err.Error() != tc.errStr {
@@ -121,11 +107,11 @@ func TestNodeFetchAll(t *testing.T) {
 			}
 
 			if diff := cmp.Diff(tc.want, got, protocmp.Transform()); diff != "" {
-				t.Errorf("NodeFetchAll() mismatch (-want +got):\n%s", diff)
+				t.Errorf("NodeFetchAllFunc() mismatch (-want +got):\n%s", diff)
 			}
 
-			if mockDS.calls != len(tc.responses) {
-				t.Errorf("Expected %d calls, got %d", len(tc.responses), mockDS.calls)
+			if calls != len(tc.responses) {
+				t.Errorf("Expected %d calls, got %d", len(tc.responses), calls)
 			}
 		})
 	}

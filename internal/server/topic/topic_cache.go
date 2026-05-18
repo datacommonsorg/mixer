@@ -25,7 +25,7 @@ import (
 	"time"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
-	"github.com/datacommonsorg/mixer/internal/server/datasource"
+	"github.com/datacommonsorg/mixer/internal/nodefetcher"
 	"github.com/datacommonsorg/mixer/internal/server/redis"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/protobuf/types/known/wrapperspb"
@@ -58,7 +58,7 @@ func (c *TopicVariableCache) String() string {
 
 // TopicCacheManager manages the loading, building, and caching of topics.
 type TopicCacheManager struct {
-	ds          datasource.DataSource
+	fetcher     nodefetcher.NodeAllFetcher
 	redisClient redis.CacheClient
 
 	mu    sync.RWMutex
@@ -72,20 +72,37 @@ type TopicCacheManager struct {
 }
 
 // NewTopicCacheManager creates a new TopicCacheManager.
-func NewTopicCacheManager(ds datasource.DataSource, redisClient redis.CacheClient) *TopicCacheManager {
+// Note: The fetcher interface is intentionally omitted from this constructor to avoid circular dependencies
+// during server startup (NewStoreNodeFetcher requires *Server, which requires TopicCacheManager).
+// The fetcher is injected post-server creation via Start() or InitFetcher().
+func NewTopicCacheManager(redisClient redis.CacheClient) *TopicCacheManager {
 	return &TopicCacheManager{
-		ds:          ds,
 		redisClient: redisClient,
 	}
 }
 
+// InitFetcher initializes the internal fetcher without performing an initial cache load.
+// This is primarily used for testing cold-cache retrieval behavior.
+func (m *TopicCacheManager) InitFetcher(fetcher nodefetcher.NodeAllFetcher) {
+	m.startOnce.Do(func() {
+		m.fetcher = fetcher
+	})
+}
+
 // Start starts the background goroutine to periodically refresh the topic hierarchy cache from the KG.
 // It performs an initial synchronous load before starting the background ticker loop.
-func (m *TopicCacheManager) Start(ctx context.Context, interval time.Duration) {
+// Note: Injecting the fetcher here breaks circular initialization dependencies in cmd/main.go.
+func (m *TopicCacheManager) Start(ctx context.Context, fetcher nodefetcher.NodeAllFetcher, interval time.Duration) {
 	m.startOnce.Do(func() {
+		m.fetcher = fetcher
+
 		slog.Info("Performing initial topic cache load")
 		if _, err := m.LoadHierarchy(ctx); err != nil {
 			slog.Error("Error during initial topic cache load", "error", err)
+		}
+
+		if interval <= 0 {
+			return
 		}
 
 		m.ticker = time.NewTicker(interval)
@@ -161,6 +178,9 @@ func (m *TopicCacheManager) GetHierarchy(ctx context.Context) (*pb.TopicHierarch
 // It populates both L1 and L2 caches upon loading.
 func (m *TopicCacheManager) LoadHierarchy(ctx context.Context) (*pb.TopicHierarchy, error) {
 	defer util.TimeTrack(time.Now(), "topic: LoadHierarchy")
+	if m.fetcher == nil {
+		return nil, fmt.Errorf("topic cache manager uninitialized: fetcher is nil")
+	}
 	// Try loading from L2 Redis cache
 	if m.redisClient != nil {
 		var cachedHierarchy pb.TopicHierarchy
