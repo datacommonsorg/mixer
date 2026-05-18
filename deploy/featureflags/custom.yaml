@@ -1,0 +1,3 @@
+flags:
+  UseSpannerGraph: true
+  V2DivertFraction: 1.0
