@@ -412,6 +412,18 @@ func main() {
 
 	// Declare Redis client at higher scope for injection
 	var redisCacheClient redis.CacheClient
+	if *useRedis && *redisInfo != "" {
+		slog.Info("Setting up Redis cache client")
+		client, err := redis.NewCacheClient(*redisInfo)
+		if err != nil {
+			slog.Error("Failed to create Redis client", "error", err)
+			os.Exit(1)
+		}
+		//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
+		defer client.Close()
+
+		redisCacheClient = client
+	}
 
 	// Processors
 	processors := []*dispatcher.Processor{}
@@ -426,18 +438,8 @@ func main() {
 		slog.Info("In-memory data source cache initialized successfully")
 
 		// Cache Processor
-		if *useRedis && *redisInfo != "" {
+		if redisCacheClient != nil {
 			slog.Info("Setting up Redis cache processor")
-			client, err := redis.NewCacheClient(*redisInfo)
-			if err != nil {
-				slog.Error("Failed to create Redis client", "error", err)
-				os.Exit(1)
-			}
-			//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
-			defer client.Close()
-
-			redisCacheClient = client
-
 			var redisProcessor dispatcher.Processor = redis.NewCacheProcessor(redisCacheClient)
 			processors = append(processors, &redisProcessor)
 		}
