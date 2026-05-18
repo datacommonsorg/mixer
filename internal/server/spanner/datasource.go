@@ -269,8 +269,9 @@ func (sds *SpannerDataSource) expandAndMergeEntities(ctx context.Context, contai
 
 // fetchLocalChildPlaces fetches child places from Spanner.
 // Example:
-//   Inputs: ancestor="geoId/06", childType="County"
-//   Outputs: []string{"geoId/06001", "geoId/06002"}, nil
+//
+//	Inputs: ancestor="geoId/06", childType="County"
+//	Outputs: []string{"geoId/06001", "geoId/06002"}, nil
 func (sds *SpannerDataSource) fetchLocalChildPlaces(ctx context.Context, ancestor, childType string) ([]string, error) {
 	property := fmt.Sprintf("<-%s+{typeOf:%s}", v2.ContainedInPlaceProperty, childType)
 	nodeReq := &pbv2.NodeRequest{
@@ -955,6 +956,13 @@ func (sds *SpannerDataSource) FilterStatVarsByEntity(ctx context.Context, req *p
 
 	rows, err := sds.client.CheckVariableExistence(ctx, ids, entities)
 	if err != nil {
+		slog.Error("Error checking variable existence",
+			"error", err,
+			"num_stat_vars", len(ids),
+			"num_entities", len(entities),
+			"stat_vars_sample", ids[:min(5, len(ids))],
+			"entities_sample", entities[:min(5, len(entities))],
+		)
 		return nil, fmt.Errorf("error checking variable existence: %w", err)
 	}
 

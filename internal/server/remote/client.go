@@ -17,6 +17,7 @@ package remote
 
 import (
 	"fmt"
+	"log/slog"
 	"net/http"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -135,6 +136,7 @@ func (rc *RemoteClient) FilterStatVarsByEntity(req *pb.FilterStatVarsByEntityReq
 	resp := &pb.FilterStatVarsByEntityResponse{}
 	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/variable/filter", req, resp)
 	if err != nil {
+		slog.Error("Failed to fetch remote variable filter", "error", err)
 		return nil, err
 	}
 	return resp, nil
