@@ -20,7 +20,6 @@ package nodefetcher
 import (
 	"context"
 	"fmt"
-	"log/slog"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"google.golang.org/protobuf/proto"
@@ -34,68 +33,66 @@ type NodeAllFetcher interface {
 // NodeFetchAllFunc fetches all NodeResponse pages for a given request by repeatedly calling a fetch closure
 // as long as a NextToken is returned and merges into single response.
 func NodeFetchAllFunc(ctx context.Context, fetch func(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error), req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
-	// Make initial call.
-	resp, err := fetch(ctx, req)
-	if err != nil {
-		slog.Error("NodeFetchAllFunc: initial fetch failed", "error", err)
-		return nil, err
-	}
-	if resp == nil {
-		return nil, fmt.Errorf("NodeFetchAllFunc: initial fetch returned nil response")
-	}
-
-	if resp.NextToken == "" {
-		return resp, nil
-	}
-
 	// Clone the request to avoid modifying the caller's object and prevent data races.
 	reqClone := proto.Clone(req).(*pbv2.NodeRequest)
 
-	// Initialize accumulated response with data from the first page.
-	accumulatedResp := resp
+	var accumulatedResp *pbv2.NodeResponse
 
-	for accumulatedResp.NextToken != "" {
-		reqClone.NextToken = accumulatedResp.NextToken
-
-		nextResp, err := fetch(ctx, reqClone)
+	for {
+		resp, err := fetch(ctx, reqClone)
 		if err != nil {
-			slog.Error("NodeFetchAllFunc: subsequent fetch failed", "nextToken", reqClone.NextToken, "error", err)
-			return nil, err
+			if reqClone.NextToken == "" {
+				return nil, fmt.Errorf("nodefetcher: fetch failed: %w", err)
+			}
+			return nil, fmt.Errorf("nodefetcher: fetch failed for token %s: %w", reqClone.NextToken, err)
 		}
-		if nextResp == nil {
-			return nil, fmt.Errorf("NodeFetchAllFunc: subsequent fetch returned nil response")
-		}
-
-		// Capture next token before merging.
-		nextToken := nextResp.NextToken
-
-		// Manual deep merge to avoid proto.Merge issues (which failed in tests by overwriting).
-		if accumulatedResp.Data == nil {
-			accumulatedResp.Data = make(map[string]*pbv2.LinkedGraph)
+		if resp == nil {
+			if reqClone.NextToken == "" {
+				return nil, fmt.Errorf("nodefetcher: fetch returned nil response")
+			}
+			return nil, fmt.Errorf("nodefetcher: fetch returned nil response for token %s", reqClone.NextToken)
 		}
 
-		for subjectID, newGraph := range nextResp.Data {
-			accumulatedGraph, ok := accumulatedResp.Data[subjectID]
-			if !ok {
-				accumulatedResp.Data[subjectID] = newGraph
-				continue
+		if accumulatedResp == nil {
+			accumulatedResp = resp
+		} else {
+			if accumulatedResp.Data == nil {
+				accumulatedResp.Data = make(map[string]*pbv2.LinkedGraph)
 			}
 
-			if accumulatedGraph.Arcs == nil {
-				accumulatedGraph.Arcs = make(map[string]*pbv2.Nodes)
-			}
-
-			for prop, newNodes := range newGraph.Arcs {
-				accumulatedNodes, ok := accumulatedGraph.Arcs[prop]
-				if !ok {
-					accumulatedGraph.Arcs[prop] = newNodes
+			for subjectID, newGraph := range resp.Data {
+				if newGraph == nil {
 					continue
 				}
-				accumulatedNodes.Nodes = append(accumulatedNodes.Nodes, newNodes.Nodes...)
+				accumulatedGraph, ok := accumulatedResp.Data[subjectID]
+				if !ok || accumulatedGraph == nil {
+					accumulatedResp.Data[subjectID] = newGraph
+					continue
+				}
+
+				if accumulatedGraph.Arcs == nil {
+					accumulatedGraph.Arcs = make(map[string]*pbv2.Nodes)
+				}
+
+				for prop, newNodes := range newGraph.Arcs {
+					if newNodes == nil {
+						continue
+					}
+					accumulatedNodes, ok := accumulatedGraph.Arcs[prop]
+					if !ok || accumulatedNodes == nil {
+						accumulatedGraph.Arcs[prop] = newNodes
+						continue
+					}
+					accumulatedNodes.Nodes = append(accumulatedNodes.Nodes, newNodes.Nodes...)
+				}
 			}
 		}
 
-		accumulatedResp.NextToken = nextToken
+		accumulatedResp.NextToken = resp.NextToken
+		if resp.NextToken == "" {
+			break
+		}
+		reqClone.NextToken = resp.NextToken
 	}
 
 	return accumulatedResp, nil

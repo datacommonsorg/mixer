@@ -25,6 +25,8 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 )
 
+const spannerPageSize = 1000
+
 // SpannerNodeFetcher wraps a Spanner DataSource to implement nodefetcher.NodeAllFetcher.
 type SpannerNodeFetcher struct {
 	ds datasource.DataSource
@@ -37,7 +39,7 @@ func NewSpannerNodeFetcher(ds datasource.DataSource) *SpannerNodeFetcher {
 
 // NodeFetchAll implements nodefetcher.NodeAllFetcher.
 func (f *SpannerNodeFetcher) NodeFetchAll(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
-	return datasource.NodeFetchAll(ctx, f.ds, req, 1000)
+	return datasource.NodeFetchAll(ctx, f.ds, req, spannerPageSize)
 }
 
 // StoreNodeFetcher wraps Server to implement nodefetcher.NodeAllFetcher by querying Bigtable and SQL via V2NodeCore.

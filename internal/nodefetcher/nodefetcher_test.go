@@ -17,6 +17,7 @@ package nodefetcher
 import (
 	"context"
 	"errors"
+	"strings"
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -100,8 +101,8 @@ func TestNodeFetchAllFunc(t *testing.T) {
 				t.Fatalf("NodeFetchAllFunc() error = %v, wantErr %v", err, tc.wantErr)
 			}
 			if tc.wantErr {
-				if err.Error() != tc.errStr {
-					t.Errorf("Expected error '%s', got '%v'", tc.errStr, err)
+				if !strings.Contains(err.Error(), tc.errStr) {
+					t.Errorf("Expected error containing '%s', got '%v'", tc.errStr, err)
 				}
 				return
 			}
