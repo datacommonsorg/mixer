@@ -56,39 +56,9 @@ func NodeFetchAllFunc(ctx context.Context, fetch func(ctx context.Context, req *
 		if accumulatedResp == nil {
 			accumulatedResp = resp
 		} else {
-			if accumulatedResp.Data == nil {
-				accumulatedResp.Data = make(map[string]*pbv2.LinkedGraph)
-			}
-
-			for subjectID, newGraph := range resp.Data {
-				if newGraph == nil {
-					continue
-				}
-				accumulatedGraph, ok := accumulatedResp.Data[subjectID]
-				if !ok || accumulatedGraph == nil {
-					accumulatedResp.Data[subjectID] = newGraph
-					continue
-				}
-
-				if accumulatedGraph.Arcs == nil {
-					accumulatedGraph.Arcs = make(map[string]*pbv2.Nodes)
-				}
-
-				for prop, newNodes := range newGraph.Arcs {
-					if newNodes == nil {
-						continue
-					}
-					accumulatedNodes, ok := accumulatedGraph.Arcs[prop]
-					if !ok || accumulatedNodes == nil {
-						accumulatedGraph.Arcs[prop] = newNodes
-						continue
-					}
-					accumulatedNodes.Nodes = append(accumulatedNodes.Nodes, newNodes.Nodes...)
-				}
-			}
+			mergeNodeResponse(accumulatedResp, resp)
 		}
 
-		accumulatedResp.NextToken = resp.NextToken
 		if resp.NextToken == "" {
 			break
 		}
@@ -96,4 +66,40 @@ func NodeFetchAllFunc(ctx context.Context, fetch func(ctx context.Context, req *
 	}
 
 	return accumulatedResp, nil
+}
+
+// mergeNodeResponse deep merges the data maps from a new response page into the accumulated response.
+func mergeNodeResponse(accumulated, new *pbv2.NodeResponse) {
+	accumulated.NextToken = new.NextToken
+
+	if accumulated.Data == nil {
+		accumulated.Data = make(map[string]*pbv2.LinkedGraph)
+	}
+
+	for subjectID, newGraph := range new.Data {
+		if newGraph == nil {
+			continue
+		}
+		accumulatedGraph, ok := accumulated.Data[subjectID]
+		if !ok || accumulatedGraph == nil {
+			accumulated.Data[subjectID] = newGraph
+			continue
+		}
+
+		if accumulatedGraph.Arcs == nil {
+			accumulatedGraph.Arcs = make(map[string]*pbv2.Nodes)
+		}
+
+		for prop, newNodes := range newGraph.Arcs {
+			if newNodes == nil {
+				continue
+			}
+			accumulatedNodes, ok := accumulatedGraph.Arcs[prop]
+			if !ok || accumulatedNodes == nil {
+				accumulatedGraph.Arcs[prop] = newNodes
+				continue
+			}
+			accumulatedNodes.Nodes = append(accumulatedNodes.Nodes, newNodes.Nodes...)
+		}
+	}
 }
