@@ -419,6 +419,12 @@ func (s *Server) V2Sparql(
 func (s *Server) FilterStatVarsByEntity(
 	ctx context.Context, in *pb.FilterStatVarsByEntityRequest,
 ) (*pb.FilterStatVarsByEntityResponse, error) {
+	if s.shouldDivertV2(ctx) {
+		return s.dispatcher.FilterStatVarsByEntity(ctx, in)
+	}
+
+	v2StartTime := time.Now()
+
 	errGroup, _ := errgroup.WithContext(ctx)
 
 	localResponseChan := make(chan *pb.FilterStatVarsByEntityResponse, 1)
@@ -458,8 +464,21 @@ func (s *Server) FilterStatVarsByEntity(
 	close(localResponseChan)
 	close(remoteResponseChan)
 
-	merged := merger.MergeFilterStatVarsByEntityResponse(<-localResponseChan, <-remoteResponseChan)
-	return merged, nil
+	v2Resp := merger.MergeFilterStatVarsByEntityResponse(<-localResponseChan, <-remoteResponseChan)
+	v2Latency := time.Since(v2StartTime)
+
+	s.maybeMirrorV3(
+		ctx,
+		in,
+		v2Resp,
+		v2Latency,
+		func(ctx context.Context, req proto.Message) (proto.Message, error) {
+			return s.V3FilterStatVarsByEntity(ctx, req.(*pb.FilterStatVarsByEntityRequest))
+		},
+		GetV2FilterStatVarsByEntityCmpOpts(),
+	)
+
+	return v2Resp, nil
 }
 
 // V2BulkVariableInfo implements API for Mixer.V2BulkVariableInfo.
