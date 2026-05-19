@@ -171,15 +171,14 @@ func TestRemoveOptimizationsFromNodeResponse(t *testing.T) {
 
 func TestFilterObservationsByDateAndFacet(t *testing.T) {
 	tests := []struct {
-		name             string
-		obs              []*Observation
-		date             string
-		expectedCount    int
-		expectedEntities []string
+		name     string
+		obs      []*Observation
+		date     string
+		expected []*Observation
 	}{
 		// Test: Filter matches some data.
 		// Situation: Two entities are provided. One has data for the requested date (2012), the other only has data for 2011.
-		// Expectation: Only the entity with data for 2012 is returned.
+		// Expectation: Only the entity with data for 2012 is returned, and its observations are filtered to that date.
 		{
 			name: "Filter matches some data",
 			obs: []*Observation{
@@ -197,13 +196,19 @@ func TestFilterObservationsByDateAndFacet(t *testing.T) {
 					},
 				},
 			},
-			date:             "2012",
-			expectedCount:    1,
-			expectedEntities: []string{"entity1"},
+			date: "2012",
+			expected: []*Observation{
+				{
+					ObservationAbout: "entity1",
+					Observations: TimeSeries{
+						{Date: "2012", Value: "20"},
+					},
+				},
+			},
 		},
 		// Test: Filter matches no data.
 		// Situation: Two entities are provided, but neither has data for the requested date (2012).
-		// Expectation: No observations are returned.
+		// Expectation: No observations are returned (empty slice).
 		{
 			name: "Filter matches no data",
 			obs: []*Observation{
@@ -220,13 +225,12 @@ func TestFilterObservationsByDateAndFacet(t *testing.T) {
 					},
 				},
 			},
-			date:             "2012",
-			expectedCount:    0,
-			expectedEntities: []string{},
+			date:     "2012",
+			expected: nil,
 		},
 		// Test: Empty date filter keeps all.
 		// Situation: Date filter is empty.
-		// Expectation: All observations are retained.
+		// Expectation: All observations are retained as they were.
 		{
 			name: "Empty date filter keeps all",
 			obs: []*Observation{
@@ -237,22 +241,23 @@ func TestFilterObservationsByDateAndFacet(t *testing.T) {
 					},
 				},
 			},
-			date:             "",
-			expectedCount:    1,
-			expectedEntities: []string{"entity1"},
+			date: "",
+			expected: []*Observation{
+				{
+					ObservationAbout: "entity1",
+					Observations: TimeSeries{
+						{Date: "2011", Value: "10"},
+					},
+				},
+			},
 		},
 	}
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			filtered := filterObservationsByDateAndFacet(tc.obs, tc.date, nil)
-			if len(filtered) != tc.expectedCount {
-				t.Errorf("Expected %d observations, got %d", tc.expectedCount, len(filtered))
-			}
-			for i, expectedEntity := range tc.expectedEntities {
-				if i < len(filtered) && filtered[i].ObservationAbout != expectedEntity {
-					t.Errorf("Expected entity %s, got %s", expectedEntity, filtered[i].ObservationAbout)
-				}
+			if diff := cmp.Diff(tc.expected, filtered); diff != "" {
+				t.Errorf("Test %s: unexpected filtered results (-want +got):\n%s", tc.name, diff)
 			}
 		})
 	}
