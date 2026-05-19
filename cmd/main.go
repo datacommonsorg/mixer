@@ -479,11 +479,11 @@ func main() {
 	if topicCacheManager != nil {
 		var nodeFetcher nodefetcher.NodeAllFetcher
 		if shouldUseSpannerGraph && spannerDS != nil {
-			slog.Info("Setting up SpannerNodeFetcher for topic cache")
-			nodeFetcher = server.NewSpannerNodeFetcher(spannerDS)
+			slog.Info("Setting up Spanner NodeFetcher for topic cache")
+			nodeFetcher = datasource.NewNodeFetcher(spannerDS)
 		} else {
-			slog.Info("Setting up StoreNodeFetcher for topic cache")
-			nodeFetcher = server.NewStoreNodeFetcher(mixerServer)
+			slog.Info("Setting up Store V2NodeCore NodeFetcher for topic cache")
+			nodeFetcher = nodefetcher.NewFuncNodeFetcher(mixerServer.V2NodeCore)
 		}
 		topicCacheManager.Start(ctx, nodeFetcher, topicCacheRefreshInterval)
 		defer topicCacheManager.Close()

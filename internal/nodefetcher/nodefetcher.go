@@ -30,6 +30,21 @@ type NodeAllFetcher interface {
 	NodeFetchAll(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error)
 }
 
+// FuncNodeFetcher adapts a V2 Node query function to the NodeAllFetcher interface.
+type FuncNodeFetcher struct {
+	fetchFunc func(context.Context, *pbv2.NodeRequest) (*pbv2.NodeResponse, error)
+}
+
+// NewFuncNodeFetcher creates a new FuncNodeFetcher wrapping the provided function.
+func NewFuncNodeFetcher(fetchFunc func(context.Context, *pbv2.NodeRequest) (*pbv2.NodeResponse, error)) *FuncNodeFetcher {
+	return &FuncNodeFetcher{fetchFunc: fetchFunc}
+}
+
+// NodeFetchAll implements NodeAllFetcher.
+func (f *FuncNodeFetcher) NodeFetchAll(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+	return NodeFetchAllFunc(ctx, f.fetchFunc, req)
+}
+
 // NodeFetchAllFunc fetches all NodeResponse pages for a given request by repeatedly calling a fetch closure
 // as long as a NextToken is returned and merges into single response.
 func NodeFetchAllFunc(ctx context.Context, fetch func(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error), req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {

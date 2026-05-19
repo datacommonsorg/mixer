@@ -61,4 +61,13 @@ func NodeFetchAll(ctx context.Context, ds DataSource, req *pbv2.NodeRequest, pag
 	}, req)
 }
 
+const defaultFetchAllPageSize = 1000
+
+// NewNodeFetcher returns a nodefetcher.NodeAllFetcher for the given DataSource using the default page size.
+func NewNodeFetcher(ds DataSource) nodefetcher.NodeAllFetcher {
+	return nodefetcher.NewFuncNodeFetcher(func(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+		return NodeFetchAll(ctx, ds, req, defaultFetchAllPageSize)
+	})
+}
+
 
