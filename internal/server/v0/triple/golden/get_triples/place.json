@@ -193,8 +193,8 @@
         "CensusZipCodeTabulationArea"
       ],
       "predicate": "landArea",
-      "objectId": "SquareMeter88980553",
-      "objectName": "SquareMeter 88980553",
+      "objectId": "SquareMeter88980551",
+      "objectName": "SquareMeter 88980551",
       "objectTypes": [
         "Quantity"
       ],
@@ -208,20 +208,6 @@
       ],
       "predicate": "latitude",
       "objectValue": "18.457399",
-      "provenanceId": "dc/base/BaseGeos"
-    },
-    {
-      "subjectId": "zip/00603",
-      "subjectName": "00603",
-      "subjectTypes": [
-        "CensusZipCodeTabulationArea"
-      ],
-      "predicate": "location",
-      "objectId": "latLong/1845740_-6712487",
-      "objectName": "18.45740,-67.12487",
-      "objectTypes": [
-        "GeoCoordinates"
-      ],
       "provenanceId": "dc/base/BaseGeos"
     },
     {
@@ -746,7 +732,7 @@
     },
     {
       "subjectId": "geoId/7209689",
-      "subjectName": "CabÃ¡n comunidad",
+      "subjectName": "Cabán comunidad",
       "subjectTypes": [
         "City"
       ],
@@ -760,7 +746,7 @@
     },
     {
       "subjectId": "geoId/7268599",
-      "subjectName": "Rafael HernÃ¡ndez comunidad",
+      "subjectName": "Rafael Hernández comunidad",
       "subjectTypes": [
         "City"
       ],

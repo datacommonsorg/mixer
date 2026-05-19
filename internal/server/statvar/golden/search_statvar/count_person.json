@@ -29,10 +29,6 @@
       "dcid": "Count_Person_DiabetesMellitus"
     },
     {
-      "name": "Count of people with tuberculosis and HIV",
-      "dcid": "Count_Person_ConditionTuberculosisAndHIV"
-    },
-    {
       "name": "Count of person with bachelor's degree in accounting and taxation major",
       "dcid": "Count_Person_BachelorOfAccountingAndTaxationMajor"
     },
@@ -335,10 +331,6 @@
     {
       "name": "Number of people aged 104 years",
       "dcid": "Count_Person_Years104"
-    },
-    {
-      "name": "Number of people aged 105 years",
-      "dcid": "Count_Person_Years105"
     },
     {
       "name": "Number of people aged 17 to 64 years",
@@ -3999,6 +3991,14 @@
     {
       "name": "Hispanic-Native Hawaiian/Other Pacific Islander Male Population",
       "dcid": "Count_Person_Male_HispanicOrLatino_NativeHawaiianOrOtherPacificIslanderAlone"
+    },
+    {
+      "name": "Hispanic-White Alone Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_WhiteAlone"
+    },
+    {
+      "name": "Hispanic-White Male Population",
+      "dcid": "Count_Person_Male_HispanicOrLatino_WhiteAloneOrInCombinationWithOneOrMoreOtherRaces"
     }
   ],
   "matches": [

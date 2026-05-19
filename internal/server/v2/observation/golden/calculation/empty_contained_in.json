@@ -1,32 +1,6 @@
 {
   "by_variable": {
     "Count_Farm": {},
-    "Count_Person_1OrMoreYears_DifferentHouseAbroad": {
-      "by_entity": {
-        "country/USA": {
-          "ordered_facets": [
-            {
-              "facet_id": "3870053105",
-              "observations": [
-                {
-                  "date": "2024",
-                  "value": 1988639.91
-                }
-              ]
-            }
-          ],
-          "place_types": [
-            "Country"
-          ]
-        }
-      }
-    }
-  },
-  "facets": {
-    "3870053105": {
-      "import_name": "CensusACS5YearSurvey_SubjectTables_S0701",
-      "provenance_url": "https://data.census.gov/cedsci/table?q=S0701&tid=ACSST5Y2024.S0701",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
-    }
+    "Count_Person_1OrMoreYears_DifferentHouseAbroad": {}
   }
 }
