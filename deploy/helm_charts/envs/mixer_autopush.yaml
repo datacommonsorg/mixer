@@ -46,7 +46,6 @@ serviceGroups:
     resources:
       memoryRequest: "6G"
       memoryLimit: "8G"
-      cpuRequest: "2"
   node:
     replicas: 20
   default:
