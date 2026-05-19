@@ -22,6 +22,7 @@ var statements = struct {
 	getObsByVariableAndEntityType             string
 	getObsByVariableEntityTypeAndDate         string
 	getStatVarSummaries                       string
+	getStatVarProvenanceSummaries             string
 	getKeyValue                               string
 	getAllStatVarGroups                       string
 	getAllStatVars                            string
@@ -142,6 +143,108 @@ var statements = struct {
 					JOIN grouped_entities using(variable, entity_type))
 		SELECT *
 		FROM   aggregate;
+	`,
+	getStatVarProvenanceSummaries: `
+		WITH groups
+			AS (SELECT
+					o.variable               AS variable,
+					o.provenance             AS provenance,
+					o.measurement_method     AS measurement_method,
+					o.observation_period     AS observation_period,
+					o.scaling_factor         AS scaling_factor,
+					o.unit                   AS unit,
+					t.object_id              AS entity_type,
+					Min(o.date)              AS earliest_date,
+					Max(o.date)              AS latest_date,
+					Min(o.value + 0.0)       AS min_value,
+					Max(o.value + 0.0)       AS max_value,
+					Count(*)                 AS observation_count,
+					Count(DISTINCT o.entity) AS entity_count
+				FROM   observations o
+					JOIN triples t
+						ON o.entity = t.subject_id
+				WHERE  o.variable IN (:variables)
+					AND o.value != ''
+					AND t.predicate = 'typeOf'
+				GROUP  BY
+					o.variable, o.provenance,
+					o.measurement_method, o.observation_period,
+					o.scaling_factor, o.unit, t.object_id),
+			entities
+			AS (SELECT DISTINCT
+					o.variable           AS variable,
+					o.provenance         AS provenance,
+					o.measurement_method AS measurement_method,
+					o.observation_period AS observation_period,
+					o.scaling_factor     AS scaling_factor,
+					o.unit               AS unit,
+					t.object_id          AS entity_type,
+					t.subject_id         AS entity_id
+				FROM   triples t
+					JOIN observations o
+						ON o.entity = t.subject_id
+				WHERE  t.predicate = 'typeOf'
+					AND o.variable IN (:variables)
+					AND o.value != ''),
+			sample_entities
+			AS (SELECT variable, provenance,
+					   measurement_method, observation_period, scaling_factor, unit,
+					   entity_type, entity_id
+				FROM   (SELECT
+							*,
+							Row_number() OVER (
+								PARTITION BY variable, provenance,
+											 measurement_method, observation_period,
+											 scaling_factor, unit, entity_type
+							) AS row_num
+						FROM entities) AS entities_with_row_num
+				WHERE  row_num <= 3),
+			grouped_entities
+			AS (SELECT variable, provenance,
+					   measurement_method, observation_period, scaling_factor, unit,
+					   entity_type,
+					   Group_concat(entity_id) AS sample_entity_ids
+				FROM   sample_entities
+				GROUP  BY variable, provenance,
+						  measurement_method, observation_period,
+						  scaling_factor, unit, entity_type),
+			provenance_ids
+			AS (SELECT subject_id AS provenance_id
+				FROM   triples
+				WHERE  predicate = 'typeOf'
+				   AND object_id = 'Provenance'),
+			provenance_names
+			AS (SELECT t.subject_id   AS provenance_id,
+					   t.object_value AS provenance_name
+				FROM   triples t
+					   JOIN provenance_ids p
+						 ON t.subject_id = p.provenance_id
+				WHERE  t.predicate = 'name')
+		SELECT g.variable,
+			   g.provenance,
+			   COALESCE(pn.provenance_name, '') AS provenance_name,
+			   g.measurement_method,
+			   g.observation_period,
+			   g.scaling_factor,
+			   g.unit,
+			   g.entity_type,
+			   g.earliest_date,
+			   g.latest_date,
+			   g.min_value,
+			   g.max_value,
+			   g.observation_count,
+			   g.entity_count,
+			   ge.sample_entity_ids
+		FROM   groups g
+			   JOIN grouped_entities ge USING(
+				   variable, provenance,
+				   measurement_method, observation_period,
+				   scaling_factor, unit, entity_type)
+			   LEFT JOIN provenance_names pn
+				   ON pn.provenance_id = g.provenance
+		ORDER  BY g.variable, g.provenance,
+				  g.measurement_method, g.observation_period,
+				  g.scaling_factor, g.unit, g.entity_type;
 	`,
 	getKeyValue: `
 		SELECT value
