@@ -23,6 +23,7 @@ import (
 	"testing"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/internal/server/topic"
 	"github.com/datacommonsorg/mixer/test"
@@ -45,7 +46,9 @@ func TestFetchTopicsFromKGGolden(t *testing.T) {
 
 	// Instantiate real SpannerDataSource wrapper with the real database client
 	ds := spanner.NewSpannerDataSource(client, nil, nil, false)
-	manager := topic.NewTopicCacheManager(ds, nil)
+	fetcher := datasource.NewNodeFetcher(ds)
+	manager := topic.NewTopicCacheManager(nil)
+	manager.Start(ctx, fetcher, 0)
 
 	got, err := manager.FetchTopicsFromKG(ctx)
 	if err != nil {

@@ -32,6 +32,7 @@ import (
 	logger "github.com/datacommonsorg/mixer/internal/log"
 	"github.com/datacommonsorg/mixer/internal/maps"
 	"github.com/datacommonsorg/mixer/internal/metrics"
+	"github.com/datacommonsorg/mixer/internal/nodefetcher"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
@@ -411,6 +412,18 @@ func main() {
 
 	// Declare Redis client at higher scope for injection
 	var redisCacheClient redis.CacheClient
+	if *useRedis && *redisInfo != "" {
+		slog.Info("Setting up Redis cache client")
+		client, err := redis.NewCacheClient(*redisInfo)
+		if err != nil {
+			slog.Error("Failed to create Redis client", "error", err)
+			os.Exit(1)
+		}
+		//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
+		defer client.Close()
+
+		redisCacheClient = client
+	}
 
 	// Processors
 	processors := []*dispatcher.Processor{}
@@ -425,18 +438,8 @@ func main() {
 		slog.Info("In-memory data source cache initialized successfully")
 
 		// Cache Processor
-		if *useRedis && *redisInfo != "" {
+		if redisCacheClient != nil {
 			slog.Info("Setting up Redis cache processor")
-			client, err := redis.NewCacheClient(*redisInfo)
-			if err != nil {
-				slog.Error("Failed to create Redis client", "error", err)
-				os.Exit(1)
-			}
-			//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
-			defer client.Close()
-
-			redisCacheClient = client
-
 			var redisProcessor dispatcher.Processor = redis.NewCacheProcessor(redisCacheClient)
 			processors = append(processors, &redisProcessor)
 		}
@@ -459,11 +462,9 @@ func main() {
 
 	// Topic Cache Manager
 	var topicCacheManager *topic.TopicCacheManager
-	if spannerDS != nil && flags.EnableEmbeddingsResolver {
+	if flags.EnableEmbeddingsResolver {
 		slog.Info("Initializing topic cache manager")
-		topicCacheManager = topic.NewTopicCacheManager(spannerDS, redisCacheClient)
-		topicCacheManager.Start(ctx, topicCacheRefreshInterval)
-		defer topicCacheManager.Close()
+		topicCacheManager = topic.NewTopicCacheManager(redisCacheClient)
 	}
 
 	// Dispatcher
@@ -473,6 +474,20 @@ func main() {
 	// Create server object
 	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs, *embeddingsServerURL, *resolveEmbeddingsIndexes, *useSpannerGraph, topicCacheManager)
 	pbs.RegisterMixerServer(srv, mixerServer)
+
+	// Start background tasks for topic cache manager
+	if topicCacheManager != nil {
+		var nodeFetcher nodefetcher.NodeAllFetcher
+		if shouldUseSpannerGraph && spannerDS != nil {
+			slog.Info("Setting up Spanner NodeFetcher for topic cache")
+			nodeFetcher = datasource.NewNodeFetcher(spannerDS)
+		} else {
+			slog.Info("Setting up Store V2NodeCore NodeFetcher for topic cache")
+			nodeFetcher = nodefetcher.NewFuncNodeFetcher(mixerServer.V2NodeCore)
+		}
+		topicCacheManager.Start(ctx, nodeFetcher, topicCacheRefreshInterval)
+		defer topicCacheManager.Close()
+	}
 
 	// Subscribe to branch cache update
 	if *useBranchBigtable {
