@@ -48,6 +48,7 @@ type DataSource interface {
 	BulkVariableInfo(context.Context, *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error)
 	BulkVariableGroupInfo(context.Context, *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error)
 	SdmxData(context.Context, *pb.SdmxDataQuery) (*pb.SdmxDataResult, error)
+	FilterStatVarsByEntity(context.Context, *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error)
 }
 
 // NodeFetchAll fetches all NodeResponse pages for a given request by repeatedly calling ds.Node

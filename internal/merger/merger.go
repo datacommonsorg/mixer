@@ -533,6 +533,18 @@ func MergeFilterStatVarsByEntityResponse(primary, secondary *pb.FilterStatVarsBy
 	return merged
 }
 
+// Merges multiple FilterStatVarsByEntityResponse.
+func MergeMultiFilterStatVarsByEntity(allResp []*pb.FilterStatVarsByEntityResponse) *pb.FilterStatVarsByEntityResponse {
+	if len(allResp) == 0 {
+		return &pb.FilterStatVarsByEntityResponse{}
+	}
+	prev := allResp[0]
+	for i := 1; i < len(allResp); i++ {
+		prev = MergeFilterStatVarsByEntityResponse(prev, allResp[i])
+	}
+	return prev
+}
+
 // Merges multiple V2 NodeSearchResponses.
 // Cycles through responses in order of priority and add results one by one.
 func MergeMultiNodeSearch(allResp []*pbv2.NodeSearchResponse) (*pbv2.NodeSearchResponse, error) {
