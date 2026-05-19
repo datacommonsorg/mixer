@@ -168,3 +168,98 @@ func TestRemoveOptimizationsFromNodeResponse(t *testing.T) {
 		}
 	}
 }
+
+func TestFilterObservationsByDateAndFacet(t *testing.T) {
+	tests := []struct {
+		name     string
+		obs      []*Observation
+		date     string
+		expected []*Observation
+	}{
+		// Test: Filter matches some data.
+		// Situation: Two entities are provided. One has data for the requested date (2012), the other only has data for 2011.
+		// Expectation: Only the entity with data for 2012 is returned, and its observations are filtered to that date.
+		{
+			name: "Filter matches some data",
+			obs: []*Observation{
+				{
+					ObservationAbout: "entity1",
+					Observations: TimeSeries{
+						{Date: "2011", Value: "10"},
+						{Date: "2012", Value: "20"},
+					},
+				},
+				{
+					ObservationAbout: "entity2",
+					Observations: TimeSeries{
+						{Date: "2011", Value: "15"},
+					},
+				},
+			},
+			date: "2012",
+			expected: []*Observation{
+				{
+					ObservationAbout: "entity1",
+					Observations: TimeSeries{
+						{Date: "2012", Value: "20"},
+					},
+				},
+			},
+		},
+		// Test: Filter matches no data.
+		// Situation: Two entities are provided, but neither has data for the requested date (2012).
+		// Expectation: No observations are returned (empty slice).
+		{
+			name: "Filter matches no data",
+			obs: []*Observation{
+				{
+					ObservationAbout: "entity1",
+					Observations: TimeSeries{
+						{Date: "2011", Value: "10"},
+					},
+				},
+				{
+					ObservationAbout: "entity2",
+					Observations: TimeSeries{
+						{Date: "2011", Value: "15"},
+					},
+				},
+			},
+			date:     "2012",
+			expected: nil,
+		},
+		// Test: Empty date filter keeps all.
+		// Situation: Date filter is empty.
+		// Expectation: All observations are retained as they were.
+		{
+			name: "Empty date filter keeps all",
+			obs: []*Observation{
+				{
+					ObservationAbout: "entity1",
+					Observations: TimeSeries{
+						{Date: "2011", Value: "10"},
+					},
+				},
+			},
+			date: "",
+			expected: []*Observation{
+				{
+					ObservationAbout: "entity1",
+					Observations: TimeSeries{
+						{Date: "2011", Value: "10"},
+					},
+				},
+			},
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			filtered := filterObservationsByDateAndFacet(tc.obs, tc.date, nil)
+			if diff := cmp.Diff(tc.expected, filtered); diff != "" {
+				t.Errorf("Test %s: unexpected filtered results (-want +got):\n%s", tc.name, diff)
+			}
+		})
+	}
+}
+
