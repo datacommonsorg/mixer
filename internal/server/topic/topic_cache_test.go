@@ -22,6 +22,8 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 type mockNodeFetcher struct {
@@ -146,5 +148,98 @@ func TestGetStatVarInfos(t *testing.T) {
 	_, _ = manager.GetStatVarInfos(ctx, []string{"Count_Person"})
 	if fetcher.callCount != beforeCount {
 		t.Errorf("Expected cache hit, but callCount increased from %d to %d", beforeCount, fetcher.callCount)
+	}
+}
+
+func TestTopicExpansion(t *testing.T) {
+	ctx := context.Background()
+	resps := map[string]*pbv2.LinkedGraph{
+		"Count_Person": {
+			Arcs: map[string]*pbv2.Nodes{
+				"name": {Nodes: []*pb.EntityInfo{{Name: "Person Count"}}},
+				"observationProperty": {Nodes: []*pb.EntityInfo{{Value: "statVarObservation"}}},
+			},
+		},
+	}
+	fetcher := &mockNodeFetcher{resps: resps}
+	manager := NewTopicCacheManager(nil)
+	manager.InitFetcher(fetcher)
+
+	// Set up mock hierarchy
+	h := &pb.TopicHierarchy{
+		RootTopicDcids: []string{"dc/topic/Root"},
+		Topics: map[string]*pb.TopicNode{
+			"dc/topic/Root": {
+				Dcid:              "dc/topic/Root",
+				Name:              "Root Topic",
+				RelevantVariables: []string{"dc/topic/SubTopic"},
+			},
+			"dc/topic/SubTopic": {
+				Dcid:              "dc/topic/SubTopic",
+				Name:              "Sub Topic",
+				RelevantVariables: []string{"Count_Person"},
+			},
+		},
+	}
+	manager.Update(h)
+
+	tests := []struct {
+		desc         string
+		expandTopics bool
+		want         []*pbv2.ResolveResponse_Entity_Candidate
+	}{
+		{
+			desc:         "Immediate direct children (expandTopics=false)",
+			expandTopics: false,
+			want: []*pbv2.ResolveResponse_Entity_Candidate{
+				{
+					Dcid:         "dc/topic/Root",
+					DominantType: "Topic",
+					TypeOf:       []string{"Topic"},
+					Name:         "Root Topic",
+					Children: []*pbv2.ResolveResponse_Entity_Candidate{
+						{
+							Dcid:         "dc/topic/SubTopic",
+							DominantType: "Topic",
+							TypeOf:       []string{"Topic"},
+							Name:         "Sub Topic",
+						},
+					},
+				},
+			},
+		},
+		{
+			desc:         "Recursive leaf variable expansion (expandTopics=true)",
+			expandTopics: true,
+			want: []*pbv2.ResolveResponse_Entity_Candidate{
+				{
+					Dcid:         "dc/topic/Root",
+					DominantType: "Topic",
+					TypeOf:       []string{"Topic"},
+					Name:         "Root Topic",
+					Children: []*pbv2.ResolveResponse_Entity_Candidate{
+						{
+							Dcid:                  "Count_Person",
+							DominantType:          "StatisticalVariable",
+							TypeOf:                []string{"StatisticalVariable"},
+							Name:                  "Person Count",
+							ObservationProperties: []string{"statVarObservation"},
+						},
+					},
+				},
+			},
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.desc, func(t *testing.T) {
+			got, err := manager.ExpandRoots(ctx, tc.expandTopics)
+			if err != nil {
+				t.Fatalf("ExpandRoots(%t) failed: %v", tc.expandTopics, err)
+			}
+			if diff := cmp.Diff(got, tc.want, protocmp.Transform()); diff != "" {
+				t.Errorf("ExpandRoots(%t) mismatch (-got +want):\n%s", tc.expandTopics, diff)
+			}
+		})
 	}
 }
