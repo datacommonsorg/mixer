@@ -46,6 +46,8 @@ const (
 	ResolveResolverPlace = "place"
 	// ResolveResolverIndicator is the resolver name for indicator/embeddings resolution.
 	ResolveResolverIndicator = "indicator"
+	// ResolveResolverTopic is the resolver name for explicit topic tree navigation.
+	ResolveResolverTopic = "topic"
 
 	// ResolveDefaultPropertyExpression is the property name for description.
 	ResolveDefaultPropertyExpression = "<-description->dcid"
@@ -337,6 +339,8 @@ func ValidateAndParseResolveInputs(in *pbv2.ResolveRequest) (*NormalizedResolveR
 					"Invalid 'property' expression: indicator resolution only supports '%s' as output property",
 					DcidProperty))
 			}
+		case ResolveResolverTopic:
+			// Explicit topic tree navigation accepts default property expressions or topic dcids directly; no restrictions needed.
 		}
 	}
 
@@ -377,15 +381,15 @@ func parseAndValidateResolveTarget(req *pbv2.ResolveRequest) string {
 // Returns an optional error string.
 func parseAndValidateResolveResolver(req *pbv2.ResolveRequest) string {
 	switch req.GetResolver() {
-	case ResolveResolverPlace, ResolveResolverIndicator:
+	case ResolveResolverPlace, ResolveResolverIndicator, ResolveResolverTopic:
 		return ""
 	case "":
 		// Set default value
 		req.Resolver = ResolveResolverPlace
 		return ""
 	default:
-		return fmt.Sprintf("Invalid 'resolver': valid values are '%s', '%s'",
-			ResolveResolverIndicator, ResolveResolverPlace)
+		return fmt.Sprintf("Invalid 'resolver': valid values are '%s', '%s', '%s'",
+			ResolveResolverIndicator, ResolveResolverPlace, ResolveResolverTopic)
 	}
 }
 
