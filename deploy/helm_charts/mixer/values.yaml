@@ -436,6 +436,7 @@ serviceGroups:
     resources:
       memoryRequest: "8G"
       memoryLimit: "8G"
+      cpuRequest: "100m"
     cacheSVG: true
     # If the name of the recon service is changed here,
     # please also change the name in the deployment.yaml template.
@@ -448,6 +449,7 @@ serviceGroups:
     resources:
       memoryRequest: "2G"
       memoryLimit: "2G"
+      cpuRequest: "100m"
   observation:
     urlPaths:
       - "/bulk/stats"
@@ -459,6 +461,8 @@ serviceGroups:
     resources:
       memoryRequest: "4G"
       memoryLimit: "8G"
+      cpuRequest: "1"
+    enableAntiAffinity: true
   node:
     urlPaths:
       - "/node/*"
@@ -473,6 +477,7 @@ serviceGroups:
     resources:
       memoryRequest: "8G"
       memoryLimit: "8G"
+      cpuRequest: "500m"
     cacheSVG: true
   default:
     urlPaths:
@@ -481,3 +486,4 @@ serviceGroups:
     resources:
       memoryRequest: "2G"
       memoryLimit: "2G"
+      cpuRequest: "100m"

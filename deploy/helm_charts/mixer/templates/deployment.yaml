@@ -38,8 +38,8 @@ spec:
     type: RollingUpdate
     rollingUpdate:
       # maximum number of Pods that can be created over the desired number of Pods
-      # 25% of default pods (+1 in case default < 4)
-      maxSurge: {{ $group.maxSurge | default (div $group.replicas 4 | add 1) }}
+      # Set to 1 to reduce resource overhead during deployment
+      maxSurge: 1
       # Maximum number of pods that can be unavailable during the update process
       # 25% of default pods (+1 in case default < 4)
       maxUnavailable: {{ div $group.replicas 4 | add 1 }}
@@ -60,6 +60,24 @@ spec:
       nodeSelector:
         cloud.google.com/gke-nodepool: {{ $group.nodePool }}
       {{- end }}
+      {{- if $group.enableAntiAffinity }}
+      # Soft pod anti-affinity at the node level. 
+      # Encourages the scheduler to place each replica of this service on a distinct node.
+      # This is a soft rule, so if there are not enough nodes, the scheduler will schedule pods
+      # on the same node rather than letting them get stuck in a Pending state.
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: service
+                      operator: In
+                      values:
+                        - {{ include "mixer.fullname" $ }}-{{ $serviceName }}
+                topologyKey: "kubernetes.io/hostname"
+      {{- end}}
       serviceAccountName: {{ $.Values.serviceAccount.name }}
       volumes:
         - name: schema-mapping
