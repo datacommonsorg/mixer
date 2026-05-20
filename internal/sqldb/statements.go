@@ -145,7 +145,7 @@ var statements = struct {
 		FROM   aggregate;
 	`,
 	getStatVarProvenanceSummaries: `
-		WITH groups
+		WITH obs_groups
 			AS (SELECT
 					o.variable               AS variable,
 					o.provenance             AS provenance,
@@ -235,7 +235,7 @@ var statements = struct {
 			   g.observation_count,
 			   g.entity_count,
 			   ge.sample_entity_ids
-		FROM   groups g
+		FROM   obs_groups g
 			   JOIN grouped_entities ge USING(
 				   variable, provenance,
 				   measurement_method, observation_period,
