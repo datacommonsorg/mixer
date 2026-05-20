@@ -41,19 +41,27 @@ var (
 	redisCacheKeyProto    = &wrapperspb.StringValue{Value: "topic/topic_cache"}
 )
 
+// StatVarInfo stores property metadata for a Statistical Variable.
+type StatVarInfo struct {
+	Dcid                  string
+	Name                  string
+	ObservationProperties []string
+	EntityMappings        []string
+}
+
 // TopicVariableCache is an in-memory composite struct caching server-wide topic hierarchy
 // and variable metadata.
 type TopicVariableCache struct {
 	TopicHierarchy *pb.TopicHierarchy
-	// SVs map[string]*SVInfo // Placeholder for follow-up task
+	StatVars       map[string]*StatVarInfo
 }
 
 // String implements fmt.Stringer to provide a concise summary of the cached hierarchy contents.
 func (c *TopicVariableCache) String() string {
 	if c == nil || c.TopicHierarchy == nil {
-		return "TopicVariableCache{topicCount: 0, rootCount: 0}"
+		return "TopicVariableCache{topicCount: 0, rootCount: 0, statVarsCount: 0}"
 	}
-	return fmt.Sprintf("TopicVariableCache{topicCount: %d, rootCount: %d}", len(c.TopicHierarchy.GetTopics()), len(c.TopicHierarchy.GetRootTopicDcids()))
+	return fmt.Sprintf("TopicVariableCache{topicCount: %d, rootCount: %d, statVarsCount: %d}", len(c.TopicHierarchy.GetTopics()), len(c.TopicHierarchy.GetRootTopicDcids()), len(c.StatVars))
 }
 
 // TopicCacheManager manages the loading, building, and caching of topics.
@@ -159,9 +167,78 @@ func (m *TopicCacheManager) Update(hierarchy *pb.TopicHierarchy) {
 	defer m.mu.Unlock()
 	m.cache = &TopicVariableCache{
 		TopicHierarchy: hierarchy,
+		StatVars:       make(map[string]*StatVarInfo),
 	}
 
 	slog.Info("Topic cache updated in memory", "cache", m.cache.String())
+}
+
+// readStatVarsFromCache checks the local cache for requested DCIDs under read lock.
+// It returns a map of found metadata and a slice of any remaining un-cached DCIDs.
+func (m *TopicCacheManager) readStatVarsFromCache(dcids []string) (map[string]*StatVarInfo, []string) {
+	m.mu.RLock()
+	defer m.mu.RUnlock()
+
+	result := make(map[string]*StatVarInfo)
+	var missingDcids []string
+
+	cacheExists := m.cache != nil && m.cache.StatVars != nil
+	if cacheExists {
+		for _, dcid := range dcids {
+			if info, found := m.cache.StatVars[dcid]; found {
+				result[dcid] = info
+			} else {
+				missingDcids = append(missingDcids, dcid)
+			}
+		}
+	} else {
+		missingDcids = append(missingDcids, dcids...)
+	}
+	return result, missingDcids
+}
+
+// saveStatVarsToCache saves newly fetched metadata into the local cache under write lock.
+func (m *TopicCacheManager) saveStatVarsToCache(infos map[string]*StatVarInfo) {
+	m.mu.Lock()
+	defer m.mu.Unlock()
+
+	if m.cache == nil {
+		return
+	}
+	if m.cache.StatVars == nil {
+		m.cache.StatVars = make(map[string]*StatVarInfo)
+	}
+	for dcid, info := range infos {
+		m.cache.StatVars[dcid] = info
+	}
+}
+
+// GetStatVarInfos returns metadata for the requested DCIDs. It utilizes a read-through
+// cache, fetching any un-cached SV metadata dynamically in batches.
+func (m *TopicCacheManager) GetStatVarInfos(ctx context.Context, dcids []string) (map[string]*StatVarInfo, error) {
+	if m.fetcher == nil {
+		return nil, fmt.Errorf("topic cache manager uninitialized: fetcher is nil")
+	}
+
+	result, missingDcids := m.readStatVarsFromCache(dcids)
+	if len(missingDcids) == 0 {
+		return result, nil
+	}
+
+	// Batch fetch missing stat var info
+	fetchedInfos, err := m.fetchStatVarInfos(ctx, missingDcids)
+	if err != nil {
+		return nil, err
+	}
+
+	m.saveStatVarsToCache(fetchedInfos)
+
+	// Merge newly fetched info into result
+	for dcid, info := range fetchedInfos {
+		result[dcid] = info
+	}
+
+	return result, nil
 }
 
 // GetHierarchy retrieves the cached TopicHierarchy.

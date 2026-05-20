@@ -70,6 +70,50 @@ func (m *TopicCacheManager) FetchTopicsFromKG(ctx context.Context) (*pb.TopicHie
 	return hierarchy, nil
 }
 
+// parseStatVarInfo extracts metadata properties from a LinkedGraph and populates a StatVarInfo struct.
+func parseStatVarInfo(dcid string, graph *pbv2.LinkedGraph) *StatVarInfo {
+	info := &StatVarInfo{Dcid: dcid}
+	if graph == nil || graph.GetArcs() == nil {
+		return info
+	}
+	if arc, exists := graph.GetArcs()["name"]; exists && len(arc.GetNodes()) > 0 {
+		info.Name = extractName(arc.GetNodes()[0])
+	}
+	info.ObservationProperties = extractValues(graph.GetArcs()["observationProperty"])
+	info.EntityMappings = extractValues(graph.GetArcs()["entityMapping"])
+	return info
+}
+
+// parseStatVarInfos populates metadata for all requested DCIDs from a NodeResponse.
+func parseStatVarInfos(dcids []string, resp *pbv2.NodeResponse) map[string]*StatVarInfo {
+	res := make(map[string]*StatVarInfo, len(dcids))
+	for _, dcid := range dcids {
+		res[dcid] = &StatVarInfo{Dcid: dcid}
+	}
+	if resp == nil || resp.GetData() == nil {
+		return res
+	}
+	for dcid, graph := range resp.GetData() {
+		res[dcid] = parseStatVarInfo(dcid, graph)
+	}
+	return res
+}
+
+// fetchStatVarInfos queries the Knowledge Graph for name, observationProperty, and entityMapping.
+func (m *TopicCacheManager) fetchStatVarInfos(ctx context.Context, dcids []string) (map[string]*StatVarInfo, error) {
+	defer util.TimeTrack(time.Now(), "topic: fetchStatVarInfos")
+	req := &pbv2.NodeRequest{
+		Nodes:    dcids,
+		Property: "->[name, observationProperty, entityMapping]",
+	}
+	resp, err := m.fetcher.NodeFetchAll(ctx, req)
+	if err != nil {
+		return nil, fmt.Errorf("failed to fetch stat var infos: %w", err)
+	}
+
+	return parseStatVarInfos(dcids, resp), nil
+}
+
 // extractName attempts to extract a name for the entity.
 // It prioritizes Name, then Value, and falls back to Dcid.
 func extractName(entity *pb.EntityInfo) string {
@@ -83,6 +127,22 @@ func extractName(entity *pb.EntityInfo) string {
 		return value
 	}
 	return entity.GetDcid()
+}
+
+// extractValues iterates through nodes in an arc, extracting values or DCIDs as a string slice.
+func extractValues(arc *pbv2.Nodes) []string {
+	if arc == nil {
+		return nil
+	}
+	var values []string
+	for _, n := range arc.GetNodes() {
+		if val := n.GetValue(); val != "" {
+			values = append(values, val)
+		} else if d := n.GetDcid(); d != "" {
+			values = append(values, d)
+		}
+	}
+	return values
 }
 
 // fetchTopicNodes fetches all topic nodes from the KG.

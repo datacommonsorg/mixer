@@ -20,18 +20,23 @@ import (
 	"testing"
 	"time"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
 
 type mockNodeFetcher struct {
 	mu        sync.Mutex
 	callCount int
+	resps     map[string]*pbv2.LinkedGraph
 }
 
 func (m *mockNodeFetcher) NodeFetchAll(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
 	m.mu.Lock()
 	m.callCount++
 	m.mu.Unlock()
+	if m.resps != nil {
+		return &pbv2.NodeResponse{Data: m.resps}, nil
+	}
 	return &pbv2.NodeResponse{}, nil
 }
 
@@ -94,5 +99,52 @@ func TestTopicCacheManagerRefresher(t *testing.T) {
 
 	if count < 2 {
 		t.Errorf("Expected refresher to trigger LoadHierarchy at least 2 times, got %d", count)
+	}
+}
+
+func TestGetStatVarInfos(t *testing.T) {
+	ctx := context.Background()
+	resps := map[string]*pbv2.LinkedGraph{
+		"Count_Person": {
+			Arcs: map[string]*pbv2.Nodes{
+				"name": {
+					Nodes: []*pb.EntityInfo{
+						{Name: "Person Count"},
+					},
+				},
+				"observationProperty": {
+					Nodes: []*pb.EntityInfo{
+						{Value: "statVarObservation"},
+					},
+				},
+				"entityMapping": {
+					Nodes: []*pb.EntityInfo{
+						{Value: "Count_Person_Column"},
+					},
+				},
+			},
+		},
+	}
+	fetcher := &mockNodeFetcher{resps: resps}
+	manager := NewTopicCacheManager(nil)
+	manager.InitFetcher(fetcher)
+
+	// Update cache with empty hierarchy to initialize m.cache
+	manager.Update(&pb.TopicHierarchy{})
+
+	infos, err := manager.GetStatVarInfos(ctx, []string{"Count_Person"})
+	if err != nil {
+		t.Fatalf("GetStatVarInfos failed: %v", err)
+	}
+	info, ok := infos["Count_Person"]
+	if !ok || info.Name != "Person Count" || len(info.ObservationProperties) == 0 || info.ObservationProperties[0] != "statVarObservation" {
+		t.Errorf("GetStatVarInfos mismatch: got %+v", info)
+	}
+
+	// Fetch again to verify cache hit
+	beforeCount := fetcher.callCount
+	_, _ = manager.GetStatVarInfos(ctx, []string{"Count_Person"})
+	if fetcher.callCount != beforeCount {
+		t.Errorf("Expected cache hit, but callCount increased from %d to %d", beforeCount, fetcher.callCount)
 	}
 }
