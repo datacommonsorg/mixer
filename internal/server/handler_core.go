@@ -40,12 +40,17 @@ func (s *Server) V2ResolveCore(
 	ctx context.Context,
 	in *resolve.NormalizedResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
-	// Check for explicit "indicator" resolver, otherwise default to legacy place resolver logic.
-	if resolver := in.Request.GetResolver(); resolver == resolve.ResolveResolverIndicator {
+	// Check for explicit "indicator" or "topic" resolvers, otherwise default to legacy place resolver logic.
+	adapter := s.newTopicExpander()
+
+	resolver := in.Request.GetResolver()
+	if resolver == resolve.ResolveResolverIndicator {
 		if !s.flags.EnableEmbeddingsResolver {
 			return nil, status.Errorf(codes.Unimplemented, "Resolving indicators is not enabled for this environment.")
 		}
-		return resolve.ResolveUsingEmbeddings(ctx, s.httpClient, s.embeddingsServerURL, s.resolveEmbeddingsIndexes, in.Request.GetNodes(), in.TypeOfValues)
+		return resolve.ResolveUsingEmbeddings(ctx, s.httpClient, s.embeddingsServerURL, s.resolveEmbeddingsIndexes, in.Request.GetNodes(), in.TypeOfValues, adapter, in.Request.GetExpandTopics())
+	} else if resolver == resolve.ResolveResolverTopic {
+		return resolve.ResolveTopics(ctx, adapter, in.Request.GetNodes(), in.Request.GetExpandTopics())
 	}
 
 	// Resolve places based on property expression

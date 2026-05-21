@@ -26,9 +26,8 @@ import (
 // newCandidate creates a base candidate with standard type identification.
 func newCandidate(dcid, entityType string) *pbv2.ResolveResponse_Entity_Candidate {
 	return &pbv2.ResolveResponse_Entity_Candidate{
-		Dcid:         dcid,
-		DominantType: entityType,
-		TypeOf:       []string{entityType},
+		Dcid:   dcid,
+		TypeOf: []string{entityType},
 	}
 }
 

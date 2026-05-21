@@ -241,6 +241,17 @@ func (m *TopicCacheManager) GetStatVarInfos(ctx context.Context, dcids []string)
 	return result, nil
 }
 
+// GetTopicDisplayName returns the display name for a topic DCID if available.
+func (m *TopicCacheManager) GetTopicDisplayName(ctx context.Context, topicDcid string) string {
+	h, _ := m.GetHierarchy(ctx)
+	if h != nil && h.GetTopics() != nil {
+		if n, ok := h.GetTopics()[topicDcid]; ok && n != nil {
+			return n.GetName()
+		}
+	}
+	return ""
+}
+
 // GetHierarchy retrieves the cached TopicHierarchy.
 // It first checks the local L1 in-memory cache.
 // If L1 is empty/cold, it falls back to LoadHierarchy to load it from Redis or the KG.

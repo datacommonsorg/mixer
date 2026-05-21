@@ -193,16 +193,14 @@ func TestTopicExpansion(t *testing.T) {
 			expandTopics: false,
 			want: []*pbv2.ResolveResponse_Entity_Candidate{
 				{
-					Dcid:         "dc/topic/Root",
-					DominantType: "Topic",
-					TypeOf:       []string{"Topic"},
-					Name:         "Root Topic",
+					Dcid:   "dc/topic/Root",
+					TypeOf: []string{"Topic"},
+					Name:   "Root Topic",
 					Children: []*pbv2.ResolveResponse_Entity_Candidate{
 						{
-							Dcid:         "dc/topic/SubTopic",
-							DominantType: "Topic",
-							TypeOf:       []string{"Topic"},
-							Name:         "Sub Topic",
+							Dcid:   "dc/topic/SubTopic",
+							TypeOf: []string{"Topic"},
+							Name:   "Sub Topic",
 						},
 					},
 				},
@@ -213,14 +211,12 @@ func TestTopicExpansion(t *testing.T) {
 			expandTopics: true,
 			want: []*pbv2.ResolveResponse_Entity_Candidate{
 				{
-					Dcid:         "dc/topic/Root",
-					DominantType: "Topic",
-					TypeOf:       []string{"Topic"},
-					Name:         "Root Topic",
+					Dcid:   "dc/topic/Root",
+					TypeOf: []string{"Topic"},
+					Name:   "Root Topic",
 					Children: []*pbv2.ResolveResponse_Entity_Candidate{
 						{
 							Dcid:                  "Count_Person",
-							DominantType:          "StatisticalVariable",
 							TypeOf:                []string{"StatisticalVariable"},
 							Name:                  "Person Count",
 							ObservationProperties: []string{"statVarObservation"},

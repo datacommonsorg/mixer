@@ -68,6 +68,21 @@ type NormalizedResolveRequest struct {
 	TypeOfValues []string
 }
 
+// SVPropertyInfo holds property metadata for a Statistical Variable, decoupling from concrete topic packages.
+type SVPropertyInfo struct {
+	Name                  string
+	ObservationProperties []string
+}
+
+// TopicExpander defines the contract for topic tree navigation and variable metadata expansion,
+// decoupling resolve package from concrete cache implementations to eliminate import cycles.
+type TopicExpander interface {
+	ExpandRoots(ctx context.Context, expandTopics bool) ([]*pbv2.ResolveResponse_Entity_Candidate, error)
+	ExpandTopic(ctx context.Context, topicDcid string, expandTopics bool) ([]*pbv2.ResolveResponse_Entity_Candidate, error)
+	GetTopicDisplayName(ctx context.Context, topicDcid string) string
+	GetSVPropertyInfos(ctx context.Context, svDcids []string) (map[string]SVPropertyInfo, error)
+}
+
 var resolvedPlaceTypePriorityList = []string{
 	"AdministrativeArea5",
 	"AdministrativeArea4",
