@@ -439,8 +439,8 @@ serviceGroups:
     resources:
       memoryRequest: "8G"
       memoryLimit: "8G"
-      cpuRequest: "100m"
-      cpuLimit: "500m"
+      cpuRequest: "125m"
+      cpuLimit: "250m"
     cacheSVG: true
     # If the name of the recon service is changed here,
     # please also change the name in the deployment.yaml template.
@@ -453,8 +453,8 @@ serviceGroups:
     resources:
       memoryRequest: "2G"
       memoryLimit: "2G"
-      cpuRequest: "100m"
-      cpuLimit: "500m"
+      cpuRequest: "50m"
+      cpuLimit: "100m"
   observation:
     urlPaths:
       - "/bulk/stats"
@@ -466,7 +466,7 @@ serviceGroups:
     resources:
       memoryRequest: "8G"
       memoryLimit: "8G"
-      cpuRequest: "1"
+      cpuRequest: "125m"
       cpuLimit: "1.5"
     espResources:
       memoryRequest: "500M"
@@ -485,8 +485,8 @@ serviceGroups:
     resources:
       memoryRequest: "8G"
       memoryLimit: "8G"
-      cpuRequest: "500m"
-      cpuLimit: "1.5"
+      cpuRequest: "250m"
+      cpuLimit: "500"
     cacheSVG: true
   default:
     urlPaths:
@@ -495,5 +495,5 @@ serviceGroups:
     resources:
       memoryRequest: "2G"
       memoryLimit: "2G"
-      cpuRequest: "100m"
-      cpuLimit: "500m"
+      cpuRequest: "50m"
+      cpuLimit: "100m"
