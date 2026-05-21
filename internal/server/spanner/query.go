@@ -180,39 +180,7 @@ func (sc *spannerDatabaseClient) CheckVariableGroupExistence(ctx context.Context
 		return [][]string{}, nil
 	}
 
-	// Step 1: Identify which variable groups are root nodes (have no parents).
-	// We are doing this because a query on root involve a massive join involving
-	// a large number of variables (causing a slow query and risk of timeout).
-	stmtRoots := spanner.Statement{
-		SQL: `SELECT DISTINCT subject_id
-			FROM Edge
-			WHERE predicate = 'specializationOf'
-			  AND subject_id IN UNNEST(@variables)`,
-		Params: map[string]interface{}{
-			"variables": variableGroups,
-		},
-	}
-	rowsRoots, err := queryDynamic(ctx, sc, stmtRoots)
-	if err != nil {
-		return nil, err
-	}
 
-	hasParent := map[string]bool{}
-	for _, row := range rowsRoots {
-		if len(row) > 0 {
-			hasParent[row[0]] = true
-		}
-	}
-
-	var roots []string
-	var nonRoots []string
-	for _, v := range variableGroups {
-		if !hasParent[v] {
-			roots = append(roots, v)
-		} else {
-			nonRoots = append(nonRoots, v)
-		}
-	}
 
 	var result [][]string
 
@@ -273,47 +241,34 @@ func (sc *spannerDatabaseClient) CheckVariableGroupExistence(ctx context.Context
 	}
 	importNames = util.MergeDedupe(importNames, []string{})
 
-	// Handle roots: assume all found sources exist for roots.
-	for _, root := range roots {
-		for _, importName := range importNames {
-			if ents, ok := importToEntities[importName]; ok {
-				for _, entity := range ents {
-					result = append(result, []string{root, entity})
-				}
-			}
-		}
+	// Query existence for all variable groups
+	existenceQueryStmt := spanner.Statement{
+		SQL: `SELECT DISTINCT e.object_id AS variable, o.import_name
+			FROM Edge e
+			JOIN Observation o ON o.variable_measured = e.subject_id
+			WHERE e.predicate = 'linkedMemberOf'
+			  AND e.object_id IN UNNEST(@variables)
+			  AND o.import_name IN UNNEST(@import_names)`,
+		Params: map[string]interface{}{
+			"variables":    variableGroups,
+			"import_names": importNames,
+		},
 	}
 
-	// Handle non-roots
-	if len(nonRoots) > 0 {
-		existenceQueryStmt := spanner.Statement{
-			SQL: `SELECT DISTINCT e.object_id AS variable, o.import_name
-				FROM Edge e
-				JOIN Observation o ON o.variable_measured = e.subject_id
-				WHERE e.predicate = 'linkedMemberOf'
-				  AND e.object_id IN UNNEST(@variables)
-				  AND o.import_name IN UNNEST(@import_names)`,
-			Params: map[string]interface{}{
-				"variables":    nonRoots,
-				"import_names": importNames,
-			},
-		}
+	existenceQueryRows, err := queryDynamic(ctx, sc, existenceQueryStmt)
+	if err != nil {
+		return nil, err
+	}
 
-		existenceQueryRows, err := queryDynamic(ctx, sc, existenceQueryStmt)
-		if err != nil {
-			return nil, err
+	for _, row := range existenceQueryRows {
+		if len(row) != 2 {
+			continue
 		}
-
-		for _, row := range existenceQueryRows {
-			if len(row) != 2 {
-				continue
-			}
-			variable := row[0]
-			importName := row[1]
-			if ents, ok := importToEntities[importName]; ok {
-				for _, entity := range ents {
-					result = append(result, []string{variable, entity})
-				}
+		variable := row[0]
+		importName := row[1]
+		if ents, ok := importToEntities[importName]; ok {
+			for _, entity := range ents {
+				result = append(result, []string{variable, entity})
 			}
 		}
 	}
