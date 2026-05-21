@@ -180,78 +180,21 @@ func (sc *spannerDatabaseClient) CheckVariableGroupExistence(ctx context.Context
 		return [][]string{}, nil
 	}
 
-
-
 	var result [][]string
 
-	// Step 2: Get import_names for the entities
-	entitiesByPredicate := map[string][]string{}
-	for _, e := range entities {
-		p := getImportFilterPredicate(e)
-		entitiesByPredicate[p] = append(entitiesByPredicate[p], e)
-	}
-
-	var keys []string
-	for k := range entitiesByPredicate {
-		keys = append(keys, k)
-	}
-	sort.Strings(keys)
-
-	var filters []string
-	params := map[string]interface{}{}
-	for _, p := range keys {
-		ents := entitiesByPredicate[p]
-		filters = append(filters, fmt.Sprintf(`(predicate = '%s' AND object_id IN UNNEST(@%s))`, p, p))
-		params[p] = ents
-	}
-
-	sourceEdgesStmt := spanner.Statement{
-		SQL: `SELECT DISTINCT subject_id, object_id
-			FROM Edge
-			WHERE ` + strings.Join(filters, " OR "),
-		Params: params,
-	}
-
-	sourceEdgeRows, err := queryDynamic(ctx, sc, sourceEdgesStmt)
-	if err != nil {
-		return nil, err
-	}
-
-	importToEntities := map[string][]string{}
-	var importNames []string
-	for _, row := range sourceEdgeRows {
-		if len(row) != 2 {
-			continue
-		}
-		subjectID := row[0]
-		entity := row[1]
-
-		importName := subjectID
-		// Extract import name by dropping the 8-char prefix, mirroring SUBSTR(..., 9) in SQL queries.
-		if len(subjectID) > 8 {
-			importName = subjectID[8:]
-		}
-
-		importToEntities[importName] = append(importToEntities[importName], entity)
-		importNames = append(importNames, importName)
-	}
-
-	if len(importNames) == 0 {
-		return [][]string{}, nil
-	}
-	importNames = util.MergeDedupe(importNames, []string{})
-
-	// Query existence for all variable groups
 	existenceQueryStmt := spanner.Statement{
-		SQL: `SELECT DISTINCT e.object_id AS variable, o.import_name
-			FROM Edge e
-			JOIN Observation o ON o.variable_measured = e.subject_id
-			WHERE e.predicate = 'linkedMemberOf'
-			  AND e.object_id IN UNNEST(@variables)
-			  AND o.import_name IN UNNEST(@import_names)`,
+		SQL: `SELECT DISTINCT e3.object_id AS variable, e2.object_id AS source
+			FROM Cache c
+			JOIN Edge e2 ON c.provenance = e2.subject_id
+			JOIN Edge@{FORCE_INDEX=InEdge} e3 ON c.key = e3.subject_id
+			WHERE c.type = 'ProvenanceSummary'
+			  AND e2.predicate IN ('source', 'isPartOf')
+			  AND e3.predicate IN ('linkedMemberOf', 'linkedMember')
+			  AND e3.object_id IN UNNEST(@variables)
+			  AND e2.object_id IN UNNEST(@entities)`,
 		Params: map[string]interface{}{
-			"variables":    variableGroups,
-			"import_names": importNames,
+			"variables": variableGroups,
+			"entities":  entities,
 		},
 	}
 
@@ -265,12 +208,8 @@ func (sc *spannerDatabaseClient) CheckVariableGroupExistence(ctx context.Context
 			continue
 		}
 		variable := row[0]
-		importName := row[1]
-		if ents, ok := importToEntities[importName]; ok {
-			for _, entity := range ents {
-				result = append(result, []string{variable, entity})
-			}
-		}
+		source := row[1]
+		result = append(result, []string{variable, source})
 	}
 
 	return result, nil
