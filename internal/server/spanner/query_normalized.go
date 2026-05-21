@@ -100,9 +100,9 @@ func (nc *normalizedClient) CheckVariableExistence(ctx context.Context, variable
 	return queryDynamic(ctx, nc.sc, *stmt)
 }
 
-// CheckVariableGroupExistence checks which variables exist for which entities using the normalized schema.
-func (nc *normalizedClient) CheckVariableGroupExistence(ctx context.Context, variableGroups []string, entities []string) ([][]string, error) {
-	return nil, status.Error(codes.Unimplemented, "CheckVariableGroupExistence is not implemented for normalized schema")
+// CheckVariableSourceExistence checks which variables exist for which entities using the normalized schema.
+func (nc *normalizedClient) CheckVariableSourceExistence(ctx context.Context, variables []string, sources []string, predicate string) ([][]string, error) {
+	return nil, status.Error(codes.Unimplemented, "CheckVariableSourceExistence is not implemented for normalized schema")
 }
 
 // GetObservationsContainedInPlace retrieves observations for entities contained in a place

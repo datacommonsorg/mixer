@@ -190,38 +190,92 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 			}
 			return obsToExistenceResponse(req, obs), nil
 		}
+		// Split entities into sources and places.
+		var sources []string
+		var places []string
+		for _, e := range entities {
+			if strings.HasPrefix(e, prefixSource) || strings.HasPrefix(e, prefixDataset) {
+				sources = append(sources, e)
+			} else {
+				places = append(places, e)
+			}
+		}
 
+		var allRows [][]string
+		var err error
+
+		// Split variables into SVs and groups (SVGs and Topics).
 		nodeToTypes, err := sds.client.FilterNodesByTypes(ctx, variables, []string{"StatVarGroup", "Topic"})
 		if err != nil {
 			return nil, fmt.Errorf("error filtering nodes by types: %w", err)
 		}
 
-		// We now split the variables we are searching for into two categories: svs and svgs/topics (groups)
-		// as these need to be handled differently.
 		var statVars []string
-		var groups []string
+		var svgs []string
+		var topics []string
 		for _, v := range variables {
-			if types, ok := nodeToTypes[v]; ok && len(types) > 0 {
-				groups = append(groups, v)
+			if matchedTypes, ok := nodeToTypes[v]; ok && len(matchedTypes) > 0 {
+				isGroup := false
+				for _, t := range matchedTypes {
+					if t == "StatVarGroup" {
+						svgs = append(svgs, v)
+						isGroup = true
+						break
+					} else if t == "Topic" {
+						topics = append(topics, v)
+						isGroup = true
+						break
+					}
+				}
+				if !isGroup {
+					statVars = append(statVars, v)
+				}
 			} else {
 				statVars = append(statVars, v)
 			}
 		}
 
-		var allRows [][]string
-		if len(statVars) > 0 {
-			rows, err := sds.client.CheckVariableExistence(ctx, statVars, entities)
+		// Execute combinations:
+
+		// 1. StatVars + Places
+		if len(statVars) > 0 && len(places) > 0 {
+			rows, err := sds.client.CheckVariableExistence(ctx, statVars, places)
 			if err != nil {
 				return nil, fmt.Errorf("error checking variable existence: %w", err)
 			}
 			allRows = append(allRows, rows...)
 		}
-		if len(groups) > 0 {
-			rows, err := sds.client.CheckVariableGroupExistence(ctx, groups, entities)
+
+		// 2. StatVars + Sources
+		if len(statVars) > 0 && len(sources) > 0 {
+			rows, err := sds.client.CheckVariableSourceExistence(ctx, statVars, sources, "")
 			if err != nil {
-				return nil, fmt.Errorf("error checking variable group existence: %w", err)
+				return nil, fmt.Errorf("error checking SV source existence: %w", err)
 			}
 			allRows = append(allRows, rows...)
+		}
+
+		// 3. SVGs + Sources
+		if len(svgs) > 0 && len(sources) > 0 {
+			rows, err := sds.client.CheckVariableSourceExistence(ctx, svgs, sources, "linkedMemberOf")
+			if err != nil {
+				return nil, fmt.Errorf("error checking SVG source existence: %w", err)
+			}
+			allRows = append(allRows, rows...)
+		}
+
+		// 4. Topics + Sources
+		if len(topics) > 0 && len(sources) > 0 {
+			rows, err := sds.client.CheckVariableSourceExistence(ctx, topics, sources, "linkedMember")
+			if err != nil {
+				return nil, fmt.Errorf("error checking Topic source existence: %w", err)
+			}
+			allRows = append(allRows, rows...)
+		}
+
+		// 5. Groups + Places (Currently Unsupported)
+		if (len(svgs) > 0 || len(topics) > 0) && len(places) > 0 {
+			slog.Warn("Place existence checks for StatVarGroup/Topic are not supported in Spanner yet, skipping.", "svgs", svgs, "topics", topics)
 		}
 
 		obs := make([]*Observation, 0, len(allRows))

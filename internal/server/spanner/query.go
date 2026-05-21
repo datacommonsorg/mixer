@@ -173,34 +173,41 @@ func (sc *spannerDatabaseClient) CheckVariableExistence(ctx context.Context, var
 	return queryDynamic(ctx, sc, *stmt)
 }
 
-// CheckVariableGroupExistence checks for the existence of observations for the given variable groups/topics and entities.
-// Returns a slice of rows, where each row contains [variable, entity] that has at least one observation.
-func (sc *spannerDatabaseClient) CheckVariableGroupExistence(ctx context.Context, variableGroups []string, entities []string) ([][]string, error) {
-	if len(variableGroups) == 0 || len(entities) == 0 {
+// CheckVariableSourceExistence checks for the existence of observations for the given variables/groups and sources.
+// Returns a slice of rows, where each row contains [variable, source] that has at least one observation.
+func (sc *spannerDatabaseClient) CheckVariableSourceExistence(ctx context.Context, variables []string, sources []string, predicate string) ([][]string, error) {
+	if len(variables) == 0 || len(sources) == 0 {
 		return [][]string{}, nil
 	}
 
 	var result [][]string
 
-	existenceQueryStmt := spanner.Statement{
-		SQL: `SELECT DISTINCT e3.object_id AS variable, e2.object_id AS source
-			FROM Cache c
-			JOIN Edge e2 ON c.provenance = e2.subject_id
-			JOIN Edge@{FORCE_INDEX=InEdge} e3 ON c.key = e3.subject_id
-			WHERE c.type = 'ProvenanceSummary'
-			  AND e2.predicate IN ('source', 'isPartOf')
-			  AND e3.predicate IN ('linkedMemberOf', 'linkedMember')
-			  AND e3.object_id IN UNNEST(@variables)
-			  AND e2.object_id IN UNNEST(@entities)`,
-		Params: map[string]interface{}{
-			"variables": variableGroups,
-			"entities":  entities,
-		},
+	var existenceQueryStmt spanner.Statement
+	if predicate == "" {
+		existenceQueryStmt = spanner.Statement{
+			SQL: statements.checkSVSourceExistence,
+			Params: map[string]interface{}{
+				"variables": variables,
+			},
+		}
+	} else {
+		existenceQueryStmt = spanner.Statement{
+			SQL: statements.checkGroupSourceExistence,
+			Params: map[string]interface{}{
+				"variables": variables,
+				"predicate": predicate,
+			},
+		}
 	}
 
 	existenceQueryRows, err := queryDynamic(ctx, sc, existenceQueryStmt)
 	if err != nil {
 		return nil, err
+	}
+
+	sourceFilter := map[string]struct{}{}
+	for _, s := range sources {
+		sourceFilter[s] = struct{}{}
 	}
 
 	for _, row := range existenceQueryRows {
@@ -209,7 +216,9 @@ func (sc *spannerDatabaseClient) CheckVariableGroupExistence(ctx context.Context
 		}
 		variable := row[0]
 		source := row[1]
-		result = append(result, []string{variable, source})
+		if _, ok := sourceFilter[source]; ok {
+			result = append(result, []string{variable, source})
+		}
 	}
 
 	return result, nil

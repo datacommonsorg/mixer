@@ -16,7 +16,6 @@ package golden
 
 import (
 	"context"
-	"errors"
 	"path"
 	"runtime"
 	"slices"
@@ -58,7 +57,7 @@ func (m *mockSpannerClient) GetObservations(ctx context.Context, variables []str
 func (m *mockSpannerClient) CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
 	return m.checkVariableExistenceRes, nil
 }
-func (m *mockSpannerClient) CheckVariableGroupExistence(ctx context.Context, variableGroups []string, entities []string) ([][]string, error) {
+func (m *mockSpannerClient) CheckVariableSourceExistence(ctx context.Context, variables []string, sources []string, predicate string) ([][]string, error) {
 	if m.checkVariableGroupExistenceErr != nil {
 		return nil, m.checkVariableGroupExistenceErr
 	}
@@ -508,7 +507,7 @@ func TestSpannerObservation(t *testing.T) {
 			wantErr: true,
 		},
 		{
-			desc: "CheckVariableGroupExistence error propagation",
+			desc: "CheckVariableGroupExistence returns empty for places",
 			req: &pbv2.ObservationRequest{
 				Variable: &pbv2.DcidOrExpression{
 					Dcids: []string{"dc/g/Root"},
@@ -521,8 +520,8 @@ func TestSpannerObservation(t *testing.T) {
 			mockTypes: map[string][]string{
 				"StatVarGroup": {"dc/g/Root"},
 			},
-			mockGroupErr: errors.New("mock database error"),
-			wantErr:      true,
+			goldenFile: "observation_existence_empty.json",
+			wantErr:    false,
 		},
 	} {
 		client := &mockSpannerClient{
