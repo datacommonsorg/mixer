@@ -58,7 +58,7 @@ func (m *mockSpannerClient) GetObservations(ctx context.Context, variables []str
 func (m *mockSpannerClient) CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
 	return m.checkVariableExistenceRes, nil
 }
-func (m *mockSpannerClient) CheckVariableGroupExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
+func (m *mockSpannerClient) CheckVariableGroupExistence(ctx context.Context, variableGroups []string, entities []string) ([][]string, error) {
 	if m.checkVariableGroupExistenceErr != nil {
 		return nil, m.checkVariableGroupExistenceErr
 	}

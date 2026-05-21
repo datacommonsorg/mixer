@@ -101,7 +101,7 @@ func (nc *normalizedClient) CheckVariableExistence(ctx context.Context, variable
 }
 
 // CheckVariableGroupExistence checks which variables exist for which entities using the normalized schema.
-func (nc *normalizedClient) CheckVariableGroupExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
+func (nc *normalizedClient) CheckVariableGroupExistence(ctx context.Context, variableGroups []string, entities []string) ([][]string, error) {
 	return nil, status.Error(codes.Unimplemented, "CheckVariableGroupExistence is not implemented for normalized schema")
 }
 

@@ -55,15 +55,15 @@ func (s *schemaSelectorClient) CheckVariableExistence(ctx context.Context, varia
 }
 
 // CheckVariableGroupExistence overrides the embedded client's CheckVariableGroupExistence to dispatch based on schema selection.
-func (s *schemaSelectorClient) CheckVariableGroupExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
+func (s *schemaSelectorClient) CheckVariableGroupExistence(ctx context.Context, variableGroups []string, entities []string) ([][]string, error) {
 	if useNormalizedSchema(ctx) {
 		logNormalizedInvocation("CheckVariableGroupExistence",
-			"num_variables", len(variables),
+			"num_variables", len(variableGroups),
 			"num_entities", len(entities),
 		)
-		return s.normalized.CheckVariableGroupExistence(ctx, variables, entities)
+		return s.normalized.CheckVariableGroupExistence(ctx, variableGroups, entities)
 	}
-	return s.SpannerClient.CheckVariableGroupExistence(ctx, variables, entities)
+	return s.SpannerClient.CheckVariableGroupExistence(ctx, variableGroups, entities)
 }
 
 // GetObservationsContainedInPlace overrides the embedded client's GetObservationsContainedInPlace to dispatch based on schema selection.

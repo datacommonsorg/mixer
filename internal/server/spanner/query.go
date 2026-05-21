@@ -175,12 +175,12 @@ func (sc *spannerDatabaseClient) CheckVariableExistence(ctx context.Context, var
 
 // CheckVariableGroupExistence checks for the existence of observations for the given variable groups/topics and entities.
 // Returns a slice of rows, where each row contains [variable, entity] that has at least one observation.
-func (sc *spannerDatabaseClient) CheckVariableGroupExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
-	if len(variables) == 0 || len(entities) == 0 {
+func (sc *spannerDatabaseClient) CheckVariableGroupExistence(ctx context.Context, variableGroups []string, entities []string) ([][]string, error) {
+	if len(variableGroups) == 0 || len(entities) == 0 {
 		return [][]string{}, nil
 	}
 
-	// Step 1: Identify which variables are root nodes (have no parents).
+	// Step 1: Identify which variable groups are root nodes (have no parents).
 	// We are doing this because a query on root involve a massive join involving
 	// a large number of variables (causing a slow query and risk of timeout).
 	stmtRoots := spanner.Statement{
@@ -189,7 +189,7 @@ func (sc *spannerDatabaseClient) CheckVariableGroupExistence(ctx context.Context
 			WHERE predicate = 'specializationOf'
 			  AND subject_id IN UNNEST(@variables)`,
 		Params: map[string]interface{}{
-			"variables": variables,
+			"variables": variableGroups,
 		},
 	}
 	rowsRoots, err := queryDynamic(ctx, sc, stmtRoots)
@@ -206,7 +206,7 @@ func (sc *spannerDatabaseClient) CheckVariableGroupExistence(ctx context.Context
 
 	var roots []string
 	var nonRoots []string
-	for _, v := range variables {
+	for _, v := range variableGroups {
 		if !hasParent[v] {
 			roots = append(roots, v)
 		} else {
