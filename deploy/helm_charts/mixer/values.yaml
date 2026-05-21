@@ -366,6 +366,9 @@ esp:
     repository: gcr.io/endpoints-release/endpoints-runtime
     pullPolicy: IfNotPresent
     tag: "2"
+  resources:
+    memoryRequest: "300M"
+    memoryLimit: "300M"
 
 embeddingsSidecar:
   image:
@@ -465,6 +468,9 @@ serviceGroups:
       memoryLimit: "8G"
       cpuRequest: "1"
       cpuLimit: "1.5"
+    espResources:
+      memoryRequest: "500M"
+      memoryLimit: "500M"
   node:
     urlPaths:
       - "/node/*"
