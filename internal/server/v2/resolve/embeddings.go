@@ -226,7 +226,10 @@ func buildEntityCandidates(
 		if dominantType == TopicDominantType {
 			if topicExpander != nil {
 				candidate.Name = topicExpander.GetTopicDisplayName(ctx, statVarDcid)
-				children, _ := topicExpander.ExpandTopic(ctx, statVarDcid, expandTopics)
+				children, err := topicExpander.ExpandTopic(ctx, statVarDcid, expandTopics)
+				if err != nil {
+					slog.Error("Failed to expand topic during embedding resolution", "topic", statVarDcid, "error", err)
+				}
 				candidate.Children = children
 			}
 		} else {

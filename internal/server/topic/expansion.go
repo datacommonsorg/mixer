@@ -18,6 +18,8 @@ package topic
 
 import (
 	"context"
+	"fmt"
+	"log/slog"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
@@ -64,7 +66,10 @@ func (m *TopicCacheManager) ExpandRoots(ctx context.Context, expandTopics bool) 
 			name = node.GetName()
 		}
 		cand := newTopicCandidate(rootDcid, name)
-		if children, err := m.ExpandTopic(ctx, rootDcid, expandTopics); err == nil {
+		children, err := m.ExpandTopic(ctx, rootDcid, expandTopics)
+		if err != nil {
+			slog.Error("Failed to expand root topic during resolve", "root", rootDcid, "error", err)
+		} else {
 			cand.Children = children
 		}
 		candidates = append(candidates, cand)
@@ -82,7 +87,10 @@ func (m *TopicCacheManager) ExpandTopic(ctx context.Context, topicDcid string, e
 	allSvDcids := collectTopicSVs(h, topicDcid, expandTopics)
 
 	// Batch load metadata for all SVs required in this view
-	infos, _ := m.GetStatVarInfos(ctx, allSvDcids)
+	infos, err := m.GetStatVarInfos(ctx, allSvDcids)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get statistical variable infos: %w", err)
+	}
 
 	var candidates []*pbv2.ResolveResponse_Entity_Candidate
 	if expandTopics {
@@ -112,27 +120,28 @@ func (m *TopicCacheManager) ExpandTopic(ctx context.Context, topicDcid string, e
 
 // collectTopicSVs initializes seenTopics cycle tracking map and initiates traversal.
 func collectTopicSVs(h *pb.TopicHierarchy, topicDcid string, expandTopics bool) []string {
-	return collectTopicSVsInternal(h, topicDcid, expandTopics, make(map[string]struct{}))
+	var res []string
+	collectTopicSVsInternal(h, topicDcid, expandTopics, make(map[string]struct{}), &res)
+	return res
 }
 
-// collectTopicSVsInternal performs traversal of a topic's hierarchy under seenTopics protection.
-func collectTopicSVsInternal(h *pb.TopicHierarchy, topicDcid string, expandTopics bool, seenTopics map[string]struct{}) []string {
+// collectTopicSVsInternal performs traversal of a topic's hierarchy under seenTopics protection,
+// collecting all resolved SV DCIDs inside the provided result slice in-place to prevent intermediate allocations.
+func collectTopicSVsInternal(h *pb.TopicHierarchy, topicDcid string, expandTopics bool, seenTopics map[string]struct{}, res *[]string) {
 	if _, seen := seenTopics[topicDcid]; seen {
-		return nil
+		return
 	}
 	seenTopics[topicDcid] = struct{}{}
 
-	var svDcids []string
 	if node, ok := h.GetTopics()[topicDcid]; ok && node != nil {
 		for _, childDcid := range node.GetRelevantVariables() {
 			if isTopicDcid(childDcid) {
 				if expandTopics {
-					svDcids = append(svDcids, collectTopicSVsInternal(h, childDcid, expandTopics, seenTopics)...)
+					collectTopicSVsInternal(h, childDcid, expandTopics, seenTopics, res)
 				}
 			} else {
-				svDcids = append(svDcids, childDcid)
+				*res = append(*res, childDcid)
 			}
 		}
 	}
-	return svDcids
 }

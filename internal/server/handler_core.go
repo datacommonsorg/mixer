@@ -44,12 +44,13 @@ func (s *Server) V2ResolveCore(
 	adapter := s.newTopicExpander()
 
 	resolver := in.Request.GetResolver()
-	if resolver == resolve.ResolveResolverIndicator {
+	switch resolver {
+	case resolve.ResolveResolverIndicator:
 		if !s.flags.EnableEmbeddingsResolver {
 			return nil, status.Errorf(codes.Unimplemented, "Resolving indicators is not enabled for this environment.")
 		}
 		return resolve.ResolveUsingEmbeddings(ctx, s.httpClient, s.embeddingsServerURL, s.resolveEmbeddingsIndexes, in.Request.GetNodes(), in.TypeOfValues, adapter, in.Request.GetExpandTopics())
-	} else if resolver == resolve.ResolveResolverTopic {
+	case resolve.ResolveResolverTopic:
 		return resolve.ResolveTopics(ctx, adapter, in.Request.GetNodes(), in.Request.GetExpandTopics())
 	}
 
