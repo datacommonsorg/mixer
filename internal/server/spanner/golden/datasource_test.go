@@ -27,6 +27,7 @@ import (
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
+	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/store/files"
@@ -37,12 +38,14 @@ import (
 )
 
 type mockSpannerClient struct {
-	resolveByIDRes                 map[string][]string
-	getNodeEdgesRes                map[string][]*spanner.Edge
-	checkVariableExistenceRes      [][]string
-	checkVariableGroupExistenceRes [][]string
-	checkVariableGroupExistenceErr error
-	filterNodesByTypeRes           map[string][]string
+	resolveByIDRes                     map[string][]string
+	getNodeEdgesRes                    map[string][]*spanner.Edge
+	checkVariableExistenceRes          [][]string
+	checkVariableSourceExistenceRes     [][]string
+	checkVariableSourceExistenceErr     error
+	filterNodesByTypeRes               map[string][]string
+	getObservationsRes                 []*spanner.Observation
+	getObservationsContainedInPlaceRes []*spanner.Observation
 }
 
 func (m *mockSpannerClient) GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*spanner.Property, error) {
@@ -52,19 +55,19 @@ func (m *mockSpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, 
 	return m.getNodeEdgesRes, nil
 }
 func (m *mockSpannerClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*spanner.Observation, error) {
-	return nil, nil
+	return m.getObservationsRes, nil
 }
 func (m *mockSpannerClient) CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
 	return m.checkVariableExistenceRes, nil
 }
 func (m *mockSpannerClient) CheckVariableSourceExistence(ctx context.Context, variables []string, sources []string, predicate string) ([][]string, error) {
-	if m.checkVariableGroupExistenceErr != nil {
-		return nil, m.checkVariableGroupExistenceErr
+	if m.checkVariableSourceExistenceErr != nil {
+		return nil, m.checkVariableSourceExistenceErr
 	}
-	return m.checkVariableGroupExistenceRes, nil
+	return m.checkVariableSourceExistenceRes, nil
 }
 func (m *mockSpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*spanner.Observation, error) {
-	return nil, nil
+	return m.getObservationsContainedInPlaceRes, nil
 }
 func (m *mockSpannerClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
 	return nil, nil
@@ -526,8 +529,8 @@ func TestSpannerObservation(t *testing.T) {
 	} {
 		client := &mockSpannerClient{
 			checkVariableExistenceRes:      c.mockRes,
-			checkVariableGroupExistenceRes: c.mockGroupRes,
-			checkVariableGroupExistenceErr: c.mockGroupErr,
+			checkVariableSourceExistenceRes: c.mockGroupRes,
+			checkVariableSourceExistenceErr: c.mockGroupErr,
 			filterNodesByTypeRes:           c.mockTypes,
 		}
 		ds := spanner.NewSpannerDataSource(client, nil, nil, false)
@@ -633,5 +636,275 @@ func TestBulkVariableGroupInfo_Filtering(t *testing.T) {
 	}
 	if !found {
 		t.Errorf("Expected ExcludedNode in response, but it was missing")
+	}
+}
+
+// TODO: Move unit tests to a separate test file since this file is meant for golden tests.
+func TestSpannerObservation_ExpressionExpansion(t *testing.T) {
+	ctx := context.Background()
+
+	// Mock Spanner client
+	client := &mockSpannerClient{
+		// Mock GetNodeEdgesByID to return local child places
+		getNodeEdgesRes: map[string][]*spanner.Edge{
+			"geoId/06": {
+				{Value: "geoId/06002", Predicate: "linkedContainedInPlace"},
+			},
+		},
+		// Mock GetObservations to return observations for merged list
+		getObservationsRes: []*spanner.Observation{
+			{
+				VariableMeasured: "Count_Person",
+				ObservationAbout: "geoId/06001", // Remote place
+				Observations: []*spanner.DateValue{
+					{Date: "2020", Value: "12345"},
+				},
+			},
+			{
+				VariableMeasured: "Count_Person",
+				ObservationAbout: "geoId/06002", // Local place
+				Observations: []*spanner.DateValue{
+					{Date: "2020", Value: "67890"},
+				},
+			},
+		},
+	}
+
+	ds := spanner.NewSpannerDataSource(client, nil, nil, false)
+
+	// Test Case 1: Expression with Remote Data in Context
+	req := &pbv2.ObservationRequest{
+		Variable: &pbv2.DcidOrExpression{Dcids: []string{"Count_Person"}},
+		Entity:   &pbv2.DcidOrExpression{Expression: "geoId/06<-containedInPlace+{typeOf:County}"},
+		Select:   []string{"variable", "entity", "value"},
+	}
+
+	// Add remote DCIDs to context
+	remoteDCIDs := []string{"geoId/06001"}
+	ctxWithRemote := context.WithValue(ctx, dispatcher.RelationExpressionExpandedEntities, remoteDCIDs)
+
+	resp, err := ds.Observation(ctxWithRemote, req)
+	if err != nil {
+		t.Fatalf("Observation failed: %v", err)
+	}
+
+	if resp == nil {
+		t.Fatal("Expected non-nil response")
+		return
+	}
+
+	// Verify that we have data for both geoId/06001 and geoId/06002
+	byVariable := resp.ByVariable
+	if byVariable == nil {
+		t.Fatal("Expected ByVariable to be populated")
+	}
+	countPerson, ok := byVariable["Count_Person"]
+	if !ok {
+		t.Fatal("Expected Count_Person in response")
+	}
+	byEntity := countPerson.ByEntity
+	if byEntity == nil {
+		t.Fatal("Expected ByEntity to be populated")
+	}
+
+	if _, ok := byEntity["geoId/06001"]; !ok {
+		t.Errorf("Expected data for geoId/06001 (remote place)")
+	}
+	if _, ok := byEntity["geoId/06002"]; !ok {
+		t.Errorf("Expected data for geoId/06002 (local place)")
+	}
+}
+
+func TestSpannerObservation_ExpressionExpansion_Fallback(t *testing.T) {
+	ctx := context.Background()
+
+	// Mock Spanner client
+	client := &mockSpannerClient{
+		// Mock GetObservationsContainedInPlace to return observations
+		getObservationsContainedInPlaceRes: []*spanner.Observation{
+			{
+				VariableMeasured: "Count_Person",
+				ObservationAbout: "geoId/06002", // Local place
+				Observations: []*spanner.DateValue{
+					{Date: "2020", Value: "67890"},
+				},
+			},
+		},
+	}
+
+	ds := spanner.NewSpannerDataSource(client, nil, nil, false)
+
+	req := &pbv2.ObservationRequest{
+		Variable: &pbv2.DcidOrExpression{Dcids: []string{"Count_Person"}},
+		Entity:   &pbv2.DcidOrExpression{Expression: "geoId/06<-containedInPlace+{typeOf:County}"},
+		Select:   []string{"variable", "entity", "value"},
+	}
+
+	resp, err := ds.Observation(ctx, req)
+	if err != nil {
+		t.Fatalf("Observation failed: %v", err)
+	}
+
+	if resp == nil {
+		t.Fatal("Expected non-nil response")
+		return
+	}
+
+	byVariable := resp.ByVariable
+	countPerson := byVariable["Count_Person"]
+	byEntity := countPerson.ByEntity
+
+	if _, ok := byEntity["geoId/06002"]; !ok {
+		t.Errorf("Expected data for geoId/06002 (local place)")
+	}
+}
+
+func TestSpannerObservation_NoExpression(t *testing.T) {
+	ctx := context.Background()
+
+	// Mock Spanner client
+	client := &mockSpannerClient{
+		// Mock GetObservations to return observations
+		getObservationsRes: []*spanner.Observation{
+			{
+				VariableMeasured: "Count_Person",
+				ObservationAbout: "geoId/06",
+				Observations: []*spanner.DateValue{
+					{Date: "2020", Value: "12345"},
+				},
+			},
+		},
+	}
+
+	ds := spanner.NewSpannerDataSource(client, nil, nil, false)
+
+	req := &pbv2.ObservationRequest{
+		Variable: &pbv2.DcidOrExpression{Dcids: []string{"Count_Person"}},
+		Entity:   &pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}},
+		Select:   []string{"variable", "entity", "value"},
+	}
+
+	resp, err := ds.Observation(ctx, req)
+	if err != nil {
+		t.Fatalf("Observation failed: %v", err)
+	}
+
+	if resp == nil {
+		t.Fatal("Expected non-nil response")
+		return
+	}
+
+	byVariable := resp.ByVariable
+	countPerson := byVariable["Count_Person"]
+	byEntity := countPerson.ByEntity
+
+	if _, ok := byEntity["geoId/06"]; !ok {
+		t.Errorf("Expected data for geoId/06")
+	}
+}
+
+func TestSpannerFilterStatVarsByEntity(t *testing.T) {
+	t.Parallel()
+	ctx := context.Background()
+	_, filename, _, _ := runtime.Caller(0)
+	goldenDir := path.Join(path.Dir(filename), "datasource")
+
+	for _, c := range []struct {
+		desc       string
+		req        *pb.FilterStatVarsByEntityRequest
+		mockExist  [][]string
+		goldenFile string
+	}{
+		{
+			desc: "Happy path - Filter SVs",
+			req: &pb.FilterStatVarsByEntityRequest{
+				StatVars: []*pb.EntityInfo{
+					{Dcid: "Count_Person"},
+					{Dcid: "Median_Income_Person"},
+					{Dcid: "NonExistent"},
+				},
+				Entities: []string{"geoId/06"},
+			},
+			mockExist: [][]string{
+				{"Count_Person", "geoId/06"},
+				{"Median_Income_Person", "geoId/06"},
+			},
+			goldenFile: "filter_stat_vars_happy.json",
+		},
+		{
+			desc: "Empty entities list",
+			req: &pb.FilterStatVarsByEntityRequest{
+				StatVars: []*pb.EntityInfo{
+					{Dcid: "Count_Person"},
+				},
+				Entities: []string{},
+			},
+			mockExist:  [][]string{},
+			goldenFile: "filter_stat_vars_empty_entities.json",
+		},
+		{
+			desc: "Empty stat vars list",
+			req: &pb.FilterStatVarsByEntityRequest{
+				StatVars: []*pb.EntityInfo{},
+				Entities: []string{"geoId/06"},
+			},
+			mockExist:  [][]string{},
+			goldenFile: "filter_stat_vars_empty_statvars.json",
+		},
+		{
+			desc: "Zero matches from DB",
+			req: &pb.FilterStatVarsByEntityRequest{
+				StatVars: []*pb.EntityInfo{
+					{Dcid: "Count_Person"},
+				},
+				Entities: []string{"geoId/06"},
+			},
+			mockExist:  [][]string{},
+			goldenFile: "filter_stat_vars_no_matches.json",
+		},
+		{
+			desc: "Multiple entities",
+			req: &pb.FilterStatVarsByEntityRequest{
+				StatVars: []*pb.EntityInfo{
+					{Dcid: "Count_Person"},
+					{Dcid: "Median_Income_Person"},
+				},
+				Entities: []string{"geoId/06", "geoId/08"},
+			},
+			mockExist: [][]string{
+				{"Count_Person", "geoId/06"},
+				{"Median_Income_Person", "geoId/08"},
+			},
+			goldenFile: "filter_stat_vars_multi_entity.json",
+		},
+	} {
+		t.Run(c.desc, func(t *testing.T) {
+			client := &mockSpannerClient{
+				checkVariableExistenceRes: c.mockExist,
+			}
+			ds := spanner.NewSpannerDataSource(client, nil, nil, false)
+
+			got, err := ds.FilterStatVarsByEntity(ctx, c.req)
+			if err != nil {
+				t.Fatalf("FilterStatVarsByEntity error: %v", err)
+			}
+
+			if test.GenerateGolden {
+				test.UpdateProtoGolden(got, goldenDir, c.goldenFile)
+				return
+			}
+
+			var want pb.FilterStatVarsByEntityResponse
+			if err = test.ReadJSON(goldenDir, c.goldenFile, &want); err != nil {
+				t.Fatalf("ReadJSON error (%v): %v", c.goldenFile, err)
+			}
+
+			cmpOpts := cmp.Options{
+				protocmp.Transform(),
+			}
+			if diff := cmp.Diff(got, &want, cmpOpts); diff != "" {
+				t.Errorf("%v payload mismatch:\n%v", c.goldenFile, diff)
+			}
+		})
 	}
 }

@@ -140,3 +140,7 @@ func (sds *SQLDataSource) BulkVariableGroupInfo(ctx context.Context, req *pbv1.B
 func (sds *SQLDataSource) SdmxData(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
 	return &pb.SdmxDataResult{}, nil
 }
+
+func (sds *SQLDataSource) FilterStatVarsByEntity(ctx context.Context, req *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
+	return &pb.FilterStatVarsByEntityResponse{}, nil
+}

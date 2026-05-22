@@ -26,11 +26,13 @@ import (
 	"os"
 	"runtime"
 	"runtime/pprof"
+	"time"
 
 	"github.com/datacommonsorg/mixer/internal/featureflags"
 	logger "github.com/datacommonsorg/mixer/internal/log"
 	"github.com/datacommonsorg/mixer/internal/maps"
 	"github.com/datacommonsorg/mixer/internal/metrics"
+	"github.com/datacommonsorg/mixer/internal/nodefetcher"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
@@ -41,6 +43,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/redis"
 	"github.com/datacommonsorg/mixer/internal/server/remote"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
+	"github.com/datacommonsorg/mixer/internal/server/topic"
 	"github.com/datacommonsorg/mixer/internal/server/v3/observation"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -54,6 +57,13 @@ import (
 	"google.golang.org/grpc/health/grpc_health_v1"
 
 	cbt "cloud.google.com/go/bigtable"
+)
+
+const (
+	// Redis cache entries have a TTL of 1 day.
+	// Setting refresh interval to 1 hour minimizes the staleness window when Redis TTL expires
+	// without incurring excessive Redis polling overhead.
+	topicCacheRefreshInterval = 1 * time.Hour
 )
 
 var (
@@ -384,10 +394,11 @@ func main() {
 	}
 
 	// Initialize SpannerDataSource now that dependencies are ready.
+	var spannerDS datasource.DataSource
 	if spannerClient != nil {
-		var ds datasource.DataSource = spanner.NewSpannerDataSource(spannerClient, store.RecogPlaceStore, mapsClient, flags.EnableSpannerSearchEmbeddings)
+		spannerDS = spanner.NewSpannerDataSource(spannerClient, store.RecogPlaceStore, mapsClient, flags.EnableSpannerSearchEmbeddings)
 		// TODO: Order sources by priority once other implementations are added.
-		sources = append(sources, ds)
+		sources = append(sources, spannerDS)
 	}
 
 	// Add remote data source if it was created.
@@ -397,6 +408,22 @@ func main() {
 
 	// DataSources
 	dataSources := datasources.NewDataSources(sources, remoteDataSource)
+	slog.Info("DataSources initialized", "sources", dataSources.GetSources())
+
+	// Declare Redis client at higher scope for injection
+	var redisCacheClient redis.CacheClient
+	if *useRedis && *redisInfo != "" {
+		slog.Info("Setting up Redis cache client")
+		client, err := redis.NewCacheClient(*redisInfo)
+		if err != nil {
+			slog.Error("Failed to create Redis client", "error", err)
+			os.Exit(1)
+		}
+		//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
+		defer client.Close()
+
+		redisCacheClient = client
+	}
 
 	// Processors
 	processors := []*dispatcher.Processor{}
@@ -408,38 +435,59 @@ func main() {
 			slog.Error("Failed to create data source cache", "error", err)
 			os.Exit(1)
 		}
+		slog.Info("In-memory data source cache initialized successfully")
 
 		// Cache Processor
-		if *useRedis && *redisInfo != "" {
+		if redisCacheClient != nil {
 			slog.Info("Setting up Redis cache processor")
-			redisClient, err := redis.NewCacheClient(*redisInfo)
-			if err != nil {
-				slog.Error("Failed to create Redis client", "error", err)
-				os.Exit(1)
-			}
-			//nolint:errcheck // TODO: Fix pre-existing issue and remove comment.
-			defer redisClient.Close()
-
-			var redisProcessor dispatcher.Processor = redis.NewCacheProcessor(redisClient)
+			var redisProcessor dispatcher.Processor = redis.NewCacheProcessor(redisCacheClient)
 			processors = append(processors, &redisProcessor)
 		}
-		slog.Info("After Redis setup")
+
+		// Relation Expression Processor
+		if remoteDataSource != nil {
+			slog.Info("remoteDataSource is configured, setting up relation expression processor")
+			var relationExpressionProcessor dispatcher.Processor = dispatcher.NewRelationExpressionProcessor(remoteDataSource)
+			processors = append(processors, &relationExpressionProcessor)
+		}
 
 		// Calculation Processor
 		if flags.UseStatisticalCalculation {
+			slog.Info("Setting up calculation processor")
 			var calculationProcessor dispatcher.Processor = observation.NewCalculationProcessor(dataSources, dataSourceCache.SVFormula(ctx))
 			processors = append(processors, &calculationProcessor)
 
 		}
-		slog.Info("After calculation processor setup")
+	}
+
+	// Topic Cache Manager
+	var topicCacheManager *topic.TopicCacheManager
+	if flags.EnableEmbeddingsResolver {
+		slog.Info("Initializing topic cache manager")
+		topicCacheManager = topic.NewTopicCacheManager(redisCacheClient)
 	}
 
 	// Dispatcher
 	dispatcher := dispatcher.NewDispatcher(processors, dataSources)
+	slog.Info("Dispatcher initialized", "processorsCount", len(processors))
 
 	// Create server object
-	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs, *embeddingsServerURL, *resolveEmbeddingsIndexes, *useSpannerGraph)
+	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs, *embeddingsServerURL, *resolveEmbeddingsIndexes, *useSpannerGraph, topicCacheManager)
 	pbs.RegisterMixerServer(srv, mixerServer)
+
+	// Start background tasks for topic cache manager
+	if topicCacheManager != nil {
+		var nodeFetcher nodefetcher.NodeAllFetcher
+		if shouldUseSpannerGraph && spannerDS != nil {
+			slog.Info("Setting up Spanner NodeFetcher for topic cache")
+			nodeFetcher = datasource.NewNodeFetcher(spannerDS)
+		} else {
+			slog.Info("Setting up Store V2NodeCore NodeFetcher for topic cache")
+			nodeFetcher = nodefetcher.NewFuncNodeFetcher(mixerServer.V2NodeCore)
+		}
+		topicCacheManager.Start(ctx, nodeFetcher, topicCacheRefreshInterval)
+		defer topicCacheManager.Close()
+	}
 
 	// Subscribe to branch cache update
 	if *useBranchBigtable {

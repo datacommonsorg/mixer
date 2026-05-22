@@ -17,6 +17,7 @@ package remote
 
 import (
 	"fmt"
+	"log/slog"
 	"net/http"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
@@ -126,6 +127,16 @@ func (rc *RemoteClient) BulkVariableGroupInfo(req *pbv1.BulkVariableGroupInfoReq
 	// TODO: Update the endpoint to /v2/bulk/info/variable-group once it's supported by the remote mixer.
 	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v1/bulk/info/variable-group", req, resp)
 	if err != nil {
+		return nil, err
+	}
+	return resp, nil
+}
+
+func (rc *RemoteClient) FilterStatVarsByEntity(req *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
+	resp := &pb.FilterStatVarsByEntityResponse{}
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/variable/filter", req, resp)
+	if err != nil {
+		slog.Error("Failed to fetch remote variable filter", "error", err)
 		return nil, err
 	}
 	return resp, nil

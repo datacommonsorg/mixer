@@ -256,3 +256,9 @@ func GetV2EventCmpOpts() []cmp.Option {
 		protocmp.Transform(),
 	}
 }
+
+func GetV2FilterStatVarsByEntityCmpOpts() []cmp.Option {
+	return []cmp.Option{
+		protocmp.Transform(),
+	}
+}

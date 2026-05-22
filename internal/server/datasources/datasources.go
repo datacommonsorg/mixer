@@ -43,6 +43,11 @@ func NewDataSources(sources []datasource.DataSource, remoteDataSource datasource
 	return &DataSources{sources, remoteDataSource}
 }
 
+// GetRemoteDataSource returns the remote data source.
+func (ds *DataSources) GetRemoteDataSource() datasource.DataSource {
+	return ds.remoteDataSource
+}
+
 // GetSources returns the list of data source IDs.
 func (ds *DataSources) GetSources() []string {
 	sources := make([]string, 0, len(ds.sources))
@@ -205,6 +210,17 @@ func (ds *DataSources) SdmxData(ctx context.Context, in *pb.SdmxDataQuery) (*pb.
 				}
 			}
 			return res, nil
+		},
+	)
+}
+
+func (ds *DataSources) FilterStatVarsByEntity(ctx context.Context, in *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
+	return fetchAndMerge(ctx, ds.sources, in,
+		func(c context.Context, s datasource.DataSource, r *pb.FilterStatVarsByEntityRequest) (*pb.FilterStatVarsByEntityResponse, error) {
+			return s.FilterStatVarsByEntity(c, r)
+		},
+		func(all []*pb.FilterStatVarsByEntityResponse) (*pb.FilterStatVarsByEntityResponse, error) {
+			return merger.MergeMultiFilterStatVarsByEntity(all), nil
 		},
 	)
 }

@@ -86,6 +86,13 @@ func (s *Server) V3BulkVariableGroupInfo(ctx context.Context, in *pbv1.BulkVaria
 	return s.dispatcher.BulkVariableGroupInfo(ctx, in)
 }
 
+// V3FilterStatVarsByEntity implements API for mixer.V3FilterStatVarsByEntity.
+func (s *Server) V3FilterStatVarsByEntity(ctx context.Context, in *pb.FilterStatVarsByEntityRequest) (
+	*pb.FilterStatVarsByEntityResponse, error,
+) {
+	return s.dispatcher.FilterStatVarsByEntity(ctx, in)
+}
+
 // V3SdmxData handles SDMX Data requests.
 func (s *Server) V3SdmxData(ctx context.Context, in *pbv3.SdmxDataRequest) (
 	*pbv3.SdmxDataResponse, error,
