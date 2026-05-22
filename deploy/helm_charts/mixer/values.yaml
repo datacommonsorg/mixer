@@ -469,8 +469,8 @@ serviceGroups:
       cpuRequest: "300m"
       cpuLimit: "3"
     espResources:
-      memoryRequest: "500M"
-      memoryLimit: "500M"
+      memoryRequest: "512Mi"
+      memoryLimit: "2Gi"
   node:
     urlPaths:
       - "/node/*"
