@@ -238,6 +238,16 @@ func (m *TopicCacheManager) GetStatVarInfos(ctx context.Context, dcids []string)
 		result[dcid] = info
 	}
 
+	for _, dcid := range dcids {
+		if info, ok := result[dcid]; ok {
+			if info.Name == "" {
+				slog.Warn("Statistical Variable retrieved with empty name from KG", "dcid", dcid)
+			}
+		} else {
+			slog.Warn("Statistical Variable not found in KG metadata lookups", "dcid", dcid)
+		}
+	}
+
 	return result, nil
 }
 
