@@ -777,3 +777,19 @@ func GetMetadata(ctx context.Context) (surface string, toRemote bool) {
 	}
 	return surface, toRemote
 }
+
+// IsTopicDcid checks if the DCID belongs to a Topic.
+// It checks for the pattern "[prefix]/topic/", requiring /topic/ to be the segment of the id.
+// It does this to allow SVGs that have something other than "dc" at the start, such as "c/topic/Demographics"
+func IsTopicDcid(dcid string) bool {
+	idx := strings.Index(dcid, "/topic/")
+	return idx > 0 && !strings.Contains(dcid[:idx], "/")
+}
+
+// IsStatVarGroupDcid checks if the DCID belongs to a Stat Var Group.
+// It checks for the pattern "[prefix]/g/" (requiring /g/ to be the segment of the id.
+// It does this to allow SVGs that have something other than "dc" at the start, such as "c/g/Root"
+func IsStatVarGroupDcid(dcid string) bool {
+	idx := strings.Index(dcid, "/g/")
+	return idx > 0 && !strings.Contains(dcid[:idx], "/")
+}

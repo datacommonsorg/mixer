@@ -337,28 +337,11 @@ func splitEntities(entities []string) (sources []string, places []string) {
 
 // splitVariables splits a list of variables into SVs, SVGs, and Topics.
 func (sds *SpannerDataSource) splitVariables(ctx context.Context, variables []string) (statVars []string, svgs []string, topics []string, err error) {
-	nodeToTypes, err := sds.client.FilterNodesByTypes(ctx, variables, []string{"StatVarGroup", "Topic"})
-	if err != nil {
-		return nil, nil, nil, fmt.Errorf("error filtering nodes by types: %w", err)
-	}
-
 	for _, v := range variables {
-		if matchedTypes, ok := nodeToTypes[v]; ok && len(matchedTypes) > 0 {
-			isGroup := false
-			for _, t := range matchedTypes {
-				if t == "StatVarGroup" {
-					svgs = append(svgs, v)
-					isGroup = true
-					break
-				} else if t == "Topic" {
-					topics = append(topics, v)
-					isGroup = true
-					break
-				}
-			}
-			if !isGroup {
-				statVars = append(statVars, v)
-			}
+		if util.IsStatVarGroupDcid(v) {
+			svgs = append(svgs, v)
+		} else if util.IsTopicDcid(v) {
+			topics = append(topics, v)
 		} else {
 			statVars = append(statVars, v)
 		}
