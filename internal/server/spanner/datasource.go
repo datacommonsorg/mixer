@@ -261,6 +261,7 @@ func (sds *SpannerDataSource) handleExistenceRequest(
 
 	var allRows [][]string
 
+	// TODO (nick-nlb): Update these three checks so that the occur in parallel.
 	// 1. StatVars + Places
 	if len(statVars) > 0 && len(places) > 0 {
 		rows, err := sds.client.CheckVariableExistence(ctx, statVars, places)
