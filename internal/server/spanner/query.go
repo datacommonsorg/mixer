@@ -173,6 +173,57 @@ func (sc *spannerDatabaseClient) CheckVariableExistence(ctx context.Context, var
 	return queryDynamic(ctx, sc, *stmt)
 }
 
+// CheckVariableSourceExistence checks for the existence of observations for the given variables/groups and sources.
+// Returns a slice of rows, where each row contains [variable, source] that has at least one observation.
+func (sc *spannerDatabaseClient) CheckVariableSourceExistence(ctx context.Context, variables []string, sources []string, predicate string) ([][]string, error) {
+	if len(variables) == 0 || len(sources) == 0 {
+		return [][]string{}, nil
+	}
+
+	var result [][]string
+
+	var existenceQueryStmt spanner.Statement
+	if predicate == "" {
+		existenceQueryStmt = spanner.Statement{
+			SQL: statements.checkSVSourceExistence,
+			Params: map[string]interface{}{
+				"variables": variables,
+			},
+		}
+	} else {
+		existenceQueryStmt = spanner.Statement{
+			SQL: statements.checkGroupSourceExistence,
+			Params: map[string]interface{}{
+				"variables": variables,
+				"predicate": predicate,
+			},
+		}
+	}
+
+	existenceQueryRows, err := queryDynamic(ctx, sc, existenceQueryStmt)
+	if err != nil {
+		return nil, err
+	}
+
+	sourceFilter := map[string]struct{}{}
+	for _, s := range sources {
+		sourceFilter[s] = struct{}{}
+	}
+
+	for _, row := range existenceQueryRows {
+		if len(row) != 2 {
+			continue
+		}
+		variable := row[0]
+		source := row[1]
+		if _, ok := sourceFilter[source]; ok {
+			result = append(result, []string{variable, source})
+		}
+	}
+
+	return result, nil
+}
+
 // GetObservationsContainedInPlace retrieves observations from Spanner given a list of variables and an entity expression.
 func (sc *spannerDatabaseClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
 	var observations []*Observation

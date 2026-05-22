@@ -136,6 +136,8 @@ func parseCommaSeparatedList(val string) []string {
 	return list
 }
 
+// TODO: (nick-nlb) combine with checks in internal/util/util.go
+
 // isSvpgDcid checks if the DCID belongs to a Stat Var Peer Group (SVPG).
 func isSvpgDcid(dcid string) bool {
 	return strings.Contains(dcid, "/svpg/")
