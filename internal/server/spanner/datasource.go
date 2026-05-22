@@ -233,6 +233,8 @@ func (sds *SpannerDataSource) fetchObservations(ctx context.Context, req *pbv2.O
 }
 
 // handleExistenceRequest handles existence-only requests for observations.
+// Note: 'variables' can contain stat var IDs, stat var group IDs, or topic IDs.
+// 'entities' can contain place IDs or source/dataset IDs.
 func (sds *SpannerDataSource) handleExistenceRequest(
 	ctx context.Context,
 	req *pbv2.ObservationRequest,
@@ -248,8 +250,10 @@ func (sds *SpannerDataSource) handleExistenceRequest(
 		return obsToExistenceResponse(req, obs), nil
 	}
 
+	// Split entities into sources and places.
 	sources, places := splitEntities(entities)
 
+	// Split variables into stat vars, stat var groups, and topics.
 	statVars, svgs, topics, err := sds.splitVariables(ctx, variables)
 	if err != nil {
 		return nil, err
