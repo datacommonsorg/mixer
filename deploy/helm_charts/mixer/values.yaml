@@ -453,8 +453,8 @@ serviceGroups:
     resources:
       memoryRequest: "2G"
       memoryLimit: "2G"
-      cpuRequest: "50m"
-      cpuLimit: "100m"
+      cpuRequest: "300m"
+      cpuLimit: "300m"
   observation:
     urlPaths:
       - "/bulk/stats"
@@ -466,8 +466,8 @@ serviceGroups:
     resources:
       memoryRequest: "8G"
       memoryLimit: "8G"
-      cpuRequest: "125m"
-      cpuLimit: "1.5"
+      cpuRequest: "300m"
+      cpuLimit: "3"
     espResources:
       memoryRequest: "500M"
       memoryLimit: "500M"
@@ -486,7 +486,7 @@ serviceGroups:
       memoryRequest: "8G"
       memoryLimit: "8G"
       cpuRequest: "250m"
-      cpuLimit: "500"
+      cpuLimit: "1"
     cacheSVG: true
   default:
     urlPaths:
