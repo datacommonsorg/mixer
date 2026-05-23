@@ -62,15 +62,9 @@ func GetStatVarSummaries(ctx context.Context, sqlClient *sqldb.SQLClient, statva
 		return nil, err
 	}
 
-	for _, row := range placeTypeRows {
-		ensureSummary(summaries, row.Variable).PlaceTypeSummary[row.EntityType] = &pb.StatVarSummary_PlaceTypeSummary{
-			PlaceCount: row.EntityCount,
-			MinValue:   proto.Float64(row.MinValue),
-			MaxValue:   proto.Float64(row.MaxValue),
-			TopPlaces:  toPlaces(row.SampleEntityIds),
-		}
-	}
-	pivotProvenanceRows(summaries, provRows)
+	populatePlaceTypeSummary(summaries, placeTypeRows)
+	populateProvenanceSummary(summaries, provRows)
+	sortSummaries(summaries)
 
 	return summaries, nil
 }
@@ -107,9 +101,21 @@ func ensureSummary(summaries map[string]*pb.StatVarSummary, variable string) *pb
 	return s
 }
 
-// pivotProvenanceRows folds per-(7-tuple) rows into the nested ProvenanceSummary shape
+// populatePlaceTypeSummary writes per-entity-type rollups onto each summary.
+func populatePlaceTypeSummary(summaries map[string]*pb.StatVarSummary, rows []*sqldb.SVSummary) {
+	for _, row := range rows {
+		ensureSummary(summaries, row.Variable).PlaceTypeSummary[row.EntityType] = &pb.StatVarSummary_PlaceTypeSummary{
+			PlaceCount: row.EntityCount,
+			MinValue:   proto.Float64(row.MinValue),
+			MaxValue:   proto.Float64(row.MaxValue),
+			TopPlaces:  toPlaces(row.SampleEntityIds),
+		}
+	}
+}
+
+// populateProvenanceSummary folds per-(7-tuple) rows into the nested ProvenanceSummary shape
 // on each *pb.StatVarSummary, computing per-provenance and per-series rollups in Go.
-func pivotProvenanceRows(summaries map[string]*pb.StatVarSummary, rows []*sqldb.SVProvenanceSummary) {
+func populateProvenanceSummary(summaries map[string]*pb.StatVarSummary, rows []*sqldb.SVProvenanceSummary) {
 	type seriesKey struct {
 		measurementMethod, observationPeriod, scalingFactor, unit string
 	}
@@ -184,9 +190,11 @@ func pivotProvenanceRows(summaries map[string]*pb.StatVarSummary, rows []*sqldb.
 		ps.ObservationCount += float64(r.ObservationCount)
 		ps.TimeSeriesCount += float64(r.EntityCount)
 	}
+}
 
-	// Sort series deterministically so the API response is stable across runs
-	// (Go map iteration order is randomized).
+// sortSummaries sorts series deterministically so the API response is stable
+// across runs (Go map iteration order is randomized).
+func sortSummaries(summaries map[string]*pb.StatVarSummary) {
 	for _, summary := range summaries {
 		for _, ps := range summary.ProvenanceSummary {
 			sort.SliceStable(ps.SeriesSummary, func(i, j int) bool {

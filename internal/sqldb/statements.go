@@ -220,7 +220,11 @@ var statements = struct {
 					   JOIN provenance_ids p
 						 ON t.subject_id = p.provenance_id
 				WHERE  t.predicate = 'name')
-		SELECT g.variable,
+		SELECT /*+ SET_VAR(sort_buffer_size = 16777216)
+				   SET_VAR(tmp_table_size = 268435456)
+				   SET_VAR(max_heap_table_size = 268435456)
+				   SET_VAR(group_concat_max_len = 65536) */
+			   g.variable,
 			   g.provenance,
 			   COALESCE(pn.provenance_name, '') AS provenance_name,
 			   g.measurement_method,
