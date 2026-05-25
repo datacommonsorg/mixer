@@ -298,9 +298,22 @@ func (sds *SpannerDataSource) handleExistenceRequest(
 		allRows = append(allRows, rows...)
 	}
 
-	// 5. Groups + Places (Currently Unsupported)
-	if (len(svgs) > 0 || len(topics) > 0) && len(places) > 0 {
-		slog.Warn("Place existence checks for StatVarGroup/Topic are not supported in Spanner yet, skipping.", "svgs", svgs, "topics", topics)
+	// 5. SVGs + Places
+	if len(svgs) > 0 && len(places) > 0 {
+		rows, err := sds.client.CheckGroupPlaceExistence(ctx, svgs, places, "linkedMemberOf")
+		if err != nil {
+			return nil, fmt.Errorf("error checking SVG place existence: %w", err)
+		}
+		allRows = append(allRows, rows...)
+	}
+
+	// 6. Topics + Places
+	if len(topics) > 0 && len(places) > 0 {
+		rows, err := sds.client.CheckGroupPlaceExistence(ctx, topics, places, "linkedMember")
+		if err != nil {
+			return nil, fmt.Errorf("error checking Topic place existence: %w", err)
+		}
+		allRows = append(allRows, rows...)
 	}
 
 	obs := existenceRowsToObservations(allRows)

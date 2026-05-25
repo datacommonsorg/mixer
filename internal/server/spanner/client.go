@@ -39,6 +39,7 @@ type SpannerClient interface {
 	GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error)
 	CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error)
 	CheckVariableSourceExistence(ctx context.Context, variables []string, sources []string, predicate string) ([][]string, error)
+	CheckGroupPlaceExistence(ctx context.Context, variables []string, entities []string, predicate string) ([][]string, error)
 	GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error)
 	SearchNodes(ctx context.Context, query string, types []string) ([]*SearchNode, error)
 	ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error)

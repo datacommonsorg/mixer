@@ -131,6 +131,8 @@ var statements = struct {
 	checkSVSourceExistence string
 	// Check existence of variable groups against sources.
 	checkGroupSourceExistence string
+	// Check existence of variable groups against places.
+	checkGroupPlaceExistence string
 }{
 	getCompletionTimestamp: `		SELECT
 		CompletionTimestamp
@@ -684,4 +686,10 @@ var statements = struct {
 		  AND e2.predicate IN ('source', 'isPartOf')
 		  AND e3.predicate = @predicate
 		  AND e3.object_id IN UNNEST(@variables)`,
+	checkGroupPlaceExistence: `		SELECT DISTINCT e.object_id AS variable, o.observation_about AS entity
+		FROM Edge@{FORCE_INDEX=InEdge} e
+		JOIN@{JOIN_TYPE=APPLY_JOIN} Observation@{FORCE_INDEX=VariableMeasuredObservationAbout} o ON e.subject_id = o.variable_measured
+		WHERE e.predicate = @predicate
+		  AND e.object_id IN UNNEST(@variables)
+		  AND o.observation_about IN UNNEST(@entities)`,
 }
