@@ -177,23 +177,7 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 	isExistenceRequest := !qo.date && !qo.value && !qo.facet && len(entities) > 0 && entityExpr == ""
 
 	if isExistenceRequest {
-		rows, err := sds.client.CheckVariableExistence(ctx, variables, entities)
-		if err != nil {
-			return nil, fmt.Errorf("error checking variable existence: %w", err)
-		}
-
-		obs := make([]*Observation, 0, len(rows))
-		for _, row := range rows {
-			if len(row) != 2 {
-				slog.Warn("CheckVariableExistence returned row with unexpected length", "length", len(row))
-				continue
-			}
-			obs = append(obs, &Observation{
-				VariableMeasured: row[0],
-				ObservationAbout: row[1],
-			})
-		}
-		return obsToExistenceResponse(req, obs), nil
+		return sds.handleExistenceRequest(ctx, req, variables, entities)
 	}
 
 	observations, err = sds.fetchObservations(ctx, req)
@@ -246,6 +230,123 @@ func (sds *SpannerDataSource) fetchObservations(ctx context.Context, req *pbv2.O
 
 	slog.Debug("Spanner.Observation: fetching observations for merged entities", "count", len(mergedDcids))
 	return sds.client.GetObservations(ctx, variables, mergedDcids)
+}
+
+// handleExistenceRequest handles existence-only requests for observations.
+// Note: 'variables' can contain stat var IDs, stat var group IDs, or topic IDs.
+// 'entities' can contain place IDs or source/dataset IDs.
+func (sds *SpannerDataSource) handleExistenceRequest(
+	ctx context.Context,
+	req *pbv2.ObservationRequest,
+	variables []string,
+	entities []string,
+) (*pbv2.ObservationResponse, error) {
+	if len(variables) == 0 {
+		rows, err := sds.client.CheckVariableExistence(ctx, variables, entities)
+		if err != nil {
+			return nil, fmt.Errorf("error checking variable existence: %w", err)
+		}
+		obs := existenceRowsToObservations(rows)
+		return obsToExistenceResponse(req, obs), nil
+	}
+
+	// Split entities into sources and places.
+	sources, places := splitEntities(entities)
+
+	// Split variables into stat vars, stat var groups, and topics.
+	statVars, svgs, topics, err := sds.splitVariables(ctx, variables)
+	if err != nil {
+		return nil, err
+	}
+
+	var allRows [][]string
+
+	// TODO (nick-nlb): Update these three checks so that the occur in parallel.
+	// 1. StatVars + Places
+	if len(statVars) > 0 && len(places) > 0 {
+		rows, err := sds.client.CheckVariableExistence(ctx, statVars, places)
+		if err != nil {
+			return nil, fmt.Errorf("error checking variable existence: %w", err)
+		}
+		allRows = append(allRows, rows...)
+	}
+
+	// 2. StatVars + Sources
+	if len(statVars) > 0 && len(sources) > 0 {
+		rows, err := sds.client.CheckVariableSourceExistence(ctx, statVars, sources, "")
+		if err != nil {
+			return nil, fmt.Errorf("error checking SV source existence: %w", err)
+		}
+		allRows = append(allRows, rows...)
+	}
+
+	// 3. SVGs + Sources
+	if len(svgs) > 0 && len(sources) > 0 {
+		rows, err := sds.client.CheckVariableSourceExistence(ctx, svgs, sources, "linkedMemberOf")
+		if err != nil {
+			return nil, fmt.Errorf("error checking SVG source existence: %w", err)
+		}
+		allRows = append(allRows, rows...)
+	}
+
+	// 4. Topics + Sources
+	if len(topics) > 0 && len(sources) > 0 {
+		rows, err := sds.client.CheckVariableSourceExistence(ctx, topics, sources, "linkedMember")
+		if err != nil {
+			return nil, fmt.Errorf("error checking Topic source existence: %w", err)
+		}
+		allRows = append(allRows, rows...)
+	}
+
+	// 5. Groups + Places (Currently Unsupported)
+	if (len(svgs) > 0 || len(topics) > 0) && len(places) > 0 {
+		slog.Warn("Place existence checks for StatVarGroup/Topic are not supported in Spanner yet, skipping.", "svgs", svgs, "topics", topics)
+	}
+
+	obs := existenceRowsToObservations(allRows)
+	return obsToExistenceResponse(req, obs), nil
+}
+
+// existenceRowsToObservations converts raw database rows from existence checks to Observation structs.
+func existenceRowsToObservations(rows [][]string) []*Observation {
+	obs := make([]*Observation, 0, len(rows))
+	for _, row := range rows {
+		if len(row) != 2 {
+			slog.Warn("Existence check returned row with unexpected length", "length", len(row))
+			continue
+		}
+		obs = append(obs, &Observation{
+			VariableMeasured: row[0],
+			ObservationAbout: row[1],
+		})
+	}
+	return obs
+}
+
+// splitEntities splits a list of entities into sources and places based on prefix.
+func splitEntities(entities []string) (sources []string, places []string) {
+	for _, e := range entities {
+		if strings.HasPrefix(e, prefixSource) || strings.HasPrefix(e, prefixDataset) {
+			sources = append(sources, e)
+		} else {
+			places = append(places, e)
+		}
+	}
+	return
+}
+
+// splitVariables splits a list of variables into SVs, SVGs, and Topics.
+func (sds *SpannerDataSource) splitVariables(ctx context.Context, variables []string) (statVars []string, svgs []string, topics []string, err error) {
+	for _, v := range variables {
+		if util.IsStatVarGroupDcid(v) {
+			svgs = append(svgs, v)
+		} else if util.IsTopicDcid(v) {
+			topics = append(topics, v)
+		} else {
+			statVars = append(statVars, v)
+		}
+	}
+	return
 }
 
 // expandAndMergeEntities fetches local child places and merges them with pre-expanded DCIDs.

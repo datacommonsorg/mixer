@@ -21,6 +21,8 @@ import (
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 // GetObservations retrieves observations from Spanner given a list of variables and entities
@@ -96,6 +98,11 @@ func (nc *normalizedClient) CheckVariableExistence(ctx context.Context, variable
 		return nil, err
 	}
 	return queryDynamic(ctx, nc.sc, *stmt)
+}
+
+// CheckVariableSourceExistence checks which variables exist for which entities using the normalized schema.
+func (nc *normalizedClient) CheckVariableSourceExistence(ctx context.Context, variables []string, sources []string, predicate string) ([][]string, error) {
+	return nil, status.Error(codes.Unimplemented, "CheckVariableSourceExistence is not implemented for normalized schema")
 }
 
 // GetObservationsContainedInPlace retrieves observations for entities contained in a place

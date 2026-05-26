@@ -127,6 +127,10 @@ var statements = struct {
 	vectorSearchNode string
 	// Filter nodes by type.
 	filterNodesByTypes string
+	// Check existence of SVs against sources.
+	checkSVSourceExistence string
+	// Check existence of variable groups against sources.
+	checkGroupSourceExistence string
 }{
 	getCompletionTimestamp: `		SELECT
 		CompletionTimestamp
@@ -666,4 +670,18 @@ var statements = struct {
 		ORDER BY
 			APPROX_COSINE_DISTANCE(@embeddings, embeddings, options => JSON '%[2]s')
 		LIMIT @limit`,
+	checkSVSourceExistence: `		SELECT DISTINCT c.key AS variable, e2.object_id AS source
+		FROM Cache c
+		JOIN Edge e2 ON c.provenance = e2.subject_id
+		WHERE c.type = 'ProvenanceSummary'
+		  AND e2.predicate IN ('source', 'isPartOf')
+		  AND c.key IN UNNEST(@variables)`,
+	checkGroupSourceExistence: `		SELECT DISTINCT e3.object_id AS variable, e2.object_id AS source
+		FROM Cache c
+		JOIN Edge e2 ON c.provenance = e2.subject_id
+		JOIN Edge@{FORCE_INDEX=InEdge} e3 ON c.key = e3.subject_id
+		WHERE c.type = 'ProvenanceSummary'
+		  AND e2.predicate IN ('source', 'isPartOf')
+		  AND e3.predicate = @predicate
+		  AND e3.object_id IN UNNEST(@variables)`,
 }
