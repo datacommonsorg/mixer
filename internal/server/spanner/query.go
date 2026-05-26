@@ -224,13 +224,13 @@ func (sc *spannerDatabaseClient) CheckVariableSourceExistence(ctx context.Contex
 	return result, nil
 }
 
-// CheckGroupPlaceExistence checks for the existence of observations for the given variables/groups and places.
+// CheckVariableGroupPlaceExistence checks for the existence of observations for the given variables/groups and places.
 // Returns a slice of rows, where each row contains [variable, entity] that has at least one observation.
-func (sc *spannerDatabaseClient) CheckGroupPlaceExistence(ctx context.Context, variables []string, entities []string, predicate string) ([][]string, error) {
-	if len(variables) == 0 || len(entities) == 0 {
+func (sc *spannerDatabaseClient) CheckVariableGroupPlaceExistence(ctx context.Context, variableGroups []string, entities []string, predicate string) ([][]string, error) {
+	if len(variableGroups) == 0 || len(entities) == 0 {
 		return [][]string{}, nil
 	}
-	stmt := CheckGroupPlaceExistenceQuery(variables, entities, predicate)
+	stmt := CheckGroupPlaceExistenceQuery(variableGroups, entities, predicate)
 	return queryDynamic(ctx, sc, *stmt)
 }
 

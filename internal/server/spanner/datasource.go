@@ -300,7 +300,7 @@ func (sds *SpannerDataSource) handleExistenceRequest(
 
 	// 5. SVGs + Places
 	if len(svgs) > 0 && len(places) > 0 {
-		rows, err := sds.client.CheckGroupPlaceExistence(ctx, svgs, places, "linkedMemberOf")
+		rows, err := sds.client.CheckVariableGroupPlaceExistence(ctx, svgs, places, "linkedMemberOf")
 		if err != nil {
 			return nil, fmt.Errorf("error checking SVG place existence: %w", err)
 		}
@@ -309,7 +309,7 @@ func (sds *SpannerDataSource) handleExistenceRequest(
 
 	// 6. Topics + Places
 	if len(topics) > 0 && len(places) > 0 {
-		rows, err := sds.client.CheckGroupPlaceExistence(ctx, topics, places, "linkedMember")
+		rows, err := sds.client.CheckVariableGroupPlaceExistence(ctx, topics, places, "linkedMember")
 		if err != nil {
 			return nil, fmt.Errorf("error checking Topic place existence: %w", err)
 		}

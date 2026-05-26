@@ -690,6 +690,6 @@ var statements = struct {
 		FROM Edge@{FORCE_INDEX=InEdge} e
 		JOIN@{JOIN_TYPE=APPLY_JOIN} Observation@{FORCE_INDEX=VariableMeasuredObservationAbout} o ON e.subject_id = o.variable_measured
 		WHERE e.predicate = @predicate
-		  AND e.object_id IN UNNEST(@variables)
+		  AND e.object_id IN UNNEST(@variableGroups)
 		  AND o.observation_about IN UNNEST(@entities)`,
 }
