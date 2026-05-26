@@ -38,8 +38,8 @@ spec:
     type: RollingUpdate
     rollingUpdate:
       # maximum number of Pods that can be created over the desired number of Pods
-      # Defaults to 1 to reduce resource overhead during deployment
-      maxSurge: {{ $group.maxSurge | default 1 }}
+      # 25% of default pods (+1 in case default < 4)
+      maxSurge: {{ div $group.replicas 4 | add 1 }}
       # Maximum number of pods that can be unavailable during the update process
       # 25% of default pods (+1 in case default < 4)
       maxUnavailable: {{ div $group.replicas 4 | add 1 }}
@@ -279,13 +279,11 @@ spec:
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:12345"]
             periodSeconds: 10
-            initialDelaySeconds: 60
             timeoutSeconds: 10
           livenessProbe:
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:12345"]
             periodSeconds: 10
-            initialDelaySeconds: 60
             timeoutSeconds: 10
       {{- if $group.enableEmbeddingsSidecar }}
         - name: embeddings
@@ -386,18 +384,24 @@ spec:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-mixer-config
                   key: serviceName
+          startupProbe:
+            httpGet:
+              path: /healthz
+              port: 8081
+            failureThreshold: 30
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 10
           readinessProbe:
             httpGet:
               path: /healthz
               port: 8081
-            initialDelaySeconds: 60
             periodSeconds: 5
           livenessProbe:
             httpGet:
               path: /healthz
               port: 8081
             periodSeconds: 5
-            initialDelaySeconds: 5
           ports:
             - containerPort: 8081
 {{- $index = add $index 1 }}
