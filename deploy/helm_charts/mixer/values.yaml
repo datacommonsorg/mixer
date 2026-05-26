@@ -462,11 +462,12 @@ serviceGroups:
       - "/v2/observation"
     replicas: 1
     resources:
-      memoryRequest: "8G"
-      memoryLimit: "8G"
+      memoryRequest: "10Gi"
+      memoryLimit: "20Gi"
       cpuRequest: "300m"
       cpuLimit: "3" # Prevent CPU spikes from choking out the node.
     espResources:
+      # Higher memory to accomodate larger payloads
       memoryRequest: "512Mi"
       memoryLimit: "2Gi"
   node:
