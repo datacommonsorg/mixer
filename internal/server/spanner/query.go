@@ -173,8 +173,8 @@ func (sc *spannerDatabaseClient) CheckVariableExistence(ctx context.Context, var
 	return queryDynamic(ctx, sc, *stmt)
 }
 
-// CheckVariableSourceExistence checks for the existence of observations for the given variables/groups and sources.
-// Returns a slice of rows, where each row contains [variable, source] that has at least one observation.
+// CheckVariableSourceExistence checks for the existence of observations for the given variables/variable groups and sources.
+// Returns a slice of rows, where each row contains [variable/variable group, source] that has at least one observation.
 func (sc *spannerDatabaseClient) CheckVariableSourceExistence(ctx context.Context, variables []string, sources []string, predicate string) ([][]string, error) {
 	if len(variables) == 0 || len(sources) == 0 {
 		return [][]string{}, nil
@@ -224,8 +224,8 @@ func (sc *spannerDatabaseClient) CheckVariableSourceExistence(ctx context.Contex
 	return result, nil
 }
 
-// CheckVariableGroupPlaceExistence checks for the existence of observations for the given variables/groups and places.
-// Returns a slice of rows, where each row contains [variable, entity] that has at least one observation.
+// CheckVariableGroupPlaceExistence checks for the existence of observations for the given variables groups and places.
+// Returns a slice of rows, where each row contains [variable group, entity] that has at least one observation.
 func (sc *spannerDatabaseClient) CheckVariableGroupPlaceExistence(ctx context.Context, variableGroups []string, entities []string, predicate string) ([][]string, error) {
 	if len(variableGroups) == 0 || len(entities) == 0 {
 		return [][]string{}, nil
