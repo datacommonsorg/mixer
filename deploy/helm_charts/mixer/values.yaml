@@ -437,11 +437,11 @@ serviceGroups:
       - "/v2/bulk/info/variable-group"
     replicas: 1
     resources:
-      memoryRequest: "8G"
-      memoryLimit: "8G"
+      memoryRequest: "8Gi"
+      memoryLimit: "8Gi"
       cpuRequest: "125m"
     cacheSVG: true
-    goMemLimit: "6G"
+    goMemLimit: "6GiB"
     # If the name of the recon service is changed here,
     # please also change the name in the deployment.yaml template.
   recon:
@@ -451,10 +451,10 @@ serviceGroups:
       - "/v2/resolve"
     replicas: 1
     resources:
-      memoryRequest: "2G"
-      memoryLimit: "2G"
+      memoryRequest: "2Gi"
+      memoryLimit: "2Gi"
       cpuRequest: "300m"
-    goMemLimit: "1.5G"
+    goMemLimit: "1536MiB"
   observation:
     urlPaths:
       - "/bulk/stats"
@@ -467,7 +467,7 @@ serviceGroups:
       memoryRequest: "10Gi"
       memoryLimit: "20Gi"
       cpuRequest: "1"
-    goMemLimit: "18Gi"
+    goMemLimit: "18GiB"
     espResources:
       # Higher memory to accomodate larger payloads
       memoryRequest: "512Mi"
@@ -487,14 +487,14 @@ serviceGroups:
       memoryRequest: "10Gi"
       memoryLimit: "20Gi"
       cpuRequest: "300m"
-    goMemLimit: "18Gi"
+    goMemLimit: "18GiB"
     cacheSVG: true
   default:
     urlPaths:
       - "/*"
     replicas: 1
     resources:
-      memoryRequest: "2G"
-      memoryLimit: "2G"
+      memoryRequest: "2Gi"
+      memoryLimit: "2Gi"
       cpuRequest: "50m"
-    goMemLimit: "1.5G"
+    goMemLimit: "1536MiB"
