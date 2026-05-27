@@ -465,7 +465,6 @@ serviceGroups:
       memoryRequest: "8Gi"
       memoryLimit: "8Gi"
       cpuRequest: "1"
-    goMemLimit: "6GiB"
     espResources:
       # Higher memory to accomodate larger payloads
       memoryRequest: "512Mi"
@@ -485,7 +484,6 @@ serviceGroups:
       memoryRequest: "8Gi"
       memoryLimit: "8Gi"
       cpuRequest: "300m"
-    goMemLimit: "6GiB"
     cacheSVG: true
   default:
     urlPaths:

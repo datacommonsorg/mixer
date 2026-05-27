@@ -263,10 +263,6 @@ spec:
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: http://opentelemetry-collector.opentelemetry.svc.cluster.local:4317
           {{- end }}
-          {{- if $group.goMemLimit }}
-            - name: GOMEMLIMIT
-              value: {{ $group.goMemLimit | quote }}
-          {{- end }}
           ports:
             - containerPort: 12345
           startupProbe:
