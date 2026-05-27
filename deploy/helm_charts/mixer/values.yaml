@@ -367,8 +367,8 @@ esp:
     pullPolicy: IfNotPresent
     tag: "2"
   resources:
-    memoryRequest: "300M"
-    memoryLimit: "300M"
+    memoryRequest: "300Mi"
+    memoryLimit: "300Mi"
 
 embeddingsSidecar:
   image:
@@ -482,9 +482,9 @@ serviceGroups:
       - "/v2/node"
     replicas: 1
     resources:
-      memoryRequest: "8G"
-      memoryLimit: "8G"
-      cpuRequest: "250m"
+      memoryRequest: "10Gi"
+      memoryLimit: "20Gi"
+      cpuRequest: "300m"
     cacheSVG: true
   default:
     urlPaths:
