@@ -39,7 +39,7 @@ spec:
     rollingUpdate:
       # maximum number of Pods that can be created over the desired number of Pods
       # 25% of default pods (+1 in case default < 4)
-      maxSurge: {{ div $group.replicas 4 | add 1 }}
+      maxSurge: {{ $group.maxSurge | default (div $group.replicas 4 | add 1) }}
       # Maximum number of pods that can be unavailable during the update process
       # 25% of default pods (+1 in case default < 4)
       maxUnavailable: {{ div $group.replicas 4 | add 1 }}
@@ -137,9 +137,6 @@ spec:
           resources:
             limits:
               memory: {{ $group.resources.memoryLimit }}
-              {{- if $group.resources.cpuLimit }}
-              cpu: {{ $group.resources.cpuLimit }}
-              {{- end }}
             requests:
               memory:  {{ $group.resources.memoryRequest }}
               {{- if $group.resources.cpuRequest }}
@@ -276,18 +273,20 @@ spec:
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:12345", "-connect-timeout=10s"]
             failureThreshold: 30
-            initialDelaySeconds: 10
+            initialDelaySeconds: 60
             periodSeconds: 10
             timeoutSeconds: 10
           readinessProbe:
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:12345"]
             periodSeconds: 10
+            initialDelaySeconds: 60
             timeoutSeconds: 10
           livenessProbe:
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:12345"]
             periodSeconds: 10
+            initialDelaySeconds: 60
             timeoutSeconds: 10
       {{- if $group.enableEmbeddingsSidecar }}
         - name: embeddings
@@ -392,18 +391,14 @@ spec:
             httpGet:
               path: /healthz
               port: 8081
-            initialDelaySeconds: 3 # Give ESP a 3 second window to bind to port 8081
+            initialDelaySeconds: 60
             periodSeconds: 5
-            failureThreshold: 3 # If fails 3x in a row (15s) cut off user traffic
-            timeoutSeconds: 5
           livenessProbe:
             httpGet:
               path: /healthz
               port: 8081
-            initialDelaySeconds: 5 # Liveness doesn't need to be checked as quickly as readiness
-            failureThreshold: 3 # If fails 3x in a row (45s) restart the container
-            periodSeconds: 15 # Check less frequently to conserve CPU
-            timeoutSeconds: 5
+            periodSeconds: 5
+            initialDelaySeconds: 5
           ports:
             - containerPort: 8081
 {{- $index = add $index 1 }}
