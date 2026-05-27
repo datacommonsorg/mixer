@@ -44,10 +44,15 @@ serviceGroups:
   observation:
     replicas: 20
     resources:
-      memoryRequest: "6G"
-      memoryLimit: "8G"
+      memoryRequest: "6Gi"
+      memoryLimit: "8Gi"
+      goMemLimit: "6GiB"
   node:
     replicas: 20
+    resources:
+      memoryRequest: "6Gi"
+      memoryLimit: "8Gi"
+      goMemLimit: "6GiB"
   default:
     replicas: 10
 

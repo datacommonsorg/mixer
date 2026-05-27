@@ -26,15 +26,76 @@ ingress:
 
 serviceGroups:
   svg:
+    urlPaths:
+      - "/place/stat-var-group/*"
+      - "/stat-var/*"
+      - "/v1/info/variable-group/*"
+      - "/v1/variable/*"
+      - "/v1/bulk/info/variable-group"
+      - "/v2/bulk/info/variable-group"
     replicas: 10
+    resources:
+      memoryRequest: "8Gi"
+      memoryLimit: "8Gi"
+      cpuRequest: "125m"
+    cacheSVG: true
+    goMemLimit: "6GiB"
+    # If the name of the recon service is changed here,
+    # please also change the name in the deployment.yaml template.
   recon:
-    replicas: 90
-  node:
+    enableEmbeddingsSidecar: true
+    urlPaths:
+      - "/v1/recon/*"
+      - "/v2/resolve"
     replicas: 60
+    resources:
+      memoryRequest: "2Gi"
+      memoryLimit: "2Gi"
+      cpuRequest: "300m"
+    goMemLimit: "1536MiB"
   observation:
-    replicas: 60
+    urlPaths:
+      - "/bulk/stats"
+      - "/stat/*"
+      - "/v1/observations/*"
+      - "/v1/bulk/observations/*"
+      - "/v2/observation"
+    replicas: 40
+    resources:
+      memoryRequest: "10Gi"
+      memoryLimit: "10Gi"
+      cpuRequest: "1"
+    goMemLimit: "8GiB"
+    espResources:
+      # Higher memory to accomodate larger payloads
+      memoryRequest: "512Mi"
+      memoryLimit: "2Gi"
+  node:
+    urlPaths:
+      - "/node/*"
+      - "/v1/triples/*"
+      - "/v1/properties/*"
+      - "/v1/property/values/*"
+      - "/v1/bulk/property/values/*"
+      - "/v1/bulk/triples/*"
+      - "/v1/bulk/properties/*"
+      - "/v2/node"
+    replicas: 40
+    resources:
+      memoryRequest: "10Gi"
+      memoryLimit: "10Gi"
+      cpuRequest: "300m"
+    goMemLimit: "8GiB"
+    cacheSVG: true
   default:
-    replicas: 30
+    urlPaths:
+      - "/*"
+    replicas: 20
+    resources:
+      memoryRequest: "2Gi"
+      memoryLimit: "2Gi"
+      cpuRequest: "50m"
+    goMemLimit: "1536MiB"
 
 # GCP level config
 ip: 35.244.133.155
