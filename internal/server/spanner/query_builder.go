@@ -70,6 +70,8 @@ const (
 	prefixSource = "dc/s/"
 	// StatVarGroup dcid prefix
 	prefixSVG = "dc/g/"
+	// key for filtering nodes by language suffix
+	filterLang = "$lang"
 )
 
 func GetCompletionTimestampQuery() *spanner.Statement {
@@ -116,6 +118,14 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 
 	// Generate filters.
 	subqueries := []string{}
+	// queryOperators registers special meta-filters (like $lang) that are handled
+	// as execution instructions rather than graph properties.
+	// TODO: (nick-nlb) Roll the query operators out into a registry with handler functions.
+	queryOperators := map[string]bool{
+		filterLang: true,
+	}
+	queryOperatorValues := map[string][]string{}
+
 	if len(arc.Filter) > 0 {
 		// Sort for determinism.
 		props := make([]string, 0, len(arc.Filter))
@@ -126,6 +136,11 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 
 		i := 0
 		for _, prop := range props {
+			// Skip query operators as they are handled separately.
+			if queryOperators[prop] {
+				queryOperatorValues[prop] = arc.Filter[prop]
+				continue
+			}
 			params["prop"+strconv.Itoa(i)] = prop
 			objectFilter := ""
 			filterVal := addObjectValues(arc.Filter[prop])
@@ -143,23 +158,39 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 		}
 	}
 
+	// Build the node filter string from query operators.
+	var filterParts []string
+	if langs, ok := queryOperatorValues[filterLang]; ok && len(langs) > 0 {
+		for j, lang := range langs {
+			paramName := fmt.Sprintf("lang_%d", j)
+			params[paramName] = "@" + lang
+			filterParts = append(filterParts, fmt.Sprintf("ENDS_WITH(n.value, @%s)", paramName))
+		}
+	}
+
+	var nodeFilterStr string
+	if len(filterParts) > 0 {
+		nodeFilterStr = " WHERE (" + strings.Join(filterParts, " OR ") + ")"
+	}
+
+
 	var subquery string
 	switch arc.Out {
 	case true:
 		if arc.Decorator == v3.Chain {
-			subquery = fmt.Sprintf(statements.getChainedEdgesBySubjectID, idFilter, maxHops)
+			subquery = fmt.Sprintf(statements.getChainedEdgesBySubjectID, idFilter, maxHops, nodeFilterStr)
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
 		} else {
-			subquery = fmt.Sprintf(statements.getEdgesBySubjectID, idFilter, filterPredicate)
+			subquery = fmt.Sprintf(statements.getEdgesBySubjectID, idFilter, filterPredicate, nodeFilterStr)
 		}
 	case false:
 		if arc.Decorator == v3.Chain {
-			subquery = fmt.Sprintf(statements.getChainedEdgesByObjectID, idFilter, maxHops)
+			subquery = fmt.Sprintf(statements.getChainedEdgesByObjectID, idFilter, maxHops, nodeFilterStr)
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
 		} else {
-			subquery = fmt.Sprintf(statements.getEdgesByObjectID, idFilter, filterPredicate)
+			subquery = fmt.Sprintf(statements.getEdgesByObjectID, idFilter, filterPredicate, nodeFilterStr)
 		}
 	}
 	subqueries = append([]string{subquery}, subqueries...)
