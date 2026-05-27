@@ -39,7 +39,7 @@ spec:
     rollingUpdate:
       # maximum number of Pods that can be created over the desired number of Pods
       # 25% of default pods (+1 in case default < 4)
-      maxSurge: {{ $group.maxSurge | default (div $group.replicas 4 | add 1) }}
+      maxSurge: {{ div $group.replicas 4 | add 1 }}
       # Maximum number of pods that can be unavailable during the update process
       # 25% of default pods (+1 in case default < 4)
       maxUnavailable: {{ div $group.replicas 4 | add 1 }}
@@ -266,13 +266,17 @@ spec:
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: http://opentelemetry-collector.opentelemetry.svc.cluster.local:4317
           {{- end }}
+          {{- if $group.goMemLimit }}
+            - name: GOMEMLIMIT
+              value: {{ $group.goMemLimit | quote }}
+          {{- end }}
           ports:
             - containerPort: 12345
           startupProbe:
             exec:
               command: ["/bin/grpc_health_probe", "-addr=:12345", "-connect-timeout=10s"]
             failureThreshold: 30
-            initialDelaySeconds: 60
+            initialDelaySeconds: 10
             periodSeconds: 10
             timeoutSeconds: 10
           readinessProbe:
@@ -384,24 +388,22 @@ spec:
                 configMapKeyRef:
                   name: {{ include "mixer.fullname" $ }}-mixer-config
                   key: serviceName
-          startupProbe:
-            httpGet:
-              path: /healthz
-              port: 8081
-            failureThreshold: 30
-            initialDelaySeconds: 5
-            periodSeconds: 10
-            timeoutSeconds: 10
           readinessProbe:
             httpGet:
               path: /healthz
               port: 8081
+            initialDelaySeconds: 3 # Give ESP a 3 second window to bind to port 8081
             periodSeconds: 5
+            failureThreshold: 3 # If fails 3x in a row (15s) cut off user traffic
+            timeoutSeconds: 5
           livenessProbe:
             httpGet:
               path: /healthz
               port: 8081
-            periodSeconds: 5
+            initialDelaySeconds: 5 # Liveness doesn't need to be checked as quickly as readiness
+            failureThreshold: 3 # If fails 3x in a row (45s) restart the container
+            periodSeconds: 15 # Check less frequently to conserve CPU
+            timeoutSeconds: 5
           ports:
             - containerPort: 8081
 {{- $index = add $index 1 }}

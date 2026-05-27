@@ -441,6 +441,7 @@ serviceGroups:
       memoryLimit: "8G"
       cpuRequest: "125m"
     cacheSVG: true
+    goMemLimit: "6G"
     # If the name of the recon service is changed here,
     # please also change the name in the deployment.yaml template.
   recon:
@@ -453,6 +454,7 @@ serviceGroups:
       memoryRequest: "2G"
       memoryLimit: "2G"
       cpuRequest: "300m"
+    goMemLimit: "1.5G"
   observation:
     urlPaths:
       - "/bulk/stats"
@@ -464,8 +466,8 @@ serviceGroups:
     resources:
       memoryRequest: "10Gi"
       memoryLimit: "20Gi"
-      cpuRequest: "300m"
-      cpuLimit: "3" # Prevent CPU spikes from choking out the node.
+      cpuRequest: "1"
+    goMemLimit: "18Gi"
     espResources:
       # Higher memory to accomodate larger payloads
       memoryRequest: "512Mi"
@@ -485,6 +487,7 @@ serviceGroups:
       memoryRequest: "10Gi"
       memoryLimit: "20Gi"
       cpuRequest: "300m"
+    goMemLimit: "18Gi"
     cacheSVG: true
   default:
     urlPaths:
@@ -494,3 +497,4 @@ serviceGroups:
       memoryRequest: "2G"
       memoryLimit: "2G"
       cpuRequest: "50m"
+    goMemLimit: "1.5G"
