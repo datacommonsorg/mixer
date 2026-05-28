@@ -224,7 +224,7 @@ func (sc *spannerDatabaseClient) CheckVariableSourceExistence(ctx context.Contex
 	return result, nil
 }
 
-// CheckVariableGroupPlaceExistence checks for the existence of observations for the given variables groups and places.
+// CheckVariableGroupPlaceExistence checks for the existence of observations for the given variables groups (SVGs or topics) and places.
 // Returns a slice of rows, where each row contains [variable group, entity] that has at least one observation.
 func (sc *spannerDatabaseClient) CheckVariableGroupPlaceExistence(ctx context.Context, variableGroups []string, entities []string, predicate string) ([][]string, error) {
 	if len(variableGroups) == 0 || len(entities) == 0 {
