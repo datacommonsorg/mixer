@@ -268,6 +268,20 @@ var filterStatVarsByEntityTestCases = []struct {
 	},
 }
 
+var checkGroupPlaceExistenceTestCases = []struct {
+	variableGroups []string
+	entities       []string
+	predicate      string
+	golden         string
+}{
+	{
+		variableGroups: []string{"dc/g/Demographics"},
+		entities:       []string{"geoId/06"},
+		predicate:      "linkedMemberOf",
+		golden:         "check_group_place_existence",
+	},
+}
+
 var searchNodesTestCases = []struct {
 	query  string
 	types  []string

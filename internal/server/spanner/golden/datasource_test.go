@@ -41,8 +41,9 @@ type mockSpannerClient struct {
 	resolveByIDRes                     map[string][]string
 	getNodeEdgesRes                    map[string][]*spanner.Edge
 	checkVariableExistenceRes          [][]string
-	checkVariableSourceExistenceRes     [][]string
-	checkVariableSourceExistenceErr     error
+	checkVariableSourceExistenceRes    [][]string
+	checkGroupPlaceExistenceRes        [][]string
+	checkVariableSourceExistenceErr    error
 	filterNodesByTypeRes               map[string][]string
 	getObservationsRes                 []*spanner.Observation
 	getObservationsContainedInPlaceRes []*spanner.Observation
@@ -65,6 +66,9 @@ func (m *mockSpannerClient) CheckVariableSourceExistence(ctx context.Context, va
 		return nil, m.checkVariableSourceExistenceErr
 	}
 	return m.checkVariableSourceExistenceRes, nil
+}
+func (m *mockSpannerClient) CheckVariableGroupPlaceExistence(ctx context.Context, variableGroups []string, entities []string, predicate string) ([][]string, error) {
+	return m.checkGroupPlaceExistenceRes, nil
 }
 func (m *mockSpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*spanner.Observation, error) {
 	return m.getObservationsContainedInPlaceRes, nil
@@ -400,14 +404,15 @@ func TestSpannerObservation(t *testing.T) {
 	goldenDir := path.Join(path.Dir(filename), "datasource")
 
 	for _, c := range []struct {
-		desc         string
-		req          *pbv2.ObservationRequest
-		mockRes      [][]string
-		mockGroupRes [][]string
-		mockGroupErr error
-		mockTypes    map[string][]string
-		goldenFile   string
-		wantErr      bool
+		desc              string
+		req               *pbv2.ObservationRequest
+		mockRes           [][]string
+		mockGroupRes      [][]string
+		mockGroupPlaceRes [][]string
+		mockGroupErr      error
+		mockTypes         map[string][]string
+		goldenFile        string
+		wantErr           bool
 	}{
 		{
 			desc: "Basic existence check (single entity)",
@@ -510,7 +515,7 @@ func TestSpannerObservation(t *testing.T) {
 			wantErr: true,
 		},
 		{
-			desc: "CheckVariableGroupExistence returns empty for places",
+			desc: "Existence check for StatVarGroup and Place",
 			req: &pbv2.ObservationRequest{
 				Variable: &pbv2.DcidOrExpression{
 					Dcids: []string{"dc/g/Root"},
@@ -523,15 +528,39 @@ func TestSpannerObservation(t *testing.T) {
 			mockTypes: map[string][]string{
 				"StatVarGroup": {"dc/g/Root"},
 			},
-			goldenFile: "observation_existence_empty.json",
+			mockGroupPlaceRes: [][]string{
+				{"dc/g/Root", "geoId/06"},
+			},
+			goldenFile: "observation_existence_svg_place.json",
+			wantErr:    false,
+		},
+		{
+			desc: "Existence check for Topic and Place",
+			req: &pbv2.ObservationRequest{
+				Variable: &pbv2.DcidOrExpression{
+					Dcids: []string{"dc/topic/Root"},
+				},
+				Entity: &pbv2.DcidOrExpression{
+					Dcids: []string{"geoId/06"},
+				},
+				Select: []string{"variable", "entity"},
+			},
+			mockTypes: map[string][]string{
+				"Topic": {"dc/topic/Root"},
+			},
+			mockGroupPlaceRes: [][]string{
+				{"dc/topic/Root", "geoId/06"},
+			},
+			goldenFile: "observation_existence_topic_place.json",
 			wantErr:    false,
 		},
 	} {
 		client := &mockSpannerClient{
-			checkVariableExistenceRes:      c.mockRes,
+			checkVariableExistenceRes:       c.mockRes,
 			checkVariableSourceExistenceRes: c.mockGroupRes,
 			checkVariableSourceExistenceErr: c.mockGroupErr,
-			filterNodesByTypeRes:           c.mockTypes,
+			filterNodesByTypeRes:            c.mockTypes,
+			checkGroupPlaceExistenceRes:     c.mockGroupPlaceRes,
 		}
 		ds := spanner.NewSpannerDataSource(client, nil, nil, false)
 

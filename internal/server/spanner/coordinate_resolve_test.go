@@ -62,6 +62,10 @@ func (m *coordinateMockSpannerClient) CheckVariableSourceExistence(ctx context.C
 	return nil, nil
 }
 
+func (m *coordinateMockSpannerClient) CheckVariableGroupPlaceExistence(ctx context.Context, variableGroups []string, entities []string, predicate string) ([][]string, error) {
+	return nil, nil
+}
+
 func (m *coordinateMockSpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
 	return nil, nil
 }
