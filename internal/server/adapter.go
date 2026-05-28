@@ -12,6 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// This file implements structural adapters that bridge internal packages
+// with server core packages to navigate external data or caches while preventing
+// package circular import dependencies.
+//
+// Currently, this file only contains the topicExpanderAdapter which adapts
+// the *topic.TopicCacheManager to the resolve.TopicExpander interface, but it
+// can be extended to host other adapters in the future.
+
 package server
 
 import (

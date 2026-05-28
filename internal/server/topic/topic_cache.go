@@ -246,9 +246,14 @@ func (m *TopicCacheManager) GetTopicDisplayName(ctx context.Context, topicDcid s
 	h, _ := m.GetHierarchy(ctx)
 	if h != nil && h.GetTopics() != nil {
 		if n, ok := h.GetTopics()[topicDcid]; ok && n != nil {
-			return n.GetName()
+			name := n.GetName()
+			if name == "" {
+				slog.Warn("Topic has empty display name in hierarchy cache", "dcid", topicDcid)
+			}
+			return name
 		}
 	}
+	slog.Debug("Topic not found in hierarchy cache during name resolution", "dcid", topicDcid)
 	return ""
 }
 

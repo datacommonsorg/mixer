@@ -17,6 +17,7 @@ package datasource
 import (
 	"context"
 	"fmt"
+	"log/slog"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv1 "github.com/datacommonsorg/mixer/internal/proto/v1"
@@ -86,6 +87,11 @@ func NodeFetchAll(ctx context.Context, ds DataSource, req *pbv2.NodeRequest, pag
 	}
 
 	chunks := chunkNodes(nodes, fetchAllChunkSize)
+	slog.Debug("Partitioning large multi-node request into parallel chunks",
+		"totalNodes", len(nodes),
+		"chunkSize", fetchAllChunkSize,
+		"totalChunks", len(chunks),
+	)
 	responses, err := fetchChunksParallel(ctx, ds, req, chunks, pageSize)
 	if err != nil {
 		return nil, err

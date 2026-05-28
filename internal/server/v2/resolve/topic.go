@@ -16,6 +16,7 @@ package resolve
 
 import (
 	"context"
+	"log/slog"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"google.golang.org/grpc/codes"
@@ -49,6 +50,7 @@ func resolveRootTopics(
 ) (*pbv2.ResolveResponse, error) {
 	roots, err := topicExpander.ExpandRoots(ctx, expandTopics)
 	if err != nil {
+		slog.Error("Failed to resolve root topics during resolve", "error", err)
 		return nil, status.Errorf(codes.Internal, "Failed to resolve root topics: %v", err)
 	}
 	nodeStr := ""
@@ -83,6 +85,7 @@ func resolveSpecifiedTopics(
 
 		candidates, err := topicExpander.ExpandTopic(ctx, node, expandTopics)
 		if err != nil {
+			slog.Error("Failed to expand topic during resolve", "topic", node, "error", err)
 			return nil, status.Errorf(codes.Internal, "Failed to expand topic %s: %v", node, err)
 		}
 
