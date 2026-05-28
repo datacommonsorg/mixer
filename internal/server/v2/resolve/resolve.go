@@ -46,6 +46,8 @@ const (
 	ResolveResolverPlace = "place"
 	// ResolveResolverIndicator is the resolver name for indicator/embeddings resolution.
 	ResolveResolverIndicator = "indicator"
+	// ResolveResolverTopic is the resolver name for explicit topic tree navigation.
+	ResolveResolverTopic = "topic"
 
 	// ResolveDefaultPropertyExpression is the property name for description.
 	ResolveDefaultPropertyExpression = "<-description->dcid"
@@ -64,6 +66,21 @@ type NormalizedResolveRequest struct {
 	InProp       string
 	OutProp      string
 	TypeOfValues []string
+}
+
+// SVPropertyInfo holds property metadata for a Statistical Variable, decoupling from concrete topic packages.
+type SVPropertyInfo struct {
+	Name                  string
+	ObservationProperties []string
+}
+
+// TopicExpander defines the contract for topic tree navigation and variable metadata expansion,
+// decoupling resolve package from concrete cache implementations to eliminate import cycles.
+type TopicExpander interface {
+	ExpandRoots(ctx context.Context, expandTopics bool) ([]*pbv2.ResolveResponse_Entity_Candidate, error)
+	ExpandTopic(ctx context.Context, topicDcid string, expandTopics bool) ([]*pbv2.ResolveResponse_Entity_Candidate, error)
+	GetTopicDisplayName(ctx context.Context, topicDcid string) string
+	GetSVPropertyInfos(ctx context.Context, svDcids []string) (map[string]SVPropertyInfo, error)
 }
 
 var resolvedPlaceTypePriorityList = []string{
@@ -337,6 +354,8 @@ func ValidateAndParseResolveInputs(in *pbv2.ResolveRequest) (*NormalizedResolveR
 					"Invalid 'property' expression: indicator resolution only supports '%s' as output property",
 					DcidProperty))
 			}
+		case ResolveResolverTopic:
+			// Explicit topic tree navigation accepts default property expressions or topic dcids directly; no restrictions needed.
 		}
 	}
 
@@ -377,15 +396,15 @@ func parseAndValidateResolveTarget(req *pbv2.ResolveRequest) string {
 // Returns an optional error string.
 func parseAndValidateResolveResolver(req *pbv2.ResolveRequest) string {
 	switch req.GetResolver() {
-	case ResolveResolverPlace, ResolveResolverIndicator:
+	case ResolveResolverPlace, ResolveResolverIndicator, ResolveResolverTopic:
 		return ""
 	case "":
 		// Set default value
 		req.Resolver = ResolveResolverPlace
 		return ""
 	default:
-		return fmt.Sprintf("Invalid 'resolver': valid values are '%s', '%s'",
-			ResolveResolverIndicator, ResolveResolverPlace)
+		return fmt.Sprintf("Invalid 'resolver': valid values are '%s', '%s', '%s'",
+			ResolveResolverIndicator, ResolveResolverPlace, ResolveResolverTopic)
 	}
 }
 

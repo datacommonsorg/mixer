@@ -41,7 +41,7 @@ func TestResolveUsingEmbeddings(t *testing.T) {
 	defer server.Close()
 
 	ctx := context.Background()
-	resp, err := ResolveUsingEmbeddings(ctx, server.Client(), server.URL, "test_idx", []string{"population"}, nil)
+	resp, err := ResolveUsingEmbeddings(ctx, server.Client(), server.URL, "test_idx", []string{"population"}, nil, nil, false)
 	if err != nil {
 		t.Fatalf("ResolveEmbeddings() error: %v", err)
 	}
@@ -132,7 +132,7 @@ func TestResolveUsingEmbeddings_Errors(t *testing.T) {
 				url = ""
 			}
 
-			_, err := ResolveUsingEmbeddings(context.Background(), server.Client(), url, "", []string{"query"}, nil)
+			_, err := ResolveUsingEmbeddings(context.Background(), server.Client(), url, "", []string{"query"}, nil, nil, false)
 			if err == nil {
 				t.Errorf("Expected error containing '%s', got nil", tc.expectedError)
 				return
@@ -173,7 +173,7 @@ func TestResolveUsingEmbeddings_InconsistentSearchVarsResponse(t *testing.T) {
 	}))
 	defer server.Close()
 
-	resp, err := ResolveUsingEmbeddings(context.Background(), server.Client(), server.URL, "", []string{"query"}, nil)
+	resp, err := ResolveUsingEmbeddings(context.Background(), server.Client(), server.URL, "", []string{"query"}, nil, nil, false)
 	if err != nil {
 		t.Fatalf("Unexpected error: %v", err)
 	}
@@ -247,7 +247,7 @@ func TestResolveUsingEmbeddings_IdxParameter(t *testing.T) {
 			}))
 			defer server.Close()
 
-			_, err := ResolveUsingEmbeddings(context.Background(), server.Client(), server.URL, tc.expectedIdx, []string{"query"}, nil)
+			_, err := ResolveUsingEmbeddings(context.Background(), server.Client(), server.URL, tc.expectedIdx, []string{"query"}, nil, nil, false)
 			if err != nil {
 				t.Fatalf("Unexpected error: %v", err)
 			}
@@ -274,7 +274,7 @@ func TestResolveUsingEmbeddings_Filter(t *testing.T) {
 	ctx := context.Background()
 
 	// Test 1: Filter for StatisticalVariable
-	resp, err := ResolveUsingEmbeddings(ctx, server.Client(), server.URL, "test_idx", []string{"filter_test"}, []string{"StatisticalVariable"})
+	resp, err := ResolveUsingEmbeddings(ctx, server.Client(), server.URL, "test_idx", []string{"filter_test"}, []string{"StatisticalVariable"}, nil, false)
 	if err != nil {
 		t.Fatalf("ResolveEmbeddings() error: %v", err)
 	}
@@ -286,7 +286,7 @@ func TestResolveUsingEmbeddings_Filter(t *testing.T) {
 	}
 
 	// Test 2: Filter for Topic
-	resp, err = ResolveUsingEmbeddings(ctx, server.Client(), server.URL, "test_idx", []string{"filter_test"}, []string{"Topic"})
+	resp, err = ResolveUsingEmbeddings(ctx, server.Client(), server.URL, "test_idx", []string{"filter_test"}, []string{"Topic"}, nil, false)
 	if err != nil {
 		t.Fatalf("ResolveEmbeddings() error: %v", err)
 	}
