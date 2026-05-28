@@ -44,23 +44,6 @@ type searchVarsRequest struct {
 }
 
 // searchVarsResponse represents the response body from the embeddings server
-//
-// Expected JSON Structure:
-//
-//	{
-//	  "queryResults": {
-//	    "your_query_string": {
-//	      "SV": [ "dcid1", "dcid2", ... ],            // Sorted list of SV DCIDs
-//	      "CosineScore": [ 0.9, 0.8, ... ],           // Corresponding overall scores (parallel to SV list)
-//	      "SV_to_Sentences": {                        // Map of SV DCID to matching sentences
-//	        "dcid1": [
-//	          { "sentence": "description text", "score": 0.95 },
-//	          ...
-//	        ]
-//	      }
-//	    }
-//	  }
-//	}
 type searchVarsResponse struct {
 	QueryResults map[string]searchResult `json:"queryResults"`
 }
@@ -75,11 +58,6 @@ type searchResult struct {
 }
 
 // ResolveUsingEmbeddings calls the embeddings server to resolve natural language queries to SVs.
-//
-// It performs the following steps:
-// 1. Validates the embeddings server configuration.
-// 2. Calls the embeddings server via HTTP to get search results (callEmbeddingsServer).
-// 3. Transforms the raw search results into the resolved response format (buildResolveResponse).
 func ResolveUsingEmbeddings(
 	ctx context.Context,
 	httpClient *http.Client,
@@ -87,6 +65,8 @@ func ResolveUsingEmbeddings(
 	idx string,
 	nodes []string,
 	typeOfValues []string,
+	topicExpander TopicExpander,
+	expandTopics bool,
 ) (*pbv2.ResolveResponse, error) {
 	if embeddingsServerURL == "" {
 		slog.Error("resolver=indicator requested, but the embeddings server is not configured for this deployment")
@@ -98,21 +78,10 @@ func ResolveUsingEmbeddings(
 		return nil, err
 	}
 
-	return buildResolveResponse(nodes, searchResp, typeOfValues), nil
+	return buildResolveResponse(ctx, nodes, searchResp, typeOfValues, topicExpander, expandTopics), nil
 }
 
 // callEmbeddingsServer handles the HTTP communication with the embeddings server.
-//
-// Inputs:
-//   - ctx: Context for the request.
-//   - httpClient: HTTP client to use for the request.
-//   - embeddingsServerURL: Base URL of the embeddings server.
-//   - idx: The index to use for resolution.
-//   - nodes: List of query strings to resolve.
-//
-// Returns:
-//   - *searchVarsResponse: The parsed JSON response from the server.
-//   - error: Any error encountered during the request or parsing.
 func callEmbeddingsServer(
 	ctx context.Context,
 	httpClient *http.Client,
@@ -180,11 +149,14 @@ func callEmbeddingsServer(
 }
 
 // buildResolveResponse converts the raw search response into the gRPC ResolveResponse.
-//
-// It iterates through the original requested nodes (queries) and attempts to find
-// corresponding results in the searchResp. If results are found, it delegates
-// to buildEntityCandidates to construct the candidate list.
-func buildResolveResponse(nodes []string, searchResp *searchVarsResponse, typeOfValues []string) *pbv2.ResolveResponse {
+func buildResolveResponse(
+	ctx context.Context,
+	nodes []string,
+	searchResp *searchVarsResponse,
+	typeOfValues []string,
+	topicExpander TopicExpander,
+	expandTopics bool,
+) *pbv2.ResolveResponse {
 	resolveResponse := &pbv2.ResolveResponse{
 		Entities: make([]*pbv2.ResolveResponse_Entity, 0, len(nodes)),
 	}
@@ -195,7 +167,7 @@ func buildResolveResponse(nodes []string, searchResp *searchVarsResponse, typeOf
 		}
 
 		if result, ok := searchResp.QueryResults[node]; ok {
-			entity.Candidates = buildEntityCandidates(&result, typeOfValues)
+			entity.Candidates = buildEntityCandidates(ctx, &result, typeOfValues, topicExpander, expandTopics)
 		}
 		resolveResponse.Entities = append(resolveResponse.Entities, entity)
 	}
@@ -203,22 +175,21 @@ func buildResolveResponse(nodes []string, searchResp *searchVarsResponse, typeOf
 }
 
 // buildEntityCandidates constructs a list of ResolveResponse_Entity_Candidate from a single searchResult.
-//
-// It maps the server's response format (SV list + scores) into the mixer's candidate format.
-// Key logic included:
-//   - Uses 'CosineScore' as the primary score.
-//   - Determines 'DominantType' based on the DCID (Topic vs StatVar).
-//   - Extracts the best matching sentence for metadata if available.
-func buildEntityCandidates(result *searchResult, typeOfValues []string) []*pbv2.ResolveResponse_Entity_Candidate {
+func buildEntityCandidates(
+	ctx context.Context,
+	result *searchResult,
+	typeOfValues []string,
+	topicExpander TopicExpander,
+	expandTopics bool,
+) []*pbv2.ResolveResponse_Entity_Candidate {
+	svInfos := fetchSVPropertyInfos(ctx, topicExpander, result)
+
 	candidates := make([]*pbv2.ResolveResponse_Entity_Candidate, 0, len(result.SV))
 	for i, statVarDcid := range result.SV {
-		// Safety check for parallel arrays
 		if i >= len(result.CosineScore) {
 			break
 		}
 
-		// Key logic: We use the server-provided CosineScore as the primary match score.
-		// This score is typically derived from the best matching sentence on the server side.
 		score := result.CosineScore[i]
 
 		dominantType := StatisticalVariableDominantType
@@ -249,11 +220,54 @@ func buildEntityCandidates(result *searchResult, typeOfValues []string) []*pbv2.
 		}
 
 		if sentences, hasSentences := result.SVToSentences[statVarDcid]; hasSentences && len(sentences) > 0 {
-			// Taking the top sentence match for display purposes
 			candidate.Metadata["sentence"] = sentences[0].Sentence
+		}
+
+		if dominantType == TopicDominantType {
+			if topicExpander != nil {
+				candidate.Name = topicExpander.GetTopicDisplayName(ctx, statVarDcid)
+				children, err := topicExpander.ExpandTopic(ctx, statVarDcid, expandTopics)
+				if err != nil {
+					slog.Error("Failed to expand topic during embedding resolution", "topic", statVarDcid, "error", err)
+				}
+				candidate.Children = children
+			}
+		} else {
+			if svInfos != nil {
+				if info, ok := svInfos[statVarDcid]; ok {
+					candidate.Name = info.Name
+					candidate.ObservationProperties = info.ObservationProperties
+				}
+			}
 		}
 
 		candidates = append(candidates, candidate)
 	}
 	return candidates
+}
+
+// fetchSVPropertyInfos aggregates non-topic DCIDs from search results and pre-fetches their property info.
+func fetchSVPropertyInfos(ctx context.Context, topicExpander TopicExpander, result *searchResult) map[string]SVPropertyInfo {
+	if topicExpander == nil || result == nil {
+		return nil
+	}
+	var svDcidsToFetch []string
+	for i, statVarDcid := range result.SV {
+		// Stop collecting if trailing SVs lack matching CosineScores, as they will be ignored in candidate assembly.
+		if i >= len(result.CosineScore) {
+			break
+		}
+		if !strings.Contains(statVarDcid, TopicDcidSubstring) {
+			svDcidsToFetch = append(svDcidsToFetch, statVarDcid)
+		}
+	}
+	if len(svDcidsToFetch) == 0 {
+		return nil
+	}
+	svInfos, err := topicExpander.GetSVPropertyInfos(ctx, svDcidsToFetch)
+	if err != nil {
+		slog.Error("Failed to fetch SV property infos during embedding resolution", "error", err, "dcids", svDcidsToFetch)
+		return nil
+	}
+	return svInfos
 }
