@@ -16,15 +16,19 @@ package server
 
 import (
 	"context"
+	"fmt"
 	"log/slog"
 	"math/rand"
+	"golang.org/x/sync/errgroup"
 	"net/http"
 	"os"
 	"path"
 	"path/filepath"
 	"runtime"
 	"strings"
+	"sync"
 	"sync/atomic"
+	"time"
 
 	cbt "cloud.google.com/go/bigtable"
 	pubsub "cloud.google.com/go/pubsub/v2"
@@ -42,6 +46,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/translator/solver"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
 	"github.com/datacommonsorg/mixer/internal/util"
+	"github.com/datacommonsorg/mixer/internal/agent"
 )
 
 // Server holds resources for a mixer server
@@ -59,6 +64,17 @@ type Server struct {
 	// Whether to use dispatcher flow with Spanner as a default datasource.
 	useSpannerGraph   bool
 	topicCacheManager *topic.TopicCacheManager
+	agentService      *agent.Service
+
+	// Centralized lifecycle scheduler registries
+	initHooks         map[string]func(ctx context.Context) error
+	periodicHooks     map[string]func(ctx context.Context) error
+
+	// Background scheduling fields
+	periodicTicker    *time.Ticker
+	stopPeriodicCh    chan struct{}
+	periodicWg        sync.WaitGroup
+	periodicOnce      sync.Once
 }
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) error {
@@ -154,6 +170,123 @@ func (s *Server) SubscribeBranchCacheUpdate(ctx context.Context) error {
 	)
 }
 
+// initAgentService initializes the decoupled agent.Service using Go's implicit satisfaction wiring.
+func (s *Server) initAgentService() {
+	s.agentService = agent.NewService(s, agent.NewCache(s))
+}
+
+// RegisterLifecycle registers the startup and periodic callbacks for a component under a single name key.
+// Either callback can be nil if the component only requires one of the lifecycle phases.
+func (s *Server) RegisterLifecycle(
+	name string,
+	initHook func(ctx context.Context) error,
+	periodicHook func(ctx context.Context) error,
+) {
+	if initHook != nil {
+		if s.initHooks == nil {
+			s.initHooks = make(map[string]func(ctx context.Context) error)
+		}
+		s.initHooks[name] = initHook
+	}
+	if periodicHook != nil {
+		if s.periodicHooks == nil {
+			s.periodicHooks = make(map[string]func(ctx context.Context) error)
+		}
+		s.periodicHooks[name] = periodicHook
+	}
+}
+
+// RunInitHooks executes all registered initialization callbacks concurrently in parallel.
+// If any hook fails, it returns the first encountered error and aborts.
+func (s *Server) RunInitHooks(ctx context.Context) error {
+	slog.Info("Executing all registered server startup initialization hooks in parallel")
+	return runHooksInParallel(ctx, s.initHooks, true /* failOnError */)
+}
+
+// StartPeriodicRefresher starts the centralized background goroutine to trigger periodic reloads.
+func (s *Server) StartPeriodicRefresher(ctx context.Context, interval time.Duration) {
+	s.periodicOnce.Do(func() {
+		if interval <= 0 {
+			slog.Info("Centralized periodic scheduler disabled (interval <= 0)")
+			return
+		}
+
+		slog.Info("Starting centralized periodic scheduler", "interval", interval)
+		s.periodicTicker = time.NewTicker(interval)
+		s.stopPeriodicCh = make(chan struct{})
+		s.periodicWg.Add(1)
+
+		go func() {
+			defer s.periodicWg.Done()
+			defer s.periodicTicker.Stop()
+
+			for {
+				select {
+				case <-s.stopPeriodicCh:
+					return
+				case <-ctx.Done():
+					return
+				case <-s.periodicTicker.C:
+					slog.Info("Centralized periodic scheduler ticker triggered")
+					_ = runHooksInParallel(ctx, s.periodicHooks, false /* failOnError */)
+				}
+			}
+		}()
+	})
+}
+
+// runHooksInParallel executes a collection of named callbacks concurrently.
+// - If failOnError is true: blocks until all hooks finish and returns the first error (startup).
+// - If failOnError is false: runs hooks asynchronously in background goroutines, logging failures (periodic refresh).
+func runHooksInParallel(ctx context.Context, hooks map[string]func(ctx context.Context) error, failOnError bool) error {
+	if len(hooks) == 0 {
+		return nil
+	}
+
+	var g errgroup.Group
+	for name, hook := range hooks {
+		hName := name
+		hFunc := hook
+
+		// Declare the core execution logic exactly once in a local closure
+		run := func() error {
+			slog.Info("Executing hook", "hook", hName)
+			start := time.Now()
+			err := hFunc(ctx)
+			if err != nil {
+				slog.Error("Hook execution failed", "hook", hName, "error", err)
+				if failOnError {
+					return fmt.Errorf("hook %q: %w", hName, err)
+				}
+			} else {
+				slog.Info("Hook completed successfully", "hook", hName, "duration", time.Since(start))
+			}
+			return nil
+		}
+
+		// Polymorphically dispatch the execution closure
+		if failOnError {
+			g.Go(run)
+		} else {
+			go func() { _ = run() }()
+		}
+	}
+
+	if failOnError {
+		return g.Wait()
+	}
+	return nil
+}
+
+// ClosePeriodicRefresher safely stops the background periodic scheduler goroutine and waits for exit.
+func (s *Server) ClosePeriodicRefresher() {
+	if s.stopPeriodicCh != nil {
+		close(s.stopPeriodicCh)
+		s.periodicWg.Wait()
+	}
+}
+
+
 // NewMixerServer creates a new mixer server instance.
 func NewMixerServer(
 	store *store.Store,
@@ -183,7 +316,19 @@ func NewMixerServer(
 		topicCacheManager:        topicCacheManager,
 	}
 	s.cachedata.Store(cachedata)
+	s.initAgentService()
+
 	return s
+}
+
+// AgentService returns the internal agent.Service instance.
+func (s *Server) AgentService() *agent.Service {
+	return s.agentService
+}
+
+// TopicCacheManager returns the internal topic.TopicCacheManager instance.
+func (s *Server) TopicCacheManager() *topic.TopicCacheManager {
+	return s.topicCacheManager
 }
 
 // shouldDivertV2 returns true if the request should be diverted to the dispatcher.

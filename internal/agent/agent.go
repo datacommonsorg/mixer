@@ -63,3 +63,11 @@ func NewService(mixer Mixer, cache *Cache) *Service {
 		cache: cache,
 	}
 }
+
+// Reset flushes all cached state inside the service L1 Cache atomically,
+// called when databases undergo static reloads.
+func (s *Service) Reset() {
+	if s.cache != nil {
+		s.cache.Reset()
+	}
+}
