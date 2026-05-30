@@ -150,6 +150,9 @@ const (
 	// Whether to log the full interpolated SQL query.
 	// To use, set header "X-Log-SQL: true"
 	XLogSQL = "X-Log-SQL"
+	// Whether to use base_multi_entity index for embeddings resolve.
+	// To use, set header "X-V2Resolve-MultiEntity: true"
+	XV2ResolveMultiEntity = "X-V2Resolve-MultiEntity"
 )
 
 // ZipAndEncode compresses the given content using gzip and encodes it in base64

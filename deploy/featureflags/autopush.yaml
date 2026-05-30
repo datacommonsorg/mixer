@@ -8,3 +8,4 @@ flags:
   UseSpannerGraph: true
   SpannerGraphDatabase: dc_graph_2026_01_27
   UseStaleReads: true
+  EnableV2ResolveMultiEntity: true

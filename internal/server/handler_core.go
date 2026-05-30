@@ -27,6 +27,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 )
 
@@ -49,7 +50,11 @@ func (s *Server) V2ResolveCore(
 		if !s.flags.EnableEmbeddingsResolver {
 			return nil, status.Errorf(codes.Unimplemented, "Resolving indicators is not enabled for this environment.")
 		}
-		return resolve.ResolveUsingEmbeddings(ctx, s.httpClient, s.embeddingsServerURL, s.resolveEmbeddingsIndexes, in.Request.GetNodes(), in.TypeOfValues, adapter, in.Request.GetExpandTopics())
+		idx := s.resolveEmbeddingsIndexes
+		if s.useMultiEntity(ctx) {
+			idx = "base_multi_entity"
+		}
+		return resolve.ResolveUsingEmbeddings(ctx, s.httpClient, s.embeddingsServerURL, idx, in.Request.GetNodes(), in.TypeOfValues, adapter, in.Request.GetExpandTopics())
 	case resolve.ResolveResolverTopic:
 		return resolve.ResolveTopics(ctx, adapter, in.Request.GetNodes(), in.Request.GetExpandTopics())
 	}
@@ -75,6 +80,17 @@ func (s *Server) V2ResolveCore(
 		//   <-countryNumericCode->wikidataId
 		return resolve.ID(ctx, s.store, in.Request.GetNodes(), in.InProp, in.OutProp)
 	}
+}
+
+func (s *Server) useMultiEntity(ctx context.Context) bool {
+	if !s.flags.EnableV2ResolveMultiEntity {
+		return false
+	}
+	if md, ok := metadata.FromIncomingContext(ctx); ok {
+		headers := md.Get(util.XV2ResolveMultiEntity)
+		return len(headers) > 0 && headers[0] == "true"
+	}
+	return false
 }
 
 // V2NodeCore gets node results from Cloud Bigtable.

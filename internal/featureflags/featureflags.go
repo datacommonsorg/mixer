@@ -49,6 +49,8 @@ type Flags struct {
 	// Whether to enable Spanner search embeddings.
 	// switch this to true in local.yaml for easier development
 	EnableSpannerSearchEmbeddings bool `yaml:"EnableSpannerSearchEmbeddings"`
+	// Whether to enable v2 resolve multi entity index.
+	EnableV2ResolveMultiEntity bool `yaml:"EnableV2ResolveMultiEntity"`
 }
 
 // setDefaultValues creates a new Flags struct with default values.
@@ -64,6 +66,7 @@ func setDefaultValues() *Flags {
 		UseStatisticalCalculation:     false,
 		EnableSDMXDataApi:             false,
 		EnableSpannerSearchEmbeddings: false,
+		EnableV2ResolveMultiEntity:    false,
 	}
 }
 
