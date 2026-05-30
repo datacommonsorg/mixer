@@ -21,11 +21,21 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
 
+// Package-level constants representing standard resolver, property, metadata, and boundary literals.
 const (
-	ResolverPlace     = "place"
-	ResolverIndicator = "indicator"
-	PropDescription   = "<-description->dcid"
-	DateLatest        = "LATEST"
+	ResolverPlace          = "place"
+	ResolverIndicator      = "indicator"
+	PropDescription        = "<-description->dcid"
+	DateLatest             = "LATEST"
+	DefaultPlaceWorld      = "World"
+	StatusSuccess          = "SUCCESS"
+	MetadataPlacesWithData = "places_with_data"
+	DcidSeparator          = ","
+	DcidTypeTopic          = "Topic"
+	DcidTypeVariable       = "StatisticalVariable"
+	DefaultSearchLimit     = 10
+	MaxSearchLimit         = 100
+	MinSearchLimit         = 0
 )
 
 // Mixer defines the strict subset of Mixer V2 API capabilities
