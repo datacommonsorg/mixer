@@ -49,7 +49,10 @@ func (s *Server) V2ResolveCore(
 		if !s.flags.EnableEmbeddingsResolver {
 			return nil, status.Errorf(codes.Unimplemented, "Resolving indicators is not enabled for this environment.")
 		}
-		idx := resolve.SelectEmbeddingsIndex(ctx, s.resolveEmbeddingsIndexes, s.flags.EnableDynamicIndexRequest)
+		idx, err := resolve.SelectEmbeddingsIndex(ctx, s.resolveEmbeddingsIndexes, s.flags.EnableDynamicIndexRequest)
+		if err != nil {
+			return nil, err
+		}
 		return resolve.ResolveUsingEmbeddings(ctx, s.httpClient, s.embeddingsServerURL, idx, in.Request.GetNodes(), in.TypeOfValues, adapter, in.Request.GetExpandTopics())
 	case resolve.ResolveResolverTopic:
 		return resolve.ResolveTopics(ctx, adapter, in.Request.GetNodes(), in.Request.GetExpandTopics())

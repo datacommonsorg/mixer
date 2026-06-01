@@ -49,15 +49,23 @@ var labelToIndex = map[string]string{
 }
 
 // SelectEmbeddingsIndex determines the correct index to use for embeddings resolution.
-func SelectEmbeddingsIndex(ctx context.Context, defaultIndex string, enableDynamicIndex bool) string {
-	if !enableDynamicIndex {
-		return defaultIndex
-	}
+func SelectEmbeddingsIndex(ctx context.Context, defaultIndex string, enableDynamicIndex bool) (string, error) {
 	label := util.GetSingleHeaderValue(ctx, util.XV2ResolveIndex)
-	if indexName, ok := labelToIndex[label]; ok {
-		return indexName
+	if label == "" {
+		return defaultIndex, nil
 	}
-	return defaultIndex
+
+	if !enableDynamicIndex {
+		slog.Error("Dynamic index request header ignored because feature is disabled", "label", label, "header", util.XV2ResolveIndex)
+		return "", status.Errorf(codes.FailedPrecondition, "Dynamic index request is not enabled in this environment.")
+	}
+
+	if indexName, ok := labelToIndex[label]; ok {
+		return indexName, nil
+	}
+
+	slog.Error("Invalid V2Resolve index label", "label", label, "header", util.XV2ResolveIndex)
+	return "", status.Errorf(codes.InvalidArgument, "Invalid V2Resolve index label: %s", label)
 }
 
 // searchVarsRequest represents the request body for the embeddings server
