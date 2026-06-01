@@ -1,1 +1,4 @@
 flags:
+  UseSpannerGraph: true
+  UseStaleReads: true
+  V2DivertFraction: 1.0
