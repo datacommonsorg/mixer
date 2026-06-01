@@ -59,10 +59,10 @@ func TestV3Observation(t *testing.T) {
 			{
 				req: &pbv2.ObservationRequest{
 					Variable: &pbv2.DcidOrExpression{
-						Dcids: []string{"AirPollutant_Cancer_Risk"},
+						Dcids: []string{"Count_Person"},
 					},
 					Entity: &pbv2.DcidOrExpression{
-						Dcids: []string{"geoId/01001", "geoId/02013"},
+						Dcids: []string{"country/JPN"},
 					},
 					Date:   "LATEST",
 					Select: []string{"entity", "variable", "date", "value"},
