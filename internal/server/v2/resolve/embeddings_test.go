@@ -7,6 +7,11 @@ import (
 	"net/http/httptest"
 	"strings"
 	"testing"
+
+	"github.com/datacommonsorg/mixer/internal/util"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/metadata"
+	"google.golang.org/grpc/status"
 )
 
 func TestResolveUsingEmbeddings(t *testing.T) {
@@ -295,5 +300,89 @@ func TestResolveUsingEmbeddings_Filter(t *testing.T) {
 	}
 	if resp.Entities[0].Candidates[0].Dcid != "dc/topic/Population" {
 		t.Errorf("Expected 'dc/topic/Population', got '%s'", resp.Entities[0].Candidates[0].Dcid)
+	}
+}
+
+func TestSelectEmbeddingsIndex(t *testing.T) {
+	tests := []struct {
+		name               string
+		headerValue        string
+		enableDynamicIndex bool
+		expectedIdx        string
+		expectError        bool
+		expectedErrorCode  codes.Code
+	}{
+		{
+			// Test: Fallback to default index.
+			// Situation: No X-V2Resolve-Index header is provided.
+			// Expectation: Returns the defaultIndex.
+			name:               "No header",
+			headerValue:        "",
+			enableDynamicIndex: true,
+			expectedIdx:        "default_idx",
+			expectError:        false,
+		},
+		{
+			// Test: Successful override to multi-entity index.
+			// Situation: Header is set to "multientity" and feature flag is enabled.
+			// Expectation: Returns "base_multi_entity".
+			name:               "Valid header, enabled",
+			headerValue:        "multientity",
+			enableDynamicIndex: true,
+			expectedIdx:        "base_multi_entity",
+			expectError:        false,
+		},
+		{
+			// Test: Error when feature is disabled.
+			// Situation: Header is set to "multientity" but feature flag is disabled.
+			// Expectation: Returns FailedPrecondition error.
+			name:               "Valid header, disabled",
+			headerValue:        "multientity",
+			enableDynamicIndex: false,
+			expectError:        true,
+			expectedErrorCode:  codes.FailedPrecondition,
+		},
+		{
+			// Test: Error on invalid label.
+			// Situation: Header is set to an unknown value "invalid".
+			// Expectation: Returns InvalidArgument error.
+			name:               "Invalid header, enabled",
+			headerValue:        "invalid",
+			enableDynamicIndex: true,
+			expectError:        true,
+			expectedErrorCode:  codes.InvalidArgument,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			ctx := context.Background()
+			if tc.headerValue != "" {
+				md := metadata.Pairs(util.XV2ResolveIndex, tc.headerValue)
+				ctx = metadata.NewIncomingContext(ctx, md)
+			}
+
+			idx, err := SelectEmbeddingsIndex(ctx, "default_idx", tc.enableDynamicIndex)
+
+			if tc.expectError {
+				if err == nil {
+					t.Fatalf("Expected error, got nil")
+				}
+				status, ok := status.FromError(err)
+				if !ok {
+					t.Fatalf("Expected gRPC status error, got %v", err)
+				}
+				if status.Code() != tc.expectedErrorCode {
+					t.Errorf("Expected error code %v, got %v", tc.expectedErrorCode, status.Code())
+				}
+			} else {
+				if err != nil {
+					t.Fatalf("Unexpected error: %v", err)
+				}
+				if idx != tc.expectedIdx {
+					t.Errorf("Expected index '%s', got '%s'", tc.expectedIdx, idx)
+				}
+			}
+		})
 	}
 }
