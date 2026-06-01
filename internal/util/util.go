@@ -47,6 +47,7 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
+	"google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -792,4 +793,13 @@ func IsTopicDcid(dcid string) bool {
 func IsStatVarGroupDcid(dcid string) bool {
 	idx := strings.Index(dcid, "/g/")
 	return idx > 0 && !strings.Contains(dcid[:idx], "/")
+}
+
+// ToStringListValue converts a string slice to a Protobuf structpb.ListValue object.
+func ToStringListValue(list []string) *structpb.ListValue {
+	var values []*structpb.Value
+	for _, s := range list {
+		values = append(values, structpb.NewStringValue(s))
+	}
+	return &structpb.ListValue{Values: values}
 }

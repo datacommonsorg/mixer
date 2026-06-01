@@ -15,6 +15,8 @@
 syntax = "proto3";
 package datacommons.v2;
 
+import "google/protobuf/struct.proto";
+
 option go_package = "github.com/datacommonsorg/mixer/internal/proto/v2";
 
 // Request payload for the search_indicators tool endpoint.
@@ -52,7 +54,7 @@ message SearchIndicatorsResponse {
 
   string status = 1;
   map<string, string> dcid_name_mappings = 2;
-  map<string, string> dcid_place_type_mappings = 3;
+  map<string, google.protobuf.ListValue> dcid_place_type_mappings = 3;
   repeated Topic topics = 4;
   repeated Variable variables = 5;
   ResolvedPlace resolved_parent_place = 6;

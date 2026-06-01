@@ -23,6 +23,7 @@ package v2
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	structpb "google.golang.org/protobuf/types/known/structpb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -117,7 +118,7 @@ type SearchIndicatorsResponse struct {
 	state                 protoimpl.MessageState                  `protogen:"open.v1"`
 	Status                string                                  `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
 	DcidNameMappings      map[string]string                       `protobuf:"bytes,2,rep,name=dcid_name_mappings,json=dcidNameMappings,proto3" json:"dcid_name_mappings,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	DcidPlaceTypeMappings map[string]string                       `protobuf:"bytes,3,rep,name=dcid_place_type_mappings,json=dcidPlaceTypeMappings,proto3" json:"dcid_place_type_mappings,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	DcidPlaceTypeMappings map[string]*structpb.ListValue          `protobuf:"bytes,3,rep,name=dcid_place_type_mappings,json=dcidPlaceTypeMappings,proto3" json:"dcid_place_type_mappings,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	Topics                []*SearchIndicatorsResponse_Topic       `protobuf:"bytes,4,rep,name=topics,proto3" json:"topics,omitempty"`
 	Variables             []*SearchIndicatorsResponse_Variable    `protobuf:"bytes,5,rep,name=variables,proto3" json:"variables,omitempty"`
 	ResolvedParentPlace   *SearchIndicatorsResponse_ResolvedPlace `protobuf:"bytes,6,opt,name=resolved_parent_place,json=resolvedParentPlace,proto3" json:"resolved_parent_place,omitempty"`
@@ -169,7 +170,7 @@ func (x *SearchIndicatorsResponse) GetDcidNameMappings() map[string]string {
 	return nil
 }
 
-func (x *SearchIndicatorsResponse) GetDcidPlaceTypeMappings() map[string]string {
+func (x *SearchIndicatorsResponse) GetDcidPlaceTypeMappings() map[string]*structpb.ListValue {
 	if x != nil {
 		return x.DcidPlaceTypeMappings
 	}
@@ -413,13 +414,13 @@ var File_v2_agent_proto protoreflect.FileDescriptor
 
 const file_v2_agent_proto_rawDesc = "" +
 	"\n" +
-	"\x0ev2/agent.proto\x12\x0edatacommons.v2\"\xbb\x01\n" +
+	"\x0ev2/agent.proto\x12\x0edatacommons.v2\x1a\x1cgoogle/protobuf/struct.proto\"\xbb\x01\n" +
 	"\x17SearchIndicatorsRequest\x12\x14\n" +
 	"\x05query\x18\x01 \x01(\tR\x05query\x12\x16\n" +
 	"\x06places\x18\x02 \x03(\tR\x06places\x12!\n" +
 	"\fparent_place\x18\x03 \x01(\tR\vparentPlace\x12(\n" +
 	"\x10per_search_limit\x18\x04 \x01(\x05R\x0eperSearchLimit\x12%\n" +
-	"\x0einclude_topics\x18\x05 \x01(\bR\rincludeTopics\"\x99\t\n" +
+	"\x0einclude_topics\x18\x05 \x01(\bR\rincludeTopics\"\xb5\t\n" +
 	"\x18SearchIndicatorsResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\x12l\n" +
 	"\x12dcid_name_mappings\x18\x02 \x03(\v2>.datacommons.v2.SearchIndicatorsResponse.DcidNameMappingsEntryR\x10dcidNameMappings\x12|\n" +
@@ -445,10 +446,10 @@ const file_v2_agent_proto_rawDesc = "" +
 	"\atype_of\x18\x03 \x03(\tR\x06typeOf\x1aC\n" +
 	"\x15DcidNameMappingsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1aH\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1ad\n" +
 	"\x1aDcidPlaceTypeMappingsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01B3Z1github.com/datacommonsorg/mixer/internal/proto/v2b\x06proto3"
+	"\x03key\x18\x01 \x01(\tR\x03key\x120\n" +
+	"\x05value\x18\x02 \x01(\v2\x1a.google.protobuf.ListValueR\x05value:\x028\x01B3Z1github.com/datacommonsorg/mixer/internal/proto/v2b\x06proto3"
 
 var (
 	file_v2_agent_proto_rawDescOnce sync.Once
@@ -469,8 +470,9 @@ var file_v2_agent_proto_goTypes = []any{
 	(*SearchIndicatorsResponse_Topic)(nil),         // 2: datacommons.v2.SearchIndicatorsResponse.Topic
 	(*SearchIndicatorsResponse_Variable)(nil),      // 3: datacommons.v2.SearchIndicatorsResponse.Variable
 	(*SearchIndicatorsResponse_ResolvedPlace)(nil), // 4: datacommons.v2.SearchIndicatorsResponse.ResolvedPlace
-	nil, // 5: datacommons.v2.SearchIndicatorsResponse.DcidNameMappingsEntry
-	nil, // 6: datacommons.v2.SearchIndicatorsResponse.DcidPlaceTypeMappingsEntry
+	nil,                        // 5: datacommons.v2.SearchIndicatorsResponse.DcidNameMappingsEntry
+	nil,                        // 6: datacommons.v2.SearchIndicatorsResponse.DcidPlaceTypeMappingsEntry
+	(*structpb.ListValue)(nil), // 7: google.protobuf.ListValue
 }
 var file_v2_agent_proto_depIdxs = []int32{
 	5, // 0: datacommons.v2.SearchIndicatorsResponse.dcid_name_mappings:type_name -> datacommons.v2.SearchIndicatorsResponse.DcidNameMappingsEntry
@@ -478,11 +480,12 @@ var file_v2_agent_proto_depIdxs = []int32{
 	2, // 2: datacommons.v2.SearchIndicatorsResponse.topics:type_name -> datacommons.v2.SearchIndicatorsResponse.Topic
 	3, // 3: datacommons.v2.SearchIndicatorsResponse.variables:type_name -> datacommons.v2.SearchIndicatorsResponse.Variable
 	4, // 4: datacommons.v2.SearchIndicatorsResponse.resolved_parent_place:type_name -> datacommons.v2.SearchIndicatorsResponse.ResolvedPlace
-	5, // [5:5] is the sub-list for method output_type
-	5, // [5:5] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	7, // 5: datacommons.v2.SearchIndicatorsResponse.DcidPlaceTypeMappingsEntry.value:type_name -> google.protobuf.ListValue
+	6, // [6:6] is the sub-list for method output_type
+	6, // [6:6] is the sub-list for method input_type
+	6, // [6:6] is the sub-list for extension type_name
+	6, // [6:6] is the sub-list for extension extendee
+	0, // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_v2_agent_proto_init() }

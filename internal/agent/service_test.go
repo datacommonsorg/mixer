@@ -19,9 +19,12 @@ import (
 	"fmt"
 	"testing"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
+	"google.golang.org/protobuf/types/known/structpb"
 )
 
 // mockMixerServer acts as a lightweight, self-contained in-process Mixer API engine
@@ -56,6 +59,47 @@ func (m *mockMixerServer) V2Resolve(ctx context.Context, in *pbv2.ResolveRequest
 			Candidates: candidates,
 		})
 	}
+	return resp, nil
+}
+
+// V2Node mocks property retrieval for name and typeOf of entities.
+func (m *mockMixerServer) V2Node(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+	resp := &pbv2.NodeResponse{
+		Data: make(map[string]*pbv2.LinkedGraph),
+	}
+
+	for _, node := range in.GetNodes() {
+		graph := &pbv2.LinkedGraph{
+			Arcs: make(map[string]*pbv2.Nodes),
+		}
+		if in.GetProperty() == "->[name, typeOf]" {
+			if node == "geoId/06" {
+				graph.Arcs["name"] = &pbv2.Nodes{
+					Nodes: []*pb.EntityInfo{
+						{Value: "California"},
+					},
+				}
+				graph.Arcs["typeOf"] = &pbv2.Nodes{
+					Nodes: []*pb.EntityInfo{
+						{Dcid: "State"},
+					},
+				}
+			} else if node == "World" {
+				graph.Arcs["name"] = &pbv2.Nodes{
+					Nodes: []*pb.EntityInfo{
+						{Value: "World"},
+					},
+				}
+				graph.Arcs["typeOf"] = &pbv2.Nodes{
+					Nodes: []*pb.EntityInfo{
+						{Dcid: "Place"},
+					},
+				}
+			}
+		}
+		resp.Data[node] = graph
+	}
+
 	return resp, nil
 }
 
@@ -192,8 +236,8 @@ func TestSearchIndicators_Basic(t *testing.T) {
 					"topic/RootHealth": "Global Health Topic",
 					"Count_Person":     "Global Population",
 				},
-				DcidPlaceTypeMappings: map[string]string{
-					"Earth": "Place",
+				DcidPlaceTypeMappings: map[string]*structpb.ListValue{
+					"Earth": util.ToStringListValue([]string{"Place"}),
 				},
 				Topics: []*pbv2.SearchIndicatorsResponse_Topic{
 					{

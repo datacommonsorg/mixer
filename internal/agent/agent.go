@@ -47,6 +47,9 @@ type Mixer interface {
 
 	// V2Observation fetches observations for a batch of variables and entities to check availability.
 	V2Observation(ctx context.Context, in *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error)
+
+	// V2Node fetches property values for a list of entities.
+	V2Node(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error)
 }
 
 // Service orchestrates the aggregation and formatting of lower-level API data in response

@@ -38,6 +38,10 @@ func (m *mockMixerClient) V2Resolve(ctx context.Context, in *pbv2.ResolveRequest
 	return nil, nil
 }
 
+func (m *mockMixerClient) V2Node(ctx context.Context, in *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
+	return nil, nil
+}
+
 func (m *mockMixerClient) V2Observation(ctx context.Context, in *pbv2.ObservationRequest) (*pbv2.ObservationResponse, error) {
 	atomic.AddInt32(&m.observationCalls, 1)
 

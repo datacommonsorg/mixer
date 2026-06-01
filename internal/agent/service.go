@@ -20,11 +20,11 @@ import (
 	"strings"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/types/known/structpb"
 )
-
-
 
 // SearchIndicators resolves explicit topics and variables matching a query,
 // filtering out indicators that lack observation data for target places.
@@ -145,6 +145,9 @@ func (s *Service) resolvePlaces(
 			parentPlaceDcid = info.Dcid
 		}
 	}
+
+	// Enrich empty candidate name/type metadata via V2Node lookup
+	s.enrichPlaceNamesAndTypes(ctx, resolvedMap)
 
 	return resolvedMap, parentPlaceDcid, nil
 }
@@ -275,9 +278,9 @@ func (s *Service) translateToResponse(
 	limit int32,
 ) (*pbv2.SearchIndicatorsResponse, error) {
 	resp := &pbv2.SearchIndicatorsResponse{
-		Status:           StatusSuccess,
-		DcidNameMappings: make(map[string]string),
-		DcidPlaceTypeMappings: make(map[string]string),
+		Status:                StatusSuccess,
+		DcidNameMappings:      make(map[string]string),
+		DcidPlaceTypeMappings: make(map[string]*structpb.ListValue),
 	}
 
 	// Populate place metadata mappings
@@ -327,9 +330,12 @@ func populatePlaceMetadata(
 	resolvedPlaces map[string]*resolvedPlaceInfo,
 	parentPlaceDcid string,
 ) {
+	resp.DcidPlaceTypeMappings = make(map[string]*structpb.ListValue)
+
 	for _, info := range resolvedPlaces {
 		resp.DcidNameMappings[info.Dcid] = info.Name
-		resp.DcidPlaceTypeMappings[info.Dcid] = strings.Join(info.TypeOf, DcidSeparator)
+
+		resp.DcidPlaceTypeMappings[info.Dcid] = util.ToStringListValue(info.TypeOf)
 
 		if info.Dcid == parentPlaceDcid {
 			resp.ResolvedParentPlace = &pbv2.SearchIndicatorsResponse_ResolvedPlace{
@@ -388,4 +394,63 @@ func isTopic(c *pbv2.ResolveResponse_Entity_Candidate) bool {
 		return true
 	}
 	return slices.Contains(c.GetTypeOf(), DcidTypeTopic)
+}
+
+// getPropValue extracts the first string value of a property from a LinkedGraph.
+func getPropValue(graph *pbv2.LinkedGraph, prop string) string {
+	if graph == nil || graph.Arcs == nil {
+		return ""
+	}
+	if nodes, ok := graph.Arcs[prop]; ok && len(nodes.GetNodes()) > 0 {
+		return nodes.GetNodes()[0].GetValue()
+	}
+	return ""
+}
+
+// getPropDcids extracts all node DCIDs of a property from a LinkedGraph.
+func getPropDcids(graph *pbv2.LinkedGraph, prop string) []string {
+	if graph == nil || graph.Arcs == nil {
+		return nil
+	}
+	var res []string
+	if nodes, ok := graph.Arcs[prop]; ok {
+		for _, node := range nodes.GetNodes() {
+			if dcid := node.GetDcid(); dcid != "" {
+				res = append(res, dcid)
+			}
+		}
+	}
+	return res
+}
+
+// enrichPlaceNamesAndTypes retrieves and populates the canonical names and types of resolved places.
+func (s *Service) enrichPlaceNamesAndTypes(
+	ctx context.Context,
+	resolvedMap map[string]*resolvedPlaceInfo,
+) {
+	var dcids []string
+	for _, info := range resolvedMap {
+		dcids = append(dcids, info.Dcid)
+	}
+
+	if len(dcids) == 0 {
+		return
+	}
+
+	nodeReq := &pbv2.NodeRequest{
+		Nodes:    dcids,
+		Property: "->[name, typeOf]",
+	}
+	if nodeResp, err := s.mixer.V2Node(ctx, nodeReq); err == nil && nodeResp != nil && nodeResp.GetData() != nil {
+		for _, info := range resolvedMap {
+			if nodeData, ok := nodeResp.GetData()[info.Dcid]; ok {
+				if name := getPropValue(nodeData, "name"); name != "" {
+					info.Name = name
+				}
+				if types := getPropDcids(nodeData, "typeOf"); len(types) > 0 {
+					info.TypeOf = types
+				}
+			}
+		}
+	}
 }
