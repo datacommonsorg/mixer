@@ -182,7 +182,7 @@ func buildEntityCandidates(
 	topicExpander TopicExpander,
 	expandTopics bool,
 ) []*pbv2.ResolveResponse_Entity_Candidate {
-	svInfos := fetchSVPropertyInfos(ctx, topicExpander, result)
+	svInfos := fetchSVPropertyInfos(ctx, topicExpander, result, expandTopics)
 
 	candidates := make([]*pbv2.ResolveResponse_Entity_Candidate, 0, len(result.SV))
 	for i, statVarDcid := range result.SV {
@@ -246,8 +246,8 @@ func buildEntityCandidates(
 	return candidates
 }
 
-// fetchSVPropertyInfos aggregates non-topic DCIDs from search results and pre-fetches their property info.
-func fetchSVPropertyInfos(ctx context.Context, topicExpander TopicExpander, result *searchResult) map[string]SVPropertyInfo {
+// fetchSVPropertyInfos aggregates non-topic DCIDs and expands topic DCIDs to pre-fetch their property info in batch.
+func fetchSVPropertyInfos(ctx context.Context, topicExpander TopicExpander, result *searchResult, expandTopics bool) map[string]SVPropertyInfo {
 	if topicExpander == nil || result == nil {
 		return nil
 	}
@@ -257,7 +257,10 @@ func fetchSVPropertyInfos(ctx context.Context, topicExpander TopicExpander, resu
 		if i >= len(result.CosineScore) {
 			break
 		}
-		if !strings.Contains(statVarDcid, TopicDcidSubstring) {
+		if strings.Contains(statVarDcid, TopicDcidSubstring) {
+			childSVs := topicExpander.GetTopicTargetSVs(ctx, statVarDcid, expandTopics)
+			svDcidsToFetch = append(svDcidsToFetch, childSVs...)
+		} else {
 			svDcidsToFetch = append(svDcidsToFetch, statVarDcid)
 		}
 	}

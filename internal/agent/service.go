@@ -16,11 +16,14 @@ package agent
 
 import (
 	"context"
+	"log/slog"
 	"slices"
 	"strings"
+	"time"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/util"
+	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/structpb"
@@ -32,6 +35,9 @@ func (s *Service) SearchIndicators(
 	ctx context.Context,
 	req *pbv2.SearchIndicatorsRequest,
 ) (*pbv2.SearchIndicatorsResponse, error) {
+	defer util.TimeTrack(time.Now(), "Agent: SearchIndicators")
+	slog.Info("SearchIndicators started", "query", req.GetQuery(), "places", req.GetPlaces(), "parentPlace", req.GetParentPlace())
+
 	// Validate request parameters
 	if err := validateRequest(req); err != nil {
 		return nil, err
@@ -43,35 +49,61 @@ func (s *Service) SearchIndicators(
 		places = []string{DefaultPlaceWorld}
 	}
 
-	// Resolve parent and query place names to DCIDs
-	resolvedPlaces, parentPlaceDcid, err := s.resolvePlaces(ctx, places, req.GetParentPlace())
-	if err != nil {
-		return nil, err
-	}
-
 	// Determine final limits: if empty, default to 10
 	limit := req.GetPerSearchLimit()
 	if limit <= 0 {
 		limit = DefaultSearchLimit
 	}
 
-	// Execute oversampled embeddings search (fetching twice the limit to guarantee high-quality matches after place filtering)
-	oversampledLimit := limit * 2
-	candidates, err := s.fetchCandidates(ctx, req.GetQuery(), oversampledLimit, req.GetIncludeTopics())
-	if err != nil {
+	// Phase 1: Resolve place names and fetch similarity candidates in parallel
+	var resolvedPlaces map[string]*resolvedPlaceInfo
+	var parentPlaceDcid string
+	var candidates []*pbv2.ResolveResponse_Entity_Candidate
+
+	g, gCtx := errgroup.WithContext(ctx)
+
+	g.Go(func() error {
+		var err error
+		resolvedPlaces, parentPlaceDcid, err = s.resolvePlaces(gCtx, places, req.GetParentPlace())
+		return err
+	})
+
+	g.Go(func() error {
+		var err error
+		oversampledLimit := limit * 2
+		candidates, err = s.fetchCandidates(gCtx, req.GetQuery(), oversampledLimit, req.GetIncludeTopics())
+		return err
+	})
+
+	if err := g.Wait(); err != nil {
 		return nil, err
 	}
 
-	// Perform place existence filtering if places are specified
-	var placeDcids []string
-	for _, info := range resolvedPlaces {
-		placeDcids = append(placeDcids, info.Dcid)
-	}
-	if len(placeDcids) > 0 {
-		candidates, err = s.filterByPlaceExistence(ctx, candidates, placeDcids, req.GetIncludeTopics())
-		if err != nil {
-			return nil, err
+	// Phase 2: Run place existence filtering and place metadata enrichment in parallel
+	g2, g2Ctx := errgroup.WithContext(ctx)
+
+	// Goroutine A: Filter candidate indicators by place existence checking
+	g2.Go(func() error {
+		var placeDcids []string
+		for _, info := range resolvedPlaces {
+			placeDcids = append(placeDcids, info.Dcid)
 		}
+		if len(placeDcids) > 0 {
+			var err error
+			candidates, err = s.filterByPlaceExistence(g2Ctx, candidates, placeDcids, req.GetIncludeTopics())
+			return err
+		}
+		return nil
+	})
+
+	// Goroutine B: Fetch and enrich names and types of resolved places in parallel
+	g2.Go(func() error {
+		s.enrichPlaceNamesAndTypes(g2Ctx, resolvedPlaces)
+		return nil
+	})
+
+	if err := g2.Wait(); err != nil {
+		return nil, err
 	}
 
 	// Assemble and format unified response payload with late truncation limits
@@ -104,6 +136,7 @@ func (s *Service) resolvePlaces(
 	places []string,
 	parentPlaceName string,
 ) (resolvedMap map[string]*resolvedPlaceInfo, parentPlaceDcid string, err error) {
+	defer util.TimeTrack(time.Now(), "Agent: resolvePlaces")
 	var placesToResolve []string
 	placesToResolve = append(placesToResolve, places...)
 	if parentPlaceName != "" {
@@ -146,9 +179,6 @@ func (s *Service) resolvePlaces(
 		}
 	}
 
-	// Enrich empty candidate name/type metadata via V2Node lookup
-	s.enrichPlaceNamesAndTypes(ctx, resolvedMap)
-
 	return resolvedMap, parentPlaceDcid, nil
 }
 
@@ -159,6 +189,7 @@ func (s *Service) fetchCandidates(
 	limit int32,
 	includeTopics bool,
 ) ([]*pbv2.ResolveResponse_Entity_Candidate, error) {
+	defer util.TimeTrack(time.Now(), "Agent: fetchCandidates")
 	// Map empty queries to browse root topics
 	var nodes []string
 	if query != "" {
@@ -196,22 +227,10 @@ func (s *Service) filterByPlaceExistence(
 	placeDcids []string,
 	includeTopics bool,
 ) ([]*pbv2.ResolveResponse_Entity_Candidate, error) {
-	// Collect all candidate variables to check.
-	// We pre-compute and memoize candidate topic child variables in a local map
-	// to avoid redundant recursive walks inside the nested place loop below.
-	var varsToCheck []string
-	candidateVars := make(map[*pbv2.ResolveResponse_Entity_Candidate][]string)
+	defer util.TimeTrack(time.Now(), "Agent: filterByPlaceExistence")
+	slog.Info("Filtering indicators by place existence", "candidatesCount", len(candidates), "placesCount", len(placeDcids))
 
-	for _, c := range candidates {
-		if isTopic(c) {
-			vars := collectTopicVariables(c)
-			candidateVars[c] = vars
-			varsToCheck = append(varsToCheck, vars...)
-		} else {
-			varsToCheck = append(varsToCheck, c.GetDcid())
-		}
-	}
-
+	varsToCheck, candidateVars := collectCandidateVariables(candidates)
 	if len(varsToCheck) == 0 {
 		return candidates, nil
 	}
@@ -227,20 +246,7 @@ func (s *Service) filterByPlaceExistence(
 	for _, c := range candidates {
 		var placesWithData []string
 		for _, p := range placeDcids {
-			hasData := false
-			if isTopic(c) {
-				// Topic has data if any child variable has data (instantly lookup memoized list)
-				for _, v := range candidateVars[c] {
-					if availabilityMap[p][v] {
-						hasData = true
-						break
-					}
-				}
-			} else {
-				hasData = availabilityMap[p][c.GetDcid()]
-			}
-
-			if hasData {
+			if candidateHasData(c, p, candidateVars, availabilityMap) {
 				placesWithData = append(placesWithData, p)
 			}
 		}
@@ -255,6 +261,45 @@ func (s *Service) filterByPlaceExistence(
 	}
 
 	return filtered, nil
+}
+
+// collectCandidateVariables iterates through candidates, extracts all queryable variables,
+// and memoizes topic variables to avoid redundant recursive traversals.
+func collectCandidateVariables(
+	candidates []*pbv2.ResolveResponse_Entity_Candidate,
+) ([]string, map[*pbv2.ResolveResponse_Entity_Candidate][]string) {
+	var varsToCheck []string
+	candidateVars := make(map[*pbv2.ResolveResponse_Entity_Candidate][]string)
+
+	for _, c := range candidates {
+		if isTopic(c) {
+			vars := collectTopicVariables(c)
+			candidateVars[c] = vars
+			varsToCheck = append(varsToCheck, vars...)
+		} else {
+			varsToCheck = append(varsToCheck, c.GetDcid())
+		}
+	}
+	return varsToCheck, candidateVars
+}
+
+// candidateHasData returns true if the candidate has active observations for a given place.
+func candidateHasData(
+	c *pbv2.ResolveResponse_Entity_Candidate,
+	place string,
+	candidateVars map[*pbv2.ResolveResponse_Entity_Candidate][]string,
+	availabilityMap map[string]map[string]bool,
+) bool {
+	if isTopic(c) {
+		// Topic has data if any of its descendant/child variables has data
+		for _, v := range candidateVars[c] {
+			if availabilityMap[place][v] {
+				return true
+			}
+		}
+		return false
+	}
+	return availabilityMap[place][c.GetDcid()]
 }
 
 // collectTopicVariables recursively walks candidate children to aggregate all member variables.
@@ -428,10 +473,12 @@ func (s *Service) enrichPlaceNamesAndTypes(
 	ctx context.Context,
 	resolvedMap map[string]*resolvedPlaceInfo,
 ) {
+	defer util.TimeTrack(time.Now(), "Agent: enrichPlaceNamesAndTypes")
 	var dcids []string
 	for _, info := range resolvedMap {
 		dcids = append(dcids, info.Dcid)
 	}
+	slog.Info("Enriching resolved place names and types via V2Node", "placesCount", len(dcids))
 
 	if len(dcids) == 0 {
 		return
