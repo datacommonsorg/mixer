@@ -150,9 +150,9 @@ const (
 	// Whether to log the full interpolated SQL query.
 	// To use, set header "X-Log-SQL: true"
 	XLogSQL = "X-Log-SQL"
-	// Whether to use base_multi_entity index for embeddings resolve.
-	// To use, set header "X-V2Resolve-MultiEntity: true"
-	XV2ResolveMultiEntity = "X-V2Resolve-MultiEntity"
+	// Header to specify which embeddings index to use for V2 Resolve.
+	// To use, set header "X-V2Resolve-Index: multientity"
+	XV2ResolveIndex = "X-V2Resolve-Index"
 )
 
 // ZipAndEncode compresses the given content using gzip and encodes it in base64
@@ -779,6 +779,22 @@ func GetMetadata(ctx context.Context) (surface string, toRemote bool) {
 		}
 	}
 	return surface, toRemote
+}
+
+// GetSingleHeaderValue reads the specified header from the context metadata and returns its first value.
+func GetSingleHeaderValue(ctx context.Context, headerName string) string {
+	if md, ok := metadata.FromIncomingContext(ctx); ok {
+		headers := md.Get(headerName)
+		if len(headers) > 0 {
+			return headers[0]
+		}
+	}
+	return ""
+}
+
+// IsHeaderTrue reads the specified header from the context metadata and returns true if its value is "true".
+func IsHeaderTrue(ctx context.Context, headerName string) bool {
+	return GetSingleHeaderValue(ctx, headerName) == "true"
 }
 
 // IsTopicDcid checks if the DCID belongs to a Topic.

@@ -27,6 +27,7 @@ import (
 	"strings"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -37,6 +38,27 @@ const (
 	StatisticalVariableDominantType = "StatisticalVariable"
 	SearchVarsQueryEndpoint         = "/api/search_vars"
 )
+
+const (
+	LabelMultiEntity     = "multientity"
+	IndexBaseMultiEntity = "base_multi_entity"
+)
+
+var labelToIndex = map[string]string{
+	LabelMultiEntity: IndexBaseMultiEntity,
+}
+
+// SelectEmbeddingsIndex determines the correct index to use for embeddings resolution.
+func SelectEmbeddingsIndex(ctx context.Context, defaultIndex string, enableDynamicIndex bool) string {
+	if !enableDynamicIndex {
+		return defaultIndex
+	}
+	label := util.GetSingleHeaderValue(ctx, util.XV2ResolveIndex)
+	if indexName, ok := labelToIndex[label]; ok {
+		return indexName
+	}
+	return defaultIndex
+}
 
 // searchVarsRequest represents the request body for the embeddings server
 type searchVarsRequest struct {
