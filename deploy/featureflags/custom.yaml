@@ -1,3 +1,4 @@
+# This should only be used for DCP, do not use it for base DC
 flags:
   UseSpannerGraph: true
   UseStaleReads: true
