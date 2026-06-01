@@ -343,7 +343,6 @@ func filterObservationsByDateAndFacet(
 func observationsToObservationResponse(
 	req *pbv2.ObservationRequest,
 	observations []*Observation,
-	shouldFilterInferiorFacets bool,
 ) *pbv2.ObservationResponse {
 	// The select options are handled separately since each has a different behavior in V2.
 	// This includes:
@@ -354,7 +353,7 @@ func observationsToObservationResponse(
 	qo := selectFieldsToQueryOptions(req.Select)
 	if isObservationRequest(&qo) {
 		// Returns FacetObservations with PointStats.
-		return obsToObsResponse(req, observations, shouldFilterInferiorFacets)
+		return obsToObsResponse(req, observations)
 	} else if qo.facet {
 		// Returns FacetObservations without PointStats.
 		return obsToFacetResponse(req, observations)
@@ -472,7 +471,10 @@ func mergeEntityOrderedFacets(
 	return result
 }
 
-func obsToObsResponse(req *pbv2.ObservationRequest, observations []*Observation, shouldFilterInferiorFacets bool) *pbv2.ObservationResponse {
+func obsToObsResponse(req *pbv2.ObservationRequest, observations []*Observation) *pbv2.ObservationResponse {
+	// Whether the response should filter out low ranked facets from the response.
+	// Note that the behavior differs for containedInPlace requests vs direct requests.
+	shouldFilterInferiorFacets := (req.Entity.Expression != "" && req.Date != "") || (req.Entity.Expression == "" && req.Date == shared.LATEST)
 	response := generateObsResponse(req.Variable, observations, true /*includeObs*/, shouldFilterInferiorFacets)
 
 	// Attach all requested entity dcids to response.

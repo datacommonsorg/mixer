@@ -33,7 +33,6 @@ import (
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	v2e "github.com/datacommonsorg/mixer/internal/server/v2/event"
 	resolvev2 "github.com/datacommonsorg/mixer/internal/server/v2/resolve"
-	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	v3 "github.com/datacommonsorg/mixer/internal/server/v3"
 	"github.com/datacommonsorg/mixer/internal/store/files"
 	"github.com/datacommonsorg/mixer/internal/translator/sparql"
@@ -188,11 +187,7 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 
 	observations = filterObservationsByDateAndFacet(observations, req.Date, req.Filter)
 
-	// Whether the response should filter out low ranked facets from the response.
-	// Note that the behavior differs for containedInPlace requests vs direct requests.
-	shouldFilterInferiorFacets := (req.Entity.Expression != "" && req.Date != "") || (req.Entity.Expression == "" && req.Date == shared.LATEST)
-
-	return observationsToObservationResponse(req, observations, shouldFilterInferiorFacets), nil
+	return observationsToObservationResponse(req, observations), nil
 }
 
 // fetchObservations retrieves observations from Spanner, supporting both direct entity lists and relation expressions (federated or local-only).
