@@ -25,7 +25,8 @@ message SearchIndicatorsRequest {
   repeated string places = 2;
   string parent_place = 3;
   int32 per_search_limit = 4;
-  bool include_topics = 5;
+  optional bool include_topics = 5;
+  optional bool expand_topics = 6;
 }
 
 // Response payload for the search_indicators tool endpoint.

@@ -55,6 +55,18 @@ func (s *Service) SearchIndicators(
 		limit = DefaultSearchLimit
 	}
 
+	// Determine include_topics default: true unless explicitly set to false
+	includeTopics := true
+	if req.IncludeTopics != nil {
+		includeTopics = req.GetIncludeTopics()
+	}
+
+	// Determine expand_topics default: true unless explicitly set to false
+	expandTopics := true
+	if req.ExpandTopics != nil {
+		expandTopics = req.GetExpandTopics()
+	}
+
 	// Phase 1: Resolve place names and fetch similarity candidates in parallel
 	var resolvedPlaces map[string]*resolvedPlaceInfo
 	var parentPlaceDcid string
@@ -71,8 +83,16 @@ func (s *Service) SearchIndicators(
 	g.Go(func() error {
 		var err error
 		oversampledLimit := limit * 2
-		candidates, err = s.fetchCandidates(gCtx, req.GetQuery(), oversampledLimit, req.GetIncludeTopics())
-		return err
+		// Fetch candidates using embeddings search. Leaf expansion is enabled depending on expandTopics.
+		candidates, err = s.fetchCandidates(gCtx, req.GetQuery(), oversampledLimit, expandTopics)
+		if err != nil {
+			return err
+		}
+		// If includeTopics is false, expand and deduplicate topic candidates into standard variables
+		if !includeTopics {
+			candidates = expandTopicCandidates(candidates)
+		}
+		return nil
 	})
 
 	if err := g.Wait(); err != nil {
@@ -90,7 +110,7 @@ func (s *Service) SearchIndicators(
 		}
 		if len(placeDcids) > 0 {
 			var err error
-			candidates, err = s.filterByPlaceExistence(g2Ctx, candidates, placeDcids, req.GetIncludeTopics())
+			candidates, err = s.filterByPlaceExistence(g2Ctx, candidates, placeDcids)
 			return err
 		}
 		return nil
@@ -187,7 +207,7 @@ func (s *Service) fetchCandidates(
 	ctx context.Context,
 	query string,
 	limit int32,
-	includeTopics bool,
+	expandTopics bool,
 ) ([]*pbv2.ResolveResponse_Entity_Candidate, error) {
 	defer util.TimeTrack(time.Now(), "Agent: fetchCandidates")
 	// Map empty queries to browse root topics
@@ -199,7 +219,7 @@ func (s *Service) fetchCandidates(
 	resolveReq := &pbv2.ResolveRequest{
 		Nodes:        nodes,
 		Resolver:     ResolverIndicator,
-		ExpandTopics: includeTopics,
+		ExpandTopics: expandTopics,
 	}
 
 	resp, err := s.mixer.V2Resolve(ctx, resolveReq)
@@ -225,7 +245,6 @@ func (s *Service) filterByPlaceExistence(
 	ctx context.Context,
 	candidates []*pbv2.ResolveResponse_Entity_Candidate,
 	placeDcids []string,
-	includeTopics bool,
 ) ([]*pbv2.ResolveResponse_Entity_Candidate, error) {
 	defer util.TimeTrack(time.Now(), "Agent: filterByPlaceExistence")
 	slog.Info("Filtering indicators by place existence", "candidatesCount", len(candidates), "placesCount", len(placeDcids))
@@ -263,8 +282,35 @@ func (s *Service) filterByPlaceExistence(
 	return filtered, nil
 }
 
-// collectCandidateVariables iterates through candidates, extracts all queryable variables,
-// and memoizes topic variables to avoid redundant recursive traversals.
+// expandTopicCandidates unpacks all nested children variables of topic candidates,
+// returning a flat slice of standard statistical variable candidates deduplicated by DCID.
+func expandTopicCandidates(
+	candidates []*pbv2.ResolveResponse_Entity_Candidate,
+) []*pbv2.ResolveResponse_Entity_Candidate {
+	var flat []*pbv2.ResolveResponse_Entity_Candidate
+	seen := make(map[string]bool)
+
+	for _, c := range candidates {
+		if isTopic(c) {
+			for _, child := range c.GetChildren() {
+				if isTopic(child) {
+					continue // Skip nested sub-topic candidates since include_topics is false
+				}
+				if !seen[child.GetDcid()] {
+					seen[child.GetDcid()] = true
+					flat = append(flat, child)
+				}
+			}
+		} else {
+			if !seen[c.GetDcid()] {
+				seen[c.GetDcid()] = true
+				flat = append(flat, c)
+			}
+		}
+	}
+	return flat
+}
+
 func collectCandidateVariables(
 	candidates []*pbv2.ResolveResponse_Entity_Candidate,
 ) ([]string, map[*pbv2.ResolveResponse_Entity_Candidate][]string) {
@@ -336,8 +382,6 @@ func (s *Service) translateToResponse(
 	varCount := int32(0)
 
 	for _, c := range candidates {
-		resp.DcidNameMappings[c.GetDcid()] = c.GetName()
-
 		var placesWithData []string
 		if pStr, ok := c.Metadata[MetadataPlacesWithData]; ok && pStr != "" {
 			placesWithData = strings.Split(pStr, DcidSeparator)
@@ -347,12 +391,14 @@ func (s *Service) translateToResponse(
 			if topicCount >= limit {
 				continue
 			}
+			resp.DcidNameMappings[c.GetDcid()] = c.GetName()
 			translateTopicCandidate(c, placesWithData, resp)
 			topicCount++
 		} else {
 			if varCount >= limit {
 				continue
 			}
+			resp.DcidNameMappings[c.GetDcid()] = c.GetName()
 			translateVariableCandidate(c, placesWithData, resp)
 			varCount++
 		}

@@ -23,6 +23,7 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/testing/protocmp"
 	"google.golang.org/protobuf/types/known/structpb"
 )
@@ -158,7 +159,6 @@ func TestSearchIndicators_Basic(t *testing.T) {
 			request: &pbv2.SearchIndicatorsRequest{
 				Query:          "health in america",
 				PerSearchLimit: 5,
-				IncludeTopics:  true,
 			},
 			resolveMockData: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
 				"health in america": {
@@ -209,7 +209,7 @@ func TestSearchIndicators_Basic(t *testing.T) {
 			request: &pbv2.SearchIndicatorsRequest{
 				Query:          "",
 				PerSearchLimit: 5,
-				IncludeTopics:  true,
+				IncludeTopics:  proto.Bool(true),
 			},
 			resolveMockData: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
 				DefaultPlaceWorld: {
@@ -246,6 +246,178 @@ func TestSearchIndicators_Basic(t *testing.T) {
 						MemberVariables:      []string{"Count_Person"},
 						AlternateDescriptions: []string{"Global Health Topic"},
 						PlacesWithData:       []string{"Earth"},
+					},
+				},
+			},
+		},
+		{
+			desc: "Flatten and deduplicate topic candidates into standard variables when include_topics is false",
+			request: &pbv2.SearchIndicatorsRequest{
+				Query:          "health in america",
+				PerSearchLimit: 5,
+				IncludeTopics:  proto.Bool(false),
+			},
+			resolveMockData: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
+				"health in america": {
+					{
+						Dcid:   "topic/Health",
+						TypeOf: []string{"Topic"},
+						Name:   "Health",
+						Children: []*pbv2.ResolveResponse_Entity_Candidate{
+							{
+								Dcid:   "Count_Person_WithAsthma",
+								TypeOf: []string{"StatisticalVariable"},
+								Name:   "People with Asthma",
+							},
+						},
+					},
+					{
+						Dcid:   "Count_Person_WithDiabetes",
+						TypeOf: []string{"StatisticalVariable"},
+						Name:   "People with Diabetes",
+					},
+					{
+						Dcid:   "Count_Person_WithAsthma", // Duplicate to test deduplication
+						TypeOf: []string{"StatisticalVariable"},
+						Name:   "People with Asthma",
+					},
+				},
+			},
+			wantResponse: &pbv2.SearchIndicatorsResponse{
+				Status: "SUCCESS",
+				DcidNameMappings: map[string]string{
+					"Count_Person_WithAsthma":   "People with Asthma",
+					"Count_Person_WithDiabetes": "People with Diabetes",
+				},
+				Variables: []*pbv2.SearchIndicatorsResponse_Variable{
+					{
+						Dcid:        "Count_Person_WithAsthma",
+						Description: "People with Asthma",
+					},
+					{
+						Dcid:        "Count_Person_WithDiabetes",
+						Description: "People with Diabetes",
+					},
+				},
+			},
+		},
+		{
+			desc: "Serve hierarchical nested topics when expand_topics is false",
+			request: &pbv2.SearchIndicatorsRequest{
+				Query:          "health in america",
+				PerSearchLimit: 5,
+				ExpandTopics:   proto.Bool(false),
+			},
+			resolveMockData: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
+				"health in america": {
+					{
+						Dcid:   "topic/Health",
+						TypeOf: []string{"Topic"},
+						Name:   "Health",
+						Children: []*pbv2.ResolveResponse_Entity_Candidate{
+							{
+								Dcid:   "topic/HealthSubTopic",
+								TypeOf: []string{"Topic"},
+								Name:   "Health Sub-Topic",
+							},
+							{
+								Dcid:   "Count_Person_WithDiabetes",
+								TypeOf: []string{"StatisticalVariable"},
+								Name:   "People with Diabetes",
+							},
+						},
+					},
+				},
+			},
+			wantResponse: &pbv2.SearchIndicatorsResponse{
+				Status: "SUCCESS",
+				DcidNameMappings: map[string]string{
+					"topic/Health":              "Health",
+					"topic/HealthSubTopic":      "Health Sub-Topic",
+					"Count_Person_WithDiabetes": "People with Diabetes",
+				},
+				Topics: []*pbv2.SearchIndicatorsResponse_Topic{
+					{
+						Dcid:                 "topic/Health",
+						Description:          "Health",
+						MemberTopics:         []string{"topic/HealthSubTopic"},
+						MemberVariables:      []string{"Count_Person_WithDiabetes"},
+						AlternateDescriptions: []string{"Health"},
+					},
+				},
+			},
+		},
+		{
+			desc: "Extract only immediate direct variables flat when include_topics is false and expand_topics is false",
+			request: &pbv2.SearchIndicatorsRequest{
+				Query:          "health in america",
+				PerSearchLimit: 5,
+				IncludeTopics:  proto.Bool(false),
+				ExpandTopics:   proto.Bool(false),
+			},
+			resolveMockData: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
+				"health in america": {
+					{
+						Dcid:   "topic/Health",
+						TypeOf: []string{"Topic"},
+						Name:   "Health",
+						Children: []*pbv2.ResolveResponse_Entity_Candidate{
+							{
+								Dcid:   "topic/HealthSubTopic", // Direct subtopic candidate (should be filtered out)
+								TypeOf: []string{"Topic"},
+								Name:   "Health Sub-Topic",
+							},
+							{
+								Dcid:   "Count_Person_WithDiabetes", // Direct variable candidate (should be returned)
+								TypeOf: []string{"StatisticalVariable"},
+								Name:   "People with Diabetes",
+							},
+						},
+					},
+				},
+			},
+			wantResponse: &pbv2.SearchIndicatorsResponse{
+				Status: "SUCCESS",
+				DcidNameMappings: map[string]string{
+					"Count_Person_WithDiabetes": "People with Diabetes",
+				},
+				Variables: []*pbv2.SearchIndicatorsResponse_Variable{
+					{
+						Dcid:        "Count_Person_WithDiabetes",
+						Description: "People with Diabetes",
+					},
+				},
+			},
+		},
+		{
+			desc: "Truncate results correctly and do not pollute DcidNameMappings with truncated variable names",
+			request: &pbv2.SearchIndicatorsRequest{
+				Query:          "health in america",
+				PerSearchLimit: 1,
+			},
+			resolveMockData: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
+				"health in america": {
+					{
+						Dcid:   "Count_Person_WithAsthma",
+						TypeOf: []string{"StatisticalVariable"},
+						Name:   "People with Asthma",
+					},
+					{
+						Dcid:   "Count_Person_WithDiabetes",
+						TypeOf: []string{"StatisticalVariable"},
+						Name:   "People with Diabetes",
+					},
+				},
+			},
+			wantResponse: &pbv2.SearchIndicatorsResponse{
+				Status: "SUCCESS",
+				DcidNameMappings: map[string]string{
+					"Count_Person_WithAsthma": "People with Asthma",
+				},
+				Variables: []*pbv2.SearchIndicatorsResponse_Variable{
+					{
+						Dcid:        "Count_Person_WithAsthma",
+						Description: "People with Asthma",
 					},
 				},
 			},

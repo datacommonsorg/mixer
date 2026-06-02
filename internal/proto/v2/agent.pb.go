@@ -43,7 +43,8 @@ type SearchIndicatorsRequest struct {
 	Places         []string               `protobuf:"bytes,2,rep,name=places,proto3" json:"places,omitempty"`
 	ParentPlace    string                 `protobuf:"bytes,3,opt,name=parent_place,json=parentPlace,proto3" json:"parent_place,omitempty"`
 	PerSearchLimit int32                  `protobuf:"varint,4,opt,name=per_search_limit,json=perSearchLimit,proto3" json:"per_search_limit,omitempty"`
-	IncludeTopics  bool                   `protobuf:"varint,5,opt,name=include_topics,json=includeTopics,proto3" json:"include_topics,omitempty"`
+	IncludeTopics  *bool                  `protobuf:"varint,5,opt,name=include_topics,json=includeTopics,proto3,oneof" json:"include_topics,omitempty"`
+	ExpandTopics   *bool                  `protobuf:"varint,6,opt,name=expand_topics,json=expandTopics,proto3,oneof" json:"expand_topics,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -107,8 +108,15 @@ func (x *SearchIndicatorsRequest) GetPerSearchLimit() int32 {
 }
 
 func (x *SearchIndicatorsRequest) GetIncludeTopics() bool {
-	if x != nil {
-		return x.IncludeTopics
+	if x != nil && x.IncludeTopics != nil {
+		return *x.IncludeTopics
+	}
+	return false
+}
+
+func (x *SearchIndicatorsRequest) GetExpandTopics() bool {
+	if x != nil && x.ExpandTopics != nil {
+		return *x.ExpandTopics
 	}
 	return false
 }
@@ -414,13 +422,16 @@ var File_v2_agent_proto protoreflect.FileDescriptor
 
 const file_v2_agent_proto_rawDesc = "" +
 	"\n" +
-	"\x0ev2/agent.proto\x12\x0edatacommons.v2\x1a\x1cgoogle/protobuf/struct.proto\"\xbb\x01\n" +
+	"\x0ev2/agent.proto\x12\x0edatacommons.v2\x1a\x1cgoogle/protobuf/struct.proto\"\x8f\x02\n" +
 	"\x17SearchIndicatorsRequest\x12\x14\n" +
 	"\x05query\x18\x01 \x01(\tR\x05query\x12\x16\n" +
 	"\x06places\x18\x02 \x03(\tR\x06places\x12!\n" +
 	"\fparent_place\x18\x03 \x01(\tR\vparentPlace\x12(\n" +
-	"\x10per_search_limit\x18\x04 \x01(\x05R\x0eperSearchLimit\x12%\n" +
-	"\x0einclude_topics\x18\x05 \x01(\bR\rincludeTopics\"\xb5\t\n" +
+	"\x10per_search_limit\x18\x04 \x01(\x05R\x0eperSearchLimit\x12*\n" +
+	"\x0einclude_topics\x18\x05 \x01(\bH\x00R\rincludeTopics\x88\x01\x01\x12(\n" +
+	"\rexpand_topics\x18\x06 \x01(\bH\x01R\fexpandTopics\x88\x01\x01B\x11\n" +
+	"\x0f_include_topicsB\x10\n" +
+	"\x0e_expand_topics\"\xb5\t\n" +
 	"\x18SearchIndicatorsResponse\x12\x16\n" +
 	"\x06status\x18\x01 \x01(\tR\x06status\x12l\n" +
 	"\x12dcid_name_mappings\x18\x02 \x03(\v2>.datacommons.v2.SearchIndicatorsResponse.DcidNameMappingsEntryR\x10dcidNameMappings\x12|\n" +
@@ -493,6 +504,7 @@ func file_v2_agent_proto_init() {
 	if File_v2_agent_proto != nil {
 		return
 	}
+	file_v2_agent_proto_msgTypes[0].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
