@@ -25,6 +25,7 @@ package datacommons;
 option go_package = "github.com/datacommonsorg/mixer/internal/proto/service";
 
 import "google/api/annotations.proto";
+import "google/api/httpbody.proto";
 import "common.proto";
 import "custom.proto";
 import "misc.proto";
@@ -72,6 +73,13 @@ service Mixer {
     option (google.api.http) = {
       get : "/v3/sdmx/v3/data/**"
       additional_bindings : {post : "/v3/sdmx/v3/data/**" body : "*"}
+    };
+  }
+
+  // Temporary probe for validating SDMX query parsing through Envoy and ESPv2.
+  rpc V3SdmxQueryProbe(datacommons.v3.SdmxQueryProbeRequest) returns (google.api.HttpBody) {
+    option (google.api.http) = {
+      get : "/sdmx/v3/debug/data/{context}/{agency_id}/{resource_id}/{version}/{key}"
     };
   }
 
