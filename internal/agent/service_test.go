@@ -225,6 +225,14 @@ func TestSearchIndicators_Basic(t *testing.T) {
 						},
 					},
 				},
+				"topic/RootHealth": {
+					{
+						Dcid: "topic/RootHealth",
+						Children: []*pbv2.ResolveResponse_Entity_Candidate{
+							{Dcid: "Count_Person", TypeOf: []string{"StatisticalVariable"}, Name: "Global Population"},
+						},
+					},
+				},
 			},
 			obsMockData: map[string][]string{
 				"Earth": {"Count_Person"},
@@ -461,6 +469,18 @@ func TestSearchIndicators_Basic(t *testing.T) {
 						},
 					},
 				},
+				"topic/HealthSubTopic": {
+					{
+						Dcid: "topic/HealthSubTopic",
+						Children: []*pbv2.ResolveResponse_Entity_Candidate{
+							{
+								Dcid:   "Count_Person_WithAsthma",
+								TypeOf: []string{"StatisticalVariable"},
+								Name:   "People with Asthma",
+							},
+						},
+					},
+				},
 			},
 			obsMockData: map[string][]string{
 				"geoId/06": {"Count_Person_WithDiabetes"},
@@ -468,9 +488,8 @@ func TestSearchIndicators_Basic(t *testing.T) {
 			wantResponse: &pbv2.SearchIndicatorsResponse{
 				Status: "SUCCESS",
 				DcidNameMappings: map[string]string{
-					"geoId/06":             "California",
-					"topic/Health":         "Health",
-					"topic/HealthSubTopic": "Health Sub-Topic",
+					"geoId/06":     "California",
+					"topic/Health": "Health",
 				},
 				DcidPlaceTypeMappings: map[string]*structpb.ListValue{
 					"geoId/06": util.ToStringListValue([]string{"State"}),
@@ -479,9 +498,8 @@ func TestSearchIndicators_Basic(t *testing.T) {
 					{
 						Dcid:                  "topic/Health",
 						Description:           "Health",
-						MemberTopics:          []string{"topic/HealthSubTopic"},
 						AlternateDescriptions: []string{"Health"},
-						PlacesWithData:         []string{"geoId/06"},
+						PlacesWithData:        []string{"geoId/06"},
 					},
 				},
 			},

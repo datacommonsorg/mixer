@@ -110,7 +110,7 @@ func (s *Service) SearchIndicators(
 		}
 		if len(placeDcids) > 0 {
 			var err error
-			candidates, err = s.filterByPlaceExistence(g2Ctx, candidates, placeDcids, expandTopics)
+			candidates, err = s.filterByPlaceExistence(g2Ctx, candidates, placeDcids)
 			return err
 		}
 		return nil
@@ -250,15 +250,25 @@ func (s *Service) filterByPlaceExistence(
 	ctx context.Context,
 	candidates []*pbv2.ResolveResponse_Entity_Candidate,
 	placeDcids []string,
-	expandTopics bool,
 ) ([]*pbv2.ResolveResponse_Entity_Candidate, error) {
 	defer util.TimeTrack(time.Now(), "Agent: filterByPlaceExistence")
 	slog.Info("Filtering indicators by place existence", "candidatesCount", len(candidates), "placesCount", len(placeDcids))
 
-	varsToCheck, candidateVars, err := s.collectCandidateVariables(ctx, candidates, expandTopics)
+	if len(placeDcids) == 0 {
+		return candidates, nil
+	}
+
+	// Collect all topic DCIDs (parents & child subtopics) and direct variables across all candidates
+	topicDcids, directVarDcids := collectSubtopicsAndDirectVars(candidates)
+
+	// Fetch descendant variables of all topics concurrently in a single batch
+	topicDescendants, err := s.fetchDescendantVariables(ctx, topicDcids)
 	if err != nil {
 		return nil, err
 	}
+
+	// Gather all variables to check for place availability
+	varsToCheck := gatherVarsToCheck(directVarDcids, topicDescendants)
 	if len(varsToCheck) == 0 {
 		return candidates, nil
 	}
@@ -269,22 +279,17 @@ func (s *Service) filterByPlaceExistence(
 		return nil, status.Errorf(codes.Internal, "failed to check variables place availability: %v", err)
 	}
 
-	// Filter candidates list based on availability
+	// Filter candidates list and prune child subtopics and variables in-place
 	var filtered []*pbv2.ResolveResponse_Entity_Candidate
 	for _, c := range candidates {
-		var placesWithData []string
-		for _, p := range placeDcids {
-			if candidateHasData(c, p, candidateVars, availabilityMap) {
-				placesWithData = append(placesWithData, p)
+		if isTopic(c) {
+			if prunedTopic, ok := pruneSingleTopic(c, placeDcids, topicDescendants, availabilityMap); ok {
+				filtered = append(filtered, prunedTopic)
 			}
-		}
-
-		if len(placesWithData) > 0 || len(placeDcids) == 0 {
-			// Candidate remains active! Cache the places with data metadata
-			c.Metadata = map[string]string{
-				MetadataPlacesWithData: strings.Join(placesWithData, DcidSeparator),
+		} else {
+			if prunedVar, ok := pruneSingleVariable(c, placeDcids, availabilityMap); ok {
+				filtered = append(filtered, prunedVar)
 			}
-			filtered = append(filtered, c)
 		}
 	}
 
@@ -320,45 +325,133 @@ func expandTopicCandidates(
 	return flat
 }
 
-func (s *Service) collectCandidateVariables(
-	ctx context.Context,
+// collectSubtopicsAndDirectVars separates subtopic DCIDs and direct variable DCIDs across candidates.
+func collectSubtopicsAndDirectVars(
 	candidates []*pbv2.ResolveResponse_Entity_Candidate,
-	expandTopics bool,
-) ([]string, map[*pbv2.ResolveResponse_Entity_Candidate][]string, error) {
-	var varsToCheck []string
-	candidateVars := make(map[*pbv2.ResolveResponse_Entity_Candidate][]string)
-
+) ([]string, []string) {
 	var topicDcids []string
+	var directVarDcids []string
 	for _, c := range candidates {
 		if isTopic(c) {
 			topicDcids = append(topicDcids, c.GetDcid())
-		}
-	}
-
-	var descendantMap map[string][]string
-	if len(topicDcids) > 0 && !expandTopics {
-		var err error
-		descendantMap, err = s.fetchDescendantVariables(ctx, topicDcids)
-		if err != nil {
-			return nil, nil, err
-		}
-	}
-
-	for _, c := range candidates {
-		if isTopic(c) {
-			var vars []string
-			if expandTopics {
-				vars = collectTopicVariables(c)
-			} else {
-				vars = descendantMap[c.GetDcid()]
+			for _, child := range c.GetChildren() {
+				if isTopic(child) {
+					topicDcids = append(topicDcids, child.GetDcid())
+				} else {
+					directVarDcids = append(directVarDcids, child.GetDcid())
+				}
 			}
-			candidateVars[c] = vars
-			varsToCheck = append(varsToCheck, vars...)
 		} else {
-			varsToCheck = append(varsToCheck, c.GetDcid())
+			directVarDcids = append(directVarDcids, c.GetDcid())
 		}
 	}
-	return varsToCheck, candidateVars, nil
+	return topicDcids, directVarDcids
+}
+
+// gatherVarsToCheck aggregates direct variables and all subtopic descendant variables.
+func gatherVarsToCheck(
+	directVarDcids []string,
+	subtopicDescendants map[string][]string,
+) []string {
+	var vars []string
+	vars = append(vars, directVarDcids...)
+	for _, descendantVars := range subtopicDescendants {
+		vars = append(vars, descendantVars...)
+	}
+	return vars
+}
+
+// hasPlacesWithData checks if any descendant variable has data for any target place.
+func hasPlacesWithData(
+	descendants []string,
+	placeDcids []string,
+	availabilityMap map[string]map[string]bool,
+) []string {
+	var places []string
+	for _, p := range placeDcids {
+		for _, v := range descendants {
+			if availabilityMap[p][v] {
+				places = append(places, p)
+				break
+			}
+		}
+	}
+	slices.Sort(places)
+	return places
+}
+
+// pruneSingleTopic prunes empty subtopics/variables from a topic candidate c, returning true if the topic itself has data.
+func pruneSingleTopic(
+	c *pbv2.ResolveResponse_Entity_Candidate,
+	placeDcids []string,
+	topicDescendants map[string][]string,
+	availabilityMap map[string]map[string]bool,
+) (*pbv2.ResolveResponse_Entity_Candidate, bool) {
+	parentPlaces := hasPlacesWithData(topicDescendants[c.GetDcid()], placeDcids, availabilityMap)
+	if len(parentPlaces) == 0 {
+		return nil, false
+	}
+
+	var keptChildren []*pbv2.ResolveResponse_Entity_Candidate
+	for _, child := range c.GetChildren() {
+		var childPlaces []string
+		if isTopic(child) {
+			childPlaces = hasPlacesWithData(topicDescendants[child.GetDcid()], placeDcids, availabilityMap)
+		} else {
+			childPlaces = placesWithDataForVar(child.GetDcid(), placeDcids, availabilityMap)
+		}
+
+		if len(childPlaces) > 0 {
+			setPlacesWithDataMetadata(child, childPlaces)
+			keptChildren = append(keptChildren, child)
+		}
+	}
+
+	c.Children = keptChildren
+
+	if len(parentPlaces) > 0 {
+		setPlacesWithDataMetadata(c, parentPlaces)
+	}
+
+	return c, true
+}
+
+// pruneSingleVariable filters a variable candidate by place availability.
+func pruneSingleVariable(
+	c *pbv2.ResolveResponse_Entity_Candidate,
+	placeDcids []string,
+	availabilityMap map[string]map[string]bool,
+) (*pbv2.ResolveResponse_Entity_Candidate, bool) {
+	placesWithData := placesWithDataForVar(c.GetDcid(), placeDcids, availabilityMap)
+	if len(placesWithData) == 0 {
+		return nil, false
+	}
+	setPlacesWithDataMetadata(c, placesWithData)
+	return c, true
+}
+
+// placesWithDataForVar returns a sorted list of places where the variable has data.
+func placesWithDataForVar(
+	varDcid string,
+	placeDcids []string,
+	availabilityMap map[string]map[string]bool,
+) []string {
+	var places []string
+	for _, p := range placeDcids {
+		if availabilityMap[p][varDcid] {
+			places = append(places, p)
+		}
+	}
+	slices.Sort(places)
+	return places
+}
+
+// setPlacesWithDataMetadata sets the metadata field for places with data.
+func setPlacesWithDataMetadata(c *pbv2.ResolveResponse_Entity_Candidate, places []string) {
+	if c.Metadata == nil {
+		c.Metadata = make(map[string]string)
+	}
+	c.Metadata[MetadataPlacesWithData] = strings.Join(places, DcidSeparator)
 }
 
 func (s *Service) fetchDescendantVariables(
@@ -405,38 +498,6 @@ func (s *Service) fetchDescendantVariables(
 		}
 	}
 	return res, nil
-}
-
-// candidateHasData returns true if the candidate has active observations for a given place.
-func candidateHasData(
-	c *pbv2.ResolveResponse_Entity_Candidate,
-	place string,
-	candidateVars map[*pbv2.ResolveResponse_Entity_Candidate][]string,
-	availabilityMap map[string]map[string]bool,
-) bool {
-	if isTopic(c) {
-		// Topic has data if any of its descendant/child variables has data
-		for _, v := range candidateVars[c] {
-			if availabilityMap[place][v] {
-				return true
-			}
-		}
-		return false
-	}
-	return availabilityMap[place][c.GetDcid()]
-}
-
-// collectTopicVariables recursively walks candidate children to aggregate all member variables.
-func collectTopicVariables(cand *pbv2.ResolveResponse_Entity_Candidate) []string {
-	var vars []string
-	for _, child := range cand.GetChildren() {
-		if isTopic(child) {
-			vars = append(vars, collectTopicVariables(child)...)
-		} else {
-			vars = append(vars, child.GetDcid())
-		}
-	}
-	return vars
 }
 
 // translateToResponse formats and translates candidate lists into the final RPC payload.
