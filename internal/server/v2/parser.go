@@ -92,7 +92,16 @@ func parseArc(arrow, expr string) (*Arc, error) {
 				codes.InvalidArgument, "invalid list string: %s", rawExpr)
 		}
 		expr = expr[1 : len(expr)-1]
-		arc.BracketProps = strings.Split(expr, ",")
+
+		bracketProps, bracketFilters, err := parseBracketList(expr)
+		if err != nil {
+			return nil, err
+		}
+
+		arc.BracketProps = bracketProps
+		if len(bracketFilters) > 0 {
+			arc.BracketFilters = bracketFilters
+		}
 		return arc, nil
 	}
 	for i := 0; i < len(expr); i++ {
@@ -112,33 +121,9 @@ func parseArc(arrow, expr string) (*Arc, error) {
 	}
 	// {prop1:[val1_1, val1_2], prop2:val2}
 	if len(expr) > 0 && expr[0] == '{' {
-		if expr[len(expr)-1] != '}' {
-			return nil, status.Errorf(
-				codes.InvalidArgument, "invalid filter string: %s", rawExpr)
-		}
-		filter := map[string][]string{}
-		expr = squareBracketReplacer.Replace(expr[1 : len(expr)-1])
-		parts := strings.Split(expr, ",")
-		lastKey := ""
-		for _, part := range parts {
-			if part == "" {
-				continue
-			}
-			if strings.Contains(part, ":") {
-				kv := strings.Split(part, ":")
-				if len(kv) != 2 || kv[0] == "" || kv[1] == "" {
-					return nil, status.Errorf(
-						codes.InvalidArgument, "invalid filter string: %s", rawExpr)
-				}
-				lastKey = kv[0]
-				filter[lastKey] = append(filter[lastKey], kv[1])
-			} else { // No ":" means this is another val in square bracket.
-				if lastKey == "" {
-					return nil, status.Errorf(
-						codes.InvalidArgument, "invalid filter string: %s", rawExpr)
-				}
-				filter[lastKey] = append(filter[lastKey], part)
-			}
+		filter, err := parseFilterString(expr)
+		if err != nil {
+			return nil, err
 		}
 		arc.Filter = filter
 		return arc, nil
@@ -216,4 +201,100 @@ func ParseContainedInPlace(expr string) (*ContainedInPlace, error) {
 			codes.InvalidArgument, "invalid expression string: %s", expr)
 	}
 	return &ContainedInPlace{Ancestor: g.Subject, ChildPlaceType: typeOfs[0]}, nil
+}
+
+// parseBracketList processes the inner contents of a bracketed property list
+func parseBracketList(expr string) ([]string, map[string]map[string][]string, error) {
+	var bracketProps []string
+	bracketFilters := make(map[string]map[string][]string)
+
+	start := 0
+	inBraces := false
+
+	for i := 0; i < len(expr); i++ {
+		switch expr[i] {
+		case '{':
+			inBraces = true
+		case '}':
+			inBraces = false
+		case ',':
+			if !inBraces {
+				part := expr[start:i]
+				if part != "" {
+					prop, filter, err := extractPropAndFilter(part)
+					if err != nil {
+						return nil, nil, err
+					}
+					bracketProps = append(bracketProps, prop)
+					if filter != nil {
+						bracketFilters[prop] = filter
+					}
+				}
+				start = i + 1
+			}
+		}
+	}
+
+	// Handle the final element after the last comma
+	if start < len(expr) {
+		part := expr[start:]
+		if part != "" {
+			prop, filter, err := extractPropAndFilter(part)
+			if err != nil {
+				return nil, nil, err
+			}
+			bracketProps = append(bracketProps, prop)
+			if filter != nil {
+				bracketFilters[prop] = filter
+			}
+		}
+	}
+
+	return bracketProps, bracketFilters, nil
+}
+
+// extractPropAndFilter separates a property name from its optional inline filter.
+func extractPropAndFilter(part string) (string, map[string][]string, error) {
+	idx := strings.IndexByte(part, '{')
+	if idx == -1 {
+		return part, nil, nil
+	}
+
+	filter, err := parseFilterString(part[idx:])
+	if err != nil {
+		return "", nil, err
+	}
+	return part[:idx], filter, nil
+}
+
+func parseFilterString(expr string) (map[string][]string, error) {
+	if expr[0] != '{' || expr[len(expr)-1] != '}' {
+		return nil, status.Errorf(
+			codes.InvalidArgument, "invalid filter string: %s", expr)
+	}
+	filter := map[string][]string{}
+	inner := squareBracketReplacer.Replace(expr[1 : len(expr)-1])
+	parts := strings.Split(inner, ",")
+	lastKey := ""
+	for _, part := range parts {
+		if part == "" {
+			continue
+		}
+		if strings.Contains(part, ":") {
+			kv := strings.Split(part, ":")
+			if len(kv) != 2 || kv[0] == "" || kv[1] == "" {
+				return nil, status.Errorf(
+					codes.InvalidArgument, "invalid filter string: %s", expr)
+			}
+			lastKey = kv[0]
+			filter[lastKey] = append(filter[lastKey], kv[1])
+		} else { // No ":" means this is another val in square bracket.
+			if lastKey == "" {
+				return nil, status.Errorf(
+					codes.InvalidArgument, "invalid filter string: %s", expr)
+			}
+			filter[lastKey] = append(filter[lastKey], part)
+		}
+	}
+	return filter, nil
 }
