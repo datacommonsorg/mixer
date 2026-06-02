@@ -244,6 +244,7 @@ func runHooksInParallel(ctx context.Context, hooks map[string]func(ctx context.C
 	}
 
 	var g errgroup.Group
+	var wg sync.WaitGroup
 	for name, hook := range hooks {
 		hName := name
 		hFunc := hook
@@ -268,13 +269,18 @@ func runHooksInParallel(ctx context.Context, hooks map[string]func(ctx context.C
 		if failOnError {
 			g.Go(run)
 		} else {
-			go func() { _ = run() }()
+			wg.Add(1)
+			go func() {
+				defer wg.Done()
+				_ = run()
+			}()
 		}
 	}
 
 	if failOnError {
 		return g.Wait()
 	}
+	wg.Wait()
 	return nil
 }
 

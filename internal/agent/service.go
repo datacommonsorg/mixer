@@ -35,6 +35,9 @@ func (s *Service) SearchIndicators(
 	ctx context.Context,
 	req *pbv2.SearchIndicatorsRequest,
 ) (*pbv2.SearchIndicatorsResponse, error) {
+	if req == nil {
+		return nil, status.Error(codes.InvalidArgument, "request cannot be nil")
+	}
 	defer util.TimeTrack(time.Now(), "Agent: SearchIndicators")
 	slog.Info("SearchIndicators started", "query", req.GetQuery(), "places", req.GetPlaces(), "parentPlace", req.GetParentPlace())
 
@@ -132,6 +135,9 @@ func (s *Service) SearchIndicators(
 
 // validateRequest checks the validity of the incoming request constraints.
 func validateRequest(req *pbv2.SearchIndicatorsRequest) error {
+	if req == nil {
+		return status.Error(codes.InvalidArgument, "request cannot be nil")
+	}
 	limit := req.GetPerSearchLimit()
 	if limit < MinSearchLimit || limit > MaxSearchLimit {
 		return status.Errorf(codes.InvalidArgument, "per_search_limit must be between %d and %d, got: %d", MinSearchLimit, MaxSearchLimit, limit)
@@ -369,8 +375,12 @@ func hasPlacesWithData(
 ) []string {
 	var places []string
 	for _, p := range placeDcids {
+		placeMap, ok := availabilityMap[p]
+		if !ok || placeMap == nil {
+			continue
+		}
 		for _, v := range descendants {
-			if availabilityMap[p][v] {
+			if placeMap[v] {
 				places = append(places, p)
 				break
 			}
@@ -438,7 +448,8 @@ func placesWithDataForVar(
 ) []string {
 	var places []string
 	for _, p := range placeDcids {
-		if availabilityMap[p][varDcid] {
+		placeMap, ok := availabilityMap[p]
+		if ok && placeMap != nil && placeMap[varDcid] {
 			places = append(places, p)
 		}
 	}
