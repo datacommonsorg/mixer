@@ -33,6 +33,7 @@ import (
 	v1 "github.com/datacommonsorg/mixer/internal/proto/v1"
 	v2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	v3 "github.com/datacommonsorg/mixer/internal/proto/v3"
+	httpbody "google.golang.org/genproto/googleapis/api/httpbody"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -47,6 +48,7 @@ const (
 	Mixer_V3Node_FullMethodName                       = "/datacommons.Mixer/V3Node"
 	Mixer_V3Observation_FullMethodName                = "/datacommons.Mixer/V3Observation"
 	Mixer_V3SdmxData_FullMethodName                   = "/datacommons.Mixer/V3SdmxData"
+	Mixer_V3SdmxQueryProbe_FullMethodName             = "/datacommons.Mixer/V3SdmxQueryProbe"
 	Mixer_V3NodeSearch_FullMethodName                 = "/datacommons.Mixer/V3NodeSearch"
 	Mixer_V3Resolve_FullMethodName                    = "/datacommons.Mixer/V3Resolve"
 	Mixer_V3Event_FullMethodName                      = "/datacommons.Mixer/V3Event"
@@ -118,6 +120,8 @@ type MixerClient interface {
 	V3Node(ctx context.Context, in *v2.NodeRequest, opts ...grpc.CallOption) (*v2.NodeResponse, error)
 	V3Observation(ctx context.Context, in *v2.ObservationRequest, opts ...grpc.CallOption) (*v2.ObservationResponse, error)
 	V3SdmxData(ctx context.Context, in *v3.SdmxDataRequest, opts ...grpc.CallOption) (*v3.SdmxDataResponse, error)
+	// Temporary probe for validating SDMX query parsing through Envoy and ESPv2.
+	V3SdmxQueryProbe(ctx context.Context, in *v3.SdmxQueryProbeRequest, opts ...grpc.CallOption) (*httpbody.HttpBody, error)
 	V3NodeSearch(ctx context.Context, in *v2.NodeSearchRequest, opts ...grpc.CallOption) (*v2.NodeSearchResponse, error)
 	V3Resolve(ctx context.Context, in *v2.ResolveRequest, opts ...grpc.CallOption) (*v2.ResolveResponse, error)
 	V3Event(ctx context.Context, in *v2.EventRequest, opts ...grpc.CallOption) (*v2.EventResponse, error)
@@ -246,6 +250,15 @@ func (c *mixerClient) V3Observation(ctx context.Context, in *v2.ObservationReque
 func (c *mixerClient) V3SdmxData(ctx context.Context, in *v3.SdmxDataRequest, opts ...grpc.CallOption) (*v3.SdmxDataResponse, error) {
 	out := new(v3.SdmxDataResponse)
 	err := c.cc.Invoke(ctx, Mixer_V3SdmxData_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *mixerClient) V3SdmxQueryProbe(ctx context.Context, in *v3.SdmxQueryProbeRequest, opts ...grpc.CallOption) (*httpbody.HttpBody, error) {
+	out := new(httpbody.HttpBody)
+	err := c.cc.Invoke(ctx, Mixer_V3SdmxQueryProbe_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -818,6 +831,8 @@ type MixerServer interface {
 	V3Node(context.Context, *v2.NodeRequest) (*v2.NodeResponse, error)
 	V3Observation(context.Context, *v2.ObservationRequest) (*v2.ObservationResponse, error)
 	V3SdmxData(context.Context, *v3.SdmxDataRequest) (*v3.SdmxDataResponse, error)
+	// Temporary probe for validating SDMX query parsing through Envoy and ESPv2.
+	V3SdmxQueryProbe(context.Context, *v3.SdmxQueryProbeRequest) (*httpbody.HttpBody, error)
 	V3NodeSearch(context.Context, *v2.NodeSearchRequest) (*v2.NodeSearchResponse, error)
 	V3Resolve(context.Context, *v2.ResolveRequest) (*v2.ResolveResponse, error)
 	V3Event(context.Context, *v2.EventRequest) (*v2.EventResponse, error)
@@ -929,6 +944,9 @@ func (UnimplementedMixerServer) V3Observation(context.Context, *v2.ObservationRe
 }
 func (UnimplementedMixerServer) V3SdmxData(context.Context, *v3.SdmxDataRequest) (*v3.SdmxDataResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V3SdmxData not implemented")
+}
+func (UnimplementedMixerServer) V3SdmxQueryProbe(context.Context, *v3.SdmxQueryProbeRequest) (*httpbody.HttpBody, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method V3SdmxQueryProbe not implemented")
 }
 func (UnimplementedMixerServer) V3NodeSearch(context.Context, *v2.NodeSearchRequest) (*v2.NodeSearchResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method V3NodeSearch not implemented")
@@ -1178,6 +1196,24 @@ func _Mixer_V3SdmxData_Handler(srv interface{}, ctx context.Context, dec func(in
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MixerServer).V3SdmxData(ctx, req.(*v3.SdmxDataRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Mixer_V3SdmxQueryProbe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(v3.SdmxQueryProbeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MixerServer).V3SdmxQueryProbe(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Mixer_V3SdmxQueryProbe_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MixerServer).V3SdmxQueryProbe(ctx, req.(*v3.SdmxQueryProbeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -2316,6 +2352,10 @@ var Mixer_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "V3SdmxData",
 			Handler:    _Mixer_V3SdmxData_Handler,
+		},
+		{
+			MethodName: "V3SdmxQueryProbe",
+			Handler:    _Mixer_V3SdmxQueryProbe_Handler,
 		},
 		{
 			MethodName: "V3NodeSearch",

@@ -42,3 +42,14 @@ message SdmxDataResponse {
   // Currently supports JSON-stat 2.0 format. Future expansions may include SDMX-CSV.
   string payload = 1;
 }
+
+// Request for the temporary SDMX query parsing probe.
+// Query parameters are intentionally omitted. The probe reads the original URL
+// forwarded by Envoy and parses SDMX query parameters in the Mixer handler.
+message SdmxQueryProbeRequest {
+  string context = 1;
+  string agency_id = 2;
+  string resource_id = 3;
+  string version = 4;
+  string key = 5;
+}
