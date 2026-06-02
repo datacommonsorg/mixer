@@ -284,6 +284,18 @@ func FilterStatVarsByEntityQuery(variables []string, entities []string) (*spanne
 	}, nil
 }
 
+// CheckGroupPlaceExistenceQuery returns a query to check existence of svg/topic for places.
+func CheckGroupPlaceExistenceQuery(variableGroups []string, entities []string, predicate string) *spanner.Statement {
+	return &spanner.Statement{
+		SQL: statements.checkGroupPlaceExistence,
+		Params: map[string]interface{}{
+			"variableGroups": variableGroups,
+			"entities":       entities,
+			"predicate":      predicate,
+		},
+	}
+}
+
 func SearchNodesQuery(query string, types []string) *spanner.Statement {
 	params := map[string]interface{}{
 		"query": query,

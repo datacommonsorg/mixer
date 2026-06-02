@@ -20,18 +20,25 @@ import (
 	"testing"
 	"time"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/google/go-cmp/cmp"
+	"google.golang.org/protobuf/testing/protocmp"
 )
 
 type mockNodeFetcher struct {
 	mu        sync.Mutex
 	callCount int
+	resps     map[string]*pbv2.LinkedGraph
 }
 
 func (m *mockNodeFetcher) NodeFetchAll(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
 	m.mu.Lock()
 	m.callCount++
 	m.mu.Unlock()
+	if m.resps != nil {
+		return &pbv2.NodeResponse{Data: m.resps}, nil
+	}
 	return &pbv2.NodeResponse{}, nil
 }
 
@@ -94,5 +101,141 @@ func TestTopicCacheManagerRefresher(t *testing.T) {
 
 	if count < 2 {
 		t.Errorf("Expected refresher to trigger LoadHierarchy at least 2 times, got %d", count)
+	}
+}
+
+func TestGetStatVarInfos(t *testing.T) {
+	ctx := context.Background()
+	resps := map[string]*pbv2.LinkedGraph{
+		"Count_Person": {
+			Arcs: map[string]*pbv2.Nodes{
+				"name": {
+					Nodes: []*pb.EntityInfo{
+						{Name: "Person Count"},
+					},
+				},
+				"observationProperty": {
+					Nodes: []*pb.EntityInfo{
+						{Value: "statVarObservation"},
+					},
+				},
+				"entityMapping": {
+					Nodes: []*pb.EntityInfo{
+						{Value: "Count_Person_Column"},
+					},
+				},
+			},
+		},
+	}
+	fetcher := &mockNodeFetcher{resps: resps}
+	manager := NewTopicCacheManager(nil)
+	manager.InitFetcher(fetcher)
+
+	// Update cache with empty hierarchy to initialize m.cache
+	manager.Update(&pb.TopicHierarchy{})
+
+	infos, err := manager.GetStatVarInfos(ctx, []string{"Count_Person"})
+	if err != nil {
+		t.Fatalf("GetStatVarInfos failed: %v", err)
+	}
+	info, ok := infos["Count_Person"]
+	if !ok || info.Name != "Person Count" || len(info.ObservationProperties) == 0 || info.ObservationProperties[0] != "statVarObservation" {
+		t.Errorf("GetStatVarInfos mismatch: got %+v", info)
+	}
+
+	// Fetch again to verify cache hit
+	beforeCount := fetcher.callCount
+	_, _ = manager.GetStatVarInfos(ctx, []string{"Count_Person"})
+	if fetcher.callCount != beforeCount {
+		t.Errorf("Expected cache hit, but callCount increased from %d to %d", beforeCount, fetcher.callCount)
+	}
+}
+
+func TestTopicExpansion(t *testing.T) {
+	ctx := context.Background()
+	resps := map[string]*pbv2.LinkedGraph{
+		"Count_Person": {
+			Arcs: map[string]*pbv2.Nodes{
+				"name": {Nodes: []*pb.EntityInfo{{Name: "Person Count"}}},
+				"observationProperty": {Nodes: []*pb.EntityInfo{{Value: "statVarObservation"}}},
+			},
+		},
+	}
+	fetcher := &mockNodeFetcher{resps: resps}
+	manager := NewTopicCacheManager(nil)
+	manager.InitFetcher(fetcher)
+
+	// Set up mock hierarchy
+	h := &pb.TopicHierarchy{
+		RootTopicDcids: []string{"dc/topic/Root"},
+		Topics: map[string]*pb.TopicNode{
+			"dc/topic/Root": {
+				Dcid:              "dc/topic/Root",
+				Name:              "Root Topic",
+				RelevantVariables: []string{"dc/topic/SubTopic"},
+			},
+			"dc/topic/SubTopic": {
+				Dcid:              "dc/topic/SubTopic",
+				Name:              "Sub Topic",
+				RelevantVariables: []string{"Count_Person"},
+			},
+		},
+	}
+	manager.Update(h)
+
+	tests := []struct {
+		desc         string
+		expandTopics bool
+		want         []*pbv2.ResolveResponse_Entity_Candidate
+	}{
+		{
+			desc:         "Immediate direct children (expandTopics=false)",
+			expandTopics: false,
+			want: []*pbv2.ResolveResponse_Entity_Candidate{
+				{
+					Dcid:   "dc/topic/Root",
+					TypeOf: []string{"Topic"},
+					Name:   "Root Topic",
+					Children: []*pbv2.ResolveResponse_Entity_Candidate{
+						{
+							Dcid:   "dc/topic/SubTopic",
+							TypeOf: []string{"Topic"},
+							Name:   "Sub Topic",
+						},
+					},
+				},
+			},
+		},
+		{
+			desc:         "Recursive leaf variable expansion (expandTopics=true)",
+			expandTopics: true,
+			want: []*pbv2.ResolveResponse_Entity_Candidate{
+				{
+					Dcid:   "dc/topic/Root",
+					TypeOf: []string{"Topic"},
+					Name:   "Root Topic",
+					Children: []*pbv2.ResolveResponse_Entity_Candidate{
+						{
+							Dcid:                  "Count_Person",
+							TypeOf:                []string{"StatisticalVariable"},
+							Name:                  "Person Count",
+							ObservationProperties: []string{"statVarObservation"},
+						},
+					},
+				},
+			},
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.desc, func(t *testing.T) {
+			got, err := manager.ExpandRoots(ctx, tc.expandTopics)
+			if err != nil {
+				t.Fatalf("ExpandRoots(%t) failed: %v", tc.expandTopics, err)
+			}
+			if diff := cmp.Diff(got, tc.want, protocmp.Transform()); diff != "" {
+				t.Errorf("ExpandRoots(%t) mismatch (-got +want):\n%s", tc.expandTopics, diff)
+			}
+		})
 	}
 }

@@ -38,7 +38,8 @@ message ResolveRequest{
     // Optional name of a specific custom resolver to use.
     // If not provided, defaults to place resolution using the property param.
     // Supported Values:
-    // - "indicator": Resolves Statistical Variables and Topics.
+    // - "indicator": Resolves Statistical Variables and Topics via semantic search.
+    // - "topic": Resolves explicit topic tree hierarchies and root topics.
     string resolver = 3;
 
     // Optional target for the resolution request.
@@ -48,6 +49,11 @@ message ResolveRequest{
     // - "custom_only": Uses only the custom Data Commons instance (local).
     // - "base_and_custom": Uses both base and custom instances.
     string target = 4;
+
+    // If true, recursively unpacks all descendant Statistical Variables within matching topics.
+    // If false, returns immediate children (Statistical Variables and Sub-Topics).
+    // Supported on resolver="topic" and resolver="indicator".
+    bool expand_topics = 5;
 }
 
 message ResolveResponse{
@@ -69,6 +75,15 @@ message ResolveResponse{
 
             // All types associated with this entity.
             repeated string type_of = 4;
+
+            // Canonical display name of the entity.
+            string name = 5;
+
+            // Observation properties to be used by clients when making subsequent observation API calls.
+            repeated string observation_properties = 6;
+
+            // Expanded child members (Statistical Variables and Sub-Topics).
+            repeated Candidate children = 7;
         }
         string node = 1;
         repeated Candidate candidates = 3;
