@@ -324,20 +324,30 @@ func TestSelectEmbeddingsIndex(t *testing.T) {
 		},
 		{
 			// Test: Successful override to multi-entity index.
-			// Situation: Header is set to "multientity" and feature flag is enabled.
+			// Situation: Header is set to "multi-entity" and feature flag is enabled.
 			// Expectation: Returns "base_multi_entity".
 			name:               "Valid header, enabled",
-			headerValue:        "multientity",
+			headerValue:        "multi-entity",
 			enableDynamicIndex: true,
 			expectedIdx:        "base_multi_entity",
 			expectError:        false,
 		},
 		{
+			// Test: Successful override to base-nl index.
+			// Situation: Header is set to "base-nl" and feature flag is enabled.
+			// Expectation: Returns "base_uae_mem".
+			name:               "Valid header (base-nl), enabled",
+			headerValue:        "base-nl",
+			enableDynamicIndex: true,
+			expectedIdx:        "base_uae_mem",
+			expectError:        false,
+		},
+		{
 			// Test: Error when feature is disabled.
-			// Situation: Header is set to "multientity" but feature flag is disabled.
+			// Situation: Header is set to "multi-entity" but feature flag is disabled.
 			// Expectation: Returns FailedPrecondition error.
 			name:               "Valid header, disabled",
-			headerValue:        "multientity",
+			headerValue:        "multi-entity",
 			enableDynamicIndex: false,
 			expectError:        true,
 			expectedErrorCode:  codes.FailedPrecondition,

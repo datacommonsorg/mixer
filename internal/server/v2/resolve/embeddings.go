@@ -40,12 +40,15 @@ const (
 )
 
 const (
-	LabelMultiEntity     = "multientity"
+	LabelMultiEntity     = "multi-entity"
 	IndexBaseMultiEntity = "base_multi_entity"
+	LabelBaseNL          = "base-nl"
+	IndexBaseUaeMem      = "base_uae_mem"
 )
 
 var labelToIndex = map[string]string{
 	LabelMultiEntity: IndexBaseMultiEntity,
+	LabelBaseNL:      IndexBaseUaeMem,
 }
 
 // SelectEmbeddingsIndex determines the correct index to use for embeddings resolution.
