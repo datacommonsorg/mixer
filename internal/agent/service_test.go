@@ -422,6 +422,70 @@ func TestSearchIndicators_Basic(t *testing.T) {
 				},
 			},
 		},
+		{
+			desc: "Do existence checks successfully for topics when expand_topics is false",
+			request: &pbv2.SearchIndicatorsRequest{
+				Query:          "",
+				PerSearchLimit: 5,
+				IncludeTopics:  proto.Bool(true),
+				ExpandTopics:   proto.Bool(false),
+				Places:         []string{"geoId/06"},
+			},
+			resolveMockData: map[string][]*pbv2.ResolveResponse_Entity_Candidate{
+				"geoId/06": {
+					{Dcid: "geoId/06", Name: "California", TypeOf: []string{"State"}},
+				},
+				"": {
+					{
+						Dcid:   "topic/Health",
+						TypeOf: []string{"Topic"},
+						Name:   "Health",
+						Children: []*pbv2.ResolveResponse_Entity_Candidate{
+							{
+								Dcid:   "topic/HealthSubTopic",
+								TypeOf: []string{"Topic"},
+								Name:   "Health Sub-Topic",
+							},
+						},
+					},
+				},
+				"topic/Health": {
+					{
+						Dcid: "topic/Health",
+						Children: []*pbv2.ResolveResponse_Entity_Candidate{
+							{
+								Dcid:   "Count_Person_WithDiabetes",
+								TypeOf: []string{"StatisticalVariable"},
+								Name:   "People with Diabetes",
+							},
+						},
+					},
+				},
+			},
+			obsMockData: map[string][]string{
+				"geoId/06": {"Count_Person_WithDiabetes"},
+			},
+			wantResponse: &pbv2.SearchIndicatorsResponse{
+				Status: "SUCCESS",
+				DcidNameMappings: map[string]string{
+					"geoId/06":             "California",
+					"topic/Health":         "Health",
+					"topic/HealthSubTopic": "Health Sub-Topic",
+				},
+				DcidPlaceTypeMappings: map[string]*structpb.ListValue{
+					"geoId/06": util.ToStringListValue([]string{"State"}),
+				},
+				Topics: []*pbv2.SearchIndicatorsResponse_Topic{
+					{
+						Dcid:                  "topic/Health",
+						Description:           "Health",
+						MemberTopics:          []string{"topic/HealthSubTopic"},
+						AlternateDescriptions: []string{"Health"},
+						PlacesWithData:         []string{"geoId/06"},
+					},
+				},
+			},
+		},
 	} {
 		t.Run(tc.desc, func(t *testing.T) {
 			mock := &mockMixerServer{

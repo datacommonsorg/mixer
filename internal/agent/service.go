@@ -110,7 +110,7 @@ func (s *Service) SearchIndicators(
 		}
 		if len(placeDcids) > 0 {
 			var err error
-			candidates, err = s.filterByPlaceExistence(g2Ctx, candidates, placeDcids)
+			candidates, err = s.filterByPlaceExistence(g2Ctx, candidates, placeDcids, expandTopics)
 			return err
 		}
 		return nil
@@ -250,11 +250,15 @@ func (s *Service) filterByPlaceExistence(
 	ctx context.Context,
 	candidates []*pbv2.ResolveResponse_Entity_Candidate,
 	placeDcids []string,
+	expandTopics bool,
 ) ([]*pbv2.ResolveResponse_Entity_Candidate, error) {
 	defer util.TimeTrack(time.Now(), "Agent: filterByPlaceExistence")
 	slog.Info("Filtering indicators by place existence", "candidatesCount", len(candidates), "placesCount", len(placeDcids))
 
-	varsToCheck, candidateVars := collectCandidateVariables(candidates)
+	varsToCheck, candidateVars, err := s.collectCandidateVariables(ctx, candidates, expandTopics)
+	if err != nil {
+		return nil, err
+	}
 	if len(varsToCheck) == 0 {
 		return candidates, nil
 	}
@@ -316,22 +320,91 @@ func expandTopicCandidates(
 	return flat
 }
 
-func collectCandidateVariables(
+func (s *Service) collectCandidateVariables(
+	ctx context.Context,
 	candidates []*pbv2.ResolveResponse_Entity_Candidate,
-) ([]string, map[*pbv2.ResolveResponse_Entity_Candidate][]string) {
+	expandTopics bool,
+) ([]string, map[*pbv2.ResolveResponse_Entity_Candidate][]string, error) {
 	var varsToCheck []string
 	candidateVars := make(map[*pbv2.ResolveResponse_Entity_Candidate][]string)
 
+	var topicDcids []string
 	for _, c := range candidates {
 		if isTopic(c) {
-			vars := collectTopicVariables(c)
+			topicDcids = append(topicDcids, c.GetDcid())
+		}
+	}
+
+	var descendantMap map[string][]string
+	if len(topicDcids) > 0 && !expandTopics {
+		var err error
+		descendantMap, err = s.fetchDescendantVariables(ctx, topicDcids)
+		if err != nil {
+			return nil, nil, err
+		}
+	}
+
+	for _, c := range candidates {
+		if isTopic(c) {
+			var vars []string
+			if expandTopics {
+				vars = collectTopicVariables(c)
+			} else {
+				vars = descendantMap[c.GetDcid()]
+			}
 			candidateVars[c] = vars
 			varsToCheck = append(varsToCheck, vars...)
 		} else {
 			varsToCheck = append(varsToCheck, c.GetDcid())
 		}
 	}
-	return varsToCheck, candidateVars
+	return varsToCheck, candidateVars, nil
+}
+
+func (s *Service) fetchDescendantVariables(
+	ctx context.Context,
+	topicDcids []string,
+) (map[string][]string, error) {
+	defer util.TimeTrack(time.Now(), "Agent: fetchDescendantVariables")
+	if len(topicDcids) == 0 {
+		return nil, nil
+	}
+
+	resolveReq := &pbv2.ResolveRequest{
+		Nodes:        topicDcids,
+		Resolver:     ResolverTopic,
+		ExpandTopics: true,
+	}
+
+	resp, err := s.mixer.V2Resolve(ctx, resolveReq)
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, "failed to fetch descendant variables for topics: %v", err)
+	}
+
+	res := make(map[string][]string)
+	for _, entity := range resp.GetEntities() {
+		node := entity.GetNode()
+		if node == "" {
+			// Root topics expansion
+			for _, cand := range entity.GetCandidates() {
+				var vars []string
+				for _, child := range cand.GetChildren() {
+					vars = append(vars, child.GetDcid())
+				}
+				res[cand.GetDcid()] = vars
+			}
+		} else {
+			// Specific topic expansion
+			var vars []string
+			for _, cand := range entity.GetCandidates() {
+				for _, child := range cand.GetChildren() {
+					vars = append(vars, child.GetDcid())
+				}
+			}
+			res[node] = vars
+		}
+	}
+	return res, nil
 }
 
 // candidateHasData returns true if the candidate has active observations for a given place.
