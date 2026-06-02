@@ -216,9 +216,14 @@ func (s *Service) fetchCandidates(
 		nodes = []string{query}
 	}
 
+	resolver := ResolverIndicator
+	if query == "" {
+		resolver = ResolverTopic
+	}
+
 	resolveReq := &pbv2.ResolveRequest{
 		Nodes:        nodes,
-		Resolver:     ResolverIndicator,
+		Resolver:     resolver,
 		ExpandTopics: expandTopics,
 	}
 

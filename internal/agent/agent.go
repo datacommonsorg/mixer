@@ -25,6 +25,7 @@ import (
 const (
 	ResolverPlace          = "place"
 	ResolverIndicator      = "indicator"
+	ResolverTopic          = "topic"
 	PropDescription        = "<-description->dcid"
 	DateLatest             = "LATEST"
 	DefaultPlaceWorld      = "World"
