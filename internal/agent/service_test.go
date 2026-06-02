@@ -74,7 +74,8 @@ func (m *mockMixerServer) V2Node(ctx context.Context, in *pbv2.NodeRequest) (*pb
 			Arcs: make(map[string]*pbv2.Nodes),
 		}
 		if in.GetProperty() == "->[name, typeOf]" {
-			if node == "geoId/06" {
+			switch node {
+			case "geoId/06":
 				graph.Arcs["name"] = &pbv2.Nodes{
 					Nodes: []*pb.EntityInfo{
 						{Value: "California"},
@@ -85,7 +86,7 @@ func (m *mockMixerServer) V2Node(ctx context.Context, in *pbv2.NodeRequest) (*pb
 						{Dcid: "State"},
 					},
 				}
-			} else if node == "World" {
+			case "World":
 				graph.Arcs["name"] = &pbv2.Nodes{
 					Nodes: []*pb.EntityInfo{
 						{Value: "World"},
