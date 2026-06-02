@@ -19,6 +19,7 @@ import (
 	"sync"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"golang.org/x/sync/errgroup"
 )
 
@@ -58,15 +59,18 @@ func (c *Cache) CheckAvailability(
 	}
 
 	// Dynamic Cache Miss: Fetch available variables for missing places in parallel.
+	// Deduplicate missingPlaces to avoid redundant parallel fetches.
+	uniqueMissing := util.StringSetToSlice(util.StringSliceToSet(missingPlaces))
+
 	// CONCURRENCY NOTE: We collect results in a local slice (`fetchedVars`) by index.
 	// While Go maps are not thread-safe for parallel writes (even for disjoint keys),
 	// writing to disjoint indices of a Go slice from parallel goroutines is 100% thread-safe
 	// and guarantees no data races or lock contention during parallel fetches.
 	// It also keeps the current request immune to any concurrent L1 cache map Reset() wipes.
-	fetchedVars := make([]map[string]struct{}, len(missingPlaces))
+	fetchedVars := make([]map[string]struct{}, len(uniqueMissing))
 	g, groupCtx := errgroup.WithContext(ctx)
 
-	for i, place := range missingPlaces {
+	for i, place := range uniqueMissing {
 		idx := i
 		p := place // Pin loop variable for goroutine closure
 		g.Go(func() error {
@@ -83,15 +87,21 @@ func (c *Cache) CheckAvailability(
 		return nil, err
 	}
 
-	// Populate final results directly from the local fetched slice
-	for i, place := range missingPlaces {
-		populateResult(place, variables, fetchedVars[i], result)
+	// Map unique results for fast lookup
+	uniqueMap := make(map[string]map[string]struct{})
+	for i, place := range uniqueMissing {
+		uniqueMap[place] = fetchedVars[i]
+	}
+
+	// Populate final results directly
+	for _, place := range missingPlaces {
+		populateResult(place, variables, uniqueMap[place], result)
 	}
 
 	// Warm L1 cache map under write lock
 	c.mu.Lock()
-	for i, place := range missingPlaces {
-		c.placeVars[place] = fetchedVars[i]
+	for place, vars := range uniqueMap {
+		c.placeVars[place] = vars
 	}
 	c.mu.Unlock()
 

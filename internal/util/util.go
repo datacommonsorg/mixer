@@ -646,6 +646,15 @@ func StringSetToSlice(s map[string]struct{}) []string {
 	return res
 }
 
+// StringSliceToSet is a helper to convert a string slice to a string set.
+func StringSliceToSet(s []string) map[string]struct{} {
+	res := make(map[string]struct{})
+	for _, k := range s {
+		res[k] = struct{}{}
+	}
+	return res
+}
+
 func FetchRemote(
 	metadata *resource.Metadata,
 	httpClient *http.Client,

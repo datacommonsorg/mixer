@@ -182,6 +182,9 @@ func (s *Service) resolvePlaces(
 	if err != nil {
 		return nil, "", status.Errorf(codes.Internal, "failed to resolve place names: %v", err)
 	}
+	if resp == nil {
+		return nil, "", status.Error(codes.Internal, "received nil response from V2Resolve")
+	}
 
 	resolvedMap = make(map[string]*resolvedPlaceInfo)
 
@@ -236,6 +239,9 @@ func (s *Service) fetchCandidates(
 	resp, err := s.mixer.V2Resolve(ctx, resolveReq)
 	if err != nil {
 		return nil, status.Errorf(codes.Internal, "failed to execute embeddings search: %v", err)
+	}
+	if resp == nil {
+		return nil, status.Error(codes.Internal, "received nil response from V2Resolve")
 	}
 
 	var candidates []*pbv2.ResolveResponse_Entity_Candidate
@@ -484,6 +490,9 @@ func (s *Service) fetchDescendantVariables(
 	if err != nil {
 		return nil, status.Errorf(codes.Internal, "failed to fetch descendant variables for topics: %v", err)
 	}
+	if resp == nil {
+		return nil, status.Error(codes.Internal, "received nil response from V2Resolve")
+	}
 
 	res := make(map[string][]string)
 	for _, entity := range resp.GetEntities() {
@@ -642,7 +651,7 @@ func getPropValue(graph *pbv2.LinkedGraph, prop string) string {
 	if graph == nil || graph.Arcs == nil {
 		return ""
 	}
-	if nodes, ok := graph.Arcs[prop]; ok && len(nodes.GetNodes()) > 0 {
+	if nodes, ok := graph.Arcs[prop]; ok && nodes != nil && len(nodes.GetNodes()) > 0 {
 		return nodes.GetNodes()[0].GetValue()
 	}
 	return ""
@@ -654,7 +663,7 @@ func getPropDcids(graph *pbv2.LinkedGraph, prop string) []string {
 		return nil
 	}
 	var res []string
-	if nodes, ok := graph.Arcs[prop]; ok {
+	if nodes, ok := graph.Arcs[prop]; ok && nodes != nil {
 		for _, node := range nodes.GetNodes() {
 			if dcid := node.GetDcid(); dcid != "" {
 				res = append(res, dcid)
