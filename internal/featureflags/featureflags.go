@@ -49,8 +49,6 @@ type Flags struct {
 	// Whether to enable Spanner search embeddings.
 	// switch this to true in local.yaml for easier development
 	EnableSpannerSearchEmbeddings bool `yaml:"EnableSpannerSearchEmbeddings"`
-	// Whether to enable dynamic index request for V2 Resolve.
-	EnableDynamicIndexRequest bool `yaml:"EnableDynamicIndexRequest"`
 }
 
 // setDefaultValues creates a new Flags struct with default values.
@@ -66,7 +64,6 @@ func setDefaultValues() *Flags {
 		UseStatisticalCalculation:     false,
 		EnableSDMXDataApi:             false,
 		EnableSpannerSearchEmbeddings: false,
-		EnableDynamicIndexRequest:    false,
 	}
 }
 

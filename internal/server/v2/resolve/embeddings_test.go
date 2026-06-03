@@ -307,7 +307,6 @@ func TestSelectEmbeddingsIndex(t *testing.T) {
 	tests := []struct {
 		name               string
 		headerValue        string
-		enableDynamicIndex bool
 		expectedIdx        string
 		expectError        bool
 		expectedErrorCode  codes.Code
@@ -318,39 +317,26 @@ func TestSelectEmbeddingsIndex(t *testing.T) {
 			// Expectation: Returns the defaultIndex.
 			name:               "No header",
 			headerValue:        "",
-			enableDynamicIndex: true,
 			expectedIdx:        "default_idx",
 			expectError:        false,
 		},
 		{
 			// Test: Successful override to multi-entity index.
-			// Situation: Header is set to "multi-entity" and feature flag is enabled.
+			// Situation: Header is set to "multi-entity".
 			// Expectation: Returns "base_multi_entity".
 			name:               "Valid header, enabled",
 			headerValue:        "multi-entity",
-			enableDynamicIndex: true,
 			expectedIdx:        "base_multi_entity",
 			expectError:        false,
 		},
 		{
 			// Test: Successful override to base-nl index.
-			// Situation: Header is set to "base-nl" and feature flag is enabled.
+			// Situation: Header is set to "base-nl".
 			// Expectation: Returns "base_uae_mem".
 			name:               "Valid header (base-nl), enabled",
 			headerValue:        "base-nl",
-			enableDynamicIndex: true,
 			expectedIdx:        "base_uae_mem",
 			expectError:        false,
-		},
-		{
-			// Test: Error when feature is disabled.
-			// Situation: Header is set to "multi-entity" but feature flag is disabled.
-			// Expectation: Returns FailedPrecondition error.
-			name:               "Valid header, disabled",
-			headerValue:        "multi-entity",
-			enableDynamicIndex: false,
-			expectError:        true,
-			expectedErrorCode:  codes.FailedPrecondition,
 		},
 		{
 			// Test: Error on invalid label.
@@ -358,7 +344,6 @@ func TestSelectEmbeddingsIndex(t *testing.T) {
 			// Expectation: Returns InvalidArgument error.
 			name:               "Invalid header, enabled",
 			headerValue:        "invalid",
-			enableDynamicIndex: true,
 			expectError:        true,
 			expectedErrorCode:  codes.InvalidArgument,
 		},
@@ -372,7 +357,7 @@ func TestSelectEmbeddingsIndex(t *testing.T) {
 				ctx = metadata.NewIncomingContext(ctx, md)
 			}
 
-			idx, err := SelectEmbeddingsIndex(ctx, "default_idx", tc.enableDynamicIndex)
+			idx, err := SelectEmbeddingsIndex(ctx, "default_idx")
 
 			if tc.expectError {
 				if err == nil {

@@ -1,3 +1,2 @@
 flags:
   EnableSDMXDataApi: true
-  EnableDynamicIndexRequest: true
