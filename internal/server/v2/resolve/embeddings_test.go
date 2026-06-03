@@ -113,6 +113,7 @@ func TestResolveUsingEmbeddings_Errors(t *testing.T) {
 		expectedError string
 		expectedCode  codes.Code
 		useEmptyURL   bool
+		useNilConfig  bool
 	}{
 		{
 			name: "Server Error (500)",
@@ -155,6 +156,12 @@ func TestResolveUsingEmbeddings_Errors(t *testing.T) {
 			expectedError: "Indicator resolution is not available",
 			expectedCode:  codes.FailedPrecondition,
 		},
+		{
+			name:          "Nil Config",
+			useNilConfig:  true,
+			expectedError: "Embeddings configuration is not loaded",
+			expectedCode:  codes.FailedPrecondition,
+		},
 	}
 
 	for _, tc := range tests {
@@ -173,7 +180,10 @@ func TestResolveUsingEmbeddings_Errors(t *testing.T) {
 			} else {
 				client = http.DefaultClient
 			}
-			cfg := &config.ParsedEmbeddingsConfig{URL: url}
+			var cfg *config.ParsedEmbeddingsConfig
+			if !tc.useNilConfig {
+				cfg = &config.ParsedEmbeddingsConfig{URL: url}
+			}
 			embeddingsServiceClient := NewEmbeddingsServiceClient(client, cfg)
 			_, err := embeddingsServiceClient.Resolve(context.Background(), "", []string{"query"}, nil, nil, false)
 			if err == nil {
@@ -363,6 +373,7 @@ func TestSelectEmbeddingsIndex(t *testing.T) {
 		expectedIdx        string
 		expectError        bool
 		expectedErrorCode  codes.Code
+		passNilConfig      bool
 	}{
 		{
 			// Test: Fallback to default index.
@@ -400,6 +411,13 @@ func TestSelectEmbeddingsIndex(t *testing.T) {
 			expectedIdx:        "invalid",
 			expectError:        false,
 		},
+		{
+			name:               "Nil config",
+			headerValue:        "",
+			expectError:        true,
+			expectedErrorCode:  codes.FailedPrecondition,
+			passNilConfig:      true,
+		},
 	}
 
 	for _, tc := range tests {
@@ -410,9 +428,12 @@ func TestSelectEmbeddingsIndex(t *testing.T) {
 				ctx = metadata.NewIncomingContext(ctx, md)
 			}
 
-			cfg := &config.ParsedEmbeddingsConfig{
-				DefaultIndex:        "default_idx",
-				ResolveIndexMapping: testLabelToIndex,
+			var cfg *config.ParsedEmbeddingsConfig
+			if !tc.passNilConfig {
+				cfg = &config.ParsedEmbeddingsConfig{
+					DefaultIndex:        "default_idx",
+					ResolveIndexMapping: testLabelToIndex,
+				}
 			}
 			client := NewEmbeddingsServiceClient(nil, cfg)
 			idx, err := client.SelectIndex(ctx)
