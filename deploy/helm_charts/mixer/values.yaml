@@ -36,6 +36,7 @@ customDC:
 mixer:
   hostProject:
   githash:
+  config: ""
 
   useBaseBigtable: true
   useBranchBigtable: true
@@ -43,8 +44,6 @@ mixer:
   useBigquery: true
   useSpannerGraph: false
   foldRemoteRootSvg: false
-  # Comma separated embeddings indexes for resolving indicators.
-  resolveEmbeddingsIndexes: "base_uae_mem"
   redis:
     enabled: false
   enableOtlp: false

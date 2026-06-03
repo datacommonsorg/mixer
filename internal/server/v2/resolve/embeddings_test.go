@@ -8,11 +8,17 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/datacommonsorg/mixer/internal/config"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 )
+
+var testLabelToIndex = map[string]string{
+	"multi-entity": "base_multi_entity",
+	"base-nl":      "base_uae_mem",
+}
 
 func TestResolveUsingEmbeddings(t *testing.T) {
 	// Mock the embeddings server response.
@@ -46,7 +52,8 @@ func TestResolveUsingEmbeddings(t *testing.T) {
 	defer server.Close()
 
 	ctx := context.Background()
-	client := NewEmbeddingsServiceClient(server.Client(), server.URL, "")
+	cfg := &config.ParsedEmbeddingsConfig{URL: server.URL}
+	client := NewEmbeddingsServiceClient(server.Client(), cfg)
 	resp, err := client.Resolve(ctx, "test_idx", []string{"population"}, nil, nil, false)
 	if err != nil {
 		t.Fatalf("Resolve() error: %v", err)
@@ -166,8 +173,8 @@ func TestResolveUsingEmbeddings_Errors(t *testing.T) {
 			} else {
 				client = http.DefaultClient
 			}
-
-			embeddingsServiceClient := NewEmbeddingsServiceClient(client, url, "")
+			cfg := &config.ParsedEmbeddingsConfig{URL: url}
+			embeddingsServiceClient := NewEmbeddingsServiceClient(client, cfg)
 			_, err := embeddingsServiceClient.Resolve(context.Background(), "", []string{"query"}, nil, nil, false)
 			if err == nil {
 				t.Errorf("Expected error containing '%s', got nil", tc.expectedError)
@@ -217,7 +224,8 @@ func TestResolveUsingEmbeddings_InconsistentSearchVarsResponse(t *testing.T) {
 	}))
 	defer server.Close()
 
-	client := NewEmbeddingsServiceClient(server.Client(), server.URL, "")
+	cfg := &config.ParsedEmbeddingsConfig{URL: server.URL}
+	client := NewEmbeddingsServiceClient(server.Client(), cfg)
 	resp, err := client.Resolve(context.Background(), "", []string{"query"}, nil, nil, false)
 	if err != nil {
 		t.Fatalf("Unexpected error: %v", err)
@@ -292,7 +300,8 @@ func TestResolveUsingEmbeddings_IdxParameter(t *testing.T) {
 			}))
 			defer server.Close()
 
-			client := NewEmbeddingsServiceClient(server.Client(), server.URL, "")
+			cfg := &config.ParsedEmbeddingsConfig{URL: server.URL}
+			client := NewEmbeddingsServiceClient(server.Client(), cfg)
 			_, err := client.Resolve(context.Background(), tc.expectedIdx, []string{"query"}, nil, nil, false)
 			if err != nil {
 				t.Fatalf("Unexpected error: %v", err)
@@ -319,7 +328,8 @@ func TestResolveUsingEmbeddings_Filter(t *testing.T) {
 
 	ctx := context.Background()
 
-	client := NewEmbeddingsServiceClient(server.Client(), server.URL, "")
+	cfg := &config.ParsedEmbeddingsConfig{URL: server.URL}
+	client := NewEmbeddingsServiceClient(server.Client(), cfg)
 
 	// Filter for StatisticalVariable
 	resp, err := client.Resolve(ctx, "test_idx", []string{"filter_test"}, []string{"StatisticalVariable"}, nil, false)
@@ -400,7 +410,11 @@ func TestSelectEmbeddingsIndex(t *testing.T) {
 				ctx = metadata.NewIncomingContext(ctx, md)
 			}
 
-			client := NewEmbeddingsServiceClient(nil, "", "default_idx")
+			cfg := &config.ParsedEmbeddingsConfig{
+				DefaultIndex:        "default_idx",
+				ResolveIndexMapping: testLabelToIndex,
+			}
+			client := NewEmbeddingsServiceClient(nil, cfg)
 			idx, err := client.SelectIndex(ctx)
 
 			if tc.expectError {
@@ -425,3 +439,5 @@ func TestSelectEmbeddingsIndex(t *testing.T) {
 		})
 	}
 }
+
+

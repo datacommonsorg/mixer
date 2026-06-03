@@ -26,6 +26,7 @@ import (
 	"path"
 	"strings"
 
+	"github.com/datacommonsorg/mixer/internal/config"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
@@ -46,33 +47,30 @@ const (
 	IndexBaseUaeMem      = "base_uae_mem"
 )
 
-var labelToIndex = map[string]string{
-	LabelMultiEntity: IndexBaseMultiEntity,
-	LabelBaseNL:      IndexBaseUaeMem,
-}
 
 type EmbeddingsServiceClient struct {
-	httpClient          *http.Client
-	embeddingsServerURL string
-	defaultIndexes      string
+	httpClient *http.Client
+	cfg        *config.ParsedEmbeddingsConfig
 }
 
-func NewEmbeddingsServiceClient(httpClient *http.Client, embeddingsServerURL string, defaultIndexes string) *EmbeddingsServiceClient {
+func NewEmbeddingsServiceClient(httpClient *http.Client, cfg *config.ParsedEmbeddingsConfig) *EmbeddingsServiceClient {
 	return &EmbeddingsServiceClient{
-		httpClient:          httpClient,
-		embeddingsServerURL: embeddingsServerURL,
-		defaultIndexes:      defaultIndexes,
+		httpClient: httpClient,
+		cfg:        cfg,
 	}
 }
 
 // SelectIndex determines the correct index to use for embeddings resolution.
 func (c *EmbeddingsServiceClient) SelectIndex(ctx context.Context) (string, error) {
+	if c.cfg == nil {
+		return "", status.Errorf(codes.FailedPrecondition, "Embeddings configuration is not loaded")
+	}
 	label := util.GetSingleHeaderValue(ctx, util.XV2ResolveIndex)
 	if label == "" {
-		return c.defaultIndexes, nil
+		return c.cfg.DefaultIndex, nil
 	}
 
-	if indexName, ok := labelToIndex[label]; ok {
+	if indexName, ok := c.cfg.ResolveIndexMapping[label]; ok {
 		return indexName, nil
 	}
 
@@ -109,8 +107,11 @@ func (c *EmbeddingsServiceClient) Resolve(
 	topicExpander TopicExpander,
 	expandTopics bool,
 ) (*pbv2.ResolveResponse, error) {
-	if c.embeddingsServerURL == "" {
-		slog.Error("resolver=indicator requested, but the embeddings server is not configured for this deployment")
+	if c.cfg == nil {
+		return nil, status.Errorf(codes.FailedPrecondition, "Embeddings configuration is not loaded")
+	}
+	if c.cfg.URL == "" {
+		slog.Error("resolver=indicator requested, but the embeddings service is not configured for this deployment")
 		return nil, status.Errorf(codes.FailedPrecondition, "Indicator resolution is not available in this environment.")
 	}
 
@@ -139,9 +140,9 @@ func (c *EmbeddingsServiceClient) callEmbeddingsServer(
 	}
 
 	// Create the HTTP request
-	searchVarsURL, err := url.Parse(c.embeddingsServerURL)
+	searchVarsURL, err := url.Parse(c.cfg.URL)
 	if err != nil {
-		slog.Error("Failed to parse embeddings server URL", "error", err, "url", c.embeddingsServerURL)
+		slog.Error("Failed to parse embeddings server URL", "error", err, "url", c.cfg.URL)
 		return nil, status.Errorf(codes.Internal, "An internal error occurred while connecting to the resolution service.")
 	}
 	searchVarsURL.Path = path.Join(searchVarsURL.Path, SearchVarsQueryEndpoint)
@@ -155,7 +156,7 @@ func (c *EmbeddingsServiceClient) callEmbeddingsServer(
 
 	req, err := http.NewRequestWithContext(ctx, "POST", searchVarsURL.String(), bytes.NewBuffer(requestBytes))
 	if err != nil {
-		slog.Error("Failed to create embeddings server request", "error", err, "url", c.embeddingsServerURL)
+		slog.Error("Failed to create embeddings server request", "error", err, "url", c.cfg.URL)
 		return nil, status.Errorf(codes.Internal, "An internal error occurred while connecting to the resolution service.")
 	}
 	req.Header.Set("Content-Type", "application/json")
@@ -163,7 +164,7 @@ func (c *EmbeddingsServiceClient) callEmbeddingsServer(
 	// Execute the request
 	httpResp, err := c.httpClient.Do(req)
 	if err != nil {
-		slog.Error("Failed to contact embeddings server", "error", err, "url", c.embeddingsServerURL, "queries", nodes)
+		slog.Error("Failed to contact embeddings server", "error", err, "url", c.cfg.URL, "queries", nodes)
 		return nil, status.Errorf(codes.Unavailable, "The resolution service is currently unavailable. Please try again later.")
 	}
 	defer func() {
@@ -174,7 +175,7 @@ func (c *EmbeddingsServiceClient) callEmbeddingsServer(
 
 	if httpResp.StatusCode != http.StatusOK {
 		bodyBytes, _ := io.ReadAll(httpResp.Body)
-		slog.Error("Embeddings server returned non-200 status", "status_code", httpResp.StatusCode, "body", string(bodyBytes), "url", c.embeddingsServerURL, "queries", nodes)
+		slog.Error("Embeddings server returned non-200 status", "status_code", httpResp.StatusCode, "body", string(bodyBytes), "url", c.cfg.URL, "queries", nodes)
 		
 		var grpcCode codes.Code
 		switch httpResp.StatusCode {
@@ -196,7 +197,7 @@ func (c *EmbeddingsServiceClient) callEmbeddingsServer(
 	// Parse the response
 	var searchResp searchVarsResponse
 	if err := json.NewDecoder(httpResp.Body).Decode(&searchResp); err != nil {
-		slog.Error("Failed to decode embeddings server response", "error", err, "url", c.embeddingsServerURL)
+		slog.Error("Failed to decode embeddings server response", "error", err, "url", c.cfg.URL)
 		return nil, status.Errorf(codes.Internal, "An internal error occurred while parsing the resolution response.")
 	}
 	return &searchResp, nil
@@ -334,11 +335,11 @@ type nlServerConfig struct {
 }
 
 func (c *EmbeddingsServiceClient) fetchAvailableIndexes(ctx context.Context) (map[string]struct{}, error) {
-	if c.embeddingsServerURL == "" {
+	if c.cfg == nil || c.cfg.URL == "" {
 		return nil, fmt.Errorf("embeddings server URL is not configured")
 	}
 
-	u, err := url.Parse(c.embeddingsServerURL)
+	u, err := url.Parse(c.cfg.URL)
 	if err != nil {
 		return nil, fmt.Errorf("failed to parse embeddings server URL: %w", err)
 	}
@@ -378,7 +379,7 @@ func (c *EmbeddingsServiceClient) fetchAvailableIndexes(ctx context.Context) (ma
 
 // ValidateIndex checks if the given index (or comma-separated indexes) are available.
 func (c *EmbeddingsServiceClient) ValidateIndex(ctx context.Context, idx string) bool {
-	if c.embeddingsServerURL == "" {
+	if c.cfg == nil || c.cfg.URL == "" {
 		return true
 	}
 

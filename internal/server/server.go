@@ -53,13 +53,13 @@ import (
 
 // Server holds resources for a mixer server
 type Server struct {
-	store             *store.Store
-	metadata          *resource.Metadata
-	cachedata         atomic.Pointer[cache.Cache]
-	mapsClient        maps.MapsClient
-	httpClient        *http.Client
-	dispatcher        *dispatcher.Dispatcher
-	flags             *featureflags.Flags
+	store                   *store.Store
+	metadata                *resource.Metadata
+	cachedata               atomic.Pointer[cache.Cache]
+	mapsClient              maps.MapsClient
+	httpClient              *http.Client
+	dispatcher              *dispatcher.Dispatcher
+	flags                   *featureflags.Flags
 	writeUsageLogs          bool
 	embeddingsServiceClient *resolve.EmbeddingsServiceClient
 	// Whether to use dispatcher flow with Spanner as a default datasource.

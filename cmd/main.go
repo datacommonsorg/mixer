@@ -28,6 +28,7 @@ import (
 	"runtime/pprof"
 	"time"
 
+	"github.com/datacommonsorg/mixer/internal/config"
 	"github.com/datacommonsorg/mixer/internal/featureflags"
 	logger "github.com/datacommonsorg/mixer/internal/log"
 	"github.com/datacommonsorg/mixer/internal/maps"
@@ -36,6 +37,7 @@ import (
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
 	"github.com/datacommonsorg/mixer/internal/server"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
+	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
@@ -118,6 +120,11 @@ var (
 		"",
 		"Path to the feature flags config file.",
 	)
+	configPath = flag.String(
+		"config_path",
+		"",
+		"Path to mixer_config.yaml (local path or gs:// URI)",
+	)
 	embeddingsServerURL = flag.String(
 		"embeddings_server_url",
 		"",
@@ -148,6 +155,15 @@ func main() {
 	slog.Info("Created feature flags")
 
 	ctx := context.Background()
+
+	parsedConfig, err := config.LoadConfig(ctx, *configPath)
+	if err != nil {
+		slog.Error("Failed to load mixer config", "path", *configPath, "error", err)
+		os.Exit(1)
+	}
+	if parsedConfig != nil {
+		slog.Info("Loaded mixer config", "path", *configPath)
+	}
 
 	// The new Spanner-based backend can be enabled either by a server config flag (for stable configuration) or a feature flag (for experimental configuration).
 	// After launch, only the server config should be used.
@@ -470,8 +486,19 @@ func main() {
 	dispatcher := dispatcher.NewDispatcher(processors, dataSources)
 	slog.Info("Dispatcher initialized", "processorsCount", len(processors))
 
+	var embeddingsServiceCfg *config.EmbeddingsServiceConfig
+	if parsedConfig != nil {
+		embeddingsServiceCfg = parsedConfig.EmbeddingsService
+	}
+
+	embeddingsConfig := config.ParseConfig(
+		embeddingsServiceCfg,
+		*resolveEmbeddingsIndexes,
+		*embeddingsServerURL,
+	)
+
 	// Create server object
-	embeddingsServiceClient := resolve.NewEmbeddingsServiceClient(&http.Client{}, *embeddingsServerURL, *resolveEmbeddingsIndexes)
+	embeddingsServiceClient := resolve.NewEmbeddingsServiceClient(&http.Client{}, embeddingsConfig)
 	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs, embeddingsServiceClient, *useSpannerGraph, topicCacheManager)
 	pbs.RegisterMixerServer(srv, mixerServer)
 

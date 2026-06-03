@@ -31,6 +31,7 @@ import (
 	_ "modernc.org/sqlite" // import the sqlite driver
 
 	"cloud.google.com/go/bigquery"
+	"github.com/datacommonsorg/mixer/internal/config"
 	"github.com/datacommonsorg/mixer/internal/featureflags"
 	"github.com/datacommonsorg/mixer/internal/maps"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
@@ -286,7 +287,8 @@ func newClient(
 	}
 	// Create mixer server. writeUsageLogs is false by default for tests but is directly tested in handler_v2_test.go
 	// useSpannerGraph is also false by default while the legacy implementation remains, but is tested directly by V3 APIs.
-	embeddingsServiceClient := resolve.NewEmbeddingsServiceClient(&http.Client{}, "", "")
+	cfg := config.ParseConfig(nil, "", "")
+	embeddingsServiceClient := resolve.NewEmbeddingsServiceClient(&http.Client{}, cfg)
 	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient, dispatcher, flags, false, embeddingsServiceClient, false, nil)
 	srv := grpc.NewServer()
 	pbs.RegisterMixerServer(srv, mixerServer)
