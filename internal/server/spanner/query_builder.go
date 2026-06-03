@@ -195,6 +195,8 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 
 		for i, prop := range sortedProps {
 			propFilters := arc.BracketFilters[prop]
+			propParam := fmt.Sprintf("prop_filter_%d", i)
+			params[propParam] = prop
 
 			// Sort operator keys to guarantee deterministic SQL output
 			opKeys := make([]string, 0, len(propFilters))
@@ -209,7 +211,7 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 					prefix := fmt.Sprintf("op_prop_%d_%s", i, safeOpName)
 
 					if clause := handler(prefix, propFilters[opKey], params); clause != "" {
-						filterParts = append(filterParts, fmt.Sprintf("(e.predicate != '%s' OR %s)", prop, clause))
+						filterParts = append(filterParts, fmt.Sprintf("(e.predicate != @%s OR %s)", propParam, clause))
 					}
 				}
 			}
