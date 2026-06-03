@@ -46,7 +46,7 @@ func (s *Server) V2Resolve(
 ) (*pbv2.ResolveResponse, error) {
 	// TODO: Remove this once embeddings search (resolver == "indicator") and
 	// topic resolution (resolver == "topic") are fully supported through Spanner.
-	if s.shouldDivertV2(ctx) && (in == nil || (in.GetResolver() != "indicator" && in.GetResolver() != "topic")) {
+	if s.shouldDivertV2(ctx) && (in == nil || (in.GetResolver() != "indicator" && in.GetResolver() != "topic") || s.flags.EnableSpannerSearchEmbeddings) {
 		return s.dispatcher.Resolve(ctx, in)
 	}
 
