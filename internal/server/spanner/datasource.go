@@ -434,6 +434,7 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 			slog.Warn("Received unsupported ResolveResolverIndicator request to Spanner", "request", req)
 			return &pbv2.ResolveResponse{}, nil
 		}
+		slog.Info("SpannerDataSource: Starting resolution", "resolver", resolver, "nodes", req.GetNodes(), "inProp", normalizedResolveRequest.InProp)
 		return sds.vectorSearchResolution(ctx, normalizedResolveRequest)
 	}
 
