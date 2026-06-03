@@ -99,17 +99,17 @@ func TestParseConfig(t *testing.T) {
 	strPtr := func(s string) *string { return &s }
 
 	tests := []struct {
-		name             string
-		userCfg          *EmbeddingsServiceConfig
-		flagDefaultIndex string
-		flagServerURL    string
-		want             *ParsedEmbeddingsConfig
+		name               string
+		userCfg            *EmbeddingsServiceConfig
+		flagDefaultIndexes string
+		flagServerURL      string
+		want               *ParsedEmbeddingsConfig
 	}{
 		{
-			name:             "Defaults only (nil config, empty flags)",
-			userCfg:          nil,
-			flagDefaultIndex: "",
-			flagServerURL:    "",
+			name:               "Defaults only (nil config, empty flags)",
+			userCfg:            nil,
+			flagDefaultIndexes: "",
+			flagServerURL:      "",
 			want: &ParsedEmbeddingsConfig{
 				URL:                 "",
 				DefaultIndex:        "",
@@ -126,8 +126,8 @@ func TestParseConfig(t *testing.T) {
 					"base-nl":      "yaml_override_nl",
 				},
 			},
-			flagDefaultIndex: "",
-			flagServerURL:    "",
+			flagDefaultIndexes: "",
+			flagServerURL:      "",
 			want: &ParsedEmbeddingsConfig{
 				URL:          "http://yaml-server",
 				DefaultIndex: "yaml_default",
@@ -146,8 +146,8 @@ func TestParseConfig(t *testing.T) {
 					"multi-entity": "yaml_multi",
 				},
 			},
-			flagDefaultIndex: "flag_default",
-			flagServerURL:    "http://flag-server",
+			flagDefaultIndexes: "flag_default",
+			flagServerURL:      "http://flag-server",
 			want: &ParsedEmbeddingsConfig{
 				URL:          "http://flag-server",
 				DefaultIndex: "flag_default",
@@ -157,10 +157,10 @@ func TestParseConfig(t *testing.T) {
 			},
 		},
 		{
-			name:             "Flags only",
-			userCfg:          nil,
-			flagDefaultIndex: "flag_default",
-			flagServerURL:    "http://flag-server",
+			name:               "Flags only",
+			userCfg:            nil,
+			flagDefaultIndexes: "flag_default",
+			flagServerURL:      "http://flag-server",
 			want: &ParsedEmbeddingsConfig{
 				URL:          "http://flag-server",
 				DefaultIndex: "flag_default",
@@ -171,7 +171,7 @@ func TestParseConfig(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			got := ParseConfig(tc.userCfg, tc.flagDefaultIndex, tc.flagServerURL)
+			got := ParseConfig(tc.userCfg, tc.flagDefaultIndexes, tc.flagServerURL)
 			if diff := cmp.Diff(tc.want, got); diff != "" {
 				t.Errorf("ParseConfig() mismatch (-want +got):\n%s", diff)
 			}

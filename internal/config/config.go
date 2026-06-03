@@ -20,20 +20,29 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
+// MixerConfig defines the schema for the Mixer configuration file.
 type MixerConfig struct {
+	// EmbeddingsService holds settings for the legacy embeddings server.
 	EmbeddingsService *EmbeddingsServiceConfig `yaml:"embeddings_service"`
 }
 
+// EmbeddingsServiceConfig contains settings specifically for the embeddings resolution service.
 type EmbeddingsServiceConfig struct {
+	// URL is the endpoint of the embeddings service.
 	URL                 *string           `yaml:"url"`
+	// DefaultIndex is the index to fall back to if no specific index is requested.
 	DefaultIndex        *string           `yaml:"default_index"`
+	// ResolveIndexMapping maps client-provided request headers to actual index names.
 	ResolveIndexMapping map[string]string `yaml:"resolve_index_mapping"`
 }
 
 // ParsedEmbeddingsConfig holds the parsed and merged configuration for the embeddings service.
 type ParsedEmbeddingsConfig struct {
+	// URL is the resolved endpoint of the embeddings service.
 	URL                 string
+	// DefaultIndex is the resolved default index (or comma-separated list of indexes) to use.
 	DefaultIndex        string
+	// ResolveIndexMapping is the resolved mapping from client labels to index names.
 	ResolveIndexMapping map[string]string
 }
 
