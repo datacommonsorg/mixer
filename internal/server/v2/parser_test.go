@@ -279,6 +279,18 @@ func TestParseArc(t *testing.T) {
 			nil,
 			false,
 		},
+		{
+			"->",
+			"{$lang:es}",
+			nil,
+			false,
+		},
+		{
+			"->",
+			"[name, {$lang:es}]",
+			nil,
+			false,
+		},
 	} {
 		result, err := parseArc(c.arrow, c.expr)
 		if !c.valid {

@@ -115,6 +115,10 @@ func parseArc(arrow, expr string) (*Arc, error) {
 		if expr[i] == '{' {
 			// <-containedInPlace{p:v}
 			arc.SingleProp = expr[0:i]
+			if arc.SingleProp == "" {
+				return nil, status.Errorf(
+					codes.InvalidArgument, "invalid property expression: %s", rawExpr)
+			}
 			expr = expr[i:]
 			break
 		}
@@ -260,11 +264,17 @@ func extractPropAndFilter(part string) (string, map[string][]string, error) {
 		return part, nil, nil
 	}
 
+	prop := part[:idx]
+	if prop == "" {
+		return "", nil, status.Errorf(
+			codes.InvalidArgument, "invalid property expression: %s", part)
+	}
+
 	filter, err := parseFilterString(part[idx:])
 	if err != nil {
 		return "", nil, err
 	}
-	return part[:idx], filter, nil
+	return prop, filter, nil
 }
 
 func parseFilterString(expr string) (map[string][]string, error) {
