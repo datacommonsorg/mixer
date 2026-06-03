@@ -151,7 +151,7 @@ const (
 	// To use, set header "X-Log-SQL: true"
 	XLogSQL = "X-Log-SQL"
 	// Header to specify which embeddings index to use for V2 Resolve.
-	// To use, set header "X-V2Resolve-Index: multientity"
+	// To use, set header "X-V2Resolve-Index: multi-entity"
 	XV2ResolveIndex = "X-V2Resolve-Index"
 )
 
