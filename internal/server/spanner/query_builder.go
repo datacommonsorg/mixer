@@ -93,7 +93,7 @@ func handleLangOperator(prefix string, langs []string, params map[string]interfa
 	for j, lang := range langs {
 		paramName := fmt.Sprintf("%s_%d", prefix, j)
 		// Database stores values exactly like "Value"@en
-		params[paramName] = "@" + lang
+		params[paramName] = "@" + strings.ToLower(lang)
 		parts = append(parts, fmt.Sprintf("ENDS_WITH(n.value, @%s)", paramName))
 	}
 	return strings.Join(parts, " OR ")

@@ -254,7 +254,7 @@ func filterByLang(nodes []*pb.EntityInfo, langs []string) []*pb.EntityInfo {
 	res := []*pb.EntityInfo{}
 	for _, n := range nodes {
 		for _, lang := range langs {
-			if strings.HasSuffix(n.Value, "@"+lang) {
+			if strings.HasSuffix(n.Value, "@"+strings.ToLower(lang)) {
 				res = append(res, n)
 				break
 			}
