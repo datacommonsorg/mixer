@@ -27,6 +27,7 @@ import (
 	"strings"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -37,6 +38,33 @@ const (
 	StatisticalVariableDominantType = "StatisticalVariable"
 	SearchVarsQueryEndpoint         = "/api/search_vars"
 )
+
+const (
+	LabelMultiEntity     = "multi-entity"
+	IndexBaseMultiEntity = "base_multi_entity"
+	LabelBaseNL          = "base-nl"
+	IndexBaseUaeMem      = "base_uae_mem"
+)
+
+var labelToIndex = map[string]string{
+	LabelMultiEntity: IndexBaseMultiEntity,
+	LabelBaseNL:      IndexBaseUaeMem,
+}
+
+// SelectEmbeddingsIndex determines the correct index to use for embeddings resolution.
+func SelectEmbeddingsIndex(ctx context.Context, defaultIndex string) (string, error) {
+	label := util.GetSingleHeaderValue(ctx, util.XV2ResolveIndex)
+	if label == "" {
+		return defaultIndex, nil
+	}
+
+	if indexName, ok := labelToIndex[label]; ok {
+		return indexName, nil
+	}
+
+	slog.Error("Invalid V2Resolve index label", "label", label, "header", util.XV2ResolveIndex)
+	return "", status.Errorf(codes.InvalidArgument, "Invalid V2Resolve index label: %s", label)
+}
 
 // searchVarsRequest represents the request body for the embeddings server
 type searchVarsRequest struct {

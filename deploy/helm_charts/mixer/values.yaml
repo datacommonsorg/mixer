@@ -389,6 +389,7 @@ embeddingsSidecar:
       - medium_ft
       - sdg_ft
       - undata_ft
+      - base_multi_entity
     vertex_ai_models:
       uae-large-v1-model:
         project_id: datcom-nl
