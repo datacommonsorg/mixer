@@ -352,18 +352,15 @@ spec:
           image:  "{{ $.Values.esp.image.repository }}{{- if $.Values.esp.image.tag -}}:{{ $.Values.esp.image.tag }}{{- end }}"
           imagePullPolicy: {{ $.Values.esp.image.pullPolicy }}
           {{- $espResources := $group.espResources | default dict }}
-          {{- $espGlobalResources := dict }}
-          {{- if $.Values.esp }}
-            {{- $espGlobalResources = $.Values.esp.resources | default dict }}
-          {{- end }}
+          {{- $espGlobalResources := $.Values.esp.resources | default dict }}
           resources:
             limits:
-              memory: {{ $espResources.memoryLimit | default $espGlobalResources.memoryLimit | default "300M" | quote }}
+              memory: {{ $espResources.memoryLimit | default $espGlobalResources.memoryLimit | default "300Mi" | quote }}
               {{- if or $espResources.cpuLimit $espGlobalResources.cpuLimit }}
               cpu: {{ $espResources.cpuLimit | default $espGlobalResources.cpuLimit | quote }}
               {{- end }}
             requests:
-              memory: {{ $espResources.memoryRequest | default $espGlobalResources.memoryRequest | default "300M" | quote }}
+              memory: {{ $espResources.memoryRequest | default $espGlobalResources.memoryRequest | default "300Mi" | quote }}
               {{- if or $espResources.cpuRequest $espGlobalResources.cpuRequest }}
               cpu: {{ $espResources.cpuRequest | default $espGlobalResources.cpuRequest | quote }}
               {{- end }}
