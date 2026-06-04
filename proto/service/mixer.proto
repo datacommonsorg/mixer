@@ -193,6 +193,15 @@ service Mixer {
     };
   }
 
+  // Get rankings for given stat var DCIDs.
+  rpc V2GetLocationsRankings(GetLocationsRankingsRequest)
+      returns (GetLocationsRankingsResponse) {
+    option (google.api.http) = {
+      get : "/v2/place/ranking"
+      additional_bindings : {post : "/v2/place/ranking" body : "*"}
+    };
+  }
+
   // ======================  V0   V0   V0   V0  ======================
 
   // Query DataCommons Graph with Sparql.
