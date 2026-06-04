@@ -582,3 +582,21 @@ func convertV1ToV2BulkVariableGroupInfo(resp *pbv1.BulkVariableGroupInfoResponse
 		}
 	}
 }
+
+// V2GetLocationsRankings implements API for Mixer.V2GetLocationsRankings.
+func (s *Server) V2GetLocationsRankings(
+	ctx context.Context, in *pb.GetLocationsRankingsRequest,
+) (*pb.GetLocationsRankingsResponse, error) {
+
+	// Use the V1 implementation for now.
+	v1Resp, err := s.GetLocationsRankings(ctx, in)
+	if err != nil {
+		return nil, err
+	}
+	v2Resp := proto.Clone(v1Resp).(*pb.GetLocationsRankingsResponse)
+
+	// Set the Legacy field to true to indicate that this response is from the V1 implementation.
+	v2Resp.Legacy = true
+
+	return v2Resp, nil
+}
