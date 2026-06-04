@@ -343,18 +343,33 @@ func collectSubtopicsAndDirectVars(
 ) ([]string, []string) {
 	var topicDcids []string
 	var directVarDcids []string
+	seenTopics := make(map[string]bool)
+	seenVars := make(map[string]bool)
+
 	for _, c := range candidates {
 		if isTopic(c) {
-			topicDcids = append(topicDcids, c.GetDcid())
+			if !seenTopics[c.GetDcid()] {
+				seenTopics[c.GetDcid()] = true
+				topicDcids = append(topicDcids, c.GetDcid())
+			}
 			for _, child := range c.GetChildren() {
 				if isTopic(child) {
-					topicDcids = append(topicDcids, child.GetDcid())
+					if !seenTopics[child.GetDcid()] {
+						seenTopics[child.GetDcid()] = true
+						topicDcids = append(topicDcids, child.GetDcid())
+					}
 				} else {
-					directVarDcids = append(directVarDcids, child.GetDcid())
+					if !seenVars[child.GetDcid()] {
+						seenVars[child.GetDcid()] = true
+						directVarDcids = append(directVarDcids, child.GetDcid())
+					}
 				}
 			}
 		} else {
-			directVarDcids = append(directVarDcids, c.GetDcid())
+			if !seenVars[c.GetDcid()] {
+				seenVars[c.GetDcid()] = true
+				directVarDcids = append(directVarDcids, c.GetDcid())
+			}
 		}
 	}
 	return topicDcids, directVarDcids
@@ -366,9 +381,20 @@ func gatherVarsToCheck(
 	subtopicDescendants map[string][]string,
 ) []string {
 	var vars []string
-	vars = append(vars, directVarDcids...)
+	seen := make(map[string]bool)
+	for _, v := range directVarDcids {
+		if !seen[v] {
+			seen[v] = true
+			vars = append(vars, v)
+		}
+	}
 	for _, descendantVars := range subtopicDescendants {
-		vars = append(vars, descendantVars...)
+		for _, v := range descendantVars {
+			if !seen[v] {
+				seen[v] = true
+				vars = append(vars, v)
+			}
+		}
 	}
 	return vars
 }
