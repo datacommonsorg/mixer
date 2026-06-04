@@ -81,6 +81,7 @@ type TopicExpander interface {
 	ExpandTopic(ctx context.Context, topicDcid string, expandTopics bool) ([]*pbv2.ResolveResponse_Entity_Candidate, error)
 	GetTopicDisplayName(ctx context.Context, topicDcid string) string
 	GetSVPropertyInfos(ctx context.Context, svDcids []string) (map[string]SVPropertyInfo, error)
+	GetTopicTargetSVs(ctx context.Context, topicDcid string, expandTopics bool) []string
 }
 
 var resolvedPlaceTypePriorityList = []string{

@@ -48,7 +48,7 @@ func TestFetchTopicsFromKGGolden(t *testing.T) {
 	ds := spanner.NewSpannerDataSource(client, nil, nil, false)
 	fetcher := datasource.NewNodeFetcher(ds)
 	manager := topic.NewTopicCacheManager(nil)
-	manager.Start(ctx, fetcher, 0)
+	manager.InitFetcher(fetcher)
 
 	got, err := manager.FetchTopicsFromKG(ctx)
 	if err != nil {

@@ -47,6 +47,7 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
+	"google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -648,6 +649,15 @@ func StringSetToSlice(s map[string]struct{}) []string {
 	return res
 }
 
+// StringSliceToSet is a helper to convert a string slice to a string set.
+func StringSliceToSet(s []string) map[string]struct{} {
+	res := make(map[string]struct{})
+	for _, k := range s {
+		res[k] = struct{}{}
+	}
+	return res
+}
+
 func FetchRemote(
 	metadata *resource.Metadata,
 	httpClient *http.Client,
@@ -811,4 +821,13 @@ func IsTopicDcid(dcid string) bool {
 func IsStatVarGroupDcid(dcid string) bool {
 	idx := strings.Index(dcid, "/g/")
 	return idx > 0 && !strings.Contains(dcid[:idx], "/")
+}
+
+// ToStringListValue converts a string slice to a Protobuf structpb.ListValue object.
+func ToStringListValue(list []string) *structpb.ListValue {
+	var values []*structpb.Value
+	for _, s := range list {
+		values = append(values, structpb.NewStringValue(s))
+	}
+	return &structpb.ListValue{Values: values}
 }

@@ -24,6 +24,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/reflect/protoreflect"
 	"google.golang.org/protobuf/testing/protocmp"
+	"google.golang.org/protobuf/types/known/structpb"
 )
 
 func TestZipAndEndocde(t *testing.T) {
@@ -447,5 +448,38 @@ func TestShouldIncludeFacet(t *testing.T) {
 		if !reflect.DeepEqual(got, c.want) {
 			t.Errorf("ShouldIncludeFacet(%v, %v) = %v, want %v", c.filter, c.facet, got, c.want)
 		}
+	}
+}
+
+func TestToStringListValue(t *testing.T) {
+	for _, c := range []struct {
+		desc  string
+		input []string
+		want  *structpb.ListValue
+	}{
+		{
+			desc:  "non-empty list of strings",
+			input: []string{"Place", "State"},
+			want: &structpb.ListValue{
+				Values: []*structpb.Value{
+					structpb.NewStringValue("Place"),
+					structpb.NewStringValue("State"),
+				},
+			},
+		},
+		{
+			desc:  "empty list of strings",
+			input: []string{},
+			want: &structpb.ListValue{
+				Values: []*structpb.Value{},
+			},
+		},
+	} {
+		t.Run(c.desc, func(t *testing.T) {
+			got := ToStringListValue(c.input)
+			if diff := cmp.Diff(got, c.want, protocmp.Transform()); diff != "" {
+				t.Errorf("ToStringListValue(%v) returned unexpected diff (-got +want):\n%s", c.input, diff)
+			}
+		})
 	}
 }
