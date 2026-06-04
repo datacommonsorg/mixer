@@ -593,6 +593,9 @@ func (s *Server) V2GetLocationsRankings(
 	if err != nil {
 		return nil, err
 	}
+	if v1Resp == nil {
+		return &pb.GetLocationsRankingsResponse{}, nil
+	}
 	v2Resp := proto.Clone(v1Resp).(*pb.GetLocationsRankingsResponse)
 
 	// Set the Legacy field to true to indicate that this response is from the V1 implementation.
