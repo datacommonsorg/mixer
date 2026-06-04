@@ -46,7 +46,7 @@ func (s *Server) V2Resolve(
 ) (*pbv2.ResolveResponse, error) {
 	// TODO: Remove this once embeddings search (resolver == "indicator") and
 	// topic resolution (resolver == "topic") are fully supported through Spanner.
-	if s.shouldDivertV2(ctx) && (in == nil || (in.GetResolver() != "indicator" && in.GetResolver() != "topic")) {
+	if s.shouldDivertV2(ctx) && (in == nil || (in.GetResolver() != "indicator" && in.GetResolver() != "topic") || s.flags.EnableSpannerSearchEmbeddings) {
 		return s.dispatcher.Resolve(ctx, in)
 	}
 
@@ -581,4 +581,25 @@ func convertV1ToV2BulkVariableGroupInfo(resp *pbv1.BulkVariableGroupInfoResponse
 			childSV.SearchNames = nil
 		}
 	}
+}
+
+// V2GetLocationsRankings implements API for Mixer.V2GetLocationsRankings.
+func (s *Server) V2GetLocationsRankings(
+	ctx context.Context, in *pb.GetLocationsRankingsRequest,
+) (*pb.GetLocationsRankingsResponse, error) {
+
+	// Use the V1 implementation for now.
+	v1Resp, err := s.GetLocationsRankings(ctx, in)
+	if err != nil {
+		return nil, err
+	}
+	if v1Resp == nil {
+		return &pb.GetLocationsRankingsResponse{}, nil
+	}
+	v2Resp := proto.Clone(v1Resp).(*pb.GetLocationsRankingsResponse)
+
+	// Set the Legacy field to true to indicate that this response is from the V1 implementation.
+	v2Resp.Legacy = true
+
+	return v2Resp, nil
 }
