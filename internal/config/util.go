@@ -39,13 +39,13 @@ func ReadFile(ctx context.Context, filePath string) ([]byte, error) {
 		if err != nil {
 			return nil, fmt.Errorf("failed to create storage client: %w", err)
 		}
-		defer client.Close()
+		defer func() { _ = client.Close() }()
 
 		rc, err := client.Bucket(bucket).Object(object).NewReader(ctx)
 		if err != nil {
 			return nil, fmt.Errorf("failed to read from gcs: %w", err)
 		}
-		defer rc.Close()
+		defer func() { _ = rc.Close() }()
 
 		return io.ReadAll(rc)
 	}

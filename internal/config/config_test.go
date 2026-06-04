@@ -46,7 +46,7 @@ func TestLoadConfig(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to create temp dir: %v", err)
 	}
-	defer os.RemoveAll(tmpDir)
+	defer func() { _ = os.RemoveAll(tmpDir) }()
 
 	// Test case 3: Valid YAML
 	validYAML := `
@@ -82,7 +82,7 @@ embeddings_service:
 
 	// Test case 4: Invalid YAML
 	invalidYAML := `
-vector_search: {
+embeddings_service: {
 `
 	invalidPath := filepath.Join(tmpDir, "invalid_config.yaml")
 	if err := os.WriteFile(invalidPath, []byte(invalidYAML), 0644); err != nil {
