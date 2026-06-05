@@ -18,6 +18,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"sort"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
@@ -137,6 +138,7 @@ func (s *Service) enrichMetadata(
 	for dcid := range dcidsSet {
 		allDcids = append(allDcids, dcid)
 	}
+	sort.Strings(allDcids)
 
 	nodeReq := &pbv2.NodeRequest{
 		Nodes:    allDcids,
@@ -186,23 +188,11 @@ func (s *Service) buildFinalResponse(
 	}
 
 	// Map variable Node
-	if varMeta, ok := metadata[in.GetVariableDcid()]; ok {
-		resp.Variable = &pbv2.GetObservationsResponse_Node{
-			Dcid:   varMeta.dcid,
-			Name:   varMeta.name,
-			TypeOf: varMeta.typeOf,
-		}
-	}
+	resp.Variable = toResponseNode(in.GetVariableDcid(), metadata)
 
 	// Map resolved parent place (for hierarchy mode)
 	if in.GetChildPlaceType() != "" {
-		if parentMeta, ok := metadata[in.GetPlaceDcid()]; ok {
-			resp.ResolvedParentPlace = &pbv2.GetObservationsResponse_Node{
-				Dcid:   parentMeta.dcid,
-				Name:   parentMeta.name,
-				TypeOf: parentMeta.typeOf,
-			}
-		}
+		resp.ResolvedParentPlace = toResponseNode(in.GetPlaceDcid(), metadata)
 	}
 
 	// Map primary source metadata
@@ -220,7 +210,14 @@ func (s *Service) buildFinalResponse(
 
 	// Map alternative sources
 	if obsResp != nil && obsResp.GetFacets() != nil {
-		for altSourceID, count := range sourceResult.alternativeSourceCounts {
+		var altSourceIDs []string
+		for altSourceID := range sourceResult.alternativeSourceCounts {
+			altSourceIDs = append(altSourceIDs, altSourceID)
+		}
+		sort.Strings(altSourceIDs)
+
+		for _, altSourceID := range altSourceIDs {
+			count := sourceResult.alternativeSourceCounts[altSourceID]
 			if facet, ok := obsResp.GetFacets()[altSourceID]; ok {
 				alt := &pbv2.GetObservationsResponse_AlternativeSource{
 					SourceMetadata: toFacetMetadata(altSourceID, facet),
@@ -244,15 +241,11 @@ func (s *Service) buildFinalResponse(
 			}
 		}
 	}
+	sort.Strings(placesList)
 
 	for _, placeDcid := range placesList {
-		placeObs := &pbv2.GetObservationsResponse_PlaceObservation{}
-		if placeMeta, ok := metadata[placeDcid]; ok {
-			placeObs.Place = &pbv2.GetObservationsResponse_Node{
-				Dcid:   placeMeta.dcid,
-				Name:   placeMeta.name,
-				TypeOf: placeMeta.typeOf,
-			}
+		placeObs := &pbv2.GetObservationsResponse_PlaceObservation{
+			Place: toResponseNode(placeDcid, metadata),
 		}
 
 		if processed, ok := sourceResult.processedDataByPlace[placeDcid]; ok {
@@ -284,4 +277,17 @@ func toFacetMetadata(sourceID string, facet *pb.Facet) *pbv2.GetObservationsResp
 		ProvenanceUrl:     facet.GetProvenanceUrl(),
 		Unit:              facet.GetUnit(),
 	}
+}
+
+// toResponseNode constructs a response Node, always populating the DCID,
+// and conditionally enriching it with name and type if metadata is available.
+func toResponseNode(dcid string, metadata map[string]*nodeMetadata) *pbv2.GetObservationsResponse_Node {
+	node := &pbv2.GetObservationsResponse_Node{
+		Dcid: dcid,
+	}
+	if meta, ok := metadata[dcid]; ok {
+		node.Name = meta.name
+		node.TypeOf = meta.typeOf
+	}
+	return node
 }
