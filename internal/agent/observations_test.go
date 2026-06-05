@@ -363,7 +363,7 @@ func TestSelectPrimarySource(t *testing.T) {
 			wantPrimary: "source-A",
 			wantAlts:    map[string]int{},
 			wantProcessed: map[string][]float64{
-				"geoId/06": {11}, // Assumes date filter handles sorting. Note: in real Mixer, obs are sorted.
+				"geoId/06": {12}, // 2022 is the maximum date.
 			},
 		},
 	}
@@ -528,8 +528,8 @@ func TestGetObservations(t *testing.T) {
 				if diff := cmp.Diff(in.GetNodes(), expectedNodes); diff != "" {
 					t.Errorf("V2Node nodes mismatch (-got +want):\n%s", diff)
 				}
-				if in.GetProperty() != "->[name, typeOf]" {
-					t.Errorf("V2Node property = %q, want: ->[name, typeOf]", in.GetProperty())
+				if in.GetProperty() != nodePropertiesQuery {
+					t.Errorf("V2Node property = %q, want: %q", in.GetProperty(), nodePropertiesQuery)
 				}
 
 				return &pbv2.NodeResponse{

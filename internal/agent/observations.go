@@ -17,6 +17,7 @@ package agent
 import (
 	"context"
 	"fmt"
+	"log"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
@@ -62,7 +63,11 @@ func (s *Service) GetObservations(
 	// Metadata Enrichment (Single V2Node Lookup)
 	metadata, err := s.enrichMetadata(ctx, in.GetVariableDcid(), in.GetPlaceDcid(), obsResp)
 	if err != nil {
-		return nil, status.Errorf(codes.Internal, "failed to enrich metadata: %v", err)
+		log.Printf("Agent GetObservations: failed to enrich metadata: %v", err)
+		// Proceed with empty metadata; statistical data is the primary payload.
+		if metadata == nil {
+			metadata = make(map[string]*nodeMetadata)
+		}
 	}
 
 	// Primary Source Selection (Ranking) & Date Filtering
@@ -135,7 +140,7 @@ func (s *Service) enrichMetadata(
 
 	nodeReq := &pbv2.NodeRequest{
 		Nodes:    allDcids,
-		Property: "->[name, typeOf]",
+		Property: nodePropertiesQuery,
 	}
 
 	nodeResp, err := s.mixer.V2Node(ctx, nodeReq)

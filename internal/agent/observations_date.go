@@ -39,6 +39,7 @@ func validateDateFormat(date string) error {
 }
 
 // parseDateStringToInterval converts a partial date string into start and end time boundaries.
+// All calculations are timezone-agnostic and default strictly to UTC.
 func parseDateStringToInterval(dateStr string) (time.Time, time.Time, error) {
 	var start, end time.Time
 	var err error

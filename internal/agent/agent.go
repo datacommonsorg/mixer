@@ -41,6 +41,8 @@ const (
 	dateTypeLatest = "latest"
 	dateTypeAll    = "all"
 	dateTypeRange  = "range"
+
+	nodePropertiesQuery = "->[name, typeOf]"
 )
 
 // Mixer defines the strict subset of Mixer V2 API capabilities

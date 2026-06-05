@@ -206,9 +206,13 @@ func filterObservationsByDate(
 
 	// If filter type is "latest" and we have observations, only return the latest one.
 	if filter != nil && filter.dateType == dateTypeLatest && len(filtered) > 0 {
-		// Observations are assumed to be sorted by date (ascending) in Mixer.
-		// Let's pick the last one.
-		return []*pb.PointStat{filtered[len(filtered)-1]}
+		var latest *pb.PointStat
+		for _, o := range filtered {
+			if latest == nil || o.GetDate() > latest.GetDate() {
+				latest = o
+			}
+		}
+		return []*pb.PointStat{latest}
 	}
 
 	return filtered
