@@ -75,18 +75,6 @@
               "obs_count": 1,
               "earliest_date": "2015",
               "latest_date": "2015"
-            },
-            {
-              "facet_id": "1156717814",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 173533
-                }
-              ],
-              "obs_count": 1,
-              "earliest_date": "2015",
-              "latest_date": "2015"
             }
           ]
         },
@@ -163,18 +151,6 @@
               "obs_count": 1,
               "earliest_date": "2015",
               "latest_date": "2015"
-            },
-            {
-              "facet_id": "1156717814",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 556779
-                }
-              ],
-              "obs_count": 1,
-              "earliest_date": "2015",
-              "latest_date": "2015"
             }
           ]
         },
@@ -246,18 +222,6 @@
                 {
                   "date": "2015",
                   "value": 214636
-                }
-              ],
-              "obs_count": 1,
-              "earliest_date": "2015",
-              "latest_date": "2015"
-            },
-            {
-              "facet_id": "1156717814",
-              "observations": [
-                {
-                  "date": "2015",
-                  "value": 215622
                 }
               ],
               "obs_count": 1,
@@ -364,11 +328,6 @@
       "provenance_url": "https://www.census.gov/programs-surveys/popest.html",
       "measurement_method": "CensusPEPSurvey",
       "observation_period": "P1Y"
-    },
-    "1156717814": {
-      "import_name": "WikidataPopulation",
-      "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
-      "measurement_method": "WikidataPopulation"
     },
     "1258723724": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
