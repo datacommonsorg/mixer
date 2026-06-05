@@ -88,3 +88,11 @@ func (a *topicExpanderAdapter) GetSVPropertyInfos(ctx context.Context, svDcids [
 	}
 	return res, nil
 }
+
+// GetTopicTargetSVs maps topic candidate descendant SV retrieval to the underlying TopicCacheManager.
+func (a *topicExpanderAdapter) GetTopicTargetSVs(ctx context.Context, topicDcid string, expandTopics bool) []string {
+	if a.m == nil {
+		return nil
+	}
+	return a.m.GetTopicTargetSVs(ctx, topicDcid, expandTopics)
+}
