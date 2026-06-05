@@ -70,7 +70,34 @@ const (
 	prefixSource = "dc/s/"
 	// StatVarGroup dcid prefix
 	prefixSVG = "dc/g/"
+	// key for filtering nodes by language suffix
+	filterLang = "$lang"
 )
+
+// QueryOperatorHandler defines the signature for processing meta-filters.
+// It returns the generated SQL condition and mutates the params map directly.
+type QueryOperatorHandler func(prefix string, values []string, params map[string]interface{}) string
+
+// queryOperatorRegistry maps operator keys to their respective handlers.
+// Add future operators (e.g., "$date", "$limit") here.
+var queryOperatorRegistry = map[string]QueryOperatorHandler{
+	filterLang: handleLangOperator,
+}
+
+// handleLangOperator generates the SQL clause for language matching.
+func handleLangOperator(prefix string, langs []string, params map[string]interface{}) string {
+	if len(langs) == 0 {
+		return ""
+	}
+	var parts []string
+	for j, lang := range langs {
+		paramName := fmt.Sprintf("%s_%d", prefix, j)
+		// Database stores values exactly like "Value"@en
+		params[paramName] = "@" + strings.ToLower(lang)
+		parts = append(parts, fmt.Sprintf("ENDS_WITH(n.value, @%s)", paramName))
+	}
+	return strings.Join(parts, " OR ")
+}
 
 func GetCompletionTimestampQuery() *spanner.Statement {
 	return &spanner.Statement{
@@ -116,6 +143,8 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 
 	// Generate filters.
 	subqueries := []string{}
+	var filterParts []string // Holds the WHERE clauses for query operators
+
 	if len(arc.Filter) > 0 {
 		// Sort for determinism.
 		props := make([]string, 0, len(arc.Filter))
@@ -126,6 +155,18 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 
 		i := 0
 		for _, prop := range props {
+			// 1. Dispatch to Query Operator Handler (if it exists)
+			if handler, isOperator := queryOperatorRegistry[prop]; isOperator {
+				safeOpName := strings.TrimPrefix(prop, "$") // e.g., "lang"
+				prefix := fmt.Sprintf("op_global_%s", safeOpName)
+
+				if clause := handler(prefix, arc.Filter[prop], params); clause != "" {
+					filterParts = append(filterParts, "("+clause+")")
+				}
+				continue // Skip standard property logic
+			}
+
+			// 2. Standard Property Processing
 			params["prop"+strconv.Itoa(i)] = prop
 			objectFilter := ""
 			filterVal := addObjectValues(arc.Filter[prop])
@@ -139,27 +180,66 @@ func GetNodeEdgesByIDQuery(ids []string, arc *v2.Arc, pageSize, offset int) *spa
 				}
 			}
 			subqueries = append(subqueries, fmt.Sprintf(statements.filterProperty, i, objectFilter))
-			i += 1
+			i++
 		}
+	}
+
+	// Property-specific filters (from arc.BracketFilters)
+	if len(arc.BracketFilters) > 0 {
+		// Sort properties for deterministic SQL generation
+		sortedProps := make([]string, 0, len(arc.BracketFilters))
+		for prop := range arc.BracketFilters {
+			sortedProps = append(sortedProps, prop)
+		}
+		sort.Strings(sortedProps)
+
+		for i, prop := range sortedProps {
+			propFilters := arc.BracketFilters[prop]
+			propParam := fmt.Sprintf("prop_filter_%d", i)
+			params[propParam] = prop
+
+			// Sort operator keys to guarantee deterministic SQL output
+			opKeys := make([]string, 0, len(propFilters))
+			for k := range propFilters {
+				opKeys = append(opKeys, k)
+			}
+			sort.Strings(opKeys)
+
+			for _, opKey := range opKeys {
+				if handler, isOperator := queryOperatorRegistry[opKey]; isOperator {
+					safeOpName := strings.TrimPrefix(opKey, "$")
+					prefix := fmt.Sprintf("op_prop_%d_%s", i, safeOpName)
+
+					if clause := handler(prefix, propFilters[opKey], params); clause != "" {
+						filterParts = append(filterParts, fmt.Sprintf("(e.predicate != @%s OR %s)", propParam, clause))
+					}
+				}
+			}
+		}
+	}
+
+	var nodeFilterStr string
+	if len(filterParts) > 0 {
+		nodeFilterStr = " WHERE " + strings.Join(filterParts, " AND ")
 	}
 
 	var subquery string
 	switch arc.Out {
 	case true:
 		if arc.Decorator == v3.Chain {
-			subquery = fmt.Sprintf(statements.getChainedEdgesBySubjectID, idFilter, maxHops)
+			subquery = fmt.Sprintf(statements.getChainedEdgesBySubjectID, idFilter, maxHops, nodeFilterStr)
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
 		} else {
-			subquery = fmt.Sprintf(statements.getEdgesBySubjectID, idFilter, filterPredicate)
+			subquery = fmt.Sprintf(statements.getEdgesBySubjectID, idFilter, filterPredicate, nodeFilterStr)
 		}
 	case false:
 		if arc.Decorator == v3.Chain {
-			subquery = fmt.Sprintf(statements.getChainedEdgesByObjectID, idFilter, maxHops)
+			subquery = fmt.Sprintf(statements.getChainedEdgesByObjectID, idFilter, maxHops, nodeFilterStr)
 			params["predicate"] = arc.SingleProp
 			params["result_predicate"] = arc.SingleProp + arc.Decorator
 		} else {
-			subquery = fmt.Sprintf(statements.getEdgesByObjectID, idFilter, filterPredicate)
+			subquery = fmt.Sprintf(statements.getEdgesByObjectID, idFilter, filterPredicate, nodeFilterStr)
 		}
 	}
 	subqueries = append([]string{subquery}, subqueries...)

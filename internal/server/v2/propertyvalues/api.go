@@ -27,6 +27,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/statvar/hierarchy"
 	v1pv "github.com/datacommonsorg/mixer/internal/server/v1/propertyvalues"
+	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	v2p "github.com/datacommonsorg/mixer/internal/server/v2/properties"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
@@ -49,6 +50,7 @@ func PropertyValues(
 	direction string,
 	limit int,
 	reqToken string,
+	arc *v2.Arc,
 ) (*pbv2.NodeResponse, error) {
 	obsNodes := []string{}
 	regularNodes := []string{}
@@ -133,6 +135,27 @@ func PropertyValues(
 				return nil, err
 			}
 			res.NextToken = respToken
+		}
+	}
+
+	// Post-filter the results using language filters.
+	globalLangs := arc.Filter["$lang"]
+	for n := range res.Data {
+		for property := range res.Data[n].Arcs {
+			langs := globalLangs
+			if bracketFilters, ok := arc.BracketFilters[property]; ok {
+				if propLangs, ok := bracketFilters["$lang"]; ok {
+					langs = propLangs
+				}
+			}
+			if len(langs) > 0 {
+				filtered := filterByLang(res.Data[n].Arcs[property].Nodes, langs)
+				if len(filtered) > 0 {
+					res.Data[n].Arcs[property].Nodes = filtered
+				} else {
+					delete(res.Data[n].Arcs, property)
+				}
+			}
 		}
 	}
 
@@ -222,4 +245,20 @@ func LinkedPropertyValues(
 	}
 	return nil, status.Errorf(codes.InvalidArgument,
 		"Invalid property %s for wildcard '+'", linkedProperty)
+}
+
+func filterByLang(nodes []*pb.EntityInfo, langs []string) []*pb.EntityInfo {
+	if len(langs) == 0 {
+		return nodes
+	}
+	res := []*pb.EntityInfo{}
+	for _, n := range nodes {
+		for _, lang := range langs {
+			if strings.HasSuffix(n.Value, "@"+strings.ToLower(lang)) {
+				res = append(res, n)
+				break
+			}
+		}
+	}
+	return res
 }

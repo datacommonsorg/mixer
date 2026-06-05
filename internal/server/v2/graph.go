@@ -29,6 +29,8 @@ type Arc struct {
 	BracketProps []string
 	// The filter of the arc: filter key -> filter values.
 	Filter map[string][]string
+	// The filters of the bracket properties: property -> filter key -> filter values.
+	BracketFilters map[string]map[string][]string
 }
 
 func (arc *Arc) Direction() string {
