@@ -1,0 +1,62 @@
+// Copyright 2026 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+package datacommons.v2;
+
+import "google/protobuf/struct.proto";
+
+option go_package = "github.com/datacommonsorg/mixer/internal/proto/v2";
+
+// Request payload for the search_indicators tool endpoint.
+message SearchIndicatorsRequest {
+  string query = 1;
+  repeated string places = 2;
+  string parent_place = 3;
+  int32 per_search_limit = 4;
+  optional bool include_topics = 5;
+  optional bool expand_topics = 6;
+}
+
+// Response payload for the search_indicators tool endpoint.
+message SearchIndicatorsResponse {
+  message Topic {
+    string dcid = 1;
+    repeated string member_topics = 2;
+    repeated string member_variables = 3;
+    repeated string places_with_data = 4;
+    string description = 5;
+    repeated string alternate_descriptions = 6;
+  }
+
+  message Variable {
+    string dcid = 1;
+    repeated string places_with_data = 2;
+    string description = 3;
+    repeated string alternate_descriptions = 4;
+  }
+
+  message ResolvedPlace {
+    string dcid = 1;
+    string name = 2;
+    repeated string type_of = 3;
+  }
+
+  string status = 1;
+  map<string, string> dcid_name_mappings = 2;
+  map<string, google.protobuf.ListValue> dcid_place_type_mappings = 3;
+  repeated Topic topics = 4;
+  repeated Variable variables = 5;
+  ResolvedPlace resolved_parent_place = 6;
+}

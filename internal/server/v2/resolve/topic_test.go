@@ -65,6 +65,13 @@ func (m *mockTopicExpander) GetSVPropertyInfos(ctx context.Context, svDcids []st
 	}, nil
 }
 
+func (m *mockTopicExpander) GetTopicTargetSVs(ctx context.Context, topicDcid string, expandTopics bool) []string {
+	if topicDcid == "dc/topic/Demo" {
+		return []string{"Count_Person"}
+	}
+	return nil
+}
+
 func TestResolveTopics(t *testing.T) {
 	ctx := context.Background()
 	expander := &mockTopicExpander{}

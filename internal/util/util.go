@@ -47,6 +47,7 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
+	"google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -150,6 +151,9 @@ const (
 	// Whether to log the full interpolated SQL query.
 	// To use, set header "X-Log-SQL: true"
 	XLogSQL = "X-Log-SQL"
+	// Header to specify which embeddings index to use for V2 Resolve.
+	// To use, set header "X-V2Resolve-Index: multi-entity"
+	XV2ResolveIndex = "X-V2Resolve-Index"
 )
 
 // ZipAndEncode compresses the given content using gzip and encodes it in base64
@@ -645,6 +649,15 @@ func StringSetToSlice(s map[string]struct{}) []string {
 	return res
 }
 
+// StringSliceToSet is a helper to convert a string slice to a string set.
+func StringSliceToSet(s []string) map[string]struct{} {
+	res := make(map[string]struct{})
+	for _, k := range s {
+		res[k] = struct{}{}
+	}
+	return res
+}
+
 func FetchRemote(
 	metadata *resource.Metadata,
 	httpClient *http.Client,
@@ -778,6 +791,22 @@ func GetMetadata(ctx context.Context) (surface string, toRemote bool) {
 	return surface, toRemote
 }
 
+// GetSingleHeaderValue reads the specified header from the context metadata and returns its first value.
+func GetSingleHeaderValue(ctx context.Context, headerName string) string {
+	if md, ok := metadata.FromIncomingContext(ctx); ok {
+		headers := md.Get(headerName)
+		if len(headers) > 0 {
+			return headers[0]
+		}
+	}
+	return ""
+}
+
+// IsHeaderTrue reads the specified header from the context metadata and returns true if its value is "true".
+func IsHeaderTrue(ctx context.Context, headerName string) bool {
+	return GetSingleHeaderValue(ctx, headerName) == "true"
+}
+
 // IsTopicDcid checks if the DCID belongs to a Topic.
 // It checks for the pattern "[prefix]/topic/", requiring /topic/ to be the segment of the id.
 // It does this to allow SVGs that have something other than "dc" at the start, such as "c/topic/Demographics"
@@ -792,4 +821,13 @@ func IsTopicDcid(dcid string) bool {
 func IsStatVarGroupDcid(dcid string) bool {
 	idx := strings.Index(dcid, "/g/")
 	return idx > 0 && !strings.Contains(dcid[:idx], "/")
+}
+
+// ToStringListValue converts a string slice to a Protobuf structpb.ListValue object.
+func ToStringListValue(list []string) *structpb.ListValue {
+	var values []*structpb.Value
+	for _, s := range list {
+		values = append(values, structpb.NewStringValue(s))
+	}
+	return &structpb.ListValue{Values: values}
 }
