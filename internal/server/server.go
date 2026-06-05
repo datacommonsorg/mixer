@@ -19,7 +19,6 @@ import (
 	"fmt"
 	"log/slog"
 	"math/rand"
-	"golang.org/x/sync/errgroup"
 	"net/http"
 	"os"
 	"path"
@@ -30,8 +29,12 @@ import (
 	"sync/atomic"
 	"time"
 
+	"golang.org/x/sync/errgroup"
+	"google.golang.org/grpc/metadata"
+
 	cbt "cloud.google.com/go/bigtable"
 	pubsub "cloud.google.com/go/pubsub/v2"
+	"github.com/datacommonsorg/mixer/internal/agent"
 	"github.com/datacommonsorg/mixer/internal/featureflags"
 	"github.com/datacommonsorg/mixer/internal/maps"
 	"github.com/datacommonsorg/mixer/internal/metrics"
@@ -46,7 +49,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/translator/solver"
 	"github.com/datacommonsorg/mixer/internal/translator/types"
 	"github.com/datacommonsorg/mixer/internal/util"
-	"github.com/datacommonsorg/mixer/internal/agent"
 )
 
 // Server holds resources for a mixer server
@@ -67,14 +69,14 @@ type Server struct {
 	agentService      *agent.Service
 
 	// Centralized lifecycle scheduler registries
-	initHooks         map[string]func(ctx context.Context) error
-	periodicHooks     map[string]func(ctx context.Context) error
+	initHooks     map[string]func(ctx context.Context) error
+	periodicHooks map[string]func(ctx context.Context) error
 
 	// Background scheduling fields
-	periodicTicker    *time.Ticker
-	stopPeriodicCh    chan struct{}
-	periodicWg        sync.WaitGroup
-	periodicOnce      sync.Once
+	periodicTicker *time.Ticker
+	stopPeriodicCh chan struct{}
+	periodicWg     sync.WaitGroup
+	periodicOnce   sync.Once
 }
 
 func (s *Server) updateBranchTable(ctx context.Context, branchTableName string) error {
@@ -292,7 +294,6 @@ func (s *Server) ClosePeriodicRefresher() {
 	}
 }
 
-
 // NewMixerServer creates a new mixer server instance.
 func NewMixerServer(
 	store *store.Store,
@@ -339,10 +340,19 @@ func (s *Server) TopicCacheManager() *topic.TopicCacheManager {
 
 // shouldDivertV2 returns true if the request should be diverted to the dispatcher.
 func (s *Server) shouldDivertV2(ctx context.Context) bool {
+	// First check if the overall Mixer Spanner flag is set.
 	if s.useSpannerGraph {
 		return true
 	}
 
+	// Second, check if the specific request has the header to divert to Spanner.
+	if md, ok := metadata.FromIncomingContext(ctx); ok {
+		if vals := md.Get(util.XDivertSpanner); len(vals) > 0 && vals[0] == "true" {
+			return true
+		}
+	}
+
+	// Finally, check if the random diversion for V2 is enabled.
 	fraction := s.flags.V2DivertFraction
 	if fraction <= 0 {
 		return false
