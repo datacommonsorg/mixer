@@ -167,20 +167,20 @@ var statements = struct {
 	graphPrefixAny: `		GRAPH DCGraph MATCH ANY `,
 	getEdgesBySubjectID: `(m:Node
 		WHERE
-			m.subject_id %[1]s)-[e:Edge%[2]s]->(n:Node)`,
+			m.subject_id %[1]s)-[e:Edge%[2]s]->(n:Node)%[3]s`,
 	getChainedEdgesBySubjectID: `(m:Node
 		WHERE
-			m.subject_id %s)-[e:Edge
+			m.subject_id %[1]s)-[e:Edge
 		WHERE
-			e.predicate = @predicate]->{1,%d}(n:Node)`,
+			e.predicate = @predicate]->{1,%[2]d}(n:Node)%[3]s`,
 	getEdgesByObjectID: `(m:Node
 		WHERE
-			m.subject_id %[1]s)<-[e:Edge%[2]s]-(n:Node)`,
+			m.subject_id %[1]s)<-[e:Edge%[2]s]-(n:Node)%[3]s`,
 	getChainedEdgesByObjectID: `(m:Node
 		WHERE
-			m.subject_id %s)<-[e:Edge
+			m.subject_id %[1]s)<-[e:Edge
 		WHERE
-			e.predicate = @predicate]-{1,%d}(n:Node)`,
+			e.predicate = @predicate]-{1,%[2]d}(n:Node)%[3]s`,
 	filterPredicate: `
 		WHERE
 			e.predicate = @predicate`,

@@ -135,6 +135,7 @@ func (s *Server) V2NodeCore(
 				direction,
 				int(in.GetLimit()),
 				in.GetNextToken(),
+				arc,
 			)
 		}
 
@@ -162,6 +163,7 @@ func (s *Server) V2NodeCore(
 				direction,
 				int(in.GetLimit()),
 				in.GetNextToken(),
+				arc,
 			)
 		}
 	}
