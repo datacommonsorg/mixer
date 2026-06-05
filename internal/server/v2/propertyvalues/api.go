@@ -177,6 +177,7 @@ func LinkedPropertyValues(
 	}
 	if linkedProperty == "containedInPlace" && direction == util.DirectionIn {
 		nodeChildren := make(map[string][]string)
+		nodeChildrenSet := make(map[string]map[string]struct{})
 		allChildSet := make(map[string]struct{})
 
 		for _, typeOfFilter := range typeOfFilters {
@@ -194,14 +195,13 @@ func LinkedPropertyValues(
 				if !ok || len(dcids) == 0 {
 					continue
 				}
-				existingSet := make(map[string]struct{})
-				for _, existing := range nodeChildren[node] {
-					existingSet[existing] = struct{}{}
+				if _, exists := nodeChildrenSet[node]; !exists {
+					nodeChildrenSet[node] = make(map[string]struct{})
 				}
 				for _, dcid := range dcids {
-					if _, seen := existingSet[dcid]; !seen {
+					if _, seen := nodeChildrenSet[node][dcid]; !seen {
 						nodeChildren[node] = append(nodeChildren[node], dcid)
-						existingSet[dcid] = struct{}{}
+						nodeChildrenSet[node][dcid] = struct{}{}
 						allChildSet[dcid] = struct{}{}
 					}
 				}
