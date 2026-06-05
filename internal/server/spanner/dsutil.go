@@ -476,6 +476,7 @@ func obsToObsResponse(req *pbv2.ObservationRequest, observations []*Observation)
 	isContainedInWithDate := (req.Entity.Expression != "" && req.Date != "")
 	isDirectWithLatestDate := (req.Entity.Expression == "" && req.Date == shared.LATEST)
 	shouldFilterInferiorFacets := isContainedInWithDate || isDirectWithLatestDate
+
 	response := generateObsResponse(req.Variable, observations, true /*includeObs*/, shouldFilterInferiorFacets)
 
 	// Attach all requested entity dcids to response.
