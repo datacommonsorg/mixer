@@ -27,6 +27,7 @@ import (
 	"strings"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -37,6 +38,33 @@ const (
 	StatisticalVariableDominantType = "StatisticalVariable"
 	SearchVarsQueryEndpoint         = "/api/search_vars"
 )
+
+const (
+	LabelMultiEntity     = "multi-entity"
+	IndexBaseMultiEntity = "base_multi_entity"
+	LabelBaseNL          = "base-nl"
+	IndexBaseUaeMem      = "base_uae_mem"
+)
+
+var labelToIndex = map[string]string{
+	LabelMultiEntity: IndexBaseMultiEntity,
+	LabelBaseNL:      IndexBaseUaeMem,
+}
+
+// SelectEmbeddingsIndex determines the correct index to use for embeddings resolution.
+func SelectEmbeddingsIndex(ctx context.Context, defaultIndex string) (string, error) {
+	label := util.GetSingleHeaderValue(ctx, util.XV2ResolveIndex)
+	if label == "" {
+		return defaultIndex, nil
+	}
+
+	if indexName, ok := labelToIndex[label]; ok {
+		return indexName, nil
+	}
+
+	slog.Error("Invalid V2Resolve index label", "label", label, "header", util.XV2ResolveIndex)
+	return "", status.Errorf(codes.InvalidArgument, "Invalid V2Resolve index label: %s", label)
+}
 
 // searchVarsRequest represents the request body for the embeddings server
 type searchVarsRequest struct {
@@ -182,7 +210,7 @@ func buildEntityCandidates(
 	topicExpander TopicExpander,
 	expandTopics bool,
 ) []*pbv2.ResolveResponse_Entity_Candidate {
-	svInfos := fetchSVPropertyInfos(ctx, topicExpander, result)
+	svInfos := fetchSVPropertyInfos(ctx, topicExpander, result, expandTopics)
 
 	candidates := make([]*pbv2.ResolveResponse_Entity_Candidate, 0, len(result.SV))
 	for i, statVarDcid := range result.SV {
@@ -246,8 +274,8 @@ func buildEntityCandidates(
 	return candidates
 }
 
-// fetchSVPropertyInfos aggregates non-topic DCIDs from search results and pre-fetches their property info.
-func fetchSVPropertyInfos(ctx context.Context, topicExpander TopicExpander, result *searchResult) map[string]SVPropertyInfo {
+// fetchSVPropertyInfos aggregates non-topic DCIDs and expands topic DCIDs to pre-fetch their property info in batch.
+func fetchSVPropertyInfos(ctx context.Context, topicExpander TopicExpander, result *searchResult, expandTopics bool) map[string]SVPropertyInfo {
 	if topicExpander == nil || result == nil {
 		return nil
 	}
@@ -257,7 +285,10 @@ func fetchSVPropertyInfos(ctx context.Context, topicExpander TopicExpander, resu
 		if i >= len(result.CosineScore) {
 			break
 		}
-		if !strings.Contains(statVarDcid, TopicDcidSubstring) {
+		if strings.Contains(statVarDcid, TopicDcidSubstring) {
+			childSVs := topicExpander.GetTopicTargetSVs(ctx, statVarDcid, expandTopics)
+			svDcidsToFetch = append(svDcidsToFetch, childSVs...)
+		} else {
 			svDcidsToFetch = append(svDcidsToFetch, statVarDcid)
 		}
 	}

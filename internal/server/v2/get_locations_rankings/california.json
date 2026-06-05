@@ -1,0 +1,86 @@
+{
+  "data": {
+    "Count_Person": {
+      "rankTop100": [
+        {
+          "info": [
+            {
+              "rank": 1,
+              "value": 100,
+              "placeDcid": "countyA",
+              "date": "2026"
+            },
+            {
+              "rank": 2,
+              "value": 99,
+              "placeDcid": "countyB",
+              "date": "2026"
+            }
+          ],
+          "facetId": "2"
+        },
+        {
+          "info": [
+            {
+              "rank": 1,
+              "value": 98,
+              "placeDcid": "countyC",
+              "date": "2026"
+            },
+            {
+              "rank": 2,
+              "value": 97,
+              "placeDcid": "countyD",
+              "date": "2026"
+            }
+          ],
+          "facetId": "1"
+        }
+      ],
+      "rankBottom100": [
+        {
+          "info": [
+            {
+              "rank": 1,
+              "value": 1,
+              "placeDcid": "countyZ",
+              "date": "2026"
+            },
+            {
+              "rank": 2,
+              "value": 2,
+              "placeDcid": "countyY",
+              "date": "2026"
+            }
+          ],
+          "facetId": "2"
+        },
+        {
+          "info": [
+            {
+              "rank": 1,
+              "value": 3,
+              "placeDcid": "countyX",
+              "date": "2026"
+            },
+            {
+              "rank": 2,
+              "value": 4,
+              "placeDcid": "countyW",
+              "date": "2026"
+            }
+          ],
+          "facetId": "1"
+        }
+      ]
+    }
+  },
+  "facets": {
+    "1": {
+      "importName": "Test_Import1"
+    },
+    "2": {
+      "importName": "Test_Import2"
+    }
+  }
+}

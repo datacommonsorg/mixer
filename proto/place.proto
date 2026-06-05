@@ -32,6 +32,8 @@ package datacommons;
 
 option go_package = "github.com/datacommonsorg/mixer/internal/proto";
 
+import "stat.proto";
+
 message PlaceStatVars { repeated string stat_var_ids = 1; }
 
 message DateList { repeated string dates = 1; }
@@ -45,17 +47,26 @@ message RelatedPlacesInfo {
       int32 rank = 1;
       optional double value = 2;
       string place_dcid = 3;
+      string date = 4;
     }
     repeated RankInfo info = 1;
+    string facet_id = 2;
   }
+
   // The following 2 fields are set only when place is not empty.
   int32 rank_from_top = 2;    // Starting from 1.
   int32 rank_from_bottom = 3; // Starting from 1.
 
   // The following 3 fields are set only when place is empty.
+  // NOTE: These fields will be deprecated in favor of the Facet ranks.
   Ranking rank_all = 7;
   Ranking rank_top_1000 = 8;
   Ranking rank_bottom_1000 = 9;
+
+  // Top 100 ranking per Facet in rank order of 1-100. Facets are ordered by preference.
+  repeated Ranking rank_top_100 = 10;
+  // Bottom 100 ranking per Facet in rank order of 1-100, where 1 is the furthest to the bottom. Facets are ordered by preference.
+  repeated Ranking rank_bottom_100 = 11;
 
   reserved 1, 4, 5, 6;
 }
@@ -107,6 +118,12 @@ message GetLocationsRankingsRequest {
 
 message GetLocationsRankingsResponse {
   map<string, RelatedPlacesInfo> data = 1;
+  
+  // Keyed by facet ID.
+  map<string, datacommons.Facet> facets = 2;
+
+  // Indicates whether the response is using the legacy format.
+  bool legacy = 3;
 }
 
 // StatsVars represent a list of statistical variable dcids.

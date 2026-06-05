@@ -60,10 +60,8 @@ import (
 )
 
 const (
-	// Redis cache entries have a TTL of 1 day.
-	// Setting refresh interval to 1 hour minimizes the staleness window when Redis TTL expires
-	// without incurring excessive Redis polling overhead.
-	topicCacheRefreshInterval = 1 * time.Hour
+	// Refresh interval for server hooks.
+	periodicRefreshInterval = 1 * time.Hour
 )
 
 var (
@@ -475,7 +473,7 @@ func main() {
 	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs, *embeddingsServerURL, *resolveEmbeddingsIndexes, *useSpannerGraph, topicCacheManager)
 	pbs.RegisterMixerServer(srv, mixerServer)
 
-	// Start background tasks for topic cache manager
+	// If Topic Cache is enabled, construct and initialize the NodeFetcher.
 	if topicCacheManager != nil {
 		var nodeFetcher nodefetcher.NodeAllFetcher
 		if shouldUseSpannerGraph && spannerDS != nil {
@@ -485,9 +483,22 @@ func main() {
 			slog.Info("Setting up Store V2NodeCore NodeFetcher for topic cache")
 			nodeFetcher = nodefetcher.NewFuncNodeFetcher(mixerServer.V2NodeCore)
 		}
-		topicCacheManager.Start(ctx, nodeFetcher, topicCacheRefreshInterval)
-		defer topicCacheManager.Close()
+		topicCacheManager.InitFetcher(nodeFetcher)
 	}
+	
+	// Register component lifecycles
+	registerTopicCacheLifecycle(mixerServer)
+	registerAgentServiceLifecycle(mixerServer)
+
+	// Run all startup initialization hooks
+	if err := mixerServer.RunInitHooks(ctx); err != nil {
+		slog.Error("Failed to initialize server components during startup", "error", err)
+		os.Exit(1)
+	}
+
+	// Start the periodic scheduler
+	mixerServer.StartPeriodicRefresher(ctx, periodicRefreshInterval)
+	defer mixerServer.ClosePeriodicRefresher()
 
 	// Subscribe to branch cache update
 	if *useBranchBigtable {
@@ -545,3 +556,34 @@ func main() {
 		os.Exit(1)
 	}
 }
+
+func registerTopicCacheLifecycle(s *server.Server) {
+	if tcm := s.TopicCacheManager(); tcm != nil {
+		s.RegisterLifecycle("topic-cache",
+			func(ctx context.Context) error {
+				_, err := tcm.LoadHierarchy(ctx)
+				return err
+			},
+			func(ctx context.Context) error {
+				_, err := tcm.LoadHierarchy(ctx)
+				return err
+			},
+		)
+	}
+}
+
+func registerAgentServiceLifecycle(s *server.Server) {
+	if agentSvc := s.AgentService(); agentSvc != nil {
+		s.RegisterLifecycle("agent-service-cache",
+			func(ctx context.Context) error {
+				agentSvc.Reset()
+				return nil
+			},
+			func(ctx context.Context) error {
+				agentSvc.Reset()
+				return nil
+			},
+		)
+	}
+}
+
