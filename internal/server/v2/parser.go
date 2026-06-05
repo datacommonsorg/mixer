@@ -72,7 +72,7 @@ func parseArc(arrow, expr string) (*Arc, error) {
 	default:
 		return nil, status.Errorf(
 			codes.InvalidArgument,
-			"arc string should start with arrow but got %s",
+			"arc string should start with arrow (-> or <-) but got %s",
 			arrow,
 		)
 	}
@@ -89,7 +89,7 @@ func parseArc(arrow, expr string) (*Arc, error) {
 	if expr[0] == '[' {
 		if expr[len(expr)-1] != ']' {
 			return nil, status.Errorf(
-				codes.InvalidArgument, "invalid list string: %s", rawExpr)
+				codes.InvalidArgument, "invalid list string: %s, missing closing bracket ']'", rawExpr)
 		}
 		expr = expr[1 : len(expr)-1]
 
@@ -117,7 +117,7 @@ func parseArc(arrow, expr string) (*Arc, error) {
 			arc.SingleProp = expr[0:i]
 			if arc.SingleProp == "" {
 				return nil, status.Errorf(
-					codes.InvalidArgument, "invalid property expression: %s", rawExpr)
+					codes.InvalidArgument, "invalid property expression: %s, missing property name before filter", rawExpr)
 			}
 			expr = expr[i:]
 			break
@@ -148,7 +148,7 @@ func ParseProperty(expr string) ([]*Arc, error) {
 	}
 	if len(parts)%2 == 1 {
 		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid expression string: %s", expr)
+			codes.InvalidArgument, "invalid expression string: %s, expected alternating arrows and properties (e.g., ->name)", expr)
 	}
 	arcs := []*Arc{}
 	for i := 0; i < len(parts)/2; i++ {
@@ -166,7 +166,7 @@ func ParseLinkedNodes(expr string) (*LinkedNodes, error) {
 	parts := splitExpr(expr)
 	if len(parts) < 3 || len(parts)%2 == 0 {
 		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid expression string: %s", expr)
+			codes.InvalidArgument, "invalid expression string: %s, expected subject DCID followed by arrow and property (e.g., geoId/06->name)", expr)
 	}
 	g := &LinkedNodes{
 		Subject: parts[0],
@@ -189,7 +189,7 @@ func ParseContainedInPlace(expr string) (*ContainedInPlace, error) {
 	}
 	if len(g.Arcs) != 1 {
 		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid expression string: %s", expr)
+			codes.InvalidArgument, "invalid expression string: %s, expected format: placeDcid<-containedInPlace+{typeOf:ChildType}", expr)
 	}
 	arc := g.Arcs[0]
 	typeOfs, typeOfsOK := arc.Filter["typeOf"]
@@ -198,11 +198,11 @@ func ParseContainedInPlace(expr string) (*ContainedInPlace, error) {
 		arc.Filter == nil ||
 		!typeOfsOK || len(typeOfs) != 1 {
 		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid expression string: %s", expr)
+			codes.InvalidArgument, "invalid expression string: %s, expected format: placeDcid<-containedInPlace+{typeOf:ChildType}", expr)
 	}
 	if len(typeOfs) < 1 {
 		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid expression string: %s", expr)
+			codes.InvalidArgument, "invalid expression string: %s, expected format: placeDcid<-containedInPlace+{typeOf:ChildType}", expr)
 	}
 	return &ContainedInPlace{Ancestor: g.Subject, ChildPlaceType: typeOfs[0]}, nil
 }
@@ -267,7 +267,7 @@ func extractPropAndFilter(part string) (string, map[string][]string, error) {
 	prop := part[:idx]
 	if prop == "" {
 		return "", nil, status.Errorf(
-			codes.InvalidArgument, "invalid property expression: %s", part)
+			codes.InvalidArgument, "invalid property expression: %s, missing property name before filter", part)
 	}
 
 	filter, err := parseFilterString(part[idx:])
@@ -280,7 +280,7 @@ func extractPropAndFilter(part string) (string, map[string][]string, error) {
 func parseFilterString(expr string) (map[string][]string, error) {
 	if expr[0] != '{' || expr[len(expr)-1] != '}' {
 		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid filter string: %s", expr)
+			codes.InvalidArgument, "invalid filter string: %s, expected enclosing '{' and '}'", expr)
 	}
 	filter := map[string][]string{}
 	inner := squareBracketReplacer.Replace(expr[1 : len(expr)-1])
@@ -294,14 +294,14 @@ func parseFilterString(expr string) (map[string][]string, error) {
 			kv := strings.Split(part, ":")
 			if len(kv) != 2 || kv[0] == "" || kv[1] == "" {
 				return nil, status.Errorf(
-					codes.InvalidArgument, "invalid filter string: %s", expr)
+					codes.InvalidArgument, "invalid filter string: %s, expected key:value format (e.g., {typeOf:City})", expr)
 			}
 			lastKey = kv[0]
 			filter[lastKey] = append(filter[lastKey], kv[1])
 		} else { // No ":" means this is another val in square bracket.
 			if lastKey == "" {
 				return nil, status.Errorf(
-					codes.InvalidArgument, "invalid filter string: %s", expr)
+					codes.InvalidArgument, "invalid filter string: %s, filter must start with a key:value pair (e.g., {typeOf:City})", expr)
 			}
 			filter[lastKey] = append(filter[lastKey], part)
 		}
