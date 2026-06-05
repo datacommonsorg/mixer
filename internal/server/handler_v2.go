@@ -36,7 +36,9 @@ import (
 	"github.com/google/uuid"
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
+	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -44,9 +46,15 @@ import (
 func (s *Server) V2Resolve(
 	ctx context.Context, in *pbv2.ResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
-	// TODO: Remove this once embeddings search (resolver == "indicator") and
-	// topic resolution (resolver == "topic") are fully supported through Spanner.
-	if s.shouldDivertV2(ctx) && (in == nil || (in.GetResolver() != "indicator" && in.GetResolver() != "topic") || s.flags.EnableSpannerSearchEmbeddings) {
+	if in == nil {
+		return nil, status.Errorf(codes.InvalidArgument, "Request is nil")
+	}
+
+	useDispatcher, err := s.shouldRouteResolveToDispatcher(ctx, in.GetResolver())
+	if err != nil {
+		return nil, err
+	}
+	if useDispatcher {
 		return s.dispatcher.Resolve(ctx, in)
 	}
 
@@ -115,6 +123,42 @@ func (s *Server) V2Resolve(
 	)
 
 	return v2Resp, nil
+}
+
+// shouldRouteResolveToDispatcher determines whether to route a V2Resolve request to the dispatcher.
+// It returns an error if the request explicitly asks for an unavailable backend.
+func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver string) (bool, error) {
+	if resolver == "" {
+		resolver = resolve.ResolveResolverPlace // Default
+	}
+
+	// 1. Place and Topic resolvers use the standard diversion logic (Spanner vs Bigtable/MySQL)
+	if resolver == resolve.ResolveResolverPlace || resolver == resolve.ResolveResolverTopic {
+		return s.shouldDivertV2(ctx), nil
+	}
+
+	// 2. Indicator resolver (embeddings-based) has custom request-time toggling
+	if resolver == resolve.ResolveResolverIndicator {
+		backendHeader := util.GetSingleHeaderValue(ctx, util.XV2ResolveIndicatorBackend)
+		switch backendHeader {
+		case util.V2ResolveIndicatorBackendSpanner:
+			// Force Spanner: Fail fast if Spanner backend is not configured
+			if !s.useSpannerGraph {
+				slog.Error("Spanner backend requested via header, but Spanner is not enabled on this server")
+				return false, status.Errorf(codes.FailedPrecondition, "Spanner backend is not enabled in this mixer")
+			}
+			return true, nil
+		case util.V2ResolveIndicatorBackendLegacy:
+			// Force Legacy Remote Service
+			return false, nil
+		default:
+			// Default: use Spanner if configured AND default routing flag is true
+			return s.useSpannerGraph && s.flags.EnableSpannerSearchEmbeddings, nil
+		}
+	}
+
+	// Fallback for safety (ValidateAndParseResolveInputs guarantees valid resolver type)
+	return false, nil
 }
 
 // V2Node implements API for mixer.V2Node.

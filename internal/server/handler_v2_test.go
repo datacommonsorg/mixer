@@ -28,6 +28,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	v2observation "github.com/datacommonsorg/mixer/internal/server/v2/observation"
+	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -242,5 +243,132 @@ func TestV2Observation_UsageLog(t *testing.T) {
 	}
 	if !matched {
 		t.Errorf("log output did not match expected pattern.\nGot: %s\nWant regex: %s", outStr, wantLogRegex)
+	}
+}
+
+func TestShouldRouteResolveToDispatcher(t *testing.T) {
+	tests := []struct {
+		desc             string
+		useSpannerGraph  bool
+		enableEmbeddings bool // flags.EnableSpannerSearchEmbeddings
+		resolver         string
+		headerVal        string // X-V2Resolve-Indicator-Backend header
+		wantRoute        bool
+		wantErr          bool
+	}{
+		// 1. Place & Topic resolvers (should follow shouldDivertV2, which we mock by setting useSpannerGraph)
+		{
+			desc:            "Place resolver with Spanner enabled -> route",
+			useSpannerGraph: true,
+			resolver:        resolve.ResolveResolverPlace,
+			wantRoute:       true,
+		},
+		{
+			desc:            "Place resolver with Spanner disabled -> don't route",
+			useSpannerGraph: false,
+			resolver:        resolve.ResolveResolverPlace,
+			wantRoute:       false,
+		},
+		{
+			desc:            "Topic resolver with Spanner enabled -> route",
+			useSpannerGraph: true,
+			resolver:        resolve.ResolveResolverTopic,
+			wantRoute:       true,
+		},
+		{
+			desc:            "Topic resolver with Spanner disabled -> don't route",
+			useSpannerGraph: false,
+			resolver:        resolve.ResolveResolverTopic,
+			wantRoute:       false,
+		},
+		{
+			desc:            "Empty resolver defaults to place (Spanner enabled) -> route",
+			useSpannerGraph: true,
+			resolver:        "",
+			wantRoute:       true,
+		},
+
+		// 2. Indicator resolver - Default path (no header)
+		{
+			desc:             "Indicator resolver - Spanner enabled & flag true -> route",
+			useSpannerGraph:  true,
+			enableEmbeddings: true,
+			resolver:         resolve.ResolveResolverIndicator,
+			wantRoute:        true,
+		},
+		{
+			desc:             "Indicator resolver - Spanner enabled & flag false -> don't route",
+			useSpannerGraph:  true,
+			enableEmbeddings: false,
+			resolver:         resolve.ResolveResolverIndicator,
+			wantRoute:        false,
+		},
+		{
+			desc:             "Indicator resolver - Spanner disabled & flag true -> don't route",
+			useSpannerGraph:  false,
+			enableEmbeddings: true,
+			resolver:         resolve.ResolveResolverIndicator,
+			wantRoute:        false,
+		},
+
+		// 3. Indicator resolver - Header override: spanner
+		{
+			desc:            "Indicator resolver - Force Spanner, Spanner enabled -> route",
+			useSpannerGraph: true,
+			resolver:        resolve.ResolveResolverIndicator,
+			headerVal:       "spanner",
+			wantRoute:       true,
+		},
+		{
+			desc:            "Indicator resolver - Force Spanner, Spanner disabled -> error (fail-fast)",
+			useSpannerGraph: false,
+			resolver:        resolve.ResolveResolverIndicator,
+			headerVal:       "spanner",
+			wantErr:         true,
+		},
+
+		// 4. Indicator resolver - Header override: legacy
+		{
+			desc:             "Indicator resolver - Force Legacy, Spanner enabled & flag true -> don't route",
+			useSpannerGraph:  true,
+			enableEmbeddings: true,
+			resolver:         resolve.ResolveResolverIndicator,
+			headerVal:        "legacy",
+			wantRoute:        false,
+		},
+		{
+			desc:             "Indicator resolver - Force Legacy, Spanner disabled -> don't route",
+			useSpannerGraph:  false,
+			resolver:         resolve.ResolveResolverIndicator,
+			headerVal:        "legacy",
+			wantRoute:        false,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.desc, func(t *testing.T) {
+			s := &Server{
+				useSpannerGraph: tc.useSpannerGraph,
+				flags: &featureflags.Flags{
+					EnableSpannerSearchEmbeddings: tc.enableEmbeddings,
+				},
+			}
+
+			ctx := context.Background()
+			if tc.headerVal != "" {
+				ctx = metadata.NewIncomingContext(ctx, metadata.Pairs(util.XV2ResolveIndicatorBackend, tc.headerVal))
+			}
+
+			gotRoute, err := s.shouldRouteResolveToDispatcher(ctx, tc.resolver)
+			if (err != nil) != tc.wantErr {
+				t.Fatalf("shouldRouteResolveToDispatcher() error = %v, wantErr %v", err, tc.wantErr)
+			}
+			if tc.wantErr {
+				return
+			}
+			if gotRoute != tc.wantRoute {
+				t.Errorf("shouldRouteResolveToDispatcher() = %v, want %v", gotRoute, tc.wantRoute)
+			}
+		})
 	}
 }
