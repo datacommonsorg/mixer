@@ -100,7 +100,7 @@ func (s *Server) V2NodeCore(
 			// Examples:
 			//   <-containedInPlace+{typeOf:City}
 			typeOfs, ok := arc.Filter["typeOf"]
-			if !ok || len(typeOfs) != 1 {
+			if !ok || len(typeOfs) == 0 {
 				return nil, status.Errorf(codes.InvalidArgument,
 					"invalid filter for %s", in.GetProperty())
 			}
@@ -111,7 +111,7 @@ func (s *Server) V2NodeCore(
 				in.GetNodes(),
 				arc.SingleProp,
 				direction,
-				typeOfs[0],
+				typeOfs,
 			)
 		}
 

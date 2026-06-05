@@ -46,6 +46,11 @@ func TestContainedInPlace(t *testing.T) {
 				"<-containedInPlace+{typeOf:County}",
 			},
 			{
+				"DE_county_city.json",
+				[]string{"geoId/10"},
+				"<-containedInPlace+{typeOf:[County,City]}",
+			},
+			{
 				"CA_county.json",
 				[]string{"geoId/06"},
 				"<-containedInPlace+{typeOf:County}",
