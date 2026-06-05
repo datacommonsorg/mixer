@@ -473,8 +473,9 @@ func mergeEntityOrderedFacets(
 
 func obsToObsResponse(req *pbv2.ObservationRequest, observations []*Observation) *pbv2.ObservationResponse {
 	// Whether the response should filter out low ranked facets from the response.
-	// Note that the behavior differs for containedInPlace requests vs direct requests.
-	shouldFilterInferiorFacets := (req.Entity.Expression != "" && req.Date != "") || (req.Entity.Expression == "" && req.Date == shared.LATEST)
+	isContainedInWithDate := (req.Entity.Expression != "" && req.Date != "")
+	isDirectWithLatestDate := (req.Entity.Expression == "" && req.Date == shared.LATEST)
+	shouldFilterInferiorFacets := isContainedInWithDate || isDirectWithLatestDate
 	response := generateObsResponse(req.Variable, observations, true /*includeObs*/, shouldFilterInferiorFacets)
 
 	// Attach all requested entity dcids to response.

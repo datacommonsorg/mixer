@@ -1,44 +1,36 @@
 {
   "by_variable": {
-    "Count_Person": {
+    "AirPollutant_Cancer_Risk": {
       "by_entity": {
-        "country/JPN": {
+        "geoId/01001": {
           "ordered_facets": [
             {
-              "facet_id": "1460668177",
-              "observations": [
-                {
-                  "date": "2024",
-                  "value": 123975371
-                }
-              ],
-              "obs_count": 1,
-              "earliest_date": "2024",
-              "latest_date": "2024"
-            },
-            {
-              "facet_id": "327307087",
+              "facet_id": "1118384277",
               "observations": [
                 {
                   "date": "2023",
-                  "value": 124351877
+                  "value": 36.6666666666667
                 }
               ],
               "obs_count": 1,
               "earliest_date": "2023",
               "latest_date": "2023"
-            },
+            }
+          ]
+        },
+        "geoId/02013": {
+          "ordered_facets": [
             {
-              "facet_id": "1684025784",
+              "facet_id": "1118384277",
               "observations": [
                 {
-                  "date": "2020",
-                  "value": 126146099
+                  "date": "2023",
+                  "value": 5
                 }
               ],
               "obs_count": 1,
-              "earliest_date": "2020",
-              "latest_date": "2020"
+              "earliest_date": "2023",
+              "latest_date": "2023"
             }
           ]
         }
@@ -46,20 +38,12 @@
     }
   },
   "facets": {
-    "1460668177": {
-      "import_name": "WorldDevelopmentIndicators",
-      "provenance_url": "https://datatopics.worldbank.org/world-development-indicators/",
-      "observation_period": "P1Y"
-    },
-    "1684025784": {
-      "import_name": "Japan_Census",
-      "provenance_url": "https://www.e-stat.go.jp/"
-    },
-    "327307087": {
-      "import_name": "OECDRegionalDemography_Population",
-      "provenance_url": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23&pg=40&fc=Topic&bp=true&snb=117&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_DEMO%40DF_POP_5Y&df[ag]=OECD.CFE.EDS&df[vs]=2.0&dq=A.......&to[TIME_PERIOD]=false&vw=tb&pd=%2C",
-      "measurement_method": "OECDRegionalStatistics",
-      "observation_period": "P1Y"
+    "1118384277": {
+      "import_name": "EPA_EJSCREEN_AggCensusTract_AggCounty",
+      "provenance_url": "https://gaftp.epa.gov/EJSCREEN/",
+      "observation_period": "P1Y",
+      "unit": "PerMillionPerson",
+      "is_dc_aggregate": true
     }
   }
 }

@@ -59,10 +59,10 @@ func TestV3Observation(t *testing.T) {
 			{
 				req: &pbv2.ObservationRequest{
 					Variable: &pbv2.DcidOrExpression{
-						Dcids: []string{"Count_Person"},
+						Dcids: []string{"AirPollutant_Cancer_Risk"},
 					},
 					Entity: &pbv2.DcidOrExpression{
-						Dcids: []string{"country/JPN"},
+						Dcids: []string{"geoId/01001", "geoId/02013"},
 					},
 					Date:   "LATEST",
 					Select: []string{"entity", "variable", "date", "value"},
@@ -254,6 +254,19 @@ func TestV3Observation(t *testing.T) {
 					Select: []string{"entity", "variable", "date", "value"},
 				},
 				goldenFile: "observations_entity.json",
+			},
+			{
+				req: &pbv2.ObservationRequest{
+					Variable: &pbv2.DcidOrExpression{
+						Dcids: []string{"Count_Person"},
+					},
+					Entity: &pbv2.DcidOrExpression{
+						Dcids: []string{"country/JPN"},
+					},
+					Select: []string{"entity", "variable", "date", "value"},
+					Date:   "LATEST",
+				},
+				goldenFile: "observations_filter_inferior_facets.json",
 			},
 		} {
 			goldenFile := c.goldenFile
