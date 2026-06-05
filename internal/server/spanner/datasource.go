@@ -54,12 +54,22 @@ var svgGroupInfoExclusionList = map[string]struct{}{
 	"dc/g/Hidden": {},
 }
 
+type TopicExpanderProvider func() resolvev2.TopicExpander
+
+type SpannerDataSourceConfig struct {
+	Client                SpannerClient
+	RecogPlaceStore       *files.RecogPlaceStore
+	MapsClient            internalmaps.MapsClient
+	TopicExpanderProvider TopicExpanderProvider
+}
+
 // SpannerDataSource represents a data source that interacts with Spanner.
 type SpannerDataSource struct {
-	client          SpannerClient
-	recogPlaceStore *files.RecogPlaceStore
-	mapsClient      internalmaps.MapsClient
-	searchConfig    *SpannerSearchConfig
+	client                SpannerClient
+	recogPlaceStore       *files.RecogPlaceStore
+	mapsClient            internalmaps.MapsClient
+	searchConfig          *SpannerSearchConfig
+	topicExpanderProvider TopicExpanderProvider
 }
 
 const (
@@ -68,17 +78,14 @@ const (
 	s2CellTypePrefix                  = "S2CellLevel"
 )
 
-func NewSpannerDataSource(
-	client SpannerClient,
-	recogPlaceStore *files.RecogPlaceStore,
-	mapsClient internalmaps.MapsClient,
-) *SpannerDataSource {
-	cfg, _ := loadSpannerSearchConfig()
+func NewSpannerDataSource(cfg SpannerDataSourceConfig) *SpannerDataSource {
+	searchCfg, _ := loadSpannerSearchConfig()
 	return &SpannerDataSource{
-		client:          client,
-		recogPlaceStore: recogPlaceStore,
-		mapsClient:      mapsClient,
-		searchConfig:    cfg,
+		client:                cfg.Client,
+		recogPlaceStore:       cfg.RecogPlaceStore,
+		mapsClient:            cfg.MapsClient,
+		searchConfig:          searchCfg,
+		topicExpanderProvider: cfg.TopicExpanderProvider,
 	}
 }
 
@@ -429,6 +436,17 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 	if resolver := normalizedResolveRequest.Request.GetResolver(); resolver == resolvev2.ResolveResolverIndicator {
 		slog.Info("SpannerDataSource: Starting resolution", "resolver", resolver, "num_nodes", len(req.GetNodes()), "inProp", normalizedResolveRequest.InProp)
 		return sds.vectorSearchResolution(ctx, normalizedResolveRequest)
+	}
+
+	if resolver := normalizedResolveRequest.Request.GetResolver(); resolver == resolvev2.ResolveResolverTopic {
+		if sds.topicExpanderProvider == nil {
+			return nil, status.Errorf(codes.FailedPrecondition, "Topic expander provider is nil")
+		}
+		expander := sds.topicExpanderProvider()
+		if expander == nil {
+			return nil, status.Errorf(codes.FailedPrecondition, "Topic expander is not initialized yet")
+		}
+		return resolvev2.ResolveTopics(ctx, expander, req.GetNodes(), req.GetExpandTopics())
 	}
 
 	switch normalizedResolveRequest.InProp {

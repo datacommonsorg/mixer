@@ -395,9 +395,17 @@ func main() {
 	}
 
 	// Initialize SpannerDataSource now that dependencies are ready.
+	var topicExpander resolve.TopicExpander
+	topicExpanderProvider := func() resolve.TopicExpander { return topicExpander }
+
 	var spannerDS datasource.DataSource
 	if spannerClient != nil {
-		spannerDS = spanner.NewSpannerDataSource(spannerClient, store.RecogPlaceStore, mapsClient)
+		spannerDS = spanner.NewSpannerDataSource(spanner.SpannerDataSourceConfig{
+			Client:                spannerClient,
+			RecogPlaceStore:       store.RecogPlaceStore,
+			MapsClient:            mapsClient,
+			TopicExpanderProvider: topicExpanderProvider,
+		})
 		// TODO: Order sources by priority once other implementations are added.
 		sources = append(sources, spannerDS)
 	}
@@ -462,15 +470,15 @@ func main() {
 	}
 
 	// Topic Cache Manager
-	var topicCacheManager *topic.TopicCacheManager
-	if flags.EnableEmbeddingsResolver {
-		slog.Info("Initializing topic cache manager")
-		topicCacheManager = topic.NewTopicCacheManager(redisCacheClient)
-	}
+	slog.Info("Initializing topic cache manager")
+	topicCacheManager := topic.NewTopicCacheManager(redisCacheClient)
 
 	// Dispatcher
 	dispatcher := dispatcher.NewDispatcher(processors, dataSources)
 	slog.Info("Dispatcher initialized", "processorsCount", len(processors))
+
+	// Instantiate the topic expander adapter now that topicCacheManager is ready.
+	topicExpander = server.NewTopicExpander(topicCacheManager)
 
 	// Create server object
 	embeddingsServiceClient := resolve.NewEmbeddingsServiceClient(

@@ -141,6 +141,7 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 	if resolver == resolve.ResolveResolverPlace || resolver == resolve.ResolveResolverTopic {
 		return s.shouldDivertV2(ctx), nil
 	}
+
 	// Indicator resolver (embeddings-based) has custom request-time toggling
 	if resolver == resolve.ResolveResolverIndicator {
 		divertVal, err := util.GetOptionalBoolHeader(ctx, util.XV2ResolveIndicatorSpanner)

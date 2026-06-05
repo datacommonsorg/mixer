@@ -12,9 +12,9 @@ import (
 func TestResolveEmbeddingsEmpty(t *testing.T) {
 	t.Parallel()
 
-	ds := NewSpannerDataSource(&coordinateMockSpannerClient{
+	ds := NewSpannerDataSource(SpannerDataSourceConfig{Client: &coordinateMockSpannerClient{
 		embeddingsRes: []float64{},
-	}, nil, nil)
+	}})
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"California"},
@@ -41,7 +41,7 @@ func TestResolveEmbeddingsEmpty(t *testing.T) {
 func TestResolveEmbeddingsSuccess(t *testing.T) {
 	t.Parallel()
 
-	ds := NewSpannerDataSource(&coordinateMockSpannerClient{
+	ds := NewSpannerDataSource(SpannerDataSourceConfig{Client: &coordinateMockSpannerClient{
 		embeddingsRes: []float64{0.1, 0.2},
 		vectorSearchRes: []*VectorSearchResult{
 			{
@@ -51,7 +51,7 @@ func TestResolveEmbeddingsSuccess(t *testing.T) {
 				Types:            []string{"Topic"},
 			},
 		},
-	}, nil, nil)
+	}})
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"Climate"},
@@ -87,7 +87,7 @@ func TestResolveEmbeddingsSuccess(t *testing.T) {
 func TestResolveEmbeddingsConcurrentSuccess(t *testing.T) {
 	t.Parallel()
 
-	ds := NewSpannerDataSource(&coordinateMockSpannerClient{
+	ds := NewSpannerDataSource(SpannerDataSourceConfig{Client: &coordinateMockSpannerClient{
 		embeddingsRes: []float64{0.1, 0.2},
 		vectorSearchRes: []*VectorSearchResult{
 			{
@@ -97,7 +97,7 @@ func TestResolveEmbeddingsConcurrentSuccess(t *testing.T) {
 				Types:            []string{"Topic"},
 			},
 		},
-	}, nil, nil)
+	}})
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"Climate", "Environment", "Weather"},
