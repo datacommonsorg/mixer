@@ -137,15 +137,9 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 		resolver = resolve.ResolveResolverPlace // Default
 	}
 
-	// Place resolver uses standard diversion logic
-	if resolver == resolve.ResolveResolverPlace {
+	// Place and Topic resolvers use the standard diversion logic (Spanner vs Bigtable/MySQL)
+	if resolver == resolve.ResolveResolverPlace || resolver == resolve.ResolveResolverTopic {
 		return s.shouldDivertV2(ctx), nil
-	}
-
-	// Topic resolver always goes to V2ResolveCore (local) because it uses in-memory TopicCache
-	// TODO: implement resolver==topic handling in spanner datasource for dispatch based fulfillment
-	if resolver == resolve.ResolveResolverTopic {
-		return false, nil
 	}
 
 	// Indicator resolver (embeddings-based) has custom request-time toggling

@@ -271,10 +271,10 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 			wantRoute:       false,
 		},
 		{
-			desc:            "Topic resolver with Spanner enabled -> don't route (bypassed to local in PR 1)",
+			desc:            "Topic resolver with Spanner enabled -> route",
 			useSpannerGraph: true,
 			resolver:        resolve.ResolveResolverTopic,
-			wantRoute:       false,
+			wantRoute:       true,
 		},
 		{
 			desc:            "Topic resolver with Spanner disabled -> don't route",
