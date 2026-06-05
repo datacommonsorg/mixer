@@ -30,7 +30,6 @@ import (
 	"time"
 
 	"golang.org/x/sync/errgroup"
-	"google.golang.org/grpc/metadata"
 
 	cbt "cloud.google.com/go/bigtable"
 	pubsub "cloud.google.com/go/pubsub/v2"
@@ -346,10 +345,8 @@ func (s *Server) shouldDivertV2(ctx context.Context) bool {
 	}
 
 	// Second, check if the specific request has the header to divert to Spanner.
-	if md, ok := metadata.FromIncomingContext(ctx); ok {
-		if vals := md.Get(util.XDivertSpanner); len(vals) > 0 && vals[0] == "true" {
-			return true
-		}
+	if util.IsHeaderTrue(ctx, util.XDivertSpanner) {
+		return true
 	}
 
 	// Finally, check if the random diversion for V2 is enabled.
