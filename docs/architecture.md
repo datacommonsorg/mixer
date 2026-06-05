@@ -147,28 +147,27 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 Mixer uses two mechanisms for configuration and feature gating: **Server/CLI Flags** and **Feature Flags**. It is important to use the correct mechanism depending on the scope of the change.
 
 #### 1. Server/CLI Flags (Startup Flags)
-*   **Definition**: Flags defined in `cmd/main.go` and parsed at startup (e.g., `use_spanner_graph`, `port`, `config_path`). Passed to the server object during initialization.
+*   **Definition**: Flags defined in `cmd/main.go` and parsed at startup (e.g., `port`, `config_path`). Passed to the server object during initialization.
 *   **When to use**:
     *   **Infrastructure Configuration**: Setting up database connections, API ports, billing projects, or file paths.
-    *   **Backend Availability**: Indicating if a specific database backend (like Spanner) is enabled and initialized (e.g., `s.useSpannerGraph`).
+    *   **Backend Availability**: Indicating if a specific database backend is enabled and initialized (e.g., `s.useSpannerGraph` or `s.bigtableClient != nil`).
 *   **Characteristics**: Immutable after the server starts. Changing them requires a server restart.
 
 #### 2. Feature Flags (Deployment/Release Flags)
-*   **Definition**: Flags defined in `internal/featureflags/featureflags.go` and loaded from an environment-specific YAML configuration file (e.g., `DivertIndicatorResolutionToSpanner`, `V2DivertFraction`).
+*   **Definition**: Flags defined in `internal/featureflags/featureflags.go` and loaded from an environment-specific YAML configuration file (e.g., `V2DivertFraction`, `EnableExperimentalFeature`).
 *   **When to use**:
-    *   **Deployment-Specific Toggles**: Enabling/disabling features for specific environments (e.g., enabling Spanner features in `autopush` or `local` environments via their respective YAML configs, but keeping them disabled in `prod`).
+    *   **Deployment-Specific Toggles**: Enabling/disabling features for specific environments (e.g., enabling experimental features in `autopush` or `local` environments via their respective YAML configs, but keeping them disabled in `prod`).
     *   **Traffic Control & Routing**: Toggling default execution paths (e.g., routing traffic to Spanner vs. Bigtable).
     *   **Gradual Rollouts / A/B Testing**: Supporting partial rollouts (e.g., `V2DivertFraction`) or enabling new features under a toggle.
 *   **Characteristics**: Loaded at startup from a YAML config file. **Changing them requires a server restart/redeployment.** They allow environment-specific behavior to be controlled via configuration files rather than altering command-line arguments.
 
 #### Best Practice: Combining Flags for Safe Rollouts
-When introducing a new feature that relies on a new backend (like Spanner embeddings resolution):
-1.  Use a **Server/CLI Flag** (or server field check like `s.useSpannerGraph`) to verify the backend infrastructure is configured and initialized.
-2.  Use a **Feature Flag** (like `DivertIndicatorResolutionToSpanner`) to control the default routing.
-3.  Combine them in the routing logic: `useNewFeature := s.useSpannerGraph && s.flags.DivertIndicatorResolutionToSpanner`. This ensures the server never routes traffic to a backend that was not initialized at startup, even if the feature flag is accidentally enabled.
+When introducing a new feature that relies on a new backend:
+1.  Use a **Server/CLI Flag** (or server field check like `s.isBackendConfigured`) to verify the backend infrastructure is configured and initialized.
+2.  Use a **Feature Flag** (like `s.flags.EnableFeature`) to control the default routing.
+3.  Combine them in the routing logic: `useNewFeature := s.isBackendConfigured && s.flags.EnableFeature`. This ensures the server never routes traffic to a backend that was not initialized at startup, even if the feature flag is accidentally enabled.
 
 ### Testing and Documentation
 
 *   **Testing (`test/` vs `*_test.go`)**: Unit tests are located adjacent to the files they test. The repository also utilizes "Golden Testing" (comparing JSON outputs against text files). The `/test` folder holds larger integration testing wrappers.
 *   **Documentation (`docs/`)**: Technical and operational guides. For specific commands regarding boot sequences and profiling, see `docs/developer_guide.md`.
-```
