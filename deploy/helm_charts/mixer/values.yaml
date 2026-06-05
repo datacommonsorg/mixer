@@ -476,6 +476,7 @@ serviceGroups:
       memoryLimit: "8G"
     cacheSVG: true
   default:
+    enableEmbeddingsSidecar: true
     urlPaths:
       - "/*"
     replicas: 1
