@@ -60,3 +60,54 @@ message SearchIndicatorsResponse {
   repeated Variable variables = 5;
   ResolvedPlace resolved_parent_place = 6;
 }
+
+// Request payload for the get_observations tool endpoint.
+message GetObservationsRequest {
+  string variable_dcid = 1;
+  string place_dcid = 2;
+  optional string child_place_type = 3;
+  optional string source_override = 4;
+  optional string date = 5;              // accepts "latest", "all", "range", or specific date string.
+  optional string date_range_start = 6;
+  optional string date_range_end = 7;
+}
+
+// Response payload for the get_observations tool endpoint.
+message GetObservationsResponse {
+  message Node {
+    string dcid = 1;
+    string name = 2;
+    repeated string type_of = 3;
+  }
+
+  message FacetMetadata {
+    string source_id = 1;
+    string import_name = 2;
+    string measurement_method = 3;
+    string observation_period = 4;
+    string provenance_url = 5;
+    string unit = 6;
+  }
+
+  message AlternativeSource {
+    FacetMetadata source_metadata = 1;
+    optional int32 places_found_count = 2;
+  }
+
+  message TimeSeriesPoint {
+    string date = 1;
+    double value = 2;
+  }
+
+  message PlaceObservation {
+    Node place = 1;
+    repeated TimeSeriesPoint time_series = 2;
+  }
+
+  Node variable = 1;
+  Node resolved_parent_place = 2;
+  string child_place_type = 3;
+  repeated PlaceObservation place_observations = 4;
+  FacetMetadata source_metadata = 5;
+  repeated AlternativeSource alternative_sources = 6;
+}
