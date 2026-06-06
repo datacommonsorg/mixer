@@ -92,14 +92,20 @@ func parseDateFilter(date string, startStr string, endStr string) (*dateFilter, 
 			if err := validateDateFormat(startStr); err != nil {
 				return nil, fmt.Errorf("invalid start_date: %w", err)
 			}
-			s, _, _ := parseDateStringToInterval(startStr)
+			s, _, err := parseDateStringToInterval(startStr)
+			if err != nil {
+				return nil, fmt.Errorf("invalid start_date: %w", err)
+			}
 			startVal = s
 		}
 		if endStr != "" {
 			if err := validateDateFormat(endStr); err != nil {
 				return nil, fmt.Errorf("invalid end_date: %w", err)
 			}
-			_, e, _ := parseDateStringToInterval(endStr)
+			_, e, err := parseDateStringToInterval(endStr)
+			if err != nil {
+				return nil, fmt.Errorf("invalid end_date: %w", err)
+			}
 			endVal = e
 		}
 		if !startVal.IsZero() && !endVal.IsZero() && startVal.After(endVal) {
@@ -116,7 +122,10 @@ func parseDateFilter(date string, startStr string, endStr string) (*dateFilter, 
 	if err := validateDateFormat(date); err != nil {
 		return nil, err
 	}
-	s, e, _ := parseDateStringToInterval(date)
+	s, e, err := parseDateStringToInterval(date)
+	if err != nil {
+		return nil, err
+	}
 	return &dateFilter{
 		dateType:  dateTypeRange,
 		startDate: s,
