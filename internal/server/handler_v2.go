@@ -137,18 +137,18 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 		resolver = resolve.ResolveResolverPlace // Default
 	}
 
-	// 1. Place resolver uses standard diversion logic
+	// Place resolver uses standard diversion logic
 	if resolver == resolve.ResolveResolverPlace {
 		return s.shouldDivertV2(ctx), nil
 	}
 
-	// 2. Topic resolver always goes to V2ResolveCore (local) because it uses in-memory TopicCache
+	// Topic resolver always goes to V2ResolveCore (local) because it uses in-memory TopicCache
 	// TODO: implement resolver==topic handling in spanner datasource for dispatch based fulfillment
 	if resolver == resolve.ResolveResolverTopic {
 		return false, nil
 	}
 
-	// 2. Indicator resolver (embeddings-based) has custom request-time toggling
+	// Indicator resolver (embeddings-based) has custom request-time toggling
 	if resolver == resolve.ResolveResolverIndicator {
 		backendHeader := util.GetSingleHeaderValue(ctx, util.XV2ResolveIndicatorBackend)
 		switch backendHeader {

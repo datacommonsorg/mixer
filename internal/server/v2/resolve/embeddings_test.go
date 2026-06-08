@@ -321,7 +321,7 @@ func TestResolveUsingEmbeddings_Filter(t *testing.T) {
 
 	client := NewEmbeddingsServiceClient(server.Client(), server.URL, "")
 
-	// Test 1: Filter for StatisticalVariable
+	// Filter for StatisticalVariable
 	resp, err := client.Resolve(ctx, "test_idx", []string{"filter_test"}, []string{"StatisticalVariable"}, nil, false)
 	if err != nil {
 		t.Fatalf("Resolve() error: %v", err)
@@ -333,7 +333,7 @@ func TestResolveUsingEmbeddings_Filter(t *testing.T) {
 		t.Errorf("Expected 'Count_Person', got '%s'", resp.Entities[0].Candidates[0].Dcid)
 	}
 
-	// Test 2: Filter for Topic
+	// Filter for Topic
 	resp, err = client.Resolve(ctx, "test_idx", []string{"filter_test"}, []string{"Topic"}, nil, false)
 	if err != nil {
 		t.Fatalf("Resolve() error: %v", err)

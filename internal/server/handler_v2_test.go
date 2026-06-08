@@ -257,7 +257,7 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 		wantRoute           bool
 		wantErr             bool
 	}{
-		// 1. Place & Topic resolvers (should follow shouldDivertV2, which we mock by setting useSpannerGraph)
+		// Place & Topic resolvers (should follow shouldDivertV2, which we mock by setting useSpannerGraph)
 		{
 			desc:            "Place resolver with Spanner enabled -> route",
 			useSpannerGraph: true,
@@ -289,7 +289,7 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 			wantRoute:       true,
 		},
 
-		// 2. Indicator resolver - Default path (no header)
+		// Indicator resolver - Default path (no header)
 		{
 			desc:             "Indicator resolver - Spanner enabled & flag true -> route",
 			useSpannerGraph:  true,
@@ -312,7 +312,7 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 			wantRoute:        false,
 		},
 
-		// 3. Indicator resolver - Header override: spanner
+		// Indicator resolver - Header override: spanner
 		{
 			desc:            "Indicator resolver - Force Spanner, Spanner enabled -> route",
 			useSpannerGraph: true,
@@ -328,7 +328,7 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 			wantErr:         true,
 		},
 
-		// 4. Indicator resolver - Header override: legacy
+		// Indicator resolver - Header override: legacy
 		{
 			desc:             "Indicator resolver - Force Legacy, Spanner enabled & flag true -> don't route",
 			useSpannerGraph:  true,
@@ -345,7 +345,7 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 			wantRoute:        false,
 		},
 
-		// 5. New test cases for Spanner enabled via Feature Flag only
+		// New test cases for Spanner enabled via Feature Flag only
 		{
 			desc:                "Indicator resolver - Spanner enabled (flag) & embeddings true -> route",
 			useSpannerGraph:     false,
@@ -378,7 +378,7 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 			wantRoute:           false,
 		},
 
-		// 6. Invalid header values
+		// Invalid header values
 		{
 			desc:             "Indicator resolver - Invalid header value -> error",
 			resolver:         resolve.ResolveResolverIndicator,
