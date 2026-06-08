@@ -339,12 +339,19 @@ func (s *Server) TopicCacheManager() *topic.TopicCacheManager {
 
 // shouldDivertV2 returns true if the request should be diverted to the dispatcher.
 func (s *Server) shouldDivertV2(ctx context.Context) bool {
-	// First check if the overall Mixer Spanner flag is set.
+	// First, check if the overall Mixer Spanner flag is set.
 	if s.useSpannerGraph {
+		// Divert all requests to Spanner.
 		return true
 	}
 
-	// Second, check if the specific request has the header to divert to Spanner.
+	// Second, check if the experimental Spanner flag is set.
+	if !s.flags.UseSpannerGraph {
+		// If Spanner is not enabled, do not divert regardless of any other flags or headers.
+		return false
+	}
+
+	// Third, check if the specific request has the header to divert to Spanner.
 	if util.IsHeaderTrue(ctx, util.XDivertSpanner) {
 		return true
 	}
