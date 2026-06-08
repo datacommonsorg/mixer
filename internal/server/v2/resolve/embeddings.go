@@ -359,7 +359,7 @@ func (c *EmbeddingsServiceClient) fetchAvailableIndexes(ctx context.Context) (ma
 	if err != nil {
 		return nil, err
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 
 	if resp.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("embeddings server returned status %d", resp.StatusCode)
