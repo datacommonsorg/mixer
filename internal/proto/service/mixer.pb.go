@@ -53,7 +53,7 @@ const file_service_mixer_proto_rawDesc = "" +
 	"\x13service/mixer.proto\x12\vdatacommons\x1a\x1cgoogle/api/annotations.proto\x1a\fcommon.proto\x1a\fcustom.proto\x1a\n" +
 	"misc.proto\x1a\n" +
 	"node.proto\x1a\vplace.proto\x1a\vquery.proto\x1a\n" +
-	"stat.proto\x1a\x0estat_var.proto\x1a\vrecon.proto\x1a\x13v1/properties.proto\x1a\x18v1/property_values.proto\x1a\x11v1/variable.proto\x1a\rv1/info.proto\x1a\x15v1/observations.proto\x1a\x1av1/observation_dates.proto\x1a\rv1/page.proto\x1a\x10v1/triples.proto\x1a\x0ev2/event.proto\x1a\rv2/node.proto\x1a\x14v2/node_search.proto\x1a\x14v2/observation.proto\x1a\x10v2/resolve.proto\x1a\x0ev2/agent.proto\x1a\rv3/data.proto2\xeeL\n" +
+	"stat.proto\x1a\x0estat_var.proto\x1a\vrecon.proto\x1a\x13v1/properties.proto\x1a\x18v1/property_values.proto\x1a\x11v1/variable.proto\x1a\rv1/info.proto\x1a\x15v1/observations.proto\x1a\x1av1/observation_dates.proto\x1a\rv1/page.proto\x1a\x10v1/triples.proto\x1a\x0ev2/event.proto\x1a\rv2/node.proto\x1a\x14v2/node_search.proto\x1a\x14v2/observation.proto\x1a\x10v2/resolve.proto\x1a\x0ev2/agent.proto\x1a\rv3/data.proto2\x9fN\n" +
 	"\x05Mixer\x12d\n" +
 	"\x06V3Node\x12\x1b.datacommons.v2.NodeRequest\x1a\x1c.datacommons.v2.NodeResponse\"\x1f\x82\xd3\xe4\x93\x02\x19Z\r:\x01*\"\b/v3/node\x12\b/v3/node\x12\x87\x01\n" +
 	"\rV3Observation\x12\".datacommons.v2.ObservationRequest\x1a#.datacommons.v2.ObservationResponse\"-\x82\xd3\xe4\x93\x02'Z\x14:\x01*\"\x0f/v3/observation\x12\x0f/v3/observation\x12\x86\x01\n" +
@@ -78,7 +78,8 @@ const file_service_mixer_proto_rawDesc = "" +
 	"\x16FilterStatVarsByEntity\x12*.datacommons.FilterStatVarsByEntityRequest\x1a+.datacommons.FilterStatVarsByEntityResponse\"\x1e\x82\xd3\xe4\x93\x02\x18:\x01*\"\x13/v2/variable/filter\x12\xa4\x01\n" +
 	"\x12V2BulkVariableInfo\x12'.datacommons.v1.BulkVariableInfoRequest\x1a(.datacommons.v1.BulkVariableInfoResponse\";\x82\xd3\xe4\x93\x025Z\x1b:\x01*\"\x16/v2/bulk/info/variable\x12\x16/v2/bulk/info/variable\x12\xbf\x01\n" +
 	"\x17V2BulkVariableGroupInfo\x12,.datacommons.v1.BulkVariableGroupInfoRequest\x1a-.datacommons.v1.BulkVariableGroupInfoResponse\"G\x82\xd3\xe4\x93\x02AZ!:\x01*\"\x1c/v2/bulk/info/variable-group\x12\x1c/v2/bulk/info/variable-group\x12\xb3\x01\n" +
-	"\x17V2AgentSearchIndicators\x12'.datacommons.v2.SearchIndicatorsRequest\x1a(.datacommons.v2.SearchIndicatorsResponse\"E\x82\xd3\xe4\x93\x02?Z :\x01*\"\x1b/v2/agent/search_indicators\x12\x1b/v2/agent/search_indicators\x12\xa0\x01\n" +
+	"\x17V2AgentSearchIndicators\x12'.datacommons.v2.SearchIndicatorsRequest\x1a(.datacommons.v2.SearchIndicatorsResponse\"E\x82\xd3\xe4\x93\x02?Z :\x01*\"\x1b/v2/agent/search_indicators\x12\x1b/v2/agent/search_indicators\x12\xae\x01\n" +
+	"\x16V2AgentGetObservations\x12&.datacommons.v2.GetObservationsRequest\x1a'.datacommons.v2.GetObservationsResponse\"C\x82\xd3\xe4\x93\x02=Z\x1f:\x01*\"\x1a/v2/agent/get_observations\x12\x1a/v2/agent/get_observations\x12\xa0\x01\n" +
 	"\x16V2GetLocationsRankings\x12(.datacommons.GetLocationsRankingsRequest\x1a).datacommons.GetLocationsRankingsResponse\"1\x82\xd3\xe4\x93\x02+Z\x16:\x01*\"\x11/v2/place/ranking\x12\x11/v2/place/ranking\x12[\n" +
 	"\x05Query\x12\x19.datacommons.QueryRequest\x1a\x1a.datacommons.QueryResponse\"\x1b\x82\xd3\xe4\x93\x02\x15Z\v:\x01*\"\x06/query\x12\x06/query\x12\x93\x01\n" +
 	"\x11GetPropertyLabels\x12%.datacommons.GetPropertyLabelsRequest\x1a\x1c.datacommons.PayloadResponse\"9\x82\xd3\xe4\x93\x023Z\x1a:\x01*\"\x15/node/property-labels\x12\x15/node/property-labels\x12\x93\x01\n" +
@@ -147,98 +148,100 @@ var file_service_mixer_proto_goTypes = []any{
 	(*proto.RecognizePlacesRequest)(nil),           // 9: datacommons.RecognizePlacesRequest
 	(*proto.FilterStatVarsByEntityRequest)(nil),    // 10: datacommons.FilterStatVarsByEntityRequest
 	(*v2.SearchIndicatorsRequest)(nil),             // 11: datacommons.v2.SearchIndicatorsRequest
-	(*proto.GetLocationsRankingsRequest)(nil),      // 12: datacommons.GetLocationsRankingsRequest
-	(*proto.QueryRequest)(nil),                     // 13: datacommons.QueryRequest
-	(*proto.GetPropertyLabelsRequest)(nil),         // 14: datacommons.GetPropertyLabelsRequest
-	(*proto.GetPropertyValuesRequest)(nil),         // 15: datacommons.GetPropertyValuesRequest
-	(*proto.GetTriplesRequest)(nil),                // 16: datacommons.GetTriplesRequest
-	(*proto.GetPlacesInRequest)(nil),               // 17: datacommons.GetPlacesInRequest
-	(*proto.GetStatsRequest)(nil),                  // 18: datacommons.GetStatsRequest
-	(*proto.GetStatValueRequest)(nil),              // 19: datacommons.GetStatValueRequest
-	(*proto.GetStatSeriesRequest)(nil),             // 20: datacommons.GetStatSeriesRequest
-	(*proto.GetStatAllRequest)(nil),                // 21: datacommons.GetStatAllRequest
-	(*proto.GetRelatedLocationsRequest)(nil),       // 22: datacommons.GetRelatedLocationsRequest
-	(*proto.GetVersionRequest)(nil),                // 23: datacommons.GetVersionRequest
-	(*proto.GetPlaceStatVarsRequest)(nil),          // 24: datacommons.GetPlaceStatVarsRequest
-	(*proto.GetEntityStatVarsUnionRequest)(nil),    // 25: datacommons.GetEntityStatVarsUnionRequest
-	(*v1.PropertiesRequest)(nil),                   // 26: datacommons.v1.PropertiesRequest
-	(*v1.BulkPropertiesRequest)(nil),               // 27: datacommons.v1.BulkPropertiesRequest
-	(*v1.PropertyValuesRequest)(nil),               // 28: datacommons.v1.PropertyValuesRequest
-	(*v1.LinkedPropertyValuesRequest)(nil),         // 29: datacommons.v1.LinkedPropertyValuesRequest
-	(*v1.BulkPropertyValuesRequest)(nil),           // 30: datacommons.v1.BulkPropertyValuesRequest
-	(*v1.BulkLinkedPropertyValuesRequest)(nil),     // 31: datacommons.v1.BulkLinkedPropertyValuesRequest
-	(*v1.TriplesRequest)(nil),                      // 32: datacommons.v1.TriplesRequest
-	(*v1.BulkTriplesRequest)(nil),                  // 33: datacommons.v1.BulkTriplesRequest
-	(*v1.VariablesRequest)(nil),                    // 34: datacommons.v1.VariablesRequest
-	(*v1.PlaceInfoRequest)(nil),                    // 35: datacommons.v1.PlaceInfoRequest
-	(*v1.BulkPlaceInfoRequest)(nil),                // 36: datacommons.v1.BulkPlaceInfoRequest
-	(*v1.VariableInfoRequest)(nil),                 // 37: datacommons.v1.VariableInfoRequest
-	(*v1.VariableGroupInfoRequest)(nil),            // 38: datacommons.v1.VariableGroupInfoRequest
-	(*v1.ObservationsPointRequest)(nil),            // 39: datacommons.v1.ObservationsPointRequest
-	(*v1.BulkObservationsPointRequest)(nil),        // 40: datacommons.v1.BulkObservationsPointRequest
-	(*v1.ObservationsSeriesRequest)(nil),           // 41: datacommons.v1.ObservationsSeriesRequest
-	(*v1.BulkObservationsSeriesRequest)(nil),       // 42: datacommons.v1.BulkObservationsSeriesRequest
-	(*v1.BulkObservationsSeriesLinkedRequest)(nil), // 43: datacommons.v1.BulkObservationsSeriesLinkedRequest
-	(*v1.BulkObservationDatesLinkedRequest)(nil),   // 44: datacommons.v1.BulkObservationDatesLinkedRequest
-	(*v1.PlacePageRequest)(nil),                    // 45: datacommons.v1.PlacePageRequest
-	(*v1.VariableAncestorsRequest)(nil),            // 46: datacommons.v1.VariableAncestorsRequest
-	(*proto.SearchStatVarRequest)(nil),             // 47: datacommons.SearchStatVarRequest
-	(*proto.ResolveEntitiesRequest)(nil),           // 48: datacommons.ResolveEntitiesRequest
-	(*proto.ResolveCoordinatesRequest)(nil),        // 49: datacommons.ResolveCoordinatesRequest
-	(*proto.ResolveIdsRequest)(nil),                // 50: datacommons.ResolveIdsRequest
-	(*proto.FindEntitiesRequest)(nil),              // 51: datacommons.FindEntitiesRequest
-	(*proto.BulkFindEntitiesRequest)(nil),          // 52: datacommons.BulkFindEntitiesRequest
-	(*proto.RecognizeEntitiesRequest)(nil),         // 53: datacommons.RecognizeEntitiesRequest
-	(*proto.GetImportTableDataRequest)(nil),        // 54: datacommons.GetImportTableDataRequest
-	(*v2.NodeResponse)(nil),                        // 55: datacommons.v2.NodeResponse
-	(*v2.ObservationResponse)(nil),                 // 56: datacommons.v2.ObservationResponse
-	(*v3.SdmxDataResponse)(nil),                    // 57: datacommons.v3.SdmxDataResponse
-	(*v2.NodeSearchResponse)(nil),                  // 58: datacommons.v2.NodeSearchResponse
-	(*v2.ResolveResponse)(nil),                     // 59: datacommons.v2.ResolveResponse
-	(*v2.EventResponse)(nil),                       // 60: datacommons.v2.EventResponse
-	(*proto.QueryResponse)(nil),                    // 61: datacommons.QueryResponse
-	(*v1.BulkVariableInfoResponse)(nil),            // 62: datacommons.v1.BulkVariableInfoResponse
-	(*v1.BulkVariableGroupInfoResponse)(nil),       // 63: datacommons.v1.BulkVariableGroupInfoResponse
-	(*proto.RecognizePlacesResponse)(nil),          // 64: datacommons.RecognizePlacesResponse
-	(*proto.FilterStatVarsByEntityResponse)(nil),   // 65: datacommons.FilterStatVarsByEntityResponse
-	(*v2.SearchIndicatorsResponse)(nil),            // 66: datacommons.v2.SearchIndicatorsResponse
-	(*proto.GetLocationsRankingsResponse)(nil),     // 67: datacommons.GetLocationsRankingsResponse
-	(*proto.PayloadResponse)(nil),                  // 68: datacommons.PayloadResponse
-	(*proto.GetPlacesInResponse)(nil),              // 69: datacommons.GetPlacesInResponse
-	(*proto.GetStatsResponse)(nil),                 // 70: datacommons.GetStatsResponse
-	(*proto.GetStatValueResponse)(nil),             // 71: datacommons.GetStatValueResponse
-	(*proto.GetStatSeriesResponse)(nil),            // 72: datacommons.GetStatSeriesResponse
-	(*proto.GetStatAllResponse)(nil),               // 73: datacommons.GetStatAllResponse
-	(*proto.GetRelatedLocationsResponse)(nil),      // 74: datacommons.GetRelatedLocationsResponse
-	(*proto.GetVersionResponse)(nil),               // 75: datacommons.GetVersionResponse
-	(*proto.GetPlaceStatVarsResponse)(nil),         // 76: datacommons.GetPlaceStatVarsResponse
-	(*proto.GetEntityStatVarsUnionResponse)(nil),   // 77: datacommons.GetEntityStatVarsUnionResponse
-	(*v1.PropertiesResponse)(nil),                  // 78: datacommons.v1.PropertiesResponse
-	(*v1.BulkPropertiesResponse)(nil),              // 79: datacommons.v1.BulkPropertiesResponse
-	(*v1.PropertyValuesResponse)(nil),              // 80: datacommons.v1.PropertyValuesResponse
-	(*v1.BulkPropertyValuesResponse)(nil),          // 81: datacommons.v1.BulkPropertyValuesResponse
-	(*v1.TriplesResponse)(nil),                     // 82: datacommons.v1.TriplesResponse
-	(*v1.BulkTriplesResponse)(nil),                 // 83: datacommons.v1.BulkTriplesResponse
-	(*v1.VariablesResponse)(nil),                   // 84: datacommons.v1.VariablesResponse
-	(*v1.PlaceInfoResponse)(nil),                   // 85: datacommons.v1.PlaceInfoResponse
-	(*v1.BulkPlaceInfoResponse)(nil),               // 86: datacommons.v1.BulkPlaceInfoResponse
-	(*v1.VariableInfoResponse)(nil),                // 87: datacommons.v1.VariableInfoResponse
-	(*v1.VariableGroupInfoResponse)(nil),           // 88: datacommons.v1.VariableGroupInfoResponse
-	(*proto.PointStat)(nil),                        // 89: datacommons.PointStat
-	(*v1.BulkObservationsPointResponse)(nil),       // 90: datacommons.v1.BulkObservationsPointResponse
-	(*v1.ObservationsSeriesResponse)(nil),          // 91: datacommons.v1.ObservationsSeriesResponse
-	(*v1.BulkObservationsSeriesResponse)(nil),      // 92: datacommons.v1.BulkObservationsSeriesResponse
-	(*v1.BulkObservationDatesLinkedResponse)(nil),  // 93: datacommons.v1.BulkObservationDatesLinkedResponse
-	(*v1.PlacePageResponse)(nil),                   // 94: datacommons.v1.PlacePageResponse
-	(*v1.VariableAncestorsResponse)(nil),           // 95: datacommons.v1.VariableAncestorsResponse
-	(*proto.SearchStatVarResponse)(nil),            // 96: datacommons.SearchStatVarResponse
-	(*proto.ResolveEntitiesResponse)(nil),          // 97: datacommons.ResolveEntitiesResponse
-	(*proto.ResolveCoordinatesResponse)(nil),       // 98: datacommons.ResolveCoordinatesResponse
-	(*proto.ResolveIdsResponse)(nil),               // 99: datacommons.ResolveIdsResponse
-	(*proto.FindEntitiesResponse)(nil),             // 100: datacommons.FindEntitiesResponse
-	(*proto.BulkFindEntitiesResponse)(nil),         // 101: datacommons.BulkFindEntitiesResponse
-	(*proto.RecognizeEntitiesResponse)(nil),        // 102: datacommons.RecognizeEntitiesResponse
-	(*proto.GetImportTableDataResponse)(nil),       // 103: datacommons.GetImportTableDataResponse
+	(*v2.GetObservationsRequest)(nil),              // 12: datacommons.v2.GetObservationsRequest
+	(*proto.GetLocationsRankingsRequest)(nil),      // 13: datacommons.GetLocationsRankingsRequest
+	(*proto.QueryRequest)(nil),                     // 14: datacommons.QueryRequest
+	(*proto.GetPropertyLabelsRequest)(nil),         // 15: datacommons.GetPropertyLabelsRequest
+	(*proto.GetPropertyValuesRequest)(nil),         // 16: datacommons.GetPropertyValuesRequest
+	(*proto.GetTriplesRequest)(nil),                // 17: datacommons.GetTriplesRequest
+	(*proto.GetPlacesInRequest)(nil),               // 18: datacommons.GetPlacesInRequest
+	(*proto.GetStatsRequest)(nil),                  // 19: datacommons.GetStatsRequest
+	(*proto.GetStatValueRequest)(nil),              // 20: datacommons.GetStatValueRequest
+	(*proto.GetStatSeriesRequest)(nil),             // 21: datacommons.GetStatSeriesRequest
+	(*proto.GetStatAllRequest)(nil),                // 22: datacommons.GetStatAllRequest
+	(*proto.GetRelatedLocationsRequest)(nil),       // 23: datacommons.GetRelatedLocationsRequest
+	(*proto.GetVersionRequest)(nil),                // 24: datacommons.GetVersionRequest
+	(*proto.GetPlaceStatVarsRequest)(nil),          // 25: datacommons.GetPlaceStatVarsRequest
+	(*proto.GetEntityStatVarsUnionRequest)(nil),    // 26: datacommons.GetEntityStatVarsUnionRequest
+	(*v1.PropertiesRequest)(nil),                   // 27: datacommons.v1.PropertiesRequest
+	(*v1.BulkPropertiesRequest)(nil),               // 28: datacommons.v1.BulkPropertiesRequest
+	(*v1.PropertyValuesRequest)(nil),               // 29: datacommons.v1.PropertyValuesRequest
+	(*v1.LinkedPropertyValuesRequest)(nil),         // 30: datacommons.v1.LinkedPropertyValuesRequest
+	(*v1.BulkPropertyValuesRequest)(nil),           // 31: datacommons.v1.BulkPropertyValuesRequest
+	(*v1.BulkLinkedPropertyValuesRequest)(nil),     // 32: datacommons.v1.BulkLinkedPropertyValuesRequest
+	(*v1.TriplesRequest)(nil),                      // 33: datacommons.v1.TriplesRequest
+	(*v1.BulkTriplesRequest)(nil),                  // 34: datacommons.v1.BulkTriplesRequest
+	(*v1.VariablesRequest)(nil),                    // 35: datacommons.v1.VariablesRequest
+	(*v1.PlaceInfoRequest)(nil),                    // 36: datacommons.v1.PlaceInfoRequest
+	(*v1.BulkPlaceInfoRequest)(nil),                // 37: datacommons.v1.BulkPlaceInfoRequest
+	(*v1.VariableInfoRequest)(nil),                 // 38: datacommons.v1.VariableInfoRequest
+	(*v1.VariableGroupInfoRequest)(nil),            // 39: datacommons.v1.VariableGroupInfoRequest
+	(*v1.ObservationsPointRequest)(nil),            // 40: datacommons.v1.ObservationsPointRequest
+	(*v1.BulkObservationsPointRequest)(nil),        // 41: datacommons.v1.BulkObservationsPointRequest
+	(*v1.ObservationsSeriesRequest)(nil),           // 42: datacommons.v1.ObservationsSeriesRequest
+	(*v1.BulkObservationsSeriesRequest)(nil),       // 43: datacommons.v1.BulkObservationsSeriesRequest
+	(*v1.BulkObservationsSeriesLinkedRequest)(nil), // 44: datacommons.v1.BulkObservationsSeriesLinkedRequest
+	(*v1.BulkObservationDatesLinkedRequest)(nil),   // 45: datacommons.v1.BulkObservationDatesLinkedRequest
+	(*v1.PlacePageRequest)(nil),                    // 46: datacommons.v1.PlacePageRequest
+	(*v1.VariableAncestorsRequest)(nil),            // 47: datacommons.v1.VariableAncestorsRequest
+	(*proto.SearchStatVarRequest)(nil),             // 48: datacommons.SearchStatVarRequest
+	(*proto.ResolveEntitiesRequest)(nil),           // 49: datacommons.ResolveEntitiesRequest
+	(*proto.ResolveCoordinatesRequest)(nil),        // 50: datacommons.ResolveCoordinatesRequest
+	(*proto.ResolveIdsRequest)(nil),                // 51: datacommons.ResolveIdsRequest
+	(*proto.FindEntitiesRequest)(nil),              // 52: datacommons.FindEntitiesRequest
+	(*proto.BulkFindEntitiesRequest)(nil),          // 53: datacommons.BulkFindEntitiesRequest
+	(*proto.RecognizeEntitiesRequest)(nil),         // 54: datacommons.RecognizeEntitiesRequest
+	(*proto.GetImportTableDataRequest)(nil),        // 55: datacommons.GetImportTableDataRequest
+	(*v2.NodeResponse)(nil),                        // 56: datacommons.v2.NodeResponse
+	(*v2.ObservationResponse)(nil),                 // 57: datacommons.v2.ObservationResponse
+	(*v3.SdmxDataResponse)(nil),                    // 58: datacommons.v3.SdmxDataResponse
+	(*v2.NodeSearchResponse)(nil),                  // 59: datacommons.v2.NodeSearchResponse
+	(*v2.ResolveResponse)(nil),                     // 60: datacommons.v2.ResolveResponse
+	(*v2.EventResponse)(nil),                       // 61: datacommons.v2.EventResponse
+	(*proto.QueryResponse)(nil),                    // 62: datacommons.QueryResponse
+	(*v1.BulkVariableInfoResponse)(nil),            // 63: datacommons.v1.BulkVariableInfoResponse
+	(*v1.BulkVariableGroupInfoResponse)(nil),       // 64: datacommons.v1.BulkVariableGroupInfoResponse
+	(*proto.RecognizePlacesResponse)(nil),          // 65: datacommons.RecognizePlacesResponse
+	(*proto.FilterStatVarsByEntityResponse)(nil),   // 66: datacommons.FilterStatVarsByEntityResponse
+	(*v2.SearchIndicatorsResponse)(nil),            // 67: datacommons.v2.SearchIndicatorsResponse
+	(*v2.GetObservationsResponse)(nil),             // 68: datacommons.v2.GetObservationsResponse
+	(*proto.GetLocationsRankingsResponse)(nil),     // 69: datacommons.GetLocationsRankingsResponse
+	(*proto.PayloadResponse)(nil),                  // 70: datacommons.PayloadResponse
+	(*proto.GetPlacesInResponse)(nil),              // 71: datacommons.GetPlacesInResponse
+	(*proto.GetStatsResponse)(nil),                 // 72: datacommons.GetStatsResponse
+	(*proto.GetStatValueResponse)(nil),             // 73: datacommons.GetStatValueResponse
+	(*proto.GetStatSeriesResponse)(nil),            // 74: datacommons.GetStatSeriesResponse
+	(*proto.GetStatAllResponse)(nil),               // 75: datacommons.GetStatAllResponse
+	(*proto.GetRelatedLocationsResponse)(nil),      // 76: datacommons.GetRelatedLocationsResponse
+	(*proto.GetVersionResponse)(nil),               // 77: datacommons.GetVersionResponse
+	(*proto.GetPlaceStatVarsResponse)(nil),         // 78: datacommons.GetPlaceStatVarsResponse
+	(*proto.GetEntityStatVarsUnionResponse)(nil),   // 79: datacommons.GetEntityStatVarsUnionResponse
+	(*v1.PropertiesResponse)(nil),                  // 80: datacommons.v1.PropertiesResponse
+	(*v1.BulkPropertiesResponse)(nil),              // 81: datacommons.v1.BulkPropertiesResponse
+	(*v1.PropertyValuesResponse)(nil),              // 82: datacommons.v1.PropertyValuesResponse
+	(*v1.BulkPropertyValuesResponse)(nil),          // 83: datacommons.v1.BulkPropertyValuesResponse
+	(*v1.TriplesResponse)(nil),                     // 84: datacommons.v1.TriplesResponse
+	(*v1.BulkTriplesResponse)(nil),                 // 85: datacommons.v1.BulkTriplesResponse
+	(*v1.VariablesResponse)(nil),                   // 86: datacommons.v1.VariablesResponse
+	(*v1.PlaceInfoResponse)(nil),                   // 87: datacommons.v1.PlaceInfoResponse
+	(*v1.BulkPlaceInfoResponse)(nil),               // 88: datacommons.v1.BulkPlaceInfoResponse
+	(*v1.VariableInfoResponse)(nil),                // 89: datacommons.v1.VariableInfoResponse
+	(*v1.VariableGroupInfoResponse)(nil),           // 90: datacommons.v1.VariableGroupInfoResponse
+	(*proto.PointStat)(nil),                        // 91: datacommons.PointStat
+	(*v1.BulkObservationsPointResponse)(nil),       // 92: datacommons.v1.BulkObservationsPointResponse
+	(*v1.ObservationsSeriesResponse)(nil),          // 93: datacommons.v1.ObservationsSeriesResponse
+	(*v1.BulkObservationsSeriesResponse)(nil),      // 94: datacommons.v1.BulkObservationsSeriesResponse
+	(*v1.BulkObservationDatesLinkedResponse)(nil),  // 95: datacommons.v1.BulkObservationDatesLinkedResponse
+	(*v1.PlacePageResponse)(nil),                   // 96: datacommons.v1.PlacePageResponse
+	(*v1.VariableAncestorsResponse)(nil),           // 97: datacommons.v1.VariableAncestorsResponse
+	(*proto.SearchStatVarResponse)(nil),            // 98: datacommons.SearchStatVarResponse
+	(*proto.ResolveEntitiesResponse)(nil),          // 99: datacommons.ResolveEntitiesResponse
+	(*proto.ResolveCoordinatesResponse)(nil),       // 100: datacommons.ResolveCoordinatesResponse
+	(*proto.ResolveIdsResponse)(nil),               // 101: datacommons.ResolveIdsResponse
+	(*proto.FindEntitiesResponse)(nil),             // 102: datacommons.FindEntitiesResponse
+	(*proto.BulkFindEntitiesResponse)(nil),         // 103: datacommons.BulkFindEntitiesResponse
+	(*proto.RecognizeEntitiesResponse)(nil),        // 104: datacommons.RecognizeEntitiesResponse
+	(*proto.GetImportTableDataResponse)(nil),       // 105: datacommons.GetImportTableDataResponse
 }
 var file_service_mixer_proto_depIdxs = []int32{
 	0,   // 0: datacommons.Mixer.V3Node:input_type -> datacommons.v2.NodeRequest
@@ -260,123 +263,125 @@ var file_service_mixer_proto_depIdxs = []int32{
 	7,   // 16: datacommons.Mixer.V2BulkVariableInfo:input_type -> datacommons.v1.BulkVariableInfoRequest
 	8,   // 17: datacommons.Mixer.V2BulkVariableGroupInfo:input_type -> datacommons.v1.BulkVariableGroupInfoRequest
 	11,  // 18: datacommons.Mixer.V2AgentSearchIndicators:input_type -> datacommons.v2.SearchIndicatorsRequest
-	12,  // 19: datacommons.Mixer.V2GetLocationsRankings:input_type -> datacommons.GetLocationsRankingsRequest
-	13,  // 20: datacommons.Mixer.Query:input_type -> datacommons.QueryRequest
-	14,  // 21: datacommons.Mixer.GetPropertyLabels:input_type -> datacommons.GetPropertyLabelsRequest
-	15,  // 22: datacommons.Mixer.GetPropertyValues:input_type -> datacommons.GetPropertyValuesRequest
-	16,  // 23: datacommons.Mixer.GetTriples:input_type -> datacommons.GetTriplesRequest
-	17,  // 24: datacommons.Mixer.GetPlacesIn:input_type -> datacommons.GetPlacesInRequest
-	18,  // 25: datacommons.Mixer.GetStats:input_type -> datacommons.GetStatsRequest
-	19,  // 26: datacommons.Mixer.GetStatValue:input_type -> datacommons.GetStatValueRequest
-	20,  // 27: datacommons.Mixer.GetStatSeries:input_type -> datacommons.GetStatSeriesRequest
-	21,  // 28: datacommons.Mixer.GetStatAll:input_type -> datacommons.GetStatAllRequest
-	12,  // 29: datacommons.Mixer.GetLocationsRankings:input_type -> datacommons.GetLocationsRankingsRequest
-	22,  // 30: datacommons.Mixer.GetRelatedLocations:input_type -> datacommons.GetRelatedLocationsRequest
-	23,  // 31: datacommons.Mixer.GetVersion:input_type -> datacommons.GetVersionRequest
-	24,  // 32: datacommons.Mixer.GetPlaceStatVars:input_type -> datacommons.GetPlaceStatVarsRequest
-	25,  // 33: datacommons.Mixer.GetEntityStatVarsUnionV1:input_type -> datacommons.GetEntityStatVarsUnionRequest
-	13,  // 34: datacommons.Mixer.QueryV1:input_type -> datacommons.QueryRequest
-	26,  // 35: datacommons.Mixer.Properties:input_type -> datacommons.v1.PropertiesRequest
-	27,  // 36: datacommons.Mixer.BulkProperties:input_type -> datacommons.v1.BulkPropertiesRequest
-	28,  // 37: datacommons.Mixer.PropertyValues:input_type -> datacommons.v1.PropertyValuesRequest
-	29,  // 38: datacommons.Mixer.LinkedPropertyValues:input_type -> datacommons.v1.LinkedPropertyValuesRequest
-	30,  // 39: datacommons.Mixer.BulkPropertyValues:input_type -> datacommons.v1.BulkPropertyValuesRequest
-	31,  // 40: datacommons.Mixer.BulkLinkedPropertyValues:input_type -> datacommons.v1.BulkLinkedPropertyValuesRequest
-	32,  // 41: datacommons.Mixer.Triples:input_type -> datacommons.v1.TriplesRequest
-	33,  // 42: datacommons.Mixer.BulkTriples:input_type -> datacommons.v1.BulkTriplesRequest
-	34,  // 43: datacommons.Mixer.Variables:input_type -> datacommons.v1.VariablesRequest
-	35,  // 44: datacommons.Mixer.PlaceInfo:input_type -> datacommons.v1.PlaceInfoRequest
-	36,  // 45: datacommons.Mixer.BulkPlaceInfo:input_type -> datacommons.v1.BulkPlaceInfoRequest
-	37,  // 46: datacommons.Mixer.VariableInfo:input_type -> datacommons.v1.VariableInfoRequest
-	7,   // 47: datacommons.Mixer.BulkVariableInfo:input_type -> datacommons.v1.BulkVariableInfoRequest
-	38,  // 48: datacommons.Mixer.VariableGroupInfo:input_type -> datacommons.v1.VariableGroupInfoRequest
-	8,   // 49: datacommons.Mixer.BulkVariableGroupInfo:input_type -> datacommons.v1.BulkVariableGroupInfoRequest
-	39,  // 50: datacommons.Mixer.ObservationsPoint:input_type -> datacommons.v1.ObservationsPointRequest
-	40,  // 51: datacommons.Mixer.BulkObservationsPoint:input_type -> datacommons.v1.BulkObservationsPointRequest
-	41,  // 52: datacommons.Mixer.ObservationsSeries:input_type -> datacommons.v1.ObservationsSeriesRequest
-	42,  // 53: datacommons.Mixer.BulkObservationsSeries:input_type -> datacommons.v1.BulkObservationsSeriesRequest
-	43,  // 54: datacommons.Mixer.BulkObservationsSeriesLinked:input_type -> datacommons.v1.BulkObservationsSeriesLinkedRequest
-	44,  // 55: datacommons.Mixer.BulkObservationDatesLinked:input_type -> datacommons.v1.BulkObservationDatesLinkedRequest
-	45,  // 56: datacommons.Mixer.PlacePage:input_type -> datacommons.v1.PlacePageRequest
-	46,  // 57: datacommons.Mixer.VariableAncestors:input_type -> datacommons.v1.VariableAncestorsRequest
-	47,  // 58: datacommons.Mixer.SearchStatVar:input_type -> datacommons.SearchStatVarRequest
-	48,  // 59: datacommons.Mixer.ResolveEntities:input_type -> datacommons.ResolveEntitiesRequest
-	49,  // 60: datacommons.Mixer.ResolveCoordinates:input_type -> datacommons.ResolveCoordinatesRequest
-	50,  // 61: datacommons.Mixer.ResolveIds:input_type -> datacommons.ResolveIdsRequest
-	51,  // 62: datacommons.Mixer.FindEntities:input_type -> datacommons.FindEntitiesRequest
-	52,  // 63: datacommons.Mixer.BulkFindEntities:input_type -> datacommons.BulkFindEntitiesRequest
-	9,   // 64: datacommons.Mixer.RecognizePlaces:input_type -> datacommons.RecognizePlacesRequest
-	53,  // 65: datacommons.Mixer.RecognizeEntities:input_type -> datacommons.RecognizeEntitiesRequest
-	54,  // 66: datacommons.Mixer.GetImportTableData:input_type -> datacommons.GetImportTableDataRequest
-	55,  // 67: datacommons.Mixer.V3Node:output_type -> datacommons.v2.NodeResponse
-	56,  // 68: datacommons.Mixer.V3Observation:output_type -> datacommons.v2.ObservationResponse
-	57,  // 69: datacommons.Mixer.V3SdmxData:output_type -> datacommons.v3.SdmxDataResponse
-	58,  // 70: datacommons.Mixer.V3NodeSearch:output_type -> datacommons.v2.NodeSearchResponse
-	59,  // 71: datacommons.Mixer.V3Resolve:output_type -> datacommons.v2.ResolveResponse
-	60,  // 72: datacommons.Mixer.V3Event:output_type -> datacommons.v2.EventResponse
-	61,  // 73: datacommons.Mixer.V3Sparql:output_type -> datacommons.QueryResponse
-	62,  // 74: datacommons.Mixer.V3BulkVariableInfo:output_type -> datacommons.v1.BulkVariableInfoResponse
-	63,  // 75: datacommons.Mixer.V3BulkVariableGroupInfo:output_type -> datacommons.v1.BulkVariableGroupInfoResponse
-	61,  // 76: datacommons.Mixer.V2Sparql:output_type -> datacommons.QueryResponse
-	59,  // 77: datacommons.Mixer.V2Resolve:output_type -> datacommons.v2.ResolveResponse
-	55,  // 78: datacommons.Mixer.V2Node:output_type -> datacommons.v2.NodeResponse
-	60,  // 79: datacommons.Mixer.V2Event:output_type -> datacommons.v2.EventResponse
-	56,  // 80: datacommons.Mixer.V2Observation:output_type -> datacommons.v2.ObservationResponse
-	64,  // 81: datacommons.Mixer.V2RecognizePlaces:output_type -> datacommons.RecognizePlacesResponse
-	65,  // 82: datacommons.Mixer.FilterStatVarsByEntity:output_type -> datacommons.FilterStatVarsByEntityResponse
-	62,  // 83: datacommons.Mixer.V2BulkVariableInfo:output_type -> datacommons.v1.BulkVariableInfoResponse
-	63,  // 84: datacommons.Mixer.V2BulkVariableGroupInfo:output_type -> datacommons.v1.BulkVariableGroupInfoResponse
-	66,  // 85: datacommons.Mixer.V2AgentSearchIndicators:output_type -> datacommons.v2.SearchIndicatorsResponse
-	67,  // 86: datacommons.Mixer.V2GetLocationsRankings:output_type -> datacommons.GetLocationsRankingsResponse
-	61,  // 87: datacommons.Mixer.Query:output_type -> datacommons.QueryResponse
-	68,  // 88: datacommons.Mixer.GetPropertyLabels:output_type -> datacommons.PayloadResponse
-	68,  // 89: datacommons.Mixer.GetPropertyValues:output_type -> datacommons.PayloadResponse
-	68,  // 90: datacommons.Mixer.GetTriples:output_type -> datacommons.PayloadResponse
-	69,  // 91: datacommons.Mixer.GetPlacesIn:output_type -> datacommons.GetPlacesInResponse
-	70,  // 92: datacommons.Mixer.GetStats:output_type -> datacommons.GetStatsResponse
-	71,  // 93: datacommons.Mixer.GetStatValue:output_type -> datacommons.GetStatValueResponse
-	72,  // 94: datacommons.Mixer.GetStatSeries:output_type -> datacommons.GetStatSeriesResponse
-	73,  // 95: datacommons.Mixer.GetStatAll:output_type -> datacommons.GetStatAllResponse
-	67,  // 96: datacommons.Mixer.GetLocationsRankings:output_type -> datacommons.GetLocationsRankingsResponse
-	74,  // 97: datacommons.Mixer.GetRelatedLocations:output_type -> datacommons.GetRelatedLocationsResponse
-	75,  // 98: datacommons.Mixer.GetVersion:output_type -> datacommons.GetVersionResponse
-	76,  // 99: datacommons.Mixer.GetPlaceStatVars:output_type -> datacommons.GetPlaceStatVarsResponse
-	77,  // 100: datacommons.Mixer.GetEntityStatVarsUnionV1:output_type -> datacommons.GetEntityStatVarsUnionResponse
-	61,  // 101: datacommons.Mixer.QueryV1:output_type -> datacommons.QueryResponse
-	78,  // 102: datacommons.Mixer.Properties:output_type -> datacommons.v1.PropertiesResponse
-	79,  // 103: datacommons.Mixer.BulkProperties:output_type -> datacommons.v1.BulkPropertiesResponse
-	80,  // 104: datacommons.Mixer.PropertyValues:output_type -> datacommons.v1.PropertyValuesResponse
-	80,  // 105: datacommons.Mixer.LinkedPropertyValues:output_type -> datacommons.v1.PropertyValuesResponse
-	81,  // 106: datacommons.Mixer.BulkPropertyValues:output_type -> datacommons.v1.BulkPropertyValuesResponse
-	81,  // 107: datacommons.Mixer.BulkLinkedPropertyValues:output_type -> datacommons.v1.BulkPropertyValuesResponse
-	82,  // 108: datacommons.Mixer.Triples:output_type -> datacommons.v1.TriplesResponse
-	83,  // 109: datacommons.Mixer.BulkTriples:output_type -> datacommons.v1.BulkTriplesResponse
-	84,  // 110: datacommons.Mixer.Variables:output_type -> datacommons.v1.VariablesResponse
-	85,  // 111: datacommons.Mixer.PlaceInfo:output_type -> datacommons.v1.PlaceInfoResponse
-	86,  // 112: datacommons.Mixer.BulkPlaceInfo:output_type -> datacommons.v1.BulkPlaceInfoResponse
-	87,  // 113: datacommons.Mixer.VariableInfo:output_type -> datacommons.v1.VariableInfoResponse
-	62,  // 114: datacommons.Mixer.BulkVariableInfo:output_type -> datacommons.v1.BulkVariableInfoResponse
-	88,  // 115: datacommons.Mixer.VariableGroupInfo:output_type -> datacommons.v1.VariableGroupInfoResponse
-	63,  // 116: datacommons.Mixer.BulkVariableGroupInfo:output_type -> datacommons.v1.BulkVariableGroupInfoResponse
-	89,  // 117: datacommons.Mixer.ObservationsPoint:output_type -> datacommons.PointStat
-	90,  // 118: datacommons.Mixer.BulkObservationsPoint:output_type -> datacommons.v1.BulkObservationsPointResponse
-	91,  // 119: datacommons.Mixer.ObservationsSeries:output_type -> datacommons.v1.ObservationsSeriesResponse
-	92,  // 120: datacommons.Mixer.BulkObservationsSeries:output_type -> datacommons.v1.BulkObservationsSeriesResponse
-	92,  // 121: datacommons.Mixer.BulkObservationsSeriesLinked:output_type -> datacommons.v1.BulkObservationsSeriesResponse
-	93,  // 122: datacommons.Mixer.BulkObservationDatesLinked:output_type -> datacommons.v1.BulkObservationDatesLinkedResponse
-	94,  // 123: datacommons.Mixer.PlacePage:output_type -> datacommons.v1.PlacePageResponse
-	95,  // 124: datacommons.Mixer.VariableAncestors:output_type -> datacommons.v1.VariableAncestorsResponse
-	96,  // 125: datacommons.Mixer.SearchStatVar:output_type -> datacommons.SearchStatVarResponse
-	97,  // 126: datacommons.Mixer.ResolveEntities:output_type -> datacommons.ResolveEntitiesResponse
-	98,  // 127: datacommons.Mixer.ResolveCoordinates:output_type -> datacommons.ResolveCoordinatesResponse
-	99,  // 128: datacommons.Mixer.ResolveIds:output_type -> datacommons.ResolveIdsResponse
-	100, // 129: datacommons.Mixer.FindEntities:output_type -> datacommons.FindEntitiesResponse
-	101, // 130: datacommons.Mixer.BulkFindEntities:output_type -> datacommons.BulkFindEntitiesResponse
-	64,  // 131: datacommons.Mixer.RecognizePlaces:output_type -> datacommons.RecognizePlacesResponse
-	102, // 132: datacommons.Mixer.RecognizeEntities:output_type -> datacommons.RecognizeEntitiesResponse
-	103, // 133: datacommons.Mixer.GetImportTableData:output_type -> datacommons.GetImportTableDataResponse
-	67,  // [67:134] is the sub-list for method output_type
-	0,   // [0:67] is the sub-list for method input_type
+	12,  // 19: datacommons.Mixer.V2AgentGetObservations:input_type -> datacommons.v2.GetObservationsRequest
+	13,  // 20: datacommons.Mixer.V2GetLocationsRankings:input_type -> datacommons.GetLocationsRankingsRequest
+	14,  // 21: datacommons.Mixer.Query:input_type -> datacommons.QueryRequest
+	15,  // 22: datacommons.Mixer.GetPropertyLabels:input_type -> datacommons.GetPropertyLabelsRequest
+	16,  // 23: datacommons.Mixer.GetPropertyValues:input_type -> datacommons.GetPropertyValuesRequest
+	17,  // 24: datacommons.Mixer.GetTriples:input_type -> datacommons.GetTriplesRequest
+	18,  // 25: datacommons.Mixer.GetPlacesIn:input_type -> datacommons.GetPlacesInRequest
+	19,  // 26: datacommons.Mixer.GetStats:input_type -> datacommons.GetStatsRequest
+	20,  // 27: datacommons.Mixer.GetStatValue:input_type -> datacommons.GetStatValueRequest
+	21,  // 28: datacommons.Mixer.GetStatSeries:input_type -> datacommons.GetStatSeriesRequest
+	22,  // 29: datacommons.Mixer.GetStatAll:input_type -> datacommons.GetStatAllRequest
+	13,  // 30: datacommons.Mixer.GetLocationsRankings:input_type -> datacommons.GetLocationsRankingsRequest
+	23,  // 31: datacommons.Mixer.GetRelatedLocations:input_type -> datacommons.GetRelatedLocationsRequest
+	24,  // 32: datacommons.Mixer.GetVersion:input_type -> datacommons.GetVersionRequest
+	25,  // 33: datacommons.Mixer.GetPlaceStatVars:input_type -> datacommons.GetPlaceStatVarsRequest
+	26,  // 34: datacommons.Mixer.GetEntityStatVarsUnionV1:input_type -> datacommons.GetEntityStatVarsUnionRequest
+	14,  // 35: datacommons.Mixer.QueryV1:input_type -> datacommons.QueryRequest
+	27,  // 36: datacommons.Mixer.Properties:input_type -> datacommons.v1.PropertiesRequest
+	28,  // 37: datacommons.Mixer.BulkProperties:input_type -> datacommons.v1.BulkPropertiesRequest
+	29,  // 38: datacommons.Mixer.PropertyValues:input_type -> datacommons.v1.PropertyValuesRequest
+	30,  // 39: datacommons.Mixer.LinkedPropertyValues:input_type -> datacommons.v1.LinkedPropertyValuesRequest
+	31,  // 40: datacommons.Mixer.BulkPropertyValues:input_type -> datacommons.v1.BulkPropertyValuesRequest
+	32,  // 41: datacommons.Mixer.BulkLinkedPropertyValues:input_type -> datacommons.v1.BulkLinkedPropertyValuesRequest
+	33,  // 42: datacommons.Mixer.Triples:input_type -> datacommons.v1.TriplesRequest
+	34,  // 43: datacommons.Mixer.BulkTriples:input_type -> datacommons.v1.BulkTriplesRequest
+	35,  // 44: datacommons.Mixer.Variables:input_type -> datacommons.v1.VariablesRequest
+	36,  // 45: datacommons.Mixer.PlaceInfo:input_type -> datacommons.v1.PlaceInfoRequest
+	37,  // 46: datacommons.Mixer.BulkPlaceInfo:input_type -> datacommons.v1.BulkPlaceInfoRequest
+	38,  // 47: datacommons.Mixer.VariableInfo:input_type -> datacommons.v1.VariableInfoRequest
+	7,   // 48: datacommons.Mixer.BulkVariableInfo:input_type -> datacommons.v1.BulkVariableInfoRequest
+	39,  // 49: datacommons.Mixer.VariableGroupInfo:input_type -> datacommons.v1.VariableGroupInfoRequest
+	8,   // 50: datacommons.Mixer.BulkVariableGroupInfo:input_type -> datacommons.v1.BulkVariableGroupInfoRequest
+	40,  // 51: datacommons.Mixer.ObservationsPoint:input_type -> datacommons.v1.ObservationsPointRequest
+	41,  // 52: datacommons.Mixer.BulkObservationsPoint:input_type -> datacommons.v1.BulkObservationsPointRequest
+	42,  // 53: datacommons.Mixer.ObservationsSeries:input_type -> datacommons.v1.ObservationsSeriesRequest
+	43,  // 54: datacommons.Mixer.BulkObservationsSeries:input_type -> datacommons.v1.BulkObservationsSeriesRequest
+	44,  // 55: datacommons.Mixer.BulkObservationsSeriesLinked:input_type -> datacommons.v1.BulkObservationsSeriesLinkedRequest
+	45,  // 56: datacommons.Mixer.BulkObservationDatesLinked:input_type -> datacommons.v1.BulkObservationDatesLinkedRequest
+	46,  // 57: datacommons.Mixer.PlacePage:input_type -> datacommons.v1.PlacePageRequest
+	47,  // 58: datacommons.Mixer.VariableAncestors:input_type -> datacommons.v1.VariableAncestorsRequest
+	48,  // 59: datacommons.Mixer.SearchStatVar:input_type -> datacommons.SearchStatVarRequest
+	49,  // 60: datacommons.Mixer.ResolveEntities:input_type -> datacommons.ResolveEntitiesRequest
+	50,  // 61: datacommons.Mixer.ResolveCoordinates:input_type -> datacommons.ResolveCoordinatesRequest
+	51,  // 62: datacommons.Mixer.ResolveIds:input_type -> datacommons.ResolveIdsRequest
+	52,  // 63: datacommons.Mixer.FindEntities:input_type -> datacommons.FindEntitiesRequest
+	53,  // 64: datacommons.Mixer.BulkFindEntities:input_type -> datacommons.BulkFindEntitiesRequest
+	9,   // 65: datacommons.Mixer.RecognizePlaces:input_type -> datacommons.RecognizePlacesRequest
+	54,  // 66: datacommons.Mixer.RecognizeEntities:input_type -> datacommons.RecognizeEntitiesRequest
+	55,  // 67: datacommons.Mixer.GetImportTableData:input_type -> datacommons.GetImportTableDataRequest
+	56,  // 68: datacommons.Mixer.V3Node:output_type -> datacommons.v2.NodeResponse
+	57,  // 69: datacommons.Mixer.V3Observation:output_type -> datacommons.v2.ObservationResponse
+	58,  // 70: datacommons.Mixer.V3SdmxData:output_type -> datacommons.v3.SdmxDataResponse
+	59,  // 71: datacommons.Mixer.V3NodeSearch:output_type -> datacommons.v2.NodeSearchResponse
+	60,  // 72: datacommons.Mixer.V3Resolve:output_type -> datacommons.v2.ResolveResponse
+	61,  // 73: datacommons.Mixer.V3Event:output_type -> datacommons.v2.EventResponse
+	62,  // 74: datacommons.Mixer.V3Sparql:output_type -> datacommons.QueryResponse
+	63,  // 75: datacommons.Mixer.V3BulkVariableInfo:output_type -> datacommons.v1.BulkVariableInfoResponse
+	64,  // 76: datacommons.Mixer.V3BulkVariableGroupInfo:output_type -> datacommons.v1.BulkVariableGroupInfoResponse
+	62,  // 77: datacommons.Mixer.V2Sparql:output_type -> datacommons.QueryResponse
+	60,  // 78: datacommons.Mixer.V2Resolve:output_type -> datacommons.v2.ResolveResponse
+	56,  // 79: datacommons.Mixer.V2Node:output_type -> datacommons.v2.NodeResponse
+	61,  // 80: datacommons.Mixer.V2Event:output_type -> datacommons.v2.EventResponse
+	57,  // 81: datacommons.Mixer.V2Observation:output_type -> datacommons.v2.ObservationResponse
+	65,  // 82: datacommons.Mixer.V2RecognizePlaces:output_type -> datacommons.RecognizePlacesResponse
+	66,  // 83: datacommons.Mixer.FilterStatVarsByEntity:output_type -> datacommons.FilterStatVarsByEntityResponse
+	63,  // 84: datacommons.Mixer.V2BulkVariableInfo:output_type -> datacommons.v1.BulkVariableInfoResponse
+	64,  // 85: datacommons.Mixer.V2BulkVariableGroupInfo:output_type -> datacommons.v1.BulkVariableGroupInfoResponse
+	67,  // 86: datacommons.Mixer.V2AgentSearchIndicators:output_type -> datacommons.v2.SearchIndicatorsResponse
+	68,  // 87: datacommons.Mixer.V2AgentGetObservations:output_type -> datacommons.v2.GetObservationsResponse
+	69,  // 88: datacommons.Mixer.V2GetLocationsRankings:output_type -> datacommons.GetLocationsRankingsResponse
+	62,  // 89: datacommons.Mixer.Query:output_type -> datacommons.QueryResponse
+	70,  // 90: datacommons.Mixer.GetPropertyLabels:output_type -> datacommons.PayloadResponse
+	70,  // 91: datacommons.Mixer.GetPropertyValues:output_type -> datacommons.PayloadResponse
+	70,  // 92: datacommons.Mixer.GetTriples:output_type -> datacommons.PayloadResponse
+	71,  // 93: datacommons.Mixer.GetPlacesIn:output_type -> datacommons.GetPlacesInResponse
+	72,  // 94: datacommons.Mixer.GetStats:output_type -> datacommons.GetStatsResponse
+	73,  // 95: datacommons.Mixer.GetStatValue:output_type -> datacommons.GetStatValueResponse
+	74,  // 96: datacommons.Mixer.GetStatSeries:output_type -> datacommons.GetStatSeriesResponse
+	75,  // 97: datacommons.Mixer.GetStatAll:output_type -> datacommons.GetStatAllResponse
+	69,  // 98: datacommons.Mixer.GetLocationsRankings:output_type -> datacommons.GetLocationsRankingsResponse
+	76,  // 99: datacommons.Mixer.GetRelatedLocations:output_type -> datacommons.GetRelatedLocationsResponse
+	77,  // 100: datacommons.Mixer.GetVersion:output_type -> datacommons.GetVersionResponse
+	78,  // 101: datacommons.Mixer.GetPlaceStatVars:output_type -> datacommons.GetPlaceStatVarsResponse
+	79,  // 102: datacommons.Mixer.GetEntityStatVarsUnionV1:output_type -> datacommons.GetEntityStatVarsUnionResponse
+	62,  // 103: datacommons.Mixer.QueryV1:output_type -> datacommons.QueryResponse
+	80,  // 104: datacommons.Mixer.Properties:output_type -> datacommons.v1.PropertiesResponse
+	81,  // 105: datacommons.Mixer.BulkProperties:output_type -> datacommons.v1.BulkPropertiesResponse
+	82,  // 106: datacommons.Mixer.PropertyValues:output_type -> datacommons.v1.PropertyValuesResponse
+	82,  // 107: datacommons.Mixer.LinkedPropertyValues:output_type -> datacommons.v1.PropertyValuesResponse
+	83,  // 108: datacommons.Mixer.BulkPropertyValues:output_type -> datacommons.v1.BulkPropertyValuesResponse
+	83,  // 109: datacommons.Mixer.BulkLinkedPropertyValues:output_type -> datacommons.v1.BulkPropertyValuesResponse
+	84,  // 110: datacommons.Mixer.Triples:output_type -> datacommons.v1.TriplesResponse
+	85,  // 111: datacommons.Mixer.BulkTriples:output_type -> datacommons.v1.BulkTriplesResponse
+	86,  // 112: datacommons.Mixer.Variables:output_type -> datacommons.v1.VariablesResponse
+	87,  // 113: datacommons.Mixer.PlaceInfo:output_type -> datacommons.v1.PlaceInfoResponse
+	88,  // 114: datacommons.Mixer.BulkPlaceInfo:output_type -> datacommons.v1.BulkPlaceInfoResponse
+	89,  // 115: datacommons.Mixer.VariableInfo:output_type -> datacommons.v1.VariableInfoResponse
+	63,  // 116: datacommons.Mixer.BulkVariableInfo:output_type -> datacommons.v1.BulkVariableInfoResponse
+	90,  // 117: datacommons.Mixer.VariableGroupInfo:output_type -> datacommons.v1.VariableGroupInfoResponse
+	64,  // 118: datacommons.Mixer.BulkVariableGroupInfo:output_type -> datacommons.v1.BulkVariableGroupInfoResponse
+	91,  // 119: datacommons.Mixer.ObservationsPoint:output_type -> datacommons.PointStat
+	92,  // 120: datacommons.Mixer.BulkObservationsPoint:output_type -> datacommons.v1.BulkObservationsPointResponse
+	93,  // 121: datacommons.Mixer.ObservationsSeries:output_type -> datacommons.v1.ObservationsSeriesResponse
+	94,  // 122: datacommons.Mixer.BulkObservationsSeries:output_type -> datacommons.v1.BulkObservationsSeriesResponse
+	94,  // 123: datacommons.Mixer.BulkObservationsSeriesLinked:output_type -> datacommons.v1.BulkObservationsSeriesResponse
+	95,  // 124: datacommons.Mixer.BulkObservationDatesLinked:output_type -> datacommons.v1.BulkObservationDatesLinkedResponse
+	96,  // 125: datacommons.Mixer.PlacePage:output_type -> datacommons.v1.PlacePageResponse
+	97,  // 126: datacommons.Mixer.VariableAncestors:output_type -> datacommons.v1.VariableAncestorsResponse
+	98,  // 127: datacommons.Mixer.SearchStatVar:output_type -> datacommons.SearchStatVarResponse
+	99,  // 128: datacommons.Mixer.ResolveEntities:output_type -> datacommons.ResolveEntitiesResponse
+	100, // 129: datacommons.Mixer.ResolveCoordinates:output_type -> datacommons.ResolveCoordinatesResponse
+	101, // 130: datacommons.Mixer.ResolveIds:output_type -> datacommons.ResolveIdsResponse
+	102, // 131: datacommons.Mixer.FindEntities:output_type -> datacommons.FindEntitiesResponse
+	103, // 132: datacommons.Mixer.BulkFindEntities:output_type -> datacommons.BulkFindEntitiesResponse
+	65,  // 133: datacommons.Mixer.RecognizePlaces:output_type -> datacommons.RecognizePlacesResponse
+	104, // 134: datacommons.Mixer.RecognizeEntities:output_type -> datacommons.RecognizeEntitiesResponse
+	105, // 135: datacommons.Mixer.GetImportTableData:output_type -> datacommons.GetImportTableDataResponse
+	68,  // [68:136] is the sub-list for method output_type
+	0,   // [0:68] is the sub-list for method input_type
 	0,   // [0:0] is the sub-list for extension type_name
 	0,   // [0:0] is the sub-list for extension extendee
 	0,   // [0:0] is the sub-list for field type_name

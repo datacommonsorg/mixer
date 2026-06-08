@@ -29,3 +29,12 @@ func (s *Server) V2AgentSearchIndicators(
 ) (*pbv2.SearchIndicatorsResponse, error) {
 	return s.agentService.SearchIndicators(ctx, in)
 }
+
+// V2AgentGetObservations implements API for mixer.V2AgentGetObservations.
+// It delegates incoming RPC requests directly to the isolated agent.Service layer.
+func (s *Server) V2AgentGetObservations(
+	ctx context.Context,
+	in *pbv2.GetObservationsRequest,
+) (*pbv2.GetObservationsResponse, error) {
+	return s.agentService.GetObservations(ctx, in)
+}
