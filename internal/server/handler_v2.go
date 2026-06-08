@@ -167,7 +167,7 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 				return false, status.Errorf(codes.InvalidArgument, "Invalid X-V2Resolve-Indicator-Backend header value: %q. Valid values are %q or %q", backendHeader, util.V2ResolveIndicatorBackendSpanner, util.V2ResolveIndicatorBackendLegacy)
 			}
 			// Default: use Spanner if configured AND default routing flag is true
-			return s.isSpannerEnabled() && s.flags.EnableSpannerSearchEmbeddings, nil
+			return s.isSpannerEnabled() && s.flags != nil && s.flags.EnableSpannerSearchEmbeddings, nil
 		}
 	}
 
