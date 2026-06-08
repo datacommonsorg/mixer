@@ -360,7 +360,7 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 			wantErr:                true,
 		},
 
-		// 5. New test cases for Spanner enabled via Feature Flag only
+		// New test cases for Spanner enabled via Feature Flag only
 		{
 			desc:                "Indicator resolver - Spanner enabled (flag) & embeddings true -> route",
 			useSpannerGraph:     false,

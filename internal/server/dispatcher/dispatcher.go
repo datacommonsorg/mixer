@@ -225,5 +225,3 @@ func (dispatcher *Dispatcher) FilterStatVarsByEntity(ctx context.Context, in *pb
 	}
 	return response.(*pb.FilterStatVarsByEntityResponse), nil
 }
-
-
