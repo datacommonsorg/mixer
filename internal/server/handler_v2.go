@@ -125,6 +125,11 @@ func (s *Server) V2Resolve(
 	return v2Resp, nil
 }
 
+// isSpannerEnabled returns true if the Spanner backend has been enabled.
+func (s *Server) isSpannerEnabled() bool {
+	return s.useSpannerGraph || (s.flags != nil && s.flags.UseSpannerGraph)
+}
+
 // shouldRouteResolveToDispatcher determines whether to route a V2Resolve request to the dispatcher.
 // It returns an error if the request explicitly asks for an unavailable backend.
 func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver string) (bool, error) {

@@ -25,7 +25,6 @@ import (
 	"net/url"
 	"path"
 	"strings"
-	"sync"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/util"
