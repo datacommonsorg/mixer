@@ -204,6 +204,14 @@ service Mixer {
     };
   }
 
+  rpc V2AgentGetObservations(datacommons.v2.GetObservationsRequest)
+      returns (datacommons.v2.GetObservationsResponse) {
+    option (google.api.http) = {
+      get : "/v2/agent/get_observations"
+      additional_bindings : {post : "/v2/agent/get_observations" body : "*"}
+    };
+  }
+
   // Get rankings for given stat var DCIDs.
   rpc V2GetLocationsRankings(GetLocationsRankingsRequest)
       returns (GetLocationsRankingsResponse) {

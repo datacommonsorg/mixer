@@ -206,6 +206,184 @@ func (x *SearchIndicatorsResponse) GetResolvedParentPlace() *SearchIndicatorsRes
 	return nil
 }
 
+// Request payload for the get_observations tool endpoint.
+type GetObservationsRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	VariableDcid   string                 `protobuf:"bytes,1,opt,name=variable_dcid,json=variableDcid,proto3" json:"variable_dcid,omitempty"`
+	PlaceDcid      string                 `protobuf:"bytes,2,opt,name=place_dcid,json=placeDcid,proto3" json:"place_dcid,omitempty"`
+	ChildPlaceType *string                `protobuf:"bytes,3,opt,name=child_place_type,json=childPlaceType,proto3,oneof" json:"child_place_type,omitempty"`
+	SourceOverride *string                `protobuf:"bytes,4,opt,name=source_override,json=sourceOverride,proto3,oneof" json:"source_override,omitempty"`
+	Date           *string                `protobuf:"bytes,5,opt,name=date,proto3,oneof" json:"date,omitempty"` // accepts "latest", "all", "range", or specific date string.
+	DateRangeStart *string                `protobuf:"bytes,6,opt,name=date_range_start,json=dateRangeStart,proto3,oneof" json:"date_range_start,omitempty"`
+	DateRangeEnd   *string                `protobuf:"bytes,7,opt,name=date_range_end,json=dateRangeEnd,proto3,oneof" json:"date_range_end,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *GetObservationsRequest) Reset() {
+	*x = GetObservationsRequest{}
+	mi := &file_v2_agent_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetObservationsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetObservationsRequest) ProtoMessage() {}
+
+func (x *GetObservationsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_v2_agent_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetObservationsRequest.ProtoReflect.Descriptor instead.
+func (*GetObservationsRequest) Descriptor() ([]byte, []int) {
+	return file_v2_agent_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *GetObservationsRequest) GetVariableDcid() string {
+	if x != nil {
+		return x.VariableDcid
+	}
+	return ""
+}
+
+func (x *GetObservationsRequest) GetPlaceDcid() string {
+	if x != nil {
+		return x.PlaceDcid
+	}
+	return ""
+}
+
+func (x *GetObservationsRequest) GetChildPlaceType() string {
+	if x != nil && x.ChildPlaceType != nil {
+		return *x.ChildPlaceType
+	}
+	return ""
+}
+
+func (x *GetObservationsRequest) GetSourceOverride() string {
+	if x != nil && x.SourceOverride != nil {
+		return *x.SourceOverride
+	}
+	return ""
+}
+
+func (x *GetObservationsRequest) GetDate() string {
+	if x != nil && x.Date != nil {
+		return *x.Date
+	}
+	return ""
+}
+
+func (x *GetObservationsRequest) GetDateRangeStart() string {
+	if x != nil && x.DateRangeStart != nil {
+		return *x.DateRangeStart
+	}
+	return ""
+}
+
+func (x *GetObservationsRequest) GetDateRangeEnd() string {
+	if x != nil && x.DateRangeEnd != nil {
+		return *x.DateRangeEnd
+	}
+	return ""
+}
+
+// Response payload for the get_observations tool endpoint.
+type GetObservationsResponse struct {
+	state               protoimpl.MessageState                       `protogen:"open.v1"`
+	Variable            *GetObservationsResponse_Node                `protobuf:"bytes,1,opt,name=variable,proto3" json:"variable,omitempty"`
+	ResolvedParentPlace *GetObservationsResponse_Node                `protobuf:"bytes,2,opt,name=resolved_parent_place,json=resolvedParentPlace,proto3" json:"resolved_parent_place,omitempty"`
+	ChildPlaceType      string                                       `protobuf:"bytes,3,opt,name=child_place_type,json=childPlaceType,proto3" json:"child_place_type,omitempty"`
+	PlaceObservations   []*GetObservationsResponse_PlaceObservation  `protobuf:"bytes,4,rep,name=place_observations,json=placeObservations,proto3" json:"place_observations,omitempty"`
+	SourceMetadata      *GetObservationsResponse_FacetMetadata       `protobuf:"bytes,5,opt,name=source_metadata,json=sourceMetadata,proto3" json:"source_metadata,omitempty"`
+	AlternativeSources  []*GetObservationsResponse_AlternativeSource `protobuf:"bytes,6,rep,name=alternative_sources,json=alternativeSources,proto3" json:"alternative_sources,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
+}
+
+func (x *GetObservationsResponse) Reset() {
+	*x = GetObservationsResponse{}
+	mi := &file_v2_agent_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetObservationsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetObservationsResponse) ProtoMessage() {}
+
+func (x *GetObservationsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_v2_agent_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetObservationsResponse.ProtoReflect.Descriptor instead.
+func (*GetObservationsResponse) Descriptor() ([]byte, []int) {
+	return file_v2_agent_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *GetObservationsResponse) GetVariable() *GetObservationsResponse_Node {
+	if x != nil {
+		return x.Variable
+	}
+	return nil
+}
+
+func (x *GetObservationsResponse) GetResolvedParentPlace() *GetObservationsResponse_Node {
+	if x != nil {
+		return x.ResolvedParentPlace
+	}
+	return nil
+}
+
+func (x *GetObservationsResponse) GetChildPlaceType() string {
+	if x != nil {
+		return x.ChildPlaceType
+	}
+	return ""
+}
+
+func (x *GetObservationsResponse) GetPlaceObservations() []*GetObservationsResponse_PlaceObservation {
+	if x != nil {
+		return x.PlaceObservations
+	}
+	return nil
+}
+
+func (x *GetObservationsResponse) GetSourceMetadata() *GetObservationsResponse_FacetMetadata {
+	if x != nil {
+		return x.SourceMetadata
+	}
+	return nil
+}
+
+func (x *GetObservationsResponse) GetAlternativeSources() []*GetObservationsResponse_AlternativeSource {
+	if x != nil {
+		return x.AlternativeSources
+	}
+	return nil
+}
+
 type SearchIndicatorsResponse_Topic struct {
 	state                 protoimpl.MessageState `protogen:"open.v1"`
 	Dcid                  string                 `protobuf:"bytes,1,opt,name=dcid,proto3" json:"dcid,omitempty"`
@@ -220,7 +398,7 @@ type SearchIndicatorsResponse_Topic struct {
 
 func (x *SearchIndicatorsResponse_Topic) Reset() {
 	*x = SearchIndicatorsResponse_Topic{}
-	mi := &file_v2_agent_proto_msgTypes[2]
+	mi := &file_v2_agent_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -232,7 +410,7 @@ func (x *SearchIndicatorsResponse_Topic) String() string {
 func (*SearchIndicatorsResponse_Topic) ProtoMessage() {}
 
 func (x *SearchIndicatorsResponse_Topic) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_agent_proto_msgTypes[2]
+	mi := &file_v2_agent_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -302,7 +480,7 @@ type SearchIndicatorsResponse_Variable struct {
 
 func (x *SearchIndicatorsResponse_Variable) Reset() {
 	*x = SearchIndicatorsResponse_Variable{}
-	mi := &file_v2_agent_proto_msgTypes[3]
+	mi := &file_v2_agent_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -314,7 +492,7 @@ func (x *SearchIndicatorsResponse_Variable) String() string {
 func (*SearchIndicatorsResponse_Variable) ProtoMessage() {}
 
 func (x *SearchIndicatorsResponse_Variable) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_agent_proto_msgTypes[3]
+	mi := &file_v2_agent_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -369,7 +547,7 @@ type SearchIndicatorsResponse_ResolvedPlace struct {
 
 func (x *SearchIndicatorsResponse_ResolvedPlace) Reset() {
 	*x = SearchIndicatorsResponse_ResolvedPlace{}
-	mi := &file_v2_agent_proto_msgTypes[4]
+	mi := &file_v2_agent_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -381,7 +559,7 @@ func (x *SearchIndicatorsResponse_ResolvedPlace) String() string {
 func (*SearchIndicatorsResponse_ResolvedPlace) ProtoMessage() {}
 
 func (x *SearchIndicatorsResponse_ResolvedPlace) ProtoReflect() protoreflect.Message {
-	mi := &file_v2_agent_proto_msgTypes[4]
+	mi := &file_v2_agent_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -414,6 +592,306 @@ func (x *SearchIndicatorsResponse_ResolvedPlace) GetName() string {
 func (x *SearchIndicatorsResponse_ResolvedPlace) GetTypeOf() []string {
 	if x != nil {
 		return x.TypeOf
+	}
+	return nil
+}
+
+type GetObservationsResponse_Node struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Dcid          string                 `protobuf:"bytes,1,opt,name=dcid,proto3" json:"dcid,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	TypeOf        []string               `protobuf:"bytes,3,rep,name=type_of,json=typeOf,proto3" json:"type_of,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetObservationsResponse_Node) Reset() {
+	*x = GetObservationsResponse_Node{}
+	mi := &file_v2_agent_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetObservationsResponse_Node) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetObservationsResponse_Node) ProtoMessage() {}
+
+func (x *GetObservationsResponse_Node) ProtoReflect() protoreflect.Message {
+	mi := &file_v2_agent_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetObservationsResponse_Node.ProtoReflect.Descriptor instead.
+func (*GetObservationsResponse_Node) Descriptor() ([]byte, []int) {
+	return file_v2_agent_proto_rawDescGZIP(), []int{3, 0}
+}
+
+func (x *GetObservationsResponse_Node) GetDcid() string {
+	if x != nil {
+		return x.Dcid
+	}
+	return ""
+}
+
+func (x *GetObservationsResponse_Node) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *GetObservationsResponse_Node) GetTypeOf() []string {
+	if x != nil {
+		return x.TypeOf
+	}
+	return nil
+}
+
+type GetObservationsResponse_FacetMetadata struct {
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	SourceId          string                 `protobuf:"bytes,1,opt,name=source_id,json=sourceId,proto3" json:"source_id,omitempty"`
+	ImportName        string                 `protobuf:"bytes,2,opt,name=import_name,json=importName,proto3" json:"import_name,omitempty"`
+	MeasurementMethod string                 `protobuf:"bytes,3,opt,name=measurement_method,json=measurementMethod,proto3" json:"measurement_method,omitempty"`
+	ObservationPeriod string                 `protobuf:"bytes,4,opt,name=observation_period,json=observationPeriod,proto3" json:"observation_period,omitempty"`
+	ProvenanceUrl     string                 `protobuf:"bytes,5,opt,name=provenance_url,json=provenanceUrl,proto3" json:"provenance_url,omitempty"`
+	Unit              string                 `protobuf:"bytes,6,opt,name=unit,proto3" json:"unit,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *GetObservationsResponse_FacetMetadata) Reset() {
+	*x = GetObservationsResponse_FacetMetadata{}
+	mi := &file_v2_agent_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetObservationsResponse_FacetMetadata) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetObservationsResponse_FacetMetadata) ProtoMessage() {}
+
+func (x *GetObservationsResponse_FacetMetadata) ProtoReflect() protoreflect.Message {
+	mi := &file_v2_agent_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetObservationsResponse_FacetMetadata.ProtoReflect.Descriptor instead.
+func (*GetObservationsResponse_FacetMetadata) Descriptor() ([]byte, []int) {
+	return file_v2_agent_proto_rawDescGZIP(), []int{3, 1}
+}
+
+func (x *GetObservationsResponse_FacetMetadata) GetSourceId() string {
+	if x != nil {
+		return x.SourceId
+	}
+	return ""
+}
+
+func (x *GetObservationsResponse_FacetMetadata) GetImportName() string {
+	if x != nil {
+		return x.ImportName
+	}
+	return ""
+}
+
+func (x *GetObservationsResponse_FacetMetadata) GetMeasurementMethod() string {
+	if x != nil {
+		return x.MeasurementMethod
+	}
+	return ""
+}
+
+func (x *GetObservationsResponse_FacetMetadata) GetObservationPeriod() string {
+	if x != nil {
+		return x.ObservationPeriod
+	}
+	return ""
+}
+
+func (x *GetObservationsResponse_FacetMetadata) GetProvenanceUrl() string {
+	if x != nil {
+		return x.ProvenanceUrl
+	}
+	return ""
+}
+
+func (x *GetObservationsResponse_FacetMetadata) GetUnit() string {
+	if x != nil {
+		return x.Unit
+	}
+	return ""
+}
+
+type GetObservationsResponse_AlternativeSource struct {
+	state            protoimpl.MessageState                 `protogen:"open.v1"`
+	SourceMetadata   *GetObservationsResponse_FacetMetadata `protobuf:"bytes,1,opt,name=source_metadata,json=sourceMetadata,proto3" json:"source_metadata,omitempty"`
+	PlacesFoundCount *int32                                 `protobuf:"varint,2,opt,name=places_found_count,json=placesFoundCount,proto3,oneof" json:"places_found_count,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *GetObservationsResponse_AlternativeSource) Reset() {
+	*x = GetObservationsResponse_AlternativeSource{}
+	mi := &file_v2_agent_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetObservationsResponse_AlternativeSource) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetObservationsResponse_AlternativeSource) ProtoMessage() {}
+
+func (x *GetObservationsResponse_AlternativeSource) ProtoReflect() protoreflect.Message {
+	mi := &file_v2_agent_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetObservationsResponse_AlternativeSource.ProtoReflect.Descriptor instead.
+func (*GetObservationsResponse_AlternativeSource) Descriptor() ([]byte, []int) {
+	return file_v2_agent_proto_rawDescGZIP(), []int{3, 2}
+}
+
+func (x *GetObservationsResponse_AlternativeSource) GetSourceMetadata() *GetObservationsResponse_FacetMetadata {
+	if x != nil {
+		return x.SourceMetadata
+	}
+	return nil
+}
+
+func (x *GetObservationsResponse_AlternativeSource) GetPlacesFoundCount() int32 {
+	if x != nil && x.PlacesFoundCount != nil {
+		return *x.PlacesFoundCount
+	}
+	return 0
+}
+
+type GetObservationsResponse_TimeSeriesPoint struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Date          string                 `protobuf:"bytes,1,opt,name=date,proto3" json:"date,omitempty"`
+	Value         float64                `protobuf:"fixed64,2,opt,name=value,proto3" json:"value,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetObservationsResponse_TimeSeriesPoint) Reset() {
+	*x = GetObservationsResponse_TimeSeriesPoint{}
+	mi := &file_v2_agent_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetObservationsResponse_TimeSeriesPoint) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetObservationsResponse_TimeSeriesPoint) ProtoMessage() {}
+
+func (x *GetObservationsResponse_TimeSeriesPoint) ProtoReflect() protoreflect.Message {
+	mi := &file_v2_agent_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetObservationsResponse_TimeSeriesPoint.ProtoReflect.Descriptor instead.
+func (*GetObservationsResponse_TimeSeriesPoint) Descriptor() ([]byte, []int) {
+	return file_v2_agent_proto_rawDescGZIP(), []int{3, 3}
+}
+
+func (x *GetObservationsResponse_TimeSeriesPoint) GetDate() string {
+	if x != nil {
+		return x.Date
+	}
+	return ""
+}
+
+func (x *GetObservationsResponse_TimeSeriesPoint) GetValue() float64 {
+	if x != nil {
+		return x.Value
+	}
+	return 0
+}
+
+type GetObservationsResponse_PlaceObservation struct {
+	state         protoimpl.MessageState                     `protogen:"open.v1"`
+	Place         *GetObservationsResponse_Node              `protobuf:"bytes,1,opt,name=place,proto3" json:"place,omitempty"`
+	TimeSeries    []*GetObservationsResponse_TimeSeriesPoint `protobuf:"bytes,2,rep,name=time_series,json=timeSeries,proto3" json:"time_series,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetObservationsResponse_PlaceObservation) Reset() {
+	*x = GetObservationsResponse_PlaceObservation{}
+	mi := &file_v2_agent_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetObservationsResponse_PlaceObservation) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetObservationsResponse_PlaceObservation) ProtoMessage() {}
+
+func (x *GetObservationsResponse_PlaceObservation) ProtoReflect() protoreflect.Message {
+	mi := &file_v2_agent_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetObservationsResponse_PlaceObservation.ProtoReflect.Descriptor instead.
+func (*GetObservationsResponse_PlaceObservation) Descriptor() ([]byte, []int) {
+	return file_v2_agent_proto_rawDescGZIP(), []int{3, 4}
+}
+
+func (x *GetObservationsResponse_PlaceObservation) GetPlace() *GetObservationsResponse_Node {
+	if x != nil {
+		return x.Place
+	}
+	return nil
+}
+
+func (x *GetObservationsResponse_PlaceObservation) GetTimeSeries() []*GetObservationsResponse_TimeSeriesPoint {
+	if x != nil {
+		return x.TimeSeries
 	}
 	return nil
 }
@@ -460,7 +938,52 @@ const file_v2_agent_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\x1ad\n" +
 	"\x1aDcidPlaceTypeMappingsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x120\n" +
-	"\x05value\x18\x02 \x01(\v2\x1a.google.protobuf.ListValueR\x05value:\x028\x01B3Z1github.com/datacommonsorg/mixer/internal/proto/v2b\x06proto3"
+	"\x05value\x18\x02 \x01(\v2\x1a.google.protobuf.ListValueR\x05value:\x028\x01\"\x86\x03\n" +
+	"\x16GetObservationsRequest\x12#\n" +
+	"\rvariable_dcid\x18\x01 \x01(\tR\fvariableDcid\x12\x1d\n" +
+	"\n" +
+	"place_dcid\x18\x02 \x01(\tR\tplaceDcid\x12-\n" +
+	"\x10child_place_type\x18\x03 \x01(\tH\x00R\x0echildPlaceType\x88\x01\x01\x12,\n" +
+	"\x0fsource_override\x18\x04 \x01(\tH\x01R\x0esourceOverride\x88\x01\x01\x12\x17\n" +
+	"\x04date\x18\x05 \x01(\tH\x02R\x04date\x88\x01\x01\x12-\n" +
+	"\x10date_range_start\x18\x06 \x01(\tH\x03R\x0edateRangeStart\x88\x01\x01\x12)\n" +
+	"\x0edate_range_end\x18\a \x01(\tH\x04R\fdateRangeEnd\x88\x01\x01B\x13\n" +
+	"\x11_child_place_typeB\x12\n" +
+	"\x10_source_overrideB\a\n" +
+	"\x05_dateB\x13\n" +
+	"\x11_date_range_startB\x11\n" +
+	"\x0f_date_range_end\"\x86\n" +
+	"\n" +
+	"\x17GetObservationsResponse\x12H\n" +
+	"\bvariable\x18\x01 \x01(\v2,.datacommons.v2.GetObservationsResponse.NodeR\bvariable\x12`\n" +
+	"\x15resolved_parent_place\x18\x02 \x01(\v2,.datacommons.v2.GetObservationsResponse.NodeR\x13resolvedParentPlace\x12(\n" +
+	"\x10child_place_type\x18\x03 \x01(\tR\x0echildPlaceType\x12g\n" +
+	"\x12place_observations\x18\x04 \x03(\v28.datacommons.v2.GetObservationsResponse.PlaceObservationR\x11placeObservations\x12^\n" +
+	"\x0fsource_metadata\x18\x05 \x01(\v25.datacommons.v2.GetObservationsResponse.FacetMetadataR\x0esourceMetadata\x12j\n" +
+	"\x13alternative_sources\x18\x06 \x03(\v29.datacommons.v2.GetObservationsResponse.AlternativeSourceR\x12alternativeSources\x1aG\n" +
+	"\x04Node\x12\x12\n" +
+	"\x04dcid\x18\x01 \x01(\tR\x04dcid\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x17\n" +
+	"\atype_of\x18\x03 \x03(\tR\x06typeOf\x1a\xe6\x01\n" +
+	"\rFacetMetadata\x12\x1b\n" +
+	"\tsource_id\x18\x01 \x01(\tR\bsourceId\x12\x1f\n" +
+	"\vimport_name\x18\x02 \x01(\tR\n" +
+	"importName\x12-\n" +
+	"\x12measurement_method\x18\x03 \x01(\tR\x11measurementMethod\x12-\n" +
+	"\x12observation_period\x18\x04 \x01(\tR\x11observationPeriod\x12%\n" +
+	"\x0eprovenance_url\x18\x05 \x01(\tR\rprovenanceUrl\x12\x12\n" +
+	"\x04unit\x18\x06 \x01(\tR\x04unit\x1a\xbd\x01\n" +
+	"\x11AlternativeSource\x12^\n" +
+	"\x0fsource_metadata\x18\x01 \x01(\v25.datacommons.v2.GetObservationsResponse.FacetMetadataR\x0esourceMetadata\x121\n" +
+	"\x12places_found_count\x18\x02 \x01(\x05H\x00R\x10placesFoundCount\x88\x01\x01B\x15\n" +
+	"\x13_places_found_count\x1a;\n" +
+	"\x0fTimeSeriesPoint\x12\x12\n" +
+	"\x04date\x18\x01 \x01(\tR\x04date\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x01R\x05value\x1a\xb0\x01\n" +
+	"\x10PlaceObservation\x12B\n" +
+	"\x05place\x18\x01 \x01(\v2,.datacommons.v2.GetObservationsResponse.NodeR\x05place\x12X\n" +
+	"\vtime_series\x18\x02 \x03(\v27.datacommons.v2.GetObservationsResponse.TimeSeriesPointR\n" +
+	"timeSeriesB3Z1github.com/datacommonsorg/mixer/internal/proto/v2b\x06proto3"
 
 var (
 	file_v2_agent_proto_rawDescOnce sync.Once
@@ -474,29 +997,44 @@ func file_v2_agent_proto_rawDescGZIP() []byte {
 	return file_v2_agent_proto_rawDescData
 }
 
-var file_v2_agent_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_v2_agent_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_v2_agent_proto_goTypes = []any{
 	(*SearchIndicatorsRequest)(nil),                // 0: datacommons.v2.SearchIndicatorsRequest
 	(*SearchIndicatorsResponse)(nil),               // 1: datacommons.v2.SearchIndicatorsResponse
-	(*SearchIndicatorsResponse_Topic)(nil),         // 2: datacommons.v2.SearchIndicatorsResponse.Topic
-	(*SearchIndicatorsResponse_Variable)(nil),      // 3: datacommons.v2.SearchIndicatorsResponse.Variable
-	(*SearchIndicatorsResponse_ResolvedPlace)(nil), // 4: datacommons.v2.SearchIndicatorsResponse.ResolvedPlace
-	nil,                        // 5: datacommons.v2.SearchIndicatorsResponse.DcidNameMappingsEntry
-	nil,                        // 6: datacommons.v2.SearchIndicatorsResponse.DcidPlaceTypeMappingsEntry
-	(*structpb.ListValue)(nil), // 7: google.protobuf.ListValue
+	(*GetObservationsRequest)(nil),                 // 2: datacommons.v2.GetObservationsRequest
+	(*GetObservationsResponse)(nil),                // 3: datacommons.v2.GetObservationsResponse
+	(*SearchIndicatorsResponse_Topic)(nil),         // 4: datacommons.v2.SearchIndicatorsResponse.Topic
+	(*SearchIndicatorsResponse_Variable)(nil),      // 5: datacommons.v2.SearchIndicatorsResponse.Variable
+	(*SearchIndicatorsResponse_ResolvedPlace)(nil), // 6: datacommons.v2.SearchIndicatorsResponse.ResolvedPlace
+	nil,                                  // 7: datacommons.v2.SearchIndicatorsResponse.DcidNameMappingsEntry
+	nil,                                  // 8: datacommons.v2.SearchIndicatorsResponse.DcidPlaceTypeMappingsEntry
+	(*GetObservationsResponse_Node)(nil), // 9: datacommons.v2.GetObservationsResponse.Node
+	(*GetObservationsResponse_FacetMetadata)(nil),     // 10: datacommons.v2.GetObservationsResponse.FacetMetadata
+	(*GetObservationsResponse_AlternativeSource)(nil), // 11: datacommons.v2.GetObservationsResponse.AlternativeSource
+	(*GetObservationsResponse_TimeSeriesPoint)(nil),   // 12: datacommons.v2.GetObservationsResponse.TimeSeriesPoint
+	(*GetObservationsResponse_PlaceObservation)(nil),  // 13: datacommons.v2.GetObservationsResponse.PlaceObservation
+	(*structpb.ListValue)(nil),                        // 14: google.protobuf.ListValue
 }
 var file_v2_agent_proto_depIdxs = []int32{
-	5, // 0: datacommons.v2.SearchIndicatorsResponse.dcid_name_mappings:type_name -> datacommons.v2.SearchIndicatorsResponse.DcidNameMappingsEntry
-	6, // 1: datacommons.v2.SearchIndicatorsResponse.dcid_place_type_mappings:type_name -> datacommons.v2.SearchIndicatorsResponse.DcidPlaceTypeMappingsEntry
-	2, // 2: datacommons.v2.SearchIndicatorsResponse.topics:type_name -> datacommons.v2.SearchIndicatorsResponse.Topic
-	3, // 3: datacommons.v2.SearchIndicatorsResponse.variables:type_name -> datacommons.v2.SearchIndicatorsResponse.Variable
-	4, // 4: datacommons.v2.SearchIndicatorsResponse.resolved_parent_place:type_name -> datacommons.v2.SearchIndicatorsResponse.ResolvedPlace
-	7, // 5: datacommons.v2.SearchIndicatorsResponse.DcidPlaceTypeMappingsEntry.value:type_name -> google.protobuf.ListValue
-	6, // [6:6] is the sub-list for method output_type
-	6, // [6:6] is the sub-list for method input_type
-	6, // [6:6] is the sub-list for extension type_name
-	6, // [6:6] is the sub-list for extension extendee
-	0, // [0:6] is the sub-list for field type_name
+	7,  // 0: datacommons.v2.SearchIndicatorsResponse.dcid_name_mappings:type_name -> datacommons.v2.SearchIndicatorsResponse.DcidNameMappingsEntry
+	8,  // 1: datacommons.v2.SearchIndicatorsResponse.dcid_place_type_mappings:type_name -> datacommons.v2.SearchIndicatorsResponse.DcidPlaceTypeMappingsEntry
+	4,  // 2: datacommons.v2.SearchIndicatorsResponse.topics:type_name -> datacommons.v2.SearchIndicatorsResponse.Topic
+	5,  // 3: datacommons.v2.SearchIndicatorsResponse.variables:type_name -> datacommons.v2.SearchIndicatorsResponse.Variable
+	6,  // 4: datacommons.v2.SearchIndicatorsResponse.resolved_parent_place:type_name -> datacommons.v2.SearchIndicatorsResponse.ResolvedPlace
+	9,  // 5: datacommons.v2.GetObservationsResponse.variable:type_name -> datacommons.v2.GetObservationsResponse.Node
+	9,  // 6: datacommons.v2.GetObservationsResponse.resolved_parent_place:type_name -> datacommons.v2.GetObservationsResponse.Node
+	13, // 7: datacommons.v2.GetObservationsResponse.place_observations:type_name -> datacommons.v2.GetObservationsResponse.PlaceObservation
+	10, // 8: datacommons.v2.GetObservationsResponse.source_metadata:type_name -> datacommons.v2.GetObservationsResponse.FacetMetadata
+	11, // 9: datacommons.v2.GetObservationsResponse.alternative_sources:type_name -> datacommons.v2.GetObservationsResponse.AlternativeSource
+	14, // 10: datacommons.v2.SearchIndicatorsResponse.DcidPlaceTypeMappingsEntry.value:type_name -> google.protobuf.ListValue
+	10, // 11: datacommons.v2.GetObservationsResponse.AlternativeSource.source_metadata:type_name -> datacommons.v2.GetObservationsResponse.FacetMetadata
+	9,  // 12: datacommons.v2.GetObservationsResponse.PlaceObservation.place:type_name -> datacommons.v2.GetObservationsResponse.Node
+	12, // 13: datacommons.v2.GetObservationsResponse.PlaceObservation.time_series:type_name -> datacommons.v2.GetObservationsResponse.TimeSeriesPoint
+	14, // [14:14] is the sub-list for method output_type
+	14, // [14:14] is the sub-list for method input_type
+	14, // [14:14] is the sub-list for extension type_name
+	14, // [14:14] is the sub-list for extension extendee
+	0,  // [0:14] is the sub-list for field type_name
 }
 
 func init() { file_v2_agent_proto_init() }
@@ -505,13 +1043,15 @@ func file_v2_agent_proto_init() {
 		return
 	}
 	file_v2_agent_proto_msgTypes[0].OneofWrappers = []any{}
+	file_v2_agent_proto_msgTypes[2].OneofWrappers = []any{}
+	file_v2_agent_proto_msgTypes[11].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_v2_agent_proto_rawDesc), len(file_v2_agent_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   14,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
