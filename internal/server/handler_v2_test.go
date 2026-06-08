@@ -359,6 +359,41 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 			indicatorSpannerHeader: "invalid_value",
 			wantErr:                true,
 		},
+
+		// 5. New test cases for Spanner enabled via Feature Flag only
+		{
+			desc:                "Indicator resolver - Spanner enabled (flag) & embeddings true -> route",
+			useSpannerGraph:     false,
+			useSpannerGraphFlag: true,
+			enableEmbeddings:    true,
+			resolver:            resolve.ResolveResolverIndicator,
+			wantRoute:           true,
+		},
+		{
+			desc:                "Indicator resolver - Spanner enabled (flag) & embeddings false -> don't route",
+			useSpannerGraph:     false,
+			useSpannerGraphFlag: true,
+			enableEmbeddings:    false,
+			resolver:            resolve.ResolveResolverIndicator,
+			wantRoute:           false,
+		},
+		{
+			desc:                   "Indicator resolver - Force Spanner (true), Spanner enabled (flag) -> route",
+			useSpannerGraph:        false,
+			useSpannerGraphFlag:    true,
+			resolver:               resolve.ResolveResolverIndicator,
+			indicatorSpannerHeader: "true",
+			wantRoute:              true,
+		},
+		{
+			desc:                "Place resolver with Spanner enabled (flag only, fraction 0) -> don't route",
+			useSpannerGraph:     false,
+			useSpannerGraphFlag: true,
+			resolver:            resolve.ResolveResolverPlace,
+			wantRoute:           false,
+		},
+
+
 	}
 
 	for _, tc := range tests {

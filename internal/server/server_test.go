@@ -126,7 +126,6 @@ func TestValidateEmbeddingsIndex(t *testing.T) {
 		})
 	}
 }
-
 func TestShouldDivertV2(t *testing.T) {
 
 	tests := []struct {
