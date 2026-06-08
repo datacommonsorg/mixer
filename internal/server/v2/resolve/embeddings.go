@@ -25,7 +25,6 @@ import (
 	"net/url"
 	"path"
 	"strings"
-	"sync"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -56,11 +55,6 @@ type EmbeddingsServiceClient struct {
 	httpClient          *http.Client
 	embeddingsServerURL string
 	defaultIndexes      string
-
-	// Cache for available embeddings indexes
-	indexesMutex  sync.RWMutex
-	indexes       map[string]struct{}
-	indexesLoaded bool
 }
 
 func NewEmbeddingsServiceClient(httpClient *http.Client, embeddingsServerURL string, defaultIndexes string) *EmbeddingsServiceClient {
@@ -384,39 +378,23 @@ func (c *EmbeddingsServiceClient) ValidateIndex(ctx context.Context, idx string)
 		return true
 	}
 
-	c.indexesMutex.RLock()
-	loaded := c.indexesLoaded
-	if loaded {
-		valid := c.checkIndexesLocked(idx)
-		c.indexesMutex.RUnlock()
-		return valid
-	}
-	c.indexesMutex.RUnlock()
-
-	// Not loaded yet, fetch it
 	indexes, err := c.fetchAvailableIndexes(ctx)
 	if err != nil {
 		slog.Warn("Failed to fetch available embeddings indexes, skipping validation", "error", err)
 		return true
 	}
 
-	c.indexesMutex.Lock()
-	c.indexes = indexes
-	c.indexesLoaded = true
-	valid := c.checkIndexesLocked(idx)
-	c.indexesMutex.Unlock()
-
-	return valid
+	return c.checkIndexes(idx, indexes)
 }
 
-func (c *EmbeddingsServiceClient) checkIndexesLocked(idx string) bool {
+func (c *EmbeddingsServiceClient) checkIndexes(idx string, availableIndexes map[string]struct{}) bool {
 	parts := strings.Split(idx, ",")
 	for _, part := range parts {
 		part = strings.TrimSpace(part)
 		if part == "" {
 			continue
 		}
-		if _, ok := c.indexes[part]; !ok {
+		if _, ok := availableIndexes[part]; !ok {
 			return false
 		}
 	}

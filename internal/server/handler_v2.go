@@ -125,6 +125,11 @@ func (s *Server) V2Resolve(
 	return v2Resp, nil
 }
 
+// isSpannerEnabled returns true if the Spanner backend has been enabled.
+func (s *Server) isSpannerEnabled() bool {
+	return s.useSpannerGraph || (s.flags != nil && s.flags.UseSpannerGraph)
+}
+
 // shouldRouteResolveToDispatcher determines whether to route a V2Resolve request to the dispatcher.
 // It returns an error if the request explicitly asks for an unavailable backend.
 func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver string) (bool, error) {
@@ -149,7 +154,7 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 		switch backendHeader {
 		case util.V2ResolveIndicatorBackendSpanner:
 			// Force Spanner: Fail fast if Spanner backend is not configured
-			if !s.isSpannerInitialized() {
+			if !s.isSpannerEnabled() {
 				slog.Error("Spanner backend requested via header, but Spanner is not enabled on this server")
 				return false, status.Errorf(codes.FailedPrecondition, "Spanner backend is not enabled in this mixer")
 			}
@@ -162,7 +167,7 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 				return false, status.Errorf(codes.InvalidArgument, "Invalid X-V2Resolve-Indicator-Backend header value: %q. Valid values are %q or %q", backendHeader, util.V2ResolveIndicatorBackendSpanner, util.V2ResolveIndicatorBackendLegacy)
 			}
 			// Default: use Spanner if configured AND default routing flag is true
-			return s.isSpannerInitialized() && s.flags.EnableSpannerSearchEmbeddings, nil
+			return s.isSpannerEnabled() && s.flags.EnableSpannerSearchEmbeddings, nil
 		}
 	}
 
