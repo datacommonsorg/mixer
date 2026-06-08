@@ -149,7 +149,7 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 		switch backendHeader {
 		case util.V2ResolveIndicatorBackendSpanner:
 			// Force Spanner: Fail fast if Spanner backend is not configured
-			if !s.useSpannerGraph {
+			if !s.isSpannerInitialized() {
 				slog.Error("Spanner backend requested via header, but Spanner is not enabled on this server")
 				return false, status.Errorf(codes.FailedPrecondition, "Spanner backend is not enabled in this mixer")
 			}
@@ -158,8 +158,11 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 			// Force Legacy Remote Service
 			return false, nil
 		default:
+			if backendHeader != "" {
+				return false, status.Errorf(codes.InvalidArgument, "Invalid X-V2Resolve-Indicator-Backend header value: %q. Valid values are %q or %q", backendHeader, util.V2ResolveIndicatorBackendSpanner, util.V2ResolveIndicatorBackendLegacy)
+			}
 			// Default: use Spanner if configured AND default routing flag is true
-			return s.useSpannerGraph && s.flags.EnableSpannerSearchEmbeddings, nil
+			return s.isSpannerInitialized() && s.flags.EnableSpannerSearchEmbeddings, nil
 		}
 	}
 

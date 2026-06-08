@@ -19,7 +19,6 @@ import (
 	"fmt"
 	"log/slog"
 	"math/rand"
-	"golang.org/x/sync/errgroup"
 	"net/http"
 	"os"
 	"path"
@@ -29,6 +28,8 @@ import (
 	"sync"
 	"sync/atomic"
 	"time"
+
+	"golang.org/x/sync/errgroup"
 
 	cbt "cloud.google.com/go/bigtable"
 	pubsub "cloud.google.com/go/pubsub/v2"
@@ -41,6 +42,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/topic"
+	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/translator/solver"
@@ -51,16 +53,15 @@ import (
 
 // Server holds resources for a mixer server
 type Server struct {
-	store                    *store.Store
-	metadata                 *resource.Metadata
-	cachedata                atomic.Pointer[cache.Cache]
-	mapsClient               maps.MapsClient
-	httpClient               *http.Client
-	dispatcher               *dispatcher.Dispatcher
-	flags                    *featureflags.Flags
-	writeUsageLogs           bool
-	embeddingsServerURL      string
-	resolveEmbeddingsIndexes string
+	store             *store.Store
+	metadata          *resource.Metadata
+	cachedata         atomic.Pointer[cache.Cache]
+	mapsClient        maps.MapsClient
+	httpClient        *http.Client
+	dispatcher        *dispatcher.Dispatcher
+	flags             *featureflags.Flags
+	writeUsageLogs          bool
+	embeddingsServiceClient *resolve.EmbeddingsServiceClient
 	// Whether to use dispatcher flow with Spanner as a default datasource.
 	useSpannerGraph   bool
 	topicCacheManager *topic.TopicCacheManager
@@ -302,24 +303,22 @@ func NewMixerServer(
 	dispatcher *dispatcher.Dispatcher,
 	flags *featureflags.Flags,
 	writeUsageLogs bool,
-	embeddingsServerURL string,
-	resolveEmbeddingsIndexes string,
+	embeddingsServiceClient *resolve.EmbeddingsServiceClient,
 	useSpannerGraph bool,
 	topicCacheManager *topic.TopicCacheManager,
 ) *Server {
 	s := &Server{
-		store:                    store,
-		metadata:                 metadata,
-		cachedata:                atomic.Pointer[cache.Cache]{},
-		mapsClient:               mapsClient,
-		httpClient:               &http.Client{},
-		dispatcher:               dispatcher,
-		flags:                    flags,
-		writeUsageLogs:           writeUsageLogs,
-		embeddingsServerURL:      embeddingsServerURL,
-		resolveEmbeddingsIndexes: resolveEmbeddingsIndexes,
-		useSpannerGraph:          useSpannerGraph,
-		topicCacheManager:        topicCacheManager,
+		store:                   store,
+		metadata:                metadata,
+		cachedata:               atomic.Pointer[cache.Cache]{},
+		mapsClient:              mapsClient,
+		httpClient:              &http.Client{},
+		dispatcher:              dispatcher,
+		flags:                   flags,
+		writeUsageLogs:          writeUsageLogs,
+		embeddingsServiceClient: embeddingsServiceClient,
+		useSpannerGraph:         useSpannerGraph,
+		topicCacheManager:       topicCacheManager,
 	}
 	s.cachedata.Store(cachedata)
 	s.initAgentService()
@@ -337,8 +336,16 @@ func (s *Server) TopicCacheManager() *topic.TopicCacheManager {
 	return s.topicCacheManager
 }
 
+// isSpannerInitialized returns true if the Spanner backend has been initialized.
+func (s *Server) isSpannerInitialized() bool {
+	return s.useSpannerGraph || (s.flags != nil && s.flags.UseSpannerGraph)
+}
+
 // shouldDivertV2 returns true if the request should be diverted to the dispatcher.
 func (s *Server) shouldDivertV2(ctx context.Context) bool {
+	if !s.isSpannerInitialized() {
+		return false
+	}
 	if s.useSpannerGraph {
 		return true
 	}
@@ -355,3 +362,4 @@ func (s *Server) shouldDivertV2(ctx context.Context) bool {
 	}
 	return divert
 }
+
