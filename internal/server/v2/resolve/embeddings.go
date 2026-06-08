@@ -353,7 +353,11 @@ func (c *EmbeddingsServiceClient) fetchAvailableIndexes(ctx context.Context) (ma
 	if err != nil {
 		return nil, err
 	}
-	defer func() { _ = resp.Body.Close() }()
+	defer func() {
+		// Drain and close the body to let the Transport reuse the connection
+		_, _ = io.Copy(io.Discard, resp.Body)
+		_ = resp.Body.Close()
+	}()
 
 	if resp.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("embeddings server returned status %d", resp.StatusCode)
