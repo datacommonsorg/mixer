@@ -55,6 +55,7 @@ metadata:
 data:
   hostProject: {{ required "Mixer GCP project is required." .Values.mixer.hostProject }}
   serviceName:  {{ required "Mixer service name is required." .Values.mixer.serviceName }}
+  mixer_config.yaml: {{ .Values.mixer.config | quote }}
 
 ---
 

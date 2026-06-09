@@ -20,6 +20,7 @@ import (
 	"encoding/json"
 	"log"
 	"net"
+	"net/http"
 	"os"
 	"path"
 	"path/filepath"
@@ -30,6 +31,7 @@ import (
 	_ "modernc.org/sqlite" // import the sqlite driver
 
 	"cloud.google.com/go/bigquery"
+	"github.com/datacommonsorg/mixer/internal/config"
 	"github.com/datacommonsorg/mixer/internal/featureflags"
 	"github.com/datacommonsorg/mixer/internal/maps"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
@@ -41,6 +43,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/remote"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
+	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/server/v3/observation"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -193,7 +196,7 @@ func setupInternal(
 	}
 	mapsClient := &maps.FakeMapsClient{}
 	if spannerClient != nil {
-		spannerDataSource = spanner.NewSpannerDataSource(spannerClient, st.RecogPlaceStore, mapsClient, false)
+		spannerDataSource = spanner.NewSpannerDataSource(spannerClient, st.RecogPlaceStore, mapsClient)
 		sources = append(sources, spannerDataSource)
 	}
 	c, err := cache.NewCache(ctx, st, cacheOptions, metadata)
@@ -284,7 +287,9 @@ func newClient(
 	}
 	// Create mixer server. writeUsageLogs is false by default for tests but is directly tested in handler_v2_test.go
 	// useSpannerGraph is also false by default while the legacy implementation remains, but is tested directly by V3 APIs.
-	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient, dispatcher, flags, false, "", "", false, nil)
+	cfg := config.ParseConfig(nil, "", "")
+	embeddingsServiceClient := resolve.NewEmbeddingsServiceClient(&http.Client{}, cfg)
+	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient, dispatcher, flags, false, embeddingsServiceClient, false, nil)
 	srv := grpc.NewServer()
 	pbs.RegisterMixerServer(srv, mixerServer)
 	reflection.Register(srv)

@@ -39,7 +39,7 @@ import (
 // expensive database calls.
 func TestObservation_SchemaSelector(t *testing.T) {
 	client := test.NewSchemaSelectorSpannerClient(t)
-	ds := spanner.NewSpannerDataSource(client, nil, nil, false)
+	ds := spanner.NewSpannerDataSource(client, nil, nil)
 
 	_, filename, _, _ := runtime.Caller(0)
 	goldenDir := path.Join(path.Dir(filename), "query")

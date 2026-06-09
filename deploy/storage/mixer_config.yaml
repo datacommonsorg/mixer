@@ -1,0 +1,15 @@
+# Default Mixer Configuration
+
+embeddings_service:
+  # The URL of the embeddings server.
+  # Can be overridden by the --embeddings_server_url CLI flag.
+  # url: "http://localhost:5001"
+
+  # The default index to use for embeddings resolution when no index is specified in the request.
+  # Can be overridden by the --resolve_embeddings_indexes CLI flag.
+  default_index: "base_uae_mem"
+
+  # Mapping from query header labels to embeddings index names.
+  resolve_index_mapping:
+    multi-entity: "base_multi_entity"
+    base-nl: "base_uae_mem"

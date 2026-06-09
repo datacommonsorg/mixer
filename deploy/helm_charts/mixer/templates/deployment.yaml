@@ -81,6 +81,12 @@ spec:
             items:
               - key: base_bigtable_info.yaml
                 path: base_bigtable_info.yaml
+        - name: mixer-config-volume
+          configMap:
+            name: {{ include "mixer.fullname" $ }}-mixer-config
+            items:
+              - key: mixer_config.yaml
+                path: mixer_config.yaml
         - name: feature-flags
           configMap:
             name: mixer-feature-flags
@@ -207,6 +213,7 @@ spec:
               {{- if $.Values.mixer.resolveEmbeddingsIndexes }}
               --resolve_embeddings_indexes={{ $.Values.mixer.resolveEmbeddingsIndexes }} \
               {{- end }}
+              --config_path=/datacommons/config/mixer_config.yaml \
               --feature_flags_path=/datacommons/flags/feature_flags.yaml
           volumeMounts:
             - name: schema-mapping
@@ -220,6 +227,9 @@ spec:
               readOnly: true
             - name: feature-flags
               mountPath: /datacommons/flags
+              readOnly: true
+            - name: mixer-config-volume
+              mountPath: /datacommons/config
               readOnly: true
           env:
             - name: HOST_PROJECT

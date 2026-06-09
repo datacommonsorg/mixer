@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"testing"
 
+	"github.com/datacommonsorg/mixer/internal/config"
 	"github.com/datacommonsorg/mixer/internal/featureflags"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
@@ -75,8 +76,7 @@ func TestV2ResolveCore_EmbeddingsFlag(t *testing.T) {
 		flags: &featureflags.Flags{
 			EnableEmbeddingsResolver: true,
 		},
-		httpClient:          mockClient,
-		embeddingsServerURL: "http://example.com",
+		embeddingsServiceClient: resolve.NewEmbeddingsServiceClient(mockClient, &config.ParsedEmbeddingsConfig{URL: "http://example.com"}),
 	}
 
 	_, _ = sEnabled.V2ResolveCore(
