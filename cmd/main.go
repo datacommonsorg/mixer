@@ -471,7 +471,11 @@ func main() {
 	slog.Info("Dispatcher initialized", "processorsCount", len(processors))
 
 	// Create server object
-	embeddingsServiceClient := resolve.NewEmbeddingsServiceClient(&http.Client{}, *embeddingsServerURL, *resolveEmbeddingsIndexes)
+	embeddingsServiceClient := resolve.NewEmbeddingsServiceClient(
+		&http.Client{Timeout: 10 * time.Second},
+		*embeddingsServerURL,
+		*resolveEmbeddingsIndexes,
+	)
 	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs, embeddingsServiceClient, *useSpannerGraph, topicCacheManager)
 	pbs.RegisterMixerServer(srv, mixerServer)
 
