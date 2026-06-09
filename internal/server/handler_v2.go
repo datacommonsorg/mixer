@@ -168,7 +168,7 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 			}
 		}
 		// Default: use Spanner if configured AND default routing flag is true
-		return s.isSpannerEnabled() && s.flags != nil && s.flags.EnableSpannerSearchEmbeddings, nil
+		return s.flags != nil && s.flags.EnableSpannerSearchEmbeddings && s.isSpannerEnabled(), nil
 	}
 
 	// Fallback for safety (ValidateAndParseResolveInputs guarantees valid resolver type)
