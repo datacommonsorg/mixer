@@ -150,25 +150,16 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 
 	// Indicator resolver (embeddings-based) has custom request-time toggling
 	if resolver == resolve.ResolveResolverIndicator {
-		backendHeader := util.GetSingleHeaderValue(ctx, util.XV2ResolveIndicatorBackend)
-		switch backendHeader {
-		case util.V2ResolveIndicatorBackendSpanner:
+		if util.IsHeaderTrue(ctx, util.XDivertSpanner) {
 			// Force Spanner: Fail fast if Spanner backend is not configured
 			if !s.isSpannerEnabled() {
 				slog.Error("Spanner backend requested via header, but Spanner is not enabled on this server")
 				return false, status.Errorf(codes.FailedPrecondition, "Spanner backend is not enabled in this mixer")
 			}
 			return true, nil
-		case util.V2ResolveIndicatorBackendLegacy:
-			// Force Legacy Remote Service
-			return false, nil
-		default:
-			if backendHeader != "" {
-				return false, status.Errorf(codes.InvalidArgument, "Invalid X-V2Resolve-Indicator-Backend header value: %q. Valid values are %q or %q", backendHeader, util.V2ResolveIndicatorBackendSpanner, util.V2ResolveIndicatorBackendLegacy)
-			}
-			// Default: use Spanner if configured AND default routing flag is true
-			return s.isSpannerEnabled() && s.flags != nil && s.flags.EnableSpannerSearchEmbeddings, nil
 		}
+		// Default: use Spanner if configured AND default routing flag is true
+		return s.isSpannerEnabled() && s.flags != nil && s.flags.EnableSpannerSearchEmbeddings, nil
 	}
 
 	// Fallback for safety (ValidateAndParseResolveInputs guarantees valid resolver type)

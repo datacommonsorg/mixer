@@ -253,7 +253,7 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 		useSpannerGraphFlag bool // Feature flag
 		enableEmbeddings    bool // flags.EnableSpannerSearchEmbeddings
 		resolver            string
-		headerVal           string // X-V2Resolve-Indicator-Backend header
+		divertHeader        string // X-Divert-Spanner header
 		wantRoute           bool
 		wantErr             bool
 	}{
@@ -312,84 +312,53 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 			wantRoute:        false,
 		},
 
-		// Indicator resolver - Header override: spanner
+		// Indicator resolver - Header override: divert Spanner
 		{
 			desc:            "Indicator resolver - Force Spanner, Spanner enabled -> route",
 			useSpannerGraph: true,
 			resolver:        resolve.ResolveResolverIndicator,
-			headerVal:       "spanner",
+			divertHeader:    "true",
 			wantRoute:       true,
 		},
 		{
 			desc:            "Indicator resolver - Force Spanner, Spanner disabled -> error (fail-fast)",
 			useSpannerGraph: false,
 			resolver:        resolve.ResolveResolverIndicator,
-			headerVal:       "spanner",
+			divertHeader:    "true",
 			wantErr:         true,
 		},
-
-		// Indicator resolver - Header override: legacy
 		{
-			desc:             "Indicator resolver - Force Legacy, Spanner enabled & flag true -> don't route",
+			desc:                "Indicator resolver - Force Spanner via Feature Flag, Spanner enabled -> route",
+			useSpannerGraphFlag: true,
+			resolver:            resolve.ResolveResolverIndicator,
+			divertHeader:        "true",
+			wantRoute:           true,
+		},
+
+		// Indicator resolver - Header override: divert Spanner false (should fallback to default)
+		{
+			desc:             "Indicator resolver - Divert false, default true -> route",
 			useSpannerGraph:  true,
 			enableEmbeddings: true,
 			resolver:         resolve.ResolveResolverIndicator,
-			headerVal:        "legacy",
+			divertHeader:     "false",
+			wantRoute:        true,
+		},
+		{
+			desc:             "Indicator resolver - Divert false, default false -> don't route",
+			useSpannerGraph:  true,
+			enableEmbeddings: false,
+			resolver:         resolve.ResolveResolverIndicator,
+			divertHeader:     "false",
 			wantRoute:        false,
 		},
 		{
-			desc:             "Indicator resolver - Force Legacy, Spanner disabled -> don't route",
-			useSpannerGraph:  false,
+			desc:             "Indicator resolver - Divert invalid value (treated as false), default true -> route",
+			useSpannerGraph:  true,
+			enableEmbeddings: true,
 			resolver:         resolve.ResolveResolverIndicator,
-			headerVal:        "legacy",
-			wantRoute:        false,
-		},
-
-		// New test cases for Spanner enabled via Feature Flag only
-		{
-			desc:                "Indicator resolver - Spanner enabled (flag) & embeddings true -> route",
-			useSpannerGraph:     false,
-			useSpannerGraphFlag: true,
-			enableEmbeddings:    true,
-			resolver:            resolve.ResolveResolverIndicator,
-			wantRoute:           true,
-		},
-		{
-			desc:                "Indicator resolver - Spanner enabled (flag) & embeddings false -> don't route",
-			useSpannerGraph:     false,
-			useSpannerGraphFlag: true,
-			enableEmbeddings:    false,
-			resolver:            resolve.ResolveResolverIndicator,
-			wantRoute:           false,
-		},
-		{
-			desc:                "Indicator resolver - Force Spanner, Spanner enabled (flag) -> route",
-			useSpannerGraph:     false,
-			useSpannerGraphFlag: true,
-			resolver:            resolve.ResolveResolverIndicator,
-			headerVal:           "spanner",
-			wantRoute:           true,
-		},
-		{
-			desc:                "Place resolver with Spanner enabled (flag only, fraction 0) -> don't route",
-			useSpannerGraph:     false,
-			useSpannerGraphFlag: true,
-			resolver:            resolve.ResolveResolverPlace,
-			wantRoute:           false,
-		},
-
-		// Invalid header values
-		{
-			desc:             "Indicator resolver - Invalid header value -> error",
-			resolver:         resolve.ResolveResolverIndicator,
-			headerVal:        "invalid_backend",
-			wantErr:          true,
-		},
-		{
-			desc:             "Indicator resolver - Misspelled spanner header -> error",
-			resolver:         resolve.ResolveResolverIndicator,
-			headerVal:        "spaner",
-			wantErr:          true,
+			divertHeader:     "invalid_value",
+			wantRoute:        true,
 		},
 	}
 
@@ -404,8 +373,8 @@ func TestShouldRouteResolveToDispatcher(t *testing.T) {
 			}
 
 			ctx := context.Background()
-			if tc.headerVal != "" {
-				ctx = metadata.NewIncomingContext(ctx, metadata.Pairs(util.XV2ResolveIndicatorBackend, tc.headerVal))
+			if tc.divertHeader != "" {
+				ctx = metadata.NewIncomingContext(ctx, metadata.Pairs(util.XDivertSpanner, tc.divertHeader))
 			}
 
 			gotRoute, err := s.shouldRouteResolveToDispatcher(ctx, tc.resolver)
