@@ -21,6 +21,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"github.com/datacommonsorg/mixer/internal/config"
 	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 )
 
@@ -114,7 +115,8 @@ func TestValidateEmbeddingsIndex(t *testing.T) {
 				serverURL = tc.serverURL
 			}
 
-			client := resolve.NewEmbeddingsServiceClient(&http.Client{}, serverURL, "")
+			cfg := &config.ParsedEmbeddingsConfig{URL: serverURL}
+			client := resolve.NewEmbeddingsServiceClient(&http.Client{}, cfg)
 
 			got := client.ValidateIndex(context.Background(), tc.idxToValidate)
 			if got != tc.wantValid {
