@@ -176,15 +176,7 @@ func (c *EmbeddingsServiceClient) callEmbeddingsServer(
 		bodyBytes, _ := io.ReadAll(httpResp.Body)
 		slog.Error("Embeddings server returned non-200 status", "status_code", httpResp.StatusCode, "body", string(bodyBytes), "url", c.embeddingsServerURL, "queries", nodes)
 		
-		var grpcCode codes.Code
-		switch httpResp.StatusCode {
-		case http.StatusBadRequest:
-			grpcCode = codes.InvalidArgument
-		case http.StatusNotFound:
-			grpcCode = codes.NotFound
-		default:
-			grpcCode = codes.Internal
-		}
+		grpcCode := util.HTTPStatusToGRPCCode(httpResp.StatusCode)
 
 		errMsg := string(bodyBytes)
 		if errMsg == "" {
