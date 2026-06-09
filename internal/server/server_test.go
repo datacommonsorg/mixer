@@ -118,7 +118,7 @@ func TestValidateEmbeddingsIndex(t *testing.T) {
 			}
 
 			client := resolve.NewEmbeddingsServiceClient(&http.Client{}, serverURL, "")
-
+			_ = client.LoadAvailableIndexes(context.Background())
 			got := client.ValidateIndex(context.Background(), tc.idxToValidate)
 			if got != tc.wantValid {
 				t.Errorf("ValidateIndex() = %v, want %v", got, tc.wantValid)

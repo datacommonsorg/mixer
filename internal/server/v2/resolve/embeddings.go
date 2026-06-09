@@ -25,6 +25,7 @@ import (
 	"net/url"
 	"path"
 	"strings"
+	"sync"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -55,6 +56,8 @@ type EmbeddingsServiceClient struct {
 	httpClient          *http.Client
 	embeddingsServerURL string
 	defaultIndexes      string
+	lock                sync.RWMutex
+	availableIndexes    map[string]struct{}
 }
 
 func NewEmbeddingsServiceClient(httpClient *http.Client, embeddingsServerURL string, defaultIndexes string) *EmbeddingsServiceClient {
@@ -368,19 +371,37 @@ func (c *EmbeddingsServiceClient) fetchAvailableIndexes(ctx context.Context) (ma
 	return indexes, nil
 }
 
-// ValidateIndex checks if the given index (or comma-separated indexes) are available.
+// LoadAvailableIndexes fetches the available indexes from the embeddings server and caches them.
+func (c *EmbeddingsServiceClient) LoadAvailableIndexes(ctx context.Context) error {
+	if c.embeddingsServerURL == "" {
+		return nil
+	}
+	indexes, err := c.fetchAvailableIndexes(ctx)
+	if err != nil {
+		return err
+	}
+	c.lock.Lock()
+	defer c.lock.Unlock()
+	c.availableIndexes = indexes
+	return nil
+}
+
+// ValidateIndex checks if the given index (or comma-separated indexes) are available using cached config.
 func (c *EmbeddingsServiceClient) ValidateIndex(ctx context.Context, idx string) bool {
 	if c.embeddingsServerURL == "" {
 		return true
 	}
 
-	indexes, err := c.fetchAvailableIndexes(ctx)
-	if err != nil {
-		slog.Warn("Failed to fetch available embeddings indexes, skipping validation", "error", err)
+	c.lock.RLock()
+	availableIndexes := c.availableIndexes
+	c.lock.RUnlock()
+
+	if availableIndexes == nil {
+		slog.Warn("Available embeddings indexes not loaded yet, skipping validation")
 		return true
 	}
 
-	return c.checkIndexes(idx, indexes)
+	return c.checkIndexes(idx, availableIndexes)
 }
 
 func (c *EmbeddingsServiceClient) checkIndexes(idx string, availableIndexes map[string]struct{}) bool {
