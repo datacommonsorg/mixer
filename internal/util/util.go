@@ -154,6 +154,9 @@ const (
 	// Header to specify which embeddings index to use for V2 Resolve.
 	// To use, set header "X-V2Resolve-Index: multi-entity"
 	XV2ResolveIndex = "X-V2Resolve-Index"
+	// Header to force V2 Resolve (indicators only) to use Spanner.
+	// To use, set header "X-V2Resolve-Indicator-Spanner: true" (force Spanner) or "false" (force legacy).
+	XV2ResolveIndicatorSpanner = "X-V2Resolve-Indicator-Spanner"
 	// Whether to divert request to Spanner.
 	// To use, set header "X-Divert-Spanner: true"
 	XDivertSpanner = "X-Divert-Spanner"

@@ -150,13 +150,21 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 
 	// Indicator resolver (embeddings-based) has custom request-time toggling
 	if resolver == resolve.ResolveResolverIndicator {
-		if util.IsHeaderTrue(ctx, util.XDivertSpanner) {
-			// Force Spanner: Fail fast if Spanner backend is not configured
-			if !s.isSpannerEnabled() {
-				slog.Error("Spanner backend requested via header, but Spanner is not enabled on this server")
-				return false, status.Errorf(codes.FailedPrecondition, "Spanner backend is not enabled in this mixer")
+		headerVal := util.GetSingleHeaderValue(ctx, util.XV2ResolveIndicatorSpanner)
+		if headerVal != "" {
+			if headerVal == "true" {
+				// Force Spanner: Fail fast if Spanner backend is not configured
+				if !s.isSpannerEnabled() {
+					slog.Error("Spanner backend requested via header, but Spanner is not enabled on this server")
+					return false, status.Errorf(codes.FailedPrecondition, "Spanner backend is not enabled in this mixer")
+				}
+				return true, nil
+			} else if headerVal == "false" {
+				// Force Legacy
+				return false, nil
+			} else {
+				return false, status.Errorf(codes.InvalidArgument, "Invalid X-V2Resolve-Indicator-Spanner header value: %q. Valid values are 'true' or 'false'", headerVal)
 			}
-			return true, nil
 		}
 		// Default: use Spanner if configured AND default routing flag is true
 		return s.isSpannerEnabled() && s.flags != nil && s.flags.EnableSpannerSearchEmbeddings, nil
