@@ -813,6 +813,28 @@ func IsHeaderTrue(ctx context.Context, headerName string) bool {
 	return GetSingleHeaderValue(ctx, headerName) == "true"
 }
 
+// GetOptionalBoolHeader reads the specified header from the context metadata.
+// It returns (nil, nil) if the header is missing.
+// It returns (true, nil) if the header is "true".
+// It returns (false, nil) if the header is "false".
+// It returns (nil, error) if the header has any other value.
+func GetOptionalBoolHeader(ctx context.Context, headerName string) (*bool, error) {
+	val := GetSingleHeaderValue(ctx, headerName)
+	if val == "" {
+		return nil, nil
+	}
+	if val == "true" {
+		t := true
+		return &t, nil
+	}
+	if val == "false" {
+		f := false
+		return &f, nil
+	}
+	return nil, status.Errorf(codes.InvalidArgument, "Invalid %s header value: %q. Valid values are 'true' or 'false'", headerName, val)
+}
+
+
 // IsTopicDcid checks if the DCID belongs to a Topic.
 // It checks for the pattern "[prefix]/topic/", requiring /topic/ to be the segment of the id.
 // It does this to allow SVGs that have something other than "dc" at the start, such as "c/topic/Demographics"
