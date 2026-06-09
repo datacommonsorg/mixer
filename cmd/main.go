@@ -63,6 +63,8 @@ import (
 const (
 	// Refresh interval for server hooks.
 	periodicRefreshInterval = 1 * time.Hour
+	// Timeout for HTTP requests to the embeddings service.
+	embeddingsServiceTimeout = 10 * time.Second
 )
 
 var (
@@ -472,7 +474,7 @@ func main() {
 
 	// Create server object
 	embeddingsServiceClient := resolve.NewEmbeddingsServiceClient(
-		&http.Client{Timeout: 10 * time.Second},
+		&http.Client{Timeout: embeddingsServiceTimeout},
 		*embeddingsServerURL,
 		*resolveEmbeddingsIndexes,
 	)
