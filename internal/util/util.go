@@ -154,6 +154,9 @@ const (
 	// Header to specify which embeddings index to use for V2 Resolve.
 	// To use, set header "X-V2Resolve-Index: multi-entity"
 	XV2ResolveIndex = "X-V2Resolve-Index"
+	// Whether to divert request to Spanner.
+	// To use, set header "X-Divert-Spanner: true"
+	XDivertSpanner = "X-Divert-Spanner"
 )
 
 // ZipAndEncode compresses the given content using gzip and encodes it in base64
