@@ -293,33 +293,39 @@ func (s *Server) ClosePeriodicRefresher() {
 	}
 }
 
+type MixerServerOptions struct {
+	CacheData               *cache.Cache
+	MapsClient              maps.MapsClient
+	WriteUsageLogs          bool
+	EmbeddingsServiceClient *resolve.EmbeddingsServiceClient
+	UseSpannerGraph         bool
+	TopicCacheManager       *topic.TopicCacheManager
+}
+
 // NewMixerServer creates a new mixer server instance.
 func NewMixerServer(
 	store *store.Store,
 	metadata *resource.Metadata,
-	cachedata *cache.Cache,
-	mapsClient maps.MapsClient,
 	dispatcher *dispatcher.Dispatcher,
 	flags *featureflags.Flags,
-	writeUsageLogs bool,
-	embeddingsServiceClient *resolve.EmbeddingsServiceClient,
-	useSpannerGraph bool,
-	topicCacheManager *topic.TopicCacheManager,
+	opts *MixerServerOptions,
 ) *Server {
 	s := &Server{
-		store:                   store,
-		metadata:                metadata,
-		cachedata:               atomic.Pointer[cache.Cache]{},
-		mapsClient:              mapsClient,
-		httpClient:              &http.Client{},
-		dispatcher:              dispatcher,
-		flags:                   flags,
-		writeUsageLogs:          writeUsageLogs,
-		embeddingsServiceClient: embeddingsServiceClient,
-		useSpannerGraph:         useSpannerGraph,
-		topicCacheManager:       topicCacheManager,
+		store:      store,
+		metadata:   metadata,
+		cachedata:  atomic.Pointer[cache.Cache]{},
+		httpClient: &http.Client{},
+		dispatcher: dispatcher,
+		flags:      flags,
 	}
-	s.cachedata.Store(cachedata)
+	if opts != nil {
+		s.mapsClient = opts.MapsClient
+		s.writeUsageLogs = opts.WriteUsageLogs
+		s.embeddingsServiceClient = opts.EmbeddingsServiceClient
+		s.useSpannerGraph = opts.UseSpannerGraph
+		s.topicCacheManager = opts.TopicCacheManager
+		s.cachedata.Store(opts.CacheData)
+	}
 	s.initAgentService()
 
 	return s

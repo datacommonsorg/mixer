@@ -289,7 +289,17 @@ func newClient(
 	// Create mixer server. writeUsageLogs is false by default for tests but is directly tested in handler_v2_test.go
 	// useSpannerGraph is also false by default while the legacy implementation remains, but is tested directly by V3 APIs.
 	embeddingsServiceClient := resolve.NewEmbeddingsServiceClient("", nil)
-	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient, dispatcher, flags, false, embeddingsServiceClient, false, nil)
+	mixerServer := server.NewMixerServer(
+		mixerStore,
+		metadata,
+		dispatcher,
+		flags,
+		&server.MixerServerOptions{
+			CacheData:               cachedata,
+			MapsClient:              mapsClient,
+			EmbeddingsServiceClient: embeddingsServiceClient,
+		},
+	)
 	srv := grpc.NewServer()
 	pbs.RegisterMixerServer(srv, mixerServer)
 	reflection.Register(srv)

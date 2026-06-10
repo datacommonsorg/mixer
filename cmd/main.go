@@ -487,7 +487,20 @@ func main() {
 			DefaultIndexes: *resolveEmbeddingsIndexes,
 		},
 	)
-	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs, embeddingsServiceClient, *useSpannerGraph, topicCacheManager)
+	mixerServer := server.NewMixerServer(
+		store,
+		metadata,
+		dispatcher,
+		flags,
+		&server.MixerServerOptions{
+			CacheData:               c,
+			MapsClient:              mapsClient,
+			WriteUsageLogs:          *writeUsageLogs,
+			EmbeddingsServiceClient: embeddingsServiceClient,
+			UseSpannerGraph:         *useSpannerGraph,
+			TopicCacheManager:       topicCacheManager,
+		},
+	)
 	pbs.RegisterMixerServer(srv, mixerServer)
 
 	// If Topic Cache is enabled, construct and initialize the NodeFetcher.
