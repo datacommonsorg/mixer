@@ -22,10 +22,25 @@ type rawObservation struct {
 	Attributes       []*spannerAttribute   `spanner:"attributes"`
 }
 
+type rawMultiEntityObservation struct {
+	VariableMeasured string                `spanner:"variable_measured"`
+	Provenance       string                `spanner:"provenance"`
+	DatesAndValues   []*spannerObservation `spanner:"dates_and_values"`
+	Attributes       []*spannerAttribute   `spanner:"attributes"`
+}
+
+type multiEntityObservation struct {
+	VariableMeasured string
+	Provenance       string
+	Observations     TimeSeries
+	Attributes       []*spannerAttribute
+}
+
 // spannerObservation represents the STRUCT returned in dates_and_values array.
 type spannerObservation struct {
-	Date  string `spanner:"date"`
-	Value string `spanner:"value"`
+	Date       string              `spanner:"date"`
+	Value      string              `spanner:"value"`
+	Attributes []*spannerAttribute `spanner:"attributes"`
 }
 
 // spannerAttribute represents the STRUCT returned in attributes array.

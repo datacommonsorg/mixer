@@ -41,6 +41,15 @@ func ObservationCore(
 	httpClient *http.Client,
 	in *pbv2.ObservationRequest,
 ) (*pbv2.ObservationResponse, shared.QueryType, error) {
+	if len(in.GetObservationDimensions()) > 0 {
+		return nil, "", status.Error(
+			codes.Unimplemented, "multi-entity observation requires Spanner dispatcher")
+	}
+	if len(in.GetNodeProperties()) > 0 {
+		return nil, "", status.Error(
+			codes.InvalidArgument, "node_properties are only supported for multi-entity observation requests")
+	}
+
 	// (TODO): The routing logic here is very rough. This needs more work.
 	var queryDate, queryValue, queryVariable, queryEntity, queryFacet bool
 	for _, item := range in.GetSelect() {

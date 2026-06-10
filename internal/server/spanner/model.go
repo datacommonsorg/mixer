@@ -66,8 +66,9 @@ type Observation struct {
 // Single observation in a time series.
 // Value is a string to allow series with non-numeric types.
 type DateValue struct {
-	Date  string
-	Value string
+	Date       string
+	Value      string
+	Attributes []*spannerAttribute
 }
 
 type TimeSeries []*DateValue

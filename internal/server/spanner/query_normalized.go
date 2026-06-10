@@ -20,6 +20,7 @@ import (
 	"strconv"
 
 	pb "github.com/datacommonsorg/mixer/internal/proto"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -44,6 +45,26 @@ func (nc *normalizedClient) GetObservations(ctx context.Context, variables []str
 	return reconstructObservations(rawObs), nil
 }
 
+func (nc *normalizedClient) GetMultiEntityObservations(
+	ctx context.Context,
+	variables []string,
+	dimensions []*pbv2.ObservationDimensionConstraint,
+) ([]*multiEntityObservation, error) {
+	stmt, err := GetNormalizedMultiEntityObservationsQuery(variables, dimensions)
+	if err != nil {
+		return nil, err
+	}
+
+	var rawObs []*rawMultiEntityObservation
+	err = queryStructs(ctx, nc.sc, *stmt, func() interface{} { return &rawMultiEntityObservation{} }, func(row interface{}) {
+		rawObs = append(rawObs, row.(*rawMultiEntityObservation))
+	})
+	if err != nil {
+		return nil, err
+	}
+	return reconstructMultiEntityObservations(rawObs), nil
+}
+
 // fetchRawObservations fetches data from TimeSeries and StatVarObservation tables.
 func (nc *normalizedClient) fetchRawObservations(ctx context.Context, variables []string, entities []string) ([]*rawObservation, error) {
 	stmt := GetNormalizedObservationsQuery(variables, entities)
@@ -66,7 +87,11 @@ func reconstructObservations(rawObs []*rawObservation) []*Observation {
 		}
 
 		for _, dv := range r.DatesAndValues {
-			obs.Observations = append(obs.Observations, &DateValue{Date: dv.Date, Value: dv.Value})
+			obs.Observations = append(obs.Observations, &DateValue{
+				Date:       dv.Date,
+				Value:      dv.Value,
+				Attributes: dv.Attributes,
+			})
 		}
 
 		for _, attr := range r.Attributes {
@@ -84,6 +109,30 @@ func reconstructObservations(rawObs []*rawObservation) []*Observation {
 					obs.IsDcAggregate = b
 				}
 			}
+		}
+		result = append(result, obs)
+	}
+
+	return result
+}
+
+func reconstructMultiEntityObservations(rawObs []*rawMultiEntityObservation) []*multiEntityObservation {
+	var result []*multiEntityObservation
+
+	for _, r := range rawObs {
+		obs := &multiEntityObservation{
+			VariableMeasured: r.VariableMeasured,
+			Provenance:       r.Provenance,
+			Attributes:       r.Attributes,
+			Observations:     TimeSeries{},
+		}
+
+		for _, dv := range r.DatesAndValues {
+			obs.Observations = append(obs.Observations, &DateValue{
+				Date:       dv.Date,
+				Value:      dv.Value,
+				Attributes: dv.Attributes,
+			})
 		}
 		result = append(result, obs)
 	}

@@ -65,6 +65,11 @@ message PlaceVariableFacets {
   repeated PlaceVariableFacet place_variable_facets = 1;
 }
 
+message ObservationAttribute {
+  string property = 1;
+  string value = 2;
+}
+
 message PointStat {
   // date in IOS-8601 format
   string date = 1;
@@ -78,6 +83,8 @@ message PointStat {
   string meta_hash = 4;
   // Same as meta_hash, used in V1 API.
   string facet = 5;
+  // Attributes scoped to this observation point.
+  repeated ObservationAttribute observation_attributes = 6;
 }
 
 message SourceSeries {

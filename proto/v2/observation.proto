@@ -19,6 +19,7 @@ package datacommons.v2;
 option go_package = "github.com/datacommonsorg/mixer/internal/proto/v2";
 
 import "stat.proto";
+import "v2/node.proto";
 
 // Represent a list of entities passed in as plain list or graph expression.
 message DcidOrExpression {
@@ -43,10 +44,21 @@ message DcidOrExpression {
   string formula = 3;
 }
 
+message ObservationDimension {
+  string property = 1;
+  string dcid = 2;
+}
+
+message MultiEntityObservation {
+  repeated ObservationDimension observation_dimensions = 1;
+  EntityObservation observation = 2;
+}
+
 // Holds all observations of a particular variable.
 message VariableObservation {
   // Keyed by entity DCID
   map<string, EntityObservation> by_entity = 1;
+  repeated MultiEntityObservation multi_entity_observations = 2;
 }
 
 //
@@ -79,10 +91,18 @@ message FacetFilter {
   repeated string facet_ids = 3;
 }
 
+message ObservationDimensionConstraint {
+  string property = 1;
+  DcidOrExpression value = 2;
+}
+
 // Generic observation request
 message ObservationRequest {
   // A list of statistical variable DCIDs, or a formula expression.
   DcidOrExpression variable = 1;
+  // Exactly one of entity or observation_dimensions may be set.
+  // This is enforced in request validation because observation_dimensions is
+  // repeated and cannot be placed directly in a proto oneof.
   // A list of entity DCIDs, or an arrow expression that covers a list of entity
   // DCIDs.
   DcidOrExpression entity = 2;
@@ -98,6 +118,11 @@ message ObservationRequest {
   FacetFilter filter = 5;
   // Fields to return, valid values are: "variable", "entity", "date", "value", "facet"
   repeated string select = 6;
+  // Multi-entity dimension filters. Each present property is constrained, and
+  // omitted dimension properties are unconstrained.
+  repeated ObservationDimensionConstraint observation_dimensions = 7;
+  // Node properties to include for multi-entity dimension dcids.
+  repeated string node_properties = 8;
 }
 
 message ObservationResponse {
@@ -105,4 +130,6 @@ message ObservationResponse {
   map<string, VariableObservation> by_variable = 1;
   // Keyed by facet ID
   map<string, datacommons.Facet> facets = 2;
+  // Keyed by dimension dcid when node_properties is requested.
+  map<string, LinkedGraph> nodes = 3;
 }
