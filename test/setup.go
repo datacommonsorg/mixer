@@ -357,7 +357,7 @@ func newClient(
 		return nil, nil, func() {}, err
 	}
 	return pbs.NewMixerClient(conn), mixerServer, func() {
-		conn.Close()
+		_ = conn.Close()
 		srv.Stop()
 		cleanup()
 	}, nil
