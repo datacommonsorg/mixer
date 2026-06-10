@@ -192,6 +192,22 @@ func NewSpannerDataSource(client SpannerClient, opts *SpannerDataSourceOptions) 
 }
 ```
 
+#### Best Practices for Options Structs
+
+To ensure that adding new fields to an options struct in the future does not break existing code or tests, follow these rules:
+
+1.  **Always Use Named Fields**: When instantiating options structs, always specify the field names explicitly. Avoid positional struct initialization.
+    *   *Correct*: `opts := &SpannerDataSourceOptions{MapsClient: mc}`
+    *   *Incorrect*: `opts := &SpannerDataSourceOptions{nil, mc, nil}` (this will fail to compile if a new field is added to the struct).
+2.  **Design for Zero-Values (Sensible Defaults)**: Ensure that the zero-value (e.g., `nil`, `false`, `0`, `""`) of any new option field represents a safe default, or handle the zero-value in the constructor to apply a non-zero default.
+    *   *Example*: If a new `Timeout time.Duration` option is added, and the default should be 5 seconds, implement it in the constructor:
+        ```go
+        timeout := 5 * time.Second // Default
+        if opts != nil && opts.Timeout != 0 {
+            timeout = opts.Timeout // Override if caller specified a non-zero value
+        }
+        ```
+
 ### Feature Flags vs. Server/CLI Flags
 
 Mixer uses two mechanisms for configuration and feature gating: **Server/CLI Flags** and **Feature Flags**. It is important to use the correct mechanism depending on the scope of the change.
