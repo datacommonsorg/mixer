@@ -142,6 +142,56 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 }
 ```
 
+### Constructor Design: Required Parameters vs. Options Struct
+
+When designing constructors (`New...` functions) for complex components, prefer the **Required Parameters + Options Struct** pattern. This pattern balances API safety with flexibility and extensibility.
+
+#### The Pattern Structure
+1.  **Required Parameters**: Passed as direct positional arguments to the constructor.
+2.  **Options Struct**: Passed as a single pointer to an options struct (`*Options`), which can be `nil`.
+
+#### How to Differentiate: What goes where?
+
+Apply these guidelines to decide where a dependency or configuration belongs:
+
+1.  **The "Useless Without It" Rule (Hard Dependency)**:
+    *   **Direct Parameter**: Any dependency that the component *must* have to function at all, even in a mock/test environment. If omitting it makes the component completely unusable or guarantees a runtime panic, it must be a direct parameter.
+    *   **Options Struct**: Any dependency that is only needed for specific features, or can be safely omitted (leaving the component in a "degraded" but still functional state).
+
+2.  **The "Default Behavior" Rule (Sensible Defaults)**:
+    *   **Direct Parameter**: Dependencies for which there is no sensible default. The caller *must* make an explicit choice.
+    *   **Options Struct**: Configurations or secondary dependencies that have a logical default behavior if omitted.
+
+3.  **The "API Stability" Rule (Future-Proofing)**:
+    *   **Direct Parameter**: Core dependencies that define the identity of the component and are highly stable (unlikely to change).
+    *   **Options Struct**: Fields that are likely to be added, removed, or changed as the component grows. Putting them in the options struct ensures that future additions **do not break existing constructor calls** (especially in tests).
+
+#### Concrete Example: `SpannerDataSource`
+
+*   **`SpannerClient`** is a **direct parameter** because the datasource cannot perform any queries without it. There is no default.
+*   **`MapsClient`**, **`RecogPlaceStore`**, and **`TopicExpanderProvider`** are in the **options struct** because they are only needed for specific features (like description or topic resolution) and can be left `nil` in tests or limited deployments without crashing core functionality.
+
+```go
+type SpannerDataSourceOptions struct {
+	RecogPlaceStore       *files.RecogPlaceStore
+	MapsClient            internalmaps.MapsClient
+	TopicExpanderProvider TopicExpanderProvider
+}
+
+// client is required (direct parameter), opts is optional (can be nil)
+func NewSpannerDataSource(client SpannerClient, opts *SpannerDataSourceOptions) *SpannerDataSource {
+	sds := &SpannerDataSource{
+		client: client,
+	}
+	if opts != nil {
+		sds.recogPlaceStore = opts.RecogPlaceStore
+		sds.mapsClient = opts.MapsClient
+		sds.topicExpanderProvider = opts.TopicExpanderProvider
+	}
+	return sds
+}
+```
+
 ### Feature Flags vs. Server/CLI Flags
 
 Mixer uses two mechanisms for configuration and feature gating: **Server/CLI Flags** and **Feature Flags**. It is important to use the correct mechanism depending on the scope of the change.

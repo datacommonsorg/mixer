@@ -157,8 +157,7 @@ func TestSpannerResolve(t *testing.T) {
 			},
 		},
 	}
-	ds := spanner.NewSpannerDataSource(spanner.SpannerDataSourceConfig{
-		Client:          client,
+	ds := spanner.NewSpannerDataSource(client, &spanner.SpannerDataSourceOptions{
 		RecogPlaceStore: recogPlaceStore,
 		MapsClient:      &maps.FakeMapsClient{},
 	})
@@ -216,7 +215,7 @@ func TestSpannerNode(t *testing.T) {
 	if client == nil {
 		return
 	}
-	ds := spanner.NewSpannerDataSource(spanner.SpannerDataSourceConfig{Client: client})
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	t.Parallel()
 	ctx := context.Background()
@@ -271,7 +270,7 @@ func TestSpannerSparql(t *testing.T) {
 	if client == nil {
 		return
 	}
-	ds := spanner.NewSpannerDataSource(spanner.SpannerDataSourceConfig{Client: client})
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	t.Parallel()
 	ctx := context.Background()
@@ -340,7 +339,7 @@ func TestSpannerEvent(t *testing.T) {
 	if client == nil {
 		return
 	}
-	ds := spanner.NewSpannerDataSource(spanner.SpannerDataSourceConfig{Client: client})
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	t.Parallel()
 	ctx := context.Background()
@@ -566,7 +565,7 @@ func TestSpannerObservation(t *testing.T) {
 			filterNodesByTypeRes:            c.mockTypes,
 			checkGroupPlaceExistenceRes:     c.mockGroupPlaceRes,
 		}
-		ds := spanner.NewSpannerDataSource(spanner.SpannerDataSourceConfig{Client: client})
+		ds := spanner.NewSpannerDataSource(client, nil)
 
 		got, err := ds.Observation(ctx, c.req)
 		if (err != nil) != c.wantErr {
@@ -605,7 +604,7 @@ func TestBulkVariableGroupInfo_Filtering(t *testing.T) {
 			"Topic":        {"dc/topic/Demographics"},
 		},
 	}
-	ds := spanner.NewSpannerDataSource(spanner.SpannerDataSourceConfig{Client: client})
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	// Test Case 1: Valid SVGs including WHO/Root
 	req1 := &pbv1.BulkVariableGroupInfoRequest{
@@ -703,7 +702,7 @@ func TestSpannerObservation_ExpressionExpansion(t *testing.T) {
 		},
 	}
 
-	ds := spanner.NewSpannerDataSource(spanner.SpannerDataSourceConfig{Client: client})
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	// Test Case 1: Expression with Remote Data in Context
 	req := &pbv2.ObservationRequest{
@@ -765,7 +764,7 @@ func TestSpannerObservation_ExpressionExpansion_Fallback(t *testing.T) {
 		},
 	}
 
-	ds := spanner.NewSpannerDataSource(spanner.SpannerDataSourceConfig{Client: client})
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	req := &pbv2.ObservationRequest{
 		Variable: &pbv2.DcidOrExpression{Dcids: []string{"Count_Person"}},
@@ -809,7 +808,7 @@ func TestSpannerObservation_NoExpression(t *testing.T) {
 		},
 	}
 
-	ds := spanner.NewSpannerDataSource(spanner.SpannerDataSourceConfig{Client: client})
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	req := &pbv2.ObservationRequest{
 		Variable: &pbv2.DcidOrExpression{Dcids: []string{"Count_Person"}},
@@ -915,7 +914,7 @@ func TestSpannerFilterStatVarsByEntity(t *testing.T) {
 			client := &mockSpannerClient{
 				checkVariableExistenceRes: c.mockExist,
 			}
-			ds := spanner.NewSpannerDataSource(spanner.SpannerDataSourceConfig{Client: client})
+			ds := spanner.NewSpannerDataSource(client, nil)
 
 			got, err := ds.FilterStatVarsByEntity(ctx, c.req)
 			if err != nil {

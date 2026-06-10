@@ -400,8 +400,7 @@ func main() {
 
 	var spannerDS datasource.DataSource
 	if spannerClient != nil {
-		spannerDS = spanner.NewSpannerDataSource(spanner.SpannerDataSourceConfig{
-			Client:                spannerClient,
+		spannerDS = spanner.NewSpannerDataSource(spannerClient, &spanner.SpannerDataSourceOptions{
 			RecogPlaceStore:       store.RecogPlaceStore,
 			MapsClient:            mapsClient,
 			TopicExpanderProvider: topicExpanderProvider,

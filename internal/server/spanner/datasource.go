@@ -56,8 +56,7 @@ var svgGroupInfoExclusionList = map[string]struct{}{
 
 type TopicExpanderProvider func() resolvev2.TopicExpander
 
-type SpannerDataSourceConfig struct {
-	Client                SpannerClient
+type SpannerDataSourceOptions struct {
 	RecogPlaceStore       *files.RecogPlaceStore
 	MapsClient            internalmaps.MapsClient
 	TopicExpanderProvider TopicExpanderProvider
@@ -78,15 +77,18 @@ const (
 	s2CellTypePrefix                  = "S2CellLevel"
 )
 
-func NewSpannerDataSource(cfg SpannerDataSourceConfig) *SpannerDataSource {
+func NewSpannerDataSource(client SpannerClient, opts *SpannerDataSourceOptions) *SpannerDataSource {
 	searchCfg, _ := loadSpannerSearchConfig()
-	return &SpannerDataSource{
-		client:                cfg.Client,
-		recogPlaceStore:       cfg.RecogPlaceStore,
-		mapsClient:            cfg.MapsClient,
-		searchConfig:          searchCfg,
-		topicExpanderProvider: cfg.TopicExpanderProvider,
+	sds := &SpannerDataSource{
+		client:       client,
+		searchConfig: searchCfg,
 	}
+	if opts != nil {
+		sds.recogPlaceStore = opts.RecogPlaceStore
+		sds.mapsClient = opts.MapsClient
+		sds.topicExpanderProvider = opts.TopicExpanderProvider
+	}
+	return sds
 }
 
 // Type returns the type of the data source.

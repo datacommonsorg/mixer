@@ -195,8 +195,7 @@ func setupInternal(
 	}
 	mapsClient := &maps.FakeMapsClient{}
 	if spannerClient != nil {
-		spannerDataSource = spanner.NewSpannerDataSource(spanner.SpannerDataSourceConfig{
-			Client:          spannerClient,
+		spannerDataSource = spanner.NewSpannerDataSource(spannerClient, &spanner.SpannerDataSourceOptions{
 			RecogPlaceStore: st.RecogPlaceStore,
 			MapsClient:      mapsClient,
 		})

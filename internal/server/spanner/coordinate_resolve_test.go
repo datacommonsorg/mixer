@@ -134,7 +134,7 @@ func TestResolveCoordinate(t *testing.T) {
 	t.Parallel()
 
 	cellID := level10S2CellID(37.42, -122.08)
-	ds := NewSpannerDataSource(SpannerDataSourceConfig{Client: &coordinateMockSpannerClient{
+	ds := NewSpannerDataSource(&coordinateMockSpannerClient{
 		assertGetNodeEdges: func(ids []string, arc *v2.Arc, pageSize, offset int) {
 			if arc == nil || arc.SingleProp != "containedInPlace" {
 				t.Fatalf("unexpected arc: %+v", arc)
@@ -167,7 +167,7 @@ func TestResolveCoordinate(t *testing.T) {
 				},
 			},
 		},
-	}})
+	}, nil)
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"37.42#-122.08"},
@@ -199,7 +199,7 @@ func TestResolveCoordinateFetchesAllCellsInBatch(t *testing.T) {
 
 	cellID1 := level10S2CellID(37.42, -122.08)
 	cellID2 := level10S2CellID(36.77, -119.41)
-	ds := NewSpannerDataSource(SpannerDataSourceConfig{Client: &coordinateMockSpannerClient{
+	ds := NewSpannerDataSource(&coordinateMockSpannerClient{
 		assertGetNodeEdges: func(ids []string, arc *v2.Arc, pageSize, offset int) {
 			if arc == nil || arc.SingleProp != "containedInPlace" {
 				t.Fatalf("unexpected arc: %+v", arc)
@@ -234,7 +234,7 @@ func TestResolveCoordinateFetchesAllCellsInBatch(t *testing.T) {
 				},
 			},
 		},
-	}})
+	}, nil)
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"37.42#-122.08", "36.77#-119.41"},
@@ -270,7 +270,7 @@ func TestResolveCoordinateTypeFilterUsesDominantType(t *testing.T) {
 	t.Parallel()
 
 	cellID := level10S2CellID(37.42, -122.08)
-	ds := NewSpannerDataSource(SpannerDataSourceConfig{Client: &coordinateMockSpannerClient{
+	ds := NewSpannerDataSource(&coordinateMockSpannerClient{
 		getNodeEdgesByProp: map[string]map[string][]*Edge{
 			"containedInPlace": {
 				cellID: {
@@ -289,7 +289,7 @@ func TestResolveCoordinateTypeFilterUsesDominantType(t *testing.T) {
 				},
 			},
 		},
-	}})
+	}, nil)
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"37.42#-122.08"},
@@ -317,7 +317,7 @@ func TestResolveCoordinateSkipsS2CellCandidatesByType(t *testing.T) {
 	t.Parallel()
 
 	cellID := level10S2CellID(37.42, -122.08)
-	ds := NewSpannerDataSource(SpannerDataSourceConfig{Client: &coordinateMockSpannerClient{
+	ds := NewSpannerDataSource(&coordinateMockSpannerClient{
 		getNodeEdgesByProp: map[string]map[string][]*Edge{
 			"containedInPlace": {
 				cellID: {
@@ -336,7 +336,7 @@ func TestResolveCoordinateSkipsS2CellCandidatesByType(t *testing.T) {
 				},
 			},
 		},
-	}})
+	}, nil)
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"37.42#-122.08"},
