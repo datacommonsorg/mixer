@@ -105,7 +105,7 @@ func (m *mockSpannerClient) FilterNodesByTypes(ctx context.Context, nodes []stri
 	}
 	return res, nil
 }
-func (m *mockSpannerClient) VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string) ([]*spanner.VectorSearchResult, error) {
+func (m *mockSpannerClient) VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeFilters []string) ([]*spanner.VectorSearchResult, error) {
 	return nil, nil
 }
 func (m *mockSpannerClient) GetEventCollectionDate(ctx context.Context, placeID, eventType string) ([]string, error) {
