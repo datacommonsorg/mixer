@@ -98,7 +98,6 @@ func getMissingStatVarRanking(
 func TestChartConfigRankings(t *testing.T) {
 	t.Parallel()
 	client, cleanup, err := Setup()
-	defer cleanup()
 	if err != nil {
 		t.Fatalf("Failed to set up mixer and client")
 	}
@@ -112,7 +111,8 @@ func TestChartConfigRankings(t *testing.T) {
 		path.Dir(filename),
 		"statvar_ranking",
 	)
-	for _, c := range []struct {
+	t.Run("ranking_tests", func(t *testing.T) {
+		for _, c := range []struct {
 		placeType   string
 		parentPlace string
 		goldenFile  string
@@ -216,4 +216,6 @@ func TestChartConfigRankings(t *testing.T) {
 			}
 		})
 	}
+	})
+	cleanup()
 }
