@@ -26,6 +26,7 @@ import (
 	"path"
 	"strings"
 	"sync"
+	"time"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -52,6 +53,11 @@ var labelToIndex = map[string]string{
 	LabelBaseNL:      IndexBaseUaeMem,
 }
 
+type EmbeddingsServiceClientOptions struct {
+	HTTPClient     *http.Client
+	DefaultIndexes string
+}
+
 type EmbeddingsServiceClient struct {
 	httpClient          *http.Client
 	embeddingsServerURL string
@@ -60,12 +66,20 @@ type EmbeddingsServiceClient struct {
 	availableIndexes    map[string]struct{}
 }
 
-func NewEmbeddingsServiceClient(httpClient *http.Client, embeddingsServerURL string, defaultIndexes string) *EmbeddingsServiceClient {
-	return &EmbeddingsServiceClient{
-		httpClient:          httpClient,
-		embeddingsServerURL: embeddingsServerURL,
-		defaultIndexes:      defaultIndexes,
+const defaultHTTPTimeout = 10 * time.Second
+
+func NewEmbeddingsServiceClient(serverURL string, opts *EmbeddingsServiceClientOptions) *EmbeddingsServiceClient {
+	client := &EmbeddingsServiceClient{
+		embeddingsServerURL: serverURL,
+		httpClient:          &http.Client{Timeout: defaultHTTPTimeout},
 	}
+	if opts != nil {
+		if opts.HTTPClient != nil {
+			client.httpClient = opts.HTTPClient
+		}
+		client.defaultIndexes = opts.DefaultIndexes
+	}
+	return client
 }
 
 // SelectIndex determines the correct index to use for embeddings resolution.

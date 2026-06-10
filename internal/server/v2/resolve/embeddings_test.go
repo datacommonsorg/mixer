@@ -46,7 +46,7 @@ func TestResolveUsingEmbeddings(t *testing.T) {
 	defer server.Close()
 
 	ctx := context.Background()
-	client := NewEmbeddingsServiceClient(server.Client(), server.URL, "")
+	client := NewEmbeddingsServiceClient(server.URL, &EmbeddingsServiceClientOptions{HTTPClient: server.Client()})
 	resp, err := client.Resolve(ctx, "test_idx", []string{"population"}, nil, nil, false)
 	if err != nil {
 		t.Fatalf("Resolve() error: %v", err)
@@ -167,7 +167,7 @@ func TestResolveUsingEmbeddings_Errors(t *testing.T) {
 				client = http.DefaultClient
 			}
 
-			embeddingsServiceClient := NewEmbeddingsServiceClient(client, url, "")
+			embeddingsServiceClient := NewEmbeddingsServiceClient(url, &EmbeddingsServiceClientOptions{HTTPClient: client})
 			_, err := embeddingsServiceClient.Resolve(context.Background(), "", []string{"query"}, nil, nil, false)
 			if err == nil {
 				t.Errorf("Expected error containing '%s', got nil", tc.expectedError)
@@ -217,7 +217,7 @@ func TestResolveUsingEmbeddings_InconsistentSearchVarsResponse(t *testing.T) {
 	}))
 	defer server.Close()
 
-	client := NewEmbeddingsServiceClient(server.Client(), server.URL, "")
+	client := NewEmbeddingsServiceClient(server.URL, &EmbeddingsServiceClientOptions{HTTPClient: server.Client()})
 	resp, err := client.Resolve(context.Background(), "", []string{"query"}, nil, nil, false)
 	if err != nil {
 		t.Fatalf("Unexpected error: %v", err)
@@ -292,7 +292,7 @@ func TestResolveUsingEmbeddings_IdxParameter(t *testing.T) {
 			}))
 			defer server.Close()
 
-			client := NewEmbeddingsServiceClient(server.Client(), server.URL, "")
+			client := NewEmbeddingsServiceClient(server.URL, &EmbeddingsServiceClientOptions{HTTPClient: server.Client()})
 			_, err := client.Resolve(context.Background(), tc.expectedIdx, []string{"query"}, nil, nil, false)
 			if err != nil {
 				t.Fatalf("Unexpected error: %v", err)
@@ -319,7 +319,7 @@ func TestResolveUsingEmbeddings_Filter(t *testing.T) {
 
 	ctx := context.Background()
 
-	client := NewEmbeddingsServiceClient(server.Client(), server.URL, "")
+	client := NewEmbeddingsServiceClient(server.URL, &EmbeddingsServiceClientOptions{HTTPClient: server.Client()})
 
 	// Filter for StatisticalVariable
 	resp, err := client.Resolve(ctx, "test_idx", []string{"filter_test"}, []string{"StatisticalVariable"}, nil, false)
@@ -400,7 +400,7 @@ func TestSelectEmbeddingsIndex(t *testing.T) {
 				ctx = metadata.NewIncomingContext(ctx, md)
 			}
 
-			client := NewEmbeddingsServiceClient(nil, "", "default_idx")
+			client := NewEmbeddingsServiceClient("", &EmbeddingsServiceClientOptions{DefaultIndexes: "default_idx"})
 			idx, err := client.SelectIndex(ctx)
 
 			if tc.expectError {

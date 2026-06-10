@@ -481,9 +481,11 @@ func main() {
 
 	// Create server object
 	embeddingsServiceClient := resolve.NewEmbeddingsServiceClient(
-		&http.Client{Timeout: embeddingsServiceTimeout},
 		*embeddingsServerURL,
-		*resolveEmbeddingsIndexes,
+		&resolve.EmbeddingsServiceClientOptions{
+			HTTPClient:     &http.Client{Timeout: embeddingsServiceTimeout},
+			DefaultIndexes: *resolveEmbeddingsIndexes,
+		},
 	)
 	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs, embeddingsServiceClient, *useSpannerGraph, topicCacheManager)
 	pbs.RegisterMixerServer(srv, mixerServer)
