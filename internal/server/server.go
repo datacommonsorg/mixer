@@ -335,6 +335,11 @@ func (s *Server) TopicCacheManager() *topic.TopicCacheManager {
 	return s.topicCacheManager
 }
 
+// isSpannerInitialized returns true if the Spanner backend has been initialized.
+func (s *Server) isSpannerInitialized() bool {
+	return s.useSpannerGraph || (s.flags != nil && s.flags.UseSpannerGraph)
+}
+
 // shouldDivertV2 returns true if the request should be diverted to the dispatcher.
 func (s *Server) shouldDivertV2(ctx context.Context) bool {
 	if !s.isSpannerInitialized() {
