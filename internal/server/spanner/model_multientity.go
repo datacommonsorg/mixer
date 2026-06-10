@@ -14,22 +14,18 @@
 
 package spanner
 
-// rawObservation represents a row from the coalesced query.
+import "cloud.google.com/go/spanner"
+
+// rawObservation maps the raw query result.
 type rawObservation struct {
 	VariableMeasured string                `spanner:"variable_measured"`
-	Provenance       string                `spanner:"provenance"`
+	ObservationAbout string                `spanner:"observation_about"`
 	DatesAndValues   []*spannerObservation `spanner:"dates_and_values"`
-	Attributes       []*spannerAttribute   `spanner:"attributes"`
+	Facets           spanner.NullJSON      `spanner:"facets"`
 }
 
-// spannerObservation represents the STRUCT returned in dates_and_values array.
+// spannerObservation maps the STRUCT inside dates_and_values ARRAY.
 type spannerObservation struct {
 	Date  string `spanner:"date"`
-	Value string `spanner:"value"`
-}
-
-// spannerAttribute represents the STRUCT returned in attributes array.
-type spannerAttribute struct {
-	Property string `spanner:"property"`
-	Value    string `spanner:"value"`
+	Value string `spanner:"str_value"`
 }
