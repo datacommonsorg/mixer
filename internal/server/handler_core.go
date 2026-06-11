@@ -17,6 +17,7 @@ package server
 
 import (
 	"context"
+	"log/slog"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	v1e "github.com/datacommonsorg/mixer/internal/server/v1/event"
@@ -49,11 +50,15 @@ func (s *Server) V2ResolveCore(
 		if !s.flags.EnableEmbeddingsResolver {
 			return nil, status.Errorf(codes.Unimplemented, "Resolving indicators is not enabled for this environment.")
 		}
+		if s.embeddingsServiceClient == nil {
+			return nil, status.Errorf(codes.FailedPrecondition, "Indicator resolution is not available because the embeddings service client is not initialized.")
+		}
 		idx, err := s.embeddingsServiceClient.SelectIndex(ctx)
 		if err != nil {
 			return nil, err
 		}
 		if idx != "" && !s.embeddingsServiceClient.ValidateIndex(ctx, idx) {
+			slog.Warn("Requested embeddings index is not available", "index", idx)
 			return nil, status.Errorf(codes.InvalidArgument, "Embeddings index %q is not available in the embeddings server", idx)
 		}
 		return s.embeddingsServiceClient.Resolve(ctx, idx, in.Request.GetNodes(), in.TypeOfValues, adapter, in.Request.GetExpandTopics())

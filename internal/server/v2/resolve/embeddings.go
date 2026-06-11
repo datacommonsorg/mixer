@@ -58,9 +58,13 @@ type EmbeddingsServiceClient struct {
 	defaultIndexes      string
 	lock                sync.RWMutex
 	availableIndexes    map[string]struct{}
+	isLoading           bool
 }
 
 func NewEmbeddingsServiceClient(httpClient *http.Client, embeddingsServerURL string, defaultIndexes string) *EmbeddingsServiceClient {
+	if httpClient == nil {
+		httpClient = &http.Client{}
+	}
 	return &EmbeddingsServiceClient{
 		httpClient:          httpClient,
 		embeddingsServerURL: embeddingsServerURL,
@@ -159,7 +163,7 @@ func (c *EmbeddingsServiceClient) callEmbeddingsServer(
 	req, err := http.NewRequestWithContext(ctx, "POST", searchVarsURL.String(), bytes.NewBuffer(requestBytes))
 	if err != nil {
 		slog.Error("Failed to create embeddings server request", "error", err, "url", c.embeddingsServerURL)
-		return nil, status.Errorf(codes.Internal, "An internal error occurred while connecting to the resolution service.")
+		return nil, status.Errorf(codes.Internal, "An internal error occurred while connecting to the embeddings service backend.")
 	}
 	req.Header.Set("Content-Type", "application/json")
 
@@ -167,7 +171,7 @@ func (c *EmbeddingsServiceClient) callEmbeddingsServer(
 	httpResp, err := c.httpClient.Do(req)
 	if err != nil {
 		slog.Error("Failed to contact embeddings server", "error", err, "url", c.embeddingsServerURL, "queries", nodes)
-		return nil, status.Errorf(codes.Unavailable, "The resolution service is currently unavailable. Please try again later.")
+		return nil, status.Errorf(codes.Unavailable, "The embeddings service backend is currently unavailable. Please try again later.")
 	}
 	defer func() {
 		// Drain and close the body to let the Transport reuse the connection
@@ -178,21 +182,16 @@ func (c *EmbeddingsServiceClient) callEmbeddingsServer(
 	if httpResp.StatusCode != http.StatusOK {
 		bodyBytes, _ := io.ReadAll(httpResp.Body)
 		slog.Error("Embeddings server returned non-200 status", "status_code", httpResp.StatusCode, "body", string(bodyBytes), "url", c.embeddingsServerURL, "queries", nodes)
-		
-		grpcCode := util.HTTPStatusToGRPCCode(httpResp.StatusCode)
 
-		errMsg := string(bodyBytes)
-		if errMsg == "" {
-			errMsg = "The resolution service encountered an error processing your request."
-		}
-		return nil, status.Errorf(grpcCode, "Embeddings server error: %s", errMsg)
+		grpcCode := util.HTTPStatusToGRPCCode(httpResp.StatusCode)
+		return nil, status.Errorf(grpcCode, "The embeddings service backend encountered an error processing your request.")
 	}
 
 	// Parse the response
 	var searchResp searchVarsResponse
 	if err := json.NewDecoder(httpResp.Body).Decode(&searchResp); err != nil {
 		slog.Error("Failed to decode embeddings server response", "error", err, "url", c.embeddingsServerURL)
-		return nil, status.Errorf(codes.Internal, "An internal error occurred while parsing the resolution response.")
+		return nil, status.Errorf(codes.Internal, "An internal error occurred while parsing the response from the embeddings service backend.")
 	}
 	return &searchResp, nil
 }
@@ -371,22 +370,8 @@ func (c *EmbeddingsServiceClient) fetchAvailableIndexes(ctx context.Context) (ma
 	return indexes, nil
 }
 
-// LoadAvailableIndexes fetches the available indexes from the embeddings server and caches them.
-func (c *EmbeddingsServiceClient) LoadAvailableIndexes(ctx context.Context) error {
-	if c.embeddingsServerURL == "" {
-		return nil
-	}
-	indexes, err := c.fetchAvailableIndexes(ctx)
-	if err != nil {
-		return err
-	}
-	c.lock.Lock()
-	defer c.lock.Unlock()
-	c.availableIndexes = indexes
-	return nil
-}
-
 // ValidateIndex checks if the given index (or comma-separated indexes) are available using cached config.
+// If the indexes are not loaded yet, it starts an asynchronous load and returns true (skipping validation for this request).
 func (c *EmbeddingsServiceClient) ValidateIndex(ctx context.Context, idx string) bool {
 	if c.embeddingsServerURL == "" {
 		return true
@@ -397,7 +382,40 @@ func (c *EmbeddingsServiceClient) ValidateIndex(ctx context.Context, idx string)
 	c.lock.RUnlock()
 
 	if availableIndexes == nil {
-		slog.Warn("Available embeddings indexes not loaded yet, skipping validation")
+		c.lock.Lock()
+		if c.availableIndexes != nil {
+			loadedIndexes := c.availableIndexes
+			c.lock.Unlock()
+			return c.checkIndexes(idx, loadedIndexes)
+		}
+		if c.isLoading {
+			c.lock.Unlock()
+			slog.Warn("Available embeddings indexes not loaded yet, skipping validation (load already in progress)")
+			return true
+		}
+		c.isLoading = true
+		c.lock.Unlock()
+
+		slog.Warn("Available embeddings indexes not loaded yet, initiating asynchronous load and skipping validation")
+		go func() {
+			defer func() {
+				c.lock.Lock()
+				c.isLoading = false
+				c.lock.Unlock()
+			}()
+
+			indexes, err := c.fetchAvailableIndexes(context.Background())
+			if err != nil {
+				slog.Error("Failed to fetch available embeddings indexes on-demand", "error", err)
+				return
+			}
+
+			c.lock.Lock()
+			c.availableIndexes = indexes
+			slog.Info("Successfully loaded embeddings indexes on-demand")
+			c.lock.Unlock()
+		}()
+
 		return true
 	}
 

@@ -20,6 +20,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+	"time"
 
 	"github.com/datacommonsorg/mixer/internal/featureflags"
 	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
@@ -118,7 +119,11 @@ func TestValidateEmbeddingsIndex(t *testing.T) {
 			}
 
 			client := resolve.NewEmbeddingsServiceClient(&http.Client{}, serverURL, "")
-			_ = client.LoadAvailableIndexes(context.Background())
+			// First call triggers the async load (if serverURL is set).
+			_ = client.ValidateIndex(context.Background(), tc.idxToValidate)
+			if serverURL != "" {
+				time.Sleep(100 * time.Millisecond)
+			}
 			got := client.ValidateIndex(context.Background(), tc.idxToValidate)
 			if got != tc.wantValid {
 				t.Errorf("ValidateIndex() = %v, want %v", got, tc.wantValid)

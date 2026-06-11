@@ -6,7 +6,9 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"strings"
+	"sync"
 	"testing"
+	"time"
 
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
@@ -113,7 +115,7 @@ func TestResolveUsingEmbeddings_Errors(t *testing.T) {
 				w.WriteHeader(http.StatusInternalServerError)
 				_, _ = w.Write([]byte("internal error"))
 			},
-			expectedError: "internal error",
+			expectedError: "The embeddings service backend encountered an error processing your request.",
 			expectedCode:  codes.Internal,
 		},
 		{
@@ -122,7 +124,7 @@ func TestResolveUsingEmbeddings_Errors(t *testing.T) {
 				w.WriteHeader(http.StatusBadRequest)
 				_, _ = w.Write([]byte("bad index name"))
 			},
-			expectedError: "bad index name",
+			expectedError: "The embeddings service backend encountered an error processing your request.",
 			expectedCode:  codes.InvalidArgument,
 		},
 		{
@@ -131,7 +133,7 @@ func TestResolveUsingEmbeddings_Errors(t *testing.T) {
 				w.WriteHeader(http.StatusNotFound)
 				_, _ = w.Write([]byte("index not found"))
 			},
-			expectedError: "index not found",
+			expectedError: "The embeddings service backend encountered an error processing your request.",
 			expectedCode:  codes.NotFound,
 		},
 		{
@@ -139,7 +141,7 @@ func TestResolveUsingEmbeddings_Errors(t *testing.T) {
 			serverHandler: func(w http.ResponseWriter, r *http.Request) {
 				_, _ = w.Write([]byte("{invalid-json"))
 			},
-			expectedError: "An internal error occurred while parsing the resolution response.",
+			expectedError: "An internal error occurred while parsing the response from the embeddings service backend.",
 			expectedCode:  codes.Internal,
 		},
 		{
@@ -423,5 +425,156 @@ func TestSelectEmbeddingsIndex(t *testing.T) {
 				}
 			}
 		})
+	}
+}
+
+func TestValidateIndex_OnDemandLoad(t *testing.T) {
+	var requestCount int
+	var lock sync.Mutex
+
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path != "/api/server_config" {
+			t.Errorf("Unexpected path: %s", r.URL.Path)
+		}
+
+		lock.Lock()
+		requestCount++
+		lock.Unlock()
+
+		_ = json.NewEncoder(w).Encode(map[string]interface{}{
+			"indexes": map[string]interface{}{
+				"base_uae_mem": map[string]interface{}{},
+			},
+		})
+	}))
+	defer server.Close()
+
+	client := NewEmbeddingsServiceClient(server.Client(), server.URL, "")
+
+	ctx := context.Background()
+
+	// 1. Initial call when availableIndexes is nil.
+	// It should return true (lenient fallback) and trigger async load.
+	isValid := client.ValidateIndex(ctx, "base_uae_mem")
+	if !isValid {
+		t.Errorf("Expected ValidateIndex to return true (lenient) when not loaded")
+	}
+
+	// 2. Wait a bit for the async load to complete.
+	time.Sleep(100 * time.Millisecond)
+
+	lock.Lock()
+	count := requestCount
+	lock.Unlock()
+	if count != 1 {
+		t.Errorf("Expected 1 request to embeddings server, got %d", count)
+	}
+
+	// 3. Second call. Now availableIndexes should be loaded.
+	// Valid index should return true.
+	isValid = client.ValidateIndex(ctx, "base_uae_mem")
+	if !isValid {
+		t.Errorf("Expected ValidateIndex to return true for valid index after load")
+	}
+
+	// Invalid index should return false.
+	isValid = client.ValidateIndex(ctx, "invalid_index")
+	if isValid {
+		t.Errorf("Expected ValidateIndex to return false for invalid index after load")
+	}
+}
+
+// Test: Constructor with nil HTTP Client.
+// Situation: We initialize the client passing nil for the httpClient parameter.
+// Expectation: The client is initialized with a default HTTP client, and calling methods on it does not panic.
+func TestNewEmbeddingsServiceClient_NilClient(t *testing.T) {
+	var requestCount int
+	var lock sync.Mutex
+
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		lock.Lock()
+		requestCount++
+		lock.Unlock()
+		w.WriteHeader(http.StatusOK)
+		_, _ = w.Write([]byte("{}"))
+	}))
+	defer server.Close()
+
+	// Pass nil for httpClient
+	client := NewEmbeddingsServiceClient(nil, server.URL, "")
+	if client.httpClient == nil {
+		t.Fatal("Expected httpClient to be initialized to default, got nil")
+	}
+
+	ctx := context.Background()
+	// Trigger index validation which executes a GET request using the client
+	_ = client.ValidateIndex(ctx, "any_index")
+
+	// Wait for async load to complete
+	time.Sleep(100 * time.Millisecond)
+
+	lock.Lock()
+	count := requestCount
+	lock.Unlock()
+	if count != 1 {
+		t.Errorf("Expected 1 request to embeddings server, got %d (client probably failed to call server)", count)
+	}
+}
+
+// Test: Concurrent on-demand loading.
+// Situation: 50 concurrent requests try to validate indexes when they are not loaded yet.
+// Expectation: Only one HTTP call is made to the embeddings server (meaning only one goroutine is spawned),
+//              and all requests return true (leniently).
+func TestValidateIndex_ConcurrentOnDemandLoad(t *testing.T) {
+	var requestCount int
+	var lock sync.Mutex
+
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		lock.Lock()
+		requestCount++
+		lock.Unlock()
+
+		// Add artificial delay to simulate slow HTTP fetch and let other concurrent requests hit the check
+		time.Sleep(50 * time.Millisecond)
+
+		w.WriteHeader(http.StatusOK)
+		_, _ = w.Write([]byte(`{"indexes": {"base_uae_mem": {}}}`))
+	}))
+	defer server.Close()
+
+	client := NewEmbeddingsServiceClient(&http.Client{}, server.URL, "")
+
+	ctx := context.Background()
+	var wg sync.WaitGroup
+	numConcurrentRequests := 50
+	results := make([]bool, numConcurrentRequests)
+
+	for i := 0; i < numConcurrentRequests; i++ {
+		wg.Add(1)
+		go func(index int) {
+			defer wg.Done()
+			results[index] = client.ValidateIndex(ctx, "base_uae_mem")
+		}(i)
+	}
+
+	wg.Wait()
+
+	// 1. All concurrent requests should return true (lenient)
+	for i, res := range results {
+		if !res {
+			t.Errorf("Request %d: Expected true (lenient) validation before config is fully loaded", i)
+		}
+	}
+
+	// 2. Wait for the spawned load to complete
+	time.Sleep(100 * time.Millisecond)
+
+	// 3. Verify exactly 1 request was made to the backend
+	lock.Lock()
+	count := requestCount
+	lock.Unlock()
+
+	if count != 1 {
+		t.Errorf("Expected exactly 1 request to embeddings server, got %d (redundant goroutines were probably spawned)", count)
 	}
 }

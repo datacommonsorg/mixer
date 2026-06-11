@@ -3,7 +3,10 @@ package server
 import (
 	"context"
 	"net/http"
+	"net/http/httptest"
+	"strings"
 	"testing"
+	"time"
 
 	"github.com/datacommonsorg/mixer/internal/featureflags"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
@@ -91,3 +94,109 @@ func TestV2ResolveCore_EmbeddingsFlag(t *testing.T) {
 		t.Error("Expected HTTP client to be called when flag is enabled")
 	}
 }
+
+// Test: Server with nil embeddingsServiceClient.
+// Situation: resolver is "indicator" and EnableEmbeddingsResolver is enabled, but embeddingsServiceClient is nil.
+// Expectation: Returns FailedPrecondition error.
+func TestV2ResolveCore_NilEmbeddingsClient(t *testing.T) {
+	ctx := context.Background()
+
+	s := &Server{
+		flags: &featureflags.Flags{
+			EnableEmbeddingsResolver: true,
+		},
+		embeddingsServiceClient: nil,
+	}
+
+	req := &pbv2.ResolveRequest{
+		Resolver: "indicator",
+		Property: "<-description->dcid",
+		Nodes:    []string{"foo"},
+	}
+
+	_, err := s.V2ResolveCore(
+		ctx,
+		&resolve.NormalizedResolveRequest{
+			Request:      req,
+			InProp:       "description",
+			OutProp:      "dcid",
+			TypeOfValues: nil,
+		})
+
+	if err == nil {
+		t.Error("Expected error when embeddingsServiceClient is nil, got nil")
+	} else {
+		if status.Code(err) != codes.FailedPrecondition {
+			t.Errorf("Expected FailedPrecondition error, got %v", err)
+		}
+	}
+}
+
+// Test: Server with invalid embeddings index.
+// Situation: resolver is "indicator" and EnableEmbeddingsResolver is enabled.
+//            The default index is configured as "invalid_idx", but the embeddings server config
+//            only lists "base_uae_mem".
+// Expectation: Once loaded, requests fail with InvalidArgument.
+func TestV2ResolveCore_InvalidIndex(t *testing.T) {
+	ctx := context.Background()
+
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		_, _ = w.Write([]byte(`{"indexes": {"base_uae_mem": {}}}`))
+	}))
+	defer server.Close()
+
+	client := resolve.NewEmbeddingsServiceClient(server.Client(), server.URL, "invalid_idx")
+
+	s := &Server{
+		flags: &featureflags.Flags{
+			EnableEmbeddingsResolver: true,
+		},
+		embeddingsServiceClient: client,
+	}
+
+	req := &pbv2.ResolveRequest{
+		Resolver: "indicator",
+		Property: "<-description->dcid",
+		Nodes:    []string{"foo"},
+	}
+
+	// 1. First call triggers the async load, should fail open (or not fail with InvalidArgument)
+	_, err := s.V2ResolveCore(
+		ctx,
+		&resolve.NormalizedResolveRequest{
+			Request:      req,
+			InProp:       "description",
+			OutProp:      "dcid",
+			TypeOfValues: nil,
+		})
+	if err != nil && status.Code(err) == codes.InvalidArgument {
+		t.Errorf("First call expected to fail open, but got InvalidArgument: %v", err)
+	}
+
+	// Wait for async load to finish
+	time.Sleep(100 * time.Millisecond)
+
+	// 2. Second call should fail with InvalidArgument
+	_, err = s.V2ResolveCore(
+		ctx,
+		&resolve.NormalizedResolveRequest{
+			Request:      req,
+			InProp:       "description",
+			OutProp:      "dcid",
+			TypeOfValues: nil,
+		})
+
+	if err == nil {
+		t.Error("Expected error for invalid index, got nil")
+	} else {
+		if status.Code(err) != codes.InvalidArgument {
+			t.Errorf("Expected InvalidArgument error, got %v", err)
+		}
+		expectedMsg := `Embeddings index "invalid_idx" is not available in the embeddings server`
+		if !strings.Contains(err.Error(), expectedMsg) {
+			t.Errorf("Expected error to contain %q, got %q", expectedMsg, err.Error())
+		}
+	}
+}
+

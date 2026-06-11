@@ -497,7 +497,6 @@ func main() {
 	// Register component lifecycles
 	registerTopicCacheLifecycle(mixerServer)
 	registerAgentServiceLifecycle(mixerServer)
-	registerEmbeddingsLifecycle(mixerServer, embeddingsServiceClient)
 
 	// Run all startup initialization hooks
 	if err := mixerServer.RunInitHooks(ctx); err != nil {
@@ -596,14 +595,5 @@ func registerAgentServiceLifecycle(s *server.Server) {
 	}
 }
 
-func registerEmbeddingsLifecycle(s *server.Server, client *resolve.EmbeddingsServiceClient) {
-	if client != nil {
-		s.RegisterLifecycle("embeddings-index-validation",
-			func(ctx context.Context) error {
-				return client.LoadAvailableIndexes(ctx)
-			},
-			nil,
-		)
-	}
-}
+
 
