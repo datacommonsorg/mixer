@@ -72,7 +72,7 @@ func parseArc(arrow, expr string) (*Arc, error) {
 	default:
 		return nil, status.Errorf(
 			codes.InvalidArgument,
-			"arc string should start with arrow but got %s",
+			"arc string should start with arrow (-> or <-) but got %s",
 			arrow,
 		)
 	}
@@ -89,10 +89,19 @@ func parseArc(arrow, expr string) (*Arc, error) {
 	if expr[0] == '[' {
 		if expr[len(expr)-1] != ']' {
 			return nil, status.Errorf(
-				codes.InvalidArgument, "invalid list string: %s", rawExpr)
+				codes.InvalidArgument, "invalid list string: %s, missing closing bracket ']'", rawExpr)
 		}
 		expr = expr[1 : len(expr)-1]
-		arc.BracketProps = strings.Split(expr, ",")
+
+		bracketProps, bracketFilters, err := parseBracketList(expr)
+		if err != nil {
+			return nil, err
+		}
+
+		arc.BracketProps = bracketProps
+		if len(bracketFilters) > 0 {
+			arc.BracketFilters = bracketFilters
+		}
 		return arc, nil
 	}
 	for i := 0; i < len(expr); i++ {
@@ -106,39 +115,19 @@ func parseArc(arrow, expr string) (*Arc, error) {
 		if expr[i] == '{' {
 			// <-containedInPlace{p:v}
 			arc.SingleProp = expr[0:i]
+			if arc.SingleProp == "" {
+				return nil, status.Errorf(
+					codes.InvalidArgument, "invalid property expression: %s, missing property name before filter", rawExpr)
+			}
 			expr = expr[i:]
 			break
 		}
 	}
 	// {prop1:[val1_1, val1_2], prop2:val2}
 	if len(expr) > 0 && expr[0] == '{' {
-		if expr[len(expr)-1] != '}' {
-			return nil, status.Errorf(
-				codes.InvalidArgument, "invalid filter string: %s", rawExpr)
-		}
-		filter := map[string][]string{}
-		expr = squareBracketReplacer.Replace(expr[1 : len(expr)-1])
-		parts := strings.Split(expr, ",")
-		lastKey := ""
-		for _, part := range parts {
-			if part == "" {
-				continue
-			}
-			if strings.Contains(part, ":") {
-				kv := strings.Split(part, ":")
-				if len(kv) != 2 || kv[0] == "" || kv[1] == "" {
-					return nil, status.Errorf(
-						codes.InvalidArgument, "invalid filter string: %s", rawExpr)
-				}
-				lastKey = kv[0]
-				filter[lastKey] = append(filter[lastKey], kv[1])
-			} else { // No ":" means this is another val in square bracket.
-				if lastKey == "" {
-					return nil, status.Errorf(
-						codes.InvalidArgument, "invalid filter string: %s", rawExpr)
-				}
-				filter[lastKey] = append(filter[lastKey], part)
-			}
+		filter, err := parseFilterString(expr)
+		if err != nil {
+			return nil, err
 		}
 		arc.Filter = filter
 		return arc, nil
@@ -159,7 +148,7 @@ func ParseProperty(expr string) ([]*Arc, error) {
 	}
 	if len(parts)%2 == 1 {
 		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid expression string: %s", expr)
+			codes.InvalidArgument, "invalid expression string: %s, expected alternating arrows and properties (e.g., ->name)", expr)
 	}
 	arcs := []*Arc{}
 	for i := 0; i < len(parts)/2; i++ {
@@ -177,7 +166,7 @@ func ParseLinkedNodes(expr string) (*LinkedNodes, error) {
 	parts := splitExpr(expr)
 	if len(parts) < 3 || len(parts)%2 == 0 {
 		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid expression string: %s", expr)
+			codes.InvalidArgument, "invalid expression string: %s, expected subject DCID followed by arrow and property (e.g., geoId/06->name)", expr)
 	}
 	g := &LinkedNodes{
 		Subject: parts[0],
@@ -200,7 +189,7 @@ func ParseContainedInPlace(expr string) (*ContainedInPlace, error) {
 	}
 	if len(g.Arcs) != 1 {
 		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid expression string: %s", expr)
+			codes.InvalidArgument, "invalid expression string: %s, expected format: placeDcid<-containedInPlace+{typeOf:ChildType}", expr)
 	}
 	arc := g.Arcs[0]
 	typeOfs, typeOfsOK := arc.Filter["typeOf"]
@@ -209,11 +198,113 @@ func ParseContainedInPlace(expr string) (*ContainedInPlace, error) {
 		arc.Filter == nil ||
 		!typeOfsOK || len(typeOfs) != 1 {
 		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid expression string: %s", expr)
+			codes.InvalidArgument, "invalid expression string: %s, expected format: placeDcid<-containedInPlace+{typeOf:ChildType}", expr)
 	}
 	if len(typeOfs) < 1 {
 		return nil, status.Errorf(
-			codes.InvalidArgument, "invalid expression string: %s", expr)
+			codes.InvalidArgument, "invalid expression string: %s, expected format: placeDcid<-containedInPlace+{typeOf:ChildType}", expr)
 	}
 	return &ContainedInPlace{Ancestor: g.Subject, ChildPlaceType: typeOfs[0]}, nil
+}
+
+// parseBracketList processes the inner contents of a bracketed property list
+func parseBracketList(expr string) ([]string, map[string]map[string][]string, error) {
+	var bracketProps []string
+	bracketFilters := make(map[string]map[string][]string)
+
+	start := 0
+	inBraces := false
+
+	for i := 0; i < len(expr); i++ {
+		switch expr[i] {
+		case '{':
+			inBraces = true
+		case '}':
+			inBraces = false
+		case ',':
+			if !inBraces {
+				part := expr[start:i]
+				if part != "" {
+					prop, filter, err := extractPropAndFilter(part)
+					if err != nil {
+						return nil, nil, err
+					}
+					bracketProps = append(bracketProps, prop)
+					if filter != nil {
+						bracketFilters[prop] = filter
+					}
+				}
+				start = i + 1
+			}
+		}
+	}
+
+	// Handle the final element after the last comma
+	if start < len(expr) {
+		part := expr[start:]
+		if part != "" {
+			prop, filter, err := extractPropAndFilter(part)
+			if err != nil {
+				return nil, nil, err
+			}
+			bracketProps = append(bracketProps, prop)
+			if filter != nil {
+				bracketFilters[prop] = filter
+			}
+		}
+	}
+
+	return bracketProps, bracketFilters, nil
+}
+
+// extractPropAndFilter separates a property name from its optional inline filter.
+func extractPropAndFilter(part string) (string, map[string][]string, error) {
+	idx := strings.IndexByte(part, '{')
+	if idx == -1 {
+		return part, nil, nil
+	}
+
+	prop := part[:idx]
+	if prop == "" {
+		return "", nil, status.Errorf(
+			codes.InvalidArgument, "invalid property expression: %s, missing property name before filter", part)
+	}
+
+	filter, err := parseFilterString(part[idx:])
+	if err != nil {
+		return "", nil, err
+	}
+	return prop, filter, nil
+}
+
+func parseFilterString(expr string) (map[string][]string, error) {
+	if expr[0] != '{' || expr[len(expr)-1] != '}' {
+		return nil, status.Errorf(
+			codes.InvalidArgument, "invalid filter string: %s, expected enclosing '{' and '}'", expr)
+	}
+	filter := map[string][]string{}
+	inner := squareBracketReplacer.Replace(expr[1 : len(expr)-1])
+	parts := strings.Split(inner, ",")
+	lastKey := ""
+	for _, part := range parts {
+		if part == "" {
+			continue
+		}
+		if strings.Contains(part, ":") {
+			kv := strings.Split(part, ":")
+			if len(kv) != 2 || kv[0] == "" || kv[1] == "" {
+				return nil, status.Errorf(
+					codes.InvalidArgument, "invalid filter string: %s, expected key:value format (e.g., {typeOf:City})", expr)
+			}
+			lastKey = kv[0]
+			filter[lastKey] = append(filter[lastKey], kv[1])
+		} else { // No ":" means this is another val in square bracket.
+			if lastKey == "" {
+				return nil, status.Errorf(
+					codes.InvalidArgument, "invalid filter string: %s, filter must start with a key:value pair (e.g., {typeOf:City})", expr)
+			}
+			filter[lastKey] = append(filter[lastKey], part)
+		}
+	}
+	return filter, nil
 }

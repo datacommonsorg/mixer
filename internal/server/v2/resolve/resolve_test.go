@@ -161,6 +161,20 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 			wantTypeOfValues: nil,
 		},
 		{
+			desc: "partial set - topic",
+			in: &pbv2.ResolveRequest{
+				Resolver: ResolveResolverTopic,
+			},
+			wantReq: &pbv2.ResolveRequest{
+				Target:   ResolveTargetBaseAndCustom,
+				Resolver: ResolveResolverTopic,
+				Property: ResolveDefaultPropertyExpression,
+			},
+			wantInProp:       "description",
+			wantOutProp:      "dcid",
+			wantTypeOfValues: nil,
+		},
+		{
 			desc: "fully set",
 			in: &pbv2.ResolveRequest{
 				Target:   ResolveTargetBaseOnly,
@@ -204,7 +218,7 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 				Resolver: "invalid",
 			},
 			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Invalid 'resolver': valid values are 'indicator', 'place'",
+			wantErrMsg: "Invalid inputs in request. Invalid 'resolver': valid values are 'indicator', 'place', 'topic'",
 		},
 		{
 			desc: "invalid target and resolver",
@@ -213,7 +227,7 @@ func TestValidateAndParseResolveInputs(t *testing.T) {
 				Resolver: "invalid_resolver",
 			},
 			wantErr:    true,
-			wantErrMsg: "Invalid inputs in request. Invalid 'target': valid values are 'custom_only', 'base_only', 'base_and_custom'. Invalid 'resolver': valid values are 'indicator', 'place'",
+			wantErrMsg: "Invalid inputs in request. Invalid 'target': valid values are 'custom_only', 'base_only', 'base_and_custom'. Invalid 'resolver': valid values are 'indicator', 'place', 'topic'",
 		},
 		{
 			desc: "invalid property expression",

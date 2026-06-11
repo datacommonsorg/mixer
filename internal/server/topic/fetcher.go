@@ -30,6 +30,20 @@ import (
 	"github.com/datacommonsorg/mixer/internal/util"
 )
 
+const (
+	// Topic properties
+	relevantVariableListProp  = "relevantVariableList"
+	relevantVariableListQuery = "->relevantVariableList"
+	relevantVariableProp      = "relevantVariable"
+	relevantVariableQuery     = "->relevantVariable"
+
+	// SVPG properties
+	memberListProp  = "memberList"
+	memberListQuery = "->memberList"
+	memberProp      = "member"
+	memberQuery     = "->member"
+)
+
 // FetchTopicsFromKG fetches all topics and their relevant variables from the KG, builds the hierarchy, detects roots, and returns a TopicHierarchy.
 func (m *TopicCacheManager) FetchTopicsFromKG(ctx context.Context) (*pb.TopicHierarchy, error) {
 	defer util.TimeTrack(time.Now(), "topic: fetchTopicsFromKG")
@@ -57,17 +71,67 @@ func (m *TopicCacheManager) FetchTopicsFromKG(ctx context.Context) (*pb.TopicHie
 		return nil, err
 	}
 
-	// Link variables/sub-topics to their parent topics
-	for dcid, relevantVars := range relevantVarsMap {
-		if t, ok := topics[dcid]; ok {
-			t.RelevantVariables = relevantVars
+	// Link variables/sub-topics to their parent topics and exclude topics with no members
+	for dcid := range topics {
+		relevantVars, hasMembers := relevantVarsMap[dcid]
+		if hasMembers && len(relevantVars) > 0 {
+			topics[dcid].RelevantVariables = relevantVars
+		} else {
+			delete(topics, dcid)
 		}
 	}
+
+	// Clean up dangling references to unpopulated/skipped child topics iteratively
+	pruneDanglingSubTopics(topics)
 
 	// Build the hierarchy and automatically discover root topics
 	hierarchy := m.buildHierarchy(topics)
 
 	return hierarchy, nil
+}
+
+// parseStatVarInfo extracts metadata properties from a LinkedGraph and populates a StatVarInfo struct.
+func parseStatVarInfo(dcid string, graph *pbv2.LinkedGraph) *StatVarInfo {
+	info := &StatVarInfo{Dcid: dcid}
+	if graph == nil || graph.GetArcs() == nil {
+		return info
+	}
+	if arc, exists := graph.GetArcs()["name"]; exists && len(arc.GetNodes()) > 0 {
+		info.Name = extractName(arc.GetNodes()[0])
+	}
+	info.ObservationProperties = extractValues(graph.GetArcs()["observationProperty"])
+	info.EntityMappings = extractValues(graph.GetArcs()["entityMapping"])
+	return info
+}
+
+// parseStatVarInfos populates metadata for all requested DCIDs from a NodeResponse.
+func parseStatVarInfos(dcids []string, resp *pbv2.NodeResponse) map[string]*StatVarInfo {
+	res := make(map[string]*StatVarInfo, len(dcids))
+	for _, dcid := range dcids {
+		res[dcid] = &StatVarInfo{Dcid: dcid}
+	}
+	if resp == nil || resp.GetData() == nil {
+		return res
+	}
+	for dcid, graph := range resp.GetData() {
+		res[dcid] = parseStatVarInfo(dcid, graph)
+	}
+	return res
+}
+
+// fetchStatVarInfos queries the Knowledge Graph for name, observationProperty, and entityMapping.
+func (m *TopicCacheManager) fetchStatVarInfos(ctx context.Context, dcids []string) (map[string]*StatVarInfo, error) {
+	defer util.TimeTrack(time.Now(), "topic: fetchStatVarInfos")
+	req := &pbv2.NodeRequest{
+		Nodes:    dcids,
+		Property: "->[name, observationProperty, entityMapping]",
+	}
+	resp, err := m.fetcher.NodeFetchAll(ctx, req)
+	if err != nil {
+		return nil, fmt.Errorf("failed to fetch stat var infos: %w", err)
+	}
+
+	return parseStatVarInfos(dcids, resp), nil
 }
 
 // extractName attempts to extract a name for the entity.
@@ -83,6 +147,22 @@ func extractName(entity *pb.EntityInfo) string {
 		return value
 	}
 	return entity.GetDcid()
+}
+
+// extractValues iterates through nodes in an arc, extracting values or DCIDs as a string slice.
+func extractValues(arc *pbv2.Nodes) []string {
+	if arc == nil {
+		return nil
+	}
+	var values []string
+	for _, n := range arc.GetNodes() {
+		if val := n.GetValue(); val != "" {
+			values = append(values, val)
+		} else if d := n.GetDcid(); d != "" {
+			values = append(values, d)
+		}
+	}
+	return values
 }
 
 // fetchTopicNodes fetches all topic nodes from the KG.
@@ -146,6 +226,38 @@ func isSvpgDcid(dcid string) bool {
 // isTopicDcid checks if the DCID belongs to a Topic.
 func isTopicDcid(dcid string) bool {
 	return strings.Contains(dcid, "/topic/")
+}
+
+// pruneDanglingSubTopics sweeps the topics map, iteratively deleting references to child topics
+// that are not present in the topics map (i.e., skipped because they are unpopulated/empty).
+// It runs until convergence to handle nested/transitive dependencies.
+func pruneDanglingSubTopics(topics map[string]*pb.TopicNode) {
+	for {
+		var changed bool
+		for dcid, t := range topics {
+			var cleaned []string
+			for _, child := range t.RelevantVariables {
+				if isTopicDcid(child) {
+					if _, exists := topics[child]; exists {
+						cleaned = append(cleaned, child)
+					}
+				} else {
+					cleaned = append(cleaned, child)
+				}
+			}
+			if len(cleaned) != len(t.RelevantVariables) {
+				t.RelevantVariables = cleaned
+				changed = true
+			}
+			if len(t.RelevantVariables) == 0 {
+				delete(topics, dcid)
+				changed = true
+			}
+		}
+		if !changed {
+			break
+		}
+	}
 }
 
 // parseTopicMembers parses the relevantVariableList arcs, extracting children and collecting referenced SVPGs.
@@ -216,43 +328,122 @@ func expandTopicMembers(topicToChildren map[string][]string, svpgToMembers map[s
 	return relevantVarsMap
 }
 
-// fetchTopicMembers batches the datasource requests to fetch Topic children (relevantVariableList).
-// It populates topicToChildren mapping and registers linked SVPGs in svpgSet.
+// populateTopicMembersFromList processes raw graph query results, parses children, and updates mapping structures.
+// It returns the total count of skipped nodes and total successfully resolved child members.
+// Nodes are skipped when they lack child variables or sub-topics, which typically indicates that the
+// corresponding list properties (relevantVariableList) are not yet populated in the Knowledge Graph.
+func populateTopicMembersFromList(
+	data map[string]*pbv2.LinkedGraph,
+	requested []string,
+	topicToChildren map[string][]string,
+	svpgSet map[string]struct{},
+) (int, int) {
+	var skippedCount, resolvedCount int
+	for _, dcid := range requested {
+		graph, ok := data[dcid]
+		if !ok {
+			slog.Debug("Skipped Topic: no graph data found in database", "dcid", dcid)
+			skippedCount++
+			continue
+		}
+		nodes, ok := graph.GetArcs()[relevantVariableListProp]
+		if !ok || len(nodes.GetNodes()) == 0 {
+			slog.Debug("Skipped Topic: relevantVariableList property not populated in KG", "dcid", dcid)
+			skippedCount++
+			continue
+		}
+
+		children := parseTopicMembers(nodes, svpgSet)
+		if len(children) > 0 {
+			topicToChildren[dcid] = children
+			resolvedCount += len(children)
+		} else {
+			slog.Debug("Skipped Topic: parsed relevantVariableList was empty", "dcid", dcid)
+			skippedCount++
+		}
+	}
+	return skippedCount, resolvedCount
+}
+
+// populateSvpgMembersFromList processes raw graph query results, parses members, and updates mapping structures.
+// It returns the total count of skipped nodes and total successfully resolved child members.
+// Nodes are skipped when they lack members, which typically indicates that the
+// corresponding list properties (memberList) are not yet populated in the Knowledge Graph.
+func populateSvpgMembersFromList(
+	data map[string]*pbv2.LinkedGraph,
+	requested []string,
+	svpgToMembers map[string][]string,
+) (int, int) {
+	var skippedCount, resolvedCount int
+	for _, dcid := range requested {
+		graph, ok := data[dcid]
+		if !ok {
+			slog.Debug("Skipped SVPG: no graph data found in database", "dcid", dcid)
+			skippedCount++
+			continue
+		}
+		nodes, ok := graph.GetArcs()[memberListProp]
+		if !ok || len(nodes.GetNodes()) == 0 {
+			slog.Debug("Skipped SVPG: memberList property not populated in KG", "dcid", dcid)
+			skippedCount++
+			continue
+		}
+
+		members := parseSvpgMembers(nodes)
+		if len(members) > 0 {
+			svpgToMembers[dcid] = members
+			resolvedCount += len(members)
+		} else {
+			slog.Debug("Skipped SVPG: parsed memberList was empty", "dcid", dcid)
+			skippedCount++
+		}
+	}
+	return skippedCount, resolvedCount
+}
+
+// fetchTopicMembers batches the datasource requests to fetch Topic children via relevantVariableList.
+// Topics lacking populated lists are excluded from the hierarchy, and the skipped count is logged.
 func (m *TopicCacheManager) fetchTopicMembers(ctx context.Context, topicDcids []string, topicToChildren map[string][]string, svpgSet map[string]struct{}) error {
 	req := &pbv2.NodeRequest{
 		Nodes:    topicDcids,
-		Property: "->relevantVariableList",
+		Property: relevantVariableListQuery,
 	}
 	resp, err := m.fetcher.NodeFetchAll(ctx, req)
 	if err != nil {
-		return fmt.Errorf("failed to fetch topic properties: %w", err)
+		return fmt.Errorf("failed to fetch topic relevantVariableList: %w", err)
 	}
 
-	for dcid, graph := range resp.GetData() {
-		if nodes, ok := graph.GetArcs()["relevantVariableList"]; ok {
-			topicToChildren[dcid] = parseTopicMembers(nodes, svpgSet)
-		}
-	}
+	skippedCount, resolvedCount := populateTopicMembersFromList(resp.GetData(), topicDcids, topicToChildren, svpgSet)
+
+	slog.Info("Topic members loaded successfully",
+		"totalRequested", len(topicDcids),
+		"resolvedTopicsCount", len(topicDcids)-skippedCount,
+		"skippedTopicsCount", skippedCount,
+		"totalMembersLoaded", resolvedCount,
+	)
 	return nil
 }
 
-// fetchSvpgMembers batches the datasource requests to fetch SVPG direct member variables (memberList).
-// It populates svpgToMembers mapping.
+// fetchSvpgMembers batches the datasource requests to fetch SVPG member variables via memberList.
+// SVPGs lacking populated lists are excluded, and the skipped count is logged.
 func (m *TopicCacheManager) fetchSvpgMembers(ctx context.Context, svpgDcids []string, svpgToMembers map[string][]string) error {
 	req := &pbv2.NodeRequest{
 		Nodes:    svpgDcids,
-		Property: "->memberList",
+		Property: memberListQuery,
 	}
 	resp, err := m.fetcher.NodeFetchAll(ctx, req)
 	if err != nil {
-		return fmt.Errorf("failed to fetch svpg properties: %w", err)
+		return fmt.Errorf("failed to fetch svpg memberList: %w", err)
 	}
 
-	for dcid, graph := range resp.GetData() {
-		if nodes, ok := graph.GetArcs()["memberList"]; ok {
-			svpgToMembers[dcid] = parseSvpgMembers(nodes)
-		}
-	}
+	skippedCount, resolvedCount := populateSvpgMembersFromList(resp.GetData(), svpgDcids, svpgToMembers)
+
+	slog.Info("SVPG members loaded successfully",
+		"totalRequested", len(svpgDcids),
+		"resolvedSvpgsCount", len(svpgDcids)-skippedCount,
+		"skippedSvpgsCount", skippedCount,
+		"totalMembersLoaded", resolvedCount,
+	)
 	return nil
 }
 

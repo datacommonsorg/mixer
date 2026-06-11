@@ -44,6 +44,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/remote"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/internal/server/topic"
+	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/server/v3/observation"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -60,10 +61,10 @@ import (
 )
 
 const (
-	// Redis cache entries have a TTL of 1 day.
-	// Setting refresh interval to 1 hour minimizes the staleness window when Redis TTL expires
-	// without incurring excessive Redis polling overhead.
-	topicCacheRefreshInterval = 1 * time.Hour
+	// Refresh interval for server hooks.
+	periodicRefreshInterval = 1 * time.Hour
+	// Timeout for HTTP requests to the embeddings service.
+	embeddingsServiceTimeout = 10 * time.Second
 )
 
 var (
@@ -396,7 +397,7 @@ func main() {
 	// Initialize SpannerDataSource now that dependencies are ready.
 	var spannerDS datasource.DataSource
 	if spannerClient != nil {
-		spannerDS = spanner.NewSpannerDataSource(spannerClient, store.RecogPlaceStore, mapsClient, flags.EnableSpannerSearchEmbeddings)
+		spannerDS = spanner.NewSpannerDataSource(spannerClient, store.RecogPlaceStore, mapsClient)
 		// TODO: Order sources by priority once other implementations are added.
 		sources = append(sources, spannerDS)
 	}
@@ -472,10 +473,15 @@ func main() {
 	slog.Info("Dispatcher initialized", "processorsCount", len(processors))
 
 	// Create server object
-	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs, *embeddingsServerURL, *resolveEmbeddingsIndexes, *useSpannerGraph, topicCacheManager)
+	embeddingsServiceClient := resolve.NewEmbeddingsServiceClient(
+		&http.Client{Timeout: embeddingsServiceTimeout},
+		*embeddingsServerURL,
+		*resolveEmbeddingsIndexes,
+	)
+	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs, embeddingsServiceClient, *useSpannerGraph, topicCacheManager)
 	pbs.RegisterMixerServer(srv, mixerServer)
 
-	// Start background tasks for topic cache manager
+	// If Topic Cache is enabled, construct and initialize the NodeFetcher.
 	if topicCacheManager != nil {
 		var nodeFetcher nodefetcher.NodeAllFetcher
 		if shouldUseSpannerGraph && spannerDS != nil {
@@ -485,9 +491,23 @@ func main() {
 			slog.Info("Setting up Store V2NodeCore NodeFetcher for topic cache")
 			nodeFetcher = nodefetcher.NewFuncNodeFetcher(mixerServer.V2NodeCore)
 		}
-		topicCacheManager.Start(ctx, nodeFetcher, topicCacheRefreshInterval)
-		defer topicCacheManager.Close()
+		topicCacheManager.InitFetcher(nodeFetcher)
 	}
+	
+	// Register component lifecycles
+	registerTopicCacheLifecycle(mixerServer)
+	registerAgentServiceLifecycle(mixerServer)
+	registerEmbeddingsLifecycle(mixerServer, embeddingsServiceClient)
+
+	// Run all startup initialization hooks
+	if err := mixerServer.RunInitHooks(ctx); err != nil {
+		slog.Error("Failed to initialize server components during startup", "error", err)
+		os.Exit(1)
+	}
+
+	// Start the periodic scheduler
+	mixerServer.StartPeriodicRefresher(ctx, periodicRefreshInterval)
+	defer mixerServer.ClosePeriodicRefresher()
 
 	// Subscribe to branch cache update
 	if *useBranchBigtable {
@@ -545,3 +565,45 @@ func main() {
 		os.Exit(1)
 	}
 }
+
+func registerTopicCacheLifecycle(s *server.Server) {
+	if tcm := s.TopicCacheManager(); tcm != nil {
+		s.RegisterLifecycle("topic-cache",
+			func(ctx context.Context) error {
+				_, err := tcm.LoadHierarchy(ctx)
+				return err
+			},
+			func(ctx context.Context) error {
+				_, err := tcm.LoadHierarchy(ctx)
+				return err
+			},
+		)
+	}
+}
+
+func registerAgentServiceLifecycle(s *server.Server) {
+	if agentSvc := s.AgentService(); agentSvc != nil {
+		s.RegisterLifecycle("agent-service-cache",
+			func(ctx context.Context) error {
+				agentSvc.Reset()
+				return nil
+			},
+			func(ctx context.Context) error {
+				agentSvc.Reset()
+				return nil
+			},
+		)
+	}
+}
+
+func registerEmbeddingsLifecycle(s *server.Server, client *resolve.EmbeddingsServiceClient) {
+	if client != nil {
+		s.RegisterLifecycle("embeddings-index-validation",
+			func(ctx context.Context) error {
+				return client.LoadAvailableIndexes(ctx)
+			},
+			nil,
+		)
+	}
+}
+

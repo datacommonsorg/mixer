@@ -62,6 +62,10 @@ func (m *coordinateMockSpannerClient) CheckVariableSourceExistence(ctx context.C
 	return nil, nil
 }
 
+func (m *coordinateMockSpannerClient) CheckVariableGroupPlaceExistence(ctx context.Context, variableGroups []string, entities []string, predicate string) ([][]string, error) {
+	return nil, nil
+}
+
 func (m *coordinateMockSpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
 	return nil, nil
 }
@@ -163,7 +167,7 @@ func TestResolveCoordinate(t *testing.T) {
 				},
 			},
 		},
-	}, nil, nil, false)
+	}, nil, nil)
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"37.42#-122.08"},
@@ -230,7 +234,7 @@ func TestResolveCoordinateFetchesAllCellsInBatch(t *testing.T) {
 				},
 			},
 		},
-	}, nil, nil, false)
+	}, nil, nil)
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"37.42#-122.08", "36.77#-119.41"},
@@ -285,7 +289,7 @@ func TestResolveCoordinateTypeFilterUsesDominantType(t *testing.T) {
 				},
 			},
 		},
-	}, nil, nil, false)
+	}, nil, nil)
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"37.42#-122.08"},
@@ -332,7 +336,7 @@ func TestResolveCoordinateSkipsS2CellCandidatesByType(t *testing.T) {
 				},
 			},
 		},
-	}, nil, nil, false)
+	}, nil, nil)
 
 	got, err := ds.Resolve(context.Background(), &pbv2.ResolveRequest{
 		Nodes:    []string{"37.42#-122.08"},

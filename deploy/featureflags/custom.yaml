@@ -1,0 +1,4 @@
+# This should only be used for DCP, do not use it for CDC
+flags:
+  EnableEmbeddingsResolver: false
+  EnableSpannerSearchEmbeddings: true

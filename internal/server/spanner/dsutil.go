@@ -31,6 +31,7 @@ import (
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server/pagination"
 	"github.com/datacommonsorg/mixer/internal/server/ranking"
+	"github.com/datacommonsorg/mixer/internal/server/stat"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	v3 "github.com/datacommonsorg/mixer/internal/server/v3"
@@ -396,12 +397,12 @@ func groupObservationsByVariableAndEntity(observations []*Observation) map[varia
 	return result
 }
 
-func generateObsResponse(variable *pbv2.DcidOrExpression, observations []*Observation, includeObs bool) *pbv2.ObservationResponse {
+func generateObsResponse(variable *pbv2.DcidOrExpression, observations []*Observation, includeObs bool, shouldFilterInferiorFacets bool) *pbv2.ObservationResponse {
 	response := newObservationResponse(variable)
 
 	variableEntityObs := groupObservationsByVariableAndEntity(observations)
 	for variableEntity, obs := range variableEntityObs {
-		orderedFacets, facets := observationsToOrderedFacets(obs, includeObs)
+		orderedFacets, facets := observationsToOrderedFacets(obs, includeObs, shouldFilterInferiorFacets)
 		variableObs, ok := response.ByVariable[variableEntity.variable]
 		if !ok {
 			variableObs = &pbv2.VariableObservation{
@@ -471,7 +472,12 @@ func mergeEntityOrderedFacets(
 }
 
 func obsToObsResponse(req *pbv2.ObservationRequest, observations []*Observation) *pbv2.ObservationResponse {
-	response := generateObsResponse(req.Variable, observations, true /*includeObs*/)
+	// Whether the response should filter out low ranked facets from the response.
+	isContainedInWithDate := (req.Entity.Expression != "" && req.Date != "")
+	isDirectWithLatestDate := (req.Entity.Expression == "" && req.Date == shared.LATEST)
+	shouldFilterInferiorFacets := isContainedInWithDate || isDirectWithLatestDate
+
+	response := generateObsResponse(req.Variable, observations, true /*includeObs*/, shouldFilterInferiorFacets)
 
 	// Attach all requested entity dcids to response.
 	if len(req.Entity.Dcids) > 0 {
@@ -489,7 +495,7 @@ func obsToObsResponse(req *pbv2.ObservationRequest, observations []*Observation)
 }
 
 func obsToFacetResponse(req *pbv2.ObservationRequest, observations []*Observation) *pbv2.ObservationResponse {
-	response := generateObsResponse(req.Variable, observations, false /*includeObs*/)
+	response := generateObsResponse(req.Variable, observations, false /*includeObs*/, false /*shouldFilterInferiorFacets*/)
 
 	if len(req.Entity.Dcids) > 0 {
 		return response
@@ -532,6 +538,7 @@ func obsToExistenceResponse(req *pbv2.ObservationRequest, observations []*Observ
 func observationsToOrderedFacets(
 	observations []*Observation,
 	includeObs bool,
+	shouldFilterInferiorFacets bool,
 ) ([]*pbv2.FacetObservation, map[string]*pb.Facet) {
 	facets := map[string]*pb.Facet{}
 	placeVariableFacets := []*pb.PlaceVariableFacet{}
@@ -553,6 +560,11 @@ func observationsToOrderedFacets(
 	orderedFacets := []*pbv2.FacetObservation{}
 	sort.Sort(ranking.FacetByRank(placeVariableFacets))
 	for _, pvf := range placeVariableFacets {
+		// If there is higher quality facet, then do not pick from the inferior facet even it could have more recent data.
+		if shouldFilterInferiorFacets && len(orderedFacets) > 0 && stat.IsInferiorFacet(pvf.Facet) {
+			delete(facets, pvf.FacetId)
+			continue
+		}
 		orderedFacets = append(orderedFacets, facetIdToFacetObs[pvf.FacetId])
 	}
 

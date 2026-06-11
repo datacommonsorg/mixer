@@ -56,11 +56,10 @@ var svgGroupInfoExclusionList = map[string]struct{}{
 
 // SpannerDataSource represents a data source that interacts with Spanner.
 type SpannerDataSource struct {
-	client                        SpannerClient
-	recogPlaceStore               *files.RecogPlaceStore
-	mapsClient                    internalmaps.MapsClient
-	searchConfig                  *SpannerSearchConfig
-	enableSpannerSearchEmbeddings bool
+	client          SpannerClient
+	recogPlaceStore *files.RecogPlaceStore
+	mapsClient      internalmaps.MapsClient
+	searchConfig    *SpannerSearchConfig
 }
 
 const (
@@ -73,15 +72,13 @@ func NewSpannerDataSource(
 	client SpannerClient,
 	recogPlaceStore *files.RecogPlaceStore,
 	mapsClient internalmaps.MapsClient,
-	enableSpannerSearchEmbeddings bool,
 ) *SpannerDataSource {
 	cfg, _ := loadSpannerSearchConfig()
 	return &SpannerDataSource{
-		client:                        client,
-		recogPlaceStore:               recogPlaceStore,
-		mapsClient:                    mapsClient,
-		searchConfig:                  cfg,
-		enableSpannerSearchEmbeddings: enableSpannerSearchEmbeddings,
+		client:          client,
+		recogPlaceStore: recogPlaceStore,
+		mapsClient:      mapsClient,
+		searchConfig:    cfg,
 	}
 }
 
@@ -298,9 +295,22 @@ func (sds *SpannerDataSource) handleExistenceRequest(
 		allRows = append(allRows, rows...)
 	}
 
-	// 5. Groups + Places (Currently Unsupported)
-	if (len(svgs) > 0 || len(topics) > 0) && len(places) > 0 {
-		slog.Warn("Place existence checks for StatVarGroup/Topic are not supported in Spanner yet, skipping.", "svgs", svgs, "topics", topics)
+	// 5. SVGs + Places
+	if len(svgs) > 0 && len(places) > 0 {
+		rows, err := sds.client.CheckVariableGroupPlaceExistence(ctx, svgs, places, "linkedMemberOf")
+		if err != nil {
+			return nil, fmt.Errorf("error checking SVG place existence: %w", err)
+		}
+		allRows = append(allRows, rows...)
+	}
+
+	// 6. Topics + Places
+	if len(topics) > 0 && len(places) > 0 {
+		rows, err := sds.client.CheckVariableGroupPlaceExistence(ctx, topics, places, "linkedMember")
+		if err != nil {
+			return nil, fmt.Errorf("error checking Topic place existence: %w", err)
+		}
+		allRows = append(allRows, rows...)
 	}
 
 	obs := existenceRowsToObservations(allRows)
@@ -417,10 +427,7 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 	}
 
 	if resolver := normalizedResolveRequest.Request.GetResolver(); resolver == resolvev2.ResolveResolverIndicator {
-		if !sds.enableSpannerSearchEmbeddings {
-			slog.Warn("Received unsupported ResolveResolverIndicator request to Spanner", "request", req)
-			return &pbv2.ResolveResponse{}, nil
-		}
+		slog.Info("SpannerDataSource: Starting resolution", "resolver", resolver, "num_nodes", len(req.GetNodes()), "inProp", normalizedResolveRequest.InProp)
 		return sds.vectorSearchResolution(ctx, normalizedResolveRequest)
 	}
 

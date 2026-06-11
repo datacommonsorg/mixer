@@ -40,12 +40,25 @@ func (s *Server) V2ResolveCore(
 	ctx context.Context,
 	in *resolve.NormalizedResolveRequest,
 ) (*pbv2.ResolveResponse, error) {
-	// Check for explicit "indicator" resolver, otherwise default to legacy place resolver logic.
-	if resolver := in.Request.GetResolver(); resolver == resolve.ResolveResolverIndicator {
+	// Check for explicit "indicator" or "topic" resolvers, otherwise default to legacy place resolver logic.
+	adapter := s.newTopicExpander()
+
+	resolver := in.Request.GetResolver()
+	switch resolver {
+	case resolve.ResolveResolverIndicator:
 		if !s.flags.EnableEmbeddingsResolver {
 			return nil, status.Errorf(codes.Unimplemented, "Resolving indicators is not enabled for this environment.")
 		}
-		return resolve.ResolveUsingEmbeddings(ctx, s.httpClient, s.embeddingsServerURL, s.resolveEmbeddingsIndexes, in.Request.GetNodes(), in.TypeOfValues)
+		idx, err := s.embeddingsServiceClient.SelectIndex(ctx)
+		if err != nil {
+			return nil, err
+		}
+		if idx != "" && !s.embeddingsServiceClient.ValidateIndex(ctx, idx) {
+			return nil, status.Errorf(codes.InvalidArgument, "Embeddings index %q is not available in the embeddings server", idx)
+		}
+		return s.embeddingsServiceClient.Resolve(ctx, idx, in.Request.GetNodes(), in.TypeOfValues, adapter, in.Request.GetExpandTopics())
+	case resolve.ResolveResolverTopic:
+		return resolve.ResolveTopics(ctx, adapter, in.Request.GetNodes(), in.Request.GetExpandTopics())
 	}
 
 	// Resolve places based on property expression
@@ -90,7 +103,7 @@ func (s *Server) V2NodeCore(
 			// Examples:
 			//   <-containedInPlace+{typeOf:City}
 			typeOfs, ok := arc.Filter["typeOf"]
-			if !ok || len(typeOfs) != 1 {
+			if !ok || len(typeOfs) == 0 {
 				return nil, status.Errorf(codes.InvalidArgument,
 					"invalid filter for %s", in.GetProperty())
 			}
@@ -101,7 +114,7 @@ func (s *Server) V2NodeCore(
 				in.GetNodes(),
 				arc.SingleProp,
 				direction,
-				typeOfs[0],
+				typeOfs,
 			)
 		}
 
@@ -125,6 +138,7 @@ func (s *Server) V2NodeCore(
 				direction,
 				int(in.GetLimit()),
 				in.GetNextToken(),
+				arc,
 			)
 		}
 
@@ -152,6 +166,7 @@ func (s *Server) V2NodeCore(
 				direction,
 				int(in.GetLimit()),
 				in.GetNextToken(),
+				arc,
 			)
 		}
 	}

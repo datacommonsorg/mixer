@@ -11,6 +11,12 @@
               "latest_date": "2024"
             },
             {
+              "facet_id": "553113735",
+              "obs_count": 55,
+              "earliest_date": "1971",
+              "latest_date": "2025"
+            },
+            {
               "facet_id": "327307087",
               "obs_count": 34,
               "earliest_date": "1990",
@@ -40,9 +46,9 @@
           "ordered_facets": [
             {
               "facet_id": "1125128424",
-              "obs_count": 125,
+              "obs_count": 126,
               "earliest_date": "1900",
-              "latest_date": "2024"
+              "latest_date": "2025"
             },
             {
               "facet_id": "1830475576",
@@ -134,9 +140,9 @@
           "ordered_facets": [
             {
               "facet_id": "1125128424",
-              "obs_count": 125,
+              "obs_count": 126,
               "earliest_date": "1900",
-              "latest_date": "2024"
+              "latest_date": "2025"
             },
             {
               "facet_id": "1457828370",
@@ -261,7 +267,7 @@
     },
     "1460668177": {
       "import_name": "WorldDevelopmentIndicators",
-      "provenance_url": "https://datacatalog.worldbank.org/dataset/world-development-indicators/",
+      "provenance_url": "https://datatopics.worldbank.org/world-development-indicators/",
       "observation_period": "P1Y"
     },
     "1577796022": {
@@ -312,6 +318,10 @@
       "import_name": "CensusACS1YearSurvey",
       "provenance_url": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
       "measurement_method": "CensusACS1yrSurvey"
+    },
+    "553113735": {
+      "import_name": "CanadaStatisticsAgeGender",
+      "provenance_url": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000501"
     },
     "586440999": {
       "import_name": "CDC_Mortality_UnderlyingCause",

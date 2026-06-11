@@ -25,8 +25,10 @@ import (
 	"net/url"
 	"path"
 	"strings"
+	"sync"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -38,29 +40,56 @@ const (
 	SearchVarsQueryEndpoint         = "/api/search_vars"
 )
 
+const (
+	LabelMultiEntity     = "multi-entity"
+	IndexBaseMultiEntity = "base_multi_entity"
+	LabelBaseNL          = "base-nl"
+	IndexBaseUaeMem      = "base_uae_mem"
+)
+
+var labelToIndex = map[string]string{
+	LabelMultiEntity: IndexBaseMultiEntity,
+	LabelBaseNL:      IndexBaseUaeMem,
+}
+
+type EmbeddingsServiceClient struct {
+	httpClient          *http.Client
+	embeddingsServerURL string
+	defaultIndexes      string
+	lock                sync.RWMutex
+	availableIndexes    map[string]struct{}
+}
+
+func NewEmbeddingsServiceClient(httpClient *http.Client, embeddingsServerURL string, defaultIndexes string) *EmbeddingsServiceClient {
+	return &EmbeddingsServiceClient{
+		httpClient:          httpClient,
+		embeddingsServerURL: embeddingsServerURL,
+		defaultIndexes:      defaultIndexes,
+	}
+}
+
+// SelectIndex determines the correct index to use for embeddings resolution.
+func (c *EmbeddingsServiceClient) SelectIndex(ctx context.Context) (string, error) {
+	label := util.GetSingleHeaderValue(ctx, util.XV2ResolveIndex)
+	if label == "" {
+		return c.defaultIndexes, nil
+	}
+
+	if indexName, ok := labelToIndex[label]; ok {
+		return indexName, nil
+	}
+
+	// If not in the map, just pass the label directly.
+	slog.Info("V2Resolve index label not in map, passing directly", "label", label, "header", util.XV2ResolveIndex)
+	return label, nil
+}
+
 // searchVarsRequest represents the request body for the embeddings server
 type searchVarsRequest struct {
 	Queries []string `json:"queries"`
 }
 
 // searchVarsResponse represents the response body from the embeddings server
-//
-// Expected JSON Structure:
-//
-//	{
-//	  "queryResults": {
-//	    "your_query_string": {
-//	      "SV": [ "dcid1", "dcid2", ... ],            // Sorted list of SV DCIDs
-//	      "CosineScore": [ 0.9, 0.8, ... ],           // Corresponding overall scores (parallel to SV list)
-//	      "SV_to_Sentences": {                        // Map of SV DCID to matching sentences
-//	        "dcid1": [
-//	          { "sentence": "description text", "score": 0.95 },
-//	          ...
-//	        ]
-//	      }
-//	    }
-//	  }
-//	}
 type searchVarsResponse struct {
 	QueryResults map[string]searchResult `json:"queryResults"`
 }
@@ -74,49 +103,31 @@ type searchResult struct {
 	} `json:"SV_to_Sentences"`
 }
 
-// ResolveUsingEmbeddings calls the embeddings server to resolve natural language queries to SVs.
-//
-// It performs the following steps:
-// 1. Validates the embeddings server configuration.
-// 2. Calls the embeddings server via HTTP to get search results (callEmbeddingsServer).
-// 3. Transforms the raw search results into the resolved response format (buildResolveResponse).
-func ResolveUsingEmbeddings(
+// Resolve calls the embeddings server to resolve natural language queries to SVs.
+func (c *EmbeddingsServiceClient) Resolve(
 	ctx context.Context,
-	httpClient *http.Client,
-	embeddingsServerURL string,
 	idx string,
 	nodes []string,
 	typeOfValues []string,
+	topicExpander TopicExpander,
+	expandTopics bool,
 ) (*pbv2.ResolveResponse, error) {
-	if embeddingsServerURL == "" {
+	if c.embeddingsServerURL == "" {
 		slog.Error("resolver=indicator requested, but the embeddings server is not configured for this deployment")
 		return nil, status.Errorf(codes.FailedPrecondition, "Indicator resolution is not available in this environment.")
 	}
 
-	searchResp, err := callEmbeddingsServer(ctx, httpClient, embeddingsServerURL, idx, nodes)
+	searchResp, err := c.callEmbeddingsServer(ctx, idx, nodes)
 	if err != nil {
 		return nil, err
 	}
 
-	return buildResolveResponse(nodes, searchResp, typeOfValues), nil
+	return buildResolveResponse(ctx, nodes, searchResp, typeOfValues, topicExpander, expandTopics), nil
 }
 
 // callEmbeddingsServer handles the HTTP communication with the embeddings server.
-//
-// Inputs:
-//   - ctx: Context for the request.
-//   - httpClient: HTTP client to use for the request.
-//   - embeddingsServerURL: Base URL of the embeddings server.
-//   - idx: The index to use for resolution.
-//   - nodes: List of query strings to resolve.
-//
-// Returns:
-//   - *searchVarsResponse: The parsed JSON response from the server.
-//   - error: Any error encountered during the request or parsing.
-func callEmbeddingsServer(
+func (c *EmbeddingsServiceClient) callEmbeddingsServer(
 	ctx context.Context,
-	httpClient *http.Client,
-	embeddingsServerURL string,
 	idx string,
 	nodes []string,
 ) (*searchVarsResponse, error) {
@@ -131,9 +142,9 @@ func callEmbeddingsServer(
 	}
 
 	// Create the HTTP request
-	searchVarsURL, err := url.Parse(embeddingsServerURL)
+	searchVarsURL, err := url.Parse(c.embeddingsServerURL)
 	if err != nil {
-		slog.Error("Failed to parse embeddings server URL", "error", err, "url", embeddingsServerURL)
+		slog.Error("Failed to parse embeddings server URL", "error", err, "url", c.embeddingsServerURL)
 		return nil, status.Errorf(codes.Internal, "An internal error occurred while connecting to the resolution service.")
 	}
 	searchVarsURL.Path = path.Join(searchVarsURL.Path, SearchVarsQueryEndpoint)
@@ -147,15 +158,15 @@ func callEmbeddingsServer(
 
 	req, err := http.NewRequestWithContext(ctx, "POST", searchVarsURL.String(), bytes.NewBuffer(requestBytes))
 	if err != nil {
-		slog.Error("Failed to create embeddings server request", "error", err, "url", embeddingsServerURL)
+		slog.Error("Failed to create embeddings server request", "error", err, "url", c.embeddingsServerURL)
 		return nil, status.Errorf(codes.Internal, "An internal error occurred while connecting to the resolution service.")
 	}
 	req.Header.Set("Content-Type", "application/json")
 
 	// Execute the request
-	httpResp, err := httpClient.Do(req)
+	httpResp, err := c.httpClient.Do(req)
 	if err != nil {
-		slog.Error("Failed to contact embeddings server", "error", err, "url", embeddingsServerURL, "queries", nodes)
+		slog.Error("Failed to contact embeddings server", "error", err, "url", c.embeddingsServerURL, "queries", nodes)
 		return nil, status.Errorf(codes.Unavailable, "The resolution service is currently unavailable. Please try again later.")
 	}
 	defer func() {
@@ -166,25 +177,35 @@ func callEmbeddingsServer(
 
 	if httpResp.StatusCode != http.StatusOK {
 		bodyBytes, _ := io.ReadAll(httpResp.Body)
-		slog.Error("Embeddings server returned non-200 status", "status_code", httpResp.StatusCode, "body", string(bodyBytes), "url", embeddingsServerURL, "queries", nodes)
-		return nil, status.Errorf(codes.Internal, "The resolution service encountered an error processing your request.")
+		slog.Error("Embeddings server returned non-200 status", "status_code", httpResp.StatusCode, "body", string(bodyBytes), "url", c.embeddingsServerURL, "queries", nodes)
+		
+		grpcCode := util.HTTPStatusToGRPCCode(httpResp.StatusCode)
+
+		errMsg := string(bodyBytes)
+		if errMsg == "" {
+			errMsg = "The resolution service encountered an error processing your request."
+		}
+		return nil, status.Errorf(grpcCode, "Embeddings server error: %s", errMsg)
 	}
 
 	// Parse the response
 	var searchResp searchVarsResponse
 	if err := json.NewDecoder(httpResp.Body).Decode(&searchResp); err != nil {
-		slog.Error("Failed to decode embeddings server response", "error", err, "url", embeddingsServerURL)
+		slog.Error("Failed to decode embeddings server response", "error", err, "url", c.embeddingsServerURL)
 		return nil, status.Errorf(codes.Internal, "An internal error occurred while parsing the resolution response.")
 	}
 	return &searchResp, nil
 }
 
 // buildResolveResponse converts the raw search response into the gRPC ResolveResponse.
-//
-// It iterates through the original requested nodes (queries) and attempts to find
-// corresponding results in the searchResp. If results are found, it delegates
-// to buildEntityCandidates to construct the candidate list.
-func buildResolveResponse(nodes []string, searchResp *searchVarsResponse, typeOfValues []string) *pbv2.ResolveResponse {
+func buildResolveResponse(
+	ctx context.Context,
+	nodes []string,
+	searchResp *searchVarsResponse,
+	typeOfValues []string,
+	topicExpander TopicExpander,
+	expandTopics bool,
+) *pbv2.ResolveResponse {
 	resolveResponse := &pbv2.ResolveResponse{
 		Entities: make([]*pbv2.ResolveResponse_Entity, 0, len(nodes)),
 	}
@@ -195,7 +216,7 @@ func buildResolveResponse(nodes []string, searchResp *searchVarsResponse, typeOf
 		}
 
 		if result, ok := searchResp.QueryResults[node]; ok {
-			entity.Candidates = buildEntityCandidates(&result, typeOfValues)
+			entity.Candidates = buildEntityCandidates(ctx, &result, typeOfValues, topicExpander, expandTopics)
 		}
 		resolveResponse.Entities = append(resolveResponse.Entities, entity)
 	}
@@ -203,22 +224,21 @@ func buildResolveResponse(nodes []string, searchResp *searchVarsResponse, typeOf
 }
 
 // buildEntityCandidates constructs a list of ResolveResponse_Entity_Candidate from a single searchResult.
-//
-// It maps the server's response format (SV list + scores) into the mixer's candidate format.
-// Key logic included:
-//   - Uses 'CosineScore' as the primary score.
-//   - Determines 'DominantType' based on the DCID (Topic vs StatVar).
-//   - Extracts the best matching sentence for metadata if available.
-func buildEntityCandidates(result *searchResult, typeOfValues []string) []*pbv2.ResolveResponse_Entity_Candidate {
+func buildEntityCandidates(
+	ctx context.Context,
+	result *searchResult,
+	typeOfValues []string,
+	topicExpander TopicExpander,
+	expandTopics bool,
+) []*pbv2.ResolveResponse_Entity_Candidate {
+	svInfos := fetchSVPropertyInfos(ctx, topicExpander, result, expandTopics)
+
 	candidates := make([]*pbv2.ResolveResponse_Entity_Candidate, 0, len(result.SV))
 	for i, statVarDcid := range result.SV {
-		// Safety check for parallel arrays
 		if i >= len(result.CosineScore) {
 			break
 		}
 
-		// Key logic: We use the server-provided CosineScore as the primary match score.
-		// This score is typically derived from the best matching sentence on the server side.
 		score := result.CosineScore[i]
 
 		dominantType := StatisticalVariableDominantType
@@ -249,11 +269,151 @@ func buildEntityCandidates(result *searchResult, typeOfValues []string) []*pbv2.
 		}
 
 		if sentences, hasSentences := result.SVToSentences[statVarDcid]; hasSentences && len(sentences) > 0 {
-			// Taking the top sentence match for display purposes
 			candidate.Metadata["sentence"] = sentences[0].Sentence
+		}
+
+		if dominantType == TopicDominantType {
+			if topicExpander != nil {
+				candidate.Name = topicExpander.GetTopicDisplayName(ctx, statVarDcid)
+				children, err := topicExpander.ExpandTopic(ctx, statVarDcid, expandTopics)
+				if err != nil {
+					slog.Error("Failed to expand topic during embedding resolution", "topic", statVarDcid, "error", err)
+				}
+				candidate.Children = children
+			}
+		} else {
+			if svInfos != nil {
+				if info, ok := svInfos[statVarDcid]; ok {
+					candidate.Name = info.Name
+					candidate.ObservationProperties = info.ObservationProperties
+				}
+			}
 		}
 
 		candidates = append(candidates, candidate)
 	}
 	return candidates
+}
+
+// fetchSVPropertyInfos aggregates non-topic DCIDs and expands topic DCIDs to pre-fetch their property info in batch.
+func fetchSVPropertyInfos(ctx context.Context, topicExpander TopicExpander, result *searchResult, expandTopics bool) map[string]SVPropertyInfo {
+	if topicExpander == nil || result == nil {
+		return nil
+	}
+	var svDcidsToFetch []string
+	for i, statVarDcid := range result.SV {
+		// Stop collecting if trailing SVs lack matching CosineScores, as they will be ignored in candidate assembly.
+		if i >= len(result.CosineScore) {
+			break
+		}
+		if strings.Contains(statVarDcid, TopicDcidSubstring) {
+			childSVs := topicExpander.GetTopicTargetSVs(ctx, statVarDcid, expandTopics)
+			svDcidsToFetch = append(svDcidsToFetch, childSVs...)
+		} else {
+			svDcidsToFetch = append(svDcidsToFetch, statVarDcid)
+		}
+	}
+	if len(svDcidsToFetch) == 0 {
+		return nil
+	}
+	svInfos, err := topicExpander.GetSVPropertyInfos(ctx, svDcidsToFetch)
+	if err != nil {
+		slog.Error("Failed to fetch SV property infos during embedding resolution", "error", err, "dcids", svDcidsToFetch)
+		return nil
+	}
+	return svInfos
+}
+
+type nlServerConfig struct {
+	Indexes map[string]interface{} `json:"indexes"`
+}
+
+func (c *EmbeddingsServiceClient) fetchAvailableIndexes(ctx context.Context) (map[string]struct{}, error) {
+	if c.embeddingsServerURL == "" {
+		return nil, fmt.Errorf("embeddings server URL is not configured")
+	}
+
+	u, err := url.Parse(c.embeddingsServerURL)
+	if err != nil {
+		return nil, fmt.Errorf("failed to parse embeddings server URL: %w", err)
+	}
+	u.Path = path.Join(u.Path, "/api/server_config/")
+
+	req, err := http.NewRequestWithContext(ctx, "GET", u.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	resp, err := c.httpClient.Do(req)
+	if err != nil {
+		return nil, err
+	}
+	defer func() {
+		// Drain and close the body to let the Transport reuse the connection
+		_, _ = io.Copy(io.Discard, resp.Body)
+		_ = resp.Body.Close()
+	}()
+
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("embeddings server returned status %d", resp.StatusCode)
+	}
+
+	var config nlServerConfig
+	if err := json.NewDecoder(resp.Body).Decode(&config); err != nil {
+		return nil, fmt.Errorf("failed to decode embeddings server config: %w", err)
+	}
+
+	indexes := make(map[string]struct{})
+	for idx := range config.Indexes {
+		indexes[idx] = struct{}{}
+	}
+
+	return indexes, nil
+}
+
+// LoadAvailableIndexes fetches the available indexes from the embeddings server and caches them.
+func (c *EmbeddingsServiceClient) LoadAvailableIndexes(ctx context.Context) error {
+	if c.embeddingsServerURL == "" {
+		return nil
+	}
+	indexes, err := c.fetchAvailableIndexes(ctx)
+	if err != nil {
+		return err
+	}
+	c.lock.Lock()
+	defer c.lock.Unlock()
+	c.availableIndexes = indexes
+	return nil
+}
+
+// ValidateIndex checks if the given index (or comma-separated indexes) are available using cached config.
+func (c *EmbeddingsServiceClient) ValidateIndex(ctx context.Context, idx string) bool {
+	if c.embeddingsServerURL == "" {
+		return true
+	}
+
+	c.lock.RLock()
+	availableIndexes := c.availableIndexes
+	c.lock.RUnlock()
+
+	if availableIndexes == nil {
+		slog.Warn("Available embeddings indexes not loaded yet, skipping validation")
+		return true
+	}
+
+	return c.checkIndexes(idx, availableIndexes)
+}
+
+func (c *EmbeddingsServiceClient) checkIndexes(idx string, availableIndexes map[string]struct{}) bool {
+	parts := strings.Split(idx, ",")
+	for _, part := range parts {
+		part = strings.TrimSpace(part)
+		if part == "" {
+			continue
+		}
+		if _, ok := availableIndexes[part]; !ok {
+			return false
+		}
+	}
+	return true
 }

@@ -131,6 +131,8 @@ var statements = struct {
 	checkSVSourceExistence string
 	// Check existence of variable groups against sources.
 	checkGroupSourceExistence string
+	// Check existence of variable groups against places.
+	checkGroupPlaceExistence string
 }{
 	getCompletionTimestamp: `		SELECT
 		CompletionTimestamp
@@ -165,20 +167,20 @@ var statements = struct {
 	graphPrefixAny: `		GRAPH DCGraph MATCH ANY `,
 	getEdgesBySubjectID: `(m:Node
 		WHERE
-			m.subject_id %[1]s)-[e:Edge%[2]s]->(n:Node)`,
+			m.subject_id %[1]s)-[e:Edge%[2]s]->(n:Node)%[3]s`,
 	getChainedEdgesBySubjectID: `(m:Node
 		WHERE
-			m.subject_id %s)-[e:Edge
+			m.subject_id %[1]s)-[e:Edge
 		WHERE
-			e.predicate = @predicate]->{1,%d}(n:Node)`,
+			e.predicate = @predicate]->{1,%[2]d}(n:Node)%[3]s`,
 	getEdgesByObjectID: `(m:Node
 		WHERE
-			m.subject_id %[1]s)<-[e:Edge%[2]s]-(n:Node)`,
+			m.subject_id %[1]s)<-[e:Edge%[2]s]-(n:Node)%[3]s`,
 	getChainedEdgesByObjectID: `(m:Node
 		WHERE
-			m.subject_id %s)<-[e:Edge
+			m.subject_id %[1]s)<-[e:Edge
 		WHERE
-			e.predicate = @predicate]-{1,%d}(n:Node)`,
+			e.predicate = @predicate]-{1,%[2]d}(n:Node)%[3]s`,
 	filterPredicate: `
 		WHERE
 			e.predicate = @predicate`,
@@ -675,7 +677,8 @@ var statements = struct {
 		JOIN Edge e2 ON c.provenance = e2.subject_id
 		WHERE c.type = 'ProvenanceSummary'
 		  AND e2.predicate IN ('source', 'isPartOf')
-		  AND c.key IN UNNEST(@variables)`,
+		  AND c.key IN UNNEST(@variables)
+		ORDER BY variable, source`,
 	checkGroupSourceExistence: `		SELECT DISTINCT e3.object_id AS variable, e2.object_id AS source
 		FROM Cache c
 		JOIN Edge e2 ON c.provenance = e2.subject_id
@@ -683,5 +686,13 @@ var statements = struct {
 		WHERE c.type = 'ProvenanceSummary'
 		  AND e2.predicate IN ('source', 'isPartOf')
 		  AND e3.predicate = @predicate
-		  AND e3.object_id IN UNNEST(@variables)`,
+		  AND e3.object_id IN UNNEST(@variables)
+		ORDER BY variable, source`,
+	checkGroupPlaceExistence: `		SELECT DISTINCT e.object_id AS variable, o.observation_about AS entity
+		FROM Edge@{FORCE_INDEX=InEdge} e
+		JOIN@{JOIN_TYPE=APPLY_JOIN} Observation@{FORCE_INDEX=VariableMeasuredObservationAbout} o ON e.subject_id = o.variable_measured
+		WHERE e.predicate = @predicate
+		  AND e.object_id IN UNNEST(@variableGroups)
+		  AND o.observation_about IN UNNEST(@entities)
+		ORDER BY variable, entity`,
 }
