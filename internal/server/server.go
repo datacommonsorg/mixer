@@ -43,7 +43,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/topic"
-	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
 	"github.com/datacommonsorg/mixer/internal/translator/solver"
@@ -53,15 +52,16 @@ import (
 
 // Server holds resources for a mixer server
 type Server struct {
-	store             *store.Store
-	metadata          *resource.Metadata
-	cachedata         atomic.Pointer[cache.Cache]
-	mapsClient        maps.MapsClient
-	httpClient        *http.Client
-	dispatcher        *dispatcher.Dispatcher
-	flags             *featureflags.Flags
-	writeUsageLogs          bool
-	embeddingsServiceClient *resolve.EmbeddingsServiceClient
+	store                    *store.Store
+	metadata                 *resource.Metadata
+	cachedata                atomic.Pointer[cache.Cache]
+	mapsClient               maps.MapsClient
+	httpClient               *http.Client
+	dispatcher               *dispatcher.Dispatcher
+	flags                    *featureflags.Flags
+	writeUsageLogs           bool
+	embeddingsServerURL      string
+	resolveEmbeddingsIndexes string
 	// Whether to use dispatcher flow with Spanner as a default datasource.
 	useSpannerGraph   bool
 	topicCacheManager *topic.TopicCacheManager
@@ -302,22 +302,24 @@ func NewMixerServer(
 	dispatcher *dispatcher.Dispatcher,
 	flags *featureflags.Flags,
 	writeUsageLogs bool,
-	embeddingsServiceClient *resolve.EmbeddingsServiceClient,
+	embeddingsServerURL string,
+	resolveEmbeddingsIndexes string,
 	useSpannerGraph bool,
 	topicCacheManager *topic.TopicCacheManager,
 ) *Server {
 	s := &Server{
-		store:                   store,
-		metadata:                metadata,
-		cachedata:               atomic.Pointer[cache.Cache]{},
-		mapsClient:              mapsClient,
-		httpClient:              &http.Client{},
-		dispatcher:              dispatcher,
-		flags:                   flags,
-		writeUsageLogs:          writeUsageLogs,
-		embeddingsServiceClient: embeddingsServiceClient,
-		useSpannerGraph:         useSpannerGraph,
-		topicCacheManager:       topicCacheManager,
+		store:                    store,
+		metadata:                 metadata,
+		cachedata:                atomic.Pointer[cache.Cache]{},
+		mapsClient:               mapsClient,
+		httpClient:               &http.Client{},
+		dispatcher:               dispatcher,
+		flags:                    flags,
+		writeUsageLogs:           writeUsageLogs,
+		embeddingsServerURL:      embeddingsServerURL,
+		resolveEmbeddingsIndexes: resolveEmbeddingsIndexes,
+		useSpannerGraph:          useSpannerGraph,
+		topicCacheManager:        topicCacheManager,
 	}
 	s.cachedata.Store(cachedata)
 	s.initAgentService()
@@ -367,4 +369,3 @@ func (s *Server) shouldDivertV2(ctx context.Context) bool {
 	}
 	return divert
 }
-

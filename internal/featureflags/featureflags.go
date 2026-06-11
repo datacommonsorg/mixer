@@ -46,8 +46,8 @@ type Flags struct {
 	UseStatisticalCalculation bool `yaml:"UseStatisticalCalculation"`
 	// Whether to enable the SDMX API endpoint.
 	EnableSDMXDataApi bool `yaml:"EnableSDMXDataApi"`
-	// Whether to default indicator resolution to Spanner.
-	// If false, default requests go to legacy remote service.
+	// Whether to enable Spanner search embeddings.
+	// switch this to true in local.yaml for easier development
 	EnableSpannerSearchEmbeddings bool `yaml:"EnableSpannerSearchEmbeddings"`
 }
 

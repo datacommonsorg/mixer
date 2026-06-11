@@ -16,116 +16,12 @@ package server
 
 import (
 	"context"
-	"encoding/json"
-	"net/http"
-	"net/http/httptest"
 	"testing"
 
 	"github.com/datacommonsorg/mixer/internal/featureflags"
-	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/metadata"
 )
-
-type testNLServerConfig struct {
-	Indexes map[string]interface{} `json:"indexes"`
-}
-
-func TestValidateEmbeddingsIndex(t *testing.T) {
-	tests := []struct {
-		name          string
-		serverURL     string
-		serverHandler http.HandlerFunc
-		idxToValidate string
-		wantValid     bool
-	}{
-		{
-			name:          "Empty Server URL (lenient)",
-			serverURL:     "",
-			idxToValidate: "any_index",
-			wantValid:     true,
-		},
-		{
-			name: "Valid Index",
-			serverHandler: func(w http.ResponseWriter, r *http.Request) {
-				_ = json.NewEncoder(w).Encode(testNLServerConfig{
-					Indexes: map[string]interface{}{
-						"index1": map[string]interface{}{},
-						"index2": map[string]interface{}{},
-					},
-				})
-			},
-			idxToValidate: "index1",
-			wantValid:     true,
-		},
-		{
-			name: "Invalid Index",
-			serverHandler: func(w http.ResponseWriter, r *http.Request) {
-				_ = json.NewEncoder(w).Encode(testNLServerConfig{
-					Indexes: map[string]interface{}{
-						"index1": map[string]interface{}{},
-					},
-				})
-			},
-			idxToValidate: "index2",
-			wantValid:     false,
-		},
-		{
-			name: "Multiple Valid Indexes",
-			serverHandler: func(w http.ResponseWriter, r *http.Request) {
-				_ = json.NewEncoder(w).Encode(testNLServerConfig{
-					Indexes: map[string]interface{}{
-						"index1": map[string]interface{}{},
-						"index2": map[string]interface{}{},
-					},
-				})
-			},
-			idxToValidate: "index1, index2",
-			wantValid:     true,
-		},
-		{
-			name: "Multiple Indexes - One Invalid",
-			serverHandler: func(w http.ResponseWriter, r *http.Request) {
-				_ = json.NewEncoder(w).Encode(testNLServerConfig{
-					Indexes: map[string]interface{}{
-						"index1": map[string]interface{}{},
-					},
-				})
-			},
-			idxToValidate: "index1, index2",
-			wantValid:     false,
-		},
-		{
-			name: "Server Error (lenient fallback)",
-			serverHandler: func(w http.ResponseWriter, r *http.Request) {
-				w.WriteHeader(http.StatusInternalServerError)
-			},
-			idxToValidate: "any_index",
-			wantValid:     true,
-		},
-	}
-
-	for _, tc := range tests {
-		t.Run(tc.name, func(t *testing.T) {
-			var serverURL string
-			var testServer *httptest.Server
-			if tc.serverHandler != nil {
-				testServer = httptest.NewServer(tc.serverHandler)
-				defer testServer.Close()
-				serverURL = testServer.URL
-			} else {
-				serverURL = tc.serverURL
-			}
-
-			client := resolve.NewEmbeddingsServiceClient(&http.Client{}, serverURL, "")
-			_ = client.LoadAvailableIndexes(context.Background())
-			got := client.ValidateIndex(context.Background(), tc.idxToValidate)
-			if got != tc.wantValid {
-				t.Errorf("ValidateIndex() = %v, want %v", got, tc.wantValid)
-			}
-		})
-	}
-}
 
 func TestShouldDivertV2(t *testing.T) {
 

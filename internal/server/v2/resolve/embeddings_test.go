@@ -46,10 +46,9 @@ func TestResolveUsingEmbeddings(t *testing.T) {
 	defer server.Close()
 
 	ctx := context.Background()
-	client := NewEmbeddingsServiceClient(server.Client(), server.URL, "")
-	resp, err := client.Resolve(ctx, "test_idx", []string{"population"}, nil, nil, false)
+	resp, err := ResolveUsingEmbeddings(ctx, server.Client(), server.URL, "test_idx", []string{"population"}, nil, nil, false)
 	if err != nil {
-		t.Fatalf("Resolve() error: %v", err)
+		t.Fatalf("ResolveEmbeddings() error: %v", err)
 	}
 
 	if len(resp.Entities) != 1 {
@@ -104,35 +103,15 @@ func TestResolveUsingEmbeddings_Errors(t *testing.T) {
 		serverHandler http.HandlerFunc
 		serverURL     string
 		expectedError string
-		expectedCode  codes.Code
 		useEmptyURL   bool
 	}{
 		{
-			name: "Server Error (500)",
+			name: "Server Error",
 			serverHandler: func(w http.ResponseWriter, r *http.Request) {
 				w.WriteHeader(http.StatusInternalServerError)
 				_, _ = w.Write([]byte("internal error"))
 			},
-			expectedError: "internal error",
-			expectedCode:  codes.Internal,
-		},
-		{
-			name: "Bad Request (400)",
-			serverHandler: func(w http.ResponseWriter, r *http.Request) {
-				w.WriteHeader(http.StatusBadRequest)
-				_, _ = w.Write([]byte("bad index name"))
-			},
-			expectedError: "bad index name",
-			expectedCode:  codes.InvalidArgument,
-		},
-		{
-			name: "Not Found (404)",
-			serverHandler: func(w http.ResponseWriter, r *http.Request) {
-				w.WriteHeader(http.StatusNotFound)
-				_, _ = w.Write([]byte("index not found"))
-			},
-			expectedError: "index not found",
-			expectedCode:  codes.NotFound,
+			expectedError: "The resolution service encountered an error processing your request.",
 		},
 		{
 			name: "Malformed JSON",
@@ -140,35 +119,25 @@ func TestResolveUsingEmbeddings_Errors(t *testing.T) {
 				_, _ = w.Write([]byte("{invalid-json"))
 			},
 			expectedError: "An internal error occurred while parsing the resolution response.",
-			expectedCode:  codes.Internal,
 		},
 		{
 			name:          "Empty Server URL",
 			useEmptyURL:   true,
 			expectedError: "Indicator resolution is not available",
-			expectedCode:  codes.FailedPrecondition,
 		},
 	}
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			var server *httptest.Server
-			var url string
-			if !tc.useEmptyURL {
-				server = httptest.NewServer(tc.serverHandler)
-				defer server.Close()
-				url = server.URL
+			server := httptest.NewServer(tc.serverHandler)
+			defer server.Close()
+
+			url := server.URL
+			if tc.useEmptyURL {
+				url = ""
 			}
 
-			var client *http.Client
-			if server != nil {
-				client = server.Client()
-			} else {
-				client = http.DefaultClient
-			}
-
-			embeddingsServiceClient := NewEmbeddingsServiceClient(client, url, "")
-			_, err := embeddingsServiceClient.Resolve(context.Background(), "", []string{"query"}, nil, nil, false)
+			_, err := ResolveUsingEmbeddings(context.Background(), server.Client(), url, "", []string{"query"}, nil, nil, false)
 			if err == nil {
 				t.Errorf("Expected error containing '%s', got nil", tc.expectedError)
 				return
@@ -176,14 +145,6 @@ func TestResolveUsingEmbeddings_Errors(t *testing.T) {
 
 			if !strings.Contains(err.Error(), tc.expectedError) {
 				t.Errorf("Expected error containing '%s', got '%v'", tc.expectedError, err)
-			}
-
-			status, ok := status.FromError(err)
-			if !ok {
-				t.Fatalf("Expected gRPC status error, got %v", err)
-			}
-			if status.Code() != tc.expectedCode {
-				t.Errorf("Expected error code %v, got %v", tc.expectedCode, status.Code())
 			}
 		})
 	}
@@ -217,8 +178,7 @@ func TestResolveUsingEmbeddings_InconsistentSearchVarsResponse(t *testing.T) {
 	}))
 	defer server.Close()
 
-	client := NewEmbeddingsServiceClient(server.Client(), server.URL, "")
-	resp, err := client.Resolve(context.Background(), "", []string{"query"}, nil, nil, false)
+	resp, err := ResolveUsingEmbeddings(context.Background(), server.Client(), server.URL, "", []string{"query"}, nil, nil, false)
 	if err != nil {
 		t.Fatalf("Unexpected error: %v", err)
 	}
@@ -292,8 +252,7 @@ func TestResolveUsingEmbeddings_IdxParameter(t *testing.T) {
 			}))
 			defer server.Close()
 
-			client := NewEmbeddingsServiceClient(server.Client(), server.URL, "")
-			_, err := client.Resolve(context.Background(), tc.expectedIdx, []string{"query"}, nil, nil, false)
+			_, err := ResolveUsingEmbeddings(context.Background(), server.Client(), server.URL, tc.expectedIdx, []string{"query"}, nil, nil, false)
 			if err != nil {
 				t.Fatalf("Unexpected error: %v", err)
 			}
@@ -319,12 +278,10 @@ func TestResolveUsingEmbeddings_Filter(t *testing.T) {
 
 	ctx := context.Background()
 
-	client := NewEmbeddingsServiceClient(server.Client(), server.URL, "")
-
-	// Filter for StatisticalVariable
-	resp, err := client.Resolve(ctx, "test_idx", []string{"filter_test"}, []string{"StatisticalVariable"}, nil, false)
+	// Test 1: Filter for StatisticalVariable
+	resp, err := ResolveUsingEmbeddings(ctx, server.Client(), server.URL, "test_idx", []string{"filter_test"}, []string{"StatisticalVariable"}, nil, false)
 	if err != nil {
-		t.Fatalf("Resolve() error: %v", err)
+		t.Fatalf("ResolveEmbeddings() error: %v", err)
 	}
 	if len(resp.Entities[0].Candidates) != 1 {
 		t.Fatalf("Expected 1 candidate, got %d", len(resp.Entities[0].Candidates))
@@ -333,10 +290,10 @@ func TestResolveUsingEmbeddings_Filter(t *testing.T) {
 		t.Errorf("Expected 'Count_Person', got '%s'", resp.Entities[0].Candidates[0].Dcid)
 	}
 
-	// Filter for Topic
-	resp, err = client.Resolve(ctx, "test_idx", []string{"filter_test"}, []string{"Topic"}, nil, false)
+	// Test 2: Filter for Topic
+	resp, err = ResolveUsingEmbeddings(ctx, server.Client(), server.URL, "test_idx", []string{"filter_test"}, []string{"Topic"}, nil, false)
 	if err != nil {
-		t.Fatalf("Resolve() error: %v", err)
+		t.Fatalf("ResolveEmbeddings() error: %v", err)
 	}
 	if len(resp.Entities[0].Candidates) != 1 {
 		t.Fatalf("Expected 1 candidate, got %d", len(resp.Entities[0].Candidates))
@@ -382,13 +339,13 @@ func TestSelectEmbeddingsIndex(t *testing.T) {
 			expectError:        false,
 		},
 		{
-			// Test: Pass through unknown label.
+			// Test: Error on invalid label.
 			// Situation: Header is set to an unknown value "invalid".
-			// Expectation: Returns "invalid".
-			name:               "Invalid header, pass through",
+			// Expectation: Returns InvalidArgument error.
+			name:               "Invalid header, enabled",
 			headerValue:        "invalid",
-			expectedIdx:        "invalid",
-			expectError:        false,
+			expectError:        true,
+			expectedErrorCode:  codes.InvalidArgument,
 		},
 	}
 
@@ -400,8 +357,7 @@ func TestSelectEmbeddingsIndex(t *testing.T) {
 				ctx = metadata.NewIncomingContext(ctx, md)
 			}
 
-			client := NewEmbeddingsServiceClient(nil, "", "default_idx")
-			idx, err := client.SelectIndex(ctx)
+			idx, err := SelectEmbeddingsIndex(ctx, "default_idx")
 
 			if tc.expectError {
 				if err == nil {
