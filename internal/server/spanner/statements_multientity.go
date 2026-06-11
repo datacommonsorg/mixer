@@ -19,6 +19,9 @@ import "fmt"
 const (
 	timeSeriesTable  = "TimeSeries_final_v2"
 	observationTable = "Observation_final_v2"
+
+	timeSeriesByEntity2Index = "TimeSeriesFinalV2ByEntity2"
+	timeSeriesByEntity3Index = "TimeSeriesFinalV2ByEntity3"
 )
 
 var statementsMultiEntity = struct {
@@ -359,68 +362,68 @@ var statementsMultiEntity = struct {
 	getStatVarsByEntityBoth: fmt.Sprintf(`		WITH 
 		slot1 AS (
 			SELECT DISTINCT t.variable_measured, t.entity1 AS entity 
-			FROM %s AS t 
+			FROM %[1]s AS t 
 			WHERE t.variable_measured IN UNNEST(@variables) AND t.entity1 IN UNNEST(@entities)
 		),
 		slot2 AS (
 			SELECT DISTINCT t.variable_measured, t.entity2 AS entity 
-			FROM %s@{FORCE_INDEX=TimeSeriesFinalV2ByEntity2} AS t 
+			FROM %[1]s@{FORCE_INDEX=%[2]s} AS t 
 			WHERE t.variable_measured IN UNNEST(@variables) AND t.entity2 IN UNNEST(@entities) AND t.entity2 IS NOT NULL
 		),
 		slot3 AS (
 			SELECT DISTINCT t.variable_measured, t.entity3 AS entity 
-			FROM %s@{FORCE_INDEX=TimeSeriesFinalV2ByEntity3} AS t 
+			FROM %[1]s@{FORCE_INDEX=%[3]s} AS t 
 			WHERE t.variable_measured IN UNNEST(@variables) AND t.entity3 IN UNNEST(@entities) AND t.entity3 IS NOT NULL AND t.entity2 IS NOT NULL
 		)
 		SELECT variable_measured, entity FROM slot1
 		UNION ALL
 		SELECT variable_measured, entity FROM slot2
 		UNION ALL
-		SELECT variable_measured, entity FROM slot3`, timeSeriesTable, timeSeriesTable, timeSeriesTable),
+		SELECT variable_measured, entity FROM slot3`, timeSeriesTable, timeSeriesByEntity2Index, timeSeriesByEntity3Index),
 
 	// Check existence when only variables are specified
 	getStatVarsByEntityVarsOnly: fmt.Sprintf(`		WITH 
 		slot1 AS (
 			SELECT DISTINCT t.variable_measured, t.entity1 AS entity 
-			FROM %s AS t 
+			FROM %[1]s AS t 
 			WHERE t.variable_measured IN UNNEST(@variables)
 		),
 		slot2 AS (
 			SELECT DISTINCT t.variable_measured, t.entity2 AS entity 
-			FROM %s@{FORCE_INDEX=TimeSeriesFinalV2ByEntity2} AS t 
+			FROM %[1]s@{FORCE_INDEX=%[2]s} AS t 
 			WHERE t.variable_measured IN UNNEST(@variables) AND t.entity2 IS NOT NULL
 		),
 		slot3 AS (
 			SELECT DISTINCT t.variable_measured, t.entity3 AS entity 
-			FROM %s@{FORCE_INDEX=TimeSeriesFinalV2ByEntity3} AS t 
+			FROM %[1]s@{FORCE_INDEX=%[3]s} AS t 
 			WHERE t.variable_measured IN UNNEST(@variables) AND t.entity3 IS NOT NULL AND t.entity2 IS NOT NULL
 		)
 		SELECT variable_measured, entity FROM slot1
 		UNION ALL
 		SELECT variable_measured, entity FROM slot2
 		UNION ALL
-		SELECT variable_measured, entity FROM slot3`, timeSeriesTable, timeSeriesTable, timeSeriesTable),
+		SELECT variable_measured, entity FROM slot3`, timeSeriesTable, timeSeriesByEntity2Index, timeSeriesByEntity3Index),
 
 	// Check existence when only entities are specified
 	getStatVarsByEntityEntitiesOnly: fmt.Sprintf(`		WITH 
 		slot1 AS (
 			SELECT DISTINCT t.variable_measured, t.entity1 AS entity 
-			FROM %s AS t 
+			FROM %[1]s AS t 
 			WHERE t.entity1 IN UNNEST(@entities)
 		),
 		slot2 AS (
 			SELECT DISTINCT t.variable_measured, t.entity2 AS entity 
-			FROM %s@{FORCE_INDEX=TimeSeriesFinalV2ByEntity2} AS t 
+			FROM %[1]s@{FORCE_INDEX=%[2]s} AS t 
 			WHERE t.entity2 IN UNNEST(@entities) AND t.entity2 IS NOT NULL
 		),
 		slot3 AS (
 			SELECT DISTINCT t.variable_measured, t.entity3 AS entity 
-			FROM %s@{FORCE_INDEX=TimeSeriesFinalV2ByEntity3} AS t 
+			FROM %[1]s@{FORCE_INDEX=%[3]s} AS t 
 			WHERE t.entity3 IN UNNEST(@entities) AND t.entity3 IS NOT NULL AND t.entity2 IS NOT NULL
 		)
 		SELECT variable_measured, entity FROM slot1
 		UNION ALL
 		SELECT variable_measured, entity FROM slot2
 		UNION ALL
-		SELECT variable_measured, entity FROM slot3`, timeSeriesTable, timeSeriesTable, timeSeriesTable),
+		SELECT variable_measured, entity FROM slot3`, timeSeriesTable, timeSeriesByEntity2Index, timeSeriesByEntity3Index),
 }
