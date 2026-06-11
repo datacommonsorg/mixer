@@ -71,6 +71,9 @@ func (s *schemaSelectorClient) CheckVariableSourceExistence(ctx context.Context,
 
 // GetObservationsContainedInPlace overrides the embedded client's GetObservationsContainedInPlace to dispatch based on schema selection.
 func (s *schemaSelectorClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace, date string) ([]*Observation, error) {
+	if containedInPlace == nil {
+		return s.SpannerClient.GetObservationsContainedInPlace(ctx, variables, containedInPlace, date)
+	}
 	if useMultiEntitySchema(ctx) {
 		logMultiEntityInvocation("GetObservationsContainedInPlace",
 			"num_variables", len(variables),
