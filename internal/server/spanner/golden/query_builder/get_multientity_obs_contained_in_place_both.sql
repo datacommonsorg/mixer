@@ -10,7 +10,7 @@
 			t.entity1 AS observation_about,
 			COALESCE(
 				(
-					SELECT ARRAY_AGG(STRUCT(date, str_value)) 
+					SELECT ARRAY_AGG(STRUCT(date, str_value) ORDER BY date ASC) 
 					FROM Observation_final_v2 o
 					WHERE o.variable_measured = t.variable_measured
 						AND o.entity1 = t.entity1

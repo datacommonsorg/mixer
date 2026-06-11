@@ -84,6 +84,9 @@ func reconstructObservations(rawObs []*rawObservation) []*Observation {
 		}
 
 		for _, dv := range r.DatesAndValues {
+			if dv == nil {
+				continue
+			}
 			if dv.Date != "" {
 				obs.Observations = append(obs.Observations, &DateValue{Date: dv.Date, Value: dv.Value})
 			}
