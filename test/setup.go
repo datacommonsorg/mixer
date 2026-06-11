@@ -20,7 +20,6 @@ import (
 	"encoding/json"
 	"log"
 	"net"
-	"net/http"
 	"os"
 	"path"
 	"path/filepath"
@@ -42,7 +41,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/remote"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
-	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/server/v3/observation"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -195,7 +193,7 @@ func setupInternal(
 	}
 	mapsClient := &maps.FakeMapsClient{}
 	if spannerClient != nil {
-		spannerDataSource = spanner.NewSpannerDataSource(spannerClient, st.RecogPlaceStore, mapsClient)
+		spannerDataSource = spanner.NewSpannerDataSource(spannerClient, st.RecogPlaceStore, mapsClient, false)
 		sources = append(sources, spannerDataSource)
 	}
 	c, err := cache.NewCache(ctx, st, cacheOptions, metadata)
@@ -286,8 +284,7 @@ func newClient(
 	}
 	// Create mixer server. writeUsageLogs is false by default for tests but is directly tested in handler_v2_test.go
 	// useSpannerGraph is also false by default while the legacy implementation remains, but is tested directly by V3 APIs.
-	embeddingsServiceClient := resolve.NewEmbeddingsServiceClient(&http.Client{}, "", "")
-	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient, dispatcher, flags, false, embeddingsServiceClient, false, nil)
+	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient, dispatcher, flags, false, "", "", false, nil)
 	srv := grpc.NewServer()
 	pbs.RegisterMixerServer(srv, mixerServer)
 	reflection.Register(srv)
