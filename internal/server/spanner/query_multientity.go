@@ -15,7 +15,9 @@
 package spanner
 
 import (
+	"cmp"
 	"context"
+	"slices"
 
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"google.golang.org/grpc/codes"
@@ -91,6 +93,11 @@ func reconstructObservations(rawObs []*rawObservation) []*Observation {
 				obs.Observations = append(obs.Observations, &DateValue{Date: dv.Date, Value: dv.Value})
 			}
 		}
+
+		// Sort observations chronologically in Go.
+		slices.SortFunc(obs.Observations, func(a, b *DateValue) int {
+			return cmp.Compare(a.Date, b.Date)
+		})
 
 		if r.Facets.Valid {
 			if m, ok := r.Facets.Value.(map[string]interface{}); ok {

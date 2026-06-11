@@ -52,7 +52,7 @@ var statementsMultiEntity = struct {
 			t.entity1 AS observation_about,
 			COALESCE(
 				(
-					SELECT ARRAY_AGG(STRUCT(date, str_value) ORDER BY date ASC) 
+					SELECT ARRAY_AGG(STRUCT(date, str_value)) 
 					FROM %s o
 					WHERE o.variable_measured = t.variable_measured
 						AND o.entity1 = t.entity1
@@ -77,7 +77,7 @@ var statementsMultiEntity = struct {
 			t.entity1 AS observation_about,
 			COALESCE(
 				(
-					SELECT ARRAY_AGG(STRUCT(date, str_value) ORDER BY date ASC) 
+					SELECT ARRAY_AGG(STRUCT(date, str_value)) 
 					FROM %s o
 					WHERE o.variable_measured = t.variable_measured
 						AND o.entity1 = t.entity1
@@ -127,7 +127,7 @@ var statementsMultiEntity = struct {
 			t.entity1 AS observation_about,
 			COALESCE(
 				(
-					SELECT ARRAY_AGG(STRUCT(date, str_value) ORDER BY date ASC) 
+					SELECT ARRAY_AGG(STRUCT(date, str_value)) 
 					FROM %s o
 					WHERE o.variable_measured = t.variable_measured
 						AND o.entity1 = t.entity1
@@ -146,7 +146,7 @@ var statementsMultiEntity = struct {
 			t.entity1 AS observation_about,
 			COALESCE(
 				(
-					SELECT ARRAY_AGG(STRUCT(date, str_value) ORDER BY date ASC) 
+					SELECT ARRAY_AGG(STRUCT(date, str_value)) 
 					FROM %s o
 					WHERE o.variable_measured = t.variable_measured
 						AND o.entity1 = t.entity1
@@ -196,7 +196,7 @@ var statementsMultiEntity = struct {
 			t.entity1 AS observation_about,
 			COALESCE(
 				(
-					SELECT ARRAY_AGG(STRUCT(date, str_value) ORDER BY date ASC) 
+					SELECT ARRAY_AGG(STRUCT(date, str_value)) 
 					FROM %s o
 					WHERE o.variable_measured = t.variable_measured
 						AND o.entity1 = t.entity1
@@ -224,7 +224,7 @@ var statementsMultiEntity = struct {
 			t.entity1 AS observation_about,
 			COALESCE(
 				(
-					SELECT ARRAY_AGG(STRUCT(date, str_value) ORDER BY date ASC) 
+					SELECT ARRAY_AGG(STRUCT(date, str_value)) 
 					FROM %s o
 					WHERE o.variable_measured = t.variable_measured
 						AND o.entity1 = t.entity1
@@ -285,7 +285,7 @@ var statementsMultiEntity = struct {
 			t.entity1 AS observation_about,
 			COALESCE(
 				(
-					SELECT ARRAY_AGG(STRUCT(date, str_value) ORDER BY date ASC) 
+					SELECT ARRAY_AGG(STRUCT(date, str_value)) 
 					FROM %s o
 					WHERE o.variable_measured = t.variable_measured
 						AND o.entity1 = t.entity1
@@ -312,7 +312,7 @@ var statementsMultiEntity = struct {
 			t.entity1 AS observation_about,
 			COALESCE(
 				(
-					SELECT ARRAY_AGG(STRUCT(date, str_value) ORDER BY date ASC) 
+					SELECT ARRAY_AGG(STRUCT(date, str_value)) 
 					FROM %s o
 					WHERE o.variable_measured = t.variable_measured
 						AND o.entity1 = t.entity1
