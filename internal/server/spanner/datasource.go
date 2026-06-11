@@ -54,12 +54,9 @@ var svgGroupInfoExclusionList = map[string]struct{}{
 	"dc/g/Hidden": {},
 }
 
-type TopicExpanderProvider func() resolvev2.TopicExpander
-
 type SpannerDataSourceOptions struct {
 	RecogPlaceStore       *files.RecogPlaceStore
 	MapsClient            internalmaps.MapsClient
-	TopicExpanderProvider TopicExpanderProvider
 }
 
 // SpannerDataSource represents a data source that interacts with Spanner.
@@ -68,7 +65,7 @@ type SpannerDataSource struct {
 	recogPlaceStore       *files.RecogPlaceStore
 	mapsClient            internalmaps.MapsClient
 	searchConfig          *SpannerSearchConfig
-	topicExpanderProvider TopicExpanderProvider
+	topicExpander         resolvev2.TopicExpander
 }
 
 const (
@@ -86,9 +83,14 @@ func NewSpannerDataSource(client SpannerClient, opts *SpannerDataSourceOptions) 
 	if opts != nil {
 		sds.recogPlaceStore = opts.RecogPlaceStore
 		sds.mapsClient = opts.MapsClient
-		sds.topicExpanderProvider = opts.TopicExpanderProvider
 	}
 	return sds
+}
+
+// InitTopicExpander initializes the TopicExpander dependency.
+// This must be called during startup before the datasource starts serving requests.
+func (sds *SpannerDataSource) InitTopicExpander(expander resolvev2.TopicExpander) {
+	sds.topicExpander = expander
 }
 
 // Type returns the type of the data source.
@@ -441,14 +443,10 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 	}
 
 	if resolver := normalizedResolveRequest.Request.GetResolver(); resolver == resolvev2.ResolveResolverTopic {
-		if sds.topicExpanderProvider == nil {
-			return nil, status.Errorf(codes.FailedPrecondition, "Topic expander provider is nil")
+		if sds.topicExpander == nil {
+			return nil, status.Errorf(codes.FailedPrecondition, "Topic expander is not initialized in SpannerDataSource")
 		}
-		expander := sds.topicExpanderProvider()
-		if expander == nil {
-			return nil, status.Errorf(codes.FailedPrecondition, "Topic expander is not initialized yet")
-		}
-		return resolvev2.ResolveTopics(ctx, expander, req.GetNodes(), req.GetExpandTopics())
+		return resolvev2.ResolveTopics(ctx, sds.topicExpander, req.GetNodes(), req.GetExpandTopics())
 	}
 
 	switch normalizedResolveRequest.InProp {

@@ -208,6 +208,50 @@ To ensure that adding new fields to an options struct in the future does not bre
         }
         ```
 
+### Resolving Circular Dependencies: Interface & Setter Injection
+
+Circular dependency loops (e.g., Component A -> Component B -> Component A) during server startup are a common design smell that leads to awkward testing setups and hard-to-follow initialization logic.
+
+We resolve these loops using a combination of **Interface Injection** and **Setter Injection**.
+
+#### The Anti-Pattern: Lazy Closures or Pointer Returns
+Previously, loops were resolved by passing lazy closure providers (e.g., `func() ComponentB`) or returning concrete pointer types from deep setup helpers. This leaked initialization complexity into tests, forcing test helpers (`test/setup.go`) to instantiate complex managers and mock fetchers even for tests that didn't use the feature.
+
+#### The Pattern: Interfaces + Post-Construction Setters
+To break a loop, apply this pattern:
+
+1.  **Inject Interfaces**: Refactor the parent orchestrator (e.g., `Server`) to depend on a low-level `interface` (e.g., `resolve.TopicExpander`) instead of a concrete manager struct.
+2.  **Setter Injection**: Add a post-construction setter method (e.g., `InitTopicExpander(resolve.TopicExpander)`) on the dependency that has a loop (e.g., `SpannerDataSource`). This allows instantiating the dependency first, creating the expander second, and linking them third.
+3.  **Mocking/Nil Injection in Tests**: Because the server accepts an interface, you can pass `nil` (or a mock) in integration tests for features that are not being tested. This keeps test setup fast and isolated.
+
+#### Startup Sequence Example
+In `cmd/main.go` (Production) or test setup:
+
+```go
+// 1. Create the datasource (without expander)
+spannerDS := spanner.NewSpannerDataSource(...)
+
+// 2. Create the cache manager using the datasource as fetcher
+topicCacheManager := topic.NewTopicCacheManager(...)
+topicExpander := server.NewTopicExpander(topicCacheManager) // Wrap in adapter interface
+
+// 3. Inject the expander back into the datasource (breaks the loop!)
+spannerDS.InitTopicExpander(topicExpander)
+
+// 4. Create the server with the expander interface
+mixerServer := server.NewMixerServer(..., &server.MixerServerOptions{
+	TopicExpander: topicExpander,
+})
+```
+
+#### Test Setup Simplification
+In `test/setup.go` (where we don't test topics):
+```go
+mixerServer := server.NewMixerServer(..., &server.MixerServerOptions{
+	TopicExpander: nil, // We just pass nil! No need to spin up cache manager.
+})
+```
+
 ### Feature Flags vs. Server/CLI Flags
 
 Mixer uses two mechanisms for configuration and feature gating: **Server/CLI Flags** and **Feature Flags**. It is important to use the correct mechanism depending on the scope of the change.

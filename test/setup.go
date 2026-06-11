@@ -18,7 +18,6 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"fmt"
 	"log"
 	"net"
 	"os"
@@ -34,9 +33,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/featureflags"
 	"github.com/datacommonsorg/mixer/internal/maps"
 	pbs "github.com/datacommonsorg/mixer/internal/proto/service"
-	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/server"
-	"github.com/datacommonsorg/mixer/internal/nodefetcher"
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
@@ -44,7 +41,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/remote"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
-	"github.com/datacommonsorg/mixer/internal/server/topic"
 	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/server/v3/observation"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
@@ -198,33 +194,13 @@ func setupInternal(
 	}
 	mapsClient := &maps.FakeMapsClient{}
 
-	// Initialize topic expander lazy closure variables.
-	var topicExpander resolve.TopicExpander
-	topicExpanderProvider := func() resolve.TopicExpander { return topicExpander }
-
-	// Initialize Topic Cache Manager
-	topicCacheManager := topic.NewTopicCacheManager(nil) // No redis in tests
-	var mixerServer *server.Server                       // Will be set after newClient returns
-	var nodeFetcher nodefetcher.NodeAllFetcher
-
 	if spannerClient != nil {
 		spannerDataSource = spanner.NewSpannerDataSource(spannerClient, &spanner.SpannerDataSourceOptions{
-			RecogPlaceStore:       st.RecogPlaceStore,
-			MapsClient:            mapsClient,
-			TopicExpanderProvider: topicExpanderProvider,
+			RecogPlaceStore: st.RecogPlaceStore,
+			MapsClient:      mapsClient,
 		})
 		sources = append(sources, spannerDataSource)
-		nodeFetcher = datasource.NewNodeFetcher(spannerDataSource)
-	} else {
-		nodeFetcher = nodefetcher.NewFuncNodeFetcher(func(ctx context.Context, req *pbv2.NodeRequest) (*pbv2.NodeResponse, error) {
-			if mixerServer == nil {
-				return nil, fmt.Errorf("mixerServer is not initialized in test setup")
-			}
-			return mixerServer.V2NodeCore(ctx, req)
-		})
 	}
-	topicCacheManager.InitFetcher(nodeFetcher)
-	topicExpander = server.NewTopicExpander(topicCacheManager)
 	c, err := cache.NewCache(ctx, st, cacheOptions, metadata)
 	if err != nil {
 		return nil, func() {}, err
@@ -264,11 +240,10 @@ func setupInternal(
 		spannerCleanup()
 	}
 
-	client, serverObj, cleanup, err := newClient(st, tables, metadata, c, mapsClient, dispatcher, topicCacheManager, cleanup)
+	client, cleanup, err := newClient(st, tables, metadata, c, mapsClient, dispatcher, cleanup)
 	if err != nil {
 		return nil, func() {}, err
 	}
-	mixerServer = serverObj
 	return client, cleanup, nil
 }
 
@@ -300,7 +275,7 @@ func SetupBqOnly() (pbs.MixerClient, func(), error) {
 	if err != nil {
 		return nil, func() {}, err
 	}
-	client, _, cleanup, err := newClient(st, nil, metadata, nil, nil, nil, nil, func() {})
+	client, cleanup, err := newClient(st, nil, metadata, nil, nil, nil, func() {})
 	return client, cleanup, err
 }
 
@@ -311,12 +286,11 @@ func newClient(
 	cachedata *cache.Cache,
 	mapsClient maps.MapsClient,
 	dispatcher *dispatcher.Dispatcher,
-	topicCacheManager *topic.TopicCacheManager,
 	cleanup func(),
-) (pbs.MixerClient, *server.Server, func(), error) {
+) (pbs.MixerClient, func(), error) {
 	flags, err := featureflags.NewFlags("")
 	if err != nil {
-		return nil, nil, func() {}, err
+		return nil, func() {}, err
 	}
 	// Create mixer server. writeUsageLogs is false by default for tests but is directly tested in handler_v2_test.go
 	// useSpannerGraph is also false by default while the legacy implementation remains, but is tested directly by V3 APIs.
@@ -330,7 +304,7 @@ func newClient(
 			CacheData:               cachedata,
 			MapsClient:              mapsClient,
 			EmbeddingsServiceClient: embeddingsServiceClient,
-			TopicCacheManager:       topicCacheManager,
+			TopicExpander:           nil, // Not testing topics in standard integration tests
 		},
 	)
 	srv := grpc.NewServer()
@@ -338,7 +312,7 @@ func newClient(
 	reflection.Register(srv)
 	lis, err := net.Listen("tcp", "localhost:0")
 	if err != nil {
-		return nil, nil, func() {}, err
+		return nil, func() {}, err
 	}
 	// Start mixer at localhost:0
 	go func() {
@@ -354,9 +328,9 @@ func newClient(
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(300000000 /* 300M */)))
 	if err != nil {
-		return nil, nil, func() {}, err
+		return nil, func() {}, err
 	}
-	return pbs.NewMixerClient(conn), mixerServer, func() {
+	return pbs.NewMixerClient(conn), func() {
 		_ = conn.Close()
 		srv.Stop()
 		cleanup()

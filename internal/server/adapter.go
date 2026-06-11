@@ -44,10 +44,9 @@ func NewTopicExpander(m *topic.TopicCacheManager) resolve.TopicExpander {
 	return &topicExpanderAdapter{m: m}
 }
 
-// newTopicExpander is a Server factory method to instantiate and return a resolve.TopicExpander.
-// It hides concrete adapter details entirely from core handlers.
+// newTopicExpander is a Server factory method to return a resolve.TopicExpander.
 func (s *Server) newTopicExpander() resolve.TopicExpander {
-	return NewTopicExpander(s.topicCacheManager)
+	return s.topicExpander
 }
 
 // ExpandRoots resolves root topics using the underlying TopicCacheManager.

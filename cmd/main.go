@@ -395,15 +395,11 @@ func main() {
 	}
 
 	// Initialize SpannerDataSource now that dependencies are ready.
-	var topicExpander resolve.TopicExpander
-	topicExpanderProvider := func() resolve.TopicExpander { return topicExpander }
-
-	var spannerDS datasource.DataSource
+	var spannerDS *spanner.SpannerDataSource
 	if spannerClient != nil {
 		spannerDS = spanner.NewSpannerDataSource(spannerClient, &spanner.SpannerDataSourceOptions{
-			RecogPlaceStore:       store.RecogPlaceStore,
-			MapsClient:            mapsClient,
-			TopicExpanderProvider: topicExpanderProvider,
+			RecogPlaceStore: store.RecogPlaceStore,
+			MapsClient:      mapsClient,
 		})
 		// TODO: Order sources by priority once other implementations are added.
 		sources = append(sources, spannerDS)
@@ -477,7 +473,12 @@ func main() {
 	slog.Info("Dispatcher initialized", "processorsCount", len(processors))
 
 	// Instantiate the topic expander adapter now that topicCacheManager is ready.
-	topicExpander = server.NewTopicExpander(topicCacheManager)
+	topicExpander := server.NewTopicExpander(topicCacheManager)
+
+	// Inject the topicExpander back into SpannerDataSource.
+	if spannerDS != nil {
+		spannerDS.InitTopicExpander(topicExpander)
+	}
 
 	// Create server object
 	embeddingsServiceClient := resolve.NewEmbeddingsServiceClient(
@@ -498,7 +499,7 @@ func main() {
 			WriteUsageLogs:          *writeUsageLogs,
 			EmbeddingsServiceClient: embeddingsServiceClient,
 			UseSpannerGraph:         *useSpannerGraph,
-			TopicCacheManager:       topicCacheManager,
+			TopicExpander:           topicExpander,
 		},
 	)
 	pbs.RegisterMixerServer(srv, mixerServer)
@@ -517,7 +518,7 @@ func main() {
 	}
 	
 	// Register component lifecycles
-	registerTopicCacheLifecycle(mixerServer)
+	registerTopicCacheLifecycle(mixerServer, topicCacheManager)
 	registerAgentServiceLifecycle(mixerServer)
 	registerEmbeddingsLifecycle(mixerServer, embeddingsServiceClient)
 
@@ -588,8 +589,8 @@ func main() {
 	}
 }
 
-func registerTopicCacheLifecycle(s *server.Server) {
-	if tcm := s.TopicCacheManager(); tcm != nil {
+func registerTopicCacheLifecycle(s *server.Server, tcm *topic.TopicCacheManager) {
+	if tcm != nil {
 		s.RegisterLifecycle("topic-cache",
 			func(ctx context.Context) error {
 				_, err := tcm.LoadHierarchy(ctx)

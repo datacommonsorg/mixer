@@ -42,7 +42,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	"github.com/datacommonsorg/mixer/internal/server/topic"
 	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -64,7 +63,7 @@ type Server struct {
 	embeddingsServiceClient *resolve.EmbeddingsServiceClient
 	// Whether to use dispatcher flow with Spanner as a default datasource.
 	useSpannerGraph   bool
-	topicCacheManager *topic.TopicCacheManager
+	topicExpander     resolve.TopicExpander
 	agentService      *agent.Service
 
 	// Centralized lifecycle scheduler registries
@@ -299,7 +298,7 @@ type MixerServerOptions struct {
 	WriteUsageLogs          bool
 	EmbeddingsServiceClient *resolve.EmbeddingsServiceClient
 	UseSpannerGraph         bool
-	TopicCacheManager       *topic.TopicCacheManager
+	TopicExpander           resolve.TopicExpander
 }
 
 // NewMixerServer creates a new mixer server instance.
@@ -323,7 +322,7 @@ func NewMixerServer(
 		s.writeUsageLogs = opts.WriteUsageLogs
 		s.embeddingsServiceClient = opts.EmbeddingsServiceClient
 		s.useSpannerGraph = opts.UseSpannerGraph
-		s.topicCacheManager = opts.TopicCacheManager
+		s.topicExpander = opts.TopicExpander
 		s.cachedata.Store(opts.CacheData)
 	}
 	s.initAgentService()
@@ -334,11 +333,6 @@ func NewMixerServer(
 // AgentService returns the internal agent.Service instance.
 func (s *Server) AgentService() *agent.Service {
 	return s.agentService
-}
-
-// TopicCacheManager returns the internal topic.TopicCacheManager instance.
-func (s *Server) TopicCacheManager() *topic.TopicCacheManager {
-	return s.topicCacheManager
 }
 
 // isSpannerInitialized returns true if the Spanner backend has been initialized.
