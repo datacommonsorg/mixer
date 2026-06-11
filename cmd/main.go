@@ -44,6 +44,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/remote"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/internal/server/topic"
+	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/server/v3/observation"
 	"github.com/datacommonsorg/mixer/internal/sqldb"
 	"github.com/datacommonsorg/mixer/internal/store"
@@ -62,6 +63,8 @@ import (
 const (
 	// Refresh interval for server hooks.
 	periodicRefreshInterval = 1 * time.Hour
+	// Timeout for HTTP requests to the embeddings service.
+	embeddingsServiceTimeout = 10 * time.Second
 )
 
 var (
@@ -394,7 +397,7 @@ func main() {
 	// Initialize SpannerDataSource now that dependencies are ready.
 	var spannerDS datasource.DataSource
 	if spannerClient != nil {
-		spannerDS = spanner.NewSpannerDataSource(spannerClient, store.RecogPlaceStore, mapsClient, flags.EnableSpannerSearchEmbeddings)
+		spannerDS = spanner.NewSpannerDataSource(spannerClient, store.RecogPlaceStore, mapsClient)
 		// TODO: Order sources by priority once other implementations are added.
 		sources = append(sources, spannerDS)
 	}
@@ -470,7 +473,12 @@ func main() {
 	slog.Info("Dispatcher initialized", "processorsCount", len(processors))
 
 	// Create server object
-	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs, *embeddingsServerURL, *resolveEmbeddingsIndexes, *useSpannerGraph, topicCacheManager)
+	embeddingsServiceClient := resolve.NewEmbeddingsServiceClient(
+		&http.Client{Timeout: embeddingsServiceTimeout},
+		*embeddingsServerURL,
+		*resolveEmbeddingsIndexes,
+	)
+	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs, embeddingsServiceClient, *useSpannerGraph, topicCacheManager)
 	pbs.RegisterMixerServer(srv, mixerServer)
 
 	// If Topic Cache is enabled, construct and initialize the NodeFetcher.
@@ -489,6 +497,7 @@ func main() {
 	// Register component lifecycles
 	registerTopicCacheLifecycle(mixerServer)
 	registerAgentServiceLifecycle(mixerServer)
+	registerEmbeddingsLifecycle(mixerServer, embeddingsServiceClient)
 
 	// Run all startup initialization hooks
 	if err := mixerServer.RunInitHooks(ctx); err != nil {
@@ -583,6 +592,17 @@ func registerAgentServiceLifecycle(s *server.Server) {
 				agentSvc.Reset()
 				return nil
 			},
+		)
+	}
+}
+
+func registerEmbeddingsLifecycle(s *server.Server, client *resolve.EmbeddingsServiceClient) {
+	if client != nil {
+		s.RegisterLifecycle("embeddings-index-validation",
+			func(ctx context.Context) error {
+				return client.LoadAvailableIndexes(ctx)
+			},
+			nil,
 		)
 	}
 }
