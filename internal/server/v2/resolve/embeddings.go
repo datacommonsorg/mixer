@@ -58,7 +58,7 @@ type EmbeddingsServiceClient struct {
 	defaultIndexes      string
 	lock                sync.RWMutex
 	availableIndexes    map[string]struct{}
-	isLoading           bool
+	loadLock            sync.Mutex
 }
 
 func NewEmbeddingsServiceClient(httpClient *http.Client, embeddingsServerURL string, defaultIndexes string) *EmbeddingsServiceClient {
@@ -371,7 +371,8 @@ func (c *EmbeddingsServiceClient) fetchAvailableIndexes(ctx context.Context) (ma
 }
 
 // ValidateIndex checks if the given index (or comma-separated indexes) are available using cached config.
-// If the indexes are not loaded yet, it starts an asynchronous load and returns true (skipping validation for this request).
+// If the indexes are not loaded yet, it performs a synchronous load on the first request,
+// blocking that request until the config is fetched.
 func (c *EmbeddingsServiceClient) ValidateIndex(ctx context.Context, idx string) bool {
 	if c.embeddingsServerURL == "" {
 		return true
@@ -382,41 +383,30 @@ func (c *EmbeddingsServiceClient) ValidateIndex(ctx context.Context, idx string)
 	c.lock.RUnlock()
 
 	if availableIndexes == nil {
-		c.lock.Lock()
-		if c.availableIndexes != nil {
-			loadedIndexes := c.availableIndexes
-			c.lock.Unlock()
-			return c.checkIndexes(idx, loadedIndexes)
-		}
-		if c.isLoading {
-			c.lock.Unlock()
-			slog.Warn("Available embeddings indexes not loaded yet, skipping validation (load already in progress)")
-			return true
-		}
-		c.isLoading = true
-		c.lock.Unlock()
+		c.loadLock.Lock()
 
-		slog.Warn("Available embeddings indexes not loaded yet, initiating asynchronous load and skipping validation")
-		go func() {
-			defer func() {
-				c.lock.Lock()
-				c.isLoading = false
-				c.lock.Unlock()
-			}()
+		// Double check under RLock inside loadLock
+		c.lock.RLock()
+		availableIndexes = c.availableIndexes
+		c.lock.RUnlock()
 
-			indexes, err := c.fetchAvailableIndexes(context.Background())
+		if availableIndexes == nil {
+			slog.Warn("Available embeddings indexes not loaded yet, executing synchronous fetch")
+			indexes, err := c.fetchAvailableIndexes(ctx)
 			if err != nil {
 				slog.Error("Failed to fetch available embeddings indexes on-demand", "error", err)
-				return
+				c.loadLock.Unlock()
+				// Fail open on error to prevent breaking Mixer when embeddings server is offline
+				return true
 			}
 
 			c.lock.Lock()
 			c.availableIndexes = indexes
-			slog.Info("Successfully loaded embeddings indexes on-demand")
 			c.lock.Unlock()
-		}()
-
-		return true
+			availableIndexes = indexes
+			slog.Info("Successfully loaded embeddings indexes synchronously on-demand")
+		}
+		c.loadLock.Unlock()
 	}
 
 	return c.checkIndexes(idx, availableIndexes)

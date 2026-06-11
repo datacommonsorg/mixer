@@ -453,16 +453,13 @@ func TestValidateIndex_OnDemandLoad(t *testing.T) {
 
 	ctx := context.Background()
 
-	// 1. Initial call when availableIndexes is nil.
-	// It should return true (lenient fallback) and trigger async load.
+	// 1. First call with valid index. This should block and fetch config, returning true.
 	isValid := client.ValidateIndex(ctx, "base_uae_mem")
 	if !isValid {
-		t.Errorf("Expected ValidateIndex to return true (lenient) when not loaded")
+		t.Errorf("Expected ValidateIndex to return true for valid index")
 	}
 
-	// 2. Wait a bit for the async load to complete.
-	time.Sleep(100 * time.Millisecond)
-
+	// 2. Verify exactly 1 request was made to the server.
 	lock.Lock()
 	count := requestCount
 	lock.Unlock()
@@ -470,17 +467,18 @@ func TestValidateIndex_OnDemandLoad(t *testing.T) {
 		t.Errorf("Expected 1 request to embeddings server, got %d", count)
 	}
 
-	// 3. Second call. Now availableIndexes should be loaded.
-	// Valid index should return true.
-	isValid = client.ValidateIndex(ctx, "base_uae_mem")
-	if !isValid {
-		t.Errorf("Expected ValidateIndex to return true for valid index after load")
-	}
-
-	// Invalid index should return false.
+	// 3. Second call with invalid index. It should use cached config and return false immediately.
 	isValid = client.ValidateIndex(ctx, "invalid_index")
 	if isValid {
-		t.Errorf("Expected ValidateIndex to return false for invalid index after load")
+		t.Errorf("Expected ValidateIndex to return false for invalid index")
+	}
+
+	// 4. Verify no new requests were made.
+	lock.Lock()
+	count = requestCount
+	lock.Unlock()
+	if count != 1 {
+		t.Errorf("Expected still only 1 request to embeddings server, got %d", count)
 	}
 }
 
@@ -508,16 +506,14 @@ func TestNewEmbeddingsServiceClient_NilClient(t *testing.T) {
 
 	ctx := context.Background()
 	// Trigger index validation which executes a GET request using the client
+	// It should block and make 1 request.
 	_ = client.ValidateIndex(ctx, "any_index")
-
-	// Wait for async load to complete
-	time.Sleep(100 * time.Millisecond)
 
 	lock.Lock()
 	count := requestCount
 	lock.Unlock()
 	if count != 1 {
-		t.Errorf("Expected 1 request to embeddings server, got %d (client probably failed to call server)", count)
+		t.Errorf("Expected 1 request to embeddings server, got %d", count)
 	}
 }
 
@@ -534,7 +530,7 @@ func TestValidateIndex_ConcurrentOnDemandLoad(t *testing.T) {
 		requestCount++
 		lock.Unlock()
 
-		// Add artificial delay to simulate slow HTTP fetch and let other concurrent requests hit the check
+		// Add artificial delay to simulate slow HTTP fetch and let other concurrent requests block
 		time.Sleep(50 * time.Millisecond)
 
 		w.WriteHeader(http.StatusOK)
@@ -559,22 +555,19 @@ func TestValidateIndex_ConcurrentOnDemandLoad(t *testing.T) {
 
 	wg.Wait()
 
-	// 1. All concurrent requests should return true (lenient)
+	// 1. All concurrent requests should return true because the index is valid
 	for i, res := range results {
 		if !res {
-			t.Errorf("Request %d: Expected true (lenient) validation before config is fully loaded", i)
+			t.Errorf("Request %d: Expected true (valid index) after sync config load", i)
 		}
 	}
 
-	// 2. Wait for the spawned load to complete
-	time.Sleep(100 * time.Millisecond)
-
-	// 3. Verify exactly 1 request was made to the backend
+	// 2. Verify exactly 1 request was made to the backend
 	lock.Lock()
 	count := requestCount
 	lock.Unlock()
 
 	if count != 1 {
-		t.Errorf("Expected exactly 1 request to embeddings server, got %d (redundant goroutines were probably spawned)", count)
+		t.Errorf("Expected exactly 1 request to embeddings server, got %d (redundant fetches were probably made)", count)
 	}
 }

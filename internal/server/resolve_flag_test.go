@@ -6,7 +6,6 @@ import (
 	"net/http/httptest"
 	"strings"
 	"testing"
-	"time"
 
 	"github.com/datacommonsorg/mixer/internal/featureflags"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
@@ -161,24 +160,9 @@ func TestV2ResolveCore_InvalidIndex(t *testing.T) {
 		Nodes:    []string{"foo"},
 	}
 
-	// 1. First call triggers the async load, should fail open (or not fail with InvalidArgument)
+	// Call V2ResolveCore with "invalid_idx". This should block, fetch config synchronously,
+	// and fail immediately because "invalid_idx" is not in the config.
 	_, err := s.V2ResolveCore(
-		ctx,
-		&resolve.NormalizedResolveRequest{
-			Request:      req,
-			InProp:       "description",
-			OutProp:      "dcid",
-			TypeOfValues: nil,
-		})
-	if err != nil && status.Code(err) == codes.InvalidArgument {
-		t.Errorf("First call expected to fail open, but got InvalidArgument: %v", err)
-	}
-
-	// Wait for async load to finish
-	time.Sleep(100 * time.Millisecond)
-
-	// 2. Second call should fail with InvalidArgument
-	_, err = s.V2ResolveCore(
 		ctx,
 		&resolve.NormalizedResolveRequest{
 			Request:      req,
