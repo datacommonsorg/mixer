@@ -125,10 +125,6 @@ func (s *Server) V2Resolve(
 	return v2Resp, nil
 }
 
-// isSpannerEnabled returns true if the Spanner backend has been enabled.
-func (s *Server) isSpannerEnabled() bool {
-	return s.useSpannerGraph || (s.flags != nil && s.flags.UseSpannerGraph)
-}
 
 // shouldRouteResolveToDispatcher determines whether to route a V2Resolve request to the dispatcher.
 // It returns an error if the request explicitly asks for an unavailable backend.
@@ -137,15 +133,9 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 		resolver = resolve.ResolveResolverPlace // Default
 	}
 
-	// Place resolver uses standard diversion logic
-	if resolver == resolve.ResolveResolverPlace {
+	// Place and Topic resolvers use the standard diversion logic (Spanner vs Bigtable/MySQL)
+	if resolver == resolve.ResolveResolverPlace || resolver == resolve.ResolveResolverTopic {
 		return s.shouldDivertV2(ctx), nil
-	}
-
-	// Topic resolver always goes to V2ResolveCore (local) because it uses in-memory TopicCache
-	// TODO: implement resolver==topic handling in spanner datasource for dispatch based fulfillment
-	if resolver == resolve.ResolveResolverTopic {
-		return false, nil
 	}
 
 	// Indicator resolver (embeddings-based) has custom request-time toggling
@@ -157,7 +147,7 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 		if divertVal != nil {
 			if *divertVal {
 				// Force Spanner: Fail fast if Spanner backend is not configured
-				if !s.isSpannerEnabled() {
+				if !s.isSpannerInitialized() {
 					slog.Error("Spanner backend requested via header, but Spanner is not enabled on this server")
 					return false, status.Errorf(codes.FailedPrecondition, "Spanner backend is not enabled in this mixer")
 				}
@@ -168,7 +158,7 @@ func (s *Server) shouldRouteResolveToDispatcher(ctx context.Context, resolver st
 			}
 		}
 		// Default: use Spanner if configured AND default routing flag is true
-		return s.flags != nil && s.flags.EnableSpannerSearchEmbeddings && s.isSpannerEnabled(), nil
+		return s.flags != nil && s.flags.EnableSpannerSearchEmbeddings && s.isSpannerInitialized(), nil
 	}
 
 	// Fallback for safety (ValidateAndParseResolveInputs guarantees valid resolver type)

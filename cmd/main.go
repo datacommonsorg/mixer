@@ -395,9 +395,12 @@ func main() {
 	}
 
 	// Initialize SpannerDataSource now that dependencies are ready.
-	var spannerDS datasource.DataSource
+	var spannerDS *spanner.SpannerDataSource
 	if spannerClient != nil {
-		spannerDS = spanner.NewSpannerDataSource(spannerClient, store.RecogPlaceStore, mapsClient)
+		spannerDS = spanner.NewSpannerDataSource(spannerClient, &spanner.SpannerDataSourceOptions{
+			RecogPlaceStore: store.RecogPlaceStore,
+			MapsClient:      mapsClient,
+		})
 		// TODO: Order sources by priority once other implementations are added.
 		sources = append(sources, spannerDS)
 	}
@@ -462,23 +465,43 @@ func main() {
 	}
 
 	// Topic Cache Manager
-	var topicCacheManager *topic.TopicCacheManager
-	if flags.EnableEmbeddingsResolver {
-		slog.Info("Initializing topic cache manager")
-		topicCacheManager = topic.NewTopicCacheManager(redisCacheClient)
-	}
+	slog.Info("Initializing topic cache manager")
+	topicCacheManager := topic.NewTopicCacheManager(redisCacheClient)
 
 	// Dispatcher
 	dispatcher := dispatcher.NewDispatcher(processors, dataSources)
 	slog.Info("Dispatcher initialized", "processorsCount", len(processors))
 
+	// Instantiate the topic expander adapter now that topicCacheManager is ready.
+	topicExpander := server.NewTopicExpander(topicCacheManager)
+
+	// Inject the topicExpander back into SpannerDataSource.
+	if spannerDS != nil {
+		spannerDS.InitTopicExpander(topicExpander)
+	}
+
 	// Create server object
 	embeddingsServiceClient := resolve.NewEmbeddingsServiceClient(
-		&http.Client{Timeout: embeddingsServiceTimeout},
 		*embeddingsServerURL,
-		*resolveEmbeddingsIndexes,
+		&resolve.EmbeddingsServiceClientOptions{
+			HTTPClient:     &http.Client{Timeout: embeddingsServiceTimeout},
+			DefaultIndexes: *resolveEmbeddingsIndexes,
+		},
 	)
-	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs, embeddingsServiceClient, *useSpannerGraph, topicCacheManager)
+	mixerServer := server.NewMixerServer(
+		store,
+		metadata,
+		dispatcher,
+		flags,
+		&server.MixerServerOptions{
+			CacheData:               c,
+			MapsClient:              mapsClient,
+			WriteUsageLogs:          *writeUsageLogs,
+			EmbeddingsServiceClient: embeddingsServiceClient,
+			UseSpannerGraph:         *useSpannerGraph,
+			TopicExpander:           topicExpander,
+		},
+	)
 	pbs.RegisterMixerServer(srv, mixerServer)
 
 	// If Topic Cache is enabled, construct and initialize the NodeFetcher.
@@ -495,7 +518,7 @@ func main() {
 	}
 	
 	// Register component lifecycles
-	registerTopicCacheLifecycle(mixerServer)
+	registerTopicCacheLifecycle(mixerServer, topicCacheManager)
 	registerAgentServiceLifecycle(mixerServer)
 	registerEmbeddingsLifecycle(mixerServer, embeddingsServiceClient)
 
@@ -566,8 +589,8 @@ func main() {
 	}
 }
 
-func registerTopicCacheLifecycle(s *server.Server) {
-	if tcm := s.TopicCacheManager(); tcm != nil {
+func registerTopicCacheLifecycle(s *server.Server, tcm *topic.TopicCacheManager) {
+	if tcm != nil {
 		s.RegisterLifecycle("topic-cache",
 			func(ctx context.Context) error {
 				_, err := tcm.LoadHierarchy(ctx)

@@ -75,7 +75,7 @@ func TestV2ResolveCore_EmbeddingsFlag(t *testing.T) {
 		flags: &featureflags.Flags{
 			EnableEmbeddingsResolver: true,
 		},
-		embeddingsServiceClient: resolve.NewEmbeddingsServiceClient(mockClient, "http://example.com", ""),
+		embeddingsServiceClient: resolve.NewEmbeddingsServiceClient("http://example.com", &resolve.EmbeddingsServiceClientOptions{HTTPClient: mockClient}),
 	}
 
 	_, _ = sEnabled.V2ResolveCore(

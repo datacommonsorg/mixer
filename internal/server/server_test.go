@@ -117,7 +117,7 @@ func TestValidateEmbeddingsIndex(t *testing.T) {
 				serverURL = tc.serverURL
 			}
 
-			client := resolve.NewEmbeddingsServiceClient(&http.Client{}, serverURL, "")
+			client := resolve.NewEmbeddingsServiceClient(serverURL, nil)
 			_ = client.LoadAvailableIndexes(context.Background())
 			got := client.ValidateIndex(context.Background(), tc.idxToValidate)
 			if got != tc.wantValid {
@@ -126,7 +126,6 @@ func TestValidateEmbeddingsIndex(t *testing.T) {
 		})
 	}
 }
-
 func TestShouldDivertV2(t *testing.T) {
 
 	tests := []struct {

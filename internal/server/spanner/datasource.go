@@ -54,12 +54,18 @@ var svgGroupInfoExclusionList = map[string]struct{}{
 	"dc/g/Hidden": {},
 }
 
+type SpannerDataSourceOptions struct {
+	RecogPlaceStore       *files.RecogPlaceStore
+	MapsClient            internalmaps.MapsClient
+}
+
 // SpannerDataSource represents a data source that interacts with Spanner.
 type SpannerDataSource struct {
-	client          SpannerClient
-	recogPlaceStore *files.RecogPlaceStore
-	mapsClient      internalmaps.MapsClient
-	searchConfig    *SpannerSearchConfig
+	client                SpannerClient
+	recogPlaceStore       *files.RecogPlaceStore
+	mapsClient            internalmaps.MapsClient
+	searchConfig          *SpannerSearchConfig
+	topicExpander         resolvev2.TopicExpander
 }
 
 const (
@@ -68,18 +74,23 @@ const (
 	s2CellTypePrefix                  = "S2CellLevel"
 )
 
-func NewSpannerDataSource(
-	client SpannerClient,
-	recogPlaceStore *files.RecogPlaceStore,
-	mapsClient internalmaps.MapsClient,
-) *SpannerDataSource {
-	cfg, _ := loadSpannerSearchConfig()
-	return &SpannerDataSource{
-		client:          client,
-		recogPlaceStore: recogPlaceStore,
-		mapsClient:      mapsClient,
-		searchConfig:    cfg,
+func NewSpannerDataSource(client SpannerClient, opts *SpannerDataSourceOptions) *SpannerDataSource {
+	searchCfg, _ := loadSpannerSearchConfig()
+	sds := &SpannerDataSource{
+		client:       client,
+		searchConfig: searchCfg,
 	}
+	if opts != nil {
+		sds.recogPlaceStore = opts.RecogPlaceStore
+		sds.mapsClient = opts.MapsClient
+	}
+	return sds
+}
+
+// InitTopicExpander initializes the TopicExpander dependency.
+// This must be called during startup before the datasource starts serving requests.
+func (sds *SpannerDataSource) InitTopicExpander(expander resolvev2.TopicExpander) {
+	sds.topicExpander = expander
 }
 
 // Type returns the type of the data source.
@@ -429,6 +440,13 @@ func (sds *SpannerDataSource) Resolve(ctx context.Context, req *pbv2.ResolveRequ
 	if resolver := normalizedResolveRequest.Request.GetResolver(); resolver == resolvev2.ResolveResolverIndicator {
 		slog.Info("SpannerDataSource: Starting resolution", "resolver", resolver, "num_nodes", len(req.GetNodes()), "inProp", normalizedResolveRequest.InProp)
 		return sds.vectorSearchResolution(ctx, normalizedResolveRequest)
+	}
+
+	if resolver := normalizedResolveRequest.Request.GetResolver(); resolver == resolvev2.ResolveResolverTopic {
+		if sds.topicExpander == nil {
+			return nil, status.Errorf(codes.FailedPrecondition, "Topic expander is not initialized in SpannerDataSource")
+		}
+		return resolvev2.ResolveTopics(ctx, sds.topicExpander, req.GetNodes(), req.GetExpandTopics())
 	}
 
 	switch normalizedResolveRequest.InProp {

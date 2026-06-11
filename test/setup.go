@@ -20,7 +20,6 @@ import (
 	"encoding/json"
 	"log"
 	"net"
-	"net/http"
 	"os"
 	"path"
 	"path/filepath"
@@ -194,8 +193,12 @@ func setupInternal(
 		log.Fatalf("Failed to create a new store: %s", err)
 	}
 	mapsClient := &maps.FakeMapsClient{}
+
 	if spannerClient != nil {
-		spannerDataSource = spanner.NewSpannerDataSource(spannerClient, st.RecogPlaceStore, mapsClient)
+		spannerDataSource = spanner.NewSpannerDataSource(spannerClient, &spanner.SpannerDataSourceOptions{
+			RecogPlaceStore: st.RecogPlaceStore,
+			MapsClient:      mapsClient,
+		})
 		sources = append(sources, spannerDataSource)
 	}
 	c, err := cache.NewCache(ctx, st, cacheOptions, metadata)
@@ -237,7 +240,11 @@ func setupInternal(
 		spannerCleanup()
 	}
 
-	return newClient(st, tables, metadata, c, mapsClient, dispatcher, cleanup)
+	client, cleanup, err := newClient(st, tables, metadata, c, mapsClient, dispatcher, cleanup)
+	if err != nil {
+		return nil, func() {}, err
+	}
+	return client, cleanup, nil
 }
 
 // SetupBqOnly creates local server and client with access to BigQuery only.
@@ -268,7 +275,8 @@ func SetupBqOnly() (pbs.MixerClient, func(), error) {
 	if err != nil {
 		return nil, func() {}, err
 	}
-	return newClient(st, nil, metadata, nil, nil, nil, func() {})
+	client, cleanup, err := newClient(st, nil, metadata, nil, nil, nil, func() {})
+	return client, cleanup, err
 }
 
 func newClient(
@@ -286,8 +294,19 @@ func newClient(
 	}
 	// Create mixer server. writeUsageLogs is false by default for tests but is directly tested in handler_v2_test.go
 	// useSpannerGraph is also false by default while the legacy implementation remains, but is tested directly by V3 APIs.
-	embeddingsServiceClient := resolve.NewEmbeddingsServiceClient(&http.Client{}, "", "")
-	mixerServer := server.NewMixerServer(mixerStore, metadata, cachedata, mapsClient, dispatcher, flags, false, embeddingsServiceClient, false, nil)
+	embeddingsServiceClient := resolve.NewEmbeddingsServiceClient("", nil)
+	mixerServer := server.NewMixerServer(
+		mixerStore,
+		metadata,
+		dispatcher,
+		flags,
+		&server.MixerServerOptions{
+			CacheData:               cachedata,
+			MapsClient:              mapsClient,
+			EmbeddingsServiceClient: embeddingsServiceClient,
+			TopicExpander:           nil, // Not testing topics in standard integration tests
+		},
+	)
 	srv := grpc.NewServer()
 	pbs.RegisterMixerServer(srv, mixerServer)
 	reflection.Register(srv)
@@ -311,8 +330,11 @@ func newClient(
 	if err != nil {
 		return nil, func() {}, err
 	}
-	mixerClient := pbs.NewMixerClient(conn)
-	return mixerClient, cleanup, nil
+	return pbs.NewMixerClient(conn), func() {
+		_ = conn.Close()
+		srv.Stop()
+		cleanup()
+	}, nil
 }
 
 // UpdateGolden updates the golden file for native typed response.

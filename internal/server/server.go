@@ -42,7 +42,6 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/cache"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
 	"github.com/datacommonsorg/mixer/internal/server/resource"
-	"github.com/datacommonsorg/mixer/internal/server/topic"
 	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/store"
 	"github.com/datacommonsorg/mixer/internal/store/bigtable"
@@ -64,7 +63,7 @@ type Server struct {
 	embeddingsServiceClient *resolve.EmbeddingsServiceClient
 	// Whether to use dispatcher flow with Spanner as a default datasource.
 	useSpannerGraph   bool
-	topicCacheManager *topic.TopicCacheManager
+	topicExpander     resolve.TopicExpander
 	agentService      *agent.Service
 
 	// Centralized lifecycle scheduler registries
@@ -293,33 +292,39 @@ func (s *Server) ClosePeriodicRefresher() {
 	}
 }
 
+type MixerServerOptions struct {
+	CacheData               *cache.Cache
+	MapsClient              maps.MapsClient
+	WriteUsageLogs          bool
+	EmbeddingsServiceClient *resolve.EmbeddingsServiceClient
+	UseSpannerGraph         bool
+	TopicExpander           resolve.TopicExpander
+}
+
 // NewMixerServer creates a new mixer server instance.
 func NewMixerServer(
 	store *store.Store,
 	metadata *resource.Metadata,
-	cachedata *cache.Cache,
-	mapsClient maps.MapsClient,
 	dispatcher *dispatcher.Dispatcher,
 	flags *featureflags.Flags,
-	writeUsageLogs bool,
-	embeddingsServiceClient *resolve.EmbeddingsServiceClient,
-	useSpannerGraph bool,
-	topicCacheManager *topic.TopicCacheManager,
+	opts *MixerServerOptions,
 ) *Server {
 	s := &Server{
-		store:                   store,
-		metadata:                metadata,
-		cachedata:               atomic.Pointer[cache.Cache]{},
-		mapsClient:              mapsClient,
-		httpClient:              &http.Client{},
-		dispatcher:              dispatcher,
-		flags:                   flags,
-		writeUsageLogs:          writeUsageLogs,
-		embeddingsServiceClient: embeddingsServiceClient,
-		useSpannerGraph:         useSpannerGraph,
-		topicCacheManager:       topicCacheManager,
+		store:      store,
+		metadata:   metadata,
+		cachedata:  atomic.Pointer[cache.Cache]{},
+		httpClient: &http.Client{},
+		dispatcher: dispatcher,
+		flags:      flags,
 	}
-	s.cachedata.Store(cachedata)
+	if opts != nil {
+		s.mapsClient = opts.MapsClient
+		s.writeUsageLogs = opts.WriteUsageLogs
+		s.embeddingsServiceClient = opts.EmbeddingsServiceClient
+		s.useSpannerGraph = opts.UseSpannerGraph
+		s.topicExpander = opts.TopicExpander
+		s.cachedata.Store(opts.CacheData)
+	}
 	s.initAgentService()
 
 	return s
@@ -330,13 +335,16 @@ func (s *Server) AgentService() *agent.Service {
 	return s.agentService
 }
 
-// TopicCacheManager returns the internal topic.TopicCacheManager instance.
-func (s *Server) TopicCacheManager() *topic.TopicCacheManager {
-	return s.topicCacheManager
+// isSpannerInitialized returns true if the Spanner backend has been initialized.
+func (s *Server) isSpannerInitialized() bool {
+	return s.useSpannerGraph || (s.flags != nil && s.flags.UseSpannerGraph)
 }
 
 // shouldDivertV2 returns true if the request should be diverted to the dispatcher.
 func (s *Server) shouldDivertV2(ctx context.Context) bool {
+	if !s.isSpannerInitialized() {
+		return false
+	}
 	// First, check if the overall Mixer Spanner flag is set.
 	if s.useSpannerGraph {
 		// Divert all requests to Spanner.
