@@ -5,7 +5,7 @@
         "country/USA": {
           "ordered_facets": [
             {
-              "facet_id": "4181918134",
+              "facet_id": "4234662143",
               "observations": [
                 {
                   "date": "2023",
@@ -17,7 +17,7 @@
               "latest_date": "2023"
             },
             {
-              "facet_id": "2825511676",
+              "facet_id": "1515291078",
               "observations": [
                 {
                   "date": "2020",
@@ -34,15 +34,17 @@
     }
   },
   "facets": {
-    "2825511676": {
+    "1515291078": {
       "import_name": "CDC_Mortality_UnderlyingCause",
-      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html"
+      "provenance_url": "https://wonder.cdc.gov/ucd-icd10.html",
+      "provenance_id": "dc/base/CDC_Mortality_UnderlyingCause"
     },
-    "4181918134": {
+    "4234662143": {
       "import_name": "OECDRegionalDemography_Population",
       "provenance_url": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23&pg=40&fc=Topic&bp=true&snb=117&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_DEMO%40DF_POP_5Y&df[ag]=OECD.CFE.EDS&df[vs]=2.0&dq=A.......&to[TIME_PERIOD]=false&vw=tb&pd=%2C",
       "measurement_method": "OECDRegionalStatistics",
-      "observation_period": "P1Y"
+      "observation_period": "P1Y",
+      "provenance_id": "dc/base/OECDRegionalDemography_Population"
     }
   }
 }

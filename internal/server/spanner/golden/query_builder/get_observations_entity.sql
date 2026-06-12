@@ -3,6 +3,7 @@
 			observation_about,
 			observations,
 			import_name,
+			provenance,
 			observation_period,
 			measurement_method,
 			unit,

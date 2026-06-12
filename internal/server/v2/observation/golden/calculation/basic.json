@@ -5,7 +5,7 @@
         "wikidataId/Q613": {
           "ordered_facets": [
             {
-              "facet_id": "3238703853",
+              "facet_id": "3525590645",
               "observations": [
                 {
                   "date": "1975",
@@ -41,7 +41,7 @@
         "wikidataId/Q613": {
           "ordered_facets": [
             {
-              "facet_id": "3238703853",
+              "facet_id": "3525590645",
               "observations": [
                 {
                   "date": "1975",
@@ -77,7 +77,7 @@
         "wikidataId/Q613": {
           "ordered_facets": [
             {
-              "facet_id": "409660979",
+              "facet_id": "644553626",
               "observations": [
                 {
                   "date": "2022-06-10",
@@ -189,7 +189,7 @@
               "latest_date": "2022-09-16"
             },
             {
-              "facet_id": "263855571",
+              "facet_id": "2808025146",
               "observations": [
                 {
                   "date": "2022-06",
@@ -213,7 +213,7 @@
               "latest_date": "2022-09"
             },
             {
-              "facet_id": "341794991",
+              "facet_id": "2679061790",
               "observations": [
                 {
                   "date": "2022",
@@ -230,24 +230,28 @@
     }
   },
   "facets": {
-    "263855571": {
+    "2679061790": {
       "import_name": "WetBulbTemperatureEventPlaces_AutoRefresh",
       "provenance_url": "https://datacommons.org/",
-      "observation_period": "P1M"
+      "observation_period": "P1Y",
+      "provenance_id": "dc/base/WetBulbTemperatureEventPlaces_AutoRefresh"
     },
-    "3238703853": {
+    "2808025146": {
+      "import_name": "WetBulbTemperatureEventPlaces_AutoRefresh",
+      "provenance_url": "https://datacommons.org/",
+      "observation_period": "P1M",
+      "provenance_id": "dc/base/WetBulbTemperatureEventPlaces_AutoRefresh"
+    },
+    "3525590645": {
       "import_name": "UAE_Population",
       "provenance_url": "https://bayanat.ae/en/Data?query=population",
-      "is_dc_aggregate": true
+      "is_dc_aggregate": true,
+      "provenance_id": "dc/base/UAE_Population"
     },
-    "341794991": {
+    "644553626": {
       "import_name": "WetBulbTemperatureEventPlaces_AutoRefresh",
       "provenance_url": "https://datacommons.org/",
-      "observation_period": "P1Y"
-    },
-    "409660979": {
-      "import_name": "WetBulbTemperatureEventPlaces_AutoRefresh",
-      "provenance_url": "https://datacommons.org/"
+      "provenance_id": "dc/base/WetBulbTemperatureEventPlaces_AutoRefresh"
     }
   }
 }

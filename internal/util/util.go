@@ -507,6 +507,7 @@ func GetFacet(s *pb.SourceSeries) *pb.Facet {
 		Unit:              s.Unit,
 		ProvenanceUrl:     s.ProvenanceUrl,
 		IsDcAggregate:     s.IsDcAggregate,
+		ProvenanceId:      s.ProvenanceId,
 	}
 }
 
@@ -524,6 +525,9 @@ func GetFacetID(m *pb.Facet) string {
 	}, "-")
 	if m.IsDcAggregate {
 		s += "-IsDcAggregate"
+	}
+	if m.ProvenanceId != "" {
+		s += "-" + m.ProvenanceId
 	}
 	h := fnv.New32a()
 	_, _ = h.Write([]byte(s))
