@@ -68,18 +68,25 @@ const (
 	s2CellTypePrefix                  = "S2CellLevel"
 )
 
+type SpannerDataSourceOptions struct {
+	RecogPlaceStore *files.RecogPlaceStore
+	MapsClient      internalmaps.MapsClient
+}
+
 func NewSpannerDataSource(
 	client SpannerClient,
-	recogPlaceStore *files.RecogPlaceStore,
-	mapsClient internalmaps.MapsClient,
+	opts *SpannerDataSourceOptions,
 ) *SpannerDataSource {
 	cfg, _ := loadSpannerSearchConfig()
-	return &SpannerDataSource{
-		client:          client,
-		recogPlaceStore: recogPlaceStore,
-		mapsClient:      mapsClient,
-		searchConfig:    cfg,
+	sds := &SpannerDataSource{
+		client:       client,
+		searchConfig: cfg,
 	}
+	if opts != nil {
+		sds.recogPlaceStore = opts.RecogPlaceStore
+		sds.mapsClient = opts.MapsClient
+	}
+	return sds
 }
 
 // Type returns the type of the data source.

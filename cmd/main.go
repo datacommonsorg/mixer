@@ -42,6 +42,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/healthcheck"
 	"github.com/datacommonsorg/mixer/internal/server/redis"
 	"github.com/datacommonsorg/mixer/internal/server/remote"
+	"github.com/datacommonsorg/mixer/internal/server/v2/resolve"
 	"github.com/datacommonsorg/mixer/internal/server/spanner"
 	"github.com/datacommonsorg/mixer/internal/server/topic"
 	"github.com/datacommonsorg/mixer/internal/server/v3/observation"
@@ -394,7 +395,10 @@ func main() {
 	// Initialize SpannerDataSource now that dependencies are ready.
 	var spannerDS datasource.DataSource
 	if spannerClient != nil {
-		spannerDS = spanner.NewSpannerDataSource(spannerClient, store.RecogPlaceStore, mapsClient)
+		spannerDS = spanner.NewSpannerDataSource(spannerClient, &spanner.SpannerDataSourceOptions{
+			RecogPlaceStore: store.RecogPlaceStore,
+			MapsClient:      mapsClient,
+		})
 		// TODO: Order sources by priority once other implementations are added.
 		sources = append(sources, spannerDS)
 	}
@@ -469,8 +473,28 @@ func main() {
 	dispatcher := dispatcher.NewDispatcher(processors, dataSources)
 	slog.Info("Dispatcher initialized", "processorsCount", len(processors))
 
+	embeddingsServiceClient := resolve.NewEmbeddingsServiceClient(
+		*embeddingsServerURL,
+		&resolve.EmbeddingsServiceClientOptions{
+			DefaultIndexes: *resolveEmbeddingsIndexes,
+		},
+	)
+
 	// Create server object
-	mixerServer := server.NewMixerServer(store, metadata, c, mapsClient, dispatcher, flags, *writeUsageLogs, *embeddingsServerURL, *resolveEmbeddingsIndexes, *useSpannerGraph, topicCacheManager)
+	mixerServer := server.NewMixerServer(
+		store,
+		metadata,
+		dispatcher,
+		flags,
+		&server.MixerServerOptions{
+			CacheData:               c,
+			MapsClient:              mapsClient,
+			WriteUsageLogs:          *writeUsageLogs,
+			EmbeddingsServiceClient: embeddingsServiceClient,
+			UseSpannerGraph:         *useSpannerGraph,
+			TopicCacheManager:       topicCacheManager,
+		},
+	)
 	pbs.RegisterMixerServer(srv, mixerServer)
 
 	// If Topic Cache is enabled, construct and initialize the NodeFetcher.
