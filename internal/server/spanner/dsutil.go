@@ -630,6 +630,7 @@ func observationToFacet(observation *Observation) *pb.Facet {
 		ScalingFactor:     observation.ScalingFactor,
 		Unit:              observation.Unit,
 		IsDcAggregate:     observation.IsDcAggregate,
+		ProvenanceId:      observation.ProvenanceID,
 	}
 	return &facet
 }

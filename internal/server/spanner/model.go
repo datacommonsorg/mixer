@@ -55,6 +55,7 @@ type Observation struct {
 	FacetId           string     `spanner:"facet_id"`
 	Observations      TimeSeries `spanner:"observations"`
 	ImportName        string     `spanner:"import_name"`
+	ProvenanceID      string     `spanner:"provenance"`
 	ObservationPeriod string     `spanner:"observation_period"`
 	MeasurementMethod string     `spanner:"measurement_method"`
 	Unit              string     `spanner:"unit"`
@@ -141,16 +142,16 @@ type StatVarGroupNode struct {
 
 // SVGChild represents the info to build a base SVG child.
 type SVGChild struct {
-	SubjectID string `spanner:"subject_id"`
-	Name      string `spanner:"name"`
-	Predicate string `spanner:"predicate"`
+	SubjectID  string `spanner:"subject_id"`
+	Name       string `spanner:"name"`
+	Predicate  string `spanner:"predicate"`
 	Definition string `spanner:"definition"`
 }
 
 // ChildSV represents the info to build a child SV of an SVG.
 type ChildSV struct {
-	SubjectID string `spanner:"subject_id"`
-	Name      string `spanner:"name"`
+	SubjectID  string `spanner:"subject_id"`
+	Name       string `spanner:"name"`
 	Definition string `spanner:"definition"`
 }
 

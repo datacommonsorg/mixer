@@ -6,7 +6,7 @@
         "country/USA": {
           "ordered_facets": [
             {
-              "facet_id": "3870053105",
+              "facet_id": "377101254",
               "observations": [
                 {
                   "date": "2024",
@@ -23,10 +23,11 @@
     }
   },
   "facets": {
-    "3870053105": {
+    "377101254": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0701",
       "provenance_url": "https://data.census.gov/cedsci/table?q=S0701&tid=ACSST5Y2024.S0701",
-      "measurement_method": "CensusACS5yrSurveySubjectTable"
+      "measurement_method": "CensusACS5yrSurveySubjectTable",
+      "provenance_id": "dc/base/CensusACS5YearSurvey_SubjectTables_S0701"
     }
   }
 }

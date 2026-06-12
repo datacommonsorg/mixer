@@ -5,7 +5,7 @@
         "wikidataId/Q187712": {
           "ordered_facets": [
             {
-              "facet_id": "3238703853",
+              "facet_id": "3525590645",
               "observations": [
                 {
                   "date": "1975",
@@ -37,7 +37,7 @@
         "wikidataId/Q613": {
           "ordered_facets": [
             {
-              "facet_id": "3238703853",
+              "facet_id": "3525590645",
               "observations": [
                 {
                   "date": "1975",
@@ -70,10 +70,11 @@
     }
   },
   "facets": {
-    "3238703853": {
+    "3525590645": {
       "import_name": "UAE_Population",
       "provenance_url": "https://bayanat.ae/en/Data?query=population",
-      "is_dc_aggregate": true
+      "is_dc_aggregate": true,
+      "provenance_id": "dc/base/UAE_Population"
     }
   }
 }
