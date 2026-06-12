@@ -40,6 +40,9 @@ func toObsSeriesPb(jsonRaw []byte) (interface{}, error) {
 		ret := x.ObsTimeSeries
 		// Unify unit.
 		for _, series := range ret.SourceSeries {
+			if series == nil {
+				continue
+			}
 			if conversion, ok := convert.UnitMapping[series.Unit]; ok {
 				series.Unit = conversion.Unit
 				for date := range series.Val {
@@ -113,6 +116,9 @@ func toObsCollection(jsonRaw []byte) (interface{}, error) {
 	case *pb.ChartStore_ObsCollection:
 		ret := x.ObsCollection
 		for _, sc := range ret.SourceCohorts {
+			if sc == nil {
+				continue
+			}
 			if sc.ProvenanceId == "" && sc.ImportName != "" {
 				sc.ProvenanceId = "dc/base/" + sc.ImportName
 			}
