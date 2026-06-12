@@ -12549,7 +12549,7 @@
                 "City"
               ],
               "dcid": "geoId/0600296",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Alpine County",
@@ -13865,7 +13865,7 @@
                 "City"
               ],
               "dcid": "geoId/0601514",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Amador Pines",
@@ -14164,7 +14164,7 @@
                 "City"
               ],
               "dcid": "geoId/0602168",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Orland CCD",
@@ -14196,7 +14196,7 @@
                 "City"
               ],
               "dcid": "geoId/0602252",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Anza",
@@ -14310,7 +14310,7 @@
                 "City"
               ],
               "dcid": "geoId/0602462",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Arcata",
@@ -14513,7 +14513,7 @@
                 "City"
               ],
               "dcid": "geoId/0602924",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Ashland",
@@ -15166,7 +15166,7 @@
                 "City"
               ],
               "dcid": "geoId/0603820",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Madera County",
@@ -15944,7 +15944,7 @@
                 "County"
               ],
               "dcid": "geoId/06057",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Donner CCD",
@@ -16227,7 +16227,7 @@
                 "City"
               ],
               "dcid": "geoId/0606406",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Big Bear Lake",
@@ -17057,7 +17057,7 @@
                 "City"
               ],
               "dcid": "geoId/0607652",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Boulevard",
@@ -17243,7 +17243,7 @@
                 "City"
               ],
               "dcid": "geoId/0608058",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "San Mateo County",
@@ -17908,7 +17908,7 @@
                 "City"
               ],
               "dcid": "geoId/0609598",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Sonoma County",
@@ -17933,7 +17933,7 @@
                 "City"
               ],
               "dcid": "geoId/0609780",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Cloverdale-Geyserville CCD",
@@ -18029,7 +18029,7 @@
                 "City"
               ],
               "dcid": "geoId/0609878",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Calistoga",
@@ -18190,7 +18190,7 @@
                 "City"
               ],
               "dcid": "geoId/0610074",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Cambrian Park",
@@ -18345,7 +18345,7 @@
                 "County"
               ],
               "dcid": "geoId/06105",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Campo",
@@ -18353,14 +18353,6 @@
                 "City"
               ],
               "dcid": "geoId/0610508",
-              "provenanceId": "dc/base/BaseGeos"
-            },
-            {
-              "name": "Campo Seco",
-              "types": [
-                "City"
-              ],
-              "dcid": "geoId/0610536",
               "provenanceId": "dc/base/BaseGeos"
             },
             {
@@ -18902,7 +18894,7 @@
                 "City"
               ],
               "dcid": "geoId/0611530",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "East Yuba-Beale AFB CCD",
@@ -19078,7 +19070,7 @@
                 "City"
               ],
               "dcid": "geoId/0612048",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Catheys Valley",
@@ -19166,7 +19158,7 @@
                 "City"
               ],
               "dcid": "geoId/0612552",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Chalfant",
@@ -19302,7 +19294,7 @@
                 "City"
               ],
               "dcid": "geoId/0613214",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Choctaw Valley",
@@ -19687,7 +19679,7 @@
                 "City"
               ],
               "dcid": "geoId/0616224",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Corning",
@@ -19736,7 +19728,7 @@
                 "Town"
               ],
               "dcid": "geoId/0616462",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Costa Mesa",
@@ -19896,7 +19888,7 @@
                 "City"
               ],
               "dcid": "geoId/0617274",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Cromberg",
@@ -20081,7 +20073,7 @@
                 "City"
               ],
               "dcid": "geoId/0618394",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Del Dios",
@@ -20380,14 +20372,6 @@
               "provenanceId": "dc/base/BaseGeos"
             },
             {
-              "name": "Douglas Flat",
-              "types": [
-                "City"
-              ],
-              "dcid": "geoId/0619738",
-              "provenanceId": "dc/base/BaseGeos"
-            },
-            {
               "name": "Downey",
               "types": [
                 "City"
@@ -20441,7 +20425,7 @@
                 "City"
               ],
               "dcid": "geoId/0620018",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Ducor",
@@ -20546,7 +20530,7 @@
                 "City"
               ],
               "dcid": "geoId/0620802",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "East Nicolaus",
@@ -20869,14 +20853,6 @@
               "provenanceId": "dc/base/BaseGeos"
             },
             {
-              "name": "El Modena",
-              "types": [
-                "City"
-              ],
-              "dcid": "geoId/0622188",
-              "provenanceId": "dc/base/BaseGeos"
-            },
-            {
               "name": "El Monte",
               "types": [
                 "City"
@@ -21187,7 +21163,7 @@
                 "City"
               ],
               "dcid": "geoId/0623910",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Fetters Hot Springs-Agua Caliente",
@@ -21299,6 +21275,30 @@
                 "City"
               ],
               "dcid": "geoId/0624680",
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
+            },
+            {
+              "name": "Foothill Farms",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0624722",
+              "provenanceId": "dc/base/BaseGeos"
+            },
+            {
+              "name": "Foothill Ranch",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0624730",
+              "provenanceId": "dc/base/WikidataGeos"
+            },
+            {
+              "name": "Forbestown",
+              "types": [
+                "City"
+              ],
+              "dcid": "geoId/0624750",
               "provenanceId": "dc/base/BaseGeos"
             },
             {
@@ -21364,7 +21364,7 @@
                 "Neighborhood"
               ],
               "dcid": "geoId/0631470",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Congressional District 32 (113th Congress), California",
@@ -21530,7 +21530,7 @@
                 "Town"
               ],
               "dcid": "geoId/0645358",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Congressional District 46 (113th Congress), California",
@@ -21657,7 +21657,7 @@
                 "Town"
               ],
               "dcid": "geoId/0664434",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "San Francisco",
@@ -21711,7 +21711,7 @@
                 "Town"
               ],
               "dcid": "geoId/0686440",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/WikidataOtherIdGeos"
             },
             {
               "name": "Yucca Valley",
@@ -22545,14 +22545,6 @@
                 "SchoolDistrict"
               ],
               "dcid": "geoId/sch0602450",
-              "provenanceId": "dc/base/NCES_SchoolDistrict"
-            },
-            {
-              "name": "Banta Unified",
-              "types": [
-                "SchoolDistrict"
-              ],
-              "dcid": "geoId/sch0602571",
               "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
@@ -25857,7 +25849,7 @@
                 "SchoolDistrict"
               ],
               "dcid": "geoId/sch0620130",
-              "provenanceId": "dc/base/BaseGeos"
+              "provenanceId": "dc/base/NCES_SchoolDistrict"
             },
             {
               "name": "La Habra City Elementary",

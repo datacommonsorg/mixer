@@ -83,7 +83,7 @@
             "City"
           ],
           "dcid": "geoId/0643280",
-          "provenanceId": "dc/base/BaseGeos"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Los Altos Hills",
@@ -125,7 +125,7 @@
             "City"
           ],
           "dcid": "geoId/0648956",
-          "provenanceId": "dc/base/BaseGeos"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Morgan Hill",
@@ -181,7 +181,7 @@
             "City"
           ],
           "dcid": "geoId/0670280",
-          "provenanceId": "dc/base/BaseGeos"
+          "provenanceId": "dc/base/WikidataOtherIdGeos"
         },
         {
           "name": "Stanford",

@@ -414,29 +414,6 @@
             },
             {
               "val": {
-                "2010": 303965272,
-                "2011": 306603772,
-                "2012": 309138711,
-                "2013": 311536594,
-                "2014": 314107084,
-                "2015": 316515021,
-                "2016": 318558162,
-                "2017": 321004407,
-                "2018": 322903030,
-                "2019": 324697795,
-                "2020": 326569308,
-                "2021": 329725481,
-                "2022": 331097593,
-                "2023": 332387540,
-                "2024": 334922499
-              },
-              "measurementMethod": "CensusACS5yrSurveySubjectTable",
-              "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
-              "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101"
-            },
-            {
-              "val": {
                 "2020": 331577720,
                 "2021": 332099760,
                 "2022": 334017321,
@@ -491,6 +468,28 @@
               "importName": "OECDRegionalDemography_Population",
               "provenanceDomain": "oecd.org",
               "provenanceUrl": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23\u0026pg=40\u0026fc=Topic\u0026bp=true\u0026snb=117\u0026df[ds]=dsDisseminateFinalDMZ\u0026df[id]=DSD_REG_DEMO%40DF_POP_5Y\u0026df[ag]=OECD.CFE.EDS\u0026df[vs]=2.0\u0026dq=A.......\u0026to[TIME_PERIOD]=false\u0026vw=tb\u0026pd=%2C"
+            },
+            {
+              "val": {
+                "2010": 303965272,
+                "2011": 306603772,
+                "2012": 309138711,
+                "2013": 311536594,
+                "2014": 314107084,
+                "2015": 316515021,
+                "2016": 318558162,
+                "2017": 321004407,
+                "2018": 322903030,
+                "2019": 324697795,
+                "2020": 326569308,
+                "2021": 329725481,
+                "2022": 331097593,
+                "2023": 332387540
+              },
+              "measurementMethod": "CensusACS5yrSurveySubjectTable",
+              "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2023.S0101"
             },
             {
               "val": {
@@ -1018,29 +1017,6 @@
             },
             {
               "val": {
-                "2010": 36637290,
-                "2011": 36969200,
-                "2012": 37325068,
-                "2013": 37659181,
-                "2014": 38066920,
-                "2015": 38421464,
-                "2016": 38654206,
-                "2017": 38982847,
-                "2018": 39148760,
-                "2019": 39283497,
-                "2020": 39346023,
-                "2021": 39455353,
-                "2022": 39356104,
-                "2023": 39242785,
-                "2024": 39287377
-              },
-              "measurementMethod": "CensusACS5yrSurveySubjectTable",
-              "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
-              "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101"
-            },
-            {
-              "val": {
                 "1990": 29959515,
                 "1991": 30470736,
                 "1992": 30974659,
@@ -1081,6 +1057,28 @@
               "importName": "OECDRegionalDemography_Population",
               "provenanceDomain": "oecd.org",
               "provenanceUrl": "https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegional%252C%20rural%20and%20urban%20development%23GEO%23\u0026pg=40\u0026fc=Topic\u0026bp=true\u0026snb=117\u0026df[ds]=dsDisseminateFinalDMZ\u0026df[id]=DSD_REG_DEMO%40DF_POP_5Y\u0026df[ag]=OECD.CFE.EDS\u0026df[vs]=2.0\u0026dq=A.......\u0026to[TIME_PERIOD]=false\u0026vw=tb\u0026pd=%2C"
+            },
+            {
+              "val": {
+                "2010": 36637290,
+                "2011": 36969200,
+                "2012": 37325068,
+                "2013": 37659181,
+                "2014": 38066920,
+                "2015": 38421464,
+                "2016": 38654206,
+                "2017": 38982847,
+                "2018": 39148760,
+                "2019": 39283497,
+                "2020": 39346023,
+                "2021": 39455353,
+                "2022": 39356104,
+                "2023": 39242785
+              },
+              "measurementMethod": "CensusACS5yrSurveySubjectTable",
+              "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
+              "provenanceDomain": "census.gov",
+              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2023.S0101"
             },
             {
               "val": {
@@ -1470,13 +1468,12 @@
                 "2020": 80104,
                 "2021": 82409,
                 "2022": 82132,
-                "2023": 82363,
-                "2024": 83732
+                "2023": 82363
               },
               "measurementMethod": "CensusACS5yrSurveySubjectTable",
               "importName": "CensusACS5YearSurvey_SubjectTables_S0101",
               "provenanceDomain": "census.gov",
-              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2024.S0101"
+              "provenanceUrl": "https://data.census.gov/table?q=S0101:+Age+and+Sex\u0026tid=ACSST1Y2023.S0101"
             },
             {
               "val": {

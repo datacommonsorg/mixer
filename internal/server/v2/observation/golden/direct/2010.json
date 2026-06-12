@@ -249,11 +249,11 @@
               "latest_date": "2010"
             },
             {
-              "facet_id": "1964317807",
+              "facet_id": "4181918134",
               "observations": [
                 {
                   "date": "2010",
-                  "value": 303965272
+                  "value": 309321666
                 }
               ],
               "obs_count": 1,
@@ -261,11 +261,11 @@
               "latest_date": "2010"
             },
             {
-              "facet_id": "4181918134",
+              "facet_id": "1964317807",
               "observations": [
                 {
                   "date": "2010",
-                  "value": 309321666
+                  "value": 303965272
                 }
               ],
               "obs_count": 1,
@@ -362,11 +362,11 @@
               "latest_date": "2010"
             },
             {
-              "facet_id": "1964317807",
+              "facet_id": "4181918134",
               "observations": [
                 {
                   "date": "2010",
-                  "value": 36637290
+                  "value": 37319502
                 }
               ],
               "obs_count": 1,
@@ -374,11 +374,11 @@
               "latest_date": "2010"
             },
             {
-              "facet_id": "4181918134",
+              "facet_id": "1964317807",
               "observations": [
                 {
                   "date": "2010",
-                  "value": 37319502
+                  "value": 36637290
                 }
               ],
               "obs_count": 1,
@@ -600,7 +600,7 @@
     },
     "1964317807": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2024.S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "2171028778": {

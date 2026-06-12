@@ -2854,10 +2854,6 @@
               "facet": "1145703171"
             },
             {
-              "count": 52,
-              "facet": "1964317807"
-            },
-            {
               "count": 1,
               "facet": "3144703963"
             }
@@ -3911,10 +3907,6 @@
               "facet": "1145703171"
             },
             {
-              "count": 52,
-              "facet": "1964317807"
-            },
-            {
               "count": 51,
               "facet": "3999249536"
             },
@@ -4063,7 +4055,7 @@
     },
     "1964317807": {
       "import_name": "CensusACS5YearSurvey_SubjectTables_S0101",
-      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2024.S0101",
+      "provenance_url": "https://data.census.gov/table?q=S0101:+Age+and+Sex&tid=ACSST1Y2023.S0101",
       "measurement_method": "CensusACS5yrSurveySubjectTable"
     },
     "196790193": {
