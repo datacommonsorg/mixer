@@ -78,6 +78,20 @@ var nodeOutEdgesByIDTestCases = []struct {
 		golden: "get_node_edges_out_bracket_props",
 	},
 	{
+		ids: []string{"country/CAN"},
+		arc: &v2.Arc{
+			Out:          true,
+			BracketProps: []string{"name", "nameWithLanguage"},
+			BracketFilters: map[string]map[string][]string{
+				"nameWithLanguage": {
+					"$lang": {"es"},
+				},
+			},
+		},
+		offset: 0,
+		golden: "get_node_edges_out_bracket_props_lang",
+	},
+	{
 		ids: []string{"nuts/UKI1"},
 		arc: &v2.Arc{
 			Out: true,

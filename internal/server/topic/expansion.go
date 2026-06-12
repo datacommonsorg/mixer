@@ -145,3 +145,12 @@ func collectTopicSVsInternal(h *pb.TopicHierarchy, topicDcid string, expandTopic
 		}
 	}
 }
+
+// GetTopicTargetSVs returns the resolved list of descendant or immediate SV DCIDs under the given topic.
+func (m *TopicCacheManager) GetTopicTargetSVs(ctx context.Context, topicDcid string, expandTopics bool) []string {
+	h, _ := m.GetHierarchy(ctx)
+	if h == nil || h.GetTopics() == nil {
+		return nil
+	}
+	return collectTopicSVs(h, topicDcid, expandTopics)
+}

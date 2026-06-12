@@ -47,6 +47,7 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/reflect/protoreflect"
+	"google.golang.org/protobuf/types/known/structpb"
 )
 
 const (
@@ -144,15 +145,18 @@ const (
 	// Whether to skip reading from Redis cache.
 	// To use, set header "X-Skip-Cache: true"
 	XSkipCache = "X-Skip-Cache"
-	// Whether to use normalized Spanner schema.
-	// To use, set header "X-Use-Normalized-Schema: true"
-	XUseNormalizedSchema = "X-Use-Normalized-Schema"
+	// Whether to use multi-entity Spanner schema.
+	// To use, set header "X-Use-Multi-Entity-Schema: true"
+	XUseMultiEntitySchema = "X-Use-Multi-Entity-Schema"
 	// Whether to log the full interpolated SQL query.
 	// To use, set header "X-Log-SQL: true"
 	XLogSQL = "X-Log-SQL"
 	// Header to specify which embeddings index to use for V2 Resolve.
 	// To use, set header "X-V2Resolve-Index: multi-entity"
 	XV2ResolveIndex = "X-V2Resolve-Index"
+	// Whether to divert request to Spanner.
+	// To use, set header "X-Divert-Spanner: true"
+	XDivertSpanner = "X-Divert-Spanner"
 )
 
 // ZipAndEncode compresses the given content using gzip and encodes it in base64
@@ -648,6 +652,15 @@ func StringSetToSlice(s map[string]struct{}) []string {
 	return res
 }
 
+// StringSliceToSet is a helper to convert a string slice to a string set.
+func StringSliceToSet(s []string) map[string]struct{} {
+	res := make(map[string]struct{})
+	for _, k := range s {
+		res[k] = struct{}{}
+	}
+	return res
+}
+
 func FetchRemote(
 	metadata *resource.Metadata,
 	httpClient *http.Client,
@@ -811,4 +824,13 @@ func IsTopicDcid(dcid string) bool {
 func IsStatVarGroupDcid(dcid string) bool {
 	idx := strings.Index(dcid, "/g/")
 	return idx > 0 && !strings.Contains(dcid[:idx], "/")
+}
+
+// ToStringListValue converts a string slice to a Protobuf structpb.ListValue object.
+func ToStringListValue(list []string) *structpb.ListValue {
+	var values []*structpb.Value
+	for _, s := range list {
+		values = append(values, structpb.NewStringValue(s))
+	}
+	return &structpb.ListValue{Values: values}
 }

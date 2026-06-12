@@ -7,3 +7,8 @@ geoId/03,typeOf,State,
 country/USA,typeOf,Country,
 country/CHN,typeOf,Country,
 country/JPN,typeOf,Country,
+var3,typeOf,StatisticalVariable,
+prov_a,typeOf,Provenance,
+prov_a,name,,"Provenance A"
+prov_b,typeOf,Provenance,
+prov_b,name,,"Provenance B"

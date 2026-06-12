@@ -71,82 +71,26 @@ type TopicCacheManager struct {
 
 	mu    sync.RWMutex
 	cache *TopicVariableCache
-
-	ticker    *time.Ticker
-	stopCh    chan struct{}
-	startOnce sync.Once
-	stopOnce  sync.Once
-	wg        sync.WaitGroup
 }
 
 // NewTopicCacheManager creates a new TopicCacheManager.
 // Note: The fetcher interface is intentionally omitted from this constructor to avoid circular dependencies
 // during server startup (NewStoreNodeFetcher requires *Server, which requires TopicCacheManager).
-// The fetcher is injected post-server creation via Start() or InitFetcher().
+// The fetcher is injected post-server creation via InitFetcher().
 func NewTopicCacheManager(redisClient redis.CacheClient) *TopicCacheManager {
 	return &TopicCacheManager{
 		redisClient: redisClient,
 	}
 }
 
-// InitFetcher initializes the internal fetcher without performing an initial cache load.
-// This is primarily used for testing cold-cache retrieval behavior.
+// InitFetcher initializes the internal fetcher.
 func (m *TopicCacheManager) InitFetcher(fetcher nodefetcher.NodeAllFetcher) {
-	m.startOnce.Do(func() {
-		m.fetcher = fetcher
-	})
+	m.mu.Lock()
+	defer m.mu.Unlock()
+	m.fetcher = fetcher
 }
 
-// Start starts the background goroutine to periodically refresh the topic hierarchy cache from the KG.
-// It performs an initial synchronous load before starting the background ticker loop.
-// Note: Injecting the fetcher here breaks circular initialization dependencies in cmd/main.go.
-func (m *TopicCacheManager) Start(ctx context.Context, fetcher nodefetcher.NodeAllFetcher, interval time.Duration) {
-	m.startOnce.Do(func() {
-		m.fetcher = fetcher
 
-		slog.Info("Performing initial topic cache load")
-		if _, err := m.LoadHierarchy(ctx); err != nil {
-			slog.Error("Error during initial topic cache load", "error", err)
-		}
-
-		if interval <= 0 {
-			return
-		}
-
-		m.ticker = time.NewTicker(interval)
-		m.stopCh = make(chan struct{})
-		m.wg.Add(1)
-
-		go func() {
-			defer m.wg.Done()
-			defer m.ticker.Stop()
-
-			for {
-				select {
-				case <-m.stopCh:
-					return
-				case <-ctx.Done():
-					return
-				case <-m.ticker.C:
-					slog.Info("Background topic cache refresher triggered")
-					if _, err := m.LoadHierarchy(ctx); err != nil {
-						slog.Error("Error refreshing topic hierarchy", "error", err)
-					}
-				}
-			}
-		}()
-	})
-}
-
-// Close stops the background refresher goroutine.
-func (m *TopicCacheManager) Close() {
-	m.stopOnce.Do(func() {
-		if m.stopCh != nil {
-			close(m.stopCh)
-		}
-		m.wg.Wait()
-	})
-}
 
 // CachedHierarchy returns the currently cached TopicHierarchy in local L1 memory, or nil if empty.
 // Note: The returned TopicHierarchy pointer references the live in-memory cache and must be treated as read-only by callers.

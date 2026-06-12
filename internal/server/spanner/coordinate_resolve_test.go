@@ -50,7 +50,7 @@ func (m *coordinateMockSpannerClient) GetNodeEdgesByID(ctx context.Context, ids 
 	return map[string][]*Edge{}, nil
 }
 
-func (m *coordinateMockSpannerClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error) {
+func (m *coordinateMockSpannerClient) GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*Observation, error) {
 	return nil, nil
 }
 
@@ -66,7 +66,7 @@ func (m *coordinateMockSpannerClient) CheckVariableGroupPlaceExistence(ctx conte
 	return nil, nil
 }
 
-func (m *coordinateMockSpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
+func (m *coordinateMockSpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace, date string) ([]*Observation, error) {
 	return nil, nil
 }
 

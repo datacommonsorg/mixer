@@ -138,7 +138,7 @@ func (sc *spannerDatabaseClient) GetNodeEdgesByID(ctx context.Context, ids []str
 }
 
 // GetObservations retrieves observations from Spanner given a list of variables and entities.
-func (sc *spannerDatabaseClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error) {
+func (sc *spannerDatabaseClient) GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*Observation, error) {
 	var observations []*Observation
 	if len(entities) == 0 {
 		return nil, fmt.Errorf("entity must be specified")
@@ -235,7 +235,7 @@ func (sc *spannerDatabaseClient) CheckVariableGroupPlaceExistence(ctx context.Co
 }
 
 // GetObservationsContainedInPlace retrieves observations from Spanner given a list of variables and an entity expression.
-func (sc *spannerDatabaseClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error) {
+func (sc *spannerDatabaseClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace, date string) ([]*Observation, error) {
 	var observations []*Observation
 	if len(variables) == 0 || containedInPlace == nil {
 		return observations, nil

@@ -49,6 +49,7 @@ import "v2/node.proto";
 import "v2/node_search.proto";
 import "v2/observation.proto";
 import "v2/resolve.proto";
+import "v2/agent.proto";
 import "v3/data.proto";
 
 service Mixer {
@@ -190,6 +191,33 @@ service Mixer {
     option (google.api.http) = {
       get : "/v2/bulk/info/variable-group"
       additional_bindings : {post : "/v2/bulk/info/variable-group" body : "*"}
+    };
+  }
+
+  // ======================  V2 Agent  ======================
+
+  rpc V2AgentSearchIndicators(datacommons.v2.SearchIndicatorsRequest)
+      returns (datacommons.v2.SearchIndicatorsResponse) {
+    option (google.api.http) = {
+      get : "/v2/agent/search_indicators"
+      additional_bindings : {post : "/v2/agent/search_indicators" body : "*"}
+    };
+  }
+
+  rpc V2AgentGetObservations(datacommons.v2.GetObservationsRequest)
+      returns (datacommons.v2.GetObservationsResponse) {
+    option (google.api.http) = {
+      get : "/v2/agent/get_observations"
+      additional_bindings : {post : "/v2/agent/get_observations" body : "*"}
+    };
+  }
+
+  // Get rankings for given stat var DCIDs.
+  rpc V2GetLocationsRankings(GetLocationsRankingsRequest)
+      returns (GetLocationsRankingsResponse) {
+    option (google.api.http) = {
+      get : "/v2/place/ranking"
+      additional_bindings : {post : "/v2/place/ranking" body : "*"}
     };
   }
 

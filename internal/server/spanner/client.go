@@ -36,11 +36,11 @@ import (
 type SpannerClient interface {
 	GetNodeProps(ctx context.Context, ids []string, out bool) (map[string][]*Property, error)
 	GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc, pageSize, offset int) (map[string][]*Edge, error)
-	GetObservations(ctx context.Context, variables []string, entities []string) ([]*Observation, error)
+	GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*Observation, error)
 	CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error)
 	CheckVariableSourceExistence(ctx context.Context, variables []string, sources []string, predicate string) ([][]string, error)
 	CheckVariableGroupPlaceExistence(ctx context.Context, variableGroups []string, entities []string, predicate string) ([][]string, error)
-	GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*Observation, error)
+	GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace, date string) ([]*Observation, error)
 	SearchNodes(ctx context.Context, query string, types []string) ([]*SearchNode, error)
 	ResolveByID(ctx context.Context, nodes []string, in, out string) (map[string][]string, error)
 	GetEventCollectionDate(ctx context.Context, placeID, eventType string) ([]string, error)

@@ -114,8 +114,7 @@ func (rc *RemoteClient) Event(req *pbv2.EventRequest) (*pbv2.EventResponse, erro
 
 func (rc *RemoteClient) BulkVariableInfo(req *pbv1.BulkVariableInfoRequest) (*pbv1.BulkVariableInfoResponse, error) {
 	resp := &pbv1.BulkVariableInfoResponse{}
-	// TODO: Update the endpoint to /v2/bulk/info/variable once it's supported by the remote mixer.
-	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v1/bulk/info/variable", req, resp)
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/bulk/info/variable", req, resp)
 	if err != nil {
 		return nil, err
 	}
@@ -124,8 +123,7 @@ func (rc *RemoteClient) BulkVariableInfo(req *pbv1.BulkVariableInfoRequest) (*pb
 
 func (rc *RemoteClient) BulkVariableGroupInfo(req *pbv1.BulkVariableGroupInfoRequest) (*pbv1.BulkVariableGroupInfoResponse, error) {
 	resp := &pbv1.BulkVariableGroupInfoResponse{}
-	// TODO: Update the endpoint to /v2/bulk/info/variable-group once it's supported by the remote mixer.
-	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v1/bulk/info/variable-group", req, resp)
+	err := util.FetchRemote(rc.metadata, rc.httpClient, "/v2/bulk/info/variable-group", req, resp)
 	if err != nil {
 		return nil, err
 	}
