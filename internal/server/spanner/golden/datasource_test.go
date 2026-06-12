@@ -55,7 +55,7 @@ func (m *mockSpannerClient) GetNodeProps(ctx context.Context, ids []string, out 
 func (m *mockSpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc, pageSize, offset int) (map[string][]*spanner.Edge, error) {
 	return m.getNodeEdgesRes, nil
 }
-func (m *mockSpannerClient) GetObservations(ctx context.Context, variables []string, entities []string) ([]*spanner.Observation, error) {
+func (m *mockSpannerClient) GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*spanner.Observation, error) {
 	return m.getObservationsRes, nil
 }
 func (m *mockSpannerClient) CheckVariableExistence(ctx context.Context, variables []string, entities []string) ([][]string, error) {
@@ -70,7 +70,7 @@ func (m *mockSpannerClient) CheckVariableSourceExistence(ctx context.Context, va
 func (m *mockSpannerClient) CheckVariableGroupPlaceExistence(ctx context.Context, variableGroups []string, entities []string, predicate string) ([][]string, error) {
 	return m.checkGroupPlaceExistenceRes, nil
 }
-func (m *mockSpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace) ([]*spanner.Observation, error) {
+func (m *mockSpannerClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace, date string) ([]*spanner.Observation, error) {
 	return m.getObservationsContainedInPlaceRes, nil
 }
 func (m *mockSpannerClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {

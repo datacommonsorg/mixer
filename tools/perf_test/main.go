@@ -37,6 +37,7 @@ var (
 	ancestor  = flag.String("ancestor", "", "Ancestor place for contained-in queries")
 	childType = flag.String("child_type", "", "Child place type for contained-in queries")
 	config    = flag.String("config", "deploy/storage/spanner_graph_info.yaml", "Path to spanner graph info yaml")
+	date      = flag.String("date", "", "Optional date filter")
 )
 
 func main() {
@@ -65,17 +66,17 @@ func main() {
 	switch *method {
 	case "GetObservations":
 		runParallelTest(ctx, "Legacy", client, func(c context.Context) error {
-			_, err := client.GetObservations(c, vars, ents)
+			_, err := client.GetObservations(c, vars, ents, *date)
 			return err
-		}, "Normalized", client, func(c context.Context) error {
-			_, err := client.GetObservations(c, vars, ents)
+		}, "MultiEntity", client, func(c context.Context) error {
+			_, err := client.GetObservations(c, vars, ents, *date)
 			return err
 		})
 	case "CheckVariableExistence":
 		runParallelTest(ctx, "Legacy", client, func(c context.Context) error {
 			_, err := client.CheckVariableExistence(c, vars, ents)
 			return err
-		}, "Normalized", client, func(c context.Context) error {
+		}, "MultiEntity", client, func(c context.Context) error {
 			_, err := client.CheckVariableExistence(c, vars, ents)
 			return err
 		})
@@ -84,13 +85,13 @@ func main() {
 			_, err := client.GetObservationsContainedInPlace(c, vars, &v2.ContainedInPlace{
 				Ancestor:       *ancestor,
 				ChildPlaceType: *childType,
-			})
+			}, *date)
 			return err
-		}, "Normalized", client, func(c context.Context) error {
+		}, "MultiEntity", client, func(c context.Context) error {
 			_, err := client.GetObservationsContainedInPlace(c, vars, &v2.ContainedInPlace{
 				Ancestor:       *ancestor,
 				ChildPlaceType: *childType,
-			})
+			}, *date)
 			return err
 		})
 	default:
@@ -149,13 +150,13 @@ func runParallelTest(
 		err1 = op1(c1)
 	}()
 
-	// Run Operation 2 (Normalized usually)
+	// Run Operation 2 (MultiEntity usually)
 	go func() {
 		defer wg.Done()
-		// Inject X-Log-SQL and X-Use-Normalized-Schema
+		// Inject X-Log-SQL and X-Use-Multi-Entity-Schema
 		c2 := metadata.NewIncomingContext(ctx, metadata.Pairs(
 			util.XLogSQL, "true",
-			util.XUseNormalizedSchema, "true",
+			util.XUseMultiEntitySchema, "true",
 		))
 		err2 = op2(c2)
 	}()
