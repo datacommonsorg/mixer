@@ -1,6 +1,6 @@
 		SELECT
 			subject_id,
-			JSON_VALUE(embedding_content.description) AS name,
+			JSON_VALUE(embedding_content.name) AS name,
 			node_types AS types,
 			1 - COSINE_DISTANCE([0.1,0.2,0.3], embeddings) AS cosine_similarity
 		FROM

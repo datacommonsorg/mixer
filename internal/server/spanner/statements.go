@@ -658,7 +658,7 @@ var statements = struct {
 			AND EXISTS (SELECT 1 FROM UNNEST(types) t WHERE t IN UNNEST(@type_filters))`,
 	vectorSearchNode: `		SELECT
 			subject_id,
-			JSON_VALUE(embedding_content.description) AS name,
+			JSON_VALUE(embedding_content.name) AS name,
 			node_types AS types,
 			1 - COSINE_DISTANCE(@embeddings, embeddings) AS cosine_similarity
 		FROM
