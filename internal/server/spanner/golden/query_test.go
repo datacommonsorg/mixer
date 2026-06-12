@@ -104,7 +104,7 @@ func TestGetObservations(t *testing.T) {
 		goldenFile := c.golden + ".json"
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			actual, err := client.GetObservations(ctx, c.variables, c.entities)
+			actual, err := client.GetObservations(ctx, c.variables, c.entities, "")
 			if err != nil {
 				return nil, err
 			}
@@ -126,7 +126,7 @@ func TestGetObservationsContainedInPlace(t *testing.T) {
 		goldenFile := c.golden + ".json"
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			actual, err := client.GetObservationsContainedInPlace(ctx, c.variables, c.containedInPlace)
+			actual, err := client.GetObservationsContainedInPlace(ctx, c.variables, c.containedInPlace, "")
 			if err != nil {
 				return nil, err
 			}

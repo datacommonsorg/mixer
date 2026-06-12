@@ -199,7 +199,7 @@ func (sds *SpannerDataSource) fetchObservations(ctx context.Context, req *pbv2.O
 	if entityExpr == "" {
 		// Path 1: Direct fetch for list of entities.
 		slog.Debug("SpannerDataSource: fetching observations for direct entity list", "count", len(entities))
-		return sds.client.GetObservations(ctx, variables, entities)
+		return sds.client.GetObservations(ctx, variables, entities, req.Date)
 	}
 
 	containedInPlace, err := v2.ParseContainedInPlace(entityExpr)
@@ -213,7 +213,7 @@ func (sds *SpannerDataSource) fetchObservations(ctx context.Context, req *pbv2.O
 	if !ok {
 		// Path 2: Local-only execution using one-shot containment query.
 		slog.Debug("Spanner.Observation: no expanded entities found in context, using one-shot containment query")
-		return sds.client.GetObservationsContainedInPlace(ctx, variables, containedInPlace)
+		return sds.client.GetObservationsContainedInPlace(ctx, variables, containedInPlace, req.Date)
 	}
 
 	// Path 3: We have pre-expanded entities from the context (e.g., from a remote source).
@@ -229,7 +229,7 @@ func (sds *SpannerDataSource) fetchObservations(ctx context.Context, req *pbv2.O
 	}
 
 	slog.Debug("Spanner.Observation: fetching observations for merged entities", "count", len(mergedDcids))
-	return sds.client.GetObservations(ctx, variables, mergedDcids)
+	return sds.client.GetObservations(ctx, variables, mergedDcids, req.Date)
 }
 
 // handleExistenceRequest handles existence-only requests for observations.
