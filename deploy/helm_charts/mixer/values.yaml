@@ -366,11 +366,14 @@ esp:
     repository: gcr.io/endpoints-release/endpoints-runtime
     pullPolicy: IfNotPresent
     tag: "2"
+  resources:
+    memoryRequest: "300Mi"
+    memoryLimit: "300Mi"
 
 embeddingsSidecar:
   image:
-    # NOTE: This repository does not actually exist! 
-    # It is an alias used by Skaffold to map the datacommons-nl image 
+    # NOTE: This repository does not actually exist!
+    # It is an alias used by Skaffold to map the datacommons-nl image
     # (tagged as mixer-sidecar) to this specific sidecar container.
     # The actual image is injected by Cloud Build/Skaffold during deployment.
     repository: gcr.io/datcom-ci/datacommons-embeddings-sidecar
@@ -435,8 +438,9 @@ serviceGroups:
       - "/v2/bulk/info/variable-group"
     replicas: 1
     resources:
-      memoryRequest: "8G"
-      memoryLimit: "8G"
+      memoryRequest: "8Gi"
+      memoryLimit: "8Gi"
+      cpuRequest: "125m"
     cacheSVG: true
     # If the name of the recon service is changed here,
     # please also change the name in the deployment.yaml template.
@@ -447,8 +451,9 @@ serviceGroups:
       - "/v2/resolve"
     replicas: 1
     resources:
-      memoryRequest: "2G"
-      memoryLimit: "2G"
+      memoryRequest: "2Gi"
+      memoryLimit: "2Gi"
+      cpuRequest: "300m"
   observation:
     urlPaths:
       - "/bulk/stats"
@@ -458,8 +463,13 @@ serviceGroups:
       - "/v2/observation"
     replicas: 1
     resources:
-      memoryRequest: "4G"
-      memoryLimit: "8G"
+      memoryRequest: "8Gi"
+      memoryLimit: "8Gi"
+      cpuRequest: "1"
+    espResources:
+      # Higher memory to accomodate larger payloads
+      memoryRequest: "512Mi"
+      memoryLimit: "2Gi"
   node:
     urlPaths:
       - "/node/*"
@@ -472,8 +482,9 @@ serviceGroups:
       - "/v2/node"
     replicas: 1
     resources:
-      memoryRequest: "8G"
-      memoryLimit: "8G"
+      memoryRequest: "8Gi"
+      memoryLimit: "8Gi"
+      cpuRequest: "300m"
     cacheSVG: true
   default:
     enableEmbeddingsSidecar: true
@@ -481,5 +492,6 @@ serviceGroups:
       - "/*"
     replicas: 1
     resources:
-      memoryRequest: "2G"
-      memoryLimit: "2G"
+      memoryRequest: "2Gi"
+      memoryLimit: "2Gi"
+      cpuRequest: "50m"
