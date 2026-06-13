@@ -66,3 +66,17 @@ func TestMultiEntityGetObservationsContainedInPlaceQuery(t *testing.T) {
 		})
 	}
 }
+
+func TestMultiEntityGetStatVarGroupNodeQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range multiEntityStatVarGroupNodeTestCases {
+		c := c // Capture loop variable
+		t.Run(c.name, func(t *testing.T) {
+			goldenFile := c.golden + ".sql"
+			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+				return spanner.GetMultiEntityStatVarGroupNodeQuery(c.nodes, c.includeDefinitions), nil
+			})
+		})
+	}
+}

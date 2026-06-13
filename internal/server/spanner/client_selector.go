@@ -83,6 +83,18 @@ func (s *schemaSelectorClient) GetObservationsContainedInPlace(ctx context.Conte
 	return s.SpannerClient.GetObservationsContainedInPlace(ctx, variables, containedInPlace, date)
 }
 
+// GetStatVarGroupNode overrides the embedded client's GetStatVarGroupNode to dispatch based on schema selection.
+func (s *schemaSelectorClient) GetStatVarGroupNode(ctx context.Context, nodes []string, includeDefinitions bool) ([]*StatVarGroupNode, error) {
+	if useMultiEntitySchema(ctx) {
+		logMultiEntityInvocation("GetStatVarGroupNode",
+			"num_nodes", len(nodes),
+			"include_definitions", includeDefinitions,
+		)
+		return s.multiEntity.GetStatVarGroupNode(ctx, nodes, includeDefinitions)
+	}
+	return s.SpannerClient.GetStatVarGroupNode(ctx, nodes, includeDefinitions)
+}
+
 // GetSdmxObservations overrides the embedded client's GetSdmxObservations.
 // SDMX is not supported in multi-entity schema.
 func (s *schemaSelectorClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {

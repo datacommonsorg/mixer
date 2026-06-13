@@ -54,6 +54,31 @@ func (nc *multiEntityClient) CheckVariableExistence(ctx context.Context, variabl
 	return queryDynamic(ctx, nc.sc, *stmt)
 }
 
+// GetStatVarGroupNode fetches StatVarGroupNode info using multi-entity TimeSeries existence checks.
+func (nc *multiEntityClient) GetStatVarGroupNode(ctx context.Context, nodes []string, includeDefinitions bool) ([]*StatVarGroupNode, error) {
+	var svgNodes []*StatVarGroupNode
+	if len(nodes) == 0 {
+		return svgNodes, nil
+	}
+
+	err := queryStructs(
+		ctx,
+		nc.sc,
+		*GetMultiEntityStatVarGroupNodeQuery(nodes, includeDefinitions),
+		func() interface{} {
+			return &StatVarGroupNode{}
+		},
+		func(rowStruct interface{}) {
+			svgNodes = append(svgNodes, rowStruct.(*StatVarGroupNode))
+		},
+	)
+	if err != nil {
+		return svgNodes, err
+	}
+
+	return svgNodes, nil
+}
+
 // GetObservationsContainedInPlace fetches observations for children containment.
 func (nc *multiEntityClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace, date string) ([]*Observation, error) {
 	stmt, err := GetMultiEntityObservationsContainedInPlaceQuery(variables, containedInPlace, date)

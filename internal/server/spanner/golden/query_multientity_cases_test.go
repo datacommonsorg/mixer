@@ -110,3 +110,27 @@ var multiEntityObservationsContainedInPlaceTestCases = []struct {
 		golden:         "get_multientity_obs_contained_in_place_entities_only",
 	},
 }
+
+var multiEntityStatVarGroupNodeTestCases = []struct {
+	name               string
+	nodes              []string
+	includeDefinitions bool
+	golden             string
+}{
+	{
+		name:   "single stat var group",
+		nodes:  []string{"dc/g/Demographics"},
+		golden: "get_multientity_stat_var_group_node",
+	},
+	{
+		name:   "multiple stat var groups",
+		nodes:  []string{"dc/g/Demographics", "dc/g/Economy"},
+		golden: "get_multientity_stat_var_group_node_multi",
+	},
+	{
+		name:               "single stat var group with definitions",
+		nodes:              []string{"dc/g/Demographics"},
+		includeDefinitions: true,
+		golden:             "get_multientity_stat_var_group_node_with_definitions",
+	},
+}

@@ -19,8 +19,8 @@ import (
 	"strings"
 
 	"cloud.google.com/go/spanner"
-	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
+	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 )
 
 // GetMultiEntityObservationsQuery builds the observation lookup query with optional date filter.
@@ -130,4 +130,28 @@ func GetMultiEntityObservationsContainedInPlaceQuery(variables []string, contain
 		SQL:    sql,
 		Params: params,
 	}, nil
+}
+
+// GetMultiEntityStatVarGroupNodeQuery returns a query to get StatVarGroupNode info from the multi-entity schema.
+func GetMultiEntityStatVarGroupNodeQuery(nodes []string, includeDefinitions bool) *spanner.Statement {
+	nodeFilter, nodeVal := getParamStatement("nodes", nodes)
+
+	selfFilter := "SELECT\n" +
+		"\t\t\t\t@nodes AS child_svg,\n" +
+		"\t\t\t\t@nodes AS svg"
+	if len(nodes) > 1 {
+		selfFilter = statements.attachSVGs
+	}
+
+	sqlTemplate := statementsMultiEntity.getStatVarGroupNode
+	if includeDefinitions {
+		sqlTemplate = statementsMultiEntity.getStatVarGroupNodeWithDefinitions
+	}
+
+	return &spanner.Statement{
+		SQL: fmt.Sprintf(sqlTemplate, nodeFilter, selfFilter),
+		Params: map[string]interface{}{
+			"nodes": nodeVal,
+		},
+	}
 }
