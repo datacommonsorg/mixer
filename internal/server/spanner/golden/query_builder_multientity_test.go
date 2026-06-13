@@ -50,6 +50,20 @@ func TestMultiEntityGetStatVarsByEntityQuery(t *testing.T) {
 	}
 }
 
+func TestMultiEntityCheckGroupPlaceExistenceQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range multiEntityCheckGroupPlaceExistenceTestCases {
+		c := c // Capture loop variable
+		t.Run(c.name, func(t *testing.T) {
+			goldenFile := c.golden + ".sql"
+			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+				return spanner.GetMultiEntityGroupPlaceExistenceQuery(c.variableGroups, c.entities, c.predicate), nil
+			})
+		})
+	}
+}
+
 func TestMultiEntityGetObservationsContainedInPlaceQuery(t *testing.T) {
 	t.Parallel()
 

@@ -54,6 +54,15 @@ func (nc *multiEntityClient) CheckVariableExistence(ctx context.Context, variabl
 	return queryDynamic(ctx, nc.sc, *stmt)
 }
 
+// CheckVariableGroupPlaceExistence checks SVG/topic existence across all entity slots.
+func (nc *multiEntityClient) CheckVariableGroupPlaceExistence(ctx context.Context, variableGroups []string, entities []string, predicate string) ([][]string, error) {
+	if len(variableGroups) == 0 || len(entities) == 0 {
+		return [][]string{}, nil
+	}
+	stmt := GetMultiEntityGroupPlaceExistenceQuery(variableGroups, entities, predicate)
+	return queryDynamic(ctx, nc.sc, *stmt)
+}
+
 // GetStatVarGroupNode fetches StatVarGroupNode info using multi-entity TimeSeries existence checks.
 func (nc *multiEntityClient) GetStatVarGroupNode(ctx context.Context, nodes []string, includeDefinitions bool) ([]*StatVarGroupNode, error) {
 	var svgNodes []*StatVarGroupNode

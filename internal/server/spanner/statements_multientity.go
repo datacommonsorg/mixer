@@ -40,6 +40,7 @@ var statementsMultiEntity = struct {
 	getStatVarsByEntityBoth                      string
 	getStatVarsByEntityVarsOnly                  string
 	getStatVarsByEntityEntitiesOnly              string
+	checkGroupPlaceExistence                     string
 	getStatVarGroupNode                          string
 	getStatVarGroupNodeWithDefinitions           string
 }{
@@ -452,6 +453,55 @@ var statementsMultiEntity = struct {
 		SELECT variable_measured, entity FROM slot2
 		UNION ALL
 		SELECT variable_measured, entity FROM slot3`, timeSeriesTable, timeSeriesByEntity2Index, timeSeriesByEntity3Index),
+
+	checkGroupPlaceExistence: fmt.Sprintf(`		WITH
+		group_members AS (
+			SELECT DISTINCT
+				e.object_id AS variable_group,
+				e.subject_id AS variable_measured
+			FROM Edge@{FORCE_INDEX=InEdge} e
+			WHERE e.predicate = @predicate
+			  AND e.object_id IN UNNEST(@variableGroups)
+		),
+		slot1 AS (
+			SELECT DISTINCT
+				gm.variable_group AS variable,
+				ts.entity1 AS entity
+			FROM group_members gm
+			JOIN %[1]s AS ts
+				ON gm.variable_measured = ts.variable_measured
+			WHERE ts.entity1 IN UNNEST(@entities)
+		),
+		slot2 AS (
+			SELECT DISTINCT
+				gm.variable_group AS variable,
+				ts.entity2 AS entity
+			FROM group_members gm
+			JOIN %[1]s@{FORCE_INDEX=%[2]s} AS ts
+				ON gm.variable_measured = ts.variable_measured
+			WHERE ts.entity2 IN UNNEST(@entities)
+			  AND ts.entity2 IS NOT NULL
+		),
+		slot3 AS (
+			SELECT DISTINCT
+				gm.variable_group AS variable,
+				ts.entity3 AS entity
+			FROM group_members gm
+			JOIN %[1]s@{FORCE_INDEX=%[3]s} AS ts
+				ON gm.variable_measured = ts.variable_measured
+			WHERE ts.entity3 IN UNNEST(@entities)
+			  AND ts.entity3 IS NOT NULL
+			  AND ts.entity2 IS NOT NULL
+		)
+		SELECT DISTINCT variable, entity
+		FROM (
+			SELECT variable, entity FROM slot1
+			UNION ALL
+			SELECT variable, entity FROM slot2
+			UNION ALL
+			SELECT variable, entity FROM slot3
+		) AS combined
+		ORDER BY variable, entity`, timeSeriesTable, timeSeriesByEntity2Index, timeSeriesByEntity3Index),
 
 	getStatVarGroupNode: `		WITH ChildSVGs AS (
 				SELECT DISTINCT

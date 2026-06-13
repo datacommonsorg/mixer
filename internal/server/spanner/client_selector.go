@@ -66,6 +66,19 @@ func (s *schemaSelectorClient) CheckVariableSourceExistence(ctx context.Context,
 	return s.SpannerClient.CheckVariableSourceExistence(ctx, variables, sources, predicate)
 }
 
+// CheckVariableGroupPlaceExistence overrides the embedded client's CheckVariableGroupPlaceExistence to dispatch based on schema selection.
+func (s *schemaSelectorClient) CheckVariableGroupPlaceExistence(ctx context.Context, variableGroups []string, entities []string, predicate string) ([][]string, error) {
+	if useMultiEntitySchema(ctx) {
+		logMultiEntityInvocation("CheckVariableGroupPlaceExistence",
+			"num_variable_groups", len(variableGroups),
+			"num_entities", len(entities),
+			"predicate", predicate,
+		)
+		return s.multiEntity.CheckVariableGroupPlaceExistence(ctx, variableGroups, entities, predicate)
+	}
+	return s.SpannerClient.CheckVariableGroupPlaceExistence(ctx, variableGroups, entities, predicate)
+}
+
 // GetObservationsContainedInPlace overrides the embedded client's GetObservationsContainedInPlace to dispatch based on schema selection.
 func (s *schemaSelectorClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace, date string) ([]*Observation, error) {
 	if containedInPlace == nil {

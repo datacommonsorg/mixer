@@ -91,6 +91,18 @@ func GetMultiEntityStatVarsByEntityQuery(variables []string, entities []string) 
 	}, nil
 }
 
+// GetMultiEntityGroupPlaceExistenceQuery returns a query to check SVG/topic existence for places across entity slots.
+func GetMultiEntityGroupPlaceExistenceQuery(variableGroups []string, entities []string, predicate string) *spanner.Statement {
+	return &spanner.Statement{
+		SQL: statementsMultiEntity.checkGroupPlaceExistence,
+		Params: map[string]interface{}{
+			"variableGroups": variableGroups,
+			"entities":       entities,
+			"predicate":      predicate,
+		},
+	}
+}
+
 // GetMultiEntityObservationsContainedInPlaceQuery builds the observation containment lookup query with optional date filter.
 func GetMultiEntityObservationsContainedInPlaceQuery(variables []string, containedInPlace *v2.ContainedInPlace, date string) (*spanner.Statement, error) {
 	if containedInPlace == nil {

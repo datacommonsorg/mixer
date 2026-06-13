@@ -77,6 +77,29 @@ var multiEntityCheckVariableExistenceTestCases = []struct {
 	},
 }
 
+var multiEntityCheckGroupPlaceExistenceTestCases = []struct {
+	name           string
+	variableGroups []string
+	entities       []string
+	predicate      string
+	golden         string
+}{
+	{
+		name:           "stat var groups and places",
+		variableGroups: []string{"dc/g/Demographics", "dc/g/Economy"},
+		entities:       []string{"geoId/01001", "geoId/02013"},
+		predicate:      "linkedMemberOf",
+		golden:         "check_multientity_group_place_existence_svg",
+	},
+	{
+		name:           "topics and places",
+		variableGroups: []string{"dc/t/Place/Population"},
+		entities:       []string{"geoId/01001", "geoId/02013"},
+		predicate:      "linkedMember",
+		golden:         "check_multientity_group_place_existence_topic",
+	},
+}
+
 var multiEntityObservationsContainedInPlaceTestCases = []struct {
 	name           string
 	variables      []string
