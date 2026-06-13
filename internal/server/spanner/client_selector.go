@@ -57,15 +57,12 @@ func (s *schemaSelectorClient) CheckVariableExistence(ctx context.Context, varia
 	return s.SpannerClient.CheckVariableExistence(ctx, variables, entities)
 }
 
-// CheckVariableSourceExistence overrides the embedded client's CheckVariableSourceExistence to dispatch based on schema selection.
+// CheckVariableSourceExistence delegates to the embedded client.
 func (s *schemaSelectorClient) CheckVariableSourceExistence(ctx context.Context, variables []string, sources []string, predicate string) ([][]string, error) {
-	if useMultiEntitySchema(ctx) {
-		logMultiEntityInvocation("CheckVariableSourceExistence",
-			"num_variables", len(variables),
-			"num_entities", len(sources),
-		)
-		return s.multiEntity.CheckVariableSourceExistence(ctx, variables, sources, predicate)
-	}
+	// Source existence is backed by Cache/Edge provenance data, not the
+	// observation storage schema. Delegate to the base client so source and
+	// dataset existence requests keep working when multi-entity observation
+	// reads are enabled.
 	return s.SpannerClient.CheckVariableSourceExistence(ctx, variables, sources, predicate)
 }
 
@@ -101,7 +98,7 @@ func NewSchemaSelectorClient(baseClient SpannerClient) (SpannerClient, error) {
 
 	return &schemaSelectorClient{
 		SpannerClient: baseClient,
-		multiEntity:    multiEntityClient,
+		multiEntity:   multiEntityClient,
 	}, nil
 }
 

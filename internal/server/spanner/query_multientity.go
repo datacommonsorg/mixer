@@ -21,8 +21,6 @@ import (
 	"slices"
 
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 )
 
 // GetObservations retrieves observations using the new schema.
@@ -54,11 +52,6 @@ func (nc *multiEntityClient) CheckVariableExistence(ctx context.Context, variabl
 		return nil, err
 	}
 	return queryDynamic(ctx, nc.sc, *stmt)
-}
-
-// CheckVariableSourceExistence is not implemented (not required for current scope).
-func (nc *multiEntityClient) CheckVariableSourceExistence(ctx context.Context, variables []string, sources []string, predicate string) ([][]string, error) {
-	return nil, status.Error(codes.Unimplemented, "CheckVariableSourceExistence is not implemented for multi-entity schema")
 }
 
 // GetObservationsContainedInPlace fetches observations for children containment.
