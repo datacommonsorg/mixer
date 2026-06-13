@@ -82,6 +82,7 @@ func reconstructObservations(rawObs []*rawObservation) []*Observation {
 		obs := &Observation{
 			VariableMeasured: r.VariableMeasured,
 			ObservationAbout: r.ObservationAbout,
+			FacetId:          r.FacetId,
 			Observations:     TimeSeries{},
 		}
 
@@ -111,7 +112,6 @@ func reconstructObservations(rawObs []*rawObservation) []*Observation {
 }
 
 func populateObservationFacets(obs *Observation, facets map[string]interface{}) {
-	obs.FacetId = getJSONString(facets, "facetId")
 	obs.ImportName = getJSONString(facets, "importName")
 	obs.ObservationPeriod = getJSONString(facets, "observationPeriod")
 	obs.MeasurementMethod = getJSONString(facets, "measurementMethod")

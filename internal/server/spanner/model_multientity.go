@@ -20,6 +20,7 @@ import "cloud.google.com/go/spanner"
 type rawObservation struct {
 	VariableMeasured string                `spanner:"variable_measured"`
 	ObservationAbout string                `spanner:"observation_about"`
+	FacetId          string                `spanner:"facet_id"`
 	DatesAndValues   []*spannerObservation `spanner:"dates_and_values"`
 	Facets           spanner.NullJSON      `spanner:"facets"`
 }

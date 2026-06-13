@@ -6,6 +6,7 @@
 		SELECT 
 			t.variable_measured,
 			t.entity1 AS observation_about,
+			t.facets_id AS facet_id,
 			COALESCE(
 				(
 					SELECT ARRAY(
