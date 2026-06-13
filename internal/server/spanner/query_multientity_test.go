@@ -18,6 +18,7 @@ import (
 	"testing"
 
 	cloudspanner "cloud.google.com/go/spanner"
+	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 )
 
 func TestReconstructObservationsUsesStoredFacetID(t *testing.T) {
@@ -26,6 +27,10 @@ func TestReconstructObservationsUsesStoredFacetID(t *testing.T) {
 			VariableMeasured: "Count_Person",
 			ObservationAbout: "geoId/06",
 			FacetId:          "stored-facet-id",
+			ProvenanceID: cloudspanner.NullString{
+				StringVal: "dc/base/test_import",
+				Valid:     true,
+			},
 			DatesAndValues: []*spannerObservation{
 				{Date: "2020", Value: "1"},
 			},
@@ -47,5 +52,87 @@ func TestReconstructObservationsUsesStoredFacetID(t *testing.T) {
 	}
 	if got, want := observations[0].ImportName, "test_import"; got != want {
 		t.Fatalf("observations[0].ImportName = %q, want %q", got, want)
+	}
+	if got, want := observations[0].ProvenanceID, "dc/base/test_import"; got != want {
+		t.Fatalf("observations[0].ProvenanceID = %q, want %q", got, want)
+	}
+}
+
+func TestValidateObservationsRequiresProvenance(t *testing.T) {
+	for _, tc := range []struct {
+		name       string
+		provenance cloudspanner.NullString
+	}{
+		{
+			name: "null provenance",
+		},
+		{
+			name: "empty provenance",
+			provenance: cloudspanner.NullString{
+				Valid: true,
+			},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			observations := reconstructObservations([]*rawObservation{
+				{
+					VariableMeasured: "Count_Person",
+					ObservationAbout: "geoId/06",
+					FacetId:          "stored-facet-id",
+					ProvenanceID:     tc.provenance,
+					DatesAndValues: []*spannerObservation{
+						{Date: "2020", Value: "1"},
+					},
+					Facets: cloudspanner.NullJSON{
+						Value: map[string]interface{}{
+							"importName": "test_import",
+						},
+						Valid: true,
+					},
+				},
+			})
+			err := validateObservations(observations)
+			if err == nil {
+				t.Fatal("validateObservations() expected error, got nil")
+			}
+			if got, want := err.Error(), `observation missing provenance: variable="Count_Person" entity="geoId/06" facet_id="stored-facet-id"`; got != want {
+				t.Fatalf("validateObservations() error = %q, want %q", got, want)
+			}
+		})
+	}
+}
+
+func TestMultiEntityObservationResponseIncludesProvenanceID(t *testing.T) {
+	observations := reconstructObservations([]*rawObservation{
+		{
+			VariableMeasured: "Count_Person",
+			ObservationAbout: "geoId/06",
+			FacetId:          "stored-facet-id",
+			ProvenanceID: cloudspanner.NullString{
+				StringVal: "dc/base/test_import",
+				Valid:     true,
+			},
+			DatesAndValues: []*spannerObservation{
+				{Date: "2020", Value: "1"},
+			},
+		},
+	})
+
+	if err := validateObservations(observations); err != nil {
+		t.Fatalf("validateObservations() = %v", err)
+	}
+
+	resp := generateObsResponse(
+		&pbv2.DcidOrExpression{Dcids: []string{"Count_Person"}},
+		observations,
+		true,  /* includeObs */
+		false, /* shouldFilterInferiorFacets */
+	)
+	facet := resp.Facets["stored-facet-id"]
+	if facet == nil {
+		t.Fatal(`resp.Facets["stored-facet-id"] = nil`)
+	}
+	if got, want := facet.ProvenanceId, "dc/base/test_import"; got != want {
+		t.Fatalf("facet.ProvenanceId = %q, want %q", got, want)
 	}
 }

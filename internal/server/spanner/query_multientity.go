@@ -17,6 +17,7 @@ package spanner
 import (
 	"cmp"
 	"context"
+	"fmt"
 	"slices"
 
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
@@ -39,7 +40,11 @@ func (nc *multiEntityClient) GetObservations(ctx context.Context, variables []st
 		return nil, err
 	}
 
-	return reconstructObservations(rawObs), nil
+	observations := reconstructObservations(rawObs)
+	if err := validateObservations(observations); err != nil {
+		return nil, err
+	}
+	return observations, nil
 }
 
 // CheckVariableExistence checks variable existence across all entity slots in a single CTE-based query.
@@ -71,7 +76,11 @@ func (nc *multiEntityClient) GetObservationsContainedInPlace(ctx context.Context
 		return nil, err
 	}
 
-	return reconstructObservations(rawObs), nil
+	observations := reconstructObservations(rawObs)
+	if err := validateObservations(observations); err != nil {
+		return nil, err
+	}
+	return observations, nil
 }
 
 // reconstructObservations processes raw Spanner rows and handles JSON facets extraction in Go code.
@@ -84,6 +93,9 @@ func reconstructObservations(rawObs []*rawObservation) []*Observation {
 			ObservationAbout: r.ObservationAbout,
 			FacetId:          r.FacetId,
 			Observations:     TimeSeries{},
+		}
+		if r.ProvenanceID.Valid {
+			obs.ProvenanceID = r.ProvenanceID.StringVal
 		}
 
 		for _, dv := range r.DatesAndValues {
@@ -109,6 +121,20 @@ func reconstructObservations(rawObs []*rawObservation) []*Observation {
 	}
 
 	return result
+}
+
+func validateObservations(observations []*Observation) error {
+	for _, obs := range observations {
+		if obs.ProvenanceID == "" {
+			return fmt.Errorf(
+				"observation missing provenance: variable=%q entity=%q facet_id=%q",
+				obs.VariableMeasured,
+				obs.ObservationAbout,
+				obs.FacetId,
+			)
+		}
+	}
+	return nil
 }
 
 func populateObservationFacets(obs *Observation, facets map[string]interface{}) {

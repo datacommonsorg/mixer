@@ -51,6 +51,7 @@ var statementsMultiEntity = struct {
 			t.variable_measured,
 			t.entity1 AS observation_about,
 			t.facets_id AS facet_id,
+			t.provenance,
 			COALESCE(
 				(
 					SELECT ARRAY_AGG(STRUCT(date, str_value)) 
@@ -77,6 +78,7 @@ var statementsMultiEntity = struct {
 			t.variable_measured,
 			t.entity1 AS observation_about,
 			t.facets_id AS facet_id,
+			t.provenance,
 			COALESCE(
 				(
 					SELECT ARRAY_AGG(STRUCT(date, str_value)) 
@@ -104,6 +106,7 @@ var statementsMultiEntity = struct {
 			t.variable_measured,
 			t.entity1 AS observation_about,
 			t.facets_id AS facet_id,
+			t.provenance,
 			COALESCE(
 				(
 					SELECT ARRAY(
@@ -129,6 +132,7 @@ var statementsMultiEntity = struct {
 			t.variable_measured,
 			t.entity1 AS observation_about,
 			t.facets_id AS facet_id,
+			t.provenance,
 			COALESCE(
 				(
 					SELECT ARRAY_AGG(STRUCT(date, str_value)) 
@@ -149,6 +153,7 @@ var statementsMultiEntity = struct {
 			t.variable_measured,
 			t.entity1 AS observation_about,
 			t.facets_id AS facet_id,
+			t.provenance,
 			COALESCE(
 				(
 					SELECT ARRAY_AGG(STRUCT(date, str_value)) 
@@ -170,6 +175,7 @@ var statementsMultiEntity = struct {
 			t.variable_measured,
 			t.entity1 AS observation_about,
 			t.facets_id AS facet_id,
+			t.provenance,
 			COALESCE(
 				(
 					SELECT ARRAY(
@@ -201,6 +207,7 @@ var statementsMultiEntity = struct {
 			t.variable_measured,
 			t.entity1 AS observation_about,
 			t.facets_id AS facet_id,
+			t.provenance,
 			COALESCE(
 				(
 					SELECT ARRAY_AGG(STRUCT(date, str_value)) 
@@ -230,6 +237,7 @@ var statementsMultiEntity = struct {
 			t.variable_measured,
 			t.entity1 AS observation_about,
 			t.facets_id AS facet_id,
+			t.provenance,
 			COALESCE(
 				(
 					SELECT ARRAY_AGG(STRUCT(date, str_value)) 
@@ -260,6 +268,7 @@ var statementsMultiEntity = struct {
 			t.variable_measured,
 			t.entity1 AS observation_about,
 			t.facets_id AS facet_id,
+			t.provenance,
 			COALESCE(
 				(
 					SELECT ARRAY(
@@ -293,6 +302,7 @@ var statementsMultiEntity = struct {
 			t.variable_measured,
 			t.entity1 AS observation_about,
 			t.facets_id AS facet_id,
+			t.provenance,
 			COALESCE(
 				(
 					SELECT ARRAY_AGG(STRUCT(date, str_value)) 
@@ -321,6 +331,7 @@ var statementsMultiEntity = struct {
 			t.variable_measured,
 			t.entity1 AS observation_about,
 			t.facets_id AS facet_id,
+			t.provenance,
 			COALESCE(
 				(
 					SELECT ARRAY_AGG(STRUCT(date, str_value)) 
@@ -350,6 +361,7 @@ var statementsMultiEntity = struct {
 			t.variable_measured,
 			t.entity1 AS observation_about,
 			t.facets_id AS facet_id,
+			t.provenance,
 			COALESCE(
 				(
 					SELECT ARRAY(

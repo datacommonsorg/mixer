@@ -9,6 +9,7 @@
 			t.variable_measured,
 			t.entity1 AS observation_about,
 			t.facets_id AS facet_id,
+			t.provenance,
 			COALESCE(
 				(
 					SELECT ARRAY(
