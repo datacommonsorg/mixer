@@ -245,6 +245,12 @@ func (nc *multiEntityClient) GetFilteredTopic(ctx context.Context, nodes []strin
 
 // GetObservationsContainedInPlace fetches observations for children containment.
 func (nc *multiEntityClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace, date string) ([]*Observation, error) {
+	// TODO(rohitrkumar): Confirm behavior for emprty variables
+	var observations []*Observation
+	if containedInPlace == nil {
+		return observations, nil
+	}
+
 	stmt, err := GetMultiEntityObservationsContainedInPlaceQuery(variables, containedInPlace, date)
 	if err != nil {
 		return nil, err
@@ -258,7 +264,7 @@ func (nc *multiEntityClient) GetObservationsContainedInPlace(ctx context.Context
 		return nil, err
 	}
 
-	observations := reconstructObservations(rawObs)
+	observations = reconstructObservations(rawObs)
 	if err := validateObservations(observations); err != nil {
 		return nil, err
 	}

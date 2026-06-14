@@ -127,6 +127,7 @@ func GetMultiEntityObservationsContainedInPlaceQuery(variables []string, contain
 		}
 		params["variables"] = variables
 	} else {
+		// TODO(rohitrkumar): Legacy api does not support it. remove?
 		switch strings.ToUpper(date) {
 		case "":
 			sql = statementsMultiEntity.getObsByContainedInPlaceEntitiesOnly

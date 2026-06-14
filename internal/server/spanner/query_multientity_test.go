@@ -15,6 +15,7 @@
 package spanner
 
 import (
+	"context"
 	"testing"
 
 	cloudspanner "cloud.google.com/go/spanner"
@@ -55,6 +56,23 @@ func TestReconstructObservationsUsesStoredFacetID(t *testing.T) {
 	}
 	if got, want := observations[0].ProvenanceID, "dc/base/test_import"; got != want {
 		t.Fatalf("observations[0].ProvenanceID = %q, want %q", got, want)
+	}
+}
+
+func TestMultiEntityGetObservationsContainedInPlaceNilReturnsEmpty(t *testing.T) {
+	client := &multiEntityClient{}
+
+	observations, err := client.GetObservationsContainedInPlace(
+		context.Background(),
+		[]string{"Count_Person"},
+		nil,
+		"",
+	)
+	if err != nil {
+		t.Fatalf("GetObservationsContainedInPlace() returned error: %v", err)
+	}
+	if got := len(observations); got != 0 {
+		t.Fatalf("len(observations) = %d, want 0", got)
 	}
 }
 

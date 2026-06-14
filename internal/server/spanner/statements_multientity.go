@@ -337,7 +337,6 @@ var statementsMultiEntity = struct {
 			ON t.entity1 = p.place_id`, observationTable, timeSeriesTable),
 
 	// Contained in place query without variables filtered (specific date)
-	// TODO(rohitrkumar): check dates_and_values can be null when no matching dates found
 	getObsByContainedInPlaceEntitiesOnlyWithDate: fmt.Sprintf(`		WITH places AS (
 			SELECT result.object_id AS place_id
 			FROM GRAPH_TABLE ( 

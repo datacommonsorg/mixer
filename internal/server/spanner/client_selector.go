@@ -93,17 +93,16 @@ func (s *schemaSelectorClient) CheckVariableGroupPlaceExistence(ctx context.Cont
 
 // GetObservationsContainedInPlace overrides the embedded client's GetObservationsContainedInPlace to dispatch based on schema selection.
 func (s *schemaSelectorClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace, date string) ([]*Observation, error) {
-	if containedInPlace == nil {
-		return s.SpannerClient.GetObservationsContainedInPlace(ctx, variables, containedInPlace, date)
-	}
 	ctx, useMultiEntity := s.selectSchema(ctx)
 	if useMultiEntity {
-		logMultiEntityInvocation("GetObservationsContainedInPlace",
-			"num_variables", len(variables),
-			"ancestor", containedInPlace.Ancestor,
-			"child_place_type", containedInPlace.ChildPlaceType,
-			"date", date,
-		)
+		logArgs := []any{"num_variables", len(variables), "date", date}
+		if containedInPlace != nil {
+			logArgs = append(logArgs,
+				"ancestor", containedInPlace.Ancestor,
+				"child_place_type", containedInPlace.ChildPlaceType,
+			)
+		}
+		logMultiEntityInvocation("GetObservationsContainedInPlace", logArgs...)
 		return s.multiEntity.GetObservationsContainedInPlace(ctx, variables, containedInPlace, date)
 	}
 	return s.SpannerClient.GetObservationsContainedInPlace(ctx, variables, containedInPlace, date)
