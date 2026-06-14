@@ -200,9 +200,10 @@
             "2019": 2465569,
             "2020": 2489188,
             "2021": 2458395,
-            "2022": 2479628,
-            "2023": 2503549,
-            "2024": 2529933
+            "2022": 2479339,
+            "2023": 2503742,
+            "2024": 2529112,
+            "2025": 2544916
           },
           "metadata": {
             "importName": "USCensusPEP_Annual_Population",
@@ -4724,13 +4725,13 @@
         "Percent_Person_BingeDrinking": {
           "val": {
             "2014": 15.352243899906654,
-            "2015": 16.74926902933293,
+            "2015": 16.749269029332925,
             "2016": 18.344369577147614,
             "2017": 19.44378660170574,
-            "2018": 18.747247950167548,
-            "2020": 18.276377259092502,
-            "2021": 18.2656849530191,
-            "2022": 19.87781618475237
+            "2018": 18.747247950167523,
+            "2020": 18.276377259092516,
+            "2021": 18.26568495301911,
+            "2022": 19.877807847977852
           },
           "metadata": {
             "importName": "CDC500_States",
@@ -4742,14 +4743,14 @@
         },
         "Percent_Person_Obesity": {
           "val": {
-            "2014": 33.539917325132194,
+            "2014": 33.53991732513219,
             "2015": 35.1732464403171,
             "2016": 33.89591081448049,
             "2017": 34.08251290056567,
-            "2018": 34.15829825490086,
-            "2020": 35.17852705902715,
-            "2021": 37.71634163349736,
-            "2022": 37.454393114940984
+            "2018": 34.158298254900906,
+            "2020": 35.17852705902711,
+            "2021": 37.71634163349734,
+            "2022": 37.4544262147729
           },
           "metadata": {
             "importName": "CDC500_States",
@@ -4765,10 +4766,10 @@
             "2015": 27.97049496939338,
             "2016": 25.7044838177827,
             "2017": 29.433747432701676,
-            "2018": 26.39021213863037,
+            "2018": 26.39021213863035,
             "2020": 25.062102907047176,
-            "2021": 25.42858557368047,
-            "2022": 24.830847891385574
+            "2021": 25.428585573680465,
+            "2022": 24.830838426956547
           },
           "metadata": {
             "importName": "CDC500_States",
@@ -4780,11 +4781,11 @@
         },
         "Percent_Person_SleepLessThan7Hours": {
           "val": {
-            "2014": 35.23221985819651,
+            "2014": 35.2322198581965,
             "2016": 36.249163910887816,
-            "2018": 35.00359616569135,
-            "2020": 34.08487337367289,
-            "2022": 37.56926127054063
+            "2018": 35.00359616569128,
+            "2020": 34.0848733736729,
+            "2022": 37.569240217308774
           },
           "metadata": {
             "importName": "CDC500_States",
@@ -4800,10 +4801,10 @@
             "2015": 23.214648047639873,
             "2016": 22.80845166624088,
             "2017": 21.920662783382394,
-            "2018": 21.043865573607878,
-            "2020": 19.71796708691403,
+            "2018": 21.043865573607903,
+            "2020": 19.717967086914026,
             "2021": 19.29083976186202,
-            "2022": 18.566413854218432
+            "2022": 18.566401245973978
           },
           "metadata": {
             "importName": "CDC500_States",
@@ -4815,14 +4816,14 @@
         },
         "Percent_Person_WithArthritis": {
           "val": {
-            "2014": 26.18606943369483,
-            "2015": 26.27563165361291,
-            "2016": 27.370649926197167,
-            "2017": 25.09884021772463,
-            "2018": 27.532791812555445,
+            "2014": 26.186069433694833,
+            "2015": 26.275631653612916,
+            "2016": 27.37064992619716,
+            "2017": 25.098840217724632,
+            "2018": 27.53279181255544,
             "2020": 25.100645044688783,
-            "2021": 25.350002534229006,
-            "2022": 25.981140870425538
+            "2021": 25.350002534229038,
+            "2022": 25.981137101880595
           },
           "metadata": {
             "importName": "CDC500_States",
@@ -4836,9 +4837,9 @@
           "val": {
             "2013": 31.554069321623274,
             "2015": 32.93706932114138,
-            "2017": 30.194056364388846,
-            "2019": 29.504469790744064,
-            "2021": 32.55426188952688
+            "2017": 30.194056364388835,
+            "2019": 29.504469790744007,
+            "2021": 32.5542618895269
           },
           "metadata": {
             "importName": "CDC500_States",
@@ -4852,9 +4853,9 @@
           "val": {
             "2013": 32.61303612727418,
             "2015": 32.76992821226926,
-            "2017": 30.19074287508713,
-            "2019": 29.030073315996148,
-            "2021": 30.27453241176916
+            "2017": 30.190742875087107,
+            "2019": 29.03007331599607,
+            "2021": 30.274532411769176
           },
           "metadata": {
             "importName": "CDC500_States",
@@ -4866,14 +4867,14 @@
         },
         "Percent_Person_WithMentalHealthNotGood": {
           "val": {
-            "2014": 12.75842381913575,
-            "2015": 13.715087661350115,
-            "2016": 14.158486959134049,
+            "2014": 12.758423819135748,
+            "2015": 13.715087661350111,
+            "2016": 14.158486959134047,
             "2017": 14.394013857469224,
-            "2018": 14.994946893251257,
-            "2020": 16.01072262596755,
-            "2021": 17.481920533811444,
-            "2022": 18.628573141411955
+            "2018": 14.994946893251264,
+            "2020": 16.010722625967563,
+            "2021": 17.48192053381145,
+            "2022": 18.628576477926792
           },
           "metadata": {
             "importName": "CDC500_States",
@@ -4886,13 +4887,13 @@
         "Percent_Person_WithPhysicalHealthNotGood": {
           "val": {
             "2014": 13.623789922161587,
-            "2015": 14.028203488869456,
-            "2016": 14.170676123837369,
+            "2015": 14.028203488869455,
+            "2016": 14.17067612383737,
             "2017": 14.103646125667897,
-            "2018": 13.18985028007393,
-            "2020": 10.874853083264341,
-            "2021": 12.098620152344104,
-            "2022": 13.76582830713129
+            "2018": 13.189850280073935,
+            "2020": 10.874853083264354,
+            "2021": 12.098620152344102,
+            "2022": 13.765830812903134
           },
           "metadata": {
             "importName": "CDC500_States",
@@ -5222,292 +5223,292 @@
         {
           "dcid": "geoId/06037",
           "name": "Los Angeles County",
-          "pop": 9757179
+          "pop": 9694934
         },
         {
           "dcid": "geoId/06073",
           "name": "San Diego County",
-          "pop": 3298799
+          "pop": 3282248
         },
         {
           "dcid": "geoId/06059",
           "name": "Orange County",
-          "pop": 3170435
+          "pop": 3149507
         },
         {
           "dcid": "geoId/06065",
           "name": "Riverside County",
-          "pop": 2529933
+          "pop": 2544916
         },
         {
           "dcid": "geoId/06071",
           "name": "San Bernardino County",
-          "pop": 2214281
+          "pop": 2224091
         },
         {
           "dcid": "geoId/06085",
           "name": "Santa Clara County",
-          "pop": 1926325
+          "pop": 1914391
         },
         {
           "dcid": "geoId/06001",
           "name": "Alameda County",
-          "pop": 1649060
+          "pop": 1636630
         },
         {
           "dcid": "geoId/06067",
           "name": "Sacramento County",
-          "pop": 1611231
+          "pop": 1618460
         },
         {
           "dcid": "geoId/06013",
           "name": "Contra Costa County",
-          "pop": 1172607
+          "pop": 1170070
         },
         {
           "dcid": "geoId/06019",
           "name": "Fresno County",
-          "pop": 1024125
+          "pop": 1035456
         },
         {
           "dcid": "geoId/06029",
           "name": "Kern County",
-          "pop": 922529
+          "pop": 927068
         },
         {
           "dcid": "geoId/06111",
           "name": "Ventura County",
-          "pop": 835427
+          "pop": 830851
         },
         {
           "dcid": "geoId/06075",
           "name": "San Francisco County",
-          "pop": 827526
+          "pop": 826079
         },
         {
           "dcid": "geoId/06077",
           "name": "San Joaquin County",
-          "pop": 816108
+          "pop": 823815
         },
         {
           "dcid": "geoId/06081",
           "name": "San Mateo County",
-          "pop": 742893
+          "pop": 743568
         },
         {
           "dcid": "geoId/06099",
           "name": "Stanislaus County",
-          "pop": 556972
+          "pop": 557719
         },
         {
           "dcid": "geoId/06097",
           "name": "Sonoma County",
-          "pop": 485375
+          "pop": 486444
         },
         {
           "dcid": "geoId/06107",
           "name": "Tulare County",
-          "pop": 483546
+          "pop": 485146
         },
         {
           "dcid": "geoId/06095",
           "name": "Solano County",
-          "pop": 455101
-        },
-        {
-          "dcid": "geoId/06083",
-          "name": "Santa Barbara County",
-          "pop": 444500
-        },
-        {
-          "dcid": "geoId/06053",
-          "name": "Monterey County",
-          "pop": 436251
+          "pop": 455376
         },
         {
           "dcid": "geoId/06061",
           "name": "Placer County",
-          "pop": 433822
+          "pop": 442081
+        },
+        {
+          "dcid": "geoId/06083",
+          "name": "Santa Barbara County",
+          "pop": 442065
+        },
+        {
+          "dcid": "geoId/06053",
+          "name": "Monterey County",
+          "pop": 433729
         },
         {
           "dcid": "geoId/06047",
           "name": "Merced County",
-          "pop": 296774
+          "pop": 297260
         },
         {
           "dcid": "geoId/06079",
           "name": "San Luis Obispo County",
-          "pop": 281843
+          "pop": 282367
         },
         {
           "dcid": "geoId/06087",
           "name": "Santa Cruz County",
-          "pop": 262406
+          "pop": 258852
         },
         {
           "dcid": "geoId/06041",
           "name": "Marin County",
-          "pop": 256400
+          "pop": 253694
         },
         {
           "dcid": "geoId/06113",
           "name": "Yolo County",
-          "pop": 225251
+          "pop": 224410
         },
         {
           "dcid": "geoId/06007",
           "name": "Butte County",
-          "pop": 208334
+          "pop": 209211
         },
         {
           "dcid": "geoId/06017",
           "name": "El Dorado County",
-          "pop": 192823
-        },
-        {
-          "dcid": "geoId/06025",
-          "name": "Imperial County",
-          "pop": 181724
+          "pop": 192323
         },
         {
           "dcid": "geoId/06089",
           "name": "Shasta County",
-          "pop": 181121
+          "pop": 181648
+        },
+        {
+          "dcid": "geoId/06025",
+          "name": "Imperial County",
+          "pop": 181411
         },
         {
           "dcid": "geoId/06039",
           "name": "Madera County",
-          "pop": 165432
+          "pop": 167927
         },
         {
           "dcid": "geoId/06031",
           "name": "Kings County",
-          "pop": 154913
+          "pop": 154327
         },
         {
           "dcid": "geoId/06055",
           "name": "Napa County",
-          "pop": 132727
+          "pop": 132949
         },
         {
           "dcid": "geoId/06023",
           "name": "Humboldt County",
-          "pop": 132380
+          "pop": 131647
         },
         {
           "dcid": "geoId/06057",
           "name": "Nevada County",
-          "pop": 102195
+          "pop": 101911
         },
         {
           "dcid": "geoId/06101",
           "name": "Sutter County",
-          "pop": 98545
-        },
-        {
-          "dcid": "geoId/06045",
-          "name": "Mendocino County",
-          "pop": 89175
+          "pop": 98787
         },
         {
           "dcid": "geoId/06115",
           "name": "Yuba County",
-          "pop": 87469
+          "pop": 88691
+        },
+        {
+          "dcid": "geoId/06045",
+          "name": "Mendocino County",
+          "pop": 88122
         },
         {
           "dcid": "geoId/06069",
           "name": "San Benito County",
-          "pop": 69159
+          "pop": 70082
         },
         {
           "dcid": "geoId/06033",
           "name": "Lake County",
-          "pop": 67764
+          "pop": 67772
         },
         {
           "dcid": "geoId/06103",
           "name": "Tehama County",
-          "pop": 64451
+          "pop": 64665
         },
         {
           "dcid": "geoId/06109",
           "name": "Tuolumne County",
-          "pop": 53893
+          "pop": 53160
         },
         {
           "dcid": "geoId/06009",
           "name": "Calaveras County",
-          "pop": 46505
+          "pop": 46605
         },
         {
           "dcid": "geoId/06093",
           "name": "Siskiyou County",
-          "pop": 42498
+          "pop": 42013
         },
         {
           "dcid": "geoId/06005",
           "name": "Amador County",
-          "pop": 42026
-        },
-        {
-          "dcid": "geoId/06035",
-          "name": "Lassen County",
-          "pop": 28340
+          "pop": 41876
         },
         {
           "dcid": "geoId/06021",
           "name": "Glenn County",
-          "pop": 28304
+          "pop": 28141
+        },
+        {
+          "dcid": "geoId/06035",
+          "name": "Lassen County",
+          "pop": 28117
         },
         {
           "dcid": "geoId/06015",
           "name": "Del Norte County",
-          "pop": 27009
+          "pop": 26410
         },
         {
           "dcid": "geoId/06011",
           "name": "Colusa County",
-          "pop": 22074
+          "pop": 21836
         },
         {
           "dcid": "geoId/06063",
           "name": "Plumas County",
-          "pop": 18834
+          "pop": 18583
         },
         {
           "dcid": "geoId/06027",
           "name": "Inyo County",
-          "pop": 18485
+          "pop": 18158
         },
         {
           "dcid": "geoId/06043",
           "name": "Mariposa County",
-          "pop": 17048
+          "pop": 16918
         },
         {
           "dcid": "geoId/06105",
           "name": "Trinity County",
-          "pop": 15642
+          "pop": 15720
         },
         {
           "dcid": "geoId/06051",
           "name": "Mono County",
-          "pop": 12991
+          "pop": 12505
         },
         {
           "dcid": "geoId/06049",
           "name": "Modoc County",
-          "pop": 8491
+          "pop": 8426
         },
         {
           "dcid": "geoId/06091",
           "name": "Sierra County",
-          "pop": 3113
+          "pop": 3098
         },
         {
           "dcid": "geoId/06003",
           "name": "Alpine County",
-          "pop": 1099
+          "pop": 1043
         }
       ]
     }
@@ -5544,8 +5545,8 @@
       }
     },
     "geoId/06037": {
-      "date": "2024",
-      "value": 9757179,
+      "date": "2025",
+      "value": 9694934,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -5554,8 +5555,8 @@
       }
     },
     "geoId/06059": {
-      "date": "2024",
-      "value": 3170435,
+      "date": "2025",
+      "value": 3149507,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -5564,8 +5565,8 @@
       }
     },
     "geoId/06065": {
-      "date": "2024",
-      "value": 2529933,
+      "date": "2025",
+      "value": 2544916,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -5574,8 +5575,8 @@
       }
     },
     "geoId/06071": {
-      "date": "2024",
-      "value": 2214281,
+      "date": "2025",
+      "value": 2224091,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",
@@ -5584,8 +5585,8 @@
       }
     },
     "geoId/06073": {
-      "date": "2024",
-      "value": 3298799,
+      "date": "2025",
+      "value": 3282248,
       "metadata": {
         "importName": "USCensusPEP_Annual_Population",
         "provenanceUrl": "https://www.census.gov/programs-surveys/popest.html",

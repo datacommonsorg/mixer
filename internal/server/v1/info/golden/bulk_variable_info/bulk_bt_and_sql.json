@@ -138,11 +138,11 @@
             "maxValue": 31011
           },
           "CensusCoreBasedStatisticalArea": {
-            "placeCount": 961,
+            "placeCount": 1011,
             "topPlaces": [
               {
                 "dcid": "geoId/C35620",
-                "name": "New York-Newark-Jersey City, NY-NJ-PA Metro Area"
+                "name": "New York-Newark-Jersey City, NY-NJ Metro Area"
               },
               {
                 "dcid": "geoId/C31080",
@@ -150,14 +150,14 @@
               },
               {
                 "dcid": "geoId/C16980",
-                "name": "Chicago-Naperville-Elgin, IL-IN-WI Metro Area"
+                "name": "Chicago-Naperville-Elgin, IL-IN Metro Area"
               }
             ],
-            "minValue": 5392,
+            "minValue": 5373,
             "maxValue": 10429184
           },
           "CensusCountyDivision": {
-            "placeCount": 37078,
+            "placeCount": 38206,
             "topPlaces": [
               {
                 "dcid": "geoId/4820191835",
@@ -233,7 +233,7 @@
             "maxValue": 70230
           },
           "City": {
-            "placeCount": 32463,
+            "placeCount": 32629,
             "topPlaces": [
               {
                 "dcid": "geoId/3651000",
@@ -377,7 +377,7 @@
             "maxValue": 7952131
           },
           "HighSchoolDistrict": {
-            "placeCount": 11,
+            "placeCount": 12,
             "topPlaces": [
               {
                 "dcid": "geoId/sch2727006",
@@ -434,7 +434,7 @@
             "maxValue": 560004
           },
           "SchoolDistrict": {
-            "placeCount": 13986,
+            "placeCount": 13991,
             "topPlaces": [
               {
                 "dcid": "geoId/sch3620580",
@@ -1183,11 +1183,11 @@
                     "maxValue": 31011
                   },
                   "CensusCoreBasedStatisticalArea": {
-                    "placeCount": 960,
+                    "placeCount": 968,
                     "topPlaces": [
                       {
                         "dcid": "geoId/C35620",
-                        "name": "New York-Newark-Jersey City, NY-NJ-PA Metro Area"
+                        "name": "New York-Newark-Jersey City, NY-NJ Metro Area"
                       },
                       {
                         "dcid": "geoId/C31080",
@@ -1195,7 +1195,7 @@
                       },
                       {
                         "dcid": "geoId/C16980",
-                        "name": "Chicago-Naperville-Elgin, IL-IN-WI Metro Area"
+                        "name": "Chicago-Naperville-Elgin, IL-IN Metro Area"
                       }
                     ],
                     "minValue": 5392,
@@ -1451,12 +1451,12 @@
                 },
                 "minValue": 0,
                 "maxValue": 169114481,
-                "observationCount": 5944771,
-                "timeSeriesCount": 512238
+                "observationCount": 5944787,
+                "timeSeriesCount": 512246
               }
             ],
-            "observationCount": 5944771,
-            "timeSeriesCount": 512238
+            "observationCount": 5944787,
+            "timeSeriesCount": 512246
           },
           "dc/base/CensusACS5YearSurvey_AggCountry": {
             "importName": "CensusACS5YearSurvey_AggCountry",
@@ -1498,14 +1498,14 @@
                   "measurementMethod": "CensusACS5yrSurveySubjectTable"
                 },
                 "earliestDate": "2010",
-                "latestDate": "2023",
+                "latestDate": "2024",
                 "placeTypeSummary": {
                   "CensusCoreBasedStatisticalArea": {
-                    "placeCount": 961,
+                    "placeCount": 1011,
                     "topPlaces": [
                       {
                         "dcid": "geoId/C35620",
-                        "name": "New York-Newark-Jersey City, NY-NJ-PA Metro Area"
+                        "name": "New York-Newark-Jersey City, NY-NJ Metro Area"
                       },
                       {
                         "dcid": "geoId/C31080",
@@ -1513,14 +1513,14 @@
                       },
                       {
                         "dcid": "geoId/C16980",
-                        "name": "Chicago-Naperville-Elgin, IL-IN-WI Metro Area"
+                        "name": "Chicago-Naperville-Elgin, IL-IN Metro Area"
                       }
                     ],
-                    "minValue": 5392,
+                    "minValue": 5373,
                     "maxValue": 10429184
                   },
                   "CensusCountyDivision": {
-                    "placeCount": 37078,
+                    "placeCount": 38206,
                     "topPlaces": [
                       {
                         "dcid": "geoId/4820191835",
@@ -1536,7 +1536,7 @@
                       }
                     ],
                     "minValue": 0,
-                    "maxValue": 1744717
+                    "maxValue": 1771413
                   },
                   "CensusDivision": {
                     "placeCount": 9,
@@ -1555,7 +1555,7 @@
                       }
                     ],
                     "minValue": 7372402,
-                    "maxValue": 34090199
+                    "maxValue": 34572513
                   },
                   "CensusTract": {
                     "placeCount": 97783,
@@ -1593,10 +1593,10 @@
                       }
                     ],
                     "minValue": 0,
-                    "maxValue": 70086
+                    "maxValue": 70230
                   },
                   "City": {
-                    "placeCount": 32463,
+                    "placeCount": 32629,
                     "topPlaces": [
                       {
                         "dcid": "geoId/3651000",
@@ -1642,7 +1642,7 @@
                       }
                     ],
                     "minValue": 154566548,
-                    "maxValue": 167842453
+                    "maxValue": 169114481
                   },
                   "County": {
                     "placeCount": 3233,
@@ -1660,7 +1660,7 @@
                         "name": "Harris County"
                       }
                     ],
-                    "minValue": 14,
+                    "minValue": 6,
                     "maxValue": 5126081
                   },
                   "ElementarySchoolDistrict": {
@@ -1675,7 +1675,7 @@
                     "maxValue": 5387
                   },
                   "HighSchoolDistrict": {
-                    "placeCount": 11,
+                    "placeCount": 12,
                     "topPlaces": [
                       {
                         "dcid": "geoId/sch2727006",
@@ -1710,7 +1710,7 @@
                     "maxValue": 793
                   },
                   "SchoolDistrict": {
-                    "placeCount": 13986,
+                    "placeCount": 13991,
                     "topPlaces": [
                       {
                         "dcid": "geoId/sch3620580",
@@ -1749,13 +1749,13 @@
                   }
                 },
                 "minValue": 0,
-                "maxValue": 167842453,
-                "observationCount": 2702122,
-                "timeSeriesCount": 220002
+                "maxValue": 169114481,
+                "observationCount": 2909303,
+                "timeSeriesCount": 221352
               }
             ],
-            "observationCount": 2702122,
-            "timeSeriesCount": 220002
+            "observationCount": 2909303,
+            "timeSeriesCount": 221352
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S2601A": {
             "importName": "CensusACS5YearSurvey_SubjectTables_S2601A",
@@ -1865,7 +1865,7 @@
                   "measurementMethod": "CensusACS5yrSurveySubjectTable"
                 },
                 "earliestDate": "2017",
-                "latestDate": "2023",
+                "latestDate": "2024",
                 "placeTypeSummary": {
                   "CensusDivision": {
                     "placeCount": 9,
@@ -1884,7 +1884,7 @@
                       }
                     ],
                     "minValue": 7554734.001,
-                    "maxValue": 34088009.85
+                    "maxValue": 34565327.52
                   },
                   "Country": {
                     "placeCount": 1,
@@ -1895,7 +1895,7 @@
                       }
                     ],
                     "minValue": 163070238.756,
-                    "maxValue": 167855707.7
+                    "maxValue": 169135861.995
                   },
                   "State": {
                     "placeCount": 51,
@@ -1918,12 +1918,12 @@
                   }
                 },
                 "minValue": 281400.808,
-                "maxValue": 167855707.7,
-                "observationCount": 427,
+                "maxValue": 169135861.995,
+                "observationCount": 488,
                 "timeSeriesCount": 61
               }
             ],
-            "observationCount": 427,
+            "observationCount": 488,
             "timeSeriesCount": 61
           },
           "dc/base/CensusACS5YearSurvey_SubjectTables_S2602PR": {
@@ -2161,7 +2161,7 @@
               {
                 "seriesKey": {},
                 "earliestDate": "1901",
-                "latestDate": "2026-03",
+                "latestDate": "2026-06",
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -2172,16 +2172,16 @@
                       }
                     ],
                     "minValue": 1255000,
-                    "maxValue": 3029291
+                    "maxValue": 3032519
                   }
                 },
                 "minValue": 1255000,
-                "maxValue": 3029291,
-                "observationCount": 199,
+                "maxValue": 3032519,
+                "observationCount": 200,
                 "timeSeriesCount": 1
               }
             ],
-            "observationCount": 199,
+            "observationCount": 200,
             "timeSeriesCount": 1
           },
           "dc/base/Egypt_Census": {
@@ -4391,7 +4391,7 @@
                       },
                       {
                         "dcid": "geoId/72021",
-                        "name": "Bayamón"
+                        "name": "BayamÃ³n Municipio"
                       }
                     ],
                     "minValue": 11601,
@@ -4597,7 +4597,7 @@
                   "isDcAggregate": true
                 },
                 "earliestDate": "1900",
-                "latestDate": "2024",
+                "latestDate": "2025",
                 "placeTypeSummary": {
                   "Country": {
                     "placeCount": 1,
@@ -4608,7 +4608,7 @@
                       }
                     ],
                     "minValue": 37227000,
-                    "maxValue": 171773106
+                    "maxValue": 174047332
                   },
                   "State": {
                     "placeCount": 51,
@@ -4631,12 +4631,12 @@
                   }
                 },
                 "minValue": 138616,
-                "maxValue": 171773106,
-                "observationCount": 2930,
+                "maxValue": 174047332,
+                "observationCount": 2931,
                 "timeSeriesCount": 52
               }
             ],
-            "observationCount": 175419,
+            "observationCount": 175420,
             "timeSeriesCount": 3208
           },
           "dc/base/Vietnam_Census": {
