@@ -17,6 +17,7 @@ package spanner
 import "fmt"
 
 const (
+	// TODO(rohitrkumar): Migrate to TimeSeries table and update indexes.
 	timeSeriesTable  = "TimeSeries_final_v2"
 	observationTable = "Observation_final_v2"
 
@@ -57,6 +58,7 @@ var statementsMultiEntity = struct {
 	filterEntity3Exists                            string
 }{
 	// Retrieve observations where both variables and entities are present (full series)
+	// TODO(rohitrkumar): Align with new schema - facets_id -> facet_id, facets -> facet, str_value -> value
 	getObsBoth: fmt.Sprintf(`		WITH params AS (
 			SELECT var, ent 
 			FROM UNNEST(@variables) AS var 
