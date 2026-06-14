@@ -157,3 +157,125 @@ var multiEntityStatVarGroupNodeTestCases = []struct {
 		golden:             "get_multientity_stat_var_group_node_with_definitions",
 	},
 }
+
+var multiEntityFilteredSVGChildrenTestCases = []struct {
+	name                  string
+	template              string
+	node                  string
+	constrainedPlaces     []string
+	constrainedProvenance string
+	numEntitiesExistence  int
+	includeDefinitions    bool
+	golden                string
+}{
+	{
+		name:                 "stat vars filtered by places",
+		template:             "SV",
+		node:                 "dc/g/Demographics",
+		constrainedPlaces:    []string{"country/USA", "country/IND"},
+		numEntitiesExistence: 1,
+		golden:               "get_multientity_filtered_sv_places",
+	},
+	{
+		name:                 "stat var groups filtered by places",
+		template:             "SVG",
+		node:                 "dc/g/Demographics",
+		constrainedPlaces:    []string{"country/USA", "country/IND"},
+		numEntitiesExistence: 1,
+		golden:               "get_multientity_filtered_svg_places",
+	},
+	{
+		name:                  "stat vars filtered by source",
+		template:              "SV",
+		node:                  "dc/g/Demographics",
+		constrainedProvenance: "dc/s/WorldBank",
+		numEntitiesExistence:  1,
+		golden:                "get_multientity_filtered_sv_import",
+	},
+	{
+		name:                  "stat vars filtered by place and source",
+		template:              "SV",
+		node:                  "dc/g/Demographics",
+		constrainedPlaces:     []string{"country/USA", "country/IND"},
+		constrainedProvenance: "dc/s/WorldBank",
+		numEntitiesExistence:  1,
+		golden:                "get_multientity_filtered_sv_place_import",
+	},
+	{
+		name:                 "stat var groups filtered by place threshold",
+		template:             "SVG",
+		node:                 "dc/g/Demographics",
+		constrainedPlaces:    []string{"country/USA", "country/IND", "country/CAN"},
+		numEntitiesExistence: 2,
+		golden:               "get_multientity_filtered_svg_num_entities_existence",
+	},
+	{
+		name:                 "stat vars filtered by places with definitions",
+		template:             "SV",
+		node:                 "dc/g/Demographics",
+		constrainedPlaces:    []string{"country/USA"},
+		numEntitiesExistence: 1,
+		includeDefinitions:   true,
+		golden:               "get_multientity_filtered_sv_with_definitions",
+	},
+}
+
+var multiEntityFilteredTopicTestCases = []struct {
+	name                  string
+	nodes                 []string
+	constrainedPlaces     []string
+	constrainedProvenance string
+	numEntitiesExistence  int
+	golden                string
+}{
+	{
+		name:                 "topic filtered by places",
+		nodes:                []string{"dc/topic/Demographics"},
+		constrainedPlaces:    []string{"country/CAN", "country/IND"},
+		numEntitiesExistence: 1,
+		golden:               "get_multientity_filtered_topic_places",
+	},
+	{
+		name:                 "multiple topics filtered by places",
+		nodes:                []string{"dc/topic/Demographics", "dc/topic/Economy"},
+		constrainedPlaces:    []string{"country/CAN", "country/IND"},
+		numEntitiesExistence: 1,
+		golden:               "get_multientity_filtered_topic_places_multiple_topics",
+	},
+	{
+		name:                  "topic filtered by source",
+		nodes:                 []string{"dc/topic/Demographics"},
+		constrainedProvenance: "dc/s/WorldBank",
+		numEntitiesExistence:  1,
+		golden:                "get_multientity_filtered_topic_import",
+	},
+	{
+		name:                  "topic filtered by source threshold",
+		nodes:                 []string{"dc/topic/Demographics"},
+		constrainedProvenance: "dc/s/WorldBank",
+		numEntitiesExistence:  2,
+		golden:                "get_multientity_filtered_topic_import_num_entities_existence",
+	},
+	{
+		name:                  "topic filtered by dataset",
+		nodes:                 []string{"dc/topic/Demographics"},
+		constrainedProvenance: "dc/d/TestDataset",
+		numEntitiesExistence:  1,
+		golden:                "get_multientity_filtered_topic_dataset",
+	},
+	{
+		name:                  "topic filtered by place and source",
+		nodes:                 []string{"dc/topic/Demographics"},
+		constrainedPlaces:     []string{"country/CAN", "country/IND"},
+		constrainedProvenance: "dc/s/WorldBank",
+		numEntitiesExistence:  1,
+		golden:                "get_multientity_filtered_topic_place_import",
+	},
+	{
+		name:                 "topic filtered by place threshold",
+		nodes:                []string{"dc/topic/Demographics"},
+		constrainedPlaces:    []string{"country/USA", "country/IND", "country/CAN"},
+		numEntitiesExistence: 2,
+		golden:               "get_multientity_filtered_topic_num_entities_existence",
+	},
+}

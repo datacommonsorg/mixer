@@ -20,7 +20,10 @@ import (
 	"fmt"
 	"slices"
 
+	"cloud.google.com/go/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
+	"golang.org/x/sync/errgroup"
+	"google.golang.org/api/iterator"
 )
 
 // GetObservations retrieves observations using the new schema.
@@ -86,6 +89,158 @@ func (nc *multiEntityClient) GetStatVarGroupNode(ctx context.Context, nodes []st
 	}
 
 	return svgNodes, nil
+}
+
+// GetFilteredStatVarGroupNode fetches filtered StatVarGroupNode info using multi-entity TimeSeries filters.
+func (nc *multiEntityClient) GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (map[string]*FilteredStatVarGroupNode, error) {
+	response := map[string]*FilteredStatVarGroupNode{}
+	errGroup, errCtx := errgroup.WithContext(ctx)
+	errGroup.SetLimit(maxConcurrentFilteredSVGGoroutines)
+
+	type nodeResult struct {
+		node string
+		resp *FilteredStatVarGroupNode
+	}
+	resps := make(chan nodeResult, len(nodes))
+
+	for _, node := range nodes {
+		node := node
+		errGroup.Go(func() error {
+			resp, err := nc.getSingleFilteredStatVarGroupNode(errCtx, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions)
+			if err != nil {
+				return fmt.Errorf("error fetching filtered StatVarGroupNode for node %s: %w", node, err)
+			}
+			resps <- nodeResult{node: node, resp: resp}
+			return nil
+		})
+	}
+
+	if err := errGroup.Wait(); err != nil {
+		return nil, err
+	}
+	close(resps)
+
+	for res := range resps {
+		response[res.node] = res.resp
+	}
+
+	return response, nil
+}
+
+func (nc *multiEntityClient) getSingleFilteredStatVarGroupNode(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (*FilteredStatVarGroupNode, error) {
+	filteredStatVarGroupNode := &FilteredStatVarGroupNode{}
+	errGroup, errCtx := errgroup.WithContext(ctx)
+	svgChildChan := make(chan []*SVGChild, 1)
+	childSVChan := make(chan []*ChildSV, 1)
+	childSVGChan := make(chan []*ChildSVG, 1)
+
+	errGroup.Go(func() error {
+		var svgChildren []*SVGChild
+		err := queryStructs(
+			errCtx,
+			nc.sc,
+			*GetSVGChildrenQuery(node, includeDefinitions),
+			func() interface{} {
+				return &SVGChild{}
+			},
+			func(rowStruct interface{}) {
+				svgChildren = append(svgChildren, rowStruct.(*SVGChild))
+			},
+		)
+		if err != nil {
+			return err
+		}
+		svgChildChan <- svgChildren
+		return nil
+	})
+
+	errGroup.Go(func() error {
+		var childSVs []*ChildSV
+		err := queryStructs(
+			errCtx,
+			nc.sc,
+			*GetMultiEntityFilteredSVGChildrenQuery(templateSV, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions),
+			func() interface{} {
+				return &ChildSV{}
+			},
+			func(rowStruct interface{}) {
+				childSVs = append(childSVs, rowStruct.(*ChildSV))
+			},
+		)
+		if err != nil {
+			return err
+		}
+		childSVChan <- childSVs
+		return nil
+	})
+
+	errGroup.Go(func() error {
+		var childSVGs []*ChildSVG
+		err := queryStructs(
+			errCtx,
+			nc.sc,
+			*GetMultiEntityFilteredSVGChildrenQuery(templateSVG, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions),
+			func() interface{} {
+				return &ChildSVG{}
+			},
+			func(rowStruct interface{}) {
+				childSVGs = append(childSVGs, rowStruct.(*ChildSVG))
+			},
+		)
+		if err != nil {
+			return err
+		}
+		childSVGChan <- childSVGs
+		return nil
+	})
+
+	if err := errGroup.Wait(); err != nil {
+		return filteredStatVarGroupNode, err
+	}
+
+	close(svgChildChan)
+	close(childSVChan)
+	close(childSVGChan)
+
+	filteredStatVarGroupNode.SVGChild = <-svgChildChan
+	filteredStatVarGroupNode.ChildSV = <-childSVChan
+	filteredStatVarGroupNode.ChildSVG = <-childSVGChan
+
+	return filteredStatVarGroupNode, nil
+}
+
+// GetFilteredTopic fetches filtered Topic counts using multi-entity TimeSeries filters.
+func (nc *multiEntityClient) GetFilteredTopic(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]int, error) {
+	counts := make(map[string]int, len(nodes))
+	for _, node := range nodes {
+		counts[node] = 0
+	}
+
+	stmt := GetMultiEntityFilteredTopicChildrenQuery(nodes, constrainedPlaces, constrainedImport, numEntitiesExistence)
+	err := nc.sc.executeQuery(ctx, *stmt, func(iter *spanner.RowIterator) error {
+		for {
+			row, err := iter.Next()
+			if err == iterator.Done {
+				break
+			}
+			if err != nil {
+				return err
+			}
+
+			var parent string
+			var count int64
+			if err := row.Columns(&parent, &count); err != nil {
+				return fmt.Errorf("error reading row for filtered Topic children count: %w", err)
+			}
+			counts[parent] = int(count)
+		}
+		return nil
+	})
+	if err != nil {
+		return counts, err
+	}
+
+	return counts, nil
 }
 
 // GetObservationsContainedInPlace fetches observations for children containment.

@@ -25,24 +25,36 @@ const (
 )
 
 var statementsMultiEntity = struct {
-	getObsBoth                                   string
-	getObsBothWithDate                           string
-	getObsBothLatest                             string
-	getObsEntitiesOnly                           string
-	getObsEntitiesOnlyWithDate                   string
-	getObsEntitiesOnlyLatest                     string
-	getObsByContainedInPlaceBoth                 string
-	getObsByContainedInPlaceBothWithDate         string
-	getObsByContainedInPlaceBothLatest           string
-	getObsByContainedInPlaceEntitiesOnly         string
-	getObsByContainedInPlaceEntitiesOnlyWithDate string
-	getObsByContainedInPlaceEntitiesOnlyLatest   string
-	getStatVarsByEntityBoth                      string
-	getStatVarsByEntityVarsOnly                  string
-	getStatVarsByEntityEntitiesOnly              string
-	checkGroupPlaceExistence                     string
-	getStatVarGroupNode                          string
-	getStatVarGroupNodeWithDefinitions           string
+	getObsBoth                                     string
+	getObsBothWithDate                             string
+	getObsBothLatest                               string
+	getObsEntitiesOnly                             string
+	getObsEntitiesOnlyWithDate                     string
+	getObsEntitiesOnlyLatest                       string
+	getObsByContainedInPlaceBoth                   string
+	getObsByContainedInPlaceBothWithDate           string
+	getObsByContainedInPlaceBothLatest             string
+	getObsByContainedInPlaceEntitiesOnly           string
+	getObsByContainedInPlaceEntitiesOnlyWithDate   string
+	getObsByContainedInPlaceEntitiesOnlyLatest     string
+	getStatVarsByEntityBoth                        string
+	getStatVarsByEntityVarsOnly                    string
+	getStatVarsByEntityEntitiesOnly                string
+	checkGroupPlaceExistence                       string
+	getStatVarGroupNode                            string
+	getStatVarGroupNodeWithDefinitions             string
+	filterDescendentStatVarsByTimeSeries           string
+	selectDescendentStatVarsFromTimeSeries         string
+	selectDescendentStatVarsFromEntitySlots        string
+	joinDescendentStatVarsByProvenance             string
+	filterDescendentStatVarsByProvenancePredicate  string
+	filterDescendentStatVarsByProvenanceObject     string
+	filterDescendentStatVarsByNumEntitiesExistence string
+	filterEntity1ByPlaces                          string
+	filterEntity2ByPlaces                          string
+	filterEntity3ByPlaces                          string
+	filterEntity2Exists                            string
+	filterEntity3Exists                            string
 }{
 	// Retrieve observations where both variables and entities are present (full series)
 	getObsBoth: fmt.Sprintf(`		WITH params AS (
@@ -323,6 +335,7 @@ var statementsMultiEntity = struct {
 			ON t.entity1 = p.place_id`, observationTable, timeSeriesTable),
 
 	// Contained in place query without variables filtered (specific date)
+	// TODO(rohitrkumar): check dates_and_values can be null when no matching dates found
 	getObsByContainedInPlaceEntitiesOnlyWithDate: fmt.Sprintf(`		WITH places AS (
 			SELECT result.object_id AS place_id
 			FROM GRAPH_TABLE ( 
@@ -635,4 +648,50 @@ var statementsMultiEntity = struct {
 			FROM ChildSVs sv
 			JOIN Node n
 			ON n.subject_id = sv.child_sv`,
+
+	filterDescendentStatVarsByTimeSeries: `JOIN@{JOIN_TYPE=HASH_JOIN} (
+					SELECT ts.variable_measured
+					FROM %s%s%s
+					GROUP BY ts.variable_measured%s
+				) o ON o.variable_measured = e.subject_id`,
+
+	selectDescendentStatVarsFromTimeSeries: `%s AS ts`,
+
+	selectDescendentStatVarsFromEntitySlots: `(
+						SELECT t.variable_measured, t.entity1 AS entity, t.provenance
+						FROM %[1]s AS t
+						%[4]s
+						UNION ALL
+						SELECT t.variable_measured, t.entity2 AS entity, t.provenance
+						FROM %[1]s@{FORCE_INDEX=%[2]s} AS t
+						%[5]s
+						UNION ALL
+						SELECT t.variable_measured, t.entity3 AS entity, t.provenance
+						FROM %[1]s@{FORCE_INDEX=%[3]s} AS t
+						%[6]s
+					) AS ts`,
+
+	joinDescendentStatVarsByProvenance: `
+					JOIN Edge@{FORCE_INDEX=InEdge} e1
+					ON ts.provenance = e1.subject_id`,
+
+	filterDescendentStatVarsByProvenancePredicate: "e1.predicate = @predicate",
+
+	filterDescendentStatVarsByProvenanceObject: "e1.object_id = @provenance",
+
+	filterDescendentStatVarsByNumEntitiesExistence: `
+					HAVING COUNT(DISTINCT %s) >= @numEntitiesExistence`,
+
+	filterEntity1ByPlaces: "WHERE t.entity1 IN UNNEST(@places)",
+
+	filterEntity2ByPlaces: `WHERE t.entity2 IN UNNEST(@places)
+							AND t.entity2 IS NOT NULL`,
+
+	filterEntity3ByPlaces: `WHERE t.entity3 IN UNNEST(@places)
+							AND t.entity3 IS NOT NULL
+							AND t.entity2 IS NOT NULL`,
+
+	filterEntity2Exists: "WHERE t.entity2 IS NOT NULL",
+
+	filterEntity3Exists: "WHERE t.entity3 IS NOT NULL\n\t\t\t\t\t\tAND t.entity2 IS NOT NULL",
 }

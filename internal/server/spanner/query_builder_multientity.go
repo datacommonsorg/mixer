@@ -167,3 +167,113 @@ func GetMultiEntityStatVarGroupNodeQuery(nodes []string, includeDefinitions bool
 		},
 	}
 }
+
+func filterMultiEntityDescendentStatVarsQuery(constrainedPlaces []string, constrainedProvenance string, numEntitiesExistence int) *spanner.Statement {
+	params := map[string]interface{}{}
+	useEntitySlots := len(constrainedPlaces) > 0 || (constrainedProvenance == "" && numEntitiesExistence > 1)
+
+	timeSeriesSource := fmt.Sprintf(statementsMultiEntity.selectDescendentStatVarsFromTimeSeries, timeSeriesTable)
+	distinctExistenceKey := "ts.entity1"
+	if useEntitySlots {
+		timeSeriesSource = multiEntityDescendentStatVarsSlotsSQL(len(constrainedPlaces) > 0)
+		distinctExistenceKey = "ts.entity"
+		if len(constrainedPlaces) > 0 {
+			params["places"] = constrainedPlaces
+		}
+	}
+
+	var provenanceJoin string
+	var provenanceFilters []string
+	if constrainedProvenance != "" {
+		provenanceJoin = statementsMultiEntity.joinDescendentStatVarsByProvenance
+		provenanceFilters = append(provenanceFilters,
+			statementsMultiEntity.filterDescendentStatVarsByProvenancePredicate,
+			statementsMultiEntity.filterDescendentStatVarsByProvenanceObject,
+		)
+		params["predicate"] = getImportFilterPredicate(constrainedProvenance)
+		params["provenance"] = constrainedProvenance
+		distinctExistenceKey = "e1.subject_id"
+	}
+
+	var provenanceFilterSQL string
+	if len(provenanceFilters) > 0 {
+		provenanceFilterSQL = "\n\t\t\t\t\tWHERE " + strings.Join(provenanceFilters, "\n\t\t\t\t\t  AND ")
+	}
+
+	var existenceThreshold string
+	if numEntitiesExistence > 1 {
+		existenceThreshold = fmt.Sprintf(
+			statementsMultiEntity.filterDescendentStatVarsByNumEntitiesExistence,
+			distinctExistenceKey,
+		)
+		params["numEntitiesExistence"] = numEntitiesExistence
+	}
+
+	return &spanner.Statement{
+		SQL: fmt.Sprintf(
+			statementsMultiEntity.filterDescendentStatVarsByTimeSeries,
+			timeSeriesSource,
+			provenanceJoin,
+			provenanceFilterSQL,
+			existenceThreshold,
+		),
+		Params: params,
+	}
+}
+
+func multiEntityDescendentStatVarsSlotsSQL(filterPlaces bool) string {
+	entity1Filter := ""
+	entity2Filter := statementsMultiEntity.filterEntity2Exists
+	entity3Filter := statementsMultiEntity.filterEntity3Exists
+	if filterPlaces {
+		entity1Filter = statementsMultiEntity.filterEntity1ByPlaces
+		entity2Filter = statementsMultiEntity.filterEntity2ByPlaces
+		entity3Filter = statementsMultiEntity.filterEntity3ByPlaces
+	}
+
+	return fmt.Sprintf(
+		statementsMultiEntity.selectDescendentStatVarsFromEntitySlots,
+		timeSeriesTable,
+		timeSeriesByEntity2Index,
+		timeSeriesByEntity3Index,
+		entity1Filter,
+		entity2Filter,
+		entity3Filter,
+	)
+}
+
+// GetMultiEntityFilteredSVGChildrenQuery returns a query to get SVG children using multi-entity TimeSeries filters.
+func GetMultiEntityFilteredSVGChildrenQuery(template string, node string, constrainedPlaces []string, constrainedProvenance string, numEntitiesExistence int, includeDefinitions bool) *spanner.Statement {
+	subquery := filterMultiEntityDescendentStatVarsQuery(constrainedPlaces, constrainedProvenance, numEntitiesExistence)
+	subquery.Params["node"] = node
+
+	var baseStatement string
+	switch template {
+	case templateSV:
+		if includeDefinitions {
+			baseStatement = statements.getFilteredChildSVsWithDefinitions
+		} else {
+			baseStatement = statements.getFilteredChildSVs
+		}
+	case templateSVG:
+		baseStatement = statements.getFilteredChildSVGs
+	}
+
+	return &spanner.Statement{
+		SQL:    fmt.Sprintf(baseStatement, subquery.SQL),
+		Params: subquery.Params,
+	}
+}
+
+// GetMultiEntityFilteredTopicChildrenQuery returns a query to get Topic children using multi-entity TimeSeries filters.
+func GetMultiEntityFilteredTopicChildrenQuery(nodes []string, constrainedPlaces []string, constrainedProvenance string, numEntitiesExistence int) *spanner.Statement {
+	subquery := filterMultiEntityDescendentStatVarsQuery(constrainedPlaces, constrainedProvenance, numEntitiesExistence)
+
+	nodeFilter, nodeVal := getParamStatement("node", nodes)
+	subquery.Params["node"] = nodeVal
+
+	return &spanner.Statement{
+		SQL:    fmt.Sprintf(statements.getFilteredTopic, subquery.SQL, nodeFilter),
+		Params: subquery.Params,
+	}
+}

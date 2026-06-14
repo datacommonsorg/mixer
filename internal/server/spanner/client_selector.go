@@ -108,6 +108,35 @@ func (s *schemaSelectorClient) GetStatVarGroupNode(ctx context.Context, nodes []
 	return s.SpannerClient.GetStatVarGroupNode(ctx, nodes, includeDefinitions)
 }
 
+// GetFilteredStatVarGroupNode overrides the embedded client's GetFilteredStatVarGroupNode to dispatch based on schema selection.
+func (s *schemaSelectorClient) GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (map[string]*FilteredStatVarGroupNode, error) {
+	if useMultiEntitySchema(ctx) {
+		logMultiEntityInvocation("GetFilteredStatVarGroupNode",
+			"num_nodes", len(nodes),
+			"num_constrained_places", len(constrainedPlaces),
+			"has_constrained_import", constrainedImport != "",
+			"num_entities_existence", numEntitiesExistence,
+			"include_definitions", includeDefinitions,
+		)
+		return s.multiEntity.GetFilteredStatVarGroupNode(ctx, nodes, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions)
+	}
+	return s.SpannerClient.GetFilteredStatVarGroupNode(ctx, nodes, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions)
+}
+
+// GetFilteredTopic overrides the embedded client's GetFilteredTopic to dispatch based on schema selection.
+func (s *schemaSelectorClient) GetFilteredTopic(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]int, error) {
+	if useMultiEntitySchema(ctx) {
+		logMultiEntityInvocation("GetFilteredTopic",
+			"num_nodes", len(nodes),
+			"num_constrained_places", len(constrainedPlaces),
+			"has_constrained_import", constrainedImport != "",
+			"num_entities_existence", numEntitiesExistence,
+		)
+		return s.multiEntity.GetFilteredTopic(ctx, nodes, constrainedPlaces, constrainedImport, numEntitiesExistence)
+	}
+	return s.SpannerClient.GetFilteredTopic(ctx, nodes, constrainedPlaces, constrainedImport, numEntitiesExistence)
+}
+
 // GetSdmxObservations overrides the embedded client's GetSdmxObservations.
 // SDMX is not supported in multi-entity schema.
 func (s *schemaSelectorClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {

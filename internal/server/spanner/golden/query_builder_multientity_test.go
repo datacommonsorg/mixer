@@ -94,3 +94,31 @@ func TestMultiEntityGetStatVarGroupNodeQuery(t *testing.T) {
 		})
 	}
 }
+
+func TestMultiEntityGetFilteredSVGChildrenQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range multiEntityFilteredSVGChildrenTestCases {
+		c := c // Capture loop variable
+		t.Run(c.name, func(t *testing.T) {
+			goldenFile := c.golden + ".sql"
+			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+				return spanner.GetMultiEntityFilteredSVGChildrenQuery(c.template, c.node, c.constrainedPlaces, c.constrainedProvenance, c.numEntitiesExistence, c.includeDefinitions), nil
+			})
+		})
+	}
+}
+
+func TestMultiEntityGetFilteredTopicChildrenQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range multiEntityFilteredTopicTestCases {
+		c := c // Capture loop variable
+		t.Run(c.name, func(t *testing.T) {
+			goldenFile := c.golden + ".sql"
+			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+				return spanner.GetMultiEntityFilteredTopicChildrenQuery(c.nodes, c.constrainedPlaces, c.constrainedProvenance, c.numEntitiesExistence), nil
+			})
+		})
+	}
+}
