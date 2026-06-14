@@ -19,8 +19,11 @@ import (
 	"reflect"
 	"testing"
 
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	"github.com/datacommonsorg/mixer/internal/util"
+	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
+	"google.golang.org/grpc/status"
 )
 
 type sourceExistenceMockSpannerClient struct {
@@ -41,11 +44,102 @@ func (m *sourceExistenceMockSpannerClient) CheckVariableSourceExistence(ctx cont
 	return m.rows, nil
 }
 
-func TestSchemaSelectorClientCheckVariableSourceExistenceDelegatesToBaseWithMultiEntityHeader(t *testing.T) {
-	ctx := metadata.NewIncomingContext(
+type sdmxMockSpannerClient struct {
+	SpannerClient
+
+	calls  int
+	result *pb.SdmxDataResult
+}
+
+func (m *sdmxMockSpannerClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
+	m.calls++
+	return m.result, nil
+}
+
+func multiEntityHeaderContext(value string) context.Context {
+	return metadata.NewIncomingContext(
 		context.Background(),
-		metadata.Pairs(util.XUseMultiEntitySchema, "true"),
+		metadata.Pairs(util.XUseMultiEntitySchema, value),
 	)
+}
+
+func TestUseMultiEntitySchema(t *testing.T) {
+	for _, tc := range []struct {
+		name      string
+		ctx       context.Context
+		defaultOn bool
+		want      bool
+	}{
+		{
+			name: "no header uses false default",
+			ctx:  context.Background(),
+			want: false,
+		},
+		{
+			name:      "no header uses true default",
+			ctx:       context.Background(),
+			defaultOn: true,
+			want:      true,
+		},
+		{
+			name: "true header overrides false default",
+			ctx:  multiEntityHeaderContext("true"),
+			want: true,
+		},
+		{
+			name:      "false header overrides true default",
+			ctx:       multiEntityHeaderContext("false"),
+			defaultOn: true,
+			want:      false,
+		},
+		{
+			name:      "non true header overrides true default",
+			ctx:       multiEntityHeaderContext("invalid"),
+			defaultOn: true,
+			want:      false,
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			selector := &schemaSelectorClient{useMultiEntitySchemaFlag: tc.defaultOn}
+			if got := selector.useMultiEntitySchema(tc.ctx); got != tc.want {
+				t.Fatalf("selector.useMultiEntitySchema() = %v, want %v", got, tc.want)
+			}
+		})
+	}
+}
+
+func TestGetSchemaNameUsesSelectedSchema(t *testing.T) {
+	ctx := context.WithValue(context.Background(), selectedSchemaNameKey{}, legacySchemaName)
+	if got := getSchemaName(ctx); got != legacySchemaName {
+		t.Fatalf("getSchemaName() = %q, want Legacy", got)
+	}
+
+	ctx = context.WithValue(context.Background(), selectedSchemaNameKey{}, multiEntitySchemaName)
+	if got := getSchemaName(ctx); got != multiEntitySchemaName {
+		t.Fatalf("getSchemaName() = %q, want MultiEntity", got)
+	}
+
+	if got := getSchemaName(multiEntityHeaderContext("true")); got != legacySchemaName {
+		t.Fatalf("getSchemaName() = %q, want Legacy", got)
+	}
+}
+
+func TestSchemaSelectorClientCheckVariableSourceExistenceDelegatesToBaseWithMultiEntitySelection(t *testing.T) {
+	selections := []struct {
+		name               string
+		ctx                context.Context
+		useMultiEntityFlag bool
+	}{
+		{
+			name: "header",
+			ctx:  multiEntityHeaderContext("true"),
+		},
+		{
+			name:               "feature flag",
+			ctx:                context.Background(),
+			useMultiEntityFlag: true,
+		},
+	}
 
 	for _, tc := range []struct {
 		name      string
@@ -75,30 +169,88 @@ func TestSchemaSelectorClientCheckVariableSourceExistenceDelegatesToBaseWithMult
 			rows:      [][]string{{"dc/t/TestTopic", "dc/base/TestImport"}},
 		},
 	} {
+		for _, selection := range selections {
+			t.Run(selection.name+"/"+tc.name, func(t *testing.T) {
+				baseClient := &sourceExistenceMockSpannerClient{rows: tc.rows}
+				selector := &schemaSelectorClient{
+					SpannerClient:            baseClient,
+					useMultiEntitySchemaFlag: selection.useMultiEntityFlag,
+				}
+
+				got, err := selector.CheckVariableSourceExistence(selection.ctx, tc.variables, tc.sources, tc.predicate)
+				if err != nil {
+					t.Fatalf("CheckVariableSourceExistence returned error: %v", err)
+				}
+				if baseClient.calls != 1 {
+					t.Fatalf("base CheckVariableSourceExistence calls = %d, want 1", baseClient.calls)
+				}
+				if !reflect.DeepEqual(got, tc.rows) {
+					t.Fatalf("CheckVariableSourceExistence rows = %v, want %v", got, tc.rows)
+				}
+				if !reflect.DeepEqual(baseClient.gotVariables, tc.variables) {
+					t.Fatalf("variables = %v, want %v", baseClient.gotVariables, tc.variables)
+				}
+				if !reflect.DeepEqual(baseClient.gotSources, tc.sources) {
+					t.Fatalf("sources = %v, want %v", baseClient.gotSources, tc.sources)
+				}
+				if baseClient.gotPredicate != tc.predicate {
+					t.Fatalf("predicate = %q, want %q", baseClient.gotPredicate, tc.predicate)
+				}
+			})
+		}
+	}
+}
+
+func TestSchemaSelectorClientGetSdmxObservations(t *testing.T) {
+	for _, tc := range []struct {
+		name               string
+		ctx                context.Context
+		useMultiEntityFlag bool
+		wantBaseCalls      int
+		wantCode           codes.Code
+	}{
+		{
+			name:          "legacy default delegates to base",
+			ctx:           context.Background(),
+			wantBaseCalls: 1,
+			wantCode:      codes.OK,
+		},
+		{
+			name:               "multi entity flag returns unsupported",
+			ctx:                context.Background(),
+			useMultiEntityFlag: true,
+			wantCode:           codes.Unimplemented,
+		},
+		{
+			name:     "true header returns unsupported",
+			ctx:      multiEntityHeaderContext("true"),
+			wantCode: codes.Unimplemented,
+		},
+		{
+			name:               "false header overrides flag and delegates to base",
+			ctx:                multiEntityHeaderContext("false"),
+			useMultiEntityFlag: true,
+			wantBaseCalls:      1,
+			wantCode:           codes.OK,
+		},
+	} {
 		t.Run(tc.name, func(t *testing.T) {
-			baseClient := &sourceExistenceMockSpannerClient{rows: tc.rows}
+			wantResult := &pb.SdmxDataResult{}
+			baseClient := &sdmxMockSpannerClient{result: wantResult}
 			selector := &schemaSelectorClient{
-				SpannerClient: baseClient,
+				SpannerClient:            baseClient,
+				useMultiEntitySchemaFlag: tc.useMultiEntityFlag,
 			}
 
-			got, err := selector.CheckVariableSourceExistence(ctx, tc.variables, tc.sources, tc.predicate)
-			if err != nil {
-				t.Fatalf("CheckVariableSourceExistence returned error: %v", err)
+			got, err := selector.GetSdmxObservations(tc.ctx, &pb.SdmxDataQuery{})
+			if code := status.Code(err); code != tc.wantCode {
+				t.Fatalf("GetSdmxObservations() code = %v, want %v", code, tc.wantCode)
 			}
-			if baseClient.calls != 1 {
-				t.Fatalf("base CheckVariableSourceExistence calls = %d, want 1", baseClient.calls)
+			if baseClient.calls != tc.wantBaseCalls {
+				t.Fatalf("base GetSdmxObservations calls = %d, want %d", baseClient.calls, tc.wantBaseCalls)
 			}
-			if !reflect.DeepEqual(got, tc.rows) {
-				t.Fatalf("CheckVariableSourceExistence rows = %v, want %v", got, tc.rows)
-			}
-			if !reflect.DeepEqual(baseClient.gotVariables, tc.variables) {
-				t.Fatalf("variables = %v, want %v", baseClient.gotVariables, tc.variables)
-			}
-			if !reflect.DeepEqual(baseClient.gotSources, tc.sources) {
-				t.Fatalf("sources = %v, want %v", baseClient.gotSources, tc.sources)
-			}
-			if baseClient.gotPredicate != tc.predicate {
-				t.Fatalf("predicate = %q, want %q", baseClient.gotPredicate, tc.predicate)
+			if tc.wantCode == codes.OK && got != wantResult {
+				t.Fatalf("GetSdmxObservations() result = %v, want %v", got, wantResult)
 			}
 		})
 	}
