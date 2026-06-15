@@ -20,6 +20,7 @@ import (
 
 	cloudspanner "cloud.google.com/go/spanner"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
+	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 )
 
 func TestReconstructObservationsUsesStoredFacetID(t *testing.T) {
@@ -59,20 +60,40 @@ func TestReconstructObservationsUsesStoredFacetID(t *testing.T) {
 	}
 }
 
-func TestMultiEntityGetObservationsContainedInPlaceNilReturnsEmpty(t *testing.T) {
-	client := &multiEntityClient{}
+func TestMultiEntityGetObservationsContainedInPlaceInvalidArgsReturnEmpty(t *testing.T) {
+	for _, tc := range []struct {
+		name             string
+		variables        []string
+		containedInPlace *v2.ContainedInPlace
+	}{
+		{
+			name:      "nil contained in place",
+			variables: []string{"Count_Person"},
+		},
+		{
+			name: "empty variables",
+			containedInPlace: &v2.ContainedInPlace{
+				Ancestor:       "geoId/06",
+				ChildPlaceType: "County",
+			},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			client := &multiEntityClient{}
 
-	observations, err := client.GetObservationsContainedInPlace(
-		context.Background(),
-		[]string{"Count_Person"},
-		nil,
-		"",
-	)
-	if err != nil {
-		t.Fatalf("GetObservationsContainedInPlace() returned error: %v", err)
-	}
-	if got := len(observations); got != 0 {
-		t.Fatalf("len(observations) = %d, want 0", got)
+			observations, err := client.GetObservationsContainedInPlace(
+				context.Background(),
+				tc.variables,
+				tc.containedInPlace,
+				"",
+			)
+			if err != nil {
+				t.Fatalf("GetObservationsContainedInPlace() returned error: %v", err)
+			}
+			if got := len(observations); got != 0 {
+				t.Fatalf("len(observations) = %d, want 0", got)
+			}
+		})
 	}
 }
 

@@ -105,38 +105,28 @@ func GetMultiEntityGroupPlaceExistenceQuery(variableGroups []string, entities []
 
 // GetMultiEntityObservationsContainedInPlaceQuery builds the observation containment lookup query with optional date filter.
 func GetMultiEntityObservationsContainedInPlaceQuery(variables []string, containedInPlace *v2.ContainedInPlace, date string) (*spanner.Statement, error) {
+	if len(variables) == 0 {
+		return nil, fmt.Errorf("GetMultiEntityObservationsContainedInPlaceQuery: variables must be specified")
+	}
 	if containedInPlace == nil {
 		return nil, fmt.Errorf("GetMultiEntityObservationsContainedInPlaceQuery: containedInPlace must be specified")
 	}
 
-	var sql string
 	params := map[string]interface{}{
 		"ancestor":       containedInPlace.Ancestor,
 		"childPlaceType": containedInPlace.ChildPlaceType,
+		"variables":      variables,
 	}
 
-	if len(variables) > 0 {
-		switch strings.ToUpper(date) {
-		case "":
-			sql = statementsMultiEntity.getObsByContainedInPlaceBoth
-		case shared.LATEST:
-			sql = statementsMultiEntity.getObsByContainedInPlaceBothLatest
-		default:
-			sql = statementsMultiEntity.getObsByContainedInPlaceBothWithDate
-			params["date"] = date
-		}
-		params["variables"] = variables
-	} else {
-		// TODO(rohitrkumar): Legacy api does not support it. remove?
-		switch strings.ToUpper(date) {
-		case "":
-			sql = statementsMultiEntity.getObsByContainedInPlaceEntitiesOnly
-		case shared.LATEST:
-			sql = statementsMultiEntity.getObsByContainedInPlaceEntitiesOnlyLatest
-		default:
-			sql = statementsMultiEntity.getObsByContainedInPlaceEntitiesOnlyWithDate
-			params["date"] = date
-		}
+	var sql string
+	switch strings.ToUpper(date) {
+	case "":
+		sql = statementsMultiEntity.getObsByContainedInPlaceBoth
+	case shared.LATEST:
+		sql = statementsMultiEntity.getObsByContainedInPlaceBothLatest
+	default:
+		sql = statementsMultiEntity.getObsByContainedInPlaceBothWithDate
+		params["date"] = date
 	}
 
 	return &spanner.Statement{

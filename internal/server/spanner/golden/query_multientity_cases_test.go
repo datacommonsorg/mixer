@@ -124,14 +124,6 @@ var multiEntityObservationsContainedInPlaceTestCases = []struct {
 		date:           "latest",
 		golden:         "get_multientity_obs_contained_in_place_latest",
 	},
-	{
-		name:           "contained in place entities only",
-		variables:      []string{},
-		ancestor:       "geoId/10",
-		childPlaceType: "County",
-		date:           "",
-		golden:         "get_multientity_obs_contained_in_place_entities_only",
-	},
 }
 
 var multiEntityStatVarGroupNodeTestCases = []struct {
