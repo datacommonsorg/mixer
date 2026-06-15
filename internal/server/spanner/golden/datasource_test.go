@@ -16,6 +16,7 @@ package golden
 
 import (
 	"context"
+	"errors"
 	"path"
 	"runtime"
 	"slices"
@@ -40,6 +41,9 @@ import (
 type mockSpannerClient struct {
 	resolveByIDRes                     map[string][]string
 	getNodeEdgesRes                    map[string][]*spanner.Edge
+	getNodeEdgesErr                    error
+	getNodeEdgesCalls                  int
+	getNodeEdgesIDs                    [][]string
 	checkVariableExistenceRes          [][]string
 	checkVariableSourceExistenceRes    [][]string
 	checkGroupPlaceExistenceRes        [][]string
@@ -53,6 +57,11 @@ func (m *mockSpannerClient) GetNodeProps(ctx context.Context, ids []string, out 
 	return nil, nil
 }
 func (m *mockSpannerClient) GetNodeEdgesByID(ctx context.Context, ids []string, arc *v2.Arc, pageSize, offset int) (map[string][]*spanner.Edge, error) {
+	m.getNodeEdgesCalls++
+	m.getNodeEdgesIDs = append(m.getNodeEdgesIDs, slices.Clone(ids))
+	if m.getNodeEdgesErr != nil {
+		return nil, m.getNodeEdgesErr
+	}
 	return m.getNodeEdgesRes, nil
 }
 func (m *mockSpannerClient) GetObservations(ctx context.Context, variables []string, entities []string, date string) ([]*spanner.Observation, error) {
@@ -588,6 +597,222 @@ func TestSpannerObservation(t *testing.T) {
 		if diff := cmp.Diff(got, &want, cmpOpts); diff != "" {
 			t.Errorf("%s: %v payload mismatch:\n%v", c.desc, c.goldenFile, diff)
 		}
+	}
+}
+
+func TestSpannerObservation_SkipsProvenanceURLLookupWhenPresent(t *testing.T) {
+	ctx := context.Background()
+	client := &mockSpannerClient{
+		getObservationsRes: []*spanner.Observation{
+			{
+				VariableMeasured: "Count_Person",
+				ObservationAbout: "geoId/06",
+				FacetId:          "facet-1",
+				ProvenanceID:     "dc/base/prov-1",
+				ProvenanceURL:    "https://legacy.test/source",
+				Observations: []*spanner.DateValue{
+					{Date: "2020", Value: "12345"},
+				},
+			},
+		},
+	}
+	ds := spanner.NewSpannerDataSource(client, nil, nil)
+
+	resp, err := ds.Observation(ctx, observationHydrationRequest(&pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}}))
+	if err != nil {
+		t.Fatalf("Observation failed: %v", err)
+	}
+	if got := client.getNodeEdgesCalls; got != 0 {
+		t.Fatalf("GetNodeEdgesByID calls = %d, want 0", got)
+	}
+	if got, want := resp.GetFacets()["facet-1"].GetProvenanceUrl(), "https://legacy.test/source"; got != want {
+		t.Fatalf("facet provenanceUrl = %q, want %q", got, want)
+	}
+}
+
+func TestSpannerObservation_HydratesMissingProvenanceURLs(t *testing.T) {
+	ctx := context.Background()
+	client := &mockSpannerClient{
+		getNodeEdgesRes: map[string][]*spanner.Edge{
+			"dc/base/prov-1": {
+				{Predicate: "url", Value: "https://resolved.test/source"},
+			},
+		},
+		getObservationsRes: []*spanner.Observation{
+			{
+				VariableMeasured: "Count_Person",
+				ObservationAbout: "geoId/06",
+				FacetId:          "facet-1",
+				ProvenanceID:     "dc/base/prov-1",
+				Observations: []*spanner.DateValue{
+					{Date: "2020", Value: "12345"},
+				},
+			},
+			{
+				VariableMeasured: "Median_Income_Person",
+				ObservationAbout: "geoId/06",
+				FacetId:          "facet-2",
+				ProvenanceID:     "dc/base/prov-1",
+				Observations: []*spanner.DateValue{
+					{Date: "2020", Value: "67890"},
+				},
+			},
+		},
+	}
+	ds := spanner.NewSpannerDataSource(client, nil, nil)
+
+	resp, err := ds.Observation(ctx, observationHydrationRequest(&pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}}))
+	if err != nil {
+		t.Fatalf("Observation failed: %v", err)
+	}
+	if got := client.getNodeEdgesCalls; got != 1 {
+		t.Fatalf("GetNodeEdgesByID calls = %d, want 1", got)
+	}
+	if got, want := client.getNodeEdgesIDs[0], []string{"dc/base/prov-1"}; !slices.Equal(got, want) {
+		t.Fatalf("GetNodeEdgesByID ids = %v, want %v", got, want)
+	}
+	for _, facetID := range []string{"facet-1", "facet-2"} {
+		if got, want := resp.GetFacets()[facetID].GetProvenanceUrl(), "https://resolved.test/source"; got != want {
+			t.Fatalf("%s provenanceUrl = %q, want %q", facetID, got, want)
+		}
+	}
+}
+
+func TestSpannerObservation_MissingProvenanceURLEdgeDoesNotFail(t *testing.T) {
+	ctx := context.Background()
+	client := &mockSpannerClient{
+		getNodeEdgesRes: map[string][]*spanner.Edge{},
+		getObservationsRes: []*spanner.Observation{
+			{
+				VariableMeasured: "Count_Person",
+				ObservationAbout: "geoId/06",
+				FacetId:          "facet-1",
+				ProvenanceID:     "dc/base/prov-1",
+				Observations: []*spanner.DateValue{
+					{Date: "2020", Value: "12345"},
+				},
+			},
+		},
+	}
+	ds := spanner.NewSpannerDataSource(client, nil, nil)
+
+	resp, err := ds.Observation(ctx, observationHydrationRequest(&pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}}))
+	if err != nil {
+		t.Fatalf("Observation failed: %v", err)
+	}
+	if got := resp.GetFacets()["facet-1"].GetProvenanceUrl(); got != "" {
+		t.Fatalf("facet provenanceUrl = %q, want empty", got)
+	}
+}
+
+func TestSpannerObservation_ProvenanceURLLookupErrorFails(t *testing.T) {
+	ctx := context.Background()
+	client := &mockSpannerClient{
+		getNodeEdgesErr: errors.New("node lookup failed"),
+		getObservationsRes: []*spanner.Observation{
+			{
+				VariableMeasured: "Count_Person",
+				ObservationAbout: "geoId/06",
+				FacetId:          "facet-1",
+				ProvenanceID:     "dc/base/prov-1",
+				Observations: []*spanner.DateValue{
+					{Date: "2020", Value: "12345"},
+				},
+			},
+		},
+	}
+	ds := spanner.NewSpannerDataSource(client, nil, nil)
+
+	_, err := ds.Observation(ctx, observationHydrationRequest(&pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}}))
+	if err == nil || !strings.Contains(err.Error(), "error resolving provenance URLs") {
+		t.Fatalf("Observation error = %v, want provenance URL lookup error", err)
+	}
+}
+
+func TestSpannerObservation_HydratesBeforeDomainFilter(t *testing.T) {
+	ctx := context.Background()
+	client := &mockSpannerClient{
+		getNodeEdgesRes: map[string][]*spanner.Edge{
+			"dc/base/prov-1": {
+				{Predicate: "url", Value: "https://source.example.org/data"},
+			},
+			"dc/base/prov-2": {
+				{Predicate: "url", Value: "https://other.test/data"},
+			},
+		},
+		getObservationsRes: []*spanner.Observation{
+			{
+				VariableMeasured: "Count_Person",
+				ObservationAbout: "geoId/06",
+				FacetId:          "facet-1",
+				ProvenanceID:     "dc/base/prov-1",
+				Observations: []*spanner.DateValue{
+					{Date: "2020", Value: "12345"},
+				},
+			},
+			{
+				VariableMeasured: "Count_Person",
+				ObservationAbout: "geoId/06",
+				FacetId:          "facet-2",
+				ProvenanceID:     "dc/base/prov-2",
+				Observations: []*spanner.DateValue{
+					{Date: "2020", Value: "67890"},
+				},
+			},
+		},
+	}
+	ds := spanner.NewSpannerDataSource(client, nil, nil)
+	req := observationHydrationRequest(&pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}})
+	req.Filter = &pbv2.FacetFilter{Domains: []string{"example.org"}}
+
+	resp, err := ds.Observation(ctx, req)
+	if err != nil {
+		t.Fatalf("Observation failed: %v", err)
+	}
+	if _, ok := resp.GetFacets()["facet-1"]; !ok {
+		t.Fatal("facet-1 missing, want domain-matching facet")
+	}
+	if _, ok := resp.GetFacets()["facet-2"]; ok {
+		t.Fatal("facet-2 present, want non-matching domain filtered out")
+	}
+}
+
+func TestSpannerObservation_HydratesContainedInPlaceProvenanceURL(t *testing.T) {
+	ctx := context.Background()
+	client := &mockSpannerClient{
+		getNodeEdgesRes: map[string][]*spanner.Edge{
+			"dc/base/prov-1": {
+				{Predicate: "url", Value: "https://contained.test/source"},
+			},
+		},
+		getObservationsContainedInPlaceRes: []*spanner.Observation{
+			{
+				VariableMeasured: "Count_Person",
+				ObservationAbout: "geoId/06001",
+				FacetId:          "facet-1",
+				ProvenanceID:     "dc/base/prov-1",
+				Observations: []*spanner.DateValue{
+					{Date: "2020", Value: "12345"},
+				},
+			},
+		},
+	}
+	ds := spanner.NewSpannerDataSource(client, nil, nil)
+
+	resp, err := ds.Observation(ctx, observationHydrationRequest(&pbv2.DcidOrExpression{Expression: "geoId/06<-containedInPlace+{typeOf:County}"}))
+	if err != nil {
+		t.Fatalf("Observation failed: %v", err)
+	}
+	if got, want := resp.GetFacets()["facet-1"].GetProvenanceUrl(), "https://contained.test/source"; got != want {
+		t.Fatalf("facet provenanceUrl = %q, want %q", got, want)
+	}
+}
+
+func observationHydrationRequest(entity *pbv2.DcidOrExpression) *pbv2.ObservationRequest {
+	return &pbv2.ObservationRequest{
+		Variable: &pbv2.DcidOrExpression{Dcids: []string{"Count_Person", "Median_Income_Person"}},
+		Entity:   entity,
+		Select:   []string{"variable", "entity", "date", "value", "facet"},
 	}
 }
 
