@@ -17,11 +17,14 @@ package spanner
 import (
 	"cmp"
 	"context"
+	"encoding/json"
+	"fmt"
 	"slices"
 
+	"cloud.google.com/go/spanner"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
+	"golang.org/x/sync/errgroup"
+	"google.golang.org/api/iterator"
 )
 
 // GetObservations retrieves observations using the new schema.
@@ -39,7 +42,14 @@ func (nc *multiEntityClient) GetObservations(ctx context.Context, variables []st
 		return nil, err
 	}
 
-	return reconstructObservations(rawObs), nil
+	observations, err := reconstructObservations(rawObs)
+	if err != nil {
+		return nil, err
+	}
+	if err := validateObservations(observations); err != nil {
+		return nil, err
+	}
+	return observations, nil
 }
 
 // CheckVariableExistence checks variable existence across all entity slots in a single CTE-based query.
@@ -51,13 +61,176 @@ func (nc *multiEntityClient) CheckVariableExistence(ctx context.Context, variabl
 	return queryDynamic(ctx, nc.sc, *stmt)
 }
 
-// CheckVariableSourceExistence is not implemented (not required for current scope).
-func (nc *multiEntityClient) CheckVariableSourceExistence(ctx context.Context, variables []string, sources []string, predicate string) ([][]string, error) {
-	return nil, status.Error(codes.Unimplemented, "CheckVariableSourceExistence is not implemented for multi-entity schema")
+// CheckVariableGroupPlaceExistence checks SVG/topic existence across all entity slots.
+func (nc *multiEntityClient) CheckVariableGroupPlaceExistence(ctx context.Context, variableGroups []string, entities []string, predicate string) ([][]string, error) {
+	if len(variableGroups) == 0 || len(entities) == 0 {
+		return [][]string{}, nil
+	}
+	stmt := GetMultiEntityGroupPlaceExistenceQuery(variableGroups, entities, predicate)
+	return queryDynamic(ctx, nc.sc, *stmt)
+}
+
+// GetStatVarGroupNode fetches StatVarGroupNode info using multi-entity TimeSeries existence checks.
+func (nc *multiEntityClient) GetStatVarGroupNode(ctx context.Context, nodes []string, includeDefinitions bool) ([]*StatVarGroupNode, error) {
+	var svgNodes []*StatVarGroupNode
+	if len(nodes) == 0 {
+		return svgNodes, nil
+	}
+
+	err := queryStructs(
+		ctx,
+		nc.sc,
+		*GetMultiEntityStatVarGroupNodeQuery(nodes, includeDefinitions),
+		func() interface{} {
+			return &StatVarGroupNode{}
+		},
+		func(rowStruct interface{}) {
+			svgNodes = append(svgNodes, rowStruct.(*StatVarGroupNode))
+		},
+	)
+	if err != nil {
+		return svgNodes, err
+	}
+
+	return svgNodes, nil
+}
+
+// GetFilteredStatVarGroupNode fetches filtered StatVarGroupNode info using multi-entity TimeSeries filters.
+func (nc *multiEntityClient) GetFilteredStatVarGroupNode(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (map[string]*FilteredStatVarGroupNode, error) {
+	response := map[string]*FilteredStatVarGroupNode{}
+	errGroup, errCtx := errgroup.WithContext(ctx)
+	errGroup.SetLimit(maxConcurrentFilteredSVGGoroutines)
+
+	type nodeResult struct {
+		node string
+		resp *FilteredStatVarGroupNode
+	}
+	resps := make(chan nodeResult, len(nodes))
+
+	for _, node := range nodes {
+		node := node
+		errGroup.Go(func() error {
+			resp, err := nc.getSingleFilteredStatVarGroupNode(errCtx, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions)
+			if err != nil {
+				return fmt.Errorf("error fetching filtered StatVarGroupNode for node %s: %w", node, err)
+			}
+			resps <- nodeResult{node: node, resp: resp}
+			return nil
+		})
+	}
+
+	if err := errGroup.Wait(); err != nil {
+		return nil, err
+	}
+	close(resps)
+
+	for res := range resps {
+		response[res.node] = res.resp
+	}
+
+	return response, nil
+}
+
+func (nc *multiEntityClient) getSingleFilteredStatVarGroupNode(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (*FilteredStatVarGroupNode, error) {
+	errGroup, errCtx := errgroup.WithContext(ctx)
+	var svgChildren []*SVGChild
+	var childSVs []*ChildSV
+	var childSVGs []*ChildSVG
+
+	errGroup.Go(func() error {
+		return queryStructs(
+			errCtx,
+			nc.sc,
+			*GetSVGChildrenQuery(node, includeDefinitions),
+			func() interface{} {
+				return &SVGChild{}
+			},
+			func(rowStruct interface{}) {
+				svgChildren = append(svgChildren, rowStruct.(*SVGChild))
+			},
+		)
+	})
+
+	errGroup.Go(func() error {
+		return queryStructs(
+			errCtx,
+			nc.sc,
+			*GetMultiEntityFilteredSVGChildrenQuery(templateSV, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions),
+			func() interface{} {
+				return &ChildSV{}
+			},
+			func(rowStruct interface{}) {
+				childSVs = append(childSVs, rowStruct.(*ChildSV))
+			},
+		)
+	})
+
+	errGroup.Go(func() error {
+		return queryStructs(
+			errCtx,
+			nc.sc,
+			*GetMultiEntityFilteredSVGChildrenQuery(templateSVG, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions),
+			func() interface{} {
+				return &ChildSVG{}
+			},
+			func(rowStruct interface{}) {
+				childSVGs = append(childSVGs, rowStruct.(*ChildSVG))
+			},
+		)
+	})
+
+	if err := errGroup.Wait(); err != nil {
+		return nil, err
+	}
+
+	return &FilteredStatVarGroupNode{
+		SVGChild: svgChildren,
+		ChildSV:  childSVs,
+		ChildSVG: childSVGs,
+	}, nil
+}
+
+// GetFilteredTopic fetches filtered Topic counts using multi-entity TimeSeries filters.
+func (nc *multiEntityClient) GetFilteredTopic(ctx context.Context, nodes []string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int) (map[string]int, error) {
+	counts := make(map[string]int, len(nodes))
+	for _, node := range nodes {
+		counts[node] = 0
+	}
+
+	stmt := GetMultiEntityFilteredTopicChildrenQuery(nodes, constrainedPlaces, constrainedImport, numEntitiesExistence)
+	err := nc.sc.executeQuery(ctx, *stmt, func(iter *spanner.RowIterator) error {
+		for {
+			row, err := iter.Next()
+			if err == iterator.Done {
+				break
+			}
+			if err != nil {
+				return err
+			}
+
+			var parent string
+			var count int64
+			if err := row.Columns(&parent, &count); err != nil {
+				return fmt.Errorf("error reading row for filtered Topic children count: %w", err)
+			}
+			counts[parent] = int(count)
+		}
+		return nil
+	})
+	if err != nil {
+		return counts, err
+	}
+
+	return counts, nil
 }
 
 // GetObservationsContainedInPlace fetches observations for children containment.
 func (nc *multiEntityClient) GetObservationsContainedInPlace(ctx context.Context, variables []string, containedInPlace *v2.ContainedInPlace, date string) ([]*Observation, error) {
+	var observations []*Observation
+	if len(variables) == 0 || containedInPlace == nil {
+		return observations, nil
+	}
+
 	stmt, err := GetMultiEntityObservationsContainedInPlaceQuery(variables, containedInPlace, date)
 	if err != nil {
 		return nil, err
@@ -71,18 +244,29 @@ func (nc *multiEntityClient) GetObservationsContainedInPlace(ctx context.Context
 		return nil, err
 	}
 
-	return reconstructObservations(rawObs), nil
+	observations, err = reconstructObservations(rawObs)
+	if err != nil {
+		return nil, err
+	}
+	if err := validateObservations(observations); err != nil {
+		return nil, err
+	}
+	return observations, nil
 }
 
 // reconstructObservations processes raw Spanner rows and handles JSON facets extraction in Go code.
-func reconstructObservations(rawObs []*rawObservation) []*Observation {
+func reconstructObservations(rawObs []*rawObservation) ([]*Observation, error) {
 	var result []*Observation
 
 	for _, r := range rawObs {
 		obs := &Observation{
 			VariableMeasured: r.VariableMeasured,
 			ObservationAbout: r.ObservationAbout,
+			FacetId:          r.FacetId,
 			Observations:     TimeSeries{},
+		}
+		if r.ProvenanceID.Valid {
+			obs.ProvenanceID = r.ProvenanceID.StringVal
 		}
 
 		for _, dv := range r.DatesAndValues {
@@ -90,7 +274,22 @@ func reconstructObservations(rawObs []*rawObservation) []*Observation {
 				continue
 			}
 			if dv.Date != "" {
-				obs.Observations = append(obs.Observations, &DateValue{Date: dv.Date, Value: dv.Value})
+				attributes, err := decodeObservationAttributes(dv.Attributes)
+				if err != nil {
+					return nil, fmt.Errorf(
+						"invalid observation attributes: variable=%q entity=%q facet_id=%q date=%q: %w",
+						r.VariableMeasured,
+						r.ObservationAbout,
+						r.FacetId,
+						dv.Date,
+						err,
+					)
+				}
+				obs.Observations = append(obs.Observations, &DateValue{
+					Date:       dv.Date,
+					Value:      dv.Value,
+					Attributes: attributes,
+				})
 			}
 		}
 
@@ -107,11 +306,24 @@ func reconstructObservations(rawObs []*rawObservation) []*Observation {
 		result = append(result, obs)
 	}
 
-	return result
+	return result, nil
+}
+
+func validateObservations(observations []*Observation) error {
+	for _, obs := range observations {
+		if obs.ProvenanceID == "" {
+			return fmt.Errorf(
+				"observation missing provenance: variable=%q entity=%q facet_id=%q",
+				obs.VariableMeasured,
+				obs.ObservationAbout,
+				obs.FacetId,
+			)
+		}
+	}
+	return nil
 }
 
 func populateObservationFacets(obs *Observation, facets map[string]interface{}) {
-	obs.FacetId = getJSONString(facets, "facetId")
 	obs.ImportName = getJSONString(facets, "importName")
 	obs.ObservationPeriod = getJSONString(facets, "observationPeriod")
 	obs.MeasurementMethod = getJSONString(facets, "measurementMethod")
@@ -119,6 +331,54 @@ func populateObservationFacets(obs *Observation, facets map[string]interface{}) 
 	obs.ScalingFactor = getJSONString(facets, "scalingFactor")
 	obs.IsDcAggregate = getJSONBool(facets, "isDcAggregate")
 	obs.ProvenanceURL = getJSONString(facets, "provenanceUrl")
+}
+
+// decodeObservationAttributes expects attributes to be a JSON object that can be
+// represented as a string:string map. Entries with incompatible values are skipped.
+func decodeObservationAttributes(attrs spanner.NullJSON) (map[string]string, error) {
+	if !attrs.Valid || attrs.Value == nil {
+		return nil, nil
+	}
+
+	switch values := attrs.Value.(type) {
+	case map[string]interface{}:
+		result := make(map[string]string, len(values))
+		for key, value := range values {
+			stringValue, ok := observationAttributeValueToString(value)
+			if !ok {
+				continue
+			}
+			result[key] = stringValue
+		}
+		if len(result) == 0 {
+			return nil, nil
+		}
+		return result, nil
+	case map[string]string:
+		if len(values) == 0 {
+			return nil, nil
+		}
+		result := make(map[string]string, len(values))
+		for key, value := range values {
+			result[key] = value
+		}
+		return result, nil
+	default:
+		return nil, fmt.Errorf("attributes JSON must be an object, got %T", attrs.Value)
+	}
+}
+
+func observationAttributeValueToString(value any) (string, bool) {
+	switch v := value.(type) {
+	case string:
+		return v, true
+	case bool, float32, float64, int, int8, int16, int32, int64, uint, uint8, uint16, uint32, uint64:
+		return fmt.Sprint(v), true
+	case json.Number:
+		return v.String(), true
+	default:
+		return "", false
+	}
 }
 
 func getJSONString(m map[string]interface{}, key string) string {

@@ -146,7 +146,7 @@ const (
 	// To use, set header "X-Skip-Cache: true"
 	XSkipCache = "X-Skip-Cache"
 	// Whether to use multi-entity Spanner schema.
-	// To use, set header "X-Use-Multi-Entity-Schema: true"
+	// To override, set header "X-Use-Multi-Entity-Schema: true" or "false"
 	XUseMultiEntitySchema = "X-Use-Multi-Entity-Schema"
 	// Whether to log the full interpolated SQL query.
 	// To use, set header "X-Log-SQL: true"
