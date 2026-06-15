@@ -4,7 +4,7 @@ search_config:
   embedding_model: "NodeEmbeddingModel"
   embedding_table: "NodeEmbedding"
   query_task_type: "RETRIEVAL_QUERY"
-  embedding_type: "base_text_embedding"
+  embedding_label: "base_text_embedding"
   vector_search_algo: "ANN"
   limit: 50
   num_leaves: 10

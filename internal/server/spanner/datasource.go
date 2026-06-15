@@ -510,7 +510,7 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 				cfg.SearchConfig.NumLeaves,
 				cfg.SearchConfig.Threshold,
 				typeOfs,
-				cfg.SearchConfig.EmbeddingType,
+				cfg.SearchConfig.EmbeddingLabel,
 			)
 			if err != nil {
 				return status.Errorf(codes.Internal, "failed to perform vector search for %s: %v", node, err)

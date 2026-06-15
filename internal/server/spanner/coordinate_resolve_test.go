@@ -114,7 +114,7 @@ func (m *coordinateMockSpannerClient) GetFilteredTopic(ctx context.Context, node
 	return nil, nil
 }
 
-func (m *coordinateMockSpannerClient) VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypeFilters []string, embeddingType string) ([]*VectorSearchResult, error) {
+func (m *coordinateMockSpannerClient) VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypes []string, embeddingLabel string) ([]*VectorSearchResult, error) {
 	return m.vectorSearchRes, nil
 }
 

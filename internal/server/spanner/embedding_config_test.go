@@ -26,7 +26,7 @@ func TestSpannerSearchConfig_JSON(t *testing.T) {
 			"search_algorithm": "vector_search",
 			"embedding_model": "text-embedding-005",
 			"query_task_type": "RETRIEVAL_QUERY",
-			"embedding_type": "base_text_embedding",
+			"embedding_label": "base_text_embedding",
 			"vector_search_algo": "ANN"
 		},
 		"postprocessing": ["none"]
@@ -49,8 +49,8 @@ func TestSpannerSearchConfig_JSON(t *testing.T) {
 	if cfg.SearchConfig.QueryTaskType != QueryTaskTypeRetrievalQuery {
 		t.Errorf("Expected QueryTaskType=%s, got %s", QueryTaskTypeRetrievalQuery, cfg.SearchConfig.QueryTaskType)
 	}
-	if cfg.SearchConfig.EmbeddingType != "base_text_embedding" {
-		t.Errorf("Expected EmbeddingType=base_text_embedding, got %s", cfg.SearchConfig.EmbeddingType)
+	if cfg.SearchConfig.EmbeddingLabel != "base_text_embedding" {
+		t.Errorf("Expected EmbeddingLabel=base_text_embedding, got %s", cfg.SearchConfig.EmbeddingLabel)
 	}
 	if len(cfg.Postprocessing) != 1 || cfg.Postprocessing[0] != PostprocessingNone {
 		t.Errorf("Expected Postprocessing=[none], got %v", cfg.Postprocessing)
@@ -82,8 +82,8 @@ func TestReadSpannerSearchConfig(t *testing.T) {
 	if cfg.SearchConfig.QueryTaskType != QueryTaskTypeRetrievalQuery {
 		t.Errorf("Expected QueryTaskType=%s, got %s", QueryTaskTypeRetrievalQuery, cfg.SearchConfig.QueryTaskType)
 	}
-	if cfg.SearchConfig.EmbeddingType != "base_text_embedding" {
-		t.Errorf("Expected EmbeddingType=base_text_embedding, got %s", cfg.SearchConfig.EmbeddingType)
+	if cfg.SearchConfig.EmbeddingLabel != "base_text_embedding" {
+		t.Errorf("Expected EmbeddingLabel=base_text_embedding, got %s", cfg.SearchConfig.EmbeddingLabel)
 	}
 	if len(cfg.Postprocessing) != 1 || cfg.Postprocessing[0] != PostprocessingNone {
 		t.Errorf("Expected Postprocessing=[none], got %v", cfg.Postprocessing)

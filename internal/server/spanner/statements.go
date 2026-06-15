@@ -667,10 +667,10 @@ var statements = struct {
 			%[1]s
 		WHERE
 			embeddings IS NOT NULL
-			AND embedding_type = @embedding_type
+			AND embedding_label = @embedding_label
 			AND COSINE_DISTANCE(@embeddings, embeddings) <= 1 - %[3]s
 			AND EXISTS (
-				SELECT 1 FROM UNNEST(node_types) AS t WHERE t IN UNNEST(@node_type_filters)
+				SELECT 1 FROM UNNEST(node_types) AS t WHERE t IN UNNEST(@node_types)
 			)
 		ORDER BY
 			APPROX_COSINE_DISTANCE(@embeddings, embeddings, options => JSON '%[2]s')
