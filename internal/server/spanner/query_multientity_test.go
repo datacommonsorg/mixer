@@ -16,15 +16,18 @@ package spanner
 
 import (
 	"context"
+	"strings"
 	"testing"
 
 	cloudspanner "cloud.google.com/go/spanner"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
+	"google.golang.org/protobuf/encoding/protojson"
 )
 
 func TestReconstructObservationsUsesStoredFacetID(t *testing.T) {
-	observations := reconstructObservations([]*rawObservation{
+	observations, err := reconstructObservations([]*rawObservation{
 		{
 			VariableMeasured: "Count_Person",
 			ObservationAbout: "geoId/06",
@@ -45,6 +48,9 @@ func TestReconstructObservationsUsesStoredFacetID(t *testing.T) {
 			},
 		},
 	})
+	if err != nil {
+		t.Fatalf("reconstructObservations() = %v", err)
+	}
 
 	if got, want := len(observations), 1; got != want {
 		t.Fatalf("len(observations) = %d, want %d", got, want)
@@ -57,6 +63,175 @@ func TestReconstructObservationsUsesStoredFacetID(t *testing.T) {
 	}
 	if got, want := observations[0].ProvenanceID, "dc/base/test_import"; got != want {
 		t.Fatalf("observations[0].ProvenanceID = %q, want %q", got, want)
+	}
+}
+
+func TestReconstructObservationsAttributes(t *testing.T) {
+	for _, tc := range []struct {
+		name       string
+		attributes cloudspanner.NullJSON
+		want       map[string]string
+	}{
+		{
+			name: "missing attributes",
+		},
+		{
+			name: "json null attributes",
+			attributes: cloudspanner.NullJSON{
+				Valid: true,
+			},
+		},
+		{
+			name: "empty attributes",
+			attributes: cloudspanner.NullJSON{
+				Value: map[string]interface{}{},
+				Valid: true,
+			},
+		},
+		{
+			name: "string attributes",
+			attributes: cloudspanner.NullJSON{
+				Value: map[string]interface{}{
+					"OBS_STATUS": "A",
+					"UNIT_MULT":  "6",
+				},
+				Valid: true,
+			},
+			want: map[string]string{
+				"OBS_STATUS": "A",
+				"UNIT_MULT":  "6",
+			},
+		},
+		{
+			name: "convert scalar attributes and skip nested values",
+			attributes: cloudspanner.NullJSON{
+				Value: map[string]interface{}{
+					"BOOL_VALUE":   true,
+					"FLOAT_VALUE":  float64(1.5),
+					"INT_VALUE":    int64(6),
+					"NIL_VALUE":    nil,
+					"ARRAY_VALUE":  []interface{}{"skip"},
+					"OBJECT_VALUE": map[string]interface{}{"skip": "me"},
+					"STRING_VALUE": "keep",
+				},
+				Valid: true,
+			},
+			want: map[string]string{
+				"BOOL_VALUE":   "true",
+				"FLOAT_VALUE":  "1.5",
+				"INT_VALUE":    "6",
+				"STRING_VALUE": "keep",
+			},
+		},
+		{
+			name: "only skipped attributes",
+			attributes: cloudspanner.NullJSON{
+				Value: map[string]interface{}{
+					"NIL_VALUE":    nil,
+					"ARRAY_VALUE":  []interface{}{"skip"},
+					"OBJECT_VALUE": map[string]interface{}{"skip": "me"},
+				},
+				Valid: true,
+			},
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			observations, err := reconstructObservations([]*rawObservation{
+				{
+					VariableMeasured: "Count_Person",
+					ObservationAbout: "geoId/06",
+					FacetId:          "stored-facet-id",
+					ProvenanceID: cloudspanner.NullString{
+						StringVal: "dc/base/test_import",
+						Valid:     true,
+					},
+					DatesAndValues: []*spannerObservation{
+						{Date: "2020", Value: "1", Attributes: tc.attributes},
+					},
+				},
+			})
+			if err != nil {
+				t.Fatalf("reconstructObservations() = %v", err)
+			}
+			got := observations[0].Observations[0].Attributes
+			if len(tc.want) == 0 {
+				if got != nil {
+					t.Fatalf("Attributes = %v, want nil", got)
+				}
+				return
+			}
+			if len(got) != len(tc.want) {
+				t.Fatalf("Attributes = %v, want %v", got, tc.want)
+			}
+			for key, wantValue := range tc.want {
+				if gotValue := got[key]; gotValue != wantValue {
+					t.Fatalf("Attributes[%q] = %q, want %q", key, gotValue, wantValue)
+				}
+			}
+		})
+	}
+}
+
+func TestReconstructObservationsInvalidAttributes(t *testing.T) {
+	for _, tc := range []struct {
+		name       string
+		attributes cloudspanner.NullJSON
+		want       string
+	}{
+		{
+			name: "top level non object",
+			attributes: cloudspanner.NullJSON{
+				Value: "not-an-object",
+				Valid: true,
+			},
+			want: "attributes JSON must be an object",
+		},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			_, err := reconstructObservations([]*rawObservation{
+				{
+					VariableMeasured: "Count_Person",
+					ObservationAbout: "geoId/06",
+					FacetId:          "stored-facet-id",
+					ProvenanceID: cloudspanner.NullString{
+						StringVal: "dc/base/test_import",
+						Valid:     true,
+					},
+					DatesAndValues: []*spannerObservation{
+						{Date: "2020", Value: "1", Attributes: tc.attributes},
+					},
+				},
+			})
+			if err == nil {
+				t.Fatal("reconstructObservations() expected error, got nil")
+			}
+			if got := err.Error(); !strings.Contains(got, tc.want) {
+				t.Fatalf("reconstructObservations() error = %q, want substring %q", got, tc.want)
+			}
+		})
+	}
+}
+
+func TestPointStatJSONOmitsMissingAttributes(t *testing.T) {
+	jsonBytes, err := protojson.Marshal(&pb.PointStat{Date: "2020"})
+	if err != nil {
+		t.Fatalf("protojson.Marshal() = %v", err)
+	}
+	if got := string(jsonBytes); strings.Contains(got, "attributes") {
+		t.Fatalf("protojson.Marshal() = %s, want no attributes field", got)
+	}
+
+	jsonBytes, err = protojson.Marshal(&pb.PointStat{
+		Date: "2020",
+		Attributes: map[string]string{
+			"OBS_STATUS": "A",
+		},
+	})
+	if err != nil {
+		t.Fatalf("protojson.Marshal() = %v", err)
+	}
+	if got := string(jsonBytes); !strings.Contains(got, `"attributes":{"OBS_STATUS":"A"}`) {
+		t.Fatalf("protojson.Marshal() = %s, want attributes object", got)
 	}
 }
 
@@ -113,7 +288,7 @@ func TestValidateObservationsRequiresProvenance(t *testing.T) {
 		},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
-			observations := reconstructObservations([]*rawObservation{
+			observations, err := reconstructObservations([]*rawObservation{
 				{
 					VariableMeasured: "Count_Person",
 					ObservationAbout: "geoId/06",
@@ -130,7 +305,10 @@ func TestValidateObservationsRequiresProvenance(t *testing.T) {
 					},
 				},
 			})
-			err := validateObservations(observations)
+			if err != nil {
+				t.Fatalf("reconstructObservations() = %v", err)
+			}
+			err = validateObservations(observations)
 			if err == nil {
 				t.Fatal("validateObservations() expected error, got nil")
 			}
@@ -142,7 +320,7 @@ func TestValidateObservationsRequiresProvenance(t *testing.T) {
 }
 
 func TestMultiEntityObservationResponseIncludesProvenanceID(t *testing.T) {
-	observations := reconstructObservations([]*rawObservation{
+	observations, err := reconstructObservations([]*rawObservation{
 		{
 			VariableMeasured: "Count_Person",
 			ObservationAbout: "geoId/06",
@@ -156,6 +334,9 @@ func TestMultiEntityObservationResponseIncludesProvenanceID(t *testing.T) {
 			},
 		},
 	})
+	if err != nil {
+		t.Fatalf("reconstructObservations() = %v", err)
+	}
 
 	if err := validateObservations(observations); err != nil {
 		t.Fatalf("validateObservations() = %v", err)

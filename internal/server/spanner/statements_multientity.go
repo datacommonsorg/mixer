@@ -68,14 +68,14 @@ var statementsMultiEntity = struct {
 			t.provenance,
 			COALESCE(
 				(
-					SELECT ARRAY_AGG(STRUCT(date, str_value)) 
+					SELECT ARRAY_AGG(STRUCT(date, str_value, attributes))
 					FROM %s o
 					WHERE o.variable_measured = t.variable_measured
 						AND o.entity1 = t.entity1
 						AND o.extra_entities_id = t.extra_entities_id
 						AND o.facets_id = t.facets_id
 				),
-				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value, CAST(NULL AS JSON) AS attributes FROM UNNEST([1]) WHERE FALSE)
 			) AS dates_and_values,
 			t.facets
 		FROM params p
@@ -95,7 +95,7 @@ var statementsMultiEntity = struct {
 			t.provenance,
 			COALESCE(
 				(
-					SELECT ARRAY_AGG(STRUCT(date, str_value)) 
+					SELECT ARRAY_AGG(STRUCT(date, str_value, attributes))
 					FROM %s o
 					WHERE o.variable_measured = t.variable_measured
 						AND o.entity1 = t.entity1
@@ -103,7 +103,7 @@ var statementsMultiEntity = struct {
 						AND o.facets_id = t.facets_id
 						AND o.date = @date
 				),
-				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value, CAST(NULL AS JSON) AS attributes FROM UNNEST([1]) WHERE FALSE)
 			) AS dates_and_values,
 			t.facets
 		FROM params p
@@ -124,7 +124,7 @@ var statementsMultiEntity = struct {
 			COALESCE(
 				(
 					SELECT ARRAY(
-						SELECT AS STRUCT date, str_value
+						SELECT AS STRUCT date, str_value, attributes
 						FROM %s o
 						WHERE o.variable_measured = t.variable_measured
 							AND o.entity1 = t.entity1
@@ -134,7 +134,7 @@ var statementsMultiEntity = struct {
 						LIMIT 1
 					)
 				),
-				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value, CAST(NULL AS JSON) AS attributes FROM UNNEST([1]) WHERE FALSE)
 			) AS dates_and_values,
 			t.facets
 		FROM params p
@@ -149,14 +149,14 @@ var statementsMultiEntity = struct {
 			t.provenance,
 			COALESCE(
 				(
-					SELECT ARRAY_AGG(STRUCT(date, str_value)) 
+					SELECT ARRAY_AGG(STRUCT(date, str_value, attributes))
 					FROM %s o
 					WHERE o.variable_measured = t.variable_measured
 						AND o.entity1 = t.entity1
 						AND o.extra_entities_id = t.extra_entities_id
 						AND o.facets_id = t.facets_id
 				),
-				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value, CAST(NULL AS JSON) AS attributes FROM UNNEST([1]) WHERE FALSE)
 			) AS dates_and_values,
 			t.facets
 		FROM %s t
@@ -170,7 +170,7 @@ var statementsMultiEntity = struct {
 			t.provenance,
 			COALESCE(
 				(
-					SELECT ARRAY_AGG(STRUCT(date, str_value)) 
+					SELECT ARRAY_AGG(STRUCT(date, str_value, attributes))
 					FROM %s o
 					WHERE o.variable_measured = t.variable_measured
 						AND o.entity1 = t.entity1
@@ -178,7 +178,7 @@ var statementsMultiEntity = struct {
 						AND o.facets_id = t.facets_id
 						AND o.date = @date
 				),
-				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value, CAST(NULL AS JSON) AS attributes FROM UNNEST([1]) WHERE FALSE)
 			) AS dates_and_values,
 			t.facets
 		FROM %s t
@@ -193,7 +193,7 @@ var statementsMultiEntity = struct {
 			COALESCE(
 				(
 					SELECT ARRAY(
-						SELECT AS STRUCT date, str_value
+						SELECT AS STRUCT date, str_value, attributes
 						FROM %s o
 						WHERE o.variable_measured = t.variable_measured
 							AND o.entity1 = t.entity1
@@ -203,7 +203,7 @@ var statementsMultiEntity = struct {
 						LIMIT 1
 					)
 				),
-				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value, CAST(NULL AS JSON) AS attributes FROM UNNEST([1]) WHERE FALSE)
 			) AS dates_and_values,
 			t.facets
 		FROM %s t
@@ -224,14 +224,14 @@ var statementsMultiEntity = struct {
 			t.provenance,
 			COALESCE(
 				(
-					SELECT ARRAY_AGG(STRUCT(date, str_value)) 
+					SELECT ARRAY_AGG(STRUCT(date, str_value, attributes))
 					FROM %s o
 					WHERE o.variable_measured = t.variable_measured
 						AND o.entity1 = t.entity1
 						AND o.extra_entities_id = t.extra_entities_id
 						AND o.facets_id = t.facets_id
 				),
-				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value, CAST(NULL AS JSON) AS attributes FROM UNNEST([1]) WHERE FALSE)
 			) AS dates_and_values,
 			t.facets
 		FROM places p
@@ -254,7 +254,7 @@ var statementsMultiEntity = struct {
 			t.provenance,
 			COALESCE(
 				(
-					SELECT ARRAY_AGG(STRUCT(date, str_value)) 
+					SELECT ARRAY_AGG(STRUCT(date, str_value, attributes))
 					FROM %s o
 					WHERE o.variable_measured = t.variable_measured
 						AND o.entity1 = t.entity1
@@ -262,7 +262,7 @@ var statementsMultiEntity = struct {
 						AND o.facets_id = t.facets_id
 						AND o.date = @date
 				),
-				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value, CAST(NULL AS JSON) AS attributes FROM UNNEST([1]) WHERE FALSE)
 			) AS dates_and_values,
 			t.facets
 		FROM places p
@@ -286,7 +286,7 @@ var statementsMultiEntity = struct {
 			COALESCE(
 				(
 					SELECT ARRAY(
-						SELECT AS STRUCT date, str_value
+						SELECT AS STRUCT date, str_value, attributes
 						FROM %s o
 						WHERE o.variable_measured = t.variable_measured
 							AND o.entity1 = t.entity1
@@ -296,7 +296,7 @@ var statementsMultiEntity = struct {
 						LIMIT 1
 					)
 				),
-				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value, CAST(NULL AS JSON) AS attributes FROM UNNEST([1]) WHERE FALSE)
 			) AS dates_and_values,
 			t.facets
 		FROM places p

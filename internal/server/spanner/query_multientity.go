@@ -17,6 +17,7 @@ package spanner
 import (
 	"cmp"
 	"context"
+	"encoding/json"
 	"fmt"
 	"slices"
 
@@ -41,7 +42,10 @@ func (nc *multiEntityClient) GetObservations(ctx context.Context, variables []st
 		return nil, err
 	}
 
-	observations := reconstructObservations(rawObs)
+	observations, err := reconstructObservations(rawObs)
+	if err != nil {
+		return nil, err
+	}
 	if err := validateObservations(observations); err != nil {
 		return nil, err
 	}
@@ -240,7 +244,10 @@ func (nc *multiEntityClient) GetObservationsContainedInPlace(ctx context.Context
 		return nil, err
 	}
 
-	observations = reconstructObservations(rawObs)
+	observations, err = reconstructObservations(rawObs)
+	if err != nil {
+		return nil, err
+	}
 	if err := validateObservations(observations); err != nil {
 		return nil, err
 	}
@@ -248,7 +255,7 @@ func (nc *multiEntityClient) GetObservationsContainedInPlace(ctx context.Context
 }
 
 // reconstructObservations processes raw Spanner rows and handles JSON facets extraction in Go code.
-func reconstructObservations(rawObs []*rawObservation) []*Observation {
+func reconstructObservations(rawObs []*rawObservation) ([]*Observation, error) {
 	var result []*Observation
 
 	for _, r := range rawObs {
@@ -267,7 +274,22 @@ func reconstructObservations(rawObs []*rawObservation) []*Observation {
 				continue
 			}
 			if dv.Date != "" {
-				obs.Observations = append(obs.Observations, &DateValue{Date: dv.Date, Value: dv.Value})
+				attributes, err := decodeObservationAttributes(dv.Attributes)
+				if err != nil {
+					return nil, fmt.Errorf(
+						"invalid observation attributes: variable=%q entity=%q facet_id=%q date=%q: %w",
+						r.VariableMeasured,
+						r.ObservationAbout,
+						r.FacetId,
+						dv.Date,
+						err,
+					)
+				}
+				obs.Observations = append(obs.Observations, &DateValue{
+					Date:       dv.Date,
+					Value:      dv.Value,
+					Attributes: attributes,
+				})
 			}
 		}
 
@@ -284,7 +306,7 @@ func reconstructObservations(rawObs []*rawObservation) []*Observation {
 		result = append(result, obs)
 	}
 
-	return result
+	return result, nil
 }
 
 func validateObservations(observations []*Observation) error {
@@ -309,6 +331,54 @@ func populateObservationFacets(obs *Observation, facets map[string]interface{}) 
 	obs.ScalingFactor = getJSONString(facets, "scalingFactor")
 	obs.IsDcAggregate = getJSONBool(facets, "isDcAggregate")
 	obs.ProvenanceURL = getJSONString(facets, "provenanceUrl")
+}
+
+// decodeObservationAttributes expects attributes to be a JSON object that can be
+// represented as a string:string map. Entries with incompatible values are skipped.
+func decodeObservationAttributes(attrs spanner.NullJSON) (map[string]string, error) {
+	if !attrs.Valid || attrs.Value == nil {
+		return nil, nil
+	}
+
+	switch values := attrs.Value.(type) {
+	case map[string]interface{}:
+		result := make(map[string]string, len(values))
+		for key, value := range values {
+			stringValue, ok := observationAttributeValueToString(value)
+			if !ok {
+				continue
+			}
+			result[key] = stringValue
+		}
+		if len(result) == 0 {
+			return nil, nil
+		}
+		return result, nil
+	case map[string]string:
+		if len(values) == 0 {
+			return nil, nil
+		}
+		result := make(map[string]string, len(values))
+		for key, value := range values {
+			result[key] = value
+		}
+		return result, nil
+	default:
+		return nil, fmt.Errorf("attributes JSON must be an object, got %T", attrs.Value)
+	}
+}
+
+func observationAttributeValueToString(value any) (string, bool) {
+	switch v := value.(type) {
+	case string:
+		return v, true
+	case bool, float32, float64, int, int8, int16, int32, int64, uint, uint8, uint16, uint32, uint64:
+		return fmt.Sprint(v), true
+	case json.Number:
+		return v.String(), true
+	default:
+		return "", false
+	}
 }
 
 func getJSONString(m map[string]interface{}, key string) string {

@@ -640,10 +640,13 @@ func dateValueToPointStat(dateValue *DateValue) (*pb.PointStat, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode TimeSeries float value: (%v) for date: (%v)", floatVal, dateValue.Date)
 	}
-	return &pb.PointStat{
-		Date:  dateValue.Date,
-		Value: proto.Float64(floatVal),
-	}, nil
+	pointStat := &pb.PointStat{
+		Date:       dateValue.Date,
+		Value:      proto.Float64(floatVal),
+		Attributes: dateValue.Attributes,
+	}
+
+	return pointStat, nil
 }
 
 func searchNodesToNodeSearchResponse(nodes []*SearchNode) *pbv2.NodeSearchResponse {
