@@ -61,6 +61,12 @@ func SeriesFacet(
 				if err := proto.Unmarshal(jsonRaw, &res); err != nil {
 					return nil, err
 				}
+				for _, placeVarFacet := range res.GetPlaceVariableFacets() {
+					f := placeVarFacet.Facet
+					if f != nil && f.ProvenanceId == "" && f.ImportName != "" {
+						f.ProvenanceId = "dc/base/" + f.ImportName
+					}
+				}
 				return &res, nil
 			},
 		)

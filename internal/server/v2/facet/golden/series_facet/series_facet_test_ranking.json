@@ -5,7 +5,7 @@
         "geoId/01": {
           "ordered_facets": [
             {
-              "facet_id": "1123266408",
+              "facet_id": "1432071463",
               "obs_count": 18,
               "earliest_date": "2001",
               "latest_date": "2020"
@@ -15,7 +15,7 @@
         "geoId/02": {
           "ordered_facets": [
             {
-              "facet_id": "1123266408",
+              "facet_id": "1432071463",
               "obs_count": 18,
               "earliest_date": "2001",
               "latest_date": "2020"
@@ -26,11 +26,12 @@
     }
   },
   "facets": {
-    "1123266408": {
+    "1432071463": {
       "import_name": "OECDRegionalDemography_Mortality",
       "provenance_url": "https://stats.oecd.org/Index.aspx?DataSetCode=REGION_DEMOGR#",
       "measurement_method": "OECDRegionalStatistics",
-      "observation_period": "P1Y"
+      "observation_period": "P1Y",
+      "provenance_id": "dc/base/OECDRegionalDemography_Mortality"
     }
   }
 }

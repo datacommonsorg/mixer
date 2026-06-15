@@ -154,6 +154,9 @@ const (
 	// Header to specify which embeddings index to use for V2 Resolve.
 	// To use, set header "X-V2Resolve-Index: multi-entity"
 	XV2ResolveIndex = "X-V2Resolve-Index"
+	// Header to force V2 Resolve (indicators only) to use Spanner.
+	// To use, set header "X-V2Resolve-Indicator-Spanner: true" (force Spanner) or "false" (force legacy).
+	XV2ResolveIndicatorSpanner = "X-V2Resolve-Indicator-Spanner"
 	// Whether to divert request to Spanner.
 	// To use, set header "X-Divert-Spanner: true"
 	XDivertSpanner = "X-Divert-Spanner"
@@ -504,6 +507,7 @@ func GetFacet(s *pb.SourceSeries) *pb.Facet {
 		Unit:              s.Unit,
 		ProvenanceUrl:     s.ProvenanceUrl,
 		IsDcAggregate:     s.IsDcAggregate,
+		ProvenanceId:      s.ProvenanceId,
 	}
 }
 
@@ -521,6 +525,9 @@ func GetFacetID(m *pb.Facet) string {
 	}, "-")
 	if m.IsDcAggregate {
 		s += "-IsDcAggregate"
+	}
+	if m.ProvenanceId != "" {
+		s += "-" + m.ProvenanceId
 	}
 	h := fnv.New32a()
 	_, _ = h.Write([]byte(s))
@@ -808,6 +815,27 @@ func GetSingleHeaderValue(ctx context.Context, headerName string) string {
 // IsHeaderTrue reads the specified header from the context metadata and returns true if its value is "true".
 func IsHeaderTrue(ctx context.Context, headerName string) bool {
 	return GetSingleHeaderValue(ctx, headerName) == "true"
+}
+
+// GetOptionalBoolHeader reads the specified header from the context metadata.
+// It returns (nil, nil) if the header is missing.
+// It returns (true, nil) if the header is "true".
+// It returns (false, nil) if the header is "false".
+// It returns (nil, error) if the header has any other value.
+func GetOptionalBoolHeader(ctx context.Context, headerName string) (*bool, error) {
+	val := GetSingleHeaderValue(ctx, headerName)
+	if val == "" {
+		return nil, nil
+	}
+	if val == "true" {
+		t := true
+		return &t, nil
+	}
+	if val == "false" {
+		f := false
+		return &f, nil
+	}
+	return nil, status.Errorf(codes.InvalidArgument, "Invalid %s header value: %q. Valid values are 'true' or 'false'", headerName, val)
 }
 
 // IsTopicDcid checks if the DCID belongs to a Topic.
