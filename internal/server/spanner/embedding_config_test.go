@@ -22,10 +22,11 @@ import (
 
 func TestSpannerSearchConfig_JSON(t *testing.T) {
 	data := []byte(`{
-		"search_algorithm": "vector_search",
-		"vector_search_config": {
+		"search_config": {
+			"search_algorithm": "vector_search",
 			"embedding_model": "text-embedding-005",
-			"embedding_type": "RETRIEVAL_QUERY",
+			"query_task_type": "RETRIEVAL_QUERY",
+			"embedding_type": "base_text_embedding",
 			"vector_search_algo": "ANN"
 		},
 		"postprocessing": ["none"]
@@ -36,17 +37,20 @@ func TestSpannerSearchConfig_JSON(t *testing.T) {
 		t.Fatalf("Failed to unmarshal JSON into SpannerSearchConfig: %v", err)
 	}
 
-	if cfg.SearchAlgorithm != VectorSearch {
-		t.Errorf("Expected SearchAlgorithm=%s, got %s", VectorSearch, cfg.SearchAlgorithm)
+	if cfg.SearchConfig.SearchAlgorithm != VectorSearch {
+		t.Errorf("Expected SearchAlgorithm=%s, got %s", VectorSearch, cfg.SearchConfig.SearchAlgorithm)
 	}
-	if cfg.VectorSearchConfig.VectorSearchAlgo != VectorSearchAlgoANN {
-		t.Errorf("Expected VectorSearchAlgo=%s, got %s", VectorSearchAlgoANN, cfg.VectorSearchConfig.VectorSearchAlgo)
+	if cfg.SearchConfig.VectorSearchAlgo != VectorSearchAlgoANN {
+		t.Errorf("Expected VectorSearchAlgo=%s, got %s", VectorSearchAlgoANN, cfg.SearchConfig.VectorSearchAlgo)
 	}
-	if cfg.VectorSearchConfig.EmbeddingModel != "text-embedding-005" {
-		t.Errorf("Expected EmbeddingModel=text-embedding-005, got %s", cfg.VectorSearchConfig.EmbeddingModel)
+	if cfg.SearchConfig.EmbeddingModel != "text-embedding-005" {
+		t.Errorf("Expected EmbeddingModel=text-embedding-005, got %s", cfg.SearchConfig.EmbeddingModel)
 	}
-	if cfg.VectorSearchConfig.EmbeddingType != EmbeddingTypeRetrievalQuery {
-		t.Errorf("Expected EmbeddingType=%s, got %s", EmbeddingTypeRetrievalQuery, cfg.VectorSearchConfig.EmbeddingType)
+	if cfg.SearchConfig.QueryTaskType != QueryTaskTypeRetrievalQuery {
+		t.Errorf("Expected QueryTaskType=%s, got %s", QueryTaskTypeRetrievalQuery, cfg.SearchConfig.QueryTaskType)
+	}
+	if cfg.SearchConfig.EmbeddingType != "base_text_embedding" {
+		t.Errorf("Expected EmbeddingType=base_text_embedding, got %s", cfg.SearchConfig.EmbeddingType)
 	}
 	if len(cfg.Postprocessing) != 1 || cfg.Postprocessing[0] != PostprocessingNone {
 		t.Errorf("Expected Postprocessing=[none], got %v", cfg.Postprocessing)
@@ -66,17 +70,20 @@ func TestReadSpannerSearchConfig(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to read SpannerSearchConfig: %v", err)
 	}
-	if cfg.SearchAlgorithm != VectorSearch {
-		t.Errorf("Expected SearchAlgorithm=%s, got %s", VectorSearch, cfg.SearchAlgorithm)
+	if cfg.SearchConfig.SearchAlgorithm != VectorSearch {
+		t.Errorf("Expected SearchAlgorithm=%s, got %s", VectorSearch, cfg.SearchConfig.SearchAlgorithm)
 	}
-	if cfg.VectorSearchConfig.VectorSearchAlgo != VectorSearchAlgoANN {
-		t.Errorf("Expected VectorSearchAlgo=%s, got %s", VectorSearchAlgoANN, cfg.VectorSearchConfig.VectorSearchAlgo)
+	if cfg.SearchConfig.VectorSearchAlgo != VectorSearchAlgoANN {
+		t.Errorf("Expected VectorSearchAlgo=%s, got %s", VectorSearchAlgoANN, cfg.SearchConfig.VectorSearchAlgo)
 	}
-	if cfg.VectorSearchConfig.EmbeddingModel != "NodeEmbeddingModel" {
-		t.Errorf("Expected EmbeddingModel=NodeEmbeddingModel, got %s", cfg.VectorSearchConfig.EmbeddingModel)
+	if cfg.SearchConfig.EmbeddingModel != "NodeEmbeddingModel" {
+		t.Errorf("Expected EmbeddingModel=NodeEmbeddingModel, got %s", cfg.SearchConfig.EmbeddingModel)
 	}
-	if cfg.VectorSearchConfig.EmbeddingType != EmbeddingTypeRetrievalQuery {
-		t.Errorf("Expected EmbeddingType=%s, got %s", EmbeddingTypeRetrievalQuery, cfg.VectorSearchConfig.EmbeddingType)
+	if cfg.SearchConfig.QueryTaskType != QueryTaskTypeRetrievalQuery {
+		t.Errorf("Expected QueryTaskType=%s, got %s", QueryTaskTypeRetrievalQuery, cfg.SearchConfig.QueryTaskType)
+	}
+	if cfg.SearchConfig.EmbeddingType != "base_text_embedding" {
+		t.Errorf("Expected EmbeddingType=base_text_embedding, got %s", cfg.SearchConfig.EmbeddingType)
 	}
 	if len(cfg.Postprocessing) != 1 || cfg.Postprocessing[0] != PostprocessingNone {
 		t.Errorf("Expected Postprocessing=[none], got %v", cfg.Postprocessing)

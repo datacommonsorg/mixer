@@ -456,7 +456,7 @@ func TestVectorSearch(t *testing.T) {
 		goldenFile := c.golden + ".json"
 
 		runQueryGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-			return client.VectorSearchQuery(ctx, c.tableName, c.limit, c.embeddings, c.numLeaves, c.threshold, c.nodeFilters)
+			return client.VectorSearchQuery(ctx, c.tableName, c.limit, c.embeddings, c.numLeaves, c.threshold, c.nodeTypeFilters, c.embeddingType)
 		})
 	}
 }

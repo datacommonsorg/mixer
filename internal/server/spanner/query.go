@@ -735,12 +735,12 @@ func (sc *spannerDatabaseClient) FilterNodesByTypes(ctx context.Context, nodes [
 }
 
 // VectorSearchQuery performs vector similarity search in Spanner.
-func (sc *spannerDatabaseClient) VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeFilters []string) ([]*VectorSearchResult, error) {
+func (sc *spannerDatabaseClient) VectorSearchQuery(ctx context.Context, tableName string, limit int, embeddings []float64, numLeaves int, threshold float64, nodeTypeFilters []string, embeddingType string) ([]*VectorSearchResult, error) {
 	var results []*VectorSearchResult
 	err := queryStructs(
 		ctx,
 		sc,
-		*VectorSearchQuery(tableName, limit, embeddings, numLeaves, threshold, nodeFilters),
+		*VectorSearchQuery(tableName, limit, embeddings, numLeaves, threshold, nodeTypeFilters, embeddingType),
 		func() interface{} {
 			return &VectorSearchResult{}
 		},
