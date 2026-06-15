@@ -128,15 +128,13 @@ func (nc *multiEntityClient) GetFilteredStatVarGroupNode(ctx context.Context, no
 }
 
 func (nc *multiEntityClient) getSingleFilteredStatVarGroupNode(ctx context.Context, node string, constrainedPlaces []string, constrainedImport string, numEntitiesExistence int, includeDefinitions bool) (*FilteredStatVarGroupNode, error) {
-	filteredStatVarGroupNode := &FilteredStatVarGroupNode{}
 	errGroup, errCtx := errgroup.WithContext(ctx)
-	svgChildChan := make(chan []*SVGChild, 1)
-	childSVChan := make(chan []*ChildSV, 1)
-	childSVGChan := make(chan []*ChildSVG, 1)
+	var svgChildren []*SVGChild
+	var childSVs []*ChildSV
+	var childSVGs []*ChildSVG
 
 	errGroup.Go(func() error {
-		var svgChildren []*SVGChild
-		err := queryStructs(
+		return queryStructs(
 			errCtx,
 			nc.sc,
 			*GetSVGChildrenQuery(node, includeDefinitions),
@@ -147,16 +145,10 @@ func (nc *multiEntityClient) getSingleFilteredStatVarGroupNode(ctx context.Conte
 				svgChildren = append(svgChildren, rowStruct.(*SVGChild))
 			},
 		)
-		if err != nil {
-			return err
-		}
-		svgChildChan <- svgChildren
-		return nil
 	})
 
 	errGroup.Go(func() error {
-		var childSVs []*ChildSV
-		err := queryStructs(
+		return queryStructs(
 			errCtx,
 			nc.sc,
 			*GetMultiEntityFilteredSVGChildrenQuery(templateSV, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions),
@@ -167,16 +159,10 @@ func (nc *multiEntityClient) getSingleFilteredStatVarGroupNode(ctx context.Conte
 				childSVs = append(childSVs, rowStruct.(*ChildSV))
 			},
 		)
-		if err != nil {
-			return err
-		}
-		childSVChan <- childSVs
-		return nil
 	})
 
 	errGroup.Go(func() error {
-		var childSVGs []*ChildSVG
-		err := queryStructs(
+		return queryStructs(
 			errCtx,
 			nc.sc,
 			*GetMultiEntityFilteredSVGChildrenQuery(templateSVG, node, constrainedPlaces, constrainedImport, numEntitiesExistence, includeDefinitions),
@@ -187,26 +173,17 @@ func (nc *multiEntityClient) getSingleFilteredStatVarGroupNode(ctx context.Conte
 				childSVGs = append(childSVGs, rowStruct.(*ChildSVG))
 			},
 		)
-		if err != nil {
-			return err
-		}
-		childSVGChan <- childSVGs
-		return nil
 	})
 
 	if err := errGroup.Wait(); err != nil {
-		return filteredStatVarGroupNode, err
+		return nil, err
 	}
 
-	close(svgChildChan)
-	close(childSVChan)
-	close(childSVGChan)
-
-	filteredStatVarGroupNode.SVGChild = <-svgChildChan
-	filteredStatVarGroupNode.ChildSV = <-childSVChan
-	filteredStatVarGroupNode.ChildSVG = <-childSVGChan
-
-	return filteredStatVarGroupNode, nil
+	return &FilteredStatVarGroupNode{
+		SVGChild: svgChildren,
+		ChildSV:  childSVs,
+		ChildSVG: childSVGs,
+	}, nil
 }
 
 // GetFilteredTopic fetches filtered Topic counts using multi-entity TimeSeries filters.
