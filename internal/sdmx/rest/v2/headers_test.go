@@ -16,10 +16,13 @@ package restv2
 
 import (
 	"context"
+	"strings"
 	"testing"
 
 	"github.com/datacommonsorg/mixer/internal/util"
+	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
+	"google.golang.org/grpc/status"
 )
 
 func TestShouldLogSDMX(t *testing.T) {
@@ -55,6 +58,75 @@ func TestShouldLogSDMX(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := ShouldLogSDMX(tt.ctx); got != tt.want {
 				t.Errorf("ShouldLogSDMX() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestDataResponseFormatFromMetadata(t *testing.T) {
+	tests := []struct {
+		name       string
+		accept     string
+		want       DataResponseFormat
+		wantCode   codes.Code
+		wantErrSub string
+	}{
+		{
+			name: "missing metadata defaults to JSON-stat",
+			want: DataResponseFormatJSONStat,
+		},
+		{
+			name:   "JSON accept defaults to JSON-stat",
+			accept: "application/json",
+			want:   DataResponseFormatJSONStat,
+		},
+		{
+			name:   "SDMX CSV",
+			accept: "application/vnd.sdmx.data+csv;version=2.0.0",
+			want:   DataResponseFormatCSV,
+		},
+		{
+			name:       "SDMX JSON not implemented",
+			accept:     "application/vnd.sdmx.data+json;version=2.0.0",
+			wantCode:   codes.Unimplemented,
+			wantErrSub: "SDMX JSON responses are not implemented yet",
+		},
+		{
+			name:       "SDMX CSV option not implemented",
+			accept:     "application/vnd.sdmx.data+csv;version=2.0.0;labels=name",
+			wantCode:   codes.Unimplemented,
+			wantErrSub: "SDMX CSV response option",
+		},
+		{
+			name:       "SDMX CSV version not implemented",
+			accept:     "application/vnd.sdmx.data+csv;version=1.0.0",
+			wantCode:   codes.Unimplemented,
+			wantErrSub: "SDMX CSV version",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			ctx := context.Background()
+			if tt.accept != "" {
+				ctx = metadata.NewIncomingContext(ctx, metadata.Pairs("accept", tt.accept))
+			}
+
+			got, err := DataResponseFormatFromMetadata(ctx)
+			if tt.wantCode != codes.OK {
+				if status.Code(err) != tt.wantCode {
+					t.Fatalf("DataResponseFormatFromMetadata() code = %v, want %v; err = %v", status.Code(err), tt.wantCode, err)
+				}
+				if !strings.Contains(status.Convert(err).Message(), tt.wantErrSub) {
+					t.Fatalf("DataResponseFormatFromMetadata() message = %q, want substring %q", status.Convert(err).Message(), tt.wantErrSub)
+				}
+				return
+			}
+			if err != nil {
+				t.Fatalf("DataResponseFormatFromMetadata() error = %v", err)
+			}
+			if got != tt.want {
+				t.Errorf("DataResponseFormatFromMetadata() = %v, want %v", got, tt.want)
 			}
 		})
 	}

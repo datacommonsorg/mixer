@@ -15,6 +15,7 @@
 package restv2
 
 import (
+	serversdmx "github.com/datacommonsorg/mixer/internal/server/sdmx"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
@@ -25,11 +26,6 @@ const (
 	ComponentTimePeriod       = "TIME_PERIOD"
 	ComponentObservationValue = "OBS_VALUE"
 
-	dataContext    = "dataflow"
-	dataAgencyID   = "DATACOMMONS"
-	dataResourceID = "DF_OBSERVATIONS"
-	dataVersion    = "1.0.0"
-
 	internalObservationDate = "observationDate"
 )
 
@@ -37,10 +33,10 @@ func validateDataRequest(path ResourcePath, constraints map[string][]string) err
 	if path.Context == "" {
 		return status.Error(codes.InvalidArgument, "SDMX data path is required")
 	}
-	if path.Context != dataContext || path.AgencyID != dataAgencyID || path.ResourceID != dataResourceID {
+	if path.Context != serversdmx.DataContext || path.AgencyID != serversdmx.DataAgencyID || path.ResourceID != serversdmx.DataResourceID {
 		return status.Error(codes.Unimplemented, "unsupported SDMX dataflow")
 	}
-	if path.Version != dataVersion {
+	if path.Version != serversdmx.DataVersion {
 		return status.Errorf(codes.InvalidArgument, "unsupported SDMX dataflow version %q", path.Version)
 	}
 

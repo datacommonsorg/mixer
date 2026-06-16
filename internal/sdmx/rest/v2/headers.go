@@ -16,6 +16,7 @@ package restv2
 
 import (
 	"context"
+	"mime"
 	"strings"
 
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -27,6 +28,13 @@ import (
 const (
 	originalURIHeader = "x-dc-original-uri"
 	envoyPathHeader   = "x-envoy-original-path"
+)
+
+type DataResponseFormat int
+
+const (
+	DataResponseFormatJSONStat DataResponseFormat = iota
+	DataResponseFormatCSV
 )
 
 // OriginalURIFromMetadata returns the trusted request target before transcoding.
@@ -45,19 +53,62 @@ func OriginalURIFromMetadata(ctx context.Context) (string, error) {
 	return "", status.Error(codes.InvalidArgument, "missing SDMX request URI")
 }
 
-// ValidateDataAccept rejects SDMX wire formats that are not implemented yet.
-func ValidateDataAccept(ctx context.Context) error {
+// DataResponseFormatFromMetadata selects the SDMX data response format.
+func DataResponseFormatFromMetadata(ctx context.Context) (DataResponseFormat, error) {
 	md, ok := metadata.FromIncomingContext(ctx)
 	if !ok {
-		return nil
+		return DataResponseFormatJSONStat, nil
 	}
 	for _, key := range []string{"accept", "grpcgateway-accept"} {
 		for _, value := range md.Get(key) {
-			lower := strings.ToLower(value)
-			if strings.Contains(lower, "application/vnd.sdmx.data+json") ||
-				strings.Contains(lower, "application/vnd.sdmx.data+csv") {
-				return status.Error(codes.Unimplemented, "SDMX JSON and CSV responses are not implemented yet")
+			format, found, err := dataResponseFormatFromAccept(value)
+			if err != nil {
+				return DataResponseFormatJSONStat, err
 			}
+			if found {
+				return format, nil
+			}
+		}
+	}
+	return DataResponseFormatJSONStat, nil
+}
+
+// ValidateDataAccept rejects SDMX wire formats that are not implemented yet.
+func ValidateDataAccept(ctx context.Context) error {
+	_, err := DataResponseFormatFromMetadata(ctx)
+	return err
+}
+
+func dataResponseFormatFromAccept(value string) (DataResponseFormat, bool, error) {
+	for _, item := range strings.Split(value, ",") {
+		mediaType, params, err := mime.ParseMediaType(strings.TrimSpace(item))
+		if err != nil {
+			continue
+		}
+		switch strings.ToLower(mediaType) {
+		case "application/vnd.sdmx.data+csv":
+			if err := validateCSVAcceptParams(params); err != nil {
+				return DataResponseFormatJSONStat, true, err
+			}
+			return DataResponseFormatCSV, true, nil
+		case "application/vnd.sdmx.data+json":
+			return DataResponseFormatJSONStat, true, status.Error(codes.Unimplemented, "SDMX JSON responses are not implemented yet")
+		}
+	}
+	return DataResponseFormatJSONStat, false, nil
+}
+
+func validateCSVAcceptParams(params map[string]string) error {
+	for key, value := range params {
+		switch strings.ToLower(key) {
+		case "version":
+			if value != "2.0.0" {
+				return status.Errorf(codes.Unimplemented, "SDMX CSV version %q is not implemented yet", value)
+			}
+		case "q":
+			continue
+		default:
+			return status.Errorf(codes.Unimplemented, "SDMX CSV response option %q is not implemented yet", key)
 		}
 	}
 	return nil

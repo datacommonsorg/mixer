@@ -28,6 +28,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
+	"github.com/datacommonsorg/mixer/internal/server/sdmx"
 	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
 	httpbody "google.golang.org/genproto/googleapis/api/httpbody"
@@ -164,12 +165,20 @@ func TestV3SdmxData_Validation(t *testing.T) {
 			wantErrSub: "SDMX data keys other than * are not implemented yet",
 		},
 		{
-			name:       "Unsupported SDMX media type",
+			name:       "Unsupported SDMX JSON media type",
 			ctx:        sdmxIncomingContextWithAccept(sdmxDataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"), "application/vnd.sdmx.data+json;version=2.0.0"),
 			request:    &pbv3.SdmxRestRequest{},
 			enabled:    true,
 			wantCode:   codes.Unimplemented,
-			wantErrSub: "SDMX JSON and CSV responses are not implemented yet",
+			wantErrSub: "SDMX JSON responses are not implemented yet",
+		},
+		{
+			name:       "Unsupported SDMX CSV option",
+			ctx:        sdmxIncomingContextWithAccept(sdmxDataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"), "application/vnd.sdmx.data+csv;version=2.0.0;labels=name"),
+			request:    &pbv3.SdmxRestRequest{},
+			enabled:    true,
+			wantCode:   codes.Unimplemented,
+			wantErrSub: "SDMX CSV response option",
 		},
 	}
 
@@ -241,11 +250,60 @@ func TestV3SdmxData_Success(t *testing.T) {
 	if len(stream.sent) != 1 {
 		t.Fatalf("sent %d HttpBody messages, want 1", len(stream.sent))
 	}
-	if stream.sent[0].GetContentType() != sdmxJSONStatContentType {
-		t.Errorf("ContentType = %q, want %q", stream.sent[0].GetContentType(), sdmxJSONStatContentType)
+	if stream.sent[0].GetContentType() != sdmx.JSONStatContentType {
+		t.Errorf("ContentType = %q, want %q", stream.sent[0].GetContentType(), sdmx.JSONStatContentType)
 	}
 	if !strings.Contains(string(stream.sent[0].GetData()), "\"version\":\"2.0\"") {
 		t.Errorf("response does not look like JSON-stat: %s", stream.sent[0].GetData())
+	}
+}
+
+func TestV3SdmxData_CSVSuccess(t *testing.T) {
+	ds := &sdmxDataSource{
+		result: &pb.SdmxDataResult{
+			Observations: []*pb.SdmxObservation{
+				{
+					VariableMeasured: "Count_Person",
+					Provenance:       "dc/base",
+					DatesAndValues: []*pb.SdmxDateValue{
+						{Date: "2020", Value: "1.50"},
+					},
+					Dimensions: map[string]string{
+						"observationAbout": "country/USA",
+					},
+					Attributes: map[string]string{
+						"unit":              "Person",
+						"measurementMethod": "Census",
+						"observationPeriod": "P1Y",
+						"scalingFactor":     "0",
+					},
+				},
+			},
+		},
+	}
+	server := newSdmxTestServer(ds)
+	stream := &sdmxDataStream{
+		ctx: sdmxIncomingContextWithAccept(
+			sdmxDataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"),
+			"application/vnd.sdmx.data+csv;version=2.0.0",
+		),
+	}
+
+	err := server.V3SdmxData(&pbv3.SdmxRestRequest{Tail: sdmxDataTail()}, stream)
+	if err != nil {
+		t.Fatalf("V3SdmxData() error = %v", err)
+	}
+	if len(stream.sent) != 1 {
+		t.Fatalf("sent %d HttpBody messages, want 1", len(stream.sent))
+	}
+	if stream.sent[0].GetContentType() != sdmx.CSVContentType {
+		t.Errorf("ContentType = %q, want %q", stream.sent[0].GetContentType(), sdmx.CSVContentType)
+	}
+
+	want := "STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor\r\n" +
+		"dataflow,DATACOMMONS:DF_OBSERVATIONS(1.0.0),I,Count_Person,country/USA,Person,Census,P1Y,dc/base,2020,1.50,0\r\n"
+	if got := string(stream.sent[0].GetData()); got != want {
+		t.Errorf("HttpBody data = %q, want %q", got, want)
 	}
 }
 
@@ -263,6 +321,28 @@ func TestV3SdmxData_EmptyResult(t *testing.T) {
 	}
 	if got := string(stream.sent[0].GetData()); got != "{}" {
 		t.Errorf("HttpBody data = %q, want {}", got)
+	}
+}
+
+func TestV3SdmxData_CSVEmptyResult(t *testing.T) {
+	ds := &sdmxDataSource{result: &pb.SdmxDataResult{}}
+	server := newSdmxTestServer(ds)
+	stream := &sdmxDataStream{
+		ctx: sdmxIncomingContextWithAccept(
+			sdmxDataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"),
+			"application/vnd.sdmx.data+csv;version=2.0.0",
+		),
+	}
+
+	err := server.V3SdmxData(&pbv3.SdmxRestRequest{Tail: sdmxDataTail()}, stream)
+	if err != nil {
+		t.Fatalf("V3SdmxData() error = %v", err)
+	}
+	if len(stream.sent) != 1 {
+		t.Fatalf("sent %d HttpBody messages, want 1", len(stream.sent))
+	}
+	if got := string(stream.sent[0].GetData()); got != "STRUCTURE,STRUCTURE_ID,ACTION,variableMeasured,observationAbout,unit,measurementMethod,observationPeriod,provenance,TIME_PERIOD,OBS_VALUE,scalingFactor\r\n" {
+		t.Errorf("HttpBody data = %q, want header-only CSV", got)
 	}
 }
 

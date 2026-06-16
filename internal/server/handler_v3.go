@@ -32,8 +32,6 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-const sdmxJSONStatContentType = "application/json; charset=utf-8"
-
 // V3Node implements API for mixer.V3Node.
 func (s *Server) V3Node(ctx context.Context, in *pbv2.NodeRequest) (
 	*pbv2.NodeResponse, error,
@@ -105,7 +103,8 @@ func (s *Server) V3SdmxData(in *pbv3.SdmxRestRequest, stream pbsvc.Mixer_V3SdmxD
 		return status.Error(codes.Unimplemented, "SDMX API is not enabled")
 	}
 
-	if err := restv2.ValidateDataAccept(ctx); err != nil {
+	responseFormat, err := restv2.DataResponseFormatFromMetadata(ctx)
+	if err != nil {
 		return err
 	}
 
@@ -150,22 +149,40 @@ func (s *Server) V3SdmxData(in *pbv3.SdmxRestRequest, stream pbsvc.Mixer_V3SdmxD
 		return status.Error(codes.Internal, "Internal server error occurred while processing the request.")
 	}
 
-	if res == nil || len(res.Observations) == 0 {
+	observations := []*pb.SdmxObservation(nil)
+	if res != nil {
+		observations = res.Observations
+	}
+
+	if responseFormat == restv2.DataResponseFormatCSV {
+		formatter := &sdmx.CSVFormatter{StructureID: sdmxDataStructureID(request.Path)}
+		payload, err := formatter.Format(observations)
+		if err != nil {
+			slog.Error("Failed to format SDMX CSV response", "error", err)
+			return status.Error(codes.Internal, "Internal mapping error occurred.")
+		}
 		return stream.Send(&httpbody.HttpBody{
-			ContentType: sdmxJSONStatContentType,
+			ContentType: sdmx.CSVContentType,
+			Data:        []byte(payload),
+		})
+	}
+
+	if len(observations) == 0 {
+		return stream.Send(&httpbody.HttpBody{
+			ContentType: sdmx.JSONStatContentType,
 			Data:        []byte("{}"),
 		})
 	}
 
 	formatter := &sdmx.JSONStatFormatter{}
-	payload, err := formatter.Format(res.Observations)
+	payload, err := formatter.Format(observations)
 	if err != nil {
 		slog.Error("Failed to format SDMX response", "error", err)
 		return status.Error(codes.Internal, "Internal mapping error occurred.")
 	}
 
 	return stream.Send(&httpbody.HttpBody{
-		ContentType: sdmxJSONStatContentType,
+		ContentType: sdmx.JSONStatContentType,
 		Data:        []byte(payload),
 	})
 }
@@ -183,4 +200,20 @@ func sdmxDataQueryFromREST(request *restv2.DataRequest) (*pb.SdmxDataQuery, erro
 		constraints[constraintID] = &pb.ConstraintList{Values: values}
 	}
 	return &pb.SdmxDataQuery{Constraints: constraints}, nil
+}
+
+func sdmxDataStructureID(path restv2.ResourcePath) string {
+	agencyID := path.AgencyID
+	if agencyID == "" {
+		agencyID = sdmx.DataAgencyID
+	}
+	resourceID := path.ResourceID
+	if resourceID == "" {
+		resourceID = sdmx.DataResourceID
+	}
+	version := path.Version
+	if version == "" {
+		version = sdmx.DataVersion
+	}
+	return agencyID + ":" + resourceID + "(" + version + ")"
 }
