@@ -39,21 +39,27 @@ Settings in `locust.conf` can be modified in the web interface:
 
 ## Test Types
 
-Select from 3 benchmark user classes:
+Select from 4 benchmark user classes:
 
 1. **BenchmarkV2**: Tests v2 API endpoints
-2. **BenchmarkV3SkipCache**: Tests v3 API endpoints without cache
-3. **BenchmarkV3WithCache**: Tests v3 API endpoints with cache
+2. **BenchmarkV3SkipCache**: Tests v3 API endpoints without cache using the legacy schema
+3. **BenchmarkV3FinalSchemaSkipCache**: Tests v3 API endpoints without cache using the final schema
+4. **BenchmarkV3WithCache**: Tests v3 API endpoints with cache
+
+To compare legacy Spanner schema against final schema for observations, run both
+V3 skip-cache benchmark classes with `requests/observation_requests.json`. Locust
+stats will show separate rows using `_v3_legacy_schema_skip_cache` and
+`_v3_final_schema_skip_cache` request name suffixes.
 
 ## Request Types
 
-Choose from 3 types of test requests:
+Choose from 4 types of test requests:
 
 1. **node_requests.json**: Node-related API requests
 2. **node_search_requests.json**: Node search API requests
 3. **observation_requests.json**: Observation API requests
+4. **bulk_variable_group_info_requests.json**: Bulk variable group info API requests
 
 - New tests added to these files will be automatically picked up in the next run
 - Each API is tested against v2 and v3 API versions by default
 - To limit to specific API versions, use the `"api_versions": ["v3"]` configuration in the request file
-
