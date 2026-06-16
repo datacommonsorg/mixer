@@ -660,16 +660,17 @@ var statements = struct {
 			AND EXISTS (SELECT 1 FROM UNNEST(types) t WHERE t IN UNNEST(@type_filters))`,
 	vectorSearchNode: `		SELECT
 			subject_id,
-			embedding_content AS name,
-			types,
+			JSON_VALUE(embedding_content.name) AS name,
+			node_types AS types,
 			1 - COSINE_DISTANCE(@embeddings, embeddings) AS cosine_similarity
 		FROM
 			%[1]s
 		WHERE
 			embeddings IS NOT NULL
+			AND embedding_label = @embedding_label
 			AND COSINE_DISTANCE(@embeddings, embeddings) <= 1 - %[3]s
 			AND EXISTS (
-				SELECT 1 FROM UNNEST(types) AS t WHERE t IN UNNEST(@node_types)
+				SELECT 1 FROM UNNEST(node_types) AS t WHERE t IN UNNEST(@node_types)
 			)
 		ORDER BY
 			APPROX_COSINE_DISTANCE(@embeddings, embeddings, options => JSON '%[2]s')
