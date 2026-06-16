@@ -61,6 +61,10 @@ func ParseDataRequest(tail string, originalURI string) (*DataRequest, error) {
 		constraints[componentID] = values
 	}
 
+	if err := validateDataRequest(path, constraints); err != nil {
+		return nil, err
+	}
+
 	return &DataRequest{Path: path, Constraints: constraints}, nil
 }
 

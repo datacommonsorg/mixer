@@ -113,16 +113,16 @@ func TestV3SdmxData_Validation(t *testing.T) {
 			wantErrSub: "missing SDMX request URI",
 		},
 		{
-			name:       "Missing supported constraints",
-			ctx:        sdmxIncomingContext("/sdmx/v3/data?dimensionAtObservation=AllDimensions"),
+			name:       "Missing variable measured",
+			ctx:        sdmxIncomingContext(sdmxDataURI("c[observationAbout]=country%2FUSA")),
 			request:    &pbv3.SdmxRestRequest{},
 			enabled:    true,
 			wantCode:   codes.InvalidArgument,
-			wantErrSub: "At least one constraint or variableMeasured is required.",
+			wantErrSub: "missing required SDMX component filter variableMeasured",
 		},
 		{
 			name:       "Unsupported AND filter",
-			ctx:        sdmxIncomingContext("/sdmx/v3/data?c[FREQ]=A+M"),
+			ctx:        sdmxIncomingContext(sdmxDataURI("c[variableMeasured]=Count+Person&c[observationAbout]=country%2FUSA")),
 			request:    &pbv3.SdmxRestRequest{},
 			enabled:    true,
 			wantCode:   codes.Unimplemented,
@@ -130,7 +130,7 @@ func TestV3SdmxData_Validation(t *testing.T) {
 		},
 		{
 			name:       "Unsupported operator",
-			ctx:        sdmxIncomingContext("/sdmx/v3/data?c[TIME_PERIOD]=ge:2020"),
+			ctx:        sdmxIncomingContext(sdmxDataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=ge:2020")),
 			request:    &pbv3.SdmxRestRequest{},
 			enabled:    true,
 			wantCode:   codes.Unimplemented,
@@ -138,23 +138,31 @@ func TestV3SdmxData_Validation(t *testing.T) {
 		},
 		{
 			name:       "Unsupported observation value filter",
-			ctx:        sdmxIncomingContext("/sdmx/v3/data?c[OBS_VALUE]=10"),
+			ctx:        sdmxIncomingContext(sdmxDataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[OBS_VALUE]=10")),
 			request:    &pbv3.SdmxRestRequest{},
 			enabled:    true,
 			wantCode:   codes.Unimplemented,
-			wantErrSub: "SDMX observation value filters are not implemented yet",
+			wantErrSub: "unsupported SDMX component filter",
+		},
+		{
+			name:       "Unsupported geo filter",
+			ctx:        sdmxIncomingContext(sdmxDataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[geo]=country%2FUSA")),
+			request:    &pbv3.SdmxRestRequest{},
+			enabled:    true,
+			wantCode:   codes.Unimplemented,
+			wantErrSub: "unsupported SDMX component filter",
 		},
 		{
 			name:       "Unsupported non star key",
-			ctx:        sdmxIncomingContext("/sdmx/v3/data/dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0/A.US?c[FREQ]=A"),
-			request:    &pbv3.SdmxRestRequest{Tail: "dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0/A.US"},
+			ctx:        sdmxIncomingContext("/sdmx/v3/data/dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0.0/A.US?c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"),
+			request:    &pbv3.SdmxRestRequest{Tail: "dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0.0/A.US"},
 			enabled:    true,
 			wantCode:   codes.Unimplemented,
 			wantErrSub: "SDMX data keys other than * are not implemented yet",
 		},
 		{
 			name:       "Unsupported SDMX media type",
-			ctx:        sdmxIncomingContextWithAccept("/sdmx/v3/data?c[FREQ]=A", "application/vnd.sdmx.data+json;version=2.0.0"),
+			ctx:        sdmxIncomingContextWithAccept(sdmxDataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"), "application/vnd.sdmx.data+json;version=2.0.0"),
 			request:    &pbv3.SdmxRestRequest{},
 			enabled:    true,
 			wantCode:   codes.Unimplemented,
@@ -166,7 +174,11 @@ func TestV3SdmxData_Validation(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			server := &Server{flags: &featureflags.Flags{EnableSDMXDataApi: tt.enabled}}
 			stream := &sdmxDataStream{ctx: tt.ctx}
-			err := server.V3SdmxData(tt.request, stream)
+			request := tt.request
+			if request.GetTail() == "" {
+				request = &pbv3.SdmxRestRequest{Tail: sdmxDataTail()}
+			}
+			err := server.V3SdmxData(request, stream)
 			if err == nil {
 				t.Fatal("V3SdmxData() error = nil, want error")
 			}
@@ -202,11 +214,11 @@ func TestV3SdmxData_Success(t *testing.T) {
 	}
 	server := newSdmxTestServer(ds)
 	stream := &sdmxDataStream{
-		ctx: sdmxIncomingContext("/sdmx/v3/data/dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0/*?c[FREQ]=A,M&c[geo]=country%2FUSA&c[TIME_PERIOD]=2020"),
+		ctx: sdmxIncomingContext(sdmxDataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=2020,2021")),
 	}
 
 	err := server.V3SdmxData(
-		&pbv3.SdmxRestRequest{Tail: "dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0/*"},
+		&pbv3.SdmxRestRequest{Tail: sdmxDataTail()},
 		stream,
 	)
 	if err != nil {
@@ -215,9 +227,9 @@ func TestV3SdmxData_Success(t *testing.T) {
 
 	wantQuery := &pb.SdmxDataQuery{
 		Constraints: map[string]*pb.ConstraintList{
-			"FREQ":            &pb.ConstraintList{Values: []string{"A", "M"}},
-			"geo":             &pb.ConstraintList{Values: []string{"country/USA"}},
-			"observationDate": &pb.ConstraintList{Values: []string{"2020"}},
+			"variableMeasured": &pb.ConstraintList{Values: []string{"Count_Person"}},
+			"observationAbout": &pb.ConstraintList{Values: []string{"country/USA"}},
+			"observationDate":  &pb.ConstraintList{Values: []string{"2020", "2021"}},
 		},
 	}
 	if diff := cmp.Diff(wantQuery, ds.got, protocmp.Transform()); diff != "" {
@@ -237,9 +249,9 @@ func TestV3SdmxData_Success(t *testing.T) {
 func TestV3SdmxData_EmptyResult(t *testing.T) {
 	ds := &sdmxDataSource{result: &pb.SdmxDataResult{}}
 	server := newSdmxTestServer(ds)
-	stream := &sdmxDataStream{ctx: sdmxIncomingContext("/sdmx/v3/data?c[FREQ]=A")}
+	stream := &sdmxDataStream{ctx: sdmxIncomingContext(sdmxDataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"))}
 
-	err := server.V3SdmxData(&pbv3.SdmxRestRequest{}, stream)
+	err := server.V3SdmxData(&pbv3.SdmxRestRequest{Tail: sdmxDataTail()}, stream)
 	if err != nil {
 		t.Fatalf("V3SdmxData() error = %v", err)
 	}
@@ -254,9 +266,9 @@ func TestV3SdmxData_EmptyResult(t *testing.T) {
 func TestV3SdmxData_DispatcherError(t *testing.T) {
 	ds := &sdmxDataSource{err: errors.New("dispatcher failed")}
 	server := newSdmxTestServer(ds)
-	stream := &sdmxDataStream{ctx: sdmxIncomingContext("/sdmx/v3/data?c[FREQ]=A")}
+	stream := &sdmxDataStream{ctx: sdmxIncomingContext(sdmxDataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"))}
 
-	err := server.V3SdmxData(&pbv3.SdmxRestRequest{}, stream)
+	err := server.V3SdmxData(&pbv3.SdmxRestRequest{Tail: sdmxDataTail()}, stream)
 	if status.Code(err) != codes.Internal {
 		t.Fatalf("V3SdmxData() code = %v, want %v; err = %v", status.Code(err), codes.Internal, err)
 	}
@@ -279,4 +291,12 @@ func sdmxIncomingContextWithAccept(originalURI string, accept string) context.Co
 		"x-envoy-original-path", originalURI,
 		"accept", accept,
 	))
+}
+
+func sdmxDataTail() string {
+	return "dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0.0/*"
+}
+
+func sdmxDataURI(query string) string {
+	return "/sdmx/v3/data/" + sdmxDataTail() + "?" + query
 }

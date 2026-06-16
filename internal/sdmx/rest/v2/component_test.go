@@ -35,14 +35,25 @@ func TestInternalConstraintComponentID(t *testing.T) {
 			wantCode:  codes.OK,
 		},
 		{
-			name:      "arbitrary component passes through",
-			component: "GEO",
-			want:      "GEO",
+			name:      "variable measured passes through",
+			component: "variableMeasured",
+			want:      "variableMeasured",
+			wantCode:  codes.OK,
+		},
+		{
+			name:      "observation about passes through",
+			component: "observationAbout",
+			want:      "observationAbout",
 			wantCode:  codes.OK,
 		},
 		{
 			name:      "observation value is unsupported",
 			component: "OBS_VALUE",
+			wantCode:  codes.Unimplemented,
+		},
+		{
+			name:      "arbitrary component is unsupported",
+			component: "GEO",
 			wantCode:  codes.Unimplemented,
 		},
 	}

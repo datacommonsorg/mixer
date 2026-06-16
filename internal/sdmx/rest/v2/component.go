@@ -20,19 +20,62 @@ import (
 )
 
 const (
+	ComponentVariableMeasured = "variableMeasured"
+	ComponentObservationAbout = "observationAbout"
 	ComponentTimePeriod       = "TIME_PERIOD"
 	ComponentObservationValue = "OBS_VALUE"
+
+	dataContext    = "dataflow"
+	dataAgencyID   = "DATACOMMONS"
+	dataResourceID = "DF_OBSERVATIONS"
+	dataVersion    = "1.0.0"
 
 	internalObservationDate = "observationDate"
 )
 
+func validateDataRequest(path ResourcePath, constraints map[string][]string) error {
+	if path.Context == "" {
+		return status.Error(codes.InvalidArgument, "SDMX data path is required")
+	}
+	if path.Context != dataContext || path.AgencyID != dataAgencyID || path.ResourceID != dataResourceID {
+		return status.Error(codes.Unimplemented, "unsupported SDMX dataflow")
+	}
+	if path.Version != dataVersion {
+		return status.Errorf(codes.InvalidArgument, "unsupported SDMX dataflow version %q", path.Version)
+	}
+
+	for componentID := range constraints {
+		if !isAllowedDataComponent(componentID) {
+			return status.Errorf(codes.Unimplemented, "unsupported SDMX component filter %q", componentID)
+		}
+	}
+	if _, ok := constraints[ComponentVariableMeasured]; !ok {
+		return status.Error(codes.InvalidArgument, "missing required SDMX component filter variableMeasured")
+	}
+	if _, ok := constraints[ComponentObservationAbout]; !ok {
+		return status.Error(codes.InvalidArgument, "missing required SDMX component filter observationAbout")
+	}
+	return nil
+}
+
+func isAllowedDataComponent(componentID string) bool {
+	switch componentID {
+	case ComponentVariableMeasured, ComponentObservationAbout, ComponentTimePeriod:
+		return true
+	default:
+		return false
+	}
+}
+
 func InternalConstraintComponentID(componentID string) (string, error) {
 	switch componentID {
+	case ComponentVariableMeasured, ComponentObservationAbout:
+		return componentID, nil
 	case ComponentTimePeriod:
 		return internalObservationDate, nil
 	case ComponentObservationValue:
 		return "", status.Error(codes.Unimplemented, "SDMX observation value filters are not implemented yet")
 	default:
-		return componentID, nil
+		return "", status.Errorf(codes.Unimplemented, "unsupported SDMX component filter %q", componentID)
 	}
 }

@@ -20,6 +20,6 @@ option go_package = "github.com/datacommonsorg/mixer/internal/proto/v3";
 // Request envelope for SDMX REST APIs.
 message SdmxRestRequest {
   // Tail after the SDMX API family route, for example:
-  // dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0/*
+  // dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0.0/*
   string tail = 1;
 }
