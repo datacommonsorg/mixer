@@ -16,9 +16,11 @@ package spanner
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 
 	"cloud.google.com/go/spanner"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"github.com/datacommonsorg/mixer/internal/server/v2/shared"
 )
@@ -268,3 +270,81 @@ func GetMultiEntityFilteredTopicChildrenQuery(nodes []string, constrainedPlaces 
 		Params: subquery.Params,
 	}
 }
+
+var reqKeyToCol = map[string]string{
+	"variableMeasured":  "variable_measured",
+	"observationAbout":  "entity1",
+	"source":            "entity1",
+	"destination":       "entity2",
+	"intermediary":      "entity3",
+	"frequency":         "observation_period",
+	"observationPeriod": "observation_period",
+	"provenance":        "provenance",
+}
+
+// GetMultiEntitySdmxObservationsQuery builds the Spanner statement for SDMX observation lookup.
+func GetMultiEntitySdmxObservationsQuery(
+	constraints map[string]*pb.ConstraintList,
+	entityMappings map[string]map[string]string,
+	cfg TableConfig,
+) (*spanner.Statement, map[string]string, error) {
+	variables := []string{}
+	if list, ok := constraints["variableMeasured"]; ok {
+		variables = list.Values
+	}
+	if len(variables) == 0 {
+		return nil, nil, fmt.Errorf("GetMultiEntitySdmxObservationsQuery: variableMeasured must be specified")
+	}
+
+	sqlSelect := fmt.Sprintf(statementsMultiEntity.getSdmxObs, cfg.ObservationTable, cfg.TimeSeriesTable)
+
+	params := map[string]interface{}{}
+	varBranches := []string{}
+	colToReqKey := map[string]string{}
+
+	// Collect and sort constraint keys to ensure deterministic SQL query generation
+	var constraintKeys []string
+	for reqKey := range constraints {
+		if reqKey == "variableMeasured" {
+			continue
+		}
+		constraintKeys = append(constraintKeys, reqKey)
+	}
+	sort.Strings(constraintKeys)
+
+	// Pre-bind constraint values to parameters
+	for _, reqKey := range constraintKeys {
+		params[reqKey] = constraints[reqKey].Values
+	}
+
+	for _, varDcid := range variables {
+		varClauses := []string{fmt.Sprintf("t.variable_measured = %q", varDcid)}
+		mapping := entityMappings[varDcid]
+
+		for _, reqKey := range constraintKeys {
+			// Check if this constraint key is an observation property that maps to an entity slot
+			if slot, ok := mapping[reqKey]; ok {
+				varClauses = append(varClauses, fmt.Sprintf("t.%s IN UNNEST(@%s)", slot, reqKey))
+				colToReqKey[slot] = reqKey
+			} else {
+				// Standard column or facet JSON
+				col := reqKeyToCol[reqKey]
+				if col == "" {
+					varClauses = append(varClauses, fmt.Sprintf("JSON_VALUE(t.facet, '$.%s') IN UNNEST(@%s)", reqKey, reqKey))
+				} else {
+					varClauses = append(varClauses, fmt.Sprintf("t.%s IN UNNEST(@%s)", col, reqKey))
+					colToReqKey[col] = reqKey
+				}
+			}
+		}
+		varBranches = append(varBranches, "("+strings.Join(varClauses, " AND ")+")")
+	}
+
+	sql := sqlSelect + strings.Join(varBranches, " OR ")
+
+	return &spanner.Statement{
+		SQL:    sql,
+		Params: params,
+	}, colToReqKey, nil
+}
+

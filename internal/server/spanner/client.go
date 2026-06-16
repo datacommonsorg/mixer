@@ -105,6 +105,24 @@ func NewRawSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverrid
 	return newSpannerDatabaseClient(client)
 }
 
+// TableConfig holds the names of Spanner tables and indexes.
+type TableConfig struct {
+	TimeSeriesTable          string
+	ObservationTable         string
+	TimeSeriesByEntity2Index string
+	TimeSeriesByEntity3Index string
+}
+
+// DefaultTableConfig returns the default _final_v2 table and index configuration.
+func DefaultTableConfig() TableConfig {
+	return TableConfig{
+		TimeSeriesTable:          "TimeSeries_final_v2",
+		ObservationTable:         "Observation_final_v2",
+		TimeSeriesByEntity2Index: "TimeSeriesFinalV2ByEntity2",
+		TimeSeriesByEntity3Index: "TimeSeriesFinalV2ByEntity3",
+	}
+}
+
 // NewSpannerClient creates a new SpannerClient from the config yaml string and an optional database override.
 // It returns a wrapper client that handles request-time schema dispatching.
 func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string, useMultiEntitySchema bool) (SpannerClient, error) {
@@ -112,7 +130,26 @@ func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride s
 	if err != nil {
 		return nil, err
 	}
-	return NewSchemaSelectorClient(rawClient, useMultiEntitySchema)
+	cfg, err := createSpannerConfig(spannerConfigYaml, databaseOverride)
+	if err != nil {
+		return nil, err
+	}
+
+	tableCfg := DefaultTableConfig()
+	if cfg.TimeSeriesTable != nil {
+		tableCfg.TimeSeriesTable = *cfg.TimeSeriesTable
+	}
+	if cfg.ObservationTable != nil {
+		tableCfg.ObservationTable = *cfg.ObservationTable
+	}
+	if cfg.TimeSeriesByEntity2Index != nil {
+		tableCfg.TimeSeriesByEntity2Index = *cfg.TimeSeriesByEntity2Index
+	}
+	if cfg.TimeSeriesByEntity3Index != nil {
+		tableCfg.TimeSeriesByEntity3Index = *cfg.TimeSeriesByEntity3Index
+	}
+
+	return NewSchemaSelectorClient(rawClient, useMultiEntitySchema, tableCfg)
 }
 
 // createSpannerClient creates the database name string and initializes the Spanner client.
@@ -198,5 +235,5 @@ func (sc *spannerDatabaseClient) Close() {
 
 // GetSdmxObservations is not supported on the default client.
 func (sc *spannerDatabaseClient) GetSdmxObservations(ctx context.Context, req *pb.SdmxDataQuery) (*pb.SdmxDataResult, error) {
-	return nil, status.Error(codes.Unimplemented, "SDMX queries are only supported on the normalized schema")
+	return nil, status.Error(codes.Unimplemented, "SDMX queries are only supported on the multi-entity schema")
 }

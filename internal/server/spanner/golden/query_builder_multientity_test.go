@@ -109,6 +109,7 @@ func TestMultiEntityGetFilteredSVGChildrenQuery(t *testing.T) {
 	}
 }
 
+// TestMultiEntityGetFilteredTopicChildrenQuery returns a query to get Topic children using multi-entity TimeSeries filters.
 func TestMultiEntityGetFilteredTopicChildrenQuery(t *testing.T) {
 	t.Parallel()
 
@@ -118,6 +119,25 @@ func TestMultiEntityGetFilteredTopicChildrenQuery(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
 				return spanner.GetMultiEntityFilteredTopicChildrenQuery(c.nodes, c.constrainedPlaces, c.constrainedProvenance, c.numEntitiesExistence), nil
+			})
+		})
+	}
+}
+
+func TestMultiEntityGetSdmxObservationsQuery(t *testing.T) {
+	t.Parallel()
+
+	for _, c := range multiEntitySdmxObservationsTestCases {
+		c := c // Capture loop variable
+		t.Run(c.name, func(t *testing.T) {
+			goldenFile := c.golden + ".sql"
+			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
+				v3Cfg := spanner.TableConfig{
+					TimeSeriesTable:  "TimeSeries_final_v3",
+					ObservationTable: "Observation_final_v3",
+				}
+				stmt, _, err := spanner.GetMultiEntitySdmxObservationsQuery(c.constraints, c.entityMappings, v3Cfg)
+				return stmt, err
 			})
 		})
 	}

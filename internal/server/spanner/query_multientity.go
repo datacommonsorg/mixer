@@ -20,8 +20,10 @@ import (
 	"encoding/json"
 	"fmt"
 	"slices"
+	"strings"
 
 	"cloud.google.com/go/spanner"
+	pb "github.com/datacommonsorg/mixer/internal/proto"
 	v2 "github.com/datacommonsorg/mixer/internal/server/v2"
 	"golang.org/x/sync/errgroup"
 	"google.golang.org/api/iterator"
@@ -397,4 +399,138 @@ func getJSONBool(m map[string]interface{}, key string) bool {
 		}
 	}
 	return false
+}
+
+// GetSdmxObservations retrieves observations for SDMX query using dynamic entity slot mappings.
+func (nc *multiEntityClient) GetSdmxObservations(
+	ctx context.Context,
+	req *pb.SdmxDataQuery,
+) (*pb.SdmxDataResult, error) {
+	variables := []string{}
+	if list, ok := req.Constraints["variableMeasured"]; ok {
+		variables = list.Values
+	}
+
+	entityMappings := map[string]map[string]string{}
+	if len(variables) > 0 {
+		arc := &v2.Arc{
+			Out:        true,
+			SingleProp: "entityMapping",
+		}
+		edgesMap, err := nc.sc.GetNodeEdgesByID(ctx, variables, arc, 100, 0)
+		if err != nil {
+			return nil, fmt.Errorf("failed to fetch entityMapping: %w", err)
+		}
+		entityMappings = parseEntityMappings(edgesMap)
+	}
+
+	stmt, _, err := GetMultiEntitySdmxObservationsQuery(req.Constraints, entityMappings, nc.cfg)
+	if err != nil {
+		return nil, err
+	}
+
+	var rawObs []*rawObservation
+	err = queryStructs(ctx, nc.sc, *stmt, func() interface{} { return &rawObservation{} }, func(row interface{}) {
+		rawObs = append(rawObs, row.(*rawObservation))
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	// Reconstruct the result, mapping entities back to requested keys
+	result := &pb.SdmxDataResult{
+		Observations: []*pb.SdmxObservation{},
+	}
+
+	for _, r := range rawObs {
+		// Parse entities JSON to map slot columns (entity1, entity2) to actual DCIDs
+		entitiesMap := map[string]string{}
+		if r.Entities.Valid {
+			if m, ok := r.Entities.Value.(map[string]interface{}); ok {
+				for k, v := range m {
+					if s, ok := v.(string); ok {
+						entitiesMap[k] = s
+					}
+				}
+			}
+		}
+
+		dimensions := map[string]string{
+			"variableMeasured": r.VariableMeasured,
+		}
+
+		// Map entities back to their original dimension keys using the variable's entity mapping
+		if mapping, ok := entityMappings[r.VariableMeasured]; ok {
+			for reqKey, col := range mapping {
+				if val, ok := entitiesMap[col]; ok {
+					dimensions[reqKey] = val
+				}
+			}
+		} else {
+			// Single-entity fallback: map entity1 to observationAbout
+			if r.ObservationAbout != "" {
+				dimensions["observationAbout"] = r.ObservationAbout
+			}
+		}
+
+		obs := &pb.SdmxObservation{
+			VariableMeasured: r.VariableMeasured,
+			Dimensions:       dimensions,
+			DatesAndValues:   []*pb.SdmxDateValue{},
+		}
+		if r.ProvenanceID.Valid {
+			obs.Provenance = r.ProvenanceID.StringVal
+		}
+
+		for _, dv := range r.DatesAndValues {
+			if dv == nil {
+				continue
+			}
+			if dv.Date != "" {
+				obs.DatesAndValues = append(obs.DatesAndValues, &pb.SdmxDateValue{
+					Date:  dv.Date,
+					Value: dv.Value,
+				})
+			}
+		}
+
+		// Reconstruct and attach attributes from facet JSON
+		if r.Facets.Valid {
+			if m, ok := r.Facets.Value.(map[string]interface{}); ok {
+				obs.Attributes = map[string]string{}
+				for k, v := range m {
+					if s, ok := observationAttributeValueToString(v); ok {
+						obs.Attributes[k] = s
+					}
+				}
+			}
+		}
+
+		result.Observations = append(result.Observations, obs)
+	}
+
+	return result, nil
+}
+
+func parseEntityMappings(edgesMap map[string][]*Edge) map[string]map[string]string {
+	result := map[string]map[string]string{}
+	for varDcid, edges := range edgesMap {
+		mapping := map[string]string{}
+		for _, edge := range edges {
+			if edge.Predicate == "entityMapping" {
+				parts := strings.Split(edge.Value, "=")
+				if len(parts) == 2 {
+					k := strings.TrimSpace(parts[0])
+					v := strings.TrimSpace(parts[1])
+					if k != "" && v != "" {
+						mapping[k] = v
+					}
+				}
+			}
+		}
+		if len(mapping) > 0 {
+			result[varDcid] = mapping
+		}
+	}
+	return result
 }
