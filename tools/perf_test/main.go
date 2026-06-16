@@ -127,7 +127,7 @@ func initSpannerClient(ctx context.Context, configPath string) (spanner.SpannerC
 
 	// We reuse the logic from client.go by passing the YAML string directly.
 	// The client.go NewSpannerClient expects the YAML content.
-	return spanner.NewSpannerClient(ctx, string(yamlFile), "")
+	return spanner.NewSpannerClient(ctx, string(yamlFile), "", false)
 }
 
 // runParallelTest runs two operations in parallel and injects metadata headers.
