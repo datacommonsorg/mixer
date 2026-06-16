@@ -271,15 +271,11 @@ func GetMultiEntityFilteredTopicChildrenQuery(nodes []string, constrainedPlaces 
 	}
 }
 
-var reqKeyToCol = map[string]string{
-	"variableMeasured":  "variable_measured",
+// kgPredicateToSpannerColumn maps Knowledge Graph predicates to physical Spanner column names.
+var kgPredicateToSpannerColumn = map[string]string{
 	"observationAbout":  "entity1",
-	"source":            "entity1",
-	"destination":       "entity2",
-	"intermediary":      "entity3",
-	"frequency":         "observation_period",
-	"observationPeriod": "observation_period",
 	"provenance":        "provenance",
+	"observationPeriod": "observation_period",
 }
 
 // GetMultiEntitySdmxObservationsQuery builds the Spanner statement for SDMX observation lookup.
@@ -322,13 +318,13 @@ func GetMultiEntitySdmxObservationsQuery(
 		mapping := entityMappings[varDcid]
 
 		for _, reqKey := range constraintKeys {
-			// Check if this constraint key is an observation property that maps to an entity slot
+			// Check if this constraint key (representing a KG predicate) maps to a dynamic entity slot
 			if slot, ok := mapping[reqKey]; ok {
 				varClauses = append(varClauses, fmt.Sprintf("t.%s IN UNNEST(@%s)", slot, reqKey))
 				colToReqKey[slot] = reqKey
 			} else {
-				// Standard column or facet JSON
-				col := reqKeyToCol[reqKey]
+				// Map to static Spanner column, or fall back to searching inside facet JSON
+				col := kgPredicateToSpannerColumn[reqKey]
 				if col == "" {
 					varClauses = append(varClauses, fmt.Sprintf("JSON_VALUE(t.facet, '$.%s') IN UNNEST(@%s)", reqKey, reqKey))
 				} else {
