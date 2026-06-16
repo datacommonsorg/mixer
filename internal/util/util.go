@@ -146,7 +146,7 @@ const (
 	// To use, set header "X-Skip-Cache: true"
 	XSkipCache = "X-Skip-Cache"
 	// Whether to use multi-entity Spanner schema.
-	// To use, set header "X-Use-Multi-Entity-Schema: true"
+	// To override, set header "X-Use-Multi-Entity-Schema: true" or "false"
 	XUseMultiEntitySchema = "X-Use-Multi-Entity-Schema"
 	// Whether to log the full interpolated SQL query.
 	// To use, set header "X-Log-SQL: true"
@@ -507,6 +507,7 @@ func GetFacet(s *pb.SourceSeries) *pb.Facet {
 		Unit:              s.Unit,
 		ProvenanceUrl:     s.ProvenanceUrl,
 		IsDcAggregate:     s.IsDcAggregate,
+		ProvenanceId:      s.ProvenanceId,
 	}
 }
 
@@ -524,6 +525,9 @@ func GetFacetID(m *pb.Facet) string {
 	}, "-")
 	if m.IsDcAggregate {
 		s += "-IsDcAggregate"
+	}
+	if m.ProvenanceId != "" {
+		s += "-" + m.ProvenanceId
 	}
 	h := fnv.New32a()
 	_, _ = h.Write([]byte(s))

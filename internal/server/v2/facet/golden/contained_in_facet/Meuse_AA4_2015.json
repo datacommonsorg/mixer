@@ -5,7 +5,7 @@
         "": {
           "ordered_facets": [
             {
-              "facet_id": "2458695583",
+              "facet_id": "1987202181",
               "obs_count": 497,
               "earliest_date": "2015",
               "latest_date": "2015"
@@ -21,10 +21,11 @@
     }
   },
   "facets": {
-    "2458695583": {
+    "1987202181": {
       "import_name": "WikidataPopulation",
       "provenance_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
-      "measurement_method": "WikidataPopulation"
+      "measurement_method": "WikidataPopulation",
+      "provenance_id": "dc/base/WikidataPopulation"
     }
   }
 }

@@ -16606,7 +16606,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey",
             "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "provenanceId": "dc/base/CensusACS5YearSurvey"
           }
         },
         "Count_HousingUnit_HouseholderRaceAmericanIndianOrAlaskaNativeAlone": {
@@ -21211,7 +21212,8 @@
           "metadata": {
             "importName": "CensusACS5YearSurvey",
             "provenanceUrl": "https://www.census.gov/programs-surveys/acs/data/data-via-ftp.html",
-            "measurementMethod": "CensusACS5yrSurvey"
+            "measurementMethod": "CensusACS5yrSurvey",
+            "provenanceId": "dc/base/CensusACS5YearSurvey"
           }
         },
         "Count_HousingUnit_HouseholderRaceAmericanIndianOrAlaskaNativeAlone": {

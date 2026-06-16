@@ -8,10 +8,12 @@
 		SELECT 
 			t.variable_measured,
 			t.entity1 AS observation_about,
+			t.facets_id AS facet_id,
+			t.provenance,
 			COALESCE(
 				(
 					SELECT ARRAY(
-						SELECT AS STRUCT date, str_value
+						SELECT AS STRUCT date, str_value, attributes
 						FROM Observation_final_v2 o
 						WHERE o.variable_measured = t.variable_measured
 							AND o.entity1 = t.entity1
@@ -21,7 +23,7 @@
 						LIMIT 1
 					)
 				),
-				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value FROM UNNEST([1]) WHERE FALSE)
+				ARRAY(SELECT AS STRUCT CAST(NULL AS STRING) AS date, CAST(NULL AS STRING) AS str_value, CAST(NULL AS JSON) AS attributes FROM UNNEST([1]) WHERE FALSE)
 			) AS dates_and_values,
 			t.facets
 		FROM places p

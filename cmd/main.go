@@ -208,7 +208,7 @@ func main() {
 	var spannerClient spanner.SpannerClient
 	if shouldUseSpannerGraph {
 		var err error
-		spannerClient, err = spanner.NewSpannerClient(ctx, *spannerGraphInfo, flags.SpannerGraphDatabase)
+		spannerClient, err = spanner.NewSpannerClient(ctx, *spannerGraphInfo, flags.SpannerGraphDatabase, flags.UseMultiEntitySchema)
 		if err != nil {
 			slog.Error("Failed to create Spanner client", "error", err)
 			os.Exit(1)
@@ -509,7 +509,7 @@ func main() {
 		}
 		topicCacheManager.InitFetcher(nodeFetcher)
 	}
-	
+
 	// Register component lifecycles
 	registerTopicCacheLifecycle(mixerServer)
 	registerAgentServiceLifecycle(mixerServer)
@@ -610,4 +610,3 @@ func registerAgentServiceLifecycle(s *server.Server) {
 		)
 	}
 }
-
