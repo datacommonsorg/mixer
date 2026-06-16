@@ -12,14 +12,27 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-syntax = "proto3";
-package datacommons.v3;
+package restv2
 
-option go_package = "github.com/datacommonsorg/mixer/internal/proto/v3";
+import (
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
+)
 
-// Request envelope for SDMX REST APIs.
-message SdmxRestRequest {
-  // Tail after the SDMX API family route, for example:
-  // dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0/*
-  string tail = 1;
+const (
+	ComponentTimePeriod       = "TIME_PERIOD"
+	ComponentObservationValue = "OBS_VALUE"
+
+	internalObservationDate = "observationDate"
+)
+
+func InternalConstraintComponentID(componentID string) (string, error) {
+	switch componentID {
+	case ComponentTimePeriod:
+		return internalObservationDate, nil
+	case ComponentObservationValue:
+		return "", status.Error(codes.Unimplemented, "SDMX observation value filters are not implemented yet")
+	default:
+		return componentID, nil
+	}
 }

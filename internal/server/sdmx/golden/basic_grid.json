@@ -1,6 +1,15 @@
 {
   "class": "dataset",
   "dimension": {
+    "TIME_PERIOD": {
+      "category": {
+        "index": [
+          "2020",
+          "2021"
+        ]
+      },
+      "label": "TIME_PERIOD"
+    },
     "gender": {
       "category": {
         "index": [
@@ -18,15 +27,6 @@
       },
       "label": "observationAbout"
     },
-    "observationDate": {
-      "category": {
-        "index": [
-          "2020",
-          "2021"
-        ]
-      },
-      "label": "observationDate"
-    },
     "variableMeasured": {
       "category": {
         "index": [
@@ -37,13 +37,18 @@
     }
   },
   "extension": {
-    "annotations": {}
+    "annotations": {},
+    "measures": {
+      "OBS_VALUE": {
+        "label": "OBS_VALUE"
+      }
+    }
   },
   "id": [
     "variableMeasured",
     "gender",
     "observationAbout",
-    "observationDate"
+    "TIME_PERIOD"
   ],
   "label": "Data Commons SDMX Query Results",
   "size": [
