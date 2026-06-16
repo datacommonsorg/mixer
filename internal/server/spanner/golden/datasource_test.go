@@ -619,7 +619,7 @@ func TestSpannerObservation_SkipsProvenanceURLLookupWhenPresent(t *testing.T) {
 			},
 		},
 	}
-	ds := spanner.NewSpannerDataSource(client, nil, nil)
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	resp, err := ds.Observation(ctx, observationHydrationRequest(&pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}}))
 	if err != nil {
@@ -662,7 +662,7 @@ func TestSpannerObservation_HydratesMissingProvenanceURLs(t *testing.T) {
 			},
 		},
 	}
-	ds := spanner.NewSpannerDataSource(client, nil, nil)
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	resp, err := ds.Observation(ctx, observationHydrationRequest(&pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}}))
 	if err != nil {
@@ -697,7 +697,7 @@ func TestSpannerObservation_MissingProvenanceURLEdgeDoesNotFail(t *testing.T) {
 			},
 		},
 	}
-	ds := spanner.NewSpannerDataSource(client, nil, nil)
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	resp, err := ds.Observation(ctx, observationHydrationRequest(&pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}}))
 	if err != nil {
@@ -724,7 +724,7 @@ func TestSpannerObservation_ProvenanceURLLookupErrorFails(t *testing.T) {
 			},
 		},
 	}
-	ds := spanner.NewSpannerDataSource(client, nil, nil)
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	_, err := ds.Observation(ctx, observationHydrationRequest(&pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}}))
 	if err == nil || !strings.Contains(err.Error(), "error resolving provenance URLs") {
@@ -764,7 +764,7 @@ func TestSpannerObservation_HydratesBeforeDomainFilter(t *testing.T) {
 			},
 		},
 	}
-	ds := spanner.NewSpannerDataSource(client, nil, nil)
+	ds := spanner.NewSpannerDataSource(client, nil)
 	req := observationHydrationRequest(&pbv2.DcidOrExpression{Dcids: []string{"geoId/06"}})
 	req.Filter = &pbv2.FacetFilter{Domains: []string{"example.org"}}
 
@@ -800,7 +800,7 @@ func TestSpannerObservation_HydratesContainedInPlaceProvenanceURL(t *testing.T) 
 			},
 		},
 	}
-	ds := spanner.NewSpannerDataSource(client, nil, nil)
+	ds := spanner.NewSpannerDataSource(client, nil)
 
 	resp, err := ds.Observation(ctx, observationHydrationRequest(&pbv2.DcidOrExpression{Expression: "geoId/06<-containedInPlace+{typeOf:County}"}))
 	if err != nil {

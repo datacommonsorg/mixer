@@ -25,7 +25,6 @@ import (
 	"net/url"
 	"path"
 	"strings"
-	"sync"
 
 	pbv2 "github.com/datacommonsorg/mixer/internal/proto/v2"
 	"github.com/datacommonsorg/mixer/internal/util"
@@ -61,8 +60,6 @@ type EmbeddingsServiceClient struct {
 	httpClient          *http.Client
 	embeddingsServerURL string
 	defaultIndexes      string
-	lock                sync.RWMutex
-	availableIndexes    map[string]struct{}
 }
 
 func NewEmbeddingsServiceClient(serverURL string, opts *EmbeddingsServiceClientOptions) *EmbeddingsServiceClient {
@@ -335,96 +332,4 @@ func fetchSVPropertyInfos(ctx context.Context, topicExpander TopicExpander, resu
 	return svInfos
 }
 
-type nlServerConfig struct {
-	Indexes map[string]interface{} `json:"indexes"`
-}
 
-func (c *EmbeddingsServiceClient) fetchAvailableIndexes(ctx context.Context) (map[string]struct{}, error) {
-	if c.embeddingsServerURL == "" {
-		return nil, fmt.Errorf("embeddings server URL is not configured")
-	}
-
-	u, err := url.Parse(c.embeddingsServerURL)
-	if err != nil {
-		return nil, fmt.Errorf("failed to parse embeddings server URL: %w", err)
-	}
-	u.Path = path.Join(u.Path, "/api/server_config/")
-
-	req, err := http.NewRequestWithContext(ctx, "GET", u.String(), nil)
-	if err != nil {
-		return nil, err
-	}
-
-	resp, err := c.httpClient.Do(req)
-	if err != nil {
-		return nil, err
-	}
-	defer func() {
-		// Drain and close the body to let the Transport reuse the connection
-		_, _ = io.Copy(io.Discard, resp.Body)
-		_ = resp.Body.Close()
-	}()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("embeddings server returned status %d", resp.StatusCode)
-	}
-
-	var config nlServerConfig
-	if err := json.NewDecoder(resp.Body).Decode(&config); err != nil {
-		return nil, fmt.Errorf("failed to decode embeddings server config: %w", err)
-	}
-
-	indexes := make(map[string]struct{})
-	for idx := range config.Indexes {
-		indexes[idx] = struct{}{}
-	}
-
-	return indexes, nil
-}
-
-// LoadAvailableIndexes fetches the available indexes from the embeddings server and caches them.
-func (c *EmbeddingsServiceClient) LoadAvailableIndexes(ctx context.Context) error {
-	if c.embeddingsServerURL == "" {
-		return nil
-	}
-	indexes, err := c.fetchAvailableIndexes(ctx)
-	if err != nil {
-		return err
-	}
-	c.lock.Lock()
-	defer c.lock.Unlock()
-	c.availableIndexes = indexes
-	return nil
-}
-
-// ValidateIndex checks if the given index (or comma-separated indexes) are available using cached config.
-func (c *EmbeddingsServiceClient) ValidateIndex(ctx context.Context, idx string) bool {
-	if c.embeddingsServerURL == "" {
-		return true
-	}
-
-	c.lock.RLock()
-	availableIndexes := c.availableIndexes
-	c.lock.RUnlock()
-
-	if availableIndexes == nil {
-		slog.Warn("Available embeddings indexes not loaded yet, skipping validation")
-		return true
-	}
-
-	return c.checkIndexes(idx, availableIndexes)
-}
-
-func (c *EmbeddingsServiceClient) checkIndexes(idx string, availableIndexes map[string]struct{}) bool {
-	parts := strings.Split(idx, ",")
-	for _, part := range parts {
-		part = strings.TrimSpace(part)
-		if part == "" {
-			continue
-		}
-		if _, ok := availableIndexes[part]; !ok {
-			return false
-		}
-	}
-	return true
-}
