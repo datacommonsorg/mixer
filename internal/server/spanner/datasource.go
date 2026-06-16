@@ -18,6 +18,7 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
+	"maps"
 	"slices"
 	"sort"
 	"strings"
@@ -182,9 +183,57 @@ func (sds *SpannerDataSource) Observation(ctx context.Context, req *pbv2.Observa
 		return nil, err
 	}
 
+	if err := sds.hydrateMissingProvenanceURLs(ctx, observations); err != nil {
+		return nil, err
+	}
+
 	observations = filterObservationsByDateAndFacet(observations, req.Date, req.Filter)
 
 	return observationsToObservationResponse(req, observations), nil
+}
+
+func (sds *SpannerDataSource) hydrateMissingProvenanceURLs(ctx context.Context, observations []*Observation) error {
+	provenanceIDSet := map[string]struct{}{}
+	for _, observation := range observations {
+		if observation.ProvenanceURL == "" && observation.ProvenanceID != "" {
+			provenanceIDSet[observation.ProvenanceID] = struct{}{}
+		}
+	}
+	if len(provenanceIDSet) == 0 {
+		return nil
+	}
+
+	provenanceIDs := slices.Sorted(maps.Keys(provenanceIDSet))
+
+	nodeResp, err := datasource.NodeFetchAll(ctx, sds, &pbv2.NodeRequest{
+		Nodes:    provenanceIDs,
+		Property: "->" + predUrl,
+	}, fetchAllPageSize)
+	if err != nil {
+		return fmt.Errorf("error resolving provenance URLs: %w", err)
+	}
+
+	provenanceIDToURL := provenanceURLMapFromNodeResponse(nodeResp)
+
+	for _, observation := range observations {
+		if observation.ProvenanceURL == "" {
+			observation.ProvenanceURL = provenanceIDToURL[observation.ProvenanceID]
+		}
+	}
+	return nil
+}
+
+func provenanceURLMapFromNodeResponse(nodeResp *pbv2.NodeResponse) map[string]string {
+	provenanceIDToURL := map[string]string{}
+	for provenanceID, linkedGraph := range nodeResp.GetData() {
+		for _, node := range linkedGraph.GetArcs()[predUrl].GetNodes() {
+			if node.GetValue() != "" {
+				provenanceIDToURL[provenanceID] = node.GetValue()
+				break
+			}
+		}
+	}
+	return provenanceIDToURL
 }
 
 // fetchObservations retrieves observations from Spanner, supporting both direct entity lists and relation expressions (federated or local-only).

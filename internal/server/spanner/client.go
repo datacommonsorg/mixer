@@ -107,12 +107,12 @@ func NewRawSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverrid
 
 // NewSpannerClient creates a new SpannerClient from the config yaml string and an optional database override.
 // It returns a wrapper client that handles request-time schema dispatching.
-func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string) (SpannerClient, error) {
+func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride string, useMultiEntitySchema bool) (SpannerClient, error) {
 	rawClient, err := NewRawSpannerClient(ctx, spannerConfigYaml, databaseOverride)
 	if err != nil {
 		return nil, err
 	}
-	return NewSchemaSelectorClient(rawClient)
+	return NewSchemaSelectorClient(rawClient, useMultiEntitySchema)
 }
 
 // createSpannerClient creates the database name string and initializes the Spanner client.
