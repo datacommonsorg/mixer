@@ -538,9 +538,9 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 			// 1. Get term embedding
 			embeddings, err := sds.client.GetTermEmbeddingQuery(
 				errCtx,
-				cfg.VectorSearchConfig.EmbeddingModel,
+				cfg.SearchConfig.EmbeddingModel,
 				node,
-				string(cfg.VectorSearchConfig.EmbeddingType),
+				string(cfg.SearchConfig.QueryTaskType),
 			)
 			if err != nil {
 				return status.Errorf(codes.Internal, "failed to get term embedding for %s: %v", node, err)
@@ -553,12 +553,13 @@ func (sds *SpannerDataSource) vectorSearchResolution(
 			// 2. Vector search
 			searchResults, err := sds.client.VectorSearchQuery(
 				errCtx,
-				cfg.VectorSearchConfig.EmbeddingTable,
-				cfg.VectorSearchConfig.Limit,
+				cfg.SearchConfig.EmbeddingTable,
+				cfg.SearchConfig.Limit,
 				embeddings,
-				cfg.VectorSearchConfig.NumLeaves,
-				cfg.VectorSearchConfig.Threshold,
+				cfg.SearchConfig.NumLeaves,
+				cfg.SearchConfig.Threshold,
 				typeOfs,
+				cfg.SearchConfig.EmbeddingLabel,
 			)
 			if err != nil {
 				return status.Errorf(codes.Internal, "failed to perform vector search for %s: %v", node, err)
