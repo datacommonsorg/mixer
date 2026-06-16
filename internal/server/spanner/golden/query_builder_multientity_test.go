@@ -133,11 +133,7 @@ func TestMultiEntityGetSdmxObservationsQuery(t *testing.T) {
 		t.Run(c.name, func(t *testing.T) {
 			goldenFile := c.golden + ".sql"
 			runQueryBuilderGoldenTest(t, goldenFile, func(ctx context.Context) (interface{}, error) {
-				v3Cfg := spanner.TableConfig{
-					TimeSeriesTable:  "TimeSeries_final_v3",
-					ObservationTable: "Observation_final_v3",
-				}
-				stmt, _, err := spanner.GetMultiEntitySdmxObservationsQuery(c.constraints, c.entityMappings, v3Cfg)
+				stmt, _, err := spanner.GetMultiEntitySdmxObservationsQuery(c.constraints, c.entityMappings, spanner.DefaultTableConfig())
 				return stmt, err
 			})
 		})
@@ -145,11 +141,6 @@ func TestMultiEntityGetSdmxObservationsQuery(t *testing.T) {
 }
 
 func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
-	v3Cfg := spanner.TableConfig{
-		TimeSeriesTable:  "TimeSeries_final_v3",
-		ObservationTable: "Observation_final_v3",
-	}
-
 	// Case 1: Valid alphanumeric keys
 	constraints := map[string]*pb.ConstraintList{
 		"variableMeasured":  {Values: []string{"var1"}},
@@ -157,7 +148,7 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 		"provenance":        {Values: []string{"dc/base/INPE_Fire_Event_Count"}},
 		"observationPeriod": {Values: []string{"P1Y"}},
 	}
-	_, _, err := spanner.GetMultiEntitySdmxObservationsQuery(constraints, nil, v3Cfg)
+	_, _, err := spanner.GetMultiEntitySdmxObservationsQuery(constraints, nil, spanner.DefaultTableConfig())
 	if err != nil {
 		t.Errorf("expected no error for valid constraint keys, got %v", err)
 	}
@@ -167,7 +158,7 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 		"variableMeasured": {Values: []string{"var1"}},
 		"unit') OR 1=1 --": {Values: []string{"Percent"}},
 	}
-	_, _, err = spanner.GetMultiEntitySdmxObservationsQuery(badConstraints1, nil, v3Cfg)
+	_, _, err = spanner.GetMultiEntitySdmxObservationsQuery(badConstraints1, nil, spanner.DefaultTableConfig())
 	if err == nil {
 		t.Error("expected error for constraint key containing SQL injection payload, got nil")
 	}
@@ -177,7 +168,7 @@ func TestMultiEntityGetSdmxObservationsQuery_Validation(t *testing.T) {
 		"variableMeasured": {Values: []string{"var1"}},
 		"invalid key":       {Values: []string{"value"}},
 	}
-	_, _, err = spanner.GetMultiEntitySdmxObservationsQuery(badConstraints2, nil, v3Cfg)
+	_, _, err = spanner.GetMultiEntitySdmxObservationsQuery(badConstraints2, nil, spanner.DefaultTableConfig())
 	if err == nil {
 		t.Error("expected error for constraint key containing spaces, got nil")
 	}

@@ -6,7 +6,7 @@
 			COALESCE(
 				(
 					SELECT ARRAY_AGG(STRUCT(date, value AS str_value, CAST(NULL AS JSON) AS attributes))
-					FROM Observation_final_v3 o
+					FROM Observation o
 					WHERE o.variable_measured = t.variable_measured
 						AND o.entity1 = t.entity1
 						AND o.extra_entities_id = t.extra_entities_id
@@ -16,5 +16,5 @@
 			) AS dates_and_values,
 			t.facet AS facets,
 			t.entities
-		FROM TimeSeries_final_v3 t
+		FROM TimeSeries t
 		WHERE (t.variable_measured = "var1" AND t.entity1 IN ('country/AGO'))

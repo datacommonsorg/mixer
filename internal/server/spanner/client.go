@@ -105,21 +105,25 @@ func NewRawSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverrid
 	return newSpannerDatabaseClient(client)
 }
 
-// TableConfig holds the names of Spanner tables and indexes.
+// TableConfig holds the names of multi-entity Spanner tables and indexes.
 type TableConfig struct {
-	TimeSeriesTable          string
-	ObservationTable         string
-	TimeSeriesByEntity2Index string
-	TimeSeriesByEntity3Index string
+	TimeSeriesTable             string
+	ObservationTable            string
+	TimeSeriesByEntity1Index    string
+	TimeSeriesByEntity2Index    string
+	TimeSeriesByEntity3Index    string
+	TimeSeriesByProvenanceIndex string
 }
 
-// DefaultTableConfig returns the default _final_v2 table and index configuration.
+// DefaultTableConfig returns the default suffix-less table and index configuration for multi-entity Spanner tables.
 func DefaultTableConfig() TableConfig {
 	return TableConfig{
-		TimeSeriesTable:          "TimeSeries_final_v2",
-		ObservationTable:         "Observation_final_v2",
-		TimeSeriesByEntity2Index: "TimeSeriesFinalV2ByEntity2",
-		TimeSeriesByEntity3Index: "TimeSeriesFinalV2ByEntity3",
+		TimeSeriesTable:             "TimeSeries",
+		ObservationTable:            "Observation",
+		TimeSeriesByEntity1Index:    "TimeSeriesByEntity1",
+		TimeSeriesByEntity2Index:    "TimeSeriesByEntity2",
+		TimeSeriesByEntity3Index:    "TimeSeriesByEntity3",
+		TimeSeriesByProvenanceIndex: "TimeSeriesByProvenance",
 	}
 }
 
@@ -142,11 +146,17 @@ func NewSpannerClient(ctx context.Context, spannerConfigYaml, databaseOverride s
 	if cfg.ObservationTable != nil {
 		tableCfg.ObservationTable = *cfg.ObservationTable
 	}
+	if cfg.TimeSeriesByEntity1Index != nil {
+		tableCfg.TimeSeriesByEntity1Index = *cfg.TimeSeriesByEntity1Index
+	}
 	if cfg.TimeSeriesByEntity2Index != nil {
 		tableCfg.TimeSeriesByEntity2Index = *cfg.TimeSeriesByEntity2Index
 	}
 	if cfg.TimeSeriesByEntity3Index != nil {
 		tableCfg.TimeSeriesByEntity3Index = *cfg.TimeSeriesByEntity3Index
+	}
+	if cfg.TimeSeriesByProvenanceIndex != nil {
+		tableCfg.TimeSeriesByProvenanceIndex = *cfg.TimeSeriesByProvenanceIndex
 	}
 
 	return NewSchemaSelectorClient(rawClient, useMultiEntitySchema, tableCfg)
