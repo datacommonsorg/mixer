@@ -26,21 +26,6 @@ const (
 	csvActionInformation = "I"
 )
 
-var dataCSVHeader = []string{
-	"STRUCTURE",
-	"STRUCTURE_ID",
-	"ACTION",
-	DimVariableMeasured,
-	"observationAbout",
-	"unit",
-	"measurementMethod",
-	"observationPeriod",
-	"provenance",
-	DimObservationDate,
-	DimObservationValue,
-	"scalingFactor",
-}
-
 // CSVFormatter implements Formatter for SDMX-CSV 2.0 data messages.
 type CSVFormatter struct {
 	StructureID string
@@ -52,7 +37,7 @@ func (f *CSVFormatter) Format(obs []*pb.SdmxObservation) (string, error) {
 	writer := csv.NewWriter(&buf)
 	writer.UseCRLF = true
 
-	if err := writer.Write(dataCSVHeader); err != nil {
+	if err := writer.Write(dataCSVHeader()); err != nil {
 		return "", err
 	}
 	for _, observation := range obs {
@@ -77,25 +62,60 @@ func (f *CSVFormatter) Format(obs []*pb.SdmxObservation) (string, error) {
 }
 
 func (f *CSVFormatter) row(observation *pb.SdmxObservation, dateValue *pb.SdmxDateValue) []string {
-	date := ""
-	value := ""
-	if dateValue != nil {
-		date = dateValue.GetDate()
-		value = dateValue.GetValue()
-	}
-
-	return []string{
+	row := []string{
 		csvStructureDataflow,
 		f.StructureID,
 		csvActionInformation,
-		observation.GetVariableMeasured(),
-		observation.GetDimensions()["observationAbout"],
-		observation.GetAttributes()["unit"],
-		observation.GetAttributes()["measurementMethod"],
-		observation.GetAttributes()["observationPeriod"],
-		observation.GetProvenance(),
-		date,
-		value,
-		observation.GetAttributes()["scalingFactor"],
+	}
+	for _, component := range DataCSVComponents {
+		row = append(row, dataCSVComponentValue(component, observation, dateValue))
+	}
+	return row
+}
+
+func dataCSVHeader() []string {
+	header := []string{"STRUCTURE", "STRUCTURE_ID", "ACTION"}
+	for _, component := range DataCSVComponents {
+		header = append(header, component.ID)
+	}
+	return header
+}
+
+func dataCSVComponentValue(component DataComponent, observation *pb.SdmxObservation, dateValue *pb.SdmxDateValue) string {
+	value := dataCSVRawComponentValue(component.ID, observation, dateValue)
+	if component.Kind == ComponentKindDimension && value == "" {
+		return FallbackNotAvailable
+	}
+	return value
+}
+
+func dataCSVRawComponentValue(componentID string, observation *pb.SdmxObservation, dateValue *pb.SdmxDateValue) string {
+	switch componentID {
+	case DimVariableMeasured:
+		return observation.GetVariableMeasured()
+	case ComponentObservationAbout:
+		return observation.GetDimensions()[ComponentObservationAbout]
+	case ComponentUnit:
+		return observation.GetAttributes()[ComponentUnit]
+	case ComponentMeasurementMethod:
+		return observation.GetAttributes()[ComponentMeasurementMethod]
+	case ComponentObservationPeriod:
+		return observation.GetAttributes()[ComponentObservationPeriod]
+	case ComponentProvenance:
+		return observation.GetProvenance()
+	case DimObservationDate:
+		if dateValue == nil {
+			return ""
+		}
+		return dateValue.GetDate()
+	case DimObservationValue:
+		if dateValue == nil {
+			return ""
+		}
+		return dateValue.GetValue()
+	case ComponentScalingFactor:
+		return observation.GetAttributes()[ComponentScalingFactor]
+	default:
+		return ""
 	}
 }

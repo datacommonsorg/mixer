@@ -64,7 +64,7 @@ func TestCSVFormatter_Rows(t *testing.T) {
 	}
 
 	want := [][]string{
-		dataCSVHeader,
+		dataCSVHeader(),
 		{"dataflow", "DATACOMMONS:DF_OBSERVATIONS(1.0.0)", "I", "Count_Person", "country/USA", "Person", "Census", "P1Y", "dc/base", "2020", "1.50", "0"},
 		{"dataflow", "DATACOMMONS:DF_OBSERVATIONS(1.0.0)", "I", "Count_Person", "country/USA", "Person", "Census", "P1Y", "dc/base", "2021", "2", "0"},
 	}
@@ -92,8 +92,8 @@ func TestCSVFormatter_MissingFieldsAndEscaping(t *testing.T) {
 	}
 
 	want := [][]string{
-		dataCSVHeader,
-		{"dataflow", "DATACOMMONS:DF_OBSERVATIONS(1.0.0)", "I", "Count,\"Person\"", "", "", "", "", "", "2020", "foo,bar", ""},
+		dataCSVHeader(),
+		{"dataflow", "DATACOMMONS:DF_OBSERVATIONS(1.0.0)", "I", "Count,\"Person\"", FallbackNotAvailable, FallbackNotAvailable, FallbackNotAvailable, FallbackNotAvailable, FallbackNotAvailable, "2020", "foo,bar", ""},
 	}
 	if diff := cmp.Diff(want, parseCSV(t, got)); diff != "" {
 		t.Errorf("Format() mismatch (-want +got):\n%s", diff)
