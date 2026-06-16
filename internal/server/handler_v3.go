@@ -100,6 +100,7 @@ func (s *Server) V3FilterStatVarsByEntity(ctx context.Context, in *pb.FilterStat
 // V3SdmxData handles SDMX Data requests.
 func (s *Server) V3SdmxData(in *pbv3.SdmxRestRequest, stream pbsvc.Mixer_V3SdmxDataServer) error {
 	ctx := stream.Context()
+	logSDMX := restv2.ShouldLogSDMX(ctx)
 	if !s.flags.EnableSDMXDataApi {
 		return status.Error(codes.Unimplemented, "SDMX API is not enabled")
 	}
@@ -110,18 +111,33 @@ func (s *Server) V3SdmxData(in *pbv3.SdmxRestRequest, stream pbsvc.Mixer_V3SdmxD
 
 	originalURI, err := restv2.OriginalURIFromMetadata(ctx)
 	if err != nil {
+		if logSDMX {
+			slog.Info("SDMX data request URI failed", "tail", in.GetTail(), "error", err)
+		}
 		return err
 	}
 
 	request, err := restv2.ParseDataRequest(in.GetTail(), originalURI)
 	if err != nil {
+		if logSDMX {
+			slog.Info("SDMX data request parse failed", "original_uri", originalURI, "tail", in.GetTail(), "error", err)
+		}
 		slog.Error("Failed to parse SDMX data request", "error", err, "tail", in.GetTail())
 		return err
+	}
+	if logSDMX {
+		slog.Info("SDMX data request parsed", "original_uri", originalURI, "tail", in.GetTail(), "path", request.Path, "constraints", request.Constraints)
 	}
 
 	query, err := sdmxDataQueryFromREST(request)
 	if err != nil {
+		if logSDMX {
+			slog.Info("SDMX data dispatcher request failed", "original_uri", originalURI, "tail", in.GetTail(), "constraints", request.Constraints, "error", err)
+		}
 		return err
+	}
+	if logSDMX {
+		slog.Info("SDMX data dispatcher request", "original_uri", originalURI, "tail", in.GetTail(), "constraints", query.Constraints)
 	}
 	if len(query.Constraints) == 0 {
 		slog.Error("SDMX request missing required constraints", "tail", in.GetTail())

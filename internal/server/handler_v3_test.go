@@ -15,8 +15,10 @@
 package server
 
 import (
+	"bytes"
 	"context"
 	"errors"
+	"log/slog"
 	"strings"
 	"testing"
 
@@ -26,6 +28,7 @@ import (
 	"github.com/datacommonsorg/mixer/internal/server/datasource"
 	"github.com/datacommonsorg/mixer/internal/server/datasources"
 	"github.com/datacommonsorg/mixer/internal/server/dispatcher"
+	"github.com/datacommonsorg/mixer/internal/util"
 	"github.com/google/go-cmp/cmp"
 	httpbody "google.golang.org/genproto/googleapis/api/httpbody"
 	"google.golang.org/grpc/codes"
@@ -274,6 +277,101 @@ func TestV3SdmxData_DispatcherError(t *testing.T) {
 	}
 }
 
+func TestV3SdmxData_SDMXDebugLoggingDisabled(t *testing.T) {
+	buf, restore := captureSdmxLogs()
+	defer restore()
+
+	ds := &sdmxDataSource{result: &pb.SdmxDataResult{}}
+	server := newSdmxTestServer(ds)
+	stream := &sdmxDataStream{ctx: sdmxIncomingContext(sdmxDataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA"))}
+
+	err := server.V3SdmxData(&pbv3.SdmxRestRequest{Tail: sdmxDataTail()}, stream)
+	if err != nil {
+		t.Fatalf("V3SdmxData() error = %v", err)
+	}
+	logs := buf.String()
+	if strings.Contains(logs, "SDMX data request parsed") || strings.Contains(logs, "SDMX data dispatcher request") {
+		t.Fatalf("unexpected SDMX debug logs without %s header: %s", util.XLogSDMX, logs)
+	}
+}
+
+func TestV3SdmxData_SDMXDebugLoggingSuccess(t *testing.T) {
+	buf, restore := captureSdmxLogs()
+	defer restore()
+
+	ds := &sdmxDataSource{result: &pb.SdmxDataResult{}}
+	server := newSdmxTestServer(ds)
+	stream := &sdmxDataStream{
+		ctx: sdmxIncomingContextWithSDMXLog(sdmxDataURI("c[variableMeasured]=Count_Person&c[observationAbout]=country%2FUSA&c[TIME_PERIOD]=2020")),
+	}
+
+	err := server.V3SdmxData(&pbv3.SdmxRestRequest{Tail: sdmxDataTail()}, stream)
+	if err != nil {
+		t.Fatalf("V3SdmxData() error = %v", err)
+	}
+	logs := buf.String()
+	for _, want := range []string{
+		"SDMX data request parsed",
+		"original_uri",
+		"Count_Person",
+		"country/USA",
+		"SDMX data dispatcher request",
+		"observationDate",
+	} {
+		if !strings.Contains(logs, want) {
+			t.Fatalf("logs do not contain %q: %s", want, logs)
+		}
+	}
+}
+
+func TestV3SdmxData_SDMXDebugLoggingParseFailure(t *testing.T) {
+	buf, restore := captureSdmxLogs()
+	defer restore()
+
+	server := &Server{flags: &featureflags.Flags{EnableSDMXDataApi: true}}
+	stream := &sdmxDataStream{
+		ctx: sdmxIncomingContextWithSDMXLog(sdmxDataURI("c[observationAbout]=country%2FUSA")),
+	}
+
+	err := server.V3SdmxData(&pbv3.SdmxRestRequest{Tail: sdmxDataTail()}, stream)
+	if status.Code(err) != codes.InvalidArgument {
+		t.Fatalf("V3SdmxData() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+	}
+	logs := buf.String()
+	for _, want := range []string{
+		"SDMX data request parse failed",
+		"original_uri",
+		"missing required SDMX component filter variableMeasured",
+	} {
+		if !strings.Contains(logs, want) {
+			t.Fatalf("logs do not contain %q: %s", want, logs)
+		}
+	}
+}
+
+func TestV3SdmxData_SDMXDebugLoggingMissingURI(t *testing.T) {
+	buf, restore := captureSdmxLogs()
+	defer restore()
+
+	server := &Server{flags: &featureflags.Flags{EnableSDMXDataApi: true}}
+	ctx := metadata.NewIncomingContext(context.Background(), metadata.Pairs(util.XLogSDMX, "true"))
+	stream := &sdmxDataStream{ctx: ctx}
+
+	err := server.V3SdmxData(&pbv3.SdmxRestRequest{Tail: sdmxDataTail()}, stream)
+	if status.Code(err) != codes.InvalidArgument {
+		t.Fatalf("V3SdmxData() code = %v, want %v; err = %v", status.Code(err), codes.InvalidArgument, err)
+	}
+	logs := buf.String()
+	for _, want := range []string{
+		"SDMX data request URI failed",
+		"missing SDMX request URI",
+	} {
+		if !strings.Contains(logs, want) {
+			t.Fatalf("logs do not contain %q: %s", want, logs)
+		}
+	}
+}
+
 func newSdmxTestServer(ds *sdmxDataSource) *Server {
 	sources := datasources.NewDataSources([]datasource.DataSource{ds}, nil)
 	return &Server{
@@ -293,10 +391,25 @@ func sdmxIncomingContextWithAccept(originalURI string, accept string) context.Co
 	))
 }
 
+func sdmxIncomingContextWithSDMXLog(originalURI string) context.Context {
+	return metadata.NewIncomingContext(context.Background(), metadata.Pairs(
+		"x-envoy-original-path", originalURI,
+		util.XLogSDMX, "true",
+	))
+}
+
 func sdmxDataTail() string {
 	return "dataflow/DATACOMMONS/DF_OBSERVATIONS/1.0.0/*"
 }
 
 func sdmxDataURI(query string) string {
 	return "/sdmx/v3/data/" + sdmxDataTail() + "?" + query
+}
+
+func captureSdmxLogs() (*bytes.Buffer, func()) {
+	var buf bytes.Buffer
+	logger := slog.New(slog.NewTextHandler(&buf, nil))
+	originalLogger := slog.Default()
+	slog.SetDefault(logger)
+	return &buf, func() { slog.SetDefault(originalLogger) }
 }

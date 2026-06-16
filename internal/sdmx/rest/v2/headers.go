@@ -18,6 +18,7 @@ import (
 	"context"
 	"strings"
 
+	"github.com/datacommonsorg/mixer/internal/util"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
@@ -60,4 +61,13 @@ func ValidateDataAccept(ctx context.Context) error {
 		}
 	}
 	return nil
+}
+
+// ShouldLogSDMX checks whether SDMX request debug logs are enabled.
+func ShouldLogSDMX(ctx context.Context) bool {
+	if md, ok := metadata.FromIncomingContext(ctx); ok {
+		headers := md.Get(util.XLogSDMX)
+		return len(headers) > 0 && headers[0] == "true"
+	}
+	return false
 }
